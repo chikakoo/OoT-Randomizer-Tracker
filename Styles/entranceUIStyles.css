@@ -1,0 +1,72 @@
+.entrance-group-container {
+	display: flex;
+	padding-bottom: 3px;
+	margin-left: 20px;
+}
+
+.item-location-entrance-task-container {
+	display: flex;
+	margin-left: 5px;
+}
+
+.entrance-group, .entrance-group-button {
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 30px;
+	height: 30px;
+}
+
+.entrance-group-button {
+	position: relative;
+}
+
+.entrance-group:hover, .entrance-group-button:hover {
+	-webkit-filter: drop-shadow(2px 2px 0 white) drop-shadow(-2px -2px 0 white);
+	filter: drop-shadow(2px 2px 0 white)  drop-shadow(-2px -2px 0 white);
+}
+
+.entrance-group-button.entrance-group-button-completed {
+	position: relative;
+	opacity: 0.4;
+}
+
+.entrance-group-button.entrance-group-button-cannot-do {
+	opacity: 0.4;
+}
+
+.entrance-group-button.entrance-group-button-completed:before {
+	content: "/";
+	position: absolute;
+	left: 9px;
+	top: -6px;
+	width: 100%;
+	color: white;
+	font-weight: bold;
+	font-size: 40px;
+	font-style: italic;
+}
+
+.entrance-group-age-div {
+	background-size: contain;
+	background-repeat: no-repeat;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 16px;
+	height: 16px;
+}
+.entrance-group-age-div.entrance-group-age-div-child:before, 
+.entrance-group-age-div.entrance-group-age-div-adult:before {
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	text-shadow: 1px 1px 0 black;
+}
+
+.entrance-group-age-div.entrance-group-age-div-child:before {
+	content: "C";
+}
+
+.entrance-group-age-div.entrance-group-age-div-adult:before {
+	content: "A";
+}

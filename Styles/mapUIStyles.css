@@ -1,0 +1,101 @@
+#mapDiv {
+	overflow: hidden;
+	background-color: black;
+	background-image: url("../Images/Maps/Map Div Background.png");
+}
+
+#mapImageAndIcons {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	overflow: hidden;
+}
+
+.item-icon {
+	position: absolute;
+	background-repeat: no-repeat;
+	background-size: contain;
+	top: 0px;
+	left: 0px;
+}
+
+.map-zoom, .item-icon {
+	transition: transform 0.5s ease-out;
+}
+
+.item-icon.cannot-get {
+	opacity: 0.8;
+	-webkit-filter: grayscale(100%);
+  	filter: grayscale(100%);
+  	z-index: -2;
+}
+
+.item-icon {
+	-webkit-filter: drop-shadow(2px 2px 0 black) drop-shadow(-2px -2px 0 black);
+	filter: drop-shadow(2px 2px 0 black)  drop-shadow(-2px -2px 0 black);
+}
+
+.item-icon.item-icon-highlight {
+	-webkit-filter: drop-shadow(2px 2px 0 white) drop-shadow(-2px -2px 0 white);
+	filter: drop-shadow(2px 2px 0 white)  drop-shadow(-2px -2px 0 white);
+	z-index: 100;
+}
+
+.item-icon.cannot-get.item-icon-highlight {
+	-webkit-filter: grayscale(100%) drop-shadow(2px 2px 0 white) drop-shadow(-2px -2px 0 white);
+	filter: grayscale(100%) drop-shadow(2px 2px 0 white)  drop-shadow(-2px -2px 0 white);
+	z-index: 100;
+}
+
+.item-icon-ow-entrance {
+	font-size: 10pt;
+	font-color: white;
+	font-family: monospace;
+	font-weight: bold;
+	background-color: black;
+	width: auto;
+	height: 14px;
+	padding: 2px;
+	z-index: 2;
+	opacity: 0.8;
+}
+
+.item-icon-gossip-stone {
+	z-index: -1;
+}
+
+/* Floor Stuff */
+#floorDiv {
+	width: 40px;
+	display: flex;
+	flex-direction: column;
+}
+
+.floor-button {
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	color: white;
+	text-align: center;
+	font-size: 16pt;
+	background-image: url("../Images/Maps/Map Div Background.png");
+	border-top: 2px solid #292f38;
+	border-right: 2px solid #292f38;
+}
+
+#floorDiv:last-child {
+	border-bottom: 2px solid #292f38;
+}
+
+.floor-button:hover:not(.floor-button-selected) {
+	color: red;
+	background-image: url("../Images/Maps/Map Div Background.png");
+}
+
+.floor-button-selected {
+	color: gold;
+	font-weight: bold;
+}

@@ -1,0 +1,65 @@
+#spawnsButton {
+    background-color: DarkGray;
+    color: black;
+    font-weight: bolder;
+}
+
+#spawnsButton:hover {
+    background-color: WhiteSmoke;
+}
+
+#spawnsContainer {
+    background-color: #092953;
+    width: 100%;
+    height: 100%;
+    margin-left: 215px;
+}
+
+#spawnsContainer.location-smaller {
+	margin-left: 115px;
+}
+
+#spawnsButton.selected-location {
+    background-color: black;
+    color: gold;
+}
+
+.spawns-group {
+    display: flex;
+    flex-direction: column;
+    color: yellow;
+    font-size: 16pt;
+    margin-left: 20px;
+    padding-bottom: 10px;
+}
+
+.spawns-item:hover {
+    color: lightgray;
+    background-color: darkBlue;
+}
+
+.spawns-item {
+    color: white;
+    font-size: 14pt;
+}
+
+.spawns-item > span {
+    display: inline-block;
+    padding-right: 10px;
+}
+
+#spawnLocationsGroup span {
+    width: 60px;
+}
+
+#songWarpsGroup span {
+    width: 160px;
+}
+
+.spawns-button {
+    border: 1px solid red;
+}
+
+#spawnButtonGroup {
+    margin: 10px;
+}

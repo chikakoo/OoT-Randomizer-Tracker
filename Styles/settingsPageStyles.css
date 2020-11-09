@@ -1,0 +1,72 @@
+#settingsButton {
+    background-color: Gray;
+    color: black;
+    font-weight: bolder;
+}
+
+#settingsButton:hover {
+    background-color: WhiteSmoke;
+}
+
+#settingsContainer {
+    background-color: #092953;
+    width: 100%;
+    height: 100%;
+    margin-left: 215px;
+}
+
+#settingsContainer.location-smaller {
+	margin-left: 115px;
+}
+
+#settingsButton.selected-location {
+    background-color: black;
+    color: gold;
+}
+
+h1 {
+    margin: 0;
+    padding: 5px;
+    color: gold;
+}
+
+.settings-group {
+    display: flex;
+    flex-direction: column;
+    color: yellow;
+    font-size: 16pt;
+    margin-left: 20px;
+    padding-bottom: 10px;
+}
+
+.settings-group label {
+    color: white;
+    font-size: 14pt;
+    width: max-content;
+}
+
+.settings-group label:hover {
+    color: red;
+}
+
+.settings-important {
+    color: red;
+    font-weight: bold;
+}
+
+.settings-radio-group:not(label) {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color: lightgray;
+    font-size: 15pt;
+    display: flex;
+    flex-direction: column;
+}
+.settings-radio-group label {
+    margin-left: 10px;
+}
+
+#medallionSkulltulaInput {
+	margin-left: 10px;
+	width: 40px;
+}
