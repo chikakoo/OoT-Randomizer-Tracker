@@ -4300,7 +4300,9 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Blow up/hammer the weak walls on the western side of the middle floor. Pay Medigoron 200 rupees for this item.",
                         RequiredItems: [{item: Equipment.WALLET, upgradeString: "1"}],
-                        NeedToBlastOrSmash: true
+                        CustomRequirement: function(age) {
+                            return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
+                        }
                     },
                     "Leftmost Maze Chest": {
                         Name: "Leftmost Maze Chest",
