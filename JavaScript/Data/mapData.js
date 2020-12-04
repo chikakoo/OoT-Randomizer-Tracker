@@ -809,22 +809,13 @@ let OwExits = {
         },
         "Zora's Domain": {
             Name: "Zora's Domain",
-            ExitRegion: "upstream",
+            ExitRegion: "inWaterfall",
             Map: "Zora's Domain",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: {x: 332, y: 61},
+            MapInfo: { x: 332, y: 61 },
             Age: Age.EITHER,
-            LongDescription: "This is the entrance to the domain - play Zelda's Lullaby on the symbol by the waterfall.",
-            CustomRequirement: function(age) {
-                if (age === Age.ADULT && Settings.GlitchesToAllow.hoversToZorasDomain && Equipment.HOVER_BOOTS.playerHas) {
-                    return true; // Hover in
-                } else if (age === Age.CHILD && Settings.GlitchesToAllow.cuccoToZorasDomain) {
-                    return true; // Flying cucco
-                }
-                
-                return Data.canPlaySong(Songs.ZELDAS_LULLABY) || Data.canMegaFlip(age);
-            }
+            LongDescription: "This is the entrance to the domain - play Zelda's Lullaby on the symbol by the waterfall."
         },
     },
 
@@ -4632,8 +4623,17 @@ let MapLocations = {
                         Name: "downstream"
                     },
 
-                    "Zora's Domain": {
-                        OwExit: OwExits["Zora's River"]["Zora's Domain"]
+                    inWaterfall: {
+                        Name: "inWaterfall",
+                        CustomRequirement: function(age) {
+                            if (age === Age.ADULT && Settings.GlitchesToAllow.hoversToZorasDomain && Equipment.HOVER_BOOTS.playerHas) {
+                                return true; // Hover in
+                            } else if (age === Age.CHILD && Settings.GlitchesToAllow.cuccoToZorasDomain) {
+                                return true; // Flying cucco
+                            }
+                            
+                            return Data.canPlaySong(Songs.ZELDAS_LULLABY) || Data.canMegaFlip(age);
+                        }
                     },
 
                     "Lost Woods": {
@@ -4643,7 +4643,7 @@ let MapLocations = {
 
                 Entrances: {
                     downstream: {},
-                    "Zora's Domain": {},
+                    inWaterfall: {},
                     "Lost Woods": {}
                 },
 
@@ -4805,6 +4805,25 @@ let MapLocations = {
                         NeedToBlastOrSmash: true
                     }
                 }
+            },
+
+            inWaterfall: {
+                Exits: {
+                    upstream: {
+                        Name: "upstream"
+                    },
+
+                    "Zora's Domain": {
+                        OwExit: OwExits["Zora's River"]["Zora's Domain"]
+                    },
+                },
+
+                Entrances: {
+                    upstream: {},
+                    "Zora's Domain": {}
+                },
+                
+                ItemLocations: {}
             }
 		}
 	},
