@@ -102,8 +102,6 @@ EntranceData = {
 	}
 }
 
-//TODO: clear out all the Data accesses here!
-
 /**
  * Data for the interior buttons to display under entrances
  */
@@ -315,7 +313,7 @@ InteriorGroups = {
 		}
 	},
 	"Lakeside Lab": {
-		//map: "Lake Hylia", //TODO: deal with this...
+		//map: "Lake Hylia",
 		tooltip: "This is the lab with the professor and the pool of water in the back.",
 		buttons: {
 			"Lakeside Heart Piece": {

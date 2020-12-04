@@ -166,7 +166,7 @@ Data = {
      * This is an empty array if a dungeon hasn't been chosen
      * This is the normal set of item location is dungeons haven't been shuffled
      */
-    getItemLocatonsForShuffledDungeon: function(mapName) {
+    getItemLocationsForShuffledDungeon: function(mapName) {
         let mapInfo = MapLocations[mapName];
         let itemLocations = [];
 		if (Data.getDoesEntranceShuffleApply(mapName) && mapInfo.ShuffledDungeon) {
@@ -768,7 +768,7 @@ Data = {
 		if (!itemLocation[propertyName]) { return true; }
 		let hasAllItems = true;
 		
-		_this = this;
+		let _this = this;
 		itemLocation[propertyName].forEach(function(item) {
 			let currentItem = item.item || item;
 			
@@ -1288,7 +1288,7 @@ Data = {
             totalTasks: 0
         };
 
-        let itemLocations = this.getItemLocatonsForShuffledDungeon(mapName);
+        let itemLocations = this.getItemLocationsForShuffledDungeon(mapName);
         let _this = this;
         [Age.CHILD, Age.ADULT].forEach(function(age) {
             _this._fillCanDoObject(itemLocations, age, canDoInfo[age]);

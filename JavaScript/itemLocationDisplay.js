@@ -74,7 +74,7 @@ let _refreshSelectedLocation = function() {
 let updateItemDisplay = function() {
 	if (!LocationSidebar.isLocationAMap()) { return; }
 
-	let itemLocations = Data.getItemLocatonsForShuffledDungeon(_currentLocationName);
+	let itemLocations = Data.getItemLocationsForShuffledDungeon(_currentLocationName);
 	itemLocations.forEach(function(itemLocation) {
 		let canGetAsChild = Data.getItemObtainability(itemLocation, Age.CHILD);
 		let canGetAsAdult = Data.getItemObtainability(itemLocation, Age.ADULT);

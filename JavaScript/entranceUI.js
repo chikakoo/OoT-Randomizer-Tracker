@@ -180,8 +180,7 @@ let EntranceUI = {
 		});
 		
 		if (visibleButtonCount < 1) {
-			Data.setItemObtained(itemLocation, false); // So that the next call with always set it to true
-			addCssClass(document.getElementById(itemLocation.Name), "item-obtained");
+			itemLocation.playerHas = true;
 		}
 	},
 	

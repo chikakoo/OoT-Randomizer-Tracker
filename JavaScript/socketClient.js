@@ -291,7 +291,6 @@ SocketClient = {
 	 * Syncs all the item location data
 	 */
 	_syncAllItemLocations: function() {
-		let _this = this;
 		let mapData = {};
 		Object.keys(MapLocations).forEach(function(map) {
 			Object.keys(MapLocations[map].Regions).forEach(function(region) {
