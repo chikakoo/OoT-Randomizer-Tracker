@@ -421,6 +421,8 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon, i
 
 				Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance, !entrances);
 				refreshAll();
+				
+				SocketClient.itemLocationUpdated(itemLocation)
 			};
 			
 			entranceDropdown.onchange = function() {
@@ -428,6 +430,8 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon, i
 				let entrance = entranceDropdown.options[entranceDropdown.selectedIndex].value;
 				Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance);
 				refreshAll();
+
+				SocketClient.itemLocationUpdated(itemLocation)
 			};
 			
 			itemLocationTextDiv.oncontextmenu = function() {

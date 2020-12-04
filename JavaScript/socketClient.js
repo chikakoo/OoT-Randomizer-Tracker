@@ -124,29 +124,21 @@ SocketClient = {
 			Data.randomizedSpawnLocations = randomizedSpawnLocations;
 			refreshAll();
 		});
-
-		// Sync up an OW shuffle update
-		this._socket.on("ow_location_updated", function(fromMapName, from, toMapName, toLocationName, clear) {
-			Data.setOWLocationFound(fromMapName, from, toMapName, toLocationName, clear, true);
-			refreshAll();
-		});
 	},
 	
 	/**
 	 * Update all item locations - used when syncing everything to save on network calls
 	 */
-	updateAllItemLocations(mapData) {
-		Object.keys(mapData).forEach(function(map) {
-			Object.keys(mapData[map]).forEach(function(region) {
-				mapData[map][region].forEach(function(itemLocation) {
-					console.log(`${itemLocation.Name} was updated at ${map} - Checked: ${itemLocation.playerHas}`);
-					SocketClient.updateItemLocation(itemLocation, true);
-					
-					if (_currentLocationName === map) {
-						_refreshNotes(itemLocation);
-					}
-				});
-			})
+	updateAllItemLocations(allItemLocations) {
+		allItemLocations.forEach(function(itemLocation) {
+			let map = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE ? itemLocation.ExitMap : itemLocation.Map;
+
+			console.log(`${itemLocation.Name} was updated at ${map} - Checked: ${itemLocation.playerHas}`);
+			SocketClient.updateItemLocation(itemLocation, true);
+			
+			if (_currentLocationName === map) {
+				_refreshNotes(itemLocation);
+			}
 		});
 		
 		refreshAll();
@@ -156,8 +148,8 @@ SocketClient = {
 	 * Syncs up one item location, given the map and location name
 	 */
 	updateItemLocation: function(itemLocation, skipShuffleCheck) {
-		let map = itemLocation.Map;
-		let region = itemLocation.Region;
+		let map = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE ? itemLocation.ExitMap : itemLocation.Map;
+		let region = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE ? itemLocation.ExitRegion : itemLocation.Region;
 		let name = itemLocation.Name;
 
 		let mapInfo = MapLocations[map];
@@ -165,14 +157,25 @@ SocketClient = {
 			mapInfo = MapLocations[mapInfo.ShuffledDungeon];
 		}
 		
-		let matchingLocation = MapLocations[map].Regions[region].ItemLocations[name];
+		let matchingLocation;
+
+		if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
+			matchingLocation = OwExits[map][name];
+
+			let hasOwData = itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName;
+			Data.setOWLocationFound(map, itemLocation, itemLocation.OwShuffleMap, itemLocation.OwShuffleExitName, !hasOwData);
+		}
+		else {
+			matchingLocation = MapLocations[map].Regions[region].ItemLocations[name]
+		}
+		
 		matchingLocation.playerHas = itemLocation.playerHas;
 		matchingLocation.notes = itemLocation.notes;
 
 		if (itemLocation.EntranceGroup) {
 			matchingLocation.EntranceGroup = itemLocation.EntranceGroup;
 		}
-
+		
 		if (_currentLocationName === map) {
 			let expandIconDiv = document.getElementById(`${itemLocation.Name}-expand-icon`);
 			let moreInfoNotesDiv = document.getElementById(`${itemLocation.Name}-inline-notes`);
@@ -291,17 +294,6 @@ SocketClient = {
 	 * Syncs all the item location data
 	 */
 	_syncAllItemLocations: function() {
-		let mapData = {};
-		Object.keys(MapLocations).forEach(function(map) {
-			Object.keys(MapLocations[map].Regions).forEach(function(region) {
-				mapData[map] = mapData[map] || {};
-				mapData[map][region] = [];
-				Object.keys(MapLocations[map].Regions[region].ItemLocations).forEach(function(itemLocationName) {
-					mapData[map][region].push(MapLocations[map].Regions[region].ItemLocations[itemLocationName]);
-				});
-			});
-		});
-		
-		this._socket.emit("sync_all_item_locations", mapData);
+		this._socket.emit("sync_all_item_locations", Data.getAllItemLocations(null, null, true));
 	}
 };

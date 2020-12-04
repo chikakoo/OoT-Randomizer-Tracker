@@ -386,13 +386,8 @@ Data = {
      * @param toRegion - the region you selected
      * @param itemLocationName - the item location you're setting the info on
      * @param clear - whether we're only clearing the data
-     * @param isFromSocket - whether this is being called from the socket client - this prevents it from being called forever
      */
-	setOWLocationFound: function(fromMapName, from, toMapName, toLocationName, clear, isFromSocket) {
-        if (!isFromSocket) {
-            SocketClient.owLocationUpdated(fromMapName, from, toMapName, toLocationName, clear);
-        }
-
+	setOWLocationFound: function(fromMapName, from, toMapName, toLocationName, clear) {
         let fromLocationName = from.Name;
         let fromOwExit = OwExits[fromMapName][fromLocationName];
         let toOwExit = OwExits[toMapName];

@@ -37,13 +37,8 @@ io.on('connection', function(client) {
     	console.log(`Randomized spawn locations were updated!`);
     });
 
-    client.on("ow_location_updated", function(fromMapName, from, toMapName, toLocationName, clear) {
-    	client.broadcast.emit("ow_location_updated", fromMapName, from, toMapName, toLocationName, clear);
-    	console.log(`Overworld location from ${fromMapName} to ${toMapName} was updated!`);
-    });
-    
-    client.on("sync_all_item_locations", function(mapData) {
-    	client.broadcast.emit("sync_all_item_locations", mapData);
+    client.on("sync_all_item_locations", function(itemLocations) {
+    	client.broadcast.emit("sync_all_item_locations", itemLocations);
     	console.log("Syncing all item locations...");
     });
 });
