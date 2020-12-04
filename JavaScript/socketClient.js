@@ -164,6 +164,10 @@ SocketClient = {
 
 			let hasOwData = itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName;
 			Data.setOWLocationFound(map, itemLocation, itemLocation.OwShuffleMap, itemLocation.OwShuffleExitName, !hasOwData);
+
+			if (_currentLocationName === map) {
+				refreshEntranceDropdowns(itemLocation);
+			}
 		}
 		else {
 			matchingLocation = MapLocations[map].Regions[region].ItemLocations[name]

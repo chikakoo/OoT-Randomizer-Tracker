@@ -388,51 +388,16 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon, i
 		
 		else if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
 			let owEntranceGroupDiv = dce("div");
-			let locDropdown = dce("select");
-			let defaultMap = itemLocation.OwShuffleMap;
-			let defaultExit = itemLocation.OwShuffleExitName;
-
-			let options = Data.getOWMaps();
-			options.unshift("<no selection>");
-			_fillStringDropdown(locDropdown, options, defaultMap);
 			
+			let locDropdown = dce("select");
 			let entranceDropdown = dce("select");
-			if (defaultMap && defaultExit) {
-				let entrances = Data.getOWEntrances(defaultMap);
-				_fillStringDropdown(entranceDropdown, entrances, defaultExit);
-			}
+			locDropdown.id = `${itemLocation.Name}-location-dropdown`;
+			entranceDropdown.id = `${itemLocation.Name}-entrance-dropdown`;
 			
 			if (itemLocation.ReadOnly) {
 				locDropdown.disabled = true;
 				entranceDropdown.disabled = true;
 			}
-			
-			locDropdown.onchange = function() {
-				entranceDropdown.innerHTML = "";
-				
-				let mapName = locDropdown.options[locDropdown.selectedIndex].value;
-				let entrances = null;
-				if (mapName !== "<no selection>") {
-					entrances = Data.getOWEntrances(mapName);
-					_fillStringDropdown(entranceDropdown, entrances);
-				}
-				
-				let entrance = entrances && entrances[0];
-
-				Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance, !entrances);
-				refreshAll();
-				
-				SocketClient.itemLocationUpdated(itemLocation)
-			};
-			
-			entranceDropdown.onchange = function() {
-				let mapName = locDropdown.options[locDropdown.selectedIndex].value;
-				let entrance = entranceDropdown.options[entranceDropdown.selectedIndex].value;
-				Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance);
-				refreshAll();
-
-				SocketClient.itemLocationUpdated(itemLocation)
-			};
 			
 			itemLocationTextDiv.oncontextmenu = function() {
 				let mapName = locDropdown.options[locDropdown.selectedIndex].value;
@@ -445,6 +410,8 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon, i
 			owEntranceGroupDiv.appendChild(locDropdown);
 			owEntranceGroupDiv.appendChild(entranceDropdown);
 			itemLocationDiv.appendChild(owEntranceGroupDiv);
+
+			refreshEntranceDropdowns(itemLocation);
 		}
 		
 		let inlineNotesDiv = dce("div", "item-location-inline-notes");
@@ -460,6 +427,55 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon, i
 		
 		_refreshNotes(itemLocation, inlineNotesDiv, moreInfoDiv);
 	});
+};
+
+/**
+ * Refreshes the entrance dropdowns so that they contain the correct text/choices/click handlers
+ */
+let refreshEntranceDropdowns = function(itemLocation) {
+	if (itemLocation.ItemGroup !== ItemGroups.OW_ENTRANCE) { return; }
+
+	let locDropdown = document.getElementById(`${itemLocation.Name}-location-dropdown`);
+	let entranceDropdown = document.getElementById(`${itemLocation.Name}-entrance-dropdown`);
+
+	let defaultMap = itemLocation.OwShuffleMap;
+	let defaultExit = itemLocation.OwShuffleExitName;
+
+	let options = Data.getOWMaps();
+	options.unshift("<no selection>");
+	_fillStringDropdown(locDropdown, options, defaultMap);
+
+	if (defaultMap && defaultExit) {
+		let entrances = Data.getOWEntrances(defaultMap);
+		_fillStringDropdown(entranceDropdown, entrances, defaultExit);
+	}
+
+	locDropdown.onchange = function() {
+		entranceDropdown.innerHTML = "";
+		
+		let mapName = locDropdown.options[locDropdown.selectedIndex].value;
+		let entrances = null;
+		if (mapName !== "<no selection>") {
+			entrances = Data.getOWEntrances(mapName);
+			_fillStringDropdown(entranceDropdown, entrances);
+		}
+		
+		let entrance = entrances && entrances[0];
+
+		Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance, !entrances);
+		refreshAll();
+		
+		SocketClient.itemLocationUpdated(itemLocation)
+	};
+	
+	entranceDropdown.onchange = function() {
+		let mapName = locDropdown.options[locDropdown.selectedIndex].value;
+		let entrance = entranceDropdown.options[entranceDropdown.selectedIndex].value;
+		Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance);
+		refreshAll();
+
+		SocketClient.itemLocationUpdated(itemLocation)
+	};
 };
 
 /**
