@@ -44,7 +44,7 @@ Walk2 = {
 		if (!this.currentItemLocation || !Settings.RandomizerSettings.shuffleOverworldEntrances) { return; }
 		
 		let rootMap = this.currentLocation;
-		let rootRegion = this.currentItemLocation.Region;
+		let rootRegion = this.currentItemLocation.ExitRegion ? this.currentItemLocation.ExitRegion : this.currentItemLocation.Region;
 		this._relevantMaps = [rootMap];
 		
 		this._checkRegions(rootMap, rootRegion);

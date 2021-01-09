@@ -259,7 +259,6 @@ let OwExits = {
             Region: "firstHalf",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 148, y: 74 },
-            OneWayEntrance: true,
             ReadOnly: true,
             OwShuffleMap: "Lost Woods",
             OwShuffleRegion: "firstHalf",
@@ -1438,6 +1437,11 @@ let MapLocations = {
                     },
                     "To Lost Woods Bridge": {
                         OwExit: OwExits["Lost Woods"]["To Lost Woods Bridge"]
+                    },
+                    "Bridge To Lost Woods": {
+                        CustomRequirement: function() {
+                            return false; // This one is the one-way
+                        }
                     }
                 },
     
@@ -1445,7 +1449,8 @@ let MapLocations = {
                     secondHalf: {},
                     "To Kokiri Forest": {},
                     "Goron City": {},
-                    "Zora's River": {}
+                    "Zora's River": {},
+                    "Bridge to Lost Woods": OwExits["Lost Woods Bridge"]["Bridge to Lost Woods"]
                 },
     
                 ItemLocations: {
@@ -5140,7 +5145,8 @@ let MapLocations = {
                     "Hyrule Field": {},
                     "Zora's Domain": {},
                     "Owl": {},
-                    "Serenade Teleport Pad": {}
+                    "Serenade Teleport Pad": {},
+                    "From Gerudo Valley": OwExits["Gerudo Valley"]["To Lake Hylia"]
                 },
 
                 ItemLocations: {
@@ -5561,6 +5567,20 @@ let MapLocations = {
             chasm: {
                 ExcludeFromSpawnList: true,
                 Exits: {
+                    main: {
+                        Name: "main",
+                        CustomRequirement: function(age) {
+                            return false;
+                        }
+                    },
+
+                    accrossBridge: {
+                        Name: "accrossBridge",
+                        CustomRequirement: function(age) {
+                            return false;
+                        }
+                    },
+
                     "To Lake Hylia": {
                         OwExit: OwExits["Gerudo Valley"]["To Lake Hylia"]
                     }
