@@ -124,6 +124,11 @@ Walk2 = {
 			if (!entrance) {
 				let oneWayEntrance = regionInfo.Entrances[entranceName];
 				if (oneWayEntrance) {
+					// Don't check default owls if they are randomized!
+					if (oneWayEntrance.IsDefaultOwl && Settings.RandomizerSettings.randomizeOwlDrops) {
+						return;
+					}
+
 					if (oneWayEntrance.IsDefaultOwl) {
 						oneWayEntrance = oneWayEntrance.OwExit;
 					}
@@ -192,6 +197,8 @@ Walk2 = {
 		
 		let itemLocations = Data.getAllItemLocations(_currentLocationName); //TODO; make a new function to only get OwExits in dataRetriever (see the other TODO)
 		itemLocations.forEach(function(itemLocation) {
+			if (!itemLocation.OwShuffleExitName) { return; }
+
 			let childWalkValue = itemLocation.childWalkValue;
 			if (itemLocation.childWalkValue !== undefined) {
 				childValues[childWalkValue] = childValues[childWalkValue] || [];
