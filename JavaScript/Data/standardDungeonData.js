@@ -1447,14 +1447,14 @@ let StandardDungeons = {
 							return { min: minValue, max: 2 };
 						}
 					},
-					"Locked Door After Rising Block": {
-						Name: "Locked Door After Rising Block",
+					"Locked Door in Big Lava Room": {
+						Name: "Locked Door in Big Lava Room",
 						ItemGroup: ItemGroups.LOCKED_DOOR,
 						Regions: ["bigLavaRoom"],
-						MapInfo: { x: 247, y: 92, floor: "F2" },
+						MapInfo: { x: 257, y: 202, floor: "F1" },
 						Age: Age.ADULT,
 						Order: 12,
-						LongDescription: "This is the door you reach after riding the block up the fire pillar.",
+						LongDescription: "This is the door on the east side of the big lava room.",
 						KeyRequirement: function(age) {
 							if (!Settings.RandomizerSettings.smallKeySanity) {
 								return { min: 2, max: 2 };
@@ -1467,14 +1467,14 @@ let StandardDungeons = {
 							return { min: minValue, max: 3 };
 						}
 					},
-					"Locked Door After Crystal Switch": {
-						Name: "Locked Door After Crystal Switch",
+					"Locked Door After Rising Block": {
+						Name: "Locked Door After Rising Block",
 						ItemGroup: ItemGroups.LOCKED_DOOR,
-						Regions: ["firstTorchSlugRoom"],
-						MapInfo: { x: 152, y: 47, floor: "F2" },
+						Regions: ["bigLavaRoom"],
+						MapInfo: { x: 247, y: 92, floor: "F2" },
 						Age: Age.ADULT,
 						Order: 13,
-						LongDescription: "This is the door you reach after doing the crystal switch puzzle.",
+						LongDescription: "This is the door you reach after riding the block up the fire pillar.",
 						KeyRequirement: function(age) {
 							if (!Settings.RandomizerSettings.smallKeySanity) {
 								return { min: 3, max: 3 };
@@ -1494,13 +1494,9 @@ let StandardDungeons = {
 						MapInfo: { x: 289, y: 135, floor: "F3" },
 						Age: Age.ADULT,
 						Order: 17,
-						LongDescription: "This is the door you reach after doing the crystal switch puzzle.",
+						LongDescription: "This is the locked door in the boulder maze.",
 						KeyRequirement: function(age) {
 							let minValue = 4;
-							if (Settings.GlitchesToAllow.fireJailClip) {
-								minValue = 3;
-							}
-
 							if (!Settings.RandomizerSettings.smallKeySanity) {
 								return { min: minValue, max: 4 };
 							}
@@ -1518,7 +1514,7 @@ let StandardDungeons = {
 						MapInfo: { x: 283, y: 170, floor: "F3" },
 						Age: Age.ADULT,
 						Order: 19,
-						LongDescription: "This is the door you reach after doing the crystal switch puzzle.",
+						LongDescription: "This is the locked door in the crater room with narrow ledges.",
 						KeyRequirement: function(age) {
 							let minValue = 5;
 							if (Settings.GlitchesToAllow.fireJailClip) {
@@ -1653,10 +1649,10 @@ let StandardDungeons = {
 								(age === Age.ADULT && Settings.GlitchesToAllow.fireSoTBlockJump);
 						}
 					},
-					firstTorchSlugRoom: {
-						Name: "firstTorchSlugRoom",
+					risingBlockRoom: {
+						Name: "risingBlockRoom",
 						Map: "Fire Temple",
-						LockedDoor: "Locked Door After Rising Block"
+						LockedDoor: "Locked Door in Big Lava Room",
 					}
 				},
 
@@ -1716,13 +1712,23 @@ let StandardDungeons = {
 					}
 				}
 			},
+			risingBlockRoom: {
+				Exits: {
+					firstTorchSlugRoom: {
+						Name: "firstTorchSlugRoom",
+						Map: "Fire Temple",
+						LockedDoor: "Locked Door After Rising Block"
+					}
+				},
+				Entrances: {},
+				ItemLocations: {}
+			},
 			firstTorchSlugRoom: {
 				Exits: {
 					boulderMazeLower: {
 						Name: "boulderMazeLower",
 						Age: Age.ADULT,
 						Map: "Fire Temple",
-						LockedDoor: "Locked Door After Crystal Switch",
 						CustomRequirement: function(age) {
 							let canGetByBlock = (Settings.GlitchesToAllow.groundJump && Data.canGroundJumpWithBomb(age)) || Equipment.STRENGTH.playerHas;
 							let canHitSwitchFromAbove = Data.hasExplosives() || Items.HOOKSHOT.playerHas || Data.canShootEyeSwitch(age);
@@ -1848,6 +1854,11 @@ let StandardDungeons = {
 			},
 			boulderMazeUpper: {
 				Exits: {
+					// Used for the torch slug clip trick
+					boulderMazeLower: {
+						Name: "boulderMazeLower"
+					},
+
 					goronInPit: {
 						Name: "goronInPit",
 						NeedsExplosives: true
