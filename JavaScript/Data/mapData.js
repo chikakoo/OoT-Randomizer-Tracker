@@ -2994,9 +2994,9 @@ let MapLocations = {
                 },
 
                 Entrances: {
+                    beyondGate: {},
                     "Hyrule Field": {},
                     "Graveyard": {},
-                    "Death Mountain Trail": {},
                     "Death Mountain Trial Owl": {
                         IsDefaultOwl: true,
                         OwExit: OwExits["Death Mountain Trail"]["Owl"]
