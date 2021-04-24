@@ -4517,7 +4517,15 @@ let MapLocations = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 212, y: 178 },
                         Age: Age.EITHER,
-                        LongDescription: "These are the rocks blocking the Lost Woods entrance. Either blow them up, or use a deku stick lit on fire to activate the nearby bomb flowers."
+                        LongDescription: "These are the rocks blocking the Lost Woods entrance. Either blow them up, or use a deku stick lit on fire to activate the nearby bomb flowers.",
+                        IsPostWalkCheck: true,
+                        CustomRequirement: function(age) {
+                            if (Data.hasExplosives()) { return true; }
+
+                            let canGetToMain = Data.canAccessMap(age, "Goron City", "main");
+                            let canLightBombFlower = age === Age.CHILD && Items.DEKU_STICK.playerHas && Data.canAccessMap(age, "Goron City", "darunia");
+                            return canGetToMain && (canLightBombFlower || Equipment.STRENGTH.currentUpgrade > 1);
+                        }
                     }
                 }
             },
