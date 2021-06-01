@@ -282,6 +282,24 @@ Data = {
     },
 
     /**
+     * Gets whether you can get to the given region from the given region using the same map
+     */
+    canGetToRegionFromSameMap: function(age, mapName, fromRegion, toRegion) {
+        let mapRegions = MapLocations[mapName].Regions;
+        if (mapRegions[toRegion].Entrances[fromRegion] === undefined) {
+            return false;
+        }
+
+        let matchingExit = mapRegions[fromRegion].Exits[toRegion];
+        if (!matchingExit) {
+            console.log(`ERROR: Matching exit not found linking ${fromRegion} to ${toRegion}!`);
+            return;
+        }
+
+        return Data.calculateObtainability(matchingExit, age);
+    },
+
+    /**
      * Gets the map, region, and exit name of the entrance to the given dungeon
      * Returns null if an invalid dungeon is entered
      */

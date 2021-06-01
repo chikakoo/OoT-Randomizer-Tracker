@@ -172,8 +172,10 @@ Walk2 = {
 				}
             }
 
-            // Otherwise, we must recurse to all the possible OW entrances on this map
-            else if (Data.getLocationAccessibility(MapLocations[map].Regions[entranceName], age)) {
+            // Otherwise, we must recurse to all the possible regions on this map
+			// We will check that we can actually get here from that region first
+            else if (Data.canGetToRegionFromSameMap(age, map, entranceName, region) &&
+				Data.getLocationAccessibility(MapLocations[map].Regions[entranceName], age)) {
                 _this._getAllOwEntrances(map, entranceName, age, owEntrances, currentLoop);
             }
         });
