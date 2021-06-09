@@ -67,39 +67,36 @@ RegionWalker = {
         if (Data.randomizedSpawnLocations.useRandomizedSpawns) {
             if (Data.randomizedSpawnLocations[age] && Data.randomizedSpawnLocations[age].entranceName) {
                 let spawnData = Data.randomizedSpawnLocations[age];
-                let map = spawnData.map;
-                let region = spawnData.region;
-                let entranceName = spawnData.entranceName;
-
-                if (map && region && entranceName && entranceName !== "none") {
-                    let itemLocation = MapLocations[map].Regions[region].ItemLocations[entranceName];
-                    this._markCanObtainItemInfo(itemLocation, age, ItemObtainability.YES, true);
-
-                    // If you can enter the DoT, then the other age can get here to - it's basically a spawn
-                    if (itemLocation.EntranceGroup && itemLocation.EntranceGroup.isTempleOfTime && Data.canEnterDoorOfTime(age))
-                    {
-                        let otherAge = age === Age.CHILD ? Age.ADULT : Age.CHILD;
-                        this._markCanObtainItemInfo(itemLocation, otherAge, ItemObtainability.YES, true);
-                    }
-                }
+                this._markItemInfoForSpawnOrWarpData(spawnData.map, spawnData.region, spawnData.entranceName);
             }
 
             let warpSongs = [Songs.MINUET_OF_FOREST, Songs.BOLERO_OF_FIRE, Songs.SERENADE_OF_WATER, 
                 Songs.NOCTURNE_OF_SHADOW, Songs.REQUIEM_OF_SPIRIT, Songs.PRELUDE_OF_LIGHT];
             let _this = this;
             warpSongs.forEach(function(song) {
-                if (song.warpMap && song.warpRegion && song.entranceName && song.entranceName !== "none") {
-                    let itemLocation = MapLocations[song.warpMap].Regions[song.warpRegion].ItemLocations[song.entranceName];
-                    _this._markCanObtainItemInfo(itemLocation, age, ItemObtainability.YES, true);
-
-                    // If you can enter the DoT, then the other age can get here to - it's basically a spawn
-                    if (itemLocation.EntranceGroup && itemLocation.EntranceGroup.isTempleOfTime && Data.canEnterDoorOfTime(age))
-                    {
-                        let otherAge = age === Age.CHILD ? Age.ADULT : Age.CHILD;
-                        _this._markCanObtainItemInfo(itemLocation, otherAge, ItemObtainability.YES, true);
-                    }
-                }
+                _this._markItemInfoForSpawnOrWarpData(song.warpMap, song.warpRegion, song.entranceName);
             });
+        }
+    },
+
+    /**
+     * Marks the can obtain item information for the given spawn or warp data
+     * Includes the handling of temple of time entrances
+     * @param {String} map - the map
+     * @param {String} region - the region
+     * @param {String} entranceName - the entrance name
+     */
+    _markItemInfoForSpawnOrWarpData: function(map, region, entranceName) {
+        if (map && region && entranceName && entranceName !== "none") {
+            let itemLocation = MapLocations[map].Regions[region].ItemLocations[entranceName];
+            this._markCanObtainItemInfo(itemLocation, age, ItemObtainability.YES, true);
+
+            // If you can enter the DoT, then the other age can get here to - it's basically a spawn
+            if (itemLocation.EntranceGroup && itemLocation.EntranceGroup.isTempleOfTime && Data.canEnterDoorOfTime(age))
+            {
+                let otherAge = age === Age.CHILD ? Age.ADULT : Age.CHILD;
+                this._markCanObtainItemInfo(itemLocation, otherAge, ItemObtainability.YES, true);
+            }
         }
     },
 
