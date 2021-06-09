@@ -298,6 +298,8 @@ SocketClient = {
 	 * Syncs all the item location data
 	 */
 	_syncAllItemLocations: function() {
-		this._socket.emit("sync_all_item_locations", Data.getAllItemLocations(null, null, true));
+		if (this._socket) {
+			this._socket.emit("sync_all_item_locations", Data.getAllItemLocations(null, null, true));
+		}
 	}
 };

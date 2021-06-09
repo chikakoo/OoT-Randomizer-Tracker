@@ -96,6 +96,10 @@ NotesPage = {
 		let canChildDo = Data.getItemObtainability(itemLocation, Age.CHILD);
 		let canAdultDo = Data.getItemObtainability(itemLocation, Age.ADULT);
 
+		if (this._getHideIncompleteTasks() && !itemLocation.playerHas) {
+			return true;
+		}
+
 		let canGetItem = itemLocation.playerHas || canChildDo || canAdultDo;
 		if (!canGetItem && this._getHideCannotDo()) {
 			return true;
@@ -290,5 +294,13 @@ NotesPage = {
 	 */
 	_getHideAdultOnly: function() {
 		return document.getElementsByName("notesHideAdultOnly")[0].checked;
+	},
+
+	/**
+	 * Gets whether we're hiding the adult only tasks
+	 * @returns
+	 */
+	_getHideIncompleteTasks: function() {
+		return document.getElementsByName("notesHideIncompleteTasks")[0].checked;
 	}
 };

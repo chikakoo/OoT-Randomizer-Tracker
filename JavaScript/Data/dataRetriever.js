@@ -96,6 +96,45 @@ Data = {
 	},
 
     /**
+     * Appends the given message to all notes, delimited by a semicolon and space if
+     * there is already notes there
+     * @param {String} message - the message to append
+     * @param {Array<*>} excludedItemGroups - the item groups to exclude
+     */
+    appendToAllNotes: function(message, excludedItemGroups) {
+        excludedItemGroups = excludedItemGroups || [];
+
+        this.getAllItemLocations(null, null, false).forEach(function(itemLocation) {
+            if (excludedItemGroups.includes(itemLocation.ItemGroup)) {
+                return;
+            }
+
+            let notes = itemLocation.notes;
+            let hasNotes = notes !== undefined && notes.length > 0;
+            itemLocation.notes = hasNotes ? `${notes}; message` : message;
+        });
+
+        SocketClient._syncAllItemLocations();
+        refreshAll();
+    },
+
+    /**
+     * Used for the co-op challenge where one player uses the base game items, and the
+     * other uses the randomizer
+     * @param {String} message - the message to append
+     */
+    appendToAllNotesForCoOpChallenge: function(message) {
+        this.appendToAllNotes(message, [
+            ItemGroups.SHOP, 
+            ItemGroups.NON_ITEM, 
+            ItemGroups.ENTRANCE, 
+            ItemGroups.OW_ENTRANCE, 
+            ItemGroups.COW,
+            ItemGroups.SKULLTULA
+        ]);
+    },
+
+    /**
      * Gets all item locations under the given map name/region
      * If no region name is given, gets them for the entire map
      * If no map name is given, gets all of them
@@ -546,14 +585,9 @@ Data = {
     itemLocationObtained: function(mapName, regionName, itemLocationName) {
         let map = MapLocations[mapName];
         if (!map) { 
-            console.log(map + " does not exist"); //TODO: remove this!
             return false;
         }
 
-        if (!map.Regions[regionName]) {
-            let taco = 4;
-            taco++;
-        }
 		return map.Regions[regionName].ItemLocations[itemLocationName].playerHas;
 	},
 

@@ -68,6 +68,10 @@ let refreshAll = function() {
 	Walk2.calculate();
 	MapUI.refreshIcons();
 	SpawnsPage.updateSongItemTooltips();
+
+	if (_currentLocationName === "Notes") {
+		NotesPage.display();
+	}
 };
 
 /**
