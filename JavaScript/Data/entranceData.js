@@ -13,7 +13,6 @@ EntranceData = {
 	 */
 	handleInteriorPostClick(itemLocation, isSelected, thisEntranceName, otherSideEntranceName, forwardTravelFunction, backwardTravelFunction) {
 		let thisExitList = MapLocations[itemLocation.Map].Regions[itemLocation.Region].Exits;
-		let thisEntranceList = MapLocations[itemLocation.Map].Regions[itemLocation.Region].Entrances;
 		let thisName = `Interior-${thisEntranceName}`;
 		let otherName = `Interior-${otherSideEntranceName}`;
 
@@ -40,13 +39,6 @@ EntranceData = {
 					CustomRequirement: forwardTravelFunction
 				}};
 
-				//TODO: we don't care about entrances anymore, remove these
-				thisEntranceList[thisName] = { OwExit: {
-					OwShuffleMap: otherSideLocation.Map,
-					OwShuffleRegion: otherSideLocation.Region,
-					OwShuffleExitName: otherName
-				} };
-
 				otherSideLocation.OwShuffleMap = itemLocation.Map
 				otherSideLocation.OwShuffleRegion = itemLocation.Region;
 
@@ -63,13 +55,6 @@ EntranceData = {
 					CustomRequirement: backwardTravelFunction
 				}};
 
-				let otherEntranceList = MapLocations[otherSideLocation.Map].Regions[otherSideLocation.Region].Entrances;
-				otherEntranceList[otherName] = { OwExit: {
-					OwShuffleMap: itemLocation.Map,
-					OwShuffleRegion: itemLocation.Region,
-					OwShuffleExitName: thisName
-				}};
-
 				itemLocation.hidden = true;
 				otherSideLocation.hidden = true;
 				OwExits[itemLocation.Map][otherName] = thisExitList[thisName].OwExit;
@@ -81,7 +66,6 @@ EntranceData = {
 			delete itemLocation.OwShuffleRegion;
 			delete itemLocation.CustomRequirement;
 			delete thisExitList[thisName];
-			delete thisEntranceList[thisName];
 			delete OwExits[itemLocation.Map][otherName];
 			delete itemLocation.hidden;
 
@@ -90,9 +74,7 @@ EntranceData = {
 				delete otherSideLocation.OwShuffleRegion;
 
 				let otherExitList = MapLocations[otherSideLocation.Map].Regions[otherSideLocation.Region].Exits;
-				let otherEntranceList = MapLocations[otherSideLocation.Map].Regions[otherSideLocation.Region].Entrances;
 				delete otherExitList[otherName];
-				delete otherEntranceList[otherName];
 				delete OwExits[otherSideLocation.Map][thisName];
 				delete otherSideLocation.hidden;
 			}
