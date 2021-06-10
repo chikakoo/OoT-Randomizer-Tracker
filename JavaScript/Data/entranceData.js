@@ -18,6 +18,10 @@ EntranceData = {
 		let otherName = `Interior-${otherSideEntranceName}`;
 
 		let otherSideLocation = Data.interiorTravelData[otherSideEntranceName];
+		if (!Settings.RandomizerSettings.shuffleInteriorEntrances && otherSideEntranceName === "windmill") {
+			otherSideLocation = MapLocations["Kakariko Village"].Regions["main"].ItemLocations["Windmill"];
+		}
+
 		if (isSelected) {
 			Data.interiorTravelData[thisEntranceName] = itemLocation;
 
@@ -30,12 +34,13 @@ EntranceData = {
 					Region: itemLocation.Region,
 					OwShuffleMap: otherSideLocation.Map, 
 					OwShuffleRegion: otherSideLocation.Region,
-					OwShuffleExitName: thisName,
+					OwShuffleExitName: otherName,
 					IsInteriorExit: true,
 					MapInfo: itemLocation.MapInfo,
 					CustomRequirement: forwardTravelFunction
 				}};
 
+				//TODO: we don't care about entrances anymore, remove these
 				thisEntranceList[thisName] = { OwExit: {
 					OwShuffleMap: otherSideLocation.Map,
 					OwShuffleRegion: otherSideLocation.Region,
@@ -52,7 +57,7 @@ EntranceData = {
 					Region: otherSideLocation.Region,
 					OwShuffleMap: itemLocation.Map, 
 					OwShuffleRegion: itemLocation.Region,
-					OwShuffleExitName: otherName,
+					OwShuffleExitName: thisName,
 					IsInteriorExit: true,
 					MapInfo: otherSideLocation.MapInfo,
 					CustomRequirement: backwardTravelFunction

@@ -1,10 +1,8 @@
-//TODO: rename Walk2 to Walk!
-
 /**
  * Contains the functions involved with gathering data for walking to a given location, which is a feature
  * available in OW shuffle to help the user find out how to get somewhere
  */
-Walk2 = {
+Walk = {
 	/**
 	 * The current map name of the location being walked to
 	 * This is the empty string when unset
@@ -52,7 +50,7 @@ Walk2 = {
 		LocationSidebar.updateForWalk(this._relevantMaps);
 		this.updateTravelDiv();
     },
-    
+
     /**
 	 * Check all the item locations leading out from the root
 	 */
@@ -84,19 +82,16 @@ Walk2 = {
             Object.keys(entrances).forEach(function(entranceName) {
 				let entrance = entrances[entranceName];
 				let entranceData = {
-					map: entrance.OneWayEntrance ? entrance.ExitMap : entrance.OwShuffleMap,
-					region: entrance.OneWayEntrance ? entrance.ExitRegion : entrance.OwShuffleRegion,
-					exitName: entrance.OneWayEntrance ? entrance.Name : entrance.OwShuffleExitName
+					map: entrance.IsInteriorExit ? entrance.Map : entrance.ExitMap,
+					region: entrance.IsInteriorExit ? entrance.Region : entrance.ExitRegion
 				};
 
-				if (entranceData.map && entranceData.region && entranceData.exitName) {
+				if (entranceData.map && entranceData.region) {
 					entranceArray.push({ map: entranceData.map, fromRegion: entranceData.region });
-
-					let otherEntrance = OwExits[entranceData.map][entranceData.exitName];
 					if (age === Age.CHILD) {
-						otherEntrance.childWalkValue = currentLoop;
+						entrance.childWalkValue = currentLoop;
 					} else if (age === Age.ADULT) {
-						otherEntrance.adultWalkValue = currentLoop;
+						entrance.adultWalkValue = currentLoop;
 					}
 				}
             });
@@ -114,73 +109,28 @@ Walk2 = {
 			return owEntrances;
 		}
         this._visitedInfo[age][key] = currentLoop;
+		let _this = this;
 
-        let _this = this;
-        let regionInfo = MapLocations[map].Regions[region];
-        Object.keys(regionInfo.Entrances).forEach(function(entranceName) {
-			let entrance = regionInfo.Exits[entranceName];
+		let walkMap = RegionWalker.walkMap;
+		let walkMapKey = RegionWalker._createWalkMapKey(map, region);
+		if (walkMap[age] && walkMap[age][walkMapKey] && walkMap[age][walkMapKey].from) {
+			walkMap[age][walkMapKey].from.forEach(function(walkInfo) {
+				let parts = walkInfo.split("|");
+				let foundMap = parts[0].trim();
+				let foundRegion = parts[1].trim();
+				let foundExit = parts[2].trim();
 
-			// If it's a one way entrance, deal with it accordingly
-			if (!entrance) {
-				let oneWayEntrance = regionInfo.Entrances[entranceName];
-				if (oneWayEntrance) {
-					// Don't check default owls if they are randomized!
-					if (oneWayEntrance.IsDefaultOwl && Settings.RandomizerSettings.randomizeOwlDrops) {
-						return;
-					}
-
-					if (oneWayEntrance.IsDefaultOwl) {
-						oneWayEntrance = oneWayEntrance.OwExit;
-					}
-
-					let canGetToEntrance = Data.getItemObtainability(oneWayEntrance, age);
-					let isAccessibleDefaultOwl = canGetToEntrance && oneWayEntrance.IsDefaultOwl && !Settings.RandomizerSettings.randomizeOwlDrops;
-					let isAccessibleOneWayEntrance = canGetToEntrance && oneWayEntrance.OneWayEntrance;
-
-					if (isAccessibleDefaultOwl || isAccessibleOneWayEntrance) {
-						if (!_this._relevantMaps.includes(oneWayEntrance.ExitMap)) { _this._relevantMaps.push(oneWayEntrance.ExitMap); }
-						owEntrances[entranceName] = oneWayEntrance;
-					}
+				// Recurse to get the rest of the OW exits on the same map if we've found a region link
+				// Otherwise, just add the associated OwExit to the object
+				if (foundExit === "sameMap") {
+					_this._getAllOwEntrances(map, foundRegion, age, owEntrances, currentLoop);
+				} else {
+					owEntrances[foundExit] = OwExits[foundMap][foundExit];
+					if (!_this._relevantMaps.includes(foundMap)) { _this._relevantMaps.push(foundMap); }
 				}
-			}
-
-            // If it's already an OW Exit, add it to the list if you can actually enter it from the other side
-            else if (entrance.OwExit) {
-				let owExit = entrance.OwExit;
-				let hasComputedEntrance = owExit.ComputedEntrance;
-				let hasEntranceData = owExit.OwShuffleMap && owExit.OwShuffleExitName;
-
-				if (!owExit.OneWayEntrance &&  
-					(
-						(!hasComputedEntrance && hasEntranceData) ||
-						(hasComputedEntrance && owExit.ComputedEntrance())
-					)
-				) {
-					if (owExit.ComputedEntrance) {
-						let computedEntrance = owExit.ComputedEntrance();
-						owExit.OwShuffleMap = computedEntrance.map;
-						owExit.OwShuffleRegion = computedEntrance.region;
-						owExit.OwShuffleExitName = computedEntrance.exit;
-					}
-						
-					let otherSideEntrance = OwExits[owExit.OwShuffleMap][owExit.OwShuffleExitName];
-
-					if (Data.getItemObtainability(otherSideEntrance, age)) {
-						if (!_this._relevantMaps.includes(owExit.OwShuffleMap)) { _this._relevantMaps.push(owExit.OwShuffleMap); }
-						owEntrances[entranceName] = owExit;
-					}
-				}
-            }
-
-            // Otherwise, we must recurse to all the possible regions on this map
-			// We will check that we can actually get here from that region first
-            else if (Data.canGetToRegionFromSameMap(age, map, entranceName, region) &&
-				Data.getLocationAccessibility(MapLocations[map].Regions[entranceName], age)) {
-                _this._getAllOwEntrances(map, entranceName, age, owEntrances, currentLoop);
-            }
-        });
-
-        return owEntrances;
+			});
+		}
+		return owEntrances;
 	},
 	
 	/** 

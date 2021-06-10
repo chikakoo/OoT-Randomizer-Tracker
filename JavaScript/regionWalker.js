@@ -14,14 +14,19 @@ RegionWalker = {
     _seeds: {},
 
     /**
-     * An object of visited areas so that we can terminate without looping forever
-     * The object is structured as such (for very quick checks):
-     *  {
-     *      "map | region": true,
-     *      ...
-     *  }
+     * An object used to keep track of each region, and where you can get to from that region
+     * This is used in the reverse walk to very easily track how to get to different locations
+     * It's structured in a way that decouple can work with (it doesn't assume that exits are
+     * two-way)
+     * It's structured like the following:
+     * {
+     *   "map | region": [
+     *     to: [ "map | region | exitName", ... ], // Where the relevant exits lead to
+     *     from: [ "map | region | exitName", ... ], // How to get to the relevant exits
+     *   ]
+     * }
      */
-    _visitedAreas: {},
+    walkMap: {},
 
     /**
      * An object containing item locations to check at the end of the walk
@@ -40,7 +45,7 @@ RegionWalker = {
         this._clearData();
         this._setSpawnAndWarpWalkData();
 
-        if (Data.randomizedSpawnLocations[Age.CHILD]) {
+        if (!Data.randomizedSpawnLocations[Age.ADULT] || Data.randomizedSpawnLocations[Age.CHILD]) {
             this._doEntireWalk(Age.CHILD);
             this._doEntireWalk(Age.ADULT);
         } else {
@@ -91,7 +96,7 @@ RegionWalker = {
             let itemLocation = MapLocations[map].Regions[region].ItemLocations[entranceName];
             this._markCanObtainItemInfo(itemLocation, age, ItemObtainability.YES, true);
 
-            // If you can enter the DoT, then the other age can get here to - it's basically a spawn
+            // If you can enter the DoT, then the other age can get here too - it's basically a spawn
             if (itemLocation.EntranceGroup && itemLocation.EntranceGroup.isTempleOfTime && Data.canEnterDoorOfTime(age))
             {
                 let otherAge = age === Age.CHILD ? Age.ADULT : Age.CHILD;
@@ -117,6 +122,7 @@ RegionWalker = {
      */
     _clearData: function() {
         this._seeds = {};
+        this.walkMap = {};
         
         this._postWalkChecks = {};
         this._postWalkChecks[Age.CHILD] = [];
@@ -157,7 +163,7 @@ RegionWalker = {
     _setUpSeeds: function(age) {
         this._setUpInitialSeedObject(age);
         this._setUpSeedsForSpawnLocations(age);
-        this._setUpSeedsSeedsForWarpSongs(age);
+        this._setUpSeedsForWarpSongs(age);
     },
 
     /**
@@ -231,7 +237,7 @@ RegionWalker = {
     /**
      * Seeds up the seeds for where Link can warp to
      */
-    _setUpSeedsSeedsForWarpSongs: function(age) {
+    _setUpSeedsForWarpSongs: function(age) {
         if (!Data.canPlaySongs()) { return; }
 
         if (Songs.MINUET_OF_FOREST.playerHas) {
@@ -317,7 +323,7 @@ RegionWalker = {
      * Does the actual walk to mark maps and item locations
      */
     _doWalk: function(age) {
-        this._visitedAreas[age] = {};
+        this.walkMap[age] = {};
         if (!this._seeds[age]) { return; }
 
         let _this = this;
@@ -342,26 +348,75 @@ RegionWalker = {
     },
 
     /**
+     * Adds to the walk map - if we're adding a "to" entry, will also add the "from" entry
+     * @param {Age} age - the age
+     * @param {String} fromMap - the map we're traveling from
+     * @param {String} fromRegion - the region we're traveling from
+     * @param {String} fromExit - the exit we're traveling from
+     * @param {String} map - the map we're traveling to
+     * @param {String} region - the region we're traveling to
+     * @param {String} exit - the exit we're traveling to
+     * @param {String} toOrFrom - "to" or "from" (TODO: make this an enum instead)
+     */
+    _addToWalkMap: function(age, fromMap, fromRegion, fromExit, map, region, exit, toOrFrom) {
+        if (!toOrFrom) { toOrFrom = "to"; }
+
+        let key = this._createWalkMapKey(fromMap, fromRegion);
+        this.walkMap[age][key] = this.walkMap[age][key] || {};
+
+        if (map && region) {
+            this.walkMap[age][key][toOrFrom] = this.walkMap[age][key][toOrFrom] || [];
+
+            let keyToAdd = this._createWalkMapKey(map, region, exit);
+            if (!this.walkMap[age][key][toOrFrom].includes(keyToAdd)) {
+                this.walkMap[age][key][toOrFrom].push(keyToAdd);
+            }
+
+            if (toOrFrom === "to") {
+                this._addToWalkMap(age, map, region, exit, fromMap, fromRegion, fromExit, "from");
+            }
+        }
+    },
+
+    /**
+     * Creates the walk map key in the form of one of the following:
+     * map | region
+     * map | region | exit
+     * @param {String} map - the map name
+     * @param {String} region - the region name
+     * @param {String} exit - the exit name (optional)
+     * @returns The created key
+     */
+    _createWalkMapKey: function(map, region, exit) {
+        let key = `${map} | ${region}`;
+        return exit ? `${key} | ${exit}` : key;
+    },
+
+    /**
+     * Returns whether the given information exists in the walk map
+     * @param {Age} age - the age
+     * @param {String} map - the map name
+     * @param {String} region - the region name
+     * @param {String} fromOrTo - "to" or "from"
+     * @returns True or false, depending on whether the data exists
+     */
+    _existsInWalkMap: function(age, map, region, fromOrTo) {
+        let key = this._createWalkMapKey(map, region);
+        return !!(this.walkMap[age][key] && this.walkMap[age][key][fromOrTo]);
+    },
+
+    /**
      * Performs a walk in a given region and age
      * @param age - the age
      * @param mapName - the map
      * @param regionName - the region
      */
     _walkInRegion: function(age, mapName, regionName) {
-        let visitedAreaKey = `${mapName} | ${regionName}`;
-
-        if (this._visitedAreas[age][visitedAreaKey]) {
-            return; // We've already walked here! This is our terminating condition.
+        if (this._existsInWalkMap(age, mapName, regionName, "to")) {
+           return; // We've already walked here! This is our terminating condition.
         }
 
-        this._visitedAreas[age][visitedAreaKey] = true;
-
-        //TODO: remove this when done
-        if (!MapLocations[mapName]) {
-            //console.log(mapName + " " + regionName + " does not exist...");
-            return;
-        }
-
+        this._addToWalkMap(age, mapName, regionName);
         this._markCanAccessWalkInfo(MapLocations[mapName], age, true);
         this._markCanAccessWalkInfo(MapLocations[mapName].Regions[regionName], age, true);
         
@@ -409,6 +464,7 @@ RegionWalker = {
                                 }
                             }
 
+                            _this._addToWalkMap(age, mapName, regionName, exitName, map, "main"); //TODO: exit?
                             _this._walkInRegion(age, map, "main");
                             return;
                         }
@@ -418,6 +474,9 @@ RegionWalker = {
                             if (exit.OwExit.OwShuffleMap && exit.OwExit.OwShuffleExitName) {
                                 if (exit.OwExit.IsInteriorExit) {
                                     _this._markCanObtainItemInfo(exit.OwExit, age, itemObtainability);
+                                    _this._addToWalkMap(age, mapName, regionName, exit.OwExit.OwShuffleExitName, exit.OwExit.OwShuffleMap, exit.OwExit.OwShuffleRegion, exitName);
+                                } else {
+                                    _this._addToWalkMap(age, mapName, regionName, exitName, exit.OwExit.OwShuffleMap, exit.OwExit.OwShuffleRegion, exit.OwExit.OwShuffleExitName);
                                 }
 
                                 _this._walkInRegion(age, exit.OwExit.OwShuffleMap, exit.OwExit.OwShuffleRegion);
@@ -426,10 +485,12 @@ RegionWalker = {
                             if (exit.OwExit.IsOwl) {
                                 _this._markCanObtainItemInfo(exit.OwExit, age, itemObtainability);
                             }
+                            _this._addToWalkMap(age, mapName, regionName, exitName, exit.OwExit.Map, exit.OwExit.Region, exit.OwExit.ExitMap);
                             _this._walkInRegion(age, exit.OwExit.Map, exit.OwExit.Region);
                         }
                     }
                 } else if (Data.calculateObtainability(exit, age)) {
+                     _this._addToWalkMap(age, mapName, regionName, "sameMap", mapName, exitName, "sameMap");
                      _this._walkInRegion(age, mapName, exitName);
                 }
             });

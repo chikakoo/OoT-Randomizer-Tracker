@@ -141,7 +141,7 @@ LocationSidebar = {
 
         mainDiv.onclick = function() {
             displayLocation(location.name);
-            Walk2.updateTravelDiv();
+            Walk.updateTravelDiv();
         }
 
         mainDiv.oncontextmenu = function() {
@@ -200,7 +200,7 @@ LocationSidebar = {
 				removeCssClass(locDiv, "location-item-included-in-walk");
 			}
 
-			if (Walk2.currentLocation == mapName) {
+			if (Walk.currentLocation === mapName) {
 				addCssClass(locDiv, "location-item-walking-to");
 			} else {
 				removeCssClass(locDiv, "location-item-walking-to");

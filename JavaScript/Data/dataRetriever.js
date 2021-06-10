@@ -437,6 +437,7 @@ Data = {
     
     /**
      * Sets an OW location as found or clears the data
+     * TODO: a bunch of this data is probably no needed anymore due to the new walkMap
      * @param fromMapName - the map you're setting the info for
      * @param from - the item location of the exit you took
      * @param toMapName - the map you selected
@@ -455,15 +456,18 @@ Data = {
         let fromReferenceKey = `${fromMapName}|${fromLocationName}`;
         let toReferenceKey = `${toMapName}|${toLocationName}`;
 
+        let decoupledEntrances = Settings.RandomizerSettings.decoupleEntrances;
+
         // Clear the old data
-        if (fromOwExit.OwShuffleMap && fromOwExit.OwShuffleExitName) {
+        // Don't clear this part if we're decoupled, since this side isn't necessarily linked!
+        if (!decoupledEntrances && fromOwExit.OwShuffleMap && fromOwExit.OwShuffleExitName) {
             if (!fromOwExit.OneWayEntrance) {
                 let oldOwExit = OwExits[fromOwExit.OwShuffleMap][fromOwExit.OwShuffleExitName];
                 if (oldOwExit.LinkedExit === fromReferenceKey) {
                     delete oldOwExit.OwShuffleMap;
                     delete oldOwExit.OwShuffleRegion;
                     delete oldOwExit.OwShuffleExitName;
-                    delete OwExits.LinkedExit;
+                    delete oldOwExit.LinkedExit;
                 }
             }
         }
@@ -489,7 +493,8 @@ Data = {
         fromOwExit.OwShuffleExitName = toLocationName;
 
         // Set the to information, but only if this info doesn't already exist and we're not a one-way entrance
-        if (!toOwExit.LinkedExit || toOwExit.LinkedExit === fromReferenceKey) {
+        // No need to set the other side info if we're decoupled
+        if (!decoupledEntrances && (!toOwExit.LinkedExit || toOwExit.LinkedExit === fromReferenceKey)) {
             if (!fromOwExit.OneWayEntrance) {
                 fromOwExit.LinkedExit = toReferenceKey; // Only set this if we're linking the two
     

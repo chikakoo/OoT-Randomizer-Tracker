@@ -139,7 +139,7 @@ let updateItemDisplay = function() {
 		}
 		
 		// Update the walking style
-		if (Walk2.currentLocation === _currentLocationName && Walk2.currentItemLocationName === itemLocation.Name) {
+		if (Walk.currentLocation === _currentLocationName && Walk.currentItemLocationName === itemLocation.Name) {
 			addCssClass(textDiv, "item-location-walking-to");
 		} else {
 			removeCssClass(textDiv, "item-location-walking-to");
@@ -403,7 +403,7 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon, i
 				let mapName = locDropdown.options[locDropdown.selectedIndex].value;
 				if (mapName !== "<no selection>") {
 					displayLocation(mapName);
-					Walk2.updateTravelDiv();	
+					Walk.updateTravelDiv();	
 				}
 			};
 			
@@ -533,17 +533,17 @@ let _createLocationIconsDiv = function(itemLocationDiv, itemLocation, floor, isD
 		let walkIcon = dce("div", "item-location-walk-icon");
 		walkIcon.onclick = function(event) {
 			event.stopPropagation();
-			if (Walk2.currentLocation !== _currentLocationName || Walk2.currentItemLocationName !== locationName) {
-				Walk2.currentLocation = _currentLocationName;
-				Walk2.currentItemLocationName = locationName;
-				Walk2.currentItemLocation = itemLocation;
+			if (Walk.currentLocation !== _currentLocationName || Walk.currentItemLocationName !== locationName) {
+				Walk.currentLocation = _currentLocationName;
+				Walk.currentItemLocationName = locationName;
+				Walk.currentItemLocation = itemLocation;
 			} else {
 				let travelDiv = document.getElementById("travelDiv");
 				if (travelDiv) { travelDiv.innerHTML = ""; }
 
-				Walk2.currentLocation = "";
-				Walk2.currentItemLocationName = "";
-				Walk2.currentItemLocation = null;
+				Walk.currentLocation = "";
+				Walk.currentItemLocationName = "";
+				Walk.currentItemLocation = null;
 			}
 						
 			refreshAll();

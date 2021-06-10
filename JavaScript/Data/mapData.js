@@ -646,7 +646,7 @@ let OwExits = {
             Name: "Kakariko Village",
             ExitRegion: "main",
             Map: "Kakariko Village",
-            Region: "main",
+            Region: "beyondGate",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 126, y: 290},
             Age: Age.EITHER,
@@ -1081,7 +1081,7 @@ let OwExits = {
         "Requiem Teleport Pad": {
             Name: "Requiem Teleport Pad",
             ExitRegion: "main",
-            Map: "Requiem Teleport Pad",
+            Map: "Desert Colossus",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: -100, y: -100 },
@@ -1721,7 +1721,7 @@ let MapLocations = {
                             }
 
                             let bridgeExit = OwExits["Kokiri Forest"]["Lost Woods Bottom"];
-                            return Data.getItemObtainability(bridgeExit, age);
+                            return Data.calculateObtainability(bridgeExit, age);
                         }
                     }
                 }

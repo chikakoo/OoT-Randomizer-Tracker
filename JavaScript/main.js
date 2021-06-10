@@ -65,7 +65,7 @@ let refreshAll = function() {
 
 	updateItemDisplay();
 	LocationSidebar.refreshLocationList();
-	Walk2.calculate();
+	Walk.calculate();
 	MapUI.refreshIcons();
 	SpawnsPage.updateSongItemTooltips();
 

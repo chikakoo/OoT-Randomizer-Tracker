@@ -68,7 +68,7 @@ let Settings = {
 		openZorasFountain: OpenZorasFountainSettings.VANILLA,
 		
 		// Sanity and logic changes
-		startingAge: Age.ADULT,
+		startingAge: Age.CHILD,
 		maxRequiredTokens: 50,
 		skulltulaSetting: SkulltulaSettings.OW_AND_DUNGEON,
 		medallionSetting: MedallionSettings.OPEN,
@@ -85,10 +85,11 @@ let Settings = {
 		
 		// Entrance shuffle settings
 		shuffleInteriorEntrances: false,
-		shuffleGrottoEntrances: true,
+		shuffleGrottoEntrances: false,
 		shuffleDungeonEntrances: true,
 		shuffleOverworldEntrances: false,
-		randomizeOwlDrops: true
+		randomizeOwlDrops: false,
+		decoupleEntrances: false //TODO: this will probabaly be a setting to decouple in the different pools instead
 	},
 		
 	GlitchesToAllow: {
