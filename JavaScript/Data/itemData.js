@@ -426,6 +426,10 @@ let ShopItemDictionary = {
 	"sk": "Small Key.png",
 	
 	"boss key": "Boss Key.png",
+	"bosskey": "Boss Key.png",
+	"bigkey": "Boss Key.png",
+	"big key": "Boss Key.png",
+	"big": "Boss Key.png",
 	"boss": "Boss Key.png",
 	"bk": "Boss Key.png",
 	
@@ -567,7 +571,7 @@ let Keys = {
 		},
 		totalKeys: function() { return 5; },
 		
-		mqMinimumKeys: function() { return 6; }, // You can always longshot across to skip the silvers key door
+		mqMinimumKeys: function() { return 6; }, // You can always longshot across to skip the silver gaunts key door
 		mqTotalKeys: function() { return 7; }
 	},
 	GANONS_CASTLE: { 

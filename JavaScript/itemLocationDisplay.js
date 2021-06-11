@@ -202,7 +202,7 @@ let _setUpItemGroups = function(groupedItemLocationInfo, mapInfo) {
 		let dungeonName = (isDungeon && isShuffled) ? MapLocations[_currentLocationName].ShuffledDungeon : _currentLocationName;
 		if (dungeonName === "Spirit Temple") {
 			let useAltOrder = mapInfo.IsMasterQuest ?
-				(Equipment.STRENGTH.currentUpgrade > 1 && Items.BOMBCHU.playerHas && Items.HOOKSHOT.currentUpgrade === 2) :
+				(Equipment.STRENGTH.currentUpgrade > 1 && Items.BOMBCHU.playerHas && Items.HOOKSHOT.playerHas) : //TODO: is longshot needed instead?
 				(Equipment.STRENGTH.currentUpgrade > 1 && Keys.SPIRIT_TEMPLE.keyCount > 0);
 			if (useAltOrder) {
 				allLocations.sort((loc1, loc2) => (loc1.AltOrder > loc2.AltOrder) ? 1 : -1);

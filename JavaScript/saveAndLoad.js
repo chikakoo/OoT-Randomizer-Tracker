@@ -20,7 +20,7 @@ let SaveAndLoad = {
         let objectToSave = {
             MapLocationData: this._getMapLocationDataToSave(MapLocations, true),
             StandardDungeonData: this._getMapLocationDataToSave(StandardDungeons),
-            //MQDungeonData: this._getMapLocationDataToSave(MQDungeons), //TODO: turn this back on once master quest is working again!
+            MQDungeonData: this._getMapLocationDataToSave(MQDungeons),
             EntranceShuffleData: this._getEntranceShuffleDataToSave(),
             RandomizedSpawnLocations: Data.randomizedSpawnLocations,
             Settings: Settings,
@@ -138,43 +138,8 @@ let SaveAndLoad = {
             });
         });
 
-        let entranceData = {};
-        Object.keys(MapLocations).forEach(function(mapName) {
-            Object.keys(MapLocations[mapName].Regions).forEach(function(regionName) {
-                Object.keys(MapLocations[mapName].Regions[regionName].Entrances).forEach(function(entranceName) {
-                    if (entranceName.includes("|")) {
-                        let parts = entranceName.split("|");
-                        let map = parts[0];
-                        let exitName = parts[1];
-
-                        entranceData[mapName] = entranceData[mapName] || {};
-                        entranceData[mapName][regionName] = entranceData[mapName][regionName] || {};
-                        entranceData[mapName][regionName][entranceName] = {
-                            IsOneWay: true,
-                            map: map,
-                            exitName: exitName
-                        }
-                    }
-
-                    else if (entranceName.startsWith("Interior-")) {
-                        let entrance = MapLocations[mapName].Regions[regionName].Entrances[entranceName];
-                        entranceData[mapName] = entranceData[mapName] || {};
-                        entranceData[mapName][regionName] = entranceData[mapName][regionName] || {};
-                        entranceData[mapName][regionName][entranceName] = {
-                            IsOneWay: false,
-                            IsInterior: true,
-                            OwShuffleExitName: entrance.OwShuffleExitName,
-                            OwShuffleMap: entrance.OwShuffleMap,
-                            OwShuffleRegion: entrance.OwShuffleRegion
-                        }
-                    }
-                });
-            });
-        });
-
         return {
-            OwExitData: owExitData,
-            EntranceData: entranceData
+            OwExitData: owExitData
         }
     },
     
@@ -281,26 +246,25 @@ let SaveAndLoad = {
         // For legacy reasons, set the third parameter to whether there are standard dungeons saved
         this._loadMapDataObject(MapLocations, loadedObject.MapLocationData, loadedObject.StandardDungeonData);
         this._loadMapDataObject(StandardDungeons, loadedObject.StandardDungeonData);
-        //this._loadMapDataObject(MQDungeons, loadedObject.MQDungeonData); //TODO: enable again when MQ works again!!!!
-
-        // Now, toggle all of the appropriate master quest maps
+        this._loadMapDataObject(MQDungeons, loadedObject.MQDungeonData);
+        
+        // Now, toggle all and load the appropriate master quest maps
         addAllStandardDungeons();
 
-        //TODO: enable again when MQ works again!!!!
-        // let mqSetting = Settings.RandomizerSettings.dungeonSetting;
-        // if (MQDungeons && mqSetting !== DungeonSettings.STANDARD) {
-        //     Object.keys(MQDungeons).forEach(function(mapName) {
-        //     	let shuffledDungeon = loadedObject.StandardDungeonData[mapName] && loadedObject.StandardDungeonData[mapName].ShuffledDungeon;
-        //     	let mapToUse = shuffledDungeon && Settings.RandomizerSettings.shuffleDungeonEntrances ?
-        //     		shuffledDungeon : mapName;
+        let mqSetting = Settings.RandomizerSettings.dungeonSetting;
+        if (MQDungeons && mqSetting !== DungeonSettings.STANDARD) {
+            Object.keys(MQDungeons).forEach(function(mapName) {
+            	let shuffledDungeon = loadedObject.StandardDungeonData[mapName] && loadedObject.StandardDungeonData[mapName].ShuffledDungeon;
+            	let mapToUse = shuffledDungeon && Settings.RandomizerSettings.shuffleDungeonEntrances ?
+            		shuffledDungeon : mapName;
             	
-        //         if ((loadedObject.MQDungeonData[mapToUse] && loadedObject.MQDungeonData[mapToUse].IsInUse) || 
-        //             mqSetting === DungeonSettings.MASTER_QUEST) {
-        //             toggleDungeonMapType(mapName);
-        //             MQDungeons[mapToUse].IsInUse = true;
-        //         }
-        //     });
-        // }
+                if ((loadedObject.MQDungeonData[mapToUse] && loadedObject.MQDungeonData[mapToUse].IsInUse) || 
+                    mqSetting === DungeonSettings.MASTER_QUEST) {
+                    toggleDungeonMapType(mapName);
+                    MQDungeons[mapToUse].IsInUse = true;
+                }
+            });
+        }
 
         // Load the entrance shuffle data
         this._loadEntranceShuffleData(loadedObject.EntranceShuffleData);
@@ -332,7 +296,7 @@ let SaveAndLoad = {
                 Object.keys(loadedMapInfo.Regions).forEach(function(regionName) {
                     Object.keys(loadedMapInfo.Regions[regionName].ItemLocations).forEach(function(itemLocationName) {
                         let loadedItemLocationInfo = loadedMapInfo.Regions[regionName].ItemLocations[itemLocationName];
-                        let itemLocation = MapLocations[mapName].Regions[regionName].ItemLocations[itemLocationName];
+                        let itemLocation = currentObject[mapName].Regions[regionName].ItemLocations[itemLocationName];
 
                         if (loadedItemLocationInfo.playerHas) {
                             itemLocation.playerHas = loadedItemLocationInfo.playerHas;
@@ -397,25 +361,6 @@ let SaveAndLoad = {
                 exitingExitData.OwShuffleExitName = loadedOwExitData.OwShuffleExitName;
                 exitingExitData.OwShuffleMap = loadedOwExitData.OwShuffleMap;
                 exitingExitData.OwShuffleRegion = loadedOwExitData.OwShuffleRegion;
-            });
-        });
-
-        Object.keys(entranceShuffleData.EntranceData).forEach(function(mapName) {
-            Object.keys(entranceShuffleData.EntranceData[mapName]).forEach(function(regionName) {
-                Object.keys(entranceShuffleData.EntranceData[mapName][regionName]).forEach(function(entranceName) {
-                    let loadedEntranceData = entranceShuffleData.EntranceData[mapName][regionName][entranceName];
-                    let exitingEntranceObj = MapLocations[mapName].Regions[regionName].Entrances;
-
-                    if (loadedEntranceData.IsOneWay) {
-                        exitingEntranceObj[entranceName] = OwExits[loadedEntranceData.map][loadedEntranceData.exitName];
-                    } else {
-                        exitingEntranceObj[entranceName] = {
-                            OwShuffleExitName: loadedEntranceData.OwShuffleExitName,
-                            OwShuffleMap: loadedEntranceData.OwShuffleMap,
-                            OwShuffleRegion: loadedEntranceData.OwShuffleRegion
-                        }
-                    }
-                });
             });
         });
     }

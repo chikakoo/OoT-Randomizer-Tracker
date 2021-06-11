@@ -45,12 +45,20 @@ RegionWalker = {
         this._clearData();
         this._setSpawnAndWarpWalkData();
 
-        if (!Data.randomizedSpawnLocations[Age.ADULT] || Data.randomizedSpawnLocations[Age.CHILD]) {
+        if (Data.randomizedSpawnLocations.useRandomizedSpawns && Data.randomizedSpawnLocations[Age.CHILD]) {
             this._doEntireWalk(Age.CHILD);
             this._doEntireWalk(Age.ADULT);
+        } else if (Data.randomizedSpawnLocations.useRandomizedSpawns) {
+            this._doEntireWalk(Age.ADULT);
+            this._doEntireWalk(Age.CHILD);
         } else {
-            this._doEntireWalk(Age.ADULT);
-            this._doEntireWalk(Age.CHILD);
+            let success = this._doEntireWalk(Age.CHILD);
+            if (success) {
+                this._doEntireWalk(Age.ADULT);
+            } else {
+                this._doEntireWalk(Age.ADULT);
+                this._doEntireWalk(Age.CHILD);
+            }
         }
 
         this._runPostWalkChecks(Age.CHILD);
@@ -113,7 +121,9 @@ RegionWalker = {
         if (Data.canBeAge(age)) {
             this._setUpSeeds(age);
             this._doWalk(age);
+            return true;
         }
+        return false;
     },
 
     /**

@@ -339,7 +339,7 @@ let _updateSmallKeyCss = function(keyObject, smallKeyDiv) {
 	removeCssClass(smallKeyDiv, "minimum-keys");
 	removeCssClass(smallKeyDiv, "all-keys");
 
-	let isMasterQuest = false; //TODO when master quest is supported again: MapLocations[keyObject.name].IsMasterQuest;
+	let isMasterQuest = MapLocations[keyObject.name].IsMasterQuest;
 
 	let minKeys, totalKeys;
 	if (isMasterQuest) {

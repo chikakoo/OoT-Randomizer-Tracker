@@ -65,7 +65,7 @@ Data = {
 			if (Data.getDoesEntranceShuffleApply(locationName)) {
 				let shuffledMap = MapLocations[locationName].ShuffledDungeon;
 				if (shuffledMap) {
-					isMasterQuest = false; //TODO: reenable once all the dungeons exist again! //MapLocations[shuffledMap].IsMasterQuest;
+					isMasterQuest = MapLocations[shuffledMap].IsMasterQuest;
 				}
 			}
 		} else {
@@ -472,14 +472,6 @@ Data = {
             }
         }
 
-        if (fromOwExit.OneWayEntrance && fromOwExit.OneWayData) {
-            let oneWayData = fromOwExit.OneWayData;
-            let oneWayMapEntrance = MapLocations[oneWayData.map].Regions[oneWayData.region].Entrances;
-
-            delete oneWayMapEntrance[fromReferenceKey];
-            delete fromOwExit.OneWayData;
-        }
-
         delete fromOwExit.OwShuffleMap;
         delete fromOwExit.OwShuffleRegion;
         delete fromOwExit.OwShuffleExitName;
@@ -502,10 +494,6 @@ Data = {
                 toOwExit.OwShuffleRegion = from.ExitRegion;
                 toOwExit.OwShuffleExitName = fromLocationName;
                 toOwExit.LinkedExit = fromReferenceKey;
-            } else {
-                let toMapEntrances = MapLocations[toMapName].Regions[toOwExit.ExitRegion].Entrances;
-                toMapEntrances[fromReferenceKey] = fromOwExit;
-                fromOwExit.OneWayData = { map: toMapName, region: toOwExit.ExitRegion, exitName: toOwExit.Name };
             }
         }
 	},
@@ -1100,6 +1088,18 @@ Data = {
 			(age === Age.ADULT && Items.FAIRY_BOW.playerHas)
 		);
 	},
+
+    /**
+     * Whether the current age can hit a crystal switch that's out of melee distance
+     * @param {Age} age - the age
+     */
+    canHitSwitchAtShortDistance: function(age) {
+        return this.hasExplosives() || //TODO: will chus work in all cases? maybe add a boolean for them
+            this.canUseBoomerang(age) ||
+            this.canShootEyeSwitch(age) ||
+            (age === Age.ADULT && Items.HOOKSHOT.playerHas) ||
+            (Items.DINS_FIRE.playerHas && Equipment.MAGIC.playerHas); //TODO: does din's actually work?
+    },
     
     /**
      * Returns whether the player has explosives
@@ -1468,6 +1468,16 @@ Data = {
     },
 
     /**
+     * Returns whether all the poe rooms can be accessed
+     * This will require an IsPostWalkCheck flag on each item that uses this!
+     */
+     mqForestTempleCanAccessAllPoeRooms: function(age) {
+        let canAccessFirstPoes = Data.canAccessMap(age, "Forest Temple", "poeRooms");
+        let canAccessGreenPoeRoom = Data.canAccessMap(age, "Forest Temple", "fallingCeilingRoom");
+        return canAccessFirstPoes && canAccessGreenPoeRoom;
+    },
+
+    /**
      * A helper function for whether you can do the mega jump to the top of the
      * forest temple in the outside left area
      */
@@ -1531,6 +1541,10 @@ Data = {
     spiritCanAccessAdultSide: function() {
         if (Equipment.STRENGTH.currentUpgrade >= 2) { return true; }
         return Settings.GlitchesToAllow.spiritBlockSkip && Equipment.HOVER_BOOTS.playerHas;
+    },
+
+    mqSpiritCanAccessAdultSide: function() {
+        return Items.BOMBCHU.playerHas && Items.HOOKSHOT.playerHas && Equipment.STRENGTH.currentUpgrade >= 2;
     },
 
     /**

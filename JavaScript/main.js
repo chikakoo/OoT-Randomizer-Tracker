@@ -32,8 +32,7 @@ let onPageLoad = function() {
  * This is to cut down on lines/tedium/potential errors in the file
  */
 let _assignItemLocationMapsAndRegions = function() {
-	//TODO: add the MQ dungeons to this
-	[MapLocations, StandardDungeons].forEach(function(mapObject) {
+	[MapLocations, StandardDungeons, MQDungeons].forEach(function(mapObject) {
 		Object.keys(mapObject).forEach(function(mapName) {
 			let regions = mapObject[mapName].Regions;
 			Object.keys(regions).forEach(function(regionName) {

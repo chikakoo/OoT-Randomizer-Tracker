@@ -1,3 +1,5 @@
+//TODO: remove Entrance on each item, since we're no longer using it for reverse walks
+
 let MapGroups = {
 	FOREST: 0,
 	FIELD_MARKET: 1,
@@ -57,7 +59,11 @@ let addAllStandardDungeons = function() {
 	Object.keys(StandardDungeons).forEach(function(key) {
 		let dungeon = StandardDungeons[key];
 		MapLocations[key] = dungeon;
-		MQDungeons[key].IsInUse = false;
+
+        //TODO: this check is unneeded when MQ is fully complete!
+        if (MQDungeons[key]) {
+            MQDungeons[key].IsInUse = false;
+        }
 	});
 };
 
@@ -1162,12 +1168,6 @@ let MapLocations = {
                     }
                 },
 
-                Entrances: {
-                    afterMido: {},
-                    "Lost Woods Bottom": {},
-                    "Lost Woods Top": {}
-                },
-
                 ItemLocations: {
                     "Kokiri Sword": {
                         Name: "Kokiri Sword",
@@ -1384,10 +1384,6 @@ let MapLocations = {
                         OwExit: OwExits["Kokiri Forest"]["Deku Tree Entrance"]
                     }
                 }, 
-                
-                Entrances: {
-                    main: {}
-                },
 
                 ItemLocations: {
                     "Gossip Stone Left of Deku Tree": {
