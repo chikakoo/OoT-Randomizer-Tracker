@@ -1766,7 +1766,7 @@ let StandardDungeons = {
 						MapInfo: { x: 320, y: 201, floor: "F3" },
 						Age: Age.ADULT,
 						Order: 14,
-						LongDescription: "When you first enter the boulder maze, turn to the right. Walk in that general direcction and you'll eventually find a Goron and a chest in a cage. Step on the switch to get in."
+						LongDescription: "When you first enter the boulder maze, turn to the right. Walk in that general direction and you'll eventually find a Goron and a chest in a cage. Step on the switch to get in."
 					},
 					"Skulltula in Weak Wall in Boulder Maze": {
 						Name: "Skulltula in Weak Wall in Boulder Maze",
