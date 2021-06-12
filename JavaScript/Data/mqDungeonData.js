@@ -282,8 +282,8 @@ let MQDungeons = {
 						}
 					},
 
-					poeRoom: {
-						Name: "poeRoom",
+					mainRoomLedge: {
+						Name: "mainRoomLedge",
 						CustomRequirement: function(age) {
 							if (age === Age.ADULT) { return true; }
             	
@@ -338,24 +338,6 @@ let MQDungeons = {
 							return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
 						}
 					},
-					"Chest on Ledge in Main Room": {
-						Name: "Chest on Ledge in Main Room",
-						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 182, y: 200, floor: "F1" },
-						Age: Age.EITHER,
-						Order: 6,
-						LongDescription: "Nagivate through the Poe room to get to this chest on the ledge on the right side of the main room. This may require you to go through most of the dungeon first.",
-						CustomRequirement: function(age) {
-							if (age === Age.ADULT) { return true; }
-							
-							let canGroundJump = Settings.GlitchesToAllow.dodongoSwitchEarly && Data.canGroundJumpWithBomb(age);
-							let canRecoil = Settings.GlitchesToAllow.dodongoSwitchEarly && 
-								(Data._hasExplosivesOrStrength() || Data.canUseHammer(age)) && 
-								Data._hasSwordWeapon(age);
-							let canEnterNormally = Data.canAccessMap(age, "Dodongo's Cavern", "poeRoom") && Data._hasExplosivesOrStrength();
-							return canGroundJump || canRecoil || canEnterNormally;
-						}
-					},
 					"Skullula by Stair Room": {
 						Name: "Skullula by Stair Room",
 						ItemGroup: ItemGroups.SKULLTULA,
@@ -364,6 +346,25 @@ let MQDungeons = {
 						Order: 7,
 						LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>Blow up the fake wall by the stairs. Play the song of time in the next room several times to navigate the maze to the skulltula.",
 						RequiredSongs: [Songs.SONG_OF_TIME]
+					}
+				}
+			},
+
+			mainRoomLedge: {
+				Exits: {
+					poeRoom: {
+						Name: "poeRoom"
+					}
+				},
+
+				ItemLocations: {
+					"Chest on Ledge in Main Room": {
+						Name: "Chest on Ledge in Main Room",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 182, y: 200, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 6,
+						LongDescription: "Nagivate through the Poe room to get to this chest on the ledge on the right side of the main room. This may require you to go through most of the dungeon first."
 					}
 				}
 			},
@@ -506,7 +507,13 @@ let MQDungeons = {
 			},
 
 			poeRoom: {
-				Exits: {},
+				Exits: {
+					mainRoomLedge: {
+						Name: "mainRoomLedge",
+						NeedsExplosivesOrBombFlower: true
+					}
+				},
+
 				ItemLocations: {
 					"Skulltula Near Poe Room": {
 						Name: "Skulltula Near Poe Room",
@@ -1346,7 +1353,7 @@ let MQDungeons = {
 						IsPostWalkCheck: true,
 						CustomRequirement: function(age) {
 							let canBKSkip = age === Age.ADULT && Settings.GlitchesToAllow.forestBKSkip && Items.HOOKSHOT.playerHas;
-							return canBKSkip || Data.forestTempleCanAccessAllPoeRooms(age);
+							return canBKSkip || Data.mqForestTempleCanAccessAllPoeRooms(age);
 						}
 					},
 					"Blue Warp": {
@@ -1359,7 +1366,7 @@ let MQDungeons = {
 						IsPostWalkCheck: true,
 						CustomRequirement: function(age) {
 							let canBKSkip = age === Age.ADULT && Settings.GlitchesToAllow.forestBKSkip && Items.HOOKSHOT.playerHas;
-							return canBKSkip || Data.forestTempleCanAccessAllPoeRooms(age);
+							return canBKSkip || Data.mqForestTempleCanAccessAllPoeRooms(age);
 						}
 					}
 				}
