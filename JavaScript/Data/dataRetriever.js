@@ -1042,6 +1042,13 @@ Data = {
 			(Items.BLUE_FIRE.currentUpgrade > 1) ||
 			(Items.RUTOS_LETTER.currentUpgrade > 1);
     },
+
+    /**
+     * Returns whether the player has the actual blue fire item or an empty bottle
+     */
+    hasBottleOrBlueFire: function() {
+        return this.hasBottle() || Items.BLUE_FIRE.playerHas;
+    },
     
     /**
      * Returns whether the player has an item that can damage an enemy
@@ -1073,10 +1080,16 @@ Data = {
      */
 	canUseFireItem: function(age, itemLocation) {
         if (itemLocation && !itemLocation.NeedsFire) { return true; }
-		if (!Equipment.MAGIC.playerHas) { return false; }
-		if (Items.DINS_FIRE.playerHas) { return true; }
-		
-		return age === Age.ADULT && Items.FAIRY_BOW.playerHas && Items.FIRE_ARROW.playerHas;
+
+        let canUseDinsFire = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
+		return canUseDinsFire || this.canUseFireArrows(age);
+    },
+
+    /**
+     * Returns whether the player can use fire arrows
+     */
+    canUseFireArrows: function(age) {
+        return age === Age.ADULT && Equipment.MAGIC.playerHas && Items.FAIRY_BOW.playerHas && Items.FIRE_ARROW.playerHas;
     },
 
     /**

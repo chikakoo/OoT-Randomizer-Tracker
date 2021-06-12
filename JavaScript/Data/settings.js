@@ -74,7 +74,7 @@ let Settings = {
 		medallionSetting: MedallionSettings.OPEN,
 		gossipStoneSetting: GossipStoneSettings.HIDE,
 		medallionSkulltulaSetting: 50,
-		dungeonSetting: DungeonSettings.STANDARD,
+		dungeonSetting: DungeonSettings.MIXED,
 		smallKeySanity: true,
 		scrubSanity: true,
 		shopSanity: true,

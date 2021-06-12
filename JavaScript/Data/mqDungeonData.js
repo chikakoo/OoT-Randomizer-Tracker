@@ -3331,7 +3331,7 @@ let MQDungeons = {
 						Name: "afterFirstRoom",
 						CustomRequirement: function(age) {
 							let canKillFreezards = Data.hasSwordWeapon(age) || Data.canUseFireItem(age);
-							return canKillFreezards && Data.canHitSwitchAtShortDistance(age) && Data.hasBottle();
+							return canKillFreezards && Data.canHitSwitchAtShortDistance(age) && Data.hasBottleOrBlueFire();
 						}
 					}
 				},
@@ -3606,273 +3606,329 @@ let MQDungeons = {
 		Regions: {
 			main: {
 				Exits: {
+					armosRoom: {
+						Name: "armosRoom",
+						RequiredChildItems: [Items.FAIRY_SLINGSHOT],
+						RequiredAdultItems: [Items.FAIRY_BOW]
+					},
 
+					leftArea: {
+						Name: "leftArea",
+						NeedsFire: true
+					}
+
+					//TODO: verify you can't get to bigLavaRoom via the side path of the maze (barred doors?)
 				},
 
 				ItemLocations: {
+					"Left Chest by Entrance": {
+						Name: "Left Chest by Entrance",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 152, y: 233 },
+						Age: Age.EITHER,
+						Order: 1,
+						UseAdultAge: function() { 
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
+							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+						},
+						LongDescription: "This chest is to the left when you first enter."
+					},
+					"Right Chest by Entrance": {
+						Name: "Right Chest by Entrance",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 175, y: 233 },
+						Age: Age.EITHER,
+						Order: 2,
+						UseAdultAge: function() { 
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
+							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+						},
+						LongDescription: "This chest is to the right when you first enter."
+					},
+					"Left Maze Path After Door 1": {
+						Name: "Left Maze Path After Door 1",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 152, y: 192 }, //TODO; is this right?
+						Age: Age.EITHER,
+						Order: 3,
+						UseAdultAge: function() { 
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
+							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+						},
+						LongDescription: "From the main maze entrance, take the first left door. Climb the grate to your left up to the chest."
+					},
+					"Left Maze Path After Door 2": {
+						Name: "Left Maze Path After Door 2",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 130, y: 163 },
+						Age: Age.EITHER,
+						Order: 4,
+						UseAdultAge: function() { 
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
+							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+						},
+						LongDescription: "This chest is after the second door in the left maze path."
+					},
+					"Left Maze Path After Door 4": {
+						Name: "Left Maze Path After Door 4",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 142, y: 136 },
+						Age: Age.EITHER,
+						Order: 5,
+						UseAdultAge: function() { 
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
+							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+						},
+						LongDescription: "This chest is after the fourth door in the left maze path."
+					},
+					"Left Maze Path After Door 5": {
+						Name: "Left Maze Path After Door 5",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 148, y: 137 },
+						Age: Age.EITHER,
+						Order: 6,
+						UseAdultAge: function() { 
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
+							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+						},
+						LongDescription: "This chest is after the fifth door in the left maze path.",
+						CustomRequirement: function(age) {
+							return getKeyCount("Training Grounds") >= 1;
+						}
+					}
+				}
+			},
 
+			armosRoom: {
+				Exits: {
+					bigLavaRoom: {
+						Name: "bigLavaRoom",
+						RequiredChoiceOfChildItems: [Items.DEKU_STICK, Items.BOMB, Items.BOMBCHU]
+					}
+				},
+
+				ItemLocations: {
+					"Chest in Armos Room": {
+						Name: "Chest in Armos Room",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 257, y: 244 },
+						Age: Age.EITHER,
+						Order: 17,
+						UseAdultAge: function() { 
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
+							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+						},
+						LongDescription: "Either get here after shooting the eye in the starting room, or going around form the big lava room. Kill all the enemies to spawn the chest.",
+						RequiredChoiceOfChildItems: [Items.DEKU_STICK, Items.BOMB, Items.BOMBCHU]
+					}
+				}
+			},
+
+			leftArea: {
+				Exits: {
+					afterRupeeRoom: {
+						Name: "afterRupeeRoom",
+						Age: Age.ADULT,
+						RequiredItems: [Items.HOOKSHOT]
+					}
+				},
+
+				ItemLocations: {
+					"Sandy Iron Knuckle Chest": {
+						Name: "Sandy Iron Knuckle Chest",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 65, y: 225 },
+						Age: Age.EITHER,
+						Order: 7,
+						UseAdultAge: function() { 
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
+							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+						},
+						LongDescription: "From the main entrance, light the torches and go through the door that unlocks. Kill the Iron Knuckle to spawn the chest."
+					}
+				}
+			},
+
+			afterRupeeRoom: {
+				Exits: {
+					roomBehindSilverBlock: {
+						Name: "roomBehindSilverBlock",
+						Age: Age.ADULT,
+						RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}]
+					},
+
+					spinningRoom: {
+						Name: "spinningRoom",
+						RequiredSongs: [Songs.SONG_OF_TIME],
+						CustomRequirement: function(age) {
+							return Data.hasBottleOrBlueFire();
+						}
+					}
+				},
+
+				ItemLocations: {
+					"Chest in Room With Silver Block": {
+						Name: "Chest in Room With Silver Block",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 89, y: 84 },
+						Age: Age.ADULT,
+						Order: 8,
+						LongDescription: "Enter the room after the iron knuckle room. Collect the rupees within the time limit and move on to the next room. Defeat the enemies within the time limit to spawn the chest."
+					}
+				}
+			},
+
+			roomBehindSilverBlock: {
+				Exits: {},
+				ItemLocations: {
+					"Chest in Room Behind Silver Block": {
+						Name: "Chest in Room Behind Silver Block",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 68, y: 17 },
+						Age: Age.ADULT,
+						Order: 9,
+						LongDescription: "Get to the room with the silver block. Push it into the hole, then enter the next room. Kill the enemies to spawn the chest."
+					}
+				}
+			},
+
+			spinningRoom: {
+				Exits: {
+					armosRoom: {
+						Name: "armosRoom",
+						Age: Age.ADULT,
+						RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+					},
+
+					bigLavaRoom: {
+						Name: "bigLavaRoom",
+						Age: Age.ADULT,
+						CustomRequirement: function(age) {
+							return Items.HOOKSHOT.currentUpgrade >= 2 || 
+								(Data.canUseFireArrows(age) && Equipment.HOVER_BOOTS.playerHas);
+						}
+					},
+
+					backOfMaze: {
+						Name: "backOfMaze",
+						Age: Age.ADULT,
+						RequiredItems: [Items.MEGATON_HAMMER, {item: Items.HOOKSHOT, upgradeString: "2"}]
+					},
+
+					iceArrowsRoom: {
+						Name: "iceArrowsRoom",
+						Age: Age.ADULT,
+						RequiredItems: [Items.MEGATON_HAMMER, Items.HOOKSHOT],
+						CustomRequirement: function(age) {
+							return getKeyCount("Training Grounds") >= 3; //TODO: gate clip will mean you don't need any keys!
+						}
+					}
+				},
+
+				ItemLocations: {
+					"Chest in Spinning Room": {
+						Name: "Chest in Spinning Room",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 169, y: 91 }, //TODO: is this where it actually spawns?
+						Age: Age.ADULT,
+						Order: 10,
+						LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Jump to the spinning ring and shoot the eyes of the statues to spawn the chest.",
+						Region: "spinningRoom",
+						RequiredItems: [Items.FAIRY_BOW]
+					},
+					"Side Fire Iron Knuckle Chest": {
+						Name: "Side Fire Iron Knuckle Chest",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 256, y: 76 },
+						Age: Age.ADULT,
+						Order: 12,
+						LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Continue past the circle fire room into the next room. Kill the enemies within the time limit to spawn the chest."
+					},
+					"Center Fire Iron Knuckle Chest": {
+						Name: "Center Fire Iron Knuckle Chest",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 225, y: 90 },
+						Age: Age.ADULT,
+						Order: 13,
+						LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Continue past the circle fire room into the next room. Activate the switch above the door to spawn the chest. Step on the swith on one of the walls to remove the fire.",
+						CustomRequirement: function(age) {
+							return Data.canHitSwitchAtShortDistance(age);
+						}
+					}
+				}
+			},
+
+			bigLavaRoom: {
+				Exits: {
+					waterRoom: {
+						Name: "waterRoom",
+						Age: Age.ADULT,
+						RequiredItems: [Equipment.HOVER_BOOTS],
+						CustomRequirement: function(age) {
+							return Items.FAIRY_BOW.playerHas || Data.canUseFireItem(age);
+						}
+					}
+				},
+				ItemLocations: {}
+			},
+
+			backOfMaze: {
+				Exits: {},
+				ItemLocations: {
+					"Close Chest in Back of Maze": {
+						Name: "Close Chest in Back of Maze",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 177, y: 165 },
+						Age: Age.ADULT,
+						Order: 14,
+						LongDescription: "After defeating the enemies in the room with the fire circle and Iron Knuckle, proceed through the door. Hammer the rusted switch, then longshot to the pillar that appears. Go through the hall - the chest is straight ahead."
+					},
+					"Far Chest in Back of Maze": {
+						Name: "Far Chest in Back of Maze",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 0, y: 0 },
+						Age: Age.ADULT,
+						Order: 15,
+						LongDescription: "After getting the close chest from the back of the maze, continue along counter-clockwise to get the next chest (there are no doors to go through)."
+					}
+				}
+			},
+
+			waterRoom: {
+				Exits: {},
+				ItemLocations: {
+					"Chest in Water Room": { 
+						Name: "Chest in Water Room",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 297, y: 160 },
+						Age: Age.ADULT,
+						Order: 16,
+						LongDescription: "From the big lava room, longshot to the torch by the side door. Light it with a fire item or with your bow from the lit torch, then use your hover boots to collect the rupees. You may need to collect half of them then come back and light the torch again.<br/><br/>Once inside the water room, use your iron boots and longshot to collect all the rupees in the water. The chest will spawn at the top.",
+						RequiredItems: [Equipment.IRON_BOOTS],
+						CustomRequirement: function(age) {
+							return Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
+						}
+					}
+				}
+			},
+
+			iceArrowsRoom: {
+				Exits: {},
+				ItemLocations: {
+					"Chest Spawned from Maze Center": {
+						Name: "Chest Spawned from Maze Center",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 166, y: 132 },
+						Age: Age.ADULT,
+						Order: 11,
+						LongDescription: "First, spawn the chest by making your way to the center of the maze. Break the box, then hammer the rusted switch to spawn the chest.<br/><br/>In the spinning room, hookshot to the target in the center of the eye statues. From there, hookshot the crystal switch to unbar the door. Go in and claim the chest."
+					}
 				}
 			}
 		}
-	}
-};
+	},
 
-//OLD STUFF BELOW:
-
-let MQDungeons2 = {
-    "Training Grounds": {
-        Abbreviation: "GTG",
-        MapGroup: MapGroups.DUNGEONS,
-        IsMasterQuest: true,
-        Regions: {
-			armosRoom: function(age) {
-				let hasLongshot = Items.HOOKSHOT.currentUpgrade === 2;
-				if (Data.canAccessMap(age, "Training Grounds", "spinningRoom") && hasLongshot) { return true; }
-				
-				return Data.canShootEyeSwitch(age);
-			},
-			leftArea: function(age) {
-				return Data.canUseFireItem(age);
-			},
-			afterRupeeRoom: function(age) {
-				if (age === Age.CHILD || !Data.canAccessMap(age, "Training Grounds", "leftArea")) { return false; }
-				return Items.HOOKSHOT.playerHas;
-			},
-			roomBehindSilverBlock: function(age) {
-				if (!Data.canAccessMap(age, "Training Grounds", "afterRupeeRoom")) { return false; }
-				return Equipment.STRENGTH.currentUpgrade >= 2;
-			},
-			spinningRoom: function(age) {
-				if (!Data.canAccessMap(age, "Training Grounds", "afterRupeeRoom")) { return false; }
-				
-				let canMeltIce = Items.BLUE_FIRE.playerHas || Data._hasBottle();
-				return Data.canPlaySong(Songs.SONG_OF_TIME) && canMeltIce;
-			},
-			bigLavaRoom: function(age) {
-				if (Data.canAccessMap(age, "Training Grounds", "spinningRoom")) { return true; }
-				if (Data.canAccessMap(age, "Training Grounds", "armosRoom"))
-				{
-					 return age === Age.ADULT || Items.DEKU_STICK.playerHas || Data._hasExplosives();
-				}
-				return false;
-			},
-			backOfMaze: function(age) {
-				if (!Data.canAccessMap(age, "Training Grounds", "spinningRoom")) { return false; }
-				return Items.MEGATON_HAMMER.playerHas && Items.HOOKSHOT.currentUpgrade === 2;
-			},
-			waterRoom: function(age) {
-				if (age === Age.CHILD) { return false; }
-				if (!Data.canAccessMap(age, "Training Grounds", "bigLavaRoom")) { return false; }
-				
-				let canGetToFromArmosRoom = Items.FAIRY_BOW.playerHas;
-				let canGetToFromSpinningRoom = Items.HOOKSHOT.currentUpgrade === 2;
-				let canLightTorch = Items.FAIRY_BOW.playerHas || Data.canUseFireItem(age);
-				
-				return (canGetToFromArmosRoom || canGetToFromSpinningRoom) && canLightTorch && Equipment.HOVER_BOOTS.playerHas;
-			}
-        },
-        ItemLocations: [
-        	{
-				Name: "Left Chest by Entrance",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 152, y: 233 },
-				Age: Age.EITHER,
-				Order: 1,
-				UseAdultAge: function() { 
-					if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-					return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
-				},
-				LongDescription: "This chest is to the left when you first enter."
-			},
-			{
-				Name: "Right Chest by Entrance",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 175, y: 233 },
-				Age: Age.EITHER,
-				Order: 2,
-				UseAdultAge: function() { 
-					if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-					return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
-				},
-				LongDescription: "This chest is to the right when you first enter."
-			},
-			{
-				Name: "Left Maze Path After Door 1",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 152, y: 192 }, //TODO; is this right?
-				Age: Age.EITHER,
-				Order: 3,
-				UseAdultAge: function() { 
-					if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-					return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
-				},
-				LongDescription: "From the main maze entrance, take the first left door. Climb the grate to your left up to the chest."
-			},
-			{
-				Name: "Left Maze Path After Door 2",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 130, y: 163 },
-				Age: Age.EITHER,
-				Order: 4,
-				UseAdultAge: function() { 
-					if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-					return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
-				},
-				LongDescription: "This chest is after the second door in the left maze path."
-			},
-			{
-				Name: "Left Maze Path After Door 4",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 142, y: 136 },
-				Age: Age.EITHER,
-				Order: 5,
-				UseAdultAge: function() { 
-					if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-					return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
-				},
-				LongDescription: "This chest is after the fourth door in the left maze path."
-			},
-			{
-				Name: "Left Maze Path After Door 5",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 148, y: 137 },
-				Age: Age.EITHER,
-				Order: 6,
-				UseAdultAge: function() { 
-					if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-					return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
-				},
-				LongDescription: "This chest is after the fifth door in the left maze path.",
-				CustomRequirement: function(age) {
-					return getKeyCount("Training Grounds") >= 1;
-				}
-			},
-        	{
-				Name: "Sandy Iron Knuckle Chest",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 65, y: 225 },
-				Age: Age.EITHER,
-				Order: 7,
-				UseAdultAge: function() { 
-					if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-					return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
-				},
-				LongDescription: "From the main entrance, light the torches and go through the door that unlocks. Kill the Iron Knuckle to spawn the chest.",
-				Region: "leftArea"
-			},
-			{
-				Name: "Chest in Room With Silver Block",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 89, y: 84 },
-				Age: Age.ADULT,
-				Order: 8,
-				LongDescription: "Enter the room after the iron knuckle room. Collect the rupees within the time limit and move on to the next room. Defeat the enemies within the time limit to spawn the chest.",
-				Region: "afterRupeeRoom"
-			},
-			{
-				Name: "Chest in Room Behind Silver Block",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 68, y: 17 },
-				Age: Age.ADULT,
-				Order: 9,
-				LongDescription: "Get to the room with the silver block. Push it into the hole, then enter the next room. Kill the enemies to spawn the chest.",
-				Region: "roomBehindSilverBlock"
-			},
-			{
-				Name: "Chest in Spinning Room",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 169, y: 91 }, //TODO: is this where it actually spawns?
-				Age: Age.ADULT,
-				Order: 10,
-				LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Jump to the spinning ring and shoot the eyes of the statues to spawn the chest.",
-				Region: "spinningRoom",
-				RequiredItems: [Items.FAIRY_BOW]
-			},
-			{
-				Name: "Chest Spawned from Maze Center",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 166, y: 132 },
-				Age: Age.ADULT,
-				Order: 11,
-				LongDescription: "First, spawn the chest by making your way to the center of the maze. Break the box, then hammer the rusted switch to spawn the chest.<br/><br/>In the spinning room, hookshot to the target in the center of the eye statues. From there, hookshot the crystal switch to unbar the door. Go in and claim the chest.",
-				Region: "spinningRoom",
-				CustomRequirement: function(age) {
-					if (Data.gtgCanSkipCenterChest(age)) { return true; }
-					return getKeyCount("Training Grounds") >= 3;
-				},
-				RequiredItems: [Items.MEGATON_HAMMER]
-			},
-			{
-				Name: "Side Fire Iron Knuckle Chest",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 256, y: 76 },
-				Age: Age.ADULT,
-				Order: 12,
-				LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Continue past the circle fire room into the next room. Kill the enemies within the time limit to spawn the chest.",
-				Region: "spinningRoom"
-			},
-			{
-				Name: "Center Fire Iron Knuckle Chest",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 225, y: 90 },
-				Age: Age.ADULT,
-				Order: 13,
-				LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Continue past the circle fire room into the next room. Activate the switch above the door to spawn the chest. Step on the swith on one of the walls to remove the fire.",
-				Region: "spinningRoom",
-				CustomRequirement: function(age) {
-					return Data.canHitSwitchAtShortDistance(age);
-				}
-			},
-			{
-				Name: "Close Chest in Back of Maze",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 177, y: 165 },
-				Age: Age.ADULT,
-				Order: 14,
-				LongDescription: "After defeating the enemies in the room with the fire circle and Iron Knuckle, proceed through the door. Hammer the rusted switch, then longshot to the pillar that appears. Go through the hall - the chest is straight ahead.",
-				Region: "backOfMaze"
-			},
-			{
-				Name: "Far Chest in Back of Maze",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 0, y: 0 },
-				Age: Age.ADULT,
-				Order: 15,
-				LongDescription: "After getting the close chest from the back of the maze, continue along counter-clockwise to get the next chest (there are no doors to go through).",
-				Region: "backOfMaze"
-			},
-			{ 
-				Name: "Chest in Water Room",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 297, y: 160 },
-				Age: Age.ADULT,
-				Order: 16,
-				LongDescription: "From the big lava room, longshot to the torch by the side door. Light it with a fire item or with your bow from the lit torch, then use your hover boots to collect the rupees. You may need to collect half of them then come back and light the torch again.<br/><br/>Once inside the water room, use your iron boots and longshot to collect all the rupees in the water. The chest will spawn at the top.",
-				Region: "waterRoom",
-				CustomRequirement: function(age) {
-					let tunicCheck = Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-					return tunicCheck && Equipment.IRON_BOOTS.playerHas;
-				}
-			},
-			{
-				Name: "Chest in Armos Room",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 257, y: 244 },
-				Age: Age.EITHER,
-				Order: 17,
-				UseAdultAge: function() { 
-					if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-					return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
-				},
-				LongDescription: "Either get here after shooting the eye in the starting room, or going around form the big lava room. Kill all the enemies to spawn the chest.",
-				Region: "armosRoom",
-				CustomRequirement: function(age) {
-					 return age === Age.ADULT || Items.DEKU_STICK.playerHas || Data._hasExplosives();
-				}
-			}
-        ]
-    },
-    "Ganon's Castle": {
+	"Ganon's Castle": {
         Abbreviation: "GANC",
         MapGroup: MapGroups.DUNGEONS,
         ExcludeFromShuffle: true,
@@ -3880,279 +3936,290 @@ let MQDungeons2 = {
         Floors: ["MN", "FST", "FIR", "WTR", "SHW", "SPT", "LIT"],
         StartingFloorIndex: 0,
         Regions: {
-			main: function(age) {
-				if (age === Age.CHILD) { return false; }
-				
-				switch (Settings.RandomizerSettings.medallionSetting) {
-					case MedallionSettings.VANILLA:
-						return Items.LIGHT_ARROW.playerHas &&
-							Data._hasRequiredMedallions({ 
-								RequiredMedallions: [Medallions.SHADOW_MEDALLION, Medallions.SPIRIT_MEDALLION] 
-							});
-					case MedallionSettings.OPEN:
-						return true;
-					case MedallionSettings.ALL_MEDALLIONS:
-						return Data._hasRequiredMedallions({
-							RequiredMedallions: [
-								Medallions.FOREST_MEDALLION,
-								Medallions.FIRE_MEDALLION,
-								Medallions.WATER_MEDALLION,
-								Medallions.SHADOW_MEDALLION,
-								Medallions.SPIRIT_MEDALLION,
-								Medallions.LIGHT_MEDALLION
-							]
-						});
-					case MedallionSettings.ALL_DUNGEONS:
-						return Data._hasRequiredMedallions({
-							RequiredMedallions: [
-								Medallions.KOKIRIS_EMERALD,
-								Medallions.GORONS_RUBY,
-								Medallions.ZORAS_SAPPHIRE,
-								Medallions.FOREST_MEDALLION,
-								Medallions.FIRE_MEDALLION,
-								Medallions.WATER_MEDALLION,
-								Medallions.SHADOW_MEDALLION,
-								Medallions.SPIRIT_MEDALLION,
-								Medallions.LIGHT_MEDALLION
-							]
-						});
-					case MedallionSettings.ALL_STONES:
-						return Data._hasRequiredMedallions({
-							RequiredMedallions: [
-								Medallions.KOKIRIS_EMERALD,
-								Medallions.GORONS_RUBY,
-								Medallions.ZORAS_SAPPHIRE
-							]
-						});
-					case MedallionSettings.SKULLTULAS:
-						return Equipment.SKULLTULA_TOKENS.count >= Settings.RandomizerSettings.medallionSkulltulaSetting;
-					default: return true;
+			main: {
+				Exits: {
+					spiritRoom2: {
+						Name: "spiritRoom2",
+						RequiredItems: [Items.MEGATON_HAMMER]
+					},
+
+					forestRoom3: {
+						Name: "forestRoom3",
+						RequiredSongs: [Songs.SONG_OF_TIME]
+					},
+
+					waterRoom: {
+						Name: "waterRoom",
+						CustomRequirement: function(age) {
+							return Data.hasBottleOrBlueFire();
+						}
+					},
+
+					shadowBackSection: {
+						Name: "shadowBackSection",
+						RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, Items.HOOKSHOT],
+						RequiredItems: [Equipment.MAGIC, Items.LENS_OF_TRUTH] // Without lens is really hard, so not including that trick for now
+					},
+
+					fireRoom: {
+						Name: "fireRoom",
+						RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}], // TODO: are these item sets accurate?
+						RequiredChoiceOfItems: [Items.HOOKSHOT, Equipment.HOVER_BOOTS],
+						CustomRequirement: function(age) {
+							return Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
+						}
+					},
+
+					lightRoom1: {
+						Name: "lightRoom1",
+						CustomRequirement: function(age) {
+							let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
+								Items.BOMB.playerHas && 
+								Data.hasShield(age);
+							let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
+							return canSuperslideIn || canEssClipIn || Equipment.STRENGTH.currentUpgrade === 3;
+						}
+					}
+				},
+
+				ItemLocations: {
+					"Left Scrub in Secret Room": {
+						Name: "Left Scrub in Secret Room",
+						ItemGroup: ItemGroups.SCRUB,
+						MapInfo: { x: 234, y: 233, floor: "MN" },
+						Age: Age.ADULT,
+						Order: 1,
+						LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
+					},
+					"Middle Left Scrub in Secret Room": {
+						Name: "Middle Left Scrub in Secret Room",
+						ItemGroup: ItemGroups.SCRUB,
+						MapInfo: { x: 242, y: 241, floor: "MN" },
+						Age: Age.ADULT,
+						Order: 2,
+						LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
+					},
+					"Middle Scrub in Secret Room": {
+						Name: "Middle Scrub in Secret Room",
+						ItemGroup: ItemGroups.SCRUB,
+						MapInfo: { x: 248, y: 248, floor: "MN" },
+						Age: Age.ADULT,
+						Order: 3,
+						LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
+					},
+					"Middle Right Scrub in Secret Room": {
+						Name: "Middle Right Scrub in Secret Room",
+						ItemGroup: ItemGroups.SCRUB,
+						MapInfo: { x: 254, y: 241, floor: "MN" },
+						Age: Age.ADULT,
+						Order: 4,
+						LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
+					},
+					"Right Scrub in Secret Room": {
+						Name: "Right Scrub in Secret Room",
+						ItemGroup: ItemGroups.SCRUB,
+						MapInfo: { x: 262, y: 233, floor: "MN" },
+						Age: Age.ADULT,
+						Order: 5,
+						LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
+					},
+					"Forest Freestanding Item": {
+						Name: "Forest Freestanding Item",
+						ItemGroup: ItemGroups.FREESTANDING,
+						MapInfo: { x: 165, y: 204, floor: "FST" },
+						Age: Age.ADULT,
+						Order: 12,
+						LongDescription: "After dealing with the enemies, wait for the fan to stop spinning, then hookshot up to the ledge. The item is up there.",
+						RequiredItems: [Items.HOOKSHOT]
+					},
+					"Forest Close Chest": {
+						Name: "Forest Close Chest",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 168, y: 170, floor: "FST" },
+						Age: Age.ADULT,
+						Order: 13,
+						LongDescription: "In the second room, stand on the upper left side of the first platform. Shoot the eye switch on the back right corner of the room to spawn the chest.",
+						RequiredItems: [Items.FAIRY_BOW]
+					},
+					"Forest Far Chest": {
+						Name: "Forest Far Chest",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 153, y: 147, floor: "FST" },
+						Age: Age.ADULT,
+						Order: 14,
+						LongDescription: "In the second room, shoot the eye switch at the back left side of the room with a fire arrow to spawn the chest. Alternatively, you can also use Din's fire to hit it once at the back of the room. To get across, you can jump and use the wind from the fan if you have no hover boots.",
+						NeedsFire: true
+					},
+					"Water Chest in First Room": {
+						Name: "Water Chest in First Room",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 163, y: 233, floor: "WTR" },
+						Age: Age.ADULT,
+						Order: 15,
+						LongDescription: "The chest is in the red ice on the left side of the room. You can roll into it and spam A to open the chest through the ice.<br/><br/>If you want to melt it, attack the weird hand thing on the right side of the room to lower the water around the blue fire."
+					},
+					"Shadow Chest on Small Platform": {
+						Name: "Shadow Chest on Small Platform",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 147, y: 227, floor: "SHW" },
+						Age: Age.ADULT,
+						Order: 16,
+						LongDescription: "First, shoot the bomb flower on the left side of the room. Now, use hover boots or your hookshot to reach the chest.",
+						RequiredItems: [Items.FAIRY_BOW],
+						RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, Items.HOOKSHOT]
+					},
+					"Boss Key Chest in Center": {
+						Name: "Boss Key Chest in Center",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 165, y: 95, floor: "MN" },
+						Age: Age.ADULT,
+						Order: 19,
+						IsPostWalkCheck: true,
+						LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
+						CustomRequirement: function(age) {
+							let canUseLightArrows = Items.FAIRY_BOW.playerHas && Items.LIGHT_ARROW.playerHas && Equipment.MAGIC.playerHas;
+							if (!canUseLightArrows || getKeyCount("Ganon's Castle") < 3) { return false; }
+							
+							let canDoForest = Data.canAccessMap(age, "Ganon's Castle", "forestRoom3");
+							let canDoFire = Data.canAccessMap(age, "Ganon's Castle", "fireRoom");
+							let canDoWater = Data.canAccessMap(age, "Ganon's Castle", "waterRoom");
+							let canDoShadow = Data.canAccessMap(age, "Ganon's Castle", "shadowBackSection");
+							let canDoSpirit = Data.canAccessMap(age, "Ganon's Castle", "spiritRoom4");
+							
+							let lightReqs = Data.hasExplosives() && Items.HOOKSHOT.playerHas;
+							let canDoLight = lightReqs && Data.canAccessMap(age, "Ganon's Castle", "lightRoom1");
+							
+							return canDoForest && canDoFire && canDoWater && canDoShadow && canDoSpirit && canDoLight;
+						}
+					}
 				}
 			},
-			spiritRoom2: function(age) {
-				return Items.MEGATON_HAMMER.playerHas;
-			},
-			spiritRoom3: function(age) {
-				if (!Data.canAccessMap(age, "Ganon's Castle", "spiritRoom2")) { return false; }
-				return Items.BOMBCHU.playerHas;
-			},
-			spiritRoom4: function(age) {
-				if (!Data.canAccessMap(age, "Ganon's Castle", "spiritRoom3")) { return false; }
-				
-				let canUseFireArrows = Items.FAIRY_BOW.playerHas && Items.FIRE_ARROW.playerHas && Equipment.MAGIC.playerHas;
-				return canUseFireArrows && Equipment.MIRROR_SHIELD.playerHas;
-			},
-			forestRoom3: function(age) {
-				return Data.canPlaySong(Songs.SONG_OF_TIME);
-			},
-			waterRoom: function(age) {
-				return Items.BLUE_FIRE.playerHas || Data._hasBottle();
-			},
-			shadowBackSection: function(age) {
-				let lensCheck = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas; // Without lens is really hard, so not including that for now
-				if (!lensCheck) { return false; }
-				
-				return Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas;
-			},
-			fireRoom: function(age) {
-				//TODO: need hover boots? probably doesn't matter since no items are in this room.
-				let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
-				return tunicCheck && Items.HOOKSHOT.playerHas && Equipment.STRENGTH.currentUpgrade === 3;
-			},
-			lightRoom1: function(age) {
-				let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
-					Items.BOMB.playerHas && 
-					Data.haveShield(age);
-				let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data._hasExplosives();
-				return canSuperslideIn || canEssClipIn || Equipment.STRENGTH.currentUpgrade === 3;
-			},
-			center: function(age) {
-				let canUseLightArrows = Items.FAIRY_BOW.playerHas && Items.LIGHT_ARROW.playerHas && Equipment.MAGIC.playerHas;
-				if (!canUseLightArrows || getKeyCount("Ganon's Castle") < 3) { return false; }
-				
-				let canDoForest = Data.canAccessMap(age, "Ganon's Castle", "forestRoom3");
-				let canDoFire = Data.canAccessMap(age, "Ganon's Castle", "fireRoom");
-				let canDoWater = Data.canAccessMap(age, "Ganon's Castle", "waterRoom");
-				let canDoShadow = Data.canAccessMap(age, "Ganon's Castle", "shadowBackSection");
-				let canDoSpirit = Data.canAccessMap(age, "Ganon's Castle", "spiritRoom4");
-				
-				let lightReqs = Data._hasExplosives() && Items.HOOKSHOT.playerHas;
-				let canDoLight = lightReqs && Data.canAccessMap(age, "Ganon's Castle", "lightRoom1");
-				
-				return canDoForest && canDoFire && canDoWater && canDoShadow && canDoSpirit && canDoLight;
-			}
-        },
-        ItemLocations: [
-			{
-				Name: "Left Scrub in Secret Room",
-				ItemGroup: ItemGroups.SCRUB,
-				MapInfo: { x: 234, y: 233, floor: "MN" },
-				Age: Age.ADULT,
-				Order: 1,
-				LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
-			},
-			{
-				Name: "Middle Left Scrub in Secret Room",
-				ItemGroup: ItemGroups.SCRUB,
-				MapInfo: { x: 242, y: 241, floor: "MN" },
-				Age: Age.ADULT,
-				Order: 2,
-				LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
-			},
-			{
-				Name: "Middle Scrub in Secret Room",
-				ItemGroup: ItemGroups.SCRUB,
-				MapInfo: { x: 248, y: 248, floor: "MN" },
-				Age: Age.ADULT,
-				Order: 3,
-				LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
-			},
-			{
-				Name: "Middle Right Scrub in Secret Room",
-				ItemGroup: ItemGroups.SCRUB,
-				MapInfo: { x: 254, y: 241, floor: "MN" },
-				Age: Age.ADULT,
-				Order: 4,
-				LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
-			},
-			{
-				Name: "Right Scrub in Secret Room",
-				ItemGroup: ItemGroups.SCRUB,
-				MapInfo: { x: 262, y: 233, floor: "MN" },
-				Age: Age.ADULT,
-				Order: 5,
-				LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
-			},
-			{
-				Name: "Spirit Chest After Armos",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 241, y: 184, floor: "SPT" },
-				Age: Age.ADULT,
-				Order: 6,
-				LongDescription: "Hammer jumpslash one of the corners of the central platform to simply hit the switch in the middle. Enter the next room - the chest is straight ahead.",
-				Region: "spiritRoom2",
-			},
-			{
-				Name: "Spirit Invisible Chest",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 239, y: 120, floor: "SPT" },
-				Age: Age.ADULT,
-				Order: 7,
-				LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. This chest is invisible in the corner of the room in front of the door.",
-				Region: "spiritRoom3",
-			},
-			{
-				Name: "Spirit Sun Chest 1",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 169, y: 105, floor: "SPT" },
-				Age: Age.ADULT,
-				Order: 8,
-				LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. Proceed until you've killed all the redeads. Shoot the ceiling with a fire arrow to reveal the light. Shine it on the corresponding sun to get the chest.",
-				Region: "spiritRoom4",
-			},
-			{
-				Name: "Spirit Sun Chest 2",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 169, y: 132, floor: "SPT" },
-				Age: Age.ADULT,
-				Order: 9,
-				LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. Proceed until you've killed all the redeads. Shoot the ceiling with a fire arrow to reveal the light. Shine it on the corresponding sun to get the chest.",
-				Region: "spiritRoom4",
-			},
-			{
-				Name: "Spirit Sun Chest 3",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 143, y: 132, floor: "SPT" },
-				Age: Age.ADULT,
-				Order: 10,
-				LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. Proceed until you've killed all the redeads. Shoot the ceiling with a fire arrow to reveal the light. Shine it on the corresponding sun to get the chest.",
-				Region: "spiritRoom4",
-			},
-			{
-				Name: "Spirit Sun Chest 4",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 143, y: 105, floor: "SPT" },
-				Age: Age.ADULT,
-				Order: 11,
-				LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. Proceed until you've killed all the redeads. Shoot the ceiling with a fire arrow to reveal the light. Shine it on the corresponding sun to get the chest.",
-				Region: "spiritRoom4",
-			},
-			{
-				Name: "Forest Freestanding Item",
-				ItemGroup: ItemGroups.FREESTANDING,
-				MapInfo: { x: 165, y: 204, floor: "FST" },
-				Age: Age.ADULT,
-				Order: 12,
-				LongDescription: "After dealing with the enemies, wait for the fan to stop spinning, then hookshot up to the ledge. The item is up there.",
-				RequiredItems: [Items.HOOKSHOT]
-			},
-			{
-				Name: "Forest Close Chest",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 168, y: 170, floor: "FST" },
-				Age: Age.ADULT,
-				Order: 13,
-				LongDescription: "In the second room, stand on the upper left side of the first platform. Shoot the eye switch on the back right corner of the room to spawn the chest.",
-				RequiredItems: [Items.FAIRY_BOW]
-			},
-			{
-				Name: "Forest Far Chest",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 153, y: 147, floor: "FST" },
-				Age: Age.ADULT,
-				Order: 14,
-				LongDescription: "In the second room, shoot the eye switch at the back left side of the room with a fire arrow to spawn the chest. Alternatively, you can also use Din's fire to hit it once at the back of the room. To get across, you can jump and use the wind from the fan if you have no hover boots.",
-				NeedsFire: true
-			},
-			{
-				Name: "Water Chest in First Room",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 163, y: 233, floor: "WTR" },
-				Age: Age.ADULT,
-				Order: 15,
-				LongDescription: "The chest is in the red ice on the left side of the room. You can roll into it and spam A to open the chest through the ice.<br/><br/>If you want to melt it, attack the weird hand thing on the right side of the room to lower the water around the blue fire."
-			},
-			{
-				Name: "Shadow Chest on Small Platform",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 147, y: 227, floor: "SHW" },
-				Age: Age.ADULT,
-				Order: 16,
-				LongDescription: "First, shoot the bomb flower on the left side of the room. Now, use hover boots or your hookshot to reach the chest.",
-				CustomRequirement: function(age) {
-					return Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas
+
+			spiritRoom2: {
+				Exits: {
+					spiritRoom3: {
+						Name: "spiritRoom3",
+						RequiredItems: [Items.BOMBCHU]
+					}
 				},
-				RequiredItems: [Items.FAIRY_BOW]
+
+				ItemLocations: {
+					"Spirit Chest After Armos": {
+						Name: "Spirit Chest After Armos",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 241, y: 184, floor: "SPT" },
+						Age: Age.ADULT,
+						Order: 6,
+						LongDescription: "Hammer jumpslash one of the corners of the central platform to simply hit the switch in the middle. Enter the next room - the chest is straight ahead."
+					}
+				}
 			},
-			{
-				Name: "Shadow Chest in Back",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 186, y: 103, floor: "SHW" },
-				Age: Age.ADULT,
-				Order: 17,
-				LongDescription: "Use your lens of truth to navigate across the room. There's an invisible moving invisible platform you'll need to use. After the beamos platform, turn around and shoot the eye switch to spawn the chest.",
-				Region: "shadowBackSection",
-				RequiredItems: [Items.FAIRY_BOW],
+
+			spiritRoom3: {
+				Exits: {
+					spiritRoom4: {
+						Name: "spiritRoom4",
+						RequiredItems: [Equipment.MIRROR_SHIELD],
+						CustomRequirement: function(age) {
+							return Data.canUseFireArrows(age);
+						}
+					}
+				},
+
+				ItemLocations: {
+					"Spirit Invisible Chest": {
+						Name: "Spirit Invisible Chest",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 239, y: 120, floor: "SPT" },
+						Age: Age.ADULT,
+						Order: 7,
+						LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. This chest is invisible in the corner of the room in front of the door."
+					}
+				}
 			},
-			{
-				Name: "Light Zelda's Lullaby Chest",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 194, y: 197, floor: "LIT" },
-				Age: Age.ADULT,
-				Order: 18,
-				LongDescription: "Use your gauntlets to gain access to this area. In the first room, kill all the enemies. In the next room, play Zelda's Lullaby to spawn the chest.",
-				Region: "lightRoom1",
-				RequiredSongs: [Songs.ZELDAS_LULLABY]
+
+			spiritRoom4: {
+				Exits: {},
+				ItemLocations: {
+					"Spirit Sun Chest 1": {
+						Name: "Spirit Sun Chest 1",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 169, y: 105, floor: "SPT" },
+						Age: Age.ADULT,
+						Order: 8,
+						LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. Proceed until you've killed all the redeads. Shoot the ceiling with a fire arrow to reveal the light. Shine it on the corresponding sun to get the chest."
+					},
+					"Spirit Sun Chest 2": {
+						Name: "Spirit Sun Chest 2",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 169, y: 132, floor: "SPT" },
+						Age: Age.ADULT,
+						Order: 9,
+						LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. Proceed until you've killed all the redeads. Shoot the ceiling with a fire arrow to reveal the light. Shine it on the corresponding sun to get the chest."
+					},
+					"Spirit Sun Chest 3": {
+						Name: "Spirit Sun Chest 3",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 143, y: 132, floor: "SPT" },
+						Age: Age.ADULT,
+						Order: 10,
+						LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. Proceed until you've killed all the redeads. Shoot the ceiling with a fire arrow to reveal the light. Shine it on the corresponding sun to get the chest."
+					},
+					"Spirit Sun Chest 4": {
+						Name: "Spirit Sun Chest 4",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 143, y: 105, floor: "SPT" },
+						Age: Age.ADULT,
+						Order: 11,
+						LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. Proceed until you've killed all the redeads. Shoot the ceiling with a fire arrow to reveal the light. Shine it on the corresponding sun to get the chest."
+					}
+				}
 			},
-			{
-				Name: "Boss Key Chest in Center",
-				ItemGroup: ItemGroups.CHEST,
-				MapInfo: { x: 165, y: 95, floor: "MN" },
-				Age: Age.ADULT,
-				Order: 19,
-				LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
-				Region: "center"
+
+			forestRoom3: {
+				Exits: {},
+				ItemLocations: {}
+			},
+
+			waterRoom: {
+				Exits: {},
+				ItemLocations: {}
+			},
+
+			shadowBackSection: {
+				Exits: {},
+				ItemLocations: {
+					"Shadow Chest in Back": {
+						Name: "Shadow Chest in Back",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 186, y: 103, floor: "SHW" },
+						Age: Age.ADULT,
+						Order: 17,
+						LongDescription: "Use your lens of truth to navigate across the room. There's an invisible moving invisible platform you'll need to use. After the beamos platform, turn around and shoot the eye switch to spawn the chest.",
+						RequiredItems: [Items.FAIRY_BOW]
+					}
+				}
+			},
+
+			fireRoom: {
+				Exits: {},
+				ItemLocations: {}
+			},
+
+			lightRoom1: {
+				Exits: {},
+				ItemLocations: {
+					"Light Zelda's Lullaby Chest": {
+						Name: "Light Zelda's Lullaby Chest",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 194, y: 197, floor: "LIT" },
+						Age: Age.ADULT,
+						Order: 18,
+						LongDescription: "Use your gauntlets to gain access to this area. In the first room, kill all the enemies. In the next room, play Zelda's Lullaby to spawn the chest.",
+						RequiredSongs: [Songs.ZELDAS_LULLABY]
+					}
+				}
 			}
-        ]
-    }
+		}
+	}
 };

@@ -59,11 +59,7 @@ let addAllStandardDungeons = function() {
 	Object.keys(StandardDungeons).forEach(function(key) {
 		let dungeon = StandardDungeons[key];
 		MapLocations[key] = dungeon;
-
-        //TODO: this check is unneeded when MQ is fully complete!
-        if (MQDungeons[key]) {
-            MQDungeons[key].IsInUse = false;
-        }
+        MQDungeons[key].IsInUse = false;
 	});
 };
 
