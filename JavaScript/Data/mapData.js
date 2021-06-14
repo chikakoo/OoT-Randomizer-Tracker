@@ -311,10 +311,10 @@ let OwExits = {
     },
 
     "Hyrule Field": {
-        "Kokiri Forest": {
-            Name: "Kokiri Forest",
+        "Lost Woods Bridge": {
+            Name: "Lost Woods Bridge",
             ExitRegion: "main",
-            Map: "Kokiri Forest",
+            Map: "Lost Woods Bridge",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 326, y: 172 },
@@ -1915,8 +1915,8 @@ let MapLocations = {
         Regions: {
             main: {
                 Exits: {
-                    "Kokiri Forest": {
-                        OwExit: OwExits["Hyrule Field"]["Kokiri Forest"]
+                    "Lost Woods Bridge": {
+                        OwExit: OwExits["Hyrule Field"]["Lost Woods Bridge"]
                     },
                     "Zora's River": {
                         OwExit: OwExits["Hyrule Field"]["Zora's River"]

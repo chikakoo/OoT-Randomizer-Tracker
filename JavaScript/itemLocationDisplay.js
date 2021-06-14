@@ -182,7 +182,7 @@ let _setUpItemGroups = function(groupedItemLocationInfo, mapInfo) {
 		noDungeonSelectedDiv.innerText = "Unknown dungeon location - please select which dungeon this entrance leads to.";
 		mainContainer.appendChild(noDungeonSelectedDiv);
 	} 
-	else if (Settings.RandomizerSettings.shuffleOverworldEntrances && !isDungeon) {
+	else if (!isDungeon) {
 		let travelDiv = dce("div");
 		travelDiv.id = "travelDiv";
 		mainContainer.appendChild(travelDiv);
@@ -528,7 +528,7 @@ let _createLocationIconsDiv = function(itemLocationDiv, itemLocation, floor, isD
 	}
 	
 	// Walk Icon
-	if (!isDungeon && Settings.RandomizerSettings.shuffleOverworldEntrances)
+	if (!isDungeon)
 	{
 		let walkIcon = dce("div", "item-location-walk-icon");
 		walkIcon.onclick = function(event) {

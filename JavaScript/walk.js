@@ -39,7 +39,7 @@ Walk = {
 	 * Stamps the childWalkValue and adultWalkValue properties on all necessary item locations
 	 */
 	calculate: function() {
-		if (!this.currentItemLocation || !Settings.RandomizerSettings.shuffleOverworldEntrances) { return; }
+		if (!this.currentItemLocation) { return; }
 		
 		let rootMap = this.currentLocation;
 		let rootRegion = this.currentItemLocation.ExitRegion ? this.currentItemLocation.ExitRegion : this.currentItemLocation.Region;
@@ -79,8 +79,7 @@ Walk = {
 			let fromRegion = info.fromRegion;
             let entrances = _this._getAllOwEntrances(map, fromRegion, age, {}, currentLoop);
 			let entranceArray = [];
-            Object.keys(entrances).forEach(function(entranceName) {
-				let entrance = entrances[entranceName];
+            Object.values(entrances).forEach(function(entrance) {
 				let entranceData = {
 					map: entrance.IsInteriorExit ? entrance.Map : entrance.ExitMap,
 					region: entrance.IsInteriorExit ? entrance.Region : entrance.ExitRegion
@@ -125,7 +124,8 @@ Walk = {
 				if (foundExit === "sameMap") {
 					_this._getAllOwEntrances(map, foundRegion, age, owEntrances, currentLoop);
 				} else {
-					owEntrances[foundExit] = OwExits[foundMap][foundExit];
+					let owEntranceKey = `${foundMap}|${foundExit}`;
+					owEntrances[owEntranceKey] = OwExits[foundMap][foundExit];
 					if (!_this._relevantMaps.includes(foundMap)) { _this._relevantMaps.push(foundMap); }
 				}
 			});
@@ -137,7 +137,7 @@ Walk = {
 	 * Updates the travel div in the main screen
 	 */
 	updateTravelDiv: function() {
-		if (!this.currentItemLocation || !Settings.RandomizerSettings.shuffleOverworldEntrances) { return; }
+		if (!this.currentItemLocation) { return; }
 		if (!LocationSidebar.isLocationAMap()) { 
 			return; 
 		}
@@ -149,7 +149,7 @@ Walk = {
 		
 		let itemLocations = Data.getAllItemLocations(_currentLocationName); //TODO; make a new function to only get OwExits in dataRetriever (see the other TODO)
 		itemLocations.forEach(function(itemLocation) {
-			if (!itemLocation.OwShuffleExitName) { return; }
+			if (!itemLocation.OwShuffleExitName && Settings.RandomizerSettings.shuffleOverworldEntrances) { return; }
 
 			let childWalkValue = itemLocation.childWalkValue;
 			if (itemLocation.childWalkValue !== undefined) {
@@ -224,13 +224,18 @@ Walk = {
 			locationSpan.innerText = i === locations.length - 1 ? `${location.Name}` : `${location.Name};`;
 			spanContainer.appendChild(locationSpan);
 			
-			let isOWShuffleDataSet = location.OwShuffleMap && location.OwShuffleRegion;
+			let owShuffle = Settings.RandomizerSettings.shuffleOverworldEntrances;
+			let entranceDataSet = {
+				map: owShuffle ? location.OwShuffleMap : location.Map,
+				region: owShuffle ? location.OwShuffleMap : location.Region
+			};
+			let isEntranceDataSet = entranceDataSet.map && entranceDataSet.region;
 			let isRandomizedOwl = location.IsOwl && Settings.RandomizerSettings.randomizeOwlDrops;
-			if ((!location.IsOwl && !isOWShuffleDataSet) || (isRandomizedOwl && !isOWShuffleDataSet)) { 
+			if ((!location.IsOwl && !isEntranceDataSet) || (isRandomizedOwl && isEntranceDataSet)) { 
 				return spanContainer;
 			}
 
-			let locationToDisplay = location.OwShuffleMap;
+			let locationToDisplay = entranceDataSet.map;
 			if (location.IsOwl && !Settings.RandomizerSettings.randomizeOwlDrops) {
 				locationToDisplay = location.Map; // In this case, we're using the default location since it's not randomized
 			}

@@ -481,7 +481,10 @@ body {
 	background-image: url("../Images/Cancel Entrance Icon.png")
 }
 
-.item-location-expand-icon:hover, .item-location-map-icon:hover, .item-location-cancel-entrance-icon:hover {
+.item-location-expand-icon:hover, 
+.item-location-map-icon:hover, 
+.item-location-cancel-entrance-icon:hover,
+.item-location-walk-icon:hover {
 	cursor: pointer;
 }
 
