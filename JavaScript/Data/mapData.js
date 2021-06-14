@@ -1421,9 +1421,6 @@ let MapLocations = {
                     kokiriForestWarp: {
                         Name: "kokiriForestWarp"
                     },
-                    "To Kokiri Forest": {
-                        OwExit: OwExits["Lost Woods"]["To Kokiri Forest"]
-                    },
                     "Goron City": {
                         OwExit: OwExits["Lost Woods"]["Goron City"]
                     },
@@ -1672,9 +1669,19 @@ let MapLocations = {
             kokiriForestWarp: {
                 Exits: {
                     firstHalf: {
-                        Name: "firstHalf"
-                    },
+                        Name: "firstHalf",
+                        CustomRequirement: function(age) {
+                            // TODO: this doesn't work with decoupling!
+                            // find the link to this one by looping through all OwExits
+                            let linkedOWExit = OwExits["Lost Woods"]["To Kokiri Forest"];
+                            if (linkedOWExit && linkedOWExit.OwShuffleMap && linkedOWExit.OwShuffleExitName) {
+                                let otherSideExit = OwExits[linkedOWExit.OwShuffleMap][linkedOWExit.OwShuffleExitName];
+                                return Data.calculateObtainability(otherSideExit, age);
+                            }
 
+                            return false;
+                        }
+                    },
                     "To Kokiri Forest": {
                         OwExit: OwExits["Lost Woods"]["To Kokiri Forest"]
                     }
