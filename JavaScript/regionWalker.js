@@ -80,14 +80,14 @@ RegionWalker = {
         if (Data.randomizedSpawnLocations.useRandomizedSpawns) {
             if (Data.randomizedSpawnLocations[age] && Data.randomizedSpawnLocations[age].entranceName) {
                 let spawnData = Data.randomizedSpawnLocations[age];
-                this._markItemInfoForSpawnOrWarpData(spawnData.map, spawnData.region, spawnData.entranceName);
+                this._markItemInfoForSpawnOrWarpData(age, spawnData.map, spawnData.region, spawnData.entranceName);
             }
 
             let warpSongs = [Songs.MINUET_OF_FOREST, Songs.BOLERO_OF_FIRE, Songs.SERENADE_OF_WATER, 
                 Songs.NOCTURNE_OF_SHADOW, Songs.REQUIEM_OF_SPIRIT, Songs.PRELUDE_OF_LIGHT];
             let _this = this;
             warpSongs.forEach(function(song) {
-                _this._markItemInfoForSpawnOrWarpData(song.warpMap, song.warpRegion, song.entranceName);
+                _this._markItemInfoForSpawnOrWarpData(age, song.warpMap, song.warpRegion, song.entranceName);
             });
         }
     },
@@ -95,11 +95,12 @@ RegionWalker = {
     /**
      * Marks the can obtain item information for the given spawn or warp data
      * Includes the handling of temple of time entrances
+     * @param {Age} age - the age
      * @param {String} map - the map
      * @param {String} region - the region
      * @param {String} entranceName - the entrance name
      */
-    _markItemInfoForSpawnOrWarpData: function(map, region, entranceName) {
+    _markItemInfoForSpawnOrWarpData: function(age, map, region, entranceName) {
         if (map && region && entranceName && entranceName !== "none") {
             let itemLocation = MapLocations[map].Regions[region].ItemLocations[entranceName];
             this._markCanObtainItemInfo(itemLocation, age, ItemObtainability.YES, true);

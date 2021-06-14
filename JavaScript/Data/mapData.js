@@ -170,7 +170,7 @@ let OwExits = {
     "Lost Woods": {
         "To Kokiri Forest": {
             Name: "To Kokiri Forest",
-            ExitRegion: "firstHalf",
+            ExitRegion: "kokiriForestWarp",
             Map: "Kokiri Forest",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
@@ -1418,6 +1418,9 @@ let MapLocations = {
                             return Settings.GlitchesToAllow.midoSkip || Data.canPlaySong(Songs.SARIAS_SONG);
                         }
                     },
+                    kokiriForestWarp: {
+                        Name: "kokiriForestWarp"
+                    },
                     "To Kokiri Forest": {
                         OwExit: OwExits["Lost Woods"]["To Kokiri Forest"]
                     },
@@ -1552,11 +1555,9 @@ let MapLocations = {
                             return age === Age.CHILD || Data.canPlaySong(Songs.SARIAS_SONG);
                         }
                     },
-                    
-                    "To Kokiri Forest": {
-                        OwExit: OwExits["Lost Woods"]["To Kokiri Forest"]
+                    kokiriForestWarp: {
+                        Name: "kokiriForestWarp"
                     },
-
                     "Sacred Forest Meadow": {
                         OwExit: OwExits["Lost Woods"]["Sacred Forest Meadow"]
                     }
@@ -1666,6 +1667,19 @@ let MapLocations = {
                         NeedToBlastOrSmash: true
                     }
                 }
+            },
+
+            kokiriForestWarp: {
+                Exits: {
+                    firstHalf: {
+                        Name: "firstHalf"
+                    },
+
+                    "To Kokiri Forest": {
+                        OwExit: OwExits["Lost Woods"]["To Kokiri Forest"]
+                    }
+                },
+                ItemLocations: {}
             }
         },
     },
