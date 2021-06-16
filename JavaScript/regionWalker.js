@@ -453,7 +453,7 @@ RegionWalker = {
                     if (itemObtainability) {
                         let isRandomizedOwl = exit.OwExit.IsOwl && Settings.RandomizerSettings.randomizeOwlDrops;
                         let isShuffledDungeon = exit.OwExit.IsDungeonEntrance && Settings.RandomizerSettings.shuffleDungeonEntrances;
-                        let isShuffledOw = !exit.OwExit.IsOwl && Settings.RandomizerSettings.shuffleOverworldEntrances;
+                        let isShuffledOw = !exit.OwExit.IsOwl && !exit.OwExit.IsDungeonEntrance && Settings.RandomizerSettings.shuffleOverworldEntrances;
                         if (isRandomizedOwl || isShuffledDungeon || isShuffledOw) {
                             if (exit.OwExit.OwShuffleMap && exit.OwExit.OwShuffleExitName) {
                                 if (exit.OwExit.IsInteriorExit) {
