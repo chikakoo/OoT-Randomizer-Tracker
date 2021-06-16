@@ -1,5 +1,4 @@
 //TODO: remove Entrance on each item, since we're no longer using it for reverse walks
-
 let MapGroups = {
 	FOREST: 0,
 	FIELD_MARKET: 1,
@@ -1671,15 +1670,24 @@ let MapLocations = {
                     firstHalf: {
                         Name: "firstHalf",
                         CustomRequirement: function(age) {
-                            // TODO: this doesn't work with decoupling!
-                            // find the link to this one by looping through all OwExits
-                            let linkedOWExit = OwExits["Lost Woods"]["To Kokiri Forest"];
-                            if (linkedOWExit && linkedOWExit.OwShuffleMap && linkedOWExit.OwShuffleExitName) {
-                                let otherSideExit = OwExits[linkedOWExit.OwShuffleMap][linkedOWExit.OwShuffleExitName];
-                                return Data.calculateObtainability(otherSideExit, age);
-                            }
+                            if (age === Age.CHILD) { return true; }
 
-                            return false;
+                            // TODO: put a function in Data that can do this
+                            let linkedOwExit;
+                            Object.keys(OwExits).forEach(function(mapName) {
+                                if (linkedOwExit) { return; }
+                                Object.values(OwExits[mapName]).forEach(function(exit) {
+                                    if (exit.OwShuffleMap === "Lost Woods" &&
+                                        exit.OwShuffleExitName === "To Kokiri Forest" &&
+                                        !exit.ReadOnly) {
+                                            linkedOwExit = exit;
+                                            return;
+                                        }
+                                });
+                            });
+
+                            if (!linkedOwExit) { return false; }
+                            return Data.calculateObtainability(linkedOwExit, age);
                         }
                     },
                     "To Kokiri Forest": {
