@@ -84,25 +84,6 @@ SocketClient = {
 			refreshAll();
 		});
 		
-		// Sync up when a shuffled dungeon is updated
-		this._socket.on("dungeon_shuffle_updated", function(dungeon, newDungeon) {
-			console.log(`${dungeon} was updated to lead to ${newDungeon}!`);
-			
-			let mapInfo = MapLocations[dungeon];
-			
-			if (newDungeon === null) {
-				delete mapInfo.ShuffledDungeon;
-				delete StandardDungeons[dungeon].ShuffledDungeon;
-				//delete MQDungeons[dungeon].ShuffledDungeon; //TODO: turn back on when MQ works again!!!!
-			} else {
-				mapInfo.ShuffledDungeon = newDungeon;
-				StandardDungeons[dungeon].ShuffledDungeon = newDungeon;
-				//MQDungeons[dungeon].ShuffledDungeon = newDungeon;
-			}
-			
-			refreshAll();
-		});
-		
 		// Syncs up all item locations
 		this._socket.on("sync_all_item_locations", this.updateAllItemLocations);
 		
@@ -134,7 +115,7 @@ SocketClient = {
 			let map = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE ? itemLocation.ExitMap : itemLocation.Map;
 
 			console.log(`${itemLocation.Name} was updated at ${map} - Checked: ${itemLocation.playerHas}`);
-			SocketClient.updateItemLocation(itemLocation, true);
+			SocketClient.updateItemLocation(itemLocation);
 			
 			if (_currentLocationName === map) {
 				_refreshNotes(itemLocation);
@@ -147,16 +128,10 @@ SocketClient = {
 	/**
 	 * Syncs up one item location, given the map and location name
 	 */
-	updateItemLocation: function(itemLocation, skipShuffleCheck) {
+	updateItemLocation: function(itemLocation) {
 		let map = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE ? itemLocation.ExitMap : itemLocation.Map;
 		let region = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE ? itemLocation.ExitRegion : itemLocation.Region;
 		let name = itemLocation.Name;
-
-		let mapInfo = MapLocations[map];
-		if (!skipShuffleCheck && Data.getDoesEntranceShuffleApply(map) && mapInfo.ShuffledDungeon) {
-			mapInfo = MapLocations[mapInfo.ShuffledDungeon];
-		}
-		
 		let matchingLocation;
 
 		if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
@@ -208,17 +183,6 @@ SocketClient = {
 	},
 	
 	/**
-	 * Updates the dungeon that was selected
-	 * @param dungeon - the dungeon that was updated
-	 * @param newDungeon - where the dungeon now leads to
-	 */
-	dungeonShuffleUpdated: function(dungeon, newDungeon) {
-		if (this._socket) {
-			this._socket.emit("dungeon_shuffle_updated", dungeon, newDungeon);
-		}
-	},
-	
-	/**
 	 * Updates the item location
 	 * @param itemLocation - the item location object that was updated
 	 */
@@ -252,7 +216,6 @@ SocketClient = {
 	syncAll: function() {
 		if (this._socket) { 
 			this._syncAllInventory();
-			this._syncAllDungeons();
 			this._syncAllItemLocations();
 			this._socket.emit("spawn_location_updated", Data.randomizedSpawnLocations);
 		}
@@ -278,19 +241,6 @@ SocketClient = {
 		Object.keys(itemObj).forEach(function(itemKey) {
 			let item = itemObj[itemKey];
 			_this.inventoryUpdated(itemType, itemKey, item);
-		});
-	},
-	
-	/**
-	 * Syncs the dungeon mapping information with all clients
-	 */
-	_syncAllDungeons: function() {
-		let _this = this;
-		Object.keys(MapLocations).forEach(function(map) {
-			let mapInfo = MapLocations[map];
-			if (mapInfo.MapGroup === MapGroups.DUNGEONS) {
-				_this.dungeonShuffleUpdated(map, mapInfo.ShuffledDungeon);
-			}
 		});
 	},
 	

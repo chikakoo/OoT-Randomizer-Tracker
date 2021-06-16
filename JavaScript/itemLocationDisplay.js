@@ -12,14 +12,6 @@ let displayLocation = function(locationName) {
 	
 	let mapInfo = MapLocations[locationName];
 	let mapNameToGetInfoFor = _currentLocationName;
-	
-	// Take the entrance shuffle into consideration - the map name to be used for the
-	// dungeons may be different than normal
-	let doesEntranceShuffleApply = Data.getDoesEntranceShuffleApply(locationName);
-	if (doesEntranceShuffleApply && mapInfo.ShuffledDungeon) {
-		mapNameToGetInfoFor = mapInfo.ShuffledDungeon;
-		mapInfo = MapLocations[mapInfo.ShuffledDungeon]
-	}
 
 	let groupedItemLocationInfo = getGroupedLocationInfo(mapNameToGetInfoFor);
 	_setUpItemGroups(groupedItemLocationInfo, mapInfo);
@@ -32,11 +24,7 @@ let displayLocation = function(locationName) {
 		floor = mapInfo.Floors[mapInfo.StartingFloorIndex];
 	}
 	
-	if (doesEntranceShuffleApply && !MapLocations[locationName].ShuffledDungeon) {
-		MapUI.clearMap();
-	} else {
-		MapUI.setMap(locationName, groupedItemLocationInfo, floor);
-	}
+	MapUI.setMap(locationName, groupedItemLocationInfo, floor);
 };
 
 /**
@@ -74,7 +62,7 @@ let _refreshSelectedLocation = function() {
 let updateItemDisplay = function() {
 	if (!LocationSidebar.isLocationAMap()) { return; }
 
-	let itemLocations = Data.getItemLocationsForShuffledDungeon(_currentLocationName);
+	let itemLocations = Data.getAllItemLocations(_currentLocationName);
 	itemLocations.forEach(function(itemLocation) {
 		let canGetAsChild = Data.getItemObtainability(itemLocation, Age.CHILD);
 		let canGetAsAdult = Data.getItemObtainability(itemLocation, Age.ADULT);
@@ -173,22 +161,12 @@ let _setUpItemGroups = function(groupedItemLocationInfo, mapInfo) {
 	let mainContainer = document.getElementById("itemLocationsContainer");
 	mainContainer.innerHTML = ""; // Clean this up first so we don't get duplicates
 
-	let isShuffled = Data.getDoesEntranceShuffleApply(_currentLocationName, true);
-	let isDungeon = mapInfo.MapGroup === MapGroups.DUNGEONS
-	let isDungeonNotSelected = isShuffled && isDungeon && !_setUpDungeonSelections();
+	let travelDiv = dce("div");
+	travelDiv.id = "travelDiv";
+	mainContainer.appendChild(travelDiv);
 	
-	if (isDungeonNotSelected) {
-		let noDungeonSelectedDiv = dce("div", "no-dungeon-selected");
-		noDungeonSelectedDiv.innerText = "Unknown dungeon location - please select which dungeon this entrance leads to.";
-		mainContainer.appendChild(noDungeonSelectedDiv);
-	} 
-	else if (!isDungeon) {
-		let travelDiv = dce("div");
-		travelDiv.id = "travelDiv";
-		mainContainer.appendChild(travelDiv);
-	} 
-	
-	if (isDungeon && !isDungeonNotSelected && Settings.TrackerSettings.dungeonItemDisplay === DungeonItemDisplaySettings.BY_SUGGESTED_ORDER) {
+	let isDungeon = mapInfo.MapGroup === MapGroups.DUNGEONS;
+	if (isDungeon && Settings.TrackerSettings.dungeonItemDisplay === DungeonItemDisplaySettings.BY_SUGGESTED_ORDER) {
 		let allLocations = [];
 		Object.keys(groupedItemLocationInfo).forEach(function(groupId) {
 			if (groupedItemLocationInfo[groupId]) {
@@ -199,7 +177,7 @@ let _setUpItemGroups = function(groupedItemLocationInfo, mapInfo) {
 		});
 		
 		allLocations.sort((loc1, loc2) => (loc1.Order > loc2.Order) ? 1 : -1);
-		let dungeonName = (isDungeon && isShuffled) ? MapLocations[_currentLocationName].ShuffledDungeon : _currentLocationName;
+		let dungeonName = _currentLocationName;
 		if (dungeonName === "Spirit Temple") {
 			let useAltOrder = mapInfo.IsMasterQuest ?
 				(Equipment.STRENGTH.currentUpgrade > 1 && Items.BOMBCHU.playerHas && Items.HOOKSHOT.playerHas) : //TODO: is longshot needed instead?
@@ -225,8 +203,7 @@ let _setUpItemGroups = function(groupedItemLocationInfo, mapInfo) {
 		
 		_createItemLocations(allLocations, allItemLocationsDiv, true, isDungeon);
 		mainContainer.appendChild(allItemLocationsDiv);
-	}
-	else if (!isShuffled || (isDungeon && !isDungeonNotSelected) || !isDungeon) {
+	} else {
 		Object.keys(groupedItemLocationInfo).forEach(function(groupId) {
 			let itemGroup = groupedItemLocationInfo[groupId]
 			let itemGroupDiv = dce("div", "item-group");
@@ -250,61 +227,6 @@ let _setUpItemGroups = function(groupedItemLocationInfo, mapInfo) {
 		});
 	}
 };
-
-/**
- * Sets up the dungeon selections for when the dungeon entrances are being shuffled
- * @param mapInfo - the current map's object from one of the map data files
- * @return - true if the dungeon has a selection currently (or if it doesn't apply); false if it doesn't
- */
-let _setUpDungeonSelections = function() {
-	let mapInfo = MapLocations[_currentLocationName];
-	let returnValue = false;
-	let mainContainer = document.getElementById("itemLocationsContainer");
-	let dungeonNames = [
-		"Deku Tree", "Dodongo's Cavern", "Jabu Jabu's Belly", 
-		"Forest Temple", "Fire Temple", "Water Temple", "Shadow Temple", "Spirit Temple", 
-		"Ice Cavern", "Bottom of the Well", "Training Grounds"
-	];
-	let dungeonIconContainer = dce("div", "dungeon-group");
-	dungeonIconContainer.id = "dungeonIconContainer";
-	dungeonNames.forEach(function(dungeonName) {
-		let dungeonIcon = dce("div", "dungeon-icon");
-		dungeonIcon.style.backgroundImage = `url("Images/Dungeons/${dungeonName}.png")`;
-		dungeonIcon.title = dungeonName;
-		
-		if (mapInfo.ShuffledDungeon === dungeonName) {
-			returnValue = true;
-			addCssClass(dungeonIcon, "dungeon-selected");
-		}
-		
-		dungeonIcon.onclick = function(event) {
-			event.stopPropagation();
-			
-			let clearMap = false;
-			if (mapInfo.ShuffledDungeon === dungeonName) {
-				clearMap = true;
-				delete mapInfo.ShuffledDungeon;
-				delete StandardDungeons[_currentLocationName].ShuffledDungeon;
-				delete MQDungeons[_currentLocationName].ShuffledDungeon;
-			} else {
-				mapInfo.ShuffledDungeon = dungeonName;
-				StandardDungeons[_currentLocationName].ShuffledDungeon = dungeonName;
-				MQDungeons[_currentLocationName].ShuffledDungeon = dungeonName;
-			}
-			displayLocation(_currentLocationName);
-			
-			SocketClient.dungeonShuffleUpdated(_currentLocationName, clearMap ? null : dungeonName);
-			refreshAll();
-			
-			if (clearMap) { 
-				MapUI.clearMap(); 
-			}
-		};
-		dungeonIconContainer.appendChild(dungeonIcon);
-	});
-	mainContainer.appendChild(dungeonIconContainer);
-	return returnValue;
-}
 
 /**
  * Toggles the item locations
@@ -411,7 +333,7 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon, i
 			owEntranceGroupDiv.appendChild(entranceDropdown);
 			itemLocationDiv.appendChild(owEntranceGroupDiv);
 
-			refreshEntranceDropdowns(itemLocation);
+			refreshEntranceDropdowns(itemLocation, locDropdown, entranceDropdown);
 		}
 		
 		let inlineNotesDiv = dce("div", "item-location-inline-notes");
@@ -432,16 +354,17 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon, i
 /**
  * Refreshes the entrance dropdowns so that they contain the correct text/choices/click handlers
  */
-let refreshEntranceDropdowns = function(itemLocation) {
+let refreshEntranceDropdowns = function(itemLocation, loc, entrance) {
 	if (itemLocation.ItemGroup !== ItemGroups.OW_ENTRANCE) { return; }
 
-	let locDropdown = document.getElementById(`${itemLocation.Name}-location-dropdown`);
-	let entranceDropdown = document.getElementById(`${itemLocation.Name}-entrance-dropdown`);
+	let locDropdown = loc || document.getElementById(`${itemLocation.Name}-location-dropdown`);
+	let entranceDropdown = entrance || document.getElementById(`${itemLocation.Name}-entrance-dropdown`);
 
 	let defaultMap = itemLocation.OwShuffleMap;
 	let defaultExit = itemLocation.OwShuffleExitName;
 
-	let options = Data.getOWMaps();
+	let isDungeon = itemLocation.IsDungeonEntrance;
+	let options = Data.getOWMaps(isDungeon);
 	options.unshift("<no selection>");
 	_fillStringDropdown(locDropdown, options, defaultMap);
 
@@ -528,29 +451,26 @@ let _createLocationIconsDiv = function(itemLocationDiv, itemLocation, floor, isD
 	}
 	
 	// Walk Icon
-	if (!isDungeon)
-	{
-		let walkIcon = dce("div", "item-location-walk-icon");
-		walkIcon.onclick = function(event) {
-			event.stopPropagation();
-			if (Walk.currentLocation !== _currentLocationName || Walk.currentItemLocationName !== locationName) {
-				Walk.currentLocation = _currentLocationName;
-				Walk.currentItemLocationName = locationName;
-				Walk.currentItemLocation = itemLocation;
-			} else {
-				let travelDiv = document.getElementById("travelDiv");
-				if (travelDiv) { travelDiv.innerHTML = ""; }
+	let walkIcon = dce("div", "item-location-walk-icon");
+	walkIcon.onclick = function(event) {
+		event.stopPropagation();
+		if (Walk.currentLocation !== _currentLocationName || Walk.currentItemLocationName !== locationName) {
+			Walk.currentLocation = _currentLocationName;
+			Walk.currentItemLocationName = locationName;
+			Walk.currentItemLocation = itemLocation;
+		} else {
+			let travelDiv = document.getElementById("travelDiv");
+			if (travelDiv) { travelDiv.innerHTML = ""; }
 
-				Walk.currentLocation = "";
-				Walk.currentItemLocationName = "";
-				Walk.currentItemLocation = null;
-			}
-						
-			refreshAll();
+			Walk.currentLocation = "";
+			Walk.currentItemLocationName = "";
+			Walk.currentItemLocation = null;
 		}
-		
-		locationIconsDiv.appendChild(walkIcon);
+					
+		refreshAll();
 	}
+	
+	locationIconsDiv.appendChild(walkIcon);
 
 	// Map Icon
 	let mapIcon = dce("div", "item-location-map-icon");

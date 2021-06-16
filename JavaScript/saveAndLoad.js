@@ -38,8 +38,7 @@ let SaveAndLoad = {
         let dataToSave = {
             // MapName: {
             //  IsInUse: bool (used by MQ dungeons)
-            //  ShuffledDungeon: string
-            //   RegionName: {
+            //  RegionName: {
             //      ItemLocations: {
             //          ItemLocationName: {
             //              playerHas: bool
@@ -54,10 +53,6 @@ let SaveAndLoad = {
             if (mapInfo.IsInUse) {
                 currentMapData = currentMapData || {};
                 currentMapData.IsInUse = true;
-            }
-            if (mapInfo.ShuffledDungeon) {
-            	currentMapData = currentMapData || {};
-            	currentMapData.ShuffledDungeon = mapInfo.ShuffledDungeon;
             }
 
             Object.keys(mapInfo.Regions).forEach(function(regionName) {
@@ -254,14 +249,10 @@ let SaveAndLoad = {
         let mqSetting = Settings.RandomizerSettings.dungeonSetting;
         if (MQDungeons && mqSetting !== DungeonSettings.STANDARD) {
             Object.keys(MQDungeons).forEach(function(mapName) {
-            	let shuffledDungeon = loadedObject.StandardDungeonData[mapName] && loadedObject.StandardDungeonData[mapName].ShuffledDungeon;
-            	let mapToUse = shuffledDungeon && Settings.RandomizerSettings.shuffleDungeonEntrances ?
-            		shuffledDungeon : mapName;
-            	
-                if ((loadedObject.MQDungeonData[mapToUse] && loadedObject.MQDungeonData[mapToUse].IsInUse) || 
+                if ((loadedObject.MQDungeonData[mapName] && loadedObject.MQDungeonData[mapName].IsInUse) || 
                     mqSetting === DungeonSettings.MASTER_QUEST) {
                     toggleDungeonMapType(mapName);
-                    MQDungeons[mapToUse].IsInUse = true;
+                    MQDungeons[mapName].IsInUse = true;
                 }
             });
         }
@@ -285,12 +276,6 @@ let SaveAndLoad = {
                 let loadedMapInfo = loadedObject[mapName];
                 if (!loadedMapInfo) { return; } // Didn't load any info for this map
                 if (skipDungeons && loadedMapInfo.MapGroup === MapGroups.DUNGEONS) { return; }
-                
-                let mapInfo = currentObject[mapName];
-                if (loadedMapInfo.ShuffledDungeon) {
-                	mapInfo.ShuffledDungeon = loadedMapInfo.ShuffledDungeon;
-                }
-
                 if (!loadedMapInfo.Regions) { return; } // In this case, we have a dungeon that doesn't have any items changed
                 
                 Object.keys(loadedMapInfo.Regions).forEach(function(regionName) {

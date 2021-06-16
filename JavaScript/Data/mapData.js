@@ -86,16 +86,6 @@ let MapTypes = {
  */
 let toggleDungeonMapType = function(mapName) {
 	let map = MapLocations[mapName];
-	if (Data.getDoesEntranceShuffleApply(mapName)) {
-		let shuffledMapName = MapLocations[mapName].ShuffledDungeon;
-		if (!shuffledMapName) {
-			return;
-		}
-
-		map = MapLocations[shuffledMapName];
-		mapName = shuffledMapName;
-	}
-
 	if (map.IsMasterQuest) {
 		_setDungeonTypeOfMap(mapName, MapTypes.STANDARD);
 	} else {
@@ -156,9 +146,7 @@ let OwExits = {
             MapInfo: { x: 263, y: 65 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Deku Tree.",
-            OneWayEntrance: true, // This is only used for Spirit Temple to Desert Colossus checks
             IsDungeonEntrance: true,
-            ReadOnly: true,
             CustomRequirement: function(age) {
                 let isEntranceShuffle = Data.getDoesEntranceShuffleApply("Deku Tree");
                 return isEntranceShuffle ? true : age === Age.CHILD;
@@ -302,9 +290,7 @@ let OwExits = {
             MapInfo: { x: 190, y: 10 },
             Age: Age.ADULT,
             LongDescription: "This is the entrance to the Forest Temple.",
-            OneWayEntrance: true, // This is only used for Spirit Temple to Desert Colossus checks
             IsDungeonEntrance: true,
-            ReadOnly: true,
             RequiredItems: [Items.HOOKSHOT]
         }
     },
@@ -482,14 +468,14 @@ let OwExits = {
             ExitRegion: "main",
             Map: "Ganon's Castle",
             Region: "main",
+            OwShuffleMap: "Ganon's Castle",
+            OwShuffleRegion: "main",
+            OwShuffleExitName: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: -100, y: -100 }, // We'll never care about this
             Age: Age.ADULT,
-            LongDescription: "This is the entrance to the Deku Tree.",
-            OneWayEntrance: true,
-            IsDungeonEntrance: true,
-            disabled: true, // This shouldn't show up as a task; disabling will still let the region walker walk here
-            ReadOnly: true,
+            LongDescription: "This is the entrance to Ganon's Castle.",
+            Hide: true,
             CustomRequirement: function(age) {
 				switch (Settings.RandomizerSettings.medallionSetting) {
 					case MedallionSettings.VANILLA:
@@ -580,9 +566,7 @@ let OwExits = {
             MapInfo: { x: 227, y: 170 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Bottom of the Well.",
-            OneWayEntrance: true, // This is only used for Spirit Temple to Desert Colossus checks
             IsDungeonEntrance: true,
-            ReadOnly: true,
             CustomRequirement: function(age) {
                 if (!Data.canBeAge(Age.CHILD)) { return false; }
                 if (age === Age.ADULT && !Settings.RandomizerSettings.shuffleDungeonEntrances) {
@@ -636,9 +620,7 @@ let OwExits = {
             MapInfo: { x: 275, y: 140 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Shadow Temple.",
-            OneWayEntrance: true,
-            IsDungeonEntrance: true,
-            ReadOnly: true
+            IsDungeonEntrance: true
         }
     },
 
@@ -694,9 +676,7 @@ let OwExits = {
             MapInfo: { x: 175, y: 172 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to Dodongo's Cavern.",
-            OneWayEntrance: true, // This is only used for Spirit Temple to Desert Colossus checks
             IsDungeonEntrance: true,
-            ReadOnly: true,
             CustomRequirement: function(age) {
 				return age === Age.ADULT || Data.hasExplosivesOrStrength();
             }
@@ -743,9 +723,7 @@ let OwExits = {
             MapInfo: { x: 190, y: 10 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Fire Temple.",
-            OneWayEntrance: true, // This is only used for Spirit Temple to Desert Colossus checks
             IsDungeonEntrance: true,
-            ReadOnly: true,
             CustomRequirement: function(age) {
                 return age === Age.ADULT || Settings.RandomizerSettings.shuffleDungeonEntrances;
             }
@@ -873,9 +851,7 @@ let OwExits = {
             MapInfo: { x: 142, y: 97 },
             Age: Age.CHILD,
             LongDescription: "This is the entrance to Jabu Jabu.",
-            OneWayEntrance: true, // This is only used for Spirit Temple to Desert Colossus checks
-            IsDungeonEntrance: true,
-            ReadOnly: true
+            IsDungeonEntrance: true
         },
         "Ice Cavern Entrance": {
             Name: "Ice Cavern Entrance",
@@ -886,9 +862,7 @@ let OwExits = {
             MapInfo: { x: 185, y: 19 },
             Age: Age.ADULT,
             LongDescription: "This is the entrance to the Ice Cavern.",
-            OneWayEntrance: true, // This is only used for Spirit Temple to Desert Colossus checks
-            IsDungeonEntrance: true,
-            ReadOnly: true
+            IsDungeonEntrance: true
         }
     },
 
@@ -945,9 +919,7 @@ let OwExits = {
             MapInfo: { x: 204, y: 215 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Water Temple.",
-            OneWayEntrance: true, // This is only used for Spirit Temple to Desert Colossus checks
             IsDungeonEntrance: true,
-            ReadOnly: true,
             CustomRequirement: function(age) {
                 let canEnterNormally = Equipment.IRON_BOOTS.playerHas && Items.HOOKSHOT.playerHas;
 				let canDiveDown = Items.HOOKSHOT.currentUpgrade === 2 && Equipment.SCALE.currentUpgrade === 2;
@@ -1032,9 +1004,7 @@ let OwExits = {
             MapInfo: { x: 124, y: 197 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Gerudo Training Grounds.",
-            OneWayEntrance: true, // This is only used for Spirit Temple to Desert Colossus checks
             IsDungeonEntrance: true,
-            ReadOnly: true,
             CustomRequirement: function(age) {
 				if (age === Age.CHILD) {
 					return Settings.GlitchesToAllow.gtgChildAllowed;
@@ -1098,44 +1068,189 @@ let OwExits = {
             MapInfo: { x: 63, y: 150 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Spirit Temple.",
-            OneWayEntrance: true, // This is only used for Spirit Temple to Desert Colossus checks
-            IsDungeonEntrance: true,
-            ReadOnly: true
-        },
-        "Spirit Temple Hands": {
-            Name: "Spirit Temple Hands",
+            IsDungeonEntrance: true
+        }
+    },
+
+    "Deku Tree": {
+        "Exit": {
+            Name: "Exit",
             ExitRegion: "main",
-            ComputedEntrance: function() {
-                return Data.getDungeonEntranceInfo("Spirit Temple");
-            },
+            Map: "Kokiri Forest",
+            Region: "afterMido",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: -100, y: -100 }, // We don't really want to see this
-            Hide: true,
+            MapInfo: { x: -100, y: -100, floor: "F2" },
             ReadOnly: true,
+            IsDungeonExit: true,
             Age: Age.EITHER,
-            LongDescription: "These are the hands at the top of the Spirit Temple.",
-            CustomRequirement(age) {
-                return false;
-            }
-        },
+            LongDescription: "This is the exit from the Deku Tree."
+        }
+    },
+
+    "Dodongo's Cavern": {
+        "Exit": {
+            Name: "Exit",
+            ExitRegion: "main",
+            Map: "Death Mountain Trail",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: -100, y: -100, floor: "F1" },
+            ReadOnly: true,
+            IsDungeonExit: true,
+            Age: Age.EITHER,
+            LongDescription: "This is the exit from Dodongo's Cavern."
+        }
+    },
+
+    "Jabu Jabu's Belly": {
+        "Exit": {
+            Name: "Exit",
+            ExitRegion: "main",
+            Map: "Zora's Fountain",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: -100, y: -100, floor: "F1" },
+            ReadOnly: true,
+            IsDungeonExit: true,
+            Age: Age.EITHER,
+            LongDescription: "This is the exit from Jabu Jabu's Belly."
+        }
+    },
+
+    "Forest Temple": {
+        "Exit": {
+            Name: "Exit",
+            ExitRegion: "main",
+            Map: "Sacred Forest Meadow",
+            Region: "afterGate",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: -100, y: -100, floor: "F1" },
+            ReadOnly: true,
+            IsDungeonExit: true,
+            Age: Age.EITHER,
+            LongDescription: "This is the exit from the Forest Temple."
+        }
+    },
+
+    "Fire Temple": {
+        "Exit": {
+            Name: "Exit",
+            ExitRegion: "main",
+            Map: "Death Mountain Crater",
+            Region: "bottom",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: -100, y: -100, floor: "F1" },
+            ReadOnly: true,
+            IsDungeonExit: true,
+            Age: Age.EITHER,
+            LongDescription: "This is the exit from the Fire Temple."
+        }
+    },
+
+    "Water Temple": {
+        "Exit": {
+            Name: "Exit",
+            ExitRegion: "main",
+            Map: "Lake Hylia",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: -100, y: -100, floor: "F3" },
+            ReadOnly: true,
+            IsDungeonExit: true,
+            Age: Age.EITHER,
+            LongDescription: "This is the exit from the Water Temple."
+        }
+    },
+
+    "Shadow Temple": {
+        "Exit": {
+            Name: "Exit",
+            ExitRegion: "main",
+            Map: "Graveyard",
+            Region: "top",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: -100, y: -100, floor: "F1" },
+            ReadOnly: true,
+            IsDungeonExit: true,
+            Age: Age.EITHER,
+            LongDescription: "This is the exit from the Shadow Temple."
+        }
     },
 
     "Spirit Temple": {
+        "Exit": {
+            Name: "Exit",
+            ExitRegion: "main",
+            Map: "Graveyard",
+            Region: "top",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: -100, y: -100, floor: "F1" },
+            ReadOnly: true,
+            IsDungeonExit: true,
+            Age: Age.EITHER,
+            LongDescription: "This is the exit from the Shadow Temple."
+        },
         "Desert Colossus": {
             Name: "Desert Colossus",
-            ExitRegion: "silverGauntsStatueHand",
+            ExitRegion: "statueHands",
             Map: "Desert Colossus",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 174, y: 241, floor: "F3" },
             Age: Age.EITHER,
-            LongDescription: "This is the entrance to the wasteland.",
+            LongDescription: "This is the exit to either of the statue hands form the spirit temple.",
             ReadOnly: true,
+            IsDungeonExit: true,
             Hide: true,
             OneWayEntrance: true,
             OwShuffleMap: "Desert Colossus",
             OwShuffleRegion: "main",
             OwShuffleExitName: "Haunted Wasteland"
+        }
+    },
+
+    "Bottom of the Well": {
+        "Exit": {
+            Name: "Exit",
+            ExitRegion: "main",
+            Map: "Kakariko Village",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: -100, y: -100, floor: "F1" },
+            ReadOnly: true,
+            IsDungeonExit: true,
+            Age: Age.EITHER,
+            LongDescription: "This is the exit from the Bottom of the Well."
+        }
+    },
+
+    "Ice Cavern": {
+        "Exit": {
+            Name: "Exit",
+            ExitRegion: "main",
+            Map: "Zora's Fountain",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: -100, y: -100 },
+            ReadOnly: true,
+            IsDungeonExit: true,
+            Age: Age.EITHER,
+            LongDescription: "This is the exit from the Ice Cavern."
+        }
+    },
+
+    "Training Grounds": {
+        "Exit": {
+            Name: "Exit",
+            ExitRegion: "main",
+            Map: "Gerudo Fortress",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: -100, y: -100, floor: "F1" },
+            ReadOnly: true,
+            IsDungeonExit: true,
+            Age: Age.EITHER,
+            LongDescription: "This is the exit from the Gerudo Training Grounds."
         }
     }
 }
@@ -6009,19 +6124,9 @@ let MapLocations = {
                         OwExit: OwExits["Desert Colossus"]["Spirit Temple Entrance"]
                     },
 
-                    "Spirit Temple Hands": {
-                        OwExit: OwExits["Desert Colossus"]["Spirit Temple Hands"]
-                    },
-
                     "Requiem Teleport Pad": {
                         OwExit: OwExits["Desert Colossus"]["Requiem Teleport Pad"]
                     }
-                },
-
-                Entrances: {
-                    "Haunted Wasteland": {},
-                    "Spirit Temple Hands": {},
-                    "Requiem Teleport Pad": {}
                 },
 
                 ItemLocations: {
@@ -6097,6 +6202,8 @@ let MapLocations = {
                         RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}]
                     },
                     "Requiem of Spirit": {
+                        //TODO: with decoupling, we'll have to check that we can enter whatever leads here
+                        // this will be the same as the check for the lost woods bridge!
                         Name: "Requiem of Spirit",
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 63, y: 149 },

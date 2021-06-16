@@ -451,37 +451,10 @@ RegionWalker = {
                 if (exit.OwExit) {
                     let itemObtainability = Data.calculateObtainability(exit.OwExit, age, mapName);
                     if (itemObtainability) {
-                        if (exit.OwExit.IsDungeonEntrance) {
-
-                            let map = exit.OwExit.Map;
-                            let mapInfo = MapLocations[map];
-
-                            if (Data.getDoesEntranceShuffleApply(map)) {    
-                                delete exit.OwExit.OwShuffleExitName;
-                                delete exit.OwExit.OwShuffleMap;
-                                delete exit.OwExit.OwShuffleRegion;
-                                delete exit.OwExit.SecondCustomRequirement;
-
-                                if (!mapInfo.ShuffledDungeon) {
-                                    _this._markUnvisitedDungeonAccessWalkInfo(MapLocations[map], age, true);
-                                    return;
-                                }
-                                map = mapInfo.ShuffledDungeon;
-                                if (map === "Spirit Temple") {
-                                    exit.OwExit.disabled = false;
-                                    exit.OwExit.OwShuffleExitName = "Spirit Temple Hands",
-                                    exit.OwExit.OwShuffleMap = "Desert Colossus",
-                                    exit.OwExit.OwShuffleRegion = "main"
-                                }
-                            }
-
-                            _this._addToWalkMap(age, mapName, regionName, exitName, map, "main"); //TODO: exit?
-                            _this._walkInRegion(age, map, "main");
-                            return;
-                        }
-
                         let isRandomizedOwl = exit.OwExit.IsOwl && Settings.RandomizerSettings.randomizeOwlDrops;
-                        if (isRandomizedOwl || (!exit.OwExit.IsOwl && Settings.RandomizerSettings.shuffleOverworldEntrances)) {
+                        let isShuffledDungeon = exit.OwExit.IsDungeonEntrance && Settings.RandomizerSettings.shuffleDungeonEntrances;
+                        let isShuffledOw = !exit.OwExit.IsOwl && Settings.RandomizerSettings.shuffleOverworldEntrances;
+                        if (isRandomizedOwl || isShuffledDungeon || isShuffledOw) {
                             if (exit.OwExit.OwShuffleMap && exit.OwExit.OwShuffleExitName) {
                                 if (exit.OwExit.IsInteriorExit) {
                                     _this._markCanObtainItemInfo(exit.OwExit, age, itemObtainability);
@@ -515,15 +488,6 @@ RegionWalker = {
         object.WalkInfo = object.WalkInfo || {};
         object.WalkInfo.canAccess = object.WalkInfo.canAccess || {};
         object.WalkInfo.canAccess[age] = value;
-    },
-
-    /**
-     * Sets can access info for unvisited dungeons
-     */
-    _markUnvisitedDungeonAccessWalkInfo: function(itemLocation, age, value) {
-        itemLocation.WalkInfo = itemLocation.WalkInfo || {};
-        itemLocation.WalkInfo.canVisitDungeon = itemLocation.WalkInfo.canVisitDungeon || {};
-        itemLocation.WalkInfo.canVisitDungeon[age] = value;
     },
 
     /**

@@ -564,3 +564,9 @@ textarea {
 	margin-right: 2px;
 	margin-left: 2px;
 }
+
+/** OW dropdowns */
+select:disabled {
+	color: black;
+	font-weight: bold;
+}

@@ -96,13 +96,7 @@ let _performItemDisabling = function() {
 			delete itemLocation.canDoAdultCache;
 			
 			// Entrances
-			itemLocation.disabled = false; // Default to false
-			
-			if (itemLocation.IsDungeonEntrance) {
-				itemLocation.disabled = true;
-			} else { 
-				itemLocation.disabled = !Data.shouldDisplayItemLocation(itemLocation);
-			}
+			itemLocation.disabled = !Data.shouldDisplayItemLocation(itemLocation);
 			
 			// Gold Skulltulas
 			if (itemLocation.ItemGroup === ItemGroups.SKULLTULA) {

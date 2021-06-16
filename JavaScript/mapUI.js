@@ -89,10 +89,6 @@ let MapUI = {
 
 		removeCssClass(floorDiv, "nodisp");
 		let mapInfo = MapLocations[mapName];
-		let doesEntranceShuffleApply = Data.getDoesEntranceShuffleApply(mapName);
-		if (doesEntranceShuffleApply && mapInfo.ShuffledDungeon) {
-			mapInfo = MapLocations[mapInfo.ShuffledDungeon]
-		}
 
 		let _this = this;
 		mapInfo.Floors.forEach(function(currentFloor) {
@@ -100,13 +96,7 @@ let MapUI = {
 			floorButton.innerText = currentFloor;
 			floorButton.dataset.floor = currentFloor;
 			floorButton.onclick = function(event) {
-				let mapNameToGetInfoFor = _this._currentMapName;
-				let mapInfo = MapLocations[_this._currentMapName];
-				let doesEntranceShuffleApply = Data.getDoesEntranceShuffleApply(mapName);
-				if (doesEntranceShuffleApply && mapInfo.ShuffledDungeon) {
-					mapNameToGetInfoFor = mapInfo.ShuffledDungeon;
-				}
-				let groupedItemLocationInfo = getGroupedLocationInfo(mapNameToGetInfoFor);
+				let groupedItemLocationInfo = getGroupedLocationInfo(_this._currentMapName);
 				_this.setMap(mapName, groupedItemLocationInfo, event.target.dataset.floor);
 			}
 			if (floor === currentFloor) {
@@ -124,10 +114,6 @@ let MapUI = {
 		
 		let mapInfo = MapLocations[this._currentMapName];
 		let mapName = this._currentMapName;
-		let doesEntranceShuffleApply = Data.getDoesEntranceShuffleApply(this._currentMapName);
-		if (doesEntranceShuffleApply && mapInfo.ShuffledDungeon) {
-			mapName = mapInfo.ShuffledDungeon;
-		}
 		let groupedItemLocationInfo = getGroupedLocationInfo(mapName);
 		this._setUpIcons(this._currentMapName, groupedItemLocationInfo, this._currentFloor);
 		
@@ -136,22 +122,13 @@ let MapUI = {
 	
 	_setUpIcons: function(mapName, groupedItemLocationInfo, floor) {
 		if (mapName === "") { return; }
-		let mapInfo = MapLocations[mapName];
-		
-		// Take the entrance shuffle into consideration - the map name to be used for the
-		// dungeons may be different than normal
-		let doesEntranceShuffleApply = Data.getDoesEntranceShuffleApply(mapName);
-		let shuffledMapName = mapName;
-		if (doesEntranceShuffleApply && mapInfo.ShuffledDungeon) {
-			shuffledMapName = mapInfo.ShuffledDungeon;
-		}
-		
+
 		if (floor === "ANY") {
 			floor = "HYR"; // This is only used by the Castle map currently... redo this if it ends up being important
 		}
 		
 		let mapImageAndIcons = document.getElementById("mapImageAndIcons");
-		let imageName = this._currentFloor ? `${shuffledMapName} - ${floor}` : shuffledMapName;
+		let imageName = this._currentFloor ? `${mapName} - ${floor}` : mapName;
 		mapImageAndIcons.style.backgroundImage = `url("Images/Maps/${imageName}.png")`;
 		
 		this._iconDivs = {};
@@ -354,17 +331,7 @@ let MapUI = {
 	 */
 	jumpToIcon: function(locationName, floor) {
 		if (floor && this._currentFloor !== floor) {
-			// Take the entrance shuffle into consideration - the map name to be used for the
-			// dungeons may be different than normal
-			let mapInfo = MapLocations[this._currentMapName];
-			let doesEntranceShuffleApply = Data.getDoesEntranceShuffleApply(this._currentMapName);
-			let shuffledMapName = this._currentMapName;
-			if (doesEntranceShuffleApply && mapInfo.ShuffledDungeon) {
-				shuffledMapName = mapInfo.ShuffledDungeon;
-				mapInfo = MapLocations[shuffledMapName]
-			}
-			
-			let groupedItemLocationInfo = getGroupedLocationInfo(shuffledMapName);
+			let groupedItemLocationInfo = getGroupedLocationInfo(this._currentMapName);
 			this.setMap(this._currentMapName, groupedItemLocationInfo, floor);
 		}
 

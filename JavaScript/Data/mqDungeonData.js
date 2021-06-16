@@ -35,6 +35,10 @@ let MQDungeons = {
 						CustomRequirement: function(age) {
 							return age === Age.ADULT || Settings.GlitchesToAllow.dekuB1Skip;
 						}
+					},
+
+					Exit: {
+						OwExit: OwExits["Deku Tree"]["Exit"]
 					}
 				},
 
@@ -235,6 +239,9 @@ let MQDungeons = {
 							if (Data.itemLocationObtained("Dodongo's Cavern", "main", "Opened First Wall")) { return true; }
 							return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
 						}
+					},
+					Exit: {
+						OwExit: OwExits["Dodongo's Cavern"]["Exit"]
 					}
 				},
 
@@ -619,6 +626,9 @@ let MQDungeons = {
 						Name: "afterFirstRoom",
 						Age: Age.CHILD,
 						RequiredItems: [Items.FAIRY_SLINGSHOT]
+					},
+					Exit: {
+						OwExit: OwExits["Jabu Jabu's Belly"]["Exit"]
 					}
 				},
 
@@ -852,6 +862,9 @@ let MQDungeons = {
 						NeedsDamagingItem: true,
 						LockedDoor: "Locked Door to Lobby",
 						Map: "Forest Temple"
+					},
+					Exit: {
+						OwExit: OwExits["Forest Temple"]["Exit"]
 					}
 				},
 
@@ -1405,6 +1418,10 @@ let MQDungeons = {
 						CustomRequirement: function(age) {
 							return Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
 						}
+					},
+
+					Exit: {
+						OwExit: OwExits["Fire Temple"]["Exit"]
 					}
 				},
 
@@ -1827,6 +1844,10 @@ let MQDungeons = {
 							
 							return Items.HOOKSHOT.playerHas;
 						}
+					},
+
+					Exit: {
+						OwExit: OwExits["Water Temple"]["Exit"]
 					}
 				},
 
@@ -2055,6 +2076,9 @@ let MQDungeons = {
 								(Data.canMegaFlip(age) && Items.BOMBCHU.playerHas);
 							return canCrossFirstGap;
 						}
+					},
+					Exit: {
+						OwExit: OwExits["Shadow Temple"]["Exit"]
 					}
 				},
 
@@ -2623,6 +2647,10 @@ let MQDungeons = {
 						Age: Age.ADULT,
 						//TODO: do you need longshot?
 						RequiredItems: [Items.BOMBCHU, Items.HOOKSHOT, { item: Equipment.STRENGTH, upgradeString: "2" }]
+					},
+
+					Exit: {
+						OwExit: OwExits["Spirit Temple"]["Exit"]
 					}
 				},
 
@@ -3062,9 +3090,9 @@ let MQDungeons = {
 								Equipment.HOVER_BOOTS.playerHas;
 						}
 					},
-					"Desert Colossus": {
-                        OwExit: OwExits["Spirit Temple"]["Desert Colossus"]
-                    },
+					statueHands: {
+						Name: "statueHands"
+					}
 				},
 
 				ItemLocations: {
@@ -3081,9 +3109,9 @@ let MQDungeons = {
 						Name: "silverGauntsStatueHand",
 						RequiredAdultItems: [{item: Items.HOOKSHOT, upgrardeString: "2"}]
 					},
-					"Desert Colossus": {
-                        OwExit: OwExits["Spirit Temple"]["Desert Colossus"]
-                    }
+					statueHands: {
+						Name: "statueHands"
+					}
 				},
 
 				ItemLocations: {
@@ -3097,6 +3125,15 @@ let MQDungeons = {
 						LongDescription: "From the room with the lizalfos and the sun, slash the chest that Navi is going crazy over to open the door. Kill the Floormaster in the next room, and the Iron Knuckle in the room after. The chest will spawn on the hand as you walk in."
 					}
 				}
+			},
+
+			statueHands: {
+				Exits: {
+					"Desert Colossus": {
+                        OwExit: OwExits["Spirit Temple"]["Desert Colossus"]
+                    }
+				},
+				ItemLocations: {}
 			},
 
 			lizalfosAndSunRoom: {
@@ -3340,6 +3377,9 @@ let MQDungeons = {
 							let canKillFreezards = Data.hasSwordWeapon(age) || Data.canUseFireItem(age);
 							return canKillFreezards && Data.canHitSwitchAtShortDistance(age) && Data.hasBottleOrBlueFire();
 						}
+					},
+					Exit: {
+						OwExit: OwExits["Ice Cavern"]["Exit"]
 					}
 				},
 				ItemLocations: {}
@@ -3463,6 +3503,10 @@ let MQDungeons = {
 						Map: "Bottom of the Well",
 						LockedDoor: "Locked Door in West Main Room",
 						NeedsExplosives: true
+					},
+
+					Exit: {
+						OwExit: OwExits["Bottom of the Well"]["Exit"]
 					}
 				},
 
@@ -3622,6 +3666,10 @@ let MQDungeons = {
 					leftArea: {
 						Name: "leftArea",
 						NeedsFire: true
+					},
+
+					Exit: {
+						OwExit: OwExits["Training Grounds"]["Exit"]
 					}
 
 					//TODO: verify you can't get to bigLavaRoom via the side path of the maze (barred doors?)

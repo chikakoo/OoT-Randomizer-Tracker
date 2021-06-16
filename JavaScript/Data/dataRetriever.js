@@ -48,7 +48,7 @@ Data = {
 			case MapGroups.DESERT: return "#D2B48C";
 			case MapGroups.DUNGEONS: 
 				if (isMasterQuest) { return "red"; }
-				return "#4B0082";
+				return "#9f6ff2";
 			default: return "";
 		}
 	},
@@ -58,21 +58,7 @@ Data = {
      */
 	getColorFromLocationName(locationName) {
 		let mapLocation = MapLocations[locationName];
-		let isMasterQuest = false;
-		
-		let excludeFromShuffle = mapLocation && mapLocation.ExcludeFromShuffle;
-		if (!excludeFromShuffle && Settings.RandomizerSettings.shuffleDungeonEntrances) {
-			if (Data.getDoesEntranceShuffleApply(locationName)) {
-				let shuffledMap = MapLocations[locationName].ShuffledDungeon;
-				if (shuffledMap) {
-					isMasterQuest = MapLocations[shuffledMap].IsMasterQuest;
-				}
-			}
-		} else {
-			isMasterQuest = mapLocation.IsMasterQuest;
-		}
-		
-		return this.getColorForMapGroup(mapLocation.MapGroup, isMasterQuest);
+		return this.getColorForMapGroup(mapLocation.MapGroup, mapLocation.IsMasterQuest);
 	},
 		
 	/**
@@ -201,23 +187,6 @@ Data = {
     },
 
     /**
-     * Gets the active item locations for the shuffled dungeon
-     * This is an empty array if a dungeon hasn't been chosen
-     * This is the normal set of item location is dungeons haven't been shuffled
-     */
-    getItemLocationsForShuffledDungeon: function(mapName) {
-        let mapInfo = MapLocations[mapName];
-        let itemLocations = [];
-		if (Data.getDoesEntranceShuffleApply(mapName) && mapInfo.ShuffledDungeon) {
-			itemLocations = this.getAllItemLocations(mapInfo.ShuffledDungeon);
-        } else {
-            itemLocations = this.getAllItemLocations(mapName);
-        }
-
-        return itemLocations;
-    },
-
-    /**
      * Returns whether we should display the item location
      * Checks for grotto, interior, OW entrances, and owl entrances and their appropriate setting
      * If it's not any of those, will return true
@@ -239,9 +208,13 @@ Data = {
             return !Settings.RandomizerSettings.shuffleInteriorEntrances;
         }
 
-        // Important to check the owls before the OW entrances, because the owl drops are also OW entrances
+        // Important to check the owls and dungneons before the OW entrances, because they are also OW entrances
         if (itemLocation.IsOwl) {
             return Settings.RandomizerSettings.randomizeOwlDrops;
+        }
+
+        if (itemLocation.IsDungeonEntrance || itemLocation.IsDungeonExit) {
+            return Settings.RandomizerSettings.shuffleDungeonEntrances;
         }
 
         if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
@@ -339,77 +312,20 @@ Data = {
     },
 
     /**
-     * Gets the map, region, and exit name of the entrance to the given dungeon
-     * Returns null if an invalid dungeon is entered
-     */
-    getDungeonEntranceInfo: function(dungeonName) {
-        let dungeonEntrance = null;
-        Object.keys(StandardDungeons).forEach(function(dungeon) {
-            let shuffledDungeon = MapLocations[dungeon].ShuffledDungeon;
-            if (shuffledDungeon === dungeonName) {
-                dungeonEntrance = dungeon;
-            }
-        });
-
-        if (!dungeonEntrance) { return null; }
-
-        let exitName = `${dungeonEntrance} Entrance`;
-        switch(dungeonEntrance) {
-            case "Deku Tree":
-                return { map: "Kokiri Forest", region: "afterMido", exit: exitName };
-            case "Dodongo's Cavern":
-                return { map: "Death Mountain Trail", region: "main", exit: exitName };
-            case "Jabu Jabu's Belly":
-                return { map: "Zora's Fountain", region: "main", exit: exitName };
-            case "Forest Temple":
-                return { map: "Sacred Forest Meadow", region: "main", exit: exitName };
-            case "Fire Temple":
-                return { map: "Death Mountain Crater", region: "bottom", exit: exitName };
-            case "Water Temple":
-                return { map: "Lake Hylia", region: "main", exit: exitName };
-            case "Shadow Temple":
-                return { map: "Graveyard", region: "top", exit: exitName };
-            case "Spirit Temple":
-                return { map: "Desert Colossus", region: "main", exit: exitName };
-            case "Ice Cavern":
-                return { map: "Zora's Fountain", region: "main", exit: exitName };
-            case "Bottom of the Well":
-                return { map: "Kakariko Village", region: "main", exit: exitName };
-            case "Training Grounds":
-                return { map: "Gerudo Fortress", region: "main", exit: exitName };
-            default:
-                console.log(`ERROR: Invalid dungeon entrance info requested: ${dungeonName} with entrance ${dungeonEntrance}`);
-                return null;
-        }
-    },
-
-    /**
-     * Returns whether the player can get to the dungeon entrance
-     * This is used when showing the green background on the sidebar
-     */
-    canAccessUnvisitedDungeonEntrance: function(age, dungeonName) {
-        let mapInfo = MapLocations[dungeonName];
-        if (mapInfo.WalkInfo && mapInfo.WalkInfo.canVisitDungeon) {
-            let accessData =  mapInfo.WalkInfo.canVisitDungeon[age];
-            if (accessData === undefined) {
-                return ItemObtainability.NO;
-            }
-            return accessData;
-        }
-
-        return ItemObtainability.NO;
-    },
-
-    /**
      * Gets an array of all the non-dungeon map names
+     * @param isForDungeonDropdown - whether it's for the dungeon dropdown
      */
-	getOWMaps: function() {
+	getOWMaps: function(isForDungeonDropdown) {
 		let owMaps = [];
 		
 		let mapNames = Object.keys(MapLocations);
 		mapNames.forEach(function (mapName) {
 			let map = MapLocations[mapName]
-			if (map.MapGroup !== MapGroups.DUNGEONS) {
+            let isDungeon = map.MapGroup === MapGroups.DUNGEONS;
+            let dungeonCheck = isForDungeonDropdown
+                ? isDungeon && isForDungeonDropdown && !map.ExcludeFromShuffle
+                : !isDungeon && !isForDungeonDropdown;
+			if (dungeonCheck) {
 				owMaps.push(mapName);
 			}
 		});
@@ -433,6 +349,26 @@ Data = {
 		});
 		
 		return entrances;
+    },
+
+    /**
+     * Gets the dungeon entrance map
+     * @param dungeonName: The name of the dungeon to get the map for
+     * @returns The found map, or undefined if not found
+     */
+    getDungeonEntranceMap: function(dungeonName) {
+        let dungeonEntranceMap;
+        Object.keys(OwExits).forEach(function(mapName) {
+            if (dungeonEntranceMap) { return; }
+            Object.keys(OwExits[mapName]).forEach(function(exitName) {
+                let exit = OwExits[mapName][exitName];
+                if (exit.IsDungeonEntrance && exit.OwShuffleMap === dungeonName) {
+                    dungeonEntranceMap = exit.Map;
+                    return;
+                }
+            });
+        });
+        return dungeonEntranceMap;
     },
     
     /**
@@ -1283,28 +1219,6 @@ Data = {
 		
 		return isShuffledDungeon || isShuffledOverworld;
     },
-    
-    /**
-	 * Gets the entrance to the given dungeon name
-	 * @param locationName - the dungeon name
-	 * @return - the name of the entrance, returns a falsy value if there is none
-	 */
-	getEntranceToDungeon: function(locationName) {
-		if (!this.getDoesEntranceShuffleApply(locationName)) { return null; }
-		
-		let entrance = null;
-		let dungeonNames = [
-			"Deku Tree", "Dodongo's Cavern", "Jabu Jabu's Belly", 
-			"Forest Temple", "Fire Temple", "Water Temple", "Shadow Temple", "Spirit Temple", 
-			"Ice Cavern", "Bottom of the Well", "Training Grounds"
-		];
-		dungeonNames.forEach(function(dungeonName) {
-			if (locationName === MapLocations[dungeonName].ShuffledDungeon) {
-				entrance = dungeonName;
-			}
-		})
-		return entrance;
-	},
 
     /**
 	 * Gets an object representing all the locations to display on the left:
@@ -1353,7 +1267,7 @@ Data = {
             totalTasks: 0
         };
 
-        let itemLocations = this.getItemLocationsForShuffledDungeon(mapName);
+        let itemLocations = this.getAllItemLocations(mapName);
         let _this = this;
         [Age.CHILD, Age.ADULT].forEach(function(age) {
             _this._fillCanDoObject(itemLocations, age, canDoInfo[age]);
@@ -1375,8 +1289,6 @@ Data = {
             if (itemLocation.IsOwl && !Settings.RandomizerSettings.randomizeOwlDrops) { 
                 return; 
             }
-
-            if (itemLocation.IsDungeonEntrance) { return; }
 
             if (!RegionWalker.doesItemLocationHaveSpawnOrWalkData(itemLocation, age)) { // In this case, ignore all the age requirements, becuase you can spawn or warp here
                 let doesAgeFailNormalReq = itemLocation.Age !== Age.EITHER && age !== itemLocation.Age;

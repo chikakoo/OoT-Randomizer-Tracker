@@ -96,31 +96,35 @@ LocationSidebar = {
      * @param location - the data to create the div from
      */
     _createLocationDiv: function(location) {
-        let backgroundColor = Data.getColorFromLocationName(location.name);
+        let locationName = location.name;
         let mainDiv = dce("div", "location-item");
-        mainDiv.id = `location-item-${location.name}`;
-        
         let locationNameDiv = dce("div", "location-item-main");
-        let childTodoDiv = dce("div", "location-item-todo-count");
-        let adultTodoDiv = dce("div", "location-item-todo-count");
-        
+        mainDiv.id = `location-item-${locationName}`;
         mainDiv.appendChild(locationNameDiv);
-        let isShuffled = Data.getDoesEntranceShuffleApply(location.name, true);
-        if (isShuffled && MapLocations[location.name].ShuffledDungeon) {
-            let dungeonIconDiv = dce("div", "location-item-dungeon-icon");
-            dungeonIconDiv.style.backgroundImage = `url("Images/Dungeons/${MapLocations[location.name].ShuffledDungeon}.png")`;
-            dungeonIconDiv.style.backgroundColor = backgroundColor;
-            mainDiv.appendChild(dungeonIconDiv);
-            
-            addCssClass(locationNameDiv, "location-item-shorten-name");
-            
-            let locationDiv = document.getElementById("locationList");
-            addCssClass(locationDiv, "location-item-has-dungeon-icon");
-            
-            let rightContainer = document.getElementById("rightContainer");
-            addCssClass(rightContainer, "location-item-has-dungeon-icon");
+
+        let backgroundColor = Data.getColorFromLocationName(locationName);
+        let isShuffled = Data.getDoesEntranceShuffleApply(locationName, true);
+        let isDungeon = location.mapGroupId === MapGroups.DUNGEONS;
+        if (isShuffled && isDungeon && !Settings.RandomizerSettings.decoupleEntrances) {
+            let linkedDungeon = Data.getDungeonEntranceMap(locationName);
+            if (linkedDungeon) {
+                let dungeonIconDiv = dce("div", "location-item-dungeon-icon");
+                dungeonIconDiv.style.backgroundImage = `url("Images/Dungeons/${linkedDungeon}.png")`;
+                dungeonIconDiv.style.backgroundColor = backgroundColor;
+                mainDiv.appendChild(dungeonIconDiv);
+                
+                addCssClass(locationNameDiv, "location-item-shorten-name");
+                
+                let locationDiv = document.getElementById("locationList");
+                addCssClass(locationDiv, "location-item-has-dungeon-icon");
+                
+                let rightContainer = document.getElementById("rightContainer");
+                addCssClass(rightContainer, "location-item-has-dungeon-icon");
+            }
         }
         
+        let childTodoDiv = dce("div", "location-item-todo-count");
+        let adultTodoDiv = dce("div", "location-item-todo-count");
         mainDiv.appendChild(childTodoDiv);
         mainDiv.appendChild(adultTodoDiv);
         
@@ -136,8 +140,8 @@ LocationSidebar = {
             location.childBackgroundColor = "#F0E68C";
         }
         
-        this._setLocationTodoDivForAge(location.name, location.childData, location.childBackgroundColor, childTodoDiv, isShuffled, Age.CHILD);
-        this._setLocationTodoDivForAge(location.name, location.adultData, location.adultBackgroundColor, adultTodoDiv, isShuffled, Age.ADULT);
+        this._setLocationTodoDivForAge(location.name, location.childData, location.childBackgroundColor, childTodoDiv, Age.CHILD);
+        this._setLocationTodoDivForAge(location.name, location.adultData, location.adultBackgroundColor, adultTodoDiv, Age.ADULT);
 
         mainDiv.onclick = function() {
             displayLocation(location.name);
@@ -161,31 +165,12 @@ LocationSidebar = {
     /**
      * Sets the text and styles for the given location div at the given age
      */
-    _setLocationTodoDivForAge(mapName, canDoData, backgroundColor, locationTodoDiv, isShuffled, age) {
+    _setLocationTodoDivForAge(mapName, canDoData, backgroundColor, locationTodoDiv, age) {
         let cannotGetToMapColor = "#ED9082";
-        let canEnterDungeonColor = "LightGreen";
-        let isDungeon = MapLocations[mapName].MapGroup === MapGroups.DUNGEONS;
-        let shuffledDungeonName = MapLocations[mapName].ShuffledDungeon;
-        let unchosenDungeon = isDungeon && !shuffledDungeonName;
-
-        let isGanonsCastleAndCannotEnter = mapName === "Ganon's Castle" &&
-            (age === Age.CHILD || !Data.canAccessMap(age, "Castle", "main"));
         let canAccess = Data.canAccessMap(age, mapName);
 
-        if ((isShuffled && unchosenDungeon) || isGanonsCastleAndCannotEnter) {
-            canAccess = Data.canAccessUnvisitedDungeonEntrance(age, mapName);
-
-            let dungeonBackgroundColor = canAccess ? canEnterDungeonColor : cannotGetToMapColor;
-            locationTodoDiv.innerText = "?";
-            locationTodoDiv.style.backgroundColor = isGanonsCastleAndCannotEnter ? cannotGetToMapColor : dungeonBackgroundColor;
-        } else {
-            if (isDungeon && isShuffled) {
-                canAccess = Data.canAccessMap(age, shuffledDungeonName);
-            }
-
-            locationTodoDiv.innerText = canAccess ? canDoData.canDo : "?";
-            locationTodoDiv.style.backgroundColor = canAccess ? backgroundColor : cannotGetToMapColor;
-        } 
+        locationTodoDiv.innerText = canAccess ? canDoData.canDo : "?";
+        locationTodoDiv.style.backgroundColor = canAccess ? backgroundColor : cannotGetToMapColor;
     },
 
     /**

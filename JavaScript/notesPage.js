@@ -39,9 +39,9 @@ NotesPage = {
 						let mapLabel = dce("label");
 						mapLabel.innerText = mapName;
 						if (Data.getDoesEntranceShuffleApply(mapName)) {
-							let shuffledDungeon = Data.getEntranceToDungeon(mapName);
-							mapLabel.innerText += shuffledDungeon ? ` (${shuffledDungeon} Entrance)` : " (Unknown Location)";
-						}
+                            let shuffledDungeon = Data.getDungeonEntranceMap(mapName);
+                            mapLabel.innerText += shuffledDungeon ? ` (${shuffledDungeon} Entrance)` : " (Unknown Location)";
+                        }
 						mapDiv.appendChild(mapLabel);
 					}
 					let noteDiv = _this._createNoteDivWithLabel(itemLocation);

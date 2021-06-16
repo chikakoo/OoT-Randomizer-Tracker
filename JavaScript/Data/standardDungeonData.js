@@ -26,6 +26,10 @@ let StandardDungeons = {
 						CustomRequirement: function(age) {
 							return Data.hasDamagingItem(age) || Items.DEKU_NUT.playerHas;
 						}
+					},
+
+					Exit: {
+						OwExit: OwExits["Deku Tree"]["Exit"]
 					}
 				},
 
@@ -226,10 +230,12 @@ let StandardDungeons = {
 							if (Data.itemLocationObtained("Dodongo's Cavern", "main", "Opened First Wall")) { return true; }
 							return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
 						}
+					},
+
+					Exit: {
+						OwExit: OwExits["Dodongo's Cavern"]["Exit"]
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Opened First Wall": {
@@ -574,10 +580,11 @@ let StandardDungeons = {
 							if (age === Age.ADULT) { return Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas; }
 							return Items.FAIRY_SLINGSHOT.playerHas;
 						}
+					},
+					Exit: {
+						OwExit: OwExits["Jabu Jabu's Belly"]["Exit"]
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 
@@ -736,6 +743,9 @@ let StandardDungeons = {
 						CustomRequirement: function(age) {
 							return Data.hasDamagingItem(age) || Items.DEKU_NUT.playerHas;
 						}
+					},
+					Exit: {
+						OwExit: OwExits["Forest Temple"]["Exit"]
 					}
 				},
 
@@ -1381,6 +1391,10 @@ let StandardDungeons = {
 							let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
 							return tunicCheck && Data.canUseHammer(age) && hasBossKey("Fire Temple");
 						}
+					},
+
+					Exit: {
+						OwExit: OwExits["Fire Temple"]["Exit"]
 					}
 				},
 
@@ -2119,6 +2133,9 @@ let StandardDungeons = {
 						},
 						LockedDoor: "Locked Door in Bottom North Room"
 					},
+					Exit: {
+						OwExit: OwExits["Water Temple"]["Exit"]
+					}
 				},
 
 				Entrances: {},
@@ -2651,10 +2668,11 @@ let StandardDungeons = {
 								
 							return canCrossFirstGap;
 						}
+					},
+					Exit: {
+						OwExit: OwExits["Shadow Temple"]["Exit"]
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			truthSpinnerRoom: {
@@ -3061,10 +3079,11 @@ let StandardDungeons = {
 						CustomRequirement: function(age) {
 							return Data.spiritCanAccessAdultSide();
 						}
+					},
+					Exit: {
+						OwExit: OwExits["Spirit Temple"]["Exit"]
 					}
 				},
-	
-				Entrances: {},
 
 				ItemLocations: {
 					// Locked Doors
@@ -3480,9 +3499,9 @@ let StandardDungeons = {
 								Equipment.HOVER_BOOTS.playerHas;
 						}
 					},
-					"Desert Colossus": {
-                        OwExit: OwExits["Spirit Temple"]["Desert Colossus"]
-                    },
+					statueHands: {
+						Name: "statueHands"
+					}
 				},
 
 				Entrances: {},
@@ -3498,6 +3517,14 @@ let StandardDungeons = {
 						LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor. In this room, there's a ray of light with some blocks nearby. Pull the block with the sun on it straight back and it will become happy when it hits the light, opening the door. Continue on and you'll run into an Iron Knuckle. After defeating him, continue passed the door and onto the status outside the Spirit Temple. The chest is in front of you.<br/><br/>You can also get here as adult if you longshot from the mirror shield side."
 					}
 				}
+			},
+			statueHands: {
+				Exits: {
+					"Desert Colossus": {
+                        OwExit: OwExits["Spirit Temple"]["Desert Colossus"]
+                    }
+				},
+				ItemLocations: {}
 			},
 			adultAnubisRoom: {
 				Exits: {
@@ -3548,9 +3575,9 @@ let StandardDungeons = {
 						Name: "silverGauntsStatueHand",
 						RequiredAdultItems: [{item: Items.HOOKSHOT, upgrardeString: "2"}]
 					},
-					"Desert Colossus": {
-                        OwExit: OwExits["Spirit Temple"]["Desert Colossus"]
-                    },
+					statueHands: {
+						Name: "statueHands"
+					}
 				},
 
 				Entrances: {},
@@ -3666,10 +3693,11 @@ let StandardDungeons = {
 					afterFreezards: {
 						Name: "afterFreezards",
 						NeedsSwordWeapon: true
+					},
+					Exit: {
+						OwExit: OwExits["Ice Cavern"]["Exit"]
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			afterFreezards: {
@@ -3784,6 +3812,9 @@ let StandardDungeons = {
 						CustomRequirement: function(age) {
 							return Data.hasDamagingItem(age) || Items.DEKU_NUT.playerHas;
 						}
+					},
+					Exit: {
+						OwExit: OwExits["Bottom of the Well"]["Exit"]
 					}
 				},
 
@@ -4105,6 +4136,10 @@ let StandardDungeons = {
 						CustomRequirement: function(age) {
 							return Settings.GlitchesToAllow.gtgIceArrowsEarly && Data.hasShield(age);
 						}
+					},
+
+					Exit: {
+						OwExit: OwExits["Training Grounds"]["Exit"]
 					}
 				},
 
