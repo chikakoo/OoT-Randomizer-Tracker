@@ -1078,9 +1078,11 @@ Data = {
     
     /**
      * Returns whether the player can ground jump using a bomb
+     * @param includeBombFlower - Whether bomb flowers are feasible here (adds a strength check)
      */
-    canGroundJumpWithBomb: function(age) {
-		return Settings.GlitchesToAllow.groundJump && this.hasShield(age) && Items.BOMB.playerHas;
+    canGroundJumpWithBomb: function(age, includeBombFlower) {
+        let hasBombSource = Items.BOMB.playerHas || (includeBombFlower && Equipment.STRENGTH.playerHas);
+		return Settings.GlitchesToAllow.groundJump && this.hasShield(age) && hasBombSource;
 	},
     
     /**

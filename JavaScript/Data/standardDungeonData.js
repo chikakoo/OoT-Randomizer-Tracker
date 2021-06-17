@@ -258,7 +258,7 @@ let StandardDungeons = {
 						Name: "firstFloorSwitch",
 						CustomRequirement: function(age) {
 							if (age === Age.ADULT) { return true; } // Adult can just climb to the switch
-							return Data.canGroundJumpWithBomb(age) || 
+							return Data.canGroundJumpWithBomb(age, true) || 
 								(Settings.GlitchesToAllow.dodongoSwitchEarly && Items.BOMBCHU.playerHas && Equipment.DEKU_SHIELD.playerHas);
 						}
 					},
