@@ -309,7 +309,7 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon, i
 		}
 		
 		else if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
-			let owEntranceGroupDiv = dce("div");
+			let owEntranceGroupDiv = dce("div", "ow-entrance-dropdown-group");
 			
 			let locDropdown = dce("select");
 			let entranceDropdown = dce("select");
