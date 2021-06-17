@@ -139,7 +139,9 @@ Data = {
         });
 
         // This block is for the OW exits //TODO: break this off and use it in walk.js when updating the travel div instead
-        if (Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.RandomizerSettings.randomizeOwlDrops) {
+        if (Settings.RandomizerSettings.shuffleOverworldEntrances || 
+            Settings.RandomizerSettings.shuffleDungeonEntrances ||
+            Settings.RandomizerSettings.randomizeOwlDrops) {
             Object.keys(OwExits).forEach(function(currentMap) {
                 if (!mapName || mapName === currentMap) {
                     Object.keys(OwExits[currentMap]).forEach(function(entranceName) {
@@ -1215,7 +1217,7 @@ Data = {
 		
 		let isDungeon = mapInfo.MapGroup === MapGroups.DUNGEONS;
 		let isShuffledDungeon = isDungeon && Settings.RandomizerSettings.shuffleDungeonEntrances;
-		let isShuffledOverworld = checkForOverworld && !isDungeon && Settings.RandomizerSettings.shuffleDungeonEntrances;
+		let isShuffledOverworld = checkForOverworld && !isDungeon && Settings.RandomizerSettings.shuffleOverworldEntrances;
 		
 		return isShuffledDungeon || isShuffledOverworld;
     },
