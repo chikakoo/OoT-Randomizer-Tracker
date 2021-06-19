@@ -444,13 +444,13 @@ RegionWalker = {
         });
 
         // Walk to all other regions
-        if (MapLocations[mapName].Regions[regionName]) { // skips regions that don't exist - TODO: address this (dungoen entrances cause this)
+        if (MapLocations[mapName].Regions[regionName]) { // skips regions that don't exist - TODO: address this (dungeon entrances cause this)
             let exitList = MapLocations[mapName].Regions[regionName].Exits;
             Object.keys(exitList).forEach(function (exitName) {
                 let exit = exitList[exitName];
                 if (exit.OwExit) {
                     let itemObtainability = Data.calculateObtainability(exit.OwExit, age, mapName);
-                    if (itemObtainability) {
+                    if (itemObtainability && !exit.OwExit.IsDungeonExit) { //TODO: better handle dungeon exits - they don't work properly in dungeon shuffle
                         let isRandomizedOwl = exit.OwExit.IsOwl && Settings.RandomizerSettings.randomizeOwlDrops;
                         let isShuffledDungeon = exit.OwExit.IsDungeonEntrance && Settings.RandomizerSettings.shuffleDungeonEntrances;
                         let isShuffledOw = !exit.OwExit.IsOwl && !exit.OwExit.IsDungeonEntrance && Settings.RandomizerSettings.shuffleOverworldEntrances;

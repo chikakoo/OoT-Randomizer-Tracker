@@ -487,7 +487,7 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 12,
 						LongDescription: "After completing the torch puzzle, burn the web in the next room. Do the box pushing puzzle in the next room to get to the lizalfos room. Alternatively, you can blow up the rocks at the top of the main room and navigate around backwards to get here.<br/><br/>Bomb the rocks in the back of this room to get to the skulltula.",
-						BlockedByYellowRock: true
+						NeedToBlastOrSmash: true
 					}
 				}
 			},
@@ -641,7 +641,7 @@ let MQDungeons = {
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						Order: 1,
 						LongDescription: "In the first room, destroy the yellow rock and hit the switch underneath to spawn the chest.",
-						BlockedByYellowRock: true
+						NeedToBlastOrSmash: true
 					},
 					"Chest in Main Room": {
 						Name: "Chest in Main Room",
@@ -2672,7 +2672,7 @@ let MQDungeons = {
 						Order: 2,
 						AltOrder: 2,
 						LongDescription: "After you first enter the temple, go up the stairs. Destroy the yellow rock to your right and shoot the eye switch to spawn the chest.",
-						BlockedByYellowRock: true,
+						NeedToBlastOrSmash: true,
 						RequiredChildItems: [Items.FAIRY_SLINGSHOT],
 						RequiredAdultItems: [Items.FAIRY_BOW]
 					},
