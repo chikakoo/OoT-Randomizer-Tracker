@@ -22,11 +22,6 @@ io.on('connection', function(client) {
     	console.log(`${itemKey} was updated!`);
     });
     
-    client.on("dungeon_shuffle_updated", function(dungeon, newDungeon) {
-    	client.broadcast.emit("dungeon_shuffle_updated", dungeon, newDungeon);
-    	console.log(`${dungeon} was updated to lead to ${newDungeon}!`);
-    });
-    
     client.on("item_location_updated", function(itemLocation) {
     	client.broadcast.emit("item_location_updated", itemLocation);
     	console.log(`${itemLocation.Name} was updated at ${itemLocation.Map}!`);

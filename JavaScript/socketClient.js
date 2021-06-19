@@ -91,6 +91,7 @@ SocketClient = {
 		this._socket.on("item_location_updated", function(itemLocation) {
 			let map = itemLocation.Map;
 	    	console.log(`${itemLocation.Name} was updated at ${map} - Checked: ${itemLocation.playerHas}`);
+
 			SocketClient.updateItemLocation(itemLocation);
 			
 			if (_currentLocationName === map) {
@@ -131,7 +132,7 @@ SocketClient = {
 	updateItemLocation: function(itemLocation) {
 		let map = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE ? itemLocation.ExitMap : itemLocation.Map;
 		let region = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE ? itemLocation.ExitRegion : itemLocation.Region;
-		let name = itemLocation.Name;
+		let name = itemLocation.Name.trim();
 		let matchingLocation;
 
 		if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
@@ -141,13 +142,17 @@ SocketClient = {
 			Data.setOWLocationFound(map, itemLocation, itemLocation.OwShuffleMap, itemLocation.OwShuffleExitName, !hasOwData);
 
 			if (_currentLocationName === map) {
-				refreshEntranceDropdowns(itemLocation);
+				let locDropdown = document.getElementById(`${itemLocation.Name}-location-dropdown`);
+				let entranceDropdown = document.getElementById(`${itemLocation.Name}-entrance-dropdown`);
+				if (locDropdown && entranceDropdown) {
+					refreshEntranceDropdowns(itemLocation, locDropdown, entranceDropdown);
+				}
 			}
 		}
 		else {
 			matchingLocation = MapLocations[map].Regions[region].ItemLocations[name]
 		}
-		
+
 		matchingLocation.playerHas = itemLocation.playerHas;
 		matchingLocation.notes = itemLocation.notes;
 

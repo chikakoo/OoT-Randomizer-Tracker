@@ -401,7 +401,7 @@ Data = {
         if (!decoupledEntrances && fromOwExit.OwShuffleMap && fromOwExit.OwShuffleExitName) {
             if (!fromOwExit.OneWayEntrance) {
                 let oldOwExit = OwExits[fromOwExit.OwShuffleMap][fromOwExit.OwShuffleExitName];
-                if (oldOwExit.LinkedExit === fromReferenceKey) {
+                if (oldOwExit && oldOwExit.LinkedExit === fromReferenceKey) {
                     delete oldOwExit.OwShuffleMap;
                     delete oldOwExit.OwShuffleRegion;
                     delete oldOwExit.OwShuffleExitName;
@@ -1286,12 +1286,12 @@ Data = {
     _fillCanDoObject(itemLocations, age, canDoObj) {
         let _this = this;
         itemLocations.forEach(function(itemLocation) {
-            if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE && !Settings.RandomizerSettings.shuffleOverworldEntrances) { 
-                return; 
-            }
-
-            if (itemLocation.IsOwl && !Settings.RandomizerSettings.randomizeOwlDrops) { 
-                return; 
+            if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
+                let isValidOwl = itemLocation.IsOwl && Settings.RandomizerSettings.randomizeOwlDrops;
+                let isValidDungeon = itemLocation.IsDungeonEntrance && Settings.RandomizerSettings.shuffleDungeonEntrances;
+                if (!isValidOwl && !isValidDungeon && !Settings.RandomizerSettings.shuffleOverworldEntrances) {
+                    return;
+                }
             }
 
             if (!RegionWalker.doesItemLocationHaveSpawnOrWalkData(itemLocation, age)) { // In this case, ignore all the age requirements, becuase you can spawn or warp here
