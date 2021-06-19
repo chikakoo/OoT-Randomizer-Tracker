@@ -1663,7 +1663,9 @@ let MapLocations = {
                     firstHalf: {
                         Name: "firstHalf",
                         CustomRequirement: function(age) {
-                            return age === Age.CHILD || Data.canPlaySong(Songs.SARIAS_SONG);
+                            return age === Age.CHILD || 
+                                Data.canPlaySong(Songs.SARIAS_SONG) ||
+                                Data.canMegaFlip(age);
                         }
                     },
                     kokiriForestWarp: {
