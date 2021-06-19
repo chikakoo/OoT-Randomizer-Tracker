@@ -2093,6 +2093,7 @@ let MQDungeons = {
 						Order: 0.1,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip },
 						LongDescription: "This is the door behind the explodable wall in the truth spinner room.",
+						NeedsExplosives: true,
 						KeyRequirement: function(age) {
 							return { min: 1, max: Keys.SHADOW_TEMPLE.mqTotalKeys() };
 						}
@@ -4119,7 +4120,7 @@ let MQDungeons = {
 						MapInfo: { x: 147, y: 227, floor: "SHW" },
 						Age: Age.ADULT,
 						Order: 16,
-						LongDescription: "First, shoot the bomb flower on the left side of the room. Now, use hover boots or your hookshot to reach the chest.",
+						LongDescription: "First, shoot the bomb flower on the right side of the room. Now, use hover boots or your hookshot to reach the chest.",
 						RequiredItems: [Items.FAIRY_BOW],
 						RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, Items.HOOKSHOT]
 					},

@@ -4696,8 +4696,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Left Scrub in Secret Room": {
 						Name: "Left Scrub in Secret Room",

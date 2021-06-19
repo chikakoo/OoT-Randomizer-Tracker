@@ -1252,21 +1252,6 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the exit from the Gerudo Training Grounds."
         }
-    },
-
-    "Ganon's Castle": {
-        "Exit": {
-            Name: "Exit",
-            ExitRegion: "main",
-            Map: "Castle",
-            Region: "main",
-            ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: -100, y: -100, floor: "F1" },
-            ReadOnly: true,
-            IsDungeonExit: true,
-            Age: Age.ADULT,
-            LongDescription: "This is the exit from Ganon's Castle."
-        }
     }
 }
 
