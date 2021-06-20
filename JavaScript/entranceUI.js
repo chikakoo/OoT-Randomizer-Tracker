@@ -216,13 +216,6 @@ let EntranceUI = {
 	clearGroupChoice: function(itemLocation) {
 		let itemLocationGroup = itemLocation.EntranceGroup;
 		if (!itemLocationGroup) { return; }
-		
-		let mainDiv = document.getElementById(`${itemLocation.Name}-entrance-groups`);
-		let itemLocationEntranceTasksContainer = document.getElementById(`${itemLocation.Name}-entrance-tasks`);
-		
-		itemLocationEntranceTasksContainer.innerHTML = "";
-		mainDiv.innerHTML = "";
-		removeCssClass(mainDiv, "nodisp");
 
 		let selectedGroup = this.getEntranceData(itemLocation)[itemLocationGroup.name];
 		if (selectedGroup.postClick) { selectedGroup.postClick(itemLocation, false); }
@@ -237,10 +230,19 @@ let EntranceUI = {
 
 		delete itemLocation.EntranceGroup;
 		
-		this._createGroupDivs(itemLocation, mainDiv, itemLocationEntranceTasksContainer);
+		if (itemLocation.Map === _currentLocationName) {
+			let mainDiv = document.getElementById(`${itemLocation.Name}-entrance-groups`);
+			mainDiv.innerHTML = "";
+			removeCssClass(mainDiv, "nodisp");
+			
+			let itemLocationEntranceTasksContainer = document.getElementById(`${itemLocation.Name}-entrance-tasks`);
+			itemLocationEntranceTasksContainer.innerHTML = "";
+			this._createGroupDivs(itemLocation, mainDiv, itemLocationEntranceTasksContainer);
+		}
 		itemLocation.playerHas = false;
 		
 		_refreshNotes(itemLocation);
+		SocketClient.itemLocationUpdated(itemLocation);
 		refreshAll();
 	},
 	

@@ -172,7 +172,7 @@ SocketClient = {
 			}
 		}
 		else {
-			matchingLocation = MapLocations[map].Regions[region].ItemLocations[name]
+			matchingLocation = MapLocations[map].Regions[region].ItemLocations[name];
 		}
 
 		matchingLocation.playerHas = itemLocation.playerHas;
@@ -185,6 +185,11 @@ SocketClient = {
 			if (group.postClick) {
 				group.postClick(matchingLocation, true);
 			}
+		} 
+		
+		// Clear the group in this case, becuase it doesn't exist anymore!
+		else if (matchingLocation.EntranceGroup) {
+			EntranceUI.clearGroupChoice(matchingLocation);
 		}
 		
 		if (_currentLocationName === map) {
