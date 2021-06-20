@@ -255,7 +255,7 @@ NotesPage = {
 	 * Gets the image path from the shop string, or null if it doesn't exist
 	 */
 	_getImageFromShopString: function(shopString) {
-		let fileName = ShopItemDictionary[shopString.toLowerCase()];
+		let fileName = ShopItemDictionary[shopString.toLowerCase().replaceAll(" ", "")];
 		if (!fileName) { return null; }
 		
 		return `Images/${fileName}`;
