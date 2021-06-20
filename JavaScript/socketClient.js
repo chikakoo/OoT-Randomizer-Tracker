@@ -21,6 +21,28 @@ SocketClient = {
 		this._socket.on('disconnect', function() {
 			console.log('Disconnected from the server');
 		});
+
+		// Sync up settings
+		this._socket.on("sync_settings", function(settings) {
+			Object.keys(settings).forEach(function(settingKey) {
+				if (Settings[settingKey]) {
+					Settings[settingKey] = settings[settingKey];
+				}
+			});
+		});
+
+		// Sync dungeon types - object contains: <mapName>: <dungoenTypeEnumValue>
+		this._socket.on("sync_all_dungeon_types", function(dungeons) {
+			Object.keys(dungeons).forEach(function(dungeonName) {
+				_setDungeonTypeOfMap(dungeonName, dungeons[dungeonName]);
+			});
+		});
+
+		// Syncs a single dungeon type
+		this._socket.on("sync_dungeon_type", function(dungeonName, dungeonType) {
+			_setDungeonTypeOfMap(dungeonName, dungeonType);
+			refreshAll();
+		});
 		
 		// Sync up when the inventory is updated
 		this._socket.on("inventory_updated", function(itemType, itemKey, item) {
@@ -158,6 +180,11 @@ SocketClient = {
 
 		if (itemLocation.EntranceGroup) {
 			matchingLocation.EntranceGroup = itemLocation.EntranceGroup;
+
+			let group = EntranceUI.getEntranceData(itemLocation)[itemLocation.EntranceGroup.name];
+			if (group.postClick) {
+				group.postClick(matchingLocation, true);
+			}
 		}
 		
 		if (_currentLocationName === map) {
@@ -220,11 +247,49 @@ SocketClient = {
 	 */
 	syncAll: function() {
 		if (this._socket) { 
+			this._syncSettings();
+			this._syncAllDungeonTypes();
 			this._syncAllInventory();
 			this._syncAllItemLocations();
 			this._socket.emit("spawn_location_updated", Data.randomizedSpawnLocations);
 		}
 	},
+
+	/**
+	 * Syncs all the settings that are not trick-specific
+	 */
+	_syncSettings: function() {
+		let settingsToSync = {
+			ItemLocationsToExclude: Settings.ItemLocationsToExclude,
+			RandomizerSettings: Settings.RandomizerSettings
+		};
+		this._socket.emit("sync_settings", settingsToSync);
+	},
+
+	/**
+	 * Syncs all dungeon types - that is, turns them to MQ if necessary
+	 */
+	_syncAllDungeonTypes: function() {
+		let dungeons = [];
+		Object.values(MapLocations).forEach(function (map) {
+			if (map.MapGroup === MapGroups.DUNGEONS) {
+				dungeons[map.Name] = map.IsMasterQuest ? MapTypes.MASTER_QUEST : MapTypes.STANDARD;
+			}
+		});
+		this._socket.emit("sync_all_dungeon_types", dungeons);
+	},
+
+	/**
+	 * Syncs the given dungeon's type
+	 * @param {String} dungeonName The name of the dungeon
+	 */
+	syncDungeonType: function(dungeonName) {
+		if (this._socket) {
+			let dungeonType = MapLocations[dungeonName].IsMasterQuest ? MapTypes.MASTER_QUEST : MapTypes.STANDARD;
+			this._socket.emit("sync_dungeon_type", dungeonName, dungeonType);
+		}
+	},
+
 	/**
 	 * Syncs the entire inventory with all clients
 	 */

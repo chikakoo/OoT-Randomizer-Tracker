@@ -91,6 +91,7 @@ let toggleDungeonMapType = function(mapName) {
 	} else {
 		_setDungeonTypeOfMap(mapName, MapTypes.MASTER_QUEST);
 	}
+    SocketClient.syncDungeonType(mapName);
 };
 /**
  * Lets you set a particular map to the given type based on the name

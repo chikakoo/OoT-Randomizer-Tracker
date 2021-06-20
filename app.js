@@ -36,6 +36,21 @@ io.on('connection', function(client) {
     	client.broadcast.emit("sync_all_item_locations", itemLocations);
     	console.log("Syncing all item locations...");
     });
+
+    client.on("sync_settings", function(settings) {
+      client.broadcast.emit("sync_settings", settings);
+      console.log("Syncing all given settings...");
+    });
+
+    client.on("sync_all_dungeon_types", function(dungeons) {
+      client.broadcast.emit("sync_all_dungeon_types", dungeons);
+      console.log("Syncing all dungeon types...")
+    });
+
+    client.on("sync_dungeon_type", function(dungeonName, dungeonType) {
+      client.broadcast.emit("sync_dungeon_type", dungeonName, dungeonType);
+      console.log(`Setting ${dungeonName} to be type ${dungeonType}.`);
+    });
 });
 
 httpServer.listen(port, function (err) {

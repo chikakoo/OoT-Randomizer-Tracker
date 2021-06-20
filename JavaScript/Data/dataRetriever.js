@@ -399,7 +399,7 @@ Data = {
         // Clear the old data
         // Don't clear this part if we're decoupled, since this side isn't necessarily linked!
         if (!decoupledEntrances && fromOwExit.OwShuffleMap && fromOwExit.OwShuffleExitName) {
-            if (!fromOwExit.OneWayEntrance) {
+            if (!fromOwExit.OneWayEntrance && OwExits[fromOwExit.OwShuffleMap]) {
                 let oldOwExit = OwExits[fromOwExit.OwShuffleMap][fromOwExit.OwShuffleExitName];
                 if (oldOwExit && oldOwExit.LinkedExit === fromReferenceKey) {
                     delete oldOwExit.OwShuffleMap;
