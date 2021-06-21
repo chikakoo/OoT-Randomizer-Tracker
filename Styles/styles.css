@@ -94,6 +94,17 @@ body {
 	position: fixed;
 }
 
+.options-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.options-container > div {
+	flex: 1 1 0;
+	display: inline-block;
+	text-align: center;
+}
+
 .location-item {
 	display: flex;
 	flex-direction: row;

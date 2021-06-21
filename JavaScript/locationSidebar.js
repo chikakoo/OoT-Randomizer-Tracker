@@ -11,12 +11,13 @@ LocationSidebar = {
             let currentLocationDiv = _this._createLocationDiv(location);
             locationDiv.appendChild(currentLocationDiv);
         });
-        
-        //TODO: group these two into one div, placed side by side
-        locationDiv.appendChild(this._createNotesDisplayDiv());
-        locationDiv.appendChild(this._createSpawnsDiv());
 
-        locationDiv.appendChild(this._createSettingsDiv());
+        let optionsContainer = dce("div", "options-container");
+        optionsContainer.appendChild(this._createNotesDisplayDiv());
+        optionsContainer.appendChild(this._createSpawnsDiv());
+        optionsContainer.appendChild(this._createSettingsDiv());
+
+        locationDiv.appendChild(optionsContainer);
         locationDiv.appendChild(this._createSaveAndLoadDiv());
     
         _refreshSelectedLocation(); //TODO - potentially move this over from itemLocationDisplay
@@ -199,7 +200,7 @@ LocationSidebar = {
     _createNotesDisplayDiv: function() {
         let notesDiv = dce("div", "location-item");
         notesDiv.id = "notesButton";
-        notesDiv.innerText = "Notes";
+        notesDiv.innerText = _locationSmaller ? "NT" : "Notes";
         notesDiv.onclick = function() {
             if (LocationSidebar.isLocationAMap()) {
                 let selectedId = `location-item-${_currentLocationName}`;
@@ -221,7 +222,7 @@ LocationSidebar = {
     _createSpawnsDiv: function() {
         let spawnsDiv = dce("div", "location-item");
         spawnsDiv.id = "spawnsButton";
-        spawnsDiv.innerText = "Spawns";
+        spawnsDiv.innerText = _locationSmaller ? "SPN" : "Spawns";
         spawnsDiv.onclick = function() {
             if (LocationSidebar.isLocationAMap()) {
                 let selectedId = `location-item-${_currentLocationName}`;
@@ -243,7 +244,7 @@ LocationSidebar = {
     _createSettingsDiv: function() {
         let settingsDiv = dce("div", "location-item");
         settingsDiv.id = "settingsButton";
-        settingsDiv.innerText = "Settings";
+        settingsDiv.innerText = _locationSmaller ? "SET" : "Settings";
         settingsDiv.onclick = function() {
             if (LocationSidebar.isLocationAMap()) {
                 let selectedId = `location-item-${_currentLocationName}`;
