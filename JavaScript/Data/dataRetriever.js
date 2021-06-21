@@ -889,8 +889,21 @@ Data = {
 				
 				let strPrice = price.trim().split(" ")[0];
 				if (isNaN(strPrice)) { return; }
-				
-				let numPrice = Number(strPrice);
+                let numPrice = Number(strPrice);
+
+                // This block handles tunics that child cannot buy
+                let item = price.trim().split(" ").slice(1).join(" ").trim();
+                if (age === Age.CHILD && item !== "" && !item.includes("*")) {
+                    let itemKey = item.split("//")[0].trim().replaceAll(" ", "").replaceAll("*", "");
+                    let itemImage = ShopItemDictionary[itemKey];
+                    if (itemImage === "Goron Tunic.png" && numPrice === 200) {
+                        return;
+                    }
+                    if (itemImage === "Zora Tunic.png" && numPrice === 300) {
+                        return;
+                    }
+                }
+                
 				if (numPrice > -1 && numPrice < minAmount) { minAmount = numPrice; }
 			});
 			
