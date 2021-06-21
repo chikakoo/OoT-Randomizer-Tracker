@@ -6,7 +6,7 @@ let _currentLocationName = "";
 let displayLocation = function(locationName) {
 	LocationSidebar.displayContainer("rightContainer");
 
-	_updateSelectedLocation(locationName);
+	LocationSidebar.updateSelectedLocation(locationName);
 	if (!LocationSidebar.isLocationAMap(locationName)) { return; }
 	_currentLocationName = locationName;
 	
@@ -25,34 +25,6 @@ let displayLocation = function(locationName) {
 	}
 	
 	MapUI.setMap(locationName, groupedItemLocationInfo, floor);
-};
-
-/**
- * Updates the selected location Div - this will update the CSS classes
- */
-let _updateSelectedLocation = function(locationName) {
-	if (LocationSidebar.isLocationAMap()) {
-		let selectedId = `location-item-${_currentLocationName}`;
-		let selectedDiv = document.getElementById(selectedId);
-		let backgroundColor = Data.getColorFromLocationName(_currentLocationName);
-		selectedDiv.style.backgroundColor = backgroundColor
-		removeCssClass(selectedDiv, "selected-location");
-	}
-
-	if (LocationSidebar.isLocationAMap(locationName)) {
-		let idToSelect = `location-item-${locationName}`;
-		let divToSelect = document.getElementById(idToSelect);
-		divToSelect.style.backgroundColor = "";
-		addCssClass(divToSelect, "selected-location");
-	}
-
-	removeCssClass(document.getElementById("settingsButton"), "selected-location");
-	removeCssClass(document.getElementById("notesButton"), "selected-location");
-	removeCssClass(document.getElementById("spawnsButton"), "selected-location");
-};
-
-let _refreshSelectedLocation = function() {
-	_updateSelectedLocation(_currentLocationName);
 };
 
 /**
@@ -186,16 +158,11 @@ let _setUpItemGroups = function(groupedItemLocationInfo, mapInfo) {
 				});
 			}
 		});
-		
-		allLocations.sort((loc1, loc2) => (loc1.Order > loc2.Order) ? 1 : -1);
-		let dungeonName = _currentLocationName;
-		if (dungeonName === "Spirit Temple") {
-			let useAltOrder = mapInfo.IsMasterQuest ?
-				(Equipment.STRENGTH.currentUpgrade > 1 && Items.BOMBCHU.playerHas && Items.HOOKSHOT.playerHas) : //TODO: is longshot needed instead?
-				(Equipment.STRENGTH.currentUpgrade > 1 && Keys.SPIRIT_TEMPLE.keyCount > 0);
-			if (useAltOrder) {
-				allLocations.sort((loc1, loc2) => (loc1.AltOrder > loc2.AltOrder) ? 1 : -1);
-			}
+
+		if (mapInfo.UseAltOrder && mapInfo.UseAltOrder()) {
+			allLocations.sort((loc1, loc2) => (loc1.AltOrder > loc2.AltOrder) ? 1 : -1);
+		} else {
+			allLocations.sort((loc1, loc2) => (loc1.Order > loc2.Order) ? 1 : -1);
 		}
 		
 		let allItemLocationsDiv = dce("div", "item-group");

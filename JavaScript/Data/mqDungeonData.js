@@ -2636,6 +2636,10 @@ let MQDungeons = {
         IsMasterQuest: true,
         Floors: ["F4", "F3", "F2", "F1"],
         StartingFloorIndex: 3,
+		UseAltOrder: function() {
+			//TODO: is longshot needed?
+			return Equipment.STRENGTH.currentUpgrade > 1 && Items.BOMBCHU.playerHas && Items.HOOKSHOT.playerHas;
+		},
 		Regions: {
 			main: {
 				Exits: {
@@ -3672,8 +3676,6 @@ let MQDungeons = {
 					Exit: {
 						OwExit: OwExits["Training Grounds"]["Exit"]
 					}
-
-					//TODO: verify you can't get to bigLavaRoom via the side path of the maze (barred doors?)
 				},
 
 				ItemLocations: {
@@ -3704,7 +3706,7 @@ let MQDungeons = {
 					"Left Maze Path After Door 1": {
 						Name: "Left Maze Path After Door 1",
 						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 152, y: 192 }, //TODO; is this right?
+						MapInfo: { x: 152, y: 192 },
 						Age: Age.EITHER,
 						Order: 3,
 						UseAdultAge: function() { 

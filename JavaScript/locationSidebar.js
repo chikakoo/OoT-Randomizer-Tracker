@@ -20,7 +20,38 @@ LocationSidebar = {
         locationDiv.appendChild(optionsContainer);
         locationDiv.appendChild(this._createSaveAndLoadDiv());
     
-        _refreshSelectedLocation(); //TODO - potentially move this over from itemLocationDisplay
+        this.refreshSelectedLocation();
+    },
+
+    /**
+     * Refreshes the sidebar with the info from the currently selected location
+     */
+    refreshSelectedLocation: function() {
+        this.updateSelectedLocation(_currentLocationName);
+    },
+
+    /**
+     * Updates the selected location Div - this will update the CSS classes
+     */
+    updateSelectedLocation: function(locationName) {
+        if (this.isLocationAMap()) {
+            let selectedId = `location-item-${_currentLocationName}`;
+            let selectedDiv = document.getElementById(selectedId);
+            let backgroundColor = Data.getColorFromLocationName(_currentLocationName);
+            selectedDiv.style.backgroundColor = backgroundColor
+            removeCssClass(selectedDiv, "selected-location");
+        }
+
+        if (this.isLocationAMap(locationName)) {
+            let idToSelect = `location-item-${locationName}`;
+            let divToSelect = document.getElementById(idToSelect);
+            divToSelect.style.backgroundColor = "";
+            addCssClass(divToSelect, "selected-location");
+        }
+
+        removeCssClass(document.getElementById("settingsButton"), "selected-location");
+        removeCssClass(document.getElementById("notesButton"), "selected-location");
+        removeCssClass(document.getElementById("spawnsButton"), "selected-location");
     },
 
     /**

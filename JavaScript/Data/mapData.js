@@ -1202,7 +1202,6 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the exit to either of the statue hands form the spirit temple.",
             ReadOnly: true,
-            IsDungeonExit: true,
             Hide: true,
             OneWayEntrance: true,
             OwShuffleMap: "Desert Colossus",

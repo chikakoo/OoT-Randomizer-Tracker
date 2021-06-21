@@ -344,7 +344,7 @@ Data = {
 
 		Object.keys(exits).forEach(function(entranceName) {
             let entrance = exits[entranceName];
-			if (entrance.ItemGroup === ItemGroups.OW_ENTRANCE && !entrance.ReadOnly)
+			if (entrance.ItemGroup === ItemGroups.OW_ENTRANCE)
 			{
 				entrances.push(entranceName);
 			}
@@ -375,7 +375,6 @@ Data = {
     
     /**
      * Sets an OW location as found or clears the data
-     * TODO: a bunch of this data is probably no needed anymore due to the new walkMap
      * @param fromMapName - the map you're setting the info for
      * @param from - the item location of the exit you took
      * @param toMapName - the map you selected

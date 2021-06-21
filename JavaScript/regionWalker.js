@@ -444,41 +444,39 @@ RegionWalker = {
         });
 
         // Walk to all other regions
-        if (MapLocations[mapName].Regions[regionName]) { // skips regions that don't exist - TODO: address this (dungeon entrances cause this)
-            let exitList = MapLocations[mapName].Regions[regionName].Exits;
-            Object.keys(exitList).forEach(function (exitName) {
-                let exit = exitList[exitName];
-                if (exit.OwExit) {
-                    let itemObtainability = Data.calculateObtainability(exit.OwExit, age, mapName);
-                    if (itemObtainability && !exit.OwExit.IsDungeonExit) { //TODO: better handle dungeon exits - they don't work properly in dungeon shuffle
-                        let isRandomizedOwl = exit.OwExit.IsOwl && Settings.RandomizerSettings.randomizeOwlDrops;
-                        let isShuffledDungeon = exit.OwExit.IsDungeonEntrance && Settings.RandomizerSettings.shuffleDungeonEntrances;
-                        let isShuffledOw = !exit.OwExit.IsOwl && !exit.OwExit.IsDungeonEntrance && Settings.RandomizerSettings.shuffleOverworldEntrances;
-                        if (isRandomizedOwl || isShuffledDungeon || isShuffledOw) {
-                            if (exit.OwExit.OwShuffleMap && exit.OwExit.OwShuffleExitName) {
-                                if (exit.OwExit.IsInteriorExit) {
-                                    _this._markCanObtainItemInfo(exit.OwExit, age, itemObtainability);
-                                    _this._addToWalkMap(age, mapName, regionName, exit.OwExit.OwShuffleExitName, exit.OwExit.OwShuffleMap, exit.OwExit.OwShuffleRegion, exitName);
-                                } else {
-                                    _this._addToWalkMap(age, mapName, regionName, exitName, exit.OwExit.OwShuffleMap, exit.OwExit.OwShuffleRegion, exit.OwExit.OwShuffleExitName);
-                                }
-
-                                _this._walkInRegion(age, exit.OwExit.OwShuffleMap, exit.OwExit.OwShuffleRegion);
-                            }
-                        } else {
-                            if (exit.OwExit.IsOwl) {
+        let exitList = MapLocations[mapName].Regions[regionName].Exits;
+        Object.keys(exitList).forEach(function (exitName) {
+            let exit = exitList[exitName];
+            if (exit.OwExit) {
+                let itemObtainability = Data.calculateObtainability(exit.OwExit, age, mapName);
+                if (itemObtainability && !exit.OwExit.IsDungeonExit) { //TODO: better handle dungeon exits - they don't work properly in dungeon shuffle
+                    let isRandomizedOwl = exit.OwExit.IsOwl && Settings.RandomizerSettings.randomizeOwlDrops;
+                    let isShuffledDungeon = exit.OwExit.IsDungeonEntrance && Settings.RandomizerSettings.shuffleDungeonEntrances;
+                    let isShuffledOw = !exit.OwExit.IsOwl && !exit.OwExit.IsDungeonEntrance && Settings.RandomizerSettings.shuffleOverworldEntrances;
+                    if (isRandomizedOwl || isShuffledDungeon || isShuffledOw) {
+                        if (exit.OwExit.OwShuffleMap && exit.OwExit.OwShuffleExitName) {
+                            if (exit.OwExit.IsInteriorExit) {
                                 _this._markCanObtainItemInfo(exit.OwExit, age, itemObtainability);
+                                _this._addToWalkMap(age, mapName, regionName, exit.OwExit.OwShuffleExitName, exit.OwExit.OwShuffleMap, exit.OwExit.OwShuffleRegion, exitName);
+                            } else {
+                                _this._addToWalkMap(age, mapName, regionName, exitName, exit.OwExit.OwShuffleMap, exit.OwExit.OwShuffleRegion, exit.OwExit.OwShuffleExitName);
                             }
-                            _this._addToWalkMap(age, mapName, regionName, exitName, exit.OwExit.Map, exit.OwExit.Region, exit.OwExit.ExitMap);
-                            _this._walkInRegion(age, exit.OwExit.Map, exit.OwExit.Region);
+
+                            _this._walkInRegion(age, exit.OwExit.OwShuffleMap, exit.OwExit.OwShuffleRegion);
                         }
+                    } else {
+                        if (exit.OwExit.IsOwl) {
+                            _this._markCanObtainItemInfo(exit.OwExit, age, itemObtainability);
+                        }
+                        _this._addToWalkMap(age, mapName, regionName, exitName, exit.OwExit.Map, exit.OwExit.Region, exit.OwExit.ExitMap);
+                        _this._walkInRegion(age, exit.OwExit.Map, exit.OwExit.Region);
                     }
-                } else if (Data.calculateObtainability(exit, age)) {
-                     _this._addToWalkMap(age, mapName, regionName, "sameMap", mapName, exitName, "sameMap");
-                     _this._walkInRegion(age, mapName, exitName);
                 }
-            });
-        }
+            } else if (Data.calculateObtainability(exit, age)) {
+                    _this._addToWalkMap(age, mapName, regionName, "sameMap", mapName, exitName, "sameMap");
+                    _this._walkInRegion(age, mapName, exitName);
+            }
+        });
     },
 
     /**

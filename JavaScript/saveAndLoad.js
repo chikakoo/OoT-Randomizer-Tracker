@@ -332,9 +332,6 @@ let SaveAndLoad = {
         });
     },
 
-    //TODO: need to somehow deal with calling the postClick of the interior exits, since it creates
-    // and OW object with a custom function, etc... we can't simply copy string names over...
-    // OR call ALL of the post clicks that might matter at the end, to trigger the interior walk data? (only 2 or 4 needed)
     _loadEntranceShuffleData: function(entranceShuffleData) {
         Object.keys(entranceShuffleData.OwExitData).forEach(function(mapName) {
             Object.keys(entranceShuffleData.OwExitData[mapName]).forEach(function(exitName) {

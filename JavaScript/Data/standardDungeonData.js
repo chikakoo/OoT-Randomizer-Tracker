@@ -2155,7 +2155,7 @@ let StandardDungeons = {
 						}
 					},
 
-					// Locked Doors //TODO: reorder these!!!
+					// Locked Doors
 					"Locked Door on Top Floor": {
 						Name: "Locked Door on Top Floor",
 						ItemGroup: ItemGroups.LOCKED_DOOR,
@@ -3065,6 +3065,9 @@ let StandardDungeons = {
 		MapGroup: MapGroups.DUNGEONS,
 		Floors: ["F4", "F3", "F2", "F1"],
 		StartingFloorIndex: 3,
+		UseAltOrder: function() {
+			return Equipment.STRENGTH.currentUpgrade > 1 && Keys.SPIRIT_TEMPLE.keyCount > 0;
+		},
 		Regions: {
 			main: {
 				Exits: {
