@@ -71,17 +71,28 @@ let updateItemDisplay = function() {
 		let expandIconDiv = document.getElementById(`${itemLocation.Name}-expand-icon`);
 
 		if (!ageIconDiv) { return; } // Means that this item isn't being displayed
+
+		removeCssClass(textDiv, "item-entrance-known");
+		if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE && 
+			itemLocation.OwShuffleMap && 
+			itemLocation.OwShuffleRegion &&
+			itemLocation.OwShuffleExitName) {
+			addCssClass(textDiv, "item-entrance-known");
+		}
 		
-		let cannotGetEntranceItem = false;
 		let entranceGroup = itemLocation.EntranceGroup;
 		if (entranceGroup && itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
-			cannotGetEntranceItem = 
+			let cannotGetEntranceItem = 
 				EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.CHILD) === 0 &&
 				EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.ADULT) === 0;
+
+			if (cannotGetEntranceItem) {
+				addCssClass(textDiv, "item-entrance-known");
+			}
 		}
 		
 		removeCssClass(textDiv, "item-cannot-obtain");
-		if (cannotGetEntranceItem || (!canGetAsChild && !canGetAsAdult)) {
+		if (!canGetAsChild && !canGetAsAdult) {
 			addCssClass(textDiv, "item-cannot-obtain");
 		}
 

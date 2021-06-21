@@ -222,16 +222,6 @@ let OwExits = {
     },
 
     "Lost Woods Bridge": {
-        "Hyrule Field Bridge": {
-            Name: "Hyrule Field Bridge",
-            ExitRegion: "main",
-            Map: "Hyrule Field",
-            Region: "main",
-            ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: 132, y: 150 },
-            Age: Age.EITHER,
-            LongDescription: "This is the Hyrule Field exit from the bridge."
-        },
         "Kokiri Forest Bridge": {
             Name: "Kokiri Forest Bridge",
             ExitRegion: "main",
@@ -241,6 +231,16 @@ let OwExits = {
             MapInfo: { x: 221, y: 150 },
             Age: Age.EITHER,
             LongDescription: "This is the Kokiri Forest exit from the bridge."
+        },
+        "Hyrule Field Bridge": {
+            Name: "Hyrule Field Bridge",
+            ExitRegion: "main",
+            Map: "Hyrule Field",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: 132, y: 150 },
+            Age: Age.EITHER,
+            LongDescription: "This is the Hyrule Field exit from the bridge."
         },
         "Bridge to Lost Woods": {
             Name: "Bridge to Lost Woods",
@@ -471,11 +471,12 @@ let OwExits = {
             Region: "main",
             OwShuffleMap: "Ganon's Castle",
             OwShuffleRegion: "main",
-            OwShuffleExitName: "main",
+            OwShuffleExitName: "Exit",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: -100, y: -100 }, // We'll never care about this
             Age: Age.ADULT,
             LongDescription: "This is the entrance to Ganon's Castle.",
+            ReadOnly: true,
             Hide: true,
             CustomRequirement: function(age) {
 				switch (Settings.RandomizerSettings.medallionSetting) {
@@ -1252,6 +1253,22 @@ let OwExits = {
             IsDungeonExit: true,
             Age: Age.EITHER,
             LongDescription: "This is the exit from the Gerudo Training Grounds."
+        }
+    },
+
+    "Ganon's Castle": {
+        "Exit": {
+            Name: "Exit",
+            ExitRegion: "main",
+            Map: "Castle",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: -100, y: -100, floor: "F1" },
+            ReadOnly: true,
+            Hide: true,
+            IsDungeonExit: true,
+            Age: Age.EITHER,
+            LongDescription: "This is the exit from Ganon's Castle."
         }
     }
 }
@@ -4663,7 +4680,7 @@ let MapLocations = {
 
                             let canGetToMain = Data.canAccessMap(age, "Goron City", "main");
                             let canLightBombFlower = age === Age.CHILD && Items.DEKU_STICK.playerHas && Data.canAccessMap(age, "Goron City", "darunia");
-                            return canGetToMain && (canLightBombFlower || Equipment.STRENGTH.currentUpgrade > 1);
+                            return canGetToMain && (canLightBombFlower || Equipment.STRENGTH.playerHas);
                         }
                     }
                 }

@@ -160,9 +160,11 @@ SocketClient = {
 		if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
 			matchingLocation = OwExits[map][name];
 
-			let hasOwData = itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName;
-			Data.setOWLocationFound(map, itemLocation, itemLocation.OwShuffleMap, itemLocation.OwShuffleExitName, !hasOwData);
-
+			if (!matchingLocation.ReadOnly) {
+				let hasOwData = itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName;
+				Data.setOWLocationFound(map, itemLocation, itemLocation.OwShuffleMap, itemLocation.OwShuffleExitName, !hasOwData);	
+			}
+			
 			if (_currentLocationName === map) {
 				let locDropdown = document.getElementById(`${itemLocation.Name}-location-dropdown`);
 				let entranceDropdown = document.getElementById(`${itemLocation.Name}-entrance-dropdown`);

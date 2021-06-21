@@ -338,13 +338,13 @@ Data = {
     /**
      * Gets an array of all the overworld entrance names
      */
-    getOWEntrances: function(mapName, includeOneWay) {
+    getOWEntrances: function(mapName) {
         let entrances = [];
         let exits = OwExits[mapName];
 
 		Object.keys(exits).forEach(function(entranceName) {
             let entrance = exits[entranceName];
-			if (entrance.ItemGroup === ItemGroups.OW_ENTRANCE && (includeOneWay || !entrance.OneWayEntrance))
+			if (entrance.ItemGroup === ItemGroups.OW_ENTRANCE && !entrance.ReadOnly)
 			{
 				entrances.push(entranceName);
 			}
@@ -1286,6 +1286,10 @@ Data = {
     _fillCanDoObject(itemLocations, age, canDoObj) {
         let _this = this;
         itemLocations.forEach(function(itemLocation) {
+            if (itemLocation.ReadOnly) { // ReadOnly locations aren't real checks, just travel points
+                return;
+            }
+
             if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
                 let isValidOwl = itemLocation.IsOwl && Settings.RandomizerSettings.randomizeOwlDrops;
                 let isValidDungeon = itemLocation.IsDungeonEntrance && Settings.RandomizerSettings.shuffleDungeonEntrances;
@@ -1304,7 +1308,6 @@ Data = {
             }
 
             canDoObj.totalTasks++;
-
             if (itemLocation.playerHas) { 
                 canDoObj.completed++;
             } else {
@@ -1323,7 +1326,7 @@ Data = {
                         }
                         break;
                     default:
-                        canDoObj.cannotDo++;
+                        canDoObj.cannotDo++; 
                 }
             }
         });
