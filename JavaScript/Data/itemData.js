@@ -447,6 +447,12 @@ let ShopItemDictionary = {
 	"key": "Small Key.png",
 	"sk": "Small Key.png",
 
+	"bosskey": "Boss Key.png",
+	"bigkey": "Boss Key.png",
+	"big": "Boss Key.png",
+	"boss": "Boss Key.png",
+	"bk": "Boss Key.png",
+
 	"forestsmallkey": "Forest Temple Small Key.png",
 	"forestkey": "Forest Temple Small Key.png",
 	"forestsk": "Forest Temple Small Key.png",
@@ -492,7 +498,7 @@ let ShopItemDictionary = {
 	"shadowsmallkey": "Shadow Temple Small Key.png",
 	"shadowkey": "Shadow Temple Small Key.png",
 	"shadowsk": "Shadow Temple Small Key.png",
-	"shadowkeywater": "Shadow Temple Small Key.png",
+	"smallkeyshadow": "Shadow Temple Small Key.png",
 	"keyshadow": "Shadow Temple Small Key.png",
 	"skshadow": "Shadow Temple Small Key.png",
 
@@ -506,7 +512,7 @@ let ShopItemDictionary = {
 	"spiritsmallkey": "Spirit Temple Small Key.png",
 	"spiritkey": "Spirit Temple Small Key.png",
 	"spiritsk": "Spirit Temple Small Key.png",
-	"spiritkeywater": "Spirit Temple Small Key.png",
+	"smallkeyspirit": "Spirit Temple Small Key.png",
 	"keyspirit": "Spirit Temple Small Key.png",
 	"skspirit": "Spirit Temple Small Key.png",
 
@@ -534,7 +540,7 @@ let ShopItemDictionary = {
 	"ganonsmallkey": "Ganon's Castle Small Key.png",
 	"ganonkey": "Ganon's Castle Small Key.png",
 	"ganonsk": "Ganon's Castle Small Key.png",
-	"ganonkeywater": "Ganon's Castle Small Key.png",
+	"smallkeyganon": "Ganon's Castle Small Key.png",
 	"keyganon": "Ganon's Castle Small Key.png",
 	"skganon": "Ganon's Castle Small Key.png",
 
@@ -544,12 +550,6 @@ let ShopItemDictionary = {
 	"bosskeyganon": "Ganon's Castle Boss Key.png",
 	"bigkeyganon": "Ganon's Castle Boss Key.png",
 	"bkganon": "Ganon's Castle Boss Key.png",
-	
-	"bosskey": "Boss Key.png",
-	"bigkey": "Boss Key.png",
-	"big": "Boss Key.png",
-	"boss": "Boss Key.png",
-	"bk": "Boss Key.png",
 	
 	"dungeonmap": "Dungeon Map.png",
 	"map": "Dungeon Map.png",
