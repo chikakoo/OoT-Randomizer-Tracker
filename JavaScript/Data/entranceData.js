@@ -86,6 +86,38 @@ EntranceData = {
 	 */
 	canGetToWindmillFromDampe(age) {
 		return age === Age.CHILD ? Data.canGroundJumpWithBomb(Age.CHILD) : Data.canPlaySong(Songs.SONG_OF_TIME);
+	},
+
+	/**
+	 * Runs the post click functions on all completed items of a given item location
+	 * @param itemLocation The item location to check
+	 */
+	runPostClicksOnCompletedItems: function(itemLocation) {
+		if (!itemLocation || !itemLocation.EntranceGroup || !itemLocation.EntranceGroup.completed) {
+			return;
+		}
+
+		if (!itemLocation.IsInterior && !itemLocation.IsGrotto) {
+			return;
+		}
+
+		let entranceGroup = itemLocation.EntranceGroup;
+		let name = entranceGroup.name;
+		Object.keys(entranceGroup.completed).forEach(function(buttonName) {
+			let buttonItem;
+
+			if (itemLocation.IsInterior) {
+				buttonItem = InteriorGroups[name].buttons[buttonName];
+			}
+
+			else if (itemLocation.IsGrotto) {
+				buttonItem = GrottoGroups[name].buttons[buttonName];
+			}
+
+			if (buttonItem && buttonItem.postClick) {
+				buttonItem.postClick(true);
+			}
+		});
 	}
 }
 

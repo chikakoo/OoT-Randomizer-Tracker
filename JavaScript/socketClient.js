@@ -1,5 +1,9 @@
 SocketClient = {
 	_socket: null,
+
+	shouldSync: function() {
+		return this._socket !== null && !SaveAndLoad.currentlyLoading;
+	},
 	
 	isCoOp: function() {
 		return typeof io !== 'undefined';
@@ -152,6 +156,10 @@ SocketClient = {
 	 * Syncs up one item location, given the map and location name
 	 */
 	updateItemLocation: function(itemLocation) {
+		if (itemLocation.IsInteriorExit) {
+			return; // These are handled by the postClick function, and will mess everything up if we do anything with them
+		}
+
 		let map = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE ? itemLocation.ExitMap : itemLocation.Map;
 		let region = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE ? itemLocation.ExitRegion : itemLocation.Region;
 		let name = itemLocation.Name.trim();
@@ -187,10 +195,10 @@ SocketClient = {
 			if (group.postClick) {
 				group.postClick(matchingLocation, true);
 			}
+			EntranceData.runPostClicksOnCompletedItems(matchingLocation);
 		} 
 		
-		// Clear the group in this case, becuase it doesn't exist anymore!
-		else if (matchingLocation.EntranceGroup) {
+		else if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && !itemLocation.EntranceGroup) {
 			EntranceUI.clearGroupChoice(matchingLocation);
 		}
 		
@@ -216,7 +224,7 @@ SocketClient = {
 	 * @param item - the actual item object
 	 */
 	inventoryUpdated: function(itemType, itemKey, item) {
-		if (this._socket) {
+		if (this.shouldSync()) {
 			this._socket.emit("inventory_updated", itemType, itemKey, item);
 		}
 	},
@@ -226,7 +234,7 @@ SocketClient = {
 	 * @param itemLocation - the item location object that was updated
 	 */
 	itemLocationUpdated: function(itemLocation) {
-		if (this._socket) {
+		if (this.shouldSync()) {
 			this._socket.emit("item_location_updated", itemLocation);
 		}
 	},
@@ -235,7 +243,7 @@ SocketClient = {
 	 * Spawn location updated
 	 */
 	spawnLocationUpdated: function(randomizedSpawnLocations) {
-		if (this._socket) {
+		if (this.shouldSync()) {
 			this._socket.emit("spawn_location_updated", randomizedSpawnLocations);
 		}
 	},
@@ -244,7 +252,7 @@ SocketClient = {
 	 * Syncs over the OW shuffle location info
 	 */
 	owLocationUpdated: function(fromMapName, from, toMapName, toLocationName, clear) {
-		if (this._socket) {
+		if (this.shouldSync()) {
 			this._socket.emit("ow_location_updated", fromMapName, from, toMapName, toLocationName, clear);
 		}
 	},
@@ -253,7 +261,7 @@ SocketClient = {
 	 * Syncs all clients to the data that this client has
 	 */
 	syncAll: function() {
-		if (this._socket) { 
+		if (this.shouldSync()) { 
 			this._syncSettings();
 			this._syncAllDungeonTypes();
 			this._syncAllInventory();
@@ -291,7 +299,7 @@ SocketClient = {
 	 * @param {String} dungeonName The name of the dungeon
 	 */
 	syncDungeonType: function(dungeonName) {
-		if (this._socket) {
+		if (this.shouldSync()) {
 			let dungeonType = MapLocations[dungeonName].IsMasterQuest ? MapTypes.MASTER_QUEST : MapTypes.STANDARD;
 			this._socket.emit("sync_dungeon_type", dungeonName, dungeonType);
 		}
@@ -325,7 +333,7 @@ SocketClient = {
 	 * Syncs all the item location data
 	 */
 	_syncAllItemLocations: function() {
-		if (this._socket) {
+		if (this.shouldSync()) {
 			this._socket.emit("sync_all_item_locations", Data.getAllItemLocations(null, null, true));
 		}
 	}

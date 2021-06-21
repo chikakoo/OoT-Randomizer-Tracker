@@ -1,4 +1,6 @@
 let SaveAndLoad = {
+    currentlyLoading: false,
+
     /**
      * Saves the state of the current game by downloading a JSON file
      */
@@ -207,6 +209,7 @@ let SaveAndLoad = {
         if (loadedObject.locations) { // This is the spoiler log data we need
         	this._loadNotesData(loadedObject.locations);
         } else {
+            this.currentlyLoading = true;
         	this._loadSaveFile(loadedObject);
         }
     },
@@ -266,6 +269,7 @@ let SaveAndLoad = {
         refreshAll();
         displayLocation("Kokiri Forest");
 
+        this.currentlyLoading = false;
         SocketClient.syncAll(); // Sync to all clients if in co-op mode
         alert("File loaded successfully!");
     },
@@ -307,6 +311,8 @@ let SaveAndLoad = {
                         if (loadedItemLocationInfo.OwShuffleRegion) {
                             itemLocation.OwShuffleRegion = loadedItemLocationInfo.OwShuffleRegion;
                         }
+
+                        EntranceData.runPostClicksOnCompletedItems(itemLocation);
                     });
                 });
             });
