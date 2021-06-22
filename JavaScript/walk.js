@@ -225,21 +225,18 @@ Walk = {
 			spanContainer.appendChild(locationSpan);
 			
 			let owShuffle = Settings.RandomizerSettings.shuffleOverworldEntrances;
-			let entranceDataSet = {
-				map: owShuffle ? location.OwShuffleMap : location.Map,
-				region: owShuffle ? location.OwShuffleMap : location.Region
-			};
-			let isEntranceDataSet = entranceDataSet.map && entranceDataSet.region;
 			let isRandomizedOwl = location.IsOwl && Settings.RandomizerSettings.randomizeOwlDrops;
-			if ((!location.IsOwl && !isEntranceDataSet) || (isRandomizedOwl && isEntranceDataSet)) { 
+			let isShuffled = owShuffle || isRandomizedOwl;
+			let entranceDataSet = {
+				map: isShuffled ? location.OwShuffleMap : location.Map,
+				region: isShuffled ? location.OwShuffleMap : location.Region
+			};
+			let hasEntranceDataSet = entranceDataSet.map && entranceDataSet.region;
+			if (!hasEntranceDataSet) { 
 				return spanContainer;
 			}
 
 			let locationToDisplay = entranceDataSet.map;
-			if (location.IsOwl && !Settings.RandomizerSettings.randomizeOwlDrops) {
-				locationToDisplay = location.Map; // In this case, we're using the default location since it's not randomized
-			}
-			
 			addCssClass(locationSpan, "travel-div-hover-style");
 			locationSpan.onclick = function() {
 				displayLocation(locationToDisplay);
