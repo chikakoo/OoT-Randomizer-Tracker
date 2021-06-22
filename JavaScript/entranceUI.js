@@ -121,6 +121,9 @@ let EntranceUI = {
 		let selectedGroup = this.getEntranceData(itemLocation)[itemLocationGroup.name];
 		let buttonKeys = Object.keys(selectedGroup.buttons);
 		let _this = this;
+
+		let canGetToAsChild = Data.getItemObtainability(itemLocation, Age.CHILD);
+		let canGetToAsAdult = Data.getItemObtainability(itemLocation, Age.ADULT);
 		
 		let visibleButtonCount = 0;
 		buttonKeys.forEach(function(buttonName) {
@@ -130,9 +133,9 @@ let EntranceUI = {
 			let shouldExcludeEquivalentItem = locationsToExcludeMap && locationsToExcludeMap.includes(button.itemLocation);
 			button.excluded = shouldExcludeEquivalentItem;
 			
-			let isAdultOnly = button.isAdultOnly && button.isAdultOnly();
-			let isChildOnly = button.isChildOnly && button.isChildOnly();
-			
+			let isChildOnly = (button.isChildOnly && button.isChildOnly()) || (canGetToAsChild && !canGetToAsAdult);
+			let isAdultOnly = (button.isAdultOnly && button.isAdultOnly()) || (canGetToAsAdult && !canGetToAsChild);
+
 			if (shouldNotDisplayButton || shouldExcludeEquivalentItem) { return; }
 			if (itemLocation.Age === Age.CHILD && isAdultOnly) { return; }
 			if (itemLocation.Age === Age.ADULT && isChildOnly) { return; }
@@ -162,19 +165,18 @@ let EntranceUI = {
 				SocketClient.itemLocationUpdated(itemLocation);
 				refreshAll();
 			}
+
+			let canGetAsChild = canGetToAsChild && (!button.canGet || button.canGet(Age.CHILD));
+			let canGetAsAdult = canGetToAsAdult && (!button.canGet || button.canGet(Age.ADULT));
 			
 			if (itemLocationGroup.completed[buttonName]) {
 				addCssClass(buttonDiv, "entrance-group-button-completed");
 			}
-			else if (button.canGet && (!button.canGet(Age.ADULT) && !button.canGet(Age.CHILD))) {
-				addCssClass(buttonDiv, "entrance-group-button-cannot-do");
-			}
-			else if ((isAdultOnly && !Data.canBeAge(Age.ADULT)) || (isChildOnly && !Data.canBeAge(Age.CHILD)))
-			{
+			else if (!canGetAsAdult && !canGetAsChild) {
 				addCssClass(buttonDiv, "entrance-group-button-cannot-do");
 			}
 			
-			_this._addAgeDiv(buttonDiv, button);
+			_this._addAgeDiv(buttonDiv, button, canGetAsChild, canGetAsAdult);
 			visibleButtonCount++;
 			itemLocationEntranceTasksContainer.appendChild(buttonDiv);
 		});
@@ -188,12 +190,12 @@ let EntranceUI = {
 	 * Adds the age icon to the button div if appropriate
 	 * @param buttonDiv - the button div
 	 * @param button - the button containing the data
+	 * @param canGetToAsChild - whether you can get to the item location as a child
+	 * @param canGetToAsAdult - whether you can get to the item location as an adult
 	 */
-	_addAgeDiv: function(buttonDiv, button) {
+	_addAgeDiv: function(buttonDiv, button, canGetAsChild, canGetAsAdult) {
 		let childOnlyItem = this._canGetAsAge(button, Age.CHILD);
 		let adultOnlyItem = this._canGetAsAge(button, Age.ADULT);
-		let canGetAsChild = !button.canGet || button.canGet(Age.CHILD);
-		let canGetAsAdult = !button.canGet || button.canGet(Age.ADULT);
 		
 		let canOnlyGetAsChild = (childOnlyItem && !adultOnlyItem) || (canGetAsChild && !canGetAsAdult);
 		let canOnlyGetAsAdult = (!childOnlyItem && adultOnlyItem) || (!canGetAsChild && canGetAsAdult);
@@ -280,10 +282,9 @@ let EntranceUI = {
 	getNumberOfActiveTasks: function(itemLocation) {
 		let selectedGroup = itemLocation.EntranceGroup;
 		if (!selectedGroup) {
-			throw "Should not call getNumberOfCompletableTasks with an item location that doesn't have a group selected!";
+			throw "Should not call getNumberOfActiveTasks with an item location that doesn't have a group selected!";
 		}
-		
-		let _this = this;
+
 		let activeTasks = 0;
 		let entranceData = this.getEntranceData(itemLocation);
 		selectedGroup.buttonNames.forEach(function (buttonName) {
@@ -304,6 +305,11 @@ let EntranceUI = {
 	 * @return 
 	 */
 	getNumberOfCompletableTasks: function(itemLocation, age) {
+		// If the age can't get to the location, then there's no completable tasks!
+		if (!Data.getItemObtainability(itemLocation, age)) {
+			return 0;
+		}
+
 		let selectedGroup = itemLocation.EntranceGroup;
 		if (!selectedGroup) {
 			throw "Should not call getNumberOfCompletableTasks with an item location that doesn't have a group selected!";
