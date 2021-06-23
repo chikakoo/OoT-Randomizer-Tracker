@@ -32,8 +32,6 @@ let StandardDungeons = {
 						OwExit: OwExits["Deku Tree"]["Exit"]
 					}
 				},
-
-				Entrances: {},
 				
 				ItemLocations: {
 					"Map Chest": {
@@ -77,8 +75,6 @@ let StandardDungeons = {
 
 			slingshotRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Slingshot Chest": {
 						Name: "Slingshot Chest",
@@ -113,8 +109,6 @@ let StandardDungeons = {
 						}
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Chest in Basement": {
@@ -164,8 +158,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Skulltula in Back Room": {
 						Name: "Skulltula in Back Room",
@@ -184,8 +176,6 @@ let StandardDungeons = {
 
 			bossRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Heart Container": {
 						Name: "Heart Container",
@@ -271,8 +261,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Map Chest": {
 						Name: "Map Chest",
@@ -341,8 +329,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Scrub by Blue Dodongo Room": {
 						Name: "Scrub by Blue Dodongo Room",
@@ -372,8 +358,6 @@ let StandardDungeons = {
 						}
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Compass Chest": {
@@ -410,8 +394,6 @@ let StandardDungeons = {
 						RequiredAdultItems: [{ item: Items.HOOKSHOT, upgradeString: "2" }]
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Chest by Bomb Flower": {
@@ -463,8 +445,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Bomb Bag Chest": {
 						Name: "Bomb Bag Chest",
@@ -488,8 +468,6 @@ let StandardDungeons = {
 
 			skulltulaAlcoveAboveStairs: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Skulltula in Alcove Above Stairs": {
 						Name: "Skulltula in Alcove Above Stairs",
@@ -509,8 +487,6 @@ let StandardDungeons = {
 						Name: "bossRoom"
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Chest by King Dodongo": {
@@ -534,8 +510,6 @@ let StandardDungeons = {
 
 			bossRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Heart Container": {
 						Name: "Heart Container",
@@ -599,8 +573,6 @@ let StandardDungeons = {
 						}
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Boomerang Chest": {
@@ -684,8 +656,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Skulltula Near Boss": {
 						Name: "Skulltula Near Boss",
@@ -701,8 +671,6 @@ let StandardDungeons = {
 
 			bossRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Heart Container": {
 						Name: "Heart Container",
@@ -747,8 +715,6 @@ let StandardDungeons = {
 						OwExit: OwExits["Forest Temple"]["Exit"]
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Chest on Starting Room Tree": {
@@ -910,8 +876,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Chest Behind Main Room": {
 						Name: "Chest Behind Main Room",
@@ -954,8 +918,6 @@ let StandardDungeons = {
 						IsGoldenScaleWater: true // This is to swim through the well
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {
 					"Skulltula in Left Room on Wall": {
 						Name: "Skulltula in Left Room on Wall",
@@ -984,8 +946,6 @@ let StandardDungeons = {
 						Name: "blockRoom"
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Floormaster Chest": {
@@ -1016,8 +976,6 @@ let StandardDungeons = {
 						IsGoldenScaleWater: true // This is to swim through the well
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			outsideRightLedge: {
@@ -1026,8 +984,6 @@ let StandardDungeons = {
 						Name: "outsideRight"
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Chest on Outside Right Island": {
@@ -1071,8 +1027,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Dungeon Map": {
 						Name: "Dungeon Map",
@@ -1088,8 +1042,6 @@ let StandardDungeons = {
 			},
 			drainedWell: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Chest in Well": {
 						Name: "Chest in Well",
@@ -1124,8 +1076,6 @@ let StandardDungeons = {
 						}
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Eye Switch in Block Puzzle Room": {
@@ -1163,8 +1113,6 @@ let StandardDungeons = {
 						}
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			untwistedCorridor1: {
@@ -1174,8 +1122,6 @@ let StandardDungeons = {
 						MustKillStunnableEnemy: true
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Boss Key Chest": {
@@ -1196,8 +1142,6 @@ let StandardDungeons = {
 						LockedDoor: "Locked Door in Boss Key Room"
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			firstPoeRoom: {
@@ -1209,8 +1153,6 @@ let StandardDungeons = {
 						NeedsSwordWeapon: true
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Red Poe Chest": {
@@ -1253,8 +1195,6 @@ let StandardDungeons = {
 						}
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			fallingCeilingRoom: {
@@ -1263,8 +1203,6 @@ let StandardDungeons = {
 						Name: "outsideRightLedge"
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Chest in Falling Ceiling Room": {
@@ -1286,8 +1224,6 @@ let StandardDungeons = {
 						}
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Chest in Basement": {
@@ -1321,8 +1257,6 @@ let StandardDungeons = {
 			},
 			bossRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Heart Container": {
 						Name: "Heart Container",
@@ -1396,8 +1330,6 @@ let StandardDungeons = {
 						OwExit: OwExits["Fire Temple"]["Exit"]
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Goron Near Boss Door": {
@@ -1606,7 +1538,6 @@ let StandardDungeons = {
 			},
 			bossKeyRoom: {
 				Exits: {},
-				Entrances: {},
 
 				ItemLocations: {
 					"Skulltula in Like-Like Room by Start": {
@@ -1669,8 +1600,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Big Lava Room Left Goron": {
 						Name: "Big Lava Room Left Goron",
@@ -1687,8 +1616,6 @@ let StandardDungeons = {
 			},
 			bigLavaRoomGoronRight: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Big Lava Room Right Goron": {
 						Name: "Big Lava Room Right Goron",
@@ -1707,8 +1634,6 @@ let StandardDungeons = {
 			},
 			bigLavaRoomSoTLedge: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Skulltula in Upper Left Big Lava Room": {
 						Name: "Skulltula in Upper Left Big Lava Room",
@@ -1733,7 +1658,6 @@ let StandardDungeons = {
 						LockedDoor: "Locked Door After Rising Block"
 					}
 				},
-				Entrances: {},
 				ItemLocations: {}
 			},
 			firstTorchSlugRoom: {
@@ -1757,8 +1681,6 @@ let StandardDungeons = {
 						}
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			boulderMazeLower: {
@@ -1769,8 +1691,6 @@ let StandardDungeons = {
 						LockedDoor: "Locked Door in Boulder Maze"
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Lower Boulder Maze Goron": {
@@ -1815,9 +1735,6 @@ let StandardDungeons = {
 						LockedDoor: "Locked Door in Crater Room"
 					}
 				},
-
-				Entrances: {},
-
 				ItemLocations: {}
 			},
 			fireWallRoom: {
@@ -1836,8 +1753,6 @@ let StandardDungeons = {
 						LockedDoor: "Locked Door in Fire Wall Room"
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			mapEnclosure: {
@@ -1851,8 +1766,6 @@ let StandardDungeons = {
 						}
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Map Chest in Fire Wall Room": {
@@ -1885,8 +1798,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Upper Boulder Maze Goron": {
 						Name: "Upper Boulder Maze Goron",
@@ -1905,8 +1816,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Goron in Bombable Pit": {
 						Name: "Goron in Bombable Pit",
@@ -1920,8 +1829,6 @@ let StandardDungeons = {
 			},
 			scarecrowRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Skulltula on Climbable Wall After Scarecrow": {
 						Name: "Skulltula on Climbable Wall After Scarecrow",
@@ -1971,8 +1878,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Compass Chest in Fire Maze": {
 						Name: "Compass Chest in Fire Maze",
@@ -1995,8 +1900,6 @@ let StandardDungeons = {
 						NeedsSwordWeapon: true
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			hammerChestRoom: {
@@ -2011,8 +1914,6 @@ let StandardDungeons = {
 						Name: "centerRoomBottom"
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Hammer Chest at Very Top": {
@@ -2036,8 +1937,6 @@ let StandardDungeons = {
 						RequiredSongs: [Songs.SONG_OF_TIME]
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			centerRoomTopSwitch: {
@@ -2046,8 +1945,6 @@ let StandardDungeons = {
 						Name: "centerRoomBottom"
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Goron in Center of Fire Maze": {
@@ -2062,8 +1959,6 @@ let StandardDungeons = {
 			},
 			bossRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Heart Container": {
 						Name: "Heart Container",
@@ -2136,8 +2031,6 @@ let StandardDungeons = {
 						OwExit: OwExits["Water Temple"]["Exit"]
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Compass on Mid East Wing": {
@@ -2286,8 +2179,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Lower Water Level": {
 						Name: "Lower Water Level",
@@ -2332,7 +2223,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
 				ItemLocations: {
 					"Skulltula by Mid Water Triforce": {
 						Name: "Skulltula by Mid Water Triforce",
@@ -2372,8 +2262,6 @@ let StandardDungeons = {
 						RequiredItems: [Items.HOOKSHOT]
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			midWaterLevel: {
@@ -2394,8 +2282,6 @@ let StandardDungeons = {
 						Name: "crackedWallArea"
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Key Under Rising Platform in Middle Room": {
@@ -2423,8 +2309,6 @@ let StandardDungeons = {
 			},
 			crackedWallArea: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Bombable Wall Chest Below Water Lowering Triforce": {
 						Name: "Bombable Wall Chest Below Water Lowering Triforce",
@@ -2462,7 +2346,6 @@ let StandardDungeons = {
 					},
 				},
 
-				Entrances: {},
 				ItemLocations: {
 					"Dungeon Map by Water Lowering Triforce": {
 						Name: "Dungeon Map by Water Lowering Triforce",
@@ -2485,8 +2368,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Skulltula in Waterfall Room": {
 						Name: "Skulltula in Waterfall Room",
@@ -2507,8 +2388,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Longshot Chest": {
 						Name: "Longshot Chest",
@@ -2527,8 +2406,6 @@ let StandardDungeons = {
 						RequiredItems: [Items.FAIRY_BOW]
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Skulltula in Whirlpool Room": {
@@ -2554,8 +2431,6 @@ let StandardDungeons = {
 			},
 			dragonRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Key in Dragon Room at Bottom West Wing": {
 						Name: "Key in Dragon Room at Bottom West Wing",
@@ -2577,8 +2452,6 @@ let StandardDungeons = {
 						}
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			boulderWaterfall: {
@@ -2589,8 +2462,6 @@ let StandardDungeons = {
 						LockedDoor: "Locked Door after Boulder Waterfall"
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Skulltula Near Boss Key Room": {
@@ -2610,8 +2481,6 @@ let StandardDungeons = {
 			},
 			bossKeyRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Boss Key Chest": {
 						Name: "Boss Key Chest",
@@ -2624,8 +2493,6 @@ let StandardDungeons = {
 			},
 			bossRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Heart Container": {
 						Name: "Heart Container",
@@ -2684,8 +2551,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Dungeon Map Chest": {
 						Name: "Dungeon Map Chest",
@@ -2734,8 +2599,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Compass Chest": {
 						Name: "Compass Chest",
@@ -2769,8 +2632,6 @@ let StandardDungeons = {
 						}
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Visible Chest in Invisible Scythe Room": {
@@ -2874,8 +2735,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Chest in Invisible Spike Room": {
 						Name: "Chest in Invisible Spike Room",
@@ -2893,8 +2752,6 @@ let StandardDungeons = {
 			},
 			giantSkullRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Key in Giant Skull": {
 						Name: "Key in Giant Skull",
@@ -2925,8 +2782,6 @@ let StandardDungeons = {
 						}
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Invisible Chest at Wind Hallway": {
@@ -2964,8 +2819,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Skulltula in Boat Room": {
 						Name: "Skulltula in Boat Room",
@@ -2995,8 +2848,6 @@ let StandardDungeons = {
 						}
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Chest in Spike Wall Room": {
@@ -3036,8 +2887,6 @@ let StandardDungeons = {
 			},
 			bossRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Heart Container": {
 						Name: "Heart Container",
@@ -3198,8 +3047,6 @@ let StandardDungeons = {
 						LockedDoor: "Locked Door After Second Crawl Space"
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			childAfterStalfos: {
@@ -3208,8 +3055,6 @@ let StandardDungeons = {
 						Name: "childGrateRoom"
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Chest After Stalfos": {
@@ -3236,8 +3081,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Chest After Anubis Room": {
 						Name: "Chest After Anubis Room",
@@ -3255,8 +3098,6 @@ let StandardDungeons = {
 			},
 			childSkulltulaInGrateRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Skulltula in Grate Room": {
 						Name: "Skulltula in Grate Room",
@@ -3276,8 +3117,6 @@ let StandardDungeons = {
 						NeedsExplosives: true
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Skulltula in Sun on Floor Room": {
@@ -3325,14 +3164,10 @@ let StandardDungeons = {
 						LockedDoor: "Locked Door After Silver Block"
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			openDoorsBySilverBlock: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Compass Chest in Left Silver Block Room": {
 						Name: "Compass Chest in Left Silver Block Room",
@@ -3383,8 +3218,6 @@ let StandardDungeons = {
 						LockedDoor: "Locked Door in Statue Room"
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Map Chest in Statue Room": {
@@ -3485,8 +3318,6 @@ let StandardDungeons = {
 						Name: "silverGauntsStatueHand"
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			silverGauntsStatueHand: {
@@ -3505,8 +3336,6 @@ let StandardDungeons = {
 						Name: "statueHands"
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Silver Gauntlets Chest": {
@@ -3540,8 +3369,6 @@ let StandardDungeons = {
 						LockedDoor: "Locked Door in Anubis Room"
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			fourArmosRoom: {
@@ -3553,8 +3380,6 @@ let StandardDungeons = {
 						Name: "mirrorShieldKnuckle"
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {
 					"Sun Room Chest After 4 Armos": {
 						Name: "Sun Room Chest After 4 Armos",
@@ -3581,8 +3406,6 @@ let StandardDungeons = {
 						Name: "statueHands"
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Left Chest Before Mirror Knuckle": {
@@ -3626,8 +3449,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Boss Key Chest After Moving Wall Room": {
 						Name: "Boss Key Chest After Moving Wall Room",
@@ -3660,8 +3481,6 @@ let StandardDungeons = {
 			},
 			bossRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Heart Container": {
 						Name: "Heart Container",
@@ -3711,8 +3530,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Skulltula in Scythe Room": {
 						Name: "Skulltula in Scythe Room",
@@ -3728,8 +3545,6 @@ let StandardDungeons = {
 			},
 			blueFireRequired: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Map Chest in Platforming Room": {
 						Name: "Map Chest in Platforming Room",
@@ -3820,8 +3635,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					// Locked Doors
 					"Locked Door After Crawlspace": {
@@ -3888,8 +3701,6 @@ let StandardDungeons = {
 						NeedsExplosives: true
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Chest in Front Right Wall": {
@@ -3983,8 +3794,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Chest in Room With Pits": {
 						Name: "Chest in Room With Pits",
@@ -4015,8 +3824,6 @@ let StandardDungeons = {
 			},
 			leftLockedRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Skulltula in Left Locked Room": {
 						Name: "Skulltula in Left Locked Room",
@@ -4031,8 +3838,6 @@ let StandardDungeons = {
 			},
 			rightLockedRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Skulltula in Right Locked Room": {
 						Name: "Skulltula in Right Locked Room",
@@ -4056,8 +3861,6 @@ let StandardDungeons = {
 						}
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Hidden Chest in Dead Hand Room": {
@@ -4085,8 +3888,6 @@ let StandardDungeons = {
 			},
 			bombableHoleRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Chest in Front Bombable Hole": {
 						Name: "Chest in Front Bombable Hole",
@@ -4144,8 +3945,6 @@ let StandardDungeons = {
 						OwExit: OwExits["Training Grounds"]["Exit"]
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Entrance Room Left Chest": {
@@ -4326,8 +4125,6 @@ let StandardDungeons = {
 						LockedDoor: "Optional Locked Door 2"
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			hookshotNeeded: {
@@ -4340,8 +4137,6 @@ let StandardDungeons = {
 						Name: "lavaRoom"
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Wolfos Chest in Room by Silver Block": {
@@ -4400,8 +4195,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Chest in Water Room": {
 						Name: "Chest in Water Room",
@@ -4422,8 +4215,6 @@ let StandardDungeons = {
 			},
 			silverBlockRoom: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Silver Block Room Left Spawned Chest": {
 						Name: "Silver Block Room Left Spawned Chest",
@@ -4471,8 +4262,6 @@ let StandardDungeons = {
 						Name: "lavaRoom"
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Lava Room Key on Platform": {
@@ -4522,8 +4311,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Left Maze Path After Door 1": {
 						Name: "Left Maze Path After Door 1",
@@ -4548,8 +4335,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Left Maze Path After Door 2": {
 						Name: "Left Maze Path After Door 2",
@@ -4573,8 +4358,6 @@ let StandardDungeons = {
 						LockedDoor: "Locked Door 4 On Main Path"
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			mazeAfterDoor4: {
@@ -4585,8 +4368,6 @@ let StandardDungeons = {
 						LockedDoor: "Locked Door 5 On Main Path"
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Left Maze Path After Door 4": {
@@ -4612,8 +4393,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Left Maze Path After Door 5": {
 						Name: "Left Maze Path After Door 5",
@@ -4637,14 +4416,10 @@ let StandardDungeons = {
 						LockedDoor: "Locked Door 7 On Main Path"
 					}
 				},
-
-				Entrances: {},
 				ItemLocations: {}
 			},
 			mazeAfterDoor7: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Center Maze Chest": {
 						Name: "Center Maze Chest",
@@ -4796,8 +4571,6 @@ let StandardDungeons = {
 			},
 			shadowTrialMiddle: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Shadow Trial Far Chest": {
 						Name: "Shadow Trial Far Chest",
@@ -4811,8 +4584,6 @@ let StandardDungeons = {
 			},
 			spiritTrialRoom2: {
 				Exits: {},
-				Entrances: {},
-
 				ItemLocations: {
 					"Spirit Trial Chest After Hitting Switch": {
 						Name: "Spirit Trial Chest After Hitting Switch",
@@ -4842,8 +4613,6 @@ let StandardDungeons = {
 						}
 					}
 				},
-
-				Entrances: {},
 
 				ItemLocations: {
 					"Light Trial Left Lower Chest": {
@@ -4914,8 +4683,6 @@ let StandardDungeons = {
 					}
 				},
 
-				Entrances: {},
-
 				ItemLocations: {
 					"Light Trial Zelda's Lullaby Chest": {
 						Name: "Light Trial Zelda's Lullaby Chest",
@@ -4930,7 +4697,6 @@ let StandardDungeons = {
 			},
 			lightTrialRoom3: {
 				Exits: {},
-				Entrances: {},
 				ItemLocations: {}
 			}
 		}

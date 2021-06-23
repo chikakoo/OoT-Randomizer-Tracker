@@ -1,4 +1,3 @@
-//TODO: remove Entrance on each item, since we're no longer using it for reverse walks
 let MapGroups = {
 	FOREST: 0,
 	FIELD_MARKET: 1,
@@ -1568,14 +1567,6 @@ let MapLocations = {
                     }
                 },
     
-                Entrances: {
-                    secondHalf: {},
-                    "To Kokiri Forest": {},
-                    "Goron City": {},
-                    "Zora's River": {},
-                    "Bridge to Lost Woods": OwExits["Lost Woods Bridge"]["Bridge to Lost Woods"]
-                },
-    
                 ItemLocations: {
                     "Target Shooting Prize": {
                         Name: "Target Shooting Prize",
@@ -1691,11 +1682,6 @@ let MapLocations = {
                     "Sacred Forest Meadow": {
                         OwExit: OwExits["Lost Woods"]["Sacred Forest Meadow"]
                     }
-                },
-
-                Entrances: {
-                    firstHalf: {},
-                    "Sacred Forest Meadow": {}
                 },
 
                 ItemLocations: {
@@ -1850,12 +1836,6 @@ let MapLocations = {
                     },
                 },
 
-                Entrances: {
-                    "Hyrule Field Bridge": {},
-                    "Kokiri Forest Bridge": {},
-                    "Bridge to Lost Woods": {}
-                },
-
                 ItemLocations: {
                     "Saria's Gift": {
                         Name: "Saria's Gift",
@@ -1903,11 +1883,6 @@ let MapLocations = {
                     }
                 },
 
-                Entrances: {
-                    afterGate: {},
-                    "Lost Woods": {}
-                },
-
                 ItemLocations: {
                     "Grotto by Entrance": {
                         Name: "Grotto by Entrance",
@@ -1944,12 +1919,7 @@ let MapLocations = {
                         OwExit: OwExits["Sacred Forest Meadow"]["Minuet Teleport Pad"]
                     }
                 },
-
-                Entrances: {
-                    main: {},
-                    "Minuet Teleport Pad": {}
-                },
-
+                
                 ItemLocations: {
                     "Skulltula on Wall": {
                         Name: "Skulltula on Wall",
@@ -2077,20 +2047,6 @@ let MapLocations = {
                     },
                     "Lake Hylia": {
                         OwExit: OwExits["Hyrule Field"]["Lake Hylia"]
-                    }
-                },
-
-                Entrances: {
-                    "Kokiri Forest": {},
-                    "Zora's River": {},
-                    "Kakariko Village": {},
-                    "Market": {},
-                    "Lon Lon Ranch": {},
-                    "Gerudo Valley": {},
-                    "Lake Hylia": {},
-                    "Lake Hylia Owl": {
-                        IsDefaultOwl: true,
-                        OwExit: OwExits["Lake Hylia"]["Owl"]
                     }
                 },
 
@@ -2334,10 +2290,6 @@ let MapLocations = {
                     }
                 },
 
-                Entrances: {
-                    "Hyrule Field": {}
-                },
-
                 ItemLocations: {
                     "Talon's Super Cucco Minigame": {
                         Name: "Talon's Super Cucco Minigame",
@@ -2530,11 +2482,6 @@ let MapLocations = {
                     }
                 },
 
-                Entrances: {
-                    "Hyrule Field": {},
-                    "Market": {}
-                },
-
                 ItemLocations: {
                     "Big Poe Reward": {
                         Name: "Big Poe Reward",
@@ -2589,12 +2536,6 @@ let MapLocations = {
                     "Temple of Time": {
                         OwExit: OwExits["Market"]["Temple of Time"]
                     }
-                },
-
-                Entrances: {
-                    "Market Entrance": {},
-                    "Hyrule Castle": {},
-                    "Temple of Time": {}
                 },
 
                 ItemLocations: {
@@ -2861,10 +2802,6 @@ let MapLocations = {
                     }
                 },
 
-                Entrances: {
-                    "Market": {}
-                },
-
                 ItemLocations: {
                     "Prelude of Light": {
                         Name: "Prelude of Light",
@@ -2955,10 +2892,6 @@ let MapLocations = {
                     "Ganon's Castle Entrance": {
                         OwExit: OwExits["Castle"]["Ganon's Castle Entrance"]
                     }
-                },
-
-                Entrances: {
-                    "Market": {}
                 },
     
                 ItemLocations: {
@@ -3145,16 +3078,6 @@ let MapLocations = {
 
                     "Bottom of the Well Entrance": {
                         OwExit: OwExits["Kakariko Village"]["Bottom of the Well Entrance"]
-                    }
-                },
-
-                Entrances: {
-                    beyondGate: {},
-                    "Hyrule Field": {},
-                    "Graveyard": {},
-                    "Death Mountain Trial Owl": {
-                        IsDefaultOwl: true,
-                        OwExit: OwExits["Death Mountain Trail"]["Owl"]
                     }
                 },
                 
@@ -3576,12 +3499,6 @@ let MapLocations = {
                         OwExit: OwExits["Kakariko Village"]["Death Mountain Trail"]
                     }
                 },
-
-                Entrances: {
-                    main: {},
-                    "Death Mountain Trail": {}
-                },
-
                 ItemLocations: {}
             }
         }
@@ -3615,11 +3532,6 @@ let MapLocations = {
                     "Kakariko Village": {
                         OwExit: OwExits["Graveyard"]["Kakariko Village"]
                     }
-                },
-
-                Entrances: {
-                    top: {},
-                    "Kakariko Village": {}
                 },
 
                 ItemLocations: {
@@ -3776,11 +3688,6 @@ let MapLocations = {
                     }
                 },
 
-                Entrances: {
-                    main: {},
-                    "Nocturne Teleport Pad": {}
-                },
-
                 ItemLocations: {
                     "Gossip Stone at Top Area": {
                         Name: "Gossip Stone at Top Area",
@@ -3800,8 +3707,6 @@ let MapLocations = {
                         Name: "main"
                     }
                 },
-
-                Entrances: {}, // Nothing will ever need to check how you got here
                 
                 ItemLocations: {
                     "Royal Family's Tomb Chest": {
@@ -3842,8 +3747,6 @@ let MapLocations = {
                         OwExit: OwExits["Graveyard"]["Shadow Temple Entrance"]
                     }
                 },
-
-                Entrances: {},
                 ItemLocations: {}
             }
         }
@@ -3875,12 +3778,6 @@ let MapLocations = {
                     "Dodongo's Cavern Entrance": {
                         OwExit: OwExits["Death Mountain Trail"]["Dodongo's Cavern Entrance"]
                     }
-                },
-
-                Entrances: {
-                    upper: {},
-                    "Kakariko Village": {},
-                    "Goron City": {}
                 },
 
                 ItemLocations: {
@@ -3995,11 +3892,6 @@ let MapLocations = {
                     }
                 },
 
-                Entrances: {
-                    main: {},
-                    "Death Mountain Crater": {}
-                },
-
                 ItemLocations: {
                     "Turn in Claim Check": {
                         Name: "Turn in Claim Check",
@@ -4104,11 +3996,6 @@ let MapLocations = {
                     }
                 },
 
-                Entrances: {
-                    middle: {},
-                    "Mountain Top": {}
-                },
-
                 ItemLocations: {
                     "Grotto by Top Rocks": {
                         Name: "Grotto by Top Rocks",
@@ -4201,12 +4088,6 @@ let MapLocations = {
                     "Goron City": {
                         OwExit: OwExits["Death Mountain Crater"]["Goron City"]
                     }
-                },
-
-                Entrances: {
-                    top: {},
-                    bottom: {},
-                    "Goron City": {}
                 },
 
                 ItemLocations: {
@@ -4316,12 +4197,6 @@ let MapLocations = {
                     }
                 },
 
-                Entrances: {
-                    top: {},
-                    middle: {},
-                    "Bolero Teleport Pad": {}
-                },
-
                 ItemLocations: {
                     "Skulltula in Soil": {
                         Name: "Skulltula in Soil",
@@ -4355,10 +4230,8 @@ let MapLocations = {
             volcano: {
                 ExcludeFromSpawnList: true,
 
-                // This region is just for the one item check, no need to list exits and entrances
+                // This region is just for the one item check, no need to list exits
                 Exits: {},
-                Entrances: {},
-
                 ItemLocations: {
                     "Heart Piece on Volcano": {
                         Name: "Heart Piece on Volcano",
@@ -4416,12 +4289,6 @@ let MapLocations = {
                     "Death Mountain Trail": {
                         OwExit: OwExits["Goron City"]["Death Mountain Trail"]
                     }
-                },
-
-                Entrances: {
-                    darunia: {},
-                    lostWoodsRocks: {},
-                    "Death Mountain Trail": {}
                 },
 
                 ItemLocations: {
@@ -4610,11 +4477,6 @@ let MapLocations = {
                     }
                 },
 
-                Entrances: {
-                    main: {},
-                    "Death Mountain Crater": {}
-                },
-
                 ItemLocations: {
                     "Darunia's Joy": {
                         Name: "Darunia's Joy",
@@ -4640,12 +4502,6 @@ let MapLocations = {
                         OwExit: OwExits["Goron City"]["Lost Woods"]
                     }
                 },
-
-                Entrances: {
-                    lostWoodsRocks: {},
-                    "Lost Woods": {}
-                },
-
                 ItemLocations: {}
             },
 
@@ -4659,11 +4515,6 @@ let MapLocations = {
                     lostWoods: {
                         Name: "lostWoods"
                     }
-                },
-
-                Entrances: {
-                    main: {},
-                    lostWoods: {}
                 },
 
                 ItemLocations: {
@@ -4690,8 +4541,6 @@ let MapLocations = {
 
                 // Only used for the one item check, so no need to mark exits and entrances
                 Exits: {},
-                Entrances: {},
-
                 ItemLocations: {
                     "Spinning Urn Heart Piece": {
                         Name: "Spinning Urn Heart Piece",
@@ -4709,9 +4558,6 @@ let MapLocations = {
                     main: {
                         Name: "main"
                     }
-                },
-                Entrances: {
-                    main: {},
                 },
 
                 ItemLocations: {
@@ -4760,11 +4606,6 @@ let MapLocations = {
                     }
                 },
 
-                Entrances: {
-                    upstream: {},
-                    "Hyrule Field": {}
-                },
-
                 ItemLocations: {
                     "Skulltula in Tree": {
                         Name: "Skulltula in Tree",
@@ -4807,12 +4648,6 @@ let MapLocations = {
                     "Lost Woods": {
                         OwExit: OwExits["Zora's River"]["Lost Woods"]
                     }
-                },
-
-                Entrances: {
-                    downstream: {},
-                    inWaterfall: {},
-                    "Lost Woods": {}
                 },
 
                 ItemLocations: {
@@ -4985,12 +4820,6 @@ let MapLocations = {
                         OwExit: OwExits["Zora's River"]["Zora's Domain"]
                     },
                 },
-
-                Entrances: {
-                    upstream: {},
-                    "Zora's Domain": {}
-                },
-                
                 ItemLocations: {}
             }
 		}
@@ -5038,12 +4867,6 @@ let MapLocations = {
                     "Lake Hylia": {
                         OwExit: OwExits["Zora's Domain"]["Lake Hylia"]
                     }
-                },
-
-                Entrances: {
-                    behindKing: {},
-                    "Zora's River": {},
-                    "Lake Hylia": {}
                 },
 
                 ItemLocations: {
@@ -5152,12 +4975,6 @@ let MapLocations = {
                         OwExit: OwExits["Zora's Domain"]["Zora's Fountain"]
                     }
                 },
-
-                Entrances: {
-                    main: {},
-                    "Zora's Fountain": {}
-                },
-
                 ItemLocations: {}
             }
 		}
@@ -5180,10 +4997,6 @@ let MapLocations = {
                     "Ice Cavern Entrance": {
                         OwExit: OwExits["Zora's Fountain"]["Ice Cavern Entrance"]
                     }
-                },
-
-                Entrances: {
-                    "Zora's Domain": {}
                 },
 
                 ItemLocations: {
@@ -5302,14 +5115,6 @@ let MapLocations = {
                     "Serenade Teleport Pad": {
                         OwExit: OwExits["Lake Hylia"]["Serenade Teleport Pad"]
                     }
-                },
-
-                Entrances: {
-                    "Hyrule Field": {},
-                    "Zora's Domain": {},
-                    "Owl": {},
-                    "Serenade Teleport Pad": {},
-                    "From Gerudo Valley": OwExits["Gerudo Valley"]["To Lake Hylia"]
                 },
 
                 ItemLocations: {
@@ -5565,11 +5370,6 @@ let MapLocations = {
                     }
                 },
 
-                Entrances: {
-                    acrossBridge: {},
-                    "Hyrule Field": {}
-                },
-
                 ItemLocations: {
                     "Skulltula by Tiny Waterfall": {
                         Name: "Skulltula by Tiny Waterfall",
@@ -5620,11 +5420,6 @@ let MapLocations = {
                     "Gerudo Fortress": {
                         OwExit: OwExits["Gerudo Valley"]["Gerudo Fortress"]
                     }
-                },
-
-                Entrances: {
-                    main: {},
-                    "Gerudo Fortress": {}
                 },
 
                 ItemLocations: {
@@ -5711,11 +5506,6 @@ let MapLocations = {
                     }
                 },
 
-                Entrances: {
-                    main: {},
-                    acrossBridge: {}
-                },
-
                 ItemLocations: {
                     "Heart Piece in Crate": {
                         Name: "Heart Piece in Crate",
@@ -5747,12 +5537,6 @@ let MapLocations = {
                     "To Lake Hylia": {
                         OwExit: OwExits["Gerudo Valley"]["To Lake Hylia"]
                     }
-                },
-
-                Entrances: {
-                    main: {},
-                    acrossBridge: {},
-                    chasmCrateLedge: {}
                 },
 
                 ItemLocations: {
@@ -5829,12 +5613,6 @@ let MapLocations = {
                     "Training Grounds Entrance": {
                         OwExit: OwExits["Gerudo Fortress"]["Training Grounds Entrance"]
                     }
-                },
-
-                Entrances: {
-                    backArea: {},
-                    wastelandEntrance: {},
-                    "Gerudo Valley": {}
                 },
 
                 ItemLocations: {
@@ -5960,10 +5738,6 @@ let MapLocations = {
                     }
                 },
 
-                Entrances: {
-                    main: {}
-                },
-
                 ItemLocations: {
                     "Archery Minigame 1000 Points": {
                         Name: "Archery Minigame 1000 Points",
@@ -6012,11 +5786,6 @@ let MapLocations = {
                     }
                 },
 
-                Entrances: {
-                    main: {},
-                    "Haunted Wasteland": {}
-                },
-
                 ItemLocations: {}
             }
 		}
@@ -6040,12 +5809,6 @@ let MapLocations = {
                         OwExit: OwExits["Haunted Wasteland"]["Gerudo Fortress"]
                     }
                 },
-
-                Entrances: {
-                    outpost: {},
-                    "Gerudo Fortress": {}
-                },
-
                 ItemLocations: {}
             },
 
@@ -6067,11 +5830,6 @@ let MapLocations = {
                                 (Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas);
                         }
                     }
-                },
-
-                Entrances: {
-                    entrance: {},
-                    exit: {}
                 },
 
                 ItemLocations: {
@@ -6118,12 +5876,6 @@ let MapLocations = {
                         OwExit: OwExits["Haunted Wasteland"]["Desert Colossus"]
                     }
                 },
-
-                Entrances: {
-                    outpost: {},
-                    "Desert Colossus": {}
-                },
-
                 ItemLocations: {}
             }
 		}
