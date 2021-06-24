@@ -29,7 +29,11 @@ let Items = {
 	NAYRUS_LOVE: { name: "Nayru's Love" },
 	
 	BOTTLE1: { name: "Empty Bottle" },
-	BOTTLE2: { name: "Empty Bottle" },
+	BIG_POE: { 
+		name: "Big Poe",
+		upgrades: [ "Nothing", "Big Poe", "Empty Bottle" ],
+		useUpgradeAsDisplay: true
+	},
 	BLUE_FIRE: { 
 		name: "Blue Fire",
 		upgrades: [ "Nothing", "Blue Fire", "Empty Bottle" ],

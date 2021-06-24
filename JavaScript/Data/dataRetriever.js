@@ -970,7 +970,7 @@ Data = {
 	hasBottle: function(itemLocation) {
 		if (itemLocation && !itemLocation.NeedsBottle) { return true; }
 		return Items.BOTTLE1.playerHas || 
-			Items.BOTTLE2.playerHas || 
+			(Items.BIG_POE.currentUpgrade > 1) || 
 			(Items.BLUE_FIRE.currentUpgrade > 1) ||
 			(Items.RUTOS_LETTER.currentUpgrade > 1);
     },

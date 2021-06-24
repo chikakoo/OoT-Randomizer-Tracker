@@ -1804,7 +1804,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 302, y: 222, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 21,
+						Order: 20.9,
 						LongDescription: "First, get to the upper part of the boulder maze. This is from the unlocked door in the room with the fire wall. Jump on the platforms across the room to get to the Goron and chest in the cage on the other side. Be sure to step on the switch on the way there to open the cage."
 					}
 				}

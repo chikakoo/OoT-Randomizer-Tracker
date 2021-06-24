@@ -2488,10 +2488,13 @@ let MapLocations = {
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: {x: 252, y: 200},
                         IsInterior: true,
+                        IsPostWalkCheck: true,
                         Age: Age.ADULT,
                         LongDescription: "After gathering all the Big Poes the guy at the market entrance wants, he gives you this reward. You don't actually need Epona to get Big Poes, but it's not a 100% chance a big one will spawn if you aren't on her.",
-                        RequiredItems: [Items.FAIRY_BOW],
-                        NeedsBottle: true
+                        CustomRequirement: function(age) {
+                            let canGetToPoe = Data.canAccessMap(age, "Hyrule Field");
+                            return (canGetToPoe && Items.FAIRY_BOW.playerHas && Data.hasBottle()) || Items.BIG_POE.playerHas;
+                        }
                     },
                     "Skulltula in Pot-filled House": {
                         Name: "Skulltula in Pot-filled House",

@@ -370,7 +370,8 @@ InteriorGroups = {
 				itemLocation: "Big Poe Reward",
 				description: "Give the poe salesman all the poes he needs to get this item.",
 				canGet: function(age) {
-					return Items.FAIRY_BOW.playerHas && Data.hasBottle();
+					let canGetToPoe = Data.canAccessMap(age, "Hyrule Field");
+					return (canGetToPoe && Items.FAIRY_BOW.playerHas && Data.hasBottle()) || Items.BIG_POE.playerHas;
 				},
 				isAdultOnly: function() { return true; }
 			}
