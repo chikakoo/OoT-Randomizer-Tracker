@@ -285,10 +285,11 @@ SocketClient = {
 	 * Syncs all dungeon types - that is, turns them to MQ if necessary
 	 */
 	_syncAllDungeonTypes: function() {
-		let dungeons = [];
-		Object.values(MapLocations).forEach(function (map) {
+		let dungeons = {};
+		Object.keys(MapLocations).forEach(function (mapName) {
+			let map = MapLocations[mapName];
 			if (map.MapGroup === MapGroups.DUNGEONS) {
-				dungeons[map.Name] = map.IsMasterQuest ? MapTypes.MASTER_QUEST : MapTypes.STANDARD;
+				dungeons[mapName] = map.IsMasterQuest ? MapTypes.MASTER_QUEST : MapTypes.STANDARD;
 			}
 		});
 		this._socket.emit("sync_all_dungeon_types", dungeons);
