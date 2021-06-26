@@ -159,14 +159,22 @@ LocationSidebar = {
         let adultTodoDiv = dce("div", "location-item-todo-count");
         mainDiv.appendChild(childTodoDiv);
         mainDiv.appendChild(adultTodoDiv);
-        
-        locationNameDiv.innerText = location.name;
+
+        let locationText = _locationSmaller ? location.abbreviation : location.name;
+        locationNameDiv.innerHTML = locationText;
         locationNameDiv.style.backgroundColor = backgroundColor;
+
         if (_locationSmaller) { 
-            locationNameDiv.innerText = location.abbreviation;
             addCssClass(locationNameDiv, "location-smaller"); 
         }
-        
+
+        let spawnStyles = RegionWalker.getSpawnLocationStyles(location.name);
+        if (spawnStyles) {
+            let bgColor = spawnStyles.background || "inherit";
+            let fontColor = spawnStyles.color || "black";
+            locationNameDiv.innerHTML = `<mark style="background-color: ${bgColor}; color: ${fontColor}; outline: 1.5px solid white">${locationText}</mark>`;
+        }        
+
         let childCanAccessGTG = (Settings.GlitchesToAllow.cuccoJump || Settings.RandomizerSettings.shuffleOverworldEntrances) && Settings.GlitchesToAllow.gtgChildAllowed;
         if (location.name === "Training Grounds" && !childCanAccessGTG) {
             location.childBackgroundColor = "#F0E68C";

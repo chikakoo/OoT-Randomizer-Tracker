@@ -14,6 +14,14 @@ RegionWalker = {
     _seeds: {},
 
     /**
+     * Sets data on whether the location is a spawn or warp, and the css styles to use for it
+     * {
+     *    <map>: { region: <regionName>, background: <background-color>, color: <color> }}
+     * }
+     */
+    spawns: {},
+
+    /**
      * An object used to keep track of each region, and where you can get to from that region
      * This is used in the reverse walk to very easily track how to get to different locations
      * It's structured in a way that decouple can work with (it doesn't assume that exits are
@@ -133,6 +141,7 @@ RegionWalker = {
      */
     _clearData: function() {
         this._seeds = {};
+        this.spawns = {};
         this.walkMap = {};
         
         this._postWalkChecks = {};
@@ -197,7 +206,7 @@ RegionWalker = {
             if (Data.randomizedSpawnLocations[age] && Data.randomizedSpawnLocations[age].map && Data.randomizedSpawnLocations[age].region) {
                 let map = Data.randomizedSpawnLocations[age].map;
                 let region = Data.randomizedSpawnLocations[age].region;
-                this._addToSeedObject(age, map, region);
+                this._setAgeSpawnData(age, map, region);
             }
 
             // If you can enter ToT as the OTHER age, and get past the door of time, then you can be both ages
@@ -218,14 +227,14 @@ RegionWalker = {
 
                 let canEnterDoorOfTime = Data.canEnterDoorOfTime(otherAge);
                 if (foundTempleOfTime && canEnterDoorOfTime) {
-                    this._addToSeedObject(age, templeOfTimeInfo.map, templeOfTimeInfo.region);
+                    this._setAgeSpawnData(age, templeOfTimeInfo.map, templeOfTimeInfo.region, true);
                 }
             }
         } else if (!Settings.RandomizerSettings.shuffleInteriorEntrances) {
             if (age === Age.CHILD) {
-                this._addToSeedObject(age, "Kokiri Forest", "main");
+                this._setAgeSpawnData(age, "Kokiri Forest", "main");
             } else {
-                this._addToSeedObject(age, "Temple of Time", "main");
+                this._setAgeSpawnData(age, "Temple of Time", "main");
             }
         } else {
             let foundLinksHouse = Data.linksHouseLocation && Data.linksHouseLocation.map;
@@ -233,16 +242,33 @@ RegionWalker = {
 
             if (age === Age.CHILD) {
                 if (foundLinksHouse) {
-                    this._addToSeedObject(age, Data.linksHouseLocation.map, Data.linksHouseLocation.region);
+                    this._setAgeSpawnData(age, Data.linksHouseLocation.map, Data.linksHouseLocation.region);
                 }
                 
                 if (foundTempleOfTime && Data.canEnterDoorOfTime(age)) {
-                    this._addToSeedObject(age, Data.templeOfTimeLocation.map, Data.templeOfTimeLocation.region);
+                    this._setAgeSpawnData(age, Data.templeOfTimeLocation.map, Data.templeOfTimeLocation.region, true);
                 }
             } else if (age === Age.ADULT && foundTempleOfTime) {
-                this._addToSeedObject(age, Data.templeOfTimeLocation.map, Data.templeOfTimeLocation.region);
+                this._setAgeSpawnData(age, Data.templeOfTimeLocation.map, Data.templeOfTimeLocation.region);
             }
         }
+    },
+
+    /**
+     * Sets the age spawn data
+     * @param {Age} age - the age
+     * @param {string} map - the map
+     * @param {string} region - the region
+     */
+    _setAgeSpawnData: function(age, map, region, skipSpawns) {
+        if (!skipSpawns) {
+            if (age === Age.CHILD) {
+                this.spawns[map] = { background: "green", color: "lime" };
+            } else {
+                this.spawns[map] = { background: "blue", color: "aqua" };
+            }
+        }
+        this._addToSeedObject(age, map, region);
     },
 
     /**
@@ -282,16 +308,20 @@ RegionWalker = {
     _addWarpLocationForSong: function(age, song) {
         if (song.noWarp) { return; }
 
+        let warpMap, warpRegion;
         if (song.warpMap && song.warpRegion) {
-            this._addToSeedObject(age, song.warpMap, song.warpRegion);
-            return;
+            warpMap = song.warpMap;
+            warpRegion = song.warpRegion;
+        } else {
+            let defaultData = this._getDefaultDataForSong(song);
+            if (defaultData) {
+                warpMap = defaultData.map;
+                warpRegion = defaultData.region;
+            }
         }
 
-        let defaultData = this._getDefaultDataForSong(song);
-        if (defaultData) {
-            this._addToSeedObject(age, defaultData.map, defaultData.region);
-            return;
-        }
+        this._setSpawnStylesForSong(warpMap, warpRegion, song);
+        this._addToSeedObject(age, warpMap, warpRegion);
     },
 
     /**
@@ -312,12 +342,53 @@ RegionWalker = {
             case Songs.PRELUDE_OF_LIGHT:
                 if (!Settings.RandomizerSettings.shuffleInteriorEntrances) {
                     return { map: "Temple of Time", region: "main" };
-                } else if (this.templeOfTimeLocation && this.templeOfTimeLocation.map) {
-                    return { map: templeOfTimeLocation.map, region: templeOfTimeLocation.region };
+                } else if (Data.templeOfTimeLocation && Data.templeOfTimeLocation.map) {
+                    return { map: Data.templeOfTimeLocation.map, region: Data.templeOfTimeLocation.region };
                 }
         }
 
         return null;
+    },
+
+    /**
+     * Sets the spawn styles for the given song
+     * @param {string} map - the map
+     * @param {string} region - the region
+     * @param {Song} song - the warp song
+     */
+    _setSpawnStylesForSong: function(map, region, song) {
+        // Some logic for prioritizing keeping certain songs over others in the case that two songs
+        // lead to the same map, but at different regions
+        if (region && this.spawns[map] && this.spawns[map].region) {
+            let currentRegion = this.spawns[map].region
+            let currentPriority = MapLocations[map].Regions[currentRegion].DuplicateWarpSongPriority ?? 0;
+            let thisPriority = MapLocations[map].Regions[region].DuplicateWarpSongPriority ?? 0;
+
+            if (currentPriority >= thisPriority) {
+                return;
+            }
+        }
+
+        switch(song) {
+            case Songs.MINUET_OF_FOREST:
+                this.spawns[map] = { region: region, background: "lime", color: "black" };
+                break;
+            case Songs.BOLERO_OF_FIRE:
+                this.spawns[map] = { region: region, background: "#cc3300", color: "white" };
+                break;
+            case Songs.SERENADE_OF_WATER:
+                this.spawns[map] = { region: region, background: "aqua", color: "black" };
+                break;
+            case Songs.NOCTURNE_OF_SHADOW:
+                this.spawns[map] = { region: region, background: "purple", color: "white" };
+                break;
+            case Songs.REQUIEM_OF_SPIRIT:
+                this.spawns[map] = { region: region, background: "orange", color: "black" };
+                break;
+            case Songs.PRELUDE_OF_LIGHT:
+                this.spawns[map] = { region: region, background: "yellow", color: "black" };
+                break;
+        }
     },
 
     /** 
@@ -519,5 +590,12 @@ RegionWalker = {
      */
     doesItemLocationHaveSpawnOrWalkData: function(itemLocation, age) {
         return itemLocation.WalkInfo && itemLocation.WalkInfo[age] && itemLocation.WalkInfo[age].spawnOrWarpData
-    }
+    },
+
+    /**
+     * Get the spawn styles from the map name, undefined if it doesn't exit
+     */
+    getSpawnLocationStyles: function(mapName) {
+        return this.spawns[mapName];
+    },
 }

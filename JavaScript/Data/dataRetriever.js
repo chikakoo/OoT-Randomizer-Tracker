@@ -694,7 +694,6 @@ Data = {
      * Gets the number of keys the player used, based off of the number of doors opened
      */
     getUsedKeys: function(mapName) {
-        let currentKeys = getKeyCount(mapName);
         let usedKeys = 0;
         let mainItemLocations = MapLocations[mapName].Regions.main.ItemLocations;
         Object.keys(mainItemLocations).forEach(function (itemLocationName) {

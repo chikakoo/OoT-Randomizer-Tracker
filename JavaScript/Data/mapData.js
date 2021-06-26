@@ -3669,6 +3669,7 @@ let MapLocations = {
             },
 
             top: {
+                DuplicateWarpSongPriority: 1,
                 Exits: {
                     main: {
                         Name: "main"
@@ -3881,6 +3882,7 @@ let MapLocations = {
             },
 
             upper: {
+                DuplicateWarpSongPriority: 1,
                 Exits: {
                     main: {
                         Name: "main"
@@ -4630,6 +4632,7 @@ let MapLocations = {
             },
 
             upstream: {
+                DuplicateWarpSongPriority: 1,
                 Exits: {
                     downstream: {
                         Name: "downstream"
@@ -4814,6 +4817,7 @@ let MapLocations = {
             },
 
             inWaterfall: {
+                DuplicateWarpSongPriority: 2,
                 Exits: {
                     upstream: {
                         Name: "upstream"
@@ -4833,6 +4837,7 @@ let MapLocations = {
 		MapGroup: MapGroups.WATER,
 		Regions: {
             main: {
+                DuplicateWarpSongPriority: 1,
                 Exits: {
                     behindKing: {
                         Name: "behindKing",
