@@ -614,7 +614,7 @@ let OwExits = {
         },
         "Shadow Temple Entrance": {
             Name: "Shadow Temple Entrance",
-            ExitRegion: "top",
+            ExitRegion: "shadowTemple",
             Map: "Shadow Temple",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
@@ -3747,6 +3747,9 @@ let MapLocations = {
             shadowTemple: {
                 ExcludeFromSpawnList: true,
                 Exits: {
+                    top: {
+                        Name: "top"
+                    },
                     "Shadow Temple Entrance": {
                         OwExit: OwExits["Graveyard"]["Shadow Temple Entrance"]
                     }
