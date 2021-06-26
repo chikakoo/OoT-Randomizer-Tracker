@@ -95,7 +95,13 @@ Walk = {
 				}
             });
 
-            _this._markAllItemLocations(entranceArray, age, currentLoop + 1);
+			// TODO: make an actual weighted version of walking backwards
+			// For now, we're deprioritizing these maps becuase they generally take a while to walk through
+			let loopValueToUse = currentLoop;
+			if (map === "Hyrule Field" || map === "Haunted Wasteland") {
+				loopValueToUse += 3;
+			}
+            _this._markAllItemLocations(entranceArray, age, loopValueToUse + 1);
 		});
     },
     
