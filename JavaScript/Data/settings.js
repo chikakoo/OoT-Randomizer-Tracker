@@ -84,11 +84,11 @@ let Settings = {
 		deadHandNeedsSword: false,
 		
 		// Entrance shuffle settings
-		shuffleInteriorEntrances: false,
-		shuffleGrottoEntrances: false,
+		shuffleInteriorEntrances: true,
+		shuffleGrottoEntrances: true,
 		shuffleDungeonEntrances: true,
-		shuffleOverworldEntrances: false,
-		randomizeOwlDrops: false,
+		shuffleOverworldEntrances: true,
+		randomizeOwlDrops: true,
 		decoupleEntrances: false //TODO: this will probabaly be a setting to decouple in the different pools instead
 	},
 		
@@ -98,7 +98,7 @@ let Settings = {
 		difficultOcarinaItems: false,
 		megaFlip: false,
 		isg: false,
-		groundJump: false,
+		groundJump: true,
 		equipSwap: false,
 		
 		// Kakariko/Graveyard
@@ -113,7 +113,7 @@ let Settings = {
 		
 		// Forest
 		pokeySkip: false,
-		midoSkip: false,
+		midoSkip: true,
 		lwSkullWithoutBean: false,
 		houseOfTwinsSkullWithHovers: false,
 		
@@ -131,22 +131,23 @@ let Settings = {
 		clipZoraSkip: false,
 		blueFireShopSkip: false,
 		labHPWithoutGoldenScale: false,
+		zorasDomainFromLakeAsAdult: false,
 		
 		// Desert
 		eponaHover: false,
 		cuccoJump: false,
-		backwardsWasteland: false,
-		wastelandNoLens: false,
-		childHauntedWasteland: false,
 		gerudoGateSkipAsAdult: false,
 		itemlessSandPit: false,
+		childHauntedWasteland: false,
+		wastelandNoLens: false,
+		backwardsWasteland: false,
 		
 		// Dungeons
-		dekuB1Skip: false,
+		dekuB1Skip: true,
 		
-		dodongoSwitchEarly: false,
-		dodongoAdultJumpToBombChest: false,
-		dodongoScarecrowSkullEarly: false,
+		dodongoSwitchEarly: true,
+		dodongoAdultJumpToBombChest: true,
+		dodongoScarecrowSkullEarly: true,
 		
 		jabuFishless: false,
 		jabuBlueSwitchSkip: false,

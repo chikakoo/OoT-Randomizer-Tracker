@@ -885,9 +885,16 @@ let OwExits = {
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 169, y: 89},
-            Age: Age.CHILD,
+            Age: Age.EITHER,
+            UseChildAge: function() { return !Settings.GlitchesToAllow.adultDomainFromLake; },
             LongDescription: "This is the entrance to Zora's Domain.",
-            RequiredItems: [Equipment.SCALE],
+            RequiredChildItems: [Equipment.SCALE],
+            CustomRequirement: function(age) {
+                if (age == Age.CHILD) { return true; }
+                return Settings.GlitchesToAllow.adultDomainFromLake && 
+                    Data.hasShield(age) &&
+                    (Items.BOMB.playerHas || Items.BOMBCHU.playerHas);
+            }
         },
         "Owl": {
             Name: "Owl",

@@ -166,8 +166,8 @@ let EntranceUI = {
 				refreshAll();
 			}
 
-			let canGetAsChild = canGetToAsChild && (!button.canGet || button.canGet(Age.CHILD));
-			let canGetAsAdult = canGetToAsAdult && (!button.canGet || button.canGet(Age.ADULT));
+			let canGetAsChild = canGetToAsChild && _this._canGetAsAge(button, Age.CHILD) && (!button.canGet || button.canGet(Age.CHILD));
+			let canGetAsAdult = canGetToAsAdult && _this._canGetAsAge(button, Age.ADULT) && (!button.canGet || button.canGet(Age.ADULT));
 			
 			if (itemLocationGroup.completed[buttonName]) {
 				addCssClass(buttonDiv, "entrance-group-button-completed");
@@ -361,7 +361,8 @@ let EntranceUI = {
 	},
 	
 	/**
-	 * Returns whether you can complete the task on the button as the given age
+	 * Returns whether the is<Age>Only function will allow you to ever complete the task
+	 * as the given age
 	 * @param button - the button with the task info
 	 * @param age - the age to check
 	 * @return
