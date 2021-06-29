@@ -318,7 +318,7 @@ Data = {
     },
     
     /**
-     * Gets an array of all the overworld entrance names
+     * Gets an array of all the overworld entrance names for use in the dropdown
      */
     getOWEntrances: function(mapName) {
         let entrances = [];
@@ -326,7 +326,10 @@ Data = {
 
 		Object.keys(exits).forEach(function(entranceName) {
             let entrance = exits[entranceName];
-			if (entrance.ItemGroup === ItemGroups.OW_ENTRANCE)
+			if (entrance.ItemGroup === ItemGroups.OW_ENTRANCE && 
+                !entrance.Hide && 
+                !entrance.IsDungeonEntrance && 
+                !entrance.IsOwl)
 			{
 				entrances.push(entranceName);
 			}

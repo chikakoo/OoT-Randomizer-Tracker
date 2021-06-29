@@ -131,7 +131,7 @@ let Settings = {
 		clipZoraSkip: false,
 		blueFireShopSkip: false,
 		labHPWithoutGoldenScale: false,
-		zorasDomainFromLakeAsAdult: false,
+		adultDomainFromLake: false,
 		
 		// Desert
 		eponaHover: false,
