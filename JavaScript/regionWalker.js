@@ -113,6 +113,10 @@ RegionWalker = {
             let itemLocation = MapLocations[map].Regions[region].ItemLocations[entranceName];
             this._markCanObtainItemInfo(itemLocation, age, ItemObtainability.YES, true);
 
+            if (Data.randomizedSpawnLocations.useRandomizedSpawns && Settings.RandomizerSettings.skipToTTravel) {
+                return;
+            }
+
             // If you can enter the DoT, then the other age can get here too - it's basically a spawn
             if (itemLocation.EntranceGroup && itemLocation.EntranceGroup.isTempleOfTime && Data.canEnterDoorOfTime(age))
             {
@@ -212,6 +216,8 @@ RegionWalker = {
             // If you can enter ToT as the OTHER age, and get past the door of time, then you can be both ages
             let otherAge = age === Age.CHILD ? Age.ADULT : Age.CHILD;
             if (Data.randomizedSpawnLocations[otherAge]) {
+                if (Settings.RandomizerSettings.skipToTTravel) { return; }
+
                 let templeOfTimeInfo;
                 let foundTempleOfTime = false;
 

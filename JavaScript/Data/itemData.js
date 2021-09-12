@@ -530,14 +530,14 @@ let ShopItemDictionary = {
 	"wellsmallkey": "Bottom of the Well Small Key.png",
 	"wellkey": "Bottom of the Well Small Key.png",
 	"wellsk": "Bottom of the Well Small Key.png",
-	"spiritkeywell": "Bottom of the Well Small Key.png",
+	"smallkeywell": "Bottom of the Well Small Key.png",
 	"keywell": "Bottom of the Well Small Key.png",
 	"skwell": "Bottom of the Well Small Key.png",
 
 	"gtgsmallkey": "Training Grounds Small Key.png",
 	"gtgkey": "Training Grounds Small Key.png",
 	"gtgsk": "Training Grounds Small Key.png",
-	"spiritkeygtg": "Training Grounds Small Key.png",
+	"smallkeygtg": "Training Grounds Small Key.png",
 	"keygtg": "Training Grounds Small Key.png",
 	"skgtg": "Training Grounds Small Key.png",
 

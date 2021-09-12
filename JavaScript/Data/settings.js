@@ -56,7 +56,10 @@ let Settings = {
 	},
 
 	TrackerSettings: {
-		dungeonItemDisplay: DungeonItemDisplaySettings.BY_SUGGESTED_ORDER
+		dungeonItemDisplay: DungeonItemDisplaySettings.BY_SUGGESTED_ORDER,
+		deprioritizeDampeToWindmill: true,
+		deprioritizeHyruleField: true,
+		deprioritizeHauntedWasteland: true
 	},
 	
 	RandomizerSettings: {
@@ -69,6 +72,7 @@ let Settings = {
 		
 		// Sanity and logic changes
 		startingAge: Age.CHILD,
+		skipToTTravel: false,
 		maxRequiredTokens: 50,
 		skulltulaSetting: SkulltulaSettings.OW_AND_DUNGEON,
 		medallionSetting: MedallionSettings.OPEN,

@@ -17,8 +17,12 @@ let SettingsPage = {
             _this.setCheckboxStateForRandomizer(settingName);
         });
 
-         Object.keys(Settings.GlitchesToAllow).forEach(function(settingName) {
+        Object.keys(Settings.GlitchesToAllow).forEach(function(settingName) {
             _this.setCheckboxStateForGlitches(settingName);
+        });
+
+        Object.keys(Settings.TrackerSettings).forEach(function(settingName) {
+            _this.setCheckboxStateForTracker(settingName);
         });
     },
 
@@ -87,6 +91,20 @@ let SettingsPage = {
         }
 	},
 
+    /**
+	 * Sets the checkbox state of the given setting. This is used by each input element
+	 * when first loading the page.
+	 */
+	setCheckboxStateForTracker: function(settingName) {
+		let settingValue = Settings.TrackerSettings[settingName];
+		if (settingValue === undefined) { return; }
+
+        let inputElement = document.getElementsByName(settingName);
+        if (inputElement[0]) {
+            inputElement[0].checked = settingValue;
+        }
+	},
+
 	/**
 	 * Sets the value of the given setting name to whether the event's
 	 * target is checked or not
@@ -105,7 +123,7 @@ let SettingsPage = {
 		refreshAll();
 	},
 
-		/**
+	/**
 	 * Sets the value of the given setting name to whether the event's
 	 * target is checked or not
 	 * @param settingName: The name of the setting - this is the key of the Setting object
@@ -122,6 +140,24 @@ let SettingsPage = {
 		setUpItemTracker();
 		refreshAll();
     },
+
+    /**
+	 * Sets the value of the given setting name to whether the event's
+	 * target is checked or not
+	 * @param settingName: The name of the setting - this is the key of the Setting object
+	 * @param event: Used to stop propagation to prevent double execution
+	 */
+	setBooleanValueForTracker: function(settingName, event) {
+		event.stopPropagation();
+		if (Settings.TrackerSettings[settingName] === undefined) {
+			Settings.TrackerSettings[settingName] = false;
+		}
+
+		let inputElement = document.getElementsByName(settingName)[0];
+		Settings.TrackerSettings[settingName] = inputElement.checked;
+		setUpItemTracker();
+		refreshAll();
+	},
     
     /**
      * Sets a setting value that has a choice of values

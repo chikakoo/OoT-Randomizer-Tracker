@@ -178,6 +178,21 @@
 							<input type="radio" name="dungeonItemDisplay" value=1>By suggested order
 						</label>
 					</div>
+					<div class="settings-radio-group" title="How the location finder deprioritizes locations.">
+						Deprioritize When Walking
+						<label onclick='SettingsPage.setBooleanValueForTracker("deprioritizeDampeToWindmill", event)'
+							title="The route race through Dampe's grave to the windmill">
+							<input type="checkbox" name="deprioritizeDampeToWindmill" value="deprioritizeDampeToWindmill">Dampe to Windmill
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForTracker("deprioritizeHyruleField", event)'
+							title="Any route through Hyrule Field.">
+							<input type="checkbox" name="deprioritizeHyruleField" value="deprioritizeHyruleField">Hyrule Field
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForTracker("deprioritizeHauntedWasteland", event)'
+							title="Any route through the Haunted Wasteland.">
+							<input type="checkbox" name="deprioritizeHauntedWasteland" value="deprioritizeHauntedWasteland">Haunted Wasteland
+						</label>
+					</div>
 				</div>
 				
 				<!--  Progression -->
@@ -211,6 +226,11 @@
 						<label onclick='SettingsPage.setOptionValueForRandomizer("startingAge", event)'
 							title="The game starts you as an adult.">
 							<input type="radio" name="startingAge" value="Adult">Adult
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForRandomizer("skipToTTravel", event)'
+							title="Set to true if you've traveled through time, but now cannot get back to the other age.">
+							<input type="checkbox" name="skipToTTravel" value="skipToTTravel">
+							Spawn shuffle skip Temple of Time travel
 						</label>
 					</div>
 					<div class="settings-radio-group" title="This controls when King Zora is automatically moved.">

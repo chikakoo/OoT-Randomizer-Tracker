@@ -1348,7 +1348,10 @@ let MQDungeons = {
 						Age: Age.ADULT,
 						Order: 17,
 						IsPostWalkCheck: true,
-						LongDescription: "After defeating all the Poes, take the elevator to the basement. Push the wall in any direction twice to get to the chest."
+						LongDescription: "After defeating all the Poes, take the elevator to the basement. Push the wall in any direction twice to get to the chest.",
+						CustomRequirement: function(age) {
+							return Data.mqForestTempleCanAccessAllPoeRooms(age);
+						}
 					}
 				}
 			},
@@ -2637,8 +2640,7 @@ let MQDungeons = {
         Floors: ["F4", "F3", "F2", "F1"],
         StartingFloorIndex: 3,
 		UseAltOrder: function() {
-			//TODO: is longshot needed?
-			return Equipment.STRENGTH.currentUpgrade > 1 && Items.BOMBCHU.playerHas && Items.HOOKSHOT.playerHas;
+			return Equipment.STRENGTH.currentUpgrade > 1 && Items.BOMBCHU.playerHas && Items.HOOKSHOT.currentUpgrade > 1;
 		},
 		Regions: {
 			main: {
@@ -2650,8 +2652,7 @@ let MQDungeons = {
 
 					silverBlockMaze: {
 						Age: Age.ADULT,
-						//TODO: do you need longshot?
-						RequiredItems: [Items.BOMBCHU, Items.HOOKSHOT, { item: Equipment.STRENGTH, upgradeString: "2" }]
+						RequiredItems: [Items.BOMBCHU, { item: Items.HOOKSHOT, upgradeString: "2" }, { item: Equipment.STRENGTH, upgradeString: "2" }]
 					},
 
 					Exit: {

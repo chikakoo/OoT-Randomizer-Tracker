@@ -79,6 +79,7 @@ Walk = {
 			let fromRegion = info.fromRegion;
             let entrances = _this._getAllOwEntrances(map, fromRegion, age, {}, currentLoop);
 			let entranceArray = [];
+
             Object.values(entrances).forEach(function(entrance) {
 				let entranceData = {
 					map: entrance.IsInteriorExit ? entrance.Map : entrance.ExitMap,
@@ -86,11 +87,21 @@ Walk = {
 				};
 
 				if (entranceData.map && entranceData.region) {
-					entranceArray.push({ map: entranceData.map, fromRegion: entranceData.region });
+					// TODO: come up with a cleaner way for this interior deprioritization...
+					let deprioritizeValue = Settings.TrackerSettings.deprioritizeDampeToWindmill &&
+						entrance.IsInteriorExit &&
+						entrance.OwShuffleExitName === "Interior-windmill" ? 100 : 0;
+					
 					if (age === Age.CHILD) {
-						entrance.childWalkValue = currentLoop;
+						entrance.childWalkValue = currentLoop + deprioritizeValue;
 					} else if (age === Age.ADULT) {
-						entrance.adultWalkValue = currentLoop;
+						entrance.adultWalkValue = currentLoop + deprioritizeValue;
+					}
+
+					if (deprioritizeValue === 0) {
+						entranceArray.push({ map: entranceData.map, fromRegion: entranceData.region });
+					} else {
+						_this._markAllItemLocations([{ map: entranceData.map, fromRegion: entranceData.region }], age, currentLoop + deprioritizeValue + 1);
 					}
 				}
             });
@@ -98,7 +109,8 @@ Walk = {
 			// TODO: make an actual weighted version of walking backwards
 			// For now, we're deprioritizing these maps becuase they generally take a while to walk through
 			let loopValueToUse = currentLoop;
-			if (map === "Hyrule Field" || map === "Haunted Wasteland") {
+			if ((map === "Hyrule Field" && Settings.TrackerSettings.deprioritizeHyruleField) || 
+				(map === "Haunted Wasteland" && Settings.TrackerSettings.deprioritizeHauntedWasteland)) {
 				loopValueToUse += 3;
 			}
             _this._markAllItemLocations(entranceArray, age, loopValueToUse + 1);
