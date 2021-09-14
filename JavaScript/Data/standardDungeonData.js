@@ -1455,7 +1455,7 @@ let StandardDungeons = {
 					"Locked Door in Crater Room": {
 						Name: "Locked Door in Crater Room",
 						ItemGroup: ItemGroups.LOCKED_DOOR,
-						Regions: ["narrowBridgeRoom"],
+						Regions: ["narrowBridgeRoom", "fireWallRoom"],
 						MapInfo: { x: 283, y: 170, floor: "F3" },
 						Age: Age.ADULT,
 						Order: 19,
@@ -1488,10 +1488,11 @@ let StandardDungeons = {
 						KeyRequirement: function(age) {
 							let minValue = 6;
 							if (Settings.GlitchesToAllow.fireJailClip) {
-								minValue--;
+								// Skip both doors in the crater room
+								minValue-= 2;
 							}
 
-							if (Settings.GlitchesToAllow.fireCraterRoomKeySkip) {
+							else if (Settings.GlitchesToAllow.fireCraterRoomKeySkip) {
 								minValue--;
 							}
 
@@ -1517,10 +1518,11 @@ let StandardDungeons = {
 						KeyRequirement: function(age) {
 							let minValue = 7;
 							if (Settings.GlitchesToAllow.fireJailClip) {
-								minValue--;
+								// Skip both doors in the crater room
+								minValue-= 2;
 							}
 
-							if (Settings.GlitchesToAllow.fireCraterRoomKeySkip) {
+							else if (Settings.GlitchesToAllow.fireCraterRoomKeySkip) {
 								minValue--;
 							}
 
@@ -1780,9 +1782,13 @@ let StandardDungeons = {
 			},
 			boulderMazeUpper: {
 				Exits: {
-					// Used for the torch slug clip trick
+					// These first two are used for the jail clip trick
 					boulderMazeLower: {
 						Name: "boulderMazeLower"
+					},
+
+					fireWallRoom: {
+						Name: "fireWallRoom"
 					},
 
 					goronInPit: {
