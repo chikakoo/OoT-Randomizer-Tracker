@@ -551,15 +551,19 @@ InteriorGroups = {
 				itemLocation: "Heart Piece in Windmill",
 				description: "As a child, you can get this with a well-aimed Boomerang. Use a well-aimed hookshot and jumpslash, or do a trick to jump to the platform.",
 				canGet: function(age) {
-					if (Data.canUseBoomerang(age)) {
-						return true;
+					if (age === Age.CHILD) {
+						let canChildAccessDampe = Data.interiorTravelData && 
+							Data.interiorTravelData.dampesGrave &&
+							Data.interiorTravelData.dampesGrave.WalkInfo &&
+							Data.interiorTravelData.dampesGrave.WalkInfo.canObtainItem &&
+							Data.interiorTravelData.dampesGrave.WalkInfo.canObtainItem.Child;
+
+						return Data.canUseBoomerang(age) ||
+							(canChildAccessDampe && EntranceData.canGetToWindmillFromDampe(age));
 					}
 					
-					return age === Age.ADULT &&
-					(
-						Settings.GlitchesToAllow.windmillHPWithNothing || // Trick to get there with nothing
+					return Settings.GlitchesToAllow.windmillHPWithNothing ||
 						(Settings.GlitchesToAllow.windmillHPWithHookshot && Items.HOOKSHOT.playerHas)
-					);
 				}
 			},
 			"Song of Storms":
