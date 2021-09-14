@@ -377,8 +377,9 @@ let StandardDungeons = {
 						Name: "bombChestFloor",
 						CustomRequirement: function(age) {
 							let adultBombChestEarly = age === Age.ADULT && Settings.GlitchesToAllow.dodongoAdultJumpToBombChest;
+							let canGroundJumpThere = age === Age.ADULT && Data.canGroundJumpWithBomb(age);
 							let canMegaflipThere = Items.BOMBCHU.playerHas && Data.canMegaFlip(age);
-							let canGetThereEarly = adultBombChestEarly || canMegaflipThere;
+							let canGetThereEarly = adultBombChestEarly || canGroundJumpThere || canMegaflipThere;
 							
 							// You have explosives or strength or hammer due to main's check
 							let canDefeatLizalfos = Data.hasSwordWeapon(age) || Data.hasExplosives();
