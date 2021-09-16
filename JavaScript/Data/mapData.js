@@ -852,7 +852,14 @@ let OwExits = {
             MapInfo: { x: 142, y: 97 },
             Age: Age.CHILD,
             LongDescription: "This is the entrance to Jabu Jabu.",
-            IsDungeonEntrance: true
+            IsDungeonEntrance: true,
+            CustomRequirement: function(age) {
+                if (Settings.GlitchesToAllow.jabuFishless && Data.hasSwordWeapon(age)) {
+                    return true;
+                }
+
+                return Data.hasBottle(); // Note that this doesn't actually check whether you can get a fish!
+            }
         },
         "Ice Cavern Entrance": {
             Name: "Ice Cavern Entrance",

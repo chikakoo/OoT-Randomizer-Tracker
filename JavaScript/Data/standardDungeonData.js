@@ -1914,7 +1914,7 @@ let StandardDungeons = {
 					centerRoomTopSwitch: {
 						Name: "centerRoomTopSwitch",
 						CustomRequirement: function(age) {
-							return Settings.GlitchesToAllow.fireJumpDownToSoTBlock;
+							return Settings.GlitchesToAllow.fireJumpDownToSoTBlock && Items.MEGATON_HAMMER.playerHas;
 						}
 					},
 					centerRoomBottom: {

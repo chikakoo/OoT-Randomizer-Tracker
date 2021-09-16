@@ -345,6 +345,7 @@ let ShopItemDictionary = {
 	"farores": "Farore's Wind.png",
 	"farore": "Farore's Wind.png",
 	"wind": "Farore's Wind.png",
+	"fw": "Farore's Wind.png",
 	
 	// Trade sequence items - TODO potentially - fill in the rest of these
 	"claimcheck": "Claim Check.png",
