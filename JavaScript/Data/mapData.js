@@ -2620,11 +2620,11 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "After showing the Kakariko Village guard Zelda's Letter, head to the mask shop to borrow this mask.",
                         CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter");
+                            return Settings.RandomizerSettings.openKakariko || Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter");
                         },
                         OneWayInteriorSpawnEntrance: true,
                         PostSpawnRequirements: function(age) {
-                            return Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter");
+                            return Settings.RandomizerSettings.openKakariko || Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter");
                         }
                     },
                     "Borrow Skull Mask": {
@@ -3246,6 +3246,9 @@ let MapLocations = {
                     "Show Guard Letter": {
                         Name: "Show Guard Letter",
                         ItemGroup: ItemGroups.NON_ITEM,
+                        RequiredToAppear: function() {
+                            return !Settings.RandomizerSettings.openKakariko;
+                        },
                         MapInfo: { x: 107, y: 41 },
                         Age: Age.CHILD,
                         RequiredItems: [{ item: Items.MASK_SLOT, upgradeString: "3" }],

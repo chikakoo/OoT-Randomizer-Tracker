@@ -3523,7 +3523,7 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.LOCKED_DOOR,
 						Regions: ["main"],
 						MapInfo: { x: 73, y: 137, floor: "F1" },
-						Age: Age.EITHER,
+						Age: Age.CHILD,
 						Order: 0.1,
 						LongDescription: "This is the door on the west side of the main room.",
 						KeyRequirement: function(age) {
@@ -3536,7 +3536,7 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.LOCKED_DOOR,
 						Regions: ["main"],
 						MapInfo: { x: 288, y: 123, floor: "F1" },
-						Age: Age.EITHER,
+						Age: Age.CHILD,
 						Order: 1.1,
 						LongDescription: "This is the locked door you find after the room with the floormasters.",
 						CustomRequirement: function(age) {

@@ -234,7 +234,7 @@ InteriorGroups = {
 				itemLocaton: "Borrow Keaton Mask",
 				description: "After showing the Kakariko Village guard Zelda's Letter, head to the mask shop to borrow this mask.",
 				canGet: function(age) {
-					return Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter");
+					return Settings.RandomizerSettings.openKakariko || Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter");
 				}
 			},
 			"Borrow Skull Mask": {
