@@ -1322,7 +1322,14 @@ Data = {
                         }
                         break;
                     default:
-                        canDoObj.cannotDo++; 
+                        let isCompletedOwEntrance = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE && 
+                            itemLocation.OwShuffleMap && 
+                            itemLocation.OwShuffleRegion;
+
+                        // If the OW entrance is filled out, it shouldn't count against you!
+                        if (!isCompletedOwEntrance) {
+                            canDoObj.cannotDo++; 
+                        }
                 }
             }
         });
