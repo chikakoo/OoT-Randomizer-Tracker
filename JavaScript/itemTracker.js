@@ -311,9 +311,12 @@ let onSmallKeyClicked = function(keyObject, smallKeyDiv, event) {
 	let maxKeysToAllow = canBeMasterQuest ? 
 		Math.max(keyObject.totalKeys(), keyObject.mqTotalKeys()) : keyObject.totalKeys();
 
-	if (keyObject.keyCount > maxKeysToAllow) {
+	if (keyObject.name !== "Gerudo Fortress" && Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY) {
+		maxKeysToAllow = 0;
+	}
+
+	if (keyObject.keyCount > maxKeysToAllow && event.type === "click") {
 		keyObject.keyCount--;
-		return;
 	}
 
 	if (keyObject.keyCount < 0) {
@@ -351,18 +354,23 @@ let _updateSmallKeyCss = function(keyObject, smallKeyDiv) {
 	}
 	
 	let cssClassToAdd = "no-keys";
-	if (keyObject.keyCount > 0) {
-		cssClassToAdd = "some-keys";
-	} 
-	
-	if (keyObject.keyCount >= minKeys) {
-		cssClassToAdd = "minimum-keys";
-	} 
-	
-	if (keyObject.keyCount >= totalKeys) {
+
+	if (keyObject.name !== "Gerudo Fortress" && Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY) {
 		cssClassToAdd = "all-keys";
+	} else {
+		if (keyObject.keyCount > 0) {
+			cssClassToAdd = "some-keys";
+		} 
+		
+		if (keyObject.keyCount >= minKeys) {
+			cssClassToAdd = "minimum-keys";
+		} 
+		
+		if (keyObject.keyCount >= totalKeys) {
+			cssClassToAdd = "all-keys";
+		}
 	}
-	
+
 	addCssClass(smallKeyDiv, cssClassToAdd);
 }
 

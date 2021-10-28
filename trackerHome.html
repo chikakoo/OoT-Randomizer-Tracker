@@ -361,10 +361,6 @@
 				
 				<!-- Included/Excluded Items -->
 				<div class="settings-group">Included/Excluded Items
-					<label onclick='SettingsPage.setBooleanValueForRandomizer("smallKeySanity", event)' title="Distributes small keys throughout the world.">
-						<input type="checkbox" name="smallKeySanity" value="smallKeySanity">
-						Keysanity
-					</label>
 					<label onclick='SettingsPage.setBooleanValueForRandomizer("scrubSanity", event)' title="Randomizes what all business scrubs sell you. Note that the scrubs that sell key items/heart pieces will still be shuffled.">
 						<input type="checkbox" name="scrubSanity" value="scrubSanity">
 						Scrubsanity
@@ -377,6 +373,18 @@
 						<input type="checkbox" name="cowSanity" value="cowSanity">
 						Cowsanity
 					</label>
+					<div class="settings-radio-group" title="How small keys are randomized.">
+						Small Key Setting
+						<label onclick='SettingsPage.setOptionValueForRandomizer("smallKeySetting", event)' title="Small keys are not shuffled outside their own dungeon.">
+							<input type="radio" name="smallKeySetting" value=0>Vanilla
+						</label>
+						<label onclick='SettingsPage.setOptionValueForRandomizer("smallKeySetting", event)' title="Small keys are shuffled outside their own dungeon.">
+							<input type="radio" name="smallKeySetting" value=1>Small Key Sanity
+						</label>
+						<label onclick='SettingsPage.setOptionValueForRandomizer("smallKeySetting", event)' title="Small keys are removed (aside from potentially the jail keys)">
+							<input type="radio" name="smallKeySetting" value=2>Keysy
+						</label>
+					</div>
 					<div class="settings-radio-group" title="The max amount of skulltulas required to complete the game.">
 						Max Required Skulltula Tokens
 						<label onclick='SettingsPage.setOptionValueForRandomizer("maxRequiredTokens", event)' title="0">

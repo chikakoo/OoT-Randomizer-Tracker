@@ -37,6 +37,12 @@ let DungeonSettings = {
 	MIXED: 2
 };
 
+let SmallKeySettings = {
+	VANILLA: 0,
+	SMALL_KEY_SANITY: 1,
+	KEYSY: 2
+};
+
 let GossipStoneSettings = {
 	HIDE: 0,
 	ALWAYS: 1,
@@ -79,7 +85,7 @@ let Settings = {
 		gossipStoneSetting: GossipStoneSettings.HIDE,
 		medallionSkulltulaSetting: 50,
 		dungeonSetting: DungeonSettings.MIXED,
-		smallKeySanity: true,
+		smallKeySetting: SmallKeySettings.SMALL_KEY_SANITY,
 		scrubSanity: true,
 		shopSanity: true,
 		cowSanity: true,

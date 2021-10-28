@@ -662,14 +662,14 @@ let Keys = {
 		name: "Fire Temple", 
 		minimumKeys: function() {
 			let minKeys = 8;
-			if (!Settings.RandomizerSettings.smallKeySanity) { minKeys--; }
+			if (Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.SMALL_KEY_SANITY) { minKeys--; }
 			if (Settings.GlitchesToAllow.fireCraterRoomKeySkip) { minKeys--; }
 			if (Settings.GlitchesToAllow.fireJailClip) { minKeys--;}
 			if (Settings.GlitchesToAllow.fireWallSkip) { minKeys--; }
 			return minKeys;
 		}, 
 		totalKeys: function() {
-			return Settings.RandomizerSettings.smallKeySanity ? 8 : 7;
+			return Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.SMALL_KEY_SANITY ? 8 : 7;
 		},
 		
 		mqMinimumKeys: function() { return 5; },
@@ -747,6 +747,10 @@ let Keys = {
  * Gets the key count from the current map name
  */
 let getKeyCount = function(mapName) {
+	if (mapName !== "Gerudo Fortress" && Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY) {
+		return 99;
+	}
+
 	switch(mapName) {
 		case "Forest Temple":
 			return Keys.FOREST_TEMPLE.keyCount || 0;

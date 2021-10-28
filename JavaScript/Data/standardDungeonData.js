@@ -1361,9 +1361,9 @@ let StandardDungeons = {
 						Order: 4,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "This is the door behind the pillar on the bottom of the lobby.",
-						RequiredToAppear: function() { return Settings.RandomizerSettings.smallKeySanity; },
+						RequiredToAppear: function() { return Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.SMALL_KEY_SANITY; },
 						KeyRequirement: function(age) {
-							if (!Settings.RandomizerSettings.smallKeySanity) {
+							if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
 								return { min: 0, max: 0 };
 							}
 							return { min: 1, max: Keys.FIRE_TEMPLE.totalKeys()};
@@ -1382,7 +1382,7 @@ let StandardDungeons = {
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "This is the top right door in the lobby.",
 						KeyRequirement: function(age) {
-							if (!Settings.RandomizerSettings.smallKeySanity) {
+							if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
 								return { min: 1, max: 1 };
 							}
 
@@ -1402,7 +1402,7 @@ let StandardDungeons = {
 						Order: 12,
 						LongDescription: "This is the door on the east side of the big lava room.",
 						KeyRequirement: function(age) {
-							if (!Settings.RandomizerSettings.smallKeySanity) {
+							if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
 								return { min: 2, max: 2 };
 							}
 
@@ -1422,7 +1422,7 @@ let StandardDungeons = {
 						Order: 13,
 						LongDescription: "This is the door you reach after riding the block up the fire pillar.",
 						KeyRequirement: function(age) {
-							if (!Settings.RandomizerSettings.smallKeySanity) {
+							if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
 								return { min: 3, max: 3 };
 							}
 
@@ -1443,7 +1443,7 @@ let StandardDungeons = {
 						LongDescription: "This is the locked door in the boulder maze.",
 						KeyRequirement: function(age) {
 							let minValue = 4;
-							if (!Settings.RandomizerSettings.smallKeySanity) {
+							if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
 								return { min: minValue, max: 4 };
 							}
 
@@ -1467,7 +1467,7 @@ let StandardDungeons = {
 								minValue = 4;
 							}
 
-							if (!Settings.RandomizerSettings.smallKeySanity) {
+							if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
 								return { min: minValue, max: 5 };
 							}
 
@@ -1497,7 +1497,7 @@ let StandardDungeons = {
 								minValue--;
 							}
 
-							if (!Settings.RandomizerSettings.smallKeySanity) {
+							if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
 								return { min: minValue, max: 6 };
 							}
 
@@ -1527,7 +1527,7 @@ let StandardDungeons = {
 								minValue--;
 							}
 
-							if (!Settings.RandomizerSettings.smallKeySanity) {
+							if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
 								return { min: minValue, max: 7 };
 							}
 

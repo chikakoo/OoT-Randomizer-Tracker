@@ -144,6 +144,12 @@ let _performItemDisabling = function() {
 				itemLocation.disabled = true;
 				return;
 			}
+
+			// Keys
+			if (Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY && itemLocation.ItemGroup === ItemGroups.LOCKED_DOOR) {
+				itemLocation.disabled = true;
+				return;
+			}
 			
 			// Gossip Stones
 			if (Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.HIDE && itemLocation.ItemGroup === ItemGroups.GOSSIP_STONE) {
@@ -154,16 +160,19 @@ let _performItemDisabling = function() {
 			// Co-op locations when it's not co-op
 			if (itemLocation.CoOpOnly && !SocketClient.isCoOp()) {
 				itemLocation.disabled = true;
+				return;
 			}
 			
 			// All specifically excluded items
 			if (itemsToExcludeMapInfo && itemsToExcludeMapInfo.includes(itemLocation.Name)) {
 				itemLocation.disabled = true;
+				return;
 			}
 			
 			// Items with custom exclusion functions
 			if (itemLocation.RequiredToAppear && !itemLocation.RequiredToAppear()) {
 				itemLocation.disabled = true;
+				return;
 			}
 		});
 	});
