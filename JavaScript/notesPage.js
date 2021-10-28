@@ -6,11 +6,33 @@ NotesPage = {
 		LocationSidebar.displayContainer("notesContainer");
 		_currentLocationName = "Notes";
 		
+		this._adjustImportantLocationsText();
 		this._createNotesForSection("shop", Data.isItemLocationAShop);
 		this._createNotesForSection("gossip", Data.isItemLocationAGossipStone);
 		this._createNotesForSection("other", function(itemLocation) {
 			return !Data.isItemLocationAShop(itemLocation) && !Data.isItemLocationAGossipStone(itemLocation);
 		});
+	},
+
+	/**
+	 * Adjusts the notes for the important locations
+	 * Currently only for the temple of time
+	 * 
+	 * TODO: Track the locations to display here so it's easy to dynamially add more?
+	 */
+	_adjustImportantLocationsText: function() {
+		let importantLocationsContainer = document.getElementById("importantLocationsContainer");
+		addCssClass(importantLocationsContainer, "nodisp");
+
+		if (Settings.RandomizerSettings.shuffleInteriorEntrances && Data.templeOfTimeLocation.map) {
+			removeCssClass(importantLocationsContainer, "nodisp");
+
+			let templeOfTimeLocationDiv = document.getElementById("templeOfTimeContent");
+			templeOfTimeLocationDiv.innerText = `${Data.templeOfTimeLocation.map} | ${Data.templeOfTimeLocation.region}`;
+			templeOfTimeLocationDiv.onclick = function() {
+				displayLocation(Data.templeOfTimeLocation.map);
+			}
+		}
 	},
 	
 	/**

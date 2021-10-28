@@ -52,7 +52,7 @@ h1 {
 }
 
 .notes-content > div {
-	margin-top: 10px;
+	margin-top: 2px;
 }
 
 .notes-content .note-div-container {
@@ -137,6 +137,11 @@ h1 {
 
 #notesHeader label:hover {
 	color: yellow;
+}
+
+/* Important Locations */
+#importantLocationsContainer .note-div-notes:hover {
+	color: lightgray;
 }
 
 /* Age Icons */

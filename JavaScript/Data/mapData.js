@@ -4977,7 +4977,7 @@ let MapLocations = {
                         LongDescription: "This is the shop. As an adult, you can either use Blue Fire, or perform the shop skip to get inside.",
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return true; }
-                            return Items.BLUE_FIRE.playerHas || (Settings.GlitchesToAllow.blueFireShopSkip && Data.hasShield(age));
+                            return Items.BLUE_FIRE.playerHas || Settings.GlitchesToAllow.blueFireShopSkip;
                         }
                     },
                     "Song of Storms Grotto": {
