@@ -1282,7 +1282,7 @@ Data = {
     _fillCanDoObject(itemLocations, age, canDoObj) {
         let _this = this;
         itemLocations.forEach(function(itemLocation) {
-            if (itemLocation.ReadOnly) { // ReadOnly locations aren't real checks, just travel points
+            if (itemLocation.ReadOnly || itemLocation.disabled) { // ReadOnly locations aren't real checks, just travel points
                 return;
             }
 
