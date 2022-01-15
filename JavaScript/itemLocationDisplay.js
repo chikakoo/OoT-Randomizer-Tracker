@@ -347,7 +347,7 @@ let refreshEntranceDropdowns = function(itemLocation, loc, entrance) {
 	_fillStringDropdown(locDropdown, options, defaultMap);
 
 	if (defaultMap && defaultExit) {
-		let entrances = Data.getOWEntrances(defaultMap);
+		let entrances = Data.getOWEntrances(defaultMap, itemLocation.IsOwl);
 		_fillStringDropdown(entranceDropdown, entrances, defaultExit);
 	}
 
@@ -357,7 +357,7 @@ let refreshEntranceDropdowns = function(itemLocation, loc, entrance) {
 		let mapName = locDropdown.options[locDropdown.selectedIndex].value;
 		let entrances = null;
 		if (mapName !== "<no selection>") {
-			entrances = Data.getOWEntrances(mapName);
+			entrances = Data.getOWEntrances(mapName, itemLocation.IsOwl);
 			_fillStringDropdown(entranceDropdown, entrances);
 		}
 		

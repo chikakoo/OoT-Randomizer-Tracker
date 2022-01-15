@@ -610,6 +610,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: -100, y: -100 },
             Hide: true,
+            ShowForOwl: true,
             LongDescription: "The Nocturne of Shadow teleport pad on the top part of the graveyard.",
         },
         "Shadow Temple Entrance": {
@@ -713,6 +714,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: -100, y: -100 },
             Hide: true,
+            ShowForOwl: true,
             LongDescription: "The Bolero of Fire teleport pad at the bottom of Death Mountain Crater.",
         },
         "Fire Temple Entrance": {
@@ -2430,10 +2432,11 @@ let MapLocations = {
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 174, y: 170 },
                         Age: Age.CHILD,
-                        LongDescription: "You can get this after waking up Talon with the Chicken. After speaking to Malon a few times, take out your Ocarina to get the item.",
+                        LongDescription: "You can get this after getting Malon's gift and waking up Talon with the Chicken at Hyrule Castle. Take out your Ocarina to get the item.",
                         NeedsOcarina: true,
                         CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Castle", "main", "Wake up Talon");
+                            return Data.itemLocationObtained("Castle", "main", "Gift from Malon") &&
+                                Data.itemLocationObtained("Castle", "main", "Wake up Talon");
                         }
                     },
                     

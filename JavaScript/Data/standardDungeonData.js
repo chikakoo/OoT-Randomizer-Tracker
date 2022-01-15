@@ -1234,7 +1234,7 @@ let StandardDungeons = {
 						Age: Age.ADULT,
 						Order: 23,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-						LongDescription: "After defeating all the poes, head down the basement elevator. Push the wall so that they move counter-clockwise once. You should now be able to access the room with the chest.",
+						LongDescription: "After defeating all the poes, head down the basement elevator. Push the wall so that they move clockwise once. You should now be able to access the room with the chest.",
 						IsPostWalkCheck: true,
 						CustomRequirement: function(age) {
 							return Data.forestTempleCanAccessAllPoeRooms(age);
@@ -1248,7 +1248,7 @@ let StandardDungeons = {
 						Order: 24,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						IsAtShortDistance: true,
-						LongDescription: "After defeating all the poes, head down the basement elevator. Push the wall so that they move counter-clockwise once. You should now be able to access the room with the skulltula",
+						LongDescription: "After defeating all the poes, head down the basement elevator. Push the wall so that they move clockwise once. You should now be able to access the room with the skulltula",
 						IsPostWalkCheck: true,
 						CustomRequirement: function(age) {
 							return Data.forestTempleCanAccessAllPoeRooms(age);
