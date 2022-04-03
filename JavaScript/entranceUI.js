@@ -137,8 +137,10 @@ let EntranceUI = {
 			let isAdultOnly = (button.isAdultOnly && button.isAdultOnly()) || (canGetToAsAdult && !canGetToAsChild);
 
 			if (shouldNotDisplayButton || shouldExcludeEquivalentItem) { return; }
-			if (itemLocation.Age === Age.CHILD && isAdultOnly) { return; }
-			if (itemLocation.Age === Age.ADULT && isChildOnly) { return; }
+
+			//TODO: clean this up... this isn't a good idea to keep!!!
+			//if (itemLocation.Age === Age.CHILD && isAdultOnly) { return; }
+			//if (itemLocation.Age === Age.ADULT && isChildOnly) { return; }
 			
 			let buttonDiv = dce("div", "entrance-group-button");
 			buttonDiv.title = button.description;

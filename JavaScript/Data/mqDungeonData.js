@@ -3567,7 +3567,7 @@ let MQDungeons = {
 						MapInfo: { x: 194, y: 127, floor: "F1" },
 						Age: Age.CHILD,
 						Order: 2,
-						LongDescription: "Navigate to the back of the main room and play Zelda's Lullaby at the triforce. This will open a bunch of gates. Proceed behind you to the center room with the chest.<br/><br/>Alternatively, you can bomb the rocks near the sourtheast corner of the main room. Sidehop then jumpslash over the hole in the ground to get to the center area."
+						LongDescription: "Navigate to the back of the main room and play Zelda's Lullaby at the triforce. This will open a bunch of gates. Proceed behind you to the center room with the chest.<br/><br/>Alternatively, you can bomb the rocks near the middle-west of the main room. Sidehop then jumpslash over the hole in the ground to get to the center area."
 					},
 					"Skulltula in Grave Room": {
 						Name: "Skulltula in Grave Room",

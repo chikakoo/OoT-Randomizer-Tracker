@@ -946,7 +946,7 @@ let OwExits = {
                 if (!Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
                 
 				let defeatedMorpha = Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
-				let canHitSwitch = age === Age.ADULT || (Data.hasDamagingItem(age) && Equipment.SCALE.currentUpgrade === 2);
+				let canHitSwitch = Data.hasDamagingItem(age) && Equipment.SCALE.currentUpgrade === 2;
 				return defeatedMorpha && canHitSwitch;
             }
         }
@@ -2545,6 +2545,11 @@ let MapLocations = {
 		Regions: {
             main: {
                 Exits: {
+                    alley: {
+                        Name: "alley",
+                        Age: Age.CHILD
+                    },
+
                     "Market Entrance": {
                         OwExit: OwExits["Market"]["Market Entrance"]
                     },
@@ -2596,14 +2601,6 @@ let MapLocations = {
                         PostSpawnRequirements: function(age) {
                             return Data.canPlayBombchuBowling(age);
                         }
-                    },
-                    "Reward from Returning Dog": {
-                        // Not marked as interior because it's not included in the entrance shuffle currently
-                        Name: "Reward from Returning Dog",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: {x: 104, y: 230},
-                        Age: Age.CHILD,
-                        LongDescription: "If you start near the entrance, the dog you want is just to the left behind the market stall. From there, beeline to the right to get to the left market alley. Go to the more rightmost of the two doors and turn in the dog."
                     },
                     "Treasure Chest Minigame": {
                         Name: "Treasure Chest Minigame",
@@ -2707,22 +2704,12 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "Starting at the market entrance, this is the second building you can enter going counter-clockwise."
                     },
-                    "Bombchu Shop": {
-                        Name: "Bombchu Shop",
-                        ItemGroup: ItemGroups.SHOP,
-                        MapInfo: {x: 130, y: 232},
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "This shop is only open at night. Starting at the market entrance, go straight right into the alley. Take the first door on the left wall to get to the shop.",
-                        OneWayInteriorSpawnEntrance: true
-                    },
                     
                     // Entrances
                     "Archery Minigame": {
                         Name: "Archery Minigame",
                         ItemGroup: ItemGroups.ENTRANCE,
                         Map: "Market",
-                        Region: "main",
                         MapInfo: {x: 234, y: 120},
                         IsInterior: true,
                         OneWayInteriorSpawnEntrance: true,
@@ -2733,7 +2720,6 @@ let MapLocations = {
                         Name: "Happy Mask Shop Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
                         Map: "Market",
-                        Region: "main",
                         MapInfo: {x: 286, y: 120},
                         IsInterior: true,
                         OneWayInteriorSpawnEntrance: true,
@@ -2744,7 +2730,6 @@ let MapLocations = {
                         Name: "Potion Shop Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
                         Map: "Market",
-                        Region: "main",
                         MapInfo: {x: 308, y: 159},
                         IsInterior: true,
                         OneWayInteriorSpawnEntrance: true,
@@ -2755,7 +2740,6 @@ let MapLocations = {
                         Name: "Bazaar Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
                         Map: "Market",
-                        Region: "main",
                         MapInfo: {x: 308, y: 191},
                         IsInterior: true,
                         OneWayInteriorSpawnEntrance: true,
@@ -2766,7 +2750,6 @@ let MapLocations = {
                         Name: "Treasure Chest Minigame Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
                         Map: "Market",
-                        Region: "main",
                         MapInfo: {x: 215, y: 230},
                         IsInterior: true,
                         OneWayInteriorSpawnEntrance: true,
@@ -2777,18 +2760,46 @@ let MapLocations = {
                         Name: "Bombchu Bowling Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
                         Map: "Market",
-                        Region: "main",
                         MapInfo: {x: 205, y: 174},
                         IsInterior: true,
                         OneWayInteriorSpawnEntrance: true,
                         Age: Age.CHILD,
                         LongDescription: "This building is the one between the two market alley entrances."
+                    }
+                }
+            },
+
+            alley: {
+                Exits: {
+                    main: {
+                        Name: "main"
+                    }
+                },
+
+                ItemLocations: {
+                    "Reward from Returning Dog": {
+                        // Not marked as interior because it's not included in the entrance shuffle currently
+                        Name: "Reward from Returning Dog",
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: {x: 104, y: 230},
+                        Age: Age.CHILD,
+                        LongDescription: "If you start near the entrance, the dog you want is just to the left behind the market stall. From there, beeline to the right to get to the left market alley. Go to the more rightmost of the two doors and turn in the dog."
                     },
+                    "Bombchu Shop": {
+                        Name: "Bombchu Shop",
+                        ItemGroup: ItemGroups.SHOP,
+                        MapInfo: {x: 130, y: 232},
+                        IsInterior: true,
+                        LongDescription: "This shop is only open at night. Starting at the market entrance, go straight right into the alley. Take the first door on the left wall to get to the shop.",
+                        OneWayInteriorSpawnEntrance: true
+                    },
+
+                    // Entrances
                     "Bombchu Shop Entrance": {
                         Name: "Bombchu Shop Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
                         Map: "Market",
-                        Region: "main",
+                        Region: "alley",
                         MapInfo: {x: 130, y: 232},
                         IsInterior: true,
                         OneWayInteriorSpawnEntrance: true,
@@ -2799,11 +2810,10 @@ let MapLocations = {
                         Name: "Door in Right Market Alley",
                         ItemGroup: ItemGroups.ENTRANCE,
                         Map: "Market",
-                        Region: "main",
+                        Region: "alley",
                         MapInfo: {x: 112, y: 112},
                         IsInterior: true,
                         OneWayInteriorSpawnEntrance: true,
-                        Age: Age.CHILD,
                         LongDescription: "This door only opens at night. This is the door on the screen if you enter the alley from the entrance by the archery building."
                     }
                 }
