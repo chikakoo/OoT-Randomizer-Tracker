@@ -196,8 +196,8 @@ let EntranceUI = {
 	 * @param canGetToAsAdult - whether you can get to the item location as an adult
 	 */
 	_addAgeDiv: function(buttonDiv, button, canGetAsChild, canGetAsAdult) {
-		let childOnlyItem = this._canGetAsAge(button, Age.CHILD);
-		let adultOnlyItem = this._canGetAsAge(button, Age.ADULT);
+		let childOnlyItem = this._canGetAsAge(button, Age.CHILD, true);
+		let adultOnlyItem = this._canGetAsAge(button, Age.ADULT, true);
 		
 		let canOnlyGetAsChild = (childOnlyItem && !adultOnlyItem) || (canGetAsChild && !canGetAsAdult);
 		let canOnlyGetAsAdult = (!childOnlyItem && adultOnlyItem) || (!canGetAsChild && canGetAsAdult);
@@ -369,10 +369,10 @@ let EntranceUI = {
 	 * @param age - the age to check
 	 * @return
 	 */
-	_canGetAsAge(button, age) {
+	_canGetAsAge(button, age, ignoreCanBeAge) {
 		canGetAsAge = age === Age.EITHER;
 
-		if (age !== Age.EITHER && !Data.canBeAge(age)) {
+		if (!ignoreCanBeAge && age !== Age.EITHER && !Data.canBeAge(age)) {
 			return false;
 		}
 		
