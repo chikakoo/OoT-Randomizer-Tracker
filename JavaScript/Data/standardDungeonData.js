@@ -151,7 +151,8 @@ let StandardDungeons = {
 					bossRoom: {
 						Name: "bossRoom",
 						CustomRequirement: function(age) {
-							let canBurnWeb = Data.canUseFireItem(age) || (age === Age.CHILD && Items.DEKU_STICK.playerHas);
+							let canShootWeb = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
+							let canBurnWeb = canShootWeb || Data.canUseFireItem(age) || Data.canUseDekuStick(age);
 							let hasShield = age === Age.CHILD ? Equipment.DEKU_SHIELD.playerHas : Equipment.HYLIAN_SHIELD.playerHas;
 							return canBurnWeb && hasShield;
 						}
@@ -186,7 +187,7 @@ let StandardDungeons = {
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "To defeat Gohma, you must first stun her when her eye is red. You can use the slingshot or deku nuts to do this - nuts don't stun her for nearly as long, though. Once she's down, attack her. The quickest kill is with three deku stick jumpslashes (or one then two crouch stabs).",
 						CustomRequirement: function(age) {
-							return Data.hasSwordWeapon(age) && (Items.DEKU_NUT.playerHas || (Age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas));
+							return Data.hasSwordWeapon(age) && (Items.DEKU_NUT.playerHas || (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas));
 						}
 					},
 					"Blue Warp": {
@@ -198,7 +199,7 @@ let StandardDungeons = {
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 						CustomRequirement: function(age) {
-							return Data.hasSwordWeapon(age) && (Items.DEKU_NUT.playerHas || (Age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas));
+							return Data.hasSwordWeapon(age) && (Items.DEKU_NUT.playerHas || (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas));
 						}
 					}
 				}
