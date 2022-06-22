@@ -738,7 +738,7 @@ Data = {
 					(item !== Items.BOOMERANG && item !== Items.MEGATON_HAMMER && item !== Items.DEKU_STICK) ||
 					(item === Items.BOOMERANG && _this.canUseBoomerang(age)) ||
 					(item === Items.MEGATON_HAMMER && _this.canUseHammer(age)) ||
-                    (item === Items.DEKU_STICK && _this.canUseDeskuStick(age))
+                    (item === Items.DEKU_STICK && _this.canUseDekuStick(age))
 				);
 			
 			if (!canUseItem) {
