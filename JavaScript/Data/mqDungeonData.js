@@ -2091,7 +2091,7 @@ let MQDungeons = {
 						Name: "Locked Door by Truth Spinner",
 						ItemGroup: ItemGroups.LOCKED_DOOR,
 						Regions: ["truthSpinnerRoom"],
-						MapInfo: { x: 122, y: 91, floor: "F1" },
+						MapInfo: { x: 125, y: 152, floor: "F1" },
 						Age: Age.EITHER,
 						Order: 0.1,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip },
@@ -3424,7 +3424,8 @@ let MQDungeons = {
 						Order: 6,
 						LongDescription: "This skulltula is on the ledge to your right in the big room. Either play the scarecrow's song and hook it, or make use of a ground jump to get up there.",
 						CustomRequirement: function(age) {
-							return Data.canHookScarecrow(age) ||  Data.canGroundJumpWithBomb(age);
+							let canUseScarecrow = Data.canHookScarecrow(age) && Data.getEmptyBottleOrBlueFireCount() > 1;
+							return canUseScarecrow ||  Data.canGroundJumpWithBomb(age);
 						}
 					},
 					"Chest at End": {
@@ -3465,7 +3466,10 @@ let MQDungeons = {
 						Age: Age.ADULT,
 						Order: 3,
 						LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>Play the song of time on the top near the pillar with the skulltula to spawn a block. Climb it, and play the song again. Use blue fire to melt the ice to gain access to the skulltula.",
-						RequiredSongs: [Songs.SONG_OF_TIME]
+						RequiredSongs: [Songs.SONG_OF_TIME],
+						CustomRequirement: function(age) {
+							return Data.getEmptyBottleOrBlueFireCount() > 1;
+						}
 					},
 					"Chest in North Room": {
 						Name: "Chest in North Room",

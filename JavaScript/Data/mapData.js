@@ -1189,6 +1189,7 @@ let OwExits = {
             MapInfo: { x: -100, y: -100, floor: "F1" },
             ReadOnly: true,
             IsDungeonExit: true,
+            Order: 0,
             Age: Age.EITHER,
             LongDescription: "This is the exit from the Shadow Temple."
         }
@@ -1235,6 +1236,7 @@ let OwExits = {
             MapInfo: { x: -100, y: -100, floor: "F1" },
             ReadOnly: true,
             IsDungeonExit: true,
+            Order: 0,
             Age: Age.EITHER,
             LongDescription: "This is the exit from the Bottom of the Well."
         }
@@ -5077,7 +5079,8 @@ let MapLocations = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 257, y: 234 },
                         Age: Age.CHILD,
-                        LongDescription: "Go to the southeast corner of the map. Roll into the tree to find this skulltula."
+                        LongDescription: "Go to the southeast corner of the map. Roll into the tree to find this skulltula. Use a pot near Jabu to kill it if you don't have a weapon.",
+                        OverrideItemGroupCondition: true,
                     },
                     "Skulltula on Wall": {
                         Name: "Skulltula on Wall",

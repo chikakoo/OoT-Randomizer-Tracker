@@ -983,6 +983,23 @@ Data = {
     hasBottleOrBlueFire: function() {
         return this.hasBottle() || Items.BLUE_FIRE.playerHas;
     },
+
+    /**
+     * Gets how many empty bottles or blue fires the player currently has
+     * @returns The count
+     */
+    getEmptyBottleOrBlueFireCount: function() {
+        let bottleArr = [
+            Items.BOTTLE1.playerHas,
+            Items.BIG_POE.currentUpgrade > 1,
+            Items.BLUE_FIRE.playerHas,
+            Items.RUTOS_LETTER.currentUpgrade > 1
+        ];
+        return bottleArr.reduce((acc, value) => {
+            if (value) { return acc + 1; }
+            return acc;
+        }, 0);
+    },
     
     /**
      * Returns whether the player has an item that can damage an enemy
