@@ -621,11 +621,14 @@ let MQDungeons = {
 		Regions: {
 			main: {
 				Exits: {
-					//TODO: add adult here - need a non-item location for opening the door
 					afterFirstRoom: {
 						Name: "afterFirstRoom",
-						Age: Age.CHILD,
-						RequiredItems: [Items.FAIRY_SLINGSHOT]
+						CustomRequirement: function(age) {
+							if (age === Age.CHILD) {
+								return Items.FAIRY_SLINGSHOT.playerHas;
+							}
+							return Data.itemLocationObtained("Jabu Jabu's Belly", "main", "Opened First Door");
+						}
 					},
 					Exit: {
 						OwExit: OwExits["Jabu Jabu's Belly"]["Exit"]
@@ -633,12 +636,23 @@ let MQDungeons = {
 				},
 
 				ItemLocations: {
+					"Opened First Door": {
+						Name: "Opened First Door",
+						ItemGroup: ItemGroups.NON_ITEM,
+						MapInfo: { x: 173, y: 215, floor: "F1" },
+						Age: Age.CHILD,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						Order: 0.1,
+						LongDescription: "In the first room, shoot the left cow to open the door.",
+						RequiredItems: [Items.FAIRY_SLINGSHOT]
+					},
 					"Map Chest": {
 						Name: "Map Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 173, y: 269, floor: "F1" },
 						Age: Age.EITHER,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 1,
 						LongDescription: "In the first room, destroy the yellow rock and hit the switch underneath to spawn the chest.",
 						NeedToBlastOrSmash: true
@@ -669,7 +683,8 @@ let MQDungeons = {
 						Name: "Chest in Elevator Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 209, y: 221, floor: "B1" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 3,
 						LongDescription: "After going through the first door, drop down to the bottom. The chest is by the door."
 					},
@@ -701,7 +716,8 @@ let MQDungeons = {
 						Name: "Free Chest in Path to Elevator Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 318, y: 134, floor: "B1" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 7,
 						LongDescription: "Solve the puzzle in the room below the holes to enter the path leading to the elevator room. There is an easily accessible chest in here."
 					},
@@ -709,7 +725,8 @@ let MQDungeons = {
 						Name: "Enemy Chest in Path to Elevator Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 258, y: 152, floor: "B1" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 8,
 						LongDescription: "Solve the puzzle in the room below the holes to enter the path leading to the elevator room. Defeat all the enemies in the water to spawn the chest."
 					},
@@ -717,7 +734,8 @@ let MQDungeons = {
 						Name: "Skulltula Under Song of Time Block",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 297, y: 147, floor: "B1" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 9,
 						LongDescription: "In the path leading to the elevator room, there's a skulltula under the Song of Time block. Play the song to move the block.",
 						RequiredSongs: [Songs.SONG_OF_TIME]
@@ -730,7 +748,7 @@ let MQDungeons = {
 					afterWebBurned: {
 						Name: "afterWebBurned",
 						CustomRequirement: function(age) {
-							return Items.DEKU_STICK.playerHas || Data.canUseFireItem(age);
+							return Data.canUseDekuStick(age) || Data.canUseFireItem(age);
 						}
 					}
 				},
@@ -741,6 +759,7 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 195, y: 12, floor: "F1" },
 						Age: Age.CHILD,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
 						Order: 10,
 						LongDescription: "In the room beyond the room with holes, enter the next room and go to the far right door. Shoot the cows, then kill the Like Likes that fall to spawn the chest.",
 						Region: "northernRooms",
@@ -763,18 +782,30 @@ let MQDungeons = {
 						Name: "Skulltula on Ceiling",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 157, y: 14, floor: "F1" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
 						Order: 11,
-						LongDescription: "Using a deku stick to bring a fire from the Like Like room, or a fire item, burn the web to get access to the far west room. After killing the tentacle, head to the far east room and kill that tentacle. Now leave and enter the room to your left. Use the switch and a bomb, or a bombchu to blow up the rock on the ceiling to reveal the skulltula."
+						LongDescription: "Using a deku stick to bring a fire from the Like Like room, or a fire item, burn the web to get access to the far west room. After killing the tentacle, head to the far east room and kill that tentacle. Now leave and enter the room to your left. Use the switch and a bomb, or a bombchu to blow up the rock on the ceiling to reveal the skulltula.",
+						CustomRequirement: function(age) {
+							return Data.canUseDekuStick(age) || Data.canUseFireItem(age);
+						}
 					},
 					"Skulltula Behind Web": {
 						Name: "Skulltula Behind Web",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 29, y: 191, floor: "B1" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 12,
-						LongDescription: "After destroying all the tentacles, drop down into the big room and enter the door by the vines. The skulltula is in the back of the room. Use Din's Fire to burn the web.",
-						RequiredItems: [Items.DINS_FIRE, Equipment.MAGIC]
+						LongDescription: "After destroying all the tentacles, drop down into the big room and enter the door by the vines. The skulltula is in the back of the room. Kill the enemies (some are invisible) or megaflip to cross to the other wide. Burn the web with a fire item.",
+						NeedsFire: true,
+						CustomRequirement: function(age) {
+							// First two checks are to kill the enemies - child 100% has a slingshot due to the first door
+							//TODO: might want lens check here too if not megaflipping, dunno how hard it is to find the enemies
+							//TODO: hookshot/longshot distance with fire arrow?
+							//TODO: can adult just climb to the other side?
+							return age === Age.CHILD || Items.FAIRY_BOW.playerHas || Data.canMegaFlip(age); 
+						}
 					},
 				}
 			},

@@ -735,9 +735,10 @@ Data = {
 			
 			let canUseItem = currentItem.playerHas &&
 				(
-					(item !== Items.BOOMERANG && item !== Items.MEGATON_HAMMER) ||
+					(item !== Items.BOOMERANG && item !== Items.MEGATON_HAMMER && item !== Items.DEKU_STICK) ||
 					(item === Items.BOOMERANG && _this.canUseBoomerang(age)) ||
-					(item === Items.MEGATON_HAMMER && _this.canUseHammer(age))
+					(item === Items.MEGATON_HAMMER && _this.canUseHammer(age)) ||
+                    (item === Items.DEKU_STICK && _this.canUseDeskuStick(age))
 				);
 			
 			if (!canUseItem) {
@@ -1121,6 +1122,14 @@ Data = {
     canUseBoomerang: function(age) {
 		return Items.BOOMERANG.playerHas && (age === Age.CHILD || this.canEquipSwap(age));
 	},
+
+    /**
+     * Returns whether the player can use Deku Sticks
+     * This includes equip swap
+     */
+    canUseDekuStick: function(age) {
+        return Items.DEKU_STICK.playerHas && (age === Age.CHILD || this.canEquipSwap(age));
+    },
 
     /**
      * Whether the player can dive to silver scale depth
