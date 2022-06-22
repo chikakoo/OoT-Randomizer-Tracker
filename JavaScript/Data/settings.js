@@ -158,6 +158,7 @@ let Settings = {
 		dodongoSwitchEarly: true,
 		dodongoAdultJumpToBombChest: true,
 		dodongoScarecrowSkullEarly: true,
+		dodongoTriggerStarisWithBow: false,
 		
 		jabuFishless: false,
 		jabuBlueSwitchSkip: false,

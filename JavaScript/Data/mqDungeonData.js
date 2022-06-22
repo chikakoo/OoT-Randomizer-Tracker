@@ -17,7 +17,7 @@ let MQDungeons = {
 						CustomRequirement: function(age) {
 							if (!Data.canShootEyeSwitch(age)) { return false; }
 							return Data.canUseFireItem(age) || 
-								(age === Age.CHILD && Items.DEKU_STICK.playerHas) ||
+								Data.canUseDekuStick(age) ||
 								(age === Age.ADULT && Items.FAIRY_BOW.playerHas);
 						}
 					},
@@ -26,7 +26,7 @@ let MQDungeons = {
 						Name: "waterRoom",
 						CustomRequirement: function(age) {
 							if (!Data.canShootEyeSwitch(age)) { return false; }
-							return Data.canUseFireItem(age) || (age === Age.CHILD && Items.DEKU_STICK.playerHas);
+							return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
 						}
 					},
 
@@ -77,7 +77,7 @@ let MQDungeons = {
 						LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>Light the unlit torch in this room to spawn the chest. If using a bow, it's easier if you shoot it from the left side of the torch.",
 						CustomRequirement: function(age) {
 							return Data.canUseFireItem(age) || 
-								(age === Age.CHILD && Items.DEKU_STICK.playerHas) ||
+								Data.canUseDekuStick(age) ||
 								(age === Age.ADULT && Items.FAIRY_BOW.playerHas);
 						}
 					},
@@ -90,7 +90,7 @@ let MQDungeons = {
 						LongDescription: "Head to the basement. The goal is to hit the switch to the right of the vines to spawn the chest. If you have Din's Fire, use it on the webs. Otherwise, hit the switch to the left of the vines to light the torch, then use your sticks to gain access to the switch.",
 						CustomRequirement: function(age) {
 							return Data.canUseFireItem(age) || 
-								(age === Age.CHILD && Items.DEKU_STICK.playerHas) ||
+								Data.canUseDekuStick(age) ||
 								(age === Age.ADULT && Items.FAIRY_BOW.playerHas);
 						}
 					}
@@ -153,9 +153,8 @@ let MQDungeons = {
 				Exits: {
 					bossRoom: {
 						CustomRequirement: function(age) {
-							let canUseStick = age === Age.CHILD && Items.DEKU_STICK.playerHas;
 							let canStunScrubs = (age === Age.CHILD && Equipment.DEKU_SHIELD.playerHas) || (age === Age.ADULT && Equipment.HYLIAN_SHIELD.playerHas)
-							return (Data.canUseFireItem(age) || canUseStick) && canStunScrubs;
+							return (Data.canUseFireItem(age) || Data.canUseDekuStick(age)) && canStunScrubs;
 						}
 					}
 				},
@@ -180,7 +179,7 @@ let MQDungeons = {
 						LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Defeat all the enemies in this room to continue on.<br/><br/>Step on the blue switch in the middle of the torches. Quickly light a stick, then burn the web blocking the left door. You can also use Din's Fire. The skulltula is in this room.",
 						IsAtShortDistance: true,
 						CustomRequirement: function(age) {
-							return Data.canUseFireItem(age) || (age === Age.CHILD && Items.DEKU_STICK.playerHas);
+							return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
 						}
 					},
 					"Scrub in Basement": {
@@ -267,7 +266,7 @@ let MQDungeons = {
 						CustomRequirement: function(age) {
 							if (Data.hasExplosives()) { return true; } // Going around the top
             	
-							let canLowerWithBow = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
+							let canLowerWithBow = Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && age === Age.ADULT && Items.FAIRY_BOW.playerHas;
 							return canLowerWithBow || Data.hasExplosivesOrStrength();
 						}
 					},
@@ -417,7 +416,7 @@ let MQDungeons = {
 					upperLizalfosRoom: {
 						Name: "upperLizalfosRoom",
 						CustomRequirement: function(age) {
-							return Data.canUseFireItem(age) || (age == Age.CHILD && Items.DEKU_STICK.playerHas);
+							return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
 						}
 					}
 				},
@@ -431,7 +430,7 @@ let MQDungeons = {
 						Order: 10,
 						LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. Kill all the enemies to spawn the chest.",
 						CustomRequirement: function(age) {
-							return Data.canUseFireItem(age) || (age == Age.CHILD && Items.DEKU_STICK.playerHas)
+							return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
 						}
 					},
 					"Skulltula in Room by Torch Puzzle": {
@@ -442,7 +441,7 @@ let MQDungeons = {
 						Order: 11,
 						LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. The skulltula is in one of the right boxes.",
 						CustomRequirement: function(age) {
-							return Data.canUseFireItem(age) || (age == Age.CHILD && Items.DEKU_STICK.playerHas)
+							return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
 						}
 					}
 				}

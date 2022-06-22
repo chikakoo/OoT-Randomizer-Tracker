@@ -325,7 +325,7 @@ let StandardDungeons = {
 					firstFloorSwitch: {
 						Name: "firstFloorSwitch",
 						CustomRequirement: function(age) {
-							return Data.canUseFireItem(age) || Items.DEKU_STICK.playerHas;
+							return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
 						}
 					}
 				},
@@ -354,8 +354,8 @@ let StandardDungeons = {
 					staircaseTop: {
 						Name: "staircaseTop",
 						CustomRequirement: function(age) {
-							//TODO: make the bow thing a trick, as it's not that easy
-							return Data.hasExplosivesOrStrength() || (age === Age.ADULT && Items.FAIRY_BOW.playerHas);
+							return Data.hasExplosivesOrStrength() || 
+								(Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && age === Age.ADULT && Items.FAIRY_BOW.playerHas);
 						}
 					}
 				},
@@ -3237,7 +3237,7 @@ let StandardDungeons = {
 						AltOrder: 8,
 						LongDescription: "Head to the statue room. On the floor in front of the statue, light the torches with Din's Fire or Fire Arrows to spawn the chest. You can also run a lit deku stick down via the torch in the southwest corner of the room.",
 						CustomRequirement: function(age) {
-							return Data.canUseFireItem(age) || (age === Age.CHILD && Items.DEKU_STICK.playerHas);
+							return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
 						}
 					},
 					"Chest in Sun Block Room": {
@@ -3769,7 +3769,7 @@ let StandardDungeons = {
 						Order: 8,
 						LongDescription: "Head to the room to the left of the main room. Either dive under the gate, or climb up the vines to get to the door (depends on whether you drained the water). Inside, light the upper leftmost torch to gain access to the key. Remember that you can use Din's Fire if you don't have sticks.",
 						CustomRequirement: function(age) {
-							return Data.canUseFireItem(age) || Items.DEKU_STICK.playerHas;
+							return Data.canUseFireItem(age) || Data.canUseFireItem(age);
 						}
 					},
 					"Underwater Chest in Front": {

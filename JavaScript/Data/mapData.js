@@ -4571,7 +4571,7 @@ let MapLocations = {
 
                             let canGetToMain = Data.canAccessMap(age, "Goron City", "main");
                             let canShootBow = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
-                            let canLightBombFlower = age === Age.CHILD && Items.DEKU_STICK.playerHas && Data.canAccessMap(age, "Goron City", "darunia");
+                            let canLightBombFlower = Data.canUseDekuStick(age) && Data.canAccessMap(age, "Goron City", "darunia");
                             return canGetToMain && (canShootBow || canLightBombFlower || Equipment.STRENGTH.playerHas);
                         }
                     }
