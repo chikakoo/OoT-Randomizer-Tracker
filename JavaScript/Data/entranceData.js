@@ -22,7 +22,7 @@ EntranceData = {
 		}
 
 		if (isSelected) {
-			Data.interiorTravelData[thisEntranceName] = itemLocation;
+			Data.addToInteriorTravelData(thisEntranceName, itemLocation);
 
 			if (otherSideLocation) {
 				itemLocation.OwShuffleMap = otherSideLocation.Map
@@ -61,7 +61,8 @@ EntranceData = {
 				OwExits[otherSideLocation.Map][thisName] = otherExitList[otherName].OwExit;
 			}
 		} else {
-			Data.interiorTravelData[thisEntranceName] = null;
+			Data.removeFromInteriorTravelData(thisEntranceName, itemLocation);
+
 			delete itemLocation.OwShuffleMap;
 			delete itemLocation.OwShuffleRegion;
 			delete itemLocation.CustomRequirement;

@@ -29,7 +29,57 @@ Data = {
         kakPotionShopFront: null,
         kakPotionShopBack: null,
         dampesGrave: null,
-        windmill: null,
+        windmill: null
+    },
+
+    /**
+     * Contains arrays of all the data entered for the interior travel data
+     * This is to handle issues related to adding and removing entries by mistake
+     */
+    _interiorTravelDataInfo: {
+        kakPotionShopFront: [],
+        kakPotionShopBack: [],
+        dampesGrave: [],
+        windmill: []
+    },
+
+    /**
+     * Should be what is called when adding to the interior travel data
+     * @param {string} key - one of the interior travel data keys
+     * @param {any} data - the data to store in the key
+     */
+    addToInteriorTravelData: function(key, data) {
+        this._interiorTravelDataInfo[key].push(data);
+        this._updateInteriorTravelData(key);
+    },
+
+    /**
+     * Should be what is called when removing from the interior travel data
+     * @param {string} key - one of the interior travel data keys
+     * @param {any} data - the data to remove from the key
+     */
+    removeFromInteriorTravelData: function(key, data) {
+        for (let i = 0; i < this._interiorTravelDataInfo[key].length; i++) {
+            let item = this._interiorTravelDataInfo[key][i];
+            if (item.Name === data.Name) {
+                this._interiorTravelDataInfo[key].splice(i, 1)[0];
+                this._updateInteriorTravelData(key);
+                return;
+            }
+        }
+    },
+
+    /**
+     * Updates the travel data with the most recent value
+     * @param {string} key - the key to update
+     */
+    _updateInteriorTravelData: function(key) {
+        let index = this._interiorTravelDataInfo[key].length - 1;
+        if (index < 0) {
+            this.interiorTravelData[key] = null;
+            return;
+        }
+        this.interiorTravelData[key] = this._interiorTravelDataInfo[key][index];
     },
 
     /**
