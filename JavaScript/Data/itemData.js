@@ -731,13 +731,17 @@ let Keys = {
 	GERUDO_TRAINING_GROUNDS: { 
 		name: "Training Grounds", 
 		minimumKeys: function() { 
-			return Settings.GlitchesToAllow.gtgIceArrowsEarly ? 5 : 7;
+			let canChildAccess = Settings.RandomizerSettings.shuffleDungeonEntrances ||
+				(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed);
+			return Settings.GlitchesToAllow.gtgChildVineClips && canChildAccess ? 0 : 7;
 		}, 
 		totalKeys: function() { return 9; }, 
 		noBossKey: true,
 		
 		mqMinimumKeys: function() {
-			return Settings.GlitchesToAllow.gtgIceArrowsEarly ? 1 : 3;
+			let canChildAccess = Settings.RandomizerSettings.shuffleDungeonEntrances ||
+				(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed);
+			return Settings.GlitchesToAllow.gtgChildVineClips && canChildAccess ? 0 : 3;
 		},
 		mqTotalKeys: function() { return 3; }
 	}

@@ -3918,8 +3918,13 @@ let StandardDungeons = {
 				Exits: {
 					hookshotNeeded: {
 						Name: "hookshotNeeded",
-						Age: Age.ADULT,
-						RequiredAdultItems: [Items.HOOKSHOT]
+						Age: Age.EITHER,
+						RequiredAdultItems: [Items.HOOKSHOT],
+						RequiredChildItems: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
+						CustomRequirement: function(age) {
+							if (age === Age.ADULT) { return true; }
+							return Settings.GlitchesToAllow.gtgChildVineClips;
+						}
 					},
 
 					lavaRoom: {
@@ -3930,22 +3935,18 @@ let StandardDungeons = {
 					mazeAfterOptionalDoor1: {
 						Name: "mazeAfterOptionalDoor1",
 						Map: "Training Grounds",
-						LockedDoor: "Optional Locked Door 1"
+						LockedDoor: "Optional Locked Door 1",
+						SkipLockedDoor: function(age) {
+							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+						}
 					},
 
 					mazeAfterDoor1: {
 						Name: "mazeAfterDoor1",
 						Map: "Training Grounds",
-						LockedDoor: "Locked Door 1 On Main Path"
-					},
-
-					//TODO: the trick here can actually be used EVERYWHERE there's a gate here to skip to every single key usage
-					// AND to skip to the hookshot only area!
-					mazeAfterDoor7: {
-						Name: "mazeAfterDoor7",
-						RequiredItems: [Items.BOMBCHU],
-						CustomRequirement: function(age) {
-							return Settings.GlitchesToAllow.gtgIceArrowsEarly && Data.hasShield(age);
+						LockedDoor: "Locked Door 1 On Main Path",
+						SkipLockedDoor: function(age) {
+							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
 						}
 					},
 
@@ -4130,7 +4131,10 @@ let StandardDungeons = {
 					mazeDeadEnd: {
 						Name: "mazeAfterOptionalDoor2",
 						Map: "Training Grounds",
-						LockedDoor: "Optional Locked Door 2"
+						LockedDoor: "Optional Locked Door 2",
+						SkipLockedDoor: function(age) {
+							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+						}
 					}
 				},
 				ItemLocations: {}
@@ -4139,6 +4143,7 @@ let StandardDungeons = {
 				Exits: {
 					silverBlockRoom: {
 						Name: "silverBlockRoom",
+						Age: Age.ADULT,
 						RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}]
 					},
 					lavaRoom: {
@@ -4151,8 +4156,12 @@ let StandardDungeons = {
 						Name: "Wolfos Chest in Room by Silver Block",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 90, y: 83 },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
 						Order: 4,
+						UseAdultAge: function() { 
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.gtgChildVineClips) { return false; }
+							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+						},
 						LongDescription: "This is the room either after the stalfos sandy room, or after the silver rupee room with the fire walls. Kill all the wolfos to spawn a chest."
 					},
 					"Eye Statue Room Bottom Chest": {
@@ -4177,16 +4186,24 @@ let StandardDungeons = {
 						Name: "Chest in Room with Pillars",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 256, y: 75 },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
 						Order: 11,
+						UseAdultAge: function() { 
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.gtgChildVineClips) { return false; }
+							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+						},
 						LongDescription: "This is either after the eye statue room, or after the big lava room. This is the chest that spawns after you kill all the enemies."
 					},
 					"Flaming Chest in Room with Pillars": {
 						Name: "Flaming Chest in Room with Pillars",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 254, y: 90 },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
 						Order: 12,
+						UseAdultAge: function() { 
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.gtgChildVineClips && Settings.GlitchesToAllow.equipSwap) { return false; }
+							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+						},
 						LongDescription: "This is either after the eye statue room, or after the big lava room. Use your hammer on the pillars until you find a floor switch. Step on it to remove the flames from the chest. Be sure to get it before they come back!",
 						RequiredItems: [Items.MEGATON_HAMMER]
 					}
@@ -4315,7 +4332,10 @@ let StandardDungeons = {
 					mazeAfterDoor2: {
 						Name: "mazeAfterDoor2",
 						Map: "Training Grounds",
-						LockedDoor: "Locked Door 2 On Main Path"
+						LockedDoor: "Locked Door 2 On Main Path",
+						SkipLockedDoor: function(age) {
+							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+						}
 					}
 				},
 
@@ -4339,7 +4359,10 @@ let StandardDungeons = {
 					mazeAfterDoor3: {
 						Name: "mazeAfterDoor3",
 						Map: "Training Grounds",
-						LockedDoor: "Locked Door 3 On Main Path"
+						LockedDoor: "Locked Door 3 On Main Path",
+						SkipLockedDoor: function(age) {
+							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+						}
 					}
 				},
 
@@ -4363,7 +4386,10 @@ let StandardDungeons = {
 					mazeAfterDoor4: {
 						Name: "mazeAfterDoor4",
 						Map: "Training Grounds",
-						LockedDoor: "Locked Door 4 On Main Path"
+						LockedDoor: "Locked Door 4 On Main Path",
+						SkipLockedDoor: function(age) {
+							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+						}
 					}
 				},
 				ItemLocations: {}
@@ -4373,7 +4399,10 @@ let StandardDungeons = {
 					mazeAfterDoor5: {
 						Name: "mazeAfterDoor5",
 						Map: "Training Grounds",
-						LockedDoor: "Locked Door 5 On Main Path"
+						LockedDoor: "Locked Door 5 On Main Path",
+						SkipLockedDoor: function(age) {
+							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+						}
 					}
 				},
 
@@ -4397,7 +4426,10 @@ let StandardDungeons = {
 					mazeAfterDoor6: {
 						Name: "mazeAfterDoor6",
 						Map: "Training Grounds",
-						LockedDoor: "Locked Door 6 On Main Path"
+						LockedDoor: "Locked Door 6 On Main Path",
+						SkipLockedDoor: function(age) {
+							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+						}
 					}
 				},
 
@@ -4421,7 +4453,10 @@ let StandardDungeons = {
 					mazeAfterDoor7: {
 						Name: "mazeAfterDoor7",
 						Map: "Training Grounds",
-						LockedDoor: "Locked Door 7 On Main Path"
+						LockedDoor: "Locked Door 7 On Main Path",
+						SkipLockedDoor: function(age) {
+							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+						}
 					}
 				},
 				ItemLocations: {}

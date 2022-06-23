@@ -1267,6 +1267,10 @@ Data = {
             return ItemObtainability.YES; // There's no requirement for this
         } 
 
+        if (itemLocation && itemLocation.SkipLockedDoor && itemLocation.SkipLockedDoor(age)) {
+            return ItemObtainability.YES;
+        }
+
         let lockedDoor = MapLocations[itemLocation.Map].Regions.main.ItemLocations[itemLocation.LockedDoor];
         if (lockedDoor.playerHas)
         {

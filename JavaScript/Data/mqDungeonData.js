@@ -3708,6 +3708,15 @@ let MQDungeons = {
 						NeedsFire: true
 					},
 
+					iceArrowsRoom: {
+						Name: "iceArrowsRoom",
+						Age: Age.CHILD,
+						RequiredItems: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
+						CustomRequirement: function(age) {
+							return Settings.GlitchesToAllow.gtgChildVineClips;
+						}
+					},
+
 					Exit: {
 						OwExit: OwExits["Training Grounds"]["Exit"]
 					}
@@ -3786,7 +3795,8 @@ let MQDungeons = {
 						},
 						LongDescription: "This chest is after the fifth door in the left maze path.",
 						CustomRequirement: function(age) {
-							return getKeyCount("Training Grounds") >= 1;
+							let canVineClip = Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+							return canVineClip || getKeyCount("Training Grounds") >= 1;
 						}
 					}
 				}
@@ -3844,6 +3854,11 @@ let MQDungeons = {
 
 			afterRupeeRoom: {
 				Exits: {
+					leftArea: {
+						name: "leftArea",
+						Age: Age.CHILD // Only possible via vine clipping and going backwards
+					},
+
 					roomBehindSilverBlock: {
 						Name: "roomBehindSilverBlock",
 						Age: Age.ADULT,
@@ -3864,8 +3879,12 @@ let MQDungeons = {
 						Name: "Chest in Room With Silver Block",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 89, y: 84 },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
 						Order: 8,
+						UseAdultAge: function() { 
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.gtgChildVineClips) { return false; }
+							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+						},
 						LongDescription: "Enter the room after the iron knuckle room. Collect the rupees within the time limit and move on to the next room. Defeat the enemies within the time limit to spawn the chest."
 					}
 				}
@@ -3887,6 +3906,11 @@ let MQDungeons = {
 
 			spinningRoom: {
 				Exits: {
+					afterRupeeRoom: {
+						Name: "afterRupeeRoom",
+						Age: Age.CHILD // This won't be useful as adult //TODO: can you actually do this? is the door barred?
+					},
+
 					armosRoom: {
 						Name: "armosRoom",
 						Age: Age.ADULT,
@@ -3910,10 +3934,11 @@ let MQDungeons = {
 
 					iceArrowsRoom: {
 						Name: "iceArrowsRoom",
-						Age: Age.ADULT,
-						RequiredItems: [Items.MEGATON_HAMMER, Items.HOOKSHOT],
+						Age: Age.EITHER,
+						RequiredAdultItems: [Items.MEGATON_HAMMER, Items.HOOKSHOT],
 						CustomRequirement: function(age) {
-							return getKeyCount("Training Grounds") >= 3; //TODO: gate clip will mean you don't need any keys!
+							let canVineClip = Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+							return canVineClip || getKeyCount("Training Grounds") >= 3;
 						}
 					}
 				},
@@ -3933,16 +3958,24 @@ let MQDungeons = {
 						Name: "Side Fire Iron Knuckle Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 256, y: 76 },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
 						Order: 12,
+						UseAdultAge: function() { 
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.gtgChildVineClips) { return false; }
+							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+						},
 						LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Continue past the circle fire room into the next room. Kill the enemies within the time limit to spawn the chest."
 					},
 					"Center Fire Iron Knuckle Chest": {
 						Name: "Center Fire Iron Knuckle Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 225, y: 90 },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
 						Order: 13,
+						UseAdultAge: function() { 
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.gtgChildVineClips) { return false; }
+							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+						},
 						LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Continue past the circle fire room into the next room. Activate the switch above the door to spawn the chest. Step on the swith on one of the walls to remove the fire.",
 						CustomRequirement: function(age) {
 							return Data.canHitSwitchAtShortDistance(age);
@@ -4006,14 +4039,27 @@ let MQDungeons = {
 			},
 
 			iceArrowsRoom: {
-				Exits: {},
+				Exits: {
+					spinningRoom: {
+						Name: "spinningRoom",
+						Age: Age.CHILD // Only useful for Child
+					}
+				},
+
 				ItemLocations: {
+					//TODO: possibility that ONLY child can spawn this, but adult can get the chest... 
+					// would need a non-item location for actually spawning it, OR check that at least one age can get to both places
 					"Chest Spawned from Maze Center": {
 						Name: "Chest Spawned from Maze Center",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 166, y: 132 },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						RequiredItems: [Items.MEGATON_HAMMER],
 						Order: 11,
+						UseAdultAge: function() { 
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.gtgChildVineClips && Settings.GlitchesToAllow.equipSwap) { return false; }
+							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+						},
 						LongDescription: "First, spawn the chest by making your way to the center of the maze. Break the box, then hammer the rusted switch to spawn the chest.<br/><br/>In the spinning room, hookshot to the target in the center of the eye statues. From there, hookshot the crystal switch to unbar the door. Go in and claim the chest."
 					}
 				}

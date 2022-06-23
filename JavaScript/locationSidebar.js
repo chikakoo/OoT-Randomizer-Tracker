@@ -174,11 +174,6 @@ LocationSidebar = {
             let fontColor = spawnStyles.color || "black";
             locationNameDiv.innerHTML = `<mark style="background-color: ${bgColor}; color: ${fontColor}; outline: 1.5px solid white">${locationText}</mark>`;
         }        
-
-        let childCanAccessGTG = (Settings.GlitchesToAllow.cuccoJump || Settings.RandomizerSettings.shuffleOverworldEntrances) && Settings.GlitchesToAllow.gtgChildAllowed;
-        if (location.name === "Training Grounds" && !childCanAccessGTG) {
-            location.childBackgroundColor = "#F0E68C";
-        }
         
         this._setLocationTodoDivForAge(location.name, location.childData, location.childBackgroundColor, childTodoDiv, Age.CHILD);
         this._setLocationTodoDivForAge(location.name, location.adultData, location.adultBackgroundColor, adultTodoDiv, Age.ADULT);

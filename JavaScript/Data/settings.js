@@ -140,6 +140,7 @@ let Settings = {
 		chuZoraSkip: false,
 		clipZoraSkip: false,
 		blueFireShopSkip: false,
+		thawKingZoraWithNothing: false,
 		labHPWithoutGoldenScale: false,
 		adultDomainFromLake: false,
 		
@@ -158,7 +159,7 @@ let Settings = {
 		dodongoSwitchEarly: true,
 		dodongoAdultJumpToBombChest: true,
 		dodongoScarecrowSkullEarly: true,
-		dodongoTriggerStarisWithBow: false,
+		dodongoTriggerStairsWithBow: false,
 		
 		jabuFishless: false,
 		jabuBlueSwitchSkip: false,
@@ -202,7 +203,7 @@ let Settings = {
 		gtgChildAllowed: false, // Pointless if cuccoJump is false
 		gtgAdultNoCard: false,
 		gtgNoZoraTunic: false,
-		gtgIceArrowsEarly: false,
+		gtgChildVineClips: false,
 		
 		ganonSpiritHookshotless: false,
 		ganonLightTrialSuperslideSkip: false,
