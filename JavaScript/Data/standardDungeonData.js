@@ -3937,7 +3937,8 @@ let StandardDungeons = {
 						Map: "Training Grounds",
 						LockedDoor: "Optional Locked Door 1",
 						SkipLockedDoor: function(age) {
-							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+							return Data.canWeirdShot(age) || 
+								(Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
 						}
 					},
 
@@ -3946,7 +3947,8 @@ let StandardDungeons = {
 						Map: "Training Grounds",
 						LockedDoor: "Locked Door 1 On Main Path",
 						SkipLockedDoor: function(age) {
-							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+							return Data.canWeirdShot(age) || 
+								(Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
 						}
 					},
 
@@ -4133,7 +4135,8 @@ let StandardDungeons = {
 						Map: "Training Grounds",
 						LockedDoor: "Optional Locked Door 2",
 						SkipLockedDoor: function(age) {
-							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+							return Data.canWeirdShot(age) || 
+								(Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
 						}
 					}
 				},
@@ -4334,7 +4337,8 @@ let StandardDungeons = {
 						Map: "Training Grounds",
 						LockedDoor: "Locked Door 2 On Main Path",
 						SkipLockedDoor: function(age) {
-							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+							return Data.canWeirdShot(age) || 
+								(Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
 						}
 					}
 				},
@@ -4361,7 +4365,8 @@ let StandardDungeons = {
 						Map: "Training Grounds",
 						LockedDoor: "Locked Door 3 On Main Path",
 						SkipLockedDoor: function(age) {
-							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+							return Data.canWeirdShot(age) || 
+								(Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
 						}
 					}
 				},
@@ -4388,7 +4393,8 @@ let StandardDungeons = {
 						Map: "Training Grounds",
 						LockedDoor: "Locked Door 4 On Main Path",
 						SkipLockedDoor: function(age) {
-							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+							return Data.canWeirdShot(age) || 
+								(Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
 						}
 					}
 				},
@@ -4401,7 +4407,8 @@ let StandardDungeons = {
 						Map: "Training Grounds",
 						LockedDoor: "Locked Door 5 On Main Path",
 						SkipLockedDoor: function(age) {
-							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+							return Data.canWeirdShot(age) || 
+								(Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
 						}
 					}
 				},
@@ -4428,7 +4435,8 @@ let StandardDungeons = {
 						Map: "Training Grounds",
 						LockedDoor: "Locked Door 6 On Main Path",
 						SkipLockedDoor: function(age) {
-							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+							return Data.canWeirdShot(age) || 
+								(Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
 						}
 					}
 				},
@@ -4455,7 +4463,8 @@ let StandardDungeons = {
 						Map: "Training Grounds",
 						LockedDoor: "Locked Door 7 On Main Path",
 						SkipLockedDoor: function(age) {
-							return Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+							return Data.canWeirdShot(age) || 
+								(Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
 						}
 					}
 				},

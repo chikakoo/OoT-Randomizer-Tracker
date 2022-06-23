@@ -497,6 +497,17 @@ Data = {
     },
 
     /**
+     * Returns whether you can weird shot
+     */
+    canWeirdShot: function(age) {
+        return Settings.GlitchesToAllow.weirdShot &&
+            age === Age.ADULT && 
+            this.hasShield(age) && 
+            Items.HOOKSHOT.playerHas && 
+            Items.BOMB.playerHas;
+    },
+
+    /**
      * Returns whether you can get to the graveyard top without warping
      */
     canGetToGraveyardTopEarly: function(age) {

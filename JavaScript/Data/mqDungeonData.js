@@ -3796,7 +3796,7 @@ let MQDungeons = {
 						LongDescription: "This chest is after the fifth door in the left maze path.",
 						CustomRequirement: function(age) {
 							let canVineClip = Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
-							return canVineClip || getKeyCount("Training Grounds") >= 1;
+							return canVineClip || Data.canWeirdShot(age) || getKeyCount("Training Grounds") >= 1;
 						}
 					}
 				}
@@ -3938,7 +3938,7 @@ let MQDungeons = {
 						RequiredAdultItems: [Items.MEGATON_HAMMER, Items.HOOKSHOT],
 						CustomRequirement: function(age) {
 							let canVineClip = Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
-							return canVineClip || getKeyCount("Training Grounds") >= 3;
+							return canVineClip || Data.canWeirdShot(age) || getKeyCount("Training Grounds") >= 3;
 						}
 					}
 				},
