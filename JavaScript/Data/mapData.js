@@ -4936,8 +4936,9 @@ let MapLocations = {
                         MapInfo: { x: 233, y: 46 },
                         Age: Age.ADULT,
                         LongDescription: "Dump Blue Fire on the frozen King Zora to thaw him. Talk to him from the platform in front of him and he will give you an item.",
-                        RequiredItems: [Items.BLUE_FIRE]
-                        //TODO: add the thaw glitch
+                        CustomRequirement: function(age) {
+                            return Items.BLUE_FIRE.playerHas || Settings.GlitchesToAllow.thawKingZoraWithNothing;
+                        }
                     },
                     "Skulltula on Top of Waterfall": {
                         Name: "Skulltula on Top of Waterfall",
