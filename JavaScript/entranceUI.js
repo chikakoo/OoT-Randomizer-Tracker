@@ -78,6 +78,10 @@ let EntranceUI = {
 			
 			groupDiv.onclick = function(event) {
 				event.stopPropagation();
+
+				if (group.shouldNotTrigger && group.shouldNotTrigger()) {
+					return;
+				}
 				
 				itemLocation.EntranceGroup = { 
 					name: groupName,
@@ -133,14 +137,7 @@ let EntranceUI = {
 			let shouldExcludeEquivalentItem = locationsToExcludeMap && locationsToExcludeMap.includes(button.itemLocation);
 			button.excluded = shouldExcludeEquivalentItem;
 			
-			let isChildOnly = (button.isChildOnly && button.isChildOnly()) || (canGetToAsChild && !canGetToAsAdult);
-			let isAdultOnly = (button.isAdultOnly && button.isAdultOnly()) || (canGetToAsAdult && !canGetToAsChild);
-
 			if (shouldNotDisplayButton || shouldExcludeEquivalentItem) { return; }
-
-			//TODO: clean this up... this isn't a good idea to keep!!!
-			//if (itemLocation.Age === Age.CHILD && isAdultOnly) { return; }
-			//if (itemLocation.Age === Age.ADULT && isChildOnly) { return; }
 			
 			let buttonDiv = dce("div", "entrance-group-button");
 			buttonDiv.title = button.description;

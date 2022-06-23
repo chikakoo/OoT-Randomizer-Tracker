@@ -61,7 +61,7 @@ Data = {
     removeFromInteriorTravelData: function(key, data) {
         for (let i = 0; i < this._interiorTravelDataInfo[key].length; i++) {
             let item = this._interiorTravelDataInfo[key][i];
-            if (item.Name === data.Name) {
+            if (item.Name === data.Name && item.Map === data.Map && item.Region === data.Region) {
                 this._interiorTravelDataInfo[key].splice(i, 1)[0];
                 this._updateInteriorTravelData(key);
                 return;

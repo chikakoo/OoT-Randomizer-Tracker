@@ -150,6 +150,13 @@ InteriorGroups = {
 			} else {
 				Data.linksHouseLocation = {};
 			}
+		},
+		shouldNotTrigger: function() {
+			let shouldNotTrigger = !!Data.linksHouseLocation.map;
+			if (shouldNotTrigger) {
+				console.log("WARNING: Prevented selecting multiple Link's house locations!");
+			}
+			return shouldNotTrigger;
 		}
 	},
 	"Temple of Time": {
@@ -188,6 +195,13 @@ InteriorGroups = {
 			} else {
 				Data.templeOfTimeLocation = {};
 			}
+		},
+		shouldNotTrigger: function() {
+			let shouldNotTrigger = !!Data.templeOfTimeLocation.map;
+			if (shouldNotTrigger) {
+				console.log("WARNING: Prevented selecting multiple Temple of Time locations!");
+			}
+			return shouldNotTrigger;
 		}
 	},
 	"Shop": {
