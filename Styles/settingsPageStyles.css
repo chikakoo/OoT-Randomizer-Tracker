@@ -9,6 +9,7 @@
 }
 
 #settingsContainer {
+    display: flex;
     background-color: #092953;
     width: 100%;
     height: 100%;
@@ -19,24 +20,43 @@
 	margin-left: 115px;
 }
 
+#settingsContainer > div > span:hover {
+    color: orangered;
+}
+
 #settingsButton.selected-location {
     background-color: black;
     color: gold;
 }
 
-h1 {
+#randomizerSettingsContainer {
+    min-width: 360px;
+}
+
+.settings-header {
+    display: block;
     margin: 0;
     padding: 5px;
     color: gold;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0.67em 0 0.67em, 0;
 }
 
 .settings-group {
-    display: flex;
-    flex-direction: column;
     color: yellow;
     font-size: 16pt;
     margin-left: 20px;
     padding-bottom: 10px;
+}
+
+.settings-group, .settings-group > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-group > span:hover {
+    color: orange;
 }
 
 .settings-group label {

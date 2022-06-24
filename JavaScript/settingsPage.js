@@ -1,4 +1,34 @@
 let SettingsPage = {
+    _randomizerSettingsExpanded: true,
+    _glitchesSettingsExpanded: true,
+
+    _randomizerSettingsGroupids: [
+        "settingsGroupTrackerContainer",
+        "settingsGroupProgressionContainer",
+        "settingsGroupLogicContainer",
+        "settingsGroupItemsContainer"
+    ],
+
+    _glitchesSettingsGroupids: [
+        "settingsCommonItemsContainer",
+        "settingsKakarikoContainer",
+        "settingsForestContainer",
+        "settingsMountainContainer",
+        "settingsZoraContainer",
+        "settingsDesertContainer",
+        "settingsDekuTreeContainer",
+        "settingsDodongosCavernContainer",
+        "settingsJabuContainer",
+        "settingsForestTempleContainer",
+        "settingsFireTempleContainer",
+        "settingsWaterTempleContainer",
+        "settingsShadowTempleContainer",
+        "settingsSpiritTempleContainer",
+        "settingsBOTWContainer",
+        "settingsGTGContainer",
+        "settingsGanonsCastleContainer"
+    ],
+
     display: function() {
         LocationSidebar.displayContainer("settingsContainer");
         _currentLocationName = "Settings";
@@ -204,5 +234,44 @@ let SettingsPage = {
     	}
     	
     	Settings.RandomizerSettings.medallionSkulltulaSetting = value;
+    },
+
+    /**
+     * Shows or hide the given class
+     * @param {any} event - the event (unused)
+     * @param {string} idToShowOrHide - the id to show or hide
+     * @param {boolean} forceHide - if set to a value, will force showing or hiding (true to hide, false to show)
+     */
+    showOrHideGroup(event, idToShowOrHide, forceHide) {
+        let element = document.getElementById(idToShowOrHide);
+        if (element) {
+            if (forceHide === undefined) {
+                toggleCssClass(element, "nodisp");
+                return;
+            }
+            addOrRemoveCssClass(element, "nodisp", forceHide);
+        }
+    },
+
+    /**
+     * Expands or collapses all randomizer settings
+     */
+    expandOrCollapseAllRandomizerSettings() {
+        let _this = this;
+        this._randomizerSettingsExpanded = !this._randomizerSettingsExpanded;
+        this._randomizerSettingsGroupids.forEach(function(id) {
+            _this.showOrHideGroup(null, id, !_this._randomizerSettingsExpanded);
+        });
+    },
+
+    /**
+     * Expands or collapses all glitches settings
+     */
+    expandOrCollapseAllGlitchesSettings() {
+        let _this = this;
+        this._glitchesSettingsExpanded = !this._glitchesSettingsExpanded;
+        this._glitchesSettingsGroupids.forEach(function(id) {
+            _this.showOrHideGroup(null, id, !_this._glitchesSettingsExpanded);
+        });
     }
 }

@@ -171,390 +171,416 @@
 		</div>
 		<div id="settingsContainer" class="nodisp">
 			<div id="randomizerSettingsContainer">
-				<h1>Randomizer Settings</h1>
+				<span class="settings-header" onclick="SettingsPage.expandOrCollapseAllRandomizerSettings()">
+					Randomizer Settings
+				</span>
 				
 				<!-- Tracker -->
-				<div class="settings-group">Tracker
-					<div class="settings-radio-group" title="How dungeon item locations will display.">
-						Dungeon Item Display
-						<label onclick='SettingsPage.setOptionValueForTracker("dungeonItemDisplay", event)'
-							title="Displays items in groups - like the overworld locations.">
-							<input type="radio" name="dungeonItemDisplay" value=0>By category
-						</label>
-						<label onclick='SettingsPage.setOptionValueForTracker("dungeonItemDisplay", event)'
-							title="Groups everything into one bunch, in a suggested order to obtain them.">
-							<input type="radio" name="dungeonItemDisplay" value=1>By suggested order
-						</label>
-					</div>
-					<div class="settings-radio-group" title="How the location finder deprioritizes locations.">
-						Deprioritize When Walking
-						<label onclick='SettingsPage.setBooleanValueForTracker("deprioritizeDampeToWindmill", event)'
-							title="The route race through Dampe's grave to the windmill">
-							<input type="checkbox" name="deprioritizeDampeToWindmill" value="deprioritizeDampeToWindmill">Dampe to Windmill
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForTracker("deprioritizeHyruleField", event)'
-							title="Any route through Hyrule Field.">
-							<input type="checkbox" name="deprioritizeHyruleField" value="deprioritizeHyruleField">Hyrule Field
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForTracker("deprioritizeHauntedWasteland", event)'
-							title="Any route through the Haunted Wasteland.">
-							<input type="checkbox" name="deprioritizeHauntedWasteland" value="deprioritizeHauntedWasteland">Haunted Wasteland
-						</label>
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsGroupTrackerContainer")' settings>Tracker</span>
+					<div id="settingsGroupTrackerContainer">
+						<div class="settings-radio-group" title="How dungeon item locations will display.">
+							Dungeon Item Display
+							<label onclick='SettingsPage.setOptionValueForTracker("dungeonItemDisplay", event)'
+								title="Displays items in groups - like the overworld locations.">
+								<input type="radio" name="dungeonItemDisplay" value=0>By category
+							</label>
+							<label onclick='SettingsPage.setOptionValueForTracker("dungeonItemDisplay", event)'
+								title="Groups everything into one bunch, in a suggested order to obtain them.">
+								<input type="radio" name="dungeonItemDisplay" value=1>By suggested order
+							</label>
+						</div>
+						<div class="settings-radio-group" title="How the location finder deprioritizes locations.">
+							Deprioritize When Walking
+							<label onclick='SettingsPage.setBooleanValueForTracker("deprioritizeDampeToWindmill", event)'
+								title="The route race through Dampe's grave to the windmill">
+								<input type="checkbox" name="deprioritizeDampeToWindmill" value="deprioritizeDampeToWindmill">Dampe to Windmill
+							</label>
+							<label onclick='SettingsPage.setBooleanValueForTracker("deprioritizeHyruleField", event)'
+								title="Any route through Hyrule Field.">
+								<input type="checkbox" name="deprioritizeHyruleField" value="deprioritizeHyruleField">Hyrule Field
+							</label>
+							<label onclick='SettingsPage.setBooleanValueForTracker("deprioritizeHauntedWasteland", event)'
+								title="Any route through the Haunted Wasteland.">
+								<input type="checkbox" name="deprioritizeHauntedWasteland" value="deprioritizeHauntedWasteland">Haunted Wasteland
+							</label>
+						</div>
 					</div>
 				</div>
 				
 				<!--  Progression -->
-				<div class="settings-group">Progression
-					<label onclick='SettingsPage.setBooleanValueForRandomizer("openForest", event)'
-						title="This affects whether the Kokiri kid blocks your way before defeating Gohma.">
-						<input type="checkbox" name="openForest" value="openForest">
-						Open Forest
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForRandomizer("closedDeku", event)'
-						title="Makes the Deku Tree require the Kokiri Sword and Deku Shield before it opens, even as Adult when dungeons are shuffled.">
-						<input type="checkbox" name="closedDeku" value="closedDeku">
-						Closed Deku
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForRandomizer("openDoorOfTime", event)'
-						title="This affects whether you need to play the Song of Time at the altar before the Door of Time is open.">
-						<input type="checkbox" name="openDoorOfTime" value="openDoorOfTime">
-						Open Door of Time
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForRandomizer("openKakariko", event)'
-						title="This affects whether the gate is closed as a kid in Kakariko before showing the guard Zelda's Letter. It's always open for adult link.">
-						<input type="checkbox" name="openKakariko" value="openKakariko">
-						Open Kakariko
-					</label>
-					<div class="settings-radio-group" title="Select what your starting age is - only really needed if playing with closed Door of Time. Change this setting if you Door of Time skip and can't go back through.">
-						Starting Age
-						<label onclick='SettingsPage.setOptionValueForRandomizer("startingAge", event)'
-							title="The game starts you as a child.">
-							<input type="radio" name="startingAge" value="Child">Child
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsGroupProgressionContainer")' settings>Progression</span>
+					<div id="settingsGroupProgressionContainer">
+						<label onclick='SettingsPage.setBooleanValueForRandomizer("openForest", event)'
+							title="This affects whether the Kokiri kid blocks your way before defeating Gohma.">
+							<input type="checkbox" name="openForest" value="openForest">
+							Open Forest
 						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("startingAge", event)'
-							title="The game starts you as an adult.">
-							<input type="radio" name="startingAge" value="Adult">Adult
+						<label onclick='SettingsPage.setBooleanValueForRandomizer("closedDeku", event)'
+							title="Makes the Deku Tree require the Kokiri Sword and Deku Shield before it opens, even as Adult when dungeons are shuffled.">
+							<input type="checkbox" name="closedDeku" value="closedDeku">
+							Closed Deku
 						</label>
-						<label onclick='SettingsPage.setBooleanValueForRandomizer("skipToTTravel", event)'
-							title="Set to true if you've traveled through time, but now cannot get back to the other age.">
-							<input type="checkbox" name="skipToTTravel" value="skipToTTravel">
-							Spawn shuffle skip Temple of Time travel
+						<label onclick='SettingsPage.setBooleanValueForRandomizer("openDoorOfTime", event)'
+							title="This affects whether you need to play the Song of Time at the altar before the Door of Time is open.">
+							<input type="checkbox" name="openDoorOfTime" value="openDoorOfTime">
+							Open Door of Time
 						</label>
-					</div>
-					<div class="settings-radio-group" title="This controls when King Zora is automatically moved.">
-						Open Zora's Fountain
-						<label onclick='SettingsPage.setOptionValueForRandomizer("openZorasFountain", event)'
-							title="Vanilla settings - the king is not moved until you move him as Child.">
-							<input type="radio" name="openZorasFountain" value=0>Vanilla
+						<label onclick='SettingsPage.setBooleanValueForRandomizer("openKakariko", event)'
+							title="This affects whether the gate is closed as a kid in Kakariko before showing the guard Zelda's Letter. It's always open for adult link.">
+							<input type="checkbox" name="openKakariko" value="openKakariko">
+							Open Kakariko
 						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("openZorasFountain", event)'
-							title="The king is moved automatically as an adult; you still must move him as Child.">
-							<input type="radio" name="openZorasFountain" value=1>Open for Adult
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("openZorasFountain", event)'
-							title="The king is moved automatically for everyone; Ruto's Letter is removed from the item pool.">
-							<input type="radio" name="openZorasFountain" value=2>Open always
-						</label>
-					</div>
-					<div class="settings-radio-group" title="This controls what medallions are needed to get into Ganon's Castle.">
-						Medallions/Stones Required
-						<label onclick='SettingsPage.setOptionValueForRandomizer("medallionSetting", event)'
-							title="No requirement - Ganon's Castle is open as soon as you're an adult.">
-							<input type="radio" name="medallionSetting" value=1>None
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("medallionSetting", event)'
-							title="All medallions and stones are required.">
-							<input type="radio" name="medallionSetting" value=3>All
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("medallionSetting", event)'
-							title="Only shadow and spirit medallions requried. Additionally, you need the light arrows. This is how the game originally behaved.">
-							<input type="radio" name="medallionSetting" value=0>Vanilla
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("medallionSetting", event)'
-							title="All medallions are required. Stones are excluded.">
-							<input type="radio" name="medallionSetting" value=2>Only Medallions
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("medallionSetting", event)'
-							title="All spiritual stones are required. Medallions are excluded.">
-							<input type="radio" name="medallionSetting" value=4>Only Stones
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("medallionSetting", event)'
-							title="The specified number of skulltula tokens are required.">
-							<input type="radio" name="medallionSetting" value=5>Skulltulas
-							<input id="medallionSkulltulaInput" type="number" min="1" max="100" onchange="SettingsPage.onMedallionSkulltulaSettingChanged()">
-						</label>
-					</div>
-					<div class="settings-radio-group" title="This controls the entrance shuffle settings">
-						Entrance Shuffle
-						<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleInteriorEntrances", event)'
-							title="Shuffles interior entrances among themselves. This will likely end up changing where Link's house and Temple of Time are located.">
-							<input type="checkbox" name="shuffleInteriorEntrances" value="shuffleInteriorEntrances">
-							Shuffle Interiors
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleGrottoEntrances", event)'
-							title="Shuffles grotto entrnaces among themselves.">
-							<input type="checkbox" name="shuffleGrottoEntrances" value="shuffleGrottoEntrances">
-							Shuffle Grottos
-						</label>
-							<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleDungeonEntrances", event)'
-							title="Shuffles which dungeon entrance leads to which dungeon. You must tell the tracker this information when you find it out.">
-							<input type="checkbox" name="shuffleDungeonEntrances" value="shuffleDungeonEntrances">
-							Shuffle Dungeons
-						</label>
-							<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleOverworldEntrances", event)'
-							title="Shuffles overworld exits among themselves.">
-							<input type="checkbox" name="shuffleOverworldEntrances" value="shuffleOverworldEntrances">
-							Shuffle Overworld Exits
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForRandomizer("randomizeOwlDrops", event)'
-							title="Randomizes where the owl drops you off.">
-							<input type="checkbox" name="randomizeOwlDrops" value="randomizeOwlDrops">
-							Randomize Owl Drops
-						</label>
-					</div>
-					<div class="settings-radio-group" title="This controls whether gossip stones matter and when they can be talked to.">
-						Gossip Stones
-						<label onclick='SettingsPage.setOptionValueForRandomizer("gossipStoneSetting", event)'
-							title="The stones will never reveal their hints. This option hides the stones from the item locations screens.">
-							<input type="radio" name="gossipStoneSetting" value=0>Hide
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("gossipStoneSetting", event)'
-							title="The stones will always reveal their hints.">
-							<input type="radio" name="gossipStoneSetting" value=1>Always
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("gossipStoneSetting", event)'
-							title="The stones will only reveal hints when you have the Stone of Agony.">
-							<input type="radio" name="gossipStoneSetting" value=2>Stone of Agony
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("gossipStoneSetting", event)'
-							title="Vanilla behavior - the stones will only reveal hints when you are wearing the Mask of Truth.">
-							<input type="radio" name="gossipStoneSetting" value=3>Mask of Truth
-						</label>
+						<div class="settings-radio-group" title="Select what your starting age is - only really needed if playing with closed Door of Time. Change this setting if you Door of Time skip and can't go back through.">
+							Starting Age
+							<label onclick='SettingsPage.setOptionValueForRandomizer("startingAge", event)'
+								title="The game starts you as a child.">
+								<input type="radio" name="startingAge" value="Child">Child
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("startingAge", event)'
+								title="The game starts you as an adult.">
+								<input type="radio" name="startingAge" value="Adult">Adult
+							</label>
+							<label onclick='SettingsPage.setBooleanValueForRandomizer("skipToTTravel", event)'
+								title="Set to true if you've traveled through time, but now cannot get back to the other age.">
+								<input type="checkbox" name="skipToTTravel" value="skipToTTravel">
+								Skip Temple of Time travel
+							</label>
+						</div>
+						<div class="settings-radio-group" title="This controls when King Zora is automatically moved.">
+							Open Zora's Fountain
+							<label onclick='SettingsPage.setOptionValueForRandomizer("openZorasFountain", event)'
+								title="Vanilla settings - the king is not moved until you move him as Child.">
+								<input type="radio" name="openZorasFountain" value=0>Vanilla
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("openZorasFountain", event)'
+								title="The king is moved automatically as an adult; you still must move him as Child.">
+								<input type="radio" name="openZorasFountain" value=1>Open for Adult
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("openZorasFountain", event)'
+								title="The king is moved automatically for everyone; Ruto's Letter is removed from the item pool.">
+								<input type="radio" name="openZorasFountain" value=2>Open always
+							</label>
+						</div>
+						<div class="settings-radio-group" title="This controls what medallions are needed to get into Ganon's Castle.">
+							Medallions/Stones Required
+							<label onclick='SettingsPage.setOptionValueForRandomizer("medallionSetting", event)'
+								title="No requirement - Ganon's Castle is open as soon as you're an adult.">
+								<input type="radio" name="medallionSetting" value=1>None
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("medallionSetting", event)'
+								title="All medallions and stones are required.">
+								<input type="radio" name="medallionSetting" value=3>All
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("medallionSetting", event)'
+								title="Only shadow and spirit medallions requried. Additionally, you need the light arrows. This is how the game originally behaved.">
+								<input type="radio" name="medallionSetting" value=0>Vanilla
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("medallionSetting", event)'
+								title="All medallions are required. Stones are excluded.">
+								<input type="radio" name="medallionSetting" value=2>Only Medallions
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("medallionSetting", event)'
+								title="All spiritual stones are required. Medallions are excluded.">
+								<input type="radio" name="medallionSetting" value=4>Only Stones
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("medallionSetting", event)'
+								title="The specified number of skulltula tokens are required.">
+								<input type="radio" name="medallionSetting" value=5>Skulltulas
+								<input id="medallionSkulltulaInput" type="number" min="1" max="100" onchange="SettingsPage.onMedallionSkulltulaSettingChanged()">
+							</label>
+						</div>
+						<div class="settings-radio-group" title="This controls the entrance shuffle settings">
+							Entrance Shuffle
+							<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleInteriorEntrances", event)'
+								title="Shuffles interior entrances among themselves. This will likely end up changing where Link's house and Temple of Time are located.">
+								<input type="checkbox" name="shuffleInteriorEntrances" value="shuffleInteriorEntrances">
+								Shuffle Interiors
+							</label>
+							<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleGrottoEntrances", event)'
+								title="Shuffles grotto entrnaces among themselves.">
+								<input type="checkbox" name="shuffleGrottoEntrances" value="shuffleGrottoEntrances">
+								Shuffle Grottos
+							</label>
+								<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleDungeonEntrances", event)'
+								title="Shuffles which dungeon entrance leads to which dungeon. You must tell the tracker this information when you find it out.">
+								<input type="checkbox" name="shuffleDungeonEntrances" value="shuffleDungeonEntrances">
+								Shuffle Dungeons
+							</label>
+								<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleOverworldEntrances", event)'
+								title="Shuffles overworld exits among themselves.">
+								<input type="checkbox" name="shuffleOverworldEntrances" value="shuffleOverworldEntrances">
+								Shuffle Overworld Exits
+							</label>
+							<label onclick='SettingsPage.setBooleanValueForRandomizer("randomizeOwlDrops", event)'
+								title="Randomizes where the owl drops you off.">
+								<input type="checkbox" name="randomizeOwlDrops" value="randomizeOwlDrops">
+								Randomize Owl Drops
+							</label>
+						</div>
+						<div class="settings-radio-group" title="This controls whether gossip stones matter and when they can be talked to.">
+							Gossip Stones
+							<label onclick='SettingsPage.setOptionValueForRandomizer("gossipStoneSetting", event)'
+								title="The stones will never reveal their hints. This option hides the stones from the item locations screens.">
+								<input type="radio" name="gossipStoneSetting" value=0>Hide
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("gossipStoneSetting", event)'
+								title="The stones will always reveal their hints.">
+								<input type="radio" name="gossipStoneSetting" value=1>Always
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("gossipStoneSetting", event)'
+								title="The stones will only reveal hints when you have the Stone of Agony.">
+								<input type="radio" name="gossipStoneSetting" value=2>Stone of Agony
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("gossipStoneSetting", event)'
+								title="Vanilla behavior - the stones will only reveal hints when you are wearing the Mask of Truth.">
+								<input type="radio" name="gossipStoneSetting" value=3>Mask of Truth
+							</label>
+						</div>
 					</div>
 				</div>
 				
 				<!--  Logic Settings -->
-				<div class="settings-group">Logic
-					<div class="settings-radio-group" title="This controls whether dungeons are the standard or the master quest versions.">
-						Dungeon Type - Save and Reload After Changing
-						<label onclick='SettingsPage.setOptionValueForRandomizer("dungeonSetting", event)'
-							title="All dungeons are the standard versions.">
-							<input type="radio" name="dungeonSetting" value=0>Standard
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsGroupLogicContainer")' settings>Logic</span>
+					<div id="settingsGroupLogicContainer">
+						<div class="settings-radio-group" title="This controls whether dungeons are the standard or the master quest versions.">
+							Dungeon Type - Save and Reload
+							<label onclick='SettingsPage.setOptionValueForRandomizer("dungeonSetting", event)'
+								title="All dungeons are the standard versions.">
+								<input type="radio" name="dungeonSetting" value=0>Standard
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("dungeonSetting", event)'
+								title="All dungeons are the master quest versions.">
+								<input type="radio" name="dungeonSetting" value=1>Master Quest
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("dungeonSetting", event)'
+								title="Dungeons are either standard or master quest, unknown until you enter them.">
+								<input type="radio" name="dungeonSetting" value=2>Mixed
+							</label>
+						</div>
+						<label onclick='SettingsPage.setBooleanValueForRandomizer("bombchusInLogic", event)'
+							title="If true, bombchus are required to play Bombchu Bowling. Else, bombs are required.">
+							<input type="checkbox" name="bombchusInLogic" value="bombchusInLogic">
+							Bombchus In Logic
 						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("dungeonSetting", event)'
-							title="All dungeons are the master quest versions.">
-							<input type="radio" name="dungeonSetting" value=1>Master Quest
+						<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleCarpetAndMedigoron", event)'
+							title="If true, shuffles the item in the desert carpet shop and the item that medigoron sells you.">
+							<input type="checkbox" name="shuffleCarpetAndMedigoron" value="shuffleCarpetAndMedigoron">
+							Shuffle Carpet Salesman and Medigoron
 						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("dungeonSetting", event)'
-							title="Dungeons are either standard or master quest, unknown until you enter them.">
-							<input type="radio" name="dungeonSetting" value=2>Mixed
+						<label onclick='SettingsPage.setBooleanValueForRandomizer("deadHandNeedsSword", event)'
+							title="If true, deadhand is only expected to be killed when you have the Kokiri Sword. Otherwise, you need to bring a lot of Deku Sticks to kill him.">
+							<input type="checkbox" name="deadHandNeedsSword" value="deadHandNeedsSword">
+							Deadhand Requires Sword
 						</label>
 					</div>
-					<label onclick='SettingsPage.setBooleanValueForRandomizer("bombchusInLogic", event)'
-						title="If true, bombchus are required to play Bombchu Bowling. Else, bombs are required.">
-						<input type="checkbox" name="bombchusInLogic" value="bombchusInLogic">
-						Bombchus In Logic
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleCarpetAndMedigoron", event)'
-						title="If true, shuffles the item in the desert carpet shop and the item that medigoron sells you.">
-						<input type="checkbox" name="shuffleCarpetAndMedigoron" value="shuffleCarpetAndMedigoron">
-						Shuffle Carpet Salesman and Medigoron
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForRandomizer("deadHandNeedsSword", event)'
-						title="If true, deadhand is only expected to be killed when you have the Kokiri Sword. Otherwise, you need to bring a lot of Deku Sticks to kill him.">
-						<input type="checkbox" name="deadHandNeedsSword" value="deadHandNeedsSword">
-						Deadhand Requires Sword
-					</label>
 				</div>
 				
 				<!-- Included/Excluded Items -->
-				<div class="settings-group">Included/Excluded Items
-					<label onclick='SettingsPage.setBooleanValueForRandomizer("scrubSanity", event)' title="Randomizes what all business scrubs sell you. Note that the scrubs that sell key items/heart pieces will still be shuffled.">
-						<input type="checkbox" name="scrubSanity" value="scrubSanity">
-						Scrubsanity
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForRandomizer("shopSanity", event)' title="Randomizes what all shops sell you.">
-						<input type="checkbox" name="shopSanity" value="shopSanity">
-						Shopsanity
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForRandomizer("cowSanity", event)' title="Randomize the first item you get from cows.">
-						<input type="checkbox" name="cowSanity" value="cowSanity">
-						Cowsanity
-					</label>
-					<div class="settings-radio-group" title="How small keys are randomized.">
-						Small Key Setting
-						<label onclick='SettingsPage.setOptionValueForRandomizer("smallKeySetting", event)' title="Small keys are not shuffled outside their own dungeon.">
-							<input type="radio" name="smallKeySetting" value=0>Vanilla
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsGroupItemsContainer")' settings>Included/Excluded Items</span>
+					<div id="settingsGroupItemsContainer">
+						<label onclick='SettingsPage.setBooleanValueForRandomizer("scrubSanity", event)' title="Randomizes what all business scrubs sell you. Note that the scrubs that sell key items/heart pieces will still be shuffled.">
+							<input type="checkbox" name="scrubSanity" value="scrubSanity">
+							Scrubsanity
 						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("smallKeySetting", event)' title="Small keys are shuffled outside their own dungeon.">
-							<input type="radio" name="smallKeySetting" value=1>Small Key Sanity
+						<label onclick='SettingsPage.setBooleanValueForRandomizer("shopSanity", event)' title="Randomizes what all shops sell you.">
+							<input type="checkbox" name="shopSanity" value="shopSanity">
+							Shopsanity
 						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("smallKeySetting", event)' title="Small keys are removed (aside from potentially the jail keys)">
-							<input type="radio" name="smallKeySetting" value=2>Keysy
+						<label onclick='SettingsPage.setBooleanValueForRandomizer("cowSanity", event)' title="Randomize the first item you get from cows.">
+							<input type="checkbox" name="cowSanity" value="cowSanity">
+							Cowsanity
 						</label>
-					</div>
-					<div class="settings-radio-group" title="The max amount of skulltulas required to complete the game.">
-						Max Required Skulltula Tokens
-						<label onclick='SettingsPage.setOptionValueForRandomizer("maxRequiredTokens", event)' title="0">
-							<input type="radio" name="maxRequiredTokens" value=0>0
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("maxRequiredTokens", event)' title="10">
-							<input type="radio" name="maxRequiredTokens" value=10>10
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("maxRequiredTokens", event)' title="20">
-							<input type="radio" name="maxRequiredTokens" value=20>20
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("maxRequiredTokens", event)' title="30">
-							<input type="radio" name="maxRequiredTokens" value=30>30
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("maxRequiredTokens", event)' title="40">
-							<input type="radio" name="maxRequiredTokens" value=40>40
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("maxRequiredTokens", event)' title="50">
-							<input type="radio" name="maxRequiredTokens" value=50>50
-						</label>
-					</div>
-
-					<div class="settings-radio-group" title="This controls which skulltulas are shuffled with the rest of the items.">
-						Skulltulas Shuffled
-						<label onclick='SettingsPage.setOptionValueForRandomizer("skulltulaSetting", event)' title="No skulltulas are shuffled">
-							<input type="radio" name="skulltulaSetting" value=0>None
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("skulltulaSetting", event)' title="All skulltulas are shuffled.">
-							<input type="radio" name="skulltulaSetting" value=1>All
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("skulltulaSetting", event)' title="Only skulltulas in dungeons are shuffled.">
-							<input type="radio" name="skulltulaSetting" value=2>Only Dungeons
-						</label>
-						<label onclick='SettingsPage.setOptionValueForRandomizer("skulltulaSetting", event)' title="Only skulltulas in the overworld are shuffled.">
-							<input type="radio" name="skulltulaSetting" value=3>Only Overworld
-						</label>
+						<div class="settings-radio-group" title="How small keys are randomized.">
+							Small Key Setting
+							<label onclick='SettingsPage.setOptionValueForRandomizer("smallKeySetting", event)' title="Small keys are not shuffled outside their own dungeon.">
+								<input type="radio" name="smallKeySetting" value=0>Vanilla
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("smallKeySetting", event)' title="Small keys are shuffled outside their own dungeon.">
+								<input type="radio" name="smallKeySetting" value=1>Small Key Sanity
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("smallKeySetting", event)' title="Small keys are removed (aside from potentially the jail keys)">
+								<input type="radio" name="smallKeySetting" value=2>Keysy
+							</label>
+						</div>
+						<div class="settings-radio-group" title="The max amount of skulltulas required to complete the game.">
+							Max Required Skulltula Tokens
+							<label onclick='SettingsPage.setOptionValueForRandomizer("maxRequiredTokens", event)' title="0">
+								<input type="radio" name="maxRequiredTokens" value=0>0
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("maxRequiredTokens", event)' title="10">
+								<input type="radio" name="maxRequiredTokens" value=10>10
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("maxRequiredTokens", event)' title="20">
+								<input type="radio" name="maxRequiredTokens" value=20>20
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("maxRequiredTokens", event)' title="30">
+								<input type="radio" name="maxRequiredTokens" value=30>30
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("maxRequiredTokens", event)' title="40">
+								<input type="radio" name="maxRequiredTokens" value=40>40
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("maxRequiredTokens", event)' title="50">
+								<input type="radio" name="maxRequiredTokens" value=50>50
+							</label>
+						</div>
+	
+						<div class="settings-radio-group" title="This controls which skulltulas are shuffled with the rest of the items.">
+							Skulltulas Shuffled
+							<label onclick='SettingsPage.setOptionValueForRandomizer("skulltulaSetting", event)' title="No skulltulas are shuffled">
+								<input type="radio" name="skulltulaSetting" value=0>None
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("skulltulaSetting", event)' title="All skulltulas are shuffled.">
+								<input type="radio" name="skulltulaSetting" value=1>All
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("skulltulaSetting", event)' title="Only skulltulas in dungeons are shuffled.">
+								<input type="radio" name="skulltulaSetting" value=2>Only Dungeons
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("skulltulaSetting", event)' title="Only skulltulas in the overworld are shuffled.">
+								<input type="radio" name="skulltulaSetting" value=3>Only Overworld
+							</label>
+						</div>
 					</div>
 				</div>
+			</div>
 			
-				<div id="glitchesAndTricksContainer">
-					<h1>Glitches/Tricks</h1>
-					
-					<!-- Common/Misc -->
-					<div class="settings-group">Common/Misc
+			<div id="glitchesAndTricksContainer">
+				<span class="settings-header" onclick="SettingsPage.expandOrCollapseAllGlitchesSettings()">Glitches/Tricks</span>
+				
+				<!-- Common/Misc -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsCommonItemsContainer")' settings>Common/Misc</span>
+					<div id="settingsCommonItemsContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("ocarinaItems", event)'
-							title="Requires a bottle and some item to play. Skips needing to use an Ocarina to play songs.">
-							<input type="checkbox" name="ocarinaItems" value="ocarinaItems">
-							Ocarina Items
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("difficultOcarinaItems", event)'
-							title="This is for harder areas to execute the ocarina items glitch - includes the Skull Kid ocarina minigame and the Skull Kid you play Saria's Song for.">
-							<input type="checkbox" name="difficultOcarinaItems" value="difficultOcarinaItems">
-							Harder Ocarina Items
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("megaFlip", event)'
-							title="Requires a shield you can hold in front of you, and some kind of explosive. Results in a backflip with a ton of distance, allowing you to reach certain places early.">
-							<input type="checkbox" name="megaFlip" value="megaFlip">
-							Mega Flip
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("isg", event)'
-							title="Requires a sword and a shield. Interrupt a crouch stab with an A butotn action or Navi text on the correct frame.">
-							<input type="checkbox" name="isg" value="isg">
-							Infinite Sword Glitch
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("groundJump", event)'
-							title="Requires a shield and an explosive - shield the explosive after you've tried to pick it up. Your next backflip will now be straight up.">
-							<input type="checkbox" name="groundJump" value="groundJump">
-							Ground Jump
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("equipSwap", event)'
-							title="This is glitch to equip hammer as child if you have sticks or Din's Fire, and boomerang as adult if you have Din's Fire.">
-							<input type="checkbox" name="equipSwap" value="equipSwap">
-							Equip Swap
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("weirdShot", event)'
-							title="Lets you hookshot from a detatched camera. https://youtu.be/x08fkfU2124">
-							<input type="checkbox" name="weirdShot" value="weirdShot">
-							Weird Shot
-						</label>
-						
-						<label onclick='SettingsPage.setBooleanValueForGlitches("doorOfTimeSkip", event)'
-							title="Requires the Kokiri Sword. Lets you skip getting the Song of Time and an Ocarina to get past the Door of Time. Pointless if Open Door of Time is on.">
-							<input type="checkbox" name="doorOfTimeSkip" value="doorOfTimeSkip">
-							Door of Time Skip
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("doubleDefenseEarly", event)'
-							title="This is a recoil clip using a shield, your sword, and the hover boots. It's used to get into the Great Fairy Fountain by Ganon's Castle without the golden gauntlets.">
-							<input type="checkbox" name="doubleDefenseEarly" value="doubleDefenseEarly">
-							Double Defense Early
-						</label>
-					</div>
+						title="Requires a bottle and some item to play. Skips needing to use an Ocarina to play songs.">
+						<input type="checkbox" name="ocarinaItems" value="ocarinaItems">
+						Ocarina Items
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("difficultOcarinaItems", event)'
+						title="This is for harder areas to execute the ocarina items glitch - includes the Skull Kid ocarina minigame and the Skull Kid you play Saria's Song for.">
+						<input type="checkbox" name="difficultOcarinaItems" value="difficultOcarinaItems">
+						Harder Ocarina Items
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("megaFlip", event)'
+						title="Requires a shield you can hold in front of you, and some kind of explosive. Results in a backflip with a ton of distance, allowing you to reach certain places early.">
+						<input type="checkbox" name="megaFlip" value="megaFlip">
+						Mega Flip
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("isg", event)'
+						title="Requires a sword and a shield. Interrupt a crouch stab with an A butotn action or Navi text on the correct frame.">
+						<input type="checkbox" name="isg" value="isg">
+						Infinite Sword Glitch
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("groundJump", event)'
+						title="Requires a shield and an explosive - shield the explosive after you've tried to pick it up. Your next backflip will now be straight up.">
+						<input type="checkbox" name="groundJump" value="groundJump">
+						Ground Jump
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("equipSwap", event)'
+						title="This is glitch to equip hammer as child if you have sticks or Din's Fire, and boomerang as adult if you have Din's Fire.">
+						<input type="checkbox" name="equipSwap" value="equipSwap">
+						Equip Swap
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("weirdShot", event)'
+						title="Lets you hookshot from a detatched camera. https://youtu.be/x08fkfU2124">
+						<input type="checkbox" name="weirdShot" value="weirdShot">
+						Weird Shot
+					</label>
 					
-					<!-- Kakariko/Graveyard -->
-					<div class="settings-group">Kakariko/Graveyard
+					<label onclick='SettingsPage.setBooleanValueForGlitches("doorOfTimeSkip", event)'
+						title="Requires the Kokiri Sword. Lets you skip getting the Song of Time and an Ocarina to get past the Door of Time. Pointless if Open Door of Time is on.">
+						<input type="checkbox" name="doorOfTimeSkip" value="doorOfTimeSkip">
+						Door of Time Skip
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("doubleDefenseEarly", event)'
+						title="This is a recoil clip using a shield, your sword, and the hover boots. It's used to get into the Great Fairy Fountain by Ganon's Castle without the golden gauntlets.">
+						<input type="checkbox" name="doubleDefenseEarly" value="doubleDefenseEarly">
+						Double Defense Early
+					</label>
+					</div>
+				</div>
+				
+				<!-- Kakariko/Graveyard -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsKakarikoContainer")' settings>Kakariko/Graveyard</span>
+					<div id="settingsKakarikoContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("watchtowerSkullJumpslash", event)'
-							title="This is a jumpslash to kill the skulltula on the watchtower without a ranged weapon.">
-							<input type="checkbox" name="watchtowerSkullJumpslash" value="watchtowerSkullJumpslash">
-							Jumpslash to kill watchtower skulltula
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("windmillHPWithNothing", event)'
-							title="This is a couple jumps you can do in the windmill to get the heart piece as Adult without needing to get there via the Dampe race.">
-							<input type="checkbox" name="windmillHPWithNothing" value="windmillHPWithNothing">
-							Windmill Heart Piece Without Items as Adult
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("windmillHPWithHookshot", event)'
-							title="There's a spot in the windmill that you can hookshot and then jumpslash to recoil onto the heart piece platform. This setting doesn't matter if you have the windmill without heart piece setting on.">
-							<input type="checkbox" name="windmillHPWithHookshot" value="windmillHPWithHookshot">
-							Windmill Heart Piece with Hookshot
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("childShopClips", event)'
-							title="This takes advantage of acute angles and allows child Link access to both Kakariko village shops.">
-							<input type="checkbox" name="childShopClips" value="childShopClips">
-							Kakariko Shops as Child
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("boomerangGraveyardHP", event)'
-							title="This is a precise angle followed by a series of sidehops and backflips to nab the heart piece on the cliff using the boomerang.">
-							<input type="checkbox" name="boomerangGraveyardHP" value="boomerangGraveyardHP">
-							Graveyard Box Heart Piece with Boomerag
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("unloadGrave", event)'
-							title="This is to get into the Royal Family Tomb without Zelda's Lullaby. If you load and unload the grave from the top of the graveyard enough times, it will be gone.">
-							<input type="checkbox" name="unloadGrave" value="unloadGrave">
-							Unload Grave to Royal Family's Tomb
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("oldShadowEarly", event)'
-							title="This uses an explosive to get to the seam near the heart piece box. You then seamwalk all the way to the temple.">
-							<input type="checkbox" name="oldShadowEarly" value="oldShadowEarly">
-							Old Shadow Temple Early Method
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("chuSlide", event)'
-							title="This is used to get to the top of the graveyard using a Bombchu, Hookshot, and Shield. Note that you cannot do this trick if you have a strength upgrade.">
-							<input type="checkbox" name="chuSlide" value="chuSlide">
-							Chu Slide for Shadow Temple Early
-						</label>
+						title="This is a jumpslash to kill the skulltula on the watchtower without a ranged weapon.">
+						<input type="checkbox" name="watchtowerSkullJumpslash" value="watchtowerSkullJumpslash">
+						Jumpslash to kill watchtower skulltula
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("windmillHPWithNothing", event)'
+						title="This is a couple jumps you can do in the windmill to get the heart piece as Adult without needing to get there via the Dampe race.">
+						<input type="checkbox" name="windmillHPWithNothing" value="windmillHPWithNothing">
+						Windmill Heart Piece Without Items as Adult
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("windmillHPWithHookshot", event)'
+						title="There's a spot in the windmill that you can hookshot and then jumpslash to recoil onto the heart piece platform. This setting doesn't matter if you have the windmill without heart piece setting on.">
+						<input type="checkbox" name="windmillHPWithHookshot" value="windmillHPWithHookshot">
+						Windmill Heart Piece with Hookshot
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("childShopClips", event)'
+						title="This takes advantage of acute angles and allows child Link access to both Kakariko village shops.">
+						<input type="checkbox" name="childShopClips" value="childShopClips">
+						Kakariko Shops as Child
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("boomerangGraveyardHP", event)'
+						title="This is a precise angle followed by a series of sidehops and backflips to nab the heart piece on the cliff using the boomerang.">
+						<input type="checkbox" name="boomerangGraveyardHP" value="boomerangGraveyardHP">
+						Graveyard Box Heart Piece with Boomerag
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("unloadGrave", event)'
+						title="This is to get into the Royal Family Tomb without Zelda's Lullaby. If you load and unload the grave from the top of the graveyard enough times, it will be gone.">
+						<input type="checkbox" name="unloadGrave" value="unloadGrave">
+						Unload Grave to Royal Family's Tomb
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("oldShadowEarly", event)'
+						title="This uses an explosive to get to the seam near the heart piece box. You then seamwalk all the way to the temple.">
+						<input type="checkbox" name="oldShadowEarly" value="oldShadowEarly">
+						Old Shadow Temple Early Method
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("chuSlide", event)'
+						title="This is used to get to the top of the graveyard using a Bombchu, Hookshot, and Shield. Note that you cannot do this trick if you have a strength upgrade.">
+						<input type="checkbox" name="chuSlide" value="chuSlide">
+						Chu Slide for Shadow Temple Early
+					</label>
 					</div>
-					
-					<!-- Forest -->
-					<div class="settings-group">Forest Areas
+				</div>
+				
+				<!-- Forest -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsForestContainer")' settings>Forest Areas</span>
+					<div id="settingsForestContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("pokeySkip", event)'
-							title="Used to escape the forest using a shield and sword. Only does something if open forest is off.">
-							<input type="checkbox" name="pokeySkip" value="pokeySkip">
-							Pokey Skip
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("midoSkip", event)'
-							title="This is a precise backflip used to skip having to play Saria's Song to get past Mido as adult.">
-							<input type="checkbox" name="midoSkip" value="midoSkip">
-							Adult Mido Skip
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("houseOfTwinsSkullWithHovers", event)'
-							title="This uses a short seamwalk on the house of twins, then the hover boots to get on the house. From there, you can get the skulltula using your sword and a backflip..">
-							<input type="checkbox" name="houseOfTwinsSkullWithHovers" value="houseOfTwinsSkullWithHovers">
-							House of Twins Skulltula With Only Hover Boots
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("lwSkullWithoutBean", event)'
-							title="This is a trick using a bombchu and the hookshot to get the skulltula in Lost Woods that normally requires the magic bean to be planted.">
-							<input type="checkbox" name="lwSkullWithoutBean" value="lwSkullWithoutBean">
-							Lost Woods Skulltula by Forest Stage Without Bean
-						</label>
+						title="Used to escape the forest using a shield and sword. Only does something if open forest is off.">
+						<input type="checkbox" name="pokeySkip" value="pokeySkip">
+						Pokey Skip
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("midoSkip", event)'
+						title="This is a precise backflip used to skip having to play Saria's Song to get past Mido as adult.">
+						<input type="checkbox" name="midoSkip" value="midoSkip">
+						Adult Mido Skip
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("houseOfTwinsSkullWithHovers", event)'
+						title="This uses a short seamwalk on the house of twins, then the hover boots to get on the house. From there, you can get the skulltula using your sword and a backflip..">
+						<input type="checkbox" name="houseOfTwinsSkullWithHovers" value="houseOfTwinsSkullWithHovers">
+						House of Twins Skulltula With Only Hover Boots
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("lwSkullWithoutBean", event)'
+						title="This is a trick using a bombchu and the hookshot to get the skulltula in Lost Woods that normally requires the magic bean to be planted.">
+						<input type="checkbox" name="lwSkullWithoutBean" value="lwSkullWithoutBean">
+						Lost Woods Skulltula by Forest Stage Without Bean
+					</label>
 					</div>
-					
-					<!-- Mountain Area -->
-					<div class="settings-group">Mountain Areas
+				</div>
+				
+				<!-- Mountain Area -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsMountainContainer")' settings>Mountain Areas</span>
+					<div id="settingsMountainContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("hoverToVolcanoHP", event)'
 							title="This skips needing to plant the beans in Death Mountain Crater as Child Link.">
 							<input type="checkbox" name="hoverToVolcanoHP" value="hoverToVolcanoHP">
@@ -571,111 +597,123 @@
 							Death Mountain Trail Skulltulas in Red Rocks Without Hammer
 						</label>
 					</div>
-					
-					<!-- Zora/Lake Areas -->
-					<div class="settings-group">Zora/Lake Areas
+				</div>
+				
+				<!-- Zora/Lake Areas -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsZoraContainer")' settings>Zora/Lake Areas</span>
+					<div id="settingsZoraContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("zorasRiverScaleless", event)'
-							title="This is the clip or Navi dive from Lost Woods to get to Zora's River without at least one diving upgrade.">
-							<input type="checkbox" name="zorasRiverScaleless" value="zorasRiverScaleless">
-							Zora's River from Lost Woods Without Scale
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("adultWaterfallHPJump", event)'
-							title="This is a setup as adult to get the Zora's River item by the waterfall without any items.">
-							<input type="checkbox" name="adultWaterfallHPJump" value="adultWaterfallHPJump">
-							Zora's River Waterfall Item as Adult With Nothing
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("cuccoToZorasDomain", event)'
-							title="This allows you to use a cucco to hover into Zora's Domain without needing to play Zelda's Lullaby.">
-							<input type="checkbox" name="cuccoToZorasDomain" value="cuccoToZorasDomain">
-							Cucco to Zora's Domain
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("hoversToZorasDomain", event)'
-							title="Allows the use of Hover Boots and a precise angle to get into Zora's Domain without needing to play Zelda's Lullaby">
-							<input type="checkbox" name="hoversToZorasDomain" value="hoversToZorasDomain">
-							Hover Boots to Zora's Domain
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("chuZoraSkip", event)'
-							title="Allows Child Link to skip past King Zora without showing him the letter using the damage recoil form a bombchu explosion.">
-							<input type="checkbox" name="chuZoraSkip" value="chuZoraSkip">
-							King Zora Skip Using Bombchu
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("clipZoraSkip", event)'
-							title="This is an acute angle jumpslash out of bounds to skip King Zora if you haven't moved him yet.">
-							<input type="checkbox" name="clipZoraSkip" value="clipZoraSkip">
-							Adult King Zora Skip
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("blueFireShopSkip", event)'
-							title="This allows you to get into the Zora Shop as adult without needing to melt the ice in front of it.">
-							<input type="checkbox" name="blueFireShopSkip" value="blueFireShopSkip">
-							Zora Shop Blue Fire Skip
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("thawKingZoraWithNothing", event)'
-							title="Load the king, then left-sidehop up from the bottom of the stairs. Sidle left until you can barely read the sign, then read it. Now go back down and up to reload the king, and he will be unthawed.">
-							<input type="checkbox" name="thawKingZoraWithNothing" value="thawKingZoraWithNothing">
-							Thaw King Zora with Nothing
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("labHPWithoutGoldenScale", event)'
-							title="This is a trick using the iron boots and hookshot to get the diving heart piece without actually diving.">
-							<input type="checkbox" name="labHPWithoutGoldenScale" value="labHPWithoutGoldenScale">
-							Lakeside Lab Heart Piece without Golden Scale
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("adultDomainFromLake", event)'
-							title="Involves a megaflip. Climb up next to the south pillar. Sidehop left x2, backflip x5. 2F ess turn right. Shield turn around. Dry roll once. Megaflip from this spot with a bomb (instant drop, roll, backflip, megaflip), or chu. Release all buttons after the flip starts. Walk to the loading zone.">
-							<input type="checkbox" name="adultDomainFromLake" value="adultDomainFromLake">
-							Zora's Domain exit from Lake Hylia as adult
-						</label>
+						title="This is the clip or Navi dive from Lost Woods to get to Zora's River without at least one diving upgrade.">
+						<input type="checkbox" name="zorasRiverScaleless" value="zorasRiverScaleless">
+						Zora's River from Lost Woods Without Scale
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("adultWaterfallHPJump", event)'
+						title="This is a setup as adult to get the Zora's River item by the waterfall without any items.">
+						<input type="checkbox" name="adultWaterfallHPJump" value="adultWaterfallHPJump">
+						Zora's River Waterfall Item as Adult With Nothing
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("cuccoToZorasDomain", event)'
+						title="This allows you to use a cucco to hover into Zora's Domain without needing to play Zelda's Lullaby.">
+						<input type="checkbox" name="cuccoToZorasDomain" value="cuccoToZorasDomain">
+						Cucco to Zora's Domain
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("hoversToZorasDomain", event)'
+						title="Allows the use of Hover Boots and a precise angle to get into Zora's Domain without needing to play Zelda's Lullaby">
+						<input type="checkbox" name="hoversToZorasDomain" value="hoversToZorasDomain">
+						Hover Boots to Zora's Domain
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("chuZoraSkip", event)'
+						title="Allows Child Link to skip past King Zora without showing him the letter using the damage recoil form a bombchu explosion.">
+						<input type="checkbox" name="chuZoraSkip" value="chuZoraSkip">
+						King Zora Skip Using Bombchu
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("clipZoraSkip", event)'
+						title="This is an acute angle jumpslash out of bounds to skip King Zora if you haven't moved him yet.">
+						<input type="checkbox" name="clipZoraSkip" value="clipZoraSkip">
+						Adult King Zora Skip
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("blueFireShopSkip", event)'
+						title="This allows you to get into the Zora Shop as adult without needing to melt the ice in front of it.">
+						<input type="checkbox" name="blueFireShopSkip" value="blueFireShopSkip">
+						Zora Shop Blue Fire Skip
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("thawKingZoraWithNothing", event)'
+						title="Load the king, then left-sidehop up from the bottom of the stairs. Sidle left until you can barely read the sign, then read it. Now go back down and up to reload the king, and he will be unthawed.">
+						<input type="checkbox" name="thawKingZoraWithNothing" value="thawKingZoraWithNothing">
+						Thaw King Zora with Nothing
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("labHPWithoutGoldenScale", event)'
+						title="This is a trick using the iron boots and hookshot to get the diving heart piece without actually diving.">
+						<input type="checkbox" name="labHPWithoutGoldenScale" value="labHPWithoutGoldenScale">
+						Lakeside Lab Heart Piece without Golden Scale
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("adultDomainFromLake", event)'
+						title="Involves a megaflip. Climb up next to the south pillar. Sidehop left x2, backflip x5. 2F ess turn right. Shield turn around. Dry roll once. Megaflip from this spot with a bomb (instant drop, roll, backflip, megaflip), or chu. Release all buttons after the flip starts. Walk to the loading zone.">
+						<input type="checkbox" name="adultDomainFromLake" value="adultDomainFromLake">
+						Zora's Domain exit from Lake Hylia as adult
+					</label>
 					</div>
-					
-					<!-- Desert Area -->
-					<div class="settings-group">Desert Area
+				</div>
+				
+				<!-- Desert Area -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsDesertContainer")' settings>Desert Area</span>
+					<div id="settingsDesertContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("eponaHover", event)'
-							title="This is a staircase hover using bombs and ISG in order to get Epona without Epona's Song.">
-							<input type="checkbox" name="eponaHover" value="eponaHover">
-							Epona without Song
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("cuccoJump", event)'
-							title="The imfamous trick to get over the gate in Gerudo Valley as Child Link using a cucco and a jumpslash.">
-							<input type="checkbox" name="cuccoJump" value="cuccoJump">
-							Cucco Jump
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("gerudoGateSkipAsAdult", event)'
-							title="Uses hover boots and the hookshot to get into the Haunted Wasteland as adult without freeing the carpenters.">
-							<input type="checkbox" name="gerudoGateSkipAsAdult" value="gerudoGateSkipAsAdult">
-							Gerudo Fortress Gate Skip as Adult
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("itemlessSandPit", event)'
-							title="Allows you to skip the hover boots or longshot by backwalking and then sidehopping at a precise location.">
-							<input type="checkbox" name="itemlessSandPit" value="itemlessSandPit">
-							Haunted Wasteland Cross Sand Pit without Items
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("childHauntedWasteland", event)'
-							title="Requires the cucco jump. This is a sidehop to get into the Haunted Wasteland from Gerudo Valley.">
-							<input type="checkbox" name="childHauntedWasteland" value="childHauntedWasteland">
-							Haunted Wasteland as Child
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("wastelandNoLens", event)'
-							title="Navigate the Wasteland without the Poe's help.">
-							<input type="checkbox" name="wastelandNoLens" value="wastelandNoLens">
-							Haunted Wasteland without Lens of Truth
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("backwardsWasteland", event)'
-							title="Navigate to the wasteland outpost from Desert Colossus.">
-							<input type="checkbox" name="backwardsWasteland" value="backwardsWasteland">
-							Backwards Haunted Wasteland
-						</label>
+						title="This is a staircase hover using bombs and ISG in order to get Epona without Epona's Song.">
+						<input type="checkbox" name="eponaHover" value="eponaHover">
+						Epona without Song
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("cuccoJump", event)'
+						title="The imfamous trick to get over the gate in Gerudo Valley as Child Link using a cucco and a jumpslash.">
+						<input type="checkbox" name="cuccoJump" value="cuccoJump">
+						Cucco Jump
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("gerudoGateSkipAsAdult", event)'
+						title="Uses hover boots and the hookshot to get into the Haunted Wasteland as adult without freeing the carpenters.">
+						<input type="checkbox" name="gerudoGateSkipAsAdult" value="gerudoGateSkipAsAdult">
+						Gerudo Fortress Gate Skip as Adult
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("itemlessSandPit", event)'
+						title="Allows you to skip the hover boots or longshot by backwalking and then sidehopping at a precise location.">
+						<input type="checkbox" name="itemlessSandPit" value="itemlessSandPit">
+						Haunted Wasteland Cross Sand Pit without Items
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("childHauntedWasteland", event)'
+						title="Requires the cucco jump. This is a sidehop to get into the Haunted Wasteland from Gerudo Valley.">
+						<input type="checkbox" name="childHauntedWasteland" value="childHauntedWasteland">
+						Haunted Wasteland as Child
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("wastelandNoLens", event)'
+						title="Navigate the Wasteland without the Poe's help.">
+						<input type="checkbox" name="wastelandNoLens" value="wastelandNoLens">
+						Haunted Wasteland without Lens of Truth
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("backwardsWasteland", event)'
+						title="Navigate to the wasteland outpost from Desert Colossus.">
+						<input type="checkbox" name="backwardsWasteland" value="backwardsWasteland">
+						Backwards Haunted Wasteland
+					</label>
 					</div>
+				</div>
 
-					<!-- Deku Tree -->
-					<div class="settings-group">Deku Tree
+				<!-- Deku Tree -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsDekuTreeContainer")' settings>Deku Tree</span>
+					<div id="settingsDekuTreeContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("dekuB1Skip", event)'
 							title="This is any of the tricks required to get to the upper level of the Deku Tree's basement without needing to go around.">
 							<input type="checkbox" name="dekuB1Skip" value="dekuB1Skip">
 							B1 Skip
 						</label>
 					</div>
+				</div>
 
-					<!-- Dodongo's Cavern -->
-					<div class="settings-group">Dodongo's Cavern
+				<!-- Dodongo's Cavern -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsDodongosCavernContainer")' settings>Dodongo's Cavern</span>
+					<div id="settingsDodongosCavernContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("dodongoSwitchEarly", event)'
 							title="This is a ground jump with a bombchu as Child Link to access the switch without needing to go around. In MQ, you can also jumpslash recoil from the top floor onto the ledge.">
 							<input type="checkbox" name="dodongoSwitchEarly" value="dodongoSwitchEarly">
@@ -697,9 +735,12 @@
 							Dodongo Trigger Stairs with Bow
 						</label>
 					</div>
-					
-					<!-- Jabu Jabu's Belly -->
-					<div class="settings-group">Jabu Jabu's Belly
+				</div>
+				
+				<!-- Jabu Jabu's Belly -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsJabuContainer")' settings>Jabu Jabu's Belly</span>
+					<div id="settingsJabuContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("jabuFishless", event)'
 							title="Lets you get into Jabu without feeding him a fish.">
 							<input type="checkbox" name="jabuFishless" value="jabuFishless">
@@ -711,9 +752,12 @@
 							Blue Switch Skip
 						</label>
 					</div>
-					
-					<!-- Forest Temple -->
-					<div class="settings-group">Forest Temple
+				</div>
+				
+				<!-- Forest Temple -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsForestTempleContainer")' settings>Forest Temple</span>
+					<div id="settingsForestTempleContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("forestLedgeClip", event)'
 							title="This is a ledge clip to skip needing to play the Song of Time to pass the block.">
 							<input type="checkbox" name="forestLedgeClip" value="forestLedgeClip">
@@ -745,9 +789,12 @@
 							Boss Key Skip
 						</label>
 					</div>
-					
-					<!-- Fire Temple -->
-					<div class="settings-group">Fire Temple
+				</div>
+				
+				<!-- Fire Temple -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsFireTempleContainer")' settings>Fire Temple</span>
+					<div id="settingsFireTempleContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("fireNoGoronTunic", event)'
 							title="Takes out the Goron Tunic requirement for doing the lava rooms of the fire temple.">
 							<input type="checkbox" name="fireNoGoronTunic" value="fireNoGoronTunic">
@@ -784,43 +831,49 @@
 							Jump to Central Song of Time Block Room
 						</label>
 					</div>
-					
-					<!-- Water Temple -->
-					<div class="settings-group">Water Temple
+				</div>
+				
+				<!-- Water Temple -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsWaterTempleContainer")' settings>Water Temple</span>
+					<div id="settingsWaterTempleContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("waterNoZoraTunic", event)'
-							title="Removes the Zora Tunic requirement to dive deep into the water temple. Does not include the waterfall path.">
-							<input type="checkbox" name="waterNoZoraTunic" value="waterNoZoraTunic">
-							No Zora Tunic
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("waterHookshotToFloor1", event)'
-							title="Uses a precise hookshot & jumpslash from the second floor to get back up to the third floor without raising the water.">
-							<input type="checkbox" name="waterHookshotToFloor1" value="waterHookshotToFloor1">
-							Hookshot to Floor 1
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("waterHighWaterJump", event)'
-							title="This is a jump from the first floor to the platform with the high water level Triforce.">
-							<input type="checkbox" name="waterHighWaterJump" value="waterHighWaterJump">
-							Jump to High Water Level Triforce
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("waterBKShortcut", event)'
-							title="This is a jump into the waterfall with boulders coming out of it. Essentially skips needing explosives.">
-							<input type="checkbox" name="waterBKShortcut" value="waterBKShortcut">
-							Water Boss Key Area Shortcut
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("waterLongshotlessBoss", event)'
-							title="This uses a megaton hammer damage recoil and hover boots to get to boss area without the longshot.">
-							<input type="checkbox" name="waterLongshotlessBoss" value="waterLongshotlessBoss">
-							Longshotless Boss Area
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("waterBombableWallEarly", event)'
-							title="This is a sidehop & jumpslash to get to the area with the bombable wall chest without the water level being set to the second floor.">
-							<input type="checkbox" name="waterBombableWallEarly" value="waterBombableWallEarly">
-							Bombable Wall Chest Early
-						</label>
+						title="Removes the Zora Tunic requirement to dive deep into the water temple. Does not include the waterfall path.">
+						<input type="checkbox" name="waterNoZoraTunic" value="waterNoZoraTunic">
+						No Zora Tunic
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("waterHookshotToFloor1", event)'
+						title="Uses a precise hookshot & jumpslash from the second floor to get back up to the third floor without raising the water.">
+						<input type="checkbox" name="waterHookshotToFloor1" value="waterHookshotToFloor1">
+						Hookshot to Floor 1
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("waterHighWaterJump", event)'
+						title="This is a jump from the first floor to the platform with the high water level Triforce.">
+						<input type="checkbox" name="waterHighWaterJump" value="waterHighWaterJump">
+						Jump to High Water Level Triforce
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("waterBKShortcut", event)'
+						title="This is a jump into the waterfall with boulders coming out of it. Essentially skips needing explosives.">
+						<input type="checkbox" name="waterBKShortcut" value="waterBKShortcut">
+						Water Boss Key Area Shortcut
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("waterLongshotlessBoss", event)'
+						title="This uses a megaton hammer damage recoil and hover boots to get to boss area without the longshot.">
+						<input type="checkbox" name="waterLongshotlessBoss" value="waterLongshotlessBoss">
+						Longshotless Boss Area
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("waterBombableWallEarly", event)'
+						title="This is a sidehop & jumpslash to get to the area with the bombable wall chest without the water level being set to the second floor.">
+						<input type="checkbox" name="waterBombableWallEarly" value="waterBombableWallEarly">
+						Bombable Wall Chest Early
+					</label>
 					</div>
-					
-					<!-- Shadow Temple -->
-					<div class="settings-group">Shadow Temple
+				</div>
+				
+				<!-- Shadow Temple -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsShadowTempleContainer")' settings>Shadow Temple</span>
+					<div id="settingsShadowTempleContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("shadowLensless", event)'
 							title="Removes the lens of truth requirement for the Shadow Temple.">
 							<input type="checkbox" name="shadowLensless" value="shadowLensless">
@@ -838,7 +891,7 @@
 						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitches("shadowNoIronBoots", event)'
 							title="This assumes you can get past the fans without using iron boots.">
-							<input type="checkbox" name="shadowNoIronBoots" value=shadowNoIronBoots"">
+							<input type="checkbox" name="shadowNoIronBoots" value="shadowNoIronBoots">
 							Fan Rooms without Iron Boots
 						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitches("shadowGateClip", event)'
@@ -852,9 +905,12 @@
 							Bombchus to Lower the Bridge
 						</label>
 					</div>
-					
-					<!-- Spirit Temple -->
-					<div class="settings-group">Spirit Temple
+				</div>
+				
+				<!-- Spirit Temple -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsSpiritTempleContainer")' settings>Spirit Temple</span>
+					<div id="settingsSpiritTempleContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("spiritBlockSkip", event)'
 							title="This is either trick that skips the silver block in the Spirit Temple. One uses a precise hover, the ohter uses a superslide + hover boots.">
 							<input type="checkbox" name="spiritBlockSkip" value="spiritBlockSkip">
@@ -871,9 +927,12 @@
 							Boss Key Chest Puzzle Skip
 						</label>
 					</div>
-					
-					<!-- Bottom of the Well -->
-					<div class="settings-group">Bottom of the Well
+				</div>
+				
+				<!-- Bottom of the Well -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsBOTWContainer")' settings>Bottom of the Well</span>
+					<div id="settingsBOTWContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("botwCuccoDive", event)'
 							title="Get ISG off a cucco and use it to get to the well without draining the water.">
 							<input type="checkbox" name="botwCuccoDive" value="botwCuccoDive">
@@ -890,9 +949,12 @@
 							Vine Clip
 						</label>
 					</div>
-					
-					<!-- Gerudo Training Grounds -->
-					<div class="settings-group">Gerudo Training Grounds
+				</div>
+				
+				<!-- Gerudo Training Grounds -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsGTGContainer")' settings>Gerudo Training Grounds</span>
+					<div id="settingsGTGContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("gtgChildAllowed", event)'
 							title="Use antigrav or the precise jumpslash to get to the Gerudo Training Grounds as child. Requires the cucco jump.">
 							<input type="checkbox" name="gtgChildAllowed" value="gtgChildAllowed">
@@ -914,9 +976,12 @@
 							Child Vine Clips
 						</label>
 					</div>
-					
-					<!-- Ganon's Castle -->
-					<div class="settings-group">Ganon's Castle
+				</div>
+				
+				<!-- Ganon's Castle -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsGanonsCastleContainer")' settings>Ganon's Castle</span>
+					<div id="settingsGanonsCastleContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("ganonSpiritHookshotless", event)'
 							title="Uses a hover to get on top of the beamos to get the silver rupee.">
 							<input type="checkbox" name="ganonSpiritHookshotless" value="ganonSpiritHookshotless">
