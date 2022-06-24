@@ -2816,6 +2816,7 @@ let MapLocations = {
                         MapInfo: {x: 112, y: 112},
                         IsInterior: true,
                         OneWayInteriorSpawnEntrance: true,
+                        Age: Age.CHILD,
                         LongDescription: "This door only opens at night. This is the door on the screen if you enter the alley from the entrance by the archery building."
                     }
                 }
