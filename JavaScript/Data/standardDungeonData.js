@@ -4635,7 +4635,7 @@ let StandardDungeons = {
 							let canDoFire = tunicCheck && Items.HOOKSHOT.playerHas && Equipment.STRENGTH.currentUpgrade === 3;
 							let canDoWater = (Data.hasBottle() || Items.BLUE_FIRE.playerHas) && Items.MEGATON_HAMMER.playerHas;
 							let canDoShadow = Data.canAccessMap(age, "Ganon's Castle", "shadowTrialMiddle") && Items.MEGATON_HAMMER.playerHas;
-							let canDoSpirit = Data.canAccessMap(age, "Ganon's Castle", "spiritTrialRoom2") && Equipment.MIRROR_SHIELD.playerHas;
+							let canDoSpirit = Data.canAccessMap(age, "Ganon's Castle", "spiritTrialRoom3") && Equipment.MIRROR_SHIELD.playerHas;
 							let canDoLight = Data.canAccessMap(age, "Ganon's Castle", "lightTrialRoom3") && Items.HOOKSHOT.playerHas;
 							
 							return canDoForest && canDoFire && canDoWater && canDoShadow && canDoSpirit && canDoLight;
@@ -4657,7 +4657,14 @@ let StandardDungeons = {
 				}
 			},
 			spiritTrialRoom2: {
-				Exits: {},
+				Exits: {
+					spiritTrialRoom3: {
+						Name: "spiritTrialRoom3",
+						CustomRequirement: function(age) {
+							return Items.BOMBCHU.playerHas || Data.canWeirdShot(age, Items.FAIRY_BOW);
+						}
+					},
+				},
 				ItemLocations: {
 					"Spirit Trial Chest After Hitting Switch": {
 						Name: "Spirit Trial Chest After Hitting Switch",
@@ -4666,15 +4673,19 @@ let StandardDungeons = {
 						Age: Age.ADULT,
 						Order: 18,
 						LongDescription: "Enter the spirit trial. Collect the rupees to advance to the next room. Hit the switch closest to the barred door with a jumpslash or charged spin attack to spawn the chest."
-					},
+					}
+				}
+			},
+			spiritTrialRoom3: {
+				Exits: {},
+				ItemLocations: {
 					"Hidden Spirit Trial Chest": {
 						Name: "Hidden Spirit Trial Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 239, y: 120, floor: "SPT" },
 						Age: Age.ADULT,
 						Order: 19,
-						LongDescription: "Enter the spirit trial. Collect the rupees to advance to the next room. To your left, there is a switch. Line up with the switch and drop a Bombchu. It should navigate itself over to the switch and activate it. This will open the door - enter it. The hidden chest is now in front of you and a little bit to the right. Face the right wall when trying to open it.",
-						RequiredItems: [Items.BOMBCHU]
+						LongDescription: "Enter the spirit trial. Collect the rupees to advance to the next room. To your left, there is a switch. Line up with the switch and drop a Bombchu. It should navigate itself over to the switch and activate it. This will open the door - enter it. The hidden chest is now in front of you and a little bit to the right. Face the right wall when trying to open it."
 					}
 				}
 			},

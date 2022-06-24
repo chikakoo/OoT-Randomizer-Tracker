@@ -498,8 +498,11 @@ Data = {
 
     /**
      * Returns whether you can weird shot
+     * @param age - the age to check (currently only adult works, must change if we want to include boomerang or slingshot)
+     * @param item - the item to weirdshot with - defaults to hookshot
      */
-    canWeirdShot: function(age) {
+    canWeirdShot: function(age, item) {
+        item = item || Items.HOOKSHOT;
         return Settings.GlitchesToAllow.weirdShot &&
             age === Age.ADULT && 
             this.hasShield(age) && 
