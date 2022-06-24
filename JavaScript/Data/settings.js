@@ -110,6 +110,7 @@ let Settings = {
 		isg: false,
 		groundJump: true,
 		equipSwap: false,
+		weirdShot: false,
 		
 		// Kakariko/Graveyard
 		watchtowerSkullJumpslash: false,
@@ -187,6 +188,7 @@ let Settings = {
 		waterBombableWallEarly: false,
 		
 		shadowLensless: false,
+		shadowSilverRupeeWithNothing: false,
 		shadowBackFlipOnSpikes: false,
 		shadowNoIronBoots: false,
 		shadowGateClip: false,
@@ -200,7 +202,7 @@ let Settings = {
 		botwActorGlitch: false,
 		botwVineClip: false, // Useless if no actor glitch
 		
-		gtgChildAllowed: false, // Pointless if cuccoJump is false
+		gtgChildAllowed: false,
 		gtgAdultNoCard: false,
 		gtgNoZoraTunic: false,
 		gtgChildVineClips: false,

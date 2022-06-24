@@ -2627,7 +2627,11 @@ let StandardDungeons = {
 						Age: Age.ADULT,
 						Order: 4,
 						LongDescription: "After crossing the gap onto the tongue, proceed down the hallway. At the beamos, take the left path (it's a fake wall) and enter the room. Collect all the silver rupees to open the path to a chest.<br/><br/>If you have no hookshot, you can use hover boots to get to the wooden box from one of the wooden platforms.",
-						RequiredChoiceOfAdultItems: [Items.HOOKSHOT, Equipment.HOVER_BOOTS]
+						CustomRequirement: function(age) {
+							return Items.HOOKSHOT.playerHas || 
+								Equipment.HOVER_BOOTS.playerHas || 
+								Settings.GlitchesToAllow.shadowSilverRupeeWithNothing;
+						}
 					}
 				}
 			},
