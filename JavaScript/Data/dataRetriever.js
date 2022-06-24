@@ -535,7 +535,7 @@ Data = {
 	_canDoOldShadowEarly: function(age) {
 		return age === Age.ADULT &&
 			Settings.GlitchesToAllow.oldShadowEarly && 
-			this.itemLocationObtained("Graveyard", "main", "*Plant Bean by Dampe's Grave") &&
+            (this.canWeirdShot(age) || Items.HOOKSHOT.currentUpgrade === 2 || this.itemLocationObtained("Graveyard", "main", "*Plant Bean by Dampe's Grave")) &&
 			this.hasExplosives() &&
 			this.hasShield(age);
     },

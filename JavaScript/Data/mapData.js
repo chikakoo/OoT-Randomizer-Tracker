@@ -3625,7 +3625,7 @@ let MapLocations = {
                             if (age === Age.CHILD) { return false; }
                             
                             let beanIsPlanted = Data.itemLocationObtained("Graveyard", "main", "*Plant Bean by Dampe's Grave");
-                            return Items.HOOKSHOT.currentUpgrade === 2 || beanIsPlanted;
+                            return Items.HOOKSHOT.currentUpgrade === 2 || beanIsPlanted || Data.canWeirdShot(age);
                         }
                     },
                     "Skulltula in Soil": {
@@ -4369,9 +4369,10 @@ let MapLocations = {
                         MapInfo: { x: 71, y: 24 },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
-                        LongDescription: "Make your way to the topmost northwest corner of the city. Use your hammer and break the line of red rocks to get to this lone chest at the back left corner of the maze.<br /><br />You can also pick up the silver rocks if you have the silver or golden gauntlets.",
+                        LongDescription: "Make your way to the topmost northwest corner of the city and bomb, pick up, or smash the rocks to get here. You can also go to the upper right corner, stand on the box, and backwalk & backflip with hover boots at the last moment to get to this chest",
                         CustomRequirement: function(age) {
-                            return Data.canUseHammer(age) || (age === Age.ADULT && Equipment.STRENGTH.currentUpgrade > 1);
+                            return Data.canUseHammer(age) || 
+                                (age === Age.ADULT && (Equipment.STRENGTH.currentUpgrade > 1 || Equipment.HOVER_BOOTS.playerHas));
                         }
                     },
                     "Left Maze Chest": {
@@ -5100,7 +5101,10 @@ let MapLocations = {
                         LongDescription: "At night, go to the southeast corner of the map. Pick up the silver rock and go down the path. Beware of invisible giant skulltulas! You'll find the skulltula you want after you climb the wall.",
                         IsAtShortDistance: true,
                         NeedToBlastOrSmash: true,
-                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}]
+                        CustomRequirement: function(age) {
+                            return Equipment.STRENGTH.currentUpgrade >= 2 || 
+                                (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2);
+                        }
                     },
                     "Gossip Stone Left of Jabu Platform": {
                         Name: "Gossip Stone Left of Jabu Platform",
@@ -5476,7 +5480,10 @@ let MapLocations = {
                         MapInfo: { x: 131, y: 120 },
                         Age: Age.ADULT,
                         LongDescription: "Across the bridge, there are some rocks to the right. Use your hammer on them to reveal the chest.",
-                        RequiredItems: [Items.MEGATON_HAMMER]
+                        RequiredItems: [Items.MEGATON_HAMMER],
+                        CustomRequirement: function(age) {
+                            return Items.MEGATON_HAMMER.playerHas || Data.canWeirdShot(age);
+                        }
                     },
                     "Skulltula on Pillar": {
                         Name: "Skulltula on Pillar",

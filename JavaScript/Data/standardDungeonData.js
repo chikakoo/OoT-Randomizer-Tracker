@@ -1701,6 +1701,13 @@ let StandardDungeons = {
 						CustomRequirement: function(age) {
 							return Settings.GlitchesToAllow.fireJailClip;
 						}
+					},
+					goronInPitCell: {
+						Name: "goronInPitCell",
+						Age: Age.ADULT,
+						CustomRequirement: function(age) {
+							return Data.canWeirdShot(age);
+						}
 					}
 				},
 				ItemLocations: {}
@@ -1837,11 +1844,19 @@ let StandardDungeons = {
 			},
 			goronInPit: {
 				Exits: {
+					goronInPitCell: {
+						Name: "goronInPitCell"
+					},
+
 					boulderMazeUpper: {
 						Name: "boulderMazeUpper"
 					}
 				},
 
+				ItemLocations: {}
+			},
+			goronInPitCell: {
+				Exits: {},
 				ItemLocations: {
 					"Goron in Bombable Pit": {
 						Name: "Goron in Bombable Pit",
