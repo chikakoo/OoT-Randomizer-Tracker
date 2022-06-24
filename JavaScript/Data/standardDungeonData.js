@@ -1302,6 +1302,15 @@ let StandardDungeons = {
 					bossKeyRoom: {
 						Name: "bossKeyRoom",
 						Map: "Fire Temple",
+						Age: Age.ADULT,
+						CustomRequirement: function(age) {
+							return Data.canWeirdShot(age);
+						}
+					},
+
+					bossKeyPath: {
+						Name: "bossKeyPath",
+						Map: "Fire Temple",
 						LockedDoor: "Bottom Locked Door in Lobby",
 						CustomRequirement: function(age) {
 							return Data.fireCanAccessBossKeyPath(age);
@@ -1540,9 +1549,14 @@ let StandardDungeons = {
 					}
 				}
 			},
-			bossKeyRoom: {
-				Exits: {},
-
+			bossKeyPath: {
+				Exits: {
+					bossKeyRoom: {
+						Name: "bossKeyRoom",
+						Map: "Fire Temple",
+						RequiredItems: [Items.MEGATON_HAMMER]
+					},
+				},
 				ItemLocations: {
 					"Skulltula in Like-Like Room by Start": {
 						Name: "Skulltula in Like-Like Room by Start",
@@ -1563,7 +1577,12 @@ let StandardDungeons = {
 						LongDescription: "To the right of the stairs at the entrance of the temple, use your hammer on the side of the column a few times to destroy it. Enter the door. Kill all the enemies and continue until you get to the Flare Dancer room. To kill it - either use your hammer or hookshot to stun it. It will take three Master Sword jumpslashes to kill it. For some reason, the Biggoron's Sword will do less damage. Also, there's no need to try to jumpslash it more than once per cycle, as it won't do damage.",
 						RequiredChoiceOfAdultItems: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER, Items.HOOKSHOT],
 						RequiredChoiceOfChildItems: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER],
-					},
+					}
+				}
+			},
+			bossKeyRoom: {
+				Exits: {},
+				ItemLocations: {
 					"Boss Key Chest": {
 						Name: "Boss Key Chest",
 						ItemGroup: ItemGroups.CHEST,
@@ -1571,8 +1590,7 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
 						Order: 7,
-						LongDescription: "After the flare dancer room (see the other task), continue to the next room. Hammer the rusted switch to gain access to the boss key chest.",
-						RequiredItems: [Items.MEGATON_HAMMER]
+						LongDescription: "After the flare dancer room (see the other task), continue to the next room. Hammer the rusted switch to gain access to the boss key chest."
 					}
 				}
 			},
