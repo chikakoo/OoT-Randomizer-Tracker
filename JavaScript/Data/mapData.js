@@ -4372,8 +4372,12 @@ let MapLocations = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         LongDescription: "Make your way to the topmost northwest corner of the city and bomb, pick up, or smash the rocks to get here. You can also go to the upper right corner, stand on the box, and backwalk & backflip with hover boots at the last moment to get to this chest",
                         CustomRequirement: function(age) {
-                            return Data.canUseHammer(age) || 
-                                (age === Age.ADULT && (Equipment.STRENGTH.currentUpgrade > 1 || Equipment.HOVER_BOOTS.playerHas));
+                            let canGetAsAdult = age === Age.ADULT && (
+                                Equipment.STRENGTH.currentUpgrade > 1 ||
+                                Equipment.HOVER_BOOTS.playerHas ||
+                                Data.canWeirdShot(age)
+                            );
+                            return Data.canUseHammer(age) || canGetAsAdult;
                         }
                     },
                     "Left Maze Chest": {

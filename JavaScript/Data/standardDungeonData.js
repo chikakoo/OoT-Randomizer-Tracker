@@ -1976,6 +1976,12 @@ let StandardDungeons = {
 						Name: "centerRoomTopSwitch",
 						RequiredItems: [Items.MEGATON_HAMMER],
 						RequiredSongs: [Songs.SONG_OF_TIME]
+					},
+					centerRoomCell: {
+						Name: "centerRoomCell",
+						CustomRequirement: function(age) {
+							return Data.canWeirdShot(age);
+						}
 					}
 				},
 				ItemLocations: {}
@@ -1984,9 +1990,15 @@ let StandardDungeons = {
 				Exits: {
 					centerRoomBottom: {
 						Name: "centerRoomBottom"
+					},
+					centerRoomCell: {
+						Name: "centerRoomCell"
 					}
 				},
-
+				ItemLocations: {}
+			},
+			centerRoomCell: {
+				Exits: {},
 				ItemLocations: {
 					"Goron in Center of Fire Maze": {
 						Name: "Goron in Center of Fire Maze",
