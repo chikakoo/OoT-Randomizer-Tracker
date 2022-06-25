@@ -713,6 +713,10 @@ GrottoGroups = {
 				itemLocation: "Skulltula in Grotto by Gerudo",
 				description: "Burn the web. The skulltula is in the section the cow is in.",
 				canGet: function(age) {
+					if (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2) {
+						return true;
+					}
+					
 					return Data.canUseFireItem(age) && Data.canGrabShortDistances(age);
 				}
 			},

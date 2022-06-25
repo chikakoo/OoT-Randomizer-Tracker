@@ -2146,10 +2146,14 @@ let MapLocations = {
                         IsGrotto: true,
                         Age: Age.EITHER,
                         LongDescription: "Near the entrance to Gerudo Valley, there's a circle of small rocks. As a child, you can bomb the center to reveal a grotto. As adult, you must hammer the red rock. The skulltula is high up near a cow after burning the spider webs.",
-                        NeedsFire: true,
                         IsAtShortDistance: true,
                         CustomRequirement: function(age) {
-                            return Data.canUseHammer(age) || (age === Age.CHILD && Data.hasExplosives());
+                            if (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2) {
+                                return true;
+                            }
+
+                            return Data.canUseFireItem() &&
+                                (Data.canUseHammer(age)  || (age === Age.CHILD && Data.hasExplosives()));
                         }
                     },
                     "Scrub in Grotto by Lake Hylia Fences": {
