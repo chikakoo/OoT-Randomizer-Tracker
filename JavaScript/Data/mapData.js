@@ -2090,13 +2090,13 @@ let MapLocations = {
                         LongDescription: "Remove the rock to the left of the Market drawbridge to reveal a grotto with this chest.",
                         NeedToBlastOrSmash: true
                     },
-                    "Grotto in Southwest Forest": {
-                        Name: "Grotto in Southwest Forest",
+                    "Grotto in Southeast Forest": {
+                        Name: "Grotto in Southeast Forest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 201, y: 227},
                         IsGrotto: true,
                         Age: Age.EITHER,
-                        LongDescription: "In the southwest (a bit south of the Kokiri Forest entrance), there's a small forest that has a rock you can break. There's a chest in a grotto underneath it.",
+                        LongDescription: "In the southeast (a bit south of the Kokiri Forest entrance), there's a small forest that has a rock you can break. There's a chest in a grotto underneath it.",
                         NeedToBlastOrSmash: true
                     },
                     "Grotto by North River Tree": {
@@ -2228,13 +2228,13 @@ let MapLocations = {
                         LongDescription: "Remove the rock to the left of the Market drawbridge to reveal this grotto.",
                         NeedToBlastOrSmash: true
                     },
-                    "Grotto in Southwest Forest Rock": {
-                        Name: "Grotto in Southwest Forest Rock",
+                    "Grotto in Southeast Forest Rock": {
+                        Name: "Grotto in Southeast Forest Rock",
                         ItemGroup: ItemGroups.ENTRANCE,
                         MapInfo: {x: 201, y: 227},
                         IsGrotto: true,
                         Age: Age.EITHER,
-                        LongDescription: "In the southwest (a bit south of the Kokiri Forest entrance), there's a small forest that has a rock you can break to reveal this grotto.",
+                        LongDescription: "In the southeast (a bit south of the Kokiri Forest entrance), there's a small forest that has a rock you can break to reveal this grotto.",
                         NeedToBlastOrSmash: true
                     },
                     "Hidden Grotto by North River Tree": {
@@ -5485,7 +5485,6 @@ let MapLocations = {
                         MapInfo: { x: 131, y: 120 },
                         Age: Age.ADULT,
                         LongDescription: "Across the bridge, there are some rocks to the right. Use your hammer on them to reveal the chest.",
-                        RequiredItems: [Items.MEGATON_HAMMER],
                         CustomRequirement: function(age) {
                             return Items.MEGATON_HAMMER.playerHas || Data.canWeirdShot(age);
                         }
