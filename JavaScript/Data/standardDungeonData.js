@@ -4688,7 +4688,13 @@ let StandardDungeons = {
 					spiritTrialRoom3: {
 						Name: "spiritTrialRoom3",
 						CustomRequirement: function(age) {
-							return Items.BOMBCHU.playerHas || Data.canWeirdShot(age, Items.FAIRY_BOW);
+							let hasWeirdShotItem = Items.FAIRY_BOW.playerHas || Items.HOOKSHOT.playerHas;
+							let canWeirdShot = Settings.GlitchesToAllow.weirdShot &&
+								age === Age.ADULT && 
+								Data.hasShield(age) && 
+								hasWeirdShotItem && 
+								Items.BOMB.playerHas;
+							return Items.BOMBCHU.playerHas || canWeirdShot;
 						}
 					},
 				},
