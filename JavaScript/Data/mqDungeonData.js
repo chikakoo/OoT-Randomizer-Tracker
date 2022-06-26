@@ -1868,10 +1868,7 @@ let MQDungeons = {
 							if (!hasBossKey("Water Temple")) { return false; } //TODO: Water BK skip in MQ is really easy
 				
 							let hasLongshot = Items.HOOKSHOT.currentUpgrade === 2;
-							let canSkipLongshot = Settings.GlitchesToAllow.waterLongshotlessBoss &&
-								Items.MEGATON_HAMMER.playerHas &&
-								Equipment.HOVER_BOOTS.playerHas;
-							
+							let canSkipLongshot = Data.canHammerHoverBootsSuperslide(age);
 							let canGetToBossArea = hasLongshot || canSkipLongshot;
 							if (!canGetToBossArea) { return false; }
 							

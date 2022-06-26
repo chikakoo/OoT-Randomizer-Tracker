@@ -5408,7 +5408,8 @@ let MapLocations = {
                             if (age === Age.ADULT) {
                                 return Data.itemLocationObtained("Gerudo Fortress", "main", "Item From Gerudo") || 
                                     Data.canRideEpona(age) || 
-                                    Items.HOOKSHOT.currentUpgrade === 2;
+                                    Items.HOOKSHOT.currentUpgrade === 2 ||
+                                    Data.canHammerHoverBootsSuperslide(age);
                             }
                             return Settings.GlitchesToAllow.cuccoJump && Data.hasSwordWeapon(age);
                         }
@@ -5462,7 +5463,8 @@ let MapLocations = {
                             return age === Age.CHILD || 
                                 Data.itemLocationObtained("Gerudo Fortress", "main", "Item From Gerudo") || 
                                 Data.canRideEpona(age) || 
-                                Items.HOOKSHOT.currentUpgrade === 2;
+                                Items.HOOKSHOT.currentUpgrade === 2 ||
+                                Data.canHammerHoverBootsSuperslide(age);
                         }
                     },
 

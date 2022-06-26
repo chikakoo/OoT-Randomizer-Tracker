@@ -109,6 +109,7 @@ let Settings = {
 		megaFlip: false,
 		isg: false,
 		groundJump: true,
+		hammerHoverBootsSuperSlide: false,
 		equipSwap: false,
 		weirdShot: false,
 		
@@ -184,7 +185,6 @@ let Settings = {
 		waterHighWaterJump: false,
 		waterHookshotToFloor1: false,
 		waterBKShortcut: false,
-		waterLongshotlessBoss: false,
 		waterBombableWallEarly: false,
 		
 		shadowLensless: false,

@@ -542,6 +542,13 @@ Data = {
 			this.hasExplosives() &&
 			this.hasShield(age);
     },
+
+    canHammerHoverBootsSuperslide: function(age) {
+        return age === Age.ADULT &&
+            Settings.GlitchesToAllow.hammerHoverBootsSuperSlide &&
+            Items.MEGATON_HAMMER.playerHas &&
+            Equipment.HOVER_BOOTS.playerHas;
+    },
     
     /**
 	 * Sets whether the item is obtained
