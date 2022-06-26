@@ -5409,6 +5409,7 @@ let MapLocations = {
                                 return Data.itemLocationObtained("Gerudo Fortress", "main", "Item From Gerudo") || 
                                     Data.canRideEpona(age) || 
                                     Items.HOOKSHOT.currentUpgrade === 2 ||
+                                    Data.canBombSuperslideWithHovers(age) ||
                                     Data.canHammerHoverBootsSuperslide(age);
                             }
                             return Settings.GlitchesToAllow.cuccoJump && Data.hasSwordWeapon(age);
@@ -5464,6 +5465,7 @@ let MapLocations = {
                                 Data.itemLocationObtained("Gerudo Fortress", "main", "Item From Gerudo") || 
                                 Data.canRideEpona(age) || 
                                 Items.HOOKSHOT.currentUpgrade === 2 ||
+                                Data.canBombSuperslideWithHovers(age) ||
                                 Data.canHammerHoverBootsSuperslide(age);
                         }
                     },

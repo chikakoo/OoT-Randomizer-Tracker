@@ -543,9 +543,23 @@ Data = {
 			this.hasShield(age);
     },
 
+    /**
+     * Returns whether you can do a superslide using bombs and hover boots
+     */
+    canBombSuperslideWithHovers: function(age) {
+        return age === Age.ADULT &&
+            Settings.GlitchesToAllow.bombSuperslide &&
+            Items.BOMB.playerHas &&
+            Data.hasShield(age) &&
+            Equipment.HOVER_BOOTS.playerHas;
+    },
+
+    /**
+     * Returns whether you can do a superslide the hammer and hover boots
+     */
     canHammerHoverBootsSuperslide: function(age) {
         return age === Age.ADULT &&
-            Settings.GlitchesToAllow.hammerHoverBootsSuperSlide &&
+            Settings.GlitchesToAllow.hammerHoverBootsSuperslide &&
             Items.MEGATON_HAMMER.playerHas &&
             Equipment.HOVER_BOOTS.playerHas;
     },

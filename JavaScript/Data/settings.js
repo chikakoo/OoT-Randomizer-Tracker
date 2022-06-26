@@ -109,7 +109,8 @@ let Settings = {
 		megaFlip: false,
 		isg: false,
 		groundJump: true,
-		hammerHoverBootsSuperSlide: false,
+		bombSuperslide: false,
+		hammerHoverBootsSuperslide: false,
 		equipSwap: false,
 		weirdShot: false,
 		
