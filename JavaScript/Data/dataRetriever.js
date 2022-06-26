@@ -1301,8 +1301,9 @@ Data = {
 		return Equipment.KOKIRI_SWORD.playerHas || 
 			Items.DEKU_STICK.playerHas ||
 			Items.FAIRY_SLINGSHOT.playerHas ||
-			Data.canUseFireItem(age) ||
-			this.hasExplosives()
+			this.canUseFireItem(age) ||
+			this.hasExplosives() ||
+            this.canUseHammer(age);
 	},
 
     /**

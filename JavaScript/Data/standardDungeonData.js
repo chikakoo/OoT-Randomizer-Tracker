@@ -219,7 +219,7 @@ let StandardDungeons = {
 						Name: "mainRoom",
 						CustomRequirement: function(age) {
 							if (Data.itemLocationObtained("Dodongo's Cavern", "main", "Opened First Wall")) { return true; }
-							return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
+							return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
 						}
 					},
 
@@ -235,9 +235,9 @@ let StandardDungeons = {
 						MapInfo: { x: 134, y: 262, floor: "F1" },
 						Age: Age.EITHER,
 						Order: -2,
-						LongDescription: "Use an explosive or the hammer to break the first wall. This is used to determine whether Child can get in without explosives or strength.",
+						LongDescription: "Use an explosive, hammer, or blue fire to break the first wall. This is used to determine whether Child can get in without anything.",
 						CustomRequirement: function(age) {
-							if (Data.hasExplosivesOrStrength() || Data.canUseHammer(age)) { return true; }
+							if (Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas) { return true; }
 						}
 					}
 				}
@@ -257,7 +257,7 @@ let StandardDungeons = {
 					blueRoom: {
 						Name: "blueRoom",
 						CustomRequirement: function(age) {
-							return Data.hasSwordWeapon(age) || Data.canBlastOrSmash();
+							return Data.hasSwordWeapon(age) || Data.canBreakMudWalls(age);
 						}
 					}
 				},
@@ -269,9 +269,9 @@ let StandardDungeons = {
 						MapInfo: { x: 97, y: 198, floor: "F1" },
 						Age: Age.EITHER,
 						Order: 4,
-						LongDescription: "Go to the left side of the big main room. Destroy the wall with an explosive or the hammer to find this chest.",
+						LongDescription: "Go to the left side of the big main room. Destroy the wall with an explosive, hammer, or blue fire to find this chest.",
 						CustomRequirement: function(age) {
-							return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
+							return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
 						}
 					},
 					"Gossip Stone in Main Room": {
@@ -283,7 +283,7 @@ let StandardDungeons = {
 						Order: -1,
 						LongDescription: "This stone is behind the breakable wall in the northwest corner of the main room.",
 						CustomRequirement: function(age) {
-							return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
+							return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
 						}
 					},
 					"Skulltula in East Room": {
@@ -293,7 +293,10 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 1,
 						LongDescription: "Go to the room to the east of the main room. If you hug the right wall, you'll find a bombable wall. You can either blow it up with your own explosive, or kill a baby Dodongo near the wall.<br/><br/>Once inside, head to the back of the room to find the skulltula.",
-						MustKillStunnableEnemy: true // You can kill the baby Dodongos to blow up the wall; this check covers having explosives too
+						CustomRequirement: function(age) {
+							// First check covers bombs/hammer/stunning the baby dodongo
+							return Data.canKillStunnableEnemy(age) || Items.BLUE_FIRE.playerHas;
+						}
 					},
 					"Skulltula on East Room Ledge": {
 						Name: "Skulltula on East Room Ledge",
@@ -337,9 +340,9 @@ let StandardDungeons = {
 						MapInfo: { x: 245, y: 85, floor: "F1" },
 						Age: Age.EITHER,
 						Order: 3,
-						LongDescription: "From the entrance, go around the right side of the dungeon until you get to the blue room with dodongos in it. You can also jump up to the switch platform as adult and enter the door to get here. Near the usual entrance to this room, there's a bombable wall with a scrub inside. You should be able to run a bomb flower to it if you don't have your own explosives.",
+						LongDescription: "From the entrance, go around the right side of the dungeon until you get to the blue room with dodongos in it. You can also jump up to the switch platform as adult and enter the door to get here. Near the usual entrance to this room, there's a mud wall with a scrub inside. You should be able to run a bomb flower to it if you don't have your own explosives.",
 						CustomRequirement: function(age) {
-							return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
+							return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
 						}
 					}
 				}
@@ -369,7 +372,10 @@ let StandardDungeons = {
 						MapInfo: { x: 41, y: 259, floor: "F1" },
 						Age: Age.EITHER,
 						Order: 6,
-						LongDescription: "Make your way to the room with the Bomb Flowers by the staircase. Destroy the wall near the front of the stairs and enter the room. The chest is here - if you can't kill the armos, you'll have to savewarp after you get the chest."
+						LongDescription: "Make your way to the room with the Bomb Flowers by the staircase. Destroy the wall near the front of the stairs and enter the room. The chest is here - if you can't kill the armos, you'll have to savewarp after you get the chest.",
+						CustomRequirement: function(age) {
+							return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
+						}
 					}
 				}
 			},
@@ -384,11 +390,11 @@ let StandardDungeons = {
 							let canMegaflipThere = Items.BOMBCHU.playerHas && Data.canMegaFlip(age);
 							let canGetThereEarly = adultBombChestEarly || canGroundJumpThere || canMegaflipThere;
 							
-							// You have explosives or strength or hammer due to main's check
+							let canBreakMudWalls = Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
 							let canDefeatLizalfos = Data.hasSwordWeapon(age) || Data.hasExplosives();
 							let canGetThereNormally = Data.canShootEyeSwitch(age) && canDefeatLizalfos; 
 							
-							return canGetThereEarly || canGetThereNormally;
+							return canBreakMudWalls && (canGetThereEarly || canGetThereNormally);
 						}
 					},
 
@@ -424,7 +430,7 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 9,
 						LongDescription: "In the room with the blades, there's a wall you can destroy that's located near the cliffs with the bomb chest. There are a couple scrubs inside.",
-						NeedToBlastOrSmash: true
+						BlockedByMudWall: true
 					},
 					"Right Scrub by Blade Room": {
 						Name: "Right Scrub by Blade Room",
@@ -433,7 +439,7 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 10,
 						LongDescription: "In the room with the blades, there's a wall you can destroy that's located near the cliffs with the bomb chest. There are a couple scrubs inside.",
-						NeedToBlastOrSmash: true
+						BlockedByMudWall: true
 					}
 				}
 			},
@@ -465,7 +471,7 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 12,
 						LongDescription: "At the end of the bridge above the giant dodongo head, destroy the wall. The chest is just inside.",
-						NeedToBlastOrSmash: true
+						BlockedByMudWall: true
 					}
 				}
 			},
