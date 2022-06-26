@@ -1521,9 +1521,10 @@ let MapLocations = {
             },
 
             afterMido: {
-                Exits:
-                {
-                    "main": {},
+                Exits: {
+                    main: {
+                        Name: "main"
+                    },
                     "Deku Tree Entrance": {
                         OwExit: OwExits["Kokiri Forest"]["Deku Tree Entrance"]
                     }
@@ -2796,6 +2797,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.SHOP,
                         MapInfo: {x: 130, y: 232},
                         IsInterior: true,
+                        Age: Age.CHILD,
                         LongDescription: "This shop is only open at night. Starting at the market entrance, go straight right into the alley. Take the first door on the left wall to get to the shop.",
                         OneWayInteriorSpawnEntrance: true
                     },
@@ -4025,7 +4027,7 @@ let MapLocations = {
                     middle: {
                         Name: "middle",
                         CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || (age === Age.ADULT  && Equipment.HOVER_BOOTS.playerHas);
+                            return Data.canMegaFlip(age) || (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
                         }
                     },
 
@@ -4312,9 +4314,10 @@ let MapLocations = {
                                 return true;
                             }
 
-                            let canLightBombFlower = age === Age.CHILD && Data.canUseFireItem(age) && Items.DEKU_STICK.playerHas;
                             let canShootBow = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
-                            return canShootBow || canLightBombFlower || Data.hasExplosivesOrStrength();
+                            let canLightBombFlower = age === Age.CHILD && Data.canUseFireItem(age) && Items.DEKU_STICK.playerHas;
+                            let canLightDekuStick = age === Age.CHILD && Data.canUseFireItem(age) && Items.DEKU_STICK.playerHas;
+                            return canShootBow || canLightBombFlower || canLightDekuStick || Equipment.STRENGTH.playerHas || Data.canBlastOrSmash(age);
                         }
                     },
 
@@ -4518,9 +4521,7 @@ let MapLocations = {
                     shop: {
                         Name: "shop",
                         Age: Age.CHILD,
-                        CustomRequirement: function(age) {
-                            return Items.DEKU_STICK.playerHas;
-                        }
+                        RequiredItems: [Items.DEKU_STICK]
                     },
 
                     "Death Mountain Crater": {
@@ -4545,7 +4546,8 @@ let MapLocations = {
                     lostWoodsRocks: {
                         Name: "lostWoodsRocks",
                         CustomRequirement: function(age) {
-                            return Data.hasExplosives() || Data.itemLocationObtained("Goron City", "lostWoodsRocks", "Rocks Blocking Lost Woods");
+                            return Data.canBlastOrSmash(age) ||
+                                Data.itemLocationObtained("Goron City", "lostWoodsRocks", "Rocks Blocking Lost Woods");
                         }
                     },
 
@@ -4577,12 +4579,13 @@ let MapLocations = {
                         LongDescription: "These are the rocks blocking the Lost Woods entrance. Either blow them up (you can shoot the right one with a bow), or use a deku stick lit on fire to activate the nearby bomb flowers.",
                         IsPostWalkCheck: true,
                         CustomRequirement: function(age) {
-                            if (Data.hasExplosives()) { return true; }
+                            if (Data.canBlastOrSmash(age)) { return true; }
 
                             let canGetToMain = Data.canAccessMap(age, "Goron City", "main");
                             let canShootBow = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
                             let canLightBombFlower = Data.canUseDekuStick(age) && Data.canAccessMap(age, "Goron City", "darunia");
-                            return canGetToMain && (canShootBow || canLightBombFlower || Equipment.STRENGTH.playerHas);
+                            let canLightDekuStick = age === Age.CHILD && Data.canUseFireItem(age) && Items.DEKU_STICK.playerHas;
+                            return canGetToMain && (canShootBow || canLightBombFlower || canLightDekuStick || Equipment.STRENGTH.playerHas);
                         }
                     }
                 }
@@ -4591,7 +4594,7 @@ let MapLocations = {
             spinningUrn: {
                 ExcludeFromSpawnList: true,
 
-                // Only used for the one item check, so no need to mark exits and entrances
+                // Only used for the one item check, so no need to mark exits
                 Exits: {},
                 ItemLocations: {
                     "Spinning Urn Heart Piece": {
