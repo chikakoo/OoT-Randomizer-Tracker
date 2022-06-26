@@ -284,9 +284,12 @@ Data = {
 
         // Check whether your starting age is the current age
         // With randomized spawns, if the spawn is set, it's assumed you can be that age since you set it yourself
+        // If it's the starting age but we skip DoT travel, we're assuming you cannot travel back, so only
+        // the non-starting age is available!
+        let isStartingAge = age === Settings.RandomizerSettings.startingAge;
         if (age === Settings.RandomizerSettings.startingAge && !usingRandomizedSpawns) { return true; }
         if (usingRandomizedSpawns && Data.randomizedSpawnLocations[age]) {
-            return true;
+            return Settings.RandomizerSettings.skipToTTravel ? !isStartingAge : true;
         }
 
         // Check if the other age can even get through the door if they did find the temple

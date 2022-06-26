@@ -1891,8 +1891,8 @@ let MQDungeons = {
 						MapInfo: { x: 330, y: 131, floor: "F2" },
 						Age: Age.ADULT,
 						Order: 3,
-						LongDescription: "Use your iron boots and navigate through the lower right room. Put them back on when you reach the very next floor. Navigate through the hold in the wall. Now, hookshot the back wall to spawn the chest. To open it, hookshot the front then spam A.",
-						RequiredItems: [Items.HOOKSHOT]
+						LongDescription: "Use your iron boots and navigate through the lower right room. Put them back on when you reach the very next floor. Navigate through the hole in the wall. Now, hookshot the back wall to spawn the chest. To open it, hookshot the front then spam A.",
+						RequiredItems: [Items.HOOKSHOT, Equipment.IRON_BOOTS]
 					},
 					"Chest by Low Water Triforce": {
 						Name: "Chest by Low Water Triforce",
@@ -1902,7 +1902,7 @@ let MQDungeons = {
 						Order: 4,
 						LongDescription: "Use your iron boots and navigate through the lower right room. Take them off to rise to the top to get to the triforce room. Use a fire item to light the torches in the four corners of the room to unbar the door.<br/><br/>Enter the next room and optionally defeat all the Stalfos to unbar the door. The chest is spawned by hitting the back wall with the hookshot.",
 						NeedsFire: true,
-						RequiredItems: [Items.HOOKSHOT]
+						RequiredItems: [Items.HOOKSHOT, Equipment.IRON_BOOTS]
 					}
 				}
 			},
