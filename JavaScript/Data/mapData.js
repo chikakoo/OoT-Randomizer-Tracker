@@ -4315,9 +4315,8 @@ let MapLocations = {
                             }
 
                             let canShootBow = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
-                            let canLightBombFlower = age === Age.CHILD && Data.canUseFireItem(age) && Items.DEKU_STICK.playerHas;
-                            let canLightDekuStick = age === Age.CHILD && Data.canUseFireItem(age) && Items.DEKU_STICK.playerHas;
-                            return canShootBow || canLightBombFlower || canLightDekuStick || Equipment.STRENGTH.playerHas || Data.canBlastOrSmash(age);
+                            let canLightBombFlower = Data.canUseFireItem(age) || Items.BLUE_FIRE.playerHas;
+                            return canShootBow || canLightBombFlower || Equipment.STRENGTH.playerHas || Data.canBlastOrSmash(age);
                         }
                     },
 
@@ -4515,6 +4514,7 @@ let MapLocations = {
 
                     lostWoodsRocks: {
                         Name: "lostWoodsRocks",
+                        Age: Age.CHILD, // The stick won't last all the way, no torches as adult
                         RequiredItems: [Items.DEKU_STICK]
                     },
 
@@ -4546,7 +4546,9 @@ let MapLocations = {
                     lostWoodsRocks: {
                         Name: "lostWoodsRocks",
                         CustomRequirement: function(age) {
-                            return Data.canBlastOrSmash(age) ||
+                            let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
+                            return canUseDins ||
+                                Data.canBlastOrSmash(age) ||
                                 Data.itemLocationObtained("Goron City", "lostWoodsRocks", "Rocks Blocking Lost Woods");
                         }
                     },
@@ -4579,13 +4581,14 @@ let MapLocations = {
                         LongDescription: "These are the rocks blocking the Lost Woods entrance. Either blow them up (you can shoot the right one with a bow), or use a deku stick lit on fire to activate the nearby bomb flowers.",
                         IsPostWalkCheck: true,
                         CustomRequirement: function(age) {
-                            if (Data.canBlastOrSmash(age)) { return true; }
+                            let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
+                            if (Data.canBlastOrSmash(age) || canUseDins) { return true; }
 
                             let canGetToMain = Data.canAccessMap(age, "Goron City", "main");
                             let canShootBow = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
                             let canLightBombFlower = Data.canUseDekuStick(age) && Data.canAccessMap(age, "Goron City", "darunia");
-                            let canLightDekuStick = age === Age.CHILD && Data.canUseFireItem(age) && Items.DEKU_STICK.playerHas;
-                            return canGetToMain && (canShootBow || canLightBombFlower || canLightDekuStick || Equipment.STRENGTH.playerHas);
+                            let canExplodeBombFlower = Items.BLUE_FIRE.playerHas || Equipment.STRENGTH.playerHas;
+                            return canGetToMain && (canShootBow || canLightBombFlower || canExplodeBombFlower);
                         }
                     }
                 }
@@ -5422,7 +5425,10 @@ let MapLocations = {
                     chasmCrateLedge: {
                         Name: "chasmCrateLedge",
                         CustomRequirement: function(age) {
-                            return age === Age.CHILD || Items.HOOKSHOT.currentUpgrade === 2;
+                            return age === Age.CHILD || 
+                                Items.HOOKSHOT.currentUpgrade === 2 ||
+                                Data.canBombSuperslideWithHovers(age) ||
+                                Data.canHammerHoverBootsSuperslide(age);
                         }
                     },
                     

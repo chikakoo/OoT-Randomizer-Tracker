@@ -354,7 +354,9 @@ let StandardDungeons = {
 					staircaseTop: {
 						Name: "staircaseTop",
 						CustomRequirement: function(age) {
+							let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
 							return Data.hasExplosivesOrStrength() || 
+								canUseDins ||
 								(Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && age === Age.ADULT && Items.FAIRY_BOW.playerHas);
 						}
 					}
