@@ -654,6 +654,7 @@ Data = {
 		if (!this.hasExplosives(itemLocation)) { return ItemObtainability.NO; }
 		if (!this.hasExplosivesOrStrength(itemLocation)) { return ItemObtainability.NO; }
         if (!this.canBlastOrSmash(age, itemLocation)) { return ItemObtainability.NO; }
+        if (!this.canBreakMudWalls(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this.canSinkSilverScaleDepth(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canSinkGoldenScaleDepth(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canUseFireItem(age, itemLocation)) { return ItemObtainability.NO; }
@@ -1176,6 +1177,14 @@ Data = {
 	canBlastOrSmash: function(age, itemLocation) {
 		if (itemLocation && !itemLocation.NeedToBlastOrSmash && !itemLocation.IsHiddenGrotto) { return true; }
 		return this.hasExplosives() || this.canUseHammer(age);
+    },
+
+    /**
+     * Whether the player can break mud walls (explosives, hammer, or blue fire)
+     */
+    canBreakMudWalls: function(age, itemLocation) {
+        if (itemLocation && !itemLocation.BlockedByMudWall) { return true; }
+        return this.canBlastOrSmash(age) || Items.BLUE_FIRE.playerHas;
     },
     
     /**

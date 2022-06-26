@@ -740,14 +740,14 @@ GrottoGroups = {
 				itemLocation: "Skulltula in Song of Storms Grotto",
 				description: "The skulltula is high up behind one of the bombable walls. As an adult, you can actually use your hookshot to get the skulltula without blowing up the wall.",
 				canGet: function(age) {
-					if (age === Age.CHILD && !Data.hasExplosives()) { return false; }
-					return Data.canGrabShortDistances(age);
+					let canGetSkulltula = Data.canGrabShortDistances(age);
+					return canGetSkulltula && (age === Age.ADULT || Data.canBreakMudWalls(age));
 				}
 			},
 			"Gossip Stone": {
 				description: "The gossip stone is behind one of the bombable walls.",
 				canGet: function(age) { 
-					return Data.canBlastOrSmash(age) && Data.canReadGossipStone(age); 
+					return Data.canBreakMudWalls(age) && Data.canReadGossipStone(age); 
 				},
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.HIDE;

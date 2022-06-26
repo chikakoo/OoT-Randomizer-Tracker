@@ -169,7 +169,7 @@ let StandardDungeons = {
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "If you make your way around the basement, you'll eventually find a circular room where gohma babies drop from the ceiling. One of the side rooms has a bombable wall. Bomb it, then enter the next room. The skulltula is high up on the wall to your left.",
 						RequiredAdultItems: [Items.FAIRY_BOW],
-						NeedToBlastOrSmash: true,
+						BlockedByMudWall: true,
 						IsAtShortDistance: true
 					}
 				}

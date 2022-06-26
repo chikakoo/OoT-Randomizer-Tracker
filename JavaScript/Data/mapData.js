@@ -2979,7 +2979,8 @@ let MapLocations = {
                         IsGrotto: true,
                         LongDescription: "There's a tree in the corner near the milk boxes at the castle. Play the Song of Storms there to open a grotto. The skulltula is behind one of the explodable walls.",
                         IsAtShortDistance: true,
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
+                        BlockedByMudWall: true,
+                        RequiredSongs: [Songs.SONG_OF_STORMS],
                     },
                     "Zelda's Lullaby": {
                         Name: "Zelda's Lullaby",
@@ -4329,8 +4330,8 @@ let MapLocations = {
                     shop: {
                         Name: "shop",
                         CustomRequirement: function(age) {
-                            if (Data.hasExplosivesOrStrength() || (age === Age.ADULT && Items.FAIRY_BOW.playerHas)) { return true; }
-                            return age === Age.CHILD && Items.DEKU_STICK.playerHas && Data.canUseFireItem(age);
+                            if (Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas || (age === Age.ADULT && Items.FAIRY_BOW.playerHas)) { return true; }
+                            return age === Age.CHILD && Data.canUseFireItem(age);
                         }
                     },
 
@@ -4367,7 +4368,7 @@ let MapLocations = {
                         LongDescription: "Blow up/hammer the weak walls on the western side of the middle floor. Pay Medigoron 200 rupees for this item.",
                         RequiredItems: [{item: Equipment.WALLET, upgradeString: "1"}],
                         CustomRequirement: function(age) {
-                            return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
+                            return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas || Data.canUseHammer(age);
                         }
                     },
                     "Leftmost Maze Chest": {
