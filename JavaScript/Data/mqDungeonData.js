@@ -992,7 +992,7 @@ let MQDungeons = {
 					"Locked Door in Falling Ceiling Room": {
 						Name: "Locked Door in Falling Ceiling Room",
 						ItemGroup: ItemGroups.LOCKED_DOOR,
-						Regions: ["fallingCeilingRoom"],
+						Regions: ["fallingCeilingRoom", "greenPoeRoom"],
 						MapInfo: { x: 318, y: 132, floor: "F1" },
 						Age: Age.ADULT,
 						Order: 16.1,
@@ -1051,6 +1051,15 @@ let MQDungeons = {
 						Name: "outsideWest",
 						CustomRequirement: function(age) {
 							return Data.canShootEyeSwitch(age);
+						}
+					},
+
+					greenPoeRoom: {
+						Name: "greenPoeRoom",
+						Age: Age.ADULT,
+						RequiredAdultItems: [Items.BOMB, Equipment.HOVER_BOOTS],
+						CustomRequirement: function(age) {
+							return Settings.GlitchesToAllow.forestGreenPoeEarly && Data.hasShield(age);
 						}
 					},
 
@@ -1154,12 +1163,9 @@ let MQDungeons = {
 					},
 
 					outsideEastPlatform: { // Burn the web, to go through to the top platform
-						Name: "outsideEastPlatform",
+						Name: "outsideEastBalcony",
 						Age: Age.ADULT,
-						RequiredItems: [Equipment.MAGIC, Equipment.HOVER_BOOTS, Items.FAIRY_BOW, Items.FIRE_ARROW],
-						CustomRequirement: function(age) {
-							return Settings.GlitchesToAllow.forestLedgeWithHovers;
-						}
+						RequiredItems: [Equipment.MAGIC, Items.FAIRY_BOW, Items.FIRE_ARROW]
 					},
 
 					well: {
@@ -1185,13 +1191,12 @@ let MQDungeons = {
 					// Excluding east to west because it would require you to have gone through west anyway
 					// OR to already have the means to get there from the lobby
 
-					outsideEastPlatform: {
-						Name: "outsideEastPlatform",
+					outsideEastBalcony: {
+						Name: "outsideEastBalcony",
 						Age: Age.ADULT,
-						RequiredItems: [Items.HOOKSHOT, Equipment.HOVER_BOOTS],
-						RequiredSongs: [Songs.SONG_OF_TIME],
+						RequiredItems: [Items.HOOKSHOT],
 						CustomRequirement: function(age) {
-							return Settings.GlitchesToAllow.forestLedgeWithHovers;
+							return Songs.SONG_OF_TIME.playerHas || Items.HOOKSHOT.currentUpgrade === 2;
 						}
 					},
 
@@ -1210,16 +1215,33 @@ let MQDungeons = {
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						IsAtShortDistance: true,
 						LongDescription: "The skulltula is above the doorframe leading to this room. Get it with your boomerang or hookshot."
+					}
+				}
+			},
+
+			outsideEastBalcony: {
+				Exits: {
+					outsideEast: {
+						Name: "outsideEast"
 					},
+					outsideEastPlatform: {
+						Name: "outsideEastPlatform",
+						Age: Age.ADULT,
+						RequiredItems: [Equipment.HOVER_BOOTS],
+						CustomRequirement: function(age) {
+							return Settings.GlitchesToAllow.forestLedgeWithHovers;
+						}
+					}
+				},
+				
+				ItemLocations: {
 					"Chest in Outside East Room": {
 						Name: "Chest in Outside East Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 224, y: 53, floor: "F1" },
 						Age: Age.ADULT,
 						Order: 5,
-						RequiredItems: [Items.HOOKSHOT],
-						RequiredSongs: [Songs.SONG_OF_TIME],
-						LongDescription: "Hookshot up the doorframe leading to this room. Repeatedly play the Song of Time and jump to the end of the blocks it spawns until you can get to the balcony with the chest."
+						LongDescription: "Hookshot up the doorframe leading to this room. Repeatedly play the Song of Time and jump to the end of the blocks it spawns until you can get to the balcony with the chest.<br/><br/>You can also use the longshot on the vines by the balcony to get up, OR go around from the west room with a fire arrow."
 					}
 				}
 			},
@@ -1345,6 +1367,11 @@ let MQDungeons = {
 				Exits: {
 					outsideEastPlatform: {
 						Name: "outsideEastPlatform",
+					},
+					greenPoeRoom: {
+						Name: "greenPoeRoom",
+						LockedDoor: "Locked Door in Falling Ceiling Room",
+						Map: "Forest Temple"
 					}
 				},
 
@@ -1358,6 +1385,17 @@ let MQDungeons = {
 						LongDescription: "This room is found after twisting the cooridor with the Green Bubbles. Fall down the hole that's now accessible. Once in the room, hit one of the switches in this room to spawn the chest."
 					}
 				}
+			},
+
+			greenPoeRoom: {
+				Exits: {
+					fallingCeilingRoom: {
+						Name: "fallingCeilingRoom",
+						LockedDoor: "Locked Door in Falling Ceiling Room",
+						Map: "Forest Temple"
+					}
+				},
+				ItemLocations: {}
 			},
 
 			basement: {

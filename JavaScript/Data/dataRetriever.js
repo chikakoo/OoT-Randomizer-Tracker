@@ -1536,7 +1536,7 @@ Data = {
      */
      mqForestTempleCanAccessAllPoeRooms: function(age) {
         let canAccessFirstPoes = Data.canAccessMap(age, "Forest Temple", "poeRooms");
-        let canAccessGreenPoeRoom = Data.canAccessMap(age, "Forest Temple", "fallingCeilingRoom");
+        let canAccessGreenPoeRoom = Data.canAccessMap(age, "Forest Temple", "greenPoeRoom");
         return canAccessFirstPoes && canAccessGreenPoeRoom;
     },
 
