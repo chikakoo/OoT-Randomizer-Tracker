@@ -2763,37 +2763,12 @@ let MQDungeons = {
 							return Data.canShootEyeSwitch(age) || Data.canUseBoomerang(age) || Items.BOMBCHU.playerHas;
 						}
 					},
-					"Chest in Child Main Room": {
-						Name: "Chest in Child Main Room",
-						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 89, y: 199, floor: "F1" },
-						Age: Age.CHILD,
-						Order: 30,
-						AltOrder: 26,
-						IsPostWalkCheck: true,
-						LongDescription: "As an adult, navigate through the sun on the floor room until you're in the room with the rusted switch (this is the room after the second crawl space). Hit the switch to spawn the chest. You must go back in time to claim it.<br/>You can also equip swap hammer as Child to get this.",
-						RequiredItems: [Items.BOMBCHU],
-						CustomRequirement: function(age) {
-							if (!Items.MEGATON_HAMMER.playerHas) { return false; }
-							return Data.canUseHammer(age) || Data.canAccessMap(Age.ADULT, "Spirit Temple", "afterSecondCrawlSpace");
-						}
-					},
-					"Big Chest in Bridge Room": {
-						Name: "Big Chest in Bridge Room",
-						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 34, y: 139, floor: "F1" },
-						Age: Age.CHILD,
-						Order: 5,
-						AltOrder: 28,
-						LongDescription: "In the child area, go through the left door to get to this chest. You can also do the loop from the right side.",
-						NeedsSwordWeapon: true
-					},
 
 					// Locked Doors
 					"Locked Door After Second Crawl Space": {
 						Name: "Locked Door After Second Crawl Space",
 						ItemGroup: ItemGroups.LOCKED_DOOR,
-						Regions: ["childSide", "afterSecondCrawlSpace"],
+						Regions: ["afterSecondCrawlSpace", "roomWithSunOnFloor"],
 						MapInfo: { x: 87, y: 100, floor: "F1" },
 						Age: Age.EITHER,
 						Order: 5.1,
@@ -2923,8 +2898,10 @@ let MQDungeons = {
 				Exits: {
 					backOfChildBridgeRoom: {
 						Name: "backOfChildBridgeRoom",
-						Age: Age.CHILD,
-						RequiredItems: [Items.BOMBCHU, Items.FAIRY_SLINGSHOT],
+						Age: Age.EITHER,
+						RequiredItems: [Items.BOMBCHU],
+						RequiredChildItems: [Items.FAIRY_SLINGSHOT],
+						RequiredAdultItems: [Items.FAIRY_BOW],
 						NeedsSwordWeapon: true
 					},
 
@@ -2934,7 +2911,35 @@ let MQDungeons = {
 						RequiredItems: [Items.BOMBCHU]
 					}
 				},
-				ItemLocations: {}
+				ItemLocations: {
+					"Chest in Child Main Room": {
+						Name: "Chest in Child Main Room",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 89, y: 199, floor: "F1" },
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
+						Order: 30,
+						AltOrder: 26,
+						IsPostWalkCheck: true,
+						LongDescription: "As an adult, navigate through the sun on the floor room until you're in the room with the rusted switch (this is the room after the second crawl space). Hit the switch to spawn the chest. You must go back in time to claim it.<br/>You can also equip swap hammer as Child to get this.",
+						RequiredItems: [Items.BOMBCHU],
+						CustomRequirement: function(age) {
+							if (!Items.MEGATON_HAMMER.playerHas) { return false; }
+							return Data.canUseHammer(age) || Data.canAccessMap(Age.ADULT, "Spirit Temple", "afterSecondCrawlSpace");
+						}
+					},
+					"Big Chest in Bridge Room": {
+						Name: "Big Chest in Bridge Room",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 34, y: 139, floor: "F1" },
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
+						Order: 5,
+						AltOrder: 28,
+						LongDescription: "In the child area, go through the left door to get to this chest. You can also do the loop from the right side.",
+						NeedsSwordWeapon: true
+					},
+				}
 			},
 
 			backOfChildBridgeRoom: {
@@ -2944,7 +2949,8 @@ let MQDungeons = {
 						Name: "Small Chest in Bridge Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 34, y: 94, floor: "F1" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
 						Order: 4,
 						AltOrder: 27,
 						LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. In the next room, kill the Stalfos and continue on. In this room, pull back the gravestone and hit the switch to lower the bridge. Now kill all the enemies to spawn the chest - you'll need Din's Fire to deal with the Anubis.",
@@ -2960,6 +2966,14 @@ let MQDungeons = {
 						Age: Age.CHILD,
 						Map: "Spirit Temple",
 						LockedDoor: "Locked Door After Second Crawl Space"
+					},
+					childSide: {
+						Name: "childSide",
+						Age: Age.ADULT, // Child would already have access from the lobby
+						RequiredItems: [Items.MEGATON_HAMMER],
+						CustomRequirement: function(age) {
+							return Data.canWeirdShot(age);
+						}
 					}
 				},
 				ItemLocations: {}
@@ -2968,7 +2982,7 @@ let MQDungeons = {
 			roomWithSunOnFloor: {
 				Exits: {
 					afterSecondCrawlSpace: {
-						Name: "roomWithSunOnFloor",
+						Name: "afterSecondCrawlSpace",
 						Age: Age.ADULT,
 						Map: "Spirit Temple",
 						LockedDoor: "Locked Door After Second Crawl Space"
@@ -3089,14 +3103,14 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 174, y: 227, floor: "F2" },
 						Age: Age.EITHER,
-						UseChildAge:  function() { return !Settings.GlitchesToAllow.weirdShot },
+						UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
 						Order: 9,
 						AltOrder: 29,
 						LongDescription: "From the statue room, use a fire item on the southern eye switch to get to the maze room. Navigate to the first hole and shoot the eye switch on the lower left wall to spawn the chest.",
 						RequiredChildItems: [Items.FAIRY_SLINGSHOT],
 						RequiredAdultItems: [Items.FAIRY_BOW],
 						CustomRequirement: function(age) {
-							return Settings.GlitchesToAllow.weirdShot && Data.canWeirdShot(age);
+							return Data.canWeirdShot(age);
 						}
 					}
 				}
