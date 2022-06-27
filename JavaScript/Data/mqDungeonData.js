@@ -1233,7 +1233,7 @@ let MQDungeons = {
 						}
 					}
 				},
-				
+
 				ItemLocations: {
 					"Chest in Outside East Room": {
 						Name: "Chest in Outside East Room",
@@ -2717,7 +2717,11 @@ let MQDungeons = {
 
 					silverBlockMaze: {
 						Age: Age.ADULT,
-						RequiredItems: [Items.BOMBCHU, { item: Items.HOOKSHOT, upgradeString: "2" }, { item: Equipment.STRENGTH, upgradeString: "2" }]
+						RequiredItems: [Items.BOMBCHU, { item: Items.HOOKSHOT, upgradeString: "2" }],
+						CustomRequirement: function(age) {
+							if (Equipment.STRENGTH.currentUpgrade === 2) { return true; }
+							return Data.canWeirdShot(age) && Items.FAIRY_BOW.playerHas;
+						}
 					},
 
 					Exit: {
@@ -2930,10 +2934,7 @@ let MQDungeons = {
 						RequiredItems: [Items.BOMBCHU]
 					}
 				},
-
-				ItemLocations: {
-
-				}
+				ItemLocations: {}
 			},
 
 			backOfChildBridgeRoom: {
@@ -3083,16 +3084,20 @@ let MQDungeons = {
 				},
 
 				ItemLocations: {
-					//TODO: verify that adult can't get this (probabaly not because of where the eye switch is - the silver block blocks it)
 					"Chest in Silver Block Maze": {
 						Name: "Chest in Silver Block Maze",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 174, y: 227, floor: "F2" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
+						UseChildAge:  function() { return !Settings.GlitchesToAllow.weirdShot },
 						Order: 9,
 						AltOrder: 29,
 						LongDescription: "From the statue room, use a fire item on the southern eye switch to get to the maze room. Navigate to the first hole and shoot the eye switch on the lower left wall to spawn the chest.",
-						RequiredItems: [Items.FAIRY_SLINGSHOT]
+						RequiredChildItems: [Items.FAIRY_SLINGSHOT],
+						RequiredAdultItems: [Items.FAIRY_BOW],
+						CustomRequirement: function(age) {
+							return Settings.GlitchesToAllow.weirdShot && Data.canWeirdShot(age);
+						}
 					}
 				}
 			},
