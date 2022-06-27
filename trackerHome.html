@@ -613,56 +613,61 @@
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsZoraContainer")' settings>Zora/Lake Areas</span>
 					<div id="settingsZoraContainer">
-						<label onclick='SettingsPage.setBooleanValueForGlitches("zorasRiverScaleless", event)'
-						title="This is the clip or Navi dive from Lost Woods to get to Zora's River without at least one diving upgrade.">
-						<input type="checkbox" name="zorasRiverScaleless" value="zorasRiverScaleless">
-						Zora's River from Lost Woods Without Scale
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("adultWaterfallHPJump", event)'
-						title="This is a setup as adult to get the Zora's River item by the waterfall without any items.">
-						<input type="checkbox" name="adultWaterfallHPJump" value="adultWaterfallHPJump">
-						Zora's River Waterfall Item as Adult With Nothing
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("cuccoToZorasDomain", event)'
-						title="This allows you to use a cucco to hover into Zora's Domain without needing to play Zelda's Lullaby.">
-						<input type="checkbox" name="cuccoToZorasDomain" value="cuccoToZorasDomain">
-						Cucco to Zora's Domain
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("hoversToZorasDomain", event)'
-						title="Allows the use of Hover Boots and a precise angle to get into Zora's Domain without needing to play Zelda's Lullaby">
-						<input type="checkbox" name="hoversToZorasDomain" value="hoversToZorasDomain">
-						Hover Boots to Zora's Domain
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("chuZoraSkip", event)'
-						title="Allows Child Link to skip past King Zora without showing him the letter using the damage recoil form a bombchu explosion.">
-						<input type="checkbox" name="chuZoraSkip" value="chuZoraSkip">
-						King Zora Skip Using Bombchu
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("clipZoraSkip", event)'
-						title="This is an acute angle jumpslash out of bounds to skip King Zora if you haven't moved him yet.">
-						<input type="checkbox" name="clipZoraSkip" value="clipZoraSkip">
-						Adult King Zora Skip
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("blueFireShopSkip", event)'
-						title="This allows you to get into the Zora Shop as adult without needing to melt the ice in front of it.">
-						<input type="checkbox" name="blueFireShopSkip" value="blueFireShopSkip">
-						Zora Shop Blue Fire Skip
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("thawKingZoraWithNothing", event)'
-						title="Load the king, then left-sidehop up from the bottom of the stairs. Sidle left until you can barely read the sign, then read it. Now go back down and up to reload the king, and he will be unthawed.">
-						<input type="checkbox" name="thawKingZoraWithNothing" value="thawKingZoraWithNothing">
-						Thaw King Zora with Nothing
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("labHPWithoutGoldenScale", event)'
-						title="This is a trick using the iron boots and hookshot to get the diving heart piece without actually diving.">
-						<input type="checkbox" name="labHPWithoutGoldenScale" value="labHPWithoutGoldenScale">
-						Lakeside Lab Heart Piece without Golden Scale
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("adultDomainFromLake", event)'
-						title="Involves a megaflip. Climb up next to the south pillar. Sidehop left x2, backflip x5. 2F ess turn right. Shield turn around. Dry roll once. Megaflip from this spot with a bomb (instant drop, roll, backflip, megaflip), or chu. Release all buttons after the flip starts. Walk to the loading zone.">
-						<input type="checkbox" name="adultDomainFromLake" value="adultDomainFromLake">
-						Zora's Domain exit from Lake Hylia as adult
-					</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("zorasRiverScalelessChild", event)'
+							title="This is the clip or Navi dive from Lost Woods to get to Zora's River as Child without at least one diving upgrade.">
+							<input type="checkbox" name="zorasRiverScalelessChild" value="zorasRiverScalelessChild">
+							Zora's River from Lost Woods Without Scale (Child)
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("zorasRiverScalelessAdult", event)'
+							title="This is the clip from Lost Woods to get to Zora's River as Adult without at least one diving upgrade.">
+							<input type="checkbox" name="zorasRiverScalelessAdult" value="zorasRiverScalelessAdult">
+							Zora's River from Lost Woods Without Scale (Adult)
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("adultWaterfallHPJump", event)'
+							title="This is a setup as adult to get the Zora's River item by the waterfall without any items.">
+							<input type="checkbox" name="adultWaterfallHPJump" value="adultWaterfallHPJump">
+							Zora's River Waterfall Item as Adult With Nothing
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("cuccoToZorasDomain", event)'
+							title="This allows you to use a cucco to hover into Zora's Domain without needing to play Zelda's Lullaby.">
+							<input type="checkbox" name="cuccoToZorasDomain" value="cuccoToZorasDomain">
+							Cucco to Zora's Domain
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("hoversToZorasDomain", event)'
+							title="Allows the use of Hover Boots and a precise angle to get into Zora's Domain without needing to play Zelda's Lullaby">
+							<input type="checkbox" name="hoversToZorasDomain" value="hoversToZorasDomain">
+							Hover Boots to Zora's Domain
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("chuZoraSkip", event)'
+							title="Allows Child Link to skip past King Zora without showing him the letter using the damage recoil form a bombchu explosion.">
+							<input type="checkbox" name="chuZoraSkip" value="chuZoraSkip">
+							King Zora Skip Using Bombchu
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("clipZoraSkip", event)'
+							title="This is an acute angle jumpslash out of bounds to skip King Zora if you haven't moved him yet.">
+							<input type="checkbox" name="clipZoraSkip" value="clipZoraSkip">
+							Adult King Zora Skip
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("blueFireShopSkip", event)'
+							title="This allows you to get into the Zora Shop as adult without needing to melt the ice in front of it.">
+							<input type="checkbox" name="blueFireShopSkip" value="blueFireShopSkip">
+							Zora Shop Blue Fire Skip
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("thawKingZoraWithNothing", event)'
+							title="Load the king, then left-sidehop up from the bottom of the stairs. Sidle left until you can barely read the sign, then read it. Now go back down and up to reload the king, and he will be unthawed.">
+							<input type="checkbox" name="thawKingZoraWithNothing" value="thawKingZoraWithNothing">
+							Thaw King Zora with Nothing
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("labHPWithoutGoldenScale", event)'
+							title="This is a trick using the iron boots and hookshot to get the diving heart piece without actually diving.">
+							<input type="checkbox" name="labHPWithoutGoldenScale" value="labHPWithoutGoldenScale">
+							Lakeside Lab Heart Piece without Golden Scale
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("adultDomainFromLake", event)'
+							title="Involves a megaflip. Climb up next to the south pillar. Sidehop left x2, backflip x5. 2F ess turn right. Shield turn around. Dry roll once. Megaflip from this spot with a bomb (instant drop, roll, backflip, megaflip), or chu. Release all buttons after the flip starts. Walk to the loading zone.">
+							<input type="checkbox" name="adultDomainFromLake" value="adultDomainFromLake">
+							Zora's Domain exit from Lake Hylia as adult
+						</label>
 					</div>
 				</div>
 				

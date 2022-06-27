@@ -185,7 +185,8 @@ let OwExits = {
             Age: Age.EITHER,
             CustomRequirement: function(age) {
                 let canGetToRiver = Equipment.SCALE.playerHas || 
-                    (age === Age.CHILD && Settings.GlitchesToAllow.zorasRiverScaleless && Data.hasSwordWeapon(age));
+                    (age === Age.CHILD && Settings.GlitchesToAllow.zorasRiverScalelessChild && Data.hasSwordWeapon(age)) ||
+                    (age === Age.ADULT && Settings.GlitchesToAllow.zorasRiverScalelessAdult);
                 return canGetToRiver;
             },
             LongDescription: "This is the exit to Zora's River that you get to by diving."

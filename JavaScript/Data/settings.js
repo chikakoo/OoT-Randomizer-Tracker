@@ -136,7 +136,8 @@ let Settings = {
 		dmtSkullsWithoutHammer: false,
 		
 		// Zora/Lake
-		zorasRiverScaleless: false,
+		zorasRiverScalelessChild: false,
+		zorasRiverScalelessAdult: false,
 		adultWaterfallHPJump: false,
 		cuccoToZorasDomain: false,
 		hoversToZorasDomain: false,
