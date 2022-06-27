@@ -1378,7 +1378,7 @@ let MQDungeons = {
 						Age: Age.ADULT,
 						Order: 17,
 						IsPostWalkCheck: true,
-						LongDescription: "After defeating all the Poes, take the elevator to the basement. Push the wall in any direction twice to get to the chest.",
+						LongDescription: "After defeating all the Poes, take the elevator to the basement. Push the wall clockwise x3 or counter-clockwise x2 to get to the chest.",
 						CustomRequirement: function(age) {
 							return Data.mqForestTempleCanAccessAllPoeRooms(age);
 						}
@@ -3258,7 +3258,7 @@ let MQDungeons = {
 						Age: Age.ADULT,
 						Order: 23,
 						AltOrder: 19,
-						LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), go through the west door - be careful, though, as you can't get out if you don't have Zelda's Lullaby. Jump down and kill all the levers to spawn the chest. Hookshot to it from the top to get it."
+						LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), go through the west door - be careful, though, as you can't get out if you don't have Zelda's Lullaby. Jump down and kill all the leevers to spawn the chest. Hookshot to it from the top to get it."
 					},
 					"Bottom Right Chest in Lobby": {
 						Name: "Bottom Right Chest in Lobby",
