@@ -123,13 +123,15 @@ let Settings = {
 		boomerangGraveyardHP: false,
 		unloadGrave: false,
 		oldShadowEarly: false,
-		chuSlide: false,
+		hookshotJump: false,
 		
 		// Forest
 		pokeySkip: false,
 		midoSkip: true,
 		lwSkullWithoutBean: false,
 		houseOfTwinsSkullWithHovers: false,
+		zorasRiverScalelessChild: false,
+		zorasRiverScalelessAdult: false,
 		
 		// Goron area
 		hoverToVolcanoHP: false,
@@ -137,8 +139,6 @@ let Settings = {
 		dmtSkullsWithoutHammer: false,
 		
 		// Zora/Lake
-		zorasRiverScalelessChild: false,
-		zorasRiverScalelessAdult: false,
 		adultWaterfallHPJump: false,
 		cuccoToZorasDomain: false,
 		hoversToZorasDomain: false,
@@ -210,6 +210,7 @@ let Settings = {
 		gtgAdultNoCard: false,
 		gtgNoZoraTunic: false,
 		gtgChildVineClips: false,
+		gtgSilverBlockSkip: false,
 		
 		ganonSpiritHookshotless: false,
 		ganonLightTrialSuperslideSkip: false,

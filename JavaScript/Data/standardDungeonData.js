@@ -4206,7 +4206,18 @@ let StandardDungeons = {
 					silverBlockRoom: {
 						Name: "silverBlockRoom",
 						Age: Age.ADULT,
-						RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}]
+						CustomRequirement: function(age) {
+							if (Equipment.STRENGTH.currentUpgrade > 1) {
+								return true;
+							}
+
+							if (!Settings.GlitchesToAllow.gtgSilverBlockSkip || !Equipment.HOVER_BOOTS.playerHas) {
+								return false;
+							}
+
+							return Data.canMegaFlip(age) || Data.canHammerHoverBootsSuperslide(age);
+
+						}
 					},
 					lavaRoom: {
 						Name: "lavaRoom"

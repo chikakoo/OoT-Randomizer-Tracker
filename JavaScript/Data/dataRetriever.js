@@ -517,19 +517,16 @@ Data = {
      * Returns whether you can get to the graveyard top without warping
      */
     canGetToGraveyardTopEarly: function(age) {
-		return this._canChuSlide(age) || this._canDoOldShadowEarly(age);
+		return this._canHookshotJump(age) || this._canDoOldShadowEarly(age);
 	},
     
     /**
      * Returns whether you can do the chu slide teleport
      */
-    _canChuSlide: function(age) {
+     _canHookshotJump: function(age) {
 		return age === Age.ADULT &&
-			Settings.GlitchesToAllow.chuSlide && 
-			Items.BOMBCHU.playerHas && 
-			Items.HOOKSHOT.playerHas &&
-			this.hasShield(age) &&
-			!Equipment.STRENGTH.playerHas;
+			Settings.GlitchesToAllow.hookshotJump && 
+			Items.HOOKSHOT.playerHas;
 	},
     
     /**

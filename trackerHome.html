@@ -557,10 +557,10 @@
 						<input type="checkbox" name="oldShadowEarly" value="oldShadowEarly">
 						Old Shadow Temple Early Method
 					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("chuSlide", event)'
-						title="This is used to get to the top of the graveyard using a Bombchu, Hookshot, and Shield. Note that you cannot do this trick if you have a strength upgrade.">
-						<input type="checkbox" name="chuSlide" value="chuSlide">
-						Chu Slide for Shadow Temple Early
+					<label onclick='SettingsPage.setBooleanValueForGlitches("hookshotJump", event)'
+						title="Used to get to the top of the graveyard with only a hookshot. https://youtu.be/HTU0fKl-6uQ">
+						<input type="checkbox" name="hookshotJump" value="hookshotJump">
+						Hookshot Jump for Shadow Temple Early
 					</label>
 					</div>
 				</div>
@@ -570,25 +570,35 @@
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsForestContainer")' settings>Forest Areas</span>
 					<div id="settingsForestContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("pokeySkip", event)'
-						title="Used to escape the forest using a shield and sword. Only does something if open forest is off.">
-						<input type="checkbox" name="pokeySkip" value="pokeySkip">
-						Pokey Skip
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("midoSkip", event)'
-						title="This is a precise backflip used to skip having to play Saria's Song to get past Mido as adult.">
-						<input type="checkbox" name="midoSkip" value="midoSkip">
-						Adult Mido Skip
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("houseOfTwinsSkullWithHovers", event)'
-						title="This uses a short seamwalk on the house of twins, then the hover boots to get on the house. From there, you can get the skulltula using your sword and a backflip..">
-						<input type="checkbox" name="houseOfTwinsSkullWithHovers" value="houseOfTwinsSkullWithHovers">
-						House of Twins Skulltula With Only Hover Boots
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("lwSkullWithoutBean", event)'
-						title="This is a trick using a bombchu and the hookshot to get the skulltula in Lost Woods that normally requires the magic bean to be planted.">
-						<input type="checkbox" name="lwSkullWithoutBean" value="lwSkullWithoutBean">
-						Lost Woods Skulltula by Forest Stage Without Bean
-					</label>
+							title="Used to escape the forest using a shield and sword. Only does something if open forest is off.">
+							<input type="checkbox" name="pokeySkip" value="pokeySkip">
+							Pokey Skip
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("midoSkip", event)'
+							title="This is a precise backflip used to skip having to play Saria's Song to get past Mido as adult.">
+							<input type="checkbox" name="midoSkip" value="midoSkip">
+							Adult Mido Skip
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("houseOfTwinsSkullWithHovers", event)'
+							title="This uses a short seamwalk on the house of twins, then the hover boots to get on the house. From there, you can get the skulltula using your sword and a backflip..">
+							<input type="checkbox" name="houseOfTwinsSkullWithHovers" value="houseOfTwinsSkullWithHovers">
+							House of Twins Skulltula With Only Hover Boots
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("lwSkullWithoutBean", event)'
+							title="This is a trick using a bombchu and the hookshot to get the skulltula in Lost Woods that normally requires the magic bean to be planted.">
+							<input type="checkbox" name="lwSkullWithoutBean" value="lwSkullWithoutBean">
+							Lost Woods Skulltula by Forest Stage Without Bean
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("zorasRiverScalelessChild", event)'
+							title="This is the clip or Navi dive from Lost Woods to get to Zora's River as Child without at least one diving upgrade.">
+							<input type="checkbox" name="zorasRiverScalelessChild" value="zorasRiverScalelessChild">
+							Zora's River from Lost Woods Without Scale (Child)
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("zorasRiverScalelessAdult", event)'
+							title="Get in corner; sidehop right x3, left x1; climb up; keep hold of ess right; B to jumpslash; A + B to jumpslash again when ripples are almost gone.">
+							<input type="checkbox" name="zorasRiverScalelessAdult" value="zorasRiverScalelessAdult">
+							Zora's River from Lost Woods Without Scale (Adult)
+						</label>
 					</div>
 				</div>
 				
@@ -618,16 +628,6 @@
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsZoraContainer")' settings>Zora/Lake Areas</span>
 					<div id="settingsZoraContainer">
-						<label onclick='SettingsPage.setBooleanValueForGlitches("zorasRiverScalelessChild", event)'
-							title="This is the clip or Navi dive from Lost Woods to get to Zora's River as Child without at least one diving upgrade.">
-							<input type="checkbox" name="zorasRiverScalelessChild" value="zorasRiverScalelessChild">
-							Zora's River from Lost Woods Without Scale (Child)
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("zorasRiverScalelessAdult", event)'
-							title="Get in corner; sidehop right x3, left x1; climb up; keep hold of ess right; B to jumpslash; A + B to jumpslash again when ripples are almost gone.">
-							<input type="checkbox" name="zorasRiverScalelessAdult" value="zorasRiverScalelessAdult">
-							Zora's River from Lost Woods Without Scale (Adult)
-						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitches("adultWaterfallHPJump", event)'
 							title="This is a setup as adult to get the Zora's River item by the waterfall without any items.">
 							<input type="checkbox" name="adultWaterfallHPJump" value="adultWaterfallHPJump">
@@ -994,6 +994,11 @@
 							title="Requires bombchus and a shield - allows Child clip through ALL the maze gates.">
 							<input type="checkbox" name="gtgChildVineClips" value="gtgChildVineClips">
 							Child Vine Clips
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("gtgSilverBlockSkip", event)'
+							title="Requires megaflip or hammer superslide tricks to be on. https://youtu.be/aXzxaSUUr_c">
+							<input type="checkbox" name="gtgSilverBlockSkip" value="gtgSilverBlockSkip">
+							Pass Silver Block Without Strength
 						</label>
 					</div>
 				</div>
