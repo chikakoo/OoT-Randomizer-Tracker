@@ -1607,7 +1607,10 @@ Data = {
     },
 
     mqSpiritCanAccessAdultSide: function() {
-        return Items.BOMBCHU.playerHas && Items.HOOKSHOT.playerHas && Equipment.STRENGTH.currentUpgrade >= 2;
+        let canGetUp = Items.BOMBCHU.playerHas && Items.HOOKSHOT.currentUpgrade === 2;
+        let canPushBlock = Equipment.STRENGTH.currentUpgrade >= 2;
+        let canWeirdShot = this.canWeirdShot(Age.ADULT) && Items.FAIRY_BOW.playerHas;
+        return canGetUp && (canPushBlock || canWeirdShot);
     },
 
     /**

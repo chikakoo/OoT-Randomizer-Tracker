@@ -570,6 +570,14 @@ let OwExits = {
             LongDescription: "This is the entrance to the Bottom of the Well.",
             IsDungeonEntrance: true,
             CustomRequirement: function(age) {
+                // Trick using cucco
+                if (age === Age.ADULT && 
+                    Settings.GlitchesToAllow.botwAsAdultWithCucco &&
+                    Items.HOOKSHOT.currentUpgrade === 2 &&
+                    Equipment.HOVER_BOOTS.playerHas) {
+                    return true;
+                }
+
                 if (!Data.canBeAge(Age.CHILD)) { return false; }
                 if (age === Age.ADULT && !Settings.RandomizerSettings.shuffleDungeonEntrances) {
                     return false;
@@ -939,6 +947,10 @@ let OwExits = {
             LongDescription: "This is the entrance to the Water Temple.",
             IsDungeonEntrance: true,
             CustomRequirement: function(age) {
+                if (Settings.GlitchesToAllow.adultWaterTempleWithoutBoots && age === Age.ADULT && Data.hasShield(age)) {
+                    return true;
+                }
+
                 let canEnterNormally = Equipment.IRON_BOOTS.playerHas && Items.HOOKSHOT.playerHas;
 				let canDiveDown = Items.HOOKSHOT.currentUpgrade === 2 && Equipment.SCALE.currentUpgrade === 2;
 				if (age === Age.ADULT && (canEnterNormally || canDiveDown)) {
@@ -5997,9 +6009,11 @@ let MapLocations = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 87, y: 135 },
                         Age: Age.ADULT,
+                        IsPostWalkCheck: true,
                         LongDescription: "Plant a magic bean in the soil by the Spirit Temple. Come back as an adult and ride it to the heart piece on the giant arch.",
                         CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Desert Colossus", "main", "*Plant Bean by Spirit Temple");
+                            return Data.itemLocationObtained("Desert Colossus", "main", "*Plant Bean by Spirit Temple") ||
+                                (Data.canAccessMap(age, "Spirit Temple", "statueHands") && Data.canMegaFlip(age));
                         }
                     },
                     "Skulltula in Soil": {

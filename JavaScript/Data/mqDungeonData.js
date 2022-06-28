@@ -2013,7 +2013,11 @@ let MQDungeons = {
 				Exits: {
 					singleWaterPillarRoom: {
 						Name: "singleWaterPillarRoom",
-						RequiredItems: [Items.DINS_FIRE, Equipment.MAGIC, Equipment.IRON_BOOTS]
+						CustomRequirement: function(age) {
+							let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
+							let canWeirdShot = Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2;
+							return canUseDins || canWeirdShot;
+						}
 					}
 				},
 
@@ -2034,7 +2038,8 @@ let MQDungeons = {
 			singleWaterPillarRoom: {
 				Exits: {
 					bottomGateSwitch: {
-						Name: "bottomGateSwitch"
+						Name: "bottomGateSwitch",
+						RequiredItems: [Equipment.IRON_BOOTS]
 					}
 				},
 
@@ -2899,9 +2904,7 @@ let MQDungeons = {
 					backOfChildBridgeRoom: {
 						Name: "backOfChildBridgeRoom",
 						Age: Age.EITHER,
-						RequiredItems: [Items.BOMBCHU],
-						RequiredChildItems: [Items.FAIRY_SLINGSHOT],
-						RequiredAdultItems: [Items.FAIRY_BOW],
+						RequiredChildItems: [Items.BOMBCHU, Items.FAIRY_SLINGSHOT], // Adult can hookshot the torches to go backwards
 						NeedsSwordWeapon: true
 					},
 
@@ -3038,7 +3041,9 @@ let MQDungeons = {
 
 					fireBubbleRoom: {
 						Name: "fireBubbleRoom",
-						RequiredSongs: [Songs.SONG_OF_TIME]
+						CustomRequirement: function(age) {
+							return Data.canPlaySong(Songs.SONG_OF_TIME) || (age == Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
+						}
 					},
 
 					beamosRoom: {
@@ -3254,8 +3259,7 @@ let MQDungeons = {
 						Age: Age.ADULT,
 						Order: 18,
 						AltOrder: 14,
-						LongDescription: "In the room with the lizalfos and sun, play the Song of Time to move the block away from the light. Now, shine the light on the sun. Play the song again so you can go through the door. The chest is in that room.",
-						RequiredSongs: [Songs.SONG_OF_TIME],
+						LongDescription: "In the room with the lizalfos and sun, you can climb the Song of Time block and shine the light on the sun. The chest is in the room that opens.",
 						RequiredItems: [Equipment.MIRROR_SHIELD]
 					}
 				}

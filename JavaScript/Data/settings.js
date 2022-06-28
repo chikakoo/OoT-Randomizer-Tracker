@@ -119,6 +119,7 @@ let Settings = {
 		windmillHPWithNothing: true,
 		windmillHPWithHookshot: false,
 		childShopClips: false,
+		botwAsAdultWithCucco: false,
 		boomerangGraveyardHP: false,
 		unloadGrave: false,
 		oldShadowEarly: false,
@@ -147,6 +148,7 @@ let Settings = {
 		thawKingZoraWithNothing: false,
 		labHPWithoutGoldenScale: false,
 		adultDomainFromLake: false,
+		adultWaterTempleWithoutBoots: false,
 		
 		// Desert
 		eponaHover: false,

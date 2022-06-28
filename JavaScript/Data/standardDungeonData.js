@@ -151,10 +151,12 @@ let StandardDungeons = {
 					bossRoom: {
 						Name: "bossRoom",
 						CustomRequirement: function(age) {
+
 							let canShootWeb = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
 							let canBurnWeb = canShootWeb || Data.canUseFireItem(age) || Data.canUseDekuStick(age);
+							let canPassWeb = canBurnWeb || Data.canWeirdShot(age);
 							let hasShield = age === Age.CHILD ? Equipment.DEKU_SHIELD.playerHas : Equipment.HYLIAN_SHIELD.playerHas;
-							return canBurnWeb && hasShield;
+							return canPassWeb && hasShield;
 						}
 					}
 				},
@@ -2919,7 +2921,10 @@ let StandardDungeons = {
 						Age: Age.ADULT,
 						Order: 19,
 						LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room to your right. Cast Din's Fire to take out the spike walls to clear the path to the chest.",
-						RequiredItems: [Items.DINS_FIRE, Equipment.MAGIC]
+						CustomRequirement: function(age) {
+							let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
+							return canUseDins || Data.canWeirdShot(age);
+						}
 					},
 					"Boss Key Chest in Spike Wall Room": {
 						Name: "Boss Key Chest in Spike Wall Room",
