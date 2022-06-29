@@ -2599,7 +2599,159 @@ let StandardDungeons = {
 						OwExit: OwExits["Shadow Temple"]["Exit"]
 					}
 				},
-				ItemLocations: {}
+				ItemLocations: {
+					// Locked Doors
+					"Locked Door by Beamos": {
+						Name: "Locked Door by Beamos",
+						ItemGroup: ItemGroups.LOCKED_DOOR,
+						Regions: ["afterTruthSpinner"],
+						MapInfo: { x: 330, y: 170, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 4.1,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; },
+						LongDescription: "This is the door after the truth spinner room with the beamos. It's located behind the bombable wall.",
+						NeedsExplosives: true,
+						KeyRequirement: function(age) {
+							let max = 1;
+							if (Settings.GlitchesToAllow.shadowGateClip){
+								max++; // Gibdo room
+
+								let canGetToInvisibleSpikeRoom = Items.HOOKSHOT.playerHas && 
+									(Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots);
+								if (canGetToInvisibleSpikeRoom) {
+									max += 2; // Into and out of invisible spike room
+								}
+
+								let canHitWithChu = Settings.GlitchesToAllow.shadowChuBombFlowers && Items.BOMBCHU.playerHas;
+								let canCrossGap = Items.FAIRY_BOW.playerHas || canHitWithChu;
+								let canGetToBossRoom = Data.canPlaySong(Songs.ZELDAS_LULLABY) && (canHitWithChu || canCrossGap);
+								if (canGetToBossRoom) {
+									max++; // Boss room door
+								}
+							}
+
+							return { min: 1, max: max };
+						}
+					},
+
+					"Locked Door in Giant Pit Room": {
+						Name: "Locked Door in Giant Pit Room",
+						ItemGroup: ItemGroups.LOCKED_DOOR,
+						Regions: ["afterBombableWall", "invisibleSpikeRoom"],
+						MapInfo: { x: 156, y: 92, floor: "B2" },
+						Age: Age.ADULT,
+						Order: 11.1,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; },
+						LongDescription: "This is the door after the invisible moving platform in the giant pit room.",
+						KeyRequirement: function(age) {
+							let max = 2;
+							if (Settings.GlitchesToAllow.shadowGateClip) {
+								max++; // Gibdo room
+
+								let canGetToInvisibleSpikeRoom = Items.HOOKSHOT.playerHas && 
+									(Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots);
+								if (canGetToInvisibleSpikeRoom) {
+									max++; // Into invisible spike room
+								}
+
+								let canHitWithChu = Settings.GlitchesToAllow.shadowChuBombFlowers && Items.BOMBCHU.playerHas;
+								let canCrossGap = Items.FAIRY_BOW.playerHas || canHitWithChu;
+								let canGetToBossRoom = Data.canPlaySong(Songs.ZELDAS_LULLABY) && (canHitWithChu || canCrossGap);
+								if (canGetToBossRoom) {
+									max++; // Boss room door
+								}
+							}
+
+							return { min: 2, max: max };
+						}
+					},
+
+					"Locked Door in Invisible Spike Room": {
+						Name: "Locked Door in Invisible Spike Room",
+						ItemGroup: ItemGroups.LOCKED_DOOR,
+						Regions: ["invisibleSpikeRoom", "windHallway"],
+						MapInfo: { x: 156, y: 45, floor: "B2" },
+						Age: Age.ADULT,
+						Order: 14.1,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; },
+						LongDescription: "This is the door in the room with redeads and invisible floor spikes that you have to hookshot up to",
+						KeyRequirement: function(age) {
+							let max = 3;
+							let min = 3;
+							if (Settings.GlitchesToAllow.shadowGateClip) {
+								max++; // Gibdo room
+
+								let canGetToInvisibleSpikeRoom = Items.HOOKSHOT.playerHas && 
+									(Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots);
+								if (canGetToInvisibleSpikeRoom) {
+									min = 2; // Into invisible spike room - no max, as it IS this door
+								}
+
+								let canHitWithChu = Settings.GlitchesToAllow.shadowChuBombFlowers && Items.BOMBCHU.playerHas;
+								let canCrossGap = Items.FAIRY_BOW.playerHas || canHitWithChu;
+								let canGetToBossRoom = Data.canPlaySong(Songs.ZELDAS_LULLABY) && (canHitWithChu || canCrossGap);
+								if (canGetToBossRoom) {
+									max++; // Boss room door
+								}
+							}
+
+							return { min: min, max: max };
+						}
+					},
+
+					"Locked Door in Gibdo Room": {
+						Name: "Locked Door in Gibdo Room",
+						ItemGroup: ItemGroups.LOCKED_DOOR,
+						Regions: ["windHallway", "boatRoomStart"],
+						MapInfo: { x: 303, y: 127, floor: "B1" },
+						Age: Age.ADULT,
+						Order: 17.1,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; },
+						LongDescription: "This is the room with the gibdos after the hallway of fans.",
+						KeyRequirement: function(age) {
+							let max = 2;
+							let min = 4;
+							if (Settings.GlitchesToAllow.shadowGateClip) {
+								max++; // Gibdo room
+								min = 1;
+
+								let canGetToInvisibleSpikeRoom = Items.HOOKSHOT.playerHas && 
+									(Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots);
+								if (canGetToInvisibleSpikeRoom) {
+									max++; // Into invisible spike room
+								}
+
+								let canHitWithChu = Settings.GlitchesToAllow.shadowChuBombFlowers && Items.BOMBCHU.playerHas;
+								let canCrossGap = Items.FAIRY_BOW.playerHas || canHitWithChu;
+								let canGetToBossRoom = Data.canPlaySong(Songs.ZELDAS_LULLABY) && (canHitWithChu || canCrossGap);
+								if (canGetToBossRoom) {
+									max++; // Boss room door
+								}
+							}
+
+							return { min: min, max: max };
+						}
+					},
+
+					"Locked Door After Boat Ride": {
+						Name: "Locked Door After Boat Ride",
+						ItemGroup: ItemGroups.LOCKED_DOOR,
+						Regions: ["acrossChasmToBossRoom"],
+						MapInfo: { x: 132, y: 136, floor: "B1" },
+						Age: Age.ADULT,
+						Order: 22.1,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; },
+						LongDescription: "This is the room with the gibdos after the hallway of fans.",
+						KeyRequirement: function(age) {
+							let min = 5;
+							if (Settings.GlitchesToAllow.shadowGateClip) {
+								min = 1;
+							}
+
+							return { min: min, max: 5 };
+						}
+					},
+				}
 			},
 			truthSpinnerRoom: {
 				Exits: {
@@ -2644,9 +2796,7 @@ let StandardDungeons = {
 						Name: "afterBombableWall",
 						Map: "Shadow Temple",
 						NeedsExplosives: true,
-						CustomRequirement: function(age) {
-							return getKeyCount("Shadow Temple") >= 1;
-						}
+						LockedDoor: "Locked Door by Beamos"
 					},
 					boatRoomStart: {
 						Name: "boatRoomStart",
@@ -2691,9 +2841,8 @@ let StandardDungeons = {
 				Exits: {
 					invisibleSpikeRoom: {
 						Name: "invisibleSpikeRoom",
-						CustomRequirement: function(age) {
-							return getKeyCount("Shadow Temple") >= 2;
-						}
+						Map: "Shadow Temple",
+						LockedDoor: "Locked Door in Giant Pit Room"
 					}
 				},
 
@@ -2782,6 +2931,13 @@ let StandardDungeons = {
 			},
 			invisibleSpikeRoom: {
 				Exits: {
+					afterBombableWall: {
+						Name:"afterBombableWall",
+						Map: "Shadow Temple",
+						Age: Age.ADULT,
+						LockedDoor: "Locked Door in Giant Pit Room"
+					},
+
 					giantSkullRoom: {
 						Name: "giantSkullRoom",
 						Age: Age.ADULT,
@@ -2790,11 +2946,12 @@ let StandardDungeons = {
 
 					windHallway: {
 						Name: "windHallway",
+						Map: "Shadow Temple",
 						Age: Age.ADULT,
 						RequiredAdultItems: [Items.HOOKSHOT],
+						LockedDoor: "Locked Door in Invisible Spike Room",
 						CustomRequirement: function(age) {
-							let canPassFans = Settings.GlitchesToAllow.shadowNoIronBoots || Equipment.IRON_BOOTS.playerHas;
-							return canPassFans && getKeyCount("Shadow Temple") >= 3;
+							return Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots;
 						}
 					}
 				},
@@ -2839,11 +2996,20 @@ let StandardDungeons = {
 			},
 			windHallway: {
 				Exits: {
+					invisibleSpikeRoom: {
+						Name: "invisibleSpikeRoom",
+						Map: "Shadow Temple",
+						Age: Age.ADULT,
+						RequiredItems: [Items.HOOKSHOT],
+						LockedDoor: "Locked Door in Invisible Spike Room",
+						CustomRequirement: function(age) {
+							 return Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots;
+						}
+					},
 					boatRoomStart: {
 						Name: "boatRoomStart",
-						CustomRequirement: function(age) {
-							return getKeyCount("Shadow Temple") >= 4;
-						}
+						Map: "Shadow Temple",
+						LockedDoor: "Locked Door in Gibdo Room"
 					}
 				},
 
@@ -2877,6 +3043,11 @@ let StandardDungeons = {
 			},
 			boatRoomStart: {
 				Exits: {
+					windHallway: {
+						Name: "windHallway",
+						Map: "Shadow Temple",
+						LockedDoor: "Locked Door in Gibdo Room"
+					},
 					boatRoomEnd: {
 						Name: "boatRoomEnd",
 						RequiredSongs: [Songs.ZELDAS_LULLABY]
@@ -2897,18 +3068,11 @@ let StandardDungeons = {
 			},
 			boatRoomEnd: {
 				Exits: {
-					bossRoom: {
-						Name: "bossRoom",
+					acrossChasmToBossRoom: {
+						Name: "acrossChasmToBossRoom",
 						CustomRequirement: function(age) {
-							if (!hasBossKey("Shadow Temple")) { return false; }
-
 							let canHitWithChu = Settings.GlitchesToAllow.shadowChuBombFlowers && Items.BOMBCHU.playerHas;
-							let canCrossGap = Items.FAIRY_BOW.playerHas || canHitWithChu;
-							let hasEnoughKeys = getKeyCount("Shadow Temple") >= 5; 
-							let canGetToDoor = Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
-							let canDefeatBoss = Items.FAIRY_BOW.playerHas || Items.HOOKSHOT.playerHas;
-							
-							return hasEnoughKeys && canCrossGap && canGetToDoor && canDefeatBoss;
+							return Items.FAIRY_BOW.playerHas || canHitWithChu;
 						}
 					}
 				},
@@ -2950,6 +3114,25 @@ let StandardDungeons = {
 						Order: 22,
 						LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room to your left. Kill the invisible floor master to spawn the chest."
 					}
+				}
+			},
+			acrossChasmToBossRoom: {
+				Exits: {
+					bossRoom: {
+						Name: "bossRoom",
+						Map: "Shadow Temple",
+						LockedDoor: "Locked Door After Boat Ride",
+						CustomRequirement: function(age) {
+							if (!hasBossKey("Shadow Temple")) { return false; }
+
+							let canGetToDoor = Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
+							let canDefeatBoss = Items.FAIRY_BOW.playerHas || Items.HOOKSHOT.playerHas;
+							return canGetToDoor && canDefeatBoss;
+						}
+					}
+				},
+				ItemLocations: {
+
 				}
 			},
 			bossRoom: {
