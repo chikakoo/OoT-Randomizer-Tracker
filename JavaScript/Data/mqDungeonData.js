@@ -674,6 +674,14 @@ let MQDungeons = {
 						Name: "northernRooms",
 						RequiredItems: [Items.BOOMERANG],
 						NeedsExplosives: true
+					},
+
+					afterTentaclesDefeated: {
+						Name: "afterTentaclesDefeated",
+						Age: Age.ADULT, // This is if adult cannot equip swap
+						CustomRequirement: function(age) {
+							return Data.itemLocationObtained("Jabu Jabu's Belly", "afterWebBurned", "Tentacles Defeated");
+						}
 					}
 				},
 
@@ -736,8 +744,10 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 9,
-						LongDescription: "In the path leading to the elevator room, there's a skulltula under the Song of Time block. Play the song to move the block.",
-						RequiredSongs: [Songs.SONG_OF_TIME]
+						LongDescription: "In the path leading to the elevator room, there's a skulltula under the Song of Time block. Play the song to move the block.<br/><br/>If you have the boomerang, you can also aim it to the left and slightly downward to get the skulltula throught he block.",
+						CustomRequirement: function(age) {
+							return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canUseBoomerang(age);
+						}
 					}
 				}
 			},
@@ -769,9 +779,8 @@ let MQDungeons = {
 
 			afterWebBurned: {
 				Exits: {
-					afterBigOcto: {
-						Name: "afterBigOcto",
-						NeedsSwordWeapon: true,
+					afterTentaclesDefeated: {
+						Name: "afterTentaclesDefeated",
 						NeedToBlastOrSmash: true
 					}
 				},
@@ -789,6 +798,28 @@ let MQDungeons = {
 							return Data.canUseDekuStick(age) || Data.canUseFireItem(age);
 						}
 					},
+					"Tentacles Defeated":{
+						Name: "Tentacles Defeated",
+						ItemGroup: ItemGroups.NON_ITEM,
+						MapInfo: { x: 172, y: 10, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 11.1,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equpSwap; },
+						LongDescription: "This is the task to defeat the three tentacles. This is used to help see what Adult can do if he cannot use the boomerang."
+					}
+				}
+			},
+
+			afterTentaclesDefeated: {
+				Exits: {
+					afterBigOcto: {
+						Name: "afterBigOcto",
+						NeedsSwordWeapon: true,
+						NeedToBlastOrSmash: true
+					}
+				},
+
+				ItemLocations: {
 					"Skulltula Behind Web": {
 						Name: "Skulltula Behind Web",
 						ItemGroup: ItemGroups.CHEST,
@@ -797,15 +828,14 @@ let MQDungeons = {
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 12,
 						LongDescription: "After destroying all the tentacles, drop down into the big room and enter the door by the vines. The skulltula is in the back of the room. Kill the enemies (some are invisible) or megaflip to cross to the other wide. Burn the web with a fire item.",
-						NeedsFire: true,
 						CustomRequirement: function(age) {
-							// First two checks are to kill the enemies - child 100% has a slingshot due to the first door
-							//TODO: might want lens check here too if not megaflipping, dunno how hard it is to find the enemies
-							//TODO: hookshot/longshot distance with fire arrow?
-							//TODO: can adult just climb to the other side?
-							return age === Age.CHILD || Items.FAIRY_BOW.playerHas || Data.canMegaFlip(age); 
+							let canUseLens = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas;
+							let canKillEnemies = canUseLens && (age === Age.CHILD || Items.FAIRY_BOW.playerHas || Items.HOOKSHOT.playerHas);
+							let canCrossWater = canKillEnemies || Data.canMegaFlip(age) || (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
+							let canCollectToken = Data.canGrabShortDistances(age) || Data.canStaircaseHover(age);
+							return canCrossWater && canCollectToken;
 						}
-					},
+					}
 				}
 			},
 
@@ -845,10 +875,12 @@ let MQDungeons = {
 						Name: "Skulltula in Room Before Boss",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 244, y: 189, floor: "F1" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
+						RequiredItems: [Items.BOOMERANG],
 						Order: 16,
 						LongDescription: "Climb up the vines and use your boomerang to get this skulltula."
-					},
+					}
 				}
 			},
 
@@ -858,7 +890,7 @@ let MQDungeons = {
 					"Heart Container": {
 						Name: "Heart Container",
 						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: {x: 242, y: 121, floor: "F1" },
+						MapInfo: { x: 242, y: 121, floor: "F1" },
 						Age: Age.CHILD,
 						Order: 17,
 						LongDescription: "You need the Boomerang and either the Kokiri Sword, or at least 3 Deku Sticks to defeat Barinade. First, dislodge it from the ceiling using the Boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
@@ -867,7 +899,7 @@ let MQDungeons = {
 					"Blue Warp": {
 						Name: "Blue Warp",
 						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: {x: 246, y: 125, floor: "F1" },
+						MapInfo: { x: 246, y: 125, floor: "F1" },
 						Age: Age.CHILD,
 						Order: 18,
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",

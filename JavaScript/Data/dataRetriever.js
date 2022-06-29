@@ -541,6 +541,17 @@ Data = {
     },
 
     /**
+     * Returns whether you can do a staircase hover
+     */
+    canStaircaseHover: function(age) {
+        return Settings.GlitchesToAllow.staircaseHover &&
+            Settings.GlitchesToAllow.isg &&
+            Items.BOMB.playerHas &&
+            Data.hasSwordWeapon(age) &&
+            Data.hasShield(age);
+    },
+
+    /**
      * Returns whether you can do a superslide using bombs and hover boots
      */
     canBombSuperslideWithHovers: function(age) {
