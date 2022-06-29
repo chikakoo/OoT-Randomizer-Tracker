@@ -5436,6 +5436,10 @@ let MapLocations = {
                         }
                     },
 
+                    chasmSilverRockLedge: {
+                        Name: "chasmSilverRockLedge"
+                    },
+
                     chasmCrateLedge: {
                         Name: "chasmCrateLedge",
                         CustomRequirement: function(age) {
@@ -5464,17 +5468,6 @@ let MapLocations = {
                         LongDescription: "At night, look to the right of the first tiny bridge by the tiny waterfall. The skulltula is by the water source.",
                         IsAtShortDistance: true,
                         NeedsNighttime: true
-                    },
-
-                    // Entrances
-                    "Grotto Under Silver Rock": {
-                        Name: "Grotto Under Silver Rock",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 220, y: 182 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "From the side closest to Hyrule Field, look to your left. The grotto is under the silver rock. Lift it up with your silver gauntlets to reveal it.",
-                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}]
                     }
                 }
             },
@@ -5490,6 +5483,13 @@ let MapLocations = {
                                 Items.HOOKSHOT.currentUpgrade === 2 ||
                                 Data.canBombSuperslideWithHovers(age) ||
                                 Data.canHammerHoverBootsSuperslide(age);
+                        }
+                    },
+
+                    chasmSilverRockLedge: {
+                        Name: "chasmSilverRockLedge",
+                        CustomRequirement: function(age) {
+                            return Data.canMegaFlip(age);
                         }
                     },
 
@@ -5583,6 +5583,28 @@ let MapLocations = {
                             return !Settings.GlitchesToAllow.cuccoJump;
                         },
                         LongDescription: "This is the tent on the west side of the bridge as adult. Also, the loading zone is actually there as child."
+                    }
+                }
+            },
+
+            chasmSilverRockLedge: {
+                ExcludeFromSpawnList: true,
+                Exits: {
+                    chasm: {
+                        Name: "chasm"
+                    }
+                },
+
+                ItemLocations: {
+                    // Entrances
+                    "Grotto Under Silver Rock": {
+                        Name: "Grotto Under Silver Rock",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        MapInfo: { x: 220, y: 182 },
+                        IsGrotto: true,
+                        Age: Age.ADULT,
+                        LongDescription: "From the side closest to Hyrule Field, look to your left. The grotto is under the silver rock. Lift it up with your silver gauntlets to reveal it.",
+                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}]
                     }
                 }
             },
