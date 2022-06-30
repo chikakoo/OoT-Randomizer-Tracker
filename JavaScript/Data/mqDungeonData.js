@@ -3805,6 +3805,34 @@ let MQDungeons = {
 						NeedsFire: true
 					},
 
+					backOfMaze: {
+						Name: "backOfMaze",
+						RequiredChildItems: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
+						CustomRequirement: function(age) {
+							if (age === Age.CHILD) {
+								return Settings.GlitchesToAllow.gtgChildVineClips;
+							}
+
+							return Data.canWeirdShot(age);
+						}
+					},
+
+					mazeCenter: {
+						Name: "mazeCenter",
+						RequiredChildItems: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
+						CustomRequirement: function(age) {
+							if (getKeyCount("Training Grounds") >= 3) {
+								return true;
+							}
+
+							if (age === Age.CHILD) {
+								return Settings.GlitchesToAllow.gtgChildVineClips;
+							}
+
+							return Data.canWeirdShot(age);
+						}
+					},
+
 					iceArrowsRoom: {
 						Name: "iceArrowsRoom",
 						Age: Age.CHILD,
@@ -3959,7 +3987,17 @@ let MQDungeons = {
 					roomBehindSilverBlock: {
 						Name: "roomBehindSilverBlock",
 						Age: Age.ADULT,
-						RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}]
+						CustomRequirement: function(age) {
+							if (Equipment.STRENGTH.currentUpgrade > 1) {
+								return true;
+							}
+
+							if (!Data.canPlaySong(Songs.SONG_OF_TIME) || !Settings.GlitchesToAllow.gtgSilverBlockSkip || !Equipment.HOVER_BOOTS.playerHas) {
+								return false;
+							}
+
+							return (Data.hasBottleOrBlueFire() && Data.canMegaFlip(age)) || Data.canHammerHoverBootsSuperslide(age);
+						}
 					},
 
 					spinningRoom: {
@@ -4005,7 +4043,7 @@ let MQDungeons = {
 				Exits: {
 					afterRupeeRoom: {
 						Name: "afterRupeeRoom",
-						Age: Age.CHILD // This won't be useful as adult //TODO: can you actually do this? is the door barred?
+						Age: Age.CHILD // This won't be useful as adult
 					},
 
 					armosRoom: {
@@ -4031,12 +4069,8 @@ let MQDungeons = {
 
 					iceArrowsRoom: {
 						Name: "iceArrowsRoom",
-						Age: Age.EITHER,
-						RequiredAdultItems: [Items.MEGATON_HAMMER, Items.HOOKSHOT],
-						CustomRequirement: function(age) {
-							let canVineClip = Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
-							return canVineClip || Data.canWeirdShot(age) || getKeyCount("Training Grounds") >= 3;
-						}
+						Age: Age.ADULT,
+						RequiredAdultItems: [Items.HOOKSHOT]
 					}
 				},
 
@@ -4044,7 +4078,7 @@ let MQDungeons = {
 					"Chest in Spinning Room": {
 						Name: "Chest in Spinning Room",
 						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 169, y: 91 }, //TODO: is this where it actually spawns?
+						MapInfo: { x: 163, y: 60 },
 						Age: Age.ADULT,
 						Order: 10,
 						LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Jump to the spinning ring and shoot the eyes of the statues to spawn the chest.",
@@ -4090,13 +4124,32 @@ let MQDungeons = {
 						CustomRequirement: function(age) {
 							return Items.FAIRY_BOW.playerHas || Data.canUseFireItem(age);
 						}
+					},
+					armosRoom: {
+						Name: "armosRoom"
 					}
 				},
 				ItemLocations: {}
 			},
 
 			backOfMaze: {
-				Exits: {},
+				Exits: {
+					bigLavaRoom: {
+						Name: "bigLavaRoom",
+						Age: Age.EITHER,
+						CustomRequirement: function(age) {
+							if (Data.canMegaFlip(age)) { return true; }
+							if (age === Age.CHILD) { return false; }
+
+							let canUseFireArrows = Equipment.MAGIC.playerHas && Items.FAIRY_BOW.playerHas;
+							return canUseFireArrows ||
+								Items.HOOKSHOT.currentUpgrade === 2 ||
+								Data.canBombSuperslideWithHovers(age) ||
+								Data.canHammerHoverBootsSuperslide(age);
+
+						}
+					}
+				},
 				ItemLocations: {
 					"Close Chest in Back of Maze": {
 						Name: "Close Chest in Back of Maze",
@@ -4113,6 +4166,24 @@ let MQDungeons = {
 						Age: Age.ADULT,
 						Order: 15,
 						LongDescription: "After getting the close chest from the back of the maze, continue along counter-clockwise to get the next chest (there are no doors to go through)."
+					}
+				}
+			},
+
+			mazeCenter: {
+				Exits: {},
+				ItemLocations: {
+					"Spawn Ice Arrow Chest": {
+						Name: "Spawn Ice Arrow Chest",
+						ItemGroup: ItemGroups.NON_ITEM,
+						MapInfo: { x: 164, y: 160 },
+						Age: Age.EITHER,
+						Order: 6.1,
+						UseAdultAge: function() { 
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.gtgChildVineClips && Settings.GlitchesToAllow.equipSwap) { return false; }
+							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+						},
+						RequiredItems: [Items.MEGATON_HAMMER]
 					}
 				}
 			},
@@ -4144,20 +4215,31 @@ let MQDungeons = {
 				},
 
 				ItemLocations: {
-					//TODO: possibility that ONLY child can spawn this, but adult can get the chest... 
-					// would need a non-item location for actually spawning it, OR check that at least one age can get to both places
 					"Chest Spawned from Maze Center": {
 						Name: "Chest Spawned from Maze Center",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 166, y: 132 },
 						Age: Age.EITHER,
-						RequiredItems: [Items.MEGATON_HAMMER],
 						Order: 11,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.gtgChildVineClips && Settings.GlitchesToAllow.equipSwap) { return false; }
+							if (Settings.RandomizerSettings.shuffleDungeonEntrances && (Settings.GlitchesToAllow.gtgChildVineClips || Settings.GlitchesToAllow.equipSwap)) { return false; }
 							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
 						},
-						LongDescription: "First, spawn the chest by making your way to the center of the maze. Break the box, then hammer the rusted switch to spawn the chest.<br/><br/>In the spinning room, hookshot to the target in the center of the eye statues. From there, hookshot the crystal switch to unbar the door. Go in and claim the chest."
+						LongDescription: "First, spawn the chest by making your way to the center of the maze. Break the box, then hammer the rusted switch to spawn the chest.<br/><br/>In the spinning room, hookshot to the target in the center of the eye statues. From there, hookshot the crystal switch to unbar the door. Go in and claim the chest.",
+						CustomRequirement: function(age) {
+							// If the chest is already spawned, we're good
+							if (Data.itemLocationObtained("Training Grounds", "mazeCenter", "Spawn Ice Arrow Chest")) {
+								return true;
+							}
+							
+							// Otherwise check that we CAN spawn the chest
+							if (!Data.canUseHammer(age)) {
+								return false;
+							}
+
+							let canVineClip = Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
+							return canVineClip || Data.canWeirdShot(age) || getKeyCount("Training Grounds") >= 3;
+						}
 					}
 				}
 			}
