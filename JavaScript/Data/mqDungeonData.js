@@ -4281,7 +4281,7 @@ let MQDungeons = {
 
 					fireRoom: {
 						Name: "fireRoom",
-						RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}], // TODO: are these item sets accurate?
+						RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}],
 						RequiredChoiceOfItems: [Items.HOOKSHOT, Equipment.HOVER_BOOTS],
 						CustomRequirement: function(age) {
 							return Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
