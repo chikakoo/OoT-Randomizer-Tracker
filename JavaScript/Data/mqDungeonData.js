@@ -347,7 +347,7 @@ let MQDungeons = {
 					"Skullula by Stair Room": {
 						Name: "Skullula by Stair Room",
 						ItemGroup: ItemGroups.SKULLTULA,
-						MapInfo: { x: 46, y: 259, floor: "F1" }, //TODO: confirm that it's really on this part of the room
+						MapInfo: { x: 46, y: 259, floor: "F1" },
 						Age: Age.EITHER,
 						Order: 7,
 						LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>Blow up the fake wall by the stairs. Play the song of time in the next room several times to navigate the maze to the skulltula.",
@@ -1051,7 +1051,6 @@ let MQDungeons = {
 						LockedDoor: "Locked Door by Twisted Corridor",
 						Map: "Forest Temple",
 						CustomRequirement: function(age) {
-							//TODO - is block skip possible still?
 							// If you can't push blocks, you MUST do the block skip
 							let hasStrength = Equipment.STRENGTH.playerHas;
 							if (!hasStrength && !Settings.GlitchesToAllow.forestBlockSkip) { return false; } 
@@ -1675,7 +1674,7 @@ let MQDungeons = {
 						Name: "boulderMaze",
 						LockedDoor: "Locked Door in Big Lava Room",
 						Map: "Fire Temple",
-						NeedsFire: true // //TODO: test if fire arrows actually work here
+						NeedsFire: true
 					},
 				},
 
@@ -1683,7 +1682,7 @@ let MQDungeons = {
 					"Skulltula by Left Goron in Lava Room": {
 						Name: "Skulltula by Left Goron in Lava Room",
 						ItemGroup: ItemGroups.SKULLTULA,
-						MapInfo: {x: 280, y: 139, floor: "F1" },
+						MapInfo: { x: 280, y: 139, floor: "F1" },
 						Age: Age.ADULT,
 						Order: 8,
 						LongDescription: "Go to the left side of the big lava room. Hammer the switch to gain access to the skulltula."
@@ -1691,22 +1690,22 @@ let MQDungeons = {
 					"Boss Key Chest": {
 						Name: "Boss Key Chest",
 						ItemGroup: ItemGroups.CHEST,
-						MapInfo: {x: 174, y: 85, floor: "F1" },
+						MapInfo: { x: 174, y: 85, floor: "F1" },
 						Age: Age.ADULT,
 						Order: 9,
 						RequiredItems: [Items.HOOKSHOT],
-						NeedsFire: true, //TODO: ensure that Din's Fire is enough
+						NeedsFire: true,
 						LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to it."
 					},
 					"Chest by Right Goron in Lava Room": {
 						Name: "Chest by Right Goron in Lava Room",
 						ItemGroup: ItemGroups.CHEST,
-						MapInfo: {x: 202, y: 287, floor: "F1" },
+						MapInfo: { x: 202, y: 287, floor: "F1" },
 						Age: Age.ADULT,
 						Order: 10,
 						RequiredItems: [Items.HOOKSHOT],
 						NeedsExplosives: true,
-						NeedsFire: true, //TODO: ensure that fire arrows work
+						NeedsFire: true,
 						LongDescription: "Hookshot to the torch on the right side of the lava room. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron."
 					},
 				}
@@ -1728,7 +1727,7 @@ let MQDungeons = {
 						MapInfo: { x: 321, y: 212, floor: "F3" },
 						Age: Age.ADULT,
 						Order: 11,
-						LongDescription: "In the maze, there's a switch behind some metal bars. Use a spin attack/explosion/Din's Fire to hit it. The chest is in one of the crates."
+						LongDescription: "In the maze, there's a switch behind some metal bars. Use a jumpslash to hit it. The chest is in one of the crates."
 					}
 				}
 			},
@@ -1737,7 +1736,7 @@ let MQDungeons = {
 				Exits: {
 					aboveBoulderMaze: {
 						Name: "aboveBoulderMaze",
-						RequiredSongs: [Songs.SONG_OF_TIME] //TODO: is longshot good enough?
+						RequiredSongs: [Songs.SONG_OF_TIME]
 					},
 
 					fireWallMaze: {
@@ -1886,9 +1885,6 @@ let MQDungeons = {
 		}
 	},
 
-	//TODO: can you screw yourself if you have no hookshot to reset the water levels?
-	// maybe not since the whirlpoolRoom requires it...
-	//TODO also: my logic says only one key is required; theirs says 2 - why is that?
 	"Water Temple": {
 		Abbreviation: "WATR",
         MapGroup: MapGroups.DUNGEONS,
@@ -1898,6 +1894,11 @@ let MQDungeons = {
 		Regions: {
 			main: {
 				Exits: {
+					behindGateInMidSouthRoom: {
+						Name: "behindGateInMidSouthRoom",
+						RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+					},
+					
 					lowWaterLevel: {
 						Name: "lowWaterLevel",
 						RequiredItems: [Equipment.IRON_BOOTS],
@@ -1907,10 +1908,12 @@ let MQDungeons = {
 						}
 					},
 
-					highWaterLevel: {
-						Name: "highWaterLevel",
+					whirlpoolRoom: {
+						Name: "whirlpoolRoom",
 						RequiredItems: [Items.HOOKSHOT],
-						RequiredSongs: [Songs.ZELDAS_LULLABY]
+						CustomRequirement: function(age) {
+							return getKeyCount("Water Temple") >= 1;
+						}
 					},
 
 					bottomFloor: {
@@ -1924,18 +1927,10 @@ let MQDungeons = {
 						}
 					},
 
-					whirlpoolRoom: {
-						Name: "whirlpoolRoom",
-						RequiredItems: [Items.HOOKSHOT],
-						CustomRequirement: function(age) {
-							return getKeyCount("Water Temple") >= 1;
-						}
-					},
-
 					bossRoom: {
 						Name: "bossRoom",
 						CustomRequirement: function(age) {
-							if (!hasBossKey("Water Temple")) { return false; } //TODO: Water BK skip in MQ is really easy
+							if (!hasBossKey("Water Temple")) { return false; }
 				
 							let hasLongshot = Items.HOOKSHOT.currentUpgrade === 2;
 							let canSkipLongshot = Data.canHammerHoverBootsSuperslide(age);
@@ -1979,6 +1974,14 @@ let MQDungeons = {
 					midWaterLevel: {
 						Name: "midWaterLevel",
 						RequiredItems: [Items.HOOKSHOT]
+					},
+
+					behindGateInMidSouthRoom: {
+						Name: "behindGateInMidSouthRoom",
+						CustomRequirement: function(age) {
+							let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
+							return Items.HOOKSHOT.playerHas || canUseDins;
+						}
 					}
 				},
 
@@ -1993,17 +1996,21 @@ let MQDungeons = {
 						CustomRequirement: function(age) {
 							return Data.canUseFireItem(age) || Items.FAIRY_BOW.playerHas;
 						}
-					},
+					}
+				}
+			},
 
+			behindGateInMidSouthRoom: {
+				Exits: {},
+				ItemLocations: {
 					"Skulltula in Mid South Room": {
 						Name: "Skulltula in Mid South Room",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 267, y: 203, floor: "F2" },
 						Age: Age.ADULT,
 						Order: 12,
-						LongDescription: "With the water level lowered (mid is easier), navigate to the bottom middle area. Hit the switch to open the gated door. Use Din's Fire to light the torch and get the skulltula behind the cell.",
-						RequiredItems: [Items.DINS_FIRE, Equipment.MAGIC] //TODO: can you get with just iron boots and hookshot?
-					},
+						LongDescription: "At any water level (mid is easiest), navigate to the bottom middle area. Hit the switch to open the gated door. Use Din's Fire to light the torch and get the skulltula behind the cell.<br/><br/>Without a fire item, stand in front of the torch and hookshot it. You can now just walk in. To get out, target the jail and hookshot while holding Z and right while next to the torch."
+					}
 				}
 			},
 
@@ -2019,11 +2026,6 @@ let MQDungeons = {
 						LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. In this room, break the box to your left and hit the switch. Now, hookshot up to the next floor. The skullula is in one of the boxes."
 					}
 				}
-			},
-
-			highWaterLevel: { //TODO: is this even needed?
-				Exits: {},
-				ItemLocations: {}
 			},
 
 			bottomFloor: {
@@ -2046,9 +2048,10 @@ let MQDungeons = {
 					singleWaterPillarRoom: {
 						Name: "singleWaterPillarRoom",
 						CustomRequirement: function(age) {
+							let canHitSwitch = Equipment.IRON_BOOTS.playerHas || Equipment.SCALE.playerHas;
 							let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
 							let canWeirdShot = Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2;
-							return canUseDins || canWeirdShot;
+							return canHitSwitch && (canUseDins || canWeirdShot);
 						}
 					}
 				},
@@ -2096,7 +2099,7 @@ let MQDungeons = {
 				},
 
 				ItemLocations: {
-					"Skulltula in Room With Three Torches": { //TODO: I think this is the right region, confirm
+					"Skulltula in Room With Three Torches": {
 						Name: "Skulltula in Room With Three Torches",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 25, y: 260, floor: "F1" },
@@ -2146,7 +2149,7 @@ let MQDungeons = {
 						Age: Age.ADULT,
 						Order: 1,
 						MapInfo: { x: 227, y: 135, floor: "F3" },
-						LongDescription: "The boss room is on the opposite side of the entrance to the temple. You can actually immediately get there with no glitches required if you already have the longshot and boss key.<br/><br/>To defeat morpha, hookshot her nucleus out of the water and hit her to damage her. A good way to kill is to continuously hookshot her to bring her into a corner. Now, get to the other side of her and slash once so it runs into the corner. Now quickly jumpslash it (Z + A) and continue to crouch stab (Hold R, spam B) until it's dead."
+						LongDescription: "The boss room is on the opposite side of the entrance to the temple. You can actually immediately get there with no glitches required if you already have the longshot and boss key.<br/><br/>In the room with the spike traps, either roll up with hover boots equipped, or shoot the crystal switch above the boss door. If you don't have the key, climb on the hookshot targets, sidehop, then jumpslash at the door while holding forward to clip through.<br/><br/>To defeat morpha, hookshot her nucleus out of the water and hit her to damage her. A good way to kill is to continuously hookshot her to bring her into a corner. Now, get to the other side of her and slash once so it runs into the corner. Now quickly jumpslash it (Z + A) and continue to crouch stab (Hold R, spam B) until it's dead."
 					},
 					"Blue Warp": {
 						Name: "Blue Warp",
