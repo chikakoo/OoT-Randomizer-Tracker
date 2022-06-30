@@ -2289,7 +2289,6 @@ let MQDungeons = {
 						CustomRequirement: function(age) {
 							if (Data.canMegaFlip(age)) { return true; }
 				
-							//TODO: Test Din's fire!
 							let canUseFireArrows = Items.FAIRY_BOW.playerHas && Items.FIRE_ARROW.playerHas && Equipment.MAGIC.playerHas;
 							return canUseFireArrows || Equipment.HOVER_BOOTS.playerHas;
 						}
@@ -3547,7 +3546,10 @@ let MQDungeons = {
 						Order: 6,
 						LongDescription: "This skulltula is on the ledge to your right in the big room. Either play the scarecrow's song and hook it, or make use of a ground jump to get up there.",
 						CustomRequirement: function(age) {
-							let canUseScarecrow = Data.canHookScarecrow(age) && Data.getEmptyBottleOrBlueFireCount() > 1;
+							let canPlayOcarinaNormally = Items.OCARINA.playerHas && Data.hasBottleOrBlueFire();
+							let canUseOI = Settings.GlitchesToAllow.ocarinaItems && Data.getEmptyBottleOrBlueFireCount() > 1;
+							let canPlayScarecrowsSong = canPlayOcarinaNormally || canUseOI;
+							let canUseScarecrow = Data.canHookScarecrow(age) && canPlayScarecrowsSong;
 							return canUseScarecrow ||  Data.canGroundJumpWithBomb(age);
 						}
 					},
@@ -3580,7 +3582,7 @@ let MQDungeons = {
 						Age: Age.ADULT,
 						Order: 2,
 						LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>On the floor, there's a switch embedded in the ice. Use an explosive to hit it. This will make the block around the heart piece item disappear.",
-						NeedsExplosives: true //TODO: does din's fire work?
+						NeedsExplosives: true
 					},
 					"Skulltula in North Room": {
 						Name: "Skulltula in North Room",
@@ -3591,7 +3593,9 @@ let MQDungeons = {
 						LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>Play the song of time on the top near the pillar with the skulltula to spawn a block. Climb it, and play the song again. Use blue fire to melt the ice to gain access to the skulltula.",
 						RequiredSongs: [Songs.SONG_OF_TIME],
 						CustomRequirement: function(age) {
-							return Data.getEmptyBottleOrBlueFireCount() > 1;
+							let canPlayOcarinaNormally = Items.OCARINA.playerHas && Data.hasBottleOrBlueFire();;
+							let canUseOI = Settings.GlitchesToAllow.ocarinaItems && Data.getEmptyBottleOrBlueFireCount() > 1;
+							return canPlayOcarinaNormally || canUseOI;
 						}
 					},
 					"Chest in North Room": {
