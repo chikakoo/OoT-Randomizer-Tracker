@@ -3620,6 +3620,54 @@ let MQDungeons = {
 		Regions: {
 			main: {
 				Exits: {
+					afterFirstCrawlSpace: {
+						Name: "afterFirstCrawlSpace",
+						CustomRequirement: function(age) {
+							return age === Age.CHILD || (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2);
+						}
+					}
+				},
+				ItemLocations: {
+					// Locked Doors
+					"Locked Door in West Main Room": {
+						Name: "Locked Door in West Main Room",
+						ItemGroup: ItemGroups.LOCKED_DOOR,
+						Regions: ["main"],
+						MapInfo: { x: 73, y: 137, floor: "F1" },
+						Age: Age.EITHER,
+						UseChildAge: function() {
+							return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
+						},
+						Order: 0.1,
+						LongDescription: "This is the door on the west side of the main room.",
+						KeyRequirement: function(age) {
+							return { min: 1, max: 2 };
+						}
+					},
+
+					"Locked Door in Floor Master Room": {
+						Name: "Locked Door in Floor Master Room",
+						ItemGroup: ItemGroups.LOCKED_DOOR,
+						Regions: ["main"],
+						MapInfo: { x: 288, y: 123, floor: "F1" },
+						Age: Age.EITHER,
+						UseChildAge: function() {
+							return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
+						},
+						Order: 1.1,
+						LongDescription: "This is the locked door you find after the room with the floormasters.",
+						CustomRequirement: function(age) {
+							return Data.canHitSwitchAtShortDistance(age);
+						},
+						KeyRequirement: function(age) {
+							return { min: 1, max: 2 };
+						}
+					}
+				}
+			},
+
+			afterFirstCrawlSpace: {
+				Exits: {
 					centerRoom: {
 						Name: "centerRoom",
 						CustomRequirement: function(age) {
@@ -3631,7 +3679,7 @@ let MQDungeons = {
 					drainedWater: {
 						Name: "drainedWater",
 						CustomRequirement: function(age) {
-							return Data.canHitSwitchAtShortDistance(age);
+							return Data.canHitSwitchAtShortDistance(age); // Adult can weridshot into the deadhand area, which is all drainedWater is
 						}
 					},
 
@@ -3647,37 +3695,7 @@ let MQDungeons = {
 					}
 				},
 
-				ItemLocations: {
-					// Locked Doors
-					"Locked Door in West Main Room": {
-						Name: "Locked Door in West Main Room",
-						ItemGroup: ItemGroups.LOCKED_DOOR,
-						Regions: ["main"],
-						MapInfo: { x: 73, y: 137, floor: "F1" },
-						Age: Age.CHILD,
-						Order: 0.1,
-						LongDescription: "This is the door on the west side of the main room.",
-						KeyRequirement: function(age) {
-							return { min: 1, max: 2 };
-						}
-					},
-
-					"Locked Door in Floor Master Room": {
-						Name: "Locked Door in Floor Master Room",
-						ItemGroup: ItemGroups.LOCKED_DOOR,
-						Regions: ["main"],
-						MapInfo: { x: 288, y: 123, floor: "F1" },
-						Age: Age.CHILD,
-						Order: 1.1,
-						LongDescription: "This is the locked door you find after the room with the floormasters.",
-						CustomRequirement: function(age) {
-							return Data.canHitSwitchAtShortDistance(age);
-						},
-						KeyRequirement: function(age) {
-							return { min: 1, max: 2 };
-						}
-					},
-				}
+				ItemLocations: {}
 			},
 
 			centerRoom: {
@@ -3696,7 +3714,10 @@ let MQDungeons = {
 						Name: "Center Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 194, y: 127, floor: "F1" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
+						UseChildAge: function() {
+							return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
+						},
 						Order: 2,
 						LongDescription: "Navigate to the back of the main room and play Zelda's Lullaby at the triforce. This will open a bunch of gates. Proceed behind you to the center room with the chest.<br/><br/>Alternatively, you can bomb the rocks near the middle-west of the main room. Sidehop then jumpslash over the hole in the ground to get to the center area."
 					},
@@ -3704,7 +3725,10 @@ let MQDungeons = {
 						Name: "Skulltula in Grave Room",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 159, y: 99, floor: "F1" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
+						UseChildAge: function() {
+							return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
+						},
 						Order: 3,
 						LongDescription: "Bomb some rocks near the southeast corner of the main room and press the switch to unbar a door. Alternatively, you can make your way to the center room and sidehop and jumpslash to get into this area.<br/><br/>Enter the door that was just unbarred. The skulltula is under the gravestone. Be careful of invisible enemies."
 					},
@@ -3712,7 +3736,10 @@ let MQDungeons = {
 						Name: "Freestanding Item Near Center Room",
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 216, y: 80, floor: "F1" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
+						UseChildAge: function() {
+							return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
+						},
 						Order: 4,
 						LongDescription: "From the center room, activate the switch in the northeast section to unbar a door. Enter it, and navigate clockwise around the room to get to the item.",
 						CustomRequirement: function(age) {
@@ -3723,9 +3750,12 @@ let MQDungeons = {
 						Name: "Skulltula in Basement",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 51, y: 43, floor: "B1" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
+						UseChildAge: function() {
+							return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
+						},
 						Order: 8,
-						LongDescription: "To get to the basement, you can fall down a hole in the center room. Navigate to the northeastern part of the basement to get to the skulltula. Watch out for invisible giant skulltulas on the way."
+						LongDescription: "To get to the basement, you can fall down a hole in the center room (not the very center). Navigate to the northeastern part of the basement to get to the skulltula. Watch out for invisible giant skulltulas on the way."
 					}
 				}
 			},
@@ -3737,10 +3767,15 @@ let MQDungeons = {
 						Name: "Dead Hand Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 317, y: 238, floor: "F1" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
+						UseChildAge: function() {
+							return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
+						},
 						Order: 5,
 						LongDescription: "Drain the water by hitting the switch in the back of the main room. Navigate back to the entrance and enter the crawl space leading to the Dead Hand room like normal. Kill him to spawn the chest.",
 						CustomRequirement: function(age) {
+							if (age === Age.ADULT) { return true; }
+
 							let swordRequired = Settings.RandomizerSettings.deadHandNeedsSword;
 							if (swordRequired) { return Equipment.KOKIRI_SWORD.playerHas; }
 							return Data.hasSwordWeapon(age);
@@ -3750,7 +3785,10 @@ let MQDungeons = {
 						Name: "Freestanding Item in Dead Hand Room",
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 333, y: 229, floor: "F1" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
+						UseChildAge: function() {
+							return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
+						},
 						Order: 6,
 						LongDescription: "In the Dead Hand room, bomb the back left rubble to reveal the item."
 					}
@@ -3766,7 +3804,7 @@ let MQDungeons = {
 						MapInfo: { x: 295, y: 235, floor: "B1" },
 						Age: Age.CHILD,
 						Order: 7,
-						LongDescription: "Crawl through the crawlspace in the back right corner of the main room. Hit the switch in the eye of the picture on the wall to open the door. Ignore the enemies and open the locked door. Bomb the ruble in the next room to reveal a switch. Navigate to the center and fall in the grate that opened.<br/><br/>Press the switch to spawn the chest. Navigate to the southeast part of the basement to get to the chest."
+						LongDescription: "Crawl through the crawlspace in the back right corner of the main room. Hit the switch in the eye of the picture on the wall to open the door. Ignore the enemies and open the locked door. Bomb the rubble in the next room to reveal a switch. Navigate to the center and fall in the grate that opened.<br/><br/>Press the switch to spawn the chest. Navigate to the southeast part of the basement to get to the chest."
 					}
 				}
 			},
@@ -3778,7 +3816,10 @@ let MQDungeons = {
 						Name: "Skulltula in Coffin Room",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 18, y: 128, floor: "F1" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
+						UseChildAge: function() {
+							return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
+						},
 						Order: 1,
 						LongDescription: "Navigate to the left room in the main area. Unlock the door, then navigate to the back right section of the room. The skulltula is hiding in the corner behind a pillar."
 					}
