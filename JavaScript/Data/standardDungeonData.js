@@ -1020,7 +1020,7 @@ let StandardDungeons = {
 			topOfOutsideRight: {
 				Exits: {
 					drainedWell: {
-						Name: "drainedWell" //TODO: add places for the hookshot underwater check trick - just make the other regions lead to drained well with that trick
+						Name: "drainedWell"
 					},
 					outsideRight: {
 						Name: "outsideRight" 

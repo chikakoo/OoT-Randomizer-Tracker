@@ -115,8 +115,10 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 4,
 						LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so.<br/><br/>Head to the other side of the room. The room up the vines to the left is blocked by rocks. Use a bombchu to gain access. The skulltula is up on the wall.",
-						RequiredItems: [Items.BOMBCHU],
-						IsAtShortDistance: true
+						IsAtShortDistance: true,
+						CustomRequirement: function(age) {
+							return Items.BOMBCHU.playerHas || (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2);
+						}
 					}
 				}
 			},
@@ -153,8 +155,10 @@ let MQDungeons = {
 				Exits: {
 					bossRoom: {
 						CustomRequirement: function(age) {
+							let canBurnWeb = Data.canUseFireItem(age) || Data.canUseDekuStick(age);
+							let canPassWeb = canBurnWeb || Data.canWeirdShot(age);
 							let canStunScrubs = (age === Age.CHILD && Equipment.DEKU_SHIELD.playerHas) || (age === Age.ADULT && Equipment.HYLIAN_SHIELD.playerHas)
-							return (Data.canUseFireItem(age) || Data.canUseDekuStick(age)) && canStunScrubs;
+							return canPassWeb && canStunScrubs;
 						}
 					}
 				},
@@ -200,7 +204,7 @@ let MQDungeons = {
 						Name: "Heart Container",
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 257, y: 275, floor: "B2" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
 						Order: 13,
 						LongDescription: "Note that in Master Quest, the scrub sequence is 1, 3, 2.<br/><br/>To defeat Gohma, you must first stun her when her eye is red. You can use the slingshot or deku nuts to do this - nuts don't stun her for nearly as long, though. Once she's down, attack her. The quickest kill is with three deku stick jumpslashes (or one then two crouch stabs).",
 						CustomRequirement: function(age) {
@@ -211,7 +215,7 @@ let MQDungeons = {
 						Name: "Blue Warp",
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 270, y: 286, floor: "B2" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
 						Order: 14,
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 						CustomRequirement: function(age) {
