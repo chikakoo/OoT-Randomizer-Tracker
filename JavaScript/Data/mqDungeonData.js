@@ -3107,7 +3107,7 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 8,
 						AltOrder: 4,
-						LongDescription: "Shoot the eye switch on the left side of the statue to spawn this chest.",
+						LongDescription: "WALL MASTER WARNING:<br/>Shoot the eye switch on the left side of the statue to spawn this chest.",
 						RequiredChildItems: [Items.FAIRY_SLINGSHOT],
 						RequiredAdultItems: [Items.FAIRY_BOW]
 					},
@@ -3118,7 +3118,7 @@ let MQDungeons = {
 						Age: Age.ADULT,
 						Order: 14,
 						AltOrder: 10,
-						LongDescription: "In the statue room, make your way to the southeast corner using the hookshot. In the northeast part of the room, there's an invisible chest. Hookshot or hover boots to it."
+						LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way to the southeast corner using the hookshot. In the northeast part of the room, there's an invisible chest. Hookshot or hover boots to it."
 					},
 					"Chest in Boxes in Statue Room": {
 						Name: "Chest in Boxes in Statue Room",
@@ -3127,7 +3127,7 @@ let MQDungeons = {
 						Age: Age.ADULT,
 						Order: 15,
 						AltOrder: 11,
-						LongDescription: "In the statue room, make your way to the southeast corner using the hookshot. Now get to the hand with the triforce and play Zelda's Lullaby. This will spawn the chest to the right of the statue, under a box.",
+						LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way to the southeast corner using the hookshot. Now get to the hand with the triforce and play Zelda's Lullaby. This will spawn the chest to the right of the statue, under a box.",
 						RequiredSongs: [Songs.ZELDAS_LULLABY]
 					}
 				}

@@ -3336,7 +3336,7 @@ let StandardDungeons = {
 						Age: Age.CHILD,
 						Order: 2,
 						AltOrder: 29,
-						LongDescription: "Make your way around counter-clockwise around the child-only areas of the temple. In the room with the Anubis, either Din's fire him, or hit the switch then quickly navigate to the side directly opposite the fire so that it dies on it. In the room after that - collect the silver rupees to lower the bridge. Now you can use a Deku Stick (or Din's fire) to light the torches on the other side to spawn the chest. Note that you also could have used Din's fire on them earlier to avoid collecting the silver rupees.",
+						LongDescription: "WALL MASTER WARNING:<br/>Make your way around counter-clockwise around the child-only areas of the temple. In the room with the Anubis, either Din's fire him, or hit the switch then quickly navigate to the side directly opposite the fire so that it dies on it. In the room after that - collect the silver rupees to lower the bridge. Now you can use a Deku Stick (or Din's fire) to light the torches on the other side to spawn the chest. Note that you also could have used Din's fire on them earlier to avoid collecting the silver rupees.",
 						CustomRequirement: function(age) {
 							return Items.DEKU_STICK.playerHas || Data.canUseFireItem(age);
 						}
@@ -3353,7 +3353,7 @@ let StandardDungeons = {
 						Age: Age.CHILD,
 						Order: 3,
 						AltOrder: 30,
-						LongDescription: "After killing all the enemies in the first child-only room, enter the right room. There's a skulltula on the grate - kill it and collect it with your Boomerang. If you don't have one, navigate around the rooms counter-clockwise. Collect the silver rupees to lower the bridge. Kill it with bombs, a bombchu (it can slide along the pit at the bottom), Din's Fire, a stick jumpslash from the other side, or a slingshot. You can actually climb the side of the grate that the token is on with a well-angled jump to collect it without a Boomerang."
+						LongDescription: "WALL MASTER WARNING:<br/>After killing all the enemies in the first child-only room, enter the right room. There's a skulltula on the grate - kill it and collect it with your Boomerang. If you don't have one, navigate around the rooms counter-clockwise. Collect the silver rupees to lower the bridge. Kill it with bombs, a bombchu (it can slide along the pit at the bottom), Din's Fire, a stick jumpslash from the other side, or a slingshot. You can actually climb the side of the grate that the token is on with a well-angled jump to collect it without a Boomerang."
 					}
 				}
 			},

@@ -4217,14 +4217,14 @@ let MapLocations = {
                             return Data.canUseHammer(age) || Settings.GlitchesToAllow.childDoubleMagicFairy;
                         }
                     },
-                    "Grotto in Silver Rock by Goron": {
-                        Name: "Grotto in Silver Rock by Goron",
+                    "Grotto in Rock by Goron": {
+                        Name: "Grotto in Rock by Goron",
                         ItemGroup: ItemGroups.ENTRANCE,
                         MapInfo: { x: 64, y: 60 },
                         IsGrotto: true,
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.childDoubleMagicFairy && !Settings.GlitchesToAllow.equipSwap; },
-                        LongDescription: "Hammer the silver rock near the entrance to Goron City to access this grotto.",
+                        LongDescription: "Hammer the rock near the entrance to Goron City to access this grotto.",
                         RequiredItems: [Items.MEGATON_HAMMER]
                     }
                 }
