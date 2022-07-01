@@ -2606,7 +2606,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.LOCKED_DOOR,
 						Regions: ["afterTruthSpinner"],
 						MapInfo: { x: 330, y: 170, floor: "F1" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
 						Order: 4.1,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; },
 						LongDescription: "This is the door after the truth spinner room with the beamos. It's located behind the bombable wall.",
@@ -2639,7 +2639,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.LOCKED_DOOR,
 						Regions: ["afterBombableWall", "invisibleSpikeRoom"],
 						MapInfo: { x: 156, y: 92, floor: "B2" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
 						Order: 11.1,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; },
 						LongDescription: "This is the door after the invisible moving platform in the giant pit room.",
@@ -2673,7 +2673,6 @@ let StandardDungeons = {
 						MapInfo: { x: 156, y: 45, floor: "B2" },
 						Age: Age.ADULT,
 						Order: 14.1,
-						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; },
 						LongDescription: "This is the door in the room with redeads and invisible floor spikes that you have to hookshot up to",
 						KeyRequirement: function(age) {
 							let max = 3;
@@ -2706,7 +2705,6 @@ let StandardDungeons = {
 						MapInfo: { x: 303, y: 127, floor: "B1" },
 						Age: Age.ADULT,
 						Order: 17.1,
-						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; },
 						LongDescription: "This is the room with the gibdos after the hallway of fans.",
 						KeyRequirement: function(age) {
 							let max = 2;
@@ -2740,7 +2738,6 @@ let StandardDungeons = {
 						MapInfo: { x: 132, y: 136, floor: "B1" },
 						Age: Age.ADULT,
 						Order: 22.1,
-						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; },
 						LongDescription: "This is the room with the gibdos after the hallway of fans.",
 						KeyRequirement: function(age) {
 							let min = 5;
@@ -2901,7 +2898,7 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 9,
 						UseAdultAge: function() { 
-							return !Settings.RandomizerSettings.shuffleDungeonEntrancesE || !Settings.GlitchesToAllow.megaFlip;
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
 						},
 						LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. The chest is on the second cage to the right passed the ceiling spikes. To pass them, you can either use good timing, or pull the block out of the wall to the right (use the lens to find it) to act as an umbrella - assuming you have a strength upgrade."
 					},
