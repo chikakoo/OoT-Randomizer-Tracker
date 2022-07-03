@@ -904,14 +904,19 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 169, y: 89},
             Age: Age.EITHER,
-            UseChildAge: function() { return !Settings.GlitchesToAllow.adultDomainFromLake; },
+            UseChildAge: function() { return !Settings.GlitchesToAllow.adultDomainMegaflipClip && !Settings.GlitchesToAllow.adultLakesideLabClip; },
             LongDescription: "This is the entrance to Zora's Domain.",
-            RequiredChildItems: [Equipment.SCALE],
             CustomRequirement: function(age) {
-                if (age == Age.CHILD) { return true; }
-                return Settings.GlitchesToAllow.adultDomainFromLake && 
-                    Data.hasShield(age) &&
-                    (Items.BOMB.playerHas || Items.BOMBCHU.playerHas);
+                if (age === Age.CHILD && Equipment.SCALE.playerHas) { return true; }
+                if (!Data.hasShield(age)) { return false; }
+
+                if (age === Age.CHILD) {
+                    return Settings.GlitchesToAllow.childLakesideLabClip;
+                }
+
+                let defeatedMorpha = Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
+                return (Settings.GlitchesToAllow.adultLakesideLabClip && defeatedMorpha) ||
+                    (Settings.GlitchesToAllow.adultDomainMegaflipClip && Data.hasExplosives());
             }
         },
         "Owl": {
@@ -947,7 +952,9 @@ let OwExits = {
             LongDescription: "This is the entrance to the Water Temple.",
             IsDungeonEntrance: true,
             CustomRequirement: function(age) {
-                if (Settings.GlitchesToAllow.adultWaterTempleWithoutBoots && age === Age.ADULT && Data.hasShield(age)) {
+                let canDoClip = (Settings.GlitchesToAllow.childLakesideLabClip && age === Age.CHILD) ||
+                    (Settings.GlitchesToAllow.adultLakesideLabClip && age === Age.ADULT);
+                if (canDoClip && Data.hasShield(age)) {
                     return true;
                 }
 

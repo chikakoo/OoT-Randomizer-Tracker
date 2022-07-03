@@ -2234,6 +2234,13 @@ let StandardDungeons = {
 						Name: "dragonRoom",
 						RequiredItems: [Equipment.STRENGTH]
 					},
+					chestBehindBlockArea: {
+						Name: "chestBehindBlockArea",
+						CustomRequirement: function(age) {
+							let canGetToArea = Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
+							return canGetToArea && Data.canWeirdShot(age);
+						}
+					},
 					crackedWallArea: {
 						Name: "crackedWallArea",
 						CustomRequirement(age) {
@@ -2341,6 +2348,14 @@ let StandardDungeons = {
 						Name: "midWaterTriforceFloor"
 					},
 
+					chestBehindBlockArea: {
+						Name: "chestBehindBlockArea",
+						RequiredItems: [Equipment.STRENGTH, Items.FAIRY_BOW],
+						CustomRequirement: function(age) {
+							return Items.HOOKSHOT.currentUpgrade > 1 || Equipment.HOVER_BOOTS.playerHas;
+						}
+					},
+
 					crackedWallArea: {
 						Name: "crackedWallArea"
 					}
@@ -2355,18 +2370,19 @@ let StandardDungeons = {
 						MapInfo: {x: 293, y: 214, floor: "B1" },
 						RequiredItems: [Items.HOOKSHOT],
 						LongDescription: "After draining the water, head into the middle room on the bottom. This will initially be a locked door. Once inside, hookshot the target to get up to the mid water level triforce. Play Zelda's Lullaby to raise the water. Now, use your Iron boots to sink down in this room and enter the secret room under the floating block that was just raised up. Hit the crystal switch and defeat the enemies. When they're defeated, take off your boots and rise up to the top right corner of this room for the chest."
-					},
+					}
+				}
+			},
+			chestBehindBlockArea: {
+				Exits: {},
+				ItemLocations: {
 					"Chest Behind Block at Mid Level": {
 						Name: "Chest Behind Block at Mid Level",
 						ItemGroup: ItemGroups.CHEST,
 						Age: Age.ADULT,
 						Order: 17,
 						MapInfo: {x: 243, y: 243, floor: "F2" },
-						LongDescription: "First, make your way to the top east wing. Push back the block and then go to the southern mid-level.<br/><br/>Shoot the eye switch then quickly longshot the target or use your hover boots to pass the gate. Go down the room and push the red block backward. Now you must make your way back around, this time pushing the block forward out of your way. Head to the right to the chest.<br/><br/>Note that alternatively, you can shoot the eye switch twice to get the block in position.",
-						RequiredItems: [Equipment.STRENGTH, Items.FAIRY_BOW],
-						CustomRequirement: function(age) {
-							return Items.HOOKSHOT.currentUpgrade > 1 || Equipment.HOVER_BOOTS.playerHas;
-						}
+						LongDescription: "First, make your way to the top east wing. Push back the block and then go to the southern mid-level.<br/><br/>Shoot the eye switch then quickly longshot the target or use your hover boots to pass the gate. Go down the room and push the red block backward. Now you must make your way back around, this time pushing the block forward out of your way. Head to the right to the chest.<br/><br/>Note that alternatively, you can shoot the eye switch twice to get the block in position."
 					}
 				}
 			},
@@ -3721,7 +3737,7 @@ let StandardDungeons = {
 						Age: Age.ADULT,
 						Order: 28,
 						AltOrder: 25,
-						LongDescription: "At the start of the snake mirror maze, shine a light on the sun up on the archway into the next room.",
+						LongDescription: "Enter to the door to the left of the triforce symbol. Jumpslash the switch blocked by the bars and enter the next room.<br/><br/>At the start of the snake mirror maze, shine a light on the sun up on the archway into the next room.",
 						RequiredItems: [Equipment.MIRROR_SHIELD]
 					}
 				}
