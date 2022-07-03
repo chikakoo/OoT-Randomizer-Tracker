@@ -4870,7 +4870,7 @@ let StandardDungeons = {
 						IsPostWalkCheck: true,
 						LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
 						CustomRequirement: function(age) {
-							if (Settings.GlitchesToAllow.ganonTrialSkip) { return true; }
+							if (Settings.GlitchesToAllow.ganonTrialSkip || Data.canStaircaseHover(age)) { return true; }
 							let canUseLightArrows = Items.FAIRY_BOW.playerHas && Items.LIGHT_ARROW.playerHas && Equipment.MAGIC.playerHas;
 							if (!canUseLightArrows) { return false; }
 							

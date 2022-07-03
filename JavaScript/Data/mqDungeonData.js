@@ -4440,6 +4440,8 @@ let MQDungeons = {
 						IsPostWalkCheck: true,
 						LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
 						CustomRequirement: function(age) {
+							if (Data.canStaircaseHover(age)) { return true; }
+
 							let canUseLightArrows = Items.FAIRY_BOW.playerHas && Items.LIGHT_ARROW.playerHas && Equipment.MAGIC.playerHas;
 							if (!canUseLightArrows || getKeyCount("Ganon's Castle") < 3) { return false; }
 							
