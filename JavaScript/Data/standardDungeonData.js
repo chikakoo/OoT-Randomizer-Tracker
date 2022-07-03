@@ -1142,7 +1142,7 @@ let StandardDungeons = {
 						MapInfo: {x: 66, y: 45, floor: "F2" },
 						Age: Age.ADULT,
 						Order: 13,
-						LongDescription: "Navigate to the end of the block puzzle room. The door at the end leads to the twisted corridor. Shoot the eye above the door to untwist it. Go down the hallway and into the next room to find the boss key chest."
+						LongDescription: "WALL MASTER WARNING:<br/>Navigate to the end of the block puzzle room. The door at the end leads to the twisted corridor. Shoot the eye above the door to untwist it. Go down the hallway and into the next room to find the boss key chest."
 					},
 				}
 			},
@@ -3647,7 +3647,7 @@ let StandardDungeons = {
 					},
 					silverGauntsStatueHand: {
 						Name: "silverGauntsStatueHand",
-						RequiredAdultItems: [{item: Items.HOOKSHOT, upgrardeString: "2"}]
+						RequiredAdultItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
 					},
 					statueHands: {
 						Name: "statueHands"
