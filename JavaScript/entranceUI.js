@@ -225,7 +225,7 @@ let EntranceUI = {
 		buttonKeys.forEach(function(buttonName) {
 			let button = selectedGroup.buttons[buttonName];
 			if (button.postClick) {
-				button.postClick(itemLocation, false);
+				button.postClick(false);
 			}
 		});
 
