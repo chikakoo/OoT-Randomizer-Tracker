@@ -595,6 +595,12 @@ InteriorGroups = {
 				canGet: function(age) { return Data.canPlaySong(Songs.SONG_OF_STORMS); },
 				isChildOnly: function() { return true; },
 				postClick: function(isCompleted) {
+					let windmillData = Data.interiorTravelData.windmill;
+					if (windmillData && windmillData.EntranceGroup) {
+						isCompleted = windmillData.EntranceGroup.completed["Drain Well Water"]; 
+					} else {
+						isCompleted = false;
+					}
 					Data.interiorShuffleIsWindmillDrained = isCompleted;
 				}
 			}
