@@ -1078,25 +1078,37 @@ Data = {
     /**
      * Returns whether the player has the actual blue fire item or an empty bottle
      */
-    hasBottleOrBlueFire: function() {
-        return this.hasBottle() || Items.BLUE_FIRE.playerHas;
+    hasBottleOrBlueFire: function(age) {
+        return this.hasBottle() || this.canUseBlueFire(age);
     },
 
     /**
-     * Gets how many empty bottles or blue fires the player currently has
-     * @returns The count
+     * Returns whether the play can use blue fire - includes ice arrows
      */
-    getEmptyBottleOrBlueFireCount: function() {
+    canUseBlueFire: function(age) {
+        let canUseIceArrows = Settings.RandomizerSettings.iceArrowsActAsBlueFire && this.canUseIceArrows(age);
+        return canUseIceArrows || Items.BLUE_FIRE.playerHas;
+    },
+
+    /**
+     * MQ ice cavern requires either two bottles or the ability to use ice arrows in order to get some checks
+     * This check assumes that you already have access to blue fire!
+     */
+     canOIAndBlueFireWithoutRefilling: function(age) {
         let bottleArr = [
             Items.BOTTLE1.playerHas,
             Items.BIG_POE.currentUpgrade > 1,
             Items.BLUE_FIRE.playerHas,
             Items.RUTOS_LETTER.currentUpgrade > 1
         ];
-        return bottleArr.reduce((acc, value) => {
+        let bottleCount = bottleArr.reduce((acc, value) => {
             if (value) { return acc + 1; }
             return acc;
         }, 0);
+
+        let canUseIceArrows = Settings.RandomizerSettings.iceArrowsActAsBlueFire && this.canUseIceArrows(age);
+        let canDoOI = Settings.GlitchesToAllow.ocarinaItems;
+        return canDoOI && (bottleCount >= 1 && canUseIceArrows || bottleCount > 1);
     },
     
     /**
@@ -1139,6 +1151,13 @@ Data = {
      */
     canUseFireArrows: function(age) {
         return age === Age.ADULT && Equipment.MAGIC.playerHas && Items.FAIRY_BOW.playerHas && Items.FIRE_ARROW.playerHas;
+    },
+
+    /**
+     * Returns whether the player can use ice arrows
+     */
+    canUseIceArrows: function(age) {
+        return age === Age.ADULT && Equipment.MAGIC.playerHas && Items.FAIRY_BOW.playerHas && Items.ICE_ARROW.playerHas;
     },
 
     /**
@@ -1192,7 +1211,7 @@ Data = {
      */
     canBreakMudWalls: function(age, itemLocation) {
         if (itemLocation && !itemLocation.BlockedByMudWall) { return true; }
-        return this.canBlastOrSmash(age) || Items.BLUE_FIRE.playerHas;
+        return this.canBlastOrSmash(age) || this.canUseBlueFire(age);
     },
     
     /**

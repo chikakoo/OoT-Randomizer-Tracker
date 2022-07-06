@@ -4974,7 +4974,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Dump Blue Fire on the frozen King Zora to thaw him. Talk to him from the platform in front of him and he will give you an item.",
                         CustomRequirement: function(age) {
-                            return Items.BLUE_FIRE.playerHas || Settings.GlitchesToAllow.thawKingZoraWithNothing;
+                            return Data.canUseBlueFire(age) || Settings.GlitchesToAllow.thawKingZoraWithNothing;
                         }
                     },
                     "Skulltula on Top of Waterfall": {
@@ -4996,7 +4996,7 @@ let MapLocations = {
                         LongDescription: "This is the shop. As an adult, you can either use Blue Fire, or perform the shop skip to get inside.",
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return true; }
-                            return Items.BLUE_FIRE.playerHas || Settings.GlitchesToAllow.blueFireShopSkip;
+                            return Data.canUseBlueFire(age) || Settings.GlitchesToAllow.blueFireShopSkip;
                         },
                         OneWayInteriorSpawnEntrance: true
                     },
@@ -5030,7 +5030,7 @@ let MapLocations = {
                         LongDescription: "This is the shop. As an adult, you can either use Blue Fire, or perform the shop skip to get inside.",
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return true; }
-                            return Items.BLUE_FIRE.playerHas || Settings.GlitchesToAllow.blueFireShopSkip;
+                            return Data.canUseBlueFire(age) || Settings.GlitchesToAllow.blueFireShopSkip;
                         }
                     },
                     "Song of Storms Grotto": {

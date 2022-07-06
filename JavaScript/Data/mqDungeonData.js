@@ -240,7 +240,7 @@ let MQDungeons = {
 						Name: "mainRoom",
 						CustomRequirement: function(age) {
 							if (Data.itemLocationObtained("Dodongo's Cavern", "main", "Opened First Wall")) { return true; }
-							return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
+							return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
 						}
 					},
 					Exit: {
@@ -257,7 +257,7 @@ let MQDungeons = {
 						Order: -2,
 						LongDescription: "Use an explosive or the hammer to break the first wall. This is used to determine whether Adult opened the door for Child.",
 						CustomRequirement: function(age) {
-							return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
+							return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
 						}
 					},
 				}
@@ -288,7 +288,7 @@ let MQDungeons = {
 					eastRoom: { 
 						Name: "eastRoom",
 						CustomRequirement: function(age) { // Bring a bomb flower is handled by the upperLizalfosRoom
-                			return Data.canUseHammer(age) || Data.hasExplosives();
+                			return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
 						}
 					},
 
@@ -316,9 +316,9 @@ let MQDungeons = {
 						UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
 						Age: Age.EITHER,
 						Order: -1,
-						LongDescription: "This stone is behind the breakable wall in the western area of the main room.",
+						LongDescription: "This stone is behind the mud wall in the western area of the main room.",
 						CustomRequirement: function(age) {
-							return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
+							return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
 						}
 					},
 					"Left Business Scrub in Main Room": {
@@ -343,9 +343,9 @@ let MQDungeons = {
 						MapInfo: { x: 168, y: 180, floor: "F1" },
 						Age: Age.EITHER,
 						Order: 3,
-						LongDescription: "This chest is in the back right corner of the main room. Bomb or hammer the wall blocking it.",
+						LongDescription: "This chest is in the back right corner of the main room. Bomb, hammer, or blue fire the wall blocking it.",
 						CustomRequirement: function(age) {
-							return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
+							return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
 						}
 					},
 					"Skullula by Stair Room": {
@@ -3507,7 +3507,7 @@ let MQDungeons = {
 						Name: "afterFirstRoom",
 						CustomRequirement: function(age) {
 							let canKillFreezards = Data.hasSwordWeapon(age) || Data.canUseFireItem(age);
-							return canKillFreezards && Data.canHitSwitchAtShortDistance(age) && Data.hasBottleOrBlueFire();
+							return canKillFreezards && Data.canHitSwitchAtShortDistance(age) && Data.hasBottleOrBlueFire(age);
 						}
 					},
 					Exit: {
@@ -3550,8 +3550,8 @@ let MQDungeons = {
 						Order: 6,
 						LongDescription: "This skulltula is on the ledge to your right in the big room. Either play the scarecrow's song and hook it, or make use of a ground jump to get up there.",
 						CustomRequirement: function(age) {
-							let canPlayOcarinaNormally = Items.OCARINA.playerHas && Data.hasBottleOrBlueFire();
-							let canUseOI = Settings.GlitchesToAllow.ocarinaItems && Data.getEmptyBottleOrBlueFireCount() > 1;
+							let canPlayOcarinaNormally = Items.OCARINA.playerHas && Data.hasBottleOrBlueFire(age);
+							let canUseOI = Data.canOIAndBlueFireWithoutRefilling(age);
 							let canPlayScarecrowsSong = canPlayOcarinaNormally || canUseOI;
 							let canUseScarecrow = Data.canHookScarecrow(age) && canPlayScarecrowsSong;
 							return canUseScarecrow ||  Data.canGroundJumpWithBomb(age);
@@ -3597,8 +3597,8 @@ let MQDungeons = {
 						LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>Play the song of time on the top near the pillar with the skulltula to spawn a block. Climb it, and play the song again. Use blue fire to melt the ice to gain access to the skulltula.",
 						RequiredSongs: [Songs.SONG_OF_TIME],
 						CustomRequirement: function(age) {
-							let canPlayOcarinaNormally = Items.OCARINA.playerHas && Data.hasBottleOrBlueFire();;
-							let canUseOI = Settings.GlitchesToAllow.ocarinaItems && Data.getEmptyBottleOrBlueFireCount() > 1;
+							let canPlayOcarinaNormally = Items.OCARINA.playerHas && Data.hasBottleOrBlueFire(age);;
+							let canUseOI = Data.canOIAndBlueFireWithoutRefilling(age);
 							return canPlayOcarinaNormally || canUseOI;
 						}
 					},
@@ -4041,7 +4041,7 @@ let MQDungeons = {
 								return false;
 							}
 
-							return (Data.hasBottleOrBlueFire() && Data.canMegaFlip(age)) || Data.canHammerHoverBootsSuperslide(age);
+							return (Data.hasBottleOrBlueFire(age) && Data.canMegaFlip(age)) || Data.canHammerHoverBootsSuperslide(age);
 						}
 					},
 
@@ -4049,7 +4049,7 @@ let MQDungeons = {
 						Name: "spinningRoom",
 						RequiredSongs: [Songs.SONG_OF_TIME],
 						CustomRequirement: function(age) {
-							return Data.hasBottleOrBlueFire();
+							return Data.hasBottleOrBlueFire(age);
 						}
 					}
 				},
@@ -4314,7 +4314,7 @@ let MQDungeons = {
 					waterRoom: {
 						Name: "waterRoom",
 						CustomRequirement: function(age) {
-							return Data.hasBottleOrBlueFire();
+							return Data.hasBottleOrBlueFire(age);
 						}
 					},
 

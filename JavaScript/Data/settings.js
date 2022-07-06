@@ -92,6 +92,7 @@ let Settings = {
 		bombchusInLogic: true,
 		shuffleCarpetAndMedigoron: true,
 		deadHandNeedsSword: false,
+		iceArrowsActAsBlueFire: false,
 		
 		// Entrance shuffle settings
 		shuffleInteriorEntrances: true,

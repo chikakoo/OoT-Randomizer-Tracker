@@ -297,7 +297,7 @@ let StandardDungeons = {
 						LongDescription: "Go to the room to the east of the main room. If you hug the right wall, you'll find a bombable wall. You can either blow it up with your own explosive, or kill a baby Dodongo near the wall.<br/><br/>Once inside, head to the back of the room to find the skulltula.",
 						CustomRequirement: function(age) {
 							// First check covers bombs/hammer/stunning the baby dodongo
-							return Data.canKillStunnableEnemy(age) || Items.BLUE_FIRE.playerHas;
+							return Data.canKillStunnableEnemy(age) || Data.canUseBlueFire(age);
 						}
 					},
 					"Skulltula on East Room Ledge": {
@@ -3788,7 +3788,7 @@ let StandardDungeons = {
 				Exits: {
 					blueFireRequired: {
 						CustomRequirement: function(age) {
-							return (age === Age.ADULT && Data.hasBottle()) || Items.BLUE_FIRE.playerHas;
+							return (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
 						}
 					}
 				},
@@ -4877,7 +4877,7 @@ let StandardDungeons = {
 							let canDoForest = Data.canUseFireItem(age) && Equipment.HOVER_BOOTS.playerHas;
 							let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
 							let canDoFire = tunicCheck && Items.HOOKSHOT.playerHas && Equipment.STRENGTH.currentUpgrade === 3;
-							let canDoWater = (Data.hasBottle() || Items.BLUE_FIRE.playerHas) && Items.MEGATON_HAMMER.playerHas;
+							let canDoWater = (Data.hasBottle() || Data.canUseBlueFire(age)) && Items.MEGATON_HAMMER.playerHas;
 							let canDoShadow = Data.canAccessMap(age, "Ganon's Castle", "shadowTrialMiddle") && Items.MEGATON_HAMMER.playerHas;
 							let canDoSpirit = Data.canAccessMap(age, "Ganon's Castle", "spiritTrialRoom3") && Equipment.MIRROR_SHIELD.playerHas;
 							let canDoLight = Data.canAccessMap(age, "Ganon's Castle", "lightTrialRoom3") && Items.HOOKSHOT.playerHas;
