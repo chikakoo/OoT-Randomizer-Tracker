@@ -89,8 +89,9 @@ let Settings = {
 		scrubSanity: true,
 		shopSanity: true,
 		cowSanity: true,
-		bombchusInLogic: true,
 		shuffleCarpetAndMedigoron: true,
+		shuffleAllFrogSongs: false,
+		bombchusInLogic: true,
 		deadHandNeedsSword: false,
 		iceArrowsActAsBlueFire: false,
 		

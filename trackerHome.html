@@ -365,11 +365,6 @@
 							<input type="checkbox" name="bombchusInLogic" value="bombchusInLogic">
 							Bombchus In Logic
 						</label>
-						<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleCarpetAndMedigoron", event)'
-							title="If true, shuffles the item in the desert carpet shop and the item that medigoron sells you.">
-							<input type="checkbox" name="shuffleCarpetAndMedigoron" value="shuffleCarpetAndMedigoron">
-							Shuffle Carpet Salesman and Medigoron
-						</label>
 						<label onclick='SettingsPage.setBooleanValueForRandomizer("deadHandNeedsSword", event)'
 							title="If true, deadhand is only expected to be killed when you have the Kokiri Sword. Otherwise, you need to bring a lot of Deku Sticks to kill him.">
 							<input type="checkbox" name="deadHandNeedsSword" value="deadHandNeedsSword">
@@ -398,6 +393,16 @@
 						<label onclick='SettingsPage.setBooleanValueForRandomizer("cowSanity", event)' title="Randomize the first item you get from cows.">
 							<input type="checkbox" name="cowSanity" value="cowSanity">
 							Cowsanity
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleCarpetAndMedigoron", event)'
+							title="Shuffles the item in the desert carpet shop and the item that medigoron sells you.">
+							<input type="checkbox" name="shuffleCarpetAndMedigoron" value="shuffleCarpetAndMedigoron">
+							Shuffle Carpet Salesman and Medigoron
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleAllFrogSongs", event)'
+							title="Shuffles all of the frog songs into the item pool, not just the Song of Storms one. Adds 5 more checks.">
+							<input type="checkbox" name="shuffleAllFrogSongs" value="shuffleAllFrogSongs">
+							Shuffle All Frog Songs
 						</label>
 						<div class="settings-radio-group" title="How small keys are randomized.">
 							Small Key Setting

@@ -4766,13 +4766,58 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "This is the guy who sells beans near the Hyrule Field entrance."
                     },
+                    "Frog Zelda's Lullaby": {
+                        Name: "Frog Zelda's Lullaby",
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 152, y: 96 },
+                        Age: Age.CHILD,
+                        LongDescription: "Play Zelda's Lullaby for the frogs near the middle of the map to receive this item.",
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleAllFrogSongs; },
+                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                    },
+                    "Frog Epona's Song": {
+                        Name: "Frog Epona's Song",
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 156, y: 96 },
+                        Age: Age.CHILD,
+                        LongDescription: "Play Epona's Song for the frogs near the middle of the map to receive this item.",
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleAllFrogSongs; },
+                        RequiredSongs: [Songs.EPONAS_SONG]
+                    },
+                    "Frog Saria's Song": {
+                        Name: "Frog Saria's Song",
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 160, y: 96 },
+                        Age: Age.CHILD,
+                        LongDescription: "Play Saria's Song for the frogs near the middle of the map to receive this item.",
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleAllFrogSongs; },
+                        RequiredSongs: [Songs.SARIAS_SONG]
+                    },
+                    "Frog Sun's Song": {
+                        Name: "Frog Sun's Song",
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 152, y: 102 },
+                        Age: Age.CHILD,
+                        LongDescription: "Play the Sun's Song for the frogs near the middle of the map to receive this item.",
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleAllFrogSongs; },
+                        RequiredSongs: [Songs.SUNS_SONG]
+                    },
                     "Frog Song of Storms": {
                         Name: "Frog Song of Storms",
                         ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 156, y: 99 },
+                        MapInfo: { x: 156, y: 102 },
                         Age: Age.CHILD,
                         LongDescription: "Play the Song of Storms for the frogs near the middle of the map to receive this item.",
                         RequiredSongs: [Songs.SONG_OF_STORMS]
+                    },
+                    "Frog Song of Time": {
+                        Name: "Frog Song of Time",
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 160, y: 102 },
+                        Age: Age.CHILD,
+                        LongDescription: "Play the Song of Time for the frogs near the middle of the map to receive this item.",
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleAllFrogSongs; },
+                        RequiredSongs: [Songs.SONG_OF_TIME]
                     },
                     "Frog Bug Minigame": {
                         Name: "Frog Bug Minigame",
