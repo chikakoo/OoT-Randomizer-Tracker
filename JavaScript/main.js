@@ -132,6 +132,12 @@ let _performItemDisabling = function() {
 				itemLocation.disabled = true;
 				return;
 			}
+
+			// Beans
+			if (Settings.RandomizerSettings.autoPlantBeans && itemLocation.IsBean) {
+				itemLocation.disabled = true;
+				return;
+			}
 			
 			// Shops
 			if (!Settings.RandomizerSettings.shopSanity && itemLocation.ItemGroup === ItemGroups.SHOP) {

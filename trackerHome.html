@@ -232,6 +232,11 @@
 							<input type="checkbox" name="openKakariko" value="openKakariko">
 							Open Kakariko
 						</label>
+						<label onclick='SettingsPage.setBooleanValueForRandomizer("autoPlantBeans", event)'
+							title="Starts the game with all magic beans planted.">
+							<input type="checkbox" name="autoPlantBeans" value="autoPlantBeans">
+							Auto Plant Magic Beans
+						</label>
 						<div class="settings-radio-group" title="Select what your starting age is - only really needed if playing with closed Door of Time. Change this setting if you Door of Time skip and can't go back through.">
 							Starting Age
 							<label onclick='SettingsPage.setOptionValueForRandomizer("startingAge", event)'

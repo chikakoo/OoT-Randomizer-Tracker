@@ -599,7 +599,12 @@ Data = {
             return false;
         }
 
-		return map.Regions[regionName].ItemLocations[itemLocationName].playerHas;
+        let itemLocation = map.Regions[regionName].ItemLocations[itemLocationName];
+        if (Settings.RandomizerSettings.autoPlantBeans && itemLocation.IsBean) {
+            return true;
+        }
+
+		return itemLocation.playerHas;
 	},
 
     /**
