@@ -250,6 +250,8 @@ Data = {
                 return Settings.RandomizerSettings.shuffleGrottoEntrances;
             } else if (itemLocation.IsInterior) {
                 return Settings.RandomizerSettings.shuffleInteriorEntrances;
+            } else if (itemLocation.IsBoss) {
+                return Settings.RandomizerSettings.shuffleBossEntrances;
             }
         }
 
@@ -258,6 +260,8 @@ Data = {
             return !Settings.RandomizerSettings.shuffleGrottoEntrances;
         } else if (itemLocation.IsInterior) {
             return !Settings.RandomizerSettings.shuffleInteriorEntrances;
+        } else if (itemLocation.IsBoss) {
+            return !Settings.RandomizerSettings.shuffleBossEntrances;
         }
 
         // Important to check the owls and dungneons before the OW entrances, because they are also OW entrances

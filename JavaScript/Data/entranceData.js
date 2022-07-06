@@ -902,3 +902,64 @@ GrottoGroups = {
 	}
 };
 
+/**
+ * Data for the boss buttons to display in dungeons with bosses
+ */
+ BossGroups = {
+	"Gohma": {
+		tooltip: "Gohma in the Deku Tree",
+		buttons: {
+			"Heart Container": {
+				description: "To defeat Gohma, you must first stun her when her eye is red. You can use the slingshot or deku nuts to do this - nuts don't stun her for nearly as long, though. Once she's down, attack her. The quickest kill is with three deku stick jumpslashes (or one then two crouch stabs).",
+				canGet: function(age) {
+					return Data.hasSwordWeapon(age) && (Items.DEKU_NUT.playerHas || (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas));
+				}
+			},
+			"Blue Warp": {
+				description: "Step in the blue warp after defeating the boss to receive a medallion.",
+				canGet: function(age) {
+					return Data.hasSwordWeapon(age) && (Items.DEKU_NUT.playerHas || (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas));
+				}
+			}
+		}
+	},
+	"King Dodongo": {
+		tooltip: "King Dodongo in Dodongo's Cavern",
+		buttons: {
+			"Chest": {
+				description: "This chest is in the back of the room.",
+				canGet: function(age) { return true; }
+			},
+			"Heart Container": {
+				description: "To defeat King Dodongo, you must throw a bomb or bomb flower into his mouth, and then attack him afterward. Note that you should follow him as he rolls so that he gets up faster. If using bomb flowers, try to get them a little bit early, as you need time to run back to him before he shoots his fireball. The quickest kill is with 2 deku stick/master sword jumpslashes, or 1 biggoron's sword jumpslash.",
+				canGet: function(age) {
+					return Data.canBlastOrSmash(age) && (Items.BOMB.playerHas || Equipment.STRENGTH.playerHas);
+				}
+			},
+			"Blue Warp": {
+				description: "Step in the blue warp after defeating the boss to receive a medallion.",
+				canGet: function(age) {
+					return Data.canBlastOrSmash(age) && (Items.BOMB.playerHas || Equipment.STRENGTH.playerHas);
+				}
+			}
+		}
+	},
+	"Barinade": {
+		tooltip: "Barinade in Jabu Jabu's Belly",
+		buttons: {
+			"Heart Container": {
+				description: "To defeat Barinade, you need the Boomerang and a sword or at least 2 Deku Sticks. First, dislodge it from the ceiling using the Boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
+				canGet: function(age) {
+					return Data.hasSwordWeapon(age) && Data.canUseBoomerang(age);
+				}
+			},
+			"Blue Warp": {
+				description: "Step in the blue warp after defeating the boss to receive a medallion.",
+				canGet: function(age) {
+					return Data.hasSwordWeapon(age) && Data.canUseBoomerang(age);
+				}
+			}
+		}
+	},
+ }
+

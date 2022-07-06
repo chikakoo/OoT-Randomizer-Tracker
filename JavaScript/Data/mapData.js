@@ -91,6 +91,7 @@ let toggleDungeonMapType = function(mapName) {
 		_setDungeonTypeOfMap(mapName, MapTypes.MASTER_QUEST);
 	}
     SocketClient.syncDungeonType(mapName);
+    purgeLocations(); // Make sure that boss entrances are appropriately purged!
 };
 /**
  * Lets you set a particular map to the given type based on the name

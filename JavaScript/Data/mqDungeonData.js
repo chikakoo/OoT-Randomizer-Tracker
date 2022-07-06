@@ -205,6 +205,7 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 257, y: 275, floor: "B2" },
 						Age: Age.EITHER,
+						IsBoss: true,
 						Order: 13,
 						LongDescription: "Note that in Master Quest, the scrub sequence is 1, 3, 2.<br/><br/>To defeat Gohma, you must first stun her when her eye is red. You can use the slingshot or deku nuts to do this - nuts don't stun her for nearly as long, though. Once she's down, attack her. The quickest kill is with three deku stick jumpslashes (or one then two crouch stabs).",
 						CustomRequirement: function(age) {
@@ -216,11 +217,22 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 270, y: 286, floor: "B2" },
 						Age: Age.EITHER,
+						IsBoss: true,
 						Order: 14,
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 						CustomRequirement: function(age) {
 							return Data.hasSwordWeapon(age) && (Items.DEKU_NUT.playerHas || (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas));
 						}
+					},
+					"Boss Entrance": {
+						Name: "Boss Entrance",
+						ItemGroup: ItemGroups.ENTRANCE,
+						MapInfo: { x: 257, y: 275, floor: "B2" },
+						Age: Age.EITHER,
+						IsBoss: true,
+						Order: 13,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						LongDescription: "You get here after stunning the deku scrubs in this order (left to right): 1, 3, 2."
 					}
 				}
 			}
@@ -565,6 +577,16 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 15,
 						LongDescription: "After dealing with all the Armos statues in the Dodongo head, climb up the stairs. Jump to the ledge to get to the skulltula on top."
+					},
+					"Boss Entrance": {
+						Name: "Boss Entrance",
+						ItemGroup: ItemGroups.ENTRANCE,
+						MapInfo: { x: 104, y: 114, floor: "F1" },
+						Age: Age.EITHER,
+						IsBoss: true,
+						Order: 16,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						LongDescription: "After navigating around the area inside the Dodongo head, pull back the grave to reveal a switch. Enter the door that unbars."
 					}
 				}
 			},
@@ -573,7 +595,7 @@ let MQDungeons = {
 				Exits: {
 					bossRoom: {
 						Name: "bossRoom",
-						NeedsExplosivesOrBombFlower: true
+						NeedToBlastOrSmash: true
 					}
 				},
 
@@ -583,6 +605,7 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 91, y: 107, floor: "F1" },
 						Age: Age.EITHER,
+						IsBoss: true,
 						Order: 16,
 						LongDescription: "After navigating around the area inside the Dodongo head, pull back the grave to reveal a switch. Enter the door that unbars. The chest is in the back of this room."
 					}
@@ -597,18 +620,20 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 104, y: 114, floor: "F1" },
 						Age: Age.EITHER,
+						IsBoss: true,
 						Order: 17,
 						LongDescription: "You must bomb the suspicious floor in the room you enter after pushing the block on the switch to get to King Dodongo. To defeat him, you must throw a bomb or bomb flower into his mouth, and then attack him afterward. Note that you should follow him as he rolls so that he gets up faster. If using bomb flowers, try to get them a little bit early, as you need time to run back to him before he shoots his fireball. The quickest kill is with 2 deku stick/master sword jumpslashes, or 1 biggoron's sword jumpslash.",
-						NeedsExplosivesOrBombFlower: true
+						RequiredItems: [Items.BOMB, Equipment.STRENGTH]
 					},
 					"Blue Warp": {
 						Name: "Blue Warp",
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 104, y: 100, floor: "F1" },
 						Age: Age.EITHER,
+						IsBoss: true,
 						Order: 18,
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-						NeedsExplosivesOrBombFlower: true
+						RequiredItems: [Items.BOMB, Equipment.STRENGTH]
 					}
 				}
 			}
@@ -884,6 +909,16 @@ let MQDungeons = {
 						RequiredItems: [Items.BOOMERANG],
 						Order: 16,
 						LongDescription: "Climb up the vines and use your boomerang to get this skulltula."
+					},
+					"Boss Entrance": {
+						Name: "Boss Entrance",
+						ItemGroup: ItemGroups.ENTRANCE,
+						MapInfo: { x: 242, y: 121, floor: "F1" },
+						Age: Age.EITHER,
+						IsBoss: true,
+						Order: 17,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						LongDescription: "Shoot the cow on the wall a few times to unblock the door."
 					}
 				}
 			},
@@ -896,6 +931,7 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 242, y: 121, floor: "F1" },
 						Age: Age.CHILD,
+						IsBoss: true,
 						Order: 17,
 						LongDescription: "You need the Boomerang and either the Kokiri Sword, or at least 3 Deku Sticks to defeat Barinade. First, dislodge it from the ceiling using the Boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
 						NeedsSwordWeapon: true
@@ -905,6 +941,7 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 246, y: 125, floor: "F1" },
 						Age: Age.CHILD,
+						IsBoss: true,
 						Order: 18,
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 						NeedsSwordWeapon: true

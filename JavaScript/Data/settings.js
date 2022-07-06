@@ -100,6 +100,7 @@ let Settings = {
 		shuffleInteriorEntrances: true,
 		shuffleGrottoEntrances: true,
 		shuffleDungeonEntrances: true,
+		shuffleBossEntrances: false,
 		shuffleOverworldEntrances: true,
 		randomizeOwlDrops: true,
 		decoupleEntrances: false //TODO: this will probabaly be a setting to decouple in the different pools instead

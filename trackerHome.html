@@ -308,12 +308,17 @@
 								<input type="checkbox" name="shuffleGrottoEntrances" value="shuffleGrottoEntrances">
 								Shuffle Grottos
 							</label>
-								<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleDungeonEntrances", event)'
+							<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleDungeonEntrances", event)'
 								title="Shuffles which dungeon entrance leads to which dungeon. You must tell the tracker this information when you find it out.">
 								<input type="checkbox" name="shuffleDungeonEntrances" value="shuffleDungeonEntrances">
 								Shuffle Dungeons
 							</label>
-								<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleOverworldEntrances", event)'
+							<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleBossEntrances", event)'
+								title="Shuffles which boss is fought in which dungeon. You must tell the tracker this information on the dungeon page when you find it out.">
+								<input type="checkbox" name="shuffleBossEntrances" value="shuffleBossEntrances">
+								Shuffle Bosses
+							</label>
+							<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleOverworldEntrances", event)'
 								title="Shuffles overworld exits among themselves.">
 								<input type="checkbox" name="shuffleOverworldEntrances" value="shuffleOverworldEntrances">
 								Shuffle Overworld Exits

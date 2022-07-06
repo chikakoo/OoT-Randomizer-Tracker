@@ -185,6 +185,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 257, y: 275, floor: "B2" },
 						Age: Age.EITHER,
+						IsBoss: true,
 						Order: 11,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "To defeat Gohma, you must first stun her when her eye is red. You can use the slingshot or deku nuts to do this - nuts don't stun her for nearly as long, though. Once she's down, attack her. The quickest kill is with three deku stick jumpslashes (or one then two crouch stabs).",
@@ -197,12 +198,23 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 270, y: 286, floor: "B2" },
 						Age: Age.EITHER,
+						IsBoss: true,
 						Order: 12,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 						CustomRequirement: function(age) {
 							return Data.hasSwordWeapon(age) && (Items.DEKU_NUT.playerHas || (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas));
 						}
+					},
+					"Boss Entrance": {
+						Name: "Boss Entrance",
+						ItemGroup: ItemGroups.ENTRANCE,
+						MapInfo: { x: 257, y: 275, floor: "B2" },
+						Age: Age.EITHER,
+						IsBoss: true,
+						Order: 11,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						LongDescription: "You get here after stunning the deku scrubs in this order (left to right): 2, 3, 1."
 					}
 				}
 			}
@@ -501,14 +513,6 @@ let StandardDungeons = {
 				},
 
 				ItemLocations: {
-					"Chest by King Dodongo": {
-						Name: "Chest by King Dodongo",
-						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 91, y: 107, floor: "F1" },
-						Age: Age.EITHER,
-						Order: 15,
-						LongDescription: "This is in the room you enter after you push the block on the switch. The chest is straight ahead."
-					},
 					"Skulltula in Back Room": {
 						Name: "Skulltula in Back Room",
 						ItemGroup: ItemGroups.SKULLTULA,
@@ -523,27 +527,46 @@ let StandardDungeons = {
 			bossRoom: {
 				Exits: {},
 				ItemLocations: {
+					"Chest by King Dodongo": {
+						Name: "Chest by King Dodongo",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 91, y: 107, floor: "F1" },
+						Age: Age.EITHER,
+						IsBoss: true,
+						Order: 15,
+						LongDescription: "This is in the room you enter after you push the block on the switch. The chest is straight ahead."
+					},
 					"Heart Container": {
 						Name: "Heart Container",
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 104, y: 114, floor: "F1" },
 						Age: Age.EITHER,
+						IsBoss: true,
 						Order: 16,
 						LongDescription: "You must bomb the suspicious floor in the room you enter after pushing the block on the switch to get to King Dodongo. To defeat him, you must throw a bomb or bomb flower into his mouth, and then attack him afterward. Note that you should follow him as he rolls so that he gets up faster. If using bomb flowers, try to get them a little bit early, as you need time to run back to him before he shoots his fireball. The quickest kill is with 2 deku stick/master sword jumpslashes, or 1 biggoron's sword jumpslash.",
-						CustomRequirement: function(age) {
-							return Items.BOMB.playerHas || Equipment.STRENGTH.playerHas;
-						}
+						NeedToBlastOrSmash: true,
+						RequiredItems: [Items.BOMB, Equipment.STRENGTH]
 					},
 					"Blue Warp": {
 						Name: "Blue Warp",
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 104, y: 100, floor: "F1" },
 						Age: Age.EITHER,
+						IsBoss: true,
 						Order: 17,
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-						CustomRequirement: function(age) {
-							return Items.BOMB.playerHas || Equipment.STRENGTH.playerHas;
-						}
+						NeedToBlastOrSmash: true,
+						RequiredItems: [Items.BOMB, Equipment.STRENGTH]
+					},
+					"Boss Entrance": {
+						Name: "Boss Entrance",
+						ItemGroup: ItemGroups.ENTRANCE,
+						MapInfo: { x: 104, y: 114, floor: "F1" },
+						Age: Age.EITHER,
+						IsBoss: true,
+						Order: 15,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						LongDescription: "To defeat King Dodongo, you must throw a bomb or bomb flower into his mouth, and then attack him afterward. Note that you should follow him as he rolls so that he gets up faster. If using bomb flowers, try to get them a little bit early, as you need time to run back to him before he shoots his fireball. The quickest kill is with 2 deku stick/master sword jumpslashes, or 1 biggoron's sword jumpslash."
 					}
 				}
 			}
@@ -672,11 +695,21 @@ let StandardDungeons = {
 					"Skulltula Near Boss": {
 						Name: "Skulltula Near Boss",
 						ItemGroup: ItemGroups.SKULLTULA,
-						MapInfo: {x: 255, y: 194, floor: "F1" },
+						MapInfo: { x: 255, y: 194, floor: "F1" },
 						Age: Age.EITHER,
 						Order: 8,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						LongDescription: "In the room before the boss room (the one that's slightly green and has a bunch of biris), there's a skulltula on the vines leading up the wall to the door switch.<br/><br/>Note that adult can get here immediately by using the hover boots."
+					},
+					"Boss Entrance": {
+						Name: "Boss Entrance",
+						ItemGroup: ItemGroups.ENTRANCE,
+						MapInfo: { x: 242, y: 121, floor: "F1" },
+						Age: Age.EITHER,
+						IsBoss: true,
+						Order: 9,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						LongDescription: "Climb up the webbing and use your boomerang to hit the switch and unblock the door."
 					}
 				}
 			},
@@ -687,8 +720,9 @@ let StandardDungeons = {
 					"Heart Container": {
 						Name: "Heart Container",
 						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: {x: 242, y: 121, floor: "F1" },
+						MapInfo: { x: 242, y: 121, floor: "F1" },
 						Age: Age.EITHER,
+						IsBoss: true,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
 						Order: 9,
 						LongDescription: "You need the Boomerang and either the Kokiri Sword, or at least 2 Deku Sticks to defeat Barinade. First, dislodge it from the ceiling using the Boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
@@ -697,8 +731,9 @@ let StandardDungeons = {
 					"Blue Warp": {
 						Name: "Blue Warp",
 						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: {x: 246, y: 125, floor: "F1" },
+						MapInfo: { x: 246, y: 125, floor: "F1" },
 						Age: Age.EITHER,
+						IsBoss: true,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
 						Order: 10,
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
