@@ -52,13 +52,13 @@ let GossipStoneSettings = {
 
 let Settings = {
 	ItemLocationsToExclude: {
-		"Lake Hylia": ["Fishing Child", "Fishing Adult"],
-		"Gerudo Fortress": ["Archery Minigame 1000 Points", "Archery Minigame 1500 Points"],
-		"Market": ["Slingshot Minigame"],
-		"Kakariko Village": ["Archery Minigame"],
-		"Graveyard": ["Heart Piece from Dampe Race", "Hookshot Chest from Dampe Race"],
-		"Kokiri Forest": ["Cow in Link's House"],
-		"Fire Temple": ["Chest in Scarecrow Song Area"]
+		// "Lake Hylia": ["Fishing Child", "Fishing Adult"],
+		// "Gerudo Fortress": ["Archery Minigame 1000 Points", "Archery Minigame 1500 Points"],
+		// "Market": ["Slingshot Minigame"],
+		// "Kakariko Village": ["Archery Minigame"],
+		// "Graveyard": ["Heart Piece from Dampe Race", "Hookshot Chest from Dampe Race"],
+		// "Kokiri Forest": ["Cow in Link's House"],
+		// "Fire Temple": ["Chest in Scarecrow Song Area"]
 	},
 
 	TrackerSettings: {
@@ -148,8 +148,9 @@ let Settings = {
 		blueFireShopSkip: false,
 		thawKingZoraWithNothing: false,
 		labHPWithoutGoldenScale: false,
-		adultDomainFromLake: false,
-		adultWaterTempleWithoutBoots: false,
+		adultDomainMegaflipClip: false,
+		adultLakesideLabClip: false,
+		childLakesideLabClip: false,
 		
 		// Desert
 		eponaHover: false,

@@ -311,7 +311,7 @@ let onSmallKeyClicked = function(keyObject, smallKeyDiv, event) {
 	let maxKeysToAllow = canBeMasterQuest ? 
 		Math.max(keyObject.totalKeys(), keyObject.mqTotalKeys()) : keyObject.totalKeys();
 
-	if (keyObject.name !== "Gerudo Fortress" && Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY) {
+	if (keyObject.name !== "Thieves' Hideout" && Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY) {
 		maxKeysToAllow = 0;
 	}
 
@@ -342,7 +342,10 @@ let _updateSmallKeyCss = function(keyObject, smallKeyDiv) {
 	removeCssClass(smallKeyDiv, "minimum-keys");
 	removeCssClass(smallKeyDiv, "all-keys");
 
-	let isMasterQuest = MapLocations[keyObject.name].IsMasterQuest;
+	let isThievesHideout = keyObject.name === "Thieves' Hideout";
+	let isMasterQuest = isThievesHideout 
+		? false
+		: MapLocations[keyObject.name].IsMasterQuest;
 
 	let minKeys, totalKeys;
 	if (isMasterQuest) {
@@ -355,7 +358,7 @@ let _updateSmallKeyCss = function(keyObject, smallKeyDiv) {
 	
 	let cssClassToAdd = "no-keys";
 
-	if (keyObject.name !== "Gerudo Fortress" && Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY) {
+	if (!isThievesHideout && Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY) {
 		cssClassToAdd = "all-keys";
 	} else {
 		if (keyObject.keyCount > 0) {

@@ -535,6 +535,22 @@ let ShopItemDictionary = {
 	"keywell": "Bottom of the Well Small Key.png",
 	"skwell": "Bottom of the Well Small Key.png",
 
+	"smallkeyth": "Thieves' Hideout Key.png",
+	"smallkeygf": "Thieves' Hideout Key.png",
+	"gfsmallkey": "Thieves' Hideout Key.png",
+	"thsmallkey": "Thieves' Hideout Key.png",
+	"thkey": "Thieves' Hideout Key.png",
+	"hideoutkey": "Thieves' Hideout Key.png",
+	"thieveskey": "Thieves' Hideout Key.png",
+	"thieves'hideoutkey": "Thieves' Hideout Key.png",
+	"gfkey": "Thieves' Hideout Key.png",
+	"fortresskey": "Thieves' Hideout Key.png",
+	"gerudofortresskey": "Thieves' Hideout Key.png",
+	"jailkey": "Thieves' Hideout Key.png",
+	"jailsmallkey": "Thieves' Hideout Key.png",
+	"keyjail": "Thieves' Hideout Key.png",
+	"smallkeyjail": "Thieves' Hideout Key.png",
+
 	"gtgsmallkey": "Training Grounds Small Key.png",
 	"gtgkey": "Training Grounds Small Key.png",
 	"gtgsk": "Training Grounds Small Key.png",
@@ -720,8 +736,8 @@ let Keys = {
 		mqMinimumKeys: function() { return 2; },
 		mqTotalKeys: function() { return 2; }
 	},
-	GERUDO_FORTRESS: { 
-		name: "Gerudo Fortress", 
+	THIEVES_HIDEOUT: { 
+		name: "Thieves' Hideout", 
 		totalKeys: function() { return 4; }, 
 		noBossKey: true,
 		
@@ -755,7 +771,7 @@ let Keys = {
  * Gets the key count from the current map name
  */
 let getKeyCount = function(mapName) {
-	if (mapName !== "Gerudo Fortress" && Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY) {
+	if (mapName !== "Thieves' Hideout" && Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY) {
 		return 99;
 	}
 
@@ -775,8 +791,8 @@ let getKeyCount = function(mapName) {
 			
 		case "Bottom of the Well":
 			return Keys.BOTTOM_OF_THE_WELL.keyCount || 0;
-		case "Gerudo Fortress":
-			return Keys.GERUDO_FORTRESS.keyCount || 0;
+		case "Thieves' Hideout":
+			return Keys.THIEVES_HIDEOUT.keyCount || 0;
 		case "Training Grounds":
 			return Keys.GERUDO_TRAINING_GROUNDS.keyCount || 0;
 		

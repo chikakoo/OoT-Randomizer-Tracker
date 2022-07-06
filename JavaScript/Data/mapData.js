@@ -5811,7 +5811,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "You'll get this from the Gerudo after using all 4 keys on all the jail doors and talking to the prisoners.",
                         CustomRequirement: function(age) {
-                            if (getKeyCount("Gerudo Fortress") < 4) { return false; }
+                            if (getKeyCount("Thieves' Hideout") < 4) { return false; }
                             return age === Age.ADULT || Data.areGerudoGuardsTame();
                         }
                     },
