@@ -594,7 +594,7 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 3,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-						LongDescription: "Bring Ruto back up to the first floor. Take her through the room with holes into the next room. Now, hug the right wall all the way to a switch - jump on it with Ruto in your hands. Enter the room. Kill all the stringers to spawn the chest. They can be hurt with explosions, boomerang, slingshot, or jump slashes from a stick or sword.",
+						LongDescription: "Bring Ruto back up to the first floor. Take her through the room with holes into the next room. Now, hug the right wall all the way to a switch - jump on it with Ruto in your hands. Enter the room. Kill all the stingers to spawn the chest. They can be hurt with explosions, boomerang, slingshot, or jump slashes from a stick or sword.",
 						CustomRequirement: function(age) {
 							return Data.canUseBoomerang(age) || Items.FAIRY_SLINGSHOT.playerHas || Data.hasSwordWeapon(age) || Data.hasExplosives();
 						}

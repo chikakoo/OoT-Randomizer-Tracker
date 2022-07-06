@@ -1030,7 +1030,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 77, y: 112},
             Age: Age.EITHER,
-            LongDescription: "This is the exit to the wasteland."
+            LongDescription: "This is the exit to the wasteland. As Child, here's how to skip the gate: climb the ladder; go a bit to the right if you are facing the ladder; angle yourself so that when you sidehop left, you end up on the cliff; walk forward until you are passed the gate; sidehop left and keep holding left."
         },
         "Training Grounds Entrance": {
             Name: "Training Grounds Entrance",
