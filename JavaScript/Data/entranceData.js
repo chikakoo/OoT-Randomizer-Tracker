@@ -948,7 +948,7 @@ GrottoGroups = {
 		tooltip: "Barinade in Jabu Jabu's Belly",
 		buttons: {
 			"Heart Container": {
-				description: "To defeat Barinade, you need the Boomerang and a sword or at least 2 Deku Sticks. First, dislodge it from the ceiling using the Boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
+				description: "To defeat Barinade, you need the boomerang and also either a sword or at least 3 Deku Sticks. First, dislodge it from the ceiling using the boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
 				canGet: function(age) {
 					return Data.hasSwordWeapon(age) && Data.canUseBoomerang(age);
 				}
@@ -961,5 +961,98 @@ GrottoGroups = {
 			}
 		}
 	},
+	"Phantom Ganon": {
+		tooltip: "Phantom Ganon in the Forest Temple",
+		buttons: {
+			"Heart Container": {
+				description: "For phase 1 of Phantom Ganon, you must shoot the real version of him that comes out of the paintings. You can use your bow or hookshot for that. The real one is lighter and is the only one that makes sound. Phase 2 is the familiar tenis match. Stun him with his own attacks and damage him when he's stunned. You can also just spam him with the boomerang!",
+				canGet: function(age) {
+					let canStunBoss = (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas) ||
+						(age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas));
+					let canDamageBoss = Data.hasSwordWeapon(age) || Data.canUseBoomerang(age);
+					return canStunBoss && canDamageBoss;
+				}
+			},
+			"Blue Warp": {
+				description: "Step in the blue warp after defeating the boss to receive a medallion.",
+				canGet: function(age) {
+					let canStunBoss = (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas) ||
+						(age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas));
+					let canDamageBoss = Data.hasSwordWeapon(age) || Data.canUseBoomerang(age);
+					return canStunBoss && canDamageBoss;
+				}
+			}
+		}
+	},
+	"Volvagia": {
+		tooltip: "Volvagia in the Fire Temple",
+		buttons: {
+			"Heart Container": {
+				description: "To defeat Volvagia, hit her with your hammer when she pops out of the holes. After that, attack it again. Jumpslashes will do more damage, like usual. You can hit it with arrows while it's flying to do additional damage. If it ever drops rocks on you, you can hang off the side of the cliff to avoid damage.",
+				canGet: function(age) {
+					let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
+					return tunicCheck && Data.canUseHammer(age);
+				}
+			},
+			"Blue Warp": {
+				description: "Step in the blue warp after defeating the boss to receive a medallion.",
+				canGet: function(age) {
+					let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
+					return tunicCheck && Data.canUseHammer(age);
+				}
+			}
+		}
+	},
+	"Morpha": {
+		tooltip: "Morpha in the Water Temple",
+		buttons: {
+			"Heart Container": {
+				description: "",
+				canGet: function(age) {
+					return true;
+				}
+			},
+			"Blue Warp": {
+				description: "Step in the blue warp after defeating the boss to receive a medallion.",
+				canGet: function(age) {
+					return true;
+				}
+			}
+		}
+	},
+	"Bongo Bongo": {
+		tooltip: "Bongo Bongo in the Shadow Temple",
+		buttons: {
+			"Heart Container": {
+				description: "",
+				canGet: function(age) {
+					return true;
+				}
+			},
+			"Blue Warp": {
+				description: "Step in the blue warp after defeating the boss to receive a medallion.",
+				canGet: function(age) {
+					return true;
+				}
+			}
+		}
+	},
+	"Twinrova": {
+		tooltip: "Twinrova in the Spirit Temple",
+		buttons: {
+			"Heart Container": {
+				description: "",
+				canGet: function(age) {
+					return true;
+				}
+			},
+			"Blue Warp": {
+				description: "Step in the blue warp after defeating the boss to receive a medallion.",
+				canGet: function(age) {
+					return true;
+				}
+			}
+		}
+	}
  }
 

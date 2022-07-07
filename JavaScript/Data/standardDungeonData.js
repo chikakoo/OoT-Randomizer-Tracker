@@ -725,7 +725,7 @@ let StandardDungeons = {
 						IsBoss: true,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
 						Order: 9,
-						LongDescription: "You need the Boomerang and either the Kokiri Sword, or at least 2 Deku Sticks to defeat Barinade. First, dislodge it from the ceiling using the Boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
+						LongDescription: "You need the boomerang and either the Kokiri Sword, or at least 2 Deku Sticks to defeat Barinade. First, dislodge it from the ceiling using the boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
 						NeedsSwordWeapon: true
 					},
 					"Blue Warp": {
@@ -1308,10 +1308,11 @@ let StandardDungeons = {
 					"Heart Container": {
 						Name: "Heart Container",
 						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: {x: 186, y: 77, floor: "B1" },
+						MapInfo: { x: 186, y: 77, floor: "B1" },
 						Age: Age.ADULT,
+						IsBoss: true,
 						Order: 25,
-						LongDescription: "For phase 1 of Phantom Ganon, you must shoot the real version of him that comes out of the paintings. You can use your bow or hookshot for that. The real one is lighter and is the only one that makes sound. Phase 2 is the familiar tenis match. Stun him with his own attacks and damage him when he's stunned.",
+						LongDescription: "For phase 1 of Phantom Ganon, you must shoot the real version of him that comes out of the paintings. You can use your bow or hookshot for that. The real one is lighter and is the only one that makes sound. Phase 2 is the familiar tenis match. Stun him with his own attacks and damage him when he's stunned. You can also just spam him with the boomerang!",
 						IsPostWalkCheck: true,
 						CustomRequirement: function(age) {
 							let canBKSkip = age === Age.ADULT && Settings.GlitchesToAllow.forestBKSkip && Items.HOOKSHOT.playerHas;
@@ -1321,10 +1322,25 @@ let StandardDungeons = {
 					"Blue Warp": {
 						Name: "Blue Warp",
 						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: {x: 181, y: 81, floor: "B1" },
+						MapInfo: { x: 181, y: 81, floor: "B1" },
 						Age: Age.ADULT,
+						IsBoss: true,
 						Order: 26,
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
+						IsPostWalkCheck: true,
+						CustomRequirement: function(age) {
+							let canBKSkip = age === Age.ADULT && Settings.GlitchesToAllow.forestBKSkip && Items.HOOKSHOT.playerHas;
+							return canBKSkip || Data.forestTempleCanAccessAllPoeRooms(age);
+						}
+					},
+					"Boss Entrance": {
+						Name: "Boss Entrance",
+						ItemGroup: ItemGroups.ENTRANCE,
+						MapInfo: { x: 186, y: 77, floor: "B1" },
+						Age: Age.ADULT,
+						IsBoss: true,
+						Order: 25,
+						LongDescription: "After hitting all the switches in the basement, you can enter the boss room.",
 						IsPostWalkCheck: true,
 						CustomRequirement: function(age) {
 							let canBKSkip = age === Age.ADULT && Settings.GlitchesToAllow.forestBKSkip && Items.HOOKSHOT.playerHas;
@@ -1367,18 +1383,16 @@ let StandardDungeons = {
 						Map: "Fire Temple",
 						LockedDoor: "Top Locked Door in Lobby",
 						CustomRequirement: function(age) {
-							let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
-							if ((age === Age.CHILD && !Settings.GlitchesToAllow.fireNoGoronTunic) || !tunicCheck) { return false; }
-							
-							return true;
+							return Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
 						}
 					},
 
 					bossRoom: {
 						Name: "bossRoom",
 						CustomRequirement: function(age) {
+							let canGetToDoor = age === Age.ADULT || Data.canMegaFlip(age);
 							let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
-							return tunicCheck && Data.canUseHammer(age) && hasBossKey("Fire Temple");
+							return canGetToDoor && tunicCheck && hasBossKey("Fire Temple");
 						}
 					},
 
@@ -2063,29 +2077,41 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 25, y: 197, floor: "F1" },
 						Age: Age.EITHER,
-						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
+						IsBoss: true,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								(!Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.megaFlip); 
+						},
 						Order: 2,
 						LongDescription: "Note that you can get to this boss without dropping the giant column down. Navigate to the Goron cage area and drop down onto the small ledge. Now do a rolling jump straight at the boss platform and hold forward - you should grab the ledge. This might take a few tries. The Hover Boots should make this trivial. To defeat Volvagia, hit her with your hammer when she pops out of the holes. After that, attack it again. Jumpslashes will do more damage, like usual. You can hit it with arrows while it's flying to do additional damage. If it ever drops rocks on you, you can hang off the side of the cliff to avoid damage.",
-						IsPostWalkCheck: true,
-						CustomRequirement: function(age) {
-							if (age === Age.ADULT) { return true; }
-							return Data.canAccessMap(Age.ADULT, "Fire Temple", "fireMazeRoomStart"); // Checks whether adult can hammer the pillar
-						}
+						RequiredItems: [Items.MEGATON_HAMMER]
 					},
 					"Blue Warp": {
 						Name: "Blue Warp",
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 25, y: 207, floor: "F1" },
 						Age: Age.EITHER,
-						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
+						IsBoss: true,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								(!Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.megaFlip); 
+						},
 						Order: 3,
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-						IsPostWalkCheck: true,
-						CustomRequirement: function(age) {
-							if (age === Age.ADULT) { return true; }
-							return Data.canAccessMap(Age.ADULT, "Fire Temple", "fireMazeRoomStart"); // Checks whether adult can hammer the pillar
-						}
+						RequiredItems: [Items.MEGATON_HAMMER]
 					},
+					"Boss Entrance": {
+						Name: "Boss Entrance",
+						ItemGroup: ItemGroups.ENTRANCE,
+						MapInfo: { x: 25, y: 207, floor: "F1" },
+						Age: Age.EITHER,
+						IsBoss: true,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; 
+						},
+						Order: 2,
+						LongDescription: "As Adult, you can do a roll-jump from the corner to get to the boss door."
+					}
 				}
 			}
 		}
