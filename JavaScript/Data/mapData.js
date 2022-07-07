@@ -1237,7 +1237,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 174, y: 241, floor: "F3" },
             Age: Age.EITHER,
-            LongDescription: "This is the exit to either of the statue hands form the spirit temple.",
+            LongDescription: "This is the exit to either of the statue hands from the spirit temple.",
             ReadOnly: true,
             Hide: true,
             OneWayEntrance: true,
@@ -6083,7 +6083,8 @@ let MapLocations = {
                         Name: "Heart Piece on Platform",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 87, y: 135 },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         IsPostWalkCheck: true,
                         LongDescription: "Plant a magic bean in the soil by the Spirit Temple. Come back as an adult and ride it to the heart piece on the giant arch.",
                         CustomRequirement: function(age) {

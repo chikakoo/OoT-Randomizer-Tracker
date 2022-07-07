@@ -568,7 +568,7 @@ let MQDungeons = {
 						MapInfo: { x: 196, y: 19, floor: "F1" },
 						Age: Age.EITHER,
 						Order: 14,
-						LongDescription: "Once in the Dodongo head, navigate clockwise around the rooms. Enter the door near all the Armos statues. In this room, the chest is under the gravestone."
+						LongDescription: "Once in the Dodongo head, navigate counter-clockwise around the rooms. Enter the door near all the Armos statues. In this room, the chest is under the gravestone."
 					},
 					"Skulltula in Back Room": {
 						Name: "Skulltula in Back Room",
@@ -623,7 +623,7 @@ let MQDungeons = {
 						IsBoss: true,
 						Order: 17,
 						LongDescription: "You must bomb the suspicious floor in the room you enter after pushing the block on the switch to get to King Dodongo. To defeat him, you must throw a bomb or bomb flower into his mouth, and then attack him afterward. Note that you should follow him as he rolls so that he gets up faster. If using bomb flowers, try to get them a little bit early, as you need time to run back to him before he shoots his fireball. The quickest kill is with 2 deku stick/master sword jumpslashes, or 1 biggoron's sword jumpslash.",
-						RequiredItems: [Items.BOMB, Equipment.STRENGTH]
+						RequiredChoiceOfItems: [Items.BOMB, Equipment.STRENGTH]
 					},
 					"Blue Warp": {
 						Name: "Blue Warp",
@@ -633,7 +633,7 @@ let MQDungeons = {
 						IsBoss: true,
 						Order: 18,
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-						RequiredItems: [Items.BOMB, Equipment.STRENGTH]
+						RequiredChoiceOfItems: [Items.BOMB, Equipment.STRENGTH]
 					}
 				}
 			}
@@ -3190,7 +3190,7 @@ let MQDungeons = {
 						RequiredChildItems: [Items.FAIRY_SLINGSHOT],
 						RequiredAdultItems: [Items.FAIRY_BOW],
 						CustomRequirement: function(age) {
-							return Data.canWeirdShot(age);
+							return age === Age.CHILD || Data.canWeirdShot(age);
 						}
 					}
 				}

@@ -545,7 +545,7 @@ let StandardDungeons = {
 						Order: 16,
 						LongDescription: "You must bomb the suspicious floor in the room you enter after pushing the block on the switch to get to King Dodongo. To defeat him, you must throw a bomb or bomb flower into his mouth, and then attack him afterward. Note that you should follow him as he rolls so that he gets up faster. If using bomb flowers, try to get them a little bit early, as you need time to run back to him before he shoots his fireball. The quickest kill is with 2 deku stick/master sword jumpslashes, or 1 biggoron's sword jumpslash.",
 						NeedToBlastOrSmash: true,
-						RequiredItems: [Items.BOMB, Equipment.STRENGTH]
+						RequiredChoiceOfItems: [Items.BOMB, Equipment.STRENGTH]
 					},
 					"Blue Warp": {
 						Name: "Blue Warp",
@@ -556,7 +556,7 @@ let StandardDungeons = {
 						Order: 17,
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 						NeedToBlastOrSmash: true,
-						RequiredItems: [Items.BOMB, Equipment.STRENGTH]
+						RequiredChoiceOfItems: [Items.BOMB, Equipment.STRENGTH]
 					},
 					"Boss Entrance": {
 						Name: "Boss Entrance",
