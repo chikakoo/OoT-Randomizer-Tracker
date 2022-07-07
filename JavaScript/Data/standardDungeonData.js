@@ -2635,17 +2635,28 @@ let StandardDungeons = {
 						Name: "Heart Container",
 						ItemGroup: ItemGroups.FREESTANDING,
 						Age: Age.ADULT,
+						IsBoss: true,
 						Order: 22,
-						MapInfo: {x: 227, y: 135, floor: "F3" },
+						MapInfo: { x: 227, y: 135, floor: "F3" },
 						LongDescription: "The boss room is on the opposite side of the entrance to the temple. You can actually immediately get there with no glitches required if you already have the longshot and boss key. To defeat morpha, hookshot her nucleus out of the water and hit her to damage her. A good way to kill is to continuously hookshot her to bring her into a corner. Now, get to the other side of her and slash once so it runs into the corner. Now quickly jumpslash it (Z + A) and continue to crouch stab (Hold R, spam B) until it's dead."
 					},
 					"Blue Warp": {
 						Name: "Blue Warp",
 						ItemGroup: ItemGroups.FREESTANDING,
 						Age: Age.ADULT,
+						IsBoss: true,
 						Order: 23,
-						MapInfo: {x: 227, y: 145, floor: "F3" },
+						MapInfo: { x: 227, y: 145, floor: "F3" },
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion."
+					},
+					"Boss Entrance": {
+						Name: "Boss Entrance",
+						ItemGroup: ItemGroups.ENTRANCE,
+						MapInfo: { x: 227, y: 135, floor: "F3" },
+						Age: Age.ADULT,
+						IsBoss: true,
+						Order: 22,
+						LongDescription: "The boss room is on the opposite side of the entrance to the temple. You can actually immediately get there with no glitches required if you already have the longshot and boss key."
 					}
 				}
 			}

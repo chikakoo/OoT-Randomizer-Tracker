@@ -298,7 +298,11 @@ let SaveAndLoad = {
                         if (loadedItemLocationInfo.EntranceGroup) {
                             itemLocation.EntranceGroup = loadedItemLocationInfo.EntranceGroup;
 
-                            let interiorObj = itemLocation.IsInterior ? InteriorGroups : GrottoGroups;
+                            let interiorObj = null;
+                            if (itemLocation.IsInterior) { interiorObj = InteriorGroups; }
+                            else if (itemLocation.IsGrotto) { interiorObj = GrottoGroups; }
+                            else { interiorObj = BossGroups }
+
                             if (interiorObj[itemLocation.EntranceGroup.name].postClick) {
                                 interiorObj[itemLocation.EntranceGroup.name].postClick(itemLocation, true);
                             }

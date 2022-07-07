@@ -115,6 +115,10 @@ EntranceData = {
 				buttonItem = GrottoGroups[name].buttons[buttonName];
 			}
 
+			else if (itemLocation.IsBoss) {
+				buttonItem = BossGroups[name].buttons[buttonName];
+			}
+
 			if (buttonItem && buttonItem.postClick) {
 				buttonItem.postClick(true);
 			}
@@ -1007,15 +1011,21 @@ GrottoGroups = {
 		tooltip: "Morpha in the Water Temple",
 		buttons: {
 			"Heart Container": {
-				description: "",
+				description: "To defeat morpha, hookshot her nucleus out of the water and hit her to damage her. A good way to kill is to continuously hookshot her to bring her into a corner. Now, get to the other side of her and slash once so it runs into the corner. Now quickly jumpslash it (Z + A) and continue to crouch stab (Hold R, spam B) until it's dead.",
 				canGet: function(age) {
-					return true;
+					return age === Age.ADULT && Items.HOOKSHOT.playerHas;
 				}
 			},
 			"Blue Warp": {
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
-					return true;
+					return age === Age.ADULT && Items.HOOKSHOT.playerHas;
+				},
+				postClick: function(isCompleted) {
+					// Mark all of these so that if the dungeon type is switched, we don't lose this data!
+					MapLocations["Water Temple"].Regions.bossRoom.ItemLocations["Blue Warp"].playerHas = isCompleted;
+					StandardDungeons["Water Temple"].Regions.bossRoom.ItemLocations["Blue Warp"].playerHas = isCompleted;
+					MQDungeons["Water Temple"].Regions.bossRoom.ItemLocations["Blue Warp"].playerHas = isCompleted;
 				}
 			}
 		}

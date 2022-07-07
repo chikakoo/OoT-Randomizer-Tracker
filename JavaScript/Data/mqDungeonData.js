@@ -2219,6 +2219,7 @@ let MQDungeons = {
 						Name: "Heart Container",
 						ItemGroup: ItemGroups.FREESTANDING,
 						Age: Age.ADULT,
+						IsBoss: true,
 						Order: 1,
 						MapInfo: { x: 227, y: 135, floor: "F3" },
 						LongDescription: "The boss room is on the opposite side of the entrance to the temple. You can actually immediately get there with no glitches required if you already have the longshot and boss key.<br/><br/>In the room with the spike traps, either roll up with hover boots equipped, or shoot the crystal switch above the boss door. If you don't have the key, climb on the hookshot targets, sidehop, then jumpslash at the door while holding forward to clip through.<br/><br/>To defeat morpha, hookshot her nucleus out of the water and hit her to damage her. A good way to kill is to continuously hookshot her to bring her into a corner. Now, get to the other side of her and slash once so it runs into the corner. Now quickly jumpslash it (Z + A) and continue to crouch stab (Hold R, spam B) until it's dead."
@@ -2227,9 +2228,19 @@ let MQDungeons = {
 						Name: "Blue Warp",
 						ItemGroup: ItemGroups.FREESTANDING,
 						Age: Age.ADULT,
+						IsBoss: true,
 						Order: 2,
 						MapInfo: { x: 227, y: 145, floor: "F3" },
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion."
+					},
+					"Boss Entrance": {
+						Name: "Boss Entrance",
+						ItemGroup: ItemGroups.ENTRANCE,
+						MapInfo: { x: 227, y: 135, floor: "F3" },
+						Age: Age.ADULT,
+						IsBoss: true,
+						Order: 1,
+						LongDescription: "The boss room is on the opposite side of the entrance to the temple. You can actually immediately get there with no glitches required if you already have the longshot and boss key.<br/><br/>In the room with the spike traps, either roll up with hover boots equipped, or shoot the crystal switch above the boss door. If you don't have the key, climb on the hookshot targets, sidehop, then jumpslash at the door while holding forward to clip through."
 					}
 				}
 			}
