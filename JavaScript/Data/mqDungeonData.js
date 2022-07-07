@@ -227,7 +227,7 @@ let MQDungeons = {
 					"Boss Entrance": {
 						Name: "Boss Entrance",
 						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 257, y: 275, floor: "B2" },
+						MapInfo: { x: 242, y: 248, floor: "B2" },
 						Age: Age.EITHER,
 						IsBoss: true,
 						Order: 13,
@@ -581,11 +581,10 @@ let MQDungeons = {
 					"Boss Entrance": {
 						Name: "Boss Entrance",
 						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 104, y: 114, floor: "F1" },
+						MapInfo: { x: 116, y: 110, floor: "F1" },
 						Age: Age.EITHER,
 						IsBoss: true,
 						Order: 16,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "After navigating around the area inside the Dodongo head, pull back the grave to reveal a switch. Enter the door that unbars."
 					}
 				}
@@ -913,7 +912,7 @@ let MQDungeons = {
 					"Boss Entrance": {
 						Name: "Boss Entrance",
 						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 242, y: 121, floor: "F1" },
+						MapInfo: { x: 242, y: 150, floor: "F1" },
 						Age: Age.EITHER,
 						IsBoss: true,
 						Order: 17,
@@ -1530,7 +1529,7 @@ let MQDungeons = {
 					"Boss Entrance": {
 						Name: "Boss Entrance",
 						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 186, y: 77, floor: "B1" },
+						MapInfo: { x: 184, y: 107, floor: "B1" },
 						Age: Age.ADULT,
 						IsBoss: true,
 						Order: 18,
@@ -2819,7 +2818,7 @@ let MQDungeons = {
 					"Boss Entrance": {
 						Name: "Boss Entrance",
 						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 131, y: 219, floor: "B1" },
+						MapInfo: { x: 132, y: 210, floor: "B1" },
 						Age: Age.ADULT,
 						IsBoss: true,
 						Order: 26,
@@ -3567,6 +3566,7 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 173, y: 63, floor: "F2" },
 						Age: Age.ADULT,
+						IsBoss: true,
 						Order: 28,
 						AltOrder: 24,
 						LongDescription: "To reach the boss room, start at the mirror maze. Shine the light from the first mirror onto the sun above the first archway - this will spawn a second mirror. Now, push the mirrors so that the light travels to the end. Go to the giant mirror that the light is now traveling to, and reflect the light unto the sun on the wall. After the cutscene, shine the light into the statue's face. Hookshot the grate to get to the boss room.<br/><br/>To defeat Twinrova, reflect one of the sister's shots at the other one. Do this four times to get to the second phase. Now, you must charge your shield with 3 of the same kind of attack. When you do, your shield will shoot it at Twinrova, stunning her. Go hit her! As usual, a jumpslash (Z + A) then crouch stabs (R + spam B) do the most damage."
@@ -3576,6 +3576,7 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 187, y: 63, floor: "F2" },
 						Age: Age.ADULT,
+						IsBoss: true,
 						Order: 29,
 						AltOrder: 25,
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion."
@@ -3583,7 +3584,7 @@ let MQDungeons = {
 					"Boss Entrance": {
 						Name: "Boss Entrance",
 						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 173, y: 63, floor: "F2" },
+						MapInfo: { x: 178, y: 71, floor: "F2" },
 						Age: Age.ADULT,
 						IsBoss: true,
 						Order: 28,

@@ -209,7 +209,7 @@ let StandardDungeons = {
 					"Boss Entrance": {
 						Name: "Boss Entrance",
 						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 257, y: 275, floor: "B2" },
+						MapInfo: { x: 242, y: 248, floor: "B2" },
 						Age: Age.EITHER,
 						IsBoss: true,
 						Order: 11,
@@ -561,11 +561,10 @@ let StandardDungeons = {
 					"Boss Entrance": {
 						Name: "Boss Entrance",
 						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 104, y: 114, floor: "F1" },
+						MapInfo: { x: 116, y: 110, floor: "F1" },
 						Age: Age.EITHER,
 						IsBoss: true,
 						Order: 15,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "To defeat King Dodongo, you must throw a bomb or bomb flower into his mouth, and then attack him afterward. Note that you should follow him as he rolls so that he gets up faster. If using bomb flowers, try to get them a little bit early, as you need time to run back to him before he shoots his fireball. The quickest kill is with 2 deku stick/master sword jumpslashes, or 1 biggoron's sword jumpslash."
 					}
 				}
@@ -704,7 +703,7 @@ let StandardDungeons = {
 					"Boss Entrance": {
 						Name: "Boss Entrance",
 						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 242, y: 121, floor: "F1" },
+						MapInfo: { x: 242, y: 150, floor: "F1" },
 						Age: Age.EITHER,
 						IsBoss: true,
 						Order: 9,
@@ -1336,7 +1335,7 @@ let StandardDungeons = {
 					"Boss Entrance": {
 						Name: "Boss Entrance",
 						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 186, y: 77, floor: "B1" },
+						MapInfo: { x: 184, y: 107, floor: "B1" },
 						Age: Age.ADULT,
 						IsBoss: true,
 						Order: 25,
@@ -3245,7 +3244,7 @@ let StandardDungeons = {
 					"Boss Entrance": {
 						Name: "Boss Entrance",
 						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 131, y: 219, floor: "B1" },
+						MapInfo: { x: 132, y: 210, floor: "B1" },
 						Age: Age.ADULT,
 						IsBoss: true,
 						Order: 23,
@@ -3852,7 +3851,7 @@ let StandardDungeons = {
 					"Boss Entrance": {
 						Name: "Boss Entrance",
 						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 227, y: 135, floor: "F2" },
+						MapInfo: { x: 178, y: 71, floor: "F2" },
 						Age: Age.ADULT,
 						IsBoss: true,
 						Order: 29,
