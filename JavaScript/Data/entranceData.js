@@ -955,13 +955,15 @@ GrottoGroups = {
 				description: "To defeat Barinade, you need the boomerang and also either a sword or at least 3 Deku Sticks. First, dislodge it from the ceiling using the boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
 				canGet: function(age) {
 					return Data.hasSwordWeapon(age) && Data.canUseBoomerang(age);
-				}
+				},
+				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			},
 			"Blue Warp": {
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					return Data.hasSwordWeapon(age) && Data.canUseBoomerang(age);
-				}
+				},
+				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			}
 		}
 	},
@@ -996,14 +998,16 @@ GrottoGroups = {
 				canGet: function(age) {
 					let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
 					return tunicCheck && Data.canUseHammer(age);
-				}
+				},
+				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			},
 			"Blue Warp": {
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
 					return tunicCheck && Data.canUseHammer(age);
-				}
+				},
+				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			}
 		}
 	},
@@ -1014,13 +1018,15 @@ GrottoGroups = {
 				description: "To defeat morpha, hookshot her nucleus out of the water and hit her to damage her. A good way to kill is to continuously hookshot her to bring her into a corner. Now, get to the other side of her and slash once so it runs into the corner. Now quickly jumpslash it (Z + A) and continue to crouch stab (Hold R, spam B) until it's dead.",
 				canGet: function(age) {
 					return age === Age.ADULT && Items.HOOKSHOT.playerHas;
-				}
+				},
+				isAdultOnly: function() { return true; }
 			},
 			"Blue Warp": {
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					return age === Age.ADULT && Items.HOOKSHOT.playerHas;
 				},
+				isAdultOnly: function() { return true; },
 				postClick: function(isCompleted) {
 					// Mark all of these so that if the dungeon type is switched, we don't lose this data!
 					MapLocations["Water Temple"].Regions.bossRoom.ItemLocations["Blue Warp"].playerHas = isCompleted;
@@ -1034,15 +1040,19 @@ GrottoGroups = {
 		tooltip: "Bongo Bongo in the Shadow Temple",
 		buttons: {
 			"Heart Container": {
-				description: "",
+				description: "When fighting Bongo Bongo, it helps to NOT have the Hover Boots equipped. When the fight starts, if you hold down, he won't circle you right away. Hit his hands with your bow or hookshot, or slingshot to stun them. Now hit him before he hits you and damage him as much as you can. If you have magic, quickspins can actually stunlock him for a 1-cycle if you do them perfectly.",
 				canGet: function(age) {
-					return true;
+					let canStunHands = (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas) ||
+						(age === Age.ADULT && (Items.FAIRY_BOW.playerHas || Items.HOOKSHOT.playerHas));
+					return Data.hasSwordWeapon(age) && canStunHands;
 				}
 			},
 			"Blue Warp": {
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
-					return true;
+					let canStunHands = (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas) ||
+						(age === Age.ADULT && (Items.FAIRY_BOW.playerHas || Items.HOOKSHOT.playerHas));
+					return Data.hasSwordWeapon(age) && canStunHands;
 				}
 			}
 		}
@@ -1051,16 +1061,18 @@ GrottoGroups = {
 		tooltip: "Twinrova in the Spirit Temple",
 		buttons: {
 			"Heart Container": {
-				description: "",
+				description: "To defeat Twinrova, reflect one of the sister's shots at the other one. Do this four times to get to the second phase. Now, you must charge your shield with 3 of the same kind of attack. When you do, your shield will shoot it at Twinrova, stunning her. Go hit her! As usual, a jumpslash (Z + A) then crouch stabs (R + spam B) do the most damage.",
 				canGet: function(age) {
-					return true;
-				}
+					return age === Age.ADULT && Equipment.MIRROR_SHIELD.playerHas;
+				},
+				isAdultOnly: function() { return true; }
 			},
 			"Blue Warp": {
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
-					return true;
-				}
+					return age === Age.ADULT && Equipment.MIRROR_SHIELD.playerHas;
+				},
+				isAdultOnly: function() { return true; }
 			}
 		}
 	}

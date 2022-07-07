@@ -2684,10 +2684,7 @@ let MQDungeons = {
 						RequiredSongs: [Songs.ZELDAS_LULLABY]
 					}
 				},
-				
-				ItemLocations: {
-					
-				}
+				ItemLocations: {}
 			},
 
 			endOfBoatRide: {
@@ -2804,16 +2801,29 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 131, y: 219, floor: "B1" },
 						Age: Age.ADULT,
+						IsBoss: true,
 						Order: 26,
-						LongDescription: "When fighting Bongo Bongo, it helps to NOT have the Hover Boots equipped. When the fight starts, if you hold down, he won't circle you right away. Hit his hands with your bow or hookshot to stun them. Now hit him before he hits you and damage him as much as you can. Quickspins can actually stunlock him for a 1-cycle if you do them perfectly."
+						LongDescription: "When fighting Bongo Bongo, it helps to NOT have the Hover Boots equipped. When the fight starts, if you hold down, he won't circle you right away. Hit his hands with your bow or hookshot to stun them. Now hit him before he hits you and damage him as much as you can. Quickspins can actually stunlock him for a 1-cycle if you do them perfectly.",
+						RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.HOOKSHOT]
 					},
 					"Blue Warp": {
 						Name: "Blue Warp",
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 131, y: 230, floor: "B1" },
 						Age: Age.ADULT,
+						IsBoss: true,
 						Order: 27,
-						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion."
+						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
+						RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.HOOKSHOT]
+					},
+					"Boss Entrance": {
+						Name: "Boss Entrance",
+						ItemGroup: ItemGroups.ENTRANCE,
+						MapInfo: { x: 131, y: 219, floor: "B1" },
+						Age: Age.ADULT,
+						IsBoss: true,
+						Order: 26,
+						LongDescription: "Enter the door across the chasm and navigate across the invisible floors to get to the boss."
 					}
 				}
 			}
@@ -3569,6 +3579,16 @@ let MQDungeons = {
 						Order: 29,
 						AltOrder: 25,
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion."
+					},
+					"Boss Entrance": {
+						Name: "Boss Entrance",
+						ItemGroup: ItemGroups.ENTRANCE,
+						MapInfo: { x: 173, y: 63, floor: "F2" },
+						Age: Age.ADULT,
+						IsBoss: true,
+						Order: 28,
+						AltOrder: 24,
+						LongDescription: "To reach the boss room, start at the mirror maze. Shine the light from the first mirror onto the sun above the first archway - this will spawn a second mirror. Now, push the mirrors so that the light travels to the end. Go to the giant mirror that the light is now traveling to, and reflect the light unto the sun on the wall. After the cutscene, shine the light into the statue's face. Hookshot the grate to get to the boss room."
 					}
 				}
 			}

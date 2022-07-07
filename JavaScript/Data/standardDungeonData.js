@@ -3211,8 +3211,7 @@ let StandardDungeons = {
 							if (!hasBossKey("Shadow Temple")) { return false; }
 
 							let canGetToDoor = Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
-							let canDefeatBoss = Items.FAIRY_BOW.playerHas || Items.HOOKSHOT.playerHas;
-							return canGetToDoor && canDefeatBoss;
+							return canGetToDoor;
 						}
 					}
 				},
@@ -3228,16 +3227,29 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 131, y: 219, floor: "B1" },
 						Age: Age.ADULT,
+						IsBoss: true,
 						Order: 23,
-						LongDescription: "When fighting Bongo Bongo, it helps to NOT have the Hover Boots equipped. When the fight starts, if you hold down, he won't circle you right away. Hit his hands with your bow or hookshot to stun them. Now hit him before he hits you and damage him as much as you can. If you have magic, quickspins can actually stunlock him for a 1-cycle if you do them perfectly."
+						LongDescription: "When fighting Bongo Bongo, it helps to NOT have the Hover Boots equipped. When the fight starts, if you hold down, he won't circle you right away. Hit his hands with your bow or hookshot to stun them. Now hit him before he hits you and damage him as much as you can. If you have magic, quickspins can actually stunlock him for a 1-cycle if you do them perfectly.",
+						RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.HOOKSHOT]
 					},
 					"Blue Warp": {
 						Name: "Blue Warp",
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 131, y: 230, floor: "B1" },
 						Age: Age.ADULT,
+						IsBoss: true,
 						Order: 24,
-						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion."
+						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
+						RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.HOOKSHOT]
+					},
+					"Boss Entrance": {
+						Name: "Boss Entrance",
+						ItemGroup: ItemGroups.ENTRANCE,
+						MapInfo: { x: 131, y: 219, floor: "B1" },
+						Age: Age.ADULT,
+						IsBoss: true,
+						Order: 23,
+						LongDescription: "Enter the door across the chasm and navigate across the invisible floors to get to the boss."
 					}
 				}
 			}
@@ -3820,8 +3832,9 @@ let StandardDungeons = {
 					"Heart Container": {
 						Name: "Heart Container",
 						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: {x: 173, y: 63, floor: "F2" },
+						MapInfo: { x: 173, y: 63, floor: "F2" },
 						Age: Age.ADULT,
+						IsBoss: true,
 						Order: 29,
 						AltOrder: 26,
 						LongDescription: "The boss room can be reached if you enter the left door after the moving wall room. First, hit the silver switch behind the cage to be able to continue. Position all the snake mirrors so that they point the light at the giant mirror in the original room. You'll have to bomb a wall at some point. Make your way to where the light is now and shine it at the sun on the wall. When the platform lowers, shine the light on the statue's face. After it breaks, hookshot the grate and enter the boss room, then kill the iron knuckle.<br/><br/>To defeat Twinrova, reflect one of the sister's shots at the other one. Do this four times to get to the second phase. Now, you must charge your shield with 3 of the same kind of attack. When you do, your shield will shoot it at Twinrova, stunning her. Go hit her! As usual, a jumpslash (Z + A) then crouch stabs (R + spam B) do the most damage."
@@ -3829,11 +3842,22 @@ let StandardDungeons = {
 					"Blue Warp": {
 						Name: "Blue Warp",
 						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: {x: 187, y: 63, floor: "F2" },
+						MapInfo: { x: 187, y: 63, floor: "F2" },
 						Age: Age.ADULT,
+						IsBoss: true,
 						Order: 30,
 						AltOrder: 27,
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion."
+					},
+					"Boss Entrance": {
+						Name: "Boss Entrance",
+						ItemGroup: ItemGroups.ENTRANCE,
+						MapInfo: { x: 227, y: 135, floor: "F2" },
+						Age: Age.ADULT,
+						IsBoss: true,
+						Order: 29,
+						AltOrder: 26,
+						LongDescription: "The boss room can be reached if you enter the left door after the moving wall room. First, hit the silver switch behind the cage to be able to continue. Position all the snake mirrors so that they point the light at the giant mirror in the original room. You'll have to bomb a wall at some point. Make your way to where the light is now and shine it at the sun on the wall. When the platform lowers, shine the light on the statue's face. After it breaks, hookshot the grate and enter the boss room."
 					}
 				}
 			}
