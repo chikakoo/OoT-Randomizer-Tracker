@@ -1556,9 +1556,10 @@ let MQDungeons = {
 				Exits: {
 					roomBeforeBoss: {
 						Name: "roomBeforeBoss",
-						Age: Age.ADULT,
+						Age: Age.EITHER,
 						NeedsFire: true,
 						CustomRequirement: function(age) {
+							if (age === Age.CHILD && !Data.canBombSuperslide(age)) { return false; }
 							return Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
 						}
 					},
@@ -1571,9 +1572,10 @@ let MQDungeons = {
 
 					bigLavaRoom: {
 						Name: "bigLavaRoom",
-						Age: Age.ADULT,
+						Age: Age.EITHER,
 						RequiredItems: [Items.MEGATON_HAMMER],
 						CustomRequirement: function(age) {
+							if (age === Age.CHILD && !Data.canBombSuperslide(age)) { return false; }
 							return Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
 						}
 					},
@@ -1591,7 +1593,7 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 1,
 						UseAdultAge: function() { 
-							return !Settings.RandomizerSettings.shuffleDungeonEntrances;
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.megaFlip;
 						},
 						NeedsDamagingItem: true,
 						LongDescription: "Enter the left door by the entrance. Kill the Like-Like to spawn the chest."
@@ -1603,8 +1605,11 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.LOCKED_DOOR,
 						Regions: ["main"],
 						MapInfo: { x: 126, y: 214, floor: "F1" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
 						Order: 4.1,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.megaFlip;
+						},
 						LongDescription: "This is the locked door on the right side of the lobby.",
 						KeyRequirement: function(age) {
 							return { min: 1, max: Keys.FIRE_TEMPLE.mqTotalKeys() };
@@ -1616,7 +1621,13 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.LOCKED_DOOR,
 						Regions: ["bigLavaRoom"],
 						MapInfo: { x: 256, y: 202, floor: "F1" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							return (!Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.megaFlip) || 
+								!Settings.GlitchesToAllow.fireNoGoronTunic ||
+								!Settings.GlitchesToAllow.bombSuperslide ||
+								!Settings.GlitchesToAllow.equipSwap;
+						},
 						Order: 6.1,
 						LongDescription: "This is the locked door on the far side of the big lava room.",
 						KeyRequirement: function(age) {
@@ -1669,9 +1680,9 @@ let MQDungeons = {
 				Exits: {
 					bossRoom: {
 						Name: "bossRoom",
-						Age: Age.ADULT,
+						Age: Age.EITHER,
 						CustomRequirement: function(age) {
-							return hasBossKey("Fire Temple");
+							return (age === Age.ADULT || Data.canMegaFlip(age)) && hasBossKey("Fire Temple");
 						}
 					}
 				},
@@ -1684,8 +1695,10 @@ let MQDungeons = {
 						Region: "roomBeforeBoss",
 						Age: Age.ADULT,
 						Order: 2,
-						LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room,  navigate to the upper left corner. Roll into a box to break it to reveal a torch. Light all 3 torches in the room to open the gate to the chest.",
-						RequiredChoiceOfItems: [Items.HOOKSHOT, Equipment.HOVER_BOOTS]
+						LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper left corner. Roll into a box to break it to reveal a torch. Light all 3 torches in the room to open the gate to the chest.",
+						CustomRequirement: function(age) {
+							return Data.canMegaFlip(age) || Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas;
+						}
 					}
 				}
 			},
@@ -1738,7 +1751,13 @@ let MQDungeons = {
 						Name: "Skulltula by Left Goron in Lava Room",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 280, y: 139, floor: "F1" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							return (!Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.megaFlip) || 
+								!Settings.GlitchesToAllow.fireNoGoronTunic ||
+								!Settings.GlitchesToAllow.bombSuperslide ||
+								!Settings.GlitchesToAllow.equipSwap;
+						},
 						Order: 8,
 						LongDescription: "Go to the left side of the big lava room. Hammer the switch to gain access to the skulltula."
 					},
@@ -1923,7 +1942,14 @@ let MQDungeons = {
 						Name: "Heart Container",
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: {x: 25, y: 197, floor: "F1" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							return (!Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.megaFlip) || 
+								!Settings.GlitchesToAllow.megaFlip ||
+								!Settings.GlitchesToAllow.fireNoGoronTunic ||
+								!Settings.GlitchesToAllow.bombSuperslide ||
+								!Settings.GlitchesToAllow.equipSwap;
+						},
 						IsBoss: true,
 						Order: 3,
 						LongDescription: "Note that you can get to this boss without dropping the giant column down. Navigate to the Goron cage area and drop down onto the small ledge. Now do a rolling jump straight at the boss platform and hold forward - you should grab the ledge. This might take a few tries. The Hover Boots should make this trivial. To defeat Volvagia, hit her with your hammer when she pops out of the holes. After that, attack it again. Jumpslashes will do more damage, like usual. You can hit it with arrows while it's flying to do additional damage. If it ever drops rocks on you, you can hang off the side of the cliff to avoid damage.",
@@ -1933,7 +1959,14 @@ let MQDungeons = {
 						Name: "Blue Warp",
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: {x: 25, y: 207, floor: "F1" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							return (!Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.megaFlip) || 
+								!Settings.GlitchesToAllow.megaFlip ||
+								!Settings.GlitchesToAllow.fireNoGoronTunic ||
+								!Settings.GlitchesToAllow.bombSuperslide ||
+								!Settings.GlitchesToAllow.equipSwap;
+						},
 						IsBoss: true,
 						Order: 4,
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
@@ -1943,10 +1976,13 @@ let MQDungeons = {
 						Name: "Boss Entrance",
 						ItemGroup: ItemGroups.ENTRANCE,
 						MapInfo: { x: 25, y: 207, floor: "F1" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
 						IsBoss: true,
 						UseAdultAge: function() { 
-							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; 
+							return (!Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.megaFlip) || 
+								!Settings.GlitchesToAllow.megaFlip ||
+								!Settings.GlitchesToAllow.fireNoGoronTunic ||
+								!Settings.GlitchesToAllow.bombSuperslide;
 						},
 						Order: 3,
 						LongDescription: "As Adult, you can do a roll-jump from the corner to get to the boss door."

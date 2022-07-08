@@ -556,13 +556,20 @@ Data = {
     },
 
     /**
+     * Returns whether you can do a superslide using bombs
+     */
+    canBombSuperslide: function(age) {
+        return Settings.GlitchesToAllow.bombSuperslide &&
+            Items.BOMB.playerHas &&
+            Data.hasShield(age)
+    },
+
+    /**
      * Returns whether you can do a superslide using bombs and hover boots
      */
     canBombSuperslideWithHovers: function(age) {
         return age === Age.ADULT &&
-            Settings.GlitchesToAllow.bombSuperslide &&
-            Items.BOMB.playerHas &&
-            Data.hasShield(age) &&
+            this.canBombSuperslide(age) &&
             Equipment.HOVER_BOOTS.playerHas;
     },
 
