@@ -74,7 +74,7 @@ let Settings = {
 		closedDeku: false,
 		openDoorOfTime: true,
 		openKakariko: true,
-		autoPlantBeans: false,
+		autoPlantBeans: true,
 		openZorasFountain: OpenZorasFountainSettings.VANILLA,
 		
 		// Sanity and logic changes
@@ -91,16 +91,16 @@ let Settings = {
 		shopSanity: true,
 		cowSanity: true,
 		shuffleCarpetAndMedigoron: true,
-		shuffleAllFrogSongs: false,
+		shuffleAllFrogSongs: true,
 		bombchusInLogic: true,
 		deadHandNeedsSword: false,
-		iceArrowsActAsBlueFire: false,
+		iceArrowsActAsBlueFire: true,
 		
 		// Entrance shuffle settings
 		shuffleInteriorEntrances: true,
 		shuffleGrottoEntrances: true,
 		shuffleDungeonEntrances: true,
-		shuffleBossEntrances: false,
+		shuffleBossEntrances: true,
 		shuffleOverworldEntrances: true,
 		randomizeOwlDrops: true,
 		decoupleEntrances: false //TODO: this will probabaly be a setting to decouple in the different pools instead
