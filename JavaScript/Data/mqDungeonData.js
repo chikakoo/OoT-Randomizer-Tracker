@@ -1570,6 +1570,14 @@ let MQDungeons = {
 						Map: "Fire Temple"
 					},
 
+					cellByEntrance: {
+						Name: "cellByEntrance",
+						Age: Age.ADULT,
+						CustomRequirement: function(age) {
+							return Data.canWeirdShot(age);
+						}
+					},
+
 					bigLavaRoom: {
 						Name: "bigLavaRoom",
 						Age: Age.EITHER,
@@ -1704,7 +1712,12 @@ let MQDungeons = {
 			},
 
 			lockedAreaByEntrance: {
-				Exits: {},
+				Exits: {
+					cellByEntrance: {
+						Name: "cellbyEntrance",
+						RequiredItems: [Items.MEGATON_HAMMER]
+					}
+				},
 				ItemLocations: {
 					"Chest After First Flare Dancer": {
 						Name: "Chest After First Flare Dancer",
@@ -1722,7 +1735,13 @@ let MQDungeons = {
 							if (age === Age.ADULT) { return true; }
 							return Data.canGroundJumpWithBomb(age);
 						}
-					},
+					}
+				}
+			},
+
+			cellByEntrance: {
+				Exits: {},
+				ItemLocations: {
 					"Chest by Goron After Flare Dancer": {
 						Name: "Chest by Goron After Flare Dancer",
 						ItemGroup: ItemGroups.CHEST,
@@ -1730,7 +1749,6 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
 						Order: 6,
-						RequiredItems: [Items.MEGATON_HAMMER],
 						LongDescription: "After the Flare Dancer, enter the next room. Hit the rusted switch with the hammer to gain access to this chest."
 					}
 				}

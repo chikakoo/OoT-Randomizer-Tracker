@@ -3855,7 +3855,10 @@ let MapLocations = {
                         MapInfo: { x: 212, y: 207 },
                         Age: Age.EITHER,
                         LongDescription: "If you take the left path out of Goron City, the wall to bomb or hammer will be to your right.",
-                        NeedToBlastOrSmash: true
+                        CustomRequirement: function(age) {
+                            let canClipIn = Settings.GlitchesToAllow.dmtClipToChestByGoron && Data.hasSwordWeapon(age);
+                            return canClipIn || Data.canBlastOrSmash(age);
+                        }
                     },
                     "Heart Piece Above Dodongo's Cavern": {
                         Name: "Heart Piece Above Dodongo's Cavern",

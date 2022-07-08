@@ -631,20 +631,25 @@
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsMountainContainer")' settings>Mountain Areas</span>
 					<div id="settingsMountainContainer">
+						<label onclick='SettingsPage.setBooleanValueForGlitches("dmtClipToChestByGoron", event)'
+							title="Take out sword/stick; backwalk to grab the ledge above it (won't always work...); sidehop and pause when he's lined up with the corner (almost immediately); B or the C-button to jumpslash and hold up. Adult gets more frames for the jumpslash.">
+							<input type="checkbox" name="dmtClipToChestByGoron" value="dmtClipToChestByGoron">
+							Death Mountain Trail Clip to Get Chest By Goron
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("dmtSkullsWithoutHammer", event)'
+							title="This is a trick to get both skulltulas in the red rocks without the hammer. One of them requires the hookshot, and one requires nothing.">
+							<input type="checkbox" name="dmtSkullsWithoutHammer" value="dmtSkullsWithoutHammer">
+							Death Mountain Trail Skulltulas in Red Rocks Without Hammer
+						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitches("hoverToVolcanoHP", event)'
 							title="This skips needing to plant the beans in Death Mountain Crater as Child Link.">
 							<input type="checkbox" name="hoverToVolcanoHP" value="hoverToVolcanoHP">
 							Hover Boots to Volcano Heart Piece
 						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitches("childDoubleMagicFairy", event)'
-							title="Required mega flips to be on - these are used to get to the middle platform in Death Mountain Crater. The actual trick is a serious of really well-timed sidehops past the rocks to the Great Fairy Fountain.">
+							title="Required mega flips to be on if no OW shuffle - these are used to get to the middle platform in Death Mountain Crater. The actual trick is a serious of really well-timed sidehops past the rocks to the Great Fairy Fountain.">
 							<input type="checkbox" name="childDoubleMagicFairy" value="childDoubleMagicFairy">
 							Death Mountain Crater Fairy as Child
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("dmtSkullsWithoutHammer", event)'
-							title="This is a trick to get both skulltulas in the red rocks without the hammer. One of them requires the hookshot, and one requires nothing.">
-							<input type="checkbox" name="dmtSkullsWithoutHammer" value="dmtSkullsWithoutHammer">
-							Death Mountain Trail Skulltulas in Red Rocks Without Hammer
 						</label>
 					</div>
 				</div>

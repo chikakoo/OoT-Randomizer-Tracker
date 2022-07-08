@@ -2966,7 +2966,7 @@ let StandardDungeons = {
 						},
 						LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). Take out the enemies in this room to open up the gate - there's a like-like and a few keese in the corners. If you don't have a range weapon, jumpslash at the keese to alert them to you. The skulltula is behind the open gate.<br/><br/>If you are an adult and have no hookshot, you can kill the skulltula with a jumpslash. Line yourself up so that you, the chest, and the token are in a line. Face the other way and do two backflips (Down + Z + spam A). If you were the right distance away, you should grab the token after backflipping off the chest.",
 						CustomRequirement: function(age) {
-							return age === Age.ADULT || Data.canGrabShortDistances(age) || Data.canStaircaseHover(age);
+							return age === Age.ADULT || Data.canGrabShortDistances(age);
 						}
 					},
 					"Skulltula in Ceiling Spike Room": {
