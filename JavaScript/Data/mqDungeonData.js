@@ -4036,8 +4036,9 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 1,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon; 
 						},
 						LongDescription: "This chest is to the left when you first enter."
 					},
@@ -4048,8 +4049,9 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 2,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon; 
 						},
 						LongDescription: "This chest is to the right when you first enter."
 					},
@@ -4060,8 +4062,9 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 3,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon; 
 						},
 						LongDescription: "From the main maze entrance, take the first left door. Climb the grate to your left up to the chest."
 					},
@@ -4072,8 +4075,9 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 4,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon; 
 						},
 						LongDescription: "This chest is after the second door in the left maze path."
 					},
@@ -4084,8 +4088,9 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 5,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon; 
 						},
 						LongDescription: "This chest is after the fourth door in the left maze path."
 					},
@@ -4096,8 +4101,9 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 6,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon; 
 						},
 						LongDescription: "This chest is after the fifth door in the left maze path.",
 						CustomRequirement: function(age) {
@@ -4124,8 +4130,9 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 17,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon; 
 						},
 						LongDescription: "Either get here after shooting the eye in the starting room, or going around form the big lava room. Kill all the enemies to spawn the chest.",
 						RequiredChoiceOfChildItems: [Items.DEKU_STICK, Items.BOMB, Items.BOMBCHU]
@@ -4150,8 +4157,9 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 7,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon; 
 						},
 						LongDescription: "From the main entrance, light the torches and go through the door that unlocks. Kill the Iron Knuckle to spawn the chest."
 					}
@@ -4198,8 +4206,9 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 8,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.gtgChildVineClips) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
 						},
 						LongDescription: "Enter the room after the iron knuckle room. Collect the rupees within the time limit and move on to the next room. Defeat the enemies within the time limit to spawn the chest."
 					}
@@ -4273,8 +4282,9 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 12,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.gtgChildVineClips) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
 						},
 						LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Continue past the circle fire room into the next room. Kill the enemies within the time limit to spawn the chest."
 					},
@@ -4285,8 +4295,9 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 13,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.gtgChildVineClips) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
 						},
 						LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Continue past the circle fire room into the next room. Activate the switch above the door to spawn the chest. Step on the swith on one of the walls to remove the fire.",
 						CustomRequirement: function(age) {
@@ -4327,7 +4338,6 @@ let MQDungeons = {
 								Items.HOOKSHOT.currentUpgrade === 2 ||
 								Data.canBombSuperslideWithHovers(age) ||
 								Data.canHammerHoverBootsSuperslide(age);
-
 						}
 					}
 				},
@@ -4336,18 +4346,27 @@ let MQDungeons = {
 						Name: "Close Chest in Back of Maze",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 177, y: 165 },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
+						},
 						Order: 14,
 						LongDescription: "After defeating the enemies in the room with the fire circle and Iron Knuckle, proceed through the door. Hammer the rusted switch, then longshot to the pillar that appears. Go through the hall - the chest is straight ahead."
 					},
 					"Far Chest in Back of Maze": {
 						Name: "Far Chest in Back of Maze",
 						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 0, y: 0 },
-						Age: Age.ADULT,
+						MapInfo: { x: 187, y: 154 },
+						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
+						},
 						Order: 15,
-						LongDescription: "After getting the close chest from the back of the maze, continue along counter-clockwise to get the next chest (there are no doors to go through)."
-					}
+						LongDescription: "After getting the close chest from the back of the maze, continue along counter-clockwise to get the next chest (there are no doors to go through)."					}
 				}
 			},
 
@@ -4361,8 +4380,9 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 6.1,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.gtgChildVineClips && Settings.GlitchesToAllow.equipSwap) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips && Settings.GlitchesToAllow.equipSwap); 
 						},
 						RequiredItems: [Items.MEGATON_HAMMER]
 					}
@@ -4403,8 +4423,9 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 11,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances && (Settings.GlitchesToAllow.gtgChildVineClips || Settings.GlitchesToAllow.equipSwap)) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
 						},
 						LongDescription: "First, spawn the chest by making your way to the center of the maze. Break the box, then hammer the rusted switch to spawn the chest.<br/><br/>In the spinning room, hookshot to the target in the center of the eye statues. From there, hookshot the crystal switch to unbar the door. Go in and claim the chest.",
 						CustomRequirement: function(age) {

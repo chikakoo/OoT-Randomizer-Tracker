@@ -2964,7 +2964,10 @@ let StandardDungeons = {
 						UseAdultAge: function() { 
 							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
 						},
-						LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). Take out the enemies in this room to open up the gate - there's a like-like and a few keese in the corners. If you don't have a range weapon, jumpslash at the keese to alert them to you. The skulltula is behind the open gate. If you have no hookshot, you can kill the skulltula with a jumpslash. Like yourself up so that you, the chest, and the token are in a line. Face the other way and do two backflips (Down + Z + spam A). If you were the right distance away, you should grab the token after backflipping off the chest."
+						LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). Take out the enemies in this room to open up the gate - there's a like-like and a few keese in the corners. If you don't have a range weapon, jumpslash at the keese to alert them to you. The skulltula is behind the open gate.<br/><br/>If you are an adult and have no hookshot, you can kill the skulltula with a jumpslash. Line yourself up so that you, the chest, and the token are in a line. Face the other way and do two backflips (Down + Z + spam A). If you were the right distance away, you should grab the token after backflipping off the chest.",
+						CustomRequirement: function(age) {
+							return age === Age.ADULT || Data.canGrabShortDistances(age) || Data.canStaircaseHover(age);
+						}
 					},
 					"Skulltula in Ceiling Spike Room": {
 						Name: "Skulltula in Ceiling Spike Room",
@@ -2975,8 +2978,10 @@ let StandardDungeons = {
 						UseAdultAge: function() { 
 							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
 						},
-						IsAtShortDistance: true,
-						LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. The skulltula is in the first cage to the left near the ceiling spikes. To pass them, you can either use good timing, or pull the block out of the wall to the right (use the lens to find it) to act as an umbrella - assuming you have a strength upgrade."
+						LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. The skulltula is in the first cage to the left near the ceiling spikes. To pass them, you can either use good timing, or pull the block out of the wall to the right (use the lens to find it) to act as an umbrella - assuming you have a strength upgrade.",
+						CustomRequirement: function(age) {
+							return Data.canGrabShortDistances(age) || Data.canStaircaseHover(age);
+						}
 					},
 					"Bottom Chest in Ceiling Spike Room": {
 						Name: "Bottom Chest in Ceiling Spike Room",
@@ -4315,8 +4320,9 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 1,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon;
 						},
 						LongDescription: "From the entrance, turn around. Shoot the eye that's near the ceiling to spawn this chest.",
 						CustomRequirement: function(age) { return Data.canShootEyeSwitch(age); }
@@ -4328,8 +4334,9 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 2,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon;
 						},
 						LongDescription: "From the entrance, turn around. Shoot the eye that's near the ceiling to spawn this chest.",
 						CustomRequirement: function(age) { return Data.canShootEyeSwitch(age); }
@@ -4341,8 +4348,9 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 3,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon;
 						},
 						LongDescription: "This is the room to the left of the entrance. I recommend going this way, first, as it only requires the hookshot to make it most of the way around the dungeon. Anyway, kill the stalfos in here within the time limit to get this chest.",
 						NeedsSwordWeapon: true
@@ -4354,8 +4362,9 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 17,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon;
 						},
 						LongDescription: "This is either the room to the right of the entrance, or the southern path from the big lava room. Bomb the beamos and kill the lizalfos to spawn this chest.",
 						NeedsExplosives: true
@@ -4368,6 +4377,11 @@ let StandardDungeons = {
 						Regions: ["main"],
 						MapInfo: { x: 154, y: 174 },
 						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon;
+						},
 						Order: 18,
 						LongDescription: "This is door 1 on the left path of the maze from the main entrance.",
 						KeyRequirement: function(age) {
@@ -4380,6 +4394,11 @@ let StandardDungeons = {
 						Regions: ["mazeAfterDoor1"],
 						MapInfo: { x: 135, y: 184 },
 						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon;
+						},
 						Order: 20,
 						LongDescription: "This is door 2 on the left path of the maze from the main entrance.",
 						KeyRequirement: function(age) {
@@ -4393,6 +4412,11 @@ let StandardDungeons = {
 						Regions: ["mazeAfterDoor2"],
 						MapInfo: { x: 150, y: 160 },
 						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon;
+						},
 						Order: 22,
 						LongDescription: "This is door 3 on the left path of the maze from the main entrance.",
 						KeyRequirement: function(age) {
@@ -4406,6 +4430,11 @@ let StandardDungeons = {
 						Regions: ["mazeAfterDoor3"],
 						MapInfo: { x: 130, y: 139 },
 						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon;
+						},
 						Order: 23,
 						LongDescription: "This is door 4 on the left path of the maze from the main entrance.",
 						KeyRequirement: function(age) {
@@ -4419,6 +4448,11 @@ let StandardDungeons = {
 						Regions: ["mazeAfterDoor4"],
 						MapInfo: { x: 163, y: 145 },
 						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon;
+						},
 						Order: 25,
 						LongDescription: "This is door 5 on the left path of the maze from the main entrance.",
 						KeyRequirement: function(age) {
@@ -4432,6 +4466,11 @@ let StandardDungeons = {
 						Regions: ["mazeAfterDoor5"],
 						MapInfo: { x: 178, y: 140 },
 						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon;
+						},
 						Order: 27,
 						LongDescription: "This is door 6 on the left path of the maze from the main entrance.",
 						KeyRequirement: function(age) {
@@ -4445,6 +4484,11 @@ let StandardDungeons = {
 						Regions: ["mazeAfterDoor6"],
 						MapInfo: { x: 173, y: 156 },
 						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon;
+						},
 						Order: 28,
 						LongDescription: "This is door 7 on the left path of the maze from the main entrance.",
 						KeyRequirement: function(age) {
@@ -4458,6 +4502,11 @@ let StandardDungeons = {
 						Regions: ["main"],
 						MapInfo: { x: 173, y: 174 },
 						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon;
+						},
 						Order: 30,
 						LongDescription: "This is the first door on the right path of the maze from the main entrance. It's recommended to avoid going this way if possible.",
 						KeyRequirement: function(age) {
@@ -4470,6 +4519,11 @@ let StandardDungeons = {
 						Regions: ["mazeAfterOptionalDoor1", "mazeDeadEnd"],
 						MapInfo: { x: 197, y: 180 },
 						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon;
+						},
 						Order: 31,
 						LongDescription: "This is the second door on the right path of the maze from the main entrance. It's recommended to avoid going this way if possible.",
 						KeyRequirement: function(age) {
@@ -4523,8 +4577,9 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 4,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.gtgChildVineClips) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
 						},
 						LongDescription: "This is the room either after the stalfos sandy room, or after the silver rupee room with the fire walls. Kill all the wolfos to spawn a chest."
 					},
@@ -4553,8 +4608,9 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 11,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.gtgChildVineClips) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
 						},
 						LongDescription: "This is either after the eye statue room, or after the big lava room. This is the chest that spawns after you kill all the enemies."
 					},
@@ -4565,8 +4621,9 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 12,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.gtgChildVineClips && Settings.GlitchesToAllow.equipSwap) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips && Settings.GlitchesToAllow.equipSwap); 
 						},
 						LongDescription: "This is either after the eye statue room, or after the big lava room. Use your hammer on the pillars until you find a floor switch. Step on it to remove the flames from the chest. Be sure to get it before they come back!",
 						RequiredItems: [Items.MEGATON_HAMMER]
@@ -4660,8 +4717,9 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 13,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon; 
 						},
 						LongDescription: "There are a few ways to get here. From the entrance, enter the door in front of you. You can use two of your keys on the doors to the right, then take a right to get to the platform with the key. I don't really recommend doing this if you have the hookshot unless you also have all 9 keys.<br/><br/>If you go right from the entrance, clear out the room then proceed forward. Now, you're in the lava room. Navigate over to the left by the switch. Play the Song of Time then jump to the blocks to get to the platform with the freestanding key.<br/><br/>Finally, you can also make your way all the around the dungeon from the left to get to the lava room. You either need hover boots or the hookshot to cross the room all the way, though. Again, get to the switch then play the Song of Time to get up."
 					},
@@ -4672,8 +4730,9 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 14,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon; 
 						},
 						LongDescription: "There are a few ways to get here. From the entrance, enter the door in front of you. You can use two of your keys on the doors to the right. This is the first chest you see. I don't really recommend doing this if you have the hookshot unless you also have all 9 keys.<br/><br/>If you go right from the entrance, clear out the room then proceed forward. Now, you're in the lava room. Navigate over to the left by the switch. Play the Song of Time then jump to the blocks to get to the platform. If you go straight from here, you'll reach the chest.<br/><br/>Finally, you can also make your way all the around the dungeon from the left to get to the lava room. You either need hover boots or the longshot to cross the room all the way, though. Again, get to the switch then play the Song of Time to get up. The chest is straight ahead."
 					},
@@ -4684,8 +4743,9 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 15,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon; 
 						},
 						LongDescription: "There are a few ways to get here. From the entrance, enter the door in front of you. You can use two of your keys on the doors to the right. This is the second chest you see, at the maze's dead end. I don't really recommend doing this if you have the hookshot unless you also have all 9 keys.<br/><br/>If you go right from the entrance, clear out the room then proceed forward. Now, you're in the lava room. Navigate over to the left by the switch. Play the Song of Time then jump to the blocks to get to the platform. If you take the righthand path through the maze, you'll hit the chest at the dead end.<br/><br/>Finally, you can also make your way all the around the dungeon from the left to get to the lava room. You either need hover boots or the longshot to cross the room all the way, though. Again, get to the switch then play the Song of Time to get up. If you take the righthand path through the maze, you'll hit the chest at the dead end."
 					}
@@ -4712,8 +4772,9 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 19,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon; 
 						},
 						LongDescription: "First, get to the maze from the entrance (NOT from the giant lava room). This is the door if you go straight. Go through the first door to the left. Climb the wall to the right of the door you came in to get to the chest after the fake ceiling."
 					}
@@ -4740,8 +4801,9 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 21,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon; 
 						},
 						LongDescription: "First, get to the maze from the entrance (NOT from the giant lava room). This is the door if you go straight. Go left and enter 2 doors. The chest is in this room."
 					}
@@ -4782,8 +4844,9 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 24,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon; 
 						},
 						LongDescription: "First, get to the maze from the entrance (NOT from the giant lava room). This is the door if you go straight. Go left and enter 4 doors. The chest is in this room."
 					}
@@ -4810,8 +4873,9 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 26,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon; 
 						},
 						LongDescription: "First, get to the maze from the entrance (NOT from the giant lava room). This is the door if you go straight. Go left and enter 5 doors. The chest is in this room."
 					}
@@ -4841,8 +4905,9 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 29,
 						UseAdultAge: function() { 
-							if (Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-							return !(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed); 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !canEnterDungeon; 
 						},
 						LongDescription: "First, get to the maze from the entrance (NOT from the giant lava room). This is the door if you go straight. Go left and enter 7 doors. The chest is in this room."
 					}
