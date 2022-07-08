@@ -49,6 +49,11 @@ Data = {
      * @param {any} data - the data to store in the key
      */
     addToInteriorTravelData: function(key, data) {
+        let dataArray = this._interiorTravelDataInfo[key];
+        if (dataArray.some(x => x.Name === data.Name && x.Map === data.Map)) {
+            return;
+        }
+
         this._interiorTravelDataInfo[key].push(data);
         this._updateInteriorTravelData(key);
     },

@@ -195,7 +195,7 @@ SocketClient = {
 			if (group.postClick) {
 				group.postClick(matchingLocation, true);
 			}
-			EntranceData.runPostClicksOnCompletedItems(matchingLocation);
+			EntranceData.runPostClicks(matchingLocation);
 		} 
 		
 		else if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && !itemLocation.EntranceGroup) {

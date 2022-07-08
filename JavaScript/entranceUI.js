@@ -230,7 +230,7 @@ let EntranceUI = {
 				button.postClick(false);
 			}
 		});
-
+		
 		delete itemLocation.EntranceGroup;
 		
 		if (itemLocation.Map === _currentLocationName) {

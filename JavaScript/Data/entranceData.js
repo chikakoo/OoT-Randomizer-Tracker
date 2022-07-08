@@ -90,21 +90,21 @@ EntranceData = {
 	},
 
 	/**
-	 * Runs the post click functions on all completed items of a given item location
+	 * Runs the post click functions on all items of a given item location
 	 * @param itemLocation The item location to check
 	 */
-	runPostClicksOnCompletedItems: function(itemLocation) {
-		if (!itemLocation || !itemLocation.EntranceGroup || !itemLocation.EntranceGroup.completed) {
-			return;
+	 runPostClicks: function(itemLocation) {
+		 if (!itemLocation || !itemLocation.EntranceGroup) {
+			 return;
 		}
-
-		if (!itemLocation.IsInterior && !itemLocation.IsGrotto) {
+		
+		if (!itemLocation.IsInterior && !itemLocation.IsGrotto && !itemLocation.IsBoss) {
 			return;
 		}
 
 		let entranceGroup = itemLocation.EntranceGroup;
 		let name = entranceGroup.name;
-		Object.keys(entranceGroup.completed).forEach(function(buttonName) {
+		entranceGroup.buttonNames.forEach(function(buttonName) {
 			let buttonItem;
 
 			if (itemLocation.IsInterior) {
@@ -120,7 +120,8 @@ EntranceData = {
 			}
 
 			if (buttonItem && buttonItem.postClick) {
-				buttonItem.postClick(true);
+				let isCompleted = Object.keys(entranceGroup.completed).includes(buttonName);
+				buttonItem.postClick(isCompleted);
 			}
 		});
 	}
@@ -1012,6 +1013,7 @@ GrottoGroups = {
 		}
 	},
 	"Morpha": {
+		AlwaysRunPostClicks: true,
 		tooltip: "Morpha in the Water Temple",
 		buttons: {
 			"Heart Container": {

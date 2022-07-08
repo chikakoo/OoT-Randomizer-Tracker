@@ -316,7 +316,7 @@ let SaveAndLoad = {
                             itemLocation.OwShuffleRegion = loadedItemLocationInfo.OwShuffleRegion;
                         }
 
-                        EntranceData.runPostClicksOnCompletedItems(itemLocation);
+                        EntranceData.runPostClicks(itemLocation);
                     });
                 });
             });

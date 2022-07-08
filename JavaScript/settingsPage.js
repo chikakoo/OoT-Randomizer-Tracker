@@ -176,6 +176,21 @@ let SettingsPage = {
 	 * Sets the value of the given setting name to whether the event's
 	 * target is checked or not
 	 * @param settingName: The name of the setting - this is the key of the Setting object
+     * @param link: The link to follow if ctrl+click is used
+	 * @param event: Used to stop propagation to prevent double execution
+	 */
+	setBooleanValueForGlitchesWithLink: function(settingName, link, event) {
+        if (event.shiftKey) {
+            window.open(link, '_blank');
+        } else {
+            this.setBooleanValueForGlitches(settingName, event);
+        } 
+    },
+
+    /**
+	 * Sets the value of the given setting name to whether the event's
+	 * target is checked or not
+	 * @param settingName: The name of the setting - this is the key of the Setting object
 	 * @param event: Used to stop propagation to prevent double execution
 	 */
 	setBooleanValueForTracker: function(settingName, event) {
