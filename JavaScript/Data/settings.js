@@ -141,6 +141,7 @@ let Settings = {
 		// Goron area
 		hoverToVolcanoHP: false,
 		childDoubleMagicFairy: false,
+		dmtClipToChestByGoron: false,
 		dmtSkullsWithoutHammer: false,
 		
 		// Zora/Lake
