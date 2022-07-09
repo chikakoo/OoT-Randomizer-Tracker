@@ -707,7 +707,8 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						IsBoss: true,
 						Order: 9,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						RequiredItems: [Items.BOOMERANG],
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
 						LongDescription: "Climb up the webbing and use your boomerang to hit the switch and unblock the door."
 					}
 				}

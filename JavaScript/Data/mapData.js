@@ -6091,7 +6091,7 @@ let MapLocations = {
                         IsPostWalkCheck: true,
                         LongDescription: "Plant a magic bean in the soil by the Spirit Temple. Come back as an adult and ride it to the heart piece on the giant arch.",
                         CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Desert Colossus", "main", "*Plant Bean by Spirit Temple") ||
+                            return (age === Age.ADULT && Data.itemLocationObtained("Desert Colossus", "main", "*Plant Bean by Spirit Temple")) ||
                                 (Data.canAccessMap(age, "Spirit Temple", "statueHands") && Data.canMegaFlip(age));
                         }
                     },
