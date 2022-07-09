@@ -4,6 +4,16 @@ let Age = {
 	ADULT: "Adult"
 };
 
+let Time = {
+	EITHER: 0,
+	DAY: 1,
+	NIGHT: 2,
+	DAY_CHILD: 3,
+	DAY_ADULT: 4,
+	NIGHT_CHILD: 5,
+	OUTSIDE_DAY_INSIDE_NIGHT: 6
+};
+
 let OpenZorasFountainSettings = {
 	VANILLA: 0,
 	ADULT: 1,

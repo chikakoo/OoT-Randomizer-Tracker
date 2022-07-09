@@ -103,6 +103,12 @@ let updateItemDisplay = function() {
 			let moreInfoDiv = document.getElementById(`${itemLocation.Name}-more-info`);
 			moreInfoDiv.appendChild(_createNotesDiv(itemLocation));
 		}
+
+		// Update the time icon
+		let itemLocationTimeIconDiv = document.getElementById(`${itemLocation.Name}-time-icon`);
+		if (itemLocationTimeIconDiv) {
+			itemLocationTimeIconDiv.style.backgroundImage = Data.getTimeImagePath(itemLocation);
+		}
 		
 		// Update the entrance buttons
 		if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && itemLocation.EntranceGroup) {
@@ -260,6 +266,11 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon, i
 		itemLocationAgeIconDiv.id = `${itemLocation.Name}-age-icon`;
 		itemLocationAgeIconDiv.style.backgroundImage = Data.getAgeImagePath(itemLocation);
 		itemLocationTitleDiv.appendChild(itemLocationAgeIconDiv);
+
+		let itemLocationTimeIconDiv = dce("div", "item-location-time-icon");
+		itemLocationTimeIconDiv.id = `${itemLocation.Name}-time-icon`;
+		itemLocationTimeIconDiv.style.backgroundImage = Data.getTimeImagePath(itemLocation);
+		itemLocationTitleDiv.appendChild(itemLocationTimeIconDiv);
 		
 		if (includeGroupIcon) {
 			let itemLocationIconDiv = dce("div", "item-location-group-icon");

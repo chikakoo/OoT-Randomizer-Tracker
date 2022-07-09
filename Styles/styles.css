@@ -439,6 +439,11 @@ body {
 	color: Gainsboro;
 }
 
+.item-location.item-cannot-obtain .item-location-time-icon,
+.item-location.item-obtained .item-location-time-icon {
+	opacity: 0.5;
+}
+
 .item-location.item-obtained .item-location-inline-notes {
 	color: gray;
 }
@@ -459,7 +464,7 @@ body {
 	border-top: 2px solid gold;
 }
 
-.item-location-age-icon, .item-location-group-icon {
+.item-location-age-icon, .item-location-group-icon, .item-location-time-icon {
 	width: 25px;
 	height: 25px;
 }
@@ -518,9 +523,19 @@ body {
 	padding-left: 5px;
 }
 
-.item-group-image, .item-location-age-icon, .item-location-expand-icon, .item-location-map-icon, .item-location-walk-icon, .item-location-cancel-entrance-icon, .item-location-group-icon {
+.item-group-image, .item-location-age-icon, .item-location-time-icon, .item-location-expand-icon, .item-location-map-icon, .item-location-walk-icon, .item-location-cancel-entrance-icon, .item-location-group-icon {
 	background-size: contain;
 	background-repeat: no-repeat;
+}
+
+.item-location-age-icon {
+	z-index: 1;
+}
+
+.item-location-time-icon {
+	position: relative;
+	margin-left: -52px;
+	padding-right: 26px;
 }
 
 .item-group-image {

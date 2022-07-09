@@ -551,6 +551,7 @@ InteriorGroups = {
 	"Super Cucco Minigame": {
 		map: "Lon Lon Ranch",
 		tooltip: "Talon's House in Lon Lon Ranch",
+		time: function() { return Time.NIGHT; },
 		buttons: {
 			"Super Cucco Minigame": {
 				itemLocation: "Talon's Super Cucco Minigame",
@@ -560,6 +561,12 @@ InteriorGroups = {
 				},
 				isChildOnly: function() { return true; }
 			},
+		},
+		postClick: function(itemLocation, isSelected) {
+			let itemLocationTimeIconDiv = document.getElementById(`${itemLocation.Name}-time-icon`);
+			if (itemLocationTimeIconDiv) {
+				itemLocationTimeIconDiv.style.backgroundImage = Data.getTimeImagePath(itemLocation, !isSelected);
+			}
 		}
 	},
 	"Windmill": {

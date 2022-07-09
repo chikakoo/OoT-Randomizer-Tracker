@@ -401,6 +401,7 @@ let OwExits = {
             Map: "Hyrule Field",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
+            Time: function() { return Time.DAY_CHILD; },
             MapInfo: {x: 166, y: 261},
             Age: Age.EITHER,
             LongDescription: "This is the entrance back to Hyrule field."
@@ -1406,18 +1407,18 @@ let MapLocations = {
                     "Skulltula on Know-it-all House": {
                         Name: "Skulltula on Know-it-all House",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 70, y: 180 },
                         Age: Age.CHILD,
-                        LongDescription: "Look on the side of the Know-it-all Brothers' house at night. You can get the token with a backflip if you don't have a Boomerang.",
-                        NeedsNighttime: true
+                        LongDescription: "Look on the side of the Know-it-all Brothers' house at night. You can get the token with a backflip if you don't have a Boomerang."
                     },
                     "Skulltula on the House of Twins": {
                         Name: "Skulltula on the House of Twins",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 261, y: 233 },
                         Age: Age.ADULT,
                         LongDescription: "Look in the middle of the House of Twins at night.",
-                        NeedsNighttime: true,
                         CustomRequirement: function(age) {
                             if (Items.HOOKSHOT.playerHas) { return true; }
                             return Settings.GlitchesToAllow.houseOfTwinsSkullWithHovers && Equipment.HOVER_BOOTS.playerHas;
@@ -1754,10 +1755,10 @@ let MapLocations = {
                     "Skulltula by Forest Stage": {
                         Name: "Skulltula by Forest Stage",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 188, y: 56 },
                         Age: Age.ADULT,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. Plant a magic bean here as a child. Come back as an adult at night and ride the plant up.",
-                        NeedsNighttime: true,
                         CustomRequirement: function(age) {
                             let canRideUp = Data.itemLocationObtained("Lost Woods", "secondHalf", "*Plant Bean by Forest Stage");
                             let canGetWithHookshot = Settings.GlitchesToAllow.lwSkullWithoutBean && Items.BOMBCHU.playerHas && Items.HOOKSHOT.playerHas;
@@ -1964,12 +1965,12 @@ let MapLocations = {
                     "Skulltula on Wall": {
                         Name: "Skulltula on Wall",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 219, y: 144 },
                         Age: Age.ADULT,
                         Region: "afterGate",
                         LongDescription: "At night, climb the ladder from the Forest Temple side. The skulltula will be on the left wall.",
-                        RequiredItems: [Items.HOOKSHOT],
-                        NeedsNighttime: true
+                        RequiredItems: [Items.HOOKSHOT]
                     },
                     "Song of Storms Grotto Front Scrub": {
                         Name: "Song of Storms Grotto Front Scrub",
@@ -2191,6 +2192,7 @@ let MapLocations = {
                     "Sell Bunny Hood": {
                         Name: "Sell Bunny Hood",
                         ItemGroup: ItemGroups.NON_ITEM,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 184, y: 145 },
                         Age: Age.CHILD,
                         RequiredItems: [{ item: Items.MASK_SLOT, upgradeString: "7" }],
@@ -2338,6 +2340,7 @@ let MapLocations = {
                     "Talon's Super Cucco Minigame": {
                         Name: "Talon's Super Cucco Minigame",
                         ItemGroup: ItemGroups.GIFT,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 230, y: 54 },
                         IsInterior: true,
                         Age: Age.CHILD,
@@ -2399,10 +2402,10 @@ let MapLocations = {
                     "Skulltula on Talon's House": {
                         Name: "Skulltula on Talon's House",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 240, y: 67 },
                         Age: Age.CHILD,
                         LongDescription: "At night, there's a skulltula high up on Talon's House.",
-                        NeedsNighttime: true,
                         IsAtShortDistance: true
                     },
                     "Skulltula in Tree by Entrance": {
@@ -2411,24 +2414,24 @@ let MapLocations = {
                         MapInfo: { x: 280, y: 100 },
                         Age: Age.CHILD,
                         LongDescription: "The tree is just passed the houses to the left. Roll into it to reveal the skulltula. Use a pot from the beginning to kill it if you have no weapon.",
-                        OverrideItemGroupCondition: true,
+                        OverrideItemGroupCondition: true
                     },
                     "Skulltula on Rain Shed": {
                         Name: "Skulltula on Rain Shed",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 233, y: 231  },
                         Age: Age.CHILD,
                         LongDescription: "At night, run around to the back of the corral to find this skulltula. Use a pot from the beginning to kill it if you have no weapon.",
-                        OverrideItemGroupCondition: true,
-                        NeedsNighttime: true
+                        OverrideItemGroupCondition: true
                     },
                     "Skulltula on Southwest Wall": {
                         Name: "Skulltula on Southwest Wall",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 44, y: 214 },
                         Age: Age.CHILD,
                         LongDescription: "At night, there's a skulltula on the southeast wall of the ranch. Facing the cow shed, it's a little bit to the right.",
-                        NeedsNighttime: true,
                         IsAtShortDistance: true
                     },
                     "Left Scrub in Open Grotto": {
@@ -2595,6 +2598,7 @@ let MapLocations = {
                     "Slingshot Minigame": {
                         Name: "Slingshot Minigame",
                         ItemGroup: ItemGroups.GIFT,
+                        Time: function() { return Time.DAY; },
                         MapInfo: {x: 234, y: 120},
                         IsInterior: true,
                         Age: Age.CHILD,
@@ -2633,6 +2637,7 @@ let MapLocations = {
                     "Treasure Chest Minigame": {
                         Name: "Treasure Chest Minigame",
                         ItemGroup: ItemGroups.GIFT,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: {x: 215, y: 230},
                         IsInterior: true,
                         Age: Age.CHILD,
@@ -2643,6 +2648,7 @@ let MapLocations = {
                     "Borrow Keaton Mask": {
                         Name: "Borrow Keaton Mask",
                         ItemGroup: ItemGroups.GIFT,
+                        Time: function() { return Time.DAY; },
                         MapInfo: {x: 286, y: 120},
                         IsInterior: true,
                         Age: Age.CHILD,
@@ -2658,6 +2664,7 @@ let MapLocations = {
                     "Borrow Skull Mask": {
                         Name: "Borrow Skull Mask",
                         ItemGroup: ItemGroups.GIFT,
+                        Time: function() { return Time.DAY; },
                         MapInfo: {x: 286, y: 120},
                         IsInterior: true,
                         Age: Age.CHILD,
@@ -2673,6 +2680,7 @@ let MapLocations = {
                     "Borrow Spooky Mask": {
                         Name: "Borrow Spooky Mask",
                         ItemGroup: ItemGroups.GIFT,
+                        Time: function() { return Time.DAY; },
                         MapInfo: {x: 286, y: 120},
                         IsInterior: true,
                         Age: Age.CHILD,
@@ -2688,6 +2696,7 @@ let MapLocations = {
                     "Borrow Bunny Hood": {
                         Name: "Borrow Bunny Hood",
                         ItemGroup: ItemGroups.GIFT,
+                        Time: function() { return Time.DAY; },
                         MapInfo: {x: 286, y: 120},
                         IsInterior: true,
                         Age: Age.CHILD,
@@ -2703,6 +2712,7 @@ let MapLocations = {
                     "Borrow Mask of Truth": {
                         Name: "Borrow Mask of Truth",
                         ItemGroup: ItemGroups.GIFT,
+                        Time: function() { return Time.DAY; },
                         MapInfo: {x: 286, y: 120},
                         IsInterior: true,
                         Age: Age.CHILD,
@@ -2718,6 +2728,7 @@ let MapLocations = {
                     "Bazaar": {
                         Name: "Bazaar",
                         ItemGroup: ItemGroups.SHOP,
+                        Time: function() { return Time.DAY; },
                         MapInfo: {x: 308, y: 191},
                         IsInterior: true,
                         Age: Age.CHILD,
@@ -2727,6 +2738,7 @@ let MapLocations = {
                     "Potion Shop": {
                         Name: "Potion Shop",
                         ItemGroup: ItemGroups.SHOP,
+                        Time: function() { return Time.DAY; },
                         MapInfo: {x: 308, y: 159},
                         IsInterior: true,
                         Age: Age.CHILD,
@@ -2737,6 +2749,7 @@ let MapLocations = {
                     "Archery Minigame": {
                         Name: "Archery Minigame",
                         ItemGroup: ItemGroups.ENTRANCE,
+                        Time: function() { return Time.DAY; },
                         Map: "Market",
                         MapInfo: {x: 234, y: 120},
                         IsInterior: true,
@@ -2747,6 +2760,7 @@ let MapLocations = {
                     "Happy Mask Shop Entrance": {
                         Name: "Happy Mask Shop Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
+                        Time: function() { return Time.DAY; },
                         Map: "Market",
                         MapInfo: {x: 286, y: 120},
                         IsInterior: true,
@@ -2757,6 +2771,7 @@ let MapLocations = {
                     "Potion Shop Entrance": {
                         Name: "Potion Shop Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
+                        Time: function() { return Time.DAY; },
                         Map: "Market",
                         MapInfo: {x: 308, y: 159},
                         IsInterior: true,
@@ -2767,6 +2782,7 @@ let MapLocations = {
                     "Bazaar Entrance": {
                         Name: "Bazaar Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
+                        Time: function() { return Time.DAY; },
                         Map: "Market",
                         MapInfo: {x: 308, y: 191},
                         IsInterior: true,
@@ -2777,6 +2793,7 @@ let MapLocations = {
                     "Treasure Chest Minigame Entrance": {
                         Name: "Treasure Chest Minigame Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
+                        Time: function() { return Time.NIGHT; },
                         Map: "Market",
                         MapInfo: {x: 215, y: 230},
                         IsInterior: true,
@@ -2809,6 +2826,7 @@ let MapLocations = {
                         // Not marked as interior because it's not included in the entrance shuffle currently
                         Name: "Reward from Returning Dog",
                         ItemGroup: ItemGroups.GIFT,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: {x: 104, y: 230},
                         Age: Age.CHILD,
                         LongDescription: "If you start near the entrance, the dog you want is just to the left behind the market stall. From there, beeline to the right to get to the left market alley. Go to the more rightmost of the two doors and turn in the dog."
@@ -2816,6 +2834,7 @@ let MapLocations = {
                     "Bombchu Shop": {
                         Name: "Bombchu Shop",
                         ItemGroup: ItemGroups.SHOP,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: {x: 130, y: 232},
                         IsInterior: true,
                         Age: Age.CHILD,
@@ -2827,6 +2846,7 @@ let MapLocations = {
                     "Bombchu Shop Entrance": {
                         Name: "Bombchu Shop Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
+                        Time: function() { return Time.NIGHT; },
                         Map: "Market",
                         Region: "alley",
                         MapInfo: {x: 130, y: 232},
@@ -2838,6 +2858,7 @@ let MapLocations = {
                     "Door in Right Market Alley": {
                         Name: "Door in Right Market Alley",
                         ItemGroup: ItemGroups.ENTRANCE,
+                        Time: function() { return Time.NIGHT; },
                         Map: "Market",
                         Region: "alley",
                         MapInfo: {x: 112, y: 112},
@@ -3164,6 +3185,7 @@ let MapLocations = {
                     "Bottle from Cucco Collection": {
                         Name: "Bottle from Cucco Collection",
                         ItemGroup: ItemGroups.GIFT,
+                        Time: function() { return Time.DAY; },
                         MapInfo: { x: 210, y: 244 },
                         Age: Age.CHILD,
                         LongDescription: "This is the prize that Anju gives you after collecting all 7 cuccos in the pen. Note that leaving the map will keep your progress."
@@ -3178,6 +3200,7 @@ let MapLocations = {
                     "Gift From Anju": {
                         Name: "Gift From Anju",
                         ItemGroup: ItemGroups.GIFT,
+                        Time: function() { return Time.DAY; },
                         MapInfo: { x: 210, y: 240 },
                         Age: Age.ADULT,
                         LongDescription: "Simply talk to Anju (the cucco lady) as adult to get this."
@@ -3185,6 +3208,7 @@ let MapLocations = {
                     "Archery Minigame": {
                         Name: "Archery Minigame",
                         ItemGroup: ItemGroups.GIFT,
+                        Time: function() { return (Settings.GlitchesToAllow.childShopClips && Data.hasShield(Age.ADULT)) ? Time.EITHER : Time.DAY; },
                         MapInfo: { x: 190, y: 190 },
                         IsInterior: true,
                         Age: Age.ADULT,
@@ -3253,6 +3277,7 @@ let MapLocations = {
                     "Heart Piece in Impa's House": {
                         Name: "Heart Piece in Impa's House",
                         ItemGroup: ItemGroups.FREESTANDING,
+                        Time: function() { return Time.DAY_CHILD; },
                         MapInfo: { x: 182, y: 252 },
                         IsInterior: true,
                         Age: Age.EITHER,
@@ -3285,7 +3310,7 @@ let MapLocations = {
                         IsInterior: true,
                         RequiredItems: [Items.OCARINA],
                         Age: Age.EITHER,
-                        LongDescription: "You can get this by going in the opening above the cucco pen. You can get there as a child via the owl on the top of Death Mountain, or by using a cucco. To do this, throw it up the building under construction (2 throws), then jump to the border (when the construction worker isn't there), then jump at the platform - don't drop the cucco. As adult, you must hookshot there. Hookshot first to the House of Skulltulas from the ledge by the entrance to Impa's house. Then, hookshot to Impa's house. Make your way to the ledge.<br/><br/>Alternatively, as adult, you can make your way directly under the opening, and simply hold forward to jump onto the ledge.",
+                        LongDescription: "You can get this by going in the opening above the cucco pen or from the front door of Impa's house.",
                     },
                     "Show Guard Letter": {
                         Name: "Show Guard Letter",
@@ -3312,59 +3337,59 @@ let MapLocations = {
                         MapInfo: { x: 97, y: 179 },
                         Age: Age.CHILD,
                         LongDescription: "At night, roll into the tree in the center of the village to reveal this skulltula. If you have no weapon, use a pot from near the guard by Death Mountain Trail.",
-                        OverrideItemGroupCondition: true,
-                        NeedsNighttime: true
+                        OverrideItemGroupCondition: true
                     },
                     "Skulltula on House of Skulltulas": {
                         Name: "Skulltula on House of Skulltulas",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 121, y: 218 },
                         Age: Age.CHILD,
                         LongDescription: "At night, you can find this skulltula on the side of the House of Skulltulas. If you have no weapon, use a pot from near the guard by Death Mountain Trail.",
-                        OverrideItemGroupCondition: true,
-                        NeedsNighttime: true
+                        OverrideItemGroupCondition: true
                     },
                     "Skulltula at Construction Site": {
                         Name: "Skulltula at Construction Site",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 191, y: 201 },
                         Age: Age.CHILD,
                         LongDescription: "At night, you can find this skulltula on the pile of bricks at the construction site. If you have no weapon, use a pot from near the guard by Death Mountain Trail.",
-                        OverrideItemGroupCondition: true,
-                        NeedsNighttime: true
+                        OverrideItemGroupCondition: true
                     },
                     "Skulltula on Bazaar": {
                         Name: "Skulltula on Bazaar",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 96, y: 75 },
                         Age: Age.CHILD,
                         LongDescription: "At night, you can find this skulltula on the side of the Bazaar (the building by the entrance to Death Mountain). It's near some pots. Use them to kill it if you have no weapon.",
-                        OverrideItemGroupCondition: true,
-                        NeedsNighttime: true
+                        OverrideItemGroupCondition: true
                     },
                     "Skulltula on Watchtower": {
                         Name: "Skulltula on Watchtower",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 169, y: 111 },
                         Age: Age.CHILD,
                         LongDescription: "At night, you can find this skulltula on the watchtower ladder. You can kill it with either the slingshot or a bombchu. If you don't have those, you can also climb up as far as you can, and press A to let go of the ladder, then spam the jumpslash button for your sword or stick for the kill.",
                         CustomRequirement: function(age) {
                             return Items.FAIRY_SLINGSHOT.playerHas || Items.BOMBCHU.playerHas || (Settings.GlitchesToAllow.watchtowerSkullJumpslash && Data.hasSwordWeapon(age));
-                        },
-                        NeedsNighttime: true
+                        }
                     },
                     "Skulltula on Impa's Roof": {
                         Name: "Skulltula on Impa's Roof",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 172, y: 260 },
                         Age: Age.ADULT,
                         LongDescription: "At night, from the ledge near the entrance to Impa's House, hookshot to the House of Skulltula. From there, hookshot to Impa's house. You'll find the skulltula on the back wall.",
-                        RequiredItems: [Items.HOOKSHOT],
-                        NeedsNighttime: true
+                        RequiredItems: [Items.HOOKSHOT]
                     },
                     "Potion Shop": {
                         Name: "Potion Shop",
                         ItemGroup: ItemGroups.SHOP,
+                        Time: function() { return Time.DAY; },
                         MapInfo: { x: 177, y: 89 },
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.childShopClips; },
                         Age: Age.ADULT,
@@ -3379,11 +3404,11 @@ let MapLocations = {
                     "Bazaar": {
                         Name: "Bazaar",
                         ItemGroup: ItemGroups.SHOP,
+                        Time: function() { return Settings.GlitchesToAllow.childShopClips ? Time.DAY_ADULT : Time.DAY; },
                         MapInfo: { x: 117, y: 89 },
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.childShopClips; },
                         Age: Age.ADULT,
                         IsInterior: true,
-                        Age: Age.ADULT,
                         LongDescription: "This is the building to the left if you are facing the Death Mountain entrance.",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) { return true; }
@@ -3439,6 +3464,7 @@ let MapLocations = {
                     "Archery Minigame Entrance": {
                         Name: "Archery Minigame Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
+                        Time: function() { return (Settings.GlitchesToAllow.childShopClips && Data.hasShield(Age.ADULT)) ? Time.EITHER : Time.DAY; },
                         Map: "Kakariko Village",
                         Region: "main",
                         MapInfo: { x: 190, y: 190 },
@@ -3450,6 +3476,7 @@ let MapLocations = {
                     "Back of Impa's House": {
                         Name: "Back of Impa's House",
                         ItemGroup: ItemGroups.ENTRANCE,
+                        Time: function() { return Time.DAY_CHILD; },
                         Map: "Kakariko Village",
                         Region: "main",
                         MapInfo: { x: 182, y: 252 },
@@ -3501,6 +3528,7 @@ let MapLocations = {
                     "Bazaar Entrance": {
                         Name: "Bazaar Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
+                        Time: function() { return Settings.GlitchesToAllow.childShopClips ? Time.DAY_ADULT : Time.DAY; },
                         Map: "Kakariko Village",
                         Region: "main",
                         MapInfo: { x: 117, y: 89 },
@@ -3517,6 +3545,7 @@ let MapLocations = {
                     "Potion Shop Front Entrance": {
                         Name: "Potion Shop Front Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
+                        Time: function() { return Time.DAY_ADULT; },
                         Map: "Kakariko Village",
                         Region: "main",
                         MapInfo: { x: 163, y: 92 },
@@ -3527,6 +3556,7 @@ let MapLocations = {
                     "Potion Shop Back Entrance": {
                         Name: "Potion Shop Back Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
+                        Time: function() { return Settings.GlitchesToAllow.childShopClips ? Time.EITHER : Time.DAY; },
                         Map: "Kakariko Village",
                         Region: "main",
                         MapInfo: { x: 192, y: 96 },
@@ -3610,6 +3640,7 @@ let MapLocations = {
                     "Chest in Grave with Redead": {
                         Name: "Chest in Grave with Redead",
                         ItemGroup: ItemGroups.CHEST,
+                        Time: function() { return Time.NIGHT_CHILD; },
                         MapInfo: { x: 237, y: 184 },
                         IsGrotto: true,
                         Age: Age.EITHER,
@@ -3619,6 +3650,7 @@ let MapLocations = {
                     "Chest in Grave with Flowers": {
                         Name: "Chest in Grave with Flowers",
                         ItemGroup: ItemGroups.CHEST,
+                        Time: function() { return Time.NIGHT_CHILD; },
                         MapInfo: { x: 206, y: 144 },
                         IsGrotto: true,
                         Age: Age.EITHER,
@@ -3627,6 +3659,7 @@ let MapLocations = {
                     "Dampe's Heart-Pounding Graveyard Tour": {
                         Name: "Dampe's Heart-Pounding Graveyard Tour",
                         ItemGroup: ItemGroups.FREESTANDING,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 184, y: 176 },
                         Age: Age.CHILD,
                         LongDescription: "Get to the graveyard when it's barely night time. If you play the Sun's Song, make sure you do it where time passes, then quickly take the exit to Kakariko before it becomes too late. Simply talk to Dampe and pay him 10 rupees to get this item."
@@ -3668,6 +3701,7 @@ let MapLocations = {
                     "Skulltula on Back Right Wall": {
                         Name: "Skulltula on Back Right Wall",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 242, y: 264 },
                         Age: Age.CHILD,
                         LongDescription: "At night, this skulltula is high up on the back right wall of the graveyard.",
@@ -3676,6 +3710,7 @@ let MapLocations = {
                     "Sell Spooky Mask": {
                         Name: "Sell Spooky Mask",
                         ItemGroup: ItemGroups.NON_ITEM,
+                        Time: function() { return Time.DAY; },
                         MapInfo: { x: 184, y: 145 },
                         Age: Age.CHILD,
                         RequiredItems: [{ item: Items.MASK_SLOT, upgradeString: "6" }],
@@ -3694,6 +3729,7 @@ let MapLocations = {
                     "Grave with Flowers": {
                         Name: "Grave with Flowers",
                         ItemGroup: ItemGroups.ENTRANCE,
+                        Time: function() { return Time.NIGHT_CHILD; },
                         MapInfo: { x: 206, y: 144 },
                         IsGrotto: true,
                         Age: Age.EITHER,
@@ -3702,6 +3738,7 @@ let MapLocations = {
                     "Unmarked Grave": {
                         Name: "Unmarked Grave",
                         ItemGroup: ItemGroups.ENTRANCE,
+                        Time: function() { return Time.NIGHT_CHILD; },
                         MapInfo: { x: 237, y: 184 },
                         IsGrotto: true,
                         Age: Age.EITHER,
@@ -3710,6 +3747,7 @@ let MapLocations = {
                     "Dampe's Shed": {
                         Name: "Dampe's Shed",
                         ItemGroup: ItemGroups.ENTRANCE,
+                        Time: function() { return Time.NIGHT_CHILD; },
                         Map: "Graveyard",
                         Region: "main",
                         MapInfo: { x: 94, y: 246 },
@@ -3889,10 +3927,10 @@ let MapLocations = {
                     "Red Rock by Goron City": {
                         Name: "Red Rock by Goron City",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 215, y: 167 },
                         Age: Age.ADULT,
                         LongDescription: "At night, leave Goron City. Follow the right wall until you reach a red rock. Break it with your hammer to reveal the skulltula.",
-                        NeedsNighttime: true,
                         CustomRequirement: function(age) {
                             let canSkipHammer = Settings.GlitchesToAllow.dmtSkullsWithoutHammer && Items.HOOKSHOT.playerHas;
                             return canSkipHammer || Data.canUseHammer(age);
@@ -3999,10 +4037,10 @@ let MapLocations = {
                     "Red Rock on Upper Path": {
                         Name: "Red Rock on Upper Path",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 217, y: 96 },
                         Age: Age.ADULT,
                         LongDescription: "At night, take the upper path of the mountain - the one that causes the volcano to erupt. The red rock has a skulltula in it - break it with your hammer.",
-                        NeedsNighttime: true,
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.dmtSkullsWithoutHammer || Items.MEGATON_HAMMER.playerHas;
                         }
@@ -4852,28 +4890,28 @@ let MapLocations = {
                     "Skulltula on Ladder": {
                         Name: "Skulltula on Ladder",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 281, y: 142 },
                         Age: Age.CHILD,
-                        LongDescription: "At night, make your way to the end of the river. You'll find the skulltula on the ladder leading up out of the water.",
-                        NeedsNighttime: true
+                        LongDescription: "At night, make your way to the end of the river. You'll find the skulltula on the ladder leading up out of the water."
                     },
                     "Skulltula by Bridge": {
                         Name: "Skulltula by Bridge",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 249, y: 62 },
                         Age: Age.ADULT,
                         LongDescription: "At night, a little after the wooden bridge leading to Zora's Domain, you'll find a skulltula high up on the wall. You can get it with the hookshot if you stand on the fence.",
-                        IsAtShortDistance: true,
-                        NeedsNighttime: true
+                        IsAtShortDistance: true
                     },
                     "Skulltula on Cliff": {
                         Name: "Skulltula on Cliff",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 132, y: 153 },
                         Age: Age.ADULT,
                         LongDescription: "At night, go up the ladder closest to Hyrule Field. Jump to the cliff behind you to find the skulltula.",
-                        IsAtShortDistance: true,
-                        NeedsNighttime: true
+                        IsAtShortDistance: true
                     },
                     "Plant Bean by Bean Guy": {
                         Name: "Plant Bean by Bean Guy",
@@ -5029,6 +5067,7 @@ let MapLocations = {
                     "Skulltula on Top of Waterfall": {
                         Name: "Skulltula on Top of Waterfall",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 168, y: 68 },
                         Age: Age.ADULT,
                         LongDescription: "At night, make your way up to where the Diving Game start was. On the side of the wall by the waterfall, you'll find a skulltula. If you have no hookshot, you can kill it with a bow or Din's fire and get it with an angled jump. If you fall without getting it, it will respawn.",
@@ -5172,15 +5211,16 @@ let MapLocations = {
                     "Skulltula on Wall": {
                         Name: "Skulltula on Wall",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 81, y: 177 },
                         Age: Age.CHILD,
                         LongDescription: "At night, you'll find this skulltula on the wall by the giant log.",
-                        IsAtShortDistance: true,
-                        NeedsNighttime: true
+                        IsAtShortDistance: true
                     },
                     "Skulltula in Hidden Tunnel": {
                         Name: "Skulltula in Hidden Tunnel",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 312, y: 154 },
                         Age: Age.ADULT,
                         LongDescription: "At night, go to the southeast corner of the map. Pick up the silver rock and go down the path. Beware of invisible giant skulltulas! You'll find the skulltula you want after you climb the wall.",
@@ -5320,6 +5360,7 @@ let MapLocations = {
                     "Fire Arrows": {
                         Name: "Fire Arrows",
                         ItemGroup: ItemGroups.FREESTANDING,
+                        Time: function() { return Time.DAY; },
                         MapInfo: { x: 247, y: 236 },
                         Age: Age.ADULT,
                         LongDescription: "First, get to the platform in the center of the lake - the one with the tree. When the sun is just coming up, stand on the sign and shoot an arrow at it. The item should then spawn. You can get over there either by beating Morpha and swimming there, or by playing Scarecrow's Song and longshotting it.",
@@ -5340,6 +5381,7 @@ let MapLocations = {
                     "Skulltula on Lab": {
                         Name: "Skulltula on Lab",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 104, y: 89 },
                         Age: Age.CHILD,
                         LongDescription: "At night, you can find this skulltula on the side of the Lakeside Lab that's nearest the bridge. You can actually jumpslash to the token from the bridge if you don't have the boomerang.",
@@ -5350,10 +5392,10 @@ let MapLocations = {
                     "Skulltula on Island": {
                         Name: "Skulltula on Island",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 252, y: 232 },
                         Age: Age.CHILD,
-                        LongDescription: "At night, proceed to the far island in the lake. This is the one even passed the one with the tree. You should see the skulltula on one of the pillars.",
-                        NeedsNighttime: true
+                        LongDescription: "At night, proceed to the far island in the lake. This is the one even passed the one with the tree. You should see the skulltula on one of the pillars."
                     },
                     "Skulltula in Lab Water": {
                         Name: "Skulltula in Lab Water",
@@ -5367,11 +5409,11 @@ let MapLocations = {
                     "Skulltula on Middle Tree": {
                         Name: "Skulltula on Middle Tree",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 198, y: 213 },
                         Age: Age.ADULT,
                         LongDescription: "At night, longshot all the way up the tree on the middle island. You'll find the skulltula on top.",
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}],
-                        NeedsNighttime: true
+                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
                     },
                     "Left Scrub Under Gravestone": {
                         Name: "Left Scrub Under Gravestone",
@@ -5519,11 +5561,11 @@ let MapLocations = {
                     "Skulltula by Tiny Waterfall": {
                         Name: "Skulltula by Tiny Waterfall",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 264, y: 56 },
                         Age: Age.CHILD,
                         LongDescription: "At night, look to the right of the first tiny bridge by the tiny waterfall. The skulltula is by the water source.",
-                        IsAtShortDistance: true,
-                        NeedsNighttime: true
+                        IsAtShortDistance: true
                     }
                 }
             },
@@ -5579,20 +5621,20 @@ let MapLocations = {
                     "Skulltula on Pillar": {
                         Name: "Skulltula on Pillar",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 144, y: 103 },
                         Age: Age.ADULT,
                         LongDescription: "At night, there's a skulltula high up on the pillar near the rocks to the left side of the area across the bridge.",
-                        IsAtShortDistance: true,
-                        NeedsNighttime: true
+                        IsAtShortDistance: true
                     },
                     "Skulltula Behind Tent": {
                         Name: "Skulltula Behind Tent",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 144, y: 46 },
                         Age: Age.ADULT,
                         LongDescription: "At night, there's a skulltula on the wall behind the tent.",
-                        IsAtShortDistance: true,
-                        NeedsNighttime: true
+                        IsAtShortDistance: true
                     },
                     "Front Scrub in SoS Grotto Behind Tent": {
                         Name: "Front Scrub in SoS Grotto Behind Tent",
@@ -5867,10 +5909,10 @@ let MapLocations = {
                     "Skulltula on Back Fortress Wall": {
                         Name: "Skulltula on Back Fortress Wall",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 203, y: 129 },
                         Age: Age.ADULT,
-                        LongDescription: "Nighttime required. The skulltula is located on the wall near the entrance to jail 4 - see those instructions for how to get there.<br/><br/>If you don't have a long range way to kill it, you'll need to jumpslash it from the top and then circle back around and jump to claim the item.",
-                        NeedsNighttime: true
+                        LongDescription: "Nighttime required. The skulltula is located on the wall near the entrance to jail 4 - see those instructions for how to get there.<br/><br/>If you don't have a long range way to kill it, you'll need to jumpslash it from the top and then circle back around and jump to claim the item."
                     },
                     "Opened Gate": {
                         Name: "Opened Gate",
@@ -5931,6 +5973,7 @@ let MapLocations = {
                     "Skulltula on Target": {
                         Name: "Skulltula on Target",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 244, y: 40 },
                         Age: Age.ADULT,
                         LongDescription: "At night, navigate to the back part of the map. Head to the target on the left side to find this skulltula.",
@@ -6106,19 +6149,19 @@ let MapLocations = {
                     "Skulltula on Tree by Oasis": {
                         Name: "Skulltula on Tree by Oasis",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 180, y: 245 },
                         Age: Age.ADULT,
                         LongDescription: "At night, there's a skulltula in one of the trees by an oasis at the south middle part of the map.",
-                        IsAtShortDistance: true,
-                        NeedsNighttime: true
+                        IsAtShortDistance: true
                     },
                     "Skulltula on Cliff": {
                         Name: "Skulltula on Cliff",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 213, y: 91 },
                         Age: Age.ADULT,
                         LongDescription: "At night, there is a skulltula on a small cliff near the north middle edge of the map. You can hookshot it if the Levers leave you alone long enough. An easier solution is to ride the bean platform and jump off of it so that you're on top.",
-                        NeedsNighttime: true,
                         CustomRequirement: function(age) {
                             let canRideUp = Data.itemLocationObtained("Desert Colossus", "main", "*Plant Bean by Spirit Temple");
                             return canRideUp || Items.HOOKSHOT.playerHas;
