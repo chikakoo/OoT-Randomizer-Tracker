@@ -567,6 +567,23 @@ let OwExits = {
             Map: "Bottom of the Well",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
+            Time: function() {
+                let childEarly = Settings.GlitchesToAllow.botwAsChildWithCucco && Data.hasSwordWeapon(Age.CHILD) && Data.hasShield(Age.CHILD);
+                let adultEarly = Settings.GlitchesToAllow.botwAsAdultWithCucco && Items.HOOKSHOT.currentUpgrade === 2 && Equipment.HOVER_BOOTS.playerHas;
+
+                // Water already drained means there's no time requirement
+                if (Data.interiorShuffleIsWindmillDrained) {
+                    return Time.EITHER;
+                }
+
+                // If either need to use the glitch, then it should always be strict day requirement
+                if (childEarly || adultEarly) {
+                    return Time.DAY;
+                }
+
+                // Neither can get there
+                return Time.EITHER;
+            },
             MapInfo: { x: 227, y: 170 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Bottom of the Well.",
@@ -587,7 +604,7 @@ let OwExits = {
                 
                 // Cucco dive
                 let canGetThereEarly = age === Age.CHILD && 
-                    Settings.GlitchesToAllow.botwCuccoDive && 
+                    Settings.GlitchesToAllow.botwAsChildWithCucco && 
                     Data.hasSwordWeapon(age) && 
                     Data.hasShield(age);
 				if (canGetThereEarly) { return true; }
@@ -3208,7 +3225,7 @@ let MapLocations = {
                     "Archery Minigame": {
                         Name: "Archery Minigame",
                         ItemGroup: ItemGroups.GIFT,
-                        Time: function() { return (Settings.GlitchesToAllow.childShopClips && Data.hasShield(Age.ADULT)) ? Time.EITHER : Time.DAY; },
+                        Time: function() { return (Settings.GlitchesToAllow.kakShopClips && Data.hasShield(Age.ADULT)) ? Time.EITHER : Time.DAY; },
                         MapInfo: { x: 190, y: 190 },
                         IsInterior: true,
                         Age: Age.ADULT,
@@ -3391,28 +3408,28 @@ let MapLocations = {
                         ItemGroup: ItemGroups.SHOP,
                         Time: function() { return Time.DAY; },
                         MapInfo: { x: 177, y: 89 },
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.childShopClips; },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.kakShopClips; },
                         Age: Age.ADULT,
                         IsInterior: true,
                         LongDescription: "This is the building to the right if you are facing the Death Mountain entrance.",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) { return true; }
-                            return Settings.GlitchesToAllow.childShopClips && Data.hasSwordWeapon(age);
+                            return Settings.GlitchesToAllow.kakShopClips && Data.hasSwordWeapon(age);
                         },
                         OneWayInteriorSpawnEntrance: true
                     },
                     "Bazaar": {
                         Name: "Bazaar",
                         ItemGroup: ItemGroups.SHOP,
-                        Time: function() { return Settings.GlitchesToAllow.childShopClips ? Time.DAY_ADULT : Time.DAY; },
+                        Time: function() { return Settings.GlitchesToAllow.kakShopClips ? Time.DAY_ADULT : Time.DAY; },
                         MapInfo: { x: 117, y: 89 },
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.childShopClips; },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.kakShopClips; },
                         Age: Age.ADULT,
                         IsInterior: true,
                         LongDescription: "This is the building to the left if you are facing the Death Mountain entrance.",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) { return true; }
-                            return Settings.GlitchesToAllow.childShopClips && Data.hasSwordWeapon(age);
+                            return Settings.GlitchesToAllow.kakShopClips && Data.hasSwordWeapon(age);
                         },
                         OneWayInteriorSpawnEntrance: true
                     },
@@ -3464,7 +3481,7 @@ let MapLocations = {
                     "Archery Minigame Entrance": {
                         Name: "Archery Minigame Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return (Settings.GlitchesToAllow.childShopClips && Data.hasShield(Age.ADULT)) ? Time.EITHER : Time.DAY; },
+                        Time: function() { return (Settings.GlitchesToAllow.kakShopClips && Data.hasShield(Age.ADULT)) ? Time.EITHER : Time.DAY; },
                         Map: "Kakariko Village",
                         Region: "main",
                         MapInfo: { x: 190, y: 190 },
@@ -3528,18 +3545,18 @@ let MapLocations = {
                     "Bazaar Entrance": {
                         Name: "Bazaar Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return Settings.GlitchesToAllow.childShopClips ? Time.DAY_ADULT : Time.DAY; },
+                        Time: function() { return Settings.GlitchesToAllow.kakShopClips ? Time.DAY_ADULT : Time.DAY; },
                         Map: "Kakariko Village",
                         Region: "main",
                         MapInfo: { x: 117, y: 89 },
                         IsInterior: true,
                         OneWayInteriorSpawnEntrance: true,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.childShopClips; },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.kakShopClips; },
                         Age: Age.EITHER,
                         LongDescription: "This is the building to the left if you are facing the Death Mountain entrance.",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) { return true; }
-                            return Settings.GlitchesToAllow.childShopClips && Data.hasSwordWeapon(age);
+                            return Settings.GlitchesToAllow.kakShopClips && Data.hasSwordWeapon(age);
                         }
                     },
                     "Potion Shop Front Entrance": {
@@ -3556,18 +3573,18 @@ let MapLocations = {
                     "Potion Shop Back Entrance": {
                         Name: "Potion Shop Back Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return Settings.GlitchesToAllow.childShopClips ? Time.EITHER : Time.DAY; },
+                        Time: function() { return Settings.GlitchesToAllow.kakShopClips ? Time.EITHER : Time.DAY; },
                         Map: "Kakariko Village",
                         Region: "main",
                         MapInfo: { x: 192, y: 96 },
                         IsInterior: true,
                         OneWayInteriorSpawnEntrance: true,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.childShopClips; },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.kakShopClips; },
                         Age: Age.EITHER,
                         LongDescription: "This entrance to this is where the open grotto is behind the fence. You can use your hookshot to get back here via the roofs. You can also jump onto the potion shop roof from the Death Mountain entrance with a good angle.",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) { return true; }
-                            return Settings.GlitchesToAllow.childShopClips && Data.hasSwordWeapon(age);
+                            return Settings.GlitchesToAllow.kakShopClips && Data.hasSwordWeapon(age);
                         }
                     },
                     "Granny's Potion Shop": {
@@ -5951,6 +5968,7 @@ let MapLocations = {
                     "Archery Minigame 1000 Points": {
                         Name: "Archery Minigame 1000 Points",
                         ItemGroup: ItemGroups.GIFT,
+                        Time: function() { return Time.DAY; },
                         MapInfo: { x: 246, y: 220 },
                         Age: Age.ADULT,
                         LongDescription: "Ride Epona to the back section of the map during the day. Talk to the Gerudo there to play the archery minigame. Score 1000 points to claim your prize.",
@@ -5962,6 +5980,7 @@ let MapLocations = {
                     "Archery Minigame 1500 Points": {
                         Name: "Archery Minigame 1500 Points",
                         ItemGroup: ItemGroups.GIFT,
+                        Time: function() { return Time.DAY; },
                         MapInfo: { x: 246, y: 225 },
                         Age: Age.ADULT,
                         LongDescription: "Ride Epona to the back section of the map during the day. Talk to the Gerudo there to play the archery minigame. Score 1500 points to claim your prize.",

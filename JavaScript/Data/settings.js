@@ -11,7 +11,8 @@ let Time = {
 	DAY_CHILD: 3,
 	DAY_ADULT: 4,
 	NIGHT_CHILD: 5,
-	OUTSIDE_DAY_INSIDE_NIGHT: 6
+	OUTSIDE_DAY_INSIDE_NIGHT: 6,
+	OUTSIDE_NIGHT_INSIDE_DAY: 7
 };
 
 let OpenZorasFountainSettings = {
@@ -134,6 +135,7 @@ let Settings = {
 		windmillHPWithNothing: true,
 		windmillHPWithHookshot: false,
 		childShopClips: false,
+		botwAsChildWithCucco: false,
 		botwAsAdultWithCucco: false,
 		boomerangGraveyardHP: false,
 		unloadGrave: false,
@@ -218,8 +220,7 @@ let Settings = {
 		spiritBlockSkip: false,
 		spiritSuperslideToMirrorShield: false,
 		spiritBKTrick: false,
-		
-		botwCuccoDive: false,
+
 		botwActorGlitch: false,
 		botwVineClip: false, // Useless if no actor glitch
 		

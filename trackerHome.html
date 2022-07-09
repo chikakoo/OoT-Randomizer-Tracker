@@ -557,10 +557,15 @@
 						<input type="checkbox" name="windmillHPWithHookshot" value="windmillHPWithHookshot">
 						Windmill Heart Piece with Hookshot
 					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("childShopClips", event)'
-						title="This takes advantage of acute angles and allows child Link access to both Kakariko village shops.">
-						<input type="checkbox" name="childShopClips" value="childShopClips">
-						Kakariko Shops as Child
+					<label onclick='SettingsPage.setBooleanValueForGlitches("kakShopClips", event)'
+						title="This takes advantage of acute angles and allows child Link access to both Kakariko village shops and adult access to the archery and back of potion shop at night.">
+						<input type="checkbox" name="kakShopClips" value="kakShopClips">
+						Kakariko Shops Clips
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("botwAsChildWithCucco", event)'
+						title="Get ISG off a cucco and use it to get to the well without draining the water.">
+						<input type="checkbox" name="botwAsChildWithCucco" value="botwAsChildWithCucco">
+						Well as Child with Cucco
 					</label>
 					<label onclick='SettingsPage.setBooleanValueForGlitches("botwAsAdultWithCucco", event)'
 						title="Longshot up the windmill. Using hover boots, pick up the cucco and navigate behind you. Jumpslash at the fence to get thorough and pick up the cucco. Now backwalk off with hover boots and navigate to the well loading zone.">
@@ -988,11 +993,6 @@
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsBOTWContainer")' settings>Bottom of the Well</span>
 					<div id="settingsBOTWContainer">
-						<label onclick='SettingsPage.setBooleanValueForGlitches("botwCuccoDive", event)'
-							title="Get ISG off a cucco and use it to get to the well without draining the water.">
-							<input type="checkbox" name="botwCuccoDive" value="botwCuccoDive">
-							Cucco Dive
-						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitches("botwActorGlitch", event)'
 							title="Use a precise roll and angle to get the actor glitch. This allows access to Dead Hand's room without draining the water.">
 							<input type="checkbox" name="botwActorGlitch" value="botwActorGlitch">

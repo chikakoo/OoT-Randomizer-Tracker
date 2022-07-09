@@ -551,7 +551,7 @@ InteriorGroups = {
 	"Super Cucco Minigame": {
 		map: "Lon Lon Ranch",
 		tooltip: "Talon's House in Lon Lon Ranch",
-		time: function() { return Time.NIGHT; },
+		time: function() { return Time.DAY; },
 		buttons: {
 			"Super Cucco Minigame": {
 				itemLocation: "Talon's Super Cucco Minigame",

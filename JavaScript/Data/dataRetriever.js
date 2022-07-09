@@ -152,9 +152,12 @@ Data = {
             }
 
             if (groupType) {
-                let groupTime = groupType[itemLocation.EntranceGroup.name].time;
-                if (time === Time.DAY && groupTime && groupTime() === Time.NIGHT) {
-                    time = Time.OUTSIDE_DAY_INSIDE_NIGHT;
+                let groupTimeFunction = groupType[itemLocation.EntranceGroup.name].time;
+                let groupTime = groupTimeFunction && groupTimeFunction();
+                if (time === Time.NIGHT && groupTime === Time.DAY) {
+                    time = Time.OUTSIDE_NIGHT_INSIDE_DAY;
+                } else if (!time) {
+                    time = groupTime;
                 }
             }
         }
@@ -165,6 +168,7 @@ Data = {
             case Time.DAY_ADULT: return 'url("Images/Day Adult.png")';
             case Time.NIGHT_CHILD: return 'url("Images/Night Child.png")';
             case Time.OUTSIDE_DAY_INSIDE_NIGHT: return 'url("Images/Outside Day Inside Night.png")';
+            case Time.OUTSIDE_NIGHT_INSIDE_DAY: return 'url("Images/Outside Night Inside Day.png")';
 			default: return "";
 		}
 	},
