@@ -15,6 +15,7 @@ let SettingsPage = {
         "settingsForestContainer",
         "settingsMountainContainer",
         "settingsZoraContainer",
+        "settingsLakeContainer",
         "settingsDesertContainer",
         "settingsDekuTreeContainer",
         "settingsDodongosCavernContainer",

@@ -658,10 +658,10 @@
 						</label>
 					</div>
 				</div>
-				
-				<!-- Zora/Lake Areas -->
+
+				<!-- Zora Areas -->
 				<div class="settings-group">
-					<span onclick='SettingsPage.showOrHideGroup(event, "settingsZoraContainer")' settings>Zora/Lake Areas</span>
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsZoraContainer")' settings>Zora Areas</span>
 					<div id="settingsZoraContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("adultWaterfallHPJump", event)'
 							title="This is a setup as adult to get the Zora's River item by the waterfall without any items.">
@@ -698,6 +698,18 @@
 							<input type="checkbox" name="thawKingZoraWithNothing" value="thawKingZoraWithNothing">
 							Thaw King Zora with Nothing
 						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("jabuFishless", event)'
+							title="Lets you get into Jabu without feeding him a fish.">
+							<input type="checkbox" name="jabuFishless" value="jabuFishless">
+							Fish Skip
+						</label>
+					</div>
+				</div>
+				
+				<!-- Lake Hylia -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsLakeContainer")' settings>Lake Hylia</span>
+					<div id="settingsLakeContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("labHPWithoutGoldenScale", event)'
 							title="This is a trick using the iron boots and hookshot to get the diving heart piece without actually diving.">
 							<input type="checkbox" name="labHPWithoutGoldenScale" value="labHPWithoutGoldenScale">
@@ -721,9 +733,9 @@
 					</div>
 				</div>
 				
-				<!-- Desert Area -->
+				<!-- Desert Areas -->
 				<div class="settings-group">
-					<span onclick='SettingsPage.showOrHideGroup(event, "settingsDesertContainer")' settings>Desert Area</span>
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsDesertContainer")' settings>Desert Areas</span>
 					<div id="settingsDesertContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("eponaHover", event)'
 						title="This is a staircase hover using bombs and ISG in order to get Epona without Epona's Song.">
@@ -734,6 +746,16 @@
 						title="The imfamous trick to get over the gate in Gerudo Valley as Child Link using a cucco and a jumpslash.">
 						<input type="checkbox" name="cuccoJump" value="cuccoJump">
 						Cucco Jump
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("gtgChildAllowed", "https://youtu.be/v1winCiXBPc", event)'
+						title="Use antigrav or the precise jumpslash to get to the Gerudo Training Grounds as child.">
+						<input type="checkbox" name="gtgChildAllowed" value="gtgChildAllowed">
+						🔗Enter GTG as Child
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("gtgAdultNoCard", event)'
+						title="Clip into the Gerudo Training Grounds using a ledge clip from the mid-level.">
+						<input type="checkbox" name="gtgAdultNoCard" value="gtgAdultNoCard">
+						Enter GTG as Adult with Ledge Clip
 					</label>
 					<label onclick='SettingsPage.setBooleanValueForGlitches("gerudoGateSkipAsAdult", event)'
 						title="Uses hover boots and the hookshot to get into the Haunted Wasteland as adult without freeing the carpenters.">
@@ -806,11 +828,6 @@
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsJabuContainer")' settings>Jabu Jabu's Belly</span>
 					<div id="settingsJabuContainer">
-						<label onclick='SettingsPage.setBooleanValueForGlitches("jabuFishless", event)'
-							title="Lets you get into Jabu without feeding him a fish.">
-							<input type="checkbox" name="jabuFishless" value="jabuFishless">
-							Fish Skip
-						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitches("jabuBlueSwitchSkip", event)'
 							title="Requires mega flips. This is a mega flip to the boss door in Jabu, and then a trick to avoid bringing a box to the blue switch.">
 							<input type="checkbox" name="jabuBlueSwitchSkip" value="jabuBlueSwitchSkip">
@@ -1010,16 +1027,6 @@
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsGTGContainer")' settings>Gerudo Training Grounds</span>
 					<div id="settingsGTGContainer">
-						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("gtgChildAllowed", "https://youtu.be/v1winCiXBPc", event)'
-							title="Use antigrav or the precise jumpslash to get to the Gerudo Training Grounds as child. Requires the cucco jump.">
-							<input type="checkbox" name="gtgChildAllowed" value="gtgChildAllowed">
-							🔗Enter as Child
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("gtgAdultNoCard", event)'
-							title="Clip into the training grounds using a ledge clip from the mid-level.">
-							<input type="checkbox" name="gtgAdultNoCard" value="gtgAdultNoCard">
-							Enter via ledge clip
-						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitches("gtgNoZoraTunic", event)'
 							title="Removes the Zora Tunic requirement for the room with the water and silver rupees.">
 							<input type="checkbox" name="gtgNoZoraTunic" value="gtgNoZoraTunic">
