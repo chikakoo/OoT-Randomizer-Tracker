@@ -3813,7 +3813,7 @@ let MQDungeons = {
 							return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
 						},
 						Order: 1.1,
-						LongDescription: "This is the locked door you find after the room with the floormasters.",
+						LongDescription: "WALL MASTER WARNING:<br/>This is the locked door you find after the room with the floormasters.",
 						CustomRequirement: function(age) {
 							return Data.canHitSwitchAtShortDistance(age);
 						},
@@ -3877,7 +3877,7 @@ let MQDungeons = {
 							return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
 						},
 						Order: 2,
-						LongDescription: "Navigate to the back of the main room and play Zelda's Lullaby at the triforce. This will open a bunch of gates. Proceed behind you to the center room with the chest.<br/><br/>Alternatively, you can bomb the rocks near the middle-west of the main room. Sidehop then jumpslash over the hole in the ground to get to the center area."
+						LongDescription: "WALL MASTER WARNING:<br/>Navigate to the back of the main room and play Zelda's Lullaby at the triforce. This will open a bunch of gates. Proceed behind you to the center room with the chest.<br/><br/>Alternatively, you can bomb the rocks near the middle-west of the main room. Sidehop then jumpslash over the hole in the ground to get to the center area."
 					},
 					"Skulltula in Grave Room": {
 						Name: "Skulltula in Grave Room",
@@ -3888,7 +3888,7 @@ let MQDungeons = {
 							return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
 						},
 						Order: 3,
-						LongDescription: "Bomb some rocks near the southeast corner of the main room and press the switch to unbar a door. Alternatively, you can make your way to the center room and sidehop and jumpslash to get into this area.<br/><br/>Enter the door that was just unbarred. The skulltula is under the gravestone. Be careful of invisible enemies."
+						LongDescription: "WALL MASTER WARNING:<br/>Bomb some rocks near the southeast corner of the main room and press the switch to unbar a door. Alternatively, you can make your way to the center room and sidehop and jumpslash to get into this area.<br/><br/>Enter the door that was just unbarred. The skulltula is under the gravestone. Be careful of invisible enemies."
 					},
 					"Freestanding Item Near Center Room": {
 						Name: "Freestanding Item Near Center Room",
@@ -3899,7 +3899,7 @@ let MQDungeons = {
 							return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
 						},
 						Order: 4,
-						LongDescription: "From the center room, activate the switch in the northeast section to unbar a door. Enter it, and navigate clockwise around the room to get to the item.",
+						LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door. Enter it, and navigate clockwise around the room to get to the item.",
 						CustomRequirement: function(age) {
 							return Data.canHitSwitchAtShortDistance(age);
 						}
@@ -3913,7 +3913,7 @@ let MQDungeons = {
 							return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
 						},
 						Order: 8,
-						LongDescription: "To get to the basement, you can fall down a hole in the center room (not the very center). Navigate to the northeastern part of the basement to get to the skulltula. Watch out for invisible giant skulltulas on the way."
+						LongDescription: "WALL MASTER WARNING:<br/>To get to the basement, you can fall down a hole in the center room (not the very center). Navigate to the northwestern part of the basement to get to the skulltula. Watch out for invisible giant skulltulas on the way."
 					}
 				}
 			},
