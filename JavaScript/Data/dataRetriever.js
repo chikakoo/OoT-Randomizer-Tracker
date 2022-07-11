@@ -1392,6 +1392,17 @@ Data = {
 	},
 
     /**
+     * Returns whether the player can kill a freezard
+     */
+    canKillFreezard: function(age) {
+        return age === Age.ADULT ||
+            Items.DEKU_STICK.playerHas ||
+            this.hasExplosives() ||
+            this.canUseHammer(age) ||
+            this.canUseFireItem(age);
+    },
+
+    /**
      * Returns whether the item location passes the key requirement
      * Can return any ItemObtainability
      */

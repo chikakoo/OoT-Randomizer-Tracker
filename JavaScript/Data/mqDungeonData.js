@@ -3658,11 +3658,7 @@ let MQDungeons = {
 			main: {
 				Exits: {
 					afterFirstRoom: {
-						Name: "afterFirstRoom",
-						CustomRequirement: function(age) {
-							let canKillFreezards = Data.hasSwordWeapon(age) || Data.canUseFireItem(age);
-							return canKillFreezards && Data.canHitSwitchAtShortDistance(age) && Data.hasBottleOrBlueFire(age);
-						}
+						Name: "afterFirstRoom"
 					},
 					Exit: {
 						OwExit: OwExits["Ice Cavern"]["Exit"]
@@ -3673,12 +3669,32 @@ let MQDungeons = {
 
 			afterFirstRoom: {
 				Exits: {
+					blueFireRoom: {
+						Name: "blueFireRoom",
+						CustomRequirement: function(age) {
+							let canBreakStalagmites = Data.hasSwordWeapon(age) || Data.hasExplosives();
+							return Data.canKillFreezard(age) && canBreakStalagmites;
+						}
+					},
 					northRoom: {
 						Name: "northRoom",
-						Age: Age.ADULT
+						Age: Age.ADULT,
+						CustomRequirement: function(age) {
+							return Data.hasBottleOrBlueFire(age);
+						}
+					},
+					bigRoom: {
+						Name: "bigRoom",
+						CustomRequirement: function(age) {
+							return Data.hasBottleOrBlueFire(age);
+						}
 					}
 				},
+				ItemLocations: {}
+			},
 
+			blueFireRoom: {
+				Exits: {},
 				ItemLocations: {
 					"Chest in Red Ice": {
 						Name: "Chest in Red Ice",
@@ -3686,46 +3702,10 @@ let MQDungeons = {
 						MapInfo: { x: 248, y: 147 },
 						Age: Age.EITHER,
 						Order: 1,
-						LongDescription: "Navigate through the cavern until you get to the first room with blue fire. Hit the switch to spawn the chest under the red ice. Melt it with blue fire to gain access to it."
-					},
-					"Skulltula Under Stairs in Big Room": {
-						Name: "Skulltula Under Stairs in Big Room",
-						ItemGroup: ItemGroups.SKULLTULA,
-						MapInfo: { x: 115, y: 122 },
-						Age: Age.EITHER,
-						Order: 5,
-						LongDescription: "Across the room from the first room with blue fire, melt the ice wall. Navigate through the hallway to gain access to this room. Turn around once inside, and hit the switch posing as a stalagtite. This will make some stairs vanish near the exit of the room so you can grab the token. Be sure to hit the switch again so you can leave."
-					},
-					"Skulltula on Ledge in Big Room": {
-						Name: "Skulltula on Ledge in Big Room",
-						ItemGroup: ItemGroups.SKULLTULA,
-						MapInfo: { x: 127, y: 66 },
-						Age: Age.ADULT,
-						Order: 6,
-						LongDescription: "This skulltula is on the ledge to your right in the big room. Either play the scarecrow's song and hook it, or make use of a ground jump to get up there.",
+						LongDescription: "In the room with the tektites, hit the crystal switch to the right of the door. You can take a pot to the left of the entrance there to do so if you don't have a projectile. You may need to wait on the right hand wall for the boulder to pass.<br/><br/>Navigate through the cavern until you get to the first room with blue fire. Hit the switch to spawn the chest under the red ice. Melt it with blue fire to gain access to it.",
 						CustomRequirement: function(age) {
-							let canPlayOcarinaNormally = Items.OCARINA.playerHas && Data.hasBottleOrBlueFire(age);
-							let canUseOI = Data.canOIAndBlueFireWithoutRefilling(age);
-							let canPlayScarecrowsSong = canPlayOcarinaNormally || canUseOI;
-							let canUseScarecrow = Data.canHookScarecrow(age) && canPlayScarecrowsSong;
-							return canUseScarecrow ||  Data.canGroundJumpWithBomb(age);
+							return Data.hasBottleOrBlueFire(age);
 						}
-					},
-					"Chest at End": {
-						Name: "Chest at End",
-						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 127, y: 182 },
-						Age: Age.ADULT,
-						Order: 7,
-						LongDescription: "Defeat the stalfos in this room to spawn the chest."
-					},
-					"Serenade of Water": {
-						Name: "Serenade of Water",
-						ItemGroup: ItemGroups.SONG,
-						MapInfo: { x: 122, y: 177 },
-						Age: Age.ADULT,
-						Order: 8,
-						LongDescription: "Obtained after opening the chest in this room."
 					}
 				}
 			},
@@ -3763,6 +3743,56 @@ let MQDungeons = {
 						Age: Age.ADULT,
 						Order: 4,
 						LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. In the room at the end of the hallway, you'll find the chest on one of the ledges after some parkour."
+					}
+				}
+			},
+
+			bigRoom: {
+				Exits: {},
+				ItemLocations: {
+					"Skulltula Under Stairs in Big Room": {
+						Name: "Skulltula Under Stairs in Big Room",
+						ItemGroup: ItemGroups.SKULLTULA,
+						MapInfo: { x: 115, y: 122 },
+						Age: Age.EITHER,
+						Order: 5,
+						LongDescription: "Across the room from the first room with blue fire, melt the ice wall. Navigate through the hallway to gain access to this room. Turn around once inside, and hit the switch posing as a stalagtite. This will make some stairs vanish near the exit of the room so you can grab the token. Be sure to hit the switch again so you can leave."
+					},
+					"Skulltula on Ledge in Big Room": {
+						Name: "Skulltula on Ledge in Big Room",
+						ItemGroup: ItemGroups.SKULLTULA,
+						MapInfo: { x: 127, y: 66 },
+						Age: Age.ADULT,
+						Order: 6,
+						LongDescription: "This skulltula is on the ledge to your right in the big room. Play the scarecrow's song and hook it, a ground jump to get up there, or use hover boots to get to the taller pillar and longshot it.",
+						CustomRequirement: function(age) {
+							let canGetWithLongshot = Equipment.HOVER_BOOTS.playerHas && Items.HOOKSHOT.currentUpgrade === 2;
+							if (canGetWithLongshot) {
+								return true;
+							}
+
+							let canPlayOcarinaNormally = Items.OCARINA.playerHas && Data.hasBottleOrBlueFire(age);
+							let canUseOI = Data.canOIAndBlueFireWithoutRefilling(age);
+							let canPlayScarecrowsSong = canPlayOcarinaNormally || canUseOI;
+							let canUseScarecrow = Data.canHookScarecrow(age) && canPlayScarecrowsSong;
+							return canUseScarecrow ||  Data.canGroundJumpWithBomb(age);
+						}
+					},
+					"Chest at End": {
+						Name: "Chest at End",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 127, y: 182 },
+						Age: Age.ADULT,
+						Order: 7,
+						LongDescription: "Defeat the stalfos in this room to spawn the chest."
+					},
+					"Serenade of Water": {
+						Name: "Serenade of Water",
+						ItemGroup: ItemGroups.SONG,
+						MapInfo: { x: 122, y: 177 },
+						Age: Age.ADULT,
+						Order: 8,
+						LongDescription: "Obtained after opening the chest in this room."
 					}
 				}
 			}

@@ -2585,7 +2585,7 @@ let StandardDungeons = {
 					boulderWaterfall: {
 						Name: "boulderWaterfall",
 						CustomRequirement: function(age) {
-							return Settings.GlitchesToAllow.waterBKShortcut || (Equipment.STRENGTH.playerHas && Data.hasExplosives(age));
+							return Settings.GlitchesToAllow.waterBKShortcut || (Equipment.STRENGTH.playerHas && Data.hasExplosives());
 						}
 					}
 				},
@@ -2610,7 +2610,7 @@ let StandardDungeons = {
 						LongDescription: "Head to the bottom of the main room - no need to lower the water if you don't want to. Enter the north wing. After you reach the dead end, equip your boots and surface. Longshot to the other side and enter the locked door. Navigate across the room to the other side - might help to kill the tektites. Complete the puzzle in this room which requires you to explode a destroyable wall and push a block onto a switch. After the next room (water switch jumping puzzle), you should see the skulltula on the waterfall to the right.",
 						IsAtShortDistance: true,
 						CustomRequirement: function(age) {
-							let canDoNormally = Equipment.STRENGTH.playerHas && Data.hasExplosives(age);
+							let canDoNormally = Equipment.STRENGTH.playerHas && Data.hasExplosives();
 							return Settings.GlitchesToAllow.waterBKShortcut || canDoNormally;
 						}
 					}
@@ -3877,7 +3877,9 @@ let StandardDungeons = {
 				Exits: {
 					afterFreezards: {
 						Name: "afterFreezards",
-						NeedsSwordWeapon: true
+						CustomRequirement: function(age) {
+							return Data.canKillFreezard(age);
+						}
 					},
 					Exit: {
 						OwExit: OwExits["Ice Cavern"]["Exit"]
