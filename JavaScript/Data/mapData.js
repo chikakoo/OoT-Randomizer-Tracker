@@ -5,7 +5,8 @@ let MapGroups = {
 	MOUNTAIN: 3,
 	WATER: 4,
 	DESERT: 5,
-	DUNGEONS: 6
+	DUNGEONS: 6,
+    HIDDEN: 7
 };
 
 let ItemGroups = {
@@ -1348,6 +1349,11 @@ let MapLocations = {
                     },
                     "Lost Woods Top": {
                         OwExit: OwExits["Kokiri Forest"]["Lost Woods Top"]
+                    },
+
+                    "Entrances": {
+                        Name: "Mido's House Test Entrance",
+                        ItemGroup: ItemGroups.ENTRANCE,
                     }
                 },
 
@@ -6265,5 +6271,53 @@ let MapLocations = {
                 }
             }
 		}
-	}
+	},
+
+    // This is a hidden map just used for walking, so nothing here has any item locations
+    "Interiors": {
+        Abbreviation: "DCOL",
+		MapGroup: MapGroups.HIDDEN,
+        Regions: {
+            // main is not used, but must exist to avoid errors
+            main: {
+                Exits: {},
+                ItemLocations: {}
+            },
+
+            // Dampe's Grave and Windmill area
+            dampesGrave: {
+                Exits: {
+                    windmill: {
+                        Name: "windmill"
+                        //TODO: logic for taking the exit
+                    },
+                    "Overworld": {
+                        //OW exit should be added here
+                    }
+                },
+                ItemLocations: {}
+            },
+            windmill: {
+                Exits: {
+                    "Overworld": {
+                        //OW exit should be added here
+                    }
+                },
+                ItemLocations: {}
+            },
+
+            // Potion shop
+            kakPotionShop: {
+                Exits: {
+                    "Overworld Front": {
+                        //OW exit should be added here
+                    },
+                    "Overworld Back": {
+                        //OW exit should be added here
+                    }
+                },
+                ItemLocations: {}
+            }
+        }  
+    }
 };
