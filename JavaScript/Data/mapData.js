@@ -5846,11 +5846,21 @@ let MapLocations = {
                         Name: "Chest on the Top",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 176, y: 101 },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() {
+                            let canGetToMapAsChild = Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump;
+                            let canGetThereAsChild = Settings.GlitchesToAllow.groundJump && Settings.GlitchesToAllow.megaFlip;
+                            return !canGetToMapAsChild || !canGetThereAsChild;
+                        },
                         LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Enter the other door to your right. Now either hookshot the wooden horizontal beam, use your hover boots to get across, or take out the guards with your bow to get across to the path directly in front of you. Face the camera to your back and turn left. Climb up the wall and walk to the end. Jump across to the next platform. Climb up the vines to your left.<br /><br />You should be able to either longshot to the chest, or roll across with your hover boots.",
                         CustomRequirement: function(age) {
+                            let canMegaFlip = Data.canMegaFlip(age);
+                            if (age === Age.CHILD) {
+                                return canMegaFlip && Data.canGroundJumpWithBomb(age);
+                            }
+
                             if (Items.HOOKSHOT.currentUpgrade === 2 || Equipment.HOVER_BOOTS.playerHas) { return true; }
-                            return Data.canHookScarecrow(age) || Data.canMegaFlip(age);
+                            return canMegaFlip || Data.canHookScarecrow(age);
                         }
                     },
                     "Jail 1 Guard Key": {

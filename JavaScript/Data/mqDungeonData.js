@@ -3756,7 +3756,10 @@ let MQDungeons = {
 						MapInfo: { x: 115, y: 122 },
 						Age: Age.EITHER,
 						Order: 5,
-						LongDescription: "Across the room from the first room with blue fire, melt the ice wall. Navigate through the hallway to gain access to this room. Turn around once inside, and hit the switch posing as a stalagtite. This will make some stairs vanish near the exit of the room so you can grab the token. Be sure to hit the switch again so you can leave."
+						LongDescription: "Across the room from the first room with blue fire, melt the ice wall. Navigate through the hallway to gain access to this room. Turn around once inside, and hit the switch posing as a stalagtite. This will make some stairs vanish near the exit of the room so you can grab the token. Be sure to hit the switch again so you can leave.",
+						CustomRequirement: function(age) {
+							return Data.canHitSwitchAtShortDistance(age);
+						}
 					},
 					"Skulltula on Ledge in Big Room": {
 						Name: "Skulltula on Ledge in Big Room",

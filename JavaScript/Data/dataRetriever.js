@@ -1236,8 +1236,7 @@ Data = {
         return this.hasExplosives() || //TODO: will chus work in all cases? maybe add a boolean for them
             this.canUseBoomerang(age) ||
             this.canShootEyeSwitch(age) ||
-            (age === Age.ADULT && Items.HOOKSHOT.playerHas) ||
-            (Items.DINS_FIRE.playerHas && Equipment.MAGIC.playerHas); //TODO: does din's actually work?
+            (age === Age.ADULT && Items.HOOKSHOT.playerHas);
     },
     
     /**
