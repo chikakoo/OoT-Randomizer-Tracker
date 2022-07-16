@@ -5825,7 +5825,7 @@ let MapLocations = {
                     wastelandEntrance: {
                         Name: "wastelandEntrance",
                         CustomRequirement: function(age) {
-                            if (age === Age.CHILD || Data.areGerudoGuardsTame()) { return true; }
+                            if ((age === Age.CHILD && Settings.GlitchesToAllow.gerudoGateSkipAsChild) || Data.areGerudoGuardsTame()) { return true; }
                             return Settings.GlitchesToAllow.gerudoGateSkipAsAdult &&
                                 Items.HOOKSHOT.playerHas &&
                                 Equipment.HOVER_BOOTS.playerHas;
@@ -6077,7 +6077,13 @@ let MapLocations = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 208, y: 93 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.backwardsWasteland && !Settings.GlitchesToAllow.childHauntedWasteland; },
+                        UseAdultAge: function() { 
+                            if (Settings.GlitchesToAllow.backwardsWasteland) { return false; }
+                            if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
+                                return !Settings.GlitchesToAllow.itemlessSandPit;
+                            }
+                            return !Settings.GlitchesToAllow.cuccoJump || !Settings.GlitchesToAllow.gerudoGateSkipAsChild || !Settings.GlitchesToAllow.itemlessSandPit;
+                        },
                         LongDescription: "In the outpost in the center of the desert, light the two torches to spawn a chest.",
                         NeedsFire: true
                     },
@@ -6086,6 +6092,13 @@ let MapLocations = {
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 239, y: 292 },
                         Age: Age.EITHER,
+                        UseAdultAge: function() { 
+                            if (Settings.GlitchesToAllow.backwardsWasteland) { return false; }
+                            if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
+                                return !Settings.GlitchesToAllow.itemlessSandPit;
+                            }
+                            return !Settings.GlitchesToAllow.cuccoJump || !Settings.GlitchesToAllow.gerudoGateSkipAsChild || !Settings.GlitchesToAllow.itemlessSandPit;
+                        },
                         LongDescription: "After you cross the sand pit, the shop is along the path to your left. There is a sign by one of the flags that points to it. If you don't have hover boots, you can rolljump, then jumpslash to the corner of the carpet.<br/><br/>If this and medigoron aren't shuffled, this shop will ALWAYS sell bombchus.",
                         NeedsSwordWeapon: true,
                         RequiredItems: [{item: Equipment.WALLET, upgradeString: "1"}]
@@ -6095,7 +6108,13 @@ let MapLocations = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 208, y: 85 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.backwardsWasteland && !Settings.GlitchesToAllow.childHauntedWasteland; },
+                        UseAdultAge: function() { 
+                            if (Settings.GlitchesToAllow.backwardsWasteland) { return false; }
+                            if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
+                                return !Settings.GlitchesToAllow.itemlessSandPit;
+                            }
+                            return !Settings.GlitchesToAllow.cuccoJump || !Settings.GlitchesToAllow.gerudoGateSkipAsChild || !Settings.GlitchesToAllow.itemlessSandPit;
+                        },
                         LongDescription: "The skulltula is in the outpost in the center of the desert.",
                         IsAtShortDistance: true
                     }

@@ -172,9 +172,9 @@ let Settings = {
 		// Desert
 		eponaHover: false,
 		cuccoJump: false,
+		gerudoGateSkipAsChild: true,
 		gerudoGateSkipAsAdult: false,
-		itemlessSandPit: false,
-		childHauntedWasteland: false,
+		itemlessSandPit: true,
 		wastelandNoLens: false,
 		backwardsWasteland: false,
 		
