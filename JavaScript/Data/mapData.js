@@ -4919,7 +4919,7 @@ let MapLocations = {
                         MapInfo: { x: 249, y: 62 },
                         Age: Age.ADULT,
                         LongDescription: "At night, a little after the wooden bridge leading to Zora's Domain, you'll find a skulltula high up on the wall. You can get it with the hookshot if you stand on the fence.",
-                        IsAtShortDistance: true
+                        Requireditems: [Items.HOOKSHOT]
                     },
                     "Skulltula on Cliff": {
                         Name: "Skulltula on Cliff",
