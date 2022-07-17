@@ -927,7 +927,7 @@ let OwExits = {
             LongDescription: "This is the entrance to Zora's Domain.",
             CustomRequirement: function(age) {
                 if (age === Age.CHILD && Equipment.SCALE.playerHas) { return true; }
-                if (!Data.hasShield(age)) { return false; }
+                if (!Data.canShieldTurn(age)) { return false; }
 
                 if (age === Age.CHILD) {
                     return Settings.GlitchesToAllow.childLakesideLabClip;
@@ -973,7 +973,7 @@ let OwExits = {
             CustomRequirement: function(age) {
                 let canDoClip = (Settings.GlitchesToAllow.childLakesideLabClip && age === Age.CHILD) ||
                     (Settings.GlitchesToAllow.adultLakesideLabClip && age === Age.ADULT);
-                if (canDoClip && Data.hasShield(age)) {
+                if (canDoClip && Data.canShieldTurn(age)) {
                     return true;
                 }
 
@@ -3351,6 +3351,7 @@ let MapLocations = {
                     "Skulltula in Tree": {
                         Name: "Skulltula in Tree",
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 97, y: 179 },
                         Age: Age.CHILD,
                         LongDescription: "At night, roll into the tree in the center of the village to reveal this skulltula. If you have no weapon, use a pot from near the guard by Death Mountain Trail.",

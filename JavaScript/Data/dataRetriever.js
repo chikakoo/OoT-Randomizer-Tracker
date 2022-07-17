@@ -1194,6 +1194,16 @@ Data = {
 	},
 
     /**
+     * Returns whether the player can do a shield turn
+     */
+    canShieldTurn: function(age) {
+        if (age === Age.CHILD) {
+            return Equipment.DEKU_SHIELD.playerHas || Equipment.HYLIAN_SHIELD.playerHas;
+        }
+        return Equipment.DEKU_SHIELD.playerHas || Equipment.HYLIAN_SHIELD.playerHas;
+    },
+
+    /**
      * Returns whether the player can use an item that generates fire
      * Deku stick excluded since you still need a fire source
      */

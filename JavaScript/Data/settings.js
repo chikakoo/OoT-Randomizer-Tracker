@@ -85,7 +85,7 @@ let Settings = {
 		closedDeku: false,
 		openDoorOfTime: true,
 		openKakariko: true,
-		autoPlantBeans: true,
+		autoPlantBeans: false,
 		openZorasFountain: OpenZorasFountainSettings.VANILLA,
 		
 		// Sanity and logic changes
