@@ -2164,12 +2164,7 @@ let StandardDungeons = {
 						LongDescription: "The compass chest is in the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there. Once at the surface, either hit the switch to lower the water around the chest, or just roll into the chest and spam A to open it.",
 						Age: Age.ADULT,
 						Order: 1,
-						CustomRequirement: function(age) {
-							if (Data.waterIsPlayerLockedOutOfHighWater()) {
-								return Items.HOOKSHOT.playerHas;
-							}
-							return Equipment.IRON_BOOTS.playerHas;
-						}
+						RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
 					},
 
 					// Locked Doors
@@ -2376,11 +2371,6 @@ let StandardDungeons = {
 								return true;
 							}
 
-							// Open the door on the bottom, then reraise the water and enter the door again
-							if (canReRaiseWater && Data.itemLocationObtained("Water Temple", "main", "Locked Door to Central Room")) {
-								return true;
-							}
-
 							return false;
 						}
 					}
@@ -2513,7 +2503,7 @@ let StandardDungeons = {
 						Order: 3,
 						MapInfo: {x: 130, y: 208, floor: "F3" },
 						LongDescription: "With the water raised to the highest level, enter the door at the left side on the upper floor. On the right wall, there is a skulltula. You can easily get it with the longshot. You can also get it with the hookshot if you stand on the very very top right corner of the highest red block. Note that it really does just barely reach - so much so that you won't even see the red indicator dot.",
-						IsAtShortDistance: true
+						RequiredItems: [Items.HOOKSHOT]
 					}
 				}
 			},
@@ -3654,12 +3644,13 @@ let StandardDungeons = {
 						Name: "Skulltula in Statue Room on Northwest Platform",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: {x: 93, y: 101, floor: "F2" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
 						Order: 20,
 						AltOrder: 10,
 						LongDescription: "Head to the statue room. Get to the upper southwest corner of the room. Facing the statue, that would be behind you and to the left. The skulltula is on a platform to the left of the statue. You can Scarecrow's Song or hover boots to get to it.",
 						CustomRequirement: function(age) {
-							return Data.canHookScarecrow(age) || Equipment.HOVER_BOOTS.playerHas;
+							return Data.canHookScarecrow(age) || (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas) || Data.canMegaFlip(age);
 						}
 					}
 				}

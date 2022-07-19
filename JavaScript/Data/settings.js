@@ -85,7 +85,7 @@ let Settings = {
 		closedDeku: false,
 		openDoorOfTime: true,
 		openKakariko: true,
-		autoPlantBeans: true,
+		autoPlantBeans: false,
 		openZorasFountain: OpenZorasFountainSettings.VANILLA,
 		
 		// Sanity and logic changes
@@ -172,9 +172,9 @@ let Settings = {
 		// Desert
 		eponaHover: false,
 		cuccoJump: false,
+		gerudoGateSkipAsChild: true,
 		gerudoGateSkipAsAdult: false,
-		itemlessSandPit: false,
-		childHauntedWasteland: false,
+		itemlessSandPit: true,
 		wastelandNoLens: false,
 		backwardsWasteland: false,
 		
