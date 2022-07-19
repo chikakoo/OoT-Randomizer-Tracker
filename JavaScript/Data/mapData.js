@@ -245,6 +245,11 @@ let MapLocations = {
                         CustomRequirement: function() {
                             return false; // This one is the one-way
                         }
+                    },
+
+                    // Interiors & Grottos
+                    "Grotto by Goron City Entrance": {
+                        OwExit: OwExits["Lost Woods"]["Grotto by Goron City Entrance"]
                     }
                 },
     
@@ -334,15 +339,6 @@ let MapLocations = {
                         MapInfo: { x: 84, y: 222 },
                         Age: Age.CHILD,
                         LongDescription: "This is the bean spot by the bridge connecting Kokiri Forest and Hyrule Field. It can be used to get on the bridge."
-                    },
-                    "Grotto by Goron City Entrance": {
-                        Name: "Grotto by Goron City Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 218, y: 118 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "From the Kokiri Forest entrance, go right and then left. Remove the rock on this screen to reveal this grotto.",
-                        NeedToBlastOrSmash: true
                     }
                 }
             },
@@ -362,6 +358,14 @@ let MapLocations = {
                     },
                     "Sacred Forest Meadow": {
                         OwExit: OwExits["Lost Woods"]["Sacred Forest Meadow"]
+                    },
+
+                    // Interiors & Grottos
+                    "Forest Stage Grotto": {
+                        OwExit: OwExits["Lost Woods"]["Forest Stage Grotto"]
+                    },
+                    "Grotto Near the Sacred Forest Meadow": {
+                        OwExit: OwExits["Lost Woods"]["Grotto Near the Sacred Forest Meadow"]
                     }
                 },
 
@@ -445,23 +449,6 @@ let MapLocations = {
                         MapInfo: { x: 187, y: 66 },
                         Age: Age.CHILD,
                         LongDescription: "This is the bean spot near the entrance to the Forest Stage. It's used to get a skulltula above as an adult."
-                    },
-                    "Forest Stage Grotto": {
-                        Name: "Forest Stage Grotto",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 160, y: 86 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. In the back of this room, walk around until you fall into this grotto."
-                    },
-                    "Grotto Near the Sacred Forest Meadow": {
-                        Name: "Grotto Near the Sacred Forest Meadow",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 202, y: 31 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, straight, left. Remove the rock in this room to reveal the grotto.",
-                        NeedToBlastOrSmash: true
                     }
                 }
             },

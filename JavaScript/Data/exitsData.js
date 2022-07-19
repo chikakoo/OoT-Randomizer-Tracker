@@ -178,6 +178,37 @@ let OwExits = {
             MapInfo: { x: 211, y: 21 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Sacred Forest Meadow."
+        },
+
+        // Interiors
+        "Grotto by Goron City Entrance": {
+            Name: "Grotto by Goron City Entrance",
+            ExitRegion: "firstHalf",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsGrotto: true,
+            MapInfo: { x: 218, y: 118 },
+            Age: Age.EITHER,
+            LongDescription: "From the Kokiri Forest entrance, go right and then left. Remove the rock on this screen to reveal this grotto.",
+            NeedToBlastOrSmash: true
+        },
+        "Forest Stage Grotto": {
+            Name: "Forest Stage Grotto",
+            ExitRegion: "secondHalf",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsGrotto: true,
+            MapInfo: { x: 160, y: 86 },
+            Age: Age.EITHER,
+            LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. In the back of this room, walk around until you fall into this grotto."
+        },
+        "Grotto Near the Sacred Forest Meadow": {
+            Name: "Grotto Near the Sacred Forest Meadow",
+            ExitRegion: "secondHalf",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsGrotto: true,
+            MapInfo: { x: 202, y: 31 },
+            Age: Age.EITHER,
+            LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, straight, left. Remove the rock in this room to reveal the grotto.",
+            NeedToBlastOrSmash: true
         }
     },
 

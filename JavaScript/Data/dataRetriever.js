@@ -1467,12 +1467,11 @@ Data = {
 		let allMapData = [];
 		let _this = this;
 		mapNames.forEach(function (mapName) {
-            if (MapLocations[mapName].MapGroup === MapGroups.HIDDEN) {
-                return;
-            }
-
             let thisMapData = {};
             let canDoInfo = _this._getCanDoInfo(mapName);
+            if (MapLocations[mapName].MapGroup === MapGroups.HIDDEN) {
+                thisMapData.hidden = true;
+            }
 			thisMapData.childData = canDoInfo[Age.CHILD];
 			thisMapData.adultData = canDoInfo[Age.ADULT];
 			thisMapData.name = mapName;
