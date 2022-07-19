@@ -38,13 +38,13 @@ SocketClient = {
 		// Sync dungeon types - object contains: <mapName>: <dungoenTypeEnumValue>
 		this._socket.on("sync_all_dungeon_types", function(dungeons) {
 			Object.keys(dungeons).forEach(function(dungeonName) {
-				_setDungeonTypeOfMap(dungeonName, dungeons[dungeonName]);
+				setDungeonTypeOfMap(dungeonName, dungeons[dungeonName]);
 			});
 		});
 
 		// Syncs a single dungeon type
 		this._socket.on("sync_dungeon_type", function(dungeonName, dungeonType) {
-			_setDungeonTypeOfMap(dungeonName, dungeonType);
+			setDungeonTypeOfMap(dungeonName, dungeonType);
 			refreshAll();
 		});
 		

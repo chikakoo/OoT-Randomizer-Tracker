@@ -11,74 +11,27 @@ EntranceData = {
 	 * @param backwardTravelFunction - the function that determines whether the player can actually travel to here FROM the other exit
 	 *   This will be placed in the CustomRequirement of the OwExit object, and should take the age parameter into consideration
 	 */
-	handleInteriorPostClick(itemLocation, isSelected, thisEntranceName, otherSideEntranceName, forwardTravelFunction, backwardTravelFunction) {
-		let thisExitList = MapLocations[itemLocation.Map].Regions[itemLocation.Region].Exits;
-		let thisName = `Interior-${thisEntranceName}`;
-		let otherName = `Interior-${otherSideEntranceName}`;
-
-		let otherSideLocation = Data.interiorTravelData[otherSideEntranceName];
-		if (!Settings.RandomizerSettings.shuffleInteriorEntrances && otherSideEntranceName === "windmill") {
-			otherSideLocation = MapLocations["Kakariko Village"].Regions["main"].ItemLocations["Windmill"];
-		}
-
+	handleInteriorPostClick(itemLocation, isSelected, otherSideData) {
+		//TODO: deal with multiple exits entered and cleared... might need to keep interiorTravelData in some form
+		let interiorExit = MapLocations[otherSideData.map].Regions[otherSideData.region].Exits[otherSideData.fromExit].OwExit;
 		if (isSelected) {
-			Data.addToInteriorTravelData(thisEntranceName, itemLocation);
+			// 	Data.addToInteriorTravelData(thisEntranceName, itemLocation);
+			itemLocation.OwShuffleMap = otherSideData.map;
+			itemLocation.OwShuffleRegion = otherSideData.region;
+			itemLocation.OwShuffleExitName = otherSideData.exit;
 
-			if (otherSideLocation) {
-				itemLocation.OwShuffleMap = otherSideLocation.Map
-				itemLocation.OwShuffleRegion = otherSideLocation.Region;
-				thisExitList[thisName] = { OwExit: { 
-					Name: itemLocation.Name + " ",
-					Map: itemLocation.Map, 
-					Region: itemLocation.Region,
-					OwShuffleMap: otherSideLocation.Map, 
-					OwShuffleRegion: otherSideLocation.Region,
-					OwShuffleExitName: otherName,
-					IsInteriorExit: true,
-					MapInfo: itemLocation.MapInfo,
-					CustomRequirement: forwardTravelFunction
-				}};
-
-				otherSideLocation.OwShuffleMap = itemLocation.Map
-				otherSideLocation.OwShuffleRegion = itemLocation.Region;
-
-				let otherExitList = MapLocations[otherSideLocation.Map].Regions[otherSideLocation.Region].Exits;
-				otherExitList[otherName] = { OwExit: { 
-					Name: otherSideLocation.Name + " ",
-					Map: otherSideLocation.Map,
-					Region: otherSideLocation.Region,
-					OwShuffleMap: itemLocation.Map, 
-					OwShuffleRegion: itemLocation.Region,
-					OwShuffleExitName: thisName,
-					IsInteriorExit: true,
-					MapInfo: otherSideLocation.MapInfo,
-					CustomRequirement: backwardTravelFunction
-				}};
-
-				itemLocation.hidden = true;
-				otherSideLocation.hidden = true;
-				OwExits[itemLocation.Map][otherName] = thisExitList[thisName].OwExit;
-				OwExits[otherSideLocation.Map][thisName] = otherExitList[otherName].OwExit;
-			}
+			interiorExit.OwShuffleMap = itemLocation.ExitMap;
+			interiorExit.OwShuffleRegion = itemLocation.ExitRegion;
+			interiorExit.OwShuffleExitName = itemLocation.Name;
 		} else {
-			Data.removeFromInteriorTravelData(thisEntranceName, itemLocation);
-
+			//Data.removeFromInteriorTravelData(thisEntranceName, itemLocation);
 			delete itemLocation.OwShuffleMap;
 			delete itemLocation.OwShuffleRegion;
-			delete itemLocation.CustomRequirement;
-			delete thisExitList[thisName];
-			delete OwExits[itemLocation.Map][otherName];
-			delete itemLocation.hidden;
+			delete itemLocation.OwShuffleExitName;
 
-			if (otherSideLocation) {
-				delete otherSideLocation.OwShuffleMap;
-				delete otherSideLocation.OwShuffleRegion;
-
-				let otherExitList = MapLocations[otherSideLocation.Map].Regions[otherSideLocation.Region].Exits;
-				delete otherExitList[otherName];
-				delete OwExits[otherSideLocation.Map][thisName];
-				delete otherSideLocation.hidden;
-			}
+			delete interiorExit.OwShuffleMap;
+			delete interiorExit.OwShuffleRegion;
+			delete interiorExit.OwShuffleExitName;
 		}
 	},
 
@@ -151,7 +104,7 @@ InteriorGroups = {
 		},
 		postClick: function(itemLocation, isSelected) {
 			if (isSelected) {
-				Data.linksHouseLocation = { map: itemLocation.Map, region: itemLocation.Region };
+				Data.linksHouseLocation = { map: itemLocation.ExitMap, region: itemLocation.ExitRegion };
 			} else {
 				Data.linksHouseLocation = {};
 			}
@@ -196,7 +149,7 @@ InteriorGroups = {
 		},
 		postClick: function(itemLocation, isSelected) {
 			if (isSelected) {
-				Data.templeOfTimeLocation = { map: itemLocation.Map, region: itemLocation.Region };
+				Data.templeOfTimeLocation = { map: itemLocation.ExitMap, region: itemLocation.ExitRegion };
 			} else {
 				Data.templeOfTimeLocation = {};
 			}
@@ -618,9 +571,13 @@ InteriorGroups = {
 			}
 		},
 		postClick: function(itemLocation, isSelected) {
-			let travelRequirement = function(age) { return false; };
-			let reverseTravelRequirement = function(age) { return EntranceData.canGetToWindmillFromDampe(age); };
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, "windmill", "dampesGrave", travelRequirement, reverseTravelRequirement);
+			let exitData = {
+				map: "Interiors",
+				region: "windmill",
+				exit: "Overworld",
+				fromExit: "Windmill Exit"
+			}
+			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData);
 		}
 	}
 };
@@ -852,9 +809,13 @@ GrottoGroups = {
 			}
 		},
 		postClick: function(itemLocation, isSelected) {
-			let travelRequirement = function(age) { return EntranceData.canGetToWindmillFromDampe(age); };
-			let reverseTravelRequirement = function(age) { return false; };
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, "dampesGrave", "windmill", travelRequirement, reverseTravelRequirement);
+			let exitData = {
+				map: "Interiors",
+				region: "dampesGrave",
+				exit: "Overworld",
+				fromExit: "Grave Exit"
+			}
+			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData);
 		}
 	},
 	"Wolfos Grotto": {
