@@ -4,16 +4,11 @@ EntranceData = {
 	 * This sets the data for this side, as well as the other side, if necessary
 	 * @param itemLocation - the item location
 	 * @param isSelected - whether the entrance is being selected or cleared
-	 * @param thisEntranceName - the name of the entrance that was selected or cleared
-	 * @param otherSideEntranceName - the name of the entrance linked to the one defined in "thisEntranceName"
-	 * @param forwardTravelFunction - the function that determines whether the player can actually travel to the other exit
-	 *   This will be placed in the CustomRequirement of the OwExit object, and should take the age parameter into consideration
-	 * @param backwardTravelFunction - the function that determines whether the player can actually travel to here FROM the other exit
-	 *   This will be placed in the CustomRequirement of the OwExit object, and should take the age parameter into consideration
+	 * @param otherSideData - TODO: document!
 	 */
 	handleInteriorPostClick(itemLocation, isSelected, otherSideData) {
 		//TODO: deal with multiple exits entered and cleared... might need to keep interiorTravelData in some form
-		let interiorExit = MapLocations[otherSideData.map].Regions[otherSideData.region].Exits[otherSideData.fromExit].OwExit;
+		let interiorExit = MapLocations[otherSideData.map].Regions[otherSideData.region].Exits[otherSideData.exit].OwExit;
 		if (isSelected) {
 			// 	Data.addToInteriorTravelData(thisEntranceName, itemLocation);
 			itemLocation.OwShuffleMap = otherSideData.map;
@@ -33,13 +28,6 @@ EntranceData = {
 			delete interiorExit.OwShuffleRegion;
 			delete interiorExit.OwShuffleExitName;
 		}
-	},
-
-	/**
-	 * Common function for whether you can get to the windmill from dampe's grave
-	 */
-	canGetToWindmillFromDampe(age) {
-		return age === Age.CHILD ? Data.canGroundJumpWithBomb(Age.CHILD) : Data.canPlaySong(Songs.SONG_OF_TIME);
 	},
 
 	/**
@@ -182,10 +170,12 @@ InteriorGroups = {
 			}			
 		},
 		postClick: function(itemLocation, isSelected) {
-			let travelRequirement = function(age) {
-				return age === Age.ADULT;
-			};
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, "kakPotionShopFront", "kakPotionShopBack", travelRequirement);
+			let exitData = {
+				map: "Interiors",
+				region: "kakPotionShop",
+				exit: "Potion Shop Front",
+			}
+			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData);
 		}
 	},
 	"Potion Shop Back": {
@@ -193,10 +183,12 @@ InteriorGroups = {
 		neverHide: true,
 		buttons: { },
 		postClick: function(itemLocation, isSelected) {
-			let backwardsTravelRequirement = function(age) {
-				return age === Age.ADULT;
-			};
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, "kakPotionShopBack", "kakPotionShopFront", null, backwardsTravelRequirement);
+			let exitData = {
+				map: "Interiors",
+				region: "kakPotionShop",
+				exit: "Potion Shop Back",
+			}
+			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData);
 		}
 	},
 	"Happy Mask Shop": {
@@ -539,7 +531,7 @@ InteriorGroups = {
 							Data.interiorTravelData.dampesGrave.WalkInfo.canObtainItem.Child;
 
 						return Data.canUseBoomerang(age) ||
-							(canChildAccessDampe && EntranceData.canGetToWindmillFromDampe(age));
+							(canChildAccessDampe && Data.canGetToWindmillFromDampe(age));
 					}
 					
 					return Settings.GlitchesToAllow.windmillHPWithNothing ||
@@ -574,8 +566,7 @@ InteriorGroups = {
 			let exitData = {
 				map: "Interiors",
 				region: "windmill",
-				exit: "Overworld",
-				fromExit: "Windmill Exit"
+				exit: "Windmill Exit"
 			}
 			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData);
 		}
@@ -812,8 +803,7 @@ GrottoGroups = {
 			let exitData = {
 				map: "Interiors",
 				region: "dampesGrave",
-				exit: "Overworld",
-				fromExit: "Grave Exit"
+				exit: "Grave Exit"
 			}
 			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData);
 		}

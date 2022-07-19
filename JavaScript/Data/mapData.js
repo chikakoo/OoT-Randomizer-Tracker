@@ -545,9 +545,13 @@ let MapLocations = {
                             return Data.hasDamagingItem(age);
                         }
                     },
-
                     "Lost Woods": {
                         OwExit: OwExits["Sacred Forest Meadow"]["Lost Woods"]
+                    },
+
+                    // Interiors & Grottos
+                    "Grotto near Lost Woods": {
+                        OwExit: OwExits["Sacred Forest Meadow"]["Grotto near Lost Woods"]
                     }
                 },
 
@@ -560,18 +564,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "This hidden grotto is roughly halfway between the Lost Woods entrance and the maze entrance. Kill the two Wolfos inside to spawn the chest.",
                         IsHiddenGrotto: true
-                    },
-
-                    // Entrances
-                    "Grotto near Lost Woods": {
-                        Name: "Grotto near Lost Woods",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 177, y: 274 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This hidden grotto is roughly halfway between the Lost Woods entrance and the maze entrance. It can be revealed with an explosive or a hammer.",
-                        IsHiddenGrotto: true
-                    },
+                    }
                 }
             },
 
@@ -585,6 +578,14 @@ let MapLocations = {
                     },
                     "Minuet Teleport Pad": {
                         OwExit: OwExits["Sacred Forest Meadow"]["Minuet Teleport Pad"]
+                    },
+
+                    // Interiors & Grottos
+                    "Grotto in Maze Center": {
+                        OwExit: OwExits["Sacred Forest Meadow"]["Grotto in Maze Center"]
+                    },
+                    "Song of Storms Grotto": {
+                        OwExit: OwExits["Sacred Forest Meadow"]["Song of Storms Grotto"]
                     }
                 },
                 
@@ -662,27 +663,6 @@ let MapLocations = {
                         Age: Age.EITHER,
                         Region: "afterGate",
                         LongDescription: "This stone is on top of the maze. It's the one that's more to the west."
-                    },
-                    
-                    // Entrances
-                    "Grotto in Maze Center": {
-                        Name: "Grotto in Maze Center",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 194, y: 147 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        Region: "afterGate",
-                        LongDescription: "This is the grotto in the center of the maze. You normally need to climb the ladder to get here."
-                    },
-                    "Song of Storms Grotto": {
-                        Name: "Song of Storms Grotto",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 207 , y: 53 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        Region: "afterGate",
-                        LongDescription: "Play the Song of Storms in the corner of the room with the Forest Temple entrance to reveal the grotto. Facing the forest temple, this is the lower-right corner.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
                     }
                 }
             }
@@ -4912,8 +4892,10 @@ let MapLocations = {
             dampesGrave: {
                 Exits: {
                     windmill: {
-                        Name: "windmill"
-                        //TODO: logic for taking the exit
+                        Name: "windmill",
+                        CustomRequirement: function(age) {
+                            return Data.canGetToWindmillFromDampe(age);
+                        }
                     },
                     "Grave Exit": {
                         OwExit: OwExits["Interiors"]["Grave Exit"]
@@ -4934,10 +4916,10 @@ let MapLocations = {
             kakPotionShop: {
                 Exits: {
                     "Potion Shop Front": {
-                        //OW exit should be added here
+                        OwExit: OwExits["Interiors"]["Potion Shop Front"]
                     },
                     "Potion Shop Back": {
-                        //OW exit should be added here
+                        OwExit: OwExits["Interiors"]["Potion Shop Back"]
                     }
                 },
                 ItemLocations: {}

@@ -284,6 +284,37 @@ let OwExits = {
             LongDescription: "This is the entrance to the Forest Temple.",
             IsDungeonEntrance: true,
             RequiredItems: [Items.HOOKSHOT]
+        },
+
+        // Interiors
+        "Grotto near Lost Woods": {
+            Name: "Grotto near Lost Woods",
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsGrotto: true,
+            MapInfo: { x: 177, y: 274 },
+            Age: Age.EITHER,
+            LongDescription: "This hidden grotto is roughly halfway between the Lost Woods entrance and the maze entrance. It can be revealed with an explosive or a hammer.",
+            IsHiddenGrotto: true
+        },
+        "Grotto in Maze Center": {
+            Name: "Grotto in Maze Center",
+            ExitRegion: "afterGate",
+            IsGrotto: true,
+            ItemGroup: ItemGroups.ENTRANCE,
+            MapInfo: { x: 194, y: 147 },
+            Age: Age.EITHER,
+            LongDescription: "This is the grotto in the center of the maze. You normally need to climb the ladder to get here."
+        },
+        "Song of Storms Grotto": {
+            Name: "Song of Storms Grotto",
+            ExitRegion: "afterGate",
+            IsGrotto: true,
+            ItemGroup: ItemGroups.ENTRANCE,
+            MapInfo: { x: 207 , y: 53 },
+            Age: Age.EITHER,
+            LongDescription: "Play the Song of Storms in the corner of the room with the Forest Temple entrance to reveal the grotto. Facing the forest temple, this is the lower-right corner.",
+            RequiredSongs: [Songs.SONG_OF_STORMS]
         }
     },
 
@@ -1119,7 +1150,6 @@ let OwExits = {
     },
 
     "Interiors" : {
-        //TODO: set the values for potion shop/windmill/dampe
         "Grave Exit": {
             Name: "Grave Exit",
             ExitRegion: "dampesGrave",
@@ -1131,6 +1161,18 @@ let OwExits = {
             ExitRegion: "windmill",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             Age: Age.EITHER
+        },
+        "Potion Shop Front": {
+            Name: "Potion Shop Front",
+            ExitRegion: "kakPotionShop",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            Age: Age.EITHER
+        },
+        "Potion Shop Back": {
+            Name: "Potion Shop Back",
+            ExitRegion: "kakPotionShop",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            Age: Age.ADULT
         }
     },
 

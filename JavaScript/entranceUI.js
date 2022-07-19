@@ -233,7 +233,7 @@ let EntranceUI = {
 		
 		delete itemLocation.EntranceGroup;
 		
-		if (itemLocation.Map === _currentLocationName) {
+		if (itemLocation.ExitMap === _currentLocationName) {
 			let mainDiv = document.getElementById(`${itemLocation.Name}-entrance-groups`);
 			mainDiv.innerHTML = "";
 			removeCssClass(mainDiv, "nodisp");
