@@ -156,12 +156,9 @@ SocketClient = {
 	 * Syncs up one item location, given the map and location name
 	 */
 	updateItemLocation: function(itemLocation) {
-		if (itemLocation.IsInteriorExit) {
-			return; // These are handled by the postClick function, and will mess everything up if we do anything with them
-		}
-
-		let map = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE ? itemLocation.ExitMap : itemLocation.Map;
-		let region = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE ? itemLocation.ExitRegion : itemLocation.Region;
+		let isInOwExits = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE || itemLocation.ItemGroup === ItemGroups.ENTRANCE;
+		let map = isInOwExits ? itemLocation.ExitMap : itemLocation.Map;
+		let region = isInOwExits ? itemLocation.ExitRegion : itemLocation.Region;
 		let name = itemLocation.Name.trim();
 		let matchingLocation;
 
@@ -180,6 +177,9 @@ SocketClient = {
 					refreshEntranceDropdowns(itemLocation, locDropdown, entranceDropdown);
 				}
 			}
+		}
+		else if (itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
+			matchingLocation = OwExits[map][name];
 		}
 		else {
 			matchingLocation = MapLocations[map].Regions[region].ItemLocations[name];
