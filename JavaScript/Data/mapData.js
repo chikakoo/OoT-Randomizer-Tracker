@@ -3971,7 +3971,7 @@ let MapLocations = {
                             return !Settings.GlitchesToAllow.cuccoJump;
                         },
                         NeedsSwordWeapon: true,
-                        LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Face the entrnace you just left. As Child, you must enter the door to your left and navigate across to the other side of the room. As Adult, you can jump up to the ledge to your right with a slight angled jump. Climb up the vines and navigate to the door near where the skulltula on the wall would be at night.<br/><br/>Once inside, wait for a bit first for the guard and knock her out or sprint past her before following the path to your right. Eventually you'll reach the jail. Take out the guard to get the item.",
+                        LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Face the entrance you just left. As Child, you must enter the door to your left and navigate across to the other side of the room. As Adult, you can jump up to the ledge to your right with a slight angled jump. Climb up the vines and navigate to the door near where the skulltula on the wall would be at night.<br/><br/>Once inside, wait for a bit first for the guard and knock her out or sprint past her before following the path to your right. Eventually you'll reach the jail. Take out the guard to get the item.",
                         CustomRequirement: function(age) {
                             return age === Age.ADULT || Data.areGerudoGuardsTame() || Data.canMegaFlip(age);
                         }

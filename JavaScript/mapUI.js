@@ -164,7 +164,7 @@ let MapUI = {
 				}
 
 				let cannotGetEntranceItem = false;
-				let entranceGroup = itemLocation.EntranceGroup;
+				let entranceGroup = Data.getEntranceGroup(itemLocation);
 				if (entranceGroup && itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
 					cannotGetEntranceItem = 
 						EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.CHILD) ===  0 &&
@@ -224,8 +224,9 @@ let MapUI = {
 		iconDiv.style.width = `${this._iconDimension}px`;
 		iconDiv.style.height = `${this._iconDimension}px`;
 		
-		if (groupId === ItemGroups.ENTRANCE && itemLocation.EntranceGroup) {
-			iconDiv.style.backgroundImage = EntranceUI.getEntranceGroupIcon(itemLocation.EntranceGroup.name);
+		let group = Data.getEntranceGroup(itemLocation);
+		if (groupId === ItemGroups.ENTRANCE && group) {
+			iconDiv.style.backgroundImage = EntranceUI.getEntranceGroupIcon(group.name);
 			return;
 		}
 		

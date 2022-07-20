@@ -52,7 +52,7 @@ let updateItemDisplay = function() {
 			addCssClass(textDiv, "item-entrance-known");
 		}
 		
-		let entranceGroup = itemLocation.EntranceGroup;
+		let entranceGroup = Data.getEntranceGroup(itemLocation);
 		if (entranceGroup && itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
 			let cannotGetEntranceItem = 
 				EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.CHILD) === 0 &&
@@ -111,7 +111,7 @@ let updateItemDisplay = function() {
 		}
 		
 		// Update the entrance buttons
-		if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && itemLocation.EntranceGroup) {
+		if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && Data.getEntranceGroup(itemLocation)) {
 			EntranceUI.refreshButtons(itemLocation);
 		}
 		
@@ -289,8 +289,8 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon, i
 			itemLocationTitleDiv.appendChild(itemLocationEntranceTasksContainer);
 			
 			let entranceGroupDiv = EntranceUI.createEntranceGroupDiv(itemLocation, itemLocationEntranceTasksContainer);
-			let groupSelectedAndCompleted = itemLocation.EntranceGroup && 
-				Object.keys(itemLocation.EntranceGroup.completed).length >= itemLocation.EntranceGroup.totalNumberOfTasks;
+			let group = Data.getEntranceGroup(itemLocation);
+			let groupSelectedAndCompleted = group && Object.keys(group.completed).length >= group.totalNumberOfTasks;
 			if (itemLocation.playerHas || groupSelectedAndCompleted) {
 				addCssClass(entranceGroupDiv, "nodisp");
 			}
@@ -540,11 +540,12 @@ let _setPlaceholderNotesText = function(itemLocation, moreInfoNotesDiv) {
 		moreInfoNotesDiv = document.getElementById(`${itemLocation.Name}-more-info-notes`);
 	}
 	
-	let isEntrance = itemLocation.ItemGroup === ItemGroups.ENTRANCE && itemLocation.EntranceGroup;
+	let group = Data.getEntranceGroup(itemLocation);
+	let isEntrance = itemLocation.ItemGroup === ItemGroups.ENTRANCE && group;
 	
-	if (itemLocation.ItemGroup === ItemGroups.SHOP || (isEntrance && itemLocation.EntranceGroup.isShop)) {
+	if (itemLocation.ItemGroup === ItemGroups.SHOP || (isEntrance && group.isShop)) {
 		moreInfoNotesDiv.placeholder = "[price1] <item1> [//comment1]; [price2] <item2> [//comment2]; ...";
-	} else if (itemLocation.ItemGroup === ItemGroups.GOSSIP_STONE || (isEntrance && itemLocation.EntranceGroup.hasGossipStone)) {
+	} else if (itemLocation.ItemGroup === ItemGroups.GOSSIP_STONE || (isEntrance && group.hasGossipStone)) {
 		moreInfoNotesDiv.placeholder = "They say that...";
 	} else {
 		moreInfoNotesDiv.placeholder = "Notes go here!";
@@ -596,7 +597,9 @@ let _toggleMoreInfo = function(itemLocationDiv, itemLocation, forceOn, event) {
 	}
 	
 	if (itemLocation.ItemGroup !== ItemGroups.ENTRANCE) { return; }
-	let groupSelectedAndCompleted = itemLocation.EntranceGroup && EntranceUI.isGroupComplete(itemLocation);
+
+	let group = Data.getEntranceGroup(itemLocation);
+	let groupSelectedAndCompleted = group && EntranceUI.isGroupComplete(itemLocation);
 	if (itemLocation.playerHas || groupSelectedAndCompleted) {
 		if (hideClass) {
 			addCssClass(itemLocationDiv.children[itemLocationDiv.children.length - 2], "nodisp");

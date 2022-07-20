@@ -188,17 +188,20 @@ SocketClient = {
 		matchingLocation.playerHas = itemLocation.playerHas;
 		matchingLocation.notes = itemLocation.notes;
 
-		if (itemLocation.EntranceGroup) {
-			matchingLocation.EntranceGroup = itemLocation.EntranceGroup;
+		let sentGroup = Data.getEntranceGroup(itemLocation);
+		let usesDefaultGroup = Data.usesDefaultGroup(itemLocation);
+		if (!usesDefaultGroup && sentGroup) {
+			let matchingGroup = Data.getEntranceGroup(matchingLocation);
+			matchingGroup = sentGroup;
 
-			let group = EntranceUI.getEntranceData(itemLocation)[itemLocation.EntranceGroup.name];
+			let group = EntranceUI.getEntranceData(itemLocation)[sentGroup.name];
 			if (group.postClick) {
 				group.postClick(matchingLocation, true);
 			}
 			EntranceData.runPostClicks(matchingLocation);
 		} 
 		
-		else if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && !itemLocation.EntranceGroup) {
+		else if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && !usesDefaultGroup && !sentGroup) {
 			EntranceUI.clearGroupChoice(matchingLocation);
 		}
 		

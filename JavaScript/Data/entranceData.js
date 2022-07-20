@@ -37,15 +37,15 @@ EntranceData = {
 	 * @param itemLocation The item location to check
 	 */
 	 runPostClicks: function(itemLocation) {
-		 if (!itemLocation || !itemLocation.EntranceGroup) {
-			 return;
+		let entranceGroup = Data.getEntranceGroup(itemLocation);
+		if (!itemLocation || !entranceGroup) {
+			return;
 		}
 		
 		if (!itemLocation.IsInterior && !itemLocation.IsGrotto && !itemLocation.IsBoss) {
 			return;
 		}
 
-		let entranceGroup = itemLocation.EntranceGroup;
 		let name = entranceGroup.name;
 		entranceGroup.buttonNames.forEach(function(buttonName) {
 			let buttonItem;

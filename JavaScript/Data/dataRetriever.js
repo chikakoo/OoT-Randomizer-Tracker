@@ -143,7 +143,8 @@ Data = {
 	 */
 	getTimeImagePath: function(itemLocation, ignoreEntrances) {
         let time = itemLocation.Time && itemLocation.Time();
-        if (!ignoreEntrances && itemLocation.ItemGroup === ItemGroups.ENTRANCE && itemLocation.EntranceGroup) {
+        let group = this.getEntranceGroup(itemLocation);
+        if (!ignoreEntrances && group) {
             let groupType;
             if (itemLocation.IsInterior) {
                 groupType = InteriorGroups;
@@ -152,7 +153,7 @@ Data = {
             }
 
             if (groupType) {
-                let groupTimeFunction = groupType[itemLocation.EntranceGroup.name].time;
+                let groupTimeFunction = groupType[group.name].time;
                 let groupTime = groupTimeFunction && groupTimeFunction();
                 if (time === Time.NIGHT && groupTime === Time.DAY) {
                     time = Time.OUTSIDE_NIGHT_INSIDE_DAY;
@@ -281,7 +282,7 @@ Data = {
     },
 
     /**
-     * Gets all the entrnaces under the current map/region
+     * Gets all the entrances under the current map/region
      * @param mapName - the map name
      * @param regionName - the region name
      */
@@ -707,6 +708,38 @@ Data = {
     },
 
     /**
+     * TODO: implement this everywhere AND fill out all the DefaultEntranceGroups as necessary...
+     * will also need to deal with saving/loading/syncing this... aahh
+     * 
+     * OR consider some other way of doing this perhaps
+     * 
+     * Should be used to access the entrance group of the given item location
+     * DO NOT access it directly, or there may be issues if interior shuffle is off...
+     * @param itemLocation - the item location
+     */
+    getEntranceGroup: function(itemLocation) {
+        if (!itemLocation || itemLocation.ItemGroup !== ItemGroups.ENTRANCE) { return null; }
+
+        if (this.usesDefaultGroup(itemLocation)) {
+            //TOOD: fill out the info if DefaultEntranceGroup doesn't exist at this point!
+            // should have setting called DefaultEntranceGroupName or something - if set to "none" the loc should have been disabled
+            return itemLocation.DefaultEntranceGroup;
+        }
+        return itemLocation.EntranceGroup;
+    },
+
+    /**
+     * Returns whether the given itemLocation will use the default entrance group
+     * @param itemLocation - the item location
+     * @returns - true if so; false otherwise
+     */
+    usesDefaultGroup: function(itemLocation) {
+        let isInteriorAndUseDefault = !Settings.RandomizerSettings.shuffleInteriorEntrances && itemLocation.IsInterior;
+        let isGrottoAndUseDefault = !Settings.RandomizerSettings.shuffleGrottoEntrances && itemLocation.IsGrotto;
+        return isInteriorAndUseDefault || isGrottoAndUseDefault;
+    },
+
+    /**
      * Calculates whether you can get the given item/go to the given region at the given age
      * This assumes that you can already gain access to the region it is in
      * @param itemLocation - the item location data - this may be an item or a region
@@ -814,12 +847,8 @@ Data = {
      * This forces a boolean return value
 	 */
 	isItemLocationAShop: function(itemLocation) {
-		return !!(itemLocation.ItemGroup === ItemGroups.SHOP || 
-			(
-				itemLocation.ItemGroup === ItemGroups.ENTRANCE && 
-				itemLocation.EntranceGroup && 
-				itemLocation.EntranceGroup.isShop
-			));
+        let group = this.getEntranceGroup(itemLocation);
+		return !!(itemLocation.ItemGroup === ItemGroups.SHOP || (group && group.isShop));
     },
     
     /**
@@ -827,12 +856,12 @@ Data = {
      * This forces a boolean return value
      */
     isItemLocationAGossipStone: function(itemLocation) {
+        let group = this.getEntranceGroup(itemLocation);
 		return !!(itemLocation.ItemGroup === ItemGroups.GOSSIP_STONE || 
 			(
 				Settings.RandomizerSettings.gossipStoneSetting !== GossipStoneSettings.HIDE &&
-				itemLocation.ItemGroup === ItemGroups.ENTRANCE && 
-				itemLocation.EntranceGroup && 
-				itemLocation.EntranceGroup.hasGossipStone
+				group && 
+				group.hasGossipStone
 			));
 	},
 
@@ -1561,7 +1590,8 @@ Data = {
             } else {
                 switch(_this.getItemObtainability(itemLocation, age)) {
                     case ItemObtainability.YES:
-						if (itemLocation.EntranceGroup && itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
+                        let group = _this.getEntranceGroup(itemLocation);
+						if (group) {
 							_this._handleCanDoObjectForEntranceGroup(itemLocation, age, canDoObj);
 						} else if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
 							if (itemLocation.OwShuffleMap && itemLocation.OwShuffleRegion) {
@@ -1594,7 +1624,7 @@ Data = {
      * @param canDoObj - the canDo object - this is modified
      */
     _handleCanDoObjectForEntranceGroup: function(itemLocation, age, canDoObj) {
-        let entranceGroup = itemLocation.EntranceGroup;
+        let entranceGroup = this.getEntranceGroup(itemLocation);
         let entranceData = EntranceUI.getEntranceData(itemLocation);
         if (entranceData[entranceGroup.name].shouldNotDisplay && entranceData[entranceGroup.name].shouldNotDisplay()) {
             canDoObj.canDo++;

@@ -46,7 +46,8 @@ let SaveAndLoad = {
             //              playerHas: bool
             //              notes: string,
             //              owShuffleMap: string,
-            //              owShuffleRegion: string
+            //              owShuffleRegion: string,
+            //              EntranceGroup: {}
             //  }}}
         };
         Object.keys(mapObject).forEach(function(mapName) {
@@ -66,8 +67,9 @@ let SaveAndLoad = {
                     let notes = itemLocation.notes;
                     let owShuffleMap = itemLocation.OwShuffleMap;
                     let owShuffleRegion = itemLocation.OwShuffleRegion;
+                    let entranceGroup = itemLocation.EntranceGroup;
 
-                    if (playerHas || notes || owShuffleMap || owShuffleRegion) {
+                    if (playerHas || notes || owShuffleMap || owShuffleRegion || entranceGroup) {
                         currentMapData = currentMapData || {};
                         currentMapData.Regions = currentMapData.Regions || {};
                         currentMapData.Regions[regionName] = currentMapData.Regions[regionName] || {};
@@ -79,6 +81,7 @@ let SaveAndLoad = {
                         if (notes) { currentObj.notes = notes; }
                         if (owShuffleMap) { currentObj.OwShuffleMap = owShuffleMap; }
                         if (owShuffleRegion) { currentObj.OwShuffleRegion = owShuffleRegion; }
+                        if (entranceGroup) { currentObj.EntranceGroup = entranceGroup; }
                     }
                 });
             });
@@ -104,6 +107,7 @@ let SaveAndLoad = {
                         OwShuffleRegion: string
                         notes: string,
                         entranceGroup: {},
+                        defaultEntranceGroup: {}
                     }
                 }
             }
@@ -115,7 +119,7 @@ let SaveAndLoad = {
         Object.keys(OwExits).forEach(function(mapName) {
             Object.keys(OwExits[mapName]).forEach(function(exitName) {
                 let exit = OwExits[mapName][exitName];
-                let shouldSave = (exit.OwShuffleMap && exit.OwShuffleRegion) || exit.notes || exit.EntranceGroup;
+                let shouldSave = (exit.OwShuffleMap && exit.OwShuffleRegion) || exit.notes || exit.EntranceGroup || exit.DefaultEntranceGroup;
                 if (shouldSave) {
                     owExitData[mapName] = owExitData[mapName] || {};
                     owExitData[mapName][exitName] = {
@@ -124,7 +128,8 @@ let SaveAndLoad = {
                         OwShuffleMap: exit.OwShuffleMap,
                         OwShuffleRegion: exit.OwShuffleRegion,
                         notes: exit.notes,
-                        EntranceGroup: exit.EntranceGroup
+                        EntranceGroup: exit.EntranceGroup,
+                        DefaultEntranceGroup: exit.DefaultEntranceGroup
                     }
                 }
             });
@@ -356,6 +361,19 @@ let SaveAndLoad = {
 
                 if (loadedOwExitData.EntranceGroup) {
                     exitingExitData.EntranceGroup = loadedOwExitData.EntranceGroup;
+
+                    let interiorObj = null;
+                    if (exitingExitData.IsInterior) { interiorObj = InteriorGroups; }
+                    else if (exitingExitData.IsGrotto) { interiorObj = GrottoGroups; }
+                    else { interiorObj = BossGroups }
+
+                    if (interiorObj[loadedOwExitData.EntranceGroup.name].postClick) {
+                        interiorObj[loadedOwExitData.EntranceGroup.name].postClick(exitingExitData, true);
+                    }
+                }
+
+                if (loadedOwExitData.DefaultEntranceGroup) {
+                    exitingExitData.DefaultEntranceGroup = loadedOwExitData.DefaultEntranceGroup;
                 }
             });
         });

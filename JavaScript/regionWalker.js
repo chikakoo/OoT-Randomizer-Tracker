@@ -118,7 +118,8 @@ RegionWalker = {
             }
 
             // If you can enter the DoT, then the other age can get here too - it's basically a spawn
-            if (itemLocation.EntranceGroup && itemLocation.EntranceGroup.isTempleOfTime && Data.canEnterDoorOfTime(age))
+            let group = Data.getEntranceGroup(itemLocation);
+            if (group && group.isTempleOfTime && Data.canEnterDoorOfTime(age))
             {
                 let otherAge = age === Age.CHILD ? Age.ADULT : Age.CHILD;
                 this._markCanObtainItemInfo(itemLocation, otherAge, ItemObtainability.YES, true);

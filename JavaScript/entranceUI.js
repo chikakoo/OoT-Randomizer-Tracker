@@ -15,7 +15,7 @@ let EntranceUI = {
 		let mainDiv = dce("div", "entrance-group-container");
 		mainDiv.id = `${itemLocation.Name}-entrance-groups`;
 		
-		let selectedGroup = itemLocation.EntranceGroup;
+		let selectedGroup = Data.getEntranceGroup(itemLocation);
 		if (selectedGroup) {
 			this._createButtonDivs(itemLocation, itemLocationEntranceTasksContainer);
 		} else {
@@ -85,7 +85,8 @@ let EntranceUI = {
 					return;
 				}
 				
-				itemLocation.EntranceGroup = { 
+				let groupProperty = Data.usesDefaultGroup(itemLocation) ? "DefaultEntranceGroup" : "EntranceGroup";
+				itemLocation[groupProperty] = {
 					name: groupName,
 					isShop: group.isShop,
 					isLinksHouse: group.isLinksHouse,
@@ -123,7 +124,7 @@ let EntranceUI = {
 	 * @return The div
 	 */
 	_createButtonDivs: function(itemLocation, itemLocationEntranceTasksContainer) {
-		let itemLocationGroup = itemLocation.EntranceGroup;
+		let itemLocationGroup = Data.getEntranceGroup(itemLocation);
 		let selectedGroup = this.getEntranceData(itemLocation)[itemLocationGroup.name];
 		let buttonKeys = Object.keys(selectedGroup.buttons);
 		let _this = this;
@@ -217,7 +218,10 @@ let EntranceUI = {
 	 * @param itemLocation - the item location
 	 */
 	clearGroupChoice: function(itemLocation) {
-		let itemLocationGroup = itemLocation.EntranceGroup;
+		// Do not clear anything if the group is default - means it isn't shuffled!
+		if (Data.usesDefaultGroup(itemLocation)) { return; }
+
+		let itemLocationGroup = Data.getEntranceGroup(itemLocation);
 		if (!itemLocationGroup) { return; }
 
 		let selectedGroup = this.getEntranceData(itemLocation)[itemLocationGroup.name];
@@ -231,7 +235,7 @@ let EntranceUI = {
 			}
 		});
 		
-		delete itemLocation.EntranceGroup;
+		delete itemLocationGroup;
 		
 		if (itemLocation.ExitMap === _currentLocationName) {
 			let mainDiv = document.getElementById(`${itemLocation.Name}-entrance-groups`);
@@ -255,7 +259,7 @@ let EntranceUI = {
 	 */
 	refreshButtons: function(itemLocation) {
 		let mainDiv = document.getElementById(`${itemLocation.Name}-entrance-groups`);
-		addOrRemoveCssClass(mainDiv, "nodisp", itemLocation.EntranceGroup);
+		addOrRemoveCssClass(mainDiv, "nodisp", Data.getEntranceGroup(itemLocation));
 		
 		let itemLocationEntranceTasksContainer = document.getElementById(`${itemLocation.Name}-entrance-tasks`);
 		itemLocationEntranceTasksContainer.innerHTML = "";
@@ -269,7 +273,7 @@ let EntranceUI = {
 	 * @return
 	 */
 	isGroupComplete: function(itemLocation) {
-		let selectedGroup = itemLocation.EntranceGroup;
+		let selectedGroup = Data.getEntranceGroup(itemLocation);
 		if (!selectedGroup) {
 			throw "Should not call isGroupComplete with an item location that doesn't have a group selected!";
 		}
@@ -281,7 +285,7 @@ let EntranceUI = {
 	 * Gets the number of tasks that are currently active (that is, not hidden)
 	 */
 	getNumberOfActiveTasks: function(itemLocation) {
-		let selectedGroup = itemLocation.EntranceGroup;
+		let selectedGroup = Data.getEntranceGroup(itemLocation);
 		if (!selectedGroup) {
 			throw "Should not call getNumberOfActiveTasks with an item location that doesn't have a group selected!";
 		}
@@ -311,7 +315,7 @@ let EntranceUI = {
 			return 0;
 		}
 
-		let selectedGroup = itemLocation.EntranceGroup;
+		let selectedGroup = Data.getEntranceGroup(itemLocation);
 		if (!selectedGroup) {
 			throw "Should not call getNumberOfCompletableTasks with an item location that doesn't have a group selected!";
 		}
@@ -343,7 +347,7 @@ let EntranceUI = {
 	 * @return
 	 */
 	getNumberOfTasks: function(itemLocation, age) {
-		let selectedGroup = itemLocation.EntranceGroup;
+		let selectedGroup = Data.getEntranceGroup(itemLocation);
 		if (!selectedGroup) {
 			throw "Should not call getNumberOfTasks with an item location that doesn't have a group selected!";
 		}
@@ -390,7 +394,7 @@ let EntranceUI = {
 	 * @return
 	 */
 	getNumberOfCompletedTasks: function(itemLocation, age) {
-		let selectedGroup = itemLocation.EntranceGroup;
+		let selectedGroup = Data.getEntranceGroup(itemLocation);
 		if (!selectedGroup) {
 			throw "Should not call getNumberOfCompletedTasks with an item location that doesn't have a group selected!";
 		}

@@ -458,7 +458,7 @@ let OwExits = {
             IsGrotto: true,
             MapInfo: { x: 50, y: 103 },
             Age: Age.EITHER,
-            LongDescription: "Near the entrnace to Gerudo Valley, there's a circle of small rocks. As a child, you can bomb the center to reveal a grotto. As adult, you must hammer the red rock.",
+            LongDescription: "Near the entrance to Gerudo Valley, there's a circle of small rocks. As a child, you can bomb the center to reveal a grotto. As adult, you must hammer the red rock.",
             CustomRequirement: function(age) {
                 return Data.canUseHammer(age) || (age === Age.CHILD && Data.hasExplosives());
             }
