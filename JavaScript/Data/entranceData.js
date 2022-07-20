@@ -2,15 +2,16 @@ EntranceData = {
 	/**
 	 * Handles the logic for when a "tunneling" interior is selected
 	 * This sets the data for this side, as well as the other side, if necessary
-	 * @param itemLocation - the item location
+	 * @param itemLocation - the item location of where the exit is from (the overworld, usually)
 	 * @param isSelected - whether the entrance is being selected or cleared
-	 * @param otherSideData - TODO: document!
+	 * @param otherSideData - the map, region, and exit of where the exit leads to (the interior)
+	 * @param travelDataInfoKey - the key to use for the interior travel data info object
 	 */
-	handleInteriorPostClick(itemLocation, isSelected, otherSideData) {
-		//TODO: deal with multiple exits entered and cleared... might need to keep interiorTravelData in some form
+	handleInteriorPostClick(itemLocation, isSelected, otherSideData, travelDataInfoKey) {
 		let interiorExit = MapLocations[otherSideData.map].Regions[otherSideData.region].Exits[otherSideData.exit].OwExit;
 		if (isSelected) {
-			// 	Data.addToInteriorTravelData(thisEntranceName, itemLocation);
+			Data.addToInteriorTravelData(travelDataInfoKey, itemLocation); // windmill post click mostly
+
 			itemLocation.OwShuffleMap = otherSideData.map;
 			itemLocation.OwShuffleRegion = otherSideData.region;
 			itemLocation.OwShuffleExitName = otherSideData.exit;
@@ -19,7 +20,8 @@ EntranceData = {
 			interiorExit.OwShuffleRegion = itemLocation.ExitRegion;
 			interiorExit.OwShuffleExitName = itemLocation.Name;
 		} else {
-			//Data.removeFromInteriorTravelData(thisEntranceName, itemLocation);
+			Data.removeFromInteriorTravelData(travelDataInfoKey, itemLocation); // windmill post click mostly
+
 			delete itemLocation.OwShuffleMap;
 			delete itemLocation.OwShuffleRegion;
 			delete itemLocation.OwShuffleExitName;
@@ -175,7 +177,7 @@ InteriorGroups = {
 				region: "kakPotionShop",
 				exit: "Potion Shop Front",
 			}
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData);
+			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData,"kakPotionShopFront");
 		}
 	},
 	"Potion Shop Back": {
@@ -188,7 +190,7 @@ InteriorGroups = {
 				region: "kakPotionShop",
 				exit: "Potion Shop Back",
 			}
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData);
+			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "kakPotionShopBack");
 		}
 	},
 	"Happy Mask Shop": {
@@ -568,7 +570,7 @@ InteriorGroups = {
 				region: "windmill",
 				exit: "Windmill Exit"
 			}
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData);
+			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "windmill");
 		}
 	}
 };
@@ -805,7 +807,7 @@ GrottoGroups = {
 				region: "dampesGrave",
 				exit: "Grave Exit"
 			}
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData);
+			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "dampesGrave");
 		}
 	},
 	"Wolfos Grotto": {

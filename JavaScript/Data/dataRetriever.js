@@ -281,6 +281,22 @@ Data = {
     },
 
     /**
+     * Gets all the entrnaces under the current map/region
+     * @param mapName - the map name
+     * @param regionName - the region name
+     */
+    getEntrancesFromMapAndRegion: function(mapName, regionName) {
+        let itemLocations = [];
+        Object.keys(OwExits[mapName]).forEach(function(entranceName) {
+            let currentEntrance = OwExits[mapName][entranceName];
+            if (currentEntrance.ItemGroup === ItemGroups.ENTRANCE && regionName === currentEntrance.ExitRegion) {
+                itemLocations = itemLocations.concat(currentEntrance);
+            }
+        });
+        return itemLocations;
+    },
+
+    /**
      * Returns whether we should display the item location
      * Checks for grotto, interior, OW entrances, and owl entrances and their appropriate setting
      * If it's not any of those, will return true

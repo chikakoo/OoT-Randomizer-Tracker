@@ -180,7 +180,7 @@ let SpawnsPage = {
 
         let _this = this;
         this._addOptionsToDropdown(["Overworld"], dropdown, defaultValue)
-        Data.getItemLocationsFromMapAndRegion(map, region).forEach(function(itemLocation) {
+        Data.getEntrancesFromMapAndRegion(map, region).forEach(function(itemLocation) {
             let isInteriorShuffle = Settings.RandomizerSettings.shuffleInteriorEntrances;
             if (isInteriorShuffle && 
                 itemLocation.ItemGroup === ItemGroups.ENTRANCE &&

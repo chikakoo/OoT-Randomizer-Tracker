@@ -695,6 +695,32 @@ let MapLocations = {
                     },
                     "Lake Hylia": {
                         OwExit: OwExits["Hyrule Field"]["Lake Hylia"]
+                    },
+
+                    // Interiors & Grottos
+                    "Grotto in Drawbridge Rock": {
+                        OwExit: OwExits["Hyrule Field"]["Grotto in Drawbridge Rock"]
+                    },
+                    "Grotto in Southeast Forest Rock": {
+                        OwExit: OwExits["Hyrule Field"]["Grotto in Southeast Forest Rock"]
+                    },
+                    "Hidden Grotto by North River Tree": {
+                        OwExit: OwExits["Hyrule Field"]["Hidden Grotto by North River Tree"]
+                    },
+                    "Grotto in Rock North of River": {
+                        OwExit: OwExits["Hyrule Field"]["Grotto in Rock North of River"]
+                    },
+                    "Open Grotto East of Lake Hylia Fences": {
+                        OwExit: OwExits["Hyrule Field"]["Open Grotto East of Lake Hylia Fences"]
+                    },
+                    "Hidden Grotto by Kakariko": {
+                        OwExit: OwExits["Hyrule Field"]["Hidden Grotto by Kakariko"]
+                    },
+                    "Grotto by Gerudo": {
+                        OwExit: OwExits["Hyrule Field"]["Grotto by Gerudo"]
+                    },
+                    "Grotto by Lake Hylia Fences": {
+                        OwExit: OwExits["Hyrule Field"]["Grotto by Lake Hylia Fences"]
                     }
                 },
 
@@ -851,81 +877,6 @@ let MapLocations = {
                             if (!Data.canUseFireItem(age)) { return false; }
                             return Data.canUseHammer(age) || (age === Age.CHILD && Data.hasExplosives());
                         }
-                    },
-                    
-                    // Entrances
-                    "Grotto in Drawbridge Rock": {
-                        Name: "Grotto in Drawbridge Rock",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: {x: 170, y: 39},
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Remove the rock to the left of the Market drawbridge to reveal this grotto.",
-                        NeedToBlastOrSmash: true
-                    },
-                    "Grotto in Southeast Forest Rock": {
-                        Name: "Grotto in Southeast Forest Rock",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: {x: 201, y: 227},
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "In the southeast (a bit south of the Kokiri Forest entrance), there's a small forest that has a rock you can break to reveal this grotto.",
-                        NeedToBlastOrSmash: true
-                    },
-                    "Hidden Grotto by North River Tree": {
-                        Name: "Hidden Grotto by North River Tree",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: {x: 91, y: 57},
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "To the west of the Market entrance, there's a lone tree to the south of a river. Bomb or hammer near the tree to reveal this grotto.",
-                        IsHiddenGrotto: true
-                    },
-                    "Grotto in Rock North of River": {
-                        Name: "Grotto in Rock North of River",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: {x: 102, y: 20},
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "On the north side of the river to the west of the Market entrance, there's a grotto under a yellow rock.",
-                        NeedToBlastOrSmash: true
-                    },
-                    "Open Grotto East of Lake Hylia Fences": {
-                        Name: "Open Grotto East of Lake Hylia Fences",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: {x: 112, y: 272},
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is an open grotto just to the east of the square of fences by the Lake Hylia entrance."
-                    },
-                    "Hidden Grotto by Kakariko": {
-                        Name: "Hidden Grotto by Kakariko",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: {x: 237, y: 23},
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "North of the entrance to Kakariko, there's a tree with a hidden grotto - bomb or hammer to open it.",
-                        IsHiddenGrotto: true
-                    },
-                    "Grotto by Gerudo": {
-                        Name: "Grotto by Gerudo",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: {x: 50, y: 103},
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Near the entrnace to Gerudo Valley, there's a circle of small rocks. As a child, you can bomb the center to reveal a grotto. As adult, you must hammer the red rock.",
-                        CustomRequirement: function(age) {
-                            return Data.canUseHammer(age) || (age === Age.CHILD && Data.hasExplosives());
-                        }
-                    },
-                    "Grotto by Lake Hylia Fences": {
-                        Name: "Grotto by Lake Hylia Fences",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: {x: 91, y: 267},
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "There's a hidden grotto in the center of the fences by Lake Hylia. Bomb or hammer there to get in. The scrub is inside.",
-                        IsHiddenGrotto: true
                     }
                 }
             }
@@ -940,6 +891,20 @@ let MapLocations = {
                 Exits: {
                     "Hyrule Field": {
                         OwExit: OwExits["Lon Lon Ranch"]["Hyrule Field"]
+                    },
+
+                    // Interiors & Grottos
+                    "Talon's House": {
+                        OwExit: OwExits["Lon Lon Ranch"]["Talon's House"]
+                    },
+                    "Stable": {
+                        OwExit: OwExits["Lon Lon Ranch"]["Stable"]
+                    },
+                    "Cow Shed": {
+                        OwExit: OwExits["Lon Lon Ranch"]["Cow Shed"]
+                    },
+                    "Open Grotto in Southwest Corner": {
+                        OwExit: OwExits["Lon Lon Ranch"]["Open Grotto in Southwest Corner"]
                     }
                 },
 
@@ -1076,46 +1041,6 @@ let MapLocations = {
                             return Data.itemLocationObtained("Castle", "main", "Gift from Malon") &&
                                 Data.itemLocationObtained("Castle", "main", "Wake up Talon");
                         }
-                    },
-                    
-                    // Entrances
-                    "Talon's House": {
-                        Name: "Talon's House",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 230, y: 54 },
-                        Map: "Lon Lon Ranch",
-                        Region: "main",
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the first door on your left when you first enter the ranch."
-                    },
-                    "Stable": {
-                        Name: "Stable",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 198, y: 54 },
-                        Map: "Lon Lon Ranch",
-                        Region: "main",
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the first door on your right when you first enter the ranch."
-                    },
-                    "Cow Shed": {
-                        Name: "Cow Shed",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 106, y: 265 },
-                        IsInterior: true,
-                        Map: "Lon Lon Ranch",
-                        Region: "main",
-                        Age: Age.EITHER,
-                        LongDescription: "Head to the back of Lon Lon Ranch to find this building."
-                    },
-                    "Open Grotto in Southwest Corner": {
-                        Name: "Open Grotto in Southwest Corner",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 290, y: 240 },
-                        IsGrotto: true,
-                        Age: Age.CHILD,
-                        LongDescription: "There's an open grotto as a child at the far southwest corner of the ranch."
                     }
                 }
             }
@@ -1131,9 +1056,13 @@ let MapLocations = {
                     "Hyrule Field": {
                         OwExit: OwExits["Market Entrance"]["Hyrule Field"]
                     },
-
                     "Market": {
                         OwExit: OwExits["Market Entrance"]["Market"]
+                    },
+
+                    // Interiors & Grottos
+                    "Guard House by Entrance": {
+                        OwExit: OwExits["Market Entrance"]["Guard House by Entrance"]
                     }
                 },
 
@@ -1159,18 +1088,6 @@ let MapLocations = {
                         Age: Age.CHILD,
                         OverrideItemGroupCondition: true,
                         LongDescription: "Break the rightmost box in the back of the room to reveal the skulltula. If you don't have an item, simply hit it with a pot!"
-                    },
-                    
-                    // Entrances
-                    "Guard House by Entrance": {
-                        Name: "Guard House by Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: {x: 203, y: 233},
-                        Map: "Market Entrance",
-                        Region: "main",
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the door near the Hyrule Field entrance."
                     }
                 }
             }
@@ -1187,17 +1104,34 @@ let MapLocations = {
                         Name: "alley",
                         Age: Age.CHILD
                     },
-
                     "Market Entrance": {
                         OwExit: OwExits["Market"]["Market Entrance"]
                     },
-
                     "Hyrule Castle": {
                         OwExit: OwExits["Market"]["Hyrule Castle"]
                     },
-
                     "Temple of Time": {
                         OwExit: OwExits["Market"]["Temple of Time"]
+                    },
+
+                    // Interiors & Grottos
+                    "Archery Minigame": {
+                        OwExit: OwExits["Market"]["Archery Minigame"]
+                    },
+                    "Happy Mask Shop": {
+                        OwExit: OwExits["Market"]["Happy Mask Shop"]
+                    },
+                    "Potion Shop": {
+                        OwExit: OwExits["Market"]["Potion Shop"]
+                    },
+                    "Bazaar": {
+                        OwExit: OwExits["Market"]["Bazaar"]
+                    },
+                    "Treasure Chest Minigame": {
+                        OwExit: OwExits["Market"]["Treasure Chest Minigame"]
+                    },
+                    "Bombchu Bowling": {
+                        OwExit: OwExits["Market"]["Bombchu Bowling"]
                     }
                 },
 
@@ -1350,73 +1284,6 @@ let MapLocations = {
                         IsInterior: true,
                         Age: Age.CHILD,
                         LongDescription: "Starting at the market entrance, this is the second building you can enter going counter-clockwise."
-                    },
-                    
-                    // Entrances
-                    "Archery Minigame": {
-                        Name: "Archery Minigame",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return Time.DAY; },
-                        Map: "Market",
-                        MapInfo: {x: 234, y: 120},
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.CHILD,
-                        LongDescription: "This is the building just to the left of the Hyrule Castle entrance."
-                    },
-                    "Happy Mask Shop Entrance": {
-                        Name: "Happy Mask Shop Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return Time.DAY; },
-                        Map: "Market",
-                        MapInfo: {x: 286, y: 120},
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.CHILD,
-                        LongDescription: "This is the building just to the right of the Hyrule Castle entrance."
-                    },
-                    "Potion Shop Entrance": {
-                        Name: "Potion Shop Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return Time.DAY; },
-                        Map: "Market",
-                        MapInfo: {x: 308, y: 159},
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.CHILD,
-                        LongDescription: "Starting at the market entrance, this is the second building you can enter going counter-clockwise."
-                    },
-                    "Bazaar Entrance": {
-                        Name: "Bazaar Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return Time.DAY; },
-                        Map: "Market",
-                        MapInfo: {x: 308, y: 191},
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.CHILD,
-                        LongDescription: "Starting at the market entrance, this is the first building you can enter going counter-clockwise."
-                    },
-                    "Treasure Chest Minigame Entrance": {
-                        Name: "Treasure Chest Minigame Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return Time.NIGHT; },
-                        Map: "Market",
-                        MapInfo: {x: 215, y: 230},
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.CHILD,
-                        LongDescription: "This is the building to the right of the market entrance exit - it's only open at night.",
-                    },
-                    "Bombchu Bowling Entrance": {
-                        Name: "Bombchu Bowling Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Market",
-                        MapInfo: {x: 205, y: 174},
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.CHILD,
-                        LongDescription: "This building is the one between the two market alley entrances."
                     }
                 }
             },
@@ -1425,6 +1292,14 @@ let MapLocations = {
                 Exits: {
                     main: {
                         Name: "main"
+                    },
+
+                    // Interiors & Grottos
+                    "Bombchu Shop Entrance": {
+                        OwExit: OwExits["Market"]["Bombchu Shop Entrance"]
+                    },
+                    "Door in Right Market Alley": {
+                        OwExit: OwExits["Market"]["Door in Right Market Alley"]
                     }
                 },
 
@@ -1434,7 +1309,7 @@ let MapLocations = {
                         Name: "Reward from Returning Dog",
                         ItemGroup: ItemGroups.GIFT,
                         Time: function() { return Time.NIGHT; },
-                        MapInfo: {x: 104, y: 230},
+                        MapInfo: { x: 104, y: 230 },
                         Age: Age.CHILD,
                         LongDescription: "If you start near the entrance, the dog you want is just to the left behind the market stall. From there, beeline to the right to get to the left market alley. Go to the more rightmost of the two doors and turn in the dog."
                     },
@@ -1442,37 +1317,11 @@ let MapLocations = {
                         Name: "Bombchu Shop",
                         ItemGroup: ItemGroups.SHOP,
                         Time: function() { return Time.NIGHT; },
-                        MapInfo: {x: 130, y: 232},
+                        MapInfo: { x: 130, y: 232 },
                         IsInterior: true,
                         Age: Age.CHILD,
                         LongDescription: "This shop is only open at night. Starting at the market entrance, go straight right into the alley. Take the first door on the left wall to get to the shop.",
                         OneWayInteriorSpawnEntrance: true
-                    },
-
-                    // Entrances
-                    "Bombchu Shop Entrance": {
-                        Name: "Bombchu Shop Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return Time.NIGHT; },
-                        Map: "Market",
-                        Region: "alley",
-                        MapInfo: {x: 130, y: 232},
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.CHILD,
-                        LongDescription: "This door only opens at night. Starting at the market entrance, go straight right into the alley. Take the first door on the left wall to get to the door."
-                    },
-                    "Door in Right Market Alley": {
-                        Name: "Door in Right Market Alley",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return Time.NIGHT; },
-                        Map: "Market",
-                        Region: "alley",
-                        MapInfo: {x: 112, y: 112},
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.CHILD,
-                        LongDescription: "This door only opens at night. This is the door on the screen if you enter the alley from the entrance by the archery building."
                     }
                 }
             }
@@ -1487,6 +1336,11 @@ let MapLocations = {
                 Exits: {
                     "Market": {
                         OwExit: OwExits["Temple of Time"]["Market"]
+                    },
+
+                    // Interiors & Grottos
+                    "Temple of Time": {
+                        OwExit: OwExits["Temple of Time"]["Temple of Time"]
                     }
                 },
 
@@ -1546,19 +1400,6 @@ let MapLocations = {
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This is the stone that's all the way to the left."
-                    },
-                    
-                    // Entrances
-                    "Temple Entrance": {
-                        Name: "Temple Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Temple of Time",
-                        Region: "main",
-                        MapInfo: {x: 198, y: 37},
-                        IsInterior: true,
-                        IsComplexEntrance: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the entrance into the temple."
                     }
                 }
             }
@@ -1576,9 +1417,19 @@ let MapLocations = {
                     "Market": {
                         OwExit: OwExits["Castle"]["Market"]
                     },
-
                     "Ganon's Castle Entrance": {
                         OwExit: OwExits["Castle"]["Ganon's Castle Entrance"]
+                    },
+
+                    // Interiors & Grottos
+                    "Hyrule Great Fairy Fountain": {
+                        OwExit: OwExits["Castle"]["Hyrule Great Fairy Fountain"]
+                    },
+                    "Song of Storms Grotto": {
+                        OwExit: OwExits["Castle"]["Song of Storms Grotto"]
+                    },
+                    "Ganon Great Fairy Fountain": {
+                        OwExit: OwExits["Castle"]["Ganon Great Fairy Fountain"]
                     }
                 },
     
@@ -1663,29 +1514,6 @@ let MapLocations = {
                         RequiredSongs: [Songs.SONG_OF_STORMS],
                         NeedsExplosives: true
                     },
-                    
-                    // Entrances
-                    "Hyrule Great Fairy Fountain Entrance": {
-                        Name: "Hyrule Great Fairy Fountain Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Castle",
-                        Region: "main",
-                        MapInfo: { x: 285, y: 231, floor: "HYR" },
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.CHILD,
-                        LongDescription: "After climbing the vines and jumping off the building, follow the right wall until you reach a rock. Bomb it and enter the crawlspace.",
-                        NeedToBlastOrSmash: true,
-                    },
-                    "Song of Storms Grotto": {
-                        Name: "Song of Storms Grotto",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Age: Age.CHILD,
-                        MapInfo: { x: 200, y: 92, floor: "HYR" },
-                        IsGrotto: true,
-                        LongDescription: "There's a tree in the corner near the milk boxes at the castle. Play the Song of Storms there to open this grotto.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
-                    },
 
                     //-- Ganon's castle
                     "Ganon Great Fairy Fountain": {
@@ -1715,27 +1543,6 @@ let MapLocations = {
                         MapInfo: { x: 258, y: 171, floor: "GAN" },
                         Age: Age.ADULT,
                         LongDescription: "A little bit down the path is a broken archway. The skulltula is found on the opposite side of it.<br/><br/>If you don't have hookshot, walk as far as you can up the slope. Hold Z-target and press B to vertical slash the skulltula. Now still as far up as you can be, target the skulltula and press A to jumpslash and retrieve the item.",
-                    },
-                    
-                    // Entrances
-                    "Ganon Great Fairy Fountain Entrance": {
-                        Name: "Ganon Great Fairy Fountain Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Castle",
-                        Region: "main",
-                        MapInfo: { x: 308, y: 161, floor: "GAN" },
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.ADULT,
-                        LongDescription: "At the end of the main rock is a giant block you can pull up with Golden Gauntlets. Alternatively, you can use hover boots and a shield to clip past the block.",
-                        CustomRequirement: function(age) {
-                            return Equipment.STRENGTH.currentUpgrade === 3 ||
-                                (
-                                    Settings.GlitchesToAllow.doubleDefenseEarly &&
-                                    Equipment.HOVER_BOOTS.playerHas && 
-                                    (Equipment.HYLIAN_SHIELD.playerHas || Equipment.MIRROR_SHIELD.playerHas)
-                                );
-                        }
                     }
                 }
             }
@@ -1756,17 +1563,52 @@ let MapLocations = {
                                 Settings.RandomizerSettings.openKakariko;
                         }
                     },
-
                     "Hyrule Field": {
                         OwExit: OwExits["Kakariko Village"]["Hyrule Field"]
                     },
-
                     "Graveyard": {
                         OwExit: OwExits["Kakariko Village"]["Graveyard"]
                     },
-
                     "Bottom of the Well Entrance": {
                         OwExit: OwExits["Kakariko Village"]["Bottom of the Well Entrance"]
+                    },
+
+                    // Interiors & Grottos
+                    "Open Grotto Behind Potion Shop": {
+                        OwExit: OwExits["Kakariko Village"]["Open Grotto Behind Potion Shop"]
+                    },
+                    "Hidden Grotto near Tree": {
+                        OwExit: OwExits["Kakariko Village"]["Hidden Grotto near Tree"]
+                    },
+                    "Archery Minigame": {
+                        OwExit: OwExits["Kakariko Village"]["Archery Minigame"]
+                    },
+                    "Back of Impa's House": {
+                        OwExit: OwExits["Kakariko Village"]["Back of Impa's House"]
+                    },
+                    "Impa's House": {
+                        OwExit: OwExits["Kakariko Village"]["Impa's House"]
+                    },
+                    "House of Skulltula": {
+                        OwExit: OwExits["Kakariko Village"]["House of Skulltula"]
+                    },
+                    "Windmill": {
+                        OwExit: OwExits["Kakariko Village"]["Windmill"]
+                    },
+                    "Talon's House": {
+                        OwExit: OwExits["Kakariko Village"]["Talon's House"]
+                    },
+                    "Bazaar": {
+                        OwExit: OwExits["Kakariko Village"]["Bazaar"]
+                    },
+                    "Potion Shop Front": {
+                        OwExit: OwExits["Kakariko Village"]["Potion Shop Front"]
+                    },
+                    "Potion Shop Back": {
+                        OwExit: OwExits["Kakariko Village"]["Potion Shop Back"]
+                    },
+                    "Granny's Potion Shop": {
+                        OwExit: OwExits["Kakariko Village"]["Granny's Potion Shop"]
                     }
                 },
                 
@@ -2049,145 +1891,6 @@ let MapLocations = {
                         IsGrotto: true,
                         Age: Age.EITHER,
                         LongDescription: "This stone is located in the grotto behind the fenced off area located behind the Potion Shop. Child can get there with a cucco or from sidehopping off the watchtower. Adult can simply walk through the Potion Shop."
-                    },
-                    
-                    // Entrances
-                    "Open Grotto Behind Potion Shop": {
-                        Name: "Open Grotto Behind Potion Shop",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        IsGrotto: true,
-                        MapInfo: { x: 245, y: 123 },
-                        Age: Age.EITHER,
-                        LongDescription: "This grotto is located behind the fenced off area located behind the Potion Shop. Child can get there with a cucco or from sidehopping off the watchtower. Adult can simply walk through the Potion Shop."
-                    },
-                    "Hidden Grotto near Tree": {
-                        Name: "Hidden Grotto near Tree",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 142, y: 169 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This hidden grotto is between the tree and Talon's house. There's a slightly darker texture that you need to either hammer or bomb.",
-                        IsHiddenGrotto: true
-                    },
-                    "Archery Minigame Entrance": {
-                        Name: "Archery Minigame Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return (Settings.GlitchesToAllow.kakShopClips && Data.hasShield(Age.ADULT)) ? Time.EITHER : Time.DAY; },
-                        Map: "Kakariko Village",
-                        Region: "main",
-                        MapInfo: { x: 190, y: 190 },
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.ADULT,
-                        LongDescription: "This is the building that was being constructed as a child. It's near the well."
-                    },
-                    "Back of Impa's House": {
-                        Name: "Back of Impa's House",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return Time.DAY_CHILD; },
-                        Map: "Kakariko Village",
-                        Region: "main",
-                        MapInfo: { x: 182, y: 252 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the opening above the cucco pen. You can get there as a child via the owl on the top of Death Mountain, or by using a cucco. To do this, throw it up the building under construction (2 throws), then jump to the border (when the construction worker isn't there), then jump at the platform - don't drop the cucco.<br/><br/>As adult, you must hookshot there. Hookshot first to the House of Skulltulas from the ledge by the entrance to Impa's house. Then, hookshot to Impa's house. Make your way to the ledge.<br/><br/>Alternatively, as adult, you can make your way directly under the opening, and simply hold forward to jump onto the ledge.",
-                    },
-                    "Impa's House": {
-                        Name: "Impa's House",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Kakariko Village",
-                        Region: "main",
-                        MapInfo: { x: 141, y: 254 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the building that Anju stands by. The entrance is on the opposite site of the cucco pen.",
-                    },
-                    "House of Skulltula": {
-                        Name: "House of Skulltula",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Kakariko Village",
-                        Region: "main",
-                        MapInfo: { x: 141, y: 214 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the building near Impa's house, with the fence near the door."
-                    },
-                    "Windmill": {
-                        Name: "Windmill",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Kakariko Village",
-                        Region: "main",
-                        MapInfo: { x: 266, y: 152 },
-                        IsInterior: true,
-                        IsComplexEntrance: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the windmill entrance - it's up the stairs near the well."
-                    },
-                    "Talon's House": {
-                        Name: "Talon's House",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Kakariko Village",
-                        Region: "main",
-                        MapInfo: { x: 162, y: 165 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the building straight ahead of the tree, that has crate with the cucco next to it as a child."
-                    },
-                    "Bazaar Entrance": {
-                        Name: "Bazaar Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return Settings.GlitchesToAllow.kakShopClips ? Time.DAY_ADULT : Time.DAY; },
-                        Map: "Kakariko Village",
-                        Region: "main",
-                        MapInfo: { x: 117, y: 89 },
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.kakShopClips; },
-                        Age: Age.EITHER,
-                        LongDescription: "This is the building to the left if you are facing the Death Mountain entrance.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; }
-                            return Settings.GlitchesToAllow.kakShopClips && Data.hasSwordWeapon(age);
-                        }
-                    },
-                    "Potion Shop Front Entrance": {
-                        Name: "Potion Shop Front Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return Time.DAY_ADULT; },
-                        Map: "Kakariko Village",
-                        Region: "main",
-                        MapInfo: { x: 163, y: 92 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the building to the right if you are facing the Death Mountain entrance.",
-                    },
-                    "Potion Shop Back Entrance": {
-                        Name: "Potion Shop Back Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return Settings.GlitchesToAllow.kakShopClips ? Time.EITHER : Time.DAY; },
-                        Map: "Kakariko Village",
-                        Region: "main",
-                        MapInfo: { x: 192, y: 96 },
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.kakShopClips; },
-                        Age: Age.EITHER,
-                        LongDescription: "This entrance to this is where the open grotto is behind the fence. You can use your hookshot to get back here via the roofs. You can also jump onto the potion shop roof from the Death Mountain entrance with a good angle.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; }
-                            return Settings.GlitchesToAllow.kakShopClips && Data.hasSwordWeapon(age);
-                        }
-                    },
-                    "Granny's Potion Shop": {
-                        Name: "Granny's Potion Shop",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Kakariko Village",
-                        Region: "main",
-                        MapInfo: { x: 240, y: 133 },
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.ADULT,
-                        LongDescription: "This is the building behind the potion shop, near the fence that you do the \"ladder jump\" off of.",
                     }
                 }
             },
@@ -2218,21 +1921,32 @@ let MapLocations = {
                             return Data.canGetToGraveyardTopEarly(age);
                         }
                     },
-
                     royalFamilyTomb: {
                         Name: "royalFamilyTomb",
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
                     },
-
                     shadowTemple: {
                         Name: "shadowTemple",
                         CustomRequirement: function(age) {
                             return Data.canGetToGraveyardTopEarly(age);
                         }
                     },
-
                     "Kakariko Village": {
                         OwExit: OwExits["Graveyard"]["Kakariko Village"]
+                    },
+
+                    // Interiors & Grottos
+                    "Grave with Flowers": {
+                        OwExit: OwExits["Graveyard"]["Grave with Flowers"]
+                    },
+                    "Unmarked Grave": {
+                        OwExit: OwExits["Graveyard"]["Unmarked Grave"]
+                    },
+                    "Dampe's Shed": {
+                        OwExit: OwExits["Graveyard"]["Dampe's Shed"]
+                    },
+                    "Dampe's Grave": {
+                        OwExit: OwExits["Graveyard"]["Dampe's Grave"]
                     }
                 },
 
@@ -2331,46 +2045,6 @@ let MapLocations = {
                         MapInfo: { x: 159, y: 91 },
                         Age: Age.CHILD,
                         LongDescription: "This is the bean spot by Dampe's Grave. It's used to get to the freestanding heart piece in the box above."
-                    },
-
-                    // Entrances
-                    "Grave with Flowers": {
-                        Name: "Grave with Flowers",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return Time.NIGHT_CHILD; },
-                        MapInfo: { x: 206, y: 144 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "There's a gravestone when you first enter that has flowers in front of it. Pull it back and enter to get to the grotto."
-                    },
-                    "Unmarked Grave": {
-                        Name: "Unmarked Grave",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return Time.NIGHT_CHILD; },
-                        MapInfo: { x: 237, y: 184 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Go to the Royal Tomb gravestone at the front of the graveyard - position your camera the other way, toward the entrance. The grave will be the second one to your left."
-                    },
-                    "Dampe's Shed": {
-                        Name: "Dampe's Shed",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Time: function() { return Time.NIGHT_CHILD; },
-                        Map: "Graveyard",
-                        Region: "main",
-                        MapInfo: { x: 94, y: 246 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Located in the southeast corner of the graveyard.",
-                    },
-                    "Dampe's Grave": {
-                        Name: "Dampe's Grave",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 166, y: 86 },
-                        IsGrotto: true,
-                        IsComplexEntrance: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Under the grave in the in the northwest corner of the graveyard.",
                     }
                 },
             },
@@ -2381,19 +2055,16 @@ let MapLocations = {
                     main: {
                         Name: "main"
                     },
-
                     royalFamilyTomb: {
                         Name: "royalFamilyTomb",
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.unloadGrave;
                         }
                     },
-
                     shadowTemple: {
                         Name: "shadowTemple",
                         RequiredItems: [Equipment.MAGIC, Items.DINS_FIRE]
                     },
-
                     "Nocturne Teleport Pad": {
                         OwExit: OwExits["Graveyard"]["Nocturne Teleport Pad"]
                     }
@@ -2416,6 +2087,10 @@ let MapLocations = {
                 Exits: {
                     main: {
                         Name: "main"
+                    },
+
+                    "Royal Family's Tomb": {
+                        OwExit: OwExits["Graveyard"]["Royal Family's Tomb"]
                     }
                 },
                 
@@ -2437,16 +2112,6 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "First, play Zelda's Lullaby in front of the big grave in the back of the graveyard if you haven't already. Enter the hole and go through the tomb to get the item.",
                         NeedsDamagingItem: true
-                    },
-                    
-                    // Entrances
-                    "Royal Family's Tomb": {
-                        Name: "Royal Family's Tomb",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 303, y: 143 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Play Zelda's Lullaby in front of the big grave in the back of the graveyard to reveal this entrance."
                     }
                 }
             },
@@ -2480,17 +2145,19 @@ let MapLocations = {
                             return canRideTrailBeanPlant || areRocksGone;
                         }
                     },
-
                     "Kakariko Village": {
                         OwExit: OwExits["Death Mountain Trail"]["Kakariko Village"]
                     },
-
                     "Goron City": {
                         OwExit: OwExits["Death Mountain Trail"]["Goron City"]
                     },
-
                     "Dodongo's Cavern Entrance": {
                         OwExit: OwExits["Death Mountain Trail"]["Dodongo's Cavern Entrance"]
+                    },
+
+                    // Interiors & Grottos
+                    "Song of Storms Grotto near Goron City": {
+                        OwExit: OwExits["Death Mountain Trail"]["Song of Storms Grotto near Goron City"]
                     }
                 },
 
@@ -2579,17 +2246,6 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "Play the Song of Storms in the center of the circle of rocks by Goron City to reveal a grotto with this stone.",
                         RequiredSongs: [Songs.SONG_OF_STORMS]
-                    },
-
-                    // Entrances
-                    "Song of Storms Grotto near Goron City": {
-                        Name: "Song of Storms Grotto near Goron City",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 228, y: 172 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Play the Song of Storms in the center of the circle of rocks by Goron City to reveal this grotto",
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
                     }
                 }
             },
@@ -2600,13 +2256,19 @@ let MapLocations = {
                     main: {
                         Name: "main"
                     },
-
                     "Death Mountain Crater": {
                         OwExit: OwExits["Death Mountain Trail"]["Death Mountain Crater"]
                     },
-
                     "Owl": {
                         OwExit: OwExits["Death Mountain Trail"]["Owl"]
+                    },
+
+                    // Interiors & Grottos
+                    "Great Fairy Fountain": {
+                        OwExit: OwExits["Death Mountain Trail"]["Great Fairy Fountain"]
+                    },
+                    "Cow Grotto": {
+                        OwExit: OwExits["Death Mountain Trail"]["Cow Grotto"]
                     }
                 },
 
@@ -2660,29 +2322,6 @@ let MapLocations = {
                         MapInfo: { x: 225, y: 52 },
                         Age: Age.EITHER,
                         LongDescription: "On your way up the mountain, this gossip stone is on one of the ledges you pass by when you climb up the wall."
-                    },
-                    
-                    // Entrances
-                    "Great Fairy Fountain Entrance": {
-                        Name: "Great Fairy Fountain Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Death Mountain Trail",
-                        Region: "upper",
-                        MapInfo: { x: 220, y: 19 },
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is behind a wall you can destroy on the top of the mountain.",
-                        NeedToBlastOrSmash: true
-                    },
-                    "Cow Grotto": {
-                        Name: "Cow Grotto",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 200, y: 186 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is under the yellow rock on the ledge right after you bomb the rocks to reach the upper part of the mountain.",
-                        NeedToBlastOrSmash: true
                     }
                 }
             }
@@ -2701,16 +2340,19 @@ let MapLocations = {
                             return Data.canMegaFlip(age) || (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
                         }
                     },
-
                     bottom: {
                         Name: "bottom",
                         CustomRequirement: function(age) {
                             return Data.canMegaFlip(age);
                         }
                     },
-
                     "Mountain Top": {
                         OwExit: OwExits["Death Mountain Crater"]["Mountain Top"]
+                    },
+
+                    // Interiors & Grottos
+                    "Grotto in Center of Top Rocks": {
+                        OwExit: OwExits["Death Mountain Crater"]["Grotto in Center of Top Rocks"]
                     }
                 },
 
@@ -2763,18 +2405,6 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "This stone is behind a bombable wall across a wooden bridge in the top area of the crater.",
                         NeedsExplosives: true
-                    },
-
-                    // Entrances
-                    "Grotto in Center of Top Rocks": {
-                        Name: "Grotto in Center of Top Rocks",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 172, y: 260 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "At the top of the crater, bomb or hammer the middle of the circle of rocks to reveal the grotto.",
-                        Region: "top",
-                        NeedToBlastOrSmash: true
                     }
                 }
             },
@@ -2784,7 +2414,6 @@ let MapLocations = {
                     top: {
                         Name: "top"
                     },
-
                     bottom: {
                         Name: "bottom",
                         CustomRequirement: function(age) {
@@ -2795,16 +2424,22 @@ let MapLocations = {
                             return age === Age.ADULT && (Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas);
                         }
                     },
-
                     volcano: {
                         Name: "volcano",
                         CustomRequirement: function(age) {
                             return Data.canMegaFlip(age) || (Settings.GlitchesToAllow.hoverToVolcanoHP && age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
                         }
                     },
-
                     "Goron City": {
                         OwExit: OwExits["Death Mountain Crater"]["Goron City"]
+                    },
+
+                    // Interiors & Grottos
+                    "Great Fairy Fountain": {
+                        OwExit: OwExits["Death Mountain Crater"]["Great Fairy Fountain"]
+                    },
+                    "Grotto in Rock by Goron": {
+                        OwExit: OwExits["Death Mountain Crater"]["Grotto in Rock by Goron"]
                     }
                 },
 
@@ -2854,35 +2489,6 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Hammer the silver rock near the entrance to Goron City to access these scrubs.",
                         RequiredItems: [Items.MEGATON_HAMMER]
-                    },
-
-                    // Entrances
-                    "Great Fairy Fountain Entrance": {
-                        Name: "Great Fairy Fountain Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Death Mountain Crater",
-                        Region: "middle",
-                        MapInfo: { x: 65, y: 170 },
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.childDoubleMagicFairy && !Settings.GlitchesToAllow.equipSwap; },
-                        LongDescription: "Hammer the silver rocks that are to the left of the Goron City entrance (if you face the entrance) to uncover the entrance.",
-                        RequiredAdultItems: [Items.MEGATON_HAMMER],
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; }
-                            return Data.canUseHammer(age) || Settings.GlitchesToAllow.childDoubleMagicFairy;
-                        }
-                    },
-                    "Grotto in Rock by Goron": {
-                        Name: "Grotto in Rock by Goron",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 64, y: 60 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.childDoubleMagicFairy && !Settings.GlitchesToAllow.equipSwap; },
-                        LongDescription: "Hammer the rock near the entrance to Goron City to access this grotto.",
-                        RequiredItems: [Items.MEGATON_HAMMER]
                     }
                 }
             },
@@ -2897,7 +2503,6 @@ let MapLocations = {
                             return beanPlanted || Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas; 
                         }
                     },
-
                     volcano: {
                         Name: "volcano",
                         Age: Age.ADULT,
@@ -2905,11 +2510,9 @@ let MapLocations = {
                             return Data.itemLocationObtained("Death Mountain Crater", "bottom", "*Plant Bean by Bolero Warp Point");
                         }
                     },
-
                     "Fire Temple Entrance": {
                         OwExit: OwExits["Death Mountain Crater"]["Fire Temple Entrance"]
                     },
-
                     "Bolero Teleport Pad": {
                         OwExit: OwExits["Death Mountain Crater"]["Bolero Teleport Pad"]
                     }
@@ -2977,7 +2580,6 @@ let MapLocations = {
 				            return Data.hasExplosivesOrStrength() || Items.FAIRY_BOW.playerHas;
                         }
                     },
-
                     lostWoodsRocks: {
                         Name: "lostWoodsRocks",
                         CustomRequirement: function(age) {
@@ -2990,13 +2592,11 @@ let MapLocations = {
                             return canShootBow || canLightBombFlower || Equipment.STRENGTH.playerHas || Data.canBlastOrSmash(age);
                         }
                     },
-
                     spinningUrn: {
                         Name: "spinningUrn",
                         Age: Age.CHILD,
                         NeedsFire: true
                     },
-
                     shop: {
                         Name: "shop",
                         CustomRequirement: function(age) {
@@ -3004,9 +2604,13 @@ let MapLocations = {
                             return age === Age.CHILD && Data.canUseFireItem(age);
                         }
                     },
-
                     "Death Mountain Trail": {
                         OwExit: OwExits["Goron City"]["Death Mountain Trail"]
+                    },
+
+                    // Interiors & Grottos
+                    "Lava Room Grotto": {
+                        OwExit: OwExits["Goron City"]["Lava Room Grotto"]
                     }
                 },
 
@@ -3154,20 +2758,6 @@ let MapLocations = {
                         CustomRequirement: function(age) {
                             return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
                         }
-                    },
-                    
-                    // Entrances
-                    "Lava Room Grotto": {
-                        Name: "Lava Room Grotto",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 278, y: 21 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Head to the east side of the middle floor and enter the hallway. You should see a lava room to your left. There is a grotto there with the scrubs. There are a few ways to get across.<br/><br/>One way is to run across the lava to the other side, play the song of time, and then climb onto the block to reach the other side.<br/><br/>Another way is to equip the Goron Tunic, run across the lava for distance and then quickly hookshot the target before the damage cancels you out of your hookshot.<br/><br/>Finally, if you have the longshot and the song of time, play the song at the start of the lava room. Stand on the block and longshot the target to get across.",
-                        CustomRequirement: function(age) {
-                            let canHookshotUp = Equipment.GORON_TUNIC.playerHas && Items.HOOKSHOT.playerHas;
-                            return canHookshotUp || Data.canPlaySong(Songs.SONG_OF_TIME);
-                        }
                     }
                 }
             },
@@ -3177,24 +2767,20 @@ let MapLocations = {
                     main: {
                         Name: "main"
                     },
-
                     spinningUrn: {
                         Name: "spinningUrn",
                         RequiredItems: [Items.DEKU_STICK]
                     },
-
                     lostWoodsRocks: {
                         Name: "lostWoodsRocks",
                         Age: Age.CHILD, // The stick won't last all the way, no torches as adult
                         RequiredItems: [Items.DEKU_STICK]
                     },
-
                     shop: {
                         Name: "shop",
                         Age: Age.CHILD,
                         RequiredItems: [Items.DEKU_STICK]
                     },
-
                     "Death Mountain Crater": {
                         OwExit: OwExits["Goron City"]["Death Mountain Crater"]
                     }
@@ -3223,7 +2809,6 @@ let MapLocations = {
                                 Data.itemLocationObtained("Goron City", "lostWoodsRocks", "Rocks Blocking Lost Woods");
                         }
                     },
-
                     "Lost Woods": {
                         OwExit: OwExits["Goron City"]["Lost Woods"]
                     }
@@ -3237,7 +2822,6 @@ let MapLocations = {
                     main: {
                         Name: "main"
                     },
-
                     lostWoods: {
                         Name: "lostWoods"
                     }
@@ -3286,6 +2870,11 @@ let MapLocations = {
                 Exits: {
                     main: {
                         Name: "main"
+                    },
+
+                    // Interiors & Grottos
+                    "Shop": {
+                        OwExit: OwExits["Goron City"]["Shop"]
                     }
                 },
 
@@ -3298,17 +2887,6 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "The shop is at the bottom of the city - the entrance is in the middle of two Bomb Flowers on the wall.<br/><br/>As child, either light one on fire with a Deku Stick, or simply blow up the wall with an explosive. If you don't have your own, use the bomb flowers on the level with the rolling goron.<br/><br/>As an adult, you must stop the rolling goron and he will open it for you. Note that you can arrow the bomb flowers to do this.",
                         OneWayInteriorSpawnEntrance: true
-                    },
-                    "Shop Entrance": {
-                        Name: "Shop Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Goron City",
-                        Region: "shop",
-                        MapInfo: { x: 159, y: 132 },
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.EITHER,
-                        LongDescription: "The shop is at the bottom of the city - the entrance is in the middle of two Bomb Flowers on the wall. As child, either light one on fire with a Deku Stick, or simply blow up the wall with an explosive. As an adult, you must stop the rolling goron and he will open it for you."
                     }
                 }
             }
@@ -3329,7 +2907,6 @@ let MapLocations = {
                                 Data.itemLocationObtained("Zora's River", "downstream", "Break Rocks Blocking Path");
                         }
                     },
-
                     "Hyrule Field": {
                         OwExit: OwExits["Zora's River"]["Hyrule Field"]
                     }
@@ -3361,7 +2938,6 @@ let MapLocations = {
                     downstream: {
                         Name: "downstream"
                     },
-
                     inWaterfall: {
                         Name: "inWaterfall",
                         CustomRequirement: function(age) {
@@ -3374,9 +2950,19 @@ let MapLocations = {
                             return Data.canPlaySong(Songs.ZELDAS_LULLABY) || Data.canMegaFlip(age);
                         }
                     },
-
                     "Lost Woods": {
                         OwExit: OwExits["Zora's River"]["Lost Woods"]
+                    },
+
+                    // Interiors & Grottos
+                    "Song of Storms Grotto": {
+                        OwExit: OwExits["Zora's River"]["Song of Storms Grotto"]
+                    },
+                    "Open Grotto on Upper Cliff": {
+                        OwExit: OwExits["Zora's River"]["Open Grotto on Upper Cliff"]
+                    },
+                    "Grotto Under Rock on Upper Cliff": {
+                        OwExit: OwExits["Zora's River"]["Grotto Under Rock on Upper Cliff"]
                     }
                 },
 
@@ -3553,34 +3139,6 @@ let MapLocations = {
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This stone is on one of the platforms in the water by the Zora's Domain entrance."
-                    },
-                    
-                    // Entrances
-                    "Song of Storms Grotto": {
-                        Name: "Song of Storms Grotto",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 15, y: 145 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Play the Song of Storms in the center of the rocks near the cucco spawn to reveal the grotto.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
-                    },
-                    "Open Grotto on Upper Cliff": {
-                        Name: "Open Grotto on Upper Cliff",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 132, y: 217 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Go up the ladder closest to Hyrule Field. Jump to the cliff behind you and enter the grotto."
-                    },
-                    "Grotto Under Rock on Upper Cliff": {
-                        Name: "Grotto Under Rock on Upper Cliff",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 159, y: 206 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Go up the ladder closest to Hyrule Field. This grotto is under the yellow rock at the top.",
-                        NeedToBlastOrSmash: true
                     }
                 }
             },
@@ -3636,13 +3194,19 @@ let MapLocations = {
                             return canSkipAsChild || canSkipAsAdult;
                         }
                     },
-
                     "Zora's River": {
                         OwExit: OwExits["Zora's Domain"]["Zora's River"]
                     },
-
                     "Lake Hylia": {
                         OwExit: OwExits["Zora's Domain"]["Lake Hylia"]
+                    },
+
+                    // Grottos & Interiors
+                    "Shop": {
+                        OwExit: OwExits["Zora's Domain"]["Shop"]
+                    },
+                    "Song of Storms Grotto": {
+                        OwExit: OwExits["Zora's Domain"]["Song of Storms Grotto"]
                     }
                 },
 
@@ -3711,32 +3275,6 @@ let MapLocations = {
                         RequiredItems: [Items.RUTOS_LETTER],
                         Age: Age.CHILD,
                         LongDescription: "Show Ruto's letter to the king."
-                    },
-                    
-                    // Entrances
-                    "Shop Entrance": {
-                        Name: "Shop Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Zora's Domain",
-                        Region: "main",
-                        MapInfo: { x: 236, y: 254 },
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the shop. As an adult, you can either use Blue Fire, or perform the shop skip to get inside.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return true; }
-                            return Data.canUseBlueFire(age) || Settings.GlitchesToAllow.blueFireShopSkip;
-                        }
-                    },
-                    "Song of Storms Grotto": {
-                        Name: "Song of Storms Grotto",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 118, y: 162 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "When you first enter, jump off the cliff to your left. Stand on the little island and play the Song of Storms to reveal this grotto.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
                     }
                 }
             },
@@ -3768,13 +3306,16 @@ let MapLocations = {
                     "Zora's Domain": {
                         OwExit: OwExits["Zora's Fountain"]["Zora's Domain"]
                     },
-
                     "Jabu Jabu's Belly Entrance": {
                         OwExit: OwExits["Zora's Fountain"]["Jabu Jabu's Belly Entrance"]
                     },
-
                     "Ice Cavern Entrance": {
                         OwExit: OwExits["Zora's Fountain"]["Ice Cavern Entrance"]
+                    },
+
+                    // Interiors & Grottos
+                    "Great Fairy Fountain": {
+                        OwExit: OwExits["Zora's Fountain"]["Great Fairy Fountain"]
                     }
                 },
 
@@ -3854,20 +3395,6 @@ let MapLocations = {
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This stone is on the land near the fairy fountain entrance."
-                    },
-                    
-                    // Entrances
-                    "Great Fairy Fountain Entrance": {
-                        Name: "Great Fairy Fountain Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Zora's Fountain",
-                        Region: "main",
-                        MapInfo: { x: 266, y: 269 },
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Go to the southeast corner of the map. Bomb the wall by the rocks to reveal this entrance.",
-                        NeedsExplosives: true
                     }
                 }
             }
@@ -3883,21 +3410,28 @@ let MapLocations = {
                     "Hyrule Field": {
                         OwExit: OwExits["Lake Hylia"]["Hyrule Field"]
                     },
-
                     "Zora's Domain": {
                         OwExit: OwExits["Lake Hylia"]["Zora's Domain"]
                     },
-
                     "Owl": {
                         OwExit: OwExits["Lake Hylia"]["Owl"]
                     },
-
                     "Water Temple Entrance": {
                         OwExit: OwExits["Lake Hylia"]["Water Temple Entrance"]
                     },
-
                     "Serenade Teleport Pad": {
                         OwExit: OwExits["Lake Hylia"]["Serenade Teleport Pad"]
+                    },
+
+                    // Interiors & Grottos
+                    "Fishing Pond": {
+                        OwExit: OwExits["Lake Hylia"]["Fishing Pond"]
+                    },
+                    "Grotto Under Grave": {
+                        OwExit: OwExits["Lake Hylia"]["Grotto Under Grave"]
+                    },
+                    "Lakeside Lab": {
+                        OwExit: OwExits["Lake Hylia"]["Lakeside Lab"]
                     }
                 },
 
@@ -4078,44 +3612,6 @@ let MapLocations = {
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This stone is on the wall in the southeast corner of the lake."
-                    },
-                    
-                    // Entrances
-                    "Fishing Pond": {
-                        Name: "Fishing Pond",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Lake Hylia",
-                        Region: "main",
-                        MapInfo: { x: 247, y: 81 },
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.EITHER,
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return true; }
-                            
-                            let canHookshotUp = Data.canPlaySong(Songs.SCARECROWS_SONG) && Items.HOOKSHOT.playerHas;
-                            let canRideUp = Data.itemLocationObtained("Lake Hylia", "main", "*Plant Bean by Lab");
-                            return canHookshotUp || canRideUp || Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
-                        },
-                        LongDescription: "This building is in the building across the water to the northeast."
-                    },
-                    "Grotto Under Grave": {
-                        Name: "Grotto Under Grave",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 93, y: 181 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Pull the gravestone in the middle of the bridge to reveal this grotto."
-                    },
-                    "Lakeside Lab": {
-                        Name: "Lakeside Lab",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Lake Hylia",
-                        Region: "main",
-                        MapInfo: { x: 118, y: 86 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the building near the bridge by the lake."
                     }
                 }
             }
@@ -4141,11 +3637,9 @@ let MapLocations = {
                             return Settings.GlitchesToAllow.cuccoJump && Data.hasSwordWeapon(age);
                         }
                     },
-
                     chasmSilverRockLedge: {
                         Name: "chasmSilverRockLedge"
                     },
-
                     chasmCrateLedge: {
                         Name: "chasmCrateLedge",
                         CustomRequirement: function(age) {
@@ -4155,11 +3649,9 @@ let MapLocations = {
                                 Data.canHammerHoverBootsSuperslide(age);
                         }
                     },
-                    
                     chasm: {
                         Name: "chasm"
                     },
-
                     "Hyrule Field": {
                         OwExit: OwExits["Gerudo Valley"]["Hyrule Field"]
                     }
@@ -4191,27 +3683,31 @@ let MapLocations = {
                                 Data.canHammerHoverBootsSuperslide(age);
                         }
                     },
-
                     chasmSilverRockLedge: {
                         Name: "chasmSilverRockLedge",
                         CustomRequirement: function(age) {
                             return Data.canMegaFlip(age);
                         }
                     },
-
                     chasmCrateLedge: {
                         Name: "crateChasmLedge",
                         CustomRequirement: function(age) {
                             return Items.HOOKSHOT.currentUpgrade === 2 || Data.canMegaFlip(age);
                         }
                     },
-
                     chasm: {
                         name: "chasm"
                     },
-
                     "Gerudo Fortress": {
                         OwExit: OwExits["Gerudo Valley"]["Gerudo Fortress"]
+                    },
+
+                    // Grottos & Interiors
+                    "Song of Storms Grotto Behind Tent": {
+                        OwExit: OwExits["Gerudo Valley"]["Song of Storms Grotto Behind Tent"]
+                    },
+                    "Tent": {
+                        OwExit: OwExits["Gerudo Valley"]["Tent"]
                     }
                 },
 
@@ -4261,34 +3757,6 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Play the Song of Storms behind the tent to spawn a grotto with these scrubs.",
                         RequiredSongs: [Songs.SONG_OF_STORMS],
-                    },
-
-                    // Entrances
-                    "Song of Storms Grotto Behind Tent": {
-                        Name: "Song of Storms Grotto Behind Tent",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 140, y: 56 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Play the Song of Storms behind the tent to spawn this grotto.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS],
-                    },
-                    "Tent Entrance": {
-                        Name: "Tent Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Gerudo Valley",
-                        Region: "acrossBridge",
-                        MapInfo: { x: 141, y: 78 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
-                                return false;
-                            }
-
-                            return !Settings.GlitchesToAllow.cuccoJump;
-                        },
-                        LongDescription: "This is the tent on the west side of the bridge as adult. Also, the loading zone is actually there as child."
                     }
                 }
             },
@@ -4298,21 +3766,14 @@ let MapLocations = {
                 Exits: {
                     chasm: {
                         Name: "chasm"
-                    }
-                },
+                    },
 
-                ItemLocations: {
-                    // Entrances
+                    // Grottos & Interiors
                     "Grotto Under Silver Rock": {
-                        Name: "Grotto Under Silver Rock",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 220, y: 182 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "From the side closest to Hyrule Field, look to your left. The grotto is under the silver rock. Lift it up with your silver gauntlets to reveal it.",
-                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}]
-                    }
-                }
+                        OwExit: OwExits["Gerudo Valley"]["Grotto Under Silver Rock"]
+                    },
+                },
+                ItemLocations: {}
             },
 
             chasmCrateLedge: {
@@ -4412,7 +3873,6 @@ let MapLocations = {
                             return age === Age.CHILD || Data.areGerudoGuardsTame() 
                         }
                     },
-
                     wastelandEntrance: {
                         Name: "wastelandEntrance",
                         CustomRequirement: function(age) {
@@ -4422,13 +3882,16 @@ let MapLocations = {
                                 Equipment.HOVER_BOOTS.playerHas;
                         }
                     },
-
                     "Gerudo Valley": {
                         OwExit: OwExits["Gerudo Fortress"]["Gerudo Valley"]
                     },
-
                     "Training Grounds Entrance": {
                         OwExit: OwExits["Gerudo Fortress"]["Training Grounds Entrance"]
+                    },
+
+                    // Grottos & Interiors
+                    "Song of Storms Grotto": {
+                        OwExit: OwExits["Gerudo Fortress"]["Song of Storms Grotto"]
                     }
                 },
 
@@ -4542,17 +4005,6 @@ let MapLocations = {
                         CustomRequirement: function() {
                             return Data.areGerudoGuardsTame();
                         }
-                    },
-                    
-                    // Entrances
-                    "Song of Storms Grotto": {
-                        Name: "Song of Storms Grotto",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 137, y: 172 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Play the song of storms in the center of the crates near the fortress to reveal this grotto.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
                     }
                 }
             },
@@ -4634,7 +4086,6 @@ let MapLocations = {
                             return age === Age.ADULT && (Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.currentUpgrade === 2);
                         }
                     },
-
                     "Gerudo Fortress": {
                         OwExit: OwExits["Haunted Wasteland"]["Gerudo Fortress"]
                     }
@@ -4652,7 +4103,6 @@ let MapLocations = {
                             return Settings.GlitchesToAllow.backwardsWasteland && Equipment.HOVER_BOOTS.playerHas;
                         }
                     },
-
                     exit: {
                         Name : "exit",
                         CustomRequirement: function(age) {
@@ -4720,7 +4170,6 @@ let MapLocations = {
                             return Settings.GlitchesToAllow.backwardsWasteland;
                         }
                     },
-
                     "Desert Colossus": {
                         OwExit: OwExits["Haunted Wasteland"]["Desert Colossus"]
                     }
@@ -4739,13 +4188,19 @@ let MapLocations = {
                     "Haunted Wasteland": {
                         OwExit: OwExits["Desert Colossus"]["Haunted Wasteland"]
                     },
-
                     "Spirit Temple Entrance": {
                         OwExit: OwExits["Desert Colossus"]["Spirit Temple Entrance"]
                     },
-
                     "Requiem Teleport Pad": {
                         OwExit: OwExits["Desert Colossus"]["Requiem Teleport Pad"]
+                    },
+
+                    // Grottos & Interiors
+                    "Great Fairy Fountain": {
+                        OwExit: OwExits["Desert Colossus"]["Great Fairy Fountain"]
+                    },
+                    "Silver Rock Grotto": {
+                        OwExit: OwExits["Desert Colossus"]["Silver Rock Grotto"]
                     }
                 },
 
@@ -4848,29 +4303,6 @@ let MapLocations = {
                         MapInfo: { x: 54, y: 194 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is on the left side of the Spirit Temple."
-                    },
-                    
-                    // Entrances
-                    "Great Fairy Fountain Entrance": {
-                        Name: "Great Fairy Fountain Entrance",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        Map: "Desert Colossus",
-                        Region: "main",
-                        MapInfo: { x: 231, y: 51 },
-                        IsInterior: true,
-                        OneWayInteriorSpawnEntrance: true,
-                        Age: Age.EITHER,
-                        LongDescription: "There's a crack in the wall in the north middle of the map. Bomb it to get inside.",
-                        NeedsExplosives: true
-                    },
-                    "Silver Rock Grotto": {
-                        Name: "Silver Rock Grotto",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        MapInfo: { x: 117, y: 81 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Lift the silver rock by the warp song location to reveal this grotto.",
-                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}]
                     }
                 }
             }

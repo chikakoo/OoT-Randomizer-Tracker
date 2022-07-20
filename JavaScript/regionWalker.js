@@ -110,7 +110,7 @@ RegionWalker = {
      */
     _markItemInfoForSpawnOrWarpData: function(age, map, region, entranceName) {
         if (map && region && entranceName && entranceName !== "none") {
-            let itemLocation = MapLocations[map].Regions[region].ItemLocations[entranceName];
+            let itemLocation = MapLocations[map].Regions[region].Exits[entranceName].OwExit;
             this._markCanObtainItemInfo(itemLocation, age, ItemObtainability.YES, true);
 
             if (Data.randomizedSpawnLocations.useRandomizedSpawns && Settings.RandomizerSettings.skipToTTravel) {
