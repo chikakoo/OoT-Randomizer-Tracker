@@ -1,3 +1,5 @@
+//TODO: save the interior data - it's now on the OwExits object instead... rework how this is gathered
+
 let SaveAndLoad = {
     currentlyLoading: false,
 
@@ -126,7 +128,6 @@ let SaveAndLoad = {
                     owExitData[mapName] = owExitData[mapName] || {};
                     owExitData[mapName][exitName] = {
                         LinkedExit: exit.LinkedExit,
-                        IsInteriorExit: exit.IsInteriorExit,
                         OwShuffleExitName: exit.OwShuffleExitName,
                         OwShuffleMap: exit.OwShuffleMap,
                         OwShuffleRegion: exit.OwShuffleRegion
@@ -349,7 +350,6 @@ let SaveAndLoad = {
                 let exitingExitData = OwExits[mapName][exitName] || {};
 
                 exitingExitData.LinkedExit = loadedOwExitData.LinkedExit;
-                exitingExitData.IsInteriorExit = loadedOwExitData.IsInteriorExit;
                 exitingExitData.OwShuffleExitName = loadedOwExitData.OwShuffleExitName;
                 exitingExitData.OwShuffleMap = loadedOwExitData.OwShuffleMap;
                 exitingExitData.OwShuffleRegion = loadedOwExitData.OwShuffleRegion;

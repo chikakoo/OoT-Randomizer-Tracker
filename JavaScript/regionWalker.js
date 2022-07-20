@@ -532,13 +532,7 @@ RegionWalker = {
                     let isShuffledOw = !exit.OwExit.IsOwl && !exit.OwExit.IsDungeonEntrance && Settings.RandomizerSettings.shuffleOverworldEntrances;
                     if (isRandomizedOwl || isShuffledDungeon || isShuffledOw) {
                         if (exit.OwExit.OwShuffleMap && exit.OwExit.OwShuffleExitName) {
-                            if (exit.OwExit.IsInteriorExit) {
-                                _this._markCanObtainItemInfo(exit.OwExit, age, itemObtainability);
-                                _this._addToWalkMap(age, mapName, regionName, exit.OwExit.OwShuffleExitName, exit.OwExit.OwShuffleMap, exit.OwExit.OwShuffleRegion, exitName);
-                            } else {
-                                _this._addToWalkMap(age, mapName, regionName, exitName, exit.OwExit.OwShuffleMap, exit.OwExit.OwShuffleRegion, exit.OwExit.OwShuffleExitName);
-                            }
-
+                            _this._addToWalkMap(age, mapName, regionName, exitName, exit.OwExit.OwShuffleMap, exit.OwExit.OwShuffleRegion, exit.OwExit.OwShuffleExitName);
                             _this._walkInRegion(age, exit.OwExit.OwShuffleMap, exit.OwExit.OwShuffleRegion);
                         }
                     } else {

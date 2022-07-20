@@ -82,15 +82,14 @@ Walk = {
 
             Object.values(entrances).forEach(function(entrance) {
 				let entranceData = {
-					map: entrance.IsInteriorExit ? entrance.Map : entrance.ExitMap,
-					region: entrance.IsInteriorExit ? entrance.Region : entrance.ExitRegion
+					map: entrance.ExitMap,
+					region: entrance.ExitRegion
 				};
 
 				if (entranceData.map && entranceData.region) {
 					// TODO: come up with a cleaner way for this interior deprioritization...
 					let deprioritizeValue = Settings.TrackerSettings.deprioritizeDampeToWindmill &&
-						entrance.IsInteriorExit &&
-						entrance.OwShuffleExitName === "Interior-windmill" ? 100 : 0;
+						entrance.OwShuffleExitName === "Grave Exit" ? 100 : 0;
 					
 					if (age === Age.CHILD) {
 						entrance.childWalkValue = currentLoop + deprioritizeValue;
