@@ -208,15 +208,6 @@ let MapLocations = {
                         NeedsOcarina: true,
                         DifficultOcarinaItems: true
                     },
-                    "Grotto by Goron City": {
-                        Name: "Grotto by Goron City",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 218, y: 118 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "From the Kokiri Forest entrance, go right and then left. Remove the rock on this screen to reveal a grotto with this chest.",
-                        NeedToBlastOrSmash: true
-                    },
                     "Skulltula in Soil by Bridge": {
                         Name: "Skulltula in Soil by Bridge",
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -249,16 +240,6 @@ let MapLocations = {
                         MapInfo: { x: 80, y: 281 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is by the business scrub by the bridge.",
-                    },
-                    "Gossip Stone in Grotto by Goron City": {
-                        Name: "Gossip Stone in Grotto by Goron City",
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
-                        MapInfo: { x: 218, y: 118 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This stone is by the generic grotto by Goron City.",
-                        NeedToBlastOrSmash: true
                     },
                     "*Plant Bean by Bridge": {
                         Name: "*Plant Bean by Bridge",
@@ -298,24 +279,6 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
-                    "Forest Stage Skull Mask": {
-                        Name: "Forest Stage Skull Mask",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 160, y: 86 },
-                        IsGrotto: true,
-                        Age: Age.CHILD,
-                        LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. In the back of this room, walk around until you fall into a hole. Put on the Skull Mask and stand front and center to get this item.",
-                        RequiredItems: [{ item: Items.MASK_SLOT, upgradeString: "5" }]
-                    },
-                    "Forest Stage Mask of Truth": {
-                        Name: "Forest Stage Mask of Truth",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 158, y: 91 },
-                        IsGrotto: true,
-                        Age: Age.CHILD,
-                        LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. In the back of this room, walk around until you fall into a hole. Put on the Mask of Truth and stand front and center to get this item.",
-                        RequiredItems: [{ item: Items.MASK_SLOT, upgradeString: "8" }]
-                    },
                     "Skulltula in Soil by Forest Stage": {
                         Name: "Skulltula in Soil by Forest Stage",
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -354,20 +317,11 @@ let MapLocations = {
                     "Front Scrub in Grotto Near the Sacred Forest Meadow": {
                         Name: "Front Scrub in Grotto Near the Sacred Forest Meadow",
                         ItemGroup: ItemGroups.SCRUB,
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances && !Settings.RandomizerSettings.scrubSanity; },
                         MapInfo: { x: 202, y: 27 },
                         ScrubSanityNotRequired: true, // Deku nut upgrade
-                        IsGrotto: true,
                         Age: Age.EITHER,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, straight, left. Remove the rock in this room. This is the front scrub.",
-                        NeedToBlastOrSmash: true
-                    },
-                    "Back Scrub in Grotto Near the Sacred Forest Meadow": {
-                        Name: "Back Scrub in Grotto Near the Sacred Forest Meadow",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 202, y: 31 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, straight, left. Remove the rock in this room. This is the back scrub.",
                         NeedToBlastOrSmash: true
                     },
                     "*Plant Bean by Forest Stage": {
@@ -482,18 +436,7 @@ let MapLocations = {
                         OwExit: OwExits["Sacred Forest Meadow"]["Grotto near Lost Woods"]
                     }
                 },
-
-                ItemLocations: {
-                    "Grotto by Entrance": {
-                        Name: "Grotto by Entrance",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 177, y: 274 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This hidden grotto is roughly halfway between the Lost Woods entrance and the maze entrance. Kill the two Wolfos inside to spawn the chest.",
-                        IsHiddenGrotto: true
-                    }
-                }
+                ItemLocations: {}
             },
 
             afterGate: {
@@ -527,26 +470,6 @@ let MapLocations = {
                         Region: "afterGate",
                         LongDescription: "At night, climb the ladder from the Forest Temple side. The skulltula will be on the left wall.",
                         RequiredItems: [Items.HOOKSHOT]
-                    },
-                    "Song of Storms Grotto Front Scrub": {
-                        Name: "Song of Storms Grotto Front Scrub",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 207, y: 50 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        Region: "afterGate",
-                        LongDescription: "Play the Song of Storms in the corner of the room with the Forest Temple entrance to reveal the grotto. Facing the forest temple, this is the lower-right corner.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
-                    },
-                    "Song of Storms Grotto Back Scrub": {
-                        Name: "Song of Storms Grotto Back Scrub",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x:207 , y: 53 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        Region: "afterGate",
-                        LongDescription: "Play the Song of Storms in the corner of the room with the Forest Temple entrance to reveal the grotto. Facing the forest temple, this is the lower-right corner.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
                     },
                     "Saria's Song": {
                         Name: "Saria's Song",
@@ -665,91 +588,6 @@ let MapLocations = {
                             Medallions.ZORAS_SAPPHIRE
                         ]
                     },
-                    "Grotto by Drawbridge": {
-                        Name: "Grotto by Drawbridge",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: {x: 170, y: 39},
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Remove the rock to the left of the Market drawbridge to reveal a grotto with this chest.",
-                        NeedToBlastOrSmash: true
-                    },
-                    "Grotto in Southeast Forest": {
-                        Name: "Grotto in Southeast Forest",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: {x: 201, y: 227},
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "In the southeast (a bit south of the Kokiri Forest entrance), there's a small forest that has a rock you can break. There's a chest in a grotto underneath it.",
-                        NeedToBlastOrSmash: true
-                    },
-                    "Grotto by North River Tree": {
-                        Name: "Grotto by North River Tree",
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: {x: 91, y: 57},
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "To the west of the Market entrance, there's a lone tree to the south of a river. Bomb or hammer near the tree to reveal a grotto. The item is a heart piece at the bottom of the water inside.",
-                        IsHiddenGrotto: true,
-                        IsGoldenScaleWater: true
-                    },
-                    "Open Grotto Near Lake Hylia Fences": {
-                        Name: "Open Grotto Near Lake Hylia Fences",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: {x: 112, y: 272},
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is an open grotto just to the east of the square of fences by the Lake Hylia entrance."
-                    },
-                    "Cow in Grotto by Gerudo": {
-                        Name: "Cow in Grotto by Gerudo",
-                        ItemGroup: ItemGroups.COW,
-                        MapInfo: {x: 45, y: 103},
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Near the entrance to Gerudo Valley, there's a circle of small rocks. As a child, you can bomb the center to reveal a grotto. As adult, you must hammer the red rock. There is a cow behind one of the webs that you must burn.",
-                        CustomRequirement: function(age) {
-                            if (!Data.canUseFireItem(age)) { return false; }
-                            return Data.canUseHammer(age) || (age === Age.CHILD && Data.hasExplosives());
-                        }
-                    },
-                    "Skulltula in Grotto by Kakariko": {
-                        Name: "Skulltula in Grotto by Kakariko",
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: {x: 237, y: 23},
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "North of the entrance to Kakariko, there's a tree with a hidden grotto. The skulltula is high up on a spiderweb inside.",
-                        IsHiddenGrotto: true,
-                        IsAtShortDistance: true
-                    },
-                    "Skulltula in Grotto by Gerudo": {
-                        Name: "Skulltula in Grotto by Gerudo",
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: {x: 50, y: 103},
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Near the entrance to Gerudo Valley, there's a circle of small rocks. As a child, you can bomb the center to reveal a grotto. As adult, you must hammer the red rock. The skulltula is high up near a cow after burning the spider webs.",
-                        IsAtShortDistance: true,
-                        CustomRequirement: function(age) {
-                            if (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2) {
-                                return true;
-                            }
-
-                            return Data.canUseFireItem() &&
-                                (Data.canUseHammer(age)  || (age === Age.CHILD && Data.hasExplosives()));
-                        }
-                    },
-                    "Scrub in Grotto by Lake Hylia Fences": {
-                        Name: "Scrub in Grotto by Lake Hylia Fences",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: {x: 91, y: 267},
-                        ScrubSanityNotRequired: true,
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "There's a hidden grotto in the center of the fences by Lake Hylia. Bomb or hammer there to get in. The scrub is inside.",
-                        IsHiddenGrotto: true
-                    },
                     "Sell Bunny Hood": {
                         Name: "Sell Bunny Hood",
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -763,48 +601,6 @@ let MapLocations = {
                             Medallions.ZORAS_SAPPHIRE
                         ],
                         LongDescription: "Once you have all spiritual stones, a guy will appear in Hyrule Field that runs around Lon Lon Ranch. Talk to him while wearing the Bunny Hood to sell it to him - this unlocks the Mask of Truth.",
-                    },
-                    "Gossip Stone in Grotto by Drawbridge": {
-                        Name: "Gossip Stone in Grotto by Drawbridge",
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        MapInfo: {x: 170, y: 39},
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This stone is in the grotto by the drawbridge blocked by the yellow rock.",
-                        NeedToBlastOrSmash: true
-                    },
-                    "Gossip Stone in Grotto in Southwest Forest": {
-                        Name: "Gossip Stone in Grotto in Southwest Forest",
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        MapInfo: {x: 201, y: 227},
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This stone is in the grotto in the southwest forest that is blocked by a rock.",
-                        NeedToBlastOrSmash: true
-                    },
-                    "Gossip Stone in Open Grotto": {
-                        Name: "Gossip Stone in Open Grotto",
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        MapInfo: {x: 112, y: 272},
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This stone is in the open grotto near the Lake Hylia fences.",
-                    },
-                    "Gossip Stone in Grotto by Gerudo": {
-                        Name: "Gossip Stone in Grotto by Gerudo",
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        MapInfo: {x: 50, y: 103},
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Near the entrance to Gerudo Valley, there's a circle of small rocks. As a child, you can bomb the center to reveal a grotto. As adult, you must hammer the red rock. The stone is behind one of the webs that you must burn.",
-                        CustomRequirement: function(age) {
-                            if (!Data.canUseFireItem(age)) { return false; }
-                            return Data.canUseHammer(age) || (age === Age.CHILD && Data.hasExplosives());
-                        }
                     }
                 }
             }
@@ -837,68 +633,6 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
-                    "Talon's Super Cucco Minigame": {
-                        Name: "Talon's Super Cucco Minigame",
-                        ItemGroup: ItemGroups.GIFT,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 230, y: 54 },
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "After waking up Talon with the Chicken at Hyrule Castle, go to his house in Lon Lon Ranch. If you win the Super Cucco Minigame there (costs 10 rupees the first play), he'll give you an item.",
-                        CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Castle", "main", "Wake up Talon");
-                        }
-                    },
-                    "Cow Shed Item in Back": {
-                        Name: "Cow Shed Item in Back",
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 80, y: 260 },
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "Head to the back of Lon Lon Ranch to find the cow shed. Behind the boxes and through a crawlspace you'll find an item."
-                    },
-                    "Left Cow in Stable": {
-                        Name: "Left Cow in Stable",
-                        ItemGroup: ItemGroups.COW,
-                        MapInfo: { x: 189, y: 58 },
-                        IsInterior: true,
-                        RequiredItems: [Items.OCARINA],
-                        Age: Age.EITHER,
-                        LongDescription: "Enter the first door on your right when entering Lon Lon Ranch. This is the cow in the back on the left side."
-                    },
-                    "Right Cow in Stable": {
-                        Name: "Right Cow in Stable",
-                        ItemGroup: ItemGroups.COW,
-                        MapInfo: { x: 195, y: 58 },
-                        RequiredItems: [Items.OCARINA],
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Enter the first door on your right when entering Lon Lon Ranch. This is the cow in the back on the right side."
-                    },
-                    "Left Cow in Cow Shed": {
-                        Name: "Left Cow in Cow Shed",
-                        ItemGroup: ItemGroups.COW,
-                        MapInfo: { x: 103, y: 258 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Enter the building in the back of the ranch. This is the cow in on the left side when you enter.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return Items.OCARINA.playerHas || Equipment.KOKIRI_SWORD.playerHas; }
-                            return true;
-                        }
-                    },
-                    "Right Cow in Cow Shed": {
-                        Name: "Right Cow in Cow Shed",
-                        ItemGroup: ItemGroups.COW,
-                        MapInfo: { x: 109, y: 258 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Enter the first door on your right when entering Lon Lon Ranch. This is the cow more to the right when you enter.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return Items.OCARINA.playerHas || Equipment.KOKIRI_SWORD.playerHas; }
-                            return true;
-                        }
-                    },
                     "Skulltula on Talon's House": {
                         Name: "Skulltula on Talon's House",
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -933,30 +667,6 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "At night, there's a skulltula on the southeast wall of the ranch. Facing the cow shed, it's a little bit to the right.",
                         IsAtShortDistance: true
-                    },
-                    "Left Scrub in Open Grotto": {
-                        Name: "Left Scrub in Open Grotto",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 280, y: 240 },
-                        IsGrotto: true,
-                        Age: Age.CHILD,
-                        LongDescription: "There's an open grotto at the far southwest corner of the ranch with this scrub."
-                    },
-                    "Middle Scrub in Open Grotto": {
-                        Name: "Middle Scrub in Open Grotto",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 285, y: 240 },
-                        IsGrotto: true,
-                        Age: Age.CHILD,
-                        LongDescription: "There's an open grotto at the far southwest corner of the ranch with this scrub."
-                    },
-                    "Right Scrub in Open Grotto": {
-                        Name: "Right Scrub in Open Grotto",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 290, y: 240 },
-                        IsGrotto: true,
-                        Age: Age.CHILD,
-                        LongDescription: "There's an open grotto at the far southwest corner of the ranch with this scrub."
                     },
                     "Epona's Song": {
                         Name: "Epona's Song",
@@ -993,31 +703,7 @@ let MapLocations = {
                         OwExit: OwExits["Market Entrance"]["Guard House by Entrance"]
                     }
                 },
-
-                ItemLocations: {
-                    "Big Poe Reward": {
-                        Name: "Big Poe Reward",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: {x: 252, y: 200},
-                        IsInterior: true,
-                        IsPostWalkCheck: true,
-                        Age: Age.ADULT,
-                        LongDescription: "After gathering all the Big Poes the guy at the market entrance wants, he gives you this reward. You don't actually need Epona to get Big Poes, but it's not a 100% chance a big one will spawn if you aren't on her.",
-                        CustomRequirement: function(age) {
-                            let canGetToPoe = Data.canAccessMap(age, "Hyrule Field");
-                            return (canGetToPoe && Items.FAIRY_BOW.playerHas && Data.hasBottle()) || Items.BIG_POE.playerHas;
-                        }
-                    },
-                    "Skulltula in Pot-filled House": {
-                        Name: "Skulltula in Pot-filled House",
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: {x: 252, y: 220},
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        OverrideItemGroupCondition: true,
-                        LongDescription: "Break the rightmost box in the back of the room to reveal the skulltula. If you don't have an item, simply hit it with a pot!"
-                    }
-                }
+                ItemLocations: {}
             }
 		}
     },
@@ -1062,158 +748,7 @@ let MapLocations = {
                         OwExit: OwExits["Market"]["Bombchu Bowling"]
                     }
                 },
-
-                ItemLocations: {
-                    "Slingshot Minigame": {
-                        Name: "Slingshot Minigame",
-                        ItemGroup: ItemGroups.GIFT,
-                        Time: function() { return Time.DAY; },
-                        MapInfo: {x: 234, y: 120},
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "Pay 20 rupees and win the slingshot minigame. This is the building just to the left of the Hyrule Castle entrance. You do not need the slingshot to play this game."
-                    },
-                    "Bombchu Bowling Bomb Bag Prize": {
-                        Name: "Bombchu Bowling Bomb Bag Prize",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: {x: 205, y: 172},
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "Pay 30 rupees and win the Bomb Bag prize at the Bombchu Bowling Alley. This is between the two market alley entrances.",
-                        CustomRequirement: function(age) {
-                            return Data.canPlayBombchuBowling(age);
-                        },
-                        OneWayInteriorSpawnEntrance: true,
-                        PostSpawnRequirements: function(age) {
-                            return Data.canPlayBombchuBowling(age);
-                        }
-                    },
-                    "Bombchu Bowling Heart Piece Prize": {
-                        Name: "Bombchu Bowling Heart Piece Prize",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: {x: 198, y: 172},
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "Pay 30 rupees and win the Heart Piece prize at the Bombchu Bowling Alley. This is between the two market alley entrances.",
-                        CustomRequirement: function(age) {
-                            return Data.canPlayBombchuBowling(age);
-                        },
-                        OneWayInteriorSpawnEntrance: true,
-                        PostSpawnRequirements: function(age) {
-                            return Data.canPlayBombchuBowling(age);
-                        }
-                    },
-                    "Treasure Chest Minigame": {
-                        Name: "Treasure Chest Minigame",
-                        ItemGroup: ItemGroups.GIFT,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: {x: 215, y: 230},
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "This is the building to the right of the market entrance exit - it's only open at night. You must basically win a 50/50 game 5 times in a row to get the item. It's 10 rupees per try. You can win 100% of the time with the Lens of Truth.",
-                        RequiredItems: [Items.LENS_OF_TRUTH, Equipment.MAGIC],
-                        OneWayInteriorSpawnEntrance: true
-                    },
-                    "Borrow Keaton Mask": {
-                        Name: "Borrow Keaton Mask",
-                        ItemGroup: ItemGroups.GIFT,
-                        Time: function() { return Time.DAY; },
-                        MapInfo: {x: 286, y: 120},
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "After showing the Kakariko Village guard Zelda's Letter, head to the mask shop to borrow this mask.",
-                        CustomRequirement: function(age) {
-                            return (Settings.RandomizerSettings.openKakariko && Items.MASK_SLOT.currentUpgrade >= 3) || Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter");
-                        },
-                        OneWayInteriorSpawnEntrance: true,
-                        PostSpawnRequirements: function(age) {
-                            return (Settings.RandomizerSettings.openKakariko && Items.MASK_SLOT.currentUpgrade >= 3) || Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter");
-                        }
-                    },
-                    "Borrow Skull Mask": {
-                        Name: "Borrow Skull Mask",
-                        ItemGroup: ItemGroups.GIFT,
-                        Time: function() { return Time.DAY; },
-                        MapInfo: {x: 286, y: 120},
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "After selling the Keaton Mask to the Kakariko Guard, head to the mask shop to borrow this mask.",
-                        CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Kakariko Village", "main", "Sell Keaton Mask");
-                        },
-                        OneWayInteriorSpawnEntrance: true,
-                        PostSpawnRequirements: function(age) {
-                            return Data.itemLocationObtained("Kakariko Village", "main", "Sell Keaton Mask");
-                        }
-                    },
-                    "Borrow Spooky Mask": {
-                        Name: "Borrow Spooky Mask",
-                        ItemGroup: ItemGroups.GIFT,
-                        Time: function() { return Time.DAY; },
-                        MapInfo: {x: 286, y: 120},
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "After selling the Skull Mask to the Skull Kid in Lost Woods, head to the mask shop to borrow this mask.",
-                        CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Lost Woods", "firstHalf", "Sell Skull Mask");
-                        },
-                        OneWayInteriorSpawnEntrance: true,
-                        PostSpawnRequirements: function(age) {
-                            return Data.itemLocationObtained("Lost Woods", "firstHalf", "Sell Skull Mask");
-                        }
-                    },
-                    "Borrow Bunny Hood": {
-                        Name: "Borrow Bunny Hood",
-                        ItemGroup: ItemGroups.GIFT,
-                        Time: function() { return Time.DAY; },
-                        MapInfo: {x: 286, y: 120},
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "After selling the Spooky Mask to the graveyard kid, head to the mask shop to borrow this mask.",
-                        CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Graveyard", "main", "Sell Spooky Mask");
-                        },
-                        OneWayInteriorSpawnEntrance: true,
-                        PostSpawnRequirements: function(age) {
-                            return Data.itemLocationObtained("Graveyard", "main", "Sell Spooky Mask");
-                        }
-                    },
-                    "Borrow Mask of Truth": {
-                        Name: "Borrow Mask of Truth",
-                        ItemGroup: ItemGroups.GIFT,
-                        Time: function() { return Time.DAY; },
-                        MapInfo: {x: 286, y: 120},
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "After selling the Bunny Hood to the running guy in Hyrule Field, head to the mask shop to borrow this mask.",
-                        CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Hyrule Field", "main", "Sell Bunny Hood");
-                        },
-                        OneWayInteriorSpawnEntrance: true,
-                        PostSpawnRequirements: function(age) {
-                            return Data.itemLocationObtained("Hyrule Field", "main", "Sell Bunny Hood");
-                        }
-                    },
-                    "Bazaar": {
-                        Name: "Bazaar",
-                        ItemGroup: ItemGroups.SHOP,
-                        Time: function() { return Time.DAY; },
-                        MapInfo: {x: 308, y: 191},
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "Starting at the market entrance, this is the first building you can enter going counter-clockwise.",
-                        OneWayInteriorSpawnEntrance: true
-                    },
-                    "Potion Shop": {
-                        Name: "Potion Shop",
-                        ItemGroup: ItemGroups.SHOP,
-                        Time: function() { return Time.DAY; },
-                        MapInfo: {x: 308, y: 159},
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "Starting at the market entrance, this is the second building you can enter going counter-clockwise."
-                    }
-                }
+                ItemLocations: {}
             },
 
             alley: {
@@ -1273,30 +808,6 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
-                    "Prelude of Light": {
-                        Name: "Prelude of Light",
-                        ItemGroup: ItemGroups.SONG,
-                        MapInfo: {x: 343, y: 45},
-                        IsInterior: true,
-                        Age: Age.ADULT,
-                        LongDescription: "When you have the Forest Medallion, enter the room with the Master Sword pedestal to receive the item.",
-                        RequiredMedallions: [Medallions.FOREST_MEDALLION],
-                        CustomRequirement: function(age) {
-                            if (!Settings.RandomizerSettings.openDoorOfTime) {
-                                return Data.canPlaySong(Songs.SONG_OF_TIME);
-                            }
-                            return true;
-                        }
-                    },
-                    "Light Arrows": {
-                        Name: "Light Arrows",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: {x: 261, y: 45},
-                        IsInterior: true,
-                        Age: Age.ADULT,
-                        LongDescription: "When you have the Shadow and Spirit Medallions, simply enter the Temple of Time as adult to receive the item.",
-                        RequiredMedallions: [Medallions.SHADOW_MEDALLION, Medallions.SPIRIT_MEDALLION]
-                    },
                     "Right Gossip Stone": {
                         Name: "Right Gossip Stone",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -1370,20 +881,6 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "Malon is waiting by the vines to the right. If she isn't there, leave the map and come back. Talk to her to receive an item."
                     },
-                    "Hyrule Great Fairy Fountain": {
-                        Name: "Hyrule Great Fairy Fountain",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 285, y: 231, floor: "HYR" },
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "After climbing the vines and jumping off the building, follow the right wall until you reach a rock. Bomb it and enter the crawlspace. Play Zelda's Lullaby to receive an item.",
-                        NeedToBlastOrSmash: true,
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
-                        OneWayInteriorSpawnEntrance: true,
-                        PostSpawnRequirements: function(age) {
-                            return Data.canPlaySong(Songs.ZELDAS_LULLABY);
-                        }
-                    },
                     "Skulltula in Tree": {
                         Name: "Skulltula in Tree",
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -1398,17 +895,6 @@ let MapLocations = {
                         MapInfo: { x: 193, y: 38, floor: "HYR" },
                         LongDescription: "Wait for the Weird Egg to hatch, then wake up Talon. This unlocks a few things in Lon Lon Ranch.",
                         RequiredItems: [Items.MASK_SLOT]
-                    },
-                    "Skulltula in Song of Storms Grotto": {
-                        Name: "Skulltula in Song of Storms Grotto",
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Age: Age.CHILD,
-                        MapInfo: { x: 200, y: 92, floor: "HYR" },
-                        IsGrotto: true,
-                        LongDescription: "There's a tree in the corner near the milk boxes at the castle. Play the Song of Storms there to open a grotto. The skulltula is behind one of the explodable walls.",
-                        IsAtShortDistance: true,
-                        BlockedByMudWall: true,
-                        RequiredSongs: [Songs.SONG_OF_STORMS],
                     },
                     "Zelda's Lullaby": {
                         Name: "Zelda's Lullaby",
@@ -1432,39 +918,8 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "This stone near the climbable stones near the castle moat."
                     },
-                    "Gossip Stone in Song of Storms Grotto": {
-                        Name: "Gossip Stone in Song of Storms Grotto",
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        MapInfo: { x: 200, y: 92, floor: "HYR" },
-                        IsGrotto: true,
-                        Age: Age.CHILD,
-                        LongDescription: "There's a tree in the corner near the milk boxes at the castle. Play the Song of Storms there to open a grotto. The stone is behind one of the explodable walls.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS],
-                        NeedsExplosives: true
-                    },
 
                     //-- Ganon's castle
-                    "Ganon Great Fairy Fountain": {
-                        Name: "Ganon Great Fairy Fountain",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 308, y: 161, floor: "GAN" },
-                        IsInterior: true,
-                        Age: Age.ADULT,
-                        LongDescription: "At the end of the main path is a giant block you can pull up with Golden Gauntlets. Inside is a Great Fairy Fountain. Alternatively, you can use hover boots and a shield to clip past the block.",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
-                        CustomRequirement: function(age) {
-                            return Equipment.STRENGTH.currentUpgrade === 3 ||
-                                (
-                                    Settings.GlitchesToAllow.doubleDefenseEarly &&
-                                    Equipment.HOVER_BOOTS.playerHas && 
-                                    (Equipment.HYLIAN_SHIELD.playerHas || Equipment.MIRROR_SHIELD.playerHas)
-                                );
-                        },
-                        OneWayInteriorSpawnEntrance: true,
-                        PostSpawnRequirements: function(age) {
-                            return Data.canPlaySong(Songs.ZELDAS_LULLABY);
-                        }
-                    },
                     "Skulltula on Broken Arch": {
                         Name: "Skulltula on Broken Arch",
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -1541,24 +996,6 @@ let MapLocations = {
                 },
                 
                 ItemLocations: {
-                    "Open Grotto Behind Fences": {
-                        Name: "Open Grotto Behind Fences",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 245, y: 123 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This grotto is located behind the fenced off area located behind the Potion Shop. Child can get there with a cucco or from sidehopping off the watchtower. Adult can simply walk through the Potion Shop."
-                    },
-                    "Grotto With Redeads": {
-                        Name: "Grotto With Redeads",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 142, y: 169 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This hidden grotto is between the tree and Talon's house. There's a slightly darker texture that you need to either hammer or bomb. Kill the redeads inside to spawn the chest.",
-                        IsHiddenGrotto: true,
-                        NeedsSwordWeapon: true
-                    },
                     "Bottle from Cucco Collection": {
                         Name: "Bottle from Cucco Collection",
                         ItemGroup: ItemGroups.GIFT,
@@ -1581,113 +1018,6 @@ let MapLocations = {
                         MapInfo: { x: 210, y: 240 },
                         Age: Age.ADULT,
                         LongDescription: "Simply talk to Anju (the cucco lady) as adult to get this."
-                    },
-                    "Archery Minigame": {
-                        Name: "Archery Minigame",
-                        ItemGroup: ItemGroups.GIFT,
-                        Time: function() { return (Settings.GlitchesToAllow.kakShopClips && Data.hasShield(Age.ADULT)) ? Time.EITHER : Time.DAY; },
-                        MapInfo: { x: 190, y: 190 },
-                        IsInterior: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Win the archery game to get a prize. You do need the Fairy Bow to play.",
-                        RequiredItems: [Items.FAIRY_BOW],
-                        OneWayInteriorSpawnEntrance: true,
-                        PostSpawnRequirements: function(age) {
-                            return Items.FAIRY_BOW.playerHas;
-                        }
-                    },
-                    "10 Gold Skulltula Reward": {
-                        Name: "10 Gold Skulltula Reward",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 138, y: 195 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the reward for collecting 10 skulltula tokens. The gift is given by the rightmost person in the house.",
-                        CustomRequirement: function(age) {
-                            return Equipment.SKULLTULA_TOKENS.count >= 10;
-                        }
-                    },
-                    "20 Gold Skulltula Reward": {
-                        Name: "20 Gold Skulltula Reward",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 137, y: 212 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the reward for collecting 20 skulltula tokens. The gift is given by the leftmost person in the house.",
-                        CustomRequirement: function(age) {
-                            return Equipment.SKULLTULA_TOKENS.count >= 20;
-                        }
-                    },
-                    "30 Gold Skulltula Reward": {
-                        Name: "30 Gold Skulltula Reward",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 119, y: 202 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the reward for collecting 30 skulltula tokens. The gift is given by the middle person in the house.",
-                        CustomRequirement: function(age) {
-                            return Equipment.SKULLTULA_TOKENS.count >= 30;
-                        }
-                    },
-                    "40 Gold Skulltula Reward": {
-                        Name: "40 Gold Skulltula Reward",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 125, y: 210 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the reward for collecting 40 skulltula tokens. The gift is given by the person next to the leftmost person in the house.",
-                        CustomRequirement: function(age) {
-                            return Equipment.SKULLTULA_TOKENS.count >= 40;
-                        }
-                    },
-                    "50 Gold Skulltula Reward": {
-                        Name: "50 Gold Skulltula Reward",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 124, y: 198 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the reward for collecting 50 skulltula tokens. The gift is given by the person next to the rightmost person in the house.",
-                        CustomRequirement: function(age) {
-                            return Equipment.SKULLTULA_TOKENS.count >= 50;
-                        }
-                    },
-                    "Heart Piece in Impa's House": {
-                        Name: "Heart Piece in Impa's House",
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        Time: function() { return Time.DAY_CHILD; },
-                        MapInfo: { x: 182, y: 252 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "You can get this by going in the opening above the cucco pen. You can get there as a child via the owl on the top of Death Mountain, or by using a cucco. To do this, throw it up the building under construction (2 throws), then jump to the border (when the construction worker isn't there), then jump at the platform - don't drop the cucco. As adult, you must hookshot there. Hookshot first to the House of Skulltulas from the ledge by the entrance to Impa's house. Then, hookshot to Impa's house. Make your way to the ledge.<br/><br/>Alternatively, as adult, you can make your way directly under the opening, and simply hold forward to jump onto the ledge.",
-                    },
-                    "Heart Piece in Windmill": {
-                        Name: "Heart Piece in Windmill",
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 266, y: 148 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "As a child, you can get this with a well-aimed Boomerang. Adult must either go through the Dampe race, use a well-aimed hookshot and jumpslash, or do a trick to jump to the platform with nothing.",
-                        CustomRequirement: function(age) {
-                            if (Data.canUseBoomerang(age)) {
-                                return true;
-                            }
-                            
-                            return age === Age.ADULT && 
-                            (
-                                Settings.GlitchesToAllow.windmillHPWithNothing || // Trick to get there with nothing
-                                (Settings.GlitchesToAllow.windmillHPWithHookshot && Items.HOOKSHOT.playerHas) || // Trick to get there with hookshot
-                                (Data.canPlaySongs() && Songs.SONG_OF_TIME.playerHas) // Dampe race
-                            );
-                        }
-                    },
-                    "Cow Impa's House": {
-                        Name: "Cow Impa's House",
-                        ItemGroup: ItemGroups.COW,
-                        MapInfo: { x: 172, y: 252 },
-                        IsInterior: true,
-                        RequiredItems: [Items.OCARINA],
-                        Age: Age.EITHER,
-                        LongDescription: "You can get this by going in the opening above the cucco pen or from the front door of Impa's house.",
                     },
                     "Show Guard Letter": {
                         Name: "Show Guard Letter",
@@ -1764,45 +1094,6 @@ let MapLocations = {
                         LongDescription: "At night, from the ledge near the entrance to Impa's House, hookshot to the House of Skulltula. From there, hookshot to Impa's house. You'll find the skulltula on the back wall.",
                         RequiredItems: [Items.HOOKSHOT]
                     },
-                    "Potion Shop": {
-                        Name: "Potion Shop",
-                        ItemGroup: ItemGroups.SHOP,
-                        Time: function() { return Time.DAY; },
-                        MapInfo: { x: 177, y: 89 },
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.kakShopClips; },
-                        Age: Age.ADULT,
-                        IsInterior: true,
-                        LongDescription: "This is the building to the right if you are facing the Death Mountain entrance.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; }
-                            return Settings.GlitchesToAllow.kakShopClips && Data.hasSwordWeapon(age);
-                        },
-                        OneWayInteriorSpawnEntrance: true
-                    },
-                    "Bazaar": {
-                        Name: "Bazaar",
-                        ItemGroup: ItemGroups.SHOP,
-                        Time: function() { return Settings.GlitchesToAllow.kakShopClips ? Time.DAY_ADULT : Time.DAY; },
-                        MapInfo: { x: 117, y: 89 },
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.kakShopClips; },
-                        Age: Age.ADULT,
-                        IsInterior: true,
-                        LongDescription: "This is the building to the left if you are facing the Death Mountain entrance.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; }
-                            return Settings.GlitchesToAllow.kakShopClips && Data.hasSwordWeapon(age);
-                        },
-                        OneWayInteriorSpawnEntrance: true
-                    },
-                    "Song of Storms": {
-                        Name: "Song of Storms",
-                        ItemGroup: ItemGroups.SONG,
-                        MapInfo: { x: 266, y: 152 },
-                        IsInterior: true,
-                        Age: Age.ADULT,
-                        LongDescription: "As an adult, head to the windmill. Take out your ocarina by the windmill guy to get this.",
-                        NeedsOcarina: true					
-                    },
                     "Nocturne of Shadow": {
                         Name: "Nocturne of Shadow",
                         ItemGroup: ItemGroups.SONG,
@@ -1810,15 +1101,6 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "You can get this item if you have the forest, fire, and water medallions. Just enter Kakariko Village as an adult.",
                         RequiredMedallions: [Medallions.FOREST_MEDALLION, Medallions.FIRE_MEDALLION, Medallions.WATER_MEDALLION]
-                    },
-                    "Gossip Stone in Open Grotto": {
-                        Name: "Gossip Stone in Open Grotto",
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        MapInfo: { x: 245, y: 123 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This stone is located in the grotto behind the fenced off area located behind the Potion Shop. Child can get there with a cucco or from sidehopping off the watchtower. Adult can simply walk through the Potion Shop."
                     }
                 }
             },
@@ -1879,33 +1161,6 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
-                    "Hookshot Chest from Dampe Race": {
-                        Name: "Hookshot Chest from Dampe Race",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 166, y: 86 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "This is the prize for completing the Dampe Race. Dampe's grave is the farthest one to the left when you first enter - pull it to reach the race."
-                    },
-                    "Chest in Grave with Redead": {
-                        Name: "Chest in Grave with Redead",
-                        ItemGroup: ItemGroups.CHEST,
-                        Time: function() { return Time.NIGHT_CHILD; },
-                        MapInfo: { x: 237, y: 184 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Go to the Royal Tomb gravestone at the front of the graveyard - position your camera the other way, toward the entrance. The grave will be the second one to your left. Once inside, walk up to the redead and play the Sun's Song to spawn the chest.",
-                        RequiredSongs: [Songs.SUNS_SONG]
-                    },
-                    "Chest in Grave with Flowers": {
-                        Name: "Chest in Grave with Flowers",
-                        ItemGroup: ItemGroups.CHEST,
-                        Time: function() { return Time.NIGHT_CHILD; },
-                        MapInfo: { x: 206, y: 144 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "There's a gravestone when you first enter that has flowers in front of it. Pull it back and enter to get to the chest."
-                    },
                     "Dampe's Heart-Pounding Graveyard Tour": {
                         Name: "Dampe's Heart-Pounding Graveyard Tour",
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -1913,14 +1168,6 @@ let MapLocations = {
                         MapInfo: { x: 184, y: 176 },
                         Age: Age.CHILD,
                         LongDescription: "Get to the graveyard when it's barely night time. If you play the Sun's Song, make sure you do it where time passes, then quickly take the exit to Kakariko before it becomes too late. Simply talk to Dampe and pay him 10 rupees to get this item."
-                    },
-                    "Heart Piece from Dampe Race": {
-                        Name: "Heart Piece from Dampe Race",
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 166, y: 94 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "This is the prize for completing the Dampe Race in less than one minute. Dampe's grave is the farthest one to the left when you first enter - pull it to reach the race."
                     },
                     "Heart Piece in Crate": {
                         Name: "Heart Piece in Crate",
@@ -2021,27 +1268,7 @@ let MapLocations = {
                         OwExit: OwExits["Graveyard"]["Royal Family's Tomb"]
                     }
                 },
-                
-                ItemLocations: {
-                    "Royal Family's Tomb Chest": {
-                        Name: "Royal Family's Tomb Chest",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 303, y: 143 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "First, play Zelda's Lullaby in front of the big grave in the back of the graveyard if you haven't already. Enter the hole. Once inside, light the two torches to spawn the chest.",
-                        NeedsFire: true
-                    },
-                    "Sun's Song": {
-                        Name: "Sun's Song",
-                        ItemGroup: ItemGroups.SONG,
-                        MapInfo: { x: 303, y: 156 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "First, play Zelda's Lullaby in front of the big grave in the back of the graveyard if you haven't already. Enter the hole and go through the tomb to get the item.",
-                        NeedsDamagingItem: true
-                    }
-                }
+                ItemLocations: {}
             },
 
             shadowTemple: {
@@ -2108,15 +1335,6 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "You can do a slight angled backflip near the Bomb Flower above the cavern to get to this. Alternatively, you can plant a bean and ride it up."
                     },
-                    "Song of Storms Grotto by Goron City": {
-                        Name: "Song of Storms Grotto by Goron City",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 228, y: 172 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Play the Song of Storms in the center of the circle of rocks by Goron City to reveal a grotto with a chest.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
-                    },
                     "Skulltula in Soil": {
                         Name: "Skulltula in Soil",
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -2164,16 +1382,6 @@ let MapLocations = {
                         LongDescription: "Used for co-op. These are the rocks blocking the path to Death Mountain Crater.",
                         NeedToBlastOrSmash: true,
                         CoOpOnly: true
-                    },
-                    "Gossip Stone in Grotto by Goron City": {
-                        Name: "Gossip Stone in Grotto by Goron City",
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
-                        MapInfo: { x: 228, y: 172 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Play the Song of Storms in the center of the circle of rocks by Goron City to reveal a grotto with this stone.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
                     }
                 }
             },
@@ -2208,29 +1416,6 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "When you have the Claim Check, head up to the top of Death Mountain. Give it to Biggoron for your item.",
                         RequiredItems: [Items.CLAIM_CHECK],
-                    },
-                    "Great Fairy Fountain": {
-                        Name: "Great Fairy Fountain",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 220, y: 19 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is behind a wall you can destroy on the top of the mountain. Play Zelda's Lullaby at the triforce to receive an item.",
-                        NeedToBlastOrSmash: true,
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
-                        OneWayInteriorSpawnEntrance: true,
-                        PostSpawnRequirements: function(age) {
-                            return Data.canPlaySong(Songs.ZELDAS_LULLABY);
-                        }
-                    },
-                    "Cow Grotto Before Volcano Path": {
-                        Name: "Cow Grotto Before Volcano Path",
-                        ItemGroup: ItemGroups.COW,
-                        MapInfo: { x: 200, y: 186 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is under the yellow rock on the ledge right after you bomb the rocks to reach the upper part of the mountain.",
-                        NeedToBlastOrSmash: true,
                     },
                     "Red Rock on Upper Path": {
                         Name: "Red Rock on Upper Path",
@@ -2285,15 +1470,6 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
-                    "Grotto by Top Rocks": {
-                        Name: "Grotto by Top Rocks",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 167, y: 260 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "At the top of the crater, bomb or hammer the middle of the circle of rocks to spawn a grotto containing a chest.",
-                        NeedToBlastOrSmash: true
-                    },
                     "Heart Piece in Wall": {
                         Name: "Heart Piece in Wall",
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -2314,16 +1490,6 @@ let MapLocations = {
                         MapInfo: { x: 85, y: 195 },
                         Age: Age.CHILD,
                         LongDescription: "When you enter the crater, follow the left wall. The scrub is on the bottom of the ladder you'll run into."
-                    },
-                    "Gossip Stone in Grotto by Top Rocks": {
-                        Name: "Gossip Stone in Grotto by Top Rocks",
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
-                        MapInfo: { x: 172, y: 260 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This stone is in the generic grotto on the top that is blocked by the yellow rock.",
-                        NeedToBlastOrSmash: true
                     },
                     "Gossip Stone Behind Bombable Wall": {
                         Name: "Gossip Stone Behind Bombable Wall",
@@ -2370,55 +1536,7 @@ let MapLocations = {
                         OwExit: OwExits["Death Mountain Crater"]["Grotto in Rock by Goron"]
                     }
                 },
-
-                ItemLocations: {
-                    "Great Fairy Fountain": {
-                        Name: "Great Fairy Fountain",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 65, y: 170 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.childDoubleMagicFairy && !Settings.GlitchesToAllow.equipSwap; },
-                        LongDescription: "Hammer the silver rocks that are to the left of the Goron City entrance (if you face the entrance). Play Zelda's Lullaby inside to get the item.",
-                        RequiredAdultItems: [Items.MEGATON_HAMMER],
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; }
-                            return Data.canUseHammer(age) || Settings.GlitchesToAllow.childDoubleMagicFairy;
-                        },
-                        OneWayInteriorSpawnEntrance: true,
-                        PostSpawnRequirements: function(age) {
-                            return Data.canPlaySong(Songs.ZELDAS_LULLABY);
-                        }
-                    },
-                    "Left Scrub in Grotto by Goron": {
-                        Name: "Left Scrub in Grotto by Goron",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 60, y: 60 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Hammer the silver rock near the entrance to Goron City to access these scrubs.",
-                        RequiredItems: [Items.MEGATON_HAMMER]
-                    },
-                    "Middle Scrub in Grotto by Goron": {
-                        Name: "Middle Scrub in Grotto by Goron",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 64, y: 60 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Hammer the silver rock near the entrance to Goron City to access these scrubs.",
-                        RequiredItems: [Items.MEGATON_HAMMER]
-                    },
-                    "Right Scrub in Grotto by Goron": {
-                        Name: "Right Scrub in Grotto by Goron",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 68, y: 60 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Hammer the silver rock near the entrance to Goron City to access these scrubs.",
-                        RequiredItems: [Items.MEGATON_HAMMER]
-                    }
-                }
+                ItemLocations: {}
             },
 
             bottom: {
@@ -2565,7 +1683,7 @@ let MapLocations = {
                         Name: "Item From Medigoron",
                         ItemGroup: ItemGroups.GIFT,
                         RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleCarpetAndMedigoron; },
-                        MapInfo: { x: 127, y: 136 },
+                        MapInfo: { x: 117, y: 260 },
                         Age: Age.ADULT,
                         LongDescription: "Blow up/hammer the weak walls on the western side of the middle floor. Pay Medigoron 200 rupees for this item.",
                         RequiredItems: [{item: Equipment.WALLET, upgradeString: "1"}],
@@ -2627,42 +1745,6 @@ let MapLocations = {
                         MapInfo: { x: 180, y: 137 },
                         Age: Age.ADULT,
                         LongDescription: "There's a skulltula on the back side of the center platform. You may have to jump for it from the ropes if you don't have a hookshot."
-                    },
-                    "Left Scrub in Lava Room Grotto": {
-                        Name: "Left Scrub in Lava Room Grotto",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 274, y: 21 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Head to the east side of the middle floor and enter the hallway. You should see a lava room to your left. There is a grotto there with the scrubs. There are a few ways to get across.<br/><br/>One way is to run across the lava to the other side, play the song of time, and then climb onto the block to reach the other side.<br/><br/>Another way is to equip the Goron Tunic, run across the lava for distance and then quickly hookshot the target before the damage cancels you out of your hookshot.<br/><br/>Finally, if you have the longshot and the song of time, play the song at the start of the lava room. Stand on the block and longshot the target to get across.",
-                        CustomRequirement: function(age) {
-                            let canHookshotUp = Equipment.GORON_TUNIC.playerHas && Items.HOOKSHOT.playerHas;
-                            return canHookshotUp || Data.canPlaySong(Songs.SONG_OF_TIME);
-                        }
-                    },
-                    "Middle Scrub in Lava Room Grotto": {
-                        Name: "Middle Scrub in Lava Room Grotto",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 278, y: 21 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Head to the east side of the middle floor and enter the hallway. You should see a lava room to your left. There is a grotto there with the scrubs. There are a few ways to get across.<br/><br/>One way is to run across the lava to the other side, play the song of time, and then climb onto the block to reach the other side.<br/><br/>Another way is to equip the Goron Tunic, run across the lava for distance and then quickly hookshot the target before the damage cancels you out of your hookshot.<br/><br/>Finally, if you have the longshot and the song of time, play the song at the start of the lava room. Stand on the block and longshot the target to get across.",
-                        CustomRequirement: function(age) {
-                            let canHookshotUp = Equipment.GORON_TUNIC.playerHas && Items.HOOKSHOT.playerHas;
-                            return canHookshotUp || Data.canPlaySong(Songs.SONG_OF_TIME);
-                        }
-                    },
-                    "Right Scrub in Lava Room Grotto": {
-                        Name: "Right Scrub in Lava Room Grotto",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 282, y: 21 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Head to the east side of the middle floor and enter the hallway. You should see a lava room to your left. There is a grotto there with the scrubs. There are a few ways to get across.<br/><br/>One way is to run across the lava to the other side, play the song of time, and then climb onto the block to reach the other side.<br/><br/>Another way is to equip the Goron Tunic, run across the lava for distance and then quickly hookshot the target before the damage cancels you out of your hookshot.<br/><br/>Finally, if you have the longshot and the song of time, play the song at the start of the lava room. Stand on the block and longshot the target to get across.",
-                        CustomRequirement: function(age) {
-                            let canHookshotUp = Equipment.GORON_TUNIC.playerHas && Items.HOOKSHOT.playerHas;
-                            return canHookshotUp || Data.canPlaySong(Songs.SONG_OF_TIME);
-                        }
                     },
                     "Gossip Stone in Maze": {
                         Name: "Gossip Stone in Maze",
@@ -2805,18 +1887,7 @@ let MapLocations = {
                         OwExit: OwExits["Goron City"]["Shop"]
                     }
                 },
-
-                ItemLocations: {
-                    "Shop": {
-                        Name: "Shop",
-                        ItemGroup: ItemGroups.SHOP,
-                        MapInfo: { x: 159, y: 132 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "The shop is at the bottom of the city - the entrance is in the middle of two Bomb Flowers on the wall.<br/><br/>As child, either light one on fire with a Deku Stick, or simply blow up the wall with an explosive. If you don't have your own, use the bomb flowers on the level with the rolling goron.<br/><br/>As an adult, you must stop the rolling goron and he will open it for you. Note that you can arrow the bomb flowers to do this.",
-                        OneWayInteriorSpawnEntrance: true
-                    }
-                }
+                ItemLocations: {}
             }
 		}
     },
@@ -2895,14 +1966,6 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
-                    "Open Grotto on Cliff": {
-                        Name: "Open Grotto on Cliff",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 132, y: 217 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Go up the ladder closest to Hyrule Field. Jump to the cliff behind you and enter the grotto to find this chest."
-                    },
                     "Heart Piece on River Platform": {
                         Name: "Heart Piece on River Platform",
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -2990,24 +2053,6 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "Play all the non-warp songs for the frogs to play the bug minigame. The notes are as follows: A < > v < > v A v A v > < A",
                         RequiredSongs: [Songs.ZELDAS_LULLABY, Songs.EPONAS_SONG, Songs.SARIAS_SONG, Songs.SUNS_SONG, Songs.SONG_OF_STORMS, Songs.SONG_OF_TIME]
-                    },
-                    "Song of Storms Grotto Front Scrub": {
-                        Name: "Song of Storms Grotto Front Scrub",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 15, y: 145 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Play the Song of Storms in the center of the rocks near the cucco spawn to reveal the scrub grotto.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
-                    },
-                    "Song of Storms Grotto Back Scrub": {
-                        Name: "Song of Storms Grotto Back Scrub",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 15 , y: 140 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Play the Song of Storms in the center of the rocks near the cucco spawn to reveal the scrub grotto.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
                     },
                     "Skulltula on Ladder": {
                         Name: "Skulltula on Ladder",
@@ -3175,19 +2220,6 @@ let MapLocations = {
                             return Data.canUseFireItem(age) || Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas;
                         }
                     },
-                    "Shop": {
-                        Name: "Shop",
-                        ItemGroup: ItemGroups.SHOP,
-                        MapInfo: { x: 236, y: 254 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This is the shop. As an adult, you can either use Blue Fire, or perform the shop skip to get inside.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return true; }
-                            return Data.canUseBlueFire(age) || Settings.GlitchesToAllow.blueFireShopSkip;
-                        },
-                        OneWayInteriorSpawnEntrance: true
-                    },
                     "Gossip Stone by King": {
                         Name: "Gossip Stone by King",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -3248,20 +2280,6 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
-                    "Great Fairy Fountain": {
-                        Name: "Great Fairy Fountain",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 266, y: 269 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Go to the southeast corner of the map. Bomb or hammer the wall by the rocks. Play Zelda's Lullaby inside to get an item.",
-                        NeedsExplosives: true,
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
-                        OneWayInteriorSpawnEntrance: true,
-                        PostSpawnRequirements: function(age) {
-                            return Data.canPlaySong(Songs.ZELDAS_LULLABY);
-                        }
-                    },
                     "Heart Piece on Iceberg": {
                         Name: "Heart Piece on Iceberg",
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -3378,28 +2396,6 @@ let MapLocations = {
                             return defeatedMorpha && Data.hasDamagingItem(age);
                         }
                     },
-                    "Fishing Child": {
-                        Name: "Fishing Child",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 247, y: 81 },
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "Pay 20 rupees and catch a big fish to get the item."
-                    },
-                    "Fishing Adult": {
-                        Name: "Fishing Adult",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 252, y: 81 },
-                        IsInterior: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Either beat Morpha, ride the bean plant, or play Scarecrow's Song and use your hookshot to get up to the fishing platform. Pay 20 rupees and catch a big fish to get the item.",
-                        CustomRequirement: function(age) {
-                            let canHookshotUp = Data.canPlaySong(Songs.SCARECROWS_SONG) && Items.HOOKSHOT.playerHas;
-                            let canRideUp = Data.itemLocationObtained("Lake Hylia", "main", "*Plant Bean by Lab");
-                            return canHookshotUp || canRideUp || Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
-                        },
-                        OneWayInteriorSpawnEntrance: true
-                    },
                     "Heart Piece on Lab": {
                         Name: "Heart Piece on Lab",
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -3410,21 +2406,6 @@ let MapLocations = {
                             let canHookshotUp = Data.canPlaySong(Songs.SCARECROWS_SONG) && Items.HOOKSHOT.playerHas;
                             let canRideUp = Data.itemLocationObtained("Lake Hylia", "main", "*Plant Bean by Lab");
                             return canHookshotUp || canRideUp;
-                        }
-                    },
-                    "Heart Piece in Lab": {
-                        Name: "Heart Piece in Lab",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 111, y: 89 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Enter lakeside lab and dive all the way to the bottom of the water. Talk to the professor to get this item. Alternatively, you can use iron boots to sink to the bottom. Next, hookshot the crate and pause just before your feet touch the ground again. If you unequip your iron boots at this point, you should hear a jingle and should be able to get the item.",
-                        CustomRequirement: function(age) {
-                            let hasGoldScale = Equipment.SCALE.currentUpgrade === 2;
-                            if (age === Age.CHILD) { return hasGoldScale; }
-                            
-                            let canGetWithoutScale = Settings.GlitchesToAllow.labHPWithoutGoldenScale && Items.HOOKSHOT.playerHas && Equipment.IRON_BOOTS.playerHas;
-                            return hasGoldScale || canGetWithoutScale;
                         }
                     },
                     "Fire Arrows": {
@@ -3467,15 +2448,6 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "At night, proceed to the far island in the lake. This is the one even passed the one with the tree. You should see the skulltula on one of the pillars."
                     },
-                    "Skulltula in Lab Water": {
-                        Name: "Skulltula in Lab Water",
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 107, y: 99 },
-                        IsInterior: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Enter the Lakeside Lab. Equip your iron boots in the water to sink to the bottom. The skulltula is in a crate - roll into it. Use your hookshot to kill it and collect its item.",
-                        RequiredItems: [Items.HOOKSHOT, Equipment.IRON_BOOTS]
-                    },
                     "Skulltula on Middle Tree": {
                         Name: "Skulltula on Middle Tree",
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3484,30 +2456,6 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "At night, longshot all the way up the tree on the middle island. You'll find the skulltula on top.",
                         RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
-                    },
-                    "Left Scrub Under Gravestone": {
-                        Name: "Left Scrub Under Gravestone",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 89, y: 181 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Pull the gravestone in the middle of the bridge and enter the grotto to find these scrubs."
-                    },
-                    "Middle Scrub Under Gravestone": {
-                        Name: "Middle Scrub Under Gravestone",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 93, y: 181 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Pull the gravestone in the middle of the bridge and enter the grotto to find these scrubs."
-                    },
-                    "Right Scrub Under Gravestone": {
-                        Name: "Right Scrub Under Gravestone",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 97, y: 181 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Pull the gravestone in the middle of the bridge and enter the grotto to find these scrubs."
                     },
                     "*Plant Bean by Lab": {
                         Name: "*Plant Bean by Lab",
@@ -3667,24 +2615,6 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "At night, there's a skulltula on the wall behind the tent.",
                         IsAtShortDistance: true
-                    },
-                    "Front Scrub in SoS Grotto Behind Tent": {
-                        Name: "Front Scrub in SoS Grotto Behind Tent",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 140, y: 56 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Play the Song of Storms behind the tent to spawn a grotto with these scrubs.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS],
-                    },
-                    "Back Scrub in SoS Grotto Behind Tent": {
-                        Name: "Back Scrub in SoS Grotto Behind Tent",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 137, y: 56 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Play the Song of Storms behind the tent to spawn a grotto with these scrubs.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS],
                     }
                 }
             },
@@ -4133,20 +3063,6 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
-                    "Great Fairy Fountain": {
-                        Name: "Great Fairy Fountain",
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 231, y: 51 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "There's a crack in the wall in the north middle of the map. Bomb or hammer it to get inside. Play Zelda's Lullaby to get an item.",
-                        NeedsExplosives: true,
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
-                        OneWayInteriorSpawnEntrance: true,
-                        PostSpawnRequirements: function(age) {
-                            return Data.canPlaySong(Songs.ZELDAS_LULLABY);
-                        }
-                    },
                     "Heart Piece on Platform": {
                         Name: "Heart Piece on Platform",
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -4188,24 +3104,6 @@ let MapLocations = {
                             let canRideUp = Data.itemLocationObtained("Desert Colossus", "main", "*Plant Bean by Spirit Temple");
                             return canRideUp || Items.HOOKSHOT.playerHas;
                         }
-                    },
-                    "Front Scrub in Silver Rock Grotto": {
-                        Name: "Front Scrub in Silver Rock Grotto",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 117, y: 81 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Lift the silver rock by the warp song location to reveal the grotto with these scrubs.",
-                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}]
-                    },
-                    "Back Scrub in Silver Rock Grotto": {
-                        Name: "Back Scrub in Silver Rock Grotto",
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 121, y: 81 },
-                        IsGrotto: true,
-                        Age: Age.ADULT,
-                        LongDescription: "Lift the silver rock by the warp song location to reveal the grotto with these scrubs.",
-                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}]
                     },
                     "Requiem of Spirit": {
                         //TODO: with decoupling, we'll have to check that we can enter whatever leads here

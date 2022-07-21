@@ -604,12 +604,6 @@ InteriorGroups = {
 				description: "The lower right chest.",
 				canGet: function(age) { return true; },
 			},
-		},
-		postClick: function(itemLocation, isSelected) {
-			let itemLocationTimeIconDiv = document.getElementById(`${itemLocation.Name}-time-icon`);
-			if (itemLocationTimeIconDiv) {
-				itemLocationTimeIconDiv.style.backgroundImage = Data.getTimeImagePath(itemLocation, !isSelected);
-			}
 		}
 	},
 };
@@ -903,7 +897,20 @@ GrottoGroups = {
 				}
 			}
 		}
-	}
+	},
+
+	// Non-shuffle only locations
+	"1 Chest": {
+		tooltip: "The grave that only has one chest",
+		excludeFromGroup: function() { return true; },
+		buttons: {
+			"Chest": {
+				itemLocation: "",
+				description: "The upper left chest.",
+				canGet: function(age) { return true; },
+			}
+		}
+	},
 };
 
 /**

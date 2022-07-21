@@ -370,18 +370,25 @@ Data = {
     /**
      * Sets up the default entrance group for the item, if applicable
      * @param itemLocation - the item location to check
+     * @return - true if it is not applicable, or if it was set up correctly; false if we should disable the location
      */
-    setUpDefaultEntranceGroup(itemLocation) {
+    setUpDefaultEntranceGroup: function(itemLocation) {
         if (itemLocation.ItemGroup !== ItemGroups.ENTRANCE || 
             itemLocation.IsBoss ||
             itemLocation.DefaultEntranceGroup) 
         { 
-            return;  // Not an entrance, is a boss, or it's already populated
+            return true;  // Not an entrance, is a boss, or it's already populated
         }
 
-        if (this.usesDefaultGroup(itemLocation) && itemLocation.DefaultEntranceGroupName) {
-            EntranceUI.initializeEntranceGroupData(itemLocation, itemLocation.DefaultEntranceGroupName);
+        if (this.usesDefaultGroup(itemLocation)) {
+            if (itemLocation.DefaultEntranceGroupName) {
+                EntranceUI.initializeEntranceGroupData(itemLocation, itemLocation.DefaultEntranceGroupName);
+                return true;
+            }
+            return false; // We use a default group but have no default group name, means it's not location we need to ever visit
         }
+
+        return true;
     },
 
     /**
@@ -766,8 +773,6 @@ Data = {
         if (!itemLocation || itemLocation.ItemGroup !== ItemGroups.ENTRANCE) { return null; }
 
         if (this.usesDefaultGroup(itemLocation)) {
-            //TOOD: fill out the info if DefaultEntranceGroup doesn't exist at this point!
-            // should have setting called DefaultEntranceGroupName or something - if set to "none" the loc should have been disabled
             return itemLocation.DefaultEntranceGroup;
         }
         return itemLocation.EntranceGroup;
