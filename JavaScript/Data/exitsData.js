@@ -107,6 +107,7 @@ let OwExits = {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
+            DefaultEntranceGroupName: "Generic Grotto",
             MapInfo: { x: 109, y: 36 },
             Age: Age.EITHER,
             LongDescription: "Play the Song of Storms by the Gossip Stone near the Lost Woods entrance to reveal this grotto.",

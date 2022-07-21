@@ -97,6 +97,9 @@ let _performItemDisabling = function() {
 			
 			// Entrances
 			itemLocation.disabled = !Data.shouldDisplayItemLocation(itemLocation);
+
+			// This will disable the group selection and select the appropriate group where appropriate
+			Data.setUpDefaultEntranceGroup(itemLocation);
 			
 			// Gold Skulltulas
 			if (itemLocation.ItemGroup === ItemGroups.SKULLTULA) {

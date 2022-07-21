@@ -86,15 +86,15 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "This chest is in Mido's house."
                     },
-                    "Song of Storms Grotto by Lost Woods": {
-                        Name: "Song of Storms Grotto by Lost Woods",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 109, y: 36 },
-                        IsGrotto: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Play the Song of Storms by the Gossip Stone near the Lost Woods entrance to reveal a grotto with a chest.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
-                    },
+                    // "Song of Storms Grotto by Lost Woods": {
+                    //     Name: "Song of Storms Grotto by Lost Woods",
+                    //     ItemGroup: ItemGroups.CHEST,
+                    //     MapInfo: { x: 109, y: 36 },
+                    //     IsGrotto: true,
+                    //     Age: Age.EITHER,
+                    //     LongDescription: "Play the Song of Storms by the Gossip Stone near the Lost Woods entrance to reveal a grotto with a chest.",
+                    //     RequiredSongs: [Songs.SONG_OF_STORMS]
+                    // },
                     "Cow in Link's House": {
                         Name: "Cow in Link's House",
                         ItemGroup: ItemGroups.COW,

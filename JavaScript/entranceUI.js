@@ -81,24 +81,16 @@ let EntranceUI = {
 			groupDiv.onclick = function(event) {
 				event.stopPropagation();
 
+				let group = entranceData[groupName];
 				if (group.shouldNotTrigger && group.shouldNotTrigger()) {
 					return;
 				}
 				
-				let groupProperty = Data.usesDefaultGroup(itemLocation) ? "DefaultEntranceGroup" : "EntranceGroup";
-				itemLocation[groupProperty] = {
-					name: groupName,
-					isShop: group.isShop,
-					isLinksHouse: group.isLinksHouse,
-					isTempleOfTime: group.isTempleOfTime,
-					hasGossipStone: group.hasGossipStone,
-					completed: {},
-					buttonNames: Object.keys(group.buttons),
-					totalTasks: Object.keys(group.buttons).length
-				};
+				_this.initializeEntranceGroupData(itemLocation, groupName);
 				
 				mainDiv.innerHTML = "";
 				_this._createButtonDivs(itemLocation, itemLocationEntranceTasksContainer);
+				
 				if (Data.isItemLocationAShop(itemLocation)) {
 					_toggleMoreInfo(document.getElementById(itemLocation.Name), itemLocation, true);
 				}
@@ -108,13 +100,35 @@ let EntranceUI = {
 				if (group.postClick) {
 					group.postClick(itemLocation, true);
 				}
-
+		
 				SocketClient.itemLocationUpdated(itemLocation);
 				refreshAll();
 			};
 			
 			mainDiv.appendChild(groupDiv);
 		});
+	},
+
+	/**
+	 * Initializes the entrance group data for the given item location and group
+	 * @param {Any} itemLocation - the item location
+	 * @param {string} groupName - the name of the group
+	 */
+	initializeEntranceGroupData: function(itemLocation, groupName) {
+		let entranceData = this.getEntranceData(itemLocation);
+		let group = entranceData[groupName];
+		let groupProperty = Data.usesDefaultGroup(itemLocation) ? "DefaultEntranceGroup" : "EntranceGroup";
+
+		itemLocation[groupProperty] = {
+			name: groupName,
+			isShop: group.isShop,
+			isLinksHouse: group.isLinksHouse,
+			isTempleOfTime: group.isTempleOfTime,
+			hasGossipStone: group.hasGossipStone,
+			completed: {},
+			buttonNames: Object.keys(group.buttons),
+			totalTasks: Object.keys(group.buttons).length
+		};
 	},
 
 	/**

@@ -53,7 +53,7 @@ let updateItemDisplay = function() {
 		}
 		
 		let entranceGroup = Data.getEntranceGroup(itemLocation);
-		if (entranceGroup && itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
+		if (entranceGroup) {
 			let cannotGetEntranceItem = 
 				EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.CHILD) === 0 &&
 				EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.ADULT) === 0;
@@ -111,7 +111,7 @@ let updateItemDisplay = function() {
 		}
 		
 		// Update the entrance buttons
-		if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && Data.getEntranceGroup(itemLocation)) {
+		if (entranceGroup) {
 			EntranceUI.refreshButtons(itemLocation);
 		}
 		
@@ -330,7 +330,7 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon, i
 		itemLocationTitleDiv.appendChild(inlineNotesDiv);
 		
 		let mapFloor = itemLocation.MapInfo ? itemLocation.MapInfo.floor : undefined;
-		let locationIconsDiv = _createLocationIconsDiv(itemLocationDiv, itemLocation, mapFloor, isDungeon);
+		let locationIconsDiv = _createLocationIconsDiv(itemLocationDiv, itemLocation, mapFloor);
 		itemLocationTitleDiv.appendChild(locationIconsDiv);
 		
 		let moreInfoDiv = _createMoreInfoDiv(itemLocation, itemLocationDiv);
@@ -425,12 +425,12 @@ let _fillStringDropdown = function(dropdown, options, defaultValue) {
  * Creates the icons to display on each item display row
  * @param itemLocationDiv: The div to put the icons in
  */
-let _createLocationIconsDiv = function(itemLocationDiv, itemLocation, floor, isDungeon) {
+let _createLocationIconsDiv = function(itemLocationDiv, itemLocation, floor) {
 	let locationName = itemLocation.Name;
 	let locationIconsDiv = dce("div", "item-locations-icon-container");
 	
 	// Cancel entrance group icon
-	if (itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
+	if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && !Data.usesDefaultGroup(itemLocation)) {
 		let cancelEntranceIcon = dce("div", "item-location-cancel-entrance-icon");
 		cancelEntranceIcon.onclick = function(event) {
 			event.stopPropagation();

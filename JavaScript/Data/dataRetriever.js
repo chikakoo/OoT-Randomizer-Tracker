@@ -235,17 +235,40 @@ Data = {
         if (Settings.RandomizerSettings.shuffleOverworldEntrances || 
             Settings.RandomizerSettings.shuffleDungeonEntrances ||
             Settings.RandomizerSettings.randomizeOwlDrops) {
-            Object.keys(OwExits).forEach(function(currentMap) {
-                if (!mapName || mapName === currentMap) {
-                    Object.keys(OwExits[currentMap]).forEach(function(entranceName) {
-                        let currentEntrance = OwExits[currentMap][entranceName];
-                        if (!regionName || currentEntrance.ExitRegion === regionName) {
-                            itemLocations = itemLocations.concat(currentEntrance);
-                        }
-                    });
-                }
-            });
+            itemLocations = itemLocations.concat(this.getAllOwExits(mapName, regionName, false));
         }
+
+        itemLocations = itemLocations.concat(this.getAllOwExits(mapName, regionName, true));
+        return itemLocations;
+    },
+
+    /**
+     * Gets all the OW exits for the given map and region
+     * @param mapName - the map - omit to get all
+     * @param regionName - the region - omit to get all under the given map
+     * @param getInteriors - whether to get interiors instead - false means get OwExits
+     */
+    getAllOwExits: function(mapName, regionName, getInteriors) {
+        let itemLocations = [];
+        Object.keys(OwExits).forEach(function(currentMap) {
+            if (!mapName || mapName === currentMap) {
+                Object.keys(OwExits[currentMap]).forEach(function(entranceName) {
+                    let currentEntrance = OwExits[currentMap][entranceName];
+
+                    if (getInteriors && currentEntrance.ItemGroup !== ItemGroups.ENTRANCE) {
+                        return;
+                    }
+
+                    if (!getInteriors && currentEntrance.ItemGroup === ItemGroups.ENTRANCE) {
+                        return;
+                    }
+
+                    if (!regionName || currentEntrance.ExitRegion === regionName) {
+                        itemLocations = itemLocations.concat(currentEntrance);
+                    }
+                });
+            }
+        });
 
         return itemLocations;
     },
@@ -303,23 +326,28 @@ Data = {
      * If it's not any of those, will return true
      */
     shouldDisplayItemLocation: function(itemLocation) {
+
+        //TODO: Actually delete this commented out code if it actually doesn't need to be there!!!
+
         // Entrances should ONLY be displayed if the setting is on
-        if (itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
-            if (itemLocation.IsGrotto) {
-                return Settings.RandomizerSettings.shuffleGrottoEntrances;
-            } else if (itemLocation.IsInterior) {
-                return Settings.RandomizerSettings.shuffleInteriorEntrances;
-            } else if (itemLocation.IsBoss) {
-                return Settings.RandomizerSettings.shuffleBossEntrances;
-            }
-        }
+        // if (itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
+        //     if (itemLocation.IsGrotto) {
+        //         return Settings.RandomizerSettings.shuffleGrottoEntrances;
+        //     } else if (itemLocation.IsInterior) {
+        //         return Settings.RandomizerSettings.shuffleInteriorEntrances;
+        //     } else if (itemLocation.IsBoss) {
+        //         return Settings.RandomizerSettings.shuffleBossEntrances;
+        //     }
+        // }
 
         // If marked as a grotto or interior, DO NOT display if it's being shuffled, since this is covered by the entrance type
-        if (itemLocation.IsGrotto) {
-            return !Settings.RandomizerSettings.shuffleGrottoEntrances;
-        } else if (itemLocation.IsInterior) {
-            return !Settings.RandomizerSettings.shuffleInteriorEntrances;
-        } else if (itemLocation.IsBoss) {
+        // if (itemLocation.IsGrotto) {
+        //     return !Settings.RandomizerSettings.shuffleGrottoEntrances;
+        // } else if (itemLocation.IsInterior) {
+        //     return !Settings.RandomizerSettings.shuffleInteriorEntrances;
+        // } else 
+        
+        if (itemLocation.IsBoss) {
             return !Settings.RandomizerSettings.shuffleBossEntrances;
         }
 
@@ -337,6 +365,23 @@ Data = {
         }
 
         return true;
+    },
+
+    /**
+     * Sets up the default entrance group for the item, if applicable
+     * @param itemLocation - the item location to check
+     */
+    setUpDefaultEntranceGroup(itemLocation) {
+        if (itemLocation.ItemGroup !== ItemGroups.ENTRANCE || 
+            itemLocation.IsBoss ||
+            itemLocation.DefaultEntranceGroup) 
+        { 
+            return;  // Not an entrance, is a boss, or it's already populated
+        }
+
+        if (this.usesDefaultGroup(itemLocation) && itemLocation.DefaultEntranceGroupName) {
+            EntranceUI.initializeEntranceGroupData(itemLocation, itemLocation.DefaultEntranceGroupName);
+        }
     },
 
     /**
