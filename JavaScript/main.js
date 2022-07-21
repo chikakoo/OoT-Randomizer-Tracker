@@ -88,7 +88,7 @@ let _performItemDisabling = function() {
 	let mapNames = Object.keys(MapLocations);
 	mapNames.forEach(function (mapName) {
 		let mapLocation = MapLocations[mapName];
-		let itemsToExcludeMapInfo = Settings.ItemLocationsToExclude[mapName];
+		let itemsToExcludeMapInfo = Settings.ItemLocationsToExclude.Maps && Settings.ItemLocationsToExclude.Maps[mapName];
 		
 		Data.getAllItemLocations(mapName, null, true).forEach(function(itemLocation) {
 			// Reset the cache - the values aren't valid anymore

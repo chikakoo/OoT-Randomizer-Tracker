@@ -75,14 +75,12 @@ EntranceData = {
  */
 InteriorGroups = {
 	"Link's House": {
-		map: "Kokiri Forest",
 		tooltip: "Link's House",
 		excludeFromGroup: function() { return Data.linksHouseLocation && Data.linksHouseLocation.map; },
 		neverHide: true,
 		buttons: {
 			"Cow in Link's House": {
 				icon: "Cow",
-				itemLocation: "Cow in Link's House",
 				description: "As an adult, beat Malon's Epona challenge to unlock the cow in Link's house.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.cowSanity;
@@ -109,14 +107,12 @@ InteriorGroups = {
 		}
 	},
 	"Temple of Time": {
-		map: "Temple of Time",
 		tooltip: "The Temple of Time",
 		isTempleOfTime: true,
 		excludeFromGroup: function() { return Data.templeOfTimeLocation && Data.templeOfTimeLocation.map; },
 		neverHide: true,
 		buttons: {
 			"Prelude of Light": {
-				itemLocation: "Prelude of Light",
 				description: "When you have the Forest Medallion, enter the room with the Master Sword pedestal to receive the item.",
 				canGet: function(age) {
 					if (!Medallions.FOREST_MEDALLION.playerHas) {
@@ -131,7 +127,6 @@ InteriorGroups = {
 				isAdultOnly: function() { return true; }
 			},
 			"Light Arrows": {
-				itemLocation: "Light Arrows",
 				description: "When you have the Shadow and Spirit Medallions, simply enter the Temple of Time as adult to receive the item.",
 				canGet: function(age) {
 					return Medallions.SHADOW_MEDALLION.playerHas && Medallions.SPIRIT_MEDALLION.playerHas;
@@ -196,7 +191,6 @@ InteriorGroups = {
 		}
 	},
 	"Happy Mask Shop": {
-		//map: "Market",
 		tooltip: "The Happy Mask Shop",
 		buttons: {
 			"Borrow Keaton Mask": {
@@ -302,12 +296,10 @@ InteriorGroups = {
 		}
 	},
 	"Lakeside Lab": {
-		//map: "Lake Hylia",
 		tooltip: "This is the lab with the professor and the pool of water in the back.",
 		buttons: {
 			"Lakeside Heart Piece": {
 				icon: "Heart Piece",
-				itemLocation: "Heart Piece in Lab",
 				description: "Use the golden scale and dive to touch the bottom of the water area. The professor will give you this item.",
 				canGet: function(age) {
 					let hasGoldScale = Equipment.SCALE.currentUpgrade === 2;
@@ -319,7 +311,6 @@ InteriorGroups = {
 			},
 			"Lakeside Skulltula": {
 				icon: "Skulltula",
-				itemLocation: "Skulltula in Lab Water",
 				description: "This skulltula is on the bottom of the water area. Equip the iron boots and sink down. Roll into the box to reveal it.",
 				canGet: function(age) {
 					if (age === Age.CHILD) { return false; }
@@ -330,17 +321,14 @@ InteriorGroups = {
 		}
 	},
 	"Market Guard House": {
-		map: "Market Entrance",
 		tooltip: "This is the pot room as a child, and the big poe buyer room as an adult.",
 		buttons: {
 			"Child Skulltula": {
 				icon: "Skulltula",
-				itemLocation: "Skulltula in Pot-filled House",
 				description: "This is the skulltula in the crate in the back of the room.",
 				isChildOnly: function() { return true; }
 			},
 			"Adult Big Poe Reward": {
-				itemLocation: "Big Poe Reward",
 				description: "Give the poe salesman all the poes he needs to get this item.",
 				canGet: function(age) {
 					let canGetToPoe = Data.canAccessMap(age, "Hyrule Field");
@@ -351,16 +339,13 @@ InteriorGroups = {
 		}
 	},
 	"Back of Impa's House": {
-		map: "Kakariko Village",
 		tooltip: "Inside the cage with the cow and the freestanding item.",
 		buttons: {
 			"Freestanding Item": {
 				icon: "Heart Piece",
-				itemLocation: "Heart Piece in Impa's House",
 				description: "Simply grab the item in the room."
 			},
 			"Cow": {
-				itemLocation: "Cow Impa's House",
 				description: "Play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.cowSanity;
@@ -372,12 +357,10 @@ InteriorGroups = {
 		}
 	},
 	"Stable": {
-		map: "Lon Lon Ranch",
 		tooltip: "This is the building with the cows in the stables.",
 		buttons: {
 			"Cow 1": {
 				icon: "Cow",
-				itemLocation: "Left Cow in Stable",
 				description: "Play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.cowSanity;
@@ -388,7 +371,6 @@ InteriorGroups = {
 			},
 			"Cow 2": {
 				icon: "Cow",
-				itemLocation: "Right Cow in Stable",
 				description: "Play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.cowSanity;
@@ -400,18 +382,15 @@ InteriorGroups = {
 		}
 	},
 	"Cow Shed": {
-		map: "Lon Lon Ranch",
 		tooltip: "This is the building with the cows and boxes you can push for the freestanding item",
 		buttons: {
 			"Freestanding Item": {
 				icon: "Heart Piece",
-				itemLocation: "Cow Shed Item in Back",
 				description: "Push the box out of the way and crawl through the hole to get the item.",
 				isChildOnly: function() { return true; }
 			},
 			"Cow 1": {
 				icon: "Cow",
-				itemLocation: "Left Cow in Cow Shed",
 				description: "Play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.cowSanity;
@@ -422,7 +401,6 @@ InteriorGroups = {
 			},
 			"Cow 2": {
 				icon: "Cow",
-				itemLocation: "Right Cow in Cow Shed",
 				description: "Play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.cowSanity;
@@ -434,12 +412,10 @@ InteriorGroups = {
 		}
 	},
 	"Bombchu Bowling": {
-		//map: "Market",
 		tooltip: "The Bombchu Bowling building.",
 		buttons: {
 			"Prize 1": {
 				icon: "Bombchu",
-				itemLocation: "Bombchu Bowling Bomb Bag Prize",
 				description: "This is the first prize you can get.",
 				canGet: function(age) {
 					return Data.canPlayBombchuBowling(Age.CHILD);
@@ -447,7 +423,6 @@ InteriorGroups = {
 			},
 			"Prize 2": {
 				icon: "Bombchu",
-				itemLocation: "Bombchu Bowling Heart Piece Prize",
 				description: "This is the second prize you can get",
 				canGet: function(age) {
 					return Data.canPlayBombchuBowling(Age.CHILD);
@@ -456,38 +431,31 @@ InteriorGroups = {
 		}
 	},
 	"Fishing Pond": {
-		map: "Lake Hylia",
 		tooltip: "The fishing pond area.",
 		buttons: {
 			"Child Fishing": {
-				itemLocation: "Fishing Child",
 				description: "The prize you can get as child.",
 				isChildOnly: function() { return true; }
 			},
 			"Adult Fishing": {
-				itemLocation: "Fishing Adult",
 				description: "The prize you can get as adult.",
 				isAdultOnly: function() { return true; }
 			}
 		}
 	},
 	"Child Archery": {
-		map: "Market",
 		tooltip: "This is the archery minigame. The shopkeeper will only be here as a child.",
 		buttons: {
 			"Child Archery": {
-				itemLocation: "Slingshot Minigame",
 				description: "This is the prize for completing the minigame as child.",
 				isChildOnly: function() { return true; }
 			}
 		}
 	},
 	"Adult Archery": {
-		map: "Kakariko Village",
 		tooltip: "This is the archery minigame. The shopkeeper will only be here as adult.",
 		buttons: {
 			"Adult Archery": {
-				itemLocation: "Archery Minigame",
 				description: "This is the prize for completing the minigame as adult.",
 				canGet: function(age) {
 					return Items.FAIRY_BOW.playerHas;
@@ -497,11 +465,9 @@ InteriorGroups = {
 		}
 	},
 	"Treasure Chest Minigame": {
-		//map: "Market",
 		tooltip: "The minigame where you probably want the Lens of Truth.",
 		buttons: {
 			"Treasure Chest Minigame Prize": {
-				itemLocation: "Treasure Chest Minigame",
 				description: "This is the prize for completing the minigame.",
 				canGet: function(age) {
 					return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
@@ -510,12 +476,10 @@ InteriorGroups = {
 		}
 	},
 	"Super Cucco Minigame": {
-		map: "Lon Lon Ranch",
 		tooltip: "Talon's House in Lon Lon Ranch",
 		time: function() { return Time.DAY; },
 		buttons: {
 			"Super Cucco Minigame": {
-				itemLocation: "Talon's Super Cucco Minigame",
 				description: "This is the prize for completing the minigame.",
 				canGet: function(age) {
 					return Items.MASK_SLOT.currentUpgrade >= 2 && Data.itemLocationObtained("Castle", "main", "Wake up Talon");
@@ -531,13 +495,11 @@ InteriorGroups = {
 		}
 	},
 	"Windmill": {
-		map: "Kakariko Village",
 		neverHide: true,
 		tooltip: "Kakariko Windmill - Doesn't take the Dampe Race entrance into consideration for the heart piece item", //TODO
 		buttons: {
 			"Windmill Heart Piece": {
 				icon: "Heart Piece",
-				itemLocation: "Heart Piece in Windmill",
 				description: "As a child, you can get this with a well-aimed Boomerang. Use a well-aimed hookshot and jumpslash, or do a trick to jump to the platform.",
 				canGet: function(age) {
 					if (age === Age.CHILD) {
@@ -557,14 +519,12 @@ InteriorGroups = {
 			},
 			"Song of Storms":
 			{
-				itemLocation: "Song of Storms",
 				description: "Take out your ocarina by the windmill guy to get this.",
 				canGet: function(age) { return Data.canPlaySongs() },
 				isAdultOnly: function() { return true; }
 			},
 			"Drain Well Water":
 			{
-				itemLocation: "Drain Well Water",
 				description: "Play the song of storms by the windmill guy - isn't actually an item check.",
 				canGet: function(age) { return Data.canPlaySong(Songs.SONG_OF_STORMS); },
 				isChildOnly: function() { return true; },
@@ -596,25 +556,21 @@ InteriorGroups = {
 		buttons: {
 			"Chest 1": {
 				icon: "Chest",
-				itemLocation: "",
 				description: "The upper left chest.",
 				canGet: function(age) { return true; },
 			},
 			"Chest 2": {
 				icon: "Chest",
-				itemLocation: "",
 				description: "The lower left chest.",
 				canGet: function(age) { return true; },
 			},
 			"Chest 3": {
 				icon: "Chest",
-				itemLocation: "",
 				description: "The upper right chest.",
 				canGet: function(age) { return true; },
 			},
 			"Chest 4": {
 				icon: "Chest",
-				itemLocation: "",
 				description: "The lower right chest.",
 				canGet: function(age) { return true; },
 			},
@@ -704,11 +660,9 @@ GrottoGroups = {
 		}
 	},
 	"Skulltula at Distance": {
-		map: "Hyrule Field",
 		tooltip: "This grotto has a big skulltula and a gold skulltula on the upper wall.",
 		buttons: {
 			"Skulltula at Distance": {
-				itemLocation: "Skulltula in Grotto by Kakariko",
 				description: "The gold skulltula is on the wall behind the big skulltula.",
 				canGet: function(age) {
 					return Data.canGrabShortDistances(age);
@@ -717,12 +671,10 @@ GrottoGroups = {
 		}
 	},
 	"Cow and Web Grotto": {
-		map: "Hyrule Field",
 		tooltip: "This is the grotto with webs on the walls, a cow, and a skulltula.",
 		hasGossipStone: true,
 		buttons: {
 			"Cow": {
-				itemLocation: "Cow in Grotto by Gerudo",
 				description: "Burn the web, then play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.cowSanity;
@@ -732,7 +684,6 @@ GrottoGroups = {
 				}
 			},
 			"Skulltula at Distance": {
-				itemLocation: "Skulltula in Grotto by Gerudo",
 				description: "Burn the web. The skulltula is in the section the cow is in.",
 				canGet: function(age) {
 					if (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2) {
@@ -755,12 +706,10 @@ GrottoGroups = {
 		}
 	},
 	"Bombable Wall Grotto": {
-		map: "Castle",
 		tooltip: "This is the grotto with bombable walls and many skulltula sounds.",
 		hasGossipStone: true,
 		buttons: {
 			"Skulltula in Bombable Wall Grotto": {
-				itemLocation: "Skulltula in Song of Storms Grotto",
 				description: "The skulltula is high up behind one of the bombable walls. As an adult, you can actually use your hookshot to get the skulltula without blowing up the wall.",
 				canGet: function(age) {
 					let canGetSkulltula = Data.canGrabShortDistances(age);
@@ -780,11 +729,9 @@ GrottoGroups = {
 		}
 	},
 	"Forest Stage": {
-		map: "Lost Woods",
 		tooltip: "This is the forest stage.",
 		buttons: {
 			"Skull Mask Item": {
-				itemLocation: "Forest Stage Skull Mask",
 				description: "Wear the Skull Mask and stand front and center near the entrance.",
 				isChildOnly: function() { return true; },
 				canGet: function(age) {
@@ -793,7 +740,6 @@ GrottoGroups = {
 			},
 			"Mask of Truth Item": {
 				icon: "Mask of Truth",
-				itemLocation: "Forest Stage Mask of Truth",
 				description: "Wear the Mask of Truth and stand front and center near the entrance.",
 				isChildOnly: function() { return true; },
 				canGet: function(age) {
@@ -803,11 +749,9 @@ GrottoGroups = {
 		}
 	},
 	"Redead Sun's Song Grave": {
-		//map: "Graveyard",
 		tooltip: "This is the grave with the single redead.",
 		buttons: {
 			"Redead Sun's Song Chest": {
-				itemLocation: "Chest in Grave with Redead",
 				description: "Play the Sun's Song near the redead to spawn a chest.",
 				canGet: function(age) {
 					return Data.canPlaySong(Songs.SUNS_SONG);
@@ -816,18 +760,15 @@ GrottoGroups = {
 		}
 	},
 	"Royal Family's Tomb": {
-		//map: "Graveyard",
 		tooltip: "The Royal Family's Tomb.",
 		buttons: {
 			"Chest by Lighting Torches": {
-				itemLocation: "Royal Family's Tomb Chest",
 				description: "Light the torches in the first room to spawn a chest.",
 				canGet: function(age) {
 					return Data.canUseFireItem(age);
 				}
 			},
 			"Sun's Song": {
-				itemLocation: "Sun's Song",
 				description: "Go through the rooms to get the item at the end.",
 				canGet: function(age) {
 					return Data.hasDamagingItem(age);
@@ -836,12 +777,10 @@ GrottoGroups = {
 		}
 	},
 	"Dampe's Grave": {
-		map: "Graveyard",
 		neverHide: true,
 		tooltip: "Dampe's Grave - Be sure to mark the windmill entrance to see those items!",
 		buttons: {
 			"Hookshot Chest": {
-				itemLocation: "Hookshot Chest from Dampe Race",
 				description: "This is the prize for completing the Dampe Race for the first time.",
 				canGet: function(age) {
 					return true;
@@ -849,7 +788,6 @@ GrottoGroups = {
 			},
 			"Race Reward": {
 				icon: "Heart Piece",
-				itemLocation: "Heart Piece from Dampe Race",
 				description: "This is the prize for completing the Dampe Race in less than one minute.",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.dampeRaceHPDisabled;
@@ -869,11 +807,9 @@ GrottoGroups = {
 		}
 	},
 	"Wolfos Grotto": {
-		map: "Sacred Forest Meadow",
 		tooltip: "This grotto has crystal walls and 2 wolfos.",
 		buttons: {
 			"Chest in Wolfos Grotto": {
-				itemLocation: "Grotto by Entrance",
 				description: "Kill the wolfos to spawn the chest.",
 				canGet: function(age) {
 					return Data.hasDamagingItem(age);
@@ -882,11 +818,9 @@ GrottoGroups = {
 		}
 	},
 	"Two Redead Grotto": {
-		//map: "Kakariko Village",
 		tooltip: "This grotto has 2 redeads.",
 		buttons: {
 			"Chest in 2 Redead Grotto": {
-				itemLocation: "Grotto With Redeads",
 				description: "Kill the redeads to spawn the chest.",
 				canGet: function(age) {
 					return Data.hasSwordWeapon(age);
@@ -895,11 +829,9 @@ GrottoGroups = {
 		}
 	},
 	"Cow Grotto": {
-		map: "Death Mountain Trail",
 		tooltip: "This grotto has rupees and a cow.",
 		buttons: {
 			"Cow": {
-				itemLocation: "Cow Grotto Before Volcano Path",
 				description: "Play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.cowSanity;
@@ -911,11 +843,9 @@ GrottoGroups = {
 		}
 	},
 	"Water Heart Piece Grotto": {
-		map: "Hyrule Field",
 		tooltip: "This grotto has a tektite and a heart piece in water.",
 		buttons: {
 			"Water Heart Piece": {
-				itemLocation: "Grotto by North River Tree",
 				description: "Dive down or use iron boots to get the heart piece",
 				canGet: function(age) {
 					return Data.canSinkGoldenScaleDepth(age);
@@ -930,7 +860,6 @@ GrottoGroups = {
 		excludeFromGroup: function() { return true; },
 		buttons: {
 			"Chest": {
-				itemLocation: "",
 				description: "The upper left chest.",
 				canGet: function(age) { return true; },
 			}

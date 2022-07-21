@@ -63,13 +63,21 @@ let GossipStoneSettings = {
 
 let Settings = {
 	ItemLocationsToExclude: {
-		// "Lake Hylia": ["Fishing Child", "Fishing Adult"],
-		// "Gerudo Fortress": ["Archery Minigame 1000 Points", "Archery Minigame 1500 Points"],
-		// "Market": ["Slingshot Minigame"],
-		// "Kakariko Village": ["Archery Minigame"],
-		// "Graveyard": ["Heart Piece from Dampe Race", "Hookshot Chest from Dampe Race"],
-		// "Kokiri Forest": ["Cow in Link's House"],
-		// "Fire Temple": ["Chest in Scarecrow Song Area"]
+		// Maps: {
+		// 	"Gerudo Fortress": ["Archery Minigame 1000 Points", "Archery Minigame 1500 Points"],
+		// 	"Fire Temple": ["Chest in Scarecrow Song Area"]
+		// },
+
+		// Interiors: {
+		// 	"Fishing Pond": ["Child Fishing", "Adult Fishing"],
+		// 	"Child Archery": ["Child Archery"],
+		// 	"Adult Archery": ["Adult Archery"],
+		// 	"Link's House": ["Cow in Link's House"]
+		// },
+
+		// Grottos: {
+		// 	"Dampe's Grave": ["Hookshot Chest", "Race Reward"]
+		// }
 	},
 
 	TrackerSettings: {

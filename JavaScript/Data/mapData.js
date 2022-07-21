@@ -775,16 +775,6 @@ let MapLocations = {
                         MapInfo: { x: 104, y: 230 },
                         Age: Age.CHILD,
                         LongDescription: "If you start near the entrance, the dog you want is just to the left behind the market stall. From there, beeline to the right to get to the left market alley. Go to the more rightmost of the two doors and turn in the dog."
-                    },
-                    "Bombchu Shop": {
-                        Name: "Bombchu Shop",
-                        ItemGroup: ItemGroups.SHOP,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 130, y: 232 },
-                        IsInterior: true,
-                        Age: Age.CHILD,
-                        LongDescription: "This shop is only open at night. Starting at the market entrance, go straight right into the alley. Take the first door on the left wall to get to the shop.",
-                        OneWayInteriorSpawnEntrance: true
                     }
                 }
             }
@@ -2087,15 +2077,6 @@ let MapLocations = {
                         MapInfo: { x: 72, y: 142 },
                         Age: Age.CHILD,
                         LongDescription: "This is the bean spot by the guy who sells beans. It's only used for convenience sake."
-                    },
-                    "Gossip Stone in Open Grotto on Cliff": {
-                        Name: "Gossip Stone in Open Grotto on Cliff",
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        MapInfo: { x: 132, y: 217 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
-                        Age: Age.EITHER,
-                        IsGrotto: true,
-                        LongDescription: "Go up the ladder closest to Hyrule Field. Jump to the cliff behind you and enter the grotto to find the stone."
                     },
                     "Gossip Stone on Cliff": {
                         Name: "Gossip Stone on Cliff",

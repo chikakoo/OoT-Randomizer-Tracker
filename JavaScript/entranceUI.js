@@ -67,10 +67,21 @@ let EntranceUI = {
 			let groupDiv = dce("div", "entrance-group");
 			let shouldAlwaysDisplayGroup = Data.shouldDisplayItemLocation(itemLocation) && group.neverHide;
 
-			if (!shouldAlwaysDisplayGroup) {
+			if (!shouldAlwaysDisplayGroup && (itemLocation.IsInterior || itemLocation.IsGrotto)) {
 				let shouldNotDisplayGroup = group.shouldNotDisplay && group.shouldNotDisplay();
-				let locationsToExcludeMap = Settings.ItemLocationsToExclude[group.map];
-				let allItemsExcluded = locationsToExcludeMap && locationsToExcludeMap.length === Object.keys(group.buttons).length;
+				let itemsToExclude;
+				if (itemLocation.IsInterior) {
+					itemsToExclude = Settings.ItemLocationsToExclude.Interiors;
+				} else {
+					itemsToExclude = Settings.ItemLocationsToExclude.Grottos;
+				}
+				
+				let allItemsExcluded = false;
+				if (itemsToExclude) {
+					let groupItemsToExclude = itemsToExclude[groupName];
+					allItemsExcluded = groupItemsToExclude && groupItemsToExclude.length === Object.keys(group.buttons).length;
+				}
+
 				if (shouldNotDisplayGroup || allItemsExcluded) { return; }
 			}
 
@@ -137,7 +148,8 @@ let EntranceUI = {
 	 */
 	_createButtonDivs: function(itemLocation, itemLocationEntranceTasksContainer) {
 		let itemLocationGroup = Data.getEntranceGroup(itemLocation);
-		let selectedGroup = this.getEntranceData(itemLocation)[itemLocationGroup.name];
+		let groupName = itemLocationGroup.name;
+		let selectedGroup = this.getEntranceData(itemLocation)[groupName];
 		let buttonKeys = Object.keys(selectedGroup.buttons);
 		let _this = this;
 
@@ -148,9 +160,22 @@ let EntranceUI = {
 		buttonKeys.forEach(function(buttonName) {
 			let button = selectedGroup.buttons[buttonName];
 			let shouldNotDisplayButton = button.shouldNotDisplay && button.shouldNotDisplay();
-			let locationsToExcludeMap = Settings.ItemLocationsToExclude[selectedGroup.map];
-			let shouldExcludeEquivalentItem = locationsToExcludeMap && locationsToExcludeMap.includes(button.itemLocation);
-			button.excluded = shouldExcludeEquivalentItem;
+			let shouldExcludeEquivalentItem = false;
+
+			if (itemLocation.IsInterior || itemLocation.IsGrotto) {
+				let itemsToExclude;
+				if (itemLocation.IsInterior) {
+					itemsToExclude = Settings.ItemLocationsToExclude.Interiors;
+				} else {
+					itemsToExclude = Settings.ItemLocationsToExclude.Grottos;
+				}
+				
+				if (itemsToExclude) {
+					let groupItemsToExclude = itemsToExclude[groupName];
+					shouldExcludeEquivalentItem = groupItemsToExclude && groupItemsToExclude.includes(buttonName);
+					button.excluded = shouldExcludeEquivalentItem;
+				}
+			}
 			
 			if (shouldNotDisplayButton || shouldExcludeEquivalentItem) { return; }
 			
