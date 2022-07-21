@@ -81,6 +81,7 @@ InteriorGroups = {
 		neverHide: true,
 		buttons: {
 			"Cow in Link's House": {
+				icon: "Cow",
 				itemLocation: "Cow in Link's House",
 				description: "As an adult, beat Malon's Epona challenge to unlock the cow in Link's house.",
 				shouldNotDisplay: function() {
@@ -227,6 +228,7 @@ InteriorGroups = {
 				}
 			},
 			"Borrow Mask of Truth": {
+				icon: "Mask of Truth",
 				itemLocaton: "Borrow Mask of Truth",
 				description: "After selling the Bunny Hood to the running guy in Hyrule Field, head to the mask shop to borrow this mask.",
 				canGet: function(age) {
@@ -304,6 +306,7 @@ InteriorGroups = {
 		tooltip: "This is the lab with the professor and the pool of water in the back.",
 		buttons: {
 			"Lakeside Heart Piece": {
+				icon: "Heart Piece",
 				itemLocation: "Heart Piece in Lab",
 				description: "Use the golden scale and dive to touch the bottom of the water area. The professor will give you this item.",
 				canGet: function(age) {
@@ -315,6 +318,7 @@ InteriorGroups = {
 				}
 			},
 			"Lakeside Skulltula": {
+				icon: "Skulltula",
 				itemLocation: "Skulltula in Lab Water",
 				description: "This skulltula is on the bottom of the water area. Equip the iron boots and sink down. Roll into the box to reveal it.",
 				canGet: function(age) {
@@ -330,6 +334,7 @@ InteriorGroups = {
 		tooltip: "This is the pot room as a child, and the big poe buyer room as an adult.",
 		buttons: {
 			"Child Skulltula": {
+				icon: "Skulltula",
 				itemLocation: "Skulltula in Pot-filled House",
 				description: "This is the skulltula in the crate in the back of the room.",
 				isChildOnly: function() { return true; }
@@ -350,6 +355,7 @@ InteriorGroups = {
 		tooltip: "Inside the cage with the cow and the freestanding item.",
 		buttons: {
 			"Freestanding Item": {
+				icon: "Heart Piece",
 				itemLocation: "Heart Piece in Impa's House",
 				description: "Simply grab the item in the room."
 			},
@@ -370,6 +376,7 @@ InteriorGroups = {
 		tooltip: "This is the building with the cows in the stables.",
 		buttons: {
 			"Cow 1": {
+				icon: "Cow",
 				itemLocation: "Left Cow in Stable",
 				description: "Play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
@@ -380,6 +387,7 @@ InteriorGroups = {
 				}
 			},
 			"Cow 2": {
+				icon: "Cow",
 				itemLocation: "Right Cow in Stable",
 				description: "Play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
@@ -396,11 +404,13 @@ InteriorGroups = {
 		tooltip: "This is the building with the cows and boxes you can push for the freestanding item",
 		buttons: {
 			"Freestanding Item": {
+				icon: "Heart Piece",
 				itemLocation: "Cow Shed Item in Back",
 				description: "Push the box out of the way and crawl through the hole to get the item.",
 				isChildOnly: function() { return true; }
 			},
 			"Cow 1": {
+				icon: "Cow",
 				itemLocation: "Left Cow in Cow Shed",
 				description: "Play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
@@ -411,6 +421,7 @@ InteriorGroups = {
 				}
 			},
 			"Cow 2": {
+				icon: "Cow",
 				itemLocation: "Right Cow in Cow Shed",
 				description: "Play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
@@ -427,6 +438,7 @@ InteriorGroups = {
 		tooltip: "The Bombchu Bowling building.",
 		buttons: {
 			"Prize 1": {
+				icon: "Bombchu",
 				itemLocation: "Bombchu Bowling Bomb Bag Prize",
 				description: "This is the first prize you can get.",
 				canGet: function(age) {
@@ -434,6 +446,7 @@ InteriorGroups = {
 				}
 			},
 			"Prize 2": {
+				icon: "Bombchu",
 				itemLocation: "Bombchu Bowling Heart Piece Prize",
 				description: "This is the second prize you can get",
 				canGet: function(age) {
@@ -523,6 +536,7 @@ InteriorGroups = {
 		tooltip: "Kakariko Windmill - Doesn't take the Dampe Race entrance into consideration for the heart piece item", //TODO
 		buttons: {
 			"Windmill Heart Piece": {
+				icon: "Heart Piece",
 				itemLocation: "Heart Piece in Windmill",
 				description: "As a child, you can get this with a well-aimed Boomerang. Use a well-aimed hookshot and jumpslash, or do a trick to jump to the platform.",
 				canGet: function(age) {
@@ -621,6 +635,7 @@ GrottoGroups = {
 				canGet: function(age) { return true; }
 			},
 			"Gossip Stone": {
+				icon: "Mask of Truth",
 				description: "The gossip stone in the middle of the room.",
 				canGet: function(age) { 
 					return Data.canReadGossipStone(age); 
@@ -635,6 +650,7 @@ GrottoGroups = {
 		tooltip: "This is a grotto with 1 business scrub.",
 		buttons: {
 			"Scrub 1": {
+				icon: "Scrub",
 				description: "Buy the item from the scrub.",
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
@@ -646,12 +662,14 @@ GrottoGroups = {
 		tooltip: "This is a grotto with 2 business scrubs.",
 		buttons: {
 			"Scrub 1": {
+				icon: "Scrub",
 				description: "Buy the item from the scrub.",
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
 			},
 			"Scrub 2": {
+				icon: "Scrub",
 				description: "Buy the item from the scrub.",
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
@@ -663,18 +681,21 @@ GrottoGroups = {
 		tooltip: "This is a grotto with 3 business scrubs.",
 		buttons: {
 			"Scrub 1": {
+				icon: "Scrub",
 				description: "Buy the item from the scrub.",
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
 			},
 			"Scrub 2": {
+				icon: "Scrub",
 				description: "Buy the item from the scrub.",
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
 			},
 			"Scrub 3": {
+				icon: "Scrub",
 				description: "Buy the item from the scrub.",
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
@@ -722,6 +743,7 @@ GrottoGroups = {
 				}
 			},
 			"Gossip Stone": {
+				icon: "Mask of Truth",
 				description: "Burn the web. The stone is in one of the little rooms.",
 				canGet: function(age) { 
 					return Data.canUseFireItem(age) && Data.canReadGossipStone(age); 
@@ -746,6 +768,7 @@ GrottoGroups = {
 				}
 			},
 			"Gossip Stone": {
+				icon: "Mask of Truth",
 				description: "The gossip stone is behind one of the bombable walls.",
 				canGet: function(age) { 
 					return Data.canBreakMudWalls(age) && Data.canReadGossipStone(age); 
@@ -769,6 +792,7 @@ GrottoGroups = {
 				}
 			},
 			"Mask of Truth Item": {
+				icon: "Mask of Truth",
 				itemLocation: "Forest Stage Mask of Truth",
 				description: "Wear the Mask of Truth and stand front and center near the entrance.",
 				isChildOnly: function() { return true; },
@@ -824,6 +848,7 @@ GrottoGroups = {
 				}
 			},
 			"Race Reward": {
+				icon: "Heart Piece",
 				itemLocation: "Heart Piece from Dampe Race",
 				description: "This is the prize for completing the Dampe Race in less than one minute.",
 				shouldNotDisplay: function() {
@@ -921,6 +946,7 @@ GrottoGroups = {
 		tooltip: "Gohma in the Deku Tree",
 		buttons: {
 			"Heart Container": {
+				icon: "Heart Piece",
 				description: "To defeat Gohma, you must first stun her when her eye is red. You can use the slingshot or deku nuts to do this - nuts don't stun her for nearly as long, though. Once she's down, attack her. The quickest kill is with three deku stick jumpslashes (or one then two crouch stabs).",
 				canGet: function(age) {
 					return Data.hasSwordWeapon(age) && (Items.DEKU_NUT.playerHas || (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas));
@@ -942,6 +968,7 @@ GrottoGroups = {
 				canGet: function(age) { return true; }
 			},
 			"Heart Container": {
+				icon: "Heart Piece",
 				description: "To defeat King Dodongo, you must throw a bomb or bomb flower into his mouth, and then attack him afterward. Note that you should follow him as he rolls so that he gets up faster. If using bomb flowers, try to get them a little bit early, as you need time to run back to him before he shoots his fireball. The quickest kill is with 2 deku stick/master sword jumpslashes, or 1 biggoron's sword jumpslash.",
 				canGet: function(age) {
 					return Data.canBlastOrSmash(age) && (Items.BOMB.playerHas || Equipment.STRENGTH.playerHas);
@@ -959,6 +986,7 @@ GrottoGroups = {
 		tooltip: "Barinade in Jabu Jabu's Belly",
 		buttons: {
 			"Heart Container": {
+				icon: "Heart Piece",
 				description: "To defeat Barinade, you need the boomerang and also either a sword or at least 3 Deku Sticks. First, dislodge it from the ceiling using the boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
 				canGet: function(age) {
 					return Data.hasSwordWeapon(age) && Data.canUseBoomerang(age);
@@ -978,6 +1006,7 @@ GrottoGroups = {
 		tooltip: "Phantom Ganon in the Forest Temple",
 		buttons: {
 			"Heart Container": {
+				icon: "Heart Piece",
 				description: "For phase 1 of Phantom Ganon, you must shoot the real version of him that comes out of the paintings. You can use your bow or hookshot for that. The real one is lighter and is the only one that makes sound. Phase 2 is the familiar tenis match. Stun him with his own attacks and damage him when he's stunned. You can also just spam him with the boomerang!",
 				canGet: function(age) {
 					let canStunBoss = (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas) ||
@@ -1001,6 +1030,7 @@ GrottoGroups = {
 		tooltip: "Volvagia in the Fire Temple",
 		buttons: {
 			"Heart Container": {
+				icon: "Heart Piece",
 				description: "To defeat Volvagia, hit her with your hammer when she pops out of the holes. After that, attack it again. Jumpslashes will do more damage, like usual. You can hit it with arrows while it's flying to do additional damage. If it ever drops rocks on you, you can hang off the side of the cliff to avoid damage.",
 				canGet: function(age) {
 					let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
@@ -1023,6 +1053,7 @@ GrottoGroups = {
 		tooltip: "Morpha in the Water Temple",
 		buttons: {
 			"Heart Container": {
+				icon: "Heart Piece",
 				description: "To defeat morpha, hookshot her nucleus out of the water and hit her to damage her. A good way to kill is to continuously hookshot her to bring her into a corner. Now, get to the other side of her and slash once so it runs into the corner. Now quickly jumpslash it (Z + A) and continue to crouch stab (Hold R, spam B) until it's dead.",
 				canGet: function(age) {
 					return age === Age.ADULT && Items.HOOKSHOT.playerHas;
@@ -1048,6 +1079,7 @@ GrottoGroups = {
 		tooltip: "Bongo Bongo in the Shadow Temple",
 		buttons: {
 			"Heart Container": {
+				icon: "Heart Piece",
 				description: "When fighting Bongo Bongo, it helps to NOT have the Hover Boots equipped. When the fight starts, if you hold down, he won't circle you right away. Hit his hands with your bow or hookshot, or slingshot to stun them. Now hit him before he hits you and damage him as much as you can. If you have magic, quickspins can actually stunlock him for a 1-cycle if you do them perfectly.",
 				canGet: function(age) {
 					let canStunHands = (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas) ||
@@ -1069,6 +1101,7 @@ GrottoGroups = {
 		tooltip: "Twinrova in the Spirit Temple",
 		buttons: {
 			"Heart Container": {
+				icon: "Heart Piece",
 				description: "To defeat Twinrova, reflect one of the sister's shots at the other one. Do this four times to get to the second phase. Now, you must charge your shield with 3 of the same kind of attack. When you do, your shield will shoot it at Twinrova, stunning her. Go hit her! As usual, a jumpslash (Z + A) then crouch stabs (R + spam B) do the most damage.",
 				canGet: function(age) {
 					return age === Age.ADULT && Equipment.MIRROR_SHIELD.playerHas;

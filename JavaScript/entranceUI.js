@@ -248,7 +248,8 @@ let EntranceUI = {
 			}
 		});
 		
-		delete itemLocationGroup;
+		let groupProperty = Data.usesDefaultGroup(itemLocation) ? "DefaultEntranceGroup" : "EntranceGroup";
+		delete itemLocation[groupProperty];
 		
 		if (itemLocation.ExitMap === _currentLocationName) {
 			let mainDiv = document.getElementById(`${itemLocation.Name}-entrance-groups`);
