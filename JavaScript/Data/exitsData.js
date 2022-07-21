@@ -50,9 +50,11 @@ let OwExits = {
         "Link's House": {
             Name: "Link's House",
             ExitRegion: "main",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances || Settings.RandomizerSettings.cowSanity; },
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             IsComplexEntrance: true,
+            DefaultEntranceGroupName: "Link's House",
             MapInfo: { x: 170, y: 236 },
             Age: Age.EITHER,
             LongDescription: "This is the house with the ladder."
@@ -60,6 +62,7 @@ let OwExits = {
         "Saria's House": {
             Name: "Saria's House",
             ExitRegion: "main",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances; },
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             MapInfo: { x: 204, y: 228 },
@@ -71,6 +74,7 @@ let OwExits = {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            DefaultEntranceGroupName: "Mido's House",
             MapInfo: { x: 125, y: 100 },
             Age: Age.EITHER,
             LongDescription: "This is the house closet to the entrance to the Lost Woods."
@@ -78,6 +82,7 @@ let OwExits = {
         "Know-It-All House": {
             Name: "Know-It-All House",
             ExitRegion: "main",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances; },
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             MapInfo: { x: 84, y: 179 },
@@ -87,6 +92,7 @@ let OwExits = {
         "House of Twins": {
             Name: "House of Twins",
             ExitRegion: "main",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances; },
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             MapInfo: { x: 252, y: 248 },
@@ -97,6 +103,7 @@ let OwExits = {
             Name: "Shop",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
+            DefaultEntranceGroupName: "Shop",
             IsInterior: true,
             MapInfo: { x: 245, y: 128 },
             Age: Age.EITHER,

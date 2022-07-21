@@ -54,60 +54,6 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "This is the prize at the end of the boulder maze, though the Hole of Z."
                     },
-                    "Mido's House Upper Left": {
-                        Name: "Mido's House Upper Left",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 119, y: 104 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This chest is in Mido's house."
-                    },
-                    "Mido's House Lower Left": {
-                        Name: "Mido's House Lower Left",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 128, y: 104 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This chest is in Mido's house."
-                    },
-                    "Mido's House Upper Right": {
-                        Name: "Mido's House Upper Right",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 119, y: 95 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This chest is in Mido's house."
-                    },
-                    "Mido's House Lower Right": {
-                        Name: "Mido's House Lower Right",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 128, y: 95 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "This chest is in Mido's house."
-                    },
-                    // "Song of Storms Grotto by Lost Woods": {
-                    //     Name: "Song of Storms Grotto by Lost Woods",
-                    //     ItemGroup: ItemGroups.CHEST,
-                    //     MapInfo: { x: 109, y: 36 },
-                    //     IsGrotto: true,
-                    //     Age: Age.EITHER,
-                    //     LongDescription: "Play the Song of Storms by the Gossip Stone near the Lost Woods entrance to reveal a grotto with a chest.",
-                    //     RequiredSongs: [Songs.SONG_OF_STORMS]
-                    // },
-                    "Cow in Link's House": {
-                        Name: "Cow in Link's House",
-                        ItemGroup: ItemGroups.COW,
-                        MapInfo: { x: 169, y: 229 },
-                        IsInterior: true,
-                        RequiredItems: [Items.OCARINA],
-                        Age: Age.ADULT,
-                        LongDescription: "Beat Malon's challenge in Lon Lon Ranch as adult and she will award you with a cow in your house.",
-                        IsPostWalkCheck: true,
-                        CustomRequirement: function(age) {
-                            return Data.canAccessMap(age, "Lon Lon Ranch", "main");
-                        }
-                    },
                     "Skulltula in Soil": {
                         Name: "Skulltula in Soil",
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -136,14 +82,6 @@ let MapLocations = {
                             return Settings.GlitchesToAllow.houseOfTwinsSkullWithHovers && Equipment.HOVER_BOOTS.playerHas;
                         }
                     },
-                    "Kokiri Shop": {
-                        Name: "Kokiri Shop",
-                        ItemGroup: ItemGroups.SHOP,
-                        MapInfo: { x: 245, y: 128 },
-                        IsInterior: true,
-                        Age: Age.EITHER,
-                        LongDescription: "Found in the middle of the village."
-                    },
                     "Plant Bean by Kokiri Shop": {
                         Name: "Plant Bean by Kokiri Shop",
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -168,16 +106,6 @@ let MapLocations = {
                         MapInfo: { x: 102, y: 37 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is by the lost woods entrance at the top area of the forest.",
-                    },
-                    "Gossip Stone in Song of Storms Grotto": {
-                        Name: "Gossip Stone in Song of Storms Grotto",
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
-                        MapInfo: { x: 109, y: 36 },
-                        Age: Age.EITHER,
-                        IsGrotto: true,
-                        LongDescription: "This stone is in the Song of Storms grotto by the lost woods entrance at the top area of the forest.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
                     }
                 }
             },

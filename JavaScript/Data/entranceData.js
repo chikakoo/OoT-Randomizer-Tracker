@@ -77,7 +77,7 @@ InteriorGroups = {
 	"Link's House": {
 		map: "Kokiri Forest",
 		tooltip: "Link's House",
-		isLinksHouse: true,
+		excludeFromGroup: function() { return Data.linksHouseLocation && Data.linksHouseLocation.map; },
 		neverHide: true,
 		buttons: {
 			"Cow in Link's House": {
@@ -111,6 +111,7 @@ InteriorGroups = {
 		map: "Temple of Time",
 		tooltip: "The Temple of Time",
 		isTempleOfTime: true,
+		excludeFromGroup: function() { return Data.templeOfTimeLocation && Data.templeOfTimeLocation.map; },
 		neverHide: true,
 		buttons: {
 			"Prelude of Light": {
@@ -572,7 +573,45 @@ InteriorGroups = {
 			}
 			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "windmill");
 		}
-	}
+	},
+
+	// Non-shuffle only locations
+	"Mido's House": {
+		tooltip: "Mido's House in Kokiri Forest",
+		excludeFromGroup: function() { return true; },
+		buttons: {
+			"Chest 1": {
+				icon: "Chest",
+				itemLocation: "",
+				description: "The upper left chest.",
+				canGet: function(age) { return true; },
+			},
+			"Chest 2": {
+				icon: "Chest",
+				itemLocation: "",
+				description: "The lower left chest.",
+				canGet: function(age) { return true; },
+			},
+			"Chest 3": {
+				icon: "Chest",
+				itemLocation: "",
+				description: "The upper right chest.",
+				canGet: function(age) { return true; },
+			},
+			"Chest 4": {
+				icon: "Chest",
+				itemLocation: "",
+				description: "The lower right chest.",
+				canGet: function(age) { return true; },
+			},
+		},
+		postClick: function(itemLocation, isSelected) {
+			let itemLocationTimeIconDiv = document.getElementById(`${itemLocation.Name}-time-icon`);
+			if (itemLocationTimeIconDiv) {
+				itemLocationTimeIconDiv.style.backgroundImage = Data.getTimeImagePath(itemLocation, !isSelected);
+			}
+		}
+	},
 };
 
 /**

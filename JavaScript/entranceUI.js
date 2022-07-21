@@ -62,8 +62,7 @@ let EntranceUI = {
 		let _this = this;
 		groupKeys.forEach(function(groupName) {
 			let group = entranceData[groupName];
-			if (group.isLinksHouse && Data.linksHouseLocation && Data.linksHouseLocation.map) { return; }
-			if (group.isTempleOfTime && Data.templeOfTimeLocation && Data.templeOfTimeLocation.map) { return; }
+			if (group.excludeFromGroup && group.excludeFromGroup()) { return; }
 
 			let groupDiv = dce("div", "entrance-group");
 			let shouldAlwaysDisplayGroup = Data.shouldDisplayItemLocation(itemLocation) && group.neverHide;
@@ -122,7 +121,6 @@ let EntranceUI = {
 		itemLocation[groupProperty] = {
 			name: groupName,
 			isShop: group.isShop,
-			isLinksHouse: group.isLinksHouse,
 			isTempleOfTime: group.isTempleOfTime,
 			hasGossipStone: group.hasGossipStone,
 			completed: {},
@@ -157,8 +155,9 @@ let EntranceUI = {
 			if (shouldNotDisplayButton || shouldExcludeEquivalentItem) { return; }
 			
 			let buttonDiv = dce("div", "entrance-group-button");
+			let buttonIconName = button.icon ? button.icon : buttonName;
 			buttonDiv.title = button.description;
-			buttonDiv.style.backgroundImage = `url("Images/Entrance Groups/Button - ${buttonName}.png")`;
+			buttonDiv.style.backgroundImage = `url("Images/Entrance Groups/Button - ${buttonIconName}.png")`;
 			buttonDiv.onclick = function(event) {
 				event.stopPropagation();
 				

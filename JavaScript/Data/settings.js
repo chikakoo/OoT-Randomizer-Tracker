@@ -108,8 +108,8 @@ let Settings = {
 		iceArrowsActAsBlueFire: true,
 		
 		// Entrance shuffle settings
-		shuffleInteriorEntrances: true,
-		shuffleGrottoEntrances: true,
+		shuffleInteriorEntrances: false,
+		shuffleGrottoEntrances: false,
 		shuffleDungeonEntrances: true,
 		shuffleBossEntrances: true,
 		shuffleOverworldEntrances: true,
