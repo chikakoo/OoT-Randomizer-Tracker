@@ -326,27 +326,6 @@ Data = {
      * If it's not any of those, will return true
      */
     shouldDisplayItemLocation: function(itemLocation) {
-
-        //TODO: Actually delete this commented out code if it actually doesn't need to be there!!!
-
-        // Entrances should ONLY be displayed if the setting is on
-        // if (itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
-        //     if (itemLocation.IsGrotto) {
-        //         return Settings.RandomizerSettings.shuffleGrottoEntrances;
-        //     } else if (itemLocation.IsInterior) {
-        //         return Settings.RandomizerSettings.shuffleInteriorEntrances;
-        //     } else if (itemLocation.IsBoss) {
-        //         return Settings.RandomizerSettings.shuffleBossEntrances;
-        //     }
-        // }
-
-        // If marked as a grotto or interior, DO NOT display if it's being shuffled, since this is covered by the entrance type
-        // if (itemLocation.IsGrotto) {
-        //     return !Settings.RandomizerSettings.shuffleGrottoEntrances;
-        // } else if (itemLocation.IsInterior) {
-        //     return !Settings.RandomizerSettings.shuffleInteriorEntrances;
-        // } else 
-        
         if (itemLocation.IsBoss) {
             return !Settings.RandomizerSettings.shuffleBossEntrances;
         }
@@ -760,11 +739,6 @@ Data = {
     },
 
     /**
-     * TODO: implement this everywhere AND fill out all the DefaultEntranceGroups as necessary...
-     * will also need to deal with saving/loading/syncing this... aahh
-     * 
-     * OR consider some other way of doing this perhaps
-     * 
      * Should be used to access the entrance group of the given item location
      * DO NOT access it directly, or there may be issues if interior shuffle is off...
      * @param itemLocation - the item location
