@@ -540,13 +540,16 @@ RegionWalker = {
                         if (exit.OwExit.IsOwl) {
                             _this._markCanObtainItemInfo(exit.OwExit, age, itemObtainability);
                         }
-                        _this._addToWalkMap(age, mapName, regionName, exitName, exit.OwExit.Map, exit.OwExit.Region, exit.OwExit.ExitMap);
-                        _this._walkInRegion(age, exit.OwExit.Map, exit.OwExit.Region);
+
+                        if (exit.OwExit.Map) { // If it has no map, it's an interior exit with nowhere to go, so stop here
+                            _this._addToWalkMap(age, mapName, regionName, exitName, exit.OwExit.Map, exit.OwExit.Region, exit.OwExit.ExitMap);
+                            _this._walkInRegion(age, exit.OwExit.Map, exit.OwExit.Region);
+                        }
                     }
                 }
             } else if (Data.calculateObtainability(exit, age)) {
-                    _this._addToWalkMap(age, mapName, regionName, "sameMap", mapName, exitName, "sameMap");
-                    _this._walkInRegion(age, mapName, exitName);
+                _this._addToWalkMap(age, mapName, regionName, "sameMap", mapName, exitName, "sameMap");
+                _this._walkInRegion(age, mapName, exitName);
             }
         });
     },
