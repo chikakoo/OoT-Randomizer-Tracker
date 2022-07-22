@@ -904,7 +904,7 @@ let OwExits = {
                 let adultEarly = Settings.GlitchesToAllow.botwAsAdultWithCucco && Items.HOOKSHOT.currentUpgrade === 2 && Equipment.HOVER_BOOTS.playerHas;
 
                 // Water already drained means there's no time requirement
-                if (Data.itemLocationObtained("Interiors", "windmill", "Drain Well Water")) {
+                if (Data.itemLocationObtained("Windmill-Kak Potion", "windmill", "Drain Well Water")) {
                     return Time.EITHER;
                 }
 
@@ -946,7 +946,7 @@ let OwExits = {
                     return Data.canPlaySong(Songs.SONG_OF_STORMS);
                 }
                 
-                return Data.itemLocationObtained("Interiors", "windmill", "Drain Well Water");
+                return Data.itemLocationObtained("Windmill-Kak Potion", "windmill", "Drain Well Water");
             }
         },
 
@@ -1107,7 +1107,7 @@ let OwExits = {
         "Dampe's Grave to Kakariko Village": {
             Name: "Dampe's Grave to Kakariko Village",
             ExitRegion: "main",
-            Map: "Interiors",
+            Map: "Windmill-Kak Potion",
             Region: "dampesGrave",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances && Settings.RandomizerSettings.shuffleOverworldEntrances; },
@@ -1117,7 +1117,7 @@ let OwExits = {
             CustomRequirement: function(age) {
                 return !Settings.RandomizerSettings.shuffleGrottoEntrances && Settings.RandomizerSettings.shuffleOverworldEntrances;
             },
-            OwShuffleMap: "Interiors",
+            OwShuffleMap: "Windmill-Kak Potion",
             OwShuffleRegion: "dampesGrave",
             OwShuffleExitName: "Grave Exit",
             ReadOnly: true,
@@ -1979,12 +1979,12 @@ let OwExits = {
         }
     },
 
-    "Interiors" : {
+    "Windmill-Kak Potion" : {
         "Grave Exit": {
             Name: "Grave Exit",
             ExitRegion: "dampesGrave",
             IsGrottoExit: true,
-            MapInfo: { x: 200, y: 50 },
+            MapInfo: { x: 58, y: 252 },
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances || !Settings.RandomizerSettings.shuffleOverworldEntrances; },
             ItemGroup: ItemGroups.OW_ENTRANCE,
             Age: Age.EITHER,
@@ -1997,7 +1997,7 @@ let OwExits = {
             Name: "Windmill Exit",
             ExitRegion: "windmill",
             IsInteriorExit: true,
-            MapInfo: { x: 200, y: 100 },
+            MapInfo: { x: 221, y: 116 },
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances || !Settings.RandomizerSettings.shuffleOverworldEntrances; },
             ItemGroup: ItemGroups.OW_ENTRANCE,
             Age: Age.EITHER,
@@ -2011,7 +2011,7 @@ let OwExits = {
             ExitRegion: "windmill",
             Map: "Kakariko Village",
             Region: "main",
-            MapInfo: { x: 250, y: 100 },
+            MapInfo: { x: 221, y: 116 },
             ItemGroup: ItemGroups.OW_ENTRANCE,
             RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances && Settings.RandomizerSettings.shuffleOverworldEntrances; },
             MapInfo: { x: 166, y: 81 },
@@ -2031,7 +2031,7 @@ let OwExits = {
             Name: "Potion Shop Front",
             ExitRegion: "kakPotionShop",
             IsInteriorExit: true,
-            MapInfo: { x: 200, y: 150 },
+            MapInfo: { x: 246, y: 217 },
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances; },
             ItemGroup: ItemGroups.OW_ENTRANCE,
             Age: Age.EITHER,
@@ -2044,7 +2044,7 @@ let OwExits = {
             Name: "Potion Shop Back",
             ExitRegion: "kakPotionShop",
             IsInteriorExit: true,
-            MapInfo: { x: 220, y: 150 },
+            MapInfo: { x: 255, y: 185 },
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances; },
             ItemGroup: ItemGroups.OW_ENTRANCE,
             Age: Age.ADULT,

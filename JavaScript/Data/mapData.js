@@ -3119,8 +3119,8 @@ let MapLocations = {
 		}
 	},
 
-    "Interiors": {
-        Abbreviation: "INTR",
+    "Windmill-Kak Potion": {
+        Abbreviation: "WMKP",
 		MapGroup: MapGroups.INTERIORS,
         Regions: {
             // Dampe's Grave and Windmill area
@@ -3133,14 +3133,14 @@ let MapLocations = {
                         }
                     },
                     "Grave Exit": {
-                        OwExit: OwExits["Interiors"]["Grave Exit"]
+                        OwExit: OwExits["Windmill-Kak Potion"]["Grave Exit"]
                     }
                 },
                 ItemLocations: {
                     "Hookshot Chest": {
                         Name: "Hookshot Chest",
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 50, y: 50 },
+                        MapInfo: { x: 203, y: 238 },
                         Age: Age.EITHER,
                         UseAdultAge: function(age) { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
                         LongDescription: "This is the prize for completing the Dampe Race for the first time."
@@ -3148,7 +3148,7 @@ let MapLocations = {
                     "Race Reward": {
                         Name: "Race Reward",
                         ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 100, y: 50 },
+                        MapInfo: { x: 208, y: 233 },
                         Age: Age.EITHER,
                         UseAdultAge: function(age) { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
                         LongDescription: "This is the prize for completing the Dampe Race in less than one minute."
@@ -3172,7 +3172,7 @@ let MapLocations = {
                     "Heart Piece on Top": {
                         Name: "Heart Piece on Top",
                         ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 50, y: 100 },
+                        MapInfo: { x: 229, y: 72 },
                         Age: Age.EITHER,
                         LongDescription: "As a child, you can get this with a well-aimed Boomerang. Use a well-aimed hookshot and jumpslash, or do a trick to jump to the platform."
                     }
@@ -3190,10 +3190,10 @@ let MapLocations = {
                         }
                     },
                     "Windmill Exit": {
-                        OwExit: OwExits["Interiors"]["Windmill Exit"]
+                        OwExit: OwExits["Windmill-Kak Potion"]["Windmill Exit"]
                     },
                     "Windmill Exit to Kakariko Village": {
-                        OwExit: OwExits["Interiors"]["Windmill Exit to Kakariko Village"]
+                        OwExit: OwExits["Windmill-Kak Potion"]["Windmill Exit to Kakariko Village"]
                     }
                 },
                 ItemLocations: {
@@ -3201,7 +3201,7 @@ let MapLocations = {
                     {
                         Name: "Song of Storms",
                         ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 100, y: 100 },
+                        MapInfo: { x: 291, y: 115 },
                         Age: Age.ADULT,
                         LongDescription: "Take out your ocarina by the windmill guy to get this.",
                         NeedsOcarina: true
@@ -3210,7 +3210,7 @@ let MapLocations = {
                     {
                         Name: "Drain Well Water",
                         ItemGroup: ItemGroups.NON_ITEM,
-                        MapInfo: { x: 150, y: 100 },
+                        MapInfo: { x: 298, y: 110 },
                         Age: Age.CHILD,
                         LongDescription: "Play the song of storms by the windmill guy to drain the well water.",
                         RequiredSongs: [Songs.SONG_OF_STORMS]
@@ -3222,17 +3222,17 @@ let MapLocations = {
             kakPotionShop: {
                 Exits: {
                     "Potion Shop Front": {
-                        OwExit: OwExits["Interiors"]["Potion Shop Front"]
+                        OwExit: OwExits["Windmill-Kak Potion"]["Potion Shop Front"]
                     },
                     "Potion Shop Back": {
-                        OwExit: OwExits["Interiors"]["Potion Shop Back"]
+                        OwExit: OwExits["Windmill-Kak Potion"]["Potion Shop Back"]
                     }
                 },
                 ItemLocations: {
                     "Shop": {
                         Name: "Shop",
                         ItemGroup: ItemGroups.SHOP,
-                        MapInfo: { x: 50, y: 150 },
+                        MapInfo: { x: 285, y: 187 },
                         Age: Age.ADULT,
                         LongDescription: "This is the shop - only Adult can access it!"
                     }			

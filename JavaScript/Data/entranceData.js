@@ -165,7 +165,7 @@ InteriorGroups = {
 		buttons: {},
 		postClick: function(itemLocation, isSelected) {
 			let exitData = {
-				map: "Interiors",
+				map: "Windmill-Kak Potion",
 				region: "kakPotionShop",
 				exit: "Potion Shop Front",
 			}
@@ -178,7 +178,7 @@ InteriorGroups = {
 		buttons: { },
 		postClick: function(itemLocation, isSelected) {
 			let exitData = {
-				map: "Interiors",
+				map: "Windmill-Kak Potion",
 				region: "kakPotionShop",
 				exit: "Potion Shop Back",
 			}
@@ -495,7 +495,7 @@ InteriorGroups = {
 		buttons: {},
 		postClick: function(itemLocation, isSelected) {
 			let exitData = {
-				map: "Interiors",
+				map: "Windmill-Kak Potion",
 				region: "windmill",
 				exit: "Windmill Exit"
 			}
@@ -736,7 +736,7 @@ GrottoGroups = {
 		buttons: {},
 		postClick: function(itemLocation, isSelected) {
 			let exitData = {
-				map: "Interiors",
+				map: "Windmill-Kak Potion",
 				region: "dampesGrave",
 				exit: "Grave Exit"
 			}
