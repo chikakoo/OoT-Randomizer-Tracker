@@ -162,12 +162,7 @@ InteriorGroups = {
 		tooltip: "The Kakariko potion shop - this is the front entrance (closest to the camera).",
 		isShop: true,
 		neverHide: true,
-		buttons: {
-			"Shop": {
-				isAdultOnly: function() { return true; },
-				description: "Buy the items you need here - put anything you need to get later in the notes."
-			}			
-		},
+		buttons: {},
 		postClick: function(itemLocation, isSelected) {
 			let exitData = {
 				map: "Interiors",
@@ -497,48 +492,7 @@ InteriorGroups = {
 	"Windmill": {
 		neverHide: true,
 		tooltip: "Kakariko Windmill - Doesn't take the Dampe Race entrance into consideration for the heart piece item", //TODO
-		buttons: {
-			"Windmill Heart Piece": {
-				icon: "Heart Piece",
-				description: "As a child, you can get this with a well-aimed Boomerang. Use a well-aimed hookshot and jumpslash, or do a trick to jump to the platform.",
-				canGet: function(age) {
-					if (age === Age.CHILD) {
-						let canChildAccessDampe = Data.interiorTravelData && 
-							Data.interiorTravelData.dampesGrave &&
-							Data.interiorTravelData.dampesGrave.WalkInfo &&
-							Data.interiorTravelData.dampesGrave.WalkInfo.canObtainItem &&
-							Data.interiorTravelData.dampesGrave.WalkInfo.canObtainItem.Child;
-
-						return Data.canUseBoomerang(age) ||
-							(canChildAccessDampe && Data.canGetToWindmillFromDampe(age));
-					}
-					
-					return Settings.GlitchesToAllow.windmillHPWithNothing ||
-						(Settings.GlitchesToAllow.windmillHPWithHookshot && Items.HOOKSHOT.playerHas)
-				}
-			},
-			"Song of Storms":
-			{
-				description: "Take out your ocarina by the windmill guy to get this.",
-				canGet: function(age) { return Data.canPlaySongs() },
-				isAdultOnly: function() { return true; }
-			},
-			"Drain Well Water":
-			{
-				description: "Play the song of storms by the windmill guy - isn't actually an item check.",
-				canGet: function(age) { return Data.canPlaySong(Songs.SONG_OF_STORMS); },
-				isChildOnly: function() { return true; },
-				postClick: function(isCompleted) {
-					let windmillData = Data.interiorTravelData.windmill;
-					if (windmillData && windmillData.EntranceGroup) {
-						isCompleted = windmillData.EntranceGroup.completed["Drain Well Water"]; 
-					} else {
-						isCompleted = false;
-					}
-					Data.interiorShuffleIsWindmillDrained = isCompleted;
-				}
-			}
-		},
+		buttons: {},
 		postClick: function(itemLocation, isSelected) {
 			let exitData = {
 				map: "Interiors",
@@ -779,24 +733,7 @@ GrottoGroups = {
 	"Dampe's Grave": {
 		neverHide: true,
 		tooltip: "Dampe's Grave - Be sure to mark the windmill entrance to see those items!",
-		buttons: {
-			"Hookshot Chest": {
-				description: "This is the prize for completing the Dampe Race for the first time.",
-				canGet: function(age) {
-					return true;
-				}
-			},
-			"Race Reward": {
-				icon: "Heart Piece",
-				description: "This is the prize for completing the Dampe Race in less than one minute.",
-				shouldNotDisplay: function() {
-					return Settings.RandomizerSettings.dampeRaceHPDisabled;
-				},
-				canGet: function(age) {
-					return true;
-				}
-			}
-		},
+		buttons: {},
 		postClick: function(itemLocation, isSelected) {
 			let exitData = {
 				map: "Interiors",

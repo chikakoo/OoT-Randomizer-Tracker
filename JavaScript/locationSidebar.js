@@ -9,9 +9,6 @@ LocationSidebar = {
         let locationList = Data.getLocationDataForDisplay();
         locationList.forEach(function(location) {
             let currentLocationDiv = _this._createLocationDiv(location);
-            if (location.hidden) {
-                addCssClass(currentLocationDiv, "nodisp");
-            }
             locationDiv.appendChild(currentLocationDiv);
         });
 
@@ -216,10 +213,6 @@ LocationSidebar = {
 	 */
 	updateForWalk: function(relevantMaps) {
 		Object.keys(MapLocations).forEach(function (mapName) {
-            if (MapLocations[mapName].MapGroup === MapGroups.HIDDEN) {
-                return;
-            }
-
 			let locDiv = document.getElementById(`location-item-${mapName}`);
 			if (relevantMaps.includes(mapName)) {
 				addCssClass(locDiv, "location-item-included-in-walk");

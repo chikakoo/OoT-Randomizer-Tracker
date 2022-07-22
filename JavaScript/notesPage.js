@@ -7,11 +7,11 @@ NotesPage = {
 		_currentLocationName = "Notes";
 		
 		this._adjustImportantLocationsText();
-		this._createNotesForSection("shop", Data.isItemLocationAShop);
-		this._createNotesForSection("gossip", Data.isItemLocationAGossipStone);
+		this._createNotesForSection("shop", Data.isItemLocationAShop.bind(Data));
+		this._createNotesForSection("gossip", Data.isItemLocationAGossipStone.bind(Data));
 		this._createNotesForSection("other", function(itemLocation) {
 			return !Data.isItemLocationAShop(itemLocation) && !Data.isItemLocationAGossipStone(itemLocation);
-		});
+		}.bind(Data));
 	},
 
 	/**

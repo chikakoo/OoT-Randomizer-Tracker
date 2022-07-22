@@ -6,7 +6,7 @@ let MapGroups = {
 	WATER: 4,
 	DESERT: 5,
 	DUNGEONS: 6,
-    HIDDEN: 7
+    INTERIORS: 7
 };
 
 let ItemGroups = {

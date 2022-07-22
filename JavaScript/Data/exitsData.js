@@ -904,7 +904,7 @@ let OwExits = {
                 let adultEarly = Settings.GlitchesToAllow.botwAsAdultWithCucco && Items.HOOKSHOT.currentUpgrade === 2 && Equipment.HOVER_BOOTS.playerHas;
 
                 // Water already drained means there's no time requirement
-                if (Data.interiorShuffleIsWindmillDrained) {
+                if (Data.itemLocationObtained("Interiors", "windmill", "Drain Well Water")) {
                     return Time.EITHER;
                 }
 
@@ -946,7 +946,7 @@ let OwExits = {
                     return Data.canPlaySong(Songs.SONG_OF_STORMS);
                 }
                 
-                return Data.interiorShuffleIsWindmillDrained;
+                return Data.itemLocationObtained("Interiors", "windmill", "Drain Well Water");
             }
         },
 
@@ -1100,27 +1100,26 @@ let OwExits = {
             Map: "Kakariko Village",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: {x: 17, y: 180},
+            MapInfo: { x: 17, y: 180 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance back to the village."
         },
         "Dampe's Grave to Kakariko Village": {
             Name: "Dampe's Grave to Kakariko Village",
             ExitRegion: "main",
-            Map: "Kakariko Village",
-            Region: "main",
+            Map: "Interiors",
+            Region: "dampesGrave",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances && Settings.RandomizerSettings.shuffleOverworldEntrances; },
-            MapInfo: {x: 166, y: 81},
+            MapInfo: { x: 166, y: 81 },
             Age: Age.ADULT,
             OneWayEntrance: true,
             CustomRequirement: function(age) {
-                let isApplicable = !Settings.RandomizerSettings.shuffleGrottoEntrances && Settings.RandomizerSettings.shuffleOverworldEntrances;
-                return isApplicable && Data.canGetToWindmillFromDampe(age);
+                return !Settings.RandomizerSettings.shuffleGrottoEntrances && Settings.RandomizerSettings.shuffleOverworldEntrances;
             },
-            OwShuffleMap: "Kakariko Village",
-            OwShuffleRegion: "main",
-            OwShuffleExitName: "Graveyard",
+            OwShuffleMap: "Interiors",
+            OwShuffleRegion: "dampesGrave",
+            OwShuffleExitName: "Grave Exit",
             ReadOnly: true,
             Hide: true,
             LongDescription: "This is the route through Dampe's Grave to get to Kakariko via the windmill."
@@ -1984,26 +1983,75 @@ let OwExits = {
         "Grave Exit": {
             Name: "Grave Exit",
             ExitRegion: "dampesGrave",
+            IsGrottoExit: true,
+            MapInfo: { x: 200, y: 50 },
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances || !Settings.RandomizerSettings.shuffleOverworldEntrances; },
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            Age: Age.EITHER
+            Age: Age.EITHER,
+            CustomRequirement: function(age) {
+                return Settings.RandomizerSettings.shuffleGrottoEntrances || !Settings.RandomizerSettings.shuffleOverworldEntrances;
+            },
+            ReadOnly: true,
         },
         "Windmill Exit": {
             Name: "Windmill Exit",
             ExitRegion: "windmill",
+            IsInteriorExit: true,
+            MapInfo: { x: 200, y: 100 },
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances || !Settings.RandomizerSettings.shuffleOverworldEntrances; },
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            Age: Age.EITHER
+            Age: Age.EITHER,
+            CustomRequirement: function(age) {
+                return Settings.RandomizerSettings.shuffleGrottoEntrances || !Settings.RandomizerSettings.shuffleOverworldEntrances;
+            },
+            ReadOnly: true,
+        },
+        "Windmill Exit to Kakariko Village": {
+            Name: "Windmill Exit to Kakariko Village",
+            ExitRegion: "windmill",
+            Map: "Kakariko Village",
+            Region: "main",
+            MapInfo: { x: 250, y: 100 },
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances && Settings.RandomizerSettings.shuffleOverworldEntrances; },
+            MapInfo: { x: 166, y: 81 },
+            Age: Age.ADULT,
+            OneWayEntrance: true,
+            CustomRequirement: function(age) {
+                return !Settings.RandomizerSettings.shuffleGrottoEntrances && Settings.RandomizerSettings.shuffleOverworldEntrances;
+            },
+            OwShuffleMap: "Kakariko Village",
+            OwShuffleRegion: "main",
+            OwShuffleExitName: "Windmill",
+            ReadOnly: true,
+            Hide: true,
+            LongDescription: "This is the route through Dampe's Grave to get to Kakariko via the windmill."
         },
         "Potion Shop Front": {
             Name: "Potion Shop Front",
             ExitRegion: "kakPotionShop",
+            IsInteriorExit: true,
+            MapInfo: { x: 200, y: 150 },
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances; },
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            Age: Age.EITHER
+            Age: Age.EITHER,
+            CustomRequirement: function(age) {
+                return Settings.RandomizerSettings.shuffleInteriorEntrances;
+            },
+            ReadOnly: true,
         },
         "Potion Shop Back": {
             Name: "Potion Shop Back",
             ExitRegion: "kakPotionShop",
+            IsInteriorExit: true,
+            MapInfo: { x: 220, y: 150 },
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances; },
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            Age: Age.ADULT
+            Age: Age.ADULT,
+            CustomRequirement: function(age) {
+                return Settings.RandomizerSettings.shuffleInteriorEntrances;
+            },
+            ReadOnly: true,
         }
     },
 

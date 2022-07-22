@@ -3119,17 +3119,10 @@ let MapLocations = {
 		}
 	},
 
-    // This is a hidden map just used for walking, so nothing here has any item locations
     "Interiors": {
         Abbreviation: "INTR",
-		MapGroup: MapGroups.HIDDEN,
+		MapGroup: MapGroups.INTERIORS,
         Regions: {
-            // main is not used, but must exist to avoid errors
-            main: {
-                Exits: {},
-                ItemLocations: {}
-            },
-
             // Dampe's Grave and Windmill area
             dampesGrave: {
                 Exits: {
@@ -3143,15 +3136,86 @@ let MapLocations = {
                         OwExit: OwExits["Interiors"]["Grave Exit"]
                     }
                 },
-                ItemLocations: {}
+                ItemLocations: {
+                    "Hookshot Chest": {
+                        Name: "Hookshot Chest",
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 50, y: 50 },
+                        Age: Age.EITHER,
+                        UseAdultAge: function(age) { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
+                        LongDescription: "This is the prize for completing the Dampe Race for the first time."
+                    },
+                    "Race Reward": {
+                        Name: "Race Reward",
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 100, y: 50 },
+                        Age: Age.EITHER,
+                        UseAdultAge: function(age) { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
+                        LongDescription: "This is the prize for completing the Dampe Race in less than one minute."
+                    }
+                }
             },
-            windmill: {
+            windmillTop: {
                 Exits: {
-                    "Windmill Exit": {
-                        OwExit: OwExits["Interiors"]["Windmill Exit"]
+                    windmill: {
+                        Name: "windmill"
+                    },
+                    windmillItem: {
+                        Name: "windmillItem"
                     }
                 },
                 ItemLocations: {}
+            },
+            windmillItem: {
+                Exits: {},
+                ItemLocations: {
+                    "Heart Piece on Top": {
+                        Name: "Heart Piece on Top",
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 50, y: 100 },
+                        Age: Age.EITHER,
+                        LongDescription: "As a child, you can get this with a well-aimed Boomerang. Use a well-aimed hookshot and jumpslash, or do a trick to jump to the platform."
+                    }
+                }
+            },
+            windmill: {
+                Exits: {
+                    windmillItem: {
+                        Name: "windmillItem",
+                        RequiredChildItems: [Items.BOOMERANG],
+                        CustomRequirement(age) {
+                            if (age === Age.CHILD) { return true; }
+                            return Settings.GlitchesToAllow.windmillHPWithNothing ||
+                                (Settings.GlitchesToAllow.windmillHPWithHookshot && Items.HOOKSHOT.playerHas)
+                        }
+                    },
+                    "Windmill Exit": {
+                        OwExit: OwExits["Interiors"]["Windmill Exit"]
+                    },
+                    "Windmill Exit to Kakariko Village": {
+                        OwExit: OwExits["Interiors"]["Windmill Exit to Kakariko Village"]
+                    }
+                },
+                ItemLocations: {
+                    "Song of Storms":
+                    {
+                        Name: "Song of Storms",
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 100, y: 100 },
+                        Age: Age.ADULT,
+                        LongDescription: "Take out your ocarina by the windmill guy to get this.",
+                        NeedsOcarina: true
+                    },
+                    "Drain Well Water":
+                    {
+                        Name: "Drain Well Water",
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapInfo: { x: 150, y: 100 },
+                        Age: Age.CHILD,
+                        LongDescription: "Play the song of storms by the windmill guy to drain the well water.",
+                        RequiredSongs: [Songs.SONG_OF_STORMS]
+                    }
+                }
             },
 
             // Potion shop
@@ -3164,7 +3228,15 @@ let MapLocations = {
                         OwExit: OwExits["Interiors"]["Potion Shop Back"]
                     }
                 },
-                ItemLocations: {}
+                ItemLocations: {
+                    "Shop": {
+                        Name: "Shop",
+                        ItemGroup: ItemGroups.SHOP,
+                        MapInfo: { x: 50, y: 150 },
+                        Age: Age.ADULT,
+                        LongDescription: "This is the shop - only Adult can access it!"
+                    }			
+                }
             }
         }  
     }

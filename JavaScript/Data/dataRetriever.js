@@ -19,7 +19,6 @@ Data = {
     },
 	linksHouseLocation: {},
     templeOfTimeLocation: {},
-    interiorShuffleIsWindmillDrained: false,
 
     /**
      * Consists of objects of the following form telling you where the interior "tunnel" is located
@@ -101,6 +100,7 @@ Data = {
 			case MapGroups.MOUNTAIN: return "#A0522D";
 			case MapGroups.WATER: return "#5CACEE";
 			case MapGroups.DESERT: return "#D2B48C";
+            case MapGroups.INTERIORS: return "#77A0B8";
 			case MapGroups.DUNGEONS: 
 				if (isMasterQuest) { return "red"; }
 				return "#9f6ff2";
@@ -464,22 +464,42 @@ Data = {
 		return owMaps;
     },
     
-    /**
-     * Gets an array of all the overworld entrance names for use in the dropdown
-     */
-    getOWEntrances: function(mapName, isOwl) {
+/**
+ * Gets an array of entrance names to use for the dropdown
+ * @param {string} mapName - the name of the map
+ * @param {Any} entranceOptions - options for the function for what to get
+ * {
+ *  isOwl: boolean,
+ *  getInteriors: boolean,
+ *  getGrottos: boolean
+ * }
+ * @returns the array of entrances (strings)
+ */
+    getOWEntrances: function(mapName, options) {
         let entrances = [];
         let exits = OwExits[mapName];
+        let itemGroupType = options.getInteriors || options.getGrottos
+            ? ItemGroups.ENTRANCE
+            : ItemGroups.OW_ENTRANCE;
 
 		Object.keys(exits).forEach(function(entranceName) {
             let entrance = exits[entranceName];
-			if (entrance.ItemGroup === ItemGroups.OW_ENTRANCE && 
-                (!entrance.Hide || (isOwl && entrance.ShowForOwl)) && 
+			if (entrance.ItemGroup === itemGroupType && 
+                (!entrance.Hide || (options.isOwl && entrance.ShowForOwl)) && 
                 !entrance.IsDungeonEntrance && 
                 !entrance.IsOwl)
 			{
 				entrances.push(entranceName);
+                return;
 			}
+
+            if (entrance.ItemGroup === itemGroupType && 
+                ((options.getInteriors && entrance.IsInterior) ||
+                (options.getGrottos && entrance.IsGrotto))) 
+            {
+                entrances.push(entranceName);
+                return;
+            }
 		});
 		
 		return entrances;
@@ -1538,9 +1558,6 @@ Data = {
 		mapNames.forEach(function (mapName) {
             let thisMapData = {};
             let canDoInfo = _this._getCanDoInfo(mapName);
-            if (MapLocations[mapName].MapGroup === MapGroups.HIDDEN) {
-                thisMapData.hidden = true;
-            }
 			thisMapData.childData = canDoInfo[Age.CHILD];
 			thisMapData.adultData = canDoInfo[Age.ADULT];
 			thisMapData.name = mapName;
