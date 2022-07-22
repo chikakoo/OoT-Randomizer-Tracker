@@ -1134,6 +1134,9 @@ let MapLocations = {
                     "Kakariko Village": {
                         OwExit: OwExits["Graveyard"]["Kakariko Village"]
                     },
+                    "Dampe's Grave to Kakariko Village": {
+                        OwExit: OwExits["Graveyard"]["Dampe's Grave to Kakariko Village"]
+                    },
 
                     // Interiors & Grottos
                     "Grave with Flowers": {

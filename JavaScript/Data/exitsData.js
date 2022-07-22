@@ -172,6 +172,7 @@ let OwExits = {
             OwShuffleRegion: "main",
             OwShuffleExitName: "Kokiri Forest Bridge",
             ReadOnly: true,
+            Hide: true,
             LongDescription: "This is taken via the magic bean, hover boots, or by longshotting to the bridge."
         },
         "Sacred Forest Meadow": {
@@ -250,6 +251,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 148, y: 74 },
             ReadOnly: true,
+            Hide: true,
             OwShuffleMap: "Lost Woods",
             OwShuffleRegion: "firstHalf",
             OwShuffleExitName: "To Kokiri Forest",
@@ -1102,6 +1104,27 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance back to the village."
         },
+        "Dampe's Grave to Kakariko Village": {
+            Name: "Dampe's Grave to Kakariko Village",
+            ExitRegion: "main",
+            Map: "Kakariko Village",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances && Settings.RandomizerSettings.shuffleOverworldEntrances; },
+            MapInfo: {x: 166, y: 81},
+            Age: Age.ADULT,
+            OneWayEntrance: true,
+            CustomRequirement: function(age) {
+                let isApplicable = !Settings.RandomizerSettings.shuffleGrottoEntrances && Settings.RandomizerSettings.shuffleOverworldEntrances;
+                return isApplicable && Data.canGetToWindmillFromDampe(age);
+            },
+            OwShuffleMap: "Kakariko Village",
+            OwShuffleRegion: "main",
+            OwShuffleExitName: "Graveyard",
+            ReadOnly: true,
+            Hide: true,
+            LongDescription: "This is the route through Dampe's Grave to get to Kakariko via the windmill."
+        },
         "Nocturne Teleport Pad": {
             Name: "Nocturne Teleport Pad",
             ExitRegion: "top",
@@ -1777,6 +1800,7 @@ let OwExits = {
             OwShuffleRegion: "main",
             OwShuffleExitName: "Hyrule Field",
             ReadOnly: true,
+            Hide: true,
             LongDescription: "This is the river exit to the lake. It will ALWAYS lead to the lake."
         },
 
