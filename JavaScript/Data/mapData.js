@@ -968,6 +968,9 @@ let MapLocations = {
                     "Windmill": {
                         OwExit: OwExits["Kakariko Village"]["Windmill"]
                     },
+                    "Windmill to Interior": {
+                        OwExit: OwExits["Kakariko Village"]["Windmill to Interior"]
+                    },
                     "Talon's House": {
                         OwExit: OwExits["Kakariko Village"]["Talon's House"]
                     },
@@ -979,6 +982,9 @@ let MapLocations = {
                     },
                     "Potion Shop Back": {
                         OwExit: OwExits["Kakariko Village"]["Potion Shop Back"]
+                    },
+                    "Potion Shop to Interior": {
+                        OwExit: OwExits["Kakariko Village"]["Potion Shop to Interior"]
                     },
                     "Granny's Potion Shop": {
                         OwExit: OwExits["Kakariko Village"]["Granny's Potion Shop"]
@@ -1134,9 +1140,6 @@ let MapLocations = {
                     "Kakariko Village": {
                         OwExit: OwExits["Graveyard"]["Kakariko Village"]
                     },
-                    "Dampe's Grave to Kakariko Village": {
-                        OwExit: OwExits["Graveyard"]["Dampe's Grave to Kakariko Village"]
-                    },
 
                     // Interiors & Grottos
                     "Grave with Flowers": {
@@ -1150,6 +1153,9 @@ let MapLocations = {
                     },
                     "Dampe's Grave": {
                         OwExit: OwExits["Graveyard"]["Dampe's Grave"]
+                    },
+                    "Dampe's Grave to Dampe Race": {
+                        OwExit: OwExits["Graveyard"]["Dampe's Grave to Dampe Race"]
                     }
                 },
 
@@ -3205,7 +3211,7 @@ let MapLocations = {
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 213, y: 91 },
                         Age: Age.ADULT,
-                        LongDescription: "At night, there is a skulltula on a small cliff near the north middle edge of the map. You can hookshot it if the Levers leave you alone long enough. An easier solution is to ride the bean platform and jump off of it so that you're on top.",
+                        LongDescription: "At night, there is a skulltula on a small cliff near the north middle edge of the map. You can hookshot it if the Leevers leave you alone long enough. An easier solution is to ride the bean platform and jump off of it so that you're on top.",
                         CustomRequirement: function(age) {
                             let canRideUp = Data.itemLocationObtained("Desert Colossus", "main", "*Plant Bean by Spirit Temple");
                             return canRideUp || Items.HOOKSHOT.playerHas;

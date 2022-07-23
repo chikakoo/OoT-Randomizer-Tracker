@@ -1023,6 +1023,30 @@ let OwExits = {
             MapInfo: { x: 266, y: 152 },
             IsComplexEntrance: true,
             Age: Age.EITHER,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances; },
+            CustomRequirement: function(age) {
+                return Settings.RandomizerSettings.shuffleInteriorEntrances;
+            },
+            LongDescription: "This is the windmill entrance - it's up the stairs near the well."
+        },
+        "Windmill to Interior": {
+            Name: "Windmill to Interior",
+            ExitRegion: "main",
+            Map: "Windmill-Kak Potion",
+            Region: "windmill",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: 266, y: 152 },
+            Age: Age.EITHER,
+            OneWayEntrance: true,
+            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleInteriorEntrances; },
+            CustomRequirement: function(age) {
+                return !Settings.RandomizerSettings.shuffleInteriorEntrances;
+            },
+            OwShuffleMap: "Windmill-Kak Potion",
+            OwShuffleRegion: "windmill",
+            OwShuffleExitName: "Windmill Exit",
+            ReadOnly: true,
+            Hide: true,
             LongDescription: "This is the windmill entrance - it's up the stairs near the well."
         },
         "Talon's House": {
@@ -1061,6 +1085,10 @@ let OwExits = {
             Time: function() { return Time.DAY_ADULT; },
             MapInfo: { x: 163, y: 92 },
             Age: Age.EITHER,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances; },
+            CustomRequirement: function(age) {
+                return Settings.RandomizerSettings.shuffleInteriorEntrances;
+            },
             LongDescription: "This is the building to the right if you are facing the Death Mountain entrance.",
         },
         "Potion Shop Back": {
@@ -1079,6 +1107,26 @@ let OwExits = {
                 if (age === Age.ADULT) { return true; }
                 return Settings.GlitchesToAllow.kakShopClips && Data.hasSwordWeapon(age);
             }
+        },
+        "Potion Shop to Interior": {
+            Name: "Potion Shop to Interior",
+            ExitRegion: "main",
+            Map: "Windmill-Kak Potion",
+            Region: "kakPotionShop",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: 166, y: 81 },
+            Age: Age.EITHER,
+            OneWayEntrance: true,
+            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleInteriorEntrances; },
+            CustomRequirement: function(age) {
+                return !Settings.RandomizerSettings.shuffleInteriorEntrances;
+            },
+            OwShuffleMap: "Windmill-Kak Potion",
+            OwShuffleRegion: "kakPotionShop",
+            OwShuffleExitName: "Potion Shop Front",
+            ReadOnly: true,
+            Hide: true,
+            LongDescription: "This is the building to the right if you are facing the Death Mountain entrance.",
         },
         "Granny's Potion Shop": {
             //TODO: this WOULD be important if we ever did the entire trade sequence
@@ -1103,26 +1151,6 @@ let OwExits = {
             MapInfo: { x: 17, y: 180 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance back to the village."
-        },
-        "Dampe's Grave to Kakariko Village": {
-            Name: "Dampe's Grave to Kakariko Village",
-            ExitRegion: "main",
-            Map: "Windmill-Kak Potion",
-            Region: "dampesGrave",
-            ItemGroup: ItemGroups.OW_ENTRANCE,
-            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances && Settings.RandomizerSettings.shuffleOverworldEntrances; },
-            MapInfo: { x: 166, y: 81 },
-            Age: Age.ADULT,
-            OneWayEntrance: true,
-            CustomRequirement: function(age) {
-                return !Settings.RandomizerSettings.shuffleGrottoEntrances && Settings.RandomizerSettings.shuffleOverworldEntrances;
-            },
-            OwShuffleMap: "Windmill-Kak Potion",
-            OwShuffleRegion: "dampesGrave",
-            OwShuffleExitName: "Grave Exit",
-            ReadOnly: true,
-            Hide: true,
-            LongDescription: "This is the route through Dampe's Grave to get to Kakariko via the windmill."
         },
         "Nocturne Teleport Pad": {
             Name: "Nocturne Teleport Pad",
@@ -1186,10 +1214,34 @@ let OwExits = {
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
             IsComplexEntrance: true,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances; },
+            CustomRequirement: function(age) {
+                return Settings.RandomizerSettings.shuffleGrottoEntrances;
+            },
             DefaultEntranceGroupName: "Dampe's Grave",
             MapInfo: { x: 166, y: 86 },
             Age: Age.ADULT,
             LongDescription: "Under the grave in the in the northwest corner of the graveyard.",
+        },
+        "Dampe's Grave to Dampe Race": {
+            Name: "Dampe's Grave to Dampe Race",
+            ExitRegion: "main",
+            Map: "Windmill-Kak Potion",
+            Region: "dampesGrave",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: 166, y: 86 },
+            Age: Age.ADULT,
+            OneWayEntrance: true,
+            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
+            CustomRequirement: function(age) {
+                return !Settings.RandomizerSettings.shuffleGrottoEntrances;
+            },
+            OwShuffleMap: "Windmill-Kak Potion",
+            OwShuffleRegion: "dampesGrave",
+            OwShuffleExitName: "Grave Exit",
+            ReadOnly: true,
+            Hide: true,
+            LongDescription: "This is the route through Dampe's Grave to get to Kakariko via the windmill."
         },
         "Royal Family's Tomb": {
             Name: "Royal Family's Tomb",
