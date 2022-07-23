@@ -100,7 +100,6 @@ Data = {
 			case MapGroups.MOUNTAIN: return "#A0522D";
 			case MapGroups.WATER: return "#5CACEE";
 			case MapGroups.DESERT: return "#D2B48C";
-            case MapGroups.INTERIORS: return "#77A0B8";
 			case MapGroups.DUNGEONS: 
 				if (isMasterQuest) { return "red"; }
 				return "#9f6ff2";
