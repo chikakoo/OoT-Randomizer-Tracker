@@ -325,8 +325,12 @@ Data = {
      * If it's not any of those, will return true
      */
     shouldDisplayItemLocation: function(itemLocation) {
-        if (itemLocation.IsBoss) {
+        if (itemLocation.ItemGroup !== ItemGroups.ENTRANCE && itemLocation.IsBoss) {
             return !Settings.RandomizerSettings.shuffleBossEntrances;
+        }
+
+        if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && itemLocation.IsBoss) {
+            return Settings.RandomizerSettings.shuffleBossEntrances;
         }
 
         // Important to check the owls and dungneons before the OW entrances, because they are also OW entrances

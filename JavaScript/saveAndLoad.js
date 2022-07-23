@@ -119,7 +119,7 @@ let SaveAndLoad = {
         Object.keys(OwExits).forEach(function(mapName) {
             Object.keys(OwExits[mapName]).forEach(function(exitName) {
                 let exit = OwExits[mapName][exitName];
-                let shouldSave = (exit.OwShuffleMap && exit.OwShuffleRegion) || exit.notes || exit.EntranceGroup || exit.DefaultEntranceGroup;
+                let shouldSave = (exit.OwShuffleMap && exit.OwShuffleRegion) || exit.notes || exit.EntranceGroup || exit.DefaultEntranceGroup || exit.playerHas;
                 if (shouldSave) {
                     owExitData[mapName] = owExitData[mapName] || {};
                     owExitData[mapName][exitName] = {
@@ -129,7 +129,8 @@ let SaveAndLoad = {
                         OwShuffleRegion: exit.OwShuffleRegion,
                         notes: exit.notes,
                         EntranceGroup: exit.EntranceGroup,
-                        DefaultEntranceGroup: exit.DefaultEntranceGroup
+                        DefaultEntranceGroup: exit.DefaultEntranceGroup,
+                        playerHas: exit.playerHas
                     }
                 }
             });
@@ -374,6 +375,10 @@ let SaveAndLoad = {
 
                 if (loadedOwExitData.DefaultEntranceGroup) {
                     exitingExitData.DefaultEntranceGroup = loadedOwExitData.DefaultEntranceGroup;
+                }
+
+                if (loadedOwExitData.playerHas) {
+                    exitingExitData.playerHas = loadedOwExitData.playerHas;
                 }
             });
         });

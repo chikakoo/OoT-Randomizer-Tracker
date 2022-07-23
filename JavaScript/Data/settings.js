@@ -128,7 +128,7 @@ let Settings = {
 	GlitchesToAllow: {
 		// Common
 		ocarinaItems: true,
-		difficultOcarinaItems: false,
+		difficultOcarinaItems: true,
 		megaFlip: false,
 		isg: false,
 		groundJump: true,
@@ -142,7 +142,7 @@ let Settings = {
 		watchtowerSkullJumpslash: false,
 		windmillHPWithNothing: true,
 		windmillHPWithHookshot: false,
-		kakShopClips: false,
+		kakShopClips: true,
 		botwAsChildWithCucco: false,
 		botwAsAdultWithCucco: false,
 		boomerangGraveyardHP: false,
@@ -167,7 +167,7 @@ let Settings = {
 		// Zora/Lake
 		adultWaterfallHPJump: false,
 		cuccoToZorasDomain: false,
-		hoversToZorasDomain: false,
+		hoversToZorasDomain: true,
 		chuZoraSkip: false,
 		clipZoraSkip: false,
 		blueFireShopSkip: false,
