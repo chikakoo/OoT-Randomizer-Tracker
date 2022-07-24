@@ -4271,12 +4271,14 @@ let MQDungeons = {
 
 					shadowBackSection: {
 						Name: "shadowBackSection",
+						Age: Age.ADULT,
 						RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, Items.HOOKSHOT],
 						RequiredItems: [Equipment.MAGIC, Items.LENS_OF_TRUTH] // Without lens is really hard, so not including that trick for now
 					},
 
 					fireRoom: {
 						Name: "fireRoom",
+						Age: Age.ADULT,
 						RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}],
 						RequiredChoiceOfItems: [Items.HOOKSHOT, Equipment.HOVER_BOOTS],
 						CustomRequirement: function(age) {
@@ -4290,7 +4292,10 @@ let MQDungeons = {
 							let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
 								Items.BOMB.playerHas && 
 								Data.hasShield(age);
-							let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
+
+							//TODO: can child do this?
+							let canEssClipIn = age === Age.ADULT && Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
+
 							return canSuperslideIn || canEssClipIn || Equipment.STRENGTH.currentUpgrade === 3;
 						}
 					}
@@ -4301,7 +4306,8 @@ let MQDungeons = {
 						Name: "Left Scrub in Secret Room",
 						ItemGroup: ItemGroups.SCRUB,
 						MapInfo: { x: 234, y: 233, floor: "MN" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 1,
 						LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
 					},
@@ -4309,7 +4315,8 @@ let MQDungeons = {
 						Name: "Middle Left Scrub in Secret Room",
 						ItemGroup: ItemGroups.SCRUB,
 						MapInfo: { x: 242, y: 241, floor: "MN" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 2,
 						LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
 					},
@@ -4317,7 +4324,8 @@ let MQDungeons = {
 						Name: "Middle Scrub in Secret Room",
 						ItemGroup: ItemGroups.SCRUB,
 						MapInfo: { x: 248, y: 248, floor: "MN" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 3,
 						LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
 					},
@@ -4325,7 +4333,8 @@ let MQDungeons = {
 						Name: "Middle Right Scrub in Secret Room",
 						ItemGroup: ItemGroups.SCRUB,
 						MapInfo: { x: 254, y: 241, floor: "MN" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 4,
 						LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
 					},
@@ -4333,7 +4342,8 @@ let MQDungeons = {
 						Name: "Right Scrub in Secret Room",
 						ItemGroup: ItemGroups.SCRUB,
 						MapInfo: { x: 262, y: 233, floor: "MN" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 5,
 						LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
 					},
@@ -4341,25 +4351,29 @@ let MQDungeons = {
 						Name: "Forest Freestanding Item",
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 165, y: 204, floor: "FST" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 12,
 						LongDescription: "After dealing with the enemies, wait for the fan to stop spinning, then hookshot up to the ledge. The item is up there.",
-						RequiredItems: [Items.HOOKSHOT]
+						RequiredChoiceOfItems: [Items.HOOKSHOT, Items.BOOMERANG]
 					},
 					"Forest Close Chest": {
 						Name: "Forest Close Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 168, y: 170, floor: "FST" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 13,
 						LongDescription: "In the second room, stand on the upper left side of the first platform. Shoot the eye switch on the back right corner of the room to spawn the chest.",
-						RequiredItems: [Items.FAIRY_BOW]
+						RequiredChildItems: [Items.FAIRY_SLINGSHOT],
+						RequiredAdultItems: [Items.FAIRY_BOW]
 					},
 					"Forest Far Chest": {
 						Name: "Forest Far Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 153, y: 147, floor: "FST" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 14,
 						LongDescription: "In the second room, shoot the eye switch at the back left side of the room with a fire arrow to spawn the chest. Alternatively, you can also use Din's fire to hit it once at the back of the room. To get across, you can jump and use the wind from the fan if you have no hover boots.",
 						NeedsFire: true
@@ -4368,7 +4382,8 @@ let MQDungeons = {
 						Name: "Water Chest in First Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 163, y: 233, floor: "WTR" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 15,
 						LongDescription: "The chest is in the red ice on the left side of the room. You can roll into it and spam A to open the chest through the ice.<br/><br/>If you want to melt it, attack the weird hand thing on the right side of the room to lower the water around the blue fire."
 					},
@@ -4386,7 +4401,8 @@ let MQDungeons = {
 						Name: "Boss Key Chest in Center",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 165, y: 95, floor: "MN" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.staircaseHover; },
 						Order: 19,
 						IsPostWalkCheck: true,
 						LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
@@ -4529,7 +4545,8 @@ let MQDungeons = {
 						Name: "Light Zelda's Lullaby Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 194, y: 197, floor: "LIT" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
 						Order: 18,
 						LongDescription: "Use your gauntlets to gain access to this area. In the first room, kill all the enemies. In the next room, play Zelda's Lullaby to spawn the chest.",
 						RequiredSongs: [Songs.ZELDAS_LULLABY]
