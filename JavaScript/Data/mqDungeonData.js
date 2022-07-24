@@ -3676,7 +3676,7 @@ let MQDungeons = {
 							return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
 						},
 						Order: 4,
-						LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door. Enter it, and navigate clockwise around the room to get to the item.",
+						LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door. Enter it, and navigate counter-clockwise around the room to get to the item.",
 						CustomRequirement: function(age) {
 							return Data.canHitSwitchAtShortDistance(age);
 						}
