@@ -4246,7 +4246,6 @@ let MQDungeons = {
 	"Ganon's Castle": {
         Abbreviation: "GANC",
         MapGroup: MapGroups.DUNGEONS,
-        ExcludeFromShuffle: true,
         IsMasterQuest: true,
         Floors: ["MN", "FST", "FIR", "WTR", "SHW", "SPT", "LIT"],
         StartingFloorIndex: 0,

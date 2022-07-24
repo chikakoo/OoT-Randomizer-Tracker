@@ -440,13 +440,12 @@ Data = {
      */
 	getOWMaps: function(isForDungeonDropdown) {
 		let owMaps = [];
-		
 		let mapNames = Object.keys(MapLocations);
 		mapNames.forEach(function (mapName) {
 			let map = MapLocations[mapName]
             let isDungeon = map.MapGroup === MapGroups.DUNGEONS;
             let dungeonCheck = isForDungeonDropdown
-                ? isDungeon && isForDungeonDropdown && !map.ExcludeFromShuffle
+                ? isDungeon && isForDungeonDropdown
                 : !isDungeon && !isForDungeonDropdown;
 			if (dungeonCheck) {
 				owMaps.push(mapName);
@@ -1526,7 +1525,7 @@ Data = {
 	 */
 	getDoesEntranceShuffleApply: function(locationName, checkForOverworld) {
 		let mapInfo = MapLocations[locationName];
-		if (!mapInfo || mapInfo.ExcludeFromShuffle) { return false; }
+		if (!mapInfo) { return false; }
 		
 		let isDungeon = mapInfo.MapGroup === MapGroups.DUNGEONS;
 		let isShuffledDungeon = isDungeon && Settings.RandomizerSettings.shuffleDungeonEntrances;

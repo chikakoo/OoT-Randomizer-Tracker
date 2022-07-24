@@ -759,15 +759,11 @@ let OwExits = {
             ExitRegion: "main",
             Map: "Ganon's Castle",
             Region: "main",
-            OwShuffleMap: "Ganon's Castle",
-            OwShuffleRegion: "main",
-            OwShuffleExitName: "Exit",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: -100, y: -100 }, // We'll never care about this
+            MapInfo: { x: 171, y: 160, floor: "GAN" },
             Age: Age.ADULT,
             LongDescription: "This is the entrance to Ganon's Castle.",
-            ReadOnly: true,
-            Hide: true,
+            IsDungeonEntrance: true,
             CustomRequirement: function(age) {
 				switch (Settings.RandomizerSettings.medallionSetting) {
 					case MedallionSettings.VANILLA:
@@ -2411,7 +2407,6 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: -100, y: -100, floor: "F1" },
             ReadOnly: true,
-            Hide: true,
             IsDungeonExit: true,
             Age: Age.EITHER,
             LongDescription: "This is the exit from Ganon's Castle."

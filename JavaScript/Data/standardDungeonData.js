@@ -4671,7 +4671,6 @@ let StandardDungeons = {
 	"Ganon's Castle": {
 		Abbreviation: "GANC",
 		MapGroup: MapGroups.DUNGEONS,
-		ExcludeFromShuffle: true,
 		Floors: ["MN", "FST", "FIR", "WTR", "SHW", "SPT", "LIT"],
 		StartingFloorIndex: 0,
 		Regions: {
