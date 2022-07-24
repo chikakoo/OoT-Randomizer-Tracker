@@ -4678,6 +4678,7 @@ let StandardDungeons = {
 				Exits: {
 					shadowTrialMiddle: {
 						Name: "shadowTrialMiddle",
+						Age: Age.ADULT,
 						CustomRequirement: function(age) {
 							let canGetThereNormally = Items.FIRE_ARROW.playerHas && Items.FAIRY_BOW.playerHas && Equipment.MAGIC.playerHas;
 							let canAvoidFireArrows = Items.HOOKSHOT.currentUpgrade === 2 && Equipment.HOVER_BOOTS.playerHas;
@@ -4686,6 +4687,7 @@ let StandardDungeons = {
 					},
 					spiritTrialRoom2: {
 						Name: "spiritTrialRoom2",
+						Age: Age.EITHER,
 						CustomRequirement: function(age) {
 							let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && Data.hasShield(age);
 							return Items.HOOKSHOT.playerHas || canAvoidHookshot;
@@ -4693,11 +4695,15 @@ let StandardDungeons = {
 					},
 					lightTrialRoom1: {
 						Name: "lightTrialRoom1",
+						Age: Age.EITHER,
 						CustomRequirement: function(age) {
 							let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
 								Items.BOMB.playerHas && 
 								Data.hasShield(age);
-							let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
+							
+							//TODO: can child do this?
+							let canEssClipIn = age === Age.ADULT && Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
+
 							return canSuperslideIn || canEssClipIn || Equipment.STRENGTH.currentUpgrade === 3;
 						}
 					}
@@ -4708,7 +4714,8 @@ let StandardDungeons = {
 						Name: "Left Scrub in Secret Room",
 						ItemGroup: ItemGroups.SCRUB,
 						MapInfo: { x: 234, y: 233, floor: "MN" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 1,
 						LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
 					},
@@ -4716,7 +4723,8 @@ let StandardDungeons = {
 						Name: "Middle Left Scrub in Secret Room",
 						ItemGroup: ItemGroups.SCRUB,
 						MapInfo: { x: 242, y: 241, floor: "MN" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 2,
 						LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
 					},
@@ -4724,7 +4732,8 @@ let StandardDungeons = {
 						Name: "Middle Right Scrub in Secret Room",
 						ItemGroup: ItemGroups.SCRUB,
 						MapInfo: { x: 254, y: 241, floor: "MN" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 3,
 						LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
 					},
@@ -4732,7 +4741,8 @@ let StandardDungeons = {
 						Name: "Right Scrub in Secret Room",
 						ItemGroup: ItemGroups.SCRUB,
 						MapInfo: { x: 262, y: 233, floor: "MN" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 4,
 						LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
 					},
@@ -4740,7 +4750,8 @@ let StandardDungeons = {
 						Name: "Forest Trial Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 176, y: 233, floor: "FST" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 5,
 						LongDescription: "Enter the forest trial. Kill the wolfos to spawn the chest."
 					},
@@ -4748,7 +4759,8 @@ let StandardDungeons = {
 						Name: "Water Trial Left Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 175, y: 215, floor: "WTR" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 6,
 						LongDescription: "Enter the water trial. Look for the chest in the back left section of the room."
 					},
@@ -4756,7 +4768,8 @@ let StandardDungeons = {
 						Name: "Water Trial Right Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 213, y: 215, floor: "WTR" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 7,
 						LongDescription: "Enter the water trial. Look for the chest in the back right section of the room."
 					},
@@ -4776,7 +4789,8 @@ let StandardDungeons = {
 						Name: "Boss Key Chest in Center",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 165, y: 95, floor: "MN" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.staircaseHover; },
 						Order: 20,
 						IsPostWalkCheck: true,
 						LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
@@ -4831,7 +4845,8 @@ let StandardDungeons = {
 						Name: "Spirit Trial Chest After Hitting Switch",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 242, y: 184, floor: "SPT" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
 						Order: 18,
 						LongDescription: "Enter the spirit trial. Collect the rupees to advance to the next room. Hit the switch closest to the barred door with a jumpslash or charged spin attack to spawn the chest."
 					}
@@ -4844,7 +4859,8 @@ let StandardDungeons = {
 						Name: "Hidden Spirit Trial Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 239, y: 120, floor: "SPT" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
 						Order: 19,
 						LongDescription: "Enter the spirit trial. Collect the rupees to advance to the next room. To your left, there is a switch. Line up with the switch and drop a Bombchu. It should navigate itself over to the switch and activate it. This will open the door - enter it. The hidden chest is now in front of you and a little bit to the right. Face the right wall when trying to open it."
 					}
@@ -4865,7 +4881,8 @@ let StandardDungeons = {
 						Name: "Light Trial Left Lower Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 167, y: 265, floor: "LIT" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
 						Order: 10,
 						LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
 					},
@@ -4873,7 +4890,8 @@ let StandardDungeons = {
 						Name: "Light Trial Left Middle Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 162, y: 251, floor: "LIT" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
 						Order: 11,
 						LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
 					},
@@ -4881,7 +4899,8 @@ let StandardDungeons = {
 						Name: "Light Trial Left Top Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 165, y: 235, floor: "LIT" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
 						Order: 12,
 						LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
 					},
@@ -4889,7 +4908,8 @@ let StandardDungeons = {
 						Name: "Light Trial Right Lower Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 194, y: 265, floor: "LIT" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
 						Order: 13,
 						LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
 					},
@@ -4897,7 +4917,8 @@ let StandardDungeons = {
 						Name: "Light Trial Right Middle Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 199, y: 251, floor: "LIT" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
 						Order: 14,
 						LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
 					},
@@ -4905,7 +4926,8 @@ let StandardDungeons = {
 						Name: "Light Trial Right Upper Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 194, y: 235, floor: "LIT" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
 						Order: 15,
 						LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial.",
 					},
@@ -4913,7 +4935,8 @@ let StandardDungeons = {
 						Name: "Light Trial Hidden Enemy Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 180, y: 251, floor: "LIT" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
 						Order: 16,
 						LongDescription: "Enter the light trial. Kill the invisible enemies (giant skulltula in the middle, several keese on the chests). This chest will spawn in the middle."
 					}
@@ -4934,7 +4957,8 @@ let StandardDungeons = {
 						Name: "Light Trial Zelda's Lullaby Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 195, y: 196, floor: "LIT" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
 						Order: 17,
 						LongDescription: "Enter the light trial and advance to the next room. Play Zelda's Lullaby on the Triforce picture to spawn this chest.",
 						RequiredSongs: [Songs.ZELDAS_LULLABY]

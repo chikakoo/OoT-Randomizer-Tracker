@@ -1308,7 +1308,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 203, y: 238 },
                         Age: Age.EITHER,
-                        UseAdultAge: function(age) { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
                         LongDescription: "This is the prize for completing the Dampe Race for the first time."
                     },
                     "Race Reward": {
@@ -1316,7 +1316,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 208, y: 233 },
                         Age: Age.EITHER,
-                        UseAdultAge: function(age) { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
                         LongDescription: "This is the prize for completing the Dampe Race in less than one minute."
                     }
                 }
