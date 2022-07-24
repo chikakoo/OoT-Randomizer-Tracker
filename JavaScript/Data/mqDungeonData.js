@@ -1581,7 +1581,7 @@ let MQDungeons = {
 						MapInfo: { x: 57, y: 60, floor: "F1" },
 						Age: Age.EITHER,
 						UseAdultAge: function() { 
-							return !Settings.RandomizerSettings.shuffleDungeonEntrances;
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.groundJump;
 						},
 						Order: 5,
 						RequiredChoiceOfAdultItems: [Items.HOOKSHOT, Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU],

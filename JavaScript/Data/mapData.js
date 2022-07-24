@@ -1078,7 +1078,8 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "At night, you can find this skulltula on the watchtower ladder. You can kill it with either the slingshot or a bombchu. If you don't have those, you can also climb up as far as you can, and press A to let go of the ladder, then spam the jumpslash button for your sword or stick for the kill.",
                         CustomRequirement: function(age) {
-                            return Items.FAIRY_SLINGSHOT.playerHas || Items.BOMBCHU.playerHas || (Settings.GlitchesToAllow.watchtowerSkullJumpslash && Data.hasSwordWeapon(age));
+                            let canUseISG = Settings.GlitchesToAllow.isg && Data.hasSwordWeapon(age) && Data.hasShield(age);
+                            return canUseISG || Items.FAIRY_SLINGSHOT.playerHas || Items.BOMBCHU.playerHas || (Settings.GlitchesToAllow.watchtowerSkullJumpslash && Data.hasSwordWeapon(age));
                         }
                     },
                     "Skulltula on Impa's Roof": {
