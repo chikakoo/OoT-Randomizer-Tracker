@@ -156,8 +156,8 @@ SocketClient = {
 	 * Syncs up one item location, given the map and location name
 	 */
 	updateItemLocation: function(itemLocation) {
-		let isInOwExits = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE ||
-		 	(itemLocation.ItemGroup === ItemGroups.ENTRANCE && !itemLocation.IsBoss);
+		let isInOwExits = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE || 
+			itemLocation.ItemGroup === ItemGroups.ENTRANCE;
 		let map = isInOwExits ? itemLocation.ExitMap : itemLocation.Map;
 		let region = isInOwExits ? itemLocation.ExitRegion : itemLocation.Region;
 		let name = itemLocation.Name.trim();
@@ -179,7 +179,7 @@ SocketClient = {
 				}
 			}
 		}
-		else if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && !itemLocation.IsBoss) {
+		else if (itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
 			matchingLocation = OwExits[map][name];
 		}
 		else {

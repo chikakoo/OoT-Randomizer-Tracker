@@ -819,6 +819,7 @@ GrottoGroups = {
 				}
 			},
 			"Blue Warp": {
+				icon: "Gohma",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					return Data.hasSwordWeapon(age) && (Items.DEKU_NUT.playerHas || (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas));
@@ -841,6 +842,7 @@ GrottoGroups = {
 				}
 			},
 			"Blue Warp": {
+				icon: "King Dodongo",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					return Data.canBlastOrSmash(age) && (Items.BOMB.playerHas || Equipment.STRENGTH.playerHas);
@@ -860,6 +862,7 @@ GrottoGroups = {
 				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			},
 			"Blue Warp": {
+				icon: "Barinade",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					return Data.hasSwordWeapon(age) && Data.canUseBoomerang(age);
@@ -882,6 +885,7 @@ GrottoGroups = {
 				}
 			},
 			"Blue Warp": {
+				icon: "Phantom Ganon",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					let canStunBoss = (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas) ||
@@ -905,6 +909,7 @@ GrottoGroups = {
 				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			},
 			"Blue Warp": {
+				icon: "Volvagia",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
@@ -927,6 +932,7 @@ GrottoGroups = {
 				isAdultOnly: function() { return true; }
 			},
 			"Blue Warp": {
+				icon: "Morpha",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					return age === Age.ADULT && Items.HOOKSHOT.playerHas;
@@ -954,6 +960,7 @@ GrottoGroups = {
 				}
 			},
 			"Blue Warp": {
+				icon: "Bongo Bongo",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					let canStunHands = (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas) ||
@@ -975,6 +982,7 @@ GrottoGroups = {
 				isAdultOnly: function() { return true; }
 			},
 			"Blue Warp": {
+				icon: "Twinrova",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					return age === Age.ADULT && Equipment.MIRROR_SHIELD.playerHas;

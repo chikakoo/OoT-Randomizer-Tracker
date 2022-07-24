@@ -99,7 +99,7 @@ let _performItemDisabling = function() {
 			itemLocation.disabled = !Data.shouldDisplayItemLocation(itemLocation);
 
 			// This will disable the group selection and select the appropriate group where appropriate
-			if (!Data.setUpDefaultEntranceGroup(itemLocation) && !itemLocation.IsBoss) {
+			if (!Data.setUpDefaultEntranceGroup(itemLocation)) {
 				itemLocation.disabled = true;
 				return;
 			};

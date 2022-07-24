@@ -178,45 +178,12 @@ let StandardDungeons = {
 			},
 
 			bossRoom: {
-				Exits: {},
-				ItemLocations: {
-					"Heart Container": {
-						Name: "Heart Container",
-						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: { x: 257, y: 275, floor: "B2" },
-						Age: Age.EITHER,
-						IsBoss: true,
-						Order: 11,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-						LongDescription: "To defeat Gohma, you must first stun her when her eye is red. You can use the slingshot or deku nuts to do this - nuts don't stun her for nearly as long, though. Once she's down, attack her. The quickest kill is with three deku stick jumpslashes (or one then two crouch stabs).",
-						CustomRequirement: function(age) {
-							return Data.hasSwordWeapon(age) && (Items.DEKU_NUT.playerHas || (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas));
-						}
-					},
-					"Blue Warp": {
-						Name: "Blue Warp",
-						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: { x: 270, y: 286, floor: "B2" },
-						Age: Age.EITHER,
-						IsBoss: true,
-						Order: 12,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-						CustomRequirement: function(age) {
-							return Data.hasSwordWeapon(age) && (Items.DEKU_NUT.playerHas || (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas));
-						}
-					},
+				Exits: {
 					"Boss Entrance": {
-						Name: "Boss Entrance",
-						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 242, y: 248, floor: "B2" },
-						Age: Age.EITHER,
-						IsBoss: true,
-						Order: 11,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-						LongDescription: "You get here after stunning the deku scrubs in this order (left to right): 2, 3, 1."
+						OwExit: OwExits["Deku Tree"]["Boss Entrance"]
 					}
-				}
+				},
+				ItemLocations: {}
 			}
 		}
 	},
@@ -525,49 +492,12 @@ let StandardDungeons = {
 			},
 
 			bossRoom: {
-				Exits: {},
-				ItemLocations: {
-					"Chest by King Dodongo": {
-						Name: "Chest by King Dodongo",
-						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 91, y: 107, floor: "F1" },
-						Age: Age.EITHER,
-						IsBoss: true,
-						Order: 15,
-						LongDescription: "This is in the room you enter after you push the block on the switch. The chest is straight ahead."
-					},
-					"Heart Container": {
-						Name: "Heart Container",
-						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: { x: 104, y: 114, floor: "F1" },
-						Age: Age.EITHER,
-						IsBoss: true,
-						Order: 16,
-						LongDescription: "You must bomb the suspicious floor in the room you enter after pushing the block on the switch to get to King Dodongo. To defeat him, you must throw a bomb or bomb flower into his mouth, and then attack him afterward. Note that you should follow him as he rolls so that he gets up faster. If using bomb flowers, try to get them a little bit early, as you need time to run back to him before he shoots his fireball. The quickest kill is with 2 deku stick/master sword jumpslashes, or 1 biggoron's sword jumpslash.",
-						NeedToBlastOrSmash: true,
-						RequiredChoiceOfItems: [Items.BOMB, Equipment.STRENGTH]
-					},
-					"Blue Warp": {
-						Name: "Blue Warp",
-						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: { x: 104, y: 100, floor: "F1" },
-						Age: Age.EITHER,
-						IsBoss: true,
-						Order: 17,
-						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-						NeedToBlastOrSmash: true,
-						RequiredChoiceOfItems: [Items.BOMB, Equipment.STRENGTH]
-					},
+				Exits: {
 					"Boss Entrance": {
-						Name: "Boss Entrance",
-						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 116, y: 110, floor: "F1" },
-						Age: Age.EITHER,
-						IsBoss: true,
-						Order: 15,
-						LongDescription: "To defeat King Dodongo, you must throw a bomb or bomb flower into his mouth, and then attack him afterward. Note that you should follow him as he rolls so that he gets up faster. If using bomb flowers, try to get them a little bit early, as you need time to run back to him before he shoots his fireball. The quickest kill is with 2 deku stick/master sword jumpslashes, or 1 biggoron's sword jumpslash."
+						OwExit: OwExits["Dodongo's Cavern"]["Boss Entrance"]
 					}
-				}
+				},
+				ItemLocations: {}
 			}
 		}
 	},
@@ -699,47 +629,17 @@ let StandardDungeons = {
 						Order: 8,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						LongDescription: "In the room before the boss room (the one that's slightly green and has a bunch of biris), there's a skulltula on the vines leading up the wall to the door switch.<br/><br/>Note that adult can get here immediately by using the hover boots."
-					},
-					"Boss Entrance": {
-						Name: "Boss Entrance",
-						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 242, y: 150, floor: "F1" },
-						Age: Age.EITHER,
-						IsBoss: true,
-						Order: 9,
-						RequiredItems: [Items.BOOMERANG],
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
-						LongDescription: "Climb up the webbing and use your boomerang to hit the switch and unblock the door."
 					}
 				}
 			},
 
 			bossRoom: {
-				Exits: {},
-				ItemLocations: {
-					"Heart Container": {
-						Name: "Heart Container",
-						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: { x: 242, y: 121, floor: "F1" },
-						Age: Age.EITHER,
-						IsBoss: true,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
-						Order: 9,
-						LongDescription: "You need the boomerang and either the Kokiri Sword, or at least 2 Deku Sticks to defeat Barinade. First, dislodge it from the ceiling using the boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
-						NeedsSwordWeapon: true
-					},
-					"Blue Warp": {
-						Name: "Blue Warp",
-						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: { x: 246, y: 125, floor: "F1" },
-						Age: Age.EITHER,
-						IsBoss: true,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
-						Order: 10,
-						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-						NeedsSwordWeapon: true
+				Exits: {
+					"Boss Entrance": {
+						OwExit: OwExits["Jabu Jabu's Belly"]["Boss Entrance"]
 					}
-				}
+				},
+				ItemLocations: {}
 			}
 		}
 	},
@@ -1303,51 +1203,12 @@ let StandardDungeons = {
 				}
 			},
 			bossRoom: {
-				Exits: {},
-				ItemLocations: {
-					"Heart Container": {
-						Name: "Heart Container",
-						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: { x: 186, y: 77, floor: "B1" },
-						Age: Age.ADULT,
-						IsBoss: true,
-						Order: 25,
-						LongDescription: "For phase 1 of Phantom Ganon, you must shoot the real version of him that comes out of the paintings. You can use your bow or hookshot for that. The real one is lighter and is the only one that makes sound. Phase 2 is the familiar tenis match. Stun him with his own attacks and damage him when he's stunned. You can also just spam him with the boomerang!",
-						IsPostWalkCheck: true,
-						CustomRequirement: function(age) {
-							let canBKSkip = age === Age.ADULT && Settings.GlitchesToAllow.forestBKSkip && Items.HOOKSHOT.playerHas;
-							return canBKSkip || Data.forestTempleCanAccessAllPoeRooms(age);
-						}
-					},
-					"Blue Warp": {
-						Name: "Blue Warp",
-						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: { x: 181, y: 81, floor: "B1" },
-						Age: Age.ADULT,
-						IsBoss: true,
-						Order: 26,
-						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-						IsPostWalkCheck: true,
-						CustomRequirement: function(age) {
-							let canBKSkip = age === Age.ADULT && Settings.GlitchesToAllow.forestBKSkip && Items.HOOKSHOT.playerHas;
-							return canBKSkip || Data.forestTempleCanAccessAllPoeRooms(age);
-						}
-					},
+				Exits: {
 					"Boss Entrance": {
-						Name: "Boss Entrance",
-						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 184, y: 107, floor: "B1" },
-						Age: Age.ADULT,
-						IsBoss: true,
-						Order: 25,
-						LongDescription: "After hitting all the switches in the basement, you can enter the boss room.",
-						IsPostWalkCheck: true,
-						CustomRequirement: function(age) {
-							let canBKSkip = age === Age.ADULT && Settings.GlitchesToAllow.forestBKSkip && Items.HOOKSHOT.playerHas;
-							return canBKSkip || Data.forestTempleCanAccessAllPoeRooms(age);
-						}
+						OwExit: OwExits["Forest Temple"]["Boss Entrance"]
 					}
-				}
+				},
+				ItemLocations: {}
 			}
 		}
 	},
@@ -2070,49 +1931,12 @@ let StandardDungeons = {
 				}
 			},
 			bossRoom: {
-				Exits: {},
-				ItemLocations: {
-					"Heart Container": {
-						Name: "Heart Container",
-						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: { x: 25, y: 197, floor: "F1" },
-						Age: Age.EITHER,
-						IsBoss: true,
-						UseAdultAge: function() { 
-							return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
-								(!Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.megaFlip); 
-						},
-						Order: 2,
-						LongDescription: "Note that you can get to this boss without dropping the giant column down. Navigate to the Goron cage area and drop down onto the small ledge. Now do a rolling jump straight at the boss platform and hold forward - you should grab the ledge. This might take a few tries. The Hover Boots should make this trivial. To defeat Volvagia, hit her with your hammer when she pops out of the holes. After that, attack it again. Jumpslashes will do more damage, like usual. You can hit it with arrows while it's flying to do additional damage. If it ever drops rocks on you, you can hang off the side of the cliff to avoid damage.",
-						RequiredItems: [Items.MEGATON_HAMMER]
-					},
-					"Blue Warp": {
-						Name: "Blue Warp",
-						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: { x: 25, y: 207, floor: "F1" },
-						Age: Age.EITHER,
-						IsBoss: true,
-						UseAdultAge: function() { 
-							return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
-								(!Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.megaFlip); 
-						},
-						Order: 3,
-						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-						RequiredItems: [Items.MEGATON_HAMMER]
-					},
+				Exits: {
 					"Boss Entrance": {
-						Name: "Boss Entrance",
-						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 25, y: 207, floor: "F1" },
-						Age: Age.EITHER,
-						IsBoss: true,
-						UseAdultAge: function() { 
-							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; 
-						},
-						Order: 2,
-						LongDescription: "As Adult, you can do a roll-jump from the corner to get to the boss door."
+						OwExit: OwExits["Fire Temple"]["Boss Entrance"]
 					}
-				}
+				},
+				ItemLocations: {}
 			}
 		}
 	},
@@ -2619,17 +2443,12 @@ let StandardDungeons = {
 				}
 			},
 			bossRoom: {
-				Exits: {},
+				Exits: {
+					"Boss Entrance": {
+						OwExit: OwExits["Water Temple"]["Boss Entrance"]
+					}
+				},
 				ItemLocations: {
-					"Heart Container": {
-						Name: "Heart Container",
-						ItemGroup: ItemGroups.FREESTANDING,
-						Age: Age.ADULT,
-						IsBoss: true,
-						Order: 22,
-						MapInfo: { x: 227, y: 135, floor: "F3" },
-						LongDescription: "The boss room is on the opposite side of the entrance to the temple. You can actually immediately get there with no glitches required if you already have the longshot and boss key. To defeat morpha, hookshot her nucleus out of the water and hit her to damage her. A good way to kill is to continuously hookshot her to bring her into a corner. Now, get to the other side of her and slash once so it runs into the corner. Now quickly jumpslash it (Z + A) and continue to crouch stab (Hold R, spam B) until it's dead."
-					},
 					"Blue Warp": {
 						Name: "Blue Warp",
 						ItemGroup: ItemGroups.FREESTANDING,
@@ -2637,16 +2456,8 @@ let StandardDungeons = {
 						IsBoss: true,
 						Order: 23,
 						MapInfo: { x: 227, y: 145, floor: "F3" },
-						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion."
-					},
-					"Boss Entrance": {
-						Name: "Boss Entrance",
-						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 227, y: 135, floor: "F3" },
-						Age: Age.ADULT,
-						IsBoss: true,
-						Order: 22,
-						LongDescription: "The boss room is on the opposite side of the entrance to the temple. You can actually immediately get there with no glitches required if you already have the longshot and boss key."
+						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
+						disabled: true //TODO: maybe clean this up so this item isn't necessary anymore
 					}
 				}
 			}
@@ -3215,38 +3026,12 @@ let StandardDungeons = {
 				}
 			},
 			bossRoom: {
-				Exits: {},
-				ItemLocations: {
-					"Heart Container": {
-						Name: "Heart Container",
-						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: { x: 131, y: 219, floor: "B1" },
-						Age: Age.ADULT,
-						IsBoss: true,
-						Order: 23,
-						LongDescription: "When fighting Bongo Bongo, it helps to NOT have the Hover Boots equipped. When the fight starts, if you hold down, he won't circle you right away. Hit his hands with your bow or hookshot to stun them. Now hit him before he hits you and damage him as much as you can. If you have magic, quickspins can actually stunlock him for a 1-cycle if you do them perfectly.",
-						RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.HOOKSHOT]
-					},
-					"Blue Warp": {
-						Name: "Blue Warp",
-						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: { x: 131, y: 230, floor: "B1" },
-						Age: Age.ADULT,
-						IsBoss: true,
-						Order: 24,
-						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-						RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.HOOKSHOT]
-					},
+				Exits: {
 					"Boss Entrance": {
-						Name: "Boss Entrance",
-						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 132, y: 210, floor: "B1" },
-						Age: Age.ADULT,
-						IsBoss: true,
-						Order: 23,
-						LongDescription: "Enter the door across the chasm and navigate across the invisible floors to get to the boss."
+						OwExit: OwExits["Shadow Temple"]["Boss Entrance"]
 					}
-				}
+				},
+				ItemLocations: {}
 			}
 		}
 	},
@@ -3823,39 +3608,12 @@ let StandardDungeons = {
 				}
 			},
 			bossRoom: {
-				Exits: {},
-				ItemLocations: {
-					"Heart Container": {
-						Name: "Heart Container",
-						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: { x: 173, y: 63, floor: "F2" },
-						Age: Age.ADULT,
-						IsBoss: true,
-						Order: 29,
-						AltOrder: 26,
-						LongDescription: "The boss room can be reached if you enter the left door after the moving wall room. First, hit the silver switch behind the cage to be able to continue. Position all the snake mirrors so that they point the light at the giant mirror in the original room. You'll have to bomb a wall at some point. Make your way to where the light is now and shine it at the sun on the wall. When the platform lowers, shine the light on the statue's face. After it breaks, hookshot the grate and enter the boss room, then kill the iron knuckle.<br/><br/>To defeat Twinrova, reflect one of the sister's shots at the other one. Do this four times to get to the second phase. Now, you must charge your shield with 3 of the same kind of attack. When you do, your shield will shoot it at Twinrova, stunning her. Go hit her! As usual, a jumpslash (Z + A) then crouch stabs (R + spam B) do the most damage."
-					},
-					"Blue Warp": {
-						Name: "Blue Warp",
-						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: { x: 187, y: 63, floor: "F2" },
-						Age: Age.ADULT,
-						IsBoss: true,
-						Order: 30,
-						AltOrder: 27,
-						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion."
-					},
+				Exits: {
 					"Boss Entrance": {
-						Name: "Boss Entrance",
-						ItemGroup: ItemGroups.ENTRANCE,
-						MapInfo: { x: 178, y: 71, floor: "F2" },
-						Age: Age.ADULT,
-						IsBoss: true,
-						Order: 29,
-						AltOrder: 26,
-						LongDescription: "The boss room can be reached if you enter the left door after the moving wall room. First, hit the silver switch behind the cage to be able to continue. Position all the snake mirrors so that they point the light at the giant mirror in the original room. You'll have to bomb a wall at some point. Make your way to where the light is now and shine it at the sun on the wall. When the platform lowers, shine the light on the statue's face. After it breaks, hookshot the grate and enter the boss room."
+						OwExit: OwExits["Spirit Temple"]["Boss Entrance"]
 					}
-				}
+				},
+				ItemLocations: {}
 			}
 		}
 	},

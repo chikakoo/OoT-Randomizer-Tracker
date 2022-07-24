@@ -321,19 +321,10 @@ Data = {
 
     /**
      * Returns whether we should display the item location
-     * Checks for grotto, interior, OW entrances, and owl entrances and their appropriate setting
+     * Checks for owls, dungeons, and OW entrances and adjusts based on their settings
      * If it's not any of those, will return true
      */
     shouldDisplayItemLocation: function(itemLocation) {
-        if (itemLocation.ItemGroup !== ItemGroups.ENTRANCE && itemLocation.IsBoss) {
-            return !Settings.RandomizerSettings.shuffleBossEntrances;
-        }
-
-        if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && itemLocation.IsBoss) {
-            return Settings.RandomizerSettings.shuffleBossEntrances;
-        }
-
-        // Important to check the owls and dungneons before the OW entrances, because they are also OW entrances
         if (itemLocation.IsOwl) {
             return Settings.RandomizerSettings.randomizeOwlDrops;
         }
@@ -355,11 +346,9 @@ Data = {
      * @return - true if it is not applicable, or if it was set up correctly; false if we should disable the location
      */
     setUpDefaultEntranceGroup: function(itemLocation) {
-        if (itemLocation.ItemGroup !== ItemGroups.ENTRANCE || 
-            itemLocation.IsBoss ||
-            itemLocation.DefaultEntranceGroup) 
+        if (itemLocation.ItemGroup !== ItemGroups.ENTRANCE || itemLocation.DefaultEntranceGroup) 
         { 
-            return true;  // Not an entrance, is a boss, or it's already populated
+            return true;  // Not an entrance or it's already populated
         }
 
         if (this.usesDefaultGroup(itemLocation)) {
@@ -783,7 +772,8 @@ Data = {
     usesDefaultGroup: function(itemLocation) {
         let isInteriorAndUseDefault = !Settings.RandomizerSettings.shuffleInteriorEntrances && itemLocation.IsInterior;
         let isGrottoAndUseDefault = !Settings.RandomizerSettings.shuffleGrottoEntrances && itemLocation.IsGrotto;
-        return isInteriorAndUseDefault || isGrottoAndUseDefault;
+        let isBossAndUseDefault = !Settings.RandomizerSettings.shuffleBossEntrances && itemLocation.IsBoss;
+        return isInteriorAndUseDefault || isGrottoAndUseDefault || isBossAndUseDefault;
     },
 
     /**

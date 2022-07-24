@@ -2119,6 +2119,18 @@ let OwExits = {
             IsDungeonExit: true,
             Age: Age.EITHER,
             LongDescription: "This is the exit from the Deku Tree."
+        },
+        "Boss Entrance": {
+            Name: "Boss Entrance",
+            ExitRegion: "bossRoom",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsBoss: true,
+            DefaultEntranceGroupName: "Gohma",
+            MapInfo: { x: 242, y: 248, floor: "B2" },
+            Age: Age.EITHER,
+            Order: 13,
+            UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+            LongDescription: "You get here after stunning the deku scrubs in this order (left to right): 2, 3, 1 (1, 3, 2  in MQ)."
         }
     },
 
@@ -2134,6 +2146,17 @@ let OwExits = {
             IsDungeonExit: true,
             Age: Age.EITHER,
             LongDescription: "This is the exit from Dodongo's Cavern."
+        },
+        "Boss Entrance": {
+            Name: "Boss Entrance",
+            ExitRegion: "bossRoom",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsBoss: true,
+            DefaultEntranceGroupName: "King Dodongo",
+            MapInfo: { x: 116, y: 110, floor: "F1" },
+            Age: Age.EITHER,
+            Order: 16,
+            LongDescription: "Standard: Navigate around the rooms in the giant head and push the block onto the switch to unbar the boss door.<br/><br/>MQ: After navigating around the area inside the Dodongo head, pull back the grave to reveal a switch. Enter the door that unbars."
         }
     },
 
@@ -2149,6 +2172,23 @@ let OwExits = {
             IsDungeonExit: true,
             Age: Age.EITHER,
             LongDescription: "This is the exit from Jabu Jabu's Belly."
+        },
+        "Boss Entrance": {
+            Name: "Boss Entrance",
+            ExitRegion: "bossRoom",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsBoss: true,
+            DefaultEntranceGroupName: "Barinade",
+            MapInfo: { x: 242, y: 150, floor: "F1" },
+            Age: Age.EITHER,
+            Order: 100,
+            UseChildAge: function() { 
+                isMQ = MapLocations["Jabu Jabu's Belly"].IsMasterQuest;
+                return isMQ ?
+                    !Settings.RandomizerSettings.shuffleDungeonEntrances :
+                    !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap;
+            },
+            LongDescription: "Standard: Climb up the webbing and use your boomerang to hit the switch and unblock the door.<br/><br/>MQ: Shoot the cow on the wall a few times to unblock the door."
         }
     },
 
@@ -2164,6 +2204,24 @@ let OwExits = {
             IsDungeonExit: true,
             Age: Age.EITHER,
             LongDescription: "This is the exit from the Forest Temple."
+        },
+        "Boss Entrance": {
+            Name: "Boss Entrance",
+            ExitRegion: "bossRoom",
+            ItemGroup: ItemGroups.ENTRANCE,
+            MapInfo: { x: 184, y: 107, floor: "B1" },
+            Age: Age.ADULT,
+            IsBoss: true,
+            DefaultEntranceGroupName: "Phantom Ganon",
+            Order: 25,
+            LongDescription: "After hitting all the switches in the basement, you can enter the boss room.",
+            IsPostWalkCheck: true,
+            CustomRequirement: function(age) {
+                let canBKSkip = age === Age.ADULT && Settings.GlitchesToAllow.forestBKSkip && Items.HOOKSHOT.playerHas;
+                let isMQ = MapLocations["Forest Temple"].IsMasterQuest;
+                let canAccessPoeRoom = isMQ ? Data.mqForestTempleCanAccessAllPoeRooms(age) : Data.forestTempleCanAccessAllPoeRooms(age);
+                return canBKSkip || canAccessPoeRoom;
+            }
         }
     },
 
@@ -2179,6 +2237,26 @@ let OwExits = {
             IsDungeonExit: true,
             Age: Age.EITHER,
             LongDescription: "This is the exit from the Fire Temple."
+        },
+        "Boss Entrance": {
+            Name: "Boss Entrance",
+            ExitRegion: "bossRoom",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsBoss: true,
+            DefaultEntranceGroupName: "Volvagia",
+            MapInfo: { x: 25, y: 207, floor: "F1" },
+            Age: Age.EITHER,
+            UseAdultAge: function() { 
+                let isMQ = MapLocations["Fire Temple"].IsMasterQuest;
+                return isMQ
+                    ? (!Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.megaFlip) || 
+                        !Settings.GlitchesToAllow.megaFlip ||
+                        !Settings.GlitchesToAllow.fireNoGoronTunic ||
+                        !Settings.GlitchesToAllow.bombSuperslide
+                    : !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; 
+            },
+            Order: 100,
+            LongDescription: "As Adult, you can do a roll-jump from the corner to get to the boss door."
         }
     },
 
@@ -2194,6 +2272,17 @@ let OwExits = {
             IsDungeonExit: true,
             Age: Age.EITHER,
             LongDescription: "This is the exit from the Water Temple."
+        },
+        "Boss Entrance": {
+            Name: "Boss Entrance",
+            ExitRegion: "bossRoom",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsBoss: true,
+            DefaultEntranceGroupName: "Morpha",
+            MapInfo: { x: 227, y: 135, floor: "F3" },
+            Age: Age.ADULT,
+            Order: 100,
+            LongDescription: "The boss room is on the opposite side of the entrance to the temple. You can actually immediately get there with no glitches required if you already have the longshot and boss key.<br/><br/>MQ: In the room with the spike traps, either roll up with hover boots equipped, or shoot the crystal switch above the boss door. If you don't have the key, climb on the hookshot targets, sidehop, then jumpslash at the door while holding forward to clip through."
         }
     },
 
@@ -2210,6 +2299,17 @@ let OwExits = {
             Order: 0,
             Age: Age.EITHER,
             LongDescription: "This is the exit from the Shadow Temple."
+        },
+        "Boss Entrance": {
+            Name: "Boss Entrance",
+            ExitRegion: "bossRoom",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsBoss: true,
+            DefaultEntranceGroupName: "Bongo Bongo",
+            MapInfo: { x: 132, y: 210, floor: "B1" },
+            Age: Age.ADULT,
+            Order: 100,
+            LongDescription: "Enter the door across the chasm and navigate across the invisible floors to get to the boss."
         }
     },
 
@@ -2241,6 +2341,18 @@ let OwExits = {
             OwShuffleMap: "Desert Colossus",
             OwShuffleRegion: "main",
             OwShuffleExitName: "Haunted Wasteland"
+        },
+        "Boss Entrance": {
+            Name: "Boss Entrance",
+            ExitRegion: "bossRoom",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsBoss: true,
+            DefaultEntranceGroupName: "Twinrova",
+            MapInfo: { x: 178, y: 71, floor: "F2" },
+            Age: Age.ADULT,
+            Order: 100,
+            AltOrder: 100,
+            LongDescription: "Standard: The boss room can be reached if you enter the left door after the moving wall room. First, hit the silver switch behind the cage to be able to continue. Position all the snake mirrors so that they point the light at the giant mirror in the original room. You'll have to bomb a wall at some point. Make your way to where the light is now and shine it at the sun on the wall. When the platform lowers, shine the light on the statue's face. After it breaks, hookshot the grate and enter the boss room.<br/><br/>MQ: To reach the boss room, start at the mirror maze. Shine the light from the first mirror onto the sun above the first archway - this will spawn a second mirror. Now, push the mirrors so that the light travels to the end. Go to the giant mirror that the light is now traveling to, and reflect the light unto the sun on the wall. After the cutscene, shine the light into the statue's face. Hookshot the grate to get to the boss room."
         }
     },
 
