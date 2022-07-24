@@ -2287,7 +2287,11 @@ let MQDungeons = {
 						Age: Age.ADULT,
 						Order: 3,
 						LongDescription: "First, turn the truth spinner in the main room to the correct skull to open the gate. Now, shoot the torches to the left and right of the gate to create a platform. Alternatively, you can megaflip or hover boots across. Take the left door from the beamos. Gather all the rupees to open the cell to the chest.",
-						RequiredChoiceOfItems: [Items.HOOKSHOT, Equipment.HOVER_BOOTS]
+						CustomRequirement: function(age) {
+							return Items.HOOKSHOT.playerHas || 
+								Equipment.HOVER_BOOTS.playerHas || 
+								Settings.GlitchesToAllow.shadowSilverRupeeWithNothing;
+						}
 					},
 					"Invisible Chest Under Scythe Room": {
 						Name: "Invisible Chest Under Scythe Room",
