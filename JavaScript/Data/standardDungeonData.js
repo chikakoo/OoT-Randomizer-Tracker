@@ -4375,10 +4375,9 @@ let StandardDungeons = {
 						UseAdultAge: function() { 
 							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
 								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-							return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips && Settings.GlitchesToAllow.equipSwap); 
+							return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
 						},
-						LongDescription: "This is either after the eye statue room, or after the big lava room. Use your hammer on the pillars until you find a floor switch. Step on it to remove the flames from the chest. Be sure to get it before they come back!",
-						RequiredItems: [Items.MEGATON_HAMMER]
+						LongDescription: "This is either after the eye statue room, or after the big lava room. Use your hammer on the pillars until you find a floor switch. Step on it to remove the flames from the chest. Be sure to get it before they come back!<br/><br/>If you have no hammer, line up with the front of the chest and walk into the fire and keep holding up. Open the chest when you reach it before the fire wears off."
 					}
 				}
 			},
