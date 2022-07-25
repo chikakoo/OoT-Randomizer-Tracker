@@ -1585,9 +1585,14 @@ let OwExits = {
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 173, y: 241},
-            Age: Age.CHILD,
+            Age: Age.EITHER,
+            UseChildAge: function() { return !Settings.GlitchesToAllow.adultDomainToLake; },
             LongDescription: "This is the entrance to Zora's River you can get to by diving into the water.",
-            RequiredItems: [Equipment.SCALE]
+            RequiredChildItems: [Equipment.SCALE],
+            CustomRequirement: function(age) {
+                if (age === Age.CHILD) { return true; }
+                return Settings.GlitchesToAllow.adultDomainToLake && Items.HOOKSHOT.playerHas;
+            }
         },
         "Zora's Fountain": {
             Name: "Zora's Fountain",

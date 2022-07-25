@@ -172,6 +172,7 @@ let Settings = {
 		clipZoraSkip: false,
 		blueFireShopSkip: false,
 		thawKingZoraWithNothing: true,
+		adultDomainToLake: false,
 		labHPWithoutGoldenScale: false,
 		adultDomainMegaflipClip: false,
 		adultLakesideLabClip: false,
