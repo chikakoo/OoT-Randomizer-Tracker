@@ -286,7 +286,7 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 2,
 						UseAdultAge: function() { return !Settings.GlitchesToAllow.dodongoScarecrowSkullEarly; },
-						LongDescription: "Go to the room to the east of the main room. As adult, play scarcrow's song near the wall with the ledge on the left hand side. Hookshot up to it to get to the skulltula. Alternatively, you can push the armos status all the way over to the ledge and backflip onto it to get to the ledge.",
+						LongDescription: "Go to the room to the east of the main room. As adult, play scarecrow's song near the wall with the ledge on the left hand side. Hookshot up to it to get to the skulltula. Alternatively, you can push the armos status all the way over to the ledge and backflip onto it to get to the ledge.",
 						CustomRequirement: function(age) {
 							let scarecrowless = Settings.GlitchesToAllow.dodongoScarecrowSkullEarly;
 							if (!scarecrowless && age === Age.CHILD) { return false; }

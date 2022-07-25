@@ -115,7 +115,9 @@ SocketClient = {
 		
 		// Sync up when an item location is updated
 		this._socket.on("item_location_updated", function(itemLocation) {
-			let map = itemLocation.Map;
+			let map = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE || itemLocation.ItemGroup === ItemGroups.ENTRANCE
+				? itemLocation.ExitMap 
+				: itemLocation.Map;
 	    	console.log(`${itemLocation.Name} was updated at ${map} - Checked: ${itemLocation.playerHas}`);
 
 			SocketClient.updateItemLocation(itemLocation);
@@ -139,7 +141,9 @@ SocketClient = {
 	 */
 	updateAllItemLocations(allItemLocations) {
 		allItemLocations.forEach(function(itemLocation) {
-			let map = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE ? itemLocation.ExitMap : itemLocation.Map;
+			let map = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE || itemLocation.ItemGroup === ItemGroups.ENTRANCE
+				? itemLocation.ExitMap 
+				: itemLocation.Map;
 
 			console.log(`${itemLocation.Name} was updated at ${map} - Checked: ${itemLocation.playerHas}`);
 			SocketClient.updateItemLocation(itemLocation);
