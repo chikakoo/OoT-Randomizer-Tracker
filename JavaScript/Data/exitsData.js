@@ -163,17 +163,29 @@ let OwExits = {
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 86, y: 251},
-            Age: Age.ADULT,
+            Age: Age.EITHER,
+            UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
             OneWayEntrance: true,
             CustomRequirement: function(age) {
-                return Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.currentUpgrade === 2 || Data.itemLocationObtained("Lost Woods", "firstHalf", "*Plant Bean by Bridge");
+                let canMegaFlip = Data.canMegaFlip(age);
+                if (age === Age.CHILD) {
+                    return canMegaFlip;
+                }
+
+                if (Settings.GlitchesToAllow.lwAdultBridgePreciseEntry && (Items.HOOKSHOT.playerHas || Data.hasShield(age))) {
+                    return true;
+                }
+
+                return canMegaFlip ||
+                    Equipment.HOVER_BOOTS.playerHas || 
+                    Items.HOOKSHOT.currentUpgrade === 2 ||
+                    Data.itemLocationObtained("Lost Woods", "firstHalf", "*Plant Bean by Bridge");
             },
             OwShuffleMap: "Lost Woods Bridge",
             OwShuffleRegion: "main",
             OwShuffleExitName: "Kokiri Forest Bridge",
             ReadOnly: true,
-            Hide: true,
-            LongDescription: "This is taken via the magic bean, hover boots, or by longshotting to the bridge."
+            LongDescription: "This is taken via the magic bean, hover boots, longshotting (hookshotting with a trick), megaflipping, or precise jumping to the bridge."
         },
         "Sacred Forest Meadow": {
             Name: "Sacred Forest Meadow",
@@ -251,7 +263,6 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 148, y: 74 },
             ReadOnly: true,
-            Hide: true,
             OwShuffleMap: "Lost Woods",
             OwShuffleRegion: "firstHalf",
             OwShuffleExitName: "To Kokiri Forest",
@@ -1846,13 +1857,11 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 275, y: 275},
             Age: Age.EITHER,
-            Region: "main",
             OneWayEntrance: true,
             OwShuffleMap: "Lake Hylia",
             OwShuffleRegion: "main",
             OwShuffleExitName: "Hyrule Field",
             ReadOnly: true,
-            Hide: true,
             LongDescription: "This is the river exit to the lake. It will ALWAYS lead to the lake."
         },
 

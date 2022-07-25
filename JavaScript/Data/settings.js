@@ -153,8 +153,9 @@ let Settings = {
 		// Forest
 		pokeySkip: false,
 		midoSkip: true,
-		lwSkullWithoutBean: false,
 		houseOfTwinsSkullWithHovers: false,
+		lwSkullWithoutBean: false,
+		lwAdultBridgePreciseEntry: false,
 		zorasRiverScalelessChild: false,
 		zorasRiverScalelessAdult: false,
 		

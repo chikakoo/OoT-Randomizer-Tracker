@@ -475,6 +475,10 @@ Data = {
 
 		Object.keys(exits).forEach(function(entranceName) {
             let entrance = exits[entranceName];
+            if (entrance.ReadOnly) {
+                return;
+            }
+
 			if (entrance.ItemGroup === itemGroupType && 
                 (!entrance.Hide || (options.isOwl && entrance.ShowForOwl)) && 
                 !entrance.IsDungeonEntrance && 
