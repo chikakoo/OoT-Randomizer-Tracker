@@ -185,6 +185,7 @@ let OwExits = {
             OwShuffleRegion: "main",
             OwShuffleExitName: "Kokiri Forest Bridge",
             ReadOnly: true,
+            ExcludeFromDropdown: true,
             LongDescription: "This is taken via the magic bean, hover boots, longshotting (hookshotting with a trick), megaflipping, or precise jumping to the bridge."
         },
         "Sacred Forest Meadow": {
@@ -263,6 +264,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 148, y: 74 },
             ReadOnly: true,
+            ExcludeFromDropdown: true,
             OwShuffleMap: "Lost Woods",
             OwShuffleRegion: "firstHalf",
             OwShuffleExitName: "To Kokiri Forest",
@@ -1862,6 +1864,7 @@ let OwExits = {
             OwShuffleRegion: "main",
             OwShuffleExitName: "Hyrule Field",
             ReadOnly: true,
+            ExcludeFromDropdown: true,
             LongDescription: "This is the river exit to the lake. It will ALWAYS lead to the lake."
         },
 

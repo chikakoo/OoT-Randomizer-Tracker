@@ -475,7 +475,8 @@ Data = {
 
 		Object.keys(exits).forEach(function(entranceName) {
             let entrance = exits[entranceName];
-            if (entrance.ReadOnly) {
+
+            if (entrance.ExcludeFromDropdown) {
                 return;
             }
 
