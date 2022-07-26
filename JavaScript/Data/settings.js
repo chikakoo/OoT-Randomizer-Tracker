@@ -156,6 +156,7 @@ let Settings = {
 		houseOfTwinsSkullWithHovers: false,
 		lwSkullWithoutBean: false,
 		lwAdultBridgePreciseEntry: false,
+		lwBridgePressureJump: false,
 		zorasRiverScalelessChild: false,
 		zorasRiverScalelessAdult: false,
 		

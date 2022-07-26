@@ -268,10 +268,15 @@ let OwExits = {
             OwShuffleMap: "Lost Woods",
             OwShuffleRegion: "firstHalf",
             OwShuffleExitName: "To Kokiri Forest",
-            Age: Age.ADULT,
-            LongDescription: "Longshot from the bridge to the ladder to get to the lost woods.",
+            Age: Age.EITHER,
+            UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip && !Settings.GlitchesToAllow.lwBridgePressureJump; },
+            LongDescription: "Longshot from the bridge to the ladder to get to the lost woods.<br/><br/>Megaflip setup: Get in the corner closest to the ladder; take a tiny step back; c-up and face the third rope support; turn 180; dry roll if using bombs; megaflip",
             CustomRequirement: function(age) {
-                return Items.HOOKSHOT.currentUpgrade === 2;
+                if (age === Age.ADULT && Items.HOOKSHOT.currentUpgrade === 2) {
+                    return true;
+                }
+                let canPressureJump = Settings.GlitchesToAllow.lwBridgePressureJump && Items.BOMB.playerHas;
+                return canPressureJump || Data.canMegaFlip(age);
             }
         }
     },
