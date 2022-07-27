@@ -584,6 +584,18 @@ Data = {
 	},
 
     /**
+     * TO BE CALLED BY THE CONSOLE FOR TESTING!
+     * Sets the properties which allows the item location to skip all other checks
+     */
+    setItemLocationObtainable: function(itemLocation, shouldBeObtainableChild, shouldBeObtainableAdult) {
+        itemLocation.OverrideObtainableChild = shouldBeObtainableChild;
+        itemLocation.OverrideObtainableAdult = shouldBeObtainableAdult;
+
+        SocketClient.itemLocationUpdated(itemLocation);
+        refreshAll();
+    },
+
+    /**
      * Returns whether the Gerudo guards will capture you
      */
     areGerudoGuardsTame: function() {
@@ -790,6 +802,11 @@ Data = {
         // If this is a spawn location, and you can get the item, no need to check anything else
         if (this._isSpawnItemAndCanGet(age, itemLocation)) {
             return ItemObtainability.YES;
+        }
+
+        if ((age === Age.CHILD && itemLocation.OverrideObtainableChild) ||
+            (age === Age.ADULT && itemLocation.OverrideObtainableAdult)) {
+                return ItemObtainability.YES;
         }
 		
         if (!this._isCorrectAge(age, itemLocation)) { return ItemObtainability.NO; }

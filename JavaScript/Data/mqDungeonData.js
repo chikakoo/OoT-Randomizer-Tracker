@@ -355,7 +355,7 @@ let MQDungeons = {
 						MapInfo: { x: 182, y: 200, floor: "F1" },
 						Age: Age.EITHER,
 						Order: 6,
-						LongDescription: "Nagivate through the Poe room to get to this chest on the ledge on the right side of the main room. This may require you to go through most of the dungeon first."
+						LongDescription: "Navigate through the Poe room to get to this chest on the ledge on the right side of the main room. This may require you to go through most of the dungeon first."
 					}
 				}
 			},
@@ -1998,7 +1998,7 @@ let MQDungeons = {
 						MapInfo: { x: 37, y: 146, floor: "F1" },
 						Age: Age.ADULT,
 						Order: 7,
-						LongDescription: "With the water at its highest, nagivate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door. Use your hookshot to get through the next room, and then defeat Dark Link. Hookshot the wall in the next room to reach the whirlpool room.<br/><br/>Use your iron boots or longshot across the river until you hear the skulltula. Get it with your hookshot or longshot.",
+						LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door. Use your hookshot to get through the next room, and then defeat Dark Link. Hookshot the wall in the next room to reach the whirlpool room.<br/><br/>Use your iron boots or longshot across the river until you hear the skulltula. Get it with your hookshot or longshot.",
 						Region: "whirlpoolRoom",
 						RequiredChoiceOfItems: [Equipment.IRON_BOOTS, {item: Items.HOOKSHOT, upgradeString: "2"}]
 					}
@@ -2020,7 +2020,7 @@ let MQDungeons = {
 						MapInfo: { x: 95, y: 126, floor: "F1" },
 						Age: Age.ADULT,
 						Order: 8,
-						LongDescription: "Nagivate around the whirlpool room. In the room with the dragon, use your iron boots to navigate to the back. Light the torches on the walls to unbar the door. In the next room, stand on the water pillar and hit the crystal switch to raise the pillar. Use Din's fire to lower the gate so you can get to the chest."
+						LongDescription: "Navigate around the whirlpool room. In the room with the dragon, use your iron boots to navigate to the back. Light the torches on the walls to unbar the door. In the next room, stand on the water pillar and hit the crystal switch to raise the pillar. Use Din's fire to lower the gate so you can get to the chest."
 					}
 				}
 			},

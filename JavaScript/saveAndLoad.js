@@ -47,7 +47,9 @@ let SaveAndLoad = {
             //              notes: string,
             //              owShuffleMap: string,
             //              owShuffleRegion: string,
-            //              EntranceGroup: {}
+            //              EntranceGroup: {},
+            //              overrideObtainableChild: boolean,
+            //              overrideObtainableAdult: boolean
             //  }}}
         };
         Object.keys(mapObject).forEach(function(mapName) {
@@ -68,8 +70,10 @@ let SaveAndLoad = {
                     let owShuffleMap = itemLocation.OwShuffleMap;
                     let owShuffleRegion = itemLocation.OwShuffleRegion;
                     let entranceGroup = itemLocation.EntranceGroup;
+                    let overrideObtainableChild = itemLocation.OverrideObtainableChild;
+                    let overrideObtainableAdult = itemLocation.OverrideObtainableAdult;
 
-                    if (playerHas || notes || owShuffleMap || owShuffleRegion || entranceGroup) {
+                    if (playerHas || notes || owShuffleMap || owShuffleRegion || entranceGroup || overrideObtainableChild || overrideObtainableAdult) {
                         currentMapData = currentMapData || {};
                         currentMapData.Regions = currentMapData.Regions || {};
                         currentMapData.Regions[regionName] = currentMapData.Regions[regionName] || {};
@@ -82,6 +86,8 @@ let SaveAndLoad = {
                         if (owShuffleMap) { currentObj.OwShuffleMap = owShuffleMap; }
                         if (owShuffleRegion) { currentObj.OwShuffleRegion = owShuffleRegion; }
                         if (entranceGroup) { currentObj.EntranceGroup = entranceGroup; }
+                        if (overrideObtainableChild) { currentObj.OverrideObtainableChild = overrideObtainableChild; }
+                        if (overrideObtainableAdult) { currentObj.OverrideObtainableAdult = overrideObtainableAdult; }
                     }
                 });
             });
@@ -119,7 +125,14 @@ let SaveAndLoad = {
         Object.keys(OwExits).forEach(function(mapName) {
             Object.keys(OwExits[mapName]).forEach(function(exitName) {
                 let exit = OwExits[mapName][exitName];
-                let shouldSave = (exit.OwShuffleMap && exit.OwShuffleRegion) || exit.notes || exit.EntranceGroup || exit.DefaultEntranceGroup || exit.playerHas;
+                let shouldSave = (exit.OwShuffleMap && exit.OwShuffleRegion) || 
+                    exit.notes || 
+                    exit.EntranceGroup || 
+                    exit.DefaultEntranceGroup || 
+                    exit.playerHas ||
+                    exit.OverrideObtainableChild ||
+                    exit.OverrideObtainableAdult;
+
                 if (shouldSave) {
                     owExitData[mapName] = owExitData[mapName] || {};
                     owExitData[mapName][exitName] = {
@@ -130,7 +143,9 @@ let SaveAndLoad = {
                         notes: exit.notes,
                         EntranceGroup: exit.EntranceGroup,
                         DefaultEntranceGroup: exit.DefaultEntranceGroup,
-                        playerHas: exit.playerHas
+                        playerHas: exit.playerHas,
+                        OverrideObtainableChild: exit.OverrideObtainableChild,
+                        OverrideObtainableAdult: exit.OverrideObtainableAdult
                     }
                 }
             });
@@ -317,6 +332,14 @@ let SaveAndLoad = {
                             itemLocation.OwShuffleRegion = loadedItemLocationInfo.OwShuffleRegion;
                         }
 
+                        if (loadedItemLocationInfo.OverrideObtainableChild) {
+                            itemLocation.OverrideObtainableChild = loadedItemLocationInfo.OverrideObtainableChild;
+                        }
+
+                        if (loadedItemLocationInfo.OverrideObtainableAdult) {
+                            itemLocation.OverrideObtainableAdult = loadedItemLocationInfo.OverrideObtainableAdult;
+                        }
+
                         EntranceData.runPostClicks(itemLocation);
                     });
                 });
@@ -379,6 +402,14 @@ let SaveAndLoad = {
 
                 if (loadedOwExitData.playerHas) {
                     exitingExitData.playerHas = loadedOwExitData.playerHas;
+                }
+
+                if (loadedOwExitData.OverrideObtainableChild) {
+                    exitingExitData.OverrideObtainableChild = loadedOwExitData.OverrideObtainableChild;
+                }
+
+                if (loadedOwExitData.OverrideObtainableAdult) {
+                    exitingExitData.OverrideObtainableAdult = loadedOwExitData.OverrideObtainableAdult;
                 }
             });
         });

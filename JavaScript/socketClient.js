@@ -192,6 +192,8 @@ SocketClient = {
 
 		matchingLocation.playerHas = itemLocation.playerHas;
 		matchingLocation.notes = itemLocation.notes;
+		matchingLocation.OverrideObtainableChild = itemLocation.OverrideObtainableChild;
+		matchingLocation.OverrideObtainableAdult = itemLocation.OverrideObtainableAdult;
 
 		let sentGroup = Data.getEntranceGroup(itemLocation);
 		if (sentGroup) {
