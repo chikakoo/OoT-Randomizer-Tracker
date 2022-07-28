@@ -4359,7 +4359,8 @@ let MQDungeons = {
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 12,
 						LongDescription: "After dealing with the enemies, wait for the fan to stop spinning, then hookshot up to the ledge. The item is up there.",
-						RequiredChoiceOfItems: [Items.HOOKSHOT, Items.BOOMERANG]
+						RequiredChildItems: [Items.BOOMERANG],
+						RequiredChoiceOfAdultItems: [Items.HOOKSHOT, Items.BOOMERANG]
 					},
 					"Forest Close Chest": {
 						Name: "Forest Close Chest",

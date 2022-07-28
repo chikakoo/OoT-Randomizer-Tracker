@@ -183,6 +183,7 @@ let Settings = {
 		// Desert
 		eponaHover: false,
 		cuccoJump: false,
+		gvCrossBridgeWithHookshot: false,
 		gerudoGateSkipAsChild: true,
 		gerudoGateSkipAsAdult: false,
 		itemlessSandPit: true,

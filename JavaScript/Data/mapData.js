@@ -2617,7 +2617,12 @@ let MapLocations = {
                         Name: "acrossBridge",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) {
-                                return Data.itemLocationObtained("Gerudo Fortress", "main", "Item From Gerudo") || 
+                                let canCrossWithHookshot = Settings.GlitchesToAllow.gvCrossBridgeWithHookshot && 
+                                    Data.hasShield(age) && 
+                                    Items.HOOKSHOT.playerHas;
+
+                                return canCrossWithHookshot ||
+                                    Data.itemLocationObtained("Gerudo Fortress", "main", "Item From Gerudo") || 
                                     Data.canRideEpona(age) || 
                                     Items.HOOKSHOT.currentUpgrade === 2 ||
                                     Data.canBombSuperslideWithHovers(age) ||
@@ -2664,7 +2669,13 @@ let MapLocations = {
                     main: {
                         Name: "main",
                         CustomRequirement: function(age) {
-                            return age === Age.CHILD || 
+                            if (age === Age.CHILD) { return true; }
+
+                            let canCrossWithHookshot = Settings.GlitchesToAllow.gvCrossBridgeWithHookshot && 
+                                Data.hasShield(age) && 
+                                Items.HOOKSHOT.playerHas;
+
+                            return canCrossWithHookshot ||
                                 Data.itemLocationObtained("Gerudo Fortress", "main", "Item From Gerudo") || 
                                 Data.canRideEpona(age) || 
                                 Items.HOOKSHOT.currentUpgrade === 2 ||
