@@ -4348,10 +4348,15 @@ let StandardDungeons = {
 						Name: "Eye Statue Room Top Room Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 165, y: 133 },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
 						Order: 10,
+						UseAdultAge: function() { 
+							let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+							return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
+						},
 						LongDescription: "This is the room either after the wolfos room, or after the room with the hammerable pillars. If coming from the former, you need to use your hookshot to hook a target beyond a fake wall above the fake door. If coming from the latter, bash the pillars with your hammer, then shoot the eye switch. In the eye statue room, get to the central platform - it will start spinning. Shoot each eye with an arrow to unlock a door on top. If you came from the wolfos room, jump in the lava to respawn on top to get to it. Otherwise, you must use scarecrow's song (the scarecrow is near the door) to get up.",
-						RequiredItems: [Items.FAIRY_BOW]
+						RequiredAdultItems: [Items.FAIRY_BOW]
 					},
 					"Chest in Room with Pillars": {
 						Name: "Chest in Room with Pillars",

@@ -2256,7 +2256,9 @@ let MQDungeons = {
 						LongDescription: "In the maze by the entrance, navigate around to the other side of the first room. Play the Song of Time to remove the block in the way (invisible without the lens). In the next room, shoot the middle eye. Now you can enter the northwest door. Kill Dead Hand to spawn the chest.",
 						RequiredChildItems: [Items.FAIRY_SLINGSHOT],
 						RequiredAdultItems: [Items.FAIRY_BOW],
-						RequiredSongs: [Songs.SONG_OF_TIME]
+						CustomRequirement: function(age) {
+							return age === Age.CHILD || Data.canPlaySong(Songs.SONG_OF_TIME);
+						}
 					}
 				}
 			},
@@ -2308,8 +2310,11 @@ let MQDungeons = {
 						Name: "Chest in Gibdos Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 301, y: 220, floor: "F1" },
-						Age: Age.ADULT,
+						Age: Age.EITHER,
 						Order: 5,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+						},
 						LongDescription: "First, turn the truth spinner in the main room to the correct skull to open the gate. Now, shoot the torches to the left and right of the gate to create a platform. Alternatively, you can megaflip or hover boots across. Take the left door from the beamos. Kill the enemies to spawn the chest."
 					}
 				}
@@ -2320,7 +2325,7 @@ let MQDungeons = {
 					rightSideOfGiantRoom: {
 						Name: "rightSideOfGiantRoom",
 						CustomRequirement: function(age) {
-							return Data.canUseFireItem(age) || (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas)
+							return Data.canUseFireItem(age) || Data.canMegaFlip(age) || (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas)
 						}
 					}
 				},
@@ -2333,10 +2338,15 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 6,
 						UseAdultAge: function() { 
-							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip || !Settings.GlitchesToAllow.groundJump;
 						},
 						LongDescription: "Bomb the wall after the beamos and open the locked door. Navigate through the hallways until you get to a dead end. Make a left at the fork and follow the wall, jumping across the invisible platforms. Enter the door.<br/><br/>Gather all the silver rupees - you'll need the Song of Time for one of them. This will open the door to the chest.",
-						RequiredSongs: [Songs.SONG_OF_TIME]
+						CustomRequirement: function(age) {
+							if (age === Age.ADULT) {
+								return Data.canPlaySong(Songs.SONG_OF_TIME);
+							}
+							return Data.canGroundJumpWithBomb(age);
+						}
 					},
 					"Invisible Chest in Invisible Scythe Room": {
 						Name: "Invisible Chest in Invisible Scythe Room",
@@ -2345,10 +2355,15 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 7,
 						UseAdultAge: function() { 
-							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip || !Settings.GlitchesToAllow.groundJump;
 						},
 						LongDescription: "Bomb the wall after the beamos and open the locked door. Navigate through the hallways until you get to a dead end. Make a left at the fork and follow the wall, jumping across the invisible platforms. Enter the door.<br/><br/>Gather all the silver rupees - you'll need the Song of Time for one of them. This will open the door to the chest - it's next to the visible one.",
-						RequiredSongs: [Songs.SONG_OF_TIME]
+						CustomRequirement: function(age) {
+							if (age === Age.ADULT) {
+								return Data.canPlaySong(Songs.SONG_OF_TIME);
+							}
+							return Data.canGroundJumpWithBomb(age);
+						}
 					}
 				}
 			},
@@ -2382,7 +2397,10 @@ let MQDungeons = {
 						UseAdultAge: function() { 
 							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
 						},
-						LongDescription: "Get to the right side of the giant room. Hit the switch behind the gate to open it to get to the falling spike room. In the first cell to the left is the skulltula."
+						LongDescription: "Get to the right side of the giant room. Hit the switch behind the gate to open it to get to the falling spike room. In the first cell to the left is the skulltula.",
+						CustomRequirement: function(age) {
+							return Data.canGrabShortDistances(age) || Data.canStaircaseHover(age);
+						}
 					},
 					"Bottom Chest in Falling Ceiling Room": {
 						Name: "Bottom Chest in Falling Ceiling Room",
@@ -2399,33 +2417,22 @@ let MQDungeons = {
 						Name: "Top Switchless Chest in Falling Ceiling Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 17, y: 239, floor: "B2" },
-						Age: Age.EITHER,
+						Age: Age.ADULT,
 						Order: 11,
-						UseAdultAge: function() { 
-							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-						},
 						LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. The chest is in the southeast corner.",
 						CustomRequirement: function(age) {
-							if (Settings.GlitchesToAllow.shadowBackFlipOnSpikes) { return true; }
-							if (age === Age.CHILD && !Data.canGroundJumpWithBomb(age)) { return false; }
-							return Equipment.STRENGTH.playerHas;
+							return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
 						}
 					},
 					"Top Switch Chest in Falling Ceiling Room": {
 						Name: "Top Switch Chest in Falling Ceiling Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 79, y: 209, floor: "B2" },
-						Age: Age.EITHER,
+						Age: Age.ADULT,
 						Order: 12,
-						UseAdultAge: function() { 
-							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-						},
 						LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. Press the switch to spawn the chest.",
 						CustomRequirement: function(age) {
-							if (Settings.GlitchesToAllow.shadowBackFlipOnSpikes) { return true; }
-							if (age === Age.CHILD && !Data.canGroundJumpWithBomb(age)) { return false; }
-							return Equipment.STRENGTH.playerHas;
-						}
+							return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;						}
 					}
 				}
 			},
