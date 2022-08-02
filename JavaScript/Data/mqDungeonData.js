@@ -2335,35 +2335,19 @@ let MQDungeons = {
 						Name: "Visible Chest in Invisible Scythe Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 343, y: 138, floor: "B2" },
-						Age: Age.EITHER,
+						Age: Age.ADULT,
 						Order: 6,
-						UseAdultAge: function() { 
-							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip || !Settings.GlitchesToAllow.groundJump;
-						},
 						LongDescription: "Bomb the wall after the beamos and open the locked door. Navigate through the hallways until you get to a dead end. Make a left at the fork and follow the wall, jumping across the invisible platforms. Enter the door.<br/><br/>Gather all the silver rupees - you'll need the Song of Time for one of them. This will open the door to the chest.",
-						CustomRequirement: function(age) {
-							if (age === Age.ADULT) {
-								return Data.canPlaySong(Songs.SONG_OF_TIME);
-							}
-							return Data.canGroundJumpWithBomb(age);
-						}
+						RequiredSongs: [Songs.SONG_OF_TIME]
 					},
 					"Invisible Chest in Invisible Scythe Room": {
 						Name: "Invisible Chest in Invisible Scythe Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 343, y: 142, floor: "B2" },
-						Age: Age.EITHER,
+						Age: Age.ADULT,
 						Order: 7,
-						UseAdultAge: function() { 
-							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip || !Settings.GlitchesToAllow.groundJump;
-						},
 						LongDescription: "Bomb the wall after the beamos and open the locked door. Navigate through the hallways until you get to a dead end. Make a left at the fork and follow the wall, jumping across the invisible platforms. Enter the door.<br/><br/>Gather all the silver rupees - you'll need the Song of Time for one of them. This will open the door to the chest - it's next to the visible one.",
-						CustomRequirement: function(age) {
-							if (age === Age.ADULT) {
-								return Data.canPlaySong(Songs.SONG_OF_TIME);
-							}
-							return Data.canGroundJumpWithBomb(age);
-						}
+						RequiredSongs: [Songs.SONG_OF_TIME]
 					}
 				}
 			},
@@ -2432,7 +2416,8 @@ let MQDungeons = {
 						Order: 12,
 						LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. Press the switch to spawn the chest.",
 						CustomRequirement: function(age) {
-							return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;						}
+							return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
+						}
 					}
 				}
 			},
