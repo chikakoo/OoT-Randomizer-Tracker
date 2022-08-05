@@ -549,29 +549,29 @@ let MapLocations = {
                     },
 
                     // Interiors & Grottos
+                    "Hidden Grotto by Kakariko": {
+                        OwExit: OwExits["Hyrule Field"]["Hidden Grotto by Kakariko"]
+                    },
                     "Grotto in Drawbridge Rock": {
                         OwExit: OwExits["Hyrule Field"]["Grotto in Drawbridge Rock"]
-                    },
-                    "Grotto in Southeast Forest Rock": {
-                        OwExit: OwExits["Hyrule Field"]["Grotto in Southeast Forest Rock"]
-                    },
-                    "Hidden Grotto by North River Tree": {
-                        OwExit: OwExits["Hyrule Field"]["Hidden Grotto by North River Tree"]
                     },
                     "Grotto in Rock North of River": {
                         OwExit: OwExits["Hyrule Field"]["Grotto in Rock North of River"]
                     },
-                    "Open Grotto East of Lake Hylia Fences": {
-                        OwExit: OwExits["Hyrule Field"]["Open Grotto East of Lake Hylia Fences"]
-                    },
-                    "Hidden Grotto by Kakariko": {
-                        OwExit: OwExits["Hyrule Field"]["Hidden Grotto by Kakariko"]
+                    "Hidden Grotto by North River Tree": {
+                        OwExit: OwExits["Hyrule Field"]["Hidden Grotto by North River Tree"]
                     },
                     "Grotto by Gerudo": {
                         OwExit: OwExits["Hyrule Field"]["Grotto by Gerudo"]
                     },
                     "Grotto by Lake Hylia Fences": {
                         OwExit: OwExits["Hyrule Field"]["Grotto by Lake Hylia Fences"]
+                    },
+                    "Open Grotto East of Lake Hylia Fences": {
+                        OwExit: OwExits["Hyrule Field"]["Open Grotto East of Lake Hylia Fences"]
+                    },
+                    "Grotto in Southeast Forest Rock": {
+                        OwExit: OwExits["Hyrule Field"]["Grotto in Southeast Forest Rock"]
                     }
                 },
 

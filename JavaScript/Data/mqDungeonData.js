@@ -2114,7 +2114,7 @@ let MQDungeons = {
 							
 							let canCrossFirstGap = 
 								(age === Age.ADULT && (Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas)) ||
-								(Data.canMegaFlip(age) && Items.BOMBCHU.playerHas);
+								Data.canMegaFlip(age);
 							return canCrossFirstGap;
 						}
 					},
@@ -2183,7 +2183,7 @@ let MQDungeons = {
 					"Locked Door After Fans": {
 						Name: "Locked Door After Fans",
 						ItemGroup: ItemGroups.LOCKED_DOOR,
-						Regions: ["windHallway"],
+						Regions: ["windHallway", "boatRoom"],
 						MapInfo: { x: 303, y: 131, floor: "B1" },
 						Age: Age.ADULT,
 						Order: 19.1,
@@ -2472,6 +2472,13 @@ let MQDungeons = {
 
 			windHallway: {
 				Exits: {
+					invisibleSpikeRoom: {
+						Name: "invisibleSpikeRoom",
+						RequiredItems: [Items.HOOKSHOT],
+						CustomRequirement: function(age) {
+							return Settings.GlitchesToAllow.shadowNoIronBoots || Equipment.IRON_BOOTS.playerHas;
+						}
+					},
 					boatRoom: {
 						Name: "boatRoom",
 						LockedDoor: "Locked Door After Fans",
@@ -2525,6 +2532,9 @@ let MQDungeons = {
 
 			boatRoom: {
 				Exits: {
+					windHallway: {
+						Name: "windHallway"
+					},
 					endOfBoatRide: {
 						Name: "endOfBoatRide",
 						RequiredSongs: [Songs.ZELDAS_LULLABY]

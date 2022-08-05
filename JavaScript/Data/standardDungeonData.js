@@ -1032,7 +1032,7 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 10,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-						LongDescription: "Navigate to the room with the block puzzle. After pushing the first block, climb up the ladder that it was blocking. Now go straight to the wall in front of you. Follow that wall to the right. Turn right, and you should see an eye switch a bit up the wall in front of you. Shoot it with your bow to spawn the chest.",
+						LongDescription: "Navigate to the room with the block puzzle. After pushing the first block, climb up the ladder that it was blocking. Now go straight to the wall in front of you. Follow that wall to the right. Turn right, and you should see an eye switch a bit up the wall in front of you. Shoot it to spawn the chest.",
 						CustomRequirement: function(age) {
 							let canBlockSkip = age === Age.ADULT && Settings.GlitchesToAllow.forestBlockSkip && Data.canGroundJumpWithBomb(age);
 							let canHoverToMiddleFloor = age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas;

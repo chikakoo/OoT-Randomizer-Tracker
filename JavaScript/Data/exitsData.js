@@ -423,6 +423,17 @@ let OwExits = {
         },
 
         // Interiors
+        "Hidden Grotto by Kakariko": {
+            Name: "Hidden Grotto by Kakariko",
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsGrotto: true,
+            DefaultEntranceGroupName: "Skulltula at Distance",
+            MapInfo: { x: 237, y: 23 },
+            Age: Age.EITHER,
+            LongDescription: "North of the entrance to Kakariko, there's a tree with a hidden grotto - bomb or hammer to open it.",
+            IsHiddenGrotto: true
+        },
         "Grotto in Drawbridge Rock": {
             Name: "Grotto in Drawbridge Rock",
             ExitRegion: "main",
@@ -434,15 +445,14 @@ let OwExits = {
             LongDescription: "Remove the rock to the left of the Market drawbridge to reveal this grotto.",
             NeedToBlastOrSmash: true
         },
-        "Grotto in Southeast Forest Rock": {
-            Name: "Grotto in Southeast Forest Rock",
+        "Grotto in Rock North of River": {
+            Name: "Grotto in Rock North of River",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
-            DefaultEntranceGroupName: "Generic Grotto",
-            MapInfo: { x: 201, y: 227 },
+            MapInfo: { x: 102, y: 20 },
             Age: Age.EITHER,
-            LongDescription: "In the southeast (a bit south of the Kokiri Forest entrance), there's a small forest that has a rock you can break to reveal this grotto.",
+            LongDescription: "On the north side of the river to the west of the Market entrance, there's a grotto under a yellow rock.",
             NeedToBlastOrSmash: true
         },
         "Hidden Grotto by North River Tree": {
@@ -454,37 +464,6 @@ let OwExits = {
             MapInfo: { x: 91, y: 57 },
             Age: Age.EITHER,
             LongDescription: "To the west of the Market entrance, there's a lone tree to the south of a river. Bomb or hammer near the tree to reveal this grotto.",
-            IsHiddenGrotto: true
-        },
-        "Grotto in Rock North of River": {
-            Name: "Grotto in Rock North of River",
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
-            MapInfo: { x: 102, y: 20 },
-            Age: Age.EITHER,
-            LongDescription: "On the north side of the river to the west of the Market entrance, there's a grotto under a yellow rock.",
-            NeedToBlastOrSmash: true
-        },
-        "Open Grotto East of Lake Hylia Fences": {
-            Name: "Open Grotto East of Lake Hylia Fences",
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
-            DefaultEntranceGroupName: "Generic Grotto",
-            MapInfo: { x: 112, y: 272 },
-            Age: Age.EITHER,
-            LongDescription: "This is an open grotto just to the east of the square of fences by the Lake Hylia entrance."
-        },
-        "Hidden Grotto by Kakariko": {
-            Name: "Hidden Grotto by Kakariko",
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
-            DefaultEntranceGroupName: "Skulltula at Distance",
-            MapInfo: { x: 237, y: 23 },
-            Age: Age.EITHER,
-            LongDescription: "North of the entrance to Kakariko, there's a tree with a hidden grotto - bomb or hammer to open it.",
             IsHiddenGrotto: true
         },
         "Grotto by Gerudo": {
@@ -510,6 +489,27 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "There's a hidden grotto in the center of the fences by Lake Hylia. Bomb or hammer there to get in. The scrub is inside.",
             IsHiddenGrotto: true
+        },
+        "Open Grotto East of Lake Hylia Fences": {
+            Name: "Open Grotto East of Lake Hylia Fences",
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsGrotto: true,
+            DefaultEntranceGroupName: "Generic Grotto",
+            MapInfo: { x: 112, y: 272 },
+            Age: Age.EITHER,
+            LongDescription: "This is an open grotto just to the east of the square of fences by the Lake Hylia entrance."
+        },
+        "Grotto in Southeast Forest Rock": {
+            Name: "Grotto in Southeast Forest Rock",
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsGrotto: true,
+            DefaultEntranceGroupName: "Generic Grotto",
+            MapInfo: { x: 201, y: 227 },
+            Age: Age.EITHER,
+            LongDescription: "In the southeast (a bit south of the Kokiri Forest entrance), there's a small forest that has a rock you can break to reveal this grotto.",
+            NeedToBlastOrSmash: true
         }
     },
 
