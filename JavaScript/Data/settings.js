@@ -235,6 +235,8 @@ let Settings = {
 
 		botwActorGlitch: false,
 		botwVineClip: false, // Useless if no actor glitch
+
+		iceLedgeClip: false,
 		
 		gtgChildAllowed: false,
 		gtgAdultNoCard: false,

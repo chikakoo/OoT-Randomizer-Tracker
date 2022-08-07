@@ -3638,7 +3638,24 @@ let StandardDungeons = {
 			},
 			afterFreezards: {
 				Exits: {
-					blueFireRequired: {
+					blueFireSideRoom: {
+						Name: "blueFireSideRoom",
+						CustomRequirement: function(age) {
+							if (Settings.GlitchesToAllow.iceLedgeClip && age === Age.ADULT) {
+								return true;
+							}
+							return (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
+						}
+					},
+					northRoom: {
+						Name: "northRoom",
+						Age: Age.ADULT,
+						CustomRequirement: function(age) {
+							return Data.hasBottleOrBlueFire(age);
+						}
+					},
+					blockPushRoom: {
+						Name: "blockPushRoom",
 						CustomRequirement: function(age) {
 							return (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
 						}
@@ -3658,7 +3675,7 @@ let StandardDungeons = {
 					}
 				}
 			},
-			blueFireRequired: {
+			northRoom: {
 				Exits: {},
 				ItemLocations: {
 					"Map Chest in Platforming Room": {
@@ -3668,7 +3685,12 @@ let StandardDungeons = {
 						Age: Age.ADULT,
 						Order: 2,
 						LongDescription: "This is the room you gain access to after you collect all the silver rupees in the spinning scythe room. Navigate to the top and use blue fire on the chest to gain access to it."
-					},
+					}
+				}
+			},
+			blueFireSideRoom: {
+				Exits: {},
+				ItemLocations: {
 					"Compass Chest in Right Red Ice Room": {
 						Name: "Compass Chest in Right Red Ice Room",
 						ItemGroup: ItemGroups.CHEST,
@@ -3676,16 +3698,10 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 3,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-						LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. Melt the ice containing the chest."
-					},
-					"Iron Boots Chest": {
-						Name: "Iron Boots Chest",
-						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 127, y: 182 },
-						Age: Age.EITHER,
-						Order: 7,
-						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-						LongDescription: "This is in the room after the block pushing puzzle - the one with the wolfos. Defeat it to spawn the chest. Note that after you get the chest, you will also get the Serenade of Water item."
+						LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. Melt the ice containing the chest.",
+						CustomRequirement: function(age) {
+							return Data.hasBottleOrBlueFire(age);
+						}
 					},
 					"Heart Piece in Right Red Ice Room": {
 						Name: "Heart Piece in Right Red Ice Room",
@@ -3694,16 +3710,10 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 4,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-						LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. Melt the ice containing the heart piece."
-					},
-					"Serenade of Water": {
-						Name: "Serenade of Water",
-						ItemGroup: ItemGroups.SONG,
-						MapInfo: { x: 122, y: 177 },
-						Age: Age.EITHER,
-						Order: 8,
-						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-						LongDescription: "You'll get this automatically after you open the Iron Boots chest."
+						LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. Melt the ice containing the heart piece.",
+						CustomRequirement: function(age) {
+							return Data.hasBottleOrBlueFire(age);
+						}
 					},
 					"Skulltula in Right Red Ice Room": {
 						Name: "Skulltula in Right Red Ice Room",
@@ -3715,6 +3725,15 @@ let StandardDungeons = {
 						LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. There's a skulltula up on one of the walls to your left.",
 						IsAtShortDistance: true
 					},
+				}
+			},
+			blockPushRoom: {
+				Exits: {
+					bossRoom: {
+						Name: "bossRoom"
+					}
+				},
+				ItemLocations: {
 					"Skulltula in Block Push Room": {
 						Name: "Skulltula in Block Push Room",
 						ItemGroup: ItemGroups.SKULLTULA,
@@ -3724,6 +3743,29 @@ let StandardDungeons = {
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						LongDescription: "When you first enter the spinning scythe room, look to your left. Burn the red ice with your blue fire and enter the room. When you get to the big room, the skulltula will be on the wall to your left.",
 						IsAtShortDistance: true
+					}
+				}
+			},
+			bossRoom: {
+				Exits: {},
+				ItemLocations: {
+					"Iron Boots Chest": {
+						Name: "Iron Boots Chest",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 127, y: 182 },
+						Age: Age.EITHER,
+						Order: 7,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						LongDescription: "This is in the room after the block pushing puzzle - the one with the wolfos. Defeat it to spawn the chest. Note that after you get the chest, you will also get the Serenade of Water item."
+					},
+					"Serenade of Water": {
+						Name: "Serenade of Water",
+						ItemGroup: ItemGroups.SONG,
+						MapInfo: { x: 122, y: 177 },
+						Age: Age.EITHER,
+						Order: 8,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						LongDescription: "You'll get this automatically after you open the Iron Boots chest."
 					}
 				}
 			}

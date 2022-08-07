@@ -26,6 +26,7 @@ let SettingsPage = {
         "settingsShadowTempleContainer",
         "settingsSpiritTempleContainer",
         "settingsBOTWContainer",
+        "settingsIceCavernContainer",
         "settingsGTGContainer",
         "settingsGanonsCastleContainer"
     ],
