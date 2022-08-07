@@ -3520,7 +3520,8 @@ let MQDungeons = {
 						LongDescription: "This skulltula is on the ledge to your right in the big room. Play the scarecrow's song and hook it, a ground jump to get up there, or use hover boots to get to the taller pillar and longshot it.",
 						CustomRequirement: function(age) {
 							let canGetWithLongshot = Equipment.HOVER_BOOTS.playerHas && Items.HOOKSHOT.currentUpgrade === 2;
-							if (canGetWithLongshot) {
+							let canJumpThere = Settings.GlitchesToAllow.mqIceJumpToSkull && Data.hasSwordWeapon(age) && Data.hasShield(age);
+							if (canGetWithLongshot || canJumpThere) {
 								return true;
 							}
 

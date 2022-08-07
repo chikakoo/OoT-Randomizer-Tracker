@@ -238,6 +238,7 @@ let Settings = {
 		botwVineClip: false, // Useless if no actor glitch
 
 		iceLedgeClip: false,
+		mqIceJumpToSkull: false,
 		
 		gtgChildAllowed: false,
 		gtgAdultNoCard: false,
