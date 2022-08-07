@@ -2568,7 +2568,10 @@ let MapLocations = {
                         MapInfo: { x: 198, y: 213 },
                         Age: Age.ADULT,
                         LongDescription: "At night, longshot all the way up the tree on the middle island. You'll find the skulltula on top.",
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [Items.HOOKSHOT],
+                        CustomRequirement: function(age) {
+                            return Items.HOOKSHOT.currentUpgrade === 2 || (Data.hasShield(age) && Settings.GlitchesToAllow.skullInTreeWithHookshot);
+                        }
                     },
                     "*Plant Bean by Lab": {
                         Name: "*Plant Bean by Lab",

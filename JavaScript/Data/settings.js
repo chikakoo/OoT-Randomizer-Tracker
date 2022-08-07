@@ -179,6 +179,7 @@ let Settings = {
 		adultDomainMegaflipClip: false,
 		adultLakesideLabClip: false,
 		childLakesideLabClip: false,
+		skullInTreeWithHookshot: false,
 		
 		// Desert
 		eponaHover: false,
