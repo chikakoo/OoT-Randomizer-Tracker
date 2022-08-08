@@ -81,6 +81,7 @@ let Settings = {
 	},
 
 	TrackerSettings: {
+		saveFileName: "",
 		dungeonItemDisplay: DungeonItemDisplaySettings.BY_SUGGESTED_ORDER,
 		deprioritizeDampeToWindmill: true,
 		deprioritizeHyruleField: true,

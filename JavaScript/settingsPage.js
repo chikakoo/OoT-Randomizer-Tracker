@@ -88,12 +88,25 @@ let SettingsPage = {
     },
     
     /**
-     * Initializes the input fields - currently is only the medallion skulltula setting
+     * Initializes the input fields
      */
     _initializeInputFields: function() {
-    	let value = Settings.RandomizerSettings.medallionSkulltulaSetting || 50;
-        let input = document.getElementById("medallionSkulltulaInput");
-    	input.value = value;
+        let fileNameValue = Settings.TrackerSettings.saveFileName;
+        let fileNameInput = document.getElementById("settingsSaveFileNameInput");
+        fileNameInput.value = fileNameValue;
+
+    	let medallionValue = Settings.RandomizerSettings.medallionSkulltulaSetting || 50;
+        let medallionInput = document.getElementById("medallionSkulltulaInput");
+    	medallionInput.value = medallionValue;
+    },
+
+    /**
+     * Sets the save file name to whatever is in the input box
+     */
+    setSaveFileName: function(event) {
+        let input = event.target;
+        input.value = input.value.trim();
+        Settings.TrackerSettings.saveFileName = input.value;
     },
 
     /**

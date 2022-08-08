@@ -5,11 +5,16 @@ let SaveAndLoad = {
      * Saves the state of the current game by downloading a JSON file
      */
     saveJSON: function() {
+        let saveFileName = Settings.TrackerSettings.saveFileName.trim() === ""
+            ? "OoT Tracker Save"
+            : Settings.TrackerSettings.saveFileName;
+
         let exportObj = this._getSaveObject();
         let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj, null, 2));
         let downloadAnchorNode = document.createElement('a');
+
         downloadAnchorNode.setAttribute("href", dataStr);
-        downloadAnchorNode.setAttribute("download", "OoT Tracker Save" + ".json");
+        downloadAnchorNode.setAttribute("download", `${saveFileName}.json`);
         document.body.appendChild(downloadAnchorNode);
         downloadAnchorNode.click();
         downloadAnchorNode.remove();
