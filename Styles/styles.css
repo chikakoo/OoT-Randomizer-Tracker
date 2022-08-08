@@ -80,6 +80,21 @@ body {
 	padding-right: 3px;
 }
 
+#travelDiv > button {
+	height: 17px;
+	width: 17px;
+	line-height: 17px;
+	margin: 0 5px 0 5px;
+	padding: 0;
+	font-weight: bold;
+	color: black;
+}
+
+#travelDiv > button:hover {
+	color: darkorange;
+	border: 1px solid darkorange;
+}
+
 .travel-div-hover-style:hover {
 	color: lightgray;
 }

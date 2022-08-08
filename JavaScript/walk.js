@@ -150,13 +150,14 @@ Walk = {
 		return owEntrances;
 	},
 	
-	/** 
+	/**
 	 * Updates the travel div in the main screen
+	 * @param {Number} destinationIndex - the Xth smallest value to show
 	 */
-	updateTravelDiv: function() {
-		if (!this.currentItemLocation) { return; }
-		if (!LocationSidebar.isLocationAMap()) { 
-			return; 
+	updateTravelDiv: function(destinationIndex) {
+		if (!this.currentItemLocation || !LocationSidebar.isLocationAMap()) { return; }
+		if (!destinationIndex) {
+			destinationIndex = 0;
 		}
 		
 		// These are objects of the following form:
@@ -182,29 +183,47 @@ Walk = {
 		});
 		
 		let childKeyValues = Object.keys(childValues).map(Number);
+		childKeyValues.sort();
 		let childLocations = [];
-		if (childKeyValues && childKeyValues.length > 0) {
-			childLocations = childValues[Math.min(...childKeyValues)];
+		if (childKeyValues && childKeyValues.length > 0 && childKeyValues.length > destinationIndex) {
+			childLocations = childValues[childKeyValues[destinationIndex]];
 		}
 		
 		let adultKeyValues = Object.keys(adultValues).map(Number);
+		adultKeyValues.sort();
 		let adultLocations = [];
-		if (adultKeyValues && adultKeyValues.length > 0) {
-			adultLocations = adultValues[Math.min(...adultKeyValues)];
+		if (adultKeyValues && adultKeyValues.length > 0 && adultKeyValues.length > destinationIndex) {
+			adultLocations = adultValues[adultKeyValues[destinationIndex]];
+		}
+
+		if (childKeyValues.length + adultKeyValues.length > 0 &&
+			childKeyValues.length < destinationIndex &&
+			adultKeyValues.length < destinationIndex) {
+			this.updateTravelDiv(0);
+			return;
 		}
 		
-		this._changeTravelDiv(childLocations, adultLocations);
+		this._changeTravelDiv(childLocations, adultLocations, destinationIndex);
 	},
 	
 	/**
 	 * Actually does the changes to the travel div
 	 * @param childLocations: The optimal exits that Child can take to get to the destination
 	 * @param childLocations: The optimal exits that Adult can take to get to the destination
+	 * @param currentIndex: The current index we're showing in the travel div - will be incremented as the button is clicked
 	 */
-	_changeTravelDiv: function(childLocations, adultLocations) {
+	_changeTravelDiv: function(childLocations, adultLocations, currentIndex) {
 		let travelDiv = document.getElementById("travelDiv");
 		if (!travelDiv) { return; }
 		travelDiv.innerHTML = "";
+
+		let advanceButton = dce("button");
+		advanceButton.innerText = "^";
+		advanceButton.onclick = function(event) {
+			event.stopPropagation();
+			Walk.updateTravelDiv(currentIndex + 1);
+		};
+		travelDiv.appendChild(advanceButton);
 		
 		let childString = childLocations.length === 0 ? "No child path" : childLocations.map(itemLoc => itemLoc.Name).join("; ");
 		let adultString = adultLocations.length === 0 ? "No adult path" : adultLocations.map(itemLoc => itemLoc.Name).join("; ");
@@ -213,10 +232,10 @@ Walk = {
 			travelDiv.appendChild(this._createClickableTravelSpans(childLocations));
 			return;
 		}
-		
+
 		let dividerSpan = dce("span");
 		dividerSpan.innerText = "|";
-		
+
 		travelDiv.appendChild(this._createClickableTravelSpans(childLocations, "No child path"));		
 		travelDiv.appendChild(dividerSpan);
 		travelDiv.appendChild(this._createClickableTravelSpans(adultLocations, "No adult path"));
