@@ -244,6 +244,8 @@ InteriorGroups = {
 		},
 		buttons: {
 			"10 Reward": {
+				icon: "Skulltula",
+				iconText: "10",
 				description: "Talk to the guy on the right hand side.",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 10;
@@ -253,6 +255,8 @@ InteriorGroups = {
 				}
 			},
 			"20 Reward": {
+				icon: "Skulltula",
+				iconText: "20",
 				description: "Talk to the guy on the left hand side.",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 20;
@@ -262,6 +266,8 @@ InteriorGroups = {
 				}
 			},
 			"30 Reward": {
+				icon: "Skulltula",
+				iconText: "30",
 				description: "Talk to the middle guy.",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 30;
@@ -271,6 +277,8 @@ InteriorGroups = {
 				}
 			},
 			"40 Reward": {
+				icon: "Skulltula",
+				iconText: "40",
 				description: "Talk to the guy second from the left",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 40;
@@ -280,6 +288,8 @@ InteriorGroups = {
 				}
 			},
 			"50 Reward": {
+				icon: "Skulltula",
+				iconText: "50",
 				description: "Talk to the guy second from the right",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 50;
@@ -287,7 +297,7 @@ InteriorGroups = {
 				canGet: function(age) {
 					return Equipment.SKULLTULA_TOKENS.count >= 50;
 				}
-			},
+			}
 		}
 	},
 	"Lakeside Lab": {

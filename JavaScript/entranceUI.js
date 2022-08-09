@@ -217,6 +217,7 @@ let EntranceUI = {
 			}
 			
 			_this._addAgeDiv(buttonDiv, button, canGetAsChild, canGetAsAdult);
+			_this._addTextDiv(buttonDiv, button);
 			visibleButtonCount++;
 			itemLocationEntranceTasksContainer.appendChild(buttonDiv);
 		});
@@ -249,6 +250,19 @@ let EntranceUI = {
 		}
 		
 		buttonDiv.appendChild(ageDiv);
+	},
+
+	/**
+	 * Adds any additional text to the button, if it has any in the iconText property
+	 * @param buttonDiv - the button div
+	 * @param button - the button containing the data
+	 */
+	_addTextDiv: function(buttonDiv, button) {
+		if (button.iconText) {
+			let textDiv = dce("div", "entrance-group-text-div");
+			textDiv.innerText = button.iconText;
+			buttonDiv.appendChild(textDiv);
+		}
 	},
 	
 	/**

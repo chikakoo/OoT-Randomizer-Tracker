@@ -50,21 +50,31 @@
 	font-style: italic;
 }
 
-.entrance-group-age-div {
+.entrance-group-age-div, .entrance-group-text-div {
 	background-size: contain;
 	background-repeat: no-repeat;
 	position: absolute;
-	bottom: 0;
-	right: 0;
 	width: 16px;
 	height: 16px;
 }
+
+.entrance-group-age-div {
+	right: 0;
+	bottom: 0;
+}
+
+.entrance-group-text-div {
+	left: 0;
+	top: 0;
+}
+
 .entrance-group-age-div.entrance-group-age-div-child:before, 
-.entrance-group-age-div.entrance-group-age-div-adult:before {
+.entrance-group-age-div.entrance-group-age-div-adult:before,
+.entrance-group-text-div {
 	color: white;
 	font-size: 16px;
 	font-weight: bold;
-	text-shadow: 1px 1px 0 black;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .entrance-group-age-div.entrance-group-age-div-child:before {
