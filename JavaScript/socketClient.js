@@ -115,7 +115,7 @@ SocketClient = {
 		
 		// Sync up when an item location is updated
 		this._socket.on("item_location_updated", function(itemLocation) {
-			let map = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE || itemLocation.ItemGroup === ItemGroups.ENTRANCE
+			let map = Data.usesOwExits(itemLocation)
 				? itemLocation.ExitMap 
 				: itemLocation.Map;
 	    	console.log(`${itemLocation.Name} was updated at ${map} - Checked: ${itemLocation.playerHas}`);
@@ -160,8 +160,7 @@ SocketClient = {
 	 * Syncs up one item location, given the map and location name
 	 */
 	updateItemLocation: function(itemLocation) {
-		let isInOwExits = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE || 
-			itemLocation.ItemGroup === ItemGroups.ENTRANCE;
+		let isInOwExits = Data.usesOwExits(itemLocation);
 		let map = isInOwExits ? itemLocation.ExitMap : itemLocation.Map;
 		let region = isInOwExits ? itemLocation.ExitRegion : itemLocation.Region;
 		let name = itemLocation.Name.trim();
@@ -183,7 +182,7 @@ SocketClient = {
 				}
 			}
 		}
-		else if (itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
+		else if (Data.usesOwExits(itemLocation)) {
 			matchingLocation = OwExits[map][name];
 		}
 		else {

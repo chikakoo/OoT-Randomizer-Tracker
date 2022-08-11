@@ -789,7 +789,18 @@ Data = {
         let isInteriorAndUseDefault = !Settings.RandomizerSettings.shuffleInteriorEntrances && itemLocation.IsInterior;
         let isGrottoAndUseDefault = !Settings.RandomizerSettings.shuffleGrottoEntrances && itemLocation.IsGrotto;
         let isBossAndUseDefault = !Settings.RandomizerSettings.shuffleBossEntrances && itemLocation.IsBoss;
-        return isInteriorAndUseDefault || isGrottoAndUseDefault || isBossAndUseDefault;
+        let isItemLocationGroup = itemLocation.IsItemLocationGroup;
+        return isInteriorAndUseDefault || isGrottoAndUseDefault || isBossAndUseDefault || isItemLocationGroup;
+    },
+
+    /**
+     * Returns whether the item location is located in the OwExits object or not
+     * This should be used anywhere possible for this in case this changes anymore!
+     * @param itemLocation 
+     */
+    usesOwExits: function(itemLocation) {
+        return itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE || 
+			(itemLocation.ItemGroup === ItemGroups.ENTRANCE && !itemLocation.IsItemLocationGroup);
     },
 
     /**

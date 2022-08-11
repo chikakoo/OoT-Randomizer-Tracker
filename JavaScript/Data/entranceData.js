@@ -1001,5 +1001,13 @@ GrottoGroups = {
 			}
 		}
 	}
- }
+ };
+
+ /**
+  * Data for item locations that we wish to group under one section
+  * Mostly for pot/crate shuffle for areas with a ton of checks
+  */
+ ItemLocationGroups = {
+
+ };
 

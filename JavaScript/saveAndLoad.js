@@ -53,6 +53,7 @@ let SaveAndLoad = {
             //              owShuffleMap: string,
             //              owShuffleRegion: string,
             //              EntranceGroup: {},
+            //              DefaultEntranceGroup: {},
             //              overrideObtainableChild: boolean,
             //              overrideObtainableAdult: boolean
             //  }}}
@@ -75,10 +76,11 @@ let SaveAndLoad = {
                     let owShuffleMap = itemLocation.OwShuffleMap;
                     let owShuffleRegion = itemLocation.OwShuffleRegion;
                     let entranceGroup = itemLocation.EntranceGroup;
+                    let defaultEntranceGroup = itemLocation.DefaultEntranceGroup;
                     let overrideObtainableChild = itemLocation.OverrideObtainableChild;
                     let overrideObtainableAdult = itemLocation.OverrideObtainableAdult;
 
-                    if (playerHas || notes || owShuffleMap || owShuffleRegion || entranceGroup || overrideObtainableChild || overrideObtainableAdult) {
+                    if (playerHas || notes || owShuffleMap || owShuffleRegion || entranceGroup || defaultEntranceGroup || overrideObtainableChild || overrideObtainableAdult) {
                         currentMapData = currentMapData || {};
                         currentMapData.Regions = currentMapData.Regions || {};
                         currentMapData.Regions[regionName] = currentMapData.Regions[regionName] || {};
@@ -91,6 +93,7 @@ let SaveAndLoad = {
                         if (owShuffleMap) { currentObj.OwShuffleMap = owShuffleMap; }
                         if (owShuffleRegion) { currentObj.OwShuffleRegion = owShuffleRegion; }
                         if (entranceGroup) { currentObj.EntranceGroup = entranceGroup; }
+                        if (defaultEntranceGroup) { currentObj.DefaultEntranceGroup = defaultEntranceGroup; }
                         if (overrideObtainableChild) { currentObj.OverrideObtainableChild = overrideObtainableChild; }
                         if (overrideObtainableAdult) { currentObj.OverrideObtainableAdult = overrideObtainableAdult; }
                     }
@@ -118,7 +121,10 @@ let SaveAndLoad = {
                         OwShuffleRegion: string
                         notes: string,
                         entranceGroup: {},
-                        defaultEntranceGroup: {}
+                        defaultEntranceGroup: {},
+                        playerHas: boolean,
+                        OverrideableObtainableChild: boolean,
+                        OverrideableObtainableAdult: boolean
                     }
                 }
             }
@@ -297,6 +303,7 @@ let SaveAndLoad = {
 
     _loadMapDataObject: function(currentObject, loadedObject, skipDungeons) {
         if (loadedObject) {
+            let _this = this;
             Object.keys(loadedObject).forEach(function(mapName) {
                 let loadedMapInfo = loadedObject[mapName];
                 if (!loadedMapInfo) { return; } // Didn't load any info for this map
@@ -317,16 +324,11 @@ let SaveAndLoad = {
                         }
                         
                         if (loadedItemLocationInfo.EntranceGroup) {
-                            itemLocation.EntranceGroup = loadedItemLocationInfo.EntranceGroup;
+                            _this._loadEntranceGroupData(itemLocation, loadedItemLocationInfo, false);
+                        }
 
-                            let interiorObj = null;
-                            if (itemLocation.IsInterior) { interiorObj = InteriorGroups; }
-                            else if (itemLocation.IsGrotto) { interiorObj = GrottoGroups; }
-                            else { interiorObj = BossGroups }
-
-                            if (interiorObj[itemLocation.EntranceGroup.name].postClick) {
-                                interiorObj[itemLocation.EntranceGroup.name].postClick(itemLocation, true);
-                            }
+                        if (loadedItemLocationInfo.DefaultEntranceGroup) {
+                            _this._loadEntranceGroupData(itemLocation, loadedItemLocationInfo, true);
                         }
 
                         if (loadedItemLocationInfo.OwShuffleMap) {
@@ -349,6 +351,20 @@ let SaveAndLoad = {
                     });
                 });
             });
+        }
+    },
+
+    _loadEntranceGroupData(itemLocation, loadedItemLocationInfo, isDefaultGroup) {
+        let property = isDefaultGroup ? "DefaultEntranceGroup" : "EntranceGroup";
+        itemLocation[property] = loadedItemLocationInfo[property];
+
+        let interiorObj = null;
+        if (itemLocation.IsInterior) { interiorObj = InteriorGroups; }
+        else if (itemLocation.IsGrotto) { interiorObj = GrottoGroups; }
+        else if (itemLocation.IsBoss) { interiorObj = BossGroups; }
+
+        if (interiorObj && interiorObj[itemLocation[property].name].postClick) {
+            interiorObj[itemLocation[property].name].postClick(itemLocation, true);
         }
     },
 
@@ -394,9 +410,9 @@ let SaveAndLoad = {
                     let interiorObj = null;
                     if (exitingExitData.IsInterior) { interiorObj = InteriorGroups; }
                     else if (exitingExitData.IsGrotto) { interiorObj = GrottoGroups; }
-                    else { interiorObj = BossGroups }
+                    else if (exitingExitData.IsBoss) { interiorObj = BossGroups }
 
-                    if (interiorObj[loadedOwExitData.EntranceGroup.name].postClick) {
+                    if (interiorObj && interiorObj[loadedOwExitData.EntranceGroup.name].postClick) {
                         interiorObj[loadedOwExitData.EntranceGroup.name].postClick(exitingExitData, true);
                     }
                 }

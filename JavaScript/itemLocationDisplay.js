@@ -134,11 +134,15 @@ let getGroupedLocationInfo = function(mapName) {
 	let groupedItemLocationInfo = {};
 	Data.getAllItemLocations(mapName).forEach(function(itemLocation) {
 		if (itemLocation.disabled) { return; }
+
+		let group = itemLocation.OverrideItemGroup !== undefined 
+			? itemLocation.OverrideItemGroup 
+			: itemLocation.ItemGroup;
 		
-		if (!groupedItemLocationInfo[itemLocation.ItemGroup]) {
-			groupedItemLocationInfo[itemLocation.ItemGroup] = [];
+		if (!groupedItemLocationInfo[group]) {
+			groupedItemLocationInfo[group] = [];
 		}
-		groupedItemLocationInfo[itemLocation.ItemGroup].push(itemLocation);
+		groupedItemLocationInfo[group].push(itemLocation);
 	});
 	return groupedItemLocationInfo;
 };

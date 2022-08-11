@@ -37,6 +37,8 @@ let EntranceUI = {
 			return GrottoGroups;
 		} else if (itemLocation.IsBoss) {
 			return BossGroups;
+		} else if (itemLocation.IsItemLocationGroup) {
+			return ItemLocationGroups;
 		}
 		throw `${itemLocation.Name} was meant to be an interior, grotto, or boss but doesn't have the correct properties set!`;
 	},
