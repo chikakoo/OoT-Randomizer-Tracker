@@ -2319,7 +2319,15 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Dump Blue Fire on the frozen King Zora to thaw him. Talk to him from the platform in front of him and he will give you an item.",
                         CustomRequirement: function(age) {
-                            return Data.canUseBlueFire(age) || Settings.GlitchesToAllow.thawKingZoraWithNothing;
+                            if (Data.canUseBlueFire(age)) { return true; }
+                            if (Settings.GlitchesToAllow.thawKingZoraWithNothing && 
+                                Data.itemLocationObtained("Zora's Domain", "main", "Move King Zora")) {
+                                return Data.hasBottle() || 
+                                    Items.CLAIM_CHECK.playerHas || 
+                                    (Data.canEquipSwap(age) && Items.MAGIC_BEAN.playerHas); //TODO: check this last one...
+                            }
+
+                            return Settings.GlitchesToAllow.thawKingZoraWithNothing;
                         }
                     },
                     "Skulltula on Top of Waterfall": {
