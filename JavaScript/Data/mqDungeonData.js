@@ -115,9 +115,21 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						Order: 4,
 						LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so.<br/><br/>Head to the other side of the room. The room up the vines to the left is blocked by rocks. Use a bombchu to gain access. The skulltula is up on the wall.",
-						IsAtShortDistance: true,
 						CustomRequirement: function(age) {
-							return Items.BOMBCHU.playerHas || (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2);
+							let canGetSkulltula = Data.canGrabShortDistances(age) || 
+								(age === Age.ADULT && Data.canStaircaseHover(age));
+							if (!canGetSkulltula) { return; }
+
+							let canUseHammer = Data.canUseHammer(age);
+							let canBreakWithChu = Items.BOMBCHU.playerHas;
+							let canBreakFromSoTBlock = (Data.canPlaySong(Songs.SONG_OF_TIME) && (
+								Items.BOMB.playerHas ||
+								canUseHammer
+							));
+							let canBreakWithHammer = Settings.GlitchesToAllow.mqDekuSideRoomRocksHammerOnly && canUseHammer;
+							let canBreakWithBomb = Settings.GlitchesToAllow.mqDekuSideRoomRocksBombsOnly && Items.BOMB.playerHas;
+							let canBlowUpRocks = canBreakWithChu || canBreakFromSoTBlock || canBreakWithHammer || canBreakWithBomb;
+							return canBlowUpRocks || (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2);
 						}
 					}
 				}

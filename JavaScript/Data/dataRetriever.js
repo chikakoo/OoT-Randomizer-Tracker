@@ -667,7 +667,6 @@ Data = {
      */
     canStaircaseHover: function(age) {
         return Settings.GlitchesToAllow.staircaseHover &&
-            Settings.GlitchesToAllow.isg &&
             Items.BOMB.playerHas &&
             Data.hasSwordWeapon(age) &&
             Data.hasShield(age);

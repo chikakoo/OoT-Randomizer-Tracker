@@ -2324,7 +2324,8 @@ let MapLocations = {
                                 Data.itemLocationObtained("Zora's Domain", "main", "Move King Zora")) {
                                 return Data.hasBottle() || 
                                     Items.CLAIM_CHECK.playerHas || 
-                                    (Data.canEquipSwap(age) && Items.MAGIC_BEAN.playerHas); //TODO: check this last one...
+                                    (Data.canEquipSwap(age) && Items.MAGIC_BEAN.playerHas) ||
+                                    (Equipment.MAGIC.playerHas && Items.NAYRUS_LOVE.playerHas);
                             }
 
                             return Settings.GlitchesToAllow.thawKingZoraWithNothing;

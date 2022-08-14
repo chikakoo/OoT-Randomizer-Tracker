@@ -194,6 +194,8 @@ let Settings = {
 		
 		// Dungeons
 		dekuB1Skip: true,
+		mqDekuSideRoomRocksHammerOnly: false,
+		mqDekuSideRoomRocksBombsOnly: false,
 		
 		dodongoSwitchEarly: true,
 		dodongoAdultJumpToBombChest: true,
