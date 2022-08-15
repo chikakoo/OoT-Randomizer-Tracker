@@ -412,6 +412,11 @@
 							<input type="checkbox" name="cowSanity" value="cowSanity">
 							Cowsanity
 						</label>
+						<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleBehives", event)'
+							title="Includes 32 beehives - 2 per generic grotto, 1 per 2 or 3x scrub grottos, 1 in the cow and rupees grotto, and 3 in Zora's Domain as child.">
+							<input type="checkbox" name="shuffleBehives" value="shuffleBehives">
+							Beehivesanity
+						</label>
 						<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleCarpetAndMedigoron", event)'
 							title="Shuffles the item in the desert carpet shop and the item that medigoron sells you.">
 							<input type="checkbox" name="shuffleCarpetAndMedigoron" value="shuffleCarpetAndMedigoron">
@@ -469,6 +474,54 @@
 							</label>
 							<label onclick='SettingsPage.setOptionValueForRandomizer("skulltulaSetting", event)' title="Only skulltulas in the overworld are shuffled.">
 								<input type="radio" name="skulltulaSetting" value=3>Only Overworld
+							</label>
+						</div>
+
+						<div class="settings-radio-group" title="This controls which freestanding rupees and hearts are shuffled with the rest of the items. This includes the spinning pots in Goron City and Shadow Temple.">
+							Freestanding Rupees and Hearts Shuffled
+							<label onclick='SettingsPage.setOptionValueForRandomizer("rupeeAndHeartSetting", event)' title="No freestanding rupees/hearts are shuffled">
+								<input type="radio" name="rupeeAndHeartSetting" value=0>None
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("rupeeAndHeartSetting", event)' title="All freestanding rupees/hearts are shuffled.">
+								<input type="radio" name="rupeeAndHeartSetting" value=1>All
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("rupeeAndHeartSetting", event)' title="Only freestanding rupees/hearts in dungeons are shuffled.">
+								<input type="radio" name="rupeeAndHeartSetting" value=2>Only Dungeons
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("rupeeAndHeartSetting", event)' title="Only freestanding rupees/hearts in the overworld are shuffled.">
+								<input type="radio" name="rupeeAndHeartSetting" value=3>Only Overworld
+							</label>
+						</div>
+
+						<div class="settings-radio-group" title="This controls which pots are shuffled with the rest of the items.">
+							Pots Shuffled
+							<label onclick='SettingsPage.setOptionValueForRandomizer("potSetting", event)' title="No pots are shuffled">
+								<input type="radio" name="potSetting" value=0>None
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("potSetting", event)' title="All pots are shuffled.">
+								<input type="radio" name="potSetting" value=1>All
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("potSetting", event)' title="Only pots in dungeons are shuffled.">
+								<input type="radio" name="potSetting" value=2>Only Dungeons
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("potSetting", event)' title="Only pots in the overworld are shuffled.">
+								<input type="radio" name="potSetting" value=3>Only Overworld
+							</label>
+						</div>
+
+						<div class="settings-radio-group" title="This controls which crates are shuffled with the rest of the items.">
+							Crates Shuffled
+							<label onclick='SettingsPage.setOptionValueForRandomizer("crateSetting", event)' title="No crates are shuffled">
+								<input type="radio" name="crateSetting" value=0>None
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("crateSetting", event)' title="All crates are shuffled.">
+								<input type="radio" name="crateSetting" value=1>All
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("crateSetting", event)' title="Only crates in dungeons are shuffled.">
+								<input type="radio" name="crateSetting" value=2>Only Dungeons
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("crateSetting", event)' title="Only crates in the overworld are shuffled.">
+								<input type="radio" name="crateSetting" value=3>Only Overworld
 							</label>
 						</div>
 					</div>

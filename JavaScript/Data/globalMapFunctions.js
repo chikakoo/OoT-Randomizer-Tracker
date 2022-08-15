@@ -18,18 +18,15 @@ let ItemGroups = {
 	SCRUB: 5,
 	SHOP: 6,
 	SONG: 7,
-	NON_ITEM: 8,
-	ENTRANCE: 9,
-	OW_ENTRANCE: 10,
-	GOSSIP_STONE: 11,
-	LOCKED_DOOR: 12,
-
-	//TODO: adjust these numbers - should go before NON_ITEM probably, and the other freestanding should be grouped
-	POT: 13,
-	CRATE: 14,
-	//Freestanding rupees
-	//Freestanding hearts
-	BEEHIVE: 15
+	FREESTANDING_RUPEES_AND_HEARTS: 8,
+	POT: 9,
+	CRATE: 10,
+	BEEHIVE: 11,
+	NON_ITEM: 12,
+	ENTRANCE: 13,
+	OW_ENTRANCE: 14,
+	GOSSIP_STONE: 15,
+	LOCKED_DOOR: 16
 };
 
 let getItemGroupName = function(groupId) {
@@ -47,11 +44,10 @@ let getItemGroupName = function(groupId) {
 		case ItemGroups.OW_ENTRANCE: return "OW Entrances";
 		case ItemGroups.GOSSIP_STONE: return "Gossip Stones";
 		case ItemGroups.LOCKED_DOOR: return "Locked Doors";
+		case ItemGroups.FREESTANDING_RUPEES_AND_HEARTS: return "Freestanding Rupees and Hearts";
 		case ItemGroups.POT: return "Pot";
-		// Freestanding rupees
-		// Freestanding hearts
-		case ItemGroups.BEEHIVE: return "Beehive";
 		case ItemGroups.CRATE: return "Crate";
+		case ItemGroups.BEEHIVE: return "Beehive";
 		default: return null;
 	}
 };

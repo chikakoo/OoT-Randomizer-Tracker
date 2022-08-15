@@ -69,17 +69,29 @@ let EntranceUI = {
 			let groupDiv = dce("div", "entrance-group");
 			let shouldAlwaysDisplayGroup = Data.shouldDisplayItemLocation(itemLocation) && group.neverHide;
 
-			if (!shouldAlwaysDisplayGroup && (itemLocation.IsInterior || itemLocation.IsGrotto)) {
+			if (!shouldAlwaysDisplayGroup) {
 				let shouldNotDisplayGroup = group.shouldNotDisplay && group.shouldNotDisplay();
-				let itemsToExclude;
+				let itemsToExclude = {};
 				if (itemLocation.IsInterior) {
-					itemsToExclude = Settings.ItemLocationsToExclude.Interiors;
-				} else {
-					itemsToExclude = Settings.ItemLocationsToExclude.Grottos;
+					itemsToExclude = Settings.ItemLocationsToExclude.Interiors || {};
+				} else if (itemLocation.IsGrotto) {
+					itemsToExclude = Settings.ItemLocationsToExclude.Grottos || {};
 				}
+
+				Object.keys(group.buttons).forEach(function(buttonName) {
+					let button = group.buttons[buttonName];
+					let shouldNotDisplayButton = button.shouldNotDisplay && button.shouldNotDisplay();
+					let excludingItemGroup = button.itemGroup && shouldDisableItemLocationGroup(button.itemGroup);
+					if (shouldNotDisplayButton || excludingItemGroup) {
+						itemsToExclude[groupName] = itemsToExclude[groupName] || [];
+						if (!itemsToExclude[groupName].includes(buttonName)) {
+							itemsToExclude[groupName].push(buttonName);
+						}
+					}
+				});
 				
 				let allItemsExcluded = false;
-				if (itemsToExclude) {
+				if (itemsToExclude[groupName]) {
 					let groupItemsToExclude = itemsToExclude[groupName];
 					allItemsExcluded = groupItemsToExclude && groupItemsToExclude.length === Object.keys(group.buttons).length;
 				}
@@ -163,6 +175,10 @@ let EntranceUI = {
 			let button = selectedGroup.buttons[buttonName];
 			let shouldNotDisplayButton = button.shouldNotDisplay && button.shouldNotDisplay();
 			let shouldExcludeEquivalentItem = false;
+
+			if (!shouldNotDisplayButton && button.itemGroup) {
+				shouldNotDisplayButton = shouldDisableItemLocationGroup(button.itemGroup);
+			}
 
 			if (itemLocation.IsInterior || itemLocation.IsGrotto) {
 				let itemsToExclude;

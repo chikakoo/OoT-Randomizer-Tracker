@@ -81,10 +81,8 @@ InteriorGroups = {
 		buttons: {
 			"Cow in Link's House": {
 				icon: "Cow",
+				itemGroup: ItemGroups.COW,
 				description: "As an adult, beat Malon's Epona challenge to unlock the cow in Link's house.",
-				shouldNotDisplay: function() {
-					return !Settings.RandomizerSettings.cowSanity;
-				},
 				canGet: function(age) {
 					return Data.canRideEpona(age) && Data.canMilkCows(true) && Data.canAccessMap(age, "Lon Lon Ranch", "main");
 				},
@@ -154,13 +152,13 @@ InteriorGroups = {
 		isShop: true,
 		buttons: {
 			"Shop": {
+				itemGroup: ItemGroups.SHOP,
 				description: "Buy the items you need here - put anything you need to get later in the notes."
 			}
 		}
 	},
 	"Potion Shop Front": {
 		tooltip: "The Kakariko potion shop - this is the front entrance (closest to the camera).",
-		isShop: true,
 		neverHide: true,
 		buttons: {},
 		postClick: function(itemLocation, isSelected) {
@@ -175,7 +173,7 @@ InteriorGroups = {
 	"Potion Shop Back": {
 		tooltip: "The Kakariko potion shop - this is the back entrance (farthest from the camera). Mark the front entrance for the shop itself.",
 		neverHide: true,
-		buttons: { },
+		buttons: {},
 		postClick: function(itemLocation, isSelected) {
 			let exitData = {
 				map: "Windmill-Kak Potion",
@@ -316,6 +314,7 @@ InteriorGroups = {
 			},
 			"Lakeside Skulltula": {
 				icon: "Skulltula",
+				itemGroup: ItemGroups.SKULLTULA,
 				description: "This skulltula is on the bottom of the water area. Equip the iron boots and sink down. Roll into the box to reveal it.",
 				canGet: function(age) {
 					if (age === Age.CHILD) { return false; }
@@ -330,6 +329,7 @@ InteriorGroups = {
 		buttons: {
 			"Child Skulltula": {
 				icon: "Skulltula",
+				itemGroup: ItemGroups.SKULLTULA,
 				description: "This is the skulltula in the crate in the back of the room.",
 				isChildOnly: function() { return true; }
 			},
@@ -351,10 +351,8 @@ InteriorGroups = {
 				description: "Simply grab the item in the room."
 			},
 			"Cow": {
+				itemGroup: ItemGroups.COW,
 				description: "Play Epona's Song next to the cow.",
-				shouldNotDisplay: function() {
-					return !Settings.RandomizerSettings.cowSanity;
-				},
 				canGet: function(age) {
 					return Data.canMilkCows(true);
 				}
@@ -366,6 +364,7 @@ InteriorGroups = {
 		buttons: {
 			"Cow 1": {
 				icon: "Cow",
+				itemGroup: ItemGroups.COW,
 				description: "Play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.cowSanity;
@@ -376,6 +375,7 @@ InteriorGroups = {
 			},
 			"Cow 2": {
 				icon: "Cow",
+				itemGroup: ItemGroups.COW,
 				description: "Play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.cowSanity;
@@ -396,6 +396,7 @@ InteriorGroups = {
 			},
 			"Cow 1": {
 				icon: "Cow",
+				itemGroup: ItemGroups.COW,
 				description: "Play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.cowSanity;
@@ -406,6 +407,7 @@ InteriorGroups = {
 			},
 			"Cow 2": {
 				icon: "Cow",
+				itemGroup: ItemGroups.COW,
 				description: "Play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.cowSanity;
@@ -556,12 +558,10 @@ GrottoGroups = {
 			},
 			"Gossip Stone": {
 				icon: "Mask of Truth",
+				itemGroup: ItemGroups.GOSSIP_STONE,
 				description: "The gossip stone in the middle of the room.",
 				canGet: function(age) { 
 					return Data.canReadGossipStone(age); 
-				},
-				shouldNotDisplay: function() {
-					return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.HIDE;
 				}
 			}
 		}
@@ -572,6 +572,7 @@ GrottoGroups = {
 			"Scrub 1": {
 				icon: "Scrub",
 				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
@@ -584,6 +585,7 @@ GrottoGroups = {
 			"Scrub 1": {
 				icon: "Scrub",
 				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
@@ -591,6 +593,7 @@ GrottoGroups = {
 			"Scrub 2": {
 				icon: "Scrub",
 				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
@@ -603,6 +606,7 @@ GrottoGroups = {
 			"Scrub 1": {
 				icon: "Scrub",
 				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
@@ -610,6 +614,7 @@ GrottoGroups = {
 			"Scrub 2": {
 				icon: "Scrub",
 				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
@@ -617,6 +622,7 @@ GrottoGroups = {
 			"Scrub 3": {
 				icon: "Scrub",
 				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
@@ -627,6 +633,7 @@ GrottoGroups = {
 		tooltip: "This grotto has a big skulltula and a gold skulltula on the upper wall.",
 		buttons: {
 			"Skulltula at Distance": {
+				itemGroup: ItemGroups.SKULLTULA,
 				description: "The gold skulltula is on the wall behind the big skulltula.",
 				canGet: function(age) {
 					return Data.canGrabShortDistances(age);
@@ -639,15 +646,14 @@ GrottoGroups = {
 		hasGossipStone: true,
 		buttons: {
 			"Cow": {
+				itemGroup: ItemGroups.COW,
 				description: "Burn the web, then play Epona's Song next to the cow.",
-				shouldNotDisplay: function() {
-					return !Settings.RandomizerSettings.cowSanity;
-				},
 				canGet: function(age) {
 					return Data.canUseFireItem(age) && Data.canMilkCows();
 				}
 			},
 			"Skulltula at Distance": {
+				itemGroup: ItemGroups.SKULLTULA,
 				description: "Burn the web. The skulltula is in the section the cow is in.",
 				canGet: function(age) {
 					if (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2) {
@@ -659,12 +665,10 @@ GrottoGroups = {
 			},
 			"Gossip Stone": {
 				icon: "Mask of Truth",
+				itemGroup: ItemGroups.GOSSIP_STONE,
 				description: "Burn the web. The stone is in one of the little rooms.",
 				canGet: function(age) { 
 					return Data.canUseFireItem(age) && Data.canReadGossipStone(age); 
-				},
-				shouldNotDisplay: function() {
-					return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.HIDE;;
 				}
 			}
 		}
@@ -674,6 +678,7 @@ GrottoGroups = {
 		hasGossipStone: true,
 		buttons: {
 			"Skulltula in Bombable Wall Grotto": {
+				itemGroup: ItemGroups.SKULLTULA,
 				description: "The skulltula is high up behind one of the bombable walls. As an adult, you can actually use your hookshot to get the skulltula without blowing up the wall.",
 				canGet: function(age) {
 					let canGetSkulltula = Data.canGrabShortDistances(age);
@@ -682,6 +687,7 @@ GrottoGroups = {
 			},
 			"Gossip Stone": {
 				icon: "Mask of Truth",
+				itemGroup: ItemGroups.GOSSIP_STONE,
 				description: "The gossip stone is behind one of the bombable walls.",
 				canGet: function(age) { 
 					return Data.canBreakMudWalls(age) && Data.canReadGossipStone(age); 
@@ -779,10 +785,8 @@ GrottoGroups = {
 		tooltip: "This grotto has rupees and a cow.",
 		buttons: {
 			"Cow": {
+				itemGroup: ItemGroups.COW,
 				description: "Play Epona's Song next to the cow.",
-				shouldNotDisplay: function() {
-					return !Settings.RandomizerSettings.cowSanity;
-				},
 				canGet: function(age) {
 					return Data.canMilkCows();
 				}

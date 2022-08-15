@@ -104,24 +104,10 @@ let _performItemDisabling = function() {
 				return;
 			};
 			
-			// Gold Skulltulas
-			if (itemLocation.ItemGroup === ItemGroups.SKULLTULA) {
-				switch (Settings.RandomizerSettings.skulltulaSetting) {
-					case SkulltulaSettings.NONE_REQUIRED:
-						itemLocation.disabled = true;
-						return;
-					case SkulltulaSettings.DUNGEON_ONLY:
-						if (mapLocation.MapGroup !== MapGroups.DUNGEONS) { 
-							itemLocation.disabled = true; 
-							return;
-						}
-						break;
-					case SkulltulaSettings.OW_ONLY:
-						if (mapLocation.MapGroup === MapGroups.DUNGEONS) {
-							itemLocation.disabled = true;
-							return;
-						}
-				}
+			// Disable based on the item group
+			if (shouldDisableItemLocationGroup(itemLocation.ItemGroup, mapLocation.MapGroup === MapGroups.DUNGEONS, itemLocation.ScrubSanityNotRequired)) {
+				itemLocation.disabled = true;
+				return;
 			}
 			
 			// Token Rewards
@@ -132,39 +118,9 @@ let _performItemDisabling = function() {
 					return;
 				}
 			}
-			
-			// Scrubs
-			if (!Settings.RandomizerSettings.scrubSanity && itemLocation.ItemGroup === ItemGroups.SCRUB && !itemLocation.ScrubSanityNotRequired) {
-				itemLocation.disabled = true;
-				return;
-			}
 
 			// Beans
 			if (Settings.RandomizerSettings.autoPlantBeans && itemLocation.IsBean) {
-				itemLocation.disabled = true;
-				return;
-			}
-			
-			// Shops
-			if (!Settings.RandomizerSettings.shopSanity && itemLocation.ItemGroup === ItemGroups.SHOP) {
-				itemLocation.disabled = true;
-				return;
-			}
-			
-			// Cows
-			if (!Settings.RandomizerSettings.cowSanity && itemLocation.ItemGroup === ItemGroups.COW) {
-				itemLocation.disabled = true;
-				return;
-			}
-
-			// Keys
-			if (Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY && itemLocation.ItemGroup === ItemGroups.LOCKED_DOOR) {
-				itemLocation.disabled = true;
-				return;
-			}
-			
-			// Gossip Stones
-			if (Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.HIDE && itemLocation.ItemGroup === ItemGroups.GOSSIP_STONE) {
 				itemLocation.disabled = true;
 				return;
 			}
@@ -188,6 +144,66 @@ let _performItemDisabling = function() {
 			}
 		});
 	});
+};
+
+/**
+ * Returns whether we should disable the item location group based on their item group
+ * @param {Number} itemGroup - the item group to check
+ * @param {Boolean} isDungeon - (false by default) whether the item location is in a dungeon
+ * @param {Boolean} isScrubSanityRequired (false by default) whether scrub sanity is required for this scrub item
+ * @returns True if we should disable the item location, false otherwise
+ */
+let shouldDisableItemLocationGroup = function(itemGroup, isDungeon, isScrubSanityRequired) {
+		let shuffleLocationSettingValue = null;
+		switch(itemGroup) {
+			case ItemGroups.SKULLTULA:
+				shuffleLocationSettingValue = Settings.RandomizerSettings.skulltulaSetting;
+				break;
+			case ItemGroups.FREESTANDING_RUPEES_AND_HEARTS:
+				shuffleLocationSettingValue = Settings.RandomizerSettings.rupeeAndHeartSetting;
+				break;
+			case ItemGroups.POT:
+				shuffleLocationSettingValue = Settings.RandomizerSettings.potSetting;
+				break;
+			case ItemGroups.CRATE:
+				shuffleLocationSettingValue = Settings.RandomizerSettings.crateSetting;
+				break;
+
+			// Scrubs
+			case ItemGroups.SCRUB:
+				return !Settings.RandomizerSettings.scrubSanity && !isScrubSanityRequired;
+
+			// Shops
+			case ItemGroups.SHOP:
+				return !Settings.RandomizerSettings.shopSanity;
+
+			// Cows
+			case ItemGroups.COW:
+				return !Settings.RandomizerSettings.cowSanity;
+
+			// Locked Doors
+			case ItemGroups.LOCKED_DOOR:
+				return Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY;
+
+			// Gossip Stones
+			case ItemGroups.GOSSIP_STONE:
+				return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.HIDE;
+		}
+
+		// Check any shuffle location setting: Gold Skulltulas, Rupees and Hearts, Pots, and Crates
+		switch (shuffleLocationSettingValue) {
+			case ShuffleLocationSettings.OFF:
+				return true;
+			case ShuffleLocationSettings.ALL:
+				return false;
+			case ShuffleLocationSettings.DUNGEON_ONLY:
+				return !isDungeon;
+			case ShuffleLocationSettings.OW_ONLY:
+				return isDungeon;
+		}
+
+		// We didn't find a reason to disable the item
+		return false;
 };
 
 let _locationSmaller = false;

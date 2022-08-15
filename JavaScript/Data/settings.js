@@ -26,9 +26,9 @@ let DungeonItemDisplaySettings = {
 	BY_SUGGESTED_ORDER: 1
 };
 
-let SkulltulaSettings = {
-	NONE_REQUIRED: 0,
-	OW_AND_DUNGEON: 1,
+let ShuffleLocationSettings = {
+	OFF: 0,
+	ALL: 1,
 	DUNGEON_ONLY: 2,
 	OW_ONLY: 3
 };
@@ -101,7 +101,7 @@ let Settings = {
 		startingAge: Age.CHILD,
 		skipToTTravel: false,
 		maxRequiredTokens: 50,
-		skulltulaSetting: SkulltulaSettings.OW_AND_DUNGEON,
+		skulltulaSetting: ShuffleLocationSettings.ALL,
 		medallionSetting: MedallionSettings.OPEN,
 		gossipStoneSetting: GossipStoneSettings.HIDE,
 		medallionSkulltulaSetting: 50,
@@ -115,6 +115,10 @@ let Settings = {
 		bombchusInLogic: true,
 		deadHandNeedsSword: false,
 		iceArrowsActAsBlueFire: true,
+		rupeeAndHeartSetting: ShuffleLocationSettings.ALL,
+		potSetting: ShuffleLocationSettings.ALL,
+		crateSetting: ShuffleLocationSettings.ALL,
+		shuffleBehives: false,
 		
 		// Entrance shuffle settings
 		shuffleInteriorEntrances: true,
