@@ -22,7 +22,14 @@ let ItemGroups = {
 	ENTRANCE: 9,
 	OW_ENTRANCE: 10,
 	GOSSIP_STONE: 11,
-	LOCKED_DOOR: 12
+	LOCKED_DOOR: 12,
+
+	//TODO: adjust these numbers - should go before NON_ITEM probably, and the other freestanding should be grouped
+	POT: 13,
+	CRATE: 14,
+	//Freestanding rupees
+	//Freestanding hearts
+	BEEHIVE: 15
 };
 
 let getItemGroupName = function(groupId) {
@@ -40,6 +47,11 @@ let getItemGroupName = function(groupId) {
 		case ItemGroups.OW_ENTRANCE: return "OW Entrances";
 		case ItemGroups.GOSSIP_STONE: return "Gossip Stones";
 		case ItemGroups.LOCKED_DOOR: return "Locked Doors";
+		case ItemGroups.POT: return "Pot";
+		// Freestanding rupees
+		// Freestanding hearts
+		case ItemGroups.BEEHIVE: return "Beehive";
+		case ItemGroups.CRATE: return "Crate";
 		default: return null;
 	}
 };
