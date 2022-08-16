@@ -455,17 +455,17 @@ Data = {
 		return owMaps;
     },
     
-/**
- * Gets an array of entrance names to use for the dropdown
- * @param {string} mapName - the name of the map
- * @param {Any} entranceOptions - options for the function for what to get
- * {
- *  isOwl: boolean,
- *  getInteriors: boolean,
- *  getGrottos: boolean
- * }
- * @returns the array of entrances (strings)
- */
+    /**
+     * Gets an array of entrance names to use for the dropdown
+     * @param {string} mapName - the name of the map
+     * @param {Any} entranceOptions - options for the function for what to get
+     * {
+     *  isOwl: boolean,
+     *  getInteriors: boolean,
+     *  getGrottos: boolean
+     * }
+     * @returns the array of entrances (strings)
+     */
     getOWEntrances: function(mapName, options) {
         let entrances = [];
         let exits = OwExits[mapName];
@@ -901,6 +901,8 @@ Data = {
 				return this.hasDamagingItem(age);
 			case ItemGroups.SCRUB:
 				return this.canBuyFromScrub(age);
+            case ItemGroups.BEEHIVE:
+                return true; //TODO! have a param for age and whether it's an upper hive
 			case ItemGroups.GOSSIP_STONE:
                 return this.canReadGossipStone(age);
             case ItemGroups.LOCKED_DOOR:

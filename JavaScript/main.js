@@ -181,6 +181,10 @@ let shouldDisableItemLocationGroup = function(itemGroup, isDungeon, isScrubSanit
 			case ItemGroups.COW:
 				return !Settings.RandomizerSettings.cowSanity;
 
+			// Beehives
+			case ItemGroups.BEEHIVE:
+				return !Settings.RandomizerSettings.shuffleBeehives;
+
 			// Locked Doors
 			case ItemGroups.LOCKED_DOOR:
 				return Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY;

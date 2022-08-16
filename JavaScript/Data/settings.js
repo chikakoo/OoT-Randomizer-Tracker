@@ -118,7 +118,7 @@ let Settings = {
 		rupeeAndHeartSetting: ShuffleLocationSettings.ALL,
 		potSetting: ShuffleLocationSettings.ALL,
 		crateSetting: ShuffleLocationSettings.ALL,
-		shuffleBehives: false,
+		shuffleBeehives: false,
 		
 		// Entrance shuffle settings
 		shuffleInteriorEntrances: true,
