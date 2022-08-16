@@ -316,7 +316,30 @@ let MapLocations = {
                         MapInfo: { x: 84, y: 222 },
                         Age: Age.CHILD,
                         LongDescription: "This is the bean spot by the bridge connecting Kokiri Forest and Hyrule Field. It can be used to get on the bridge."
-                    }
+                    },
+                    "8 Green Rupees in Water": {
+                        Name: "8 Green Rupees in Water",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "8 Green Rupees",
+                        MapInfo: { x: 276, y: 127 },
+                        Age: Age.CHILD,
+                        RequiredChoiceOfItems: [Items.BOOMERANG, Equipment.SCALE],
+                        LongDescription: "In the water leading to Zora's River - dive or use the boomerang to get these items."
+                    },
+                    "Blue Rupee Under Rock": {
+                        Name: "Blue Rupee Under Rock",
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Blue Rupee",
+                        MapInfo: { x: 265, y: 28 },
+                        Age: Age.EITHER,
+                        LongDescription: "This item is under the rock one room from the Sacred Forest Meadow.",
+                        CustomRequirement: function(age) {
+                            return Data.canBlastOrSmash(age) ||
+                                (Settings.GlitchesToAllow.boomerangThroughWalls && Data.canUseBoomerang(age));
+                        }
+                    },
                 }
             },
 

@@ -142,6 +142,7 @@ let Settings = {
 		hammerHoverBootsSuperslide: false,
 		equipSwap: false,
 		weirdShot: false,
+		boomerangThroughWalls: false,
 		
 		// Kakariko/Graveyard
 		watchtowerSkullJumpslash: false,

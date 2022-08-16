@@ -706,9 +706,10 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						Order: 9,
-						LongDescription: "In the path leading to the elevator room, there's a skulltula under the Song of Time block. Play the song to move the block.<br/><br/>If you have the boomerang, you can also aim it to the left and slightly downward to get the skulltula throught he block.",
+						LongDescription: "In the path leading to the elevator room, there's a skulltula under the Song of Time block. Play the song to move the block.<br/><br/>If you have the boomerang, you can also aim it to the left and slightly downward to get the skulltula through the block.",
 						CustomRequirement: function(age) {
-							return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canUseBoomerang(age);
+							return Data.canPlaySong(Songs.SONG_OF_TIME) || 
+								(Settings.GlitchesToAllow.boomerangThroughWalls && Data.canUseBoomerang(age));
 						}
 					}
 				}
