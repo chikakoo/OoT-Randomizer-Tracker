@@ -2896,7 +2896,14 @@ let MapLocations = {
                         MapInfo: { x: 172, y: 173 },
                         Age: Age.EITHER,
                         LongDescription: "The crate is on a ledge on the left side of the ravine. Grab a cucco and jump across to the crate. If you're fast, you can grab the cucco after you get the item and use it to get the waterfall item as well.<br /><br />As an adult, you can longshot to the crate from the ledge on the other side."
-                    }
+                    },
+                    "Item in Crate": {
+                        Name: "Item in Crate",
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 175, y: 173 },
+                        Age: Age.EITHER,
+                        LongDescription: "The crate is on a ledge on the left side of the ravine. Grab a cucco and jump across to the crate. If you're fast, you can grab the cucco after you get the item and use it to get the waterfall item as well.<br /><br />As an adult, you can longshot to the crate from the ledge on the other side."
+                    },
                 }
             },
 
@@ -2960,6 +2967,13 @@ let MapLocations = {
                         MapInfo: { x: 185, y: 146 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is in the chasm near the waterfall. It's on the same platform as the cow and soft soil patch."
+                    },
+                    "Crate by Cow on Bottom": {
+                        Name: "Crate by Cow on Bottom",
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 189, y: 199 },
+                        Age: Age.CHILD,
+                        LongDescription: "Navigate to the plateform on the bottom of the ravine to find this crate.",
                     }
                 }
             }
