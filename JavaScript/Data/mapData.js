@@ -162,7 +162,6 @@ let MapLocations = {
                         LongDescription: "Search the grass near the Mido's house to find these items."
                     },
                     "Rupee Circle Above Shop": {
-                        //TODO POT: Check how many of these boomerang can get... would need separate EntranceData to handle that
                         Name: "Rupee Circle Above Shop",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -172,7 +171,9 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Ride the bean platform or use hover boots to reach these items.",
                         CustomRequirement: function(age) {
-                            return Equipment.HOVER_BOOTS.playerHas || Data.itemLocationObtained("Kokiri Forest", "main", "*Plant Bean by Kokiri Shop");
+                            return Data.canUseBoomerang(age) ||
+                                Equipment.HOVER_BOOTS.playerHas || 
+                                Data.itemLocationObtained("Kokiri Forest", "main", "*Plant Bean by Kokiri Shop");
                         }
                     }
                 }
@@ -2282,7 +2283,7 @@ let MapLocations = {
                         MapInfo: { x: 249, y: 62 },
                         Age: Age.ADULT,
                         LongDescription: "At night, a little after the wooden bridge leading to Zora's Domain, you'll find a skulltula high up on the wall. You can get it with the hookshot if you stand on the fence.",
-                        Requireditems: [Items.HOOKSHOT]
+                        RequiredItems: [Items.HOOKSHOT]
                     },
                     "Skulltula on Cliff": {
                         Name: "Skulltula on Cliff",
@@ -2598,7 +2599,7 @@ let MapLocations = {
                     "Ruto's Letter": {
                         Name: "Ruto's Letter",
                         ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 170, y: 106 },
+                        MapInfo: { x: 171, y: 116 },
                         Age: Age.CHILD,
                         LongDescription: "You'll find this item in the water near the entrance to Zora's Domain. Navi will fly to it when you're close.",
                         CustomRequirement: function(age) {
@@ -2704,6 +2705,25 @@ let MapLocations = {
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This stone is on the wall in the southeast corner of the lake."
+                    },
+                    "Green Rupee Near Shore": {
+                        Name: "Green Rupee Near Shore",
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Green Rupee",
+                        MapInfo: { x: 171, y: 98 },
+                        Age: Age.CHILD,
+                        LongDescription: "This item is by the entrance to Zora's Domain - you can dive to get it without a scale.",
+                    },
+                    "2 Green Rupees in Deeper Water": {
+                        Name: "2 Green Rupees in Deeper Water",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Green Rupees",
+                        MapInfo: { x: 169, y: 105 },
+                        Age: Age.CHILD,
+                        RequiredItems: [{item: Equipment.SCALE, upgradeString: "1"}],
+                        LongDescription: "These items are by the entrance to Zora's Domain - you need a scale to be able to reach them."
                     }
                 }
             }

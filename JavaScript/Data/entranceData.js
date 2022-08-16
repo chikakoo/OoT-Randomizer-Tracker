@@ -348,7 +348,37 @@ InteriorGroups = {
 					return Equipment.IRON_BOOTS.playerHas && Items.HOOKSHOT.playerHas;
 				},
 				isAdultOnly: function() { return true; }
-			}
+			},
+			"Red Rupee 1": {
+				icon: "Red Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "This rupee is in the water - dive or use iron boots to get it.",
+				canGet: function(age) {
+					if (age === Age.CHILD) { return false; }
+					return Equipment.IRON_BOOTS.playerHas || Equipment.SCALE.currentUpgrade === 2;
+				},
+				isAdultOnly: function() { return true; }
+			},
+			"Red Rupee 2": {
+				icon: "Red Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "This rupee is in the water - dive or use iron boots to get it.",
+				canGet: function(age) {
+					if (age === Age.CHILD) { return false; }
+					return Equipment.IRON_BOOTS.playerHas || Equipment.SCALE.currentUpgrade === 2;
+				},
+				isAdultOnly: function() { return true; }
+			},
+			"Red Rupee 3": {
+				icon: "Red Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "This rupee is in the water - dive or use iron boots to get it.",
+				canGet: function(age) {
+					if (age === Age.CHILD) { return false; }
+					return Equipment.IRON_BOOTS.playerHas || Equipment.SCALE.currentUpgrade === 2;
+				},
+				isAdultOnly: function() { return true; }
+			},
 		}
 	},
 	"Market Guard House": {
