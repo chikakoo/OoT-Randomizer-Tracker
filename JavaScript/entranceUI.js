@@ -45,10 +45,12 @@ let EntranceUI = {
 	
 	/**
 	 * Gets the entrance group background string
+	 * @param group - the group
 	 * @param groupName - the name of the group
 	 */
-	getEntranceGroupIcon(groupName) {
-		return `url("Images/Entrance Groups/Group - ${groupName}.png")`;
+	getEntranceGroupIcon(group, groupName) {
+		let iconName = group.icon ? group.icon : groupName;
+		return `url("Images/Entrance Groups/Group - ${iconName}.png")`;
 	},
 
 	/**
@@ -99,7 +101,7 @@ let EntranceUI = {
 				if (shouldNotDisplayGroup || allItemsExcluded) { return; }
 			}
 
-			groupDiv.style.backgroundImage = _this.getEntranceGroupIcon(groupName);
+			groupDiv.style.backgroundImage = _this.getEntranceGroupIcon(group, groupName);
 			groupDiv.title = group.tooltip;
 			
 			groupDiv.onclick = function(event) {
@@ -146,6 +148,7 @@ let EntranceUI = {
 		itemLocation[groupProperty] = {
 			name: groupName,
 			isShop: group.isShop,
+			skipItemGroupCheck: group.skipItemGroupCheck,
 			isTempleOfTime: group.isTempleOfTime,
 			hasGossipStone: group.hasGossipStone,
 			completed: {},
@@ -224,8 +227,8 @@ let EntranceUI = {
 				refreshAll();
 			}
 
-			let canGetAsChild = canGetToAsChild && _this._canGetAsAge(button, Age.CHILD) && (!button.canGet || button.canGet(Age.CHILD));
-			let canGetAsAdult = canGetToAsAdult && _this._canGetAsAge(button, Age.ADULT) && (!button.canGet || button.canGet(Age.ADULT));
+			let canGetAsChild = canGetToAsChild && _this._canGetAsAge(button, Age.CHILD) && (!button.canGet || button.canGet(Age.CHILD, itemLocation));
+			let canGetAsAdult = canGetToAsAdult && _this._canGetAsAge(button, Age.ADULT) && (!button.canGet || button.canGet(Age.ADULT, itemLocation));
 			
 			if (itemLocationGroup.completed[buttonName]) {
 				addCssClass(buttonDiv, "entrance-group-button-completed");
@@ -402,7 +405,7 @@ let EntranceUI = {
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
 			if (button.excluded || (button.shouldNotDisplay && button.shouldNotDisplay())) { return; }
 			
-			let canGetItem = !button.canGet || button.canGet(age);
+			let canGetItem = !button.canGet || button.canGet(age, itemLocation);
 			if (canGetItem && _this._canGetAsAge(button, age)) {
 				numberOfTasks++; 
 			}

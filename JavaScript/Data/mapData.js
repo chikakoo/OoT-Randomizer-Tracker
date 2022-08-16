@@ -50,7 +50,7 @@ let MapLocations = {
                     "Kokiri Sword": {
                         Name: "Kokiri Sword",
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 100, y: 284 },
+                        MapInfo: { x: 142, y: 290 },
                         Age: Age.CHILD,
                         LongDescription: "This is the prize at the end of the boulder maze, though the Hole of Z."
                     },
@@ -82,13 +82,13 @@ let MapLocations = {
                             return Settings.GlitchesToAllow.houseOfTwinsSkullWithHovers && Equipment.HOVER_BOOTS.playerHas;
                         }
                     },
-                    "Plant Bean by Kokiri Shop": {
-                        Name: "Plant Bean by Kokiri Shop",
+                    "*Plant Bean by Kokiri Shop": {
+                        Name: "*Plant Bean by Kokiri Shop",
                         ItemGroup: ItemGroups.NON_ITEM,
                         IsBean: true,
                         MapInfo: { x: 284, y: 139 },
                         Age: Age.CHILD,
-                        LongDescription: "This is the bean spot by the Kokiri Shop. It is not used to get any items."
+                        LongDescription: "This is the bean spot by the Kokiri Shop. Used to get the rupees above it."
                     },
                     "Move Mido": {
                         Name: "Move Mido",
@@ -106,6 +106,74 @@ let MapLocations = {
                         MapInfo: { x: 102, y: 37 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is by the lost woods entrance at the top area of the forest.",
+                    },
+                    "Blue Rupee Behind Midos": {
+                        Name: "Blue Rupee Behind Midos",
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Blue Rupee",
+                        MapInfo: { x: 135, y: 95 },
+                        Age: Age.CHILD,
+                        LongDescription: "This item is behind Mido's House.",
+                    },
+                    "Close Maze Blue Rupee": {
+                        Name: "Close Maze Blue Rupee",
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Blue Rupee",
+                        MapInfo: { x: 72, y: 278 },
+                        Age: Age.CHILD,
+                        LongDescription: "This item is to your right when you go in the maze.",
+                    },
+                    "Far Maze Blue Rupee": {
+                        Name: "Far Maze Blue Rupee",
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Blue Rupee",
+                        MapInfo: { x: 78, y: 292 },
+                        Age: Age.CHILD,
+                        LongDescription: "Go in the maze and follow the right wall to this item.",
+                    },
+                    "3 Hearts on Saria's House": {
+                        Name: "3 Hearts on Saria's House",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Hearts",
+                        MapInfo: { x: 206, y: 213 },
+                        Age: Age.CHILD,
+                        LongDescription: "Climb up the spiral to Saria's House to get to these items."
+                    },
+                    "2 Green Rupees in Grass by Know-it-All": {
+                        Name: "2 Green Rupees in Grass by Know-it-All",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Green Rupees",
+                        MapInfo: { x: 139, y: 169 },
+                        Age: Age.CHILD,
+                        LongDescription: "Search the grass near the Know-it-All Brothers house to find these items."
+                    },
+                    "2 Green Rupees in Grass by Mido's": {
+                        Name: "2 Green Rupees in Grass by Mido's",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Green Rupees",
+                        MapInfo: { x: 163, y: 110 },
+                        Age: Age.CHILD,
+                        LongDescription: "Search the grass near the Mido's house to find these items."
+                    },
+                    "Rupee Circle Above Shop": {
+                        //TODO POT: Check how many of these boomerang can get... would need separate EntranceData to handle that
+                        Name: "Rupee Circle Above Shop",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Rupee Circle",
+                        MapInfo: { x: 291, y: 106 },
+                        Age: Age.ADULT,
+                        LongDescription: "Ride the bean platform or use hover boots to reach these items.",
+                        CustomRequirement: function(age) {
+                            return Equipment.HOVER_BOOTS.playerHas || Data.itemLocationObtained("Kokiri Forest", "main", "*Plant Bean by Kokiri Shop");
+                        }
                     }
                 }
             },

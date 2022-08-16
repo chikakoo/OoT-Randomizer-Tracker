@@ -63,7 +63,6 @@ let MapUI = {
 	 */
 	setMap: function(mapName, groupedItemLocationInfo, floor) {
 		this._currentMapName = mapName;
-		let mapImageName = mapName;
 		this._currentFloor = "";
 		if (floor) {
 			this._currentFloor = floor;
@@ -226,11 +225,11 @@ let MapUI = {
 		
 		let group = Data.getEntranceGroup(itemLocation);
 		if (groupId === ItemGroups.ENTRANCE && group) {
-			iconDiv.style.backgroundImage = EntranceUI.getEntranceGroupIcon(group.name);
+			iconDiv.style.backgroundImage = EntranceUI.getEntranceGroupIcon(group, group.name);
 			return;
 		}
 		
-		iconDiv.style.backgroundImage = getItemGroupImagePath(groupId);
+		iconDiv.style.backgroundImage = getItemGroupImagePath(groupId, itemLocation.MapImageName);
 	},
 	
 	/**

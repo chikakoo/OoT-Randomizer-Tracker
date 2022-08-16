@@ -66,6 +66,9 @@ let SettingsPage = {
         this._initializeRadioButton("dungeonSetting", Settings.RandomizerSettings.dungeonSetting);
         this._initializeRadioButton("smallKeySetting", Settings.RandomizerSettings.smallKeySetting);
         this._initializeRadioButton("skulltulaSetting", Settings.RandomizerSettings.skulltulaSetting);
+        this._initializeRadioButton("rupeeAndHeartSetting", Settings.RandomizerSettings.rupeeAndHeartSetting);
+        this._initializeRadioButton("potSetting", Settings.RandomizerSettings.potSetting);
+        this._initializeRadioButton("crateSetting", Settings.RandomizerSettings.crateSetting);
         this._initializeRadioButton("openZorasFountain", Settings.RandomizerSettings.openZorasFountain);
         this._initializeRadioButton("medallionSetting", Settings.RandomizerSettings.medallionSetting);
         this._initializeRadioButton("entranceShuffleSetting", Settings.RandomizerSettings.entranceShuffleSetting);

@@ -105,7 +105,10 @@ let _performItemDisabling = function() {
 			};
 			
 			// Disable based on the item group
-			if (shouldDisableItemLocationGroup(itemLocation.ItemGroup, mapLocation.MapGroup === MapGroups.DUNGEONS, itemLocation.ScrubSanityNotRequired)) {
+			let itemGroup = itemLocation.OverrideItemGroup !== undefined
+				? itemLocation.OverrideItemGroup
+				: itemLocation.ItemGroup;
+			if (shouldDisableItemLocationGroup(itemGroup, mapLocation.MapGroup === MapGroups.DUNGEONS, itemLocation.ScrubSanityNotRequired)) {
 				itemLocation.disabled = true;
 				return;
 			}

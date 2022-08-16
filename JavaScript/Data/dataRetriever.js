@@ -891,7 +891,13 @@ Data = {
 		if (itemLocation && itemLocation.OverrideItemGroupCondition) { return true; }
 
         if (this.isItemLocationAShop(itemLocation)) {
-			return this.canBuyFromShop(age, itemLocation);
+            let group = this.getEntranceGroup(itemLocation);
+
+            //TODO: come up with a cleaner way to do this...
+            let skipItemGroupCheck = group && group.skipItemGroupCheck;
+            if (!skipItemGroupCheck) {
+                return this.canBuyFromShop(age, itemLocation);
+            }
 		}
 		
 		switch (itemLocation.ItemGroup) {
@@ -902,7 +908,7 @@ Data = {
 			case ItemGroups.SCRUB:
 				return this.canBuyFromScrub(age);
             case ItemGroups.BEEHIVE:
-                return true; //TODO! have a param for age and whether it's an upper hive
+                return this.canBreakBeehive(age, itemLocation.IsUpperHive);
 			case ItemGroups.GOSSIP_STONE:
                 return this.canReadGossipStone(age);
             case ItemGroups.LOCKED_DOOR:
@@ -1184,6 +1190,21 @@ Data = {
 			Items.DEKU_NUT.playerHas || 
 			this.hasExplosives() ||
 			this.canUseFireItem(age);
+    },
+
+    /**
+     * Returns whether the player can break a beehive that's high up
+     * @param {Age} age - The age to check
+     * @param {Boolean} isUpperHive - Whether bombs can reach it
+     */
+    canBreakBeehive: function(age, isUpperHive) {
+        if (!isUpperHive && Items.BOMB.playerHas) {
+            return true;
+        }
+
+        return Items.BOMCHU.playerHas || //TODO POT: is it actually hard to hit upper hives with this? Trick?
+            this.canUseBoomerang(age) ||
+            (age === Age.ADULT && Items.HOOKSHOT.playerHas);
     },
     
     /**

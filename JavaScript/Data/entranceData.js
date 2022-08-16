@@ -79,6 +79,11 @@ InteriorGroups = {
 		excludeFromGroup: function() { return Data.linksHouseLocation && Data.linksHouseLocation.map; },
 		neverHide: true,
 		buttons: {
+			"Pot": {
+				itemGroup: ItemGroups.POT,
+				description: "Throw the pot to get an item.",
+				canGet: function(age) { return true; }
+			},
 			"Cow in Link's House": {
 				icon: "Cow",
 				itemGroup: ItemGroups.COW,
@@ -154,6 +159,28 @@ InteriorGroups = {
 			"Shop": {
 				itemGroup: ItemGroups.SHOP,
 				description: "Buy the items you need here - put anything you need to get later in the notes."
+			}
+		}
+	},
+	"Kokiri Shop": {
+		tooltip: "The Kokiri Forest shop with the rupee in the back.",
+		excludeFromGroup: function() { 
+			return Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.OFF ||
+				Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.DUNGEON_ONLY; 
+		},
+		isShop: true,
+		skipItemGroupCheck: true,
+		buttons: {
+			"Shop": {
+				itemGroup: ItemGroups.SHOP,
+				description: "Buy the items you need here - put anything you need to get later in the notes.",
+				canGet: function(age,  itemLocation) {
+					return Data.canBuyFromShop(age, itemLocation);
+				}
+			},
+			"Blue Rupee": {
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Go in the space to the right of the shop to get this item."
 			}
 		}
 	},
@@ -522,24 +549,62 @@ InteriorGroups = {
 		buttons: {
 			"Chest 1": {
 				icon: "Chest",
-				description: "The upper left chest.",
-				canGet: function(age) { return true; },
+				description: "The upper left chest."
 			},
 			"Chest 2": {
 				icon: "Chest",
-				description: "The lower left chest.",
-				canGet: function(age) { return true; },
+				description: "The lower left chest."
 			},
 			"Chest 3": {
 				icon: "Chest",
-				description: "The upper right chest.",
-				canGet: function(age) { return true; },
+				description: "The upper right chest."
 			},
 			"Chest 4": {
 				icon: "Chest",
-				description: "The lower right chest.",
-				canGet: function(age) { return true; },
+				description: "The lower right chest."
 			},
+		}
+	},
+	"Saria's House": {
+		tooltip: "Saria's House in Kokiri Forest",
+		excludeFromGroup: function() { return true; },
+		buttons: {
+			"Heart 1": {
+				icon: "Recovery Heart",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "The upper left heart."
+			},
+			"Heart 2": {
+				icon: "Recovery Heart",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "The lower left heart."
+			},
+			"Heart 3": {
+				icon: "Recovery Heart",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "The upper right heart."
+			},
+			"Heart 4": {
+				icon: "Recovery Heart",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "The lower right heart."
+			}
+		}
+	},
+	"2 Pot Interior": {
+		tooltip: "An interior with two pots.",
+		excludeFromGroup: function() { return true; },
+		buttons: {
+			"Pot 1": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 1."
+			},
+			"Pot 2": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 2."
+			}
 		}
 	},
 };
@@ -811,8 +876,7 @@ GrottoGroups = {
 		excludeFromGroup: function() { return true; },
 		buttons: {
 			"Chest": {
-				description: "The upper left chest.",
-				canGet: function(age) { return true; },
+				description: "The chest."
 			}
 		}
 	},
@@ -1012,6 +1076,79 @@ GrottoGroups = {
   * Mostly for pot/crate shuffle for areas with a ton of checks
   */
  ItemLocationGroups = {
-
+	"3 Hearts": {
+		tooltip: "A group of three recovery hearts",
+		buttons: {
+			"Heart 1": {
+				icon: "Recovery Heart",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Heart 1."
+			},
+			"Heart 2": {
+				icon: "Recovery Heart",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Heart 2."
+			},
+			"Heart 3": {
+				icon: "Recovery Heart",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Heart 3."
+			}
+		}
+	},
+	"2 Green Rupees": {
+		tooltip: "A group of two green rupees.",
+		buttons: {
+			"Green Rupee 1": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 1."
+			},
+			"Green Rupee 2": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 2."
+			}
+		}
+	},
+	"Rupee Circle": {
+		tooltip: "A circle of six green rupees surrounding a red rupee.",
+		buttons: {
+			"Red Rupee": {
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "The central rupee."
+			},
+			"Green Rupee 1": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 1."
+			},
+			"Green Rupee 2": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 2."
+			},
+			"Green Rupee 3": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 3."
+			},
+			"Green Rupee 4": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 4."
+			},
+			"Green Rupee 5": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 5."
+			},
+			"Green Rupee 6": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 6."
+			}
+		}
+	},
  };
 

@@ -62,8 +62,14 @@ let OwExits = {
         "Saria's House": {
             Name: "Saria's House",
             ExitRegion: "main",
+            RequiredToAppear: function() { 
+                return Settings.RandomizerSettings.shuffleInteriorEntrances || 
+                    Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.ALL ||
+                    Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.OW_ONLY; 
+            },
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            DefaultEntranceGroupName: "Saria's House",
             MapInfo: { x: 204, y: 228 },
             Age: Age.EITHER,
             LongDescription: "This is the house to your right if you face away from Link's house."
@@ -81,8 +87,14 @@ let OwExits = {
         "Know-It-All House": {
             Name: "Know-It-All House",
             ExitRegion: "main",
+            RequiredToAppear: function() { 
+                return Settings.RandomizerSettings.shuffleInteriorEntrances || 
+                    Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.ALL ||
+                    Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.OW_ONLY; 
+            },
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            DefaultEntranceGroupName: "2 Pot Interior",
             MapInfo: { x: 84, y: 179 },
             Age: Age.EITHER,
             LongDescription: "This is the house by the fenced off training area."
@@ -90,8 +102,14 @@ let OwExits = {
         "House of Twins": {
             Name: "House of Twins",
             ExitRegion: "main",
+            RequiredToAppear: function() { 
+                return Settings.RandomizerSettings.shuffleInteriorEntrances || 
+                    Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.ALL ||
+                    Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.OW_ONLY; 
+            },
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            DefaultEntranceGroupName: "2 Pot Interior",
             MapInfo: { x: 252, y: 248 },
             Age: Age.EITHER,
             LongDescription: "This is the house across from the shop."
@@ -100,7 +118,7 @@ let OwExits = {
             Name: "Shop",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
-            DefaultEntranceGroupName: "Shop",
+            DefaultEntranceGroupName: "Kokiri Shop",
             IsInterior: true,
             MapInfo: { x: 245, y: 128 },
             Age: Age.EITHER,

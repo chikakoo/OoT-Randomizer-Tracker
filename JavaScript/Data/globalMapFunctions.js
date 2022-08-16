@@ -52,12 +52,20 @@ let getItemGroupName = function(groupId) {
 	}
 };
 
-let getItemGroupImagePath = function(groupId) {
+let getItemGroupImagePath = function(groupId, name) {
+	if (name) {
+		return getItemGroupImageFromName(name);
+	}
+
 	let groupNameString = getItemGroupName(groupId);
 	if (groupNameString === null) { return ""; }
 	
 	return `url("Images/Group Name ${groupNameString}.png")`;
 };
+
+let getItemGroupImageFromName = function(name) {
+	return `url("Images/${name}.png")`;
+}
 
 /**
  * Adds all the standard dungeons to the map locations
