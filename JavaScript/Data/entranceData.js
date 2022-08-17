@@ -1224,6 +1224,56 @@ GrottoGroups = {
 				description: "Rupee 8."
 			}
 		}
+	},
+	"2 Pots": {
+		tooltip: "A set of 2 pots.",
+		buttons: {
+			"Pot 1": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 1."
+			},
+			"Pot 2": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 2."
+			}
+		}
+	},
+	"3 Pots": {
+		tooltip: "A set of 3 pots.",
+		buttons: {
+			"Pot 1": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 1."
+			},
+			"Pot 2": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 2."
+			},
+			"Pot 3": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 3."
+			}
+		}
+	},
+	"2 Crates": {
+		tooltip: "A set of 2 crates.",
+		buttons: {
+			"Crate 1": {
+				icon: "Pot",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 1."
+			},
+			"Crate 2": {
+				icon: "Pot",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 2."
+			}
+		}
 	}
  };
 

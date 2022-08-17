@@ -2996,6 +2996,30 @@ let MapLocations = {
                             return age === Age.CHILD || Data.areGerudoGuardsTame() 
                         }
                     },
+                    topOfKitchen: {
+                        Name: "topOfKitchen",
+                        CustomRequirement: function(age) {
+                            if (age === Age.CHILD) {
+                                return Settings.GlitchesToAllow.gfPassKitchenGuards ||
+                                    Settings.GlitchesToAllow.gfKitchenGuardsWithSword && Data.hasSwordWeapon(age);
+                            }
+                            return true;
+                        }
+                    },
+                    jail4Area: {
+                        Name: "jail4Area",
+                        CustomRequirement: function(age) {
+                            return age === Age.ADULT || Data.areGerudoGuardsTame() || Data.canMegaFlip(age);
+                        }
+                    },
+                    upperInteriors: {
+                        Name: "upperInteriors",
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            //TODO POT: check if they made a repeatable way to get to the jail, otherwise it's just HS needed
+                            return Items.HOOKSHOT.playerHas && !Data.areGerudoGuardsTame();
+                        }
+                    },
                     wastelandEntrance: {
                         Name: "wastelandEntrance",
                         CustomRequirement: function(age) {
@@ -3019,27 +3043,6 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
-                    "Chest on the Top": {
-                        Name: "Chest on the Top",
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 176, y: 101, floor: "OUT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() {
-                            let canGetToMapAsChild = Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump;
-                            let canGetThereAsChild = Settings.GlitchesToAllow.groundJump && Settings.GlitchesToAllow.megaFlip;
-                            return !canGetToMapAsChild || !canGetThereAsChild;
-                        },
-                        LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Enter the other door to your right. Now either hookshot the wooden horizontal beam, use your hover boots to get across, or take out the guards with your bow to get across to the path directly in front of you. Face the camera to your back and turn left. Climb up the wall and walk to the end. Jump across to the next platform. Climb up the vines to your left.<br /><br />You should be able to either longshot to the chest, or roll across with your hover boots.",
-                        CustomRequirement: function(age) {
-                            let canMegaFlip = Data.canMegaFlip(age);
-                            if (age === Age.CHILD) {
-                                return canMegaFlip && Data.canGroundJumpWithBomb(age);
-                            }
-
-                            if (Items.HOOKSHOT.currentUpgrade === 2 || Equipment.HOVER_BOOTS.playerHas) { return true; }
-                            return canMegaFlip || Data.canHookScarecrow(age);
-                        }
-                    },
                     "Jail 1 Guard Key": {
                         Name: "Jail 1 Guard Key",
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -3082,23 +3085,6 @@ let MapLocations = {
                         NeedsSwordWeapon: true,
                         LongDescription: "Start from jail 2. Face the jail - now turn left and take that exit. Climb the vines straight ahead and take the exit straight in front of you for the next jail. Take out the guard to get the item."
                     },
-                    "Jail 4 Guard Key": {
-                        Name: "Jail 4 Guard Key",
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 318, y: 43, floor: "LOW" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
-                                return false;
-                            }
-                            return !Settings.GlitchesToAllow.cuccoJump;
-                        },
-                        NeedsSwordWeapon: true,
-                        LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Face the entrance you just left. As Child, you must enter the door to your left and navigate across to the other side of the room. As Adult, you can jump up to the ledge to your right with a slight angled jump. Climb up the vines and navigate to the door near where the skulltula on the wall would be at night.<br/><br/>Once inside, wait for a bit first for the guard and knock her out or sprint past her before following the path to your right. Eventually you'll reach the jail. Take out the guard to get the item.",
-                        CustomRequirement: function(age) {
-                            return age === Age.ADULT || Data.areGerudoGuardsTame() || Data.canMegaFlip(age);
-                        }
-                    },
                     "Item From Gerudo": {
                         Name: "Item From Gerudo",
                         ItemGroup: ItemGroups.GIFT,
@@ -3130,6 +3116,77 @@ let MapLocations = {
                         }
                     }
                 }
+            },
+
+            topOfKitchen: {
+                Exits: {
+                    jail4Area: {
+                        Name: "jail4Area"
+                    },
+                    topOfFortress: {
+                        Name: "northernTopOfFortress",
+                        CustomRequirement: function(age) {
+                            let canMegaFlip = Data.canMegaFlip(age);
+                            if (age === Age.CHILD) {
+                                return canMegaFlip && Data.canGroundJumpWithBomb(age);
+                            }
+
+                            if (Items.HOOKSHOT.currentUpgrade === 2 || Equipment.HOVER_BOOTS.playerHas) { return true; }
+                            return canMegaFlip || Data.canHookScarecrow(age);
+                        }
+                    }
+                },
+                ItemLocations: {}
+            },
+
+            jail4Area: {
+                Exits: {},
+                ItemLocations: {
+                    "Jail 4 Guard Key": {
+                        Name: "Jail 4 Guard Key",
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 318, y: 43, floor: "LOW" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { 
+                            if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
+                                return false;
+                            }
+                            return !Settings.GlitchesToAllow.cuccoJump;
+                        },
+                        NeedsSwordWeapon: true,
+                        LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Face the entrance you just left. As Child, you must enter the door to your left and navigate across to the other side of the room. As Adult, you can jump up to the ledge to your right with a slight angled jump. Climb up the vines and navigate to the door near where the skulltula on the wall would be at night.<br/><br/>Once inside, wait for a bit first for the guard and knock her out or sprint past her before following the path to your right. Eventually you'll reach the jail. Take out the guard to get the item."
+                    }
+                }
+            },
+
+            topOfFortress: {
+                Exits: {
+                    jail4Area: {
+                        Name: "jail4Area"
+                    },
+                    upperInteriors: {
+                        Name: "upperInteriors"
+                    }
+                },
+                ItemLocations: {
+                    "Chest on the Top": {
+                        Name: "Chest on the Top",
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 176, y: 101, floor: "OUT" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() {
+                            let canGetToMapAsChild = Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump;
+                            let canGetThereAsChild = Settings.GlitchesToAllow.groundJump && Settings.GlitchesToAllow.megaFlip;
+                            return !canGetToMapAsChild || !canGetThereAsChild;
+                        },
+                        LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Enter the other door to your right. Now either hookshot the wooden horizontal beam, use your hover boots to get across, or take out the guards with your bow to get across to the path directly in front of you. Face the camera to your back and turn left. Climb up the wall and walk to the end. Jump across to the next platform. Climb up the vines to your left.<br /><br />You should be able to either longshot to the chest, or roll across with your hover boots."
+                    },
+                }
+            },
+
+            upperInteriors: {
+                Exits: {},
+                ItemLocations: {}
             },
 
             backArea: {

@@ -839,6 +839,21 @@
 						<input type="checkbox" name="gvCrossBridgeWithHookshot" value="gvCrossBridgeWithHookshot">
 						🔗Cross Gerudo Valley Bridge with Hookshot
 					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("gfPassKitchenGuards", event)'
+						title="Sneak past the Gerudo Fortress guards in the kithcen with no items - only useful as a child.">
+						<input type="checkbox" name="gfPassKitchenGuards" value="gfPassKitchenGuards">
+						Pass GF Kitchen Guards with Nothing
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("gfKitchenGuardsWithSword", event)'
+						title="Stun the kitchen guards with a sword or Deku Stick. Hit them when they aren't looking at you.">
+						<input type="checkbox" name="gfKitchenGuardsWithSword" value="gfKitchenGuardsWithSword">
+						Stun GF Kitchen Guards with Sword
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("gfTopGuardsWithSword", event)'
+						title="Stun the guards in the top room with a sword or Deku Stick. Hit the one that walks when she's not looking. The one that doesn't move needs to be crouch-stabbed.">
+						<input type="checkbox" name="gfTopGuardsWithSword" value="gfTopGuardsWithSword">
+						Stun GF Top Guards with Sword
+					</label>
 					<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("gtgChildAllowed", "https://youtu.be/v1winCiXBPc", event)'
 						title="Use antigrav or the precise jumpslash to get to the Gerudo Training Grounds as child.">
 						<input type="checkbox" name="gtgChildAllowed" value="gtgChildAllowed">
@@ -886,8 +901,6 @@
 							<input type="checkbox" name="dekuB1Skip" value="dekuB1Skip">
 							B1 Skip
 						</label>
-					</div>
-					<div id="settingsDekuTreeContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("mqDekuSideRoomRocksHammerOnly", event)'
 							title="As either age, climb the vines as high as you can between the rocks. Press A to ungrab, and spam the hammer button to jumpslash the rocks.">
 							<input type="checkbox" name="mqDekuSideRoomRocksHammerOnly" value="mqDekuSideRoomRocksHammerOnly">
