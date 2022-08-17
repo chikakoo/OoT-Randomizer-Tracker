@@ -2985,6 +2985,8 @@ let MapLocations = {
 	"Gerudo Fortress": {
 		Abbreviation: "FORT",
 		MapGroup: MapGroups.DESERT,
+        Floors: ["OUT", "LOW", "UP"],
+		StartingFloorIndex: 0,
 		Regions: {
             main: {
                 Exits: {
@@ -3020,7 +3022,7 @@ let MapLocations = {
                     "Chest on the Top": {
                         Name: "Chest on the Top",
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 176, y: 101 },
+                        MapInfo: { x: 176, y: 101, floor: "OUT" },
                         Age: Age.EITHER,
                         UseAdultAge: function() {
                             let canGetToMapAsChild = Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump;
@@ -3041,7 +3043,7 @@ let MapLocations = {
                     "Jail 1 Guard Key": {
                         Name: "Jail 1 Guard Key",
                         ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 132, y: 126 },
+                        MapInfo: { x: 52, y: 79, floor: "LOW" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { 
                             if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
@@ -3055,7 +3057,7 @@ let MapLocations = {
                     "Jail 2 Guard Key": {
                         Name: "Jail 2 Guard Key",
                         ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 133, y: 179 },
+                        MapInfo: { x: 142, y: 109, floor: "LOW" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { 
                             if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
@@ -3069,7 +3071,7 @@ let MapLocations = {
                     "Jail 3 Guard Key": {
                         Name: "Jail 3 Guard Key",
                         ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 163, y: 168 },
+                        MapInfo: { x: 270, y: 198, floor: "LOW" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { 
                             if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
@@ -3083,7 +3085,7 @@ let MapLocations = {
                     "Jail 4 Guard Key": {
                         Name: "Jail 4 Guard Key",
                         ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 174, y: 133 },
+                        MapInfo: { x: 318, y: 43, floor: "LOW" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { 
                             if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
@@ -3100,7 +3102,7 @@ let MapLocations = {
                     "Item From Gerudo": {
                         Name: "Item From Gerudo",
                         ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 159, y: 51 },
+                        MapInfo: { x: 334, y: 254, floor: "LOW" },
                         Age: Age.EITHER,
                         LongDescription: "You'll get this from the Gerudo after using all 4 keys on all the jail doors and talking to the prisoners.",
                         CustomRequirement: function(age) {
@@ -3112,14 +3114,14 @@ let MapLocations = {
                         Name: "Skulltula on Back Fortress Wall",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 203, y: 129 },
+                        MapInfo: { x: 203, y: 129, floor: "OUT" },
                         Age: Age.ADULT,
                         LongDescription: "Nighttime required. The skulltula is located on the wall near the entrance to jail 4 - see those instructions for how to get there.<br/><br/>If you don't have a long range way to kill it, you'll need to jumpslash it from the top and then circle back around and jump to claim the item."
                     },
                     "Opened Gate": {
                         Name: "Opened Gate",
                         ItemGroup: ItemGroups.NON_ITEM,
-                        MapInfo: { x: 81, y: 98 },
+                        MapInfo: { x: 81, y: 98, floor: "OUT" },
                         Age: Age.ADULT,
                         Region: "main",
                         LongDescription: "Talk to the gerudo guard at the top of the ladder to open the gate.",
@@ -3143,7 +3145,7 @@ let MapLocations = {
                         Name: "Archery Minigame 1000 Points",
                         ItemGroup: ItemGroups.GIFT,
                         Time: function() { return Time.DAY; },
-                        MapInfo: { x: 246, y: 220 },
+                        MapInfo: { x: 246, y: 220, floor: "OUT" },
                         Age: Age.ADULT,
                         LongDescription: "Ride Epona to the back section of the map during the day. Talk to the Gerudo there to play the archery minigame. Score 1000 points to claim your prize.",
                         RequiredItems: [Items.FAIRY_BOW],
@@ -3155,7 +3157,7 @@ let MapLocations = {
                         Name: "Archery Minigame 1500 Points",
                         ItemGroup: ItemGroups.GIFT,
                         Time: function() { return Time.DAY; },
-                        MapInfo: { x: 246, y: 225 },
+                        MapInfo: { x: 246, y: 225, floor: "OUT" },
                         Age: Age.ADULT,
                         LongDescription: "Ride Epona to the back section of the map during the day. Talk to the Gerudo there to play the archery minigame. Score 1500 points to claim your prize.",
                         RequiredItems: [Items.FAIRY_BOW],
@@ -3167,7 +3169,7 @@ let MapLocations = {
                         Name: "Skulltula on Target",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 244, y: 40 },
+                        MapInfo: { x: 244, y: 40, floor: "OUT" },
                         Age: Age.ADULT,
                         LongDescription: "At night, navigate to the back part of the map. Head to the target on the left side to find this skulltula.",
                         IsAtShortDistance: true

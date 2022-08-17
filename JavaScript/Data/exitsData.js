@@ -1938,7 +1938,7 @@ let OwExits = {
             Map: "Gerudo Valley",
             Region: "acrossBridge",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: {x: 158, y: 284},
+            MapInfo: { x: 158, y: 284, floor: "OUT" },
             Age: Age.EITHER,
             LongDescription: "This is the exit back to the valley."
         },
@@ -1948,7 +1948,7 @@ let OwExits = {
             Map: "Haunted Wasteland",
             Region: "entrance",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: {x: 77, y: 112},
+            MapInfo: { x: 77, y: 112, floor: "OUT" },
             Age: Age.EITHER,
             LongDescription: "This is the exit to the wasteland. As Child, here's how to skip the gate: climb the ladder; go a bit to the right if you are facing the ladder; angle yourself so that when you sidehop left, you end up on the cliff; walk forward until you are passed the gate; sidehop left and keep holding left."
         },
@@ -1958,7 +1958,7 @@ let OwExits = {
             Map: "Training Grounds",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: 124, y: 197 },
+            MapInfo: { x: 124, y: 197, floor: "OUT" },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Gerudo Training Grounds.",
             IsDungeonEntrance: true,
@@ -1977,7 +1977,7 @@ let OwExits = {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
-            MapInfo: { x: 137, y: 172 },
+            MapInfo: { x: 137, y: 172, floor: "OUT" },
             Age: Age.ADULT,
             LongDescription: "Play the song of storms in the center of the crates near the fortress to reveal this grotto.",
             RequiredSongs: [Songs.SONG_OF_STORMS]
