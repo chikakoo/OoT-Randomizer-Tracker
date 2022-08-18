@@ -1434,6 +1434,101 @@ GrottoGroups = {
 			}
 		}
 	},
+	"18 Green Rupees": {
+		tooltip: "A group of 18 green rupees.",
+		buttons: {
+			"Green Rupee 1": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 1."
+			},
+			"Green Rupee 2": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 2."
+			},
+			"Green Rupee 3": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 3."
+			},
+			"Green Rupee 4": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 4."
+			},
+			"Green Rupee 5": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 5."
+			},
+			"Green Rupee 6": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 6."
+			},
+			"Green Rupee 7": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 7."
+			},
+			"Green Rupee 8": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 8."
+			},
+			"Green Rupee 9": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 9."
+			},
+			"Green Rupee 10": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 10."
+			},
+			"Green Rupee 11": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 11."
+			},
+			"Green Rupee 12": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 12."
+			},
+			"Green Rupee 13": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 13."
+			},
+			"Green Rupee 14": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 14."
+			},
+			"Green Rupee 15": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 15."
+			},
+			"Green Rupee 16": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 16."
+			},
+			"Green Rupee 17": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 17."
+			},
+			"Green Rupee 18": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 18."
+			}
+		}
+	},
 	"4 Red Rupees": {
 		tooltip: "A group of four red rupees.",
 		buttons: {

@@ -2805,14 +2805,6 @@ let MapLocations = {
                         MapInfo: { x: 262, y: 74 },
                         Age: Age.CHILD,
                         LongDescription: "Look on the right side of the room on the ceiling for this beehive. If using a chu, go to the wall slightly up the ramp that's lined up with the hive - then go a little bit more left (not too precise). Drop it on the black after the 4th red flash."
-                    },
-                    "Beehive Behind King": {
-                        Name: "Beehive Behind by King",
-                        ItemGroup: ItemGroups.BEEHIVE,
-                        IsUpperHive: true,
-                        MapInfo: { x: 236, y: 28 },
-                        Age: Age.CHILD,
-                        LongDescription: "This beehive is behind the king on the ceiling. If using a chu, go to the closer wall and drop the chu on the 5th red flash."
                     }
                 }
             },
@@ -2830,7 +2822,16 @@ let MapLocations = {
                         OwExit: OwExits["Zora's Domain"]["Zora's Fountain"]
                     }
                 },
-                ItemLocations: {}
+                ItemLocations: {
+                    "Beehive Behind King": {
+                        Name: "Beehive Behind by King",
+                        ItemGroup: ItemGroups.BEEHIVE,
+                        IsUpperHive: true,
+                        MapInfo: { x: 236, y: 28 },
+                        Age: Age.CHILD,
+                        LongDescription: "This beehive is behind the king on the ceiling. If using a chu, go to the closer wall and drop the chu on the 5th red flash."
+                    }
+                }
             }
 		}
 	},
@@ -2841,6 +2842,15 @@ let MapLocations = {
 		Regions: {
             main: {
                 Exits: {
+                    hiddenTunnel: {
+                        Name: "hiddenTunnel",
+                        Age: Age.ADULT,
+                        NeedToBlastOrSmash: true,
+                        CustomRequirement: function(age) {
+                            return Equipment.STRENGTH.currentUpgrade >= 2 || 
+                                (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2);
+                        }
+                    },
                     "Zora's Domain": {
                         OwExit: OwExits["Zora's Fountain"]["Zora's Domain"]
                     },
@@ -2890,20 +2900,6 @@ let MapLocations = {
                         LongDescription: "At night, you'll find this skulltula on the wall by the giant log.",
                         IsAtShortDistance: true
                     },
-                    "Skulltula in Hidden Tunnel": {
-                        Name: "Skulltula in Hidden Tunnel",
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 312, y: 154 },
-                        Age: Age.ADULT,
-                        LongDescription: "At night, go to the southeast corner of the map. Pick up the silver rock and go down the path. Beware of invisible giant skulltulas! You'll find the skulltula you want after you climb the wall.",
-                        IsAtShortDistance: true,
-                        NeedToBlastOrSmash: true,
-                        CustomRequirement: function(age) {
-                            return Equipment.STRENGTH.currentUpgrade >= 2 || 
-                                (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2);
-                        }
-                    },
                     "Gossip Stone Left of Jabu Platform": {
                         Name: "Gossip Stone Left of Jabu Platform",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -2919,7 +2915,53 @@ let MapLocations = {
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This stone is on the land near the fairy fountain entrance."
+                    },
+                    "4 Pots by Jabu": {
+                        Name: "4 Pots by Jabu",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Pots",
+                        MapInfo: { x: 125, y: 98 },
+                        Age: Age.EITHER,
+                        LongDescription: "As Child, these pots are on the corners of the platform by the entrance to Jabu Jabu's Belly."
+                    },
+                    "18 Underwater Green Rupees": {
+                        Name: "18 Underwater Green Rupees",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "18 Green Rupees",
+                        MapInfo: { x: 235, y: 137 },
+                        Age: Age.ADULT,
+                        RequiredItems: [Equipment.IRON_BOOTS],
+                        LongDescription: "Use your Iron Boots to search the bottom of the fountain for these 18 items.",
                     }
+                }
+            },
+            hiddenTunnel: {
+                ExcludeFromSpawnList: true,
+                Exits: {},
+                ItemLocations: {
+                    "Skulltula in Hidden Tunnel": {
+                        Name: "Skulltula in Hidden Tunnel",
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 312, y: 154 },
+                        Age: Age.ADULT,
+                        LongDescription: "At night, go to the southeast corner of the map. Pick up the silver rock and go down the path. Beware of invisible giant skulltulas! You'll find the skulltula you want after you climb the wall.",
+                        IsAtShortDistance: true
+                    },
+                    "3 Pots in Hidden Tunnel": {
+                        Name: "3 Pots in Hidden Tunnel",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 266, y: 260 },
+                        Age: Age.EITHER,
+                        LongDescription: "Go to the southeast corner of the map. Pick up the silver rock and drop down. You should now be next to the pots.",
+                    },
                 }
             }
 		}
