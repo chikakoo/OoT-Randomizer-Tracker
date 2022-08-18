@@ -730,6 +730,21 @@ InteriorGroups = {
 				},
 				isChildOnly: function() { return true; }
 			},
+			"Pot 1": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "This pot is through the door upstairs and to the left."
+			},
+			"Pot 2": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "This pot is through the door upstairs and to the left."
+			},
+			"Pot 3": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "This pot is through the door upstairs and to the left."
+			}
 		},
 		postClick: function(itemLocation, isSelected) {
 			let itemLocationTimeIconDiv = document.getElementById(`${itemLocation.Name}-time-icon`);

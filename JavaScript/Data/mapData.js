@@ -771,6 +771,33 @@ let MapLocations = {
                             return Data.itemLocationObtained("Castle", "main", "Gift from Malon") &&
                                 Data.itemLocationObtained("Castle", "main", "Wake up Talon");
                         }
+                    },
+                    "4 Pots by Entrance": {
+                        Name: "4 Pots by Entrance",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Pots",
+                        MapInfo: { x: 193, y: 44 },
+                        Age: Age.CHILD,
+                        LongDescription: "As Child, these pots are on the wall near the stable door."
+                    },
+                    "3 Pots in Rain Shed": {
+                        Name: "3 Pots in Rain Shed",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 234, y: 213 },
+                        Age: Age.CHILD,
+                        LongDescription: "As Child, these pots are in the rain shed inside the horse enclosure."
+                    },
+                    "Crate by Talon's House": {
+                        Name: "Crate by Talon's House",
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 250, y: 98 },
+                        Age: Age.CHILD,
+                        LongDescription: "As Child, this crate is next to Talon's House, by the skulltula tree.",
                     }
                 }
             }
