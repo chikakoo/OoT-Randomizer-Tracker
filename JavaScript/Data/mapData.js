@@ -1222,6 +1222,60 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "You can get this item if you have the forest, fire, and water medallions. Just enter Kakariko Village as an adult.",
                         RequiredMedallions: [Medallions.FOREST_MEDALLION, Medallions.FIRE_MEDALLION, Medallions.WATER_MEDALLION]
+                    },
+                    "3 Pots Near Impa's House": {
+                        Name: "3 Pots Near Impa's House",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 136, y: 247 },
+                        Age: Age.CHILD,
+                        LongDescription: "These pots are next to the door to Impa's house."
+                    },
+                    "3 Pots Near Watchtower": {
+                        Name: "3 Pots Near Watchtower",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 180, y: 111 },
+                        Age: Age.CHILD,
+                        LongDescription: "These pots are near the ladder to the watchtower."
+                    },
+                    "3 Pots Near Bazaar": {
+                        Name: "3 Pots Near Bazaar",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 110, y: 74 },
+                        Age: Age.CHILD,
+                        LongDescription: "These pots are near the Bazaar entrance close to Death Mountain Trail."
+                    },
+                    "2 Pots Near Granny's Potion Shop": {
+                        Name: "2 Pots Near Granny's Potion Shop",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 242, y: 138 },
+                        Age: Age.CHILD,
+                        LongDescription: "These pots are next to the door to Granny's Potion Shop in the enclosed area."
+                    },
+                    "Crate by Archery": {
+                        Name: "Crate by Archery",
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 185, y: 192 },
+                        Age: Age.ADULT,
+                        LongDescription: "This crate is next to the entrance to the archery minigame."
+                    },
+                    "Crate Behind Potion Shop": {
+                        Name: "Crate Behind Potion Shop",
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 249, y: 134 },
+                        Age: Age.ADULT,
+                        LongDescription: "One of the four crates in the enclosed area will drop an item - it's random which it is."
                     }
                 }
             },

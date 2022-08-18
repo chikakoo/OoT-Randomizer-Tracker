@@ -45,9 +45,9 @@ let getItemGroupName = function(groupId) {
 		case ItemGroups.GOSSIP_STONE: return "Gossip Stones";
 		case ItemGroups.LOCKED_DOOR: return "Locked Doors";
 		case ItemGroups.FREESTANDING_RUPEES_AND_HEARTS: return "Freestanding Rupees and Hearts";
-		case ItemGroups.POT: return "Pot";
-		case ItemGroups.CRATE: return "Crate";
-		case ItemGroups.BEEHIVE: return "Beehive";
+		case ItemGroups.POT: return "Pots";
+		case ItemGroups.CRATE: return "Crates";
+		case ItemGroups.BEEHIVE: return "Beehives";
 		default: return null;
 	}
 };
