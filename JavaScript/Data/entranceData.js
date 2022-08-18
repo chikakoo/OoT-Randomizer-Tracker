@@ -1289,14 +1289,34 @@ GrottoGroups = {
 		tooltip: "A set of 2 crates.",
 		buttons: {
 			"Crate 1": {
-				icon: "Pot",
+				icon: "Crate",
 				itemGroup: ItemGroups.CRATE,
 				description: "Crate 1."
 			},
 			"Crate 2": {
-				icon: "Pot",
+				icon: "Crate",
 				itemGroup: ItemGroups.CRATE,
 				description: "Crate 2."
+			}
+		}
+	},
+	"3 Crates": {
+		tooltip: "A set of 3 crates.",
+		buttons: {
+			"Crate 1": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 1."
+			},
+			"Crate 2": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 2."
+			},
+			"Crate 3": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 3."
 			}
 		}
 	}

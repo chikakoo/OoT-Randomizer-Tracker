@@ -3511,7 +3511,15 @@ let MapLocations = {
                         OwExit: OwExits["Haunted Wasteland"]["Gerudo Fortress"]
                     }
                 },
-                ItemLocations: {}
+                ItemLocations: {
+                    "Crate by Quicksand": {
+                        Name: "Crate by Quicksand",
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 311, y: 266 },
+                        Age: Age.EITHER,
+                        LongDescription: "The crate is by the quicksand pit by the exit to Gerudo Fortress."
+                    }
+                }
             },
 
             outpost: {
@@ -3579,6 +3587,26 @@ let MapLocations = {
                         },
                         LongDescription: "The skulltula is in the outpost in the center of the desert.",
                         IsAtShortDistance: true
+                    },
+                    "3 Crates Across Quicksand": {
+                        Name: "3 Crates Across Quicksand",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Crates",
+                        MapInfo: { x: 294, y: 253 },
+                        Age: Age.EITHER,
+                        LongDescription: "These crates are by the flags ust across the quicksand pit."
+                    },
+                    "3 Pots at Outpost": {
+                        Name: "3 Pots at Outpost",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 214, y: 89 },
+                        Age: Age.EITHER,
+                        LongDescription: "These pots are in the outpost in the center of the desert (there are 4, but one always gives a fairy)."
                     }
                 }
             },
@@ -3595,7 +3623,15 @@ let MapLocations = {
                         OwExit: OwExits["Haunted Wasteland"]["Desert Colossus"]
                     }
                 },
-                ItemLocations: {}
+                ItemLocations: {
+                    "Crate near Colossus": {
+                        Name: "Crate near Colossus",
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 129, y: 129 },
+                        Age: Age.EITHER,
+                        LongDescription: "The crate is by the leevers just east of the Desert Colossus entrance. If coming from Desert Colossus, just walk straight until you run into the crate."
+                    }
+                }
             }
 		}
 	},
