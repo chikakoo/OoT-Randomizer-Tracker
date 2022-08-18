@@ -2765,10 +2765,54 @@ let MapLocations = {
                     "Move King Zora": {
                         Name: "Move King Zora",
                         ItemGroup: ItemGroups.NON_ITEM,
-                        MapInfo: {x: 233, y: 46},
+                        MapInfo: { x: 233, y: 46 },
                         RequiredItems: [Items.RUTOS_LETTER],
                         Age: Age.CHILD,
                         LongDescription: "Show Ruto's letter to the king."
+                    },
+                    "2 Pots in Front of Shop": {
+                        Name: "2 Pots in Front of Shop",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 244, y: 260 },
+                        Age: Age.EITHER,
+                        LongDescription: "These pots are right in front of the shop entrance."
+                    },
+                    "3 Pots Right of Shop": {
+                        Name: "3 Pots Right of Shop",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 201, y: 260 },
+                        Age: Age.EITHER,
+                        LongDescription: "These pots are just to the right of the shop entrance."
+                    },
+                    "Left Beehive by King": {
+                        Name: "Left Beehive by King",
+                        ItemGroup: ItemGroups.BEEHIVE,
+                        IsUpperHive: true,
+                        MapInfo: { x: 215, y: 85 },
+                        Age: Age.CHILD,
+                        LongDescription: "Look on the left side of the room on the ceiling for this beehive. If using a chu, go to the wall by the diving minigame tunnel and drop it on the black after the 4th red flash."
+                    },
+                    "Right Beehive by King": {
+                        Name: "Right Beehive by King",
+                        ItemGroup: ItemGroups.BEEHIVE,
+                        IsUpperHive: true,
+                        MapInfo: { x: 262, y: 74 },
+                        Age: Age.CHILD,
+                        LongDescription: "Look on the right side of the room on the ceiling for this beehive. If using a chu, go to the wall slightly up the ramp that's lined up with the hive - then go a little bit more left (not too precise). Drop it on the black after the 4th red flash."
+                    },
+                    "Beehive Behind King": {
+                        Name: "Beehive Behind by King",
+                        ItemGroup: ItemGroups.BEEHIVE,
+                        IsUpperHive: true,
+                        MapInfo: { x: 236, y: 28 },
+                        Age: Age.CHILD,
+                        LongDescription: "This beehive is behind the king on the ceiling. If using a chu, go to the closer wall and drop the chu on the 5th red flash."
                     }
                 }
             },

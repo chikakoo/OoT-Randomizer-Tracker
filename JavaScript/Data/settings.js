@@ -143,6 +143,7 @@ let Settings = {
 		equipSwap: false,
 		weirdShot: false,
 		boomerangThroughWalls: false,
+		upperBeehivesWithChu: false,
 		
 		// Kakariko/Graveyard
 		watchtowerSkullJumpslash: false,

@@ -1195,14 +1195,14 @@ Data = {
     /**
      * Returns whether the player can break a beehive that's high up
      * @param {Age} age - The age to check
-     * @param {Boolean} isUpperHive - Whether bombs can reach it
+     * @param {Boolean} isUpperHive - Whether bombs can reach it and whether you need the bombchu trick for it
      */
     canBreakBeehive: function(age, isUpperHive) {
         if (!isUpperHive && Items.BOMB.playerHas) {
             return true;
         }
 
-        return Items.BOMCHU.playerHas || //TODO POT: is it actually hard to hit upper hives with this? Trick?
+        return (Settings.GlitchesToAllow.upperBeehivesWithChu && Items.BOMCHU.playerHas) ||
             this.canUseBoomerang(age) ||
             (age === Age.ADULT && Items.HOOKSHOT.playerHas);
     },
