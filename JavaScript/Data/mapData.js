@@ -2178,6 +2178,47 @@ let MapLocations = {
                         CustomRequirement: function(age) {
                             return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
                         }
+                    },
+                    "2 Pots by Lower Staircase": {
+                        Name: "Pots by Lower Staircase",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 189, y: 199 },
+                        Age: Age.EITHER,
+                        LongDescription: "These pots are just after the first set of stairs at the bottom of the city."
+                    },
+                    "3 Pots by Upper Staircase": {
+                        Name: "Pots by Upper Staircase",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 79, y: 120 },
+                        Age: Age.EITHER,
+                        LongDescription: "From the upper exit, follow the left wall until you reach these pots."
+                    },
+                    "Pot by Medigoron": {
+                        Name: "Pot by Medigoron",
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 130, y: 243 },
+                        Age: Age.EITHER,
+                        LongDescription: "In the southern area of the middle floor, blow up the walls that has bombflowers near it. Eventually, you'll make it to Medigoron, where the pot is.",
+                        CustomRequirement: function(age) {
+                            return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
+                        }
+                    },
+                    "Maze Crate": {
+                        Name: "Maze Crate",
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 95, y: 21 },
+                        Age: Age.EITHER,
+                        LongDescription: "Make your way to the topmost northwest corner of the city. Bomb, hammer, or pick up (only silvers) the rocks to get to the back right corner of the maze for this crate.",
+                        CustomRequirement: function(age) {
+                            if (Data.canBlastOrSmash(age)) { return true; }
+                            return age === Age.ADULT && Equipment.STRENGTH.currentUpgrade > 1; // Silver gaunts+
+                        }
                     }
                 }
             },
@@ -2212,9 +2253,19 @@ let MapLocations = {
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 187, y: 30 },
                         Age: Age.CHILD,
-                        LongDescription: "At the bottom of Goron City on the fancy carpet, play Zelda's Lullaby. If you can manage to get to the Goron City entrance from the crater, that workstoo. Inside, play Saria's Song by Darunia get an item.",
+                        LongDescription: "At the bottom of Goron City on the fancy carpet, play Zelda's Lullaby. If you can manage to get to the Goron City entrance from the crater, that works too. Inside, play Saria's Song by Darunia get an item.",
                         RequiredSongs: [Songs.SARIAS_SONG]
-                    }
+                    },
+                    "3 Pots by Darunia": {
+                        Name: "Pots by Darunia",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 204, y: 39 },
+                        Age: Age.EITHER,
+                        LongDescription: "At the bottom of Goron City on the fancy carpet, play Zelda's Lullaby. If you can manage to get to the Goron City entrance from the crater, that works too. The pots are on the tables against the wall."
+                    },
                 }
             },
 
@@ -2281,6 +2332,17 @@ let MapLocations = {
                         MapInfo: { x: 189, y: 126 },
                         Age: Age.CHILD,
                         LongDescription: "First, light the torches at the bottom of the city. You can either use the lit torch in Darunia's room, or Din's Fire. After that, throw a Bomb or Bomb Flower so that the urn stops on the happiest face to get the item.",
+                        RequiredChoiceOfItems: [Items.BOMB, Equipment.STRENGTH]
+                    },
+                    "8 Items From Spinning Urn": {
+                        Name: "8 Items From Spinning Urn",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Spinning Pot",
+                        MapInfo: { x: 189, y: 135 },
+                        Age: Age.CHILD,
+                        LongDescription: "First, light the torches at the bottom of the city. You can either use the lit torch in Darunia's room, or Din's Fire. After that, throw a Bomb or Bomb Flower so that the urn stops on the face you want.",
                         RequiredChoiceOfItems: [Items.BOMB, Equipment.STRENGTH]
                     }
                 }

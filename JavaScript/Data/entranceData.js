@@ -1309,6 +1309,51 @@ GrottoGroups = {
   * Mostly for pot/crate shuffle for areas with a ton of checks
   */
  ItemLocationGroups = {
+	"Spinning Pot": {
+		tooltip: "The spinning pot in Goron City - excludes the heart piece.",
+		buttons: {
+			"Neutral 1": {
+				icon: "Neutral Goron",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Neutral Goron Prize 1."
+			},
+			"Neutral 2": {
+				icon: "Neutral Goron",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Neutral Goron Prize 2."
+			},
+			"Neutral 3": {
+				icon: "Neutral Goron",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Neutral Goron Prize 3."
+			},
+			"Angry 1": {
+				icon: "Angry Goron",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Angry Goron Prize 1."
+			},
+			"Angry 2": {
+				icon: "Angry Goron",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Angry Goron Prize 2."
+			},
+			"Angry 3": {
+				icon: "Angry Goron",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Angry Goron Prize 3."
+			},
+			"Happy 1": {
+				icon: "Happy Goron",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Happy Goron Prize 1 - the heart piece item is still in its old spot."
+			},
+			"Happy 2": {
+				icon: "Happy Goron",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Happy Goron Prize 2 - the heart piece item is still in its old spot."
+			}
+		}
+	},
 	"3 Hearts": {
 		tooltip: "A group of three recovery hearts",
 		buttons: {
