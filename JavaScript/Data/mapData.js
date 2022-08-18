@@ -1768,6 +1768,30 @@ let MapLocations = {
                         LongDescription: "Used for co-op. These are the rocks blocking the path to Death Mountain Crater.",
                         NeedToBlastOrSmash: true,
                         CoOpOnly: true
+                    },
+                    "Red Rupee in Rock by Cow Grotto": {
+                        Name: "Red Rupee in Rock by Cow Grotto",
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Red Rupee",
+                        MapInfo: { x: 206, y: 203 },
+                        Age: Age.CHILD,
+                        LongDescription: "As a child, this item is under the highest rock that's blocking access to the top of Death Mountain. You can snag it with the boomerang from the bottom with a good angle.",
+                        CustomRequirement: function(age) {
+                            return Data.canBlastOrSmash(age) ||
+                                (Settings.GlitchesToAllow.boomerangThroughWalls && Data.canUseBoomerang(age));
+                        }
+                    },
+                    "Blue Rupee in Rock Below Cow Grotto": {
+                        Name: "Blue Rupee in Rock Below Cow Grotto",
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Blue Rupee",
+                        MapInfo: { x: 190, y: 203 },
+                        Age: Age.CHILD,
+                        LongDescription: "As a child, this item is under the leftmost rock by the rocks blocking access to the top of Death Mountain. You can snag it with the boomerang if you stand far back enough on the platform.",
+                        CustomRequirement: function(age) {
+                            return Data.canBlastOrSmash(age) ||
+                                (Settings.GlitchesToAllow.boomerangThroughWalls && Data.canUseBoomerang(age));
+                        }
                     }
                 }
             },
