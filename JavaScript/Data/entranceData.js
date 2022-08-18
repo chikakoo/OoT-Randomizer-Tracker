@@ -1389,45 +1389,6 @@ GrottoGroups = {
 			}
 		}
 	},
-	"Rupee Circle": {
-		tooltip: "A circle of six green rupees surrounding a red rupee.",
-		buttons: {
-			"Red Rupee": {
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "The central rupee."
-			},
-			"Green Rupee 1": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 1."
-			},
-			"Green Rupee 2": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 2."
-			},
-			"Green Rupee 3": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 3."
-			},
-			"Green Rupee 4": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 4."
-			},
-			"Green Rupee 5": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 5."
-			},
-			"Green Rupee 6": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 6."
-			}
-		}
-	},
 	"8 Green Rupees": {
 		tooltip: "A group of 8 green rupees.",
 		buttons: {
@@ -1470,6 +1431,109 @@ GrottoGroups = {
 				icon: "Green Rupee",
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "Rupee 8."
+			}
+		}
+	},
+	"4 Red Rupees": {
+		tooltip: "A group of four red rupees.",
+		buttons: {
+			"Red Rupee 1": {
+				icon: "Red Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 1."
+			},
+			"Red Rupee 2": {
+				icon: "Red Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 2."
+			},
+			"Red Rupee 3": {
+				icon: "Red Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 3."
+			},
+			"Red Rupee 4": {
+				icon: "Red Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 4."
+			}
+		}
+	},
+	"Rupee Circle": {
+		tooltip: "A circle of six green rupees surrounding a red rupee.",
+		buttons: {
+			"Red Rupee": {
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "The central rupee."
+			},
+			"Green Rupee 1": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 1."
+			},
+			"Green Rupee 2": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 2."
+			},
+			"Green Rupee 3": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 3."
+			},
+			"Green Rupee 4": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 4."
+			},
+			"Green Rupee 5": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 5."
+			},
+			"Green Rupee 6": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 6."
+			}
+		}
+	},
+	"Expensive Rupee Circle": {
+		tooltip: "A circle of six green rupees surrounding a red rupee.",
+		buttons: {
+			"Red Rupee": {
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "The central rupee."
+			},
+			"Blue Rupee 1": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 1."
+			},
+			"Blue Rupee 2": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 2."
+			},
+			"Blue Rupee 3": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 3."
+			},
+			"Blue Rupee 4": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 4."
+			},
+			"Blue Rupee 5": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 5."
+			},
+			"Blue Rupee 6": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 6."
 			}
 		}
 	},

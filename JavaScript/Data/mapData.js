@@ -1587,6 +1587,7 @@ let MapLocations = {
                 }
             },
             windmillTop: {
+                ExcludeFromSpawnList: true,
                 Exits: {
                     windmill: {
                         Name: "windmill"
@@ -1598,6 +1599,7 @@ let MapLocations = {
                 ItemLocations: {}
             },
             windmillItem: {
+                ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {
                     "Heart Piece on Top": {
@@ -1869,6 +1871,9 @@ let MapLocations = {
                             return Data.canMegaFlip(age);
                         }
                     },
+                    scarecrowPlatform: {
+                        Name: "scarecrowPlatform"
+                    },
                     "Mountain Top": {
                         OwExit: OwExits["Death Mountain Crater"]["Mountain Top"]
                     },
@@ -1966,6 +1971,13 @@ let MapLocations = {
                             return Data.itemLocationObtained("Death Mountain Crater", "bottom", "*Plant Bean by Bolero Warp Point");
                         }
                     },
+                    scarecrowPlatform: {
+                        Name: "scarecrowPlatform",
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            return Data.canHookScarecrow(age) && Items.HOOKSHOT.currentUpgrade === 2;
+                        }
+                    },
                     "Fire Temple Entrance": {
                         OwExit: OwExits["Death Mountain Crater"]["Fire Temple Entrance"]
                     },
@@ -1981,7 +1993,6 @@ let MapLocations = {
                         MapInfo: { x: 177, y: 95 },
                         Age: Age.CHILD,
                         LongDescription: "Use the Bolero of fire to get here as a child. Drop bugs in the nearby soft soil to spawn the skulltula.",
-                        Region: "bottom",
                         NeedsBottle: true
                     },
                     "Bolero of Fire": {
@@ -1990,7 +2001,6 @@ let MapLocations = {
                         MapInfo: { x: 161, y: 84 },
                         Age: Age.ADULT,
                         LongDescription: "You will get this item as adult when you reach the part of the broken bridge that touches the land.",
-                        Region: "bottom"
                     },
                     "*Plant Bean by Bolero Warp Point": {
                         Name: "*Plant Bean by Bolero Warp Point",
@@ -1999,15 +2009,30 @@ let MapLocations = {
                         MapInfo: { x: 177, y: 95 },
                         Age: Age.CHILD,
                         LongDescription: "This is the bean spot by the Bolero of Fire warp point. It helps you get to the heart piece on the volcano.",
-                        Region: "bottom"
-                    }
+                    },
+                    "Red Rupee on First Island": {
+                        Name: "Red Rupee on First Island",
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Red Rupee",
+                        MapInfo: { x: 235, y: 57 },
+                        Age: Age.CHILD,
+                        LongDescription: "As Child, from the Bolero warp, make your way to the first tiny island across the wooden bridge for this item.",
+                    },
+                    "Rupee Circle on Second Island": {
+                        Name: "Rupee Circle on Second Island",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Expensive Rupee Circle",
+                        MapInfo: { x: 280, y: 80 },
+                        Age: Age.CHILD,
+                        LongDescription: "As Child, from the bolero warp, make your way to the second tiny island across the wooden bridges for these items."
+                    },
                 }
             },
 
             volcano: {
                 ExcludeFromSpawnList: true,
-
-                // This region is just for the one item check, no need to list exits
                 Exits: {},
                 ItemLocations: {
                     "Heart Piece on Volcano": {
@@ -2017,6 +2042,33 @@ let MapLocations = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         LongDescription: "Plant a bean in the soft soil by the Bolero warp point then ride it up to the volcano. You can also use hover boots near the entrance to Goron City to get it."
+                    }
+                }
+            },
+
+            scarecrowPlatform: {
+                ExcludeFromSpawnList: true,
+                Exits: {},
+                ItemLocations: {
+                    "Rupee Circle on Scarecrow Platform": {
+                        Name: "Rupee Circle on Scarecrow Platform",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Rupee Circle",
+                        MapInfo: { x: 283, y: 132 },
+                        Age: Age.ADULT,
+                        LongDescription: "From the top of the crater, cross the wodden bridge at the southeast. You can jump to the platform from there.<br/><br/>You can also get there from the bottom using a longshot and Scarecrow's Song from the second of the tiny islands you reach from the Bolero warp."
+                    },
+                    "4 Pots Near Goron City": {
+                        Name: "4 Pots Near Goron City",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Pots",
+                        MapInfo: { x: 56, y: 85 },
+                        Age: Age.ADULT,
+                        LongDescription: "These pots are near the entrance to Goron City. They only have items in them as Adult."
                     }
                 }
             }
@@ -2575,6 +2627,16 @@ let MapLocations = {
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This stone is on one of the platforms in the water by the Zora's Domain entrance."
+                    },
+                    "4 Red Rupees by Waterfall": {
+                        Name: "4 Red Rupees by Waterfall",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Red Rupees",
+                        MapInfo: { x: 308, y: 158 },
+                        Age: Age.ADULT,
+                        LongDescription: "These rupees are under the water next to the waterfall. You can jump from the Zelda's Lullaby spot to get them (adjust your position to get each one), though it's easiest with the iron boots."
                     }
                 }
             },
@@ -3494,6 +3556,7 @@ let MapLocations = {
             },
 
             topOfKitchen: {
+                ExcludeFromSpawnList: true,
                 Exits: {
                     jail4Area: {
                         Name: "jail4Area"
@@ -3515,6 +3578,7 @@ let MapLocations = {
             },
 
             jail4Area: {
+                ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {
                     "Jail 4 Guard Key": {
@@ -3542,6 +3606,7 @@ let MapLocations = {
             },
 
             topOfFortress: {
+                ExcludeFromSpawnList: true,
                 Exits: {
                     jail4Area: {
                         Name: "jail4Area"
@@ -3567,6 +3632,7 @@ let MapLocations = {
             },
 
             upperInteriors: {
+                ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {
                     "Closest Crate in Upper Room": {
