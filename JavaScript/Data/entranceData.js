@@ -867,7 +867,22 @@ GrottoGroups = {
 		buttons: {
 			"Chest": {
 				description: "The chest in the back of the room.",
-				canGet: function(age) { return true; }
+			},
+			"Left Beehive": {
+				icon: "Beehive",
+				itemGroup: ItemGroups.BEEHIVE,
+				description: "The beehive on the left side of the grotto. If using chus, line up with one of the walls under it and drop it on the 7th red flash.",
+				canGet: function(age) {
+					return Data.canBreakBeehive(age);
+				}
+			},
+			"Right Beehive": {
+				icon: "Beehive",
+				itemGroup: ItemGroups.BEEHIVE,
+				description: "The beehive on the right side of the grotto. If using chus, get on the right side of the hive (the darker wall) and drop it on the 7th red flash.",
+				canGet: function(age) {
+					return Data.canBreakBeehive(age);
+				}
 			},
 			"Gossip Stone": {
 				icon: "Mask of Truth",
@@ -889,7 +904,14 @@ GrottoGroups = {
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
-			}
+			},
+			"Beehive": {
+				itemGroup: ItemGroups.BEEHIVE,
+				description: "Look on the ceiling for this beehive. If using chus, get in the corner by the hive, facing the lighter wall. Sidehop right, left, then press A and let go of everything. Drop the chu on the 7th red flash.",
+				canGet: function(age) {
+					return Data.canBreakBeehive(age);
+				}
+			},
 		}
 	},
 	"2 Scrubs": {
@@ -910,7 +932,14 @@ GrottoGroups = {
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
-			}
+			},
+			"Beehive": {
+				itemGroup: ItemGroups.BEEHIVE,
+				description: "Look on the ceiling for this beehive. If using chus, face the closest wall and backflip. Drop the chu on the 5th red flash.",
+				canGet: function(age) {
+					return Data.canBreakBeehive(age, true);
+				}
+			},
 		}
 	},
 	"3 Scrubs": {
@@ -938,6 +967,13 @@ GrottoGroups = {
 				itemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
+				}
+			},
+			"Beehive": {
+				itemGroup: ItemGroups.BEEHIVE,
+				description: "Look on the right at the ceiling for this beehive. If using chus, face the closest wall and backflip. Drop the chu on the 5th red flash.",
+				canGet: function(age) {
+					return Data.canBreakBeehive(age, true);
 				}
 			}
 		}

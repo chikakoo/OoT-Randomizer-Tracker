@@ -1202,7 +1202,7 @@ Data = {
             return true;
         }
 
-        return (Settings.GlitchesToAllow.upperBeehivesWithChu && Items.BOMBCHU.playerHas) ||
+        return (Settings.GlitchesToAllow.breakBeehivesWithChus && Items.BOMBCHU.playerHas) ||
             this.canUseBoomerang(age) ||
             (age === Age.ADULT && Items.HOOKSHOT.playerHas);
     },
