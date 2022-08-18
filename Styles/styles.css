@@ -480,8 +480,8 @@ body {
 }
 
 .item-location-age-icon, .item-location-group-icon, .item-location-time-icon {
-	width: 25px;
-	height: 25px;
+	min-width: 25px;
+	min-height: 25px;
 }
 
 .item-location-group-icon {

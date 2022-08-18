@@ -743,8 +743,14 @@ let OwExits = {
         "Door in Right Market Alley": {
             Name: "Door in Right Market Alley",
             ExitRegion: "alley",
+            RequiredToAppear: function() { 
+                return Settings.RandomizerSettings.shuffleInteriorEntrances || 
+                    Settings.RandomizerSettings.potSetting === ShuffleLocationSettings.ALL ||
+                    Settings.RandomizerSettings.potSetting === ShuffleLocationSettings.OW_ONLY; 
+            },
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            DefaultEntranceGroupName: "3 Pot Interior",
             Time: function() { return Time.NIGHT; },
             MapInfo: { x: 112, y: 112 },
             OneWayInteriorSpawnEntrance: true,

@@ -840,7 +840,30 @@ let MapLocations = {
                         OwExit: OwExits["Market"]["Bombchu Bowling"]
                     }
                 },
-                ItemLocations: {}
+                ItemLocations: {
+                    "2 Crates by Bazaar": {
+                        Name: "2 Crates by Bazaar",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 303, y: 203 },
+                        Age: Age.CHILD,
+                        LongDescription: "These crates are on either side of the bazaar door. They only drop items at night."
+                    },
+                    "2 Crates by Archery": {
+                        Name: "2 Crates by Archery",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 250, y: 126 },
+                        Age: Age.CHILD,
+                        LongDescription: "These crates are on the right side of the archery minigame door. They only drop items at night."
+                    }
+                }
             },
 
             alley: {
@@ -867,6 +890,15 @@ let MapLocations = {
                         MapInfo: { x: 104, y: 230 },
                         Age: Age.CHILD,
                         LongDescription: "If you start near the entrance, the dog you want is just to the left behind the market stall. From there, beeline to the right to get to the left market alley. Go to the more rightmost of the two doors and turn in the dog."
+                    },
+                    "Crate in Dog Lady House": {
+                        // Not marked as interior because it's not included in the entrance shuffle currently
+                        Name: "Crate in Dog Lady House",
+                        ItemGroup: ItemGroups.CRATE,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 96, y: 223 },
+                        Age: Age.CHILD,
+                        LongDescription: "Go in the more rightmost of the two doors in the left market alley to find this crate."
                     }
                 }
             }

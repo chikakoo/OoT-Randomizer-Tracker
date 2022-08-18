@@ -10,6 +10,7 @@
 
 .item-location-entrance-task-container {
 	display: flex;
+	flex-wrap: wrap;
 	margin-left: 5px;
 }
 

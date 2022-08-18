@@ -397,6 +397,186 @@ InteriorGroups = {
 					return (canGetToPoe && Items.FAIRY_BOW.playerHas && Data.hasBottle()) || Items.BIG_POE.playerHas;
 				},
 				isAdultOnly: function() { return true; }
+			},
+			"Crate as Child": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "The third crate on your left as you enter is the only one that contains an item.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 1": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the two pots on the top. Use the box with the skulltula on it to jump to it.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 2": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the two pots on the top. Use the box with the skulltula on it to jump to it.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 3": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 4": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 5": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 6": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 7": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 8": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 9": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 10": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 11": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 12": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 13": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 14": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 15": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 16": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 17": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 18": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 19": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 20": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 21": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 22": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Adult Pot 1": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots int he room.",
+				isAdultOnly: function() { return true; }
+			},
+			"Adult Pot 2": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots int he room.",
+				isAdultOnly: function() { return true; }
+			},
+			"Adult Pot 3": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots int he room.",
+				isAdultOnly: function() { return true; }
+			},
+			"Adult Pot 4": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots int he room.",
+				isAdultOnly: function() { return true; }
+			},
+			"Adult Pot 5": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots int he room.",
+				isAdultOnly: function() { return true; }
+			},
+			"Adult Pot 6": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots int he room.",
+				isAdultOnly: function() { return true; }
+			},
+			"Adult Pot 7": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots int he room.",
+				isAdultOnly: function() { return true; }
 			}
 		}
 	},
@@ -622,6 +802,7 @@ InteriorGroups = {
 		}
 	},
 	"2 Pot Interior": {
+		icon: "2 Pots",
 		tooltip: "An interior with two pots.",
 		excludeFromGroup: function() { return true; },
 		buttons: {
@@ -634,6 +815,28 @@ InteriorGroups = {
 				icon: "Pot",
 				itemGroup: ItemGroups.POT,
 				description: "Pot 2."
+			}
+		}
+	},
+	"3 Pot Interior": {
+		icon: "3 Pots",
+		tooltip: "An interior with three pots.",
+		excludeFromGroup: function() { return true; },
+		buttons: {
+			"Pot 1": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 1."
+			},
+			"Pot 2": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 2."
+			},
+			"Pot 3": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 3."
 			}
 		}
 	},
