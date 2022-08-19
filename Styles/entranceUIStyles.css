@@ -25,6 +25,10 @@
 	position: relative;
 }
 
+.entrance-group-button-time-day {
+	filter: drop-shadow(1px 1px 0 orange) drop-shadow(-1px -1px 0 orange) drop-shadow(-1px 1px 0 orange)  drop-shadow(1px -1px 0 orange);
+}
+
 .entrance-group:hover, .entrance-group-button:hover {
 	-webkit-filter: drop-shadow(2px 2px 0 white) drop-shadow(-2px -2px 0 white);
 	filter: drop-shadow(2px 2px 0 white)  drop-shadow(-2px -2px 0 white);

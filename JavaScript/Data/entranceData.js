@@ -721,12 +721,12 @@ InteriorGroups = {
 	},
 	"Super Cucco Minigame": {
 		tooltip: "Talon's House in Lon Lon Ranch",
-		time: function() { return Time.DAY; },
 		buttons: {
 			"Super Cucco Minigame": {
-				description: "This is the prize for completing the minigame.",
+				description: "Only available during the day. This is the prize for completing the minigame.",
+				time: function() { return Time.DAY; },
 				canGet: function(age) {
-					return Items.MASK_SLOT.currentUpgrade >= 2 && Data.itemLocationObtained("Castle", "main", "Wake up Talon");
+					return Data.itemLocationObtained("Castle", "main", "Wake up Talon");
 				},
 				isChildOnly: function() { return true; }
 			},
@@ -744,12 +744,6 @@ InteriorGroups = {
 				icon: "Pot",
 				itemGroup: ItemGroups.POT,
 				description: "This pot is through the door upstairs and to the left."
-			}
-		},
-		postClick: function(itemLocation, isSelected) {
-			let itemLocationTimeIconDiv = document.getElementById(`${itemLocation.Name}-time-icon`);
-			if (itemLocationTimeIconDiv) {
-				itemLocationTimeIconDiv.style.backgroundImage = Data.getTimeImagePath(itemLocation, !isSelected);
 			}
 		}
 	},

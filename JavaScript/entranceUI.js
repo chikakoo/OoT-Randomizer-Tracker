@@ -205,6 +205,11 @@ let EntranceUI = {
 			let buttonIconName = button.icon ? button.icon : buttonName;
 			buttonDiv.title = button.description;
 			buttonDiv.style.backgroundImage = `url("Images/Entrance Groups/Button - ${buttonIconName}.png")`;
+
+			if (button.time && button.time() === Time.DAY) {
+				addCssClass(buttonDiv, "entrance-group-button-time-day");
+			}
+
 			buttonDiv.onclick = function(event) {
 				event.stopPropagation();
 				

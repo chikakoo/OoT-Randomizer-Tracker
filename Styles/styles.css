@@ -482,6 +482,7 @@ body {
 .item-location-age-icon, .item-location-group-icon, .item-location-time-icon {
 	min-width: 25px;
 	min-height: 25px;
+	max-height: 25px;
 }
 
 .item-location-group-icon {

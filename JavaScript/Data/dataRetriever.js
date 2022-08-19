@@ -138,37 +138,15 @@ Data = {
     /**
 	 * Gets the time path to display for the gien item
 	 * @param itemLocation - the item location
-     * @param ignoreEntrances - whether to ignore entrances - used when clearing the group
 	 */
-	getTimeImagePath: function(itemLocation, ignoreEntrances) {
+	getTimeImagePath: function(itemLocation) {
         let time = itemLocation.Time && itemLocation.Time();
-        let group = this.getEntranceGroup(itemLocation);
-        if (!ignoreEntrances && group) {
-            let groupType;
-            if (itemLocation.IsInterior) {
-                groupType = InteriorGroups;
-            } else if (itemLocation.IsGrotto) {
-                groupType = GrottoGroups;
-            }
-
-            if (groupType) {
-                let groupTimeFunction = groupType[group.name].time;
-                let groupTime = groupTimeFunction && groupTimeFunction();
-                if (time === Time.NIGHT && groupTime === Time.DAY) {
-                    time = Time.OUTSIDE_NIGHT_INSIDE_DAY;
-                } else if (!time) {
-                    time = groupTime;
-                }
-            }
-        }
 		switch(time) {
 			case Time.DAY: return 'url("Images/Day.png")';
 			case Time.NIGHT: return 'url("Images/Night.png")';
             case Time.DAY_CHILD: return 'url("Images/Day Child.png")';
             case Time.DAY_ADULT: return 'url("Images/Day Adult.png")';
             case Time.NIGHT_CHILD: return 'url("Images/Night Child.png")';
-            case Time.OUTSIDE_DAY_INSIDE_NIGHT: return 'url("Images/Outside Day Inside Night.png")';
-            case Time.OUTSIDE_NIGHT_INSIDE_DAY: return 'url("Images/Outside Night Inside Day.png")';
 			default: return "";
 		}
 	},

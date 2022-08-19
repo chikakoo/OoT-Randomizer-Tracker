@@ -10,9 +10,7 @@ let Time = {
 	NIGHT: 2,
 	DAY_CHILD: 3,
 	DAY_ADULT: 4,
-	NIGHT_CHILD: 5,
-	OUTSIDE_DAY_INSIDE_NIGHT: 6,
-	OUTSIDE_NIGHT_INSIDE_DAY: 7
+	NIGHT_CHILD: 5
 };
 
 let OpenZorasFountainSettings = {
