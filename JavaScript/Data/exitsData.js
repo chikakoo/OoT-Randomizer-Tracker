@@ -1902,7 +1902,13 @@ let OwExits = {
             Name: "Grotto Under Silver Rock",
             ExitRegion: "chasmSilverRockLedge",
             ItemGroup: ItemGroups.ENTRANCE,
+            RequiredToAppear: function() { 
+                return Settings.RandomizerSettings.shuffleInteriorEntrances || 
+                    Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.ALL ||
+                    Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.OW_ONLY; 
+            },
             IsGrotto: true,
+            DefaultEntranceGroupName: "Octorok Grotto",
             MapInfo: { x: 220, y: 182 },
             Age: Age.ADULT,
             LongDescription: "From the side closest to Hyrule Field, look to your left. The grotto is under the silver rock. Lift it up with your silver gauntlets to reveal it.",

@@ -1019,6 +1019,22 @@ GrottoGroups = {
 				canGet: function(age) { 
 					return Data.canUseFireItem(age) && Data.canReadGossipStone(age); 
 				}
+			},
+			"Pot 1": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Burn the web. The pot is in front of the cow.",
+				canGet: function(age) { 
+					return Data.canUseFireItem(age); 
+				}
+			},
+			"Pot 2": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Burn the web. The pot is in front of the cow.",
+				canGet: function(age) { 
+					return Data.canUseFireItem(age); 
+				}
 			}
 		}
 	},
@@ -1028,16 +1044,47 @@ GrottoGroups = {
 		buttons: {
 			"Skulltula in Bombable Wall Grotto": {
 				itemGroup: ItemGroups.SKULLTULA,
-				description: "The skulltula is high up behind one of the bombable walls. As an adult, you can actually use your hookshot to get the skulltula without blowing up the wall.",
+				description: "The skulltula is high up behind the mud wall to your left when you enter.",
 				canGet: function(age) {
-					let canGetSkulltula = Data.canGrabShortDistances(age);
-					return canGetSkulltula && (age === Age.ADULT || Data.canBreakMudWalls(age));
+					return Data.canGrabShortDistances(age) && Data.canBreakMudWalls(age);
+				}
+			},
+			"Pot 1": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Blow up the mud wall in front of you when you enter to get to this pot.",
+				canGet: function(age) { 
+					return Data.canBreakMudWalls(age); 
+				}
+			},
+			"Pot 2": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Blow up the mud wall in front of you when you enter to get to this pot.",
+				canGet: function(age) { 
+					return Data.canBreakMudWalls(age); 
+				}
+			},
+			"Pot 3": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Blow up the mud wall in front of you when you enter to get to this pot.",
+				canGet: function(age) { 
+					return Data.canBreakMudWalls(age); 
+				}
+			},
+			"Pot 4": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Blow up the mud wall in front of you when you enter to get to this pot.",
+				canGet: function(age) { 
+					return Data.canBreakMudWalls(age); 
 				}
 			},
 			"Gossip Stone": {
 				icon: "Mask of Truth",
 				itemGroup: ItemGroups.GOSSIP_STONE,
-				description: "The gossip stone is behind one of the bombable walls.",
+				description: "The gossip stone is behind the mud wall in front of you when you enter.",
 				canGet: function(age) { 
 					return Data.canBreakMudWalls(age) && Data.canReadGossipStone(age); 
 				},
@@ -1139,7 +1186,68 @@ GrottoGroups = {
 				canGet: function(age) {
 					return Data.canMilkCows();
 				}
-			}
+			},
+			"Red Rupee": {
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "The central rupee."
+			},
+			"Green Rupee 1": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 1."
+			},
+			"Green Rupee 2": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 2."
+			},
+			"Green Rupee 3": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 3."
+			},
+			"Green Rupee 4": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 4."
+			},
+			"Green Rupee 5": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 5."
+			},
+			"Green Rupee 6": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 6."
+			},
+			"Heart 1": {
+				icon: "Recovery Heart",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "One of the heats near the cow."
+			},
+			"Heart 2": {
+				icon: "Recovery Heart",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "One of the heats near the cow."
+			},
+			"Heart 3": {
+				icon: "Recovery Heart",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "One of the heats near the cow."
+			},
+			"Heart 4": {
+				icon: "Recovery Heart",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "One of the heats near the cow."
+			},
+			"Beehive": {
+				itemGroup: ItemGroups.BEEHIVE,
+				description: "The beehive on the back/right side of the grotto. If using chus, line up with one of the walls under it and drop it on the 6th red flash.",
+				canGet: function(age) {
+					return Data.canBreakBeehive(age);
+				}
+			},
 		}
 	},
 	"Water Heart Piece Grotto": {
@@ -1161,6 +1269,51 @@ GrottoGroups = {
 		buttons: {
 			"Chest": {
 				description: "The chest."
+			}
+		}
+	},
+	"Octorok Grotto": {
+		tooltip: "This grotto has an octorok and 8 rupees in the water.",
+		excludeFromGroup: function() { return true; },
+		buttons: {
+			"Red Rupee": {
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "The central item."
+			},
+			"Blue Rupee 1": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "One of the three items surrounding the middle item."
+			},
+			"Blue Rupee 2": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "One of the three items surrounding the middle item."
+			},
+			"Blue Rupee 3": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "One of the three items surrounding the middle item."
+			},
+			"Green Rupee 1": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "One of the four outside items."
+			},
+			"Green Rupee 2": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "One of the four outside items."
+			},
+			"Green Rupee 3": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "One of the four outside items."
+			},
+			"Green Rupee 4": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "One of the four outside items."
 			}
 		}
 	},
