@@ -367,6 +367,7 @@ let EntranceUI = {
 
 		let activeTasks = 0;
 		let entranceData = this.getEntranceData(itemLocation);
+		let _this = this;
 		selectedGroup.buttonNames.forEach(function (buttonName) {
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
 			if (_this._excludeButtonFromCounts(button)) { return; }

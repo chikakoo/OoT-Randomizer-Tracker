@@ -4733,7 +4733,6 @@ let StandardDungeons = {
 					},
 					spiritTrialRoom2: {
 						Name: "spiritTrialRoom2",
-						Age: Age.EITHER,
 						CustomRequirement: function(age) {
 							let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && Data.hasShield(age);
 							return Items.HOOKSHOT.playerHas || canAvoidHookshot;
@@ -4741,17 +4740,21 @@ let StandardDungeons = {
 					},
 					lightTrialRoom1: {
 						Name: "lightTrialRoom1",
-						Age: Age.EITHER,
 						CustomRequirement: function(age) {
 							let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
 								Items.BOMB.playerHas && 
 								Data.hasShield(age);
 							
-							//TODO: can child do this?
+							//TODO: can child do this or the superslide?
 							let canEssClipIn = age === Age.ADULT && Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
 
-							return canSuperslideIn || canEssClipIn || Equipment.STRENGTH.currentUpgrade === 3;
+							return canSuperslideIn || canEssClipIn || (age === Age.ADULT && Equipment.STRENGTH.currentUpgrade === 3);
 						}
+					},
+					center: {
+						Name: "center"
+						// The main checks to get here are actually in PostWalk checks on the individual item locations
+						// To clean this up, we need non-items for each of the trial completions
 					}
 				},
 
@@ -4830,32 +4833,7 @@ let StandardDungeons = {
 							let canUseFireArrows = Items.FAIRY_BOW.playerHas && Items.FIRE_ARROW.playerHas && Equipment.MAGIC.playerHas;
 							return canUseFireArrows || Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas || Data.canPlaySong(Songs.SONG_OF_TIME);
 						}
-					},
-					"Boss Key Chest in Center": {
-						Name: "Boss Key Chest in Center",
-						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 165, y: 95, floor: "MN" },
-						Age: Age.EITHER,
-						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.staircaseHover; },
-						Order: 20,
-						IsPostWalkCheck: true,
-						LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
-						CustomRequirement: function(age) {
-							if (Settings.GlitchesToAllow.ganonTrialSkip || Data.canStaircaseHover(age)) { return true; }
-							let canUseLightArrows = Items.FAIRY_BOW.playerHas && Items.LIGHT_ARROW.playerHas && Equipment.MAGIC.playerHas;
-							if (!canUseLightArrows) { return false; }
-							
-							let canDoForest = Data.canUseFireItem(age) && Equipment.HOVER_BOOTS.playerHas;
-							let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
-							let canDoFire = tunicCheck && Items.HOOKSHOT.playerHas && Equipment.STRENGTH.currentUpgrade === 3;
-							let canDoWater = (Data.hasBottle() || Data.canUseBlueFire(age)) && Items.MEGATON_HAMMER.playerHas;
-							let canDoShadow = Data.canAccessMap(age, "Ganon's Castle", "shadowTrialMiddle") && Items.MEGATON_HAMMER.playerHas;
-							let canDoSpirit = Data.canAccessMap(age, "Ganon's Castle", "spiritTrialRoom3") && Equipment.MIRROR_SHIELD.playerHas;
-							let canDoLight = Data.canAccessMap(age, "Ganon's Castle", "lightTrialRoom3") && Items.HOOKSHOT.playerHas;
-							
-							return canDoForest && canDoFire && canDoWater && canDoShadow && canDoSpirit && canDoLight;
-						}
-					},
+					}
 				}
 			},
 			shadowTrialMiddle: {
@@ -5014,6 +4992,76 @@ let StandardDungeons = {
 			lightTrialRoom3: {
 				Exits: {},
 				ItemLocations: {}
+			},
+			center: {
+				Exits: {
+					potRoom: {
+						Name: "potRoom",
+						CustomRequirement: function(age) {
+							return Settings.RandomizerSettings.openGanonsCastlePotRoom || hasBossKey("Ganon's Castle");
+						}
+					}
+				},
+				ItemLocations: {
+					"Boss Key Chest in Center": {
+						Name: "Boss Key Chest in Center",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 155, y: 95, floor: "MN" },
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.staircaseHover; },
+						Order: 20,
+						IsPostWalkCheck: true,
+						LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
+						CustomRequirement: function(age) {
+							if (Settings.GlitchesToAllow.ganonTrialSkip || Data.canStaircaseHover(age)) { return true; }
+							let canUseLightArrows = Items.FAIRY_BOW.playerHas && Items.LIGHT_ARROW.playerHas && Equipment.MAGIC.playerHas;
+							if (!canUseLightArrows) { return false; }
+							
+							let canDoForest = Data.canUseFireItem(age) && Equipment.HOVER_BOOTS.playerHas;
+							let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
+							let canDoFire = tunicCheck && Items.HOOKSHOT.playerHas && Equipment.STRENGTH.currentUpgrade === 3;
+							let canDoWater = (Data.hasBottle() || Data.canUseBlueFire(age)) && Items.MEGATON_HAMMER.playerHas;
+							let canDoShadow = Data.canAccessMap(age, "Ganon's Castle", "shadowTrialMiddle") && Items.MEGATON_HAMMER.playerHas;
+							let canDoSpirit = Data.canAccessMap(age, "Ganon's Castle", "spiritTrialRoom3") && Equipment.MIRROR_SHIELD.playerHas;
+							let canDoLight = Data.canAccessMap(age, "Ganon's Castle", "lightTrialRoom3") && Items.HOOKSHOT.playerHas;
+							
+							return canDoForest && canDoFire && canDoWater && canDoShadow && canDoSpirit && canDoLight;
+						}
+					}
+				}
+			},
+			potRoom: {
+				Exits: {},
+				ItemLocations: {
+					"14 Pots in Pot Room": {
+                        Name: "14 Pots in Pot Room",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "14 Pots",
+                        MapInfo: { x: 175, y: 95, floor: "MN" },
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.staircaseHover; },
+						Order: 21,
+						IsPostWalkCheck: true,
+                        LongDescription: "Complete all the trials. Now, go up the center of the castle. This is room after you open the first giant door.",
+						CustomRequirement: function(age) {
+							if (Settings.GlitchesToAllow.ganonTrialSkip || Data.canStaircaseHover(age)) { return true; }
+							let canUseLightArrows = Items.FAIRY_BOW.playerHas && Items.LIGHT_ARROW.playerHas && Equipment.MAGIC.playerHas;
+							if (!canUseLightArrows) { return false; }
+							
+							let canDoForest = Data.canUseFireItem(age) && Equipment.HOVER_BOOTS.playerHas;
+							let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
+							let canDoFire = tunicCheck && Items.HOOKSHOT.playerHas && Equipment.STRENGTH.currentUpgrade === 3;
+							let canDoWater = (Data.hasBottle() || Data.canUseBlueFire(age)) && Items.MEGATON_HAMMER.playerHas;
+							let canDoShadow = Data.canAccessMap(age, "Ganon's Castle", "shadowTrialMiddle") && Items.MEGATON_HAMMER.playerHas;
+							let canDoSpirit = Data.canAccessMap(age, "Ganon's Castle", "spiritTrialRoom3") && Equipment.MIRROR_SHIELD.playerHas;
+							let canDoLight = Data.canAccessMap(age, "Ganon's Castle", "lightTrialRoom3") && Items.HOOKSHOT.playerHas;
+							
+							return canDoForest && canDoFire && canDoWater && canDoShadow && canDoSpirit && canDoLight;
+						}
+                    }
+				}
 			}
 		}
 	}
