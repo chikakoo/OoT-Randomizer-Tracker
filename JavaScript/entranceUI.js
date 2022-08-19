@@ -369,7 +369,7 @@ let EntranceUI = {
 		let entranceData = this.getEntranceData(itemLocation);
 		selectedGroup.buttonNames.forEach(function (buttonName) {
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
-			if (button.excluded || (button.shouldNotDisplay && button.shouldNotDisplay())) { return; }
+			if (_this._excludeButtonFromCounts(button)) { return; }
 			
 			activeTasks++;
 		});
@@ -404,7 +404,7 @@ let EntranceUI = {
 			if (selectedGroup.completed[buttonName]) { return; }
 			
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
-			if (button.excluded || (button.shouldNotDisplay && button.shouldNotDisplay())) { return; }
+			if (_this._excludeButtonFromCounts(button)) { return; }
 			
 			let canGetItem = !button.canGet || button.canGet(age, itemLocation);
 			if (canGetItem && _this._canGetAsAge(button, age)) {
@@ -432,7 +432,7 @@ let EntranceUI = {
 		let entranceData = this.getEntranceData(itemLocation);
 		selectedGroup.buttonNames.forEach(function (buttonName) {
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
-			if (!(button.exlcuded || (button.shouldNotDisplay && button.shouldNotDisplay())) && _this._canGetAsAge(button, age)) {
+			if (!_this._excludeButtonFromCounts(button) && _this._canGetAsAge(button, age)) {
 				numberOfTasks++; 
 			}
 		});
@@ -481,11 +481,22 @@ let EntranceUI = {
 			if (!selectedGroup.completed[buttonName]) { return; }
 			
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
-			if (!(button.excluded || (button.shouldNotDisplay && button.shouldNotDisplay())) && _this._canGetAsAge(button, age)) {
+			if (!_this._excludeButtonFromCounts(button) && _this._canGetAsAge(button, age)) {
 				numberOfTasks++; 
 			}
 		});
 		
 		return numberOfTasks;
+	},
+
+	/**
+	 * Whether we should be excluding the button from counts
+	 * Includes explicit exclusions, shouldNotDisplay, and whether it's excluded based on the item group
+	 * @param {Any} button - the button
+	 */
+	_excludeButtonFromCounts: function(button) {
+		return button.excluded || 
+			(button.shouldNotDisplay && button.shouldNotDisplay()) || 
+			(button.itemGroup && shouldDisableItemLocationGroup(button.itemGroup));
 	}
 }
