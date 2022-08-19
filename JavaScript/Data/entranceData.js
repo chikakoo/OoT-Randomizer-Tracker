@@ -1368,6 +1368,36 @@ GrottoGroups = {
 	"Barinade": {
 		tooltip: "Barinade in Jabu Jabu's Belly",
 		buttons: {
+			"Pot 1": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the pots on the edge of the room."
+			},
+			"Pot 2": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the pots on the edge of the room."
+			},
+			"Pot 3": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the pots on the edge of the room."
+			},
+			"Pot 4": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the pots on the edge of the room."
+			},
+			"Pot 5": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the pots on the edge of the room."
+			},
+			"Pot 6": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the pots on the edge of the room."
+			},
 			"Heart Container": {
 				icon: "Heart Piece",
 				description: "To defeat Barinade, you need the boomerang and also either a sword or at least 3 Deku Sticks. First, dislodge it from the ceiling using the boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
@@ -1893,6 +1923,81 @@ GrottoGroups = {
 				icon: "Pot",
 				itemGroup: ItemGroups.POT,
 				description: "Pot 4."
+			}
+		}
+	},
+	"14 Pots": {
+		tooltip: "A set of 14 pots.",
+		buttons: {
+			"Pot 1": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 2": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 3": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 4": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 5": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 6": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 7": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 8": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 9": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 10": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 11": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 12": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 13": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 14": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
 			}
 		}
 	},

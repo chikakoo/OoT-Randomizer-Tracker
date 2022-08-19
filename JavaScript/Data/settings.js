@@ -94,6 +94,7 @@ let Settings = {
 		closedDeku: false,
 		openDoorOfTime: true,
 		openKakariko: true,
+		openGanonsCastlePotRoom: false,
 		autoPlantBeans: false,
 		openZorasFountain: OpenZorasFountainSettings.VANILLA,
 		
