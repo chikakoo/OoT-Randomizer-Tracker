@@ -189,7 +189,7 @@ let _setUpItemGroups = function(groupedItemLocationInfo, mapInfo) {
 		allItemLocationsTextDiv.innerText = "Ordered Item Locations";
 		allItemLocationsTitleDiv.appendChild(allItemLocationsTextDiv);
 		
-		_createItemLocations(allLocations, allItemLocationsDiv, true, isDungeon);
+		_createItemLocations(allLocations, allItemLocationsDiv, true);
 		mainContainer.appendChild(allItemLocationsDiv);
 	} else {
 		Object.keys(groupedItemLocationInfo).forEach(function(groupId) {
@@ -210,7 +210,7 @@ let _setUpItemGroups = function(groupedItemLocationInfo, mapInfo) {
 			if (itemGroupName) {
 				itemGroupTextDiv.innerText = itemGroupName
 				itemGroupTitleDiv.appendChild(itemGroupTextDiv);
-				_createItemLocations(itemGroup, itemGroupDiv, undefined, isDungeon);
+				_createItemLocations(itemGroup, itemGroupDiv);
 			}
 		});
 	}
@@ -235,7 +235,7 @@ let _toggleItemLocations = function(itemGroupDiv, event) {
  * @param itemGroupDiv - the div for the locations
  * @param includeGroupIcon - whether to include the group icon; used for ordered locations
  */
-let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon, isDungeon) {
+let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon) {
 	let allItemsObtained = itemGroup.every(loc => loc.playerHas);
 	itemGroup.forEach(function(itemLocation) {
 		if (itemLocation.disabled || itemLocation.Hide) { return; }
@@ -277,8 +277,19 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon, i
 		itemLocationTitleDiv.appendChild(itemLocationTimeIconDiv);
 		
 		if (includeGroupIcon) {
+			let imagePath = "";
+			if (itemLocation.IsItemLocationGroup && itemLocation.DefaultEntranceGroupName) {
+				let groupName = itemLocation.DefaultEntranceGroupName;
+				imagePath = EntranceUI.getEntranceGroupIcon(ItemLocationGroups[groupName], groupName);
+			} else {
+				let itemGroup = itemLocation.OverrideItemGroup
+					? itemLocation.OverrideItemGroup
+					: itemLocation.ItemGroup;
+				imagePath = getItemGroupImagePath(itemGroup);
+			}
+
 			let itemLocationIconDiv = dce("div", "item-location-group-icon");
-			itemLocationIconDiv.style.backgroundImage = getItemGroupImagePath(itemLocation.ItemGroup);
+			itemLocationIconDiv.style.backgroundImage = imagePath;
 			itemLocationTitleDiv.appendChild(itemLocationIconDiv);
 		}
 
