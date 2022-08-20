@@ -41,6 +41,7 @@ let _assignItemLocationMapsAndRegions = function() {
 					let itemLocation = itemLocations[itemLocationName];
 					itemLocation.Map = mapName;
 					itemLocation.Region = regionName;
+					itemLocation.IsDungeon = mapObject[mapName].MapGroup === MapGroups.DUNGEONS;
 				});
 			});
 		});
@@ -87,7 +88,6 @@ let _performItemDisabling = function() {
 	let maxTokens = Settings.RandomizerSettings.maxRequiredTokens;
 	let mapNames = Object.keys(MapLocations);
 	mapNames.forEach(function (mapName) {
-		let mapLocation = MapLocations[mapName];
 		let itemsToExcludeMapInfo = Settings.ItemLocationsToExclude.Maps && Settings.ItemLocationsToExclude.Maps[mapName];
 		
 		Data.getAllItemLocations(mapName, null, true).forEach(function(itemLocation) {
@@ -108,7 +108,7 @@ let _performItemDisabling = function() {
 			let itemGroup = itemLocation.OverrideItemGroup !== undefined
 				? itemLocation.OverrideItemGroup
 				: itemLocation.ItemGroup;
-			if (shouldDisableItemLocationGroup(itemGroup, mapLocation.MapGroup === MapGroups.DUNGEONS, itemLocation.ScrubSanityNotRequired)) {
+			if (shouldDisableItemLocationGroup(itemGroup, itemLocation.IsDungeon, itemLocation.ScrubSanityNotRequired)) {
 				itemLocation.disabled = true;
 				return;
 			}

@@ -281,6 +281,8 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon) {
 			if (itemLocation.IsItemLocationGroup && itemLocation.DefaultEntranceGroupName) {
 				let groupName = itemLocation.DefaultEntranceGroupName;
 				imagePath = EntranceUI.getEntranceGroupIcon(ItemLocationGroups[groupName], groupName);
+			} else if (itemLocation.MapImageName) {
+				imagePath = getItemGroupImageFromName(itemLocation.MapImageName);
 			} else {
 				let itemGroup = itemLocation.OverrideItemGroup
 					? itemLocation.OverrideItemGroup

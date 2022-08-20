@@ -83,7 +83,7 @@ let EntranceUI = {
 				Object.keys(group.buttons).forEach(function(buttonName) {
 					let button = group.buttons[buttonName];
 					let shouldNotDisplayButton = button.shouldNotDisplay && button.shouldNotDisplay();
-					let excludingItemGroup = button.itemGroup && shouldDisableItemLocationGroup(button.itemGroup);
+					let excludingItemGroup = button.itemGroup && shouldDisableItemLocationGroup(button.itemGroup, itemLocation.IsDungeon);
 					if (shouldNotDisplayButton || excludingItemGroup) {
 						itemsToExclude[groupName] = itemsToExclude[groupName] || [];
 						if (!itemsToExclude[groupName].includes(buttonName)) {
@@ -181,7 +181,7 @@ let EntranceUI = {
 			let shouldExcludeEquivalentItem = false;
 
 			if (!shouldNotDisplayButton && button.itemGroup) {
-				shouldNotDisplayButton = shouldDisableItemLocationGroup(button.itemGroup);
+				shouldNotDisplayButton = shouldDisableItemLocationGroup(button.itemGroup, itemLocation.IsDungeon);
 			}
 
 			if (itemLocation.IsInterior || itemLocation.IsGrotto) {
@@ -375,7 +375,7 @@ let EntranceUI = {
 		let _this = this;
 		selectedGroup.buttonNames.forEach(function (buttonName) {
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
-			if (_this._excludeButtonFromCounts(button)) { return; }
+			if (_this._excludeButtonFromCounts(button, itemLocation)) { return; }
 			
 			activeTasks++;
 		});
@@ -410,7 +410,7 @@ let EntranceUI = {
 			if (selectedGroup.completed[buttonName]) { return; }
 			
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
-			if (_this._excludeButtonFromCounts(button)) { return; }
+			if (_this._excludeButtonFromCounts(button, itemLocation)) { return; }
 			
 			let canGetItem = !button.canGet || button.canGet(age, itemLocation);
 			if (canGetItem && _this._canGetAsAge(button, age)) {
@@ -438,7 +438,7 @@ let EntranceUI = {
 		let entranceData = this.getEntranceData(itemLocation);
 		selectedGroup.buttonNames.forEach(function (buttonName) {
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
-			if (!_this._excludeButtonFromCounts(button) && _this._canGetAsAge(button, age)) {
+			if (!_this._excludeButtonFromCounts(button, itemLocation) && _this._canGetAsAge(button, age)) {
 				numberOfTasks++; 
 			}
 		});
@@ -487,7 +487,7 @@ let EntranceUI = {
 			if (!selectedGroup.completed[buttonName]) { return; }
 			
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
-			if (!_this._excludeButtonFromCounts(button) && _this._canGetAsAge(button, age)) {
+			if (!_this._excludeButtonFromCounts(button, itemLocation) && _this._canGetAsAge(button, age)) {
 				numberOfTasks++; 
 			}
 		});
@@ -499,10 +499,11 @@ let EntranceUI = {
 	 * Whether we should be excluding the button from counts
 	 * Includes explicit exclusions, shouldNotDisplay, and whether it's excluded based on the item group
 	 * @param {Any} button - the button
+	 * @param {Any} itemLocation - the itemLocation being checked
 	 */
-	_excludeButtonFromCounts: function(button) {
+	_excludeButtonFromCounts: function(button, itemLocation) {
 		return button.excluded || 
 			(button.shouldNotDisplay && button.shouldNotDisplay()) || 
-			(button.itemGroup && shouldDisableItemLocationGroup(button.itemGroup));
+			(button.itemGroup && shouldDisableItemLocationGroup(button.itemGroup, itemLocation.IsDungeon));
 	}
 }

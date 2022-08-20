@@ -34,12 +34,22 @@ let StandardDungeons = {
 				},
 				
 				ItemLocations: {
+					"Heart in Lower Lobby": {
+						Name: "Heart in Lower Lobby",
+						ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Recovery Heart",
+                        MapInfo: { x: 245, y: 28, floor: "F2" },
+                        Age: Age.EITHER,
+						Order: 1,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+                        LongDescription: "Climb up the vines on the first floor. Jump to the small platform to your left. The item is on the end of that platform; you have to jump off for it.",
+					},
 					"Map Chest": {
 						Name: "Map Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 282, y: 82, floor: "F2" },
 						Age: Age.EITHER,
-						Order: 1,
+						Order: 2,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "This chest is located by the vines with the skullwalltulas on the second floor."
 					},
@@ -48,7 +58,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 16, y: 147, floor: "F3" },
 						Age: Age.EITHER,
-						Order: 4,
+						Order: 5,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "Make your way to the top floor. Go around the room until you find the door. Hit the switch and jump on the platforms to the opposite side of the room for this chest.",
 					},
@@ -57,7 +67,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 115, y: 199, floor: "F3" },
 						Age: Age.EITHER,
-						Order: 5,
+						Order: 6,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "Make your way to the top floor. Go around the room until you find the door. Hit the switch and jump on the platforms to the left side room for this chest. You do not need to kill the giant skulltula if you jump far enough to the left.",
 					},
@@ -66,10 +76,23 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 115, y: 207, floor: "F3" },
 						Age: Age.EITHER,
-						Order: 6,
+						Order: 7,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "Make your way to the top floor. Go around the room until you find the door. Hit the switch and jump on the platforms to the left side room for this skulltula. You do not need to kill the giant skulltula if you jump far enough to the left."
 					},
+					"Heart in Upper Lobby": {
+						Name: "Heart in Upper Lobby",
+						ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Recovery Heart",
+                        MapInfo: { x: 291, y: 152, floor: "F3" },
+                        Age: Age.EITHER,
+						Order: 8,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+                        LongDescription: "This item can be seen on the top floor, floating close to the path left of the vines you club up. Lined up with the wall, jump from the middle of the ledge, holding neutral to get this item.",
+						CustomRequirement: function(age) {
+							return Data.hasDamagingItem(age) || Items.DEKU_NUT.playerHas;
+						}
+					}
 				}
 			},
 
@@ -81,7 +104,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 111, y: 246, floor: "F2" },
 						Age: Age.EITHER,
-						Order: 2,
+						Order: 3,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "Enter the second floor door. Use your shield to reflect the scrub's nut back at him. The chest is on the other side in the next room."
 					},
@@ -90,7 +113,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 157, y: 273, floor: "F2" },
 						Age: Age.EITHER,
-						Order: 3,
+						Order: 4,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "This chest is located up the vines on the platform the slingshot chest is on."
 					}
@@ -116,7 +139,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 343, y: 81, floor: "B1" },
 						Age: Age.EITHER,
-						Order: 7,
+						Order: 9,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "From the top floor, either kill or stun one one of the giant skulltulas. Jump toward the center of the room and immediately let go of the joystick. You should fall to the basement. If you can use Din's Fire, you can use that instead. The chest is on the platform to the left of the vines."
 					},
@@ -125,7 +148,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 297, y: 51, floor: "B1" },
 						Age: Age.EITHER,
-						Order: 8,
+						Order: 10,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "This skulltula is in the in the basement you enter when you go in the first pit. If you face the vines, it's the one on the wall to the left."
 					},
@@ -134,7 +157,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 348, y: 104, floor: "B1" },
 						Age: Age.EITHER,
-						Order: 9,
+						Order: 11,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "This skulltula is the one on the vines in the first basement floor. A well-angled jumpslash from a deku stick can hit it. You can also use the slingshot, boomerang, or a well-timed bomb.",
 						CustomRequirement: function(age) {
@@ -148,15 +171,12 @@ let StandardDungeons = {
 
 			basementTop: {
 				Exits: {
-					bossRoom: {
-						Name: "bossRoom",
+					lowerBasement: {
+						Name: "lowerBasement",
 						CustomRequirement: function(age) {
-
 							let canShootWeb = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
 							let canBurnWeb = canShootWeb || Data.canUseFireItem(age) || Data.canUseDekuStick(age);
-							let canPassWeb = canBurnWeb || Data.canWeirdShot(age);
-							let hasShield = age === Age.CHILD ? Equipment.DEKU_SHIELD.playerHas : Equipment.HYLIAN_SHIELD.playerHas;
-							return canPassWeb && hasShield;
+							return canBurnWeb || Data.canWeirdShot(age);
 						}
 					}
 				},
@@ -167,13 +187,33 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 17, y: 77, floor: "B1" },
 						Age: Age.EITHER,
-						Order: 10,
+						Order: 12,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-						LongDescription: "If you make your way around the basement, you'll eventually find a circular room where gohma babies drop from the ceiling. One of the side rooms has a bombable wall. Bomb it, then enter the next room. The skulltula is high up on the wall to your left.",
-						RequiredAdultItems: [Items.FAIRY_BOW],
-						BlockedByMudWall: true,
-						IsAtShortDistance: true
+						LongDescription: "If you make your way around the basement, you'll eventually find a circular room where gohma babies drop from the ceiling. One of the side rooms has a bombable wall. Bomb it, then enter the next room. The skulltula is high up on the wall to your left."
 					}
+				}
+			},
+
+			lowerBasement: {
+				Exits: {
+					bossRoom: {
+						Name: "bossRoom",
+						RequiredChildItems: [Equipment.DEKU_SHIELD],
+						RequiredAdultItems: [Equipment.HYLIAN_SHIELD]
+					}
+				},
+				ItemLocations: {
+					"3 Hearts in Lower Basement": {
+                        Name: "3 Hearts in Lower Basement",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Hearts",
+                        MapInfo: { x: 246, y: 105, floor: "B2" },
+                        Age: Age.EITHER,
+						Order: 13,
+                        LongDescription: "These hearts are in the water of the lower basement, two on one side, one on the other."
+                    }
 				}
 			},
 
