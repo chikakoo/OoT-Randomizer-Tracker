@@ -12,16 +12,14 @@ let MQDungeons = {
 		Regions: {
 			main: {
 				Exits: {
-					compassRoom: {
-						Name: "compassRoom",
+					compassRoomAntechamber: {
+						Name: "compassRoomAntechamber",
 						CustomRequirement: function(age) {
-							if (!Data.canShootEyeSwitch(age)) { return false; }
 							return Data.canUseFireItem(age) || 
 								Data.canUseDekuStick(age) ||
 								(age === Age.ADULT && Items.FAIRY_BOW.playerHas);
 						}
 					},
-
 					waterRoom: {
 						Name: "waterRoom",
 						CustomRequirement: function(age) {
@@ -29,51 +27,93 @@ let MQDungeons = {
 							return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
 						}
 					},
-
 					upperBasement: {
 						Name: "upperBasement",
 						CustomRequirement: function(age) {
 							return age === Age.ADULT || Settings.GlitchesToAllow.dekuB1Skip;
 						}
 					},
-
 					Exit: {
 						OwExit: OwExits["Deku Tree"]["Exit"]
 					}
 				},
 
 				ItemLocations: {
+					"Heart in Lower Lobby": {
+						Name: "Heart in Lower Lobby",
+						ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						MapImageName: "Recovery Heart",
+						MapInfo: { x: 245, y: 28, floor: "F2" },
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 1,
+						LongDescription: "Climb up the vines on the first floor. Jump to the small platform to your left. The item is on the end of that platform; you have to jump off for it.",
+					},
 					"Map Chest": {
 						Name: "Map Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 282, y: 82, floor: "F2" },
 						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						Order: 1,
 						LongDescription: "Climb to the second floor of the dungeon. The chest is by the vines leading to the third floor."
+					},
+					"Crate by Map Chest": {
+						Name: "Crate by Map Chest",
+						ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 277, y: 87, floor: "F2" },
+                        Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 2,
+                        LongDescription: "This crate is next to the map chest on the second floor.",
 					},
 					"Skulltula by Map Chest": {
 						Name: "Skulltula by Map Chest",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 277, y: 87, floor: "F2" },
 						Age: Age.EITHER,
-						Order: 2,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 3,
 						LongDescription: "This skulltula is in the crate by the map chest on the second floor. Roll into it to set it free.",
 					},
+					"2 Crates on Third Floor": {
+                        Name: "2 Crates on Third Floor",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 157, y: 149, floor: "F3" },
+                        Age: Age.EITHER,
+						Order: 8,
+                        LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>The crates are in the lower area right in front of you."
+                    },
 					"Slingshot Chest on Third Floor": {
 						Name: "Slingshot Chest on Third Floor",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 115, y: 199, floor: "F3" },
 						Age: Age.EITHER,
-						Order: 5,
-						LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>Defeat all the enemies in this room to spawn the chest.",
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 9,
+						LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>Defeat all the enemies in this room to spawn the chest. Press the switch to gain access to the chest.",
 						NeedsDamagingWeapon: true
+					},
+					"Recovery Heart on Third Floor": {
+						Name: "Recovery Heart on Third Floor",
+						ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Recovery Heart",
+                        MapInfo: { x: 107, y: 200, floor: "F3" },
+                        Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 10,
+                        LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>Press the switch inside to gain access to the item.",
 					},
 					"Small Chest on Third Floor": {
 						Name: "Small Chest on Third Floor",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 16, y: 147, floor: "F3" },
 						Age: Age.EITHER,
-						Order: 6,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 11,
 						LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>Light the unlit torch in this room to spawn the chest. If using a bow, it's easier if you shoot it from the left side of the torch.",
 						CustomRequirement: function(age) {
 							return Data.canUseFireItem(age) || 
@@ -86,7 +126,8 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 344, y: 81, floor: "B1" },
 						Age: Age.EITHER,
-						Order: 7,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 12,
 						LongDescription: "Head to the basement. The goal is to hit the switch to the right of the vines to spawn the chest. If you have Din's Fire, use it on the webs. Otherwise, hit the switch to the left of the vines to light the torch, then use your sticks to gain access to the switch.",
 						CustomRequirement: function(age) {
 							return Data.canUseFireItem(age) || 
@@ -97,29 +138,33 @@ let MQDungeons = {
 				}
 			},
 
-			compassRoom: {
-				Exits: {},
+			compassRoomAntechamber: {
+				Exits: {
+					compassRoom: {
+						Name: "compassRoom",
+						RequiredChildItems: [Items.FAIRY_SLINGSHOT],
+						RequiredAdultItems: [Items.FAIRY_BOW]
+					}
+				},
 				ItemLocations: {
-					"Compass Chest in Old Slingshot Room": {
-						Name: "Compass Chest in Old Slingshot Room",
-						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 111, y: 246, floor: "F2" },
+					"Heart in Giant Baba Room": {
+						Name: "Heart in Giant Baba Room",
+						ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						MapImageName: "Recovery Heart",
+						MapInfo: { x: 191, y: 151, floor: "F2" },
 						Age: Age.EITHER,
-						Order: 3,
-						LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so.<br/><br/>Once in this next room, shoot the eye in the back to gain access to the next room. The chest is on the other side.",
-					},
-					"Skulltula in Old Slingshot Room": {
-						Name: "Skulltula in Old Slingshot Room",
-						ItemGroup: ItemGroups.SKULLTULA,
-						MapInfo: { x: 161, y: 277, floor: "F2" },
-						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						Order: 4,
-						LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so.<br/><br/>Head to the other side of the room. The room up the vines to the left is blocked by rocks. Use a bombchu to gain access. The skulltula is up on the wall.",
-						CustomRequirement: function(age) {
-							let canGetSkulltula = Data.canGrabShortDistances(age) || 
-								(age === Age.ADULT && Data.canStaircaseHover(age));
-							if (!canGetSkulltula) { return; }
+						LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so. The heart is on the left side of the room."
+					}
+				}
+			},
 
+			compassRoom: {
+				Exits: {
+					compassRoomSideArea: {
+						Name: "compassRoomSideArea",
+						CustomRequirement: function(age) {
 							let canUseHammer = Data.canUseHammer(age);
 							let canBreakWithChu = Items.BOMBCHU.playerHas;
 							let canBreakFromSoTBlock = (Data.canPlaySong(Songs.SONG_OF_TIME) && (
@@ -127,9 +172,65 @@ let MQDungeons = {
 								canUseHammer
 							));
 							let canBreakWithHammer = Settings.GlitchesToAllow.mqDekuSideRoomRocksHammerOnly && canUseHammer;
-							let canBreakWithBomb = Settings.GlitchesToAllow.mqDekuSideRoomRocksBombsOnly && Items.BOMB.playerHas;
-							let canBlowUpRocks = canBreakWithChu || canBreakFromSoTBlock || canBreakWithHammer || canBreakWithBomb;
-							return canBlowUpRocks || (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2);
+							let canBreakWithBomb = Settings.GlitchesToAllow.mqDekuSideRoomRocksBombsOnly && age === Age.ADULT && Items.BOMB.playerHas;
+							return canBreakWithChu || canBreakFromSoTBlock || canBreakWithHammer || canBreakWithBomb;
+						}
+					},
+					compassRoomSkulltula: {
+						Name: "compassRoomSkulltula",
+						Age: Age.ADULT,
+						CustomRequirement: function(age) {
+							return Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2;
+						}
+					}
+				},
+				ItemLocations: {
+					"Compass Chest in Old Slingshot Room": {
+						Name: "Compass Chest in Old Slingshot Room",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 111, y: 246, floor: "F2" },
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 5,
+						LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so.<br/><br/>Once in this next room, shoot the eye in the back to gain access to the next room. The chest is on the other side.",
+					}
+				}
+			},
+
+			compassRoomSideArea: {
+				Exits: {
+					compassRoomSkulltula: {
+						Name: "compassRoomSkulltula"
+					}
+				},
+				ItemLocations: {
+					"Heart in Old Slingshot Room": {
+						Name: "Heart in Old Slingshot Room",
+						ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						MapImageName: "Recovery Heart",
+						MapInfo: { x: 157, y: 273, floor: "F2" },
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 6,
+						LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so. The heart is on the left side of the room."
+					}
+				}
+			},
+
+			compassRoomSkulltula: {
+				Exits: {},
+				ItemLocations: {
+					"Skulltula in Old Slingshot Room": {
+						Name: "Skulltula in Old Slingshot Room",
+						ItemGroup: ItemGroups.SKULLTULA,
+						MapInfo: { x: 161, y: 277, floor: "F2" },
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 7,
+						LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so.<br/><br/>Head to the other side of the room. The room up the vines to the left is blocked by rocks. Use a bombchu to gain access. The skulltula is up on the wall.",
+						CustomRequirement: function(age) {
+							return Data.canGrabShortDistances(age) || 
+								(age === Age.ADULT && Data.canStaircaseHover(age));
 						}
 					}
 				}
@@ -148,7 +249,8 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 266, y: 225, floor: "B1" },
 						Age: Age.EITHER,
-						Order: 8,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 12,
 						LongDescription: "From the basement, head to the door to the right of the vines. You'll need to either use Din's Fire or run a lit Deku Stick into this room. Light the torches by the other door to gain access to the water room. The chest will be to your left."
 					},
 					"Chest via Song of Time Block": {
@@ -156,7 +258,8 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 181, y: 225, floor: "B1" },
 						Age: Age.EITHER,
-						Order: 9,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 13,
 						LongDescription: "From the basement, head to the door to the right of the vines. You'll need to either use Din's Fire or run a lit Deku Stick into this room. Light the torches by the other door to gain access to the water room.<br/><br/>Make your way to the other side of the water room. You'll need to roll or crouch with your shield under the spikey pole. Play the Song of Time by the block to reveal the chest.",
 						RequiredSongs: [Songs.SONG_OF_TIME]
 					}
@@ -165,12 +268,11 @@ let MQDungeons = {
 
 			upperBasement: {
 				Exits: {
-					bossRoom: {
+					lowerBasement: {
+						Name: "lowerBasement",
 						CustomRequirement: function(age) {
 							let canBurnWeb = Data.canUseFireItem(age) || Data.canUseDekuStick(age);
-							let canPassWeb = canBurnWeb || Data.canWeirdShot(age);
-							let canStunScrubs = (age === Age.CHILD && Equipment.DEKU_SHIELD.playerHas) || (age === Age.ADULT && Equipment.HYLIAN_SHIELD.playerHas)
-							return canPassWeb && canStunScrubs;
+							return canBurnWeb || Data.canWeirdShot(age);
 						}
 					}
 				},
@@ -181,7 +283,8 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 93, y: 113, floor: "B1" },
 						Age: Age.EITHER,
-						Order: 10,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 14,
 						LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Note that you can also use Din's Fire. Defeat all the enemies in this room to continue on.<br/><br/>In this next room, play the Song of Time near the torches to spawn a staircase of blocks. Climb these and use your boomerang or hookshot to get the skulltula on the ceiling.",
 						RequiredSongs: [Songs.SONG_OF_TIME],
 						IsAtShortDistance: true
@@ -191,7 +294,8 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 17, y: 48, floor: "B1" },
 						Age: Age.EITHER,
-						Order: 11,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 15,
 						LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Defeat all the enemies in this room to continue on.<br/><br/>Step on the blue switch in the middle of the torches. Quickly light a stick, then burn the web blocking the left door. You can also use Din's Fire. The skulltula is in this room.",
 						IsAtShortDistance: true,
 						CustomRequirement: function(age) {
@@ -203,9 +307,33 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.SCRUB,
 						MapInfo: { x: 274, y: 143, floor: "B1" },
 						Age: Age.EITHER,
-						Order: 12,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 16,
 						LongDescription: "In the grave room, Step on the blue switch in the middle of the torches. Quickly light a stick, then burn the web blocking the right path. You can also use Din's Fire. Enter the crawlspace to find your way back to the upper level of the first basement room.<br/><br/>Once here, look near the spider web blocking the way to the lowest level for the business scrub.",
-					},
+					}
+				}
+			},
+
+			lowerBasement: {
+				Exits: {
+					bossRoom: {
+						Name: "bossRoom",
+						RequiredChildItems: [Equipment.DEKU_SHIELD],
+						RequiredAdultItems: [Equipment.HYLIAN_SHIELD]
+					}
+				},
+				ItemLocations: {
+					"3 Hearts in Lower Basement": {
+                        Name: "3 Hearts in Lower Basement",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Hearts",
+                        MapInfo: { x: 246, y: 105, floor: "B2" },
+                        Age: Age.EITHER,
+						Order: 17,
+                        LongDescription: "These hearts are in the water of the lower basement, two on one side, one on the other."
+                    }
 				}
 			},
 
