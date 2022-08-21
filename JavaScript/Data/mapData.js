@@ -2259,7 +2259,7 @@ let MapLocations = {
                         }
                     },
                     "2 Pots by Lower Staircase": {
-                        Name: "Pots by Lower Staircase",
+                        Name: "2 Pots by Lower Staircase",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2269,7 +2269,7 @@ let MapLocations = {
                         LongDescription: "These pots are just after the first set of stairs at the bottom of the city."
                     },
                     "3 Pots by Upper Staircase": {
-                        Name: "Pots by Upper Staircase",
+                        Name: "3 Pots by Upper Staircase",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2336,7 +2336,7 @@ let MapLocations = {
                         RequiredSongs: [Songs.SARIAS_SONG]
                     },
                     "3 Pots by Darunia": {
-                        Name: "Pots by Darunia",
+                        Name: "3 Pots by Darunia",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2851,7 +2851,7 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Beehive Behind King": {
-                        Name: "Beehive Behind by King",
+                        Name: "Beehive Behind King",
                         ItemGroup: ItemGroups.BEEHIVE,
                         IsUpperHive: true,
                         MapInfo: { x: 236, y: 28 },
@@ -2988,7 +2988,7 @@ let MapLocations = {
                         MapInfo: { x: 266, y: 260 },
                         Age: Age.EITHER,
                         LongDescription: "Go to the southeast corner of the map. Pick up the silver rock and drop down. You should now be next to the pots.",
-                    },
+                    }
                 }
             }
 		}
@@ -3652,18 +3652,18 @@ let MapLocations = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 139, y: 237, floor: "LOW" },
                         Age: Age.EITHER,
-                        LongDescription: "These pots are on the table in the kitchen. If you enter from one of the upper entrances, you can snag them with the boomerang."
-                    },
-                    CustomRequirement: function(age) {
-                        if (Data.areGerudoGuardsTame() || Data.canUseBoomerang(age)) {
-                            return true;
+                        LongDescription: "These pots are on the table in the kitchen. If you enter from one of the upper entrances, you can snag them with the boomerang.",
+                        CustomRequirement: function(age) {
+                            if (Data.areGerudoGuardsTame() || Data.canUseBoomerang(age)) {
+                                return true;
+                            }
+    
+                            if (age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas)) {
+                                return true;
+                            }
+    
+                            return Settings.GlitchesToAllow.gfKitchenGuardsWithSword && Data.hasSwordWeapon(age);
                         }
-
-                        if (age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas)) {
-                            return true;
-                        }
-
-                        return Settings.GlitchesToAllow.gfKitchenGuardsWithSword && Data.hasSwordWeapon(age);
                     }
                 }
             },
