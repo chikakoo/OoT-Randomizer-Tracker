@@ -643,7 +643,7 @@ let StandardDungeons = {
 					"2 Hearts in Upper Lizalfos Room": {
                         Name: "2 Hearts in Upper Lizalfos Room",
                         ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 296, y: 123, floor: "F2" },
@@ -741,9 +741,9 @@ let StandardDungeons = {
 					},
 					"Pot After Block Push in Back Room": {
 						Name: "Pot After Block Push in Back Room",
-						ItemGroup: ItemGroups.CHEST,
+						ItemGroup: ItemGroups.POT,
 						MapInfo: { x: 176, y: 58, floor: "F1" },
-						Age: Age.POT,
+						Age: Age.EITHER,
 						Order: 32,
 						LongDescription: "After the block push puzzle in the giant dodongo head, this is one of the pots to your left before you enter the hallway. The other one will always contain a fairy."
 					},

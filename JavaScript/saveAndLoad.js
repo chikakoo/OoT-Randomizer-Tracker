@@ -316,6 +316,9 @@ let SaveAndLoad = {
                         let itemLocation = currentObject[mapName].Regions[regionName].ItemLocations[itemLocationName];
 
                         if (loadedItemLocationInfo.playerHas) {
+                            if (!itemLocation) {
+                                console.log(`ERROR: item location at map/region/name does not exist: ${mapName}/${regionName}/${itemLocationName}`);
+                            }
                             itemLocation.playerHas = loadedItemLocationInfo.playerHas;
                         }
     
