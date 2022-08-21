@@ -2193,6 +2193,7 @@ let OwExits = {
             ReadOnly: true,
             IsDungeonExit: true,
             Age: Age.EITHER,
+            Order: 0,
             LongDescription: "This is the exit from Dodongo's Cavern."
         },
         "Boss Entrance": {
@@ -2203,7 +2204,7 @@ let OwExits = {
             DefaultEntranceGroupName: "King Dodongo",
             MapInfo: { x: 116, y: 110, floor: "F1" },
             Age: Age.EITHER,
-            Order: 16,
+            Order: 100,
             LongDescription: "Standard: Navigate around the rooms in the giant head and push the block onto the switch to unbar the boss door.<br/><br/>MQ: After navigating around the area inside the Dodongo head, pull back the grave to reveal a switch. Enter the door that unbars."
         }
     },

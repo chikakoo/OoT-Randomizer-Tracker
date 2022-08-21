@@ -37,12 +37,12 @@ let StandardDungeons = {
 					"Heart in Lower Lobby": {
 						Name: "Heart in Lower Lobby",
 						ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapImageName: "Recovery Heart",
-                        MapInfo: { x: 245, y: 28, floor: "F2" },
-                        Age: Age.EITHER,
+						MapImageName: "Recovery Heart",
+						MapInfo: { x: 245, y: 28, floor: "F2" },
+						Age: Age.EITHER,
 						Order: 1,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-                        LongDescription: "Climb up the vines on the first floor. Jump to the small platform to your left. The item is on the end of that platform; you have to jump off for it.",
+						LongDescription: "Climb up the vines on the first floor. Jump to the small platform to your left. The item is on the end of that platform; you have to jump off for it.",
 					},
 					"Map Chest": {
 						Name: "Map Chest",
@@ -255,7 +255,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.NON_ITEM,
 						MapInfo: { x: 134, y: 262, floor: "F1" },
 						Age: Age.EITHER,
-						Order: -2,
+						Order: 1,
 						LongDescription: "Use an explosive, hammer, or blue fire to break the first wall. This is used to determine whether Child can get in without anything.",
 						CustomRequirement: function(age) {
 							if (Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas) { return true; }
@@ -284,47 +284,58 @@ let StandardDungeons = {
 				},
 
 				ItemLocations: {
-					"Map Chest": {
-						Name: "Map Chest",
-						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 97, y: 198, floor: "F1" },
-						Age: Age.EITHER,
-						Order: 4,
-						LongDescription: "Go to the left side of the big main room. Destroy the wall with an explosive, hammer, or blue fire to find this chest.",
-						CustomRequirement: function(age) {
-							return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
-						}
-					},
 					"Gossip Stone in Main Room": {
 						Name: "Gossip Stone in Main Room",
 						ItemGroup: ItemGroups.GOSSIP_STONE,
 						MapInfo: { x: 173, y: 179, floor: "F1" },
 						UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
 						Age: Age.EITHER,
-						Order: -1,
-						LongDescription: "This stone is behind the breakable wall in the northwest corner of the main room.",
+						Order: 1,
+						LongDescription: "This stone is behind the breakable wall in the northeast corner of the main room.",
 						CustomRequirement: function(age) {
 							return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
 						}
 					},
+					"2 Pots at East Room Entrance": {
+                        Name: "2 Pots at East Room Entrance",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 206, y: 220, floor: "F1" },
+                        Age: Age.EITHER,
+						Order: 2,
+                        LongDescription: "Go to the room to the east of the main room. The pots are in front of you in the first alcove to the left."
+                    },
 					"Skulltula in East Room": {
 						Name: "Skulltula in East Room",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 242, y: 274, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 1,
+						Order: 3,
 						LongDescription: "Go to the room to the east of the main room. If you hug the right wall, you'll find a bombable wall. You can either blow it up with your own explosive, or kill a baby Dodongo near the wall.<br/><br/>Once inside, head to the back of the room to find the skulltula.",
 						CustomRequirement: function(age) {
 							// First check covers bombs/hammer/stunning the baby dodongo
 							return Data.canKillStunnableEnemy(age) || Data.canUseBlueFire(age);
 						}
 					},
+					"2 Pots by East Room Ledge": {
+                        Name: "2 Pots by East Room Ledge",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 228, y: 220, floor: "F1" },
+                        Age: Age.EITHER,
+						Order: 4,
+                        LongDescription: "Go to the room to the east of the main room. The pots are on the left wall near the small ledge."
+                    },
 					"Skulltula on East Room Ledge": {
 						Name: "Skulltula on East Room Ledge",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 220, y: 215, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 2,
+						Order: 5,
 						UseAdultAge: function() { return !Settings.GlitchesToAllow.dodongoScarecrowSkullEarly; },
 						LongDescription: "Go to the room to the east of the main room. As adult, play scarecrow's song near the wall with the ledge on the left hand side. Hookshot up to it to get to the skulltula. Alternatively, you can push the armos status all the way over to the ledge and backflip onto it to get to the ledge.",
 						CustomRequirement: function(age) {
@@ -333,12 +344,65 @@ let StandardDungeons = {
 							return scarecrowless || Data.canHookScarecrow(age);
 						}
 					},
+					"2 Pots in Lizalfos Antechamber": {
+                        Name: "2 Pots in Lizalfos Antechamber",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 310, y: 195, floor: "F1" },
+                        Age: Age.EITHER,
+						Order: 6,
+                        LongDescription: "Go to the room to the east of the main room and push the armos on the switch to unbar the door. The pots are in the next room."
+                    },
+					"Heart in Lavafall Cave": {
+						Name: "Heart in Lavafall Cave",
+						ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						MapImageName: "Recovery Heart",
+						MapInfo: { x: 335, y: 166, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 7,
+						LongDescription: "In the lower lizalfos room, head to the platform closest to the lavafall. Jump through the lavafall on the side that's closer to the wall to get to ths item."
+					},
+					"2 Pots Left of Lizalfos Room Exit": {
+                        Name: "2 Pots Left of Lizalfos Room Exit",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 280, y: 148, floor: "F1" },
+                        Age: Age.EITHER,
+						Order: 8,
+                        LongDescription: "In the lower lizalfos room, these pots are on the platform to the left of the exit door."
+                    },
+					"2 Pots Right of Lizalfos Room Exit": {
+                        Name: "2 Pots Right of Lizalfos Room Exit",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 311, y: 128, floor: "F1" },
+                        Age: Age.EITHER,
+						Order: 9,
+                        LongDescription: "In the lower lizalfos room, these pots are on the platform to the right of the exit door."
+                    },
+					"Map Chest": {
+						Name: "Map Chest",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 97, y: 198, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 13,
+						LongDescription: "Go to the left side of the big main room. Destroy the wall with an explosive, hammer, or blue fire to find this chest.",
+						CustomRequirement: function(age) {
+							return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
+						}
+					},
 					"Scrub in Main Room": {
 						Name: "Scrub in Main Room",
 						ItemGroup: ItemGroups.SCRUB,
 						MapInfo: { x: 97, y: 222, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 5,
+						Order: 14,
 						LongDescription: "Make your way to the left side of the main room. The scrub is in the wall closest to the entrance to the dungeon."
 					}
 				}
@@ -360,11 +424,30 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SCRUB,
 						MapInfo: { x: 245, y: 85, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 3,
+						Order: 10,
 						LongDescription: "From the entrance, go around the right side of the dungeon until you get to the blue room with dodongos in it. You can also jump up to the switch platform as adult and enter the door to get here. Near the usual entrance to this room, there's a mud wall with a scrub inside. You should be able to run a bomb flower to it if you don't have your own explosives.",
 						CustomRequirement: function(age) {
 							return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
 						}
+					},
+					"3 Pots by Blue Room Start": {
+                        Name: "3 Pots by Blue Room Start",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 221, y: 146, floor: "F1" },
+                        Age: Age.EITHER,
+						Order: 11,
+                        LongDescription: "From the entrance, go around the right side of the dungeon until you get to the blue room with dodongos in it. You can also jump up to the switch platform as adult and enter the door to get here.<br/><br/>Near the first pillar, there are three pots. Two on one side, and one on the other."
+                    },
+					"Pot by Blue Room End": {
+						Name: "Pot by Blue Room End",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 217, y: 190, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 12,
+						LongDescription: "From the entrance, go around the right side of the dungeon until you get to the blue room with dodongos in it. You can also jump up to the switch platform as adult and enter the door to get here.<br/><br/>This pot is between the last two pillars in the room."
 					}
 				}
 			},
@@ -392,7 +475,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 41, y: 259, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 6,
+						Order: 15,
 						LongDescription: "Make your way to the room with the Bomb Flowers by the staircase. Destroy the wall near the front of the stairs and enter the room. The chest is here - if you can't kill the armos, you'll have to savewarp after you get the chest.",
 						CustomRequirement: function(age) {
 							return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
@@ -403,65 +486,171 @@ let StandardDungeons = {
 
 			staircaseTop: {
 				Exits: {
+					skulltulaAlcoveAboveStairs: {
+						Name: "skulltulaAlcoveAboveStairs",
+						Age: Age.ADULT,
+						RequiredAdultItems: [{ item: Items.HOOKSHOT, upgradeString: "2" }]
+					},
 					bombChestFloor: {
 						Name: "bombChestFloor",
 						CustomRequirement: function(age) {
 							let adultBombChestEarly = age === Age.ADULT && Settings.GlitchesToAllow.dodongoAdultJumpToBombChest;
 							let canGroundJumpThere = age === Age.ADULT && Data.canGroundJumpWithBomb(age);
 							let canMegaflipThere = Items.BOMBCHU.playerHas && Data.canMegaFlip(age);
-							let canGetThereEarly = adultBombChestEarly || canGroundJumpThere || canMegaflipThere;
-							
-							let canBreakMudWalls = Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
-							let canDefeatLizalfos = Data.hasSwordWeapon(age) || Data.hasExplosives();
-							let canGetThereNormally = Data.canShootEyeSwitch(age) && canDefeatLizalfos; 
-							
-							return canBreakMudWalls && (canGetThereEarly || canGetThereNormally);
+							return adultBombChestEarly || canGroundJumpThere || canMegaflipThere;
 						}
 					},
-
-					skulltulaAlcoveAboveStairs: {
-						Name: "skulltulaAlcoveAboveStairs",
-						Age: Age.ADULT,
-						RequiredAdultItems: [{ item: Items.HOOKSHOT, upgradeString: "2" }]
+					firstEyeSwitchRoom: {
+						Name: "firstEyeSwitchRoom",
+						CustomRequirement: function(age) {
+							return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
+						}
+					},
+					potsInBladeRoom: {
+						Name: "potsInBladeRoom",
+						RequiredItems: [Items.BOOMERANG],
+						CustomRequirement: function(age) {
+							return Settings.GlitchesToAllow.boomerangThroughWalls;
+						}
 					}
 				},
 
 				ItemLocations: {
-					"Chest by Bomb Flower": {
-						Name: "Chest by Bomb Flower",
-						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 201, y: 201, floor: "F2" },
+					"2 Pots Left of Staircase": {
+						Name: "2 Pots Left of Staircase",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 12, y: 96, floor: "F2" },
 						Age: Age.EITHER,
-						Order: 8,
-						LongDescription: "In the room with the blades, this is the chest on the ledge near the Bomb Flower and bombable wall."
+						Order: 16,
+						LongDescription: "Lower the giant staircase. Climb it - the pots are to the left."
+					},
+					"2 Pots Right of Staircase": {
+						Name: "2 Pots Right of Staircase",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 51, y: 96, floor: "F2" },
+						Age: Age.EITHER,
+						Order: 17,
+						LongDescription: "Lower the giant staircase. Climb it - the pots are to the Right."
 					},
 					"Skulltula on Vines by Stairs": {
 						Name: "Skulltula on Vines by Stairs",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 29, y: 136, floor: "F2" },
 						Age: Age.EITHER,
-						Order: 7,
+						Order: 18,
 						LongDescription: "Head to the top of the room with the giant staircase and the Bomb Flowers. The skulltula is on the vines near the exit. If you have nothing to kill it, you can throw one of the pots at it.",
 						OverrideItemGroupCondition: true
 					},
-					"Left Scrub by Blade Room": {
-						Name: "Left Scrub by Blade Room",
-						ItemGroup: ItemGroups.SCRUB,
-						MapInfo: { x: 197, y: 106, floor: "F2" },
+					"Chest by Bomb Flower": {
+						Name: "Chest by Bomb Flower",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 201, y: 201, floor: "F2" },
 						Age: Age.EITHER,
-						Order: 9,
+						Order: 19,
+						LongDescription: "In the room with the blades, this is the chest on the ledge near the Bomb Flower and bombable wall."
+					},
+					"2 Scrubs by Blade Room": {
+						Name: "2 Scrubs by Blade Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.SCRUB,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Scrubs",
+						MapInfo: { x: 202, y: 106, floor: "F2" },
+						Age: Age.EITHER,
+						Order: 20,
 						LongDescription: "In the room with the blades, there's a wall you can destroy that's located near the cliffs with the bomb chest. There are a couple scrubs inside.",
 						BlockedByMudWall: true
 					},
-					"Right Scrub by Blade Room": {
-						Name: "Right Scrub by Blade Room",
-						ItemGroup: ItemGroups.SCRUB,
-						MapInfo: { x: 207, y: 106, floor: "F2" },
+					"Heart Behind Block in Blade Room": {
+						Name: "Heart Behind Block in Blade Room",
+						ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						MapImageName: "Recovery Heart",
+						MapInfo: { x: 211, y: 196, floor: "F2" },
 						Age: Age.EITHER,
-						Order: 10,
-						LongDescription: "In the room with the blades, there's a wall you can destroy that's located near the cliffs with the bomb chest. There are a couple scrubs inside.",
-						BlockedByMudWall: true
+						Order: 21,
+						LongDescription: "In the room with the blades, push the block all the way out. There's an item inside its alcove."
 					}
+				}
+			},
+
+			potsInBladeRoom: {
+				Exits: {},
+				ItemLocations: {
+					"2 Pots in Blade Room": {
+						Name: "2 Pots in Blade Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 202, y: 172, floor: "F2" },
+						Age: Age.EITHER,
+						Order: 27,
+						LongDescription: "These pots are in the blade room on the pillars. Either make your way to the bomb chest area, or do a couple trick shots with the boomerang to get them."
+					}
+				}
+			},
+
+			firstEyeSwitchRoom: {
+				Exits: {
+					bombChestFloor: {
+						Name: "bombChestFloor",
+						RequiredChildItems: [Items.FAIRY_SLINGSHOT],
+						RequiredAdultItems: [Items.FAIRY_BOW]
+					}
+				},
+				ItemLocations: {
+					"First Eye Switch Pot by Entrance": {
+						Name: "First Eye Switch Pot by Entrance",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 251, y: 190, floor: "F2" },
+						Age: Age.EITHER,
+						Order: 22,
+						LongDescription: "Make your way to the first eye switch puzzle room, either through the blade room or the upper lizalfos room. This pot is in the corner by the entrance."
+					},
+					"First Eye Switch Pot by Exit": {
+						Name: "First Eye Switch Pot by Exit",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 270, y: 205, floor: "F2" },
+						Age: Age.EITHER,
+						Order: 23,
+						LongDescription: "Make your way to the first eye switch puzzle room, either through the blade room or the upper lizalfos room. This pot is in the corner by the exit."
+					}
+				}
+			},
+
+			upperLizalfosRoom: {
+				Exits: {
+					bombChestFloor: {
+						Name: "bombChestFloor",
+						CustomRequirement: function(age) {
+							return Data.hasSwordWeapon(age) || Data.hasExplosives();
+						}
+					},
+					firstEyeSwitchRoom: {
+						Name: "firstEyeSwitchRoom",
+						CustomRequirement: function(age) {
+							return Data.hasSwordWeapon(age) || Data.hasExplosives();
+						}
+					}
+				},
+				ItemLocations: {
+					"2 Hearts in Upper Lizalfos Room": {
+                        Name: "2 Hearts in Upper Lizalfos Room",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Hearts",
+                        MapInfo: { x: 296, y: 123, floor: "F2" },
+                        Age: Age.EITHER,
+						Order: 24,
+                        LongDescription: "In the upper lizalfos room, this item is way in the back on the platform above the lower lizalfos room."
+                    }
 				}
 			},
 
@@ -471,18 +660,40 @@ let StandardDungeons = {
 						Name: "inDodongoHead",
 						NeedsExplosives: true
 					},
+					potsInBladeRoom: {
+						Name: "potsInBladeRoom"
+					},
+					upperLizalfosRoom: {
+						Name: "upperLizalfosRoom"
+					},
 					skulltulaAlcoveAboveStairs: {
 						Name: "skulltulaAlcoveAboveStairs"
 					}
 				},
 
 				ItemLocations: {
+					"Second Eye Switch Pot by Entrance": {
+						Name: "Second Eye Switch Pot by Entrance",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 275, y: 166, floor: "F2" },
+						Age: Age.EITHER,
+						Order: 25,
+						LongDescription: "Make your way to the second eye switch puzzle room, either through upper lizalfos room or by going backwards form the bomb chest. This pot is in the corner by the entrance."
+					},
+					"Second Eye Switch Pot by Exit": {
+						Name: "Second Eye Switch Pot by Exit",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 252, y: 153, floor: "F2" },
+						Age: Age.EITHER,
+						Order: 26,
+						LongDescription: "Make your way to the second eye switch puzzle room, either through upper lizalfos room or by going backwards form the bomb chest. This pot is in the corner by the exit."
+					},
 					"Bomb Bag Chest": {
 						Name: "Bomb Bag Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 184, y: 145, floor: "F2" },
 						Age: Age.EITHER,
-						Order: 11,
+						Order: 28,
 						LongDescription: "This is the chest elevated on the platform in the room with the blades. You normally get here after the second Lizalfos fight. There are tricks to megaflip as a child to get here earlier. You can also simply jump to a nearby platform as adult to skip that fight."
 					},
 					"Chest at End of Bridge": {
@@ -490,7 +701,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 84, y: 149, floor: "F2" },
 						Age: Age.EITHER,
-						Order: 12,
+						Order: 29,
 						LongDescription: "At the end of the bridge above the giant dodongo head, destroy the wall. The chest is just inside.",
 						BlockedByMudWall: true
 					}
@@ -505,7 +716,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 31, y: 94, floor: "F2" },
 						Age: Age.EITHER,
-						Order: 13,
+						Order: 30,
 						LongDescription: "This skulltula is in an alcove above the giant staircase with the Bomb Flowers.<br/><br/>As child, you must first navigate to the switch that raises the platform to the second floor. Now, leave the dungeon and come back in. Take the platform to the second floor and proceed backwards to the staircase room - the staircase is now raised. You can climb the vines on the staircase to get to the skulltula.<br/><br/>As adult, you can do the same thing. If you have the longshot, though, you can get it without needing the staircase up if you stand on a step close to the top.",
 						IsAtShortDistance: true
 					}
@@ -525,9 +736,28 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 193, y: 11, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 14,
+						Order: 31,
 						LongDescription: "This is in the series of rooms after you enter the giant dodongo head. After you climb the ledge with the pushable blocks, there's a wall you can destroy. The skulltula is inside."
-					}
+					},
+					"Pot After Block Push in Back Room": {
+						Name: "Pot After Block Push in Back Room",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 176, y: 58, floor: "F1" },
+						Age: Age.POT,
+						Order: 32,
+						LongDescription: "After the block push puzzle in the giant dodongo head, this is one of the pots to your left before you enter the hallway. The other one will always contain a fairy."
+					},
+					"2 Pots in Hall Before Final Block": {
+                        Name: "2 Pots in Hall Before Final Block",
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 143, y: 53, floor: "F1" },
+                        Age: Age.EITHER,
+						Order: 33,
+                        LongDescription: "At the end of the path in the giant dodongo head, these pots are in the hallway before the block you push down."
+                    }
 				}
 			},
 

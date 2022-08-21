@@ -1582,6 +1582,21 @@ GrottoGroups = {
 			}
 		}
 	},
+	"2 Hearts": {
+		tooltip: "A group of two recovery hearts",
+		buttons: {
+			"Heart 1": {
+				icon: "Recovery Heart",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Heart 1."
+			},
+			"Heart 2": {
+				icon: "Recovery Heart",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Heart 2."
+			}
+		}
+	},
 	"3 Hearts": {
 		tooltip: "A group of three recovery hearts",
 		buttons: {
@@ -2029,6 +2044,28 @@ GrottoGroups = {
 				description: "Crate 3."
 			}
 		}
-	}
+	},
+	"2 Scrubs": {
+		tooltip: "A group of 2 business scrubs.",
+		icon: "2 Scrubs No Beehive",
+		buttons: {
+			"Scrub 1": {
+				icon: "Scrub",
+				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
+				canGet: function(age) {
+					return Data.canBuyFromScrub(age);
+				}
+			},
+			"Scrub 2": {
+				icon: "Scrub",
+				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
+				canGet: function(age) {
+					return Data.canBuyFromScrub(age);
+				}
+			}
+		}
+	},
  };
 
