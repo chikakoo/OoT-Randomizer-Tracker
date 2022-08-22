@@ -2045,6 +2045,66 @@ GrottoGroups = {
 			}
 		}
 	},
+	"4 Crates": {
+		tooltip: "A set of 4 crates.",
+		buttons: {
+			"Crate 1": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 1."
+			},
+			"Crate 2": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 2."
+			},
+			"Crate 3": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 3."
+			},
+			"Crate 4": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 4."
+			}
+		}
+	},
+	"6 Crates": {
+		tooltip: "A set of 6 crates.",
+		buttons: {
+			"Crate 1": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 1."
+			},
+			"Crate 2": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 2."
+			},
+			"Crate 3": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 3."
+			},
+			"Crate 4": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 4."
+			},
+			"Crate 5": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 5."
+			},
+			"Crate 6": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 6."
+			}
+		}
+	},
 	"2 Scrubs": {
 		tooltip: "A group of 2 business scrubs.",
 		icon: "2 Scrubs No Beehive",
