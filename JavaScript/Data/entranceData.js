@@ -1772,6 +1772,31 @@ GrottoGroups = {
 			}
 		}
 	},
+	"3 Jabu Rupees": {
+		tooltip: "The 3 Jabu rupees with various diving requirements",
+		buttons: {
+			"Green Rupee": {
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Can be obtained by diving to it."
+			},
+			"Green Rupee 2": {
+				icon: "Green Rupee Silver Scale",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Requires iron boots, or silver scale+.",
+				canGet: function(age) {
+					return Data.canSinkSilverScaleDepth(age);
+				}
+			},
+			"Green Rupee 3": {
+				icon: "Green Rupee Gold Scale",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Requires iron boots, or gold scale.",
+				canGet: function(age) {
+					return Data.canSinkGoldenScaleDepth(age);
+				}
+			}
+		}
+	},
 	"4 Red Rupees": {
 		tooltip: "A group of four red rupees.",
 		buttons: {

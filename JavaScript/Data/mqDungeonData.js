@@ -1028,9 +1028,21 @@ let MQDungeons = {
 						Age: Age.CHILD,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleDungeonEntrances; },
-						Order: 0.1,
+						Order: 1,
 						LongDescription: "In the first room, shoot the left cow to open the door.",
 						RequiredItems: [Items.FAIRY_SLINGSHOT]
+					},
+					"2 Pots in First Room": {
+						Name: "2 Pots in First Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 165, y: 246, floor: "F1" },
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						Order: 2,
+						LongDescription: "These two pots are on the edge of the water in the first room, on opposite sides of each other."
 					},
 					"Map Chest": {
 						Name: "Map Chest",
@@ -1038,7 +1050,7 @@ let MQDungeons = {
 						MapInfo: { x: 173, y: 269, floor: "F1" },
 						Age: Age.EITHER,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-						Order: 1,
+						Order: 3,
 						LongDescription: "In the first room, destroy the yellow rock and hit the switch underneath to spawn the chest.",
 						NeedToBlastOrSmash: true
 					},
@@ -1047,7 +1059,7 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 181, y: 279, floor: "F1" },
 						Age: Age.CHILD,
-						Order: 2,
+						Order: 4,
 						LongDescription: "In the first room, shoot the right cow with your slingshot to spawn the chest.",
 						RequiredItems: [Items.FAIRY_SLINGSHOT]
 					}
@@ -1072,13 +1084,25 @@ let MQDungeons = {
 				},
 
 				ItemLocations: {
+					"2 Hearts in Elevator Room": {
+						Name: "2 Hearts in Elevator Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Hearts",
+						MapInfo: { x: 162, y: 187, floor: "F1" },
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						Order: 5,
+						LongDescription: "These items are between the jellos in the room after the first door. Use the elevator to get to them."
+					},
 					"Chest in Elevator Room": {
 						Name: "Chest in Elevator Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 209, y: 221, floor: "B1" },
 						Age: Age.EITHER,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-						Order: 3,
+						Order: 6,
 						LongDescription: "After going through the first door, drop down to the bottom. The chest is by the door."
 					},
 					"Chest in Hidden Water Room": {
@@ -1086,15 +1110,39 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 116, y: 229, floor: "B1" },
 						Age: Age.CHILD,
-						Order: 4,
+						Order: 7,
 						LongDescription: "Drop down in the main elevator room. Dive underwater opposite the door to get to the hidden room. Shoot the cow in the water behind you after you climb up to spawn the chest."
+					},
+					"2 Pots in Hidden Water Room": {
+						Name: "2 Pots in Hidden Water Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 116, y: 224, floor: "B1" },
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						Order: 8,
+						LongDescription: "Drop down in the main elevator room. Dive underwater opposite the door to get to the hidden room. The pots are on the platform."
+					},
+					"3 Rupees in Hidden Water Room": {
+						Name: "3 Rupees in Hidden Water Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Jabu Rupees",
+						MapInfo: { x: 132, y: 229, floor: "B1" },
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						Order: 9,
+						LongDescription: "Drop down in the main elevator room. Dive underwater opposite the door to get to the hidden room. The rupees are in the water. You'll need iron boots or silver/gold scales for two of them."
 					},
 					"East Chest in Big Room": {
 						Name: "East Chest in Big Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 205, y: 54, floor: "B1" },
 						Age: Age.CHILD,
-						Order: 5,
+						Order: 10,
 						LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole that Ruto normally falls down. Shoot the right cow on the wall to spawn this chest."
 					},
 					"West Chest in Big Room": {
@@ -1102,7 +1150,7 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 175, y: 108, floor: "B1" },
 						Age: Age.CHILD,
-						Order: 6,
+						Order: 11,
 						LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole that Ruto normally falls down. Shoot the left cow on the wall to spawn this chest."
 					},
 					"Free Chest in Path to Elevator Room": {
@@ -1111,7 +1159,7 @@ let MQDungeons = {
 						MapInfo: { x: 318, y: 134, floor: "B1" },
 						Age: Age.EITHER,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-						Order: 7,
+						Order: 12,
 						LongDescription: "Solve the puzzle in the room below the holes to enter the path leading to the elevator room. There is an easily accessible chest in here."
 					},
 					"Enemy Chest in Path to Elevator Room": {
@@ -1120,8 +1168,20 @@ let MQDungeons = {
 						MapInfo: { x: 258, y: 152, floor: "B1" },
 						Age: Age.EITHER,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-						Order: 8,
+						Order: 13,
 						LongDescription: "Solve the puzzle in the room below the holes to enter the path leading to the elevator room. Defeat all the enemies in the water to spawn the chest."
+					},
+					"2 Pots in Path to Elevator Room": {
+						Name: "2 Pots in Path to Elevator Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 258, y: 153, floor: "B1" },
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						Order: 14,
+						LongDescription: "Solve the puzzle in the room below the holes to enter the path leading to the elevator room. The pots are on the ledge up the vines."
 					},
 					"Skulltula Under Song of Time Block": {
 						Name: "Skulltula Under Song of Time Block",
@@ -1129,7 +1189,7 @@ let MQDungeons = {
 						MapInfo: { x: 297, y: 147, floor: "B1" },
 						Age: Age.EITHER,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-						Order: 9,
+						Order: 15,
 						LongDescription: "In the path leading to the elevator room, there's a skulltula under the Song of Time block. Play the song to move the block.<br/><br/>If you have the boomerang, you can also aim it to the left and slightly downward to get the skulltula through the block.",
 						CustomRequirement: function(age) {
 							return Data.canPlaySong(Songs.SONG_OF_TIME) || 
@@ -1148,18 +1208,27 @@ let MQDungeons = {
 						}
 					}
 				},
-
 				ItemLocations: {
+					"2 Pots in Like Like Room": {
+						Name: "2 Pots in Like Like Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 192, y: 12, floor: "F1" },
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
+						Order: 16,
+						LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. The pots are in the back of this room."
+					},
 					"Chest in Like Like Room": {
 						Name: "Chest in Like Like Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 195, y: 12, floor: "F1" },
-						Age: Age.CHILD,
+						Age: Age.EITHER,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
-						Order: 10,
-						LongDescription: "In the room beyond the room with holes, enter the next room and go to the far right door. Shoot the cows, then kill the Like Likes that fall to spawn the chest.",
-						Region: "northernRooms",
-						RequiredItems: [Items.BOOMERANG]
+						Order: 17,
+						LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. Shoot the cows, then kill the Like Likes that fall to spawn the chest."
 					}
 				}
 			},
@@ -1179,7 +1248,7 @@ let MQDungeons = {
 						MapInfo: { x: 157, y: 14, floor: "F1" },
 						Age: Age.EITHER,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
-						Order: 11,
+						Order: 18,
 						LongDescription: "Using a deku stick to bring a fire from the Like Like room, or a fire item, burn the web to get access to the far west room. After killing the tentacle, head to the far east room and kill that tentacle. Now leave and enter the room to your left. Use the switch and a bomb, or a bombchu to blow up the rock on the ceiling to reveal the skulltula.",
 						CustomRequirement: function(age) {
 							return Data.canUseDekuStick(age) || Data.canUseFireItem(age);
@@ -1190,8 +1259,8 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.NON_ITEM,
 						MapInfo: { x: 172, y: 10, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 11.1,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equpSwap; },
+						Order: 19,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
 						LongDescription: "This is the task to defeat the three tentacles. This is used to help see what Adult can do if he cannot use the boomerang."
 					}
 				}
@@ -1213,7 +1282,7 @@ let MQDungeons = {
 						MapInfo: { x: 29, y: 191, floor: "B1" },
 						Age: Age.EITHER,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-						Order: 12,
+						Order: 20,
 						LongDescription: "After destroying all the tentacles, drop down into the big room and enter the door by the vines. The skulltula is in the back of the room. Kill the enemies (some are invisible) or megaflip to cross to the other wide. Burn the web with a fire item.",
 						CustomRequirement: function(age) {
 							let canUseLens = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas;
@@ -1239,7 +1308,7 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.COW,
 						MapInfo: { x: 108, y: 251, floor: "F2" },
 						Age: Age.CHILD,
-						Order: 13,
+						Order: 21,
 						LongDescription: "After killing Big Octo, ride the elevator up, shoot the cow on the wall, and proceed through the door. The cow is on the ground in the room with the two electric sponges."
 					},
 					"Chest After Big Octo": {
@@ -1247,7 +1316,7 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 192, y: 188, floor: "F1" },
 						Age: Age.CHILD,
-						Order: 14,
+						Order: 22,
 						LongDescription: "After killing the Big Octo and riding the platform down, you gain access to this chest. Shoot the cow near where the platform landed if you don't see it."
 					},
 					"Chest in Room Before Boss": {
@@ -1255,7 +1324,7 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 234, y: 175, floor: "F1" },
 						Age: Age.CHILD,
-						Order: 15,
+						Order: 23,
 						LongDescription: "Shoot the left cow in this room to spawn the chest."
 					},
 					"Skulltula in Room Before Boss": {
@@ -1265,7 +1334,7 @@ let MQDungeons = {
 						Age: Age.EITHER,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
 						RequiredItems: [Items.BOOMERANG],
-						Order: 16,
+						Order: 24,
 						LongDescription: "Climb up the vines and use your boomerang to get this skulltula."
 					}
 				}
