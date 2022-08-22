@@ -44,6 +44,11 @@ let updateItemDisplay = function() {
 
 		if (!ageIconDiv) { return; } // Means that this item isn't being displayed
 
+		removeCssClass(textDiv, "item-cannot-obtain");
+		if (!canGetAsChild && !canGetAsAdult) {
+			addCssClass(textDiv, "item-cannot-obtain");
+		}
+
 		removeCssClass(textDiv, "item-entrance-known");
 		if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE && 
 			itemLocation.OwShuffleMap && 
@@ -59,13 +64,12 @@ let updateItemDisplay = function() {
 				EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.ADULT) === 0;
 
 			if (cannotGetEntranceItem) {
-				addCssClass(textDiv, "item-entrance-known");
+				if (itemLocation.IsItemLocationGroup) {
+					addCssClass(textDiv, "item-cannot-obtain");
+				} else {
+					addCssClass(textDiv, "item-entrance-known");
+				}
 			}
-		}
-		
-		removeCssClass(textDiv, "item-cannot-obtain");
-		if (!canGetAsChild && !canGetAsAdult) {
-			addCssClass(textDiv, "item-cannot-obtain");
 		}
 
 		if (itemLocation.Age === Age.EITHER) {
