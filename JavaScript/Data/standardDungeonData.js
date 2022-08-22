@@ -510,7 +510,7 @@ let StandardDungeons = {
 						Name: "potsInBladeRoom",
 						RequiredItems: [Items.BOOMERANG],
 						CustomRequirement: function(age) {
-							return Settings.GlitchesToAllow.boomerangThroughWalls;
+							return Settings.GlitchesToAllow.difficultBoomerangTrickThrows;
 						}
 					}
 				},
@@ -992,15 +992,6 @@ let StandardDungeons = {
 				},
 
 				ItemLocations: {
-					"Chest on Starting Room Tree": {
-						Name: "Chest on Starting Room Tree",
-						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 151, y: 254, floor: "F1" },
-						Age: Age.EITHER,
-						Order: 2,
-						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-						LongDescription: "In the first room, climb up the vines to the right. Navigate over to the tree, and then jump or hookshot across to the chest on the other tree."
-					},
 					"Skulltula in First Room": {
 						Name: "Skulltula in First Room",
 						ItemGroup: ItemGroups.SKULLTULA,
@@ -1017,6 +1008,15 @@ let StandardDungeons = {
 							return Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas;
 						}
 					},
+					"Chest on Starting Room Tree": {
+						Name: "Chest on Starting Room Tree",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 151, y: 254, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 2,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						LongDescription: "In the first room, climb up the vines to the right. Navigate over to the tree, and then jump or hookshot across to the chest on the other tree."
+					},
 
 					// Locked Doors
 					"Locked Door in Lobby": {
@@ -1025,7 +1025,7 @@ let StandardDungeons = {
 						Regions: ["main"],
 						MapInfo: { x: 122, y: 150, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 9,
+						Order: 13,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "This is the western door in the lobby.",
 						KeyRequirement: function(age) {
@@ -1042,7 +1042,7 @@ let StandardDungeons = {
 						Regions: ["topOfBlockRoom"],
 						MapInfo: { x: 42, y: 198, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 12,
+						Order: 15,
 						LongDescription: "This is the door that's after the block puzzle by the bubbles.",
 						KeyRequirement: function(age) {
 							if (Data.forestCanJumpToTop(age) && !Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby")) {
@@ -1058,7 +1058,7 @@ let StandardDungeons = {
 						Regions: ["twistedCorridor1"],
 						MapInfo: { x: 80, y: 57, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 16,
+						Order: 20,
 						LongDescription: "This is the door that's in the boss key room when the boss key chest is sideways.",
 						KeyRequirement: function(age) {
 							if (Data.forestCanJumpToTop(age) && !Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby")) {
@@ -1074,7 +1074,7 @@ let StandardDungeons = {
 						Regions: ["firstPoeRoom"],
 						MapInfo: { x: 282, y: 54, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 20,
+						Order: 26,
 						LongDescription: "This is the door that's in the blue poe room.",
 						KeyRequirement: function(age) {
 							if (Data.forestCanJumpToTop(age) && !Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby")) {
@@ -1090,7 +1090,7 @@ let StandardDungeons = {
 						Regions: ["afterPoeRooms"],
 						MapInfo: { x: 319, y: 154, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 21,
+						Order: 27,
 						LongDescription: "This is the door that's after the green bubbles, leading to the frozen eye switch.",
 						KeyRequirement: function(age) {
 							if (Data.forestCanJumpToTop(age) && !Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby")) {
@@ -1152,24 +1152,57 @@ let StandardDungeons = {
 				},
 
 				ItemLocations: {
-					"Chest Behind Main Room": {
-						Name: "Chest Behind Main Room",
-						ItemGroup: ItemGroups.CHEST,
-						MapInfo: {x: 170, y: 16, floor: "F1" },
+					"3 Pots Left in Lobby": {
+						Name: "3 Pots Left in Lobby",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Pots",
+						MapInfo: { x: 142, y: 166, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 4,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-						LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go straight again through the room with the blue bubble. In the next room, kill the two stalfos to spawn the chest."
+						Order: 3,
+						LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. the pots are on the ledge to the left."
+					},
+					"3 Pots Right in Lobby": {
+						Name: "3 Pots Right in Lobby",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Pots",
+						MapInfo: { x: 194, y: 164, floor: "F1" },
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 4,
+						LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. the pots are on the ledge to the right."
 					},
 					"Skulltula in Main Room": {
 						Name: "Skulltula in Main Room",
 						ItemGroup: ItemGroups.SKULLTULA,
-						MapInfo: {x: 191, y: 110, floor: "F1" },
+						MapInfo: { x: 191, y: 110, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 3,
+						Order: 5,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						IsAtShortDistance: true,
 						LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go through the main room until you get to the door on the other side. Turn right to find this skulltula on the wall. You can get it with your hookshot or boomerang."
+					},
+					"Chest Behind Main Room": {
+						Name: "Chest Behind Main Room",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 170, y: 16, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 6,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go straight again through the room with the blue bubble. In the next room, kill the two stalfos to spawn the chest."
+					},
+					"Pot Behind Main Room": {
+						Name: "Pot Behind Main Room",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 168, y: 17, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 7,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go straight again through the room with the blue bubble. The pot is the left one in the back of the room. The right pot always contains a fairy."
 					}
 				}
 			},
@@ -1179,7 +1212,6 @@ let StandardDungeons = {
 						Name: "topOfOutsideRight",
 						MustKillStunnableEnemy: true
 					},
-
 					topOfOutsideLeft: {
 						Name: "topOfOutsideLeft",
 						Age: Age.ADULT,
@@ -1187,7 +1219,13 @@ let StandardDungeons = {
 							return Data.forestCanJumpToTop(age);
 						}
 					},
-
+					outsideLeftHearts: {
+						Name: "outsideLeftHearts",
+						RequiredItems: [Items.BOOMERANG],
+						CustomRequirement: function(age) {
+							return Settings.GlitchesToAllow.difficultBoomerangTrickThrows;
+						}
+					},
 					outsideRight: {
 						Name: "outsideRight",
 						IsGoldenScaleWater: true // This is to swim through the well
@@ -1199,7 +1237,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: {x: 83, y: 52, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 14,
+						Order: 18,
 						IsAtShortDistance: true,
 						LongDescription: "There's a skulltula high up on the wall over the moat in the outside left room. You can get it from the ground with the longshot. Otherwise, you must make your way to the upper platform to grab it. This is the path that you take if you fall in the hole by the boss key chest.",
 						IsPostWalkCheck: true,
@@ -1217,6 +1255,9 @@ let StandardDungeons = {
 					outsideLeft: {
 						Name: "outsideLeft"
 					},
+					outsideLeftHearts: {
+						Name: "outsideLeftHearts"
+					},
 					blockRoom: {
 						Name: "blockRoom"
 					}
@@ -1228,9 +1269,26 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 27, y: 101, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 15,
+						Order: 19,
 						LongDescription: "Navigate to the twisted corridor. Shoot the eye switch to untwist the corridor. Now go across the corridor to the room with the boss key chest. Fall down the hole in this room and kill the bubbles to get out. Follow the right wall in this next area until you reach the first door in the side room to the right (careful of the giant deku baba). Kill the floormaster to spawn the chest.",
 						MustKillStunnableEnemy: true
+					}
+				}
+			},
+			outsideLeftHearts: {
+				Exits: {},
+				ItemLocations: {
+					"2 Hearts Above Right Room": {
+						Name: "2 Hearts Above Right Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Hearts",
+						MapInfo: { x: 81, y: 73, floor: "F1" },
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
+						Order: 17,
+						LongDescription: "Navigate to the twisted corridor. Shoot the eye switch to untwist the corridor. Now go across the corridor to the room with the boss key chest. Fall down the hole in this room and kill the bubbles to get out.<br/><br/>The hearts are on the skinny platform that you have to jump to, near the skulltula on the wall. Be careful not to fall off."
 					}
 				}
 			},
@@ -1257,6 +1315,10 @@ let StandardDungeons = {
 				Exits: {
 					outsideRight: {
 						Name: "outsideRight"
+					},
+					skulltulaOnOutsideRightLedge: {
+						Name: "skulltulaOnOutsideRightLedge",
+						IsAtShortDistance: true
 					}
 				},
 
@@ -1264,19 +1326,23 @@ let StandardDungeons = {
 					"Chest on Outside Right Island": {
 						Name: "Chest on Outside Right Island",
 						ItemGroup: ItemGroups.CHEST,
-						MapInfo: {x: 269, y: 77, floor: "F1" },
+						MapInfo: { x: 269, y: 77, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 6,
+						Order: 9,
 						LongDescription: "There is a chest on the landmass on the other wide of the water in the right outside room. You can hookshot to it with the right angle. To get to the right outside room, you can either shoot the eye switch in the main room, or climb up the vines in the left outside room and go through the dungeon map room.<br/><br/>Alternatively, you can get there using hover boots from the platform with the water-draining well switch."
-					},
+					}
+				}
+			},
+			skulltulaOnOutsideRightLedge: {
+				Exits: {},
+				ItemLocations: {
 					"Skulltula on Outside Right Island": {
 						Name: "Skulltula on Outside Right Island",
 						ItemGroup: ItemGroups.SKULLTULA,
-						MapInfo: {x: 269, y: 70, floor: "F1" },
+						MapInfo: { x: 269, y: 70, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 7,
-						LongDescription: "There is a skulltula on the landmass on the other wide of the water in the right outside room. You can hookshot to the island via the chest at the right angle. To get to the right outside room, you can either shoot the eye switch in the main room, or climb up the vines in the left outside room and go through the dungeon map room.",
-						IsAtShortDistance: true
+						Order: 10,
+						LongDescription: "There is a skulltula on the landmass on the other wide of the water in the right outside room. You can hookshot to the island via the chest at the right angle. To get to the right outside room, you can either shoot the eye switch in the main room, or climb up the vines in the left outside room and go through the dungeon map room.<br/><br/>If you have no hookshot and are coming from the falling ceiling room, make sure you kill it and drop down on the item from above so you don't miss your chance!"
 					}
 				}
 			},
@@ -1308,7 +1374,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 184, y: 111, floor: "F2" },
 						Age: Age.EITHER,
-						Order: 5,
+						Order: 8,
 						UseAdultAge: function() { !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "You can get here from the left outside room. Proceed up the vines and into the room. Kill the blue bubble to spawn the chest. Alternatively, you can get here by longshotting up the vines in the right outside room.",
 						MustKillStunnableEnemy: true
@@ -1318,12 +1384,24 @@ let StandardDungeons = {
 			drainedWell: {
 				Exits: {},
 				ItemLocations: {
+					"2 Hearts in Well": {
+						Name: "2 Hearts in Well",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Hearts",
+						MapInfo: { x: 181, y: 48, floor: "B1" },
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 11,
+						LongDescription: "In the outside rooms, there are two hearts in the well. One way to get there is from the left room. Proceed up the vines, kill the blue bubble, and go into the next room. Now, hookshot or jump to the vines to your left and navigate to the switch on the other platform. This will drain the water. Alternatively, you can start in the right room and longshot up these vines to get to the switch."
+					},
 					"Chest in Well": {
 						Name: "Chest in Well",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 126, y: 48, floor: "B1" },
 						Age: Age.EITHER,
-						Order: 8,
+						Order: 12,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "In the outside rooms, there is a chest at the bottom of the well. One way to get there is from the left room. Proceed up the vines, kill the blue bubble, and go into the next room. Now, hookshot or jump to the vines to your left and navigate to the switch on the other platform. This will drain the water. Alternatively, you can start in the right room and longshot up these vines to get to the switch.",
 						MustKillStunnableEnemy: true
@@ -1358,7 +1436,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 56, y: 226, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 10,
+						Order: 14,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "Navigate to the room with the block puzzle. After pushing the first block, climb up the ladder that it was blocking. Now go straight to the wall in front of you. Follow that wall to the right. Turn right, and you should see an eye switch a bit up the wall in front of you. Shoot it to spawn the chest.",
 						CustomRequirement: function(age) {
@@ -1404,7 +1482,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 66, y: 45, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 13,
+						Order: 16,
 						LongDescription: "WALL MASTER WARNING:<br/>Navigate to the end of the block puzzle room. The door at the end leads to the twisted corridor. Shoot the eye above the door to untwist it. Go down the hallway and into the next room to find the boss key chest."
 					},
 				}
@@ -1435,7 +1513,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 151, y: 54, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 17,
+						Order: 21,
 						LongDescription: "Navigate to the twisted corridor. Make sure it's still twisted when you go down it. If you jump to the platform at the end, then turn right, you'll see a door. Go through it. Spawn the red poe by shooting the paintings on the wall. Kill it to spawn the chest. Note that Deku Nuts can be used to immediately make the poe visible again.",
 						RequiredAdultItems: [Items.FAIRY_BOW]
 					},
@@ -1444,15 +1522,37 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 190, y: 61, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 18,
+						Order: 22,
 						LongDescription: "Go to the room after the red poe room. Kill the stalfos that spawns. After that, kill the two others to spawn the chest.",
+					},
+					"4 Pots in Upper Stalfos Room": {
+						Name: "4 Pots in Upper Stalfos Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "4 Pots",
+						MapInfo: { x: 192, y: 48, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 23,
+						LongDescription: "These pots are against the walls in the room after the red poe room."
+					},
+					"3 Pots in Blue Poe Room": {
+						Name: "3 Pots in Blue Poe Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Pots",
+						MapInfo: { x: 240, y: 43, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 24,
+						LongDescription: "These pots are in the room after the fairy bow chest, just to your left when you enter."
 					},
 					"Blue Poe Chest": {
 						Name: "Blue Poe Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 224, y: 54, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 19,
+						Order: 25,
 						LongDescription: "This chest is in the room after the fairy bow chest. Shoot the paintings on the wall to spawn the poe. Kill it to spawn the chest. As was the case with the red poe, you can use Deku Nuts to make it immediately visible when it vanishes.",
 						RequiredAdultItems: [Items.FAIRY_BOW]
 					}
@@ -1460,20 +1560,42 @@ let StandardDungeons = {
 			},
 			afterPoeRooms :{
 				Exits: {
+					carouselRoom: {
+						Name: "carouselRoom",
+						Map: "Forest Temple",
+						LockedDoor: "Locked Door in Green Bubble Hallway"
+					}
+				},
+				ItemLocations: {}
+			},
+			carouselRoom: {
+				Exits: {
 					fallingCeilingRoom: {
 						Name: "fallingCeilingRoom",
-						Map: "Forest Temple",
-						LockedDoor: "Locked Door in Green Bubble Hallway",
-						NeedsSwordWeapon: true,
 						CustomRequirement: function(age) {
 							return Data.canUseFireItem(age) || (age === Age.ADULT && Items.FAIRY_BOW.playerHas);
 						}
 					}
 				},
-				ItemLocations: {}
+				ItemLocations: {
+					"2 Pots in Carousel Room": {
+						Name: "2 Pots in Carousel Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 331, y: 208, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 28,
+						LongDescription: "After the blue poe room, go through the door. Now go down the hallway that the ladder leads to and enter the locked room. The pots are in the back left corner of the room."
+					}
+				}
 			},
 			fallingCeilingRoom: {
 				Exits: {
+					skulltulaOnOutsideRightLedge: {
+						Name: "skulltulaOnOutsideRightLedge"
+					},
 					outsideRightLedge: {
 						Name: "outsideRightLedge"
 					}
@@ -1485,8 +1607,19 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 318, y: 116, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 22,
+						Order: 29,
 						LongDescription: "After the blue poe room, go through the door. Now go down the hallway that the ladder leads to and enter the locked room. Either shoot the frozen eye switch so that the arrow goes through the torch, or cast Din's Fire while standing just below the switch. Now, head back to the room with the ladder and fall down the hole. The chest is in the middle of this room. Alternatively, you can spawn a scarecrow in the right outside room that you can longshot to."
+					},
+					"2 Pots in Green Poe Room": {
+						Name: "2 Pots in Green Poe Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 303, y: 146, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 30,
+						LongDescription: "Make your way to the falling ceiling room. Nagivate through it to the green poe room. The pots are by the exit door."
 					}
 				}
 			},
@@ -1506,7 +1639,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 138, y: 237, floor: "B1" },
 						Age: Age.ADULT,
-						Order: 23,
+						Order: 31,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "After defeating all the poes, head down the basement elevator. Push the wall so that they move clockwise once. You should now be able to access the room with the chest.",
 						IsPostWalkCheck: true,
@@ -1519,7 +1652,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: {x: 132, y: 228, floor: "B1" },
 						Age: Age.ADULT,
-						Order: 24,
+						Order: 32,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						IsAtShortDistance: true,
 						LongDescription: "After defeating all the poes, head down the basement elevator. Push the wall so that they move clockwise once. You should now be able to access the room with the skulltula",

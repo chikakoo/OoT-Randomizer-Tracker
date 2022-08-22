@@ -142,6 +142,7 @@ let Settings = {
 		equipSwap: false,
 		weirdShot: false,
 		boomerangThroughWalls: false,
+		difficultBoomerangTrickThrows: false,
 		breakBeehivesWithBombs: false,
 		breakBeehivesWithChus: false,
 		
