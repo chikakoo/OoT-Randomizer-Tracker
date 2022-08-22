@@ -878,7 +878,10 @@ Data = {
             }
 		}
 		
-		switch (itemLocation.ItemGroup) {
+        let itemGroup = itemLocation.OverrideItemGroup
+            ? itemLocation.OverrideItemGroup
+            : itemLocation.ItemGroup;
+		switch (itemGroup) {
 			case ItemGroups.COW:
 				return this.canMilkCows();
 			case ItemGroups.SKULLTULA:

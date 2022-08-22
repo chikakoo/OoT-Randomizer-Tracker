@@ -2220,6 +2220,7 @@ let OwExits = {
             ReadOnly: true,
             IsDungeonExit: true,
             Age: Age.EITHER,
+            Order: 0,
             LongDescription: "This is the exit from Jabu Jabu's Belly."
         },
         "Boss Entrance": {
@@ -2252,6 +2253,7 @@ let OwExits = {
             ReadOnly: true,
             IsDungeonExit: true,
             Age: Age.EITHER,
+            Order: 0,
             LongDescription: "This is the exit from the Forest Temple."
         },
         "Boss Entrance": {
@@ -2262,7 +2264,7 @@ let OwExits = {
             Age: Age.ADULT,
             IsBoss: true,
             DefaultEntranceGroupName: "Phantom Ganon",
-            Order: 25,
+            Order: 100,
             LongDescription: "After hitting all the switches in the basement, you can enter the boss room.",
             IsPostWalkCheck: true,
             CustomRequirement: function(age) {
@@ -2285,6 +2287,7 @@ let OwExits = {
             ReadOnly: true,
             IsDungeonExit: true,
             Age: Age.EITHER,
+            Order: 0,
             LongDescription: "This is the exit from the Fire Temple."
         },
         "Boss Entrance": {
@@ -2320,6 +2323,7 @@ let OwExits = {
             ReadOnly: true,
             IsDungeonExit: true,
             Age: Age.EITHER,
+            Order: 0,
             LongDescription: "This is the exit from the Water Temple."
         },
         "Boss Entrance": {
@@ -2373,6 +2377,7 @@ let OwExits = {
             ReadOnly: true,
             IsDungeonExit: true,
             Age: Age.EITHER,
+            Order: 0,
             LongDescription: "This is the exit from the Shadow Temple."
         },
         "Desert Colossus": {
@@ -2432,6 +2437,7 @@ let OwExits = {
             ReadOnly: true,
             IsDungeonExit: true,
             Age: Age.EITHER,
+            Order: 0,
             LongDescription: "This is the exit from the Ice Cavern."
         }
     },
@@ -2447,6 +2453,7 @@ let OwExits = {
             ReadOnly: true,
             IsDungeonExit: true,
             Age: Age.EITHER,
+            Order: 0,
             LongDescription: "This is the exit from the Gerudo Training Grounds."
         }
     },
@@ -2462,6 +2469,7 @@ let OwExits = {
             ReadOnly: true,
             IsDungeonExit: true,
             Age: Age.EITHER,
+            Order: 0,
             LongDescription: "This is the exit from Ganon's Castle."
         }
     }

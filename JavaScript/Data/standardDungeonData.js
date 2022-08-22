@@ -431,16 +431,16 @@ let StandardDungeons = {
 						}
 					},
 					"3 Pots by Blue Room Start": {
-                        Name: "3 Pots by Blue Room Start",
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 221, y: 146, floor: "F1" },
-                        Age: Age.EITHER,
+						Name: "3 Pots by Blue Room Start",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Pots",
+						MapInfo: { x: 221, y: 146, floor: "F1" },
+						Age: Age.EITHER,
 						Order: 11,
-                        LongDescription: "From the entrance, go around the right side of the dungeon until you get to the blue room with dodongos in it. You can also jump up to the switch platform as adult and enter the door to get here.<br/><br/>Near the first pillar, there are three pots. Two on one side, and one on the other."
-                    },
+						LongDescription: "From the entrance, go around the right side of the dungeon until you get to the blue room with dodongos in it. You can also jump up to the switch platform as adult and enter the door to get here.<br/><br/>Near the first pillar, there are three pots. Two on one side, and one on the other."
+					},
 					"Pot by Blue Room End": {
 						Name: "Pot by Blue Room End",
 						ItemGroup: ItemGroups.POT,
@@ -797,25 +797,99 @@ let StandardDungeons = {
 
 			afterFirstRoom: {
 				Exits: {
+					afterBigOcto: {
+						Name: "afterBigOcto",
+						RequiredItems: [Items.BOOMERANG],
+						NeedsSwordWeapon: true
+					},
 					roomBeforeBoss: {
 						Name: "roomBeforeBoss",
 						CustomRequirement: function(age) {
-							let canGetThereNormally = Data.canUseBoomerang(age) && Data.hasSwordWeapon(age);
-							let canSkipToThere = Settings.GlitchesToAllow.jabuBlueSwitchSkip && 
+							return Settings.GlitchesToAllow.jabuBlueSwitchSkip && 
 								(Data.canMegaFlip(age) || (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas));
-							return canGetThereNormally || canSkipToThere;
 						}
 					}
 				},
 
 				ItemLocations: {
+					"Crate in Elevator Room": {
+                        Name: "Crate in Elevator Room",
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 164, y: 177, floor: "F1" },
+                        Age: Age.EITHER,
+						Order: 1,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "After the first room, break the small crate on the right for this item. The left one drops nothing.",
+                    },
+					"Scrub Behind Octorok Water": {
+						Name: "Scrub Behind Octorok Water",
+						ItemGroup: ItemGroups.SCRUB,
+						MapInfo: {x: 117, y: 229, floor: "B1" },
+						Age: Age.EITHER,
+						Order: 2,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						LongDescription: "In the room with the rising platform (the second room of the dungeon), fall down into the water. Dive down and swim into the adjacent room - it's straight ahead from the door. There's a scrub on the other side."
+					},
+					"4 Pots in Room by Vines": {
+						Name: "4 Pots in Room by Vines",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "4 Pots",
+						MapInfo: { x: 32, y: 188, floor: "B1" },
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						Order: 3,
+						LongDescription: "Fall down one of the holes to get to the main room on the bottom. Enter the door by the vines back up. Either stun the jello with your boomerang to cross, or use hover boots. The pots are on the other side - one is always a fairy."
+					},
+					"Left Skulltula on Lower Room Wall": {
+						Name: "Left Skulltula on Lower Room Wall",
+						ItemGroup: ItemGroups.SKULLTULA,
+						MapInfo: {x: 156, y: 44, floor: "B1" },
+						Age: Age.EITHER,
+						Order: 4,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						LongDescription: "In the room below the one with the holes, there are two skulltulas on the wall. You can reach them from the bottom part with the boomerang - you may have to aim a bit into the cliff, though. Otherwise, you can wait until you kill all the Parasitic Tentacles and drop down the corresponding hole to get an easier angle.",
+						IsAtShortDistance: true
+					},
+					"Right Skulltula on Lower Room Wall": {
+						Name: "Right Skulltula on Lower Room Wall",
+						ItemGroup: ItemGroups.SKULLTULA,
+						MapInfo: {x: 176, y: 35, floor: "B1" },
+						Age: Age.EITHER,
+						Order: 5,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						LongDescription: "In the room below the one with the holes, there are two skulltulas on the wall. You can reach them from the bottom part with the boomerang - you may have to aim a bit into the cliff, though. Otherwise, you can wait until you kill all the Parasitic Tentacles and drop down the corresponding hole to get an easier angle.",
+						IsAtShortDistance: true
+					},
+					"Skulltula on Vines": {
+						Name: "Skulltula on Vines",
+						ItemGroup: ItemGroups.SKULLTULA,
+						MapInfo: {x: 284, y: 153, floor: "B1" },
+						Age: Age.EITHER,
+						Order: 6,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						LongDescription: "In the room with the water and the switch (the first one you usually take Ruto into), there's a skulltula hanging out on the vines. Take it out, then raise the water to collect its token. Note that you can reach it with a jumpslash if you jump off the cliff then jumpslash when you're a bit closer.",
+					},
+					"2 Pots Above Vines": {
+						Name: "2 Pots Above Vines",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 258, y: 152, floor: "B1" },
+						Age: Age.EITHER,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						Order: 7,
+						LongDescription: "These pots are above the vines in the room with the water and the switch (the first one you usually take Ruto into). One of the pots there will always contain a fairy."
+					},
 					"Boomerang Chest": {
 						Name: "Boomerang Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 237, y: 58, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 3,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 8,
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						LongDescription: "Bring Ruto back up to the first floor. Take her through the room with holes into the next room. Now, hug the right wall all the way to a switch - jump on it with Ruto in your hands. Enter the room. Kill all the stingers to spawn the chest. They can be hurt with explosions, boomerang, slingshot, or jump slashes from a stick or sword.",
 						CustomRequirement: function(age) {
 							return Data.canUseBoomerang(age) || Items.FAIRY_SLINGSHOT.playerHas || Data.hasSwordWeapon(age) || Data.hasExplosives();
@@ -827,7 +901,7 @@ let StandardDungeons = {
 						MapInfo: {x: 99, y: 57, floor: "F1" },
 						Age: Age.EITHER,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
-						Order: 4,
+						Order: 9,
 						LongDescription: "Bring Ruto back up to the first floor. Take her through the room with holes into the next room. Hug the left wall until you find a switch. Leave Ruto on it and enter. Kill the Parasitic Tentacle with your boomerang to spawn the chest.",
 						RequiredItems: [Items.BOOMERANG]
 					},
@@ -837,48 +911,32 @@ let StandardDungeons = {
 						MapInfo: {x: 147, y: 17, floor: "F1" },
 						Age: Age.EITHER,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
-						Order: 5,
+						Order: 10,
 						LongDescription: "After killing the Parasitic Tentacle to spawn the Map Chest (see that section), exit the room. Now hug the left wall to the next nearby door. Kill the shaboms within the time limit to spawn this chest. Note that Deku Nuts are a really fast way to take care of this room.",
 						RequiredItems: [Items.BOOMERANG]
-					},
-					"Skulltula on Vines": {
-						Name: "Skulltula on Vines",
-						ItemGroup: ItemGroups.SKULLTULA,
-						MapInfo: {x: 284, y: 153, floor: "B1" },
+					}
+				}
+			},
+
+			afterBigOcto: {
+				Exits: {
+					roomBeforeBoss: {
+						Name: "roomBeforeBoss"
+					}
+				},
+				ItemLocations: {
+					"2 Pots After Big Octo": {
+						Name: "2 Pots After Big Octo",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 101, y: 32, floor: "F2" },
 						Age: Age.EITHER,
-						Order: 2,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-						LongDescription: "In the room with the water and the switch (the first one you usually take Ruto into), there's a skulltula hanging out on the vines. Take it out, then raise the water to collect its token. Note that you can reach it with a jumpslash if you jump off the cliff then jumpslash when you're a bit closer.",
-					},
-					"Left Skulltula on Lower Room Wall": {
-						Name: "Left Skulltula on Lower Room Wall",
-						ItemGroup: ItemGroups.SKULLTULA,
-						MapInfo: {x: 156, y: 44, floor: "B1" },
-						Age: Age.EITHER,
-						Order: 6,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-						LongDescription: "In the room below the one with the holes, there are two skulltulas on the wall. You can reach them from the bottom part with the boomerang - you may have to aim a bit into the cliff, though. Otherwise, you can wait until you kill all the Parasitic Tentacles and drop down the corresponding hole to get an easier angle.",
-						IsAtShortDistance: true
-					},
-					"Right Skulltula on Lower Room Wall": {
-						Name: "Right Skulltula on Lower Room Wall",
-						ItemGroup: ItemGroups.SKULLTULA,
-						MapInfo: {x: 176, y: 35, floor: "B1" },
-						Age: Age.EITHER,
-						Order: 7,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-						LongDescription: "In the room below the one with the holes, there are two skulltulas on the wall. You can reach them from the bottom part with the boomerang - you may have to aim a bit into the cliff, though. Otherwise, you can wait until you kill all the Parasitic Tentacles and drop down the corresponding hole to get an easier angle.",
-						IsAtShortDistance: true
-					},
-					"Scrub Behind Octorok Water": {
-						Name: "Scrub Behind Octorok Water",
-						ItemGroup: ItemGroups.SCRUB,
-						MapInfo: {x: 117, y: 229, floor: "B1" },
-						Age: Age.EITHER,
-						Order: 1,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-						LongDescription: "In the room with the rising platform (the second room of the dungeon), fall down into the water. Dive down and swim into the adjacent room - it's straight ahead from the door. There's a scrub on the other side."
-					},
+						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
+						Order: 11,
+						LongDescription: "After defeating all the tentacles, go defeat Big Octo. Ride up the elevator - the pots are in this room on the back wall. One of them always contains a fairy."
+					}
 				}
 			},
 
@@ -896,7 +954,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 255, y: 194, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 8,
+						Order: 12,
 						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						LongDescription: "In the room before the boss room (the one that's slightly green and has a bunch of biris), there's a skulltula on the vines leading up the wall to the door switch.<br/><br/>Note that adult can get here immediately by using the hover boots."
 					}
