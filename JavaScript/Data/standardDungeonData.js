@@ -1750,7 +1750,7 @@ let StandardDungeons = {
 						MapInfo: { x: 45, y: 158, floor: "F1" },
 						Age: Age.ADULT,
 						Order: 2,
-						LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper right corner of the room using your hookshot, hover boots, or by megaflipping. Climb up to get to the pots (2/4 are faries).",
+						LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper right corner of the room using your hookshot, hover boots, or by megaflipping. Climb up to get to the pots (2/4 are fairies).",
 						CustomRequirement: function(age) {
 							let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
 							let canGetThere = Data.canMegaFlip(age) || Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas;

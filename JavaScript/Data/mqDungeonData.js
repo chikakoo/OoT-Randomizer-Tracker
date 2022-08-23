@@ -2097,15 +2097,25 @@ let MQDungeons = {
 				},
 
 				ItemLocations: {
+					"2 Pots by Entrance": {
+						Name: "2 Pots by Entrance",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 99, y: 250, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 1,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						LongDescription: "The pots are to your left and right in the corners as you enter the temple."
+					},
 					"Like-Like Chest By Entrance": {
 						Name: "Like-Like Chest By Entrance",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 61, y: 123, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 1,
-						UseAdultAge: function() { 
-							return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.megaFlip;
-						},
+						Order: 2,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						NeedsDamagingItem: true,
 						LongDescription: "Enter the left door by the entrance. Kill the Like-Like to spawn the chest."
 					},
@@ -2117,10 +2127,8 @@ let MQDungeons = {
 						Regions: ["main"],
 						MapInfo: { x: 126, y: 214, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 4.1,
-						UseAdultAge: function() { 
-							return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.megaFlip;
-						},
+						Order: 7,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
 						LongDescription: "This is the locked door on the right side of the lobby.",
 						KeyRequirement: function(age) {
 							return { min: 1, max: Keys.FIRE_TEMPLE.mqTotalKeys() };
@@ -2134,12 +2142,12 @@ let MQDungeons = {
 						MapInfo: { x: 256, y: 202, floor: "F1" },
 						Age: Age.EITHER,
 						UseAdultAge: function() { 
-							return (!Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.megaFlip) || 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
 								!Settings.GlitchesToAllow.fireNoGoronTunic ||
 								!Settings.GlitchesToAllow.bombSuperslide ||
 								!Settings.GlitchesToAllow.equipSwap;
 						},
-						Order: 6.1,
+						Order: 18,
 						LongDescription: "This is the locked door on the far side of the big lava room.",
 						KeyRequirement: function(age) {
 							return { min: 1, max: 2 };
@@ -2152,7 +2160,7 @@ let MQDungeons = {
 						Regions: ["boulderMazeTop"],
 						MapInfo: { x: 277, y: 121, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 10.1,
+						Order: 28,
 						LongDescription: "This is the locked door on the top of the boulder maze.",
 						KeyRequirement: function(age) {
 							return { min: 2, max: 3 };
@@ -2165,7 +2173,7 @@ let MQDungeons = {
 						Regions: ["fireWallMaze"],
 						MapInfo: { x: 39, y: 179, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 18.1,
+						Order: 41,
 						LongDescription: "This is the locked door after riding the elevator up from the Flare Dancer fight.",
 						KeyRequirement: function(age) {
 							return { min: 3, max: 4 };
@@ -2178,7 +2186,7 @@ let MQDungeons = {
 						Regions: ["roomAfterTopOfTemple"],
 						MapInfo: { x: 71, y: 136, floor: "F4" },
 						Age: Age.ADULT,
-						Order: 19.1,
+						Order: 43,
 						LongDescription: "This is the locked door after pounding the floor down at the top of the temple.",
 						KeyRequirement: function(age) {
 							return { min: 4, max: 5 };
@@ -2199,14 +2207,66 @@ let MQDungeons = {
 				},
 
 				ItemLocations: {
+					"2 Left Crates in Room Before Boss": {
+						Name: "2 Left Crates in Room Before Boss",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Crates",
+						MapInfo: { x: 40, y: 253, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 3,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.fireNoGoronTunic;
+						},
+						LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper left corner to the crates."
+					},
+					"4 Right Crates in Room Before Boss": {
+						Name: "4 Right Crates in Room Before Boss",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "4 Crates",
+						MapInfo: { x: 37, y: 166, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 4,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip || !Settings.GlitchesToAllow.fireNoGoronTunic;
+						},
+						LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner to the crates.<br/><br/>If child, climb the block with the torch in it from the back right corner. Hold forward to jump up the ledge. Use the first ledge box to get to the second one before you break it.",
+						CustomRequirement: function(age) {
+							if (Data.canMegaFlip(age)) { return true; }
+							if (age === Age.CHILD) { return false; }
+							return Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas;
+						}
+					},
+					"2 Pots in Room Before Boss": {
+						Name: "2 Pots in Room Before Boss",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 33, y: 161, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 5,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip || !Settings.GlitchesToAllow.fireNoGoronTunic;
+						},
+						LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner to the pots.",
+						CustomRequirement: function(age) {
+							if (Data.canMegaFlip(age)) { return true; }
+							if (age === Age.CHILD) { return false; }
+							return Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas;
+						}
+					},
 					"Chest in Room Before Boss": {
 						Name: "Chest in Room Before Boss",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 36, y: 263, floor: "F1" },
 						Region: "roomBeforeBoss",
 						Age: Age.ADULT,
-						Order: 2,
-						LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper left corner. Roll into a box to break it to reveal a torch. Light all 3 torches in the room to open the gate to the chest.",
+						Order: 6,
+						LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner. Roll into a box to break it to reveal a torch. Light all 3 torches in the room to open the gate to the chest.",
 						CustomRequirement: function(age) {
 							return Data.canMegaFlip(age) || Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas;
 						}
@@ -2222,6 +2282,19 @@ let MQDungeons = {
 					}
 				},
 				ItemLocations: {
+					"4 Pots by Iron Knuckle": {
+						Name: "4 Pots by Iron Knuckle",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "4 Pots",
+						MapInfo: { x: 107, y: 38, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 8,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+						LongDescription: "Enter the locked door to the right when you first enter the temple. Defeat the stalfos and proceed. The pots are in the next room - the four you want are the two in the very back, and the two by the door. The rest contain fairies.",
+						NeedsDamagingItem: true
+					},
 					"Chest After First Flare Dancer": {
 						Name: "Chest After First Flare Dancer",
 						ItemGroup: ItemGroups.CHEST,
@@ -2230,7 +2303,7 @@ let MQDungeons = {
 						UseAdultAge: function() { 
 							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.groundJump;
 						},
-						Order: 5,
+						Order: 9,
 						RequiredChoiceOfAdultItems: [Items.HOOKSHOT, Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU],
 						RequiredChoiceOfChildItems: [Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU],
 						LongDescription: "Enter the locked door to the right when you first enter the temple. Navigate around the rooms, defeating the enemies to progress (including an Iron Knuckle). Defeat the Flare Dancer to spawn the chest.",
@@ -2250,8 +2323,10 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 61, y: 110, floor: "F1" },
 						Age: Age.EITHER,
-						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
-						Order: 6,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap;
+						},
+						Order: 10,
 						LongDescription: "After the Flare Dancer, enter the next room. Hit the rusted switch with the hammer to gain access to this chest."
 					}
 				}
@@ -2259,50 +2334,151 @@ let MQDungeons = {
 
 			bigLavaRoom: {
 				Exits: {
-					boulderMaze: {
-						Name: "boulderMaze",
+					cellBelowBoulderMaze: {
+						Name: "cellBelowBoulderMaze",
+						Age: Age.ADULT,
+						CustomRequirement: function(age) {
+							return Data.canWeirdShot(age);
+						}
+					},
+					risingBlockRoom: {
+						Name: "risingBlockRoom",
 						LockedDoor: "Locked Door in Big Lava Room",
 						Map: "Fire Temple",
-						NeedsFire: true
+						Age: Age.ADULT
 					},
 				},
 
 				ItemLocations: {
+					"Left Pot in Big Lava Room": {
+						Name: "Left Pot in Big Lava Room",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 204, y: 150, floor: "F1" },
+						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								!Settings.GlitchesToAllow.fireNoGoronTunic ||
+								!Settings.GlitchesToAllow.bombSuperslide ||
+								!Settings.GlitchesToAllow.equipSwap;
+						},
+						Order: 11,
+						LongDescription: "The pot is near the door on the left side of the big lava room."
+					},
 					"Skulltula by Left Goron in Lava Room": {
 						Name: "Skulltula by Left Goron in Lava Room",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 280, y: 139, floor: "F1" },
 						Age: Age.EITHER,
 						UseAdultAge: function() { 
-							return (!Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.megaFlip) || 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
 								!Settings.GlitchesToAllow.fireNoGoronTunic ||
 								!Settings.GlitchesToAllow.bombSuperslide ||
 								!Settings.GlitchesToAllow.equipSwap;
 						},
-						Order: 8,
+						Order: 12,
 						LongDescription: "Go to the left side of the big lava room. Hammer the switch to gain access to the skulltula."
+					},
+					"Pot on Big Lava Room Ledge": {
+						Name: "Pot on Big Lava Room Ledge",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 227, y: 162, floor: "F1" },
+						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								!Settings.GlitchesToAllow.fireNoGoronTunic ||
+								!Settings.GlitchesToAllow.bombSuperslide ||
+								!Settings.GlitchesToAllow.equipSwap;
+						},
+						Order: 13,
+						LongDescription: "Go up the stairs at the entrance to the temple. Take the right door into the big lava room. Along the back left wall is a platform that will rise up to an alcove after you jump on it. The pot is there."
 					},
 					"Boss Key Chest": {
 						Name: "Boss Key Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 174, y: 85, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 9,
-						RequiredItems: [Items.HOOKSHOT],
+						Order: 14,
 						NeedsFire: true,
-						LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to it."
+						LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to it, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side).",
+						CustomRequirement: function(age) {
+							return Items.HOOKSHOT.playerHas || Settings.GlitchesToAllow.fireSoTBlockJump;
+						}
+					},
+					"2 Pots in Boss Key Room": {
+						Name: "2 Pots in Boss Key Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 162, y: 102, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 15,
+						NeedsFire: true,
+						LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to the pots, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side).",
+						CustomRequirement: function(age) {
+							return Items.HOOKSHOT.playerHas || Settings.GlitchesToAllow.fireSoTBlockJump;
+						}
+					},
+					"Right Pot in Big Lava Room": {
+						Name: "Right Pot in Big Lava Room",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 190, y: 263, floor: "F1" },
+						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								!Settings.GlitchesToAllow.fireNoGoronTunic ||
+								!Settings.GlitchesToAllow.bombSuperslide ||
+								!Settings.GlitchesToAllow.equipSwap ||
+								!Settings.GlitchesToAllow.groundJump;
+						},
+						Order: 16,
+						LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. The pot is by the blocked doorway."
 					},
 					"Chest by Right Goron in Lava Room": {
 						Name: "Chest by Right Goron in Lava Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 202, y: 287, floor: "F1" },
-						Age: Age.ADULT,
-						Order: 10,
-						RequiredItems: [Items.HOOKSHOT],
+						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								!Settings.GlitchesToAllow.fireNoGoronTunic ||
+								!Settings.GlitchesToAllow.bombSuperslide ||
+								!Settings.GlitchesToAllow.equipSwap ||
+								!Settings.GlitchesToAllow.groundJump;
+						},
+						Order: 17,
 						NeedsExplosives: true,
 						NeedsFire: true,
-						LongDescription: "Hookshot to the torch on the right side of the lava room. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron."
-					},
+						LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron."
+					}
+				}
+			},
+
+			risingBlockRoom: {
+				Exits: {
+					boulderMaze: {
+						Name: "boulderMaze",
+						NeedsFire: true
+					}
+				},
+				ItemLocations: {
+					"3 Hearts in Rising Block Room": {
+						Name: "3 Hearts in Rising Block Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Hearts",
+						MapInfo: { x: 293, y: 203, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 19,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
+								!Settings.GlitchesToAllow.fireNoGoronTunic ||
+								!Settings.GlitchesToAllow.equipSwap ||
+								!Settings.GlitchesToAllow.bombSuperslide;
+						},
+						LongDescription: "Open the locked door on the other side of the big lava room. The hearts are on either side at the very top and in the middle of the room where you jump to the block."
+					}
 				}
 			},
 
@@ -2316,12 +2492,23 @@ let MQDungeons = {
 				},
 
 				ItemLocations: {
-					"Chest Behind Bars on Bottom": {
-						Name: "Chest Behind Bars on Bottom",
+					"3 Crates Behind Bars in Bottom Maze": {
+						Name: "3 Crates Behind Bars in Bottom Maze",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Crates",
+						MapInfo: { x: 318, y: 211, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 20,
+						LongDescription: "In the maze, there's a switch behind some metal bars. Use a jumpslash to hit it to open the cell to access the crates."
+					},
+					"Chest Behind Bars in Bottom Maze": {
+						Name: "Chest Behind Bars in Bottom Maze",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 321, y: 212, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 11,
+						Order: 21,
 						LongDescription: "In the maze, there's a switch behind some metal bars. Use a jumpslash to hit it. The chest is in one of the crates."
 					}
 				}
@@ -2334,57 +2521,237 @@ let MQDungeons = {
 						RequiredSongs: [Songs.SONG_OF_TIME]
 					},
 
-					fireWallMaze: {
-						Name: "fireWallMaze",
+					roomWithLavaAndGrates: {
+						Name: "roomWithLavaAndGrates",
 						LockedDoor: "Locked Door Above Boulder Maze",
-						Map: "Fire Temple",
-						RequiredItems: [Items.FAIRY_BOW]
+						Map: "Fire Temple"
 					},
+
+					cellBelowBoulderMaze: {
+						Name: "cellBelowBoulderMaze"
+					}
 				},
 
 				ItemLocations: {
-					"Chest on Boulder Maze Top": {
-						Name: "Chest on Boulder Maze Top",
+					"Chest on Maze Top": {
+						Name: "Chest on Maze Top",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 300, y: 221, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 12,
+						Order: 22,
 						LongDescription: "In the northeast area of the maze, find the fake wall and bomb it. Hammer the switch inside. Hookshot up one of the targets that appear and make your way toward the crystal switch. Trigger it (jumpslash, spin attack, Din's, explosive, etc.). The chest is hidden in one of the crates."
+					},
+					"3 Crates on Maze Top": {
+						Name: "3 Crates on Maze Top",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Crates",
+						MapInfo: { x: 297, y: 217, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 25,
+						LongDescription: "Navigate to the cell on the top of the maze. Bomb or jumpslash the switch (then come back up) to open it. The crates are inside. Don't break the small crates if you wish to use them (they have no items)!"
+					},
+					"Goron by Maze": {
+						Name: "Goron by Maze",
+						ItemGroup: ItemGroups.CHEST,
+						MapInfo: { x: 283, y: 52, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 26,
+						LongDescription: "In the north section of the maze, there's a wall you can bomb. Grab one of the crates from the room at the top of the maze and put it on the switch. The chest is through the door, by the goron as usual."
+					}
+				}
+			},
+
+			cellBelowBoulderMaze: {
+				Exits: {},
+				ItemLocations: {
+					"6 Crates in Hole Under Maze": {
+						Name: "6 Crates in Hole Under Maze",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "6 Crates",
+						MapInfo: { x: 135, y: 105, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 23,
+						LongDescription: "Bomb the crack in the floor on top of the maze. The crates are down the hole."
 					},
 					"Chest in Hole Under Maze": {
 						Name: "Chest in Hole Under Maze",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 164, y: 97, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 13,
+						Order: 24,
 						LongDescription: "Bomb the crack in the floor on top of the boulder maze. Break some crates to reveal a rusted switch. Hammer it to gain access to the chest."
-					},
-					"Goron by Boulder Maze": {
-						Name: "Goron by Boulder Maze",
-						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 283, y: 52, floor: "F3" },
-						Age: Age.ADULT,
-						Order: 14,
-						LongDescription: "In the north section of the maze, there's a wall you can bomb. Grab one of the crates from the room at the top of the maze and put it on the switch. The chest is through the door, by the goron as usual."
 					}
 				}
 			},
 
 			aboveBoulderMaze: {
-				Exits: {},
+				Exits: {
+					narrowBridgeRoom: {
+						Name: "narrowBridgeRoom"
+					}
+				},
 				ItemLocations: {
 					"Skulltula on Very Top": {
 						Name: "Skulltula on Very Top",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: {x: 219, y: 147, floor: "F5" },
 						Age: Age.ADULT,
-						Order: 15,
+						Order: 27,
 						LongDescription: "On top of the boulder maze, play the Song of Time by the bombable pit. Navigate upwards via climbing and the hookshot). After the green room, make your way around the room and hammer the rusted switch by the fire circle. Now jump down and hit the switch. Use the new hookshot target to quickly get up and pull the block away. The skulltula is underneath."
 					}
 				}
 			},
 
+			narrowBridgeRoom: {
+				Exits: {},
+				ItemLocations: {
+					"2 Pots in Narrow Bridge Room": {
+						Name: "2 Pots in Narrow Bridge Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 293, y: 155, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 29,
+						LongDescription: "Make your way to the scary room with the giant pit either from the lava room with grates, or by falling from the room at the very top."
+					}
+				}
+			},
+
+			roomWithLavaAndGrates: {
+				Exits: {
+					narrowBridgeRoom: {
+						Name: "narrowBridgeRoom"
+					},
+					fireWallMaze: {
+						Name: "fireWallMaze",
+						RequiredItems: [Items.FAIRY_BOW]
+					}
+				},
+				ItemLocations: {
+					"2 Crates in Right Lava Grate Room": {
+						Name: "2 Crates in Right Lava Grate Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Crates",
+						MapInfo: { x: 265, y: 110, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 30,
+						LongDescription: "These crates are on the right side of the room with lava and grates."
+					},
+					"Crate in Central Lava Grate Room": {
+						Name: "Crate in Central Lava Grate Room",
+						ItemGroup: ItemGroups.CRATE,
+						MapInfo: { x: 248, y: 133, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 31,
+						LongDescription: "This crate is on the little island in the center of the room with lava and grates."
+					},
+					"2 Pots in Left Lava Grate Room": {
+						Name: "2 Pots in Left Lava Grate Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 271, y: 179, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 32,
+						LongDescription: "These pots are on the left side of the room with lava and grates, by the door to the narrow bridge room."
+					},
+					"Crate in Left Lava Grate Room": {
+						Name: "Crate in Left Lava Grate Room",
+						ItemGroup: ItemGroups.CRATE,
+						MapInfo: { x: 265, y: 176, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 33,
+						LongDescription: "This crate is on the left side of the room with lava and grates. Go to the door to the narrow bridge room and climb up the small ledge to get access to the crate."
+					},
+					"Crate by Lava Grate Room Exit": {
+						Name: "Crate by Lava Grate Room Exit",
+						ItemGroup: ItemGroups.CRATE,
+						MapInfo: { x: 212, y: 176, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 34,
+						LongDescription: "This crate is near the exit of the lava grate room (the one leading to the fire wall maze)."
+					}
+				}
+			},
+
 			fireWallMaze: {
+				Exits: {
+					fireWallMazeRight: {
+						Name: "fireWallMazeRight",
+						CustomRequirement: function(age) {
+							return Data.canPlaySong(Songs.SONG_OF_TIME) ||
+								Equipment.HOVER_BOOTS.playerHas ||
+								Data.canMegaFlip(age);
+						}
+					},
+					fireWallMazeEnd: {
+						Name: "fireWallMazeEnd",
+						RequiredItems: [Items.HOOKSHOT]
+					}
+				},
+
+				ItemLocations: {
+					"Pot in Left Fire Wall Maze": {
+						Name: "Pot in Left Fire Wall Maze",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 87, y: 215, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 37,
+						LongDescription: "Navigate around the lava room and grab a small box. Enter the encaged area and place the box on the blue switch to light some torches. Hookshot the box to get back up. Use your bow to shoot though one of the torches to light a high up torch on the wall. Go through the door to continue.<br/><br/>Navigate around the fire wall maze to the left until you find the pot (the second one contains a fairy)."
+					},
+					"Skulltula in Center of Maze": {
+						Name: "Skulltula in Center of Maze",
+						ItemGroup: ItemGroups.SKULLTULA,
+						MapInfo: { x: 124, y: 162, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 38,
+						LongDescription: "From the entrance of the fire wall room - make your way to the door in front of you and enter it. In this room, get to the next door by jumping on the Song of Time Block. Hookshot across the room and hit the switch with your hammer to unbar the doors.<br/><br/>Now navigate through the maze to the southernmost door. Once inside, bomb the fake wall by the scratching sounds to get to the skulltula."
+					}
+				}
+			},
+			
+			fireWallMazeRight: {
+				Exits: {
+					fireWallMazeEnd: {
+						Name: "fireWallMazeEnd",
+						CustomRequirement: function(age) {
+							return Settings.GlitchesToAllow.fireWallSkip;
+						}
+					}
+				},
+				ItemLocations: {
+					"2 Pots in Fire Wall Maze Right": {
+						Name: "2 Pots in Fire Wall Maze Right",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 102, y: 108, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 35,
+						LongDescription: "From the start of the fire wall maze, climb up to the door in front of you. Look to the left - either play Song of Time, or use hover boots to cross the fire wall. The pots are in this maze. You can use the Song of Time block by the door on the wall to get out of this section."
+					},
+					"Skulltula in Fire Wall Maze": {
+						Name: "Skulltula in Fire Wall Maze",
+						ItemGroup: ItemGroups.SKULLTULA,
+						MapInfo: { x: 194, y: 79, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 36,
+						LongDescription: "From the start of the fire wall maze, climb up to the door in front of you. Look to the left - either play Song of Time, or use hover boots to cross the fire wall. The skulltula is in the room in this section. You can use the Song of Time block by the door to get out."
+					}
+				}
+			},
+
+			fireWallMazeEnd: {
 				Exits: {
 					topOfTemple: {
 						Name: "topOfTemple",
@@ -2392,30 +2759,24 @@ let MQDungeons = {
 						Map: "Fire Temple"
 					}
 				},
-
 				ItemLocations: {
-					"Skulltula in Fire Wall Maze": {
-						Name: "Skulltula in Fire Wall Maze",
-						ItemGroup: ItemGroups.SKULLTULA,
-						MapInfo: { x: 194, y: 79, floor: "F3" },
+					"2 Pots by Fire Maze Exit": {
+						Name: "2 Pots by Fire Maze Exit",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 76, y: 144, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 16,
-						LongDescription: "Navigate around the lava room and grab a small box. Enter the encaged area and place the box on the blue switch to light some torches. Hookshot the box to get back up. Use your bow to shoot though one of the torches to light a high up torch on the wall. Go through the door to continue.<br/><br/>Navigate to the door in front of you. Play the Song of Time to the right of the door to spawn a block. Use the block to jump down over the fire wall and into the door in the northwest section of the room. The skulltula is inside."
-					},
-					"Skulltula in Center of Maze": {
-						Name: "Skulltula in Center of Maze",
-						ItemGroup: ItemGroups.SKULLTULA,
-						MapInfo: { x: 124, y: 162, floor: "F3" },
-						Age: Age.ADULT,
-						Order: 17,
-						LongDescription: "From the entrance of the fire wall room - make your way to the door in front of you and enter it. In this room, get to the next door by jumping on the Song of Time Block. Hookshot across the room and hit the switch with your hammer to unbar the doors.<br/><br/>Now navigate through the maze to the southernmost door. Once inside, bomb the fake wall by the scratching sounds to get to the skulltula."
+						Order: 39,
+						LongDescription: "By the exit to the fire maze (after you hit the switch to pass the giant fire wall), there are 2 pots to either side of the door."
 					},
 					"Freestanding Key in Flare Dancer Room": {
 						Name: "Freestanding Key in Flare Dancer Room",
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 37, y: 178, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 18,
+						Order: 40,
 						LongDescription: "Proceed from the center of the maze. Hit the switch to lower the fire wall. Enter the next room and kill the Flare Dancer. Jump on the center platform to make it rise, but immediately get off. The item should be where the platform used to be."
 					}
 				}
@@ -2429,16 +2790,15 @@ let MQDungeons = {
 						Map: "Fire Temple"
 					}
 				},
-
 				ItemLocations: {
 					"Chest at Top of Temple": {
 						Name: "Chest at Top of Temple",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 43, y: 157, floor: "F5" },
 						Age: Age.ADULT,
-						Order: 19,
+						Order: 42,
 						LongDescription: "From the Flare Dancer room - make your way through the next room. Hit the switch on the ground somewhat near the chest with the fire wall to lower the wall. The Scarecrow's Song can help you get to it quicker, but it's not required."
-					},
+					}
 				}
 			},
 
@@ -2450,9 +2810,9 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: {x: 208, y: 227, floor: "F4" },
 						Age: Age.ADULT,
-						Order: 20,
+						Order: 44,
 						LongDescription: "From the top of the temple, hammer the face block to continue on. Kill the Stalfos and continue to the next room (you need to hookshot one of the faces to unbar the door). The skulltula is in this room."
-					},
+					}
 				}
 			},
 
