@@ -271,6 +271,7 @@ InteriorGroups = {
 			"10 Reward": {
 				icon: "Skulltula",
 				iconText: "10",
+				tag: "10",
 				description: "Talk to the guy on the right hand side.",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 10;
@@ -282,6 +283,7 @@ InteriorGroups = {
 			"20 Reward": {
 				icon: "Skulltula",
 				iconText: "20",
+				tag: "20",
 				description: "Talk to the guy on the left hand side.",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 20;
@@ -293,6 +295,7 @@ InteriorGroups = {
 			"30 Reward": {
 				icon: "Skulltula",
 				iconText: "30",
+				tag: "30",
 				description: "Talk to the middle guy.",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 30;
@@ -304,6 +307,7 @@ InteriorGroups = {
 			"40 Reward": {
 				icon: "Skulltula",
 				iconText: "40",
+				tag: "40",
 				description: "Talk to the guy second from the left",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 40;
@@ -315,6 +319,7 @@ InteriorGroups = {
 			"50 Reward": {
 				icon: "Skulltula",
 				iconText: "50",
+				tag: "50",
 				description: "Talk to the guy second from the right",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 50;
@@ -539,43 +544,50 @@ InteriorGroups = {
 			"Adult Pot 1": {
 				icon: "Pot",
 				itemGroup: ItemGroups.POT,
-				description: "One of the many pots int he room.",
+				tag: "adult",
+				description: "One of the many pots in the room.",
 				isAdultOnly: function() { return true; }
 			},
 			"Adult Pot 2": {
 				icon: "Pot",
 				itemGroup: ItemGroups.POT,
-				description: "One of the many pots int he room.",
+				tag: "adult",
+				description: "One of the many pots in the room.",
 				isAdultOnly: function() { return true; }
 			},
 			"Adult Pot 3": {
 				icon: "Pot",
 				itemGroup: ItemGroups.POT,
-				description: "One of the many pots int he room.",
+				tag: "adult",
+				description: "One of the many pots in the room.",
 				isAdultOnly: function() { return true; }
 			},
 			"Adult Pot 4": {
 				icon: "Pot",
 				itemGroup: ItemGroups.POT,
-				description: "One of the many pots int he room.",
+				tag: "adult",
+				description: "One of the many pots in the room.",
 				isAdultOnly: function() { return true; }
 			},
 			"Adult Pot 5": {
 				icon: "Pot",
 				itemGroup: ItemGroups.POT,
-				description: "One of the many pots int he room.",
+				tag: "adult",
+				description: "One of the many pots in the room.",
 				isAdultOnly: function() { return true; }
 			},
 			"Adult Pot 6": {
 				icon: "Pot",
 				itemGroup: ItemGroups.POT,
-				description: "One of the many pots int he room.",
+				tag: "adult",
+				description: "One of the many pots in the room.",
 				isAdultOnly: function() { return true; }
 			},
 			"Adult Pot 7": {
 				icon: "Pot",
 				itemGroup: ItemGroups.POT,
-				description: "One of the many pots int he room.",
+				tag: "adult",
+				description: "One of the many pots in the room.",
 				isAdultOnly: function() { return true; }
 			}
 		}
@@ -848,7 +860,7 @@ InteriorGroups = {
 				description: "Pot 3."
 			}
 		}
-	},
+	}
 };
 
 /**
@@ -1542,41 +1554,49 @@ GrottoGroups = {
 		buttons: {
 			"Neutral 1": {
 				icon: "Neutral Goron",
+				tag: "neutral",
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "Neutral Goron Prize 1."
 			},
 			"Neutral 2": {
 				icon: "Neutral Goron",
+				tag: "neutral",
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "Neutral Goron Prize 2."
 			},
 			"Neutral 3": {
 				icon: "Neutral Goron",
+				tag: "neutral",
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "Neutral Goron Prize 3."
 			},
 			"Angry 1": {
 				icon: "Angry Goron",
+				tag: "angry",
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "Angry Goron Prize 1."
 			},
 			"Angry 2": {
 				icon: "Angry Goron",
+				tag: "angry",
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "Angry Goron Prize 2."
 			},
 			"Angry 3": {
 				icon: "Angry Goron",
+				tag: "angry",
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "Angry Goron Prize 3."
 			},
 			"Happy 1": {
 				icon: "Happy Goron",
+				tag: "happy",
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "Happy Goron Prize 1 - the heart piece item is still in its old spot."
 			},
 			"Happy 2": {
 				icon: "Happy Goron",
+				tag: "happy",
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "Happy Goron Prize 2 - the heart piece item is still in its old spot."
 			}
@@ -1827,6 +1847,7 @@ GrottoGroups = {
 		buttons: {
 			"Red Rupee": {
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				tag: "red",
 				description: "The central rupee."
 			},
 			"Green Rupee 1": {
@@ -1866,6 +1887,7 @@ GrottoGroups = {
 		buttons: {
 			"Red Rupee": {
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				tag: "red",
 				description: "The central rupee."
 			},
 			"Blue Rupee 1": {

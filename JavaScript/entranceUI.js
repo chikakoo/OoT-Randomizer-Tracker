@@ -212,22 +212,23 @@ let EntranceUI = {
 
 			buttonDiv.onclick = function(event) {
 				event.stopPropagation();
-				
-				if (itemLocationGroup.completed[buttonName]) { 
-					delete itemLocationGroup.completed[buttonName]; 
-					itemLocation.playerHas = false;
-				} else { 
-					itemLocationGroup.completed[buttonName] = true; 
-				}
-				toggleCssClass(buttonDiv, "entrance-group-button-completed");
-				
-				if (_this.isGroupComplete(itemLocation)) {
-					itemLocation.playerHas = true;
-				}
 
-				if (button.postClick) {
-					button.postClick(itemLocationGroup.completed[buttonName]);
+				let buttonNames = [buttonName];
+				if (event.shiftKey) {
+					Object.keys(selectedGroup.buttons).forEach(function(currentButtonName) {
+						if (buttonName === currentButtonName) { return; }
+
+						let currentButton = selectedGroup.buttons[currentButtonName];
+						if (currentButton.itemGroup === button.itemGroup && currentButton.tag === button.tag) {
+							buttonNames.push(currentButtonName);
+						}
+					});
 				}
+				
+				let completed = !itemLocationGroup.completed[buttonName];
+				buttonNames.forEach(function(name) {
+					_this._markButtonAsComplete(itemLocationGroup, itemLocation, button, name, buttonDiv, completed);
+				});
 				
 				SocketClient.itemLocationUpdated(itemLocation);
 				refreshAll();
@@ -251,6 +252,24 @@ let EntranceUI = {
 		
 		if (visibleButtonCount < 1) {
 			itemLocation.playerHas = true;
+		}
+	},
+
+	_markButtonAsComplete: function(itemLocationGroup, itemLocation, button, buttonName, buttonDiv, markAsComplete) {
+		if (!markAsComplete) { 
+			delete itemLocationGroup.completed[buttonName]; 
+			itemLocation.playerHas = false;
+		} else { 
+			itemLocationGroup.completed[buttonName] = true; 
+		}
+		toggleCssClass(buttonDiv, "entrance-group-button-completed");
+		
+		if (this.isGroupComplete(itemLocation)) {
+			itemLocation.playerHas = true;
+		}
+
+		if (button.postClick) {
+			button.postClick(itemLocationGroup.completed[buttonName]);
 		}
 	},
 	
