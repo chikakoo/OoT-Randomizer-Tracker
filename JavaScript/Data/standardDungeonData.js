@@ -1278,8 +1278,8 @@ let StandardDungeons = {
 			outsideLeftHearts: {
 				Exits: {},
 				ItemLocations: {
-					"2 Hearts Above Right Room": {
-						Name: "2 Hearts Above Right Room",
+					"2 Hearts Above Left Room": {
+						Name: "2 Hearts Above Left Room",
 						ItemGroup: ItemGroups.ENTRANCE,
 						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 						IsItemLocationGroup: true,

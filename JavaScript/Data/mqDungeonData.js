@@ -1362,9 +1362,11 @@ let MQDungeons = {
 				Exits: {
 					afterFirstHallway: {
 						Name: "afterFirstHallway",
-						NeedsDamagingItem: true,
 						LockedDoor: "Locked Door to Lobby",
-						Map: "Forest Temple"
+						Map: "Forest Temple",
+						CustomRequirement: function(age) {
+							return Data.hasDamagingItem(age) || Items.DEKU_NUT.playerHas;
+						}
 					},
 					Exit: {
 						OwExit: OwExits["Forest Temple"]["Exit"]
@@ -1378,7 +1380,7 @@ let MQDungeons = {
 						MapInfo: { x: 188, y: 251, floor: "F1" },
 						Age: Age.EITHER,
 						Order: 1,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "Climb the vines (it's easier to climb from the left side of the tree) and navigate across the trees to hit the switch to spawn the chest.",
 						CustomRequirement: function(age) {
 							return Data.hasDamagingItem(age) || Items.DEKU_NUT.playerHas;
@@ -1390,7 +1392,7 @@ let MQDungeons = {
 						MapInfo: { x: 163, y: 193, floor: "F1" },
 						Age: Age.EITHER,
 						Order: 2,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						IsAtShortDistance: true,
 						LongDescription: "The skulltula is above the door at the end of the first hallway."
 					},
@@ -1402,11 +1404,14 @@ let MQDungeons = {
 						Regions: ["main"],
 						MapInfo: { x: 169, y: 189, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 2.1,
+						Order: 3,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "This is the door at the end of the first hallway.",
 						KeyRequirement: function(age) {
 							return { min: 1, max: 1 };
+						},
+						CustomRequirement: function(age) {
+							return Data.hasDamagingItem(age) || Items.DEKU_NUT.playerHas;
 						}
 					},
 
@@ -1416,7 +1421,7 @@ let MQDungeons = {
 						Regions: ["afterFirstHallway"],
 						MapInfo: { x: 42, y: 198, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 9.1,
+						Order: 14,
 						LongDescription: "This is the door that's after the block puzzle by the bubbles.",
 						KeyRequirement: function(age) {
 							return { min: 2, max: 2 };
@@ -1429,7 +1434,7 @@ let MQDungeons = {
 						Regions: ["twistedHallway"],
 						MapInfo: { x: 80, y: 57, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 11.1,
+						Order: 17.1,
 						LongDescription: "This is the door that's in the boss key room when the boss key chest is sideways.",
 						KeyRequirement: function(age) {
 							return { min: 3, max: 3 };
@@ -1442,7 +1447,7 @@ let MQDungeons = {
 						Regions: ["poeRooms"],
 						MapInfo: { x: 282, y: 54, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 14.1,
+						Order: 23,
 						LongDescription: "This is the door that's in the blue poe room.",
 						KeyRequirement: function(age) {
 							return { min: 4, max: 4 };
@@ -1455,7 +1460,7 @@ let MQDungeons = {
 						Regions: ["twistedCooridor2"],
 						MapInfo: { x: 319, y: 154, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 14.2,
+						Order: 24,
 						LongDescription: "This is the door that's after the green bubbles, leading to the frozen eye switch.",
 						KeyRequirement: function(age) {
 							return { min: 5, max: 5 };
@@ -1468,7 +1473,7 @@ let MQDungeons = {
 						Regions: ["fallingCeilingRoom", "greenPoeRoom"],
 						MapInfo: { x: 318, y: 132, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 16.1,
+						Order: 29,
 						LongDescription: "This is the door that's at the end of the falling ceiling room.",
 						KeyRequirement: function(age) {
 							return { min: 1, max: 6 };
@@ -1476,7 +1481,6 @@ let MQDungeons = {
 					}
 				}
 			},
-
 			afterFirstHallway: {
 				Exits: {
 					roomNorthOfLobby: {
@@ -1554,18 +1558,41 @@ let MQDungeons = {
 				},
 
 				ItemLocations: {
+					"3 Pots Left in Lobby": {
+						Name: "3 Pots Left in Lobby",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Pots",
+						MapInfo: { x: 142, y: 166, floor: "F1" },
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 4,
+						LongDescription: "From the start of the temple, go straight through the room with the giant skulltulas. the pots are on the ledge to the left."
+					},
+					"3 Pots Right in Lobby": {
+						Name: "3 Pots Right in Lobby",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Pots",
+						MapInfo: { x: 194, y: 164, floor: "F1" },
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 5,
+						LongDescription: "From the start of the temple, go straight through the room with the giant skulltulas. the pots are on the ledge to the right."
+					},
 					"Skulltula in Block Room": {
 						Name: "Skulltula in Block Room",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 66, y: 171, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 9,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 13,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "Proceed through the main room's western hallway. The skulltula is to the left on the ground level."
 					}
 				}
 			},
-
 			roomNorthOfLobby: {
 				Exits: {},
 				ItemLocations: {
@@ -1574,14 +1601,22 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 170, y: 19, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 3,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 6,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "Proceed straight ahead in the main room. After the hallway, kill the two wolfos to spawn the chest.<br/><br/>If you don't have the song of time, it's possible to get here from the above room. This is the room after the red poe room - drop down before killing the first Stalfos.",
 						NeedsSwordWeapon: true
+					},
+					"Pot North of Main Room": {
+						Name: "Pot Behind Main Room",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 168, y: 17, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 7,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						LongDescription: "From the start of the temple, go straight through the room with the giant skulltula and into the next door across the big room. The room with the pot is the one after the song of time block (not there as Child). The one on the right is the one you want - the other contains a fairy.<br/><br/>If you don't have the song of time, it's possible to get here from the above room. This is the room after the red poe room - drop down before killing the first Stalfos."
 					}
 				}
 			},
-
 			twistedHallway: {
 				Exits: {
 					upperOutside: {
@@ -1601,14 +1636,16 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 66, y: 45, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 10,
+						Order: 15,
 						LongDescription: "After the block puzzle room and the untwisted hallway, jump down to get the boss key chest. Be wary of the Wallmaster!"
 					}
 				}
 			},
-
 			upperOutside: {
 				Exits: {
+					outsideWestHearts: {
+						Name: "outsideWestHearts"
+					},
 					outsideWest: {
 						Name: "outsideWest"
 					}
@@ -1620,12 +1657,11 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 29, y: 100, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 11,
+						Order: 17,
 						LongDescription: "Fall down the hole in the boss key room. Kill the Floormaster and proceed through the door. Take the first door in one of the small hallways to your right. Kill the redead to spawn the chest."
 					}
 				}
 			},
-
 			outsideWest: {
 				Exits: {
 					outsideEast: { // Via the well - eye switch doesn't matter because the other way in covers that
@@ -1640,6 +1676,14 @@ let MQDungeons = {
 						RequiredItems: [Equipment.MAGIC, Items.FAIRY_BOW, Items.FIRE_ARROW]
 					},
 
+					outsideWestHearts: {
+						Name: "outsideWestHearts",
+						RequiredItems: [Items.BOOMERANG],
+						CustomRequirement: function(age) {
+							return Settings.GlitchesToAllow.difficultBoomerangTrickThrows;
+						}
+					},
+
 					well: {
 						Name: "well"
 					}
@@ -1651,13 +1695,29 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 81, y: 124, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 8,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 12,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "Located on top of the platform near the well."
 					}
 				}
 			}, 
-
+			outsideWestHearts: {
+				Exits: {},
+				ItemLocations: {
+					"3 Hearts Above Left Room": {
+						Name: "3 Hearts Above Left Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Hearts",
+						MapInfo: { x: 81, y: 73, floor: "F1" },
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
+						Order: 16,
+						LongDescription: "Fall down the hole in the boss key room. Kill the Floormaster and proceed through the door. <br/><br/>The hearts are on the skinny platform that you have to jump to, near the skulltula on the wall. Be careful not to fall off."
+					}
+				}
+			},
 			outsideEast: {
 				Exits: {
 					// Excluding east to west because it would require you to have gone through west anyway
@@ -1683,14 +1743,13 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 226, y: 98, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 4,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 7,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						IsAtShortDistance: true,
 						LongDescription: "The skulltula is above the doorframe leading to this room. Get it with your boomerang or hookshot."
 					}
 				}
 			},
-
 			outsideEastBalcony: {
 				Exits: {
 					outsideEast: {
@@ -1712,12 +1771,11 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 224, y: 53, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 5,
+						Order: 8,
 						LongDescription: "Hookshot up the doorframe leading to this room. Repeatedly play the Song of Time and jump to the end of the blocks it spawns until you can get to the balcony with the chest.<br/><br/>You can also use the longshot on the vines by the balcony to get up, OR go around from the west room with a fire arrow."
 					}
 				}
 			},
-
 			outsideEastPlatform: {
 				Exits: {
 					fallingCeilingRoom: {
@@ -1732,12 +1790,11 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 268, y: 73, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 16,
+						Order: 28,
 						LongDescription: "Hit the left switch deep in the checkerbaord room. Now backtrack and take the door to the right of where you entered the room (NOT the locked door). Drop down to get the chest. If you don't have the Song of Time, you'll have to navigate all the way around to get back. Otherwise, play it to make a platform back up."
 					}
 				}
 			},
-
 			well: { // Just used as its own location, but not to travel between east and west apparently
 				Exits: {},
 				ItemLocations: {
@@ -1746,12 +1803,28 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 242, y: 46, floor: "B1" },
 						Age: Age.EITHER,
-						Order: 6,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-						LongDescription: "This chest is in the well. If you can't drain the water with the eye switch, you can hookshot the chest and spam the button to open it.",
+						Order: 9,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						LongDescription: "This chest is in the well. If you can't drain the water with the eye switch (in the well itself from the east room), you can hookshot the chest and spam the button to open it.",
 						CustomRequirement: function(age) {
 							if (Data.canShootEyeSwitch(age)) { return true; }
 							return age === Age.ADULT && Items.HOOKSHOT.playerHas && Equipment.IRON_BOOTS.playerHas
+						}
+					},
+					"3 Hearts in Well": {
+						Name: "3 Hearts in Well",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Hearts",
+						MapInfo: { x: 181, y: 48, floor: "B1" },
+						Age: Age.EITHER,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 10,
+						LongDescription: "This chest is in the well. Use iron boots if you can't drain the water with the eye switch (in the well itself from the east room).",
+						CustomRequirement: function(age) {
+							if (Data.canShootEyeSwitch(age)) { return true; }
+							return age === Age.ADULT && Equipment.IRON_BOOTS.playerHas
 						}
 					},
 					"Skulltula in Well": {
@@ -1759,9 +1832,9 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 114, y: 34, floor: "B1" },
 						Age: Age.EITHER,
-						Order: 7,
-						UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-						LongDescription: "This skulltula is on one of the grates in the water of the well. If you can't shoot the eye switch to drain the water, you can still get the skulltula with iron boots and the hookshot.",
+						Order: 11,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						LongDescription: "This skulltula is on one of the grates in the water of the well (in the well itself from the east room). If you can't shoot the eye switch to drain the water, you can still get the skulltula with iron boots and the hookshot.",
 						CustomRequirement: function(age) {
 							if (Data.canShootEyeSwitch(age)) { return true; }
 							return age === Age.ADULT && Items.HOOKSHOT.playerHas && Equipment.IRON_BOOTS.playerHas
@@ -1769,7 +1842,6 @@ let MQDungeons = {
 					}
 				}
 			},
-
 			poeRooms: {
 				Exits: {
 					roomNorthOfLobby: {
@@ -1794,7 +1866,7 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 151, y: 52, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 12,
+						Order: 18,
 						RequiredItems: [Items.FAIRY_BOW],
 						LongDescription: "Untwist the cooridor by hitting the switch just outside the door to the right of the redead room. Navigate back up to the twisted cooridor and continue through the door to your right. Shoot the portraits as normal and kill the poe to spawn the chest."
 					},
@@ -1803,38 +1875,83 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 191, y: 65, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 13,
+						Order: 19,
 						LongDescription: "Untwist the cooridor by hitting the switch just outside the door to the right of the redead room. Navigate back up to the twisted cooridor and continue through the door to your right. Navigate through the Red Poe room and kill the three Stalfos to spawn the chest.<br/><br/>NOTE: If you can't play the song of time, consider dropping down before killing the first stalfos to get a chest that you'll lock yourself out of."
+					},
+					"4 Pots in Upper Stalfos Room": {
+						Name: "4 Pots in Upper Stalfos Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "4 Pots",
+						MapInfo: { x: 192, y: 48, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 20,
+						LongDescription: "These pots are against the walls in the room after the red poe room."
+					},
+					"3 Pots in Blue Poe Room": {
+						Name: "3 Pots in Blue Poe Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Pots",
+						MapInfo: { x: 240, y: 43, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 21,
+						LongDescription: "These pots are in the room after the fairy bow chest, just to your left when you enter."
 					},
 					"Blue Poe Chest": {
 						Name: "Blue Poe Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 244, y: 52, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 14,
+						Order: 22,
 						RequiredItems: [Items.FAIRY_BOW],
 						LongDescription: "Head to the blue poe room, which is after the Stalfos room. Shoot the portraits as normal and kill the poe to spawn the chest."
 					},
 				}
 			},
-
 			twistedCooridor2: {
+				Exits: {
+					carouselRoom: {
+						Name: "carouselRoom",
+						LockedDoor: "Locked Door in Green Bubble Hallway",
+						Map: "Forest Temple",
+					}
+				},
+				ItemLocations: {}
+			},
+			carouselRoom: {
 				Exits: {
 					fallingCeilingRoom: {
 						Name: "fallingCeilingRoom",
-						LockedDoor: "Locked Door in Green Bubble Hallway",
-						Map: "Forest Temple",
 						CustomRequirement: function(age) {
 							return Data.canUseFireItem(age) || (age === Age.ADULT && Items.FAIRY_BOW.playerHas);
 						}
 					}
 				},
-
 				ItemLocations: {
-
+					"2 Crates on Carousel Room Floor": {
+						Name: "2 Crates on Carousel Room Floor",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Crates",
+						MapInfo: { x: 331, y: 208, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 25,
+						LongDescription: "After the blue poe room, go through the door. Now go down the hallway that the ladder leads to and enter the locked room. The crates are the small ones in the back left corner of the room."
+					},
+					"Crate on Carousel Room Platform": {
+						Name: "Crate on Carousel Room Platform",
+						ItemGroup: ItemGroups.CRATE,
+						MapInfo: { x: 298, y: 193, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 26,
+						LongDescription: "After the blue poe room, go through the door. Now go down the hallway that the ladder leads to and enter the locked room. The crate is up on the platform to your right."
+					}
 				}
 			},
-
 			fallingCeilingRoom: {
 				Exits: {
 					outsideEastPlatform: {
@@ -1853,12 +1970,11 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 323, y: 104, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 15,
+						Order: 27,
 						LongDescription: "This room is found after twisting the cooridor with the Green Bubbles. Fall down the hole that's now accessible. Once in the room, hit one of the switches in this room to spawn the chest."
 					}
 				}
 			},
-
 			greenPoeRoom: {
 				Exits: {
 					fallingCeilingRoom: {
@@ -1867,9 +1983,20 @@ let MQDungeons = {
 						Map: "Forest Temple"
 					}
 				},
-				ItemLocations: {}
+				ItemLocations: {
+					"2 Pots in Green Poe Room": {
+						Name: "2 Pots in Green Poe Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 303, y: 146, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 30,
+						LongDescription: "Make your way to the falling ceiling room. Nagivate through it to the green poe room. The pots are by the exit door."
+					}
+				}
 			},
-
 			basement: {
 				Exits: {
 					bossRoom: {
@@ -1881,21 +2008,35 @@ let MQDungeons = {
 				},
 
 				ItemLocations: {
+					"4 Pots in Basement": {
+						Name: "4 Pots in Basement",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "4 Pots",
+						MapInfo: { x: 137, y: 238, floor: "B1" },
+						Age: Age.ADULT,
+						Order: 31,
+						IsPostWalkCheck: true,
+						LongDescription: "After defeating all the Poes, take the elevator to the basement. Push the wall clockwise once. The pots are in the room guarded by two giant skulltulas.",
+						CustomRequirement: function(age) {
+							return Data.mqForestTempleCanAccessAllPoeRooms(age);
+						}
+					},
 					"Chest in Basement": {
 						Name: "Chest in Basement",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 143, y: 156, floor: "B1" },
 						Age: Age.ADULT,
-						Order: 17,
+						Order: 32,
 						IsPostWalkCheck: true,
-						LongDescription: "After defeating all the Poes, take the elevator to the basement. Push the wall clockwise x3 or counter-clockwise x2 to get to the chest.",
+						LongDescription: "After defeating all the Poes, take the elevator to the basement. Push the wall counter-clockwise once to get to the chest.",
 						CustomRequirement: function(age) {
 							return Data.mqForestTempleCanAccessAllPoeRooms(age);
 						}
 					}
 				}
 			},
-
 			bossRoom: {
 				Exits: {
 					"Boss Entrance": {
