@@ -1731,14 +1731,30 @@ let StandardDungeons = {
 						Age: Age.EITHER,
 						Order: 1,
 						UseAdultAge: function() { 
-							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.fireNoGoronTunic
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.fireNoGoronTunic;
 						},
-						LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava - equip your Goron Tunic if you're afraid of burning. Navigate to the upper left corner of the room and step on the switch. The chest is inside the Goron cage.",
+						LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper left corner of the room and step on the switch. The chest is inside the Goron cage.",
 						CustomRequirement: function(age) {
 							if (age === Age.CHILD) {
 								return Settings.GlitchesToAllow.fireNoGoronTunic;
 							}
 							return Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
+						}
+					},
+					"2 Pots Near Boss Door": {
+						Name: "2 Pots Near Boss Door",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 45, y: 158, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 2,
+						LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper right corner of the room using your hookshot, hover boots, or by megaflipping. Climb up to get to the pots (2/4 are faries).",
+						CustomRequirement: function(age) {
+							let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
+							let canGetThere = Data.canMegaFlip(age) || Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas;
+							return tunicCheck && canGetThere;
 						}
 					},
 
@@ -1749,8 +1765,8 @@ let StandardDungeons = {
 						Regions: ["main"],
 						MapInfo: { x: 126, y: 214, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 4,
-						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						Order: 3,
+						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
 						LongDescription: "This is the door behind the pillar on the bottom of the lobby.",
 						RequiredToAppear: function() { return Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.SMALL_KEY_SANITY; },
 						KeyRequirement: function(age) {
@@ -1769,7 +1785,7 @@ let StandardDungeons = {
 						Regions: ["main"],
 						MapInfo: { x: 136, y: 203, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 8,
+						Order: 7,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "This is the top right door in the lobby.",
 						KeyRequirement: function(age) {
@@ -1810,7 +1826,7 @@ let StandardDungeons = {
 						Regions: ["bigLavaRoom"],
 						MapInfo: { x: 247, y: 92, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 13,
+						Order: 14,
 						LongDescription: "This is the door you reach after riding the block up the fire pillar.",
 						KeyRequirement: function(age) {
 							if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
@@ -1830,7 +1846,7 @@ let StandardDungeons = {
 						Regions: ["boulderMazeLower"],
 						MapInfo: { x: 289, y: 135, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 17,
+						Order: 18,
 						LongDescription: "This is the locked door in the boulder maze.",
 						KeyRequirement: function(age) {
 							let minValue = 4;
@@ -1850,7 +1866,7 @@ let StandardDungeons = {
 						Regions: ["narrowBridgeRoom", "fireWallRoom"],
 						MapInfo: { x: 283, y: 170, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 19,
+						Order: 21,
 						LongDescription: "This is the locked door in the crater room with narrow ledges.",
 						KeyRequirement: function(age) {
 							let minValue = 5;
@@ -1868,14 +1884,13 @@ let StandardDungeons = {
 							return { min: minValue, max: 6 };
 						}
 					},
-
 					"Locked Door in Fire Wall Room": {
 						Name: "Locked Door in Fire Wall Room",
 						ItemGroup: ItemGroups.LOCKED_DOOR,
 						Regions: ["fireWallRoom"],
 						MapInfo: { x: 207, y: 170, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 24,
+						Order: 29,
 						LongDescription: "This is the locked door you reach after going through the room with the big fire wall.",
 						KeyRequirement: function(age) {
 							let minValue = 6;
@@ -1898,14 +1913,13 @@ let StandardDungeons = {
 							return { min: minValue, max: 7 };
 						}
 					},
-
 					"Locked Door in Fire Maze Room": {
 						Name: "Locked Door in Fire Maze Room",
 						ItemGroup: ItemGroups.LOCKED_DOOR,
 						Regions: ["fireMazeRoomStart"],
 						MapInfo: { x: 119, y: 192, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 26,
+						Order: 32,
 						LongDescription: "This is the locked door you reach after going through the fire wall maze.",
 						KeyRequirement: function(age) {
 							let minValue = 7;
@@ -1945,7 +1959,7 @@ let StandardDungeons = {
 						MapInfo: {x: 122, y: 13, floor: "F1" },
 						Age: Age.EITHER,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
-						Order: 5,
+						Order: 4,
 						LongDescription: "To the right of the stairs at the entrance of the temple, use your hammer on the side of the column a few times to destroy it. Enter the door. Kill all the enemies and enter the next room. The skulltula is on the back wall by the like-like."
 					},
 					"Flare Dancer Near Entrance": {
@@ -1954,7 +1968,7 @@ let StandardDungeons = {
 						MapInfo: {x: 57, y: 60, floor: "F1" },
 						Age: Age.EITHER,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
-						Order: 6,
+						Order: 5,
 						LongDescription: "To the right of the stairs at the entrance of the temple, use your hammer on the side of the column a few times to destroy it. Enter the door. Kill all the enemies and continue until you get to the Flare Dancer room. To kill it - either use your hammer or hookshot to stun it. It will take three Master Sword jumpslashes to kill it. For some reason, the Biggoron's Sword will do less damage. Also, there's no need to try to jumpslash it more than once per cycle, as it won't do damage.",
 						RequiredChoiceOfAdultItems: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER, Items.HOOKSHOT],
 						RequiredChoiceOfChildItems: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER],
@@ -1970,7 +1984,7 @@ let StandardDungeons = {
 						MapInfo: {x: 63, y: 111, floor: "F1" },
 						Age: Age.EITHER,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
-						Order: 7,
+						Order: 6,
 						LongDescription: "After the flare dancer room (see the other task), continue to the next room. Hammer the rusted switch to gain access to the boss key chest."
 					}
 				}
@@ -2004,6 +2018,20 @@ let StandardDungeons = {
 				},
 
 				ItemLocations: {
+					"3 Pots on Big Lava Room Ledge": {
+						Name: "3 Pots on Big Lava Room Ledge",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Pots",
+						MapInfo: { x: 227, y: 162, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 8,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.fireNoGoronTunic;
+						},
+						LongDescription: "Go up the stairs at the entrance to the temple. Take the right door into the big lava room. Along the back left wall is a platform that will rise up to an alcove after you jump on it. The pots are there."
+					},
 					"Big Lava Room Left Goron": {
 						Name: "Big Lava Room Left Goron",
 						ItemGroup: ItemGroups.CHEST,
@@ -2061,7 +2089,22 @@ let StandardDungeons = {
 						LockedDoor: "Locked Door After Rising Block"
 					}
 				},
-				ItemLocations: {}
+				ItemLocations: {
+					"3 Hearts on Left Ledge": {
+						Name: "3 Hearts on Left Ledge",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Hearts",
+						MapInfo: { x: 324, y: 176, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 13,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.fireNoGoronTunic;
+						},
+						LongDescription: "Open the locked door on the other side of the big lava room. Climb up the grate and navigate to the left of the room (opposite to where you go for the giant block). The hearts are up there guarded by some keese."
+					}
+				}
 			},
 			firstTorchSlugRoom: {
 				Exits: {
@@ -2108,7 +2151,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 320, y: 201, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 14,
+						Order: 15,
 						LongDescription: "When you first enter the boulder maze, turn to the right. Walk in that general direction and you'll eventually find a Goron and a chest in a cage. Step on the switch to get in."
 					},
 					"Skulltula in Weak Wall in Boulder Maze": {
@@ -2116,7 +2159,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 322, y: 103, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 15,
+						Order: 16,
 						LongDescription: "From the lower entrance of the boulder maze, turn left. Walk in that general direction until you reach the end. You should hear the skulltula through the wall - bomb it to gain access.",
 						NeedsExplosives: true
 					},
@@ -2125,7 +2168,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 283, y: 51, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 16,
+						Order: 17,
 						LongDescription: "From the lower boulder maze Goron, make your way to the complete opposite side of the maze. This is equivalent to turning left from the entrance of the maze, and going in that direction. You'll run into a door - if you don't see it, try heading to the left. It should be the unlocked door. Inside, there's a hallway with another Goron and chest."
 					}
 				}
@@ -2145,7 +2188,19 @@ let StandardDungeons = {
 						LockedDoor: "Locked Door in Crater Room"
 					}
 				},
-				ItemLocations: {}
+				ItemLocations: {
+					"3 Hearts in Narrow Bridge Room": {
+						Name: "3 Hearts in Narrow Bridge Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Hearts",
+						MapInfo: { x: 293, y: 155, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 19,
+						LongDescription: "Make your way to the scary room with the giant pit that you get to from the boulder maze. You must make a sketchy jump to get to the hearts."
+					}
+				}
 			},
 			fireWallRoom: {
 				Exits: {
@@ -2163,10 +2218,34 @@ let StandardDungeons = {
 						LockedDoor: "Locked Door in Fire Wall Room"
 					}
 				},
-				ItemLocations: {}
+				ItemLocations: {
+					"2 Hearts on Fire Wall Room Pillars": {
+						Name: "2 Hearts on Fire Wall Room Pillars",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Hearts",
+						MapInfo: { x: 231, y: 147, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 22,
+						LongDescription: "Make your way to the scary room with the giant pit that you get to from the boulder maze. Go through the locked door from there. Climb up two of the pillars in the middle of the room to get these items."
+					},
+					"Heart in Fire Wall Room Back": {
+						Name: "Hearts in Fire Wall Room Back",
+						ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						MapImageName: "Recovery Heart",
+						MapInfo: { x: 265, y: 104, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 23,
+						LongDescription: "Make your way to the scary room with the giant pit that you get to from the boulder maze. Go through the locked door from there. The hearts are on a platform on the other side of the room."
+					}
+				}
 			},
 			mapEnclosure: {
 				Exits: {
+					narrowBridgeRoom: {
+						Name: "narrowBridgeRoom"
+					},
 					fireWallRoom: {
 						Name: "fireWallRoom",
 						Age: Age.ADULT,
@@ -2183,7 +2262,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 258, y: 150, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 18,
+						Order: 20,
 						LongDescription: "First, make your way to the scary room with the giant pit that you get to from the boulder maze. There are two paths to get this chest. First, you can shoot the eye switch in this room with a bow and enter the room that opens up to get to the chest. If you don't have a bow, you must enter the other door instead. Make your way to the other side of the room. You can climb onto the cage and drop down onto the chest from this side."
 					}
 				}
@@ -2218,7 +2297,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 302, y: 222, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 20.9,
+						Order: 25,
 						LongDescription: "First, get to the upper part of the boulder maze. This is from the unlocked door in the room with the fire wall. Jump on the platforms across the room to get to the Goron and chest in the cage on the other side. Be sure to step on the switch on the way there to open the cage."
 					}
 				}
@@ -2244,7 +2323,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 164, y: 90, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 20,
+						Order: 24,
 						LongDescription: "First, get to the upper part of the boulder maze. This is from the unlocked door in the room with the fire wall. On one of the platforms, there's a very obvious crack in the floor. Bomb it to break it open. Follow the path it unlocks to another Goron and chest in a cage."
 					}
 				}
@@ -2257,7 +2336,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: {x: 335, y: 84, floor: "F4" },
 						Age: Age.ADULT,
-						Order: 21,
+						Order: 26,
 						LongDescription: "First, get to the upper part of the boulder maze. This is from the unlocked door in the room with the fire wall. Up and to the right of the entrance to this part of the maze, there's a small platform. If you play Scarecrow's Song here, you'll spawn one on that platform. It's kind of finicky to get it to spawn, though, so try a few different places. You can get up there with the hookshot. Once there, hookshot the platform on the other side and ride it up. As you go through the next room, you should run into the skulltula."
 					},
 					"Skulltula on Top After Scarecrow": {
@@ -2265,7 +2344,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: {x: 241, y: 156, floor: "F5" },
 						Age: Age.ADULT,
-						Order: 22,
+						Order: 27,
 						LongDescription: "First, get to the upper part of the boulder maze. This is from the unlocked door in the room with the fire wall. Up and to the right of the entrance to this part of the maze, there's a small platform. If you play Scarecrow's Song here, you'll spawn one on that platform. It's kind of finicky to get it to spawn, though, so try a few different places. You can get up there with the hookshot. Once there, hookshot the platform on the other side and ride it up. Navigate through the next room's switch puzzle into the outside room. The skulltula should be on the wall to your left."
 					},
 					"Chest in Scarecrow Song Area": {
@@ -2273,7 +2352,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 220, y: 148, floor: "F5" },
 						Age: Age.ADULT,
-						Order: 23,
+						Order: 28,
 						LongDescription: "First, get to the upper part of the boulder maze. This is from the unlocked door in the room with the fire wall. Up and to the right of the entrance to this part of the maze, there's a small platform. If you play Scarecrow's Song here, you'll spawn one on that platform. It's kind of finicky to get it to spawn, though, so try a few different places. You can get up there with the hookshot. Once there, hookshot the platform on the other side and ride it up. Navigate through the next room's switch puzzle into the outside room. There's a switch you can press in this room - after you press it, you must quicky make your way around the room to get the chest before the fire is ignited once more. It is possible with the hookshot, just make sure you're close enough to the pillar - it's important to hook it quickly to get enough time."
 					}
 				}
@@ -2306,8 +2385,19 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 191, y: 81, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 25,
+						Order: 30,
 						LongDescription: "Make your way to the maze of tiny fire walls. This is the locked door in the giant fire wall room. To get to the Compass chest, you must enter the door to the right of the entrance. Make your way through the maze to that door, being careful of the spawning fires."
+					},
+					"4 Pots by Left Fire Maze Totem": {
+						Name: "4 Pots by Left Fire Maze Totem",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "4 Pots",
+						MapInfo: { x: 84, y: 215, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 31,
+						LongDescription: "Make your way to the maze of tiny fire walls. This is the locked door in the giant fire wall room. Navigate the maze to the left to get to the pots."
 					}
 				}
 			},
@@ -2322,7 +2412,19 @@ let StandardDungeons = {
 						NeedsSwordWeapon: true
 					}
 				},
-				ItemLocations: {}
+				ItemLocations: {
+					"4 Pots by Right Fire Maze Exit": {
+						Name: "4 Pots by Right Fire Maze Exit",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "4 Pots",
+						MapInfo: { x: 76, y: 144, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 33,
+						LongDescription: "By the exit to the fire maze (after you hit the switch to pass the giant fire wall), there are 2 pots to either side of the door (4 total)."
+					}
+				}
 			},
 			hammerChestRoom: {
 				Exits: {
@@ -2343,7 +2445,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 43, y: 157, floor: "F5" },
 						Age: Age.ADULT,
-						Order: 27,
+						Order: 34,
 						LongDescription: "Make your way to the maze of tiny fire walls. This is the locked door in the giant fire wall room. Make your way around the entire maze. First, you must navigate to the left side of the middle pillar. After you go through that, you must navigate to a switch that lowers the bigger fire wall. Bomb the fake door and defeat the Flare Dancer (see the other Flare Dancer task for advice on this). Ride his platform up to the next room. Make your way though the fire switch puzzle room into the next room. In this room, you must hit the switch and then quickly navigate over to the hammer chest. Alternatively, you can let a fire keese hit you near the chest, then spam A to open it before you're damaged by the chest fire."
 					}
 				}
@@ -2386,7 +2488,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: {x: 124, y: 162, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 28,
+						Order: 35,
 						LongDescription: "There are a couple ways to get here - either one requires the Megaton Hammer. One way starts at the hammer chest. See that task for how to get there. At the hammer chest, simply jump into the giant crater - you'll end up in this room. Once there, play the Song of Time to spawn the block and climb it up (you can also land up there with a precise enough angle). Now hammer the rusted switch to free the Goron and get to the chest. The alternative way is from the start of the fire wall maze. You can use your hover boots from the start to navigate to the barred door near the entrance. Hammer the rusted switch once you're there. Enter and jump across to the other side. If you don't have the Song of Time to move the block, simply jumpslash it with the hammer to hit the switch underneath."
 					}
 				}

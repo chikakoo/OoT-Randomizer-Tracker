@@ -1861,7 +1861,6 @@ GrottoGroups = {
 		buttons: {
 			"Red Rupee": {
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				tag: "red",
 				description: "The central rupee."
 			},
 			"Green Rupee 1": {
@@ -1901,7 +1900,6 @@ GrottoGroups = {
 		buttons: {
 			"Red Rupee": {
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				tag: "red",
 				description: "The central rupee."
 			},
 			"Blue Rupee 1": {
@@ -2187,6 +2185,6 @@ GrottoGroups = {
 				}
 			}
 		}
-	},
+	}
  };
 

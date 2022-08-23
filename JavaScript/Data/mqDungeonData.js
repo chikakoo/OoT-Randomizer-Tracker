@@ -1116,7 +1116,7 @@ let MQDungeons = {
 					"2 Pots in Hidden Water Room": {
 						Name: "2 Pots in Hidden Water Room",
 						ItemGroup: ItemGroups.ENTRANCE,
-						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						OverrideItemGroup: ItemGroups.POT,
 						IsItemLocationGroup: true,
 						DefaultEntranceGroupName: "2 Pots",
 						MapInfo: { x: 116, y: 224, floor: "B1" },
@@ -1174,7 +1174,7 @@ let MQDungeons = {
 					"2 Pots in Path to Elevator Room": {
 						Name: "2 Pots in Path to Elevator Room",
 						ItemGroup: ItemGroups.ENTRANCE,
-						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						OverrideItemGroup: ItemGroups.POT,
 						IsItemLocationGroup: true,
 						DefaultEntranceGroupName: "2 Pots",
 						MapInfo: { x: 258, y: 153, floor: "B1" },
@@ -1212,7 +1212,7 @@ let MQDungeons = {
 					"2 Pots in Like Like Room": {
 						Name: "2 Pots in Like Like Room",
 						ItemGroup: ItemGroups.ENTRANCE,
-						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						OverrideItemGroup: ItemGroups.POT,
 						IsItemLocationGroup: true,
 						DefaultEntranceGroupName: "2 Pots",
 						MapInfo: { x: 192, y: 12, floor: "F1" },
