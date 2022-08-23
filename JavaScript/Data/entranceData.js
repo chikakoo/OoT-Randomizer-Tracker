@@ -215,6 +215,7 @@ InteriorGroups = {
 		buttons: {
 			"Borrow Keaton Mask": {
 				itemLocaton: "Borrow Keaton Mask",
+				tag: "keaton",
 				description: "After showing the Kakariko Village guard Zelda's Letter, head to the mask shop to borrow this mask.",
 				canGet: function(age) {
 					return (Settings.RandomizerSettings.openKakariko && Items.MASK_SLOT.currentUpgrade >= 3) || Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter");
@@ -222,6 +223,7 @@ InteriorGroups = {
 			},
 			"Borrow Skull Mask": {
 				itemLocaton: "Borrow Skull Mask",
+				tag: "skull",
 				description: "After selling the Keaton Mask to the Kakariko Guard, head to the mask shop to borrow this mask.",
 				canGet: function(age) {
 					return Data.itemLocationObtained("Kakariko Village", "main", "Sell Keaton Mask");
@@ -229,6 +231,7 @@ InteriorGroups = {
 			},
 			"Borrow Spooky Mask": {
 				itemLocaton: "Borrow Spooky Mask",
+				tag: "spooky",
 				description: "After selling the Skull Mask to the Skull Kid in Lost Woods, head to the mask shop to borrow this mask.",
 				canGet: function(age) {
 					return Data.itemLocationObtained("Lost Woods", "firstHalf", "Sell Skull Mask");
@@ -236,6 +239,7 @@ InteriorGroups = {
 			},
 			"Borrow Bunny Hood": {
 				itemLocaton: "Borrow Bunny Hood",
+				tag: "bunny",
 				description: "After selling the Spooky Mask to the graveyard kid, head to the mask shop to borrow this mask.",
 				canGet: function(age) {
 					return Data.itemLocationObtained("Graveyard", "main", "Sell Spooky Mask");
@@ -243,6 +247,7 @@ InteriorGroups = {
 			},
 			"Borrow Mask of Truth": {
 				icon: "Mask of Truth",
+				tag: "truth",
 				itemLocaton: "Borrow Mask of Truth",
 				description: "After selling the Bunny Hood to the running guy in Hyrule Field, head to the mask shop to borrow this mask.",
 				canGet: function(age) {
@@ -691,10 +696,12 @@ InteriorGroups = {
 		buttons: {
 			"Child Fishing": {
 				description: "The prize you can get as child.",
+				tag: "child",
 				isChildOnly: function() { return true; }
 			},
 			"Adult Fishing": {
 				description: "The prize you can get as adult.",
+				tag: "adult",
 				isAdultOnly: function() { return true; }
 			}
 		}
@@ -1188,6 +1195,7 @@ GrottoGroups = {
 		buttons: {
 			"Cow": {
 				itemGroup: ItemGroups.COW,
+				tag: "cow",
 				description: "Play Epona's Song next to the cow.",
 				canGet: function(age) {
 					return Data.canMilkCows();
@@ -1195,6 +1203,7 @@ GrottoGroups = {
 			},
 			"Red Rupee": {
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				tag: "red",
 				description: "The central rupee."
 			},
 			"Green Rupee 1": {
@@ -1230,25 +1239,30 @@ GrottoGroups = {
 			"Heart 1": {
 				icon: "Recovery Heart",
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				tag: "heart",
 				description: "One of the heats near the cow."
 			},
 			"Heart 2": {
 				icon: "Recovery Heart",
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				tag: "heart",
 				description: "One of the heats near the cow."
 			},
 			"Heart 3": {
 				icon: "Recovery Heart",
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				tag: "heart",
 				description: "One of the heats near the cow."
 			},
 			"Heart 4": {
 				icon: "Recovery Heart",
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				tag: "heart",
 				description: "One of the heats near the cow."
 			},
 			"Beehive": {
 				itemGroup: ItemGroups.BEEHIVE,
+				tag: "beehive",
 				description: "The beehive on the back/right side of the grotto. If using chus, line up with one of the walls under it and drop it on the 6th red flash.",
 				canGet: function(age) {
 					return Data.canBreakBeehive(age);
