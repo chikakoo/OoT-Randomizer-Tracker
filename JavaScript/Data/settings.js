@@ -233,8 +233,9 @@ let Settings = {
 		waterNoZoraTunic: false,
 		waterHighWaterJump: false,
 		waterHookshotToFloor1: false,
-		waterBKShortcut: false,
 		waterBombableWallEarly: false,
+		waterEyeSwitchGateFromTop: false,
+		waterBKShortcut: false,
 		
 		shadowLensless: false,
 		shadowSilverRupeeWithNothing: false,

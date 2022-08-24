@@ -988,6 +988,9 @@ Data = {
 		
 		let _this = this;
 		itemLocation[propertyName].forEach(function(item) {
+            if (!item) {
+                console.log(`ERROR: Item property not defined on item location: ${itemLocation.Name}; property ${propertyName}`);
+            }
 			let currentItem = item.item || item;
 			
 			let canUseItem = currentItem.playerHas &&
