@@ -2515,7 +2515,7 @@ let StandardDungeons = {
 					lowWaterLevel: {
 						Name: "lowWaterLevel",
 						Age: Age.ADULT,
-						RequiredAdultItems: [Equipment.IRON_BOOTS],
+						RequiredChoiceOfAdultItems: [Equipment.IRON_BOOTS, {item: Items.HOOKSHOT, upgradeString: "2"}],
 						RequiredSongs: [Songs.ZELDAS_LULLABY],
 						CustomRequirement: function(age) {
 							return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
@@ -2528,15 +2528,14 @@ let StandardDungeons = {
 							return !Data.waterIsPlayerLockedOutOfHighWater();
 						}
 					},
-					roomWithManyTektites: {
-						Name: "roomWithManyTektites",
+					roomWithManyTektitesAntechamber: {
+						Name: "roomWithManyTektitesAntechamber",
 						Map: "Water Temple",
 						Age: Age.ADULT,
-						RequiredAdultItems: [Equipment.IRON_BOOTS, {item: Items.HOOKSHOT, upgradeString: "2"}],
+						RequiredAdultItems: [Equipment.IRON_BOOTS],
 						CustomRequirement: function(age) {
 							return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
 						},
-						LockedDoor: "Locked Door in Bottom North Room"
 					},
 					Exit: {
 						OwExit: OwExits["Water Temple"]["Exit"]
@@ -2562,7 +2561,6 @@ let StandardDungeons = {
 						MapInfo: { x: 185, y: 220, floor: "F3" },
 						Age: Age.ADULT,
 						Order: 2,
-						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "This is the door on the top west floor of the temple. You need the water raised to open it.",
 						KeyRequirement: function(age) {
 							let keysReq = 4;
@@ -2584,7 +2582,6 @@ let StandardDungeons = {
 						MapInfo: { x: 86, y: 220, floor: "F3" },
 						Age: Age.ADULT,
 						Order: 4,
-						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "This is the door in the waterfall room with the platforms. You get here from the locked door on the top floor.",
 						RequiredItems: [Items.HOOKSHOT],
 						KeyRequirement: function(age) {
@@ -2607,7 +2604,6 @@ let StandardDungeons = {
 						MapInfo: { x: 169, y: 220, floor: "F1" },
 						Age: Age.ADULT,
 						Order: 13,
-						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
 						LongDescription: "This is the door on the bottom floor leading into the central room. The water needs to be drained to open it.<br/><br/>Note that this door is entirely optional if you have a bow or fire item, as you can light a torch on the central middle platform to get here.",
 						KeyRequirement: function(age) {
 							let keysReq = 5;
@@ -2621,16 +2617,11 @@ let StandardDungeons = {
 					"Locked Door in Bottom North Room": {
 						Name: "Locked Door in Bottom North Room",
 						ItemGroup: ItemGroups.LOCKED_DOOR,
-						Regions: ["main"],
+						Regions: ["roomWithManyTektitesAntechamber"],
 						MapInfo: { x: 191, y: 113, floor: "F1" },
 						Age: Age.ADULT,
 						Order: 18,
-						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-						LongDescription: "This is the door on the bottom north path. You can use iron boots or drain the water to get here. Longshot across to get to the door.",
-						RequiredItems: [Equipment.IRON_BOOTS, {item: Items.HOOKSHOT, upgradeString: "2"}],
-						CustomRequirement: function(age) {
-							return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-						},
+						LongDescription: "This is the door on the bottom north path. You can use iron boots or drain the water to get here. Longshot or backwalk/hover boots/backflip across to get to the door.",
 						KeyRequirement: function(age) {
 							let keysReq = 4;
 							if (!Data.canPlaySong(Songs.ZELDAS_LULLABY)) {
@@ -2647,7 +2638,7 @@ let StandardDungeons = {
 						MapInfo: { x: 123, y: 70, floor: "F1" },
 						Age: Age.ADULT,
 						Order: 20,
-						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+						RequiredChoiceOfAdultItems: [Equipment.HOVER_BOOTS, {item: Items.HOOKSHOT, upgradeString: "2"}],
 						LongDescription: "This is the door you reach after passing the boulder waterfall in the room behind the locked door in the bottom north room.",
 						KeyRequirement: function(age) {
 							let keysReq = 5;
@@ -2684,6 +2675,9 @@ let StandardDungeons = {
 							return canGetToArea && Data.canWeirdShot(age);
 						}
 					},
+					roomWithManyTektitesAntechamber: {
+						Name: "roomWithManyTektitesAntechamber"
+					},
 					crackedWallArea: {
 						Name: "crackedWallArea",
 						CustomRequirement(age) {
@@ -2699,7 +2693,7 @@ let StandardDungeons = {
 						Age: Age.ADULT,
 						Order: 10,
 						MapInfo: { x: 291, y: 234, floor: "F3" },
-						LongDescription: "To get here, go to the bottom east wing and float up to the top."
+						LongDescription: "To get here, go to the bottom east wing and float up to the top. If you don't have iron boots, you can longshot the torches to get down there!"
 					},
 					"Chest After Torches in Bottom East Wing": {
 						Name: "Chest After Torches in Bottom East Wing",
@@ -2732,7 +2726,8 @@ let StandardDungeons = {
 						RequiredSongs: [Songs.ZELDAS_LULLABY]
 					},
 					centralRoomBottom: {
-						Name: "centralRoomBottom"
+						Name: "centralRoomBottom",
+						RequiredItems: [Equipment.IRON_BOOTS]
 					}
 				},
 
@@ -2867,8 +2862,11 @@ let StandardDungeons = {
 						MapInfo: { x: 332, y: 223, floor: "F3" },
 						Age: Age.ADULT,
 						Order: 9,
-						LongDescription: "From the entrance of the temple, jump off and sink down to the bottom. Head down the hallway of the east room. Take off your iron boots and float up to the surface. Enter the door and kill the enemies to spawn the chest.",
-						RequiredItems: [Equipment.IRON_BOOTS]
+						LongDescription: "From the entrance of the temple, jump off and sink down to the bottom (or longshot a torch on the bottom of the east side). Head down the hallway of the east room. Take off your iron boots and float up to the surface. Enter the door and kill the enemies to spawn the chest.",
+						RequiredChoiceOfAdultItems: [Equipment.IRON_BOOTS, {item: Items.HOOKSHOT, upgradeString: "2"}],
+						CustomRequirement: function(age) {
+							return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
+						}
 					}
 				}
 			},
@@ -2957,13 +2955,46 @@ let StandardDungeons = {
 					}
 				}
 			},
+			roomWithManyTektitesAntechamber: {
+				Exits: {
+					roomWithManyTektites: {
+						Name: "roomWithManyTektites",
+						Map: "Water Temple",
+						Age: Age.ADULT,
+						RequiredChoiceOfAdultItems: [Equipment.HOVER_BOOTS, {item: Items.HOOKSHOT, upgradeString: "2"}],
+						LockedDoor: "Locked Door in Bottom North Room"
+					},
+				},
+				ItemLocations: {}
+			},
 			roomWithManyTektites: {
+				Exits: {
+					blockPuzzleRoom: {
+						Name: "blockPuzzleRoom"
+					},
+					boulderWaterfall: {
+						Name: "boulderWaterfall",
+						CustomRequirement: function(age) {
+							return Settings.GlitchesToAllow.waterBKShortcut;
+						}
+					}
+				},
+				ItemLocations: {}
+			},
+			blockPuzzleRoom: {
 				Exits: {
 					boulderWaterfall: {
 						Name: "boulderWaterfall",
 						CustomRequirement: function(age) {
-							return Settings.GlitchesToAllow.waterBKShortcut || (Equipment.STRENGTH.playerHas && Data.hasExplosives());
+							return Equipment.HOVER_BOOTS.playerHas || 
+								(Equipment.STRENGTH.playerHas && Data.hasExplosives()) ||
+								Data.canMegaFlip(age);
 						}
+					},
+					bossKeyRoom: {
+						Name: "bosskeyRoom",
+						Map: "Water Temple",
+						LockedDoor: "Locked Door after Boulder Waterfall"
 					}
 				},
 				ItemLocations: {}
@@ -2973,7 +3004,10 @@ let StandardDungeons = {
 					bossKeyRoom: {
 						Name: "bossKeyRoom",
 						Map: "Water Temple",
-						LockedDoor: "Locked Door after Boulder Waterfall"
+						LockedDoor: "Locked Door after Boulder Waterfall",
+						CustomRequirement: function(age) {
+							return Settings.GlitchesToAllow.waterBKShortcut;
+						}
 					}
 				},
 
@@ -2984,12 +3018,8 @@ let StandardDungeons = {
 						Age: Age.ADULT,
 						Order: 19,
 						MapInfo: { x: 122, y: 91, floor: "F1" },
-						LongDescription: "Head to the bottom of the main room - no need to lower the water if you don't want to. Enter the north wing. After you reach the dead end, equip your boots and surface. Longshot to the other side and enter the locked door. Navigate across the room to the other side - might help to kill the tektites. Complete the puzzle in this room which requires you to explode a destroyable wall and push a block onto a switch. After the next room (water switch jumping puzzle), you should see the skulltula on the waterfall to the right.",
-						IsAtShortDistance: true,
-						CustomRequirement: function(age) {
-							let canDoNormally = Equipment.STRENGTH.playerHas && Data.hasExplosives();
-							return Settings.GlitchesToAllow.waterBKShortcut || canDoNormally;
-						}
+						LongDescription: "Head to the bottom of the main room - no need to lower the water if you don't want to. Enter the north wing. After you reach the dead end, equip your boots and surface. Longshot to the other side and enter the locked door. Navigate across the room to the other side - might help to kill the tektites. Complete the puzzle in this room (or cross it with hover boots or a megaflip!) which requires you to explode a destroyable wall and push a block onto a switch. After the next room (water switch jumping puzzle), you should see the skulltula on the waterfall to the right.",
+						IsAtShortDistance: true
 					}
 				}
 			},
@@ -3001,7 +3031,8 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						Age: Age.ADULT,
 						Order: 21,
-						MapInfo: {x: 123, y: 57, floor: "F1" },
+						MapInfo: { x: 123, y: 57, floor: "F1" },
+						LongDescription: "From the waterfall, use iron boots to navigate under the water to the locked door to the chest. If you don't have iron boots, you can jump from the platform with the door to the water to sink low enough to advance."
 					}
 				}
 			},
