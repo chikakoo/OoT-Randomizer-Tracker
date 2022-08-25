@@ -2836,11 +2836,18 @@ let MQDungeons = {
 		Regions: {
 			main: {
 				Exits: {
+					lowEastWingPots: {
+						Name: "lowEastWingPots",
+						RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+					},
+					midSouthRoomPots: {
+						Name: "midSouthRoomPots",
+						RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+					},
 					behindGateInMidSouthRoom: {
 						Name: "behindGateInMidSouthRoom",
 						RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
 					},
-					
 					lowWaterLevel: {
 						Name: "lowWaterLevel",
 						RequiredItems: [Equipment.IRON_BOOTS],
@@ -2849,26 +2856,17 @@ let MQDungeons = {
 							return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
 						}
 					},
-
-					whirlpoolRoom: {
-						Name: "whirlpoolRoom",
+					centralRoom: {
+						Name: "centralRoom",
+						RequiredItems: [Equipment.IRON_BOOTS]
+					},
+					roomBeforeDarkLink: {
+						Name: "roomBeforeDarkLink",
 						RequiredItems: [Items.HOOKSHOT],
 						CustomRequirement: function(age) {
 							return getKeyCount("Water Temple") >= 1;
 						}
 					},
-
-					bottomFloor: {
-						Name: "bottomFloor",
-						RequiredItems: [Equipment.IRON_BOOTS],
-						CustomRequirement: function(age) {
-							let canUseFireArrows = Items.FAIRY_BOW.playerHas && Items.FIRE_ARROW.playerHas && Equipment.MAGIC.playerHas;
-							let canUseDinsFire = Items.DINS_FIRE.playerHas && Equipment.MAGIC.playerHas;
-							let canLightTorches = canUseFireArrows || (Data.canPlaySong(Songs.SONG_OF_TIME) && canUseDinsFire);
-							return canLightTorches;
-						}
-					},
-
 					bossRoom: {
 						Name: "bossRoom",
 						CustomRequirement: function(age) {
@@ -2889,35 +2887,86 @@ let MQDungeons = {
 				},
 
 				ItemLocations: {
-					"Chest in Mid East Room": {
-						Name: "Chest in Mid East Room",
+					"Chest Above Low East Room": {
+						Name: "Chest Above Low East Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 330, y: 131, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 3,
-						LongDescription: "Use your iron boots and navigate through the lower right room. Put them back on when you reach the very next floor. Navigate through the hole in the wall. Now, hookshot the back wall to spawn the chest. To open it, hookshot the front then spam A.",
-						RequiredItems: [Items.HOOKSHOT, Equipment.IRON_BOOTS]
+						Order: 4,
+						LongDescription: "Use your iron boots and navigate through the lower eastern room. Put them back on when you reach the very next floor. Navigate through the hole in the wall. Now, hookshot the back wall to spawn the chest. To open it, hookshot the front then spam A.",
+						RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
 					},
 					"Chest by Low Water Triforce": {
 						Name: "Chest by Low Water Triforce",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 334, y: 222, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 4,
-						LongDescription: "Use your iron boots and navigate through the lower right room. Take them off to rise to the top to get to the triforce room. Use a fire item to light the torches in the four corners of the room to unbar the door.<br/><br/>Enter the next room and optionally defeat all the Stalfos to unbar the door. The chest is spawned by hitting the back wall with the hookshot.",
+						Order: 5,
+						LongDescription: "Use your iron boots and navigate through the lower eastern room. Take them off to rise to the top to get to the triforce room. Use a fire item to light the torches in the four corners of the room to unbar the door.<br/><br/>Enter the next room and optionally defeat all the Stalfos to unbar the door. The chest is spawned by hitting the back wall with the hookshot.",
 						NeedsFire: true,
-						RequiredItems: [Items.HOOKSHOT, Equipment.IRON_BOOTS]
+						RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+					},
+					"3 Crates in Mid South Hallway": {
+						Name: "3 Crates in Mid South Hallway",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Crates",
+						MapInfo: { x: 237, y: 195, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 8,
+						LongDescription: "Make your way to the mid south wing - you'll need to press the switch to open the gate. Bonk into the crates to break them. Two of them are before the jail cell, and one is just to the left of it.",
+						RequiredItems: [Equipment.IRON_BOOTS]
+					},
+					"5 Crates in Mid South Room": {
+						Name: "5 Crates in Mid South Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "5 Crates",
+						MapInfo: { x: 245, y: 241, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 10,
+						LongDescription: "Make your way to the mid south wing - you'll need to press the switch to open the gate. Navigate to the room to the right of the jail cell and bonk into the crates to break them.",
+						RequiredItems: [Equipment.IRON_BOOTS]
+					},
+					"4 Pots in Mid East Room": {
+						Name: "4 Pots in Mid East Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "4 Pots",
+						MapInfo: { x: 283, y: 58, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 15,
+						LongDescription: "Go to the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there, then hookshot up. Once at the surface, look in the corner of the room for the pots.",
+						RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+					},
+					"7 Crates in Mid East Room": {
+						Name: "7 Crates in Mid East Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "7 Crates",
+						MapInfo: { x: 315, y: 58, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 16,
+						LongDescription: "Go to the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there, then hookshot up. Once at the surface, the crates are the big ones all around the room.",
+						RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
 					}
 				}
 			},
-
 			lowWaterLevel: {
 				Exits: {
-					midWaterLevel: {
-						Name: "midWaterLevel",
-						RequiredItems: [Items.HOOKSHOT]
+					lowEastWingPots: {
+						Name: "lowEastWingPots"
 					},
-
+					midSouthRoomPots: {
+						Name: "midSouthRoomPots",
+					},
+					midWaterLevel: {
+						Name: "midWaterLevel"
+					},
 					behindGateInMidSouthRoom: {
 						Name: "behindGateInMidSouthRoom",
 						CustomRequirement: function(age) {
@@ -2926,14 +2975,13 @@ let MQDungeons = {
 						}
 					}
 				},
-
 				ItemLocations: {
 					"Chest in Lower East Room": {
 						Name: "Chest in Lower East Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 338, y: 212, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 5,
+						Order: 7,
 						LongDescription: "Lower the water level. Navigate to the room below the water triforce. Light the torches using a fire item or your bow.<br/><br/>Defeat the enemies in the next room to spawn the chest",
 						CustomRequirement: function(age) {
 							return Data.canUseFireItem(age) || Items.FAIRY_BOW.playerHas;
@@ -2941,60 +2989,222 @@ let MQDungeons = {
 					}
 				}
 			},
-
+			lowEastWingPots: {
+				Exits: {},
+				ItemLocations: {
+					"2 Pots in Low East Wing": {
+						Name: "2 Pots in Low East Wing",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 287, y: 213, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 6,
+						LongDescription: "These pots are by the door in the lower eastern wing. Either use iron boots and the hookshot the break them, or drain the water."
+					}
+				}
+			},
+			midSouthRoomPots: {
+				Exits: {},
+				ItemLocations: {
+					"Pot in Mid South Hallway": {
+						Name: "Pot in Mid South Hallway",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 234, y: 205, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 9,
+						LongDescription: "Make your way to the mid south room - you'll need to press the switch to open the gate. If the water isn't drained, you'll need to use your hookshot the break this hallway pot."
+					},
+					"2 Pots in Mid South Room": {
+						Name: "2 Pots in Mid South Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 250, y: 248, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 11,
+						LongDescription: "Make your way to the mid south room - you'll need to press the switch to open the gate. Make your way to the room to the left of the jail. If the water isn't drained, you'll need to use your hookshot the break the two pots in here."
+					}
+				}
+			},
 			behindGateInMidSouthRoom: {
 				Exits: {},
 				ItemLocations: {
+					"2 Pots in Mid South Jail": {
+						Name: "2 Pots in Mid South Jail",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 259, y: 203, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 12,
+						LongDescription: "At any water level (mid is easiest), navigate to the bottom middle area. Hit the switch to open the gated door. Use Din's Fire to light the torch and get the pots behind the cell.<br/><br/>Without a fire item, stand in front of the torch and hookshot it. You can now just walk in. To get out, target the jail and hookshot while holding Z and right while next to the torch."
+					},
+					"2 Crates in Mid South Jail": {
+						Name: "2 Crates in Mid South Jail",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Crates",
+						MapInfo: { x: 270, y: 203, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 13,
+						LongDescription: "At any water level (mid is easiest), navigate to the bottom middle area. Hit the switch to open the gated door. Use Din's Fire to light the torch and get the crates behind the cell.<br/><br/>Without a fire item, stand in front of the torch and hookshot it. You can now just walk in. To get out, target the jail and hookshot while holding Z and right while next to the torch."
+					},
 					"Skulltula in Mid South Room": {
 						Name: "Skulltula in Mid South Room",
 						ItemGroup: ItemGroups.SKULLTULA,
-						MapInfo: { x: 267, y: 203, floor: "F2" },
+						MapInfo: { x: 270, y: 203, floor: "F2" },
 						Age: Age.ADULT,
-						Order: 12,
+						Order: 14,
 						LongDescription: "At any water level (mid is easiest), navigate to the bottom middle area. Hit the switch to open the gated door. Use Din's Fire to light the torch and get the skulltula behind the cell.<br/><br/>Without a fire item, stand in front of the torch and hookshot it. You can now just walk in. To get out, target the jail and hookshot while holding Z and right while next to the torch."
 					}
 				}
 			},
-
 			midWaterLevel: {
 				Exits: {},
 				ItemLocations: {
-					"Skulltula in Mid Left Rooms": {
-						Name: "Skulltula in Mid Left Rooms",
+					"6 Crates in Mid West Room": {
+						Name: "6 Crates in Mid West Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "6 Crates",
+						MapInfo: { x: 41, y: 116, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 17,
+						LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. The crates are in this room.",
+					},
+					"3 Pots in Mid West Room": {
+						Name: "3 Pots in Mid West Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Pots",
+						MapInfo: { x: 41, y: 155, floor: "F2" },
+						Age: Age.ADULT,
+						Order: 18,
+						LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. The pots are against the wall to the left."
+					},
+					"2 Crates Above Mid West Room": {
+						Name: "2 Crates Above Mid West Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Crates",
+						MapInfo: { x: 165, y: 247, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 19,
+						LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. In this room, break the box to your left and hit the switch. Now, hookshot up to the next floor and break the crates.",
+						RequiredItems: [Items.HOOKSHOT]
+					},
+					"Skulltula Above Mid West Room": {
+						Name: "Skulltula Above Mid West Room",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 160, y: 247, floor: "F3" },
 						Age: Age.ADULT,
-						Order: 13,
-						LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. In this room, break the box to your left and hit the switch. Now, hookshot up to the next floor. The skullula is in one of the boxes."
+						Order: 20,
+						LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. In this room, break the box to your left and hit the switch. Now, hookshot up to the next floor. The skullula is in one of the boxes.",
+						RequiredItems: [Items.HOOKSHOT]
 					}
 				}
 			},
-
-			bottomFloor: {
+			centralRoom: {
+				Exits: {
+					underCentralRoom: {
+						Name: "underCentralRoom",
+						RequiredItems: [Equipment.IRON_BOOTS],
+						CustomRequirement: function(age) {
+							let tunicCheck = Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
+							let canUseFireArrows = Items.FAIRY_BOW.playerHas && Items.FIRE_ARROW.playerHas && Equipment.MAGIC.playerHas;
+							let canUseDinsFire = Items.DINS_FIRE.playerHas && Equipment.MAGIC.playerHas;
+							let canLightTorches = canUseFireArrows || (Data.canPlaySong(Songs.SONG_OF_TIME) && canUseDinsFire);
+							return tunicCheck && canLightTorches;
+						}
+					}
+				},
+				ItemLocations: {
+					"2 Crates in Upper Central Room": {
+						Name: "2 Crates in Upper Central Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Crates",
+						MapInfo: { x: 170, y: 211, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 1,
+						LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top - the crates are on a platform."
+					}
+				}
+			},
+			underCentralRoom: {
 				Exits: {},
 				ItemLocations: {
-					"Chest at Bottom Floor": {
-						Name: "Chest at Bottom Floor",
+					"14 Crates Below Central Room": {
+						Name: "14 Crates Below Central Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "14 Crates",
+						MapInfo: { x: 185, y: 165, floor: "B1" },
+						Age: Age.ADULT,
+						Order: 2,
+						LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top and play the Song of Time to spawn a block you can use Din's fire from to light the torches. Alternatively, well-aimed fire arrows will work. Sink down to the room at the very bottom. The crates are all around!"
+					},
+					"Chest Below Central Room": {
+						Name: "Chest Below Central Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 291, y: 214, floor: "B1" },
 						Age: Age.ADULT,
-						Order: 6,
+						Order: 3,
 						LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top and play the Song of Time to spawn a block you can use Din's fire from to light the torches. Alternatively, well-aimed fire arrows will work. Sink down to the room at the very bottom.<br/><br/>Once here, navigate around the maze. Jump on some platforms at the very end to reveal a switch. Hit it, and then navigate to the grate that opens up and hookshot your way up there. Hookshot the wall to spawn the chest.",
 						RequiredItems: [Items.HOOKSHOT]
-					},
+					}
 				}
 			},
-
+			roomBeforeDarkLink: {
+				Exits: {
+					whirlpoolRoom: {
+						Name: "whirlPoolRoom"
+					}
+				},
+				ItemLocations: {
+					"Pot in Lower Rising Dragon Room": {
+						Name: "Pot in Lower Rising Dragon Room",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 40, y: 193, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 21,
+						LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door.<br/><br/>Jump down and kill the three stalfos, then use your hookshot to navigate to the pots. Only the middle one will have an item."
+					},
+					"2 Pots in Upper Dragon Room": {
+						Name: "2 Pots in Upper Dragon Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 55, y: 161, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 22,
+						LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door.<br/><br/>Jump down and kill the three stalfos, then use your hookshot to navigate to the exit door - the pots are on either side of it."
+					},
+					"Pot in Room After Dark Link": {
+						Name: "Pot in Room After Dark Link",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 58, y: 43, floor: "F3" },
+						Age: Age.ADULT,
+						Order: 23,
+						LongDescription: "After the Dark Link fight, enter the next room. The pot is the one on the right - the left one will contain a fairy."
+					}
+				}
+			},
 			whirlpoolRoom: {
 				Exits: {
-					singleWaterPillarRoom: {
-						Name: "singleWaterPillarRoom",
-						CustomRequirement: function(age) {
-							let canHitSwitch = Equipment.IRON_BOOTS.playerHas || Equipment.SCALE.playerHas;
-							let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
-							let canWeirdShot = Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2;
-							return canHitSwitch && (canUseDins || canWeirdShot);
-						}
+					dragonRoom: {
+						Name: "dragonRoom"
 					}
 				},
 
@@ -3004,84 +3214,330 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 37, y: 146, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 7,
-						LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door. Use your hookshot to get through the next room, and then defeat Dark Link. Hookshot the wall in the next room to reach the whirlpool room.<br/><br/>Use your iron boots or longshot across the river until you hear the skulltula. Get it with your hookshot or longshot.",
-						Region: "whirlpoolRoom",
+						Order: 24,
+						LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door. Jump down and kill the three stalfos, then use your hookshot to get through the next room, and then defeat Dark Link. Hookshot the wall in the next room to reach the whirlpool room.<br/><br/>Use your iron boots or longshot across the river until you hear the skulltula. Get it with your hookshot or longshot.",
 						RequiredChoiceOfItems: [Equipment.IRON_BOOTS, {item: Items.HOOKSHOT, upgradeString: "2"}]
+					},
+					"Pot in Whirlpool Room": {
+						Name: "Pot in Whirlpool Room",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 49, y: 160, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 25,
+						LongDescription: "After the Dark Link fight, enter the next room. Hit the back wall with your hookshot to open the way. The pot is the left one at the end of the river - the right one contains a fairy."
 					}
 				}
 			},
-
+			dragonRoom: {
+				Exits: {
+					singleWaterPillarRoom: {
+						Name: "singleWaterPillarRoom",
+						NeedsFire: true,
+						RequiredChoiceOfItems: [Equipment.IRON_BOOTS, Equipment.SCALE]
+					}
+				},
+				ItemLocations: {
+					"4 Underwater Crates in Dragon Room": {
+						Name: "4 Underwater Crates in Dragon Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "4 Crates",
+						MapInfo: { x: 53, y: 62, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 26,
+						LongDescription: "In the whirlpool dragon room, use your iron boots to sink to the little hallway behind the dragon where the crates reside.",
+						RequiredItems: [Equipment.IRON_BOOTS]
+					},
+					"2 Crates Behind Dragon Room": {
+						Name: "2 Crates Behind Dragon Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Crates",
+						MapInfo: { x: 33, y: 62, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 27,
+						LongDescription: "In the whirlpool dragon room, use your iron boots or silver scale to go past the little hallway behind the dragon. The crates the big ones on the surface in the next room.",
+						RequiredChoiceOfItems: [Equipment.IRON_BOOTS, Equipment.SCALE]
+					},
+					"2 Crates by Dragon Room Door": {
+						Name: "2 Crates by Dragon Room Door",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Crates",
+						MapInfo: { x: 95, y: 61, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 28,
+						LongDescription: "These crates are by the door leading out of the whirlpool dragon room. You get there by going through the rooms from the upper west path from the lobby."
+					}
+				}
+			},
 			singleWaterPillarRoom: {
+				Exits: {
+					afterSingleWaterPillarRoomGate: {
+						Name: "afterSingleWaterPillarRoomGate",
+						CustomRequirement: function(age) {
+							let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
+							let canWeirdShot = Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2;
+							return canUseDins || canWeirdShot;
+						}
+					}
+				},
+				ItemLocations: {
+					"Pot in Upper Single Water Pillar Room": {
+						Name: "Pot in Upper Single Water Pillar Room",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 102, y: 95, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 29,
+						LongDescription: "Navigate around the whirlpool room. In the room with the dragon, use your iron boots or silver scale to navigate to the back. Light the torches on the walls to unbar the door. The pot is to your left in the next room."
+					},
+					"Crate in Upper Single Water Pillar Room": {
+						Name: "Crate in Upper Single Water Pillar Room",
+						ItemGroup: ItemGroups.CRATE,
+						MapInfo: { x: 89, y: 95, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 30,
+						LongDescription: "Navigate around the whirlpool room. In the room with the dragon, use your iron boots or silver scale to navigate to the back. Light the torches on the walls to unbar the door. The crate is to your right in the next room."
+					},
+					"4 Crates in Lower Single Water Pillar Room": {
+						Name: "4 Crates in Lower Single Water Pillar Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "4 Crates",
+						MapInfo: { x: 95, y: 111, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 31,
+						LongDescription: "Navigate around the whirlpool room. In the room with the dragon, use your iron boots or silver scale to navigate to the back. Light the torches on the walls to unbar the door. The crates are in the pit."
+					}
+				}
+			},
+			afterSingleWaterPillarRoomGate: {
 				Exits: {
 					bottomGateSwitch: {
 						Name: "bottomGateSwitch",
 						RequiredItems: [Equipment.IRON_BOOTS]
 					}
 				},
-
 				ItemLocations: {
-					"Chest in Single Water Pillar Room": {
-						Name: "Chest in Single Water Pillar Room",
+					"Chest Behind Single Water Pillar Gate": {
+						Name: "Chest Behind Single Water Pillar Gate",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 95, y: 126, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 8,
-						LongDescription: "Navigate around the whirlpool room. In the room with the dragon, use your iron boots to navigate to the back. Light the torches on the walls to unbar the door. In the next room, stand on the water pillar and hit the crystal switch to raise the pillar. Use Din's fire to lower the gate so you can get to the chest."
+						Order: 32,
+						LongDescription: "Navigate around the whirlpool room. In the room with the dragon, use your iron boots or silver scale to navigate to the back. Light the torches on the walls to unbar the door. In the next room, stand on the water pillar and hit the crystal switch to raise the pillar. Use Din's fire to lower the gate so you can get to the chest."
 					}
 				}
 			},
-
 			bottomGateSwitch: {
 				Exits: {
+					upperTripleTorchRoom: {
+						Name: "upperTripleTorchRoom",
+						RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.IRON_BOOTS, Equipment.MAGIC],
+						CustomRequirement: function(age) {
+							return Data.canHookScarecrow(age) || Equipment.HOVER_BOOTS.playerHas;
+						}
+					},
 					roomAfterSpikes: {
 						Name: "roomAfterSpikes",
 						RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, {item: Items.HOOKSHOT, upgradeString: "2"}],
 					}
 				},
-
 				ItemLocations: {
-					"Skulltula in Room With Three Torches": {
-						Name: "Skulltula in Room With Three Torches",
-						ItemGroup: ItemGroups.SKULLTULA,
-						MapInfo: { x: 25, y: 260, floor: "F1" },
+					"6 Underwater Crates in Low South Room": {
+						Name: "6 Underwater Crates in Low South Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "6 Crates",
+						MapInfo: { x: 86, y: 261, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 9,
-						LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom level and use your iron boots to sink down. Use the Scarecrow's Song or hover boots to navigate across the room. Now, turn around and use Fire Arrows to light the three torches to get to the skulltula.",
-						IsAtShortDistance: true,
-						RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.IRON_BOOTS, Equipment.MAGIC],
-						CustomRequirement: function(age) {
-							return Data.canHookScarecrow(age) || Equipment.HOVER_BOOTS.playerHas;
-						}
+						Order: 33,
+						LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, use your iron boots to get to the low south area. The crates are underwater in the corners of the next room."
 					}
 				}
 			},
-
-			roomAfterSpikes: {
+			upperTripleTorchRoom: {
 				Exits: {},
 				ItemLocations: {
-					"Skulltula in Room With Waterfall": {
-						Name: "Skulltula in Room With Waterfall",
-						ItemGroup: ItemGroups.SKULLTULA,
-						MapInfo: { x: 185, y: 50, floor: "F1" },
+					"4 Pots in Low South Room Jail": {
+						Name: "4 Pots in Low South Room Jail",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "4 Pots",
+						MapInfo: { x: 24, y: 261, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 10,
-						LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes.<br/><br/>Once in this room, navigate to the farthest box in the back of the room and use your iron boots to sink down onto it. Hookshot the center of the ceiling, around the second brick texture to hookshot an unintended hookshot target to get over the gate. The skulltula would be to your left.<br/><br/>The intended path involves going around the rooms to your left, through the waterfall entrance. You'd either spawn the scarecrow, or do the glich to get across."
+						Order: 34,
+						LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom level and use your iron boots to sink down. Use the Scarecrow's Song or hover boots to navigate across the room. Now, turn around and use Fire Arrows to light the three torches to get to the pots."
 					},
-					"Freestanding Item by Waterfall": {
-						Name: "Freestanding Item by Waterfall",
-						ItemGroup: ItemGroups.FREESTANDING,
-						MapInfo: { x: 115, y: 64, floor: "F1" },
+					"3 Crates in Low South Room Jail": {
+						Name: "3 Crates in Low South Room Jail",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Crates",
+						MapInfo: { x: 27, y: 252, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 11,
-						LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes. Play the Scarecrow's song and hookshot it to get to the opening to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. The item is in the box to your left.",
+						Order: 35,
+						LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom level and use your iron boots to sink down. Use the Scarecrow's Song or hover boots to navigate across the room. Now, turn around and use Fire Arrows to light the three torches to get to the crates."
+					},
+					"Skulltula in Low South Room Jail": {
+						Name: "Skulltula in Low South Room Jail",
+						ItemGroup: ItemGroups.SKULLTULA,
+						MapInfo: { x: 30, y: 261, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 36,
+						LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom level and use your iron boots to sink down. Use the Scarecrow's Song or hover boots to navigate across the room. Now, turn around and use Fire Arrows to light the three torches to get to the skulltula (it's on the ceiling).",
+						IsAtShortDistance: true
+					}
+				}
+			},
+			roomAfterSpikes: {
+				Exits: {
+					dodongoRoom: {
+						Name: "dodongoRoom",
+						RequiredItems: [Items.HOOKSHOT]
+					},
+					northWaterfallArea: {
+						Name: "northWaterfallArea",
 						CustomRequirement: function(age) {
 							return Settings.GlitchesToAllow.waterBKShortcut || Data.canHookScarecrow(age);
 						}
+					}
+				},
+				ItemLocations: {
+					"2 Crates in Low North Room": {
+						Name: "2 Crates in Low North Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Crates",
+						MapInfo: { x: 192, y: 104, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 37,
+						LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom north room. Cross it with your longshot or hover boots (jumpslash, or backwalk/backflip). The crates are in the next room."
 					},
+					"6 Underwater Crates in Low North Room": {
+						Name: "6 Underwater Crates in Low North Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "6 Crates",
+						MapInfo: { x: 192, y: 76, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 38,
+						LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom north room. Cross it with your longshot or hover boots (jumpslash, or backwalk/backflip). The crates are under the water in the next room."
+					},
+					"4 Crates Behind Low North Room Gate": {
+						Name: "4 Crates Behind Low North Room Gate",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "4 Crates",
+						MapInfo: { x: 191, y: 50, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 39,
+						LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes.<br/><br/>Once in this room, navigate to the farthest box in the back of the room and use your iron boots to sink down onto it. Hookshot the center of the ceiling, around the second brick texture to hookshot an unintended hookshot target to get over the gate where the crates reside.<br/><br/>The intended path involves going around the rooms to your left, through the waterfall entrance. You'd either spawn the scarecrow, or do the glich to get across."
+					},
+					"Skulltula Behind Low North Room Gate": {
+						Name: "Skulltula Behind Low North Room Gate",
+						ItemGroup: ItemGroups.SKULLTULA,
+						MapInfo: { x: 185, y: 50, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 40,
+						LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes.<br/><br/>Once in this room, navigate to the farthest box in the back of the room and use your iron boots to sink down onto it. Hookshot the center of the ceiling, around the second brick texture to hookshot an unintended hookshot target to get over the gate. The skulltula would be to your left.<br/><br/>The intended path involves going around the rooms to your left, through the waterfall entrance. You'd either spawn the scarecrow, or do the glich to get across."
+					}
 				}
 			},
-
+			dodongoRoom: {
+				Exits: {
+					northWaterfallArea: {
+						Name: "northWaterfallArea"
+					}
+				},
+				ItemLocations: {
+					"2 Pots in Low North Dodongo Room": {
+						Name: "2 Pots in Low North Dodongo Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 298, y: 23, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 41,
+						LongDescription: "In the dodongo room (room beyond the gate in the low north room), you'll find the pots along the back-right wall."
+					},
+					"3 Crates in Low North Dodongo Room Pit": {
+						Name: "3 Crates in Low North Dodongo Room Pit",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Crates",
+						MapInfo: { x: 276, y: 41, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 42,
+						LongDescription: "In the dodongo room (room beyond the gate in the low north room), you'll find the crates in the pit with the dodongos."
+					},
+					"Crate in Low North Dodongo Room": {
+						Name: "Crate in Low North Dodongo Room",
+						ItemGroup: ItemGroups.CRATE,
+						MapInfo: { x: 255, y: 24, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 43,
+						LongDescription: "In the dodongo room (room beyond the gate in the low north room), you'll find this crate on the left ledge in the corner of the room."
+					},
+					"Crate in Low North Dodongo Room Hallway": {
+						Name: "Crate in Low North Dodongo Room Hallway",
+						ItemGroup: ItemGroups.CRATE,
+						MapInfo: { x: 301, y: 67, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 44,
+						LongDescription: "In the dodongo room (room beyond the gate in the low north room), you'll find this crate in the little tunnel in one of the corners."
+					}
+				}
+			},
+			northWaterfallArea: {
+				Exits: {
+					dodongoRoom: {
+						Name: "dodongoRoom",
+						NeedsFire: true
+					}
+				},
+				ItemLocations: {
+					"Pot in Room by Low North Waterfall": {
+						Name: "Pot in Room by Low North Waterfall",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 129, y: 53, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 45,
+						LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes. Play the Scarecrow's song and hookshot it to get to the opening to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. The pot is in the back right corner of the room (the other one is a fairy).",
+					},
+					"5 Crates in Room by Low North Waterfall": {
+						Name: "5 Crates in Room by Low North Waterfall",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.CRATE,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "5 Crates",
+						MapInfo: { x: 124, y: 60, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 46,
+						LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes. Play the Scarecrow's song and hookshot it to get to the opening to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. The crates are along the walls in the room.",
+					},
+					"Freestanding Item in Room by Low North Waterfall": {
+						Name: "Freestanding Item in Room by Low North Waterfall",
+						ItemGroup: ItemGroups.FREESTANDING,
+						MapInfo: { x: 115, y: 64, floor: "F1" },
+						Age: Age.ADULT,
+						Order: 47,
+						LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes. Play the Scarecrow's song and hookshot it to get to the opening to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. The item is in the box to your left."
+					}
+				}
+			},
 			bossRoom: {
 				Exits: {
 					"Boss Entrance": {
@@ -3094,10 +3550,10 @@ let MQDungeons = {
 						ItemGroup: ItemGroups.FREESTANDING,
 						Age: Age.ADULT,
 						IsBoss: true,
-						Order: 2,
+						Order: 99,
 						MapInfo: { x: 227, y: 145, floor: "F3" },
 						LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-						disabled: true //TODO: maybe clean this up so this item isn't necessary anymore
+						RequiredToAppear: function() { return false; } //TODO: maybe clean this up so this item isn't necessary anymore
 					}
 				}
 			}

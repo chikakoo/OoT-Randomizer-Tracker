@@ -3173,7 +3173,7 @@ let StandardDungeons = {
 						OverrideItemGroup: ItemGroups.POT,
 						IsItemLocationGroup: true,
 						DefaultEntranceGroupName: "2 Pots",
-						MapInfo: { x: 201, y: 29, floor: "F1" },
+						MapInfo: { x: 298, y: 23, floor: "F1" },
 						Age: Age.ADULT,
 						Order: 30,
 						LongDescription: "Head to the bottom of the main room - no need to lower the water if you don't want to. Enter the north wing. After you reach the dead end, equip your boots and surface. Longshot to the other side and enter the locked door. Navigate across the room to the other side - the pots are on the bottom in the corner."

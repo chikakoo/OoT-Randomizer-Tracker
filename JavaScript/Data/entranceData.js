@@ -2129,6 +2129,36 @@ GrottoGroups = {
 			}
 		}
 	},
+	"5 Crates": {
+		tooltip: "A set of 5 crates.",
+		buttons: {
+			"Crate 1": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 1."
+			},
+			"Crate 2": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 2."
+			},
+			"Crate 3": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 3."
+			},
+			"Crate 4": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 4."
+			},
+			"Crate 5": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 5."
+			}
+		}
+	},
 	"6 Crates": {
 		tooltip: "A set of 6 crates.",
 		buttons: {
@@ -2161,6 +2191,121 @@ GrottoGroups = {
 				icon: "Crate",
 				itemGroup: ItemGroups.CRATE,
 				description: "Crate 6."
+			}
+		}
+	},
+	"7 Crates": {
+		tooltip: "A set of 7 crates.",
+		buttons: {
+			"Crate 1": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 1."
+			},
+			"Crate 2": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 2."
+			},
+			"Crate 3": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 3."
+			},
+			"Crate 4": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 4."
+			},
+			"Crate 5": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 5."
+			},
+			"Crate 6": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 6."
+			},
+			"Crate 7": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 7."
+			}
+		}
+	},
+	"14 Crates": {
+		tooltip: "A set of 14 crates.",
+		buttons: {
+			"Crate 1": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 1."
+			},
+			"Crate 2": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 2."
+			},
+			"Crate 3": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 3."
+			},
+			"Crate 4": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 4."
+			},
+			"Crate 5": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 5."
+			},
+			"Crate 6": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 6."
+			},
+			"Crate 7": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 7."
+			},
+			"Crate 8": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 8."
+			},
+			"Crate 9": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 9."
+			},
+			"Crate 10": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 10."
+			},
+			"Crate 11": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 11."
+			},
+			"Crate 12": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 12."
+			},
+			"Crate 13": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 13."
+			},
+			"Crate 14": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 14."
 			}
 		}
 	},
