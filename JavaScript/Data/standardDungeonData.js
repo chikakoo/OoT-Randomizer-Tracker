@@ -3271,7 +3271,7 @@ let StandardDungeons = {
 						Regions: ["afterTruthSpinner"],
 						MapInfo: { x: 330, y: 170, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 4.1,
+						Order: 10,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; },
 						LongDescription: "This is the door after the truth spinner room with the beamos. It's located behind the bombable wall.",
 						NeedsExplosives: true,
@@ -3304,7 +3304,7 @@ let StandardDungeons = {
 						Regions: ["afterBombableWall", "invisibleSpikeRoom"],
 						MapInfo: { x: 156, y: 92, floor: "B2" },
 						Age: Age.EITHER,
-						Order: 11.1,
+						Order: 21,
 						UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; },
 						LongDescription: "This is the door after the invisible moving platform in the giant pit room.",
 						KeyRequirement: function(age) {
@@ -3336,7 +3336,7 @@ let StandardDungeons = {
 						Regions: ["invisibleSpikeRoom", "windHallway"],
 						MapInfo: { x: 156, y: 45, floor: "B2" },
 						Age: Age.ADULT,
-						Order: 14.1,
+						Order: 25,
 						LongDescription: "This is the door in the room with redeads and invisible floor spikes that you have to hookshot up to",
 						KeyRequirement: function(age) {
 							let max = 3;
@@ -3368,7 +3368,7 @@ let StandardDungeons = {
 						Regions: ["windHallway", "boatRoomStart"],
 						MapInfo: { x: 303, y: 127, floor: "B1" },
 						Age: Age.ADULT,
-						Order: 17.1,
+						Order: 30.1,
 						LongDescription: "This is the room with the gibdos after the hallway of fans.",
 						KeyRequirement: function(age) {
 							let max = 2;
@@ -3401,7 +3401,7 @@ let StandardDungeons = {
 						Regions: ["acrossChasmToBossRoom"],
 						MapInfo: { x: 132, y: 136, floor: "B1" },
 						Age: Age.ADULT,
-						Order: 22.1,
+						Order: 44,
 						LongDescription: "This is the room with the gibdos after the hallway of fans.",
 						KeyRequirement: function(age) {
 							let min = 5;
@@ -3425,24 +3425,88 @@ let StandardDungeons = {
 				},
 
 				ItemLocations: {
+					"2 Pots in Map Chest Room": {
+						Name: "2 Pots in Map Chest Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 101, y: 121, floor: "F1" },
+						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+						},
+						Order: 1,
+						LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. The room is somewhere on your right. The pots are in the back corners of the room."
+					},
 					"Dungeon Map Chest": {
 						Name: "Dungeon Map Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 100, y: 107, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 1,
+						Order: 2,
 						UseAdultAge: function() { 
 							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
 						},
 						LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. The dungeon map chest room is somewhere on the wall to your right. You must kill all the enemies inside to get it.",
 						NeedsDamagingItem: true
 					},
+					"2 Pots in Front Maze Room": {
+						Name: "2 Pots in Front Maze Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 92, y: 153, floor: "F1" },
+						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+						},
+						Order: 3,
+						LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. Circle around the central pillar until you find the pots."
+					},
+					"Flying Pot in Back Maze Room": {
+						Name: "Flying Pot in Back Maze Room",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 71, y: 163, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 4,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+						},
+						LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. Circle around the central pillar and go through the fake wall. Go to your left and the pot should fly into you."
+					},
+					"3 Pots in Back Maze Room": {
+						Name: "3 Pots in Back Maze Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "3 Pots",
+						MapInfo: { x: 62, y: 163, floor: "F1" },
+						Age: Age.EITHER,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+						},
+						Order: 5,
+						LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. Circle around the central pillar and go through the fake wall. The pots are in the next room on the left."
+					},
+					"Pot by Dead Hand Entrance": {
+						Name: "Pot by Dead Hand Entrance",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 55, y: 148, floor: "F1" },
+						Age: Age.EITHER,
+						Order: 6,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+						},
+						LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. Circle around the central pillar and go through the fake wall. The pot is on the other side of the room by the fake wall to Dead Hand."
+					},
 					"Hover Boots Chest": {
 						Name: "Hover Boots Chest",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 15, y: 142, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 2,
+						Order: 7,
 						UseAdultAge: function() { 
 							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
 						},
@@ -3476,7 +3540,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 300, y: 220, floor: "F1" },
 						Age: Age.EITHER,
-						Order: 3,
+						Order: 8,
 						UseAdultAge: function() { 
 							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
 						},
@@ -3488,7 +3552,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 344, y: 121, floor: "F1" },
 						Age: Age.ADULT,
-						Order: 4,
+						Order: 9,
 						LongDescription: "After crossing the gap onto the tongue, proceed down the hallway. At the beamos, take the left path (it's a fake wall) and enter the room. Collect all the silver rupees to open the path to a chest.<br/><br/>If you have no hookshot, you can use hover boots to get to the wooden box from one of the wooden platforms.",
 						CustomRequirement: function(age) {
 							return Items.HOOKSHOT.playerHas || 
@@ -3508,12 +3572,24 @@ let StandardDungeons = {
 				},
 
 				ItemLocations: {
+					"2 Hearts in Invisible Scythe Room": {
+						Name: "2 Hearts in Invisible Scythe Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Hearts",
+						MapInfo: { x: 331, y: 123, floor: "B2" },
+						Age: Age.ADULT,
+						Order: 11,
+						LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). The hearts are in the back left corner. Play the Song of Time to spawn a block to get them.",
+						RequiredSongs: [Songs.SONG_OF_TIME]
+					},
 					"Visible Chest in Invisible Scythe Room": {
 						Name: "Visible Chest in Invisible Scythe Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 344, y: 138, floor: "B2" },
 						Age: Age.EITHER,
-						Order: 5,
+						Order: 12,
 						UseAdultAge: function() { 
 							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
 						},
@@ -3525,7 +3601,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 344, y: 143, floor: "B2" },
 						Age: Age.EITHER,
-						Order: 6,
+						Order: 13,
 						UseAdultAge: function() { 
 							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
 						},
@@ -3537,7 +3613,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 348, y: 140, floor: "B2" },
 						Age: Age.EITHER,
-						Order: 7,
+						Order: 14,
 						UseAdultAge: function() { 
 							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
 						},
@@ -3546,12 +3622,26 @@ let StandardDungeons = {
 							return age === Age.ADULT || Data.canGrabShortDistances(age);
 						}
 					},
+					"2 Lower Pots in Invisible Scythe Room": {
+						Name: "2 Lower Pots in Invisible Scythe Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 51, y: 221, floor: "B2" },
+						Age: Age.EITHER,
+						Order: 15,
+						UseAdultAge: function() { 
+							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+						},
+						LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. The pots are to the right of the falling spikes, guarded by the spike trap."
+					},
 					"Skulltula in Ceiling Spike Room": {
 						Name: "Skulltula in Ceiling Spike Room",
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 52, y: 238, floor: "B2" },
 						Age: Age.EITHER,
-						Order: 8,
+						Order: 16,
 						UseAdultAge: function() { 
 							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
 						},
@@ -3565,7 +3655,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 37, y: 212, floor: "B2" },
 						Age: Age.EITHER,
-						Order: 9,
+						Order: 17,
 						UseAdultAge: function() { 
 							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
 						},
@@ -3576,7 +3666,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 16, y: 239, floor: "B2" },
 						Age: Age.ADULT,
-						Order: 10,
+						Order: 18,
 						LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. Pull the block out of the wall to the right (use the lens to find it) to act as an umbrella to pass the ceiling spikes. Once it's as far as it can go, jump onto it. The chest is in a cage in the corner of the room.",
 						CustomRequirement: function(age) {
 							return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
@@ -3585,14 +3675,28 @@ let StandardDungeons = {
 					"Top Switch Chest in Ceiling Spike Room": {
 						Name: "Top Switch Chest in Ceiling Spike Room",
 						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 79, y: 209, floor: "B2" },
+						MapInfo: { x: 76, y: 209, floor: "B2" },
 						Age: Age.ADULT,
-						Order: 11,
+						Order: 19,
 						LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. Pull the block out of the wall to the right (use the lens to find it) to act as an umbrella to pass the ceiling spikes. Once it's as far as it can go, jump onto it. Hit the switch on top and then get the chest that spawns.",
 						CustomRequirement: function(age) {
 							return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
 						}
 					},
+					"2 Upper Pots in Invisible Scythe Room": {
+						Name: "2 Upper Pots in Invisible Scythe Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 82, y: 209, floor: "B2" },
+						Age: Age.ADULT,
+						Order: 20,
+						LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. Pull the block out of the wall to the right (use the lens to find it) to act as an umbrella to pass the ceiling spikes. Once it's as far as it can go, jump onto it. The pots are on the top of the area you pulled the block out of.",
+						CustomRequirement: function(age) {
+							return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
+						}
+					}
 				}
 			},
 			invisibleSpikeRoom: {
@@ -3628,7 +3732,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 156, y: 64, floor: "B2" },
 						Age: Age.EITHER,
-						Order: 12,
+						Order: 22,
 						UseAdultAge: function() { 
 							return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
 						},
@@ -3645,7 +3749,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.FREESTANDING,
 						MapInfo: { x: 92, y: 70, floor: "B2" },
 						Age: Age.ADULT,
-						Order: 14,
+						Order: 23,
 						LongDescription: "To get here, start at the invisible spike room. Collect all the silver rupees using your hookshot. Note that there are a few invisible targets. Enter the room on the bottom that unlocks. Throw a Bomb or Bomb Flower into the giant skull to spawn the key.",
 						RequiredChoiceOfAdultItems: [Equipment.STRENGTH, Items.BOMB]
 					},
@@ -3655,7 +3759,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 77, y: 68, floor: "B2" },
 						Age: Age.ADULT,
-						Order: 13,
+						Order: 24,
 						LongDescription: "To get here, start at the invisible spike room. Collect all the silver rupees using your hookshot. Note that there are a few invisible targets. Enter the room on the bottom that unlocks. The skulltula is behind the giant skull."
 					}
 				}
@@ -3685,15 +3789,37 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 344, y: 198, floor: "B1"  },
 						Age: Age.ADULT,
-						Order: 15,
+						Order: 26,
 						LongDescription: "Start at the invisible spikes room. Navigate to the door on the upper platform. If you don't have the longshot, you'll need to first backflip on the chest to get enough height to hit the invisible target. Navigate through the fans using your Iron Boots. Use your hookshot on the horizontal wooden pillar to pass the gap. Make your way to the end of the hallway and enter the door. There is an invisible chest in the back right corner of this room."
+					},
+					"2 Flying Pots in Gibdo Room": {
+						Name: "2 Flying Pots in Gibdo Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 302, y: 142, floor: "B1" },
+						Age: Age.ADULT,
+						Order: 27,
+						LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. The pots will fly at you as you approach the back of the room."
+					},
+					"2 Pots in Gibdo Room": {
+						Name: "2 Pots in Gibdo Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 302, y: 152, floor: "B1" },
+						Age: Age.ADULT,
+						Order: 28,
+						LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. The pots are on either side of the gibdos."
 					},
 					"Chest in Gibdo Room": {
 						Name: "Chest in Gibdo Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 302, y: 146, floor: "B1" },
 						Age: Age.ADULT,
-						Order: 16,
+						Order: 29,
 						LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. Kill the gibdos to spawn the chest."
 					},
 					"Chest in Rubble in Gibdo Room": {
@@ -3701,10 +3827,10 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 309, y: 156, floor: "B1" },
 						Age: Age.ADULT,
-						Order: 17,
+						Order: 30,
 						LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. Bomb the rubble to your right to uncover an invisible chest.",
 						NeedsExplosives: true
-					},
+					}
 				}
 			},
 			boatRoomStart: {
@@ -3726,14 +3852,32 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 274, y: 116, floor: "B1" },
 						Age: Age.ADULT,
-						Order: 18,
+						Order: 31,
 						LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. If you face the front of the boat, you can see the skulltula slightly to your left. You can get it with your longshot - Scarecrow's Song can help, but isn't needed.",
+						RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+					},
+					"2 Hearts in Boat Room": {
+						Name: "2 Hearts in Boat Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Hearts",
+						MapInfo: { x: 280, y: 114, floor: "B1" },
+						Age: Age.ADULT,
+						Order: 32,
+						LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole.<br/><br/>Play scarecrow's song from the boat and longshot it to get to the platform with the hearts.",
+						RequiredSongs: [Songs.SCARECROWS_SONG],
 						RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
 					}
 				}
 			},
 			boatRoomEnd: {
 				Exits: {
+					chasmScarecrowPlatform: {
+						Name: "chasmScarecrowPlatform",
+						RequiredSongs: [Songs.SCARECROWS_SONG],
+						RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+					},
 					acrossChasmToBossRoom: {
 						Name: "acrossChasmToBossRoom",
 						CustomRequirement: function(age) {
@@ -3744,12 +3888,29 @@ let StandardDungeons = {
 				},
 
 				ItemLocations: {
+					"Pot on Boat Side of Chasm": {
+						Name: "Pot on Boat Side of Chasm",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 135, y: 104, floor: "B1" },
+						Age: Age.ADULT,
+						Order: 33,
+						LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across.<br/><br/>The pot is the one on the right near where the bridge falls (the other pot is empty)."
+					},
+					"Pot in Spike Wall Room": {
+						Name: "Pot in Spike Wall Room",
+						ItemGroup: ItemGroups.POT,
+						MapInfo: { x: 125, y: 124, floor: "B1" },
+						MapImageName: "Recovery Heart",
+						Age: Age.ADULT,
+						Order: 34,
+						LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room to your right. The pot is in front of you."
+					},
 					"Chest in Spike Wall Room": {
 						Name: "Chest in Spike Wall Room",
 						ItemGroup: ItemGroups.CHEST,
-						MapInfo: { x: 70, y: 52, floor: "B1" },
+						MapInfo: { x: 89, y: 51, floor: "B1" },
 						Age: Age.ADULT,
-						Order: 19,
+						Order: 35,
 						LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room to your right. Cast Din's Fire to take out the spike walls to clear the path to the chest.",
 						CustomRequirement: function(age) {
 							let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
@@ -3761,7 +3922,7 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 108, y: 52, floor: "B1" },
 						Age: Age.ADULT,
-						Order: 20,
+						Order: 36,
 						LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room to your right. Cast Din's Fire to take out the spike walls to clear the path to the boss key chest.<br/><br/>If you don't have it, run up against the right side of the wall in the back of the room and have the redead freeze you. You should phase through the wall."
 					},
 					"Skulltula in Triple Skull Room": {
@@ -3769,21 +3930,69 @@ let StandardDungeons = {
 						ItemGroup: ItemGroups.SKULLTULA,
 						MapInfo: { x: 28, y: 98, floor: "B1" },
 						Age: Age.ADULT,
-						Order: 21,
+						Order: 37,
 						LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room straight across from you to get to the skulltula."
+					},
+					"9 Rupees in Triple Skull Room": {
+						Name: "9 Rupees in Triple Skull Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "9 Skull Rupees",
+						MapInfo: { x: 38, y: 99, floor: "B1" },
+						Age: Age.ADULT,
+						Order: 38,
+						LongDescription: "From the room with invisible walls, enter the room that's straight ahead of you (the west room). Use the bomb flower or your own bombs to blow up all three skulls to spawn the 9 items.",
+						RequiredItems: [Equipment.STRENGTH, Items.BOMB]
+					},
+					"2 Pots in Invisible Floormaster Room": {
+						Name: "2 Pots in Invisible Floormaster Room",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 89, y: 131, floor: "B1" },
+						Age: Age.ADULT,
+						Order: 39,
+						LongDescription: "From the invisible wall room, enter the room to the left (the south room). The pots are on the back wall in the corners."
 					},
 					"Chest in Invisible Floormaster Room": {
 						Name: "Chest in Invisible Floormaster Room",
 						ItemGroup: ItemGroups.CHEST,
 						MapInfo: { x: 89, y: 148, floor: "B1" },
 						Age: Age.ADULT,
-						Order: 22,
+						Order: 40,
 						LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room to your left. Kill the invisible floor master to spawn the chest."
+					}
+				}
+			},
+			chasmScarecrowPlatform: {
+				Exits: {
+					acrossChasmToBossRoom: {
+						Name: "acrossChasmToBossRoom"
+					}
+				},
+				ItemLocations: {
+					"2 Hearts on Chasm Scarecrow Platform": {
+						Name: "2 Hearts on Chasm Scarecrow Platform",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Hearts",
+						MapInfo: { x: 120, y: 116, floor: "B1" },
+						Age: Age.ADULT,
+						Order: 42,
+						LongDescription: "After riding the boat across, you can get to this platform in two ways.<br/><br/>1: Lower the bridge, play Song of Time by the ruins to make a block appear. Now, play scarecrow's song from the block and hookshot to the platform.<br/><br/>Go to the end of the broken bridge and play scarecrow's song. You can longshot the scarecrow from there to get to the platform. Be careful not to strand yourself on that side!"
 					}
 				}
 			},
 			acrossChasmToBossRoom: {
 				Exits: {
+					chasmScarecrowPlatform: {
+						Name: "chasmScarecrowPlatform",
+						RequiredSongs: [Songs.SONG_OF_TIME, Songs.SCARECROWS_SONG],
+						RequiredItems: [Items.HOOKSHOT],
+					},
 					bossRoom: {
 						Name: "bossRoom",
 						Map: "Shadow Temple",
@@ -3797,7 +4006,27 @@ let StandardDungeons = {
 					}
 				},
 				ItemLocations: {
-
+					"Heart on Pillar Across Chasm": {
+						Name: "Heart on Pillar Across Chasm",
+						ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+						MapInfo: { x: 125, y: 124, floor: "B1" },
+						MapImageName: "Recovery Heart",
+						Age: Age.ADULT,
+						Order: 41,
+						LongDescription: "After departing the boat, either shoot the bombflower to lower the bridge, or use longshot/scarecrow's song from the broken bridge to cross. Play the Song of Time near the broken pillar with the heart to summon a block to use to get it.",
+						RequiredSongs: [Songs.SONG_OF_TIME]
+					},
+					"2 Pots by Boss Antechamber Entrance": {
+						Name: "2 Pots by Boss Antechamber Entrance",
+						ItemGroup: ItemGroups.ENTRANCE,
+						OverrideItemGroup: ItemGroups.POT,
+						IsItemLocationGroup: true,
+						DefaultEntranceGroupName: "2 Pots",
+						MapInfo: { x: 132, y: 128, floor: "B1" },
+						Age: Age.ADULT,
+						Order: 43,
+						LongDescription: "These pots are by the boss antechamber entrance across the chasm."
+					}
 				}
 			},
 			bossRoom: {

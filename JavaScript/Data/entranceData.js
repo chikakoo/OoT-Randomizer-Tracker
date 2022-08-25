@@ -1934,6 +1934,56 @@ GrottoGroups = {
 			}
 		}
 	},
+	"9 Skull Rupees": {
+		tooltip: "The ring of rupees that's created when the three skulls in Shadow Temple are broken.",
+		buttons: {
+			"Green Rupee 1": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Green Rupee 1."
+			},
+			"Blue Rupee 1": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Blue Rupee 1."
+			},
+			"Red Rupee 1": {
+				icon: "Red Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Red Rupee 1."
+			},
+			"Green Rupee 2": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Green Rupee 2."
+			},
+			"Blue Rupee 2": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Blue Rupee 2."
+			},
+			"Red Rupee 2": {
+				icon: "Red Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Red Rupee 2."
+			},
+			"Green Rupee 3": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Green Rupee 3."
+			},
+			"Blue Rupee 3": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Blue Rupee 3."
+			},
+			"Red Rupee 3": {
+				icon: "Red Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Red Rupee 3."
+			}
+		}
+	},
 	"2 Pots": {
 		tooltip: "A set of 2 pots.",
 		buttons: {
