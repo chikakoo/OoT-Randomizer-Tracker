@@ -10,10 +10,10 @@ let OwExits = {
             LongDescription: "This is the bottom entrance to the Lost Woods.",
             CustomRequirement: function(age) {
                 if (age === Age.ADULT || Settings.RandomizerSettings.openForest) { return true; }
-				
-				let beatDekuTree = Data.itemLocationObtained("Deku Tree", "bossRoom", "Blue Warp");
-				let canPokeySkip = Settings.GlitchesToAllow.pokeySkip && 
-					Data.hasSwordWeapon(age) &&
+                
+                let beatDekuTree = Data.itemLocationObtained("Deku Tree", "bossRoom", "Blue Warp");
+                let canPokeySkip = Settings.GlitchesToAllow.pokeySkip && 
+                    Data.hasSwordWeapon(age) &&
                     Equipment.DEKU_SHIELD.playerHas;
 
                 return beatDekuTree || canPokeySkip;
@@ -742,49 +742,49 @@ let OwExits = {
             LongDescription: "This is the entrance to Ganon's Castle.",
             IsDungeonEntrance: true,
             CustomRequirement: function(age) {
-				switch (Settings.RandomizerSettings.medallionSetting) {
-					case MedallionSettings.VANILLA:
-						return Items.LIGHT_ARROW.playerHas &&
-							Data.hasRequiredMedallions({ 
-								RequiredMedallions: [Medallions.SHADOW_MEDALLION, Medallions.SPIRIT_MEDALLION] 
-							});
-					case MedallionSettings.OPEN:
-						return true;
-					case MedallionSettings.ALL_MEDALLIONS:
-						return Data.hasRequiredMedallions({
-							RequiredMedallions: [
-								Medallions.FOREST_MEDALLION,
-								Medallions.FIRE_MEDALLION,
-								Medallions.WATER_MEDALLION,
-								Medallions.SHADOW_MEDALLION,
-								Medallions.SPIRIT_MEDALLION,
-								Medallions.LIGHT_MEDALLION
-							]
-						});
-					case MedallionSettings.ALL_DUNGEONS:
-						return Data.hasRequiredMedallions({
-							RequiredMedallions: [
-								Medallions.KOKIRIS_EMERALD,
-								Medallions.GORONS_RUBY,
-								Medallions.ZORAS_SAPPHIRE,
-								Medallions.FOREST_MEDALLION,
-								Medallions.FIRE_MEDALLION,
-								Medallions.WATER_MEDALLION,
-								Medallions.SHADOW_MEDALLION,
-								Medallions.SPIRIT_MEDALLION,
-								Medallions.LIGHT_MEDALLION
-							]
-						});
-					case MedallionSettings.ALL_STONES:
-						return Data.hasRequiredMedallions({
-							RequiredMedallions: [
-								Medallions.KOKIRIS_EMERALD,
-								Medallions.GORONS_RUBY,
-								Medallions.ZORAS_SAPPHIRE
-							]
-						});
-					case MedallionSettings.SKULLTULAS:
-						return Equipment.SKULLTULA_TOKENS.count >= Settings.RandomizerSettings.medallionSkulltulaSetting;
+                switch (Settings.RandomizerSettings.medallionSetting) {
+                    case MedallionSettings.VANILLA:
+                        return Items.LIGHT_ARROW.playerHas &&
+                            Data.hasRequiredMedallions({ 
+                                RequiredMedallions: [Medallions.SHADOW_MEDALLION, Medallions.SPIRIT_MEDALLION] 
+                            });
+                    case MedallionSettings.OPEN:
+                        return true;
+                    case MedallionSettings.ALL_MEDALLIONS:
+                        return Data.hasRequiredMedallions({
+                            RequiredMedallions: [
+                                Medallions.FOREST_MEDALLION,
+                                Medallions.FIRE_MEDALLION,
+                                Medallions.WATER_MEDALLION,
+                                Medallions.SHADOW_MEDALLION,
+                                Medallions.SPIRIT_MEDALLION,
+                                Medallions.LIGHT_MEDALLION
+                            ]
+                        });
+                    case MedallionSettings.ALL_DUNGEONS:
+                        return Data.hasRequiredMedallions({
+                            RequiredMedallions: [
+                                Medallions.KOKIRIS_EMERALD,
+                                Medallions.GORONS_RUBY,
+                                Medallions.ZORAS_SAPPHIRE,
+                                Medallions.FOREST_MEDALLION,
+                                Medallions.FIRE_MEDALLION,
+                                Medallions.WATER_MEDALLION,
+                                Medallions.SHADOW_MEDALLION,
+                                Medallions.SPIRIT_MEDALLION,
+                                Medallions.LIGHT_MEDALLION
+                            ]
+                        });
+                    case MedallionSettings.ALL_STONES:
+                        return Data.hasRequiredMedallions({
+                            RequiredMedallions: [
+                                Medallions.KOKIRIS_EMERALD,
+                                Medallions.GORONS_RUBY,
+                                Medallions.ZORAS_SAPPHIRE
+                            ]
+                        });
+                    case MedallionSettings.SKULLTULAS:
+                        return Equipment.SKULLTULA_TOKENS.count >= Settings.RandomizerSettings.medallionSkulltulaSetting;
                     default: return true;
                 }
             }
@@ -905,7 +905,7 @@ let OwExits = {
                     Settings.GlitchesToAllow.botwAsChildWithCucco && 
                     Data.hasSwordWeapon(age) && 
                     Data.hasShield(age);
-				if (canGetThereEarly) { return true; }
+                if (canGetThereEarly) { return true; }
                 
                 // Get in normally - non-interior shuffle
                 if (!Settings.RandomizerSettings.shuffleInteriorEntrances) {
@@ -1247,7 +1247,7 @@ let OwExits = {
             LongDescription: "This is the entrance to Dodongo's Cavern.",
             IsDungeonEntrance: true,
             CustomRequirement: function(age) {
-				return age === Age.ADULT || Data.hasExplosivesOrStrength();
+                return age === Age.ADULT || Data.hasExplosivesOrStrength();
             }
         },
 
@@ -1670,15 +1670,15 @@ let OwExits = {
                 }
 
                 let canEnterNormally = Equipment.IRON_BOOTS.playerHas && Items.HOOKSHOT.playerHas;
-				let canDiveDown = Items.HOOKSHOT.currentUpgrade === 2 && Equipment.SCALE.currentUpgrade === 2;
-				if (age === Age.ADULT && (canEnterNormally || canDiveDown)) {
-					return true;
-				};
+                let canDiveDown = Items.HOOKSHOT.currentUpgrade === 2 && Equipment.SCALE.currentUpgrade === 2;
+                if (age === Age.ADULT && (canEnterNormally || canDiveDown)) {
+                    return true;
+                };
                 if (!Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
                 
-				let defeatedMorpha = Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
-				let canHitSwitch = Data.hasDamagingItem(age) && Equipment.SCALE.currentUpgrade === 2;
-				return defeatedMorpha && canHitSwitch;
+                let defeatedMorpha = Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
+                let canHitSwitch = Data.hasDamagingItem(age) && Equipment.SCALE.currentUpgrade === 2;
+                return defeatedMorpha && canHitSwitch;
             }
         },
 
@@ -1828,11 +1828,11 @@ let OwExits = {
             LongDescription: "This is the entrance to the Gerudo Training Grounds.",
             IsDungeonEntrance: true,
             CustomRequirement: function(age) {
-				if (age === Age.CHILD) {
-					return Settings.GlitchesToAllow.gtgChildAllowed;
+                if (age === Age.CHILD) {
+                    return Settings.GlitchesToAllow.gtgChildAllowed;
                 }
                 
-				return Settings.GlitchesToAllow.gtgAdultNoCard || Data.areGerudoGuardsTame();
+                return Settings.GlitchesToAllow.gtgAdultNoCard || Data.areGerudoGuardsTame();
             }
         },
 
