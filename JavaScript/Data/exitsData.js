@@ -1,7 +1,6 @@
 let OwExits = {
     "Kokiri Forest": {
         "Lost Woods Bottom": {
-            Name: "Lost Woods Bottom",
             ExitRegion: "main",
             Map: "Lost Woods Bridge",
             Region: "main",
@@ -21,7 +20,6 @@ let OwExits = {
             }
         },
         "Lost Woods Top": {
-            Name: "Lost Woods Top",
             ExitRegion: "main",
             Map: "Lost Woods",
             Region: "firstHalf",
@@ -31,7 +29,6 @@ let OwExits = {
             LongDescription: "This is the entrance to the Lost Woods that is up the vines."
         },
         "Deku Tree Entrance": {
-            Name: "Deku Tree Entrance",
             ExitRegion: "afterMido",
             Map: "Deku Tree",
             Region: "main",
@@ -48,7 +45,6 @@ let OwExits = {
 
         // Interiors
         "Link's House": {
-            Name: "Link's House",
             ExitRegion: "main",
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances || Settings.RandomizerSettings.cowSanity; },
             ItemGroup: ItemGroups.ENTRANCE,
@@ -60,7 +56,6 @@ let OwExits = {
             LongDescription: "This is the house with the ladder."
         },
         "Saria's House": {
-            Name: "Saria's House",
             ExitRegion: "main",
             RequiredToAppear: function() { 
                 return Settings.RandomizerSettings.shuffleInteriorEntrances || 
@@ -75,7 +70,6 @@ let OwExits = {
             LongDescription: "This is the house to your right if you face away from Link's house."
         },
         "Mido's House": {
-            Name: "Mido's House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -85,7 +79,6 @@ let OwExits = {
             LongDescription: "This is the house closest to the entrance to the Lost Woods."
         },
         "Know-It-All House": {
-            Name: "Know-It-All House",
             ExitRegion: "main",
             RequiredToAppear: function() { 
                 return Settings.RandomizerSettings.shuffleInteriorEntrances || 
@@ -100,7 +93,6 @@ let OwExits = {
             LongDescription: "This is the house by the fenced off training area."
         },
         "House of Twins": {
-            Name: "House of Twins",
             ExitRegion: "main",
             RequiredToAppear: function() { 
                 return Settings.RandomizerSettings.shuffleInteriorEntrances || 
@@ -115,7 +107,6 @@ let OwExits = {
             LongDescription: "This is the house across from the shop."
         },
         "Shop": {
-            Name: "Shop",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             DefaultEntranceGroupName: "Kokiri Shop",
@@ -125,7 +116,6 @@ let OwExits = {
             LongDescription: "Found in the middle of the village."
         },
         "Song of Storms Grotto by Lost Woods": {
-            Name: "Song of Storms Grotto by Lost Woods",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -139,7 +129,6 @@ let OwExits = {
 
     "Lost Woods": {
         "To Kokiri Forest": {
-            Name: "To Kokiri Forest",
             ExitRegion: "kokiriForestWarp",
             Map: "Kokiri Forest",
             Region: "main",
@@ -149,7 +138,6 @@ let OwExits = {
             LongDescription: "This is ANY of the entrances leading back to Kokiri."
         },
         "Goron City": {
-            Name: "Goron City",
             ExitRegion: "firstHalf",
             Map: "Goron City",
             Region: "lostWoods",
@@ -159,7 +147,6 @@ let OwExits = {
             LongDescription: "This is the exit to Goron City."
         },
         "Zora's River": {
-            Name: "Zora's River",
             ExitRegion: "firstHalf",
             Map: "Zora's River",
             Region: "upstream",
@@ -175,7 +162,6 @@ let OwExits = {
             LongDescription: "This is the exit to Zora's River that you get to by diving."
         },
         "To Lost Woods Bridge": {
-            Name: "To Lost Woods Bridge",
             ExitRegion: "firstHalf",
             Map: "Lost Woods Bridge",
             Region: "main",
@@ -207,7 +193,6 @@ let OwExits = {
             LongDescription: "This is taken via the magic bean, hover boots, longshotting (hookshotting with a trick), megaflipping, or precise jumping to the bridge."
         },
         "Sacred Forest Meadow": {
-            Name: "Sacred Forest Meadow",
             ExitRegion: "secondHalf",
             Map: "Sacred Forest Meadow",
             Region: "main",
@@ -219,7 +204,6 @@ let OwExits = {
 
         // Interiors
         "Grotto by Goron City Entrance": {
-            Name: "Grotto by Goron City Entrance",
             ExitRegion: "firstHalf",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -230,7 +214,6 @@ let OwExits = {
             NeedToBlastOrSmash: true
         },
         "Forest Stage Grotto": {
-            Name: "Forest Stage Grotto",
             ExitRegion: "secondHalf",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -240,7 +223,6 @@ let OwExits = {
             LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. In the back of this room, walk around until you fall into this grotto."
         },
         "Grotto Near the Sacred Forest Meadow": {
-            Name: "Grotto Near the Sacred Forest Meadow",
             ExitRegion: "secondHalf",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -255,7 +237,6 @@ let OwExits = {
 
     "Lost Woods Bridge": {
         "Kokiri Forest Bridge": {
-            Name: "Kokiri Forest Bridge",
             ExitRegion: "main",
             Map: "Kokiri Forest",
             Region: "main",
@@ -265,7 +246,6 @@ let OwExits = {
             LongDescription: "This is the Kokiri Forest exit from the bridge."
         },
         "Hyrule Field Bridge": {
-            Name: "Hyrule Field Bridge",
             ExitRegion: "main",
             Map: "Hyrule Field",
             Region: "main",
@@ -275,7 +255,6 @@ let OwExits = {
             LongDescription: "This is the Hyrule Field exit from the bridge."
         },
         "Bridge to Lost Woods": {
-            Name: "Bridge to Lost Woods",
             ExitRegion: "main",
             Map: "Lost Woods",
             Region: "firstHalf",
@@ -301,7 +280,6 @@ let OwExits = {
 
     "Sacred Forest Meadow": {
         "Lost Woods": {
-            Name: "Lost Woods",
             ExitRegion: "main",
             Map: "Lost Woods",
             Region: "secondHalf",
@@ -311,7 +289,6 @@ let OwExits = {
             LongDescription: "This is the entrance back into the Lost Woods."
         },
         "Minuet Teleport Pad": {
-            Name: "Minuet Teleport Pad",
             ExitRegion: "afterGate",
             Map: "Sacred Forest Meadow",
             Region: "afterGate",
@@ -321,7 +298,6 @@ let OwExits = {
             LongDescription: "The Minuet of Forest teleport pad at the end of the Sacred Forest Meadow.",
         },
         "Forest Temple Entrance": {
-            Name: "Forest Temple Entrance",
             ExitRegion: "afterGate",
             Map: "Forest Temple",
             Region: "main",
@@ -335,7 +311,6 @@ let OwExits = {
 
         // Interiors
         "Grotto near Lost Woods": {
-            Name: "Grotto near Lost Woods",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -346,7 +321,6 @@ let OwExits = {
             IsHiddenGrotto: true
         },
         "Grotto in Maze Center": {
-            Name: "Grotto in Maze Center",
             ExitRegion: "afterGate",
             IsGrotto: true,
             ItemGroup: ItemGroups.ENTRANCE,
@@ -355,7 +329,6 @@ let OwExits = {
             LongDescription: "This is the grotto in the center of the maze. You normally need to climb the ladder to get here."
         },
         "Song of Storms Grotto": {
-            Name: "Song of Storms Grotto",
             ExitRegion: "afterGate",
             IsGrotto: true,
             DefaultEntranceGroupName: "2 Scrubs",
@@ -369,7 +342,6 @@ let OwExits = {
 
     "Hyrule Field": {
         "Lost Woods Bridge": {
-            Name: "Lost Woods Bridge",
             ExitRegion: "main",
             Map: "Lost Woods Bridge",
             Region: "main",
@@ -379,7 +351,6 @@ let OwExits = {
             LongDescription: "This is the entrance to the Kokiri Forest."
         },
         "Zora's River": {
-            Name: "Zora's River",
             ExitRegion: "main",
             Map: "Zora's River",
             Region: "downstream",
@@ -389,7 +360,6 @@ let OwExits = {
             LongDescription: "This is the entrance to Zora's River. The water and land exits will go to the same place."
         },
         "Kakariko Village": {
-            Name: "Kakariko Village",
             ExitRegion: "main",
             Map: "Kakariko Village",
             Region: "main",
@@ -400,7 +370,6 @@ let OwExits = {
             LongDescription: "This is the entrance to Kakariko."
         },
         "Market": {
-            Name: "Market",
             ExitRegion: "main",
             Map: "Market Entrance",
             Region: "main",
@@ -410,7 +379,6 @@ let OwExits = {
             LongDescription: "This is the entrance to the Market."
         },
         "Lon Lon Ranch": {
-            Name: "Lon Lon Ranch",
             ExitRegion: "main",
             Map: "Lon Lon Ranch",
             Region: "main",
@@ -420,7 +388,6 @@ let OwExits = {
             LongDescription: "This is the entrance to Lon Lon Ranch in the center of the map."
         },
         "Gerudo Valley": {
-            Name: "Gerudo Valley",
             ExitRegion: "main",
             Map: "Gerudo Valley",
             Region: "main",
@@ -430,7 +397,6 @@ let OwExits = {
             LongDescription: "This is the entrance to Gerudo Valley."
         },
         "Lake Hylia": {
-            Name: "Lake Hylia",
             ExitRegion: "main",
             Map: "Lake Hylia",
             Region: "main",
@@ -442,7 +408,6 @@ let OwExits = {
 
         // Interiors
         "Hidden Grotto by Kakariko": {
-            Name: "Hidden Grotto by Kakariko",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -453,7 +418,6 @@ let OwExits = {
             IsHiddenGrotto: true
         },
         "Grotto in Drawbridge Rock": {
-            Name: "Grotto in Drawbridge Rock",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -464,7 +428,6 @@ let OwExits = {
             NeedToBlastOrSmash: true
         },
         "Grotto in Rock North of River": {
-            Name: "Grotto in Rock North of River",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -474,7 +437,6 @@ let OwExits = {
             NeedToBlastOrSmash: true
         },
         "Hidden Grotto by North River Tree": {
-            Name: "Hidden Grotto by North River Tree",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -485,7 +447,6 @@ let OwExits = {
             IsHiddenGrotto: true
         },
         "Grotto by Gerudo": {
-            Name: "Grotto by Gerudo",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -498,7 +459,6 @@ let OwExits = {
             }
         },
         "Grotto by Lake Hylia Fences": {
-            Name: "Grotto by Lake Hylia Fences",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -509,7 +469,6 @@ let OwExits = {
             IsHiddenGrotto: true
         },
         "Open Grotto East of Lake Hylia Fences": {
-            Name: "Open Grotto East of Lake Hylia Fences",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -519,7 +478,6 @@ let OwExits = {
             LongDescription: "This is an open grotto just to the east of the square of fences by the Lake Hylia entrance."
         },
         "Grotto in Southeast Forest Rock": {
-            Name: "Grotto in Southeast Forest Rock",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -533,7 +491,6 @@ let OwExits = {
 
     "Lon Lon Ranch": {
         "Hyrule Field": {
-            Name: "Hyrule Field",
             ExitRegion: "main",
             Map: "Hyrule Field",
             Region: "main",
@@ -545,7 +502,6 @@ let OwExits = {
 
         // Interiors
         "Talon's House": {
-            Name: "Talon's House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             DefaultEntranceGroupName: "Super Cucco Minigame",
@@ -555,7 +511,6 @@ let OwExits = {
             LongDescription: "This is the first door on your left when you first enter the ranch."
         },
         "Stable": {
-            Name: "Stable",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             DefaultEntranceGroupName: "Stable",
@@ -566,7 +521,6 @@ let OwExits = {
             LongDescription: "This is the first door on your right when you first enter the ranch."
         },
         "Cow Shed": {
-            Name: "Cow Shed",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             DefaultEntranceGroupName: "Cow Shed",
@@ -576,7 +530,6 @@ let OwExits = {
             LongDescription: "Head to the back of Lon Lon Ranch to find this building."
         },
         "Open Grotto in Southwest Corner": {
-            Name: "Open Grotto in Southwest Corner",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             DefaultEntranceGroupName: "3 Scrubs",
@@ -590,7 +543,6 @@ let OwExits = {
 
     "Market Entrance": {
         "Market": {
-            Name: "Market",
             ExitRegion: "main",
             Map: "Market",
             Region: "main",
@@ -600,7 +552,6 @@ let OwExits = {
             LongDescription: "This is the entrance to the main market area."
         },
         "Hyrule Field": {
-            Name: "Hyrule Field",
             ExitRegion: "main",
             Map: "Hyrule Field",
             Region: "main",
@@ -613,7 +564,6 @@ let OwExits = {
 
         // Interiors
         "Guard House by Entrance": {
-            Name: "Guard House by Entrance",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -626,7 +576,6 @@ let OwExits = {
 
     "Market": {
         "Market Entrance": {
-            Name: "Market Entrance",
             ExitRegion: "main",
             Map: "Market Entrance",
             Region: "main",
@@ -636,7 +585,6 @@ let OwExits = {
             LongDescription: "This is the path to the market entrance."
         },
         "Hyrule Castle": {
-            Name: "Hyrule Castle",
             ExitRegion: "main",
             Map: "Castle",
             Region: "main",
@@ -646,7 +594,6 @@ let OwExits = {
             LongDescription: "This is the entrance to Hyrule Castle."
         },
         "Temple of Time": {
-            Name: "Temple of Time",
             ExitRegion: "main",
             Map: "Temple of Time",
             Region: "main",
@@ -658,7 +605,6 @@ let OwExits = {
 
         // Interiors
         "Archery Minigame": {
-            Name: "Archery Minigame",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             DefaultEntranceGroupName: "Child Archery",
@@ -670,7 +616,6 @@ let OwExits = {
             LongDescription: "This is the building just to the left of the Hyrule Castle entrance."
         },
         "Happy Mask Shop": {
-            Name: "Happy Mask Shop",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -682,7 +627,6 @@ let OwExits = {
             LongDescription: "This is the building just to the right of the Hyrule Castle entrance."
         },
         "Potion Shop": {
-            Name: "Potion Shop",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -694,7 +638,6 @@ let OwExits = {
             LongDescription: "Starting at the market entrance, this is the second building you can enter going counter-clockwise."
         },
         "Bazaar": {
-            Name: "Bazaar",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -706,7 +649,6 @@ let OwExits = {
             LongDescription: "Starting at the market entrance, this is the first building you can enter going counter-clockwise."
         },
         "Treasure Chest Minigame": {
-            Name: "Treasure Chest Minigame",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -718,7 +660,6 @@ let OwExits = {
             LongDescription: "This is the building to the right of the market entrance exit - it's only open at night.",
         },
         "Bombchu Bowling": {
-            Name: "Bombchu Bowling",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -729,7 +670,6 @@ let OwExits = {
             LongDescription: "This building is the one between the two market alley entrances."
         },
         "Bombchu Shop Entrance": {
-            Name: "Bombchu Shop Entrance",
             ExitRegion: "alley",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -741,7 +681,6 @@ let OwExits = {
             LongDescription: "This door only opens at night. Starting at the market entrance, go straight right into the alley. Take the first door on the left wall to get to the door."
         },
         "Door in Right Market Alley": {
-            Name: "Door in Right Market Alley",
             ExitRegion: "alley",
             RequiredToAppear: function() { 
                 return Settings.RandomizerSettings.shuffleInteriorEntrances || 
@@ -761,7 +700,6 @@ let OwExits = {
 
     "Temple of Time": {
         "Market": {
-            Name: "Market",
             ExitRegion: "main",
             Map: "Market",
             Region: "main",
@@ -773,7 +711,6 @@ let OwExits = {
 
         // Interiors
         "Temple of Time": {
-            Name: "Temple of Time",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -787,7 +724,6 @@ let OwExits = {
 
     "Castle": {
         "Market": {
-            Name: "Market",
             ExitRegion: "main",
             Map: "Market",
             Region: "main",
@@ -797,7 +733,6 @@ let OwExits = {
             LongDescription: "This is the entrance to the main market area."
         },
         "Ganon's Castle Entrance": {
-            Name: "Ganon's Castle Entrance",
             ExitRegion: "main",
             Map: "Ganon's Castle",
             Region: "main",
@@ -857,7 +792,6 @@ let OwExits = {
 
         // Interiors
         "Hyrule Great Fairy Fountain": {
-            Name: "Hyrule Great Fairy Fountain",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -869,7 +803,6 @@ let OwExits = {
             NeedToBlastOrSmash: true,
         },
         "Song of Storms Grotto": {
-            Name: "Song of Storms Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -880,7 +813,6 @@ let OwExits = {
             RequiredSongs: [Songs.SONG_OF_STORMS]
         },
         "Ganon Great Fairy Fountain": {
-            Name: "Ganon Great Fairy Fountain",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -902,7 +834,6 @@ let OwExits = {
 
     "Kakariko Village": {
         "Hyrule Field": {
-            Name: "Hyrule Field",
             ExitRegion: "main",
             Map: "Hyrule Field",
             Region: "main",
@@ -912,7 +843,6 @@ let OwExits = {
             LongDescription: "This is the entrance back to Hyrule Field."
         },
         "Graveyard": {
-            Name: "Graveyard",
             ExitRegion: "main",
             Map: "Graveyard",
             Region: "main",
@@ -922,7 +852,6 @@ let OwExits = {
             LongDescription: "This is the entrance to the graveyard."
         },
         "Death Mountain Trail": {
-            Name: "Death Mountain Trail",
             ExitRegion: "main",
             Map: "Death Mountain Trail",
             Region: "main",
@@ -932,7 +861,6 @@ let OwExits = {
             LongDescription: "This is the entrance back to Death Mountain."
         },
         "Bottom of the Well Entrance": {
-            Name: "Bottom of the Well Entrance",
             ExitRegion: "main",
             Map: "Bottom of the Well",
             Region: "main",
@@ -990,7 +918,6 @@ let OwExits = {
 
         // Interiors
         "Open Grotto Behind Potion Shop": {
-            Name: "Open Grotto Behind Potion Shop",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1000,7 +927,6 @@ let OwExits = {
             LongDescription: "This grotto is located behind the fenced off area located behind the Potion Shop. Child can get there with a cucco or from sidehopping off the watchtower. Adult can simply walk through the Potion Shop."
         },
         "Hidden Grotto near Tree": {
-            Name: "Hidden Grotto near Tree",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1011,7 +937,6 @@ let OwExits = {
             IsHiddenGrotto: true
         },
         "Archery Minigame": {
-            Name: "Archery Minigame",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1023,7 +948,6 @@ let OwExits = {
             LongDescription: "This is the building that was being constructed as a child. It's near the well."
         },
         "Back of Impa's House": {
-            Name: "Back of Impa's House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1034,7 +958,6 @@ let OwExits = {
             LongDescription: "This is the opening above the cucco pen. You can get there as a child via the owl on the top of Death Mountain, or by using a cucco. To do this, throw it up the building under construction (2 throws), then jump to the border (when the construction worker isn't there), then jump at the platform - don't drop the cucco.<br/><br/>As adult, you must hookshot there. Hookshot first to the House of Skulltulas from the ledge by the entrance to Impa's house. Then, hookshot to Impa's house. Make your way to the ledge.<br/><br/>Alternatively, as adult, you can make your way directly under the opening, and simply hold forward to jump onto the ledge.",
         },
         "Impa's House": {
-            Name: "Impa's House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1043,7 +966,6 @@ let OwExits = {
             LongDescription: "This is the building that Anju stands by. The entrance is on the opposite site of the cucco pen.",
         },
         "House of Skulltula": {
-            Name: "House of Skulltula",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1053,7 +975,6 @@ let OwExits = {
             LongDescription: "This is the building near Impa's house, with the fence near the door."
         },
         "Windmill": {
-            Name: "Windmill",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1068,7 +989,6 @@ let OwExits = {
             LongDescription: "This is the windmill entrance - it's up the stairs near the well."
         },
         "Windmill to Interior": {
-            Name: "Windmill to Interior",
             ExitRegion: "main",
             Map: "Windmill-Kak Potion",
             Region: "windmill",
@@ -1089,7 +1009,6 @@ let OwExits = {
         },
         "Talon's House": {
             //TODO: this WOULD be important if we ever did the entire trade sequence
-            Name: "Talon's House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1098,7 +1017,6 @@ let OwExits = {
             LongDescription: "This is the building straight ahead of the tree, that has crate with the cucco next to it as a child."
         },
         "Bazaar": {
-            Name: "Bazaar",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1115,7 +1033,6 @@ let OwExits = {
             }
         },
         "Potion Shop Front": {
-            Name: "Potion Shop Front",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1131,7 +1048,6 @@ let OwExits = {
         },
         "Potion Shop Back": {
             // Leaving DefaultEntranceGroupName out since it's fully covered by the front entrance
-            Name: "Potion Shop Back",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1147,7 +1063,6 @@ let OwExits = {
             }
         },
         "Potion Shop to Interior": {
-            Name: "Potion Shop to Interior",
             ExitRegion: "main",
             Map: "Windmill-Kak Potion",
             Region: "kakPotionShop",
@@ -1168,7 +1083,6 @@ let OwExits = {
         },
         "Granny's Potion Shop": {
             //TODO: this WOULD be important if we ever did the entire trade sequence
-            Name: "Granny's Potion Shop",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1181,7 +1095,6 @@ let OwExits = {
 
     "Graveyard": {
         "Kakariko Village": {
-            Name: "Kakariko Village",
             ExitRegion: "main",
             Map: "Kakariko Village",
             Region: "main",
@@ -1191,7 +1104,6 @@ let OwExits = {
             LongDescription: "This is the entrance back to the village."
         },
         "Nocturne Teleport Pad": {
-            Name: "Nocturne Teleport Pad",
             ExitRegion: "top",
             Map: "Graveyard",
             Region: "top",
@@ -1202,7 +1114,6 @@ let OwExits = {
             LongDescription: "The Nocturne of Shadow teleport pad on the top part of the graveyard.",
         },
         "Shadow Temple Entrance": {
-            Name: "Shadow Temple Entrance",
             ExitRegion: "shadowTemple",
             Map: "Shadow Temple",
             Region: "main",
@@ -1215,7 +1126,6 @@ let OwExits = {
 
         // Interiors
         "Grave with Flowers": {
-            Name: "Grave with Flowers",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1226,7 +1136,6 @@ let OwExits = {
             LongDescription: "There's a gravestone when you first enter that has flowers in front of it. Pull it back and enter to get to the grotto."
         },
         "Unmarked Grave": {
-            Name: "Unmarked Grave",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1237,7 +1146,6 @@ let OwExits = {
             LongDescription: "Go to the Royal Tomb gravestone at the front of the graveyard - position your camera the other way, toward the entrance. The grave will be the second one to your left."
         },
         "Dampe's Shed": {
-            Name: "Dampe's Shed",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1247,7 +1155,6 @@ let OwExits = {
             LongDescription: "Located in the southeast corner of the graveyard.",
         },
         "Dampe's Grave": {
-            Name: "Dampe's Grave",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1262,7 +1169,6 @@ let OwExits = {
             LongDescription: "Under the grave in the in the northwest corner of the graveyard.",
         },
         "Dampe's Grave to Dampe Race": {
-            Name: "Dampe's Grave to Dampe Race",
             ExitRegion: "main",
             Map: "Windmill-Kak Potion",
             Region: "dampesGrave",
@@ -1282,7 +1188,6 @@ let OwExits = {
             LongDescription: "This is the route through Dampe's Grave to get to Kakariko via the windmill."
         },
         "Royal Family's Tomb": {
-            Name: "Royal Family's Tomb",
             ExitRegion: "royalFamilyTomb",
             ItemGroup: ItemGroups.ENTRANCE,
             DefaultEntranceGroupName: "Royal Family's Tomb",
@@ -1295,7 +1200,6 @@ let OwExits = {
 
     "Death Mountain Trail": {
         "Kakariko Village": {
-            Name: "Kakariko Village",
             ExitRegion: "main",
             Map: "Kakariko Village",
             Region: "beyondGate",
@@ -1305,7 +1209,6 @@ let OwExits = {
             LongDescription: "This is the entrance back to the village."
         },
         "Goron City": {
-            Name: "Goron City",
             ExitRegion: "main",
             Map: "Goron City",
             Region: "main",
@@ -1315,7 +1218,6 @@ let OwExits = {
             LongDescription: "This is the entrance to Goron City."
         },
         "Death Mountain Crater": {
-            Name: "Death Mountain Crater",
             ExitRegion: "upper",
             Map: "Death Mountain Crater",
             Region: "top",
@@ -1325,7 +1227,6 @@ let OwExits = {
             LongDescription: "This is the entrance to the crater at the top of the mountain"
         },
         "Owl": {
-            Name: "Owl",
             ExitRegion: "upper",
             Map: "Kakariko Village",
             Region: "main",
@@ -1337,7 +1238,6 @@ let OwExits = {
             LongDescription: "This is the owl at the top of the mountain by the crater entrance."
         },
         "Dodongo's Cavern Entrance": {
-            Name: "Dodongo's Cavern Entrance",
             ExitRegion: "main",
             Map: "Dodongo's Cavern",
             Region: "main",
@@ -1353,7 +1253,6 @@ let OwExits = {
 
         // Interiors
         "Song of Storms Grotto near Goron City": {
-            Name: "Song of Storms Grotto near Goron City",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1364,7 +1263,6 @@ let OwExits = {
             RequiredSongs: [Songs.SONG_OF_STORMS]
         },
         "Great Fairy Fountain": {
-            Name: "Great Fairy Fountain",
             ExitRegion: "upper",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1376,7 +1274,6 @@ let OwExits = {
             NeedToBlastOrSmash: true
         },
         "Cow Grotto": {
-            Name: "Cow Grotto",
             ExitRegion: "upper",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1391,7 +1288,6 @@ let OwExits = {
 
     "Death Mountain Crater": {
         "Mountain Top": {
-            Name: "Mountain Top",
             ExitRegion: "top",
             Map: "Death Mountain Trail",
             Region: "upper",
@@ -1401,7 +1297,6 @@ let OwExits = {
             LongDescription: "This is the entrance at the top of the crater."
         },
         "Goron City": {
-            Name: "Goron City",
             ExitRegion: "middle",
             Map: "Goron City",
             Region: "darunia",
@@ -1411,7 +1306,6 @@ let OwExits = {
             LongDescription: "This is the entrance to Goron City."
         },
         "Bolero Teleport Pad": {
-            Name: "Bolero Teleport Pad",
             ExitRegion: "bottom",
             Map: "Death Mountain Crater",
             Region: "bottom",
@@ -1422,7 +1316,6 @@ let OwExits = {
             LongDescription: "The Bolero of Fire teleport pad at the bottom of Death Mountain Crater.",
         },
         "Fire Temple Entrance": {
-            Name: "Fire Temple Entrance",
             ExitRegion: "bottom",
             Map: "Fire Temple",
             Region: "main",
@@ -1438,7 +1331,6 @@ let OwExits = {
 
         // Interiors
         "Grotto in Center of Top Rocks": {
-            Name: "Grotto in Center of Top Rocks",
             ExitRegion: "top",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1449,7 +1341,6 @@ let OwExits = {
             NeedToBlastOrSmash: true
         },
         "Great Fairy Fountain": {
-            Name: "Great Fairy Fountain",
             ExitRegion: "middle",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1466,7 +1357,6 @@ let OwExits = {
             }
         },
         "Grotto in Rock by Goron": {
-            Name: "Grotto in Rock by Goron",
             ExitRegion: "middle",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1482,7 +1372,6 @@ let OwExits = {
 
     "Goron City": {
         "Death Mountain Trail": {
-            Name: "Death Mountain Trail",
             ExitRegion: "main",
             Map: "Death Mountain Trail",
             Region: "main",
@@ -1492,7 +1381,6 @@ let OwExits = {
             LongDescription: "This is the entrance to the trail at the top of the city."
         },
         "Lost Woods": {
-            Name: "Lost Woods",
             ExitRegion: "lostWoods",
             Map: "Lost Woods",
             Region: "firstHalf",
@@ -1502,7 +1390,6 @@ let OwExits = {
             LongDescription: "This is the entrance blocked by rocks on the second floor."
         },
         "Death Mountain Crater": {
-            Name: "Death Mountain Crater",
             ExitRegion: "darunia",
             Map: "Death Mountain Crater",
             Region: "middle",
@@ -1514,7 +1401,6 @@ let OwExits = {
 
         // Interiors
         "Lava Room Grotto": {
-            Name: "Lava Room Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1529,7 +1415,6 @@ let OwExits = {
             }
         },
         "Shop": {
-            Name: "Shop",
             ExitRegion: "shop",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1543,7 +1428,6 @@ let OwExits = {
 
     "Zora's River": {
         "Hyrule Field": {
-            Name: "Hyrule Field",
             ExitRegion: "downstream",
             Map: "Hyrule Field",
             Region: "main",
@@ -1553,7 +1437,6 @@ let OwExits = {
             LongDescription: "This is the entrance to Hyrule Field at the start of the river - either exit will take you to the same place."
         },
         "Lost Woods": {
-            Name: "Lost Woods",
             ExitRegion: "upstream",
             Map: "Lost Woods",
             Region: "firstHalf",
@@ -1564,7 +1447,6 @@ let OwExits = {
             LongDescription: "This is the entrance you get to by diving into the water near the waterfall."
         },
         "Zora's Domain": {
-            Name: "Zora's Domain",
             ExitRegion: "inWaterfall",
             Map: "Zora's Domain",
             Region: "main",
@@ -1576,7 +1458,6 @@ let OwExits = {
 
         // Interiors
         "Song of Storms Grotto": {
-            Name: "Song of Storms Grotto",
             ExitRegion: "upstream",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1588,7 +1469,6 @@ let OwExits = {
             RequiredSongs: [Songs.SONG_OF_STORMS]
         },
         "Open Grotto on Upper Cliff": {
-            Name: "Open Grotto on Upper Cliff",
             ExitRegion: "upstream",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1598,7 +1478,6 @@ let OwExits = {
             LongDescription: "Go up the ladder closest to Hyrule Field. Jump to the cliff behind you and enter the grotto."
         },
         "Grotto Under Rock on Upper Cliff": {
-            Name: "Grotto Under Rock on Upper Cliff",
             ExitRegion: "upstream",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1611,7 +1490,6 @@ let OwExits = {
 
     "Zora's Domain": {
         "Zora's River": {
-            Name: "Zora's River",
             ExitRegion: "main",
             Map: "Zora's River",
             Region: "upstream",
@@ -1621,7 +1499,6 @@ let OwExits = {
             LongDescription: "This is the entrance to Zora's River."
         },
         "Lake Hylia": {
-            Name: "Lake Hylia",
             ExitRegion: "main",
             Map: "Lake Hylia",
             Region: "main",
@@ -1637,7 +1514,6 @@ let OwExits = {
             }
         },
         "Zora's Fountain": {
-            Name: "Zora's Fountain",
             ExitRegion: "behindKing",
             Map: "Zora's Fountain",
             Region: "main",
@@ -1649,7 +1525,6 @@ let OwExits = {
 
         // Interiors
         "Shop": {
-            Name: "Shop",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1664,7 +1539,6 @@ let OwExits = {
             }
         },
         "Song of Storms Grotto": {
-            Name: "Song of Storms Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1677,7 +1551,6 @@ let OwExits = {
 
     "Zora's Fountain": {
         "Zora's Domain": {
-            Name: "Zora's Domain",
             ExitRegion: "main",
             Map: "Zora's Domain",
             Region: "behindKing",
@@ -1687,7 +1560,6 @@ let OwExits = {
             LongDescription: "This is the entrance to Zora's Domain."
         },
         "Jabu Jabu's Belly Entrance": {
-            Name: "Jabu Jabu's Belly Entrance",
             ExitRegion: "main",
             Map: "Jabu Jabu's Belly",
             Region: "main",
@@ -1705,7 +1577,6 @@ let OwExits = {
             }
         },
         "Ice Cavern Entrance": {
-            Name: "Ice Cavern Entrance",
             ExitRegion: "main",
             Map: "Ice Cavern",
             Region: "main",
@@ -1718,7 +1589,6 @@ let OwExits = {
 
         // Interiors
         "Great Fairy Fountain": {
-            Name: "Great Fairy Fountain",
             ExitRegion: "main",
             IsInterior: true,
             OneWayInteriorSpawnEntrance: true,
@@ -1733,7 +1603,6 @@ let OwExits = {
 
     "Lake Hylia": {
         "Hyrule Field": {
-            Name: "Hyrule Field",
             ExitRegion: "main",
             Map: "Hyrule Field",
             Region: "main",
@@ -1743,7 +1612,6 @@ let OwExits = {
             LongDescription: "This is the entrance to Hyrule Field."
         },
         "Zora's Domain": {
-            Name: "Zora's Domain",
             ExitRegion: "main",
             Map: "Zora's Domain",
             Region: "main",
@@ -1766,7 +1634,6 @@ let OwExits = {
             }
         },
         "Owl": {
-            Name: "Owl",
             ExitRegion: "main",
             Map: "Hyrule Field",
             Region: "main",
@@ -1778,7 +1645,6 @@ let OwExits = {
             LongDescription: "This is the owl by the gravestone across the bridge."
         },
         "Serenade Teleport Pad": {
-            Name: "Serenade Teleport Pad",
             ExitRegion: "main",
             Map: "Lake Hylia",
             Region: "main",
@@ -1788,7 +1654,6 @@ let OwExits = {
             LongDescription: "The Serenade of Water teleport pad on the island in Lake Hylia.",
         },
         "Water Temple Entrance": {
-            Name: "Water Temple Entrance",
             ExitRegion: "main",
             Map: "Water Temple",
             Region: "main",
@@ -1819,7 +1684,6 @@ let OwExits = {
 
         // Interiors
         "Fishing Pond": {
-            Name: "Fishing Pond",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1837,7 +1701,6 @@ let OwExits = {
             LongDescription: "This building is in the building across the water to the northeast."
         },
         "Grotto Under Grave": {
-            Name: "Grotto Under Grave",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1848,7 +1711,6 @@ let OwExits = {
             LongDescription: "Pull the gravestone in the middle of the bridge to reveal this grotto."
         },
         "Lakeside Lab": {
-            Name: "Lakeside Lab",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1861,7 +1723,6 @@ let OwExits = {
 
     "Gerudo Valley": {
         "Hyrule Field": {
-            Name: "Hyrule Field",
             ExitRegion: "main",
             Map: "Hyrule Field",
             Region: "main",
@@ -1871,7 +1732,6 @@ let OwExits = {
             LongDescription: "This is the eastern exit."
         },
         "Gerudo Fortress": {
-            Name: "Gerudo Fortress",
             ExitRegion: "acrossBridge",
             Map: "Gerudo Fortress",
             Region: "main",
@@ -1881,7 +1741,6 @@ let OwExits = {
             LongDescription: "This is the western exit."
         },
         "To Lake Hylia": {
-            Name: "To Lake Hylia",
             ExitRegion: "chasm",
             Map: "Lake Hylia",
             Region: "main",
@@ -1899,7 +1758,6 @@ let OwExits = {
 
         // Interiors
         "Grotto Under Silver Rock": {
-            Name: "Grotto Under Silver Rock",
             ExitRegion: "chasmSilverRockLedge",
             ItemGroup: ItemGroups.ENTRANCE,
             RequiredToAppear: function() { 
@@ -1915,7 +1773,6 @@ let OwExits = {
             RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}]
         },
         "Tent": {
-            Name: "Tent",
             ExitRegion: "acrossBridge",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1930,7 +1787,6 @@ let OwExits = {
             LongDescription: "This is the tent on the west side of the bridge as adult. Also, the loading zone is actually there as child."
         },
         "Song of Storms Grotto Behind Tent": {
-            Name: "Song of Storms Grotto Behind Tent",
             ExitRegion: "acrossBridge",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1945,7 +1801,6 @@ let OwExits = {
 
     "Gerudo Fortress": {
         "Gerudo Valley": {
-            Name: "Gerudo Valley",
             ExitRegion: "main",
             Map: "Gerudo Valley",
             Region: "acrossBridge",
@@ -1955,7 +1810,6 @@ let OwExits = {
             LongDescription: "This is the exit back to the valley."
         },
         "Haunted Wasteland": {
-            Name: "Haunted Wasteland",
             ExitRegion: "wastelandEntrance",
             Map: "Haunted Wasteland",
             Region: "entrance",
@@ -1965,7 +1819,6 @@ let OwExits = {
             LongDescription: "This is the exit to the wasteland. As Child, here's how to skip the gate: climb the ladder; go a bit to the right if you are facing the ladder; angle yourself so that when you sidehop left, you end up on the cliff; walk forward until you are passed the gate; sidehop left and keep holding left."
         },
         "Training Grounds Entrance": {
-            Name: "Training Grounds Entrance",
             ExitRegion: "main",
             Map: "Training Grounds",
             Region: "main",
@@ -1985,7 +1838,6 @@ let OwExits = {
 
         // Interiors
         "Song of Storms Grotto": {
-            Name: "Song of Storms Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1998,7 +1850,6 @@ let OwExits = {
 
     "Haunted Wasteland": {
         "Gerudo Fortress": {
-            Name: "Gerudo Fortress",
             ExitRegion: "entrance",
             Map: "Gerudo Fortress",
             Region: "wastelandEntrance",
@@ -2008,7 +1859,6 @@ let OwExits = {
             LongDescription: "This is the entrance back to the fortress."
         },
         "Desert Colossus": {
-            Name: "Desert Colossus",
             ExitRegion: "exit",
             Map: "Desert Colossus",
             Region: "main",
@@ -2021,7 +1871,6 @@ let OwExits = {
 
     "Desert Colossus": {
         "Haunted Wasteland": {
-            Name: "Haunted Wasteland",
             ExitRegion: "main",
             Map: "Haunted Wasteland",
             Region: "exit",
@@ -2031,7 +1880,6 @@ let OwExits = {
             LongDescription: "This is the entrance to the wasteland."
         },
         "Requiem Teleport Pad": {
-            Name: "Requiem Teleport Pad",
             ExitRegion: "main",
             Map: "Desert Colossus",
             Region: "main",
@@ -2041,7 +1889,6 @@ let OwExits = {
             LongDescription: "The Requiem of Spirit teleport pad at Desert Colossus.",
         },
         "Spirit Temple Entrance": {
-            Name: "Spirit Temple Entrance",
             ExitRegion: "main",
             Map: "Spirit Temple",
             Region: "main",
@@ -2054,7 +1901,6 @@ let OwExits = {
 
         // Interiors
         "Great Fairy Fountain": {
-            Name: "Great Fairy Fountain",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -2066,7 +1912,6 @@ let OwExits = {
             NeedsExplosives: true
         },
         "Silver Rock Grotto": {
-            Name: "Silver Rock Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             DefaultEntranceGroupName: "2 Scrubs",
@@ -2081,7 +1926,6 @@ let OwExits = {
 
     "Windmill-Kak Potion" : {
         "Grave Exit": {
-            Name: "Grave Exit",
             ExitRegion: "dampesGrave",
             IsGrottoExit: true,
             MapInfo: { x: 97, y: 262, floor: "DMP" },
@@ -2094,7 +1938,6 @@ let OwExits = {
             ReadOnly: true,
         },
         "Windmill Exit": {
-            Name: "Windmill Exit",
             ExitRegion: "windmill",
             IsInteriorExit: true,
             MapInfo: { x: 77, y: 244, floor: "WND" },
@@ -2107,7 +1950,6 @@ let OwExits = {
             ReadOnly: true,
         },
         "Windmill Exit to Kakariko Village": {
-            Name: "Windmill Exit to Kakariko Village",
             ExitRegion: "windmill",
             Map: "Kakariko Village",
             Region: "main",
@@ -2127,7 +1969,6 @@ let OwExits = {
             LongDescription: "This is the route through Dampe's Grave to get to Kakariko via the windmill."
         },
         "Potion Shop Front": {
-            Name: "Potion Shop Front",
             ExitRegion: "kakPotionShop",
             IsInteriorExit: true,
             MapInfo: { x: 42, y: 250, floor: "POT" },
@@ -2140,7 +1981,6 @@ let OwExits = {
             ReadOnly: true,
         },
         "Potion Shop Back": {
-            Name: "Potion Shop Back",
             ExitRegion: "kakPotionShop",
             IsInteriorExit: true,
             MapInfo: { x: 85, y: 147, floor: "POT" },
@@ -2156,7 +1996,6 @@ let OwExits = {
 
     "Deku Tree": {
         "Exit": {
-            Name: "Exit",
             ExitRegion: "main",
             Map: "Kokiri Forest",
             Region: "afterMido",
@@ -2169,7 +2008,6 @@ let OwExits = {
             LongDescription: "This is the exit from the Deku Tree."
         },
         "Boss Entrance": {
-            Name: "Boss Entrance",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.ENTRANCE,
             IsBoss: true,
@@ -2184,7 +2022,6 @@ let OwExits = {
 
     "Dodongo's Cavern": {
         "Exit": {
-            Name: "Exit",
             ExitRegion: "main",
             Map: "Death Mountain Trail",
             Region: "main",
@@ -2197,7 +2034,6 @@ let OwExits = {
             LongDescription: "This is the exit from Dodongo's Cavern."
         },
         "Boss Entrance": {
-            Name: "Boss Entrance",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.ENTRANCE,
             IsBoss: true,
@@ -2211,7 +2047,6 @@ let OwExits = {
 
     "Jabu Jabu's Belly": {
         "Exit": {
-            Name: "Exit",
             ExitRegion: "main",
             Map: "Zora's Fountain",
             Region: "main",
@@ -2224,7 +2059,6 @@ let OwExits = {
             LongDescription: "This is the exit from Jabu Jabu's Belly."
         },
         "Boss Entrance": {
-            Name: "Boss Entrance",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.ENTRANCE,
             IsBoss: true,
@@ -2244,7 +2078,6 @@ let OwExits = {
 
     "Forest Temple": {
         "Exit": {
-            Name: "Exit",
             ExitRegion: "main",
             Map: "Sacred Forest Meadow",
             Region: "afterGate",
@@ -2257,7 +2090,6 @@ let OwExits = {
             LongDescription: "This is the exit from the Forest Temple."
         },
         "Boss Entrance": {
-            Name: "Boss Entrance",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.ENTRANCE,
             MapInfo: { x: 184, y: 107, floor: "B1" },
@@ -2278,7 +2110,6 @@ let OwExits = {
 
     "Fire Temple": {
         "Exit": {
-            Name: "Exit",
             ExitRegion: "main",
             Map: "Death Mountain Crater",
             Region: "bottom",
@@ -2291,7 +2122,6 @@ let OwExits = {
             LongDescription: "This is the exit from the Fire Temple."
         },
         "Boss Entrance": {
-            Name: "Boss Entrance",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.ENTRANCE,
             IsBoss: true,
@@ -2314,7 +2144,6 @@ let OwExits = {
 
     "Water Temple": {
         "Exit": {
-            Name: "Exit",
             ExitRegion: "main",
             Map: "Lake Hylia",
             Region: "main",
@@ -2327,7 +2156,6 @@ let OwExits = {
             LongDescription: "This is the exit from the Water Temple."
         },
         "Boss Entrance": {
-            Name: "Boss Entrance",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.ENTRANCE,
             IsBoss: true,
@@ -2341,7 +2169,6 @@ let OwExits = {
 
     "Shadow Temple": {
         "Exit": {
-            Name: "Exit",
             ExitRegion: "main",
             Map: "Graveyard",
             Region: "top",
@@ -2354,7 +2181,6 @@ let OwExits = {
             LongDescription: "This is the exit from the Shadow Temple."
         },
         "Boss Entrance": {
-            Name: "Boss Entrance",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.ENTRANCE,
             IsBoss: true,
@@ -2368,7 +2194,6 @@ let OwExits = {
 
     "Spirit Temple": {
         "Exit": {
-            Name: "Exit",
             ExitRegion: "main",
             Map: "Graveyard",
             Region: "top",
@@ -2381,7 +2206,6 @@ let OwExits = {
             LongDescription: "This is the exit from the Shadow Temple."
         },
         "Desert Colossus": {
-            Name: "Desert Colossus",
             ExitRegion: "statueHands",
             Map: "Desert Colossus",
             Region: "main",
@@ -2397,7 +2221,6 @@ let OwExits = {
             OwShuffleExitName: "Haunted Wasteland"
         },
         "Boss Entrance": {
-            Name: "Boss Entrance",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.ENTRANCE,
             IsBoss: true,
@@ -2412,7 +2235,6 @@ let OwExits = {
 
     "Bottom of the Well": {
         "Exit": {
-            Name: "Exit",
             ExitRegion: "main",
             Map: "Kakariko Village",
             Region: "main",
@@ -2428,7 +2250,6 @@ let OwExits = {
 
     "Ice Cavern": {
         "Exit": {
-            Name: "Exit",
             ExitRegion: "main",
             Map: "Zora's Fountain",
             Region: "main",
@@ -2444,7 +2265,6 @@ let OwExits = {
 
     "Training Grounds": {
         "Exit": {
-            Name: "Exit",
             ExitRegion: "main",
             Map: "Gerudo Fortress",
             Region: "main",
@@ -2460,7 +2280,6 @@ let OwExits = {
 
     "Ganon's Castle": {
         "Exit": {
-            Name: "Exit",
             ExitRegion: "main",
             Map: "Castle",
             Region: "main",

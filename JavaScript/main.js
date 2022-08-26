@@ -11,7 +11,7 @@ window.onbeforeunload = function() {
 let onPageLoad = function() {
 	SocketClient.connect();
 
-	_assignItemLocationMapsAndRegions();
+	_assignItemLocationAndExitValues();
 	
 	if (Settings.RandomizerSettings.dungeonSetting === DungeonSettings.MASTER_QUEST) {
 		addAllMQDungeons();
@@ -31,7 +31,7 @@ let onPageLoad = function() {
  * Goes through all the item locations and assigns them their matching region and map
  * This is to cut down on lines/tedium/potential errors in the file
  */
-let _assignItemLocationMapsAndRegions = function() {
+let _assignItemLocationAndExitValues = function() {
 	[MapLocations, StandardDungeons, MQDungeons].forEach(function(mapObject) {
 		Object.keys(mapObject).forEach(function(mapName) {
 			let regions = mapObject[mapName].Regions;
@@ -39,9 +39,16 @@ let _assignItemLocationMapsAndRegions = function() {
 				let itemLocations = regions[regionName].ItemLocations;
 				Object.keys(itemLocations).forEach(function(itemLocationName) {
 					let itemLocation = itemLocations[itemLocationName];
+					itemLocation.Name = itemLocationName;
 					itemLocation.Map = mapName;
 					itemLocation.Region = regionName;
 					itemLocation.IsDungeon = mapObject[mapName].MapGroup === MapGroups.DUNGEONS;
+				});
+
+				let exits = regions[regionName].Exits;
+				Object.keys(exits).forEach(function(exitName) {
+					let exit = exits[exitName];
+					exit.Name = exitName;
 				});
 			});
 		});
@@ -50,6 +57,7 @@ let _assignItemLocationMapsAndRegions = function() {
 	Object.keys(OwExits).forEach(function(mapName) {
 		Object.keys(OwExits[mapName]).forEach(function(exitName) {
 			let exit = OwExits[mapName][exitName];
+			exit.Name = exitName;
 			exit.ExitMap = mapName;
 		});
 	});
