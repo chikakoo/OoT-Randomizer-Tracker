@@ -3227,78 +3227,79 @@ let MQDungeons = {
                         Regions: ["truthSpinnerRoom"],
                         MapInfo: { x: 125, y: 152, floor: "F1" },
                         Age: Age.EITHER,
-                        Order: 0.1,
+                        Order: 2,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip },
                         LongDescription: "This is the door behind the explodable wall in the truth spinner room.",
                         NeedsExplosives: true,
                         KeyRequirement: function(age) {
-                            return { min: 1, max: Keys.SHADOW_TEMPLE.mqTotalKeys() };
+                            return { min: 1, max: 6 };
                         }
                     },
-
                     "Locked Door by Beamos": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["afterTruthSpinner"],
-                        MapInfo: { x: 329, y: 109, floor: "F1" },
+                        MapInfo: { x: 330, y: 170, floor: "F1" },
                         Age: Age.EITHER,
-                        Order: 5.1,
+                        Order: 12,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip},
                         LongDescription: "This is the door near the beamos after the truth spinner room.",
                         KeyRequirement: function(age) {
-                            return { min: 1, max: 2 };
+                            let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 2;
+                            return { min: 1, max: max };
                         }
                     },
-
                     "Locked Door in Giant Room": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["rightSideOfGiantRoom"],
                         MapInfo: { x: 157, y: 93, floor: "B2" },
                         Age: Age.ADULT,
-                        Order: 12.1,
+                        Order: 22,
                         LongDescription: "This is the locked door on the right side of the giant room.",
                         KeyRequirement: function(age) {
-                            return { min: 2, max: 3 };
+                            let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 3;
+                            return { min: 2, max: max };
                         }
                     },
-
                     "Locked Door in Invisible Spike Room": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["invisibleSpikeRoom"],
+                        Regions: ["invisibleSpikeRoom", "windHallway"],
                         MapInfo: { x: 156, y: 46, floor: "B2" },
                         Age: Age.ADULT,
-                        Order: 14.1,
+                        Order: 25,
                         LongDescription: "This is the locked door in the room with the invisible spikes.",
                         KeyRequirement: function(age) {
-                            return { min: 3, max: 4 };
+                            let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 4;
+                            let min = Settings.GlitchesToAllow.shadowGateClip ? 2 : 3;
+                            return { min: min, max: max };
                         }
                     },
-
                     "Locked Door After Fans": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["windHallway", "boatRoom"],
                         MapInfo: { x: 303, y: 131, floor: "B1" },
                         Age: Age.ADULT,
-                        Order: 19.1,
+                        Order: 33,
                         LongDescription: "This is the locked door in the Gibdos room after all the fans.",
                         KeyRequirement: function(age) {
-                            return { min: 4, max: 5 };
+                            let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 5;
+                            let min = Settings.GlitchesToAllow.shadowGateClip ? 1 : 4;
+                            return { min: min, max: max };
                         }
                     },
-
                     "Locked Door in Invisible Wall Room": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["invisibleWallRoom"],
                         MapInfo: { x: 90, y: 79, floor: "B1" },
                         Age: Age.ADULT,
-                        Order: 20.1,
+                        Order: 40,
                         LongDescription: "This is the locked door in the invisible wall room.",
                         KeyRequirement: function(age) {
-                            return { min: 5, max: 6 };
+                            let min = Settings.GlitchesToAllow.shadowGateClip ? 1 : 5;
+                            return { min: min, max: 6 };
                         }
                     }
                 }
             },
-
             truthSpinnerRoom: {
                 Exits: {
                     mazeByEntrance: {
@@ -3306,7 +3307,6 @@ let MQDungeons = {
                         Map: "Shadow Temple",
                         NeedsExplosives: true
                     },
-
                     afterTruthSpinner: {
                         CustomRequirement: function(age) {
                             if (Data.canMegaFlip(age)) { return true; }
@@ -3316,40 +3316,112 @@ let MQDungeons = {
                         }
                     }
                 },
-                ItemLocations: {}
-            },
-
-            mazeByEntrance: {
-                Exits: {},
                 ItemLocations: {
-                    "Redead Chest in Maze": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 101, y: 108, floor: "F1" },
+                    "4 Crates by Truth Spinner": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Crates",
+                        MapInfo: { x: 139, y: 169, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 1,
                         UseAdultAge: function() { 
                             return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
                         },
+                        LongDescription: "These are the small crates by the truth spinner in the first main room of the temple, against the wall."
+                    }
+                }
+            },
+            mazeByEntrance: {
+                Exits: {
+                    mazeBack: {
+                        CustomRequirement: function(age) {
+                            return age === Age.CHILD || Data.canPlaySong(Songs.SONG_OF_TIME);
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "2 Pots in Redead Maze Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 107, y: 108, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 3,
+                        UseAdultAge: function() { 
+                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+                        },
+                        LongDescription: "After entering the truth spinner room, navigate to the Eye of Truth symbol on the lower left wall. Bomb it to open up the path. Use a key to enter the maze. Head right through the invisible wall. The chests are in the back right corner of the next room."
+                    },
+                    "Redead Chest in Maze": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 101, y: 108, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 4,
+                        UseAdultAge: function() { 
+                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+                        },
                         LongDescription: "After entering the truth spinner room, navigate to the Eye of Truth symbol on the lower left wall. Bomb it to open up the path. Use a key to enter the maze. Head right through the invisible wall. Kill the enemies to spawn the chest."
+                    },
+                    "2 Flying Pots in Front Maze Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 102, y: 163, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 5,
+                        UseAdultAge: function() { 
+                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+                        },
+                        LongDescription: "In the left (south) part of the first maze loop from the entrance, these two pots will fly at you."
+                    },
+                    "2 Pots in Front Maze Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 92, y: 153, floor: "F1" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { 
+                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+                        },
+                        Order: 6,
+                        LongDescription: "These pots are marking the Song of Time block in the first maze loop - loop around to the other side from the door to find them."
+                    }
+                }
+            },
+            mazeBack: {
+                Exits: {},
+                ItemLocations: {
+                    "2 Flying Pots in Back Maze Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 65, y: 163, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 7,
+                        UseAdultAge: function() { 
+                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+                        },
+                        LongDescription: "If adult, play the Song of Time by the wall marked by the two pots to advance to the next maze section. On the left side with the eyes, these pots will fly at you."
                     },
                     "Dead Hand Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 14, y: 143, floor: "F1" },
                         Age: Age.EITHER,
-                        Order: 2,
+                        Order: 8,
                         UseAdultAge: function() { 
                             return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
                         },
                         LongDescription: "In the maze by the entrance, navigate around to the other side of the first room. Play the Song of Time to remove the block in the way (invisible without the lens). In the next room, shoot the middle eye. Now you can enter the northwest door. Kill Dead Hand to spawn the chest.",
                         RequiredChildItems: [Items.FAIRY_SLINGSHOT],
-                        RequiredAdultItems: [Items.FAIRY_BOW],
-                        CustomRequirement: function(age) {
-                            return age === Age.CHILD || Data.canPlaySong(Songs.SONG_OF_TIME);
-                        }
+                        RequiredAdultItems: [Items.FAIRY_BOW]
                     }
                 }
             },
-
             afterTruthSpinner: {
                 Exits: {
                     afterBeamos: {
@@ -3371,7 +3443,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 345, y: 122, floor: "F1" },
                         Age: Age.ADULT,
-                        Order: 3,
+                        Order: 9,
                         LongDescription: "First, turn the truth spinner in the main room to the correct skull to open the gate. Now, shoot the torches to the left and right of the gate to create a platform. Alternatively, you can megaflip or hover boots across. Take the left door from the beamos. Gather all the rupees to open the cell to the chest.",
                         CustomRequirement: function(age) {
                             return Items.HOOKSHOT.playerHas || 
@@ -3383,17 +3455,17 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 278, y: 122, floor: "B1" },
                         Age: Age.EITHER,
-                        Order: 4,
+                        Order: 10,
                         UseAdultAge: function() { 
                             return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
                         },
                         LongDescription: "Facing away from the door into the scythe room, go to the upper right room and fall down the invisible hole. There is an invisible chest to the right of the climbable wall."
                     },
-                    "Chest in Gibdos Room": {
+                    "Chest in Early Gibdos Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 301, y: 220, floor: "F1" },
                         Age: Age.EITHER,
-                        Order: 5,
+                        Order: 11,
                         UseAdultAge: function() { 
                             return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
                         },
@@ -3401,7 +3473,6 @@ let MQDungeons = {
                     }
                 }
             },
-
             afterBeamos: {
                 Exits: {
                     rightSideOfGiantRoom: {
@@ -3412,11 +3483,22 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
+                    "2 Hearts in Invisible Scythe Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Hearts",
+                        MapInfo: { x: 331, y: 123, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 13,
+                        LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). The hearts are in the back left corner. Play the Song of Time to spawn a block to get them.",
+                        RequiredSongs: [Songs.SONG_OF_TIME]
+                    },
                     "Visible Chest in Invisible Scythe Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 343, y: 138, floor: "B2" },
                         Age: Age.ADULT,
-                        Order: 6,
+                        Order: 14,
                         LongDescription: "Bomb the wall after the beamos and open the locked door. Navigate through the hallways until you get to a dead end. Make a left at the fork and follow the wall, jumping across the invisible platforms. Enter the door.<br/><br/>Gather all the silver rupees - you'll need the Song of Time for one of them. This will open the door to the chest.",
                         RequiredSongs: [Songs.SONG_OF_TIME]
                     },
@@ -3424,13 +3506,12 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 343, y: 142, floor: "B2" },
                         Age: Age.ADULT,
-                        Order: 7,
+                        Order: 15,
                         LongDescription: "Bomb the wall after the beamos and open the locked door. Navigate through the hallways until you get to a dead end. Make a left at the fork and follow the wall, jumping across the invisible platforms. Enter the door.<br/><br/>Gather all the silver rupees - you'll need the Song of Time for one of them. This will open the door to the chest - it's next to the visible one.",
                         RequiredSongs: [Songs.SONG_OF_TIME]
                     }
                 }
             },
-
             rightSideOfGiantRoom: {
                 Exits: {
                     invisibleSpikeRoom: {
@@ -3445,15 +3526,15 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 138, y: 241, floor: "B2" },
                         Age: Age.ADULT,
-                        Order: 8,
+                        Order: 16,
                         LongDescription: "In the giant room, use a fire item to hit the frozen eye switch. This will spawn some platforms in the direction the eye is facing. Use them to get to the right side of the room. Once there, gather all the silver rupees to spawn the chest. Two of them are up high and requires the longshot.",
                         RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}],
                     },
-                    "Skulltula in Falling Ceiling Room": { 
+                    "Skulltula in Falling Spikes Room": { 
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 53, y: 237, floor: "B2" },
                         Age: Age.EITHER,
-                        Order: 9,
+                        Order: 17,
                         UseAdultAge: function() { 
                             return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
                         },
@@ -3462,53 +3543,65 @@ let MQDungeons = {
                             return Data.canGrabShortDistances(age) || Data.canStaircaseHover(age);
                         }
                     },
-                    "Bottom Chest in Falling Ceiling Room": {
+                    "Bottom Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 36, y: 213, floor: "B2" },
                         Age: Age.EITHER,
-                        Order: 10,
+                        Order: 18,
                         UseAdultAge: function() { 
                             return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
                         },
                         LongDescription: "This chest is in the first cell to the right in the falling spike room."
                     },
-                    "Top Switchless Chest in Falling Ceiling Room": {
+                    "Top Switchless Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 17, y: 239, floor: "B2" },
                         Age: Age.ADULT,
-                        Order: 11,
+                        Order: 19,
                         LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. The chest is in the southeast corner.",
                         CustomRequirement: function(age) {
                             return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
                         }
                     },
-                    "Top Switch Chest in Falling Ceiling Room": {
+                    "Top Switch Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 79, y: 209, floor: "B2" },
+                        MapInfo: { x: 76, y: 209, floor: "B2" },
                         Age: Age.ADULT,
-                        Order: 12,
+                        Order: 20,
                         LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. Press the switch to spawn the chest.",
+                        CustomRequirement: function(age) {
+                            return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
+                        }
+                    },
+                    "2 Upper Pots in Falling Spikes Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 82, y: 209, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 21,
+                        LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. The pots are above the hidden block's alcove.",
                         CustomRequirement: function(age) {
                             return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
                         }
                     }
                 }
             },
-
             invisibleSpikeRoom: {
                 Exits: {
+                    rightSideOfGiantRoom: {
+                        Map: "Shadow Temple",
+                        LockedDoor: "Locked Door in Giant Room"
+                    },
                     leftOfInvisibleSpikeRoom: {
                         Age: Age.ADULT,
                         RequiredItems: [Items.HOOKSHOT]
                     },
-
-                    windHallway: {
+                    windHallWayTop: {
                         Map: "Shadow Temple",
                         LockedDoor: "Locked Door in Invisible Spike Room",
                         RequiredItems: [Items.HOOKSHOT, Equipment.HOVER_BOOTS],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.shadowNoIronBoots || Equipment.IRON_BOOTS.playerHas;
-                        }
                     }
                 },
 
@@ -3517,7 +3610,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 155, y: 63, floor: "B2" },
                         Age: Age.EITHER,
-                        Order: 13,
+                        Order: 23,
                         UseAdultAge: function() { 
                             return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
                         },
@@ -3525,7 +3618,6 @@ let MQDungeons = {
                     }
                 }
             },
-
             leftOfInvisibleSpikeRoom: {
                 Exits: {},
                 ItemLocations: {
@@ -3533,15 +3625,28 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 68, y: 68, floor: "B2" },
                         Age: Age.ADULT,
-                        Order: 14,
+                        Order: 24,
                         LongDescription: "Gather all the rupees in the invisible spike room. You'll need your hookshot. There are several invislbe targets on the walls you need to use as well. Once done, enter the room that opens and kill all the Stalfos to spawn the chest."
                     }
                 }
             },
-
-            windHallway: {
+            windHallWayTop: {
                 Exits: {
                     invisibleSpikeRoom: {
+                        Map: "Shadow Temple",
+                        LockedDoor: "Locked Door in Invisible Spike Room",
+                    },
+                    windHallway: {
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.shadowNoIronBoots || Equipment.IRON_BOOTS.playerHas;
+                        }
+                    }
+                },
+                ItemLocations: {}
+            },
+            windHallway: {
+                Exits: {
+                    windHallWayTop: {
                         RequiredItems: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.shadowNoIronBoots || Equipment.IRON_BOOTS.playerHas;
@@ -3558,50 +3663,84 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 350, y: 193, floor: "B1" },
                         Age: Age.ADULT,
-                        Order: 15,
+                        Order: 26,
                         LongDescription: "Go through the door at the top of the invisible spike room. You may need hover boots if the clear platforms are there. Navigate through the wind hallway all the way to the door. The skulltula is in plain sight in this room."
                     },
                     "Invisible Chest at End of Wind Hallway": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 344, y: 199, floor: "B1" },
                         Age: Age.ADULT,
-                        Order: 16,
+                        Order: 27,
                         LongDescription: "In the room at the end of the wind hallway, there's an invisible chest in the upper right corner."
+                    },
+                    "2 Flying Pots in Gibdo Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 302, y: 142, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 28,
+                        LongDescription: "In the big part of the wind hallway, go through the invisible wall on the left side. You may need to use the wind to your advantage. The pots will fly at you as you approach the back of the room."
+                    },
+                    "2 Pots in Gibdo Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 302, y: 152, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 29,
+                        LongDescription: "In the big part of the wind hallway, go through the invisible wall on the left side. You may need to use the wind to your advantage. The pots are next to the gibdos."
                     },
                     "Chest in Gibdo Room by Wind Hallway": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 301, y: 148, floor: "B1" },
                         Age: Age.ADULT,
-                        Order: 17,
+                        Order: 30,
                         LongDescription: "In the big part of the wind hallway, go through the invisible wall on the left side. You may need to use the wind to your advantage. Kill the Gibdos to spawn the chest."
                     },
                     "Hidden Chest in Gibdo Room by Wind Hallway": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 309, y: 158, floor: "B1" },
                         Age: Age.ADULT,
-                        Order: 18,
+                        Order: 31,
                         LongDescription: "In the Gibdo room, bomb the rubble to your right to get to this chest."
                     },
                     "Skulltula in Gibdo Room by Wind Hallway": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 294, y: 139, floor: "B1" },
                         Age: Age.ADULT,
-                        Order: 19,
+                        Order: 32,
                         LongDescription: "In the Gibdo room, bomb the rubble at the back to get to this skulltula."
                     }
                 }
             },
-
             boatRoom: {
                 Exits: {
-                    windHallway: {},
+                    windHallway: {
+                        Map: "Shadow Temple",
+                        LockedDoor: "Locked Door After Fans"
+                    },
                     endOfBoatRide: {
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
                     }
                 },
-                ItemLocations: {}
+                ItemLocations: {
+                    "2 Hearts in Boat Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Hearts",
+                        MapInfo: { x: 280, y: 114, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 34,
+                        LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole.<br/><br/>Play scarecrow's song from the boat and longshot it to get to the platform with the hearts.",
+                        RequiredSongs: [Songs.SCARECROWS_SONG],
+                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                    }
+                }
             },
-
             endOfBoatRide: {
                 Exits: {
                     acrossChasm: {
@@ -3611,26 +3750,33 @@ let MQDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
+                    "2 Pots on Boat Side of Chasm": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 135, y: 104, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 35,
+                        LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across.<br/><br/>The pots are near where the statue falls to form the bridge."
+                    },
                     "Skulltula in Chasm": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 140, y: 104, floor: "B1" },
                         Age: Age.ADULT,
-                        Order: 20,
+                        Order: 36,
                         LongDescription: "Navigate to the boat room - this is the room after the Gibdo room by the wind hallway. Get to the boat by pushing the block, or hookshotting up the ladder. Play Zelda's Lullaby to move the boat to the other area. The skulltula is on the wall to the left of where you create the bridge.",
                         IsAtShortDistance: true 
                     }
                 }
             },
-
             acrossChasm: {
                 Exits: {
                     invisibleWallRoom: {
                         RequiredSongs: [Songs.SONG_OF_TIME],
                         RequiredItems: [Items.FAIRY_BOW, {item: Items.HOOKSHOT, upgradeString: "2"}]
                     },
-
                     bossRoom: {
                         CustomRequirement: function(age) {
                             if (!hasBossKey("Shadow Temple")) { return false; }
@@ -3638,66 +3784,117 @@ let MQDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
+                    "2 Pots by Boss Antechamber Entrance": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 132, y: 128, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 37,
+                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. These pots are by the boss antechamber entrance."
+                    },
+                    "Heart on Pillar Across Chasm": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapInfo: { x: 125, y: 124, floor: "B1" },
+                        MapImageName: "Recovery Heart",
+                        Age: Age.ADULT,
+                        Order: 38,
+                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Climb up the Song of Time block to gain access to the heart."
+                    },
                     "Skullula Before Boss": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 106, y: 193, floor: "B1" },
                         Age: Age.ADULT,
-                        Order: 25,
+                        Order: 48,
                         LongDescription: "Navigate across the chasm you arrive at after taking the boat. Enter the door on the other side. The skulltula is on the back wall. You'll need to navigate around the room's invisible floors to get to it."
                     }
                 }
             },
-
             invisibleWallRoom: {
                 Exits: {
-                    woodSpikeRoom: {
+                    afterBurningSpikes: {
                         LockedDoor: "Locked Door in Invisible Wall Room",
                         Map: "Shadow Temple",
                         RequiredItems: [Equipment.MAGIC, Items.DINS_FIRE]
                     }
                 },
-
                 ItemLocations: {
+                    "2 Hearts on Chasm Longshot Platform": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Hearts",
+                        MapInfo: { x: 120, y: 116, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 39,
+                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the hearts."
+                    },
+                    "Pot in Spike Wall Room": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 89, y: 51, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 41,
+                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>Navigate to the room to your right (the north one). The pot is in front of you."
+                    },
                     "Freestanding Item in Triple Skull Room": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 31, y: 99, floor: "B1" },
                         Age: Age.ADULT,
-                        Order: 23,
-                        LongDescription: "In the invisible maze, navigate to the west room. The item is behind the triple skulls."
+                        Order: 44,
+                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>In the invisible maze, navigate to the west room. The item is behind the triple skulls."
+                    },
+                    "9 Rupees in Triple Skull Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "9 Skull Rupees",
+                        MapInfo: { x: 38, y: 99, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 45,
+                        LongDescription: "From the room with invisible walls, enter the room that's straight ahead of you (the west room). Use the bomb flower or your own bombs to blow up all three skulls to spawn the 9 items.",
+                        RequiredItems: [Equipment.STRENGTH, Items.BOMB]
                     },
                     "Bomb Flower Room Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 89, y: 144, floor: "B1" },
                         Age: Age.ADULT,
-                        Order: 24,
-                        LongDescription: "In the invisible maze, navigate to the south room. Use explosives to make Dead Hand spawn. Kill him to spawn the chest.",
+                        Order: 46,
+                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>In the invisible maze, navigate to the south room. Use explosives to make Dead Hand spawn. Kill him to spawn the chest.",
                         NeedsExplosivesOrBombFlower: true
+                    },
+                    "2 Pots in Bomb Flower Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 89, y: 131, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 47,
+                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>In the invisible maze, navigate to the south room. The pots are along the back walls, in the corners."
                     }
                 }
             },
-
-            woodSpikeRoom: {
+            afterBurningSpikes: {
                 Exits: {},
                 ItemLocations: {
                     "Left Chest in Wooden Spike Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 70, y: 52, floor: "B1" },
                         Age: Age.ADULT,
-                        Order: 21,
+                        Order: 42,
                         LongDescription: "Ride the boat to the other side. Now, shoot the bomb flowers to create a bridge. Play the Song of Time at the block and shoot the eye switch. Next, play the song again to respawn the block. Now you can shoot the hookshot target on the upper wall and hit the switch to open the door to the invisible maze.<br/><br/>Navigate to the north room and open the locked door. Use Din's Fire to get rid of the spikes. The chest is on the left."
                     },
                     "Right Chest in Wooden Spike Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 108, y: 52, floor: "B1" },
                         Age: Age.ADULT,
-                        Order: 22,
+                        Order: 43,
                         LongDescription: "Ride the boat to the other side. Now, shoot the bomb flowers to create a bridge. Play the Song of Time at the block and shoot the eye switch. Next, play the song again to respawn the block. Now you can shoot the hookshot target on the upper wall and hit the switch to open the door to the invisible maze.<br/><br/>Navigate to the north room and open the locked door. Use Din's Fire to get rid of the spikes. The chest is on the right."
                     }
                 }
             },
-
             bossRoom: {
                 Exits: {
                     "Boss Entrance": {

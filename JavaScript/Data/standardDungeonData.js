@@ -3259,7 +3259,7 @@ let StandardDungeons = {
                             return age === Age.ADULT || Data.canGrabShortDistances(age);
                         }
                     },
-                    "2 Lower Pots in Invisible Scythe Room": {
+                    "2 Lower Pots in Falling Spikes Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -3272,7 +3272,7 @@ let StandardDungeons = {
                         },
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. The pots are to the right of the falling spikes, guarded by the spike trap."
                     },
-                    "Skulltula in Ceiling Spike Room": {
+                    "Skulltula in Falling Spikes Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 52, y: 238, floor: "B2" },
                         Age: Age.EITHER,
@@ -3285,7 +3285,7 @@ let StandardDungeons = {
                             return Data.canGrabShortDistances(age) || Data.canStaircaseHover(age);
                         }
                     },
-                    "Bottom Chest in Ceiling Spike Room": {
+                    "Bottom Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 37, y: 212, floor: "B2" },
                         Age: Age.EITHER,
@@ -3295,7 +3295,7 @@ let StandardDungeons = {
                         },
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. The chest is on the second cage to the right passed the ceiling spikes. To pass them, you can either use good timing, or pull the block out of the wall to the right (use the lens to find it) to act as an umbrella - assuming you have a strength upgrade."
                     },
-                    "Top Switchless Chest in Ceiling Spike Room": {
+                    "Top Switchless Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 16, y: 239, floor: "B2" },
                         Age: Age.ADULT,
@@ -3305,7 +3305,7 @@ let StandardDungeons = {
                             return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
                         }
                     },
-                    "Top Switch Chest in Ceiling Spike Room": {
+                    "Top Switch Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 76, y: 209, floor: "B2" },
                         Age: Age.ADULT,
@@ -3315,7 +3315,7 @@ let StandardDungeons = {
                             return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
                         }
                     },
-                    "2 Upper Pots in Invisible Scythe Room": {
+                    "2 Upper Pots in Falling Spikes Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -3509,15 +3509,14 @@ let StandardDungeons = {
                     },
                     "Pot in Spike Wall Room": {
                         ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 125, y: 124, floor: "B1" },
-                        MapImageName: "Recovery Heart",
+                        MapInfo: { x: 89, y: 51, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 34,
                         LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room to your right. The pot is in front of you."
                     },
                     "Chest in Spike Wall Room": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 89, y: 51, floor: "B1" },
+                        MapInfo: { x: 70, y: 52, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 35,
                         LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room to your right. Cast Din's Fire to take out the spike walls to clear the path to the chest.",
