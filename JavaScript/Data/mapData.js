@@ -6,7 +6,6 @@ let MapLocations = {
             main: {
                 Exits: {
                     afterMido: {
-                        Name: "afterMido",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT || !Settings.RandomizerSettings.closedDeku) { return true; }
                             return (Equipment.KOKIRI_SWORD.playerHas && Equipment.DEKU_SHIELD.playerHas) || 
@@ -48,14 +47,12 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Kokiri Sword": {
-                        Name: "Kokiri Sword",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 142, y: 290 },
                         Age: Age.CHILD,
                         LongDescription: "This is the prize at the end of the boulder maze, though the Hole of Z."
                     },
                     "Skulltula in Soil": {
-                        Name: "Skulltula in Soil",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 284, y: 139 },
                         Age: Age.CHILD,
@@ -63,7 +60,6 @@ let MapLocations = {
                         NeedsBottle: true
                     },
                     "Skulltula on Know-it-all House": {
-                        Name: "Skulltula on Know-it-all House",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 70, y: 180 },
@@ -71,7 +67,6 @@ let MapLocations = {
                         LongDescription: "Look on the side of the Know-it-all Brothers' house at night. You can get the token with a backflip if you don't have a Boomerang."
                     },
                     "Skulltula on the House of Twins": {
-                        Name: "Skulltula on the House of Twins",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 261, y: 233 },
@@ -83,7 +78,6 @@ let MapLocations = {
                         }
                     },
                     "*Plant Bean by Kokiri Shop": {
-                        Name: "*Plant Bean by Kokiri Shop",
                         ItemGroup: ItemGroups.NON_ITEM,
                         IsBean: true,
                         MapInfo: { x: 284, y: 139 },
@@ -91,7 +85,6 @@ let MapLocations = {
                         LongDescription: "This is the bean spot by the Kokiri Shop. Used to get the rupees above it."
                     },
                     "Move Mido": {
-                        Name: "Move Mido",
                         ItemGroup: ItemGroups.NON_ITEM,
                         RequiredToAppear: function()  { return Settings.RandomizerSettings.closedDeku; },
                         MapInfo: { x: 300, y: 175 },
@@ -100,7 +93,6 @@ let MapLocations = {
                         RequiredItems: [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD]
                     },
                     "Gossip Stone by Lost Woods": {
-                        Name: "Gossip Stone by Lost Woods",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 102, y: 37 },
@@ -108,7 +100,6 @@ let MapLocations = {
                         LongDescription: "This stone is by the lost woods entrance at the top area of the forest.",
                     },
                     "Blue Rupee Behind Midos": {
-                        Name: "Blue Rupee Behind Midos",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Blue Rupee",
                         MapInfo: { x: 135, y: 95 },
@@ -116,7 +107,6 @@ let MapLocations = {
                         LongDescription: "This item is behind Mido's House.",
                     },
                     "Close Maze Blue Rupee": {
-                        Name: "Close Maze Blue Rupee",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Blue Rupee",
                         MapInfo: { x: 72, y: 278 },
@@ -124,7 +114,6 @@ let MapLocations = {
                         LongDescription: "This item is to your right when you go in the maze.",
                     },
                     "Far Maze Blue Rupee": {
-                        Name: "Far Maze Blue Rupee",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Blue Rupee",
                         MapInfo: { x: 78, y: 292 },
@@ -132,7 +121,6 @@ let MapLocations = {
                         LongDescription: "Go in the maze and follow the right wall to this item.",
                     },
                     "3 Hearts on Saria's House": {
-                        Name: "3 Hearts on Saria's House",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
@@ -142,7 +130,6 @@ let MapLocations = {
                         LongDescription: "Climb up the spiral to Saria's House to get to these items."
                     },
                     "2 Green Rupees in Grass by Know-it-All": {
-                        Name: "2 Green Rupees in Grass by Know-it-All",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
@@ -152,7 +139,6 @@ let MapLocations = {
                         LongDescription: "Search the grass near the Know-it-All Brothers house to find these items."
                     },
                     "2 Green Rupees in Grass by Mido's": {
-                        Name: "2 Green Rupees in Grass by Mido's",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
@@ -162,7 +148,6 @@ let MapLocations = {
                         LongDescription: "Search the grass near the Mido's house to find these items."
                     },
                     "Rupee Circle Above Shop": {
-                        Name: "Rupee Circle Above Shop",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
@@ -181,9 +166,7 @@ let MapLocations = {
 
             afterMido: {
                 Exits: {
-                    main: {
-                        Name: "main"
-                    },
+                    main: {},
                     "Deku Tree Entrance": {
                         OwExit: OwExits["Kokiri Forest"]["Deku Tree Entrance"]
                     }
@@ -191,7 +174,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Gossip Stone Left of Deku Tree": {
-                        Name: "Gossip Stone Left of Deku Tree",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 252, y: 13 },
@@ -200,7 +182,6 @@ let MapLocations = {
                         Region: "afterMido"
                     },
                     "Gossip Stone Right of Deku Tree": {
-                        Name: "Gossip Stone Right of Deku Tree",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 303, y: 94 },
@@ -220,15 +201,12 @@ let MapLocations = {
             firstHalf: {
                 Exits: {
                     secondHalf: {
-                        Name: "secondHalf",
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return true; }
                             return Settings.GlitchesToAllow.midoSkip || Data.canPlaySong(Songs.SARIAS_SONG);
                         }
                     },
-                    kokiriForestWarp: {
-                        Name: "kokiriForestWarp"
-                    },
+                    kokiriForestWarp: {},
                     "Goron City": {
                         OwExit: OwExits["Lost Woods"]["Goron City"]
                     },
@@ -252,7 +230,6 @@ let MapLocations = {
     
                 ItemLocations: {
                     "Target Shooting Prize": {
-                        Name: "Target Shooting Prize",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 219, y: 172 },
                         Age: Age.CHILD,
@@ -260,7 +237,6 @@ let MapLocations = {
                         RequiredItems: [Items.FAIRY_SLINGSHOT]
                     },
                     "Skull Kid's Gift": {
-                        Name: "Skull Kid's Gift",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 96, y: 172 },
                         Age: Age.CHILD,
@@ -269,7 +245,6 @@ let MapLocations = {
                         DifficultOcarinaItems: true
                     },
                     "Ocarina Memory Game": {
-                        Name: "Ocarina Memory Game",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 240, y: 186 },
                         Age: Age.CHILD,
@@ -278,7 +253,6 @@ let MapLocations = {
                         DifficultOcarinaItems: true
                     },
                     "Skulltula in Soil by Bridge": {
-                        Name: "Skulltula in Soil by Bridge",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 84, y: 222 },
                         Age: Age.CHILD,
@@ -286,7 +260,6 @@ let MapLocations = {
                         NeedsBottle: true
                     },
                     "Scrub by Bridge": {
-                        Name: "Scrub by Bridge",
                         ItemGroup: ItemGroups.SCRUB,
                         MapInfo: { x: 91, y: 273 },
                         ScrubSanityNotRequired: true, // Deku stick upgrade
@@ -294,7 +267,6 @@ let MapLocations = {
                         LongDescription: "From the Kokiri Forest entrance, go left and follow the path to its end. You'll find the scrub at the end."
                     },
                     "Sell Skull Mask": {
-                        Name: "Sell Skull Mask",
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 88, y: 172 },
                         Age: Age.CHILD,
@@ -303,7 +275,6 @@ let MapLocations = {
                         LongDescription: "First, play Saria's song to the Skull kid. Next, Talk to him while wearing the Skull Mask to sell it to him - this unlocks the Spooky Mask. Recommended to do this AFTER you get the forest stage item.",
                     },
                     "Gossip Stone by Bridge Scrub": {
-                        Name: "Gossip Stone by Bridge Scrub",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 80, y: 281 },
@@ -311,7 +282,6 @@ let MapLocations = {
                         LongDescription: "This stone is by the business scrub by the bridge.",
                     },
                     "*Plant Bean by Bridge": {
-                        Name: "*Plant Bean by Bridge",
                         ItemGroup: ItemGroups.NON_ITEM,
                         IsBean: true,
                         MapInfo: { x: 84, y: 222 },
@@ -319,7 +289,6 @@ let MapLocations = {
                         LongDescription: "This is the bean spot by the bridge connecting Kokiri Forest and Hyrule Field. It can be used to get on the bridge."
                     },
                     "8 Green Rupees in Water": {
-                        Name: "8 Green Rupees in Water",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
@@ -330,7 +299,6 @@ let MapLocations = {
                         LongDescription: "In the water leading to Zora's River - dive or use the boomerang to get these items."
                     },
                     "Blue Rupee Under Rock": {
-                        Name: "Blue Rupee Under Rock",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Blue Rupee",
                         MapInfo: { x: 265, y: 28 },
@@ -340,23 +308,20 @@ let MapLocations = {
                             return Data.canBlastOrSmash(age) ||
                                 (Settings.GlitchesToAllow.boomerangThroughWalls && Data.canUseBoomerang(age));
                         }
-                    },
+                    }
                 }
             },
 
             secondHalf: {
                 Exits: {
                     firstHalf: {
-                        Name: "firstHalf",
                         CustomRequirement: function(age) {
                             return age === Age.CHILD || 
                                 Data.canPlaySong(Songs.SARIAS_SONG) ||
                                 Data.canMegaFlip(age);
                         }
                     },
-                    kokiriForestWarp: {
-                        Name: "kokiriForestWarp"
-                    },
+                    kokiriForestWarp: {},
                     "Sacred Forest Meadow": {
                         OwExit: OwExits["Lost Woods"]["Sacred Forest Meadow"]
                     },
@@ -372,7 +337,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Skulltula in Soil by Forest Stage": {
-                        Name: "Skulltula in Soil by Forest Stage",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 187, y: 66 },
                         Age: Age.CHILD,
@@ -380,7 +344,6 @@ let MapLocations = {
                         NeedsBottle: true
                     },
                     "Skulltula by Forest Stage": {
-                        Name: "Skulltula by Forest Stage",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 188, y: 56 },
@@ -393,21 +356,18 @@ let MapLocations = {
                         }
                     },
                     "Right Scrub by Forest Stage": {
-                        Name: "Right Scrub by Forest Stage",
                         ItemGroup: ItemGroups.SCRUB,
                         MapInfo: { x: 194, y: 72 },
                         Age: Age.CHILD,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. This is the right scrub in this room."
                     },
                     "Left Scrub by Forest Stage": {
-                        Name: "Left Scrub by Forest Stage",
                         ItemGroup: ItemGroups.SCRUB,
                         MapInfo: { x: 184, y: 101 },
                         Age: Age.CHILD,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. This is the left scrub in this room."
                     },
                     "Front Scrub in Grotto Near the Sacred Forest Meadow": {
-                        Name: "Front Scrub in Grotto Near the Sacred Forest Meadow",
                         ItemGroup: ItemGroups.SCRUB,
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances && !Settings.RandomizerSettings.scrubSanity; },
                         MapInfo: { x: 202, y: 27 },
@@ -417,7 +377,6 @@ let MapLocations = {
                         NeedToBlastOrSmash: true
                     },
                     "*Plant Bean by Forest Stage": {
-                        Name: "*Plant Bean by Forest Stage",
                         ItemGroup: ItemGroups.NON_ITEM,
                         IsBean: true,
                         MapInfo: { x: 187, y: 66 },
@@ -430,7 +389,6 @@ let MapLocations = {
             kokiriForestWarp: {
                 Exits: {
                     firstHalf: {
-                        Name: "firstHalf",
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return true; }
 
@@ -480,7 +438,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Saria's Gift": {
-                        Name: "Saria's Gift",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 198, y: 149 },
                         Age: Age.EITHER,
@@ -513,7 +470,6 @@ let MapLocations = {
             main: {
                 Exits: {
                     afterGate: {
-                        Name: "afterGate",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) { return true; }
                             return Data.hasDamagingItem(age);
@@ -533,9 +489,7 @@ let MapLocations = {
 
             afterGate: {
                 Exits: {
-                    main: {
-                        Name: "main"
-                    },
+                    main: {},
                     "Forest Temple Entrance": {
                         OwExit: OwExits["Sacred Forest Meadow"]["Forest Temple Entrance"]
                     },
@@ -554,7 +508,6 @@ let MapLocations = {
                 
                 ItemLocations: {
                     "Skulltula on Wall": {
-                        Name: "Skulltula on Wall",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 219, y: 144 },
@@ -564,7 +517,6 @@ let MapLocations = {
                         RequiredItems: [Items.HOOKSHOT]
                     },
                     "Saria's Song": {
-                        Name: "Saria's Song",
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 200, y: 27 },
                         Age: Age.CHILD,
@@ -573,7 +525,6 @@ let MapLocations = {
                         RequiredItems: [{ item: Items.MASK_SLOT, upgradeString: "3" }]
                     },
                     "Minuet of Forest": {
-                        Name: "Minuet of Forest",
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 190, y: 42 },
                         Age: Age.ADULT,
@@ -581,7 +532,6 @@ let MapLocations = {
                         LongDescription: "Make your way to the end of the maze to get this item."
                     },
                     "Gossip Stone by Forest Temple": {
-                        Name: "Gossip Stone by Forest Temple",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 176, y: 53 },
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
@@ -590,7 +540,6 @@ let MapLocations = {
                         LongDescription: "This stone is in the southwest corner of the area the forest temple is in."
                     },
                     "East Gossip Stone on Maze": {
-                        Name: "East Gossip Stone on Maze",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 207, y: 228 },
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
@@ -599,7 +548,6 @@ let MapLocations = {
                         LongDescription: "This stone is on top of the maze. It's the one that's more to the east."
                     },
                     "West Gossip Stone on Maze": {
-                        Name: "West Gossip Stone on Maze",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 149, y: 176 },
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
@@ -669,7 +617,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Ocarina of Time in Moat": {
-                        Name: "Ocarina of Time in Moat",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: {x: 207, y: 36},
                         Age: Age.CHILD,
@@ -681,7 +628,6 @@ let MapLocations = {
                         ]
                     },
                     "Sell Bunny Hood": {
-                        Name: "Sell Bunny Hood",
                         ItemGroup: ItemGroups.NON_ITEM,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 184, y: 145 },
@@ -726,7 +672,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Skulltula on Talon's House": {
-                        Name: "Skulltula on Talon's House",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 240, y: 67 },
@@ -735,7 +680,6 @@ let MapLocations = {
                         IsAtShortDistance: true
                     },
                     "Skulltula in Tree by Entrance": {
-                        Name: "Skulltula in Tree by Entrance",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 280, y: 100 },
                         Age: Age.CHILD,
@@ -743,7 +687,6 @@ let MapLocations = {
                         OverrideItemGroupCondition: true
                     },
                     "Skulltula on Rain Shed": {
-                        Name: "Skulltula on Rain Shed",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 233, y: 231  },
@@ -752,7 +695,6 @@ let MapLocations = {
                         OverrideItemGroupCondition: true
                     },
                     "Skulltula on Southwest Wall": {
-                        Name: "Skulltula on Southwest Wall",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 44, y: 214 },
@@ -761,7 +703,6 @@ let MapLocations = {
                         IsAtShortDistance: true
                     },
                     "Epona's Song": {
-                        Name: "Epona's Song",
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 174, y: 170 },
                         Age: Age.CHILD,
@@ -773,7 +714,6 @@ let MapLocations = {
                         }
                     },
                     "4 Pots by Entrance": {
-                        Name: "4 Pots by Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -783,7 +723,6 @@ let MapLocations = {
                         LongDescription: "As Child, these pots are on the wall near the stable door."
                     },
                     "3 Pots in Rain Shed": {
-                        Name: "3 Pots in Rain Shed",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -793,7 +732,6 @@ let MapLocations = {
                         LongDescription: "As Child, these pots are in the rain shed inside the horse enclosure."
                     },
                     "Crate by Talon's House": {
-                        Name: "Crate by Talon's House",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 250, y: 98 },
                         Age: Age.CHILD,
@@ -834,7 +772,6 @@ let MapLocations = {
             main: {
                 Exits: {
                     alley: {
-                        Name: "alley",
                         Age: Age.CHILD
                     },
                     "Market Entrance": {
@@ -869,7 +806,6 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "2 Crates by Bazaar": {
-                        Name: "2 Crates by Bazaar",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsItemLocationGroup: true,
@@ -880,7 +816,6 @@ let MapLocations = {
                         LongDescription: "These crates are on either side of the bazaar door. They only drop items at night."
                     },
                     "2 Crates by Archery": {
-                        Name: "2 Crates by Archery",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsItemLocationGroup: true,
@@ -895,9 +830,7 @@ let MapLocations = {
 
             alley: {
                 Exits: {
-                    main: {
-                        Name: "main"
-                    },
+                    main: {},
 
                     // Interiors & Grottos
                     "Bombchu Shop Entrance": {
@@ -911,7 +844,6 @@ let MapLocations = {
                 ItemLocations: {
                     "Reward from Returning Dog": {
                         // Not marked as interior because it's not included in the entrance shuffle currently
-                        Name: "Reward from Returning Dog",
                         ItemGroup: ItemGroups.GIFT,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 104, y: 230 },
@@ -920,7 +852,6 @@ let MapLocations = {
                     },
                     "Crate in Dog Lady House": {
                         // Not marked as interior because it's not included in the entrance shuffle currently
-                        Name: "Crate in Dog Lady House",
                         ItemGroup: ItemGroups.CRATE,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 96, y: 223 },
@@ -929,7 +860,7 @@ let MapLocations = {
                     }
                 }
             }
-		},
+		}
     },
     
     "Temple of Time": {
@@ -950,7 +881,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Right Gossip Stone": {
-                        Name: "Right Gossip Stone",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 102, y: 242 },
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
@@ -958,7 +888,6 @@ let MapLocations = {
                         LongDescription: "This is the stone that's all the way to the right."
                     },
                     "Center Right Gossip Stone": {
-                        Name: "Center Right Gossip Stone",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 102, y: 219 },
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
@@ -966,7 +895,6 @@ let MapLocations = {
                         LongDescription: "This is the stone that's one to the left of the rightmost one."
                     },
                     "Center Left Gossip Stone": {
-                        Name: "Center Left Gossip Stone",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 102, y: 197 },
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
@@ -974,7 +902,6 @@ let MapLocations = {
                         LongDescription: "This is the stone that's one to the right of the leftmost one."
                     },
                     "Left Gossip Stone": {
-                        Name: "Left Gossip Stone",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 102, y: 172 },
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
@@ -1016,21 +943,18 @@ let MapLocations = {
                 ItemLocations: {
                     //-- Hyrule castle
                     "Gift from Malon": {
-                        Name: "Gift from Malon",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 123, y: 248, floor: "HYR" },
                         Age: Age.CHILD,
                         LongDescription: "Malon is waiting by the vines to the right. If she isn't there, leave the map and come back. Talk to her to receive an item."
                     },
                     "Skulltula in Tree": {
-                        Name: "Skulltula in Tree",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 97, y: 245, floor: "HYR" },
                         Age: Age.CHILD,
                         LongDescription: "Roll into the first tree to set this skulltula free."
                     },
                     "Wake up Talon": {
-                        Name: "Wake up Talon",
                         ItemGroup: ItemGroups.NON_ITEM,
                         Age: Age.CHILD,
                         MapInfo: { x: 193, y: 38, floor: "HYR" },
@@ -1038,7 +962,6 @@ let MapLocations = {
                         RequiredItems: [Items.MASK_SLOT]
                     },
                     "Zelda's Lullaby": {
-                        Name: "Zelda's Lullaby",
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 167, y: 33, floor: "HYR" },
                         Age: Age.CHILD,
@@ -1046,14 +969,12 @@ let MapLocations = {
                         RequiredItems: [Items.MASK_SLOT]
                     },
                     "Gossip Stone by Vines": {
-                        Name: "Gossip Stone by Vines",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 137, y: 269, floor: "HYR" },
                         Age: Age.CHILD,
                         LongDescription: "This stone near the top of the vines."
                     },
                     "Gossip Stone by Climbable Stones": {
-                        Name: "Gossip Stone by Climbable Stones",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 72, y: 99, floor: "HYR" },
                         Age: Age.CHILD,
@@ -1062,7 +983,6 @@ let MapLocations = {
 
                     //-- Ganon's castle
                     "Skulltula on Broken Arch": {
-                        Name: "Skulltula on Broken Arch",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 258, y: 171, floor: "GAN" },
                         Age: Age.ADULT,
@@ -1080,7 +1000,6 @@ let MapLocations = {
             main: {
                 Exits: {
                     beyondGate: {
-                        Name: "beyondGate",
                         CustomRequirement: function(age) {
                             return age === Age.ADULT || 
                                 Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter") || 
@@ -1144,7 +1063,6 @@ let MapLocations = {
                 
                 ItemLocations: {
                     "Bottle from Cucco Collection": {
-                        Name: "Bottle from Cucco Collection",
                         ItemGroup: ItemGroups.GIFT,
                         Time: function() { return Time.DAY; },
                         MapInfo: { x: 210, y: 244 },
@@ -1152,14 +1070,12 @@ let MapLocations = {
                         LongDescription: "This is the prize that Anju gives you after collecting all 7 cuccos in the pen. Note that leaving the map will keep your progress."
                     },
                     "Gift from the Guy on the Roof": {
-                        Name: "Gift from the Guy on the Roof",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 212, y: 124 },
                         Age: Age.EITHER,
                         LongDescription: "The guy on the roof of the house gives you an item. To get this as a child, climb the giant watchtower, position yourself at the upper left corner, then sidehop left without holding any direction. As an adult, you can either hookshot to the roof from the fence by the windmill, or do a jump to the potion shop roof from the ledge leading to Death Mountain."
                     },
                     "Gift From Anju": {
-                        Name: "Gift From Anju",
                         ItemGroup: ItemGroups.GIFT,
                         Time: function() { return Time.DAY; },
                         MapInfo: { x: 210, y: 240 },
@@ -1167,7 +1083,6 @@ let MapLocations = {
                         LongDescription: "Simply talk to Anju (the cucco lady) as adult to get this."
                     },
                     "Show Guard Letter": {
-                        Name: "Show Guard Letter",
                         ItemGroup: ItemGroups.NON_ITEM,
                         RequiredToAppear: function() {
                             return !Settings.RandomizerSettings.openKakariko;
@@ -1178,7 +1093,6 @@ let MapLocations = {
                         LongDescription: "Show the guard Zelda's Letter. This unlocks the mask trading sequence.",
                     },
                     "Sell Keaton Mask": {
-                        Name: "Sell Keaton Mask",
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 123, y: 41 },
                         Age: Age.CHILD,
@@ -1186,7 +1100,6 @@ let MapLocations = {
                         LongDescription: "Talk to the guard while wearing the Keaton mask to sell it to him - this unlocks the Skull Mask.",
                     },
                     "Skulltula in Tree": {
-                        Name: "Skulltula in Tree",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 97, y: 179 },
@@ -1195,7 +1108,6 @@ let MapLocations = {
                         OverrideItemGroupCondition: true
                     },
                     "Skulltula on House of Skulltulas": {
-                        Name: "Skulltula on House of Skulltulas",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 121, y: 218 },
@@ -1204,7 +1116,6 @@ let MapLocations = {
                         OverrideItemGroupCondition: true
                     },
                     "Skulltula at Construction Site": {
-                        Name: "Skulltula at Construction Site",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 191, y: 201 },
@@ -1213,7 +1124,6 @@ let MapLocations = {
                         OverrideItemGroupCondition: true
                     },
                     "Skulltula on Bazaar": {
-                        Name: "Skulltula on Bazaar",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 96, y: 75 },
@@ -1222,7 +1132,6 @@ let MapLocations = {
                         OverrideItemGroupCondition: true
                     },
                     "Skulltula on Watchtower": {
-                        Name: "Skulltula on Watchtower",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 169, y: 111 },
@@ -1234,7 +1143,6 @@ let MapLocations = {
                         }
                     },
                     "Skulltula on Impa's Roof": {
-                        Name: "Skulltula on Impa's Roof",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 172, y: 260 },
@@ -1243,7 +1151,6 @@ let MapLocations = {
                         RequiredItems: [Items.HOOKSHOT]
                     },
                     "Nocturne of Shadow": {
-                        Name: "Nocturne of Shadow",
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 35, y: 209 },
                         Age: Age.ADULT,
@@ -1251,7 +1158,6 @@ let MapLocations = {
                         RequiredMedallions: [Medallions.FOREST_MEDALLION, Medallions.FIRE_MEDALLION, Medallions.WATER_MEDALLION]
                     },
                     "3 Pots Near Impa's House": {
-                        Name: "3 Pots Near Impa's House",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -1261,7 +1167,6 @@ let MapLocations = {
                         LongDescription: "These pots are next to the door to Impa's house."
                     },
                     "3 Pots Near Watchtower": {
-                        Name: "3 Pots Near Watchtower",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -1271,7 +1176,6 @@ let MapLocations = {
                         LongDescription: "These pots are near the ladder to the watchtower."
                     },
                     "3 Pots Near Bazaar": {
-                        Name: "3 Pots Near Bazaar",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -1281,7 +1185,6 @@ let MapLocations = {
                         LongDescription: "These pots are near the Bazaar entrance close to Death Mountain Trail."
                     },
                     "2 Pots Near Granny's Potion Shop": {
-                        Name: "2 Pots Near Granny's Potion Shop",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -1291,14 +1194,12 @@ let MapLocations = {
                         LongDescription: "These pots are next to the door to Granny's Potion Shop in the enclosed area."
                     },
                     "Crate by Archery": {
-                        Name: "Crate by Archery",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 185, y: 192 },
                         Age: Age.ADULT,
                         LongDescription: "This crate is next to the entrance to the archery minigame."
                     },
                     "Crate Behind Potion Shop": {
-                        Name: "Crate Behind Potion Shop",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 249, y: 134 },
                         Age: Age.ADULT,
@@ -1309,9 +1210,7 @@ let MapLocations = {
 
             beyondGate: {
                 Exits: {
-                    main: {
-                        Name: "main"
-                    },
+                    main: {},
                     "Death Mountain Trail": {
                         OwExit: OwExits["Kakariko Village"]["Death Mountain Trail"]
                     }
@@ -1328,17 +1227,14 @@ let MapLocations = {
             main: {
                 Exits: {
                     top: {
-                        Name: "top",
                         CustomRequirement: function(age) {
                             return Data.canGetToGraveyardTopEarly(age);
                         }
                     },
                     royalFamilyTomb: {
-                        Name: "royalFamilyTomb",
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
                     },
                     shadowTemple: {
-                        Name: "shadowTemple",
                         CustomRequirement: function(age) {
                             return Data.canGetToGraveyardTopEarly(age);
                         }
@@ -1367,7 +1263,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Dampe's Heart-Pounding Graveyard Tour": {
-                        Name: "Dampe's Heart-Pounding Graveyard Tour",
                         ItemGroup: ItemGroups.FREESTANDING,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 184, y: 176 },
@@ -1375,7 +1270,6 @@ let MapLocations = {
                         LongDescription: "Get to the graveyard when it's barely night time. If you play the Sun's Song, make sure you do it where time passes, then quickly take the exit to Kakariko before it becomes too late. Simply talk to Dampe and pay him 10 rupees to get this item."
                     },
                     "Heart Piece in Crate": {
-                        Name: "Heart Piece in Crate",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 147, y: 81 },
                         Age: Age.EITHER,
@@ -1393,7 +1287,6 @@ let MapLocations = {
                         }
                     },
                     "Skulltula in Soil": {
-                        Name: "Skulltula in Soil",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 159, y: 91 },
                         Age: Age.CHILD,
@@ -1401,7 +1294,6 @@ let MapLocations = {
                         NeedsBottle: true
                     },
                     "Skulltula on Back Right Wall": {
-                        Name: "Skulltula on Back Right Wall",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 242, y: 264 },
@@ -1410,7 +1302,6 @@ let MapLocations = {
                         IsAtShortDistance: true
                     },
                     "Sell Spooky Mask": {
-                        Name: "Sell Spooky Mask",
                         ItemGroup: ItemGroups.NON_ITEM,
                         Time: function() { return Time.DAY; },
                         MapInfo: { x: 184, y: 145 },
@@ -1419,7 +1310,6 @@ let MapLocations = {
                         LongDescription: "Talk to the graveyard kid during the day while wearing the Spooky Mask to sell it to him - this unlocks the Bunny Hood.",
                     },
                     "*Plant Bean by Dampe's Grave": {
-                        Name: "*Plant Bean by Dampe's Grave",
                         ItemGroup: ItemGroups.NON_ITEM,
                         IsBean: true,
                         MapInfo: { x: 159, y: 91 },
@@ -1432,17 +1322,13 @@ let MapLocations = {
             top: {
                 DuplicateWarpSongPriority: 1,
                 Exits: {
-                    main: {
-                        Name: "main"
-                    },
+                    main: {},
                     royalFamilyTomb: {
-                        Name: "royalFamilyTomb",
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.unloadGrave;
                         }
                     },
                     shadowTemple: {
-                        Name: "shadowTemple",
                         RequiredItems: [Equipment.MAGIC, Items.DINS_FIRE]
                     },
                     "Nocturne Teleport Pad": {
@@ -1452,7 +1338,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Gossip Stone at Top Area": {
-                        Name: "Gossip Stone at Top Area",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 341, y: 125 },
@@ -1465,10 +1350,7 @@ let MapLocations = {
             royalFamilyTomb: {
                 ExcludeFromSpawnList: true,
                 Exits: {
-                    main: {
-                        Name: "main"
-                    },
-
+                    main: {},
                     "Royal Family's Tomb": {
                         OwExit: OwExits["Graveyard"]["Royal Family's Tomb"]
                     }
@@ -1479,9 +1361,7 @@ let MapLocations = {
             shadowTemple: {
                 ExcludeFromSpawnList: true,
                 Exits: {
-                    top: {
-                        Name: "top"
-                    },
+                    top: {},
                     "Shadow Temple Entrance": {
                         OwExit: OwExits["Graveyard"]["Shadow Temple Entrance"]
                     }
@@ -1501,7 +1381,6 @@ let MapLocations = {
             dampesGrave: {
                 Exits: {
                     windmill: {
-                        Name: "windmill",
                         CustomRequirement: function(age) {
                             return Data.canGetToWindmillFromDampe(age);
                         }
@@ -1512,7 +1391,6 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Hookshot Chest": {
-                        Name: "Hookshot Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 260, y: 247, floor: "DMP" },
                         Age: Age.EITHER,
@@ -1520,7 +1398,6 @@ let MapLocations = {
                         LongDescription: "This is the prize for completing the Dampe Race for the first time."
                     },
                     "Race Reward": {
-                        Name: "Race Reward",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 267, y: 245, floor: "DMP" },
                         Age: Age.EITHER,
@@ -1528,7 +1405,6 @@ let MapLocations = {
                         LongDescription: "This is the prize for completing the Dampe Race in less than one minute."
                     },
                     "3 Pots Left of Grave Entrance": {
-                        Name: "3 Pots Left of Grave Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -1538,7 +1414,6 @@ let MapLocations = {
                         LongDescription: "These pots are to the left of the spawn pad."
                     },
                     "3 Pots Right of Grave Entrance": {
-                        Name: "3 Pots Right of Grave Entrance",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -1548,7 +1423,6 @@ let MapLocations = {
                         LongDescription: "These pots are to the right of the spawn pad."
                     },
                     "Race Rupee 1": {
-                        Name: "Race Rupee 1",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 117, y: 182, floor: "DMP" },
@@ -1556,7 +1430,6 @@ let MapLocations = {
                         LongDescription: "From the start, follow the right wall to the rupee.",
                     },
                     "Race Rupee 2": {
-                        Name: "Race Rupee 2",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 125, y: 152, floor: "DMP" },
@@ -1564,7 +1437,6 @@ let MapLocations = {
                         LongDescription: "The rupee is on the right after the second turn of the normal route.",
                     },
                     "Race Rupee 3": {
-                        Name: "Race Rupee 3",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 135, y: 58, floor: "DMP" },
@@ -1572,7 +1444,6 @@ let MapLocations = {
                         LongDescription: "Take the right path at the fork after the second turn - keep following the right wall for the rupee.",
                     },
                     "Race Rupee 4": {
-                        Name: "Race Rupee 4",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 126, y: 19, floor: "DMP" },
@@ -1580,7 +1451,6 @@ let MapLocations = {
                         LongDescription: "After the first door, the rupee will be on the left.",
                     },
                     "Race Rupee 5": {
-                        Name: "Race Rupee 5",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 173, y: 19, floor: "DMP" },
@@ -1588,7 +1458,6 @@ let MapLocations = {
                         LongDescription: "In the big room with the rocks, go down the left path for the rupee.",
                     },
                     "Race Rupee 6": {
-                        Name: "Race Rupee 6",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 220, y: 85, floor: "DMP" },
@@ -1596,7 +1465,6 @@ let MapLocations = {
                         LongDescription: "In the big room with the rocs, go straight, take a right, then follow the left wall to the rupee.",
                     },
                     "Race Rupee 7": {
-                        Name: "Race Rupee 7",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 229, y: 122, floor: "DMP" },
@@ -1604,7 +1472,6 @@ let MapLocations = {
                         LongDescription: "After the second door, follow the left wall to the rupee.",
                     },
                     "Race Rupee 8": {
-                        Name: "Race Rupee 8",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 173, y: 160, floor: "DMP" },
@@ -1616,12 +1483,8 @@ let MapLocations = {
             windmillTop: {
                 ExcludeFromSpawnList: true,
                 Exits: {
-                    windmill: {
-                        Name: "windmill"
-                    },
-                    windmillItem: {
-                        Name: "windmillItem"
-                    }
+                    windmill: {},
+                    windmillItem: {}
                 },
                 ItemLocations: {}
             },
@@ -1630,7 +1493,6 @@ let MapLocations = {
                 Exits: {},
                 ItemLocations: {
                     "Heart Piece on Top": {
-                        Name: "Heart Piece on Top",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 99, y: 144, floor: "WND" },
                         Age: Age.EITHER,
@@ -1641,7 +1503,6 @@ let MapLocations = {
             windmill: {
                 Exits: {
                     windmillItem: {
-                        Name: "windmillItem",
                         RequiredChildItems: [Items.BOOMERANG],
                         CustomRequirement(age) {
                             if (age === Age.CHILD) { return true; }
@@ -1657,18 +1518,14 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    "Song of Storms":
-                    {
-                        Name: "Song of Storms",
+                    "Song of Storms": {
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 266, y: 246, floor: "WND" },
                         Age: Age.ADULT,
                         LongDescription: "Take out your ocarina by the windmill guy to get this.",
                         NeedsOcarina: true
                     },
-                    "Drain Well Water":
-                    {
-                        Name: "Drain Well Water",
+                    "Drain Well Water": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 244, y: 243, floor: "WND" },
                         Age: Age.CHILD,
@@ -1690,7 +1547,6 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Shop": {
-                        Name: "Shop",
                         ItemGroup: ItemGroups.SHOP,
                         MapInfo: { x: 194, y: 146, floor: "POT" },
                         Age: Age.ADULT,
@@ -1708,7 +1564,6 @@ let MapLocations = {
             main: {
                 Exits: {
                     upper: {
-                        Name: "upper",
                         CustomRequirement: function(age) {
                             let canRideTrailBeanPlant = age === Age.ADULT && Data.itemLocationObtained("Death Mountain Trail", "main", "*Plant Bean by Dodongo's Cavern");
                             let areRocksGone = Data.canBlastOrSmash(age) || Data.itemLocationObtained("Death Mountain Trail", "main", "Break Rocks Blocking Top Path");
@@ -1733,7 +1588,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Chest in Wall Near Goron City": {
-                        Name: "Chest in Wall Near Goron City",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 212, y: 207 },
                         Age: Age.EITHER,
@@ -1744,14 +1598,12 @@ let MapLocations = {
                         }
                     },
                     "Heart Piece Above Dodongo's Cavern": {
-                        Name: "Heart Piece Above Dodongo's Cavern",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 180, y: 146 },
                         Age: Age.EITHER,
                         LongDescription: "You can do a slight angled backflip near the Bomb Flower above the cavern to get to this. Alternatively, you can plant a bean and ride it up."
                     },
                     "Skulltula in Soil": {
-                        Name: "Skulltula in Soil",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 179, y: 168 },
                         Age: Age.CHILD,
@@ -1761,7 +1613,6 @@ let MapLocations = {
                         NeedsBottle: true
                     },
                     "Red Rock by Goron City": {
-                        Name: "Red Rock by Goron City",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 215, y: 167 },
@@ -1773,7 +1624,6 @@ let MapLocations = {
                         }
                     },
                     "In Wall by Kakariko": {
-                        Name: "In Wall by Kakariko",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 151, y: 235 },
                         Age: Age.EITHER,
@@ -1781,7 +1631,6 @@ let MapLocations = {
                         NeedToBlastOrSmash: true // Well, it has the same requirements
                     },
                     "*Plant Bean by Dodongo's Cavern":  {
-                        Name: "*Plant Bean by Dodongo's Cavern",
                         ItemGroup: ItemGroups.NON_ITEM,
                         IsBean: true,
                         MapInfo: { x: 179, y: 168 },
@@ -1790,7 +1639,6 @@ let MapLocations = {
                         NeedsExplosivesOrBombFlower: true,
                     },
                     "Break Rocks Blocking Top Path":  {
-                        Name: "Break Rocks Blocking Top Path",
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 202, y: 201 },
                         Age: Age.EITHER,
@@ -1799,7 +1647,6 @@ let MapLocations = {
                         CoOpOnly: true
                     },
                     "Red Rupee in Rock by Cow Grotto": {
-                        Name: "Red Rupee in Rock by Cow Grotto",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Red Rupee",
                         MapInfo: { x: 206, y: 203 },
@@ -1811,7 +1658,6 @@ let MapLocations = {
                         }
                     },
                     "Blue Rupee in Rock Below Cow Grotto": {
-                        Name: "Blue Rupee in Rock Below Cow Grotto",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Blue Rupee",
                         MapInfo: { x: 190, y: 203 },
@@ -1828,9 +1674,7 @@ let MapLocations = {
             upper: {
                 DuplicateWarpSongPriority: 1,
                 Exits: {
-                    main: {
-                        Name: "main"
-                    },
+                    main: {},
                     "Death Mountain Crater": {
                         OwExit: OwExits["Death Mountain Trail"]["Death Mountain Crater"]
                     },
@@ -1849,7 +1693,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Turn in Claim Check": {
-                        Name: "Turn in Claim Check",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 238, y: 28 },
                         Age: Age.ADULT,
@@ -1857,7 +1700,6 @@ let MapLocations = {
                         RequiredItems: [Items.CLAIM_CHECK],
                     },
                     "Red Rock on Upper Path": {
-                        Name: "Red Rock on Upper Path",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 217, y: 96 },
@@ -1868,7 +1710,6 @@ let MapLocations = {
                         }
                     },
                     "Gossip Stone on Climbable Wall Ledge": {
-                        Name: "Gossip Stone on Climbable Wall Ledge",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 225, y: 52 },
@@ -1887,20 +1728,16 @@ let MapLocations = {
             top: {
                 Exits: {
                     middle: {
-                        Name: "middle",
                         CustomRequirement: function(age) {
                             return Data.canMegaFlip(age) || (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
                         }
                     },
                     bottom: {
-                        Name: "bottom",
                         CustomRequirement: function(age) {
                             return Data.canMegaFlip(age);
                         }
                     },
-                    scarecrowPlatform: {
-                        Name: "scarecrowPlatform"
-                    },
+                    scarecrowPlatform: {},
                     "Mountain Top": {
                         OwExit: OwExits["Death Mountain Crater"]["Mountain Top"]
                     },
@@ -1913,28 +1750,24 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Heart Piece in Wall": {
-                        Name: "Heart Piece in Wall",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 186, y: 191 },
                         Age: Age.EITHER,
                         LongDescription: "At the top of the crater, you can climb down the wall that's facing the Fire Temple to receive this item - you'll start climbing if you backwalk off it."
                     },
                     "Skulltula in Crate": {
-                        Name: "Skulltula in Crate",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 87, y: 250 },
                         Age: Age.CHILD,
                         LongDescription: "Enter from the top of Death Mountain Trail. Roll into the nearby crate to spawn this skulltula."
                     },
                     "Scrub by Ladder as Child": {
-                        Name: "Scrub by Ladder as Child",
                         ItemGroup: ItemGroups.SCRUB,
                         MapInfo: { x: 85, y: 195 },
                         Age: Age.CHILD,
                         LongDescription: "When you enter the crater, follow the left wall. The scrub is on the bottom of the ladder you'll run into."
                     },
                     "Gossip Stone Behind Bombable Wall": {
-                        Name: "Gossip Stone Behind Bombable Wall",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 284, y: 248 },
@@ -1947,11 +1780,8 @@ let MapLocations = {
 
             middle: {
                 Exits: {
-                    top: {
-                        Name: "top"
-                    },
+                    top: {},
                     bottom: {
-                        Name: "bottom",
                         CustomRequirement: function(age) {
                             if (Data.canMegaFlip(age)) {
                                 return true;
@@ -1961,7 +1791,6 @@ let MapLocations = {
                         }
                     },
                     volcano: {
-                        Name: "volcano",
                         CustomRequirement: function(age) {
                             return Data.canMegaFlip(age) || (Settings.GlitchesToAllow.hoverToVolcanoHP && age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
                         }
@@ -1984,7 +1813,6 @@ let MapLocations = {
             bottom: {
                 Exits: {
                     middle: {
-                        Name: "middle",
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             let beanPlanted = Data.itemLocationObtained("Death Mountain Crater", "bottom", "*Plant Bean by Bolero Warp Point");
@@ -1992,14 +1820,12 @@ let MapLocations = {
                         }
                     },
                     volcano: {
-                        Name: "volcano",
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             return Data.itemLocationObtained("Death Mountain Crater", "bottom", "*Plant Bean by Bolero Warp Point");
                         }
                     },
                     scarecrowPlatform: {
-                        Name: "scarecrowPlatform",
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             return Data.canHookScarecrow(age) && Items.HOOKSHOT.currentUpgrade === 2;
@@ -2015,7 +1841,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Skulltula in Soil": {
-                        Name: "Skulltula in Soil",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 177, y: 95 },
                         Age: Age.CHILD,
@@ -2023,14 +1848,12 @@ let MapLocations = {
                         NeedsBottle: true
                     },
                     "Bolero of Fire": {
-                        Name: "Bolero of Fire",
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 161, y: 84 },
                         Age: Age.ADULT,
                         LongDescription: "You will get this item as adult when you reach the part of the broken bridge that touches the land.",
                     },
                     "*Plant Bean by Bolero Warp Point": {
-                        Name: "*Plant Bean by Bolero Warp Point",
                         ItemGroup: ItemGroups.NON_ITEM,
                         IsBean: true,
                         MapInfo: { x: 177, y: 95 },
@@ -2038,7 +1861,6 @@ let MapLocations = {
                         LongDescription: "This is the bean spot by the Bolero of Fire warp point. It helps you get to the heart piece on the volcano.",
                     },
                     "Red Rupee on First Island": {
-                        Name: "Red Rupee on First Island",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Red Rupee",
                         MapInfo: { x: 235, y: 57 },
@@ -2046,7 +1868,6 @@ let MapLocations = {
                         LongDescription: "As Child, from the Bolero warp, make your way to the first tiny island across the wooden bridge for this item.",
                     },
                     "Rupee Circle on Second Island": {
-                        Name: "Rupee Circle on Second Island",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
@@ -2054,7 +1875,7 @@ let MapLocations = {
                         MapInfo: { x: 280, y: 80 },
                         Age: Age.CHILD,
                         LongDescription: "As Child, from the bolero warp, make your way to the second tiny island across the wooden bridges for these items."
-                    },
+                    }
                 }
             },
 
@@ -2063,7 +1884,6 @@ let MapLocations = {
                 Exits: {},
                 ItemLocations: {
                     "Heart Piece on Volcano": {
-                        Name: "Heart Piece on Volcano",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 134, y: 78 },
                         Age: Age.EITHER,
@@ -2078,7 +1898,6 @@ let MapLocations = {
                 Exits: {},
                 ItemLocations: {
                     "Rupee Circle on Scarecrow Platform": {
-                        Name: "Rupee Circle on Scarecrow Platform",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
@@ -2088,7 +1907,6 @@ let MapLocations = {
                         LongDescription: "From the top of the crater, cross the wodden bridge at the southeast. You can jump to the platform from there.<br/><br/>You can also get there from the bottom using a longshot and Scarecrow's Song from the second of the tiny islands you reach from the Bolero warp."
                     },
                     "4 Pots Near Goron City": {
-                        Name: "4 Pots Near Goron City",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2109,14 +1927,12 @@ let MapLocations = {
             main: {
                 Exits: {
                     darunia: {
-                        Name: "darunia",
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return Data.canPlaySong(Songs.ZELDAS_LULLABY); }
 				            return Data.hasExplosivesOrStrength() || Items.FAIRY_BOW.playerHas;
                         }
                     },
                     lostWoodsRocks: {
-                        Name: "lostWoodsRocks",
                         CustomRequirement: function(age) {
                             if (Data.itemLocationObtained("Goron City", "lostWoodsRocks", "Rocks Blocking Lost Woods")) {
                                 return true;
@@ -2128,12 +1944,10 @@ let MapLocations = {
                         }
                     },
                     spinningUrn: {
-                        Name: "spinningUrn",
                         Age: Age.CHILD,
                         NeedsFire: true
                     },
                     shop: {
-                        Name: "shop",
                         CustomRequirement: function(age) {
                             if (Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas || (age === Age.ADULT && Items.FAIRY_BOW.playerHas)) { return true; }
                             return age === Age.CHILD && Data.canUseFireItem(age);
@@ -2151,7 +1965,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Stop Rolling Goron as Child": {
-                        Name: "Stop Rolling Goron as Child",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 165, y: 67 },
                         Age: Age.CHILD,
@@ -2159,7 +1972,6 @@ let MapLocations = {
                         NeedsExplosives: true
                     },
                     "Stop Rolling Goron as Adult": {
-                        Name: "Stop Rolling Goron as Adult",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 139, y: 97 },
                         Age: Age.ADULT,
@@ -2169,7 +1981,6 @@ let MapLocations = {
                         }
                     },
                     "Item From Medigoron": {
-                        Name: "Item From Medigoron",
                         ItemGroup: ItemGroups.GIFT,
                         RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleCarpetAndMedigoron; },
                         MapInfo: { x: 117, y: 260 },
@@ -2181,7 +1992,6 @@ let MapLocations = {
                         }
                     },
                     "Leftmost Maze Chest": {
-                        Name: "Leftmost Maze Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 71, y: 24 },
                         Age: Age.EITHER,
@@ -2197,7 +2007,6 @@ let MapLocations = {
                         }
                     },
                     "Left Maze Chest": {
-                        Name: "Left Maze Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 78, y: 26 },
                         Age: Age.EITHER,
@@ -2209,7 +2018,6 @@ let MapLocations = {
                         }
                     },
                     "Right Maze Chest": {
-                        Name: "Right Maze Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 86, y: 26 },
                         Age: Age.EITHER,
@@ -2221,7 +2029,6 @@ let MapLocations = {
                         }
                     },
                     "Skulltula in Maze Crate": {
-                        Name: "Skulltula in Maze Crate",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 91, y: 25 },
                         Age: Age.CHILD,
@@ -2229,14 +2036,12 @@ let MapLocations = {
                         NeedToBlastOrSmash: true
                     },
                     "Skulltula on Center Platform": {
-                        Name: "Skulltula on Center Platform",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 180, y: 137 },
                         Age: Age.ADULT,
                         LongDescription: "There's a skulltula on the back side of the center platform. You may have to jump for it from the ropes if you don't have a hookshot."
                     },
                     "Gossip Stone in Maze": {
-                        Name: "Gossip Stone in Maze",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 82, y: 26 },
@@ -2248,7 +2053,6 @@ let MapLocations = {
                         }
                     },
                     "Gossip Stone By Medigoron": {
-                        Name: "Gossip Stone By Medigoron",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 115, y: 275 },
@@ -2259,7 +2063,6 @@ let MapLocations = {
                         }
                     },
                     "2 Pots by Lower Staircase": {
-                        Name: "2 Pots by Lower Staircase",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2269,7 +2072,6 @@ let MapLocations = {
                         LongDescription: "These pots are just after the first set of stairs at the bottom of the city."
                     },
                     "3 Pots by Upper Staircase": {
-                        Name: "3 Pots by Upper Staircase",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2279,7 +2081,6 @@ let MapLocations = {
                         LongDescription: "From the upper exit, follow the left wall until you reach these pots."
                     },
                     "Pot by Medigoron": {
-                        Name: "Pot by Medigoron",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 130, y: 243 },
                         Age: Age.EITHER,
@@ -2289,7 +2090,6 @@ let MapLocations = {
                         }
                     },
                     "Maze Crate": {
-                        Name: "Maze Crate",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 95, y: 21 },
                         Age: Age.EITHER,
@@ -2304,20 +2104,15 @@ let MapLocations = {
 
             darunia: {
                 Exits: {
-                    main: {
-                        Name: "main"
-                    },
+                    main: {},
                     spinningUrn: {
-                        Name: "spinningUrn",
                         RequiredItems: [Items.DEKU_STICK]
                     },
                     lostWoodsRocks: {
-                        Name: "lostWoodsRocks",
                         Age: Age.CHILD, // The stick won't last all the way, no torches as adult
                         RequiredItems: [Items.DEKU_STICK]
                     },
                     shop: {
-                        Name: "shop",
                         Age: Age.CHILD,
                         RequiredItems: [Items.DEKU_STICK]
                     },
@@ -2328,7 +2123,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Darunia's Joy": {
-                        Name: "Darunia's Joy",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 187, y: 30 },
                         Age: Age.CHILD,
@@ -2336,7 +2130,6 @@ let MapLocations = {
                         RequiredSongs: [Songs.SARIAS_SONG]
                     },
                     "3 Pots by Darunia": {
-                        Name: "3 Pots by Darunia",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2344,14 +2137,13 @@ let MapLocations = {
                         MapInfo: { x: 204, y: 39 },
                         Age: Age.EITHER,
                         LongDescription: "At the bottom of Goron City on the fancy carpet, play Zelda's Lullaby. If you can manage to get to the Goron City entrance from the crater, that works too. The pots are on the tables against the wall."
-                    },
+                    }
                 }
             },
 
             lostWoods: {
                 Exits: {
                     lostWoodsRocks: {
-                        Name: "lostWoodsRocks",
                         CustomRequirement: function(age) {
                             let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
                             return canUseDins ||
@@ -2369,17 +2161,12 @@ let MapLocations = {
             lostWoodsRocks: {
                 ExcludeFromSpawnList: true,
                 Exits: {
-                    main: {
-                        Name: "main"
-                    },
-                    lostWoods: {
-                        Name: "lostWoods"
-                    }
+                    main: {},
+                    lostWoods: {}
                 },
 
                 ItemLocations: {
                     "Rocks Blocking Lost Woods": {
-                        Name: "Rocks Blocking Lost Woods",
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 212, y: 178 },
                         Age: Age.EITHER,
@@ -2406,7 +2193,6 @@ let MapLocations = {
                 Exits: {},
                 ItemLocations: {
                     "Spinning Urn Heart Piece": {
-                        Name: "Spinning Urn Heart Piece",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 189, y: 126 },
                         Age: Age.CHILD,
@@ -2414,7 +2200,6 @@ let MapLocations = {
                         RequiredChoiceOfItems: [Items.BOMB, Equipment.STRENGTH]
                     },
                     "8 Items From Spinning Urn": {
-                        Name: "8 Items From Spinning Urn",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
@@ -2429,9 +2214,7 @@ let MapLocations = {
 
             shop: {
                 Exits: {
-                    main: {
-                        Name: "main"
-                    },
+                    main: {},
 
                     // Interiors & Grottos
                     "Shop": {
@@ -2450,7 +2233,6 @@ let MapLocations = {
             downstream: {
                 Exits: {
                     upstream: {
-                        Name: "upstream",
                         CustomRequirement: function(age) {
                             return age === Age.ADULT || 
                                 Data.canBlastOrSmash(age) ||
@@ -2464,14 +2246,12 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Skulltula in Tree": {
-                        Name: "Skulltula in Tree",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 9, y: 177 },
                         Age: Age.CHILD,
                         LongDescription: "Enter the river from Hyrule Field. The skulltula will appear if you roll into the tree that's straight ahead."
                     },
                     "Break Rocks Blocking Path": {
-                        Name: "Break Rocks Blocking Path",
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 23, y: 169 },
                         Age: Age.CHILD,
@@ -2485,11 +2265,8 @@ let MapLocations = {
             upstream: {
                 DuplicateWarpSongPriority: 1,
                 Exits: {
-                    downstream: {
-                        Name: "downstream"
-                    },
+                    downstream: {},
                     inWaterfall: {
-                        Name: "inWaterfall",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT && Settings.GlitchesToAllow.hoversToZorasDomain && Equipment.HOVER_BOOTS.playerHas) {
                                 return true; // Hover in
@@ -2518,7 +2295,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Heart Piece on River Platform": {
-                        Name: "Heart Piece on River Platform",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 125, y: 94 },
                         Age: Age.EITHER,
@@ -2526,7 +2302,6 @@ let MapLocations = {
                         RequiredAdultItems: [Equipment.HOVER_BOOTS]
                     },
                     "Heart Piece by Waterfall": {
-                        Name: "Heart Piece by Waterfall",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 266, y: 56 },
                         Age: Age.EITHER,
@@ -2538,14 +2313,12 @@ let MapLocations = {
                         }
                     },
                     "Bean Guy": {
-                        Name: "Bean Guy",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 72, y: 139 },
                         Age: Age.CHILD,
                         LongDescription: "This is the guy who sells beans near the Hyrule Field entrance."
                     },
                     "Frog Zelda's Lullaby": {
-                        Name: "Frog Zelda's Lullaby",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 152, y: 96 },
                         Age: Age.CHILD,
@@ -2554,7 +2327,6 @@ let MapLocations = {
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
                     },
                     "Frog Epona's Song": {
-                        Name: "Frog Epona's Song",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 156, y: 96 },
                         Age: Age.CHILD,
@@ -2563,7 +2335,6 @@ let MapLocations = {
                         RequiredSongs: [Songs.EPONAS_SONG]
                     },
                     "Frog Saria's Song": {
-                        Name: "Frog Saria's Song",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 160, y: 96 },
                         Age: Age.CHILD,
@@ -2572,7 +2343,6 @@ let MapLocations = {
                         RequiredSongs: [Songs.SARIAS_SONG]
                     },
                     "Frog Sun's Song": {
-                        Name: "Frog Sun's Song",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 152, y: 102 },
                         Age: Age.CHILD,
@@ -2581,7 +2351,6 @@ let MapLocations = {
                         RequiredSongs: [Songs.SUNS_SONG]
                     },
                     "Frog Song of Storms": {
-                        Name: "Frog Song of Storms",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 156, y: 102 },
                         Age: Age.CHILD,
@@ -2589,7 +2358,6 @@ let MapLocations = {
                         RequiredSongs: [Songs.SONG_OF_STORMS]
                     },
                     "Frog Song of Time": {
-                        Name: "Frog Song of Time",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 160, y: 102 },
                         Age: Age.CHILD,
@@ -2598,7 +2366,6 @@ let MapLocations = {
                         RequiredSongs: [Songs.SONG_OF_TIME]
                     },
                     "Frog Bug Minigame": {
-                        Name: "Frog Bug Minigame",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 161, y: 99 },
                         Age: Age.CHILD,
@@ -2606,7 +2373,6 @@ let MapLocations = {
                         RequiredSongs: [Songs.ZELDAS_LULLABY, Songs.EPONAS_SONG, Songs.SARIAS_SONG, Songs.SUNS_SONG, Songs.SONG_OF_STORMS, Songs.SONG_OF_TIME]
                     },
                     "Skulltula on Ladder": {
-                        Name: "Skulltula on Ladder",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 281, y: 142 },
@@ -2614,7 +2380,6 @@ let MapLocations = {
                         LongDescription: "At night, make your way to the end of the river. You'll find the skulltula on the ladder leading up out of the water."
                     },
                     "Skulltula by Bridge": {
-                        Name: "Skulltula by Bridge",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 249, y: 62 },
@@ -2623,7 +2388,6 @@ let MapLocations = {
                         RequiredItems: [Items.HOOKSHOT]
                     },
                     "Skulltula on Cliff": {
-                        Name: "Skulltula on Cliff",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 132, y: 153 },
@@ -2632,7 +2396,6 @@ let MapLocations = {
                         IsAtShortDistance: true
                     },
                     "Plant Bean by Bean Guy": {
-                        Name: "Plant Bean by Bean Guy",
                         ItemGroup: ItemGroups.NON_ITEM,
                         IsBean: true,
                         MapInfo: { x: 72, y: 142 },
@@ -2640,7 +2403,6 @@ let MapLocations = {
                         LongDescription: "This is the bean spot by the guy who sells beans. It's only used for convenience sake."
                     },
                     "Gossip Stone on Cliff": {
-                        Name: "Gossip Stone on Cliff",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 155, y: 176 },
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
@@ -2648,7 +2410,6 @@ let MapLocations = {
                         LongDescription: "Go up the ladder closest to Hyrule Field. The stone is across the tiny bridge."
                     },
                     "Gossip Stone by Waterfall": {
-                        Name: "Gossip Stone by Waterfall",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 300, y: 145 },
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
@@ -2656,7 +2417,6 @@ let MapLocations = {
                         LongDescription: "This stone is on one of the platforms in the water by the Zora's Domain entrance."
                     },
                     "4 Red Rupees by Waterfall": {
-                        Name: "4 Red Rupees by Waterfall",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
@@ -2671,9 +2431,7 @@ let MapLocations = {
             inWaterfall: {
                 DuplicateWarpSongPriority: 2,
                 Exits: {
-                    upstream: {
-                        Name: "upstream"
-                    },
+                    upstream: {},
 
                     "Zora's Domain": {
                         OwExit: OwExits["Zora's River"]["Zora's Domain"]
@@ -2692,7 +2450,6 @@ let MapLocations = {
                 DuplicateWarpSongPriority: 1,
                 Exits: {
                     behindKing: {
-                        Name: "behindKing",
                         CustomRequirement: function(age) {
                             // Already moved, or can move now
                             if (Data.itemLocationObtained("Zora's Domain", "main", "Move King Zora")) { return true; }
@@ -2737,7 +2494,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Torch Run": {
-                        Name: "Torch Run",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 154, y: 132 },
                         Age: Age.CHILD,
@@ -2745,14 +2501,12 @@ let MapLocations = {
                         RequiredItems: [Items.DEKU_STICK]
                     },
                     "Diving Minigame": {
-                        Name: "Diving Minigame",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 158, y: 75 },
                         Age: Age.CHILD,
                         LongDescription: "At the top of the Domain, pay 20 rupees to play the diving minigame. Talk to the Zora after you win to get your prize."
                     },
                     "Unfreeze King Zora": {
-                        Name: "Unfreeze King Zora",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 233, y: 46 },
                         Age: Age.ADULT,
@@ -2771,7 +2525,6 @@ let MapLocations = {
                         }
                     },
                     "Skulltula on Top of Waterfall": {
-                        Name: "Skulltula on Top of Waterfall",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 168, y: 68 },
@@ -2782,7 +2535,6 @@ let MapLocations = {
                         }
                     },
                     "Gossip Stone by King": {
-                        Name: "Gossip Stone by King",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 239, y: 63 },
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
@@ -2790,7 +2542,6 @@ let MapLocations = {
                         LongDescription: "This stone is in the water in front of the king."
                     },
                     "Move King Zora": {
-                        Name: "Move King Zora",
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 233, y: 46 },
                         RequiredItems: [Items.RUTOS_LETTER],
@@ -2798,7 +2549,6 @@ let MapLocations = {
                         LongDescription: "Show Ruto's letter to the king."
                     },
                     "2 Pots in Front of Shop": {
-                        Name: "2 Pots in Front of Shop",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2808,7 +2558,6 @@ let MapLocations = {
                         LongDescription: "These pots are right in front of the shop entrance."
                     },
                     "3 Pots Right of Shop": {
-                        Name: "3 Pots Right of Shop",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2818,7 +2567,6 @@ let MapLocations = {
                         LongDescription: "These pots are just to the right of the shop entrance."
                     },
                     "Left Beehive by King": {
-                        Name: "Left Beehive by King",
                         ItemGroup: ItemGroups.BEEHIVE,
                         IsUpperHive: true,
                         MapInfo: { x: 215, y: 85 },
@@ -2826,7 +2574,6 @@ let MapLocations = {
                         LongDescription: "Look on the left side of the room on the ceiling for this beehive. If using a chu, go to the wall by the diving minigame tunnel and drop it on the black after the 4th red flash."
                     },
                     "Right Beehive by King": {
-                        Name: "Right Beehive by King",
                         ItemGroup: ItemGroups.BEEHIVE,
                         IsUpperHive: true,
                         MapInfo: { x: 262, y: 74 },
@@ -2839,7 +2586,6 @@ let MapLocations = {
             behindKing: {
                 Exits: {
                     main: {
-                        Name: "main",
                         CustomRequirement: function(age) {
                             return Data.itemLocationObtained("Zora's Domain", "main", "Move King Zora");
                         }
@@ -2851,7 +2597,6 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Beehive Behind King": {
-                        Name: "Beehive Behind King",
                         ItemGroup: ItemGroups.BEEHIVE,
                         IsUpperHive: true,
                         MapInfo: { x: 236, y: 28 },
@@ -2870,7 +2615,6 @@ let MapLocations = {
             main: {
                 Exits: {
                     hiddenTunnel: {
-                        Name: "hiddenTunnel",
                         Age: Age.ADULT,
                         NeedToBlastOrSmash: true,
                         CustomRequirement: function(age) {
@@ -2896,14 +2640,12 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Heart Piece on Iceberg": {
-                        Name: "Heart Piece on Iceberg",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 257, y: 111 },
                         Age: Age.ADULT,
                         LongDescription: "This heart piece is on an ice berg in the middle of the lake. You can get it without jumping to it if you climb one of the sides, then spam B to jumpslash onto it. Just make sure you're on a side where you aren't being attacked!"
                     },
                     "Heart Piece in Lake": {
-                        Name: "Heart Piece in Lake",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 209, y: 137 },
                         Age: Age.ADULT,
@@ -2911,7 +2653,6 @@ let MapLocations = {
                         RequiredItems: [Equipment.IRON_BOOTS]
                     },
                     "Skulltula in Tree": {
-                        Name: "Skulltula in Tree",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 257, y: 234 },
                         Age: Age.CHILD,
@@ -2919,7 +2660,6 @@ let MapLocations = {
                         OverrideItemGroupCondition: true,
                     },
                     "Skulltula on Wall": {
-                        Name: "Skulltula on Wall",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 81, y: 177 },
@@ -2928,7 +2668,6 @@ let MapLocations = {
                         IsAtShortDistance: true
                     },
                     "Gossip Stone Left of Jabu Platform": {
-                        Name: "Gossip Stone Left of Jabu Platform",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 122, y: 51 },
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
@@ -2936,7 +2675,6 @@ let MapLocations = {
                         LongDescription: "This stone is to the left of the Jabu Jabu platform."
                     },
                     "Gossip Stone by Fairy Fountain": {
-                        Name: "Gossip Stone by Fairy Fountain",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 283, y: 232 },
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
@@ -2944,7 +2682,6 @@ let MapLocations = {
                         LongDescription: "This stone is on the land near the fairy fountain entrance."
                     },
                     "4 Pots by Jabu": {
-                        Name: "4 Pots by Jabu",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2954,7 +2691,6 @@ let MapLocations = {
                         LongDescription: "As Child, these pots are on the corners of the platform by the entrance to Jabu Jabu's Belly."
                     },
                     "18 Underwater Green Rupees": {
-                        Name: "18 Underwater Green Rupees",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
@@ -2971,7 +2707,6 @@ let MapLocations = {
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Hidden Tunnel": {
-                        Name: "Skulltula in Hidden Tunnel",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 312, y: 154 },
@@ -2980,7 +2715,6 @@ let MapLocations = {
                         IsAtShortDistance: true
                     },
                     "3 Pots in Hidden Tunnel": {
-                        Name: "3 Pots in Hidden Tunnel",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -3030,7 +2764,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Ruto's Letter": {
-                        Name: "Ruto's Letter",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 171, y: 116 },
                         Age: Age.CHILD,
@@ -3044,7 +2777,6 @@ let MapLocations = {
                         }
                     },
                     "Heart Piece on Lab": {
-                        Name: "Heart Piece on Lab",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 111, y: 67 },
                         Age: Age.ADULT,
@@ -3056,7 +2788,6 @@ let MapLocations = {
                         }
                     },
                     "Fire Arrows": {
-                        Name: "Fire Arrows",
                         ItemGroup: ItemGroups.FREESTANDING,
                         Time: function() { return Time.DAY; },
                         MapInfo: { x: 247, y: 236 },
@@ -3069,7 +2800,6 @@ let MapLocations = {
                         }
                     },
                     "Skulltula in Soil": {
-                        Name: "Skulltula in Soil",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 106, y: 71 },
                         Age: Age.CHILD,
@@ -3077,7 +2807,6 @@ let MapLocations = {
                         NeedsBottle: true
                     },
                     "Skulltula on Lab": {
-                        Name: "Skulltula on Lab",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 104, y: 89 },
@@ -3088,7 +2817,6 @@ let MapLocations = {
                         }
                     },
                     "Skulltula on Island": {
-                        Name: "Skulltula on Island",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 252, y: 232 },
@@ -3096,7 +2824,6 @@ let MapLocations = {
                         LongDescription: "At night, proceed to the far island in the lake. This is the one even passed the one with the tree. You should see the skulltula on one of the pillars."
                     },
                     "Skulltula on Middle Tree": {
-                        Name: "Skulltula on Middle Tree",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 198, y: 213 },
@@ -3108,7 +2835,6 @@ let MapLocations = {
                         }
                     },
                     "*Plant Bean by Lab": {
-                        Name: "*Plant Bean by Lab",
                         ItemGroup: ItemGroups.NON_ITEM,
                         IsBean: true,
                         MapInfo: { x: 106, y: 71 },
@@ -3116,7 +2842,6 @@ let MapLocations = {
                         LongDescription: "This is the bean patch by the lab. It can be used to get to the top of the house and to the fishing pond."
                     },
                     "Gossip Stone by Lab and Waterfall": {
-                        Name: "Gossip Stone by Lab and Waterfall",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 74, y: 74 },
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
@@ -3124,7 +2849,6 @@ let MapLocations = {
                         LongDescription: "This stone is across the little bridge near the lab."
                     },
                     "Southwest Gossip Stone": {
-                        Name: "Southwest Gossip Stone",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 100, y: 237 },
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
@@ -3132,7 +2856,6 @@ let MapLocations = {
                         LongDescription: "This stone is on the wall in the southwest corner of the lake."
                     },
                     "Southeast Gossip Stone": {
-                        Name: "Southeast Gossip Stone",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 289, y: 231 },
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
@@ -3140,7 +2863,6 @@ let MapLocations = {
                         LongDescription: "This stone is on the wall in the southeast corner of the lake."
                     },
                     "Green Rupee Near Shore": {
-                        Name: "Green Rupee Near Shore",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 171, y: 98 },
@@ -3148,7 +2870,6 @@ let MapLocations = {
                         LongDescription: "This item is by the entrance to Zora's Domain - you can dive to get it without a scale.",
                     },
                     "2 Green Rupees in Deeper Water": {
-                        Name: "2 Green Rupees in Deeper Water",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
@@ -3170,7 +2891,6 @@ let MapLocations = {
             main: {
                 Exits: {
                     acrossBridge: {
-                        Name: "acrossBridge",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) {
                                 let canCrossWithHookshot = Settings.GlitchesToAllow.gvCrossBridgeWithHookshot && 
@@ -3187,11 +2907,8 @@ let MapLocations = {
                             return Settings.GlitchesToAllow.cuccoJump && Data.hasSwordWeapon(age);
                         }
                     },
-                    chasmSilverRockLedge: {
-                        Name: "chasmSilverRockLedge"
-                    },
+                    chasmSilverRockLedge: {},
                     chasmCrateLedge: {
-                        Name: "chasmCrateLedge",
                         CustomRequirement: function(age) {
                             return age === Age.CHILD || 
                                 Items.HOOKSHOT.currentUpgrade === 2 ||
@@ -3199,9 +2916,7 @@ let MapLocations = {
                                 Data.canHammerHoverBootsSuperslide(age);
                         }
                     },
-                    chasm: {
-                        Name: "chasm"
-                    },
+                    chasm: {},
                     "Hyrule Field": {
                         OwExit: OwExits["Gerudo Valley"]["Hyrule Field"]
                     }
@@ -3209,7 +2924,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Skulltula by Tiny Waterfall": {
-                        Name: "Skulltula by Tiny Waterfall",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 264, y: 56 },
@@ -3223,7 +2937,6 @@ let MapLocations = {
             acrossBridge: {
                 Exits: {
                     main: {
-                        Name: "main",
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return true; }
 
@@ -3240,20 +2953,16 @@ let MapLocations = {
                         }
                     },
                     chasmSilverRockLedge: {
-                        Name: "chasmSilverRockLedge",
                         CustomRequirement: function(age) {
                             return Data.canMegaFlip(age);
                         }
                     },
                     chasmCrateLedge: {
-                        Name: "crateChasmLedge",
                         CustomRequirement: function(age) {
                             return Items.HOOKSHOT.currentUpgrade === 2 || Data.canMegaFlip(age);
                         }
                     },
-                    chasm: {
-                        name: "chasm"
-                    },
+                    chasm: {},
                     "Gerudo Fortress": {
                         OwExit: OwExits["Gerudo Valley"]["Gerudo Fortress"]
                     },
@@ -3269,7 +2978,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Chest Behind Rocks": {
-                        Name: "Chest Behind Rocks",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 131, y: 120 },
                         Age: Age.ADULT,
@@ -3279,7 +2987,6 @@ let MapLocations = {
                         }
                     },
                     "Skulltula on Pillar": {
-                        Name: "Skulltula on Pillar",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 144, y: 103 },
@@ -3288,7 +2995,6 @@ let MapLocations = {
                         IsAtShortDistance: true
                     },
                     "Skulltula Behind Tent": {
-                        Name: "Skulltula Behind Tent",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 144, y: 46 },
@@ -3302,9 +3008,7 @@ let MapLocations = {
             chasmSilverRockLedge: {
                 ExcludeFromSpawnList: true,
                 Exits: {
-                    chasm: {
-                        Name: "chasm"
-                    },
+                    chasm: {},
 
                     // Grottos & Interiors
                     "Grotto Under Silver Rock": {
@@ -3317,26 +3021,22 @@ let MapLocations = {
             chasmCrateLedge: {
                 ExcludeFromSpawnList: true,
                 Exits: {
-                    chasm: {
-                        Name: "chasm"
-                    }
+                    chasm: {}
                 },
 
                 ItemLocations: {
                     "Heart Piece in Crate": {
-                        Name: "Heart Piece in Crate",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 172, y: 173 },
                         Age: Age.EITHER,
                         LongDescription: "The crate is on a ledge on the left side of the ravine. Grab a cucco and jump across to the crate. If you're fast, you can grab the cucco after you get the item and use it to get the waterfall item as well.<br /><br />As an adult, you can longshot to the crate from the ledge on the other side."
                     },
                     "Item in Crate": {
-                        Name: "Item in Crate",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 175, y: 173 },
                         Age: Age.EITHER,
                         LongDescription: "The crate is on a ledge on the left side of the ravine. Grab a cucco and jump across to the crate. If you're fast, you can grab the cucco after you get the item and use it to get the waterfall item as well.<br /><br />As an adult, you can longshot to the crate from the ledge on the other side."
-                    },
+                    }
                 }
             },
 
@@ -3344,14 +3044,6 @@ let MapLocations = {
                 ExcludeFromSpawnList: true,
                 Exits: {
                     main: {
-                        Name: "main",
-                        CustomRequirement: function(age) {
-                            return false;
-                        }
-                    },
-
-                    accrossBridge: {
-                        Name: "accrossBridge",
                         CustomRequirement: function(age) {
                             return false;
                         }
@@ -3364,7 +3056,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Plant Bean by Cow on Bottom": {
-                        Name: "Plant Bean by Cow on Bottom",
                         ItemGroup: ItemGroups.NON_ITEM,
                         IsBean: true,
                         MapInfo: { x: 183, y: 191 },
@@ -3372,21 +3063,18 @@ let MapLocations = {
                         LongDescription: "This is the bean patch on the platform at the bottom of the ravine. It's not used to get any items."
                     },
                     "Heart Piece in Waterfall": {
-                        Name: "Heart Piece in Waterfall",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 200, y: 111 },
                         Age: Age.EITHER,
                         LongDescription: "The Heart Piece is in a room in the waterfall to the left in the ravine. There's a ladder leading up to it."
                     },
                     "Cow on Bottom by Waterfall": {
-                        Name: "Cow on Bottom by Waterfall",
                         ItemGroup: ItemGroups.COW,
                         MapInfo: { x: 183, y: 185 },
                         Age: Age.CHILD,
                         LongDescription: "Navigate to the platform on the bottom of the ravine to find this cow."
                     },
                     "Skulltula in Soil": {
-                        Name: "Skulltula in Soil",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 183, y: 191 },
                         Age: Age.CHILD,
@@ -3394,7 +3082,6 @@ let MapLocations = {
                         NeedsBottle: true
                     },
                     "Gossip Stone by Waterfall": {
-                        Name: "Gossip Stone by Waterfall",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 185, y: 146 },
@@ -3402,7 +3089,6 @@ let MapLocations = {
                         LongDescription: "This stone is in the chasm near the waterfall. It's on the same platform as the cow and soft soil patch."
                     },
                     "Crate by Cow on Bottom": {
-                        Name: "Crate by Cow on Bottom",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 189, y: 199 },
                         Age: Age.CHILD,
@@ -3422,13 +3108,11 @@ let MapLocations = {
             main: {
                 Exits: {
                     backArea: {
-                        Name: "backArea",
                         CustomRequirement: function(age) {
                             return age === Age.CHILD || Data.areGerudoGuardsTame() 
                         }
                     },
                     topOfKitchen: {
-                        Name: "topOfKitchen",
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) {
                                 return Settings.GlitchesToAllow.gfPassKitchenGuards ||
@@ -3438,13 +3122,11 @@ let MapLocations = {
                         }
                     },
                     jail4Area: {
-                        Name: "jail4Area",
                         CustomRequirement: function(age) {
                             return age === Age.ADULT || Data.areGerudoGuardsTame() || Data.canMegaFlip(age);
                         }
                     },
                     upperInteriors: {
-                        Name: "upperInteriors",
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             //TODO POT: check if they made a repeatable way to get to the jail, otherwise it's just HS needed
@@ -3452,7 +3134,6 @@ let MapLocations = {
                         }
                     },
                     wastelandEntrance: {
-                        Name: "wastelandEntrance",
                         CustomRequirement: function(age) {
                             if ((age === Age.CHILD && Settings.GlitchesToAllow.gerudoGateSkipAsChild) || Data.areGerudoGuardsTame()) { return true; }
                             return Settings.GlitchesToAllow.gerudoGateSkipAsAdult &&
@@ -3475,7 +3156,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Jail 1 Guard Key": {
-                        Name: "Jail 1 Guard Key",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 52, y: 79, floor: "LOW" },
                         Age: Age.EITHER,
@@ -3489,7 +3169,6 @@ let MapLocations = {
                         LongDescription: "Enter the leftmost bottom exit to get to the first jail. Take out the guard to get the item."
                     },
                     "Jail 2 Guard Key": {
-                        Name: "Jail 2 Guard Key",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 142, y: 109, floor: "LOW" },
                         Age: Age.EITHER,
@@ -3503,7 +3182,6 @@ let MapLocations = {
                         LongDescription: "Start from jail 1. Face the jail - now turn right and take that exit. Go straight to the other side. The next jail is in the next hole if you hug this wall around the right corner - be careful of guards. Take out the guard to get the item."
                     },
                     "Jail 3 Guard Key": {
-                        Name: "Jail 3 Guard Key",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 270, y: 198, floor: "LOW" },
                         Age: Age.EITHER,
@@ -3517,7 +3195,6 @@ let MapLocations = {
                         LongDescription: "Start from jail 2. Face the jail - now turn left and take that exit. Climb the vines straight ahead and take the exit straight in front of you for the next jail. Take out the guard to get the item."
                     },
                     "Item From Gerudo": {
-                        Name: "Item From Gerudo",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 334, y: 254, floor: "LOW" },
                         Age: Age.EITHER,
@@ -3528,7 +3205,6 @@ let MapLocations = {
                         }
                     },
                     "Skulltula on Back Fortress Wall": {
-                        Name: "Skulltula on Back Fortress Wall",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 203, y: 129, floor: "OUT" },
@@ -3536,7 +3212,6 @@ let MapLocations = {
                         LongDescription: "Nighttime required. The skulltula is located on the wall near the entrance to jail 4 - see those instructions for how to get there.<br/><br/>If you don't have a long range way to kill it, you'll need to jumpslash it from the top and then circle back around and jump to claim the item."
                     },
                     "Opened Gate": {
-                        Name: "Opened Gate",
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 81, y: 98, floor: "OUT" },
                         Age: Age.ADULT,
@@ -3547,7 +3222,6 @@ let MapLocations = {
                         }
                     },
                     "3 Pots by Jail 1": {
-                        Name: "3 Pots by Jail 1",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -3557,14 +3231,12 @@ let MapLocations = {
                         LongDescription: "These pots are on the opposite wall of the jail."
                     },
                     "Crate by Jail 1": {
-                        Name: "Crate by Jail 1",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 10, y: 109, floor: "LOW" },
                         Age: Age.EITHER,
                         LongDescription: "The crate is in the opposite corner of the cell door."
                     },
                     "2 Pots in Jail 2 Hallway": {
-                        Name: "2 Pots in Jail 2 Hallway",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -3574,7 +3246,6 @@ let MapLocations = {
                         LongDescription: "These pots are in the hallway to the left of the jail."
                     },
                     "3 Pots by Jail 3": {
-                        Name: "3 Pots by Jail 3",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -3584,7 +3255,6 @@ let MapLocations = {
                         LongDescription: "These pots are on the opposite wall of the closed jail."
                     },
                     "4 Pots in Open Cell by Jail 3": {
-                        Name: "4 Pots in Open Cell by Jail 3",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -3594,7 +3264,6 @@ let MapLocations = {
                         LongDescription: "These pots are in the open cell next to jail 3."
                     },
                     "2 Crates by Jail 3": {
-                        Name: "2 Crates by Jail 3",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsItemLocationGroup: true,
@@ -3604,7 +3273,6 @@ let MapLocations = {
                         LongDescription: "The crates are in the opposite corner of the locked cell door."
                     },
                     "2 Far Crates in Kitchen Hallway": {
-                        Name: "2 Far Crates in Kitchen Hallway",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsItemLocationGroup: true,
@@ -3614,7 +3282,6 @@ let MapLocations = {
                         LongDescription: "The are the far away crates in the hallway attached to the kitchen."
                     },
                     "2 Mid Crates in Kitchen Hallway": {
-                        Name: "2 Mid Crates in Kitchen Hallway",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsItemLocationGroup: true,
@@ -3624,7 +3291,6 @@ let MapLocations = {
                         LongDescription: "The are the closer crates in the hallway attached to the kitchen."
                     },
                     "Crate Close to Kitchen": {
-                        Name: "Crate Close to Kitchen",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsItemLocationGroup: true,
@@ -3645,7 +3311,6 @@ let MapLocations = {
                         }
                     },
                     "2 Pots on Kitchen Table": {
-                        Name: "2 Pots on Kitchen Table",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -3671,11 +3336,8 @@ let MapLocations = {
             topOfKitchen: {
                 ExcludeFromSpawnList: true,
                 Exits: {
-                    jail4Area: {
-                        Name: "jail4Area"
-                    },
+                    jail4Area: {},
                     topOfFortress: {
-                        Name: "northernTopOfFortress",
                         CustomRequirement: function(age) {
                             let canMegaFlip = Data.canMegaFlip(age);
                             if (age === Age.CHILD) {
@@ -3695,7 +3357,6 @@ let MapLocations = {
                 Exits: {},
                 ItemLocations: {
                     "Jail 4 Guard Key": {
-                        Name: "Jail 4 Guard Key",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 318, y: 43, floor: "LOW" },
                         Age: Age.EITHER,
@@ -3709,7 +3370,6 @@ let MapLocations = {
                         LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Face the entrance you just left. As Child, you must enter the door to your left and navigate across to the other side of the room. As Adult, you can jump up to the ledge to your right with a slight angled jump. Climb up the vines and navigate to the door near where the skulltula on the wall would be at night.<br/><br/>Once inside, wait for a bit first for the guard and knock her out or sprint past her before following the path to your right. Eventually you'll reach the jail. Take out the guard to get the item."
                     },
                     "Crate by Jail 4": {
-                        Name: "Crate by Jail 4",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 213, y: 123, floor: "LOW" },
                         Age: Age.EITHER,
@@ -3721,16 +3381,11 @@ let MapLocations = {
             topOfFortress: {
                 ExcludeFromSpawnList: true,
                 Exits: {
-                    jail4Area: {
-                        Name: "jail4Area"
-                    },
-                    upperInteriors: {
-                        Name: "upperInteriors"
-                    }
+                    jail4Area: {},
+                    upperInteriors: {}
                 },
                 ItemLocations: {
                     "Chest on the Top": {
-                        Name: "Chest on the Top",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 176, y: 101, floor: "OUT" },
                         Age: Age.EITHER,
@@ -3749,7 +3404,6 @@ let MapLocations = {
                 Exits: {},
                 ItemLocations: {
                     "Closest Crate in Upper Room": {
-                        Name: "Closest Crate in Upper Room",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 277, y: 197, floor: "UP" },
                         Age: Age.EITHER,
@@ -3761,7 +3415,6 @@ let MapLocations = {
                         LongDescription: "The crate is in front of you when you enter the map."
                     },
                     "Second Crate in Upper Room": {
-                        Name: "Second Crate in Upper Room",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 297, y: 163, floor: "UP" },
                         Age: Age.EITHER,
@@ -3773,7 +3426,6 @@ let MapLocations = {
                         LongDescription: "This is the second crate you run into in this map."
                     },
                     "Guarded Crate Close to Corner": {
-                        Name: "Guarded Crate Close to Corner",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 345, y: 127, floor: "UP" },
                         Age: Age.EITHER,
@@ -3800,7 +3452,6 @@ let MapLocations = {
                         }
                     },
                     "Guarded Crate Next to Corner Crate": {
-                        Name: "Guarded Crate Next to Corner Crate",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 345, y: 117, floor: "UP" },
                         Age: Age.EITHER,
@@ -3824,7 +3475,6 @@ let MapLocations = {
                         }
                     },
                     "2 Pots on Top Room Table": {
-                        Name: "2 Pots on Top Room Table",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -3850,7 +3500,6 @@ let MapLocations = {
                         }
                     },
                     "Crate Above Link's Jail": {
-                        Name: "Crate Above Link's Jail",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 136, y: 68, floor: "OUT" },
                         Age: Age.ADULT,
@@ -3868,14 +3517,11 @@ let MapLocations = {
             backArea: {
                 ExcludeFromSpawnList: true,
                 Exits: {
-                    main: {
-                        Name: "main"
-                    }
+                    main: {}
                 },
 
                 ItemLocations: {
                     "Archery Minigame 1000 Points": {
-                        Name: "Archery Minigame 1000 Points",
                         ItemGroup: ItemGroups.GIFT,
                         Time: function() { return Time.DAY; },
                         MapInfo: { x: 246, y: 220, floor: "OUT" },
@@ -3887,7 +3533,6 @@ let MapLocations = {
                         }
                     },
                     "Archery Minigame 1500 Points": {
-                        Name: "Archery Minigame 1500 Points",
                         ItemGroup: ItemGroups.GIFT,
                         Time: function() { return Time.DAY; },
                         MapInfo: { x: 246, y: 225, floor: "OUT" },
@@ -3899,7 +3544,6 @@ let MapLocations = {
                         }
                     },
                     "Skulltula on Target": {
-                        Name: "Skulltula on Target",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 244, y: 40, floor: "OUT" },
@@ -3913,7 +3557,6 @@ let MapLocations = {
             wastelandEntrance: {
                 Exits: {
                     main: {
-                        Name: "main",
                         CustomRequirement(age) {
                             return age === Age.ADULT || Data.itemLocationObtained("Gerudo Fortress", "main", "Opened Gate");
                         }
@@ -3936,7 +3579,6 @@ let MapLocations = {
             entrance: {
                 Exits: {
                     outpost: {
-                        Name: "outpost",
                         CustomRequirement: function(age) {
                             if (Settings.GlitchesToAllow.itemlessSandPit) { return true; }
                             return age === Age.ADULT && (Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.currentUpgrade === 2);
@@ -3948,7 +3590,6 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Crate by Quicksand": {
-                        Name: "Crate by Quicksand",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 311, y: 266 },
                         Age: Age.EITHER,
@@ -3961,14 +3602,12 @@ let MapLocations = {
                 ExcludeFromSpawnList: true,
                 Exits: {
                     entrance: {
-                        Name: "entrance",
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.backwardsWasteland && Equipment.HOVER_BOOTS.playerHas;
                         }
                     },
                     exit: {
-                        Name : "exit",
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.wastelandNoLens ||
                                 (Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas);
@@ -3978,7 +3617,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Chest at Outpost": {
-                        Name: "Chest at Outpost",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 208, y: 93 },
                         Age: Age.EITHER,
@@ -3993,7 +3631,6 @@ let MapLocations = {
                         NeedsFire: true
                     },
                     "Carpet Shop": {
-                        Name: "Carpet Shop",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 239, y: 292 },
                         Age: Age.EITHER,
@@ -4009,7 +3646,6 @@ let MapLocations = {
                         RequiredItems: [{item: Equipment.WALLET, upgradeString: "1"}]
                     },
                     "Skulltula at Outpost": {
-                        Name: "Skulltula at Outpost",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 208, y: 85 },
                         Age: Age.EITHER,
@@ -4024,7 +3660,6 @@ let MapLocations = {
                         IsAtShortDistance: true
                     },
                     "3 Crates Across Quicksand": {
-                        Name: "3 Crates Across Quicksand",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsItemLocationGroup: true,
@@ -4034,7 +3669,6 @@ let MapLocations = {
                         LongDescription: "These crates are by the flags ust across the quicksand pit."
                     },
                     "3 Pots at Outpost": {
-                        Name: "3 Pots at Outpost",
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -4049,7 +3683,6 @@ let MapLocations = {
             exit: {
                 Exits: {
                     outpost: {
-                        Name: "outpost",
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.backwardsWasteland;
                         }
@@ -4060,7 +3693,6 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Crate near Colossus": {
-                        Name: "Crate near Colossus",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 129, y: 129 },
                         Age: Age.EITHER,
@@ -4098,7 +3730,6 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Heart Piece on Platform": {
-                        Name: "Heart Piece on Platform",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 87, y: 135 },
                         Age: Age.EITHER,
@@ -4111,7 +3742,6 @@ let MapLocations = {
                         }
                     },
                     "Skulltula in Soil": {
-                        Name: "Skulltula in Soil",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 63, y: 165 },
                         Age: Age.CHILD,
@@ -4119,7 +3749,6 @@ let MapLocations = {
                         NeedsBottle: true
                     },
                     "Skulltula on Tree by Oasis": {
-                        Name: "Skulltula on Tree by Oasis",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 180, y: 245 },
@@ -4128,7 +3757,6 @@ let MapLocations = {
                         IsAtShortDistance: true
                     },
                     "Skulltula on Cliff": {
-                        Name: "Skulltula on Cliff",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 213, y: 91 },
@@ -4142,14 +3770,12 @@ let MapLocations = {
                     "Requiem of Spirit": {
                         //TODO: with decoupling, we'll have to check that we can enter whatever leads here
                         // this will be the same as the check for the lost woods bridge!
-                        Name: "Requiem of Spirit",
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 63, y: 149 },
                         Age: Age.EITHER,
                         LongDescription: "Enter and exit the Spirit Temple to receive this item."
                     },
                     "*Plant Bean by Spirit Temple": {
-                        Name: "*Plant Bean by Spirit Temple",
                         ItemGroup: ItemGroups.NON_ITEM,
                         IsBean: true,
                         MapInfo: { x: 63, y: 165 },
@@ -4157,7 +3783,6 @@ let MapLocations = {
                         LongDescription: "This is the bean spot by the Spirit Temple. This is used to more easily get to a skulltula, and to get the heart piece above."
                     },
                     "Gossip Stone by Spirit Temple": {
-                        Name: "Gossip Stone by Spirit Temple",
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 54, y: 194 },
