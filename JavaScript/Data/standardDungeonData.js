@@ -4587,7 +4587,7 @@ let StandardDungeons = {
                         Regions: ["main"],
                         MapInfo: { x: 300, y: 71, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 16,
+                        Order: 22,
                         LongDescription: "This is the door after the crawlspace in the northeast corner of the main room.",
                         KeyRequirement: function(age) {
                             return { min: 1, max: 3 };
@@ -4598,7 +4598,7 @@ let StandardDungeons = {
                         Regions: ["main"],
                         MapInfo: { x: 160, y: 121, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 12,
+                        Order: 17,
                         LongDescription: "This is left locked door in the center of the main room.",
                         KeyRequirement: function(age) {
                             return { min: 1, max: 3 };
@@ -4609,7 +4609,7 @@ let StandardDungeons = {
                         Regions: ["main"],
                         MapInfo: { x: 225, y: 121, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 14,
+                        Order: 20,
                         LongDescription: "This is right locked door in the center of the main room.",
                         KeyRequirement: function(age) {
                             return { min: 1, max: 3 };
@@ -4640,75 +4640,169 @@ let StandardDungeons = {
                 },
 
                 ItemLocations: {
+                    "2 Pots by Entrance": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 194, y: 248, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 1,
+                        LongDescription: "These pots are by the first fake wall of the dungeon."
+                    },
                     "Chest in Front Right Wall": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 231, y: 195, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 1,
+                        Order: 2,
                         LongDescription: "Get to the main room. Follow the wall in front of you around to the right. There's a fake wall to your left when you first turn the left corner.",
                     },
                     "Chest in Front Left Wall": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 158, y: 194, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 3,
+                        Order: 4,
                         LongDescription: "This chest is in a fake wall to the left when you first enter the main room."
+                    },
+                    "3 Pots Left of Entrance": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 100, y: 223, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 5,
+                        LongDescription: "These pots are past an invisible wall in the southwest corner of the main room."
                     },
                     "Compass Chest in Center": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 167, y: 172, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 4,
+                        Order: 6,
                         LongDescription: "From the main room's entrance, follow the path to the left. When you enter the tunnel, hug the right wall until you pass through the fake wall. The chest is in there, but don't go too far in front of it because there's a pit."
                     },
                     "Chest by Giant Skulltula in Center": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 221, y: 172, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 5,
+                        Order: 7,
                         LongDescription: "Get to the center room, past the fake wall straight ahead from the entrance. This is the chest that's guarded by the giant skulltula in the righthand side cage. DO NOT accidently go to the map chest, as you might accidently fall into the pit."
                     },
                     "Northwest Chest Under Rubble": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 93, y: 49, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 6,
+                        Order: 8,
                         LongDescription: "From the main room's entrance, follow the path to the left. Continue straight until you run into either the wall, or the giant skulltula. To the left you can see that there's some rubble in the back. DO NOT simply walk to it - there are pits. Hug the left side of the little alcove to get there safely. Bomb the rubble to get the chest.",
                         NeedsExplosives: true
+                    },
+                    "Underwater Pot by Triforce": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 195, y: 41, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 9,
+                        LongDescription: "In the north part of the main room, there is a pot underwater by the triforce symbol. If you can't play Zelda's Lullaby to drain the water, you can break the pot using a bombchu/boomerang/slingshot then dive in to get the item.",
+                        CustomRequirement: function(age) {
+                            return Data.canPlaySong(Songs.ZELDAS_LULLABY) ||
+                                Items.FAIRY_SLINGSHOT.playerHas ||
+                                Items.BOOMERANG.playerHas ||
+                                Items.BOMBCHU.playerHas;
+                        }
                     },
                     "Underwater Chest by Coffin Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 93, y: 137, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 7,
+                        Order: 10,
                         LongDescription: "First, drain the water by playing Zelda's Lullaby on the Triforce picture on the north side of the main room. This chest is near the entrance to the coffin room, which is in a room on the left side of the main room.",
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
                     },
-                    "Key in Coffin Room": {
+                    "Heart in Open Coffin": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapInfo: { x: 42, y: 130, floor: "F1" },
+                        MapImageName: "Recovery Heart",
+                        Age: Age.CHILD,
+                        Order: 11,
+                        LongDescription: "Head to the room to the left of the main room. The heart is in the open coffin by the gibdo.",
+                    },
+                    "Heart in Closed Coffin": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapInfo: { x: 57, y: 130, floor: "F1" },
+                        MapImageName: "Recovery Heart",
+                        Age: Age.CHILD,
+                        Order: 12,
+                        LongDescription: "Head to the room to the left of the main room. The heart is in the bottom left coffin - light the torch to open it.",
+                        CustomRequirement: function(age) {
+                            return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
+                        }
+                    },
+                    "Key in Closed Coffin": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 29, y: 142, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 8,
-                        LongDescription: "Head to the room to the left of the main room. Either dive under the gate, or climb up the vines to get to the door (depends on whether you drained the water). Inside, light the upper leftmost torch to gain access to the key. Remember that you can use Din's Fire if you don't have sticks.",
+                        Order: 13,
+                        LongDescription: "Head to the room to the left of the main room. The heart is in the top left coffin - light the torch to open it.",
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || Data.canUseFireItem(age);
+                            return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
                         }
                     },
                     "Underwater Chest in Front": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 185, y: 238, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 9,
+                        Order: 14,
                         LongDescription: "First, drain the water by playing Zelda's Lullaby on the Triforce picture on the north side of the main room. This chest is in the pit by the entrance, near the crawlspace to Dead Hand.",
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
+                    },
+                    "5 Blue Rupees in Basement Center": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "5 Blue Rupees",
+                        MapInfo: { x: 204, y: 155, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 27,
+                        LongDescription: "Fall down the central hole (by the wooden X in the center of the dungeon) to get to these rupees."
+                    },
+                    "10 Pots in Second North Wing": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "10 Pots",
+                        MapInfo: { x: 248, y: 103, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 28,
+                        LongDescription: "These pots are down the second wing from the left in the basement."
+                    },
+                    "2 Pots by Second North Wing": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 198, y: 174, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 29,
+                        LongDescription: "These pots are by the entrance to the second wing from the left in the basement."
                     },
                     "Map Chest in Basement": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 302, y: 238, floor: "B1" },
                         Age: Age.CHILD,
-                        Order: 20,
+                        Order: 30,
                         LongDescription: "Fall down one of the many pits to get to the basement. This chest is located behind the rocks that are farthest from the ladder. That is, if you face away from the ladder, it's the rightmost set of rocks.",
                         NeedsExplosives: true
+                    }
+                }
+            },
+            bombableHoleRoom: {
+                Exits: {},
+                ItemLocations: {
+                    "Chest in Front Bombable Hole": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 182, y: 192, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 3,
+                        LongDescription: "Get to the main room. Bomb the rubble that's in front of you and slightly to the left to gain access to this chest."
                     }
                 }
             },
@@ -4722,25 +4816,32 @@ let StandardDungeons = {
                 },
 
                 ItemLocations: {
+                    "Pot in Room With Pits": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 284, y: 85, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 23,
+                        LongDescription: "This is the room after the crawlspace at the upper right part of the main room. Be careful of the invisible pits in this room. To get to this pot safely, hug the right wall from the entrance until you get to it."
+                    },
                     "Chest in Room With Pits": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 302, y: 114, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 17,
+                        Order: 24,
                         LongDescription: "This is the room after the crawlspace at the upper right part of the main room. Be careful of the invisible pits in this room. To get to this chest safely, hug the left wall REALLY close."
                     },
                     "Chest in Like-Like Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 299, y: 137, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 18,
+                        Order: 25,
                         LongDescription: "This is the room after the crawlspace at the upper right part of the main room. Be careful of the invisible pits in this room. If you don't have the lens - here's one way to get around (it's still difficult). Get to the corner of the room with the chest. Face the left wall (the one the door is NOT on). Do two left sidehops and move a tiny bit more left. Go straight to where the beamos is (or was). Now angle yourself diagonal left toward the door and pray you make it. The chest is guarded by a like-like that you don't have to kill."
                     },
                     "Skulltula in Like-Like Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 307, y: 137, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 19,
+                        Order: 26,
                         LongDescription: "This is the room after the crawlspace at the upper right part of the main room. Be careful of the invisible pits in this room. If you don't have the lens - here's one way to get around (it's still difficult). Get to the corner of the room with the chest. Face the left wall (the one the door is NOT on). Do two left sidehops and move a tiny bit more left. Go straight to where the beamos is (or was). Now angle yourself diagonal left toward the door and pray you make it. The skulltula is guarded by a like-like that you don't have to kill.",
                         IsAtShortDistance: true
                     }
@@ -4749,11 +4850,21 @@ let StandardDungeons = {
             leftLockedRoom: {
                 Exits: {},
                 ItemLocations: {
+                    "3 Flying Pots in Left Locked Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 160, y: 95, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 18,
+                        LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the left side - the pots are in the back and will fly at you."
+                    },
                     "Skulltula in Left Locked Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 156, y: 86, floor: "F1" },
+                        MapInfo: { x: 160, y: 87, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 13,
+                        Order: 19,
                         LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the left side to get to the skulltula.",
                         IsAtShortDistance: true
                     }
@@ -4766,7 +4877,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 213, y: 80, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 15,
+                        Order: 21,
                         LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the right side. Hug the right wall, moving counter-clockwise, over the invisible floor to get to the skulltula.",
                         IsAtShortDistance: true
                     }
@@ -4788,32 +4899,20 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 332, y: 243, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 10,
+                        Order: 15,
                         LongDescription: "First, drain the water by playing Zelda's Lullaby on the Triforce picture on the north side of the main room. Go back to the pit by the entrance of the main room. Climb through the crawlspace, then through the door to Dead Hand's room. The hidden chest is straight ahead of you."
                     },
                     "Dead Hand Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 318, y: 243, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 11,
+                        Order: 16,
                         LongDescription: "First, drain the water by playing Zelda's Lullaby on the Triforce picture on the north side of the main room. Go back to the pit by the entrance of the main room. Climb through the crawlspace, then through the door to Dead Hand's room. Defeat Dead Hand to spawn the chest. To do so, let the hands grab you, then mash A and B to escape. Hit Dead Hand as he approaches you to damage him. If using sticks, it's recommended to jumpslash him to halve the number of sticks you need, just make sure his head is hittable first.",
                         CustomRequirement: function(age) {
                             let swordRequired = Settings.RandomizerSettings.deadHandNeedsSword;
                             if (swordRequired) { return Equipment.KOKIRI_SWORD.playerHas; }
                             return Data.hasSwordWeapon(age);
                         }
-                    }
-                }
-            },
-            bombableHoleRoom: {
-                Exits: {},
-                ItemLocations: {
-                    "Chest in Front Bombable Hole": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 182, y: 192, floor: "F1" },
-                        Age: Age.CHILD,
-                        Order: 2,
-                        LongDescription: "Get to the main room. Bomb the rubble that's in front of you and slightly to the left to gain access to this chest."
                     }
                 }
             }

@@ -1831,6 +1831,36 @@ GrottoGroups = {
 			}
 		}
 	},
+	"5 Blue Rupees": {
+		tooltip: "A group of 8 green rupees.",
+		buttons: {
+			"Blue Rupee 1": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 1."
+			},
+			"Blue Rupee 2": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 2."
+			},
+			"Blue Rupee 3": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 3."
+			},
+			"Blue Rupee 4": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 4."
+			},
+			"Blue Rupee 5": {
+				icon: "Blue Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 5."
+			}
+		}
+	},
 	"3 Red Rupees": {
 		tooltip: "A group of three red rupees.",
 		buttons: {
@@ -2061,6 +2091,61 @@ GrottoGroups = {
 				icon: "Pot",
 				itemGroup: ItemGroups.POT,
 				description: "Pot 4."
+			}
+		}
+	},
+	"10 Pots": {
+		tooltip: "A set of 10 pots.",
+		buttons: {
+			"Pot 1": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 1."
+			},
+			"Pot 2": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 2."
+			},
+			"Pot 3": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 3."
+			},
+			"Pot 4": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 4."
+			},
+			"Pot 5": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 5."
+			},
+			"Pot 6": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 6."
+			},
+			"Pot 7": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 7."
+			},
+			"Pot 8": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 8."
+			},
+			"Pot 9": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 9."
+			},
+			"Pot 10": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 10."
 			}
 		}
 	},
@@ -2402,4 +2487,3 @@ GrottoGroups = {
 		}
 	}
  };
-
