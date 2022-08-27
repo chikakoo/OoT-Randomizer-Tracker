@@ -5542,11 +5542,42 @@ let StandardDungeons = {
     "Ganon's Castle": {
         Abbreviation: "GANC",
         MapGroup: MapGroups.DUNGEONS,
-        Floors: ["MN", "FST", "FIR", "WTR", "SHW", "SPT", "LIT"],
+        Floors: ["MN", "FST", "WTR", "SHW", "FIR", "LIT", "SPT"],
         StartingFloorIndex: 0,
+        _canCompleteTrials: function(age) {
+            // Requires IsPostWalkCheck to be true on any item location that uses this!!!
+            let canUseLightArrows = age === Age.ADULT && Items.LIGHT_ARROW.playerHas && Equipment.MAGIC.playerHas;
+            if (!canUseLightArrows) { return false; }
+
+            return Data.canAccessMap(age, "Ganon's Castle", "forestTrialEnd") &&
+                Data.canAccessMap(age, "Ganon's Castle", "waterTrialEnd") &&
+                Data.canAccessMap(age, "Ganon's Castle", "shadowTrialEnd") &&
+                Data.canAccessMap(age, "Ganon's Castle", "fireTrialEnd") &&
+                Data.canAccessMap(age, "Ganon's Castle", "lightTrialEnd") &&
+                Data.canAccessMap(age, "Ganon's Castle", "spiritTrialEnd");
+        },
         Regions: {
             main: {
                 Exits: {
+                    forestTrialEnd: {
+                        Age: Age.ADULT,
+                        NeedsFire: true,
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.HOOKSHOT]
+                    },
+                    fireTrialEnd: {
+                        Age: Age.ADULT,
+                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "3"}, {item: Items.HOOKSHOT, upgradeString: "2"}],
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.ganonFireNoTunic || Equipment.GORON_TUNIC.playerHas;
+                        }
+                    },
+                    waterTrialEnd: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.MEGATON_HAMMER],
+                        CustomRequirement: function(age) {
+                            return Data.canUseBlueFire(age);
+                        }
+                    },
                     shadowTrialMiddle: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
@@ -5625,7 +5656,7 @@ let StandardDungeons = {
                         MapInfo: { x: 175, y: 215, floor: "WTR" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-                        Order: 6,
+                        Order: 7,
                         LongDescription: "Enter the water trial. Look for the chest in the back left section of the room."
                     },
                     "Water Trial Right Chest": {
@@ -5633,31 +5664,268 @@ let StandardDungeons = {
                         MapInfo: { x: 213, y: 215, floor: "WTR" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-                        Order: 7,
+                        Order: 8,
                         LongDescription: "Enter the water trial. Look for the chest in the back right section of the room."
                     },
                     "Shadow Trial Close Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 146, y: 226, floor: "SHW" },
                         Age: Age.ADULT,
-                        Order: 8,
+                        Order: 10,
                         LongDescription: "Enter the shadow trial. The chest is in front of you and a bit to the left on a little island. You can hookshot to it, hover boots to it (you'll need to roll mid-air to get the distance), shoot a fire arrow at a torch to spawn platforms, or play the Song of Time to get a platform you can jump to.",
                         CustomRequirement: function(age) {
                             let canUseFireArrows = Items.FAIRY_BOW.playerHas && Items.FIRE_ARROW.playerHas && Equipment.MAGIC.playerHas;
                             return canUseFireArrows || Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas || Data.canPlaySong(Songs.SONG_OF_TIME);
                         }
+                    },
+                    "Heart in Fire Trial": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapInfo: { x: 155, y: 156, floor: "FIR" },
+                        MapImageName: "Recovery Heart",
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        Order: 15,
+                        LongDescription: "Enter the fire trial. The heart is on a sinking platform near where the golden gauntlets pillar starts."
+                    },
+                    "Heart in Spirit Trial": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapInfo: { x: 128, y: 242, floor: "SPT" },
+                        MapImageName: "Recovery Heart",
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        Order: 27,
+                        LongDescription: "Enter the spirit trial. The heart is on the left wall."
+                    }
+                }
+            },
+            forestTrialEnd: {
+                Exits: {},
+                ItemLocations: {
+                    "2 Pots at Forest Trial End": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 178, y: 65, floor: "FST" },
+                        Age: Age.ADULT,
+                        Order: 6,
+                        LongDescription: "Enter the forest trial - you must first light all the torches in the room. If you have no bow, you can use Din's Fire if you light the top torch by first hooshotting to it.</br></br>The next room is difficult to do without hover boots, but it can be done if you use the fans to push you across the room (grab the one to your left first and let the fan push you to the platform). The floating rupee can be retrieved after you jump on the switch in the back of the room.<br/><br/>The pots are in the final room that unlocks."
+                    }
+                }
+            },
+            waterTrialEnd: {
+                Exits: {},
+                ItemLocations: {
+                    "2 Pots at Water Trial End": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 192, y: 10, floor: "WTR" },
+                        Age: Age.ADULT,
+                        Order: 9,
+                        LongDescription: "Enter the water trial - kill the freezards to unbar the door, then use blue fire to melt the ice to gain access. Complete the block puzzle to get to the ledge. Melt that ice and hammer the switch to make your way to the room with the pots."
                     }
                 }
             },
             shadowTrialMiddle: {
-                Exits: {},
+                Exits: {
+                    shadowTrialEnd: {
+                        CustomRequirement: function(age) {
+                            let canUseLens = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas;
+                            return canUseLens || Settings.GlitchesToAllow.gannonShadowTrialLens;
+                        }
+                    }
+                },
                 ItemLocations: {
+                    "2 Pots on Shadow Trial Like Like Platform": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 185, y: 135, floor: "SHW" },
+                        Age: Age.ADULT,
+                        Order: 11,
+                        LongDescription: "Enter the Shadow trial. Get to the platform where the like-like resides by either shooting a fire arrow at the right torch, or longshotting to the torch and then the like-like. The pots are in the corners of the platform."
+                    },
                     "Shadow Trial Far Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 187, y: 103, floor: "SHW" },
                         Age: Age.ADULT,
-                        Order: 9,
+                        Order: 12,
                         LongDescription: "Enter the shadow trial. First, get to the platform passed the like-like platform. One way to do this is to shoot a fire arrow at the torch to the right. If you can't, then use your longshot to hook the torch. Now get on the very edge of the platform closest to the like-like. Longshot the like-like to get over there. Either use the torch, or use Hover Boots to get to the next platform. Down and to the right is a switch. Navigate to it. Once you press it, either hookshot to it or void out and come back for it.",
+                    },
+                    "3 Hearts on Invisible Shadow Trial Bridge": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Hearts",
+                        MapInfo: { x: 176, y: 61, floor: "SHW" },
+                        Age: Age.ADULT,
+                        Order: 13,
+                        LongDescription: "Enter the shadow trial. First, get to the platform passed the like-like platform. One way to do this is to shoot a fire arrow at the torch to the right. If you can't, then use your longshot to hook the torch. Now get on the very edge of the platform closest to the like-like. Longshot the like-like to get over there. Either use the torch, or use Hover Boots to get to the next platform. The hearts are in front of you on an invislbe bridge (the start of the bridge is lined up with the chest spawn platform).",
+                        CustomRequirement: function(age) {
+                            let canUseLens = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas;
+                            return canUseLens || Settings.GlitchesToAllow.gannonShadowTrialLens;
+                        }
+                    }
+                }
+            },
+            shadowTrialEnd: {
+                Exits: {},
+                ItemLocations: {
+                    "2 Pots at Shadow Trial End": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 178, y: 5, floor: "SHW" },
+                        Age: Age.ADULT,
+                        Order: 14,
+                        LongDescription: "After the like-like platform - navigate to the rusted switch after the invisible bridge. Hit it to unbar the door.",
+                        CustomRequirement: function(age) {
+                            let canUseLens = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas;
+                            return canUseLens || Settings.GlitchesToAllow.gannonShadowTrialLens;
+                        }
+                    }
+                }
+            },
+            fireTrialEnd: {
+                Exits: {},
+                ItemLocations: {
+                    "2 Pots at Fire Trial End": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 178, y: 77, floor: "FIR" },
+                        Age: Age.ADULT,
+                        Order: 16,
+                        LongDescription: "Enter the fire trial - you must grab all the silver rupees to enter the room with the pots. Equipping hover boots will prevent the platform from sinking, but isn't required."
+                    }
+                }
+            },
+            lightTrialRoom1: {
+                Exits: {
+                    lightTrialRoom2: {
+                        CustomRequirement: function(age) {
+                            return getKeyCount("Ganon's Castle") >= 1;
+                        }
+                    }
+                },
+
+                ItemLocations: {
+                    "Light Trial Left Lower Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 167, y: 265, floor: "LIT" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Order: 17,
+                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
+                    },
+                    "Light Trial Left Middle Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 162, y: 251, floor: "LIT" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Order: 18,
+                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
+                    },
+                    "Light Trial Left Top Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 165, y: 235, floor: "LIT" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Order: 19,
+                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
+                    },
+                    "Light Trial Right Lower Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 194, y: 265, floor: "LIT" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Order: 20,
+                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
+                    },
+                    "Light Trial Right Middle Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 199, y: 251, floor: "LIT" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Order: 21,
+                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
+                    },
+                    "Light Trial Right Upper Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 194, y: 235, floor: "LIT" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Order: 22,
+                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial.",
+                    },
+                    "Light Trial Hidden Enemy Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 180, y: 251, floor: "LIT" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Order: 23,
+                        LongDescription: "Enter the light trial. Kill the invisible enemies (giant skulltula in the middle, several keese on the chests). This chest will spawn in the middle."
+                    }
+                }
+            },
+            lightTrialRoom2: {
+                Exits: {
+                    lightTrialRoom3: {
+                        CustomRequirement: function(age) {
+                            return getKeyCount("Ganon's Castle") >= 2;
+                        }
+                    }
+                },
+
+                ItemLocations: {
+                    "Light Trial Zelda's Lullaby Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 195, y: 196, floor: "LIT" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Order: 24,
+                        LongDescription: "Enter the light trial and advance to the next room. Play Zelda's Lullaby on the Triforce picture to spawn this chest.",
+                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                    }
+                }
+            },
+            lightTrialRoom3: {
+                Exits: {
+                    lightTrialEnd: {
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            return Items.HOOKSHOT.playerHas || Data.canGroundJumpWithBomb(age);
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "Pot at Light Trial": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 180, y: 138, floor: "LIT" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Order: 25,
+                        LongDescription: "The pot is in front of you after the Zelda's Lullaby room."
+                    }
+                }
+            },
+            lightTrialEnd: {
+                Exits: {},
+                ItemLocations: {
+                    "2 Pots at Light Trial End": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 180, y: 10, floor: "LIT" },
+                        Age: Age.ADULT,
+                        Order: 26,
+                        LongDescription: "After the Zelda's Lullaby room, gather all the silver rupees. The room after that is fake - just run through the wall. The pots are in the next one."
                     }
                 }
             },
@@ -5681,116 +5949,47 @@ let StandardDungeons = {
                         MapInfo: { x: 242, y: 184, floor: "SPT" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
-                        Order: 18,
+                        Order: 28,
                         LongDescription: "Enter the spirit trial. Collect the rupees to advance to the next room. Hit the switch closest to the barred door with a jumpslash or charged spin attack to spawn the chest."
                     }
                 }
             },
             spiritTrialRoom3: {
-                Exits: {},
+                Exits: {
+                    spiritTrialEnd: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW, Equipment.MIRROR_SHIELD]
+                    }
+                },
                 ItemLocations: {
                     "Hidden Spirit Trial Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 239, y: 120, floor: "SPT" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
-                        Order: 19,
+                        Order: 29,
                         LongDescription: "Enter the spirit trial. Collect the rupees to advance to the next room. To your left, there is a switch. Line up with the switch and drop a Bombchu. It should navigate itself over to the switch and activate it. This will open the door - enter it. The hidden chest is now in front of you and a little bit to the right. Face the right wall when trying to open it."
                     }
                 }
             },
-            lightTrialRoom1: {
-                Exits: {
-                    lightTrialRoom2: {
-                        CustomRequirement: function(age) {
-                            return getKeyCount("Ganon's Castle") >= 1;
-                        }
-                    }
-                },
-
-                ItemLocations: {
-                    "Light Trial Left Lower Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 167, y: 265, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
-                        Order: 10,
-                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
-                    },
-                    "Light Trial Left Middle Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 162, y: 251, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
-                        Order: 11,
-                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
-                    },
-                    "Light Trial Left Top Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 165, y: 235, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
-                        Order: 12,
-                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
-                    },
-                    "Light Trial Right Lower Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 194, y: 265, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
-                        Order: 13,
-                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
-                    },
-                    "Light Trial Right Middle Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 199, y: 251, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
-                        Order: 14,
-                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
-                    },
-                    "Light Trial Right Upper Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 194, y: 235, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
-                        Order: 15,
-                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial.",
-                    },
-                    "Light Trial Hidden Enemy Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 180, y: 251, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
-                        Order: 16,
-                        LongDescription: "Enter the light trial. Kill the invisible enemies (giant skulltula in the middle, several keese on the chests). This chest will spawn in the middle."
-                    }
-                }
-            },
-            lightTrialRoom2: {
-                Exits: {
-                    lightTrialRoom3: {
-                        CustomRequirement: function(age) {
-                            return getKeyCount("Ganon's Castle") >= 2;
-                        }
-                    }
-                },
-
-                ItemLocations: {
-                    "Light Trial Zelda's Lullaby Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 195, y: 196, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
-                        Order: 17,
-                        LongDescription: "Enter the light trial and advance to the next room. Play Zelda's Lullaby on the Triforce picture to spawn this chest.",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
-                    }
-                }
-            },
-            lightTrialRoom3: {
+            spiritTrialEnd: {
                 Exits: {},
-                ItemLocations: {}
+                ItemLocations: {
+                    "2 Pots at Spirit Trial End": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 157, y: 71, floor: "SPT" },
+                        Age: Age.ADULT,
+                        Order: 30,
+                        LongDescription: "After going through the bombchu switch door - either fire arrow the web in the next room, or fire an arrow through the lit torch at it. After that, shine the light on the sun to the right of the entrance to the room to gain access to the pots.",
+                        CustomRequirement: function(age) {
+                            let canUseLens = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas;
+                            return canUseLens || Settings.GlitchesToAllow.gannonShadowTrialLens;
+                        }
+                    }
+                }
             },
             center: {
                 Exits: {
@@ -5806,23 +6005,13 @@ let StandardDungeons = {
                         MapInfo: { x: 155, y: 95, floor: "MN" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.staircaseHover; },
-                        Order: 20,
+                        Order: 31,
                         IsPostWalkCheck: true,
                         LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
                         CustomRequirement: function(age) {
-                            if (Settings.GlitchesToAllow.ganonTrialSkip || Data.canStaircaseHover(age)) { return true; }
-                            let canUseLightArrows = Items.FAIRY_BOW.playerHas && Items.LIGHT_ARROW.playerHas && Equipment.MAGIC.playerHas;
-                            if (!canUseLightArrows) { return false; }
-                            
-                            let canDoForest = Data.canUseFireItem(age) && Equipment.HOVER_BOOTS.playerHas;
-                            let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
-                            let canDoFire = tunicCheck && Items.HOOKSHOT.playerHas && Equipment.STRENGTH.currentUpgrade === 3;
-                            let canDoWater = (Data.hasBottle() || Data.canUseBlueFire(age)) && Items.MEGATON_HAMMER.playerHas;
-                            let canDoShadow = Data.canAccessMap(age, "Ganon's Castle", "shadowTrialMiddle") && Items.MEGATON_HAMMER.playerHas;
-                            let canDoSpirit = Data.canAccessMap(age, "Ganon's Castle", "spiritTrialRoom3") && Equipment.MIRROR_SHIELD.playerHas;
-                            let canDoLight = Data.canAccessMap(age, "Ganon's Castle", "lightTrialRoom3") && Items.HOOKSHOT.playerHas;
-                            
-                            return canDoForest && canDoFire && canDoWater && canDoShadow && canDoSpirit && canDoLight;
+                            return Settings.GlitchesToAllow.ganonTrialSkip || 
+                                Data.canStaircaseHover(age) ||
+                                MapLocations["Ganon's Castle"]._canCompleteTrials(age);
                         }
                     }
                 }
@@ -5838,23 +6027,13 @@ let StandardDungeons = {
                         MapInfo: { x: 175, y: 95, floor: "MN" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.staircaseHover; },
-                        Order: 21,
+                        Order: 32,
                         IsPostWalkCheck: true,
                         LongDescription: "Complete all the trials. Now, go up the center of the castle. This is room after you open the first giant door.",
                         CustomRequirement: function(age) {
-                            if (Settings.GlitchesToAllow.ganonTrialSkip || Data.canStaircaseHover(age)) { return true; }
-                            let canUseLightArrows = Items.FAIRY_BOW.playerHas && Items.LIGHT_ARROW.playerHas && Equipment.MAGIC.playerHas;
-                            if (!canUseLightArrows) { return false; }
-                            
-                            let canDoForest = Data.canUseFireItem(age) && Equipment.HOVER_BOOTS.playerHas;
-                            let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
-                            let canDoFire = tunicCheck && Items.HOOKSHOT.playerHas && Equipment.STRENGTH.currentUpgrade === 3;
-                            let canDoWater = (Data.hasBottle() || Data.canUseBlueFire(age)) && Items.MEGATON_HAMMER.playerHas;
-                            let canDoShadow = Data.canAccessMap(age, "Ganon's Castle", "shadowTrialMiddle") && Items.MEGATON_HAMMER.playerHas;
-                            let canDoSpirit = Data.canAccessMap(age, "Ganon's Castle", "spiritTrialRoom3") && Equipment.MIRROR_SHIELD.playerHas;
-                            let canDoLight = Data.canAccessMap(age, "Ganon's Castle", "lightTrialRoom3") && Items.HOOKSHOT.playerHas;
-                            
-                            return canDoForest && canDoFire && canDoWater && canDoShadow && canDoSpirit && canDoLight;
+                            return Settings.GlitchesToAllow.ganonTrialSkip || 
+                                Data.canStaircaseHover(age) ||
+                                MapLocations["Ganon's Castle"]._canCompleteTrials(age);
                         }
                     }
                 }

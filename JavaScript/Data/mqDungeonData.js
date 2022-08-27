@@ -5684,7 +5684,7 @@ let MQDungeons = {
         Abbreviation: "GANC",
         MapGroup: MapGroups.DUNGEONS,
         IsMasterQuest: true,
-        Floors: ["MN", "FST", "FIR", "WTR", "SHW", "SPT", "LIT"],
+        Floors: ["MN", "FST", "WTR", "SHW", "FIR", "LIT", "SPT"],
         StartingFloorIndex: 0,
         Regions: {
             main: {

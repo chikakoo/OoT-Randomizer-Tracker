@@ -260,6 +260,8 @@ let Settings = {
 		gtgChildVineClips: false,
 		gtgSilverBlockSkip: false,
 		
+		ganonFireNoTunic: false,
+		gannonShadowTrialLens: false,
 		ganonSpiritHookshotless: false,
 		ganonLightTrialSuperslideSkip: false,
 		ganonLightTrailEssSkip: false,

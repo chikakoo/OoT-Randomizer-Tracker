@@ -241,7 +241,7 @@
 							Open Kakariko
 						</label>
 						<label onclick='SettingsPage.setBooleanValueForRandomizer("openGanonsCastlePotRoom", event)'
-							title="Opens the room in Ganon's Castle that leads to the 14 pots. This means the boss key will not be requried.">
+							title="Opens the room in Ganon's Castle that leads to the 14 pots. This means the boss key will not be required.">
 							<input type="checkbox" name="openGanonsCastlePotRoom" value="openGanonsCastlePotRoom">
 							Open Ganon's Castle Pot Room
 						</label>
@@ -292,7 +292,7 @@
 								<input type="radio" name="medallionSetting" value=3>All
 							</label>
 							<label onclick='SettingsPage.setOptionValueForRandomizer("medallionSetting", event)'
-								title="Only shadow and spirit medallions requried. Additionally, you need the light arrows. This is how the game originally behaved.">
+								title="Only shadow and spirit medallions required. Additionally, you need the light arrows. This is how the game originally behaved.">
 								<input type="radio" name="medallionSetting" value=0>Vanilla
 							</label>
 							<label onclick='SettingsPage.setOptionValueForRandomizer("medallionSetting", event)'
@@ -1207,6 +1207,16 @@
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsGanonsCastleContainer")' settings>Ganon's Castle</span>
 					<div id="settingsGanonsCastleContainer">
+						<label onclick='SettingsPage.setBooleanValueForGlitches("ganonFireNoTunic", event)'
+							title="Allows you to complete the fire trial without a Goron Tunic. Note that you'll need a sufficient number of hearts to do so!">
+							<input type="checkbox" name="ganonFireNoTunic" value="ganonFireNoTunic">
+							Fire Trial without Goron Tunic
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("gannonShadowTrialLens", event)'
+							title="Allows you to get the three hearts and complete the Shadow Trial without the lens. To get the hearts, start at the chest spawn pad and walk straight (you will jump and land, hold back a bit). Now, run straight to grab all the hearts.">
+							<input type="checkbox" name="gannonShadowTrialLens" value="gannonShadowTrialLens">
+							Shadow Trial without Lens of Truth
+						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitches("ganonSpiritHookshotless", event)'
 							title="Uses a hover to get on top of the beamos to get the silver rupee.">
 							<input type="checkbox" name="ganonSpiritHookshotless" value="ganonSpiritHookshotless">
