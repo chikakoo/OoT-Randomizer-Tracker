@@ -783,6 +783,7 @@ InteriorGroups = {
 	// Non-shuffle only locations
 	"Mido's House": {
 		tooltip: "Mido's House in Kokiri Forest",
+		icon: "4 Chests",
 		excludeFromGroup: function() { return true; },
 		buttons: {
 			"Chest 1": {
@@ -2464,6 +2465,62 @@ GrottoGroups = {
 			}
 		}
 	},
+	"4 Chests": {
+		tooltip: "A group of 4 chests.",
+		excludeFromGroup: function() { return true; },
+		buttons: {
+			"Chest 1": {
+				icon: "Chest",
+				description: "Chest 1."
+			},
+			"Chest 2": {
+				icon: "Chest",
+				description: "Chest 2."
+			},
+			"Chest 3": {
+				icon: "Chest",
+				description: "Chest 3."
+			},
+			"Chest 4": {
+				icon: "Chest",
+				description: "Chest 4."
+			}
+		}
+	},
+	"7 Chests": {
+		tooltip: "A group of 4 chests.",
+		excludeFromGroup: function() { return true; },
+		buttons: {
+			"Chest 1": {
+				icon: "Chest",
+				description: "Chest 1."
+			},
+			"Chest 2": {
+				icon: "Chest",
+				description: "Chest 2."
+			},
+			"Chest 3": {
+				icon: "Chest",
+				description: "Chest 3."
+			},
+			"Chest 4": {
+				icon: "Chest",
+				description: "Chest 4."
+			},
+			"Chest 5": {
+				icon: "Chest",
+				description: "Chest 5."
+			},
+			"Chest 6": {
+				icon: "Chest",
+				description: "Chest 6."
+			},
+			"Chest 7": {
+				icon: "Chest",
+				description: "Chest 7."
+			}
+		}
+	},
 	"2 Scrubs": {
 		tooltip: "A group of 2 business scrubs.",
 		icon: "2 Scrubs No Beehive",
@@ -2482,6 +2539,165 @@ GrottoGroups = {
 				itemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
+				}
+			}
+		}
+	},
+	"4 Scrubs": {
+		tooltip: "A group of 4 business scrubs.",
+		icon: "4 Scrubs",
+		buttons: {
+			"Scrub 1": {
+				icon: "Scrub",
+				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
+				canGet: function(age) {
+					return Data.canBuyFromScrub(age);
+				}
+			},
+			"Scrub 2": {
+				icon: "Scrub",
+				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
+				canGet: function(age) {
+					return Data.canBuyFromScrub(age);
+				}
+			},
+			"Scrub 3": {
+				icon: "Scrub",
+				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
+				canGet: function(age) {
+					return Data.canBuyFromScrub(age);
+				}
+			},
+			"Scrub 4": {
+				icon: "Scrub",
+				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
+				canGet: function(age) {
+					return Data.canBuyFromScrub(age);
+				}
+			}
+		}
+	},
+	"5 Scrubs": {
+		tooltip: "A group of 5 business scrubs.",
+		icon: "5 Scrubs",
+		buttons: {
+			"Scrub 1": {
+				icon: "Scrub",
+				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
+				canGet: function(age) {
+					return Data.canBuyFromScrub(age);
+				}
+			},
+			"Scrub 2": {
+				icon: "Scrub",
+				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
+				canGet: function(age) {
+					return Data.canBuyFromScrub(age);
+				}
+			},
+			"Scrub 3": {
+				icon: "Scrub",
+				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
+				canGet: function(age) {
+					return Data.canBuyFromScrub(age);
+				}
+			},
+			"Scrub 4": {
+				icon: "Scrub",
+				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
+				canGet: function(age) {
+					return Data.canBuyFromScrub(age);
+				}
+			},
+			"Scrub 5": {
+				icon: "Scrub",
+				description: "Buy the item from the scrub.",
+				itemGroup: ItemGroups.SCRUB,
+				canGet: function(age) {
+					return Data.canBuyFromScrub(age);
+				}
+			}
+		}
+	},
+	"Frogs": {
+		tooltip: "The frogs in Zora's River",
+		description: "All items that come from the Zora's River frogs.",
+		buttons: {
+			"Zelda's Lullaby": {
+				icon: "Zelda's Lullaby",
+				description: "Play Zelda's Lullaby for the frogs.",
+				shouldNotDisplay: function() {
+					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
+				},
+				canGet: function(age) {
+					return Data.canPlaySong(Songs.ZELDAS_LULLABY);
+				}
+			},
+			"Epona's Song": {
+				icon: "Epona's Song",
+				description: "Play Epona's Song for the frogs.",
+				shouldNotDisplay: function() {
+					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
+				},
+				canGet: function(age) {
+					return Data.canPlaySong(Songs.EPONAS_SONG);
+				}
+			},
+			"Saria's Song": {
+				icon: "Saria's Song",
+				description: "Play Saria's Song for the frogs.",
+				shouldNotDisplay: function() {
+					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
+				},
+				canGet: function(age) {
+					return Data.canPlaySong(Songs.SARIAS_SONG);
+				}
+			},
+			"Sun's Song": {
+				icon: "Sun's Song",
+				description: "Play the Sun's Song for the frogs.",
+				shouldNotDisplay: function() {
+					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
+				},
+				canGet: function(age) {
+					return Data.canPlaySong(Songs.SUNS_SONG);
+				}
+			},
+			"Song of Storms": {
+				icon: "Song of Storms",
+				description: "Play the Song of Storms for the frogs.",
+				canGet: function(age) {
+					return Data.canPlaySong(Songs.SONG_OF_STORMS);
+				}
+			},
+			"Song of Time": {
+				icon: "Song of Time",
+				description: "Play the Song of Time for the frogs.",
+				shouldNotDisplay: function() {
+					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
+				},
+				canGet: function(age) {
+					return Data.canPlaySong(Songs.SONG_OF_TIME);
+				}
+			},
+			"Bug Minigame": {
+				description: "Play this after playing all the non-warp songs to the frogs. Answer: A < > v < > v A v A v > < A",
+				canGet: function(age) {
+					return Data.canPlaySongs() &&
+						Songs.ZELDAS_LULLABY.playerHas &&
+						Songs.EPONAS_SONG.playerHas &&
+						Songs.SARIAS_SONG.playerHas &&
+						Songs.SUNS_SONG.playerHas &&
+						Songs.SONG_OF_STORMS.playerHas &&
+						Songs.SONG_OF_TIME.playerHas;
 				}
 			}
 		}

@@ -5611,36 +5611,14 @@ let StandardDungeons = {
                 },
 
                 ItemLocations: {
-                    "Left Scrub in Secret Room": {
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 234, y: 233, floor: "MN" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                    "4 Scrubs in Secret Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.SCRUB,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Scrubs",
+                        MapInfo: { x: 249, y: 235, floor: "MN" },
+                        Age: Age.ADULT,
                         Order: 1,
-                        LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
-                    },
-                    "Middle Left Scrub in Secret Room": {
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 242, y: 241, floor: "MN" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-                        Order: 2,
-                        LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
-                    },
-                    "Middle Right Scrub in Secret Room": {
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 254, y: 241, floor: "MN" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-                        Order: 3,
-                        LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
-                    },
-                    "Right Scrub in Secret Room": {
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 262, y: 233, floor: "MN" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-                        Order: 4,
                         LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
                     },
                     "Forest Trial Chest": {
@@ -5815,61 +5793,16 @@ let StandardDungeons = {
                 },
 
                 ItemLocations: {
-                    "Light Trial Left Lower Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 167, y: 265, floor: "LIT" },
+                    "Light Trial Chests": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.GIFT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "7 Chests",
+                        MapInfo: { x: 181, y: 249, floor: "LIT" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
                         Order: 17,
-                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
-                    },
-                    "Light Trial Left Middle Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 162, y: 251, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
-                        Order: 18,
-                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
-                    },
-                    "Light Trial Left Top Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 165, y: 235, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
-                        Order: 19,
-                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
-                    },
-                    "Light Trial Right Lower Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 194, y: 265, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
-                        Order: 20,
-                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
-                    },
-                    "Light Trial Right Middle Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 199, y: 251, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
-                        Order: 21,
-                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial."
-                    },
-                    "Light Trial Right Upper Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 194, y: 235, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
-                        Order: 22,
-                        LongDescription: "This is one of the 6 chests that are visible when you first enter the light trial.",
-                    },
-                    "Light Trial Hidden Enemy Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 180, y: 251, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
-                        Order: 23,
-                        LongDescription: "Enter the light trial. Kill the invisible enemies (giant skulltula in the middle, several keese on the chests). This chest will spawn in the middle."
+                        LongDescription: "These are the chests in the light trial - kill all the enemies to spawn the center one."
                     }
                 }
             },

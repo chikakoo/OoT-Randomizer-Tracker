@@ -5740,44 +5740,14 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
-                    "Left Scrub in Secret Room": {
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 234, y: 233, floor: "MN" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                    "5 Scrubs in Secret Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.SCRUB,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "5 Scrubs",
+                        MapInfo: { x: 249, y: 235, floor: "MN" },
+                        Age: Age.ADULT,
                         Order: 1,
-                        LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
-                    },
-                    "Middle Left Scrub in Secret Room": {
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 242, y: 241, floor: "MN" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-                        Order: 2,
-                        LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
-                    },
-                    "Middle Scrub in Secret Room": {
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 248, y: 248, floor: "MN" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-                        Order: 3,
-                        LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
-                    },
-                    "Middle Right Scrub in Secret Room": {
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 254, y: 241, floor: "MN" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-                        Order: 4,
-                        LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
-                    },
-                    "Right Scrub in Secret Room": {
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 262, y: 233, floor: "MN" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-                        Order: 5,
                         LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
                     },
                     "Forest Freestanding Item": {
@@ -6089,32 +6059,14 @@ let MQDungeons = {
                     spiritTrialEnd: {}
                 },
                 ItemLocations: {
-                    "Spirit Sun Chest 1": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 169, y: 105, floor: "SPT" },
+                    "4 Spirit Sun Chests": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CHEST,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Chests",
+                        MapInfo: { x: 157, y: 119, floor: "SPT" },
                         Age: Age.ADULT,
                         Order: 25,
-                        LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. Proceed until you've killed all the redeads. Shoot the ceiling with a fire arrow to reveal the light. Shine it on the corresponding sun to get the chest."
-                    },
-                    "Spirit Sun Chest 2": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 169, y: 132, floor: "SPT" },
-                        Age: Age.ADULT,
-                        Order: 26,
-                        LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. Proceed until you've killed all the redeads. Shoot the ceiling with a fire arrow to reveal the light. Shine it on the corresponding sun to get the chest."
-                    },
-                    "Spirit Sun Chest 3": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 143, y: 132, floor: "SPT" },
-                        Age: Age.ADULT,
-                        Order: 27,
-                        LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. Proceed until you've killed all the redeads. Shoot the ceiling with a fire arrow to reveal the light. Shine it on the corresponding sun to get the chest."
-                    },
-                    "Spirit Sun Chest 4": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 143, y: 105, floor: "SPT" },
-                        Age: Age.ADULT,
-                        Order: 28,
                         LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. Proceed until you've killed all the redeads. Shoot the ceiling with a fire arrow to reveal the light. Shine it on the corresponding sun to get the chest."
                     }
                 }

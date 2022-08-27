@@ -2318,59 +2318,14 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "This is the guy who sells beans near the Hyrule Field entrance."
                     },
-                    "Frog Zelda's Lullaby": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 152, y: 96 },
+                    "Frog Songs": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.GIFT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Frogs",
+                        MapInfo: { x: 155, y: 102 },
                         Age: Age.CHILD,
-                        LongDescription: "Play Zelda's Lullaby for the frogs near the middle of the map to receive this item.",
-                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleAllFrogSongs; },
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
-                    },
-                    "Frog Epona's Song": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 156, y: 96 },
-                        Age: Age.CHILD,
-                        LongDescription: "Play Epona's Song for the frogs near the middle of the map to receive this item.",
-                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleAllFrogSongs; },
-                        RequiredSongs: [Songs.EPONAS_SONG]
-                    },
-                    "Frog Saria's Song": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 160, y: 96 },
-                        Age: Age.CHILD,
-                        LongDescription: "Play Saria's Song for the frogs near the middle of the map to receive this item.",
-                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleAllFrogSongs; },
-                        RequiredSongs: [Songs.SARIAS_SONG]
-                    },
-                    "Frog Sun's Song": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 152, y: 102 },
-                        Age: Age.CHILD,
-                        LongDescription: "Play the Sun's Song for the frogs near the middle of the map to receive this item.",
-                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleAllFrogSongs; },
-                        RequiredSongs: [Songs.SUNS_SONG]
-                    },
-                    "Frog Song of Storms": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 156, y: 102 },
-                        Age: Age.CHILD,
-                        LongDescription: "Play the Song of Storms for the frogs near the middle of the map to receive this item.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
-                    },
-                    "Frog Song of Time": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 160, y: 102 },
-                        Age: Age.CHILD,
-                        LongDescription: "Play the Song of Time for the frogs near the middle of the map to receive this item.",
-                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleAllFrogSongs; },
-                        RequiredSongs: [Songs.SONG_OF_TIME]
-                    },
-                    "Frog Bug Minigame": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 161, y: 99 },
-                        Age: Age.CHILD,
-                        LongDescription: "Play all the non-warp songs for the frogs to play the bug minigame. The notes are as follows: A < > v < > v A v A v > < A",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY, Songs.EPONAS_SONG, Songs.SARIAS_SONG, Songs.SUNS_SONG, Songs.SONG_OF_STORMS, Songs.SONG_OF_TIME]
+                        LongDescription: "All the items you get from the frogs near the middle of the map."
                     },
                     "Skulltula on Ladder": {
                         ItemGroup: ItemGroups.SKULLTULA,
