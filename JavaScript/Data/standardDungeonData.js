@@ -4341,7 +4341,22 @@ let StandardDungeons = {
                         OwExit: OwExits["Ice Cavern"]["Exit"]
                     }
                 },
-                ItemLocations: {}
+                ItemLocations: {
+                    "Frozen Rupee in First Room": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapInfo: { x: 175, y: 184 },
+                        MapImageName: "Blue Rupee",
+                        Age: Age.EITHER,
+                        Order: 1,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "This rupee is frozen in the ice to the left of the exit of the first big room. You can either melt the ice, jumpslash into it, or use a boomerang to get the item.",
+                        CustomRequirement: function(age) {
+                            return Data.hasSwordWeapon(age) || 
+                                (Settings.GlitchesToAllow.boomerangThroughWalls && Data.canUseBoomerang(age)) || 
+                                Data.canUseBlueFire(age);
+                        }
+                    }
+                }
             },
             afterFreezards: {
                 Exits: {
@@ -4354,10 +4369,7 @@ let StandardDungeons = {
                         }
                     },
                     northRoom: {
-                        Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Data.hasBottleOrBlueFire(age);
-                        }
+                        Age: Age.ADULT
                     },
                     blockPushRoom: {
                         CustomRequirement: function(age) {
@@ -4367,26 +4379,84 @@ let StandardDungeons = {
                 },
 
                 ItemLocations: {
+                    "2 Pots After Freezards": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 166, y: 164 },
+                        Age: Age.EITHER,
+                        Order: 2,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "These pots are in the transition hallway after you defeat the enemies in the first room."
+                    },
                     "Skulltula in Scythe Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 161, y: 127 },
                         Age: Age.EITHER,
-                        Order: 1,
+                        Order: 3,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "In the room with the spinning scythe, there's a skulltula up on one of the walls. It's the one to your left when you first enter.",
                         IsAtShortDistance: true
+                    },
+                    "2 Pots in East Scythe Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 204, y: 121 },
+                        Age: Age.EITHER,
+                        Order: 4,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "In the room with the spinning scythe, these pots are to your right (east)."
+                    },
+                    "Pot in North Scythe Room": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 194, y: 96 },
+                        Age: Age.EITHER,
+                        Order: 5,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "In the room with the spinning scythe, this pot is on the north part of the room (straight ahead when you come in - it's the pot on the right)."
+                    },
+                    "Flying Pot in North Scythe Room": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 176, y: 96 },
+                        Age: Age.EITHER,
+                        Order: 6,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "In the room with the spinning scythe, this pot will fly at you from the north part of the room (straight ahead when you come in - it's the pot on the left)."
                     }
                 }
             },
             northRoom: {
                 Exits: {},
                 ItemLocations: {
+                    "3 Hearts in Platforming Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Hearts",
+                        MapInfo: { x: 228, y: 22 },
+                        Age: Age.ADULT,
+                        Order: 7,
+                        LongDescription: "This is the room you gain access to after you collect all the silver rupees in the spinning scythe room. Navigate to the upper area by the first freezard - the hearts are on a platform to the right."
+                    },
                     "Map Chest in Platforming Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 192, y: 18 },
                         Age: Age.ADULT,
-                        Order: 2,
-                        LongDescription: "This is the room you gain access to after you collect all the silver rupees in the spinning scythe room. Navigate to the top and use blue fire on the chest to gain access to it."
+                        Order: 8,
+                        LongDescription: "This is the room you gain access to after you collect all the silver rupees in the spinning scythe room. Navigate to the top and use blue fire on the chest to gain access to it.",
+                        CustomRequirement: function(age) {
+                            return Data.hasBottleOrBlueFire(age);
+                        }
+                    },
+                    "Frozen Pot in Platforming Room": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 193, y: 47 },
+                        Age: Age.EITHER,
+                        Order: 9,
+                        LongDescription: "This pot is frozen in ice on the upper part of the room with the map chest. The easiest ways to get it are to either use blue fire, or crouchstab the pot in the ice. Otherwise, you can get on the edge of the platform, facing away from the pot, and do a spin attack to hit the pot."
                     }
                 }
             },
@@ -4397,7 +4467,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 246, y: 147 },
                         Age: Age.EITHER,
-                        Order: 3,
+                        Order: 10,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. Melt the ice containing the chest.",
                         CustomRequirement: function(age) {
@@ -4408,7 +4478,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 244, y: 115 },
                         Age: Age.EITHER,
-                        Order: 4,
+                        Order: 11,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. Melt the ice containing the heart piece.",
                         CustomRequirement: function(age) {
@@ -4419,11 +4489,11 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 253, y: 117 },
                         Age: Age.EITHER,
-                        Order: 5,
+                        Order: 12,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. There's a skulltula up on one of the walls to your left.",
                         IsAtShortDistance: true
-                    },
+                    }
                 }
             },
             blockPushRoom: {
@@ -4435,10 +4505,35 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 143, y: 111 },
                         Age: Age.EITHER,
-                        Order: 6,
+                        Order: 13,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "When you first enter the spinning scythe room, look to your left. Burn the red ice with your blue fire and enter the room. When you get to the big room, the skulltula will be on the wall to your left.",
                         IsAtShortDistance: true
+                    },
+                    "3 Red Rupees in Block Push Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Red Rupees",
+                        MapInfo: { x: 97, y: 103 },
+                        Age: Age.EITHER,
+                        Order: 14,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "When you first enter the spinning scythe room, look to your left. Burn the red ice with your blue fire and enter the room. The rupees are above the area with the blue fire. You can either use the boomerang to get them, or play the Song of Time on the platform with the blue fire to spawn some blocks.",
+                        CustomRequirement: function(age) {
+                            return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canUseBoomerang(age);
+                        }
+                    },
+                    "2 Pots Before Boss Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 111, y: 161 },
+                        Age: Age.EITHER,
+                        Order: 15,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "After completing the block puzzle, these pots are frozen in the red ice before the boss room."
                     }
                 }
             },
@@ -4449,7 +4544,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 127, y: 182 },
                         Age: Age.EITHER,
-                        Order: 7,
+                        Order: 16,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "This is in the room after the block pushing puzzle - the one with the wolfos. Defeat it to spawn the chest. Note that after you get the chest, you will also get the Serenade of Water item."
                     },
@@ -4457,7 +4552,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 122, y: 177 },
                         Age: Age.EITHER,
-                        Order: 8,
+                        Order: 17,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "You'll get this automatically after you open the Iron Boots chest."
                     }

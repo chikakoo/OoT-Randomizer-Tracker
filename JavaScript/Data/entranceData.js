@@ -1831,6 +1831,26 @@ GrottoGroups = {
 			}
 		}
 	},
+	"3 Red Rupees": {
+		tooltip: "A group of three red rupees.",
+		buttons: {
+			"Red Rupee 1": {
+				icon: "Red Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 1."
+			},
+			"Red Rupee 2": {
+				icon: "Red Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 2."
+			},
+			"Red Rupee 3": {
+				icon: "Red Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 3."
+			}
+		}
+	},
 	"4 Red Rupees": {
 		tooltip: "A group of four red rupees.",
 		buttons: {
