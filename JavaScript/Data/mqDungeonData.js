@@ -5686,31 +5686,36 @@ let MQDungeons = {
         IsMasterQuest: true,
         Floors: ["MN", "FST", "WTR", "SHW", "FIR", "LIT", "SPT"],
         StartingFloorIndex: 0,
+        _canCompleteTrials: function(age) {
+            // Requires IsPostWalkCheck to be true on any item location that uses this!!!
+            let canUseLightArrows = age === Age.ADULT && Items.LIGHT_ARROW.playerHas && Equipment.MAGIC.playerHas;
+            if (!canUseLightArrows) { return false; }
+
+            return Data.canAccessMap(age, "Ganon's Castle", "forestTrialEnd") &&
+                Data.canAccessMap(age, "Ganon's Castle", "waterTrialEnd") &&
+                Data.canAccessMap(age, "Ganon's Castle", "shadowTrialEnd") &&
+                Data.canAccessMap(age, "Ganon's Castle", "fireTrialEnd") &&
+                Data.canAccessMap(age, "Ganon's Castle", "lightTrialEnd") &&
+                Data.canAccessMap(age, "Ganon's Castle", "spiritTrialEnd");
+        },
         Regions: {
             main: {
                 Exits: {
-                    spiritRoom2: {
-                        RequiredItems: [Items.MEGATON_HAMMER]
-                    },
-                    forestRoom3: {
+                    forestTrialEnd: {
                         RequiredSongs: [Songs.SONG_OF_TIME]
                     },
-                    waterRoom: {
-                        CustomRequirement: function(age) {
-                            return Data.hasBottleOrBlueFire(age);
-                        }
-                    },
+                    waterRoom: {},
                     shadowBackSection: {
                         Age: Age.ADULT,
                         RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, Items.HOOKSHOT],
                         RequiredItems: [Equipment.MAGIC, Items.LENS_OF_TRUTH] // Without lens is really hard, so not including that trick for now
                     },
-                    fireRoom: {
+                    fireTrialEnd: {
                         Age: Age.ADULT,
-                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}],
+                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "3"}],
                         RequiredChoiceOfItems: [Items.HOOKSHOT, Equipment.HOVER_BOOTS],
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
+                            return Settings.GlitchesToAllow.ganonFireNoTunic || Equipment.GORON_TUNIC.playerHas;
                         }
                     },
                     lightRoom1: {
@@ -5724,6 +5729,13 @@ let MQDungeons = {
 
                             return canSuperslideIn || canEssClipIn || Equipment.STRENGTH.currentUpgrade === 3;
                         }
+                    },
+                    spiritRoom2: {
+                        RequiredItems: [Items.MEGATON_HAMMER]
+                    },
+                    center: {
+                        // The main checks to get here are actually in PostWalk checks on the individual item locations
+                        // To clean this up, we need non-items for each of the trial completions
                     }
                 },
 
@@ -5773,7 +5785,7 @@ let MQDungeons = {
                         MapInfo: { x: 165, y: 204, floor: "FST" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-                        Order: 12,
+                        Order: 6,
                         LongDescription: "After dealing with the enemies, wait for the fan to stop spinning, then hookshot up to the ledge. The item is up there.",
                         RequiredChildItems: [Items.BOOMERANG],
                         RequiredChoiceOfAdultItems: [Items.HOOKSHOT, Items.BOOMERANG]
@@ -5783,7 +5795,7 @@ let MQDungeons = {
                         MapInfo: { x: 168, y: 170, floor: "FST" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-                        Order: 13,
+                        Order: 7,
                         LongDescription: "In the second room, stand on the upper left side of the first platform. Shoot the eye switch on the back right corner of the room to spawn the chest.",
                         RequiredChildItems: [Items.FAIRY_SLINGSHOT],
                         RequiredAdultItems: [Items.FAIRY_BOW]
@@ -5793,56 +5805,247 @@ let MQDungeons = {
                         MapInfo: { x: 153, y: 147, floor: "FST" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-                        Order: 14,
+                        Order: 8,
                         LongDescription: "In the second room, shoot the eye switch at the back left side of the room with a fire arrow to spawn the chest. Alternatively, you can also use Din's fire to hit it once at the back of the room. To get across, you can jump and use the wind from the fan if you have no hover boots.",
                         NeedsFire: true
-                    },
-                    "Water Chest in First Room": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 163, y: 233, floor: "WTR" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-                        Order: 15,
-                        LongDescription: "The chest is in the red ice on the left side of the room. You can roll into it and spam A to open the chest through the ice.<br/><br/>If you want to melt it, attack the weird hand thing on the right side of the room to lower the water around the blue fire."
                     },
                     "Shadow Chest on Small Platform": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 147, y: 227, floor: "SHW" },
                         Age: Age.ADULT,
-                        Order: 16,
+                        Order: 14,
                         LongDescription: "First, shoot the bomb flower on the right side of the room. Now, use hover boots or your hookshot to reach the chest.",
                         RequiredItems: [Items.FAIRY_BOW],
                         RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, Items.HOOKSHOT]
                     },
-                    "Boss Key Chest in Center": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 165, y: 95, floor: "MN" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.staircaseHover; },
-                        Order: 19,
-                        IsPostWalkCheck: true,
-                        LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
-                        CustomRequirement: function(age) {
-                            if (Data.canStaircaseHover(age)) { return true; }
 
-                            let canUseLightArrows = Items.FAIRY_BOW.playerHas && Items.LIGHT_ARROW.playerHas && Equipment.MAGIC.playerHas;
-                            if (!canUseLightArrows || getKeyCount("Ganon's Castle") < 3) { return false; }
-                            
-                            let canDoForest = Data.canAccessMap(age, "Ganon's Castle", "forestRoom3");
-                            let canDoFire = Data.canAccessMap(age, "Ganon's Castle", "fireRoom");
-                            let canDoWater = Data.canAccessMap(age, "Ganon's Castle", "waterRoom");
-                            let canDoShadow = Data.canAccessMap(age, "Ganon's Castle", "shadowBackSection");
-                            let canDoSpirit = Data.canAccessMap(age, "Ganon's Castle", "spiritRoom4");
-                            
-                            let lightReqs = Data.hasExplosives() && Items.HOOKSHOT.playerHas;
-                            let canDoLight = lightReqs && Data.canAccessMap(age, "Ganon's Castle", "lightRoom1");
-                            
-                            return canDoForest && canDoFire && canDoWater && canDoShadow && canDoSpirit && canDoLight;
+                    // Locked Doors
+                    "Locked Door in Water Trial": {
+                        ItemGroup: ItemGroups.LOCKED_DOOR,
+                        Regions: ["waterRoom"],
+                        MapInfo: { x: 193, y: 168, floor: "WTR" },
+                        Age: Age.ADULT,
+                        Order: 12,
+                        LongDescription: "This is the locked door in the water trial, blocked by the red ice.",
+                        KeyRequirement: function(age) {
+                            let max = 3;
+                            let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
+                                Items.BOMB.playerHas && 
+                                Data.hasShield(age);
+                            let canEssClipIn = age === Age.ADULT && Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
+                            let canGlitchIn = canSuperslideIn || canEssClipIn;
+                            if (canGlitchIn || Equipment.STRENGTH.currentUpgrade < 3) {
+                                max = 1;
+                            }
+                            return { min: 1, max: max };
+                        },
+                        CustomRequirement: function(age) {
+                            return Data.canUseBlueFire(age);
+                        }
+                    },
+                    "Locked Door 1 in Light Trial": {
+                        ItemGroup: ItemGroups.LOCKED_DOOR,
+                        Regions: ["lightRoom1"],
+                        MapInfo: { x: 180, y: 174, floor: "LIT" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Order: 19,
+                        LongDescription: "This is the locked door in the Zelda's Lullaby room of the light trial.",
+                        KeyRequirement: function(age) {
+                            let max = Data.canUseBlueFire(age) ? 2 : 1;
+                            return { min: 1, max: max };
+                        }
+                    },
+                    "Locked Door 2 in Light Trial": {
+                        ItemGroup: ItemGroups.LOCKED_DOOR,
+                        Regions: ["lightRoom2Back"],
+                        MapInfo: { x: 180, y: 84, floor: "LIT" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Order: 21,
+                        LongDescription: "This is the locked door in the boulder/fire wall froom of the light trial.",
+                        KeyRequirement: function(age) {
+                            let max = Data.canUseBlueFire(age) ? 3 : 2;
+                            return { min: 2, max: max };
                         }
                     }
                 }
             },
-
+            forestTrialEnd: {
+                Exits: {},
+                ItemLocations: {
+                    "2 Pots at Forest Trial End": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 178, y: 65, floor: "FST" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        Order: 9,
+                        LongDescription: "Enter the forest trial - defeat the stalfos to get to the next room. Now, use the fans to cross. Play the song of time on the corner closest to the floating block - keep playing it until the armos status hits the switch to unbar the door. The pots are inside."
+                    }
+                }
+            },
+            waterRoom: {
+                Exits: {
+                    waterTrialEnd: {
+                        Age: Age.ADULT,
+                        Map: "Ganon's Castle",
+                        LockedDoor: "Locked Door in Water Trial",
+                        CustomRequirement: function(age) {
+                            return Data.canUseBlueFire(age);
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "Chest in Left Water Trial": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 163, y: 233, floor: "WTR" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        Order: 10,
+                        LongDescription: "The chest is in the red ice on the left side of the room. You can roll into it and spam A to open the chest through the ice.<br/><br/>If you want to melt it, attack the weird hand thing on the right side of the room to lower the water around the blue fire."
+                    },
+                    "Heart in Right Water Trial": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapInfo: { x: 226, y: 233, floor: "WTR" },
+                        MapImageName: "Recovery Heart",
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        Order: 11,
+                        LongDescription: "In the water trial - this heart is in the blue ice in the right side of the room (or use a boomerang trick shot).<br/><br/>To gain access to the blue fire, attack the weird hand thing on the right side of the room to lower the water around the blue fire.",
+                        CustomRequirement: function(age) {
+                            return Data.canUseBlueFire(age) || (Settings.GlitchesToAllow.boomerangThroughWalls && Data.canUseBoomerang(age));
+                        }
+                    }
+                }
+            },
+            waterTrialEnd: {
+                Exits: {},
+                ItemLocations: {
+                    "2 Pots at Water Trial End": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 192, y: 10, floor: "WTR" },
+                        Age: Age.ADULT,
+                        Order: 13,
+                        LongDescription: "Enter the water trial - use a sword weapon behind the random dead hand to hit a switch in the wall to gain access to the blue fire. Melt the red ice wall and proceed through the locked door (make sure you still have blue fire). In the next room, gather the silver rupees, melt the back red ice, and proceed to the room with the pots."
+                    }
+                }
+            },
+            shadowBackSection: {
+                Exits: {
+                    shadowTrialEnd: {}
+                },
+                ItemLocations: {
+                    "Shadow Chest in Back": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 186, y: 103, floor: "SHW" },
+                        Age: Age.ADULT,
+                        Order: 15,
+                        LongDescription: "At the shadow trial, use your lens of truth to navigate across the room. There's an invisible moving invisible platform you'll need to use. After the beamos platform, turn around and shoot the eye switch to spawn the chest.",
+                        RequiredItems: [Items.FAIRY_BOW]
+                    }
+                }
+            },
+            shadowTrialEnd: {
+                Exits: {},
+                ItemLocations: {
+                    "2 Pots at Shadow Trial End": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 178, y: 5, floor: "SHW" },
+                        Age: Age.ADULT,
+                        Order: 16,
+                        LongDescription: "At the shadow trial, use your lens of truth to navigate across the room. There's an invisible moving invisible platform you'll need to use. Gather all the rupees to open the door to the pots."
+                    }
+                }
+            },
+            fireTrialEnd: {
+                Exits: {},
+                ItemLocations: {
+                    "2 Pots at Fire Trial End": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 178, y: 77, floor: "FIR" },
+                        Age: Age.ADULT,
+                        Order: 17,
+                        LongDescription: "Enter the fire trial - you must grab all the silver rupees to enter the room with the pots."
+                    }
+                }
+            },
+            lightRoom1: {
+                Exits: {
+                    lightRoom2: {
+                        Map: "Ganon's Castle",
+                        LockedDoor: "Locked Door 1 in Light Trial"
+                    }
+                },
+                ItemLocations: {
+                    "Light Zelda's Lullaby Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 194, y: 197, floor: "LIT" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Order: 18,
+                        LongDescription: "Use your gauntlets to gain access to this area. In the first room, kill all the enemies. In the next room, play Zelda's Lullaby to spawn the chest.",
+                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                    }
+                }
+            },
+            lightRoom2 : {
+                Exits: {
+                    lightRoom2Back: {
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            return Items.HOOKSHOT.playerHas || Data.canGroundJumpWithBomb(age);
+                        }
+                    }
+                }, 
+                ItemLocations: {}
+            },
+            lightRoom2Back:{
+                Exits: {
+                    lightTrialEnd: {
+                        Map: "Ganon's Castle",
+                        LockedDoor: "Locked Door 2 in Light Trial"
+                    }
+                },
+                ItemLocations: {
+                    "2 Hearts at Light Trial": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Hearts",
+                        MapInfo: { x: 213, y: 130, floor: "LIT" },
+                        Age: Age.ADULT,
+                        Order: 20,
+                        LongDescription: "After the Zelda's Lullaby room, use your hookshot to get around the fire walls. The hearts are in the two holes in the wall."
+                    }
+                }
+            },
+            lightTrialEnd: {
+                Exits: {},
+                ItemLocations: {
+                    "2 Pots at Light Trial End": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 180, y: 10, floor: "LIT" },
+                        Age: Age.ADULT,
+                        Order: 22,
+                        LongDescription: "After the Zelda's Lullaby room, use your hookshot to get around the fire walls and go in the locked door. Slash the right torch to proceed through the fake wall and into the room where the pots reside."
+                    }
+                }
+            },
             spiritRoom2: {
                 Exits: {
                     spiritRoom3: {
@@ -5851,19 +6054,19 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
-                    "Spirit Chest After Armos": {
+                    "Spirit Chest After Iron Knuckle": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 241, y: 184, floor: "SPT" },
                         Age: Age.ADULT,
-                        Order: 6,
+                        Order: 23,
                         LongDescription: "Hammer jumpslash one of the corners of the central platform to simply hit the switch in the middle. Enter the next room - the chest is straight ahead."
                     }
                 }
             },
-
             spiritRoom3: {
                 Exits: {
                     spiritRoom4: {
+                        Age: Age.ADULT,
                         RequiredItems: [Equipment.MIRROR_SHIELD],
                         CustomRequirement: function(age) {
                             return Data.canUseFireArrows(age);
@@ -5876,86 +6079,103 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 239, y: 120, floor: "SPT" },
                         Age: Age.ADULT,
-                        Order: 7,
+                        Order: 24,
                         LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. This chest is invisible in the corner of the room in front of the door."
                     }
                 }
             },
-
             spiritRoom4: {
-                Exits: {},
+                Exits: {
+                    spiritTrialEnd: {}
+                },
                 ItemLocations: {
                     "Spirit Sun Chest 1": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 169, y: 105, floor: "SPT" },
                         Age: Age.ADULT,
-                        Order: 8,
+                        Order: 25,
                         LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. Proceed until you've killed all the redeads. Shoot the ceiling with a fire arrow to reveal the light. Shine it on the corresponding sun to get the chest."
                     },
                     "Spirit Sun Chest 2": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 169, y: 132, floor: "SPT" },
                         Age: Age.ADULT,
-                        Order: 9,
+                        Order: 26,
                         LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. Proceed until you've killed all the redeads. Shoot the ceiling with a fire arrow to reveal the light. Shine it on the corresponding sun to get the chest."
                     },
                     "Spirit Sun Chest 3": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 143, y: 132, floor: "SPT" },
                         Age: Age.ADULT,
-                        Order: 10,
+                        Order: 27,
                         LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. Proceed until you've killed all the redeads. Shoot the ceiling with a fire arrow to reveal the light. Shine it on the corresponding sun to get the chest."
                     },
                     "Spirit Sun Chest 4": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 143, y: 105, floor: "SPT" },
                         Age: Age.ADULT,
-                        Order: 11,
+                        Order: 28,
                         LongDescription: "After getting the first chest, drop a bombchu so that it travels over the cell and hits the switch on the other side. Proceed until you've killed all the redeads. Shoot the ceiling with a fire arrow to reveal the light. Shine it on the corresponding sun to get the chest."
                     }
                 }
             },
-
-            forestRoom3: {
-                Exits: {},
-                ItemLocations: {}
-            },
-
-            waterRoom: {
-                Exits: {},
-                ItemLocations: {}
-            },
-
-            shadowBackSection: {
+            spiritTrialEnd: {
                 Exits: {},
                 ItemLocations: {
-                    "Shadow Chest in Back": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 186, y: 103, floor: "SHW" },
+                    "2 Pots at Spirit Trial End": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 157, y: 71, floor: "SPT" },
                         Age: Age.ADULT,
-                        Order: 17,
-                        LongDescription: "Use your lens of truth to navigate across the room. There's an invisible moving invisible platform you'll need to use. After the beamos platform, turn around and shoot the eye switch to spawn the chest.",
-                        RequiredItems: [Items.FAIRY_BOW]
+                        Order: 29,
+                        LongDescription: "In the room with all the suns, shine the light on the spirit medallion symbol to open the door."
                     }
                 }
             },
-
-            fireRoom: {
-                Exits: {},
-                ItemLocations: {}
+            center: {
+                Exits: {
+                    potRoom: {
+                        CustomRequirement: function(age) {
+                            return Settings.RandomizerSettings.openGanonsCastlePotRoom || hasBossKey("Ganon's Castle");
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "Boss Key Chest in Center": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 155, y: 95, floor: "MN" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.staircaseHover; },
+                        Order: 30,
+                        IsPostWalkCheck: true,
+                        LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
+                        CustomRequirement: function(age) {
+                            return Data.canStaircaseHover(age) ||
+                                MapLocations["Ganon's Castle"]._canCompleteTrials(age);
+                        }
+                    }
+                }
             },
-
-            lightRoom1: {
+            potRoom: {
                 Exits: {},
                 ItemLocations: {
-                    "Light Zelda's Lullaby Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 194, y: 197, floor: "LIT" },
+                    "14 Pots in Pot Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "14 Pots",
+                        MapInfo: { x: 175, y: 95, floor: "MN" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
-                        Order: 18,
-                        LongDescription: "Use your gauntlets to gain access to this area. In the first room, kill all the enemies. In the next room, play Zelda's Lullaby to spawn the chest.",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.staircaseHover; },
+                        Order: 31,
+                        IsPostWalkCheck: true,
+                        LongDescription: "Complete all the trials. Now, go up the center of the castle. This is room after you open the first giant door.",
+                        CustomRequirement: function(age) {
+                            return Data.canStaircaseHover(age) ||
+                                MapLocations["Ganon's Castle"]._canCompleteTrials(age);
+                        }
                     }
                 }
             }
