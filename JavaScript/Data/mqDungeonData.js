@@ -4760,9 +4760,17 @@ let MQDungeons = {
                         OwExit: OwExits["Ice Cavern"]["Exit"]
                     }
                 },
-                ItemLocations: {}
+                ItemLocations: {
+                    "Pot by Entrance": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 192, y: 257 },
+                        Age: Age.EITHER,
+                        Order: 1,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "This pot is on the left wall close to the entrance. Note that you may want to use it to hit the switch in the next room if you have no other way to do so!"
+                    }
+                }
             },
-
             afterFirstRoom: {
                 Exits: {
                     blueFireRoom: {
@@ -4783,9 +4791,31 @@ let MQDungeons = {
                         }
                     }
                 },
-                ItemLocations: {}
+                ItemLocations: {
+                    "2 Pots After Switch": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 182, y: 179 },
+                        Age: Age.EITHER,
+                        Order: 2,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "These pots are in the transition doorway after you hit the switch in the first room."
+                    },
+                    "2 Pots in Center Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 204, y: 121 },
+                        Age: Age.EITHER,
+                        Order: 3,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "In the room after the room with the switch, the pots will be on your right. The other pots in the room contain fairies."
+                    }
+                }
             },
-
             blueFireRoom: {
                 Exits: {},
                 ItemLocations: {
@@ -4793,7 +4823,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 248, y: 147 },
                         Age: Age.EITHER,
-                        Order: 1,
+                        Order: 4,
                         LongDescription: "In the room with the tektites, hit the crystal switch to the right of the door. You can take a pot to the left of the entrance there to do so if you don't have a projectile. You may need to wait on the right hand wall for the boulder to pass.<br/><br/>Navigate through the cavern until you get to the first room with blue fire. Hit the switch to spawn the chest under the red ice. Melt it with blue fire to gain access to it.",
                         CustomRequirement: function(age) {
                             return Data.hasBottleOrBlueFire(age);
@@ -4801,15 +4831,24 @@ let MQDungeons = {
                     }
                 }
             },
-
             northRoom: {
                 Exits: {},
                 ItemLocations: {
+                    "2 Pots in North Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 213, y: 13 },
+                        Age: Age.ADULT,
+                        Order: 5,
+                        LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>In the next room, the pots are along the wall, somewhat separated.",
+                    },
                     "Heart Piece in North Room": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 228, y: 22 },
                         Age: Age.ADULT,
-                        Order: 2,
+                        Order: 6,
                         LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>On the floor, there's a switch embedded in the ice. Use an explosive to hit it. This will make the block around the heart piece item disappear.",
                         NeedsExplosives: true
                     },
@@ -4817,7 +4856,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 192, y: 45 },
                         Age: Age.ADULT,
-                        Order: 3,
+                        Order: 7,
                         LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>Play the song of time on the top near the pillar with the skulltula to spawn a block. Climb it, and play the song again. Use blue fire to melt the ice to gain access to the skulltula.",
                         RequiredSongs: [Songs.SONG_OF_TIME],
                         CustomRequirement: function(age) {
@@ -4830,12 +4869,11 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 188, y: 20 },
                         Age: Age.ADULT,
-                        Order: 4,
+                        Order: 8,
                         LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. In the room at the end of the hallway, you'll find the chest on one of the ledges after some parkour."
                     }
                 }
             },
-
             bigRoom: {
                 Exits: {},
                 ItemLocations: {
@@ -4843,7 +4881,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 115, y: 122 },
                         Age: Age.EITHER,
-                        Order: 5,
+                        Order: 9,
                         LongDescription: "Across the room from the first room with blue fire, melt the ice wall. Navigate through the hallway to gain access to this room. Turn around once inside, and hit the switch posing as a stalagtite. This will make some stairs vanish near the exit of the room so you can grab the token. Be sure to hit the switch again so you can leave.",
                         CustomRequirement: function(age) {
                             return Data.canHitSwitchAtShortDistance(age);
@@ -4853,7 +4891,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 127, y: 66 },
                         Age: Age.ADULT,
-                        Order: 6,
+                        Order: 10,
                         LongDescription: "This skulltula is on the ledge to your right in the big room. Play the scarecrow's song and hook it, a ground jump to get up there, or use hover boots to get to the taller pillar and longshot it.",
                         CustomRequirement: function(age) {
                             let canGetWithLongshot = Equipment.HOVER_BOOTS.playerHas && Items.HOOKSHOT.currentUpgrade === 2;
@@ -4868,18 +4906,25 @@ let MQDungeons = {
                             return canUseScarecrow ||  Data.canGroundJumpWithBomb(age);
                         }
                     },
+                    "Pot Before Boss Room": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 116, y: 162 },
+                        Age: Age.ADULT,
+                        Order: 11,
+                        LongDescription: "This pot is the left one next to the boss door. The right pot contains a fairy.",
+                    },
                     "Chest at End": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 127, y: 182 },
                         Age: Age.ADULT,
-                        Order: 7,
+                        Order: 12,
                         LongDescription: "Defeat the stalfos in this room to spawn the chest."
                     },
                     "Serenade of Water": {
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 122, y: 177 },
                         Age: Age.ADULT,
-                        Order: 8,
+                        Order: 13,
                         LongDescription: "Obtained after opening the chest in this room."
                     }
                 }
