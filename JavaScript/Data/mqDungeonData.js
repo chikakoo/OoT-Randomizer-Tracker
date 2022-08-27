@@ -4957,7 +4957,7 @@ let MQDungeons = {
                         UseChildAge: function() {
                             return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
                         },
-                        Order: 0.1,
+                        Order: 2,
                         LongDescription: "This is the door on the west side of the main room.",
                         KeyRequirement: function(age) {
                             return { min: 1, max: 2 };
@@ -4972,7 +4972,7 @@ let MQDungeons = {
                         UseChildAge: function() {
                             return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
                         },
-                        Order: 1.1,
+                        Order: 6,
                         LongDescription: "WALL MASTER WARNING:<br/>This is the locked door you find after the room with the floormasters.",
                         CustomRequirement: function(age) {
                             return Data.canHitSwitchAtShortDistance(age);
@@ -4983,7 +4983,6 @@ let MQDungeons = {
                     }
                 }
             },
-
             afterFirstCrawlSpace: {
                 Exits: {
                     centerRoom: {
@@ -5007,9 +5006,23 @@ let MQDungeons = {
                     }
                 },
 
-                ItemLocations: {}
+                ItemLocations: {
+                    "2 Hearts in Front Bombable Hole": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Hearts",
+                        MapInfo: { x: 183, y: 194, floor: "F1" },
+                        Age: Age.EITHER,
+                        UseChildAge: function() {
+                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
+                        },
+                        Order: 1,
+                        LongDescription: "In the main area, bomb the rubble to the left to get to these hearts.",
+                        NeedsExplosives: true
+                    }
+                }
             },
-
             centerRoom: {
                 Exits: {
                     // Technically this door isn't here, but it's useless to open it if you can't get here so we require it
@@ -5028,31 +5041,73 @@ let MQDungeons = {
                         UseChildAge: function() {
                             return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
                         },
-                        Order: 2,
+                        Order: 7,
                         LongDescription: "WALL MASTER WARNING:<br/>Navigate to the back of the main room and play Zelda's Lullaby at the triforce. This will open a bunch of gates. Proceed behind you to the center room with the chest.<br/><br/>Alternatively, you can bomb the rocks near the middle-west of the main room. Sidehop then jumpslash over the hole in the ground to get to the center area."
                     },
-                    "Skulltula in Grave Room": {
+                    "Skulltula in West Center Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 159, y: 99, floor: "F1" },
                         Age: Age.EITHER,
                         UseChildAge: function() {
                             return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
                         },
-                        Order: 3,
+                        Order: 8,
                         LongDescription: "WALL MASTER WARNING:<br/>Bomb some rocks near the southeast corner of the main room and press the switch to unbar a door. Alternatively, you can make your way to the center room and sidehop and jumpslash to get into this area.<br/><br/>Enter the door that was just unbarred. The skulltula is under the gravestone. Be careful of invisible enemies."
                     },
-                    "Freestanding Item Near Center Room": {
+                    "3 Pots in Center Room Cell": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 221, y: 172, floor: "F1" },
+                        Age: Age.EITHER,
+                        UseChildAge: function() {
+                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
+                        },
+                        Order: 9,
+                        LongDescription: "WALL MASTER WARNING:<br/>Navigate to the back of the main room and play Zelda's Lullaby at the triforce. This will open a bunch of gates. Proceed behind you to the center room - the pots are on the right side of the room surrounded by cell walls.<br/><br/>Alternatively, you can bomb the rocks near the middle-west of the main room. Sidehop then jumpslash over the hole in the ground to get to the center area."
+                    },
+                    "3 Pots in East Center Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 231, y: 83, floor: "F1" },
+                        Age: Age.EITHER,
+                        UseChildAge: function() {
+                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
+                        },
+                        Order: 10,
+                        LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door. Enter it - the pots are marking the invisible path around the room.",
+                        CustomRequirement: function(age) {
+                            return Data.canHitSwitchAtShortDistance(age);
+                        }
+                    },
+                    "Freestanding Item in East Center Room": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 216, y: 80, floor: "F1" },
                         Age: Age.EITHER,
                         UseChildAge: function() {
                             return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
                         },
-                        Order: 4,
+                        Order: 11,
                         LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door. Enter it, and navigate counter-clockwise around the room to get to the item.",
                         CustomRequirement: function(age) {
                             return Data.canHitSwitchAtShortDistance(age);
                         }
+                    },
+                    "3 Hearts in Basement": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Hearts",
+                        MapInfo: { x: 295, y: 147, floor: "B1" },
+                        Age: Age.EITHER,
+                        UseChildAge: function() {
+                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
+                        },
+                        Order: 15,
+                        LongDescription: "WALL MASTER WARNING:<br/>To get to the basement, you can fall down a hole in the center room (not the very center). Navigate to the northeastern path (the second from the right) to get to the hearts."
                     },
                     "Skulltula in Basement": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -5061,12 +5116,11 @@ let MQDungeons = {
                         UseChildAge: function() {
                             return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
                         },
-                        Order: 8,
+                        Order: 16,
                         LongDescription: "WALL MASTER WARNING:<br/>To get to the basement, you can fall down a hole in the center room (not the very center). Navigate to the northwestern part of the basement to get to the skulltula. Watch out for invisible giant skulltulas on the way."
                     }
                 }
             },
-
             drainedWater: {
                 Exits: {},
                 ItemLocations: {
@@ -5077,7 +5131,7 @@ let MQDungeons = {
                         UseChildAge: function() {
                             return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
                         },
-                        Order: 5,
+                        Order: 12,
                         LongDescription: "Drain the water by hitting the switch in the back of the main room. Navigate back to the entrance and enter the crawl space leading to the Dead Hand room like normal. Kill him to spawn the chest.",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) { return true; }
@@ -5094,12 +5148,11 @@ let MQDungeons = {
                         UseChildAge: function() {
                             return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
                         },
-                        Order: 6,
+                        Order: 13,
                         LongDescription: "In the Dead Hand room, bomb the back left rubble to reveal the item."
                     }
                 }
             },
-
             basementCenter: {
                 Exits: {},
                 ItemLocations: {
@@ -5107,12 +5160,11 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 295, y: 235, floor: "B1" },
                         Age: Age.CHILD,
-                        Order: 7,
+                        Order: 14,
                         LongDescription: "WALL MASTER WARNING:<br/>Crawl through the crawlspace in the back right corner of the main room. Hit the switch in the eye of the picture on the wall to open the door. Ignore the enemies and open the locked door. Bomb the rubble in the next room to reveal a switch. Navigate to the center and fall in the grate that opened.<br/><br/>Press the switch to spawn the chest. Navigate to the southeast part of the basement to get to the chest."
                     }
                 }
             },
-
             coffinRoom: {
                 Exits: {},
                 ItemLocations: {
@@ -5123,8 +5175,40 @@ let MQDungeons = {
                         UseChildAge: function() {
                             return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
                         },
-                        Order: 1,
+                        Order: 3,
                         LongDescription: "Navigate to the left room in the main area. Unlock the door, then navigate to the back right section of the room. The skulltula is hiding in the corner behind a pillar."
+                    },
+                    "Heart in Front Right Coffin": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapInfo: { x: 56, y: 131, floor: "F1" },
+                        MapImageName: "Recovery Heart",
+                        Age: Age.EITHER,
+                        UseChildAge: function() {
+                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
+                        },
+                        Order: 4,
+                        LongDescription: "Navigate to the left room in the main area. Unlock the door, then light the torch of the front right coffin (or use the boomerang). The heart is inside (it's invisible).",
+                        CustomRequirement: function(age) {
+                            return Data.canUseFireItem(age) || 
+                                Data.canUseDekuStick(age) ||
+                                (Data.canUseBoomerang(age) && Settings.GlitchesToAllow.boomerangThroughWalls);
+                        }
+                    },
+                    "Heart in Middle Left Coffin": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapInfo: { x: 43, y: 142, floor: "F1" },
+                        MapImageName: "Recovery Heart",
+                        Age: Age.EITHER,
+                        UseChildAge: function() {
+                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
+                        },
+                        Order: 5,
+                        LongDescription: "Navigate to the left room in the main area. Unlock the door, then light the torch of the middle left coffin (or use the boomerang). The heart is inside (it's invisible).",
+                        CustomRequirement: function(age) {
+                            return Data.canUseFireItem(age) || 
+                                Data.canUseDekuStick(age) ||
+                                (Data.canUseBoomerang(age) && Settings.GlitchesToAllow.boomerangThroughWalls);
+                        }
                     }
                 }
             }

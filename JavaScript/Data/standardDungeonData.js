@@ -4733,7 +4733,9 @@ let StandardDungeons = {
                         Order: 12,
                         LongDescription: "Head to the room to the left of the main room. The heart is in the bottom left coffin - light the torch to open it.",
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
+                            return Data.canUseFireItem(age) || 
+                                Data.canUseDekuStick(age) ||
+                                (Data.canUseBoomerang(age) && Settings.GlitchesToAllow.boomerangThroughWalls);
                         }
                     },
                     "Key in Closed Coffin": {
@@ -4743,7 +4745,9 @@ let StandardDungeons = {
                         Order: 13,
                         LongDescription: "Head to the room to the left of the main room. The heart is in the top left coffin - light the torch to open it.",
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
+                            return Data.canUseFireItem(age) || 
+                                Data.canUseDekuStick(age) ||
+                                (Data.canUseBoomerang(age) && Settings.GlitchesToAllow.boomerangThroughWalls);
                         }
                     },
                     "Underwater Chest in Front": {
