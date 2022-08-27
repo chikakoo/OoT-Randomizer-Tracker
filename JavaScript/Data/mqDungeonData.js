@@ -5266,11 +5266,26 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
+                    "2 Left Pots by Entrance": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 146, y: 252 },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { 
+                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+                            return !canEnterDungeon; 
+                        },
+                        Order: 1,
+                        LongDescription: "The pots are to the left when you first enter."
+                    },
                     "Left Chest by Entrance": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 152, y: 233 },
                         Age: Age.EITHER,
-                        Order: 1,
+                        Order: 1.1,
                         UseAdultAge: function() { 
                             let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
                                 ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
@@ -5289,6 +5304,21 @@ let MQDungeons = {
                             return !canEnterDungeon; 
                         },
                         LongDescription: "This chest is to the right when you first enter."
+                    },
+                    "2 Right Pots by Entrance": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 183, y: 252 },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { 
+                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+                            return !canEnterDungeon; 
+                        },
+                        Order: 2.1,
+                        LongDescription: "The pots are to the right when you first enter."
                     },
                     "Left Maze Path After Door 1": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5344,7 +5374,6 @@ let MQDungeons = {
                     }
                 }
             },
-
             armosRoom: {
                 Exits: {
                     bigLavaRoom: {
@@ -5368,7 +5397,6 @@ let MQDungeons = {
                     }
                 }
             },
-
             leftArea: {
                 Exits: {
                     afterRupeeRoom: {
@@ -5392,7 +5420,6 @@ let MQDungeons = {
                     }
                 }
             },
-
             afterRupeeRoom: {
                 Exits: {
                     leftArea: {
@@ -5435,7 +5462,6 @@ let MQDungeons = {
                     }
                 }
             },
-
             roomBehindSilverBlock: {
                 Exits: {},
                 ItemLocations: {
@@ -5448,7 +5474,6 @@ let MQDungeons = {
                     }
                 }
             },
-
             spinningRoom: {
                 Exits: {
                     afterRupeeRoom: {
@@ -5514,7 +5539,6 @@ let MQDungeons = {
                     }
                 }
             },
-
             bigLavaRoom: {
                 Exits: {
                     waterRoom: {
@@ -5529,7 +5553,6 @@ let MQDungeons = {
                 },
                 ItemLocations: {}
             },
-
             backOfMaze: {
                 Exits: {
                     bigLavaRoom: {
@@ -5572,12 +5595,11 @@ let MQDungeons = {
                         LongDescription: "After getting the close chest from the back of the maze, continue along counter-clockwise to get the next chest (there are no doors to go through)."					}
                 }
             },
-
             mazeCenter: {
                 Exits: {},
                 ItemLocations: {
-                    "Spawn Ice Arrow Chest": {
-                        ItemGroup: ItemGroups.NON_ITEM,
+                    "Crate in Maze Center": {
+                        ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 164, y: 160 },
                         Age: Age.EITHER,
                         Order: 6.1,
@@ -5586,11 +5608,23 @@ let MQDungeons = {
                                 ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
                             return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips && Settings.GlitchesToAllow.equipSwap); 
                         },
-                        RequiredItems: [Items.MEGATON_HAMMER]
+                        LongDescription: "This is the crate at the center of the maze."
+                    },
+                    "Spawn Ice Arrow Chest": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapInfo: { x: 164, y: 160 },
+                        Age: Age.EITHER,
+                        Order: 6.2,
+                        UseAdultAge: function() { 
+                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+                            return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips && Settings.GlitchesToAllow.equipSwap); 
+                        },
+                        RequiredItems: [Items.MEGATON_HAMMER],
+                        LongDescription: "At the center of the maze, break the crate and hit the switch with the Megaton Hammer to spawn the ice arrow chest."
                     }
                 }
             },
-
             waterRoom: {
                 Exits: {},
                 ItemLocations: {
@@ -5607,7 +5641,6 @@ let MQDungeons = {
                     }
                 }
             },
-
             iceArrowsRoom: {
                 Exits: {
                     spinningRoom: {

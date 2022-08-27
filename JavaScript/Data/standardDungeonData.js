@@ -5015,6 +5015,21 @@ let StandardDungeons = {
                         LongDescription: "This is either the room to the right of the entrance, or the southern path from the big lava room. Bomb the beamos and kill the lizalfos to spawn this chest.",
                         NeedsExplosives: true
                     },
+                    "2 Hearts in Dinalfos/Beamos Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Hearts",
+                        MapInfo: { x: 273, y: 262 },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { 
+                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
+                            return !canEnterDungeon;
+                        },
+                        Order: 17.1,
+                        LongDescription: "This is either the room to the right of the entrance, or the southern path from the big lava room. Climb the platform from one of the skinny sides to gain access to these hearts.",
+                    },
                      
                      // Locked Doors
                      "Locked Door 1 On Main Path": {
