@@ -78,7 +78,6 @@ Walk = {
 			let map = info.map;
 			let fromRegion = info.fromRegion;
             let entrances = _this._getAllOwEntrances(map, fromRegion, age, {}, currentLoop);
-			let entranceArray = [];
 
             Object.values(entrances).forEach(function(entrance) {
 				let entranceData = {
@@ -87,32 +86,27 @@ Walk = {
 				};
 
 				if (entranceData.map && entranceData.region) {
+					let deprioritizeValue = 0;
+
 					// TODO: come up with a cleaner way for this interior deprioritization...
-					let deprioritizeValue = Settings.TrackerSettings.deprioritizeDampeToWindmill &&
-						entrance.OwShuffleExitName === "Grave Exit" ? 100 : 0;
-					
-					if (age === Age.CHILD) {
-						entrance.childWalkValue = currentLoop + deprioritizeValue;
-					} else if (age === Age.ADULT) {
-						entrance.adultWalkValue = currentLoop + deprioritizeValue;
+					if (Settings.TrackerSettings.deprioritizeDampeToWindmill && entrance.OwShuffleExitName === "Grave Exit") {
+						deprioritizeValue = 100;
+					}
+					else if ((map === "Hyrule Field" && Settings.TrackerSettings.deprioritizeHyruleField) || 
+						(map === "Haunted Wasteland" && Settings.TrackerSettings.deprioritizeHauntedWasteland)) {
+							deprioritizeValue = 3;
 					}
 
-					if (deprioritizeValue === 0) {
-						entranceArray.push({ map: entranceData.map, fromRegion: entranceData.region });
-					} else {
-						_this._markAllItemLocations([{ map: entranceData.map, fromRegion: entranceData.region }], age, currentLoop + deprioritizeValue + 1);
+					let loopValueToUse = currentLoop + deprioritizeValue;
+					if (age === Age.CHILD) {
+						entrance.childWalkValue = loopValueToUse;
+					} else if (age === Age.ADULT) {
+						entrance.adultWalkValue = loopValueToUse;
 					}
+
+					_this._markAllItemLocations([{ map: entranceData.map, fromRegion: entranceData.region }], age, loopValueToUse + 1);
 				}
             });
-
-			// TODO: make an actual weighted version of walking backwards
-			// For now, we're deprioritizing these maps becuase they generally take a while to walk through
-			let loopValueToUse = currentLoop;
-			if ((map === "Hyrule Field" && Settings.TrackerSettings.deprioritizeHyruleField) || 
-				(map === "Haunted Wasteland" && Settings.TrackerSettings.deprioritizeHauntedWasteland)) {
-				loopValueToUse += 3;
-			}
-            _this._markAllItemLocations(entranceArray, age, loopValueToUse + 1);
 		});
     },
     
