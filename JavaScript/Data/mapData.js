@@ -2308,7 +2308,7 @@ let MapLocations = {
                         LongDescription: "In the middle of the map, there's a heart piece on a high up platform. You can get this as a child using cuccos to fly to the platform. As adult, you can use hover boots from the cliff that you take a ladder to get up.",
                         RequiredAdultItems: [Equipment.HOVER_BOOTS]
                     },
-                    "Heart Piece by Waterfall": {
+                    "Heart Piece by Zora's Domain": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 266, y: 56 },
                         Age: Age.EITHER,
