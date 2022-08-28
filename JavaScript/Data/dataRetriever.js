@@ -1798,9 +1798,7 @@ Data = {
      * This is used for small key checks
      */
     fireCanAccessBossKeyPath: function(age) {
-        let canSkipPillar = Settings.GlitchesToAllow.fireFirstRoomPillarSkip &&
-        (age === Age.ADULT || (age === Age.CHILD && Equipment.KOKIRI_SWORD.playerHas));
-
+        let canSkipPillar = age === Age.ADULT && Settings.GlitchesToAllow.fireFirstRoomPillarSkip;
         return Data.canUseHammer(age) || canSkipPillar;
     },
 

@@ -758,7 +758,9 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 3,
-                        LongDescription: "Fall down one of the holes to get to the main room on the bottom. Enter the door by the vines back up. Either stun the jello with your boomerang to cross, or use hover boots. The pots are on the other side - one is always a fairy."
+                        LongDescription: "Fall down one of the holes to get to the main room on the bottom. Enter the door by the vines back up. Either stun the jello with your boomerang to cross, or use hover boots. The pots are on the other side - one is always a fairy.",
+                        RequiredChildItems: [Items.BOOMERANG],
+                        RequiredChoiceOfAdultItems: [Items.BOOMERANG, Equipment.HOVER_BOOTS]
                     },
                     "Left Skulltula on Lower Room Wall": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -903,9 +905,9 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-                        LongDescription: "The skulltula is high up on the vines in the first room. You can kill it with a ranged item, din's fire, or a bombchu from the ground.",
+                        LongDescription: "The skulltula is high up on the vines in the first room. You can kill it with a ranged item, din's fire, a bomb from the top, or a bombchu from the ground.",
                         CustomRequirement: function(age) {
-                            if (Data.canUseFireItem(age) || Data.canUseBoomerang(age) || Items.BOMBCHU.playerHas) { return true; }
+                            if (Data.canUseFireItem(age) || Data.canUseBoomerang(age) || Data.hasExplosives()) { return true; }
                             if (age === Age.CHILD) {
                                 return Items.FAIRY_SLINGSHOT.playerHas;
                             }
@@ -5617,7 +5619,8 @@ let StandardDungeons = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Scrubs",
                         MapInfo: { x: 249, y: 235, floor: "MN" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 1,
                         LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
                     },

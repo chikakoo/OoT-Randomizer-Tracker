@@ -1387,7 +1387,7 @@ let MapLocations = {
             // Dampe's Grave and Windmill area
             dampesGrave: {
                 Exits: {
-                    windmill: {
+                    windmillTop: {
                         CustomRequirement: function(age) {
                             return Data.canGetToWindmillFromDampe(age);
                         }
@@ -2993,7 +2993,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "The crate is on a ledge on the left side of the ravine. Grab a cucco and jump across to the crate. If you're fast, you can grab the cucco after you get the item and use it to get the waterfall item as well.<br /><br />As an adult, you can longshot to the crate from the ledge on the other side."
                     },
-                    "Item in Crate": {
+                    "Item in Heart Piece Crate": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 175, y: 173 },
                         Age: Age.EITHER,

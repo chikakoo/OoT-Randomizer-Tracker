@@ -5746,7 +5746,8 @@ let MQDungeons = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "5 Scrubs",
                         MapInfo: { x: 249, y: 235, floor: "MN" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 1,
                         LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
                     },
