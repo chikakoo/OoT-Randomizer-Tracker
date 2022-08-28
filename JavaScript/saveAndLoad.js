@@ -80,7 +80,8 @@ let SaveAndLoad = {
                     let overrideObtainableChild = itemLocation.OverrideObtainableChild;
                     let overrideObtainableAdult = itemLocation.OverrideObtainableAdult;
 
-                    if (playerHas || notes || owShuffleMap || owShuffleRegion || entranceGroup || defaultEntranceGroup || overrideObtainableChild || overrideObtainableAdult) {
+                    let relevantDefaultEntranceGroup = defaultEntranceGroup && Object.keys(defaultEntranceGroup.completed).length > 0;
+                    if (playerHas || notes || owShuffleMap || owShuffleRegion || entranceGroup || relevantDefaultEntranceGroup || overrideObtainableChild || overrideObtainableAdult) {
                         currentMapData = currentMapData || {};
                         currentMapData.Regions = currentMapData.Regions || {};
                         currentMapData.Regions[regionName] = currentMapData.Regions[regionName] || {};
@@ -93,7 +94,7 @@ let SaveAndLoad = {
                         if (owShuffleMap) { currentObj.OwShuffleMap = owShuffleMap; }
                         if (owShuffleRegion) { currentObj.OwShuffleRegion = owShuffleRegion; }
                         if (entranceGroup) { currentObj.EntranceGroup = entranceGroup; }
-                        if (defaultEntranceGroup) { currentObj.DefaultEntranceGroup = defaultEntranceGroup; }
+                        if (relevantDefaultEntranceGroup) { currentObj.DefaultEntranceGroup = defaultEntranceGroup; }
                         if (overrideObtainableChild) { currentObj.OverrideObtainableChild = overrideObtainableChild; }
                         if (overrideObtainableAdult) { currentObj.OverrideObtainableAdult = overrideObtainableAdult; }
                     }
