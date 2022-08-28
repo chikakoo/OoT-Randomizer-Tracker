@@ -99,7 +99,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "This stone is by the lost woods entrance at the top area of the forest.",
                     },
-                    "Blue Rupee Behind Midos": {
+                    "Blue Rupee Behind Mido's": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Blue Rupee",
                         MapInfo: { x: 135, y: 95 },
@@ -119,6 +119,13 @@ let MapLocations = {
                         MapInfo: { x: 78, y: 292 },
                         Age: Age.CHILD,
                         LongDescription: "Go in the maze and follow the right wall to this item.",
+                    },
+                    "Blue Rupee Across Bridges": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Blue Rupee",
+                        MapInfo: { x: 177, y: 138 },
+                        Age: Age.CHILD,
+                        LongDescription: "Go up to Saria's House and cross the two small bridges to get to this item.",
                     },
                     "3 Hearts on Saria's House": {
                         ItemGroup: ItemGroups.ENTRANCE,
