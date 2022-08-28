@@ -9,7 +9,7 @@ Array.prototype.shuffle = function()
 		this[j] = t;
 	}
 	return this;
-}
+};
 
 dce = function dce(tagName, cssClass)
 {

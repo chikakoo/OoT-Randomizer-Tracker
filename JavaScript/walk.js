@@ -182,15 +182,16 @@ Walk = {
 			}
 		});
 		
-		let childKeyValues = Object.keys(childValues).map(Number);
+		let childKeyValuesStrArray = Object.keys(childValues).map(Number);
+		let childKeyValues = Int32Array.from(childKeyValuesStrArray);
 		childKeyValues.sort();
 		let childLocations = [];
 		if (childKeyValues && childKeyValues.length > 0 && childKeyValues.length > destinationIndex) {
 			childLocations = childValues[childKeyValues[destinationIndex]];
 		}
 		
-		let adultKeyValues = Object.keys(adultValues).map(Number);
-		adultKeyValues.sort();
+		let adultKeyValuesStrArray = Object.keys(adultValues).map(Number);
+		let adultKeyValues = Int32Array.from(adultKeyValuesStrArray);
 		let adultLocations = [];
 		if (adultKeyValues && adultKeyValues.length > 0 && adultKeyValues.length > destinationIndex) {
 			adultLocations = adultValues[adultKeyValues[destinationIndex]];
