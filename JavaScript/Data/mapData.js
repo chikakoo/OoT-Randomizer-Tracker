@@ -1079,6 +1079,13 @@ let MapLocations = {
                     "Gift from the Guy on the Roof": {
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 212, y: 124 },
+                        Time: function() {
+                            let canUseISG = Settings.GlitchesToAllow.isg && Data.hasSwordWeapon(Age.CHILD) && Data.hasShield(Age.CHILD);
+                            if (canUseISG || Items.FAIRY_SLINGSHOT.playerHas || Items.BOMBCHU.playerHas || (Settings.GlitchesToAllow.watchtowerSkullJumpslash && Data.hasSwordWeapon(Age.CHILD))) {
+                                return Time.EITHER;
+                            }
+                            return Time.DAY_CHILD;
+                        },
                         Age: Age.EITHER,
                         LongDescription: "The guy on the roof of the house gives you an item. To get this as a child, climb the giant watchtower, position yourself at the upper left corner, then sidehop left without holding any direction. As an adult, you can either hookshot to the roof from the fence by the windmill, or do a jump to the potion shop roof from the ledge leading to Death Mountain."
                     },
@@ -2475,15 +2482,16 @@ let MapLocations = {
                         LongDescription: "Dump Blue Fire on the frozen King Zora to thaw him. Talk to him from the platform in front of him and he will give you an item.",
                         CustomRequirement: function(age) {
                             if (Data.canUseBlueFire(age)) { return true; }
-                            if (Settings.GlitchesToAllow.thawKingZoraWithNothing && 
-                                Data.itemLocationObtained("Zora's Domain", "main", "Move King Zora")) {
-                                return Data.hasBottle() || 
-                                    Items.CLAIM_CHECK.playerHas || 
-                                    (Data.canEquipSwap(age) && Items.MAGIC_BEAN.playerHas) ||
-                                    (Equipment.MAGIC.playerHas && Items.NAYRUS_LOVE.playerHas);
+                            if (!Settings.GlitchesToAllow.thawKingZoraWithNothing) { return false; }
+                            if (!Data.itemLocationObtained("Zora's Domain", "main", "Move King Zora") && !SocketClient.isCoOp()) {
+                                // The sign reading glitch doesn't seem to work on ModLoader...
+                                return true;
                             }
 
-                            return Settings.GlitchesToAllow.thawKingZoraWithNothing;
+                            return Data.hasBottle() || 
+                                Items.CLAIM_CHECK.playerHas || 
+                                (Data.canEquipSwap(age) && Items.MAGIC_BEAN.playerHas) ||
+                                (Equipment.MAGIC.playerHas && Items.NAYRUS_LOVE.playerHas);
                         }
                     },
                     "Skulltula on Top of Waterfall": {

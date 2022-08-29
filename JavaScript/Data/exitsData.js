@@ -920,6 +920,13 @@ let OwExits = {
         "Open Grotto Behind Potion Shop": {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
+            Time: function() {
+                let canUseISG = Settings.GlitchesToAllow.isg && Data.hasSwordWeapon(Age.CHILD) && Data.hasShield(Age.CHILD);
+                if (canUseISG || Items.FAIRY_SLINGSHOT.playerHas || Items.BOMBCHU.playerHas || (Settings.GlitchesToAllow.watchtowerSkullJumpslash && Data.hasSwordWeapon(Age.CHILD))) {
+                    return Time.EITHER;
+                }
+                return Time.DAY_CHILD;
+            },
             IsGrotto: true,
             DefaultEntranceGroupName: "Generic Grotto",
             MapInfo: { x: 245, y: 123 },
@@ -1052,7 +1059,15 @@ let OwExits = {
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             OneWayInteriorSpawnEntrance: true,
-            Time: function() { return Settings.GlitchesToAllow.kakShopClips ? Time.EITHER : Time.DAY; },
+            Time: function() {
+                if (!Settings.GlitchesToAllow.kakShopClips) { return Time.DAY; }
+
+                let canUseISG = Settings.GlitchesToAllow.isg && Data.hasSwordWeapon(Age.CHILD) && Data.hasShield(Age.CHILD);
+                if (canUseISG || Items.FAIRY_SLINGSHOT.playerHas || Items.BOMBCHU.playerHas || (Settings.GlitchesToAllow.watchtowerSkullJumpslash && Data.hasSwordWeapon(Age.CHILD))) {
+                    return Time.EITHER;
+                }
+                return Time.DAY_CHILD;
+            },
             MapInfo: { x: 192, y: 96 },
             UseAdultAge: function() { return !Settings.GlitchesToAllow.kakShopClips; },
             Age: Age.EITHER,
