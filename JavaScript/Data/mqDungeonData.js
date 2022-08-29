@@ -2096,6 +2096,16 @@ let MQDungeons = {
 
             bigLavaRoom: {
                 Exits: {
+                    bossKeyRoom: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Equipment.MAGIC],
+                        CustomRequirement: function(age) {
+                            let canUseDins = Settings.GlitchesToAllow.mqFireLavaRoomDoorWithDins && Items.DINS_FIRE.playerHas;
+                            let canLightTorches = canUseDins || Data.canUseFireArrows(age);
+                            let canGetUp = Settings.GlitchesToAllow.fireSoTBlockJump || Items.HOOKSHOT.playerHas;
+                            return canLightTorches && canGetUp;
+                        }
+                    },
                     cellBelowBoulderMaze: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
@@ -2149,31 +2159,6 @@ let MQDungeons = {
                         Order: 13,
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the right door into the big lava room. Along the back left wall is a platform that will rise up to an alcove after you jump on it. The pot is there."
                     },
-                    "Boss Key Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 174, y: 85, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 14,
-                        NeedsFire: true,
-                        LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to it, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side).",
-                        CustomRequirement: function(age) {
-                            return Items.HOOKSHOT.playerHas || Settings.GlitchesToAllow.fireSoTBlockJump;
-                        }
-                    },
-                    "2 Pots in Boss Key Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 162, y: 102, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 15,
-                        NeedsFire: true,
-                        LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to the pots, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side).",
-                        CustomRequirement: function(age) {
-                            return Items.HOOKSHOT.playerHas || Settings.GlitchesToAllow.fireSoTBlockJump;
-                        }
-                    },
                     "Right Pot in Big Lava Room": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 190, y: 263, floor: "F1" },
@@ -2203,6 +2188,29 @@ let MQDungeons = {
                         NeedsExplosives: true,
                         NeedsFire: true,
                         LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron."
+                    }
+                }
+            },
+
+            bossKeyRoom: {
+                Exits: {},
+                ItemLocations: {
+                    "Boss Key Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 174, y: 85, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 14,
+                        LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to it, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
+                    },
+                    "2 Pots in Boss Key Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 162, y: 102, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 15,
+                        LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to the pots, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
                     }
                 }
             },

@@ -229,6 +229,7 @@ let Settings = {
 		fireCraterRoomKeySkip: false,
 		fireWallSkip: false,
 		fireJumpDownToSoTBlock: false,
+		mqFireLavaRoomDoorWithDins: false,
 		
 		waterNoZoraTunic: false,
 		waterHighWaterJump: false,
