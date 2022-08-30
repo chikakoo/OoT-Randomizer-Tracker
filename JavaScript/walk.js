@@ -60,18 +60,18 @@ Walk = {
         this._visitedInfo[Age.ADULT] = [];
 		
 		if (Data.canAccessMap(Age.CHILD, map, region)) {
-			this._markAllItemLocations([{ map: map, fromRegion: region }], Age.CHILD, 0);
+			this._markAllItemLocations([{ map: map, fromRegion: region, fromExit: null }], Age.CHILD, 0, true);
 		}
 		
 		if (Data.canAccessMap(Age.ADULT, map, region)) {
-			this._markAllItemLocations([{ map: map, fromRegion: region }], Age.ADULT, 0);
+			this._markAllItemLocations([{ map: map, fromRegion: region, fromExit: null }], Age.ADULT, 0, true);
 		}
     },
 
     /**
 	 * Marks item locations in a reverse walk
 	 */
-	_markAllItemLocations: function(walkToInfo, age, currentLoop) {
+	_markAllItemLocations: function(walkToInfo, age, currentLoop, isFirstLoop) {
 		let _this = this;
 		
 		walkToInfo.forEach(function(info) {
@@ -82,29 +82,19 @@ Walk = {
             Object.values(entrances).forEach(function(entrance) {
 				let entranceData = {
 					map: entrance.ExitMap,
-					region: entrance.ExitRegion
+					region: entrance.ExitRegion,
+					exit: info.fromExit
 				};
 
 				if (entranceData.map && entranceData.region) {
-					let deprioritizeValue = 0;
-
-					// TODO: come up with a cleaner way for this interior deprioritization...
-					if (Settings.TrackerSettings.deprioritizeDampeToWindmill && entrance.OwShuffleExitName === "Grave Exit") {
-						deprioritizeValue = 100;
-					}
-					else if ((map === "Hyrule Field" && Settings.TrackerSettings.deprioritizeHyruleField) || 
-						(map === "Haunted Wasteland" && Settings.TrackerSettings.deprioritizeHauntedWasteland)) {
-							deprioritizeValue = 3;
-					}
-
-					let loopValueToUse = currentLoop + deprioritizeValue;
+					let walkValue = isFirstLoop ? 0 : WalkData.getWalkValue(map, entrance.OwShuffleExitName, entranceData.exit);
+					let loopValueToUse = currentLoop + walkValue;
 					if (age === Age.CHILD) {
 						entrance.childWalkValue = loopValueToUse;
 					} else if (age === Age.ADULT) {
 						entrance.adultWalkValue = loopValueToUse;
 					}
-
-					_this._markAllItemLocations([{ map: entranceData.map, fromRegion: entranceData.region }], age, loopValueToUse + 1);
+					_this._markAllItemLocations([{ map: entranceData.map, fromRegion: entranceData.region, fromExit: entrance.Name }], age, loopValueToUse);
 				}
             });
 		});

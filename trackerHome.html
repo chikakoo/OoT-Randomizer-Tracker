@@ -8,6 +8,7 @@
 	<script src="JavaScript/socketClient.js"></script>
 	<script src="JavaScript/helpers.js"></script>
 	<script src="JavaScript/Data/settings.js"></script>
+	<script src="JavaScript/Data/walkData.js"></script>
 	<script src="JavaScript/walk.js"></script>
 	<script src="JavaScript/regionWalker.js"></script>
 	<script src="JavaScript/Data/itemData.js"></script>
@@ -196,6 +197,13 @@
 							<label onclick='SettingsPage.setOptionValueForTracker("dungeonItemDisplay", event)'
 								title="Groups everything into one bunch, in a suggested order to obtain them.">
 								<input type="radio" name="dungeonItemDisplay" value=1>By suggested order
+							</label>
+						</div>
+						<div class="settings-radio-group" title="Route finder settings.">
+							Route Finder Settings
+							<label onclick='SettingsPage.setBooleanValueForTracker("routeBasedOnTime", event)'
+								title="NOT COMPLETED YET: If on, will route based on rough time estimates rather than number of exits to take.">
+								<input type="checkbox" name="routeBasedOnTime" value="routeBasedOnTime">Route Based on Travel Time
 							</label>
 						</div>
 						<div class="settings-radio-group" title="How the location finder deprioritizes locations.">

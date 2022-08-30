@@ -83,7 +83,8 @@ let Settings = {
 		dungeonItemDisplay: DungeonItemDisplaySettings.BY_SUGGESTED_ORDER,
 		deprioritizeDampeToWindmill: true,
 		deprioritizeHyruleField: true,
-		deprioritizeHauntedWasteland: true
+		deprioritizeHauntedWasteland: true,
+		routeBasedOnTime: false //TODO: Not completed yet, do not use!
 	},
 	
 	RandomizerSettings: {
