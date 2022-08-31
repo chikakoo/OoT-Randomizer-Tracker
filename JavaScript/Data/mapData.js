@@ -1213,6 +1213,12 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "This crate is next to the entrance to the archery minigame."
                     },
+                    "Crate by Beggar": {
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 116, y: 123 },
+                        Age: Age.ADULT,
+                        LongDescription: "This crate is next to the beggar by the Bazaar. The other crate is empty."
+                    },
                     "Crate Behind Potion Shop": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 249, y: 134 },
@@ -2657,7 +2663,7 @@ let MapLocations = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 125, y: 98 },
-                        Age: Age.EITHER,
+                        Age: Age.CHILD,
                         LongDescription: "As Child, these pots are on the corners of the platform by the entrance to Jabu Jabu's Belly."
                     },
                     "18 Underwater Green Rupees": {
@@ -2690,7 +2696,7 @@ let MapLocations = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 266, y: 260 },
-                        Age: Age.EITHER,
+                        Age: Age.ADULT,
                         LongDescription: "Go to the southeast corner of the map. Pick up the silver rock and drop down. You should now be next to the pots.",
                     }
                 }
@@ -3261,10 +3267,7 @@ let MapLocations = {
                         LongDescription: "The are the closer crates in the hallway attached to the kitchen."
                     },
                     "Crate Close to Kitchen": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Crates",
+                        ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 105, y: 259, floor: "LOW" },
                         Age: Age.EITHER,
                         LongDescription: "This is the crate right next to the kitchen - you'll need to deal with one of the guards to get it.",
