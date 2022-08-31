@@ -2460,7 +2460,9 @@ let StandardDungeons = {
                         LockedDoor: "Locked Door to Central Room"
                     },
                     dragonRoom: {
-                        RequiredItems: [Equipment.STRENGTH]
+                        RequiredItems: [Equipment.STRENGTH],
+                        RequiredChildItems: [Equipment.SCALE],
+                        RequiredChoiceOfAdultItems: [Equipment.SCALE, Equipment.IRON_BOOTS]
                     },
                     behindBlockArea: {
                         CustomRequirement: function(age) {
@@ -2789,11 +2791,20 @@ let StandardDungeons = {
                 ItemLocations: {
                     "Chest in Dragon Room at Bottom West Wing": {
                         ItemGroup: ItemGroups.CHEST,
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 13,
                         MapInfo: { x: 33, y: 61, floor: "F1" },
-                        LongDescription: "There are two ways to get to this room. One way: after draining the water, make your way to the bottom west wing. Push the red block out of the way then follow the path. Get to the other side of the switch and water puzzle to get the dragon and whirlpool room.<br/><br/>The alternate path to this room is to drop down after the vortex room chest (post-Dark Link).<br/><br/>When here, use your Iron Boots to sink down in the upper right corner of the vortex room, on the lower dragon. From there, hookshot the crystal switch in the dragon's mouth. Now hookshot the target in the room that opens up. Unequip your Iron Boots then float up to the chest.",
-                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+                        LongDescription: "There are two ways to get to this room. One way: after draining the water, make your way to the bottom west wing. Push the red block out of the way then follow the path. Get to the other side of the switch and water puzzle to get the dragon and whirlpool room.<br/><br/>The alternate path to this room is to drop down after the vortex room chest (post-Dark Link).<br/><br/>When here, use your Iron Boots to sink down in the upper right corner of the vortex room, on the lower dragon. From there, hookshot the crystal switch in the dragon's mouth. Now hookshot the target in the room that opens up. Unequip your Iron Boots then float up to the chest.<br/><br/>You can also line up a bombchu with the switch from the platform by the door. Now, either use your iron boots to navigate to the door, or dive using the silver scale to get there (you'll have to dive early enough - when you're near the right wall).",
+                        CustomRequirement: function(age) {
+                            let canUseIronBoots = age === Age.ADULT && Equipment.IRON_BOOTS.playerHas;
+                            if (Items.BOMBCHU.playerHas) {
+                                let canDiveDownNormally = Equipment.SCALE.playerHas || canUseIronBoots;
+                                return Settings.GlitchesToAllow.waterDragonChestWithChu || canDiveDownNormally;
+                            }
+
+                            return canUseIronBoots && Items.HOOKSHOT.playerHas;
+                        }
                     }
                 }
             },

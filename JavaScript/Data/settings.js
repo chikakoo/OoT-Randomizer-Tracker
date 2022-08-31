@@ -237,6 +237,7 @@ let Settings = {
 		waterHookshotToFloor1: false,
 		waterBombableWallEarly: false,
 		waterEyeSwitchGateFromTop: false,
+		waterDragonChestWithChu: false,
 		waterBKShortcut: false,
 		
 		shadowLensless: false,
