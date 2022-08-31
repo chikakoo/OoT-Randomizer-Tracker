@@ -242,6 +242,7 @@ let Settings = {
 		shadowLensless: false,
 		shadowSilverRupeeWithNothing: false,
 		shadowBackFlipOnSpikes: false,
+		shadowGiantSkullsWithChus: false,
 		shadowNoIronBoots: false,
 		shadowGateClip: false,
 		shadowChuBombFlowers: false,

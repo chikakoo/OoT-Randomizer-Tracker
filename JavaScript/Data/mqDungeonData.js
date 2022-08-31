@@ -3862,7 +3862,10 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 45,
                         LongDescription: "From the room with invisible walls, enter the room that's straight ahead of you (the west room). Use the bomb flower or your own bombs to blow up all three skulls to spawn the 9 items.",
-                        RequiredItems: [Equipment.STRENGTH, Items.BOMB]
+                        CustomRequirement: function(age) {
+                            let canUseChu = Settings.GlitchesToAllow.shadowGiantSkullsWithChus && Items.BOMBCHU.playerHas;
+                            return canUseChu || Items.BOMB.playerHas || Equipment.STRENGTH.playerHas;
+                        }
                     },
                     "Bomb Flower Room Chest": {
                         ItemGroup: ItemGroups.CHEST,

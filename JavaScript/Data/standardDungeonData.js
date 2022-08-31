@@ -3379,7 +3379,10 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 23,
                         LongDescription: "To get here, start at the invisible spike room. Collect all the silver rupees using your hookshot. Note that there are a few invisible targets. Enter the room on the bottom that unlocks. Throw a Bomb or Bomb Flower into the giant skull to spawn the key.",
-                        RequiredChoiceOfAdultItems: [Equipment.STRENGTH, Items.BOMB]
+                        CustomRequirement: function(age) {
+                            let canUseChu = Settings.GlitchesToAllow.shadowGiantSkullsWithChus && Items.BOMBCHU.playerHas;
+                            return canUseChu || Items.BOMB.playerHas || Equipment.STRENGTH.playerHas;
+                        }
                     },
 
                     "Skulltula in Giant Skull Room": {
@@ -3550,7 +3553,10 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 38,
                         LongDescription: "From the room with invisible walls, enter the room that's straight ahead of you (the west room). Use the bomb flower or your own bombs to blow up all three skulls to spawn the 9 items.",
-                        RequiredItems: [Equipment.STRENGTH, Items.BOMB]
+                        CustomRequirement: function(age) {
+                            let canUseChu = Settings.GlitchesToAllow.shadowGiantSkullsWithChus && Items.BOMBCHU.playerHas;
+                            return canUseChu || Items.BOMB.playerHas || Equipment.STRENGTH.playerHas;
+                        }
                     },
                     "2 Pots in Invisible Floormaster Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
