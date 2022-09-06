@@ -217,9 +217,8 @@ let MQDungeons = {
 
             waterRoom: {
                 Exits: {
-                    upperBasement: {}
+                    graveRoom: {}
                 },
-
                 ItemLocations: {
                     "Chest by Water Room Door": {
                         ItemGroup: ItemGroups.CHEST,
@@ -241,16 +240,10 @@ let MQDungeons = {
                 }
             },
 
-            upperBasement: {
+            graveRoom: {
                 Exits: {
-                    lowerBasement: {
-                        CustomRequirement: function(age) {
-                            let canBurnWeb = Data.canUseFireItem(age) || Data.canUseDekuStick(age);
-                            return canBurnWeb || Data.canWeirdShot(age);
-                        }
-                    }
+                    upperBasement: {}
                 },
-
                 ItemLocations: {
                     "Skulltula in Grave Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -273,7 +266,24 @@ let MQDungeons = {
                         CustomRequirement: function(age) {
                             return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
                         }
+                    }
+                }
+            },
+
+            upperBasement: {
+                Exits: {
+                    graveRoom: {
+                        Age: Age.CHILD
                     },
+                    lowerBasement: {
+                        CustomRequirement: function(age) {
+                            let canBurnWeb = Data.canUseFireItem(age) || Data.canUseDekuStick(age);
+                            return canBurnWeb || Data.canWeirdShot(age);
+                        }
+                    }
+                },
+
+                ItemLocations: {
                     "Scrub in Basement": {
                         ItemGroup: ItemGroups.SCRUB,
                         MapInfo: { x: 274, y: 143, floor: "B1" },
@@ -2219,6 +2229,11 @@ let MQDungeons = {
                 Exits: {
                     boulderMaze: {
                         NeedsFire: true
+                    },
+                    cellBelowBoulderMaze: {
+                        CustomRequirement: function(age) {
+                            return Data.canWeirdShot(age);
+                        }
                     }
                 },
                 ItemLocations: {
@@ -2272,6 +2287,7 @@ let MQDungeons = {
 
             boulderMazeTop: {
                 Exits: {
+                    boulderMaze: {},
                     aboveBoulderMaze: {
                         RequiredSongs: [Songs.SONG_OF_TIME]
                     },
@@ -2311,7 +2327,9 @@ let MQDungeons = {
             },
 
             cellBelowBoulderMaze: {
-                Exits: {},
+                Exits: {
+                    boulderMazeTop: {}
+                },
                 ItemLocations: {
                     "6 Crates in Hole Under Maze": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2576,7 +2594,9 @@ let MQDungeons = {
                         RequiredItems: [Equipment.IRON_BOOTS]
                     },
                     roomBeforeDarkLink: {
-                        RequiredItems: [Items.HOOKSHOT],
+                        //TODO: does hovers + normal hookshot actually work?
+                        RequiredChoiceOfAdultItems: [{item: Items.HOOKSHOT, upgradeString: "2"}, Equipment.HOVER_BOOTS],
+                        RequiredAdultItems: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
                             return getKeyCount("Water Temple") >= 1;
                         }
@@ -6003,7 +6023,7 @@ let MQDungeons = {
                 ItemLocations: {
                     "2 Hearts at Light Trial": {
                         ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 213, y: 130, floor: "LIT" },

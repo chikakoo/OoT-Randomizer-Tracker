@@ -42,15 +42,141 @@ let WalkData = {
             "Lost Woods Bottom": function(toExit) {
                 switch(toExit) {
                     case "Lost Woods Bottom": return 0;
-                    case "Lost Woods Top": return 5;
-                    case "Deku Tree Entrance": return 10;
+                    case "Lost Woods Top": return 22;
+                    case "Deku Tree Entrance": return 40;
+                    case "Link's House": return 19;
+                    case "Saria's House": return 15;
+                    case "Mido's House": return 8;
+                    case "Know-It-All House": return 9;
+                    case "House of Twins": return 18;
+                    case "Shop": return 16;
+                    case "Song of Storms Grotto by Lost Woods": return 33;
                 }
             },
             "Lost Woods Top": function(toExit) {
                 switch(toExit) {
-                    case "Lost Woods Bottom": return 5;
+                    case "Lost Woods Bottom": return 10;
                     case "Lost Woods Top": return 0;
-                    case "Deku Tree Entrance": return 10;
+                    case "Deku Tree Entrance": return 35;
+                    case "Link's House": return 23;
+                    case "Saria's House": return 17;
+                    case "Mido's House": return 9;
+                    case "Know-It-All House": return 15;
+                    case "House of Twins": return 16;
+                    case "Shop": return 12;
+                    case "Song of Storms Grotto by Lost Woods": return 11;
+                }
+            },
+            "Deku Tree Entrance": function(toExit) {
+                switch(toExit) {
+                    case "Lost Woods Bottom": return 40;
+                    case "Lost Woods Top": return 51;
+                    case "Deku Tree Entrance": return 0;
+                    case "Link's House": return 36;
+                    case "Saria's House": return 28;
+                    case "Mido's House": return 32;
+                    case "Know-It-All House": return 37;
+                    case "House of Twins": return 23;
+                    case "Shop": return 26;
+                    case "Song of Storms Grotto by Lost Woods": return 58;
+                }
+            },
+            "Link's House": function(toExit) {
+                switch(toExit) {
+                    case "Lost Woods Bottom": return 18;
+                    case "Lost Woods Top": return 30;
+                    case "Deku Tree Entrance": return 34;
+                    case "Link's House": return 0;
+                    case "Saria's House": return 9;
+                    case "Mido's House": return 12;
+                    case "Know-It-All House": return 16;
+                    case "House of Twins": return 12;
+                    case "Shop": return 13;
+                    case "Song of Storms Grotto by Lost Woods": return 41;
+                }
+            },
+            "Saria's House": function(toExit) {
+                switch(toExit) {
+                    case "Lost Woods Bottom": return 15;
+                    case "Lost Woods Top": return 28;
+                    case "Deku Tree Entrance": return 28;
+                    case "Link's House": return 11;
+                    case "Saria's House": return 0;
+                    case "Mido's House": return 10;
+                    case "Know-It-All House": return 14;
+                    case "House of Twins": return 5;
+                    case "Shop": return 7;
+                    case "Song of Storms Grotto by Lost Woods": return 39;
+                }
+            },
+            "Mido's House": function(toExit) {
+                switch(toExit) {
+                    case "Lost Woods Bottom": return 8;
+                    case "Lost Woods Top": return 20;
+                    case "Deku Tree Entrance": return 32;
+                    case "Link's House": return 15;
+                    case "Saria's House": return 10;
+                    case "Mido's House": return 0;
+                    case "Know-It-All House": return 8;
+                    case "House of Twins": return 12;
+                    case "Shop": return 11;
+                    case "Song of Storms Grotto by Lost Woods": return 31;
+                }
+            },
+            "Know-It-All House": function(toExit) {
+                switch(toExit) {
+                    case "Lost Woods Bottom": return 7;
+                    case "Lost Woods Top": return 24;
+                    case "Deku Tree Entrance": return 36;
+                    case "Link's House": return 14;
+                    case "Saria's House": return 11;
+                    case "Mido's House": return 8;
+                    case "Know-It-All House": return 0;
+                    case "House of Twins": return 14;
+                    case "Shop": return 22;
+                    case "Song of Storms Grotto by Lost Woods": return 35;
+                }
+            },
+            "House of Twins": function(toExit) {
+                switch(toExit) {
+                    case "Lost Woods Bottom": return 18;
+                    case "Lost Woods Top": return 30;
+                    case "Deku Tree Entrance": return 23;
+                    case "Link's House": return 14;
+                    case "Saria's House": return 5;
+                    case "Mido's House": return 12
+                    case "Know-It-All House": return 16;
+                    case "House of Twins": return 0;
+                    case "Shop": return 7;
+                    case "Song of Storms Grotto by Lost Woods": return 41;
+                }
+            },
+            "Shop": function(toExit) {
+                switch(toExit) {
+                    case "Lost Woods Bottom": return 16;
+                    case "Lost Woods Top": return 27;
+                    case "Deku Tree Entrance": return 26;
+                    case "Link's House": return 16;
+                    case "Saria's House": return 7;
+                    case "Mido's House": return 11;
+                    case "Know-It-All House": return 15;
+                    case "House of Twins": return 7;
+                    case "Shop": return 0;
+                    case "Song of Storms Grotto by Lost Woods": return 38;
+                }
+            },
+            "Song of Storms Grotto by Lost Woods": function(toExit) {
+                switch(toExit) {
+                    case "Lost Woods Bottom": return 8;
+                    case "Lost Woods Top": return 4;
+                    case "Deku Tree Entrance": return 35;
+                    case "Link's House": return 23;
+                    case "Saria's House": return 17;
+                    case "Mido's House": return 9;
+                    case "Know-It-All House": return 15;
+                    case "House of Twins": return 16;
+                    case "Shop": return 12;
+                    case "Song of Storms Grotto by Lost Woods": return 8;
                 }
             }
         },

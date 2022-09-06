@@ -144,7 +144,7 @@ let Settings = {
 		weirdShot: false,
 		boomerangThroughWalls: false,
 		difficultBoomerangTrickThrows: false,
-		breakBeehivesWithBombs: false,
+		breakBeehivesWithBombs: true,
 		breakBeehivesWithChus: false,
 		
 		// Kakariko/Graveyard

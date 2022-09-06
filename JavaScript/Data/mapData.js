@@ -2156,7 +2156,7 @@ let MapLocations = {
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 204, y: 39 },
                         Age: Age.EITHER,
-                        LongDescription: "At the bottom of Goron City on the fancy carpet, play Zelda's Lullaby. If you can manage to get to the Goron City entrance from the crater, that works too. The pots are on the tables against the wall."
+                        LongDescription: "Child: at the bottom of Goron City on the fancy carpet, play Zelda's Lullaby. Adult: stop the rolling goron to open the way here. Either: if you can manage to get to the Goron City entrance from the crater, that works too. The pots are on the tables against the wall."
                     }
                 }
             },
