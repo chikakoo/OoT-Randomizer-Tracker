@@ -1322,7 +1322,7 @@ Data = {
         if (age === Age.CHILD) {
             return Equipment.DEKU_SHIELD.playerHas || Equipment.HYLIAN_SHIELD.playerHas;
         }
-        return Equipment.DEKU_SHIELD.playerHas || Equipment.HYLIAN_SHIELD.playerHas;
+        return Equipment.HYLIAN_SHIELD.playerHas || Equipment.MIRROR_SHIELD.playerHas;
     },
 
     /**

@@ -885,7 +885,7 @@ GrottoGroups = {
 			"Left Beehive": {
 				icon: "Beehive",
 				itemGroup: ItemGroups.BEEHIVE,
-				description: "The beehive on the left side of the grotto. If using chus, line up with one of the walls under it and drop it on the 7th red flash.",
+				description: "The beehive on the left side of the grotto. Can use bombs. If using chus, line up with one of the walls under it and drop it on the 7th red flash.",
 				canGet: function(age) {
 					return Data.canBreakBeehive(age);
 				}
@@ -893,7 +893,7 @@ GrottoGroups = {
 			"Right Beehive": {
 				icon: "Beehive",
 				itemGroup: ItemGroups.BEEHIVE,
-				description: "The beehive on the right side of the grotto. If using chus, get on the right side of the hive (the darker wall) and drop it on the 7th red flash.",
+				description: "The beehive on the right side of the grotto. Can use bombs. If using chus, get on the right side of the hive (the darker wall) and drop it on the 7th red flash.",
 				canGet: function(age) {
 					return Data.canBreakBeehive(age);
 				}
@@ -921,7 +921,7 @@ GrottoGroups = {
 			},
 			"Beehive": {
 				itemGroup: ItemGroups.BEEHIVE,
-				description: "Look on the ceiling for this beehive. If using chus, get in the corner by the hive, facing the lighter wall. Sidehop right, left, then press A and let go of everything. Drop the chu on the 7th red flash.",
+				description: "Look on the ceiling for this beehive. Can use bombs. If using chus, get in the corner by the hive, facing the lighter wall. Sidehop right, left, then press A and let go of everything. Drop the chu on the 7th red flash.",
 				canGet: function(age) {
 					return Data.canBreakBeehive(age);
 				}
@@ -1264,11 +1264,11 @@ GrottoGroups = {
 			"Beehive": {
 				itemGroup: ItemGroups.BEEHIVE,
 				tag: "beehive",
-				description: "The beehive on the back/right side of the grotto. If using chus, line up with one of the walls under it and drop it on the 6th red flash.",
+				description: "The beehive on the back/right side of the grotto. Can use bombs. If using chus, line up with one of the walls under it and drop it on the 6th red flash.",
 				canGet: function(age) {
 					return Data.canBreakBeehive(age);
 				}
-			},
+			}
 		}
 	},
 	"Water Heart Piece Grotto": {
