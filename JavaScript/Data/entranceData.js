@@ -1667,6 +1667,46 @@ GrottoGroups = {
 			}
 		}
 	},
+	"7 Green Rupees": {
+		tooltip: "A group of 7 green rupees.",
+		buttons: {
+			"Green Rupee 1": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 1."
+			},
+			"Green Rupee 2": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 2."
+			},
+			"Green Rupee 3": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 3."
+			},
+			"Green Rupee 4": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 4."
+			},
+			"Green Rupee 5": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 5."
+			},
+			"Green Rupee 6": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 6."
+			},
+			"Green Rupee 7": {
+				icon: "Green Rupee",
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Rupee 7."
+			}
+		}
+	},
 	"8 Green Rupees": {
 		tooltip: "A group of 8 green rupees.",
 		buttons: {

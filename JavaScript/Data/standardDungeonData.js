@@ -922,9 +922,10 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
-                        LongDescription: "The skulltula is high up on the vines in the first room. You can kill it with a ranged item, din's fire, a bomb from the top, or a bombchu from the ground.",
+                        LongDescription: "The skulltula is high up on the vines in the first room. You can kill it with a ranged item, din's fire, a bomb from the top (requires a trick), or a bombchu from the ground.",
                         CustomRequirement: function(age) {
-                            if (Data.canUseFireItem(age) || Data.canUseBoomerang(age) || Data.hasExplosives()) { return true; }
+                            if (Settings.GlitchesToAllow.forestFirstSkullWithBomb && Items.BOMB.playerHas) { return true; }
+                            if (Data.canUseFireItem(age) || Data.canUseBoomerang(age) || Items.BOMBCHU.playerHas) { return true; }
                             if (age === Age.CHILD) {
                                 return Items.FAIRY_SLINGSHOT.playerHas;
                             }

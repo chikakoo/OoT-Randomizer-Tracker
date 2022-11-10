@@ -295,15 +295,37 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "This is the bean spot by the bridge connecting Kokiri Forest and Hyrule Field. It can be used to get on the bridge."
                     },
-                    "8 Green Rupees in Water": {
+                    "7 Green Rupees in Water": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "8 Green Rupees",
-                        MapInfo: { x: 276, y: 127 },
+                        DefaultEntranceGroupName: "7 Green Rupees",
+                        MapImageName: "7 Green Rupees",
+                        MapInfo: { x: 273, y: 127 },
                         Age: Age.CHILD,
                         RequiredChoiceOfItems: [Items.BOOMERANG, Equipment.SCALE],
-                        LongDescription: "In the water leading to Zora's River - dive or use the boomerang to get these items."
+                        LongDescription: "In the water leading to Zora's River - dive or use the boomerang to get these items.",
+                    },
+                    "Close Green Rupee in Water": { //TODO: need to check if this is the only one you can get in this way
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Green Rupee",
+                        MapInfo: { x: 277, y: 127 },
+                        Age: Age.CHILD,
+                        LongDescription: "In the water leading to Zora's River - dive or use the boomerang to get it. It is automatically received when entering from the water.",
+                        IsPostWalkCheck: true,
+                        CustomRequirement: function(age) {
+                            if (Items.BOOMERANG.playerHas || Equipment.SCALE.playerHas) { return true; }
+                            if (!Settings.RandomizerSettings.shuffleOverworldEntrances) { return false; }
+
+                            // Can't get from LW side directly, but could potentially take an OW exit there
+                            let toZorasRiver = OwExits["Lost Woods"]["Zora's River"];
+                            if (!toZorasRiver.OwShuffleMap || !toZorasRiver.OwShuffleExitName) {
+                                return false
+                            }
+
+                            let otherSideExit = OwExits[toZorasRiver.OwShuffleMap][toZorasRiver.OwShuffleExitName];
+                            return Data.getItemObtainability(otherSideExit, age);
+                        }
                     },
                     "Blue Rupee Under Rock": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -1207,17 +1229,11 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "These pots are next to the door to Granny's Potion Shop in the enclosed area."
                     },
-                    "Crate by Archery": {
+                    "Crate by Archery or Beggar": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 185, y: 192 },
                         Age: Age.ADULT,
-                        LongDescription: "This crate is next to the entrance to the archery minigame."
-                    },
-                    "Crate by Beggar": {
-                        ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 116, y: 123 },
-                        Age: Age.ADULT,
-                        LongDescription: "This crate is next to the beggar by the Bazaar. The other crate is empty."
+                        LongDescription: "This crate is next to the entrance to the archery minigame or close to the beggar near the watchtower. The drop is shared between the two."
                     },
                     "Crate Behind Potion Shop": {
                         ItemGroup: ItemGroups.CRATE,

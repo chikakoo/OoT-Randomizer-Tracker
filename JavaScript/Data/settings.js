@@ -216,6 +216,7 @@ let Settings = {
 		jabuFishless: false,
 		jabuBlueSwitchSkip: false,
 		
+		forestFirstSkullWithBomb: false,
 		forestLedgeClip: false,
 		forestLedgeWithHovers: false,
 		forestJumpToTop: false,

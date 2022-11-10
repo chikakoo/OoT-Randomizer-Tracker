@@ -984,6 +984,11 @@
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsForestTempleContainer")' settings>Forest Temple</span>
 					<div id="settingsForestTempleContainer">
+						<label onclick='SettingsPage.setBooleanValueForGlitches("forestFirstSkullWithBomb", event)'
+							title="Cook a bomb and throw it at the skulltula from the tree to kill it without a ranged item.">
+							<input type="checkbox" name="forestFirstSkullWithBomb" value="forestFirstSkullWithBomb">
+							First Skulltula with Bomb
+						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitches("forestLedgeClip", event)'
 							title="This is a ledge clip to skip needing to play the Song of Time to pass the block.">
 							<input type="checkbox" name="forestLedgeClip" value="forestLedgeClip">
