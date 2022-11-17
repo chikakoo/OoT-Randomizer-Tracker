@@ -5968,7 +5968,8 @@ let StandardDungeons = {
                 Exits: {
                     potRoom: {
                         CustomRequirement: function(age) {
-                            return Settings.RandomizerSettings.openGanonsCastlePotRoom || hasBossKey("Ganon's Castle");
+                            return Settings.RandomizerSettings.potSetting !== ShuffleLocationSettings.OFF || 
+                                hasBossKey("Ganon's Castle");
                         }
                     }
                 },
@@ -5982,7 +5983,7 @@ let StandardDungeons = {
                         IsPostWalkCheck: true,
                         LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.ganonTrialSkip || 
+                            return (age === Age.ADULT && Settings.GlitchesToAllow.ganonTrialSkip) || 
                                 Data.canStaircaseHover(age) ||
                                 MapLocations["Ganon's Castle"]._canCompleteTrials(age);
                         }
@@ -6004,7 +6005,7 @@ let StandardDungeons = {
                         IsPostWalkCheck: true,
                         LongDescription: "Complete all the trials. Now, go up the center of the castle. This is room after you open the first giant door.",
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.ganonTrialSkip || 
+                            return (age === Age.ADULT && Settings.GlitchesToAllow.ganonTrialSkip) || 
                                 Data.canStaircaseHover(age) ||
                                 MapLocations["Ganon's Castle"]._canCompleteTrials(age);
                         }

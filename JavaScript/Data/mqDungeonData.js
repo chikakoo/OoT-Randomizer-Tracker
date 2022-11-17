@@ -6122,7 +6122,8 @@ let MQDungeons = {
                 Exits: {
                     potRoom: {
                         CustomRequirement: function(age) {
-                            return Settings.RandomizerSettings.openGanonsCastlePotRoom || hasBossKey("Ganon's Castle");
+                            return Settings.RandomizerSettings.potSetting !== ShuffleLocationSettings.OFF || 
+                                hasBossKey("Ganon's Castle");
                         }
                     }
                 },
