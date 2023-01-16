@@ -181,7 +181,7 @@ let StandardDungeons = {
 
             basementTop: {
                 Exits: {
-                    basementback: {
+                    basementBack: {
                         Age: Age.CHILD
                     },
                     lowerBasement: {
@@ -2599,10 +2599,10 @@ let StandardDungeons = {
                     },
                     midWaterTriforceFloor: {},
                     behindBlockArea: {
-                        RequiredItems: [Equipment.STRENGTH],
-                        RequiredAdultItems: [Items.FAIRY_BOW],
-                        RequiredChildItems: [Items.FAIRY_SLINGSHOT],
                         CustomRequirement: function(age) {
+                            if (Data.canWeirdShot(age)) { return true; } //TODO: test whether this is enough - do you need strength?
+                            if (!Equipment.STRENGTH.playerHas || !Data.canShootEyeSwitch(age)) { return false; }
+
                             if (Settings.GlitchesToAllow.waterEyeSwitchGateFromTop) { return true; }
                             return age === Age.ADULT && (Items.HOOKSHOT.currentUpgrade > 1 || Equipment.HOVER_BOOTS.playerHas);
                         }
