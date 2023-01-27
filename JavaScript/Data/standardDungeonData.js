@@ -4404,7 +4404,8 @@ let StandardDungeons = {
                             if (Settings.GlitchesToAllow.iceLedgeClip && age === Age.ADULT) {
                                 return true;
                             }
-                            return (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
+                            let isWallMelted = Data.itemLocationObtained("Ice Cavern", "afterFreezards", "Melt East Ice Wall");
+                            return isWallMelted || (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
                         }
                     },
                     northRoom: {
@@ -4412,7 +4413,8 @@ let StandardDungeons = {
                     },
                     blockPushRoom: {
                         CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
+                            let isWallMelted = Data.itemLocationObtained("Ice Cavern", "afterFreezards", "Melt West Ice Wall");
+                            return isWallMelted || (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
                         }
                     }
                 },
@@ -4464,6 +4466,30 @@ let StandardDungeons = {
                         Order: 6,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "In the room with the spinning scythe, this pot will fly at you from the north part of the room (straight ahead when you come in - it's the pot on the left)."
+                    },
+                    "Melt East Ice Wall": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        RequiredToAppear: function() { return !Data.canUseBlueFire(Age.CHILD); },
+                        MapInfo: { x: 211, y: 114 },
+                        Age: Age.EITHER,
+                        Order: 6.1,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "The east wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows.",
+                        CustomRequirement: function(age) {
+                            return (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
+                        }
+                    },
+                    "Melt West Ice Wall": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        RequiredToAppear: function() { return !Data.canUseBlueFire(Age.CHILD); },
+                        MapInfo: { x: 157, y: 114 },
+                        Age: Age.EITHER,
+                        Order: 6.2,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "The west wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows.",
+                        CustomRequirement: function(age) {
+                            return (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
+                        }
                     }
                 }
             },
@@ -5703,7 +5729,10 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 15,
-                        LongDescription: "Enter the fire trial. The heart is on a sinking platform near where the golden gauntlets pillar starts."
+                        LongDescription: "Enter the fire trial. The heart is on a sinking platform near where the golden gauntlets pillar starts.",
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.ganonFireNoTunic || Equipment.GORON_TUNIC.playerHas;
+                        }
                     },
                     "Heart in Spirit Trial": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,

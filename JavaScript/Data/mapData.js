@@ -1940,7 +1940,7 @@ let MapLocations = {
                         DefaultEntranceGroupName: "Rupee Circle",
                         MapInfo: { x: 283, y: 132 },
                         Age: Age.ADULT,
-                        LongDescription: "From the top of the crater, cross the wodden bridge at the southeast. You can jump to the platform from there.<br/><br/>You can also get there from the bottom using a longshot and Scarecrow's Song from the second of the tiny islands you reach from the Bolero warp."
+                        LongDescription: "From the top of the crater, cross the wooden bridge at the southeast. You can jump to the platform from there.<br/><br/>You can also get there from the bottom using a longshot and Scarecrow's Song from the second of the tiny islands you reach from the Bolero warp."
                     },
                     "4 Pots Near Goron City": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2305,12 +2305,17 @@ let MapLocations = {
                     inWaterfall: {
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT && Settings.GlitchesToAllow.hoversToZorasDomain && Equipment.HOVER_BOOTS.playerHas) {
-                                return true; // Hover in
+                                return true; // Hover boots in
                             } else if (age === Age.CHILD && Settings.GlitchesToAllow.cuccoToZorasDomain) {
                                 return true; // Flying cucco
+                            } else if (Data.canPlaySong(Songs.ZELDAS_LULLABY)) {
+                                return true; // Normal way in
                             }
-                            
-                            return Data.canPlaySong(Songs.ZELDAS_LULLABY) || Data.canMegaFlip(age);
+
+                            // Megasidehop trick
+                            return Settings.GlitchesToAllow.megasidehopToZorasDomain &&
+                                Data.hasShield(age) &&
+                                (Items.BOMB.playerHas || Items.BOMBCHU.playerHas);
                         }
                     },
                     "Lost Woods": {

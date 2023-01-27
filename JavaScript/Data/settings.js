@@ -178,6 +178,7 @@ let Settings = {
 		adultWaterfallHPJump: false,
 		cuccoToZorasDomain: false,
 		hoversToZorasDomain: true,
+		megasidehopToZorasDomain: false,
 		chuZoraSkip: false,
 		clipZoraSkip: true,
 		blueFireShopSkip: false,
