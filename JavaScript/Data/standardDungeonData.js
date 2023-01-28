@@ -5629,11 +5629,10 @@ let StandardDungeons = {
                         NeedsFire: true,
                         RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.HOOKSHOT]
                     },
-                    fireTrialEnd: {
-                        Age: Age.ADULT,
-                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "3"}, {item: Items.HOOKSHOT, upgradeString: "2"}],
+                    fireTrialRoom1: {
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.ganonFireNoTunic || Equipment.GORON_TUNIC.playerHas;
+                            let canWearTunic = age === Age.ADULT && Equipment.GORON_TUNIC.playerHas;
+                            return Settings.GlitchesToAllow.ganonFireNoTunic || canWearTunic;
                         }
                     },
                     waterTrialEnd: {
@@ -5720,18 +5719,6 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             let canUseFireArrows = Items.FAIRY_BOW.playerHas && Items.FIRE_ARROW.playerHas && Equipment.MAGIC.playerHas;
                             return canUseFireArrows || Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas || Data.canPlaySong(Songs.SONG_OF_TIME);
-                        }
-                    },
-                    "Heart in Fire Trial": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapInfo: { x: 155, y: 156, floor: "FIR" },
-                        MapImageName: "Recovery Heart",
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-                        Order: 15,
-                        LongDescription: "Enter the fire trial. The heart is on a sinking platform near where the golden gauntlets pillar starts.",
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.ganonFireNoTunic || Equipment.GORON_TUNIC.playerHas;
                         }
                     },
                     "Heart in Spirit Trial": {
@@ -5834,6 +5821,25 @@ let StandardDungeons = {
                             let canUseLens = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas;
                             return canUseLens || Settings.GlitchesToAllow.gannonShadowTrialLens;
                         }
+                    }
+                }
+            },
+            fireTrialRoom1: {
+                Exits: {
+                    fireTrialEnd: {
+                        Age: Age.ADULT,
+                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "3"}, {item: Items.HOOKSHOT, upgradeString: "2"}]
+                    }
+                },
+                ItemLocations: {
+                    "Heart in Fire Trial": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapInfo: { x: 155, y: 156, floor: "FIR" },
+                        MapImageName: "Recovery Heart",
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        Order: 15,
+                        LongDescription: "Enter the fire trial. The heart is on a sinking platform near where the golden gauntlets pillar starts."
                     }
                 }
             },
