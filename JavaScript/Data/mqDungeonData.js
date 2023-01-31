@@ -277,8 +277,9 @@ let MQDungeons = {
                     },
                     lowerBasement: {
                         CustomRequirement: function(age) {
+                            let webAlreadyBurned = Data.itemLocationObtained("Deku Tree", "upperBasement", "Burn Basement Web");
                             let canBurnWeb = Data.canUseFireItem(age) || Data.canUseDekuStick(age);
-                            return canBurnWeb || Data.canWeirdShot(age);
+                            return canBurnWeb || webAlreadyBurned || Data.canWeirdShot(age);
                         }
                     }
                 },
@@ -291,6 +292,18 @@ let MQDungeons = {
                         UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 16,
                         LongDescription: "In the grave room, Step on the blue switch in the middle of the torches. Quickly light a stick, then burn the web blocking the right path. You can also use Din's Fire. Enter the crawlspace to find your way back to the upper level of the first basement room.<br/><br/>Once here, look near the spider web blocking the way to the lowest level for the business scrub.",
+                    },
+                    "Burn Basement Web": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        MapInfo: { x: 263, y: 108, floor: "B1" },
+                        Age: Age.EITHER,
+                        Order: 16.1,
+                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "The web on the basement floor. Use sticks or a fire item to burn it.",
+                        CustomRequirement: function(age) {
+                            return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
+                        }
                     }
                 }
             },
@@ -298,8 +311,11 @@ let MQDungeons = {
             lowerBasement: {
                 Exits: {
                     bossRoom: {
-                        RequiredChildItems: [Equipment.DEKU_SHIELD],
-                        RequiredAdultItems: [Equipment.HYLIAN_SHIELD]
+                        CustomRequirement: function(age) {
+                            return (age === Age.CHILD && Equipment.DEKU_SHIELD.playerHas) ||
+                                (age === Age.ADULT && Equipment.HYLIAN_SHIELD.playerHas) ||
+                                Data.itemLocationObtained("Deku Tree", "lowerBasement", "Open Boss Door");
+                        }
                     }
                 },
                 ItemLocations: {
@@ -312,6 +328,20 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "These hearts are in the water of the lower basement, two on one side, one on the other."
+                    },
+                    "Open Boss Door": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        RequiredToAppear: function() { 
+                            let haveBothShields = Equipment.DEKU_SHIELD.playerHas && Equipment.HYLIAN_SHIELD.playerHas;
+                            return Settings.RandomizerSettings.shuffleDungeonEntrances && !haveBothShields;
+                        },
+                        MapInfo: { x: 180, y: 192, floor: "B2" },
+                        RequiredChildItems: [Equipment.DEKU_SHIELD],
+                        RequiredAdultItems: [Equipment.HYLIAN_SHIELD],
+                        Age: Age.EITHER,
+                        Order: 17.1,
+                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "Mark this after stunning the scrubs in the 1, 3, 2 order.",
                     }
                 }
             },

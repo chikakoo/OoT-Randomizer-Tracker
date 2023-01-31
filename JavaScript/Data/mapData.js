@@ -1148,7 +1148,7 @@ let MapLocations = {
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 121, y: 218 },
                         Age: Age.CHILD,
-                        LongDescription: "At night, you can find this skulltula on the side of the House of Skulltulas. If you have no weapon, use a pot from near the guard by Death Mountain Trail.",
+                        LongDescription: "At night, you can find this skulltula on the side of the House of Skulltulas. If you have no weapon, use a pot near Impa's house to kill it (up the nearby stairs).",
                         OverrideItemGroupCondition: true
                     },
                     "Skulltula at Construction Site": {
@@ -3126,7 +3126,7 @@ let MapLocations = {
                     upperInteriors: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            //TODO POT: check if they made a repeatable way to get to the jail, otherwise it's just HS needed
+                            //TODO thief's hideout shuffle: This will make it repeatable to get jailed, so only HS would be needed
                             return Items.HOOKSHOT.playerHas && !Data.areGerudoGuardsTame();
                         }
                     },

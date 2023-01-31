@@ -7,6 +7,10 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: [ "F3", "F2", "B1", "B2" ],
         StartingFloorIndex: 1,
+        _canBurnBasementWeb: function(age) {
+            let canShootWebThroughTorch = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
+            return canShootWebThroughTorch || Data.canUseFireItem(age) || Data.canUseDekuStick(age);
+        },
         Regions: {
             main: {
                 Exits: {
@@ -186,20 +190,37 @@ let StandardDungeons = {
                     },
                     lowerBasement: {
                         CustomRequirement: function(age) {
-                            let canShootWeb = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
-                            let canBurnWeb = canShootWeb || Data.canUseFireItem(age) || Data.canUseDekuStick(age);
-                            return canBurnWeb || Data.canWeirdShot(age);
+                            let webAlreadyBurned = Data.itemLocationObtained("Deku Tree", "basementTop", "Burn Basement Web");
+                            return webAlreadyBurned ||
+                                MapLocations["Deku Tree"]._canBurnBasementWeb(age) || 
+                                Data.canWeirdShot(age);
                         }
                     }
                 },
-                ItemLocations: {}
+                ItemLocations: {
+                    "Burn Basement Web": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        MapInfo: { x: 263, y: 108, floor: "B1" },
+                        Age: Age.EITHER,
+                        Order: 12.1,
+                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "The web on the basement floor. Use sticks, a fire item, or a bow shot from atop the chest through the torch by the vines in the lower area.",
+                        CustomRequirement: function(age) {
+                            return MapLocations["Deku Tree"]._canBurnBasementWeb(age);
+                        }
+                    }
+                }
             },
 
             lowerBasement: {
                 Exits: {
                     bossRoom: {
-                        RequiredChildItems: [Equipment.DEKU_SHIELD],
-                        RequiredAdultItems: [Equipment.HYLIAN_SHIELD]
+                        CustomRequirement: function(age) {
+                            return (age === Age.CHILD && Equipment.DEKU_SHIELD.playerHas) ||
+                                (age === Age.ADULT && Equipment.HYLIAN_SHIELD.playerHas) ||
+                                Data.itemLocationObtained("Deku Tree", "lowerBasement", "Open Boss Door");
+                        }
                     }
                 },
                 ItemLocations: {
@@ -211,7 +232,22 @@ let StandardDungeons = {
                         MapInfo: { x: 246, y: 105, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 13,
+                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "These hearts are in the water of the lower basement, two on one side, one on the other."
+                    },
+                    "Open Boss Door": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        RequiredToAppear: function() { 
+                            let haveBothShields = Equipment.DEKU_SHIELD.playerHas && Equipment.HYLIAN_SHIELD.playerHas;
+                            return Settings.RandomizerSettings.shuffleDungeonEntrances && !haveBothShields;
+                        },
+                        MapInfo: { x: 180, y: 192, floor: "B2" },
+                        RequiredChildItems: [Equipment.DEKU_SHIELD],
+                        RequiredAdultItems: [Equipment.HYLIAN_SHIELD],
+                        Age: Age.EITHER,
+                        Order: 13.1,
+                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+                        LongDescription: "Mark this after stunning the scrubs in the 2, 3, 1 order.",
                     }
                 }
             },
@@ -2747,7 +2783,6 @@ let StandardDungeons = {
                 },
 
                 ItemLocations: {
-                    //TODO POT: can you even get these items when shuffled without iron boots? it down work with hearts...
                     "Heart 1 in Whirlpool Room": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
