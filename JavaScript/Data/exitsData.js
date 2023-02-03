@@ -677,7 +677,7 @@ let OwExits = {
             Time: function() { return Time.NIGHT; },
             MapInfo: { x: 130, y: 232 },
             OneWayInteriorSpawnEntrance: true,
-            Age: Age.CHILD,
+            Age: Age.EITHER, // TODO: have a setting for UseChildOnly if not using no logic?
             LongDescription: "This door only opens at night. Starting at the market entrance, go straight right into the alley. Take the first door on the left wall to get to the door."
         },
         "Door in Right Market Alley": {
@@ -693,7 +693,7 @@ let OwExits = {
             Time: function() { return Time.NIGHT; },
             MapInfo: { x: 112, y: 112 },
             OneWayInteriorSpawnEntrance: true,
-            Age: Age.CHILD,
+            Age: Age.EITHER, // TODO: have a setting for UseChildOnly if not using no logic?
             LongDescription: "This door only opens at night. This is the door on the screen if you enter the alley from the entrance by the archery building."
         }
     },
@@ -1559,7 +1559,7 @@ let OwExits = {
             IsGrotto: true,
             MapInfo: { x: 118, y: 162 },
             Age: Age.EITHER,
-            LongDescription: "When you first enter, jump off the cliff to your left. Stand on the little island and play the Song of Storms to reveal this grotto.",
+            LongDescription: "On the little island near the ladder up to the Zora's River exit, play the Song of Storms to reveal this grotto.",
             RequiredSongs: [Songs.SONG_OF_STORMS]
         }
     },

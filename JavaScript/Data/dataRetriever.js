@@ -804,7 +804,7 @@ Data = {
 		if (!this._hasRequiredItems(age, itemLocation, "RequiredItems")) { return ItemObtainability.NO; }
 		if (!this._hasRequiredChildItems(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this._hasRequiredAdultItems(age, itemLocation)) { return ItemObtainability.NO; }
-		if (!this._hasAnyOfTheseItems(itemLocation, "RequiredChoiceOfItems")) { return ItemObtainability.NO; }
+		if (!this._hasAnyOfTheseItems(age, itemLocation, "RequiredChoiceOfItems")) { return ItemObtainability.NO; }
 		if (!this._adultHasAnyOfTheseItems(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._childHasAnyOfTheseItems(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this._hasRequiredSongs(itemLocation)) { return ItemObtainability.NO; }
@@ -992,14 +992,7 @@ Data = {
                 console.log(`ERROR: Item property not defined on item location: ${itemLocation.Name}; property ${propertyName}`);
             }
 			let currentItem = item.item || item;
-			
-			let canUseItem = currentItem.playerHas &&
-				(
-					(item !== Items.BOOMERANG && item !== Items.MEGATON_HAMMER && item !== Items.DEKU_STICK) ||
-					(item === Items.BOOMERANG && _this.canUseBoomerang(age)) ||
-					(item === Items.MEGATON_HAMMER && _this.canUseHammer(age)) ||
-                    (item === Items.DEKU_STICK && _this.canUseDekuStick(age))
-				);
+			let canUseItem = _this._canUseItem(age, item);
 			
 			if (!canUseItem) {
 				hasAllItems = false;
@@ -1013,6 +1006,51 @@ Data = {
 		});
 		
 		return hasAllItems;
+    },
+
+    /**
+     * Returns whether the player has any one of the given items at the given age
+     * @param age - the age to check
+     * @param itemLocation - the item location - used to determine whether this check is valid
+     * @param propertyName - the property name, either null, or "RequiredChildItems", or "RequiredAdultItems"
+     */
+    _hasAnyOfTheseItems: function(age, itemLocation, propertyName) {
+        if (!itemLocation[propertyName]) { return true; }
+        let hasItem = false;
+        
+        let _this = this;
+        itemLocation[propertyName].forEach(function(item) {
+            let currentItem = item.item || item;
+            let canUseItem = _this._canUseItem(age, item);
+
+            if (item.upgradeString && (currentItem.currentUpgrade >= item.upgradeString)) {
+                hasItem = canUseItem;
+                return;
+            } else if (!item.upgradeString && currentItem.playerHas) {
+                hasItem = canUseItem;
+                return;
+            }
+        });
+        
+        return hasItem;
+    },
+
+    /**
+     * Checks whether the player can use the item - includes equip swap checks
+     * @param age - the age to check for
+     * @param item - the item to check
+     * @returns 
+     */
+    _canUseItem: function(age, item) {
+        let currentItem = item.item || item;
+        let _this = this;
+        return currentItem.playerHas &&
+        (
+            (item !== Items.BOOMERANG && item !== Items.MEGATON_HAMMER && item !== Items.DEKU_STICK) ||
+            (item === Items.BOOMERANG && _this.canUseBoomerang(age)) ||
+            (item === Items.MEGATON_HAMMER && _this.canUseHammer(age)) ||
+            (item === Items.DEKU_STICK && _this.canUseDekuStick(age))
+        );
     },
     
     /**
@@ -1040,30 +1078,6 @@ Data = {
     },
     
     /**
-     * Returns whether the player has any one of the given items
-     * @param itemLocation - the item location - used to determine whether this check is valid
-     * @param propertyName - the property name, either null, or "RequiredChildItems", or "RequiredAdultItems"
-     */
-    _hasAnyOfTheseItems: function(itemLocation, propertyName) {
-		if (!itemLocation[propertyName]) { return true; }
-		let hasItem = false;
-		
-		itemLocation[propertyName].forEach(function(item) {
-			let currentItem = item.item || item;
-			
-			if (item.upgradeString && (currentItem.currentUpgrade >= item.upgradeString)) {
-				hasItem = true;
-				return;
-			} else if (!item.upgradeString && currentItem.playerHas) {
-				hasItem = true;
-				return;
-			}
-		});
-		
-		return hasItem;
-    },
-    
-    /**
      * Checks whether child has any of the given items
      * This does handle equip swaps
      * @param age - the age - returns true if adult, since this check doesn't matter for them
@@ -1071,7 +1085,7 @@ Data = {
      */
     _childHasAnyOfTheseItems: function(age, itemLocation) {
 		if (!itemLocation.RequiredChoiceOfChildItems || age === Age.ADULT) { return true; }
-		return this._hasAnyOfTheseItems(itemLocation, "RequiredChoiceOfChildItems");
+		return this._hasAnyOfTheseItems(age, itemLocation, "RequiredChoiceOfChildItems");
 	},
     
     /**
@@ -1082,7 +1096,7 @@ Data = {
      */
 	_adultHasAnyOfTheseItems: function(age, itemLocation) {
 		if (!itemLocation.RequiredChoiceOfAdultItems || age === Age.CHILD) { return true; }
-		return this._hasAnyOfTheseItems(itemLocation, "RequiredChoiceOfAdultItems");
+		return this._hasAnyOfTheseItems(age, itemLocation, "RequiredChoiceOfAdultItems");
     },
     
     /**

@@ -884,7 +884,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.CRATE,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 96, y: 223 },
-                        Age: Age.CHILD,
+                        Age: Age.EITHER, // TODO: have a setting for UseChildOnly if not using no logic?
                         LongDescription: "Go in the more rightmost of the two doors in the left market alley to find this crate."
                     }
                 }
