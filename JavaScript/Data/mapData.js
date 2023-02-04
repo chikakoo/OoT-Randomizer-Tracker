@@ -882,7 +882,6 @@ let MapLocations = {
                     "Crate in Dog Lady House": {
                         // Not marked as interior because it's not included in the entrance shuffle currently
                         ItemGroup: ItemGroups.CRATE,
-                        Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 96, y: 223 },
                         Age: Age.EITHER, // TODO: have a setting for UseChildOnly if not using no logic?
                         LongDescription: "Go in the more rightmost of the two doors in the left market alley to find this crate."

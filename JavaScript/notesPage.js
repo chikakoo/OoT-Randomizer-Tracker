@@ -165,6 +165,7 @@ NotesPage = {
 	createNoteDiv: function(itemLocation) {
 		let notes = itemLocation.notes || "";
 		notes = notes.trim();
+		notes = notes.replace(/;+\s*$/, ""); //Trailing semicolons
 		
 		let notesDiv = dce("div");
 		addCssClass(notesDiv, "note-div-notes");
