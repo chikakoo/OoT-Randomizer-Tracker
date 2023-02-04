@@ -176,7 +176,11 @@ let OwExits = {
                     return canMegaFlip;
                 }
 
-                if (Settings.GlitchesToAllow.lwAdultBridgePreciseEntry && (Items.HOOKSHOT.playerHas || Data.hasShield(age))) {
+                if (Settings.GlitchesToAllow.lwAdultBridgeFromTop && Data.hasShield(age)) {
+                    return true;
+                }
+
+                if (Settings.GlitchesToAllow.lwAdultBridgeWithHookshot && Items.HOOKSHOT.playerHas) {
                     return true;
                 }
 

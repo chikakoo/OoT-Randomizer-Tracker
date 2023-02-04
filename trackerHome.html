@@ -708,10 +708,15 @@
 							<input type="checkbox" name="lwSkullWithoutBean" value="lwSkullWithoutBean">
 							Lost Woods Skulltula by Forest Stage Without Bean
 						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("lwAdultBridgePreciseEntry", "https://youtu.be/UVDXKqqcQuI", event)'
-							title="This is a precise hookshot or jump from the top to get to the Lost Woods bridge as adult. Hover boots/longshot entry is on by default (not a trick). See the link for details.">
-							<input type="checkbox" name="lwAdultBridgePreciseEntry" value="lwAdultBridgePreciseEntry">
-							🔗Lost Woods Adult Bridge Precise Entry
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("lwAdultBridgeFromTop", "https://youtu.be/UVDXKqqcQuI", event)'
+							title="From the top, get into the left corner; backflip, sidehop right; shield turn right; Z and up A; keep holding up until after you jump off the log; press B on one of the two frames where Link's arm is lined up with the bottom of the gossip stone.">
+							<input type="checkbox" name="lwAdultBridgeFromTop" value="lwAdultBridgeFromTop">
+							🔗Lost Woods Adult Bridge Jump From Top
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("lwAdultBridgeWithHookshot", "https://youtu.be/UVDXKqqcQuI", event)'
+							title="Get into the left side; line up just to the right of where the slope changes; hookshot in the corner where the tree meets the bridge (no red dot).">
+							<input type="checkbox" name="lwAdultBridgeWithHookshot" value="lwAdultBridgeWithHookshot">
+							🔗Lost Woods Adult Bridge With Hookshot
 						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("lwBridgePressureJump", "https://youtu.be/WLco0OJznEE?t=7", event)'
 							title="Drop a bomb in the tunnel by the corner close to the ladder at the Kokiri Forest exit; get in the corner; if child, move right a tiny bit; hold forward as the bomb is about to explode.">
@@ -972,8 +977,8 @@
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsJabuContainer")' settings>Jabu Jabu's Belly</span>
 					<div id="settingsJabuContainer">
-						<label onclick='SettingsPage.setBooleanValueForGlitches("jabuBlueSwitchSkip", event)'
-							title="Requires mega flips. This is a mega flip to the boss door in Jabu, and then a trick to avoid bringing a box to the blue switch.">
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("jabuBlueSwitchSkip", "https://youtu.be/529rrE6d0tk", event)'
+							title="Megaflip to the switch; line up with center of door - turn and bonk on switch; ADULT ONLY STEP: slash and shield; jumpslash onto switch; roll and press A on the right frame; ">
 							<input type="checkbox" name="jabuBlueSwitchSkip" value="jabuBlueSwitchSkip">
 							Blue Switch Skip
 						</label>
