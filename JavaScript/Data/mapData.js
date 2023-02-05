@@ -73,7 +73,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Look in the middle of the House of Twins at night.",
                         CustomRequirement: function(age) {
-                            if (Items.HOOKSHOT.playerHas) { return true; }
+                            if (Data.canGrabShortDistances(age)) { return true; }
                             return Settings.GlitchesToAllow.houseOfTwinsSkullWithHovers && Equipment.HOVER_BOOTS.playerHas;
                         }
                     },
@@ -3757,7 +3757,8 @@ let MapLocations = {
                         LongDescription: "At night, there is a skulltula on a small cliff near the north middle edge of the map. You can hookshot it if the Leevers leave you alone long enough. An easier solution is to ride the bean platform and jump off of it so that you're on top.",
                         CustomRequirement: function(age) {
                             let canRideUp = Data.itemLocationObtained("Desert Colossus", "main", "*Plant Bean by Spirit Temple");
-                            return canRideUp || Items.HOOKSHOT.playerHas;
+                            let canUseBoomerang = Settings.GlitchesToAllow.difficultBoomerangTrickThrows && Data.canUseBoomerang(age);
+                            return canRideUp || canUseBoomerang || Items.HOOKSHOT.playerHas;
                         }
                     },
                     "Requiem of Spirit": {
