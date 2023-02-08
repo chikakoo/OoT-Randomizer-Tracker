@@ -1644,7 +1644,7 @@ let OwExits = {
                 if (!Data.canShieldTurn(age)) { return false; }
 
                 if (age === Age.CHILD) {
-                    return Settings.GlitchesToAllow.childLakesideLabClip;
+                    return Settings.GlitchesToAllow.childLakesideLabClip && Data.hasSwordWeapon(age);
                 }
 
                 let defeatedMorpha = Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
@@ -1682,8 +1682,8 @@ let OwExits = {
             LongDescription: "This is the entrance to the Water Temple.",
             IsDungeonEntrance: true,
             CustomRequirement: function(age) {
-                let canDoClip = (Settings.GlitchesToAllow.childLakesideLabClip && age === Age.CHILD) ||
-                    (Settings.GlitchesToAllow.adultLakesideLabClip && age === Age.ADULT);
+                let canDoClip = (age === Age.CHILD && Settings.GlitchesToAllow.childLakesideLabClip && Data.hasSwordWeapon(age)) ||
+                    (age === Age.ADULT && Settings.GlitchesToAllow.adultLakesideLabClip);
                 if (canDoClip && Data.canShieldTurn(age)) {
                     return true;
                 }
