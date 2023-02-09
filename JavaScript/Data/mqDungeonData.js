@@ -2689,11 +2689,11 @@ let MQDungeons = {
                         LongDescription: "Make your way to the mid south wing - you'll need to press the switch to open the gate. Navigate to the room to the right of the jail cell and bonk into the crates to break them.",
                         RequiredItems: [Equipment.IRON_BOOTS]
                     },
-                    "4 Pots in Mid East Room": {
+                    "3 Pots in Mid East Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "4 Pots",
+                        DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 283, y: 58, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 15,
@@ -2796,7 +2796,8 @@ let MQDungeons = {
                         MapInfo: { x: 270, y: 203, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 13,
-                        LongDescription: "At any water level (mid is easiest), navigate to the bottom middle area. Hit the switch to open the gated door. Use Din's Fire to light the torch and get the crates behind the cell.<br/><br/>Without a fire item, stand in front of the torch and hookshot it. You can now just walk in. To get out, target the jail and hookshot while holding Z and right while next to the torch."
+                        LongDescription: "With low or mid water, navigate to the bottom middle area. Hit the switch to open the gated door. Use Din's Fire to light the torch and get the crates behind the cell.<br/><br/>Without a fire item, stand in front of the torch and hookshot it. You can now just walk in and bonk the crates - remember to have the water lowered, as it will slow you down too much to bonk them! To get out, target the jail and hookshot while holding Z and right while next to the torch.",
+                        RequiredSongs: [Songs.ZELDAS_LULLABY]
                     },
                     "Skulltula in Mid South Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3558,7 +3559,9 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 14,
                         LongDescription: "Bomb the wall after the beamos and open the locked door. Navigate through the hallways until you get to a dead end. Make a left at the fork and follow the wall, jumping across the invisible platforms. Enter the door.<br/><br/>Gather all the silver rupees - you'll need the Song of Time for one of them. This will open the door to the chest.",
-                        RequiredSongs: [Songs.SONG_OF_TIME]
+                        CustomRequirement: function(age) {
+                            return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canWeirdShot(age);
+                        }
                     },
                     "Invisible Chest in Invisible Scythe Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3566,7 +3569,9 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 15,
                         LongDescription: "Bomb the wall after the beamos and open the locked door. Navigate through the hallways until you get to a dead end. Make a left at the fork and follow the wall, jumping across the invisible platforms. Enter the door.<br/><br/>Gather all the silver rupees - you'll need the Song of Time for one of them. This will open the door to the chest - it's next to the visible one.",
-                        RequiredSongs: [Songs.SONG_OF_TIME]
+                        CustomRequirement: function(age) {
+                            return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canWeirdShot(age);
+                        }
                     }
                 }
             },
@@ -3731,7 +3736,7 @@ let MQDungeons = {
                         Order: 27,
                         LongDescription: "In the room at the end of the wind hallway, there's an invisible chest in the upper right corner."
                     },
-                    "2 Flying Pots in Gibdo Room": {
+                    "2 Flying Pots in Gibdo Room by Wind Hallway": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -3741,7 +3746,7 @@ let MQDungeons = {
                         Order: 28,
                         LongDescription: "In the big part of the wind hallway, go through the invisible wall on the left side. You may need to use the wind to your advantage. The pots will fly at you as you approach the back of the room."
                     },
-                    "2 Pots in Gibdo Room": {
+                    "2 Pots in Gibdo Room by Wind Hallway": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -5866,7 +5871,8 @@ let MQDungeons = {
                                 Data.hasShield(age);
                             let canEssClipIn = age === Age.ADULT && Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
                             let canGlitchIn = canSuperslideIn || canEssClipIn;
-                            if (canGlitchIn || Equipment.STRENGTH.currentUpgrade < 3) {
+                            let canEnterLightTrial = canGlitchIn || Equipment.STRENGTH.currentUpgrade < 3;
+                            if (!canEnterLightTrial) {
                                 max = 1;
                             }
                             return { min: 1, max: max };
@@ -6059,7 +6065,7 @@ let MQDungeons = {
                         MapInfo: { x: 213, y: 130, floor: "LIT" },
                         Age: Age.ADULT,
                         Order: 20,
-                        LongDescription: "After the Zelda's Lullaby room, use your hookshot to get around the fire walls. The hearts are in the two holes in the wall."
+                        LongDescription: "After the Zelda's Lullaby room, use your hookshot or perform a ground jump to get around the fire walls. The hearts are in the two holes in the wall."
                     }
                 }
             },
@@ -6074,7 +6080,7 @@ let MQDungeons = {
                         MapInfo: { x: 180, y: 10, floor: "LIT" },
                         Age: Age.ADULT,
                         Order: 22,
-                        LongDescription: "After the Zelda's Lullaby room, use your hookshot to get around the fire walls and go in the locked door. Slash the right torch to proceed through the fake wall and into the room where the pots reside."
+                        LongDescription: "After the Zelda's Lullaby room, use your hookshot or perform a ground jump to get around the fire walls and go in the locked door. Slash the right torch to proceed through the fake wall and into the room where the pots reside."
                     }
                 }
             },
