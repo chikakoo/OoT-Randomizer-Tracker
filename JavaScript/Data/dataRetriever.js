@@ -1020,13 +1020,14 @@ Data = {
         
         let _this = this;
         itemLocation[propertyName].forEach(function(item) {
+            if (hasItem) { return; }
+
             let currentItem = item.item || item;
             let canUseItem = _this._canUseItem(age, item);
+            let hasUpgradableItem = item.upgradeString && (currentItem.currentUpgrade >= item.upgradeString);
+            let hasNormalitem = !item.upgradeString && currentItem.playerHas;
 
-            if (item.upgradeString && (currentItem.currentUpgrade >= item.upgradeString)) {
-                hasItem = canUseItem;
-                return;
-            } else if (!item.upgradeString && currentItem.playerHas) {
+            if (hasUpgradableItem || hasNormalitem) {
                 hasItem = canUseItem;
                 return;
             }
@@ -1871,6 +1872,23 @@ Data = {
         }
 
         if (this.itemLocationObtained("Training Grounds", "main", "Optional Locked Door 2")) {
+            numberOfKeysUsed++;
+        }
+
+        return numberOfKeysUsed;
+    },
+
+    /**
+     * Gets the number of keys used in Ganon's Castle to unlock light trial doors
+     */
+    gcMQGetNumberOfLightTrialKeysUsed: function() {
+        let numberOfKeysUsed = 0;
+
+        if (this.itemLocationObtained("Ganon's Castle", "main", "Locked Door 1 in Light Trial")) {
+            numberOfKeysUsed++;
+        }
+
+        if (this.itemLocationObtained("Ganon's Castle", "main", "Locked Door 2 in Light Trial")) {
             numberOfKeysUsed++;
         }
 

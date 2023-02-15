@@ -116,7 +116,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 12,
-                        LongDescription: "Head to the basement. The goal is to hit the switch to the right of the vines to spawn the chest. If you have Din's Fire, use it on the webs. Otherwise, hit the switch to the left of the vines to light the torch, then use your sticks to gain access to the switch.",
+                        LongDescription: "Head to the basement. The goal is to hit the switch to the right of the vines to spawn the chest. If you have Din's Fire, use it on the webs. Otherwise, hit the switch to the left of the vines to light the torch, then use your sticks or shoot an arrow through it to gain access to the switch.",
                         CustomRequirement: function(age) {
                             return Data.canUseFireItem(age) || 
                                 Data.canUseDekuStick(age) ||
@@ -261,7 +261,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 15,
-                        LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Defeat all the enemies in this room to continue on.<br/><br/>Step on the blue switch in the middle of the torches. Quickly light a stick, then burn the web blocking the left door. You can also use Din's Fire. The skulltula is in this room.",
+                        LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Note that you can also use Din's Fire. Light the torches to open the next room. Defeat all the enemies in this room to continue on.<br/><br/>Step on the blue switch in the middle of the torches. Light a stick, use Din's or shoot an arrow to burn the web blocking the left door. The skulltula is in this room.",
                         IsAtShortDistance: true,
                         CustomRequirement: function(age) {
                             return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
@@ -291,7 +291,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 16,
-                        LongDescription: "In the grave room, Step on the blue switch in the middle of the torches. Quickly light a stick, then burn the web blocking the right path. You can also use Din's Fire. Enter the crawlspace to find your way back to the upper level of the first basement room.<br/><br/>Once here, look near the spider web blocking the way to the lowest level for the business scrub.",
+                        LongDescription: "The scrub is next to the burnable web leading to the boss antechamber.<br/><br>To get there the long way around: in the grave room, step on the blue switch in the middle of the torches. Light a stick, use Din's, or shoot and arrow to the web blocking the right path. Enter the crawlspace to find your way back to the upper level of the first basement room.",
                     },
                     "Burn Basement Web": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -5004,12 +5004,15 @@ let MQDungeons = {
         IsMasterQuest: true,
         Floors: ["F1", "B1"],
         StartingFloorIndex: 0,
+        _canGoAfterCrawlSpace: function(age) {
+            return age === Age.CHILD || (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2);
+        },
         Regions: {
             main: {
                 Exits: {
                     afterFirstCrawlSpace: {
                         CustomRequirement: function(age) {
-                            return age === Age.CHILD || (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2);
+                            return MapLocations["Bottom of the Well"]._canGoAfterCrawlSpace(age);
                         }
                     }
                 },
@@ -5027,6 +5030,9 @@ let MQDungeons = {
                         LongDescription: "This is the door on the west side of the main room.",
                         KeyRequirement: function(age) {
                             return { min: 1, max: 2 };
+                        },
+                        CustomRequirement: function(age) {
+                            return MapLocations["Bottom of the Well"]._canGoAfterCrawlSpace(age);
                         }
                     },
 
@@ -5045,6 +5051,9 @@ let MQDungeons = {
                         },
                         KeyRequirement: function(age) {
                             return { min: 1, max: 2 };
+                        },
+                        CustomRequirement: function(age) {
+                            return MapLocations["Bottom of the Well"]._canGoAfterCrawlSpace(age);
                         }
                     }
                 }
@@ -5873,7 +5882,7 @@ let MQDungeons = {
                             let canGlitchIn = canSuperslideIn || canEssClipIn;
                             let canEnterLightTrial = canGlitchIn || Equipment.STRENGTH.currentUpgrade < 3;
                             if (!canEnterLightTrial) {
-                                max = 1;
+                                max = Data.gcMQGetNumberOfLightTrialKeysUsed() + 1;
                             }
                             return { min: 1, max: max };
                         },
