@@ -5004,15 +5004,12 @@ let MQDungeons = {
         IsMasterQuest: true,
         Floors: ["F1", "B1"],
         StartingFloorIndex: 0,
-        _canGoAfterCrawlSpace: function(age) {
-            return age === Age.CHILD || (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2);
-        },
         Regions: {
             main: {
                 Exits: {
                     afterFirstCrawlSpace: {
                         CustomRequirement: function(age) {
-                            return MapLocations["Bottom of the Well"]._canGoAfterCrawlSpace(age);
+                            return age === Age.CHILD || (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2);
                         }
                     }
                 },
@@ -5020,7 +5017,7 @@ let MQDungeons = {
                     // Locked Doors
                     "Locked Door in West Main Room": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["main"],
+                        Regions: ["afterFirstCrawlSpace"],
                         MapInfo: { x: 73, y: 137, floor: "F1" },
                         Age: Age.EITHER,
                         UseChildAge: function() {
@@ -5030,15 +5027,12 @@ let MQDungeons = {
                         LongDescription: "This is the door on the west side of the main room.",
                         KeyRequirement: function(age) {
                             return { min: 1, max: 2 };
-                        },
-                        CustomRequirement: function(age) {
-                            return MapLocations["Bottom of the Well"]._canGoAfterCrawlSpace(age);
                         }
                     },
 
                     "Locked Door in Floor Master Room": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["main"],
+                        Regions: ["afterFirstCrawlSpace"],
                         MapInfo: { x: 288, y: 123, floor: "F1" },
                         Age: Age.EITHER,
                         UseChildAge: function() {
@@ -5051,9 +5045,6 @@ let MQDungeons = {
                         },
                         KeyRequirement: function(age) {
                             return { min: 1, max: 2 };
-                        },
-                        CustomRequirement: function(age) {
-                            return MapLocations["Bottom of the Well"]._canGoAfterCrawlSpace(age);
                         }
                     }
                 }
