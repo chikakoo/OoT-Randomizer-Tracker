@@ -2235,7 +2235,7 @@ let StandardDungeons = {
                 Exits: {
                     centerRoomTopSwitch: {
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.fireJumpDownToSoTBlock && Items.MEGATON_HAMMER.playerHas;
+                            return Settings.GlitchesToAllow.fireJumpDownToSoTBlock && Data.canUseHammer(age);
                         }
                     },
                     centerRoomBottom: {}

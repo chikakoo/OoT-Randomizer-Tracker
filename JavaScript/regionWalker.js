@@ -327,8 +327,10 @@ RegionWalker = {
             }
         }
 
-        this._setSpawnStylesForSong(warpMap, warpRegion, song);
-        this._addToSeedObject(age, warpMap, warpRegion);
+        if (warpMap && warpRegion) { // Handle prelude case where ToT isn't found yet!
+            this._setSpawnStylesForSong(warpMap, warpRegion, song);
+            this._addToSeedObject(age, warpMap, warpRegion);
+        }
     },
 
     /**

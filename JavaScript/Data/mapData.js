@@ -1654,8 +1654,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "At night, leave Goron City. Follow the right wall until you reach a red rock. Break it with your hammer to reveal the skulltula.",
                         CustomRequirement: function(age) {
-                            let canSkipHammer = Settings.GlitchesToAllow.dmtSkullsWithoutHammer && Items.HOOKSHOT.playerHas;
-                            return canSkipHammer || Data.canUseHammer(age);
+                            return Settings.GlitchesToAllow.dmtSkullsWithoutHammer || Data.canUseHammer(age);
                         }
                     },
                     "In Wall by Kakariko": {
@@ -1741,7 +1740,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "At night, take the upper path of the mountain - the one that causes the volcano to erupt. The red rock has a skulltula in it - break it with your hammer.",
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.dmtSkullsWithoutHammer || Items.MEGATON_HAMMER.playerHas;
+                            return Settings.GlitchesToAllow.dmtSkullsWithoutHammer || Data.canUseHammer(age);
                         }
                     },
                     "Gossip Stone on Climbable Wall Ledge": {
@@ -2031,7 +2030,7 @@ let MapLocations = {
                         MapInfo: { x: 71, y: 24 },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
-                        LongDescription: "Make your way to the topmost northwest corner of the city and bomb, pick up, or smash the rocks to get here. You can also go to the upper right corner, stand on the box, and backwalk & backflip with hover boots at the last moment to get to this chest",
+                        LongDescription: "Make your way to the topmost northwest corner of the city and bomb, pick up, or smash the rocks to get here. You can also go to the upper right corner, stand on the box, and backwalk & backflip with hover boots at the last moment to get to this chest (you will be stuck there).",
                         CustomRequirement: function(age) {
                             let canGetAsAdult = age === Age.ADULT && (
                                 Equipment.STRENGTH.currentUpgrade > 1 ||
@@ -2979,7 +2978,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Across the bridge, there are some rocks to the right. Use your hammer on them to reveal the chest.",
                         CustomRequirement: function(age) {
-                            return Items.MEGATON_HAMMER.playerHas || Data.canWeirdShot(age);
+                            return Data.canUseHammer(age) || Data.canWeirdShot(age);
                         }
                     },
                     "Skulltula on Pillar": {
