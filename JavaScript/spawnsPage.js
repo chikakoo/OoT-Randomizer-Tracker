@@ -115,6 +115,7 @@ let SpawnsPage = {
                 delete song.warpMap;
                 delete song.warpRegion;
                 delete song.noWarp;
+                delete song.entranceName;
 
                 if (dropdown.value === "default") {
                     _this._updateSpawnLocationsDropdown(`${id}-locations`, songId);
