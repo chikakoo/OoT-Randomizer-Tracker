@@ -199,9 +199,15 @@ let SpawnsPage = {
         dropdown.onchange = function() {
             if (isAge) {
                 Data.randomizedSpawnLocations[ageOrSongId].entranceName = dropdown.value;
+                if (dropdown.value === "Overworld") {
+                    delete Data.randomizedSpawnLocations[ageOrSongId].entranceName;
+                }
                 SocketClient.spawnLocationUpdated(Data.randomizedSpawnLocations);
             } else {
                 Songs[ageOrSongId].entranceName = dropdown.value;
+                if (dropdown.value === "Overworld") {
+                    delete Songs[ageOrSongId].entranceName;
+                }
                 SocketClient.inventoryUpdated("Songs", ageOrSongId, Songs[ageOrSongId]);
             }
             refreshAll();
