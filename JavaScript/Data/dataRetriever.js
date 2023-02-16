@@ -930,9 +930,7 @@ Data = {
         if (!itemLocation.Regions) { return false; }
 
         let map = itemLocation.Map;
-        let currentKeys = getKeyCount(map);
-        let usedKeys = this.getUsedKeys(itemLocation.Map);
-        if (currentKeys - usedKeys <= 0) {
+        if (this.getRemainingKeys(map) < 1) {
             return false;
         }
 
@@ -951,18 +949,18 @@ Data = {
     },
 
     /**
-     * Gets the number of keys the player used, based off of the number of doors opened
+     * Gets the number of remaining keys in the given map, based on the locked doors the
+     * player has opened
      */
-    getUsedKeys: function(mapName) {
+    getRemainingKeys: function(mapName) {
         let usedKeys = 0;
         let mainItemLocations = MapLocations[mapName].Regions.main.ItemLocations;
-        Object.keys(mainItemLocations).forEach(function (itemLocationName) {
-            let itemLocation = mainItemLocations[itemLocationName];
+        Object.values(mainItemLocations).forEach(function (itemLocation) {
             if (itemLocation.ItemGroup === ItemGroups.LOCKED_DOOR && itemLocation.playerHas) {
                 usedKeys++;
             }
         });
-        return usedKeys;
+        return getKeyCount(mapName) - usedKeys;
     },
 
     /**
@@ -1566,9 +1564,14 @@ Data = {
         {
             return ItemObtainability.YES;
         }
+
+        let map = itemLocation.Map;
+        if (this.getRemainingKeys(map) < 1) {
+            return ItemObtainability.NO; // No keys left to open any doors!
+        }
         
         let keyReq = lockedDoor.KeyRequirement(age);
-        let currentKeyCount = getKeyCount(itemLocation.Map);
+        let currentKeyCount = getKeyCount(map);
 		if (currentKeyCount < keyReq.max) { return ItemObtainability.NO; }
 		return ItemObtainability.YES; 
 	},
@@ -1872,23 +1875,6 @@ Data = {
         }
 
         if (this.itemLocationObtained("Training Grounds", "main", "Optional Locked Door 2")) {
-            numberOfKeysUsed++;
-        }
-
-        return numberOfKeysUsed;
-    },
-
-    /**
-     * Gets the number of keys used in Ganon's Castle to unlock light trial doors
-     */
-    gcMQGetNumberOfLightTrialKeysUsed: function() {
-        let numberOfKeysUsed = 0;
-
-        if (this.itemLocationObtained("Ganon's Castle", "main", "Locked Door 1 in Light Trial")) {
-            numberOfKeysUsed++;
-        }
-
-        if (this.itemLocationObtained("Ganon's Castle", "main", "Locked Door 2 in Light Trial")) {
             numberOfKeysUsed++;
         }
 

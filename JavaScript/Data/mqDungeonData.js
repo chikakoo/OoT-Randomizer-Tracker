@@ -5873,7 +5873,7 @@ let MQDungeons = {
                             let canGlitchIn = canSuperslideIn || canEssClipIn;
                             let canEnterLightTrial = canGlitchIn || Equipment.STRENGTH.currentUpgrade < 3;
                             if (!canEnterLightTrial) {
-                                max = Data.gcMQGetNumberOfLightTrialKeysUsed() + 1;
+                                max = 1;
                             }
                             return { min: 1, max: max };
                         },
