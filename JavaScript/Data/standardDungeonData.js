@@ -3366,21 +3366,27 @@ let StandardDungeons = {
                     "Top Switchless Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 16, y: 239, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 18,
+                        UseAdultAge: function() { 
+                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+                        },
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. Pull the block out of the wall to the right (use the lens to find it) to act as an umbrella to pass the ceiling spikes. Once it's as far as it can go, jump onto it. The chest is in a cage in the corner of the room.",
                         CustomRequirement: function(age) {
-                            return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
+                            return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
                         }
                     },
                     "Top Switch Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 76, y: 209, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 19,
+                        UseAdultAge: function() { 
+                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+                        },
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. Pull the block out of the wall to the right (use the lens to find it) to act as an umbrella to pass the ceiling spikes. Once it's as far as it can go, jump onto it. Hit the switch on top and then get the chest that spawns.",
                         CustomRequirement: function(age) {
-                            return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
+                            return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
                         }
                     },
                     "2 Upper Pots in Falling Spikes Room": {
@@ -3389,11 +3395,14 @@ let StandardDungeons = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 82, y: 209, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 20,
+                        UseAdultAge: function() { 
+                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+                        },
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. Pull the block out of the wall to the right (use the lens to find it) to act as an umbrella to pass the ceiling spikes. Once it's as far as it can go, jump onto it. The pots are on the top of the area you pulled the block out of.",
                         CustomRequirement: function(age) {
-                            return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
+                            return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
                         }
                     }
                 }

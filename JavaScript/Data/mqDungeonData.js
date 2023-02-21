@@ -3619,21 +3619,27 @@ let MQDungeons = {
                     "Top Switchless Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 17, y: 239, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 19,
+                        UseAdultAge: function() { 
+                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+                        },
                         LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. The chest is in the southeast corner.",
                         CustomRequirement: function(age) {
-                            return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
+                            return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
                         }
                     },
                     "Top Switch Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 76, y: 209, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 20,
+                        UseAdultAge: function() { 
+                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+                        },
                         LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. Press the switch to spawn the chest.",
                         CustomRequirement: function(age) {
-                            return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
+                            return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
                         }
                     },
                     "2 Upper Pots in Falling Spikes Room": {
@@ -3642,11 +3648,14 @@ let MQDungeons = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 82, y: 209, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 21,
+                        UseAdultAge: function() { 
+                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
+                        },
                         LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. The pots are above the hidden block's alcove.",
                         CustomRequirement: function(age) {
-                            return Equipment.STRENGTH.playerHas || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
+                            return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
                         }
                     }
                 }
