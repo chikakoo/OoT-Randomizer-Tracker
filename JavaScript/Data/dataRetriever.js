@@ -507,6 +507,7 @@ Data = {
      * @param toRegion - the region you selected
      * @param itemLocationName - the item location you're setting the info on
      * @param clear - whether we're only clearing the data
+     * @returns - an object containing the toOwExit, fromOwExit, and oldOwexit
      */
 	setOWLocationFound: function(fromMapName, from, toMapName, toLocationName, clear) {
         let fromLocationName = from.Name;
@@ -523,9 +524,10 @@ Data = {
 
         // Clear the old data
         // Don't clear this part if we're decoupled, since this side isn't necessarily linked!
+        let oldOwExit = null;
         if (!decoupledEntrances && fromOwExit.OwShuffleMap && fromOwExit.OwShuffleExitName) {
             if (!fromOwExit.OneWayEntrance && OwExits[fromOwExit.OwShuffleMap]) {
-                let oldOwExit = OwExits[fromOwExit.OwShuffleMap][fromOwExit.OwShuffleExitName];
+                oldOwExit = OwExits[fromOwExit.OwShuffleMap][fromOwExit.OwShuffleExitName];
                 if (oldOwExit && oldOwExit.LinkedExit === fromReferenceKey) {
                     delete oldOwExit.OwShuffleMap;
                     delete oldOwExit.OwShuffleRegion;
@@ -540,25 +542,31 @@ Data = {
         delete fromOwExit.OwShuffleExitName;
 
         // If we're only clearing data, stop here - no toOwExit data means we've entered <no selection>
-        if (!toOwExit || clear) { return; }
+        if (toOwExit && !clear) {
+            // Set the from information
+            fromOwExit.OwShuffleMap = toMapName;
+            fromOwExit.OwShuffleRegion = toOwExit.ExitRegion;
+            fromOwExit.OwShuffleExitName = toLocationName;
 
-        // Set the from information
-        fromOwExit.OwShuffleMap = toMapName;
-        fromOwExit.OwShuffleRegion = toOwExit.ExitRegion;
-        fromOwExit.OwShuffleExitName = toLocationName;
-
-        // Set the to information, but only if this info doesn't already exist and we're not a one-way entrance
-        // No need to set the other side info if we're decoupled
-        if (!decoupledEntrances && (!toOwExit.LinkedExit || toOwExit.LinkedExit === fromReferenceKey)) {
-            if (!fromOwExit.OneWayEntrance) {
-                fromOwExit.LinkedExit = toReferenceKey; // Only set this if we're linking the two
-    
-                toOwExit.OwShuffleMap = fromMapName;
-                toOwExit.OwShuffleRegion = from.ExitRegion;
-                toOwExit.OwShuffleExitName = fromLocationName;
-                toOwExit.LinkedExit = fromReferenceKey;
+            // Set the to information, but only if this info doesn't already exist and we're not a one-way entrance
+            // No need to set the other side info if we're decoupled
+            if (!decoupledEntrances && (!toOwExit.LinkedExit || toOwExit.LinkedExit === fromReferenceKey)) {
+                if (!fromOwExit.OneWayEntrance) {
+                    fromOwExit.LinkedExit = toReferenceKey; // Only set this if we're linking the two
+        
+                    toOwExit.OwShuffleMap = fromMapName;
+                    toOwExit.OwShuffleRegion = from.ExitRegion;
+                    toOwExit.OwShuffleExitName = fromLocationName;
+                    toOwExit.LinkedExit = fromReferenceKey;
+                }
             }
         }
+
+        return {
+            toOwExit: toOwExit,
+            fromOwExit: fromOwExit,
+            oldOwExit: oldOwExit
+        };
 	},
 
     /**

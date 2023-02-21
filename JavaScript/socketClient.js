@@ -169,17 +169,25 @@ SocketClient = {
 		if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
 			matchingLocation = OwExits[map][name];
 
+			let oldOwExit = null;
+			let toOwExit = null;
 			if (!matchingLocation.ReadOnly) {
 				let hasOwData = itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName;
-				Data.setOWLocationFound(map, itemLocation, itemLocation.OwShuffleMap, itemLocation.OwShuffleExitName, !hasOwData);	
+				let results = Data.setOWLocationFound(map, itemLocation, itemLocation.OwShuffleMap, itemLocation.OwShuffleExitName, !hasOwData);
+				oldOwExit = results.oldOwExit;	
+				toOwExit = results.toOwExit;
 			}
 			
 			if (_currentLocationName === map) {
-				let locDropdown = document.getElementById(`${itemLocation.Name}-location-dropdown`);
-				let entranceDropdown = document.getElementById(`${itemLocation.Name}-entrance-dropdown`);
-				if (locDropdown && entranceDropdown) {
-					refreshEntranceDropdowns(itemLocation, locDropdown, entranceDropdown);
-				}
+				this._updateOwDropdown(itemLocation);
+			}
+			
+			if (toOwExit && _currentLocationName === toOwExit.ExitMap) {
+				this._updateOwDropdown(toOwExit);
+			}
+			
+			if (oldOwExit && _currentLocationName === oldOwExit.ExitMap && !oldOwExit.LinkedExit) {
+				this._updateOwDropdown(oldOwExit);
 			}
 		}
 		else if (Data.usesOwExits(itemLocation)) {
@@ -222,6 +230,18 @@ SocketClient = {
 					addCssClass(expandIconDiv, "item-location-has-notes");
 				}
 			}	
+		}
+	},
+
+	/**
+	 * Updates the dropdown of the given item location (assumed to be an OW Entrance)
+	 * @param itemLocation - the item location to update
+	 */
+	_updateOwDropdown: function(itemLocation) {
+		let locDropdown = document.getElementById(`${itemLocation.Name}-location-dropdown`);
+		let entranceDropdown = document.getElementById(`${itemLocation.Name}-entrance-dropdown`);
+		if (locDropdown && entranceDropdown) {
+			refreshEntranceDropdowns(itemLocation, locDropdown, entranceDropdown);
 		}
 	},
 	

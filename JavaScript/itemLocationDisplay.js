@@ -373,6 +373,11 @@ let refreshEntranceDropdowns = function(itemLocation, loc, entrance) {
 	let defaultMap = itemLocation.OwShuffleMap;
 	let defaultExit = itemLocation.OwShuffleExitName;
 
+	if (!defaultMap) { // Means no map (and thus no exit) is selected, so we need to clear everything
+		locDropdown.innerHTML = "";
+		entranceDropdown.innerHTML = "";
+	}
+
 	let isDungeon = itemLocation.IsDungeonEntrance;
 	let options = Data.getOWMaps(isDungeon);
 	options.unshift("<no selection>");
@@ -401,10 +406,11 @@ let refreshEntranceDropdowns = function(itemLocation, loc, entrance) {
 		
 		let entrance = entrances && entrances[0];
 
-		Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance, !entrances);
+		let results = Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance, !entrances);
 		refreshAll();
-		
-		SocketClient.itemLocationUpdated(itemLocation)
+
+		// Don't use itemLocation, as it wouldn't have any changes resulting from the other clients
+		SocketClient.itemLocationUpdated(results.fromOwExit); 
 	};
 	
 	entranceDropdown.onchange = function() {
