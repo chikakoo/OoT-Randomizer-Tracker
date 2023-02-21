@@ -409,6 +409,18 @@ let refreshEntranceDropdowns = function(itemLocation, loc, entrance) {
 		let results = Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance, !entrances);
 		refreshAll();
 
+		// Refresh the dropdown if it's on the current map
+		let toOwExit = results.toOwExit;
+		if (toOwExit && toOwExit.ExitMap === _currentLocationName) {
+			refreshEntranceDropdowns(toOwExit);
+		}
+
+		// Refresh the old location if it's on the current map and was cleared
+		let oldOwExit = results.oldOwExit;
+		if (oldOwExit && _currentLocationName === oldOwExit.ExitMap && !oldOwExit.LinkedExit) {
+			refreshEntranceDropdowns(oldOwExit);
+		}
+
 		// Don't use itemLocation, as it wouldn't have any changes resulting from the other clients
 		SocketClient.itemLocationUpdated(results.fromOwExit); 
 	};
@@ -416,8 +428,20 @@ let refreshEntranceDropdowns = function(itemLocation, loc, entrance) {
 	entranceDropdown.onchange = function() {
 		let mapName = locDropdown.options[locDropdown.selectedIndex].value;
 		let entrance = entranceDropdown.options[entranceDropdown.selectedIndex].value;
-		Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance);
+		let results = Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance);
 		refreshAll();
+
+		// Refresh the dropdown if it's on the current map
+		let toOwExit = results.toOwExit;
+		if (toOwExit && toOwExit.ExitMap === _currentLocationName) {
+			refreshEntranceDropdowns(toOwExit);
+		}
+
+		// Refresh the old location if it's on the current map and was cleared
+		let oldOwExit = results.oldOwExit;
+		if (oldOwExit && _currentLocationName === oldOwExit.ExitMap && !oldOwExit.LinkedExit) {
+			refreshEntranceDropdowns(oldOwExit);
+		}
 
 		SocketClient.itemLocationUpdated(itemLocation)
 	};
