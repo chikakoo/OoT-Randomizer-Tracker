@@ -540,6 +540,7 @@ Data = {
         delete fromOwExit.OwShuffleMap;
         delete fromOwExit.OwShuffleRegion;
         delete fromOwExit.OwShuffleExitName;
+        delete fromOwExit.LinkedExit;
 
         // If we're only clearing data, stop here - no toOwExit data means we've entered <no selection>
         if (toOwExit && !clear) {
