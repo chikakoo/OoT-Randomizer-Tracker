@@ -1682,8 +1682,9 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["bigLavaRoom"],
                         MapInfo: { x: 257, y: 202, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 12,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "This is the door on the east side of the big lava room.",
                         KeyRequirement: function(age) {
                             if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
@@ -1892,9 +1893,12 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.fireNoGoronTunic;
+                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.fireNoGoronTunic || !Settings.GlitchesToAllow.megaFlip;
                         },
-                        LongDescription: "Go up the stairs at the entrance to the temple. Take the right door into the big lava room. Along the back left wall is a platform that will rise up to an alcove after you jump on it. The pots are there."
+                        LongDescription: "Go up the stairs at the entrance to the temple. Take the right door into the big lava room. Along the back left wall is a platform that will rise up to an alcove after you jump on it (child must megaflip). The pots are there.",
+                        CustomRequirement: function(age) {
+                            return age === Age.ADULT || Data.canMegaFlip(age);
+                        }
                     },
                     "Big Lava Room Left Goron": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5701,15 +5705,13 @@ let StandardDungeons = {
                         }
                     },
                     lightTrialRoom1: {
+                        Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
                                 Items.BOMB.playerHas && 
                                 Data.hasShield(age);
-                            
-                            //TODO: can child do this or the superslide?
-                            let canEssClipIn = age === Age.ADULT && Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
-
-                            return canSuperslideIn || canEssClipIn || (age === Age.ADULT && Equipment.STRENGTH.currentUpgrade === 3);
+                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
+                            return canSuperslideIn || canEssClipIn || Equipment.STRENGTH.currentUpgrade === 3;
                         }
                     },
                     center: {
@@ -5757,10 +5759,13 @@ let StandardDungeons = {
                     "Shadow Trial Close Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 146, y: 226, floor: "SHW" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 10,
-                        LongDescription: "Enter the shadow trial. The chest is in front of you and a bit to the left on a little island. You can hookshot to it, hover boots to it (you'll need to roll mid-air to get the distance), shoot a fire arrow at a torch to spawn platforms, or play the Song of Time to get a platform you can jump to.",
+                        LongDescription: "Enter the shadow trial. The chest is in front of you and a bit to the left on a little island. You can hookshot to it, hover boots to it (you'll need to roll mid-air to get the distance), shoot a fire arrow at a torch to spawn platforms, or play the Song of Time to get a platform you can jump to (Child has this by default).",
                         CustomRequirement: function(age) {
+                            if (age === Age.CHILD) { return true; }
+
                             let canUseFireArrows = Items.FAIRY_BOW.playerHas && Items.FIRE_ARROW.playerHas && Equipment.MAGIC.playerHas;
                             return canUseFireArrows || Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas || Data.canPlaySong(Songs.SONG_OF_TIME);
                         }
@@ -5918,8 +5923,7 @@ let StandardDungeons = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "7 Chests",
                         MapInfo: { x: 181, y: 249, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Age: Age.ADULT,
                         Order: 17,
                         LongDescription: "These are the chests in the light trial - kill all the enemies to spawn the center one."
                     }
@@ -5938,8 +5942,7 @@ let StandardDungeons = {
                     "Light Trial Zelda's Lullaby Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 195, y: 196, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Age: Age.ADULT,
                         Order: 24,
                         LongDescription: "Enter the light trial and advance to the next room. Play Zelda's Lullaby on the Triforce picture to spawn this chest.",
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
@@ -5959,8 +5962,7 @@ let StandardDungeons = {
                     "Pot at Light Trial": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 180, y: 138, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Age: Age.ADULT,
                         Order: 25,
                         LongDescription: "The pot is in front of you after the Zelda's Lullaby room."
                     }

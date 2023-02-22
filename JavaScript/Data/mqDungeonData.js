@@ -5794,14 +5794,12 @@ let MQDungeons = {
                         }
                     },
                     lightRoom1: {
+                        Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
                                 Items.BOMB.playerHas && 
                                 Data.hasShield(age);
-
-                            //TODO: can child do this?
-                            let canEssClipIn = age === Age.ADULT && Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
-
+                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
                             return canSuperslideIn || canEssClipIn || Equipment.STRENGTH.currentUpgrade === 3;
                         }
                     },
@@ -6039,8 +6037,7 @@ let MQDungeons = {
                     "Light Zelda's Lullaby Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 194, y: 197, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Age: Age.ADULT,
                         Order: 18,
                         LongDescription: "Use your gauntlets to gain access to this area. In the first room, kill all the enemies. In the next room, play Zelda's Lullaby to spawn the chest.",
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
