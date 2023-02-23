@@ -2086,9 +2086,7 @@ let OwExits = {
             Order: 100,
             UseChildAge: function() { 
                 isMQ = MapLocations["Jabu Jabu's Belly"].IsMasterQuest;
-                return isMQ ?
-                    !Settings.RandomizerSettings.shuffleDungeonEntrances :
-                    !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap;
+                return isMQ ? false : !Settings.GlitchesToAllow.equipSwap;
             },
             LongDescription: "Standard: Climb up the webbing and use your boomerang to hit the switch and unblock the door.<br/><br/>MQ: Shoot the cow on the wall a few times to unblock the door."
         }
@@ -2149,11 +2147,10 @@ let OwExits = {
             UseAdultAge: function() { 
                 let isMQ = MapLocations["Fire Temple"].IsMasterQuest;
                 return isMQ
-                    ? (!Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.megaFlip) || 
-                        !Settings.GlitchesToAllow.megaFlip ||
+                    ? !Settings.GlitchesToAllow.megaFlip ||
                         !Settings.GlitchesToAllow.fireNoGoronTunic ||
                         !Settings.GlitchesToAllow.bombSuperslide
-                    : !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; 
+                    : !Settings.GlitchesToAllow.megaFlip; 
             },
             Order: 100,
             LongDescription: "As Adult, you can do a roll-jump from the corner to get to the boss door."

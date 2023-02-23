@@ -801,6 +801,12 @@ Data = {
         // We can't really check if an itemLocation is forcing EITHER! That doesn't make sense.
         if (itemLocation.Age !== Age.EITHER || age === Age.EITHER) { return false; }
 
+        // If you the other actually get the item, then we never want to mark it as this age only
+        let otherAge = age === Age.CHILD ? Age.ADULT : Age.CHILD;
+        if (this.getItemObtainability(itemLocation, otherAge) === ItemObtainability.YES) {
+            return false;
+        }
+
         // Gossip stones cannot be checked by adult if you must equip the mask of truth!
         if (age === Age.CHILD &&
             itemLocation.ItemGroup === ItemGroups.GOSSIP_STONE && 

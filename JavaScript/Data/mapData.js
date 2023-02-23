@@ -1402,6 +1402,7 @@ let MapLocations = {
         Regions: {
             // Dampe's Grave and Windmill area
             dampesGrave: {
+                UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
                 Exits: {
                     windmillTop: {
                         CustomRequirement: function(age) {
@@ -1417,14 +1418,12 @@ let MapLocations = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 260, y: 247, floor: "DMP" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
                         LongDescription: "This is the prize for completing the Dampe Race for the first time."
                     },
                     "Race Reward": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 267, y: 245, floor: "DMP" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
                         LongDescription: "This is the prize for completing the Dampe Race in less than one minute."
                     },
                     "3 Pots Left of Grave Entrance": {
@@ -3074,6 +3073,11 @@ let MapLocations = {
 		MapGroup: MapGroups.DESERT,
         Floors: ["OUT", "LOW", "UP"],
 		StartingFloorIndex: 0,
+        UseAdultAge: function() { 
+            if (Data.randomizedSpawnLocations.useRandomizedSpawns) { return false; }
+            return !Settings.RandomizerSettings.shuffleOverworldEntrances && 
+                !Settings.GlitchesToAllow.cuccoJump;
+        },
 		Regions: {
             main: {
                 Exits: {
@@ -3085,7 +3089,8 @@ let MapLocations = {
                     topOfKitchen: {
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) {
-                                return Settings.GlitchesToAllow.gfPassKitchenGuards ||
+                                return Data.areGerudoGuardsTame() ||
+                                    Settings.GlitchesToAllow.gfPassKitchenGuards ||
                                     Settings.GlitchesToAllow.gfKitchenGuardsWithSword && Data.hasSwordWeapon(age);
                             }
                             return true;
@@ -3129,12 +3134,6 @@ let MapLocations = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 52, y: 79, floor: "LOW" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
-                                return false;
-                            }
-                            return !Settings.GlitchesToAllow.cuccoJump;
-                        },
                         NeedsSwordWeapon: true,
                         LongDescription: "Enter the leftmost bottom exit to get to the first jail. Take out the guard to get the item."
                     },
@@ -3142,12 +3141,6 @@ let MapLocations = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 142, y: 109, floor: "LOW" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
-                                return false;
-                            }
-                            return !Settings.GlitchesToAllow.cuccoJump;
-                        },
                         NeedsSwordWeapon: true,
                         LongDescription: "Start from jail 1. Face the jail - now turn right and take that exit. Go straight to the other side. The next jail is in the next hole if you hug this wall around the right corner - be careful of guards. Take out the guard to get the item."
                     },
@@ -3155,24 +3148,8 @@ let MapLocations = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 270, y: 198, floor: "LOW" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
-                                return false;
-                            }
-                            return !Settings.GlitchesToAllow.cuccoJump;
-                        },
                         NeedsSwordWeapon: true,
                         LongDescription: "Start from jail 2. Face the jail - now turn left and take that exit. Climb the vines straight ahead and take the exit straight in front of you for the next jail. Take out the guard to get the item."
-                    },
-                    "Item From Gerudo": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 334, y: 254, floor: "LOW" },
-                        Age: Age.EITHER,
-                        LongDescription: "You'll get this from the Gerudo after using all 4 keys on all the jail doors and talking to the prisoners.",
-                        CustomRequirement: function(age) {
-                            if (getKeyCount("Thieves' Hideout") < 4) { return false; }
-                            return age === Age.ADULT || Data.areGerudoGuardsTame();
-                        }
                     },
                     "Skulltula on Back Fortress Wall": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3327,12 +3304,6 @@ let MapLocations = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 318, y: 43, floor: "LOW" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
-                                return false;
-                            }
-                            return !Settings.GlitchesToAllow.cuccoJump;
-                        },
                         NeedsSwordWeapon: true,
                         LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Face the entrance you just left. As Child, you must enter the door to your left and navigate across to the other side of the room. As Adult, you can jump up to the ledge to your right with a slight angled jump. Climb up the vines and navigate to the door near where the skulltula on the wall would be at night.<br/><br/>Once inside, wait for a bit first for the guard and knock her out or sprint past her before following the path to your right. Eventually you'll reach the jail. Take out the guard to get the item."
                     },
@@ -3341,11 +3312,23 @@ let MapLocations = {
                         MapInfo: { x: 213, y: 123, floor: "LOW" },
                         Age: Age.EITHER,
                         LongDescription: "The crate is in front of you when you enter the map - grab it quickly then retreat before the guard sees you."
+                    },
+                    "Item From Gerudo": {
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 334, y: 254, floor: "LOW" },
+                        Age: Age.EITHER,
+                        LongDescription: "You'll get this from the Gerudo after using all 4 keys on all the jail doors and talking to the prisoners.",
+                        CustomRequirement: function(age) {
+                            return getKeyCount("Thieves' Hideout") >= 4;
+                        }
                     }
                 }
             },
 
             topOfFortress: {
+                UseAdultAge: function() {
+                    return !Settings.GlitchesToAllow.groundJump || !Settings.GlitchesToAllow.megaFlip;
+                },
                 ExcludeFromSpawnList: true,
                 Exits: {
                     jail4Area: {},
@@ -3356,17 +3339,15 @@ let MapLocations = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 176, y: 101, floor: "OUT" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() {
-                            let canGetToMapAsChild = Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump;
-                            let canGetThereAsChild = Settings.GlitchesToAllow.groundJump && Settings.GlitchesToAllow.megaFlip;
-                            return !canGetToMapAsChild || !canGetThereAsChild;
-                        },
                         LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Enter the other door to your right. Now either hookshot the wooden horizontal beam, use your hover boots to get across, or take out the guards with your bow to get across to the path directly in front of you. Face the camera to your back and turn left. Climb up the wall and walk to the end. Jump across to the next platform. Climb up the vines to your left.<br /><br />You should be able to either longshot to the chest, or roll across with your hover boots."
-                    },
+                    }
                 }
             },
 
             upperInteriors: {
+                UseAdultAge: function() {
+                    return !Settings.GlitchesToAllow.groundJump || !Settings.GlitchesToAllow.megaFlip;
+                },
                 ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {
@@ -3374,33 +3355,18 @@ let MapLocations = {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 277, y: 197, floor: "UP" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() {
-                            let canGetToMapAsChild = Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump;
-                            let canGetThereAsChild = Settings.GlitchesToAllow.groundJump && Settings.GlitchesToAllow.megaFlip;
-                            return !canGetToMapAsChild || !canGetThereAsChild;
-                        },
                         LongDescription: "The crate is in front of you when you enter the map."
                     },
                     "Second Crate in Upper Room": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 297, y: 163, floor: "UP" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() {
-                            let canGetToMapAsChild = Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump;
-                            let canGetThereAsChild = Settings.GlitchesToAllow.groundJump && Settings.GlitchesToAllow.megaFlip;
-                            return !canGetToMapAsChild || !canGetThereAsChild;
-                        },
                         LongDescription: "This is the second crate you run into in this map."
                     },
                     "Guarded Crate Close to Corner": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 345, y: 127, floor: "UP" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() {
-                            let canGetToMapAsChild = Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump;
-                            let canGetThereAsChild = Settings.GlitchesToAllow.groundJump && Settings.GlitchesToAllow.megaFlip;
-                            return !canGetToMapAsChild || !canGetThereAsChild;
-                        },
                         LongDescription: "Deal with the guard that's moving. The crate is to the right when you enter the main room - the one close to the corner.<br/><br/>Child can get this without dealing with the stationary guard if you stay close to the wall.<br/><br/>Adult can get this one without dealing with the stationary guard if you bonk into it while staying more to the right.",
                         CustomRequirement: function(age) {
                             if (Data.areGerudoGuardsTame(age)) {
@@ -3422,11 +3388,6 @@ let MapLocations = {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 345, y: 117, floor: "UP" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() {
-                            let canGetToMapAsChild = Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump;
-                            let canGetThereAsChild = Settings.GlitchesToAllow.groundJump && Settings.GlitchesToAllow.megaFlip;
-                            return !canGetToMapAsChild || !canGetThereAsChild;
-                        },
                         LongDescription: "Deal with the guard that's moving. The crate is to the right when you enter the main room - the one farther from the corner.<br/>Child can get this one if you hug the wall the whole time.<br/>Adult can stab the stationary guard if you crouchstab her, but be careful not to get too close!",
                         CustomRequirement: function(age) {
                             if (Data.areGerudoGuardsTame(age)) {
@@ -3448,11 +3409,6 @@ let MapLocations = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 309, y: 96, floor: "UP" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() {
-                            let canGetToMapAsChild = Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump;
-                            let canGetThereAsChild = Settings.GlitchesToAllow.groundJump && Settings.GlitchesToAllow.megaFlip;
-                            return !canGetToMapAsChild || !canGetThereAsChild;
-                        },
                         LongDescription: "These pots can be retrieved with the boomerang if you're quick. If you can't get them that way...<br/><br/>Deal with the guard that's moving. If you have a shield, and either the Master Sword or a Deku Stick, you can crouchstab the stationary guard, but be careful not to get too close!",
                         CustomRequirement: function(age) {
                             if (Data.areGerudoGuardsTame(age) || Data.canUseBoomerang(age)) {
@@ -3471,11 +3427,6 @@ let MapLocations = {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 136, y: 68, floor: "OUT" },
                         Age: Age.ADULT,
-                        UseAdultAge: function() {
-                            let canGetToMapAsChild = Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump;
-                            let canGetThereAsChild = Settings.GlitchesToAllow.groundJump && Settings.GlitchesToAllow.megaFlip;
-                            return !canGetToMapAsChild || !canGetThereAsChild;
-                        },
                         RequiredItems: [Items.HOOKSHOT],
                         LongDescription: "Navigate to the upper room by either getting caught then jumping to there, or by dropping down from the top where the chest is. Stun the guards (can use your hookshot) and navigate down the long hallway. Hooshot the wooden pillar to pass the barrier. The crate is just ahead of you after the loading zone."
                     }
@@ -3561,12 +3512,27 @@ let MapLocations = {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 311, y: 266 },
                         Age: Age.EITHER,
+                        UseAdultAge: function() { 
+                            if (Data.randomizedSpawnLocations.useRandomizedSpawns) { return false; }
+                            return !Settings.GlitchesToAllow.cuccoJump || 
+                                !Settings.GlitchesToAllow.gerudoGateSkipAsChild || 
+                                !Settings.GlitchesToAllow.itemlessSandPit;
+                        },
                         LongDescription: "The crate is by the quicksand pit by the exit to Gerudo Fortress."
                     }
                 }
             },
 
             outpost: {
+                UseAdultAge: function() { 
+                    if (Data.randomizedSpawnLocations.useRandomizedSpawns || Settings.GlitchesToAllow.backwardsWasteland) { return false; }
+                    if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
+                        return !Settings.GlitchesToAllow.itemlessSandPit;
+                    }
+                    return !Settings.GlitchesToAllow.cuccoJump || 
+                        !Settings.GlitchesToAllow.gerudoGateSkipAsChild || 
+                        !Settings.GlitchesToAllow.itemlessSandPit;
+                },
                 ExcludeFromSpawnList: true,
                 Exits: {
                     entrance: {
@@ -3588,13 +3554,6 @@ let MapLocations = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 208, y: 93 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            if (Settings.GlitchesToAllow.backwardsWasteland) { return false; }
-                            if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
-                                return !Settings.GlitchesToAllow.itemlessSandPit;
-                            }
-                            return !Settings.GlitchesToAllow.cuccoJump || !Settings.GlitchesToAllow.gerudoGateSkipAsChild || !Settings.GlitchesToAllow.itemlessSandPit;
-                        },
                         LongDescription: "In the outpost in the center of the desert, light the two torches to spawn a chest.",
                         NeedsFire: true
                     },
@@ -3602,13 +3561,6 @@ let MapLocations = {
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 239, y: 292 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            if (Settings.GlitchesToAllow.backwardsWasteland) { return false; }
-                            if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
-                                return !Settings.GlitchesToAllow.itemlessSandPit;
-                            }
-                            return !Settings.GlitchesToAllow.cuccoJump || !Settings.GlitchesToAllow.gerudoGateSkipAsChild || !Settings.GlitchesToAllow.itemlessSandPit;
-                        },
                         LongDescription: "After you cross the sand pit, the shop is along the path to your left. There is a sign by one of the flags that points to it. If you don't have hover boots, you can rolljump, then jumpslash to the corner of the carpet.<br/><br/>If this and medigoron aren't shuffled, this shop will ALWAYS sell bombchus.",
                         NeedsSwordWeapon: true,
                         RequiredItems: [{item: Equipment.WALLET, upgradeString: "1"}]
@@ -3617,13 +3569,6 @@ let MapLocations = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 208, y: 85 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            if (Settings.GlitchesToAllow.backwardsWasteland) { return false; }
-                            if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
-                                return !Settings.GlitchesToAllow.itemlessSandPit;
-                            }
-                            return !Settings.GlitchesToAllow.cuccoJump || !Settings.GlitchesToAllow.gerudoGateSkipAsChild || !Settings.GlitchesToAllow.itemlessSandPit;
-                        },
                         LongDescription: "The skulltula is in the outpost in the center of the desert.",
                         IsAtShortDistance: true
                     },
@@ -3705,6 +3650,7 @@ let MapLocations = {
                         IsPostWalkCheck: true,
                         LongDescription: "Plant a magic bean in the soil by the Spirit Temple. Come back as an adult and ride it to the heart piece on the giant arch.",
                         CustomRequirement: function(age) {
+                            //TODO: better to put this in a region, and walk to it via spirit temple/DC instead of this being a post-walk
                             return (age === Age.ADULT && Data.itemLocationObtained("Desert Colossus", "main", "*Plant Bean by Spirit Temple")) ||
                                 (Data.canAccessMap(age, "Spirit Temple", "statueHands") && Data.canMegaFlip(age));
                         }

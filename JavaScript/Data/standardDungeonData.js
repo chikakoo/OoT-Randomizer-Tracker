@@ -915,6 +915,7 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: ["F2", "F1", "B1"],
         StartingFloorIndex: 1,
+        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         Regions: {
             main: {
                 Exits: {
@@ -934,7 +935,7 @@ let StandardDungeons = {
                         MapInfo: { x: 193, y: 271, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 1,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+                        
                         LongDescription: "The skulltula is high up on the vines in the first room. You can kill it with a ranged item, din's fire, a bomb from the top (requires a trick), or a bombchu from the ground.",
                         CustomRequirement: function(age) {
                             if (Settings.GlitchesToAllow.forestFirstSkullWithBomb && Items.BOMB.playerHas) { return true; }
@@ -950,7 +951,6 @@ let StandardDungeons = {
                         MapInfo: { x: 151, y: 254, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 2,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "In the first room, climb up the vines to the right. Navigate over to the tree, and then jump or hookshot across to the chest on the other tree."
                     },
 
@@ -961,7 +961,6 @@ let StandardDungeons = {
                         MapInfo: { x: 122, y: 150, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 13,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "This is the western door in the lobby.",
                         KeyRequirement: function(age) {
                             if (Data.forestCanJumpToTop(age)) {
@@ -1084,7 +1083,6 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 142, y: 166, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 3,
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. the pots are on the ledge to the left."
                     },
@@ -1095,7 +1093,6 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 194, y: 164, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 4,
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. the pots are on the ledge to the right."
                     },
@@ -1104,7 +1101,6 @@ let StandardDungeons = {
                         MapInfo: { x: 191, y: 110, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 5,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         IsAtShortDistance: true,
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go through the main room until you get to the door on the other side. Turn right to find this skulltula on the wall. You can get it with your hookshot or boomerang."
                     },
@@ -1113,7 +1109,6 @@ let StandardDungeons = {
                         MapInfo: { x: 170, y: 16, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 6,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go straight again through the room with the blue bubble. In the next room, kill the two stalfos to spawn the chest."
                     },
                     "Pot Behind Main Room": {
@@ -1121,7 +1116,6 @@ let StandardDungeons = {
                         MapInfo: { x: 168, y: 17, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 7,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go straight again through the room with the blue bubble. The pot is the left one in the back of the room. The right pot always contains a fairy."
                     }
                 }
@@ -1193,7 +1187,7 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 81, y: 73, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
                         Order: 17,
                         LongDescription: "Navigate to the twisted corridor. Shoot the eye switch to untwist the corridor. Now go across the corridor to the room with the boss key chest. Fall down the hole in this room and kill the bubbles to get out.<br/><br/>The hearts are on the skinny platform that you have to jump to, near the skulltula on the wall. Be careful not to fall off."
                     }
@@ -1267,7 +1261,6 @@ let StandardDungeons = {
                         MapInfo: {x: 184, y: 111, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 8,
-                        UseAdultAge: function() { !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "You can get here from the left outside room. Proceed up the vines and into the room. Kill the blue bubble to spawn the chest. Alternatively, you can get here by longshotting up the vines in the right outside room.",
                         MustKillStunnableEnemy: true
                     }
@@ -1283,7 +1276,6 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 181, y: 48, floor: "B1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 11,
                         LongDescription: "In the outside rooms, there are two hearts in the well. One way to get there is from the left room. Proceed up the vines, kill the blue bubble, and go into the next room. Now, hookshot or jump to the vines to your left and navigate to the switch on the other platform. This will drain the water. Alternatively, you can start in the right room and longshot up these vines to get to the switch."
                     },
@@ -1292,7 +1284,6 @@ let StandardDungeons = {
                         MapInfo: {x: 126, y: 48, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 12,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "In the outside rooms, there is a chest at the bottom of the well. One way to get there is from the left room. Proceed up the vines, kill the blue bubble, and go into the next room. Now, hookshot or jump to the vines to your left and navigate to the switch on the other platform. This will drain the water. Alternatively, you can start in the right room and longshot up these vines to get to the switch.",
                         MustKillStunnableEnemy: true
                     }
@@ -1326,7 +1317,6 @@ let StandardDungeons = {
                         MapInfo: {x: 56, y: 226, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 14,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "Navigate to the room with the block puzzle. After pushing the first block, climb up the ladder that it was blocking. Now go straight to the wall in front of you. Follow that wall to the right. Turn right, and you should see an eye switch a bit up the wall in front of you. Shoot it to spawn the chest.",
                         CustomRequirement: function(age) {
                             let canBlockSkip = age === Age.ADULT && Settings.GlitchesToAllow.forestBlockSkip && Data.canGroundJumpWithBomb(age);
@@ -1507,7 +1497,6 @@ let StandardDungeons = {
                         MapInfo: {x: 138, y: 237, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 31,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "After defeating all the poes, head down the basement elevator. Push the wall so that they move clockwise once. You should now be able to access the room with the chest.",
                         IsPostWalkCheck: true,
                         CustomRequirement: function(age) {
@@ -1519,7 +1508,6 @@ let StandardDungeons = {
                         MapInfo: {x: 132, y: 228, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 32,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         IsAtShortDistance: true,
                         LongDescription: "After defeating all the poes, head down the basement elevator. Push the wall so that they move clockwise once. You should now be able to access the room with the skulltula",
                         IsPostWalkCheck: true,
@@ -1545,6 +1533,7 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: ["F5", "F4", "F3", "F2", "F1"],
         StartingFloorIndex: 4,
+        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
         Regions: {
             main: {
                 Exits: {
@@ -1588,9 +1577,7 @@ let StandardDungeons = {
                         MapInfo: {x: 34, y: 263, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 1,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.fireNoGoronTunic;
-                        },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.fireNoGoronTunic; },
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper left corner of the room and step on the switch. The chest is inside the Goron cage.",
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) {
@@ -1622,7 +1609,7 @@ let StandardDungeons = {
                         MapInfo: { x: 126, y: 214, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 3,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         LongDescription: "This is the door behind the pillar on the bottom of the lobby.",
                         RequiredToAppear: function() { return Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.SMALL_KEY_SANITY; },
                         KeyRequirement: function(age) {
@@ -1641,7 +1628,6 @@ let StandardDungeons = {
                         MapInfo: { x: 136, y: 203, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 7,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "This is the top right door in the lobby.",
                         KeyRequirement: function(age) {
                             if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
@@ -1661,7 +1647,6 @@ let StandardDungeons = {
                         MapInfo: { x: 257, y: 202, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 12,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "This is the door on the east side of the big lava room.",
                         KeyRequirement: function(age) {
                             if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
@@ -1795,6 +1780,7 @@ let StandardDungeons = {
                 }
             },
             bossKeyPath: {
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                 Exits: {
                     bossKeyRoom: {
                         Map: "Fire Temple",
@@ -1806,7 +1792,6 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 122, y: 13, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
                         Order: 4,
                         LongDescription: "To the right of the stairs at the entrance of the temple, use your hammer on the side of the column a few times to destroy it. Enter the door. Kill all the enemies and enter the next room. The skulltula is on the back wall by the like-like."
                     },
@@ -1814,7 +1799,6 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 57, y: 60, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
                         Order: 5,
                         LongDescription: "To the right of the stairs at the entrance of the temple, use your hammer on the side of the column a few times to destroy it. Enter the door. Kill all the enemies and continue until you get to the Flare Dancer room. To kill it - either use your hammer or hookshot to stun it. It will take three Master Sword jumpslashes to kill it. For some reason, the Biggoron's Sword will do less damage. Also, there's no need to try to jumpslash it more than once per cycle, as it won't do damage.",
                         RequiredChoiceOfAdultItems: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER, Items.HOOKSHOT],
@@ -1829,13 +1813,14 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 63, y: 111, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
+                        UseAdultAge: function() { !Settings.GlitchesToAllow.equipSwap; },
                         Order: 6,
                         LongDescription: "After the flare dancer room (see the other task), continue to the next room. Hammer the rusted switch to gain access to the boss key chest."
                     }
                 }
             },
             bigLavaRoom: {
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.fireNoGoronTunic; },
                 Exits: {
                     bigLavaRoomGoronRight: {
                         CustomRequirement: function(age) {
@@ -1869,9 +1854,7 @@ let StandardDungeons = {
                         MapInfo: { x: 227, y: 162, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 8,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.fireNoGoronTunic || !Settings.GlitchesToAllow.megaFlip;
-                        },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the right door into the big lava room. Along the back left wall is a platform that will rise up to an alcove after you jump on it (child must megaflip). The pots are there.",
                         CustomRequirement: function(age) {
                             return age === Age.ADULT || Data.canMegaFlip(age);
@@ -1882,14 +1865,15 @@ let StandardDungeons = {
                         MapInfo: { x: 277, y: 141, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 9,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.fireNoGoronTunic;
-                        },
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the right door into the big lava room. Navigate to the left door to find a Goron and a chest."
                     }
                 }
             },
             bigLavaRoomGoronRight: {
+                UseAdultAge: function() { 
+                    return !Settings.GlitchesToAllow.fireNoGoronTunic ||
+                        !Settings.GlitchesToAllow.groundJump;
+                },
                 Exits: {},
                 ItemLocations: {
                     "Big Lava Room Right Goron": {
@@ -1897,16 +1881,15 @@ let StandardDungeons = {
                         MapInfo: {x: 198, y: 280, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 11,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances ||
-                                !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                                !Settings.GlitchesToAllow.groundJump;
-                        },
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the right door into the big lava room. Navigate to the right side of the room. Bomb the suspicious wall and follow the path to a Goron and a chest."
                     }
                 }
             },
             bigLavaRoomSoTLedge: {
+                UseAdultAge: function() { 
+                    return !Settings.GlitchesToAllow.fireNoGoronTunic ||
+                        !Settings.GlitchesToAllow.groundJump;
+                },
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Upper Left Big Lava Room": {
@@ -1914,16 +1897,12 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         Age: Age.EITHER,
                         Order: 10,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances ||
-                                !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                                !Settings.GlitchesToAllow.groundJump;
-                        },
                         LongDescription: "Head to the left of the big lava room (the one in the right door from the entrance of the temple). Play the Song of Time to get a platform to the above room. The skulltula is on the back wall by the like-like."
                     }
                 }
             },
             risingBlockRoom: {
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.fireNoGoronTunic; },
                 Exits: {
                     firstTorchSlugRoom: {
                         Map: "Fire Temple",
@@ -1939,9 +1918,6 @@ let StandardDungeons = {
                         MapInfo: { x: 324, y: 176, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 13,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.fireNoGoronTunic;
-                        },
                         LongDescription: "Open the locked door on the other side of the big lava room. Climb up the grate and navigate to the left of the room (opposite to where you go for the giant block). The hearts are up there guarded by some keese."
                     }
                 }
@@ -2282,6 +2258,10 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: ["F3", "F2", "F1", "B1"],
         StartingFloorIndex: 0,
+        UseAdultAge: function() { 
+            return !Settings.RandomizerSettings.shuffleDungeonEntrances &&
+                !Settings.GlitchesToAllow.childLakesideLabClip;
+        },
         Regions: {
             main: {
                 Exits: {
@@ -2452,7 +2432,6 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 216, y: 131, floor: "F2" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 24,
                         LongDescription: "The pots are by the entrance to the mid eastern wing. If you can't break them normally, you can either get them with the boomerang, or break them with a hookshot/bow/slingshot and dive for the item."
                     }
@@ -2526,7 +2505,6 @@ let StandardDungeons = {
                     "Chest After Torches in Bottom East Wing": {
                         ItemGroup: ItemGroups.CHEST,
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 17,
                         MapInfo: { x: 326, y: 212, floor: "F1" },
                         LongDescription: "From the entrance of the temple, jump off and sink down to the bottom. Head down the hallway of the east room. Take off your iron boots and float up to the surface. Play Zelda's lullaby at the Triforce to lower the water. Now head back down.<br/><br>In this room, light the torches wih your bow or with Din's fire.<br/><br/>Child can use sticks to light the torches as well, and can kill the enemies in the next room with spin attacks if he has magic",
@@ -2575,7 +2553,6 @@ let StandardDungeons = {
                     "Skulltula by Mid Water Triforce": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 21,
                         MapInfo: { x: 157, y: 217, floor: "F1" },
                         LongDescription: "In the room with the middle water level Triforce, there is a skulltula high up on the wall. There are three ways to get it; the bottom two enable the hookshot to be used:<br/>- Use the longshot<br/>- Cast Farore's Wind in the room, raise the water to max, then warp back in<br/>- Open the door on the bottom leading here, then raise the water to max and re-enter this door",
@@ -2639,12 +2616,12 @@ let StandardDungeons = {
                 }
             },
             behindBlockArea: {
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.waterEyeSwitchGateFromTop; },
                 Exits: {},
                 ItemLocations: {
                     "Chest Behind Block at Mid Level": {
                         ItemGroup: ItemGroups.CHEST,
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.waterEyeSwitchGateFromTop; },
                         Order: 27,
                         MapInfo: { x: 243, y: 243, floor: "F2" },
                         LongDescription: "First, make your way to the top east wing. Push back the block and then go to the southern mid-level.<br/><br/>Shoot the eye switch then quickly longshot the target or use your hover boots to pass the gate. Go down the room and push the red block backward. Now you must make your way back around, this time pushing the block forward out of your way. Head to the right to the chest.<br/><br/>Note that alternatively, you can shoot the eye switch twice to get the block in position."
@@ -2656,7 +2633,6 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 245, y: 251, floor: "F2" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.waterEyeSwitchGateFromTop; },
                         Order: 28,
                         LongDescription: "First, make your way to the top east wing. Push back the block and then go to the southern mid-level.<br/><br/>Shoot the eye switch then quickly longshot the target or use your hover boots to pass the gate. Go down the room and push the red block backward. Now you must make your way back around, this time pushing the block forward out of your way. Head to the right to the pots.<br/><br/>Note that alternatively, you can shoot the eye switch twice to get the block in position."
                     }
@@ -2828,7 +2804,6 @@ let StandardDungeons = {
                     "Chest in Dragon Room at Bottom West Wing": {
                         ItemGroup: ItemGroups.CHEST,
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 13,
                         MapInfo: { x: 33, y: 61, floor: "F1" },
                         LongDescription: "There are two ways to get to this room. One way: after draining the water, make your way to the bottom west wing. Push the red block out of the way then follow the path. Get to the other side of the switch and water puzzle to get the dragon and whirlpool room.<br/><br/>The alternate path to this room is to drop down after the vortex room chest (post-Dark Link).<br/><br/>When here, use your Iron Boots to sink down in the upper right corner of the vortex room, on the lower dragon. From there, hookshot the crystal switch in the dragon's mouth. Now hookshot the target in the room that opens up. Unequip your Iron Boots then float up to the chest.<br/><br/>You can also line up a bombchu with the switch from the platform by the door. Now, either use your iron boots to navigate to the door, or dive using the silver scale to get there (you'll have to dive early enough - when you're near the right wall).",
@@ -2953,6 +2928,7 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: ["F1", "B1", "B2"],
         StartingFloorIndex: 0,
+        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
         Regions: {
             main: {
                 Exits: {
@@ -2979,7 +2955,6 @@ let StandardDungeons = {
                         MapInfo: { x: 330, y: 170, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 10,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; },
                         LongDescription: "This is the door after the truth spinner room with the beamos. It's located behind the bombable wall.",
                         NeedsExplosives: true,
                         KeyRequirement: function(age) {
@@ -3011,7 +2986,6 @@ let StandardDungeons = {
                         MapInfo: { x: 156, y: 92, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 21,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip; },
                         LongDescription: "This is the door after the invisible moving platform in the giant pit room.",
                         KeyRequirement: function(age) {
                             let max = 2;
@@ -3134,9 +3108,6 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 101, y: 121, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         Order: 1,
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. The room is somewhere on your right. The pots are in the back corners of the room."
                     },
@@ -3145,9 +3116,6 @@ let StandardDungeons = {
                         MapInfo: { x: 100, y: 107, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 2,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. The dungeon map chest room is somewhere on the wall to your right. You must kill all the enemies inside to get it.",
                         NeedsDamagingItem: true
                     },
@@ -3158,9 +3126,6 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 92, y: 153, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         Order: 3,
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. Circle around the central pillar until you find the pots."
                     },
@@ -3169,9 +3134,6 @@ let StandardDungeons = {
                         MapInfo: { x: 71, y: 163, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 4,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. Circle around the central pillar and go through the fake wall. Go to your left and the pot should fly into you."
                     },
                     "3 Pots in Back Maze Room": {
@@ -3181,9 +3143,6 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 62, y: 163, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         Order: 5,
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. Circle around the central pillar and go through the fake wall. The pots are in the next room on the left."
                     },
@@ -3192,9 +3151,6 @@ let StandardDungeons = {
                         MapInfo: { x: 55, y: 148, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 6,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. Circle around the central pillar and go through the fake wall. The pot is on the other side of the room by the fake wall to Dead Hand."
                     },
                     "Hover Boots Chest": {
@@ -3202,9 +3158,6 @@ let StandardDungeons = {
                         MapInfo: { x: 15, y: 142, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 7,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. Navigate all the way through the fake wall maze and defeat Deadhand for the chest.",
                         NeedsSwordWeapon: true
                     }
@@ -3233,9 +3186,6 @@ let StandardDungeons = {
                         MapInfo: { x: 300, y: 220, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 8,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "After crossing the gap onto the tongue, proceed down the hallway. At the beamos, take the right path (it's a fake wall) and enter the room. Defeat the gibdos for a chest.",
                         NeedsSwordWeapon: true
                     },
@@ -3278,9 +3228,6 @@ let StandardDungeons = {
                         MapInfo: { x: 344, y: 138, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 12,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). Take out the enemies in this room to open up the gate - there's a like-like and a few keese in the corners. If you don't have a range weapon, jumpslash at the keese to alert them to you. The chest is behind the gate that opened.",
                         NeedsSwordWeapon: true
                     },
@@ -3289,9 +3236,6 @@ let StandardDungeons = {
                         MapInfo: { x: 344, y: 143, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 13,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). Take out the enemies in this room to open up the gate - there's a like-like and a few keese in the corners. If you don't have a range weapon, jumpslash at the keese to alert them to you. The chest is next to the visible chest.",
                         NeedsSwordWeapon: true
                     },
@@ -3300,9 +3244,6 @@ let StandardDungeons = {
                         MapInfo: { x: 348, y: 140, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 14,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). Take out the enemies in this room to open up the gate - there's a like-like and a few keese in the corners. If you don't have a range weapon, jumpslash at the keese to alert them to you. The skulltula is behind the open gate.<br/><br/>If you are an adult and have no hookshot, you can kill the skulltula with a jumpslash. Line yourself up so that you, the chest, and the token are in a line. Face the other way and do two backflips (Down + Z + spam A). If you were the right distance away, you should grab the token after backflipping off the chest.",
                         CustomRequirement: function(age) {
                             return age === Age.ADULT || Data.canGrabShortDistances(age);
@@ -3316,9 +3257,6 @@ let StandardDungeons = {
                         MapInfo: { x: 51, y: 221, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 15,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. The pots are to the right of the falling spikes, guarded by the spike trap."
                     },
                     "Skulltula in Falling Spikes Room": {
@@ -3326,9 +3264,6 @@ let StandardDungeons = {
                         MapInfo: { x: 52, y: 238, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 16,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. The skulltula is in the first cage to the left near the ceiling spikes. To pass them, you can either use good timing, or pull the block out of the wall to the right (use the lens to find it) to act as an umbrella - assuming you have a strength upgrade.",
                         CustomRequirement: function(age) {
                             return Data.canGrabShortDistances(age) || Data.canStaircaseHover(age);
@@ -3339,9 +3274,6 @@ let StandardDungeons = {
                         MapInfo: { x: 37, y: 212, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 17,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. The chest is on the second cage to the right passed the ceiling spikes. To pass them, you can either use good timing, or pull the block out of the wall to the right (use the lens to find it) to act as an umbrella - assuming you have a strength upgrade."
                     },
                     "Top Switchless Chest in Falling Spikes Room": {
@@ -3349,9 +3281,6 @@ let StandardDungeons = {
                         MapInfo: { x: 16, y: 239, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 18,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. Pull the block out of the wall to the right (use the lens to find it) to act as an umbrella to pass the ceiling spikes. Once it's as far as it can go, jump onto it. The chest is in a cage in the corner of the room.",
                         CustomRequirement: function(age) {
                             return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
@@ -3362,9 +3291,6 @@ let StandardDungeons = {
                         MapInfo: { x: 76, y: 209, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 19,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. Pull the block out of the wall to the right (use the lens to find it) to act as an umbrella to pass the ceiling spikes. Once it's as far as it can go, jump onto it. Hit the switch on top and then get the chest that spawns.",
                         CustomRequirement: function(age) {
                             return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
@@ -3378,9 +3304,6 @@ let StandardDungeons = {
                         MapInfo: { x: 82, y: 209, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 20,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. Pull the block out of the wall to the right (use the lens to find it) to act as an umbrella to pass the ceiling spikes. Once it's as far as it can go, jump onto it. The pots are on the top of the area you pulled the block out of.",
                         CustomRequirement: function(age) {
                             return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
@@ -3418,9 +3341,6 @@ let StandardDungeons = {
                         MapInfo: { x: 156, y: 64, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 22,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "To get here, first head to the area with the beamos and spike traps. Face the door leading to the ceiling spike room. Now turn right. Follow the edge of the pit in front of you all the way to the guillotine. Use your Lens of Truth to navigate the platforms and make it to the door. Once inside, kill all the redeads to spawn the chest. Be careful of the invisible spikes in here - you can equip the Goron Tunic to avoid some damage since they act like lava.",
                         NeedsSwordWeapon: true
                     }
@@ -4391,6 +4311,7 @@ let StandardDungeons = {
     "Ice Cavern": {
         Abbreviation: "ICE",
         MapGroup: MapGroups.DUNGEONS,
+        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         Regions: {
             main: {
                 Exits: {
@@ -4410,7 +4331,6 @@ let StandardDungeons = {
                         MapImageName: "Blue Rupee",
                         Age: Age.EITHER,
                         Order: 1,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "This rupee is frozen in the ice to the left of the exit of the first big room. You can either melt the ice, jumpslash into it, or use a boomerang to get the item.",
                         CustomRequirement: function(age) {
                             return Data.hasSwordWeapon(age) || 
@@ -4451,7 +4371,6 @@ let StandardDungeons = {
                         MapInfo: { x: 166, y: 164 },
                         Age: Age.EITHER,
                         Order: 2,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "These pots are in the transition hallway after you defeat the enemies in the first room."
                     },
                     "Skulltula in Scythe Room": {
@@ -4459,7 +4378,6 @@ let StandardDungeons = {
                         MapInfo: { x: 161, y: 127 },
                         Age: Age.EITHER,
                         Order: 3,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "In the room with the spinning scythe, there's a skulltula up on one of the walls. It's the one to your left when you first enter.",
                         IsAtShortDistance: true
                     },
@@ -4471,7 +4389,6 @@ let StandardDungeons = {
                         MapInfo: { x: 204, y: 121 },
                         Age: Age.EITHER,
                         Order: 4,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "In the room with the spinning scythe, these pots are to your right (east)."
                     },
                     "Pot in North Scythe Room": {
@@ -4479,7 +4396,6 @@ let StandardDungeons = {
                         MapInfo: { x: 194, y: 96 },
                         Age: Age.EITHER,
                         Order: 5,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "In the room with the spinning scythe, this pot is on the north part of the room (straight ahead when you come in - it's the pot on the right)."
                     },
                     "Flying Pot in North Scythe Room": {
@@ -4487,7 +4403,6 @@ let StandardDungeons = {
                         MapInfo: { x: 176, y: 96 },
                         Age: Age.EITHER,
                         Order: 6,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "In the room with the spinning scythe, this pot will fly at you from the north part of the room (straight ahead when you come in - it's the pot on the left)."
                     },
                     "Melt East Ice Wall": {
@@ -4496,7 +4411,6 @@ let StandardDungeons = {
                         MapInfo: { x: 211, y: 114 },
                         Age: Age.EITHER,
                         Order: 6.1,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "The east wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows.",
                         CustomRequirement: function(age) {
                             return (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
@@ -4508,7 +4422,6 @@ let StandardDungeons = {
                         MapInfo: { x: 157, y: 114 },
                         Age: Age.EITHER,
                         Order: 6.2,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "The west wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows.",
                         CustomRequirement: function(age) {
                             return (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
@@ -4556,7 +4469,6 @@ let StandardDungeons = {
                         MapInfo: { x: 246, y: 147 },
                         Age: Age.EITHER,
                         Order: 10,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. Melt the ice containing the chest.",
                         CustomRequirement: function(age) {
                             return Data.hasBottleOrBlueFire(age);
@@ -4567,7 +4479,6 @@ let StandardDungeons = {
                         MapInfo: { x: 244, y: 115 },
                         Age: Age.EITHER,
                         Order: 11,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. Melt the ice containing the heart piece.",
                         CustomRequirement: function(age) {
                             return Data.hasBottleOrBlueFire(age);
@@ -4578,7 +4489,6 @@ let StandardDungeons = {
                         MapInfo: { x: 253, y: 117 },
                         Age: Age.EITHER,
                         Order: 12,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. There's a skulltula up on one of the walls to your left.",
                         IsAtShortDistance: true
                     }
@@ -4594,7 +4504,6 @@ let StandardDungeons = {
                         MapInfo: { x: 143, y: 111 },
                         Age: Age.EITHER,
                         Order: 13,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "When you first enter the spinning scythe room, look to your left. Burn the red ice with your blue fire and enter the room. When you get to the big room, the skulltula will be on the wall to your left.",
                         IsAtShortDistance: true
                     },
@@ -4606,7 +4515,6 @@ let StandardDungeons = {
                         MapInfo: { x: 97, y: 103 },
                         Age: Age.EITHER,
                         Order: 14,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "When you first enter the spinning scythe room, look to your left. Burn the red ice with your blue fire and enter the room. The rupees are above the area with the blue fire. You can either use the boomerang to get them, or play the Song of Time on the platform with the blue fire to spawn some blocks.",
                         CustomRequirement: function(age) {
                             return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canUseBoomerang(age);
@@ -4620,7 +4528,6 @@ let StandardDungeons = {
                         MapInfo: { x: 111, y: 161 },
                         Age: Age.EITHER,
                         Order: 15,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "After completing the block puzzle, these pots are frozen in the red ice before the boss room."
                     }
                 }
@@ -4633,7 +4540,6 @@ let StandardDungeons = {
                         MapInfo: { x: 127, y: 182 },
                         Age: Age.EITHER,
                         Order: 16,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "This is in the room after the block pushing puzzle - the one with the wolfos. Defeat it to spawn the chest. Note that after you get the chest, you will also get the Serenade of Water item."
                     },
                     "Serenade of Water": {
@@ -4641,7 +4547,6 @@ let StandardDungeons = {
                         MapInfo: { x: 122, y: 177 },
                         Age: Age.EITHER,
                         Order: 17,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "You'll get this automatically after you open the Iron Boots chest."
                     }
                 }
@@ -5014,6 +4919,12 @@ let StandardDungeons = {
     "Training Grounds": {
         Abbreviation: "GTG",
         MapGroup: MapGroups.DUNGEONS,
+        UseAdultAge: function() { 
+            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump || Data.randomizedSpawnLocations.useRandomizedSpawns) && 
+                Settings.GlitchesToAllow.gtgChildAllowed);
+            return !canEnterDungeon;
+        },
         Regions: {
             main: {
                 Exits: {
@@ -5056,11 +4967,6 @@ let StandardDungeons = {
                         MapInfo: { x: 153, y: 233 },
                         Age: Age.EITHER,
                         Order: 1,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon;
-                        },
                         LongDescription: "From the entrance, turn around. Shoot the eye that's near the ceiling to spawn this chest.",
                         CustomRequirement: function(age) { return Data.canShootEyeSwitch(age); }
                     },
@@ -5069,11 +4975,6 @@ let StandardDungeons = {
                         MapInfo: { x: 176, y: 233 },
                         Age: Age.EITHER,
                         Order: 2,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon;
-                        },
                         LongDescription: "From the entrance, turn around. Shoot the eye that's near the ceiling to spawn this chest.",
                         CustomRequirement: function(age) { return Data.canShootEyeSwitch(age); }
                     },
@@ -5082,11 +4983,6 @@ let StandardDungeons = {
                         MapInfo: { x: 64, y: 225 },
                         Age: Age.EITHER,
                         Order: 3,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon;
-                        },
                         LongDescription: "This is the room to the left of the entrance. I recommend going this way, first, as it only requires the hookshot to make it most of the way around the dungeon. Anyway, kill the stalfos in here within the time limit to get this chest.",
                         NeedsSwordWeapon: true
                      },
@@ -5095,11 +4991,6 @@ let StandardDungeons = {
                         MapInfo: { x: 257, y: 244 },
                         Age: Age.EITHER,
                         Order: 17,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon;
-                        },
                         LongDescription: "This is either the room to the right of the entrance, or the southern path from the big lava room. Bomb the beamos and kill the lizalfos to spawn this chest.",
                         NeedsExplosives: true
                     },
@@ -5110,11 +5001,6 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 273, y: 262 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon;
-                        },
                         Order: 17.1,
                         LongDescription: "This is either the room to the right of the entrance, or the southern path from the big lava room. Climb the platform from one of the skinny sides to gain access to these hearts.",
                     },
@@ -5125,11 +5011,6 @@ let StandardDungeons = {
                         Regions: ["main"],
                         MapInfo: { x: 154, y: 174 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon;
-                        },
                         Order: 18,
                         LongDescription: "This is door 1 on the left path of the maze from the main entrance.",
                         KeyRequirement: function(age) {
@@ -5141,11 +5022,6 @@ let StandardDungeons = {
                         Regions: ["mazeAfterDoor1"],
                         MapInfo: { x: 135, y: 184 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon;
-                        },
                         Order: 20,
                         LongDescription: "This is door 2 on the left path of the maze from the main entrance.",
                         KeyRequirement: function(age) {
@@ -5158,11 +5034,6 @@ let StandardDungeons = {
                         Regions: ["mazeAfterDoor2"],
                         MapInfo: { x: 150, y: 160 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon;
-                        },
                         Order: 22,
                         LongDescription: "This is door 3 on the left path of the maze from the main entrance.",
                         KeyRequirement: function(age) {
@@ -5175,11 +5046,6 @@ let StandardDungeons = {
                         Regions: ["mazeAfterDoor3"],
                         MapInfo: { x: 130, y: 139 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon;
-                        },
                         Order: 23,
                         LongDescription: "This is door 4 on the left path of the maze from the main entrance.",
                         KeyRequirement: function(age) {
@@ -5192,11 +5058,6 @@ let StandardDungeons = {
                         Regions: ["mazeAfterDoor4"],
                         MapInfo: { x: 163, y: 145 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon;
-                        },
                         Order: 25,
                         LongDescription: "This is door 5 on the left path of the maze from the main entrance.",
                         KeyRequirement: function(age) {
@@ -5209,11 +5070,6 @@ let StandardDungeons = {
                         Regions: ["mazeAfterDoor5"],
                         MapInfo: { x: 178, y: 140 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon;
-                        },
                         Order: 27,
                         LongDescription: "This is door 6 on the left path of the maze from the main entrance.",
                         KeyRequirement: function(age) {
@@ -5226,11 +5082,6 @@ let StandardDungeons = {
                         Regions: ["mazeAfterDoor6"],
                         MapInfo: { x: 173, y: 156 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon;
-                        },
                         Order: 28,
                         LongDescription: "This is door 7 on the left path of the maze from the main entrance.",
                         KeyRequirement: function(age) {
@@ -5243,11 +5094,6 @@ let StandardDungeons = {
                         Regions: ["main"],
                         MapInfo: { x: 173, y: 174 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon;
-                        },
                         Order: 30,
                         LongDescription: "This is the first door on the right path of the maze from the main entrance. It's recommended to avoid going this way if possible.",
                         KeyRequirement: function(age) {
@@ -5259,11 +5105,6 @@ let StandardDungeons = {
                         Regions: ["mazeAfterOptionalDoor1", "mazeDeadEnd"],
                         MapInfo: { x: 197, y: 180 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon;
-                        },
                         Order: 31,
                         LongDescription: "This is the second door on the right path of the maze from the main entrance. It's recommended to avoid going this way if possible.",
                         KeyRequirement: function(age) {
@@ -5286,6 +5127,7 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             hookshotNeeded: {
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {
                     silverBlockRoom: {
                         Age: Age.ADULT,
@@ -5311,11 +5153,6 @@ let StandardDungeons = {
                         MapInfo: { x: 90, y: 83 },
                         Age: Age.EITHER,
                         Order: 4,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
-                        },
                         LongDescription: "This is the room either after the stalfos sandy room, or after the silver rupee room with the fire walls. Kill all the wolfos to spawn a chest."
                     },
                     "Eye Statue Room Bottom Chest": {
@@ -5331,11 +5168,6 @@ let StandardDungeons = {
                         MapInfo: { x: 165, y: 133 },
                         Age: Age.EITHER,
                         Order: 10,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
-                        },
                         LongDescription: "This is the room either after the wolfos room, or after the room with the hammerable pillars. If coming from the former, you need to use your hookshot to hook a target beyond a fake wall above the fake door. If coming from the latter, bash the pillars with your hammer, then shoot the eye switch. In the eye statue room, get to the central platform - it will start spinning. Shoot each eye with an arrow to unlock a door on top. If you came from the wolfos room, jump in the lava to respawn on top to get to it. Otherwise, you must use scarecrow's song (the scarecrow is near the door) to get up.",
                         RequiredAdultItems: [Items.FAIRY_BOW]
                     },
@@ -5344,11 +5176,6 @@ let StandardDungeons = {
                         MapInfo: { x: 256, y: 75 },
                         Age: Age.EITHER,
                         Order: 11,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
-                        },
                         LongDescription: "This is either after the eye statue room, or after the big lava room. This is the chest that spawns after you kill all the enemies."
                     },
                     "Flaming Chest in Room with Pillars": {
@@ -5356,11 +5183,6 @@ let StandardDungeons = {
                         MapInfo: { x: 254, y: 90 },
                         Age: Age.EITHER,
                         Order: 12,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
-                        },
                         LongDescription: "This is either after the eye statue room, or after the big lava room. Use your hammer on the pillars until you find a floor switch. Step on it to remove the flames from the chest. Be sure to get it before they come back!<br/><br/>If you have no hammer, line up with the front of the chest and walk into the fire and keep holding up. Open the chest when you reach it before the fire wears off."
                     }
                 }
@@ -5440,11 +5262,6 @@ let StandardDungeons = {
                         MapInfo: { x: 230, y: 164 },
                         Age: Age.EITHER,
                         Order: 13,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         LongDescription: "There are a few ways to get here. From the entrance, enter the door in front of you. You can use two of your keys on the doors to the right, then take a right to get to the platform with the key. I don't really recommend doing this if you have the hookshot unless you also have all 9 keys.<br/><br/>If you go right from the entrance, clear out the room then proceed forward. Now, you're in the lava room. Navigate over to the left by the switch. Play the Song of Time then jump to the blocks to get to the platform with the freestanding key.<br/><br/>Finally, you can also make your way all the around the dungeon from the left to get to the lava room. You either need hover boots or the hookshot to cross the room all the way, though. Again, get to the switch then play the Song of Time to get up."
                     },
                     "Maze Chest Close to Lava Room": {
@@ -5452,11 +5269,6 @@ let StandardDungeons = {
                         MapInfo: { x: 179, y: 165 },
                         Age: Age.EITHER,
                         Order: 14,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         LongDescription: "There are a few ways to get here. From the entrance, enter the door in front of you. You can use two of your keys on the doors to the right. This is the first chest you see. I don't really recommend doing this if you have the hookshot unless you also have all 9 keys.<br/><br/>If you go right from the entrance, clear out the room then proceed forward. Now, you're in the lava room. Navigate over to the left by the switch. Play the Song of Time then jump to the blocks to get to the platform. If you go straight from here, you'll reach the chest.<br/><br/>Finally, you can also make your way all the around the dungeon from the left to get to the lava room. You either need hover boots or the longshot to cross the room all the way, though. Again, get to the switch then play the Song of Time to get up. The chest is straight ahead."
                     },
                     "Maze Chest at Dead End by Lava Room": {
@@ -5464,11 +5276,6 @@ let StandardDungeons = {
                         MapInfo: { x: 187, y: 154 },
                         Age: Age.EITHER,
                         Order: 15,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         LongDescription: "There are a few ways to get here. From the entrance, enter the door in front of you. You can use two of your keys on the doors to the right. This is the second chest you see, at the maze's dead end. I don't really recommend doing this if you have the hookshot unless you also have all 9 keys.<br/><br/>If you go right from the entrance, clear out the room then proceed forward. Now, you're in the lava room. Navigate over to the left by the switch. Play the Song of Time then jump to the blocks to get to the platform. If you take the righthand path through the maze, you'll hit the chest at the dead end.<br/><br/>Finally, you can also make your way all the around the dungeon from the left to get to the lava room. You either need hover boots or the longshot to cross the room all the way, though. Again, get to the switch then play the Song of Time to get up. If you take the righthand path through the maze, you'll hit the chest at the dead end."
                     }
                 }
@@ -5491,11 +5298,6 @@ let StandardDungeons = {
                         MapInfo: { x: 152, y: 192 },
                         Age: Age.EITHER,
                         Order: 19,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         LongDescription: "First, get to the maze from the entrance (NOT from the giant lava room). This is the door if you go straight. Go through the first door to the left. Climb the wall to the right of the door you came in to get to the chest after the fake ceiling."
                     }
                 }
@@ -5518,11 +5320,6 @@ let StandardDungeons = {
                         MapInfo: { x: 130, y: 163 },
                         Age: Age.EITHER,
                         Order: 21,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         LongDescription: "First, get to the maze from the entrance (NOT from the giant lava room). This is the door if you go straight. Go left and enter 2 doors. The chest is in this room."
                     }
                 }
@@ -5558,11 +5355,6 @@ let StandardDungeons = {
                         MapInfo: { x: 142, y: 136 },
                         Age: Age.EITHER,
                         Order: 24,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         LongDescription: "First, get to the maze from the entrance (NOT from the giant lava room). This is the door if you go straight. Go left and enter 4 doors. The chest is in this room."
                     }
                 }
@@ -5585,11 +5377,6 @@ let StandardDungeons = {
                         MapInfo: { x: 148, y: 137 },
                         Age: Age.EITHER,
                         Order: 26,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         LongDescription: "First, get to the maze from the entrance (NOT from the giant lava room). This is the door if you go straight. Go left and enter 5 doors. The chest is in this room."
                     }
                 }
@@ -5615,11 +5402,6 @@ let StandardDungeons = {
                         MapInfo: { x: 164, y: 159 },
                         Age: Age.EITHER,
                         Order: 29,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         LongDescription: "First, get to the maze from the entrance (NOT from the giant lava room). This is the door if you go straight. Go left and enter 7 doors. The chest is in this room."
                     }
                 }
@@ -5632,6 +5414,7 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: ["MN", "FST", "WTR", "SHW", "FIR", "LIT", "SPT"],
         StartingFloorIndex: 0,
+        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canCompleteTrials: function(age) {
             // Requires IsPostWalkCheck to be true on any item location that uses this!!!
             let canUseLightArrows = age === Age.ADULT && Items.LIGHT_ARROW.playerHas && Equipment.MAGIC.playerHas;
@@ -5703,7 +5486,6 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "4 Scrubs",
                         MapInfo: { x: 249, y: 235, floor: "MN" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 1,
                         LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
                     },
@@ -5711,7 +5493,6 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 176, y: 233, floor: "FST" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 5,
                         LongDescription: "Enter the forest trial. Kill the wolfos to spawn the chest."
                     },
@@ -5719,7 +5500,6 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 175, y: 215, floor: "WTR" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 7,
                         LongDescription: "Enter the water trial. Look for the chest in the back left section of the room."
                     },
@@ -5727,7 +5507,6 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 213, y: 215, floor: "WTR" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 8,
                         LongDescription: "Enter the water trial. Look for the chest in the back right section of the room."
                     },
@@ -5735,7 +5514,6 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 146, y: 226, floor: "SHW" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 10,
                         LongDescription: "Enter the shadow trial. The chest is in front of you and a bit to the left on a little island. You can hookshot to it, hover boots to it (you'll need to roll mid-air to get the distance), shoot a fire arrow at a torch to spawn platforms, or play the Song of Time to get a platform you can jump to (Child has this by default).",
                         CustomRequirement: function(age) {
@@ -5750,7 +5528,6 @@ let StandardDungeons = {
                         MapInfo: { x: 128, y: 242, floor: "SPT" },
                         MapImageName: "Recovery Heart",
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 27,
                         LongDescription: "Enter the spirit trial. The heart is on the left wall."
                     }
@@ -5861,7 +5638,6 @@ let StandardDungeons = {
                         MapInfo: { x: 155, y: 156, floor: "FIR" },
                         MapImageName: "Recovery Heart",
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 15,
                         LongDescription: "Enter the fire trial. The heart is on a sinking platform near where the golden gauntlets pillar starts."
                     }
@@ -5977,7 +5753,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 242, y: 184, floor: "SPT" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
                         Order: 28,
                         LongDescription: "Enter the spirit trial. Collect the rupees to advance to the next room. Hit the switch closest to the barred door with a jumpslash or charged spin attack to spawn the chest."
                     }
@@ -5995,7 +5771,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 239, y: 120, floor: "SPT" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
                         Order: 29,
                         LongDescription: "Enter the spirit trial. Collect the rupees to advance to the next room. To your left, there is a switch. Line up with the switch and drop a Bombchu. It should navigate itself over to the switch and activate it. This will open the door - enter it. The hidden chest is now in front of you and a little bit to the right. Face the right wall when trying to open it."
                     }
@@ -6034,7 +5810,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 155, y: 95, floor: "MN" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.staircaseHover; },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.staircaseHover; },
                         Order: 31,
                         IsPostWalkCheck: true,
                         LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
@@ -6056,7 +5832,7 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "14 Pots",
                         MapInfo: { x: 175, y: 95, floor: "MN" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.staircaseHover; },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.staircaseHover; },
                         Order: 32,
                         IsPostWalkCheck: true,
                         LongDescription: "Complete all the trials. Now, go up the center of the castle. This is room after you open the first giant door.",
