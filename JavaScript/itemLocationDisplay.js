@@ -85,9 +85,9 @@ let updateItemDisplay = function() {
 		if (itemLocation.Age === Age.CHILD && RegionWalker.doesItemLocationHaveSpawnOrWalkData(itemLocation, Age.ADULT) ||
 			itemLocation.Age === Age.ADULT && RegionWalker.doesItemLocationHaveSpawnOrWalkData(itemLocation, Age.CHILD)) {
 			// Do nothing - as both ages can get here in this case
-		} else if (itemLocation.UseAdultAge && itemLocation.UseAdultAge()) {
+		} else if (Data.useSpecificAge(itemLocation, Age.ADULT)) {
 			ageIconDiv.style.backgroundImage = 'url("Images/Adult Icon.png")';
-		} else if (itemLocation.UseChildAge && itemLocation.UseChildAge()) {
+		} else if (Data.useSpecificAge(itemLocation, Age.CHILD)) {
 			ageIconDiv.style.backgroundImage = 'url("Images/Child Icon.png")';
 		}
 

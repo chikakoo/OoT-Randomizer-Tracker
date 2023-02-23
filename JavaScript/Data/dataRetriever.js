@@ -790,6 +790,31 @@ Data = {
     },
 
     /**
+     * Returns whether the itemLocation is forcing a specific age to be used
+     * Checks the region and the location itself
+     * @param itemLocation - the item location to check
+     * @param age - the age to check for
+     * @returns The result, as a boolean
+     */
+    useSpecificAge: function(itemLocation, age) {
+        // ItemLocations won't check for a specific age if it's not an EITHER location
+        // We can't really check if an itemLocation is forcing EITHER! That doesn't make sense.
+        if (itemLocation.Age !== Age.EITHER || age === Age.EITHER) { return false; }
+
+        let isOwExit = this.usesOwExits(itemLocation);
+        let mapName = isOwExit ? itemLocation.ExitMap : itemLocation.Map;
+        let regionName = isOwExit ? itemLocation.ExitRegion : itemLocation.Region;
+        
+        let propertyName = `Use${age}Age`;
+        let region = MapLocations[mapName].Regions[regionName];
+        if (region[propertyName] && region[propertyName]()) {
+            return true;
+        }
+
+        return itemLocation[propertyName] && itemLocation[propertyName]();
+    },
+
+    /**
      * Calculates whether you can get the given item/go to the given region at the given age
      * This assumes that you can already gain access to the region it is in
      * @param itemLocation - the item location data - this may be an item or a region
@@ -1678,8 +1703,8 @@ Data = {
 
             if (!RegionWalker.doesItemLocationHaveSpawnOrWalkData(itemLocation, age)) { // In this case, ignore all the age requirements, becuase you can spawn or warp here
                 let doesAgeFailNormalReq = itemLocation.Age !== Age.EITHER && age !== itemLocation.Age;
-                let doesAgeFailUseAgeReq = (age === Age.CHILD && itemLocation.UseAdultAge && itemLocation.UseAdultAge()) ||
-                    (age === Age.ADULT && itemLocation.UseChildAge && itemLocation.UseChildAge());
+                let doesAgeFailUseAgeReq = (age === Age.CHILD && Data.useSpecificAge(itemLocation, Age.ADULT)) ||
+                    (age === Age.ADULT && Data.useSpecificAge(itemLocation, Age.CHILD));
                 if (doesAgeFailNormalReq || doesAgeFailUseAgeReq) {
                     return;
                 }

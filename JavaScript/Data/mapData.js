@@ -3478,7 +3478,8 @@ let MapLocations = {
                             let canGetThereAsChild = Settings.GlitchesToAllow.groundJump && Settings.GlitchesToAllow.megaFlip;
                             return !canGetToMapAsChild || !canGetThereAsChild;
                         },
-                        LongDescription: "These pots can be retrieved with the boomerang if you're quick. If you can't get them that way...<br/><br/>Deal with the guard that's moving. If you have a shield, and either the Master Sword or a Deku Stick, you can crouchstab the stationary guard, but be careful not to get too close!", CustomRequirement: function(age) {
+                        LongDescription: "These pots can be retrieved with the boomerang if you're quick. If you can't get them that way...<br/><br/>Deal with the guard that's moving. If you have a shield, and either the Master Sword or a Deku Stick, you can crouchstab the stationary guard, but be careful not to get too close!",
+                        CustomRequirement: function(age) {
                             if (Data.areGerudoGuardsTame(age) || Data.canUseBoomerang(age)) {
                                 return true;
                             }
