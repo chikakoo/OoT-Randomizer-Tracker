@@ -2868,7 +2868,7 @@ let MapLocations = {
                                     Items.HOOKSHOT.playerHas;
 
                                 return canCrossWithHookshot ||
-                                    Data.itemLocationObtained("Gerudo Fortress", "main", "Item From Gerudo") || 
+                                    Data.itemLocationObtained("Gerudo Fortress", "jail4Area", "Item From Gerudo") || 
                                     Data.canRideEpona(age) || 
                                     Items.HOOKSHOT.currentUpgrade === 2 ||
                                     Data.canBombSuperslideWithHovers(age) ||
@@ -2915,7 +2915,7 @@ let MapLocations = {
                                 Items.HOOKSHOT.playerHas;
 
                             return canCrossWithHookshot ||
-                                Data.itemLocationObtained("Gerudo Fortress", "main", "Item From Gerudo") || 
+                                Data.itemLocationObtained("Gerudo Fortress", "jail4Area", "Item From Gerudo") || 
                                 Data.canRideEpona(age) || 
                                 Items.HOOKSHOT.currentUpgrade === 2 ||
                                 Data.canBombSuperslideWithHovers(age) ||
