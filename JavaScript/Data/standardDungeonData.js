@@ -1533,7 +1533,7 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: ["F5", "F4", "F3", "F2", "F1"],
         StartingFloorIndex: 4,
-        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
+        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         Regions: {
             main: {
                 Exits: {
@@ -4455,7 +4455,7 @@ let StandardDungeons = {
                     "Frozen Pot in Platforming Room": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 193, y: 47 },
-                        Age: Age.EITHER,
+                        Age: Age.ADULT,
                         Order: 9,
                         LongDescription: "This pot is frozen in ice on the upper part of the room with the map chest. The easiest ways to get it are to either use blue fire, or crouchstab the pot in the ice. Otherwise, you can get on the edge of the platform, facing away from the pot, and do a spin attack to hit the pot."
                     }
@@ -5797,6 +5797,7 @@ let StandardDungeons = {
                 }
             },
             center: {
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.staircaseHover; },
                 Exits: {
                     potRoom: {
                         CustomRequirement: function(age) {
@@ -5810,7 +5811,6 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 155, y: 95, floor: "MN" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.staircaseHover; },
                         Order: 31,
                         IsPostWalkCheck: true,
                         LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
@@ -5823,6 +5823,7 @@ let StandardDungeons = {
                 }
             },
             potRoom: {
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.staircaseHover; },
                 Exits: {},
                 ItemLocations: {
                     "14 Pots in Pot Room": {
@@ -5832,7 +5833,6 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "14 Pots",
                         MapInfo: { x: 175, y: 95, floor: "MN" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.staircaseHover; },
                         Order: 32,
                         IsPostWalkCheck: true,
                         LongDescription: "Complete all the trials. Now, go up the center of the castle. This is room after you open the first giant door.",

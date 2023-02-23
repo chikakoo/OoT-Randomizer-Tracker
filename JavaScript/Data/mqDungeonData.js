@@ -1222,6 +1222,7 @@ let MQDungeons = {
         IsMasterQuest: true,
         Floors: ["F2", "F1", "B1"],
         StartingFloorIndex: 1,
+        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         Regions: {
             main: {
                 Exits: {
@@ -1243,7 +1244,6 @@ let MQDungeons = {
                         MapInfo: { x: 188, y: 251, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 1,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "Climb the vines (it's easier to climb from the left side of the tree) and navigate across the trees to hit the switch to spawn the chest.",
                         CustomRequirement: function(age) {
                             return Data.hasDamagingItem(age) || Items.DEKU_NUT.playerHas;
@@ -1254,7 +1254,6 @@ let MQDungeons = {
                         MapInfo: { x: 163, y: 193, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 2,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         IsAtShortDistance: true,
                         LongDescription: "The skulltula is above the door at the end of the first hallway."
                     },
@@ -1266,7 +1265,6 @@ let MQDungeons = {
                         MapInfo: { x: 169, y: 189, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 3,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "This is the door at the end of the first hallway.",
                         KeyRequirement: function(age) {
                             return { min: 1, max: 1 };
@@ -1413,7 +1411,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 142, y: 166, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 4,
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltulas. the pots are on the ledge to the left."
                     },
@@ -1424,7 +1421,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 194, y: 164, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 5,
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltulas. the pots are on the ledge to the right."
                     },
@@ -1433,7 +1429,6 @@ let MQDungeons = {
                         MapInfo: { x: 66, y: 171, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 13,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "Proceed through the main room's western hallway. The skulltula is to the left on the ground level."
                     }
                 }
@@ -1446,7 +1441,6 @@ let MQDungeons = {
                         MapInfo: { x: 170, y: 19, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 6,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "Proceed straight ahead in the main room. After the hallway, kill the two wolfos to spawn the chest.<br/><br/>If you don't have the song of time, it's possible to get here from the above room. This is the room after the red poe room - drop down before killing the first Stalfos.",
                         NeedsSwordWeapon: true
                     },
@@ -1455,7 +1449,6 @@ let MQDungeons = {
                         MapInfo: { x: 168, y: 17, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 7,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula and into the next door across the big room. The room with the pot is the one after the song of time block (not there as Child). The one on the right is the one you want - the other contains a fairy.<br/><br/>If you don't have the song of time, it's possible to get here from the above room. This is the room after the red poe room - drop down before killing the first Stalfos."
                     }
                 }
@@ -1520,7 +1513,6 @@ let MQDungeons = {
                         MapInfo: { x: 81, y: 124, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 12,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "Located on top of the platform near the well."
                     }
                 }
@@ -1535,7 +1527,7 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "3 Hearts",
                         MapInfo: { x: 81, y: 73, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
                         Order: 16,
                         LongDescription: "Fall down the hole in the boss key room. Kill the Floormaster and proceed through the door. <br/><br/>The hearts are on the skinny platform that you have to jump to, near the skulltula on the wall. Be careful not to fall off."
                     }
@@ -1562,7 +1554,6 @@ let MQDungeons = {
                         MapInfo: { x: 226, y: 98, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 7,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         IsAtShortDistance: true,
                         LongDescription: "The skulltula is above the doorframe leading to this room. Get it with your boomerang or hookshot."
                     }
@@ -1615,7 +1606,6 @@ let MQDungeons = {
                         MapInfo: { x: 242, y: 46, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 9,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "This chest is in the well. If you can't drain the water with the eye switch (in the well itself from the east room), you can hookshot the chest and spam the button to open it.",
                         CustomRequirement: function(age) {
                             if (Data.canShootEyeSwitch(age)) { return true; }
@@ -1629,7 +1619,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "3 Hearts",
                         MapInfo: { x: 181, y: 48, floor: "B1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 10,
                         LongDescription: "This chest is in the well. Use iron boots if you can't drain the water with the eye switch (in the well itself from the east room).",
                         CustomRequirement: function(age) {
@@ -1642,7 +1631,6 @@ let MQDungeons = {
                         MapInfo: { x: 114, y: 34, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 11,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "This skulltula is on one of the grates in the water of the well (in the well itself from the east room). If you can't shoot the eye switch to drain the water, you can still get the skulltula with iron boots and the hookshot.",
                         CustomRequirement: function(age) {
                             if (Data.canShootEyeSwitch(age)) { return true; }
@@ -1843,6 +1831,7 @@ let MQDungeons = {
         IsMasterQuest: true,
         Floors: ["F5", "F4", "F3", "F2", "F1"],
         StartingFloorIndex: 4,
+        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         Regions: {
             main: {
                 Exits: {
@@ -1890,7 +1879,6 @@ let MQDungeons = {
                         MapInfo: { x: 99, y: 250, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 1,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "The pots are to your left and right in the corners as you enter the temple."
                     },
                     "Like-Like Chest By Entrance": {
@@ -1898,7 +1886,6 @@ let MQDungeons = {
                         MapInfo: { x: 61, y: 123, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 2,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         NeedsDamagingItem: true,
                         LongDescription: "Enter the left door by the entrance. Kill the Like-Like to spawn the chest."
                     },
@@ -1910,7 +1897,6 @@ let MQDungeons = {
                         MapInfo: { x: 126, y: 214, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 7,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "This is the locked door on the right side of the lobby.",
                         KeyRequirement: function(age) {
                             return { min: 1, max: Keys.FIRE_TEMPLE.mqTotalKeys() };
@@ -1923,8 +1909,7 @@ let MQDungeons = {
                         MapInfo: { x: 256, y: 202, floor: "F1" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                !Settings.GlitchesToAllow.fireNoGoronTunic ||
+                            return !!Settings.GlitchesToAllow.fireNoGoronTunic ||
                                 !Settings.GlitchesToAllow.bombSuperslide ||
                                 !Settings.GlitchesToAllow.equipSwap;
                         },
@@ -1974,6 +1959,10 @@ let MQDungeons = {
             },
 
             roomBeforeBoss: {
+                UseAdultAge: function() { 
+                    return !Settings.GlitchesToAllow.fireNoGoronTunic ||
+                        !Settings.GlitchesToAllow.bombSuperslide;
+                },
                 Exits: {
                     bossRoom: {
                         Age: Age.EITHER,
@@ -1982,7 +1971,6 @@ let MQDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "2 Left Crates in Room Before Boss": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -1992,9 +1980,6 @@ let MQDungeons = {
                         MapInfo: { x: 40, y: 253, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 3,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.fireNoGoronTunic;
-                        },
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper left corner to the crates."
                     },
                     "4 Right Crates in Room Before Boss": {
@@ -2005,9 +1990,7 @@ let MQDungeons = {
                         MapInfo: { x: 37, y: 166, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 4,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip || !Settings.GlitchesToAllow.fireNoGoronTunic;
-                        },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner to the crates.<br/><br/>If child, climb the block with the torch in it from the back right corner. Hold forward to jump up the ledge. Use the first ledge box to get to the second one before you break it.",
                         CustomRequirement: function(age) {
                             if (Data.canMegaFlip(age)) { return true; }
@@ -2023,9 +2006,7 @@ let MQDungeons = {
                         MapInfo: { x: 33, y: 161, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 5,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip || !Settings.GlitchesToAllow.fireNoGoronTunic;
-                        },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner to the pots.",
                         CustomRequirement: function(age) {
                             if (Data.canMegaFlip(age)) { return true; }
@@ -2062,7 +2043,6 @@ let MQDungeons = {
                         MapInfo: { x: 107, y: 38, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 8,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "Enter the locked door to the right when you first enter the temple. Defeat the stalfos and proceed. The pots are in the next room - the four you want are the two in the very back, and the two by the door. The rest contain fairies.",
                         NeedsDamagingItem: true
                     },
@@ -2070,9 +2050,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 57, y: 60, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.groundJump;
-                        },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
                         Order: 9,
                         RequiredChoiceOfAdultItems: [Items.HOOKSHOT, Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU],
                         RequiredChoiceOfChildItems: [Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU],
@@ -2092,9 +2070,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 61, y: 110, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap;
-                        },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         Order: 10,
                         LongDescription: "After the Flare Dancer, enter the next room. Hit the rusted switch with the hammer to gain access to this chest."
                     }
@@ -2102,6 +2078,11 @@ let MQDungeons = {
             },
 
             bigLavaRoom: {
+                UseAdultAge: function() { 
+                    return !Settings.GlitchesToAllow.fireNoGoronTunic ||
+                        !Settings.GlitchesToAllow.bombSuperslide ||
+                        !Settings.GlitchesToAllow.equipSwap;
+                },
                 Exits: {
                     bossKeyRoom: {
                         Age: Age.ADULT,
@@ -2131,12 +2112,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 204, y: 150, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                                !Settings.GlitchesToAllow.bombSuperslide ||
-                                !Settings.GlitchesToAllow.equipSwap;
-                        },
                         Order: 11,
                         LongDescription: "The pot is near the door on the left side of the big lava room."
                     },
@@ -2144,12 +2119,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 280, y: 139, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                                !Settings.GlitchesToAllow.bombSuperslide ||
-                                !Settings.GlitchesToAllow.equipSwap;
-                        },
                         Order: 12,
                         LongDescription: "Go to the left side of the big lava room. Hammer the switch to gain access to the skulltula."
                     },
@@ -2157,12 +2126,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 227, y: 162, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                                !Settings.GlitchesToAllow.bombSuperslide ||
-                                !Settings.GlitchesToAllow.equipSwap;
-                        },
                         Order: 13,
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the right door into the big lava room. Along the back left wall is a platform that will rise up to an alcove after you jump on it. The pot is there."
                     },
@@ -2170,13 +2133,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 190, y: 263, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                                !Settings.GlitchesToAllow.bombSuperslide ||
-                                !Settings.GlitchesToAllow.equipSwap ||
-                                !Settings.GlitchesToAllow.groundJump;
-                        },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
                         Order: 16,
                         LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. The pot is by the blocked doorway."
                     },
@@ -2184,13 +2141,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 202, y: 287, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                                !Settings.GlitchesToAllow.bombSuperslide ||
-                                !Settings.GlitchesToAllow.equipSwap ||
-                                !Settings.GlitchesToAllow.groundJump;
-                        },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
                         Order: 17,
                         NeedsExplosives: true,
                         NeedsFire: true,
@@ -2223,6 +2174,11 @@ let MQDungeons = {
             },
 
             risingBlockRoom: {
+                UseAdultAge: function() { 
+                    return !Settings.GlitchesToAllow.fireNoGoronTunic ||
+                        !Settings.GlitchesToAllow.equipSwap ||
+                        !Settings.GlitchesToAllow.bombSuperslide;
+                },
                 Exits: {
                     boulderMaze: {
                         NeedsFire: true
@@ -2242,12 +2198,6 @@ let MQDungeons = {
                         MapInfo: { x: 293, y: 203, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 19,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                                !Settings.GlitchesToAllow.equipSwap ||
-                                !Settings.GlitchesToAllow.bombSuperslide;
-                        },
                         LongDescription: "Open the locked door on the other side of the big lava room. The hearts are on either side at the very top and in the middle of the room where you jump to the block."
                     }
                 }
@@ -3227,6 +3177,7 @@ let MQDungeons = {
         IsMasterQuest: true,
         Floors: ["F1", "B1", "B2"],
         StartingFloorIndex: 0,
+        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
         Regions: {
             main: {
                 Exits: {
@@ -3254,7 +3205,6 @@ let MQDungeons = {
                         MapInfo: { x: 125, y: 152, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 2,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip },
                         LongDescription: "This is the door behind the explodable wall in the truth spinner room.",
                         NeedsExplosives: true,
                         KeyRequirement: function(age) {
@@ -3267,7 +3217,6 @@ let MQDungeons = {
                         MapInfo: { x: 330, y: 170, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 12,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip},
                         LongDescription: "This is the door near the beamos after the truth spinner room.",
                         KeyRequirement: function(age) {
                             let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 2;
@@ -3351,9 +3300,6 @@ let MQDungeons = {
                         MapInfo: { x: 139, y: 169, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 1,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "These are the small crates by the truth spinner in the first main room of the temple, against the wall."
                     }
                 }
@@ -3375,9 +3321,6 @@ let MQDungeons = {
                         MapInfo: { x: 107, y: 108, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 3,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "After entering the truth spinner room, navigate to the Eye of Truth symbol on the lower left wall. Bomb it to open up the path. Use a key to enter the maze. Head right through the invisible wall. The chests are in the back right corner of the next room."
                     },
                     "Redead Chest in Maze": {
@@ -3385,9 +3328,6 @@ let MQDungeons = {
                         MapInfo: { x: 101, y: 108, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 4,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "After entering the truth spinner room, navigate to the Eye of Truth symbol on the lower left wall. Bomb it to open up the path. Use a key to enter the maze. Head right through the invisible wall. Kill the enemies to spawn the chest."
                     },
                     "2 Flying Pots in Front Maze Room": {
@@ -3398,9 +3338,6 @@ let MQDungeons = {
                         MapInfo: { x: 102, y: 163, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 5,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "In the left (south) part of the first maze loop from the entrance, these two pots will fly at you."
                     },
                     "2 Pots in Front Maze Room": {
@@ -3410,9 +3347,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 92, y: 153, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         Order: 6,
                         LongDescription: "These pots are marking the Song of Time block in the first maze loop - loop around to the other side from the door to find them."
                     }
@@ -3429,9 +3363,6 @@ let MQDungeons = {
                         MapInfo: { x: 65, y: 163, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 7,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "If adult, play the Song of Time by the wall marked by the two pots to advance to the next maze section. On the left side with the eyes, these pots will fly at you."
                     },
                     "Dead Hand Chest": {
@@ -3439,9 +3370,6 @@ let MQDungeons = {
                         MapInfo: { x: 14, y: 143, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 8,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "In the maze by the entrance, navigate around to the other side of the first room. Play the Song of Time to remove the block in the way (invisible without the lens). In the next room, shoot the middle eye. Now you can enter the northwest door. Kill Dead Hand to spawn the chest.",
                         RequiredChildItems: [Items.FAIRY_SLINGSHOT],
                         RequiredAdultItems: [Items.FAIRY_BOW]
@@ -3482,9 +3410,6 @@ let MQDungeons = {
                         MapInfo: { x: 278, y: 122, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 10,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "Facing away from the door into the scythe room, go to the upper right room and fall down the invisible hole. There is an invisible chest to the right of the climbable wall."
                     },
                     "Chest in Early Gibdos Room": {
@@ -3492,9 +3417,6 @@ let MQDungeons = {
                         MapInfo: { x: 301, y: 220, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 11,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "First, turn the truth spinner in the main room to the correct skull to open the gate. Now, shoot the torches to the left and right of the gate to create a platform. Alternatively, you can megaflip or hover boots across. Take the left door from the beamos. Kill the enemies to spawn the chest."
                     }
                 }
@@ -3565,9 +3487,6 @@ let MQDungeons = {
                         MapInfo: { x: 53, y: 237, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 17,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "Get to the right side of the giant room. Hit the switch behind the gate to open it to get to the falling spike room. In the first cell to the left is the skulltula.",
                         CustomRequirement: function(age) {
                             return Data.canGrabShortDistances(age) || Data.canStaircaseHover(age);
@@ -3578,9 +3497,6 @@ let MQDungeons = {
                         MapInfo: { x: 36, y: 213, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 18,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "This chest is in the first cell to the right in the falling spike room."
                     },
                     "Top Switchless Chest in Falling Spikes Room": {
@@ -3588,9 +3504,6 @@ let MQDungeons = {
                         MapInfo: { x: 17, y: 239, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 19,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. The chest is in the southeast corner.",
                         CustomRequirement: function(age) {
                             return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
@@ -3601,9 +3514,6 @@ let MQDungeons = {
                         MapInfo: { x: 76, y: 209, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 20,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. Press the switch to spawn the chest.",
                         CustomRequirement: function(age) {
                             return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
@@ -3617,9 +3527,6 @@ let MQDungeons = {
                         MapInfo: { x: 82, y: 209, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 21,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. The pots are above the hidden block's alcove.",
                         CustomRequirement: function(age) {
                             return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
@@ -3650,9 +3557,6 @@ let MQDungeons = {
                         MapInfo: { x: 155, y: 63, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 23,
-                        UseAdultAge: function() { 
-                            return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.megaFlip;
-                        },
                         LongDescription: "From the right side of the giant room, make your way across the invisible platforms to the northwest door. Use a key to open the door. Kill all the enemies to spawn the chest."
                     }
                 }
@@ -4789,6 +4693,7 @@ let MQDungeons = {
         Abbreviation: "ICE",
         MapGroup: MapGroups.DUNGEONS,
         IsMasterQuest: true,
+        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         Regions: {
             main: {
                 Exits: {
@@ -4803,7 +4708,6 @@ let MQDungeons = {
                         MapInfo: { x: 192, y: 257 },
                         Age: Age.EITHER,
                         Order: 1,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "This pot is on the left wall close to the entrance. Note that you may want to use it to hit the switch in the next room if you have no other way to do so!"
                     }
                 }
@@ -4837,7 +4741,6 @@ let MQDungeons = {
                         MapInfo: { x: 182, y: 179 },
                         Age: Age.EITHER,
                         Order: 2,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "These pots are in the transition doorway after you hit the switch in the first room."
                     },
                     "2 Pots in Center Room": {
@@ -4848,7 +4751,6 @@ let MQDungeons = {
                         MapInfo: { x: 204, y: 121 },
                         Age: Age.EITHER,
                         Order: 3,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "In the room after the room with the switch, the pots will be on your right. The other pots in the room contain fairies."
                     }
                 }
@@ -5215,6 +5117,12 @@ let MQDungeons = {
         Abbreviation: "GTG",
         MapGroup: MapGroups.DUNGEONS,
         IsMasterQuest: true,
+        UseAdultAge: function() { 
+            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
+                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump || Data.randomizedSpawnLocations.useRandomizedSpawns) && 
+                Settings.GlitchesToAllow.gtgChildAllowed);
+            return !canEnterDungeon;
+        },
         Regions: {
             main: {
                 Exits: {
@@ -5269,11 +5177,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 146, y: 252 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         Order: 1,
                         LongDescription: "The pots are to the left when you first enter."
                     },
@@ -5282,11 +5185,6 @@ let MQDungeons = {
                         MapInfo: { x: 152, y: 233 },
                         Age: Age.EITHER,
                         Order: 1.1,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         LongDescription: "This chest is to the left when you first enter."
                     },
                     "Right Chest by Entrance": {
@@ -5294,11 +5192,6 @@ let MQDungeons = {
                         MapInfo: { x: 175, y: 233 },
                         Age: Age.EITHER,
                         Order: 2,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         LongDescription: "This chest is to the right when you first enter."
                     },
                     "2 Right Pots by Entrance": {
@@ -5308,11 +5201,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 183, y: 252 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         Order: 2.1,
                         LongDescription: "The pots are to the right when you first enter."
                     },
@@ -5321,11 +5209,6 @@ let MQDungeons = {
                         MapInfo: { x: 152, y: 192 },
                         Age: Age.EITHER,
                         Order: 3,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         LongDescription: "From the main maze entrance, take the first left door. Climb the grate to your left up to the chest."
                     },
                     "Left Maze Path After Door 2": {
@@ -5333,11 +5216,6 @@ let MQDungeons = {
                         MapInfo: { x: 130, y: 163 },
                         Age: Age.EITHER,
                         Order: 4,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         LongDescription: "This chest is after the second door in the left maze path."
                     },
                     "Left Maze Path After Door 4": {
@@ -5345,11 +5223,6 @@ let MQDungeons = {
                         MapInfo: { x: 142, y: 136 },
                         Age: Age.EITHER,
                         Order: 5,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         LongDescription: "This chest is after the fourth door in the left maze path."
                     },
                     "Left Maze Path After Door 5": {
@@ -5357,11 +5230,6 @@ let MQDungeons = {
                         MapInfo: { x: 148, y: 137 },
                         Age: Age.EITHER,
                         Order: 6,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         LongDescription: "This chest is after the fifth door in the left maze path.",
                         CustomRequirement: function(age) {
                             let canVineClip = Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
@@ -5383,11 +5251,6 @@ let MQDungeons = {
                         MapInfo: { x: 257, y: 244 },
                         Age: Age.EITHER,
                         Order: 17,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         LongDescription: "Either get here after shooting the eye in the starting room, or going around form the big lava room. Kill all the enemies to spawn the chest.",
                         RequiredChoiceOfChildItems: [Items.DEKU_STICK, Items.BOMB, Items.BOMBCHU]
                     }
@@ -5407,16 +5270,12 @@ let MQDungeons = {
                         MapInfo: { x: 65, y: 225 },
                         Age: Age.EITHER,
                         Order: 7,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !canEnterDungeon; 
-                        },
                         LongDescription: "From the main entrance, light the torches and go through the door that unlocks. Kill the Iron Knuckle to spawn the chest."
                     }
                 }
             },
             afterRupeeRoom: {
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {
                     leftArea: {
                         Age: Age.CHILD // Only possible via vine clipping and going backwards
@@ -5449,11 +5308,6 @@ let MQDungeons = {
                         MapInfo: { x: 89, y: 84 },
                         Age: Age.EITHER,
                         Order: 8,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
-                        },
                         LongDescription: "Enter the room after the iron knuckle room. Collect the rupees within the time limit and move on to the next room. Defeat the enemies within the time limit to spawn the chest."
                     }
                 }
@@ -5471,6 +5325,7 @@ let MQDungeons = {
                 }
             },
             spinningRoom: {
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {
                     afterRupeeRoom: {
                         Age: Age.CHILD // This won't be useful as adult
@@ -5511,11 +5366,6 @@ let MQDungeons = {
                         MapInfo: { x: 256, y: 76 },
                         Age: Age.EITHER,
                         Order: 12,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
-                        },
                         LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Continue past the circle fire room into the next room. Kill the enemies within the time limit to spawn the chest."
                     },
                     "Center Fire Iron Knuckle Chest": {
@@ -5523,11 +5373,6 @@ let MQDungeons = {
                         MapInfo: { x: 225, y: 90 },
                         Age: Age.EITHER,
                         Order: 13,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
-                        },
                         LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Continue past the circle fire room into the next room. Activate the switch above the door to spawn the chest. Step on the swith on one of the walls to remove the fire.",
                         CustomRequirement: function(age) {
                             return Data.canHitSwitchAtShortDistance(age);
@@ -5550,6 +5395,7 @@ let MQDungeons = {
                 ItemLocations: {}
             },
             backOfMaze: {
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {
                     bigLavaRoom: {
                         Age: Age.EITHER,
@@ -5570,11 +5416,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 177, y: 165 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
-                        },
                         Order: 14,
                         LongDescription: "After defeating the enemies in the room with the fire circle and Iron Knuckle, proceed through the door. Hammer the rusted switch, then longshot to the pillar that appears. Go through the hall - the chest is straight ahead."
                     },
@@ -5582,16 +5423,12 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 187, y: 154 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
-                        },
                         Order: 15,
                         LongDescription: "After getting the close chest from the back of the maze, continue along counter-clockwise to get the next chest (there are no doors to go through)."					}
                 }
             },
             mazeCenter: {
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {},
                 ItemLocations: {
                     "Crate in Maze Center": {
@@ -5599,11 +5436,6 @@ let MQDungeons = {
                         MapInfo: { x: 164, y: 160 },
                         Age: Age.EITHER,
                         Order: 6.1,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips && Settings.GlitchesToAllow.equipSwap); 
-                        },
                         LongDescription: "This is the crate at the center of the maze."
                     },
                     "Spawn Ice Arrow Chest": {
@@ -5611,11 +5443,7 @@ let MQDungeons = {
                         MapInfo: { x: 164, y: 160 },
                         Age: Age.EITHER,
                         Order: 6.2,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips && Settings.GlitchesToAllow.equipSwap); 
-                        },
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         RequiredItems: [Items.MEGATON_HAMMER],
                         LongDescription: "At the center of the maze, break the crate and hit the switch with the Megaton Hammer to spawn the ice arrow chest."
                     }
@@ -5638,6 +5466,7 @@ let MQDungeons = {
                 }
             },
             iceArrowsRoom: {
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {
                     spinningRoom: {
                         Age: Age.CHILD // Only useful for Child
@@ -5650,11 +5479,6 @@ let MQDungeons = {
                         MapInfo: { x: 166, y: 132 },
                         Age: Age.EITHER,
                         Order: 11,
-                        UseAdultAge: function() { 
-                            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump) && Settings.GlitchesToAllow.gtgChildAllowed);
-                            return !(canEnterDungeon && Settings.GlitchesToAllow.gtgChildVineClips); 
-                        },
                         LongDescription: "First, spawn the chest by making your way to the center of the maze. Break the box, then hammer the rusted switch to spawn the chest.<br/><br/>In the spinning room, hookshot to the target in the center of the eye statues. From there, hookshot the crystal switch to unbar the door. Go in and claim the chest.",
                         CustomRequirement: function(age) {
                             // If the chest is already spawned, we're good
@@ -5682,6 +5506,7 @@ let MQDungeons = {
         IsMasterQuest: true,
         Floors: ["MN", "FST", "WTR", "SHW", "FIR", "LIT", "SPT"],
         StartingFloorIndex: 0,
+        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canCompleteTrials: function(age) {
             // Requires IsPostWalkCheck to be true on any item location that uses this!!!
             let canUseLightArrows = age === Age.ADULT && Items.LIGHT_ARROW.playerHas && Equipment.MAGIC.playerHas;
@@ -5741,7 +5566,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "5 Scrubs",
                         MapInfo: { x: 249, y: 235, floor: "MN" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 1,
                         LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
                     },
@@ -5749,7 +5573,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 165, y: 204, floor: "FST" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 6,
                         LongDescription: "After dealing with the enemies, wait for the fan to stop spinning, then hookshot up to the ledge. The item is up there.",
                         RequiredChildItems: [Items.BOOMERANG],
@@ -5759,7 +5582,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 168, y: 170, floor: "FST" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 7,
                         LongDescription: "In the second room, stand on the upper left side of the first platform. Shoot the eye switch on the back right corner of the room to spawn the chest.",
                         RequiredChildItems: [Items.FAIRY_SLINGSHOT],
@@ -5769,7 +5591,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 153, y: 147, floor: "FST" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 8,
                         LongDescription: "In the second room, shoot the eye switch at the back left side of the room with a fire arrow to spawn the chest. Alternatively, you can also use Din's fire to hit it once at the back of the room. To get across, you can jump and use the wind from the fan if you have no hover boots.",
                         NeedsFire: true
@@ -5813,8 +5634,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["lightRoom1"],
                         MapInfo: { x: 180, y: 174, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Age: Age.ADULT,
                         Order: 19,
                         LongDescription: "This is the locked door in the Zelda's Lullaby room of the light trial.",
                         KeyRequirement: function(age) {
@@ -5826,8 +5646,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["lightRoom2Back"],
                         MapInfo: { x: 180, y: 84, floor: "LIT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip; },
+                        Age: Age.ADULT,
                         Order: 21,
                         LongDescription: "This is the locked door in the boulder/fire wall froom of the light trial.",
                         KeyRequirement: function(age) {
@@ -5847,7 +5666,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 178, y: 65, floor: "FST" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 9,
                         LongDescription: "Enter the forest trial - defeat the stalfos to get to the next room. Now, use the fans to cross. Play the song of time on the corner closest to the floating block - keep playing it until the armos status hits the switch to unbar the door. The pots are inside."
                     }
@@ -5869,7 +5687,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 163, y: 233, floor: "WTR" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 10,
                         LongDescription: "The chest is in the red ice on the left side of the room. You can roll into it and spam A to open the chest through the ice.<br/><br/>If you want to melt it, attack the weird hand thing on the right side of the room to lower the water around the blue fire."
                     },
@@ -5878,7 +5695,6 @@ let MQDungeons = {
                         MapInfo: { x: 226, y: 233, floor: "WTR" },
                         MapImageName: "Recovery Heart",
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 11,
                         LongDescription: "In the water trial - this heart is in the blue ice in the right side of the room (or use a boomerang trick shot).<br/><br/>To gain access to the blue fire, attack the weird hand thing on the right side of the room to lower the water around the blue fire.",
                         CustomRequirement: function(age) {
@@ -6082,6 +5898,7 @@ let MQDungeons = {
                 }
             },
             center: {
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.staircaseHover; },
                 Exits: {
                     potRoom: {
                         CustomRequirement: function(age) {
@@ -6095,7 +5912,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 155, y: 95, floor: "MN" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.staircaseHover; },
                         Order: 30,
                         IsPostWalkCheck: true,
                         LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
@@ -6107,6 +5923,7 @@ let MQDungeons = {
                 }
             },
             potRoom: {
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.staircaseHover; },
                 Exits: {},
                 ItemLocations: {
                     "14 Pots in Pot Room": {
@@ -6116,7 +5933,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "14 Pots",
                         MapInfo: { x: 175, y: 95, floor: "MN" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.staircaseHover; },
                         Order: 31,
                         IsPostWalkCheck: true,
                         LongDescription: "Complete all the trials. Now, go up the center of the castle. This is room after you open the first giant door.",
