@@ -808,12 +808,17 @@ Data = {
             return true;
         }
 
+        let propertyName = `Use${age}Age`;
         let isOwExit = this.usesOwExits(itemLocation);
         let mapName = isOwExit ? itemLocation.ExitMap : itemLocation.Map;
-        let regionName = isOwExit ? itemLocation.ExitRegion : itemLocation.Region;
+        let map = MapLocations[mapName];
         
-        let propertyName = `Use${age}Age`;
-        let region = MapLocations[mapName].Regions[regionName];
+        if (map[propertyName] && map[propertyName]()) {
+            return true;
+        }
+
+        let regionName = isOwExit ? itemLocation.ExitRegion : itemLocation.Region;
+        let region = map.Regions[regionName];
         if (region[propertyName] && region[propertyName]()) {
             return true;
         }

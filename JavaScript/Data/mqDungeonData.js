@@ -9,6 +9,7 @@ let MQDungeons = {
         IsMasterQuest: true,
         Floors: [ "F3", "F2", "B1", "B2" ],
         StartingFloorIndex: 1,
+        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         Regions: {
             main: {
                 Exits: {
@@ -41,7 +42,6 @@ let MQDungeons = {
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 245, y: 28, floor: "F2" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 1,
                         LongDescription: "Climb up the vines on the first floor. Jump to the small platform to your left. The item is on the end of that platform; you have to jump off for it.",
                     },
@@ -49,7 +49,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 282, y: 82, floor: "F2" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 1,
                         LongDescription: "Climb to the second floor of the dungeon. The chest is by the vines leading to the third floor."
                     },
@@ -57,7 +56,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 277, y: 87, floor: "F2" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 2,
                         LongDescription: "This crate is next to the map chest on the second floor.",
                     },
@@ -65,7 +63,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 277, y: 87, floor: "F2" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 3,
                         LongDescription: "This skulltula is in the crate by the map chest on the second floor. Roll into it to set it free.",
                     },
@@ -83,7 +80,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 115, y: 199, floor: "F3" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 9,
                         LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>Defeat all the enemies in this room to spawn the chest. Press the switch to gain access to the chest.",
                         NeedsDamagingWeapon: true
@@ -93,7 +89,6 @@ let MQDungeons = {
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 107, y: 200, floor: "F3" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 10,
                         LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>Press the switch inside to gain access to the item.",
                     },
@@ -101,7 +96,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 16, y: 147, floor: "F3" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 11,
                         LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>Light the unlit torch in this room to spawn the chest. If using a bow, it's easier if you shoot it from the left side of the torch.",
                         CustomRequirement: function(age) {
@@ -114,7 +108,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 344, y: 81, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 12,
                         LongDescription: "Head to the basement. The goal is to hit the switch to the right of the vines to spawn the chest. If you have Din's Fire, use it on the webs. Otherwise, hit the switch to the left of the vines to light the torch, then use your sticks or shoot an arrow through it to gain access to the switch.",
                         CustomRequirement: function(age) {
@@ -139,7 +132,6 @@ let MQDungeons = {
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 191, y: 151, floor: "F2" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 4,
                         LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so. The heart is on the left side of the room."
                     }
@@ -173,7 +165,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 111, y: 246, floor: "F2" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 5,
                         LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so.<br/><br/>Once in this next room, shoot the eye in the back to gain access to the next room. The chest is on the other side.",
                     }
@@ -190,7 +181,6 @@ let MQDungeons = {
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 157, y: 273, floor: "F2" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 6,
                         LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so. The heart is on the left side of the room."
                     }
@@ -204,7 +194,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 161, y: 277, floor: "F2" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 7,
                         LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so.<br/><br/>Head to the other side of the room. The room up the vines to the left is blocked by rocks. Use a bombchu to gain access. The skulltula is up on the wall.",
                         CustomRequirement: function(age) {
@@ -224,7 +213,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 266, y: 225, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 12,
                         LongDescription: "From the basement, head to the door to the right of the vines. You'll need to either use Din's Fire or run a lit Deku Stick into this room. Light the torches by the other door to gain access to the water room. The chest will be to your left."
                     },
@@ -232,7 +220,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 181, y: 225, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 13,
                         LongDescription: "From the basement, head to the door to the right of the vines. You'll need to either use Din's Fire or run a lit Deku Stick into this room. Light the torches by the other door to gain access to the water room.<br/><br/>Make your way to the other side of the water room. You'll need to roll or crouch with your shield under the spikey pole. Play the Song of Time by the block to reveal the chest.",
                         RequiredSongs: [Songs.SONG_OF_TIME]
@@ -249,7 +236,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 93, y: 113, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 14,
                         LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Note that you can also use Din's Fire. Defeat all the enemies in this room to continue on.<br/><br/>In this next room, play the Song of Time near the torches to spawn a staircase of blocks. Climb these and use your boomerang or hookshot to get the skulltula on the ceiling.",
                         RequiredSongs: [Songs.SONG_OF_TIME],
@@ -259,7 +245,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 17, y: 48, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 15,
                         LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Note that you can also use Din's Fire. Light the torches to open the next room. Defeat all the enemies in this room to continue on.<br/><br/>Step on the blue switch in the middle of the torches. Light a stick, use Din's or shoot an arrow to burn the web blocking the left door. The skulltula is in this room.",
                         IsAtShortDistance: true,
@@ -289,7 +274,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SCRUB,
                         MapInfo: { x: 274, y: 143, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         Order: 16,
                         LongDescription: "The scrub is next to the burnable web leading to the boss antechamber.<br/><br>To get there the long way around: in the grave room, step on the blue switch in the middle of the torches. Light a stick, use Din's, or shoot and arrow to the web blocking the right path. Enter the crawlspace to find your way back to the upper level of the first basement room.",
                     },
@@ -299,7 +283,6 @@ let MQDungeons = {
                         MapInfo: { x: 263, y: 108, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 16.1,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "The web on the basement floor. Use sticks or a fire item to burn it.",
                         CustomRequirement: function(age) {
                             return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
@@ -340,7 +323,6 @@ let MQDungeons = {
                         RequiredAdultItems: [Equipment.HYLIAN_SHIELD],
                         Age: Age.EITHER,
                         Order: 17.1,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "Mark this after stunning the scrubs in the 1, 3, 2 order.",
                     }
                 }
@@ -932,6 +914,7 @@ let MQDungeons = {
         IsMasterQuest: true,
         Floors: ["F2", "F1", "B1"],
         StartingFloorIndex: 1,
+        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         Regions: {
             main: {
                 Exits: {
@@ -953,7 +936,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 173, y: 215, floor: "F1" },
                         Age: Age.CHILD,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 1,
                         LongDescription: "In the first room, shoot the left cow to open the door.",
@@ -966,7 +948,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 165, y: 246, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 2,
                         LongDescription: "These two pots are on the edge of the water in the first room, on opposite sides of each other."
                     },
@@ -974,7 +955,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 173, y: 269, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 3,
                         LongDescription: "In the first room, destroy the yellow rock and hit the switch underneath to spawn the chest.",
                         NeedToBlastOrSmash: true
@@ -1013,7 +993,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 162, y: 187, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 5,
                         LongDescription: "These items are between the jellos in the room after the first door. Use the elevator to get to them."
                     },
@@ -1021,7 +1000,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 209, y: 221, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 6,
                         LongDescription: "After going through the first door, drop down to the bottom. The chest is by the door."
                     },
@@ -1039,7 +1017,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 116, y: 224, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 8,
                         LongDescription: "Drop down in the main elevator room. Dive underwater opposite the door to get to the hidden room. The pots are on the platform."
                     },
@@ -1050,7 +1027,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "3 Jabu Rupees",
                         MapInfo: { x: 132, y: 229, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 9,
                         LongDescription: "Drop down in the main elevator room. Dive underwater opposite the door to get to the hidden room. The rupees are in the water. You'll need iron boots or silver/gold scales for two of them."
                     },
@@ -1072,7 +1048,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 318, y: 134, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 12,
                         LongDescription: "Solve the puzzle in the room below the holes to enter the path leading to the elevator room. There is an easily accessible chest in here."
                     },
@@ -1080,7 +1055,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 258, y: 152, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 13,
                         LongDescription: "Solve the puzzle in the room below the holes to enter the path leading to the elevator room. Defeat all the enemies in the water to spawn the chest."
                     },
@@ -1091,7 +1065,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 258, y: 153, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 14,
                         LongDescription: "Solve the puzzle in the room below the holes to enter the path leading to the elevator room. The pots are on the ledge up the vines."
                     },
@@ -1099,7 +1072,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 297, y: 147, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 15,
                         LongDescription: "In the path leading to the elevator room, there's a skulltula under the Song of Time block. Play the song to move the block.<br/><br/>If you have the boomerang, you can also aim it to the left and slightly downward to get the skulltula through the block.",
                         CustomRequirement: function(age) {
@@ -1111,6 +1083,7 @@ let MQDungeons = {
             },
 
             northernRooms: {
+                UseChildAge: function() { !Settings.GlitchesToAllow.equipSwap; },
                 Exits: {
                     afterWebBurned: {
                         CustomRequirement: function(age) {
@@ -1126,7 +1099,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 192, y: 12, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
                         Order: 16,
                         LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. The pots are in the back of this room."
                     },
@@ -1134,7 +1106,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 195, y: 12, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
                         Order: 17,
                         LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. Shoot the cows, then kill the Like Likes that fall to spawn the chest."
                     }
@@ -1142,18 +1113,17 @@ let MQDungeons = {
             },
 
             afterWebBurned: {
+                UseChildAge: function() { !Settings.GlitchesToAllow.equipSwap; },
                 Exits: {
                     afterTentaclesDefeated: {
                         NeedToBlastOrSmash: true
                     }
                 },
-
                 ItemLocations: {
                     "Skulltula on Ceiling": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 157, y: 14, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
                         Order: 18,
                         LongDescription: "Using a deku stick to bring a fire from the Like Like room, or a fire item, burn the web to get access to the far west room. After killing the tentacle, head to the far east room and kill that tentacle. Now leave and enter the room to your left. Use the switch and a bomb, or a bombchu to blow up the rock on the ceiling to reveal the skulltula.",
                         CustomRequirement: function(age) {
@@ -1165,7 +1135,6 @@ let MQDungeons = {
                         MapInfo: { x: 172, y: 10, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 19,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
                         LongDescription: "This is the task to defeat the three tentacles. This is used to help see what Adult can do if he cannot use the boomerang."
                     }
                 }
@@ -1184,7 +1153,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 29, y: 191, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 20,
                         LongDescription: "After destroying all the tentacles, drop down into the big room and enter the door by the vines. The skulltula is in the back of the room. Kill the enemies (some are invisible) or megaflip to cross to the other wide. Burn the web with a fire item.",
                         CustomRequirement: function(age) {
@@ -1229,7 +1197,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 244, y: 189, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         RequiredItems: [Items.BOOMERANG],
                         Order: 24,
                         LongDescription: "Climb up the vines and use your boomerang to get this skulltula."
@@ -4176,6 +4144,7 @@ let MQDungeons = {
                 }
             },
             childSide: {
+                UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                 Exits: {
                     backOfChildBridgeRoom: {
                         Age: Age.EITHER,
@@ -4195,7 +4164,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 122, y: 207, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                         Order: 5,
                         AltOrder: 44,
                         LongDescription: "This is the pot in front of you when you go through the crawlspace."
@@ -4207,7 +4175,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 88, y: 170, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                         Order: 6,
                         AltOrder: 45,
                         LongDescription: "These are the hearts surrounded by fire in the room after you go through the crawlspace. You can either get them with the boomerang, or shoot the eye switch.",
@@ -4218,7 +4185,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 34, y: 139, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                         Order: 10,
                         AltOrder: 46,
                         LongDescription: "In the child area, go through the left door to get to this chest. You can also do the loop from the right side.",
@@ -4228,7 +4194,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 89, y: 199, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                         Order: 52,
                         AltOrder: 51,
                         IsPostWalkCheck: true,
@@ -4242,6 +4207,7 @@ let MQDungeons = {
                 }
             },
             backOfChildBridgeRoom: {
+                UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in Child Gibdos Area": {
@@ -4251,7 +4217,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 151, y: 76, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                         Order: 7,
                         AltOrder: 47,
                         LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. The pots are by the gibdos."
@@ -4263,7 +4228,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 86, y: 19, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                         Order: 8,
                         AltOrder: 48,
                         LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. In the next room, kill the Stalfos - this will lower the fire so you can get the pots (one contains a fairy)."
@@ -4272,7 +4236,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 34, y: 94, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                         Order: 9,
                         AltOrder: 49,
                         LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. In the next room, kill the Stalfos and continue on. In this room, pull back the gravestone and hit the switch to lower the bridge. Now kill all the enemies to spawn the chest - you'll need Din's Fire to deal with the Anubis.",
@@ -5012,6 +4975,10 @@ let MQDungeons = {
         IsMasterQuest: true,
         Floors: ["F1", "B1"],
         StartingFloorIndex: 0,
+        UseChildAge: function() {
+            return !Settings.GlitchesToAllow.weirdShot && 
+                !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
+        },
         Regions: {
             main: {
                 Exits: {
@@ -5028,9 +4995,6 @@ let MQDungeons = {
                         Regions: ["afterFirstCrawlSpace"],
                         MapInfo: { x: 73, y: 137, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() {
-                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
-                        },
                         Order: 2,
                         LongDescription: "This is the door on the west side of the main room.",
                         KeyRequirement: function(age) {
@@ -5043,9 +5007,6 @@ let MQDungeons = {
                         Regions: ["afterFirstCrawlSpace"],
                         MapInfo: { x: 288, y: 123, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() {
-                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
-                        },
                         Order: 6,
                         LongDescription: "WALL MASTER WARNING:<br/>This is the locked door you find after the room with the floormasters.",
                         CustomRequirement: function(age) {
@@ -5088,9 +5049,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 183, y: 194, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() {
-                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
-                        },
                         Order: 1,
                         LongDescription: "In the main area, bomb the rubble to the left to get to these hearts.",
                         NeedsExplosives: true
@@ -5112,9 +5070,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 194, y: 127, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() {
-                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
-                        },
                         Order: 7,
                         LongDescription: "WALL MASTER WARNING:<br/>Navigate to the back of the main room and play Zelda's Lullaby at the triforce. This will open a bunch of gates. Proceed behind you to the center room with the chest.<br/><br/>Alternatively, you can bomb the rocks near the middle-west of the main room. Sidehop then jumpslash over the hole in the ground to get to the center area."
                     },
@@ -5122,9 +5077,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 159, y: 99, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() {
-                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
-                        },
                         Order: 8,
                         LongDescription: "WALL MASTER WARNING:<br/>Bomb some rocks near the southeast corner of the main room and press the switch to unbar a door. Alternatively, you can make your way to the center room and sidehop and jumpslash to get into this area.<br/><br/>Enter the door that was just unbarred. The skulltula is under the gravestone. Be careful of invisible enemies."
                     },
@@ -5135,9 +5087,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 221, y: 172, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() {
-                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
-                        },
                         Order: 9,
                         LongDescription: "WALL MASTER WARNING:<br/>Navigate to the back of the main room and play Zelda's Lullaby at the triforce. This will open a bunch of gates. Proceed behind you to the center room - the pots are on the right side of the room surrounded by cell walls.<br/><br/>Alternatively, you can bomb the rocks near the middle-west of the main room. Sidehop then jumpslash over the hole in the ground to get to the center area."
                     },
@@ -5148,9 +5097,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 231, y: 83, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() {
-                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
-                        },
                         Order: 10,
                         LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door. Enter it - the pots are marking the invisible path around the room.",
                         CustomRequirement: function(age) {
@@ -5161,9 +5107,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 216, y: 80, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() {
-                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
-                        },
                         Order: 11,
                         LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door. Enter it, and navigate counter-clockwise around the room to get to the item.",
                         CustomRequirement: function(age) {
@@ -5177,9 +5120,6 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "3 Hearts",
                         MapInfo: { x: 295, y: 147, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() {
-                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
-                        },
                         Order: 15,
                         LongDescription: "WALL MASTER WARNING:<br/>To get to the basement, you can fall down a hole in the center room (not the very center). Navigate to the northeastern path (the second from the right) to get to the hearts."
                     },
@@ -5187,9 +5127,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 51, y: 43, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() {
-                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
-                        },
                         Order: 16,
                         LongDescription: "WALL MASTER WARNING:<br/>To get to the basement, you can fall down a hole in the center room (not the very center). Navigate to the northwestern part of the basement to get to the skulltula. Watch out for invisible giant skulltulas on the way."
                     }
@@ -5202,9 +5139,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 317, y: 238, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() {
-                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
-                        },
                         Order: 12,
                         LongDescription: "Drain the water by hitting the switch in the back of the main room. Navigate back to the entrance and enter the crawl space leading to the Dead Hand room like normal. Kill him to spawn the chest.",
                         CustomRequirement: function(age) {
@@ -5219,9 +5153,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 333, y: 229, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() {
-                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
-                        },
                         Order: 13,
                         LongDescription: "In the Dead Hand room, bomb the back left rubble to reveal the item."
                     }
@@ -5246,9 +5177,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 18, y: 128, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() {
-                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
-                        },
                         Order: 3,
                         LongDescription: "Navigate to the left room in the main area. Unlock the door, then navigate to the back right section of the room. The skulltula is hiding in the corner behind a pillar."
                     },
@@ -5257,9 +5185,6 @@ let MQDungeons = {
                         MapInfo: { x: 56, y: 131, floor: "F1" },
                         MapImageName: "Recovery Heart",
                         Age: Age.EITHER,
-                        UseChildAge: function() {
-                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
-                        },
                         Order: 4,
                         LongDescription: "Navigate to the left room in the main area. Unlock the door, then light the torch of the front right coffin (or use the boomerang). The heart is inside (it's invisible).",
                         CustomRequirement: function(age) {
@@ -5273,9 +5198,6 @@ let MQDungeons = {
                         MapInfo: { x: 43, y: 142, floor: "F1" },
                         MapImageName: "Recovery Heart",
                         Age: Age.EITHER,
-                        UseChildAge: function() {
-                            return !Settings.GlitchesToAllow.weirdShot && !(Settings.RandomizerSettings.shuffleDungeonEntrances && Settings.GlitchesToAllow.botwAsAdultWithCucco);
-                        },
                         Order: 5,
                         LongDescription: "Navigate to the left room in the main area. Unlock the door, then light the torch of the middle left coffin (or use the boomerang). The heart is inside (it's invisible).",
                         CustomRequirement: function(age) {

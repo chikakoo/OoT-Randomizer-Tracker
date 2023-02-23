@@ -2034,7 +2034,6 @@ let OwExits = {
             MapInfo: { x: 242, y: 248, floor: "B2" },
             Age: Age.EITHER,
             Order: 100,
-            UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
             LongDescription: "You get here after stunning the deku scrubs in this order (left to right): 2, 3, 1 (1, 3, 2  in MQ)."
         }
     },

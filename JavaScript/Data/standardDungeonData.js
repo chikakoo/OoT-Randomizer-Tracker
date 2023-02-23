@@ -7,6 +7,7 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: [ "F3", "F2", "B1", "B2" ],
         StartingFloorIndex: 1,
+        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canBurnBasementWeb: function(age) {
             let canShootWebThroughTorch = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
             return canShootWebThroughTorch || Data.canUseFireItem(age) || Data.canUseDekuStick(age);
@@ -42,7 +43,6 @@ let StandardDungeons = {
                         MapInfo: { x: 245, y: 28, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 1,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "Climb up the vines on the first floor. Jump to the small platform to your left. The item is on the end of that platform; you have to jump off for it.",
                     },
                     "Map Chest": {
@@ -50,7 +50,6 @@ let StandardDungeons = {
                         MapInfo: { x: 282, y: 82, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 2,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "This chest is located by the vines with the skullwalltulas on the second floor."
                     },
                     "Compass Chest": {
@@ -58,7 +57,6 @@ let StandardDungeons = {
                         MapInfo: { x: 16, y: 147, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 5,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "Make your way to the top floor. Go around the room until you find the door. Hit the switch and jump on the platforms to the opposite side of the room for this chest.",
                     },
                     "Compass Side Room Chest": {
@@ -66,7 +64,6 @@ let StandardDungeons = {
                         MapInfo: { x: 115, y: 199, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 6,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "Make your way to the top floor. Go around the room until you find the door. Hit the switch and jump on the platforms to the left side room for this chest. You do not need to kill the giant skulltula if you jump far enough to the left.",
                     },
                     "Skulltula in Compass Room": {
@@ -74,7 +71,6 @@ let StandardDungeons = {
                         MapInfo: { x: 115, y: 207, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 7,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "Make your way to the top floor. Go around the room until you find the door. Hit the switch and jump on the platforms to the left side room for this skulltula. You do not need to kill the giant skulltula if you jump far enough to the left."
                     },
                     "Heart in Upper Lobby": {
@@ -83,7 +79,6 @@ let StandardDungeons = {
                         MapInfo: { x: 291, y: 152, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 8,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "This item can be seen on the top floor, floating close to the path left of the vines you club up. Lined up with the wall, jump from the middle of the ledge, holding neutral to get this item.",
                         CustomRequirement: function(age) {
                             return Data.hasDamagingItem(age) || Items.DEKU_NUT.playerHas;
@@ -100,7 +95,6 @@ let StandardDungeons = {
                         MapInfo: { x: 111, y: 246, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 3,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "Enter the second floor door. Use your shield to reflect the scrub's nut back at him. The chest is on the other side in the next room."
                     },
                     "Slingshot Room Side Chest": {
@@ -108,7 +102,6 @@ let StandardDungeons = {
                         MapInfo: { x: 157, y: 273, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 4,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "This chest is located up the vines on the platform the slingshot chest is on."
                     }
                 }
@@ -136,7 +129,6 @@ let StandardDungeons = {
                         MapInfo: { x: 343, y: 81, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 9,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "From the top floor, either kill or stun one one of the giant skulltulas. Jump toward the center of the room and immediately let go of the joystick. You should fall to the basement. If you can use Din's Fire, you can use that instead. The chest is on the platform to the left of the vines."
                     },
                     "Skulltula on Basement Gate": {
@@ -144,7 +136,6 @@ let StandardDungeons = {
                         MapInfo: { x: 297, y: 51, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 10,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "This skulltula is in the in the basement you enter when you go in the first pit. If you face the vines, it's the one on the wall to the left."
                     },
                     "Skulltula on Basement Vines": {
@@ -152,7 +143,6 @@ let StandardDungeons = {
                         MapInfo: { x: 348, y: 104, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 11,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "This skulltula is the one on the vines in the first basement floor. A well-angled jumpslash from a deku stick can hit it. You can also use the slingshot, boomerang, or a well-timed bomb.",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) { return true; }
@@ -177,7 +167,6 @@ let StandardDungeons = {
                         Order: 12,
                         IsAtShortDistance: true,
                         BlockedByMudWall: true,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "If you make your way around the basement, you'll eventually find a circular room where gohma babies drop from the ceiling. One of the side rooms has a bombable wall. Bomb it, then enter the next room. The skulltula is high up on the wall to your left."
                     }
                 }
@@ -204,7 +193,6 @@ let StandardDungeons = {
                         MapInfo: { x: 263, y: 108, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 12.1,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "The web on the basement floor. Use sticks, a fire item, or a bow shot from atop the chest through the torch by the vines in the lower area.",
                         CustomRequirement: function(age) {
                             return MapLocations["Deku Tree"]._canBurnBasementWeb(age);
@@ -232,7 +220,6 @@ let StandardDungeons = {
                         MapInfo: { x: 246, y: 105, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 13,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances },
                         LongDescription: "These hearts are in the water of the lower basement, two on one side, one on the other."
                     },
                     "Open Boss Door": {
@@ -246,7 +233,6 @@ let StandardDungeons = {
                         RequiredAdultItems: [Equipment.HYLIAN_SHIELD],
                         Age: Age.EITHER,
                         Order: 13.1,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "Mark this after stunning the scrubs in the 2, 3, 1 order.",
                     }
                 }
@@ -753,6 +739,7 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: ["F2", "F1", "B1"],
         StartingFloorIndex: 1,
+        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         Regions: {
             main: {
                 Exits: {
@@ -790,7 +777,6 @@ let StandardDungeons = {
                         MapInfo: { x: 164, y: 177, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 1,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "After the first room, break the small crate on the right for this item. The left one drops nothing.",
                     },
                     "Scrub Behind Octorok Water": {
@@ -798,7 +784,6 @@ let StandardDungeons = {
                         MapInfo: {x: 117, y: 229, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 2,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "In the room with the rising platform (the second room of the dungeon), fall down into the water. Dive down and swim into the adjacent room - it's straight ahead from the door. There's a scrub on the other side."
                     },
                     "4 Pots in Room by Vines": {
@@ -808,7 +793,6 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 32, y: 188, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 3,
                         LongDescription: "Fall down one of the holes to get to the main room on the bottom. Enter the door by the vines back up. Either stun the jello with your boomerang to cross, or use hover boots. The pots are on the other side - one is always a fairy.",
                         RequiredChildItems: [Items.BOOMERANG],
@@ -819,7 +803,6 @@ let StandardDungeons = {
                         MapInfo: {x: 156, y: 44, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 4,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "In the room below the one with the holes, there are two skulltulas on the wall. You can reach them from the bottom part with the boomerang - you may have to aim a bit into the cliff, though. Otherwise, you can wait until you kill all the Parasitic Tentacles and drop down the corresponding hole to get an easier angle.",
                         IsAtShortDistance: true
                     },
@@ -828,7 +811,6 @@ let StandardDungeons = {
                         MapInfo: {x: 176, y: 35, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 5,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "In the room below the one with the holes, there are two skulltulas on the wall. You can reach them from the bottom part with the boomerang - you may have to aim a bit into the cliff, though. Otherwise, you can wait until you kill all the Parasitic Tentacles and drop down the corresponding hole to get an easier angle.",
                         IsAtShortDistance: true
                     },
@@ -837,7 +819,6 @@ let StandardDungeons = {
                         MapInfo: {x: 284, y: 153, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 6,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "In the room with the water and the switch (the first one you usually take Ruto into), there's a skulltula hanging out on the vines. Take it out, then raise the water to collect its token. Note that you can reach it with a jumpslash if you jump off the cliff then jumpslash when you're a bit closer.",
                     },
                     "2 Pots Above Vines": {
@@ -847,7 +828,6 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 258, y: 152, floor: "B1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 7,
                         LongDescription: "These pots are above the vines in the room with the water and the switch (the first one you usually take Ruto into). One of the pots there will always contain a fairy."
                     },
@@ -856,7 +836,6 @@ let StandardDungeons = {
                         MapInfo: { x: 237, y: 58, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 8,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "Bring Ruto back up to the first floor. Take her through the room with holes into the next room. Now, hug the right wall all the way to a switch - jump on it with Ruto in your hands. Enter the room. Kill all the stingers to spawn the chest. They can be hurt with explosions, boomerang, slingshot, or jump slashes from a stick or sword.",
                         CustomRequirement: function(age) {
                             return Data.canUseBoomerang(age) || Items.FAIRY_SLINGSHOT.playerHas || Data.hasSwordWeapon(age) || Data.hasExplosives();
@@ -866,7 +845,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 99, y: 57, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         Order: 9,
                         LongDescription: "Bring Ruto back up to the first floor. Take her through the room with holes into the next room. Hug the left wall until you find a switch. Leave Ruto on it and enter. Kill the Parasitic Tentacle with your boomerang to spawn the chest.",
                         RequiredItems: [Items.BOOMERANG]
@@ -875,7 +854,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 147, y: 17, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         Order: 10,
                         LongDescription: "After killing the Parasitic Tentacle to spawn the Map Chest (see that section), exit the room. Now hug the left wall to the next nearby door. Kill the shaboms within the time limit to spawn this chest. Note that Deku Nuts are a really fast way to take care of this room.",
                         RequiredItems: [Items.BOOMERANG]
@@ -895,7 +874,7 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 101, y: 32, floor: "F2" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances || !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         Order: 11,
                         LongDescription: "After defeating all the tentacles, go defeat Big Octo. Ride up the elevator - the pots are in this room on the back wall. One of them always contains a fairy."
                     }
@@ -915,7 +894,6 @@ let StandardDungeons = {
                         MapInfo: { x: 255, y: 194, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 12,
-                        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         LongDescription: "In the room before the boss room (the one that's slightly green and has a bunch of biris), there's a skulltula on the vines leading up the wall to the door switch.<br/><br/>Note that adult can get here immediately by using the hover boots."
                     }
                 }
@@ -3877,6 +3855,7 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             childAfterStalfos: {
+                UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                 Exits: {
                     childGrateRoom: {}
                 },
@@ -3885,7 +3864,6 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 39, y: 81, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                         Order: 3,
                         AltOrder: 39,
                         LongDescription: "Enter the child-only crawlspace. Kill all the enemies in the first room to unlock the doors - BEWARE OF FIRE KEESE! Enter the left room. The goal in this room is to hit the switch to lower the bridge to get the chest on the other side. There are a few ways to do this. The easiest way is to simply use the boomerang to go around the bridge blocking the switch. If you have the slingshot, you can inch up to the ledge closest to the door and make a precise shot - be sure to go quick if you don't have the means to kill the stalfos.<br/><br/>To use a bombchu, line up with the back wall and face the switch. Take out the chu then drop it after the first flash (like 1/2 a second).<br/><br/>Note that the flying pot you want to hit you is the one on the right; the left one contains nothing."
@@ -3894,7 +3872,6 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 31, y: 81, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                         Order: 4,
                         AltOrder: 40,
                         LongDescription: "Enter the child-only crawlspace. Kill all the enemies in the first room to unlock the doors - BEWARE OF FIRE KEESE! Enter the left room. The goal in this room is to hit the switch to lower the bridge to get the chest on the other side. There are a few ways to do this. The easiest way is to simply use the boomerang to go around the bridge blocking the switch. If you have the slingshot, you can inch up to the ledge closest to the door and make a precise shot - be sure to go quick if you don't have the means to kill the stalfos."
@@ -3903,7 +3880,6 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 74, y: 47, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                         Order: 5,
                         AltOrder: 41,
                         LongDescription: "Enter the room after the Stalfos with the bridge. The pot is the one right in front of you - the others are empty."
@@ -3911,6 +3887,7 @@ let StandardDungeons = {
                 }
             },
             childGrateRoom: {
+                UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                 Exits: {
                     childSkulltulaInGrateRoom: {
                         CustomRequirement: function(age) {
@@ -3927,7 +3904,6 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 151, y: 75, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                         Order: 6,
                         AltOrder: 42,
                         LongDescription: "WALL MASTER WARNING:<br/>Make your way around counter-clockwise around the child-only areas of the temple. In the room with the Anubis, either Din's fire him, or hit the switch then quickly navigate to the side directly opposite the fire so that it dies on it. In the room after that - collect the silver rupees to lower the bridge. Now you can use a Deku Stick (or Din's fire) to light the torches on the other side to spawn the chest. Note that you also could have used Din's fire on them earlier to avoid collecting the silver rupees.",
@@ -3938,13 +3914,13 @@ let StandardDungeons = {
                 }
             },
             childSkulltulaInGrateRoom: {
+                UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Grate Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 151, y: 90, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                         Order: 7,
                         AltOrder: 43,
                         LongDescription: "WALL MASTER WARNING:<br/>After killing all the enemies in the first child-only room, enter the right room. There's a skulltula on the grate - kill it and collect it with your Boomerang. If you don't have one, navigate around the rooms counter-clockwise. Collect the silver rupees to lower the bridge. Kill it with bombs, a bombchu (it can slide along the pit at the bottom), Din's Fire, a stick jumpslash from the other side, or a slingshot. You can actually climb the side of the grate that the token is on with a well-angled jump to collect it without a Boomerang."
