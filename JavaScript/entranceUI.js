@@ -481,6 +481,11 @@ let EntranceUI = {
 		
 		if (age === Age.ADULT) {
 			canGetAsAge = !button.isChildOnly || !button.isChildOnly();
+
+			// Adult cannot equip the mask of truth
+			if (canGetAsAge && button.itemGroup === ItemGroups.GOSSIP_STONE) {
+				canGetAsAge = Settings.RandomizerSettings.gossipStoneSetting !== GossipStoneSettings.MASK_OF_TRUTH;
+			}
 		} else if (age === Age.CHILD) {
 			canGetAsAge = !button.isAdultOnly || !button.isAdultOnly();
 		}

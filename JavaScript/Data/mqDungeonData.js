@@ -441,7 +441,6 @@ let MQDungeons = {
                     "Gossip Stone in Main Room": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 94, y: 198, floor: "F1" },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "This stone is behind the mud wall in the western area of the main room.",

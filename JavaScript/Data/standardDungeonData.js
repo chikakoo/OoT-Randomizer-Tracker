@@ -318,7 +318,6 @@ let StandardDungeons = {
                     "Gossip Stone in Main Room": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 173, y: 179, floor: "F1" },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "This stone is behind the breakable wall in the northeast corner of the main room.",

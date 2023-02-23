@@ -94,7 +94,6 @@ let MapLocations = {
                     },
                     "Gossip Stone by Lost Woods": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 102, y: 37 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is by the lost woods entrance at the top area of the forest.",
@@ -182,7 +181,6 @@ let MapLocations = {
                 ItemLocations: {
                     "Gossip Stone Left of Deku Tree": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 252, y: 13 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is on the left side of the deku tree.",
@@ -190,7 +188,6 @@ let MapLocations = {
                     },
                     "Gossip Stone Right of Deku Tree": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 303, y: 94 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is on the right side of the deku tree. You can get back here by climbing on one of the roots on the left side and navigating around to the other side.",
@@ -283,7 +280,6 @@ let MapLocations = {
                     },
                     "Gossip Stone by Bridge Scrub": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 80, y: 281 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is by the business scrub by the bridge.",
@@ -563,7 +559,6 @@ let MapLocations = {
                     "Gossip Stone by Forest Temple": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 176, y: 53 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         Region: "afterGate",
                         LongDescription: "This stone is in the southwest corner of the area the forest temple is in."
@@ -571,7 +566,6 @@ let MapLocations = {
                     "East Gossip Stone on Maze": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 207, y: 228 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         Region: "afterGate",
                         LongDescription: "This stone is on top of the maze. It's the one that's more to the east."
@@ -579,7 +573,6 @@ let MapLocations = {
                     "West Gossip Stone on Maze": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 149, y: 176 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         Region: "afterGate",
                         LongDescription: "This stone is on top of the maze. It's the one that's more to the west."
@@ -911,28 +904,24 @@ let MapLocations = {
                     "Right Gossip Stone": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 102, y: 242 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This is the stone that's all the way to the right."
                     },
                     "Center Right Gossip Stone": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 102, y: 219 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This is the stone that's one to the left of the rightmost one."
                     },
                     "Center Left Gossip Stone": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 102, y: 197 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This is the stone that's one to the right of the leftmost one."
                     },
                     "Left Gossip Stone": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 102, y: 172 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This is the stone that's all the way to the left."
                     }
@@ -1374,7 +1363,6 @@ let MapLocations = {
                 ItemLocations: {
                     "Gossip Stone at Top Area": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 341, y: 125 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is near the Nocturne of Shadow warp pad."
@@ -1745,7 +1733,6 @@ let MapLocations = {
                     },
                     "Gossip Stone on Climbable Wall Ledge": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 225, y: 52 },
                         Age: Age.EITHER,
                         LongDescription: "On your way up the mountain, this gossip stone is on one of the ledges you pass by when you climb up the wall."
@@ -1803,7 +1790,6 @@ let MapLocations = {
                     },
                     "Gossip Stone Behind Bombable Wall": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 284, y: 248 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is behind a bombable wall across a wooden bridge in the top area of the crater.",
@@ -2077,7 +2063,6 @@ let MapLocations = {
                     },
                     "Gossip Stone in Maze": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 82, y: 26 },
                         Age: Age.EITHER,
                         LongDescription: "Make your way to the topmost northwest corner of the city. Bomb, hammer, or pick up (only silvers) the rocks to get to the back right corner of the maze for this stone.",
@@ -2088,7 +2073,6 @@ let MapLocations = {
                     },
                     "Gossip Stone By Medigoron": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 115, y: 275 },
                         Age: Age.EITHER,
                         LongDescription: "In the southern area of the middle floor, blow up the walls that has bombflowers near it. Eventually, you'll make it to Medigoron, where the stone is.",
@@ -2399,14 +2383,12 @@ let MapLocations = {
                     "Gossip Stone on Cliff": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 155, y: 176 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "Go up the ladder closest to Hyrule Field. The stone is across the tiny bridge."
                     },
                     "Gossip Stone by Waterfall": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 300, y: 145 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This stone is on one of the platforms in the water by the Zora's Domain entrance."
                     },
@@ -2532,7 +2514,6 @@ let MapLocations = {
                     "Gossip Stone by King": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 239, y: 63 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This stone is in the water in front of the king."
                     },
@@ -2665,14 +2646,12 @@ let MapLocations = {
                     "Gossip Stone Left of Jabu Platform": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 122, y: 51 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This stone is to the left of the Jabu Jabu platform."
                     },
                     "Gossip Stone by Fairy Fountain": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 283, y: 232 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This stone is on the land near the fairy fountain entrance."
                     },
@@ -2839,21 +2818,18 @@ let MapLocations = {
                     "Gossip Stone by Lab and Waterfall": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 74, y: 74 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This stone is across the little bridge near the lab."
                     },
                     "Southwest Gossip Stone": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 100, y: 237 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This stone is on the wall in the southwest corner of the lake."
                     },
                     "Southeast Gossip Stone": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 289, y: 231 },
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         Age: Age.EITHER,
                         LongDescription: "This stone is on the wall in the southeast corner of the lake."
                     },
@@ -3078,7 +3054,6 @@ let MapLocations = {
                     },
                     "Gossip Stone by Waterfall": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 185, y: 146 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is in the chasm near the waterfall. It's on the same platform as the cow and soft soil patch."
@@ -3778,7 +3753,6 @@ let MapLocations = {
                     },
                     "Gossip Stone by Spirit Temple": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
-                        UseChildAge: function() { return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH; },
                         MapInfo: { x: 54, y: 194 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is on the left side of the Spirit Temple."

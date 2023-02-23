@@ -801,6 +801,13 @@ Data = {
         // We can't really check if an itemLocation is forcing EITHER! That doesn't make sense.
         if (itemLocation.Age !== Age.EITHER || age === Age.EITHER) { return false; }
 
+        // Gossip stones cannot be checked by adult if you must equip the mask of truth!
+        if (age === Age.CHILD &&
+            itemLocation.ItemGroup === ItemGroups.GOSSIP_STONE && 
+            Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.MASK_OF_TRUTH) {
+            return true;
+        }
+
         let isOwExit = this.usesOwExits(itemLocation);
         let mapName = isOwExit ? itemLocation.ExitMap : itemLocation.Map;
         let regionName = isOwExit ? itemLocation.ExitRegion : itemLocation.Region;
