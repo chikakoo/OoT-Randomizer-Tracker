@@ -610,11 +610,15 @@ let _setPlaceholderNotesText = function(itemLocation, moreInfoNotesDiv) {
 };
 
 /**
- * Toggles the item as obtained not not
+ * Toggles the item as obtained or not
+ * Reject OW_ENTRANCE items, as you can't obtain them!
  * @param itemLocation - the data for the item
  */
 let _toggleItemObtained = function(itemLocationDiv, itemLocation, event) {
 	if (event) { event.stopPropagation() };
+	if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
+		return;
+	}
 	
 	let playerHasItem = Data.toggleItemObtained(itemLocation);
 	removeCssClass(itemLocationDiv, "item-obtained");

@@ -152,7 +152,7 @@ let MapUI = {
 						addCssClass(itemLocationDiv, "item-icon-hover");
 						addCssClass(event.target, "item-icon-highlight");
 					}
-				}
+				};
 
 				iconDiv.onmouseout = function(event) {
 					let itemLocationDiv = document.getElementById(itemLocation.Name.trim());
@@ -160,7 +160,16 @@ let MapUI = {
 						removeCssClass(itemLocationDiv, "item-icon-hover");
 						removeCssClass(event.target, "item-icon-highlight");
 					}
-				}
+				};
+
+				iconDiv.onclick = function(event) {
+					event.stopPropagation();
+
+					let itemLocationDiv = document.getElementById(itemLocation.Name.trim());
+					if (itemLocationDiv) {
+						_toggleItemObtained(itemLocationDiv, itemLocation);
+					}
+				};
 
 				let cannotGetEntranceItem = false;
 				let entranceGroup = Data.getEntranceGroup(itemLocation);
