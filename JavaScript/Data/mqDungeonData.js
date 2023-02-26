@@ -323,7 +323,7 @@ let MQDungeons = {
                         RequiredAdultItems: [Equipment.HYLIAN_SHIELD],
                         Age: Age.EITHER,
                         Order: 17.1,
-                        LongDescription: "Mark this after stunning the scrubs in the 1, 3, 2 order.",
+                        LongDescription: "Mark this after stunning the scrubs in the 3, 1, 2 order.",
                     }
                 }
             },
@@ -1177,14 +1177,14 @@ let MQDungeons = {
                         MapInfo: { x: 108, y: 251, floor: "F2" },
                         Age: Age.CHILD,
                         Order: 21,
-                        LongDescription: "After killing Big Octo, ride the elevator up, shoot the cow on the wall, and proceed through the door. The cow is on the ground in the room with the two electric sponges."
+                        LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. The cow is on the ground in the room with the two electric sponges."
                     },
                     "Chest After Big Octo": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 192, y: 188, floor: "F1" },
                         Age: Age.CHILD,
                         Order: 22,
-                        LongDescription: "After killing the Big Octo and riding the platform down, you gain access to this chest. Shoot the cow near where the platform landed if you don't see it."
+                        LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. In the next room, shoot the next cow on the wall to spawn some boxes. Take them across the jelly things to hold down the switch. Ride the platform down. Shoot the cow near where the platform landed to spawn the chest."
                     },
                     "Chest in Room Before Boss": {
                         ItemGroup: ItemGroups.CHEST,

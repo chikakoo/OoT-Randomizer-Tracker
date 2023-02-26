@@ -8,8 +8,8 @@ let MapUI = {
 	/**
 	 * The current scale for the map if you're moused over it, or if _freezeMap is on
 	 */
-	_scaleValue: 2,
-	_defaultZoomScaleValue: 2,
+	_scaleValue: 1,
+	_defaultZoomScaleValue: 1,
 	
 	/**
 	 * The default scale value for when the map loads
@@ -353,7 +353,7 @@ let MapUI = {
 		mapImageAndIcons.style["transform-origin"] = `${x} ${y}`;
 		addCssClass(iconDiv, "item-icon-highlight");
 		this._mapFrozen = true;
-		this._applyScaling(this._defaultZoomScaleValue);
+		this._applyScaling(2);
 	},
 	
 	/**
