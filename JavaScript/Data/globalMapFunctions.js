@@ -102,6 +102,10 @@ let MapTypes = {
  */
 let toggleDungeonMapType = function(mapName) {
 	let map = MapLocations[mapName];
+	if (map.MapGroup !== MapGroups.DUNGEONS) {
+		return;
+	}
+
 	if (map.IsMasterQuest) {
 		setDungeonTypeOfMap(mapName, MapTypes.STANDARD);
 	} else {
@@ -110,6 +114,7 @@ let toggleDungeonMapType = function(mapName) {
     SocketClient.syncDungeonType(mapName);
     purgeLocations(); // Make sure that boss entrances are appropriately purged!
 };
+
 /**
  * Lets you set a particular map to the given type based on the name
  */
