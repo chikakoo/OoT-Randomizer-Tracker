@@ -213,7 +213,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 266, y: 225, floor: "B1" },
                         Age: Age.EITHER,
-                        Order: 12,
+                        Order: 12.1,
                         LongDescription: "From the basement, head to the door to the right of the vines. You'll need to either use Din's Fire or run a lit Deku Stick into this room. Light the torches by the other door to gain access to the water room. The chest will be to your left."
                     },
                     "Chest via Song of Time Block": {
@@ -1028,7 +1028,7 @@ let MQDungeons = {
                         MapInfo: { x: 132, y: 229, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 9,
-                        LongDescription: "Drop down in the main elevator room. Dive underwater opposite the door to get to the hidden room. The rupees are in the water. You'll need iron boots or silver/gold scales for two of them."
+                        LongDescription: "Drop down in the main elevator room. Dive underwater opposite the door to get to the hidden room. The rupees are in the water. You'll need iron boots, boomerang, or silver/gold scales for two of them."
                     },
                     "East Chest in Big Room": {
                         ItemGroup: ItemGroups.CHEST,

@@ -1857,17 +1857,17 @@ GrottoGroups = {
 			"Green Rupee 2": {
 				icon: "Green Rupee Silver Scale",
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Requires iron boots, or silver scale+.",
+				description: "Requires iron boots, boomerang, or silver scale+.",
 				canGet: function(age) {
-					return Data.canSinkSilverScaleDepth(age);
+					return Data.canSinkSilverScaleDepth(age) || Data.canUseBoomerang(age);
 				}
 			},
 			"Green Rupee 3": {
 				icon: "Green Rupee Gold Scale",
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Requires iron boots, or gold scale.",
+				description: "Requires iron boots, boomerang, or gold scale.",
 				canGet: function(age) {
-					return Data.canSinkGoldenScaleDepth(age);
+					return Data.canSinkGoldenScaleDepth(age) || Data.canUseBoomerang(age);
 				}
 			}
 		}
