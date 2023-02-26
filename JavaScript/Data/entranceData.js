@@ -1987,7 +1987,7 @@ GrottoGroups = {
 		}
 	},
 	"Expensive Rupee Circle": {
-		tooltip: "A circle of six green rupees surrounding a red rupee.",
+		tooltip: "A circle of six blue rupees surrounding a red rupee.",
 		buttons: {
 			"Red Rupee": {
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
