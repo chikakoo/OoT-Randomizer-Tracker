@@ -62,7 +62,7 @@ let Songs = {
 	SUNS_SONG: { name: "Sun's Song", divGroup: 1 },
 	SONG_OF_STORMS: { name: "Song of Storms", divGroup: 1 },
 	SONG_OF_TIME: { name: "Song of Time", divGroup: 1 },
-	SCARECROWS_SONG: {name: "Scarecrow's Song", divGroup: 1 },
+	SCARECROWS_SONG: {name: "Scarecrow's Song", divGroup: 3 },
 	
 	MINUET_OF_FOREST: { name: "Minuet of Forest", divGroup: 2 },
 	BOLERO_OF_FIRE: { name: "Bolero of Fire", divGroup: 2 },

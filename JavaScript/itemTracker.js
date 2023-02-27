@@ -9,8 +9,9 @@ let setUpItemTracker = function() {
 
 	_createUIFromItemObject("Items", Items, document.getElementById("itemProgress"));
 	_createUIFromItemObject("Equipment", Equipment, document.getElementById("equipmentProgress"));
-	_createUIFromItemObject("Songs", Songs, document.getElementById("warpSongProgress"), 2);
 	_createUIFromItemObject("Songs", Songs, document.getElementById("normalSongProgress"), 1);
+	_createUIFromItemObject("Songs", Songs, document.getElementById("warpSongProgress"), 2);
+	_createUIFromItemObject("Songs", Songs, document.getElementById("scarecrowsSongProgress"), 3);
 	_createUIFromItemObject("Medallions", Medallions, document.getElementById("medallionProgress"));
 	
 	_setUpSmallKeyUI();
@@ -24,7 +25,7 @@ let setUpItemTracker = function() {
  */
 let _createUIFromItemObject = function(itemObjString, itemObject, divItems, divGroup) {
 	divItems.innerHTML = "";
-	Object.keys(itemObject).forEach(function(key, index) {
+	Object.keys(itemObject).forEach(function(key) {
 		let item = itemObject[key];
 		if (divGroup && item.divGroup !== divGroup) { return; }
 
@@ -33,6 +34,10 @@ let _createUIFromItemObject = function(itemObjString, itemObject, divItems, divG
 			divItem.id = key;
 			divItem.style.backgroundImage = getItemImagePath(item);
 
+			if (itemObjString === "Songs") { // Songs need their own CSS class
+				addCssClass(divItem, "item-song");
+			} 
+			
 			if (key === "SKULLTULA_TOKENS") { // Skulltula tokens have different behavior
 				let divTokenCount = dce("div", "countable-item");
 				divTokenCount.innerText = item.count;
@@ -178,6 +183,11 @@ let onItemMouseOver = function(item) {
 			displayText = `${itemName}${upgradeText}`;
 		}
 	}
+
+	// Add the boss key label
+	if (item.totalKeys) {
+		displayText = `${displayText} Boss Key`;
+	}
 	
 	divItemLabel.innerText = displayText;
 };
@@ -246,7 +256,6 @@ let getUpgradeIndex = function(item) {
  */
 let getItemImagePath = function(item) {
 	if (item.totalKeys) { // Set up for boss keys
-		let namePrefix = item.playerHas ? "" : " X";
 		return `url("Images/Boss Key.png")`;
 	}
 	
@@ -255,7 +264,6 @@ let getItemImagePath = function(item) {
 		let itemUpgrade = getUpgradeName(item);
 		return `url("Images/${itemName} ${itemUpgrade}.png")`;
 	} else {
-		let namePrefix = item.playerHas ? "" : " X";
 		return `url("Images/${itemName}.png")`;
 	}
 };

@@ -277,8 +277,9 @@ body::-webkit-scrollbar-thumb {
 	height: 20px;
 }
 
-#equipmentProgress, #itemProgress, #normalSongProgress, 
-#warpSongProgress, #medallionProgress, #smallKeyProgress, #bossKeyProgress {
+#equipmentProgress, #itemProgress, 
+#normalSongProgress, #warpSongProgress, #scarecrowsSongProgress,
+#medallionProgress, #smallKeyProgress, #bossKeyProgress {
 	display: flex;
 	flex-wrap: wrap;
 	position: absolute;
@@ -296,16 +297,22 @@ body::-webkit-scrollbar-thumb {
 	left: 162px;
 }
 
-#warpSongProgress {
-	width: 180px;
+#normalSongProgress {
+	width: 180px;	
 	top: 165px;
 	left: 14px;
 }
 
-#normalSongProgress {
-	width: 60px;	
+#warpSongProgress {
+	width: 180px;
+	top: 180px;
+	left: 14px;
+}
+
+#scarecrowsSongProgress {
+	width: 30px;
 	top: 165px;
-	left: 289px;
+	left: 194px;
 }
 
 #medallionProgress {
@@ -316,14 +323,22 @@ body::-webkit-scrollbar-thumb {
 
 #smallKeyProgress {
 	width: 270px;
-	top: 255px;
+	top: 225px;
 	left: 14px;
 }
 
 #bossKeyProgress {
-	width: 180px;
+	justify-content: space-between;
+	pointer-events: none;
+	width: 165px;
 	top: 225px;
 	left: 14px;
+}
+
+#bossKeyProgress > .item {
+	pointer-events: all;
+	height: 15px;
+	width: 15px;
 }
 
 /* Item tracker individual components */
@@ -333,6 +348,11 @@ body::-webkit-scrollbar-thumb {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+}
+
+#normalSongProgress > .item-song, 
+#warpSongProgress > .item-song {
+	height: 15px;
 }
 
 #songProgress .item {
