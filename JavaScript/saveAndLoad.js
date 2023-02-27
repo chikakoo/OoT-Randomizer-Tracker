@@ -291,7 +291,7 @@ let SaveAndLoad = {
         // Load the entrance shuffle data
         this._loadEntranceShuffleData(loadedObject.EntranceShuffleData);
 
-        setUpItemTracker();
+        ItemTracker.setUp();
         purgeLocations();
         
         refreshAll();

@@ -168,7 +168,7 @@ let SettingsPage = {
 
 		let inputElement = document.getElementsByName(settingName)[0];
 		Settings.RandomizerSettings[settingName] = inputElement.checked;
-		setUpItemTracker();
+		ItemTracker.setUp();
 		refreshAll();
 	},
 
@@ -186,7 +186,7 @@ let SettingsPage = {
 
 		let inputElement = document.getElementsByName(settingName)[0];
 		Settings.GlitchesToAllow[settingName] = inputElement.checked;
-		setUpItemTracker();
+		ItemTracker.setUp();
 		refreshAll();
     },
 
@@ -219,7 +219,7 @@ let SettingsPage = {
 
 		let inputElement = document.getElementsByName(settingName)[0];
 		Settings.TrackerSettings[settingName] = inputElement.checked;
-		setUpItemTracker();
+		ItemTracker.setUp();
 		refreshAll();
 	},
     
@@ -234,7 +234,7 @@ let SettingsPage = {
 
         let value = document.querySelector(`input[name="${settingName}"]:checked`).value;
         Settings.RandomizerSettings[settingName] = isNaN(Number(value)) ? value : Number(value);
-        setUpItemTracker();
+        ItemTracker.setUp();
         refreshAll();
     },
     

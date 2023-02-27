@@ -106,7 +106,7 @@ SocketClient = {
 			
 			console.log(consoleOutput);
 			
-			setUpItemTracker(); // For the UI of the item tracker itself
+			ItemTracker.setUp(); // For the UI of the item tracker itself
 			refreshAll();
 		});
 		

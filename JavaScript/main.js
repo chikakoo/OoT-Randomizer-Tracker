@@ -23,7 +23,7 @@ let onPageLoad = function() {
 	RegionWalker.walk();
 	
 	LocationSidebar.refreshLocationList();
-	setUpItemTracker();
+	ItemTracker.setUp();
 	displayLocation("Kokiri Forest");
 };
 
