@@ -10,6 +10,8 @@ let ItemTracker = {
 
 		this._createUIFromItemObject("Items", Items, document.getElementById("itemProgress"));
 		this._createUIFromItemObject("Equipment", Equipment, document.getElementById("equipmentProgress"));
+		this._createUIFromItemObject("ChildTradeItems", ChildTradeItems, document.getElementById("childTradeItemProgress"));
+		this._createUIFromItemObject("AdultTradeItems", AdultTradeItems, document.getElementById("adultTradeItemProgress"));
 		this._createUIFromItemObject("Songs", Songs, document.getElementById("normalSongProgress"), 1);
 		this._createUIFromItemObject("Songs", Songs, document.getElementById("warpSongProgress"), 2);
 		this._createUIFromItemObject("Songs", Songs, document.getElementById("scarecrowsSongProgress"), 3);
@@ -36,10 +38,6 @@ let ItemTracker = {
 			if (!item.noBossKey) { // Skip all key items that are marked to have no boss key
 				divItem.id = key;
 				divItem.style.backgroundImage = _this.getItemImagePath(item);
-
-				if (itemObjString === "Songs") { // Songs need their own CSS class
-					addCssClass(divItem, "item-song");
-				} 
 				
 				if (key === "SKULLTULA_TOKENS") { // Skulltula tokens have different behavior
 					let divTokenCount = dce("div", "countable-item");
@@ -394,6 +392,6 @@ let ItemTracker = {
 	 */
 	onSmallKeyMouseOver: function(keyObject) {
 		let divItemLabel = document.getElementById("itemLabel");
-		divItemLabel.innerText = keyObject.name;
+		divItemLabel.innerText = `${keyObject.name} Small Key`;
 	}
 };

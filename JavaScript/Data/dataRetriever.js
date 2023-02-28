@@ -1268,7 +1268,7 @@ Data = {
 			case GossipStoneSettings.STONE_OF_AGONY:
 				return Equipment.STONE_OF_AGONY.playerHas;
 			case GossipStoneSettings.MASK_OF_TRUTH:
-				return age === Age.CHILD && Items.MASK_SLOT.currentUpgrade >= 8;
+				return age === Age.CHILD && ChildTradeItems.MASK_OF_TRUTH.playerHas;
 			default:
 				return true;
 		}

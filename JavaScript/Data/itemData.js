@@ -43,13 +43,41 @@ let Items = {
 		name: "Ruto's Letter",
 		upgrades: [ "Nothing", "Ruto's Letter", "Empty Bottle" ],
 		useUpgradeAsDisplay: true
-	},
-	CLAIM_CHECK: { name: "Claim Check"},
-	MASK_SLOT: { 
-		name: "Mask Slot", 
-		upgrades: [ "Nothing", "Weird Egg", "Chicken", "Zelda's Letter", "Keaton Mask", "Skull Mask", "Spooky Mask", "Bunny Hood", "Mask of Truth" ],
+	}
+};
+
+/**
+ * A list of the child trade items
+ */
+let ChildTradeItems = {
+	WEIRD_EGG: { 
+		name: "Weird Egg", 
+		upgrades: [ "Nothing", "Weird Egg", "Chicken" ],
 		useUpgradeAsDisplay: true
 	},
+	ZELDAS_LETTER: { name: "Zelda's Letter" },
+	KEATON_MASK: { name: "Keaton Mask" },
+	SKULL_MASK: { name: "Skull Mask" },
+	SPOOKY_MASK: { name: "Spooky Mask" },
+	BUNNY_HOOD: { name: "Bunny Hood" },
+	MASK_OF_TRUTH: { name: "Mask of Truth" }
+};
+
+let AdultTradeItems = {
+	POCKET_EGG: { 
+		name: "Pocket Egg", 
+		upgrades: [ "Nothing", "Pocket Egg", "Pocket Cucco" ],
+		useUpgradeAsDisplay: true
+	},
+	COJIRO: { name: "Cojiro"},
+	ODD_MUSHROOM: { name: "Odd Mushroom"},
+	ODD_POTION: { name: "Odd Potion"},
+	POACHERS_SAW: { name: "Poacher's Saw" }, 
+	BROKEN_GORONS_SWORD: { name: "Broken Goron's Sword"},
+	PRESCRIPTION: { name: "Prescription"},
+	EYEBALL_FROG: { name: "Eyeball Frog"},
+	EYEDROPS: { name: "Eyedrops"},
+	CLAIM_CHECK: { name: "Claim Check"},
 };
 
 /**

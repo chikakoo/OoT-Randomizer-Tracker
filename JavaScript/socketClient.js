@@ -59,6 +59,18 @@ SocketClient = {
 					Items[itemKey].playerHas = item.playerHas;
 					Items[itemKey].currentUpgrade = item.currentUpgrade;
 					break;
+				case "ChildTradeItems":
+					consoleOutput += `; Upgrade: ${item.currentUpgrade}`;
+					
+					ChildTradeItems[itemKey].playerHas = item.playerHas;
+					ChildTradeItems[itemKey].currentUpgrade = item.currentUpgrade;
+					break;
+				case "AdultTradeItems":
+					consoleOutput += `; Upgrade: ${item.currentUpgrade}`;
+					
+					AdultTradeItems[itemKey].playerHas = item.playerHas;
+					AdultTradeItems[itemKey].currentUpgrade = item.currentUpgrade;
+					break;
 				case "Equipment":
 					consoleOutput += `; Upgrade: ${item.currentUpgrade}`;
 					
@@ -339,6 +351,8 @@ SocketClient = {
 	 */
 	_syncAllInventory: function() {
 		this._syncAllInventoryOfType("Items", Items);
+		this._syncAllInventoryOfType("ChildTradeItems", ChildTradeItems);
+		this._syncAllInventoryOfType("AdultTradeItems", AdultTradeItems);
 		this._syncAllInventoryOfType("Equipment", Equipment);
 		this._syncAllInventoryOfType("Songs", Songs);
 		this._syncAllInventoryOfType("Medallions", Medallions);

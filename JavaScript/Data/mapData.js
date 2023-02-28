@@ -274,7 +274,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 88, y: 172 },
                         Age: Age.CHILD,
-                        RequiredItems: [{ item: Items.MASK_SLOT, upgradeString: "5" }],
+                        RequiredItems: [ChildTradeItems.SKULL_MASK],
                         RequiredSongs: [Songs.SARIAS_SONG],
                         LongDescription: "First, play Saria's song to the Skull kid. Next, Talk to him while wearing the Skull Mask to sell it to him - this unlocks the Spooky Mask. Recommended to do this AFTER you get the forest stage item.",
                     },
@@ -547,7 +547,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         Region: "afterGate",
                         LongDescription: "After obtaining Zelda's Letter, make your way to the end of the maze to get this item.",
-                        RequiredItems: [{ item: Items.MASK_SLOT, upgradeString: "3" }]
+                        RequiredItems: [ChildTradeItems.ZELDAS_LETTER]
                     },
                     "Minuet of Forest": {
                         ItemGroup: ItemGroups.SONG,
@@ -654,7 +654,7 @@ let MapLocations = {
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 184, y: 145 },
                         Age: Age.CHILD,
-                        RequiredItems: [{ item: Items.MASK_SLOT, upgradeString: "7" }],
+                        RequiredItems: [ChildTradeItems.BUNNY_HOOD],
                         RequiredMedallions: [
                             Medallions.KOKIRIS_EMERALD,
                             Medallions.GORONS_RUBY,
@@ -976,14 +976,16 @@ let MapLocations = {
                         Age: Age.CHILD,
                         MapInfo: { x: 193, y: 38, floor: "HYR" },
                         LongDescription: "Wait for the Weird Egg to hatch, then wake up Talon. This unlocks a few things in Lon Lon Ranch.",
-                        RequiredItems: [Items.MASK_SLOT]
+                        RequiredItems: [ChildTradeItems.WEIRD_EGG]
                     },
                     "Zelda's Lullaby": {
+                        //TOOD: after the full trade shuffle, we can add the trick to use explosives to get this early
+                        // Also, there will be two checks here due to Zelda's letter being shuffled
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 167, y: 33, floor: "HYR" },
                         Age: Age.CHILD,
                         LongDescription: "After waking up Talon with the Chicken, push the crates down so that you can jump to the crawlspace. Sneak past the guards to meet Zelda to get her letter. After that, try to leave the area to receive this item from Impa.",
-                        RequiredItems: [Items.MASK_SLOT]
+                        RequiredItems: [ChildTradeItems.WEIRD_EGG]
                     },
                     "Gossip Stone by Vines": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -1113,14 +1115,14 @@ let MapLocations = {
                         },
                         MapInfo: { x: 107, y: 41 },
                         Age: Age.CHILD,
-                        RequiredItems: [{ item: Items.MASK_SLOT, upgradeString: "3" }],
+                        RequiredItems: [ChildTradeItems.ZELDAS_LETTER],
                         LongDescription: "Show the guard Zelda's Letter. This unlocks the mask trading sequence.",
                     },
                     "Sell Keaton Mask": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 123, y: 41 },
                         Age: Age.CHILD,
-                        RequiredItems: [{ item: Items.MASK_SLOT, upgradeString: "4" }],
+                        RequiredItems: [ChildTradeItems.KEATON_MASK],
                         LongDescription: "Talk to the guard while wearing the Keaton mask to sell it to him - this unlocks the Skull Mask.",
                     },
                     "Skulltula in Tree": {
@@ -1330,7 +1332,7 @@ let MapLocations = {
                         Time: function() { return Time.DAY; },
                         MapInfo: { x: 184, y: 145 },
                         Age: Age.CHILD,
-                        RequiredItems: [{ item: Items.MASK_SLOT, upgradeString: "6" }],
+                        RequiredItems: [ChildTradeItems.SPOOKY_MASK],
                         LongDescription: "Talk to the graveyard kid during the day while wearing the Spooky Mask to sell it to him - this unlocks the Bunny Hood.",
                     },
                     "*Plant Bean by Dampe's Grave": {
@@ -1718,7 +1720,7 @@ let MapLocations = {
                         MapInfo: { x: 238, y: 28 },
                         Age: Age.ADULT,
                         LongDescription: "When you have the Claim Check, head up to the top of Death Mountain. Give it to Biggoron for your item.",
-                        RequiredItems: [Items.CLAIM_CHECK],
+                        RequiredItems: [AdultTradeItems.CLAIM_CHECK],
                     },
                     "Red Rock on Upper Path": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -2495,7 +2497,7 @@ let MapLocations = {
                             }
 
                             return Data.hasBottle() || 
-                                Items.CLAIM_CHECK.playerHas || 
+                                Object.values(AdultTradeItems).some(item => item.playerHas) ||
                                 (Data.canEquipSwap(age) && Items.MAGIC_BEAN.playerHas) ||
                                 (Equipment.MAGIC.playerHas && Items.NAYRUS_LOVE.playerHas);
                         }

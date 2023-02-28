@@ -32,6 +32,8 @@ let SaveAndLoad = {
             RandomizedSpawnLocations: Data.randomizedSpawnLocations,
             Settings: Settings,
             Items: Items,
+            ChildTradeItems: ChildTradeItems,
+            AdultTradeItems: AdultTradeItems,
             Equipment: Equipment,
             Medallions: Medallions,
             Songs: Songs,
@@ -262,6 +264,8 @@ let SaveAndLoad = {
     _loadSaveFile(loadedObject) {
         if (loadedObject.Settings) { Settings = loadedObject.Settings; }
         if (loadedObject.Items) { this._loadItemObject(Items, loadedObject.Items); }
+        if (loadedObject.ChildTradeItems) { this._loadItemObject(ChildTradeItems, loadedObject.ChildTradeItems); }
+        if (loadedObject.AdultTradeItems) { this._loadItemObject(AdultTradeItems, loadedObject.AdultTradeItems); }
         if (loadedObject.Equipment) { this._loadItemObject(Equipment, loadedObject.Equipment); }
         if (loadedObject.Medallions) { this._loadItemObject(Medallions, loadedObject.Medallions); }
         if (loadedObject.Songs) { this._loadItemObject(Songs, loadedObject.Songs); }

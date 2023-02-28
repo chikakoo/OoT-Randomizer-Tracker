@@ -218,7 +218,8 @@ InteriorGroups = {
 				tag: "keaton",
 				description: "After showing the Kakariko Village guard Zelda's Letter, head to the mask shop to borrow this mask.",
 				canGet: function(age) {
-					return (Settings.RandomizerSettings.openKakariko && Items.MASK_SLOT.currentUpgrade >= 3) || Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter");
+					// TODO: with the update, this will change to whether you's actually visited Zelda, not whether you have the letter!
+					return (Settings.RandomizerSettings.openKakariko && ChildTradeItems.ZELDAS_LETTER.playerHas) || Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter");
 				}
 			},
 			"Borrow Skull Mask": {
@@ -1115,7 +1116,7 @@ GrottoGroups = {
 				description: "Wear the Skull Mask and stand front and center near the entrance.",
 				isChildOnly: function() { return true; },
 				canGet: function(age) {
-					return Items.MASK_SLOT.currentUpgrade >= 5;
+					return ChildTradeItems.SKULL_MASK.playerHas;
 				}
 			},
 			"Mask of Truth Item": {
@@ -1123,7 +1124,7 @@ GrottoGroups = {
 				description: "Wear the Mask of Truth and stand front and center near the entrance.",
 				isChildOnly: function() { return true; },
 				canGet: function(age) {
-					return Items.MASK_SLOT.currentUpgrade >= 8;
+					return ChildTradeItems.MASK_OF_TRUTH.playerHas;
 				}
 			}
 		}
