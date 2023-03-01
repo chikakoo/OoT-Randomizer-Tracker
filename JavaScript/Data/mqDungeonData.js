@@ -537,13 +537,13 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
-                    "Invisible Heart in Torch Puzzle": {
+                    "Heart in Torch Puzzle": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 208, y: 175, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 25,
-                        LongDescription: "In the torch puzzle room, there's an invisible item on the bottom part of the ledge against the back wall."
+                        LongDescription: "In the torch puzzle room, there's an item on the bottom part of the ledge against the back wall."
                     },
                     "Chest in Room by Torch Puzzle": {
                         ItemGroup: ItemGroups.CHEST,
@@ -738,7 +738,7 @@ let MQDungeons = {
                         MapInfo: { x: 335, y: 166, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 6,
-                        LongDescription: "In the lower lizalfos room, head to the platform closest to the lavafall. Jump through the lavafall on the side that's closer to the wall to get to ths item. It may be invisible."
+                        LongDescription: "In the lower lizalfos room, head to the platform closest to the lavafall. Jump through the lavafall on the side that's closer to the wall to get to ths item."
                     }
                 }
             },
@@ -3437,10 +3437,12 @@ let MQDungeons = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 331, y: 123, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). The hearts are in the back left corner. Play the Song of Time to spawn a block to get them.",
-                        RequiredSongs: [Songs.SONG_OF_TIME]
+                        CustomRequirement: function(age) {
+                            return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canUseBoomerang(age);
+                        }
                     },
                     "Visible Chest in Invisible Scythe Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4980,7 +4982,7 @@ let MQDungeons = {
                         MapInfo: { x: 159, y: 99, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 8,
-                        LongDescription: "WALL MASTER WARNING:<br/>Bomb some rocks near the southeast corner of the main room and press the switch to unbar a door. Alternatively, you can make your way to the center room and sidehop and jumpslash to get into this area.<br/><br/>Enter the door that was just unbarred. The skulltula is under the gravestone. Be careful of invisible enemies."
+                        LongDescription: "WALL MASTER WARNING:<br/>Bomb some rocks near the southwest corner of the main room and press the switch to unbar a door. Make your way to the center either by sidehopping and jumpslashing, or by going around through the already opened gates (opened via the crystal switch in the north part of the main area).<br/><br/>Enter the door that was just unbarred. The skulltula is under the gravestone. Be careful of invisible enemies."
                     },
                     "3 Pots in Center Room Cell": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -5088,7 +5090,7 @@ let MQDungeons = {
                         MapImageName: "Recovery Heart",
                         Age: Age.EITHER,
                         Order: 4,
-                        LongDescription: "Navigate to the left room in the main area. Unlock the door, then light the torch of the front right coffin (or use the boomerang). The heart is inside (it's invisible).",
+                        LongDescription: "Navigate to the left room in the main area. Unlock the door, then light the torch of the front right coffin (or use the boomerang). The heart is inside.",
                         CustomRequirement: function(age) {
                             return Data.canUseFireItem(age) || 
                                 Data.canUseDekuStick(age) ||
@@ -5101,7 +5103,7 @@ let MQDungeons = {
                         MapImageName: "Recovery Heart",
                         Age: Age.EITHER,
                         Order: 5,
-                        LongDescription: "Navigate to the left room in the main area. Unlock the door, then light the torch of the middle left coffin (or use the boomerang). The heart is inside (it's invisible).",
+                        LongDescription: "Navigate to the left room in the main area. Unlock the door, then light the torch of the middle left coffin (or use the boomerang). The heart is inside.",
                         CustomRequirement: function(age) {
                             return Data.canUseFireItem(age) || 
                                 Data.canUseDekuStick(age) ||

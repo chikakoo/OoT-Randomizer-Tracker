@@ -3218,10 +3218,12 @@ let StandardDungeons = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 331, y: 123, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). The hearts are in the back left corner. Play the Song of Time to spawn a block to get them.",
-                        RequiredSongs: [Songs.SONG_OF_TIME]
+                        CustomRequirement: function(age) {
+                            return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canUseBoomerang(age);
+                        }
                     },
                     "Visible Chest in Invisible Scythe Room": {
                         ItemGroup: ItemGroups.CHEST,

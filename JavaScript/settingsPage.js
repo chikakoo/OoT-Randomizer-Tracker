@@ -180,6 +180,12 @@ let SettingsPage = {
 	 */
 	setBooleanValueForGlitches: function(settingName, event) {
         event.stopPropagation();
+
+        if (event.shiftKey) {
+            event.preventDefault();
+            return;
+        }
+
 		if (Settings.GlitchesToAllow[settingName] === undefined) {
 			Settings.GlitchesToAllow[settingName] = false;
 		}
@@ -199,6 +205,7 @@ let SettingsPage = {
 	 */
 	setBooleanValueForGlitchesWithLink: function(settingName, link, event) {
         if (event.shiftKey) {
+            event.preventDefault();
             window.open(link, '_blank');
         } else {
             this.setBooleanValueForGlitches(settingName, event);

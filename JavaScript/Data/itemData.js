@@ -486,6 +486,7 @@ let ShopItemDictionary = {
 	"boss": "Boss Key.png",
 	"bk": "Boss Key.png",
 
+	"foresttemplesmallkey": "Forest Temple Small Key.png",
 	"forestsmallkey": "Forest Temple Small Key.png",
 	"forestkey": "Forest Temple Small Key.png",
 	"forestsk": "Forest Temple Small Key.png",
@@ -493,6 +494,7 @@ let ShopItemDictionary = {
 	"keyforest": "Forest Temple Small Key.png",
 	"skforest": "Forest Temple Small Key.png",
 
+	"foresttemplebosskey": "Forest Temple Boss Key.png",
 	"forestbosskey": "Forest Temple Boss Key.png",
 	"forestbigkey": "Forest Temple Boss Key.png",
 	"forestbk": "Forest Temple Boss Key.png",
@@ -500,6 +502,7 @@ let ShopItemDictionary = {
 	"bigkeyforest": "Forest Temple Boss Key.png",
 	"bkforest": "Forest Temple Boss Key.png",
 
+	"firetemplesmallkey": "Fire Temple Small Key.png",
 	"firesmallkey": "Fire Temple Small Key.png",
 	"firekey": "Fire Temple Small Key.png",
 	"firesk": "Fire Temple Small Key.png",
@@ -507,6 +510,7 @@ let ShopItemDictionary = {
 	"keyfire": "Fire Temple Small Key.png",
 	"skfire": "Fire Temple Small Key.png",
 
+	"firetemplebosskey": "Fire Temple Boss Key.png",
 	"firebosskey": "Fire Temple Boss Key.png",
 	"firebigkey": "Fire Temple Boss Key.png",
 	"firebk": "Fire Temple Boss Key.png",
@@ -514,6 +518,7 @@ let ShopItemDictionary = {
 	"bigkeyfire": "Fire Temple Boss Key.png",
 	"bkfire": "Fire Temple Boss Key.png",
 
+	"watertemplesmallkey": "Water Temple Small Key.png",
 	"watersmallkey": "Water Temple Small Key.png",
 	"waterkey": "Water Temple Small Key.png",
 	"watersk": "Water Temple Small Key.png",
@@ -521,6 +526,7 @@ let ShopItemDictionary = {
 	"keywater": "Water Temple Small Key.png",
 	"skwater": "Water Temple Small Key.png",
 
+	"watertemplebosskey": "Water Temple Boss Key.png",
 	"waterbosskey": "Water Temple Boss Key.png",
 	"waterbigkey": "Water Temple Boss Key.png",
 	"waterbk": "Water Temple Boss Key.png",
@@ -528,6 +534,7 @@ let ShopItemDictionary = {
 	"bigkeywater": "Water Temple Boss Key.png",
 	"bkwater": "Water Temple Boss Key.png",
 
+	"shadowtemplesmallkey": "Shadow Temple Small Key.png",
 	"shadowsmallkey": "Shadow Temple Small Key.png",
 	"shadowkey": "Shadow Temple Small Key.png",
 	"shadowsk": "Shadow Temple Small Key.png",
@@ -535,6 +542,7 @@ let ShopItemDictionary = {
 	"keyshadow": "Shadow Temple Small Key.png",
 	"skshadow": "Shadow Temple Small Key.png",
 
+	"shadowtemplebosskey": "Shadow Temple Boss Key.png",
 	"shadowbosskey": "Shadow Temple Boss Key.png",
 	"shadowbigkey": "Shadow Temple Boss Key.png",
 	"shadowbk": "Shadow Temple Boss Key.png",
@@ -542,6 +550,7 @@ let ShopItemDictionary = {
 	"bigkeyshadow": "Shadow Temple Boss Key.png",
 	"bkshadow": "Shadow Temple Boss Key.png",
 
+	"spirittemplesmallkey": "Spirit Temple Small Key.png",
 	"spiritsmallkey": "Spirit Temple Small Key.png",
 	"spiritkey": "Spirit Temple Small Key.png",
 	"spiritsk": "Spirit Temple Small Key.png",
@@ -549,6 +558,7 @@ let ShopItemDictionary = {
 	"keyspirit": "Spirit Temple Small Key.png",
 	"skspirit": "Spirit Temple Small Key.png",
 
+	"spirittemplebosskey": "Spirit Temple Boss Key.png",
 	"spiritbosskey": "Spirit Temple Boss Key.png",
 	"spiritbigkey": "Spirit Temple Boss Key.png",
 	"spiritbk": "Spirit Temple Boss Key.png",
@@ -571,6 +581,7 @@ let ShopItemDictionary = {
 	"hideoutkey": "Thieves' Hideout Key.png",
 	"thieveskey": "Thieves' Hideout Key.png",
 	"thieves'hideoutkey": "Thieves' Hideout Key.png",
+	"thieveshideoutkey": "Thieves' Hideout Key.png",
 	"gfkey": "Thieves' Hideout Key.png",
 	"fortresskey": "Thieves' Hideout Key.png",
 	"gerudofortresskey": "Thieves' Hideout Key.png",
