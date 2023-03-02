@@ -37,7 +37,8 @@ let SaveAndLoad = {
             Equipment: Equipment,
             Medallions: Medallions,
             Songs: Songs,
-            Keys: this._getKeyDataToSave()
+            Keys: this._getKeyDataToSave(),
+            SilverRupees: this._getSilverRupeeDataToSave()
         }
 
         return objectToSave;
@@ -190,6 +191,22 @@ let SaveAndLoad = {
     },
 
     /**
+     * Gets the data to save for the silver rupees the player has
+     */
+    _getSilverRupeeDataToSave: function() {
+        let silverRupeeData = {};
+        Object.keys(SilverRupees).forEach(function(key) {
+            currentDataObject = SilverRupees[key];
+            if (currentDataObject.collectedRupees) {
+                silverRupeeData[key] = {
+                    collectedRupees: currentDataObject.collectedRupees
+                };
+            }
+        });
+        return silverRupeeData;
+    },
+
+    /**
      * Loads a JSON file from your filesystem
      */
     loadJSON: function() {
@@ -270,6 +287,7 @@ let SaveAndLoad = {
         if (loadedObject.Medallions) { this._loadItemObject(Medallions, loadedObject.Medallions); }
         if (loadedObject.Songs) { this._loadItemObject(Songs, loadedObject.Songs); }
         if (loadedObject.Keys) { this._loadItemObject(Keys, loadedObject.Keys); }
+        if (loadedObject.SilverRupees) { this._loadItemObject(SilverRupees, loadedObject.SilverRupees); }
 
         Data.randomizedSpawnLocations = loadedObject.RandomizedSpawnLocations;
 
@@ -383,6 +401,7 @@ let SaveAndLoad = {
             if (loadedObjectValue) {
                 if (loadedObjectValue.playerHas) { currentObjectValue.playerHas = true; }
                 if (loadedObjectValue.keyCount) { currentObjectValue.keyCount = loadedObjectValue.keyCount; }
+                if (loadedObjectValue.collectedRupees) { currentObjectValue.collectedRupees = loadedObjectValue.collectedRupees; }
                 if (loadedObjectValue.warpMap) { currentObjectValue.warpMap = loadedObjectValue.warpMap; }
                 if (loadedObjectValue.warpRegion) { currentObjectValue.warpRegion = loadedObjectValue.warpRegion; }
                 if (loadedObjectValue.noWarp) { currentObjectValue.noWarp = loadedObjectValue.noWarp; }

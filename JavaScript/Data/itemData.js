@@ -859,3 +859,223 @@ let hasBossKey = function(mapName) {
 		default: return false;
 	}
 };
+
+/**
+ * Contains data in the following format (different data for MQ and standard):
+ * - #: { { name: "Rupee Set Name", total: #, color: "colorName"}, ... }
+ * 
+ * On the object, will contain a property as follows (this way, we can have uneven
+ * sets to rupee counts and still have this work):
+ * - collectedRupees: { "Rupee Set Index": # }
+ */
+let SilverRupees = {
+	ICE_CAVERN: {
+		name: "Ice Cavern",
+		standardRupeeData: {
+			0: {
+				name: "Ice Scythe Room",
+				total: 5,
+				color: "cyan"
+			},
+			1: {
+				name: "Ice Block Push Room",
+				total: 5,
+				color: "blue"
+			}
+		},
+		mqRupeeData: {}
+	},
+	SHADOW_TEMPLE: {
+		name: "Shadow Temple",
+		standardRupeeData: {
+			0: {
+				name: "Shadow Scythe Room",
+				total: 5,
+				color: "green"
+			},
+			1: {
+				name: "Shadow Pit Room",
+				total: 5,
+				max: 10,
+				color: "yellow"
+			},
+			2: {
+				name: "Shadow Invisible Spikes Room",
+				total: 5,
+				color: "pink"
+			}
+		},
+		mqRupeeData: {
+			0: {
+				name: "Shadow Scythe Room",
+				total: 5,
+				color: "green"
+			},
+			1: {
+				name: "Shadow Invisible Scythe Room",
+				total: 10,
+				color: "cyan"
+			},
+			2: {
+				name: "Shadow Pit Room",
+				total: 5,
+				color: "yellow"
+			},
+			3: {
+				name: "Shadow Invisible Spikes Room",
+				total: 10,
+				color: "pink"
+			}
+		}
+	},
+	SPIRIT_TEMPLE: {
+		name: "Spirit Temple",
+		standardRupeeData: {
+			0: {
+				name: "Spirit Child Side",
+				total: 5,
+				color: "red"
+			},
+			1: {
+				name: "Spirit Sun Block Room",
+				total: 5,
+				color: "yellow"
+			},
+			2: {
+				name: "Spirit Adult Boulder Room",
+				total: 5,
+				color: "green"
+			}
+		},
+		mqRupeeData: {
+			0: {
+				name: "Spirit Lobby",
+				total: 5,
+				color: "cyan"
+			},
+			1: {
+				name: "Spirit Moving Wall Room",
+				total: 5,
+				color: "blue"
+			}
+		}
+	},
+	GANONS_CASTLE: {
+		name: "Ganon's Castle",
+		standardRupeeData: {
+			0: {
+				name: "Ganon Spirit Trial",
+				total: 5,
+				color: "yellow"
+			},
+			1: {
+				name: "Ganon Light Trial",
+				total: 5,
+				color: "cyan"
+			},
+			2: {
+				name: "Ganon Fire Trial",
+				total: 5,
+				color: "red"
+			},
+			3: {
+				name: "Ganon Forest Trial",
+				total: 5,
+				color: "green"
+			}
+		},
+		mqRupeeData: {
+			0: {
+				name: "Ganon Fire Trial",
+				total: 5,
+				color: "red"
+			},
+			1: {
+				name: "Ganon Shadow Trial",
+				total: 5,
+				color: "pink"
+			},
+			2: {
+				name: "Ganon Water Trial",
+				total: 5,
+				color: "blue"
+			}
+		}
+	},
+	BOTTOM_OF_THE_WELL: {
+		name: "Bottom of the Well",
+		standardRupeeData: {
+			0: {
+				name: "Well Basement",
+				total: 5,
+				color: "white"
+			}
+		},
+		mqRupeeData: {}
+	},
+	DODONGOS_CAVERN: {
+		name: "Dodongo's Cavern",
+		standardRupeeData: {},
+		mqRupeeData: {
+			0: {
+				name: "Dondongo Staircase",
+				total: 5,
+				color: "white"
+			}
+		}
+	},
+	TRAINING_GROUNDS: {
+		name: "Training Grounds",
+		standardRupeeData: {
+			0: {
+				name: "GTG Slopes Room",
+				total: 5,
+				color: "yellow"
+			},
+			1: {
+				name: "GTG Lava Room",
+				total: 5,
+				max: 6,
+				color: "red"
+			},
+			2: {
+				name: "GTG Water Room",
+				total: 5,
+				color: "blue"
+			}
+		},
+		mqRupeeData: {
+			0: {
+				name: "GTG Slopes Room",
+				total: 5,
+				color: "yellow"
+			},
+			1: {
+				name: "GTG Lava Room",
+				total: 6,
+				color: "red"
+			},
+			2: {
+				name: "GTG Water Room",
+				total: 3,
+				max: 5,
+				color: "blue"
+			}
+		}
+	}
+};
+
+/**
+ * Returns the silver rupee count at the given location and index
+ * @param rupeeObject - the SilverRupee location object
+ * @param index - the index to look at
+ * @returns the count, or 0 if not found
+ */
+let getSilverRupeeCount = function(rupeeObject, index) {
+	let collectedRupeeObject = rupeeObject.collectedRupees;
+	if (!collectedRupeeObject) {
+		return 0;
+	}
+
+	return collectedRupeeObject[index] || 0;
+};

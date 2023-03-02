@@ -114,6 +114,11 @@ SocketClient = {
 					Keys[itemKey].playerHas = item.playerHas;
 					Keys[itemKey].keyCount = item.keyCount;
 					break;
+				case "SilverRupees": 
+					consoleOutput = `${itemKey} silver rupees were updated`;
+
+					SilverRupees[itemKey].collectedRupees = item.collectedRupees;
+					break;
 			}
 			
 			console.log(consoleOutput);
@@ -357,6 +362,7 @@ SocketClient = {
 		this._syncAllInventoryOfType("Songs", Songs);
 		this._syncAllInventoryOfType("Medallions", Medallions);
 		this._syncAllInventoryOfType("Keys", Keys);
+		this._syncAllInventoryOfType("SilverRupees", SilverRupees);
 	},
 	
 	/**

@@ -190,7 +190,6 @@ LocationSidebar = {
                     displayLocation(_currentLocationName);
                 }
                 refreshAll();
-                ItemTracker.setUp();
             }
         }
         

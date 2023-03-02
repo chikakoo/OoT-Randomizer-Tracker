@@ -16,9 +16,11 @@ let ItemTracker = {
 		this._createUIFromItemObject("Songs", Songs, document.getElementById("warpSongProgress"), 2);
 		this._createUIFromItemObject("Songs", Songs, document.getElementById("scarecrowsSongProgress"), 3);
 		this._createUIFromItemObject("Medallions", Medallions, document.getElementById("medallionProgress"));
-		
+
 		this._setUpSmallKeyUI();
 		this._createUIFromItemObject("Keys", Keys, document.getElementById("bossKeyProgress"));
+
+		this._setUpSilverRupeeUI();
 	},
 
 	/**
@@ -288,20 +290,20 @@ let ItemTracker = {
 			smallKeyDiv.onmouseover = _this.onSmallKeyMouseOver.bind(_this, keyObject);
 			smallKeyDiv.onmouseout = _this.onItemMouseOut;
 			
-			_this._createKeyCountDiv(smallKeyDiv, keyObject.keyCount);
+			_this._createCountDiv(smallKeyDiv, keyObject.keyCount ,"key-count");
 			smallKeyProgressDiv.appendChild(smallKeyDiv);
 			_this._updateSmallKeyCss(keyObject, smallKeyDiv);
 		});
 	},
 
 	/**
-	 * Creates the div for the key count
+	 * Creates the div for incrementable counts
 	 * @param smallKeyDiv - the div to create the count for
 	 */
-	_createKeyCountDiv: function(smallKeyDiv, keyCount) {
-		let keyCountDiv = dce("div", "key-count");
-		keyCountDiv.innerText = keyCount;
-		smallKeyDiv.appendChild(keyCountDiv);
+	_createCountDiv: function(parentDiv, count, cssClass) {
+		let countDiv = dce("div", cssClass);
+		countDiv.innerText = count;
+		parentDiv.appendChild(countDiv);
 	},
 
 	/**
@@ -393,5 +395,111 @@ let ItemTracker = {
 	onSmallKeyMouseOver: function(keyObject) {
 		let divItemLabel = document.getElementById("itemLabel");
 		divItemLabel.innerText = `${keyObject.name} Small Key`;
+	},
+
+	/**
+	 * Sets up the UI for silver rupees
+	 */
+	_setUpSilverRupeeUI: function() {
+		let silverRupeeProgressDiv = document.getElementById("silverRupeeProgress");
+		let _this = this;
+		Object.keys(SilverRupees).forEach(function(rupeeLocation) {
+			let silverRupeeDivContainer = dce("div", "silver-rupee-container");
+			silverRupeeDivContainer.id = `silverRupeeContainer-${rupeeLocation}`;
+			let rupeeObject = SilverRupees[rupeeLocation];
+			
+			let isMasterQuest = MapLocations[rupeeObject.name].IsMasterQuest;
+			let rupeeDataObject = isMasterQuest ? rupeeObject.mqRupeeData : rupeeObject.standardRupeeData;
+
+			let rupeeDataIndices = Object.keys(rupeeDataObject);
+			if (rupeeDataIndices.length < 1) {
+				// Create a div to take up space - we don't want to offset all the rupees
+				let silverRupeeFillerDiv = dce("div", "silver-rupee");
+				silverRupeeFillerDiv.id = `silverRupee-${rupeeLocation}-filler`;
+				silverRupeeDivContainer.appendChild(silverRupeeFillerDiv);
+			}
+
+			rupeeDataIndices.forEach(function(rupeeDataIndex) {
+				let rupeeData = rupeeDataObject[rupeeDataIndex];
+				let silverRupeeDiv = dce("div", "silver-rupee");
+				silverRupeeDiv.id = `silverRupee-${rupeeLocation}-${rupeeDataIndex}`;
+				silverRupeeDiv.style.color = rupeeData.color;
+
+				silverRupeeDiv.style.backgroundImage = 'url("Images/Silver Rupee.png")';
+				silverRupeeDiv.onclick = _this.onSilverRupeeClicked.bind(_this, rupeeLocation, rupeeObject, rupeeDataIndex, rupeeData, silverRupeeDiv);
+				silverRupeeDiv.oncontextmenu = _this.onSilverRupeeClicked.bind(_this, rupeeLocation, rupeeObject, rupeeDataIndex, rupeeData, silverRupeeDiv);
+				silverRupeeDiv.onmouseover = _this.onSilverRupeeMouseOver.bind(_this, rupeeData.name);
+				silverRupeeDiv.onmouseout = _this.onItemMouseOut;
+				
+				let silverRupeeCount = getSilverRupeeCount(rupeeObject, rupeeDataIndex);
+				_this._createCountDiv(silverRupeeDiv, silverRupeeCount, "rupee-count");
+				silverRupeeDivContainer.appendChild(silverRupeeDiv);
+				_this._updateSilverRupeeCss(rupeeData.color, rupeeData.total, silverRupeeCount, silverRupeeDiv);
+			});
+
+			silverRupeeProgressDiv.appendChild(silverRupeeDivContainer);
+		});
+	},
+
+	/**
+	 * Updates the item when it is clicked
+	 * @param silverRupeeLocation - the item key for the rupee object
+	 * @param silverRupeeObject - the silver rupee data
+	 * @param silverRupeeIndex - the silver rupee index to update
+	 * @param silverRupeeData - the silver rupee data to reference for max values
+	 * @param silverRupeeDiv - the div for the small keys
+	 */
+	onSilverRupeeClicked: function(rupeeLocation, silverRupeeObject, silverRupeeIndex, silverRupeeData, silverRupeeDiv, event) {
+		silverRupeeObject.collectedRupees = silverRupeeObject.collectedRupees || {};
+		silverRupeeObject.collectedRupees[silverRupeeIndex] = silverRupeeObject.collectedRupees[silverRupeeIndex] || 0;
+
+		if (event.type === "click") {
+			silverRupeeObject.collectedRupees[silverRupeeIndex]++;
+		} else if (event.type === "contextmenu") { 
+			silverRupeeObject.collectedRupees[silverRupeeIndex]--;
+		}
+
+		let canBeMasterQuest = Settings.RandomizerSettings.dungeonSetting !== DungeonSettings.STANDARD;
+		let maxRupees = silverRupeeData.max || silverRupeeData.total;
+		let maxRupeesToAllow = canBeMasterQuest ? maxRupees : silverRupeeData.total;
+
+		if (silverRupeeObject.collectedRupees[silverRupeeIndex] > maxRupeesToAllow && event.type === "click") {
+			silverRupeeObject.collectedRupees[silverRupeeIndex]--;
+		}
+
+		if (silverRupeeObject.collectedRupees[silverRupeeIndex] < 0) {
+			silverRupeeObject.collectedRupees[silverRupeeIndex] = 0;
+		}
+		this._updateSilverRupeeCss(silverRupeeData.color, silverRupeeData.total, getSilverRupeeCount(silverRupeeObject, silverRupeeIndex), silverRupeeDiv);
+		
+		let rupeeCountDiv = silverRupeeDiv.firstChild;
+		rupeeCountDiv.innerText = silverRupeeObject.collectedRupees[silverRupeeIndex];
+		
+		SocketClient.inventoryUpdated("SilverRupees", rupeeLocation, silverRupeeObject);
+		refreshAll();
+	},
+
+	/**
+	 * Updates the CSS for the given silver rupee div
+	 * @param divColor - the div color to use (in the rupee data itself)
+	 * @param maxRupeesNeeded - the max number of rupees for this group
+	 * @param totalRupeesOwned - the total number of rupees currently owned
+	 * @param silverRupeeDiv - the div to update
+	 */
+	_updateSilverRupeeCss: function(divColor, maxRupeesNeeded, totalRupeesOwned, silverRupeeDiv) {
+		if (totalRupeesOwned >= maxRupeesNeeded) {
+			silverRupeeDiv.style.color = "#ADFF2F";
+		} else {
+			silverRupeeDiv.style.color = divColor;
+		}
+	},
+
+	/**
+	 * Updates the item label when the silver rupee is moused over
+	 * @param rupeeDataName - the name of the rupee data
+	 */
+	onSilverRupeeMouseOver: function(rupeeDataName) {
+		let divItemLabel = document.getElementById("itemLabel");
+		divItemLabel.innerText = rupeeDataName;
 	}
 };
