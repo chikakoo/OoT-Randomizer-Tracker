@@ -5583,10 +5583,11 @@ let MQDungeons = {
                         RequiredSongs: [Songs.SONG_OF_TIME]
                     },
                     waterRoom: {},
-                    shadowBackSection: {
+                    shadowSmallPlatform: {
                         Age: Age.ADULT,
-                        RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, Items.HOOKSHOT],
-                        RequiredItems: [Equipment.MAGIC, Items.LENS_OF_TRUTH] // Without lens is really hard, so not including that trick for now
+                        CustomRequirement: function(age) {
+                            return Equipment.HOVER_BOOTS.playerHas || (Items.FAIRY_BOW.playerHas && Items.HOOKSHOT.playerHas);
+                        }
                     },
                     fireTrialEnd: {
                         Age: Age.ADULT,
@@ -5614,7 +5615,6 @@ let MQDungeons = {
                         // To clean this up, we need non-items for each of the trial completions
                     }
                 },
-
                 ItemLocations: {
                     "5 Scrubs in Secret Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -5652,22 +5652,13 @@ let MQDungeons = {
                         LongDescription: "In the second room, shoot the eye switch at the back left side of the room with a fire arrow to spawn the chest. Alternatively, you can also use Din's fire to hit it once at the back of the room. To get across, you can jump and use the wind from the fan if you have no hover boots.",
                         NeedsFire: true
                     },
-                    "Shadow Chest on Small Platform": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 147, y: 227, floor: "SHW" },
-                        Age: Age.ADULT,
-                        Order: 14,
-                        LongDescription: "First, shoot the bomb flower on the right side of the room. Now, use hover boots or your hookshot to reach the chest.",
-                        RequiredItems: [Items.FAIRY_BOW],
-                        RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, Items.HOOKSHOT]
-                    },
 
                     // Locked Doors
                     "Locked Door in Water Trial": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["waterRoom"],
                         MapInfo: { x: 193, y: 168, floor: "WTR" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "This is the locked door in the water trial, blocked by the red ice.",
                         KeyRequirement: function(age) {
@@ -5675,9 +5666,9 @@ let MQDungeons = {
                             let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
                                 Items.BOMB.playerHas && 
                                 Data.hasShield(age);
-                            let canEssClipIn = age === Age.ADULT && Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
+                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
                             let canGlitchIn = canSuperslideIn || canEssClipIn;
-                            let canEnterLightTrial = canGlitchIn || Equipment.STRENGTH.currentUpgrade < 3;
+                            let canEnterLightTrial = canGlitchIn || Equipment.STRENGTH.currentUpgrade === 3;
                             if (!canEnterLightTrial) {
                                 max = 1;
                             }
@@ -5730,8 +5721,7 @@ let MQDungeons = {
             },
             waterRoom: {
                 Exits: {
-                    waterTrialEnd: {
-                        Age: Age.ADULT,
+                    waterTrialBlockPuzzle: {
                         Map: "Ganon's Castle",
                         LockedDoor: "Locked Door in Water Trial",
                         CustomRequirement: function(age) {
@@ -5760,7 +5750,56 @@ let MQDungeons = {
                     }
                 }
             },
+            waterTrialBlockPuzzle: {
+                Exits: {
+                    waterTrialEnd: {
+                        Map: "Ganon's Castle",
+                        SilverRupeeIndex: 2,
+                        CustomRequirement(age) {
+                            return age === Age.ADULT || !Settings.RandomizerSettings.shuffleSilverRupees;
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "Silver Rupee in Water Trial Block Hole": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 197, y: 119, floor: "WTR" },
+                        Age: Age.EITHER,
+                        Order: 12.1,
+                        LongDescription: "Enter the water trial - use a sword weapon behind the random dead hand to hit a switch in the wall to gain access to the blue fire. Melt the red ice wall and proceed through the locked door (make sure you still have blue fire).<br/><br/>The rupee is in front of you in the hole. Note that Child cannot get out of the hole!"
+                    },
+                    "Silver Rupee Above Water Trial Chasm": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 214, y: 56, floor: "WTR" },
+                        Age: Age.EITHER,
+                        Order: 12.2,
+                        LongDescription: "In the back right part of the room, you can do an angled jump from one side of the void to another and grab this rupee on the way."
+                    },
+                    "Silver Rupee Floating by Push Blocks": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 177, y: 94, floor: "WTR" },
+                        Age: Age.EITHER,
+                        Order: 12.3,
+                        LongDescription: "This is the floating rupee by the two push blocks. As adult, you can get this by jumping from the top of one of the blocks.<br/><br/>As child - first, push the back block so it's against the blue rock. Backflip onto the rock. Now, you can climb onto the block and do a roll-jump toward the rupee to get it."
+                    },
+                    "Silver Rupee in Water Trial Alcove": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 150, y: 94, floor: "WTR" },
+                        Age: Age.EITHER,
+                        Order: 12.4,
+                        LongDescription: "This is the rupee in the alcove on the left side of the room."
+                    },
+                    "Silver Rupee on Alcove Platform": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 125, y: 94, floor: "WTR" },
+                        Age: Age.ADULT,
+                        Order: 12.5,
+                        LongDescription: "As Adult, push the blocks to solve the puzzle (see the map for a diagram). That is - push the back block east, then south into the hole. The, push the other block east, north, then west into the alcove. The rupee is encased in ice - melt it, or use a well-angled jump-slash to get it."
+                    }
+                }
+            },
             waterTrialEnd: {
+                UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Water Trial End": {
@@ -5769,9 +5808,37 @@ let MQDungeons = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 192, y: 10, floor: "WTR" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "Enter the water trial - use a sword weapon behind the random dead hand to hit a switch in the wall to gain access to the blue fire. Melt the red ice wall and proceed through the locked door (make sure you still have blue fire). In the next room, gather the silver rupees, melt the back red ice, and proceed to the room with the pots."
+                    }
+                }
+            },
+            shadowSmallPlatform: {
+                Exits: {
+                    shadowBackSection: {
+                        RequiredItems: [Equipment.MAGIC, Items.LENS_OF_TRUTH] // Without lens is really hard, so not including that trick for now
+                    }
+                },
+                ItemLocations: {
+                    "Shadow Chest on Small Platform": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 147, y: 227, floor: "SHW" },
+                        Age: Age.ADULT,
+                        Order: 14,
+                        LongDescription: "First, shoot the bomb flower on the right side of the room. Now, use hover boots or your hookshot to reach the chest. Otherwise, navigate to the bomb flower using hover boots/lens and blow it up with a fire item, strength, or your own explosives.",
+                        CustomRequirement: function(age) {
+                            // Chest can already be spawned
+                            if (Items.FAIRY_BOW.playerHas) { return true; }
+
+                            // Spawn chest by using tools to blow up the bomb flower
+                            let canUseLens = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas;
+                            return canUseLens && (
+                                Equipment.STRENGTH.playerHas || 
+                                Data.hasExplosives() ||
+                                Data.canUseFireItem(age)
+                            );
+                        }
                     }
                 }
             },
