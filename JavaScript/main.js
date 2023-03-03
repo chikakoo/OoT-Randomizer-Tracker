@@ -180,27 +180,18 @@ let shouldDisableItemLocationGroup = function(itemGroup, isDungeon, isScrubSanit
 				shuffleLocationSettingValue = Settings.RandomizerSettings.crateSetting;
 				break;
 
-			// Scrubs
+			case ItemGroups.SILVER_RUPEE:
+				return !Settings.RandomizerSettings.shuffleSilverRupees;
 			case ItemGroups.SCRUB:
 				return !Settings.RandomizerSettings.scrubSanity && !isScrubSanityRequired;
-
-			// Shops
 			case ItemGroups.SHOP:
 				return !Settings.RandomizerSettings.shopSanity;
-
-			// Cows
 			case ItemGroups.COW:
 				return !Settings.RandomizerSettings.cowSanity;
-
-			// Beehives
 			case ItemGroups.BEEHIVE:
 				return !Settings.RandomizerSettings.shuffleBeehives;
-
-			// Locked Doors
 			case ItemGroups.LOCKED_DOOR:
 				return Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY;
-
-			// Gossip Stones
 			case ItemGroups.GOSSIP_STONE:
 				return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.HIDE;
 		}

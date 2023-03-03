@@ -876,6 +876,7 @@ Data = {
 		if (!this.hasDamagingItem(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canKillStunnableEnemy(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkKeyRequirement(age, itemLocation)) { return ItemObtainability.NO; }
+        if (!this._checkSilverRupeeRequirement(itemLocation)) { return ItemObtainability.NO; }
 
         return ItemObtainability.YES;
     },
@@ -1627,6 +1628,23 @@ Data = {
 		if (currentKeyCount < keyReq.max) { return ItemObtainability.NO; }
 		return ItemObtainability.YES; 
 	},
+
+    /**
+     * Checks whether the item location passes the silver rupee requirement
+     * @param itemLocation - the item location to check
+     * @returns - the appropriate ItemObtainability
+     */
+    _checkSilverRupeeRequirement: function(itemLocation) {
+        if (itemLocation && (!itemLocation.SilverRupeeIndex && itemLocation.SilverRupeeIndex !== 0)) {
+            return ItemObtainability.YES;
+        }
+
+        if (!Settings.RandomizerSettings.shuffleSilverRupees) {
+            return ItemObtainability.YES;
+        }
+
+        return checkSilverRupeeRequirement(itemLocation.Map, itemLocation.SilverRupeeIndex);
+    },
 
 	/**
 	 * Gets whether entrance shuffle applies to the given location name

@@ -375,19 +375,11 @@ let MQDungeons = {
 
             mainRoom: {
                 Exits: {
-                    staircaseTop: {
-                        CustomRequirement: function(age) {
-                            if (Data.hasExplosives()) { return true; } // Going around the top
-                
-                            let canLowerWithBow = Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && age === Age.ADULT && Items.FAIRY_BOW.playerHas;
-                            return canLowerWithBow || Data.hasExplosivesOrStrength();
-                        }
-                    },
-                    torchPuzzleRoom: {
-                        NeedsExplosives: true // Going around the top
+                    staircaseBottom: {
+                        RequiredChoiceOfItems: [ Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER, Equipment.STRENGTH]
                     },
                     topOfTorchPuzzleRoom: {
-                        NeedsExplosives: true // Going around the top
+                        NeedToBlastOrSmash: true
                     },
                     eastRoom: { 
                         CustomRequirement: function(age) { // Bring a bomb flower is handled by the upperLizalfosRoom
@@ -439,7 +431,36 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 18,
                         LongDescription: "These scrubs are on the ledge to the left when you first enter the main room."
-                    },
+                    }
+                }
+            },
+
+            mainRoomLedge: {
+                Exits: {
+                    poeRoom: {}
+                },
+
+                ItemLocations: {
+                    "Chest on Ledge in Main Room": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 182, y: 200, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 16,
+                        LongDescription: "Navigate through the Poe room to get to this chest on the ledge on the right side of the main room. This may require you to go through most of the dungeon first."
+                    }
+                }
+            },
+
+            staircaseBottom: {
+                Exits: {
+                    staircaseTop: {
+                        CustomRequirement: function(age) {
+                            let canLowerWithBow = Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && age === Age.ADULT && Items.FAIRY_BOW.playerHas;
+                            return canLowerWithBow || Data.hasExplosivesOrStrength();
+                        }
+                    }
+                },
+                ItemLocations: {
                     "Skullula by Stair Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 46, y: 259, floor: "F1" },
@@ -467,29 +488,31 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 21,
                         LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>The crates are in the two corners of the room by the back of the stairs."
-                    }
-                }
-            },
-
-            mainRoomLedge: {
-                Exits: {
-                    poeRoom: {}
-                },
-
-                ItemLocations: {
-                    "Chest on Ledge in Main Room": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 182, y: 200, floor: "F1" },
+                    },
+                    "Silver Rupee Under Beamos in Stair Room": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 31, y: 184, floor: "F1" },
                         Age: Age.EITHER,
-                        Order: 16,
-                        LongDescription: "Navigate through the Poe room to get to this chest on the ledge on the right side of the main room. This may require you to go through most of the dungeon first."
+                        Order: 21.1,
+                        LongDescription: "In the stair room, walk into the beamos on the left side of the stairs to get this rupee."
+                    },
+                    "Silver Rupee Under Lower Stair Room Crate": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 33, y: 169, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 21.2,
+                        LongDescription: "In the stair room, break the crate to the left of the stairs to get this rupee."
                     }
                 }
             },
 
             staircaseTop: {
                 Exits: {
-                    torchPuzzleRoom: {}
+                    staircaseBottom: {},
+                    smallDodongoRoom: {
+                        Map: "Dodongo's Cavern",
+                        SilverRupeeIndex: 0
+                    }
                 },
 
                 ItemLocations: {
@@ -510,6 +533,36 @@ let MQDungeons = {
                         Order: 23,
                         LongDescription: "Lower the stairs in the stair room. The crates are up the stairs in the four corners of the walkways."
                     },
+                    "Silver Rupee Under Upper Stair Room NW Crate": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 11, y: 97, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 23.1,
+                        LongDescription: "Break the northwest crate in the upper stair room to get this rupee."
+                    },
+                    "Silver Rupee Under Upper Stair Room SE Crate": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 47, y: 133, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 23.2,
+                        LongDescription: "Break the southeast crate in the upper stair room to get this rupee."
+                    },
+                    "Silver Rupee Up Upper Stair Room Vines": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 31, y: 132, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 23.3,
+                        LongDescription: "Climb the vines on the top of the stair room to get this rupee."
+                    }
+                }
+            },
+
+            smallDodongoRoom: {
+                Exits: {
+                    torchPuzzleRoom: {},
+                    staircaseTop: {}
+                },
+                ItemLocations: {
                     "Chest in Small Dodongo Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 29, y: 200, floor: "F2" },
@@ -522,6 +575,7 @@ let MQDungeons = {
 
             torchPuzzleRoom: {
                 Exits: {
+                    smallDodongoRoom: {},
                     topOfTorchPuzzleRoom: {
                         CustomRequirement: function(age) {
                             let adultBombChestEarly = age === Age.ADULT && Settings.GlitchesToAllow.dodongoAdultJumpToBombChest;
@@ -659,6 +713,7 @@ let MQDungeons = {
 
             topOfTorchPuzzleRoom: {
                 Exits: {
+                    torchPuzzleRoom: {},
                     upperLizalfosRoom: {}
                 },
 

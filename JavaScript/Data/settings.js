@@ -118,6 +118,7 @@ let Settings = {
 		potSetting: ShuffleLocationSettings.ALL,
 		crateSetting: ShuffleLocationSettings.ALL,
 		shuffleBeehives: true,
+		shuffleSilverRupees: false,
 		
 		// Entrance shuffle settings
 		shuffleInteriorEntrances: true,

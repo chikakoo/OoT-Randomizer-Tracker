@@ -1,4 +1,3 @@
-
 /**
  * A list of all the game's items
  */
@@ -1066,6 +1065,36 @@ let SilverRupees = {
 };
 
 /**
+ * Gets the silver rupee data for the given map name
+ * @param mapName - the map name
+ * @returns The silver rupee data
+ */
+let getSilverRupeeData = function(mapName) {
+	switch(mapName) {
+		case "Ice Cavern":
+			return SilverRupees.ICE_CAVERN;
+
+		case "Shadow Temple":
+			return SilverRupees.SHADOW_TEMPLE;
+		case "Spirit Temple":
+			return SilverRupees.SPIRIT_TEMPLE;
+		case "Ganon's Castle":
+			return SilverRupees.GANONS_CASTLE;
+			
+		case "Dodongo's Cavern":
+			return SilverRupees.DODONGOS_CAVERN;
+		case "Bottom of the Well":
+			return SilverRupees.BOTTOM_OF_THE_WELL;
+		case "Training Grounds":
+			return SilverRupees.TRAINING_GROUNDS;
+		
+		default: 
+			console.log(`ERROR: Attempted to get silver rupee data for ${mapName}!`);
+			return null;
+	}
+};
+
+/**
  * Returns the silver rupee count at the given location and index
  * @param rupeeObject - the SilverRupee location object
  * @param index - the index to look at
@@ -1078,4 +1107,29 @@ let getSilverRupeeCount = function(rupeeObject, index) {
 	}
 
 	return collectedRupeeObject[index] || 0;
+};
+
+/**
+ * Checks that the player has enough silver rupees of the given index
+ * @param mapName - the name of the map to check
+ * @param index - the silver rupee index
+ * @returns the appropriate ItemObtainability value
+ */
+let checkSilverRupeeRequirement = function(mapName, index) {
+	let rupeeObject = getSilverRupeeData(mapName);
+	if (!rupeeObject) { return ItemObtainability.YES; }
+
+	let currentRupeeCount = getSilverRupeeCount(rupeeObject, index);
+
+	let isMasterQuest = MapLocations[mapName].IsMasterQuest;
+	let rupeeData = isMasterQuest
+		? rupeeObject.mqRupeeData
+		: rupeeObject.standardRupeeData;
+	if (!rupeeData[index]) { return ItemObtainability.NO; }
+
+	let totalRupeesRequired = rupeeData[index].total;
+	if (currentRupeeCount >= totalRupeesRequired) {
+		return ItemObtainability.YES;
+	}
+	return ItemObtainability.NO;
 };

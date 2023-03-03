@@ -4790,6 +4790,41 @@ let StandardDungeons = {
                         Order: 30,
                         LongDescription: "Fall down one of the many pits to get to the basement. This chest is located behind the rocks that are farthest from the ladder. That is, if you face away from the ladder, it's the rightmost set of rocks.",
                         NeedsExplosives: true
+                    },
+                    "Silver Rupee on South Basement Wood Beam": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 176, y: 232, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 31,
+                        LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee on the wood beam more to the south, in the central area."
+                    },
+                    "Silver Rupee on North Basement Wood Beam": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 150, y: 201, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 32,
+                        LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee on the wood beam more to the north, in the central area."
+                    },
+                    "Silver Rupee by Baesment Ladder": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 114, y: 235, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 33,
+                        LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee by the bottom ladder."
+                    },
+                    "Silver Rupee up Basement Ladder": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 93, y: 235, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 34,
+                        LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee you get by climbing the bottom ladder."
+                    },
+                    "Silver Rupee up Both Basement Ladders": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 55, y: 247, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 35,
+                        LongDescription: "Fall down one of the many pits to get to the basement. Climb both basement ladders; the rupee is to your left."
                     }
                 }
             },
