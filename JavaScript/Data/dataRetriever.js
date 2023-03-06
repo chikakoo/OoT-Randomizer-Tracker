@@ -887,7 +887,7 @@ Data = {
     _isSpawnItemAndCanGet: function(age, itemLocation) {
         if (RegionWalker.doesItemLocationHaveSpawnOrWalkData(itemLocation, age)) {
             if (!itemLocation.PostSpawnRequirements || itemLocation.PostSpawnRequirements(age)) {
-                if (itemLocation.ItemGroup === ItemGroups.SHOP) {
+                if (this.isItemLocationAShop(itemLocation)) {
                     return this.canBuyFromShop(age, itemLocation);
                 }
 

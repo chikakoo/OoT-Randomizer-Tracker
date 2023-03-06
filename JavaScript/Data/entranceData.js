@@ -158,7 +158,10 @@ InteriorGroups = {
 		buttons: {
 			"Shop": {
 				itemGroup: ItemGroups.SHOP,
-				description: "Buy the items you need here - put anything you need to get later in the notes."
+				description: "Buy the items you need here - put anything you need to get later in the notes.",
+				canGet: function(age,  itemLocation) {
+					return Data.canBuyFromShop(age, itemLocation);
+				}
 			}
 		}
 	},
