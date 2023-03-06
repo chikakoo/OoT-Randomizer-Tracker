@@ -125,9 +125,16 @@ let MapUI = {
 		if (floor === "ANY") {
 			floor = "HYR"; // This is only used by the Castle map currently... redo this if it ends up being important
 		}
-		
+
 		let mapImageAndIcons = document.getElementById("mapImageAndIcons");
 		let imageName = this._currentFloor ? `${mapName} - ${floor}` : mapName;
+
+		// Set up alternate floor images for MQ dungeons
+		let mapData = MapLocations[mapName];
+		if (mapData.IsMasterQuest && mapData.MqMapFloors && mapData.MqMapFloors.includes(floor)) {
+			imageName = `MQ ${imageName}`;
+		}
+
 		mapImageAndIcons.style.backgroundImage = `url("Images/Maps/${imageName}.png")`;
 		
 		this._iconDivs = {};

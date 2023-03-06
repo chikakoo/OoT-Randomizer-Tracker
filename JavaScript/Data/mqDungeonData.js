@@ -5562,6 +5562,7 @@ let MQDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         IsMasterQuest: true,
         Floors: ["MN", "FST", "WTR", "SHW", "FIR", "LIT", "SPT"],
+        MqMapFloors: ["FIR"],
         StartingFloorIndex: 0,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canCompleteTrials: function(age) {
@@ -5589,14 +5590,7 @@ let MQDungeons = {
                             return Equipment.HOVER_BOOTS.playerHas || (Items.FAIRY_BOW.playerHas && Items.HOOKSHOT.playerHas);
                         }
                     },
-                    fireTrialEnd: {
-                        Age: Age.ADULT,
-                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "3"}],
-                        RequiredChoiceOfItems: [Items.HOOKSHOT, Equipment.HOVER_BOOTS],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.ganonFireNoTunic || Equipment.GORON_TUNIC.playerHas;
-                        }
-                    },
+                    fireRoomEarly: {},
                     lightRoom1: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
@@ -5921,6 +5915,74 @@ let MQDungeons = {
                     }
                 }
             },
+            fireRoomEarly: {
+                Exits: {
+                    fireRoomLate: {
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.ganonFireNoTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "Fire Silver Rupee Above Rising Platform": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 219, y: 199, floor: "FIR" },
+                        Age: Age.EITHER,
+                        Order: 16.1,
+                        LongDescription: "At the fire trial, there's a 2x2 section of stationary platforms near the start. Get to the back right one and ride it up - the rupee is there. You may have to backflip to get it."
+                    }
+                }
+            },
+            fireRoomLate: {
+                UseAdultAge: function() {
+                    return !Settings.GlitchesToAllow.ganonFireNoTunic;
+                },
+                Exits: {
+                    fireTrialEnd: {
+                        Map: "Ganon's Castle",
+                        SilverRupeeIndex: 0,
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            let hasGoldenGauntlets = Equipment.STRENGTH.currentUpgrade === 3;
+                            let hasLongshot = Items.HOOKSHOT.currentUpgrade === 2;
+                            let canGetToDoor = hasLongshot || (hasGoldenGauntlets && Equipment.HOVER_BOOTS.playerHas);
+                            let canUnbarDoor = Settings.RandomizerSettings.shuffleSilverRupees || Equipment.STRENGTH.currentUpgrade === 3;
+                            return canGetToDoor && canUnbarDoor;
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "Fire Silver Rupee Under Silver Pillar": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 233, y: 143, floor: "FIR" },
+                        Age: Age.ADULT,
+                        Order: 16.2,
+                        LongDescription: "Navigate to the back island with the beamos and giant silver pillar. Lift it with your golden gauntlets to get to the rupee.",
+                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "3"}],
+                    },
+                    "Fire Silver on Back Left Platform": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 132, y: 166, floor: "FIR" },
+                        Age: Age.EITHER,
+                        Order: 16.3,
+                        LongDescription: "Navigate around to the long platform in the back left part of the room. The rupee is in the middle of the circular section."
+                    },
+                    "Fire Silver Rupee by Left Moving Platform": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 313, y: 210, floor: "FIR" },
+                        Age: Age.EITHER,
+                        Order: 16.4,
+                        LongDescription: "Navigate around to the long platform in the back left part of the room. Jump on the moving platform to the south to get to the rupee."
+                    },
+                    "Fire Silver Rupee in Back Left Corner": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 233, y: 143, floor: "FIR" },
+                        Age: Age.EITHER,
+                        Order: 16.5,
+                        LongDescription: "The intended way to get this rupee is to throw the silver pillar on the island south of the longer island. You can then ride the middle stationary platform to get to the rupee. You can also just ride that platform and jump to the rupee without throwing the pillar (roll jump at a 45 degree angle at the corner and hold forward), but you'll also void out in the lava!"
+                    }
+                }
+            },
             fireTrialEnd: {
                 Exits: {},
                 ItemLocations: {
@@ -5932,7 +5994,7 @@ let MQDungeons = {
                         MapInfo: { x: 178, y: 77, floor: "FIR" },
                         Age: Age.ADULT,
                         Order: 17,
-                        LongDescription: "Enter the fire trial - you must grab all the silver rupees to enter the room with the pots."
+                        LongDescription: "Enter the fire trial - you must grab all the silver rupees to enter the room with the pots. You can get to the door by either longshotting the hookshot target, or by using hover boots from the thrown silver pillar near the door."
                     }
                 }
             },
