@@ -5761,35 +5761,35 @@ let MQDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Silver Rupee in Water Trial Block Hole": {
+                    "Water Silver Rupee in Block Hole": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 197, y: 119, floor: "WTR" },
                         Age: Age.EITHER,
                         Order: 12.1,
                         LongDescription: "Enter the water trial - use a sword weapon behind the random dead hand to hit a switch in the wall to gain access to the blue fire. Melt the red ice wall and proceed through the locked door (make sure you still have blue fire).<br/><br/>The rupee is in front of you in the hole. Note that Child cannot get out of the hole!"
                     },
-                    "Silver Rupee Above Water Trial Chasm": {
+                    "Water Silver Rupee Above Water Trial Chasm": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 214, y: 56, floor: "WTR" },
                         Age: Age.EITHER,
                         Order: 12.2,
                         LongDescription: "In the back right part of the room, you can do an angled jump from one side of the void to another and grab this rupee on the way."
                     },
-                    "Silver Rupee Floating by Push Blocks": {
+                    "Water Silver Rupee Floating by Push Blocks": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 177, y: 94, floor: "WTR" },
                         Age: Age.EITHER,
                         Order: 12.3,
                         LongDescription: "This is the floating rupee by the two push blocks. As adult, you can get this by jumping from the top of one of the blocks.<br/><br/>As child - first, push the back block so it's against the blue rock. Backflip onto the rock. Now, you can climb onto the block and do a roll-jump toward the rupee to get it."
                     },
-                    "Silver Rupee in Water Trial Alcove": {
+                    "Water Silver Rupee in Alcove": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 150, y: 94, floor: "WTR" },
                         Age: Age.EITHER,
                         Order: 12.4,
                         LongDescription: "This is the rupee in the alcove on the left side of the room."
                     },
-                    "Silver Rupee on Alcove Platform": {
+                    "Water Silver Rupee on Alcove Platform": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 125, y: 94, floor: "WTR" },
                         Age: Age.ADULT,
@@ -5816,7 +5816,7 @@ let MQDungeons = {
             },
             shadowSmallPlatform: {
                 Exits: {
-                    shadowBackSection: {
+                    shadowMovingPlatform: {
                         RequiredItems: [Equipment.MAGIC, Items.LENS_OF_TRUTH] // Without lens is really hard, so not including that trick for now
                     }
                 },
@@ -5842,9 +5842,44 @@ let MQDungeons = {
                     }
                 }
             },
+            shadowMovingPlatform: {
+                Exits: {
+                    shadowBackSection: {
+                        CustomRequirement: function(age) {
+                            return Equipment.HOVER_BOOTS.playerHas || Data.canUseFireItem(age);
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "Shadow Silver Rupee on Invisible Moving Platform": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 178, y: 190, floor: "SHW" },
+                        Age: Age.ADULT,
+                        Order: 14.1,
+                        LongDescription: "Navigate to the moving platform using either hover boots, or by shooting the bombflower and hookshoting to the chest to get this rupee."
+                    },
+                    "Shadow Silver Rupee on Bomb Flower Island": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 220, y: 209, floor: "SHW" },
+                        Age: Age.ADULT,
+                        Order: 14.2,
+                        LongDescription: "Navigate to the moving platform using either hover boots, or by shooting the bombflower and hookshoting to the chest. Carefully navigate to the little island with the bombflower and the rupee."
+                    },
+                    "Shadow Silver Rupee Under Front Beamos": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 182, y: 155, floor: "SHW" },
+                        Age: Age.ADULT,
+                        Order: 14.3,
+                        LongDescription: "Navigate to the moving platform using either hover boots, or by shooting the bombflower and hookshoting to the chest. The rupee is under the beamos on the next platform - no need to blow it up to grab it."
+                    }
+                }
+            },
             shadowBackSection: {
                 Exits: {
-                    shadowTrialEnd: {}
+                    shadowTrialEnd: {
+                        Map: "Ganon's Castle",
+                        SilverRupeeIndex: 1
+                    }
                 },
                 ItemLocations: {
                     "Shadow Chest in Back": {
@@ -5852,8 +5887,22 @@ let MQDungeons = {
                         MapInfo: { x: 186, y: 103, floor: "SHW" },
                         Age: Age.ADULT,
                         Order: 15,
-                        LongDescription: "At the shadow trial, use your lens of truth to navigate across the room. There's an invisible moving invisible platform you'll need to use. After the beamos platform, turn around and shoot the eye switch to spawn the chest.",
+                        LongDescription: "At the shadow trial, use your lens of truth to navigate across the room. There's an invisible moving invisible platform you'll need to use. To cross the other gap, use hover boots or light the sunken torch to create a platform. After the beamos platform, turn around and shoot the eye switch to spawn the chest.",
                         RequiredItems: [Items.FAIRY_BOW]
+                    },
+                    "Shadow Silver Rupee Under Back Beamos": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 150, y: 73, floor: "SHW" },
+                        Age: Age.ADULT,
+                        Order: 15.1,
+                        LongDescription: "At the shadow trial, use your lens of truth to navigate across the room. There's an invisible moving invisible platform you'll need to use. To cross the other gap, use hover boots or light the sunken torch to create a platform.</br></br>The rupee is under the beamos to the island on the left. The Lens of Truth will reveal a path."
+                    },
+                    "Shadow Silver Rupee by Back Guillotine": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 175, y: 61, floor: "SHW" },
+                        Age: Age.ADULT,
+                        Order: 15.2,
+                        LongDescription: "At the shadow trial, use your lens of truth to navigate across the room. There's an invisible moving invisible platform you'll need to use. To cross the other gap, use hover boots or light the sunken torch to create a platform.</br></br>The rupee is guarded by the guillotine over the void. The Lens of Truth will reveal a path to it."
                     }
                 }
             },
@@ -5868,7 +5917,7 @@ let MQDungeons = {
                         MapInfo: { x: 178, y: 5, floor: "SHW" },
                         Age: Age.ADULT,
                         Order: 16,
-                        LongDescription: "At the shadow trial, use your lens of truth to navigate across the room. There's an invisible moving invisible platform you'll need to use. Gather all the rupees to open the door to the pots."
+                        LongDescription: "At the shadow trial, use your lens of truth to navigate across the room. There's an invisible moving invisible platform you'll need to use. To cross the other gap, use hover boots or light the sunken torch to create a platform. Gather all the rupees to open the door to the pots."
                     }
                 }
             },
