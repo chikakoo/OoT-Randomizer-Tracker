@@ -5562,7 +5562,7 @@ let MQDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         IsMasterQuest: true,
         Floors: ["MN", "FST", "WTR", "SHW", "FIR", "LIT", "SPT"],
-        MqMapFloors: ["FIR"],
+        MqMapFloors: ["SHW", "FIR"],
         StartingFloorIndex: 0,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canCompleteTrials: function(age) {
@@ -5969,14 +5969,14 @@ let MQDungeons = {
                     },
                     "Fire Silver Rupee by Left Moving Platform": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 313, y: 210, floor: "FIR" },
+                        MapInfo: { x: 132, y: 210, floor: "FIR" },
                         Age: Age.EITHER,
                         Order: 16.4,
                         LongDescription: "Navigate around to the long platform in the back left part of the room. Jump on the moving platform to the south to get to the rupee."
                     },
                     "Fire Silver Rupee in Back Left Corner": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 233, y: 143, floor: "FIR" },
+                        MapInfo: { x: 141, y: 129, floor: "FIR" },
                         Age: Age.EITHER,
                         Order: 16.5,
                         LongDescription: "The intended way to get this rupee is to throw the silver pillar on the island south of the longer island. You can then ride the middle stationary platform to get to the rupee. You can also just ride that platform and jump to the rupee without throwing the pillar (roll jump at a 45 degree angle at the corner and hold forward), but you'll also void out in the lava!"
