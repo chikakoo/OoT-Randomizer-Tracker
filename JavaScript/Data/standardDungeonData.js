@@ -5467,7 +5467,7 @@ let StandardDungeons = {
         Regions: {
             main: {
                 Exits: {
-                    forestTrialEnd: {
+                    forestTrailWindRoom: {
                         Age: Age.ADULT,
                         NeedsFire: true,
                         RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.HOOKSHOT]
@@ -5494,8 +5494,14 @@ let StandardDungeons = {
                         }
                     },
                     spiritTrialRoom2: {
+                        Map: "Ganon's Castle",
+                        SilverRupeeIndex: 0,
                         CustomRequirement: function(age) {
-                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && Data.hasShield(age);
+                            if (Settings.RandomizerSettings.shuffleSilverRupees) {
+                                return true;
+                            }
+
+                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && Data.hasShield(age) && Data.hasSwordWeapon(age);
                             return Items.HOOKSHOT.playerHas || canAvoidHookshot;
                         }
                     },
@@ -5567,6 +5573,91 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 27,
                         LongDescription: "Enter the spirit trial. The heart is on the left wall."
+                    },
+                    "Spirit Silver Rupee in Back Left Corner": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 128, y: 190, floor: "SPT" },
+                        Age: Age.EITHER,
+                        Order: 27.1,
+                        LongDescription: "This rupee is in the back left corner of the room."
+                    },
+                    "Spirit Silver Rupee Near Beamos": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 164, y: 215, floor: "SPT" },
+                        Age: Age.EITHER,
+                        Order: 27.2,
+                        LongDescription: "This rupee is on the ground next to the beamos."
+                    },
+                    "Spirit Silver Rupee in Back Right Corner": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 188, y: 206, floor: "SPT" },
+                        Age: Age.EITHER,
+                        Order: 27.3,
+                        LongDescription: "This rupee is in the back right corner of the room."
+                    },
+                    "Spirit Silver Rupee in Front Right Corner": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 189, y: 253, floor: "SPT" },
+                        Age: Age.EITHER,
+                        Order: 27.4,
+                        LongDescription: "This rupee is in the front right corner of the room."
+                    },
+                    "Spirit Silver Rupee Above Beamos": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 159, y: 221, floor: "SPT" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
+                        Order: 27.5,
+                        LongDescription: "This rupee is above the beamos. Use your hookshot, or perform the ISG hover to get the rupee (remember not to cancel ISG with shield!)",
+                        CustomRequirement: function(age) {
+                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && Data.hasShield(age) && Data.hasSwordWeapon(age);
+                            return Items.HOOKSHOT.playerHas || canAvoidHookshot;
+                        }
+                    }
+                }
+            },
+            forestTrailWindRoom: {
+                Exits: {
+                    forestTrialEnd: {
+                        Map: "Ganon's Castle",
+                        SilverRupeeIndex: 3
+                    }
+                },
+                ItemLocations: {
+                    "Forest Silver Rupee Left of Entrance": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 159, y: 170, floor: "FST" },
+                        Age: Age.ADULT,
+                        Order: 5.1,
+                        LongDescription: "Enter the forest trial - you must first light all the torches in the room. If you have no bow, you can use Din's Fire if you light the top torch by first hooshotting to it.</br></br>This rupee is to your left as you enter. If you jump when the fans are going you'll be pushed to the next platform and can continue on."
+                    },
+                    "Forest Silver Rupee on Right Platform": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 198, y: 147, floor: "FST" },
+                        Age: Age.ADULT,
+                        Order: 5.2,
+                        LongDescription: "In the wind room, wait for the fans to blow then jump to your left. You can now make your way across the beamos platform to get to this rupee."
+                    },
+                    "Forest Silver Rupee in Front of Exit": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 176, y: 113, floor: "FST" },
+                        Age: Age.ADULT,
+                        Order: 5.3,
+                        LongDescription: "In the wind room, wait for the fans to blow then jump to your left. You can now make your way across the beamos platform to get to this rupee."
+                    },
+                    "Forest Silver Rupee Right of Exit": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 196, y: 101, floor: "FST" },
+                        Age: Age.ADULT,
+                        Order: 5.4,
+                        LongDescription: "In the wind room, wait for the fans to blow then jump to your left. Make your way across the beamos platform to the door. The rupee is to the right, but watch out for the fan."
+                    },
+                    "Forest Silver Rupee on Hookshot Target": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 146, y: 151, floor: "FST" },
+                        Age: Age.ADULT,
+                        Order: 5.5,
+                        LongDescription: "In the wind room, wait for the fans to blow then jump to your left. Make your way across the beamos platform to the door. To the left of a door, there's a switch. Time yourself when the fan is off to hit the switch. This will spawn a hookshot target that you can climb onto to get the rupee."
                     }
                 }
             },
@@ -5663,13 +5754,35 @@ let StandardDungeons = {
                 }
             },
             fireTrialRoom1: {
+                UseAdultAge: function() {
+                    return !Settings.GlitchesToAllow.ganonFireNoTunic;
+                },
                 Exits: {
                     fireTrialEnd: {
+                        Map: "Ganon's Castle",
                         Age: Age.ADULT,
-                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "3"}, {item: Items.HOOKSHOT, upgradeString: "2"}]
+                        SilverRupeeIndex: 2,
+                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}],
+                        CustomRequirement: function(age) {
+                            return Settings.RandomizerSettings.shuffleSilverRupees || Equipment.STRENGTH.currentUpgrade === 3;
+                        }
                     }
                 },
                 ItemLocations: {
+                    "Fire Silver Rupee on Block by Entrance": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 206, y: 218, floor: "FIR" },
+                        Age: Age.EITHER,
+                        Order: 14.1,
+                        LongDescription: "Enter the fire trial. The rupee is to the right on the block in the lava."
+                    },
+                    "Fire Silver Rupee by Flamethrower": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 128, y: 203, floor: "FIR" },
+                        Age: Age.EITHER,
+                        Order: 14.2,
+                        LongDescription: "This rupee is on the left side of the platform with the spinning fire."
+                    },
                     "Heart in Fire Trial": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapInfo: { x: 155, y: 156, floor: "FIR" },
@@ -5677,6 +5790,29 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 15,
                         LongDescription: "Enter the fire trial. The heart is on a sinking platform near where the golden gauntlets pillar starts."
+                    },
+                    "Fire Silver Rupee Under Silver Pillar": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 118, y: 173, floor: "FIR" },
+                        Age: Age.ADULT,
+                        Order: 15.1,
+                        LongDescription: "Navigate to the back part of the fire trial. Lift the giant siler pillar to find the rupee underneath.",
+                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "3"}]
+                    },
+                    "Fire Silver Rupee on Torch Slug Island": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 224, y: 156, floor: "FIR" },
+                        Age: Age.EITHER,
+                        Order: 15.2,
+                        LongDescription: "This rupee is on the island with the torch slug in the back right part of the room. If you have no hover boots, you'll have to jump across the lava while navigating the giant sinking platform or it will sink in!"
+                    },
+                    "Fire Silver Rupee on Block by Thrown Pillar": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 218, y: 192, floor: "FIR" },
+                        Age: Age.ADULT,
+                        Order: 15.3,
+                        LongDescription: "After throwing the giant silver pillar, make your way to the island with the torch slug. Use the thrown pillar (now in the lava) to get to the rupee on the sinking platform.",
+                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "3"}]
                     }
                 }
             },
@@ -5740,9 +5876,12 @@ let StandardDungeons = {
             lightTrialRoom3: {
                 Exits: {
                     lightTrialEnd: {
+                        Map: "Ganon's Castle",
+                        SilverRupeeIndex: 1,
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            return Items.HOOKSHOT.playerHas || Data.canGroundJumpWithBomb(age);
+                            return Settings.RandomizerSettings.shuffleSilverRupees ||
+                                (Items.HOOKSHOT.playerHas || Data.canGroundJumpWithBomb(age));
                         }
                     }
                 },
@@ -5753,6 +5892,44 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 25,
                         LongDescription: "The pot is in front of you after the Zelda's Lullaby room."
+                    },
+                    "Light Silver Rupee on Ledge": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 180, y: 127, floor: "LIT" },
+                        Age: Age.ADULT,
+                        Order: 25.1,
+                        LongDescription: "This rupee is up on the ledge in the center of the room. Use your hooshot, or perform a ground jump to get it.",
+                        CustomRequirement: function(age) {
+                            return Items.HOOKSHOT.playerHas || Data.canGroundJumpWithBomb(age);
+                        }
+                    },
+                    "Light Silver Rupee in Left Outer Alcove": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 147, y: 131, floor: "LIT" },
+                        Age: Age.ADULT,
+                        Order: 25.2,
+                        LongDescription: "This rupee is on the left side of the room, in an alcove along the outer wall."
+                    },
+                    "Light Silver Rupee in Left Inner Alcove": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 173, y: 126, floor: "LIT" },
+                        Age: Age.ADULT,
+                        Order: 25.3,
+                        LongDescription: "This rupee is on the left side of the room, in an alcove along the center wall."
+                    },
+                    "Light Silver Rupee in Right Inner Alcove": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 187, y: 126, floor: "LIT" },
+                        Age: Age.ADULT,
+                        Order: 25.4,
+                        LongDescription: "This rupee is on the right side of the room, in an alcover along the center wall."
+                    },
+                    "Light Silver Rupee in Right Outer Alcove": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 212, y: 131, floor: "LIT" },
+                        Age: Age.ADULT,
+                        Order: 25.5,
+                        LongDescription: "This rupee is on the right side of th eroom, in an alcove along the outer wall."
                     }
                 }
             },
@@ -5790,7 +5967,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 242, y: 184, floor: "SPT" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees && !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
                         Order: 28,
                         LongDescription: "Enter the spirit trial. Collect the rupees to advance to the next room. Hit the switch closest to the barred door with a jumpslash or charged spin attack to spawn the chest."
                     }
@@ -5808,7 +5985,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 239, y: 120, floor: "SPT" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees && !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
                         Order: 29,
                         LongDescription: "Enter the spirit trial. Collect the rupees to advance to the next room. To your left, there is a switch. Line up with the switch and drop a Bombchu. It should navigate itself over to the switch and activate it. This will open the door - enter it. The hidden chest is now in front of you and a little bit to the right. Face the right wall when trying to open it."
                     }
