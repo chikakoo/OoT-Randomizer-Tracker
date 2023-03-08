@@ -1971,6 +1971,31 @@ GrottoGroups = {
 			}
 		}
 	},
+	"4 Silver Rupees": {
+		tooltip: "A group of four silver rupees.",
+		buttons: {
+			"Silver Rupee 1": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 1."
+			},
+			"Silver Rupee 2": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 2."
+			},
+			"Silver Rupee 3": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 3."
+			},
+			"Silver Rupee 4": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 4."
+			}
+		}
+	},
 	"Rupee Circle": {
 		tooltip: "A circle of six green rupees surrounding a red rupee.",
 		buttons: {

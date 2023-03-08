@@ -4974,7 +4974,7 @@ let StandardDungeons = {
                             return Settings.GlitchesToAllow.gtgChildVineClips;
                         }
                     },
-                    lavaRoom: {
+                    bigLavaRoomFront: {
                         NeedsExplosives: true
                     },
                     mazeAfterOptionalDoor1: {
@@ -5181,7 +5181,7 @@ let StandardDungeons = {
 
                         }
                     },
-                    lavaRoom: {}
+                    bigLavaRoomUpperBack: {}
                 },
 
                 ItemLocations: {
@@ -5224,29 +5224,160 @@ let StandardDungeons = {
                     }
                 }
             },
-            lavaRoom: {
+            bigLavaRoomFront: {
                 Exits: {
                     mazeDeadEnd: {
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return true; }
                             return Data.canPlaySong(Songs.SONG_OF_TIME);
                         }
+                    },
+                    bigLavaRoomBack: {
+                        CustomRequirement: function(age) {
+                            if (age === Age.CHILD) { return true; }
+                            return Data.canPlaySong(Songs.SONG_OF_TIME) ||
+                                Equipment.HOVER_BOOTS.playerHas || 
+                                Data.canMegaFlip(age);
+                        }
+                    },
+                    bigLavaRoomUpperBack: {
+                        Age: Age.ADULT,
+                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                    },
+                    waterRoom: {
+                        Map: "Training Grounds",
+                        SilverRupeeIndex: 1,
+                        CustomRequirement: function(age) {
+                            // This is specifically for this setting, the normal exit is from bigLavaRoomUpperBack
+                            return Settings.RandomizerSettings.shuffleSilverRupees;
+                        }
                     }
                 },
 
                 ItemLocations: {
+                    "Lava Silver Rupee in Front Center": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 247, y: 180 },
+                        Age: Age.EITHER,
+                        Order: 15.1,
+                        LongDescription: "This rupee is the one on the platform in front of you, when entering from the aromos room."
+                    },
+                    "Lava Silver Rupee in Front Right": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 261, y: 171 },
+                        Age: Age.EITHER,
+                        Order: 15.2,
+                        LongDescription: "This rupee is the one on the platform to your right when entering from the aromos room."
+                    },
+                    "Lava Silver Rupee in Fire Circle": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 236, y: 145 },
+                        Age: Age.EITHER,
+                        Order: 15.4,
+                        LongDescription: "This is the rupee in the fire circle. The switch is in the front part of the room. You can play the Song of Time (or just be Child) near it to spawn some blocks to make this easier to get. Otherwise, quickly navigate using your hover boots to get to this before the fire comes back. Note that a megaflip can get the rupee without hitting the switch!",
+                        CustomRequirement: function(age) {
+                            if (age === Age.CHILD) { return true; }
+                            return Data.canPlaySong(Songs.SONG_OF_TIME) ||
+                                Equipment.HOVER_BOOTS.playerHas || 
+                                Data.canMegaFlip(age);
+                        }
+                    }
+                }
+            },
+            bigLavaRoomBack: {
+                Exits: {
+                    bigLavaRoomFront: {
+                        CustomRequirement: function(age) {
+                            if (age === Age.CHILD) { return true; }
+                            return Data.canPlaySong(Songs.SONG_OF_TIME) ||
+                                Equipment.HOVER_BOOTS.playerHas || 
+                                Data.canMegaFlip(age);
+                        }
+                    },
+                    bigLavaRoomUpperBack: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.HOOKSHOT]
+                    }
+                },
+                ItemLocations: {
+                    "Lava Silver Rupee in Back Right": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 262, y: 144 },
+                        Age: Age.EITHER,
+                        Order: 15.3,
+                        LongDescription: "This rupee is on the back right platform. Use your hover boots, longhsot the upper torch, or go around the dungeon and enter from the upper door to get this rupee."
+                    }
+                }
+            },  
+            bigLavaRoomUpperBack: {
+                Exits: {
+                    bigLavaRoomBack: {},
+                    waterRoom: {
+                        Map: "Training Grounds",
+                        SilverRupeeIndex: 1,
+                        CustomRequirement: function(age) {
+                            if (Settings.RandomizerSettings.shuffleSilverRupees) { return true; }
+
+                            let canGetFireRupee = Data.canPlaySong(Songs.SONG_OF_TIME) || Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
+                            return Items.HOOKSHOT.playerHas && canGetFireRupee; // Hookshot is get the rupee on top, then to hook the torch to get to the front part
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "Lava Silver Rupee on Upper Ledge": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 255, y: 124 },
+                        Age: Age.ADULT,
+                        Order: 15.5,
+                        LongDescription: "This rupee is on the back back platform. Either hookshot here, go get here from going around the dungeon. Use your hookshot to drop down onto the rupee.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    }
+                }
+            },
+            waterRoom: {
+                Exits: {},
+                ItemLocations: {
+                    "Topmost Water Room Silver Rupee": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 306, y: 165 },
+                        Age: Age.EITHER,
+                        Order: 15.6,
+                        LongDescription: "Navigate to the water room. See the Lava Room Key on Platform for an explanation on how to get there. First, collect all the silver rupees in the room. Most are straightfoward - you'll need your hover boots to get across some of the platforms. To get the one engulfed in flames, you must first hit the switch next to the raised platform. You can play the Song of Time there to spawn some helpful blocks as well. After you collect all the rupees, enter the door that opens up.<br/><br/>Once inside, play the Song of Time to remove the blocks. Use your iron boots to sink down and collect the rupees. The golden scale can be used to collect this top one - just dive down and let yourself get pushed along the walls.",
+                        IsGoldenScaleWater: true,
+                        RequiredSongs: [Songs.SONG_OF_TIME], // Seems these blocks ARE there as child
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
+                        }
+                    },
+                    "4 Silver Rupees in Water Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.SILVER_RUPEE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Silver Rupees",
+                        MapInfo: { x: 306, y: 169 },
+                        Age: Age.ADULT,
+                        Order: 15.7,
+                        LongDescription: "Navigate to the water room. See the Lava Room Key on Platform for an explanation on how to get there. First, collect all the silver rupees in the room. Most are straightfoward - you'll need your hover boots to get across some of the platforms. To get the one engulfed in flames, you must first hit the switch next to the raised platform. You can play the Song of Time there to spawn some helpful blocks as well. After you collect all the rupees, enter the door that opens up.<br/><br/>Once inside, play the Song of Time to remove the blocks. Use your iron boots to sink down and collect the rupees.",
+                        RequiredSongs: [Songs.SONG_OF_TIME],
+                        RequiredItems: [Equipment.IRON_BOOTS],
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
+                        }
+                    },
                     "Chest in Water Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 297, y: 160 },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                         Order: 16,
                         LongDescription: "Navigate to the water room. See the Lava Room Key on Platform for an explanation on how to get there. First, collect all the silver rupees in the room. Most are straightfoward - you'll need your hover boots to get across some of the platforms. To get the one engulfed in flames, you must first hit the switch next to the raised platform. You can play the Song of Time there to spawn some helpful blocks as well. After you collect all the rupees, enter the door that opens up.<br/><br/>Once inside, play the Song of Time to remove the blocks. Use your iron boots to sink down and collect all the rupees. The hookshot helps a lot here, but technically isn't required. Once you're done, rise back up and collect the chest.",
-                        RequiredItems: [Equipment.IRON_BOOTS],
-                        RequiredSongs: [Songs.SONG_OF_TIME],
+                        SilverRupeeIndex: 2,
                         CustomRequirement: function(age) {
-                            let canGetToWaterRoom = Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.currentUpgrade === 2;
-                            let canCompleteTask = Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                            return canGetToWaterRoom && canCompleteTask;
+                            if (Settings.RandomizerSettings.shuffleSilverRupees) { return true; }
+
+                            let canSinkIntoWater = Equipment.IRON_BOOTS.playerHas && Data.canPlaySong(Songs.SONG_OF_TIME);
+                            let tunicCheck = Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
+                            return canSinkIntoWater && tunicCheck;
                         }
                     }
                 }
@@ -5290,7 +5421,7 @@ let StandardDungeons = {
                         Map: "Training Grounds",
                         LockedDoor: "Optional Locked Door 2"
                     },
-                    lavaRoom: {}
+                    bigLavaRoomFront: {}
                 },
 
                 ItemLocations: {

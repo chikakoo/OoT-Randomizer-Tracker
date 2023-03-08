@@ -127,7 +127,7 @@ let ItemTracker = {
 	},
 
 	/**
-	 * Gets the max requried tokens - takes the medallion setting in mind
+	 * Gets the max required tokens - takes the medallion setting in mind
 	 */
 	_getMaxRequiredTokens: function() {
 		let maxRequiredTokens = Settings.RandomizerSettings.maxRequiredTokens;

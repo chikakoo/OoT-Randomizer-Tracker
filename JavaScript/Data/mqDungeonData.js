@@ -5485,7 +5485,7 @@ let MQDungeons = {
                     },
                     bigLavaRoomBack: {
                         Age: Age.ADULT,
-                        RequriedItems: [Items.FAIRY_BOW],
+                        RequiredItems: [Items.FAIRY_BOW],
                         CustomRequirement: function(age) {
                             // Getting all silver rupees spawns hookshot targets that you can use to traverse!
                             if (Settings.RandomizerSettings.shuffleSilverRupees && checkSilverRupeeRequirement("Training Grounds", 1)) {
