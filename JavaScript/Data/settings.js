@@ -266,6 +266,7 @@ let Settings = {
 		gtgNoZoraTunic: false,
 		gtgChildVineClips: false,
 		gtgSilverBlockSkip: false,
+		mqGtgEyeStatueJumpslash: false,
 		
 		ganonFireNoTunic: false,
 		gannonShadowTrialLens: false,

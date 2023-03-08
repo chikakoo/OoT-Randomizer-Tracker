@@ -5297,7 +5297,7 @@ let MQDungeons = {
             },
             armosRoom: {
                 Exits: {
-                    bigLavaRoom: {
+                    bigLavaRoomFront: {
                         RequiredChoiceOfChildItems: [Items.DEKU_STICK, Items.BOMB, Items.BOMBCHU]
                     }
                 },
@@ -5391,20 +5391,13 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
                     },
-                    bigLavaRoom: {
-                        Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Items.HOOKSHOT.currentUpgrade >= 2 || 
-                                (Data.canUseFireArrows(age) && Equipment.HOVER_BOOTS.playerHas);
-                        }
-                    },
-                    backOfMaze: {
-                        Age: Age.ADULT,
-                        RequiredItems: [Items.MEGATON_HAMMER, {item: Items.HOOKSHOT, upgradeString: "2"}]
-                    },
+                    bigLavaRoomUpperBack: {},
                     iceArrowsRoom: {
-                        Age: Age.ADULT,
-                        RequiredAdultItems: [Items.HOOKSHOT]
+                        Age: Age.EITHER,
+                        CustomRequirement: function(age) {
+                            return Data.canHitSwitchAtShortDistance(age) ||
+                                Settings.GlitchesToAllow.mqGtgEyeStatueJumpslash;
+                        }
                     }
                 },
 
@@ -5437,16 +5430,136 @@ let MQDungeons = {
                     }
                 }
             },
-            bigLavaRoom: {
+            bigLavaRoomFront: {
                 Exits: {
-                    waterRoom: {
+                    bigLavaRoomWaterDoorPlatform: {
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.HOVER_BOOTS],
                         CustomRequirement: function(age) {
-                            return Items.FAIRY_BOW.playerHas || Data.canUseFireItem(age);
+                            return Items.HOOKSHOT.currentUpgrade === 2 || Items.FAIRY_BOW.playerHas;
                         }
                     },
-                    armosRoom: {
+                    bigLavaRoomBack: {
+                        Age: Age.ADULT,
+                        RequriedItems: [Items.FAIRY_BOW],
+                        CustomRequirement: function(age) {
+                            return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
+                        }
+                    },
+                    armosRoom: {}
+                },
+                ItemLocations: {
+                    "Silver Rupee in Front Center Lava Room": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 247, y: 180 },
+                        Age: Age.ADULT,
+                        Order: 15.1,
+                        LongDescription: "This rupee is the one on the platform in front of you, when entering from the aromos room.<br/><br/>To clear the fire around the rupees, use a fire arrow on the unlit torch on the side of the room, or longshot to the torch and use Din's Fire.<br/><br/>If entering from the top, either clear the fire and use hover boots to navigate around, or use your longshot to navigate via the torches (might be good to hit the megaton hammer switch too)."
+                    },
+                    "Silver Rupee in Front Left Lava Room": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 234, y: 173 },
+                        Age: Age.ADULT,
+                        Order: 15.2,
+                        LongDescription: "This rupee is the one on the platform to your left when entering from the aromos room."
+                    },
+                    "Silver Rupee in Front Right Lava Room": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 261, y: 171 },
+                        Age: Age.ADULT,
+                        Order: 15.3,
+                        LongDescription: "This rupee is the one on the platform to your right when entering from the aromos room."
+                    }
+                }
+            },
+            bigLavaRoomUpperBack: {
+                Exits: {
+                    bigLavaRoomBack: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.MAGIC]
+                    },
+                    bigLavaRoomBackLeft: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.MAGIC],
+                        CustomRequirement: function(age) {
+                            return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
+                        }
+                    },
+                    bigLavaRoomWaterDoorPlatform: {
+                        Age: Age.ADULT,
+                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                    },
+                    backOfMaze: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.MEGATON_HAMMER, {item: Items.HOOKSHOT, upgradeString: "2"}]
+                    }
+                },
+                ItemLocations: {}
+            },
+            bigLavaRoomBack: {
+                Exits: {
+                    bigLavaRoomBackLeft: {
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
+                        }
+                    },
+                    bigLavaRoomFront: {
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "Silver Rupee in Back Center Lava Room": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 252, y: 155 },
+                        Age: Age.ADULT,
+                        Order: 15.4,
+                        LongDescription: "This rupee is on the back center platform. Clear the fire as normal, and use your hover boots to get to it. Hover boots not required if coming from either of the top areas."
+                    },
+                    "Silver Rupee in Back Right Lava Room": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 262, y: 144 },
+                        Age: Age.ADULT,
+                        Order: 15.5,
+                        LongDescription: "This rupee is on the back right platform. Clear the fire as normal, and use your hover boots to get to it. Hover boots not required if coming from either of the top areas."
+                    }
+                }
+            },
+            bigLavaRoomBackLeft: {
+                Exits: {},
+                ItemLocations: {
+                    "Silver Rupee in Back Left Lava Room ": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 236, y: 145 },
+                        Age: Age.ADULT,
+                        Order: 15.6,
+                        LongDescription: "This rupee is on the back left platform. Clear the fire as normal, and use your hover boots to get to it. Hover boots not required if coming from the maze top area, which you can get to by hammering the rusted switch in the upper area, and then longshotting to the target."
+                    }
+                }
+            },
+            bigLavaRoomWaterDoorPlatform: {
+                Exits: {
+                    bigLavaRoomFront: {
+                        CustomRequirement: function(age) {
+                            return Items.HOOKSHOT.currentUpgrade === 2 || Data.canUseFireItem(age);
+                        }
+                    },
+                    bigLavaRoomBack: {
+                        NeedsFire: true,
+                        CustomRequirement: function(age) {
+                            return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
+                        }
+                    },
+                    waterRoom: {
+                        Map: "Training Grounds",
+                        SilverRupeeIndex: 1,
+                        CustomRequirement: function(age) {
+                            if (Settings.RandomizerSettings.shuffleSilverRupees) { return true; }
+                            return (Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age)) && 
+                                (Items.FAIRY_BOW.playerHas || Data.canUseFireItem(age));
+                        }
                     }
                 },
                 ItemLocations: {}
@@ -5454,18 +5567,25 @@ let MQDungeons = {
             backOfMaze: {
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {
-                    bigLavaRoom: {
+                    bigLavaRoomFront: {
                         Age: Age.EITHER,
                         CustomRequirement: function(age) {
                             if (Data.canMegaFlip(age)) { return true; }
                             if (age === Age.CHILD) { return false; }
 
-                            let canUseFireArrows = Equipment.MAGIC.playerHas && Items.FAIRY_BOW.playerHas;
-                            return canUseFireArrows ||
+                            return Data.canUseFireArrows(age) ||
                                 Items.HOOKSHOT.currentUpgrade === 2 ||
                                 Data.canBombSuperslideWithHovers(age) ||
                                 Data.canHammerHoverBootsSuperslide(age);
                         }
+                    },
+                    bigLavaRoomBack: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.MAGIC]
+                    },
+                    bigLavaRoomBackLeft: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.MAGIC]
                     }
                 },
                 ItemLocations: {
@@ -5536,7 +5656,7 @@ let MQDungeons = {
                         MapInfo: { x: 166, y: 132 },
                         Age: Age.EITHER,
                         Order: 11,
-                        LongDescription: "First, spawn the chest by making your way to the center of the maze. Break the box, then hammer the rusted switch to spawn the chest.<br/><br/>In the spinning room, hookshot to the target in the center of the eye statues. From there, hookshot the crystal switch to unbar the door. Go in and claim the chest.",
+                        LongDescription: "First, spawn the chest by making your way to the center of the maze. Break the box, then hammer the rusted switch to spawn the chest.<br/><br/>In the eye statue room, hit the lower crystal switch with your hookshot, bow,, or explosives. The room with the chest will become unbarred.",
                         CustomRequirement: function(age) {
                             // If the chest is already spawned, we're good
                             if (Data.itemLocationObtained("Training Grounds", "mazeCenter", "Spawn Ice Arrow Chest")) {

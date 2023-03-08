@@ -1431,7 +1431,7 @@ Data = {
      * @param {Age} age - the age
      */
     canHitSwitchAtShortDistance: function(age) {
-        return this.hasExplosives() || //TODO: will chus work in all cases? maybe add a boolean for them
+        return this.hasExplosives() ||
             this.canUseBoomerang(age) ||
             this.canShootEyeSwitch(age) ||
             (age === Age.ADULT && Items.HOOKSHOT.playerHas);
