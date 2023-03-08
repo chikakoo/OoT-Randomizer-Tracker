@@ -5442,6 +5442,10 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         RequriedItems: [Items.FAIRY_BOW],
                         CustomRequirement: function(age) {
+                            // Getting all silver rupees spawns hookshot targets that you can use to traverse!
+                            if (Settings.RandomizerSettings.shuffleSilverRupees && checkSilverRupeeRequirement("Training Grounds", 1)) {
+                                return true;
+                            }
                             return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
                         }
                     },
@@ -5500,13 +5504,33 @@ let MQDungeons = {
                     bigLavaRoomBackLeft: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
+                            // Getting all silver rupees spawns hookshot targets that you can use to traverse!
+                            if (Settings.RandomizerSettings.shuffleSilverRupees && checkSilverRupeeRequirement("Training Grounds", 1)) {
+                                return true;
+                            }
                             return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
                         }
                     },
                     bigLavaRoomFront: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
+                            // Getting all silver rupees spawns hookshot targets that you can use to traverse!
+                            if (Settings.RandomizerSettings.shuffleSilverRupees && checkSilverRupeeRequirement("Training Grounds", 1)) {
+                                return true;
+                            }
+
+                            // Hookshot will let you get to the big water platform first, then navigate before the fires go out
+                            return Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas || Data.canMegaFlip(age);
+                        }
+                    },
+                    bigLavaRoomWaterDoorPlatform: {
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            // Getting all silver rupees spawns hookshot targets that you can use to traverse!
+                            if (Settings.RandomizerSettings.shuffleSilverRupees && checkSilverRupeeRequirement("Training Grounds", 1)) {
+                                return true;
+                            }
+                            return Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas;
                         }
                     }
                 },
@@ -5601,7 +5625,8 @@ let MQDungeons = {
                         MapInfo: { x: 187, y: 154 },
                         Age: Age.EITHER,
                         Order: 15,
-                        LongDescription: "After getting the close chest from the back of the maze, continue along counter-clockwise to get the next chest (there are no doors to go through)."					}
+                        LongDescription: "After getting the close chest from the back of the maze, continue along counter-clockwise to get the next chest (there are no doors to go through)."					
+                    }
                 }
             },
             mazeCenter: {
@@ -5634,8 +5659,26 @@ let MQDungeons = {
                         MapInfo: { x: 297, y: 160 },
                         Age: Age.ADULT,
                         Order: 16,
-                        LongDescription: "From the big lava room, longshot to the torch by the side door. Light it with a fire item or with your bow from the lit torch, then use your hover boots to collect the rupees. You may need to collect half of them then come back and light the torch again.<br/><br/>Once inside the water room, use your iron boots and longshot to collect all the rupees in the water. The chest will spawn at the top.",
+                        LongDescription: "From the big lava room, longshot to the torch by the side door. Light it with a fire item or with your bow from the lit torch, then use your hover boots to collect the rupees. You may need to collect half of them then come back and light the torch again.<br/><br/>Once inside the water room, burn the web, then use your iron boots and hookshot (if you have one) to collect all the rupees in the water. The chest will spawn at the top.",
+                        SilverRupeeIndex: 2,
+                        CustomRequirement: function(age) {
+                            if (Settings.RandomizerSettings.shuffleSilverRupees) { return true; }
+
+                            let tunicCheck = Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
+                            return tunicCheck && Equipment.IRON_BOOTS.playerHas && Data.canUseFireItem(age);
+                        }
+                    },
+                    "3 Silver Rupees in Water Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.SILVER_RUPEE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Silver Rupees",
+                        MapInfo: { x: 306, y: 169 },
+                        Age: Age.ADULT,
+                        Order: 16.1,
+                        LongDescription: "From the big lava room, longshot to the torch by the side door. Light it with a fire item or with your bow from the lit torch, then use your hover boots to collect the rupees. You may need to collect half of them then come back and light the torch again.<br/><br/>Once inside the water room, burn the web, then use your iron boots and hookshot (if you have one) to collect the items.",
                         RequiredItems: [Equipment.IRON_BOOTS],
+                        NeedsFire: true,
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
                         }
