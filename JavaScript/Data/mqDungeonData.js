@@ -5316,8 +5316,14 @@ let MQDungeons = {
             leftArea: {
                 Exits: {
                     afterRupeeRoom: {
-                        Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT]
+                        Map: "Training Grounds",
+                        SilverRupeeIndex: 0,
+                        CustomRequirement: function(age) {
+                            if (Settings.RandomizerSettings.shuffleSilverRupees) {
+                                return true;
+                            }
+                            return age === Age.ADULT && Items.HOOKSHOT.playerHas;
+                        }
                     }
                 },
 
@@ -5328,11 +5334,49 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 7,
                         LongDescription: "From the main entrance, light the torches and go through the door that unlocks. Kill the Iron Knuckle to spawn the chest."
+                    },
+                    "Icicle Silver Rupee on Ceiling": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 80, y: 194 },
+                        Age: Age.ADULT,
+                        Order: 7.1,
+                        LongDescription: "After the sand room, look for the rupee to our right on the ceiling. You can get it with a well-angled hookshot to the ceiling target; get the rest of the distance with a jumpslash.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "Icicle Silver Rupee in Back Left Area": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 53, y: 198 },
+                        Age: Age.EITHER,
+                        Order: 7.2,
+                        LongDescription: "This rupee is in the left area, guarded by a freezard. If you can't kill, run into it from behind to get the item."
+                    },
+                    "Icicle Silver Rupee by Ledge in Midair": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 75, y: 148 },
+                        Age: Age.EITHER,
+                        Order: 7.3,
+                        LongDescription: "WALL MASTER WARNING: This rupee is the one floating in mid-air from the entrance. Naivigate around the maze, and drop down to get it. If you don't have a hookshot, there's a route from the entrance if you take the second right."
+                    },
+                    "Icicle Silver Rupee Over Right Area Void": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 94, y: 203 },
+                        Age: Age.EITHER,
+                        Order: 7.4,
+                        LongDescription: "This rupee is over the void in the right side of the room. There's a fire-free path if you take the second right from the entrance. You can backwalk off the ledge to avoid voiding out."
+                    },
+                    "Icicle Silver Rupee Behind Icicles": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 94, y: 128 },
+                        Age: Age.EITHER,
+                        Order: 7.5,
+                        LongDescription: "This rupee is on the right side of the room behind the icicles. There's a fire-free path if you take the second right from the entrance."
                     }
                 }
             },
             afterRupeeRoom: {
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
+                UseAdultAge: function() { 
+                    return !Settings.GlitchesToAllow.gtgChildVineClips && !Settings.RandomizerSettings.shuffleSilverRupees; 
+                },
                 Exits: {
                     leftArea: {
                         Age: Age.CHILD // Only possible via vine clipping and going backwards
@@ -5352,6 +5396,7 @@ let MQDungeons = {
                         }
                     },
                     spinningRoom: {
+                        Age: Age.ADULT,
                         RequiredSongs: [Songs.SONG_OF_TIME],
                         CustomRequirement: function(age) {
                             return Data.hasBottleOrBlueFire(age);
@@ -5452,21 +5497,21 @@ let MQDungeons = {
                     armosRoom: {}
                 },
                 ItemLocations: {
-                    "Silver Rupee in Front Center Lava Room": {
+                    "Lava Silver Rupee in Front Center": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 247, y: 180 },
                         Age: Age.ADULT,
                         Order: 15.1,
                         LongDescription: "This rupee is the one on the platform in front of you, when entering from the aromos room.<br/><br/>To clear the fire around the rupees, use a fire arrow on the unlit torch on the side of the room, or longshot to the torch and use Din's Fire.<br/><br/>If entering from the top, either clear the fire and use hover boots to navigate around, or use your longshot to navigate via the torches (might be good to hit the megaton hammer switch too)."
                     },
-                    "Silver Rupee in Front Left Lava Room": {
+                    "Lava Silver Rupee in Front Left": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 234, y: 173 },
                         Age: Age.ADULT,
                         Order: 15.2,
                         LongDescription: "This rupee is the one on the platform to your left when entering from the aromos room."
                     },
-                    "Silver Rupee in Front Right Lava Room": {
+                    "Lava Silver Rupee in Front Right": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 261, y: 171 },
                         Age: Age.ADULT,
@@ -5535,14 +5580,14 @@ let MQDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Silver Rupee in Back Center Lava Room": {
+                    "Lava Silver Rupee in Back Center": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 252, y: 155 },
                         Age: Age.ADULT,
                         Order: 15.4,
                         LongDescription: "This rupee is on the back center platform. Clear the fire as normal, and use your hover boots to get to it. Hover boots not required if coming from either of the top areas."
                     },
-                    "Silver Rupee in Back Right Lava Room": {
+                    "Lava Silver Rupee in Back Right": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 262, y: 144 },
                         Age: Age.ADULT,
@@ -5554,7 +5599,7 @@ let MQDungeons = {
             bigLavaRoomBackLeft: {
                 Exits: {},
                 ItemLocations: {
-                    "Silver Rupee in Back Left Lava Room ": {
+                    "Lava Silver Rupee in Back Left": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 236, y: 145 },
                         Age: Age.ADULT,

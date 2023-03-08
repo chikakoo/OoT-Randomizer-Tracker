@@ -285,8 +285,8 @@ let MapUI = {
 		let mapImageAndIcons = document.getElementById("mapImageAndIcons");
 		let rect = mapDiv.getBoundingClientRect();
 
-		let x = (event.pageX - rect.left) / mapImageAndIcons.offsetWidth * 100 + "%";
-	    let y = (event.pageY - rect.top) / mapImageAndIcons.offsetHeight * 100 + "%";
+		let x = (event.clientX - rect.left) / mapImageAndIcons.offsetWidth * 100 + "%";
+	    let y = (event.clientY - rect.top) / mapImageAndIcons.offsetHeight * 100 + "%";
 	    mapImageAndIcons.style["transform-origin"] = `${x} ${y}`;
 	    this._applyScaling(this._scaleValue);
 	},
