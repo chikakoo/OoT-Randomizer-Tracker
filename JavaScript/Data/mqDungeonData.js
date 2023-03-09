@@ -3253,7 +3253,6 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
-                    // Locked Doors - note that we're assuming that you won't use keys on doors that will break sequence if the gate clip is on
                     "Locked Door by Truth Spinner": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["truthSpinnerRoom"],
@@ -3273,6 +3272,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "This is the door near the beamos after the truth spinner room.",
+                        NeedsExplosives: true,
                         KeyRequirement: function(age) {
                             let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 2;
                             return { min: 1, max: max };
@@ -3280,11 +3280,12 @@ let MQDungeons = {
                     },
                     "Locked Door in Giant Room": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["rightSideOfGiantRoom"],
+                        Regions: ["rightSideOfGiantRoom", "invisibleSpikeRoom"],
                         MapInfo: { x: 157, y: 93, floor: "B2" },
                         Age: Age.ADULT,
                         Order: 22,
                         LongDescription: "This is the locked door on the right side of the giant room.",
+                        RequiredItems: [Equipment.HOVER_BOOTS], // This is fine since you couldn't do anything after opening the door if you didn't have them!
                         KeyRequirement: function(age) {
                             let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 3;
                             return { min: 2, max: max };
@@ -3297,6 +3298,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 25,
                         LongDescription: "This is the locked door in the room with the invisible spikes.",
+                        RequriedItems: [Items.HOOKSHOT],
                         KeyRequirement: function(age) {
                             let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 4;
                             let min = Settings.GlitchesToAllow.shadowGateClip ? 2 : 3;
@@ -3339,10 +3341,9 @@ let MQDungeons = {
                     },
                     afterTruthSpinner: {
                         CustomRequirement: function(age) {
-                            if (Data.canMegaFlip(age)) { return true; }
-                
-                            let canUseFireArrows = Items.FAIRY_BOW.playerHas && Items.FIRE_ARROW.playerHas && Equipment.MAGIC.playerHas;
-                            return canUseFireArrows || Equipment.HOVER_BOOTS.playerHas;
+                            return Data.canMegaFlip(age) ||
+                                Data.canUseFireArrows(age) ||
+                                Equipment.HOVER_BOOTS.playerHas;
                         }
                     }
                 },
@@ -3438,7 +3439,6 @@ let MQDungeons = {
                         Map: "Shadow Temple",
                         NeedsExplosives: true
                     },
-
                     boatRoom: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
@@ -3448,13 +3448,59 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
+                    "Scythe Silver Rupee Right of Scythe": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 304, y: 113, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 8.1,
+                        LongDescription: "First, turn the truth spinner in the main room to the correct skull to open the gate. Now, shoot the torches to the left and right of the gate to create a platform. Alternatively, you can megaflip or hover boots across. Take the left door from the beamos.<br/><br/>This rupee is to the right of the spinning scythe."
+                    },
+                    "Scythe Silver Rupee Left of Scythe": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 292, y: 99, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 8.2,
+                        LongDescription: "This rupee is to the left of the spinning scythe."
+                    },
+                    "Scythe Silver Rupee in Left Alcove": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 268, y: 113, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 8.3,
+                        LongDescription: "This rupee is in the alcove on the left, garded by a giant skulltula."
+                    },
+                    "Scythe Silver Rupee in Midair": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 273, y: 88, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 8.4,
+                        LongDescription: "This rupee is in the northwest corner of the room. Use your hookshot or hoer boots to get to it.",
+                        CustomRequirement: function(age) {
+                            return Items.HOOKSHOT.playerHas || 
+                                Equipment.HOVER_BOOTS.playerHas || 
+                                Settings.GlitchesToAllow.shadowSilverRupeeWithNothing;
+                        }
+                    },
+                    "Scythe Silver Rupee in Back Alcove": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 316, y: 75, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 8.5,
+                        LongDescription: "This rupee is in the alcove in the back part of the room, guarded by a giant skulltula."
+                    },
                     "Chest in Scythe Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 345, y: 122, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function(age) { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                         Order: 9,
                         LongDescription: "First, turn the truth spinner in the main room to the correct skull to open the gate. Now, shoot the torches to the left and right of the gate to create a platform. Alternatively, you can megaflip or hover boots across. Take the left door from the beamos. Gather all the rupees to open the cell to the chest.",
                         CustomRequirement: function(age) {
+                            // We can't check the index via the property here since we don't NEED the rupees to advance in this case
+                            if (Settings.RandomizerSettings.shuffleSilverRupees) { 
+                                return Data.canWeirdShot(age) || checkSilverRupeeRequirement("Shadow Temple", 0);
+                            }
+
                             return Items.HOOKSHOT.playerHas || 
                                 Equipment.HOVER_BOOTS.playerHas || 
                                 Settings.GlitchesToAllow.shadowSilverRupeeWithNothing;
@@ -3478,14 +3524,49 @@ let MQDungeons = {
             },
             afterBeamos: {
                 Exits: {
+                    invisibleScytheRoom: {},
                     rightSideOfGiantRoom: {
                         CustomRequirement: function(age) {
                             return Data.canUseFireItem(age) || Data.canMegaFlip(age) || (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas)
                         }
                     }
                 },
+                ItemLocations: {}
+            },
+            invisibleScytheRoom: {
+                Exits: {
+                    gatedAreaInInvisibleScytheRoom: {
+                        CustomRequirement: function(age) {
+                            if (Data.canWeirdShot(age)) { return true; }
 
+                            // We can't check the index via the property here since we don't NEED the rupees to advance in this case
+                            if (Settings.RandomizerSettings.shuffleSilverRupees) { 
+                                return checkSilverRupeeRequirement("Shadow Temple", 1);
+                            }
+
+                            return age === Age.ADULT && Data.canPlaySong(Songs.SONG_OF_TIME);
+                        }
+                    }
+                },
                 ItemLocations: {
+                    "9 Invisible Scythe Silver Rupees in Center": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.SILVER_RUPEE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "9 Silver Rupees",
+                        MapInfo: { x: 313, y: 141, floor: "B2" },
+                        Age: Age.EITHER,
+                        Order: 12.1,
+                        LongDescription: "To get to this room, first make it to the platform with the two beamos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to).<br/><br/>The rupees are spread out in the center of the room where the invisible scythe is. One is under the Like Like, so kill it or lure it out to get it."
+                    },
+                    "Invisible Scythe Silver Rupee in Corner": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 331, y: 160, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 12.2,
+                        LongDescription: "This rupee is in the back right corner of the invisible scythe room. You'll need to play the Song of Time to spawn a block to get it.",
+                        RequiredSongs: [Songs.SONG_OF_TIME]
+                    },
                     "2 Hearts in Invisible Scythe Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -3494,51 +3575,103 @@ let MQDungeons = {
                         MapInfo: { x: 331, y: 123, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 13,
-                        LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). The hearts are in the back left corner. Play the Song of Time to spawn a block to get them.",
+                        LongDescription: "To get to this room, first make it to the platform with the two beamos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). The hearts are in the back left corner. Play the Song of Time to spawn a block to get them.",
                         CustomRequirement: function(age) {
                             return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canUseBoomerang(age);
                         }
-                    },
+                    }
+                }
+            },
+            gatedAreaInInvisibleScytheRoom: {
+                UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
+                Exits: {},
+                ItemLocations: {
                     "Visible Chest in Invisible Scythe Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 343, y: 138, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 14,
-                        LongDescription: "Bomb the wall after the beamos and open the locked door. Navigate through the hallways until you get to a dead end. Make a left at the fork and follow the wall, jumping across the invisible platforms. Enter the door.<br/><br/>Gather all the silver rupees - you'll need the Song of Time for one of them. This will open the door to the chest.",
-                        CustomRequirement: function(age) {
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canWeirdShot(age);
-                        }
+                        LongDescription: "Bomb the wall after the beamos and open the locked door. Navigate through the hallways until you get to a dead end. Make a left at the fork and follow the wall, jumping across the invisible platforms. Enter the door.<br/><br/>Gather all the silver rupees - you'll need the Song of Time for one of them. This will open the door to the chest."
                     },
                     "Invisible Chest in Invisible Scythe Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 343, y: 142, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 15,
-                        LongDescription: "Bomb the wall after the beamos and open the locked door. Navigate through the hallways until you get to a dead end. Make a left at the fork and follow the wall, jumping across the invisible platforms. Enter the door.<br/><br/>Gather all the silver rupees - you'll need the Song of Time for one of them. This will open the door to the chest - it's next to the visible one.",
-                        CustomRequirement: function(age) {
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canWeirdShot(age);
-                        }
+                        LongDescription: "Bomb the wall after the beamos and open the locked door. Navigate through the hallways until you get to a dead end. Make a left at the fork and follow the wall, jumping across the invisible platforms. Enter the door.<br/><br/>Gather all the silver rupees - you'll need the Song of Time for one of them. This will open the door to the chest - it's next to the visible one."
                     }
                 }
             },
             rightSideOfGiantRoom: {
                 Exits: {
+                    afterBeamos: {
+                        Age: Age.ADULT,
+                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                    },
+                    fallingSpikesRoom: {},
                     invisibleSpikeRoom: {
+                        Age: Age.ADULT,
                         LockedDoor: "Locked Door in Giant Room",
                         Map: "Shadow Temple",
                         RequiredItems: [Equipment.HOVER_BOOTS]
                     }
                 },
-
                 ItemLocations: {
+                    "Pit Room Silver Rupee in Front of Beamos": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 142, y: 215, floor: "B2" },
+                        Age: Age.EITHER,
+                        Order: 15.6,
+                        LLongDescription: "In the giant room, use a fire item to hit the frozen eye switch. This will spawn some platforms in the direction the eye is facing. Use them to get to the right side of the room.<br/><br/>This rupee is in front of the beamos."
+                    },
+                    "Pit Room Silver Rupee in Behind Beamos": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 132, y: 215, floor: "B2" },
+                        Age: Age.EITHER,
+                        Order: 15.7,
+                        LLongDescription: "This rupee is in behind of the lone pit room beamos."
+                    },
+                    "Pit Room Silver Rupee by Chasm": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 138, y: 195, floor: "B2" },
+                        Age: Age.EITHER,
+                        Order: 15.8,
+                        LLongDescription: "This rupee is by the chasm near the lone pit room beamos."
+                    },
+                    "2 Pit Room Silver Rupees Above Beamos": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.SILVER_RUPEE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Silver Rupees",
+                        MapInfo: { x: 137, y: 215, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 15.9,
+                        LongDescription: "These rupees are above the lone pit room beamos. Use your longshot to get to them.",
+                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                    },
                     "Chest in Giant Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 138, y: 241, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                         Order: 16,
                         LongDescription: "In the giant room, use a fire item to hit the frozen eye switch. This will spawn some platforms in the direction the eye is facing. Use them to get to the right side of the room. Once there, gather all the silver rupees to spawn the chest. Two of them are up high and requires the longshot.",
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}],
-                    },
+                        SilverRupeeIndex: 2,
+                        CustomRequirement: function(age) {
+                            return Settings.RandomizerSettings.shuffleSilverRupees || (age === Age.ADULT && Items.HOOKSHOT.currentUpgrade === 2);
+                        }
+                    }
+                }
+            },
+            fallingSpikesRoom: {
+                Exits: {
+                    topOfFallingSpikesRoom: {
+                        CustomRequirement: function(age) {
+                            return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
+                        }
+                    }
+                },
+                ItemLocations: {
                     "Skulltula in Falling Spikes Room": { 
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 53, y: 237, floor: "B2" },
@@ -3555,26 +3688,26 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 18,
                         LongDescription: "This chest is in the first cell to the right in the falling spike room."
-                    },
+                    }
+                }
+            },
+            topOfFallingSpikesRoom: {
+                UseAdultAge: function() {  return !Settings.GlitchesToAllow.shadowBackFlipOnSpikes; },
+                Exits: {},
+                ItemLocations: {
                     "Top Switchless Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 17, y: 239, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 19,
-                        LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. The chest is in the southeast corner.",
-                        CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
-                        }
+                        LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. The chest is in the southeast corner."
                     },
                     "Top Switch Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 76, y: 209, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 20,
-                        LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. Press the switch to spawn the chest.",
-                        CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
-                        }
+                        LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. Press the switch to spawn the chest."
                     },
                     "2 Upper Pots in Falling Spikes Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3584,10 +3717,7 @@ let MQDungeons = {
                         MapInfo: { x: 82, y: 209, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 21,
-                        LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. The pots are above the hidden block's alcove.",
-                        CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
-                        }
+                        LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. The pots are above the hidden block's alcove."
                     }
                 }
             },
@@ -3598,8 +3728,11 @@ let MQDungeons = {
                         LockedDoor: "Locked Door in Giant Room"
                     },
                     leftOfInvisibleSpikeRoom: {
-                        Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT]
+                        Map: "Shadow Temple",
+                        SilverRupeeIndex: 3,
+                        CustomRequirement: function(age) {
+                            return Settings.RandomizerSettings.shuffleSilverRupees || (age === Age.ADULT && Items.HOOKSHOT.playerHas);
+                        }
                     },
                     windHallWayTop: {
                         Map: "Shadow Temple",
@@ -3612,21 +3745,100 @@ let MQDungeons = {
                     "Chest in Invisible Spike Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 155, y: 63, floor: "B2" },
-                        Age: Age.EITHER,
+                        Age: Age.ADULT,
                         Order: 23,
                         LongDescription: "From the right side of the giant room, make your way across the invisible platforms to the northwest door. Use a key to open the door. Kill all the enemies to spawn the chest."
+                    },
+                    "Invisible Spike Ground Center Silver Rupee": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 156, y: 72, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 23.1,
+                        LongDescription: "This rupee is in front of you as you enter the room."
+                    },
+                    "Invisible Spike Right Ground Silver Rupee": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 173, y: 68, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 23.2,
+                        LongDescription: "This rupee is in to the right as you enter the room."
+                    },
+                    "Invisible Spike Silver Rupee on Right Wall": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 184, y: 65, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 23.3,
+                        LongDescription: "This rupee is in to the right, just below the hookshot target.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "Invisible Spike Ceiling Silver Rupee by Entrance": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 156, y: 84, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 23.4,
+                        LongDescription: "This rupee is above you as you enter the room. It's the one closer to the entrance.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "Invisible Spike Ceiling Silver Rupee in Center": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 156, y: 70, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 23.5,
+                        LongDescription: "This rupee is above you as you enter the room. It's the one farther from the entrance.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "Invisible Spike Ceiling Silver Rupee by Exit": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 156, y: 70, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 23.6,
+                        LongDescription: "This rupee is above the exit door. It marks an invisible hookshot target. If you need height, kill the redeads to spawn the chest. Backflip onto the chest and hookshot it from there.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "Invisible Spike Midair Silver Rupee on Back Right Wall": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 175, y: 52, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 23.7,
+                        LongDescription: "First, get to the exit door (see the previous rupee). You can roll + jumpslash, or just use hover boots to get the rupee.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "Invisible Spike Silver Rupee on Left Wall": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 136, y: 82, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 23.8,
+                        LongDescription: "This rupee is in to the left, just below the hookshot target.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "Invisible Spike Silver Rupee on Invisible Ledge": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 132, y: 52, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 23.9,
+                        LongDescription: "This rupee is on an invisible ledge in the back left corner of the room. There's an invisible hookshot target on the back wall you can use to get up to it.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "Invisible Spike Midair Silver Rupee by Invisible Ledge": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 140, y: 60, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 23.91,
+                        LongDescription: "Get to the invisible ledge (see the previous rupee). You can use your hover boots, or roll jump to get to this nearby silver rupee.",
+                        RequiredItems: [Items.HOOKSHOT]
                     }
                 }
             },
             leftOfInvisibleSpikeRoom: {
+                UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                 Exits: {},
                 ItemLocations: {
                     "Chest in Stalfos Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 68, y: 68, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 24,
-                        LongDescription: "Gather all the rupees in the invisible spike room. You'll need your hookshot. There are several invislbe targets on the walls you need to use as well. Once done, enter the room that opens and kill all the Stalfos to spawn the chest."
+                        LongDescription: "Gather all the rupees in the invisible spike room. You'll need your hookshot. There are several invisible targets on the walls you need to use as well. Once done, enter the room that opens and kill all the Stalfos to spawn the chest."
                     }
                 }
             },

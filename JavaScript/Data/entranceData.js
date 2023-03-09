@@ -1951,6 +1951,21 @@ GrottoGroups = {
 			}
 		}
 	},
+	"2 Silver Rupees": {
+		tooltip: "A group of two silver rupees.",
+		buttons: {
+			"Silver Rupee 1": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 1."
+			},
+			"Silver Rupee 2": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 2."
+			}
+		}
+	},
 	"3 Silver Rupees": {
 		tooltip: "A group of three silver rupees.",
 		buttons: {
@@ -1993,6 +2008,56 @@ GrottoGroups = {
 				icon: "Silver Rupee",
 				itemGroup: ItemGroups.SILVER_RUPEE,
 				description: "Silver rupee 4."
+			}
+		}
+	},
+	"9 Silver Rupees": {
+		tooltip: "A group of nine silver rupees.",
+		buttons: {
+			"Silver Rupee 1": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 1."
+			},
+			"Silver Rupee 2": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 2."
+			},
+			"Silver Rupee 3": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 3."
+			},
+			"Silver Rupee 4": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 4."
+			},
+			"Silver Rupee 5": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 5."
+			},
+			"Silver Rupee 6": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 6."
+			},
+			"Silver Rupee 7": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 7."
+			},
+			"Silver Rupee 8": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 8."
+			},
+			"Silver Rupee 9": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 9."
 			}
 		}
 	},
