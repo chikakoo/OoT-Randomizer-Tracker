@@ -4354,6 +4354,8 @@ let StandardDungeons = {
                         }
                     },
                     northRoom: {
+                        Map: "Ice Cavern",
+                        SilverRupeeIndex: 0,
                         Age: Age.ADULT
                     },
                     blockPushRoom: {
@@ -4383,6 +4385,16 @@ let StandardDungeons = {
                         LongDescription: "In the room with the spinning scythe, there's a skulltula up on one of the walls. It's the one to your left when you first enter.",
                         IsAtShortDistance: true
                     },
+                    "Scythe Silver Rupee by Icicles": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 167, y: 133 },
+                        Age: Age.EITHER,
+                        Order: 3.1,
+                        LongDescription: "In the room with the spinning scythe, this rupee is behind the icicles on the wall with the skulltula.",
+                        CustomRequirement: function(age) {
+                            return Data.hasSwordWeapon(age) || Data.hasExplosives();
+                        }
+                    },
                     "2 Pots in East Scythe Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -4393,12 +4405,33 @@ let StandardDungeons = {
                         Order: 4,
                         LongDescription: "In the room with the spinning scythe, these pots are to your right (east)."
                     },
+                    "Scythe Silver Rupee in Center Right": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 192, y: 116 },
+                        Age: Age.EITHER,
+                        Order: 4.1,
+                        LongDescription: "This rupee is in the middle of the room, to the right of the center scythe."
+                    },
+                    "Scythe Silver Rupee in Center Left": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 174, y: 116 },
+                        Age: Age.EITHER,
+                        Order: 4.2,
+                        LongDescription: "This rupee is in the middle of the room, to the left of the center scythe."
+                    },
                     "Pot in North Scythe Room": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 194, y: 96 },
                         Age: Age.EITHER,
                         Order: 5,
                         LongDescription: "In the room with the spinning scythe, this pot is on the north part of the room (straight ahead when you come in - it's the pot on the right)."
+                    },
+                    "Scythe Silver Rupee in Back": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 185, y: 100 },
+                        Age: Age.EITHER,
+                        Order: 5.1,
+                        LongDescription: "This rupee is in the back of the spinning scythe room, between the pots."
                     },
                     "Flying Pot in North Scythe Room": {
                         ItemGroup: ItemGroups.POT,
@@ -4407,12 +4440,19 @@ let StandardDungeons = {
                         Order: 6,
                         LongDescription: "In the room with the spinning scythe, this pot will fly at you from the north part of the room (straight ahead when you come in - it's the pot on the left)."
                     },
+                    "Scythe Silver Rupee in Midair": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 193, y: 102 },
+                        Age: Age.ADULT,
+                        Order: 6.1,
+                        LongDescription: "This rupee is the one in midair in the back right part of the spinning scythe room. As adult, climb up the ledge and jump off to get it."
+                    },
                     "Melt East Ice Wall": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         RequiredToAppear: function() { return !Data.canUseBlueFire(Age.CHILD); },
                         MapInfo: { x: 211, y: 114 },
                         Age: Age.EITHER,
-                        Order: 6.1,
+                        Order: 6.2,
                         LongDescription: "The east wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows.",
                         CustomRequirement: function(age) {
                             return (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
@@ -4423,7 +4463,7 @@ let StandardDungeons = {
                         RequiredToAppear: function() { return !Data.canUseBlueFire(Age.CHILD); },
                         MapInfo: { x: 157, y: 114 },
                         Age: Age.EITHER,
-                        Order: 6.2,
+                        Order: 6.3,
                         LongDescription: "The west wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows.",
                         CustomRequirement: function(age) {
                             return (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
@@ -4498,7 +4538,10 @@ let StandardDungeons = {
             },
             blockPushRoom: {
                 Exits: {
-                    bossRoom: {}
+                    hallWayBeforeBoss: {
+                        Map: "Ice Cavern",
+                        SilverRupeeIndex: 1
+                    }
                 },
                 ItemLocations: {
                     "Skulltula in Block Push Room": {
@@ -4509,6 +4552,41 @@ let StandardDungeons = {
                         LongDescription: "When you first enter the spinning scythe room, look to your left. Burn the red ice with your blue fire and enter the room. When you get to the big room, the skulltula will be on the wall to your left.",
                         IsAtShortDistance: true
                     },
+                    "Block Silver Rupee in Center": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 116, y: 86 },
+                        Age: Age.EITHER,
+                        Order: 13.1,
+                        LongDescription: "In the block room, this rupee is the one in front of you. Push the block forward and climb up to get it."
+                    },
+                    "Block Silver Rupee on Ledge": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 127, y: 67 },
+                        Age: Age.EITHER,
+                        Order: 13.2,
+                        LongDescription: "Push the block forward, then right to the ledge. The rupee is in red ice - you can jumpslash at a specific angle to get it (or just melt the ice)."
+                    },
+                    "Block Silver Rupee by Skulltula": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 130, y: 110 },
+                        Age: Age.EITHER,
+                        Order: 13.3,
+                        LongDescription: "This rupee is near the skulltula on the wall left of the entrance. Push the block left and up climb to this rupee."
+                    },
+                    "Block Silver Rupee Left of Blue Fire": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 193, y: 102 },
+                        Age: Age.EITHER,
+                        Order: 13.4,
+                        LongDescription: "This rupee is the one to the left of the blue fire. Push the block left, and then forward. Now you can climb up to get this rupee."
+                    },
+                    "Block Silver Rupee Right of Blue Fire": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 193, y: 102 },
+                        Age: Age.EITHER,
+                        Order: 13.5,
+                        LongDescription: "This rupee is the one to the right of the blue fire. No need to push the block for this one; you can simply climb up and get it."
+                    },                    
                     "3 Red Rupees in Block Push Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -4521,7 +4599,14 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canUseBoomerang(age);
                         }
-                    },
+                    }
+                }
+            },
+            hallWayBeforeBoss: {
+                Exits: {
+                    bossRoom: {}
+                },
+                ItemLocations: {
                     "2 Pots Before Boss Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
