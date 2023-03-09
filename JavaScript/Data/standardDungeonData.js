@@ -4965,14 +4965,8 @@ let StandardDungeons = {
         Regions: {
             main: {
                 Exits: {
-                    hookshotNeeded: {
-                        Age: Age.EITHER,
-                        RequiredAdultItems: [Items.HOOKSHOT],
-                        RequiredChildItems: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; }
-                            return Settings.GlitchesToAllow.gtgChildVineClips;
-                        }
+                    boulderRoom: {
+                        NeedsSwordWeapon: true,
                     },
                     bigLavaRoomFront: {
                         NeedsExplosives: true
@@ -5150,24 +5144,61 @@ let StandardDungeons = {
                     }
                 }
             },
-            mazeAfterOptionalDoor1: {
-                Exits: {
-                    mazeDeadEnd: {
-                        Map: "Training Grounds",
-                        LockedDoor: "Optional Locked Door 2",
-                        SkipLockedDoor: function(age) {
-                            return Data.canWeirdShot(age) || 
-                                (Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
-                        }
-                    }
-                },
-                ItemLocations: {}
-            },
-            hookshotNeeded: {
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
+            boulderRoom: {
                 Exits: {
                     silverBlockRoom: {
+                        Map: "Training Grounds",
+                        SilverRupeeIndex: 0,
+                        Age: Age.ADULT, // There IS a way to get past the fires with no hookshot, so keep that in mind in case we add that trick!
+                        RequiredItems: [Items.HOOKSHOT]
+                    }
+                },
+                ItemLocations: {
+                    "Boulder Silver Rupee on Ceiling": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 74, y: 196 },
                         Age: Age.ADULT,
+                        Order: 3.1,
+                        LongDescription: "After the sandy stalfos room, you'll find this room. The rupee is on the ceiling a little ahead of the entrance. Use your hookshot to reach it.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "Boulder Silver Rupee in Left Area by Void": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 53, y: 198 },
+                        Age: Age.EITHER,
+                        Order: 3.2,
+                        LongDescription: "This rupee is to the left of the entrance, by the void the boulders move toward.",
+                    },
+                    "Boulder Silver Rupee in Back Left Area": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 56, y: 128 },
+                        Age: Age.EITHER,
+                        Order: 3.3,
+                        LongDescription: "This rupee is in the very back of the left hallway, by where the boulders spawn.",
+                    },
+                    "Boulder Silver Rupee in Midair": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 72, y: 157 },
+                        Age: Age.EITHER,
+                        Order: 3.4,
+                        LongDescription: "This rupee is the one in front of the entrance, in midair. If you have no hookshot, go around via the second right turn from the entrance, then make two lefts. You can now jump off the cliff to claim the rupee.",
+                    },
+                    "Boulder Silver Rupee in Right Area": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 87, y: 194 },
+                        Age: Age.EITHER,
+                        Order: 3.5,
+                        LongDescription: "This rupee is to the right of the entrance, behind a fire wall. If you have no hookshot, you can go around via the second right turn from the entrance.",
+                    }
+                }
+            },
+            silverBlockRoom: {
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
+                Exits: {
+                    boulderRoom: {},
+                    roomBehindSilverBlock: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
                             if (Equipment.STRENGTH.currentUpgrade > 1) {
                                 return true;
@@ -5181,7 +5212,10 @@ let StandardDungeons = {
 
                         }
                     },
-                    bigLavaRoomUpperBack: {}
+                    spinningRoom: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.HOOKSHOT]
+                    }
                 },
 
                 ItemLocations: {
@@ -5191,7 +5225,18 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 4,
                         LongDescription: "This is the room either after the stalfos sandy room, or after the silver rupee room with the fire walls. Kill all the wolfos to spawn a chest."
-                    },
+                    }
+                }
+            },
+            spinningRoom: {
+                Exits: {
+                    bigLavaRoomUpperBack: {},
+                    silverBlockRoom: {
+                         // Only useful for Child, so we'll do this way so we don't have to break into top/bottom sections
+                        Age: Age.CHILD
+                    }
+                },
+                ItemLocations: {
                     "Eye Statue Room Bottom Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 170, y: 91 },
@@ -5203,10 +5248,10 @@ let StandardDungeons = {
                     "Eye Statue Room Top Room Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 165, y: 133 },
-                        Age: Age.EITHER,
+                        Age: Age.ADULT,
                         Order: 10,
                         LongDescription: "This is the room either after the wolfos room, or after the room with the hammerable pillars. If coming from the former, you need to use your hookshot to hook a target beyond a fake wall above the fake door. If coming from the latter, bash the pillars with your hammer, then shoot the eye switch. In the eye statue room, get to the central platform - it will start spinning. Shoot each eye with an arrow to unlock a door on top. If you came from the wolfos room, jump in the lava to respawn on top to get to it. Otherwise, you must use scarecrow's song (the scarecrow is near the door) to get up.",
-                        RequiredAdultItems: [Items.FAIRY_BOW]
+                        RequiredItems: [Items.FAIRY_BOW]
                     },
                     "Chest in Room with Pillars": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5382,7 +5427,7 @@ let StandardDungeons = {
                     }
                 }
             },
-            silverBlockRoom: {
+            roomBehindSilverBlock: {
                 Exits: {},
                 ItemLocations: {
                     "Silver Block Room Left Spawned Chest": {
@@ -5414,6 +5459,19 @@ let StandardDungeons = {
                         LongDescription: "This is the room you get to after pushing the silver block in the room with the wolfos. If you haven't already, from the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. Step on the switch to remove the iron bars on the door beyond the silver block. The chest is in the only hole without a visible chest in it."
                     }
                 }
+            },
+            mazeAfterOptionalDoor1: {
+                Exits: {
+                    mazeDeadEnd: {
+                        Map: "Training Grounds",
+                        LockedDoor: "Optional Locked Door 2",
+                        SkipLockedDoor: function(age) {
+                            return Data.canWeirdShot(age) || 
+                                (Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
+                        }
+                    }
+                },
+                ItemLocations: {}
             },
             mazeDeadEnd: {
                 Exits: {
@@ -5450,6 +5508,13 @@ let StandardDungeons = {
             },
             mazeAfterDoor1: {
                 Exits: {
+                    spinningRoom: {
+                        Age: Age.CHILD,
+                        RequiredItems: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.gtgChildVineClips;
+                        }
+                    },
                     mazeAfterDoor2: {
                         Map: "Training Grounds",
                         LockedDoor: "Locked Door 2 On Main Path",
