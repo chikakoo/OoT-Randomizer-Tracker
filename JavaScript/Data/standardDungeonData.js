@@ -4575,14 +4575,14 @@ let StandardDungeons = {
                     },
                     "Block Silver Rupee Left of Blue Fire": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 193, y: 102 },
+                        MapInfo: { x: 103, y: 112 },
                         Age: Age.EITHER,
                         Order: 13.4,
                         LongDescription: "This rupee is the one to the left of the blue fire. Push the block left, and then forward. Now you can climb up to get this rupee."
                     },
                     "Block Silver Rupee Right of Blue Fire": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 193, y: 102 },
+                        MapInfo: { x: 98, y: 100 },
                         Age: Age.EITHER,
                         Order: 13.5,
                         LongDescription: "This rupee is the one to the right of the blue fire. No need to push the block for this one; you can simply climb up and get it."
