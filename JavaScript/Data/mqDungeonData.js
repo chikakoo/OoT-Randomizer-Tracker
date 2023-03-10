@@ -4133,10 +4133,13 @@ let MQDungeons = {
         Regions: {
             main: {
                 Exits: {
+                    bottomRightLobbyChest: {
+                        Map: "Spirit Temple",
+                        SilverRupeeIndex: 0
+                    },
                     childSide: {
                         Age: Age.CHILD,
                     },
-
                     silverBlockMaze: {
                         Age: Age.ADULT,
                         RequiredItems: [Items.BOMBCHU, { item: Items.HOOKSHOT, upgradeString: "2" }],
@@ -4145,7 +4148,6 @@ let MQDungeons = {
                             return Data.canWeirdShot(age) && Items.FAIRY_BOW.playerHas;
                         }
                     },
-
                     Exit: {
                         OwExit: OwExits["Spirit Temple"]["Exit"]
                     }
@@ -4162,6 +4164,22 @@ let MQDungeons = {
                         Order: 1,
                         AltOrder: 1,
                         LongDescription: "These pots are to your left and right against the walls as you first enter the temple."
+                    },
+                    "Lobby Silver Rupee in Left Rock": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 179, y: 240, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 1.1,
+                        LongDescription: "This rupee is under the left rock as you enter the temple",
+                        NeedToBlastOrSmash: true
+                    },
+                    "Lobby Silver Rupee in Right Rock": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 206, y: 240, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 1.2,
+                        LongDescription: "This rupee is under the right rock as you enter the temple",
+                        NeedToBlastOrSmash: true
                     },
                     "Bottom Left Chest in Lobby": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4300,7 +4318,7 @@ let MQDungeons = {
                     },
                     "Locked Door After Moving Wall": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["movingWallRoom"],
+                        Regions: ["afterMovingWallRoom"],
                         MapInfo: { x: 294, y: 144, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 46,
@@ -4771,6 +4789,13 @@ let MQDungeons = {
                     boulderRoom: {
                         Map: "Spirit Temple",
                         LockedDoor: "Locked Door Right of Lobby"
+                    },
+                    bottomRightLobbyChest: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.MEGATON_HAMMER],
+                        CustomRequirement: function(age) {
+                            return !Settings.RandomizerSettings.shuffleSilverRupees;
+                        }
                     }
                 },
 
@@ -4785,6 +4810,14 @@ let MQDungeons = {
                         Order: 31,
                         AltOrder: 23,
                         LongDescription: "WALL MASTER WARNING:<br/>At the statue room, light all 3 torches with fire arrows. Use your hookshot to get to the door that unlocks. In the next room, use your mirror shield on all 3 suns and kill the enemies (including the wall masters). The pots are down the path that opens up."
+                    },
+                    "Right of Lobby Silver Rupee by Doors": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 266, y: 175, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 31.1,
+                        AltOrder: 23.1,
+                        LongDescription: "This rupee is in the room to the right of the lobby, in the corner by the doors (see Bottom Right Chest in Lobby for details)."
                     },
                     "Skulltula in Sandy Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -4802,14 +4835,36 @@ let MQDungeons = {
                         AltOrder: 25,
                         LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), go through the west door - be careful, though, as you can't get out if you don't have Zelda's Lullaby. Jump down and kill all the leevers to spawn the chest. Hookshot to it from the top to get it."
                     },
+                    "Right of Lobby Silver Rupee by Stairs": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 266, y: 207, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 36.1,
+                        AltOrder: 28.1,
+                        LongDescription: "This rupee is in the room to the right of the lobby, at the base of the stairs (see Bottom Right Chest in Lobby for details)."
+                    },
+                    "Lobby Silver Rupee in Water": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 246, y: 211, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 36.2,
+                        AltOrder: 28.2,
+                        LongDescription: "This rupee is in the water diving the lobby and the room next to it. First, get to the room to the right of the lobby (see Bottom Right Chest in Lobby for info). Now, use your hammer and smash the rock and hit the switch underneath. This will lower the water and allow you to get the rupee. WARNING: If you stay at in the lobby side, you will be trapped there when the water comes back!",
+                        RequiredItems: [Items.MEGATON_HAMMER],
+                    }
+                }
+            },
+            bottomRightLobbyChest: { // This is here so we can get this from the right of lobby room AND the main room due to silver rupee shuffle
+                Exits: {},
+                ItemLocations: {
                     "Bottom Right Chest in Lobby": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 203, y: 215, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                         Order: 37,
                         AltOrder: 29,
-                        LongDescription: "WALL MASTER WARNING:<br/>At the statue room, light all 3 torches with fire arrows. Use your hookshot to get to the door that unlocks. In the next room, use your mirror shield on all 3 suns and kill the enemies (including the wall masters). Navigate through the hallway. Collect all the silver rupees to spawn the chest - a couple of them are in the lobby under some rocks. Use your hammer to hit the rusted switch to make the water go away. Be careful, though, as you can't come back!",
-                        RequiredItems: [Items.MEGATON_HAMMER]
+                        LongDescription: "WALL MASTER WARNING:<br/>At the statue room, light all 3 torches with fire arrows. Use your hookshot to get to the door that unlocks. In the next room, use your mirror shield on all 3 suns and kill the enemies (including the wall masters). Navigate through the hallway. Collect all the silver rupees to spawn the chest - a couple of them are in the lobby under some rocks. Use your hammer to hit the rusted switch to make the water go away. Be careful, though, as you can't come back!"
                     }
                 }
             },
@@ -4842,12 +4897,9 @@ let MQDungeons = {
             },
             movingWallRoom: {
                 Exits: {
-                    skulltulaAndKnuckleRoom: {
+                    afterMovingWallRoom: {
                         Map: "Spirit Temple",
-                        LockedDoor: "Locked Door After Moving Wall"
-                    },
-                    giantMirrorRoom: {
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                        SilverRupeeIndex: 1
                     }
                 },
                 ItemLocations: {
@@ -4862,6 +4914,30 @@ let MQDungeons = {
                         AltOrder: 36,
                         LongDescription: "These pots are at the bottom of the moving wall room - which is through the locked door after the hallway via the upper southeast statue room."
                     },
+                    "5 Moving Wall Room Silver Rupees": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.SILVER_RUPEE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "5 Silver Rupees",
+                        MapInfo: { x: 167, y: 139, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 44.1,
+                        AltOrder: 36.1,
+                        LongDescription: "These rupees are obtained by climbing the moving wall. You may also find it easier to climb up the wall and drop down onto them."
+                    }
+                }
+            },
+            afterMovingWallRoom: {
+                Exits: {
+                    skulltulaAndKnuckleRoom: {
+                        Map: "Spirit Temple",
+                        LockedDoor: "Locked Door After Moving Wall"
+                    },
+                    giantMirrorRoom: {
+                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                    }
+                },
+                ItemLocations: {
                     "2 Pots After Moving Wall Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
