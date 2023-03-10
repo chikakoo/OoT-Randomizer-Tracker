@@ -2011,6 +2011,36 @@ GrottoGroups = {
 			}
 		}
 	},
+	"5 Silver Rupees": {
+		tooltip: "A group of five silver rupees.",
+		buttons: {
+			"Silver Rupee 1": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 1."
+			},
+			"Silver Rupee 2": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 2."
+			},
+			"Silver Rupee 3": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 3."
+			},
+			"Silver Rupee 4": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 4."
+			},
+			"Silver Rupee 5": {
+				icon: "Silver Rupee",
+				itemGroup: ItemGroups.SILVER_RUPEE,
+				description: "Silver rupee 5."
+			}
+		}
+	},
 	"9 Silver Rupees": {
 		tooltip: "A group of nine silver rupees.",
 		buttons: {

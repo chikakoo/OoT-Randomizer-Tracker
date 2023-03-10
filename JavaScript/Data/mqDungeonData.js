@@ -3488,7 +3488,7 @@ let MQDungeons = {
                         Order: 8.5,
                         LongDescription: "This rupee is in the alcove in the back part of the room, guarded by a giant skulltula."
                     },
-                    "Chest in Scythe Room": {
+                    "Scythe Room Silver Rupee Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 345, y: 122, floor: "F1" },
                         Age: Age.EITHER,

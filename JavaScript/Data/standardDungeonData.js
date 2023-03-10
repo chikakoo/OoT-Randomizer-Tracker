@@ -3189,13 +3189,59 @@ let StandardDungeons = {
                         LongDescription: "After crossing the gap onto the tongue, proceed down the hallway. At the beamos, take the right path (it's a fake wall) and enter the room. Defeat the gibdos for a chest.",
                         NeedsSwordWeapon: true
                     },
+                    "Scythe Silver Rupee Right of Scythe": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 304, y: 113, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 8.1,
+                        LongDescription: "Take the left door from the beamos to get to the scythe room. This rupee is to the right of the spinning scythe."
+                    },
+                    "Scythe Silver Rupee Left of Scythe": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 292, y: 99, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 8.2,
+                        LongDescription: "This rupee is to the left of the spinning scythe."
+                    },
+                    "Scythe Silver Rupee in Left Alcove": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 271, y: 113, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 8.3,
+                        LongDescription: "This rupee is in the alcove on the left."
+                    },
+                    "Scythe Silver Rupee in Midair": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 273, y: 88, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 8.4,
+                        LongDescription: "This rupee is in the northwest corner of the room. Use your hookshot or hoer boots to get to it.",
+                        CustomRequirement: function(age) {
+                            return Items.HOOKSHOT.playerHas || 
+                                Equipment.HOVER_BOOTS.playerHas || 
+                                Settings.GlitchesToAllow.shadowSilverRupeeWithNothing;
+                        }
+                    },
+                    "Scythe Silver Rupee in Back Alcove": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 316, y: 78, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 8.5,
+                        LongDescription: "This rupee is in the alcove in the back part of the room."
+                    },
                     "Scythe Room Silver Rupee Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 344, y: 121, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function(age) { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                         Order: 9,
                         LongDescription: "After crossing the gap onto the tongue, proceed down the hallway. At the beamos, take the left path (it's a fake wall) and enter the room. Collect all the silver rupees to open the path to a chest.<br/><br/>If you have no hookshot, you can use hover boots to get to the wooden box from one of the wooden platforms.",
                         CustomRequirement: function(age) {
+                            // We can't check the index via the property here since we don't NEED the rupees to advance in this case
+                            if (Settings.RandomizerSettings.shuffleSilverRupees) { 
+                                return Data.canWeirdShot(age) || checkSilverRupeeRequirement("Shadow Temple", 0);
+                            }
+
                             return Items.HOOKSHOT.playerHas || 
                                 Equipment.HOVER_BOOTS.playerHas || 
                                 Settings.GlitchesToAllow.shadowSilverRupeeWithNothing;
@@ -3205,6 +3251,10 @@ let StandardDungeons = {
             },
             afterBombableWall: {
                 Exits: {
+                    fallingSpikesRoom: {
+                        Map: "Shadow Temple",
+                        SilverRupeeIndex: 1
+                    },
                     invisibleSpikeRoom: {
                         Map: "Shadow Temple",
                         LockedDoor: "Locked Door in Giant Pit Room"
@@ -3251,6 +3301,27 @@ let StandardDungeons = {
                             return age === Age.ADULT || Data.canGrabShortDistances(age);
                         }
                     },
+                    "5 Pit Room Silver Rupees": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.SILVER_RUPEE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "5 Silver Rupees",
+                        MapInfo: { x: 137, y: 215, floor: "B2" },
+                        Age: Age.EITHER,
+                        Order: 14.1,
+                        LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. The rupees are scattered near the beamos. One under him (just touch him to get it), two near him, one by the chasm, and one by the wall."
+                    }
+                }
+            },
+            fallingSpikesRoom: {
+                Exits: {
+                    topOfFallingSpikesRoom: {
+                        CustomRequirement: function(age) {
+                            return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
+                        }
+                    }
+                },
+                ItemLocations: {
                     "2 Lower Pots in Falling Spikes Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -3277,26 +3348,26 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. The chest is on the second cage to the right passed the ceiling spikes. To pass them, you can either use good timing, or pull the block out of the wall to the right (use the lens to find it) to act as an umbrella - assuming you have a strength upgrade."
-                    },
+                    }
+                }
+            },
+            topOfFallingSpikesRoom: {
+                UseAdultAge: function() {  return !Settings.GlitchesToAllow.shadowBackFlipOnSpikes; },
+                Exits: {},
+                ItemLocations: {
                     "Top Switchless Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 16, y: 239, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 18,
-                        LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. Pull the block out of the wall to the right (use the lens to find it) to act as an umbrella to pass the ceiling spikes. Once it's as far as it can go, jump onto it. The chest is in a cage in the corner of the room.",
-                        CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
-                        }
+                        LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. Pull the block out of the wall to the right (use the lens to find it) to act as an umbrella to pass the ceiling spikes. Once it's as far as it can go, jump onto it. The chest is in a cage in the corner of the room."
                     },
                     "Top Switch Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 76, y: 209, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 19,
-                        LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. Pull the block out of the wall to the right (use the lens to find it) to act as an umbrella to pass the ceiling spikes. Once it's as far as it can go, jump onto it. Hit the switch on top and then get the chest that spawns.",
-                        CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
-                        }
+                        LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. Pull the block out of the wall to the right (use the lens to find it) to act as an umbrella to pass the ceiling spikes. Once it's as far as it can go, jump onto it. Hit the switch on top and then get the chest that spawns."
                     },
                     "2 Upper Pots in Falling Spikes Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3306,10 +3377,7 @@ let StandardDungeons = {
                         MapInfo: { x: 82, y: 209, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 20,
-                        LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. Pull the block out of the wall to the right (use the lens to find it) to act as an umbrella to pass the ceiling spikes. Once it's as far as it can go, jump onto it. The pots are on the top of the area you pulled the block out of.",
-                        CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
-                        }
+                        LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. Pull the block out of the wall to the right (use the lens to find it) to act as an umbrella to pass the ceiling spikes. Once it's as far as it can go, jump onto it. The pots are on the top of the area you pulled the block out of."
                     }
                 }
             },
@@ -3320,12 +3388,13 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         LockedDoor: "Locked Door in Giant Pit Room"
                     },
-
                     giantSkullRoom: {
-                        Age: Age.ADULT,
-                        RequiredAdultItems: [Items.HOOKSHOT]
+                        Map: "Shadow Temple",
+                        SilverRupeeIndex: 2,
+                        CustomRequirement: function(age) {
+                            return Settings.RandomizerSettings.shuffleSilverRupees || (age === Age.ADULT && Items.HOOKSHOT.playerHas);
+                        }
                     },
-
                     windHallway: {
                         Map: "Shadow Temple",
                         Age: Age.ADULT,
@@ -3345,16 +3414,56 @@ let StandardDungeons = {
                         Order: 22,
                         LongDescription: "To get here, first head to the area with the beamos and spike traps. Face the door leading to the ceiling spike room. Now turn right. Follow the edge of the pit in front of you all the way to the guillotine. Use your Lens of Truth to navigate the platforms and make it to the door. Once inside, kill all the redeads to spawn the chest. Be careful of the invisible spikes in here - you can equip the Goron Tunic to avoid some damage since they act like lava.",
                         NeedsSwordWeapon: true
+                    },
+                    "Invisible Spike Ground Center Silver Rupee": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 156, y: 72, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 22.1,
+                        LongDescription: "This rupee is in front of you as you enter the room."
+                    },
+                    "Invisible Spike Silver Rupee on Right Wall": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 184, y: 65, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 22.2,
+                        LongDescription: "This rupee is in to the right, just below the hookshot target.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "Invisible Spike Silver Rupee on Left Wall": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 136, y: 82, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 22.3,
+                        LongDescription: "This rupee is in to the left, just below the hookshot target.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "Invisible Spike Silver Rupee on Invisible Ledge": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 132, y: 52, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 22.4,
+                        LongDescription: "This rupee is on an invisible ledge in the back left corner of the room. There's an invisible hookshot target on the back wall you can use to get up to it.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "Invisible Spike Midair Silver Rupee by Invisible Ledge": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 140, y: 60, floor: "B2" },
+                        Age: Age.ADULT,
+                        Order: 22.5,
+                        LongDescription: "Get to the invisible ledge (see the previous rupee). You can use your hover boots, or roll jump to get to this nearby silver rupee.",
+                        RequiredItems: [Items.HOOKSHOT]
                     }
                 }
             },
             giantSkullRoom: {
+                UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                 Exits: {},
                 ItemLocations: {
                     "Key in Giant Skull": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 92, y: 70, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 23,
                         LongDescription: "To get here, start at the invisible spike room. Collect all the silver rupees using your hookshot. Note that there are a few invisible targets. Enter the room on the bottom that unlocks. Throw a Bomb or Bomb Flower into the giant skull to spawn the key.",
                         CustomRequirement: function(age) {
@@ -3362,11 +3471,10 @@ let StandardDungeons = {
                             return canUseChu || Items.BOMB.playerHas || Equipment.STRENGTH.playerHas;
                         }
                     },
-
                     "Skulltula in Giant Skull Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 77, y: 68, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 24,
                         LongDescription: "To get here, start at the invisible spike room. Collect all the silver rupees using your hookshot. Note that there are a few invisible targets. Enter the room on the bottom that unlocks. The skulltula is behind the giant skull."
                     }
