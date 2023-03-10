@@ -136,6 +136,7 @@ let Settings = {
 		difficultOcarinaItems: true,
 		megaFlip: false,
 		isg: false,
+		flameStorage: false,
 		groundJump: false,
 		staircaseHover: false,
 		bombSuperslide: false,

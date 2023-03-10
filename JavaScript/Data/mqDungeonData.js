@@ -4170,7 +4170,7 @@ let MQDungeons = {
                         MapInfo: { x: 179, y: 240, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 1.1,
-                        LongDescription: "This rupee is under the left rock as you enter the temple",
+                        LongDescription: "This rupee is under the left rock as you enter the temple.",
                         NeedToBlastOrSmash: true
                     },
                     "Lobby Silver Rupee in Right Rock": {
@@ -4178,7 +4178,7 @@ let MQDungeons = {
                         MapInfo: { x: 206, y: 240, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 1.2,
-                        LongDescription: "This rupee is under the right rock as you enter the temple",
+                        LongDescription: "This rupee is under the right rock as you enter the temple.",
                         NeedToBlastOrSmash: true
                     },
                     "Bottom Left Chest in Lobby": {

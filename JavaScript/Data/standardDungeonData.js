@@ -3920,8 +3920,9 @@ let StandardDungeons = {
                 UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                 Exits: {
                     childSkulltulaInGrateRoom: {
+                        Map: "Spirit Temple",
+                        SilverRupeeIndex: 0,
                         CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; } // You will have hookshot, since you need to weirdshot to get here
                             return Items.FAIRY_SLINGSHOT.playerHas || 
                                 Items.DEKU_STICK.playerHas ||
                                 Data.canUseFireItem(age) ||
@@ -3930,13 +3931,32 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
+                    "4 Grate Room Silver Rupees on Grate": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.SILVER_RUPEE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Silver Rupees",
+                        MapInfo: { x: 140, y: 90, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 6.1,
+                        AltOrder: 42.1,
+                        LongDescription: "WALL MASTER WARNING:<br/>Make your way counter-clockwise around the child-only areas of the temple. In the room with the Anubis, either Din's fire him, or hit the switch then quickly navigate to the side directly opposite the fire so that it dies on it.<br/><br/>These rupees are on the grate itself, so climb up to get them."
+                    },
+                    "Grate Room Silver Rupee Near Torch": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 152, y: 67, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 6.2,
+                        AltOrder: 42.2,
+                        LongDescription: "WALL MASTER WARNING:<br/>This rupee is in the corner of the child grate room, near the torch. See the previous location for how to get here.",
+                    },
                     "Chest After Anubis Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 151, y: 75, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 6,
                         AltOrder: 42,
-                        LongDescription: "WALL MASTER WARNING:<br/>Make your way around counter-clockwise around the child-only areas of the temple. In the room with the Anubis, either Din's fire him, or hit the switch then quickly navigate to the side directly opposite the fire so that it dies on it. In the room after that - collect the silver rupees to lower the bridge. Now you can use a Deku Stick (or Din's fire) to light the torches on the other side to spawn the chest. Note that you also could have used Din's fire on them earlier to avoid collecting the silver rupees.",
+                        LongDescription: "WALL MASTER WARNING:<br/>Make your way counter-clockwise around the child-only areas of the temple. In the room with the Anubis, either Din's fire him, or hit the switch then quickly navigate to the side directly opposite the fire so that it dies on it. In the room after that - collect the silver rupees to lower the bridge. Now you can use a Deku Stick (or Din's fire) to light the torches on the other side to spawn the chest.<br/><br/>It's important to note that you can use Din's fire on them earlier, or take a flame from the earlier main room to light the torches. This avoids the need for the silver rupees (for this chest) completely.",
                         CustomRequirement: function(age) {
                             return Data.canUseDekuStick(age) || Data.canUseFireItem(age);
                         }
@@ -4046,9 +4066,14 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             openDoorsBySilverBlock: {
-                Exits: {},
+                Exits: {
+                    afterBoulderRoom: {
+                        Map: "Spirit Temple",
+                        SilverRupeeIndex: 2
+                    }
+                },
                 ItemLocations: {
-                    "Compass Chest in Left Silver Block Room": {
+                    "Compass Chest in Sandy Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 226, y: 99, floor: "F1" },
                         Age: Age.ADULT,
@@ -4058,7 +4083,47 @@ let StandardDungeons = {
                         RequiredSongs: [Songs.ZELDAS_LULLABY],
                         RequiredItems: [Items.HOOKSHOT]
                     },
-                    "Skulltula in Right Silver Block Room": {
+                    "Boulder Silver Rupee in Midair": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 318, y: 135, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 22.1,
+                        AltOrder: 3.1,
+                        LongDescription: "Head to the room blocked by the silver block. Hit the switch above the beamos to open the doors. Enter the door to the right.<br/><br>This is the floating rupee at the start of the room. Use hover boots, or roll off the edge and do a delayed jumpslash to get it."
+                    },
+                    "Boulder Silver Rupee Front Left": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 299, y: 138, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 22.2,
+                        AltOrder: 3.2,
+                        LongDescription: "This rupee is in the front left alcove of the boulder room."
+                    },
+                    "Boulder Silver Rupee Front Right": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 337, y: 128, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 22.3,
+                        AltOrder: 3.3,
+                        LongDescription: "This rupee is in the front right alcove of the boulder room."
+                    },
+                    "Boulder Silver Rupee Back Right": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 337, y: 109, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 22.4,
+                        AltOrder: 3.4,
+                        LongDescription: "This rupee is in the back right alcove of the boulder room."
+                    },
+                    "Boulder Silver Rupee Back Left": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 299, y: 106, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 22.5,
+                        AltOrder: 3.5,
+                        LongDescription: "This rupee is in the back left alcove of the boulder room."
+                    },
+                    "Skulltula in Boulder Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 296, y: 122, floor: "F1" },
                         Age: Age.ADULT,
@@ -4066,14 +4131,19 @@ let StandardDungeons = {
                         AltOrder: 4,
                         LongDescription: "Head to the room blocked by the silver block. Hit the switch above the beamos to open the doors. Enter the door to the right. On the left wall, there's a Song of Time block blocking this skulltula. Play the song to move it out of the way.",
                         RequiredSongs: [Songs.SONG_OF_TIME]
-                    },
-                    "Chest After Right Silver Block Room": {
+                    }
+                }
+            },
+            afterBoulderRoom: {
+                Exits: {},
+                ItemLocations: {
+                    "Chest After Boulder Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 319, y: 65, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 24,
                         AltOrder: 5,
-                        LongDescription: "Head to the room blocked by the silver block. Hit the switch above the beamos to open the doors. Enter the door to the right. Collect all the silver rupees in the boulder room. The floating one by the start is a bit tricky without hover boots. You can reach it if you roll off the edge, then do a delayed jumpslash to gain enough distance. Once you get all the rupees, enter the next room for the chest. Watch out for the like-like!"
+                        LongDescription: "Collect all the silver rupees in the boulder room. The floating one by the start is a bit tricky without hover boots. You can reach it if you roll off the edge, then do a delayed jumpslash to gain enough distance. Once you get all the rupees, enter the next room for the chest. Watch out for the like-like!"
                     }
                 }
             },
@@ -4143,7 +4213,7 @@ let StandardDungeons = {
                     },
                     "Map Chest in Statue Room": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: {x: 176, y: 147, floor: "F2" },
+                        MapInfo: { x: 176, y: 147, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 16,
                         AltOrder: 13,
@@ -4152,20 +4222,64 @@ let StandardDungeons = {
                             return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
                         }
                     },
+                    "Sun Block Silver Rupee on Wall by Blocks": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 65, y: 79, floor: "F3" },
+                        Age: Age.EITHER,
+                        Order: 16.1,
+                        AltOrder: 21.1,
+                        LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor.<br/><br/>This rupee is on the wall by the pushable blocks."
+                    },
+                    "Sun Block Silver Rupee Midair by Blocks": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 50, y: 74, floor: "F3" },
+                        Age: Age.EITHER,
+                        Order: 16.2,
+                        AltOrder: 21.2,
+                        LongDescription: "This rupee is in midair by the pushable blocks."
+                    },
+                    "Sun Block Silver Rupee Midair by Sunlight": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 20, y: 65, floor: "F3" },
+                        Age: Age.EITHER,
+                        Order: 16.3,
+                        AltOrder: 21.3,
+                        LongDescription: "This rupee is in the back right corner by the sunlight. Climb up the nearby platform, or use the blocks to get to it."
+                    },
+                    "Sun Block Silver Rupee by Entrance": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 80, y: 65, floor: "F3" },
+                        Age: Age.EITHER,
+                        Order: 16.4,
+                        AltOrder: 21.4,
+                        LongDescription: "This rupee is just to the left of the entrance door. Use the pushable blocks or the platform by the sunlight to get up on the wall to grab it."
+                    },
+                    "Sun Block Silver Rupee by Beamos": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 71, y: 117, floor: "F3" },
+                        Age: Age.EITHER,
+                        Order: 16.5,
+                        AltOrder: 21.5,
+                        LongDescription: "This rupee is in the left corner by one of the beamos. If you can't kill the beamos (and you're Child), you'll have to push a block over to get it. In this case, it's worth noting that deku nuts stun beamos!"
+                    },
                     "Chest in Sun Block Room": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: {x: 60, y: 117, floor: "F3" },
+                        MapInfo: { x: 60, y: 117, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 17,
                         AltOrder: 22,
                         LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor. As child, you can collect the silver rupees to light the golden torch. After that, use a Deku Stick to light the other torches. You can also just use Din's Fire to light them - make sure to light two at once, then get close to the third one before casting it a second time. As adult, your only options are Din's Fire or Fire Arrows.",
                         CustomRequirement: function(age) {
                             let canUseFireItem = Data.canUseFireItem(age);
-                            if (age === Age.CHILD) {
-                                let canLightTorches = Items.DEKU_STICK.playerHas || canUseFireItem;
-                                return canLightTorches && Data.hasExplosives();
+                            let canUseStick = Data.canUseDekuStick(age);
+                            let canDoFlameStorage = Settings.GlitchesToAllow.flameStorage && canUseStick;
+                            let canLightTorchesWithoutRupees = canDoFlameStorage || canUseFireItem;
+                            if (canLightTorchesWithoutRupees) {
+                                return true;
                             }
-                            return canUseFireItem;
+
+                            let canTurnOnGoldenTorch = !Settings.RandomizerSettings.shuffleSilverRupees || checkSilverRupeeRequirement("Spirit Temple", 1);
+                            return canTurnOnGoldenTorch && canUseStick;
                         }
                     },
                     "2 Pots in Hall Before Silver Knuckle": {
