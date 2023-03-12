@@ -3015,17 +3015,8 @@ let MapLocations = {
             chasm: {
                 ExcludeFromSpawnList: true,
                 Exits: {
-                    main: {
-                        CustomRequirement: function(age) {
-                            return false;
-                        }
-                    },
-
-                    "To Lake Hylia": {
-                        OwExit: OwExits["Gerudo Valley"]["To Lake Hylia"]
-                    }
+                    chasmDownstream: {}
                 },
-
                 ItemLocations: {
                     "Plant Bean by Cow on Bottom": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -3066,6 +3057,15 @@ let MapLocations = {
                         LongDescription: "Navigate to the plateform on the bottom of the ravine to find this crate.",
                     }
                 }
+            },
+
+            chasmDownstream: {
+                Exits: {
+                    "Lake Hylia": {
+                        OwExit: OwExits["Gerudo Valley"]["Lake Hylia"]
+                    }
+                },
+                ItemLocations: {}
             }
         }
     },

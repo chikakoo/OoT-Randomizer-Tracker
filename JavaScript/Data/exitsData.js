@@ -1652,6 +1652,19 @@ let OwExits = {
                     (Settings.GlitchesToAllow.adultDomainMegaflipClip && Data.hasExplosives());
             }
         },
+        "Gerudo Valley": {
+            ExitRegion: "main",
+            Map: "Gerudo Valley",
+            Region: "chasmDownstream",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: {x: 78, y: 36},
+            Age: Age.EITHER,
+            ReadOnly: true,
+            LongDescription: "This is the exit that you normally get to from taking the river in Gerudo valley. You cannot enter this exit.",
+            CustomRequirement: function() {
+                return false; 
+            }
+        },
         "Owl": {
             ExitRegion: "main",
             Map: "Hyrule Field",
@@ -1759,20 +1772,14 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the western exit."
         },
-        "To Lake Hylia": {
-            ExitRegion: "chasm",
+        "Lake Hylia": {
+            ExitRegion: "chasmDownstream",
             Map: "Lake Hylia",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: {x: 275, y: 275},
+            MapInfo: {x: 255, y: 275},
             Age: Age.EITHER,
-            OneWayEntrance: true,
-            OwShuffleMap: "Lake Hylia",
-            OwShuffleRegion: "main",
-            OwShuffleExitName: "Hyrule Field",
-            ReadOnly: true,
-            ExcludeFromDropdown: true,
-            LongDescription: "This is the river exit to the lake. It will ALWAYS lead to the lake."
+            LongDescription: "This is the river exit to the lake."
         },
 
         // Interiors
