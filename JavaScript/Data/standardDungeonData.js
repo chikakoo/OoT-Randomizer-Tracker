@@ -739,7 +739,10 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: ["F2", "F1", "B1"],
         StartingFloorIndex: 1,
-        UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+        UseChildAge: function() { 
+            return !Settings.RandomizerSettings.shuffleDungeonEntrances &&
+                !Settings.GlitchesToAllow.enterJabuAsAdult; 
+        },
         Regions: {
             main: {
                 Exits: {

@@ -1584,10 +1584,15 @@ let OwExits = {
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 142, y: 97 },
-            Age: Age.CHILD,
+            Age: Age.EITHER,
+            UseChildAge: function() { return !Settings.GlitchesToAllow.enterJabuAsAdult; },
             LongDescription: "This is the entrance to Jabu Jabu.",
             IsDungeonEntrance: true,
             CustomRequirement: function(age) {
+                if (age === Age.ADULT) {
+                    return Settings.GlitchesToAllow.enterJabuAsAdult && Data.hasShield(age) && Items.BOMBCHU.playerHas;
+                }
+
                 if (Settings.GlitchesToAllow.jabuFishless && Data.hasSwordWeapon(age)) {
                     return true;
                 }

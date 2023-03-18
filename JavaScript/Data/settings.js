@@ -192,6 +192,8 @@ let Settings = {
 		adultLakesideLabClip: false,
 		childLakesideLabClip: false,
 		skullInTreeWithHookshot: false,
+		jabuFishless: false,
+		enterJabuAsAdult: false,
 		
 		// Desert
 		eponaHover: false,
@@ -216,7 +218,6 @@ let Settings = {
 		dodongoScarecrowSkullEarly: true,
 		dodongoTriggerStairsWithBow: false,
 		
-		jabuFishless: false,
 		jabuBlueSwitchSkip: false,
 		
 		forestFirstSkullWithBomb: false,
