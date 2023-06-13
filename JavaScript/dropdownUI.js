@@ -9,7 +9,7 @@ let DropdownUI = {
      * @param itemLocationTextDiv - the main div of the item location - passed in to provide right-click travel
      */
     createOWDropdown: function(itemLocation, itemLocationTextDiv) {
-        let owEntranceGroupDiv = dce("div", "ow-entrance-dropdown-group");
+        let dropdownGroup = dce("div", "dropdown-group");
 			
         let locDropdown = dce("select");
         let entranceDropdown = dce("select");
@@ -29,24 +29,43 @@ let DropdownUI = {
             }
         };
         
-        owEntranceGroupDiv.appendChild(locDropdown);
-        owEntranceGroupDiv.appendChild(entranceDropdown);
+        dropdownGroup.appendChild(locDropdown);
+        dropdownGroup.appendChild(entranceDropdown);
 
-        return owEntranceGroupDiv;
+        return dropdownGroup;
     },
 
     /**
      * Refreshes the entrance dropdowns so that they contain the correct text/choices/click handlers
+     * @param itemLocation - the item location
+     * @param loc - the main location dropdown (optional)
+     * @param entrance - the entrance dropdown (optional)
      */
     refreshEntranceDropdowns: function(itemLocation, loc, entrance) {
-        if (itemLocation.ItemGroup !== ItemGroups.OW_ENTRANCE) { return; }
+        let entranceOptions = {
+            isOwl: itemLocation.IsOwl,
+            getInteriors: itemLocation.IsInteriorExit,
+            getGrottos: itemLocation.IsGrottoExit
+        };
 
+        if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
+            this._refreshOWLocationDropdown(itemLocation, loc, entrance, entranceOptions);
+            this._refreshOWEntranceDropdown(itemLocation, loc, entrance, entranceOptions);
+        }
+    },
+
+    /**
+     * Refreshes the location dropdown for an OW Entrance location
+     * @param itemLocation - the item location
+     * @param loc - the main location dropdown (optional)
+     * @param entrance - the entrance dropdown (optional)
+     * @param entranceOptions - set of options used to get the entrance choices
+     */
+    _refreshOWLocationDropdown: function(itemLocation, loc, entrance, entranceOptions) {
         let locDropdown = loc || document.getElementById(`${itemLocation.Name}-location-dropdown`);
         let entranceDropdown = entrance || document.getElementById(`${itemLocation.Name}-entrance-dropdown`);
 
         let defaultMap = itemLocation.OwShuffleMap;
-        let defaultExit = itemLocation.OwShuffleExitName;
-
         if (!defaultMap) { // Means no map (and thus no exit) is selected, so we need to clear everything
             locDropdown.innerHTML = "";
             entranceDropdown.innerHTML = "";
@@ -57,20 +76,28 @@ let DropdownUI = {
         options.unshift("<no selection>");
         this._fillStringDropdown(locDropdown, options, defaultMap);
 
-        let entranceOptions = {
-            isOwl: itemLocation.IsOwl,
-            getInteriors: itemLocation.IsInteriorExit,
-            getGrottos: itemLocation.IsGrottoExit
-        };
+        locDropdown.onchange = this.onLocDropdownChange.bind(
+            this, itemLocation, locDropdown, entranceDropdown, entranceOptions);
+    },
 
+    /**
+     * Refreshes the entrance dropdown for an OW Entrance location
+     * @param itemLocation - the item location
+     * @param loc - the main location dropdown (optional)
+     * @param entrance - the entrance dropdown (optional)
+     * @param entranceOptions - set of options used to get the entrance choices
+     */
+    _refreshOWEntranceDropdown: function(itemLocation, loc, entrance, entranceOptions) {
+        let locDropdown = loc || document.getElementById(`${itemLocation.Name}-location-dropdown`);
+        let entranceDropdown = entrance || document.getElementById(`${itemLocation.Name}-entrance-dropdown`);
+
+        let defaultMap = itemLocation.OwShuffleMap;
+        let defaultExit = itemLocation.OwShuffleExitName;
         if (defaultMap && defaultExit) {
             let entrances = this._getDropdownOptions(defaultMap, entranceOptions);
             this._fillStringDropdown(entranceDropdown, entrances, defaultExit);
         }
 
-        locDropdown.onchange = this.onLocDropdownChange.bind(
-            this, itemLocation, locDropdown, entranceDropdown, entranceOptions);
-        
         entranceDropdown.onchange = this.onEntranceDropdownChange.bind(
             this, itemLocation, locDropdown, entranceDropdown);
     },

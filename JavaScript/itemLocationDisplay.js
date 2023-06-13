@@ -320,8 +320,8 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon) {
 		
 		else if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
 
-			let owEntranceGroupDiv = DropdownUI.createOWDropdown(itemLocation, itemLocationTextDiv);
-			itemLocationDiv.appendChild(owEntranceGroupDiv);
+			let dropdownGroup = DropdownUI.createOWDropdown(itemLocation, itemLocationTextDiv);
+			itemLocationDiv.appendChild(dropdownGroup);
 
 			DropdownUI.refreshEntranceDropdowns(itemLocation);
 		}

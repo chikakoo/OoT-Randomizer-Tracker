@@ -696,16 +696,16 @@ textarea {
 	margin-left: 2px;
 }
 
-/** OW dropdowns */
+/** Dropdowns */
 select:disabled {
 	color: black;
 	font-weight: bold;
 }
 
-.ow-entrance-dropdown-group {
+.dropdown-group {
 	margin-left: 30px;
 }
 
-.ow-entrance-dropdown-group select {
+.dropdown-group select {
 	margin-right: 5px;
 }
