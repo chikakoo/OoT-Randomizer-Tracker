@@ -258,7 +258,7 @@ SocketClient = {
 		let locDropdown = document.getElementById(`${itemLocation.Name}-location-dropdown`);
 		let entranceDropdown = document.getElementById(`${itemLocation.Name}-entrance-dropdown`);
 		if (locDropdown && entranceDropdown) {
-			refreshEntranceDropdowns(itemLocation, locDropdown, entranceDropdown);
+			DropdownUI.refreshEntranceDropdowns(itemLocation, locDropdown, entranceDropdown);
 		}
 	},
 	

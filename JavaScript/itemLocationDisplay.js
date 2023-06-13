@@ -193,8 +193,8 @@ let _setUpItemGroups = function(groupedItemLocationInfo, mapInfo) {
 		allItemLocationsTextDiv.innerText = "Ordered Item Locations";
 		allItemLocationsTitleDiv.appendChild(allItemLocationsTextDiv);
 		
-		_createItemLocations(allLocations, allItemLocationsDiv, true);
 		mainContainer.appendChild(allItemLocationsDiv);
+		_createItemLocations(allLocations, allItemLocationsDiv, true);
 	} else {
 		Object.keys(groupedItemLocationInfo).forEach(function(groupId) {
 			let itemGroup = groupedItemLocationInfo[groupId]
@@ -319,31 +319,11 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon) {
 		}
 		
 		else if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
-			let owEntranceGroupDiv = dce("div", "ow-entrance-dropdown-group");
-			
-			let locDropdown = dce("select");
-			let entranceDropdown = dce("select");
-			locDropdown.id = `${itemLocation.Name}-location-dropdown`;
-			entranceDropdown.id = `${itemLocation.Name}-entrance-dropdown`;
-			
-			if (itemLocation.ReadOnly) {
-				locDropdown.disabled = true;
-				entranceDropdown.disabled = true;
-			}
-			
-			itemLocationTextDiv.oncontextmenu = function() {
-				let mapName = locDropdown.options[locDropdown.selectedIndex].value;
-				if (mapName !== "<no selection>") {
-					displayLocation(mapName);
-					Walk.updateTravelDiv();	
-				}
-			};
-			
-			owEntranceGroupDiv.appendChild(locDropdown);
-			owEntranceGroupDiv.appendChild(entranceDropdown);
+
+			let owEntranceGroupDiv = DropdownUI.createOWDropdown(itemLocation, itemLocationTextDiv);
 			itemLocationDiv.appendChild(owEntranceGroupDiv);
 
-			refreshEntranceDropdowns(itemLocation, locDropdown, entranceDropdown);
+			DropdownUI.refreshEntranceDropdowns(itemLocation);
 		}
 		
 		let inlineNotesDiv = dce("div", "item-location-inline-notes");
@@ -362,92 +342,6 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon) {
 };
 
 /**
- * Refreshes the entrance dropdowns so that they contain the correct text/choices/click handlers
- */
-let refreshEntranceDropdowns = function(itemLocation, loc, entrance) {
-	if (itemLocation.ItemGroup !== ItemGroups.OW_ENTRANCE) { return; }
-
-	let locDropdown = loc || document.getElementById(`${itemLocation.Name}-location-dropdown`);
-	let entranceDropdown = entrance || document.getElementById(`${itemLocation.Name}-entrance-dropdown`);
-
-	let defaultMap = itemLocation.OwShuffleMap;
-	let defaultExit = itemLocation.OwShuffleExitName;
-
-	if (!defaultMap) { // Means no map (and thus no exit) is selected, so we need to clear everything
-		locDropdown.innerHTML = "";
-		entranceDropdown.innerHTML = "";
-	}
-
-	let isDungeon = itemLocation.IsDungeonEntrance;
-	let options = Data.getOWMaps(isDungeon);
-	options.unshift("<no selection>");
-	_fillStringDropdown(locDropdown, options, defaultMap);
-
-	let entranceOptions = {
-		isOwl: itemLocation.IsOwl,
-		getInteriors: itemLocation.IsInteriorExit,
-		getGrottos: itemLocation.IsGrottoExit
-	};
-
-	if (defaultMap && defaultExit) {
-		let entrances = Data.getOWEntrances(defaultMap, entranceOptions);
-		_fillStringDropdown(entranceDropdown, entrances, defaultExit);
-	}
-
-	locDropdown.onchange = function() {
-		entranceDropdown.innerHTML = "";
-		
-		let mapName = locDropdown.options[locDropdown.selectedIndex].value;
-		let entrances = null;
-		if (mapName !== "<no selection>") {
-			entrances = Data.getOWEntrances(mapName, entranceOptions);
-			_fillStringDropdown(entranceDropdown, entrances);
-		}
-		
-		let entrance = entrances && entrances[0];
-
-		let results = Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance, !entrances);
-		refreshAll();
-
-		// Refresh the dropdown if it's on the current map
-		let toOwExit = results.toOwExit;
-		if (toOwExit && toOwExit.ExitMap === _currentLocationName) {
-			refreshEntranceDropdowns(toOwExit);
-		}
-
-		// Refresh the old location if it's on the current map and was cleared
-		let oldOwExit = results.oldOwExit;
-		if (oldOwExit && _currentLocationName === oldOwExit.ExitMap && !oldOwExit.LinkedExit) {
-			refreshEntranceDropdowns(oldOwExit);
-		}
-
-		// Don't use itemLocation, as it wouldn't have any changes resulting from the other clients
-		SocketClient.itemLocationUpdated(results.fromOwExit); 
-	};
-	
-	entranceDropdown.onchange = function() {
-		let mapName = locDropdown.options[locDropdown.selectedIndex].value;
-		let entrance = entranceDropdown.options[entranceDropdown.selectedIndex].value;
-		let results = Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance);
-		refreshAll();
-
-		// Refresh the dropdown if it's on the current map
-		let toOwExit = results.toOwExit;
-		if (toOwExit && toOwExit.ExitMap === _currentLocationName) {
-			refreshEntranceDropdowns(toOwExit);
-		}
-
-		// Refresh the old location if it's on the current map and was cleared
-		let oldOwExit = results.oldOwExit;
-		if (oldOwExit && _currentLocationName === oldOwExit.ExitMap && !oldOwExit.LinkedExit) {
-			refreshEntranceDropdowns(oldOwExit);
-		}
-
-		SocketClient.itemLocationUpdated(itemLocation)
-	};
-};
-
-/**
  * Refreshes the inline notes div
  */
 let _refreshNotes = function(itemLocation, notesDiv, moreInfoDiv) {
@@ -462,20 +356,6 @@ let _refreshNotes = function(itemLocation, notesDiv, moreInfoDiv) {
 	if (moreInfoNotesDiv && document.activeElement.type !== "textarea") {
 		moreInfoNotesDiv.value = itemLocation.notes || "";
 	}
-};
-
-let _fillStringDropdown = function(dropdown, options, defaultValue) {
-	options.forEach(function(option) {
-		let optionElement = dce("option");
-		optionElement.value = option;
-		optionElement.innerText = option;
-		
-		if (option === defaultValue) {
-			optionElement.selected = "selected";
-		}
-		
-		dropdown.appendChild(optionElement);
-	});
 };
 
 /**
