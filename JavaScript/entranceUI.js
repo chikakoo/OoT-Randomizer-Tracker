@@ -3,6 +3,8 @@
  * tasks that can be done at a given location
  * @param itemLocation - the item location
  * @return the div
+ * 
+ * //TODO: see what can be cleaned up with the dropdown rework!
  */
 let EntranceUI = {
 	/**
@@ -19,6 +21,7 @@ let EntranceUI = {
 		if (selectedGroup) {
 			this._createButtonDivs(itemLocation, itemLocationEntranceTasksContainer);
 		} else {
+			//TODO: clean this up... can remove it if this works
 			this._createGroupDivs(itemLocation, mainDiv, itemLocationEntranceTasksContainer);
 		}
 		
@@ -48,9 +51,22 @@ let EntranceUI = {
 	 * @param group - the group
 	 * @param groupName - the name of the group
 	 */
-	getEntranceGroupIcon(group, groupName) {
+	getEntranceGroupIcon: function(group, groupName) {
 		let iconName = group.icon ? group.icon : groupName;
 		return `url("Images/Entrance Groups/Group - ${iconName}.png")`;
+	},
+
+	/**
+	 * Gets the group names form the given group that are not meant to be excluded
+	 * @param groupObject - the group object - one of Interior/Grotto/Boss groups
+	 * @param itemToInclude - an item to always include - ignores the excludeFromGroup filter
+	 * @returns - the arra of filtered group names
+	 */
+	getFilteredGroupNames: function(groupObject, itemToInclude) {
+		return Object.keys(groupObject).filter(function(key) {
+			let item = groupObject[key];
+			return key === itemToInclude || !item.excludeFromGroup || !item.excludeFromGroup();
+		});
 	},
 
 	/**
@@ -105,6 +121,7 @@ let EntranceUI = {
 			groupDiv.title = group.tooltip;
 			
 			groupDiv.onclick = function(event) {
+				//TODO: do this stuff once a dropdown option is selected! the groupName will be the dropdown value
 				event.stopPropagation();
 
 				let group = entranceData[groupName];
@@ -251,7 +268,7 @@ let EntranceUI = {
 		});
 		
 		if (visibleButtonCount < 1) {
-			itemLocation.playerHas = true;
+			//itemLocation.playerHas = true;
 		}
 	},
 
@@ -337,13 +354,11 @@ let EntranceUI = {
 		delete itemLocation[groupProperty];
 		
 		if (itemLocation.ExitMap === _currentLocationName) {
-			let mainDiv = document.getElementById(`${itemLocation.Name}-entrance-groups`);
-			mainDiv.innerHTML = "";
-			removeCssClass(mainDiv, "nodisp");
+			let dropdownDiv = document.getElementById(`${itemLocation.Name}-location-dropdown`);
+			dropdownDiv.value = "<no selection>";
 			
 			let itemLocationEntranceTasksContainer = document.getElementById(`${itemLocation.Name}-entrance-tasks`);
 			itemLocationEntranceTasksContainer.innerHTML = "";
-			this._createGroupDivs(itemLocation, mainDiv, itemLocationEntranceTasksContainer);
 		}
 		itemLocation.playerHas = false;
 		
@@ -358,7 +373,9 @@ let EntranceUI = {
 	 */
 	refreshButtons: function(itemLocation) {
 		let mainDiv = document.getElementById(`${itemLocation.Name}-entrance-groups`);
-		addOrRemoveCssClass(mainDiv, "nodisp", Data.getEntranceGroup(itemLocation));
+		if (mainDiv) { //TODO: probably just check for whether it's an itemGroup instead
+			addOrRemoveCssClass(mainDiv, "nodisp", Data.getEntranceGroup(itemLocation));
+		}
 		
 		let itemLocationEntranceTasksContainer = document.getElementById(`${itemLocation.Name}-entrance-tasks`);
 		itemLocationEntranceTasksContainer.innerHTML = "";

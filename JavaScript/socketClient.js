@@ -229,10 +229,15 @@ SocketClient = {
 				group.postClick(matchingLocation, true);
 			}
 			EntranceData.runPostClicks(matchingLocation);
+
+			if (!itemLocation.IsItemLocationGroup) {
+				this._updateInteriorOrGrottoDropdown(matchingLocation);
+			}
 		} 
 		
 		else if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && !sentGroup) {
 			EntranceUI.clearGroupChoice(matchingLocation);
+			this._updateInteriorOrGrottoDropdown(matchingLocation);
 		}
 		
 		if (_currentLocationName === map) {
@@ -259,6 +264,17 @@ SocketClient = {
 		let entranceDropdown = document.getElementById(`${itemLocation.Name}-entrance-dropdown`);
 		if (locDropdown && entranceDropdown) {
 			DropdownUI.refreshEntranceDropdowns(itemLocation, locDropdown, entranceDropdown);
+		}
+	},
+
+	/**
+	 * Updates the dropdown of the given item location (assumed to be an interior or grotto)
+	 * @param itemLocation - the item location to update
+	 */
+	_updateInteriorOrGrottoDropdown: function(itemLocation) {
+		let locDropdown = document.getElementById(`${itemLocation.Name}-location-dropdown`);
+		if (locDropdown) {
+			DropdownUI.refreshEntranceDropdowns(itemLocation, locDropdown);
 		}
 	},
 	

@@ -309,17 +309,23 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon) {
 			itemLocationEntranceTasksContainer.id = `${itemLocation.Name}-entrance-tasks`;
 			itemLocationTitleDiv.appendChild(itemLocationEntranceTasksContainer);
 			
-			let entranceGroupDiv = EntranceUI.createEntranceGroupDiv(itemLocation, itemLocationEntranceTasksContainer);
-			let group = Data.getEntranceGroup(itemLocation);
-			let groupSelectedAndCompleted = group && Object.keys(group.completed).length >= group.totalNumberOfTasks;
-			if (itemLocation.playerHas || groupSelectedAndCompleted) {
-				addCssClass(entranceGroupDiv, "nodisp");
+			if (itemLocation.IsItemLocationGroup) {
+				let entranceGroupDiv = EntranceUI.createEntranceGroupDiv(itemLocation, itemLocationEntranceTasksContainer);
+				let group = Data.getEntranceGroup(itemLocation);
+				let groupSelectedAndCompleted = group && Object.keys(group.completed).length >= group.totalNumberOfTasks;
+				if (itemLocation.playerHas || groupSelectedAndCompleted) {
+					addCssClass(entranceGroupDiv, "nodisp");
+				}
+				itemLocationDiv.appendChild(entranceGroupDiv);
+			} else {
+				let dropdownGroup = DropdownUI.createInteriorOrGrottoDropdown(itemLocation, itemLocationTextDiv);
+				itemLocationDiv.appendChild(dropdownGroup);
+
+				DropdownUI.refreshEntranceDropdowns(itemLocation);
 			}
-			itemLocationDiv.appendChild(entranceGroupDiv);
 		}
 		
 		else if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
-
 			let dropdownGroup = DropdownUI.createOWDropdown(itemLocation, itemLocationTextDiv);
 			itemLocationDiv.appendChild(dropdownGroup);
 
@@ -365,16 +371,6 @@ let _refreshNotes = function(itemLocation, notesDiv, moreInfoDiv) {
 let _createLocationIconsDiv = function(itemLocationDiv, itemLocation, floor) {
 	let locationName = itemLocation.Name;
 	let locationIconsDiv = dce("div", "item-locations-icon-container");
-	
-	// Cancel entrance group icon
-	if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && !Data.usesDefaultGroup(itemLocation)) {
-		let cancelEntranceIcon = dce("div", "item-location-cancel-entrance-icon");
-		cancelEntranceIcon.onclick = function(event) {
-			event.stopPropagation();
-			EntranceUI.clearGroupChoice(itemLocation);
-		}
-		locationIconsDiv.appendChild(cancelEntranceIcon);
-	}
 	
 	// Walk Icon
 	let walkIcon = dce("div", "item-location-walk-icon");
@@ -495,7 +491,7 @@ let _setPlaceholderNotesText = function(itemLocation, moreInfoNotesDiv) {
  * @param itemLocation - the data for the item
  */
 let _toggleItemObtained = function(itemLocationDiv, itemLocation, event) {
-	if (event) { event.stopPropagation() };
+	if (event) { event.stopPropagation(); }
 	if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
 		return;
 	}

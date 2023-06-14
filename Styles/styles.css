@@ -579,7 +579,7 @@ body::-webkit-scrollbar-thumb {
 	display: flex;
 }
 
-.item-location-expand-icon, .item-location-map-icon, .item-location-cancel-entrance-icon, .item-location-walk-icon {
+.item-location-expand-icon, .item-location-map-icon, .item-location-walk-icon {
 	width: 22px;
 	height: 22px;
 }
@@ -598,13 +598,8 @@ body::-webkit-scrollbar-thumb {
 	padding-right: 3px;
 }
 
-.item-location-cancel-entrance-icon {
-	background-image: url("../Images/Cancel Entrance Icon.png")
-}
-
 .item-location-expand-icon:hover, 
 .item-location-map-icon:hover, 
-.item-location-cancel-entrance-icon:hover,
 .item-location-walk-icon:hover {
 	cursor: pointer;
 }
@@ -623,7 +618,13 @@ body::-webkit-scrollbar-thumb {
 	padding-left: 5px;
 }
 
-.item-group-image, .item-location-age-icon, .item-location-time-icon, .item-location-expand-icon, .item-location-map-icon, .item-location-walk-icon, .item-location-cancel-entrance-icon, .item-location-group-icon {
+.item-group-image, 
+.item-location-age-icon, 
+.item-location-time-icon, 
+.item-location-expand-icon, 
+.item-location-map-icon, 
+.item-location-walk-icon, 
+.item-location-group-icon {
 	background-size: contain;
 	background-repeat: no-repeat;
 }
@@ -652,6 +653,10 @@ body::-webkit-scrollbar-thumb {
 .item-obtained .item-location-text {
 	color: #525254;
 	text-decoration: line-through;
+}
+
+.item-obtained select {
+	opacity: 0.4;
 }
 
 .item-icon-hover {

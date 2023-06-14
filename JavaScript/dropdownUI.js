@@ -1,6 +1,5 @@
 /**
  * Contains code for the dropdown boxes for entrances
- * TODO: the refactoring to convert interiors/grottos into dropdowns
  */
 let DropdownUI = {
     /**
@@ -36,6 +35,29 @@ let DropdownUI = {
     },
 
     /**
+     * Creates the interior dropdown div for a given item location
+     * @param itemLocation - the item location
+     * @param itemLocationTextDiv - the main div of the item location - passed in to provide right-click travel
+     */
+    createInteriorOrGrottoDropdown: function(itemLocation, itemLocationTextDiv) {
+        let dropdownGroup = dce("div", "dropdown-group");
+        let dropdown = dce("select");
+        dropdown.id = `${itemLocation.Name}-location-dropdown`;
+
+        itemLocationTextDiv.oncontextmenu = function() {
+            let mapName = itemLocation.OwShuffleMap;
+            if (mapName) {
+                displayLocation(mapName);
+                Walk.updateTravelDiv();	
+            }
+        };
+
+        dropdownGroup.appendChild(dropdown);
+
+        return dropdownGroup;
+    },
+
+    /**
      * Refreshes the entrance dropdowns so that they contain the correct text/choices/click handlers
      * @param itemLocation - the item location
      * @param loc - the main location dropdown (optional)
@@ -44,13 +66,18 @@ let DropdownUI = {
     refreshEntranceDropdowns: function(itemLocation, loc, entrance) {
         let entranceOptions = {
             isOwl: itemLocation.IsOwl,
-            getInteriors: itemLocation.IsInteriorExit,
+            getInteriors: itemLocation.IsInteriorExit, //TODO: this and grottos maybe can be cleaned up...?
             getGrottos: itemLocation.IsGrottoExit
         };
 
         if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
             this._refreshOWLocationDropdown(itemLocation, loc, entrance, entranceOptions);
             this._refreshOWEntranceDropdown(itemLocation, loc, entrance, entranceOptions);
+        } else if ((itemLocation.ItemGroup === ItemGroups.ENTRANCE && !itemLocation.IsItemLocationGroup)) {
+            this._refreshInteriorOrGrottoDropdown(
+                itemLocation, 
+                loc,
+                itemLocation.IsInterior ? InteriorGroups : GrottoGroups);
         }
     },
 
@@ -65,18 +92,17 @@ let DropdownUI = {
         let locDropdown = loc || document.getElementById(`${itemLocation.Name}-location-dropdown`);
         let entranceDropdown = entrance || document.getElementById(`${itemLocation.Name}-entrance-dropdown`);
 
-        let defaultMap = itemLocation.OwShuffleMap;
-        if (!defaultMap) { // Means no map (and thus no exit) is selected, so we need to clear everything
-            locDropdown.innerHTML = "";
-            entranceDropdown.innerHTML = "";
-        }
+        locDropdown.innerHTML = "";
+        entranceDropdown.innerHTML = "";
 
         let isDungeon = itemLocation.IsDungeonEntrance;
         let options = this._getDropdownMaps(isDungeon);
         options.unshift("<no selection>");
+
+        let defaultMap = itemLocation.OwShuffleMap;
         this._fillStringDropdown(locDropdown, options, defaultMap);
 
-        locDropdown.onchange = this.onLocDropdownChange.bind(
+        locDropdown.onchange = this.onOWLocDropdownChange.bind(
             this, itemLocation, locDropdown, entranceDropdown, entranceOptions);
     },
 
@@ -98,7 +124,7 @@ let DropdownUI = {
             this._fillStringDropdown(entranceDropdown, entrances, defaultExit);
         }
 
-        entranceDropdown.onchange = this.onEntranceDropdownChange.bind(
+        entranceDropdown.onchange = this.onOWEntranceDropdownChange.bind(
             this, itemLocation, locDropdown, entranceDropdown);
     },
 
@@ -110,7 +136,7 @@ let DropdownUI = {
      * @param entranceDropdown - The entrance dropdown associated to the location
      * @param entranceOptions - Set of options used to get the entrance choices
      */
-    onLocDropdownChange: function(itemLocation, locDropdown, entranceDropdown, entranceOptions) {
+    onOWLocDropdownChange: function(itemLocation, locDropdown, entranceDropdown, entranceOptions) {
         entranceDropdown.innerHTML = "";
             
         let mapName = locDropdown.options[locDropdown.selectedIndex].value;
@@ -147,7 +173,7 @@ let DropdownUI = {
      * @param locDropdown - The location dropdown that was changed
      * @param entranceDropdown - The entrance dropdown associated to the location
      */
-    onEntranceDropdownChange: function(itemLocation, locDropdown, entranceDropdown) {
+    onOWEntranceDropdownChange: function(itemLocation, locDropdown, entranceDropdown) {
         let mapName = locDropdown.options[locDropdown.selectedIndex].value;
         let entrance = entranceDropdown.options[entranceDropdown.selectedIndex].value;
         let results = Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance);
@@ -166,6 +192,61 @@ let DropdownUI = {
         }
 
         SocketClient.itemLocationUpdated(itemLocation)
+    },
+
+    _refreshInteriorOrGrottoDropdown: function(itemLocation, loc, interiorOrGrottoObject) {
+        let locDropdown = loc || document.getElementById(`${itemLocation.Name}-location-dropdown`);
+        locDropdown.innerHTML = "";
+
+        let defaultOption = itemLocation.EntranceGroup
+            ? itemLocation.EntranceGroup.name
+            : null;
+
+        let locationChoices = EntranceUI.getFilteredGroupNames(interiorOrGrottoObject, defaultOption);
+        locationChoices.unshift("<no selection>");
+
+        this._fillStringDropdown(locDropdown, locationChoices, defaultOption);
+
+        locDropdown.onclick = function(event) { event.stopPropagation(); }
+        locDropdown.onchange = this.onInteriorOrGrottoDropdownChange.bind(this, interiorOrGrottoObject, itemLocation);
+    },
+
+    onInteriorOrGrottoDropdownChange: function(entranceData, itemLocation, event) {
+        event.stopPropagation();
+
+        let groupName = event.currentTarget.value;
+
+        //TODO: maybe split this to only call the post-click? the idea is that we need to call the post clickk functions
+        // of things like link's house so that the data is cleared when the value is changed to another
+        EntranceUI.clearGroupChoice(itemLocation);
+        if (groupName === "<no selection>") {
+            //EntranceUI.clearGroupChoice(itemLocation);
+            return;
+        }
+
+        let group = entranceData[groupName];
+        if (group.shouldNotTrigger && group.shouldNotTrigger()) {
+            return;
+        }
+        
+        //TODO: check all EntranceUI calls and see if they should be moved to DropdownUI
+        EntranceUI.initializeEntranceGroupData(itemLocation, groupName);
+
+        let itemLocationEntranceTasksContainer = document.getElementById(`${itemLocation.Name}-entrance-tasks`);
+        EntranceUI._createButtonDivs(itemLocation, itemLocationEntranceTasksContainer); //TODO: this is a private function
+        
+        if (Data.isItemLocationAShop(itemLocation)) {
+            _toggleMoreInfo(document.getElementById(itemLocation.Name), itemLocation, true);
+        }
+        
+        _refreshNotes(itemLocation);
+        
+        if (group.postClick) {
+            group.postClick(itemLocation, true);
+        }
+
+        SocketClient.itemLocationUpdated(itemLocation);
+        refreshAll();
     },
 
     /**
