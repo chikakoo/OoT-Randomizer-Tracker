@@ -216,11 +216,11 @@ let DropdownUI = {
 
         let groupName = event.currentTarget.value;
 
-        //TODO: maybe split this to only call the post-click? the idea is that we need to call the post clickk functions
-        // of things like link's house so that the data is cleared when the value is changed to another
+        // Simulates deselecting the choice before we select the new one
+        // This handles the post clicks and Socket calls for the same
         EntranceUI.clearGroupChoice(itemLocation);
+
         if (groupName === "<no selection>") {
-            //EntranceUI.clearGroupChoice(itemLocation);
             return;
         }
 
