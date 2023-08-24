@@ -1898,6 +1898,7 @@ let OwExits = {
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
+            ReadOnly: true,
             MapInfo: { x: 10, y: 10, floor: "JAIL1" },
             Age: Age.EITHER,
             LongDescription: "This is the exit to the left if you face the jail."
@@ -1908,6 +1909,7 @@ let OwExits = {
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
+            ReadOnly: true,
             MapInfo: { x: 20, y: 10, floor: "JAIL1" },
             Age: Age.EITHER,
             LongDescription: "This is the exit to the right if you face the jail."

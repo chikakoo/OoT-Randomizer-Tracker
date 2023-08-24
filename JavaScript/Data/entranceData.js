@@ -882,9 +882,9 @@ InteriorGroups = {
 			}
 		}
 	},
-	"TH - Bottom Left": {
+	"TH - Jail 1 Left": {
 		icon: "Thieves' Hideout",
-		tooltip: "The door at the bottom left of the fortress.",
+		tooltip: "The door to the left of jail 1 in the Thieves' Hideout.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
 		postClick: function(itemLocation, isSelected) {
@@ -893,12 +893,12 @@ InteriorGroups = {
 				region: "jail1",
 				exit: "Jail 1 Left"
 			}
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "Thieves' Hideout - Bottom Left Door");
+			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "TH - Jail 1 Left");
 		}
 	},
-	"TH - Bottom Enclave Left": {
+	"TH - Jail 1 Right": {
 		icon: "Thieves' Hideout",
-		tooltip: "The left door at the bottom in the enclaves with the crates.",
+		tooltip: "The door to the right of jail 1 in the Thieves' Hideout.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
 		postClick: function(itemLocation, isSelected) {
@@ -907,7 +907,7 @@ InteriorGroups = {
 				region: "jail1",
 				exit: "Jail 1 Right"
 			}
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "Thieves' Hideout - Bottom Enclave Left Door");
+			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "TH - Jail 1 Right");
 		}
 	},
 };
