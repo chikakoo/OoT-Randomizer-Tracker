@@ -123,6 +123,7 @@ let Settings = {
 		// Entrance shuffle settings
 		shuffleInteriorEntrances: true,
 		shuffleGrottoEntrances: true,
+		shuffleThievesHideout: true,
 		shuffleDungeonEntrances: true,
 		shuffleBossEntrances: true,
 		shuffleOverworldEntrances: true,

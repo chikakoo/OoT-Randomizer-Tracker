@@ -96,7 +96,7 @@ let DropdownUI = {
         entranceDropdown.innerHTML = "";
 
         let isDungeon = itemLocation.IsDungeonEntrance;
-        let options = this._getDropdownMaps(isDungeon);
+        let options = this._getDropdownMaps(isDungeon, entranceOptions);
         options.unshift("<no selection>");
 
         let defaultMap = itemLocation.OwShuffleMap;
@@ -202,7 +202,7 @@ let DropdownUI = {
             ? itemLocation.EntranceGroup.name
             : null;
 
-        let locationChoices = EntranceUI.getFilteredGroupNames(interiorOrGrottoObject, defaultOption);
+        let locationChoices = EntranceUI.getFilteredGroupNames(interiorOrGrottoObject, defaultOption, itemLocation);
         locationChoices.unshift("<no selection>");
 
         this._fillStringDropdown(locDropdown, locationChoices, defaultOption);
@@ -272,8 +272,9 @@ let DropdownUI = {
     /**
      * Gets an array of all the non-dungeon map names
      * @param isForDungeonDropdown - whether it's for the dungeon dropdown
+     * @param entranceOptions - used to filter maps that have no interiors or grottos to display
      */
-	_getDropdownMaps: function(isForDungeonDropdown) {
+	_getDropdownMaps: function(isForDungeonDropdown, entranceOptions) {
 		let owMaps = [];
 		let mapNames = Object.keys(MapLocations);
 		mapNames.forEach(function (mapName) {
@@ -283,7 +284,14 @@ let DropdownUI = {
                 ? isDungeon && isForDungeonDropdown
                 : !isDungeon && !isForDungeonDropdown;
 			if (dungeonCheck) {
-				owMaps.push(mapName);
+                // Don't add the map if it doesn't have the entrance type we're looking for
+                let itemLocs = Data.getAllItemLocations(mapName);
+                if (entranceOptions.getInteriors && !itemLocs.some(itemLoc => itemLoc.IsInterior) ||
+                    entranceOptions.getGrottos && !itemLocs.some(itemLoc => itemLoc.IsGrotto)) {
+                    return;
+                }
+
+                owMaps.push(mapName);
 			}
 		});
 		
@@ -311,12 +319,13 @@ let DropdownUI = {
         Object.keys(exits).forEach(function(entranceName) {
             let entrance = exits[entranceName];
 
-            if (entrance.ExcludeFromDropdown) {
+            let hiddenExit = entrance.Hide && !(options.isOwl && entrance.ShowForOwl); // Owl dropdowns need some hidden entrances
+            if (entrance.ExcludeFromDropdown || hiddenExit || entrance.ItemGroup !== itemGroupType) {
                 return;
             }
 
-            if (entrance.ItemGroup === itemGroupType && 
-                (!entrance.Hide || (options.isOwl && entrance.ShowForOwl)) && 
+            // Don't include dungeons or owns in any OW entrance
+            if (itemGroupType === ItemGroups.OW_ENTRANCE && 
                 !entrance.IsDungeonEntrance && 
                 !entrance.IsOwl)
             {
@@ -324,6 +333,7 @@ let DropdownUI = {
                 return;
             }
 
+            // Only grab the set of entrances that matter for interiors
             if (entrance.ItemGroup === itemGroupType && 
                 ((options.getInteriors && entrance.IsInterior) ||
                 (options.getGrottos && entrance.IsGrotto))) 

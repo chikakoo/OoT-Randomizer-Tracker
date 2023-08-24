@@ -167,7 +167,6 @@ RegionWalker = {
             // For the OW Shuffle stuff
             delete itemLocation.childWalkValue;
             delete itemLocation.adultWalkValue;
-            delete itemLocation.IsInteriorTravelData;
         });
 
         Object.keys(OwExits).forEach(function(mapName) {

@@ -3107,7 +3107,7 @@ let MapLocations = {
                     upperInteriors: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            //TODO thief's hideout shuffle: This will make it repeatable to get jailed, so only HS would be needed
+                            //TODO thieves' hideout shuffle: This will make it repeatable to get jailed, so only HS would be needed
                             return Items.HOOKSHOT.playerHas && !Data.areGerudoGuardsTame();
                         }
                     },
@@ -3127,19 +3127,25 @@ let MapLocations = {
                     },
 
                     // Grottos & Interiors
+                    "Bottom Left Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Bottom Left Door"]
+                    },
+                    "Bottom Enclave Left Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Bottom Enclave Left Door"]
+                    },
                     "Song of Storms Grotto": {
                         OwExit: OwExits["Gerudo Fortress"]["Song of Storms Grotto"]
                     }
                 },
 
                 ItemLocations: {
-                    "Jail 1 Guard Key": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 52, y: 79, floor: "LOW" },
-                        Age: Age.EITHER,
-                        NeedsSwordWeapon: true,
-                        LongDescription: "Enter the leftmost bottom exit to get to the first jail. Take out the guard to get the item."
-                    },
+                    // "Jail 1 Guard Key": {
+                    //     ItemGroup: ItemGroups.FREESTANDING,
+                    //     MapInfo: { x: 52, y: 79, floor: "LOW" },
+                    //     Age: Age.EITHER,
+                    //     NeedsSwordWeapon: true,
+                    //     LongDescription: "Enter the leftmost bottom exit to get to the first jail. Take out the guard to get the item."
+                    // },
                     "Jail 2 Guard Key": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 142, y: 109, floor: "LOW" },
@@ -3171,21 +3177,21 @@ let MapLocations = {
                             return Data.areGerudoGuardsTame();
                         }
                     },
-                    "3 Pots by Jail 1": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 10, y: 68, floor: "LOW" },
-                        Age: Age.EITHER,
-                        LongDescription: "These pots are on the opposite wall of the jail."
-                    },
-                    "Crate by Jail 1": {
-                        ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 10, y: 109, floor: "LOW" },
-                        Age: Age.EITHER,
-                        LongDescription: "The crate is in the opposite corner of the cell door."
-                    },
+                    // "3 Pots by Jail 1": {
+                    //     ItemGroup: ItemGroups.ENTRANCE,
+                    //     OverrideItemGroup: ItemGroups.POT,
+                    //     IsItemLocationGroup: true,
+                    //     DefaultEntranceGroupName: "3 Pots",
+                    //     MapInfo: { x: 10, y: 68, floor: "LOW" },
+                    //     Age: Age.EITHER,
+                    //     LongDescription: "These pots are on the opposite wall of the jail."
+                    // },
+                    // "Crate by Jail 1": {
+                    //     ItemGroup: ItemGroups.CRATE,
+                    //     MapInfo: { x: 10, y: 109, floor: "LOW" },
+                    //     Age: Age.EITHER,
+                    //     LongDescription: "The crate is in the opposite corner of the cell door."
+                    // },
                     "2 Pots in Jail 2 Hallway": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -3494,6 +3500,50 @@ let MapLocations = {
 		}
     },
     
+    "Thieves' Hideout": {
+        Abbreviation: "TH",
+        MapGroup: MapGroups.DESERT,
+        Floors: ["J1", "J2", "J3", "J4", "KIT", "TOP"],
+        StartingFloorIndex: 0,
+        Regions: {
+            jail1: {
+                Exits: {
+                    //TODO: actually create these
+                    "Jail 1 Left": {
+                        OwExit: OwExits["Thieves' Hideout"]["Jail 1 Left"]
+                    },
+                    "Jail 1 Right": {
+                        OwExit: OwExits["Thieves' Hideout"]["Jail 1 Right"]
+                    },
+                },
+                ItemLocations: {
+                    "Jail 1 Guard Key": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 52, y: 79, floor: "J1" },
+                        Age: Age.EITHER,
+                        NeedsSwordWeapon: true,
+                        LongDescription: "Enter the leftmost bottom exit to get to the first jail. Take out the guard to get the item."
+                    },
+                    "3 Pots by Jail 1": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 10, y: 68, floor: "J1" },
+                        Age: Age.EITHER,
+                        LongDescription: "These pots are on the opposite wall of the jail."
+                    },
+                    "Crate by Jail 1": {
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 10, y: 109, floor: "J1" },
+                        Age: Age.EITHER,
+                        LongDescription: "The crate is in the opposite corner of the cell door."
+                    }
+                }
+            }
+        }
+    },
+
 	"Haunted Wasteland": {
 		Abbreviation: "HW",
 		MapGroup: MapGroups.DESERT,

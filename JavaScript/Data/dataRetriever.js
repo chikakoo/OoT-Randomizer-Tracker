@@ -24,23 +24,13 @@ Data = {
      * Consists of objects of the following form telling you where the interior "tunnel" is located
      * This contains the item location that corresponds to this
      */
-    interiorTravelData: {
-        kakPotionShopFront: null,
-        kakPotionShopBack: null,
-        dampesGrave: null,
-        windmill: null
-    },
+    interiorTravelData: {},
 
     /**
      * Contains arrays of all the data entered for the interior travel data
      * This is to handle issues related to adding and removing entries by mistake
      */
-    _interiorTravelDataInfo: {
-        kakPotionShopFront: [],
-        kakPotionShopBack: [],
-        dampesGrave: [],
-        windmill: []
-    },
+    _interiorTravelDataInfo: {},
 
     /**
      * Should be what is called when adding to the interior travel data
@@ -48,6 +38,8 @@ Data = {
      * @param {any} data - the data to store in the key
      */
     addToInteriorTravelData: function(key, data) {
+        this._interiorTravelDataInfo[key] = this._interiorTravelDataInfo[key] || [];
+
         let dataArray = this._interiorTravelDataInfo[key];
         if (dataArray.some(x => x.Name === data.Name && x.Map === data.Map)) {
             return;

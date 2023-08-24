@@ -10,7 +10,7 @@ EntranceData = {
 	handleInteriorPostClick(itemLocation, isSelected, otherSideData, travelDataInfoKey) {
 		let interiorExit = MapLocations[otherSideData.map].Regions[otherSideData.region].Exits[otherSideData.exit].OwExit;
 		if (isSelected) {
-			Data.addToInteriorTravelData(travelDataInfoKey, itemLocation); // windmill post click mostly
+			Data.addToInteriorTravelData(travelDataInfoKey, itemLocation);
 
 			itemLocation.OwShuffleMap = otherSideData.map;
 			itemLocation.OwShuffleRegion = otherSideData.region;
@@ -20,7 +20,7 @@ EntranceData = {
 			interiorExit.OwShuffleRegion = itemLocation.ExitRegion;
 			interiorExit.OwShuffleExitName = itemLocation.Name;
 		} else {
-			Data.removeFromInteriorTravelData(travelDataInfoKey, itemLocation); // windmill post click mostly
+			Data.removeFromInteriorTravelData(travelDataInfoKey, itemLocation);
 
 			delete itemLocation.OwShuffleMap;
 			delete itemLocation.OwShuffleRegion;
@@ -29,6 +29,15 @@ EntranceData = {
 			delete interiorExit.OwShuffleMap;
 			delete interiorExit.OwShuffleRegion;
 			delete interiorExit.OwShuffleExitName;
+
+			// If there still is interior travel data, that means there were multiple locations selected,
+			// and we should now populate the interior exit with this data instead
+			let interiorTravelLocation = Data.interiorTravelData[travelDataInfoKey];
+			if (interiorTravelLocation) {
+				interiorExit.OwShuffleMap = interiorTravelLocation.ExitMap;
+				interiorExit.OwShuffleRegion = interiorTravelLocation.ExitRegion;
+				interiorExit.OwShuffleExitName = interiorTravelLocation.Name;
+			}
 		}
 	},
 
@@ -772,7 +781,7 @@ InteriorGroups = {
 	},
 	"Windmill": {
 		neverHide: true,
-		tooltip: "Kakariko Windmill - Doesn't take the Dampe Race entrance into consideration for the heart piece item", //TODO
+		tooltip: "Kakariko Windmill",
 		buttons: {},
 		postClick: function(itemLocation, isSelected) {
 			let exitData = {
@@ -872,7 +881,35 @@ InteriorGroups = {
 				description: "Pot 3."
 			}
 		}
-	}
+	},
+	"TH - Bottom Left": {
+		icon: "Thieves' Hideout",
+		tooltip: "The door at the bottom left of the fortress.",
+		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+		buttons: {},
+		postClick: function(itemLocation, isSelected) {
+			let exitData = {
+				map: "Thieves' Hideout",
+				region: "jail1",
+				exit: "Jail 1 Left"
+			}
+			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "Thieves' Hideout - Bottom Left Door");
+		}
+	},
+	"TH - Bottom Enclave Left": {
+		icon: "Thieves' Hideout",
+		tooltip: "The left door at the bottom in the enclaves with the crates.",
+		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+		buttons: {},
+		postClick: function(itemLocation, isSelected) {
+			let exitData = {
+				map: "Thieves' Hideout",
+				region: "jail1",
+				exit: "Jail 1 Right"
+			}
+			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "Thieves' Hideout - Bottom Enclave Left Door");
+		}
+	},
 };
 
 /**

@@ -1856,6 +1856,28 @@ let OwExits = {
         },
 
         // Interiors
+
+        //TODO: FIX THE MAP INFO FOR THESE
+        "Bottom Left Door": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "jail1",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 10, y: 10 },
+            Age: Age.EITHER,
+            LongDescription: "The door at the bottom left of the fortress."
+        },
+        "Bottom Enclave Left Door": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "jail1",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 20, y: 10 },
+            Age: Age.EITHER,
+            LongDescription: "The left door at the bottom in the enclaves with the crates."
+        },
         "Song of Storms Grotto": {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
@@ -1864,6 +1886,31 @@ let OwExits = {
             Age: Age.ADULT,
             LongDescription: "Play the song of storms in the center of the crates near the fortress to reveal this grotto.",
             RequiredSongs: [Songs.SONG_OF_STORMS]
+        }
+    },
+
+    //TODO: clean up map info!
+    "Thieves' Hideout": {
+        // Interiors
+        "Jail 1 Left": {
+            ExitRegion: "jail1",
+            Map: "Gerudo Fortress",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            IsInteriorExit: true,
+            MapInfo: { x: 10, y: 10, floor: "JAIL1" },
+            Age: Age.EITHER,
+            LongDescription: "This is the exit to the left if you face the jail."
+        },
+        "Jail 1 Right": {
+            ExitRegion: "jail1",
+            Map: "Gerudo Fortress",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            IsInteriorExit: true,
+            MapInfo: { x: 20, y: 10, floor: "JAIL1" },
+            Age: Age.EITHER,
+            LongDescription: "This is the exit to the right if you face the jail."
         }
     },
 
