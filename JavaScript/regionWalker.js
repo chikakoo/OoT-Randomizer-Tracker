@@ -532,7 +532,9 @@ RegionWalker = {
                 if (itemObtainability && !exit.OwExit.IsDungeonExit) { //TODO: better handle dungeon exits - they don't work properly in dungeon shuffle
                     let isRandomizedOwl = exit.OwExit.IsOwl && Settings.RandomizerSettings.randomizeOwlDrops;
                     let isShuffledDungeon = exit.OwExit.IsDungeonEntrance && Settings.RandomizerSettings.shuffleDungeonEntrances;
-                    let isShuffledOw = !exit.OwExit.IsOwl && !exit.OwExit.IsDungeonEntrance && Settings.RandomizerSettings.shuffleOverworldEntrances;
+                    let isShuffledOw = !exit.OwExit.IsOwl && !exit.OwExit.IsDungeonEntrance && 
+                        (Settings.RandomizerSettings.shuffleOverworldEntrances || exit.OwExit.IsInterior || exit.OwExit.IsGrotto);
+                    
                     if (isRandomizedOwl || isShuffledDungeon || isShuffledOw) {
                         if (exit.OwExit.OwShuffleMap && exit.OwExit.OwShuffleExitName) {
                             _this._addToWalkMap(age, mapName, regionName, exitName, exit.OwExit.OwShuffleMap, exit.OwExit.OwShuffleRegion, exit.OwExit.OwShuffleExitName);

@@ -151,7 +151,11 @@ Walk = {
 		
 		let itemLocations = Data.getAllItemLocations(_currentLocationName); //TODO; make a new function to only get OwExits in dataRetriever (see the other TODO)
 		itemLocations.forEach(function(itemLocation) {
-			if (!itemLocation.OwShuffleExitName && Settings.RandomizerSettings.shuffleOverworldEntrances) { return; }
+			let isInteriorOrGrottoExit = itemLocation.IsInterior && itemLocation.IsGrotto;
+			let doesOwShuffleApply = Settings.RandomizerSettings.shuffleOverworldEntrances || isInteriorOrGrottoExit;
+			if (!itemLocation.OwShuffleExitName && doesOwShuffleApply) { 
+				return;
+			}
 
 			let childWalkValue = itemLocation.childWalkValue;
 			if (itemLocation.childWalkValue !== undefined) {
@@ -245,7 +249,9 @@ Walk = {
 			locationSpan.innerText = i === locations.length - 1 ? `${location.Name}` : `${location.Name};`;
 			spanContainer.appendChild(locationSpan);
 			
-			let owShuffle = Settings.RandomizerSettings.shuffleOverworldEntrances;
+			let isInteriorOrGrotto = location.IsInterior || location.IsGrotto;
+			let doesOwShuffleApply = Settings.RandomizerSettings.shuffleOverworldEntrances || isInteriorOrGrotto;
+			let owShuffle = doesOwShuffleApply && location.OwShuffleExitName;
 			let isRandomizedOwl = location.IsOwl && Settings.RandomizerSettings.randomizeOwlDrops;
 			let isShuffled = owShuffle || isRandomizedOwl;
 			let entranceDataSet = {

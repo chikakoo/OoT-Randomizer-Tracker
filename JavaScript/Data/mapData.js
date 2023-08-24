@@ -1828,7 +1828,17 @@ let MapLocations = {
                         OwExit: OwExits["Death Mountain Crater"]["Grotto in Rock by Goron"]
                     }
                 },
-                ItemLocations: {}
+                ItemLocations: {
+                    "4 Pots Near Goron City": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Pots",
+                        MapInfo: { x: 56, y: 85 },
+                        Age: Age.ADULT,
+                        LongDescription: "These pots are near the entrance to Goron City. They only have items in them as Adult."
+                    }
+                }
             },
 
             bottom: {
@@ -1926,15 +1936,6 @@ let MapLocations = {
                         MapInfo: { x: 283, y: 132 },
                         Age: Age.ADULT,
                         LongDescription: "From the top of the crater, cross the wooden bridge at the southeast. You can jump to the platform from there.<br/><br/>You can also get there from the bottom using a longshot and Scarecrow's Song from the second of the tiny islands you reach from the Bolero warp."
-                    },
-                    "4 Pots Near Goron City": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "4 Pots",
-                        MapInfo: { x: 56, y: 85 },
-                        Age: Age.ADULT,
-                        LongDescription: "These pots are near the entrance to Goron City. They only have items in them as Adult."
                     }
                 }
             }
