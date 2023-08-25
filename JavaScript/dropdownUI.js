@@ -242,17 +242,13 @@ let DropdownUI = {
     },
 
     onInteriorOrGrottoDropdownChange: function(entranceData, itemLocation, event) {
-        let groupName;
-        if (event.stopPropagation) {
-            event.stopPropagation();
-            groupName = event.currentTarget.value;
-        } else {
-            groupName = event; // If not an actual event, the group name will be here
-        }
+        event.stopPropagation();
+        let groupName = event.currentTarget.value;
 
         // Simulates deselecting the choice before we select the new one
         // This handles the post clicks and Socket calls for the same
         EntranceUI.clearGroupChoice(itemLocation);
+        event.currentTarget.value = groupName; // Reset the value now so it isn't cleared out!
 
         if (groupName === "<no selection>") {
             return;
