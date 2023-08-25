@@ -1898,7 +1898,8 @@ let OwExits = {
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
-            ReadOnly: true,
+            //ReadOnly: true,
+            InteriorGroupName: "TH - Jail 1 Left",
             MapInfo: { x: 10, y: 10, floor: "JAIL1" },
             Age: Age.EITHER,
             LongDescription: "This is the exit to the left if you face the jail."
@@ -1909,7 +1910,8 @@ let OwExits = {
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
-            ReadOnly: true,
+            //ReadOnly: true,
+            InteriorGroupName: "TH - Jail 1 Right",
             MapInfo: { x: 20, y: 10, floor: "JAIL1" },
             Age: Age.EITHER,
             LongDescription: "This is the exit to the right if you face the jail."
@@ -2015,7 +2017,8 @@ let OwExits = {
             CustomRequirement: function(age) {
                 return Settings.RandomizerSettings.shuffleGrottoEntrances || !Settings.RandomizerSettings.shuffleOverworldEntrances;
             },
-            ReadOnly: true,
+            InteriorGroupName: "Windmill"
+            //ReadOnly: true,
         },
         "Windmill Exit to Kakariko Village": {
             ExitRegion: "windmill",

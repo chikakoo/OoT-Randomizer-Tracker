@@ -789,7 +789,7 @@ InteriorGroups = {
 				region: "windmill",
 				exit: "Windmill Exit"
 			}
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "windmill");
+			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "Windmill");
 		}
 	},
 

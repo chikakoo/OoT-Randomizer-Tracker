@@ -148,7 +148,13 @@ let DropdownUI = {
         
         let entrance = entrances && entrances[0];
 
+        if (itemLocation.InteriorGroupName && itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName) {
+            let linkedExit = OwExits[itemLocation.OwShuffleMap][itemLocation.OwShuffleExitName];
+            EntranceUI.clearGroupChoice(linkedExit); // Clear this so it doesn't presist, in case the option is changed from the initial value
+        }
+
         let results = Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance, !entrances);
+        this._addEntranceGroupDataForInteriorExits(itemLocation);
         refreshAll();
 
         // Refresh the dropdown if it's on the current map
@@ -176,7 +182,16 @@ let DropdownUI = {
     onOWEntranceDropdownChange: function(itemLocation, locDropdown, entranceDropdown) {
         let mapName = locDropdown.options[locDropdown.selectedIndex].value;
         let entrance = entranceDropdown.options[entranceDropdown.selectedIndex].value;
+
+        //TODO: probably put this chunk of code into a shared block (it's identical in the above function)
+        if (itemLocation.InteriorGroupName && itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName) {
+            let linkedExit = OwExits[itemLocation.OwShuffleMap][itemLocation.OwShuffleExitName];
+            EntranceUI.clearGroupChoice(linkedExit); // Clear this so it doesn't presist, in case the option is changed from the initial value
+        }
+
         let results = Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance);
+
+        this._addEntranceGroupDataForInteriorExits(itemLocation);
         refreshAll();
 
         // Refresh the dropdown if it's on the current map
@@ -192,6 +207,21 @@ let DropdownUI = {
         }
 
         SocketClient.itemLocationUpdated(itemLocation)
+    },
+
+    /**
+     * Adds the entrance group data for interior/grotto exits
+     * This is necessary so that the correct location shows up for the exit if selected
+     * from the interior map location (Thieves' Hideout for instance)
+     * @param itemLocation - the itemLocation - already ran through setOwLocationFound
+     */
+    _addEntranceGroupDataForInteriorExits: function(itemLocation) {
+        if (itemLocation.IsInteriorExit && itemLocation.InteriorGroupName && itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName) { //TODO: grotto version, and the initial selection... only works if this is modified directly currently
+            //TODO: see if more should be added out of onInteriorOrGrottoDropdownChange (postClick? may not be needed, given what this is for)
+            let linkedExit = OwExits[itemLocation.OwShuffleMap][itemLocation.OwShuffleExitName];
+            EntranceUI.initializeEntranceGroupData(linkedExit, itemLocation.InteriorGroupName);
+            Data.addToInteriorTravelData(itemLocation.InteriorGroupName, linkedExit);
+        }
     },
 
     _refreshInteriorOrGrottoDropdown: function(itemLocation, loc, interiorOrGrottoObject) {
@@ -212,9 +242,13 @@ let DropdownUI = {
     },
 
     onInteriorOrGrottoDropdownChange: function(entranceData, itemLocation, event) {
-        event.stopPropagation();
-
-        let groupName = event.currentTarget.value;
+        let groupName;
+        if (event.stopPropagation) {
+            event.stopPropagation();
+            groupName = event.currentTarget.value;
+        } else {
+            groupName = event; // If not an actual event, the group name will be here
+        }
 
         // Simulates deselecting the choice before we select the new one
         // This handles the post clicks and Socket calls for the same

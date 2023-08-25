@@ -3500,6 +3500,7 @@ let MapLocations = {
 		}
     },
     
+    //TODO: add logic for: savewarping in ANY of these rooms will lead to jail1 (just add non-requirement exits to jail1 from ALL of these regions!)
     "Thieves' Hideout": {
         Abbreviation: "TH",
         MapGroup: MapGroups.DESERT,
@@ -3632,7 +3633,7 @@ let MapLocations = {
                         DefaultEntranceGroupName: "3 Crates",
                         MapInfo: { x: 294, y: 253 },
                         Age: Age.EITHER,
-                        LongDescription: "These crates are by the flags ust across the quicksand pit."
+                        LongDescription: "These crates are by the flags just across the quicksand pit."
                     },
                     "3 Pots at Outpost": {
                         ItemGroup: ItemGroups.ENTRANCE,
