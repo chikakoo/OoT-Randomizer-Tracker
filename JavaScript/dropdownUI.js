@@ -1,3 +1,10 @@
+// TODO: VERY IMPORTANT: 
+// Tunnelled interior locations will OVERWRITE locations when you choose them!
+// This is BAD because the first location it defaults to will be wiped out!
+// Fix this so it behaves more like the OW entrances
+// This can be done via EntranceData.handleInteriorPostClick, and putting the new location in the BACK of the queue, not the front
+// - appropriate updates to the interiorTravelData would need to follow
+
 /**
  * Contains code for the dropdown boxes for entrances
  */
