@@ -189,10 +189,16 @@ SocketClient = {
 			let oldOwExit = null;
 			let toOwExit = null;
 			if (!matchingLocation.ReadOnly) {
+				// Clear the data first in case an existing entrance is being changed
+				DropdownUI._clearEntranceGroupDataForInteriorExits(itemLocation, true); 
+
 				let hasOwData = itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName;
 				let results = Data.setOWLocationFound(map, itemLocation, itemLocation.OwShuffleMap, itemLocation.OwShuffleExitName, !hasOwData);
 				oldOwExit = results.oldOwExit;	
 				toOwExit = results.toOwExit;
+
+				// Now set the interior entrance data appropriately
+				DropdownUI._addEntranceGroupDataForInteriorExits(itemLocation, true);
 			}
 			
 			if (_currentLocationName === map) {
@@ -232,12 +238,30 @@ SocketClient = {
 
 			if (!itemLocation.IsItemLocationGroup) {
 				this._updateInteriorOrGrottoDropdown(matchingLocation);
+
+				// In case this entrance leads to an overworld, we ALSO need to refresh those dropdowns
+				let matchingOwShuffleMap = matchingLocation.OwShuffleMap;
+				let matchingOwShuffleExitName = matchingLocation.OwShuffleExitName;
+				if (matchingOwShuffleMap && matchingOwShuffleExitName) {
+					let linkedLocation = OwExits[matchingOwShuffleMap][matchingOwShuffleExitName];
+					this._updateOwDropdown(linkedLocation);
+				}
 			}
 		} 
 		
 		else if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && !sentGroup) {
+			// Grab this data before clearing the group!
+			let matchingOwShuffleMap = matchingLocation.OwShuffleMap;
+			let matchingOwShuffleExitName = matchingLocation.OwShuffleExitName;
+
 			EntranceUI.clearGroupChoice(matchingLocation);
 			this._updateInteriorOrGrottoDropdown(matchingLocation);
+
+			// In case this entrance leads to an overworld, we ALSO need to refresh those dropdowns
+			if (matchingOwShuffleMap && matchingOwShuffleExitName) {
+				let linkedLocation = OwExits[matchingOwShuffleMap][matchingOwShuffleExitName];
+				this._updateOwDropdown(linkedLocation);
+			}
 		}
 		
 		if (_currentLocationName === map) {
@@ -262,7 +286,8 @@ SocketClient = {
 	_updateOwDropdown: function(itemLocation) {
 		let locDropdown = document.getElementById(`${itemLocation.Name}-location-dropdown`);
 		let entranceDropdown = document.getElementById(`${itemLocation.Name}-entrance-dropdown`);
-		if (locDropdown && entranceDropdown) {
+		let isInteriorOrGrotto = itemLocation.ItemGroup === ItemGroups.ENTRANCE && !itemLocation.IsItemLocationGroup;
+		if (locDropdown && (entranceDropdown || isInteriorOrGrotto)) {
 			DropdownUI.refreshEntranceDropdowns(itemLocation, locDropdown, entranceDropdown);
 		}
 	},

@@ -363,7 +363,6 @@ let EntranceUI = {
 		itemLocation.playerHas = false;
 		
 		_refreshNotes(itemLocation);
-		SocketClient.itemLocationUpdated(itemLocation);
 		refreshAll();
 	},
 	

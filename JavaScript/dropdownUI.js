@@ -146,31 +146,8 @@ let DropdownUI = {
             this._fillStringDropdown(entranceDropdown, entrances);
         }
         
-        let entrance = entrances && entrances[0];
-
-        if (itemLocation.InteriorGroupName && itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName) {
-            let linkedExit = OwExits[itemLocation.OwShuffleMap][itemLocation.OwShuffleExitName];
-            EntranceUI.clearGroupChoice(linkedExit); // Clear this so it doesn't presist, in case the option is changed from the initial value
-        }
-
-        let results = Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance, !entrances);
-        this._addEntranceGroupDataForInteriorExits(itemLocation);
-        refreshAll();
-
-        // Refresh the dropdown if it's on the current map
-        let toOwExit = results.toOwExit;
-        if (toOwExit && toOwExit.ExitMap === _currentLocationName) {
-            this.refreshEntranceDropdowns(toOwExit);
-        }
-
-        // Refresh the old location if it's on the current map and was cleared
-        let oldOwExit = results.oldOwExit;
-        if (oldOwExit && _currentLocationName === oldOwExit.ExitMap && !oldOwExit.LinkedExit) {
-            this.refreshEntranceDropdowns(oldOwExit);
-        }
-
-        // Don't use itemLocation, as it wouldn't have any changes resulting from the other clients
-        SocketClient.itemLocationUpdated(results.fromOwExit); 
+        let entranceName = entrances && entrances[0];
+        this._updateOWDropdown(itemLocation, mapName, entranceName, !entrances);
     },
 
     /**
@@ -181,32 +158,58 @@ let DropdownUI = {
      */
     onOWEntranceDropdownChange: function(itemLocation, locDropdown, entranceDropdown) {
         let mapName = locDropdown.options[locDropdown.selectedIndex].value;
-        let entrance = entranceDropdown.options[entranceDropdown.selectedIndex].value;
+        let entranceName = entranceDropdown.options[entranceDropdown.selectedIndex].value;
+        this._updateOWDropdown(itemLocation, mapName, entranceName, false);
+    },
 
-        //TODO: probably put this chunk of code into a shared block (it's identical in the above function)
-        if (itemLocation.InteriorGroupName && itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName) {
-            let linkedExit = OwExits[itemLocation.OwShuffleMap][itemLocation.OwShuffleExitName];
-            EntranceUI.clearGroupChoice(linkedExit); // Clear this so it doesn't presist, in case the option is changed from the initial value
-        }
+    /**
+     * Updates the OW dropdown (both for location and entrance) with the given information
+     * @param itemLocation - The item location the dropdown belongs to
+     * @param mapName - The map selected by the location dropdown
+     * @param entranceName - The entrance selected by the entrance dropdown
+     * @param clearDropdown - Used by the location dropdown to clear the entries if <no selection> was selected
+     */
+    _updateOWDropdown: function(itemLocation, mapName, entranceName, clearDropdown) {
+        this._clearEntranceGroupDataForInteriorExits(itemLocation);
 
-        let results = Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entrance);
-
+        let results = Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entranceName, clearDropdown);
         this._addEntranceGroupDataForInteriorExits(itemLocation);
         refreshAll();
 
+        this._refreshDropdownsOnCurrentPage(results);
+        SocketClient.itemLocationUpdated(results.fromOwExit); 
+    },
+
+    /**
+     * Refreshes/sets the entrance dropdowns in the case that the entrance lead to the same map
+     * To be called after Data.setOWLocationFound
+     * @param setOwLocationFoundResults - the results from Data.setOWLocationFound
+     */
+    _refreshDropdownsOnCurrentPage: function(setOwLocationFoundResults) {
         // Refresh the dropdown if it's on the current map
-        let toOwExit = results.toOwExit;
+        let toOwExit = setOwLocationFoundResults.toOwExit;
         if (toOwExit && toOwExit.ExitMap === _currentLocationName) {
-            DropdownUI.refreshEntranceDropdowns(toOwExit);
+            this.refreshEntranceDropdowns(toOwExit);
         }
 
         // Refresh the old location if it's on the current map and was cleared
-        let oldOwExit = results.oldOwExit;
+        let oldOwExit = setOwLocationFoundResults.oldOwExit;
         if (oldOwExit && _currentLocationName === oldOwExit.ExitMap && !oldOwExit.LinkedExit) {
-            DropdownUI.refreshEntranceDropdowns(oldOwExit);
+            this.refreshEntranceDropdowns(oldOwExit);
         }
+    },
 
-        SocketClient.itemLocationUpdated(itemLocation)
+    _clearEntranceGroupDataForInteriorExits: function(itemLocation, skipSocketClient) {
+        if (itemLocation.InteriorGroupName && itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName) {
+            let linkedExit = OwExits[itemLocation.OwShuffleMap][itemLocation.OwShuffleExitName];
+
+            // Do this so the old location selection doesn't presist
+            EntranceUI.clearGroupChoice(linkedExit);
+
+            if (!skipSocketClient) {
+                SocketClient.itemLocationUpdated(linkedExit); 
+            }
+        }
     },
 
     /**
@@ -214,13 +217,18 @@ let DropdownUI = {
      * This is necessary so that the correct location shows up for the exit if selected
      * from the interior map location (Thieves' Hideout for instance)
      * @param itemLocation - the itemLocation - already ran through setOwLocationFound
+     * @param skipSocketClient - if we're calling this from the SockedClient already, we don't want to recurse
      */
-    _addEntranceGroupDataForInteriorExits: function(itemLocation) {
+    _addEntranceGroupDataForInteriorExits: function(itemLocation, skipSocketClient) {
         if (itemLocation.IsInteriorExit && itemLocation.InteriorGroupName && itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName) { //TODO: grotto version, and the initial selection... only works if this is modified directly currently
             //TODO: see if more should be added out of onInteriorOrGrottoDropdownChange (postClick? may not be needed, given what this is for)
             let linkedExit = OwExits[itemLocation.OwShuffleMap][itemLocation.OwShuffleExitName];
             EntranceUI.initializeEntranceGroupData(linkedExit, itemLocation.InteriorGroupName);
             Data.addToInteriorTravelData(itemLocation.InteriorGroupName, linkedExit);
+
+            if (!skipSocketClient) {
+                SocketClient.itemLocationUpdated(linkedExit); 
+            }
         }
     },
 
@@ -248,6 +256,7 @@ let DropdownUI = {
         // Simulates deselecting the choice before we select the new one
         // This handles the post clicks and Socket calls for the same
         EntranceUI.clearGroupChoice(itemLocation);
+        SocketClient.itemLocationUpdated(itemLocation); // Sync the change over now so the old data is cleared
         event.currentTarget.value = groupName; // Reset the value now so it isn't cleared out!
 
         if (groupName === "<no selection>") {
@@ -266,10 +275,10 @@ let DropdownUI = {
         EntranceUI._createButtonDivs(itemLocation, itemLocationEntranceTasksContainer); //TODO: this is a private function
         
         if (Data.isItemLocationAShop(itemLocation)) {
-            _toggleMoreInfo(document.getElementById(itemLocation.Name), itemLocation, true);
+            _toggleMoreInfo(document.getElementById(itemLocation.Name), itemLocation, true); //TODO: this is a private function
         }
         
-        _refreshNotes(itemLocation);
+        _refreshNotes(itemLocation); //TODO: this is a private function
         
         if (group.postClick) {
             group.postClick(itemLocation, true);
