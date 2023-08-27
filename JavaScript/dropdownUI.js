@@ -172,9 +172,7 @@ let DropdownUI = {
     _updateOWDropdown: function(itemLocation, mapName, entranceName, clearDropdown) {
         let results = Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entranceName, clearDropdown);
         refreshAll();
-
         this._refreshDropdownsOnCurrentPage(results);
-        SocketClient.itemLocationUpdated(results.fromOwExit); 
     },
 
     /**
@@ -229,11 +227,8 @@ let DropdownUI = {
         } 
 
         if (groupName === "<no selection>") {
-            return;
-        }
-
-        let group = entranceData[groupName];
-        if (group.shouldNotTrigger && group.shouldNotTrigger()) {
+            EntranceUI.clearGroupChoice(itemLocation);
+            SocketClient.itemLocationUpdated(itemLocation);
             return;
         }
         
@@ -249,11 +244,13 @@ let DropdownUI = {
         
         _refreshNotes(itemLocation); //TODO: this is a private function
         
+        let group = entranceData[groupName];
         if (group.overworldLink) {
            Data.setOWLocationFound(_currentLocationName, itemLocation, group.overworldLink.ExitMap, group.overworldLink.Name);
         }
 
-        if (group.postClick) {
+        let shouldFirePostClick = !group.shouldNotTrigger || !group.shouldNotTrigger();
+        if (shouldFirePostClick && group.postClick) {
             group.postClick(itemLocation, true);
         }
 

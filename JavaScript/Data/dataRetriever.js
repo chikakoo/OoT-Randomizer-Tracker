@@ -405,6 +405,8 @@ Data = {
                     if (oldOwExit.EntranceGroup) {
                         delete oldOwExit.EntranceGroup;
                     }
+
+                    SocketClient.itemLocationUpdated(oldOwExit);
                 }
             }
         }
@@ -440,9 +442,13 @@ Data = {
                         // Here we set the TO exit to the group that just selected it
                         EntranceUI.initializeEntranceGroupData(toOwExit, fromOwExit.InteriorGroupName);
                     }
+
+                    SocketClient.itemLocationUpdated(toOwExit);
                 } 
             }
         }
+
+        SocketClient.itemLocationUpdated(fromOwExit);
 
         return {
             toOwExit: toOwExit,

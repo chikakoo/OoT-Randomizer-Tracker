@@ -181,44 +181,24 @@ SocketClient = {
 		let map = isInOwExits ? itemLocation.ExitMap : itemLocation.Map;
 		let region = isInOwExits ? itemLocation.ExitRegion : itemLocation.Region;
 		let name = itemLocation.Name.trim();
-		let matchingLocation;
-
-		if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
-			matchingLocation = OwExits[map][name];
-
-			let oldOwExit = null;
-			let toOwExit = null;
-			if (!matchingLocation.ReadOnly) {
-				let hasOwData = itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName;
-				let results = Data.setOWLocationFound(map, itemLocation, itemLocation.OwShuffleMap, itemLocation.OwShuffleExitName, !hasOwData);
-				oldOwExit = results.oldOwExit;	
-				toOwExit = results.toOwExit;
-			}
-			
-			if (_currentLocationName === map) {
-				this._updateOwDropdown(itemLocation);
-			}
-			
-			if (toOwExit && _currentLocationName === toOwExit.ExitMap) {
-				this._updateOwDropdown(toOwExit);
-			}
-			
-			if (oldOwExit && _currentLocationName === oldOwExit.ExitMap && !oldOwExit.LinkedExit) {
-				this._updateOwDropdown(oldOwExit);
-			}
-		}
-		else if (Data.usesOwExits(itemLocation)) {
-			matchingLocation = OwExits[map][name];
-		}
-		else {
-			matchingLocation = MapLocations[map].Regions[region].ItemLocations[name];
-		}
+		let matchingLocation = Data.usesOwExits(itemLocation)
+			? OwExits[map][name]
+			: MapLocations[map].Regions[region].ItemLocations[name];
 
 		matchingLocation.playerHas = itemLocation.playerHas;
 		matchingLocation.notes = itemLocation.notes;
 		matchingLocation.OverrideObtainableChild = itemLocation.OverrideObtainableChild;
 		matchingLocation.OverrideObtainableAdult = itemLocation.OverrideObtainableAdult;
 
+		matchingLocation.LinkedExit = itemLocation.LinkedExit;
+		matchingLocation.OwShuffleExitName = itemLocation.OwShuffleExitName;
+		matchingLocation.OwShuffleMap = itemLocation.OwShuffleMap;
+		matchingLocation.OwShuffleRegion = itemLocation.OwShuffleRegion;
+
+		this._updateOwDropdown(matchingLocation);
+
+		// An entrance was sent with a group selected
+		// We need to select the group and run the post-click, as well a refresh the dropdown
 		let sentGroup = Data.getEntranceGroup(itemLocation);
 		if (sentGroup) {
 			let groupProperty = Data.usesDefaultGroup(itemLocation) ? "DefaultEntranceGroup" : "EntranceGroup";
@@ -243,6 +223,8 @@ SocketClient = {
 			}
 		} 
 		
+		// An entrance was sent, and there's no group selected
+		// We should clear the group and refresh the dropdown appropriately
 		else if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && !sentGroup) {
 			// Grab this data before clearing the group!
 			let matchingOwShuffleMap = matchingLocation.OwShuffleMap;
@@ -275,6 +257,7 @@ SocketClient = {
 
 	/**
 	 * Updates the dropdown of the given item location (assumed to be an OW Entrance)
+	 * Does nothing if not applicable to the item location
 	 * @param itemLocation - the item location to update
 	 */
 	_updateOwDropdown: function(itemLocation) {
