@@ -21,64 +21,6 @@ Data = {
     templeOfTimeLocation: {},
 
     /**
-     * Consists of objects of the following form telling you where the interior "tunnel" is located
-     * This contains the item location that corresponds to this
-     */
-    interiorTravelData: {},
-
-    /**
-     * Contains arrays of all the data entered for the interior travel data
-     * This is to handle issues related to adding and removing entries by mistake
-     */
-    _interiorTravelDataInfo: {},
-
-    /**
-     * Should be what is called when adding to the interior travel data
-     * @param {string} key - one of the interior travel data keys
-     * @param {any} data - the data to store in the key
-     */
-    addToInteriorTravelData: function(key, data) {
-        this._interiorTravelDataInfo[key] = this._interiorTravelDataInfo[key] || [];
-
-        let dataArray = this._interiorTravelDataInfo[key];
-        if (dataArray.some(x => x.Name === data.Name && x.Map === data.Map)) {
-            return;
-        }
-
-        this._interiorTravelDataInfo[key].push(data);
-        this._updateInteriorTravelData(key);
-    },
-
-    /**
-     * Should be what is called when removing from the interior travel data
-     * @param {string} key - one of the interior travel data keys
-     * @param {any} data - the data to remove from the key
-     */
-    removeFromInteriorTravelData: function(key, data) {
-        for (let i = 0; i < this._interiorTravelDataInfo[key].length; i++) {
-            let item = this._interiorTravelDataInfo[key][i];
-            if (item.Name === data.Name && item.Map === data.Map && item.Region === data.Region) {
-                this._interiorTravelDataInfo[key].splice(i, 1)[0];
-                this._updateInteriorTravelData(key);
-                return;
-            }
-        }
-    },
-
-    /**
-     * Updates the travel data with the most recent value
-     * @param {string} key - the key to update
-     */
-    _updateInteriorTravelData: function(key) {
-        let index = this._interiorTravelDataInfo[key].length - 1;
-        if (index < 0) {
-            this.interiorTravelData[key] = null;
-            return;
-        }
-        this.interiorTravelData[key] = this._interiorTravelDataInfo[key][index];
-    },
-
-    /**
 	 * Gets the background color for the given location - this is based
 	 * on its group
 	 * @param mapGroup - the map group
@@ -426,6 +368,7 @@ Data = {
     
     /**
      * Sets an OW location as found or clears the data
+     * This handles Ow -> Ow and Ow -> Interior/Grotto and the reverse
      * @param fromMapName - the map you're setting the info for
      * @param from - the item location of the exit you took
      * @param toMapName - the map you selected
@@ -458,6 +401,10 @@ Data = {
                     delete oldOwExit.OwShuffleRegion;
                     delete oldOwExit.OwShuffleExitName;
                     delete oldOwExit.LinkedExit;
+
+                    if (oldOwExit.EntranceGroup) {
+                        delete oldOwExit.EntranceGroup;
+                    }
                 }
             }
         }
@@ -476,7 +423,9 @@ Data = {
 
             // Set the to information, but only if this info doesn't already exist and we're not a one-way entrance
             // No need to set the other side info if we're decoupled
-            if (!decoupledEntrances && (!toOwExit.LinkedExit || toOwExit.LinkedExit === fromReferenceKey)) {
+            if (!decoupledEntrances &&
+                (!toOwExit.EntranceGroup || toOwExit.EntranceGroup.overworldLink) && // For entrance groups, ONLY set data if it's set to a group with an OW link
+                (!toOwExit.LinkedExit || toOwExit.LinkedExit === fromReferenceKey)) {
                 if (!fromOwExit.OneWayEntrance) {
                     fromOwExit.LinkedExit = toReferenceKey; // Only set this if we're linking the two
         
@@ -484,7 +433,14 @@ Data = {
                     toOwExit.OwShuffleRegion = from.ExitRegion;
                     toOwExit.OwShuffleExitName = fromLocationName;
                     toOwExit.LinkedExit = fromReferenceKey;
-                }
+
+                    // If set from an OW location TO an interior, we need to set the entrance group data
+                    // so that it points to the from exit
+                    if (fromOwExit.InteriorGroupName) {
+                        // Here we set the TO exit to the group that just selected it
+                        EntranceUI.initializeEntranceGroupData(toOwExit, fromOwExit.InteriorGroupName);
+                    }
+                } 
             }
         }
 

@@ -189,16 +189,10 @@ SocketClient = {
 			let oldOwExit = null;
 			let toOwExit = null;
 			if (!matchingLocation.ReadOnly) {
-				// Clear the data first in case an existing entrance is being changed
-				DropdownUI._clearEntranceGroupDataForInteriorExits(itemLocation, true); 
-
 				let hasOwData = itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName;
 				let results = Data.setOWLocationFound(map, itemLocation, itemLocation.OwShuffleMap, itemLocation.OwShuffleExitName, !hasOwData);
 				oldOwExit = results.oldOwExit;	
 				toOwExit = results.toOwExit;
-
-				// Now set the interior entrance data appropriately
-				DropdownUI._addEntranceGroupDataForInteriorExits(itemLocation, true);
 			}
 			
 			if (_currentLocationName === map) {

@@ -1,47 +1,5 @@
 EntranceData = {
 	/**
-	 * Handles the logic for when a "tunneling" interior is selected
-	 * This sets the data for this side, as well as the other side, if necessary
-	 * @param itemLocation - the item location of where the exit is from (the overworld, usually)
-	 * @param isSelected - whether the entrance is being selected or cleared
-	 * @param otherSideData - the map, region, and exit of where the exit leads to (the interior)
-	 * @param travelDataInfoKey - the key to use for the interior travel data info object
-	 */
-	handleInteriorPostClick(itemLocation, isSelected, otherSideData, travelDataInfoKey) {
-		let interiorExit = MapLocations[otherSideData.map].Regions[otherSideData.region].Exits[otherSideData.exit].OwExit;
-		if (isSelected) {
-			Data.addToInteriorTravelData(travelDataInfoKey, itemLocation);
-
-			itemLocation.OwShuffleMap = otherSideData.map;
-			itemLocation.OwShuffleRegion = otherSideData.region;
-			itemLocation.OwShuffleExitName = otherSideData.exit;
-
-			interiorExit.OwShuffleMap = itemLocation.ExitMap;
-			interiorExit.OwShuffleRegion = itemLocation.ExitRegion;
-			interiorExit.OwShuffleExitName = itemLocation.Name;
-		} else {
-			Data.removeFromInteriorTravelData(travelDataInfoKey, itemLocation);
-
-			delete itemLocation.OwShuffleMap;
-			delete itemLocation.OwShuffleRegion;
-			delete itemLocation.OwShuffleExitName;
-
-			delete interiorExit.OwShuffleMap;
-			delete interiorExit.OwShuffleRegion;
-			delete interiorExit.OwShuffleExitName;
-
-			// If there still is interior travel data, that means there were multiple locations selected,
-			// and we should now populate the interior exit with this data instead
-			let interiorTravelLocation = Data.interiorTravelData[travelDataInfoKey];
-			if (interiorTravelLocation) {
-				interiorExit.OwShuffleMap = interiorTravelLocation.ExitMap;
-				interiorExit.OwShuffleRegion = interiorTravelLocation.ExitRegion;
-				interiorExit.OwShuffleExitName = interiorTravelLocation.Name;
-			}
-		}
-	},
-
-	/**
 	 * Runs the post click functions on all items of a given item location
 	 * @param itemLocation The item location to check
 	 */
@@ -199,28 +157,14 @@ InteriorGroups = {
 	"Potion Shop Front": {
 		tooltip: "The Kakariko potion shop - this is the front entrance (closest to the camera).",
 		neverHide: true,
-		buttons: {},
-		postClick: function(itemLocation, isSelected) {
-			let exitData = {
-				map: "Windmill-Kak Potion",
-				region: "kakPotionShop",
-				exit: "Potion Shop Front",
-			}
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData,"kakPotionShopFront");
-		}
+		buttons: {}
+		//TODO: overworldLink
 	},
 	"Potion Shop Back": {
 		tooltip: "The Kakariko potion shop - this is the back entrance (farthest from the camera). Mark the front entrance for the shop itself.",
 		neverHide: true,
-		buttons: {},
-		postClick: function(itemLocation, isSelected) {
-			let exitData = {
-				map: "Windmill-Kak Potion",
-				region: "kakPotionShop",
-				exit: "Potion Shop Back",
-			}
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "kakPotionShopBack");
-		}
+		buttons: {}
+		//TODO: overworldLink
 	},
 	"Happy Mask Shop": {
 		tooltip: "The Happy Mask Shop",
@@ -782,15 +726,8 @@ InteriorGroups = {
 	"Windmill": {
 		neverHide: true,
 		tooltip: "Kakariko Windmill",
-		buttons: {},
-		postClick: function(itemLocation, isSelected) {
-			let exitData = {
-				map: "Windmill-Kak Potion",
-				region: "windmill",
-				exit: "Windmill Exit"
-			}
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "Windmill");
-		}
+		buttons: {}
+		//TODO: overworldLink
 	},
 
 	// Non-shuffle only locations
@@ -887,28 +824,14 @@ InteriorGroups = {
 		tooltip: "The door to the left of jail 1 in the Thieves' Hideout.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
-		postClick: function(itemLocation, isSelected) {
-			let exitData = {
-				map: "Thieves' Hideout",
-				region: "jail1",
-				exit: "Jail 1 Left"
-			}
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "TH - Jail 1 Left");
-		}
+		overworldLink: OwExits["Thieves' Hideout"]["Jail 1 Left"]
 	},
 	"TH - Jail 1 Right": {
 		icon: "Thieves' Hideout",
 		tooltip: "The door to the right of jail 1 in the Thieves' Hideout.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
-		postClick: function(itemLocation, isSelected) {
-			let exitData = {
-				map: "Thieves' Hideout",
-				region: "jail1",
-				exit: "Jail 1 Right"
-			}
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "TH - Jail 1 Right");
-		}
+		overworldLink: OwExits["Thieves' Hideout"]["Jail 1 Right"]
 	},
 };
 

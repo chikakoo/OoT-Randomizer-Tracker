@@ -1,10 +1,3 @@
-// TODO: VERY IMPORTANT: 
-// Tunnelled interior locations will OVERWRITE locations when you choose them!
-// This is BAD because the first location it defaults to will be wiped out!
-// Fix this so it behaves more like the OW entrances
-// This can be done via EntranceData.handleInteriorPostClick, and putting the new location in the BACK of the queue, not the front
-// - appropriate updates to the interiorTravelData would need to follow
-
 /**
  * Contains code for the dropdown boxes for entrances
  */
@@ -177,10 +170,7 @@ let DropdownUI = {
      * @param clearDropdown - Used by the location dropdown to clear the entries if <no selection> was selected
      */
     _updateOWDropdown: function(itemLocation, mapName, entranceName, clearDropdown) {
-        this._clearEntranceGroupDataForInteriorExits(itemLocation);
-
         let results = Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entranceName, clearDropdown);
-        this._addEntranceGroupDataForInteriorExits(itemLocation);
         refreshAll();
 
         this._refreshDropdownsOnCurrentPage(results);
@@ -206,39 +196,6 @@ let DropdownUI = {
         }
     },
 
-    _clearEntranceGroupDataForInteriorExits: function(itemLocation, skipSocketClient) {
-        if (itemLocation.InteriorGroupName && itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName) {
-            let linkedExit = OwExits[itemLocation.OwShuffleMap][itemLocation.OwShuffleExitName];
-
-            // Do this so the old location selection doesn't presist
-            EntranceUI.clearGroupChoice(linkedExit);
-
-            if (!skipSocketClient) {
-                SocketClient.itemLocationUpdated(linkedExit); 
-            }
-        }
-    },
-
-    /**
-     * Adds the entrance group data for interior/grotto exits
-     * This is necessary so that the correct location shows up for the exit if selected
-     * from the interior map location (Thieves' Hideout for instance)
-     * @param itemLocation - the itemLocation - already ran through setOwLocationFound
-     * @param skipSocketClient - if we're calling this from the SockedClient already, we don't want to recurse
-     */
-    _addEntranceGroupDataForInteriorExits: function(itemLocation, skipSocketClient) {
-        if (itemLocation.IsInteriorExit && itemLocation.InteriorGroupName && itemLocation.OwShuffleMap && itemLocation.OwShuffleExitName) { //TODO: grotto version, and the initial selection... only works if this is modified directly currently
-            //TODO: see if more should be added out of onInteriorOrGrottoDropdownChange (postClick? may not be needed, given what this is for)
-            let linkedExit = OwExits[itemLocation.OwShuffleMap][itemLocation.OwShuffleExitName];
-            EntranceUI.initializeEntranceGroupData(linkedExit, itemLocation.InteriorGroupName);
-            Data.addToInteriorTravelData(itemLocation.InteriorGroupName, linkedExit);
-
-            if (!skipSocketClient) {
-                SocketClient.itemLocationUpdated(linkedExit); 
-            }
-        }
-    },
-
     _refreshInteriorOrGrottoDropdown: function(itemLocation, loc, interiorOrGrottoObject) {
         let locDropdown = loc || document.getElementById(`${itemLocation.Name}-location-dropdown`);
         locDropdown.innerHTML = "";
@@ -260,11 +217,16 @@ let DropdownUI = {
         event.stopPropagation();
         let groupName = event.currentTarget.value;
 
-        // Simulates deselecting the choice before we select the new one
-        // This handles the post clicks and Socket calls for the same
-        EntranceUI.clearGroupChoice(itemLocation);
-        SocketClient.itemLocationUpdated(itemLocation); // Sync the change over now so the old data is cleared
-        event.currentTarget.value = groupName; // Reset the value now so it isn't cleared out!
+        // Clear the old group data out first
+        let oldGroup = itemLocation.EntranceGroup && entranceData[itemLocation.EntranceGroup.name];
+        if (oldGroup && oldGroup.overworldLink) {
+            Data.setOWLocationFound(
+                _currentLocationName, 
+                itemLocation, 
+                oldGroup.overworldLink.ExitMap, 
+                oldGroup.overworldLink.Name,
+                true);
+        } 
 
         if (groupName === "<no selection>") {
             return;
@@ -287,6 +249,10 @@ let DropdownUI = {
         
         _refreshNotes(itemLocation); //TODO: this is a private function
         
+        if (group.overworldLink) {
+           Data.setOWLocationFound(_currentLocationName, itemLocation, group.overworldLink.ExitMap, group.overworldLink.Name);
+        }
+
         if (group.postClick) {
             group.postClick(itemLocation, true);
         }
