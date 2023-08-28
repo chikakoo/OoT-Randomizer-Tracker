@@ -2875,7 +2875,7 @@ let MapLocations = {
                                     Items.HOOKSHOT.playerHas;
 
                                 return canCrossWithHookshot ||
-                                    Data.itemLocationObtained("Gerudo Fortress", "jail4Area", "Item From Gerudo") || 
+                                    Data.itemLocationObtained("Thieves' Hideout", "main", "Item From Gerudo") || 
                                     Data.canRideEpona(age) || 
                                     Items.HOOKSHOT.currentUpgrade === 2 ||
                                     Data.canBombSuperslideWithHovers(age) ||
@@ -2922,7 +2922,7 @@ let MapLocations = {
                                 Items.HOOKSHOT.playerHas;
 
                             return canCrossWithHookshot ||
-                                Data.itemLocationObtained("Gerudo Fortress", "jail4Area", "Item From Gerudo") || 
+                                Data.itemLocationObtained("Thieves' Hideout", "main", "Item From Gerudo") || 
                                 Data.canRideEpona(age) || 
                                 Items.HOOKSHOT.currentUpgrade === 2 ||
                                 Data.canBombSuperslideWithHovers(age) ||
@@ -3133,14 +3133,58 @@ let MapLocations = {
                     "Bottom Left Door": {
                         OwExit: OwExits["Gerudo Fortress"]["Bottom Left Door"]
                     },
-                    "Bottom Enclave Left Door": {
-                        OwExit: OwExits["Gerudo Fortress"]["Bottom Enclave Left Door"]
+                    "Enclave Left Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Enclave Left Door"]
+                    },
+                    "Enclave Middle Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Enclave Middle Door"]
+                    },
+                    "Enclave Right Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Enclave Right Door"]
+                    },
+                    "Bottom Right Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Bottom Right Door"]
+                    },
+                    //TODO: confirm this can go in this region (isn't ONLY possible from another region with certain items, etc)
+                    "Door Above GTG": {
+                        OwExit: OwExits["Gerudo Fortress"]["Door Above GTG"]
                     },
                     "Song of Storms Grotto": {
                         OwExit: OwExits["Gerudo Fortress"]["Song of Storms Grotto"]
-                    }
+                    },
 
                     //TODO: MOVE THESE TO THE APPROPRIATE REGION - JUST TESTING FOR NOW!!!
+
+                    // middle platform, including vine doors
+                    "Middle Left Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Middle Left Door"]
+                    },
+                    "Vines Forward Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Vines Forward Door"]
+                    },
+                    "Vines Left Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Vines Left Door"]
+                    },
+
+                    // upper right area? no region made yet
+                    "Upper Kitchen Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Upper Kitchen Door"]
+                    },
+
+                    // jail 4 door area
+                    "Upper Jail Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Upper Jail Door"]
+                    },
+
+                    // above jail 1
+                    "Door Above Jail 1": {
+                        OwExit: OwExits["Gerudo Fortress"]["Door Above Jail 1"]
+                    },
+
+                    // above link's jail
+                    "Door Above Link's Jail": {
+                        OwExit: OwExits["Gerudo Fortress"]["Door Above Link's Jail"]
+                    }
                 },
 
                 ItemLocations: {
@@ -3326,12 +3370,13 @@ let MapLocations = {
             },
             jail1: {
                 Exits: {
+                    main: {},
                     "Jail 1 Left": {
                         OwExit: OwExits["Thieves' Hideout"]["Jail 1 Left"]
                     },
                     "Jail 1 Right": {
                         OwExit: OwExits["Thieves' Hideout"]["Jail 1 Right"]
-                    },
+                    }
                 },
                 ItemLocations: {
                     "Jail 1 Guard Key": {
@@ -3360,7 +3405,13 @@ let MapLocations = {
             },
             jail2: {
                 Exits: {
-                    //TODO
+                    jail1: {}, //Savewarp
+                    "Jail 2 Left": {
+                        OwExit: OwExits["Thieves' Hideout"]["Jail 2 Left"]
+                    },
+                    "Jail 2 Right": {
+                        OwExit: OwExits["Thieves' Hideout"]["Jail 2 Right"]
+                    }
                 },
                 ItemLocations: {
                     "Jail 2 Guard Key": {
@@ -3383,7 +3434,13 @@ let MapLocations = {
             },
             jail3: {
                 Exits: {
-                    //TODO
+                    jail1: {}, //Savewarp
+                    "Jail 3 Left": {
+                        OwExit: OwExits["Thieves' Hideout"]["Jail 3 Left"]
+                    },
+                    "Jail 3 Right": {
+                        OwExit: OwExits["Thieves' Hideout"]["Jail 3 Right"]
+                    }
                 },
                 ItemLocations: {
                     "Jail 3 Guard Key": {
@@ -3423,8 +3480,11 @@ let MapLocations = {
                 }
             },
             jail4: {
+                jail1: {}, //Savewarp
                 Exits: {
-                    //TODO
+                    "Jail 4 Entrance": {
+                        OwExit: OwExits["Thieves' Hideout"]["Jail 4 Entrance"]
+                    }
                 },
                 ItemLocations: {
                     "Jail 4 Guard Key": {
@@ -3443,8 +3503,21 @@ let MapLocations = {
                 }
             },
             kitchen: {
+                //TODO: needs more than one region, and deal with the create close to kitchen (what region is it in)
                 Exits: {
-                    //TODO
+                    jail1: {}, //Savewarp
+                    "Kitchen Far Bottom": {
+                        OwExit: OwExits["Thieves' Hideout"]["Kitchen Far Bottom"]
+                    },
+                    "Kitchen Middle Bottom": {
+                        OwExit: OwExits["Thieves' Hideout"]["Kitchen Middle Bottom"]
+                    },
+                    "Kitchen Top Left": {
+                        OwExit: OwExits["Thieves' Hideout"]["Kitchen Top Left"]
+                    },
+                    "Kitchen Top Right": {
+                        OwExit: OwExits["Thieves' Hideout"]["Kitchen Top Right"]
+                    }
                 },
                 ItemLocations: {
                     "2 Far Crates in Kitchen Hallway": {
@@ -3454,7 +3527,7 @@ let MapLocations = {
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 108, y: 130, floor: "KIT" },
                         Age: Age.EITHER,
-                        LongDescription: "The are the far away crates in the hallway attached to the kitchen."
+                        LongDescription: "These are the far away crates in the hallway attached to the kitchen."
                     },
                     "2 Mid Crates in Kitchen Hallway": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3463,7 +3536,7 @@ let MapLocations = {
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 131, y: 212, floor: "KIT" },
                         Age: Age.EITHER,
-                        LongDescription: "The are the closer crates in the hallway attached to the kitchen."
+                        LongDescription: "These are the closer crates in the hallway attached to the kitchen."
                     },
                     "Crate Close to Kitchen": {
                         ItemGroup: ItemGroups.CRATE,
@@ -3507,7 +3580,13 @@ let MapLocations = {
             },
             top: {
                 Exits: {
-                    //TODO
+                    jail1: {}, //Savewarp
+                    "Top Room Lower": {
+                        OwExit: OwExits["Thieves' Hideout"]["Top Room Lower"]
+                    },
+                    "Top Room Upper": {
+                        OwExit: OwExits["Thieves' Hideout"]["Top Room Upper"]
+                    }
                 },
                 ItemLocations: {
                     "Upper Room Crate 1": {

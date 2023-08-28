@@ -1824,7 +1824,7 @@ let OwExits = {
             Map: "Gerudo Valley",
             Region: "acrossBridge",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: 158, y: 284, floor: "OUT" },
+            MapInfo: { x: 158, y: 284 },
             Age: Age.EITHER,
             LongDescription: "This is the exit back to the valley."
         },
@@ -1833,7 +1833,7 @@ let OwExits = {
             Map: "Haunted Wasteland",
             Region: "entrance",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: 77, y: 112, floor: "OUT" },
+            MapInfo: { x: 77, y: 112 },
             Age: Age.EITHER,
             LongDescription: "This is the exit to the wasteland. As Child, here's how to skip the gate: climb the ladder; go a bit to the right if you are facing the ladder; angle yourself so that when you sidehop left, you end up on the cliff; walk forward until you are passed the gate; sidehop left and keep holding left."
         },
@@ -1842,7 +1842,7 @@ let OwExits = {
             Map: "Training Grounds",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: 124, y: 197, floor: "OUT" },
+            MapInfo: { x: 124, y: 197 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Gerudo Training Grounds.",
             IsDungeonEntrance: true,
@@ -1856,39 +1856,149 @@ let OwExits = {
         },
 
         // Interiors
-
-        //TODO: FIX THE MAP INFO FOR THESE - there should be NO floors here at all
         "Bottom Left Door": {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "jail1",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
-            MapInfo: { x: 133, y: 125, floor: "OUT" },
+            MapInfo: { x: 133, y: 125 },
             Age: Age.EITHER,
             LongDescription: "The door at the bottom left of the fortress."
         },
-        "Bottom Enclave Left Door": {
+        "Enclave Left Door": {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "jail1",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
-            MapInfo: { x: 138, y: 165, floor: "OUT" },
+            MapInfo: { x: 138, y: 165 },
             Age: Age.EITHER,
             LongDescription: "The left door at the bottom in the enclaves with the crates."
+        },
+        "Enclave Middle Door": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "kitchen",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 145, y: 170 },
+            Age: Age.EITHER,
+            LongDescription: "The middle door at the bottom in the enclaves with the crates."
+        },
+        "Enclave Right Door": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "kitchen",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 145, y: 177 },
+            Age: Age.EITHER,
+            LongDescription: "The right door at the bottom in the enclaves with the crates."
+        },
+        "Bottom Right Door": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "jail2",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 133, y: 179 },
+            Age: Age.EITHER,
+            LongDescription: "The door just to the left of Gerudo Training Grounds."
+        },
+        "Middle Left Door": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "jail2",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 151, y: 142 },
+            Age: Age.EITHER,
+            LongDescription: "The door in the middle of the fortress where you can walk to the bottom of the vines."
+        },
+        "Vines Forward Door": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "jail3",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 165, y: 170 },
+            Age: Age.EITHER,
+            LongDescription: "This is the door straight ahead when you climb the vines on the middle floor of the fortress."
+        },
+        "Vines Left Door": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "kitchen",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 168, y: 161 },
+            Age: Age.EITHER,
+            LongDescription: "This is the door to the left when you climb the vines on the middle floor of the fortress."
+        },
+        "Door Above GTG": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "jail3",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 144, y: 189 },
+            Age: Age.EITHER,
+            //TODO: check how feasible it is to sneak here with nothing as adult
+            LongDescription: "This door is the one above the Gerudo Training Grounds."
+        },
+        "Upper Kitchen Door": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "kitchen",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 184, y: 147 },
+            Age: Age.EITHER,
+            LongDescription: "This is the door on the top of the right side of the fortress, above the door to jail 4 and nearest to the skulltula. Adult can do a trick jump near the vines to get to this door from the middle level."
+        },
+        "Upper Jail Door": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "jail4",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 177, y: 133 },
+            Age: Age.EITHER,
+            LongDescription: "This door needs to be dropped down to from an upper area of the fortress. If not using entrance shuffle, you can get here from navigating around the kitchen's upper exit."
+        },
+        "Door Above Jail 1": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "top",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 156, y: 115 },
+            Age: Age.EITHER,
+            LongDescription: "Can be reached from the top of Link's jail, or from dropping down to it from the chest on top."
+        },
+        "Door Above Link's Jail": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "top",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 151, y: 68 },
+            Age: Age.EITHER,
+            LongDescription: "Normally only reachable from the entrance that leads there. There's a glitch involving a specific hookshot angle from the top of Link's jail as well."
         },
         "Song of Storms Grotto": {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
-            MapInfo: { x: 137, y: 172, floor: "OUT" },
+            MapInfo: { x: 137, y: 172 },
             Age: Age.ADULT,
             LongDescription: "Play the song of storms in the center of the crates near the fortress to reveal this grotto.",
             RequiredSongs: [Songs.SONG_OF_STORMS]
         }
     },
 
+    //TODO: Adjust the Region values appropriately!
     "Thieves' Hideout": {
         // Interiors
         "Jail 1 Left": {
@@ -1898,7 +2008,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Jail 1 Left",
-            MapInfo: { x: 117, y: 28, floor: "JAIL1" },
+            MapInfo: { x: 117, y: 28, floor: "J1" },
             Age: Age.EITHER,
             LongDescription: "This is the exit to the left if you face the jail."
         },
@@ -1909,9 +2019,130 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Jail 1 Right",
-            MapInfo: { x: 158, y: 277, floor: "JAIL1" },
+            MapInfo: { x: 158, y: 277, floor: "J1" },
             Age: Age.EITHER,
             LongDescription: "This is the exit to the right if you face the jail."
+        },
+        "Jail 2 Left": {
+            ExitRegion: "jail2",
+            Map: "Gerudo Fortress",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            IsInteriorExit: true,
+            InteriorGroupName: "TH - Jail 2 Left",
+            MapInfo: { x: 249, y: 51, floor: "J2" },
+            Age: Age.EITHER,
+            LongDescription: "This is the exit to the left if you face the jail."
+        },
+        "Jail 2 Right": {
+            ExitRegion: "jail2",
+            Map: "Gerudo Fortress",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            IsInteriorExit: true,
+            InteriorGroupName: "TH - Jail 2 Right",
+            MapInfo: { x: 110, y: 282, floor: "J2" },
+            Age: Age.EITHER,
+            LongDescription: "This is the exit to the right if you face the jail."
+        },
+        "Jail 3 Left": {
+            ExitRegion: "jail3",
+            Map: "Gerudo Fortress",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            IsInteriorExit: true,
+            InteriorGroupName: "TH - Jail 3 Left",
+            MapInfo: { x: 341, y: 80, floor: "J3" },
+            Age: Age.EITHER,
+            LongDescription: "This is the exit to the left if you face the jail."
+        },
+        "Jail 3 Right": {
+            ExitRegion: "jail3",
+            Map: "Gerudo Fortress",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            IsInteriorExit: true,
+            InteriorGroupName: "TH - Jail 3 Right",
+            MapInfo: { x: 18, y: 121, floor: "J3" },
+            Age: Age.EITHER,
+            LongDescription: "This is the exit to the right if you face the jail."
+        },
+        "Jail 4 Entrance": {
+            ExitRegion: "jail4",
+            Map: "Gerudo Fortress",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            IsInteriorExit: true,
+            InteriorGroupName: "TH - Jail 4 Entrance",
+            MapInfo: { x: 74, y: 278, floor: "J4" },
+            Age: Age.EITHER,
+            LongDescription: "This is the only exit in the jail 4 area."
+        },
+        "Kitchen Far Bottom": {
+            ExitRegion: "kitchen",
+            Map: "Gerudo Fortress",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            IsInteriorExit: true,
+            InteriorGroupName: "TH - Kitchen Far Bottom",
+            MapInfo: { x: 17, y: 73, floor: "KIT" },
+            Age: Age.EITHER,
+            LongDescription: "This is the entrance at the very end of cooridor on the bottom part of the kitchen."
+        },
+        "Kitchen Middle Bottom": {
+            ExitRegion: "kitchen",
+            Map: "Gerudo Fortress",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            IsInteriorExit: true,
+            InteriorGroupName: "TH - Kitchen Middle Bottom",
+            MapInfo: { x: 17, y: 178, floor: "KIT" },
+            Age: Age.EITHER,
+            LongDescription: "This is the entrance at the middle of the cooridor on the bottom part of the kitchen."
+        },
+        "Kitchen Top Left": {
+            ExitRegion: "kitchen",
+            Map: "Gerudo Fortress",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            IsInteriorExit: true,
+            InteriorGroupName: "TH - Kitchen Top Left",
+            MapInfo: { x: 139, y: 178, floor: "KIT" },
+            Age: Age.EITHER,
+            LongDescription: "From the perspective of the guards, this is the exit to the left on top of the ramps in the main area of the kitchen."
+        },
+        "Kitchen Top Right": {
+            ExitRegion: "kitchen",
+            Map: "Gerudo Fortress",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            IsInteriorExit: true,
+            InteriorGroupName: "TH - Kitchen Top Right",
+            MapInfo: { x: 285, y: 105, floor: "KIT" },
+            Age: Age.EITHER,
+            LongDescription: "From the perspective of the guards, this is the exit to the right on top of the ramps in the main area of the kitchen."
+        },
+        "Top Room Lower": {
+            ExitRegion: "top",
+            Map: "Gerudo Fortress",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            IsInteriorExit: true,
+            InteriorGroupName: "TH - Top Room Lower",
+            MapInfo: { x: 218, y: 217, floor: "TOP" },
+            Age: Age.EITHER,
+            LongDescription: "This is the entrance on the bottom part of the room above jail 1."
+        },
+        "Top Room Upper": {
+            ExitRegion: "top",
+            Map: "Gerudo Fortress",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            IsInteriorExit: true,
+            InteriorGroupName: "TH - Top Room Upper",
+            MapInfo: { x: 17, y: 126, floor: "TOP" },
+            Age: Age.EITHER,
+            LongDescription: "This is the entrance on the upper part of the room above jail 1."
         }
     },
 
