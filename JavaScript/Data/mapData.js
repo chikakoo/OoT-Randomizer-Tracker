@@ -3078,7 +3078,6 @@ let MapLocations = {
 	"Gerudo Fortress": {
 		Abbreviation: "FORT",
 		MapGroup: MapGroups.DESERT,
-        Floors: ["OUT", "LOW", "UP"],
 		StartingFloorIndex: 0,
         UseAdultAge: function() { 
             if (Data.randomizedSpawnLocations.useRandomizedSpawns) { return false; }
@@ -3140,151 +3139,26 @@ let MapLocations = {
                     "Song of Storms Grotto": {
                         OwExit: OwExits["Gerudo Fortress"]["Song of Storms Grotto"]
                     }
+
+                    //TODO: MOVE THESE TO THE APPROPRIATE REGION - JUST TESTING FOR NOW!!!
                 },
 
                 ItemLocations: {
-                    // "Jail 1 Guard Key": {
-                    //     ItemGroup: ItemGroups.FREESTANDING,
-                    //     MapInfo: { x: 52, y: 79, floor: "LOW" },
-                    //     Age: Age.EITHER,
-                    //     NeedsSwordWeapon: true,
-                    //     LongDescription: "Enter the leftmost bottom exit to get to the first jail. Take out the guard to get the item."
-                    // },
-                    "Jail 2 Guard Key": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 142, y: 109, floor: "LOW" },
-                        Age: Age.EITHER,
-                        NeedsSwordWeapon: true,
-                        LongDescription: "Start from jail 1. Face the jail - now turn right and take that exit. Go straight to the other side. The next jail is in the next hole if you hug this wall around the right corner - be careful of guards. Take out the guard to get the item."
-                    },
-                    "Jail 3 Guard Key": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 270, y: 198, floor: "LOW" },
-                        Age: Age.EITHER,
-                        NeedsSwordWeapon: true,
-                        LongDescription: "Start from jail 2. Face the jail - now turn left and take that exit. Climb the vines straight ahead and take the exit straight in front of you for the next jail. Take out the guard to get the item."
-                    },
                     "Skulltula on Back Fortress Wall": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 203, y: 129, floor: "OUT" },
+                        MapInfo: { x: 203, y: 129 },
                         Age: Age.ADULT,
                         LongDescription: "Nighttime required. The skulltula is located on the wall near the entrance to jail 4 - see those instructions for how to get there.<br/><br/>If you don't have a long range way to kill it, you'll need to jumpslash it from the top and then circle back around and jump to claim the item."
                     },
                     "Opened Gate": {
                         ItemGroup: ItemGroups.NON_ITEM,
-                        MapInfo: { x: 81, y: 98, floor: "OUT" },
+                        MapInfo: { x: 81, y: 98 },
                         Age: Age.ADULT,
                         Region: "main",
                         LongDescription: "Talk to the gerudo guard at the top of the ladder to open the gate.",
                         CustomRequirement: function() {
                             return Data.areGerudoGuardsTame();
-                        }
-                    },
-                    // "3 Pots by Jail 1": {
-                    //     ItemGroup: ItemGroups.ENTRANCE,
-                    //     OverrideItemGroup: ItemGroups.POT,
-                    //     IsItemLocationGroup: true,
-                    //     DefaultEntranceGroupName: "3 Pots",
-                    //     MapInfo: { x: 10, y: 68, floor: "LOW" },
-                    //     Age: Age.EITHER,
-                    //     LongDescription: "These pots are on the opposite wall of the jail."
-                    // },
-                    // "Crate by Jail 1": {
-                    //     ItemGroup: ItemGroups.CRATE,
-                    //     MapInfo: { x: 10, y: 109, floor: "LOW" },
-                    //     Age: Age.EITHER,
-                    //     LongDescription: "The crate is in the opposite corner of the cell door."
-                    // },
-                    "2 Pots in Jail 2 Hallway": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 121, y: 32, floor: "LOW" },
-                        Age: Age.EITHER,
-                        LongDescription: "These pots are in the hallway to the left of the jail."
-                    },
-                    "3 Pots by Jail 3": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 299, y: 163, floor: "LOW" },
-                        Age: Age.EITHER,
-                        LongDescription: "These pots are on the opposite wall of the closed jail."
-                    },
-                    "4 Pots in Open Cell by Jail 3": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "4 Pots",
-                        MapInfo: { x: 241, y: 219, floor: "LOW" },
-                        Age: Age.EITHER,
-                        LongDescription: "These pots are in the open cell next to jail 3."
-                    },
-                    "2 Crates by Jail 3": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Crates",
-                        MapInfo: { x: 225, y: 163, floor: "LOW" },
-                        Age: Age.EITHER,
-                        LongDescription: "The crates are in the opposite corner of the locked cell door."
-                    },
-                    "2 Far Crates in Kitchen Hallway": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Crates",
-                        MapInfo: { x: 56, y: 195, floor: "LOW" },
-                        Age: Age.EITHER,
-                        LongDescription: "The are the far away crates in the hallway attached to the kitchen."
-                    },
-                    "2 Mid Crates in Kitchen Hallway": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Crates",
-                        MapInfo: { x: 68, y: 239, floor: "LOW" },
-                        Age: Age.EITHER,
-                        LongDescription: "The are the closer crates in the hallway attached to the kitchen."
-                    },
-                    "Crate Close to Kitchen": {
-                        ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 105, y: 259, floor: "LOW" },
-                        Age: Age.EITHER,
-                        LongDescription: "This is the crate right next to the kitchen - you'll need to deal with one of the guards to get it.",
-                        CustomRequirement: function(age) {
-                            if (Data.areGerudoGuardsTame()) {
-                                return true;
-                            }
-
-                            if (age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas)) {
-                                return true;
-                            }
-
-                            return Settings.GlitchesToAllow.gfKitchenGuardsWithSword && Data.hasSwordWeapon(age);
-                        }
-                    },
-                    "2 Pots on Kitchen Table": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 139, y: 237, floor: "LOW" },
-                        Age: Age.EITHER,
-                        LongDescription: "These pots are on the table in the kitchen. If you enter from one of the upper entrances, you can snag them with the boomerang.",
-                        CustomRequirement: function(age) {
-                            if (Data.areGerudoGuardsTame() || Data.canUseBoomerang(age)) {
-                                return true;
-                            }
-    
-                            if (age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas)) {
-                                return true;
-                            }
-    
-                            return Settings.GlitchesToAllow.gfKitchenGuardsWithSword && Data.hasSwordWeapon(age);
                         }
                     }
                 }
@@ -3309,33 +3183,11 @@ let MapLocations = {
                 ItemLocations: {}
             },
 
+            //TODO: the area with the Jail 4 door - maybe jail4Door?
             jail4Area: {
                 ExcludeFromSpawnList: true,
                 Exits: {},
-                ItemLocations: {
-                    "Jail 4 Guard Key": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 318, y: 43, floor: "LOW" },
-                        Age: Age.EITHER,
-                        NeedsSwordWeapon: true,
-                        LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Face the entrance you just left. As Child, you must enter the door to your left and navigate across to the other side of the room. As Adult, you can jump up to the ledge to your right with a slight angled jump. Climb up the vines and navigate to the door near where the skulltula on the wall would be at night.<br/><br/>Once inside, wait for a bit first for the guard and knock her out or sprint past her before following the path to your right. Eventually you'll reach the jail. Take out the guard to get the item."
-                    },
-                    "Crate by Jail 4": {
-                        ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 213, y: 123, floor: "LOW" },
-                        Age: Age.EITHER,
-                        LongDescription: "The crate is in front of you when you enter the map - grab it quickly then retreat before the guard sees you."
-                    },
-                    "Item From Gerudo": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 334, y: 254, floor: "LOW" },
-                        Age: Age.EITHER,
-                        LongDescription: "You'll get this from the Gerudo after using all 4 keys on all the jail doors and talking to the prisoners.",
-                        CustomRequirement: function(age) {
-                            return getKeyCount("Thieves' Hideout") >= 4;
-                        }
-                    }
-                }
+                ItemLocations: {}
             },
 
             topOfFortress: {
@@ -3350,13 +3202,14 @@ let MapLocations = {
                 ItemLocations: {
                     "Chest on the Top": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 176, y: 101, floor: "OUT" },
+                        MapInfo: { x: 176, y: 101 },
                         Age: Age.EITHER,
                         LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Enter the other door to your right. Now either hookshot the wooden horizontal beam, use your hover boots to get across, or take out the guards with your bow to get across to the path directly in front of you. Face the camera to your back and turn left. Climb up the wall and walk to the end. Jump across to the next platform. Climb up the vines to your left.<br /><br />You should be able to either longshot to the chest, or roll across with your hover boots."
                     }
                 }
             },
 
+            //TODO: the area above jail1 - maybe just aboveJail1?
             upperInteriors: {
                 UseAdultAge: function() {
                     return !Settings.GlitchesToAllow.groundJump || !Settings.GlitchesToAllow.megaFlip;
@@ -3364,83 +3217,21 @@ let MapLocations = {
                 ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {
-                    "Closest Crate in Upper Room": {
-                        ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 277, y: 197, floor: "UP" },
-                        Age: Age.EITHER,
-                        LongDescription: "The crate is in front of you when you enter the map."
-                    },
-                    "Second Crate in Upper Room": {
-                        ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 297, y: 163, floor: "UP" },
-                        Age: Age.EITHER,
-                        LongDescription: "This is the second crate you run into in this map."
-                    },
-                    "Guarded Crate Close to Corner": {
-                        ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 345, y: 127, floor: "UP" },
-                        Age: Age.EITHER,
-                        LongDescription: "Deal with the guard that's moving. The crate is to the right when you enter the main room - the one close to the corner.<br/><br/>Child can get this without dealing with the stationary guard if you stay close to the wall.<br/><br/>Adult can get this one without dealing with the stationary guard if you bonk into it while staying more to the right.",
-                        CustomRequirement: function(age) {
-                            if (Data.areGerudoGuardsTame(age)) {
-                                return true;
-                            }
 
-                            if (Settings.GlitchesToAllow.gfTopGuardsWithSword && Data.hasSwordWeapon(age)) {
-                                return true;
-                            }
+                }
+            },
 
-                            if (age === Age.CHILD) {
-                                return false;
-                            }
-
-                            return Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas;
-                        }
-                    },
-                    "Guarded Crate Next to Corner Crate": {
-                        ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 345, y: 117, floor: "UP" },
-                        Age: Age.EITHER,
-                        LongDescription: "Deal with the guard that's moving. The crate is to the right when you enter the main room - the one farther from the corner.<br/>Child can get this one if you hug the wall the whole time.<br/>Adult can stab the stationary guard if you crouchstab her, but be careful not to get too close!",
-                        CustomRequirement: function(age) {
-                            if (Data.areGerudoGuardsTame(age)) {
-                                return true;
-                            }
-
-                            let canSlashGuards = Settings.GlitchesToAllow.gfTopGuardsWithSword && Data.hasSwordWeapon(age);
-                            if (age === Age.CHILD) {
-                                return canSlashGuards;
-                            }
-
-                            return Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas || (canSlashGuards && Data.hasShield(age));
-                        }
-                    },
-                    "2 Pots on Top Room Table": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 309, y: 96, floor: "UP" },
-                        Age: Age.EITHER,
-                        LongDescription: "These pots can be retrieved with the boomerang if you're quick. If you can't get them that way...<br/><br/>Deal with the guard that's moving. If you have a shield, and either the Master Sword or a Deku Stick, you can crouchstab the stationary guard, but be careful not to get too close!",
-                        CustomRequirement: function(age) {
-                            if (Data.areGerudoGuardsTame(age) || Data.canUseBoomerang(age)) {
-                                return true;
-                            }
-
-                            let canSlashStationaryGuard = Settings.GlitchesToAllow.gfTopGuardsWithSword && Data.hasSwordWeapon(age) && Data.hasShield(age);
-                            if (age === Age.CHILD) {
-                                return canSlashStationaryGuard && Items.DEKU_STICK.playerHas; // Kokiri Sword isn't long enough for this!
-                            }
-
-                            return canSlashStationaryGuard || Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas;
-                        }
-                    },
+            //TODO: the logic that lets you even get here!
+            aboveLinksJail: {
+                Exits: {
+                    //TODO
+                },
+                ItemLocations: {
                     "Crate Above Link's Jail": {
                         ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 136, y: 68, floor: "OUT" },
+                        MapInfo: { x: 136, y: 68 },
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT],
+                        //RequiredItems: [Items.HOOKSHOT],
                         LongDescription: "Navigate to the upper room by either getting caught then jumping to there, or by dropping down from the top where the chest is. Stun the guards (can use your hookshot) and navigate down the long hallway. Hooshot the wooden pillar to pass the barrier. The crate is just ahead of you after the loading zone."
                     }
                 }
@@ -3456,7 +3247,7 @@ let MapLocations = {
                     "Archery Minigame 1000 Points": {
                         ItemGroup: ItemGroups.GIFT,
                         Time: function() { return Time.DAY; },
-                        MapInfo: { x: 246, y: 220, floor: "OUT" },
+                        MapInfo: { x: 246, y: 220 },
                         Age: Age.ADULT,
                         LongDescription: "Ride Epona to the back section of the map during the day. Talk to the Gerudo there to play the archery minigame. Score 1000 points to claim your prize.",
                         RequiredItems: [Items.FAIRY_BOW],
@@ -3467,7 +3258,7 @@ let MapLocations = {
                     "Archery Minigame 1500 Points": {
                         ItemGroup: ItemGroups.GIFT,
                         Time: function() { return Time.DAY; },
-                        MapInfo: { x: 246, y: 225, floor: "OUT" },
+                        MapInfo: { x: 246, y: 225 },
                         Age: Age.ADULT,
                         LongDescription: "Ride Epona to the back section of the map during the day. Talk to the Gerudo there to play the archery minigame. Score 1500 points to claim your prize.",
                         RequiredItems: [Items.FAIRY_BOW],
@@ -3478,7 +3269,7 @@ let MapLocations = {
                     "Skulltula on Target": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 244, y: 40, floor: "OUT" },
+                        MapInfo: { x: 244, y: 40 },
                         Age: Age.ADULT,
                         LongDescription: "At night, navigate to the back part of the map. Head to the target on the left side to find this skulltula.",
                         IsAtShortDistance: true
@@ -3505,12 +3296,34 @@ let MapLocations = {
     },
     
     //TODO: add logic for: savewarping in ANY of these rooms will lead to jail1 (just add non-requirement exits to jail1 from ALL of these regions!)
+    //TODO: deal with talking to guards to get jailed
+    //TODO: what happens if you're caught in the kitchen/jail4/top? do you get jailed still? what if you don't have hs?
     "Thieves' Hideout": {
         Abbreviation: "TH",
         MapGroup: MapGroups.DESERT,
         Floors: ["J1", "J2", "J3", "J4", "KIT", "TOP"],
         StartingFloorIndex: 0,
         Regions: {
+            main: {
+                Exits: {},
+                ItemLocations: {
+                    "Item From Gerudo": {
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 346, y: 285, floor: "ANY" },
+                        Age: Age.EITHER,
+                        IsPostWalkCheck: true,
+                        LongDescription: "You'll get this from the Gerudo after using all 4 keys on all the jail doors and talking to the prisoners.",
+                        CustomRequirement: function(age) {
+                            //TODO: test this once all the exits have been added!!
+                            return getKeyCount("Thieves' Hideout") >= 4 &&
+                                Data.canAccessMap(age, "Thieves' Hideout", "jail1") &&
+                                Data.canAccessMap(age, "Thieves' Hideout", "jail2") &&
+                                Data.canAccessMap(age, "Thieves' Hideout", "jail3") &&
+                                Data.canAccessMap(age, "Thieves' Hideout", "jail4");
+                        }
+                    }
+                }
+            },
             jail1: {
                 Exits: {
                     "Jail 1 Left": {
@@ -3542,6 +3355,232 @@ let MapLocations = {
                         MapInfo: { x: 113, y: 194, floor: "J1" },
                         Age: Age.EITHER,
                         LongDescription: "The crate is in the opposite corner of the cell door."
+                    }
+                }
+            },
+            jail2: {
+                Exits: {
+                    //TODO
+                },
+                ItemLocations: {
+                    "Jail 2 Guard Key": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 207, y: 132, floor: "J2" },
+                        Age: Age.EITHER,
+                        NeedsSwordWeapon: true,
+                        LongDescription: "Start from jail 1. Face the jail - now turn right and take that exit. Go straight to the other side. The next jail is in the next hole if you hug this wall around the right corner - be careful of guards. Take out the guard to get the item."
+                    },
+                    "2 Pots in Jail 2 Hallway": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 167, y: 11, floor: "J2" },
+                        Age: Age.EITHER,
+                        LongDescription: "These pots are in the hallway to the left of the jail."
+                    }
+                }
+            },
+            jail3: {
+                Exits: {
+                    //TODO
+                },
+                ItemLocations: {
+                    "Jail 3 Guard Key": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 207, y: 188, floor: "J3" },
+                        Age: Age.EITHER,
+                        NeedsSwordWeapon: true,
+                        LongDescription: "Start from jail 2. Face the jail - now turn left and take that exit. Climb the vines straight ahead and take the exit straight in front of you for the next jail. Take out the guard to get the item."
+                    },
+                    "3 Pots by Jail 3": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 260, y: 115, floor: "J3" },
+                        Age: Age.EITHER,
+                        LongDescription: "These pots are on the opposite wall of the closed jail."
+                    },
+                    "4 Pots in Open Cell by Jail 3": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Pots",
+                        MapInfo: { x: 157, y: 217, floor: "J3" },
+                        Age: Age.EITHER,
+                        LongDescription: "These pots are in the open cell next to jail 3."
+                    },
+                    "2 Crates by Jail 3": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 127, y: 115, floor: "J3" },
+                        Age: Age.EITHER,
+                        LongDescription: "The crates are in the opposite corner of the locked cell door."
+                    }
+                }
+            },
+            jail4: {
+                Exits: {
+                    //TODO
+                },
+                ItemLocations: {
+                    "Jail 4 Guard Key": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 303, y: 38, floor: "J4" },
+                        Age: Age.EITHER,
+                        NeedsSwordWeapon: true,
+                        LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Face the entrance you just left. As Child, you must enter the door to your left and navigate across to the other side of the room. As Adult, you can jump up to the ledge to your right with a slight angled jump. Climb up the vines and navigate to the door near where the skulltula on the wall would be at night.<br/><br/>Once inside, wait for a bit first for the guard and knock her out or sprint past her before following the path to your right. Eventually you'll reach the jail. Take out the guard to get the item."
+                    },
+                    "Crate by Jail 4": {
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 80, y: 202, floor: "J4" },
+                        Age: Age.EITHER,
+                        LongDescription: "The crate is in front of you when you enter the map - grab it quickly then retreat before the guard sees you."
+                    }
+                }
+            },
+            kitchen: {
+                Exits: {
+                    //TODO
+                },
+                ItemLocations: {
+                    "2 Far Crates in Kitchen Hallway": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 108, y: 130, floor: "KIT" },
+                        Age: Age.EITHER,
+                        LongDescription: "The are the far away crates in the hallway attached to the kitchen."
+                    },
+                    "2 Mid Crates in Kitchen Hallway": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 131, y: 212, floor: "KIT" },
+                        Age: Age.EITHER,
+                        LongDescription: "The are the closer crates in the hallway attached to the kitchen."
+                    },
+                    "Crate Close to Kitchen": {
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 203, y: 250, floor: "KIT" },
+                        Age: Age.EITHER,
+                        LongDescription: "This is the crate right next to the kitchen - you'll need to deal with one of the guards to get it.",
+                        CustomRequirement: function(age) {
+                            //TODO: rework into a Data.canStunOrPassGuards()
+                            if (Data.areGerudoGuardsTame()) {
+                                return true;
+                            }
+
+                            if (age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas)) {
+                                return true;
+                            }
+
+                            return Settings.GlitchesToAllow.gfKitchenGuardsWithSword && Data.hasSwordWeapon(age);
+                        }
+                    },
+                    "2 Pots on Kitchen Table": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 267, y: 210, floor: "KIT" },
+                        Age: Age.EITHER,
+                        LongDescription: "These pots are on the table in the kitchen. If you enter from one of the upper entrances, you can snag them with the boomerang.",
+                        CustomRequirement: function(age) {
+                            if (Data.areGerudoGuardsTame() || Data.canUseBoomerang(age)) {
+                                return true;
+                            }
+    
+                            if (age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas)) {
+                                return true;
+                            }
+    
+                            return Settings.GlitchesToAllow.gfKitchenGuardsWithSword && Data.hasSwordWeapon(age);
+                        }
+                    }
+                }
+            },
+            top: {
+                Exits: {
+                    //TODO
+                },
+                ItemLocations: {
+                    "Upper Room Crate 1": {
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 277, y: 197, floor: "TOP" },
+                        Age: Age.EITHER,
+                        LongDescription: "The crate is in front of you when you enter the map."
+                    },
+                    "Upper Room Crate 2": {
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 297, y: 163, floor: "TOP" },
+                        Age: Age.EITHER,
+                        LongDescription: "This is the second crate you run into in this map."
+                    },
+                    "Upper Room Close Corner Crate": {
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 345, y: 127, floor: "TOP" },
+                        Age: Age.EITHER,
+                        LongDescription: "Deal with the guard that's moving. The crate is to the right when you enter the main room - the one close to the corner.<br/><br/>Child can get this without dealing with the stationary guard if you stay close to the wall.<br/><br/>Adult can get this one without dealing with the stationary guard if you bonk into it while staying more to the right.",
+                        CustomRequirement: function(age) {
+                            if (Data.areGerudoGuardsTame(age)) {
+                                return true;
+                            }
+
+                            if (Settings.GlitchesToAllow.gfTopGuardsWithSword && Data.hasSwordWeapon(age)) {
+                                return true;
+                            }
+
+                            if (age === Age.CHILD) {
+                                return false;
+                            }
+
+                            return Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas;
+                        }
+                    },
+                    "Upper Room Far Corner Crate": {
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 345, y: 117, floor: "TOP" },
+                        Age: Age.EITHER,
+                        LongDescription: "Deal with the guard that's moving. The crate is to the right when you enter the main room - the one farther from the corner.<br/>Child can get this one if you hug the wall the whole time.<br/>Adult can stab the stationary guard if you crouchstab her, but be careful not to get too close!",
+                        CustomRequirement: function(age) {
+                            if (Data.areGerudoGuardsTame(age)) {
+                                return true;
+                            }
+
+                            let canSlashGuards = Settings.GlitchesToAllow.gfTopGuardsWithSword && Data.hasSwordWeapon(age);
+                            if (age === Age.CHILD) {
+                                return canSlashGuards;
+                            }
+
+                            return Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas || (canSlashGuards && Data.hasShield(age));
+                        }
+                    },
+                    "2 Pots on Upper Room Table": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 309, y: 96, floor: "TOP" },
+                        Age: Age.EITHER,
+                        LongDescription: "These pots can be retrieved with the boomerang if you're quick. If you can't get them that way...<br/><br/>Deal with the guard that's moving. If you have a shield, and either the Master Sword or a Deku Stick, you can crouchstab the stationary guard, but be careful not to get too close!",
+                        CustomRequirement: function(age) {
+                            if (Data.areGerudoGuardsTame(age) || Data.canUseBoomerang(age)) {
+                                return true;
+                            }
+
+                            let canSlashStationaryGuard = Settings.GlitchesToAllow.gfTopGuardsWithSword && Data.hasSwordWeapon(age) && Data.hasShield(age);
+                            if (age === Age.CHILD) {
+                                return canSlashStationaryGuard && Items.DEKU_STICK.playerHas; // Kokiri Sword isn't long enough for this!
+                            }
+
+                            return canSlashStationaryGuard || Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas;
+                        }
                     }
                 }
             }
