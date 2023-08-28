@@ -3513,7 +3513,6 @@ let MapLocations = {
         Regions: {
             jail1: {
                 Exits: {
-                    //TODO: actually create these
                     "Jail 1 Left": {
                         OwExit: OwExits["Thieves' Hideout"]["Jail 1 Left"]
                     },
@@ -3524,7 +3523,7 @@ let MapLocations = {
                 ItemLocations: {
                     "Jail 1 Guard Key": {
                         ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 52, y: 79, floor: "J1" },
+                        MapInfo: { x: 213, y: 129, floor: "J1" },
                         Age: Age.EITHER,
                         NeedsSwordWeapon: true,
                         LongDescription: "Enter the leftmost bottom exit to get to the first jail. Take out the guard to get the item."
@@ -3534,13 +3533,13 @@ let MapLocations = {
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 10, y: 68, floor: "J1" },
+                        MapInfo: { x: 113, y: 107, floor: "J1" },
                         Age: Age.EITHER,
                         LongDescription: "These pots are on the opposite wall of the jail."
                     },
                     "Crate by Jail 1": {
                         ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 10, y: 109, floor: "J1" },
+                        MapInfo: { x: 113, y: 194, floor: "J1" },
                         Age: Age.EITHER,
                         LongDescription: "The crate is in the opposite corner of the cell door."
                     }

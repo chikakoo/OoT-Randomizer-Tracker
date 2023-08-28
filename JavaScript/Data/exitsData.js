@@ -1857,14 +1857,14 @@ let OwExits = {
 
         // Interiors
 
-        //TODO: FIX THE MAP INFO FOR THESE
+        //TODO: FIX THE MAP INFO FOR THESE - there should be NO floors here at all
         "Bottom Left Door": {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "jail1",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
-            MapInfo: { x: 10, y: 10 },
+            MapInfo: { x: 133, y: 125, floor: "OUT" },
             Age: Age.EITHER,
             LongDescription: "The door at the bottom left of the fortress."
         },
@@ -1874,7 +1874,7 @@ let OwExits = {
             Region: "jail1",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
-            MapInfo: { x: 20, y: 10 },
+            MapInfo: { x: 138, y: 165, floor: "OUT" },
             Age: Age.EITHER,
             LongDescription: "The left door at the bottom in the enclaves with the crates."
         },
@@ -1889,7 +1889,6 @@ let OwExits = {
         }
     },
 
-    //TODO: clean up map info!
     "Thieves' Hideout": {
         // Interiors
         "Jail 1 Left": {
@@ -1899,7 +1898,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Jail 1 Left",
-            MapInfo: { x: 10, y: 10, floor: "JAIL1" },
+            MapInfo: { x: 117, y: 28, floor: "JAIL1" },
             Age: Age.EITHER,
             LongDescription: "This is the exit to the left if you face the jail."
         },
@@ -1910,7 +1909,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Jail 1 Right",
-            MapInfo: { x: 20, y: 10, floor: "JAIL1" },
+            MapInfo: { x: 158, y: 277, floor: "JAIL1" },
             Age: Age.EITHER,
             LongDescription: "This is the exit to the right if you face the jail."
         }

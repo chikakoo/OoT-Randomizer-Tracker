@@ -128,7 +128,7 @@ let Settings = {
 		shuffleBossEntrances: true,
 		shuffleOverworldEntrances: true,
 		randomizeOwlDrops: true,
-		decoupleEntrances: false //TODO: this will probabaly be a setting to decouple in the different pools instead
+		decoupleEntrances: false //TODO: this will probably be a setting to decouple in the different pools instead
 	},
 		
 	GlitchesToAllow: {
