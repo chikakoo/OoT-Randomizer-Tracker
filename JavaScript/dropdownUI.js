@@ -66,7 +66,7 @@ let DropdownUI = {
     refreshEntranceDropdowns: function(itemLocation, loc, entrance) {
         let entranceOptions = {
             isOwl: itemLocation.IsOwl,
-            getInteriors: itemLocation.IsInteriorExit, //TODO: this and grottos maybe can be cleaned up...?
+            getInteriors: itemLocation.IsInteriorExit,
             getGrottos: itemLocation.IsGrottoExit
         };
 
@@ -232,17 +232,18 @@ let DropdownUI = {
             return;
         }
         
-        //TODO: check all EntranceUI calls and see if they should be moved to DropdownUI
         EntranceUI.initializeEntranceGroupData(itemLocation, groupName);
 
         let itemLocationEntranceTasksContainer = document.getElementById(`${itemLocation.Name}-entrance-tasks`);
-        EntranceUI._createButtonDivs(itemLocation, itemLocationEntranceTasksContainer); //TODO: this is a private function
+        EntranceUI.createButtonDivs(itemLocation, itemLocationEntranceTasksContainer);
         
         if (Data.isItemLocationAShop(itemLocation)) {
-            _toggleMoreInfo(document.getElementById(itemLocation.Name), itemLocation, true); //TODO: this is a private function
+             //TODO: this is a private function - fix this when itemLocationDisplay is made into an object
+            _toggleMoreInfo(document.getElementById(itemLocation.Name), itemLocation, true);
         }
         
-        _refreshNotes(itemLocation); //TODO: this is a private function
+        //TODO: this is a private function - fix this when itemLocationDisplay is made into an object
+        _refreshNotes(itemLocation); 
         
         let group = entranceData[groupName];
         if (group.overworldLink) {

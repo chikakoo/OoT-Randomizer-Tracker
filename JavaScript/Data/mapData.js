@@ -417,6 +417,8 @@ let MapLocations = {
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return true; }
 
+                            // Check if you can go reverse from the exit that leads to Kokiri Forest
+                            // to get to the first half of the Lost Woods
                             // TODO: put a function in Data that can do this
                             let linkedOwExit;
                             Object.keys(OwExits).forEach(function(mapName) {
@@ -1408,7 +1410,9 @@ let MapLocations = {
                 Exits: {
                     windmillTop: {
                         CustomRequirement: function(age) {
-                            return Data.canGetToWindmillFromDampe(age);
+                            return age === Age.CHILD 
+                                ? Data.canGroundJumpWithBomb(Age.CHILD) 
+                                : Data.canPlaySong(Songs.SONG_OF_TIME);
                         }
                     },
                     "Grave Exit": {

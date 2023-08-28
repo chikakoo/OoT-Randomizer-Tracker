@@ -3,8 +3,6 @@
  * tasks that can be done at a given location
  * @param itemLocation - the item location
  * @return the div
- * 
- * //TODO: see what can be cleaned up with the dropdown rework!
  */
 let EntranceUI = {
 	/**
@@ -16,14 +14,8 @@ let EntranceUI = {
 	createEntranceGroupDiv: function(itemLocation, itemLocationEntranceTasksContainer) {
 		let mainDiv = dce("div", "entrance-group-container");
 		mainDiv.id = `${itemLocation.Name}-entrance-groups`;
-		
-		let selectedGroup = Data.getEntranceGroup(itemLocation);
-		if (selectedGroup) {
-			this._createButtonDivs(itemLocation, itemLocationEntranceTasksContainer);
-		} else {
-			//TODO: clean this up... can remove it if this works
-			this._createGroupDivs(itemLocation, mainDiv, itemLocationEntranceTasksContainer);
-		}
+
+		this.createButtonDivs(itemLocation, itemLocationEntranceTasksContainer);
 		
 		return mainDiv;
 	},
@@ -70,89 +62,6 @@ let EntranceUI = {
 	},
 
 	/**
-	 * Creates the div with item groups
-	 * @param itemLocation - the item location the groups are for
-	 * @param mainDiv - the div to append the group divs to
-	 * @param itemLocationEntranceTasksContainer - the container to place the tasks for the entrance into
-	 * @return The div
-	 */
-	_createGroupDivs: function(itemLocation, mainDiv, itemLocationEntranceTasksContainer) {
-		let entranceData = this.getEntranceData(itemLocation);
-		let groupKeys = Object.keys(entranceData);
-		let _this = this;
-		groupKeys.forEach(function(groupName) {
-			let group = entranceData[groupName];
-			if (group.excludeFromGroup && group.excludeFromGroup()) { return; }
-
-			let groupDiv = dce("div", "entrance-group");
-			let shouldAlwaysDisplayGroup = Data.shouldDisplayItemLocation(itemLocation) && group.neverHide;
-
-			if (!shouldAlwaysDisplayGroup) {
-				let shouldNotDisplayGroup = group.shouldNotDisplay && group.shouldNotDisplay();
-				let itemsToExclude = {};
-				if (itemLocation.IsInterior) {
-					itemsToExclude = Settings.ItemLocationsToExclude.Interiors || {};
-				} else if (itemLocation.IsGrotto) {
-					itemsToExclude = Settings.ItemLocationsToExclude.Grottos || {};
-				}
-
-				Object.keys(group.buttons).forEach(function(buttonName) {
-					let button = group.buttons[buttonName];
-					let shouldNotDisplayButton = button.shouldNotDisplay && button.shouldNotDisplay();
-					let excludingItemGroup = button.itemGroup && shouldDisableItemLocationGroup(button.itemGroup, itemLocation.IsDungeon);
-					if (shouldNotDisplayButton || excludingItemGroup) {
-						itemsToExclude[groupName] = itemsToExclude[groupName] || [];
-						if (!itemsToExclude[groupName].includes(buttonName)) {
-							itemsToExclude[groupName].push(buttonName);
-						}
-					}
-				});
-				
-				let allItemsExcluded = false;
-				if (itemsToExclude[groupName]) {
-					let groupItemsToExclude = itemsToExclude[groupName];
-					allItemsExcluded = groupItemsToExclude && groupItemsToExclude.length === Object.keys(group.buttons).length;
-				}
-
-				if (shouldNotDisplayGroup || allItemsExcluded) { return; }
-			}
-
-			groupDiv.style.backgroundImage = _this.getEntranceGroupIcon(group, groupName);
-			groupDiv.title = group.tooltip;
-			
-			groupDiv.onclick = function(event) {
-				//TODO: do this stuff once a dropdown option is selected! the groupName will be the dropdown value
-				event.stopPropagation();
-
-				let group = entranceData[groupName];
-				if (group.shouldNotTrigger && group.shouldNotTrigger()) {
-					return;
-				}
-				
-				_this.initializeEntranceGroupData(itemLocation, groupName);
-				
-				mainDiv.innerHTML = "";
-				_this._createButtonDivs(itemLocation, itemLocationEntranceTasksContainer);
-				
-				if (Data.isItemLocationAShop(itemLocation)) {
-					_toggleMoreInfo(document.getElementById(itemLocation.Name), itemLocation, true);
-				}
-				
-				_refreshNotes(itemLocation);
-				
-				if (group.postClick) {
-					group.postClick(itemLocation, true);
-				}
-		
-				SocketClient.itemLocationUpdated(itemLocation);
-				refreshAll();
-			};
-			
-			mainDiv.appendChild(groupDiv);
-		});
-	},
-
-	/**
 	 * Initializes the entrance group data for the given item location and group
 	 * @param {Any} itemLocation - the item location
 	 * @param {string} groupName - the name of the group
@@ -181,7 +90,7 @@ let EntranceUI = {
 	 * @param itemLocationEntranceTasksContainer - the div to append the button divs to
 	 * @return The div
 	 */
-	_createButtonDivs: function(itemLocation, itemLocationEntranceTasksContainer) {
+	createButtonDivs: function(itemLocation, itemLocationEntranceTasksContainer) {
 		let itemLocationGroup = Data.getEntranceGroup(itemLocation);
 		let groupName = itemLocationGroup.name;
 		let selectedGroup = this.getEntranceData(itemLocation)[groupName];
@@ -266,10 +175,6 @@ let EntranceUI = {
 			visibleButtonCount++;
 			itemLocationEntranceTasksContainer.appendChild(buttonDiv);
 		});
-		
-		if (visibleButtonCount < 1) {
-			//itemLocation.playerHas = true;
-		}
 	},
 
 	_markButtonAsComplete: function(itemLocationGroup, itemLocation, button, buttonName, buttonDiv, markAsComplete) {
@@ -372,14 +277,14 @@ let EntranceUI = {
 	 */
 	refreshButtons: function(itemLocation) {
 		let mainDiv = document.getElementById(`${itemLocation.Name}-entrance-groups`);
-		if (mainDiv) { //TODO: probably just check for whether it's an itemGroup instead
+		if (mainDiv) {
 			addOrRemoveCssClass(mainDiv, "nodisp", Data.getEntranceGroup(itemLocation));
 		}
 		
 		let itemLocationEntranceTasksContainer = document.getElementById(`${itemLocation.Name}-entrance-tasks`);
 		itemLocationEntranceTasksContainer.innerHTML = "";
 		
-		this._createButtonDivs(itemLocation, itemLocationEntranceTasksContainer);
+		this.createButtonDivs(itemLocation, itemLocationEntranceTasksContainer);
 	},
 	
 	/**

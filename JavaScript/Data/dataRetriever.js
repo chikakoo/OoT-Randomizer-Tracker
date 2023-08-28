@@ -1724,13 +1724,6 @@ Data = {
     },
 
     /**
-	 * Common function for whether you can get to the windmill from dampe's grave
-	 */
-	canGetToWindmillFromDampe(age) {
-		return age === Age.CHILD ? Data.canGroundJumpWithBomb(Age.CHILD) : Data.canPlaySong(Songs.SONG_OF_TIME);
-	},
-
-    /**
      * Returns whether all the poe rooms can be accessed
      * This will require an IsPostWalkCheck flag on each item that uses this!
      */

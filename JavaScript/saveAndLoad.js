@@ -252,26 +252,9 @@ let SaveAndLoad = {
     _onFileLoaded: function(event) {
         let lines = event.target.result;
         let loadedObject = JSON.parse(lines); 
-        
-        if (loadedObject.locations) { // This is the spoiler log data we need
-        	this._loadNotesData(loadedObject.locations);
-        } else {
-            this.currentlyLoading = true;
-        	this._loadSaveFile(loadedObject);
-        }
-    },
     
-    /**
-     * Loads any notes data into the program
-     * @param locationsData - the locations data
-     */
-    _loadNotesData(locationsData) {
-    	let results = SpoilerLogNotesParser.parseAndLoadData(locationsData);
-    	
-    	displayLocation("Kokiri Forest");
-        refreshAll();
-        
-    	alert(results);
+        this.currentlyLoading = true;
+        this._loadSaveFile(loadedObject);
     },
     
     /**

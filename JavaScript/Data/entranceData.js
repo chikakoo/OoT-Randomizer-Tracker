@@ -157,14 +157,14 @@ InteriorGroups = {
 	"Potion Shop Front": {
 		tooltip: "The Kakariko potion shop - this is the front entrance (closest to the camera).",
 		neverHide: true,
-		buttons: {}
-		//TODO: overworldLink
+		buttons: {},
+		overworldLink: OwExits["Windmill-Kak Potion"]["Potion Shop Front"]
 	},
 	"Potion Shop Back": {
 		tooltip: "The Kakariko potion shop - this is the back entrance (farthest from the camera). Mark the front entrance for the shop itself.",
 		neverHide: true,
-		buttons: {}
-		//TODO: overworldLink
+		buttons: {},
+		overworldLink: OwExits["Windmill-Kak Potion"]["Potion Shop Back"]
 	},
 	"Happy Mask Shop": {
 		tooltip: "The Happy Mask Shop",
@@ -726,8 +726,8 @@ InteriorGroups = {
 	"Windmill": {
 		neverHide: true,
 		tooltip: "Kakariko Windmill",
-		buttons: {}
-		//TODO: overworldLink
+		buttons: {},
+		overworldLink: OwExits["Windmill-Kak Potion"]["Windmill Exit"]
 	},
 
 	// Non-shuffle only locations
@@ -1124,14 +1124,7 @@ GrottoGroups = {
 		neverHide: true,
 		tooltip: "Dampe's Grave - Be sure to mark the windmill entrance to see those items!",
 		buttons: {},
-		postClick: function(itemLocation, isSelected) {
-			let exitData = {
-				map: "Windmill-Kak Potion",
-				region: "dampesGrave",
-				exit: "Grave Exit"
-			}
-			EntranceData.handleInteriorPostClick(itemLocation, isSelected, exitData, "dampesGrave");
-		}
+		overworldLink: OwExits["Windmill-Kak Potion"]["Grave Exit"]
 	},
 	"Wolfos Grotto": {
 		tooltip: "This grotto has crystal walls and 2 wolfos.",
@@ -1450,7 +1443,6 @@ GrottoGroups = {
 		}
 	},
 	"Morpha": {
-		AlwaysRunPostClicks: true,
 		tooltip: "Morpha in the Water Temple",
 		buttons: {
 			"Heart Container": {

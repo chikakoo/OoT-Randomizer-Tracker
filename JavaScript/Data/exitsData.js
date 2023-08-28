@@ -1898,7 +1898,6 @@ let OwExits = {
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
-            //ReadOnly: true,
             InteriorGroupName: "TH - Jail 1 Left",
             MapInfo: { x: 10, y: 10, floor: "JAIL1" },
             Age: Age.EITHER,
@@ -1910,7 +1909,6 @@ let OwExits = {
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
-            //ReadOnly: true,
             InteriorGroupName: "TH - Jail 1 Right",
             MapInfo: { x: 20, y: 10, floor: "JAIL1" },
             Age: Age.EITHER,
@@ -1998,6 +1996,7 @@ let OwExits = {
         "Grave Exit": {
             ExitRegion: "dampesGrave",
             IsGrottoExit: true,
+            InteriorGroupName: "Dampe's Grave",
             MapInfo: { x: 97, y: 262, floor: "DMP" },
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances || !Settings.RandomizerSettings.shuffleOverworldEntrances; },
             ItemGroup: ItemGroups.OW_ENTRANCE,
@@ -2005,11 +2004,11 @@ let OwExits = {
             CustomRequirement: function(age) {
                 return Settings.RandomizerSettings.shuffleGrottoEntrances || !Settings.RandomizerSettings.shuffleOverworldEntrances;
             },
-            ReadOnly: true,
         },
         "Windmill Exit": {
             ExitRegion: "windmill",
             IsInteriorExit: true,
+            InteriorGroupName: "Windmill",
             MapInfo: { x: 77, y: 244, floor: "WND" },
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances || !Settings.RandomizerSettings.shuffleOverworldEntrances; },
             ItemGroup: ItemGroups.OW_ENTRANCE,
@@ -2017,8 +2016,6 @@ let OwExits = {
             CustomRequirement: function(age) {
                 return Settings.RandomizerSettings.shuffleGrottoEntrances || !Settings.RandomizerSettings.shuffleOverworldEntrances;
             },
-            InteriorGroupName: "Windmill"
-            //ReadOnly: true,
         },
         "Windmill Exit to Kakariko Village": {
             ExitRegion: "windmill",
@@ -2042,26 +2039,26 @@ let OwExits = {
         "Potion Shop Front": {
             ExitRegion: "kakPotionShop",
             IsInteriorExit: true,
+            InteriorGroupName: "Potion Shop Front",
             MapInfo: { x: 42, y: 250, floor: "POT" },
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances; },
             ItemGroup: ItemGroups.OW_ENTRANCE,
             Age: Age.EITHER,
             CustomRequirement: function(age) {
                 return Settings.RandomizerSettings.shuffleInteriorEntrances;
-            },
-            ReadOnly: true,
+            }
         },
         "Potion Shop Back": {
             ExitRegion: "kakPotionShop",
             IsInteriorExit: true,
+            InteriorGroupName: "Potion Shop Back",
             MapInfo: { x: 85, y: 147, floor: "POT" },
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances; },
             ItemGroup: ItemGroups.OW_ENTRANCE,
             Age: Age.ADULT,
             CustomRequirement: function(age) {
                 return Settings.RandomizerSettings.shuffleInteriorEntrances;
-            },
-            ReadOnly: true,
+            }
         }
     },
 

@@ -18,7 +18,7 @@ NotesPage = {
 	 * Adjusts the notes for the important locations
 	 * Currently only for the temple of time
 	 * 
-	 * TODO: Track the locations to display here so it's easy to dynamially add more?
+	 * TODO: Track the locations to display here so it's easy to dynamically add more?
 	 */
 	_adjustImportantLocationsText: function() {
 		let importantLocationsContainer = document.getElementById("importantLocationsContainer");
