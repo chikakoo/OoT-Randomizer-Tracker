@@ -3887,6 +3887,13 @@ let MapLocations = {
 		Regions: {
             main: {
                 Exits: {
+                    archway: {
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            return Data.itemLocationObtained("Desert Colossus", "main", "*Plant Bean by Spirit Temple");
+                        }
+                    },
+
                     "Haunted Wasteland": {
                         OwExit: OwExits["Desert Colossus"]["Haunted Wasteland"]
                     },
@@ -3907,19 +3914,6 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
-                    "Heart Piece on Platform": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 87, y: 135 },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
-                        IsPostWalkCheck: true,
-                        LongDescription: "Plant a magic bean in the soil by the Spirit Temple. Come back as an adult and ride it to the heart piece on the giant arch.",
-                        CustomRequirement: function(age) {
-                            //TODO: better to put this in a region, and walk to it via spirit temple/DC instead of this being a post-walk
-                            return (age === Age.ADULT && Data.itemLocationObtained("Desert Colossus", "main", "*Plant Bean by Spirit Temple")) ||
-                                (Data.canAccessMap(age, "Spirit Temple", "statueHands") && Data.canMegaFlip(age));
-                        }
-                    },
                     "Skulltula in Soil": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 63, y: 165 },
@@ -3967,6 +3961,19 @@ let MapLocations = {
                         MapInfo: { x: 54, y: 194 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is on the left side of the Spirit Temple."
+                    }
+                }
+            },
+            archway: {
+                ExcludeFromSpawnList: true,
+                Exits: {},
+                ItemLocations: {
+                    "Heart Piece on Platform": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 87, y: 135 },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        LongDescription: "Plant a magic bean in the soil by the Spirit Temple. Come back as an adult and ride it to the heart piece on the giant arch."
                     }
                 }
             }

@@ -2384,6 +2384,15 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the wasteland."
         },
+        "Archway": {
+            ExitRegion: "archway",
+            Map: "Desert Colossus",
+            Region: "archway",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: -100, y: -100 },
+            Hide: true,
+            LongDescription: "The archway with the heart piece on it."
+        },
         "Requiem Teleport Pad": {
             ExitRegion: "main",
             Map: "Desert Colossus",
@@ -2696,15 +2705,15 @@ let OwExits = {
     "Spirit Temple": {
         "Exit": {
             ExitRegion: "main",
-            Map: "Graveyard",
-            Region: "top",
+            Map: "Desert Colosus",
+            Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: -100, y: -100, floor: "F1" },
             ReadOnly: true,
             IsDungeonExit: true,
             Age: Age.EITHER,
             Order: 0,
-            LongDescription: "This is the exit from the Shadow Temple."
+            LongDescription: "This is the exit from the Spirit Temple."
         },
         "Desert Colossus": {
             ExitRegion: "statueHands",
@@ -2720,6 +2729,24 @@ let OwExits = {
             OwShuffleMap: "Desert Colossus",
             OwShuffleRegion: "main",
             OwShuffleExitName: "Haunted Wasteland"
+        },
+        "Desert Colossus Archway": {
+            ExitRegion: "statueHands",
+            Map: "Desert Colossus",
+            Region: "archway",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: 174, y: 241, floor: "F3" },
+            Age: Age.EITHER,
+            CustomRequirement: function(age) {
+                return Data.canMegaFlip(age);
+            },
+            LongDescription: "This is the exit to the archway from the statue hands from the spirit temple",
+            ReadOnly: true,
+            Hide: true,
+            OneWayEntrance: true,
+            OwShuffleMap: "Desert Colossus",
+            OwShuffleRegion: "archway",
+            OwShuffleExitName: "Archway"
         },
         "Boss Entrance": {
             ExitRegion: "bossRoom",

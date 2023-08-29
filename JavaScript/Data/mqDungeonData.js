@@ -4734,6 +4734,9 @@ let MQDungeons = {
                 Exits: {
                     "Desert Colossus": {
                         OwExit: OwExits["Spirit Temple"]["Desert Colossus"]
+                    },
+                    "Desert Colossus Archway": {
+                        OwExit: OwExits["Spirit Temple"]["Desert Colossus Archway"]
                     }
                 },
                 ItemLocations: {}
