@@ -3339,7 +3339,6 @@ let MapLocations = {
 		}
     },
     
-    //TODO: add logic for: savewarping in ANY of these rooms will lead to jail1 (just add non-requirement exits to jail1 from ALL of these regions!)
     //TODO: deal with talking to guards to get jailed
     //TODO: what happens if you're caught in the kitchen/jail4/top? do you get jailed still? what if you don't have hs?
     "Thieves' Hideout": {
@@ -3358,7 +3357,6 @@ let MapLocations = {
                         IsPostWalkCheck: true,
                         LongDescription: "You'll get this from the Gerudo after using all 4 keys on all the jail doors and talking to the prisoners.",
                         CustomRequirement: function(age) {
-                            //TODO: test this once all the exits have been added!!
                             return getKeyCount("Thieves' Hideout") >= 4 &&
                                 Data.canAccessMap(age, "Thieves' Hideout", "jail1") &&
                                 Data.canAccessMap(age, "Thieves' Hideout", "jail2") &&
