@@ -77,7 +77,7 @@ let DropdownUI = {
             this._refreshInteriorOrGrottoDropdown(
                 itemLocation, 
                 loc,
-                itemLocation.IsInterior ? InteriorGroups : GrottoGroups);
+                EntranceUI.getEntranceData(itemLocation));
         }
     },
 
