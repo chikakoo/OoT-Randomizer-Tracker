@@ -3075,6 +3075,66 @@ let MapLocations = {
         }
     },
 
+    //
+    // Logic from Overworld.json
+    //
+    // ======= EXTERIORS =======
+    //
+    // from main:
+    // > middle floor: hover boots/megaflip/longshot the vines, or trick to jump (the jump from above gtg - not hard, but make a trick)
+    // > kitchen roof area: membership card and longshot (....why membership card...???)
+    // > above jail 1: hookshot (can ask guard to jail you)
+    //
+    // from middle floor:
+    // > kitchen roof area: vine jump as adult
+    // > jail4 platform: megaflip, ADULT ground jump
+    //
+    // from kitchen roof:
+    // > top with chest: adult && hovers/scarecrow&hookshot/longshot/megaflip |
+    //                   child && (ground jump OR hard jump trick thing) && megaflip
+    // > above jail 1: logic_gf_break_room_jump as adult (no idea how to do this lol), megaflip, hover boots
+    //
+    // from jail4 platform:
+    // > middle floor: true
+    // > skulltula: longshot only
+    //
+    // from top w/chest:
+    // > kitchen roof: true
+    // > above jail 1: true
+    // > jail4 platform: true
+    //
+    // from above links jail:
+    // > top with chest: longshot
+    // > above jail 1: true
+    //
+    // ====== INTERIORS ======
+    //
+    // ALL BELOW REGIONS: savewarp goes to jail1
+    //
+    // jail1: main
+    // jail2: main/middle floor
+    // jail3: main/middle floor
+    // jail4: jail4 platform
+    //
+    // kitchen hallway (lower part):
+    // > front/rear/pots: membership/bow/hookshot/logic to pass guards
+    //
+    // kitchen front/rear (the two ramps)
+    // > rear/front: membership/bow/hookshot/hovers/logic
+    // > hallway: membership/bow/hookshot/logic
+    // > pots: boomerang
+    //
+    // top floor bottom:
+    // > bottom entrance: true
+    // > top floor top: hookshot
+    // > CHECK POT LOGIC: it's card/hookshot/bow OR boomerang/sticks or sword
+    // > CHECK CRATE LOGIC: it's card/bow/hookshot/sticks/kokiri sword (but we know that adult can get crate 1...)
+    //     - TO SNEAK: get by the wall's corner, wait for her to approach, then slash her quickly
+    //
+    // top floor top:
+    // > top entrance: true
+    // > bottom part: hookshot ONLY (no child access/stair case hover does NOT work)
+    //
 	"Gerudo Fortress": {
 		Abbreviation: "FORT",
 		MapGroup: MapGroups.DESERT,
@@ -3136,9 +3196,6 @@ let MapLocations = {
                     "Enclave Left Door": {
                         OwExit: OwExits["Gerudo Fortress"]["Enclave Left Door"]
                     },
-                    "Enclave Middle Door": {
-                        OwExit: OwExits["Gerudo Fortress"]["Enclave Middle Door"]
-                    },
                     "Enclave Right Door": {
                         OwExit: OwExits["Gerudo Fortress"]["Enclave Right Door"]
                     },
@@ -3146,8 +3203,11 @@ let MapLocations = {
                         OwExit: OwExits["Gerudo Fortress"]["Bottom Right Door"]
                     },
                     //TODO: confirm this can go in this region (isn't ONLY possible from another region with certain items, etc)
-                    "Door Above GTG": {
-                        OwExit: OwExits["Gerudo Fortress"]["Door Above GTG"]
+                    "Right Door Above GTG": {
+                        OwExit: OwExits["Gerudo Fortress"]["Right Door Above GTG"]
+                    },
+                    "Left Door Above GTG": {
+                        OwExit: OwExits["Gerudo Fortress"]["Left Door Above GTG"]
                     },
                     "Song of Storms Grotto": {
                         OwExit: OwExits["Gerudo Fortress"]["Song of Storms Grotto"]
@@ -3271,12 +3331,12 @@ let MapLocations = {
                     //TODO
                 },
                 ItemLocations: {
-                    "Crate Above Link's Jail": {
+                    "Adult Crate Above Link's Jail": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 136, y: 68 },
                         Age: Age.ADULT,
                         //RequiredItems: [Items.HOOKSHOT],
-                        LongDescription: "Navigate to the upper room by either getting caught then jumping to there, or by dropping down from the top where the chest is. Stun the guards (can use your hookshot) and navigate down the long hallway. Hooshot the wooden pillar to pass the barrier. The crate is just ahead of you after the loading zone."
+                        LongDescription: "Note that this is ONLY the crate here as Adult! The Child version is always a heart piece that is not in logic.<br/><br/>Navigate to the upper room by either getting caught then jumping to there, or by dropping down from the top where the chest is. Stun the guards (can use your hookshot) and navigate down the long hallway. Hookshot the wooden pillar to pass the barrier. The crate is just ahead of you after the loading zone."
                     }
                 }
             },
@@ -3500,21 +3560,19 @@ let MapLocations = {
                     }
                 }
             },
-            kitchen: {
-                //TODO: needs more than one region, and deal with the create close to kitchen (what region is it in)
+            kitchenHallway: {
                 Exits: {
                     jail1: {}, //Savewarp
+                    kitchenTopLeft: {
+                        CustomRequirement: function(age) {
+                            return Data.canStunKitchenGuards(age) ||  Settings.GlitchesToAllow.gfPassKitchenGuards;
+                        }
+                    },
                     "Kitchen Far Bottom": {
                         OwExit: OwExits["Thieves' Hideout"]["Kitchen Far Bottom"]
                     },
                     "Kitchen Middle Bottom": {
                         OwExit: OwExits["Thieves' Hideout"]["Kitchen Middle Bottom"]
-                    },
-                    "Kitchen Top Left": {
-                        OwExit: OwExits["Thieves' Hideout"]["Kitchen Top Left"]
-                    },
-                    "Kitchen Top Right": {
-                        OwExit: OwExits["Thieves' Hideout"]["Kitchen Top Right"]
                     }
                 },
                 ItemLocations: {
@@ -3540,20 +3598,67 @@ let MapLocations = {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 203, y: 250, floor: "KIT" },
                         Age: Age.EITHER,
-                        LongDescription: "This is the crate right next to the kitchen - you'll need to deal with one of the guards to get it.",
+                        LongDescription: "This is the crate right next to the kitchen - you'll need to deal with one of the guards to get it. To sneak past, you can hide in the corner by the crate and wait for her to pass. You have a limited time after to bonk the crate.",
                         CustomRequirement: function(age) {
-                            //TODO: rework into a Data.canStunOrPassGuards()
-                            if (Data.areGerudoGuardsTame()) {
-                                return true;
-                            }
-
-                            if (age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas)) {
-                                return true;
-                            }
-
-                            return Settings.GlitchesToAllow.gfKitchenGuardsWithSword && Data.hasSwordWeapon(age);
+                            return Data.canStunKitchenGuards(age) ||  Settings.GlitchesToAllow.gfPassKitchenGuards;
+                        }
+                    }
+                }
+            },
+            kitchenTopLeft: {
+                Exits: {
+                    jail1: {}, //Savewarp
+                    kitchenPots: {
+                        CustomRequirement: function(age) {
+                            return Data.canStunKitchenGuards(age) || Data.canUseBoomerang(age);
                         }
                     },
+                    kitchenHallway: {
+                        CustomRequirement: function(age) {
+                            // Their logic says that you can get here without anything with the pass guards trick on
+                            // But it's way too hard!
+                            return Data.canStunKitchenGuards(age);
+                        }
+                    },
+                    kitchenTopRight: {
+                        CustomRequirement: function(age) {
+                            return Data.canStunKitchenGuards(age) || 
+                                Settings.GlitchesToAllow.gfPassKitchenGuards ||
+                                Data.canMegaFlip(age) ||
+                                (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
+                        }
+                    },
+                    "Kitchen Top Left": {
+                        OwExit: OwExits["Thieves' Hideout"]["Kitchen Top Left"]
+                    }
+                },
+                ItemLocations: {}
+            },
+            kitchenTopRight: {
+                Exits: {
+                    jail1: {}, //Savewarp
+                    kitchenPots: {
+                        CustomRequirement: function(age) {
+                            return Data.canStunKitchenGuards(age) || Data.canUseBoomerang(age);
+                        }
+                    },
+                    kitchenTopLeft: {
+                        CustomRequirement: function(age) {
+                            return Data.canStunKitchenGuards(age) || 
+                                Settings.GlitchesToAllow.gfPassKitchenGuards ||
+                                Data.canMegaFlip(age) ||
+                                (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
+                        }
+                    },
+                    "Kitchen Top Right": {
+                        OwExit: OwExits["Thieves' Hideout"]["Kitchen Top Right"]
+                    }
+                },
+                ItemLocations: {}
+            },
+            kitchenPots: {
+                Exits: {},
+                ItemLocations: {
                     "2 Pots on Kitchen Table": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -3561,31 +3666,23 @@ let MapLocations = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 267, y: 210, floor: "KIT" },
                         Age: Age.EITHER,
-                        LongDescription: "These pots are on the table in the kitchen. If you enter from one of the upper entrances, you can snag them with the boomerang.",
-                        CustomRequirement: function(age) {
-                            if (Data.areGerudoGuardsTame() || Data.canUseBoomerang(age)) {
-                                return true;
-                            }
-    
-                            if (age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas)) {
-                                return true;
-                            }
-    
-                            return Settings.GlitchesToAllow.gfKitchenGuardsWithSword && Data.hasSwordWeapon(age);
-                        }
+                        LongDescription: "These pots are on the table in the kitchen. If you enter from one of the upper entrances, you can snag them with the boomerang."
                     }
                 }
             },
-            top: {
+            topLower: {
                 Exits: {
                     jail1: {}, //Savewarp
+                    topUpper: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
                     "Top Room Lower": {
                         OwExit: OwExits["Thieves' Hideout"]["Top Room Lower"]
-                    },
-                    "Top Room Upper": {
-                        OwExit: OwExits["Thieves' Hideout"]["Top Room Upper"]
                     }
                 },
+                // For some reason, their logic doesn't have a trick for Child to use a sword to attack the guards
+                // We will keep gfTopGuardsWithSword as a setting just in case, but will also remove the adult requirement too
                 ItemLocations: {
                     "Upper Room Crate 1": {
                         ItemGroup: ItemGroups.CRATE,
@@ -3605,19 +3702,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "Deal with the guard that's moving. The crate is to the right when you enter the main room - the one close to the corner.<br/><br/>Child can get this without dealing with the stationary guard if you stay close to the wall.<br/><br/>Adult can get this one without dealing with the stationary guard if you bonk into it while staying more to the right.",
                         CustomRequirement: function(age) {
-                            if (Data.areGerudoGuardsTame(age)) {
-                                return true;
-                            }
-
-                            if (Settings.GlitchesToAllow.gfTopGuardsWithSword && Data.hasSwordWeapon(age)) {
-                                return true;
-                            }
-
-                            if (age === Age.CHILD) {
-                                return false;
-                            }
-
-                            return Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas;
+                            return Data.canStunOrPassGuardsAtDistance(age) || Data.hasSwordWeapon(age);
                         }
                     },
                     "Upper Room Far Corner Crate": {
@@ -3626,16 +3711,14 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "Deal with the guard that's moving. The crate is to the right when you enter the main room - the one farther from the corner.<br/>Child can get this one if you hug the wall the whole time.<br/>Adult can stab the stationary guard if you crouchstab her, but be careful not to get too close!",
                         CustomRequirement: function(age) {
-                            if (Data.areGerudoGuardsTame(age)) {
+                            if (Data.canStunOrPassGuardsAtDistance(age)) {
                                 return true;
                             }
 
-                            let canSlashGuards = Settings.GlitchesToAllow.gfTopGuardsWithSword && Data.hasSwordWeapon(age);
-                            if (age === Age.CHILD) {
-                                return canSlashGuards;
-                            }
-
-                            return Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas || (canSlashGuards && Data.hasShield(age));
+                            let canSlashGuards = Data.hasSwordWeapon(age);
+                            return age === Age.CHILD
+                                ? canSlashGuards
+                                : canSlashGuards && Data.hasShield(age); // Need to crouch stab the stationary guard
                         }
                     },
                     "2 Pots on Upper Room Table": {
@@ -3647,19 +3730,30 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "These pots can be retrieved with the boomerang if you're quick. If you can't get them that way...<br/><br/>Deal with the guard that's moving. If you have a shield, and either the Master Sword or a Deku Stick, you can crouchstab the stationary guard, but be careful not to get too close!",
                         CustomRequirement: function(age) {
-                            if (Data.areGerudoGuardsTame(age) || Data.canUseBoomerang(age)) {
+                            if (Data.canStunOrPassGuardsAtDistance(age) || Data.canUseBoomerang(age)) {
                                 return true;
                             }
 
-                            let canSlashStationaryGuard = Settings.GlitchesToAllow.gfTopGuardsWithSword && Data.hasSwordWeapon(age) && Data.hasShield(age);
-                            if (age === Age.CHILD) {
-                                return canSlashStationaryGuard && Items.DEKU_STICK.playerHas; // Kokiri Sword isn't long enough for this!
-                            }
-
-                            return canSlashStationaryGuard || Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas;
+                            let canSlashStationaryGuard = Data.hasSwordWeapon(age) && Data.hasShield(age);
+                            return age === Age.CHILD
+                                ? canSlashStationaryGuard && Items.DEKU_STICK.playerHas // Kokiri Sword isn't long enough!
+                                : canSlashStationaryGuard;
                         }
                     }
                 }
+            },
+            topUpper: {
+                Exits: {
+                    jail1: {}, //Savewarp
+                    topLower: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "Top Room Upper": {
+                        OwExit: OwExits["Thieves' Hideout"]["Top Room Upper"]
+                    }
+                },
+                ItemLocations: {}
             }
         }
     },

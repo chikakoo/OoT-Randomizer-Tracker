@@ -475,6 +475,22 @@ Data = {
     areGerudoGuardsTame: function() {
 		return Equipment.GERUDO_MEMBERSHIP_CARD.playerHas;
 	},
+
+    /**
+     * Whether you can pass the Geurdo guards without using a sword
+     */
+    canStunOrPassGuardsAtDistance: function(age) {
+        return Data.areGerudoGuardsTame() || 
+            (age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas));
+    },
+
+    /**
+     * Whether you can stun (or pass, if they are tamed) the Gerudo guards in the kitchen
+     */
+    canStunKitchenGuards: function(age) {
+        return this.canStunOrPassGuardsAtDistance(age) ||
+            (Settings.GlitchesToAllow.gfKitchenGuardsWithSword && Data.hasSwordWeapon(age));
+    },
     
     /**
      * Returns whether you can play bombchu bowling

@@ -1876,23 +1876,13 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "The left door at the bottom in the enclaves with the crates."
         },
-        "Enclave Middle Door": {
-            ExitRegion: "main",
-            Map: "Thieves' Hideout",
-            Region: "kitchen",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
-            MapInfo: { x: 145, y: 170 },
-            Age: Age.EITHER,
-            LongDescription: "The middle door at the bottom in the enclaves with the crates."
-        },
         "Enclave Right Door": {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
-            Region: "kitchen",
+            Region: "kitchenHallway",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
-            MapInfo: { x: 145, y: 177 },
+            MapInfo: { x: 145, y: 170 },
             Age: Age.EITHER,
             LongDescription: "The right door at the bottom in the enclaves with the crates."
         },
@@ -1929,14 +1919,14 @@ let OwExits = {
         "Vines Left Door": {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
-            Region: "kitchen",
+            Region: "kitchenTopLeft",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             MapInfo: { x: 168, y: 161 },
             Age: Age.EITHER,
             LongDescription: "This is the door to the left when you climb the vines on the middle floor of the fortress."
         },
-        "Door Above GTG": {
+        "Right Door Above GTG": {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "jail3",
@@ -1945,12 +1935,22 @@ let OwExits = {
             MapInfo: { x: 144, y: 189 },
             Age: Age.EITHER,
             //TODO: check how feasible it is to sneak here with nothing as adult
-            LongDescription: "This door is the one above the Gerudo Training Grounds."
+            LongDescription: "The door to the right (the first one) in the area above Gerudo Training Grounds."
+        },
+        "Left Door Above GTG": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "kitchenHallway",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 145, y: 177 },
+            Age: Age.EITHER,
+            LongDescription: "The door to the left (the second one) in the area above Gerudo Training Grounds."
         },
         "Upper Kitchen Door": {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
-            Region: "kitchen",
+            Region: "kitchenTopRight",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             MapInfo: { x: 184, y: 147 },
@@ -1970,17 +1970,17 @@ let OwExits = {
         "Door Above Jail 1": {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
-            Region: "top",
+            Region: "topLower",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             MapInfo: { x: 156, y: 115 },
             Age: Age.EITHER,
-            LongDescription: "Can be reached from the top of Link's jail, or from dropping down to it from the chest on top."
+            LongDescription: "Can be reached from the top of Link's jail, from backflipping from the very top area, from using hover boots in the area by by upper kitchen exit, or from dropping down to it from the chest on top."
         },
         "Door Above Link's Jail": {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
-            Region: "top",
+            Region: "topUpper",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             MapInfo: { x: 151, y: 68 },
@@ -2079,7 +2079,7 @@ let OwExits = {
             LongDescription: "This is the only exit in the jail 4 area."
         },
         "Kitchen Far Bottom": {
-            ExitRegion: "kitchen",
+            ExitRegion: "kitchenHallway",
             Map: "Gerudo Fortress",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
@@ -2090,7 +2090,7 @@ let OwExits = {
             LongDescription: "This is the entrance at the very end of cooridor on the bottom part of the kitchen."
         },
         "Kitchen Middle Bottom": {
-            ExitRegion: "kitchen",
+            ExitRegion: "kitchenHallway",
             Map: "Gerudo Fortress",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
@@ -2101,7 +2101,7 @@ let OwExits = {
             LongDescription: "This is the entrance at the middle of the cooridor on the bottom part of the kitchen."
         },
         "Kitchen Top Left": {
-            ExitRegion: "kitchen",
+            ExitRegion: "kitchenTopLeft",
             Map: "Gerudo Fortress",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
@@ -2112,7 +2112,7 @@ let OwExits = {
             LongDescription: "From the perspective of the guards, this is the exit to the left on top of the ramps in the main area of the kitchen."
         },
         "Kitchen Top Right": {
-            ExitRegion: "kitchen",
+            ExitRegion: "kitchenTopRight",
             Map: "Gerudo Fortress",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
@@ -2123,7 +2123,7 @@ let OwExits = {
             LongDescription: "From the perspective of the guards, this is the exit to the right on top of the ramps in the main area of the kitchen."
         },
         "Top Room Lower": {
-            ExitRegion: "top",
+            ExitRegion: "topLower",
             Map: "Gerudo Fortress",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
@@ -2134,7 +2134,7 @@ let OwExits = {
             LongDescription: "This is the entrance on the bottom part of the room above jail 1."
         },
         "Top Room Upper": {
-            ExitRegion: "top",
+            ExitRegion: "topUpper",
             Map: "Gerudo Fortress",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
