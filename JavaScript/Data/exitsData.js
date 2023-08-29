@@ -1862,6 +1862,8 @@ let OwExits = {
             Region: "jail1",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 133, y: 125 },
             Age: Age.EITHER,
             LongDescription: "The door at the bottom left of the fortress."
@@ -1872,6 +1874,8 @@ let OwExits = {
             Region: "jail1",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 138, y: 165 },
             Age: Age.EITHER,
             LongDescription: "The left door at the bottom in the enclaves with the crates."
@@ -1882,6 +1886,8 @@ let OwExits = {
             Region: "kitchenHallway",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 145, y: 170 },
             Age: Age.EITHER,
             LongDescription: "The right door at the bottom in the enclaves with the crates."
@@ -1892,6 +1898,8 @@ let OwExits = {
             Region: "jail2",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 133, y: 179 },
             Age: Age.EITHER,
             LongDescription: "The door just to the left of Gerudo Training Grounds."
@@ -1902,6 +1910,8 @@ let OwExits = {
             Region: "jail3",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 144, y: 189 },
             Age: Age.EITHER,
             LongDescription: "The door to the right (the first one) in the area above Gerudo Training Grounds."
@@ -1912,6 +1922,8 @@ let OwExits = {
             Region: "kitchenHallway",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 145, y: 177 },
             Age: Age.EITHER,
             LongDescription: "The door to the left (the second one) in the area above Gerudo Training Grounds."
@@ -1922,6 +1934,8 @@ let OwExits = {
             Region: "jail2",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 151, y: 142 },
             Age: Age.EITHER,
             LongDescription: "The door in the middle of the fortress where you can walk to the bottom of the vines."
@@ -1932,6 +1946,8 @@ let OwExits = {
             Region: "jail3",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 165, y: 170 },
             Age: Age.EITHER,
             LongDescription: "This is the door straight ahead when you climb the vines on the middle floor of the fortress."
@@ -1942,6 +1958,8 @@ let OwExits = {
             Region: "kitchenTopLeft",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 168, y: 161 },
             Age: Age.EITHER,
             LongDescription: "This is the door to the left when you climb the vines on the middle floor of the fortress."
@@ -1952,6 +1970,8 @@ let OwExits = {
             Region: "kitchenTopRight",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 184, y: 147 },
             Age: Age.EITHER,
             LongDescription: "This is the door on the top of the right side of the fortress, above the door to jail 4 and nearest to the skulltula. Adult can do a trick jump near the vines to get to this door from the middle level."
@@ -1962,6 +1982,8 @@ let OwExits = {
             Region: "jail4",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 177, y: 133 },
             Age: Age.EITHER,
             LongDescription: "This door needs to be dropped down to from an upper area of the fortress. If not using entrance shuffle, you can get here from navigating around the kitchen's upper exit."
@@ -1972,6 +1994,8 @@ let OwExits = {
             Region: "topLower",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 156, y: 115 },
             Age: Age.EITHER,
             LongDescription: "Can be reached from the top of Link's jail, from backflipping from the very top area, from using hover boots in the area by by upper kitchen exit, or from dropping down to it from the chest on top."
@@ -1982,6 +2006,8 @@ let OwExits = {
             Region: "topUpper",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 151, y: 68 },
             Age: Age.EITHER,
             LongDescription: "Normally only reachable from the entrance that leads there. There's a glitch involving a specific hookshot angle from the top of Link's jail as well."
@@ -1994,10 +2020,113 @@ let OwExits = {
             Age: Age.ADULT,
             LongDescription: "Play the song of storms in the center of the crates near the fortress to reveal this grotto.",
             RequiredSongs: [Songs.SONG_OF_STORMS]
+        },
+
+        // Hidden, non-Thieves' Hideout shuffle exits for travel purposes
+        "Gerudo Fortress to Jail 1": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "jail1",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            OneWayEntrance: true,
+            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            MapInfo: { x: 1000, y: 1000 }, // Hide the icon
+            Age: Age.EITHER,
+            OwShuffleMap: "Thieves' Hideout",
+            OwShuffleRegion: "jail1",
+            OwShuffleExitName: "Jail 1 Left",
+            ReadOnly: true,
+            Hide: true,
+            LongDescription: "Either doors leading to jail 1."
+        },
+        "Gerudo Fortress to Jail 2": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "jail2",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            OneWayEntrance: true,
+            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            MapInfo: { x: 1000, y: 1000 }, // Hide the icon
+            Age: Age.EITHER,
+            OwShuffleMap: "Thieves' Hideout",
+            OwShuffleRegion: "jail2",
+            OwShuffleExitName: "Jail 2 Right",
+            ReadOnly: true,
+            Hide: true,
+            LongDescription: "The door to the left of Getrudo Training Grounds."
+        },
+        "Gerudo Fortress to Jail 3": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "jail3",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            OneWayEntrance: true,
+            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            MapInfo: { x: 1000, y: 1000 }, // Hide the icon
+            Age: Age.EITHER,
+            OwShuffleMap: "Thieves' Hideout",
+            OwShuffleRegion: "jail3",
+            OwShuffleExitName: "Jail 3 Right",
+            ReadOnly: true,
+            Hide: true,
+            LongDescription: "The door above the entrance to Gerudo Training Grounds."
+        },
+        "Gerudo Fortress to Kitchen Hallway": {
+            ExitRegion: "main",
+            Map: "Thieves' Hideout",
+            Region: "kitchenHallway",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            OneWayEntrance: true,
+            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            MapInfo: { x: 1000, y: 1000 }, // Hide the icon
+            Age: Age.EITHER,
+            OwShuffleMap: "Thieves' Hideout",
+            OwShuffleRegion: "kitchenHallway",
+            OwShuffleExitName: "Kitchen Far Bottom",
+            ReadOnly: true,
+            Hide: true,
+            LongDescription: "The right door in the enclave on the bottom with the boxes."
+        },
+        "Gerudo Fortress to Jail 4": {
+            ExitRegion: "jail4Door",
+            Map: "Thieves' Hideout",
+            Region: "kitchenHallway",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            OneWayEntrance: true,
+            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            MapInfo: { x: 1000, y: 1000 }, // Hide the icon
+            Age: Age.EITHER,
+            OwShuffleMap: "Thieves' Hideout",
+            OwShuffleRegion: "jail4",
+            OwShuffleExitName: "Jail 4 Entrance",
+            ReadOnly: true,
+            Hide: true,
+            LongDescription: "The door leading to jail 4 below the top of the kitchen exit."
+        },
+        "Gerudo Fortress to Room Above Jail 1": {
+            ExitRegion: "aboveJail1",
+            Map: "Thieves' Hideout",
+            Region: "topLower",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            OneWayEntrance: true,
+            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            MapInfo: { x: 1000, y: 1000 }, // Hide the icon
+            Age: Age.EITHER,
+            OwShuffleMap: "Thieves' Hideout",
+            OwShuffleRegion: "topLower",
+            OwShuffleExitName: "Top Room Lower",
+            ReadOnly: true,
+            Hide: true,
+            LongDescription: "The door above jail 1 leading to the path to the very top."
         }
     },
 
-    //TODO: Adjust the Region values appropriately!
     "Thieves' Hideout": {
         // Interiors
         "Jail 1 Left": {
@@ -2007,6 +2136,8 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Jail 1 Left",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 117, y: 28, floor: "J1" },
             Age: Age.EITHER,
             LongDescription: "This is the exit to the left if you face the jail."
@@ -2018,6 +2149,8 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Jail 1 Right",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 158, y: 277, floor: "J1" },
             Age: Age.EITHER,
             LongDescription: "This is the exit to the right if you face the jail."
@@ -2029,6 +2162,8 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Jail 2 Left",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 249, y: 51, floor: "J2" },
             Age: Age.EITHER,
             LongDescription: "This is the exit to the left if you face the jail."
@@ -2040,6 +2175,8 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Jail 2 Right",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 110, y: 282, floor: "J2" },
             Age: Age.EITHER,
             LongDescription: "This is the exit to the right if you face the jail."
@@ -2051,6 +2188,8 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Jail 3 Left",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 341, y: 80, floor: "J3" },
             Age: Age.EITHER,
             LongDescription: "This is the exit to the left if you face the jail."
@@ -2062,6 +2201,8 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Jail 3 Right",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 18, y: 121, floor: "J3" },
             Age: Age.EITHER,
             LongDescription: "This is the exit to the right if you face the jail."
@@ -2073,6 +2214,8 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Jail 4 Entrance",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 74, y: 278, floor: "J4" },
             Age: Age.EITHER,
             LongDescription: "This is the only exit in the jail 4 area."
@@ -2084,6 +2227,8 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Kitchen Far Bottom",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 17, y: 73, floor: "KIT" },
             Age: Age.EITHER,
             LongDescription: "This is the entrance at the very end of cooridor on the bottom part of the kitchen."
@@ -2095,6 +2240,8 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Kitchen Middle Bottom",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 17, y: 178, floor: "KIT" },
             Age: Age.EITHER,
             LongDescription: "This is the entrance at the middle of the cooridor on the bottom part of the kitchen."
@@ -2106,6 +2253,8 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Kitchen Top Left",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 139, y: 178, floor: "KIT" },
             Age: Age.EITHER,
             LongDescription: "From the perspective of the guards, this is the exit to the left on top of the ramps in the main area of the kitchen."
@@ -2117,6 +2266,8 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Kitchen Top Right",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 285, y: 105, floor: "KIT" },
             Age: Age.EITHER,
             LongDescription: "From the perspective of the guards, this is the exit to the right on top of the ramps in the main area of the kitchen."
@@ -2128,6 +2279,8 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Top Room Lower",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 218, y: 217, floor: "TOP" },
             Age: Age.EITHER,
             LongDescription: "This is the entrance on the bottom part of the room above jail 1."
@@ -2139,9 +2292,64 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Top Room Upper",
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
             MapInfo: { x: 17, y: 126, floor: "TOP" },
             Age: Age.EITHER,
             LongDescription: "This is the entrance on the upper part of the room above jail 1."
+        },
+
+        // Hidden, non-Thieves' Hideout shuffle exits for travel purposes
+        "TH Bottom Jails to GF Middle Floor": {
+            ExitRegion: "jail2",
+            Map: "Gerudo Fortress",
+            Region: "middleFloor",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            OneWayEntrance: true,
+            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            MapInfo: { x: 1000, y: 1000 }, // Hide the icon
+            Age: Age.EITHER,
+            OwShuffleMap: "Gerudo Fortress",
+            OwShuffleRegion: "middleFloor",
+            OwShuffleExitName: "Middle Left Door",
+            ReadOnly: true,
+            Hide: true,
+            LongDescription: "The door to the left of the jail leading to the middle floor of Gerudo Fortress."
+        },
+        "TH Kitchen to GF Kitchen Top": {
+            ExitRegion: "kitchenTopRight",
+            Map: "Gerudo Fortress",
+            Region: "topOfKitchen",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            OneWayEntrance: true,
+            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            MapInfo: { x: 1000, y: 1000 }, // Hide the icon
+            Age: Age.EITHER,
+            OwShuffleMap: "Gerudo Fortress",
+            OwShuffleRegion: "topOfKitchen",
+            OwShuffleExitName: "Upper Kitchen Door",
+            ReadOnly: true,
+            Hide: true,
+            LongDescription: "The upper door of the fortress leading to the kitchen, above the jail 4 entrance."
+        },
+        "TH Top Room to GF Above Link's Jail": {
+            ExitRegion: "topUpper",
+            Map: "Gerudo Fortress",
+            Region: "aboveLinksJail",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            OneWayEntrance: true,
+            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+            MapInfo: { x: 1000, y: 1000 }, // Hide the icon
+            Age: Age.EITHER,
+            OwShuffleMap: "Gerudo Fortress",
+            OwShuffleRegion: "aboveLinksJail",
+            OwShuffleExitName: "Door Above Link's Jail",
+            ReadOnly: true,
+            Hide: true,
+            LongDescription: "The door on the balcony above Link's Jail."
         }
     },
 
@@ -2239,11 +2447,11 @@ let OwExits = {
             IsInteriorExit: true,
             InteriorGroupName: "Windmill",
             MapInfo: { x: 77, y: 244, floor: "WND" },
-            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances || !Settings.RandomizerSettings.shuffleOverworldEntrances; },
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances || !Settings.RandomizerSettings.shuffleOverworldEntrances; },
             ItemGroup: ItemGroups.OW_ENTRANCE,
             Age: Age.EITHER,
             CustomRequirement: function(age) {
-                return Settings.RandomizerSettings.shuffleGrottoEntrances || !Settings.RandomizerSettings.shuffleOverworldEntrances;
+                return Settings.RandomizerSettings.shuffleInteriorEntrances || !Settings.RandomizerSettings.shuffleOverworldEntrances;
             },
         },
         "Windmill Exit to Kakariko Village": {
@@ -2251,12 +2459,12 @@ let OwExits = {
             Map: "Kakariko Village",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances && Settings.RandomizerSettings.shuffleOverworldEntrances; },
+            RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleInteriorEntrances && Settings.RandomizerSettings.shuffleOverworldEntrances; },
             MapInfo: { x: 77, y: 244, floor: "WND" },
-            Age: Age.ADULT,
+            Age: Age.EITHER,
             OneWayEntrance: true,
             CustomRequirement: function(age) {
-                return !Settings.RandomizerSettings.shuffleGrottoEntrances && Settings.RandomizerSettings.shuffleOverworldEntrances;
+                return !Settings.RandomizerSettings.shuffleInteriorEntrances && Settings.RandomizerSettings.shuffleOverworldEntrances;
             },
             OwShuffleMap: "Kakariko Village",
             OwShuffleRegion: "main",

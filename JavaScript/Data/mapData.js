@@ -3151,6 +3151,20 @@ let MapLocations = {
                     },
                     "Song of Storms Grotto": {
                         OwExit: OwExits["Gerudo Fortress"]["Song of Storms Grotto"]
+                    },
+
+                    // Hidden exits to travel if Thieves' Hideout shuffle is off
+                    "Gerudo Fortress to Jail 1": {
+                        OwExit: OwExits["Gerudo Fortress"]["Gerudo Fortress to Jail 1"]
+                    },
+                    "Gerudo Fortress to Jail 2": {
+                        OwExit: OwExits["Gerudo Fortress"]["Gerudo Fortress to Jail 2"]
+                    },
+                    "Gerudo Fortress to Jail 3": {
+                        OwExit: OwExits["Gerudo Fortress"]["Gerudo Fortress to Jail 3"]
+                    },
+                    "Gerudo Fortress to Kitchen Hallway": {
+                        OwExit: OwExits["Gerudo Fortress"]["Gerudo Fortress to Kitchen Hallway"]
                     }
                 },
                 ItemLocations: {
@@ -3236,8 +3250,15 @@ let MapLocations = {
             jail4Door: {
                 Exits: {
                     middleFloor: {},
+
+                    // Interiors
                     "Upper Jail Door": {
                         OwExit: OwExits["Gerudo Fortress"]["Upper Jail Door"]
+                    },
+
+                    // Hidden exits to travel if Thieves' Hideout shuffle is off
+                    "Gerudo Fortress to Jail 4": {
+                        OwExit: OwExits["Gerudo Fortress"]["Gerudo Fortress to Jail 4"]
                     }
                 },
                 ItemLocations: {}
@@ -3267,6 +3288,11 @@ let MapLocations = {
                     main: {},
                     "Door Above Jail 1": {
                         OwExit: OwExits["Gerudo Fortress"]["Door Above Jail 1"]
+                    },
+
+                    // Hidden exits to travel if Thieves' Hideout shuffle is off
+                    "Gerudo Fortress to Room Above Jail 1": {
+                        OwExit: OwExits["Gerudo Fortress"]["Gerudo Fortress to Room Above Jail 1"]
                     }
                 },
                 ItemLocations: {}
@@ -3356,7 +3382,6 @@ let MapLocations = {
 		}
     },
     
-    //TODO: deal with talking to guards to get jailed
     //TODO: what happens if you're caught in the kitchen/jail4/top? do you get jailed still? what if you don't have hs?
     "Thieves' Hideout": {
         Abbreviation: "TH",
@@ -3426,6 +3451,11 @@ let MapLocations = {
                     },
                     "Jail 2 Right": {
                         OwExit: OwExits["Thieves' Hideout"]["Jail 2 Right"]
+                    },
+
+                    // Hidden exits to travel if Thieves' Hideout shuffle is off
+                    "TH Bottom Jails to GF Middle Floor": {
+                        OwExit: OwExits["Thieves' Hideout"]["TH Bottom Jails to GF Middle Floor"]
                     }
                 },
                 ItemLocations: {
@@ -3609,11 +3639,17 @@ let MapLocations = {
                     },
                     "Kitchen Top Right": {
                         OwExit: OwExits["Thieves' Hideout"]["Kitchen Top Right"]
+                    },
+
+                    // Hidden exits to travel if Thieves' Hideout shuffle is off
+                    "TH Kitchen to GF Kitchen Top": {
+                        OwExit: OwExits["Thieves' Hideout"]["TH Kitchen to GF Kitchen Top"]
                     }
                 },
                 ItemLocations: {}
             },
             kitchenPots: {
+                ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {
                     "2 Pots on Kitchen Table": {
@@ -3708,6 +3744,11 @@ let MapLocations = {
                     },
                     "Top Room Upper": {
                         OwExit: OwExits["Thieves' Hideout"]["Top Room Upper"]
+                    },
+
+                    // Hidden exits to travel if Thieves' Hideout shuffle is off
+                    "TH Top Room to GF Above Link's Jail": {
+                        OwExit: OwExits["Thieves' Hideout"]["TH Top Room to GF Above Link's Jail"]
                     }
                 },
                 ItemLocations: {}

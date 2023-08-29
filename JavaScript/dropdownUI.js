@@ -293,7 +293,8 @@ let DropdownUI = {
             let dungeonCheck = isForDungeonDropdown
                 ? isDungeon && isForDungeonDropdown
                 : !isDungeon && !isForDungeonDropdown;
-			if (dungeonCheck) {
+            let thievesHideoutCheck = mapName !== "Thieves' Hideout" || Settings.RandomizerSettings.shuffleThievesHideout;
+			if (dungeonCheck && thievesHideoutCheck) {
                 // Don't add the map if it doesn't have the entrance type we're looking for
                 let itemLocs = Data.getAllItemLocations(mapName);
                 if (entranceOptions.getInteriors && !itemLocs.some(itemLoc => itemLoc.IsInterior) ||
