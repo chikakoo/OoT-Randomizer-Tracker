@@ -3075,66 +3075,6 @@ let MapLocations = {
         }
     },
 
-    //
-    // Logic from Overworld.json
-    //
-    // ======= EXTERIORS =======
-    //
-    // from main:
-    // > middle floor: hover boots/megaflip/longshot the vines, or trick to jump (the jump from above gtg - not hard, but make a trick)
-    // > kitchen roof area: membership card and longshot (....why membership card...???)
-    // > above jail 1: hookshot (can ask guard to jail you)
-    //
-    // from middle floor:
-    // > kitchen roof area: vine jump as adult
-    // > jail4 platform: megaflip, ADULT ground jump
-    //
-    // from kitchen roof:
-    // > top with chest: adult && hovers/scarecrow&hookshot/longshot/megaflip |
-    //                   child && (ground jump OR hard jump trick thing) && megaflip
-    // > above jail 1: logic_gf_break_room_jump as adult (no idea how to do this lol), megaflip, hover boots
-    //
-    // from jail4 platform:
-    // > middle floor: true
-    // > skulltula: longshot only
-    //
-    // from top w/chest:
-    // > kitchen roof: true
-    // > above jail 1: true
-    // > jail4 platform: true
-    //
-    // from above links jail:
-    // > top with chest: longshot
-    // > above jail 1: true
-    //
-    // ====== INTERIORS ======
-    //
-    // ALL BELOW REGIONS: savewarp goes to jail1
-    //
-    // jail1: main
-    // jail2: main/middle floor
-    // jail3: main/middle floor
-    // jail4: jail4 platform
-    //
-    // kitchen hallway (lower part):
-    // > front/rear/pots: membership/bow/hookshot/logic to pass guards
-    //
-    // kitchen front/rear (the two ramps)
-    // > rear/front: membership/bow/hookshot/hovers/logic
-    // > hallway: membership/bow/hookshot/logic
-    // > pots: boomerang
-    //
-    // top floor bottom:
-    // > bottom entrance: true
-    // > top floor top: hookshot
-    // > CHECK POT LOGIC: it's card/hookshot/bow OR boomerang/sticks or sword
-    // > CHECK CRATE LOGIC: it's card/bow/hookshot/sticks/kokiri sword (but we know that adult can get crate 1...)
-    //     - TO SNEAK: get by the wall's corner, wait for her to approach, then slash her quickly
-    //
-    // top floor top:
-    // > top entrance: true
-    // > bottom part: hookshot ONLY (no child access/stair case hover does NOT work)
-    //
 	"Gerudo Fortress": {
 		Abbreviation: "FORT",
 		MapGroup: MapGroups.DESERT,
@@ -3147,41 +3087,42 @@ let MapLocations = {
 		Regions: {
             main: {
                 Exits: {
+                    middleFloor: {
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.gfJumpToMiddleFloor ||
+                                (age === Age.ADULT && 
+                                    (Items.HOOKSHOT.currentUpgrade === 2 || Equipment.HOVER_BOOTS.playerHas)) ||
+                                Data.canMegaFlip(age);
+                        }
+                    },
+                    topOfKitchen: {
+                        Age: Age.ADULT,
+                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                    },
+                    aboveJail1: {
+                        // Can talk to gate guard to get jailed if you have membership card
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    aboveLinksJail: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.HOOKSHOT],
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.gfHookshotToAboveLinksJail;
+                        }
+                    },
                     backArea: {
                         CustomRequirement: function(age) {
                             return age === Age.CHILD || Data.areGerudoGuardsTame() 
                         }
                     },
-                    topOfKitchen: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) {
-                                return Data.areGerudoGuardsTame() ||
-                                    Settings.GlitchesToAllow.gfPassKitchenGuards ||
-                                    Settings.GlitchesToAllow.gfKitchenGuardsWithSword && Data.hasSwordWeapon(age);
-                            }
-                            return true;
-                        }
-                    },
-                    jail4Area: {
-                        CustomRequirement: function(age) {
-                            return age === Age.ADULT || Data.areGerudoGuardsTame() || Data.canMegaFlip(age);
-                        }
-                    },
-                    upperInteriors: {
-                        Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            //TODO thieves' hideout shuffle: This will make it repeatable to get jailed, so only HS would be needed
-                            return Items.HOOKSHOT.playerHas && !Data.areGerudoGuardsTame();
-                        }
-                    },
                     wastelandEntrance: {
                         CustomRequirement: function(age) {
-                            if ((age === Age.CHILD && Settings.GlitchesToAllow.gerudoGateSkipAsChild) || Data.areGerudoGuardsTame()) { return true; }
-                            return Settings.GlitchesToAllow.gerudoGateSkipAsAdult &&
-                                Items.HOOKSHOT.playerHas &&
-                                Equipment.HOVER_BOOTS.playerHas;
+                            return Data.areGerudoGuardsTame() ||
+                                (age === Age.CHILD && Settings.GlitchesToAllow.gerudoGateSkipAsChild);
                         }
                     },
+
                     "Gerudo Valley": {
                         OwExit: OwExits["Gerudo Fortress"]["Gerudo Valley"]
                     },
@@ -3202,7 +3143,6 @@ let MapLocations = {
                     "Bottom Right Door": {
                         OwExit: OwExits["Gerudo Fortress"]["Bottom Right Door"]
                     },
-                    //TODO: confirm this can go in this region (isn't ONLY possible from another region with certain items, etc)
                     "Right Door Above GTG": {
                         OwExit: OwExits["Gerudo Fortress"]["Right Door Above GTG"]
                     },
@@ -3211,50 +3151,9 @@ let MapLocations = {
                     },
                     "Song of Storms Grotto": {
                         OwExit: OwExits["Gerudo Fortress"]["Song of Storms Grotto"]
-                    },
-
-                    //TODO: MOVE THESE TO THE APPROPRIATE REGION - JUST TESTING FOR NOW!!!
-
-                    // middle platform, including vine doors
-                    "Middle Left Door": {
-                        OwExit: OwExits["Gerudo Fortress"]["Middle Left Door"]
-                    },
-                    "Vines Forward Door": {
-                        OwExit: OwExits["Gerudo Fortress"]["Vines Forward Door"]
-                    },
-                    "Vines Left Door": {
-                        OwExit: OwExits["Gerudo Fortress"]["Vines Left Door"]
-                    },
-
-                    // upper right area? no region made yet
-                    "Upper Kitchen Door": {
-                        OwExit: OwExits["Gerudo Fortress"]["Upper Kitchen Door"]
-                    },
-
-                    // jail 4 door area
-                    "Upper Jail Door": {
-                        OwExit: OwExits["Gerudo Fortress"]["Upper Jail Door"]
-                    },
-
-                    // above jail 1
-                    "Door Above Jail 1": {
-                        OwExit: OwExits["Gerudo Fortress"]["Door Above Jail 1"]
-                    },
-
-                    // above link's jail
-                    "Door Above Link's Jail": {
-                        OwExit: OwExits["Gerudo Fortress"]["Door Above Link's Jail"]
                     }
                 },
-
                 ItemLocations: {
-                    "Skulltula on Back Fortress Wall": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 203, y: 129 },
-                        Age: Age.ADULT,
-                        LongDescription: "Nighttime required. The skulltula is located on the wall near the entrance to jail 4 - see those instructions for how to get there.<br/><br/>If you don't have a long range way to kill it, you'll need to jumpslash it from the top and then circle back around and jump to claim the item."
-                    },
                     "Opened Gate": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 81, y: 98 },
@@ -3267,41 +3166,92 @@ let MapLocations = {
                     }
                 }
             },
-
-            topOfKitchen: {
-                ExcludeFromSpawnList: true,
+            middleFloor: {
                 Exits: {
-                    jail4Area: {},
-                    topOfFortress: {
+                    main: {},
+                    topOfKitchen: {
+                        // The jump as adult by the vines - no trick since it's really easy
+                        Age: Age.ADULT
+                    },
+                    jail4Door: {
                         CustomRequirement: function(age) {
-                            let canMegaFlip = Data.canMegaFlip(age);
-                            if (age === Age.CHILD) {
-                                return canMegaFlip && Data.canGroundJumpWithBomb(age);
-                            }
-
-                            if (Items.HOOKSHOT.currentUpgrade === 2 || Equipment.HOVER_BOOTS.playerHas) { return true; }
-                            return canMegaFlip || Data.canHookScarecrow(age);
+                            // Adult will have a route to go via top of kitchen, so don't worry about other methods
+                            return Data.canMegaFlip(age);
                         }
+                    },
+                    "Middle Left Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Middle Left Door"]
+                    },
+                    "Vines Forward Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Vines Forward Door"]
+                    },
+                    "Vines Left Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Vines Left Door"]
                     }
                 },
                 ItemLocations: {}
             },
+            topOfKitchen: {
+                Exits: {
+                    jail4Door: {},
+                    middleFloor: {},
+                    topOfFortress: {
+                        CustomRequirement: function(age) {
+                            let canMegaFlip = Data.canMegaFlip(age);
+                            if (age === Age.CHILD) {
+                                // There is another way up with a VERY awakward jump but this works for now
+                                return canMegaFlip && Data.canGroundJumpWithBomb(age);
+                            }
 
-            //TODO: the area with the Jail 4 door - maybe jail4Door?
-            jail4Area: {
-                ExcludeFromSpawnList: true,
-                Exits: {},
+                            return canMegaFlip || 
+                                Data.canHookScarecrow(age) ||
+                                Items.HOOKSHOT.currentUpgrade === 2 ||
+                                Equipment.HOVER_BOOTS.playerHas;
+                        }
+                    },
+                    aboveJail1: {
+                        // There is apparently a trick (logic_gf_break_room_jump) to do this with a precise jump as Adult
+                        // from near the skulltula platform, but no idea how to do it
+                        Age: Age.EITHER,
+                        CustomRequirement: function(age) {
+                            return Data.canMegaFlip(age) || 
+                                (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
+                        }
+                    },
+                    "Upper Kitchen Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Upper Kitchen Door"]
+                    }
+                },
+                ItemLocations: {
+                    // Obtainable as long as Link can get to the middle area, so this should be an okay place for it
+                    "Skulltula on Back Fortress Wall": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 203, y: 129 },
+                        Age: Age.ADULT,
+                        LongDescription: "The skulltula is located on the wall near the entrance to jail 4 - see those instructions for how to get there.<br/><br/>If you don't have a long range way to kill it, you'll need to jumpslash it from the top and then circle back around and jump to claim the item."
+                    }
+                }
+            },
+            jail4Door: {
+                Exits: {
+                    middleFloor: {},
+                    "Upper Jail Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Upper Jail Door"]
+                    }
+                },
                 ItemLocations: {}
             },
-
             topOfFortress: {
                 UseAdultAge: function() {
                     return !Settings.GlitchesToAllow.groundJump || !Settings.GlitchesToAllow.megaFlip;
                 },
                 ExcludeFromSpawnList: true,
                 Exits: {
-                    jail4Area: {},
-                    upperInteriors: {}
+                    jail4Door: {},
+                    middleFloor: {},
+                    topOfKitchen: {},
+                    aboveJail1: {}
                 },
                 ItemLocations: {
                     "Chest on the Top": {
@@ -3312,35 +3262,43 @@ let MapLocations = {
                     }
                 }
             },
-
-            //TODO: the area above jail1 - maybe just aboveJail1?
-            upperInteriors: {
-                UseAdultAge: function() {
-                    return !Settings.GlitchesToAllow.groundJump || !Settings.GlitchesToAllow.megaFlip;
+            aboveJail1: {
+                Exits: {
+                    main: {},
+                    "Door Above Jail 1": {
+                        OwExit: OwExits["Gerudo Fortress"]["Door Above Jail 1"]
+                    }
                 },
-                ExcludeFromSpawnList: true,
-                Exits: {},
-                ItemLocations: {
-
-                }
+                ItemLocations: {}
             },
-
-            //TODO: the logic that lets you even get here!
             aboveLinksJail: {
                 Exits: {
-                    //TODO
+                    main: {},
+                    aboveJail1: {},
+                    topOfFortress: {
+                        Age: Age.ADULT,
+                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                    },
+                    wastelandEntrance: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.HOOKSHOT, Equipment.HOVER_BOOTS],
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.gerudoGateSkipAsAdult;
+                        }
+                    },
+                    "Door Above Link's Jail": {
+                        OwExit: OwExits["Gerudo Fortress"]["Door Above Link's Jail"]
+                    }
                 },
                 ItemLocations: {
                     "Adult Crate Above Link's Jail": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 136, y: 68 },
                         Age: Age.ADULT,
-                        //RequiredItems: [Items.HOOKSHOT],
-                        LongDescription: "Note that this is ONLY the crate here as Adult! The Child version is always a heart piece that is not in logic.<br/><br/>Navigate to the upper room by either getting caught then jumping to there, or by dropping down from the top where the chest is. Stun the guards (can use your hookshot) and navigate down the long hallway. Hookshot the wooden pillar to pass the barrier. The crate is just ahead of you after the loading zone."
+                        LongDescription: "Note that this is ONLY the crate here as Adult! The Child version a freestanding heart piece that is not in logic.<br/><br/>Navigate to the upper room by either getting caught then jumping to there, or by dropping down from the top where the chest is. Stun the guards (can use your hookshot) and navigate down the long hallway. Hookshot the wooden pillar to pass the barrier. The crate is just ahead of you after the loading zone."
                     }
                 }
             },
-
             backArea: {
                 ExcludeFromSpawnList: true,
                 Exits: {
@@ -3380,7 +3338,6 @@ let MapLocations = {
                     }
                 }
             },
-
             wastelandEntrance: {
                 Exits: {
                     main: {

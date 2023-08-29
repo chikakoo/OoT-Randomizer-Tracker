@@ -1896,36 +1896,6 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "The door just to the left of Gerudo Training Grounds."
         },
-        "Middle Left Door": {
-            ExitRegion: "main",
-            Map: "Thieves' Hideout",
-            Region: "jail2",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
-            MapInfo: { x: 151, y: 142 },
-            Age: Age.EITHER,
-            LongDescription: "The door in the middle of the fortress where you can walk to the bottom of the vines."
-        },
-        "Vines Forward Door": {
-            ExitRegion: "main",
-            Map: "Thieves' Hideout",
-            Region: "jail3",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
-            MapInfo: { x: 165, y: 170 },
-            Age: Age.EITHER,
-            LongDescription: "This is the door straight ahead when you climb the vines on the middle floor of the fortress."
-        },
-        "Vines Left Door": {
-            ExitRegion: "main",
-            Map: "Thieves' Hideout",
-            Region: "kitchenTopLeft",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
-            MapInfo: { x: 168, y: 161 },
-            Age: Age.EITHER,
-            LongDescription: "This is the door to the left when you climb the vines on the middle floor of the fortress."
-        },
         "Right Door Above GTG": {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
@@ -1934,7 +1904,6 @@ let OwExits = {
             IsInterior: true,
             MapInfo: { x: 144, y: 189 },
             Age: Age.EITHER,
-            //TODO: check how feasible it is to sneak here with nothing as adult
             LongDescription: "The door to the right (the first one) in the area above Gerudo Training Grounds."
         },
         "Left Door Above GTG": {
@@ -1947,8 +1916,38 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "The door to the left (the second one) in the area above Gerudo Training Grounds."
         },
+        "Middle Left Door": {
+            ExitRegion: "middleFloor",
+            Map: "Thieves' Hideout",
+            Region: "jail2",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 151, y: 142 },
+            Age: Age.EITHER,
+            LongDescription: "The door in the middle of the fortress where you can walk to the bottom of the vines."
+        },
+        "Vines Forward Door": {
+            ExitRegion: "middleFloor",
+            Map: "Thieves' Hideout",
+            Region: "jail3",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 165, y: 170 },
+            Age: Age.EITHER,
+            LongDescription: "This is the door straight ahead when you climb the vines on the middle floor of the fortress."
+        },
+        "Vines Left Door": {
+            ExitRegion: "middleFloor",
+            Map: "Thieves' Hideout",
+            Region: "kitchenTopLeft",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 168, y: 161 },
+            Age: Age.EITHER,
+            LongDescription: "This is the door to the left when you climb the vines on the middle floor of the fortress."
+        },
         "Upper Kitchen Door": {
-            ExitRegion: "main",
+            ExitRegion: "topOfKitchen",
             Map: "Thieves' Hideout",
             Region: "kitchenTopRight",
             ItemGroup: ItemGroups.ENTRANCE,
@@ -1958,7 +1957,7 @@ let OwExits = {
             LongDescription: "This is the door on the top of the right side of the fortress, above the door to jail 4 and nearest to the skulltula. Adult can do a trick jump near the vines to get to this door from the middle level."
         },
         "Upper Jail Door": {
-            ExitRegion: "main",
+            ExitRegion: "jail4Door",
             Map: "Thieves' Hideout",
             Region: "jail4",
             ItemGroup: ItemGroups.ENTRANCE,
@@ -1968,7 +1967,7 @@ let OwExits = {
             LongDescription: "This door needs to be dropped down to from an upper area of the fortress. If not using entrance shuffle, you can get here from navigating around the kitchen's upper exit."
         },
         "Door Above Jail 1": {
-            ExitRegion: "main",
+            ExitRegion: "aboveJail1",
             Map: "Thieves' Hideout",
             Region: "topLower",
             ItemGroup: ItemGroups.ENTRANCE,
@@ -1978,7 +1977,7 @@ let OwExits = {
             LongDescription: "Can be reached from the top of Link's jail, from backflipping from the very top area, from using hover boots in the area by by upper kitchen exit, or from dropping down to it from the chest on top."
         },
         "Door Above Link's Jail": {
-            ExitRegion: "main",
+            ExitRegion: "aboveLinksJail",
             Map: "Thieves' Hideout",
             Region: "topUpper",
             ItemGroup: ItemGroups.ENTRANCE,
@@ -2026,7 +2025,7 @@ let OwExits = {
         "Jail 2 Left": {
             ExitRegion: "jail2",
             Map: "Gerudo Fortress",
-            Region: "main",
+            Region: "middleFloor",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Jail 2 Left",
@@ -2048,7 +2047,7 @@ let OwExits = {
         "Jail 3 Left": {
             ExitRegion: "jail3",
             Map: "Gerudo Fortress",
-            Region: "main",
+            Region: "middleFloor",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Jail 3 Left",
@@ -2070,7 +2069,7 @@ let OwExits = {
         "Jail 4 Entrance": {
             ExitRegion: "jail4",
             Map: "Gerudo Fortress",
-            Region: "main",
+            Region: "jail4Door",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Jail 4 Entrance",
@@ -2103,7 +2102,7 @@ let OwExits = {
         "Kitchen Top Left": {
             ExitRegion: "kitchenTopLeft",
             Map: "Gerudo Fortress",
-            Region: "main",
+            Region: "middleFloor",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Kitchen Top Left",
@@ -2114,7 +2113,7 @@ let OwExits = {
         "Kitchen Top Right": {
             ExitRegion: "kitchenTopRight",
             Map: "Gerudo Fortress",
-            Region: "main",
+            Region: "topOfKitchen",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Kitchen Top Right",
@@ -2125,7 +2124,7 @@ let OwExits = {
         "Top Room Lower": {
             ExitRegion: "topLower",
             Map: "Gerudo Fortress",
-            Region: "main",
+            Region: "aboveJail1",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Top Room Lower",
@@ -2136,7 +2135,7 @@ let OwExits = {
         "Top Room Upper": {
             ExitRegion: "topUpper",
             Map: "Gerudo Fortress",
-            Region: "main",
+            Region: "aboveLinksJail",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             IsInteriorExit: true,
             InteriorGroupName: "TH - Top Room Upper",

@@ -200,6 +200,8 @@ let Settings = {
 		eponaHover: false,
 		cuccoJump: false,
 		gvCrossBridgeWithHookshot: false,
+		gfJumpToMiddleFloor: false,
+		gfHookshotToAboveLinksJail: false,
 		gfPassKitchenGuards: false,
 		gfKitchenGuardsWithSword: false,
 		gfTopGuardsWithSword: false,
