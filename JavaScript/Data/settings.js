@@ -106,6 +106,7 @@ let Settings = {
 		medallionSkulltulaSetting: 50,
 		dungeonSetting: DungeonSettings.MIXED,
 		smallKeySetting: SmallKeySettings.SMALL_KEY_SANITY,
+		chestMinigameSmallKeySetting: SmallKeySettings.SMALL_KEY_SANITY,
 		scrubSanity: true,
 		shopSanity: true,
 		cowSanity: true,

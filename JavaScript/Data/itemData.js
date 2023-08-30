@@ -802,6 +802,13 @@ let Keys = {
 			return canSkipKeys ? 0 : 3;
 		},
 		mqTotalKeys: function() { return 3; }
+	},
+	TREASURE_CHEST_MINIGAME: {
+		name: "Treasure Chest Minigame",
+		totalKeys: function() { return 6; },
+		mqMinimumKeys: function() { return 6; },
+		mqTotalKeys: function() { return 6; },
+		noBossKey: true
 	}
 };
 
@@ -833,6 +840,12 @@ let getKeyCount = function(mapName) {
 			return Keys.THIEVES_HIDEOUT.keyCount || 0;
 		case "Training Grounds":
 			return Keys.GERUDO_TRAINING_GROUNDS.keyCount || 0;
+
+		case "Treasure Chest Minigame":
+			if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.KEYSY) {
+				return 99;
+			}
+			return Keys.TREASURE_CHEST_MINIGAME.keyCount || 0;
 		
 		default: return 0;
 	}

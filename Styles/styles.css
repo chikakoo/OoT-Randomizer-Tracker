@@ -348,9 +348,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 #smallKeyProgress {
+	height: 225px;
 	width: 25px;
 	top: 70px;
 	left: 217px;
+	flex-direction: column;
 }
 
 #bossKeyProgress {

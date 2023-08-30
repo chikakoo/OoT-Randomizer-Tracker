@@ -65,6 +65,7 @@ let SettingsPage = {
     	this._initializeRadioButton("startingAge", Settings.RandomizerSettings.startingAge, true);
         this._initializeRadioButton("dungeonSetting", Settings.RandomizerSettings.dungeonSetting);
         this._initializeRadioButton("smallKeySetting", Settings.RandomizerSettings.smallKeySetting);
+        this._initializeRadioButton("chestMinigameSmallKeySetting", Settings.RandomizerSettings.chestMinigameSmallKeySetting);
         this._initializeRadioButton("skulltulaSetting", Settings.RandomizerSettings.skulltulaSetting);
         this._initializeRadioButton("rupeeAndHeartSetting", Settings.RandomizerSettings.rupeeAndHeartSetting);
         this._initializeRadioButton("potSetting", Settings.RandomizerSettings.potSetting);

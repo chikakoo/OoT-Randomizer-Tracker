@@ -687,10 +687,162 @@ InteriorGroups = {
 	"Treasure Chest Minigame": {
 		tooltip: "The minigame where you probably want the Lens of Truth.",
 		buttons: {
-			"Treasure Chest Minigame Prize": {
+			"Salesman": {
+				icon: "Shop",
+				description: "Talk to the salesman and buy the item for 10 rupees.",
+				shouldNotDisplay: function() { 
+					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
+				}
+			},
+			"Room 1 Back Chest": {
+				icon: "Chest",
+				iconText: "1",
+				description: "The back chest in room 1.",
+				shouldNotDisplay: function() { 
+					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
+				},
+				canGet: function(age) {
+					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
+						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
+					}
+					return getKeyCount("Treasure Chest Minigame") >= 1;
+				}
+			},
+			"Room 1 Front Chest": {
+				icon: "Chest",
+				iconText: "1",
+				description: "The front chest in room 1.",
+				shouldNotDisplay: function() { 
+					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
+				},
+				canGet: function(age) {
+					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
+						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
+					}
+					return getKeyCount("Treasure Chest Minigame") >= 1;
+				}
+			},
+			"Room 2 Back Chest": {
+				icon: "Chest",
+				iconText: "2",
+				description: "The back chest in room 2.",
+				shouldNotDisplay: function() { 
+					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
+				},
+				canGet: function(age) {
+					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
+						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
+					}
+					return getKeyCount("Treasure Chest Minigame") >= 2;
+				}
+			},
+			"Room 2 Front Chest": {
+				icon: "Chest",
+				iconText: "2",
+				description: "The front chest in room 2.",
+				shouldNotDisplay: function() { 
+					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
+				},
+				canGet: function(age) {
+					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
+						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
+					}
+					return getKeyCount("Treasure Chest Minigame") >= 2;
+				}
+			},
+			"Room 3 Back Chest": {
+				icon: "Chest",
+				iconText: "3",
+				description: "The back chest in room 3.",
+				shouldNotDisplay: function() { 
+					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
+				},
+				canGet: function(age) {
+					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
+						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
+					}
+					return getKeyCount("Treasure Chest Minigame") >= 3;
+				}
+			},
+			"Room 3 Front Chest": {
+				icon: "Chest",
+				iconText: "3",
+				description: "The front chest in room 3.",
+				shouldNotDisplay: function() { 
+					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
+				},
+				canGet: function(age) {
+					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
+						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
+					}
+					return getKeyCount("Treasure Chest Minigame") >= 3;
+				}
+			},
+			"Room 4 Back Chest": {
+				icon: "Chest",
+				iconText: "4",
+				description: "The back chest in room 4.",
+				shouldNotDisplay: function() { 
+					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
+				},
+				canGet: function(age) {
+					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
+						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
+					}
+					return getKeyCount("Treasure Chest Minigame") >= 4;
+				}
+			},
+			"Room 4 Front Chest": {
+				icon: "Chest",
+				iconText: "4",
+				description: "The front chest in room 4.",
+				shouldNotDisplay: function() { 
+					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
+				},
+				canGet: function(age) {
+					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
+						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
+					}
+					return getKeyCount("Treasure Chest Minigame") >= 4;
+				}
+			},
+			"Room 5 Back Chest": {
+				icon: "Chest",
+				iconText: "5",
+				description: "The back chest in room 5.",
+				shouldNotDisplay: function() { 
+					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
+				},
+				canGet: function(age) {
+					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
+						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
+					}
+					return getKeyCount("Treasure Chest Minigame") >= 5;
+				}
+			},
+			"Room 5 Front Chest": {
+				icon: "Chest",
+				iconText: "5",
+				description: "The front chest in room 5.",
+				shouldNotDisplay: function() { 
+					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
+				},
+				canGet: function(age) {
+					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
+						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
+					}
+					return getKeyCount("Treasure Chest Minigame") >= 5;
+				}
+			},
+			"Prize": {
+				icon: "Chest",
+				iconText: "♥",
 				description: "This is the prize for completing the minigame.",
 				canGet: function(age) {
-					return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
+					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
+						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
+					}
+					return getKeyCount("Treasure Chest Minigame") >= 6;
 				}
 			}
 		}

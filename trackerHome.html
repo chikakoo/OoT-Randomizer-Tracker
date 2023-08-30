@@ -460,6 +460,18 @@
 								<input type="radio" name="smallKeySetting" value=2>Keysy
 							</label>
 						</div>
+						<div class="settings-radio-group" title="How the trasure chest minigame small keys are randomized.">
+							Chest Minigame Small Key Setting
+							<label onclick='SettingsPage.setOptionValueForRandomizer("chestMinigameSmallKeySetting", event)' title="The minigame behaves as normal.">
+								<input type="radio" name="chestMinigameSmallKeySetting" value=0>Vanilla
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("chestMinigameSmallKeySetting", event)' title="The small keys are shuffled outside the minigame, and the chests contain random items.">
+								<input type="radio" name="chestMinigameSmallKeySetting" value=1>Small Key Sanity
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("chestMinigameSmallKeySetting", event)' title="Small keys are removed and the chests are freely accessed, containing random items.">
+								<input type="radio" name="chestMinigameSmallKeySetting" value=2>Keysy
+							</label>
+						</div>
 						<div class="settings-radio-group" title="The max amount of skulltulas required to complete the game.">
 							Max Required Skulltula Tokens
 							<label onclick='SettingsPage.setOptionValueForRandomizer("maxRequiredTokens", event)' title="0">

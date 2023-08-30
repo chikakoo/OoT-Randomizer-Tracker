@@ -277,6 +277,13 @@ let ItemTracker = {
 		let smallKeyProgressDiv = document.getElementById("smallKeyProgress");
 		let _this = this;
 		Object.keys(Keys).forEach(function(key) {
+			// TODO: potentially something better than this hacky way of positioning this!
+			if (key === "TREASURE_CHEST_MINIGAME") {
+				let fillerDiv = dce("div");
+				fillerDiv.style = "height: 150px;";
+				smallKeyProgressDiv.appendChild(fillerDiv);
+			}
+
 			let smallKeyDiv = dce("div", "small-key no-keys");
 			let keyObject = Keys[key];
 
@@ -354,7 +361,8 @@ let ItemTracker = {
 		removeCssClass(smallKeyDiv, "all-keys");
 
 		let isThievesHideout = keyObject.name === "Thieves' Hideout";
-		let isMasterQuest = isThievesHideout 
+		let isTreasureChestMinigame = keyObject.name === "Treasure Chest Minigame";
+		let isMasterQuest = isThievesHideout || isTreasureChestMinigame 
 			? false
 			: MapLocations[keyObject.name].IsMasterQuest;
 
