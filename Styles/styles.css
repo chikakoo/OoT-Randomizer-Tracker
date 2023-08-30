@@ -32,10 +32,42 @@ body::-webkit-scrollbar-thumb {
 	background-color: gold;
 }
 
+#buttonControls {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#buttonControlsContainer {
+	display: flex;
+	flex-direction: row;
+	padding-right: 10px;
+}
+
+#buttonControlsContainer > div {
+	height: 32px;
+	width: 32px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	padding-right: 2px;
+	opacity: 0.75;
+}
+
+#buttonControlsContainer > div:hover {
+	opacity: 1;
+}
+
+#saveButton {
+	background-image: url("../Images/UI Icons/Save.png");
+}
+
+#loadButton {
+	background-image: url("../Images/UI Icons/Load.png");
+}
+
 #notesHeader {
 	color: white;
 	display: flex;
-	justify-content: space-between;
 }
 
 #notesHideCannotDoCheckbox {

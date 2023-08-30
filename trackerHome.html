@@ -39,6 +39,15 @@
 	<link rel="stylesheet" href="Styles/settingsPageStyles.css">
 </head>
 <body onload="onPageLoad()" oncontextmenu="return false">
+	<div id="buttonControls">
+		<div id="buttonControlsContainer">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div id="saveButton" title="Save" onclick="SaveAndLoad.saveJSON()"></div>
+			<div id="loadButton" title="Load" onclick="SaveAndLoad.loadJSON()"></div>
+		</div>
+	</div>
 	<div id="mainContainer">
 		<div id="locationContainer">
 			<div id="locationList"></div>

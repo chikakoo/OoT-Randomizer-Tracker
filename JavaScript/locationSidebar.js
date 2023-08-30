@@ -18,7 +18,6 @@ LocationSidebar = {
         optionsContainer.appendChild(this._createSettingsDiv());
 
         locationDiv.appendChild(optionsContainer);
-        locationDiv.appendChild(this._createSaveAndLoadDiv());
     
         this.refreshSelectedLocation();
     },
@@ -311,32 +310,6 @@ LocationSidebar = {
         if (container) {
             removeCssClass(container, "nodisp");
         }
-    },
-    
-    /**
-     * Creates the save and load div
-     */
-    _createSaveAndLoadDiv: function() {
-        let saveAndLoadDiv = dce("div", "location-item");
-        saveAndLoadDiv.id = "saveAndLoad";
-    
-        let saveDiv = dce("div");
-        saveDiv.id = "saveDiv";
-        saveDiv.innerText = "Save";
-        saveDiv.onclick = function() {
-            SaveAndLoad.saveJSON();
-        }
-        saveAndLoadDiv.appendChild(saveDiv);
-    
-        let loadDiv = dce("div");
-        loadDiv.id = "loadDiv";
-        loadDiv.innerText = "Load";
-        loadDiv.onclick = function() {
-            SaveAndLoad.loadJSON();
-        }
-        saveAndLoadDiv.appendChild(loadDiv);
-    
-        return saveAndLoadDiv;
     },
     
     /**
