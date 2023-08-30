@@ -17,6 +17,7 @@ let SpawnsPage = {
      * Creates the spawns page
      */
     display: function() {
+        LocationSidebar.updateSidebarLocation();
         LocationSidebar.displayContainer("spawnsContainer");
         _currentLocationName = "Spawns";
 

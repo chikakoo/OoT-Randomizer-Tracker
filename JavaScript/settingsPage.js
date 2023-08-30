@@ -32,6 +32,7 @@ let SettingsPage = {
     ],
 
     display: function() {
+        LocationSidebar.updateSidebarLocation();
         LocationSidebar.displayContainer("settingsContainer");
         _currentLocationName = "Settings";
         
