@@ -166,6 +166,27 @@ InteriorGroups = {
 		buttons: {},
 		overworldLink: OwExits["Windmill-Kak Potion"]["Potion Shop Back"]
 	},
+	"Granny's Potion Shop": {
+		tooltip: "The potion shop with the red carpet and the granny holding a cat.",
+		buttons: {
+			"Show Odd Mushroom to Granny": {
+				icon: "Odd Mushroom",
+				description: "Show Granny the Odd Mushroom to recieve an item.",
+				canGet: function(age) {
+					return AdultTradeItems.ODD_MUSHROOM.playerHas;
+				},
+				isAdultOnly: function() { return true; }
+			},
+			"Buy Blue Potion Item": {
+				icon: "Blue Potion",
+				description: "After showing the Odd Mushroom to Granny, you can buy this item for 200 rupees. After that, she will sell blue potions.",
+				canGet: function(age) {
+					return AdultTradeItems.ODD_MUSHROOM.playerHas && Equipment.WALLET.playerHas;
+				},
+				isAdultOnly: function() { return true; }
+			}
+		}
+	},
 	"Happy Mask Shop": {
 		_isMaskShopOpen: function() {
 			// If kakariko gate is NOT vanilla, we only need Zelda's Letter, otherwise we must show the guard the letter as normal
@@ -387,6 +408,14 @@ InteriorGroups = {
 				},
 				isAdultOnly: function() { return true; }
 			},
+			"Show Eyeball Frog to Scientist": {
+				icon: "Eyeball Frog",
+				description: "Show the Eyeball Frog to the scientist to receive an item.",
+				canGet: function(age) {
+					return AdultTradeItems.EYEBALL_FROG.playerHas;
+				},
+				isAdultOnly: function() { return true; }
+			}
 		}
 	},
 	"Market Guard House": {

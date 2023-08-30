@@ -248,6 +248,22 @@ let MapLocations = {
                         RequiredSongs: [Songs.SARIAS_SONG],
                         DifficultOcarinaItems: true
                     },
+                    "Show Cojiro to Grog": {
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 105, y: 168 },
+                        MapImageName: "Cojiro",
+                        Age: Age.ADULT,
+                        LongDescription: "Grog is the weird guy by the stump where the skull kid is as Child. Show him Cojiro to get an item.",
+                        RequiredItems: [AdultTradeItems.COJIRO]
+                    },
+                    "Show Odd Potion to Fado": {
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 105, y: 177 },
+                        MapImageName: "Odd Potion",
+                        Age: Age.ADULT,
+                        LongDescription: "Fado is the girl by the strump where the skill kid is as Child. Show her the Odd Potion to get an item.",
+                        RequiredItems: [AdultTradeItems.ODD_POTION]
+                    },
                     "Ocarina Memory Game": {
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 240, y: 186 },
@@ -273,6 +289,7 @@ let MapLocations = {
                     "Sell Skull Mask": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 88, y: 172 },
+                        MapImageName: "Skull Mask",
                         Age: Age.CHILD,
                         RequiredItems: [ChildTradeItems.SKULL_MASK],
                         RequiredSongs: [Songs.SARIAS_SONG],
@@ -656,6 +673,7 @@ let MapLocations = {
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 184, y: 145 },
                         Age: Age.CHILD,
+                        MapImageName: "Bunny Hood",
                         RequiredItems: [ChildTradeItems.BUNNY_HOOD],
                         RequiredMedallions: [
                             Medallions.KOKIRIS_EMERALD,
@@ -1123,6 +1141,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.GIFT,
                         Time: function() { return Time.DAY; },
                         MapInfo: { x: 215, y: 240 },
+                        MapImageName: "Pocket Egg Pocket Cucco",
                         Age: Age.ADULT,
                         LongDescription: "Talk to Anju after waking up Talon with the Pocket Cucco.",
                         CustomRequirement: function(age) {
@@ -1142,6 +1161,7 @@ let MapLocations = {
                     "Sell Keaton Mask": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 123, y: 41 },
+                        MapImageName: "Keaton Mask",
                         Age: Age.CHILD,
                         RequiredItems: [ChildTradeItems.KEATON_MASK],
                         LongDescription: "Talk to the guard while wearing the Keaton mask to sell it to him - this unlocks the Skull Mask.",
@@ -1352,6 +1372,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         Time: function() { return Time.DAY; },
                         MapInfo: { x: 184, y: 145 },
+                        MapImageName: "Spooky Mask",
                         Age: Age.CHILD,
                         RequiredItems: [ChildTradeItems.SPOOKY_MASK],
                         LongDescription: "Talk to the graveyard kid during the day while wearing the Spooky Mask to sell it to him - this unlocks the Bunny Hood.",
@@ -1738,12 +1759,29 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
-                    "Turn in Claim Check": {
+                    "Show Broken Sword to Biggoron": {
                         ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 238, y: 28 },
+                        MapInfo: { x: 248, y: 20 },
+                        MapImageName: "Broken Goron's Sword",
                         Age: Age.ADULT,
-                        LongDescription: "When you have the Claim Check, head up to the top of Death Mountain. Give it to Biggoron for your item.",
-                        RequiredItems: [AdultTradeItems.CLAIM_CHECK],
+                        LongDescription: "Show the Broken Goron's Sword to Biggoron at the summit to get an item.",
+                        RequiredItems: [AdultTradeItems.BROKEN_GORONS_SWORD]
+                    },
+                    "Show Eyedrops to Biggoron": {
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 243, y: 28 },
+                        MapImageName: "Eyedrops",
+                        Age: Age.ADULT,
+                        LongDescription: "Show the Eyedrops to Biggoron at the summit to get an item.",
+                        RequiredItems: [AdultTradeItems.EYEDROPS]
+                    },
+                    "Show Claim Check to Biggoron": {
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 238, y: 36 },
+                        MapImageName: "Claim Check",
+                        Age: Age.ADULT,
+                        LongDescription: "Show the Claim Check to Biggoron at the summit to get an item.",
+                        RequiredItems: [AdultTradeItems.CLAIM_CHECK]
                     },
                     "Red Rock on Upper Path": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -2507,11 +2545,11 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "At the top of the Domain, pay 20 rupees to play the diving minigame. Talk to the Zora after you win to get your prize."
                     },
-                    "Unfreeze King Zora": {
+                    "Thaw King Zora": {
                         ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 233, y: 46 },
+                        MapInfo: { x: 245, y: 48 },
                         Age: Age.ADULT,
-                        LongDescription: "Dump Blue Fire on the frozen King Zora to thaw him. Talk to him from the platform in front of him and he will give you an item.",
+                        LongDescription: "Dump Blue Fire on the frozen King Zora to thaw him. Talk to him from the platform in front of him and he will give you an item.<br/><br/>You can also use any item that link takes out above his head (or Nayru's Love) to thaw him. Backwalk up the stairs, then take out the item after the black loading zone. Turn around and he should be thawed.",
                         CustomRequirement: function(age) {
                             if (Data.canUseBlueFire(age)) { return true; }
                             if (!Settings.GlitchesToAllow.thawKingZoraWithNothing) { return false; }
@@ -2524,6 +2562,17 @@ let MapLocations = {
                                 Object.values(AdultTradeItems).some(item => item.playerHas) ||
                                 (Data.canEquipSwap(age) && Items.MAGIC_BEAN.playerHas) ||
                                 (Equipment.MAGIC.playerHas && Items.NAYRUS_LOVE.playerHas);
+                        }
+                    },
+                    "Show Prescription to King Zora": {
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 229, y: 48 },
+                        MapImageName: "Prescription",
+                        Age: Age.ADULT,
+                        LongDescription: "After thawing King Zora, show him the prescription to get an item.",
+                        RequiredItems: [AdultTradeItems.PRESCRIPTION],
+                        CustomRequirement: function(age) {
+                            return Data.itemLocationObtained("Zora's Domain", "main", "Thaw King Zora");
                         }
                     },
                     "Skulltula on Top of Waterfall": {
@@ -2544,7 +2593,8 @@ let MapLocations = {
                     },
                     "Move King Zora": {
                         ItemGroup: ItemGroups.NON_ITEM,
-                        MapInfo: { x: 233, y: 46 },
+                        MapInfo: { x: 232, y: 38 },
+                        MapImageName: "Ruto's Letter Ruto's Letter",
                         RequiredItems: [Items.RUTOS_LETTER],
                         Age: Age.CHILD,
                         LongDescription: "Show Ruto's letter to the king."
@@ -2981,6 +3031,14 @@ let MapLocations = {
                         CustomRequirement: function(age) {
                             return Data.canUseHammer(age) || Data.canWeirdShot(age);
                         }
+                    },
+                    "Show Poacher's Saw to Carpenter": {
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 135, y: 91 },
+                        MapImageName: "Poacher's Saw",
+                        Age: Age.ADULT,
+                        LongDescription: "Show the carpenter boss (in front of the tent) the Poacher's Saw to receive an item.",
+                        RequiredItems: [AdultTradeItems.POACHERS_SAW]
                     },
                     "Skulltula on Pillar": {
                         ItemGroup: ItemGroups.SKULLTULA,
