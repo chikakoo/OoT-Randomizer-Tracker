@@ -205,7 +205,16 @@ let DropdownUI = {
         let locationChoices = EntranceUI.getFilteredGroupNames(interiorOrGrottoObject, defaultOption, itemLocation);
         locationChoices.unshift("<no selection>");
 
-        this._fillStringDropdown(locDropdown, locationChoices, defaultOption);
+        let dropdownOptions = [];
+        locationChoices.forEach(groupName => {
+            let group = interiorOrGrottoObject[groupName];
+            let tooltip = group ? group.tooltip : "";
+            dropdownOptions.push({
+                option: groupName, 
+                tooltip: tooltip
+            });
+        });
+        this._fillStringDropdown(locDropdown, dropdownOptions, defaultOption);
 
         locDropdown.onclick = function(event) { event.stopPropagation(); }
         locDropdown.onchange = this.onInteriorOrGrottoDropdownChange.bind(this, interiorOrGrottoObject, itemLocation);
@@ -262,14 +271,23 @@ let DropdownUI = {
     /**
      * Adds a list of options to the given dropdown element
      * @param dropdown - The dropdown element
-     * @param options - The options to put into the dropdown
+     * @param options - The options to put into the dropdown - an array of objects containing:
+     * { option: "string value", tooltip: "string tooltip" } OR just a string of options
      * @param defaultValue - The value to select by default
      */
     _fillStringDropdown: function(dropdown, options, defaultValue) {
-        options.forEach(function(option) {
+        options.forEach(function(optionObject) {
+            let option = optionObject.option
+                ? optionObject.option
+                : optionObject;
+
             let optionElement = dce("option");
             optionElement.value = option;
             optionElement.innerText = option;
+
+            if (optionObject.tooltip) {
+                optionElement.title = optionObject.tooltip;
+            }
             
             if (option === defaultValue) {
                 optionElement.selected = "selected";
