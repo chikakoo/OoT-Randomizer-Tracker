@@ -3,6 +3,7 @@ NotesPage = {
 	 * Displays the notes page, which collects all the notes into one place for easy viewing
 	 */
 	display: function() {
+		LocationSidebar.updateSidebarLocation();
 		LocationSidebar.displayContainer("notesContainer");
 		_currentLocationName = "Notes";
 		

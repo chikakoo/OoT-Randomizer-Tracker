@@ -57,6 +57,18 @@ body::-webkit-scrollbar-thumb {
 	opacity: 1;
 }
 
+#notesButton {
+	background-image: url("../Images/UI Icons/Notes Page.png");
+}
+
+#spawnsButton {
+	background-image: url("../Images/UI Icons/Spawns Page.png");
+}
+
+#settingsButton {
+	background-image: url("../Images/UI Icons/Settings Page.png");
+}
+
 #saveButton {
 	background-image: url("../Images/UI Icons/Save.png");
 }
@@ -154,17 +166,6 @@ body::-webkit-scrollbar-thumb {
 	margin-right: 10px;
 	border: 2px solid gold;
 	position: fixed;
-}
-
-.options-container {
-	display: flex;
-	flex-direction: row;
-}
-
-.options-container > div {
-	flex: 1 1 0;
-	display: inline-block;
-	text-align: center;
 }
 
 .location-item {

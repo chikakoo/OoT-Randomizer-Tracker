@@ -1,13 +1,3 @@
-#spawnsButton {
-    background-color: DarkGray;
-    color: black;
-    font-weight: bolder;
-}
-
-#spawnsButton:hover {
-    background-color: WhiteSmoke;
-}
-
 #spawnsContainer {
     background-color: #092953;
     width: 100%;
@@ -17,11 +7,6 @@
 
 #spawnsContainer.location-smaller {
 	margin-left: 115px;
-}
-
-#spawnsButton.selected-location {
-    background-color: black;
-    color: gold;
 }
 
 .spawns-group {

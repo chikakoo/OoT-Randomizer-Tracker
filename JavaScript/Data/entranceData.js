@@ -161,7 +161,7 @@ InteriorGroups = {
 		overworldLink: OwExits["Windmill-Kak Potion"]["Potion Shop Front"]
 	},
 	"Potion Shop Back": {
-		tooltip: "The Kakariko potion shop - this is the back entrance (farthest from the camera). Mark the front entrance for the shop itself.",
+		tooltip: "The Kakariko potion shop - this is the back entrance (farthest from the camera).",
 		neverHide: true,
 		buttons: {},
 		overworldLink: OwExits["Windmill-Kak Potion"]["Potion Shop Back"]

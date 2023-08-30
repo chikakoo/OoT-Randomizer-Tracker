@@ -1,13 +1,3 @@
-#settingsButton {
-    background-color: Gray;
-    color: black;
-    font-weight: bolder;
-}
-
-#settingsButton:hover {
-    background-color: WhiteSmoke;
-}
-
 #settingsContainer {
     display: flex;
     background-color: #092953;
@@ -22,11 +12,6 @@
 
 #settingsContainer > div > span:hover {
     color: orangered;
-}
-
-#settingsButton.selected-location {
-    background-color: black;
-    color: gold;
 }
 
 #randomizerSettingsContainer {

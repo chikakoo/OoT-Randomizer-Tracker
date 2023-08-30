@@ -41,9 +41,10 @@
 <body onload="onPageLoad()" oncontextmenu="return false">
 	<div id="buttonControls">
 		<div id="buttonControlsContainer">
-			<div>1</div>
-			<div>2</div>
-			<div>3</div>
+			<div id="notesButton" title="Open Notes Page" onclick="NotesPage.display()"></div>
+			<div id="spawnsButton" title="Open Spawns Page" onclick="SpawnsPage.display()"></div>
+			<div id="settingsButton" title="Open Settings Page" onclick="SettingsPage.display()"></div>
+			<div></div>
 			<div id="saveButton" title="Save" onclick="SaveAndLoad.saveJSON()"></div>
 			<div id="loadButton" title="Load" onclick="SaveAndLoad.loadJSON()"></div>
 		</div>

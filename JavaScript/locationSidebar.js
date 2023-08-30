@@ -11,13 +11,6 @@ LocationSidebar = {
             let currentLocationDiv = _this._createLocationDiv(location);
             locationDiv.appendChild(currentLocationDiv);
         });
-
-        let optionsContainer = dce("div", "options-container");
-        optionsContainer.appendChild(this._createNotesDisplayDiv());
-        optionsContainer.appendChild(this._createSpawnsDiv());
-        optionsContainer.appendChild(this._createSettingsDiv());
-
-        locationDiv.appendChild(optionsContainer);
     
         this.refreshSelectedLocation();
     },
@@ -227,72 +220,6 @@ LocationSidebar = {
     },
 
     /**
-     * Creates the notes page div
-     */
-    _createNotesDisplayDiv: function() {
-        let notesDiv = dce("div", "location-item");
-        notesDiv.id = "notesButton";
-        notesDiv.innerText = _locationSmaller ? "NT" : "Notes";
-        notesDiv.onclick = function() {
-            if (LocationSidebar.isLocationAMap()) {
-                let selectedId = `location-item-${_currentLocationName}`;
-                let selectedDiv = document.getElementById(selectedId);
-                let backgroundColor = Data.getColorFromLocationName(_currentLocationName);
-                selectedDiv.style.backgroundColor = backgroundColor
-                removeCssClass(selectedDiv, "selected-location");
-            }
-            
-            NotesPage.display();
-            addCssClass(notesDiv, "selected-location");
-        }
-        return notesDiv;
-    },
-
-    /**
-     * Create the div for the spawns page
-     */
-    _createSpawnsDiv: function() {
-        let spawnsDiv = dce("div", "location-item");
-        spawnsDiv.id = "spawnsButton";
-        spawnsDiv.innerText = _locationSmaller ? "SPN" : "Spawns";
-        spawnsDiv.onclick = function() {
-            if (LocationSidebar.isLocationAMap()) {
-                let selectedId = `location-item-${_currentLocationName}`;
-                let selectedDiv = document.getElementById(selectedId);
-                let backgroundColor = Data.getColorFromLocationName(_currentLocationName);
-                selectedDiv.style.backgroundColor = backgroundColor
-                removeCssClass(selectedDiv, "selected-location");
-            }
-
-            SpawnsPage.display();
-            addCssClass(spawnsDiv, "selected-location");
-        }
-        return spawnsDiv;
-    },
-    
-    /**
-     * Creates the settings page div
-     */
-    _createSettingsDiv: function() {
-        let settingsDiv = dce("div", "location-item");
-        settingsDiv.id = "settingsButton";
-        settingsDiv.innerText = _locationSmaller ? "SET" : "Settings";
-        settingsDiv.onclick = function() {
-            if (LocationSidebar.isLocationAMap()) {
-                let selectedId = `location-item-${_currentLocationName}`;
-                let selectedDiv = document.getElementById(selectedId);
-                let backgroundColor = Data.getColorFromLocationName(_currentLocationName);
-                selectedDiv.style.backgroundColor = backgroundColor
-                removeCssClass(selectedDiv, "selected-location");
-            }
-            
-            SettingsPage.display();
-            addCssClass(settingsDiv, "selected-location");
-        }
-        return settingsDiv;
-    },
-
-    /**
      * Displays the given container id and hides the rest
      * Valid IDs are: rightContainer, notesContainer, spawnsContainer, settingsContainer
      */
@@ -322,5 +249,18 @@ LocationSidebar = {
         }
 
         return locationName !== "" && locationName !== "Settings" && locationName !== "Notes" && locationName !== "Spawns";
+    },
+
+    /**
+     * Called when a new location is clicked - including settings/notes/etc so that CSS is updated properly
+     */
+    updateSidebarLocation: function() {
+		if (LocationSidebar.isLocationAMap()) {
+			let selectedId = `location-item-${_currentLocationName}`;
+			let selectedDiv = document.getElementById(selectedId);
+			let backgroundColor = Data.getColorFromLocationName(_currentLocationName);
+			selectedDiv.style.backgroundColor = backgroundColor;
+			removeCssClass(selectedDiv, "selected-location");
+		}
     }
 };
