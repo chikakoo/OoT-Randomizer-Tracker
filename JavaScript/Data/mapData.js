@@ -1115,9 +1115,19 @@ let MapLocations = {
                     "Gift From Anju": {
                         ItemGroup: ItemGroups.GIFT,
                         Time: function() { return Time.DAY; },
-                        MapInfo: { x: 210, y: 240 },
+                        MapInfo: { x: 205, y: 240 },
                         Age: Age.ADULT,
                         LongDescription: "Simply talk to Anju (the cucco lady) as adult to get this."
+                    },
+                    "Anju After Waking Talon": {
+                        ItemGroup: ItemGroups.GIFT,
+                        Time: function() { return Time.DAY; },
+                        MapInfo: { x: 215, y: 240 },
+                        Age: Age.ADULT,
+                        LongDescription: "Talk to Anju after waking up Talon with the Pocket Cucco.",
+                        CustomRequirement: function(age) {
+                            return this.wokeUpTalon;
+                        }
                     },
                     "Show Guard Letter": {
                         ItemGroup: ItemGroups.NON_ITEM,

@@ -35,7 +35,7 @@ EntranceData = {
 			}
 		});
 	}
-}
+},
 
 /**
  * Data for the interior buttons to display under entrances
@@ -919,6 +919,23 @@ InteriorGroups = {
 				icon: "Pot",
 				itemGroup: ItemGroups.POT,
 				description: "This pot is through the door upstairs and to the left."
+			}
+		}
+	},
+	"Talon's House Kakariko": {
+		tooltip: "Talon's House in Kakariko - as Child, the room has one woman in it by a stove, with 2 beds next to her.",
+		buttons: {
+			"Wake Up Talon": {
+				icon: "Pocket Cucco",
+				description: "Use the Pocket Cucco next to talon to wake him him. You must then go to Anju to get your reward.",
+				canGet: function(age) {
+					return AdultTradeItems.POCKET_EGG.playerHas;
+				},
+				isAdultOnly: function() { return true; },
+				postClick: function(isCompleted) {
+					// Set an item location-specific variable here so that the player knows they need to talk to Anju next
+					MapLocations["Kakariko Village"].Regions.main.ItemLocations["Anju After Waking Talon"].wokeUpTalon = isCompleted;
+				}
 			}
 		}
 	},

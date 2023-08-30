@@ -442,6 +442,8 @@ let SaveAndLoad = {
                 if (loadedOwExitData.OverrideObtainableAdult) {
                     exitingExitData.OverrideObtainableAdult = loadedOwExitData.OverrideObtainableAdult;
                 }
+
+                EntranceData.runPostClicks(exitingExitData);
             });
         });
     }
