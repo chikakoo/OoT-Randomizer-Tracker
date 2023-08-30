@@ -110,6 +110,7 @@ let Settings = {
 		scrubSanity: true,
 		shopSanity: true,
 		cowSanity: true,
+		shuffleHyruleLoach: true,
 		shuffleCarpetAndMedigoron: true,
 		shuffleAllFrogSongs: true,
 		bombchusInLogic: true,

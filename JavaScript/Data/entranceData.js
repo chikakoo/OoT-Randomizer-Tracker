@@ -660,6 +660,12 @@ InteriorGroups = {
 				description: "The prize you can get as adult.",
 				tag: "adult",
 				isAdultOnly: function() { return true; }
+			},
+			"Hyrule Loach": {
+				description: "The Hyrule Loach. First, find the sinking lure in the fishing pond. Recommended to choose the easier option in the randomizer so it always spawns. Otherwise, it is here 1/4 attempts. It's usually by the lilypads.",
+				shouldNotDisplay: function() {
+					return !Settings.RandomizerSettings.shuffleHyruleLoach;
+				}
 			}
 		}
 	},
