@@ -13,6 +13,12 @@ let Time = {
 	NIGHT_CHILD: 5
 };
 
+let OpenKakarikoSettings  = {
+	VANILLA: 0,
+	OPEN_WITH_ZELDAS_LETTER: 1,
+	OPEN: 2
+};
+
 let OpenZorasFountainSettings = {
 	VANILLA: 0,
 	ADULT: 1,
@@ -92,8 +98,8 @@ let Settings = {
 		openForest: true,
 		closedDeku: false,
 		openDoorOfTime: true,
-		openKakariko: true,
 		autoPlantBeans: false,
+		openKakariko: OpenKakarikoSettings.VANILLA,
 		openZorasFountain: OpenZorasFountainSettings.VANILLA,
 		
 		// Sanity and logic changes

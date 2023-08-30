@@ -167,48 +167,89 @@ InteriorGroups = {
 		overworldLink: OwExits["Windmill-Kak Potion"]["Potion Shop Back"]
 	},
 	"Happy Mask Shop": {
+		_isMaskShopOpen: function() {
+			// If kakariko gate is NOT vanilla, we only need Zelda's Letter, otherwise we must show the guard the letter as normal
+			return (Settings.RandomizerSettings.openKakariko !== OpenKakarikoSettings.VANILLA && ChildTradeItems.ZELDAS_LETTER.playerHas) || 
+				Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter");
+		},
+		_canBuyMaskOfTruth: function() {
+			return this._isMaskShopOpen() && 
+				Data.itemLocationObtained("Kakariko Village", "main", "Sell Keaton Mask") &&
+				Data.itemLocationObtained("Lost Woods", "firstHalf", "Sell Skull Mask") &&
+				Data.itemLocationObtained("Graveyard", "main", "Sell Spooky Mask") &&
+				Data.itemLocationObtained("Hyrule Field", "main", "Sell Bunny Hood");
+		},
 		tooltip: "The Happy Mask Shop",
 		buttons: {
 			"Borrow Keaton Mask": {
-				itemLocaton: "Borrow Keaton Mask",
+				itemLocation: "Borrow Keaton Mask",
 				tag: "keaton",
-				description: "After showing the Kakariko Village guard Zelda's Letter, head to the mask shop to borrow this mask.",
+				description: "After showing the Kakariko Village guard Zelda's Letter (or having the letter when the gate is opened), you can borrow this mask.",
 				canGet: function(age) {
-					// TODO: with the update, this will change to whether you's actually visited Zelda, not whether you have the letter!
-					return (Settings.RandomizerSettings.openKakariko && ChildTradeItems.ZELDAS_LETTER.playerHas) || Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter");
+					return InteriorGroups["Happy Mask Shop"]._isMaskShopOpen();
 				}
 			},
 			"Borrow Skull Mask": {
-				itemLocaton: "Borrow Skull Mask",
+				itemLocation: "Borrow Skull Mask",
 				tag: "skull",
-				description: "After selling the Keaton Mask to the Kakariko Guard, head to the mask shop to borrow this mask.",
+				description: "After selling the Keaton Mask to the Kakariko Guard, you can borrow this mask.",
 				canGet: function(age) {
-					return Data.itemLocationObtained("Kakariko Village", "main", "Sell Keaton Mask");
+					return InteriorGroups["Happy Mask Shop"]._isMaskShopOpen() &&
+						Data.itemLocationObtained("Kakariko Village", "main", "Sell Keaton Mask");
 				}
 			},
 			"Borrow Spooky Mask": {
-				itemLocaton: "Borrow Spooky Mask",
+				itemLocation: "Borrow Spooky Mask",
 				tag: "spooky",
-				description: "After selling the Skull Mask to the Skull Kid in Lost Woods, head to the mask shop to borrow this mask.",
+				description: "After selling the Skull Mask to the Skull Kid in Lost Woods, you can borrow this mask.",
 				canGet: function(age) {
-					return Data.itemLocationObtained("Lost Woods", "firstHalf", "Sell Skull Mask");
+					return InteriorGroups["Happy Mask Shop"]._isMaskShopOpen() &&
+						Data.itemLocationObtained("Lost Woods", "firstHalf", "Sell Skull Mask");
 				}
 			},
 			"Borrow Bunny Hood": {
-				itemLocaton: "Borrow Bunny Hood",
+				itemLocation: "Borrow Bunny Hood",
 				tag: "bunny",
-				description: "After selling the Spooky Mask to the graveyard kid, head to the mask shop to borrow this mask.",
+				description: "After selling the Spooky Mask to the graveyard kid, you can borrow this mask.",
 				canGet: function(age) {
-					return Data.itemLocationObtained("Graveyard", "main", "Sell Spooky Mask");
+					return InteriorGroups["Happy Mask Shop"]._isMaskShopOpen() &&
+						Data.itemLocationObtained("Graveyard", "main", "Sell Spooky Mask");
 				}
 			},
 			"Borrow Mask of Truth": {
 				icon: "Mask of Truth",
 				tag: "truth",
-				itemLocaton: "Borrow Mask of Truth",
-				description: "After selling the Bunny Hood to the running guy in Hyrule Field, head to the mask shop to borrow this mask.",
+				itemLocation: "Borrow Mask of Truth",
+				description: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
 				canGet: function(age) {
-					return Data.itemLocationObtained("Hyrule Field", "main", "Sell Bunny Hood");
+					return InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth();
+				}
+			},
+			"Borrow Goron Mask": {
+				icon: "Goron Mask",
+				tag: "truth",
+				itemLocation: "Borrow Goron Mask",
+				description: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
+				canGet: function(age) {
+					return InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth();
+				}
+			},
+			"Borrow Zora Mask": {
+				icon: "Zora Mask",
+				tag: "truth",
+				itemLocation: "Borrow Zora Mask",
+				description: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
+				canGet: function(age) {
+					return InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth();
+				}
+			},
+			"Borrow Gerudo Mask": {
+				icon: "Gerudo Mask",
+				tag: "truth",
+				itemLocation: "Borrow Gerudo Mask",
+				description: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
+				canGet: function(age) {
+					return InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth();
 				}
 			}
 		}

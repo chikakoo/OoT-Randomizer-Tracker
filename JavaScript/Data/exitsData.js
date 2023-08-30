@@ -856,7 +856,7 @@ let OwExits = {
             LongDescription: "This is the entrance to the graveyard."
         },
         "Death Mountain Trail": {
-            ExitRegion: "main",
+            ExitRegion: "beyondGate",
             Map: "Death Mountain Trail",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,

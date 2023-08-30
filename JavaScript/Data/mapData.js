@@ -1022,9 +1022,18 @@ let MapLocations = {
                 Exits: {
                     beyondGate: {
                         CustomRequirement: function(age) {
-                            return age === Age.ADULT || 
-                                Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter") || 
-                                Settings.RandomizerSettings.openKakariko;
+                            if (age === Age.ADULT) {
+                                return true;
+                            }
+
+                            switch(Settings.RandomizerSettings.openKakariko) {
+                                case OpenKakarikoSettings.VANILLA:
+                                    return Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter");
+                                case OpenKakarikoSettings.OPEN_WITH_ZELDAS_LETTER: 
+                                    return ChildTradeItems.ZELDAS_LETTER.playerHas;
+                                default: // OPEN case
+                                    return true;
+                            }
                         }
                     },
                     "Hyrule Field": {
@@ -1113,7 +1122,7 @@ let MapLocations = {
                     "Show Guard Letter": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         RequiredToAppear: function() {
-                            return !Settings.RandomizerSettings.openKakariko;
+                            return Settings.RandomizerSettings.openKakariko === OpenKakarikoSettings.VANILLA;
                         },
                         MapInfo: { x: 107, y: 41 },
                         Age: Age.CHILD,
@@ -2417,7 +2426,7 @@ let MapLocations = {
 
                     "Zora's Domain": {
                         OwExit: OwExits["Zora's River"]["Zora's Domain"]
-                    },
+                    }
                 },
                 ItemLocations: {}
             }
