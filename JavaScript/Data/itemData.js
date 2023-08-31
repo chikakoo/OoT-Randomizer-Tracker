@@ -359,10 +359,6 @@ let ShopItemDictionary = {
 	"megatonhammer": "Megaton Hammer.png",
 	"hammer": "Megaton Hammer.png",
 	
-	"weirdegg": "Mask Slot Weird Egg.png",
-	"pocketegg": "Mask Slot Weird Egg.png",
-	"egg": "Mask Slot Weird Egg.png",
-	
 	"din'sfire": "Din's Fire.png",
 	"dinsfire": "Din's Fire.png",
 	"din's": "Din's Fire.png",
@@ -385,7 +381,73 @@ let ShopItemDictionary = {
 	"wind": "Farore's Wind.png",
 	"fw": "Farore's Wind.png",
 	
-	// Trade sequence items - TODO potentially - fill in the rest of these
+	// Child trade sequence items
+	"weirdegg": "Weird Egg Weird Egg.png",
+	"weird": "Weird Egg Weird Egg.png",
+	"egg": "Weird Egg Weird Egg.png",
+
+	"zeldasletter": "Zelda's Letter.png",
+
+	"keatonmask": "Keaton Mask.png",
+	"keaton": "Keaton Mask.png",
+
+	"keatonmask": "Keaton Mask.png",
+	"keaton": "Keaton Mask.png",
+
+	"skullmask": "Skull Mask.png",
+	"skull": "Skull Mask.png",
+
+	"spookymask": "Spooky Mask.png",
+	"spooky": "Spooky Mask.png",
+
+	"bunnyhood": "Bunny Hood.png",
+	"bunny": "Bunny Hood.png",
+
+	"maskoftruth": "Mask of Truth.png",
+	"truth": "Mask of Truth.png",
+
+	"goronmask": "Entrance Groups/Button - Goron Mask.png",
+	"goron": "Entrance Groups/Button - Goron Mask.png",
+
+	"zoramask": "Entrance Groups/Button - Zora Mask.png",
+	"zora": "Entrance Groups/Button - Zora Mask.png",
+
+	"gerudomask": "Entrance Groups/Button - Gerudo Mask.png",
+	"gerudo": "Entrance Groups/Button - Gerudo Mask.png",
+
+	// Adult trade sequence items
+	"pocketegg": "Pocket Egg Pocket Egg.png",
+	"pocket": "Pocket Egg Pocket Egg.png",
+
+	"cojiro": "Cojiro.png",
+
+	"oddmushroom": "Odd Mushroom.png",
+	"mushroom": "Odd Mushroom.png",
+
+	"oddpotion": "Odd Potion.png",
+	"potion": "Odd Potion.png",
+
+	"poacherssaw": "Poacher's Saw.png",
+	"poachersaw": "Poacher's Saw.png",
+	"poacher": "Poacher's Saw.png",
+	"saw": "Poacher's Saw.png",
+
+	"brokengoronssword": "Broken Goron's Sword.png",
+	"brokengoronsword": "Broken Goron's Sword.png",
+	"brokensword": "Broken Goron's Sword.png",
+	"sword": "Broken Goron's Sword.png",
+
+	"prescription": "Prescription.png",
+	"perscription": "Prescription.png",
+
+	"eyeballfrog": "Eyeball Frog.png",
+	"speedfrog": "Eyeball Frog.png",
+	"frog": "Eyeball Frog.png",
+	"eyeball": "Eyeball Frog.png",
+
+	"eyedrops": "Eyedrops.png",
+	"eyedrop": "Eyedrops.png",
+
 	"claimcheck": "Claim Check.png",
 	"claim": "Claim Check.png",
 	"check": "Claim Check.png",
@@ -396,7 +458,6 @@ let ShopItemDictionary = {
 	
 	"redpotion": "Red Potion.png",
 	"redpot": "Red Potion.png",
-	"potion": "Red Potion.png",
 	"pot": "Red Potion.png",
 	"bottlewithredpotion": "Red Potion.png",
 	"greenpotion": "Green Potion.png",
