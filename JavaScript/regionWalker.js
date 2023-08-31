@@ -283,27 +283,27 @@ RegionWalker = {
     _setUpSeedsForWarpSongs: function(age) {
         if (!Data.canPlaySongs()) { return; }
 
-        if (Songs.MINUET_OF_FOREST.playerHas) {
+        if (Songs.MINUET_OF_FOREST.playerHas && ItemData.hasAllSongNotes(Songs.MINUET_OF_FOREST)) {
             this._addWarpLocationForSong(age, Songs.MINUET_OF_FOREST);
         } 
         
-        if (Songs.BOLERO_OF_FIRE.playerHas) {
+        if (Songs.BOLERO_OF_FIRE.playerHas && ItemData.hasAllSongNotes(Songs.BOLERO_OF_FIRE)) {
             this._addWarpLocationForSong(age, Songs.BOLERO_OF_FIRE);
         } 
         
-        if (Songs.SERENADE_OF_WATER.playerHas) {
+        if (Songs.SERENADE_OF_WATER.playerHas && ItemData.hasAllSongNotes(Songs.SERENADE_OF_WATER)) {
             this._addWarpLocationForSong(age, Songs.SERENADE_OF_WATER);
         } 
         
-        if (Songs.NOCTURNE_OF_SHADOW.playerHas) {
+        if (Songs.NOCTURNE_OF_SHADOW.playerHas && ItemData.hasAllSongNotes(Songs.NOCTURNE_OF_SHADOW)) {
             this._addWarpLocationForSong(age, Songs.NOCTURNE_OF_SHADOW);
         } 
         
-        if (Songs.REQUIEM_OF_SPIRIT.playerHas) {
+        if (Songs.REQUIEM_OF_SPIRIT.playerHas && ItemData.hasAllSongNotes(Songs.REQUIEM_OF_SPIRIT)) {
             this._addWarpLocationForSong(age, Songs.REQUIEM_OF_SPIRIT);
         } 
         
-        if (Songs.PRELUDE_OF_LIGHT.playerHas) {
+        if (Songs.PRELUDE_OF_LIGHT.playerHas && ItemData.hasAllSongNotes(Songs.PRELUDE_OF_LIGHT)) {
             this._addWarpLocationForSong(age, Songs.PRELUDE_OF_LIGHT);
         }
     },

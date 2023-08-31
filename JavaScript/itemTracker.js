@@ -253,25 +253,18 @@ let ItemTracker = {
 	 * @returns The formatted song notes
 	 */
 	_getSongNotesForDisplay: function(songNotes) {
-		let displayString = "";
+		// Set to this value for height consistency of songs with and without the A button
+		let displayString = "<span style='display:inline-block; height:24px; width:0px;'></span>"; 
 		ItemData.convertSongNotesString(songNotes).forEach(note => {
-			switch(note) {
-				case OcarinaButtons.C_UP_BUTTON:
-					displayString += '<span style="color:yellow">▲</span>'
-					return;
-				case OcarinaButtons.C_LEFT_BUTTON:
-					displayString += '<span style="color:yellow">◀</span>'
-					return;
-				case OcarinaButtons.C_RIGHT_BUTTON:
-					displayString += '<span style="color:yellow">▶</span>'
-					return;
-				case OcarinaButtons.C_DOWN_BUTTON:
-					displayString += '<span style="color:yellow">▼</span>'
-					return;
-				case OcarinaButtons.A_BUTTON:
-					displayString += '<span style="color:#4272F5">A</span>'
-					return;
+			let dimensions = "";
+			if (note === OcarinaButtons.A_BUTTON) {
+				dimensions = "height:24px; width:24px;";
 			}
+
+			let cssClass = note.playerHas 
+				? "ocarina-note"
+				: "ocarina-note not-obtained";
+			displayString += `<span class="${cssClass}" style="display:inline-block; ${dimensions} background-image:url('./Images/Controller Buttons/${note.name}.png')"></span>`;
 		});
 
 		return displayString;
