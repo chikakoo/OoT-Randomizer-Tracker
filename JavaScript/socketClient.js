@@ -104,6 +104,9 @@ SocketClient = {
 						delete Songs[itemKey].entranceName;
 					}
 
+					delete Songs[itemKey].songNotes;
+					Songs[itemKey].songNotes = item.songNotes;
+					
 					break;
 				case "Medallions":
 					Medallions[itemKey].playerHas = item.playerHas;
@@ -118,6 +121,11 @@ SocketClient = {
 					consoleOutput = `${itemKey} silver rupees were updated`;
 
 					SilverRupees[itemKey].collectedRupees = item.collectedRupees;
+					break;
+				case "OcarinaButtons":
+					consoleOutput = `${itemKey} ocarina buttons were updated`;
+
+					OcarinaButtons[itemKey].playerHas = item.playerHas;
 					break;
 			}
 			
@@ -381,6 +389,7 @@ SocketClient = {
 		this._syncAllInventoryOfType("Medallions", Medallions);
 		this._syncAllInventoryOfType("Keys", Keys);
 		this._syncAllInventoryOfType("SilverRupees", SilverRupees);
+		this._syncAllInventoryOfType("OcarinaButtons", OcarinaButtons);
 	},
 	
 	/**

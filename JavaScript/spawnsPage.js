@@ -207,6 +207,8 @@ let SpawnsPage = {
             let songId = eventDiv.id.split("-")[0].trim();
             let song = Songs[songId];
             song.songNotes = songNoteString;
+
+            SocketClient.inventoryUpdated("Songs", songId, song);
         }
 
         addCssClass(inputDiv, "nodisp");

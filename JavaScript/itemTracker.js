@@ -21,6 +21,7 @@ let ItemTracker = {
 		this._createUIFromItemObject("Keys", Keys, document.getElementById("bossKeyProgress"));
 
 		this._setUpSilverRupeeUI();
+		this._createUIFromItemObject("OcarinaButtons", OcarinaButtons, document.getElementById("ocarinaButtonProgress"));
 	},
 
 	/**
@@ -39,7 +40,11 @@ let ItemTracker = {
 			let divItem = dce("div");
 			if (!item.noBossKey) { // Skip all key items that are marked to have no boss key
 				divItem.id = key;
-				divItem.style.backgroundImage = _this.getItemImagePath(item);
+				divItem.style.backgroundImage = _this.getItemImagePath(item, itemObjString);
+
+				if (itemObjString === "OcarinaButtons") { // Ocarina buttons are individually positioned
+					_this._setStyleForOcarinaButton(item, divItem);
+				}
 				
 				if (key === "SKULLTULA_TOKENS") { // Skulltula tokens have different behavior
 					let divTokenCount = dce("div", "countable-item");
@@ -71,6 +76,36 @@ let ItemTracker = {
 				divItems.appendChild(divItem);
 			}
 		});
+	},
+
+	/**
+	 * Specifically position the ocarina button
+	 * @param button - the button to use as reference
+	 * @param buttonDiv - the div to position
+	 */
+	_setStyleForOcarinaButton: function(button, buttonDiv) {
+		switch(button) {
+			case OcarinaButtons.C_UP_BUTTON:
+				buttonDiv.style.bottom = "10px";
+				buttonDiv.style.left = "41px";
+				return;
+			case OcarinaButtons.C_LEFT_BUTTON:
+				buttonDiv.style.top = "3px";
+				buttonDiv.style.left = "6px";
+				return;
+			case OcarinaButtons.C_RIGHT_BUTTON:
+				buttonDiv.style.top = "3px";
+				buttonDiv.style.left = "15px";
+				return;
+			case OcarinaButtons.C_DOWN_BUTTON:
+				buttonDiv.style.top = "16px";
+				buttonDiv.style.right = "22px";
+				return;
+			case OcarinaButtons.A_BUTTON:
+				buttonDiv.style.bottom = "12px";
+				buttonDiv.style.left = "2px";
+				return;
+		}
 	},
 
 	/**
@@ -161,7 +196,7 @@ let ItemTracker = {
 	onItemClicked: function(itemObjString, item, divItem) {
 		this._cycleUpgrade(item);
 		
-		divItem.style.backgroundImage = this.getItemImagePath(item);
+		divItem.style.backgroundImage = this.getItemImagePath(item, itemObjString);
 		this._setStylesForUnownedItem(item, divItem);
 		this.onItemMouseOver(item);
 		
@@ -256,7 +291,11 @@ let ItemTracker = {
 	/**
 	 * Gets the image path of the given item
 	 */
-	getItemImagePath: function(item) {
+	getItemImagePath: function(item, itemType) {
+		if (itemType === "OcarinaButtons") {
+			return `url("Images/Controller Buttons/${item.name}.png")`;
+		}
+
 		if (item.totalKeys) { // Set up for boss keys
 			return `url("Images/Boss Key.png")`;
 		}

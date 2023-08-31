@@ -317,7 +317,7 @@ body::-webkit-scrollbar-thumb {
 #childTradeItemProgress, #adultTradeItemProgress,
 #normalSongProgress, #warpSongProgress, #scarecrowsSongProgress,
 #medallionProgress, #smallKeyProgress, #bossKeyProgress,
-#silverRupeeProgress {
+#silverRupeeProgress, #ocarinaButtonProgress {
 	display: flex;
 	flex-wrap: wrap;
 	position: absolute;
@@ -398,6 +398,21 @@ body::-webkit-scrollbar-thumb {
 	width: 200px;
 	top: 121px;
 	left: 268px;
+}
+
+#ocarinaButtonProgress {
+	width: 90px;
+	top: 71px;
+	left: 272px;
+}
+
+#ocarinaButtonProgress > .item {
+	position: relative;
+	width: 21px;
+}
+
+#ocarinaButtonProgress > .item:last-child {
+	width: 25px;
 }
 
 #normalSongProgress > .item, 
