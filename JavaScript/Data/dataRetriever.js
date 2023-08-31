@@ -1063,7 +1063,7 @@ Data = {
 		let hasAllSongs = true;
 		
 		itemLocation.RequiredSongs.forEach(function(song) {
-			if (!song.playerHas) {
+			if (!song.playerHas || !ItemData.hasAllSongNotes(song)) {
 				hasAllSongs = false;
 				return;
 			}
@@ -1192,7 +1192,7 @@ Data = {
      * @param song - the song to check
      */
     canPlaySong: function(song) {
-		return this.canPlaySongs() && song.playerHas;
+		return this.canPlaySongs() && song.playerHas && ItemData.hasAllSongNotes(song);
     },
     
     /**

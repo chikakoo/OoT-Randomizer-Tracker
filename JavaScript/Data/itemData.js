@@ -1236,6 +1236,11 @@ let ItemData = {
 	 * @param {any} song - the song to check 
 	 */
 	hasAllSongNotes: function(song) {
+		if (!Settings.RandomizerSettings.shuffleOcarinaButtons) {
+			// If the setting is off, we always have all the notes!
+			return true;
+		}
+
 		let notes = this.getSongNotes(song);
 		let ocarinaNotes = this.convertSongNotesString(notes);
 		if (!ocarinaNotes) {

@@ -116,6 +116,7 @@ let Settings = {
 		scrubSanity: true,
 		shopSanity: true,
 		cowSanity: true,
+		shuffleOcarinaButtons: true,
 		shuffleHyruleLoach: true,
 		shuffleCarpetAndMedigoron: true,
 		shuffleAllFrogSongs: true,

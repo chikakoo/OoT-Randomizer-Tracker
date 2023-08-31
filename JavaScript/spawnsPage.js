@@ -209,6 +209,7 @@ let SpawnsPage = {
             song.songNotes = songNoteString;
 
             SocketClient.inventoryUpdated("Songs", songId, song);
+            refreshAll();
         }
 
         addCssClass(inputDiv, "nodisp");
