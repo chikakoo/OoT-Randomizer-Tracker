@@ -448,9 +448,12 @@ body::-webkit-scrollbar-thumb {
 	width: 30px;
 }
 
-#songProgress .item {
-	height: 27px;
-	width: 27px;
+#normalSongProgress .item.cannot-play-song:not(.playerDoesNotHave),
+#warpSongProgress .item.cannot-play-song:not(.playerDoesNotHave),
+#scarecrowsSongProgress .item.cannot-play-song:not(.playerDoesNotHave) {
+	-webkit-filter: drop-shadow(1px 1px 0 red) drop-shadow(-1px -1px 0 red);
+	filter: drop-shadow(1px 1px 0 red)  drop-shadow(-1px -1px 0 red);
+	opacity: 0.9;
 }
 
 .item.playerDoesNotHave {

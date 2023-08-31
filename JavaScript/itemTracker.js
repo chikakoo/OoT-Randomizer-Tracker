@@ -45,6 +45,10 @@ let ItemTracker = {
 				if (itemObjString === "OcarinaButtons") { // Ocarina buttons are individually positioned
 					_this._setStyleForOcarinaButton(item, divItem);
 				}
+
+				if (itemObjString === "Songs" && !ItemData.hasAllSongNotes(item)) { // Set CSS for songs that can't be played
+					addCssClass(divItem, "cannot-play-song");
+				}
 				
 				if (key === "SKULLTULA_TOKENS") { // Skulltula tokens have different behavior
 					let divTokenCount = dce("div", "countable-item");
@@ -199,6 +203,13 @@ let ItemTracker = {
 		divItem.style.backgroundImage = this.getItemImagePath(item, itemObjString);
 		this._setStylesForUnownedItem(item, divItem);
 		this.onItemMouseOver(item);
+
+		// Refresh the song divs so that the styles are applied for whether songs can be played
+		if (itemObjString === "OcarinaButtons") {
+			this._createUIFromItemObject("Songs", Songs, document.getElementById("normalSongProgress"), 1);
+			this._createUIFromItemObject("Songs", Songs, document.getElementById("warpSongProgress"), 2);
+			this._createUIFromItemObject("Songs", Songs, document.getElementById("scarecrowsSongProgress"), 3);
+		}
 		
 		SocketClient.inventoryUpdated(itemObjString, divItem.id, item);
 		refreshAll();
@@ -226,8 +237,44 @@ let ItemTracker = {
 		if (item.totalKeys) {
 			displayText = `${displayText} Boss Key`;
 		}
+
+		// If it's a song, append the notes to the end
+		let songNotes = ItemData.getSongNotes(item);
+		if (songNotes) {
+			displayText += `<br/>${this._getSongNotesForDisplay(songNotes)}`;
+		}
 		
-		divItemLabel.innerText = displayText;
+		divItemLabel.innerHTML = displayText;
+	},
+
+	/**
+	 * Gets a stirng of song notes to show in the mouse over display
+	 * @param {String} songNotes - the song note stirng to parse
+	 * @returns The formatted song notes
+	 */
+	_getSongNotesForDisplay: function(songNotes) {
+		let displayString = "";
+		ItemData.convertSongNotesString(songNotes).forEach(note => {
+			switch(note) {
+				case OcarinaButtons.C_UP_BUTTON:
+					displayString += '<span style="color:yellow">▲</span>'
+					return;
+				case OcarinaButtons.C_LEFT_BUTTON:
+					displayString += '<span style="color:yellow">◀</span>'
+					return;
+				case OcarinaButtons.C_RIGHT_BUTTON:
+					displayString += '<span style="color:yellow">▶</span>'
+					return;
+				case OcarinaButtons.C_DOWN_BUTTON:
+					displayString += '<span style="color:yellow">▼</span>'
+					return;
+				case OcarinaButtons.A_BUTTON:
+					displayString += '<span style="color:#4272F5">A</span>'
+					return;
+			}
+		});
+
+		return displayString;
 	},
 	
 	/**

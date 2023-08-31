@@ -235,6 +235,10 @@ let SpawnsPage = {
             let noteSpan = dce("span", "ocarina-note");
             noteSpan.style.backgroundImage = `url("./Images/Controller Buttons/${ocarinaNote.name}.png")`;
 
+            if (!ocarinaNote.playerHas && Settings.RandomizerSettings.shuffleOcarinaButtons) {
+                addCssClass(noteSpan, "not-obtained");
+            }
+
             // This element is two nested below the div we need to pass in, so call parentElement twice
             noteSpan.onclick = event => 
                 this.onModifyNotesClick(event.target.parentElement.parentElement);

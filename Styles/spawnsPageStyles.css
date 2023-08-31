@@ -61,6 +61,11 @@
 	background-repeat: no-repeat;
 }
 
+.ocarina-note.not-obtained {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
 .song-notes-container {
     padding-left: 10px;
 }
