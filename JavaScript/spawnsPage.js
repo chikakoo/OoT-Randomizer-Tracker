@@ -8,6 +8,16 @@ let SpawnsPage = {
         "NOCTURNE_OF_SHADOW-spawn", "REQUIEM_OF_SPIRIT-spawn", "PRELUDE_OF_LIGHT-spawn"
     ],
 
+    _songNoteIds: [
+        "MINUET_OF_FOREST-notes", "BOLERO_OF_FIRE-notes", "SERENADE_OF_WATER-notes",
+        "NOCTURNE_OF_SHADOW-notes", "REQUIEM_OF_SPIRIT-notes", "PRELUDE_OF_LIGHT-notes",
+
+        "ZELDAS_LULLABY-notes", "EPONAS_SONG-notes", "SARIAS_SONG-notes",
+        "SUNS_SONG-notes", "SONG_OF_STORMS-notes", "SONG_OF_TIME-notes",
+
+        "SCARECROWS_SONG-notes"
+    ],
+
     /**
      * The IDs of the spawn drop down
      */
@@ -23,6 +33,7 @@ let SpawnsPage = {
 
         this._fillSpawnDropdowns();
         this._fillAllSongDropdowns();
+        this._fillAllSongNotes();
     },
 
     /**
@@ -138,6 +149,101 @@ let SpawnsPage = {
                 refreshAll();
             };
         });
+    },
+
+    /**
+     * Fills all the song note divs with the current data
+     */
+    _fillAllSongNotes: function() {
+        let _this = this;
+        this._songNoteIds.forEach(function(id) {
+            let songNoteDiv = document.getElementById(id);
+            if (!songNoteDiv) return; //TEMP
+
+            let songId = id.split("-")[0].trim();
+            let song = Songs[songId];
+
+            let children = Array.from(songNoteDiv.children);
+            let displayDiv = children[0];
+            let inputDiv = children[1];
+
+            inputDiv.value = ItemData.getSongNotes(song);
+            _this._fillSongNoteDisplayDiv(inputDiv.value, displayDiv);
+        });
+    },
+
+    /**
+     * Called when the modify notes div is clicked - enables editing
+     * @param event - the event used to get the div container - OR the div container itself
+     */
+    onModifyNotesClick: function(event) {
+        let eventDiv = event.target
+            ? event.target.parentElement
+            : event;
+        let children = Array.from(eventDiv.children);
+        let displayDiv = children[0];
+        let inputDiv = children[1];
+
+        removeCssClass(inputDiv, "nodisp");
+        addCssClass(displayDiv, "nodisp");
+
+        if (inputDiv) {
+            inputDiv.focus();
+        }
+    },
+
+    /**
+     * Called when the modify notes div loses focus - disables editing
+     * @param event - the event used to get the div container
+     */
+    onModifyNotesBlur: function(event) {
+        let eventDiv = event.target.parentElement;
+        let children = Array.from(eventDiv.children);
+        let displayDiv = children[0];
+        let inputDiv = children[1];
+
+        let songNoteString = inputDiv.value;
+        if (this._fillSongNoteDisplayDiv(songNoteString, displayDiv)) {
+            let songId = eventDiv.id.split("-")[0].trim();
+            let song = Songs[songId];
+            song.songNotes = songNoteString;
+        }
+
+        addCssClass(inputDiv, "nodisp");
+        removeCssClass(displayDiv, "nodisp");
+    },
+
+    /**
+     * Fills the div to display corresponding with the song note string
+     * @param {String} songNoteString - the note string to create the div for
+     * @param {HTMLElement} displayDiv - the display div to modify - will clear out the old one
+     * @returns True if the notes were valid, false otherwise
+     */
+    _fillSongNoteDisplayDiv: function(songNoteString, displayDiv) {
+        displayDiv.innerHTML = "";
+
+        let convertedNotes = ItemData.convertSongNotesString(songNoteString);
+        if (convertedNotes === null) {
+            displayDiv.innerHTML = "Invalid Notes";
+            return false;
+        }
+
+        convertedNotes.forEach(ocarinaNote => {
+            let noteSpan = dce("span", "ocarina-note");
+            noteSpan.style.backgroundImage = `url("./Images/Controller Buttons/${ocarinaNote.name}.png")`;
+
+            // This element is two nested below the div we need to pass in, so call parentElement twice
+            noteSpan.onclick = event => 
+                this.onModifyNotesClick(event.target.parentElement.parentElement);
+
+            displayDiv.appendChild(noteSpan);
+        });
+
+        if (convertedNotes.length === 0) {
+            displayDiv.innerText = "<empty song>";
+        }
+
+        return true;
     },
 
     /**
@@ -281,5 +387,5 @@ let SpawnsPage = {
                 songDiv.title = "Default warp location";
             }
         });
-    },
+    }
 };

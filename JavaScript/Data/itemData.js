@@ -83,20 +83,31 @@ let AdultTradeItems = {
  * All songs
  */
 let Songs = {
-	ZELDAS_LULLABY: { name: "Zelda's Lullaby", divGroup: 1 },
-	EPONAS_SONG: { name: "Epona's Song", divGroup: 1 },
-	SARIAS_SONG: { name: "Saria's Song", divGroup: 1 },
-	SUNS_SONG: { name: "Sun's Song", divGroup: 1 },
-	SONG_OF_STORMS: { name: "Song of Storms", divGroup: 1 },
-	SONG_OF_TIME: { name: "Song of Time", divGroup: 1 },
-	SCARECROWS_SONG: {name: "Scarecrow's Song", divGroup: 3 },
+	ZELDAS_LULLABY: { name: "Zelda's Lullaby", defaultNotes: "<^><^>", divGroup: 1 },
+	EPONAS_SONG: { name: "Epona's Song", defaultNotes: "^<>^<>", divGroup: 1 },
+	SARIAS_SONG: { name: "Saria's Song", defaultNotes: "v><v><", divGroup: 1 },
+	SUNS_SONG: { name: "Sun's Song", defaultNotes: ">v^>v^", divGroup: 1 },
+	SONG_OF_STORMS: { name: "Song of Storms", defaultNotes: "Av^Av^", divGroup: 1 },
+	SONG_OF_TIME: { name: "Song of Time", defaultNotes: ">Av>Av", divGroup: 1 },
+	SCARECROWS_SONG: {name: "Scarecrow's Song", defaultNotes: "", divGroup: 3 },
 	
-	MINUET_OF_FOREST: { name: "Minuet of Forest", divGroup: 2 },
-	BOLERO_OF_FIRE: { name: "Bolero of Fire", divGroup: 2 },
-	SERENADE_OF_WATER: { name: "Serenade of Water", divGroup: 2 },
-	NOCTURNE_OF_SHADOW: { name: "Nocturne of Shadow", divGroup: 2 },
-	REQUIEM_OF_SPIRIT: { name: "Requiem of Spirit", divGroup: 2 },
-	PRELUDE_OF_LIGHT: { name: "Prelude of Light", divGroup: 2 }
+	MINUET_OF_FOREST: { name: "Minuet of Forest", defaultNotes: "A^<><>", divGroup: 2 },
+	BOLERO_OF_FIRE: { name: "Bolero of Fire", defaultNotes: "vAvA>v>v", divGroup: 2 },
+	SERENADE_OF_WATER: { name: "Serenade of Water", defaultNotes: "Av>><", divGroup: 2 },
+	NOCTURNE_OF_SHADOW: { name: "Nocturne of Shadow", defaultNotes: "<>>A<>v", divGroup: 2 },
+	REQUIEM_OF_SPIRIT: { name: "Requiem of Spirit", defaultNotes: "AvA<>v", divGroup: 2 },
+	PRELUDE_OF_LIGHT: { name: "Prelude of Light", defaultNotes: "^>^><^", divGroup: 2 }
+};
+
+/**
+ * A list of the ocarina buttons, used when the setting is on that shuffles them
+ */
+let OcarinaButtons = {
+	C_UP_BUTTON: { name: "C Up Button" },
+	C_LEFT_BUTTON: { name: "C Left Button" },
+	C_RIGHT_BUTTON: { name: "C Right Button" },
+	C_DOWN_BUTTON: { name: "C Down Button" },
+	A_BUTTON: { name: "A Button" }
 };
 
 /**
@@ -1111,7 +1122,7 @@ let getSilverRupeeData = function(mapName) {
  * Returns the silver rupee count at the given location and index
  * @param rupeeObject - the SilverRupee location object
  * @param index - the index to look at
- * @returns the count, or 0 if not found
+ * @returns The count, or 0 if not found
  */
 let getSilverRupeeCount = function(rupeeObject, index) {
 	let collectedRupeeObject = rupeeObject.collectedRupees;
@@ -1146,3 +1157,91 @@ let checkSilverRupeeRequirement = function(mapName, index) {
 	}
 	return ItemObtainability.NO;
 };
+
+/**
+ * Used to group the item functions so that we don't flood the global space
+ * TODO: Put all the loose functions from this file in here!
+ */
+let ItemData = {
+	/**
+	 * Gets the song notes string out of the given song
+	 * @param {any} song - the song
+	 */
+	getSongNotes: function(song) {
+		let isNullOrUndefined = song.songNotes === null || song.songNotes === undefined;
+		return isNullOrUndefined
+			? song.defaultNotes
+			: song.songNotes;
+	},
+
+	/**
+	 * Checks that the given string of notes is valid
+	 * @param {String} songNotes - the song notes to validate
+	 * @return A boolean indicating whether the notes were valid
+	 */
+	validateSongNotes: function(songNotes) {
+		return /^[\^u>l<rdva]*$/.test(songNotes.toLowerCase().trim());
+	},
+
+	/**
+	 * Converts the song note string into an array of OcarinaButtons
+	 * @param {String} songNotes - the song notes to convert
+	 */
+	convertSongNotesString: function(songNotes) {
+		if (!this.validateSongNotes(songNotes)) { return null; }
+
+		let convertedNotes = [];
+		let error = false;
+		[...songNotes.toLowerCase().trim()].forEach(character => {
+			let convertedNote = this._convertSongNoteToOcarinaButton(character);
+			if (!convertedNote) {
+				console.log(`ERROR: Tried to convert a \"${character}\" to an OcarinaButton!`);
+				error = true;
+			}
+			convertedNotes.push(convertedNote);
+		});
+
+		if (error) { return null; }
+		return convertedNotes;
+	},
+
+	/**
+	 * Converts the given song note into an OcarinaButton
+	 * @param {String} songNote - The note to update - assumed to be lowercase
+	 * @return The matching OcarinaButton, or null if not found
+	 */
+	_convertSongNoteToOcarinaButton: function(songNote) {
+		switch(songNote) {
+			case "^":
+			case "u":
+				return OcarinaButtons.C_UP_BUTTON;
+			case "<":
+			case "l":
+				return OcarinaButtons.C_LEFT_BUTTON;
+			case ">":
+			case "r":
+				return OcarinaButtons.C_RIGHT_BUTTON;
+			case "v":
+			case "d":
+				return OcarinaButtons.C_DOWN_BUTTON;
+			case "a":
+				return OcarinaButtons.A_BUTTON;
+			default:
+				return null;
+		}
+	},
+
+	/**
+	 * Given an ocarina song, checks if the player has all the song notes to play it
+	 * @param {any} song - the song to check 
+	 */
+	hasAllSongNotes: function(song) {
+		let notes = this.getSongNotes(song);
+		let ocarinaNotes = this.convertSongNotesString(notes);
+		if (!ocarinaNotes) {
+			return false; // The notes were invalid...
+		}
+
+		return ocarinaNotes.every(ocarinaNote => ocarinaNote.playerHas);
+	}
+}

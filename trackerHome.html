@@ -131,7 +131,7 @@
 			</div>
 		</div>
 		<div id="spawnsContainer" class="nodisp">
-			<h1>Spawns</h1>
+			<h1>Spawns & Songs</h1>
 
 			<div id="spawnButtonGroup">
 				<button class="spawns-button" id="buttonMarkAllSongsNone" title="Double click to use" ondblclick="SpawnsPage.markAllSongsNone()">Set Songs to None</button>
@@ -154,35 +154,147 @@
 
 			<div class="spawns-group" id="songWarpsGroup">
 				Songs
-				<div class="spawns-item">
-					<span>Minuet of Forest</span>
+				<div class="spawns-item song-spawn">
+					<div>
+						<div class="song-spawn-icon" id="songSpawnMinuet"></div>
+						<div>Minuet of Forest</div>
+						<div id="MINUET_OF_FOREST-notes" class="song-notes-container">
+							<div onclick="SpawnsPage.onModifyNotesClick(event)"></div>
+							<input onblur="SpawnsPage.onModifyNotesBlur(event)" class="nodisp" type="text" size="10">
+						</div>
+					</div>
 					<select id="MINUET_OF_FOREST-spawn"></select>
 					<select id="MINUET_OF_FOREST-spawn-locations" class=nodisp></select>
 				</div>
-				<div class="spawns-item">
-					<span>Bolero of Fire</span>
+				<div class="spawns-item song-spawn">
+					<div>
+						<div class="song-spawn-icon" id="songSpawnBolero"></div>
+						<div>Bolero of Fire</div>
+						<div id="BOLERO_OF_FIRE-notes" class="song-notes-container">
+							<div onclick="SpawnsPage.onModifyNotesClick(event)"></div>
+							<input onblur="SpawnsPage.onModifyNotesBlur(event)" class="nodisp" type="text" size="10">
+						</div>
+					</div>
 					<select id="BOLERO_OF_FIRE-spawn"></select>
 					<select id="BOLERO_OF_FIRE-spawn-locations" class=nodisp></select>
 				</div>
-				<div class="spawns-item">
-					<span>Serenade of Water</span>
+				<div class="spawns-item song-spawn">
+					<div>
+						<div class="song-spawn-icon" id="songSpawnSerenade"></div>
+						<div>Serenade of Water</div>
+						<div id="SERENADE_OF_WATER-notes" class="song-notes-container">
+							<div onclick="SpawnsPage.onModifyNotesClick(event)"></div>
+							<input onblur="SpawnsPage.onModifyNotesBlur(event)" class="nodisp" type="text" size="10">
+						</div>
+					</div>
 					<select id="SERENADE_OF_WATER-spawn"></select>
 					<select id="SERENADE_OF_WATER-spawn-locations" class=nodisp></select>
 				</div>
-				<div class="spawns-item">
-					<span>Nocturne of Shadow</span>
+				<div class="spawns-item song-spawn">
+					<div>
+						<div class="song-spawn-icon" id="songSpawnNocturne"></div>
+						<div>Nocturne of Shadow</div>
+						<div id="NOCTURNE_OF_SHADOW-notes" class="song-notes-container">
+							<div onclick="SpawnsPage.onModifyNotesClick(event)"></div>
+							<input onblur="SpawnsPage.onModifyNotesBlur(event)" class="nodisp" type="text" size="10">
+						</div>
+					</div>
 					<select id="NOCTURNE_OF_SHADOW-spawn"></select>
 					<select id="NOCTURNE_OF_SHADOW-spawn-locations" class=nodisp></select>
 				</div>
-				<div class="spawns-item">
-					<span>Requiem of Spirit</span>
+				<div class="spawns-item song-spawn">
+					<div>
+						<div class="song-spawn-icon" id="songSpawnRequiem"></div>
+						<div>Requiem of Spirit</div>
+						<div id="REQUIEM_OF_SPIRIT-notes" class="song-notes-container">
+							<div onclick="SpawnsPage.onModifyNotesClick(event)"></div>
+							<input onblur="SpawnsPage.onModifyNotesBlur(event)" class="nodisp" type="text" size="10">
+						</div>
+					</div>
 					<select id="REQUIEM_OF_SPIRIT-spawn"></select>
 					<select id="REQUIEM_OF_SPIRIT-spawn-locations" class=nodisp></select>
 				</div>
-				<div class="spawns-item">
-					<span>Prelude of Light</span>
+				<div class="spawns-item song-spawn">
+					<div>
+						<div class="song-spawn-icon" id="songSpawnPrelude"></div>
+						<div>Prelude of Light</div>
+						<div id="PRELUDE_OF_LIGHT-notes" class="song-notes-container">
+							<div onclick="SpawnsPage.onModifyNotesClick(event)"></div>
+							<input onblur="SpawnsPage.onModifyNotesBlur(event)" class="nodisp" type="text" size="10">
+						</div>
+					</div>
 					<select id="PRELUDE_OF_LIGHT-spawn"></select>
 					<select id="PRELUDE_OF_LIGHT-spawn-locations" class=nodisp></select>
+				</div>
+				<div class="spawns-item song-spawn">
+					<div>
+						<div class="song-spawn-icon" id="songSpawnLullaby"></div>
+						<div>Zelda's Lullaby</div>
+						<div id="ZELDAS_LULLABY-notes" class="song-notes-container">
+							<div onclick="SpawnsPage.onModifyNotesClick(event)"></div>
+							<input onblur="SpawnsPage.onModifyNotesBlur(event)" class="nodisp" type="text" size="10">
+						</div>
+					</div>
+				</div>
+				<div class="spawns-item song-spawn">
+					<div>
+						<div class="song-spawn-icon" id="songSpawnEpona"></div>
+						<div>Epona's Song</div>
+						<div id="EPONAS_SONG-notes" class="song-notes-container">
+							<div onclick="SpawnsPage.onModifyNotesClick(event)"></div>
+							<input onblur="SpawnsPage.onModifyNotesBlur(event)" class="nodisp" type="text" size="10">
+						</div>
+					</div>
+				</div>
+				<div class="spawns-item song-spawn">
+					<div>
+						<div class="song-spawn-icon" id="songSpawnSaria"></div>
+						<div>Saria's Song</div>
+						<div id="SARIAS_SONG-notes" class="song-notes-container">
+							<div onclick="SpawnsPage.onModifyNotesClick(event)"></div>
+							<input onblur="SpawnsPage.onModifyNotesBlur(event)" class="nodisp" type="text" size="10">
+						</div>
+					</div>
+				</div>
+				<div class="spawns-item song-spawn">
+					<div>
+						<div class="song-spawn-icon" id="songSpawnSun"></div>
+						<div>Sun's Song</div>
+						<div id="SUNS_SONG-notes" class="song-notes-container">
+							<div onclick="SpawnsPage.onModifyNotesClick(event)"></div>
+							<input onblur="SpawnsPage.onModifyNotesBlur(event)" class="nodisp" type="text" size="10">
+						</div>
+					</div>
+				</div>
+				<div class="spawns-item song-spawn">
+					<div>
+						<div class="song-spawn-icon" id="songSpawnStorms"></div>
+						<div>Song of Storms</div>
+						<div id="SONG_OF_STORMS-notes" class="song-notes-container">
+							<div onclick="SpawnsPage.onModifyNotesClick(event)"></div>
+							<input onblur="SpawnsPage.onModifyNotesBlur(event)" class="nodisp" type="text" size="10">
+						</div>
+					</div>
+				</div>
+				<div class="spawns-item song-spawn">
+					<div>
+						<div class="song-spawn-icon" id="songSpawnTime"></div>
+						<div>Song of Time</div>
+						<div id="SONG_OF_TIME-notes" class="song-notes-container">
+							<div onclick="SpawnsPage.onModifyNotesClick(event)"></div>
+							<input onblur="SpawnsPage.onModifyNotesBlur(event)" class="nodisp" type="text" size="10">
+						</div>
+					</div>
+				</div>
+				<div class="spawns-item song-spawn">
+					<div>
+						<div class="song-spawn-icon" id="songSpawnScarecrow"></div>
+						<div>Scarecrow's Song</div>
+						<div id="SCARECROWS_SONG-notes" class="song-notes-container">
+							<div onclick="SpawnsPage.onModifyNotesClick(event)"></div>
+							<input onblur="SpawnsPage.onModifyNotesBlur(event)" class="nodisp" type="text" size="10">
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

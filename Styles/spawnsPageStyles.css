@@ -33,12 +33,12 @@
     padding-right: 10px;
 }
 
-#spawnLocationsGroup span {
-    width: 60px;
+.spawns-item.song-spawn {
+    padding-bottom: 15px;
 }
 
-#songWarpsGroup span {
-    width: 160px;
+#spawnLocationsGroup span {
+    width: 60px;
 }
 
 .spawns-button {
@@ -47,4 +47,71 @@
 
 #spawnButtonGroup {
     margin: 10px;
+}
+
+.spawns-item.song-spawn > div {
+    display: flex;
+    flex-direction: row;
+}
+
+.song-spawn-icon, .ocarina-note {
+    height: 20px;
+    width: 20px;
+    background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.song-notes-container {
+    padding-left: 10px;
+}
+
+.song-notes-container > div{
+    display: flex;
+    flex-direction: row;
+}
+
+.song-notes-container .ocarina-note {
+    width: 20px;
+}
+
+#songSpawnMinuet {
+    background-image: url("../Images/Minuet of Forest.png");
+}
+#songSpawnBolero {
+    background-image: url("../Images/Bolero of Fire.png");
+}
+#songSpawnSerenade {
+    background-image: url("../Images/Serenade of Water.png");
+}
+#songSpawnNocturne {
+    background-image: url("../Images/Nocturne of Shadow.png");
+}
+#songSpawnRequiem {
+    background-image: url("../Images/Requiem of Spirit.png");
+}
+#songSpawnPrelude {
+    background-image: url("../Images/Prelude of Light.png");
+}
+
+#songSpawnLullaby {
+    background-image: url("../Images/Zelda's Lullaby.png");
+}
+#songSpawnEpona {
+    background-image: url("../Images/Epona's Song.png");
+}
+#songSpawnSaria {
+    background-image: url("../Images/Saria's Song.png");
+}
+#songSpawnSun {
+    background-image: url("../Images/Sun's Song.png");
+}
+#songSpawnStorms {
+    background-image: url("../Images/Song of Storms.png");
+}
+#songSpawnTime {
+    background-image: url("../Images/Song of Time.png");
+}
+
+#songSpawnScarecrow {
+    background-image: url("../Images/Scarecrow's Song.png");
 }
