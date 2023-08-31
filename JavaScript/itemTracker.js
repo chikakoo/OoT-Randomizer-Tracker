@@ -261,7 +261,7 @@ let ItemTracker = {
 				dimensions = "height:24px; width:24px;";
 			}
 
-			let cssClass = note.playerHas 
+			let cssClass = note.playerHas || !Settings.RandomizerSettings.shuffleOcarinaButtons
 				? "ocarina-note"
 				: "ocarina-note not-obtained";
 			displayString += `<span class="${cssClass}" style="display:inline-block; ${dimensions} background-image:url('./Images/Controller Buttons/${note.name}.png')"></span>`;
