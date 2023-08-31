@@ -758,7 +758,35 @@ let ShopItemDictionary = {
 	"requiem": "Requiem of Spirit.png",
 	
 	"preludeoflight": "Prelude of Light.png",
-	"prelude": "Prelude of Light.png"
+	"prelude": "Prelude of Light.png",
+
+	// Ocarina Buttons
+	"^": "Controller Buttons/C Up Button.png",
+	"u": "Controller Buttons/C Up Button.png",
+	"up": "Controller Buttons/C Up Button.png",
+	"cup": "Controller Buttons/C Up Button.png",
+	"cupbutton": "Controller Buttons/C Up Button.png",
+
+	"<": "Controller Buttons/C Left Button.png",
+	"l": "Controller Buttons/C Left Button.png",
+	"left": "Controller Buttons/C Left Button.png",
+	"cleft": "Controller Buttons/C Left Button.png",
+	"cleftbutton": "Controller Buttons/C Left Button.png",
+
+	">": "Controller Buttons/C Right Button.png",
+	"r": "Controller Buttons/C Right Button.png",
+	"right": "Controller Buttons/C Right Button.png",
+	"cright": "Controller Buttons/C Right Button.png",
+	"crightbutton": "Controller Buttons/C Right Button.png",
+
+	"v": "Controller Buttons/C Down Button.png",
+	"d": "Controller Buttons/C Down Button.png",
+	"down": "Controller Buttons/C Down Button.png",
+	"cdown": "Controller Buttons/C Down Button.png",
+	"cdownbutton": "Controller Buttons/C Down Button.png",
+
+	"abutton": "Controller Buttons/A Button.png",
+	"a": "Controller Buttons/A Button.png",
 };
 
 /**
