@@ -686,6 +686,25 @@ let ShopItemDictionary = {
 	"map": "Dungeon Map.png",
 
 	"compass": "Compass.png",
+
+	// Rupees
+	"silverrupee": "Silver Rupee.png",
+	"silver": "Silver Rupee.png",
+
+	"greenrupee": "Green Rupee.png",
+	"green": "Green Rupee.png",
+
+	"bluerupee": "Blue Rupee.png",
+	"blue": "Blue Rupee.png",
+
+	"redrupee": "Red Rupee.png",
+	"red": "Red Rupee.png",
+	
+	"purplerupee": "Purple Rupee.png",
+	"purple": "Purple Rupee.png",
+
+	"goldrupee": "Gold Rupee.png",
+	"gold": "Gold Rupee.png",
 		
 	// Hearts
 	"pieceofheart": "Piece of Heart.png",

@@ -99,7 +99,7 @@ let Settings = {
 		closedDeku: false,
 		openDoorOfTime: true,
 		autoPlantBeans: false,
-		openKakariko: OpenKakarikoSettings.VANILLA,
+		openKakariko: OpenKakarikoSettings.OPEN_WITH_ZELDAS_LETTER,
 		openZorasFountain: OpenZorasFountainSettings.VANILLA,
 		
 		// Sanity and logic changes
