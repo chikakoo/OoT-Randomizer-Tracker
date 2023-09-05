@@ -703,12 +703,27 @@ let StandardDungeons = {
                         Order: 31,
                         LongDescription: "This is in the series of rooms after you enter the giant dodongo head. After you climb the ledge with the pushable blocks, there's a wall you can destroy. The skulltula is inside."
                     },
+                    //TODO: Empty Pots - remove this item, as the one below will replace it
                     "Pot After Block Push in Back Room": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 176, y: 58, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 32,
                         LongDescription: "After the block push puzzle in the giant dodongo head, this is one of the pots to your left before you enter the hallway. The other one will always contain a fairy."
+                    },
+                    "2 Pots After Block Push in Back Room": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 176, y: 58, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 32,
+                        LongDescription: "After the block push puzzle in the giant dodongo head, these are the pots to your left before you enter the hallway."
                     },
                     "2 Pots in Hall Before Final Block": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -775,12 +790,25 @@ let StandardDungeons = {
                 },
 
                 ItemLocations: {
-                    "Crate in Elevator Room": {
+                    //TODO: Empty Pots - remove this item, as the one below will replace it
+                    "Small Crate in Elevator Room": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 164, y: 177, floor: "F1" },
                         Age: Age.EITHER,
+                        RequiredToAppear: function()  { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
                         Order: 1,
-                        LongDescription: "After the first room, break the small crate on the right for this item. The left one drops nothing.",
+                        LongDescription: "After the first room, break the small crate on the right for this item. The left one drops nothing."
+                    },
+                    "2 Small Crates in Elevator Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 164, y: 177, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 1.1,
+                        LongDescription: "After the first room, use the elevator to cross to get to these small crates"
                     },
                     "Scrub Behind Octorok Water": {
                         ItemGroup: ItemGroups.SCRUB,
@@ -1114,12 +1142,27 @@ let StandardDungeons = {
                         Order: 6,
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go straight again through the room with the blue bubble. In the next room, kill the two stalfos to spawn the chest."
                     },
+                    //TODO: Empty Pots - remove this item, as the one below will replace it
                     "Pot Behind Main Room": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 168, y: 17, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 7,
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go straight again through the room with the blue bubble. The pot is the left one in the back of the room. The right pot always contains a fairy."
+                    },
+                    "2 Pots Behind Main Room": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 171, y: 17, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 7,
+                        LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go straight again through the room with the blue bubble. The pots are in the back of the room."
                     }
                 }
             },
@@ -1589,6 +1632,7 @@ let StandardDungeons = {
                             return Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
                         }
                     },
+                    //TODO: Empty Pots - remove this item, as the one below will replace it
                     "2 Pots Near Boss Door": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -1598,6 +1642,25 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 2,
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper right corner of the room using your hookshot, hover boots, or by megaflipping. Climb up to get to the pots (2/4 are fairies).",
+                        CustomRequirement: function(age) {
+                            let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
+                            let canGetThere = Data.canMegaFlip(age) || Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas;
+                            return tunicCheck && canGetThere;
+                        }
+                    },
+                    "4 Pots Near Boss Door": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Pots",
+                        MapInfo: { x: 45, y: 158, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 2,
+                        LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper right corner of the room using your hookshot, hover boots, or by megaflipping. Climb up to get to the pots.",
                         CustomRequirement: function(age) {
                             let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
                             let canGetThere = Data.canMegaFlip(age) || Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas;
@@ -2193,6 +2256,9 @@ let StandardDungeons = {
             },
             hammerChestRoom: {
                 Exits: {
+                    stairCaseRoomAfterHammer: {
+                        RequiredItems: [Items.MEGATON_HAMMER]
+                    },
                     centerRoomTopSwitch: {
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.fireJumpDownToSoTBlock && Data.canUseHammer(age);
@@ -2204,10 +2270,26 @@ let StandardDungeons = {
                 ItemLocations: {
                     "Hammer Chest at Very Top": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: {x: 43, y: 157, floor: "F5" },
+                        MapInfo: { x: 43, y: 157, floor: "F5" },
                         Age: Age.ADULT,
                         Order: 34,
                         LongDescription: "Make your way to the maze of tiny fire walls. This is the locked door in the giant fire wall room. Make your way around the entire maze. First, you must navigate to the left side of the middle pillar. After you go through that, you must navigate to a switch that lowers the bigger fire wall. Bomb the fake door and defeat the Flare Dancer (see the other Flare Dancer task for advice on this). Ride his platform up to the next room. Make your way though the fire switch puzzle room into the next room. In this room, you must hit the switch and then quickly navigate over to the hammer chest. Alternatively, you can let a fire keese hit you near the chest, then spam A to open it before you're damaged by the chest fire."
+                    }
+                }
+            },
+            stairCaseRoomAfterHammer: {
+                Exits: {},
+                ItemLocations: {
+                    "2 Small Crates in Hammer Staircase Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 141, y: 63, floor: "F4" },
+                        Age: Age.ADULT,
+                        Order: 34.1,
+                        LongDescription: "Use your hammer to make the block fall in the spiral staircase room with the hammer. The crates are in the corner in the next room."
                     }
                 }
             },
@@ -5987,11 +6069,9 @@ let StandardDungeons = {
                             return Settings.GlitchesToAllow.ganonFireNoTunic || canWearTunic;
                         }
                     },
-                    waterTrialEnd: {
-                        Age: Age.ADULT,
-                        RequiredItems: [Items.MEGATON_HAMMER],
+                    waterTrialRoom2: {
                         CustomRequirement: function(age) {
-                            return Data.canUseBlueFire(age);
+                            return Data.canUseBlueFire(age) && Data.canKillFreezard(age);
                         }
                     },
                     shadowTrialMiddle: {
@@ -6182,6 +6262,27 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 6,
                         LongDescription: "Enter the forest trial - you must first light all the torches in the room. If you have no bow, you can use Din's Fire if you light the top torch by first hooshotting to it.</br></br>The next room is difficult to do without hover boots, but it can be done if you use the fans to push you across the room (grab the one to your left first and let the fan push you to the platform). The floating rupee can be retrieved after you jump on the switch in the back of the room.<br/><br/>The pots are in the final room that unlocks."
+                    }
+                }
+            },
+            waterTrialRoom2: {
+                Exits: {
+                    waterTrialEnd: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.MEGATON_HAMMER]
+                    }
+                },
+                ItemLocations: {
+                    "Water Trial Pot in Ice Push Room": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this is a fairy pot
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 223, y: 117, floor: "WTR" },
+                        Age: Age.EITHER,
+                        Order: 8.1,
+                        LongDescription: "Enter the water trial - kill the freezards to unbar the door, then use blue fire to melt the ice to gain access. The pot is on the right side of the room, behind a rock."
                     }
                 }
             },
@@ -6554,6 +6655,24 @@ let StandardDungeons = {
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "14 Pots",
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
+                        MapInfo: { x: 175, y: 95, floor: "MN" },
+                        Age: Age.EITHER,
+                        Order: 32,
+                        IsPostWalkCheck: true,
+                        LongDescription: "Complete all the trials. Now, go up the center of the castle. This is room after you open the first giant door.",
+                        CustomRequirement: function(age) {
+                            return (age === Age.ADULT && Settings.GlitchesToAllow.ganonTrialSkip) || 
+                                Data.canStaircaseHover(age) ||
+                                MapLocations["Ganon's Castle"]._canCompleteTrials(age);
+                        }
+                    },
+                    "18 Pots in Pot Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "18 Pots",
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleEmptyPots; },
                         MapInfo: { x: 175, y: 95, floor: "MN" },
                         Age: Age.EITHER,
                         Order: 32,

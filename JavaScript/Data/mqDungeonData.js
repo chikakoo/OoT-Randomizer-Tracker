@@ -942,13 +942,29 @@ let MQDungeons = {
                         Order: 44,
                         LongDescription: "After dealing with all the Armos statues in the Dodongo head, climb up the stairs. Jump to the ledge to get to the skulltula on top."
                     },
+
+                    //TODO: Empty Pots - remove this item, as the one below will replace it
                     "Pot After Armos Army": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 176, y: 58, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 45,
                         LongDescription: "After dealing with all the Armos statues in the Dodongo head, climb the stairs. This is one of the pots to your left before you enter the hallway. The other one will always contain a fairy."
-                    }
+                    },
+                    "2 Pots After Armos Army": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 176, y: 58, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 45,
+                        LongDescription: "After dealing with all the Armos statues in the Dodongo head, climb the stairs. These are the pots to your left before you enter the hallway."
+                    },
                 }
             },
 
@@ -1150,6 +1166,17 @@ let MQDungeons = {
                     }
                 },
                 ItemLocations: {
+                    "2 Small Crates in Northern Hallways": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 156, y: 60, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 15.1,
+                        LongDescription: "In the room beyond the room with holes, go left to find the crates."
+                    },
                     "2 Pots in Like Like Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -1230,12 +1257,23 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
+                    "2 Small Crates in Elevator Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 102, y: 179, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 20.1,
+                        LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. Shoot the cow in the wall in this room to spawn the crates by the door."
+                    },
                     "Cow After Big Octo": {
                         ItemGroup: ItemGroups.COW,
                         MapInfo: { x: 108, y: 251, floor: "F2" },
                         Age: Age.CHILD,
                         Order: 21,
-                        LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. The cow is on the ground in the room with the two electric sponges."
+                        LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. Shoot the cow in the wall in this room to spawn the cow on the ground."
                     },
                     "Chest After Big Octo": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1250,6 +1288,17 @@ let MQDungeons = {
                         Age: Age.CHILD,
                         Order: 23,
                         LongDescription: "Shoot the left cow in this room to spawn the chest."
+                    },
+                    "Pot in Room Before Boss": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this is a fairy pot
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 240, y: 160, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 23.1,
+                        LongDescription: "This pot is next to the boss room door."
                     },
                     "Skulltula in Room Before Boss": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -1502,12 +1551,27 @@ let MQDungeons = {
                         LongDescription: "Proceed straight ahead in the main room. After the hallway, kill the two wolfos to spawn the chest.<br/><br/>If you don't have the song of time, it's possible to get here from the above room. This is the room after the red poe room - drop down before killing the first Stalfos.",
                         NeedsSwordWeapon: true
                     },
+                    //TODO: Empty Pots - remove this item, as the one below will replace it
                     "Pot North of Main Room": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 168, y: 17, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 7,
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula and into the next door across the big room. The room with the pot is the one after the song of time block (not there as Child). The one on the right is the one you want - the other contains a fairy.<br/><br/>If you don't have the song of time, it's possible to get here from the above room. This is the room after the red poe room - drop down before killing the first Stalfos."
+                    },
+                    "2 Pots North of Main Room": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 171, y: 17, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 7,
+                        LongDescription: "From the start of the temple, go straight through the room with the giant skulltula and into the next door across the big room. The room with the pot is the one after the song of time block (not there as Child). The pots are in the back of the room.<br/><br/>If you don't have the song of time, it's possible to get here from the above room. This is the room after the red poe room - drop down before killing the first Stalfos."
                     }
                 }
             },
@@ -2093,6 +2157,7 @@ let MQDungeons = {
                     }
                 },
                 ItemLocations: {
+                    //TODO: Empty Pots - this will be replaced by the below item
                     "4 Pots by Iron Knuckle": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -2102,6 +2167,21 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "Enter the locked door to the right when you first enter the temple. Defeat the stalfos and proceed. The pots are in the next room - the four you want are the two in the very back, and the two by the door. The rest contain fairies.",
+                        NeedsDamagingItem: true
+                    },
+                    "8 Pots by Iron Knuckle": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "8 Pots",
+                        MapInfo: { x: 107, y: 38, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 8,
+                        LongDescription: "Enter the locked door to the right when you first enter the temple. Defeat the stalfos and proceed. The pots scattered around the next room.",
                         NeedsDamagingItem: true
                     },
                     "Chest After First Flare Dancer": {
@@ -2218,7 +2298,19 @@ let MQDungeons = {
                         Order: 14,
                         LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to it, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
                     },
+                    //TODO: Empty Pots - will be replaced by the second check
+                    "Pot in Boss Key Room": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 162, y: 102, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 15,
+                        LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to the pots, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
+                    },
                     "2 Pots in Boss Key Room": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2226,7 +2318,7 @@ let MQDungeons = {
                         MapInfo: { x: 162, y: 102, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 15,
-                        LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to the pots, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
+                        LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to the pot, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
                     }
                 }
             },
@@ -2316,10 +2408,22 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Crates",
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
                         MapInfo: { x: 297, y: 217, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 25,
                         LongDescription: "Navigate to the cell on the top of the maze. Bomb or jumpslash the switch (then come back up) to open it. The crates are inside. Don't break the small crates if you wish to use them (they have no items)!"
+                    },
+                    "5 Crates on Maze Top": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "5 Crates",
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; },
+                        MapInfo: { x: 297, y: 217, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 25,
+                        LongDescription: "Navigate to the cell on the top of the maze. Bomb or jumpslash the switch (then come back up) to open it. The crates are inside."
                     },
                     "Goron by Maze": {
                         ItemGroup: ItemGroups.CHEST,
@@ -2374,11 +2478,26 @@ let MQDungeons = {
             narrowBridgeRoom: {
                 Exits: {},
                 ItemLocations: {
+                    //TODO: Empty Pots - remove this item, as the one below will replace it
                     "2 Pots in Narrow Bridge Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 293, y: 155, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 29,
+                        LongDescription: "Make your way to the scary room with the giant pit either from the lava room with grates, or by falling from the room at the very top."
+                    },
+                    "3 Pots in Narrow Bridge Room": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 293, y: 155, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 29,
@@ -2401,6 +2520,18 @@ let MQDungeons = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 265, y: 110, floor: "F3" },
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
+                        Age: Age.ADULT,
+                        Order: 30,
+                        LongDescription: "These crates are on the right side of the room with lava and grates."
+                    },
+                    "3 Crates in Right Lava Grate Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Crates",
+                        MapInfo: { x: 265, y: 110, floor: "F3" },
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; },
                         Age: Age.ADULT,
                         Order: 30,
                         LongDescription: "These crates are on the right side of the room with lava and grates."
@@ -2410,7 +2541,15 @@ let MQDungeons = {
                         MapInfo: { x: 248, y: 133, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 31,
-                        LongDescription: "This crate is on the little island in the center of the room with lava and grates."
+                        LongDescription: "This crate is the big one on the little island in the center of the room with lava and grates."
+                    },
+                    "Small Crate in Central Lava Grate Room": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 225, y: 168, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 31.1,
+                        LongDescription: "This crate is on the little one on the little island in the center of the room with lava and grates."
                     },
                     "2 Pots in Left Lava Grate Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2425,16 +2564,40 @@ let MQDungeons = {
                     "Crate in Left Lava Grate Room": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 265, y: 176, floor: "F3" },
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
                         Age: Age.ADULT,
                         Order: 33,
                         LongDescription: "This crate is on the left side of the room with lava and grates. Go to the door to the narrow bridge room and climb up the small ledge to get access to the crate."
                     },
+                    "3 Crates in Left Lava Grate Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Crates",
+                        MapInfo: { x: 265, y: 176, floor: "F3" },
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; },
+                        Age: Age.ADULT,
+                        Order: 33,
+                        LongDescription: "These crates are on the left side of the room with lava and grates. Go to the door to the narrow bridge room and climb up the small ledge to get access to the crates."
+                    },
                     "Crate by Lava Grate Room Exit": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 212, y: 176, floor: "F3" },
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
                         Age: Age.ADULT,
                         Order: 34,
                         LongDescription: "This crate is near the exit of the lava grate room (the one leading to the fire wall maze)."
+                    },
+                    "2 Crates by Lava Grate Room Exit": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 212, y: 176, floor: "F3" },
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; },
+                        Age: Age.ADULT,
+                        Order: 34,
+                        LongDescription: "These crates are near the exit of the lava grate room (the one leading to the fire wall maze)."
                     }
                 }
             },
@@ -2454,12 +2617,27 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
+                    //TODO Empty Pots - this will be replaced by th
                     "Pot in Left Fire Wall Maze": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 87, y: 215, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 37,
                         LongDescription: "Navigate around the lava room and grab a small box. Enter the encaged area and place the box on the blue switch to light some torches. Hookshot the box to get back up. Use your bow to shoot though one of the torches to light a high up torch on the wall. Go through the door to continue.<br/><br/>Navigate around the fire wall maze to the left until you find the pot (the second one contains a fairy)."
+                    },
+                    "2 Pots in Left Fire Wall Maze": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 87, y: 215, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 37,
+                        LongDescription: "Navigate around the lava room and grab a small box. Enter the encaged area and place the box on the blue switch to light some torches. Hookshot the box to get back up. Use your bow to shoot though one of the torches to light a high up torch on the wall. Go through the door to continue.<br/><br/>Navigate around the fire wall maze to the left until you find the pots."
                     },
                     "Skulltula in Center of Maze": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -5094,7 +5272,7 @@ let MQDungeons = {
                         Order: 2,
                         LongDescription: "These pots are in the transition doorway after you hit the switch in the first room."
                     },
-                    "2 Pots in Center Room": {
+                    "2 Right Pots in Center Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -5102,7 +5280,21 @@ let MQDungeons = {
                         MapInfo: { x: 204, y: 121 },
                         Age: Age.EITHER,
                         Order: 3,
-                        LongDescription: "In the room after the room with the switch, the pots will be on your right. The other pots in the room contain fairies."
+                        LongDescription: "In the room after the room with the switch, the pots will be on your right."
+                    },
+                    "2 Back Pots in Center Room": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 184, y: 95 },
+                        Age: Age.EITHER,
+                        Order: 3.1,
+                        LongDescription: "In the room after the room with the switch, the pots will be along the back wall."
                     }
                 }
             },
@@ -5196,12 +5388,27 @@ let MQDungeons = {
                             return canUseScarecrow ||  Data.canGroundJumpWithBomb(age);
                         }
                     },
+                    //TODO: Empty Pots - remove this item, as the one below will replace it
                     "Pot Before Boss Room": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 116, y: 162 },
                         Age: Age.ADULT,
                         Order: 11,
                         LongDescription: "This pot is the left one next to the boss door. The right pot contains a fairy.",
+                    },
+                    "2 Pots Before Boss Room": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 116, y: 162 },
+                        Age: Age.ADULT,
+                        Order: 11,
+                        LongDescription: "These pots are next to the boss door.",
                     },
                     "Chest at End": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5305,6 +5512,20 @@ let MQDungeons = {
                         Order: 1,
                         LongDescription: "In the main area, bomb the rubble to the left to get to these hearts.",
                         NeedsExplosives: true
+                    },
+                    "Pot Behind Gate": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as it's a fairy pot
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 231, y: 195, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 1.1,
+                        LongDescription: "In the left alcove at the front of the main room, bomb the rock in the wall. Shoot it with your slingshot or bow to open a gate in the southeast corner of the giant room where the pot is.",
+                        NeedToBlastOrSmash: true,
+                        RequiredChildItems: [Items.FAIRY_SLINGSHOT],
+                        RequiredAdultItems: [Items.FAIRY_BOW]
                     }
                 }
             },
@@ -6668,6 +6889,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "14 Pots",
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
                         MapInfo: { x: 175, y: 95, floor: "MN" },
                         Age: Age.EITHER,
                         Order: 31,
@@ -6675,6 +6897,23 @@ let MQDungeons = {
                         LongDescription: "Complete all the trials. Now, go up the center of the castle. This is room after you open the first giant door.",
                         CustomRequirement: function(age) {
                             return Data.canStaircaseHover(age) ||
+                                MapLocations["Ganon's Castle"]._canCompleteTrials(age);
+                        }
+                    },
+                    "18 Pots in Pot Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "18 Pots",
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleEmptyPots; },
+                        MapInfo: { x: 175, y: 95, floor: "MN" },
+                        Age: Age.EITHER,
+                        Order: 32,
+                        IsPostWalkCheck: true,
+                        LongDescription: "Complete all the trials. Now, go up the center of the castle. This is room after you open the first giant door.",
+                        CustomRequirement: function(age) {
+                            return (age === Age.ADULT && Settings.GlitchesToAllow.ganonTrialSkip) || 
+                                Data.canStaircaseHover(age) ||
                                 MapLocations["Ganon's Castle"]._canCompleteTrials(age);
                         }
                     }

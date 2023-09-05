@@ -121,7 +121,7 @@ let Settings = {
 		shuffleCarpetAndMedigoron: true,
 		shuffleAllFrogSongs: true,
 		shuffleBeehives: true,
-		shuffleSilverRupees: false,
+		shuffleSilverRupees: true,
 		bombchusInLogic: true,
 		deadHandNeedsSword: false,
 		iceArrowsActAsBlueFire: true,

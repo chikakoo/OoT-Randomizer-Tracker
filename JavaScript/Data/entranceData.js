@@ -2608,6 +2608,51 @@ GrottoGroups = {
 			}
 		}
 	},
+	"8 Pots": {
+		tooltip: "A set of 8 pots.",
+		buttons: {
+			"Pot 1": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 1."
+			},
+			"Pot 2": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 2."
+			},
+			"Pot 3": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 3."
+			},
+			"Pot 4": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 4."
+			},
+			"Pot 5": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 5."
+			},
+			"Pot 6": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 6."
+			},
+			"Pot 7": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 7."
+			},
+			"Pot 8": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 8."
+			}
+		}
+	},
 	"14 Pots": {
 		tooltip: "A set of 14 pots.",
 		buttons: {
@@ -2677,6 +2722,101 @@ GrottoGroups = {
 				description: "One of the many pots in the room."
 			},
 			"Pot 14": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			}
+		}
+	},
+	"18 Pots": {
+		tooltip: "A set of 18 pots.",
+		buttons: {
+			"Pot 1": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 2": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 3": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 4": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 5": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 6": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 7": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 8": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 9": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 10": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 11": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 12": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 13": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 14": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 15": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 16": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 17": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room."
+			},
+			"Pot 18": {
 				icon: "Pot",
 				itemGroup: ItemGroups.POT,
 				description: "One of the many pots in the room."
