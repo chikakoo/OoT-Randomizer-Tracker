@@ -120,14 +120,16 @@ let Settings = {
 		shuffleHyruleLoach: true,
 		shuffleCarpetAndMedigoron: true,
 		shuffleAllFrogSongs: true,
+		shuffleBeehives: true,
+		shuffleSilverRupees: false,
 		bombchusInLogic: true,
 		deadHandNeedsSword: false,
 		iceArrowsActAsBlueFire: true,
 		rupeeAndHeartSetting: ShuffleLocationSettings.ALL,
 		potSetting: ShuffleLocationSettings.ALL,
+		shuffleEmptyPots: true,
 		crateSetting: ShuffleLocationSettings.ALL,
-		shuffleBeehives: true,
-		shuffleSilverRupees: false,
+		shuffleEmptyCrates: true,
 		
 		// Entrance shuffle settings
 		shuffleInteriorEntrances: true,

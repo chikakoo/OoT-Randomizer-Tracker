@@ -116,7 +116,8 @@ let _performItemDisabling = function() {
 			let itemGroup = itemLocation.OverrideItemGroup !== undefined
 				? itemLocation.OverrideItemGroup
 				: itemLocation.ItemGroup;
-			if (shouldDisableItemLocationGroup(itemGroup, itemLocation.IsDungeon, itemLocation.ScrubSanityNotRequired)) {
+			if (shouldDisableItemLocationGroup(
+					itemGroup, itemLocation.IsDungeon, itemLocation.ScrubSanityNotRequired, itemLocation.IsEmpty)) {
 				itemLocation.disabled = true;
 				return;
 			}
@@ -162,9 +163,10 @@ let _performItemDisabling = function() {
  * @param {Number} itemGroup - the item group to check
  * @param {Boolean} isDungeon - (false by default) whether the item location is in a dungeon
  * @param {Boolean} isScrubSanityRequired (false by default) whether scrub sanity is required for this scrub item
+ * @param {Boolean} isEmpty (false by default) wher this is an empty pot or crate location
  * @returns True if we should disable the item location, false otherwise
  */
-let shouldDisableItemLocationGroup = function(itemGroup, isDungeon, isScrubSanityRequired) {
+let shouldDisableItemLocationGroup = function(itemGroup, isDungeon, isScrubSanityRequired, isEmpty) {
 		let shuffleLocationSettingValue = null;
 		switch(itemGroup) {
 			case ItemGroups.SKULLTULA:
@@ -175,9 +177,15 @@ let shouldDisableItemLocationGroup = function(itemGroup, isDungeon, isScrubSanit
 				break;
 			case ItemGroups.POT:
 				shuffleLocationSettingValue = Settings.RandomizerSettings.potSetting;
+				if (isEmpty && !Settings.RandomizerSettings.shuffleEmptyPots) {
+					return true;
+				}
 				break;
 			case ItemGroups.CRATE:
 				shuffleLocationSettingValue = Settings.RandomizerSettings.crateSetting;
+				if (isEmpty && !Settings.RandomizerSettings.shuffleEmptyCrates) {
+					return true;
+				}
 				break;
 
 			case ItemGroups.SILVER_RUPEE:

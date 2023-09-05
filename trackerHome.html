@@ -683,6 +683,11 @@
 							<label onclick='SettingsPage.setOptionValueForRandomizer("potSetting", event)' title="Only pots in the overworld are shuffled.">
 								<input type="radio" name="potSetting" value=3>Only Overworld
 							</label>
+							<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleEmptyPots", event)'
+								title="Include the empty pots in the pool of shuffled pots.">
+								<input type="checkbox" name="shuffleEmptyPots" value="shuffleEmptyPots">
+								Include Empty Pots
+							</label>
 						</div>
 
 						<div class="settings-radio-group" title="This controls which crates are shuffled with the rest of the items.">
@@ -698,6 +703,11 @@
 							</label>
 							<label onclick='SettingsPage.setOptionValueForRandomizer("crateSetting", event)' title="Only crates in the overworld are shuffled.">
 								<input type="radio" name="crateSetting" value=3>Only Overworld
+							</label>
+							<label onclick='SettingsPage.setBooleanValueForRandomizer("shuffleEmptyCrates", event)'
+								title="Include the empty crates in the pool of shuffled crates.">
+								<input type="checkbox" name="shuffleEmptyCrates" value="shuffleEmptyCrates">
+								Include Empty Crates
 							</label>
 						</div>
 					</div>
