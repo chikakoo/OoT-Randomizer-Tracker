@@ -2553,6 +2553,36 @@ GrottoGroups = {
 			}
 		}
 	},
+	"5 Pots": {
+		tooltip: "A set of 5 pots.",
+		buttons: {
+			"Pot 1": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 1."
+			},
+			"Pot 2": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 2."
+			},
+			"Pot 3": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 3."
+			},
+			"Pot 4": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 4."
+			},
+			"Pot 5": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "Pot 5."
+			}
+		}
+	},
 	"10 Pots": {
 		tooltip: "A set of 10 pots.",
 		buttons: {

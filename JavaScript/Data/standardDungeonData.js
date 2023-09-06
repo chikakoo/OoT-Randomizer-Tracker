@@ -817,6 +817,7 @@ let StandardDungeons = {
                         Order: 2,
                         LongDescription: "In the room with the rising platform (the second room of the dungeon), fall down into the water. Dive down and swim into the adjacent room - it's straight ahead from the door. There's a scrub on the other side."
                     },
+                    //TODO: Empty Pots - remove this item, as the one below will replace it
                     "4 Pots in Room by Vines": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -826,6 +827,22 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "Fall down one of the holes to get to the main room on the bottom. Enter the door by the vines back up. Either stun the jello with your boomerang to cross, or use hover boots. The pots are on the other side - one is always a fairy.",
+                        RequiredChildItems: [Items.BOOMERANG],
+                        RequiredChoiceOfAdultItems: [Items.BOOMERANG, Equipment.HOVER_BOOTS]
+                    },
+                    "5 Pots in Room by Vines": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "5 Pots",
+                        MapInfo: { x: 32, y: 188, floor: "B1" },
+                        Age: Age.EITHER,
+                        Order: 3,
+                        LongDescription: "Fall down one of the holes to get to the main room on the bottom. Enter the door by the vines back up. Either stun the jello with your boomerang to cross, or use hover boots. The pots are on the other side.",
                         RequiredChildItems: [Items.BOOMERANG],
                         RequiredChoiceOfAdultItems: [Items.BOOMERANG, Equipment.HOVER_BOOTS]
                     },
@@ -852,6 +869,7 @@ let StandardDungeons = {
                         Order: 6,
                         LongDescription: "In the room with the water and the switch (the first one you usually take Ruto into), there's a skulltula hanging out on the vines. Take it out, then raise the water to collect its token. Note that you can reach it with a jumpslash if you jump off the cliff then jumpslash when you're a bit closer.",
                     },
+                    //TODO: Empty Pots - remove this item, as the one below will replace it
                     "2 Pots Above Vines": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -861,6 +879,20 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 7,
                         LongDescription: "These pots are above the vines in the room with the water and the switch (the first one you usually take Ruto into). One of the pots there will always contain a fairy."
+                    },
+                    "3 Pots Above Vines": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 258, y: 152, floor: "B1" },
+                        Age: Age.EITHER,
+                        Order: 7,
+                        LongDescription: "These pots are above the vines in the room with the water and the switch (the first one you usually take Ruto into)."
                     },
                     "Boomerang Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -898,6 +930,7 @@ let StandardDungeons = {
                     roomBeforeBoss: {}
                 },
                 ItemLocations: {
+                    //TODO: Empty Pots - remove this item, as the one below will replace it
                     "2 Pots After Big Octo": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -908,6 +941,21 @@ let StandardDungeons = {
                         UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         Order: 11,
                         LongDescription: "After defeating all the tentacles, go defeat Big Octo. Ride up the elevator - the pots are in this room on the back wall. One of them always contains a fairy."
+                    },
+                    "3 Pots After Big Octo": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 101, y: 32, floor: "F2" },
+                        Age: Age.EITHER,
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        Order: 11,
+                        LongDescription: "After defeating all the tentacles, go defeat Big Octo. Ride up the elevator - the pots are in this room on the back wall."
                     }
                 }
             },
@@ -1137,7 +1185,7 @@ let StandardDungeons = {
                     },
                     "Chest Behind Main Room": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 170, y: 16, floor: "F1" },
+                        MapInfo: { x: 170, y: 31, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 6,
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go straight again through the room with the blue bubble. In the next room, kill the two stalfos to spawn the chest."
@@ -3680,8 +3728,20 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 135, y: 104, floor: "B1" },
                         Age: Age.ADULT,
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
                         Order: 33,
                         LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across.<br/><br/>The pot is the one on the right near where the bridge falls (the other pot is empty)."
+                    },
+                    "2 Pots on Boat Side of Chasm": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 138, y: 104, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 33,
+                        LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. The parts are near where the bridge falls."
                     },
                     "Pot in Spike Wall Room": {
                         ItemGroup: ItemGroups.POT,
@@ -3981,7 +4041,20 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         AltOrder: 39,
-                        LongDescription: "Enter the child-only crawlspace. Kill all the enemies in the first room to unlock the doors - BEWARE OF FIRE KEESE! Enter the left room. The goal in this room is to hit the switch to lower the bridge to get the chest on the other side. There are a few ways to do this. The easiest way is to simply use the boomerang to go around the bridge blocking the switch. If you have the slingshot, you can inch up to the ledge closest to the door and make a precise shot - be sure to go quick if you don't have the means to kill the stalfos.<br/><br/>To use a bombchu, line up with the back wall and face the switch. Take out the chu then drop it after the first flash (like 1/2 a second).<br/><br/>Note that the flying pot you want to hit you is the one on the right; the left one contains nothing."
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
+                        LongDescription: "Enter the child-only crawlspace. Kill all the enemies in the first room to unlock the doors - BEWARE OF FIRE KEESE! Enter the left room. The goal in this room is to hit the switch to lower the bridge to get the pot on the other side. There are a few ways to do this. The easiest way is to simply use the boomerang to go around the bridge blocking the switch. If you have the slingshot, you can inch up to the ledge closest to the door and make a precise shot - be sure to go quick if you don't have the means to kill the stalfos.<br/><br/>To use a bombchu, line up with the back wall and face the switch. Take out the chu then drop it after the first flash (like 1/2 a second).<br/><br/>Note that the flying pot you want to hit you is the one on the right; the left one contains nothing."
+                    },
+                    "2 Flying Pots After Stalfos": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 39, y: 81, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 3,
+                        AltOrder: 39,
+                        LongDescription: "Enter the child-only crawlspace. Kill all the enemies in the first room to unlock the doors - BEWARE OF FIRE KEESE! Enter the left room. The goal in this room is to hit the switch to lower the bridge to get the pots on the other side. There are a few ways to do this. The easiest way is to simply use the boomerang to go around the bridge blocking the switch. If you have the slingshot, you can inch up to the ledge closest to the door and make a precise shot - be sure to go quick if you don't have the means to kill the stalfos.<br/><br/>To use a bombchu, line up with the back wall and face the switch. Take out the chu then drop it after the first flash (like 1/2 a second)."
                     },
                     "Chest After Stalfos": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3997,7 +4070,20 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 5,
                         AltOrder: 41,
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
                         LongDescription: "Enter the room after the Stalfos with the bridge. The pot is the one right in front of you - the others are empty."
+                    },
+                    "4 Pots in Child Anubis Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "4 Pots",
+                        MapInfo: { x: 84, y: 37, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 5,
+                        AltOrder: 41,
+                        LongDescription: "Enter the room after the Stalfos with the bridge. The potsare in a line in front of you."
                     }
                 }
             },
@@ -4280,6 +4366,18 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
+                    "3 Left Pots in Statue Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 112, y: 134, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 13.1,
+                        AltOrder: 11.1,
+                        LongDescription: "Head to the statue room. These pots are in a corner to the left of the statue, near the climbable wall."
+                    },
                     "Left Flying Pot in Statue Room": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 131, y: 118, floor: "F2" },
@@ -4287,6 +4385,18 @@ let StandardDungeons = {
                         Order: 14,
                         AltOrder: 12,
                         LongDescription: "Head to the statue room. The pot will fly at you if you go to the left of the statue."
+                    },
+                    "3 Right Pots in Statue Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 240, y: 134, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 14.1,
+                        AltOrder: 12.1,
+                        LongDescription: "Head to the statue room. These pots are in a corner to the right of the statue."
                     },
                     "Right Flying Pot in Statue Room": {
                         ItemGroup: ItemGroups.POT,

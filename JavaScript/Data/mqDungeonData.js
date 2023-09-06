@@ -1545,7 +1545,7 @@ let MQDungeons = {
                 ItemLocations: {
                     "Chest North of Main Room": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 170, y: 19, floor: "F1" },
+                        MapInfo: { x: 170, y: 31, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 6,
                         LongDescription: "Proceed straight ahead in the main room. After the hallway, kill the two wolfos to spawn the chest.<br/><br/>If you don't have the song of time, it's possible to get here from the above room. This is the room after the red poe room - drop down before killing the first Stalfos.",
@@ -4593,6 +4593,7 @@ let MQDungeons = {
                         AltOrder: 47,
                         LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. The pots are by the gibdos."
                     },
+                    //TODO: Empty Pots - remove this item, as the one below will replace it
                     "3 Pots in Child Stalfos Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -4603,6 +4604,21 @@ let MQDungeons = {
                         Order: 8,
                         AltOrder: 48,
                         LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. In the next room, kill the Stalfos - this will lower the fire so you can get the pots (one contains a fairy)."
+                     },
+                     "4 Pots in Child Stalfos Room": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Pots",
+                        MapInfo: { x: 86, y: 19, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 8,
+                        AltOrder: 48,
+                        LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. In the next room, kill the Stalfos - this will lower the fire so you can get the pots."
                      },
                     "Small Chest in Bridge Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4705,6 +4721,24 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
+                    "Flying Pot on Statue Room Stairs": {
+                        ItemGroup: ItemGroups.POT,
+                        IsEmpty: true,
+                        MapInfo: { x: 147, y: 189, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 14.1,
+                        AltOrder: 10.2,
+                        LongDescription: "This pot is on the southwest staircase (the one either age can access)."
+                    },
+                    "Small Crate by Statue Room Stairs": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 131, y: 158, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 14.2,
+                        AltOrder: 10.1,
+                        LongDescription: "This small crate is next to the southwest staircase. Depending on your age, it may be on a Song of Time block."
+                    },
                     "Left Pot in Statue Room": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 116, y: 135, floor: "F2" },
@@ -4739,11 +4773,24 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
                         MapInfo: { x: 239, y: 135, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 18,
                         AltOrder: 8,
                         LongDescription: "WALL MASTER WARNING:<br/>These pots are on the right side of the statue by the flying pot that gives nothing.",
+                    },
+                    "3 Right Pots in Statue Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 239, y: 135, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 18,
+                        AltOrder: 8,
+                        LongDescription: "WALL MASTER WARNING:<br/>These pots are on the right side of the statue. One of them is a flying pot.",
                     },
                     "Invisible Chest in Statue Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4768,7 +4815,26 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 20,
                         AltOrder: 11,
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way up the western side. The pots are on the northeast platform, so either play the song of time to spawn the block, use hover boots, or megaflip to it.",
+                        CustomRequirement: function(age) {
+                            if (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas) {
+                                return true;
+                            }
+                            return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canMegaFlip(age);
+                        }
+                    },
+                    "2 Upper Northeast Left Pots in Statue Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 101, y: 100, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 20,
+                        AltOrder: 11,
+                        LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way up the western side. The pots are on the northeast platform, so either play the song of time to spawn the block, use hover boots, or megaflip to it. One of the pots will fly at you.",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas) {
                                 return true;
@@ -4787,7 +4853,9 @@ let MQDungeons = {
                             if (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas) {
                                 return true;
                             }
-                            return Data.canUseBoomerang(age) || Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canMegaFlip(age);
+                            return (Settings.GlitchesToAllow.difficultBoomerangTrickThrows && Data.canUseBoomerang(age)) || 
+                                Data.canPlaySong(Songs.SONG_OF_TIME) || 
+                                Data.canMegaFlip(age);
                         }
                     }
                 }
@@ -4932,7 +5000,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 40,
                         AltOrder: 32,
-                        LongDescription: "In the beamos room, the puzzle is to play the Song of Time to move the blocks so that the little box falls down onto one of the blocks. You then use that box to hold the switch down.<br/><br/>The chest is in plain sight in the room."
+                        LongDescription: "In the beamos room, the puzzle is to play the Song of Time to move the blocks so that the little box falls down onto one of the blocks. Play it by the left side of the room, then by the hole twice. You then use that box to hold the switch down.<br/><br/>The chest is in plain sight in the room."
                     },
                     "Boss Key Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4957,6 +5025,16 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
+                    "Small Crate in Beamos Room": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 255, y: 105, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 38.1,
+                        AltOrder: 30.1,
+                        LongDescription: "From the statue room, hookshot to the torch to get to the southeast side. Use a key to go in the top door.<br/><br/>Play the Song of Time by the block in the left side of the room. Now play it twice by the other blocks. You can now get to the small crate.",
+                        RequiredSongs: [Songs.SONG_OF_TIME]
+                    },
                     "Chest in Beamos Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 284, y: 77, floor: "F3" },
