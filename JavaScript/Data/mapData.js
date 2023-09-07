@@ -847,25 +847,47 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    "2 Crates by Bazaar": {
+                    "2 Day Crates by Bazaar": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsItemLocationGroup: true,
+                        IsEmpty: true,
                         DefaultEntranceGroupName: "2 Crates",
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 303, y: 203 },
+                        Time: function() { return Time.DAY; },
+                        MapInfo: { x: 303, y: 200 },
                         Age: Age.CHILD,
-                        LongDescription: "These crates are on either side of the bazaar door. They only drop items at night."
+                        LongDescription: "These crates are on either side of the bazaar door. These are the ones there during the day."
                     },
-                    "2 Crates by Archery": {
+                    "2 Night Crates by Bazaar": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 250, y: 126 },
+                        MapInfo: { x: 303, y: 206 },
                         Age: Age.CHILD,
-                        LongDescription: "These crates are on the right side of the archery minigame door. They only drop items at night."
+                        LongDescription: "These crates are on either side of the bazaar door. These are the ones there during the night."
+                    },
+                    "2 Day Crates by Archery": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        Time: function() { return Time.DAY; },
+                        MapInfo: { x: 250, y: 123 },
+                        Age: Age.CHILD,
+                        LongDescription: "These crates are on the right side of the archery minigame door. These are the ones there during the day."
+                    },
+                    "2 Night Crates by Archery": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 250, y: 129 },
+                        Age: Age.CHILD,
+                        LongDescription: "These crates are on the right side of the archery minigame door. These are the ones there during the night."
                     }
                 }
             },
@@ -1229,7 +1251,7 @@ let MapLocations = {
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 136, y: 247 },
+                        MapInfo: { x: 136, y: 249 },
                         Age: Age.CHILD,
                         LongDescription: "These pots are next to the door to Impa's house."
                     },
@@ -1260,17 +1282,115 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "These pots are next to the door to Granny's Potion Shop in the enclosed area."
                     },
+                    "Crate by Graveyard": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 333, y: 212 },
+                        Age: Age.CHILD,
+                        LongDescription: "This crate is by the loading zone to the graveyard, in the corner."
+                    },
+                    "Crate by Windmill": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 264, y: 155 },
+                        Age: Age.CHILD,
+                        LongDescription: "This crate is by the door to the windmill."
+                    },
+                    "Crate Outside Enclosed Area": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 248, y: 143 },
+                        Age: Age.CHILD,
+                        LongDescription: "This crate is by the gate leading to the enclosed area, on the outside near the windmill platform."
+                    },
+                    "Cucco Crate by Talon's House": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 156, y: 155 },
+                        Age: Age.CHILD,
+                        LongDescription: "This is the crate with the cucco in it next to Talon's House."
+                    },
+                    "Crate Below Bazaar": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 99, y: 121 },
+                        Age: Age.CHILD,
+                        LongDescription: "This is the crate just up the stairs, where the beggar is as Adult."
+                    },
                     "Crate by Archery or Beggar": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 185, y: 192 },
                         Age: Age.ADULT,
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
                         LongDescription: "This crate is next to the entrance to the archery minigame or close to the beggar near the watchtower. The drop is shared between the two."
+                    },
+                    "Crate Behind House of Skulltulas": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 108, y: 203 },
+                        Age: Age.ADULT,
+                        LongDescription: "This crate is behind the house of skulltulas, by the ledge."
+                    },
+                    "2 Crates by Impa's House": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 136, y: 245 },
+                        Age: Age.ADULT,
+                        LongDescription: "These crates are next to Impa's House."
+                    },
+                    "Crate by Archery": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 185, y: 192 },
+                        Age: Age.ADULT,
+                        LongDescription: "This crate is by the entrance to the archery minigame."
+                    },
+                    "2 Crates by Talon's House": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 166, y: 175 },
+                        Age: Age.ADULT,
+                        LongDescription: "These crates are next to Talon's House."
+                    },
+                    "2 Crates by Beggar": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 118, y: 122 },
+                        Age: Age.ADULT,
+                        LongDescription: "These crates are next to the beggar up the stairs."
+                    },
+                    "Crate by Potion Shop Entrance": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 154, y: 83 },
+                        Age: Age.ADULT,
+                        LongDescription: "This crate is by the entrance to the potion shop."
                     },
                     "Crate Behind Potion Shop": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 249, y: 134 },
                         Age: Age.ADULT,
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
                         LongDescription: "One of the four crates in the enclosed area will drop an item - it's random which it is."
+                    },
+                    "4 Crates Behind Potion Shop": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "4 Crates",
+                        MapInfo: { x: 249, y: 134 },
+                        Age: Age.ADULT,
+                        LongDescription: "The four crates in the enclosed area behind the potion shop."
                     }
                 }
             },
@@ -1293,6 +1413,16 @@ let MapLocations = {
         Regions: {
             main: {
                 Exits: {
+                    crateLedge: {
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            let beanIsPlanted = Data.itemLocationObtained("Graveyard", "main", "*Plant Bean by Dampe's Grave");
+                            return Items.HOOKSHOT.currentUpgrade === 2 || beanIsPlanted || Data.canWeirdShot(age);
+                        }
+                    },
+                    freestandingItemInCrate: {
+                        RequiredItems: [Items.BOOMERANG]
+                    },
                     top: {
                         CustomRequirement: function(age) {
                             return Data.canGetToGraveyardTopEarly(age);
@@ -1336,23 +1466,6 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "Get to the graveyard when it's barely night time. If you play the Sun's Song, make sure you do it where time passes, then quickly take the exit to Kakariko before it becomes too late. Simply talk to Dampe and pay him 10 rupees to get this item."
                     },
-                    "Heart Piece in Crate": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 147, y: 81 },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.boomerangGraveyardHP; },
-                        LongDescription: "Plant a magic bean in the soft soil as a child. Come back as adult to get the item from the crate. Alternatively, the Longshot can reach the crate if you stand on one of the graves.",
-                        CustomRequirement: function(age) {
-                            if (Data.canUseBoomerang(age)) { 
-                                return Settings.GlitchesToAllow.boomerangGraveyardHP && Data.canUseBoomerang(age);
-                            }
-                            
-                            if (age === Age.CHILD) { return false; }
-                            
-                            let beanIsPlanted = Data.itemLocationObtained("Graveyard", "main", "*Plant Bean by Dampe's Grave");
-                            return Items.HOOKSHOT.currentUpgrade === 2 || beanIsPlanted || Data.canWeirdShot(age);
-                        }
-                    },
                     "Skulltula in Soil": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 159, y: 91 },
@@ -1386,7 +1499,33 @@ let MapLocations = {
                     }
                 },
             },
-
+            crateLedge: {
+                Exits: {
+                    freestandingItemInCrate: {},
+                },
+                ItemLocations: {
+                    "Crate Above Soft Soil": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 147, y: 84 },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.boomerangGraveyardHP; },
+                        LongDescription: "Plant a magic bean in the soft soil as a child. Come back as adult to get the item from the crate. Alternatively, the Longshot can reach the crate if you stand on one of the graves."
+                    }
+                }
+            },
+            freestandingItemInCrate: {
+                Exits: {},
+                ItemLocations: {
+                    "Heart Piece in Crate": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 147, y: 78 },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.boomerangGraveyardHP; },
+                        LongDescription: "Plant a magic bean in the soft soil as a child. Come back as adult to get the item from the crate. Alternatively, the Longshot can reach the crate if you stand on one of the graves."
+                    }
+                }
+            },
             top: {
                 DuplicateWarpSongPriority: 1,
                 Exits: {
@@ -1413,7 +1552,6 @@ let MapLocations = {
                     }
                 }
             },
-
             royalFamilyTomb: {
                 ExcludeFromSpawnList: true,
                 Exits: {
@@ -1424,7 +1562,6 @@ let MapLocations = {
                 },
                 ItemLocations: {}
             },
-
             shadowTemple: {
                 ExcludeFromSpawnList: true,
                 Exits: {
@@ -3247,6 +3384,7 @@ let MapLocations = {
                 ItemLocations: {
                     "Opened Gate": {
                         ItemGroup: ItemGroups.NON_ITEM,
+                        MapImageName: "Gerudo Membership Card",
                         MapInfo: { x: 81, y: 98 },
                         Age: Age.ADULT,
                         Region: "main",
@@ -3254,6 +3392,26 @@ let MapLocations = {
                         CustomRequirement: function() {
                             return Data.areGerudoGuardsTame();
                         }
+                    },
+                    "2 Crates Right of Bottom Left Door": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 124, y: 154 },
+                        Age: Age.EITHER,
+                        LongDescription: "These are the two crates on the bottom to the right of the bottom left hideout entrance."
+                    },
+                    "4 Crates in Bottom Enclave": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "4 Crates",
+                        MapInfo: { x: 132, y: 176 },
+                        Age: Age.EITHER,
+                        LongDescription: "These are the four crates on the bottom in the safe area with the two hideout entrances."
                     }
                 }
             },
@@ -3409,6 +3567,46 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
+                    "2 Crates by HBA Right Target": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 241, y: 252 },
+                        Age: Age.EITHER,
+                        LongDescription: "These are the crates by the horseback archery's giant right target."
+                    },
+                    "2 Crates by HBA Start": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 250, y: 233 },
+                        Age: Age.EITHER,
+                        LongDescription: "These are the crates by the start of the horseback archery minigame."
+                    },
+                    "6 Crates by HBA Center Targets": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "6 Crates",
+                        MapInfo: { x: 266, y: 144 },
+                        Age: Age.EITHER,
+                        LongDescription: "These are the crates by horseback archery's center targets."
+                    },
+                    "2 Crates by HBA Left Target": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 243, y: 52 },
+                        Age: Age.EITHER,
+                        LongDescription: "These are the crates by the horseback archery's giant left target."
+                    },
                     "Archery Minigame 1000 Points": {
                         ItemGroup: ItemGroups.GIFT,
                         Time: function() { return Time.DAY; },
@@ -3923,6 +4121,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "These crates are by the flags just across the quicksand pit."
                     },
+                    //TODO: Empty Pots - remove this item, as the one below will replace it
                     "3 Pots at Outpost": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -3931,6 +4130,19 @@ let MapLocations = {
                         MapInfo: { x: 214, y: 89 },
                         Age: Age.EITHER,
                         LongDescription: "These pots are in the outpost in the center of the desert (there are 4, but one always gives a fairy)."
+                    },
+                    "4 Pots at Outpost": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Pots",
+                        MapInfo: { x: 214, y: 89 },
+                        Age: Age.EITHER,
+                        LongDescription: "These pots are in the outpost in the center of the desert."
                     }
                 }
             },

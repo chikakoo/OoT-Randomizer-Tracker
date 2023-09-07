@@ -435,10 +435,31 @@ InteriorGroups = {
 				},
 				isAdultOnly: function() { return true; }
 			},
-			"Crate as Child": {
+			"Crate as Child 1": {
 				icon: "Crate",
 				itemGroup: ItemGroups.CRATE,
-				description: "The third crate on your left as you enter is the only one that contains an item.",
+				description: "If not including empty crates, this is the third crate on your left.",
+				isChildOnly: function() { return true; }
+			},
+			"Crate as Child 2": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "One of the crates in the room.",
+				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
+				isChildOnly: function() { return true; }
+			},
+			"Crate as Child 3": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "One of the crates in the room.",
+				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
+				isChildOnly: function() { return true; }
+			},
+			"Crate as Child 4": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "One of the crates in the room.",
+				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
 				isChildOnly: function() { return true; }
 			},
 			"Child Pot 1": {
@@ -573,6 +594,138 @@ InteriorGroups = {
 				description: "One of the many pots in the room.",
 				isChildOnly: function() { return true; }
 			},
+			"Child Pot 23": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the two pots on the top. Use the box with the skulltula on it to jump to it.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 24": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the two pots on the top. Use the box with the skulltula on it to jump to it.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 25": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 26": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 27": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 28": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 29": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 30": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 31": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 32": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 33": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 34": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 35": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 36": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 37": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 38": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 39": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 40": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 41": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 42": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 43": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
+			"Child Pot 44": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				description: "One of the many pots in the room.",
+				isChildOnly: function() { return true; }
+			},
 			"Adult Pot 1": {
 				icon: "Pot",
 				itemGroup: ItemGroups.POT,
@@ -620,6 +773,38 @@ InteriorGroups = {
 				itemGroup: ItemGroups.POT,
 				tag: "adult",
 				description: "One of the many pots in the room.",
+				isAdultOnly: function() { return true; }
+			},
+			"Adult Pot 8": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				tag: "adult",
+				description: "One of the many pots in the room.",
+				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
+				isAdultOnly: function() { return true; }
+			},
+			"Adult Pot 9": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				tag: "adult",
+				description: "One of the many pots in the room.",
+				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
+				isAdultOnly: function() { return true; }
+			},
+			"Adult Pot 10": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				tag: "adult",
+				description: "One of the many pots in the room.",
+				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
+				isAdultOnly: function() { return true; }
+			},
+			"Adult Pot 11": {
+				icon: "Pot",
+				itemGroup: ItemGroups.POT,
+				tag: "adult",
+				description: "One of the many pots in the room.",
+				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
 				isAdultOnly: function() { return true; }
 			}
 		}
