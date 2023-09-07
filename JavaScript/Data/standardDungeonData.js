@@ -2787,11 +2787,9 @@ let StandardDungeons = {
             },
             highWaterLevel: {
                 Exits: {
-                    bossRoom: {
+                    bossAntechamber: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            if (!hasBossKey("Water Temple")) { return false; }
-
                             let hasLongshot = Items.HOOKSHOT.currentUpgrade === 2;
                             let canSkipLongshot = Data.canHammerHoverBootsSuperslide(age);
                             return hasLongshot || canSkipLongshot;
@@ -2801,7 +2799,7 @@ let StandardDungeons = {
                         Map: "Water Temple",
                         Age: Age.ADULT,
                         LockedDoor: "Locked Door on Top Floor"
-                    },
+                    }
                 },
 
                 ItemLocations: {
@@ -2815,6 +2813,32 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
                         }
+                    }
+                }
+            },
+            bossAntechamber: {
+                Exits: {
+                    bossRoom: {
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            return hasBossKey("Water Temple");
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "2 Pots by Boss Antechamber": {
+                        //TODO: Empty Pots - remove this function, as these pots contain faries
+                        RequiredToAppear: function() { 
+                            return false; 
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 227, y: 175, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 0.1,
+                        LongDescription: "With the water level raised, longshot to the back area of the top floor. The pots are by the door leading to the boss room antechamber."
                     }
                 }
             },
@@ -2914,12 +2938,27 @@ let StandardDungeons = {
                         Order: 10,
                         LongDescription: "In the whirlpool river, this is one of the items you'll run into while swimming (before the third vortex)."
                     },
+                    //TODO: Empty Pots - remove this item, as the one below will replace it
                     "Pot at End of Whirlpool Room": {
                         ItemGroup: ItemGroups.POT,
                         Age: Age.ADULT,
                         Order: 11,
                         MapInfo: { x: 49, y: 160, floor: "F1" },
                         LongDescription: "Start from the longshot chest room. Play the Song of Time to clear the block from the floor. Drop down. Swim to the end of the room - the pots is the right one on a ledge (the other is a fairy)."
+                    },
+                    "2 Pots at End of Whirlpool Room": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        Age: Age.ADULT,
+                        Order: 11,
+                        MapInfo: { x: 49, y: 160, floor: "F1" },
+                        LongDescription: "Start from the longshot chest room. Play the Song of Time to clear the block from the floor. Drop down. Swim to the end of the room - the pots are on a ledge."
                     },
                     "Chest at End of Whirlpool Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3026,6 +3065,20 @@ let StandardDungeons = {
             bossKeyRoom: {
                 Exits: {},
                 ItemLocations: {
+                    "2 Pots in Boss Key Room": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as these are fairy pots
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 124, y: 53, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 32.1,
+                        LongDescription: "From the waterfall, use iron boots to navigate under the water to the locked door to the chest. If you don't have iron boots, you can jump from the platform with the door to the water to sink low enough to advance. The pots are in the back corners of the room."
+                    },
                     "Boss Key Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         Age: Age.ADULT,

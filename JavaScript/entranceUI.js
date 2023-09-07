@@ -71,6 +71,10 @@ let EntranceUI = {
 		let group = entranceData[groupName];
 		let groupProperty = Data.usesDefaultGroup(itemLocation) ? "DefaultEntranceGroup" : "EntranceGroup";
 
+		if (!group) {
+			throw Error(`ERROR in EntranceUI.initializeEntranceGroupData: Attempted to initialize non-existent group '${groupName}' for item location '${itemLocation.Name}'`);
+		}
+
 		itemLocation[groupProperty] = {
 			name: groupName,
 			isShop: group.isShop,

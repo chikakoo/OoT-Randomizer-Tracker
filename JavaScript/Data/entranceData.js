@@ -3018,6 +3018,66 @@ GrottoGroups = {
 			}
 		}
 	},
+	"11 Crates": {
+		tooltip: "A set of 11 crates.",
+		buttons: {
+			"Crate 1": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 1."
+			},
+			"Crate 2": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 2."
+			},
+			"Crate 3": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 3."
+			},
+			"Crate 4": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 4."
+			},
+			"Crate 5": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 5."
+			},
+			"Crate 6": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 6."
+			},
+			"Crate 7": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 7."
+			},
+			"Crate 8": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 8."
+			},
+			"Crate 9": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 9."
+			},
+			"Crate 10": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 10."
+			},
+			"Crate 11": {
+				icon: "Crate",
+				itemGroup: ItemGroups.CRATE,
+				description: "Crate 11."
+			}
+		}
+	},
 	"14 Crates": {
 		tooltip: "A set of 14 crates.",
 		buttons: {
