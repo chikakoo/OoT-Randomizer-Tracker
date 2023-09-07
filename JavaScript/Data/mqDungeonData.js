@@ -281,6 +281,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         MapInfo: { x: 263, y: 108, floor: "B1" },
+                        MapImageName: "Din's Fire",
                         Age: Age.EITHER,
                         Order: 16.1,
                         LongDescription: "The web on the basement floor. Use sticks or a fire item to burn it.",
@@ -319,6 +320,7 @@ let MQDungeons = {
                             return Settings.RandomizerSettings.shuffleDungeonEntrances && !haveBothShields;
                         },
                         MapInfo: { x: 180, y: 192, floor: "B2" },
+                        MapImageName: "Deku Nut",
                         RequiredChildItems: [Equipment.DEKU_SHIELD],
                         RequiredAdultItems: [Equipment.HYLIAN_SHIELD],
                         Age: Age.EITHER,
@@ -363,6 +365,7 @@ let MQDungeons = {
                     "Opened First Wall": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 134, y: 262, floor: "F1" },
+                        MapImageName: "Bomb",
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "Use an explosive or the hammer to break the first wall. This is used to determine whether Adult opened the door for Child.",
@@ -1009,6 +1012,7 @@ let MQDungeons = {
                     "Opened First Door": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 173, y: 215, floor: "F1" },
+                        MapImageName: "Fairy Slingshot",
                         Age: Age.CHILD,
                         RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         Order: 1,
@@ -1218,6 +1222,7 @@ let MQDungeons = {
                     "Tentacles Defeated": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 172, y: 10, floor: "F1" },
+                        MapImageName: "Boomerang",
                         Age: Age.EITHER,
                         Order: 19,
                         LongDescription: "This is the task to defeat the three tentacles. This is used to help see what Adult can do if he cannot use the boomerang."
@@ -6398,6 +6403,7 @@ let MQDungeons = {
                     "Spawn Ice Arrow Chest": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 164, y: 160 },
+                        MapImageName: "Megaton Hammer",
                         Age: Age.EITHER,
                         Order: 6.2,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },

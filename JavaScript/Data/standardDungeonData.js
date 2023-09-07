@@ -191,6 +191,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleDungeonEntrances; },
                         MapInfo: { x: 263, y: 108, floor: "B1" },
+                        MapImageName: "Din's Fire",
                         Age: Age.EITHER,
                         Order: 12.1,
                         LongDescription: "The web on the basement floor. Use sticks, a fire item, or a bow shot from atop the chest through the torch by the vines in the lower area.",
@@ -229,6 +230,7 @@ let StandardDungeons = {
                             return Settings.RandomizerSettings.shuffleDungeonEntrances && !haveBothShields;
                         },
                         MapInfo: { x: 180, y: 192, floor: "B2" },
+                        MapImageName: "Deku Nut",
                         RequiredChildItems: [Equipment.DEKU_SHIELD],
                         RequiredAdultItems: [Equipment.HYLIAN_SHIELD],
                         Age: Age.EITHER,
@@ -273,6 +275,7 @@ let StandardDungeons = {
                     "Opened First Wall": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 134, y: 262, floor: "F1" },
+                        MapImageName: "Bomb",
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "Use an explosive, hammer, or blue fire to break the first wall. This is used to determine whether Child can get in without anything.",
@@ -2633,6 +2636,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 15,
                         MapInfo: { x: 291, y: 234, floor: "F3" },
+                        MapImageName: "Zelda's Lullaby",
                         LongDescription: "To get here, go to the bottom east wing and float up to the top. If you don't have iron boots, you can longshot the torches to get down there!"
                     },
                     "Chest After Torches in Bottom East Wing": {
@@ -4924,6 +4928,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         RequiredToAppear: function() { return !Data.canUseBlueFire(Age.CHILD); },
                         MapInfo: { x: 211, y: 114 },
+                        MapImageName: "Blue Fire Blue Fire",
                         Age: Age.EITHER,
                         Order: 6.2,
                         LongDescription: "The east wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows.",
@@ -4935,6 +4940,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         RequiredToAppear: function() { return !Data.canUseBlueFire(Age.CHILD); },
                         MapInfo: { x: 157, y: 114 },
+                        MapImageName: "Blue Fire Blue Fire",
                         Age: Age.EITHER,
                         Order: 6.3,
                         LongDescription: "The west wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows.",

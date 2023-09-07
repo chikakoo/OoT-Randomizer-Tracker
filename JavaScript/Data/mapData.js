@@ -1015,6 +1015,7 @@ let MapLocations = {
                     },
                     "Wake up Talon": {
                         ItemGroup: ItemGroups.NON_ITEM,
+                        MapImageName: "Weird Egg Chicken",
                         Age: Age.CHILD,
                         MapInfo: { x: 193, y: 38, floor: "HYR" },
                         LongDescription: "Wait for the Weird Egg to hatch, then wake up Talon. This unlocks a few things in Lon Lon Ranch.",
@@ -1172,6 +1173,7 @@ let MapLocations = {
                     },
                     "Show Guard Letter": {
                         ItemGroup: ItemGroups.NON_ITEM,
+                        MapImageName: "Zelda's Letter",
                         RequiredToAppear: function() {
                             return Settings.RandomizerSettings.openKakariko === OpenKakarikoSettings.VANILLA;
                         },
@@ -1733,6 +1735,7 @@ let MapLocations = {
                     "Drain Well Water": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 244, y: 243, floor: "WND" },
+                        MapImageName: "Song of Storms",
                         Age: Age.CHILD,
                         LongDescription: "Play the song of storms by the windmill guy to drain the well water.",
                         RequiredSongs: [Songs.SONG_OF_STORMS]
@@ -1845,6 +1848,7 @@ let MapLocations = {
                     "Break Rocks Blocking Top Path":  {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 202, y: 201 },
+                        MapImageName: "Bomb",
                         Age: Age.EITHER,
                         LongDescription: "Used for co-op. These are the rocks blocking the path to Death Mountain Crater.",
                         NeedToBlastOrSmash: true,
@@ -2387,6 +2391,7 @@ let MapLocations = {
                     "Rocks Blocking Lost Woods": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 212, y: 178 },
+                        MapImageName: "Bomb",
                         Age: Age.EITHER,
                         LongDescription: "These are the rocks blocking the Lost Woods entrance. Either blow them up (you can shoot the right one with a bow), or use a deku stick lit on fire to activate the nearby bomb flowers.",
                         IsPostWalkCheck: true,
@@ -2472,6 +2477,7 @@ let MapLocations = {
                     "Break Rocks Blocking Path": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 23, y: 169 },
+                        MapImageName: "Bomb",
                         Age: Age.CHILD,
                         LongDescription: "Used for co-op. These are the rocks blocking the entrance to Zora's River.",
                         NeedToBlastOrSmash: true,
