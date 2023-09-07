@@ -1502,6 +1502,7 @@ let MapLocations = {
                 },
             },
             crateLedge: {
+                ExcludeFromSpawnList: true,
                 Exits: {
                     freestandingItemInCrate: {},
                 },
@@ -1517,6 +1518,7 @@ let MapLocations = {
                 }
             },
             freestandingItemInCrate: {
+                ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {
                     "Heart Piece in Crate": {
@@ -2128,7 +2130,13 @@ let MapLocations = {
 
             scarecrowPlatform: {
                 ExcludeFromSpawnList: true,
-                Exits: {},
+                Exits: {
+                    bottom: {
+                        Age: Age.ADULT,
+                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}],
+                        RequiredSongs: [Songs.SCARECROWS_SONG]
+                    }
+                },
                 ItemLocations: {
                     "Rupee Circle on Scarecrow Platform": {
                         ItemGroup: ItemGroups.ENTRANCE,
