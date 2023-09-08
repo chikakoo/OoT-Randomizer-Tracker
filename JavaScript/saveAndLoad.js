@@ -390,6 +390,7 @@ let SaveAndLoad = {
                 if (loadedObjectValue.warpMap) { currentObjectValue.warpMap = loadedObjectValue.warpMap; }
                 if (loadedObjectValue.warpRegion) { currentObjectValue.warpRegion = loadedObjectValue.warpRegion; }
                 if (loadedObjectValue.noWarp) { currentObjectValue.noWarp = loadedObjectValue.noWarp; }
+                if (loadedObjectValue.songNotes) { currentObjectValue.songNotes = loadedObjectValue.songNotes; }
                 if (loadedObjectValue.entranceName) { currentObjectValue.entranceName = loadedObjectValue.entranceName; }
                 if (loadedObjectValue.count > 0) { currentObjectValue.count = loadedObjectValue.count; }
 

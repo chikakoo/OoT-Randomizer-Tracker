@@ -270,7 +270,17 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "From the Kokiri Forest entrance, go right one screen. Go down the cliff and stand on the lower stump. Take out your Ocarina and win the Simon game to get this prize.",
                         NeedsOcarina: true,
-                        DifficultOcarinaItems: true
+                        DifficultOcarinaItems: true,
+                        CustomRequirement: function(age) {
+                            if (Settings.RandomizerSettings.shuffleOcarinaButtons) {
+                                return OcarinaButtons.A_BUTTON.playerHas &&
+                                    OcarinaButtons.C_DOWN_BUTTON.playerHas &&
+                                    OcarinaButtons.C_LEFT_BUTTON.playerHas &&
+                                    OcarinaButtons.C_RIGHT_BUTTON.playerHas &&
+                                    OcarinaButtons.C_UP_BUTTON.playerHas;
+                            }
+                            return true;
+                        }
                     },
                     "Skulltula in Soil by Bridge": {
                         ItemGroup: ItemGroups.SKULLTULA,

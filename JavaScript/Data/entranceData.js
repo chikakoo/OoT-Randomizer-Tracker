@@ -173,17 +173,23 @@ InteriorGroups = {
 				icon: "Odd Mushroom",
 				description: "Show Granny the Odd Mushroom to recieve an item.",
 				canGet: function(age) {
+					if (age === Age.CHILD && !Data.canEquipSwap(age)) {
+						return false;
+					};
 					return AdultTradeItems.ODD_MUSHROOM.playerHas;
 				},
-				isAdultOnly: function() { return true; }
+				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			},
 			"Buy Blue Potion Item": {
 				icon: "Blue Potion",
 				description: "After showing the Odd Mushroom to Granny, you can buy this item for 200 rupees. After that, she will sell blue potions.",
 				canGet: function(age) {
+					if (age === Age.CHILD && !Data.canEquipSwap(age)) {
+						return false;
+					};
 					return AdultTradeItems.ODD_MUSHROOM.playerHas && Equipment.WALLET.playerHas;
 				},
-				isAdultOnly: function() { return true; }
+				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			}
 		}
 	},
