@@ -38,7 +38,8 @@ let SaveAndLoad = {
             Medallions: Medallions,
             Songs: Songs,
             Keys: this._getKeyDataToSave(),
-            SilverRupees: this._getSilverRupeeDataToSave()
+            SilverRupees: this._getSilverRupeeDataToSave(),
+            OcarinaButtons: OcarinaButtons
         }
 
         return objectToSave;
@@ -271,6 +272,7 @@ let SaveAndLoad = {
         if (loadedObject.Songs) { this._loadItemObject(Songs, loadedObject.Songs); }
         if (loadedObject.Keys) { this._loadItemObject(Keys, loadedObject.Keys); }
         if (loadedObject.SilverRupees) { this._loadItemObject(SilverRupees, loadedObject.SilverRupees); }
+        if (loadedObject.OcarinaButtons) { this._loadItemObject(OcarinaButtons, loadedObject.OcarinaButtons); }
 
         Data.randomizedSpawnLocations = loadedObject.RandomizedSpawnLocations;
 
