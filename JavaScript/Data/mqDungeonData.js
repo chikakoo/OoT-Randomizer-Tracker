@@ -1621,7 +1621,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         RequiredItems: [Equipment.IRON_BOOTS]
                     },
-                    outsideEastPlatform: { // Burn the web, to go through to the top platform
+                    outsideEastBalcony: { // Burn the web, to go through to the top platform
                         Age: Age.ADULT,
                         RequiredItems: [Equipment.MAGIC, Items.FAIRY_BOW, Items.FIRE_ARROW]
                     },
@@ -1669,7 +1669,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         RequiredItems: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
-                            return Songs.SONG_OF_TIME.playerHas || Items.HOOKSHOT.currentUpgrade === 2;
+                            return Data.canPlaySong(Songs.SONG_OF_TIME) || Items.HOOKSHOT.currentUpgrade === 2;
                         }
                     },
                     well: {}
@@ -1699,7 +1699,7 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
-                    "Chest in Outside East Room": {
+                    "Chest on Outside East Room Balcony": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 224, y: 53, floor: "F1" },
                         Age: Age.ADULT,
