@@ -3517,7 +3517,7 @@ let StandardDungeons = {
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 51, y: 221, floor: "B2" },
+                        MapInfo: { x: 51, y: 211, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 15,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. The pots are to the right of the falling spikes, guarded by the spike trap."

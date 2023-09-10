@@ -193,7 +193,7 @@ SocketClient = {
 			? OwExits[map][name]
 			: MapLocations[map].Regions[region].ItemLocations[name];
 
-		matchingLocation.playerHas = itemLocation.playerHas;
+		Data.setItemObtained(matchingLocation, itemLocation.playerHas);
 		matchingLocation.notes = itemLocation.notes;
 		matchingLocation.OverrideObtainableChild = itemLocation.OverrideObtainableChild;
 		matchingLocation.OverrideObtainableAdult = itemLocation.OverrideObtainableAdult;

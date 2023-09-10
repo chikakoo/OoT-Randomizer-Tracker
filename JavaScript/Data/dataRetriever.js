@@ -592,11 +592,17 @@ Data = {
     
     /**
 	 * Sets whether the item is obtained
+     * Runs the PostObtain function if there is one
 	 * @itemLocation The item
 	 * @isObtained A boolean indicating whether it should be obtained
+     * @skipPostObtain Whether to NOT call PostObtain (usually to handle these PostObtains that call this function)
+     * @fromSocketClient Whether this call is from the socket client, so we don't loop forever
 	 */
-	setItemObtained: function(itemLocation, isObtained) {
+	setItemObtained: function(itemLocation, isObtained, skipPostObtain, fromSocketClient) {
 		itemLocation.playerHas = !!isObtained;
+        if (itemLocation.PostObtain && !skipPostObtain) {
+            itemLocation.PostObtain(itemLocation.playerHas, fromSocketClient);
+        }
     },
     
     /**
@@ -604,8 +610,8 @@ Data = {
 	 * @return The new state of the item
 	 */
 	toggleItemObtained: function(itemLocation) {
-		itemLocation.playerHas = !itemLocation.playerHas;
-		return itemLocation.playerHas;
+		let playerHas = !itemLocation.playerHas;
+		return Data.setItemObtained(itemLocation, playerHas);
 	},
     
     /**

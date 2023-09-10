@@ -575,8 +575,10 @@ let MapLocations = {
                         MapInfo: { x: 200, y: 27 },
                         Age: Age.CHILD,
                         Region: "afterGate",
-                        LongDescription: "After obtaining Zelda's Letter, make your way to the end of the maze to get this item.",
-                        RequiredItems: [ChildTradeItems.ZELDAS_LETTER]
+                        LongDescription: "After visiting Zelda at the castle, make your way to the end of the maze to get this item.",
+                        CustomRequirement: function(age) {
+                            return Data.itemLocationObtained("Castle", "main", "Zelda's Lullaby");
+                        }
                     },
                     "Minuet of Forest": {
                         ItemGroup: ItemGroups.SONG,
@@ -1179,6 +1181,23 @@ let MapLocations = {
                         LongDescription: "Talk to Anju after waking up Talon with the Pocket Cucco.",
                         CustomRequirement: function(age) {
                             return this.wokeUpTalon;
+                        }
+                    },
+                    "Show Poacher's Saw to Carpenter": {
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 135, y: 91 },
+                        MapImageName: "Poacher's Saw",
+                        Age: Age.CHILD,
+                        RequiredToAppear: function() { return Settings.GlitchesToAllow.equipSwap; },
+                        LongDescription: "Show the carpenter boss (in front of the tent) the Poacher's Saw to receive an item.",
+                        RequiredItems: [AdultTradeItems.POACHERS_SAW],
+                        PostObtain: function(playerHas, skipSocketUpdate) {
+                            let otherItemLocation = MapLocations["Gerudo Valley"].Regions.acrossBridge.ItemLocations["Show Poacher's Saw to Carpenter"];
+                            Data.setItemObtained(otherItemLocation, playerHas, true);
+
+                            if (skipSocketUpdate) {
+                                SocketClient.itemLocationUpdated(otherItemLocation);
+                            }
                         }
                     },
                     "Show Guard Letter": {
@@ -3199,7 +3218,15 @@ let MapLocations = {
                         MapImageName: "Poacher's Saw",
                         Age: Age.ADULT,
                         LongDescription: "Show the carpenter boss (in front of the tent) the Poacher's Saw to receive an item.",
-                        RequiredItems: [AdultTradeItems.POACHERS_SAW]
+                        RequiredItems: [AdultTradeItems.POACHERS_SAW],
+                        PostObtain: function(playerHas, skipSocketUpdate) {
+                            let otherItemLocation = MapLocations["Kakariko Village"].Regions.main.ItemLocations["Show Poacher's Saw to Carpenter"];
+                            Data.setItemObtained(otherItemLocation, playerHas, true);
+
+                            if (skipSocketUpdate) {
+                                SocketClient.itemLocationUpdated(otherItemLocation);
+                            }
+                        }
                     },
                     "Skulltula on Pillar": {
                         ItemGroup: ItemGroups.SKULLTULA,

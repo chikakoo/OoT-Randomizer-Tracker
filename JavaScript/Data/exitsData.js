@@ -299,6 +299,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: -100, y: -100 },
             Hide: true,
+            ShowForOwl: true,
             LongDescription: "The Minuet of Forest teleport pad at the end of the Sacred Forest Meadow.",
         },
         "Forest Temple Entrance": {

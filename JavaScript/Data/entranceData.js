@@ -418,9 +418,12 @@ InteriorGroups = {
 				icon: "Eyeball Frog",
 				description: "Show the Eyeball Frog to the scientist to receive an item.",
 				canGet: function(age) {
+					if (age === Age.CHILD && !Data.canEquipSwap(age)) {
+						return false;
+					};
 					return AdultTradeItems.EYEBALL_FROG.playerHas;
 				},
-				isAdultOnly: function() { return true; }
+				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			}
 		}
 	},

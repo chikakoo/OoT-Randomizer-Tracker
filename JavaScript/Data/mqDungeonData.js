@@ -3975,6 +3975,16 @@ let MQDungeons = {
                     }
                 },
                 ItemLocations: {
+                    "2 Lower Pots in Falling Spikes Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 51, y: 211, floor: "B2" },
+                        Age: Age.EITHER,
+                        Order: 16.1,
+                        LongDescription: "Get to the right side of the giant room. Hit the switch behind the gate to open it to get to the falling spikes room. The pots are in the alcove to the right of the first set of spikes."
+                    },
                     "Skulltula in Falling Spikes Room": { 
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 53, y: 237, floor: "B2" },
