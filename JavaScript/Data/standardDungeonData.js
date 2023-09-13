@@ -4826,8 +4826,13 @@ let StandardDungeons = {
                             if (Settings.GlitchesToAllow.iceLedgeClip && age === Age.ADULT) {
                                 return true;
                             }
-                            let isWallMelted = Data.itemLocationObtained("Ice Cavern", "afterFreezards", "Melt East Ice Wall");
-                            return isWallMelted || (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
+                            let isWallMelted = Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt East Ice Wall");
+                            return isWallMelted || Data.canUseBlueFire(age);
+                        }
+                    },
+                    blueFire: {
+                        CustomRequirement: function(age) {
+                            return Data.canUseBlueFire(age);
                         }
                     },
                     northRoom: {
@@ -4837,8 +4842,8 @@ let StandardDungeons = {
                     },
                     blockPushRoom: {
                         CustomRequirement: function(age) {
-                            let isWallMelted = Data.itemLocationObtained("Ice Cavern", "afterFreezards", "Melt West Ice Wall");
-                            return isWallMelted || (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
+                            let isWallMelted = Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt West Ice Wall");
+                            return isWallMelted || Data.canUseBlueFire(age);
                         }
                     }
                 },
@@ -4923,35 +4928,43 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 6.1,
                         LongDescription: "This rupee is the one in midair in the back right part of the spinning scythe room. As adult, climb up the ledge and jump off to get it."
-                    },
+                    }
+                }
+            },
+            blueFire: {
+                Exits: {
+                    blueFireSideRoom: {},
+                    blockPushRoom: {}
+                },
+                ItemLocations: {
                     "Melt East Ice Wall": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         RequiredToAppear: function() { return !Data.canUseBlueFire(Age.CHILD); },
                         MapInfo: { x: 211, y: 114 },
                         MapImageName: "Blue Fire Blue Fire",
-                        Age: Age.EITHER,
+                        Age: Age.ADULT,
                         Order: 6.2,
-                        LongDescription: "The east wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows.",
-                        CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
-                        }
+                        LongDescription: "The east wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows."
                     },
                     "Melt West Ice Wall": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         RequiredToAppear: function() { return !Data.canUseBlueFire(Age.CHILD); },
                         MapInfo: { x: 157, y: 114 },
                         MapImageName: "Blue Fire Blue Fire",
-                        Age: Age.EITHER,
+                        Age: Age.ADULT,
                         Order: 6.3,
-                        LongDescription: "The west wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows.",
-                        CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Data.hasBottle()) || Data.canUseBlueFire(age);
-                        }
+                        LongDescription: "The west wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows."
                     }
                 }
             },
             northRoom: {
-                Exits: {},
+                Exits: {
+                    blueFire: {
+                        CustomRequirement: function(age) {
+                            return Data.hasBottle();
+                        }
+                    },
+                },
                 ItemLocations: {
                     "3 Hearts in Platforming Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -4983,7 +4996,13 @@ let StandardDungeons = {
                 }
             },
             blueFireSideRoom: {
-                Exits: {},
+                Exits: {
+                    blueFire: {
+                        CustomRequirement: function(age) {
+                            return Data.hasBottle();
+                        }
+                    }
+                },
                 ItemLocations: {
                     "Compass Chest in Right Red Ice Room": {
                         ItemGroup: ItemGroups.CHEST,

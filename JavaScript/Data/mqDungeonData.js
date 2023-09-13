@@ -2405,7 +2405,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 300, y: 221, floor: "F3" },
                         Age: Age.ADULT,
-                        Order: 22,
+                        Order: 24.1,
                         LongDescription: "In the northeast area of the maze, find the fake wall and bomb it. Hammer the switch inside. Hookshot up one of the targets that appear and make your way toward the crystal switch. Trigger it (jumpslash, spin attack, Din's, explosive, etc.). The chest is hidden in one of the crates."
                     },
                     "3 Crates on Maze Top": {
