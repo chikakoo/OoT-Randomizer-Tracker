@@ -5550,11 +5550,15 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 7,
                         LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>Play the song of time on the top near the pillar with the skulltula to spawn a block. Climb it, and play the song again. Use blue fire to melt the ice to gain access to the skulltula.",
-                        RequiredSongs: [Songs.SONG_OF_TIME],
                         CustomRequirement: function(age) {
+                            if (Settings.RandomizerSettings.iceArrowsActAsBlueFire && Data.canUseIceArrows(age)) {
+                                return true;
+                            }
+
+                            let canPlaySongOfTime = Data.canPlaySong(Songs.SONG_OF_TIME);
                             let canPlayOcarinaNormally = Items.OCARINA.playerHas && Data.hasBottleOrBlueFire(age);;
                             let canUseOI = Data.canOIAndBlueFireWithoutRefilling(age);
-                            return canPlayOcarinaNormally || canUseOI;
+                            return canPlaySongOfTime && (canPlayOcarinaNormally || canUseOI);
                         }
                     },
                     "Chest in North Room": {
