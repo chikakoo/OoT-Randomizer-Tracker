@@ -1218,6 +1218,10 @@ let MapLocations = {
                         Age: Age.CHILD,
                         RequiredItems: [ChildTradeItems.KEATON_MASK],
                         LongDescription: "Talk to the guard while wearing the Keaton mask to sell it to him - this unlocks the Skull Mask.",
+                        CustomRequirement: function(age) {
+                            return ChildTradeItems.ZELDAS_LETTER.playerHas ||
+                                Settings.RandomizerSettings.openKakariko === OpenKakarikoSettings.OPEN;
+                        }
                     },
                     "Skulltula in Tree": {
                         ItemGroup: ItemGroups.SKULLTULA,

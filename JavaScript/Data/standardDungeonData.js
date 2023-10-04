@@ -2720,7 +2720,6 @@ let StandardDungeons = {
                                 }
                             }
 
-
                             return false;
                         }
                     }

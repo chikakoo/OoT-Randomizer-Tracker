@@ -216,6 +216,20 @@ let ItemTracker = {
 	},
 
 	/**
+	 * Refreshes the red outline on the song based on whether it can be played
+	 * @param song - the song object, from Songs
+	 */
+	refreshSongPlayability: function(song) {
+		if (!song) { return; }
+
+		let songDivId = Object.keys(Songs).find(key => Songs[key].name === song.name);
+		if (!songDivId) { return; }
+
+		let songDiv = document.getElementById(songDivId);
+		addOrRemoveCssClass(songDiv, "cannot-play-song", !ItemData.hasAllSongNotes(song));
+	},
+
+	/**
 	 * Updates the item label when an item is moused over
 	 * @param item - the item hovered over
 	 */
