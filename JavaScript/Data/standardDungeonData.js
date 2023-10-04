@@ -2603,7 +2603,7 @@ let StandardDungeons = {
                         RequiredChoiceOfItems: [Equipment.SCALE, Equipment.IRON_BOOTS]
                     },
                     midWaterTriforceFloor: {
-                        CustomRequirement(age) {
+                        CustomRequirement: function(age) {
                             return (age === Age.ADULT && Items.FAIRY_BOW.playerHas) || Data.canUseFireItem(age) || Data.canUseDekuStick(age);
                         }
                     },
@@ -2624,7 +2624,7 @@ let StandardDungeons = {
                     },
                     roomWithManyTektitesAntechamber: {},
                     crackedWallArea: {
-                        CustomRequirement(age) {
+                        CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.waterBombableWallEarly;
                         }
                     }
@@ -2692,7 +2692,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 21,
                         MapInfo: { x: 157, y: 217, floor: "F1" },
-                        LongDescription: "In the room with the middle water level Triforce, there is a skulltula high up on the wall. There are three ways to get it; the bottom two enable the hookshot to be used:<br/>- Use the longshot<br/>- Cast Farore's Wind in the room, raise the water to max, then warp back in<br/>- Open the door on the bottom leading here, then raise the water to max and re-enter this door",
+                        LongDescription: "In the room with the middle water level Triforce, there is a skulltula high up on the wall. There are three ways to get it; the bottom two enable the hookshot to be used:<br/>- Use the longshot<br/>- Cast Farore's Wind in the room, raise the water to max, then warp back in<br/>- Enter the room from the middle, then exit from the bottom - the middle area door will not be barred. Come back via the iron boots to get the skulltula with the hookshot after raising the water to max.",
                         IsAtShortDistance: true,
                         CustomRequirement: function(age) {
                             // You can just longshot it
@@ -2700,12 +2700,26 @@ let StandardDungeons = {
                                 return true; 
                             }
 
-                            // Cast FW in the room, then raise the water and recast FW
                             let canCastFaroresWind = Equipment.MAGIC.playerHas && Items.FARORES_WIND.playerHas;
-                            let canReRaiseWater = !Data.waterIsPlayerLockedOutOfHighWater();
-                            if (canCastFaroresWind && canReRaiseWater) {
-                                return true;
+                            if (!Data.waterIsPlayerLockedOutOfHighWater())
+                            {
+                                // Cast FW in the room, then raise the water and recast FW
+                                if (canCastFaroresWind) {
+                                    return true;
+                                }
+    
+                                // Enter the room via the fire door, then exit out the bottom via the locked door
+                                // Now raise the water and return through the fire door with iron boots (the bars will be gone still)
+                                let bottomDoorCheck = Data.itemLocationObtained("Water Temple", "main", "Locked Door to Central Room") ||
+                                    getKeyCount("Water Temple") === Keys.WATER_TEMPLE.totalKeys();
+                                if (age === Age.ADULT && 
+                                    bottomDoorCheck && 
+                                    Equipment.IRON_BOOTS.playerHas && 
+                                    Data.canUseFireItem(age)) {
+                                    return true;
+                                }
                             }
+
 
                             return false;
                         }

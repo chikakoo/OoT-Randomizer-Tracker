@@ -1742,7 +1742,7 @@ let MapLocations = {
                 Exits: {
                     windmillItem: {
                         RequiredChildItems: [Items.BOOMERANG],
-                        CustomRequirement(age) {
+                        CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return true; }
                             return Settings.GlitchesToAllow.windmillHPWithNothing ||
                                 (Settings.GlitchesToAllow.windmillHPWithHookshot && Items.HOOKSHOT.playerHas)
@@ -3693,7 +3693,7 @@ let MapLocations = {
             wastelandEntrance: {
                 Exits: {
                     main: {
-                        CustomRequirement(age) {
+                        CustomRequirement: function(age) {
                             return age === Age.ADULT || Data.itemLocationObtained("Gerudo Fortress", "main", "Opened Gate");
                         }
                     },

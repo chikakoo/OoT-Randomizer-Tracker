@@ -6687,7 +6687,7 @@ let MQDungeons = {
                     waterTrialEnd: {
                         Map: "Ganon's Castle",
                         SilverRupeeIndex: 2,
-                        CustomRequirement(age) {
+                        CustomRequirement: function(age) {
                             return age === Age.ADULT || !Settings.RandomizerSettings.shuffleSilverRupees;
                         }
                     }
