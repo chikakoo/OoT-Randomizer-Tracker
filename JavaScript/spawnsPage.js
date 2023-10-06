@@ -371,6 +371,17 @@ let SpawnsPage = {
     },
 
     /**
+     * Clears all of the song notes
+     */
+    clearAllSongNotes: function() {
+        Object.values(Songs).forEach(song => {
+            song.songNotes = "";
+        });
+
+        SpawnsPage.display();
+    },
+
+    /**
      * Updates the tooltips of all of the warp songs to list the spawn location
      */
     updateSongItemTooltips: function() {

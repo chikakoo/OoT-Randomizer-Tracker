@@ -81,6 +81,7 @@ let AdultTradeItems = {
 
 /**
  * All songs
+ * Note that the "songNotes" value gets added when these are modified
  */
 let Songs = {
 	ZELDAS_LULLABY: { name: "Zelda's Lullaby", defaultNotes: "<^><^>", divGroup: 1 },
@@ -1355,6 +1356,10 @@ let ItemData = {
 			return false; // The notes were invalid...
 		}
 
+		// Songs of length 0 are invalid, unless it's Scarecrow's Song
+		if (ocarinaNotes.length === 0 && song !== Songs.SCARECROWS_SONG) {
+			return false;
+		}
 		return ocarinaNotes.every(ocarinaNote => ocarinaNote.playerHas);
 	}
 }
