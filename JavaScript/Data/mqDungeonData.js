@@ -2622,7 +2622,7 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
-                    //TODO Empty Pots - this will be replaced by th
+                    //TODO Empty Pots - this will be replaced by the next item location
                     "Pot in Left Fire Wall Maze": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 87, y: 215, floor: "F3" },
@@ -2649,7 +2649,7 @@ let MQDungeons = {
                         MapInfo: { x: 124, y: 162, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 38,
-                        LongDescription: "From the entrance of the fire wall room - make your way to the door in front of you and enter it. In this room, get to the next door by jumping on the Song of Time Block. Hookshot across the room and hit the switch with your hammer to unbar the doors.<br/><br/>Now navigate through the maze to the southernmost door. Once inside, bomb the fake wall by the scratching sounds to get to the skulltula."
+                        LongDescription: "From the entrance of the fire wall room, navigate through the maze to the southernmost door. Once inside, bomb the fake wall by the scratching sounds to get to the skulltula."
                     }
                 }
             },
@@ -2671,14 +2671,14 @@ let MQDungeons = {
                         MapInfo: { x: 102, y: 108, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 35,
-                        LongDescription: "From the start of the fire wall maze, climb up to the door in front of you. Look to the left - either play Song of Time, or use hover boots to cross the fire wall. The pots are in this maze. You can use the Song of Time block by the door on the wall to get out of this section."
+                        LongDescription: "From the start of the fire wall maze, climb up to the door in front of you. Look to the right - either play Song of Time, or use hover boots to cross the fire wall. The pots are in this maze. You can use the Song of Time block by the door on the wall to get out of this section."
                     },
                     "Skulltula in Fire Wall Maze": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 194, y: 79, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 36,
-                        LongDescription: "From the start of the fire wall maze, climb up to the door in front of you. Look to the left - either play Song of Time, or use hover boots to cross the fire wall. The skulltula is in the room in this section. You can use the Song of Time block by the door to get out."
+                        LongDescription: "From the start of the fire wall maze, climb up to the door in front of you. Look to the right - either play Song of Time, or use hover boots to cross the fire wall. The skulltula is in the room in this section. You can use the Song of Time block by the door to get out."
                     }
                 }
             },
@@ -2699,7 +2699,7 @@ let MQDungeons = {
                         MapInfo: { x: 76, y: 144, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 39,
-                        LongDescription: "By the exit to the fire maze (after you hit the switch to pass the giant fire wall), there are 2 pots to either side of the door."
+                        LongDescription: "From the start of the maze, navigate to the door ahead by jumping on the SoT block. Enter and hookshot across the room. Hammer the switch to unbar the door. Now, navigate around the maze clockwise to get to the door.<br/><br/>By the exit to the fire maze (after you hit the switch to pass the giant fire wall), there are 2 pots to either side of the door."
                     },
                     "Freestanding Key in Flare Dancer Room": {
                         ItemGroup: ItemGroups.FREESTANDING,
