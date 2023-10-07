@@ -2461,7 +2461,11 @@ let MapLocations = {
                         MapInfo: { x: 189, y: 126 },
                         Age: Age.CHILD,
                         LongDescription: "First, light the torches at the bottom of the city. You can either use the lit torch in Darunia's room, or Din's Fire. After that, throw a Bomb or Bomb Flower so that the urn stops on the happiest face to get the item.",
-                        RequiredChoiceOfItems: [Items.BOMB, Equipment.STRENGTH]
+                        CustomRequirement: function(age) {
+                            return Items.BOMB.playerHas ||
+                                Equipment.STRENGTH.playerHas ||
+                                (Settings.GlitchesToAllow.goronSpinningUrnWithChus && Items.BOMBCHU.playerHas);
+                        }
                     },
                     "8 Items From Spinning Urn": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2471,7 +2475,11 @@ let MapLocations = {
                         MapInfo: { x: 189, y: 135 },
                         Age: Age.CHILD,
                         LongDescription: "First, light the torches at the bottom of the city. You can either use the lit torch in Darunia's room, or Din's Fire. After that, throw a Bomb or Bomb Flower so that the urn stops on the face you want.",
-                        RequiredChoiceOfItems: [Items.BOMB, Equipment.STRENGTH]
+                        CustomRequirement: function(age) {
+                            return Items.BOMB.playerHas ||
+                                Equipment.STRENGTH.playerHas ||
+                                (Settings.GlitchesToAllow.goronSpinningUrnWithChus && Items.BOMBCHU.playerHas);
+                        }
                     }
                 }
             },

@@ -184,11 +184,12 @@ let Settings = {
 		zorasRiverScalelessAdult: false,
 		
 		// Goron area
-		hoverToVolcanoHP: false,
-		childDoubleMagicFairy: false,
 		dmtClipToChestByGoron: false,
 		dmtSkullsWithoutHammer: false,
-		
+		goronSpinningUrnWithChus: false,
+		hoverToVolcanoHP: false,
+		childDoubleMagicFairy: false,
+
 		// Zora/Lake
 		adultWaterfallHPJump: false,
 		cuccoToZorasDomain: false,
