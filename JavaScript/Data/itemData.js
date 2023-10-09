@@ -905,8 +905,7 @@ let Keys = {
 	GERUDO_TRAINING_GROUNDS: { 
 		name: "Training Grounds", 
 		minimumKeys: function() { 
-			let canChildAccess = Settings.RandomizerSettings.shuffleDungeonEntrances ||
-				(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed);
+			let canChildAccess = Settings.RandomizerSettings.shuffleDungeonEntrances || Settings.GlitchesToAllow.gtgChildAllowed;
 			let canChildSkipKeys = Settings.GlitchesToAllow.gtgChildVineClips && canChildAccess;
 			let canSkipKeys = canChildSkipKeys || Settings.GlitchesToAllow.weirdShot;
 			return canSkipKeys ? 0 : 7;
@@ -915,8 +914,7 @@ let Keys = {
 		noBossKey: true,
 		
 		mqMinimumKeys: function() {
-			let canChildAccess = Settings.RandomizerSettings.shuffleDungeonEntrances ||
-				(Settings.GlitchesToAllow.cuccoJump && Settings.GlitchesToAllow.gtgChildAllowed);
+			let canChildAccess = Settings.RandomizerSettings.shuffleDungeonEntrances || Settings.GlitchesToAllow.gtgChildAllowed;
 			let canChildSkipKeys = Settings.GlitchesToAllow.gtgChildVineClips && canChildAccess;
 			let canSkipKeys = canChildSkipKeys || Settings.GlitchesToAllow.weirdShot;
 			return canSkipKeys ? 0 : 3;

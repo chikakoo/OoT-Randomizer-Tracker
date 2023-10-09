@@ -5904,10 +5904,13 @@ let MQDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         IsMasterQuest: true,
         UseAdultAge: function() { 
-            let canEnterDungeon = Settings.RandomizerSettings.shuffleDungeonEntrances || 
-                ((Settings.RandomizerSettings.shuffleOverworldEntrances || Settings.GlitchesToAllow.cuccoJump || Data.randomizedSpawnLocations.useRandomizedSpawns) && 
-                Settings.GlitchesToAllow.gtgChildAllowed);
-            return !canEnterDungeon;
+            return Settings.RandomizerSettings.shuffleDungeonEntrances || Settings.GlitchesToAllow.gtgChildAllowed
+        },
+        _canVineClip: function(age) {
+            return age === Age.CHILD && 
+                Settings.GlitchesToAllow.gtgChildVineClips && 
+                Data.hasShield(age) &&
+                Items.BOMBCHU.playerHas;
         },
         Regions: {
             main: {
@@ -6018,8 +6021,9 @@ let MQDungeons = {
                         Order: 6,
                         LongDescription: "This chest is after the fifth door in the left maze path.",
                         CustomRequirement: function(age) {
-                            let canVineClip = Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
-                            return canVineClip || Data.canWeirdShot(age) || getKeyCount("Training Grounds") >= 1;
+                            return MapLocations["Training Grounds"]._canVineClip(age) || 
+                                Data.canWeirdShot(age) || 
+                                getKeyCount("Training Grounds") >= 1;
                         }
                     }
                 }
@@ -6486,8 +6490,9 @@ let MQDungeons = {
                                 return false;
                             }
 
-                            let canVineClip = Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age);
-                            return canVineClip || Data.canWeirdShot(age) || getKeyCount("Training Grounds") >= 3;
+                            return MapLocations["Training Grounds"]._canVineClip(age) ||
+                                Data.canWeirdShot(age) || 
+                                getKeyCount("Training Grounds") >= 3;
                         }
                     }
                 }

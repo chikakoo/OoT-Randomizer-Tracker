@@ -144,6 +144,7 @@ Data = {
 
         // This block is for the OW exits //TODO: break this off and use it in walk.js when updating the travel div instead
         if (Settings.RandomizerSettings.shuffleOverworldEntrances || 
+            Settings.RandomizerSettings.shuffleInteriorEntrances || 
             Settings.RandomizerSettings.shuffleDungeonEntrances ||
             Settings.RandomizerSettings.randomizeOwlDrops) {
             itemLocations = itemLocations.concat(this.getAllOwExits(mapName, regionName, false));
@@ -246,7 +247,9 @@ Data = {
         }
 
         if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
-            return Settings.RandomizerSettings.shuffleOverworldEntrances;
+            return itemLocation.IsInteriorExit
+                ? Settings.RandomizerSettings.shuffleInteriorEntrances
+                : Settings.RandomizerSettings.shuffleOverworldEntrances;
         }
 
         return true;

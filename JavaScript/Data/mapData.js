@@ -3142,7 +3142,8 @@ let MapLocations = {
                                     Data.canBombSuperslideWithHovers(age) ||
                                     Data.canHammerHoverBootsSuperslide(age);
                             }
-                            return Settings.GlitchesToAllow.cuccoJump && Data.hasSwordWeapon(age);
+                            return Data.canStaircaseHover(age) ||
+                                (Settings.GlitchesToAllow.cuccoJump && Equipment.KOKIRI_SWORD.playerHas);
                         }
                     },
                     chasmSilverRockLedge: {},
@@ -3359,7 +3360,7 @@ let MapLocations = {
         UseAdultAge: function() { 
             if (Data.randomizedSpawnLocations.useRandomizedSpawns) { return false; }
             return !Settings.RandomizerSettings.shuffleOverworldEntrances && 
-                !Settings.GlitchesToAllow.cuccoJump;
+                !Settings.RandomizerSettings.shuffleInteriorEntrances;
         },
 		Regions: {
             main: {
@@ -4115,26 +4116,13 @@ let MapLocations = {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 311, y: 266 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
-                            if (Data.randomizedSpawnLocations.useRandomizedSpawns) { return false; }
-                            return !Settings.GlitchesToAllow.cuccoJump || 
-                                !Settings.GlitchesToAllow.gerudoGateSkipAsChild || 
-                                !Settings.GlitchesToAllow.itemlessSandPit;
-                        },
                         LongDescription: "The crate is by the quicksand pit by the exit to Gerudo Fortress."
                     }
                 }
             },
-
             outpost: {
                 UseAdultAge: function() { 
-                    if (Data.randomizedSpawnLocations.useRandomizedSpawns || Settings.GlitchesToAllow.backwardsWasteland) { return false; }
-                    if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
-                        return !Settings.GlitchesToAllow.itemlessSandPit;
-                    }
-                    return !Settings.GlitchesToAllow.cuccoJump || 
-                        !Settings.GlitchesToAllow.gerudoGateSkipAsChild || 
-                        !Settings.GlitchesToAllow.itemlessSandPit;
+                    return !Settings.GlitchesToAllow.backwardsWasteland && !Settings.GlitchesToAllow.itemlessSandPit;
                 },
                 ExcludeFromSpawnList: true,
                 Exits: {

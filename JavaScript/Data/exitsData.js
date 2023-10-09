@@ -1798,12 +1798,6 @@ let OwExits = {
             IsInterior: true,
             MapInfo: { x: 141, y: 78 },
             Age: Age.EITHER,
-            UseAdultAge: function() { 
-                if (Settings.RandomizerSettings.shuffleOverworldEntrances) {
-                    return false;
-                }
-                return !Settings.GlitchesToAllow.cuccoJump;
-            },
             LongDescription: "This is the tent on the west side of the bridge as adult. Also, the loading zone is actually there as child."
         },
         "Song of Storms Grotto Behind Tent": {
