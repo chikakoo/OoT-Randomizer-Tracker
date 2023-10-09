@@ -241,6 +241,12 @@ let _toggleItemLocations = function(itemGroupDiv, event) {
  */
 let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon) {
 	let allItemsObtained = itemGroup.every(loc => loc.playerHas);
+	
+	if (itemGroup.every(loc => loc.disabled || loc.Hide)) {
+		addCssClass(itemGroupDiv, "nodisp");
+		return;
+	}
+
 	itemGroup.forEach(function(itemLocation) {
 		if (itemLocation.disabled || itemLocation.Hide) { return; }
 		

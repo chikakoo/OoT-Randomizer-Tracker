@@ -547,15 +547,6 @@ let OwExits = {
     },
 
     "Market Entrance": {
-        "Market": {
-            ExitRegion: "main",
-            Map: "Market",
-            Region: "main",
-            ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: 166, y: 31 },
-            Age: Age.EITHER,
-            LongDescription: "This is the entrance to the main market area."
-        },
         "Hyrule Field": {
             ExitRegion: "main",
             Map: "Hyrule Field",
@@ -565,6 +556,15 @@ let OwExits = {
             MapInfo: { x: 166, y: 261 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance back to Hyrule field."
+        },
+        "Market": {
+            ExitRegion: "main",
+            Map: "Market",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: 166, y: 31 },
+            Age: Age.EITHER,
+            LongDescription: "This is the entrance to the main market area."
         },
 
         // Interiors
