@@ -5553,7 +5553,7 @@ let StandardDungeons = {
         Abbreviation: "GTG",
         MapGroup: MapGroups.DUNGEONS,
         UseAdultAge: function() { 
-            return Settings.RandomizerSettings.shuffleDungeonEntrances || Settings.GlitchesToAllow.gtgChildAllowed;
+            return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.gtgChildAllowed;
         },
         Regions: {
             main: {
