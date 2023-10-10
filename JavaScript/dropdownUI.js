@@ -12,8 +12,8 @@ let DropdownUI = {
 			
         let locDropdown = dce("select");
         let entranceDropdown = dce("select");
-        locDropdown.id = `${itemLocation.Name}-location-dropdown`;
-        entranceDropdown.id = `${itemLocation.Name}-entrance-dropdown`;
+        locDropdown.id = this.getItemLocationDropdownId(itemLocation);
+        entranceDropdown.id = this.getEntranceDropdownId(itemLocation);
         
         if (itemLocation.ReadOnly) {
             locDropdown.disabled = true;
@@ -35,6 +35,38 @@ let DropdownUI = {
     },
 
     /**
+     * Gets the ID of an item location dropdown
+     * @param itemLocation - The item location to get the dropdown for
+     */
+    getItemLocationDropdownId: function(itemLocation) {
+        return `${itemLocation.Name}-location-dropdown`;
+    },
+
+    /**
+     * Gets the item location dropdown
+     * @param itemLocation - The item location to get the dropdown for
+     */
+    getItemLocationDropdown: function(itemLocation) {
+        return document.getElementById(this.getItemLocationDropdownId(itemLocation));
+    },
+
+    /**
+     * Gets the ID of an entrance dropdown
+     * @param itemLocation - The item location corresponding to the entrance to get the dropdown for
+     */
+    getEntranceDropdownId: function(itemLocation) {
+        return `${itemLocation.Name}-entrance-dropdown`;
+    },
+
+    /**
+     * Gets the entrance dropdown
+     * @param itemLocation - The item location corresponding to the entrance to get the dropdown for
+     */
+    getEntranceDropdown: function(itemLocation) {
+        return document.getElementById(this.getEntranceDropdownId(itemLocation));
+    },
+
+    /**
      * Creates the interior dropdown div for a given item location
      * @param itemLocation - the item location
      * @param itemLocationTextDiv - the main div of the item location - passed in to provide right-click travel
@@ -42,7 +74,7 @@ let DropdownUI = {
     createInteriorOrGrottoDropdown: function(itemLocation, itemLocationTextDiv) {
         let dropdownGroup = dce("div", "dropdown-group");
         let dropdown = dce("select");
-        dropdown.id = `${itemLocation.Name}-location-dropdown`;
+        dropdown.id = this.getItemLocationDropdownId(itemLocation);
 
         itemLocationTextDiv.oncontextmenu = function() {
             let mapName = itemLocation.OwShuffleMap;
@@ -89,8 +121,8 @@ let DropdownUI = {
      * @param entranceOptions - set of options used to get the entrance choices
      */
     _refreshOWLocationDropdown: function(itemLocation, loc, entrance, entranceOptions) {
-        let locDropdown = loc || document.getElementById(`${itemLocation.Name}-location-dropdown`);
-        let entranceDropdown = entrance || document.getElementById(`${itemLocation.Name}-entrance-dropdown`);
+        let locDropdown = loc || this.getItemLocationDropdown(itemLocation);
+        let entranceDropdown = entrance || this.getEntranceDropdown(itemLocation);
 
         locDropdown.innerHTML = "";
         entranceDropdown.innerHTML = "";
@@ -114,8 +146,8 @@ let DropdownUI = {
      * @param entranceOptions - set of options used to get the entrance choices
      */
     _refreshOWEntranceDropdown: function(itemLocation, loc, entrance, entranceOptions) {
-        let locDropdown = loc || document.getElementById(`${itemLocation.Name}-location-dropdown`);
-        let entranceDropdown = entrance || document.getElementById(`${itemLocation.Name}-entrance-dropdown`);
+        let locDropdown = loc || this.getItemLocationDropdown(itemLocation);
+        let entranceDropdown = entrance || this.getEntranceDropdown(itemLocation);
 
         let defaultMap = itemLocation.OwShuffleMap;
         let defaultExit = itemLocation.OwShuffleExitName;
@@ -195,7 +227,7 @@ let DropdownUI = {
     },
 
     _refreshInteriorOrGrottoDropdown: function(itemLocation, loc, interiorOrGrottoObject) {
-        let locDropdown = loc || document.getElementById(`${itemLocation.Name}-location-dropdown`);
+        let locDropdown = loc || this.getItemLocationDropdown(itemLocation);
         locDropdown.innerHTML = "";
 
         let defaultOption = itemLocation.EntranceGroup
