@@ -269,8 +269,8 @@ SocketClient = {
 	 * @param itemLocation - the item location to update
 	 */
 	_updateOwDropdown: function(itemLocation) {
-		let locDropdown = DropDownUI.getItemLocationDropdown(itemLocation);
-		let entranceDropdown = DropDownUI.getEntranceDropdown(itemLocation);
+		let locDropdown = DropdownUI.getItemLocationDropdown(itemLocation);
+		let entranceDropdown = DropdownUI.getEntranceDropdown(itemLocation);
 		let isInteriorOrGrotto = itemLocation.ItemGroup === ItemGroups.ENTRANCE && !itemLocation.IsItemLocationGroup;
 		if (locDropdown && (entranceDropdown || isInteriorOrGrotto)) {
 			DropdownUI.refreshEntranceDropdowns(itemLocation, locDropdown, entranceDropdown);
@@ -282,7 +282,7 @@ SocketClient = {
 	 * @param itemLocation - the item location to update
 	 */
 	_updateInteriorOrGrottoDropdown: function(itemLocation) {
-		let locDropdown = DropDownUI.getItemLocationDropdown(itemLocation);
+		let locDropdown = DropdownUI.getItemLocationDropdown(itemLocation);
 		if (locDropdown) {
 			DropdownUI.refreshEntranceDropdowns(itemLocation, locDropdown);
 		}

@@ -270,6 +270,7 @@ let DropdownUI = {
 
         if (groupName === "<no selection>") {
             EntranceUI.clearGroupChoice(itemLocation);
+            this._updateInteriorOrGrottoStyles(itemLocation, event.target);
             SocketClient.itemLocationUpdated(itemLocation);
             return;
         }

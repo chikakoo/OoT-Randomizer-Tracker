@@ -277,7 +277,7 @@ let EntranceUI = {
 		delete itemLocation[groupProperty];
 		
 		if (itemLocation.ExitMap === _currentLocationName) {
-			let dropdownDiv = DropDownUI.getItemLocationDropdown(itemLocation);
+			let dropdownDiv = DropdownUI.getItemLocationDropdown(itemLocation);
 			dropdownDiv.value = "<no selection>";
 			
 			let itemLocationEntranceTasksContainer = document.getElementById(`${itemLocation.Name}-entrance-tasks`);
