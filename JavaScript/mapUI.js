@@ -238,14 +238,7 @@ let MapUI = {
 		// All other types will use the actual icon dimensions
 		iconDiv.style.width = `${this._iconDimension}px`;
 		iconDiv.style.height = `${this._iconDimension}px`;
-		
-		let group = Data.getEntranceGroup(itemLocation);
-		if (groupId === ItemGroups.ENTRANCE && group) {
-			iconDiv.style.backgroundImage = EntranceUI.getEntranceGroupIcon(group, group.name);
-			return;
-		}
-		
-		iconDiv.style.backgroundImage = getItemGroupImagePath(groupId, itemLocation.MapImageName);
+		iconDiv.style.backgroundImage = EntranceUI.getEntranceGroupIconOrSelectedEntrance(itemLocation);
 	},
 	
 	/**

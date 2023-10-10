@@ -767,3 +767,27 @@ select:disabled {
 .dropdown-group select {
 	margin-right: 5px;
 }
+
+.dropdown-group option {
+	color: black;
+	font-size: 10pt;
+}
+
+.interior-grotto-dropdown-group {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.interior-grotto-dropdown-group select {
+	margin-left: 3px;
+	margin-right: 5px;
+
+	width: 30px;
+	height: 30px;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-color: transparent;
+	border: none;
+	font-size: 0;
+	color: white;
+}

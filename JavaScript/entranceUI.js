@@ -49,6 +49,20 @@ let EntranceUI = {
 	},
 
 	/**
+	 * Gets the icon for the given item location - either the selected group icon, or the group
+	 * as a whole if nothing is selected
+	 * @param itemLocation - the item location to get the icon for
+	 * @returns 
+	 */
+	getEntranceGroupIconOrSelectedEntrance: function(itemLocation) {
+		let group = Data.getEntranceGroup(itemLocation);
+		let groupId = itemLocation.ItemGroup;
+		return (groupId === ItemGroups.ENTRANCE && group)
+			? this.getEntranceGroupIcon(group, group.name)
+			: getItemGroupImagePath(groupId, itemLocation.MapImageName);
+	},
+
+	/**
 	 * Gets the group names form the given group that are not meant to be excluded
 	 * @param groupObject - the group object - one of Interior/Grotto/Boss groups
 	 * @param itemToInclude - an item to always include - ignores the excludeFromGroup filter

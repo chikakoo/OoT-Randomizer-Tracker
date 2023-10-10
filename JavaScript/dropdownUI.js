@@ -72,7 +72,7 @@ let DropdownUI = {
      * @param itemLocationTextDiv - the main div of the item location - passed in to provide right-click travel
      */
     createInteriorOrGrottoDropdown: function(itemLocation, itemLocationTextDiv) {
-        let dropdownGroup = dce("div", "dropdown-group");
+        let dropdownGroup = dce("div", "dropdown-group interior-grotto-dropdown-group");
         let dropdown = dce("select");
         dropdown.id = this.getItemLocationDropdownId(itemLocation);
 
@@ -250,6 +250,7 @@ let DropdownUI = {
 
         locDropdown.onclick = function(event) { event.stopPropagation(); }
         locDropdown.onchange = this.onInteriorOrGrottoDropdownChange.bind(this, interiorOrGrottoObject, itemLocation);
+        this._updateInteriorOrGrottoStyles(itemLocation, locDropdown);
     },
 
     onInteriorOrGrottoDropdownChange: function(entranceData, itemLocation, event) {
@@ -296,8 +297,21 @@ let DropdownUI = {
             group.postClick(itemLocation, true);
         }
 
+        this._updateInteriorOrGrottoStyles(itemLocation, event.target);
         SocketClient.itemLocationUpdated(itemLocation);
         refreshAll();
+    },
+
+    /**
+     * Updates the styles of the interior or grotto dropdown
+     * @param itemLocation - the item location
+     * @param dropdown - the dropdown
+     */
+    _updateInteriorOrGrottoStyles: function(itemLocation, dropdown) {
+        dropdown.style.backgroundImage = EntranceUI.getEntranceGroupIconOrSelectedEntrance(itemLocation);
+        dropdown.title = (itemLocation.EntranceGroup && itemLocation.EntranceGroup.name)
+            ? itemLocation.EntranceGroup.name
+            : "<no selection>";
     },
 
     /**

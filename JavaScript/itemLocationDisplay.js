@@ -287,18 +287,7 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon) {
 		itemLocationTitleDiv.appendChild(itemLocationTimeIconDiv);
 		
 		if (includeGroupIcon) {
-			let imagePath = "";
-			if (itemLocation.IsItemLocationGroup && itemLocation.DefaultEntranceGroupName) {
-				let groupName = itemLocation.DefaultEntranceGroupName;
-				imagePath = EntranceUI.getEntranceGroupIcon(ItemLocationGroups[groupName], groupName);
-			} else if (itemLocation.MapImageName) {
-				imagePath = getItemGroupImageFromName(itemLocation.MapImageName);
-			} else {
-				let itemGroup = itemLocation.OverrideItemGroup
-					? itemLocation.OverrideItemGroup
-					: itemLocation.ItemGroup;
-				imagePath = getItemGroupImagePath(itemGroup);
-			}
+			let imagePath = getItemLocationGroupIcon(itemLocation);
 
 			let itemLocationIconDiv = dce("div", "item-location-group-icon");
 			itemLocationIconDiv.style.backgroundImage = imagePath;
@@ -308,6 +297,10 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon) {
 		let itemLocationTextDiv = dce("div", "item-location-text");
 		itemLocationTextDiv.innerText = itemLocation.Name;
 		itemLocationTitleDiv.appendChild(itemLocationTextDiv);
+
+		let inlineNotesDiv = dce("div", "item-location-inline-notes");
+		inlineNotesDiv.id = `${itemLocation.Name}-inline-notes`;
+		itemLocationTitleDiv.appendChild(inlineNotesDiv);
 
 		// Update the entrance location groups
 		if (itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
@@ -325,7 +318,7 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon) {
 				itemLocationDiv.appendChild(entranceGroupDiv);
 			} else {
 				let dropdownGroup = DropdownUI.createInteriorOrGrottoDropdown(itemLocation, itemLocationTextDiv);
-				itemLocationDiv.appendChild(dropdownGroup);
+				itemLocationTitleDiv.insertBefore(dropdownGroup, itemLocationTextDiv);
 
 				DropdownUI.refreshEntranceDropdowns(itemLocation);
 			}
@@ -333,14 +326,10 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon) {
 		
 		else if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
 			let dropdownGroup = DropdownUI.createOWDropdown(itemLocation, itemLocationTextDiv);
-			itemLocationDiv.appendChild(dropdownGroup);
+				itemLocationTitleDiv.insertBefore(dropdownGroup, inlineNotesDiv);
 
 			DropdownUI.refreshEntranceDropdowns(itemLocation);
 		}
-		
-		let inlineNotesDiv = dce("div", "item-location-inline-notes");
-		inlineNotesDiv.id = `${itemLocation.Name}-inline-notes`;
-		itemLocationTitleDiv.appendChild(inlineNotesDiv);
 		
 		let mapFloor = itemLocation.MapInfo ? itemLocation.MapInfo.floor : undefined;
 		let locationIconsDiv = _createLocationIconsDiv(itemLocationDiv, itemLocation, mapFloor);

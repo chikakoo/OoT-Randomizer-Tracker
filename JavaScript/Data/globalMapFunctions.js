@@ -67,7 +67,25 @@ let getItemGroupImagePath = function(groupId, name) {
 
 let getItemGroupImageFromName = function(name) {
 	return `url("Images/${name}.png")`;
-}
+};
+
+/**
+* Gets the background string for an item location
+* @param itemLocation - the item location to get the group image for
+*/
+let getItemLocationGroupIcon = function(itemLocation) {
+	if (itemLocation.IsItemLocationGroup && itemLocation.DefaultEntranceGroupName) {
+		let groupName = itemLocation.DefaultEntranceGroupName;
+		return this.getEntranceGroupIcon(ItemLocationGroups[groupName], groupName);
+	} else if (itemLocation.MapImageName) {
+		return getItemGroupImageFromName(itemLocation.MapImageName);
+	} else {
+		let itemGroup = itemLocation.OverrideItemGroup
+			? itemLocation.OverrideItemGroup
+			: itemLocation.ItemGroup;
+		return getItemGroupImagePath(itemGroup);
+	}
+ };
 
 /**
  * Adds all the standard dungeons to the map locations
