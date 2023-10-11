@@ -76,7 +76,7 @@ let getItemGroupImageFromName = function(name) {
 let getItemLocationGroupIcon = function(itemLocation) {
 	if (itemLocation.IsItemLocationGroup && itemLocation.DefaultEntranceGroupName) {
 		let groupName = itemLocation.DefaultEntranceGroupName;
-		return this.getEntranceGroupIcon(ItemLocationGroups[groupName], groupName);
+		return EntranceUI.getEntranceGroupIcon(ItemLocationGroups[groupName], groupName);
 	} else if (itemLocation.MapImageName) {
 		return getItemGroupImageFromName(itemLocation.MapImageName);
 	} else {

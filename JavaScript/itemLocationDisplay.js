@@ -298,10 +298,6 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon) {
 		itemLocationTextDiv.innerText = itemLocation.Name;
 		itemLocationTitleDiv.appendChild(itemLocationTextDiv);
 
-		let inlineNotesDiv = dce("div", "item-location-inline-notes");
-		inlineNotesDiv.id = `${itemLocation.Name}-inline-notes`;
-		itemLocationTitleDiv.appendChild(inlineNotesDiv);
-
 		// Update the entrance location groups
 		if (itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
 			let itemLocationEntranceTasksContainer = dce("div", "item-location-entrance-task-container");
@@ -323,8 +319,12 @@ let _createItemLocations = function(itemGroup, itemGroupDiv, includeGroupIcon) {
 				DropdownUI.refreshEntranceDropdowns(itemLocation);
 			}
 		}
+
+		let inlineNotesDiv = dce("div", "item-location-inline-notes");
+		inlineNotesDiv.id = `${itemLocation.Name}-inline-notes`;
+		itemLocationTitleDiv.appendChild(inlineNotesDiv);
 		
-		else if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
+		if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
 			let dropdownGroup = DropdownUI.createOWDropdown(itemLocation, itemLocationTextDiv);
 				itemLocationTitleDiv.insertBefore(dropdownGroup, inlineNotesDiv);
 
