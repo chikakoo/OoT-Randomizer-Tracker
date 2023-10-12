@@ -1935,29 +1935,14 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
-                    "Show Broken Sword to Biggoron": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 248, y: 20 },
-                        MapImageName: "Broken Goron's Sword",
-                        Age: Age.ADULT,
-                        LongDescription: "Show the Broken Goron's Sword to Biggoron at the summit to get an item.",
-                        RequiredItems: [AdultTradeItems.BROKEN_GORONS_SWORD]
-                    },
-                    "Show Eyedrops to Biggoron": {
-                        ItemGroup: ItemGroups.GIFT,
+                    "Trade Biggoron": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.GIFT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Trade Biggoron",
                         MapInfo: { x: 243, y: 28 },
-                        MapImageName: "Eyedrops",
                         Age: Age.ADULT,
-                        LongDescription: "Show the Eyedrops to Biggoron at the summit to get an item.",
-                        RequiredItems: [AdultTradeItems.EYEDROPS]
-                    },
-                    "Show Claim Check to Biggoron": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 238, y: 36 },
-                        MapImageName: "Claim Check",
-                        Age: Age.ADULT,
-                        LongDescription: "Show the Claim Check to Biggoron at the summit to get an item.",
-                        RequiredItems: [AdultTradeItems.CLAIM_CHECK]
+                        LongDescription: "Show Biggoron (at the summit) the trade sequence item to get the check."
                     },
                     "Red Rock on Upper Path": {
                         ItemGroup: ItemGroups.SKULLTULA,

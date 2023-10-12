@@ -3518,7 +3518,8 @@ GrottoGroups = {
 				},
 				canGet: function(age) {
 					return Data.canPlaySong(Songs.ZELDAS_LULLABY);
-				}
+				},
+				isChildOnly: function() { return true; }
 			},
 			"Epona's Song": {
 				icon: "Epona's Song",
@@ -3528,7 +3529,8 @@ GrottoGroups = {
 				},
 				canGet: function(age) {
 					return Data.canPlaySong(Songs.EPONAS_SONG);
-				}
+				},
+				isChildOnly: function() { return true; }
 			},
 			"Saria's Song": {
 				icon: "Saria's Song",
@@ -3538,7 +3540,8 @@ GrottoGroups = {
 				},
 				canGet: function(age) {
 					return Data.canPlaySong(Songs.SARIAS_SONG);
-				}
+				},
+				isChildOnly: function() { return true; }
 			},
 			"Sun's Song": {
 				icon: "Sun's Song",
@@ -3548,14 +3551,16 @@ GrottoGroups = {
 				},
 				canGet: function(age) {
 					return Data.canPlaySong(Songs.SUNS_SONG);
-				}
+				},
+				isChildOnly: function() { return true; }
 			},
 			"Song of Storms": {
 				icon: "Song of Storms",
 				description: "Play the Song of Storms for the frogs.",
 				canGet: function(age) {
 					return Data.canPlaySong(Songs.SONG_OF_STORMS);
-				}
+				},
+				isChildOnly: function() { return true; }
 			},
 			"Song of Time": {
 				icon: "Song of Time",
@@ -3565,7 +3570,8 @@ GrottoGroups = {
 				},
 				canGet: function(age) {
 					return Data.canPlaySong(Songs.SONG_OF_TIME);
-				}
+				},
+				isChildOnly: function() { return true; }
 			},
 			"Bug Minigame": {
 				description: "Play this after playing all the non-warp songs to the frogs. Answer: A < > v < > v A v A v > < A",
@@ -3577,7 +3583,38 @@ GrottoGroups = {
 						Songs.SUNS_SONG.playerHas &&
 						Songs.SONG_OF_STORMS.playerHas &&
 						Songs.SONG_OF_TIME.playerHas;
-				}
+				},
+				isChildOnly: function() { return true; }
+			}
+		}
+	},
+	"Trade Biggoron": {
+		tooltip: "The frogs in Zora's River",
+		description: "All items that come from the Zora's River frogs.",
+		buttons: {
+			"Broken Goron's Sword": {
+				icon: "Broken Goron's Sword",
+				description: "Show Biggoron the Broken Sword.",
+				canGet: function(age) {
+					return AdultTradeItems.BROKEN_GORONS_SWORD.playerHas;
+				},
+				isAdultOnly: function() { return true; }
+			},
+			"Eyedrops": {
+				icon: "Eyedrops",
+				description: "Show Biggoron the Eyedrops.",
+				canGet: function(age) {
+					return AdultTradeItems.EYEDROPS.playerHas;
+				},
+				isAdultOnly: function() { return true; }
+			},
+			"Claim Check": {
+				icon: "Claim Check",
+				description: "Show Biggoron the Claim Check.",
+				canGet: function(age) {
+					return AdultTradeItems.CLAIM_CHECK.playerHas;
+				},
+				isAdultOnly: function() { return true; }
 			}
 		}
 	}
