@@ -29,7 +29,7 @@ let SpawnsPage = {
     display: function() {
         LocationSidebar.updateSidebarLocation();
         LocationSidebar.displayContainer("spawnsContainer");
-        _currentLocationName = "Spawns";
+        ItemLocationDisplay.currentLocationName = "Spawns";
 
         this._fillSpawnDropdowns();
         this._fillAllSongDropdowns();

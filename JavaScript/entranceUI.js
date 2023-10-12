@@ -276,7 +276,7 @@ let EntranceUI = {
 		let groupProperty = Data.usesDefaultGroup(itemLocation) ? "DefaultEntranceGroup" : "EntranceGroup";
 		delete itemLocation[groupProperty];
 		
-		if (itemLocation.ExitMap === _currentLocationName) {
+		if (itemLocation.ExitMap === ItemLocationDisplay.currentLocationName) {
 			let dropdownDiv = DropdownUI.getItemLocationDropdown(itemLocation);
 			dropdownDiv.value = "<no selection>";
 			
@@ -285,7 +285,7 @@ let EntranceUI = {
 		}
 		itemLocation.playerHas = false;
 		
-		_refreshNotes(itemLocation);
+		ItemLocationDisplay.refreshNotes(itemLocation);
 		refreshAll();
 	},
 	

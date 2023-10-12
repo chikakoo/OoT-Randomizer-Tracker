@@ -34,7 +34,7 @@ let SettingsPage = {
     display: function() {
         LocationSidebar.updateSidebarLocation();
         LocationSidebar.displayContainer("settingsContainer");
-        _currentLocationName = "Settings";
+        ItemLocationDisplay.currentLocationName = "Settings";
         
         this._initializeCheckBoxes();
         this._initializeRadioButtons();

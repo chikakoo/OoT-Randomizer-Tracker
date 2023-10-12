@@ -19,7 +19,7 @@ LocationSidebar = {
      * Refreshes the sidebar with the info from the currently selected location
      */
     refreshSelectedLocation: function() {
-        this.updateSelectedLocation(_currentLocationName);
+        this.updateSelectedLocation(ItemLocationDisplay.currentLocationName);
     },
 
     /**
@@ -27,9 +27,9 @@ LocationSidebar = {
      */
     updateSelectedLocation: function(locationName) {
         if (this.isLocationAMap()) {
-            let selectedId = `location-item-${_currentLocationName}`;
+            let selectedId = `location-item-${ItemLocationDisplay.currentLocationName}`;
             let selectedDiv = document.getElementById(selectedId);
-            let backgroundColor = Data.getColorFromLocationName(_currentLocationName);
+            let backgroundColor = Data.getColorFromLocationName(ItemLocationDisplay.currentLocationName);
             selectedDiv.style.backgroundColor = backgroundColor
             removeCssClass(selectedDiv, "selected-location");
         }
@@ -171,7 +171,7 @@ LocationSidebar = {
         this._setLocationTodoDivForAge(location.name, location.adultData, location.adultBackgroundColor, adultTodoDiv, Age.ADULT);
 
         mainDiv.onclick = function() {
-            displayLocation(location.name);
+            ItemLocationDisplay.displayLocation(location.name);
             Walk.updateTravelDiv();
         }
 
@@ -179,7 +179,7 @@ LocationSidebar = {
             if (Settings.RandomizerSettings.dungeonSetting === DungeonSettings.MIXED) {
                 toggleDungeonMapType(location.name);
                 if (LocationSidebar.isLocationAMap()) {
-                    displayLocation(_currentLocationName);
+                    ItemLocationDisplay.displayLocation(ItemLocationDisplay.currentLocationName);
                 }
                 refreshAll();
             }
@@ -245,7 +245,7 @@ LocationSidebar = {
      */
     isLocationAMap: function(locationName) {
         if (!locationName) {
-            locationName = _currentLocationName;
+            locationName = ItemLocationDisplay.currentLocationName;
         }
 
         return locationName !== "" && locationName !== "Settings" && locationName !== "Notes" && locationName !== "Spawns";
@@ -256,9 +256,9 @@ LocationSidebar = {
      */
     updateSidebarLocation: function() {
 		if (LocationSidebar.isLocationAMap()) {
-			let selectedId = `location-item-${_currentLocationName}`;
+			let selectedId = `location-item-${ItemLocationDisplay.currentLocationName}`;
 			let selectedDiv = document.getElementById(selectedId);
-			let backgroundColor = Data.getColorFromLocationName(_currentLocationName);
+			let backgroundColor = Data.getColorFromLocationName(ItemLocationDisplay.currentLocationName);
 			selectedDiv.style.backgroundColor = backgroundColor;
 			removeCssClass(selectedDiv, "selected-location");
 		}

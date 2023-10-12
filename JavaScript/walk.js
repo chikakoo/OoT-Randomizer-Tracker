@@ -149,7 +149,8 @@ Walk = {
 		let childValues = {};
 		let adultValues = {};
 		
-		let itemLocations = Data.getAllItemLocations(_currentLocationName); //TODO; make a new function to only get OwExits in dataRetriever (see the other TODO)
+		//TODO; make a new function to only get OwExits in dataRetriever (see the other TODO)
+		let itemLocations = Data.getAllItemLocations(ItemLocationDisplay.currentLocationName); 
 		itemLocations.forEach(function(itemLocation) {
 			let isInteriorOrGrottoExit = itemLocation.IsInterior && itemLocation.IsGrotto;
 			let doesOwShuffleApply = Settings.RandomizerSettings.shuffleOverworldEntrances || isInteriorOrGrottoExit;
@@ -266,7 +267,7 @@ Walk = {
 			let locationToDisplay = entranceDataSet.map;
 			addCssClass(locationSpan, "travel-div-hover-style");
 			locationSpan.onclick = function() {
-				displayLocation(locationToDisplay);
+				ItemLocationDisplay.displayLocation(locationToDisplay);
 				_this.updateTravelDiv();
 			}
 		}

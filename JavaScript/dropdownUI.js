@@ -23,7 +23,7 @@ let DropdownUI = {
         itemLocationTextDiv.oncontextmenu = function() {
             let mapName = locDropdown.options[locDropdown.selectedIndex].value;
             if (mapName !== "<no selection>") {
-                displayLocation(mapName);
+                ItemLocationDisplay.displayLocation(mapName);
                 Walk.updateTravelDiv();	
             }
         };
@@ -79,7 +79,7 @@ let DropdownUI = {
         itemLocationTextDiv.oncontextmenu = function() {
             let mapName = itemLocation.OwShuffleMap;
             if (mapName) {
-                displayLocation(mapName);
+                ItemLocationDisplay.displayLocation(mapName);
                 Walk.updateTravelDiv();	
             }
         };
@@ -202,7 +202,7 @@ let DropdownUI = {
      * @param clearDropdown - Used by the location dropdown to clear the entries if <no selection> was selected
      */
     _updateOWDropdown: function(itemLocation, mapName, entranceName, clearDropdown) {
-        let results = Data.setOWLocationFound(_currentLocationName, itemLocation, mapName, entranceName, clearDropdown);
+        let results = Data.setOWLocationFound(ItemLocationDisplay.currentLocationName, itemLocation, mapName, entranceName, clearDropdown);
         refreshAll();
         this._refreshDropdownsOnCurrentPage(results);
     },
@@ -215,13 +215,13 @@ let DropdownUI = {
     _refreshDropdownsOnCurrentPage: function(setOwLocationFoundResults) {
         // Refresh the dropdown if it's on the current map
         let toOwExit = setOwLocationFoundResults.toOwExit;
-        if (toOwExit && toOwExit.ExitMap === _currentLocationName) {
+        if (toOwExit && toOwExit.ExitMap === ItemLocationDisplay.currentLocationName) {
             this.refreshEntranceDropdowns(toOwExit);
         }
 
         // Refresh the old location if it's on the current map and was cleared
         let oldOwExit = setOwLocationFoundResults.oldOwExit;
-        if (oldOwExit && _currentLocationName === oldOwExit.ExitMap && !oldOwExit.LinkedExit) {
+        if (oldOwExit && ItemLocationDisplay.currentLocationName === oldOwExit.ExitMap && !oldOwExit.LinkedExit) {
             this.refreshEntranceDropdowns(oldOwExit);
         }
     },
@@ -261,7 +261,7 @@ let DropdownUI = {
         let oldGroup = itemLocation.EntranceGroup && entranceData[itemLocation.EntranceGroup.name];
         if (oldGroup && oldGroup.overworldLink) {
             Data.setOWLocationFound(
-                _currentLocationName, 
+                ItemLocationDisplay.currentLocationName, 
                 itemLocation, 
                 oldGroup.overworldLink.ExitMap, 
                 oldGroup.overworldLink.Name,
@@ -281,16 +281,14 @@ let DropdownUI = {
         EntranceUI.createButtonDivs(itemLocation, itemLocationEntranceTasksContainer);
         
         if (Data.isItemLocationAShop(itemLocation)) {
-             //TODO: this is a private function - fix this when itemLocationDisplay is made into an object
-            _toggleMoreInfo(document.getElementById(itemLocation.Name), itemLocation, true);
+            ItemLocationDisplay.toggleMoreInfo(document.getElementById(itemLocation.Name), itemLocation, true);
         }
         
-        //TODO: this is a private function - fix this when itemLocationDisplay is made into an object
-        _refreshNotes(itemLocation); 
+        ItemLocationDisplay.refreshNotes(itemLocation); 
         
         let group = entranceData[groupName];
         if (group.overworldLink) {
-           Data.setOWLocationFound(_currentLocationName, itemLocation, group.overworldLink.ExitMap, group.overworldLink.Name);
+           Data.setOWLocationFound(ItemLocationDisplay.currentLocationName, itemLocation, group.overworldLink.ExitMap, group.overworldLink.Name);
         }
 
         let shouldFirePostClick = !group.shouldNotTrigger || !group.shouldNotTrigger();

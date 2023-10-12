@@ -24,7 +24,7 @@ let onPageLoad = function() {
 	
 	LocationSidebar.refreshLocationList();
 	ItemTracker.setUp();
-	displayLocation("Kokiri Forest");
+	ItemLocationDisplay.displayLocation("Kokiri Forest");
 };
 
 /**
@@ -71,13 +71,13 @@ let refreshAll = function() {
 
 	RegionWalker.walk();
 
-	updateItemDisplay();
+	ItemLocationDisplay.updateItemDisplay();
 	LocationSidebar.refreshLocationList();
 	Walk.calculate();
 	MapUI.refreshIcons();
 	SpawnsPage.updateSongItemTooltips();
 
-	if (_currentLocationName === "Notes") {
+	if (ItemLocationDisplay.currentLocationName === "Notes") {
 		NotesPage.display();
 	}
 };

@@ -147,8 +147,8 @@ SocketClient = {
 
 			SocketClient.updateItemLocation(itemLocation);
 			
-			if (_currentLocationName === map) {
-				_refreshNotes(itemLocation);
+			if (ItemLocationDisplay.currentLocationName === map) {
+				ItemLocationDisplay.refreshNotes(itemLocation);
 			}
 			
 			refreshAll();
@@ -173,8 +173,8 @@ SocketClient = {
 			console.log(`${itemLocation.Name} was updated at ${map} - Checked: ${itemLocation.playerHas}`);
 			SocketClient.updateItemLocation(itemLocation);
 			
-			if (_currentLocationName === map) {
-				_refreshNotes(itemLocation);
+			if (ItemLocationDisplay.currentLocationName === map) {
+				ItemLocationDisplay.refreshNotes(itemLocation);
 			}
 		});
 		
@@ -248,7 +248,7 @@ SocketClient = {
 			}
 		}
 		
-		if (_currentLocationName === map) {
+		if (ItemLocationDisplay.currentLocationName === map) {
 			let expandIconDiv = document.getElementById(`${itemLocation.Name}-expand-icon`);
 			let moreInfoNotesDiv = document.getElementById(`${itemLocation.Name}-inline-notes`);
 			

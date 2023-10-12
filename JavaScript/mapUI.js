@@ -95,7 +95,7 @@ let MapUI = {
 			floorButton.innerText = currentFloor;
 			floorButton.dataset.floor = currentFloor;
 			floorButton.onclick = function(event) {
-				let groupedItemLocationInfo = getGroupedLocationInfo(_this._currentMapName);
+				let groupedItemLocationInfo = ItemLocationDisplay.getGroupedLocationInfo(_this._currentMapName);
 				_this.setMap(mapName, groupedItemLocationInfo, event.target.dataset.floor);
 			}
 			if (floor === currentFloor) {
@@ -111,9 +111,8 @@ let MapUI = {
 		mapImageAndIcons.innerHTML = "";
 		if (this._currentMapName === "" ) { return; }
 		
-		let mapInfo = MapLocations[this._currentMapName];
 		let mapName = this._currentMapName;
-		let groupedItemLocationInfo = getGroupedLocationInfo(mapName);
+		let groupedItemLocationInfo = ItemLocationDisplay.getGroupedLocationInfo(mapName);
 		this._setUpIcons(this._currentMapName, groupedItemLocationInfo, this._currentFloor);
 		
 		if (this._mapFrozen) { this._applyScaling(this._scaleValue); }
@@ -174,7 +173,7 @@ let MapUI = {
 
 					let itemLocationDiv = document.getElementById(itemLocation.Name.trim());
 					if (itemLocationDiv) {
-						_toggleItemObtained(itemLocationDiv, itemLocation);
+						ItemLocationDisplay.toggleItemObtained(itemLocationDiv, itemLocation);
 					}
 				};
 
@@ -340,7 +339,7 @@ let MapUI = {
 	 */
 	jumpToIcon: function(locationName, floor) {
 		if (floor && this._currentFloor !== floor) {
-			let groupedItemLocationInfo = getGroupedLocationInfo(this._currentMapName);
+			let groupedItemLocationInfo = ItemLocationDisplay.getGroupedLocationInfo(this._currentMapName);
 			this.setMap(this._currentMapName, groupedItemLocationInfo, floor);
 		}
 

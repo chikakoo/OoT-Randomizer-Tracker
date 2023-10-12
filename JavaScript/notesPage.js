@@ -5,7 +5,7 @@ NotesPage = {
 	display: function() {
 		LocationSidebar.updateSidebarLocation();
 		LocationSidebar.displayContainer("notesContainer");
-		_currentLocationName = "Notes";
+		ItemLocationDisplay.currentLocationName = "Notes";
 		
 		this._adjustImportantLocationsText();
 		this._createNotesForSection("shop", Data.isItemLocationAShop.bind(Data));
@@ -31,7 +31,7 @@ NotesPage = {
 			let templeOfTimeLocationDiv = document.getElementById("templeOfTimeContent");
 			templeOfTimeLocationDiv.innerText = `${Data.templeOfTimeLocation.map} | ${Data.templeOfTimeLocation.region}`;
 			templeOfTimeLocationDiv.onclick = function() {
-				displayLocation(Data.templeOfTimeLocation.map);
+				ItemLocationDisplay.displayLocation(Data.templeOfTimeLocation.map);
 			}
 		}
 	},
@@ -236,9 +236,9 @@ NotesPage = {
 				itemLocation.notes = newNotes;
 				
 				SocketClient.itemLocationUpdated(itemLocation);
-				_refreshNotes(itemLocation);
+				ItemLocationDisplay.refreshNotes(itemLocation);
 				refreshAll();
-				if (_currentLocationName === "Notes") { _this.display(); }
+				if (ItemLocationDisplay.currentLocationName === "Notes") { _this.display(); }
 			}
 			
 			noteDivPart.oncontextmenu = function(event) {
@@ -250,9 +250,9 @@ NotesPage = {
 				itemLocation.notes = newNotes;
 				
 				SocketClient.itemLocationUpdated(itemLocation);
-				_refreshNotes(itemLocation);
+				ItemLocationDisplay.refreshNotes(itemLocation);
 				refreshAll();
-				if (_currentLocationName === "Notes") { _this.display(); }
+				if (ItemLocationDisplay.currentLocationName === "Notes") { _this.display(); }
 			}
 			
 			notesDiv.appendChild(noteDivPart);

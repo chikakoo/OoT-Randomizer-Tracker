@@ -302,7 +302,7 @@ let SaveAndLoad = {
         purgeLocations();
         
         refreshAll();
-        displayLocation("Kokiri Forest");
+        ItemLocationDisplay.displayLocation("Kokiri Forest");
 
         this.currentlyLoading = false;
         SocketClient.syncAll(); // Sync to all clients if in co-op mode
