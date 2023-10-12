@@ -1583,7 +1583,7 @@ let StandardDungeons = {
                 Exits: {
                     bossRoom: {
                         CustomRequirement: function(age) {
-                            return hasBossKey("Forest Temple");
+                            return ItemData.hasBossKey("Forest Temple");
                         }
                     }
                 },
@@ -1659,7 +1659,7 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             let canGetToDoor = age === Age.ADULT || Data.canMegaFlip(age);
                             let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
-                            return canGetToDoor && tunicCheck && hasBossKey("Fire Temple");
+                            return canGetToDoor && tunicCheck && ItemData.hasBossKey("Fire Temple");
                         }
                     },
 
@@ -2711,7 +2711,7 @@ let StandardDungeons = {
                                 // Enter the room via the fire door, then exit out the bottom via the locked door
                                 // Now raise the water and return through the fire door with iron boots (the bars will be gone still)
                                 let bottomDoorCheck = Data.itemLocationObtained("Water Temple", "main", "Locked Door to Central Room") ||
-                                    getKeyCount("Water Temple") === Keys.WATER_TEMPLE.totalKeys();
+                                    ItemData.getKeyCount("Water Temple") === Keys.WATER_TEMPLE.totalKeys();
                                 if (age === Age.ADULT && 
                                     bottomDoorCheck && 
                                     Equipment.IRON_BOOTS.playerHas && 
@@ -2838,7 +2838,7 @@ let StandardDungeons = {
                     bossRoom: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            return hasBossKey("Water Temple");
+                            return ItemData.hasBossKey("Water Temple");
                         }
                     }
                 },
@@ -3442,7 +3442,7 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             // We can't check the index via the property here since we don't NEED the rupees to advance in this case
                             if (Settings.RandomizerSettings.shuffleSilverRupees) { 
-                                return Data.canWeirdShot(age) || checkSilverRupeeRequirement("Shadow Temple", 0);
+                                return Data.canWeirdShot(age) || ItemData.checkSilverRupeeRequirement("Shadow Temple", 0);
                             }
 
                             return Items.HOOKSHOT.playerHas || 
@@ -3905,7 +3905,7 @@ let StandardDungeons = {
                         Map: "Shadow Temple",
                         LockedDoor: "Locked Door After Boat Ride",
                         CustomRequirement: function(age) {
-                            if (!hasBossKey("Shadow Temple")) { return false; }
+                            if (!ItemData.hasBossKey("Shadow Temple")) { return false; }
 
                             let canGetToDoor = Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
                             return canGetToDoor;
@@ -4543,7 +4543,7 @@ let StandardDungeons = {
                                 return true;
                             }
 
-                            let canTurnOnGoldenTorch = !Settings.RandomizerSettings.shuffleSilverRupees || checkSilverRupeeRequirement("Spirit Temple", 1);
+                            let canTurnOnGoldenTorch = !Settings.RandomizerSettings.shuffleSilverRupees || ItemData.checkSilverRupeeRequirement("Spirit Temple", 1);
                             return canTurnOnGoldenTorch && canUseStick;
                         }
                     },
@@ -4722,7 +4722,7 @@ let StandardDungeons = {
                         RequiredItems: [Items.HOOKSHOT, Equipment.MIRROR_SHIELD],
                         NeedsExplosives: true,
                         CustomRequirement: function(age) {
-                            return hasBossKey("Spirit Temple");
+                            return ItemData.hasBossKey("Spirit Temple");
                         }
                     }
                 },
@@ -6643,7 +6643,7 @@ let StandardDungeons = {
                 Exits: {
                     lightTrialRoom2: {
                         CustomRequirement: function(age) {
-                            return getKeyCount("Ganon's Castle") >= 1;
+                            return ItemData.getKeyCount("Ganon's Castle") >= 1;
                         }
                     }
                 },
@@ -6665,7 +6665,7 @@ let StandardDungeons = {
                 Exits: {
                     lightTrialRoom3: {
                         CustomRequirement: function(age) {
-                            return getKeyCount("Ganon's Castle") >= 2;
+                            return ItemData.getKeyCount("Ganon's Castle") >= 2;
                         }
                     }
                 },
@@ -6824,7 +6824,7 @@ let StandardDungeons = {
                     potRoom: {
                         CustomRequirement: function(age) {
                             return Settings.RandomizerSettings.potSetting !== ShuffleLocationSettings.OFF || 
-                                hasBossKey("Ganon's Castle");
+                                ItemData.hasBossKey("Ganon's Castle");
                         }
                     }
                 },

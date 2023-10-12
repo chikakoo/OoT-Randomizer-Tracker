@@ -899,7 +899,7 @@ Data = {
             return false;
         }
 
-        if (getKeyCount(map) < itemLocation.KeyRequirement(age).min) {
+        if (ItemData.getKeyCount(map) < itemLocation.KeyRequirement(age).min) {
             return false;
         }
         
@@ -925,7 +925,7 @@ Data = {
                 usedKeys++;
             }
         });
-        return getKeyCount(mapName) - usedKeys;
+        return ItemData.getKeyCount(mapName) - usedKeys;
     },
 
     /**
@@ -1536,7 +1536,7 @@ Data = {
         }
         
         let keyReq = lockedDoor.KeyRequirement(age);
-        let currentKeyCount = getKeyCount(map);
+        let currentKeyCount = ItemData.getKeyCount(map);
 		if (currentKeyCount < keyReq.max) { return ItemObtainability.NO; }
 		return ItemObtainability.YES; 
 	},
@@ -1555,7 +1555,7 @@ Data = {
             return ItemObtainability.YES;
         }
 
-        return checkSilverRupeeRequirement(itemLocation.Map, itemLocation.SilverRupeeIndex);
+        return ItemData.checkSilverRupeeRequirement(itemLocation.Map, itemLocation.SilverRupeeIndex);
     },
 
 	/**

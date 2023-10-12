@@ -532,7 +532,7 @@ let ItemTracker = {
 				silverRupeeDiv.onmouseover = _this.onSilverRupeeMouseOver.bind(_this, rupeeData.name);
 				silverRupeeDiv.onmouseout = _this.onItemMouseOut;
 				
-				let silverRupeeCount = getSilverRupeeCount(rupeeObject, rupeeDataIndex);
+				let silverRupeeCount = ItemData.getSilverRupeeCount(rupeeObject, rupeeDataIndex);
 				_this._createCountDiv(silverRupeeDiv, silverRupeeCount, "rupee-count");
 				silverRupeeDivContainer.appendChild(silverRupeeDiv);
 				_this._updateSilverRupeeCss(rupeeData.color, rupeeData.total, silverRupeeCount, silverRupeeDiv);
@@ -571,7 +571,11 @@ let ItemTracker = {
 		if (silverRupeeObject.collectedRupees[silverRupeeIndex] < 0) {
 			silverRupeeObject.collectedRupees[silverRupeeIndex] = 0;
 		}
-		this._updateSilverRupeeCss(silverRupeeData.color, silverRupeeData.total, getSilverRupeeCount(silverRupeeObject, silverRupeeIndex), silverRupeeDiv);
+		this._updateSilverRupeeCss(
+			silverRupeeData.color, 
+			silverRupeeData.total, 
+			ItemData.getSilverRupeeCount(silverRupeeObject, silverRupeeIndex), 
+			silverRupeeDiv);
 		
 		let rupeeCountDiv = silverRupeeDiv.firstChild;
 		rupeeCountDiv.innerText = silverRupeeObject.collectedRupees[silverRupeeIndex];

@@ -541,5 +541,5 @@ let ItemLocationDisplay = {
 		}
 
 		event.stopPropagation();
-	},
+	}
 };

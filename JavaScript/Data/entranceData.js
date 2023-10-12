@@ -972,7 +972,7 @@ InteriorGroups = {
 					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
 						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
 					}
-					return getKeyCount("Treasure Chest Minigame") >= 1;
+					return ItemData.getKeyCount("Treasure Chest Minigame") >= 1;
 				}
 			},
 			"Room 1 Front Chest": {
@@ -986,7 +986,7 @@ InteriorGroups = {
 					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
 						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
 					}
-					return getKeyCount("Treasure Chest Minigame") >= 1;
+					return ItemData.getKeyCount("Treasure Chest Minigame") >= 1;
 				}
 			},
 			"Room 2 Back Chest": {
@@ -1000,7 +1000,7 @@ InteriorGroups = {
 					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
 						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
 					}
-					return getKeyCount("Treasure Chest Minigame") >= 2;
+					return ItemData.getKeyCount("Treasure Chest Minigame") >= 2;
 				}
 			},
 			"Room 2 Front Chest": {
@@ -1014,7 +1014,7 @@ InteriorGroups = {
 					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
 						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
 					}
-					return getKeyCount("Treasure Chest Minigame") >= 2;
+					return ItemData.getKeyCount("Treasure Chest Minigame") >= 2;
 				}
 			},
 			"Room 3 Back Chest": {
@@ -1028,7 +1028,7 @@ InteriorGroups = {
 					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
 						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
 					}
-					return getKeyCount("Treasure Chest Minigame") >= 3;
+					return ItemData.getKeyCount("Treasure Chest Minigame") >= 3;
 				}
 			},
 			"Room 3 Front Chest": {
@@ -1042,7 +1042,7 @@ InteriorGroups = {
 					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
 						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
 					}
-					return getKeyCount("Treasure Chest Minigame") >= 3;
+					return ItemData.getKeyCount("Treasure Chest Minigame") >= 3;
 				}
 			},
 			"Room 4 Back Chest": {
@@ -1056,7 +1056,7 @@ InteriorGroups = {
 					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
 						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
 					}
-					return getKeyCount("Treasure Chest Minigame") >= 4;
+					return ItemData.getKeyCount("Treasure Chest Minigame") >= 4;
 				}
 			},
 			"Room 4 Front Chest": {
@@ -1070,7 +1070,7 @@ InteriorGroups = {
 					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
 						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
 					}
-					return getKeyCount("Treasure Chest Minigame") >= 4;
+					return ItemData.getKeyCount("Treasure Chest Minigame") >= 4;
 				}
 			},
 			"Room 5 Back Chest": {
@@ -1084,7 +1084,7 @@ InteriorGroups = {
 					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
 						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
 					}
-					return getKeyCount("Treasure Chest Minigame") >= 5;
+					return ItemData.getKeyCount("Treasure Chest Minigame") >= 5;
 				}
 			},
 			"Room 5 Front Chest": {
@@ -1098,7 +1098,7 @@ InteriorGroups = {
 					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
 						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
 					}
-					return getKeyCount("Treasure Chest Minigame") >= 5;
+					return ItemData.getKeyCount("Treasure Chest Minigame") >= 5;
 				}
 			},
 			"Prize": {
@@ -1109,7 +1109,7 @@ InteriorGroups = {
 					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
 						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
 					}
-					return getKeyCount("Treasure Chest Minigame") >= 6;
+					return ItemData.getKeyCount("Treasure Chest Minigame") >= 6;
 				}
 			}
 		}

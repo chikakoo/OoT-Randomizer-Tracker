@@ -62,6 +62,9 @@ let ChildTradeItems = {
 	MASK_OF_TRUTH: { name: "Mask of Truth" }
 };
 
+/**
+ * A list of the adult trade items
+ */
 let AdultTradeItems = {
 	POCKET_EGG: { 
 		name: "Pocket Egg", 
@@ -931,66 +934,6 @@ let Keys = {
 };
 
 /**
- * Gets the key count from the current map name
- */
-let getKeyCount = function(mapName) {
-	if (mapName !== "Thieves' Hideout" && Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY) {
-		return 99;
-	}
-
-	switch(mapName) {
-		case "Forest Temple":
-			return Keys.FOREST_TEMPLE.keyCount || 0;
-		case "Fire Temple":
-			return Keys.FIRE_TEMPLE.keyCount || 0;
-		case "Water Temple":
-			return Keys.WATER_TEMPLE.keyCount || 0;
-		case "Shadow Temple":
-			return Keys.SHADOW_TEMPLE.keyCount || 0;
-		case "Spirit Temple":
-			return Keys.SPIRIT_TEMPLE.keyCount || 0;
-		case "Ganon's Castle":
-			return Keys.GANONS_CASTLE.keyCount || 0;
-			
-		case "Bottom of the Well":
-			return Keys.BOTTOM_OF_THE_WELL.keyCount || 0;
-		case "Thieves' Hideout":
-			return Keys.THIEVES_HIDEOUT.keyCount || 0;
-		case "Training Grounds":
-			return Keys.GERUDO_TRAINING_GROUNDS.keyCount || 0;
-
-		case "Treasure Chest Minigame":
-			if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.KEYSY) {
-				return 99;
-			}
-			return Keys.TREASURE_CHEST_MINIGAME.keyCount || 0;
-		
-		default: return 0;
-	}
-};
-
-/**
- * Checks whether you have the boss key
- */
-let hasBossKey = function(mapName) {
-	switch(mapName) {
-		case "Forest Temple":
-			return Keys.FOREST_TEMPLE.playerHas;
-		case "Fire Temple":
-			return Keys.FIRE_TEMPLE.playerHas;
-		case "Water Temple":
-			return Keys.WATER_TEMPLE.playerHas;
-		case "Shadow Temple":
-			return Keys.SHADOW_TEMPLE.playerHas;
-		case "Spirit Temple":
-			return Keys.SPIRIT_TEMPLE.playerHas;
-		case "Ganon's Castle":
-			return Keys.GANONS_CASTLE.playerHas;
-		default: return false;
-	}
-};
-
-/**
  * Contains data in the following format (different data for MQ and standard):
  * - #: { { name: "Rupee Set Name", total: #, color: "colorName"}, ... }
  * 
@@ -1196,80 +1139,70 @@ let SilverRupees = {
 };
 
 /**
- * Gets the silver rupee data for the given map name
- * @param mapName - the map name
- * @returns The silver rupee data
- */
-let getSilverRupeeData = function(mapName) {
-	switch(mapName) {
-		case "Ice Cavern":
-			return SilverRupees.ICE_CAVERN;
-
-		case "Shadow Temple":
-			return SilverRupees.SHADOW_TEMPLE;
-		case "Spirit Temple":
-			return SilverRupees.SPIRIT_TEMPLE;
-		case "Ganon's Castle":
-			return SilverRupees.GANONS_CASTLE;
-			
-		case "Dodongo's Cavern":
-			return SilverRupees.DODONGOS_CAVERN;
-		case "Bottom of the Well":
-			return SilverRupees.BOTTOM_OF_THE_WELL;
-		case "Training Grounds":
-			return SilverRupees.TRAINING_GROUNDS;
-		
-		default: 
-			console.log(`ERROR: Attempted to get silver rupee data for ${mapName}!`);
-			return null;
-	}
-};
-
-/**
- * Returns the silver rupee count at the given location and index
- * @param rupeeObject - the SilverRupee location object
- * @param index - the index to look at
- * @returns The count, or 0 if not found
- */
-let getSilverRupeeCount = function(rupeeObject, index) {
-	let collectedRupeeObject = rupeeObject.collectedRupees;
-	if (!collectedRupeeObject) {
-		return 0;
-	}
-
-	return collectedRupeeObject[index] || 0;
-};
-
-/**
- * Checks that the player has enough silver rupees of the given index
- * @param mapName - the name of the map to check
- * @param index - the silver rupee index
- * @returns the appropriate ItemObtainability value
- */
-let checkSilverRupeeRequirement = function(mapName, index) {
-	let rupeeObject = getSilverRupeeData(mapName);
-	if (!rupeeObject) { return ItemObtainability.YES; }
-
-	let currentRupeeCount = getSilverRupeeCount(rupeeObject, index);
-
-	let isMasterQuest = MapLocations[mapName].IsMasterQuest;
-	let rupeeData = isMasterQuest
-		? rupeeObject.mqRupeeData
-		: rupeeObject.standardRupeeData;
-	if (!rupeeData[index]) { return ItemObtainability.NO; }
-
-	let totalRupeesRequired = rupeeData[index].total;
-	if (currentRupeeCount >= totalRupeesRequired) {
-		return ItemObtainability.YES;
-	}
-	return ItemObtainability.NO;
-};
-
-/**
  * Used to group the item functions so that we don't flood the global space
  * TODO: Put all the loose functions from this file in here!
  */
 let ItemData = {
+	/**
+	 * Gets the key count from the current map name
+	 */
+	getKeyCount: function(mapName) {
+		if (mapName !== "Thieves' Hideout" && Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY) {
+			return 99;
+		}
+
+		switch(mapName) {
+			case "Forest Temple":
+				return Keys.FOREST_TEMPLE.keyCount || 0;
+			case "Fire Temple":
+				return Keys.FIRE_TEMPLE.keyCount || 0;
+			case "Water Temple":
+				return Keys.WATER_TEMPLE.keyCount || 0;
+			case "Shadow Temple":
+				return Keys.SHADOW_TEMPLE.keyCount || 0;
+			case "Spirit Temple":
+				return Keys.SPIRIT_TEMPLE.keyCount || 0;
+			case "Ganon's Castle":
+				return Keys.GANONS_CASTLE.keyCount || 0;
+				
+			case "Bottom of the Well":
+				return Keys.BOTTOM_OF_THE_WELL.keyCount || 0;
+			case "Thieves' Hideout":
+				return Keys.THIEVES_HIDEOUT.keyCount || 0;
+			case "Training Grounds":
+				return Keys.GERUDO_TRAINING_GROUNDS.keyCount || 0;
+
+			case "Treasure Chest Minigame":
+				if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.KEYSY) {
+					return 99;
+				}
+				return Keys.TREASURE_CHEST_MINIGAME.keyCount || 0;
+			
+			default: return 0;
+		}
+	},
+
+	/**
+	 * Checks whether you have the boss key
+	 */
+	hasBossKey: function(mapName) {
+		switch(mapName) {
+			case "Forest Temple":
+				return Keys.FOREST_TEMPLE.playerHas;
+			case "Fire Temple":
+				return Keys.FIRE_TEMPLE.playerHas;
+			case "Water Temple":
+				return Keys.WATER_TEMPLE.playerHas;
+			case "Shadow Temple":
+				return Keys.SHADOW_TEMPLE.playerHas;
+			case "Spirit Temple":
+				return Keys.SPIRIT_TEMPLE.playerHas;
+			case "Ganon's Castle":
+				return Keys.GANONS_CASTLE.playerHas;
+			default: return false;
+		}
+	},
+
 	/**
 	 * Gets the song notes string out of the given song
 	 * @param {any} song - the song
@@ -1359,5 +1292,75 @@ let ItemData = {
 			return false;
 		}
 		return ocarinaNotes.every(ocarinaNote => ocarinaNote.playerHas);
+	},
+
+	/**
+	 * Checks that the player has enough silver rupees of the given index
+	 * @param mapName - the name of the map to check
+	 * @param index - the silver rupee index
+	 * @returns the appropriate ItemObtainability value
+	 */
+	checkSilverRupeeRequirement: function(mapName, index) {
+		let rupeeObject = this._getSilverRupeeData(mapName);
+		if (!rupeeObject) { return ItemObtainability.YES; }
+
+		let currentRupeeCount = this.getSilverRupeeCount(rupeeObject, index);
+
+		let isMasterQuest = MapLocations[mapName].IsMasterQuest;
+		let rupeeData = isMasterQuest
+			? rupeeObject.mqRupeeData
+			: rupeeObject.standardRupeeData;
+		if (!rupeeData[index]) { return ItemObtainability.NO; }
+
+		let totalRupeesRequired = rupeeData[index].total;
+		if (currentRupeeCount >= totalRupeesRequired) {
+			return ItemObtainability.YES;
+		}
+		return ItemObtainability.NO;
+	},
+
+	/**
+	 * Returns the silver rupee count at the given location and index
+	 * @param rupeeObject - the SilverRupee location object
+	 * @param index - the index to look at
+	 * @returns The count, or 0 if not found
+	 */
+	getSilverRupeeCount: function(rupeeObject, index) {
+		let collectedRupeeObject = rupeeObject.collectedRupees;
+		if (!collectedRupeeObject) {
+			return 0;
+		}
+
+		return collectedRupeeObject[index] || 0;
+	},
+
+	/**
+	 * Gets the silver rupee data for the given map name
+	 * @param mapName - the map name
+	 * @returns The silver rupee data
+	 */
+	_getSilverRupeeData: function(mapName) {
+		switch(mapName) {
+			case "Ice Cavern":
+				return SilverRupees.ICE_CAVERN;
+
+			case "Shadow Temple":
+				return SilverRupees.SHADOW_TEMPLE;
+			case "Spirit Temple":
+				return SilverRupees.SPIRIT_TEMPLE;
+			case "Ganon's Castle":
+				return SilverRupees.GANONS_CASTLE;
+				
+			case "Dodongo's Cavern":
+				return SilverRupees.DODONGOS_CAVERN;
+			case "Bottom of the Well":
+				return SilverRupees.BOTTOM_OF_THE_WELL;
+			case "Training Grounds":
+				return SilverRupees.TRAINING_GROUNDS;
+			
+			default: 
+				console.log(`ERROR: Attempted to get silver rupee data for ${mapName}!`);
+				return null;
+		}
 	}
 }

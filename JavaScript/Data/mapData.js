@@ -3738,7 +3738,7 @@ let MapLocations = {
                         IsPostWalkCheck: true,
                         LongDescription: "You'll get this from the Gerudo after using all 4 keys on all the jail doors and talking to the prisoners.",
                         CustomRequirement: function(age) {
-                            return getKeyCount("Thieves' Hideout") >= 4 &&
+                            return ItemData.getKeyCount("Thieves' Hideout") >= 4 &&
                                 Data.canAccessMap(age, "Thieves' Hideout", "jail1") &&
                                 Data.canAccessMap(age, "Thieves' Hideout", "jail2") &&
                                 Data.canAccessMap(age, "Thieves' Hideout", "jail3") &&

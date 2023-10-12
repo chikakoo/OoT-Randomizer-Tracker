@@ -1908,7 +1908,7 @@ let MQDungeons = {
                 Exits: {
                     bossRoom: {
                         CustomRequirement: function(age) {
-                            return hasBossKey("Forest Temple");
+                            return ItemData.hasBossKey("Forest Temple");
                         }
                     }
                 },
@@ -2094,7 +2094,7 @@ let MQDungeons = {
                     bossRoom: {
                         Age: Age.EITHER,
                         CustomRequirement: function(age) {
-                            return (age === Age.ADULT || Data.canMegaFlip(age)) && hasBossKey("Fire Temple");
+                            return (age === Age.ADULT || Data.canMegaFlip(age)) && ItemData.hasBossKey("Fire Temple");
                         }
                     }
                 },
@@ -2786,12 +2786,12 @@ let MQDungeons = {
                         RequiredChoiceOfAdultItems: [{item: Items.HOOKSHOT, upgradeString: "2"}, Equipment.HOVER_BOOTS],
                         RequiredAdultItems: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
-                            return getKeyCount("Water Temple") >= 1;
+                            return ItemData.getKeyCount("Water Temple") >= 1;
                         }
                     },
                     bossRoom: {
                         CustomRequirement: function(age) {
-                            if (!hasBossKey("Water Temple")) { return false; }
+                            if (!ItemData.hasBossKey("Water Temple")) { return false; }
                 
                             let hasLongshot = Items.HOOKSHOT.currentUpgrade === 2;
                             let canSkipLongshot = Data.canHammerHoverBootsSuperslide(age);
@@ -3801,7 +3801,7 @@ let MQDungeons = {
                         CustomRequirement: function(age) {
                             // We can't check the index via the property here since we don't NEED the rupees to advance in this case
                             if (Settings.RandomizerSettings.shuffleSilverRupees) { 
-                                return Data.canWeirdShot(age) || checkSilverRupeeRequirement("Shadow Temple", 0);
+                                return Data.canWeirdShot(age) || ItemData.checkSilverRupeeRequirement("Shadow Temple", 0);
                             }
 
                             return Items.HOOKSHOT.playerHas || 
@@ -3844,7 +3844,7 @@ let MQDungeons = {
 
                             // We can't check the index via the property here since we don't NEED the rupees to advance in this case
                             if (Settings.RandomizerSettings.shuffleSilverRupees) { 
-                                return checkSilverRupeeRequirement("Shadow Temple", 1);
+                                return ItemData.checkSilverRupeeRequirement("Shadow Temple", 1);
                             }
 
                             return age === Age.ADULT && Data.canPlaySong(Songs.SONG_OF_TIME);
@@ -4304,7 +4304,7 @@ let MQDungeons = {
                     },
                     bossRoom: {
                         CustomRequirement: function(age) {
-                            if (!hasBossKey("Shadow Temple")) { return false; }
+                            if (!ItemData.hasBossKey("Shadow Temple")) { return false; }
                             return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
                         }
                     }
@@ -5402,7 +5402,7 @@ let MQDungeons = {
                     bossRoom: {
                         RequiredItems: [Equipment.MIRROR_SHIELD],
                         CustomRequirement: function(age) {
-                            return hasBossKey("Spirit Temple");
+                            return ItemData.hasBossKey("Spirit Temple");
                         }
                     }
                 },
@@ -5935,7 +5935,7 @@ let MQDungeons = {
                     mazeCenter: {
                         RequiredChildItems: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
                         CustomRequirement: function(age) {
-                            if (getKeyCount("Training Grounds") >= 3) {
+                            if (ItemData.getKeyCount("Training Grounds") >= 3) {
                                 return true;
                             }
 
@@ -6023,7 +6023,7 @@ let MQDungeons = {
                         CustomRequirement: function(age) {
                             return MapLocations["Training Grounds"]._canVineClip(age) || 
                                 Data.canWeirdShot(age) || 
-                                getKeyCount("Training Grounds") >= 1;
+                                ItemData.getKeyCount("Training Grounds") >= 1;
                         }
                     }
                 }
@@ -6221,7 +6221,7 @@ let MQDungeons = {
                         RequiredItems: [Items.FAIRY_BOW],
                         CustomRequirement: function(age) {
                             // Getting all silver rupees spawns hookshot targets that you can use to traverse!
-                            if (Settings.RandomizerSettings.shuffleSilverRupees && checkSilverRupeeRequirement("Training Grounds", 1)) {
+                            if (Settings.RandomizerSettings.shuffleSilverRupees && ItemData.checkSilverRupeeRequirement("Training Grounds", 1)) {
                                 return true;
                             }
                             return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
@@ -6283,7 +6283,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             // Getting all silver rupees spawns hookshot targets that you can use to traverse!
-                            if (Settings.RandomizerSettings.shuffleSilverRupees && checkSilverRupeeRequirement("Training Grounds", 1)) {
+                            if (Settings.RandomizerSettings.shuffleSilverRupees && ItemData.checkSilverRupeeRequirement("Training Grounds", 1)) {
                                 return true;
                             }
                             return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
@@ -6293,7 +6293,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             // Getting all silver rupees spawns hookshot targets that you can use to traverse!
-                            if (Settings.RandomizerSettings.shuffleSilverRupees && checkSilverRupeeRequirement("Training Grounds", 1)) {
+                            if (Settings.RandomizerSettings.shuffleSilverRupees && ItemData.checkSilverRupeeRequirement("Training Grounds", 1)) {
                                 return true;
                             }
 
@@ -6305,7 +6305,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             // Getting all silver rupees spawns hookshot targets that you can use to traverse!
-                            if (Settings.RandomizerSettings.shuffleSilverRupees && checkSilverRupeeRequirement("Training Grounds", 1)) {
+                            if (Settings.RandomizerSettings.shuffleSilverRupees && ItemData.checkSilverRupeeRequirement("Training Grounds", 1)) {
                                 return true;
                             }
                             return Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas;
@@ -6492,7 +6492,7 @@ let MQDungeons = {
 
                             return MapLocations["Training Grounds"]._canVineClip(age) ||
                                 Data.canWeirdShot(age) || 
-                                getKeyCount("Training Grounds") >= 3;
+                                ItemData.getKeyCount("Training Grounds") >= 3;
                         }
                     }
                 }
@@ -7081,7 +7081,7 @@ let MQDungeons = {
                     potRoom: {
                         CustomRequirement: function(age) {
                             return Settings.RandomizerSettings.potSetting !== ShuffleLocationSettings.OFF || 
-                                hasBossKey("Ganon's Castle");
+                                ItemData.hasBossKey("Ganon's Castle");
                         }
                     }
                 },
