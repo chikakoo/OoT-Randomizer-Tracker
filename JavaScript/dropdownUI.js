@@ -10,7 +10,7 @@ let DropdownUI = {
     createOWDropdown: function(itemLocation, itemLocationTextDiv) {
         let dropdownGroup = dce("div", "dropdown-group");
 			
-        let locDropdown = dce("select");
+        let locDropdown = dce("select", "ow-location-dropdown");
         let entranceDropdown = dce("select");
         locDropdown.id = this.getItemLocationDropdownId(itemLocation);
         entranceDropdown.id = this.getEntranceDropdownId(itemLocation);
@@ -132,7 +132,15 @@ let DropdownUI = {
         options.unshift("<no selection>");
 
         let defaultMap = itemLocation.OwShuffleMap;
-        this._fillStringDropdown(locDropdown, options, defaultMap);
+        this._fillStringDropdown(locDropdown, options, defaultMap, true);
+
+        if (defaultMap) {
+            this._setMapInlineBackgroundColorForElement(locDropdown, defaultMap);
+            locDropdown.style.color = "white";
+        } else {
+            locDropdown.style.color = null;
+            locDropdown.style.backgroundColor = null;
+        }
 
         locDropdown.onchange = this.onOWLocDropdownChange.bind(
             this, itemLocation, locDropdown, entranceDropdown, entranceOptions);
@@ -173,9 +181,16 @@ let DropdownUI = {
             
         let mapName = locDropdown.options[locDropdown.selectedIndex].value;
         let entrances = null;
-        if (mapName !== "<no selection>") {
+
+        if (mapName === "<no selection>") {
+            locDropdown.style.color = null;
+            locDropdown.style.backgroundColor = null;
+        } else {
             entrances = this._getDropdownOptions(mapName, entranceOptions);
             this._fillStringDropdown(entranceDropdown, entrances);
+
+            this._setMapInlineBackgroundColorForElement(locDropdown, mapName);
+            locDropdown.style.color = "white";
         }
         
         let entranceName = entrances && entrances[0];
@@ -318,9 +333,11 @@ let DropdownUI = {
      * @param dropdown - The dropdown element
      * @param options - The options to put into the dropdown - an array of objects containing:
      * { option: "string value", tooltip: "string tooltip" } OR just a string of options
+     * @param useInlineColors - Whether to look up the inline color (for OW locations)
      * @param defaultValue - The value to select by default
      */
-    _fillStringDropdown: function(dropdown, options, defaultValue) {
+    _fillStringDropdown: function(dropdown, options, defaultValue, useInlineColors) {
+        let _this = this;
         options.forEach(function(optionObject) {
             let option = optionObject.option
                 ? optionObject.option
@@ -337,9 +354,29 @@ let DropdownUI = {
             if (option === defaultValue) {
                 optionElement.selected = "selected";
             }
-            
+
+            if (useInlineColors) {
+                if (option === "<no selection>") {
+                    optionElement.style.color = "black";
+                } else {
+                    _this._setMapInlineBackgroundColorForElement(optionElement, option);
+                }
+            }
+
             dropdown.appendChild(optionElement);
         });
+    },
+
+    /**
+     * Sets an element's background color, given the map name
+     * @param element - the element to set the color for
+     * @param mapName - the map name
+     */
+    _setMapInlineBackgroundColorForElement: function(element, mapName) {
+        let backgroundColor = Data.getColorFromLocationName(mapName);
+        if (backgroundColor) {
+            element.style.backgroundColor = backgroundColor;
+        }
     },
 
     /**

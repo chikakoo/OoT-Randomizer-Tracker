@@ -149,6 +149,15 @@ let ItemLocationDisplay = {
 				removeCssClass(textDiv, "item-location-walking-to");
 			}
 		});
+
+		// Size the OW elements so the dropdowns align
+		let owEntrancesElements = Array.prototype.slice.call(document.getElementsByClassName("item-location-ow-entrance-text"));
+		if (owEntrancesElements.length > 0) {
+			let maxWidth = Math.max(...owEntrancesElements.map(element => element.getBoundingClientRect().width));
+			owEntrancesElements.forEach(element => {
+				element.style.width = `${maxWidth}px`;
+			});
+		}
 	},
 
 	/**
@@ -262,10 +271,12 @@ let ItemLocationDisplay = {
 			if (itemLocation.disabled || itemLocation.Hide) { return; }
 			
 			let itemLocationDiv = dce("div", "item-location");
+			let isOwEntrance = false;
 			
 			if (itemLocation.ItemGroup !== ItemGroups.OW_ENTRANCE) {
 				itemLocationDiv.onclick = _this.toggleItemObtained.bind(_this, itemLocationDiv, itemLocation);
 			} else {
+				isOwEntrance = true;
 				itemLocationDiv.onclick = function(event) {
 					event.stopPropagation();
 				}
@@ -308,6 +319,10 @@ let ItemLocationDisplay = {
 			let itemLocationTextDiv = dce("div", "item-location-text");
 			itemLocationTextDiv.innerText = itemLocation.Name;
 			itemLocationTitleDiv.appendChild(itemLocationTextDiv);
+
+			if (isOwEntrance) {
+				addCssClass(itemLocationTextDiv, "item-location-ow-entrance-text");
+			}
 
 			// Update the entrance location groups
 			if (itemLocation.ItemGroup === ItemGroups.ENTRANCE) {

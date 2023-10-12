@@ -773,13 +773,23 @@ select:disabled {
 }
 
 .dropdown-group option {
-	color: black;
 	font-size: 10pt;
-	background-color: azure;
 }
 
 .dropdown-group option:nth-of-type(2n) {
 	background-color: lightblue;
+}
+
+.dropdown-group option {
+	background-color: azure;
+}
+
+.ow-location-dropdown {
+	width: 163px;
+}
+
+.ow-location-dropdown option:not(:first-child) {
+	color: white;
 }
 
 .interior-grotto-dropdown-group {
@@ -797,4 +807,9 @@ select:disabled {
 	border: none;
 	font-size: 0;
 	color: white;
+}
+
+.interior-grotto-dropdown-group option {
+	color: black;
+	background-color: azure;
 }

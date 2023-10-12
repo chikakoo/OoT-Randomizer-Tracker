@@ -46,6 +46,10 @@ Data = {
      */
 	getColorFromLocationName(locationName) {
 		let mapLocation = MapLocations[locationName];
+        if (!mapLocation) {
+            return "";
+        }
+
 		return this.getColorForMapGroup(mapLocation.MapGroup, mapLocation.IsMasterQuest);
 	},
 		
