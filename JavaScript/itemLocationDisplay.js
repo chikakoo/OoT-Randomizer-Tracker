@@ -23,7 +23,7 @@ let ItemLocationDisplay = {
 			floor = mapInfo.Floors[mapInfo.StartingFloorIndex];
 		}
 		
-		MapUI.setMap(locationName, groupedItemLocationInfo, floor);
+		MapUI.setMap(locationName, floor);
 	},
 
 	/**

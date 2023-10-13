@@ -4,6 +4,7 @@
 let MapUI = {
 	_currentMapName: "",
 	_currentFloor: "",
+	_currentItemLocations: [],
 		
 	/**
 	 * The current scale for the map if you're moused over it, or if _freezeMap is on
@@ -44,24 +45,11 @@ let MapUI = {
 	_iconDivs: { },
 	
 	/**
-	 * Clears the map
-	 */
-	clearMap: function(keepMapName) {
-		let floorDiv = document.getElementById("floorDiv");
-		floorDiv.innerHTML = "";
-		
-		let mapImageAndIcons = document.getElementById("mapImageAndIcons");
-		mapImageAndIcons.innerHTML = "";
-		mapImageAndIcons.style.backgroundImage = "none";
-	},
-	
-	/**
 	 * Sets the map to display
 	 * @param mapName: the name of the map
-	 * @param groupedItemLocationInfo: all the location objects of the map with the GroupName included
 	 * @param floor: optional - the floor to show
 	 */
-	setMap: function(mapName, groupedItemLocationInfo, floor) {
+	setMap: function(mapName, floor) {
 		this._currentMapName = mapName;
 		this._currentFloor = "";
 		if (floor) {
@@ -71,7 +59,8 @@ let MapUI = {
 		let mapImageAndIcons = document.getElementById("mapImageAndIcons");
 		mapImageAndIcons.innerHTML = "";
 		
-		this._setUpIcons(mapName, groupedItemLocationInfo, floor);
+		this._currentItemLocations = Data.getAllItemLocations(mapName);
+		this._setUpIcons(mapName, floor);
 		this._setUpFloorDiv(mapName, floor);
 
 		this._mapFrozen = false;
@@ -95,8 +84,7 @@ let MapUI = {
 			floorButton.innerText = currentFloor;
 			floorButton.dataset.floor = currentFloor;
 			floorButton.onclick = function(event) {
-				let groupedItemLocationInfo = ItemLocationDisplay.getGroupedLocationInfo(_this._currentMapName);
-				_this.setMap(mapName, groupedItemLocationInfo, event.target.dataset.floor);
+				_this.setMap(mapName, event.target.dataset.floor);
 			}
 			if (floor === currentFloor) {
 				addCssClass(floorButton, "floor-button-selected");
@@ -111,14 +99,12 @@ let MapUI = {
 		mapImageAndIcons.innerHTML = "";
 		if (this._currentMapName === "" ) { return; }
 		
-		let mapName = this._currentMapName;
-		let groupedItemLocationInfo = ItemLocationDisplay.getGroupedLocationInfo(mapName);
-		this._setUpIcons(this._currentMapName, groupedItemLocationInfo, this._currentFloor);
+		this._setUpIcons(this._currentMapName, this._currentFloor);
 		
 		if (this._mapFrozen) { this._applyScaling(this._scaleValue); }
 	},
 	
-	_setUpIcons: function(mapName, groupedItemLocationInfo, floor) {
+	_setUpIcons: function(mapName, floor) {
 		if (mapName === "") { return; }
 
 		if (floor === "ANY") {
@@ -138,64 +124,62 @@ let MapUI = {
 		
 		this._iconDivs = {};
 		let _this = this;
-		Object.keys(groupedItemLocationInfo).forEach(function(groupId) {
-			let groupedLocations = groupedItemLocationInfo[groupId];
-			groupedLocations.forEach(function(itemLocation) {
-				if (itemLocation.disabled) { return; }
-				
-				// Skip this icon if it's not for the current floor
-				let floorIsUndefinedOrNull = floor === undefined || floor === null || floor === "";
-				if (!floorIsUndefinedOrNull && itemLocation.MapInfo && itemLocation.MapInfo.floor !== "ANY" && itemLocation.MapInfo.floor !== floor) { 
-					return; 
+
+		this._currentItemLocations.forEach(function(itemLocation) {
+			if (itemLocation.disabled) { return; }
+			
+			// Skip this icon if it's not for the current floor
+			let floorIsUndefinedOrNull = floor === undefined || floor === null || floor === "";
+			if (!floorIsUndefinedOrNull && itemLocation.MapInfo && itemLocation.MapInfo.floor !== "ANY" && itemLocation.MapInfo.floor !== floor) { 
+				return; 
+			}
+
+			let iconDiv = dce("div", "item-icon");
+			_this._setUpIconStyles(iconDiv, itemLocation);
+
+			iconDiv.onmouseover = function(event) {
+				let itemLocationDiv = document.getElementById(itemLocation.Name.trim());
+				if (itemLocationDiv) {
+					addCssClass(itemLocationDiv, "item-icon-hover");
+					addCssClass(event.target, "item-icon-highlight");
 				}
+			};
 
-				let iconDiv = dce("div", "item-icon");
-				_this._setUpIconStyles(iconDiv, itemLocation);
-
-				iconDiv.onmouseover = function(event) {
-					let itemLocationDiv = document.getElementById(itemLocation.Name.trim());
-					if (itemLocationDiv) {
-						addCssClass(itemLocationDiv, "item-icon-hover");
-						addCssClass(event.target, "item-icon-highlight");
-					}
-				};
-
-				iconDiv.onmouseout = function(event) {
-					let itemLocationDiv = document.getElementById(itemLocation.Name.trim());
-					if (itemLocationDiv) {
-						removeCssClass(itemLocationDiv, "item-icon-hover");
-						removeCssClass(event.target, "item-icon-highlight");
-					}
-				};
-
-				iconDiv.onclick = function(event) {
-					event.stopPropagation();
-
-					let itemLocationDiv = document.getElementById(itemLocation.Name.trim());
-					if (itemLocationDiv) {
-						ItemLocationDisplay.toggleItemObtained(itemLocationDiv, itemLocation);
-					}
-				};
-
-				let cannotGetEntranceItem = false;
-				let entranceGroup = Data.getEntranceGroup(itemLocation);
-				if (entranceGroup && itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
-					cannotGetEntranceItem = 
-						EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.CHILD) ===  0 &&
-						EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.ADULT) ===  0;
+			iconDiv.onmouseout = function(event) {
+				let itemLocationDiv = document.getElementById(itemLocation.Name.trim());
+				if (itemLocationDiv) {
+					removeCssClass(itemLocationDiv, "item-icon-hover");
+					removeCssClass(event.target, "item-icon-highlight");
 				}
-				if (cannotGetEntranceItem || !Data.getItemObtainability(itemLocation)) {
-					addCssClass(iconDiv, "cannot-get");
-				}
+			};
 
-				if ((itemLocation.playerHas && !(itemLocation.OwShuffleMap && itemLocation.OwShuffleRegion)) || itemLocation.hidden) {
-					addCssClass(iconDiv, "hidden");
+			iconDiv.onclick = function(event) {
+				event.stopPropagation();
+
+				let itemLocationDiv = document.getElementById(itemLocation.Name.trim());
+				if (itemLocationDiv) {
+					ItemLocationDisplay.toggleItemObtained(itemLocationDiv, itemLocation);
 				}
-				
-				let mapImageAndIcons = document.getElementById("mapImageAndIcons");
-				mapImageAndIcons.appendChild(iconDiv);
-				_this._iconDivs[itemLocation.Name] = iconDiv;
-			});
+			};
+
+			let cannotGetEntranceItem = false;
+			let entranceGroup = Data.getEntranceGroup(itemLocation);
+			if (entranceGroup && itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
+				cannotGetEntranceItem = 
+					EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.CHILD) ===  0 &&
+					EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.ADULT) ===  0;
+			}
+			if (cannotGetEntranceItem || !Data.getItemObtainability(itemLocation)) {
+				addCssClass(iconDiv, "cannot-get");
+			}
+
+			if ((itemLocation.playerHas && !(itemLocation.OwShuffleMap && itemLocation.OwShuffleRegion)) || itemLocation.hidden) {
+				addCssClass(iconDiv, "hidden");
+			}
+			
+			let mapImageAndIcons = document.getElementById("mapImageAndIcons");
+			mapImageAndIcons.appendChild(iconDiv);
+			_this._iconDivs[itemLocation.Name] = iconDiv;
 		});
 	},
 	
@@ -339,8 +323,7 @@ let MapUI = {
 	 */
 	jumpToIcon: function(locationName, floor) {
 		if (floor && this._currentFloor !== floor) {
-			let groupedItemLocationInfo = ItemLocationDisplay.getGroupedLocationInfo(this._currentMapName);
-			this.setMap(this._currentMapName, groupedItemLocationInfo, floor);
+			this.setMap(this._currentMapName, floor);
 		}
 
 		let iconDiv = this._iconDivs[locationName];
