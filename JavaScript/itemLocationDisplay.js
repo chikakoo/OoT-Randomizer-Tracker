@@ -35,8 +35,6 @@ let ItemLocationDisplay = {
 
 		let groupedItemLocationInfo = {};
 		Data.getAllItemLocations(mapName).forEach(function(itemLocation) {
-			if (itemLocation.disabled) { return; }
-
 			let group = itemLocation.OverrideItemGroup !== undefined 
 				? itemLocation.OverrideItemGroup 
 				: itemLocation.ItemGroup;
@@ -189,7 +187,12 @@ let ItemLocationDisplay = {
 		mainContainer.appendChild(travelDiv);
 		
 		// Display by suggested order, if applicable
-		// TODO: use this one in all cases with the rework
+		// TODO: Use the ELSE code below
+		// - pass true to _createItemLocations to include the additional icon (probably just make it the default behavior)
+		// - rework getGroupedLocationInfo to do what we want, and probably just call it in this function to get the groups
+		// - set the appropriate values on all the item locations
+		// - deal with sorting somehow! probably in getGroupedLocationInfo instead of here
+		// - probably remove DungeonItemDisplaySettings
 		let isDungeon = mapInfo.MapGroup === MapGroups.DUNGEONS;
 		if (isDungeon && Settings.TrackerSettings.dungeonItemDisplay === DungeonItemDisplaySettings.BY_SUGGESTED_ORDER) {
 			let allLocations = [];
