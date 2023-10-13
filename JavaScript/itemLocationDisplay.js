@@ -395,7 +395,7 @@ let ItemLocationDisplay = {
 			}
 						
 			refreshAll();
-		}
+		}.bind(this);
 		locationIconsDiv.appendChild(walkIcon);
 
 		// Map Icon

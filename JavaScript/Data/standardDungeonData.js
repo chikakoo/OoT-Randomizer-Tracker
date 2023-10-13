@@ -3825,11 +3825,7 @@ let StandardDungeons = {
                         MapInfo: { x: 70, y: 52, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 35,
-                        LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room to your right. Cast Din's Fire to take out the spike walls to clear the path to the chest.",
-                        CustomRequirement: function(age) {
-                            let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
-                            return canUseDins || Data.canWeirdShot(age);
-                        }
+                        LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room to your right. Cast Din's Fire to take out the spike walls to clear the path to the chest.<br/><br/>If you don't have it, run up against the left side of the wall in the back of the room and have the redead freeze you. You should phase through the wall."
                     },
                     "Boss Key Chest in Spike Wall Room": {
                         ItemGroup: ItemGroups.CHEST,
