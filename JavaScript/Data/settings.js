@@ -266,6 +266,7 @@ let Settings = {
 		shadowGiantSkullsWithChus: false,
 		shadowNoIronBoots: false,
 		shadowGateClip: false,
+		shadowPitRoomSilverRupeeSkip: false,
 		shadowChuBombFlowers: false,
 		
 		spiritBlockSkip: false,

@@ -3456,7 +3456,10 @@ let StandardDungeons = {
                 Exits: {
                     fallingSpikesRoom: {
                         Map: "Shadow Temple",
-                        SilverRupeeIndex: 1
+                        CustomRequirement: function(age) {
+                            return ItemData.checkSilverRupeeRequirement("Shadow Temple", 1) ||
+                                (Settings.GlitchesToAllow.shadowPitRoomSilverRupeeSkip && Data.hasSwordWeapon(age));
+                        }
                     },
                     invisibleSpikeRoom: {
                         Map: "Shadow Temple",

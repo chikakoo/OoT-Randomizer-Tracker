@@ -3777,7 +3777,7 @@ let MQDungeons = {
                         MapInfo: { x: 273, y: 88, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 8.4,
-                        LongDescription: "This rupee is in the northwest corner of the room. Use your hookshot or hoer boots to get to it.",
+                        LongDescription: "This rupee is in the northwest corner of the room. Use your hookshot or hover boots to get to it.",
                         CustomRequirement: function(age) {
                             return Items.HOOKSHOT.playerHas || 
                                 Equipment.HOVER_BOOTS.playerHas || 
