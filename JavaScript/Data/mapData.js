@@ -3706,7 +3706,6 @@ let MapLocations = {
 		}
     },
     
-    //TODO: what happens if you're caught in the kitchen/jail4/top? do you get jailed still? what if you don't have hs?
     "Thieves' Hideout": {
         Abbreviation: "TH",
         MapGroup: MapGroups.DESERT,

@@ -5317,7 +5317,7 @@ let StandardDungeons = {
                     },
                     "Heart in Closed Coffin": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapInfo: { x: 57, y: 130, floor: "F1" },
+                        MapInfo: { x: 57, y: 144, floor: "F1" },
                         MapImageName: "Recovery Heart",
                         Age: Age.CHILD,
                         Order: 12,
@@ -5330,7 +5330,7 @@ let StandardDungeons = {
                     },
                     "Key in Closed Coffin": {
                         ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 29, y: 142, floor: "F1" },
+                        MapInfo: { x: 29, y: 144, floor: "F1" },
                         Age: Age.CHILD,
                         Order: 13,
                         LongDescription: "Head to the room to the left of the main room. The heart is in the top left coffin - light the torch to open it.",

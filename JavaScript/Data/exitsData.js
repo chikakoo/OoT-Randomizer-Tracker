@@ -1138,7 +1138,7 @@ let OwExits = {
             Map: "Shadow Temple",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: 275, y: 140 },
+            MapInfo: { x: 345, y: 137 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Shadow Temple.",
             IsDungeonEntrance: true
