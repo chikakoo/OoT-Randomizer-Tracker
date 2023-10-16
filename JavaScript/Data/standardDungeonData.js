@@ -242,8 +242,8 @@ let StandardDungeons = {
 
             bossRoom: {
                 Exits: {
-                    "Boss Entrance": {
-                        OwExit: OwExits["Deku Tree"]["Boss Entrance"]
+                    "Boss": {
+                        OwExit: OwExits["Deku Tree"]["Boss"]
                     }
                 },
                 ItemLocations: {}
@@ -743,8 +743,8 @@ let StandardDungeons = {
 
             bossRoom: {
                 Exits: {
-                    "Boss Entrance": {
-                        OwExit: OwExits["Dodongo's Cavern"]["Boss Entrance"]
+                    "Boss": {
+                        OwExit: OwExits["Dodongo's Cavern"]["Boss"]
                     }
                 },
                 ItemLocations: {}
@@ -983,8 +983,8 @@ let StandardDungeons = {
 
             bossRoom: {
                 Exits: {
-                    "Boss Entrance": {
-                        OwExit: OwExits["Jabu Jabu's Belly"]["Boss Entrance"]
+                    "Boss": {
+                        OwExit: OwExits["Jabu Jabu's Belly"]["Boss"]
                     }
                 },
                 ItemLocations: {}
@@ -1616,8 +1616,8 @@ let StandardDungeons = {
             },
             bossRoom: {
                 Exits: {
-                    "Boss Entrance": {
-                        OwExit: OwExits["Forest Temple"]["Boss Entrance"]
+                    "Boss": {
+                        OwExit: OwExits["Forest Temple"]["Boss"]
                     }
                 },
                 ItemLocations: {}
@@ -2380,8 +2380,8 @@ let StandardDungeons = {
             },
             bossRoom: {
                 Exits: {
-                    "Boss Entrance": {
-                        OwExit: OwExits["Fire Temple"]["Boss Entrance"]
+                    "Boss": {
+                        OwExit: OwExits["Fire Temple"]["Boss"]
                     }
                 },
                 ItemLocations: {}
@@ -3107,8 +3107,8 @@ let StandardDungeons = {
             },
             bossRoom: {
                 Exits: {
-                    "Boss Entrance": {
-                        OwExit: OwExits["Water Temple"]["Boss Entrance"]
+                    "Boss": {
+                        OwExit: OwExits["Water Temple"]["Boss"]
                     }
                 },
                 ItemLocations: {
@@ -3921,7 +3921,7 @@ let StandardDungeons = {
                         LongDescription: "After departing the boat, either shoot the bombflower to lower the bridge, or use longshot/scarecrow's song from the broken bridge to cross. Play the Song of Time near the broken pillar with the heart to summon a block to use to get it.",
                         RequiredSongs: [Songs.SONG_OF_TIME]
                     },
-                    "2 Pots by Boss Antechamber Entrance": {
+                    "2 Pots by Boss Antechamber": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -3935,8 +3935,8 @@ let StandardDungeons = {
             },
             bossRoom: {
                 Exits: {
-                    "Boss Entrance": {
-                        OwExit: OwExits["Shadow Temple"]["Boss Entrance"]
+                    "Boss": {
+                        OwExit: OwExits["Shadow Temple"]["Boss"]
                     }
                 },
                 ItemLocations: {}
@@ -4790,8 +4790,8 @@ let StandardDungeons = {
             },
             bossRoom: {
                 Exits: {
-                    "Boss Entrance": {
-                        OwExit: OwExits["Spirit Temple"]["Boss Entrance"]
+                    "Boss": {
+                        OwExit: OwExits["Spirit Temple"]["Boss"]
                     }
                 },
                 ItemLocations: {}

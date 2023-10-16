@@ -173,8 +173,8 @@ let MapLocations = {
             afterMido: {
                 Exits: {
                     main: {},
-                    "Deku Tree Entrance": {
-                        OwExit: OwExits["Kokiri Forest"]["Deku Tree Entrance"]
+                    "Deku Tree": {
+                        OwExit: OwExits["Kokiri Forest"]["Deku Tree"]
                     }
                 }, 
 
@@ -227,8 +227,8 @@ let MapLocations = {
                     },
 
                     // Interiors & Grottos
-                    "Grotto by Goron City Entrance": {
-                        OwExit: OwExits["Lost Woods"]["Grotto by Goron City Entrance"]
+                    "Grotto by Goron City": {
+                        OwExit: OwExits["Lost Woods"]["Grotto by Goron City"]
                     }
                 },
     
@@ -544,8 +544,8 @@ let MapLocations = {
             afterGate: {
                 Exits: {
                     main: {},
-                    "Forest Temple Entrance": {
-                        OwExit: OwExits["Sacred Forest Meadow"]["Forest Temple Entrance"]
+                    "Forest Temple": {
+                        OwExit: OwExits["Sacred Forest Meadow"]["Forest Temple"]
                     },
                     "Minuet Teleport Pad": {
                         OwExit: OwExits["Sacred Forest Meadow"]["Minuet Teleport Pad"]
@@ -733,7 +733,7 @@ let MapLocations = {
                         LongDescription: "At night, there's a skulltula high up on Talon's House.",
                         IsAtShortDistance: true
                     },
-                    "Skulltula in Tree by Entrance": {
+                    "Skulltula in Tree": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 280, y: 100 },
                         Age: Age.CHILD,
@@ -810,8 +810,8 @@ let MapLocations = {
                     },
 
                     // Interiors & Grottos
-                    "Guard House by Entrance": {
-                        OwExit: OwExits["Market Entrance"]["Guard House by Entrance"]
+                    "Guard House": {
+                        OwExit: OwExits["Market Entrance"]["Guard House"]
                     }
                 },
                 ItemLocations: {}
@@ -909,8 +909,8 @@ let MapLocations = {
                     main: {},
 
                     // Interiors & Grottos
-                    "Bombchu Shop Entrance": {
-                        OwExit: OwExits["Market"]["Bombchu Shop Entrance"]
+                    "Bombchu Shop": {
+                        OwExit: OwExits["Market"]["Bombchu Shop"]
                     },
                     "Door in Right Market Alley": {
                         OwExit: OwExits["Market"]["Door in Right Market Alley"]
@@ -995,8 +995,8 @@ let MapLocations = {
                     "Market": {
                         OwExit: OwExits["Castle"]["Market"]
                     },
-                    "Ganon's Castle Entrance": {
-                        OwExit: OwExits["Castle"]["Ganon's Castle Entrance"]
+                    "Ganon's Castle": {
+                        OwExit: OwExits["Castle"]["Ganon's Castle"]
                     },
 
                     // Interiors & Grottos
@@ -1095,8 +1095,8 @@ let MapLocations = {
                     "Graveyard": {
                         OwExit: OwExits["Kakariko Village"]["Graveyard"]
                     },
-                    "Bottom of the Well Entrance": {
-                        OwExit: OwExits["Kakariko Village"]["Bottom of the Well Entrance"]
+                    "Bottom of the Well": {
+                        OwExit: OwExits["Kakariko Village"]["Bottom of the Well"]
                     },
 
                     // Interiors & Grottos
@@ -1603,8 +1603,8 @@ let MapLocations = {
                 ExcludeFromSpawnList: true,
                 Exits: {
                     top: {},
-                    "Shadow Temple Entrance": {
-                        OwExit: OwExits["Graveyard"]["Shadow Temple Entrance"]
+                    "Shadow Temple": {
+                        OwExit: OwExits["Graveyard"]["Shadow Temple"]
                     }
                 },
                 ItemLocations: {}
@@ -1819,8 +1819,8 @@ let MapLocations = {
                     "Goron City": {
                         OwExit: OwExits["Death Mountain Trail"]["Goron City"]
                     },
-                    "Dodongo's Cavern Entrance": {
-                        OwExit: OwExits["Death Mountain Trail"]["Dodongo's Cavern Entrance"]
+                    "Dodongo's Cavern": {
+                        OwExit: OwExits["Death Mountain Trail"]["Dodongo's Cavern"]
                     },
 
                     // Interiors & Grottos
@@ -2084,8 +2084,8 @@ let MapLocations = {
                             return Data.canHookScarecrow(age) && Items.HOOKSHOT.currentUpgrade === 2;
                         }
                     },
-                    "Fire Temple Entrance": {
-                        OwExit: OwExits["Death Mountain Crater"]["Fire Temple Entrance"]
+                    "Fire Temple": {
+                        OwExit: OwExits["Death Mountain Crater"]["Fire Temple"]
                     },
                     "Bolero Teleport Pad": {
                         OwExit: OwExits["Death Mountain Crater"]["Bolero Teleport Pad"]
@@ -2853,11 +2853,11 @@ let MapLocations = {
                     "Zora's Domain": {
                         OwExit: OwExits["Zora's Fountain"]["Zora's Domain"]
                     },
-                    "Jabu Jabu's Belly Entrance": {
-                        OwExit: OwExits["Zora's Fountain"]["Jabu Jabu's Belly Entrance"]
+                    "Jabu Jabu's Belly": {
+                        OwExit: OwExits["Zora's Fountain"]["Jabu Jabu's Belly"]
                     },
-                    "Ice Cavern Entrance": {
-                        OwExit: OwExits["Zora's Fountain"]["Ice Cavern Entrance"]
+                    "Ice Cavern": {
+                        OwExit: OwExits["Zora's Fountain"]["Ice Cavern"]
                     },
 
                     // Interiors & Grottos
@@ -2969,8 +2969,8 @@ let MapLocations = {
                     "Owl": {
                         OwExit: OwExits["Lake Hylia"]["Owl"]
                     },
-                    "Water Temple Entrance": {
-                        OwExit: OwExits["Lake Hylia"]["Water Temple Entrance"]
+                    "Water Temple": {
+                        OwExit: OwExits["Lake Hylia"]["Water Temple"]
                     },
                     "Serenade Teleport Pad": {
                         OwExit: OwExits["Lake Hylia"]["Serenade Teleport Pad"]
@@ -3389,8 +3389,8 @@ let MapLocations = {
                     "Gerudo Valley": {
                         OwExit: OwExits["Gerudo Fortress"]["Gerudo Valley"]
                     },
-                    "Training Grounds Entrance": {
-                        OwExit: OwExits["Gerudo Fortress"]["Training Grounds Entrance"]
+                    "Training Grounds": {
+                        OwExit: OwExits["Gerudo Fortress"]["Training Grounds"]
                     },
 
                     // Grottos & Interiors
@@ -4221,8 +4221,8 @@ let MapLocations = {
                     "Haunted Wasteland": {
                         OwExit: OwExits["Desert Colossus"]["Haunted Wasteland"]
                     },
-                    "Spirit Temple Entrance": {
-                        OwExit: OwExits["Desert Colossus"]["Spirit Temple Entrance"]
+                    "Spirit Temple": {
+                        OwExit: OwExits["Desert Colossus"]["Spirit Temple"]
                     },
                     "Requiem Teleport Pad": {
                         OwExit: OwExits["Desert Colossus"]["Requiem Teleport Pad"]

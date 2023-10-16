@@ -28,7 +28,7 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Lost Woods that is up the vines."
         },
-        "Deku Tree Entrance": {
+        "Deku Tree": {
             ExitRegion: "afterMido",
             Map: "Deku Tree",
             Region: "main",
@@ -207,7 +207,7 @@ let OwExits = {
         },
 
         // Interiors
-        "Grotto by Goron City Entrance": {
+        "Grotto by Goron City": {
             ExitRegion: "firstHalf",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -302,7 +302,7 @@ let OwExits = {
             ShowForOwl: true,
             LongDescription: "The Minuet of Forest teleport pad at the end of the Sacred Forest Meadow.",
         },
-        "Forest Temple Entrance": {
+        "Forest Temple": {
             ExitRegion: "afterGate",
             Map: "Forest Temple",
             Region: "main",
@@ -568,7 +568,7 @@ let OwExits = {
         },
 
         // Interiors
-        "Guard House by Entrance": {
+        "Guard House": {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -674,7 +674,7 @@ let OwExits = {
             Age: Age.CHILD,
             LongDescription: "This building is the one between the two market alley entrances."
         },
-        "Bombchu Shop Entrance": {
+        "Bombchu Shop": {
             ExitRegion: "alley",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -682,7 +682,7 @@ let OwExits = {
             Time: function() { return Time.NIGHT; },
             MapInfo: { x: 130, y: 232 },
             OneWayInteriorSpawnEntrance: true,
-            Age: Age.EITHER, // TODO: have a setting for UseChildOnly if not using no logic?
+            Age: Age.EITHER,
             LongDescription: "This door only opens at night. Starting at the market entrance, go straight right into the alley. Take the first door on the left wall to get to the door."
         },
         "Door in Right Market Alley": {
@@ -698,7 +698,7 @@ let OwExits = {
             Time: function() { return Time.NIGHT; },
             MapInfo: { x: 112, y: 112 },
             OneWayInteriorSpawnEntrance: true,
-            Age: Age.EITHER, // TODO: have a setting for UseChildOnly if not using no logic?
+            Age: Age.EITHER,
             LongDescription: "This door only opens at night. This is the door on the screen if you enter the alley from the entrance by the archery building."
         }
     },
@@ -737,7 +737,7 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the main market area."
         },
-        "Ganon's Castle Entrance": {
+        "Ganon's Castle": {
             ExitRegion: "main",
             Map: "Ganon's Castle",
             Region: "main",
@@ -865,7 +865,7 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance back to Death Mountain."
         },
-        "Bottom of the Well Entrance": {
+        "Bottom of the Well": {
             ExitRegion: "main",
             Map: "Bottom of the Well",
             Region: "main",
@@ -1133,7 +1133,7 @@ let OwExits = {
             ShowForOwl: true,
             LongDescription: "The Nocturne of Shadow teleport pad on the top part of the graveyard.",
         },
-        "Shadow Temple Entrance": {
+        "Shadow Temple": {
             ExitRegion: "shadowTemple",
             Map: "Shadow Temple",
             Region: "main",
@@ -1257,7 +1257,7 @@ let OwExits = {
             Age: Age.CHILD,
             LongDescription: "This is the owl at the top of the mountain by the crater entrance."
         },
-        "Dodongo's Cavern Entrance": {
+        "Dodongo's Cavern": {
             ExitRegion: "main",
             Map: "Dodongo's Cavern",
             Region: "main",
@@ -1335,7 +1335,7 @@ let OwExits = {
             ShowForOwl: true,
             LongDescription: "The Bolero of Fire teleport pad at the bottom of Death Mountain Crater.",
         },
-        "Fire Temple Entrance": {
+        "Fire Temple": {
             ExitRegion: "bottom",
             Map: "Fire Temple",
             Region: "main",
@@ -1579,7 +1579,7 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to Zora's Domain."
         },
-        "Jabu Jabu's Belly Entrance": {
+        "Jabu Jabu's Belly": {
             ExitRegion: "main",
             Map: "Jabu Jabu's Belly",
             Region: "main",
@@ -1601,7 +1601,7 @@ let OwExits = {
                 return Data.hasBottle(); // Note that this doesn't actually check whether you can get a fish!
             }
         },
-        "Ice Cavern Entrance": {
+        "Ice Cavern": {
             ExitRegion: "main",
             Map: "Ice Cavern",
             Region: "main",
@@ -1678,7 +1678,7 @@ let OwExits = {
             Hide: true,
             LongDescription: "The Serenade of Water teleport pad on the island in Lake Hylia.",
         },
-        "Water Temple Entrance": {
+        "Water Temple": {
             ExitRegion: "main",
             Map: "Water Temple",
             Region: "main",
@@ -1832,7 +1832,7 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the exit to the wasteland. As Child, here's how to skip the gate: climb the ladder; go a bit to the right if you are facing the ladder; angle yourself so that when you sidehop left, you end up on the cliff; walk forward until you are passed the gate; sidehop left and keep holding left."
         },
-        "Training Grounds Entrance": {
+        "Training Grounds": {
             ExitRegion: "main",
             Map: "Training Grounds",
             Region: "main",
@@ -2397,7 +2397,7 @@ let OwExits = {
             Hide: true,
             LongDescription: "The Requiem of Spirit teleport pad at Desert Colossus.",
         },
-        "Spirit Temple Entrance": {
+        "Spirit Temple": {
             ExitRegion: "main",
             Map: "Spirit Temple",
             Region: "main",
@@ -2516,7 +2516,7 @@ let OwExits = {
             Order: 0,
             LongDescription: "This is the exit from the Deku Tree."
         },
-        "Boss Entrance": {
+        "Boss": {
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.ENTRANCE,
             IsBoss: true,
@@ -2541,7 +2541,7 @@ let OwExits = {
             Order: 0,
             LongDescription: "This is the exit from Dodongo's Cavern."
         },
-        "Boss Entrance": {
+        "Boss": {
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.ENTRANCE,
             IsBoss: true,
@@ -2566,7 +2566,7 @@ let OwExits = {
             Order: 0,
             LongDescription: "This is the exit from Jabu Jabu's Belly."
         },
-        "Boss Entrance": {
+        "Boss": {
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.ENTRANCE,
             IsBoss: true,
@@ -2595,7 +2595,7 @@ let OwExits = {
             Order: 0,
             LongDescription: "This is the exit from the Forest Temple."
         },
-        "Boss Entrance": {
+        "Boss": {
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.ENTRANCE,
             MapInfo: { x: 184, y: 107, floor: "B1" },
@@ -2627,7 +2627,7 @@ let OwExits = {
             Order: 0,
             LongDescription: "This is the exit from the Fire Temple."
         },
-        "Boss Entrance": {
+        "Boss": {
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.ENTRANCE,
             IsBoss: true,
@@ -2660,7 +2660,7 @@ let OwExits = {
             Order: 0,
             LongDescription: "This is the exit from the Water Temple."
         },
-        "Boss Entrance": {
+        "Boss": {
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.ENTRANCE,
             IsBoss: true,
@@ -2685,7 +2685,7 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the exit from the Shadow Temple."
         },
-        "Boss Entrance": {
+        "Boss": {
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.ENTRANCE,
             IsBoss: true,
@@ -2743,7 +2743,7 @@ let OwExits = {
             OwShuffleRegion: "archway",
             OwShuffleExitName: "Archway"
         },
-        "Boss Entrance": {
+        "Boss": {
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.ENTRANCE,
             IsBoss: true,

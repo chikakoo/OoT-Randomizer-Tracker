@@ -43,7 +43,7 @@ let WalkData = {
                 switch(toExit) {
                     case "Lost Woods Bottom": return 0;
                     case "Lost Woods Top": return 22;
-                    case "Deku Tree Entrance": return 40;
+                    case "Deku Tree": return 40;
                     case "Link's House": return 19;
                     case "Saria's House": return 15;
                     case "Mido's House": return 8;
@@ -57,7 +57,7 @@ let WalkData = {
                 switch(toExit) {
                     case "Lost Woods Bottom": return 10;
                     case "Lost Woods Top": return 0;
-                    case "Deku Tree Entrance": return 35;
+                    case "Deku Tree": return 35;
                     case "Link's House": return 23;
                     case "Saria's House": return 17;
                     case "Mido's House": return 9;
@@ -67,11 +67,11 @@ let WalkData = {
                     case "Song of Storms Grotto by Lost Woods": return 11;
                 }
             },
-            "Deku Tree Entrance": function(toExit) {
+            "Deku Tree": function(toExit) {
                 switch(toExit) {
                     case "Lost Woods Bottom": return 40;
                     case "Lost Woods Top": return 51;
-                    case "Deku Tree Entrance": return 0;
+                    case "Deku Tree": return 0;
                     case "Link's House": return 36;
                     case "Saria's House": return 28;
                     case "Mido's House": return 32;
@@ -85,7 +85,7 @@ let WalkData = {
                 switch(toExit) {
                     case "Lost Woods Bottom": return 18;
                     case "Lost Woods Top": return 30;
-                    case "Deku Tree Entrance": return 34;
+                    case "Deku Tree": return 34;
                     case "Link's House": return 0;
                     case "Saria's House": return 9;
                     case "Mido's House": return 12;
@@ -99,7 +99,7 @@ let WalkData = {
                 switch(toExit) {
                     case "Lost Woods Bottom": return 15;
                     case "Lost Woods Top": return 28;
-                    case "Deku Tree Entrance": return 28;
+                    case "Deku Tree": return 28;
                     case "Link's House": return 11;
                     case "Saria's House": return 0;
                     case "Mido's House": return 10;
@@ -113,7 +113,7 @@ let WalkData = {
                 switch(toExit) {
                     case "Lost Woods Bottom": return 8;
                     case "Lost Woods Top": return 20;
-                    case "Deku Tree Entrance": return 32;
+                    case "Deku Tree": return 32;
                     case "Link's House": return 15;
                     case "Saria's House": return 10;
                     case "Mido's House": return 0;
@@ -127,7 +127,7 @@ let WalkData = {
                 switch(toExit) {
                     case "Lost Woods Bottom": return 7;
                     case "Lost Woods Top": return 24;
-                    case "Deku Tree Entrance": return 36;
+                    case "Deku Tree": return 36;
                     case "Link's House": return 14;
                     case "Saria's House": return 11;
                     case "Mido's House": return 8;
@@ -141,7 +141,7 @@ let WalkData = {
                 switch(toExit) {
                     case "Lost Woods Bottom": return 18;
                     case "Lost Woods Top": return 30;
-                    case "Deku Tree Entrance": return 23;
+                    case "Deku Tree": return 23;
                     case "Link's House": return 14;
                     case "Saria's House": return 5;
                     case "Mido's House": return 12
@@ -155,7 +155,7 @@ let WalkData = {
                 switch(toExit) {
                     case "Lost Woods Bottom": return 16;
                     case "Lost Woods Top": return 27;
-                    case "Deku Tree Entrance": return 26;
+                    case "Deku Tree": return 26;
                     case "Link's House": return 16;
                     case "Saria's House": return 7;
                     case "Mido's House": return 11;
@@ -169,7 +169,7 @@ let WalkData = {
                 switch(toExit) {
                     case "Lost Woods Bottom": return 8;
                     case "Lost Woods Top": return 4;
-                    case "Deku Tree Entrance": return 35;
+                    case "Deku Tree": return 35;
                     case "Link's House": return 23;
                     case "Saria's House": return 17;
                     case "Mido's House": return 9;
