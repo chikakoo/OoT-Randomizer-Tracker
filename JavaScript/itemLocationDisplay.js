@@ -534,18 +534,6 @@ let ItemLocationDisplay = {
 			addOrRemoveCssClass(itemLocationDiv.lastChild, "nodisp", !forceOn);
 			hideClass = !forceOn;
 		}
-		
-		if (itemLocation.ItemGroup !== ItemGroups.ENTRANCE) { return; }
-
-		let group = Data.getEntranceGroup(itemLocation);
-		let groupSelectedAndCompleted = group && EntranceUI.isGroupComplete(itemLocation);
-		if (itemLocation.playerHas || groupSelectedAndCompleted) {
-			if (hideClass) {
-				addCssClass(itemLocationDiv.children[itemLocationDiv.children.length - 2], "nodisp");
-			} else {
-				removeCssClass(itemLocationDiv.children[itemLocationDiv.children.length - 2], "nodisp");
-			}
-		}
 	},
 
 	/**

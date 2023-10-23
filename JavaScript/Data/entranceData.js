@@ -182,7 +182,7 @@ InteriorGroups = {
 			},
 			"Buy Blue Potion Item": {
 				icon: "Blue Potion",
-				description: "After showing the Odd Mushroom to Granny, you can buy this item for 200 rupees. After that, she will sell blue potions.",
+				description: "After showing the Odd Mushroom to Granny, you can buy this item for 100 rupees. After that, she will sell blue potions.",
 				canGet: function(age) {
 					if (age === Age.CHILD && !Data.canEquipSwap(age)) {
 						return false;

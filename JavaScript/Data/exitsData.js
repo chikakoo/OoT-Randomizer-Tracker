@@ -511,6 +511,11 @@ let OwExits = {
             ItemGroup: ItemGroups.ENTRANCE,
             DefaultEntranceGroupName: "Super Cucco Minigame",
             MapInfo: { x: 230, y: 54 },
+            Time: function() {
+                return Data.itemLocationObtained("Castle", "main", "Wake up Talon") 
+                    ? Time.DAY_CHILD
+                    : Time.EITHER;
+            },
             IsInterior: true,
             Age: Age.EITHER,
             LongDescription: "This is the first door on your left when you first enter the ranch."

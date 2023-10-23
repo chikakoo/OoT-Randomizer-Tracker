@@ -758,6 +758,7 @@ let MapLocations = {
                     },
                     "Epona's Song": {
                         ItemGroup: ItemGroups.SONG,
+                        Time: function() { return Time.DAY; },
                         MapInfo: { x: 174, y: 170 },
                         Age: Age.CHILD,
                         LongDescription: "You can get this after getting Malon's gift and waking up Talon with the Chicken at Hyrule Castle. Take out your Ocarina to get the item.",
