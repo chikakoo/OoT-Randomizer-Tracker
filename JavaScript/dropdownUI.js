@@ -98,6 +98,7 @@ let DropdownUI = {
     refreshEntranceDropdowns: function(itemLocation, loc, entrance) {
         let entranceOptions = {
             isOwl: itemLocation.IsOwl,
+            isOneWay: itemLocation.OneWayEntrance,
             getInteriors: itemLocation.IsInteriorExit,
             getGrottos: itemLocation.IsGrottoExit
         };
@@ -415,6 +416,7 @@ let DropdownUI = {
      * @param {Any} entranceOptions - options for the function for what to get
      * {
      *  isOwl: boolean,
+     *  isOneWay: boolean,
      *  getInteriors: boolean,
      *  getGrottos: boolean
      * }
@@ -430,12 +432,12 @@ let DropdownUI = {
         Object.keys(exits).forEach(function(entranceName) {
             let entrance = exits[entranceName];
 
-            let hiddenExit = entrance.Hide && !(options.isOwl && entrance.ShowForOwl); // Owl dropdowns need some hidden entrances
+            let hiddenExit = entrance.Hide && !(options.isOneWay && entrance.ShowForOneWay); // One-way dropdowns need some hidden entrances
             if (entrance.ExcludeFromDropdown || hiddenExit || entrance.ItemGroup !== itemGroupType) {
                 return;
             }
 
-            // Don't include dungeons or owns in any OW entrance
+            // Don't include dungeons or owls in any OW entrance
             if (itemGroupType === ItemGroups.OW_ENTRANCE && 
                 !entrance.IsDungeonEntrance && 
                 !entrance.IsOwl)

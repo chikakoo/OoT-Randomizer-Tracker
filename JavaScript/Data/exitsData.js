@@ -299,7 +299,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: -100, y: -100 },
             Hide: true,
-            ShowForOwl: true,
+            ShowForOneWay: true,
             LongDescription: "The Minuet of Forest teleport pad at the end of the Sacred Forest Meadow.",
         },
         "Forest Temple": {
@@ -1135,7 +1135,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: -100, y: -100 },
             Hide: true,
-            ShowForOwl: true,
+            ShowForOneWay: true,
             LongDescription: "The Nocturne of Shadow teleport pad on the top part of the graveyard.",
         },
         "Shadow Temple": {
@@ -1337,7 +1337,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: -100, y: -100 },
             Hide: true,
-            ShowForOwl: true,
+            ShowForOneWay: true,
             LongDescription: "The Bolero of Fire teleport pad at the bottom of Death Mountain Crater.",
         },
         "Fire Temple": {

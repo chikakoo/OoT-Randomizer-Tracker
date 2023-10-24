@@ -2237,17 +2237,10 @@ let MQDungeons = {
                             return canLightTorches && canGetUp;
                         }
                     },
-                    cellBelowBoulderMaze: {
-                        Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Data.canWeirdShot(age);
-                        }
-                    },
                     risingBlockRoom: {
                         LockedDoor: "Locked Door in Big Lava Room",
                         Map: "Fire Temple",
-                        Age: Age.ADULT
-                    },
+                    }
                 },
 
                 ItemLocations: {
@@ -2278,6 +2271,9 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
                         Order: 16,
+                        CustomRequirement: function(age) {
+                            return age === Age.ADULT || Data.canGroundJumpWithBomb(age);
+                        },
                         LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. The pot is by the blocked doorway."
                     },
                     "Chest by Right Goron in Lava Room": {
@@ -2286,6 +2282,9 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
                         Order: 17,
+                        CustomRequirement: function(age) {
+                            return age === Age.ADULT || Data.canGroundJumpWithBomb(age);
+                        },
                         NeedsExplosives: true,
                         NeedsFire: true,
                         LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron."
@@ -2336,9 +2335,11 @@ let MQDungeons = {
                 },
                 Exits: {
                     boulderMaze: {
+                        Age: Age.ADULT,
                         NeedsFire: true
                     },
                     cellBelowBoulderMaze: {
+                        Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             return Data.canWeirdShot(age);
                         }
