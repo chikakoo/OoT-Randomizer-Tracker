@@ -1256,91 +1256,91 @@ InteriorGroups = {
 		}
 	},
 	"TH - Jail 1 Left": {
-		icon: "Thieves' Hideout",
+		icon: "Thieves' Hideout J1",
 		tooltip: "The door to the left of jail 1 in the Thieves' Hideout.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Jail 1 Left"]
 	},
 	"TH - Jail 1 Right": {
-		icon: "Thieves' Hideout",
+		icon: "Thieves' Hideout J1",
 		tooltip: "The door to the right of jail 1 in the Thieves' Hideout.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Jail 1 Right"]
 	},
 	"TH - Jail 2 Left": {
-		icon: "Thieves' Hideout",
+		icon: "Thieves' Hideout J2",
 		tooltip: "The door to the left of jail 2 in the Thieves' Hideout.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Jail 2 Left"]
 	},
 	"TH - Jail 2 Right": {
-		icon: "Thieves' Hideout",
+		icon: "Thieves' Hideout J2",
 		tooltip: "The door to the right of jail 2 in the Thieves' Hideout.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Jail 2 Right"]
 	},
 	"TH - Jail 3 Left": {
-		icon: "Thieves' Hideout",
+		icon: "Thieves' Hideout J3",
 		tooltip: "The door to the left of jail 3 in the Thieves' Hideout.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Jail 3 Left"]
 	},
 	"TH - Jail 3 Right": {
-		icon: "Thieves' Hideout",
+		icon: "Thieves' Hideout J3",
 		tooltip: "The door to the right of jail 3 in the Thieves' Hideout.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Jail 3 Right"]
 	},
 	"TH - Jail 4 Entrance": {
-		icon: "Thieves' Hideout",
+		icon: "Thieves' Hideout J4",
 		tooltip: "The only exit in the jail 4 area.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Jail 4 Entrance"]
 	},
 	"TH - Kitchen Far Bottom": {
-		icon: "Thieves' Hideout",
+		icon: "Thieves' Hideout Kitchen",
 		tooltip: "This is the entrance at the very end of cooridor on the bottom part of the kitchen.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Kitchen Far Bottom"]
 	},
 	"TH - Kitchen Middle Bottom": {
-		icon: "Thieves' Hideout",
+		icon: "Thieves' Hideout Kitchen",
 		tooltip: "This is the entrance at the middle of the cooridor on the bottom part of the kitchen.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Kitchen Middle Bottom"]
 	},
 	"TH - Kitchen Top Left": {
-		icon: "Thieves' Hideout",
+		icon: "Thieves' Hideout Kitchen",
 		tooltip: "From the perspective of the guards, this is the exit to the left on top of the ramps in the main area of the kitchen.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Kitchen Top Left"]
 	},
 	"TH - Kitchen Top Right": {
-		icon: "Thieves' Hideout",
+		icon: "Thieves' Hideout Kitchen",
 		tooltip: "From the perspective of the guards, this is the exit to the right on top of the ramps in the main area of the kitchen.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Kitchen Top Right"]
 	},
 	"TH - Top Room Lower": {
-		icon: "Thieves' Hideout",
+		icon: "Thieves' Hideout Top",
 		tooltip: "This is the entrance on the bottom part of the room above jail 1.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Top Room Lower"]
 	},
 	"TH - Top Room Upper": {
-		icon: "Thieves' Hideout",
+		icon: "Thieves' Hideout Top",
 		tooltip: "This is the entrance on the upper part of the room above jail 1.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
 		buttons: {},
