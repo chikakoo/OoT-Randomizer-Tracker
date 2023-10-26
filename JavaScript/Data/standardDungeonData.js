@@ -3374,11 +3374,18 @@ let StandardDungeons = {
                         LockedDoor: "Locked Door by Beamos"
                     },
                     boatRoomStart: {
-                        Map: "Shadow Temple",
                         Age: Age.ADULT,
-                        RequiredChoiceOfAdultItems: [Items.HOOKSHOT, Equipment.HOVER_BOOTS],
+                        RequiredChoiceOfItems: [Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.shadowGateClip;
+                        }
+                    },
+                    boatRoomLedge: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Equipment.HOVER_BOOTS],
+                        RequiredChoiceOfItems: [Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD],
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.shadowUpperBoatRoomJump;
                         }
                     }
                 },
@@ -3754,20 +3761,37 @@ let StandardDungeons = {
                         Map: "Shadow Temple",
                         LockedDoor: "Locked Door in Gibdo Room"
                     },
+                    boatRoomSkulltula: {
+                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                    },
+                    boatRoomLedge: {
+                        RequiredSongs: [Songs.SCARECROWS_SONG],
+                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                    },
                     boatRoomEnd: {
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
                     }
                 },
-
+                ItemLocations: {}
+            },
+            boatRoomSkulltula: {
+                Exits: {},
                 ItemLocations: {
                     "Skulltula in Boat Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 274, y: 116, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 31,
-                        LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. If you face the front of the boat, you can see the skulltula slightly to your left. You can get it with your longshot - Scarecrow's Song can help, but isn't needed.",
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
-                    },
+                        LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. If you face the front of the boat, you can see the skulltula slightly to your left. You can get it with your longshot - Scarecrow's Song can help, but isn't needed."
+                    }
+                }
+            },
+            boatRoomLedge: {
+                Exits: {
+                    boatRoomSkulltula: {},
+                    boatRoomStart: {}
+                },
+                ItemLocations: {
                     "2 Hearts in Boat Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -3776,9 +3800,7 @@ let StandardDungeons = {
                         MapInfo: { x: 280, y: 114, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 32,
-                        LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole.<br/><br/>Play scarecrow's song from the boat and longshot it to get to the platform with the hearts.",
-                        RequiredSongs: [Songs.SCARECROWS_SONG],
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole.<br/><br/>Play scarecrow's song from the boat and longshot it to get to the platform with the hearts."
                     }
                 }
             },

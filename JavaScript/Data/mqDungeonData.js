@@ -3749,8 +3749,17 @@ let MQDungeons = {
                     },
                     boatRoom: {
                         Age: Age.ADULT,
+                        RequiredChoiceOfItems: [Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.shadowGateClip;
+                        }
+                    },
+                    boatRoomLedge: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Equipment.HOVER_BOOTS],
+                        RequiredChoiceOfItems: [Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD],
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.shadowUpperBoatRoomJump;
                         }
                     }
                 },
@@ -4252,9 +4261,19 @@ let MQDungeons = {
                         Map: "Shadow Temple",
                         LockedDoor: "Locked Door After Fans"
                     },
+                    boatRoomLedge: {
+                        RequiredSongs: [Songs.SCARECROWS_SONG],
+                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                    },
                     endOfBoatRide: {
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
                     }
+                },
+                ItemLocations: {}
+            },
+            boatRoomLedge: {
+                Exits: {
+                    boatRoom: {}
                 },
                 ItemLocations: {
                     "2 Hearts in Boat Room": {
@@ -4265,9 +4284,7 @@ let MQDungeons = {
                         MapInfo: { x: 280, y: 114, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 34,
-                        LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole.<br/><br/>Play scarecrow's song from the boat and longshot it to get to the platform with the hearts.",
-                        RequiredSongs: [Songs.SCARECROWS_SONG],
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole.<br/><br/>Play scarecrow's song from the boat and longshot it to get to the platform with the hearts."
                     }
                 }
             },
