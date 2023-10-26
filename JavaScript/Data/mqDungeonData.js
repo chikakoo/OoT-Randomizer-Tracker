@@ -4462,7 +4462,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         RequiredItems: [Items.BOMBCHU, { item: Items.HOOKSHOT, upgradeString: "2" }],
                         CustomRequirement: function(age) {
-                            if (Equipment.STRENGTH.currentUpgrade === 2) { return true; }
+                            if (Equipment.STRENGTH.currentUpgrade >= 2) { return true; }
                             return Data.canWeirdShot(age) && Items.FAIRY_BOW.playerHas;
                         }
                     },
@@ -4955,7 +4955,7 @@ let MQDungeons = {
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way up the western side. The pots are on the northeast platform, so either play the song of time to spawn the block, use hover boots, or megaflip to it.",
                         CustomRequirement: function(age) {
-                            if (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas) {
+                            if (age === Age.ADULT && (Equipment.HOVER_BOOTS.playerHas || Settings.GlitchesToAllow.spiritStatueRoomJumps)) {
                                 return true;
                             }
                             return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canMegaFlip(age);
@@ -4973,7 +4973,7 @@ let MQDungeons = {
                         AltOrder: 11,
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way up the western side. The pots are on the northeast platform, so either play the song of time to spawn the block, use hover boots, or megaflip to it. One of the pots will fly at you.",
                         CustomRequirement: function(age) {
-                            if (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas) {
+                            if (age === Age.ADULT && (Equipment.HOVER_BOOTS.playerHas || Settings.GlitchesToAllow.spiritStatueRoomJumps)) {
                                 return true;
                             }
                             return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canMegaFlip(age);
@@ -4987,7 +4987,7 @@ let MQDungeons = {
                         AltOrder: 12,
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way up the western side. The pots are on the northeast platform, so either play the song of time to spawn the block, use hover boots, megaflip, or use boomerang as described.<br/><br/>To use boomerang, first, jump to the statue hand (child requires a jumpslash). Now walk along the arm so you're somewhat near the wall. You should now be able to aim a bit to the left of the pot to get it.",
                         CustomRequirement: function(age) {
-                            if (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas) {
+                            if (age === Age.ADULT && (Equipment.HOVER_BOOTS.playerHas || Settings.GlitchesToAllow.spiritStatueRoomJumps)) {
                                 return true;
                             }
                             return (Settings.GlitchesToAllow.difficultBoomerangTrickThrows && Data.canUseBoomerang(age)) || 

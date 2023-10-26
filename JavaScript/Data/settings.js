@@ -270,6 +270,7 @@ let Settings = {
 		shadowChuBombFlowers: false,
 		
 		spiritBlockSkip: false,
+		spiritStatueRoomJumps: false,
 		spiritSuperslideToMirrorShield: false,
 		spiritBKTrick: false,
 
