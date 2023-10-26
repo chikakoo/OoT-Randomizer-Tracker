@@ -1966,7 +1966,9 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         NeedsFire: true,
                         CustomRequirement: function(age) {
-                            if (age === Age.CHILD && !Data.canBombSuperslide(age)) { return false; }
+                            if (age === Age.CHILD && !Settings.GlitchesToAllow.fireWallSkip && !Data.canBombSuperslide(age)) { 
+                                return false; 
+                            }
                             return Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
                         }
                     },
@@ -1987,7 +1989,9 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         RequiredItems: [Items.MEGATON_HAMMER],
                         CustomRequirement: function(age) {
-                            if (age === Age.CHILD && !Data.canBombSuperslide(age)) { return false; }
+                            if (age === Age.CHILD && !Settings.GlitchesToAllow.fireWallSkip && !Data.canBombSuperslide(age)) { 
+                                return false; 
+                            }
                             return Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
                         }
                     },
@@ -2036,8 +2040,8 @@ let MQDungeons = {
                         MapInfo: { x: 256, y: 202, floor: "F1" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { 
-                            return !!Settings.GlitchesToAllow.fireNoGoronTunic ||
-                                !Settings.GlitchesToAllow.bombSuperslide ||
+                            return !Settings.GlitchesToAllow.fireNoGoronTunic ||
+                                (!Settings.GlitchesToAllow.bombSuperslide && !Settings.GlitchesToAllow.fireWallSkip) ||
                                 !Settings.GlitchesToAllow.equipSwap;
                         },
                         Order: 18,
@@ -2088,7 +2092,7 @@ let MQDungeons = {
             roomBeforeBoss: {
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                        !Settings.GlitchesToAllow.bombSuperslide;
+                        (!Settings.GlitchesToAllow.bombSuperslide && !Settings.GlitchesToAllow.fireWallSkip);
                 },
                 Exits: {
                     bossRoom: {
@@ -2223,7 +2227,7 @@ let MQDungeons = {
             bigLavaRoom: {
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                        !Settings.GlitchesToAllow.bombSuperslide ||
+                        (!Settings.GlitchesToAllow.bombSuperslide && !Settings.GlitchesToAllow.fireWallSkip) ||
                         !Settings.GlitchesToAllow.equipSwap;
                 },
                 Exits: {
@@ -2331,7 +2335,7 @@ let MQDungeons = {
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.fireNoGoronTunic ||
                         !Settings.GlitchesToAllow.equipSwap ||
-                        !Settings.GlitchesToAllow.bombSuperslide;
+                        (!Settings.GlitchesToAllow.bombSuperslide && !Settings.GlitchesToAllow.fireWallSkip);
                 },
                 Exits: {
                     boulderMaze: {
