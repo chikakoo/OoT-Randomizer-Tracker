@@ -1035,13 +1035,13 @@ let MapLocations = {
                         RequiredItems: [ChildTradeItems.WEIRD_EGG]
                     },
                     "Zelda's Lullaby": {
-                        //TOOD: after the full trade shuffle, we can add the trick to use explosives to get this early
-                        // Also, there will be two checks here due to Zelda's letter being shuffled
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 167, y: 33, floor: "HYR" },
                         Age: Age.CHILD,
-                        LongDescription: "After waking up Talon with the Chicken, push the crates down so that you can jump to the crawlspace. Sneak past the guards to meet Zelda to get her letter. After that, try to leave the area to receive this item from Impa.",
-                        RequiredItems: [ChildTradeItems.WEIRD_EGG]
+                        LongDescription: "After waking up Talon with the Chicken, push the crates down so that you can jump to the crawlspace. Sneak past the guards to meet Zelda to get her letter. After that, try to leave the area to receive this item from Impa.<br/><br/>To megaflip, climb up the right side of the left box, ess right 1 (you should be able to walk to the other box now). Chu flip as normal, or place a bomb a little after the box transition and manually back up to get the distance for the roll. Let go of everything when the flip happens so you don't walk off!",
+                        CustomRequirement: function(age) {
+                            return ChildTradeItems.WEIRD_EGG.playerHas || Data.canMegaFlip(age);
+                        }
                     },
                     "Gossip Stone by Vines": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
