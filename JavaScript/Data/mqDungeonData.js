@@ -5050,11 +5050,18 @@ let MQDungeons = {
                     "Skulltula in Fire Bubble Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 68, y: 113, floor: "F3" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
                         Order: 30,
                         AltOrder: 20,
                         LongDescription: "In the fire bubble room, you must push the first sun block you see onto the light. You'll need to hit the crystal switches to make the fire disappear. This spawns a white platform that you can hookshot up to so that you can reach the skulltula.",
-                        IsAtShortDistance: true
+                        CustomRequirement: function(age) {
+                            if (Settings.GlitchesToAllow.difficultBoomerangTrickThrows && Data.canUseBoomerang(age)) {
+                                return true;
+                            }
+                            
+                            return age === Age.ADULT && Items.HOOKSHOT.playerHas;
+                        }
                     }
                 }
             },
