@@ -189,7 +189,10 @@ InteriorGroups = {
 					};
 					return AdultTradeItems.ODD_MUSHROOM.playerHas && Equipment.WALLET.playerHas;
 				},
-				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
+				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				shouldNotDisplay: function() {
+					return !Settings.RandomizerSettings.shuffleExpensiveMerchants;
+				}
 			}
 		}
 	},

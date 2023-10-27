@@ -2233,7 +2233,7 @@ let MapLocations = {
                     },
                     "Item From Medigoron": {
                         ItemGroup: ItemGroups.GIFT,
-                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleCarpetAndMedigoron; },
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleExpensiveMerchants; },
                         MapInfo: { x: 117, y: 260 },
                         Age: Age.ADULT,
                         LongDescription: "Blow up/hammer the weak walls on the western side of the middle floor. Pay Medigoron 200 rupees for this item.",

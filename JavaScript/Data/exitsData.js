@@ -2612,8 +2612,7 @@ let OwExits = {
             IsPostWalkCheck: true,
             CustomRequirement: function(age) {
                 let canBKSkip = age === Age.ADULT && Settings.GlitchesToAllow.forestBKSkip && Items.HOOKSHOT.playerHas;
-                let isMQ = MapLocations["Forest Temple"].IsMasterQuest;
-                let canAccessPoeRoom = isMQ ? Data.mqForestTempleCanAccessAllPoeRooms(age) : Data.forestTempleCanAccessAllPoeRooms(age);
+                let canAccessPoeRoom = MapLocations["Forest Temple"]._canAccessAllPoeRooms(age);
                 return canBKSkip || canAccessPoeRoom;
             }
         }

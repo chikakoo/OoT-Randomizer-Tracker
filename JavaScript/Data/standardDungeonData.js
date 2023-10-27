@@ -998,6 +998,25 @@ let StandardDungeons = {
         Floors: ["F2", "F1", "B1"],
         StartingFloorIndex: 1,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+        _canJumpToTop: function(age) {
+            let canDoTrick = Settings.GlitchesToAllow.forestJumpToTop && 
+                age === Age.ADULT && 
+                Items.BOMB.playerHas && 
+                Equipment.HOVER_BOOTS.playerHas;
+    
+            // This part ensures that we're not allowing you to do the trick if you can get to the
+            // room using the hover boots from the block room, which defeats the whole point because
+            // you wouldn't be skipping that key
+            let canGetToFromRightRoom = Items.FAIRY_BOW.playerHas && (Data.canSinkGoldenScaleDepth(age) || Items.HOOKSHOT.currentUpgrade === 2);
+            let canGetToOutsideLeftBeforeBlockRoom = Settings.GlitchesToAllow.forestLedgeClip || Data.canPlaySong(Songs.SONG_OF_TIME) || canGetToFromRightRoom;
+            return canDoTrick && canGetToOutsideLeftBeforeBlockRoom;
+        },
+        _canAccessAllPoeRooms: function(age) {
+            // Requres an IsPostWalkCheck on each item using this!
+            let canAccessFirstPoes = Data.canAccessMap(age, "Forest Temple", "firstPoeRoom");
+            let canAccessGreenPoeRoom = Data.canAccessMap(age, "Forest Temple", "fallingCeilingRoom");
+            return canAccessFirstPoes && canAccessGreenPoeRoom;
+        },
         Regions: {
             main: {
                 Exits: {
@@ -1045,7 +1064,7 @@ let StandardDungeons = {
                         Order: 13,
                         LongDescription: "This is the western door in the lobby.",
                         KeyRequirement: function(age) {
-                            if (Data.forestCanJumpToTop(age)) {
+                            if (MapLocations["Forest Temple"]._canJumpToTop(age)) {
                                 return { min: 1, max: Keys.FOREST_TEMPLE.totalKeys() };
                             }
                             return { min: 1, max: 1 };
@@ -1060,7 +1079,7 @@ let StandardDungeons = {
                         Order: 15,
                         LongDescription: "This is the door that's after the block puzzle by the bubbles.",
                         KeyRequirement: function(age) {
-                            if (Data.forestCanJumpToTop(age) && !Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby")) {
+                            if (MapLocations["Forest Temple"]._canJumpToTop(age) && !Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby")) {
                                 return { min: 1, max: 2 };
                             }
                             return { min: 2, max: 2 };
@@ -1075,7 +1094,7 @@ let StandardDungeons = {
                         Order: 20,
                         LongDescription: "This is the door that's in the boss key room when the boss key chest is sideways.",
                         KeyRequirement: function(age) {
-                            if (Data.forestCanJumpToTop(age) && !Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby")) {
+                            if (MapLocations["Forest Temple"]._canJumpToTop(age) && !Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby")) {
                                 return { min: 2, max: 3 };
                             }
                             return { min: 3, max: 3 };
@@ -1090,7 +1109,7 @@ let StandardDungeons = {
                         Order: 26,
                         LongDescription: "This is the door that's in the blue poe room.",
                         KeyRequirement: function(age) {
-                            if (Data.forestCanJumpToTop(age) && !Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby")) {
+                            if (MapLocations["Forest Temple"]._canJumpToTop(age) && !Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby")) {
                                 return { min: 3, max: 4 };
                             }
                             return { min: 4, max: 4 };
@@ -1105,7 +1124,7 @@ let StandardDungeons = {
                         Order: 27,
                         LongDescription: "This is the door that's after the green bubbles, leading to the frozen eye switch.",
                         KeyRequirement: function(age) {
-                            if (Data.forestCanJumpToTop(age) && !Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby")) {
+                            if (MapLocations["Forest Temple"]._canJumpToTop(age) && !Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby")) {
                                 return { min: 4, max: 5 };
                             }
                             return { min: 5, max: 5 };
@@ -1225,7 +1244,7 @@ let StandardDungeons = {
                     topOfOutsideLeft: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            return Data.forestCanJumpToTop(age);
+                            return MapLocations["Forest Temple"]._canJumpToTop(age);
                         }
                     },
                     outsideLeftHearts: {
@@ -1597,7 +1616,7 @@ let StandardDungeons = {
                         LongDescription: "After defeating all the poes, head down the basement elevator. Push the wall so that they move clockwise once. You should now be able to access the room with the chest.",
                         IsPostWalkCheck: true,
                         CustomRequirement: function(age) {
-                            return Data.forestTempleCanAccessAllPoeRooms(age);
+                            return MapLocations["Forest Temple"]._canAccessAllPoeRooms(age);
                         }
                     },
                     "Skulltula in Basement": {
@@ -1609,7 +1628,7 @@ let StandardDungeons = {
                         LongDescription: "After defeating all the poes, head down the basement elevator. Push the wall so that they move clockwise once. You should now be able to access the room with the skulltula",
                         IsPostWalkCheck: true,
                         CustomRequirement: function(age) {
-                            return Data.forestTempleCanAccessAllPoeRooms(age);
+                            return MapLocations["Forest Temple"]._canAccessAllPoeRooms(age);
                         }
                     }
                 }
@@ -1631,6 +1650,10 @@ let StandardDungeons = {
         Floors: ["F5", "F4", "F3", "F2", "F1"],
         StartingFloorIndex: 4,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+        _canAccessBossKeyPath: function(age) {
+            let canSkipPillar = age === Age.ADULT && Settings.GlitchesToAllow.fireFirstRoomPillarSkip;
+            return Data.canUseHammer(age) || canSkipPillar;
+        },
         Regions: {
             main: {
                 Exits: {
@@ -1645,7 +1668,7 @@ let StandardDungeons = {
                         Map: "Fire Temple",
                         LockedDoor: "Bottom Locked Door in Lobby",
                         CustomRequirement: function(age) {
-                            return Data.fireCanAccessBossKeyPath(age);
+                            return MapLocations["Fire Temple"]._canAccessBossKeyPath(age);
                         }
                     },
                     bigLavaRoom: {
@@ -1736,7 +1759,7 @@ let StandardDungeons = {
                             return { min: 1, max: Keys.FIRE_TEMPLE.totalKeys()};
                         },
                         CustomRequirement: function(age) {
-                            return Data.fireCanAccessBossKeyPath(age);
+                            return MapLocations["Fire Temple"]._canAccessBossKeyPath(age);
                         }
                     },
                     "Top Locked Door in Lobby": {
@@ -2398,6 +2421,29 @@ let StandardDungeons = {
             return !Settings.RandomizerSettings.shuffleDungeonEntrances &&
                 !Settings.GlitchesToAllow.childLakesideLabClip;
         },
+        _isPlayerLockedOutOfHighWater: function() {
+            // If the player didn't lower the water, then they aren't locked out of it!
+            if (!Data.itemLocationObtained("Water Temple", "lowWaterLevel", "Lower Water Level")) {
+                return false;
+            }
+    
+            // This check allows the player to get to the high water switch directly while the water is drained
+            let canGetToTopFloorWithWaterLowered = Items.HOOKSHOT.playerHas && Settings.GlitchesToAllow.waterHookshotToFloor1;
+            if (canGetToTopFloorWithWaterLowered || Equipment.HOVER_BOOTS.playerHas) { 
+                if (Equipment.HOVER_BOOTS.playerHas || Settings.GlitchesToAllow.waterHighWaterJump) {
+                    return false; 
+                }
+            }
+                
+            // This checks whether the player can get to high water switch the normal way
+            let canLightMiddleTorch = Items.FAIRY_BOW.playerHas || Data.canUseFireItem();
+            let canGetToCentralMidFromBottom = Data.itemLocationObtained("Water Temple", "main", "Locked Door to Central Room") && Items.HOOKSHOT.playerHas;
+            let canRaiseWaterToMid = canLightMiddleTorch || canGetToCentralMidFromBottom;
+            let canHitCrystalSwitch = Data.hasExplosives() || Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas;
+            let canLowerWater = canRaiseWaterToMid && canHitCrystalSwitch;
+    
+            return !canLowerWater;
+        },
         Regions: {
             main: {
                 Exits: {
@@ -2426,7 +2472,7 @@ let StandardDungeons = {
                     },
                     highWaterLevel: {
                         CustomRequirement: function(age) {
-                            return !Data.waterIsPlayerLockedOutOfHighWater();
+                            return !MapLocations["Water Temple"]._isPlayerLockedOutOfHighWater();
                         }
                     },
                     roomWithManyTektitesAntechamber: {
@@ -2701,7 +2747,7 @@ let StandardDungeons = {
                             }
 
                             let canCastFaroresWind = Equipment.MAGIC.playerHas && Items.FARORES_WIND.playerHas;
-                            if (!Data.waterIsPlayerLockedOutOfHighWater())
+                            if (!MapLocations["Water Temple"]._isPlayerLockedOutOfHighWater())
                             {
                                 // Cast FW in the room, then raise the water and recast FW
                                 if (canCastFaroresWind) {
@@ -3974,6 +4020,10 @@ let StandardDungeons = {
         UseAltOrder: function() {
             return Equipment.STRENGTH.currentUpgrade > 1 && Keys.SPIRIT_TEMPLE.keyCount > 0;
         },
+        _canAccessAdultSide: function() {
+            if (Equipment.STRENGTH.currentUpgrade >= 2) { return true; }
+            return Settings.GlitchesToAllow.spiritBlockSkip && Equipment.HOVER_BOOTS.playerHas;
+        },
         Regions: {
             main: {
                 Exits: {
@@ -3983,7 +4033,7 @@ let StandardDungeons = {
                     beyondSilverBlock: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            return Data.spiritCanAccessAdultSide();
+                            return MapLocations["Spirit Temple"]._canAccessAdultSide();
                         }
                     },
                     Exit: {
@@ -4037,7 +4087,7 @@ let StandardDungeons = {
                         LongDescription: "This is the door after the puzzle where you push the sun block into the light.",
                         KeyRequirement: function(age) {
                             // There's only one path for child, and it uses only 2 keys
-                            if (!Data.spiritCanAccessAdultSide()) {
+                            if (!MapLocations["Spirit Temple"]._canAccessAdultSide()) {
                                 return { min: 2, max: 2 };
                             }
 
@@ -5588,6 +5638,20 @@ let StandardDungeons = {
         UseAdultAge: function() { 
             return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.gtgChildAllowed;
         },
+        _getNumberOfOptionalKeysUsed: function() {
+            // Gets the number of optional keys used in GTG (these are the ones on the right maze path)
+            let numberOfKeysUsed = 0;
+
+            if (Data.itemLocationObtained("Training Grounds", "main", "Optional Locked Door 1")) {
+                numberOfKeysUsed++;
+            }
+
+            if (Data.itemLocationObtained("Training Grounds", "main", "Optional Locked Door 2")) {
+                numberOfKeysUsed++;
+            }
+
+            return numberOfKeysUsed;
+        },
         Regions: {
             main: {
                 Exits: {
@@ -5682,7 +5746,7 @@ let StandardDungeons = {
                         Order: 20,
                         LongDescription: "This is door 2 on the left path of the maze from the main entrance.",
                         KeyRequirement: function(age) {
-                            let minValue = 2 + Data.gtgGetNumberOfOptionalKeysUsed();
+                            let minValue = 2 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
                             return { min: minValue, max: 4 };
                         }
                     },
@@ -5694,7 +5758,7 @@ let StandardDungeons = {
                         Order: 22,
                         LongDescription: "This is door 3 on the left path of the maze from the main entrance.",
                         KeyRequirement: function(age) {
-                            let minValue = 3 + Data.gtgGetNumberOfOptionalKeysUsed();
+                            let minValue = 3 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
                             return { min: minValue, max: 5 };
                         }
                     },
@@ -5706,7 +5770,7 @@ let StandardDungeons = {
                         Order: 23,
                         LongDescription: "This is door 4 on the left path of the maze from the main entrance.",
                         KeyRequirement: function(age) {
-                            let minValue = 4 + Data.gtgGetNumberOfOptionalKeysUsed();
+                            let minValue = 4 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
                             return { min: minValue, max: 6 };
                         }
                     },
@@ -5718,7 +5782,7 @@ let StandardDungeons = {
                         Order: 25,
                         LongDescription: "This is door 5 on the left path of the maze from the main entrance.",
                         KeyRequirement: function(age) {
-                            let minValue = 5 + Data.gtgGetNumberOfOptionalKeysUsed();
+                            let minValue = 5 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
                             return { min: minValue, max: 7 };
                         }
                     },
@@ -5730,7 +5794,7 @@ let StandardDungeons = {
                         Order: 27,
                         LongDescription: "This is door 6 on the left path of the maze from the main entrance.",
                         KeyRequirement: function(age) {
-                            let minValue = 6 + Data.gtgGetNumberOfOptionalKeysUsed();
+                            let minValue = 6 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
                             return { min: minValue, max: 8 };
                         }
                     },
@@ -5742,7 +5806,7 @@ let StandardDungeons = {
                         Order: 28,
                         LongDescription: "This is door 7 on the left path of the maze from the main entrance.",
                         KeyRequirement: function(age) {
-                            let minValue = 7 + Data.gtgGetNumberOfOptionalKeysUsed();
+                            let minValue = 7 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
                             return { min: minValue, max: 9 };
                         }
                     },

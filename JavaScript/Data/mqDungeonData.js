@@ -1335,6 +1335,12 @@ let MQDungeons = {
         Floors: ["F2", "F1", "B1"],
         StartingFloorIndex: 1,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+        _canAccessAllPoeRooms: function(age) {
+            // Requres an IsPostWalkCheck on each item using this!
+            let canAccessFirstPoes = Data.canAccessMap(age, "Forest Temple", "poeRooms");
+            let canAccessGreenPoeRoom = Data.canAccessMap(age, "Forest Temple", "greenPoeRoom");
+            return canAccessFirstPoes && canAccessGreenPoeRoom;
+        },
         Regions: {
             main: {
                 Exits: {
@@ -1925,7 +1931,7 @@ let MQDungeons = {
                         IsPostWalkCheck: true,
                         LongDescription: "After defeating all the Poes, take the elevator to the basement. Push the wall clockwise once. The pots are in the room guarded by two giant skulltulas.",
                         CustomRequirement: function(age) {
-                            return Data.mqForestTempleCanAccessAllPoeRooms(age);
+                            return MapLocations["Forest Temple"]._canAccessAllPoeRooms(age);
                         }
                     },
                     "Chest in Basement": {
@@ -1936,7 +1942,7 @@ let MQDungeons = {
                         IsPostWalkCheck: true,
                         LongDescription: "After defeating all the Poes, take the elevator to the basement. Push the wall counter-clockwise once to get to the chest.",
                         CustomRequirement: function(age) {
-                            return Data.mqForestTempleCanAccessAllPoeRooms(age);
+                            return MapLocations["Forest Temple"]._canAccessAllPoeRooms(age);
                         }
                     }
                 }
@@ -4465,6 +4471,12 @@ let MQDungeons = {
         UseAltOrder: function() {
             return Equipment.STRENGTH.currentUpgrade > 1 && Items.BOMBCHU.playerHas && Items.HOOKSHOT.currentUpgrade > 1;
         },
+        _canAccessAdultSide: function() {
+            let canGetUp = Items.BOMBCHU.playerHas && Items.HOOKSHOT.currentUpgrade === 2;
+            let canPushBlock = Equipment.STRENGTH.currentUpgrade >= 2;
+            let canWeirdShot = Data.canWeirdShot(Age.ADULT) && Items.FAIRY_BOW.playerHas;
+            return canGetUp && (canPushBlock || canWeirdShot);
+        },
         Regions: {
             main: {
                 Exits: {
@@ -4575,7 +4587,7 @@ let MQDungeons = {
                         LongDescription: "This is the door leading to/from the room with the sun on the floor room.",
                         KeyRequirement: function(age) {
                             // There's only one path for child, and it uses only 2 keys
-                            if (!Data.mqSpiritCanAccessAdultSide()) {
+                            if (!MapLocations["Spirit Temple"]._canAccessAdultSide()) {
                                 return { min: 2, max: 2 };
                             }
 
@@ -4596,7 +4608,7 @@ let MQDungeons = {
                         LongDescription: "This is the door after the puzzle where you push the sun block into the light.",
                         KeyRequirement: function(age) {
                             // There's only one path for child, and it uses only 3 keys
-                            if (!Data.mqSpiritCanAccessAdultSide()) {
+                            if (!MapLocations["Spirit Temple"]._canAccessAdultSide()) {
                                 return { min: 3, max: 3 };
                             }
 

@@ -118,7 +118,7 @@ let Settings = {
 		cowSanity: true,
 		shuffleOcarinaButtons: true,
 		shuffleHyruleLoach: true,
-		shuffleCarpetAndMedigoron: true,
+		shuffleExpensiveMerchants: true,
 		shuffleAllFrogSongs: true,
 		shuffleBeehives: true,
 		shuffleSilverRupees: true,
