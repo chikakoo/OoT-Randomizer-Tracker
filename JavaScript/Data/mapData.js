@@ -3067,7 +3067,7 @@ let MapLocations = {
                         MapImageName: "Scarecrow's Song",
                         Age: Age.CHILD,
                         LongDescription: "Take out the ocarina (OI works) by the lower scarecrow and play it a song that has at least two different pitches.",
-                        RequiredToAppear: function(age) { return !Songs.SCARECROWS_SONG.playerHas; },
+                        RequiredToAppear: function() { return !Songs.SCARECROWS_SONG.playerHas; },
                         NeedsOcarina: true,
                         CustomRequirement: function(age) {
                             return ItemData.getNumberOfOcarinaButtons() >= 2;
@@ -3079,7 +3079,7 @@ let MapLocations = {
                         MapImageName: "Scarecrow's Song",
                         Age: Age.ADULT,
                         LongDescription: "Take out the ocarina (OI works) by the lower scarecrow and play it the last song you taught it as Child.",
-                        RequiredToAppear: function(age) { return !Songs.SCARECROWS_SONG.playerHas; },
+                        RequiredToAppear: function() { return !Songs.SCARECROWS_SONG.playerHas; },
                         CustomRequirement: function(age) {
                             return Data.itemLocationObtained("Lake Hylia", "main", "Play Song for Bonooru");
                         }
@@ -3139,6 +3139,7 @@ let MapLocations = {
 
                                 return canCrossWithHookshot ||
                                     Data.itemLocationObtained("Thieves' Hideout", "main", "Item From Gerudo") || 
+                                    Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.OPEN ||
                                     Data.canRideEpona(age) || 
                                     Items.HOOKSHOT.currentUpgrade === 2 ||
                                     Data.canBombSuperslideWithHovers(age) ||
@@ -3187,6 +3188,7 @@ let MapLocations = {
 
                             return canCrossWithHookshot ||
                                 Data.itemLocationObtained("Thieves' Hideout", "main", "Item From Gerudo") || 
+                                Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.OPEN ||
                                 Data.canRideEpona(age) || 
                                 Items.HOOKSHOT.currentUpgrade === 2 ||
                                 Data.canBombSuperslideWithHovers(age) ||
@@ -3737,13 +3739,26 @@ let MapLocations = {
                         MapInfo: { x: 346, y: 285, floor: "ANY" },
                         Age: Age.EITHER,
                         IsPostWalkCheck: true,
+                        RequiredToAppear: function() { 
+                            return Settings.RandomizerSettings.openGerudosFortress !== OpenGerudosFortressSettings.OPEN;
+                        },
                         LongDescription: "You'll get this from the Gerudo after using all 4 keys on all the jail doors and talking to the prisoners.",
                         CustomRequirement: function(age) {
-                            return ItemData.getKeyCount("Thieves' Hideout") >= 4 &&
-                                Data.canAccessMap(age, "Thieves' Hideout", "jail1") &&
-                                Data.canAccessMap(age, "Thieves' Hideout", "jail2") &&
-                                Data.canAccessMap(age, "Thieves' Hideout", "jail3") &&
-                                Data.canAccessMap(age, "Thieves' Hideout", "jail4");
+                            let keyCount = ItemData.getKeyCount("Thieves' Hideout");
+                            let canAccessJail1 = Data.canAccessMap(age, "Thieves' Hideout", "jail1");
+
+                            switch(Settings.RandomizerSettings.openGerudosFortress) {
+                                case OpenGerudosFortressSettings.VANILLA:
+                                    return keyCount >= 4 &&
+                                        canAccessJail1 &&
+                                        Data.canAccessMap(age, "Thieves' Hideout", "jail2") &&
+                                        Data.canAccessMap(age, "Thieves' Hideout", "jail3") &&
+                                        Data.canAccessMap(age, "Thieves' Hideout", "jail4");
+                                case OpenGerudosFortressSettings.ONE_CARPENTER:
+                                    return keyCount >= 1 && canAccessJail1;
+                                default:
+                                    return false; // Should not get here...
+                            }
                         }
                     }
                 }
@@ -3764,7 +3779,10 @@ let MapLocations = {
                         MapInfo: { x: 213, y: 129, floor: "J1" },
                         Age: Age.EITHER,
                         NeedsSwordWeapon: true,
-                        LongDescription: "Enter the leftmost bottom exit to get to the first jail. Take out the guard to get the item."
+                        RequiredToAppear: function() { 
+                            return Settings.RandomizerSettings.openGerudosFortress !== OpenGerudosFortressSettings.OPEN;
+                        },
+                        LongDescription: "Enter the leftmost bottom exit to get to the first jail. Take out the guard to get the item. You can savewarp here from anywhere in the Thieves' Hideout."
                     },
                     "3 Pots by Jail 1": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3773,13 +3791,13 @@ let MapLocations = {
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 113, y: 107, floor: "J1" },
                         Age: Age.EITHER,
-                        LongDescription: "These pots are on the opposite wall of the jail."
+                        LongDescription: "These pots are on the opposite wall of the jail. You can savewarp here from anywhere in the Thieves' Hideout."
                     },
                     "Crate by Jail 1": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 113, y: 194, floor: "J1" },
                         Age: Age.EITHER,
-                        LongDescription: "The crate is in the opposite corner of the cell door."
+                        LongDescription: "The crate is in the opposite corner of the cell door. You can savewarp here from anywhere in the Thieves' Hideout."
                     }
                 }
             },
@@ -3804,6 +3822,9 @@ let MapLocations = {
                         MapInfo: { x: 207, y: 132, floor: "J2" },
                         Age: Age.EITHER,
                         NeedsSwordWeapon: true,
+                        RequiredToAppear: function() { 
+                            return Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.VANILLA;
+                        },
                         LongDescription: "Start from jail 1. Face the jail - now turn right and take that exit. Go straight to the other side. The next jail is in the next hole if you hug this wall around the right corner - be careful of guards. Take out the guard to get the item."
                     },
                     "2 Pots in Jail 2 Hallway": {
@@ -3833,6 +3854,9 @@ let MapLocations = {
                         MapInfo: { x: 207, y: 188, floor: "J3" },
                         Age: Age.EITHER,
                         NeedsSwordWeapon: true,
+                        RequiredToAppear: function() { 
+                            return Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.VANILLA;
+                        },
                         LongDescription: "Start from jail 2. Face the jail - now turn left and take that exit. Climb the vines straight ahead and take the exit straight in front of you for the next jail. Take out the guard to get the item."
                     },
                     "3 Pots by Jail 3": {
@@ -3877,6 +3901,9 @@ let MapLocations = {
                         MapInfo: { x: 303, y: 38, floor: "J4" },
                         Age: Age.EITHER,
                         NeedsSwordWeapon: true,
+                        RequiredToAppear: function() { 
+                            return Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.VANILLA;
+                        },
                         LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Face the entrance you just left. As Child, you must enter the door to your left and navigate across to the other side of the room. As Adult, you can jump up to the ledge to your right with a slight angled jump. Climb up the vines and navigate to the door near where the skulltula on the wall would be at night.<br/><br/>Once inside, wait for a bit first for the guard and knock her out or sprint past her before following the path to your right. Eventually you'll reach the jail. Take out the guard to get the item."
                     },
                     "Crate by Jail 4": {

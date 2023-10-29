@@ -25,6 +25,12 @@ let OpenZorasFountainSettings = {
 	ALL: 2
 };
 
+let OpenGerudosFortressSettings = {
+	VANILLA: 0,
+	ONE_CARPENTER: 1,
+	OPEN: 2
+};
+
 let DungeonItemDisplaySettings = {
 	BY_CATEGORY: 0,
 	BY_SUGGESTED_ORDER: 1
@@ -101,6 +107,7 @@ let Settings = {
 		autoPlantBeans: false,
 		openKakariko: OpenKakarikoSettings.OPEN_WITH_ZELDAS_LETTER,
 		openZorasFountain: OpenZorasFountainSettings.VANILLA,
+		openGerudosFortress: OpenGerudosFortressSettings.VANILLA,
 		
 		// Sanity and logic changes
 		startingAge: Age.CHILD,

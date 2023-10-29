@@ -899,11 +899,21 @@ let Keys = {
 	},
 	THIEVES_HIDEOUT: { 
 		name: "Thieves' Hideout", 
-		totalKeys: function() { return 4; }, 
+		_getTotalKeys: function() {
+			switch(Settings.RandomizerSettings.openGerudosFortress) {
+				case OpenGerudosFortressSettings.VANILLA:
+					return 4;
+				case OpenGerudosFortressSettings.ONE_CARPENTER:
+					return 1;
+				default: // OpenGerudoFortressSettings.OPEN
+					return 0;
+			}
+		},
+		totalKeys: function() { return this._getTotalKeys(); }, 
 		noBossKey: true,
 		
-		mqMinimumKeys: function() { return 4; },
-		mqTotalKeys: function() { return 4; }
+		mqMinimumKeys: function() { return this._getTotalKeys(); }, 
+		mqTotalKeys: function() { return this._getTotalKeys(); }, 
 	},
 	GERUDO_TRAINING_GROUNDS: { 
 		name: "Training Grounds", 

@@ -421,6 +421,21 @@
 								<input type="radio" name="openZorasFountain" value=2>Open always
 							</label>
 						</div>
+						<div class="settings-radio-group" title="This controls the carpenters locked up and when the item from gerudo is retrieved/the bridge is fixed.">
+							Open Gerudo's Fortress
+							<label onclick='SettingsPage.setOptionValueForRandomizer("openGerudosFortress", event)'
+								title="Vanilla settings: rescue all 4 carpenters to get the gerudo card/random item.">
+								<input type="radio" name="openGerudosFortress" value=0>Vanilla
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("openGerudosFortress", event)'
+								title="Rescue the one carpenter in jail 1 to get the gerudo card/random item.">
+								<input type="radio" name="openGerudosFortress" value=1>One Carpenter
+							</label>
+							<label onclick='SettingsPage.setOptionValueForRandomizer("openGerudosFortress", event)'
+								title="Removes all Thieves' Hideout keys/item from gerudo check and start with gerudo card if it is not shuffled.">
+								<input type="radio" name="openGerudosFortress" value=2>Open
+							</label>
+						</div>
 						<div class="settings-radio-group" title="This controls what medallions are needed to get into Ganon's Castle.">
 							Medallions/Stones Required
 							<label onclick='SettingsPage.setOptionValueForRandomizer("medallionSetting", event)'
