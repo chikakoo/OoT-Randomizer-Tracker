@@ -5556,7 +5556,11 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 26,
                         LongDescription: "This is the room after the crawlspace at the upper right part of the main room. Be careful of the invisible pits in this room. If you don't have the lens - here's one way to get around (it's still difficult). Get to the corner of the room with the chest. Face the left wall (the one the door is NOT on). Do two left sidehops and move a tiny bit more left. Go straight to where the beamos is (or was). Now angle yourself diagonal left toward the door and pray you make it. The skulltula is guarded by a like-like that you don't have to kill.",
-                        IsAtShortDistance: true
+                        CustomRequirement(age) {
+                            // The staircase hover requires two additional bomb drops to gain enough height
+                            // Start the hover against the wall
+                            return Data.canGrabShortDistances(age) || Data.canStaircaseHover(age);
+                        }
                     }
                 }
             },
