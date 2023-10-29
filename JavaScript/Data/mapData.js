@@ -272,14 +272,7 @@ let MapLocations = {
                         NeedsOcarina: true,
                         DifficultOcarinaItems: true,
                         CustomRequirement: function(age) {
-                            if (Settings.RandomizerSettings.shuffleOcarinaButtons) {
-                                return OcarinaButtons.A_BUTTON.playerHas &&
-                                    OcarinaButtons.C_DOWN_BUTTON.playerHas &&
-                                    OcarinaButtons.C_LEFT_BUTTON.playerHas &&
-                                    OcarinaButtons.C_RIGHT_BUTTON.playerHas &&
-                                    OcarinaButtons.C_UP_BUTTON.playerHas;
-                            }
-                            return true;
+                            return ItemData.getNumberOfOcarinaButtons() === Object.keys(OcarinaButtons).length;
                         }
                     },
                     "Skulltula in Soil by Bridge": {
@@ -3067,6 +3060,29 @@ let MapLocations = {
                         MapInfo: { x: 106, y: 71 },
                         Age: Age.CHILD,
                         LongDescription: "This is the bean patch by the lab. It can be used to get to the top of the house and to the fishing pond."
+                    },
+                    "Play Song for Bonooru": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapInfo: { x: 199, y: 63 },
+                        MapImageName: "Scarecrow's Song",
+                        Age: Age.CHILD,
+                        LongDescription: "Take out the ocarina (OI works) by the lower scarecrow and play it a song that has at least two different pitches.",
+                        RequiredToAppear: function(age) { return !Songs.SCARECROWS_SONG.playerHas; },
+                        NeedsOcarina: true,
+                        CustomRequirement: function(age) {
+                            return ItemData.getNumberOfOcarinaButtons() >= 2;
+                        }
+                    },
+                    "Claim Scarecrow's Song": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapInfo: { x: 199, y: 63 },
+                        MapImageName: "Scarecrow's Song",
+                        Age: Age.ADULT,
+                        LongDescription: "Take out the ocarina (OI works) by the lower scarecrow and play it the last song you taught it as Child.",
+                        RequiredToAppear: function(age) { return !Songs.SCARECROWS_SONG.playerHas; },
+                        CustomRequirement: function(age) {
+                            return Data.itemLocationObtained("Lake Hylia", "main", "Play Song for Bonooru");
+                        }
                     },
                     "Gossip Stone by Lab and Waterfall": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,

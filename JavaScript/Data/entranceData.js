@@ -836,14 +836,12 @@ InteriorGroups = {
 	},
 	"Stable": {
 		tooltip: "This is the building with the cows in the stables.",
+		excludeFromGroup: function() { return !Settings.RandomizerSettings.cowSanity; },
 		buttons: {
 			"Cow 1": {
 				icon: "Cow",
 				itemGroup: ItemGroups.COW,
 				description: "Play Epona's Song next to the cow.",
-				shouldNotDisplay: function() {
-					return !Settings.RandomizerSettings.cowSanity;
-				},
 				canGet: function(age) {
 					return Data.canMilkCows(true);
 				}
@@ -852,9 +850,6 @@ InteriorGroups = {
 				icon: "Cow",
 				itemGroup: ItemGroups.COW,
 				description: "Play Epona's Song next to the cow.",
-				shouldNotDisplay: function() {
-					return !Settings.RandomizerSettings.cowSanity;
-				},
 				canGet: function(age) {
 					return Data.canMilkCows(true);
 				}

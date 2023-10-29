@@ -1295,6 +1295,16 @@ let ItemData = {
 	},
 
 	/**
+	 * Get the number of ocarina buttons the player has
+	 */
+	getNumberOfOcarinaButtons: function() {
+		var ocarinaButtons = Object.values(OcarinaButtons);
+		return Settings.RandomizerSettings.shuffleOcarinaButtons
+			? ocarinaButtons.filter(button => button.playerHas).length
+			: ocarinaButtons.length;
+	},
+
+	/**
 	 * Checks that the player has enough silver rupees of the given index
 	 * @param mapName - the name of the map to check
 	 * @param index - the silver rupee index
