@@ -953,16 +953,20 @@ Data = {
 		if (!itemLocation[propertyName]) { return true; }
 		let hasAllItems = true;
 		
+		let _this = this;
 		itemLocation[propertyName].forEach(function(item) {
             if (!item) {
                 console.log(`ERROR: Item property not defined on item location: ${itemLocation.Name}; property ${propertyName}`);
             }
-
 			let currentItem = item.item || item;
-			let currentUpgrade = item.upgradeString
-                ? Number(item.upgradeString)
-                : null;
-			if (!ItemData.canUse(age, currentItem, currentUpgrade)) {
+			let canUseItem = _this._canUseItem(age, item);
+			
+			if (!canUseItem) {
+				hasAllItems = false;
+				return;
+			}
+			
+			if (item.upgradeString && (currentItem.currentUpgrade < item.upgradeString)) {
 				hasAllItems = false;
 				return;
 			}
@@ -981,17 +985,40 @@ Data = {
         if (!itemLocation[propertyName]) { return true; }
         let hasItem = false;
         
+        let _this = this;
         itemLocation[propertyName].forEach(function(item) {
             if (hasItem) { return; }
 
             let currentItem = item.item || item;
-			let currentUpgrade = item.upgradeString
-                ? Number(item.upgradeString)
-                : null;
-            hasItem = ItemData.canUse(age, currentItem, currentUpgrade);
+            let canUseItem = _this._canUseItem(age, item);
+            let hasUpgradableItem = item.upgradeString && (currentItem.currentUpgrade >= item.upgradeString);
+            let hasNormalitem = !item.upgradeString && currentItem.playerHas;
+
+            if (hasUpgradableItem || hasNormalitem) {
+                hasItem = canUseItem;
+                return;
+            }
         });
         
         return hasItem;
+    },
+
+    /**
+     * Checks whether the player can use the item - includes equip swap checks
+     * @param age - the age to check for
+     * @param item - the item to check
+     * @returns 
+     */
+    _canUseItem: function(age, item) {
+        let currentItem = item.item || item;
+        let _this = this;
+        return currentItem.playerHas &&
+        (
+            (item !== Items.BOOMERANG && item !== Items.MEGATON_HAMMER && item !== Items.DEKU_STICK) ||
+            (item === Items.BOOMERANG && _this.canUseBoomerang(age)) ||
+            (item === Items.MEGATON_HAMMER && _this.canUseHammer(age)) ||
+            (item === Items.DEKU_STICK && _this.canUseDekuStick(age))
+        );
     },
     
     /**
@@ -1144,7 +1171,7 @@ Data = {
 
         let canBreakWithChus = Settings.GlitchesToAllow.breakBeehivesWithChus && Items.BOMBCHU.playerHas;
         return canBreakWithChus ||
-            ItemData.canUse(age, Items.BOOMERANG) ||
+            this.canUseBoomerang(age) ||
             (age === Age.ADULT && Items.HOOKSHOT.playerHas);
     },
     
@@ -1259,7 +1286,7 @@ Data = {
 			Items.FAIRY_SLINGSHOT.playerHas ||
 			this.canUseFireItem(age) ||
 			this.hasExplosives() ||
-			ItemData.canUse(age, Items.MEGATON_HAMMER);
+			this.canUseHammer(age);
     },
     
     /**
@@ -1321,7 +1348,7 @@ Data = {
      */
     canHitSwitchAtShortDistance: function(age) {
         return this.hasExplosives() ||
-            ItemData.canUse(age, Items.BOOMERANG) ||
+            this.canUseBoomerang(age) ||
             this.canShootEyeSwitch(age) ||
             (age === Age.ADULT && Items.HOOKSHOT.playerHas);
     },
@@ -1347,7 +1374,7 @@ Data = {
      */
 	canBlastOrSmash: function(age, itemLocation) {
 		if (itemLocation && !itemLocation.NeedToBlastOrSmash && !itemLocation.IsHiddenGrotto) { return true; }
-		return this.hasExplosives() || ItemData.canUse(age, Items.MEGATON_HAMMER);
+		return this.hasExplosives() || this.canUseHammer(age);
     },
 
     /**
@@ -1372,7 +1399,31 @@ Data = {
      */
     canEquipSwap: function(age) {
 		if (!Settings.GlitchesToAllow.equipSwap) { return false; }
-		return Boolean(Items.DINS_FIRE.playerHas || (age === Age.CHILD && Items.DEKU_STICK.playerHas));
+		return Items.DINS_FIRE.playerHas || (age === Age.CHILD && Items.DEKU_STICK.playerHas);
+    },
+
+    /**
+     * Returns whether the player can use the Megaton Hammer
+     * This includes equip swap
+     */
+    canUseHammer: function(age) {
+		return Items.MEGATON_HAMMER.playerHas && (age === Age.ADULT || this.canEquipSwap(age));
+    },
+
+    /**
+     * Returns whether the player can use the Boomerang
+     * This includes equip swap
+     */
+    canUseBoomerang: function(age) {
+		return Items.BOOMERANG.playerHas && (age === Age.CHILD || this.canEquipSwap(age));
+	},
+
+    /**
+     * Returns whether the player can use Deku Sticks
+     * This includes equip swap
+     */
+    canUseDekuStick: function(age) {
+        return Items.DEKU_STICK.playerHas && (age === Age.CHILD || this.canEquipSwap(age));
     },
 
     /**
@@ -1399,7 +1450,7 @@ Data = {
      */
     canGrabShortDistances: function(age, itemLocation) {
 		if (itemLocation && !itemLocation.IsAtShortDistance) { return true; }
-		let canGetWithBoomerang = ItemData.canUse(age, Items.BOOMERANG);
+		let canGetWithBoomerang = this.canUseBoomerang(age);
 		let canGetWithHookshot = (age === Age.ADULT && Items.HOOKSHOT.playerHas);
 		return canGetWithBoomerang || canGetWithHookshot;
     },
@@ -1435,7 +1486,7 @@ Data = {
 		if (itemLocation && !itemLocation.NeedsSwordWeapon) { return true; }
 		if (age === Age.ADULT) { return true; } // Adult always has a sword
 		
-		return Equipment.KOKIRI_SWORD.playerHas || Items.DEKU_STICK.playerHas || ItemData.canUse(age, Items.MEGATON_HAMMER);
+		return Equipment.KOKIRI_SWORD.playerHas || Items.DEKU_STICK.playerHas || this.canUseHammer(age);
 	},
     
     /**
@@ -1450,7 +1501,7 @@ Data = {
 			Items.FAIRY_SLINGSHOT.playerHas ||
 			this.canUseFireItem(age) ||
 			this.hasExplosives() ||
-            ItemData.canUse(age, Items.MEGATON_HAMMER);
+            this.canUseHammer(age);
 	},
 
     /**
@@ -1460,7 +1511,7 @@ Data = {
         return age === Age.ADULT ||
             Items.DEKU_STICK.playerHas ||
             this.hasExplosives() ||
-            ItemData.canUse(age, Items.MEGATON_HAMMER) ||
+            this.canUseHammer(age) ||
             this.canUseFireItem(age);
     },
 

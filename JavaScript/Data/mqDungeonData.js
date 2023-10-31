@@ -16,14 +16,14 @@ let MQDungeons = {
                     compassRoomAntechamber: {
                         CustomRequirement: function(age) {
                             return Data.canUseFireItem(age) || 
-                                ItemData.canUse(age, Items.DEKU_STICK) ||
+                                Data.canUseDekuStick(age) ||
                                 (age === Age.ADULT && Items.FAIRY_BOW.playerHas);
                         }
                     },
                     waterRoom: {
                         CustomRequirement: function(age) {
                             if (!Data.canShootEyeSwitch(age)) { return false; }
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
+                            return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
                         }
                     },
                     upperBasement: {
@@ -100,7 +100,7 @@ let MQDungeons = {
                         LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>Light the unlit torch in this room to spawn the chest. If using a bow, it's easier if you shoot it from the left side of the torch.",
                         CustomRequirement: function(age) {
                             return Data.canUseFireItem(age) || 
-                                ItemData.canUse(age, Items.DEKU_STICK) ||
+                                Data.canUseDekuStick(age) ||
                                 (age === Age.ADULT && Items.FAIRY_BOW.playerHas);
                         }
                     },
@@ -112,7 +112,7 @@ let MQDungeons = {
                         LongDescription: "Head to the basement. The goal is to hit the switch to the right of the vines to spawn the chest. If you have Din's Fire, use it on the webs. Otherwise, hit the switch to the left of the vines to light the torch, then use your sticks or shoot an arrow through it to gain access to the switch.",
                         CustomRequirement: function(age) {
                             return Data.canUseFireItem(age) || 
-                                ItemData.canUse(age, Items.DEKU_STICK) ||
+                                Data.canUseDekuStick(age) ||
                                 (age === Age.ADULT && Items.FAIRY_BOW.playerHas);
                         }
                     }
@@ -142,7 +142,7 @@ let MQDungeons = {
                 Exits: {
                     compassRoomSideArea: {
                         CustomRequirement: function(age) {
-                            let canUseHammer = ItemData.canUse(age, Items.MEGATON_HAMMER);
+                            let canUseHammer = Data.canUseHammer(age);
                             let canBreakWithChu = Items.BOMBCHU.playerHas;
                             let canBreakFromSoTBlock = (Data.canPlaySong(Songs.SONG_OF_TIME) && (
                                 Items.BOMB.playerHas ||
@@ -249,7 +249,7 @@ let MQDungeons = {
                         LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Note that you can also use Din's Fire. Light the torches to open the next room. Defeat all the enemies in this room to continue on.<br/><br/>Step on the blue switch in the middle of the torches. Light a stick, use Din's or shoot an arrow to burn the web blocking the left door. The skulltula is in this room.",
                         IsAtShortDistance: true,
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
+                            return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
                         }
                     }
                 }
@@ -263,7 +263,7 @@ let MQDungeons = {
                     lowerBasement: {
                         CustomRequirement: function(age) {
                             let webAlreadyBurned = Data.itemLocationObtained("Deku Tree", "upperBasement", "Burn Basement Web");
-                            let canBurnWeb = Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
+                            let canBurnWeb = Data.canUseFireItem(age) || Data.canUseDekuStick(age);
                             return canBurnWeb || webAlreadyBurned || Data.canWeirdShot(age);
                         }
                     }
@@ -286,7 +286,7 @@ let MQDungeons = {
                         Order: 16.1,
                         LongDescription: "The web on the basement floor. Use sticks or a fire item to burn it.",
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
+                            return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
                         }
                     }
                 }
@@ -394,7 +394,7 @@ let MQDungeons = {
                             if (age === Age.ADULT) { return true; }
                 
                             let canRecoil = Settings.GlitchesToAllow.dodongoSwitchEarly && 
-                                (Data.hasExplosivesOrStrength() || ItemData.canUse(age, Items.MEGATON_HAMMER)) && 
+                                (Data.hasExplosivesOrStrength() || Data.canUseHammer(age)) && 
                                 Data.hasSwordWeapon(age);
                             return Data.canGroundJumpWithBomb(age) || canRecoil;
                         }
@@ -588,7 +588,7 @@ let MQDungeons = {
                     },
                     upperLizalfosRoom: {
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
+                            return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
                         }
                     }
                 },
@@ -609,7 +609,7 @@ let MQDungeons = {
                         Order: 26,
                         LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. Kill all the enemies to spawn the chest.",
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
+                            return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
                         }
                     },
                     "6 Crates in Room by Torch Puzzle": {
@@ -622,7 +622,7 @@ let MQDungeons = {
                         Order: 27,
                         LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. The crates are in this room.",
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
+                            return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
                         }
                     },
                     "Skulltula in Room by Torch Puzzle": {
@@ -632,7 +632,7 @@ let MQDungeons = {
                         Order: 28,
                         LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. The skulltula is in one of the right boxes.",
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
+                            return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
                         }
                     }
                 }
@@ -1154,7 +1154,7 @@ let MQDungeons = {
                         LongDescription: "In the path leading to the elevator room, there's a skulltula under the Song of Time block. Play the song to move the block.<br/><br/>If you have the boomerang, you can also aim it to the left and slightly downward to get the skulltula through the block.",
                         CustomRequirement: function(age) {
                             return Data.canPlaySong(Songs.SONG_OF_TIME) || 
-                                (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
+                                (Settings.GlitchesToAllow.boomerangThroughWalls && Data.canUseBoomerang(age));
                         }
                     }
                 }
@@ -1165,7 +1165,7 @@ let MQDungeons = {
                 Exits: {
                     afterWebBurned: {
                         CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Items.DEKU_STICK) || Data.canUseFireItem(age);
+                            return Data.canUseDekuStick(age) || Data.canUseFireItem(age);
                         }
                     }
                 },
@@ -1216,7 +1216,7 @@ let MQDungeons = {
                         Order: 18,
                         LongDescription: "Using a deku stick to bring a fire from the Like Like room, or a fire item, burn the web to get access to the far west room. After killing the tentacle, head to the far east room and kill that tentacle. Now leave and enter the room to your left. Use the switch and a bomb, or a bombchu to blow up the rock on the ceiling to reveal the skulltula.",
                         CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Items.DEKU_STICK) || Data.canUseFireItem(age);
+                            return Data.canUseDekuStick(age) || Data.canUseFireItem(age);
                         }
                     },
                     "Tentacles Defeated": {
@@ -3612,7 +3612,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 25,
                         LongDescription: "This is the locked door in the room with the invisible spikes.",
-                        RequiredItems: [Items.HOOKSHOT],
+                        RequriedItems: [Items.HOOKSHOT],
                         KeyRequirement: function(age) {
                             let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 4;
                             let min = Settings.GlitchesToAllow.shadowGateClip ? 2 : 3;
@@ -3900,7 +3900,7 @@ let MQDungeons = {
                         Order: 13,
                         LongDescription: "To get to this room, first make it to the platform with the two beamos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). The hearts are in the back left corner. Play the Song of Time to spawn a block to get them.",
                         CustomRequirement: function(age) {
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) || ItemData.canUse(age, Items.BOOMERANG);
+                            return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canUseBoomerang(age);
                         }
                     }
                 }
@@ -4555,7 +4555,7 @@ let MQDungeons = {
                         AltOrder: 4,
                         LongDescription: "After you first enter the temple, go up the stairs and turn around. There's a crystal switch at the top of one of the pillars that you need to activate to spawn the chest.",
                         CustomRequirement: function(age) {
-                            return Data.canShootEyeSwitch(age) || ItemData.canUse(age, Items.BOOMERANG) || Items.BOMBCHU.playerHas;
+                            return Data.canShootEyeSwitch(age) || Data.canUseBoomerang(age) || Items.BOMBCHU.playerHas;
                         }
                     },
 
@@ -4739,7 +4739,7 @@ let MQDungeons = {
                         RequiredItems: [Items.BOMBCHU],
                         CustomRequirement: function(age) {
                             if (!Items.MEGATON_HAMMER.playerHas) { return false; }
-                            return ItemData.canUse(age, Items.MEGATON_HAMMER) || Data.canAccessMap(Age.ADULT, "Spirit Temple", "afterSecondCrawlSpace");
+                            return Data.canUseHammer(age) || Data.canAccessMap(Age.ADULT, "Spirit Temple", "afterSecondCrawlSpace");
                         }
                     }
                 }
@@ -5019,7 +5019,7 @@ let MQDungeons = {
                             if (age === Age.ADULT && (Equipment.HOVER_BOOTS.playerHas || Settings.GlitchesToAllow.spiritStatueRoomJumps)) {
                                 return true;
                             }
-                            return (Settings.GlitchesToAllow.difficultBoomerangTrickThrows && ItemData.canUse(age, Items.BOOMERANG)) || 
+                            return (Settings.GlitchesToAllow.difficultBoomerangTrickThrows && Data.canUseBoomerang(age)) || 
                                 Data.canPlaySong(Songs.SONG_OF_TIME) || 
                                 Data.canMegaFlip(age);
                         }
@@ -5089,7 +5089,7 @@ let MQDungeons = {
                         AltOrder: 20,
                         LongDescription: "In the fire bubble room, you must push the first sun block you see onto the light. You'll need to hit the crystal switches to make the fire disappear. This spawns a white platform that you can hookshot up to so that you can reach the skulltula.",
                         CustomRequirement: function(age) {
-                            if (Settings.GlitchesToAllow.difficultBoomerangTrickThrows && ItemData.canUse(age, Items.BOOMERANG)) {
+                            if (Settings.GlitchesToAllow.difficultBoomerangTrickThrows && Data.canUseBoomerang(age)) {
                                 return true;
                             }
                             
@@ -5918,8 +5918,8 @@ let MQDungeons = {
                         LongDescription: "Navigate to the left room in the main area. Unlock the door, then light the torch of the front right coffin (or use the boomerang). The heart is inside.",
                         CustomRequirement: function(age) {
                             return Data.canUseFireItem(age) || 
-                                ItemData.canUse(age, Items.DEKU_STICK) ||
-                                (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
+                                Data.canUseDekuStick(age) ||
+                                (Data.canUseBoomerang(age) && Settings.GlitchesToAllow.boomerangThroughWalls);
                         }
                     },
                     "Heart in Middle Left Coffin": {
@@ -5931,8 +5931,8 @@ let MQDungeons = {
                         LongDescription: "Navigate to the left room in the main area. Unlock the door, then light the torch of the middle left coffin (or use the boomerang). The heart is inside.",
                         CustomRequirement: function(age) {
                             return Data.canUseFireItem(age) || 
-                                ItemData.canUse(age, Items.DEKU_STICK) ||
-                                (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
+                                Data.canUseDekuStick(age) ||
+                                (Data.canUseBoomerang(age) && Settings.GlitchesToAllow.boomerangThroughWalls);
                         }
                     }
                 }
@@ -6527,7 +6527,7 @@ let MQDungeons = {
                             }
                             
                             // Otherwise check that we CAN spawn the chest
-                            if (!ItemData.canUse(age, Items.MEGATON_HAMMER)) {
+                            if (!Data.canUseHammer(age)) {
                                 return false;
                             }
 
@@ -6723,7 +6723,7 @@ let MQDungeons = {
                         Order: 11,
                         LongDescription: "In the water trial - this heart is in the blue ice in the right side of the room (or use a boomerang trick shot).<br/><br/>To gain access to the blue fire, attack the weird hand thing on the right side of the room to lower the water around the blue fire.",
                         CustomRequirement: function(age) {
-                            return Data.canUseBlueFire(age) || (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
+                            return Data.canUseBlueFire(age) || (Settings.GlitchesToAllow.boomerangThroughWalls && Data.canUseBoomerang(age));
                         }
                     }
                 }

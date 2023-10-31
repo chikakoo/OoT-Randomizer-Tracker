@@ -1891,7 +1891,7 @@ GrottoGroups = {
 				icon: "Heart Piece",
 				description: "To defeat Barinade, you need the boomerang and also either a sword or at least 3 Deku Sticks. First, dislodge it from the ceiling using the boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
 				canGet: function(age) {
-					return Data.hasSwordWeapon(age) && ItemData.canUse(age, Items.BOOMERANG);
+					return Data.hasSwordWeapon(age) && Data.canUseBoomerang(age);
 				},
 				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			},
@@ -1899,7 +1899,7 @@ GrottoGroups = {
 				icon: "Barinade",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
-					return Data.hasSwordWeapon(age) && ItemData.canUse(age, Items.BOOMERANG);
+					return Data.hasSwordWeapon(age) && Data.canUseBoomerang(age);
 				},
 				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			}
@@ -1914,7 +1914,7 @@ GrottoGroups = {
 				canGet: function(age) {
 					let canStunBoss = (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas) ||
 						(age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas));
-					let canDamageBoss = Data.hasSwordWeapon(age) || ItemData.canUse(age, Items.BOOMERANG);
+					let canDamageBoss = Data.hasSwordWeapon(age) || Data.canUseBoomerang(age);
 					return canStunBoss && canDamageBoss;
 				}
 			},
@@ -1924,7 +1924,7 @@ GrottoGroups = {
 				canGet: function(age) {
 					let canStunBoss = (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas) ||
 						(age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas));
-					let canDamageBoss = Data.hasSwordWeapon(age) || ItemData.canUse(age, Items.BOOMERANG);
+					let canDamageBoss = Data.hasSwordWeapon(age) || Data.canUseBoomerang(age);
 					return canStunBoss && canDamageBoss;
 				}
 			}
@@ -1938,7 +1938,7 @@ GrottoGroups = {
 				description: "To defeat Volvagia, hit her with your hammer when she pops out of the holes. After that, attack it again. Jumpslashes will do more damage, like usual. You can hit it with arrows while it's flying to do additional damage. If it ever drops rocks on you, you can hang off the side of the cliff to avoid damage.",
 				canGet: function(age) {
 					let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
-					return tunicCheck && ItemData.canUse(age, Items.MEGATON_HAMMER);
+					return tunicCheck && Data.canUseHammer(age);
 				},
 				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			},
@@ -1947,7 +1947,7 @@ GrottoGroups = {
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
-					return tunicCheck && ItemData.canUse(age, Items.MEGATON_HAMMER);
+					return tunicCheck && Data.canUseHammer(age);
 				},
 				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			}
@@ -2326,7 +2326,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "Requires iron boots, boomerang, or silver scale+.",
 				canGet: function(age) {
-					return Data.canSinkSilverScaleDepth(age) || ItemData.canUse(age, Items.BOOMERANG);
+					return Data.canSinkSilverScaleDepth(age) || Data.canUseBoomerang(age);
 				}
 			},
 			"Green Rupee 3": {
@@ -2334,7 +2334,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "Requires iron boots, boomerang, or gold scale.",
 				canGet: function(age) {
-					return Data.canSinkGoldenScaleDepth(age) || ItemData.canUse(age, Items.BOOMERANG);
+					return Data.canSinkGoldenScaleDepth(age) || Data.canUseBoomerang(age);
 				}
 			}
 		}

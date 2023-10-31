@@ -11,8 +11,7 @@ let OwExits = {
             CustomRequirement: function(age) {
                 if (age === Age.ADULT || Settings.RandomizerSettings.openForest) { return true; }
                 
-                let bossEntranceGroup = OwExits["Deku Tree"].Boss.EntranceGroup;
-                let beatDekuTree = bossEntranceGroup && Object.keys(bossEntranceGroup.completed).includes("Blue Warp");
+                let beatDekuTree = Data.itemLocationObtained("Deku Tree", "bossRoom", "Blue Warp");
                 let canPokeySkip = Settings.GlitchesToAllow.pokeySkip && 
                     Data.hasSwordWeapon(age) &&
                     Equipment.DEKU_SHIELD.playerHas;
@@ -461,7 +460,7 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "Near the entrance to Gerudo Valley, there's a circle of small rocks. As a child, you can bomb the center to reveal a grotto. As adult, you must hammer the red rock.",
             CustomRequirement: function(age) {
-                return ItemData.canUse(age, Items.MEGATON_HAMMER) || (age === Age.CHILD && Data.hasExplosives());
+                return Data.canUseHammer(age) || (age === Age.CHILD && Data.hasExplosives());
             }
         },
         "Grotto by Lake Hylia Fences": {
@@ -1379,7 +1378,7 @@ let OwExits = {
             RequiredAdultItems: [Items.MEGATON_HAMMER],
             CustomRequirement: function(age) {
                 if (age === Age.ADULT) { return true; }
-                return ItemData.canUse(age, Items.MEGATON_HAMMER) || Settings.GlitchesToAllow.childDoubleMagicFairy;
+                return Data.canUseHammer(age) || Settings.GlitchesToAllow.childDoubleMagicFairy;
             }
         },
         "Grotto in Rock by Goron": {
