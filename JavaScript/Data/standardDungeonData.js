@@ -26,9 +26,7 @@ let StandardDungeons = {
                     },
 
                     basementBottom: {
-                        CustomRequirement: function(age) {
-                            return Data.hasDamagingItem(age) || Items.DEKU_NUT.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
                     },
 
                     Exit: {
@@ -80,9 +78,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "This item can be seen on the top floor, floating close to the path left of the vines you club up. Lined up with the wall, jump from the middle of the ledge, holding neutral to get this item.",
-                        CustomRequirement: function(age) {
-                            return Data.hasDamagingItem(age) || Items.DEKU_NUT.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
                     }
                 }
             },
@@ -298,7 +294,7 @@ let StandardDungeons = {
 
                     blueRoom: {
                         CustomRequirement: function(age) {
-                            return Data.hasSwordWeapon(age) || Data.canBreakMudWalls(age);
+                            return ItemData.canUse(age, ItemSets.SWORDS) || Data.canBreakMudWalls(age);
                         }
                     }
                 },
@@ -612,14 +608,10 @@ let StandardDungeons = {
             upperLizalfosRoom: {
                 Exits: {
                     bombChestFloor: {
-                        CustomRequirement: function(age) {
-                            return Data.hasSwordWeapon(age) || Data.hasExplosives();
-                        }
+                        RequiredItems: [ItemSets.SWORDS, ItemSets.EXPLOSIVES]
                     },
                     firstEyeSwitchRoom: {
-                        CustomRequirement: function(age) {
-                            return Data.hasSwordWeapon(age) || Data.hasExplosives();
-                        }
+                        RequiredItems: [ItemSets.SWORDS, ItemSets.EXPLOSIVES]
                     }
                 },
                 ItemLocations: {
@@ -781,8 +773,7 @@ let StandardDungeons = {
             afterFirstRoom: {
                 Exits: {
                     afterBigOcto: {
-                        RequiredItems: [Items.BOOMERANG],
-                        NeedsSwordWeapon: true
+                        RequiredItems: [Items.BOOMERANG, ItemSets.SWORDS]
                     },
                     roomBeforeBoss: {
                         CustomRequirement: function(age) {
@@ -903,9 +894,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "Bring Ruto back up to the first floor. Take her through the room with holes into the next room. Now, hug the right wall all the way to a switch - jump on it with Ruto in your hands. Enter the room. Kill all the stingers to spawn the chest. They can be hurt with explosions, boomerang, slingshot, or jump slashes from a stick or sword.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Items.BOOMERANG) || Items.FAIRY_SLINGSHOT.playerHas || Data.hasSwordWeapon(age) || Data.hasExplosives();
-                        }
+                        RequiredChoiceOfItems: [Items.BOOMERANG, Items.FAIRY_SLINGSHOT, ItemSets.SWORDS, ItemSets.EXPLOSIVES]
                     },
                     "Map Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1021,9 +1010,7 @@ let StandardDungeons = {
             main: {
                 Exits: {
                     lobby: {
-                        CustomRequirement: function(age) {
-                            return Data.hasDamagingItem(age) || Items.DEKU_NUT.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
                     },
                     Exit: {
                         OwExit: OwExits["Forest Temple"]["Exit"]
@@ -1154,9 +1141,9 @@ let StandardDungeons = {
 
                     fallingCeilingRoom: {
                         Age: Age.ADULT,
-                        RequiredAdultItems: [Items.BOMB, Equipment.HOVER_BOOTS],
+                        RequiredItems: [Items.BOMB, Equipment.HOVER_BOOTS, ItemSets.SHIELDS],
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.forestGreenPoeEarly && Data.hasShield(age);
+                            return Settings.GlitchesToAllow.forestGreenPoeEarly;
                         }
                     },
 
@@ -1492,7 +1479,7 @@ let StandardDungeons = {
                     afterPoeRooms: {
                         Map: "Forest Temple",
                         LockedDoor: "Locked Door in Blue Poe Room",
-                        NeedsSwordWeapon: true
+                        RequiredItems: [ItemSets.SWORDS]
                     }
                 },
 
@@ -2311,8 +2298,7 @@ let StandardDungeons = {
                 Exits: {
                     centerRoomBottom: {},
                     hammerChestRoom: {
-                        NeedsExplosives: true,
-                        NeedsSwordWeapon: true
+                        RequiredItems: [ItemSets.SWORDS, ItemSets.EXPLOSIVES]
                     }
                 },
                 ItemLocations: {
@@ -2450,8 +2436,7 @@ let StandardDungeons = {
                     midEastWingPots: {
                         CustomRequirement: function(age) {
                             if (ItemData.canUse(age, Items.BOOMERANG)) { return true; }
-                            let canBreakPot = (age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas)) ||
-                                (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas);
+                            let canBreakPot = ItemData.canUseAny(age, [Items.HOOKSHOT, Items.FAIRY_BOW, Items.FAIRY_SLINGSHOT]);
                             return canBreakPot && Data.canSinkGoldenScaleDepth(age);
                         }
                     },
@@ -3366,7 +3351,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. The dungeon map chest room is somewhere on the wall to your right. You must kill all the enemies inside to get it.",
-                        NeedsDamagingItem: true
+                        RequiredItems: [ItemSets.DAMAGING_ITEMS]
                     },
                     "2 Pots in Front Maze Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3408,7 +3393,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 7,
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. Navigate all the way through the fake wall maze and defeat Deadhand for the chest.",
-                        NeedsSwordWeapon: true
+                        RequiredItems: [ItemSets.SWORDS]
                     }
                 }
             },
@@ -3416,7 +3401,7 @@ let StandardDungeons = {
                 Exits: {
                     afterBombableWall: {
                         Map: "Shadow Temple",
-                        NeedsExplosives: true,
+                        RequiredItems: [ItemSets.EXPLOSIVES],
                         LockedDoor: "Locked Door by Beamos"
                     },
                     boatRoomStart: {
@@ -3443,7 +3428,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "After crossing the gap onto the tongue, proceed down the hallway. At the beamos, take the right path (it's a fake wall) and enter the room. Defeat the gibdos for a chest.",
-                        NeedsSwordWeapon: true
+                        RequiredItems: [ItemSets.SWORDS]
                     },
                     "Scythe Silver Rupee Right of Scythe": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -3511,7 +3496,7 @@ let StandardDungeons = {
                         Map: "Shadow Temple",
                         CustomRequirement: function(age) {
                             return ItemData.checkSilverRupeeRequirement("Shadow Temple", 1) ||
-                                (Settings.GlitchesToAllow.shadowPitRoomSilverRupeeSkip && Data.hasSwordWeapon(age));
+                                (Settings.GlitchesToAllow.shadowPitRoomSilverRupeeSkip && ItemData.canUse(age, ItemSets.SWORDS));
                         }
                     },
                     invisibleSpikeRoom: {
@@ -3540,7 +3525,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). Take out the enemies in this room to open up the gate - there's a like-like and a few keese in the corners. If you don't have a range weapon, jumpslash at the keese to alert them to you. The chest is behind the gate that opened.",
-                        NeedsSwordWeapon: true
+                        RequiredItems: [ItemSets.SWORDS]
                     },
                     "Invisible Chest in Invisible Scythe Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3548,7 +3533,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). Take out the enemies in this room to open up the gate - there's a like-like and a few keese in the corners. If you don't have a range weapon, jumpslash at the keese to alert them to you. The chest is next to the visible chest.",
-                        NeedsSwordWeapon: true
+                        RequiredItems: [ItemSets.SWORDS]
                     },
                     "Skulltula in Invisible Scythe Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3672,7 +3657,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 22,
                         LongDescription: "To get here, first head to the area with the beamos and spike traps. Face the door leading to the ceiling spike room. Now turn right. Follow the edge of the pit in front of you all the way to the guillotine. Use your Lens of Truth to navigate the platforms and make it to the door. Once inside, kill all the redeads to spawn the chest. Be careful of the invisible spikes in here - you can equip the Goron Tunic to avoid some damage since they act like lava.",
-                        NeedsSwordWeapon: true
+                        RequiredItems: [ItemSets.SWORDS]
                     },
                     "Invisible Spike Ground Center Silver Rupee": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4155,10 +4140,10 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             if (Items.BOMBCHU.playerHas || Data.canMegaFlip(age)) { return true; }
                             if (age === Age.ADULT) {
-                                return Items.FAIRY_BOW.playerHas || Items.HOOKSHOT.currentUpgrade === 2;
+                                return Items.FAIRY_BOW.playerHas || ItemData.canUseLongshot(age);
                             }
-                            let canClearFirstRoom = Data.hasExplosives() || Data.hasSwordWeapon();
-                            let canHitSwitch = Items.FAIRY_SLINGSHOT.playerHas || Items.BOOMERANG.playerHas;
+                            let canClearFirstRoom = ItemData.canUseAny(age, [ItemSets.SWORDS, ItemSets.EXPLOSIVES]);
+                            let canHitSwitch = ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, Items.BOOMERANG]);
                             return canClearFirstRoom && canHitSwitch;
                         }
                     },
@@ -4693,11 +4678,9 @@ let StandardDungeons = {
                 Exits: {
                     mirrorShieldKnuckle: {
                         Age: Age.ADULT,
+                        RequiredItems: [Items.BOMB, Equipment.HOVER_BOOTS, ItemSets.SHIELDS],
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.spiritSuperslideToMirrorShield &&
-                                Data.hasShield(age) &&
-                                Items.BOMB.playerHas &&
-                                Equipment.HOVER_BOOTS.playerHas;
+                            return Settings.GlitchesToAllow.spiritSuperslideToMirrorShield;
                         }
                     },
                     statueHands: {}
@@ -4908,7 +4891,7 @@ let StandardDungeons = {
                         Order: 1,
                         LongDescription: "This rupee is frozen in the ice to the left of the exit of the first big room. You can either melt the ice, jumpslash into it, or use a boomerang to get the item.",
                         CustomRequirement: function(age) {
-                            return Data.hasSwordWeapon(age) || 
+                            return ItemData.canUse(age, ItemSets.SWORDS) || 
                                 (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG)) || 
                                 Data.canUseBlueFire(age);
                         }
@@ -4969,9 +4952,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3.1,
                         LongDescription: "In the room with the spinning scythe, this rupee is behind the icicles on the wall with the skulltula.",
-                        CustomRequirement: function(age) {
-                            return Data.hasSwordWeapon(age) || Data.hasExplosives();
-                        }
+                        RequiredChoiceOfItems: [ItemSets.SWORDS, ItemSets.EXPLOSIVES]
                     },
                     "2 Pots in East Scythe Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -5245,9 +5226,7 @@ let StandardDungeons = {
                 Exits: {
                     mainArea: {
                         Age: Age.CHILD,
-                        CustomRequirement: function(age) {
-                            return Data.hasDamagingItem(age) || Items.DEKU_NUT.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
                     },
                     Exit: {
                         OwExit: OwExits["Bottom of the Well"]["Exit"]
@@ -5628,7 +5607,7 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             let swordRequired = Settings.RandomizerSettings.deadHandNeedsSword;
                             if (swordRequired) { return Equipment.KOKIRI_SWORD.playerHas; }
-                            return Data.hasSwordWeapon(age);
+                            return ItemData.canUse(age, ItemSets.SWORDS);
                         }
                     }
                 }
@@ -5641,6 +5620,12 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         UseAdultAge: function() { 
             return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.gtgChildAllowed;
+        },
+        _canSkipMazeDoors: function(age) {
+            return Data.canWeirdShot(age) ||  (
+                Settings.GlitchesToAllow.gtgChildVineClips && 
+                ItemData.canUseAll(age, [Equipment.DEKU_SHIELD, Items.BOMBCHU])
+            );
         },
         _getNumberOfOptionalKeysUsed: function() {
             // Gets the number of optional keys used in GTG (these are the ones on the right maze path)
@@ -5660,25 +5645,23 @@ let StandardDungeons = {
             main: {
                 Exits: {
                     boulderRoom: {
-                        NeedsSwordWeapon: true,
+                        RequiredItems: [ItemSets.SWORDS]
                     },
                     bigLavaRoomFront: {
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     },
                     mazeAfterOptionalDoor1: {
                         Map: "Training Grounds",
                         LockedDoor: "Optional Locked Door 1",
                         SkipLockedDoor: function(age) {
-                            return Data.canWeirdShot(age) || 
-                                (Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
+                            return MapLocations["Training Grounds"]._canSkipMazeDoors(age);
                         }
                     },
                     mazeAfterDoor1: {
                         Map: "Training Grounds",
                         LockedDoor: "Locked Door 1 On Main Path",
                         SkipLockedDoor: function(age) {
-                            return Data.canWeirdShot(age) || 
-                                (Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
+                            return MapLocations["Training Grounds"]._canSkipMazeDoors(age);
                         }
                     },
                     Exit: {
@@ -5709,7 +5692,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "This is the room to the left of the entrance. I recommend going this way, first, as it only requires the hookshot to make it most of the way around the dungeon. Anyway, kill the stalfos in here within the time limit to get this chest.",
-                        NeedsSwordWeapon: true
+                        RequiredItems: [ItemSets.SWORDS]
                      },
                      "Chest in Dinalfos/Beamos Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5717,7 +5700,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "This is either the room to the right of the entrance, or the southern path from the big lava room. Bomb the beamos and kill the lizalfos to spawn this chest.",
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     },
                     "2 Hearts in Dinalfos/Beamos Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -6160,8 +6143,7 @@ let StandardDungeons = {
                         Map: "Training Grounds",
                         LockedDoor: "Optional Locked Door 2",
                         SkipLockedDoor: function(age) {
-                            return Data.canWeirdShot(age) || 
-                                (Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
+                            return MapLocations["Training Grounds"]._canSkipMazeDoors(age);
                         }
                     }
                 },
@@ -6213,8 +6195,7 @@ let StandardDungeons = {
                         Map: "Training Grounds",
                         LockedDoor: "Locked Door 2 On Main Path",
                         SkipLockedDoor: function(age) {
-                            return Data.canWeirdShot(age) || 
-                                (Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
+                            return MapLocations["Training Grounds"]._canSkipMazeDoors(age);
                         }
                     }
                 },
@@ -6235,8 +6216,7 @@ let StandardDungeons = {
                         Map: "Training Grounds",
                         LockedDoor: "Locked Door 3 On Main Path",
                         SkipLockedDoor: function(age) {
-                            return Data.canWeirdShot(age) || 
-                                (Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
+                            return MapLocations["Training Grounds"]._canSkipMazeDoors(age);
                         }
                     }
                 },
@@ -6257,8 +6237,7 @@ let StandardDungeons = {
                         Map: "Training Grounds",
                         LockedDoor: "Locked Door 4 On Main Path",
                         SkipLockedDoor: function(age) {
-                            return Data.canWeirdShot(age) || 
-                                (Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
+                            return MapLocations["Training Grounds"]._canSkipMazeDoors(age);
                         }
                     }
                 },
@@ -6270,8 +6249,7 @@ let StandardDungeons = {
                         Map: "Training Grounds",
                         LockedDoor: "Locked Door 5 On Main Path",
                         SkipLockedDoor: function(age) {
-                            return Data.canWeirdShot(age) || 
-                                (Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
+                            return MapLocations["Training Grounds"]._canSkipMazeDoors(age);
                         }
                     }
                 },
@@ -6292,8 +6270,7 @@ let StandardDungeons = {
                         Map: "Training Grounds",
                         LockedDoor: "Locked Door 6 On Main Path",
                         SkipLockedDoor: function(age) {
-                            return Data.canWeirdShot(age) || 
-                                (Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
+                            return MapLocations["Training Grounds"]._canSkipMazeDoors(age);
                         }
                     }
                 },
@@ -6314,8 +6291,7 @@ let StandardDungeons = {
                         Map: "Training Grounds",
                         LockedDoor: "Locked Door 7 On Main Path",
                         SkipLockedDoor: function(age) {
-                            return Data.canWeirdShot(age) || 
-                                (Settings.GlitchesToAllow.gtgChildVineClips && age === Age.CHILD && Data.hasShield(age));
+                            return MapLocations["Training Grounds"]._canSkipMazeDoors(age);
                         }
                     }
                 },
@@ -6389,18 +6365,18 @@ let StandardDungeons = {
                                 return true;
                             }
 
-                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && Data.hasShield(age) && Data.hasSwordWeapon(age);
-                            return Items.HOOKSHOT.playerHas || canAvoidHookshot;
+                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && 
+                                ItemData.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
+                            return ItemData.canUse(age, Items.HOOKSHOT) || canAvoidHookshot;
                         }
                     },
                     lightTrialRoom1: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
-                                Items.BOMB.playerHas && 
-                                Data.hasShield(age);
-                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
-                            return canSuperslideIn || canEssClipIn || Equipment.STRENGTH.currentUpgrade === 3;
+                                ItemData.canUseAll(age, [Items.BOMB, ItemSets.SHIELDS]);
+                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && ItemData.canUse(age, ItemSets.EXPLOSIVES);
+                            return canSuperslideIn || canEssClipIn || ItemData.canUseGoldenGauntlets(age);
                         }
                     },
                     center: {
@@ -6498,8 +6474,9 @@ let StandardDungeons = {
                         Order: 27.5,
                         LongDescription: "This rupee is above the beamos. Use your hookshot, or perform the ISG hover to get the rupee (remember not to cancel ISG with shield!)",
                         CustomRequirement: function(age) {
-                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && Data.hasShield(age) && Data.hasSwordWeapon(age);
-                            return Items.HOOKSHOT.playerHas || canAvoidHookshot;
+                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && 
+                                ItemData.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
+                            return ItemData.canUse(age, Items.HOOKSHOT) || canAvoidHookshot;
                         }
                     }
                 }
@@ -6861,15 +6838,10 @@ let StandardDungeons = {
                 Exits: {
                     spiritTrialRoom3: {
                         CustomRequirement: function(age) {
-                            let hasWeirdShotItem = Items.FAIRY_BOW.playerHas || Items.HOOKSHOT.playerHas;
-                            let canWeirdShot = Settings.GlitchesToAllow.weirdShot &&
-                                age === Age.ADULT && 
-                                Data.hasShield(age) && 
-                                hasWeirdShotItem && 
-                                Items.BOMB.playerHas;
-                            return Items.BOMBCHU.playerHas || canWeirdShot;
+                            let weirdShotItem = Items.HOOKSHOT.playerHas ? Items.HOOKSHOT : Items.FAIRY_BOW;
+                            return Items.BOMBCHU.playerHas || Data.canWeirdShot(age, weirdShotItem);
                         }
-                    },
+                    }
                 },
                 ItemLocations: {
                     "Spirit Trial Chest After Hitting Switch": {
