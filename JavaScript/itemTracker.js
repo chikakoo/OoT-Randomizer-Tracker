@@ -35,7 +35,6 @@ let ItemTracker = {
 		let _this = this;
 		Object.keys(itemObject).forEach(function(key) {
 			let item = itemObject[key];
-			if (item.hide) { return; }
 			if (divGroup && item.divGroup !== divGroup) { return; }
 
 			let divItem = dce("div");

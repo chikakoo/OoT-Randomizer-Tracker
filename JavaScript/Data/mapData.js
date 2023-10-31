@@ -517,7 +517,10 @@ let MapLocations = {
             main: {
                 Exits: {
                     afterGate: {
-                        RequiredChildItems: [ItemSets.DAMAGING_ITEMS]
+                        CustomRequirement: function(age) {
+                            if (age === Age.ADULT) { return true; }
+                            return Data.hasDamagingItem(age);
+                        }
                     },
                     "Lost Woods": {
                         OwExit: OwExits["Sacred Forest Meadow"]["Lost Woods"]
@@ -1061,12 +1064,6 @@ let MapLocations = {
     "Kakariko Village": {
 		Abbreviation: "KAK",
 		MapGroup: MapGroups.KAKARIKO,
-        _canChildKillWatchtowerSkull: function() {
-            let canUseISG = Settings.GlitchesToAllow.isg && ItemData.canUseAll(Age.CHILD, [ItemSets.SWORDS, ItemSets.SHIELDS]);
-            let canKillSkullAtDistance = ItemData.canUseAny(Age.CHILD, [Items.FAIRY_SLINGSHOT, Items.BOMBCHU]);
-            let canKillSkullWithJumpslash = Settings.GlitchesToAllow.watchtowerSkullJumpslash && ItemData.canUse(Age.CHILD, ItemSets.SWORDS);
-            return canUseISG || canKillSkullAtDistance || canKillSkullWithJumpslash;
-        },
 		Regions: {
             main: {
                 Exits: {
@@ -1153,9 +1150,11 @@ let MapLocations = {
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 212, y: 124 },
                         Time: function() {
-                            return MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull()
-                                ? Time.EITHER
-                                : Time.DAY_CHILD;
+                            let canUseISG = Settings.GlitchesToAllow.isg && Data.hasSwordWeapon(Age.CHILD) && Data.hasShield(Age.CHILD);
+                            if (canUseISG || Items.FAIRY_SLINGSHOT.playerHas || Items.BOMBCHU.playerHas || (Settings.GlitchesToAllow.watchtowerSkullJumpslash && Data.hasSwordWeapon(Age.CHILD))) {
+                                return Time.EITHER;
+                            }
+                            return Time.DAY_CHILD;
                         },
                         Age: Age.EITHER,
                         LongDescription: "The guy on the roof of the house gives you an item. To get this as a child, climb the giant watchtower, position yourself at the upper left corner, then sidehop left without holding any direction. As an adult, you can either hookshot to the roof from the fence by the windmill, or do a jump to the potion shop roof from the ledge leading to Death Mountain."
@@ -1257,7 +1256,8 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "At night, you can find this skulltula on the watchtower ladder. You can kill it with either the slingshot or a bombchu. If you don't have those, you can also climb up as far as you can, and press A to let go of the ladder, then spam the jumpslash button for your sword or stick for the kill.",
                         CustomRequirement: function(age) {
-                            return MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull();
+                            let canUseISG = Settings.GlitchesToAllow.isg && Data.hasSwordWeapon(age) && Data.hasShield(age);
+                            return canUseISG || Items.FAIRY_SLINGSHOT.playerHas || Items.BOMBCHU.playerHas || (Settings.GlitchesToAllow.watchtowerSkullJumpslash && Data.hasSwordWeapon(age));
                         }
                     },
                     "Skulltula on Impa's Roof": {
@@ -1446,7 +1446,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             let beanIsPlanted = Data.itemLocationObtained("Graveyard", "main", "*Plant Bean by Dampe's Grave");
-                            return ItemData.canUseLongshot(age) || beanIsPlanted || Data.canWeirdShot(age);
+                            return Items.HOOKSHOT.currentUpgrade === 2 || beanIsPlanted || Data.canWeirdShot(age);
                         }
                     },
                     freestandingItemInCrate: {
@@ -1830,7 +1830,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "If you take the left path out of Goron City, the wall to bomb or hammer will be to your right.",
                         CustomRequirement: function(age) {
-                            let canClipIn = Settings.GlitchesToAllow.dmtClipToChestByGoron && ItemData.canUse(age, ItemSets.SWORDS);
+                            let canClipIn = Settings.GlitchesToAllow.dmtClipToChestByGoron && Data.hasSwordWeapon(age);
                             return canClipIn || Data.canBlastOrSmash(age);
                         }
                     },
@@ -2530,7 +2530,8 @@ let MapLocations = {
 
                             // Megasidehop trick
                             return Settings.GlitchesToAllow.megasidehopToZorasDomain &&
-                                ItemData.canUseAll(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]);
+                                Data.hasShield(age) &&
+                                (Items.BOMB.playerHas || Items.BOMBCHU.playerHas);
                         }
                     },
                     "Lost Woods": {
@@ -2676,7 +2677,10 @@ let MapLocations = {
                             // Glitch past him
                             let canSkipAsChild = age === Age.CHILD && 
                                 Settings.GlitchesToAllow.chuZoraSkip && 
-                                ItemData.canUseAll(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD, Items.BOMBCHU]);
+                                Equipment.DEKU_SHIELD.playerHas &&
+                                Items.BOMBCHU.playerHas &&
+                                Data.hasSwordWeapon(age);
+
                             let canSkipAsAdult = age === Age.ADULT && Settings.GlitchesToAllow.clipZoraSkip;
 
                             return canSkipAsChild || canSkipAsAdult;
@@ -2989,7 +2993,7 @@ let MapLocations = {
                             if (!Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
                             
                             let defeatedMorpha = Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
-                            return defeatedMorpha && ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
+                            return defeatedMorpha && Data.hasDamagingItem(age);
                         }
                     },
                     "Heart Piece on Lab": {
@@ -3028,7 +3032,9 @@ let MapLocations = {
                         MapInfo: { x: 104, y: 89 },
                         Age: Age.CHILD,
                         LongDescription: "At night, you can find this skulltula on the side of the Lakeside Lab that's nearest the bridge. You can actually jumpslash to the token from the bridge if you don't have the boomerang.",
-                        RequiredItems: [Items.BOOMERANG, ItemSets.SWORDS]
+                        CustomRequirement: function(age) {
+                            return Items.BOOMERANG.playerHas || Data.hasSwordWeapon(age);
+                        }
                     },
                     "Skulltula on Island": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3045,8 +3051,7 @@ let MapLocations = {
                         LongDescription: "At night, longshot all the way up the tree on the middle island. You'll find the skulltula on top.",
                         RequiredItems: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
-                            return ItemData.canUseLongshot(age) || 
-                                (ItemData.canUse(age, ItemSets.SHIELDS) && Settings.GlitchesToAllow.skullInTreeWithHookshot);
+                            return Items.HOOKSHOT.currentUpgrade === 2 || (Data.hasShield(age) && Settings.GlitchesToAllow.skullInTreeWithHookshot);
                         }
                     },
                     "*Plant Bean by Lab": {
@@ -3129,13 +3134,14 @@ let MapLocations = {
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) {
                                 let canCrossWithHookshot = Settings.GlitchesToAllow.gvCrossBridgeWithHookshot && 
-                                    ItemData.canUseAll(age, [ItemSets.SHIELDS, Items.HOOKSHOT]);
+                                    Data.hasShield(age) && 
+                                    Items.HOOKSHOT.playerHas;
 
                                 return canCrossWithHookshot ||
                                     Data.itemLocationObtained("Thieves' Hideout", "main", "Item From Gerudo") || 
                                     Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.OPEN ||
                                     Data.canRideEpona(age) || 
-                                    ItemData.canUseLongshot(age) ||
+                                    Items.HOOKSHOT.currentUpgrade === 2 ||
                                     Data.canBombSuperslideWithHovers(age) ||
                                     Data.canHammerHoverBootsSuperslide(age);
                             }
@@ -3147,7 +3153,7 @@ let MapLocations = {
                     chasmCrateLedge: {
                         CustomRequirement: function(age) {
                             return age === Age.CHILD || 
-                                ItemData.canUseLongshot(age) ||
+                                Items.HOOKSHOT.currentUpgrade === 2 ||
                                 Data.canBombSuperslideWithHovers(age) ||
                                 Data.canHammerHoverBootsSuperslide(age);
                         }
@@ -3177,13 +3183,14 @@ let MapLocations = {
                             if (age === Age.CHILD) { return true; }
 
                             let canCrossWithHookshot = Settings.GlitchesToAllow.gvCrossBridgeWithHookshot && 
-                                ItemData.canUseAll(age, [ItemSets.SHIELDS, Items.HOOKSHOT]);
+                                Data.hasShield(age) && 
+                                Items.HOOKSHOT.playerHas;
 
                             return canCrossWithHookshot ||
                                 Data.itemLocationObtained("Thieves' Hideout", "main", "Item From Gerudo") || 
                                 Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.OPEN ||
                                 Data.canRideEpona(age) || 
-                                ItemData.canUseLongshot(age) ||
+                                Items.HOOKSHOT.currentUpgrade === 2 ||
                                 Data.canBombSuperslideWithHovers(age) ||
                                 Data.canHammerHoverBootsSuperslide(age);
                         }
@@ -3195,7 +3202,7 @@ let MapLocations = {
                     },
                     chasmCrateLedge: {
                         CustomRequirement: function(age) {
-                            return ItemData.canUseLongshot(age) || Data.canMegaFlip(age);
+                            return Items.HOOKSHOT.currentUpgrade === 2 || Data.canMegaFlip(age);
                         }
                     },
                     chasm: {},
@@ -3771,7 +3778,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 213, y: 129, floor: "J1" },
                         Age: Age.EITHER,
-                        RequiredItems: [ItemSets.SWORDS],
+                        NeedsSwordWeapon: true,
                         RequiredToAppear: function() { 
                             return Settings.RandomizerSettings.openGerudosFortress !== OpenGerudosFortressSettings.OPEN;
                         },
@@ -3814,7 +3821,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 207, y: 132, floor: "J2" },
                         Age: Age.EITHER,
-                        RequiredItems: [ItemSets.SWORDS],
+                        NeedsSwordWeapon: true,
                         RequiredToAppear: function() { 
                             return Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.VANILLA;
                         },
@@ -3846,7 +3853,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 207, y: 188, floor: "J3" },
                         Age: Age.EITHER,
-                        RequiredItems: [ItemSets.SWORDS],
+                        NeedsSwordWeapon: true,
                         RequiredToAppear: function() { 
                             return Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.VANILLA;
                         },
@@ -3893,7 +3900,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 303, y: 38, floor: "J4" },
                         Age: Age.EITHER,
-                        RequiredItems: [ItemSets.SWORDS],
+                        NeedsSwordWeapon: true,
                         RequiredToAppear: function() { 
                             return Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.VANILLA;
                         },
@@ -4055,7 +4062,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "Deal with the guard that's moving. The crate is to the right when you enter the main room - the one close to the corner.<br/><br/>Child can get this without dealing with the stationary guard if you stay close to the wall.<br/><br/>Adult can get this one without dealing with the stationary guard if you bonk into it while staying more to the right.",
                         CustomRequirement: function(age) {
-                            return Data.canStunOrPassGuardsAtDistance(age) || ItemData.canUse(age, ItemSets.SWORDS);
+                            return Data.canStunOrPassGuardsAtDistance(age) || Data.hasSwordWeapon(age);
                         }
                     },
                     "Upper Room Far Corner Crate": {
@@ -4068,10 +4075,10 @@ let MapLocations = {
                                 return true;
                             }
 
-                            let canSlashGuards = ItemData.canUse(age, ItemSets.SWORDS);
+                            let canSlashGuards = Data.hasSwordWeapon(age);
                             return age === Age.CHILD
                                 ? canSlashGuards
-                                : canSlashGuards && ItemData.canUse(age, ItemSets.SHIELDS); // Need to crouch stab the stationary guard
+                                : canSlashGuards && Data.hasShield(age); // Need to crouch stab the stationary guard
                         }
                     },
                     "2 Pots on Upper Room Table": {
@@ -4087,7 +4094,7 @@ let MapLocations = {
                                 return true;
                             }
 
-                            let canSlashStationaryGuard = ItemData.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
+                            let canSlashStationaryGuard = Data.hasSwordWeapon(age) && Data.hasShield(age);
                             return age === Age.CHILD
                                 ? canSlashStationaryGuard && Items.DEKU_STICK.playerHas // Kokiri Sword isn't long enough!
                                 : canSlashStationaryGuard;
@@ -4174,7 +4181,8 @@ let MapLocations = {
                         MapInfo: { x: 239, y: 292 },
                         Age: Age.EITHER,
                         LongDescription: "After you cross the sand pit, the shop is along the path to your left. There is a sign by one of the flags that points to it. If you don't have hover boots, you can rolljump, then jumpslash to the corner of the carpet.<br/><br/>If this and medigoron aren't shuffled, this shop will ALWAYS sell bombchus.",
-                        RequiredItems: [ItemSets.SWORDS, {item: Equipment.WALLET, upgradeString: "1"}]
+                        NeedsSwordWeapon: true,
+                        RequiredItems: [{item: Equipment.WALLET, upgradeString: "1"}]
                     },
                     "Skulltula at Outpost": {
                         ItemGroup: ItemGroups.SKULLTULA,

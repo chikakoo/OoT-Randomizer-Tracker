@@ -1626,7 +1626,7 @@ GrottoGroups = {
 			"Sun's Song": {
 				description: "Go through the rooms to get the item at the end.",
 				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
+					return Data.hasDamagingItem(age);
 				}
 			}
 		}
@@ -1643,7 +1643,7 @@ GrottoGroups = {
 			"Chest in Wolfos Grotto": {
 				description: "Kill the wolfos to spawn the chest.",
 				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
+					return Data.hasDamagingItem(age);
 				}
 			}
 		}
@@ -1654,7 +1654,7 @@ GrottoGroups = {
 			"Chest in 2 Redead Grotto": {
 				description: "Kill the redeads to spawn the chest.",
 				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.SWORDS);
+					return Data.hasSwordWeapon(age);
 				}
 			}
 		}
@@ -1819,16 +1819,14 @@ GrottoGroups = {
 				icon: "Heart Piece",
 				description: "To defeat Gohma, you must first stun her when her eye is red. You can use the slingshot or deku nuts to do this - nuts don't stun her for nearly as long, though. Once she's down, attack her. The quickest kill is with three deku stick jumpslashes (or one then two crouch stabs).",
 				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.SWORDS) && 
-						ItemData.canUseAny(age, [Items.DEKU_NUT, Items.FAIRY_SLINGSHOT]);
+					return Data.hasSwordWeapon(age) && (Items.DEKU_NUT.playerHas || (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas));
 				}
 			},
 			"Blue Warp": {
 				icon: "Gohma",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.SWORDS) && 
-						ItemData.canUseAny(age, [Items.DEKU_NUT, Items.FAIRY_SLINGSHOT]);
+					return Data.hasSwordWeapon(age) && (Items.DEKU_NUT.playerHas || (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas));
 				}
 			}
 		}
@@ -1893,7 +1891,7 @@ GrottoGroups = {
 				icon: "Heart Piece",
 				description: "To defeat Barinade, you need the boomerang and also either a sword or at least 3 Deku Sticks. First, dislodge it from the ceiling using the boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
 				canGet: function(age) {
-					return ItemData.canUse(age, [ItemSets.SWORDS, Items.BOOMERANG]);
+					return Data.hasSwordWeapon(age) && ItemData.canUse(age, Items.BOOMERANG);
 				},
 				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			},
@@ -1901,7 +1899,7 @@ GrottoGroups = {
 				icon: "Barinade",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
-					return ItemData.canUse(age, [ItemSets.SWORDS, Items.BOOMERANG]);
+					return Data.hasSwordWeapon(age) && ItemData.canUse(age, Items.BOOMERANG);
 				},
 				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			}
@@ -1914,8 +1912,9 @@ GrottoGroups = {
 				icon: "Heart Piece",
 				description: "For phase 1 of Phantom Ganon, you must shoot the real version of him that comes out of the paintings. You can use your bow or hookshot for that. The real one is lighter and is the only one that makes sound. Phase 2 is the familiar tenis match. Stun him with his own attacks and damage him when he's stunned. You can also just spam him with the boomerang!",
 				canGet: function(age) {
-					let canStunBoss = ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT, Items.FAIRY_BOW]);
-					let canDamageBoss = ItemData.canUseAny(age, [ItemSets.SWORDS, Items.BOOMERANG]);
+					let canStunBoss = (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas) ||
+						(age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas));
+					let canDamageBoss = Data.hasSwordWeapon(age) || ItemData.canUse(age, Items.BOOMERANG);
 					return canStunBoss && canDamageBoss;
 				}
 			},
@@ -1923,8 +1922,9 @@ GrottoGroups = {
 				icon: "Phantom Ganon",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
-					let canStunBoss = ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT, Items.FAIRY_BOW]);
-					let canDamageBoss = ItemData.canUseAny(age, [ItemSets.SWORDS, Items.BOOMERANG]);
+					let canStunBoss = (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas) ||
+						(age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas));
+					let canDamageBoss = Data.hasSwordWeapon(age) || ItemData.canUse(age, Items.BOOMERANG);
 					return canStunBoss && canDamageBoss;
 				}
 			}
@@ -1987,16 +1987,18 @@ GrottoGroups = {
 				icon: "Heart Piece",
 				description: "When fighting Bongo Bongo, it helps to NOT have the Hover Boots equipped. When the fight starts, if you hold down, he won't circle you right away. Hit his hands with your bow or hookshot, or slingshot to stun them. Now hit him before he hits you and damage him as much as you can. If you have magic, quickspins can actually stunlock him for a 1-cycle if you do them perfectly.",
 				canGet: function(age) {
-					let canStunHands = ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT, Items.FAIRY_BOW]);
-					return ItemData.canUse(age, ItemSets.SWORDS) && canStunHands;
+					let canStunHands = (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas) ||
+						(age === Age.ADULT && (Items.FAIRY_BOW.playerHas || Items.HOOKSHOT.playerHas));
+					return Data.hasSwordWeapon(age) && canStunHands;
 				}
 			},
 			"Blue Warp": {
 				icon: "Bongo Bongo",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
-					let canStunHands = ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT, Items.FAIRY_BOW]);
-					return ItemData.canUse(age, ItemSets.SWORDS) && canStunHands;
+					let canStunHands = (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas) ||
+						(age === Age.ADULT && (Items.FAIRY_BOW.playerHas || Items.HOOKSHOT.playerHas));
+					return Data.hasSwordWeapon(age) && canStunHands;
 				}
 			}
 		}
@@ -2008,7 +2010,7 @@ GrottoGroups = {
 				icon: "Heart Piece",
 				description: "To defeat Twinrova, reflect one of the sister's shots at the other one. Do this four times to get to the second phase. Now, you must charge your shield with 3 of the same kind of attack. When you do, your shield will shoot it at Twinrova, stunning her. Go hit her! As usual, a jumpslash (Z + A) then crouch stabs (R + spam B) do the most damage.",
 				canGet: function(age) {
-					return ItemData.canUse(age, Equipment.MIRROR_SHIELD);
+					return age === Age.ADULT && Equipment.MIRROR_SHIELD.playerHas;
 				},
 				isAdultOnly: function() { return true; }
 			},
@@ -2016,7 +2018,7 @@ GrottoGroups = {
 				icon: "Twinrova",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
-					return ItemData.canUse(age, Equipment.MIRROR_SHIELD);
+					return age === Age.ADULT && Equipment.MIRROR_SHIELD.playerHas;
 				},
 				isAdultOnly: function() { return true; }
 			}

@@ -394,13 +394,13 @@ let MQDungeons = {
                             if (age === Age.ADULT) { return true; }
                 
                             let canRecoil = Settings.GlitchesToAllow.dodongoSwitchEarly && 
-                                ItemData.canUseAny(age, [ItemSets.EXPLOSIVES, Equipment.STRENGTH, Items.MEGATON_HAMMER]) &&
-                                ItemData.canUse(age, ItemSets.SWORDS);
+                                (Data.hasExplosivesOrStrength() || ItemData.canUse(age, Items.MEGATON_HAMMER)) && 
+                                Data.hasSwordWeapon(age);
                             return Data.canGroundJumpWithBomb(age) || canRecoil;
                         }
                     },
                     inDodongoHead: {
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        NeedsExplosives: true
                     }
                 },
 
@@ -997,8 +997,10 @@ let MQDungeons = {
                 Exits: {
                     afterFirstRoom: {
                         CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Items.FAIRY_SLINGSHOT) ||
-                                Data.itemLocationObtained("Jabu Jabu's Belly", "main", "Opened First Door");
+                            if (age === Age.CHILD) {
+                                return Items.FAIRY_SLINGSHOT.playerHas;
+                            }
+                            return Data.itemLocationObtained("Jabu Jabu's Belly", "main", "Opened First Door");
                         }
                     },
                     Exit: {
@@ -1231,7 +1233,7 @@ let MQDungeons = {
             afterTentaclesDefeated: {
                 Exits: {
                     afterBigOcto: {
-                        RequiredItems: [ItemSets.SWORDS],
+                        NeedsSwordWeapon: true,
                         NeedToBlastOrSmash: true
                     }
                 },
@@ -1345,7 +1347,9 @@ let MQDungeons = {
                     afterFirstHallway: {
                         LockedDoor: "Locked Door to Lobby",
                         Map: "Forest Temple",
-                        RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
+                        CustomRequirement: function(age) {
+                            return Data.hasDamagingItem(age) || Items.DEKU_NUT.playerHas;
+                        }
                     },
                     Exit: {
                         OwExit: OwExits["Forest Temple"]["Exit"]
@@ -1359,7 +1363,9 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "Climb the vines (it's easier to climb from the left side of the tree) and navigate across the trees to hit the switch to spawn the chest.",
-                        RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
+                        CustomRequirement: function(age) {
+                            return Data.hasDamagingItem(age) || Items.DEKU_NUT.playerHas;
+                        }
                     },
                     "Skulltula in First Hallway": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -1381,7 +1387,9 @@ let MQDungeons = {
                         KeyRequirement: function(age) {
                             return { min: 1, max: 1 };
                         },
-                        RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
+                        CustomRequirement: function(age) {
+                            return Data.hasDamagingItem(age) || Items.DEKU_NUT.playerHas;
+                        }
                     },
 
                     "Locked Door by Twisted Corridor": {
@@ -1463,7 +1471,7 @@ let MQDungeons = {
                             if (!hasStrength && !Settings.GlitchesToAllow.forestBlockSkip) { return false; } 
                             
                             // Need to either push or skip the blocks
-                            let canBlockSkip = (age) && Items.BOMB.playerHas && Equipment.HOVER_BOOTS.playerHas;
+                            let canBlockSkip = Data.hasShield(age) && Items.BOMB.playerHas && Equipment.HOVER_BOOTS.playerHas;
                             return hasStrength || canBlockSkip;
                         }
                     },
@@ -1493,7 +1501,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         RequiredAdultItems: [Items.BOMB, Equipment.HOVER_BOOTS],
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.forestGreenPoeEarly && (age);
+                            return Settings.GlitchesToAllow.forestGreenPoeEarly && Data.hasShield(age);
                         }
                     },
 
@@ -1552,7 +1560,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 6,
                         LongDescription: "Proceed straight ahead in the main room. After the hallway, kill the two wolfos to spawn the chest.<br/><br/>If you don't have the song of time, it's possible to get here from the above room. This is the room after the red poe room - drop down before killing the first Stalfos.",
-                        RequiredItems: [ItemSets.SWORDS]
+                        NeedsSwordWeapon: true
                     },
                     //TODO: Empty Pots - remove this item, as the one below will replace it
                     "Pot North of Main Room": {
@@ -2015,7 +2023,7 @@ let MQDungeons = {
                         MapInfo: { x: 61, y: 123, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 2,
-                        RequiredItems: [ItemSets.DAMAGING_ITEMS],
+                        NeedsDamagingItem: true,
                         LongDescription: "Enter the left door by the entrance. Kill the Like-Like to spawn the chest."
                     },
 
@@ -2174,7 +2182,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "Enter the locked door to the right when you first enter the temple. Defeat the stalfos and proceed. The pots are in the next room - the four you want are the two in the very back, and the two by the door. The rest contain fairies.",
-                        RequiredItems: [ItemSets.DAMAGING_ITEMS]
+                        NeedsDamagingItem: true
                     },
                     "8 Pots by Iron Knuckle": {
                         RequiredToAppear: function() {
@@ -2189,7 +2197,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "Enter the locked door to the right when you first enter the temple. Defeat the stalfos and proceed. The pots scattered around the next room.",
-                        RequiredItems: [ItemSets.DAMAGING_ITEMS]
+                        NeedsDamagingItem: true
                     },
                     "Chest After First Flare Dancer": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4678,11 +4686,10 @@ let MQDungeons = {
                 Exits: {
                     backOfChildBridgeRoom: {
                         Age: Age.EITHER,
-                        RequiredItems: [ItemSets.SWORDS],
+                        NeedsSwordWeapon: true,
                         CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Items.HOOKSHOT) || // Hookshot the torches
-                                Data.canMegaFlip(age) || 
-                                (Items.BOMBCHU.playerHas && Data.canShootEyeSwitch(age));
+                            if (age === Age.ADULT) { return true; } // Hookshot the torches
+                            return Data.canMegaFlip(age) || (Items.BOMBCHU.playerHas && Items.FAIRY_SLINGSHOT.playerHas);
                         }
                     },
                     afterSecondCrawlSpace: {
@@ -4719,7 +4726,7 @@ let MQDungeons = {
                         Order: 10,
                         AltOrder: 46,
                         LongDescription: "In the child area, go through the left door to get to this chest. You can also do the loop from the right side.",
-                        RequiredItems: [ItemSets.SWORDS]
+                        NeedsSwordWeapon: true
                     },
                     "Chest in Child Main Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5113,7 +5120,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.spiritSuperslideToMirrorShield &&
-                                (age) &&
+                                Data.hasShield(age) &&
                                 Items.BOMB.playerHas &&
                                 Equipment.HOVER_BOOTS.playerHas;
                         }
@@ -5489,7 +5496,7 @@ let MQDungeons = {
                 Exits: {
                     blueFireRoom: {
                         CustomRequirement: function(age) {
-                            let canBreakStalagmites = ItemData.canUseAny(age, [ItemSets.SWORDS, ItemSets.EXPLOSIVES]);
+                            let canBreakStalagmites = Data.hasSwordWeapon(age) || Data.hasExplosives();
                             return Data.canKillFreezard(age) && canBreakStalagmites;
                         }
                     },
@@ -5730,7 +5737,7 @@ let MQDungeons = {
                 Exits: {
                     centerRoom: {
                         CustomRequirement: function(age) {
-                            let canGetToFromSideRoom = ItemData.canUseAll(age, [ItemSets.EXPLOSIVES, ItemSets.SWORDS]); // Jumpslash in
+                            let canGetToFromSideRoom = Data.hasExplosives() && Data.hasSwordWeapon(age); // Jumpslash in
                             return canGetToFromSideRoom || Data.canPlaySong(Songs.ZELDAS_LULLABY);
                         }
                     },
@@ -5866,9 +5873,9 @@ let MQDungeons = {
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) { return true; }
 
-                            return Settings.RandomizerSettings.deadHandNeedsSword
-                                ? Equipment.KOKIRI_SWORD.playerHas
-                                : ItemData.canUse(age, ItemSets.SWORDS);
+                            let swordRequired = Settings.RandomizerSettings.deadHandNeedsSword;
+                            if (swordRequired) { return Equipment.KOKIRI_SWORD.playerHas; }
+                            return Data.hasSwordWeapon(age);
                         }
                     },
                     "Freestanding Item in Dead Hand Room": {
@@ -5943,7 +5950,7 @@ let MQDungeons = {
         _canVineClip: function(age) {
             return age === Age.CHILD && 
                 Settings.GlitchesToAllow.gtgChildVineClips && 
-                (age) &&
+                Data.hasShield(age) &&
                 Items.BOMBCHU.playerHas;
         },
         Regions: {
@@ -6573,7 +6580,7 @@ let MQDungeons = {
                         CustomRequirement: function(age) {
                             let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
                                 Items.BOMB.playerHas && 
-                                (age);
+                                Data.hasShield(age);
                             let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
                             return canSuperslideIn || canEssClipIn || Equipment.STRENGTH.currentUpgrade === 3;
                         }
@@ -6636,7 +6643,7 @@ let MQDungeons = {
                             let max = 3;
                             let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
                                 Items.BOMB.playerHas && 
-                                (age);
+                                Data.hasShield(age);
                             let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
                             let canGlitchIn = canSuperslideIn || canEssClipIn;
                             let canEnterLightTrial = canGlitchIn || Equipment.STRENGTH.currentUpgrade === 3;

@@ -14,7 +14,9 @@ let OwExits = {
                 let bossEntranceGroup = OwExits["Deku Tree"].Boss.EntranceGroup;
                 let beatDekuTree = bossEntranceGroup && Object.keys(bossEntranceGroup.completed).includes("Blue Warp");
                 let canPokeySkip = Settings.GlitchesToAllow.pokeySkip && 
-                    ItemData.canUseAll(age, [ItemSets.SWORDS, Items.DEKU_SHIELD]);
+                    Data.hasSwordWeapon(age) &&
+                    Equipment.DEKU_SHIELD.playerHas;
+
                 return beatDekuTree || canPokeySkip;
             }
         },
@@ -154,7 +156,7 @@ let OwExits = {
             Age: Age.EITHER,
             CustomRequirement: function(age) {
                 let canGetToRiver = Equipment.SCALE.playerHas || 
-                    (age === Age.CHILD && Settings.GlitchesToAllow.zorasRiverScalelessChild && ItemData.canUse(age, ItemSets.SWORDS)) ||
+                    (age === Age.CHILD && Settings.GlitchesToAllow.zorasRiverScalelessChild && Data.hasSwordWeapon(age)) ||
                     (age === Age.ADULT && Settings.GlitchesToAllow.zorasRiverScalelessAdult);
                 return canGetToRiver;
             },
@@ -175,7 +177,7 @@ let OwExits = {
                     return canMegaFlip;
                 }
 
-                if (Settings.GlitchesToAllow.lwAdultBridgeFromTop && ItemData.canUse(age, ItemSets.SHIELDS)) {
+                if (Settings.GlitchesToAllow.lwAdultBridgeFromTop && Data.hasShield(age)) {
                     return true;
                 }
 
@@ -185,7 +187,7 @@ let OwExits = {
 
                 return canMegaFlip ||
                     Equipment.HOVER_BOOTS.playerHas || 
-                    ItemData.canUseLongshot(age) ||
+                    Items.HOOKSHOT.currentUpgrade === 2 ||
                     Data.itemLocationObtained("Lost Woods", "firstHalf", "*Plant Bean by Bridge");
             },
             OwShuffleMap: "Lost Woods Bridge",
@@ -875,16 +877,15 @@ let OwExits = {
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             Time: function() {
+                let childEarly = Settings.GlitchesToAllow.botwAsChildWithCucco && Data.hasSwordWeapon(Age.CHILD) && Data.hasShield(Age.CHILD);
+                let adultEarly = Settings.GlitchesToAllow.botwAsAdultWithCucco && Items.HOOKSHOT.currentUpgrade === 2 && Equipment.HOVER_BOOTS.playerHas;
+
                 // Water already drained means there's no time requirement
                 if (Data.itemLocationObtained("Windmill-Kak Potion", "windmill", "Drain Well Water")) {
                     return Time.EITHER;
                 }
 
                 // If either need to use the glitch, then it should always be strict day requirement
-                let childEarly = Settings.GlitchesToAllow.botwAsChildWithCucco && 
-                    ItemData.canUseAll(Age.CHILD, [ItemSets.SWORDS, ItemSets.SHIELDS]);
-                let adultEarly = Settings.GlitchesToAllow.botwAsAdultWithCucco && 
-                    ItemData.canUseLongshot(Age.ADULT) && ItemData.canUse(age, Equipment.HOVER_BOOTS);
                 if (childEarly || adultEarly) {
                     return Time.DAY;
                 }
@@ -898,9 +899,10 @@ let OwExits = {
             IsDungeonEntrance: true,
             CustomRequirement: function(age) {
                 // Trick using cucco
-                if (Settings.GlitchesToAllow.botwAsAdultWithCucco &&
-                    ItemData.canUseLongshot(age) &&
-                    ItemData.canUse(age, Equipment.HOVER_BOOTS)) {
+                if (age === Age.ADULT && 
+                    Settings.GlitchesToAllow.botwAsAdultWithCucco &&
+                    Items.HOOKSHOT.currentUpgrade === 2 &&
+                    Equipment.HOVER_BOOTS.playerHas) {
                     return true;
                 }
 
@@ -912,7 +914,8 @@ let OwExits = {
                 // Cucco dive
                 let canGetThereEarly = age === Age.CHILD && 
                     Settings.GlitchesToAllow.botwAsChildWithCucco && 
-                    ItemData.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
+                    Data.hasSwordWeapon(age) && 
+                    Data.hasShield(age);
                 if (canGetThereEarly) { return true; }
                 
                 // Get in normally - non-interior shuffle
@@ -929,9 +932,11 @@ let OwExits = {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             Time: function() {
-                return MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull()
-                    ? Time.EITHER
-                    : Time.DAY_CHILD;
+                let canUseISG = Settings.GlitchesToAllow.isg && Data.hasSwordWeapon(Age.CHILD) && Data.hasShield(Age.CHILD);
+                if (canUseISG || Items.FAIRY_SLINGSHOT.playerHas || Items.BOMBCHU.playerHas || (Settings.GlitchesToAllow.watchtowerSkullJumpslash && Data.hasSwordWeapon(Age.CHILD))) {
+                    return Time.EITHER;
+                }
+                return Time.DAY_CHILD;
             },
             IsGrotto: true,
             DefaultEntranceGroupName: "Generic Grotto",
@@ -955,11 +960,7 @@ let OwExits = {
             IsInterior: true,
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Adult Archery",
-            Time: function() { 
-                return Settings.GlitchesToAllow.kakShopClips && ItemData.canUse(Age.ADULT, ItemSets.SHIELDS) 
-                    ? Time.EITHER 
-                    : Time.DAY;
-            },
+            Time: function() { return (Settings.GlitchesToAllow.kakShopClips && Data.hasShield(Age.ADULT)) ? Time.EITHER : Time.DAY; },
             MapInfo: { x: 190, y: 190 },
             Age: Age.ADULT,
             LongDescription: "This is the building that was being constructed as a child. It's near the well."
@@ -1046,7 +1047,7 @@ let OwExits = {
             LongDescription: "This is the building to the left if you are facing the Death Mountain entrance.",
             CustomRequirement: function(age) {
                 if (age === Age.ADULT) { return true; }
-                return Settings.GlitchesToAllow.kakShopClips && ItemData.canUse(age, ItemSets.SWORDS);
+                return Settings.GlitchesToAllow.kakShopClips && Data.hasSwordWeapon(age);
             }
         },
         "Potion Shop Front": {
@@ -1071,9 +1072,12 @@ let OwExits = {
             OneWayInteriorSpawnEntrance: true,
             Time: function() {
                 if (!Settings.GlitchesToAllow.kakShopClips) { return Time.DAY; }
-                return MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull()
-                    ? Time.EITHER
-                    : Time.DAY_CHILD;
+
+                let canUseISG = Settings.GlitchesToAllow.isg && Data.hasSwordWeapon(Age.CHILD) && Data.hasShield(Age.CHILD);
+                if (canUseISG || Items.FAIRY_SLINGSHOT.playerHas || Items.BOMBCHU.playerHas || (Settings.GlitchesToAllow.watchtowerSkullJumpslash && Data.hasSwordWeapon(Age.CHILD))) {
+                    return Time.EITHER;
+                }
+                return Time.DAY_CHILD;
             },
             MapInfo: { x: 192, y: 96 },
             UseAdultAge: function() { return !Settings.GlitchesToAllow.kakShopClips; },
@@ -1081,7 +1085,7 @@ let OwExits = {
             LongDescription: "This entrance to this is where the open grotto is behind the fence. You can use your hookshot to get back here via the roofs. You can also jump onto the potion shop roof from the Death Mountain entrance with a good angle.",
             CustomRequirement: function(age) {
                 if (age === Age.ADULT) { return true; }
-                return Settings.GlitchesToAllow.kakShopClips && ItemData.canUse(age, ItemSets.SWORDS);
+                return Settings.GlitchesToAllow.kakShopClips && Data.hasSwordWeapon(age);
             }
         },
         "Potion Shop to Interior": {
@@ -1593,11 +1597,10 @@ let OwExits = {
             IsDungeonEntrance: true,
             CustomRequirement: function(age) {
                 if (age === Age.ADULT) {
-                    return Settings.GlitchesToAllow.enterJabuAsAdult && 
-                        ItemData.canUseAll(age, [ItemSets.SHIELDS, Items.BOMBCHU]);
+                    return Settings.GlitchesToAllow.enterJabuAsAdult && Data.hasShield(age) && Items.BOMBCHU.playerHas;
                 }
 
-                if (Settings.GlitchesToAllow.jabuFishless && ItemData.canUse(age, ItemSets.SWORDS)) {
+                if (Settings.GlitchesToAllow.jabuFishless && Data.hasSwordWeapon(age)) {
                     return true;
                 }
 
@@ -1653,12 +1656,12 @@ let OwExits = {
                 if (!Data.canShieldTurn(age)) { return false; }
 
                 if (age === Age.CHILD) {
-                    return Settings.GlitchesToAllow.childLakesideLabClip && ItemData.canUse(age, ItemSets.SWORDS);
+                    return Settings.GlitchesToAllow.childLakesideLabClip && Data.hasSwordWeapon(age);
                 }
 
                 let defeatedMorpha = Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
                 return (Settings.GlitchesToAllow.adultLakesideLabClip && defeatedMorpha) ||
-                    (Settings.GlitchesToAllow.adultDomainMegaflipClip && ItemData.canUse(age, ItemSets.EXPLOSIVES));
+                    (Settings.GlitchesToAllow.adultDomainMegaflipClip && Data.hasExplosives());
             }
         },
         "Owl": {
@@ -1691,21 +1694,21 @@ let OwExits = {
             LongDescription: "This is the entrance to the Water Temple.",
             IsDungeonEntrance: true,
             CustomRequirement: function(age) {
-                let canDoClip = (age === Age.CHILD && Settings.GlitchesToAllow.childLakesideLabClip && ItemData.canUse(age, ItemSets.SWORDS)) ||
+                let canDoClip = (age === Age.CHILD && Settings.GlitchesToAllow.childLakesideLabClip && Data.hasSwordWeapon(age)) ||
                     (age === Age.ADULT && Settings.GlitchesToAllow.adultLakesideLabClip);
                 if (canDoClip && Data.canShieldTurn(age)) {
                     return true;
                 }
 
-                let canEnterNormally = ItemData.canUseAll(age, [Equipment.IRON_BOOTS, Items.HOOKSHOT]);
-                let canDiveDown = ItemData.canUseLongshot(age) && ItemData.canUseGoldenScale(age);
+                let canEnterNormally = Equipment.IRON_BOOTS.playerHas && Items.HOOKSHOT.playerHas;
+                let canDiveDown = Items.HOOKSHOT.currentUpgrade === 2 && Equipment.SCALE.currentUpgrade === 2;
                 if (age === Age.ADULT && (canEnterNormally || canDiveDown)) {
                     return true;
                 };
                 if (!Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
                 
                 let defeatedMorpha = Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
-                let canHitSwitch = ItemData.canUse(age, ItemSets.DAMAGING_ITEMS) && ItemData.canUseGoldenScale(age);
+                let canHitSwitch = Data.hasDamagingItem(age) && Equipment.SCALE.currentUpgrade === 2;
                 return defeatedMorpha && canHitSwitch;
             }
         },

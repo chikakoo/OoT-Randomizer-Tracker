@@ -118,7 +118,6 @@ let OcarinaButtons = {
  * A list of all the player's equipment (swords, tunics, boots, wallet, scale)
  */
 let Equipment = {
-	MASTER_SWORD: { name: "Master Sword", playerHas: true, hide: true },
 	KOKIRI_SWORD: { name: "Kokiri Sword" },
 	MAGIC: { name: "Magic" },
 	DEKU_SHIELD: { name: "Deku Shield" },
@@ -150,36 +149,6 @@ let Equipment = {
 	STONE_OF_AGONY: { name: "Stone of Agony" },
 	TRIFORCE_SHARDS: { name: "Triforce Shards", playerHas: true, count: 0 },
 	SKULLTULA_TOKENS: { name: "Skulltula Tokens", playerHas: true, count: 0 },
-};
-
-/**
- * A list of item sets that can be used to concisely check whether a player can do something
- */
-let ItemSets = {
-	EXPLOSIVES: {
-		isItemSet: true,
-		items: [Items.BOMB, Items.BOMBCHU]
-	},
-	FIRE_ITEMS: {
-		isItemSet: true,
-		items: [Items.DINS_FIRE, Items.FIRE_ARROW]
-	},
-	// Any item you can swing and jumpslash with - includes stick and hammer
-	SWORDS: {
-		isItemSet: true,
-		items: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK, Items.MEGATON_HAMMER]
-	},
-	SHIELDS: {
-		isItemSet: true,
-		items: [Equipment.DEKU_SHIELD, Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD]
-	},
-	DAMAGING_ITEMS: {
-		isItemSet: true,
-		items: [		
-			Equipment.MASTER_SWORD, Equipment.KOKIRI_SWORD, 
-			Items.DEKU_STICK, Items.BOOMERANG, Items.FAIRY_SLINGSHOT, Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU
-		]
-	}
 };
 
 /**
@@ -1191,14 +1160,6 @@ let ItemData = {
 	 * @param lowestUpgrade - The lowest upgrade to include (ex 2 would be silver/gold gaunts, but not goron bracelet)
 	 */
 	canUse: function(age, item, lowestUpgrade) {
-		// If we're given an item set, we need to check whether we can use any single one of the items in it
-		if (item.isItemSet) {
-			return this.canUseAny(age, item.items);
-		}
-
-		// You can't use an item you don't have!
-		if (!this.playerHasItem(item, lowestUpgrade)) { return false; }
-
 		switch(item) {
 			// Child Only
 			case Items.FAIRY_SLINGSHOT:
@@ -1210,38 +1171,36 @@ let ItemData = {
 			case ChildTradeItems.BUNNY_HOOD:
 			case ChildTradeItems.MASK_OF_TRUTH:
 			case Equipment.KOKIRI_SWORD:
-			case Equipment.DEKU_SHIELD:
-				return age === Age.CHILD;
+				return age === Age.CHILD && this.playerHasItem(item, lowestUpgrade);
 
 			// Adult Only
 			case Items.FAIRY_BOW:
+			case Items.MEGATON_HAMMER:
 			case Items.HOOKSHOT:
-			case Equipment.MASTER_SWORD:
-			case Equipment.HYLIAN_SHIELD:
-			case Equipment.MIRROR_SHIELD:
-			case Equipment.IRON_BOOTS:
-			case Equipment.HOVER_BOOTS:
-				return age === Age.ADULT;
+				return age === Age.ADULT && this.playerHasItem(item, lowestUpgrade);
 			case Items.FIRE_ARROW:
 			case Items.ICE_ARROW:
 			case Items.LIGHT_ARROW:
 				return age === Age.ADULT && 
 					Items.FAIRY_BOW.playerHas && 
-					Equipment.MAGIC.playerHas;
+					Equipment.MAGIC.playerHas && 
+					this.playerHasItem(item);
 
 			// Shared items that need logic
 			case Items.DINS_FIRE:
 			case Items.FARORES_WIND:
 			case Items.NAYRUS_LOVE:
 			case Items.LENS_OF_TRUTH:
-				return Equipment.MAGIC.playerHas;
+				return Equipment.MAGIC.playerHas && this.playerHasItem(item);
 			case Equipment.STRENGTH:
-				return lowestUpgrade > 0 ? age === Age.ADULT : true;
+				return lowestUpgrade > 0
+					? age === Age.ADULT && this.playerHasItem(item, lowestUpgrade)
+					: this.playerHasItem(item)
 
 			// Equip swappable
 			case Items.DEKU_STICK:
 			case Items.BOOMERANG:
-				return age === Age.CHILD || Data.canEquipSwap(age);
+				return this.playerHasItem(item) && (age === Age.CHILD || Data.canEquipSwap(age));
 			case Items.MEGATON_HAMMER:
 			case AdultTradeItems.POCKET_EGG:
 			case AdultTradeItems.COJIRO:
@@ -1253,12 +1212,12 @@ let ItemData = {
 			case AdultTradeItems.EYEBALL_FROG:
 			case AdultTradeItems.EYEDROPS:
 			case AdultTradeItems.CLAIM_CHECK:
-				return age === Age.ADULT || Data.canEquipSwap(age);
+				return this.playerHasItem(item) && (age === Age.ADULT || Data.canEquipSwap(age));
 
 		}
 
 		// Shared items
-		return true;
+		return this.playerHasItem(item, lowestUpgrade);
 	},
 
 	/**
@@ -1273,69 +1232,6 @@ let ItemData = {
 		return exactUpgrade
 			? item.currentUpgrade === upgrade
 			: item.currentUpgrade >= upgrade;
-	},
-
-	/**
-	 * Gets whether the given age can use the longshot
-	 * @param age - The age to check
-	 * @returns True if so, false if not
-	 */
-	canUseLongshot(age) {
-		return this.canUse(age, Items.HOOKSHOT, 2);
-	},
-
-	/**
-	 * Gets whether the given age can use the silver gauntlets
-	 * @param age - The age to check
-	 * @returns True if so, false if not
-	 */
-	canUseSilverGauntlets(age) {
-		return this.canUse(age, Equipment.STRENGTH, 2);
-	},
-
-	/**
-	 * Gets whether the given age can use the silver gauntlets
-	 * @param age - The age to check
-	 * @returns True if so, false if not
-	 */
-	canUseGoldenGauntlets(age) {
-		return this.canUse(age, Equipment.STRENGTH, 3);
-	},
-
-	/**
-	 * Gets whether the given age can use the silver scale
-	 * @param age - The age to check
-	 * @returns True if so, false if not
-	 */
-	canUseSilverScale(age) {
-		return this.canUse(age, Equipment.SCALE, 1);
-	},
-
-	/**
-	 * Gets whether the given age can use the golden scale
-	 * @param age - The age to check
-	 * @returns True if so, false if not
-	 */
-	canUseGoldenScale(age) {
-		return this.canUse(age, Equipment.SCALE, 2);
-	},
-
-	/**
-	 * Gets whether the age can use all of the given items
-	 * @param age - The age to check
-	 * @param items - An array of items
-	 */
-	canUseAll(age, items) {
-		return items.every(item => this.canUse(age, item));
-	},
-
-	/**
-	 * Gets whether the age can anyone of the given items
-	 * @param age - The age to check
-	 * @param items - An array of items
-	 */
-	canUseAny(age, items) {
-		return items.some(item => this.canUse(age, item));
 	},
 
 	/**
