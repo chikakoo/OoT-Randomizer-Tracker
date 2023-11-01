@@ -458,8 +458,9 @@ let MQDungeons = {
                 Exits: {
                     staircaseTop: {
                         CustomRequirement: function(age) {
-                            let canLowerWithBow = Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && age === Age.ADULT && Items.FAIRY_BOW.playerHas;
-                            return canLowerWithBow || Data.hasExplosivesOrStrength();
+                            let canLowerWithBow = Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && 
+                                ItemData.canUse(age, Items.FAIRY_BOW);
+                            return canLowerWithBow || ItemData.canUse(age, ItemSets.EXPLOSIVES_OR_STRENGTH);
                         }
                     }
                 },
@@ -805,7 +806,7 @@ let MQDungeons = {
                 Exits: {
                     lowerLizalfosRoom: {},
                     mainRoomLedge: {
-                        NeedsExplosivesOrBombFlower: true
+                        RequiredItems: [ItemSets.EXPLOSIVES_OR_STRENGTH]
                     }
                 },
 
@@ -817,7 +818,7 @@ let MQDungeons = {
                         Order: 7,
                         LongDescription: "In the Poe room, use an explosive on one of the lines of bomb flowers to unbar the door to this room. The skulltula is high up in the back left corner.",
                         IsAtShortDistance: true,
-                        NeedsExplosivesOrBombFlower: true
+                        RequiredItems: [ItemSets.EXPLOSIVES_OR_STRENGTH]
                     },
                     "Poe Room Pot by Entrance": {
                         ItemGroup: ItemGroups.POT,
@@ -895,7 +896,7 @@ let MQDungeons = {
                     bossRoom: {
                         CustomRequirement: function(age) {
                             // Adult can just jump up; Child needs to blow up a bombflower wall
-                            return age === Age.ADULT || Data.hasExplosives();
+                            return age === Age.ADULT || ItemData.canUse(age, ItemSets.EXPLOSIVES);
                         }
                     }
                 },
@@ -1049,8 +1050,7 @@ let MQDungeons = {
             afterFirstRoom: {
                 Exits: {
                     northernRooms: {
-                        RequiredItems: [Items.BOOMERANG],
-                        NeedsExplosives: true
+                        RequiredItems: [Items.BOOMERANG, ItemSets.EXPLOSIVES]
                     },
 
                     afterTentaclesDefeated: {
@@ -2287,8 +2287,7 @@ let MQDungeons = {
                         CustomRequirement: function(age) {
                             return age === Age.ADULT || Data.canGroundJumpWithBomb(age);
                         },
-                        NeedsExplosives: true,
-                        NeedsFire: true,
+                        RequiredItems: [ItemSets.EXPLOSIVES, ItemSets.FIRE_ITEMS],
                         LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron."
                     }
                 }
@@ -2364,8 +2363,7 @@ let MQDungeons = {
             boulderMaze: {
                 Exits: {
                     boulderMazeTop: {
-                        NeedsExplosives: true,
-                        RequiredItems: [Items.HOOKSHOT]
+                        RequiredItems: [Items.HOOKSHOT, ItemSets.EXPLOSIVES]
                     }
                 },
 
@@ -3566,7 +3564,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "This is the door behind the explodable wall in the truth spinner room.",
-                        NeedsExplosives: true,
+                        RequiredItems: [ItemSets.EXPLOSIVES],
                         KeyRequirement: function(age) {
                             return { min: 1, max: 6 };
                         }
@@ -3578,7 +3576,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "This is the door near the beamos after the truth spinner room.",
-                        NeedsExplosives: true,
+                        RequiredItems: [ItemSets.EXPLOSIVES],
                         KeyRequirement: function(age) {
                             let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 2;
                             return { min: 1, max: max };
@@ -3643,7 +3641,7 @@ let MQDungeons = {
                     mazeByEntrance: {
                         LockedDoor: "Locked Door by Truth Spinner",
                         Map: "Shadow Temple",
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     },
                     afterTruthSpinner: {
                         CustomRequirement: function(age) {
@@ -3743,7 +3741,7 @@ let MQDungeons = {
                     afterBeamos: {
                         LockedDoor: "Locked Door by Beamos",
                         Map: "Shadow Temple",
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     },
                     boatRoom: {
                         Age: Age.ADULT,
@@ -4410,7 +4408,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 46,
                         LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>In the invisible maze, navigate to the south room. Use explosives to make Dead Hand spawn. Kill him to spawn the chest.",
-                        NeedsExplosivesOrBombFlower: true
+                        RequiredItems: [ItemSets.EXPLOSIVES_OR_STRENGTH]
                     },
                     "2 Pots in Bomb Flower Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -4837,7 +4835,7 @@ let MQDungeons = {
                         Order: 13,
                         AltOrder: 14,
                         LongDescription: "In the room with the sun on the floor, kill all the enemies to spawn the chest. As child, this is the room after you go through the second crawlspace. As an adult, it's in the bottom southwest corner of the big statue room.",
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     },
                     "Top Chest in Room With Sun On Floor": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4846,8 +4844,7 @@ let MQDungeons = {
                         Order: 27,
                         AltOrder: 15,
                         LongDescription: "In the room with the sun on the floor, use an explosive to blow up the wall to light up the sun. This will spawn a chest that you will need to hookshot up to.",
-                        RequiredItems: [Items.HOOKSHOT],
-                        NeedsExplosives: true
+                        RequiredItems: [Items.HOOKSHOT, ItemSets.EXPLOSIVES]
                     }
                 }
             },
@@ -5208,7 +5205,7 @@ let MQDungeons = {
                         Order: 39,
                         AltOrder: 31,
                         LongDescription: "From the statue room, hookshot to the torch to get to the southeast side. Use a key to go in the top door. Kill the beamos to spawn the chest.",
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     }
                 }
             },
@@ -5576,7 +5573,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 6,
                         LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>On the floor, there's a switch embedded in the ice. Use an explosive to hit it. This will make the block around the heart piece item disappear.",
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     },
                     "Skulltula in North Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -5742,7 +5739,7 @@ let MQDungeons = {
                     coffinRoom: {
                         Map: "Bottom of the Well",
                         LockedDoor: "Locked Door in West Main Room",
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     },
                     Exit: {
                         OwExit: OwExits["Bottom of the Well"]["Exit"]
@@ -5759,7 +5756,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "In the main area, bomb the rubble to the left to get to these hearts.",
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     },
                     "Pot Behind Gate": {
                         RequiredToAppear: function() {
@@ -5783,7 +5780,7 @@ let MQDungeons = {
                     basementCenter: {
                         Map: "Bottom of the Well",
                         LockedDoor: "Locked Door in Floor Master Room",
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     }
                 },
 
@@ -6572,10 +6569,10 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
-                                Items.BOMB.playerHas && 
-                                (age);
-                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
-                            return canSuperslideIn || canEssClipIn || Equipment.STRENGTH.currentUpgrade === 3;
+                                ItemData.canUseAll(age, [Items.BOMB, ItemSets.SHIELDS]);
+                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && 
+                                ItemData.canUse(age, ItemSets.EXPLOSIVES);
+                            return canSuperslideIn || canEssClipIn || ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
                         }
                     },
                     spiritRoom2: {
@@ -6637,9 +6634,10 @@ let MQDungeons = {
                             let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
                                 Items.BOMB.playerHas && 
                                 (age);
-                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && Data.hasExplosives();
+                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && 
+                                ItemData.canUse(age, ItemSets.EXPLOSIVES);
                             let canGlitchIn = canSuperslideIn || canEssClipIn;
-                            let canEnterLightTrial = canGlitchIn || Equipment.STRENGTH.currentUpgrade === 3;
+                            let canEnterLightTrial = canGlitchIn || ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
                             if (!canEnterLightTrial) {
                                 max = 1;
                             }
@@ -6803,12 +6801,8 @@ let MQDungeons = {
                             if (Items.FAIRY_BOW.playerHas) { return true; }
 
                             // Spawn chest by using tools to blow up the bomb flower
-                            let canUseLens = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas;
-                            return canUseLens && (
-                                Equipment.STRENGTH.playerHas || 
-                                Data.hasExplosives() ||
-                                Data.canUseFireItem(age)
-                            );
+                            return ItemData.canUse(age, Items.LENS_OF_TRUTH) &&
+                                ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, ItemSets.FIRE_ITEMS]);
                         }
                     }
                 }

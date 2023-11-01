@@ -457,10 +457,8 @@ let StandardDungeons = {
                     blueRoom: {},
                     staircaseTop: {
                         CustomRequirement: function(age) {
-                            let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
-                            return Data.hasExplosivesOrStrength() || 
-                                canUseDins ||
-                                (Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && age === Age.ADULT && Items.FAIRY_BOW.playerHas);
+                            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE]) ||
+                                (Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && ItemData.canUse(age, Items.FAIRY_BOW));
                         }
                     }
                 },
@@ -631,7 +629,7 @@ let StandardDungeons = {
             bombChestFloor: {
                 Exits: {
                     inDodongoHead: {
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     },
                     potsInBladeRoom: {},
                     upperLizalfosRoom: {},
@@ -757,11 +755,7 @@ let StandardDungeons = {
             main: {
                 Exits: {
                     afterFirstRoom: {
-                        CustomRequirement: function(age) {
-                            if (Data.hasExplosives() || ItemData.canUse(age, Items.BOOMERANG)) { return true; }
-                            if (age === Age.ADULT) { return Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas; }
-                            return Items.FAIRY_SLINGSHOT.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES, ItemSets.PROJECTILES, Items.BOOMERANG, Items.HOOKSHOT]
                     },
                     Exit: {
                         OwExit: OwExits["Jabu Jabu's Belly"]["Exit"]
@@ -778,7 +772,7 @@ let StandardDungeons = {
                     roomBeforeBoss: {
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.jabuBlueSwitchSkip && 
-                                (Data.canMegaFlip(age) || (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas));
+                                (Data.canMegaFlip(age) || Data.canUse(age, Equipment.HOVER_BOOTS));
                         }
                     }
                 },
@@ -1954,8 +1948,7 @@ let StandardDungeons = {
                             if (age === Age.CHILD) {
                                 return Data.canGroundJumpWithBomb(age);
                             }
-                            
-                            return Data.hasExplosives();
+                            return ItemData.canUse(age, ItemSets.EXPLOSIVES);
                         }
                     },
                     bigLavaRoomSoTLedge: {
@@ -2055,8 +2048,8 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Map: "Fire Temple",
                         CustomRequirement: function(age) {
-                            let canGetByBlock = (Settings.GlitchesToAllow.groundJump && Data.canGroundJumpWithBomb(age)) || Equipment.STRENGTH.playerHas;
-                            let canHitSwitchFromAbove = Data.hasExplosives() || Items.HOOKSHOT.playerHas || Data.canShootEyeSwitch(age);
+                            let canGetByBlock = Data.canGroundJumpWithBomb(age) || Equipment.STRENGTH.playerHas;
+                            let canHitSwitchFromAbove = ItemData.canUseAny(age, [ItemSets.EXPLOSIVES, ItemSets.PROJECTILES, Items.HOOKSHOT]);
                             return canGetByBlock || canHitSwitchFromAbove;
                         }
                     },
@@ -2098,7 +2091,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 16,
                         LongDescription: "From the lower entrance of the boulder maze, turn left. Walk in that general direction until you reach the end. You should hear the skulltula through the wall - bomb it to gain access.",
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     },
                     "Lower Boulder Maze Side Room Goron": {
                         ItemGroup: ItemGroups.CHEST,
@@ -2193,7 +2186,7 @@ let StandardDungeons = {
                     boulderMazeLower: {},
                     fireWallRoom: {},
                     goronInPit: {
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     },
                     scarecrowRoom: {
                         CustomRequirement: function(age) {
@@ -2422,10 +2415,10 @@ let StandardDungeons = {
             }
                 
             // This checks whether the player can get to high water switch the normal way
-            let canLightMiddleTorch = Items.FAIRY_BOW.playerHas || Data.canUseFireItem();
+            let canLightMiddleTorch = ItemData.canUseAny(Age.ADULT, [Items.FAIRY_BOW, ItemSets.FIRE_ITEMS]);
             let canGetToCentralMidFromBottom = Data.itemLocationObtained("Water Temple", "main", "Locked Door to Central Room") && Items.HOOKSHOT.playerHas;
             let canRaiseWaterToMid = canLightMiddleTorch || canGetToCentralMidFromBottom;
-            let canHitCrystalSwitch = Data.hasExplosives() || Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas;
+            let canHitCrystalSwitch = ItemData.canUseAny(Age.ADULT, [ItemSets.EXPLOSIVES, Items.HOOKSHOT, Items.FAIRY_BOW]);
             let canLowerWater = canRaiseWaterToMid && canHitCrystalSwitch;
     
             return !canLowerWater;
@@ -2629,8 +2622,8 @@ let StandardDungeons = {
                     },
                     bottomSouthWing: {
                         Age: Age.ADULT,
-                        NeedsExplosives: true,
-                        RequiredChoiceOfAdultItems: [Items.HOOKSHOT, Equipment.HOVER_BOOTS],
+                        RequiredItems: [ItemSets.EXPLOSIVES],
+                        RequiredChoiceOfAdultItems: [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS],
                         RequiredChoiceOfItems: [Equipment.SCALE, Equipment.IRON_BOOTS]
                     },
                     midWaterTriforceFloor: {
@@ -2677,10 +2670,7 @@ let StandardDungeons = {
                         MapInfo: { x: 326, y: 212, floor: "F1" },
                         LongDescription: "From the entrance of the temple, jump off and sink down to the bottom. Head down the hallway of the east room. Take off your iron boots and float up to the surface. Play Zelda's lullaby at the Triforce to lower the water. Now head back down.<br/><br>In this room, light the torches wih your bow or with Din's fire.<br/><br/>Child can use sticks to light the torches as well, and can kill the enemies in the next room with spin attacks if he has magic",
                         RequiredChildItems: [Equipment.MAGIC, Equipment.KOKIRI_SWORD],
-                        CustomRequirement: function(age) {
-                            let canUseBow = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
-                            return canUseBow || ItemData.canUse(age, Items.DEKU_STICK) || Data.canUseFireItem(age);
-                        }
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DEKU_STICK, ItemSets.FIRE_ITEMS]
                     }
                 }
             },
@@ -2768,18 +2758,21 @@ let StandardDungeons = {
                 Exits: {
                     highWaterLevel: {
                         RequiredSongs: [Songs.ZELDAS_LULLABY],
-                        CustomRequirement: function(age) {
-                            return Data.hasExplosives() || Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES, Items.HOOKSHOT, Items.FAIRY_BOW]
                     },
                     midWaterTriforceFloor: {},
                     behindBlockArea: {
                         CustomRequirement: function(age) {
                             if (Data.canWeirdShot(age)) { return true; } //TODO: test whether this is enough - do you need strength?
-                            if (!Equipment.STRENGTH.playerHas || !Data.canShootEyeSwitch(age)) { return false; }
 
-                            if (Settings.GlitchesToAllow.waterEyeSwitchGateFromTop) { return true; }
-                            return age === Age.ADULT && (Items.HOOKSHOT.currentUpgrade > 1 || Equipment.HOVER_BOOTS.playerHas);
+                            // If not weirdshotting, need to shoot eye AND move the block
+                            if (!ItemData.canUseAll(age, [ItemSets.PROJECTILES, Equipment.STRENGTH])) { 
+                                return false; 
+                            }
+
+                            return Settings.GlitchesToAllow.waterEyeSwitchGateFromTop || // Shoot from the top and run in
+                                ItemsData.canUseAny(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]); // Normal way, either hit target, or run with hovers
+
                         }
                     },
                     crackedWallArea: {}
@@ -2829,7 +2822,7 @@ let StandardDungeons = {
                         MapInfo: {x: 333, y: 131, floor: "F2" },
                         RequiredSongs: [Songs.ZELDAS_LULLABY],
                         LongDescription: "After raising the water to mid level, make your way back toward the low level room. This time, you won't float up all the way to the top. In this room, you will see a cracked wall. Bomb it to get to a chest.",
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES],
                     }
                 }
             },
@@ -3065,8 +3058,7 @@ let StandardDungeons = {
                 Exits: {
                     boulderWaterfall: {
                         CustomRequirement: function(age) {
-                            return Equipment.HOVER_BOOTS.playerHas || 
-                                (Equipment.STRENGTH.playerHas && Data.hasExplosives()) ||
+                            return ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, Equipment.STRENGTH, ItemSets.EXPLOSIVES]) ||
                                 Data.canMegaFlip(age);
                         }
                     },
@@ -3190,7 +3182,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "This is the door after the truth spinner room with the beamos. It's located behind the bombable wall.",
-                        NeedsExplosives: true,
+                        RequiredItems: [ItemSets.EXPLOSIVES],
                         KeyRequirement: function(age) {
                             let max = 1;
                             if (Settings.GlitchesToAllow.shadowGateClip){
@@ -3782,7 +3774,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 30,
                         LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. Bomb the rubble to your right to uncover an invisible chest.",
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     }
                 }
             },
@@ -4140,7 +4132,7 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             if (Items.BOMBCHU.playerHas || Data.canMegaFlip(age)) { return true; }
                             if (age === Age.ADULT) {
-                                return Items.FAIRY_BOW.playerHas || ItemData.canUseLongshot(age);
+                                return ItemData.canUseAny(age, [Items.FAIRY_BOW, UpgradedItems.LONGSHOT]);
                             }
                             let canClearFirstRoom = ItemData.canUseAny(age, [ItemSets.SWORDS, ItemSets.EXPLOSIVES]);
                             let canHitSwitch = ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, Items.BOOMERANG]);
@@ -4219,12 +4211,7 @@ let StandardDungeons = {
                     childSkulltulaInGrateRoom: {
                         Map: "Spirit Temple",
                         SilverRupeeIndex: 0,
-                        CustomRequirement: function(age) {
-                            return Items.FAIRY_SLINGSHOT.playerHas || 
-                                Items.DEKU_STICK.playerHas ||
-                                Data.canUseFireItem(age) ||
-                                Data.hasExplosives();
-                        }
+                        RequiredChoiceOfItems: [Items.FAIRY_SLINGSHOT, Items.DEKU_STICK, ItemSets.FIRE_ITEMS, ItemSets.EXPLOSIVES]
                     }
                 },
                 ItemLocations: {
@@ -4308,7 +4295,7 @@ let StandardDungeons = {
                         LockedDoor: "Locked Door After Second Crawl Space"
                     },
                     statueRoom: {
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     }
                 },
                 ItemLocations: {
@@ -4711,7 +4698,7 @@ let StandardDungeons = {
             adultAnubisRoom: {
                 Exits: {
                     fourArmosRoom: {
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     },
                     movingWallRoom: {
                         Map: "Spirit Temple",
@@ -4785,8 +4772,7 @@ let StandardDungeons = {
             movingWallRoom: {
                 Exits: {
                     bossRoom: {
-                        RequiredItems: [Items.HOOKSHOT, Equipment.MIRROR_SHIELD],
-                        NeedsExplosives: true,
+                        RequiredItems: [Items.HOOKSHOT, ItemSets.EXPLOSIVES, Equipment.MIRROR_SHIELD],
                         CustomRequirement: function(age) {
                             return ItemData.hasBossKey("Spirit Temple");
                         }
@@ -4817,8 +4803,8 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             if (Settings.GlitchesToAllow.spiritBKTrick) { return true; }
                             
-                            let canDestroyDoors = Data.hasExplosives() || ItemData.canUse(age, Items.MEGATON_HAMMER);
-                            let hasRequiredItems = Items.FAIRY_BOW.playerHas && Items.HOOKSHOT.playerHas;
+                            let canDestroyDoors = ItemData.canUseAny(age, [ItemSets.EXPLOSIVES, Items.MEGATON_HAMMER]);
+                            let hasRequiredItems = ItemData.canUseAll(age, [Items.FAIRY_BOW, Items.HOOKSHOT]);
                             return canDestroyDoors && hasRequiredItems;
                         }
                     },
@@ -5288,7 +5274,7 @@ let StandardDungeons = {
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
                     },
                     bombableHoleRoom: {
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     }
                 },
 
@@ -5347,7 +5333,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 8,
                         LongDescription: "From the main room's entrance, follow the path to the left. Continue straight until you run into either the wall, or the giant skulltula. To the left you can see that there's some rubble in the back. DO NOT simply walk to it - there are pits. Hug the left side of the little alcove to get there safely. Bomb the rubble to get the chest.",
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     },
                     "Underwater Pot by Triforce": {
                         ItemGroup: ItemGroups.POT,
@@ -5447,7 +5433,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 30,
                         LongDescription: "Fall down one of the many pits to get to the basement. This chest is located behind the rocks that are farthest from the ladder. That is, if you face away from the ladder, it's the rightmost set of rocks.",
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     },
                     "Silver Rupee on South Basement Wood Beam": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -6375,8 +6361,9 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
                                 ItemData.canUseAll(age, [Items.BOMB, ItemSets.SHIELDS]);
-                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && ItemData.canUse(age, ItemSets.EXPLOSIVES);
-                            return canSuperslideIn || canEssClipIn || ItemData.canUseGoldenGauntlets(age);
+                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && 
+                                ItemData.canUse(age, ItemSets.EXPLOSIVES);
+                            return canSuperslideIn || canEssClipIn || ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
                         }
                     },
                     center: {

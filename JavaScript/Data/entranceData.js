@@ -1893,7 +1893,7 @@ GrottoGroups = {
 				icon: "Heart Piece",
 				description: "To defeat Barinade, you need the boomerang and also either a sword or at least 3 Deku Sticks. First, dislodge it from the ceiling using the boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
 				canGet: function(age) {
-					return ItemData.canUse(age, [ItemSets.SWORDS, Items.BOOMERANG]);
+					return ItemData.canUseAll(age, [ItemSets.SWORDS, Items.BOOMERANG]);
 				},
 				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			},
@@ -1901,7 +1901,7 @@ GrottoGroups = {
 				icon: "Barinade",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
-					return ItemData.canUse(age, [ItemSets.SWORDS, Items.BOOMERANG]);
+					return ItemData.canUseAll(age, [ItemSets.SWORDS, Items.BOOMERANG]);
 				},
 				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			}

@@ -153,6 +153,33 @@ let Equipment = {
 };
 
 /**
+ * A list of upgraded items for ease of use
+ * These can be used in any of the canUse functions
+ */
+let UpgradedItems = {
+	LONGSHOT: {
+		item: Items.HOOKSHOT,
+		upgrade: 2
+	},
+	SILVER_SCALE: {
+		item: Equipment.SCALE,
+		upgrade: 1
+	},
+	GOLDEN_SCALE: {
+		item: Equipment.SCALE,
+		upgrade: 2
+	},
+	SILVER_GAUNTLETS: {
+		item: Equipment.STRENGTH,
+		upgrade: 2
+	},
+	GOLDEN_GAUNTLETS: {
+		item: Equipment.STRENGTH,
+		upgrade: 3
+	}
+};
+
+/**
  * A list of item sets that can be used to concisely check whether a player can do something
  */
 let ItemSets = {
@@ -160,9 +187,29 @@ let ItemSets = {
 		isItemSet: true,
 		items: [Items.BOMB, Items.BOMBCHU]
 	},
+	EXPLOSIVES_OR_STRENGTH: {
+		isItemSet: true,
+		items: [Items.BOMB, Items.BOMBCHU, Equipment.STRENGTH]
+	},
+	BLAST_OR_SMASH_ITEMS: {
+		isItemSet: true,
+		items: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER]
+	},
 	FIRE_ITEMS: {
 		isItemSet: true,
 		items: [Items.DINS_FIRE, Items.FIRE_ARROW]
+	},
+	PROJECTILES: {
+		isItemSet: true,
+		items: [Items.FAIRY_SLINGSHOT, Items.FAIRY_BOW]
+	},
+	DISTANT_SWITCH_ITEMS: {
+		isItemSet: true,
+		items: [
+			Items.BOMB, Items.BOMBCHU, 
+			Items.FAIRY_BOW, Items.FAIRY_SLINGSHOT, 
+			Items.BOOMERANG, Items.HOOKSHOT
+		]
 	},
 	// Any item you can swing and jumpslash with - includes stick and hammer
 	SWORDS: {
@@ -178,6 +225,20 @@ let ItemSets = {
 		items: [		
 			Equipment.MASTER_SWORD, Equipment.KOKIRI_SWORD, 
 			Items.DEKU_STICK, Items.BOOMERANG, Items.FAIRY_SLINGSHOT, Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU
+		]
+	},
+	STUNNABLE_ENEMY_KILL_ITEMS: {
+		IsItemSet: true,
+		Items: [
+			Equipment.MASTER_SWORD, Equipment.KOKIRI_SWORD, Items.DEKU_STICK, Items.FAIRY_SLINGSHOT,
+			Items.DINS_FIRE, Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER
+		]
+	},
+	FREEZARD_KILL_ITEMS: {
+		IsItemSet: true,
+		Items: [
+			Equipment.MASTER_SWORD, Items.DEKU_STICK, Items.MEGATON_HAMMER,
+			Items.BOMB, Items.BOMBCHU, Items.DINS_FIRE
 		]
 	}
 };
@@ -1192,9 +1253,14 @@ let ItemData = {
 	 * - For instance, we'd have: Items.FIRE_ARROW.canUse[age] available
 	 * @param age - The age to check
 	 * @param item - The item to check
-	 * @param lowestUpgrade - The lowest upgrade to include (ex 2 would be silver/gold gaunts, but not goron bracelet)
+	 *  > Format: { item: item, upgrade: Number } OR just the item directly
+	 *  > The upgrade is assuemd to be the lowest number required
 	 */
-	canUse: function(age, item, lowestUpgrade) {
+	canUse: function(age, itemInput) {
+		// The lowest upgrade to include (ex 2 would be silver/gold gaunts, but not goron bracelet)
+		let lowestUpgrade = itemInput.upgrade;
+		let item = itemInput.item || itemInput;
+
 		// If we're given an item set, we need to check whether we can use any single one of the items in it
 		if (item.isItemSet) {
 			return this.canUseAny(age, item.items);
@@ -1277,51 +1343,6 @@ let ItemData = {
 		return exactUpgrade
 			? item.currentUpgrade === upgrade
 			: item.currentUpgrade >= upgrade;
-	},
-
-	/**
-	 * Gets whether the given age can use the longshot
-	 * @param age - The age to check
-	 * @returns True if so, false if not
-	 */
-	canUseLongshot(age) {
-		return this.canUse(age, Items.HOOKSHOT, 2);
-	},
-
-	/**
-	 * Gets whether the given age can use the silver gauntlets
-	 * @param age - The age to check
-	 * @returns True if so, false if not
-	 */
-	canUseSilverGauntlets(age) {
-		return this.canUse(age, Equipment.STRENGTH, 2);
-	},
-
-	/**
-	 * Gets whether the given age can use the silver gauntlets
-	 * @param age - The age to check
-	 * @returns True if so, false if not
-	 */
-	canUseGoldenGauntlets(age) {
-		return this.canUse(age, Equipment.STRENGTH, 3);
-	},
-
-	/**
-	 * Gets whether the given age can use the silver scale
-	 * @param age - The age to check
-	 * @returns True if so, false if not
-	 */
-	canUseSilverScale(age) {
-		return this.canUse(age, Equipment.SCALE, 1);
-	},
-
-	/**
-	 * Gets whether the given age can use the golden scale
-	 * @param age - The age to check
-	 * @returns True if so, false if not
-	 */
-	canUseGoldenScale(age) {
-		return this.canUse(age, Equipment.SCALE, 2);
 	},
 
 	/**

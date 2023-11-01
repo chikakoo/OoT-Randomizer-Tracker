@@ -184,8 +184,7 @@ let OwExits = {
                 }
 
                 return canMegaFlip ||
-                    Equipment.HOVER_BOOTS.playerHas || 
-                    ItemData.canUseLongshot(age) ||
+                    ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT]) ||
                     Data.itemLocationObtained("Lost Woods", "firstHalf", "*Plant Bean by Bridge");
             },
             OwShuffleMap: "Lost Woods Bridge",
@@ -458,9 +457,8 @@ let OwExits = {
             MapInfo: { x: 50, y: 103 },
             Age: Age.EITHER,
             LongDescription: "Near the entrance to Gerudo Valley, there's a circle of small rocks. As a child, you can bomb the center to reveal a grotto. As adult, you must hammer the red rock.",
-            CustomRequirement: function(age) {
-                return ItemData.canUse(age, Items.MEGATON_HAMMER) || (age === Age.CHILD && Data.hasExplosives());
-            }
+            RequiredChildItems: [ItemSets.BLAST_OR_SMASH_ITEMS],
+            RequiredAdultItems: [Items.MEGATON_HAMMER]
         },
         "Grotto by Lake Hylia Fences": {
             ExitRegion: "main",
@@ -884,7 +882,7 @@ let OwExits = {
                 let childEarly = Settings.GlitchesToAllow.botwAsChildWithCucco && 
                     ItemData.canUseAll(Age.CHILD, [ItemSets.SWORDS, ItemSets.SHIELDS]);
                 let adultEarly = Settings.GlitchesToAllow.botwAsAdultWithCucco && 
-                    ItemData.canUseLongshot(Age.ADULT) && ItemData.canUse(age, Equipment.HOVER_BOOTS);
+                    ItemData.canUseAll(Age.ADULT, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]);
                 if (childEarly || adultEarly) {
                     return Time.DAY;
                 }
@@ -899,8 +897,7 @@ let OwExits = {
             CustomRequirement: function(age) {
                 // Trick using cucco
                 if (Settings.GlitchesToAllow.botwAsAdultWithCucco &&
-                    ItemData.canUseLongshot(age) &&
-                    ItemData.canUse(age, Equipment.HOVER_BOOTS)) {
+                    ItemData.canUseAll(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS])) {
                     return true;
                 }
 
@@ -1269,7 +1266,7 @@ let OwExits = {
             LongDescription: "This is the entrance to Dodongo's Cavern.",
             IsDungeonEntrance: true,
             CustomRequirement: function(age) {
-                return age === Age.ADULT || Data.hasExplosivesOrStrength();
+                return age === Age.ADULT || ItemData.canUse(age, ItemSets.EXPLOSIVES_OR_STRENGTH);
             }
         },
 
@@ -1625,7 +1622,7 @@ let OwExits = {
             MapInfo: { x: 266, y: 269 },
             Age: Age.EITHER,
             LongDescription: "Go to the southeast corner of the map. Bomb the wall by the rocks to reveal this entrance.",
-            NeedsExplosives: true
+            RequiredItems: [ItemSets.EXPLOSIVES]
         }
     },
 
@@ -1698,14 +1695,14 @@ let OwExits = {
                 }
 
                 let canEnterNormally = ItemData.canUseAll(age, [Equipment.IRON_BOOTS, Items.HOOKSHOT]);
-                let canDiveDown = ItemData.canUseLongshot(age) && ItemData.canUseGoldenScale(age);
+                let canDiveDown = ItemData.canUseAll(age, [UpgradedItems.LONGSHOT, UpgradedItems.GOLDEN_SCALE]);
                 if (age === Age.ADULT && (canEnterNormally || canDiveDown)) {
                     return true;
                 };
                 if (!Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
                 
                 let defeatedMorpha = Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
-                let canHitSwitch = ItemData.canUse(age, ItemSets.DAMAGING_ITEMS) && ItemData.canUseGoldenScale(age);
+                let canHitSwitch = ItemData.canUseAll(age, [ItemSets.DAMAGING_ITEMS, UpgradedItems.GOLDEN_SCALE]);
                 return defeatedMorpha && canHitSwitch;
             }
         },
@@ -2421,7 +2418,7 @@ let OwExits = {
             MapInfo: { x: 231, y: 51 },
             Age: Age.EITHER,
             LongDescription: "There's a crack in the wall in the north middle of the map. Bomb it to get inside.",
-            NeedsExplosives: true
+            RequiredItems: [ItemSets.EXPLOSIVES]
         },
         "Silver Rock Grotto": {
             ExitRegion: "main",

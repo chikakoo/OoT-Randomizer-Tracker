@@ -552,7 +552,7 @@ Data = {
 	_canDoOldShadowEarly: function(age) {
 		return age === Age.ADULT &&
 			Settings.GlitchesToAllow.oldShadowEarly && 
-            (this.canWeirdShot(age) || ItemData.canUseLongshot(age) || this.itemLocationObtained("Graveyard", "main", "*Plant Bean by Dampe's Grave")) &&
+            (this.canWeirdShot(age) || ItemData.canUse(age, UpgradedItems.LONGSHOT) || this.itemLocationObtained("Graveyard", "main", "*Plant Bean by Dampe's Grave")) &&
             ItemData.canUseAll(age, [ItemSets.EXPLOSIVES, ItemSets.SHIELDS]);
     },
 
@@ -590,10 +590,10 @@ Data = {
     /**
 	 * Sets whether the item is obtained
      * Runs the PostObtain function if there is one
-	 * @itemLocation The item
-	 * @isObtained A boolean indicating whether it should be obtained
-     * @skipPostObtain Whether to NOT call PostObtain (usually to handle these PostObtains that call this function)
-     * @fromSocketClient Whether this call is from the socket client, so we don't loop forever
+	 * @param itemLocation - The item
+	 * @param isObtained - A boolean indicating whether it should be obtained
+     * @param skipPostObtain - Whether to NOT call PostObtain (usually to handle these PostObtains that call this function)
+     * @param fromSocketClient - Whether this call is from the socket client, so we don't loop forever
 	 */
 	setItemObtained: function(itemLocation, isObtained, skipPostObtain, fromSocketClient) {
 		itemLocation.playerHas = !!isObtained;
@@ -707,7 +707,7 @@ Data = {
         // We can't really check if an itemLocation is forcing EITHER! That doesn't make sense.
         if (itemLocation.Age !== Age.EITHER || age === Age.EITHER) { return false; }
 
-        // If you the other actually get the item, then we never want to mark it as this age only
+        // If the other age can actually get the item, then we never want to mark it as this age only
         let otherAge = age === Age.CHILD ? Age.ADULT : Age.CHILD;
         if (this.getItemObtainability(itemLocation, otherAge) === ItemObtainability.YES) {
             return false;
@@ -770,8 +770,6 @@ Data = {
 		if (!this.canPlaySongs(itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canPlayDifficultOcarinaItems(itemLocation)) { return ItemObtainability.NO; }
 		if (!this.hasBottle(itemLocation)) { return ItemObtainability.NO; }
-		if (!this.hasExplosives(itemLocation)) { return ItemObtainability.NO; }
-		if (!this.hasExplosivesOrStrength(itemLocation)) { return ItemObtainability.NO; }
         if (!this.canBlastOrSmash(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this.canBreakMudWalls(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this.canSinkSilverScaleDepth(age, itemLocation)) { return ItemObtainability.NO; }
@@ -1265,8 +1263,7 @@ Data = {
      * Returns whether the player can activate an eye switch
      */
     canShootEyeSwitch: function(age) {
-		return ItemData.canUse(age, Items.FAIRY_SLINGSHOT) ||
-            ItemData.canUse(age, Items.FAIRY_BOW);
+		return ItemData.canUse(age, ItemSets.PROJECTILES);
 	},
 
     /**
@@ -1274,34 +1271,15 @@ Data = {
      * @param {Age} age - the age
      */
     canHitSwitchAtShortDistance: function(age) {
-        return this.hasExplosives() ||
-            ItemData.canUse(age, Items.BOOMERANG) ||
-            this.canShootEyeSwitch(age) ||
-            (age === Age.ADULT && Items.HOOKSHOT.playerHas);
+        return ItemData.canUse(age, ItemSets.DISTANT_SWITCH_ITEMS);
     },
-    
-    /**
-     * Returns whether the player has explosives
-     */
-	hasExplosives: function(itemLocation) {
-		if (itemLocation && !itemLocation.NeedsExplosives) { return true;}
-		return Items.BOMB.playerHas || Items.BOMBCHU.playerHas;
-    },
-
-    /**
-     * Returns whether the player can use explosives of any kind, including bomb flowers
-     */
-    hasExplosivesOrStrength: function(itemLocation) {
-		if (itemLocation && !itemLocation.NeedsExplosivesOrBombFlower) { return true;}
-		return Items.BOMB.playerHas || Items.BOMBCHU.playerHas || Equipment.STRENGTH.playerHas;
-	},
     
     /**
      * Returns whether the player can use explosives or the hammer
      */
 	canBlastOrSmash: function(age, itemLocation) {
 		if (itemLocation && !itemLocation.NeedToBlastOrSmash && !itemLocation.IsHiddenGrotto) { return true; }
-		return this.hasExplosives() || ItemData.canUse(age, Items.MEGATON_HAMMER);
+        return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS);
     },
 
     /**
@@ -1385,25 +1363,15 @@ Data = {
      */
 	canKillStunnableEnemy: function(age, itemLocation) {
 		if (itemLocation && !itemLocation.MustKillStunnableEnemy) { return true; }
-		if (age === Age.ADULT) { return true; } // Adult always has a sword
 		
-		return Equipment.KOKIRI_SWORD.playerHas || 
-			Items.DEKU_STICK.playerHas ||
-			Items.FAIRY_SLINGSHOT.playerHas ||
-			this.canUseFireItem(age) ||
-			this.hasExplosives() ||
-            ItemData.canUse(age, Items.MEGATON_HAMMER);
+		return ItemData.canUse(age, ItemSets.STUNNABLE_ENEMY_KILL_ITEMS);
 	},
 
     /**
      * Returns whether the player can kill a freezard
      */
     canKillFreezard: function(age) {
-        return age === Age.ADULT ||
-            Items.DEKU_STICK.playerHas ||
-            this.hasExplosives() ||
-            ItemData.canUse(age, Items.MEGATON_HAMMER) ||
-            this.canUseFireItem(age);
+        return ItemData.canUse(age, ItemSets.FREEZARD_KILL_ITEMS);
     },
 
     /**

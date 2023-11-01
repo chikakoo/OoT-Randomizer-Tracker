@@ -1446,7 +1446,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             let beanIsPlanted = Data.itemLocationObtained("Graveyard", "main", "*Plant Bean by Dampe's Grave");
-                            return ItemData.canUseLongshot(age) || beanIsPlanted || Data.canWeirdShot(age);
+                            return ItemData.canUse(age, UpgradedItems.LONGSHOT) || beanIsPlanted || Data.canWeirdShot(age);
                         }
                     },
                     freestandingItemInCrate: {
@@ -1846,7 +1846,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "After removing the boilder by Dodongo's Cavern, the soft soil to plant the bug in is revealed. If you need a weapon to kill it, use the bomb flower from above.",
                         OverrideItemGroupCondition: true,
-                        NeedsExplosivesOrBombFlower: true,
+                        RequiredItems: [ItemSets.EXPLOSIVES_OR_STRENGTH],
                         NeedsBottle: true
                     },
                     "Red Rock by Goron City": {
@@ -1872,7 +1872,7 @@ let MapLocations = {
                         MapInfo: { x: 179, y: 168 },
                         Age: Age.CHILD,
                         LongDescription: "This is the bean spot in the entrance to Dodongo's Cavern. You must first destroy the rock to get to it. It can be used to skip blowing up the rocks to get to the top part of the mountain.",
-                        NeedsExplosivesOrBombFlower: true,
+                        RequiredItems: [ItemSets.EXPLOSIVES_OR_STRENGTH],
                     },
                     "Break Rocks Blocking Top Path":  {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -2010,7 +2010,7 @@ let MapLocations = {
                         MapInfo: { x: 284, y: 248 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is behind a bombable wall across a wooden bridge in the top area of the crater.",
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     }
                 }
             },
@@ -2173,7 +2173,7 @@ let MapLocations = {
                     darunia: {
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return Data.canPlaySong(Songs.ZELDAS_LULLABY); }
-				            return Data.hasExplosivesOrStrength() || Items.FAIRY_BOW.playerHas;
+                            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.FAIRY_BOW]);
                         }
                     },
                     lostWoodsRocks: {
@@ -2182,9 +2182,9 @@ let MapLocations = {
                                 return true;
                             }
 
-                            let canShootBow = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
-                            let canLightBombFlower = Data.canUseFireItem(age) || Items.BLUE_FIRE.playerHas;
-                            return canShootBow || canLightBombFlower || Equipment.STRENGTH.playerHas || Data.canBlastOrSmash(age);
+                            return ItemData.canUseAny(age, [
+                                Items.FAIRY_BOW, Items.DINS_FIRE, Items.BLUE_FIRE, ItemSets.BLAST_OR_SMASH_ITEMS, Equipment.STRENGTH
+                            ]);
                         }
                     },
                     spinningUrn: {
@@ -2213,16 +2213,14 @@ let MapLocations = {
                         MapInfo: { x: 165, y: 67 },
                         Age: Age.CHILD,
                         LongDescription: "Blow up the rolling goron while he's in the tunnel and talk to him to get the item.",
-                        NeedsExplosives: true
+                        RequiredItems: [ItemSets.EXPLOSIVES]
                     },
                     "Stop Rolling Goron as Adult": {
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 139, y: 97 },
                         Age: Age.ADULT,
                         LongDescription: "Stop the rolling goron with a bomb, bombchu or bomb flower and talk to him to get the item. You can also shoot the bomb flowers with an arrow with the right timing to stop him.",
-                        CustomRequirement: function(age) {
-                            return Data.hasExplosivesOrStrength() || Items.FAIRY_BOW.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.FAIRY_BOW]
                     },
                     "Item From Medigoron": {
                         ItemGroup: ItemGroups.GIFT,
@@ -2242,12 +2240,8 @@ let MapLocations = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         LongDescription: "Make your way to the topmost northwest corner of the city and bomb, pick up, or smash the rocks to get here. You can also go to the upper right corner, stand on the box, and backwalk & backflip with hover boots at the last moment to get to this chest (you will be stuck there).",
                         CustomRequirement: function(age) {
-                            let canGetAsAdult = age === Age.ADULT && (
-                                Equipment.STRENGTH.currentUpgrade > 1 ||
-                                Equipment.HOVER_BOOTS.playerHas ||
-                                Data.canWeirdShot(age)
-                            );
-                            return ItemData.canUse(age, Items.MEGATON_HAMMER) || canGetAsAdult;
+                            return ItemData.canUseAny(age, [Items.MEGATON_HAMMER, UpgradedItems.SILVER_GAUNTLETS]) ||
+                                ItemData.canUseAll(age, [Equipment.HOVER_BOOTS, ItemSets.EXPLOSIVES]);
                         }
                     },
                     "Left Maze Chest": {
@@ -2255,22 +2249,14 @@ let MapLocations = {
                         MapInfo: { x: 78, y: 26 },
                         Age: Age.EITHER,
                         LongDescription: "Make your way to the topmost northwest corner of the city. Bomb, hammer, or pick up (only silvers) the rocks to get to the back right corner of the maze for this chest.",
-                        CustomRequirement: function(age) {
-                            if (Data.canBlastOrSmash(age)) { return true; }
-                            if (age === Age.CHILD) { return false; }
-                            return Equipment.STRENGTH.currentUpgrade > 1; // Silver gaunts+
-                        }
+                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
                     },
                     "Right Maze Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 86, y: 26 },
                         Age: Age.EITHER,
                         LongDescription: "Make your way to the topmost northwest corner of the city. Bomb, hammer, or pick up (only silvers) the rocks to get to the back right corner of the maze for this chest.",
-                        CustomRequirement: function(age) {
-                            if (Data.canBlastOrSmash(age)) { return true; }
-                            if (age === Age.CHILD) { return false; }
-                            return Equipment.STRENGTH.currentUpgrade > 1; // Silver gaunts+
-                        }
+                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
                     },
                     "Skulltula in Maze Crate": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -2300,9 +2286,7 @@ let MapLocations = {
                         MapInfo: { x: 115, y: 275 },
                         Age: Age.EITHER,
                         LongDescription: "In the southern area of the middle floor, blow up the walls that has bombflowers near it. Eventually, you'll make it to Medigoron, where the stone is.",
-                        CustomRequirement: function(age) {
-                            return Data.hasExplosivesOrStrength() || ItemData.canUse(age, Items.MEGATON_HAMMER);
-                        }
+                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.MEGATON_HAMMER]
                     },
                     "2 Pots by Lower Staircase": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2327,19 +2311,14 @@ let MapLocations = {
                         MapInfo: { x: 130, y: 243 },
                         Age: Age.EITHER,
                         LongDescription: "In the southern area of the middle floor, blow up the walls that has bombflowers near it. Eventually, you'll make it to Medigoron, where the pot is.",
-                        CustomRequirement: function(age) {
-                            return Data.hasExplosivesOrStrength() || ItemData.canUse(age, Items.MEGATON_HAMMER);
-                        }
+                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.MEGATON_HAMMER]
                     },
                     "Maze Crate": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 95, y: 21 },
                         Age: Age.EITHER,
                         LongDescription: "Make your way to the topmost northwest corner of the city. Bomb, hammer, or pick up (only silvers) the rocks to get to the back right corner of the maze for this crate.",
-                        CustomRequirement: function(age) {
-                            if (Data.canBlastOrSmash(age)) { return true; }
-                            return age === Age.ADULT && Equipment.STRENGTH.currentUpgrade > 1; // Silver gaunts+
-                        }
+                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
                     }
                 }
             },
@@ -3045,7 +3024,7 @@ let MapLocations = {
                         LongDescription: "At night, longshot all the way up the tree on the middle island. You'll find the skulltula on top.",
                         RequiredItems: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
-                            return ItemData.canUseLongshot(age) || 
+                            return ItemData.canUse(age, UpgradedItems.LONGSHOT) || 
                                 (ItemData.canUse(age, ItemSets.SHIELDS) && Settings.GlitchesToAllow.skullInTreeWithHookshot);
                         }
                     },
@@ -3135,7 +3114,7 @@ let MapLocations = {
                                     Data.itemLocationObtained("Thieves' Hideout", "main", "Item From Gerudo") || 
                                     Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.OPEN ||
                                     Data.canRideEpona(age) || 
-                                    ItemData.canUseLongshot(age) ||
+                                    ItemData.canUse(age, UpgradedItems.LONGSHOT) ||
                                     Data.canBombSuperslideWithHovers(age) ||
                                     Data.canHammerHoverBootsSuperslide(age);
                             }
@@ -3147,7 +3126,7 @@ let MapLocations = {
                     chasmCrateLedge: {
                         CustomRequirement: function(age) {
                             return age === Age.CHILD || 
-                                ItemData.canUseLongshot(age) ||
+                                ItemData.canUse(age, UpgradedItems.LONGSHOT) ||
                                 Data.canBombSuperslideWithHovers(age) ||
                                 Data.canHammerHoverBootsSuperslide(age);
                         }
@@ -3183,7 +3162,7 @@ let MapLocations = {
                                 Data.itemLocationObtained("Thieves' Hideout", "main", "Item From Gerudo") || 
                                 Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.OPEN ||
                                 Data.canRideEpona(age) || 
-                                ItemData.canUseLongshot(age) ||
+                                ItemData.canUse(age, UpgradedItems.LONGSHOT) ||
                                 Data.canBombSuperslideWithHovers(age) ||
                                 Data.canHammerHoverBootsSuperslide(age);
                         }
@@ -3195,7 +3174,7 @@ let MapLocations = {
                     },
                     chasmCrateLedge: {
                         CustomRequirement: function(age) {
-                            return ItemData.canUseLongshot(age) || Data.canMegaFlip(age);
+                            return ItemData.canUse(age, UpgradedItems.LONGSHOT) || Data.canMegaFlip(age);
                         }
                     },
                     chasm: {},
