@@ -995,7 +995,7 @@ let StandardDungeons = {
             return canDoTrick && canGetToOutsideLeftBeforeBlockRoom;
         },
         _canAccessAllPoeRooms: function(age) {
-            // Requres an IsPostWalkCheck on each item using this!
+            // Requires an IsPostWalkCheck on each item using this!
             let canAccessFirstPoes = Data.canAccessMap(age, "Forest Temple", "firstPoeRoom");
             let canAccessGreenPoeRoom = Data.canAccessMap(age, "Forest Temple", "fallingCeilingRoom");
             return canAccessFirstPoes && canAccessGreenPoeRoom;

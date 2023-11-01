@@ -350,7 +350,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "This item is under the rock one room from the Sacred Forest Meadow.",
                         CustomRequirement: function(age) {
-                            return Data.canBlastOrSmash(age) ||
+                            return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) ||
                                 (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
                         }
                     }
@@ -419,7 +419,7 @@ let MapLocations = {
                         ScrubSanityNotRequired: true, // Deku nut upgrade
                         Age: Age.EITHER,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, straight, left. Remove the rock in this room. This is the front scrub.",
-                        NeedToBlastOrSmash: true
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "*Plant Bean by Forest Stage": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -1802,8 +1802,10 @@ let MapLocations = {
                 Exits: {
                     upper: {
                         CustomRequirement: function(age) {
-                            let canRideTrailBeanPlant = age === Age.ADULT && Data.itemLocationObtained("Death Mountain Trail", "main", "*Plant Bean by Dodongo's Cavern");
-                            let areRocksGone = Data.canBlastOrSmash(age) || Data.itemLocationObtained("Death Mountain Trail", "main", "Break Rocks Blocking Top Path");
+                            let canRideTrailBeanPlant = age === Age.ADULT && 
+                                Data.itemLocationObtained("Death Mountain Trail", "main", "*Plant Bean by Dodongo's Cavern");
+                            let areRocksGone = ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) || 
+                                Data.itemLocationObtained("Death Mountain Trail", "main", "Break Rocks Blocking Top Path");
                             return canRideTrailBeanPlant || areRocksGone;
                         }
                     },
@@ -1831,7 +1833,7 @@ let MapLocations = {
                         LongDescription: "If you take the left path out of Goron City, the wall to bomb or hammer will be to your right.",
                         CustomRequirement: function(age) {
                             let canClipIn = Settings.GlitchesToAllow.dmtClipToChestByGoron && ItemData.canUse(age, ItemSets.SWORDS);
-                            return canClipIn || Data.canBlastOrSmash(age);
+                            return canClipIn || ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS);
                         }
                     },
                     "Heart Piece Above Dodongo's Cavern": {
@@ -1864,7 +1866,7 @@ let MapLocations = {
                         MapInfo: { x: 151, y: 235 },
                         Age: Age.EITHER,
                         LongDescription: "From the Kakariko entrance, follow the right wall until you get to the discolored wall. Bomb or hammer it to reveal the skulltula. Child can Deku Stick jumpslash, Bomb, Bombchu, Slingshot, or Boomerang it. Adult can jumpslash it. You can climb the wall to collect the token.",
-                        NeedToBlastOrSmash: true // Well, it has the same requirements
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "*Plant Bean by Dodongo's Cavern":  {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -1880,7 +1882,7 @@ let MapLocations = {
                         MapImageName: "Bomb",
                         Age: Age.EITHER,
                         LongDescription: "Used for co-op. These are the rocks blocking the path to Death Mountain Crater.",
-                        NeedToBlastOrSmash: true,
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS],
                         CoOpOnly: true
                     },
                     "Red Rupee in Rock by Cow Grotto": {
@@ -1890,7 +1892,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "As a child, this item is under the highest rock that's blocking access to the top of Death Mountain. You can snag it with the boomerang from the bottom with a good angle.",
                         CustomRequirement: function(age) {
-                            return Data.canBlastOrSmash(age) ||
+                            return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) ||
                                 (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
                         }
                     },
@@ -1901,7 +1903,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "As a child, this item is under the leftmost rock by the rocks blocking access to the top of Death Mountain. You can snag it with the boomerang if you stand far back enough on the platform.",
                         CustomRequirement: function(age) {
-                            return Data.canBlastOrSmash(age) ||
+                            return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) ||
                                 (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
                         }
                     }
@@ -2263,7 +2265,7 @@ let MapLocations = {
                         MapInfo: { x: 91, y: 25 },
                         Age: Age.CHILD,
                         LongDescription: "Make your way to the topmost northwest corner of the city. Bomb or hammer the rocks to get to the back right corner of the maze. Roll into the crate the get this skulltula.",
-                        NeedToBlastOrSmash: true
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "Skulltula on Center Platform": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -2276,10 +2278,7 @@ let MapLocations = {
                         MapInfo: { x: 82, y: 26 },
                         Age: Age.EITHER,
                         LongDescription: "Make your way to the topmost northwest corner of the city. Bomb, hammer, or pick up (only silvers) the rocks to get to the back right corner of the maze for this stone.",
-                        CustomRequirement: function(age) {
-                            if (Data.canBlastOrSmash(age)) { return true; }
-                            return age === Age.ADULT && Equipment.STRENGTH.currentUpgrade > 1; // Silver gaunts+
-                        }
+                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
                     },
                     "Gossip Stone By Medigoron": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -2366,9 +2365,7 @@ let MapLocations = {
                 Exits: {
                     lostWoodsRocks: {
                         CustomRequirement: function(age) {
-                            let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
-                            return canUseDins ||
-                                Data.canBlastOrSmash(age) ||
+                            return ItemData.canUseAny(age, [ItemSets.BLAST_OR_SMASH_ITEMS, Items.DINS_FIRE]) ||
                                 Data.itemLocationObtained("Goron City", "lostWoodsRocks", "Rocks Blocking Lost Woods");
                         }
                     },
@@ -2395,14 +2392,15 @@ let MapLocations = {
                         LongDescription: "These are the rocks blocking the Lost Woods entrance. Either blow them up (you can shoot the right one with a bow), or use a deku stick lit on fire to activate the nearby bomb flowers.",
                         IsPostWalkCheck: true,
                         CustomRequirement: function(age) {
-                            let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
-                            if (Data.canBlastOrSmash(age) || canUseDins) { return true; }
+                            // From woods or main
+                            if (ItemData.canUseAny(age, [ItemSets.BLAST_OR_SMASH_ITEMS, Items.DINS_FIRE])) { 
+                                return true; 
+                            }
 
                             let canGetToMain = Data.canAccessMap(age, "Goron City", "main");
-                            let canShootBow = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
                             let canLightBombFlower = ItemData.canUse(age, Items.DEKU_STICK) && Data.canAccessMap(age, "Goron City", "darunia");
-                            let canExplodeBombFlower = Items.BLUE_FIRE.playerHas || Equipment.STRENGTH.playerHas;
-                            return canGetToMain && (canShootBow || canLightBombFlower || canExplodeBombFlower);
+                            let canExplodeBombFlower = ItemData.canUseAny(age, [Items.FAIRY_BOW, Items.BLUE_FIRE, Equipment.STRENGTH]);
+                            return canGetToMain && (canLightBombFlower || canExplodeBombFlower);
                         }
                     }
                 }
@@ -2465,7 +2463,7 @@ let MapLocations = {
                     upstream: {
                         CustomRequirement: function(age) {
                             return age === Age.ADULT || 
-                                Data.canBlastOrSmash(age) ||
+                                ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) ||
                                 Data.itemLocationObtained("Zora's River", "downstream", "Break Rocks Blocking Path");
                         }
                     },
@@ -2487,7 +2485,7 @@ let MapLocations = {
                         MapImageName: "Bomb",
                         Age: Age.CHILD,
                         LongDescription: "Used for co-op. These are the rocks blocking the entrance to Zora's River.",
-                        NeedToBlastOrSmash: true,
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS],
                         CoOpOnly: true
                     }
                 }
@@ -2813,10 +2811,10 @@ let MapLocations = {
                 Exits: {
                     hiddenTunnel: {
                         Age: Age.ADULT,
-                        NeedToBlastOrSmash: true,
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS],
                         CustomRequirement: function(age) {
-                            return Equipment.STRENGTH.currentUpgrade >= 2 || 
-                                (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2);
+                            return ItemData.canUse(age, UpgradedItems.SILVER_GAUNTLETS) || 
+                                (Data.canWeirdShot(age) && ItemData.canUse(age, UpgradedItems.LONGSHOT));
                         }
                     },
                     "Zora's Domain": {

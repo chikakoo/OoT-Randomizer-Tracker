@@ -382,7 +382,7 @@ let MQDungeons = {
                         RequiredChoiceOfItems: [ Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER, Equipment.STRENGTH]
                     },
                     topOfTorchPuzzleRoom: {
-                        NeedToBlastOrSmash: true
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     eastRoom: { 
                         CustomRequirement: function(age) { // Bring a bomb flower is handled by the upperLizalfosRoom
@@ -666,7 +666,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 31,
                         LongDescription: "After completing the torch puzzle, burn the web in the next room. Do the box pushing puzzle in the next room to get to the lizalfos room. Alternatively, you can blow up the rocks at the top of the main room and navigate around backwards to get here.<br/><br/>Bomb the rocks in the back of this room to get to the skulltula.",
-                        NeedToBlastOrSmash: true
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "2 Pots by Top Lizalfos Room Wall": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -1034,7 +1034,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "In the first room, destroy the yellow rock and hit the switch underneath to spawn the chest.",
-                        NeedToBlastOrSmash: true
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "Chest in Main Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1203,7 +1203,7 @@ let MQDungeons = {
                 UseChildAge: function() { !Settings.GlitchesToAllow.equipSwap; },
                 Exits: {
                     afterTentaclesDefeated: {
-                        NeedToBlastOrSmash: true
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     }
                 },
                 ItemLocations: {
@@ -1231,8 +1231,7 @@ let MQDungeons = {
             afterTentaclesDefeated: {
                 Exits: {
                     afterBigOcto: {
-                        RequiredItems: [ItemSets.SWORDS],
-                        NeedToBlastOrSmash: true
+                        RequiredItems: [ItemSets.SWORDS, ItemSets.BLAST_OR_SMASH_ITEMS]
                     }
                 },
 
@@ -1334,7 +1333,7 @@ let MQDungeons = {
         StartingFloorIndex: 1,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canAccessAllPoeRooms: function(age) {
-            // Requres an IsPostWalkCheck on each item using this!
+            // Requires an IsPostWalkCheck on each item using this!
             let canAccessFirstPoes = Data.canAccessMap(age, "Forest Temple", "poeRooms");
             let canAccessGreenPoeRoom = Data.canAccessMap(age, "Forest Temple", "greenPoeRoom");
             return canAccessFirstPoes && canAccessGreenPoeRoom;
@@ -4508,7 +4507,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 1.1,
                         LongDescription: "This rupee is under the left rock as you enter the temple.",
-                        NeedToBlastOrSmash: true
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "Lobby Silver Rupee in Right Rock": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4516,7 +4515,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 1.2,
                         LongDescription: "This rupee is under the right rock as you enter the temple.",
-                        NeedToBlastOrSmash: true
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "Bottom Left Chest in Lobby": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4533,9 +4532,7 @@ let MQDungeons = {
                         Order: 3,
                         AltOrder: 3,
                         LongDescription: "After you first enter the temple, go up the stairs. Destroy the yellow rock to your right and shoot the eye switch to spawn the chest.",
-                        NeedToBlastOrSmash: true,
-                        RequiredChildItems: [Items.FAIRY_SLINGSHOT],
-                        RequiredAdultItems: [Items.FAIRY_BOW]
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.PROJECTILES]
                     },
                     "Top Right Chest in Lobby": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4544,9 +4541,7 @@ let MQDungeons = {
                         Order: 4,
                         AltOrder: 4,
                         LongDescription: "After you first enter the temple, go up the stairs and turn around. There's a crystal switch at the top of one of the pillars that you need to activate to spawn the chest.",
-                        CustomRequirement: function(age) {
-                            return Data.canShootEyeSwitch(age) || ItemData.canUse(age, Items.BOOMERANG) || Items.BOMBCHU.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.PROJECTILES, Items.BOOMERANG, Items.BOMBCHU]
                     },
 
                     // Locked Doors
@@ -5732,9 +5727,8 @@ let MQDungeons = {
                         }
                     },
                     drainedWater: {
-                        CustomRequirement: function(age) {
-                            return Data.canHitSwitchAtShortDistance(age); // Adult can weridshot into the deadhand area, which is all drainedWater is
-                        }
+                        // Adult can weridshot into the deadhand area, which is all drainedWater is
+                        RequiredItems: [ItemSets.DISTANT_SWITCH_ITEMS]
                     },
                     coffinRoom: {
                         Map: "Bottom of the Well",
@@ -5768,9 +5762,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 1.1,
                         LongDescription: "In the left alcove at the front of the main room, bomb the rock in the wall. Shoot it with your slingshot or bow to open a gate in the southeast corner of the giant room where the pot is.",
-                        NeedToBlastOrSmash: true,
-                        RequiredChildItems: [Items.FAIRY_SLINGSHOT],
-                        RequiredAdultItems: [Items.FAIRY_BOW]
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.PROJECTILES]
                     }
                 }
             },

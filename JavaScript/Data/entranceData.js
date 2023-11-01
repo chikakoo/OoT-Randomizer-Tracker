@@ -1844,14 +1844,16 @@ GrottoGroups = {
 				icon: "Heart Piece",
 				description: "To defeat King Dodongo, you must throw a bomb or bomb flower into his mouth, and then attack him afterward. Note that you should follow him as he rolls so that he gets up faster. If using bomb flowers, try to get them a little bit early, as you need time to run back to him before he shoots his fireball. The quickest kill is with 2 deku stick/master sword jumpslashes, or 1 biggoron's sword jumpslash.",
 				canGet: function(age) {
-					return Data.canBlastOrSmash(age) && (Items.BOMB.playerHas || Equipment.STRENGTH.playerHas);
+					return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) &&
+						ItemData.canUseAny(age, [Items.BOMB, Equipment.STRENGTH]);
 				}
 			},
 			"Blue Warp": {
 				icon: "King Dodongo",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
-					return Data.canBlastOrSmash(age) && (Items.BOMB.playerHas || Equipment.STRENGTH.playerHas);
+					return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) &&
+						ItemData.canUseAny(age, [Items.BOMB, Equipment.STRENGTH]);
 				}
 			}
 		}

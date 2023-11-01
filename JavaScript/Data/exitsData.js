@@ -213,7 +213,7 @@ let OwExits = {
             MapInfo: { x: 218, y: 118 },
             Age: Age.EITHER,
             LongDescription: "From the Kokiri Forest entrance, go right and then left. Remove the rock on this screen to reveal this grotto.",
-            NeedToBlastOrSmash: true
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Forest Stage Grotto": {
             ExitRegion: "secondHalf",
@@ -233,7 +233,7 @@ let OwExits = {
             MapInfo: { x: 202, y: 31 },
             Age: Age.EITHER,
             LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, straight, left. Remove the rock in this room to reveal the grotto.",
-            NeedToBlastOrSmash: true
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         }
     },
 
@@ -321,7 +321,7 @@ let OwExits = {
             MapInfo: { x: 177, y: 274 },
             Age: Age.EITHER,
             LongDescription: "This hidden grotto is roughly halfway between the Lost Woods entrance and the maze entrance. It can be revealed with an explosive or a hammer.",
-            IsHiddenGrotto: true
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Grotto in Maze Center": {
             ExitRegion: "afterGate",
@@ -418,7 +418,7 @@ let OwExits = {
             MapInfo: { x: 237, y: 23 },
             Age: Age.EITHER,
             LongDescription: "North of the entrance to Kakariko, there's a tree with a hidden grotto - bomb or hammer to open it.",
-            IsHiddenGrotto: true
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Grotto in Drawbridge Rock": {
             ExitRegion: "main",
@@ -428,7 +428,7 @@ let OwExits = {
             MapInfo: { x: 170, y: 39 },
             Age: Age.EITHER,
             LongDescription: "Remove the rock to the left of the Market drawbridge to reveal this grotto.",
-            NeedToBlastOrSmash: true
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Grotto in Rock North of River": {
             ExitRegion: "main",
@@ -437,7 +437,7 @@ let OwExits = {
             MapInfo: { x: 102, y: 20 },
             Age: Age.EITHER,
             LongDescription: "On the north side of the river to the west of the Market entrance, there's a grotto under a yellow rock.",
-            NeedToBlastOrSmash: true
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Hidden Grotto by North River Tree": {
             ExitRegion: "main",
@@ -447,7 +447,7 @@ let OwExits = {
             MapInfo: { x: 91, y: 57 },
             Age: Age.EITHER,
             LongDescription: "To the west of the Market entrance, there's a lone tree to the south of a river. Bomb or hammer near the tree to reveal this grotto.",
-            IsHiddenGrotto: true
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Grotto by Gerudo": {
             ExitRegion: "main",
@@ -468,7 +468,7 @@ let OwExits = {
             MapInfo: { x: 91, y: 267 },
             Age: Age.EITHER,
             LongDescription: "There's a hidden grotto in the center of the fences by Lake Hylia. Bomb or hammer there to get in. The scrub is inside.",
-            IsHiddenGrotto: true
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Open Grotto East of Lake Hylia Fences": {
             ExitRegion: "main",
@@ -487,7 +487,7 @@ let OwExits = {
             MapInfo: { x: 201, y: 227 },
             Age: Age.EITHER,
             LongDescription: "In the southeast (a bit south of the Kokiri Forest entrance), there's a small forest that has a rock you can break to reveal this grotto.",
-            NeedToBlastOrSmash: true
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         }
     },
 
@@ -807,7 +807,7 @@ let OwExits = {
             MapInfo: { x: 285, y: 231, floor: "HYR" },
             Age: Age.CHILD,
             LongDescription: "After climbing the vines and jumping off the building, follow the right wall until you reach a rock. Bomb it and enter the crawlspace.",
-            NeedToBlastOrSmash: true,
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Song of Storms Grotto": {
             ExitRegion: "main",
@@ -944,7 +944,7 @@ let OwExits = {
             MapInfo: { x: 142, y: 169 },
             Age: Age.EITHER,
             LongDescription: "This hidden grotto is between the tree and Talon's house. There's a slightly darker texture that you need to either hammer or bomb.",
-            IsHiddenGrotto: true
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Archery Minigame": {
             ExitRegion: "main",
@@ -1290,7 +1290,7 @@ let OwExits = {
             MapInfo: { x: 220, y: 19 },
             Age: Age.EITHER,
             LongDescription: "This is behind a wall you can destroy on the top of the mountain.",
-            NeedToBlastOrSmash: true
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Cow Grotto": {
             ExitRegion: "upper",
@@ -1301,7 +1301,7 @@ let OwExits = {
             MapInfo: { x: 200, y: 186 },
             Age: Age.EITHER,
             LongDescription: "This is under the yellow rock on the ledge right after you bomb the rocks to reach the upper part of the mountain.",
-            NeedToBlastOrSmash: true
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         }
     },
 
@@ -1357,7 +1357,7 @@ let OwExits = {
             MapInfo: { x: 172, y: 260 },
             Age: Age.EITHER,
             LongDescription: "At the top of the crater, bomb or hammer the middle of the circle of rocks to reveal the grotto.",
-            NeedToBlastOrSmash: true
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Great Fairy Fountain": {
             ExitRegion: "middle",
@@ -1503,7 +1503,7 @@ let OwExits = {
             MapInfo: { x: 159, y: 206 },
             Age: Age.EITHER,
             LongDescription: "Go up the ladder closest to Hyrule Field. This grotto is under the yellow rock at the top.",
-            NeedToBlastOrSmash: true
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         }
     },
 

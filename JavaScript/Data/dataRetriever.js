@@ -770,7 +770,6 @@ Data = {
 		if (!this.canPlaySongs(itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canPlayDifficultOcarinaItems(itemLocation)) { return ItemObtainability.NO; }
 		if (!this.hasBottle(itemLocation)) { return ItemObtainability.NO; }
-        if (!this.canBlastOrSmash(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this.canBreakMudWalls(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this.canSinkSilverScaleDepth(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canSinkGoldenScaleDepth(age, itemLocation)) { return ItemObtainability.NO; }
@@ -1273,21 +1272,13 @@ Data = {
     canHitSwitchAtShortDistance: function(age) {
         return ItemData.canUse(age, ItemSets.DISTANT_SWITCH_ITEMS);
     },
-    
-    /**
-     * Returns whether the player can use explosives or the hammer
-     */
-	canBlastOrSmash: function(age, itemLocation) {
-		if (itemLocation && !itemLocation.NeedToBlastOrSmash && !itemLocation.IsHiddenGrotto) { return true; }
-        return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS);
-    },
 
     /**
      * Whether the player can break mud walls (explosives, hammer, or blue fire)
      */
     canBreakMudWalls: function(age, itemLocation) {
         if (itemLocation && !itemLocation.BlockedByMudWall) { return true; }
-        return this.canBlastOrSmash(age) || this.canUseBlueFire(age);
+        return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) || this.canUseBlueFire(age);
     },
     
     /**
