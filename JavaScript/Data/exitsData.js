@@ -1554,7 +1554,8 @@ let OwExits = {
             LongDescription: "This is the shop. As an adult, you can either use Blue Fire, or perform the shop skip to get inside.",
             CustomRequirement: function(age) {
                 if (age === Age.CHILD) { return true; }
-                return Data.canUseBlueFire(age) || Settings.GlitchesToAllow.blueFireShopSkip;
+                return ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS) || 
+                    Settings.GlitchesToAllow.blueFireShopSkip;
             }
         },
         "Song of Storms Grotto": {

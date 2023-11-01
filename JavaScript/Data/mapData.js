@@ -2695,7 +2695,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Dump Blue Fire on the frozen King Zora to thaw him. Talk to him from the platform in front of him and he will give you an item.<br/><br/>You can also use any item that link takes out above his head (or Nayru's Love) to thaw him. Backwalk up the stairs, then take out the item after the black loading zone. Turn around and he should be thawed.",
                         CustomRequirement: function(age) {
-                            if (Data.canUseBlueFire(age)) { return true; }
+                            if (ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS)) { return true; }
                             if (!Settings.GlitchesToAllow.thawKingZoraWithNothing) { return false; }
                             if (!Data.itemLocationObtained("Zora's Domain", "main", "Move King Zora") && !SocketClient.isCoOp()) {
                                 // The sign reading glitch doesn't seem to work on ModLoader...

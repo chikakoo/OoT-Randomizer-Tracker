@@ -223,23 +223,32 @@ let ItemSets = {
 	DAMAGING_ITEMS: {
 		isItemSet: true,
 		items: [		
-			Equipment.MASTER_SWORD, Equipment.KOKIRI_SWORD, 
-			Items.DEKU_STICK, Items.BOOMERANG, Items.FAIRY_SLINGSHOT, Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU
+			Equipment.MASTER_SWORD, Equipment.KOKIRI_SWORD, Items.DEKU_STICK,
+			Items.DINS_FIRE, Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER,
+			Items.BOOMERANG, Items.FAIRY_SLINGSHOT
 		]
 	},
 	STUNNABLE_ENEMY_KILL_ITEMS: {
-		IsItemSet: true,
-		Items: [
+		isItemSet: true,
+		items: [
 			Equipment.MASTER_SWORD, Equipment.KOKIRI_SWORD, Items.DEKU_STICK, Items.FAIRY_SLINGSHOT,
 			Items.DINS_FIRE, Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER
 		]
 	},
 	FREEZARD_KILL_ITEMS: {
-		IsItemSet: true,
-		Items: [
+		isItemSet: true,
+		items: [
 			Equipment.MASTER_SWORD, Items.DEKU_STICK, Items.MEGATON_HAMMER,
 			Items.BOMB, Items.BOMBCHU, Items.DINS_FIRE
 		]
+	},
+	BLUE_FIRE_ITEMS: {
+		isItemSet: true,
+		items: [Items.BLUE_FIRE, Items.ICE_ARROW]
+	},
+	MUD_WALL_ITEMS: {
+		isItemSet: true,
+		items: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER, Items.BLUE_FIRE, Items.ICE_ARROW]
 	}
 };
 
@@ -1293,9 +1302,13 @@ let ItemData = {
 			case Equipment.HOVER_BOOTS:
 				return age === Age.ADULT;
 			case Items.FIRE_ARROW:
-			case Items.ICE_ARROW:
 			case Items.LIGHT_ARROW:
 				return age === Age.ADULT && 
+					Items.FAIRY_BOW.playerHas && 
+					Equipment.MAGIC.playerHas;
+			case Items.ICE_ARROW: // Ice arrows don't do anything special unless they act as blue fire
+				return age === Age.ADULT && 
+					Settings.RandomizerSettings.iceArrowsActAsBlueFire &&
 					Items.FAIRY_BOW.playerHas && 
 					Equipment.MAGIC.playerHas;
 

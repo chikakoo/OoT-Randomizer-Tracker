@@ -1193,15 +1193,7 @@ Data = {
      * Returns whether the player has the actual blue fire item or an empty bottle
      */
     hasBottleOrBlueFire: function(age) {
-        return this.hasBottle() || this.canUseBlueFire(age);
-    },
-
-    /**
-     * Returns whether the play can use blue fire - includes ice arrows
-     */
-    canUseBlueFire: function(age) {
-        let canUseIceArrows = Settings.RandomizerSettings.iceArrowsActAsBlueFire && this.canUseIceArrows(age);
-        return canUseIceArrows || Items.BLUE_FIRE.playerHas;
+        return this.hasBottle() || ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS);
     },
 
     /**
@@ -1220,9 +1212,9 @@ Data = {
             return acc;
         }, 0);
 
-        let canUseIceArrows = Settings.RandomizerSettings.iceArrowsActAsBlueFire && this.canUseIceArrows(age);
+        let canUseIceArrows = ItemData.canUse(age, Items.ICE_ARROW);
         let canDoOI = Settings.GlitchesToAllow.ocarinaItems;
-        return canDoOI && (bottleCount >= 1 && canUseIceArrows || bottleCount > 1);
+        return canDoOI && ((bottleCount >= 1 && canUseIceArrows) || bottleCount > 1);
     },
 
     /**
@@ -1252,13 +1244,6 @@ Data = {
     },
 
     /**
-     * Returns whether the player can use ice arrows
-     */
-    canUseIceArrows: function(age) {
-        return age === Age.ADULT && Equipment.MAGIC.playerHas && Items.FAIRY_BOW.playerHas && Items.ICE_ARROW.playerHas;
-    },
-
-    /**
      * Returns whether the player can activate an eye switch
      */
     canShootEyeSwitch: function(age) {
@@ -1278,7 +1263,7 @@ Data = {
      */
     canBreakMudWalls: function(age, itemLocation) {
         if (itemLocation && !itemLocation.BlockedByMudWall) { return true; }
-        return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) || this.canUseBlueFire(age);
+        return ItemData.canUseAny(age, [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.BLUE_FIRE_ITEMS]);
     },
     
     /**

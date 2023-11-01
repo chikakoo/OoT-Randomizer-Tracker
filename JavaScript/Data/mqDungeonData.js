@@ -5577,7 +5577,7 @@ let MQDungeons = {
                         Order: 7,
                         LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>Play the song of time on the top near the pillar with the skulltula to spawn a block. Climb it, and play the song again. Use blue fire to melt the ice to gain access to the skulltula.",
                         CustomRequirement: function(age) {
-                            if (Settings.RandomizerSettings.iceArrowsActAsBlueFire && Data.canUseIceArrows(age)) {
+                            if (ItemData.canUse(age, Items.ICE_ARROW)) {
                                 return true;
                             }
 
@@ -6621,6 +6621,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "This is the locked door in the water trial, blocked by the red ice.",
+                        RequiredItems: [ItemSets.BLUE_FIRE_ITEMS],
                         KeyRequirement: function(age) {
                             let max = 3;
                             let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
@@ -6634,9 +6635,6 @@ let MQDungeons = {
                                 max = 1;
                             }
                             return { min: 1, max: max };
-                        },
-                        CustomRequirement: function(age) {
-                            return Data.canUseBlueFire(age);
                         }
                     },
                     "Locked Door 1 in Light Trial": {
@@ -6647,7 +6645,7 @@ let MQDungeons = {
                         Order: 19,
                         LongDescription: "This is the locked door in the Zelda's Lullaby room of the light trial.",
                         KeyRequirement: function(age) {
-                            let max = Data.canUseBlueFire(age) ? 2 : 1;
+                            let max = ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS) ? 2 : 1;
                             return { min: 1, max: max };
                         }
                     },
@@ -6659,7 +6657,7 @@ let MQDungeons = {
                         Order: 21,
                         LongDescription: "This is the locked door in the boulder/fire wall froom of the light trial.",
                         KeyRequirement: function(age) {
-                            let max = Data.canUseBlueFire(age) ? 3 : 2;
+                            let max = ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS) ? 3 : 2;
                             return { min: 2, max: max };
                         }
                     }
@@ -6685,9 +6683,7 @@ let MQDungeons = {
                     waterTrialBlockPuzzle: {
                         Map: "Ganon's Castle",
                         LockedDoor: "Locked Door in Water Trial",
-                        CustomRequirement: function(age) {
-                            return Data.canUseBlueFire(age);
-                        }
+                        RequiredItems: [ItemSets.BLUE_FIRE_ITEMS]
                     }
                 },
                 ItemLocations: {
@@ -6706,7 +6702,8 @@ let MQDungeons = {
                         Order: 11,
                         LongDescription: "In the water trial - this heart is in the blue ice in the right side of the room (or use a boomerang trick shot).<br/><br/>To gain access to the blue fire, attack the weird hand thing on the right side of the room to lower the water around the blue fire.",
                         CustomRequirement: function(age) {
-                            return Data.canUseBlueFire(age) || (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
+                            return ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS) || 
+                                (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
                         }
                     }
                 }

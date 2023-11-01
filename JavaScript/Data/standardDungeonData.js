@@ -16,19 +16,11 @@ let StandardDungeons = {
             main: {
                 Exits: {
                     slingshotRoom: {
-                        CustomRequirement: function(age) {
-                            if (ItemData.canUse(age, Items.MEGATON_HAMMER)) { return true; }
-                            if (age === Age.ADULT) {
-                                return Equipment.HYLIAN_SHIELD.playerHas;
-                            }
-                            return Equipment.DEKU_SHIELD.playerHas; 
-                        }
+                        RequiredChoiceOfItems: [Equipment.DEKU_SHIELD, Equipment.HYLIAN_SHIELD, Items.MEGATON_HAMMER]
                     },
-
                     basementBottom: {
                         RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
                     },
-
                     Exit: {
                         OwExit: OwExits["Deku Tree"]["Exit"]
                     }
@@ -326,10 +318,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "Go to the room to the east of the main room. If you hug the right wall, you'll find a bombable wall. You can either blow it up with your own explosive, or kill a baby Dodongo near the wall.<br/><br/>Once inside, head to the back of the room to find the skulltula.",
-                        CustomRequirement: function(age) {
-                            // First check covers bombs/hammer/stunning the baby dodongo
-                            return Data.canKillStunnableEnemy(age) || Data.canUseBlueFire(age);
-                        }
+                        RequiredChoiceOfItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS, ItemSets.MUD_WALL_ITEMS]
                     },
                     "2 Pots by East Room Ledge": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -4879,7 +4868,7 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             return ItemData.canUse(age, ItemSets.SWORDS) || 
                                 (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG)) || 
-                                Data.canUseBlueFire(age);
+                                ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS);
                         }
                     }
                 }
@@ -4892,13 +4881,11 @@ let StandardDungeons = {
                                 return true;
                             }
                             let isWallMelted = Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt East Ice Wall");
-                            return isWallMelted || Data.canUseBlueFire(age);
+                            return isWallMelted || ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS);
                         }
                     },
                     blueFire: {
-                        CustomRequirement: function(age) {
-                            return Data.canUseBlueFire(age);
-                        }
+                        RequiredItems: [ItemSets.BLUE_FIRE_ITEMS]
                     },
                     northRoom: {
                         Map: "Ice Cavern",
@@ -4908,7 +4895,7 @@ let StandardDungeons = {
                     blockPushRoom: {
                         CustomRequirement: function(age) {
                             let isWallMelted = Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt West Ice Wall");
-                            return isWallMelted || Data.canUseBlueFire(age);
+                            return isWallMelted || ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS);
                         }
                     }
                 },
@@ -5002,7 +4989,7 @@ let StandardDungeons = {
                 ItemLocations: {
                     "Melt East Ice Wall": {
                         ItemGroup: ItemGroups.NON_ITEM,
-                        RequiredToAppear: function() { return !Data.canUseBlueFire(Age.CHILD); },
+                        RequiredToAppear: function() { return !ItemData.canUse(Age.CHILD, ItemSets.BLUE_FIRE_ITEMS); },
                         MapInfo: { x: 211, y: 114 },
                         MapImageName: "Blue Fire Blue Fire",
                         Age: Age.ADULT,
@@ -5011,7 +4998,7 @@ let StandardDungeons = {
                     },
                     "Melt West Ice Wall": {
                         ItemGroup: ItemGroups.NON_ITEM,
-                        RequiredToAppear: function() { return !Data.canUseBlueFire(Age.CHILD); },
+                        RequiredToAppear: function() { return !ItemData.canUse(Age.CHILD, ItemSets.BLUE_FIRE_ITEMS); },
                         MapInfo: { x: 157, y: 114 },
                         MapImageName: "Blue Fire Blue Fire",
                         Age: Age.ADULT,
@@ -6326,14 +6313,12 @@ let StandardDungeons = {
                     },
                     fireTrialRoom1: {
                         CustomRequirement: function(age) {
-                            let canWearTunic = age === Age.ADULT && Equipment.GORON_TUNIC.playerHas;
-                            return Settings.GlitchesToAllow.ganonFireNoTunic || canWearTunic;
+                            return Settings.GlitchesToAllow.ganonFireNoTunic || 
+                                ItemData.canUse(age, Equipment.GORON_TUNIC);
                         }
                     },
                     waterTrialRoom2: {
-                        CustomRequirement: function(age) {
-                            return Data.canUseBlueFire(age) && Data.canKillFreezard(age);
-                        }
+                        RequiredItems: [ItemSets.BLUE_FIRE_ITEMS, ItemSets.FREEZARD_KILL_ITEMS]
                     },
                     shadowTrialMiddle: {
                         Age: Age.ADULT,
