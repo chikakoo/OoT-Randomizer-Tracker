@@ -772,8 +772,6 @@ Data = {
 		if (!this.hasBottle(itemLocation)) { return ItemObtainability.NO; }
         if (!this.canSinkSilverScaleDepth(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canSinkGoldenScaleDepth(age, itemLocation)) { return ItemObtainability.NO; }
-		if (!this.canUseFireItem(age, itemLocation)) { return ItemObtainability.NO; }
-		if (!this.canKillStunnableEnemy(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkKeyRequirement(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkSilverRupeeRequirement(itemLocation)) { return ItemObtainability.NO; }
 
@@ -1224,38 +1222,12 @@ Data = {
     },
 
     /**
-     * Returns whether the player can use an item that generates fire
-     * Deku stick excluded since you still need a fire source
-     */
-	canUseFireItem: function(age, itemLocation) {
-        if (itemLocation && !itemLocation.NeedsFire) { return true; }
-
-        let canUseDinsFire = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
-		return canUseDinsFire || this.canUseFireArrows(age);
-    },
-
-    /**
      * Returns whether the player can use fire arrows
      */
     canUseFireArrows: function(age) {
         return age === Age.ADULT && Equipment.MAGIC.playerHas && Items.FAIRY_BOW.playerHas && Items.FIRE_ARROW.playerHas;
     },
 
-    /**
-     * Returns whether the player can activate an eye switch
-     */
-    canShootEyeSwitch: function(age) {
-		return ItemData.canUse(age, ItemSets.PROJECTILES);
-	},
-
-    /**
-     * Whether the current age can hit a crystal switch that's out of melee distance
-     * @param {Age} age - the age
-     */
-    canHitSwitchAtShortDistance: function(age) {
-        return ItemData.canUse(age, ItemSets.DISTANT_SWITCH_ITEMS);
-    },
-    
     /**
      * Returns whether the player can ground jump using a bomb
      * @param includeBombFlower - Whether bomb flowers are feasible here (adds a strength check)
@@ -1312,22 +1284,6 @@ Data = {
 		
 		return canPlaySong || canStealEpona;
 	},
-    
-    /**
-     * Returns whether the player can kill a stunnable enemy
-     */
-	canKillStunnableEnemy: function(age, itemLocation) {
-		if (itemLocation && !itemLocation.MustKillStunnableEnemy) { return true; }
-		
-		return ItemData.canUse(age, ItemSets.STUNNABLE_ENEMY_KILL_ITEMS);
-	},
-
-    /**
-     * Returns whether the player can kill a freezard
-     */
-    canKillFreezard: function(age) {
-        return ItemData.canUse(age, ItemSets.FREEZARD_KILL_ITEMS);
-    },
 
     /**
      * Returns whether the item location passes the key requirement

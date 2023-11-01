@@ -14,17 +14,11 @@ let MQDungeons = {
             main: {
                 Exits: {
                     compassRoomAntechamber: {
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || 
-                                ItemData.canUse(age, Items.DEKU_STICK) ||
-                                (age === Age.ADULT && Items.FAIRY_BOW.playerHas);
-                        }
+                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE]
                     },
                     waterRoom: {
-                        CustomRequirement: function(age) {
-                            if (!Data.canShootEyeSwitch(age)) { return false; }
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
-                        }
+                        RequiredItems: [ItemSets.PROJECTILES],
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
                     },
                     upperBasement: {
                         CustomRequirement: function(age) {
@@ -98,11 +92,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>Light the unlit torch in this room to spawn the chest. If using a bow, it's easier if you shoot it from the left side of the torch.",
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || 
-                                ItemData.canUse(age, Items.DEKU_STICK) ||
-                                (age === Age.ADULT && Items.FAIRY_BOW.playerHas);
-                        }
+                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE]
                     },
                     "Basement Web Switch Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -110,11 +100,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "Head to the basement. The goal is to hit the switch to the right of the vines to spawn the chest. If you have Din's Fire, use it on the webs. Otherwise, hit the switch to the left of the vines to light the torch, then use your sticks or shoot an arrow through it to gain access to the switch.",
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || 
-                                ItemData.canUse(age, Items.DEKU_STICK) ||
-                                (age === Age.ADULT && Items.FAIRY_BOW.playerHas);
-                        }
+                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE]
                     }
                 }
             },
@@ -248,9 +234,7 @@ let MQDungeons = {
                         Order: 15,
                         LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Note that you can also use Din's Fire. Light the torches to open the next room. Defeat all the enemies in this room to continue on.<br/><br/>Step on the blue switch in the middle of the torches. Light a stick, use Din's or shoot an arrow to burn the web blocking the left door. The skulltula is in this room.",
                         RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
-                        }
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
                     }
                 }
             },
@@ -263,7 +247,7 @@ let MQDungeons = {
                     lowerBasement: {
                         CustomRequirement: function(age) {
                             let webAlreadyBurned = Data.itemLocationObtained("Deku Tree", "upperBasement", "Burn Basement Web");
-                            let canBurnWeb = Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
+                            let canBurnWeb = ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]);
                             return canBurnWeb || webAlreadyBurned || Data.canWeirdShot(age);
                         }
                     }
@@ -285,9 +269,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 16.1,
                         LongDescription: "The web on the basement floor. Use sticks or a fire item to burn it.",
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
-                        }
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
                     }
                 }
             },
@@ -581,9 +563,7 @@ let MQDungeons = {
                         }
                     },
                     upperLizalfosRoom: {
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
-                        }
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
                     }
                 },
 
@@ -602,9 +582,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 26,
                         LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. Kill all the enemies to spawn the chest.",
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
-                        }
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
                     },
                     "6 Crates in Room by Torch Puzzle": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -615,9 +593,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 27,
                         LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. The crates are in this room.",
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
-                        }
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
                     },
                     "Skulltula in Room by Torch Puzzle": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -625,9 +601,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 28,
                         LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. The skulltula is in one of the right boxes.",
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
-                        }
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
                     }
                 }
             },
@@ -1155,9 +1129,7 @@ let MQDungeons = {
                 UseChildAge: function() { !Settings.GlitchesToAllow.equipSwap; },
                 Exits: {
                     afterWebBurned: {
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Items.DEKU_STICK) || Data.canUseFireItem(age);
-                        }
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
                     }
                 },
                 ItemLocations: {
@@ -1206,9 +1178,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 18,
                         LongDescription: "Using a deku stick to bring a fire from the Like Like room, or a fire item, burn the web to get access to the far west room. After killing the tentacle, head to the far east room and kill that tentacle. Now leave and enter the room to your left. Use the switch and a bomb, or a bombchu to blow up the rock on the ceiling to reveal the skulltula.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Items.DEKU_STICK) || Data.canUseFireItem(age);
-                        }
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
                     },
                     "Tentacles Defeated": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -1469,16 +1439,12 @@ let MQDungeons = {
                     },
 
                     outsideEast: {
-                        CustomRequirement: function(age) {
-                            return Data.canShootEyeSwitch(age);
-                        }
+                        RequiredItems: [ItemSets.PROJECTILES]
                     },
 
                     //TOOD: verify this one
                     outsideWest: {
-                        CustomRequirement: function(age) {
-                            return Data.canShootEyeSwitch(age);
-                        }
+                        RequiredItems: [ItemSets.PROJECTILES]
                     },
 
                     greenPoeRoom: {
@@ -1725,8 +1691,8 @@ let MQDungeons = {
                         Order: 9,
                         LongDescription: "This chest is in the well. If you can't drain the water with the eye switch (in the well itself from the east room), you can hookshot the chest and spam the button to open it.",
                         CustomRequirement: function(age) {
-                            if (Data.canShootEyeSwitch(age)) { return true; }
-                            return age === Age.ADULT && Items.HOOKSHOT.playerHas && Equipment.IRON_BOOTS.playerHas
+                            return ItemData.canUse(age, ItemSets.PROJECTILES) ||
+                                ItemData.canUseAll(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
                         }
                     },
                     "3 Hearts in Well": {
@@ -1738,10 +1704,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "This chest is in the well. Use iron boots if you can't drain the water with the eye switch (in the well itself from the east room).",
-                        CustomRequirement: function(age) {
-                            if (Data.canShootEyeSwitch(age)) { return true; }
-                            return age === Age.ADULT && Equipment.IRON_BOOTS.playerHas
-                        }
+                        RequiredChoiceOfItems: [ItemSets.PROJECTILES, Equipment.IRON_BOOTS]
                     },
                     "Skulltula in Well": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -1750,8 +1713,8 @@ let MQDungeons = {
                         Order: 11,
                         LongDescription: "This skulltula is on one of the grates in the water of the well (in the well itself from the east room). If you can't shoot the eye switch to drain the water, you can still get the skulltula with iron boots and the hookshot.",
                         CustomRequirement: function(age) {
-                            if (Data.canShootEyeSwitch(age)) { return true; }
-                            return age === Age.ADULT && Items.HOOKSHOT.playerHas && Equipment.IRON_BOOTS.playerHas
+                            return ItemData.canUse(age, ItemSets.PROJECTILES) ||
+                                ItemData.canUseAll(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
                         }
                     }
                 }
@@ -1830,9 +1793,7 @@ let MQDungeons = {
             carouselRoom: {
                 Exits: {
                     fallingCeilingRoom: {
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || (age === Age.ADULT && Items.FAIRY_BOW.playerHas);
-                        }
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE]
                     }
                 },
                 ItemLocations: {
@@ -1954,7 +1915,7 @@ let MQDungeons = {
                 Exits: {
                     roomBeforeBoss: {
                         Age: Age.EITHER,
-                        NeedsFire: true,
+                        RequiredItems: [ItemSets.FIRE_ITEMS],
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD && !Settings.GlitchesToAllow.fireWallSkip && !Data.canBombSuperslide(age)) { 
                                 return false; 
@@ -2329,7 +2290,7 @@ let MQDungeons = {
                 Exits: {
                     boulderMaze: {
                         Age: Age.ADULT,
-                        NeedsFire: true
+                        RequiredItems: [ItemSets.FIRE_ITEMS]
                     },
                     cellBelowBoulderMaze: {
                         Age: Age.ADULT,
@@ -2815,8 +2776,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 5,
                         LongDescription: "Use your iron boots and navigate through the lower eastern room. Take them off to rise to the top to get to the triforce room. Use a fire item to light the torches in the four corners of the room to unbar the door.<br/><br/>Enter the next room and optionally defeat all the Stalfos to unbar the door. The chest is spawned by hitting the back wall with the hookshot.",
-                        NeedsFire: true,
-                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT, ItemSets.FIRE_ITEMS]
                     },
                     "3 Crates in Mid South Hallway": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2896,9 +2856,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 7,
                         LongDescription: "Lower the water level. Navigate to the room below the water triforce. Light the torches using a fire item or your bow.<br/><br/>Defeat the enemies in the next room to spawn the chest",
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || Items.FAIRY_BOW.playerHas;
-                        }
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE]
                     }
                 }
             },
@@ -3198,7 +3156,7 @@ let MQDungeons = {
             dragonRoom: {
                 Exits: {
                     singleWaterPillarRoom: {
-                        NeedsFire: true,
+                        RequiredItems: [ItemSets.FIRE_ITEMS],
                         RequiredChoiceOfItems: [Equipment.IRON_BOOTS, Equipment.SCALE]
                     }
                 },
@@ -3456,7 +3414,7 @@ let MQDungeons = {
             northWaterfallArea: {
                 Exits: {
                     dodongoRoom: {
-                        NeedsFire: true
+                        RequiredItems: [ItemSets.FIRE_ITEMS]
                     }
                 },
                 ItemLocations: {
@@ -3832,7 +3790,8 @@ let MQDungeons = {
                     invisibleScytheRoom: {},
                     rightSideOfGiantRoom: {
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || Data.canMegaFlip(age) || (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas)
+                            return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, Equipment.HOVER_BOOTS]) || 
+                                Data.canMegaFlip(age);
                         }
                     }
                 },
@@ -4668,7 +4627,7 @@ let MQDungeons = {
                         CustomRequirement: function(age) {
                             return ItemData.canUse(age, Items.HOOKSHOT) || // Hookshot the torches
                                 Data.canMegaFlip(age) || 
-                                (Items.BOMBCHU.playerHas && Data.canShootEyeSwitch(age));
+                                ItemData.canUseAll(age, [ItemSets.PROJECTILES, Items.BOMBCHU]);
                         }
                     },
                     afterSecondCrawlSpace: {
@@ -4772,7 +4731,7 @@ let MQDungeons = {
                         Order: 9,
                         AltOrder: 49,
                         LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. In the next room, kill the Stalfos and continue on. In this room, pull back the gravestone and hit the switch to lower the bridge. Now kill all the enemies to spawn the chest - you'll need Din's Fire to deal with the Anubis.",
-                        NeedsFire: true
+                        RequiredItems: [ItemSets.FIRE_ITEMS]
                     }
                 }
             },
@@ -4845,7 +4804,7 @@ let MQDungeons = {
                     },
                     silverBlockMaze: {
                         Age: Age.CHILD,
-                        NeedsFire: true
+                        RequiredItems: [Items.DINS_FIRE]
                     },
                     fireBubbleRoom: {
                         CustomRequirement: function(age) {
@@ -5475,7 +5434,7 @@ let MQDungeons = {
                     blueFireRoom: {
                         CustomRequirement: function(age) {
                             let canBreakStalagmites = ItemData.canUseAny(age, [ItemSets.SWORDS, ItemSets.EXPLOSIVES]);
-                            return Data.canKillFreezard(age) && canBreakStalagmites;
+                            return ItemData.canUse(age, ItemSets.FREEZARD_KILL_ITEMS) && canBreakStalagmites;
                         }
                     },
                     northRoom: {
@@ -5598,9 +5557,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 9,
                         LongDescription: "Across the room from the first room with blue fire, melt the ice wall. Navigate through the hallway to gain access to this room. Turn around once inside, and hit the switch posing as a stalagtite. This will make some stairs vanish near the exit of the room so you can grab the token. Be sure to hit the switch again so you can leave.",
-                        CustomRequirement: function(age) {
-                            return Data.canHitSwitchAtShortDistance(age);
-                        }
+                        RequiredItems: [ItemSets.DISTANT_SWITCH_ITEMS]
                     },
                     "Skulltula on Ledge in Big Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -5702,9 +5659,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 6,
                         LongDescription: "WALL MASTER WARNING:<br/>This is the locked door you find after the room with the floormasters.",
-                        CustomRequirement: function(age) {
-                            return Data.canHitSwitchAtShortDistance(age);
-                        },
+                        RequiredItems: [ItemSets.DISTANT_SWITCH_ITEMS],
                         KeyRequirement: function(age) {
                             return { min: 1, max: 2 };
                         }
@@ -5803,9 +5758,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door. Enter it - the pots are marking the invisible path around the room.",
-                        CustomRequirement: function(age) {
-                            return Data.canHitSwitchAtShortDistance(age);
-                        }
+                        RequiredItems: [ItemSets.DISTANT_SWITCH_ITEMS]
                     },
                     "Freestanding Item in East Center Room": {
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -5813,9 +5766,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door. Enter it, and navigate counter-clockwise around the room to get to the item.",
-                        CustomRequirement: function(age) {
-                            return Data.canHitSwitchAtShortDistance(age);
-                        }
+                        RequiredItems: [ItemSets.DISTANT_SWITCH_ITEMS]
                     },
                     "3 Hearts in Basement": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -5892,8 +5843,7 @@ let MQDungeons = {
                         Order: 4,
                         LongDescription: "Navigate to the left room in the main area. Unlock the door, then light the torch of the front right coffin (or use the boomerang). The heart is inside.",
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || 
-                                ItemData.canUse(age, Items.DEKU_STICK) ||
+                            return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]) ||
                                 (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
                         }
                     },
@@ -5905,8 +5855,7 @@ let MQDungeons = {
                         Order: 5,
                         LongDescription: "Navigate to the left room in the main area. Unlock the door, then light the torch of the middle left coffin (or use the boomerang). The heart is inside.",
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || 
-                                ItemData.canUse(age, Items.DEKU_STICK) ||
+                            return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]) ||
                                 (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
                         }
                     }
@@ -5936,7 +5885,7 @@ let MQDungeons = {
                         RequiredAdultItems: [Items.FAIRY_BOW]
                     },
                     leftArea: {
-                        NeedsFire: true
+                        RequiredItems: [ItemSets.FIRE_ITEMS]
                     },
                     backOfMaze: {
                         RequiredChildItems: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
@@ -6189,7 +6138,7 @@ let MQDungeons = {
                     iceArrowsRoom: {
                         Age: Age.EITHER,
                         CustomRequirement: function(age) {
-                            return Data.canHitSwitchAtShortDistance(age) ||
+                            return ItemData.canUse(age, ItemSets.DISTANT_SWITCH_ITEMS) ||
                                 Settings.GlitchesToAllow.mqGtgEyeStatueJumpslash;
                         }
                     }
@@ -6218,9 +6167,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Continue past the circle fire room into the next room. Activate the switch above the door to spawn the chest. Step on the swith on one of the walls to remove the fire.",
-                        CustomRequirement: function(age) {
-                            return Data.canHitSwitchAtShortDistance(age);
-                        }
+                        RequiredItems: [ItemSets.DISTANT_SWITCH_ITEMS]
                     }
                 }
             },
@@ -6360,12 +6307,10 @@ let MQDungeons = {
             bigLavaRoomWaterDoorPlatform: {
                 Exits: {
                     bigLavaRoomFront: {
-                        CustomRequirement: function(age) {
-                            return Items.HOOKSHOT.currentUpgrade === 2 || Data.canUseFireItem(age);
-                        }
+                        RequiredChoiceOfItems: [UpgradedItems.LONGSHOT, ItemSets.FIRE_ITEMS]
                     },
                     bigLavaRoomBack: {
-                        NeedsFire: true,
+                        RequiredItems: [ItemSets.FIRE_ITEMS],
                         CustomRequirement: function(age) {
                             return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
                         }
@@ -6376,7 +6321,7 @@ let MQDungeons = {
                         CustomRequirement: function(age) {
                             if (Settings.RandomizerSettings.shuffleSilverRupees) { return true; }
                             return (Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age)) && 
-                                (Items.FAIRY_BOW.playerHas || Data.canUseFireItem(age));
+                                ItemData.canUseAny(age, [Items.FAIRY_BOW, Items.DINS_FIRE]);
                         }
                     }
                 },
@@ -6460,7 +6405,7 @@ let MQDungeons = {
                             if (Settings.RandomizerSettings.shuffleSilverRupees) { return true; }
 
                             let tunicCheck = Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                            return tunicCheck && Equipment.IRON_BOOTS.playerHas && Data.canUseFireItem(age);
+                            return tunicCheck && ItemData.canUseAll(age, [Equipment.IRON_BOOTS, ItemSets.FIRE_ITEMS]);
                         }
                     },
                     "3 Silver Rupees in Water Room": {
@@ -6472,8 +6417,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 16.1,
                         LongDescription: "From the big lava room, longshot to the torch by the side door. Light it with a fire item or with your bow from the lit torch, then use your hover boots to collect the rupees. You may need to collect half of them then come back and light the torch again.<br/><br/>Once inside the water room, burn the web, then use your iron boots and hookshot (if you have one) to collect the items.",
-                        RequiredItems: [Equipment.IRON_BOOTS],
-                        NeedsFire: true,
+                        RequiredItems: [Equipment.IRON_BOOTS, ItemSets.FIRE_ITEMS],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
                         }
@@ -6603,7 +6547,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "In the second room, shoot the eye switch at the back left side of the room with a fire arrow to spawn the chest. Alternatively, you can also use Din's fire to hit it once at the back of the room. To get across, you can jump and use the wind from the fan if you have no hover boots.",
-                        NeedsFire: true
+                        RequiredItems: [ItemSets.FIRE_ITEMS]
                     },
 
                     // Locked Doors
@@ -6792,9 +6736,7 @@ let MQDungeons = {
             shadowMovingPlatform: {
                 Exits: {
                     shadowBackSection: {
-                        CustomRequirement: function(age) {
-                            return Equipment.HOVER_BOOTS.playerHas || Data.canUseFireItem(age);
-                        }
+                        RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, ItemSets.FIRE_ITEMS]
                     }
                 },
                 ItemLocations: {

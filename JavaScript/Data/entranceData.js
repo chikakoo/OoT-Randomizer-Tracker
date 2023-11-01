@@ -1487,7 +1487,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.COW,
 				description: "Burn the web, then play Epona's Song next to the cow.",
 				canGet: function(age) {
-					return Data.canUseFireItem(age) && Data.canMilkCows();
+					return ItemData.canUse(age, ItemSets.FIRE_ITEMS) && Data.canMilkCows();
 				}
 			},
 			"Skulltula at Distance": {
@@ -1620,7 +1620,7 @@ GrottoGroups = {
 			"Chest by Lighting Torches": {
 				description: "Light the torches in the first room to spawn a chest.",
 				canGet: function(age) {
-					return Data.canUseFireItem(age);
+					return ItemData.canUse(age, ItemSets.FIRE_ITEMS);
 				}
 			},
 			"Sun's Song": {

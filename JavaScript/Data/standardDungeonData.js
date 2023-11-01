@@ -9,8 +9,8 @@ let StandardDungeons = {
         StartingFloorIndex: 1,
         UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canBurnBasementWeb: function(age) {
-            let canShootWebThroughTorch = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
-            return canShootWebThroughTorch || Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
+            // Adult can shoot through the torch using the bow
+            return ItemData.canUseAny(age, [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE]);
         },
         Regions: {
             main: {
@@ -98,11 +98,8 @@ let StandardDungeons = {
             basementBottom: {
                 Exits: {
                     basementBack: {
-                        RequiredChildItems: [Items.FAIRY_SLINGSHOT],
-                        RequiredAdultItems: [Items.FAIRY_BOW],
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
-                        }
+                        RequiredChoiceOfItems: [Items.DEKU_STICK, ItemSets.FIRE_ITEMS],
+                        RequiredItems: [ItemSets.PROJECTILES]
                     },
                     basementTop: {
                         CustomRequirement: function(age) {
@@ -989,15 +986,11 @@ let StandardDungeons = {
                         MapInfo: { x: 193, y: 271, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 1,
-                        
                         LongDescription: "The skulltula is high up on the vines in the first room. You can kill it with a ranged item, din's fire, a bomb from the top (requires a trick), or a bombchu from the ground.",
                         CustomRequirement: function(age) {
                             if (Settings.GlitchesToAllow.forestFirstSkullWithBomb && Items.BOMB.playerHas) { return true; }
-                            if (Data.canUseFireItem(age) || ItemData.canUse(age, Items.BOOMERANG) || Items.BOMBCHU.playerHas) { return true; }
-                            if (age === Age.CHILD) {
-                                return Items.FAIRY_SLINGSHOT.playerHas;
-                            }
-                            return Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas;
+                            return ItemData.canUseAny(age, 
+                                [ItemSets.PROJECTILES, Items.BOMBCHU, Items.BOOMERANG, Items.HOOKSHOT, Items.DINS_FIRE]);
                         }
                     },
                     "Chest on Starting Room Tree": {
@@ -1095,9 +1088,7 @@ let StandardDungeons = {
                     },
 
                     outsideRight: {
-                        CustomRequirement: function(age) {
-                            return Data.canShootEyeSwitch(age);
-                        }
+                        RequiredItems: [ItemSets.PROJECTILES]
                     },
 
                     blockRoom: {
@@ -1192,7 +1183,7 @@ let StandardDungeons = {
             outsideLeft: {
                 Exits: {
                     topOfOutsideRight: {
-                        MustKillStunnableEnemy: true
+                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     },
                     topOfOutsideLeft: {
                         Age: Age.ADULT,
@@ -1240,7 +1231,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 19,
                         LongDescription: "Navigate to the twisted corridor. Shoot the eye switch to untwist the corridor. Now go across the corridor to the room with the boss key chest. Fall down the hole in this room and kill the bubbles to get out. Follow the right wall in this next area until you reach the first door in the side room to the right (careful of the giant deku baba). Kill the floormaster to spawn the chest.",
-                        MustKillStunnableEnemy: true
+                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     }
                 }
             },
@@ -1318,7 +1309,7 @@ let StandardDungeons = {
                         }
                     },
                     outsideLeft: {
-                        MustKillStunnableEnemy: true
+                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     }
                 },
 
@@ -1329,7 +1320,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "You can get here from the left outside room. Proceed up the vines and into the room. Kill the blue bubble to spawn the chest. Alternatively, you can get here by longshotting up the vines in the right outside room.",
-                        MustKillStunnableEnemy: true
+                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     }
                 }
             },
@@ -1352,7 +1343,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "In the outside rooms, there is a chest at the bottom of the well. One way to get there is from the left room. Proceed up the vines, kill the blue bubble, and go into the next room. Now, hookshot or jump to the vines to your left and navigate to the switch on the other platform. This will drain the water. Alternatively, you can start in the right room and longshot up these vines to get to the switch.",
-                        MustKillStunnableEnemy: true
+                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     }
                 }
             },
@@ -1387,9 +1378,9 @@ let StandardDungeons = {
                         LongDescription: "Navigate to the room with the block puzzle. After pushing the first block, climb up the ladder that it was blocking. Now go straight to the wall in front of you. Follow that wall to the right. Turn right, and you should see an eye switch a bit up the wall in front of you. Shoot it to spawn the chest.",
                         CustomRequirement: function(age) {
                             let canBlockSkip = age === Age.ADULT && Settings.GlitchesToAllow.forestBlockSkip && Data.canGroundJumpWithBomb(age);
-                            let canHoverToMiddleFloor = age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas;
+                            let canHoverToMiddleFloor = ItemData.canUse(age, Equipment.HOVER_BOOTS);
                             let canGetToEyeSwitch = canBlockSkip || canHoverToMiddleFloor || Equipment.STRENGTH.playerHas;
-                            return Data.canShootEyeSwitch(age) && canGetToEyeSwitch;
+                            return ItemData.canUse(age, ItemSets.PROJECTILES) && canGetToEyeSwitch;
                         }
                     }
                 }
@@ -1405,9 +1396,7 @@ let StandardDungeons = {
                         Map: "Forest Temple",
                         LockedDoor: "Locked Door by Twisted Corridor",
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Data.canShootEyeSwitch(age);
-                        }
+                        RequiredItems: [ItemSets.PROJECTILES]
                     }
                 },
                 ItemLocations: {}
@@ -1415,7 +1404,7 @@ let StandardDungeons = {
             untwistedCorridor1: {
                 Exits: {
                     topOfOutsideLeft: {
-                        MustKillStunnableEnemy: true
+                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     }
                 },
 
@@ -1505,9 +1494,7 @@ let StandardDungeons = {
             carouselRoom: {
                 Exits: {
                     fallingCeilingRoom: {
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || (age === Age.ADULT && Items.FAIRY_BOW.playerHas);
-                        }
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE]
                     }
                 },
                 ItemLocations: {
@@ -2075,9 +2062,7 @@ let StandardDungeons = {
             narrowBridgeRoom: {
                 Exits: {
                     mapEnclosure: {
-                        CustomRequirement: function(age) {
-                            return Data.canShootEyeSwitch(age);
-                        }
+                        RequiredItems: [ItemSets.PROJECTILES]
                     },
 
                     fireWallRoom: {
@@ -2597,9 +2582,7 @@ let StandardDungeons = {
                         RequiredChoiceOfItems: [Equipment.SCALE, Equipment.IRON_BOOTS]
                     },
                     midWaterTriforceFloor: {
-                        CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Items.FAIRY_BOW.playerHas) || Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
-                        }
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DEKU_STICK, Items.DINS_FIRE]
                     },
                     centralRoomBottom: {
                         Map: "Water Temple",
@@ -4205,9 +4188,7 @@ let StandardDungeons = {
                         Order: 6,
                         AltOrder: 42,
                         LongDescription: "WALL MASTER WARNING:<br/>Make your way counter-clockwise around the child-only areas of the temple. In the room with the Anubis, either Din's fire him, or hit the switch then quickly navigate to the side directly opposite the fire so that it dies on it. In the room after that - collect the silver rupees to lower the bridge. Now you can use a Deku Stick (or Din's fire) to light the torches on the other side to spawn the chest.<br/><br/>It's important to note that you can use Din's fire on them earlier, or take a flame from the earlier main room to light the torches. This avoids the need for the silver rupees (for this chest) completely.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Items.DEKU_STICK) || Data.canUseFireItem(age);
-                        }
+                        RequiredChoiceOfItems: [Items.DEKU_STICK, ItemSets.FIRE_ITEMS]
                     }
                 }
             },
@@ -4490,9 +4471,7 @@ let StandardDungeons = {
                         Order: 16,
                         AltOrder: 13,
                         LongDescription: "Head to the statue room. On the floor in front of the statue, light the torches with Din's Fire or Fire Arrows to spawn the chest. You can also run a lit deku stick down via the torch in the southwest corner of the room.",
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
-                        }
+                        RequiredChoiceOfItems: [Items.DEKU_STICK, ItemSets.FIRE_ITEMS]
                     },
                     "Sun Block Silver Rupee on Wall by Blocks": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4542,7 +4521,7 @@ let StandardDungeons = {
                         AltOrder: 22,
                         LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor. As child, you can collect the silver rupees to light the golden torch. After that, use a Deku Stick to light the other torches. You can also just use Din's Fire to light them - make sure to light two at once, then get close to the third one before casting it a second time. As adult, your only options are Din's Fire or Fire Arrows.",
                         CustomRequirement: function(age) {
-                            let canUseFireItem = Data.canUseFireItem(age);
+                            let canUseFireItem = ItemData.canUse(age, ItemSets.FIRE_ITEMS);
                             let canUseStick = ItemData.canUse(age, Items.DEKU_STICK);
                             let canDoFlameStorage = Settings.GlitchesToAllow.flameStorage && canUseStick;
                             let canLightTorchesWithoutRupees = canDoFlameStorage || canUseFireItem;
@@ -4824,9 +4803,7 @@ let StandardDungeons = {
             main: {
                 Exits: {
                     afterFreezards: {
-                        CustomRequirement: function(age) {
-                            return Data.canKillFreezard(age);
-                        }
+                        RequiredItems: [ItemSets.FREEZARD_KILL_ITEMS]
                     },
                     Exit: {
                         OwExit: OwExits["Ice Cavern"]["Exit"]
@@ -5334,8 +5311,7 @@ let StandardDungeons = {
                         Order: 12,
                         LongDescription: "Head to the room to the left of the main room. The heart is in the bottom left coffin - light the torch to open it.",
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || 
-                                ItemData.canUse(age, Items.DEKU_STICK) ||
+                            return ItemData.canUseAny(age, [Items.DEKU_STICK, ItemSets.FIRE_ITEMS]) ||
                                 (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
                         }
                     },
@@ -5346,8 +5322,7 @@ let StandardDungeons = {
                         Order: 13,
                         LongDescription: "Head to the room to the left of the main room. The heart is in the top left coffin - light the torch to open it.",
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || 
-                                ItemData.canUse(age, Items.DEKU_STICK) ||
+                            return ItemData.canUseAny(age, [Items.DEKU_STICK, ItemSets.FIRE_ITEMS]) ||
                                 (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
                         }
                     },
@@ -5624,7 +5599,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "From the entrance, turn around. Shoot the eye that's near the ceiling to spawn this chest.",
-                        CustomRequirement: function(age) { return Data.canShootEyeSwitch(age); }
+                        RequiredItems: [ItemSets.PROJECTILES]
                     },
                     "Entrance Room Right Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5632,7 +5607,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "From the entrance, turn around. Shoot the eye that's near the ceiling to spawn this chest.",
-                        CustomRequirement: function(age) { return Data.canShootEyeSwitch(age); }
+                        RequiredItems: [ItemSets.PROJECTILES]
                     },
                     "Stalfos Chest in Sandy Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -6283,7 +6258,7 @@ let StandardDungeons = {
                 Exits: {
                     forestTrailWindRoom: {
                         Age: Age.ADULT,
-                        NeedsFire: true,
+                        RequiredItems: [ItemSets.FIRE_ITEMS],
                         RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.HOOKSHOT]
                     },
                     fireTrialRoom1: {

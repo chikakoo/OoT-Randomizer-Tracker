@@ -2191,7 +2191,7 @@ let MapLocations = {
                     },
                     spinningUrn: {
                         Age: Age.CHILD,
-                        NeedsFire: true
+                        RequiredItems: [Items.DINS_FIRE]
                     },
                     shop: {
                         CustomRequirement: function(age) {
@@ -2723,9 +2723,7 @@ let MapLocations = {
                         MapInfo: { x: 168, y: 68 },
                         Age: Age.ADULT,
                         LongDescription: "At night, make your way up to where the Diving Game start was. On the side of the wall by the waterfall, you'll find a skulltula. If you have no hookshot, you can kill it with a bow or Din's fire and get it with an angled jump. If you fall without getting it, it will respawn.",
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas;
-                        }
+                        RequiredChoiceOfItems: [Items.HOOKSHOT, Items.FAIRY_BOW, Items.DINS_FIRE]
                     },
                     "Gossip Stone by King": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -4142,7 +4140,7 @@ let MapLocations = {
                         MapInfo: { x: 208, y: 93 },
                         Age: Age.EITHER,
                         LongDescription: "In the outpost in the center of the desert, light the two torches to spawn a chest.",
-                        NeedsFire: true
+                        RequiredItems: [ItemSets.FIRE_ITEMS]
                     },
                     "Carpet Shop": {
                         ItemGroup: ItemGroups.GIFT,
