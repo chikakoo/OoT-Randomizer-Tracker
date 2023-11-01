@@ -11,7 +11,7 @@ let OwExits = {
             CustomRequirement: function(age) {
                 if (age === Age.ADULT || Settings.RandomizerSettings.openForest) { return true; }
                 
-                let bossEntranceGroup = OwExits["Deku Tree"].Boss.EntranceGroup;
+                let bossEntranceGroup = Data.getEntranceGroup(OwExits["Deku Tree"].Boss);
                 let beatDekuTree = bossEntranceGroup && Object.keys(bossEntranceGroup.completed).includes("Blue Warp");
                 let canPokeySkip = Settings.GlitchesToAllow.pokeySkip && 
                     ItemData.canUseAll(age, [ItemSets.SWORDS, Items.DEKU_SHIELD]);

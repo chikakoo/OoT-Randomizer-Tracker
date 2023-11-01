@@ -1186,6 +1186,10 @@ let ItemData = {
 	/**
 	 * Gets whether the player can use the given item/upgrade at the given age
 	 * This includees equip swap
+	 * 
+	 * If we need to improve performance in the future:
+	 * - We can cache this logic and store it in each item one time per change
+	 * - For instance, we'd have: Items.FIRE_ARROW.canUse[age] available
 	 * @param age - The age to check
 	 * @param item - The item to check
 	 * @param lowestUpgrade - The lowest upgrade to include (ex 2 would be silver/gold gaunts, but not goron bracelet)
