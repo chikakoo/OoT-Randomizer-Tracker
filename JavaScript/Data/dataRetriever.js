@@ -770,8 +770,6 @@ Data = {
 		if (!this.canPlaySongs(itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canPlayDifficultOcarinaItems(itemLocation)) { return ItemObtainability.NO; }
 		if (!this.hasBottle(itemLocation)) { return ItemObtainability.NO; }
-        if (!this.canSinkSilverScaleDepth(age, itemLocation)) { return ItemObtainability.NO; }
-		if (!this.canSinkGoldenScaleDepth(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkKeyRequirement(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkSilverRupeeRequirement(itemLocation)) { return ItemObtainability.NO; }
 
@@ -939,11 +937,7 @@ Data = {
                 console.log(`ERROR: Item property not defined on item location: ${itemLocation.Name}; property ${propertyName}`);
             }
 
-			let currentItem = item.item || item;
-			let currentUpgrade = item.upgradeString
-                ? Number(item.upgradeString)
-                : null;
-			if (!ItemData.canUse(age, currentItem, currentUpgrade)) {
+			if (!ItemData.canUse(age, item)) {
 				hasAllItems = false;
 				return;
 			}
@@ -964,12 +958,7 @@ Data = {
         
         itemLocation[propertyName].forEach(function(item) {
             if (hasItem) { return; }
-
-            let currentItem = item.item || item;
-			let currentUpgrade = item.upgradeString
-                ? Number(item.upgradeString)
-                : null;
-            hasItem = ItemData.canUse(age, currentItem, currentUpgrade);
+            hasItem = ItemData.canUse(age, item);
         });
         
         return hasItem;
@@ -1222,13 +1211,6 @@ Data = {
     },
 
     /**
-     * Returns whether the player can use fire arrows
-     */
-    canUseFireArrows: function(age) {
-        return age === Age.ADULT && Equipment.MAGIC.playerHas && Items.FAIRY_BOW.playerHas && Items.FIRE_ARROW.playerHas;
-    },
-
-    /**
      * Returns whether the player can ground jump using a bomb
      * @param includeBombFlower - Whether bomb flowers are feasible here (adds a strength check)
      */
@@ -1244,24 +1226,6 @@ Data = {
 		if (!Settings.GlitchesToAllow.equipSwap) { return false; }
 		return Boolean(Items.DINS_FIRE.playerHas || (age === Age.CHILD && Items.DEKU_STICK.playerHas));
     },
-
-    /**
-     * Whether the player can dive to silver scale depth
-     * Includes iron boot usage
-     */
-    canSinkSilverScaleDepth: function(age, itemLocation) {
-		if (itemLocation && !itemLocation.IsSilverScaleWater) { return true; }
-		return Equipment.SCALE.playerHas || (age === Age.ADULT && Equipment.IRON_BOOTS.playerHas);
-	},
-    
-    /**
-     * Whether the player can dive to golden scale depth
-     * Includes iron boot usage
-     */
-    canSinkGoldenScaleDepth: function(age, itemLocation) {
-		if (itemLocation && !itemLocation.IsGoldenScaleWater) { return true; }
-		return Equipment.SCALE.currentUpgrade > 1 || (age === Age.ADULT && Equipment.IRON_BOOTS.playerHas);
-	},
 
     /**
      * Returns whether the player summon and can hook a scarecrow

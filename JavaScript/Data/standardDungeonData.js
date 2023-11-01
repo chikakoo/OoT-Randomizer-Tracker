@@ -452,7 +452,7 @@ let StandardDungeons = {
                 Exits: {
                     skulltulaAlcoveAboveStairs: {
                         Age: Age.ADULT,
-                        RequiredAdultItems: [{ item: Items.HOOKSHOT, upgradeString: "2" }]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     },
                     bombChestFloor: {
                         CustomRequirement: function(age) {
@@ -952,14 +952,15 @@ let StandardDungeons = {
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canJumpToTop: function(age) {
             let canDoTrick = Settings.GlitchesToAllow.forestJumpToTop && 
-                age === Age.ADULT && 
-                Items.BOMB.playerHas && 
-                Equipment.HOVER_BOOTS.playerHas;
+                ItemData.canUseAll(age, [Equipment.HOVER_BOOTS, Items.BOMB]);
     
             // This part ensures that we're not allowing you to do the trick if you can get to the
             // room using the hover boots from the block room, which defeats the whole point because
             // you wouldn't be skipping that key
-            let canGetToFromRightRoom = Items.FAIRY_BOW.playerHas && (Data.canSinkGoldenScaleDepth(age) || Items.HOOKSHOT.currentUpgrade === 2);
+            let canGetToFromRightRoom = Items.FAIRY_BOW.playerHas && (
+                ItemData.canUseAny(age, [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]) || 
+                ItemData.canUse(age, UpgradedItems.LONGSHOT)
+            );
             let canGetToOutsideLeftBeforeBlockRoom = Settings.GlitchesToAllow.forestLedgeClip || Data.canPlaySong(Songs.SONG_OF_TIME) || canGetToFromRightRoom;
             return canDoTrick && canGetToOutsideLeftBeforeBlockRoom;
         },
@@ -1198,7 +1199,8 @@ let StandardDungeons = {
                         }
                     },
                     outsideRight: {
-                        IsGoldenScaleWater: true // This is to swim through the well
+                        // This is to swim through the well
+                        RequiredChoiceOfItems: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]
                     }
                 },
                 ItemLocations: {
@@ -1255,14 +1257,15 @@ let StandardDungeons = {
                 Exits: {
                     topOfOutsideRight: {
                         Age: Age.ADULT,
-                        RequiredAdultItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     },
                     outsideRightLedge: {
                         Age: Age.ADULT,
-                        RequiredAdultItems: [Items.HOOKSHOT]
+                        RequiredItems: [Items.HOOKSHOT]
                     },
                     outsideLeft: {
-                        IsGoldenScaleWater: true // This is to swim through the well
+                        // This is to swim through the well
+                        RequiredChoiceOfItems: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]
                     }
                 },
                 ItemLocations: {}
@@ -2385,7 +2388,7 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             if (ItemData.canUse(age, Items.BOOMERANG)) { return true; }
                             let canBreakPot = ItemData.canUseAny(age, [Items.HOOKSHOT, Items.FAIRY_BOW, Items.FAIRY_SLINGSHOT]);
-                            return canBreakPot && Data.canSinkGoldenScaleDepth(age);
+                            return canBreakPot && ItemData.canUseAny(age, [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]);
                         }
                     },
                     lowEastWingPots: {
@@ -2397,7 +2400,7 @@ let StandardDungeons = {
                         RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
                     },
                     lowWaterLevel: {
-                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, {item: Items.HOOKSHOT, upgradeString: "2"}],
+                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT],
                         RequiredSongs: [Songs.ZELDAS_LULLABY],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
@@ -2487,7 +2490,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 29,
                         LongDescription: "This is the door on the bottom north path. You can use iron boots or drain the water to get here. Longshot or backwalk/hover boots/backflip across to get to the door.",
-                        RequiredChoiceOfAdultItems: [Equipment.HOVER_BOOTS, {item: Items.HOOKSHOT, upgradeString: "2"}],
+                        RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT],
                         KeyRequirement: function(age) {
                             let keysReq = 4;
                             if (!Data.canPlaySong(Songs.ZELDAS_LULLABY)) {
@@ -2798,7 +2801,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 14,
                         LongDescription: "From the entrance of the temple, jump off and sink down to the bottom (or longshot a torch on the bottom of the east side). Head down the hallway of the east room. Take off your iron boots and float up to the surface. Enter the door and kill the enemies to spawn the chest.",
-                        RequiredChoiceOfAdultItems: [Equipment.IRON_BOOTS, {item: Items.HOOKSHOT, upgradeString: "2"}],
+                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
                         }
@@ -2984,7 +2987,7 @@ let StandardDungeons = {
                     roomWithManyTektites: {
                         Map: "Water Temple",
                         Age: Age.ADULT,
-                        RequiredChoiceOfAdultItems: [Equipment.HOVER_BOOTS, {item: Items.HOOKSHOT, upgradeString: "2"}],
+                        RequiredChoiceOfAdultItems: [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT],
                         LockedDoor: "Locked Door in Bottom North Room"
                     },
                 },
@@ -3732,11 +3735,11 @@ let StandardDungeons = {
                         LockedDoor: "Locked Door in Gibdo Room"
                     },
                     boatRoomSkulltula: {
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     },
                     boatRoomLedge: {
                         RequiredSongs: [Songs.SCARECROWS_SONG],
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     },
                     boatRoomEnd: {
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
@@ -3778,7 +3781,7 @@ let StandardDungeons = {
                 Exits: {
                     chasmScarecrowPlatform: {
                         RequiredSongs: [Songs.SCARECROWS_SONG],
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     },
                     acrossChasmToBossRoom: {
                         CustomRequirement: function(age) {
@@ -4680,7 +4683,7 @@ let StandardDungeons = {
                 Exits: {
                     fourArmosRoom: {},
                     silverGauntsStatueHand: {
-                        RequiredAdultItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     },
                     statueHands: {}
                 },
@@ -5887,7 +5890,7 @@ let StandardDungeons = {
                     },
                     bigLavaRoomUpperBack: {
                         Age: Age.ADULT,
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     },
                     waterRoom: {
                         Map: "Training Grounds",
@@ -5988,7 +5991,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 15.6,
                         LongDescription: "Navigate to the water room. See the Lava Room Key on Platform for an explanation on how to get there. First, collect all the silver rupees in the room. Most are straightfoward - you'll need your hover boots to get across some of the platforms. To get the one engulfed in flames, you must first hit the switch next to the raised platform. You can play the Song of Time there to spawn some helpful blocks as well. After you collect all the rupees, enter the door that opens up.<br/><br/>Once inside, play the Song of Time to remove the blocks. Use your iron boots to sink down and collect the rupees. The golden scale can be used to collect this top one - just dive down and let yourself get pushed along the walls.",
-                        IsGoldenScaleWater: true,
+                        RequiredChoiceOfItems: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS],
                         RequiredSongs: [Songs.SONG_OF_TIME], // Seems these blocks ARE there as child
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
@@ -6347,9 +6350,8 @@ let StandardDungeons = {
                         LongDescription: "Enter the shadow trial. The chest is in front of you and a bit to the left on a little island. You can hookshot to it, hover boots to it (you'll need to roll mid-air to get the distance), shoot a fire arrow at a torch to spawn platforms, or play the Song of Time to get a platform you can jump to (Child has this by default).",
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return true; }
-
-                            let canUseFireArrows = Items.FAIRY_BOW.playerHas && Items.FIRE_ARROW.playerHas && Equipment.MAGIC.playerHas;
-                            return canUseFireArrows || Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas || Data.canPlaySong(Songs.SONG_OF_TIME);
+                            return ItemData.canUseAny(age, [Items.FIRE_ARROW, Equipment.HOVER_BOOTS, Items.HOOKSHOT]) ||
+                                Data.canPlaySong(Songs.SONG_OF_TIME);
                         }
                     },
                     "Heart in Spirit Trial": {
@@ -6570,9 +6572,10 @@ let StandardDungeons = {
                         Map: "Ganon's Castle",
                         Age: Age.ADULT,
                         SilverRupeeIndex: 2,
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}],
+                        RequiredItems: [UpgradedItems.LONGSHOT],
                         CustomRequirement: function(age) {
-                            return Settings.RandomizerSettings.shuffleSilverRupees || Equipment.STRENGTH.currentUpgrade === 3;
+                            return Settings.RandomizerSettings.shuffleSilverRupees || 
+                                ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
                         }
                     }
                 },
@@ -6605,7 +6608,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 15.1,
                         LongDescription: "Navigate to the back part of the fire trial. Lift the giant siler pillar to find the rupee underneath.",
-                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "3"}]
+                        RequiredItems: [UpgradedItems.GOLDEN_GAUNTLETS]
                     },
                     "Fire Silver Rupee on Torch Slug Island": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -6620,7 +6623,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 15.3,
                         LongDescription: "After throwing the giant silver pillar, make your way to the island with the torch slug. Use the thrown pillar (now in the lava) to get to the rupee on the sinking platform.",
-                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "3"}]
+                        RequiredItems: [UpgradedItems.GOLDEN_GAUNTLETS]
                     }
                 }
             },

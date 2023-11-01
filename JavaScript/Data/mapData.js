@@ -2147,7 +2147,7 @@ let MapLocations = {
                 Exits: {
                     bottom: {
                         Age: Age.ADULT,
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}],
+                        RequiredItems: [UpgradedItems.LONGSHOT],
                         RequiredSongs: [Songs.SCARECROWS_SONG]
                     }
                 },
@@ -3084,7 +3084,7 @@ let MapLocations = {
                         DefaultEntranceGroupName: "2 Green Rupees",
                         MapInfo: { x: 169, y: 105 },
                         Age: Age.CHILD,
-                        RequiredItems: [{item: Equipment.SCALE, upgradeString: "1"}],
+                        RequiredItems: [UpgradedItems.SILVER_GAUNTLETS],
                         LongDescription: "These items are by the entrance to Zora's Domain - you need a scale to be able to reach them."
                     }
                 }
@@ -3345,7 +3345,7 @@ let MapLocations = {
                     },
                     topOfKitchen: {
                         Age: Age.ADULT,
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     },
                     aboveJail1: {
                         // Can talk to gate guard to get jailed if you have membership card
@@ -3572,7 +3572,7 @@ let MapLocations = {
                     aboveJail1: {},
                     topOfFortress: {
                         Age: Age.ADULT,
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     },
                     wastelandEntrance: {
                         Age: Age.ADULT,
@@ -4147,7 +4147,8 @@ let MapLocations = {
                         MapInfo: { x: 239, y: 292 },
                         Age: Age.EITHER,
                         LongDescription: "After you cross the sand pit, the shop is along the path to your left. There is a sign by one of the flags that points to it. If you don't have hover boots, you can rolljump, then jumpslash to the corner of the carpet.<br/><br/>If this and medigoron aren't shuffled, this shop will ALWAYS sell bombchus.",
-                        RequiredItems: [ItemSets.SWORDS, {item: Equipment.WALLET, upgradeString: "1"}]
+                        RequiredItems: [UpgradedItems.GIANTS_WALLET],
+                        RequiredChoiceOfItems: [ItemSets.SWORDS, Equipment.HOVER_BOOTS]
                     },
                     "Skulltula at Outpost": {
                         ItemGroup: ItemGroups.SKULLTULA,

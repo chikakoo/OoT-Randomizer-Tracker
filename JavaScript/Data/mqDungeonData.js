@@ -2184,10 +2184,9 @@ let MQDungeons = {
                 Exits: {
                     bossKeyRoom: {
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.MAGIC],
                         CustomRequirement: function(age) {
-                            let canUseDins = Settings.GlitchesToAllow.mqFireLavaRoomDoorWithDins && Items.DINS_FIRE.playerHas;
-                            let canLightTorches = canUseDins || Data.canUseFireArrows(age);
+                            let canUseDins = Settings.GlitchesToAllow.mqFireLavaRoomDoorWithDins && ItemData.canUse(age, DINS_FIRE);
+                            let canLightTorches = canUseDins || ItemData.canUse(age, Items.FIRE_ARROW)
                             let canGetUp = Settings.GlitchesToAllow.fireSoTBlockJump || Items.HOOKSHOT.playerHas;
                             return canLightTorches && canGetUp;
                         }
@@ -2737,7 +2736,7 @@ let MQDungeons = {
                     },
                     roomBeforeDarkLink: {
                         //TODO: does hovers + normal hookshot actually work?
-                        RequiredChoiceOfAdultItems: [{item: Items.HOOKSHOT, upgradeString: "2"}, Equipment.HOVER_BOOTS],
+                        RequiredChoiceOfAdultItems: [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS],
                         RequiredAdultItems: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
                             return ItemData.getKeyCount("Water Temple") >= 1;
@@ -2977,7 +2976,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 19,
                         LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your longshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. In this room, break the box to your left and hit the switch. Now, hookshot up to the next floor and break the crates.",
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     },
                     "3 Crates Above Mid West Room": {
                         // TODO: Empty Pots: If 'Water Temple MQ Before Upper Water Switch Lower Small Crate' is still marked as a
@@ -2993,7 +2992,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 19,
                         LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your longshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. In this room, break the box to your left and hit the switch. Now, hookshot up to the next floor and break the crates.",
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     },
                     "Skulltula Above Mid West Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3001,7 +3000,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 20,
                         LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your longshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. In this room, break the box to your left and hit the switch. Now, hookshot up to the next floor. The skullula is in one of the boxes.",
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     }
                 }
             },
@@ -3011,8 +3010,8 @@ let MQDungeons = {
                         RequiredItems: [Equipment.IRON_BOOTS],
                         CustomRequirement: function(age) {
                             let tunicCheck = Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                            let canUseFireArrows = Items.FAIRY_BOW.playerHas && Items.FIRE_ARROW.playerHas && Equipment.MAGIC.playerHas;
-                            let canUseDinsFire = Items.DINS_FIRE.playerHas && Equipment.MAGIC.playerHas;
+                            let canUseFireArrows = ItemData.canUse(age, Items.FIRE_ARROW);
+                            let canUseDinsFire = ItemData.canUse(age, Items.DINS_FIRE);
                             let canLightTorches = canUseFireArrows || (Data.canPlaySong(Songs.SONG_OF_TIME) && canUseDinsFire);
                             return tunicCheck && canLightTorches;
                         }
@@ -3127,7 +3126,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 24,
                         LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door. Jump down and kill the three stalfos, then use your hookshot to get through the next room, and then defeat Dark Link. Hookshot the wall in the next room to reach the whirlpool room.<br/><br/>Use your iron boots or longshot across the river until you hear the skulltula. Get it with your hookshot or longshot.",
-                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, {item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT]
                     },
                     //TODO: Empty Pots - remove this item, as the one below will replace it
                     "Pot in Whirlpool Room": {
@@ -3270,7 +3269,7 @@ let MQDungeons = {
                         }
                     },
                     roomAfterSpikes: {
-                        RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, {item: Items.HOOKSHOT, upgradeString: "2"}],
+                        RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT],
                     }
                 },
                 ItemLocations: {
@@ -3596,8 +3595,7 @@ let MQDungeons = {
                     afterTruthSpinner: {
                         CustomRequirement: function(age) {
                             return Data.canMegaFlip(age) ||
-                                Data.canUseFireArrows(age) ||
-                                Equipment.HOVER_BOOTS.playerHas;
+                                ItemData.canUseAny(age, [Items.FIRE_ARROW, Equipment.HOVER_BOOTS]);
                         }
                     }
                 },
@@ -3870,7 +3868,7 @@ let MQDungeons = {
                 Exits: {
                     afterBeamos: {
                         Age: Age.ADULT,
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     },
                     fallingSpikesRoom: {},
                     invisibleSpikeRoom: {
@@ -3911,7 +3909,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 15.9,
                         LongDescription: "These rupees are above the lone pit room beamos. Use your longshot to get to them.",
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     },
                     "Chest in Giant Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4210,7 +4208,7 @@ let MQDungeons = {
                     },
                     boatRoomLedge: {
                         RequiredSongs: [Songs.SCARECROWS_SONG],
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     },
                     endOfBoatRide: {
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
@@ -4269,7 +4267,7 @@ let MQDungeons = {
                 Exits: {
                     invisibleWallRoom: {
                         RequiredSongs: [Songs.SONG_OF_TIME],
-                        RequiredItems: [Items.FAIRY_BOW, {item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [Items.FAIRY_BOW, UpgradedItems.LONGSHOT]
                     },
                     bossRoom: {
                         CustomRequirement: function(age) {
@@ -4430,9 +4428,9 @@ let MQDungeons = {
                     },
                     silverBlockMaze: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.BOMBCHU, { item: Items.HOOKSHOT, upgradeString: "2" }],
+                        RequiredItems: [Items.BOMBCHU, UpgradedItems.LONGSHOT],
                         CustomRequirement: function(age) {
-                            if (Equipment.STRENGTH.currentUpgrade >= 2) { return true; }
+                            if (ItemData.canUse(age, UpgradedItems.SILVER_GAUNTLETS)) { return true; }
                             return Data.canWeirdShot(age) && Items.FAIRY_BOW.playerHas;
                         }
                     },
@@ -6132,7 +6130,7 @@ let MQDungeons = {
                     },
                     armosRoom: {
                         Age: Age.ADULT,
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     },
                     bigLavaRoomUpperBack: {},
                     iceArrowsRoom: {
@@ -6231,11 +6229,11 @@ let MQDungeons = {
                     },
                     bigLavaRoomWaterDoorPlatform: {
                         Age: Age.ADULT,
-                        RequiredItems: [{item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [UpgradedItems.LONGSHOT]
                     },
                     backOfMaze: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.MEGATON_HAMMER, {item: Items.HOOKSHOT, upgradeString: "2"}]
+                        RequiredItems: [Items.MEGATON_HAMMER, UpgradedItems.LONGSHOT]
                     }
                 },
                 ItemLocations: {}
@@ -6336,8 +6334,7 @@ let MQDungeons = {
                             if (Data.canMegaFlip(age)) { return true; }
                             if (age === Age.CHILD) { return false; }
 
-                            return Data.canUseFireArrows(age) ||
-                                Items.HOOKSHOT.currentUpgrade === 2 ||
+                            return ItemData.canUseAny(age, [Items.FIRE_ARROW, UpgradedItems.LONGSHOT]) ||
                                 Data.canBombSuperslideWithHovers(age) ||
                                 Data.canHammerHoverBootsSuperslide(age);
                         }
@@ -6853,7 +6850,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 16.2,
                         LongDescription: "Navigate to the back island with the beamos and giant silver pillar. Lift it with your golden gauntlets to get to the rupee.",
-                        RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "3"}],
+                        RequiredItems: [UpgradedItems.GOLDEN_GAUNTLETS]
                     },
                     "Fire Silver on Back Left Platform": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -6978,10 +6975,7 @@ let MQDungeons = {
                 Exits: {
                     spiritRoom4: {
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.MIRROR_SHIELD],
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireArrows(age);
-                        }
+                        RequiredItems: [Equipment.MIRROR_SHIELD, Items.FIRE_ARROW]
                     }
                 },
 

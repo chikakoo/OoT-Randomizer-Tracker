@@ -1791,7 +1791,7 @@ let OwExits = {
             MapInfo: { x: 220, y: 182 },
             Age: Age.ADULT,
             LongDescription: "From the side closest to Hyrule Field, look to your left. The grotto is under the silver rock. Lift it up with your silver gauntlets to reveal it.",
-            RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}]
+            RequiredItems: [UpgradedItems.SILVER_GAUNTLETS]
         },
         "Tent": {
             ExitRegion: "acrossBridge",
@@ -2430,7 +2430,7 @@ let OwExits = {
             IsGrotto: true,
             Age: Age.ADULT,
             LongDescription: "Lift the silver rock by the warp song location to reveal this grotto.",
-            RequiredItems: [{item: Equipment.STRENGTH, upgradeString: "2"}]
+            RequiredItems: [UpgradedItems.SILVER_GAUNTLETS]
         }
     },
 

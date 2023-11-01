@@ -1745,7 +1745,7 @@ GrottoGroups = {
 			"Water Heart Piece": {
 				description: "Dive down or use iron boots to get the heart piece",
 				canGet: function(age) {
-					return Data.canSinkGoldenScaleDepth(age);
+					return ItemData.canUseAny(age, [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]);
 				}
 			}
 		}
@@ -2326,7 +2326,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "Requires iron boots, boomerang, or silver scale+.",
 				canGet: function(age) {
-					return Data.canSinkSilverScaleDepth(age) || ItemData.canUse(age, Items.BOOMERANG);
+					return ItemData.canUseAny(age, [UpgradedItems.SILVER_SCALE, Items.BOOMERANG, Equipment.IRON_BOOTS]);
 				}
 			},
 			"Green Rupee 3": {
@@ -2334,7 +2334,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "Requires iron boots, boomerang, or gold scale.",
 				canGet: function(age) {
-					return Data.canSinkGoldenScaleDepth(age) || ItemData.canUse(age, Items.BOOMERANG);
+					return ItemData.canUseAny(age, [UpgradedItems.GOLDEN_SCALE, Items.BOOMERANG, Equipment.IRON_BOOTS])
 				}
 			}
 		}
