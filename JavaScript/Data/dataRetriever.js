@@ -316,7 +316,8 @@ Data = {
      */
     canEnterDoorOfTime: function(age) {
 		let canSkipAsChild = age === Age.CHILD && Settings.GlitchesToAllow.doorOfTimeSkip && Equipment.KOKIRI_SWORD.playerHas;
-		let canSkipAsAdult = age === Age.ADULT && Settings.GlitchesToAllow.doorOfTimeSkip && this.hasShield(age) && Equipment.HOVER_BOOTS.playerHas;
+		let canSkipAsAdult = age === Age.ADULT && Settings.GlitchesToAllow.doorOfTimeSkip && 
+            ItemData.canUseAll(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]);
 		
 		let canEnterDoorOfTime = Settings.RandomizerSettings.openDoorOfTime || // Already open
 			canSkipAsChild || canSkipAsAdult || // Door of time skip
@@ -488,7 +489,8 @@ Data = {
      */
     canStunOrPassGuardsAtDistance: function(age) {
         return Data.areGerudoGuardsTame() || 
-            (age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas));
+            ItemData.canUse(age, Items.HOOKSHOT) || 
+            ItemData.canUse(age, Items.FAIRY_BOW);
     },
 
     /**
@@ -496,7 +498,7 @@ Data = {
      */
     canStunKitchenGuards: function(age) {
         return this.canStunOrPassGuardsAtDistance(age) ||
-            (Settings.GlitchesToAllow.gfKitchenGuardsWithSword && Data.hasSwordWeapon(age));
+            (Settings.GlitchesToAllow.gfKitchenGuardsWithSword && ItemData.canUse(age, ItemSets.SWORDS));
     },
     
     /**
@@ -514,8 +516,7 @@ Data = {
      */
 	canMegaFlip: function(age) {
 		return Settings.GlitchesToAllow.megaFlip && 
-			this.hasShield(age) &&
-			(Items.BOMB.playerHas || Items.BOMBCHU.playerHas);
+            ItemData.canUseAll(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]);
     },
 
     /**
@@ -525,11 +526,8 @@ Data = {
      */
     canWeirdShot: function(age, item) {
         item = item || Items.HOOKSHOT;
-        return Settings.GlitchesToAllow.weirdShot &&
-            age === Age.ADULT && 
-            this.hasShield(age) && 
-            Items.HOOKSHOT.playerHas && 
-            Items.BOMB.playerHas;
+        return Settings.GlitchesToAllow.weirdShot && 
+            ItemData.canUseAll(age, [item, Items.BOMB, ItemSets.SHIELDS]);
     },
 
     /**
@@ -554,9 +552,8 @@ Data = {
 	_canDoOldShadowEarly: function(age) {
 		return age === Age.ADULT &&
 			Settings.GlitchesToAllow.oldShadowEarly && 
-            (this.canWeirdShot(age) || Items.HOOKSHOT.currentUpgrade === 2 || this.itemLocationObtained("Graveyard", "main", "*Plant Bean by Dampe's Grave")) &&
-			this.hasExplosives() &&
-			this.hasShield(age);
+            (this.canWeirdShot(age) || ItemData.canUseLongshot(age) || this.itemLocationObtained("Graveyard", "main", "*Plant Bean by Dampe's Grave")) &&
+            ItemData.canUseAll(age, [ItemSets.EXPLOSIVES, ItemSets.SHIELDS]);
     },
 
     /**
@@ -564,9 +561,7 @@ Data = {
      */
     canStaircaseHover: function(age) {
         return Settings.GlitchesToAllow.staircaseHover &&
-            Items.BOMB.playerHas &&
-            Data.hasSwordWeapon(age) &&
-            Data.hasShield(age);
+            ItemData.canUseAll(age, [Items.BOMB, ItemSets.SWORDS, ItemSets.SHIELDS]);
     },
 
     /**
@@ -574,27 +569,22 @@ Data = {
      */
     canBombSuperslide: function(age) {
         return Settings.GlitchesToAllow.bombSuperslide &&
-            Items.BOMB.playerHas &&
-            Data.hasShield(age)
+            ItemData.canUseAll(age, [Items.BOMB, ItemSets.SHIELDS]);
     },
 
     /**
      * Returns whether you can do a superslide using bombs and hover boots
      */
     canBombSuperslideWithHovers: function(age) {
-        return age === Age.ADULT &&
-            this.canBombSuperslide(age) &&
-            Equipment.HOVER_BOOTS.playerHas;
+        return ItemData.canUse(age, Equipment.HOVER_BOOTS) && this.canBombSuperslide(age);
     },
 
     /**
      * Returns whether you can do a superslide the hammer and hover boots
      */
     canHammerHoverBootsSuperslide: function(age) {
-        return age === Age.ADULT &&
-            Settings.GlitchesToAllow.hammerHoverBootsSuperslide &&
-            Items.MEGATON_HAMMER.playerHas &&
-            Equipment.HOVER_BOOTS.playerHas;
+        return Settings.GlitchesToAllow.hammerHoverBootsSuperslide &&
+            ItemData.canUseAll(age, [Equipment.HOVER_BOOTS, Items.MEGATON_HAMMER]);
     },
     
     /**
@@ -788,8 +778,6 @@ Data = {
 		if (!this.canSinkGoldenScaleDepth(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canUseFireItem(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canGrabShortDistances(age, itemLocation)) { return ItemObtainability.NO; }
-		if (!this.hasSwordWeapon(age, itemLocation)) { return ItemObtainability.NO; }
-		if (!this.hasDamagingItem(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canKillStunnableEnemy(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkKeyRequirement(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkSilverRupeeRequirement(itemLocation)) { return ItemObtainability.NO; }
@@ -854,7 +842,7 @@ Data = {
 			case ItemGroups.COW:
 				return this.canMilkCows();
 			case ItemGroups.SKULLTULA:
-				return this.hasDamagingItem(age);
+				return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
 			case ItemGroups.SCRUB:
 				return this.canBuyFromScrub(age);
             case ItemGroups.BEEHIVE:
@@ -1123,12 +1111,8 @@ Data = {
      * Returns whether the player can buy from a scrub
      */
     canBuyFromScrub: function(age) {
-		if (age === Age.ADULT) { return true; } // Adult can jumpslash them, no checks needed
-		return this.hasDamagingItem(age) || 
-			this.hasShield(age) || 
-			Items.DEKU_NUT.playerHas || 
-			this.hasExplosives() ||
-			this.canUseFireItem(age);
+		return ItemData.canUseAny(age, 
+            [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT, ItemSets.SHIELDS, ItemSets.EXPLOSIVES, ItemSets.FIRE_ITEMS]);
     },
 
     /**
@@ -1143,9 +1127,7 @@ Data = {
         }
 
         let canBreakWithChus = Settings.GlitchesToAllow.breakBeehivesWithChus && Items.BOMBCHU.playerHas;
-        return canBreakWithChus ||
-            ItemData.canUse(age, Items.BOOMERANG) ||
-            (age === Age.ADULT && Items.HOOKSHOT.playerHas);
+        return canBreakWithChus || ItemData.canUseAny(age, [Items.BOOMERANG, Items.HOOKSHOT]);
     },
     
     /**
@@ -1245,39 +1227,13 @@ Data = {
         let canDoOI = Settings.GlitchesToAllow.ocarinaItems;
         return canDoOI && (bottleCount >= 1 && canUseIceArrows || bottleCount > 1);
     },
-    
-    /**
-     * Returns whether the player has an item that can damage an enemy
-     */
-    hasDamagingItem: function(age, itemLocation) {
-		if (itemLocation && !itemLocation.NeedsDamagingItem) { return true; }
-		if (age === Age.ADULT) { return true; } // Adult always has a sword
-		
-		return Equipment.KOKIRI_SWORD.playerHas || 
-			Items.DEKU_STICK.playerHas ||
-			Items.BOOMERANG.playerHas ||
-			Items.FAIRY_SLINGSHOT.playerHas ||
-			this.canUseFireItem(age) ||
-			this.hasExplosives() ||
-			ItemData.canUse(age, Items.MEGATON_HAMMER);
-    },
-    
-    /**
-     * Returns whether the player has a shield they can use (excludes hylian as child)
-     */
-    hasShield: function(age) {
-		if (age === Age.CHILD) { return Equipment.DEKU_SHIELD.playerHas; }
-		return Equipment.HYLIAN_SHIELD.playerHas || Equipment.MIRROR_SHIELD.playerHas;
-	},
 
     /**
      * Returns whether the player can do a shield turn
      */
     canShieldTurn: function(age) {
-        if (age === Age.CHILD) {
-            return Equipment.DEKU_SHIELD.playerHas || Equipment.HYLIAN_SHIELD.playerHas;
-        }
-        return Equipment.HYLIAN_SHIELD.playerHas || Equipment.MIRROR_SHIELD.playerHas;
+        // Child CAN use Hylian Shield for this use case
+        return ItemData.canUse(age, ItemSets.SHIELDS) || Equipment.HYLIAN_SHIELD.playerHas;
     },
 
     /**
@@ -1309,10 +1265,8 @@ Data = {
      * Returns whether the player can activate an eye switch
      */
     canShootEyeSwitch: function(age) {
-		return (
-			(age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas) ||
-			(age === Age.ADULT && Items.FAIRY_BOW.playerHas)
-		);
+		return ItemData.canUse(age, Items.FAIRY_SLINGSHOT) ||
+            ItemData.canUse(age, Items.FAIRY_BOW);
 	},
 
     /**
@@ -1364,7 +1318,7 @@ Data = {
      */
     canGroundJumpWithBomb: function(age, includeBombFlower) {
         let hasBombSource = Items.BOMB.playerHas || (includeBombFlower && Equipment.STRENGTH.playerHas);
-		return Settings.GlitchesToAllow.groundJump && this.hasShield(age) && hasBombSource;
+		return Settings.GlitchesToAllow.groundJump && ItemData.canUse(age, ItemSets.SHIELDS) && hasBombSource;
 	},
     
     /**
@@ -1413,7 +1367,7 @@ Data = {
 	},
     
     /**
-     * Returns whether you can ride epona2
+     * Returns whether you can ride epona
      */
     canRideEpona: function(age) {
 		if (age === Age.CHILD) { return false; }
@@ -1421,21 +1375,9 @@ Data = {
 		let canPlaySong = Data.canPlaySong(Songs.EPONAS_SONG) && Items.OCARINA.playerHas; // Actual ocarina required, even in race skip
 		let canStealEpona = !Settings.RandomizerSettings.shuffleOverworldEntrances &&
 			Settings.GlitchesToAllow.eponaHover && 
-			Items.BOMB.playerHas && 
-			this.hasShield(age);
+            ItemData.canUseAll(age, [ItemSets.SHIELDS, Items.BOMB]);
 		
 		return canPlaySong || canStealEpona;
-	},
-    
-    /**
-     * Returns whether the player has a sword weapon
-     * Includes equip swapping the hammer
-     */
-	hasSwordWeapon: function(age, itemLocation) {
-		if (itemLocation && !itemLocation.NeedsSwordWeapon) { return true; }
-		if (age === Age.ADULT) { return true; } // Adult always has a sword
-		
-		return Equipment.KOKIRI_SWORD.playerHas || Items.DEKU_STICK.playerHas || ItemData.canUse(age, Items.MEGATON_HAMMER);
 	},
     
     /**
