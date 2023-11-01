@@ -1474,7 +1474,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.SKULLTULA,
 				description: "The gold skulltula is on the wall behind the big skulltula.",
 				canGet: function(age) {
-					return Data.canGrabShortDistances(age);
+					return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS);
 				}
 			},
 		}
@@ -1494,11 +1494,11 @@ GrottoGroups = {
 				itemGroup: ItemGroups.SKULLTULA,
 				description: "Burn the web. The skulltula is in the section the cow is in.",
 				canGet: function(age) {
-					if (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2) {
+					if (Data.canWeirdShot(age) && ItemData.canUse(age, UpgradedItems.LONGSHOT)) {
 						return true;
 					}
 					
-					return Data.canUseFireItem(age) && Data.canGrabShortDistances(age);
+					return ItemData.canUseAll(age, [ItemSets.FIRE_ITEMS, ItemSets.GRAB_SHORT_DISTANCE_ITEMS]);
 				}
 			},
 			"Gossip Stone": {
@@ -1506,7 +1506,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.GOSSIP_STONE,
 				description: "Burn the web. The stone is in one of the little rooms.",
 				canGet: function(age) { 
-					return Data.canUseFireItem(age) && Data.canReadGossipStone(age); 
+					return ItemData.canUse(age, ItemSets.FIRE_ITEMS) && Data.canReadGossipStone(age); 
 				}
 			},
 			"Pot 1": {
@@ -1514,7 +1514,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.POT,
 				description: "Burn the web. The pot is in front of the cow.",
 				canGet: function(age) { 
-					return Data.canUseFireItem(age); 
+					return ItemData.canUse(age, ItemSets.FIRE_ITEMS);
 				}
 			},
 			"Pot 2": {
@@ -1522,7 +1522,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.POT,
 				description: "Burn the web. The pot is in front of the cow.",
 				canGet: function(age) { 
-					return Data.canUseFireItem(age); 
+					return ItemData.canUse(age, ItemSets.FIRE_ITEMS);
 				}
 			}
 		}
@@ -1535,7 +1535,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.SKULLTULA,
 				description: "The skulltula is high up behind the mud wall to your left when you enter.",
 				canGet: function(age) {
-					return Data.canGrabShortDistances(age) && Data.canBreakMudWalls(age);
+					return ItemData.canUseAll(age, [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, ItemSets.MUD_WALL_ITEMS]);
 				}
 			},
 			"Pot 1": {
@@ -1543,7 +1543,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.POT,
 				description: "Blow up the mud wall in front of you when you enter to get to this pot.",
 				canGet: function(age) { 
-					return Data.canBreakMudWalls(age); 
+					return ItemData.canUse(age, ItemSets.MUD_WALL_ITEMS);
 				}
 			},
 			"Pot 2": {
@@ -1551,7 +1551,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.POT,
 				description: "Blow up the mud wall in front of you when you enter to get to this pot.",
 				canGet: function(age) { 
-					return Data.canBreakMudWalls(age); 
+					return ItemData.canUse(age, ItemSets.MUD_WALL_ITEMS);
 				}
 			},
 			"Pot 3": {
@@ -1559,7 +1559,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.POT,
 				description: "Blow up the mud wall in front of you when you enter to get to this pot.",
 				canGet: function(age) { 
-					return Data.canBreakMudWalls(age); 
+					return ItemData.canUse(age, ItemSets.MUD_WALL_ITEMS);
 				}
 			},
 			"Pot 4": {
@@ -1567,7 +1567,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.POT,
 				description: "Blow up the mud wall in front of you when you enter to get to this pot.",
 				canGet: function(age) { 
-					return Data.canBreakMudWalls(age); 
+					return ItemData.canUse(age, ItemSets.MUD_WALL_ITEMS);
 				}
 			},
 			"Gossip Stone": {
@@ -1575,7 +1575,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.GOSSIP_STONE,
 				description: "The gossip stone is behind the mud wall in front of you when you enter.",
 				canGet: function(age) { 
-					return Data.canBreakMudWalls(age) && Data.canReadGossipStone(age); 
+					return ItemData.canUse(age, ItemSets.MUD_WALL_ITEMS) && Data.canReadGossipStone(age); 
 				},
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.HIDE;

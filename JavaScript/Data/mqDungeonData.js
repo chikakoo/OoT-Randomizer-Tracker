@@ -197,7 +197,7 @@ let MQDungeons = {
                         Order: 7,
                         LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so.<br/><br/>Head to the other side of the room. The room up the vines to the left is blocked by rocks. Use a bombchu to gain access. The skulltula is up on the wall.",
                         CustomRequirement: function(age) {
-                            return Data.canGrabShortDistances(age) || 
+                            return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS) || 
                                 (age === Age.ADULT && Data.canStaircaseHover(age));
                         }
                     }
@@ -239,7 +239,7 @@ let MQDungeons = {
                         Order: 14,
                         LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Note that you can also use Din's Fire. Defeat all the enemies in this room to continue on.<br/><br/>In this next room, play the Song of Time near the torches to spawn a staircase of blocks. Climb these and use your boomerang or hookshot to get the skulltula on the ceiling.",
                         RequiredSongs: [Songs.SONG_OF_TIME],
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Skulltula by Grave Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -247,7 +247,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 15,
                         LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Note that you can also use Din's Fire. Light the torches to open the next room. Defeat all the enemies in this room to continue on.<br/><br/>Step on the blue switch in the middle of the torches. Light a stick, use Din's or shoot an arrow to burn the web blocking the left door. The skulltula is in this room.",
-                        IsAtShortDistance: true,
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         CustomRequirement: function(age) {
                             return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
                         }
@@ -353,7 +353,7 @@ let MQDungeons = {
                     mainRoom: {
                         CustomRequirement: function(age) {
                             if (Data.itemLocationObtained("Dodongo's Cavern", "main", "Opened First Wall")) { return true; }
-                            return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
+                            return ItemData.canUseAny(age, [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]);
                         }
                     },
                     Exit: {
@@ -369,9 +369,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "Use an explosive or the hammer to break the first wall. This is used to determine whether Adult opened the door for Child.",
-                        CustomRequirement: function(age) {
-                            return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
                     }
                 }
             },
@@ -385,9 +383,8 @@ let MQDungeons = {
                         RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     eastRoom: { 
-                        CustomRequirement: function(age) { // Bring a bomb flower is handled by the upperLizalfosRoom
-                            return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
-                        }
+                        // Bringing a bomb flower is handled by the upperLizalfosRoom
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
                     },
                     mainRoomLedge: {
                         CustomRequirement: function(age) {
@@ -411,9 +408,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "This chest is in the back right corner of the main room. Bomb, hammer, or blue fire the wall blocking it.",
-                        CustomRequirement: function(age) {
-                            return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
                     },
                     "Gossip Stone in Main Room": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -421,9 +416,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "This stone is behind the mud wall in the western area of the main room.",
-                        CustomRequirement: function(age) {
-                            return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
                     },
                     "2 Scrubs in Main Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -817,8 +810,8 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 7,
                         LongDescription: "In the Poe room, use an explosive on one of the lines of bomb flowers to unbar the door to this room. The skulltula is high up in the back left corner.",
-                        IsAtShortDistance: true,
-                        RequiredItems: [ItemSets.EXPLOSIVES_OR_STRENGTH]
+
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, ItemSets.EXPLOSIVES_OR_STRENGTH]
                     },
                     "Poe Room Pot by Entrance": {
                         ItemGroup: ItemGroups.POT,
@@ -1243,10 +1236,10 @@ let MQDungeons = {
                         Order: 20,
                         LongDescription: "After destroying all the tentacles, drop down into the big room and enter the door by the vines. The skulltula is in the back of the room. Kill the enemies (some are invisible) or megaflip to cross to the other wide. Burn the web with a fire item.",
                         CustomRequirement: function(age) {
-                            let canUseLens = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas;
-                            let canKillEnemies = canUseLens && (age === Age.CHILD || Items.FAIRY_BOW.playerHas || Items.HOOKSHOT.playerHas);
-                            let canCrossWater = canKillEnemies || Data.canMegaFlip(age) || (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
-                            let canCollectToken = Data.canGrabShortDistances(age) || Data.canStaircaseHover(age);
+                            let canUseLens = ItemData.canUse(age, Items.LENS_OF_TRUTH);
+                            let canKillEnemies = canUseLens && ItemData.canUseAny(age, [ItemSets.PROJECTILES, Item.HOOKSHOT]);
+                            let canCrossWater = canKillEnemies || Data.canMegaFlip(age) || ItemData.canUse(age, Equipment.HOVER_BOOTS);
+                            let canCollectToken = ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS) || Data.canStaircaseHover(age);
                             return canCrossWater && canCollectToken;
                         }
                     }
@@ -1365,7 +1358,7 @@ let MQDungeons = {
                         MapInfo: { x: 163, y: 193, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 2,
-                        IsAtShortDistance: true,
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         LongDescription: "The skulltula is above the door at the end of the first hallway."
                     },
 
@@ -1678,7 +1671,7 @@ let MQDungeons = {
                         MapInfo: { x: 226, y: 98, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 7,
-                        IsAtShortDistance: true,
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         LongDescription: "The skulltula is above the doorframe leading to this room. Get it with your boomerang or hookshot."
                     }
                 }
@@ -3364,7 +3357,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 36,
                         LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom level and use your iron boots to sink down. Use the Scarecrow's Song or hover boots to navigate across the room. Now, turn around and use Fire Arrows to light the three torches to get to the skulltula (it's on the ceiling).",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },
@@ -4001,7 +3994,7 @@ let MQDungeons = {
                         Order: 17,
                         LongDescription: "Get to the right side of the giant room. Hit the switch behind the gate to open it to get to the falling spike room. In the first cell to the left is the skulltula.",
                         CustomRequirement: function(age) {
-                            return Data.canGrabShortDistances(age) || Data.canStaircaseHover(age);
+                            return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS) || Data.canStaircaseHover(age);
                         }
                     },
                     "Bottom Chest in Falling Spikes Room": {
@@ -4309,7 +4302,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 36,
                         LongDescription: "Navigate to the boat room - this is the room after the Gibdo room by the wind hallway. Get to the boat by pushing the block, or hookshotting up the ladder. Play Zelda's Lullaby to move the boat to the other area. The skulltula is on the wall to the left of where you create the bridge.",
-                        IsAtShortDistance: true 
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },

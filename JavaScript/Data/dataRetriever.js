@@ -770,11 +770,9 @@ Data = {
 		if (!this.canPlaySongs(itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canPlayDifficultOcarinaItems(itemLocation)) { return ItemObtainability.NO; }
 		if (!this.hasBottle(itemLocation)) { return ItemObtainability.NO; }
-        if (!this.canBreakMudWalls(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this.canSinkSilverScaleDepth(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canSinkGoldenScaleDepth(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canUseFireItem(age, itemLocation)) { return ItemObtainability.NO; }
-		if (!this.canGrabShortDistances(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canKillStunnableEnemy(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkKeyRequirement(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkSilverRupeeRequirement(itemLocation)) { return ItemObtainability.NO; }
@@ -1257,14 +1255,6 @@ Data = {
     canHitSwitchAtShortDistance: function(age) {
         return ItemData.canUse(age, ItemSets.DISTANT_SWITCH_ITEMS);
     },
-
-    /**
-     * Whether the player can break mud walls (explosives, hammer, or blue fire)
-     */
-    canBreakMudWalls: function(age, itemLocation) {
-        if (itemLocation && !itemLocation.BlockedByMudWall) { return true; }
-        return ItemData.canUseAny(age, [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.BLUE_FIRE_ITEMS]);
-    },
     
     /**
      * Returns whether the player can ground jump using a bomb
@@ -1300,17 +1290,6 @@ Data = {
 		if (itemLocation && !itemLocation.IsGoldenScaleWater) { return true; }
 		return Equipment.SCALE.currentUpgrade > 1 || (age === Age.ADULT && Equipment.IRON_BOOTS.playerHas);
 	},
-    
-    /**
-     * Returns whether the player can grab items at a short distance
-     * Includes equip swapping boomerang
-     */
-    canGrabShortDistances: function(age, itemLocation) {
-		if (itemLocation && !itemLocation.IsAtShortDistance) { return true; }
-		let canGetWithBoomerang = ItemData.canUse(age, Items.BOOMERANG);
-		let canGetWithHookshot = (age === Age.ADULT && Items.HOOKSHOT.playerHas);
-		return canGetWithBoomerang || canGetWithHookshot;
-    },
 
     /**
      * Returns whether the player summon and can hook a scarecrow

@@ -153,8 +153,7 @@ let StandardDungeons = {
                         MapInfo: { x: 17, y: 77, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 12,
-                        IsAtShortDistance: true,
-                        BlockedByMudWall: true,
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, ItemSets.MUD_WALL_ITEMS],
                         LongDescription: "If you make your way around the basement, you'll eventually find a circular room where gohma babies drop from the ceiling. One of the side rooms has a bombable wall. Bomb it, then enter the next room. The skulltula is high up on the wall to your left."
                     }
                 }
@@ -250,7 +249,7 @@ let StandardDungeons = {
                     mainRoom: {
                         CustomRequirement: function(age) {
                             if (Data.itemLocationObtained("Dodongo's Cavern", "main", "Opened First Wall")) { return true; }
-                            return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
+                            return ItemData.canUseAny(age, [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]);
                         }
                     },
 
@@ -267,9 +266,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "Use an explosive, hammer, or blue fire to break the first wall. This is used to determine whether Child can get in without anything.",
-                        CustomRequirement: function(age) {
-                            if (Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas) { return true; }
-                        }
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
                     }
                 }
             },
@@ -285,9 +282,7 @@ let StandardDungeons = {
                     },
 
                     blueRoom: {
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, ItemSets.SWORDS) || Data.canBreakMudWalls(age);
-                        }
+                        RequiredChoiceOfItems: [ItemSets.SWORDS, ItemSets.MUD_WALL_ITEMS]
                     }
                 },
 
@@ -298,9 +293,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "This stone is behind the breakable wall in the northeast corner of the main room.",
-                        CustomRequirement: function(age) {
-                            return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
                     },
                     "2 Pots at East Room Entrance": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -387,9 +380,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "Go to the left side of the big main room. Destroy the wall with an explosive, hammer, or blue fire to find this chest.",
-                        CustomRequirement: function(age) {
-                            return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
                     },
                     "Scrub in Main Room": {
                         ItemGroup: ItemGroups.SCRUB,
@@ -404,9 +395,7 @@ let StandardDungeons = {
             blueRoom: {
                 Exits: {
                     firstFloorSwitch: {
-                        CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
-                        }
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
                     }
                 },
 
@@ -417,9 +406,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "From the entrance, go around the right side of the dungeon until you get to the blue room with dodongos in it. You can also jump up to the switch platform as adult and enter the door to get here. Near the usual entrance to this room, there's a mud wall with a scrub inside. You should be able to run a bomb flower to it if you don't have your own explosives.",
-                        CustomRequirement: function(age) {
-                            return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
                     },
                     "3 Pots by Blue Room Start": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -459,9 +446,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 15,
                         LongDescription: "Make your way to the room with the Bomb Flowers by the staircase. Destroy the wall near the front of the stairs and enter the room. The chest is here - if you can't kill the armos, you'll have to savewarp after you get the chest.",
-                        CustomRequirement: function(age) {
-                            return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
                     }
                 }
             },
@@ -481,9 +466,7 @@ let StandardDungeons = {
                         }
                     },
                     firstEyeSwitchRoom: {
-                        CustomRequirement: function(age) {
-                            return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
                     },
                     potsInBladeRoom: {
                         RequiredItems: [Items.BOOMERANG],
@@ -538,7 +521,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 20,
                         LongDescription: "In the room with the blades, there's a wall you can destroy that's located near the cliffs with the bomb chest. There are a couple scrubs inside.",
-                        BlockedByMudWall: true
+                        RequiredItems: [ItemSets.MUD_WALL_ITEMS]
                     },
                     "Heart Behind Block in Blade Room": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -653,7 +636,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 29,
                         LongDescription: "At the end of the bridge above the giant dodongo head, destroy the wall. The chest is just inside.",
-                        BlockedByMudWall: true
+                        RequiredItems: [ItemSets.MUD_WALL_ITEMS]
                     }
                 }
             },
@@ -667,7 +650,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 30,
                         LongDescription: "This skulltula is in an alcove above the giant staircase with the Bomb Flowers.<br/><br/>As child, you must first navigate to the switch that raises the platform to the second floor. Now, leave the dungeon and come back in. Take the platform to the second floor and proceed backwards to the staircase room - the staircase is now raised. You can climb the vines on the staircase to get to the skulltula.<br/><br/>As adult, you can do the same thing. If you have the longshot, though, you can get it without needing the staircase up if you stand on a step close to the top.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },
@@ -829,7 +812,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 4,
                         LongDescription: "In the room below the one with the holes, there are two skulltulas on the wall. You can reach them from the bottom part with the boomerang - you may have to aim a bit into the cliff, though. Otherwise, you can wait until you kill all the Parasitic Tentacles and drop down the corresponding hole to get an easier angle.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Right Skulltula on Lower Room Wall": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -837,7 +820,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 5,
                         LongDescription: "In the room below the one with the holes, there are two skulltulas on the wall. You can reach them from the bottom part with the boomerang - you may have to aim a bit into the cliff, though. Otherwise, you can wait until you kill all the Parasitic Tentacles and drop down the corresponding hole to get an easier angle.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Skulltula on Vines": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -1172,7 +1155,7 @@ let StandardDungeons = {
                         MapInfo: { x: 191, y: 110, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 5,
-                        IsAtShortDistance: true,
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go through the main room until you get to the door on the other side. Turn right to find this skulltula on the wall. You can get it with your hookshot or boomerang."
                     },
                     "Chest Behind Main Room": {
@@ -1233,14 +1216,12 @@ let StandardDungeons = {
                         MapInfo: {x: 83, y: 52, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 18,
-                        IsAtShortDistance: true,
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         LongDescription: "There's a skulltula high up on the wall over the moat in the outside left room. You can get it from the ground with the longshot. Otherwise, you must make your way to the upper platform to grab it. This is the path that you take if you fall in the hole by the boss key chest.",
                         IsPostWalkCheck: true,
                         CustomRequirement: function(age) {
-                            if (Data.canAccessMap(age, "Forest Temple", "topOfOutsideLeft")) { 
-                                return true;
-                            }
-                            return Items.HOOKSHOT.currentUpgrade === 2;
+                            return Data.canAccessMap(age, "Forest Temple", "topOfOutsideLeft") ||
+                                ItemData.canUse(age, UpgradedItems.LONGSHOT);
                         }
                     }
                 }
@@ -1299,7 +1280,7 @@ let StandardDungeons = {
                 Exits: {
                     outsideRight: {},
                     skulltulaOnOutsideRightLedge: {
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 },
 
@@ -1594,7 +1575,7 @@ let StandardDungeons = {
                         MapInfo: {x: 132, y: 228, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 32,
-                        IsAtShortDistance: true,
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         LongDescription: "After defeating all the poes, head down the basement elevator. Push the wall so that they move clockwise once. You should now be able to access the room with the skulltula",
                         IsPostWalkCheck: true,
                         CustomRequirement: function(age) {
@@ -2703,34 +2684,29 @@ let StandardDungeons = {
                         Order: 21,
                         MapInfo: { x: 157, y: 217, floor: "F1" },
                         LongDescription: "In the room with the middle water level Triforce, there is a skulltula high up on the wall. There are three ways to get it; the bottom two enable the hookshot to be used:<br/>- Use the longshot<br/>- Cast Farore's Wind in the room, raise the water to max, then warp back in<br/>- Enter the room from the middle, then exit from the bottom - the middle area door will not be barred. Come back via the iron boots to get the skulltula with the hookshot after raising the water to max.",
-                        IsAtShortDistance: true,
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         CustomRequirement: function(age) {
                             // You can just longshot it
-                            if (age === Age.ADULT && Items.HOOKSHOT.currentUpgrade === 2) { 
+                            if (ItemData.canUse(age, UpgradedItems.LONGSHOT)) { 
                                 return true; 
                             }
 
-                            let canCastFaroresWind = Equipment.MAGIC.playerHas && Items.FARORES_WIND.playerHas;
-                            if (!MapLocations["Water Temple"]._isPlayerLockedOutOfHighWater())
-                            {
-                                // Cast FW in the room, then raise the water and recast FW
-                                if (canCastFaroresWind) {
-                                    return true;
-                                }
-    
-                                // Enter the room via the fire door, then exit out the bottom via the locked door
-                                // Now raise the water and return through the fire door with iron boots (the bars will be gone still)
-                                let bottomDoorCheck = Data.itemLocationObtained("Water Temple", "main", "Locked Door to Central Room") ||
-                                    ItemData.getKeyCount("Water Temple") === Keys.WATER_TEMPLE.totalKeys();
-                                if (age === Age.ADULT && 
-                                    bottomDoorCheck && 
-                                    Equipment.IRON_BOOTS.playerHas && 
-                                    Data.canUseFireItem(age)) {
-                                    return true;
-                                }
+                            if (MapLocations["Water Temple"]._isPlayerLockedOutOfHighWater()) {
+                                return false;
                             }
 
-                            return false;
+                            // Cast FW in the room, then raise the water and recast FW
+                            if (ItemData.canUse(age, Items.FARORES_WIND)) {
+                                return true;
+                            }
+
+                            // Enter the room via the fire door, then exit out the bottom via the locked door
+                            // Now raise the water and return through the fire door with iron boots (the bars will be gone still)
+                            let bottomDoorCheck = Data.itemLocationObtained("Water Temple", "main", "Locked Door to Central Room") ||
+                                ItemData.getKeyCount("Water Temple") === Keys.WATER_TEMPLE.totalKeys();
+                            if (ItemData.canUseAll(age, [Equipment.IRON_BOOTS, ItemSets.FIRE_ITEMS]) && bottomDoorCheck) {
+                                return true;
+                            }
                         }
                     }
                 }
@@ -2957,8 +2933,7 @@ let StandardDungeons = {
                         Order: 9,
                         MapInfo: { x: 51, y: 121, floor: "F1" },
                         LongDescription: "Start from the longshot chest room. Play the Song of Time to clear the blocks from the floor. Drop down. Now, make your way through the whirlpool room, avoiding them as much as possible. The skulltula is somewhere on the left wall when going down this path - equip the iron boots then hookshot it.",
-                        RequiredItems: [Equipment.IRON_BOOTS],
-                        IsAtShortDistance: true,
+                        RequiredItems: [Equipment.IRON_BOOTS, ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Heart 4 in Whirlpool Room": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -3087,7 +3062,7 @@ let StandardDungeons = {
                         Order: 31,
                         MapInfo: { x: 122, y: 91, floor: "F1" },
                         LongDescription: "Head to the bottom of the main room - no need to lower the water if you don't want to. Enter the north wing. After you reach the dead end, equip your boots and surface. Longshot to the other side and enter the locked door. Navigate across the room to the other side - might help to kill the tektites. Complete the puzzle in this room (or cross it with hover boots or a megaflip!) which requires you to explode a destroyable wall and push a block onto a switch. After the next room (water switch jumping puzzle), you should see the skulltula on the waterfall to the right.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },
@@ -3523,7 +3498,7 @@ let StandardDungeons = {
                         Order: 14,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). Take out the enemies in this room to open up the gate - there's a like-like and a few keese in the corners. If you don't have a range weapon, jumpslash at the keese to alert them to you. The skulltula is behind the open gate.<br/><br/>If you are an adult and have no hookshot, you can kill the skulltula with a jumpslash. Line yourself up so that you, the chest, and the token are in a line. Face the other way and do two backflips (Down + Z + spam A). If you were the right distance away, you should grab the token after backflipping off the chest.",
                         CustomRequirement: function(age) {
-                            return age === Age.ADULT || Data.canGrabShortDistances(age);
+                            return age === Age.ADULT || ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS);
                         }
                     },
                     "5 Pit Room Silver Rupees": {
@@ -3564,7 +3539,7 @@ let StandardDungeons = {
                         Order: 16,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. The skulltula is in the first cage to the left near the ceiling spikes. To pass them, you can either use good timing, or pull the block out of the wall to the right (use the lens to find it) to act as an umbrella - assuming you have a strength upgrade.",
                         CustomRequirement: function(age) {
-                            return Data.canGrabShortDistances(age) || Data.canStaircaseHover(age);
+                            return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS) || Data.canStaircaseHover(age);
                         }
                     },
                     "Bottom Chest in Falling Spikes Room": {
@@ -4597,7 +4572,7 @@ let StandardDungeons = {
                         Order: 19,
                         AltOrder: 24,
                         LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor. In this room, there's a ray of light with some blocks nearby. Pull the block with the sun on it straight back and it will become happy when it hits the light, opening the door. Once inside the next room, turn around; the skulltula is above the door.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Chest in Statue Room on Northeast Platform": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4917,7 +4892,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "In the room with the spinning scythe, there's a skulltula up on one of the walls. It's the one to your left when you first enter.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Scythe Silver Rupee by Icicles": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -5080,7 +5055,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. There's a skulltula up on one of the walls to your left.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },
@@ -5098,7 +5073,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "When you first enter the spinning scythe room, look to your left. Burn the red ice with your blue fire and enter the room. When you get to the big room, the skulltula will be on the wall to your left.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Block Silver Rupee in Center": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -5511,7 +5486,7 @@ let StandardDungeons = {
                         CustomRequirement(age) {
                             // The staircase hover requires two additional bomb drops to gain enough height
                             // Start the hover against the wall
-                            return Data.canGrabShortDistances(age) || Data.canStaircaseHover(age);
+                            return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS) || Data.canStaircaseHover(age);
                         }
                     }
                 }
@@ -5535,7 +5510,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 19,
                         LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the left side to get to the skulltula.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },
@@ -5548,7 +5523,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 21,
                         LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the right side. Hug the right wall, moving counter-clockwise, over the invisible floor to get to the skulltula.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },

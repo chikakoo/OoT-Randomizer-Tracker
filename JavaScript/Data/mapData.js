@@ -73,7 +73,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Look in the middle of the House of Twins at night.",
                         CustomRequirement: function(age) {
-                            if (Data.canGrabShortDistances(age)) { return true; }
+                            if (ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS)) { return true; }
                             return Settings.GlitchesToAllow.houseOfTwinsSkullWithHovers && Equipment.HOVER_BOOTS.playerHas;
                         }
                     },
@@ -721,7 +721,7 @@ let MapLocations = {
                         MapInfo: { x: 240, y: 67 },
                         Age: Age.CHILD,
                         LongDescription: "At night, there's a skulltula high up on Talon's House.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Skulltula in Tree": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -744,7 +744,7 @@ let MapLocations = {
                         MapInfo: { x: 44, y: 214 },
                         Age: Age.CHILD,
                         LongDescription: "At night, there's a skulltula on the southeast wall of the ranch. Facing the cow shed, it's a little bit to the right.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Epona's Song": {
                         ItemGroup: ItemGroups.SONG,
@@ -1508,7 +1508,7 @@ let MapLocations = {
                         MapInfo: { x: 242, y: 264 },
                         Age: Age.CHILD,
                         LongDescription: "At night, this skulltula is high up on the back right wall of the graveyard.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Sell Spooky Mask": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -2195,8 +2195,8 @@ let MapLocations = {
                     },
                     shop: {
                         CustomRequirement: function(age) {
-                            if (Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas || (age === Age.ADULT && Items.FAIRY_BOW.playerHas)) { return true; }
-                            return age === Age.CHILD && Data.canUseFireItem(age);
+                            return ItemData.canUseAny(age, [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.FAIRY_BOW]) ||
+                                (age === Age.CHILD && ItemData.canUse(age, ItemSets.FIRE_ITEMS));
                         }
                     },
                     "Death Mountain Trail": {
@@ -2230,10 +2230,8 @@ let MapLocations = {
                         MapInfo: { x: 117, y: 260 },
                         Age: Age.ADULT,
                         LongDescription: "Blow up/hammer the weak walls on the western side of the middle floor. Pay Medigoron 200 rupees for this item.",
-                        RequiredItems: [{item: Equipment.WALLET, upgradeString: "1"}],
-                        CustomRequirement: function(age) {
-                            return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas || ItemData.canUse(age, Items.MEGATON_HAMMER);
-                        }
+                        RequiredItems: [UpgradedItems.GIANTS_WALLET],
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER]
                     },
                     "Leftmost Maze Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -2581,7 +2579,7 @@ let MapLocations = {
                         MapInfo: { x: 132, y: 153 },
                         Age: Age.ADULT,
                         LongDescription: "At night, go up the ladder closest to Hyrule Field. Jump to the cliff behind you to find the skulltula.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Plant Bean by Bean Guy": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -2860,7 +2858,7 @@ let MapLocations = {
                         MapInfo: { x: 81, y: 177 },
                         Age: Age.CHILD,
                         LongDescription: "At night, you'll find this skulltula on the wall by the giant log.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Gossip Stone Left of Jabu Platform": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -2905,7 +2903,7 @@ let MapLocations = {
                         MapInfo: { x: 312, y: 154 },
                         Age: Age.ADULT,
                         LongDescription: "At night, go to the southeast corner of the map. Pick up the silver rock and go down the path. Beware of invisible giant skulltulas! You'll find the skulltula you want after you climb the wall.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "3 Pots in Hidden Tunnel": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3142,7 +3140,7 @@ let MapLocations = {
                         MapInfo: { x: 264, y: 56 },
                         Age: Age.CHILD,
                         LongDescription: "At night, look to the right of the first tiny bridge by the tiny waterfall. The skulltula is by the water source.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },
@@ -3221,7 +3219,7 @@ let MapLocations = {
                         MapInfo: { x: 144, y: 103 },
                         Age: Age.ADULT,
                         LongDescription: "At night, there's a skulltula high up on the pillar near the rocks to the left side of the area across the bridge.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Skulltula Behind Tent": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3229,7 +3227,7 @@ let MapLocations = {
                         MapInfo: { x: 144, y: 46 },
                         Age: Age.ADULT,
                         LongDescription: "At night, there's a skulltula on the wall behind the tent.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },
@@ -3673,7 +3671,7 @@ let MapLocations = {
                         MapInfo: { x: 244, y: 40 },
                         Age: Age.ADULT,
                         LongDescription: "At night, navigate to the back part of the map. Head to the target on the left side to find this skulltula.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },
@@ -4158,7 +4156,7 @@ let MapLocations = {
                         MapInfo: { x: 208, y: 85 },
                         Age: Age.EITHER,
                         LongDescription: "The skulltula is in the outpost in the center of the desert.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "3 Crates Across Quicksand": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -4264,7 +4262,7 @@ let MapLocations = {
                         MapInfo: { x: 180, y: 245 },
                         Age: Age.ADULT,
                         LongDescription: "At night, there's a skulltula in one of the trees by an oasis at the south middle part of the map.",
-                        IsAtShortDistance: true
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Skulltula on Cliff": {
                         ItemGroup: ItemGroups.SKULLTULA,

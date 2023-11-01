@@ -176,6 +176,10 @@ let UpgradedItems = {
 	GOLDEN_GAUNTLETS: {
 		item: Equipment.STRENGTH,
 		upgrade: 3
+	},
+	GIANTS_WALLET: {
+		item: Equipment.WALLET,
+		upgrade: 1
 	}
 };
 
@@ -210,6 +214,10 @@ let ItemSets = {
 			Items.FAIRY_BOW, Items.FAIRY_SLINGSHOT, 
 			Items.BOOMERANG, Items.HOOKSHOT
 		]
+	},
+	GRAB_SHORT_DISTANCE_ITEMS: {
+		isItemSet: true,
+		items: [Items.BOOMERANG, Items.HOOKSHOT]
 	},
 	// Any item you can swing and jumpslash with - includes stick and hammer
 	SWORDS: {
