@@ -10,14 +10,14 @@ let StandardDungeons = {
         UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canBurnBasementWeb: function(age) {
             let canShootWebThroughTorch = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
-            return canShootWebThroughTorch || Data.canUseFireItem(age) || Data.canUseDekuStick(age);
+            return canShootWebThroughTorch || Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
         },
         Regions: {
             main: {
                 Exits: {
                     slingshotRoom: {
                         CustomRequirement: function(age) {
-                            if (Data.canUseHammer(age)) { return true; }
+                            if (ItemData.canUse(age, Items.MEGATON_HAMMER)) { return true; }
                             if (age === Age.ADULT) {
                                 return Equipment.HYLIAN_SHIELD.playerHas;
                             }
@@ -113,7 +113,7 @@ let StandardDungeons = {
                         RequiredChildItems: [Items.FAIRY_SLINGSHOT],
                         RequiredAdultItems: [Items.FAIRY_BOW],
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
+                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
                         }
                     },
                     basementTop: {
@@ -420,7 +420,7 @@ let StandardDungeons = {
                 Exits: {
                     firstFloorSwitch: {
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
+                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
                         }
                     }
                 },
@@ -766,7 +766,7 @@ let StandardDungeons = {
                 Exits: {
                     afterFirstRoom: {
                         CustomRequirement: function(age) {
-                            if (Data.hasExplosives() || Data.canUseBoomerang(age)) { return true; }
+                            if (Data.hasExplosives() || ItemData.canUse(age, Items.BOOMERANG)) { return true; }
                             if (age === Age.ADULT) { return Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas; }
                             return Items.FAIRY_SLINGSHOT.playerHas;
                         }
@@ -904,7 +904,7 @@ let StandardDungeons = {
                         Order: 8,
                         LongDescription: "Bring Ruto back up to the first floor. Take her through the room with holes into the next room. Now, hug the right wall all the way to a switch - jump on it with Ruto in your hands. Enter the room. Kill all the stingers to spawn the chest. They can be hurt with explosions, boomerang, slingshot, or jump slashes from a stick or sword.",
                         CustomRequirement: function(age) {
-                            return Data.canUseBoomerang(age) || Items.FAIRY_SLINGSHOT.playerHas || Data.hasSwordWeapon(age) || Data.hasExplosives();
+                            return ItemData.canUse(age, Items.BOOMERANG) || Items.FAIRY_SLINGSHOT.playerHas || Data.hasSwordWeapon(age) || Data.hasExplosives();
                         }
                     },
                     "Map Chest": {
@@ -1040,7 +1040,7 @@ let StandardDungeons = {
                         LongDescription: "The skulltula is high up on the vines in the first room. You can kill it with a ranged item, din's fire, a bomb from the top (requires a trick), or a bombchu from the ground.",
                         CustomRequirement: function(age) {
                             if (Settings.GlitchesToAllow.forestFirstSkullWithBomb && Items.BOMB.playerHas) { return true; }
-                            if (Data.canUseFireItem(age) || Data.canUseBoomerang(age) || Items.BOMBCHU.playerHas) { return true; }
+                            if (Data.canUseFireItem(age) || ItemData.canUse(age, Items.BOOMERANG) || Items.BOMBCHU.playerHas) { return true; }
                             if (age === Age.CHILD) {
                                 return Items.FAIRY_SLINGSHOT.playerHas;
                             }
@@ -1652,7 +1652,7 @@ let StandardDungeons = {
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canAccessBossKeyPath: function(age) {
             let canSkipPillar = age === Age.ADULT && Settings.GlitchesToAllow.fireFirstRoomPillarSkip;
-            return Data.canUseHammer(age) || canSkipPillar;
+            return ItemData.canUse(age, Items.MEGATON_HAMMER) || canSkipPillar;
         },
         Regions: {
             main: {
@@ -2335,7 +2335,7 @@ let StandardDungeons = {
                     },
                     centerRoomTopSwitch: {
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.fireJumpDownToSoTBlock && Data.canUseHammer(age);
+                            return Settings.GlitchesToAllow.fireJumpDownToSoTBlock && ItemData.canUse(age, Items.MEGATON_HAMMER);
                         }
                     },
                     centerRoomBottom: {}
@@ -2449,7 +2449,7 @@ let StandardDungeons = {
                 Exits: {
                     midEastWingPots: {
                         CustomRequirement: function(age) {
-                            if (Data.canUseBoomerang(age)) { return true; }
+                            if (ItemData.canUse(age, Items.BOOMERANG)) { return true; }
                             let canBreakPot = (age === Age.ADULT && (Items.HOOKSHOT.playerHas || Items.FAIRY_BOW.playerHas)) ||
                                 (age === Age.CHILD && Items.FAIRY_SLINGSHOT.playerHas);
                             return canBreakPot && Data.canSinkGoldenScaleDepth(age);
@@ -2650,7 +2650,7 @@ let StandardDungeons = {
                     },
                     midWaterTriforceFloor: {
                         CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Items.FAIRY_BOW.playerHas) || Data.canUseFireItem(age) || Data.canUseDekuStick(age);
+                            return (age === Age.ADULT && Items.FAIRY_BOW.playerHas) || Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
                         }
                     },
                     centralRoomBottom: {
@@ -2694,7 +2694,7 @@ let StandardDungeons = {
                         RequiredChildItems: [Equipment.MAGIC, Equipment.KOKIRI_SWORD],
                         CustomRequirement: function(age) {
                             let canUseBow = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
-                            return canUseBow || Data.canUseDekuStick(age) || Data.canUseFireItem(age);
+                            return canUseBow || ItemData.canUse(age, Items.DEKU_STICK) || Data.canUseFireItem(age);
                         }
                     }
                 }
@@ -3531,7 +3531,7 @@ let StandardDungeons = {
                         Order: 11,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). The hearts are in the back left corner. Play the Song of Time to spawn a block to get them.",
                         CustomRequirement: function(age) {
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canUseBoomerang(age);
+                            return Data.canPlaySong(Songs.SONG_OF_TIME) || ItemData.canUse(age, Items.BOOMERANG);
                         }
                     },
                     "Visible Chest in Invisible Scythe Room": {
@@ -4270,7 +4270,7 @@ let StandardDungeons = {
                         AltOrder: 42,
                         LongDescription: "WALL MASTER WARNING:<br/>Make your way counter-clockwise around the child-only areas of the temple. In the room with the Anubis, either Din's fire him, or hit the switch then quickly navigate to the side directly opposite the fire so that it dies on it. In the room after that - collect the silver rupees to lower the bridge. Now you can use a Deku Stick (or Din's fire) to light the torches on the other side to spawn the chest.<br/><br/>It's important to note that you can use Din's fire on them earlier, or take a flame from the earlier main room to light the torches. This avoids the need for the silver rupees (for this chest) completely.",
                         CustomRequirement: function(age) {
-                            return Data.canUseDekuStick(age) || Data.canUseFireItem(age);
+                            return ItemData.canUse(age, Items.DEKU_STICK) || Data.canUseFireItem(age);
                         }
                     }
                 }
@@ -4555,7 +4555,7 @@ let StandardDungeons = {
                         AltOrder: 13,
                         LongDescription: "Head to the statue room. On the floor in front of the statue, light the torches with Din's Fire or Fire Arrows to spawn the chest. You can also run a lit deku stick down via the torch in the southwest corner of the room.",
                         CustomRequirement: function(age) {
-                            return Data.canUseFireItem(age) || Data.canUseDekuStick(age);
+                            return Data.canUseFireItem(age) || ItemData.canUse(age, Items.DEKU_STICK);
                         }
                     },
                     "Sun Block Silver Rupee on Wall by Blocks": {
@@ -4607,7 +4607,7 @@ let StandardDungeons = {
                         LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor. As child, you can collect the silver rupees to light the golden torch. After that, use a Deku Stick to light the other torches. You can also just use Din's Fire to light them - make sure to light two at once, then get close to the third one before casting it a second time. As adult, your only options are Din's Fire or Fire Arrows.",
                         CustomRequirement: function(age) {
                             let canUseFireItem = Data.canUseFireItem(age);
-                            let canUseStick = Data.canUseDekuStick(age);
+                            let canUseStick = ItemData.canUse(age, Items.DEKU_STICK);
                             let canDoFlameStorage = Settings.GlitchesToAllow.flameStorage && canUseStick;
                             let canLightTorchesWithoutRupees = canDoFlameStorage || canUseFireItem;
                             if (canLightTorchesWithoutRupees) {
@@ -4834,7 +4834,7 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             if (Settings.GlitchesToAllow.spiritBKTrick) { return true; }
                             
-                            let canDestroyDoors = Data.hasExplosives() || Data.canUseHammer(age);
+                            let canDestroyDoors = Data.hasExplosives() || ItemData.canUse(age, Items.MEGATON_HAMMER);
                             let hasRequiredItems = Items.FAIRY_BOW.playerHas && Items.HOOKSHOT.playerHas;
                             return canDestroyDoors && hasRequiredItems;
                         }
@@ -4909,7 +4909,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is frozen in the ice to the left of the exit of the first big room. You can either melt the ice, jumpslash into it, or use a boomerang to get the item.",
                         CustomRequirement: function(age) {
                             return Data.hasSwordWeapon(age) || 
-                                (Settings.GlitchesToAllow.boomerangThroughWalls && Data.canUseBoomerang(age)) || 
+                                (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG)) || 
                                 Data.canUseBlueFire(age);
                         }
                     }
@@ -5191,7 +5191,7 @@ let StandardDungeons = {
                         Order: 14,
                         LongDescription: "When you first enter the spinning scythe room, look to your left. Burn the red ice with your blue fire and enter the room. The rupees are above the area with the blue fire. You can either use the boomerang to get them, or play the Song of Time on the platform with the blue fire to spawn some blocks.",
                         CustomRequirement: function(age) {
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canUseBoomerang(age);
+                            return Data.canPlaySong(Songs.SONG_OF_TIME) || ItemData.canUse(age, Items.BOOMERANG);
                         }
                     }
                 }
@@ -5408,8 +5408,8 @@ let StandardDungeons = {
                         LongDescription: "Head to the room to the left of the main room. The heart is in the bottom left coffin - light the torch to open it.",
                         CustomRequirement: function(age) {
                             return Data.canUseFireItem(age) || 
-                                Data.canUseDekuStick(age) ||
-                                (Data.canUseBoomerang(age) && Settings.GlitchesToAllow.boomerangThroughWalls);
+                                ItemData.canUse(age, Items.DEKU_STICK) ||
+                                (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
                         }
                     },
                     "Key in Closed Coffin": {
@@ -5420,8 +5420,8 @@ let StandardDungeons = {
                         LongDescription: "Head to the room to the left of the main room. The heart is in the top left coffin - light the torch to open it.",
                         CustomRequirement: function(age) {
                             return Data.canUseFireItem(age) || 
-                                Data.canUseDekuStick(age) ||
-                                (Data.canUseBoomerang(age) && Settings.GlitchesToAllow.boomerangThroughWalls);
+                                ItemData.canUse(age, Items.DEKU_STICK) ||
+                                (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
                         }
                     },
                     "Underwater Chest in Front": {

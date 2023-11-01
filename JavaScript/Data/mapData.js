@@ -162,7 +162,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Ride the bean platform or use hover boots to reach these items.",
                         CustomRequirement: function(age) {
-                            return Data.canUseBoomerang(age) ||
+                            return ItemData.canUse(age, Items.BOOMERANG) ||
                                 Equipment.HOVER_BOOTS.playerHas || 
                                 Data.itemLocationObtained("Kokiri Forest", "main", "*Plant Bean by Kokiri Shop");
                         }
@@ -351,7 +351,7 @@ let MapLocations = {
                         LongDescription: "This item is under the rock one room from the Sacred Forest Meadow.",
                         CustomRequirement: function(age) {
                             return Data.canBlastOrSmash(age) ||
-                                (Settings.GlitchesToAllow.boomerangThroughWalls && Data.canUseBoomerang(age));
+                                (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
                         }
                     }
                 }
@@ -1856,7 +1856,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "At night, leave Goron City. Follow the right wall until you reach a red rock. Break it with your hammer to reveal the skulltula.",
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.dmtSkullsWithoutHammer || Data.canUseHammer(age);
+                            return Settings.GlitchesToAllow.dmtSkullsWithoutHammer || ItemData.canUse(age, Items.MEGATON_HAMMER);
                         }
                     },
                     "In Wall by Kakariko": {
@@ -1891,7 +1891,7 @@ let MapLocations = {
                         LongDescription: "As a child, this item is under the highest rock that's blocking access to the top of Death Mountain. You can snag it with the boomerang from the bottom with a good angle.",
                         CustomRequirement: function(age) {
                             return Data.canBlastOrSmash(age) ||
-                                (Settings.GlitchesToAllow.boomerangThroughWalls && Data.canUseBoomerang(age));
+                                (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
                         }
                     },
                     "Blue Rupee in Rock Below Cow Grotto": {
@@ -1902,7 +1902,7 @@ let MapLocations = {
                         LongDescription: "As a child, this item is under the leftmost rock by the rocks blocking access to the top of Death Mountain. You can snag it with the boomerang if you stand far back enough on the platform.",
                         CustomRequirement: function(age) {
                             return Data.canBlastOrSmash(age) ||
-                                (Settings.GlitchesToAllow.boomerangThroughWalls && Data.canUseBoomerang(age));
+                                (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
                         }
                     }
                 }
@@ -1945,7 +1945,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "At night, take the upper path of the mountain - the one that causes the volcano to erupt. The red rock has a skulltula in it - break it with your hammer.",
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.dmtSkullsWithoutHammer || Data.canUseHammer(age);
+                            return Settings.GlitchesToAllow.dmtSkullsWithoutHammer || ItemData.canUse(age, Items.MEGATON_HAMMER);
                         }
                     },
                     "Gossip Stone on Climbable Wall Ledge": {
@@ -2232,7 +2232,7 @@ let MapLocations = {
                         LongDescription: "Blow up/hammer the weak walls on the western side of the middle floor. Pay Medigoron 200 rupees for this item.",
                         RequiredItems: [{item: Equipment.WALLET, upgradeString: "1"}],
                         CustomRequirement: function(age) {
-                            return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas || Data.canUseHammer(age);
+                            return Data.canBreakMudWalls(age) || Equipment.STRENGTH.playerHas || ItemData.canUse(age, Items.MEGATON_HAMMER);
                         }
                     },
                     "Leftmost Maze Chest": {
@@ -2247,7 +2247,7 @@ let MapLocations = {
                                 Equipment.HOVER_BOOTS.playerHas ||
                                 Data.canWeirdShot(age)
                             );
-                            return Data.canUseHammer(age) || canGetAsAdult;
+                            return ItemData.canUse(age, Items.MEGATON_HAMMER) || canGetAsAdult;
                         }
                     },
                     "Left Maze Chest": {
@@ -2301,7 +2301,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "In the southern area of the middle floor, blow up the walls that has bombflowers near it. Eventually, you'll make it to Medigoron, where the stone is.",
                         CustomRequirement: function(age) {
-                            return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
+                            return Data.hasExplosivesOrStrength() || ItemData.canUse(age, Items.MEGATON_HAMMER);
                         }
                     },
                     "2 Pots by Lower Staircase": {
@@ -2328,7 +2328,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "In the southern area of the middle floor, blow up the walls that has bombflowers near it. Eventually, you'll make it to Medigoron, where the pot is.",
                         CustomRequirement: function(age) {
-                            return Data.hasExplosivesOrStrength() || Data.canUseHammer(age);
+                            return Data.hasExplosivesOrStrength() || ItemData.canUse(age, Items.MEGATON_HAMMER);
                         }
                     },
                     "Maze Crate": {
@@ -2421,7 +2421,7 @@ let MapLocations = {
 
                             let canGetToMain = Data.canAccessMap(age, "Goron City", "main");
                             let canShootBow = age === Age.ADULT && Items.FAIRY_BOW.playerHas;
-                            let canLightBombFlower = Data.canUseDekuStick(age) && Data.canAccessMap(age, "Goron City", "darunia");
+                            let canLightBombFlower = ItemData.canUse(age, Items.DEKU_STICK) && Data.canAccessMap(age, "Goron City", "darunia");
                             let canExplodeBombFlower = Items.BLUE_FIRE.playerHas || Equipment.STRENGTH.playerHas;
                             return canGetToMain && (canShootBow || canLightBombFlower || canExplodeBombFlower);
                         }
@@ -3226,7 +3226,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Across the bridge, there are some rocks to the right. Use your hammer on them to reveal the chest.",
                         CustomRequirement: function(age) {
-                            return Data.canUseHammer(age) || Data.canWeirdShot(age);
+                            return ItemData.canUse(age, Items.MEGATON_HAMMER) || Data.canWeirdShot(age);
                         }
                     },
                     "Show Poacher's Saw to Carpenter": {
@@ -3964,7 +3964,7 @@ let MapLocations = {
                     jail1: {}, //Savewarp
                     kitchenPots: {
                         CustomRequirement: function(age) {
-                            return Data.canStunKitchenGuards(age) || Data.canUseBoomerang(age);
+                            return Data.canStunKitchenGuards(age) || ItemData.canUse(age, Items.BOOMERANG);
                         }
                     },
                     kitchenHallway: {
@@ -3993,7 +3993,7 @@ let MapLocations = {
                     jail1: {}, //Savewarp
                     kitchenPots: {
                         CustomRequirement: function(age) {
-                            return Data.canStunKitchenGuards(age) || Data.canUseBoomerang(age);
+                            return Data.canStunKitchenGuards(age) || ItemData.canUse(age, Items.BOOMERANG);
                         }
                     },
                     kitchenTopLeft: {
@@ -4090,7 +4090,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "These pots can be retrieved with the boomerang if you're quick. If you can't get them that way...<br/><br/>Deal with the guard that's moving. If you have a shield, and either the Master Sword or a Deku Stick, you can crouchstab the stationary guard, but be careful not to get too close!",
                         CustomRequirement: function(age) {
-                            if (Data.canStunOrPassGuardsAtDistance(age) || Data.canUseBoomerang(age)) {
+                            if (Data.canStunOrPassGuardsAtDistance(age) || ItemData.canUse(age, Items.BOOMERANG)) {
                                 return true;
                             }
 
@@ -4305,7 +4305,7 @@ let MapLocations = {
                         LongDescription: "At night, there is a skulltula on a small cliff near the north middle edge of the map. You can hookshot it if the Leevers leave you alone long enough. An easier solution is to ride the bean platform and jump off of it so that you're on top.",
                         CustomRequirement: function(age) {
                             let canRideUp = Data.itemLocationObtained("Desert Colossus", "main", "*Plant Bean by Spirit Temple");
-                            let canUseBoomerang = Settings.GlitchesToAllow.difficultBoomerangTrickThrows && Data.canUseBoomerang(age);
+                            let canUseBoomerang = Settings.GlitchesToAllow.difficultBoomerangTrickThrows && ItemData.canUse(age, Items.BOOMERANG);
                             return canRideUp || canUseBoomerang || Items.HOOKSHOT.playerHas;
                         }
                     },

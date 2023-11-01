@@ -1150,9 +1150,90 @@ let SilverRupees = {
 
 /**
  * Used to group the item functions so that we don't flood the global space
- * TODO: Put all the loose functions from this file in here!
  */
 let ItemData = {
+	/**
+	 * Gets whether the player can use the given item/upgrade at the given age
+	 * This includees equip swap
+	 * @param age - The age to check
+	 * @param item - The item to check
+	 * @param lowestUpgrade - The lowest upgrade to include (ex 2 would be silver/gold gaunts, but not goron bracelet)
+	 */
+	canUse: function(age, item, lowestUpgrade) {
+		switch(item) {
+			// Child Only
+			case Items.FAIRY_SLINGSHOT:
+			case ChildTradeItems.WEIRD_EGG:
+			case ChildTradeItems.ZELDAS_LETTER:
+			case ChildTradeItems.KEATON_MASK:
+			case ChildTradeItems.SKULL_MASK:
+			case ChildTradeItems.SPOOKY_MASK:
+			case ChildTradeItems.BUNNY_HOOD:
+			case ChildTradeItems.MASK_OF_TRUTH:
+			case Equipment.KOKIRI_SWORD:
+				return age === Age.CHILD && this.playerHasItem(item, lowestUpgrade);
+
+			// Adult Only
+			case Items.FAIRY_BOW:
+			case Items.MEGATON_HAMMER:
+			case Items.HOOKSHOT:
+				return age === Age.ADULT && this.playerHasItem(item, lowestUpgrade);
+			case Items.FIRE_ARROW:
+			case Items.ICE_ARROW:
+			case Items.LIGHT_ARROW:
+				return age === Age.ADULT && 
+					Items.FAIRY_BOW.playerHas && 
+					Equipment.MAGIC.playerHas && 
+					this.playerHasItem(item);
+
+			// Shared items that need logic
+			case Items.DINS_FIRE:
+			case Items.FARORES_WIND:
+			case Items.NAYRUS_LOVE:
+			case Items.LENS_OF_TRUTH:
+				return Equipment.MAGIC.playerHas && this.playerHasItem(item);
+			case Equipment.STRENGTH:
+				return lowestUpgrade > 0
+					? age === Age.ADULT && this.playerHasItem(item, lowestUpgrade)
+					: this.playerHasItem(item)
+
+			// Equip swappable
+			case Items.DEKU_STICK:
+			case Items.BOOMERANG:
+				return this.playerHasItem(item) && (age === Age.CHILD || Data.canEquipSwap(age));
+			case Items.MEGATON_HAMMER:
+			case AdultTradeItems.POCKET_EGG:
+			case AdultTradeItems.COJIRO:
+			case AdultTradeItems.ODD_MUSHROOM:
+			case AdultTradeItems.ODD_POTION:
+			case AdultTradeItems.POACHERS_SAW:
+			case AdultTradeItems.BROKEN_GORONS_SWORD:
+			case AdultTradeItems.PRESCRIPTION:
+			case AdultTradeItems.EYEBALL_FROG:
+			case AdultTradeItems.EYEDROPS:
+			case AdultTradeItems.CLAIM_CHECK:
+				return this.playerHasItem(item) && (age === Age.ADULT || Data.canEquipSwap(age));
+
+		}
+
+		// Shared items
+		return this.playerHasItem(item, lowestUpgrade);
+	},
+
+	/**
+	 * Checks that the player has the given item at the given upgrade
+	 * @param item - The item to check
+	 * @param {Number} upgrade - The upgrade string to check (pass a false value to skip this check)
+	 * @param {Boolean} exactUpgrade - True if we care about the exact upgrade number
+	 */
+	playerHasItem: function(item, upgrade, exactUpgrade) {
+		if (!item.playerHas) { return false; }
+		if (upgrade !== 0 && !upgrade) { return true; }
+		return exactUpgrade
+			? item.currentUpgrade === upgrade
+			: item.currentUpgrade >= upgrade;
+	},
+
 	/**
 	 * Gets the key count from the current map name
 	 */
