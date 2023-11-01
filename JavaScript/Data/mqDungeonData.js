@@ -141,8 +141,9 @@ let MQDungeons = {
                     },
                     compassRoomSkulltula: {
                         Age: Age.ADULT,
+                        RequiredItems: [UpgradedItems.LONGSHOT],
                         CustomRequirement: function(age) {
-                            return Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2;
+                            return Data.canWeirdShot(age);
                         }
                     }
                 },
@@ -1625,7 +1626,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         RequiredItems: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) || Items.HOOKSHOT.currentUpgrade === 2;
+                            return Data.canPlaySong(Songs.SONG_OF_TIME) || ItemData.canUse(age, UpgradedItems.LONGSHOT);
                         }
                     },
                     well: {}
@@ -2746,7 +2747,7 @@ let MQDungeons = {
                         CustomRequirement: function(age) {
                             if (!ItemData.hasBossKey("Water Temple")) { return false; }
                 
-                            let hasLongshot = Items.HOOKSHOT.currentUpgrade === 2;
+                            let hasLongshot = ItemData.canUse(age, UpgradedItems.LONGSHOT);
                             let canSkipLongshot = Data.canHammerHoverBootsSuperslide(age);
                             let canGetToBossArea = hasLongshot || canSkipLongshot;
                             if (!canGetToBossArea) { return false; }
@@ -3211,9 +3212,8 @@ let MQDungeons = {
                 Exits: {
                     afterSingleWaterPillarRoomGate: {
                         CustomRequirement: function(age) {
-                            let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
-                            let canWeirdShot = Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2;
-                            return canUseDins || canWeirdShot;
+                            let canWeirdShot = Data.canWeirdShot(age) && ItemData.canUse(age, UpgradedItems.LONGSHOT);
+                            return ItemData.canUse(age, Items.DINS_FIRE) || canWeirdShot;
                         }
                     }
                 },
@@ -3920,7 +3920,7 @@ let MQDungeons = {
                         LongDescription: "In the giant room, use a fire item to hit the frozen eye switch. This will spawn some platforms in the direction the eye is facing. Use them to get to the right side of the room. Once there, gather all the silver rupees to spawn the chest. Two of them are up high and requires the longshot.",
                         SilverRupeeIndex: 2,
                         CustomRequirement: function(age) {
-                            return Settings.RandomizerSettings.shuffleSilverRupees || (age === Age.ADULT && Items.HOOKSHOT.currentUpgrade === 2);
+                            return Settings.RandomizerSettings.shuffleSilverRupees || ItemData.canUse(age, UpgradedItems.LONGSHOT);
                         }
                     }
                 }
@@ -4408,11 +4408,11 @@ let MQDungeons = {
         Floors: ["F4", "F3", "F2", "F1"],
         StartingFloorIndex: 3,
         UseAltOrder: function() {
-            return Equipment.STRENGTH.currentUpgrade > 1 && Items.BOMBCHU.playerHas && Items.HOOKSHOT.currentUpgrade > 1;
+            return ItemData.canUseAll(Age.ADULT, [Items.BOMBCHU, UpgradedItems.SILVER_GAUNTLETS, UpgradedItems.LONGSHOT]);
         },
         _canAccessAdultSide: function() {
-            let canGetUp = Items.BOMBCHU.playerHas && Items.HOOKSHOT.currentUpgrade === 2;
-            let canPushBlock = Equipment.STRENGTH.currentUpgrade >= 2;
+            let canGetUp = ItemData.canUseAll(age, [Items.BOMBCHU, UpgradedItems.LONGSHOT]);
+            let canPushBlock = ItemData.canUse(age, UpgradedItems.SILVER_GAUNTLETS);
             let canWeirdShot = Data.canWeirdShot(Age.ADULT) && Items.FAIRY_BOW.playerHas;
             return canGetUp && (canPushBlock || canWeirdShot);
         },
@@ -5564,7 +5564,7 @@ let MQDungeons = {
                         Order: 10,
                         LongDescription: "This skulltula is on the ledge to your right in the big room. Play the scarecrow's song and hook it, a ground jump to get up there, or use hover boots to get to the taller pillar and longshot it.",
                         CustomRequirement: function(age) {
-                            let canGetWithLongshot = Equipment.HOVER_BOOTS.playerHas && Items.HOOKSHOT.currentUpgrade === 2;
+                            let canGetWithLongshot = ItemData.canUseAll(age, [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT])
                             if (canGetWithLongshot || Settings.GlitchesToAllow.mqIceJumpToSkull) {
                                 return true;
                             }
@@ -5632,7 +5632,7 @@ let MQDungeons = {
                 Exits: {
                     afterFirstCrawlSpace: {
                         CustomRequirement: function(age) {
-                            return age === Age.CHILD || (Data.canWeirdShot(age) && Items.HOOKSHOT.currentUpgrade === 2);
+                            return age === Age.CHILD || (Data.canWeirdShot(age) && ItemData.canUse(age, UpgradedItems.LONGSHOT));
                         }
                     }
                 },
@@ -6080,7 +6080,7 @@ let MQDungeons = {
                     roomBehindSilverBlock: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            if (Equipment.STRENGTH.currentUpgrade > 1) {
+                            if (ItemData.canUse(age, UpgradedItems.SILVER_GAUNTLETS)) {
                                 return true;
                             }
 
@@ -6173,9 +6173,7 @@ let MQDungeons = {
                 Exits: {
                     bigLavaRoomWaterDoorPlatform: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Items.HOOKSHOT.currentUpgrade === 2 || Items.FAIRY_BOW.playerHas;
-                        }
+                        RequiredChoiceOfItems: [UpgradedItems.LONGSHOT, Items.FAIRY_BOW]
                     },
                     bigLavaRoomBack: {
                         Age: Age.ADULT,
@@ -6835,10 +6833,10 @@ let MQDungeons = {
                         SilverRupeeIndex: 0,
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            let hasGoldenGauntlets = Equipment.STRENGTH.currentUpgrade === 3;
-                            let hasLongshot = Items.HOOKSHOT.currentUpgrade === 2;
-                            let canGetToDoor = hasLongshot || (hasGoldenGauntlets && Equipment.HOVER_BOOTS.playerHas);
-                            let canUnbarDoor = Settings.RandomizerSettings.shuffleSilverRupees || Equipment.STRENGTH.currentUpgrade === 3;
+                            let hasGoldenGauntlets = ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
+                            let hasLongshot = ItemData.canUse(age, UpgradedItems.LONGSHOT);
+                            let canGetToDoor = hasLongshot || (hasGoldenGauntlets && Equipment.HOVER_BOOTS.playerHas)
+                            let canUnbarDoor = Settings.RandomizerSettings.shuffleSilverRupees || hasGoldenGauntlets;
                             return canGetToDoor && canUnbarDoor;
                         }
                     }

@@ -370,10 +370,9 @@ InteriorGroups = {
 				icon: "Heart Piece",
 				description: "Use the golden scale and dive to touch the bottom of the water area. The professor will give you this item.",
 				canGet: function(age) {
-					let hasGoldScale = Equipment.SCALE.currentUpgrade === 2;
-					if (age === Age.CHILD) { return hasGoldScale; }
-					
-					let canGetWithoutScale = Settings.GlitchesToAllow.labHPWithoutGoldenScale && Items.HOOKSHOT.playerHas && Equipment.IRON_BOOTS.playerHas;
+					let hasGoldScale = ItemData.canUse(age, UpgradedItems.GOLDEN_SCALE);
+					let canGetWithoutScale = Settings.GlitchesToAllow.labHPWithoutGoldenScale &&
+						ItemData.canUseAll(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
 					return hasGoldScale || canGetWithoutScale;
 				}
 			},
@@ -382,8 +381,7 @@ InteriorGroups = {
 				itemGroup: ItemGroups.SKULLTULA,
 				description: "This skulltula is on the bottom of the water area. Equip the iron boots and sink down. Roll into the box to reveal it.",
 				canGet: function(age) {
-					if (age === Age.CHILD) { return false; }
-					return Equipment.IRON_BOOTS.playerHas && Items.HOOKSHOT.playerHas;
+					return ItemData.canUseAll(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
 				},
 				isAdultOnly: function() { return true; }
 			},
@@ -392,8 +390,7 @@ InteriorGroups = {
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "This rupee is in the water - dive or use iron boots to get it.",
 				canGet: function(age) {
-					return (age === Age.ADULT && Equipment.IRON_BOOTS.playerHas) || 
-						Equipment.SCALE.currentUpgrade === 2;
+					return ItemData.canUseAny(age, [Equipment.IRON_BOOTS, UpgradedItems.GOLDEN_SCALE]);
 				}
 			},
 			"Red Rupee 2": {
@@ -401,8 +398,7 @@ InteriorGroups = {
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "This rupee is in the water - dive or use iron boots to get it.",
 				canGet: function(age) {
-					return (age === Age.ADULT && Equipment.IRON_BOOTS.playerHas) || 
-						Equipment.SCALE.currentUpgrade === 2;
+					return ItemData.canUseAny(age, [Equipment.IRON_BOOTS, UpgradedItems.GOLDEN_SCALE]);
 				}
 			},
 			"Red Rupee 3": {
@@ -410,18 +406,14 @@ InteriorGroups = {
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "This rupee is in the water - dive or use iron boots to get it.",
 				canGet: function(age) {
-					return (age === Age.ADULT && Equipment.IRON_BOOTS.playerHas) || 
-						Equipment.SCALE.currentUpgrade === 2;
+					return ItemData.canUseAny(age, [Equipment.IRON_BOOTS, UpgradedItems.GOLDEN_SCALE]);
 				}
 			},
 			"Show Eyeball Frog to Scientist": {
 				icon: "Eyeball Frog",
 				description: "Show the Eyeball Frog to the scientist to receive an item.",
 				canGet: function(age) {
-					if (age === Age.CHILD && !Data.canEquipSwap(age)) {
-						return false;
-					};
-					return AdultTradeItems.EYEBALL_FROG.playerHas;
+					return ItemData.canUse(age, AdultTradeItems.EYEBALL_FROG);
 				},
 				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			}

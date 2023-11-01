@@ -2076,8 +2076,9 @@ let MapLocations = {
                     },
                     scarecrowPlatform: {
                         Age: Age.ADULT,
+                        RequiredItems: [UpgradedItems.LONGSHOT],
                         CustomRequirement: function(age) {
-                            return Data.canHookScarecrow(age) && Items.HOOKSHOT.currentUpgrade === 2;
+                            return Data.canHookScarecrow(age);
                         }
                     },
                     "Fire Temple": {
@@ -2982,9 +2983,9 @@ let MapLocations = {
                         MapInfo: { x: 247, y: 236 },
                         Age: Age.ADULT,
                         LongDescription: "First, get to the platform in the center of the lake - the one with the tree. When the sun is just coming up, stand on the sign and shoot an arrow at it. The item should then spawn. You can get over there either by beating Morpha and swimming there, or by playing Scarecrow's Song and longshotting it.",
+                        RequiredItems: [Items.FAIRY_BOW],
                         CustomRequirement: function(age) {
-                            if (!Items.FAIRY_BOW.playerHas) { return false; }
-                            let canHookshotUp = Data.canPlaySong(Songs.SCARECROWS_SONG) && Items.HOOKSHOT.currentUpgrade === 2;
+                            let canHookshotUp = Data.canPlaySong(Songs.SCARECROWS_SONG) && ItemData.canUse(age, UpgradedItems.LONGSHOT);
                             return canHookshotUp || Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
                         }
                     },
@@ -3338,8 +3339,7 @@ let MapLocations = {
                     middleFloor: {
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.gfJumpToMiddleFloor ||
-                                (age === Age.ADULT && 
-                                    (Items.HOOKSHOT.currentUpgrade === 2 || Equipment.HOVER_BOOTS.playerHas)) ||
+                                ItemData.canUseAny(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]) ||
                                 Data.canMegaFlip(age);
                         }
                     },
@@ -3488,8 +3488,7 @@ let MapLocations = {
 
                             return canMegaFlip || 
                                 Data.canHookScarecrow(age) ||
-                                Items.HOOKSHOT.currentUpgrade === 2 ||
-                                Equipment.HOVER_BOOTS.playerHas;
+                                ItemData.canUseAny(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]);
                         }
                     },
                     aboveJail1: {
@@ -4097,8 +4096,8 @@ let MapLocations = {
                 Exits: {
                     outpost: {
                         CustomRequirement: function(age) {
-                            if (Settings.GlitchesToAllow.itemlessSandPit) { return true; }
-                            return age === Age.ADULT && (Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.currentUpgrade === 2);
+                            return Settings.GlitchesToAllow.itemlessSandPit || 
+                                ItemData.canUseAny(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]);
                         }
                     },
                     "Gerudo Fortress": {

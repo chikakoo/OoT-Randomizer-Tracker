@@ -2439,7 +2439,7 @@ let StandardDungeons = {
                             if (!canDrainWater) {
                                 keysReq--; // Can't open the central door
                             }
-                            if (!Equipment.IRON_BOOTS.playerHas || Items.HOOKSHOT.currentUpgrade !== 2) {
+                            if (!Equipment.IRON_BOOTS.playerHas || !ItemData.canUse(Age.ADULT, UpgradedItems.LONGSHOT)) {
                                 keysReq -= 2; // Can't open the tektite room doors
                             }
 
@@ -2460,7 +2460,7 @@ let StandardDungeons = {
                             if (!canDrainWater) {
                                 keysReq--; // Can't open the central door
                             }
-                            if (!Equipment.IRON_BOOTS.playerHas || Items.HOOKSHOT.currentUpgrade !== 2) {
+                            if (!Equipment.IRON_BOOTS.playerHas || !ItemData.canUse(Age.ADULT, UpgradedItems.LONGSHOT)) {
                                 keysReq -= 2; // Can't open the tektite room doors
                             }
 
@@ -2476,7 +2476,7 @@ let StandardDungeons = {
                         LongDescription: "OPTIONAL DOOR: This is the door on the bottom floor leading into the central room. The water needs to be drained to open it.<br/><br/>Note that this door is entirely optional if you have a bow or fire item, as you can light a torch on the central middle platform to get here.",
                         KeyRequirement: function(age) {
                             let keysReq = 5;
-                            if (Items.HOOKSHOT.currentUpgrade !== 2) {
+                            if (!ItemData.canUse(Age.ADULT, UpgradedItems.LONGSHOT)) {
                                 keysReq -= 2; // Can't open the tektite room doors
                             }
 
@@ -2782,9 +2782,8 @@ let StandardDungeons = {
                     bossAntechamber: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            let hasLongshot = Items.HOOKSHOT.currentUpgrade === 2;
                             let canSkipLongshot = Data.canHammerHoverBootsSuperslide(age);
-                            return hasLongshot || canSkipLongshot;
+                            return ItemData.canUse(age, UpgradedItems.LONGSHOT) || canSkipLongshot;
                         }
                     },
                     waterfallRoom: {
@@ -3945,10 +3944,10 @@ let StandardDungeons = {
         Floors: ["F4", "F3", "F2", "F1"],
         StartingFloorIndex: 3,
         UseAltOrder: function() {
-            return Equipment.STRENGTH.currentUpgrade > 1 && Keys.SPIRIT_TEMPLE.keyCount > 0;
+            return ItemData.canUse(Age.ADULT, UpgradedItems.SILVER_GAUNTLETS) && Keys.SPIRIT_TEMPLE.keyCount > 0;
         },
         _canAccessAdultSide: function() {
-            if (Equipment.STRENGTH.currentUpgrade >= 2) { return true; }
+            if (ItemData.canUse(Age.ADULT, UpgradedItems.SILVER_GAUNTLETS)) { return true; }
             return Settings.GlitchesToAllow.spiritBlockSkip && Equipment.HOVER_BOOTS.playerHas;
         },
         Regions: {
@@ -4594,8 +4593,7 @@ let StandardDungeons = {
 
                             return Settings.GlitchesToAllow.spiritStatueRoomJumps ||
                                 canMegaFlip ||
-                                Equipment.HOVER_BOOTS.playerHas || 
-                                Items.HOOKSHOT.currentUpgrade === 2 ||
+                                ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT]) ||
                                 Data.canHookScarecrow(age);
                         }
                     }
@@ -5803,7 +5801,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         RequiredItems: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
-                            if (Equipment.STRENGTH.currentUpgrade > 1) {
+                            if (ItemData.canUse(age, UpgradedItems.SILVER_GAUNTLETS)) {
                                 return true;
                             }
 
@@ -6276,8 +6274,8 @@ let StandardDungeons = {
                     shadowTrialMiddle: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            let canGetThereNormally = Items.FIRE_ARROW.playerHas && Items.FAIRY_BOW.playerHas && Equipment.MAGIC.playerHas;
-                            let canAvoidFireArrows = Items.HOOKSHOT.currentUpgrade === 2 && Equipment.HOVER_BOOTS.playerHas;
+                            let canGetThereNormally = ItemData.canUse(age, Items.FIRE_ARROW);
+                            let canAvoidFireArrows = ItemData.canUseAll(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]);
                             return canGetThereNormally || canAvoidFireArrows;
                         }
                     },

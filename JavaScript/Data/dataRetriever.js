@@ -538,12 +538,10 @@ Data = {
 	},
     
     /**
-     * Returns whether you can do the chu slide teleport
+     * Returns whether you can do the hookshot jump
      */
      _canHookshotJump: function(age) {
-		return age === Age.ADULT &&
-			Settings.GlitchesToAllow.hookshotJump && 
-			Items.HOOKSHOT.playerHas;
+		return Settings.GlitchesToAllow.hookshotJump && ItemData.canUse(age, Items.HOOKSHOT);
 	},
     
     /**

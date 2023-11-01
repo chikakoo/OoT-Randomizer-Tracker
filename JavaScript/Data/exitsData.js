@@ -271,7 +271,7 @@ let OwExits = {
             UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip && !Settings.GlitchesToAllow.lwBridgePressureJump; },
             LongDescription: "Longshot from the bridge to the ladder to get to the lost woods.<br/><br/>Megaflip setup: Get in the corner closest to the ladder; take a tiny step back; c-up and face the third rope support; turn 180; dry roll if using bombs; megaflip",
             CustomRequirement: function(age) {
-                if (age === Age.ADULT && Items.HOOKSHOT.currentUpgrade === 2) {
+                if (ItemData.canUse(age, UpgradedItems.LONGSHOT)) {
                     return true;
                 }
                 let canPressureJump = Settings.GlitchesToAllow.lwBridgePressureJump && Items.BOMB.playerHas;
@@ -829,12 +829,8 @@ let OwExits = {
             Age: Age.ADULT,
             LongDescription: "At the end of the main rock is a giant block you can pull up with Golden Gauntlets. Alternatively, you can use hover boots and a shield to clip past the block.",
             CustomRequirement: function(age) {
-                return Equipment.STRENGTH.currentUpgrade === 3 ||
-                    (
-                        Settings.GlitchesToAllow.doubleDefenseEarly &&
-                        Equipment.HOVER_BOOTS.playerHas && 
-                        (Equipment.HYLIAN_SHIELD.playerHas || Equipment.MIRROR_SHIELD.playerHas)
-                    );
+                return ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS) ||
+                    (Settings.GlitchesToAllow.doubleDefenseEarly && ItemData.canUseAll(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]));
             }
         }
     },
