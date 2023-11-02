@@ -2170,13 +2170,17 @@ let MapLocations = {
     "Goron City": {
 		Abbreviation: "GORO",
 		MapGroup: MapGroups.MOUNTAIN,
+        _canStopAdultGoron: function(age) {
+            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.FAIRY_BOW]) ||
+                (Settings.GlitchesToAllow.stopAdultGoronWithBlueFire && Items.BLUE_FIRE.playerHas);
+        },
 		Regions: {
             main: {
                 Exits: {
                     darunia: {
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return Data.canPlaySong(Songs.ZELDAS_LULLABY); }
-                            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.FAIRY_BOW]);
+                            return MapLocations["Goron City"]._canStopAdultGoron(age);
                         }
                     },
                     lostWoodsRocks: {
@@ -2196,8 +2200,10 @@ let MapLocations = {
                     },
                     shop: {
                         CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.FAIRY_BOW]) ||
-                                (age === Age.CHILD && ItemData.canUse(age, ItemSets.FIRE_ITEMS));
+                            if (age === Age.CHILD) {
+                                return ItemData.canUseAny(age, [ItemSets.MUD_WALL_ITEMS, ItemSets.FIRE_ITEMS, Equipment.STRENGTH]);
+                            }
+                            return MapLocations["Goron City"]._canStopAdultGoron(age);
                         }
                     },
                     "Death Mountain Trail": {
@@ -2223,7 +2229,9 @@ let MapLocations = {
                         MapInfo: { x: 139, y: 97 },
                         Age: Age.ADULT,
                         LongDescription: "Stop the rolling goron with a bomb, bombchu or bomb flower and talk to him to get the item. You can also shoot the bomb flowers with an arrow with the right timing to stop him.",
-                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.FAIRY_BOW]
+                        CustomRequirement: function(age) {
+                            return MapLocations["Goron City"]._canStopAdultGoron(age);
+                        }
                     },
                     "Item From Medigoron": {
                         ItemGroup: ItemGroups.GIFT,

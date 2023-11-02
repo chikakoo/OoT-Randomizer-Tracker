@@ -194,6 +194,7 @@ let Settings = {
 		dmtClipToChestByGoron: false,
 		dmtSkullsWithoutHammer: false,
 		goronSpinningUrnWithChus: false,
+		stopAdultGoronWithBlueFire: false,
 		hoverToVolcanoHP: false,
 		childDoubleMagicFairy: false,
 

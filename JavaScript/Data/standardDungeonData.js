@@ -2714,7 +2714,8 @@ let StandardDungeons = {
                     midWaterTriforceFloor: {},
                     behindBlockArea: {
                         CustomRequirement: function(age) {
-                            if (Data.canWeirdShot(age)) { return true; } //TODO: test whether this is enough - do you need strength?
+                            // Weirdshot by the right wall in the corner after the hookshot target by the gate (down the hall)
+                            if (Data.canWeirdShot(age)) { return true; }
 
                             // If not weirdshotting, need to shoot eye AND move the block
                             if (!ItemData.canUseAll(age, [ItemSets.PROJECTILES, Equipment.STRENGTH])) { 

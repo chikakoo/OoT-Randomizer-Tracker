@@ -184,8 +184,10 @@ let MQDungeons = {
                         Order: 7,
                         LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so.<br/><br/>Head to the other side of the room. The room up the vines to the left is blocked by rocks. Use a bombchu to gain access. The skulltula is up on the wall.",
                         CustomRequirement: function(age) {
+                            // The staircase hover requires one additional bomb drop to gain enough height
+                            // Start the hover against the wall
                             return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS) || 
-                                (age === Age.ADULT && Data.canStaircaseHover(age));
+                                Data.canStaircaseHover(age);
                         }
                     }
                 }
@@ -4490,7 +4492,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 4,
                         AltOrder: 4,
-                        LongDescription: "After you first enter the temple, go up the stairs and turn around. There's a crystal switch at the top of one of the pillars that you need to activate to spawn the chest.",
+                        LongDescription: "After you first enter the temple, go up the stairs and turn around. There's a crystal switch at the top of one of the pillars that you need to activate to spawn the chest.<br/><br/>The easiest way to hit with the boomerang is to face the pillar directly, and take small steps backwards. Aim it all the way up and try until it works.",
                         RequiredChoiceOfItems: [ItemSets.PROJECTILES, Items.BOOMERANG, Items.BOMBCHU]
                     },
 
