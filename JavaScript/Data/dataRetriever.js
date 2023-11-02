@@ -265,14 +265,22 @@ Data = {
      * @return - true if it is not applicable, or if it was set up correctly; false if we should disable the location
      */
     setUpDefaultEntranceGroup: function(itemLocation) {
-        if (itemLocation.ItemGroup !== ItemGroups.ENTRANCE || itemLocation.DefaultEntranceGroup) 
+        if (itemLocation.ItemGroup !== ItemGroups.ENTRANCE) 
         { 
-            return true;  // Not an entrance or it's already populated
+            return true;
         }
 
         if (this.usesDefaultGroup(itemLocation)) {
             if (itemLocation.DefaultEntranceGroupName) {
-                EntranceUI.initializeEntranceGroupData(itemLocation, itemLocation.DefaultEntranceGroupName);
+                // Don't fill it more than once
+                if (!itemLocation.DefaultEntranceGroup) {
+                    EntranceUI.initializeEntranceGroupData(itemLocation, itemLocation.DefaultEntranceGroupName);
+                }
+                
+                // If this is a grotto or interior that is NOT shuffled, don't show it if there's no tasks to complete
+                if (itemLocation.IsGrotto || itemLocation.IsInterior) {
+                    return EntranceUI.getNumberOfActiveTasks(itemLocation) > 0;
+                }
                 return true;
             }
             return false; // We use a default group but have no default group name, means it's not location we need to ever visit
