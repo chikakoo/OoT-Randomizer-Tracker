@@ -8,7 +8,7 @@ let MapLocations = {
                     afterMido: {
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT || !Settings.RandomizerSettings.closedDeku) { return true; }
-                            return (Equipment.KOKIRI_SWORD.playerHas && Equipment.DEKU_SHIELD.playerHas) || 
+                            return ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD]) ||
                                 Data.itemLocationObtained("Kokiri Forest", "main", "Move Mido");
                         }
                     },
@@ -2231,7 +2231,7 @@ let MapLocations = {
                         MapInfo: { x: 117, y: 260 },
                         Age: Age.ADULT,
                         LongDescription: "Blow up/hammer the weak walls on the western side of the middle floor. Pay Medigoron 200 rupees for this item.",
-                        RequiredItems: [UpgradedItems.GIANTS_WALLET],
+                        RequiredItems: [UpgradedItems.ADULTS_WALLET],
                         RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER]
                     },
                     "Leftmost Maze Chest": {
@@ -2704,7 +2704,7 @@ let MapLocations = {
                             return Data.hasBottle() || 
                                 Object.values(AdultTradeItems).some(item => item.playerHas) ||
                                 (Data.canEquipSwap(age) && Items.MAGIC_BEAN.playerHas) ||
-                                (Equipment.MAGIC.playerHas && Items.NAYRUS_LOVE.playerHas);
+                                ItemData.canUse(age, Items.NAYRUS_LOVE)
                         }
                     },
                     "Show Prescription to King Zora": {
@@ -4146,7 +4146,7 @@ let MapLocations = {
                         MapInfo: { x: 239, y: 292 },
                         Age: Age.EITHER,
                         LongDescription: "After you cross the sand pit, the shop is along the path to your left. There is a sign by one of the flags that points to it. If you don't have hover boots, you can rolljump, then jumpslash to the corner of the carpet.<br/><br/>If this and medigoron aren't shuffled, this shop will ALWAYS sell bombchus.",
-                        RequiredItems: [UpgradedItems.GIANTS_WALLET],
+                        RequiredItems: [UpgradedItems.ADULTS_WALLET],
                         RequiredChoiceOfItems: [ItemSets.SWORDS, Equipment.HOVER_BOOTS]
                     },
                     "Skulltula at Outpost": {

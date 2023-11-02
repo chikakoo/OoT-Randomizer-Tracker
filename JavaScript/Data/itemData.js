@@ -177,7 +177,7 @@ let UpgradedItems = {
 		item: Equipment.STRENGTH,
 		upgrade: 3
 	},
-	GIANTS_WALLET: {
+	ADULTS_WALLET: {
 		item: Equipment.WALLET,
 		upgrade: 1
 	}
@@ -1308,6 +1308,13 @@ let ItemData = {
 			case Equipment.MIRROR_SHIELD:
 			case Equipment.IRON_BOOTS:
 			case Equipment.HOVER_BOOTS:
+			case AdultTradeItems.POCKET_EGG:
+			case AdultTradeItems.COJIRO:
+			case AdultTradeItems.ODD_POTION:
+			case AdultTradeItems.BROKEN_GORONS_SWORD:
+			case AdultTradeItems.PRESCRIPTION:
+			case AdultTradeItems.EYEDROPS:
+			case AdultTradeItems.CLAIM_CHECK:
 				return age === Age.ADULT;
 			case Items.FIRE_ARROW:
 			case Items.LIGHT_ARROW:
@@ -1334,16 +1341,10 @@ let ItemData = {
 			case Items.BOOMERANG:
 				return age === Age.CHILD || Data.canEquipSwap(age);
 			case Items.MEGATON_HAMMER:
-			case AdultTradeItems.POCKET_EGG:
-			case AdultTradeItems.COJIRO:
 			case AdultTradeItems.ODD_MUSHROOM:
-			case AdultTradeItems.ODD_POTION:
 			case AdultTradeItems.POACHERS_SAW:
-			case AdultTradeItems.BROKEN_GORONS_SWORD:
-			case AdultTradeItems.PRESCRIPTION:
 			case AdultTradeItems.EYEBALL_FROG:
-			case AdultTradeItems.EYEDROPS:
-			case AdultTradeItems.CLAIM_CHECK:
+				// The other trade items have no use as Child
 				return age === Age.ADULT || Data.canEquipSwap(age);
 
 		}
