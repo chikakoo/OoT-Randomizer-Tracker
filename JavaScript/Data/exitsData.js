@@ -14,7 +14,7 @@ let OwExits = {
                 let bossEntranceGroup = Data.getEntranceGroup(OwExits["Deku Tree"].Boss);
                 let beatDekuTree = bossEntranceGroup && Object.keys(bossEntranceGroup.completed).includes("Blue Warp");
                 let canPokeySkip = Settings.GlitchesToAllow.pokeySkip && 
-                    ItemData.canUseAll(age, [ItemSets.SWORDS, Items.DEKU_SHIELD]);
+                    ItemData.canUseAll(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD]);
                 return beatDekuTree || canPokeySkip;
             }
         },
@@ -1768,6 +1768,7 @@ let OwExits = {
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 255, y: 275},
+            ExcludeFromDropdown: true,
             OneWayEntrance: true,
             Age: Age.EITHER,
             LongDescription: "This is the river exit to the lake."
