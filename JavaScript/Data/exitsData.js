@@ -45,7 +45,6 @@ let OwExits = {
         // Interiors
         "Link's House": {
             ExitRegion: "main",
-            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances || Settings.RandomizerSettings.cowSanity; },
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             IsComplexEntrance: true,
@@ -56,11 +55,6 @@ let OwExits = {
         },
         "Saria's House": {
             ExitRegion: "main",
-            RequiredToAppear: function() { 
-                return Settings.RandomizerSettings.shuffleInteriorEntrances || 
-                    Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.ALL ||
-                    Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.OW_ONLY; 
-            },
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             DefaultEntranceGroupName: "Saria's House",
@@ -79,11 +73,6 @@ let OwExits = {
         },
         "Know-It-All House": {
             ExitRegion: "main",
-            RequiredToAppear: function() { 
-                return Settings.RandomizerSettings.shuffleInteriorEntrances || 
-                    Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.ALL ||
-                    Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.OW_ONLY; 
-            },
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             DefaultEntranceGroupName: "2 Pot Interior",
@@ -93,11 +82,6 @@ let OwExits = {
         },
         "House of Twins": {
             ExitRegion: "main",
-            RequiredToAppear: function() { 
-                return Settings.RandomizerSettings.shuffleInteriorEntrances || 
-                    Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.ALL ||
-                    Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.OW_ONLY; 
-            },
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             DefaultEntranceGroupName: "2 Pot Interior",
@@ -228,7 +212,6 @@ let OwExits = {
             ExitRegion: "secondHalf",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
-            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances || Settings.RandomizerSettings.scrubSanity; },
             DefaultEntranceGroupName: "2 Scrubs",
             MapInfo: { x: 202, y: 31 },
             Age: Age.EITHER,
@@ -521,7 +504,6 @@ let OwExits = {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             DefaultEntranceGroupName: "Stable",
-            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances || Settings.RandomizerSettings.cowSanity; },
             MapInfo: { x: 198, y: 54 },
             IsInterior: true,
             Age: Age.EITHER,
@@ -540,7 +522,6 @@ let OwExits = {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             DefaultEntranceGroupName: "3 Scrubs",
-            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances || Settings.RandomizerSettings.scrubSanity; },
             MapInfo: { x: 290, y: 240 },
             IsGrotto: true,
             Age: Age.CHILD,
@@ -689,11 +670,6 @@ let OwExits = {
         },
         "Door in Right Market Alley": {
             ExitRegion: "alley",
-            RequiredToAppear: function() { 
-                return Settings.RandomizerSettings.shuffleInteriorEntrances || 
-                    Settings.RandomizerSettings.potSetting === ShuffleLocationSettings.ALL ||
-                    Settings.RandomizerSettings.potSetting === ShuffleLocationSettings.OW_ONLY; 
-            },
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             DefaultEntranceGroupName: "3 Pot Interior",
@@ -1293,7 +1269,6 @@ let OwExits = {
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
             DefaultEntranceGroupName: "Cow Grotto",
-            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances || Settings.RandomizerSettings.cowSanity; },
             MapInfo: { x: 200, y: 186 },
             Age: Age.EITHER,
             LongDescription: "This is under the yellow rock on the ledge right after you bomb the rocks to reach the upper part of the mountain.",
@@ -1376,7 +1351,6 @@ let OwExits = {
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
             DefaultEntranceGroupName: "3 Scrubs",
-            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances || Settings.RandomizerSettings.scrubSanity; },
             MapInfo: { x: 64, y: 60 },
             Age: Age.EITHER,
             UseAdultAge: function() { return !Settings.GlitchesToAllow.childDoubleMagicFairy && !Settings.GlitchesToAllow.equipSwap; },
@@ -1420,7 +1394,6 @@ let OwExits = {
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
             DefaultEntranceGroupName: "3 Scrubs",
-            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances || Settings.RandomizerSettings.scrubSanity; },
             MapInfo: { x: 278, y: 21 },
             Age: Age.ADULT,
             LongDescription: "Head to the east side of the middle floor and enter the hallway. You should see a lava room to your left. There is a grotto there with the scrubs. There are a few ways to get across.<br/><br/>One way is to run across the lava to the other side, play the song of time, and then climb onto the block to reach the other side.<br/><br/>Another way is to equip the Goron Tunic, run across the lava for distance and then quickly hookshot the target before the damage cancels you out of your hookshot.<br/><br/>Finally, if you have the longshot and the song of time, play the song at the start of the lava room. Stand on the block and longshot the target to get across.",
@@ -1477,7 +1450,6 @@ let OwExits = {
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
             DefaultEntranceGroupName: "2 Scrubs",
-            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances || Settings.RandomizerSettings.scrubSanity; },
             MapInfo: { x: 15, y: 145 },
             Age: Age.EITHER,
             LongDescription: "Play the Song of Storms in the center of the rocks near the cucco spawn to reveal the grotto.",
@@ -1727,7 +1699,6 @@ let OwExits = {
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
             DefaultEntranceGroupName: "3 Scrubs",
-            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances || Settings.RandomizerSettings.scrubSanity; },
             MapInfo: { x: 93, y: 181 },
             Age: Age.EITHER,
             LongDescription: "Pull the gravestone in the middle of the bridge to reveal this grotto."
@@ -1778,11 +1749,6 @@ let OwExits = {
         "Grotto Under Silver Rock": {
             ExitRegion: "chasmSilverRockLedge",
             ItemGroup: ItemGroups.ENTRANCE,
-            RequiredToAppear: function() { 
-                return Settings.RandomizerSettings.shuffleInteriorEntrances || 
-                    Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.ALL ||
-                    Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.OW_ONLY; 
-            },
             IsGrotto: true,
             DefaultEntranceGroupName: "Octorok Grotto",
             MapInfo: { x: 220, y: 182 },
@@ -1803,7 +1769,6 @@ let OwExits = {
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
             DefaultEntranceGroupName: "2 Scrubs",
-            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances || Settings.RandomizerSettings.scrubSanity; },
             MapInfo: { x: 140, y: 56 },
             Age: Age.ADULT,
             LongDescription: "Play the Song of Storms behind the tent to spawn this grotto.",
@@ -2422,7 +2387,6 @@ let OwExits = {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             DefaultEntranceGroupName: "2 Scrubs",
-            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances || Settings.RandomizerSettings.scrubSanity; },
             MapInfo: { x: 117, y: 81 },
             IsGrotto: true,
             Age: Age.ADULT,
