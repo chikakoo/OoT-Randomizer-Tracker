@@ -98,7 +98,7 @@ let StandardDungeons = {
             basementBottom: {
                 Exits: {
                     basementBack: {
-                        RequiredChoiceOfItems: [Items.DEKU_STICK, ItemSets.FIRE_ITEMS],
+                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, ItemSets.FIRE_ITEMS],
                         RequiredItems: [ItemSets.PROJECTILES]
                     },
                     basementTop: {
@@ -3755,7 +3755,10 @@ let StandardDungeons = {
                         MapInfo: { x: 274, y: 116, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 31,
-                        LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. If you face the front of the boat, you can see the skulltula slightly to your left. You can get it with your longshot - Scarecrow's Song can help, but isn't needed."
+                        LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. If you face the front of the boat, you can see the skulltula slightly to your left. You can get it with your longshot - Scarecrow's Song can help, but isn't needed.",
+                        CustomRequirement: function(age) {
+                            return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS) || Data.canStaircaseHover(age);
+                        }
                     }
                 }
             },
