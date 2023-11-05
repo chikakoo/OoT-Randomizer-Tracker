@@ -3492,8 +3492,8 @@ let MapLocations = {
                         CustomRequirement: function(age) {
                             let canMegaFlip = Data.canMegaFlip(age);
                             if (age === Age.CHILD) {
-                                // There is another way up with a VERY awakward jump but this works for now
-                                return canMegaFlip && Data.canGroundJumpWithBomb(age);
+                                return canMegaFlip && 
+                                    (Settings.GlitchesToAllow.gfChildJumpByTopKitchen || Data.canGroundJumpWithBomb(age));
                             }
 
                             return canMegaFlip || 
@@ -3543,7 +3543,8 @@ let MapLocations = {
             },
             topOfFortress: {
                 UseAdultAge: function() {
-                    return !Settings.GlitchesToAllow.groundJump || !Settings.GlitchesToAllow.megaFlip;
+                    return (!Settings.GlitchesToAllow.groundJump && !Settings.GlitchesToAllow.gfChildJumpByTopKitchen) || 
+                        !Settings.GlitchesToAllow.megaFlip;
                 },
                 ExcludeFromSpawnList: true,
                 Exits: {

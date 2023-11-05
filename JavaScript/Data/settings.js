@@ -221,6 +221,7 @@ let Settings = {
 		cuccoJump: false,
 		gvCrossBridgeWithHookshot: false,
 		gfJumpToMiddleFloor: false,
+		gfChildJumpByTopKitchen: false,
 		gfHookshotToAboveLinksJail: false,
 		gfPassKitchenGuards: false,
 		gfKitchenGuardsWithSword: false,
