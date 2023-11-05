@@ -428,6 +428,9 @@ let StandardDungeons = {
             firstFloorSwitch: {
                 Exits: {
                     blueRoom: {},
+                    skulltulaOnVines: {
+                        RequiredItems: [UpgradedItems.LONGSHOT]
+                    },
                     staircaseTop: {
                         CustomRequirement: function(age) {
                             return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE]) ||
@@ -450,6 +453,7 @@ let StandardDungeons = {
 
             staircaseTop: {
                 Exits: {
+                    skulltulaOnVines: {},
                     skulltulaAlcoveAboveStairs: {
                         Age: Age.ADULT,
                         RequiredItems: [UpgradedItems.LONGSHOT]
@@ -494,14 +498,6 @@ let StandardDungeons = {
                         Order: 17,
                         LongDescription: "Lower the giant staircase. Climb it - the pots are to the Right."
                     },
-                    "Skulltula on Vines by Stairs": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 29, y: 136, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 18,
-                        LongDescription: "Head to the top of the room with the giant staircase and the Bomb Flowers. The skulltula is on the vines near the exit. If you have nothing to kill it, you can throw one of the pots at it.",
-                        OverrideItemGroupCondition: true
-                    },
                     "Chest by Bomb Flower": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 201, y: 201, floor: "F2" },
@@ -527,6 +523,20 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 21,
                         LongDescription: "In the room with the blades, push the block all the way out. There's an item inside its alcove."
+                    }
+                }
+            },
+
+            skulltulaOnVines: {
+                Exits: {},
+                ItemLocations: {
+                    "Skulltula on Vines by Stairs": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        MapInfo: { x: 29, y: 136, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 18,
+                        LongDescription: "Head to the top of the room with the giant staircase and the Bomb Flowers. The skulltula is on the vines near the exit.<br/><br/>If you have nothing to kill it, you can throw one of the pots at it. Also, if you can't get to the top, you can longshot it from below.",
+                        OverrideItemGroupCondition: true
                     }
                 }
             },
