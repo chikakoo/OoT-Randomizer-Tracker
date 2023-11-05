@@ -68,8 +68,8 @@ InteriorGroups = {
 				Data.linksHouseLocation = {};
 			}
 		},
-		shouldNotTrigger: function() {
-			let shouldNotTrigger = !!Data.linksHouseLocation.map;
+		shouldNotTrigger: function(isSelected) {
+			let shouldNotTrigger = isSelected && !!Data.linksHouseLocation.map;
 			if (shouldNotTrigger) {
 				console.log("WARNING: Prevented selecting multiple Link's house locations!");
 			}
@@ -111,8 +111,8 @@ InteriorGroups = {
 				Data.templeOfTimeLocation = {};
 			}
 		},
-		shouldNotTrigger: function() {
-			let shouldNotTrigger = !!Data.templeOfTimeLocation.map;
+		shouldNotTrigger: function(isSelected) {
+			let shouldNotTrigger = isSelected && !!Data.templeOfTimeLocation.map;
 			if (shouldNotTrigger) {
 				console.log("WARNING: Prevented selecting multiple Temple of Time locations!");
 			}

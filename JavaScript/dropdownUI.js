@@ -275,13 +275,17 @@ let DropdownUI = {
 
         // Clear the old group data out first
         let oldGroup = itemLocation.EntranceGroup && entranceData[itemLocation.EntranceGroup.name];
-        if (oldGroup && oldGroup.overworldLink) {
-            Data.setOWLocationFound(
-                ItemLocationDisplay.currentLocationName, 
-                itemLocation, 
-                oldGroup.overworldLink.ExitMap, 
-                oldGroup.overworldLink.Name,
-                true);
+        if (oldGroup) {
+            if (oldGroup.overworldLink) {
+                Data.setOWLocationFound(
+                    ItemLocationDisplay.currentLocationName, 
+                    itemLocation, 
+                    oldGroup.overworldLink.ExitMap, 
+                    oldGroup.overworldLink.Name,
+                    true);
+            }
+
+            this._tryFirePostClick(itemLocation, oldGroup, false);
         } 
 
         if (groupName === "<no selection>") {
@@ -301,20 +305,29 @@ let DropdownUI = {
         }
         
         ItemLocationDisplay.refreshNotes(itemLocation); 
-        
+
         let group = entranceData[groupName];
         if (group.overworldLink) {
            Data.setOWLocationFound(ItemLocationDisplay.currentLocationName, itemLocation, group.overworldLink.ExitMap, group.overworldLink.Name);
         }
 
-        let shouldFirePostClick = !group.shouldNotTrigger || !group.shouldNotTrigger();
-        if (shouldFirePostClick && group.postClick) {
-            group.postClick(itemLocation, true);
-        }
-
+        this._tryFirePostClick(itemLocation, group, true);
         this._updateInteriorOrGrottoStyles(itemLocation, event.target);
         SocketClient.itemLocationUpdated(itemLocation);
         refreshAll();
+    },
+
+    /**
+     * Tries to fire the post click of the entrance group
+     * @param itemLocation - The item location
+     * @param group - The entrance group
+     * @param groupSelected - Whether the group is currently selected
+     */
+    _tryFirePostClick: function(itemLocation, group, groupSelected) {
+        let shouldFirePostClick = !group.shouldNotTrigger || !group.shouldNotTrigger(groupSelected);
+        if (shouldFirePostClick && group.postClick) {
+            group.postClick(itemLocation, groupSelected);
+        }
     },
 
     /**
