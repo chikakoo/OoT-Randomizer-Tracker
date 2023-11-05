@@ -1806,9 +1806,11 @@ let MapLocations = {
                         CustomRequirement: function(age) {
                             let canRideTrailBeanPlant = age === Age.ADULT && 
                                 Data.itemLocationObtained("Death Mountain Trail", "main", "*Plant Bean by Dodongo's Cavern");
+                            let canUseHoverBoots = Settings.GlitchesToAllow.dmtClimbWithHoverBoots && 
+                                ItemData.canUse(age, Equipment.HOVER_BOOTS);
                             let areRocksGone = ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) || 
                                 Data.itemLocationObtained("Death Mountain Trail", "main", "Break Rocks Blocking Top Path");
-                            return canRideTrailBeanPlant || areRocksGone;
+                            return canRideTrailBeanPlant || canUseHoverBoots || areRocksGone;
                         }
                     },
                     "Kakariko Village": {
