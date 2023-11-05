@@ -1396,10 +1396,15 @@
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsSpiritTempleContainer")' settings>Spirit Temple</span>
 					<div id="settingsSpiritTempleContainer">
-						<label onclick='SettingsPage.setBooleanValueForGlitches("spiritBlockSkip", event)'
-							title="This is either trick that skips the silver block in the Spirit Temple. One uses a precise hover, the ohter uses a superslide + hover boots.">
-							<input type="checkbox" name="spiritBlockSkip" value="spiritBlockSkip">
-							Silver Block Skip
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("spiritBlockSkipWithHovers", "https://youtu.be/2Ba5K4fIrps", event)'
+							title="Get on the snake statue head, with speed, roll off with hover boots and angle toward the block.">
+							<input type="checkbox" name="spiritBlockSkipWithHovers" value="spiritBlockSkipWithHovers">
+							🔗Silver Block Skip with Hover Boots
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("spiritBlockSkipWithBombPush", "https://youtu.be/9f3Qh0L_qCE", event)'
+							title="Get ISG; face wall to the right of the block; sidehop right + sideroll untarget; ess 2 left; back into corner; shield drop 2 bombs (bombs above head first); dry roll; backflip; hold shield; flick shield to remove ISG; c-up and put the sword on the moon; take a step back or two; roll and hold forward, then hold up right.">
+							<input type="checkbox" name="spiritBlockSkipWithBombPush" value="spiritBlockSkipWithBombPush">
+							🔗Silver Block Skip with Bomb Push
 						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitches("spiritStatueRoomJumps", event)'
 							title="Get on either of the statue hands. Angle yourself so you can jump from the wrist to the nearby ledge - you should be positioned so you get the most height. Do a roll jump and hold forward to grab the ledge.">

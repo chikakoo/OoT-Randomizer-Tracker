@@ -3952,7 +3952,10 @@ let StandardDungeons = {
         },
         _canAccessAdultSide: function() {
             if (ItemData.canUse(Age.ADULT, UpgradedItems.SILVER_GAUNTLETS)) { return true; }
-            return Settings.GlitchesToAllow.spiritBlockSkip && Equipment.HOVER_BOOTS.playerHas;
+
+            return (Settings.GlitchesToAllow.spiritBlockSkipWithHovers && Equipment.HOVER_BOOTS.playerHas) || (
+                Settings.GlitchesToAllow.spiritBlockSkipWithBombPush && 
+                ItemData.canUseAll(Age.ADULT, [ItemSets.SHIELDS, Items.BOMB]));
         },
         Regions: {
             main: {

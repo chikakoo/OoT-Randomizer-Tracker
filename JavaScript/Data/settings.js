@@ -278,7 +278,8 @@ let Settings = {
 		shadowPitRoomSilverRupeeSkip: false,
 		shadowChuBombFlowers: false,
 		
-		spiritBlockSkip: false,
+		spiritBlockSkipWithHovers: false,
+		spiritBlockSkipWithBombPush: false,
 		spiritStatueRoomJumps: false,
 		spiritSuperslideToMirrorShield: false,
 		spiritBKTrick: false,
