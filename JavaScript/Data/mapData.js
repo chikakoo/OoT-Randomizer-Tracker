@@ -396,7 +396,9 @@ let MapLocations = {
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. Plant a magic bean here as a child. Come back as an adult at night and ride the plant up.",
                         CustomRequirement: function(age) {
                             let canRideUp = Data.itemLocationObtained("Lost Woods", "secondHalf", "*Plant Bean by Forest Stage");
-                            let canGetWithHookshot = Settings.GlitchesToAllow.lwSkullWithoutBean && Items.BOMBCHU.playerHas && Items.HOOKSHOT.playerHas;
+                            let canGetWithHookshot = Settings.GlitchesToAllow.lwSkullWithoutBean && 
+                                Items.HOOKSHOT.playerHas &&
+                                ItemData.canUseAny(age, [Items.DINS_FIRE, Items.FAIRY_BOW, Items.BOMBCHU, UpgradedItems.LONGSHOT]);
                             return canRideUp || canGetWithHookshot;
                         }
                     },
