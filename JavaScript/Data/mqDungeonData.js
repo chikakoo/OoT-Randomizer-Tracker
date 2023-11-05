@@ -4653,9 +4653,8 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 6,
                         AltOrder: 45,
-                        LongDescription: "These are the hearts surrounded by fire in the room after you go through the crawlspace. You can either get them with the boomerang, or shoot the eye switch.",
-                        RequiredChoiceOfChildItems: [Items.BOOMERANG, Items.FAIRY_SLINGSHOT],
-                        RequiredChoiceOfAdultItems: [Items.BOOMERANG, Items.FAIRY_BOW]
+                        LongDescription: "These are the hearts surrounded by fire in the room after you go through the crawlspace. You can either get them with the boomerang, shoot the eye switch, or run into the fire and then jumpslash into them.",
+                        RequiredChoiceOfItems: [ItemSets.SWORDS, ItemSets.PROJECTILES, Items.BOOMERANG]
                     },
                     "Big Chest in Bridge Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -6017,10 +6016,7 @@ let MQDungeons = {
                         Map: "Training Grounds",
                         SilverRupeeIndex: 0,
                         CustomRequirement: function(age) {
-                            if (Settings.RandomizerSettings.shuffleSilverRupees) {
-                                return true;
-                            }
-                            return age === Age.ADULT && Items.HOOKSHOT.playerHas;
+                            return Settings.RandomizerSettings.shuffleSilverRupees || ItemData.canUse(age, Items.HOOKSHOT);
                         }
                     }
                 },
