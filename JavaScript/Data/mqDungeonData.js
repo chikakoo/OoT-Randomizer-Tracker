@@ -2339,6 +2339,14 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 21,
                         LongDescription: "In the maze, there's a switch behind some metal bars. Use a jumpslash to hit it. The chest is in one of the crates."
+                    },
+                    "Goron by Maze": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 283, y: 52, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 21.1,
+                        RequiredItems: [ItemSets.EXPLOSIVES],
+                        LongDescription: "In the north section of the maze, there's a wall you can bomb. There's small crates on the top in the jail you can use to hold the switch down. It's also possible to quickly open the door before it bars again."
                     }
                 }
             },
@@ -2385,13 +2393,6 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 25,
                         LongDescription: "Navigate to the cell on the top of the maze. Bomb or jumpslash the switch (then come back up) to open it. The crates are inside."
-                    },
-                    "Goron by Maze": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 283, y: 52, floor: "F3" },
-                        Age: Age.ADULT,
-                        Order: 26,
-                        LongDescription: "In the north section of the maze, there's a wall you can bomb. Grab one of the crates from the room at the top of the maze and put it on the switch. The chest is through the door, by the goron as usual."
                     }
                 }
             },
