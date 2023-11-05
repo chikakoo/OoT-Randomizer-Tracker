@@ -2176,7 +2176,7 @@ let MapLocations = {
 		MapGroup: MapGroups.MOUNTAIN,
         _canStopAdultGoron: function(age) {
             return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.FAIRY_BOW]) ||
-                (Settings.GlitchesToAllow.stopAdultGoronWithBlueFire && Items.BLUE_FIRE.playerHas);
+                (Settings.GlitchesToAllow.stopAdultGoronWithFire && ItemData.canUseAny(age, [Items.DINS_FIRE, Items.BLUE_FIRE]));
         },
 		Regions: {
             main: {
