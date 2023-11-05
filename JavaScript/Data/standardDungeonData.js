@@ -5808,16 +5808,10 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         RequiredItems: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
-                            if (ItemData.canUse(age, UpgradedItems.SILVER_GAUNTLETS)) {
-                                return true;
-                            }
-
-                            if (!Settings.GlitchesToAllow.gtgSilverBlockSkip || !Equipment.HOVER_BOOTS.playerHas) {
-                                return false;
-                            }
-
-                            return Data.canMegaFlip(age) || Data.canHammerHoverBootsSuperslide(age);
-
+                            return ItemData.canUse(age, UpgradedItems.SILVER_GAUNTLETS) || (
+                                Settings.GlitchesToAllow.gtgSilverBlockSkipWithHammerSuperslide &&
+                                Data.canHammerHoverBootsSuperslide(age)
+                            );
                         }
                     },
                     spinningRoom: {

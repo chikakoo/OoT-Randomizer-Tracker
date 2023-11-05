@@ -294,7 +294,7 @@ let Settings = {
 		gtgAdultNoCard: false,
 		gtgNoZoraTunic: false,
 		gtgChildVineClips: false,
-		gtgSilverBlockSkip: false,
+		gtgSilverBlockSkipWithHammerSuperslide: false,
 		mqGtgEyeStatueJumpslash: false,
 		
 		ganonFireNoTunic: false,

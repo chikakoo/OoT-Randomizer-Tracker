@@ -6082,15 +6082,11 @@ let MQDungeons = {
                     roomBehindSilverBlock: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            if (ItemData.canUse(age, UpgradedItems.SILVER_GAUNTLETS)) {
-                                return true;
-                            }
-
-                            if (!Data.canPlaySong(Songs.SONG_OF_TIME) || !Settings.GlitchesToAllow.gtgSilverBlockSkip || !Equipment.HOVER_BOOTS.playerHas) {
-                                return false;
-                            }
-
-                            return (Data.hasBottleOrBlueFire(age) && Data.canMegaFlip(age)) || Data.canHammerHoverBootsSuperslide(age);
+                            return ItemData.canUse(age, UpgradedItems.SILVER_GAUNTLETS) || (
+                                Settings.GlitchesToAllow.gtgSilverBlockSkipWithHammerSuperslide &&
+                                Data.canPlaySong(Songs.SONG_OF_TIME) && 
+                                Data.canHammerHoverBootsSuperslide(age)
+                            );
                         }
                     },
                     spinningRoom: {
