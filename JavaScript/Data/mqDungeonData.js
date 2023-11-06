@@ -4414,8 +4414,8 @@ let MQDungeons = {
             return ItemData.canUseAll(Age.ADULT, [Items.BOMBCHU, UpgradedItems.SILVER_GAUNTLETS, UpgradedItems.LONGSHOT]);
         },
         _canAccessAdultSide: function() {
-            let canGetUp = ItemData.canUseAll(age, [Items.BOMBCHU, UpgradedItems.LONGSHOT]);
-            let canPushBlock = ItemData.canUse(age, UpgradedItems.SILVER_GAUNTLETS);
+            let canGetUp = ItemData.canUseAll(Age.ADULT, [Items.BOMBCHU, UpgradedItems.LONGSHOT]);
+            let canPushBlock = ItemData.canUse(Age.ADULT, UpgradedItems.SILVER_GAUNTLETS);
             let canWeirdShot = Data.canWeirdShot(Age.ADULT) && Items.FAIRY_BOW.playerHas;
             return canGetUp && (canPushBlock || canWeirdShot);
         },

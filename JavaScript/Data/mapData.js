@@ -3014,7 +3014,7 @@ let MapLocations = {
                         MapInfo: { x: 104, y: 89 },
                         Age: Age.CHILD,
                         LongDescription: "At night, you can find this skulltula on the side of the Lakeside Lab that's nearest the bridge. You can actually jumpslash to the token from the bridge if you don't have the boomerang.",
-                        RequiredItems: [Items.BOOMERANG, ItemSets.SWORDS]
+                        RequiredChoiceOfItems: [Items.BOOMERANG, ItemSets.SWORDS]
                     },
                     "Skulltula on Island": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3097,7 +3097,7 @@ let MapLocations = {
                         DefaultEntranceGroupName: "2 Green Rupees",
                         MapInfo: { x: 169, y: 105 },
                         Age: Age.CHILD,
-                        RequiredItems: [UpgradedItems.SILVER_GAUNTLETS],
+                        RequiredItems: [UpgradedItems.SILVER_SCALE],
                         LongDescription: "These items are by the entrance to Zora's Domain - you need a scale to be able to reach them."
                     }
                 }
