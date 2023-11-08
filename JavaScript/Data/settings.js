@@ -296,6 +296,7 @@ let Settings = {
 		gtgAdultNoCard: false,
 		gtgNoZoraTunic: false,
 		gtgChildVineClips: false,
+		gtgSlopesRoomFireWallSkip: false,
 		gtgSilverBlockSkipWithHammerSuperslide: false,
 		mqGtgEyeStatueJumpslash: false,
 		

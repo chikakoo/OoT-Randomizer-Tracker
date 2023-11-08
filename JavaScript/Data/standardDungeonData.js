@@ -5767,8 +5767,9 @@ let StandardDungeons = {
                     silverBlockRoom: {
                         Map: "Training Grounds",
                         SilverRupeeIndex: 0,
-                        Age: Age.ADULT, // There IS a way to get past the fires with no hookshot, so keep that in mind in case we add that trick!
-                        RequiredItems: [Items.HOOKSHOT]
+                        CustomRequirement(age) {
+                            return Settings.GlitchesToAllow.gtgSlopesRoomFireWallSkip || ItemData.canUse(age, Items.HOOKSHOT);
+                        }
                     }
                 },
                 ItemLocations: {
@@ -5811,7 +5812,9 @@ let StandardDungeons = {
                 }
             },
             silverBlockRoom: {
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
+                UseAdultAge: function() { 
+                    return !Settings.GlitchesToAllow.gtgChildVineClips && !Settings.GlitchesToAllow.gtgSlopesRoomFireWallSkip; 
+                },
                 Exits: {
                     boulderRoom: {},
                     roomBehindSilverBlock: {

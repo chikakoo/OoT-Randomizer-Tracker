@@ -59,6 +59,7 @@ let _assignItemLocationAndExitValues = function() {
 			let exit = OwExits[mapName][exitName];
 			exit.Name = exitName;
 			exit.ExitMap = mapName;
+			exit.IsDungeon = exit.IsBoss;
 		});
 	});
 };
