@@ -361,28 +361,16 @@ let MQDungeons = {
 
             mainRoom: {
                 Exits: {
-                    staircaseBottom: {
-                        RequiredChoiceOfItems: [ Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER, Equipment.STRENGTH]
-                    },
-                    topOfTorchPuzzleRoom: {
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+                    upperMainRoom: {
+                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, Equipment.STRENGTH]
                     },
                     eastRoom: { 
-                        // Bringing a bomb flower is handled by the upperLizalfosRoom
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
+                        RequiredItems: [ItemSets.MUD_WALL_ITEMS]
                     },
                     mainRoomLedge: {
                         CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; }
-                
-                            let canRecoil = Settings.GlitchesToAllow.dodongoSwitchEarly && 
-                                ItemData.canUseAny(age, [ItemSets.EXPLOSIVES, Equipment.STRENGTH, Items.MEGATON_HAMMER]) &&
-                                ItemData.canUse(age, ItemSets.SWORDS);
-                            return Data.canGroundJumpWithBomb(age) || canRecoil;
+                            return age === Age.ADULT || Data.canGroundJumpWithBomb(age);
                         }
-                    },
-                    inDodongoHead: {
-                        RequiredItems: [ItemSets.EXPLOSIVES]
                     }
                 },
 
@@ -416,6 +404,28 @@ let MQDungeons = {
                 }
             },
 
+            upperMainRoom: {
+                Exits: {
+                    staircaseBottom: {},
+                    mainRoomLedge: {
+                        RequiredItems: [ItemSets.SWORDS],
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.dodongoSwitchEarly;
+                        }
+                    },
+                    topOfTorchPuzzleRoom: {
+                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, Items.DINS_FIRE]
+                    },
+                    eastRoom: {
+                        RequiredItems: [Equipment.STRENGTH]
+                    },
+                    inDodongoHead: {
+                        RequiredItems: [ItemSets.EXPLOSIVES]
+                    }
+                },
+                ItemLocations: {}
+            },
+
             mainRoomLedge: {
                 Exits: {
                     poeRoom: {}
@@ -436,9 +446,8 @@ let MQDungeons = {
                 Exits: {
                     staircaseTop: {
                         CustomRequirement: function(age) {
-                            let canLowerWithBow = Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && 
-                                ItemData.canUse(age, Items.FAIRY_BOW);
-                            return canLowerWithBow || ItemData.canUse(age, ItemSets.EXPLOSIVES_OR_STRENGTH);
+                            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE]) ||
+                                (Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && ItemData.canUse(age, Items.FAIRY_BOW));
                         }
                     }
                 },
@@ -719,8 +728,11 @@ let MQDungeons = {
             eastRoom: {
                 Exits: {
                     lowerLizalfosRoom: {
-                        RequiredChildItems: [Items.FAIRY_SLINGSHOT],
-                        RequiredAdultItems: [Items.FAIRY_BOW]
+                        RequiredItems: [ItemSets.PROJECTILES],
+                        CustomRequirement: function(age) {
+                            if (age === Age.ADULT) { return true; }
+                            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE]);
+                        }
                     }
                 },
 
@@ -776,7 +788,7 @@ let MQDungeons = {
                 Exits: {
                     lowerLizalfosRoom: {},
                     mainRoomLedge: {
-                        RequiredItems: [ItemSets.EXPLOSIVES_OR_STRENGTH]
+                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, Items.FAIRY_BOW]
                     }
                 },
 
@@ -786,9 +798,9 @@ let MQDungeons = {
                         MapInfo: { x: 230, y: 79, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 7,
-                        LongDescription: "In the Poe room, use an explosive on one of the lines of bomb flowers to unbar the door to this room. The skulltula is high up in the back left corner.",
-
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, ItemSets.EXPLOSIVES_OR_STRENGTH]
+                        LongDescription: "In the Poe room, use an explosive/Din's fire/bow on one of the lines of bomb flowers to unbar the door to this room. The skulltula is high up in the back left corner.",
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
+                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, Items.FAIRY_BOW]
                     },
                     "Poe Room Pot by Entrance": {
                         ItemGroup: ItemGroups.POT,
