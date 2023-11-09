@@ -1374,8 +1374,8 @@ GrottoGroups = {
 		buttons: {
 			"Scrub 1": {
 				icon: "Scrub",
-				description: "Buy the item from the scrub.",
-				itemGroup: ItemGroups.SCRUB,
+				description: "Buy the item from the scrub - this is still a check with scrubsanity off because it sells a heart piece.",
+				// itemGroup: ItemGroups.SCRUB, // Disabled so it shows up with scrubsanity off
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
@@ -1394,8 +1394,8 @@ GrottoGroups = {
 		buttons: {
 			"Scrub 1": {
 				icon: "Scrub",
-				description: "Buy the item from the scrub.",
-				itemGroup: ItemGroups.SCRUB,
+				description: "Buy the item from the scrub - check this even with scrubsanity off in case it's the deku nut upgrade check.",
+				// itemGroup: ItemGroups.SCRUB, // Disabled so it shows up with scrubsanity off, in case of the deku nut scrub
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
