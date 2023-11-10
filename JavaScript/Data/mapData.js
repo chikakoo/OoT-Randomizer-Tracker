@@ -1973,7 +1973,7 @@ let MapLocations = {
                 Exits: {
                     middle: {
                         CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
+                            return Data.canMegaFlip(age) || ItemData.canUse(age, Equipment.HOVER_BOOTS);
                         }
                     },
                     bottom: {
@@ -2035,7 +2035,8 @@ let MapLocations = {
                     },
                     volcano: {
                         CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || (Settings.GlitchesToAllow.hoverToVolcanoHP && age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
+                            return Data.canMegaFlip(age) || 
+                                (Settings.GlitchesToAllow.hoverToVolcanoHP && ItemData.canUse(age, Equipment.HOVER_BOOTS));
                         }
                     },
                     "Goron City": {
@@ -2508,7 +2509,7 @@ let MapLocations = {
                     downstream: {},
                     inWaterfall: {
                         CustomRequirement: function(age) {
-                            if (age === Age.ADULT && Settings.GlitchesToAllow.hoversToZorasDomain && Equipment.HOVER_BOOTS.playerHas) {
+                            if (Settings.GlitchesToAllow.hoversToZorasDomain && ItemData.canUse(age, Equipment.HOVER_BOOTS)) {
                                 return true; // Hover boots in
                             } else if (age === Age.CHILD && Settings.GlitchesToAllow.cuccoToZorasDomain) {
                                 return true; // Flying cucco
@@ -2650,7 +2651,7 @@ let MapLocations = {
                         CustomRequirement: function(age) {
                             // Already moved, or can move now
                             if (Data.itemLocationObtained("Zora's Domain", "main", "Move King Zora")) { return true; }
-                            if (age === Age.CHILD && Items.RUTOS_LETTER.playerHas) { return true; }
+                            if (ItemData.canUse(age, Items.RUTOS_LETTER)) { return true; }
 
                             // Open Zora's Fountain settings
                             switch (Settings.RandomizerSettings.openZorasFountain) {
@@ -3508,8 +3509,7 @@ let MapLocations = {
                         // from near the skulltula platform, but no idea how to do it
                         Age: Age.EITHER,
                         CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || 
-                                (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
+                            return Data.canMegaFlip(age) || ItemData.canUse(age, Equipment.HOVER_BOOTS);
                         }
                     },
                     "Upper Kitchen Door": {
@@ -3957,7 +3957,7 @@ let MapLocations = {
                             return Data.canStunKitchenGuards(age) || 
                                 Settings.GlitchesToAllow.gfPassKitchenGuards ||
                                 Data.canMegaFlip(age) ||
-                                (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
+                                ItemData.canUse(age, Equipment.HOVER_BOOTS);
                         }
                     },
                     "Kitchen Top Left": {
@@ -3979,7 +3979,7 @@ let MapLocations = {
                             return Data.canStunKitchenGuards(age) || 
                                 Settings.GlitchesToAllow.gfPassKitchenGuards ||
                                 Data.canMegaFlip(age) ||
-                                (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
+                                ItemData.canUse(age, Equipment.HOVER_BOOTS);
                         }
                     },
                     "Kitchen Top Right": {

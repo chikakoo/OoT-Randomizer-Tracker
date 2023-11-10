@@ -131,8 +131,7 @@ let StandardDungeons = {
                         LongDescription: "This skulltula is the one on the vines in the first basement floor. A well-angled jumpslash from a deku stick can hit it. You can also use the slingshot, boomerang, or a well-timed bomb.",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) { return true; }
-                            return Items.DEKU_STICK.playerHas || Items.FAIRY_SLINGSHOT.playerHas ||
-                                Items.BOOMERANG.playerHas || Items.BOMB.playerHas;
+                            return ItemData.canUseAny(age, [Items.DEKU_STICK, Items.FAIRY_SLINGSHOT, Items.BOOMERANG, Items.BOMB]);
                         }
                     }
                 }
@@ -190,8 +189,7 @@ let StandardDungeons = {
                 Exits: {
                     bossRoom: {
                         CustomRequirement: function(age) {
-                            return (age === Age.CHILD && Equipment.DEKU_SHIELD.playerHas) ||
-                                (age === Age.ADULT && Equipment.HYLIAN_SHIELD.playerHas) ||
+                            return ItemData.canUseAny(age, [Equipment.DEKU_SHIELD, Equipment.HYLIAN_SHIELD]) ||
                                 Data.itemLocationObtained("Deku Tree", "lowerBasement", "Open Boss Door");
                         }
                     }
@@ -328,9 +326,7 @@ let StandardDungeons = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.dodongoScarecrowSkullEarly; },
                         LongDescription: "Go to the room to the east of the main room. As adult, play scarecrow's song near the wall with the ledge on the left hand side. Hookshot up to it to get to the skulltula. Alternatively, you can push the armos status all the way over to the ledge and backflip onto it to get to the ledge.",
                         CustomRequirement: function(age) {
-                            let scarecrowless = Settings.GlitchesToAllow.dodongoScarecrowSkullEarly;
-                            if (!scarecrowless && age === Age.CHILD) { return false; }
-                            return scarecrowless || Data.canHookScarecrow(age);
+                            return Settings.GlitchesToAllow.dodongoScarecrowSkullEarly || Data.canHookScarecrow(age);
                         }
                     },
                     "2 Pots in Lizalfos Antechamber": {
@@ -751,7 +747,7 @@ let StandardDungeons = {
                     roomBeforeBoss: {
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.jabuBlueSwitchSkip && 
-                                (Data.canMegaFlip(age) || Data.canUse(age, Equipment.HOVER_BOOTS));
+                                (Data.canMegaFlip(age) || ItemData.canUse(age, Equipment.HOVER_BOOTS));
                         }
                     }
                 },
@@ -1626,13 +1622,13 @@ let StandardDungeons = {
                         Map: "Fire Temple",
                         LockedDoor: "Top Locked Door in Lobby",
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
+                            return Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
                         }
                     },
                     bossRoom: {
                         CustomRequirement: function(age) {
                             let canGetToDoor = age === Age.ADULT || Data.canMegaFlip(age);
-                            let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
+                            let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
                             return canGetToDoor && tunicCheck && ItemData.hasBossKey("Fire Temple");
                         }
                     },
@@ -1651,10 +1647,7 @@ let StandardDungeons = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.fireNoGoronTunic; },
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper left corner of the room and step on the switch. The chest is inside the Goron cage.",
                         CustomRequirement: function(age) {
-                            if (age === Age.CHILD) {
-                                return Settings.GlitchesToAllow.fireNoGoronTunic;
-                            }
-                            return Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
+                            return Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
                         }
                     },
                     //TODO: Empty Pots - remove this item, as the one below will replace it
@@ -2981,7 +2974,7 @@ let StandardDungeons = {
                         MapInfo: { x: 33, y: 61, floor: "F1" },
                         LongDescription: "There are two ways to get to this room. One way: after draining the water, make your way to the bottom west wing. Push the red block out of the way then follow the path. Get to the other side of the switch and water puzzle to get the dragon and whirlpool room.<br/><br/>The alternate path to this room is to drop down after the vortex room chest (post-Dark Link).<br/><br/>When here, use your Iron Boots to sink down in the upper right corner of the vortex room, on the lower dragon. From there, hookshot the crystal switch in the dragon's mouth. Now hookshot the target in the room that opens up. Unequip your Iron Boots then float up to the chest.<br/><br/>You can also line up a bombchu with the switch from the platform by the door. Now, either use your iron boots to navigate to the door, or dive using the silver scale to get there (you'll have to dive early enough - when you're near the right wall).",
                         CustomRequirement: function(age) {
-                            let canUseIronBoots = age === Age.ADULT && Equipment.IRON_BOOTS.playerHas;
+                            let canUseIronBoots = ItemData.canUse(age, Equipment.IRON_BOOTS);
                             if (Items.BOMBCHU.playerHas) {
                                 let canDiveDownNormally = Equipment.SCALE.playerHas || canUseIronBoots;
                                 return Settings.GlitchesToAllow.waterDragonChestWithChu || canDiveDownNormally;
@@ -3281,7 +3274,7 @@ let StandardDungeons = {
                 Exits: {
                     afterTruthSpinner: {
                         CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Equipment.HOVER_BOOTS.playerHas) || Data.canMegaFlip(age);
+                            return ItemData.canUse(age, Equipment.HOVER_BOOTS) || Data.canMegaFlip(age);
                         }
                     }
                 },
@@ -3588,7 +3581,7 @@ let StandardDungeons = {
                         Map: "Shadow Temple",
                         SilverRupeeIndex: 2,
                         CustomRequirement: function(age) {
-                            return Settings.RandomizerSettings.shuffleSilverRupees || (age === Age.ADULT && Items.HOOKSHOT.playerHas);
+                            return Settings.RandomizerSettings.shuffleSilverRupees || ItemData.canUse(age, Items.HOOKSHOT);
                         }
                     },
                     windHallway: {
@@ -4106,8 +4099,7 @@ let StandardDungeons = {
                         }
                     },
                     childSkulltulaInGrateRoom: {
-                        RequiredChildItems: [Items.BOOMERANG],
-                        RequiredAdultItems: [Items.HOOKSHOT]
+                        RequiredChoiceOfItems: [Items.BOOMERANG, Items.HOOKSHOT]
                     },
                     afterSecondCrawlSpace: {}
                 },
@@ -6258,10 +6250,8 @@ let StandardDungeons = {
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canCompleteTrials: function(age) {
             // Requires IsPostWalkCheck to be true on any item location that uses this!!!
-            let canUseLightArrows = age === Age.ADULT && Items.LIGHT_ARROW.playerHas && Equipment.MAGIC.playerHas;
-            if (!canUseLightArrows) { return false; }
-
-            return Data.canAccessMap(age, "Ganon's Castle", "forestTrialEnd") &&
+            return ItemData.canUse(age, Items.LIGHT_ARROW) &&
+                Data.canAccessMap(age, "Ganon's Castle", "forestTrialEnd") &&
                 Data.canAccessMap(age, "Ganon's Castle", "waterTrialEnd") &&
                 Data.canAccessMap(age, "Ganon's Castle", "shadowTrialEnd") &&
                 Data.canAccessMap(age, "Ganon's Castle", "fireTrialEnd") &&

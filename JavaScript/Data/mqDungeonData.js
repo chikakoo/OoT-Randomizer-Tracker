@@ -281,8 +281,7 @@ let MQDungeons = {
                 Exits: {
                     bossRoom: {
                         CustomRequirement: function(age) {
-                            return (age === Age.CHILD && Equipment.DEKU_SHIELD.playerHas) ||
-                                (age === Age.ADULT && Equipment.HYLIAN_SHIELD.playerHas) ||
+                            return ItemData.canUseAny(age, [Equipment.DEKU_SHIELD, Equipment.HYLIAN_SHIELD]) ||
                                 Data.itemLocationObtained("Deku Tree", "lowerBasement", "Open Boss Door");
                         }
                     }
@@ -2090,9 +2089,8 @@ let MQDungeons = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner to the crates.<br/><br/>If child, climb the block with the torch in it from the back right corner. Hold forward to jump up the ledge. Use the first ledge box to get to the second one before you break it.",
                         CustomRequirement: function(age) {
-                            if (Data.canMegaFlip(age)) { return true; }
-                            if (age === Age.CHILD) { return false; }
-                            return Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas;
+                            return Data.canMegaFlip(age) || 
+                                ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]);
                         }
                     },
                     "2 Pots in Room Before Boss": {
@@ -2106,9 +2104,8 @@ let MQDungeons = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner to the pots.",
                         CustomRequirement: function(age) {
-                            if (Data.canMegaFlip(age)) { return true; }
-                            if (age === Age.CHILD) { return false; }
-                            return Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas;
+                            return Data.canMegaFlip(age) || 
+                                ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]);
                         }
                     },
                     "Chest in Room Before Boss": {
@@ -2119,7 +2116,8 @@ let MQDungeons = {
                         Order: 6,
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner. Roll into a box to break it to reveal a torch. Light all 3 torches in the room to open the gate to the chest.",
                         CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas;
+                            return Data.canMegaFlip(age) || 
+                                ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]);
                         }
                     }
                 }
@@ -3510,7 +3508,7 @@ let MQDungeons = {
                             if (!lensCheck) { return false; }
                             
                             let canCrossFirstGap = 
-                                (age === Age.ADULT && (Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas)) ||
+                                ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]) ||
                                 Data.canMegaFlip(age);
                             return canCrossFirstGap;
                         }
@@ -4018,7 +4016,7 @@ let MQDungeons = {
                         Map: "Shadow Temple",
                         SilverRupeeIndex: 3,
                         CustomRequirement: function(age) {
-                            return Settings.RandomizerSettings.shuffleSilverRupees || (age === Age.ADULT && Items.HOOKSHOT.playerHas);
+                            return Settings.RandomizerSettings.shuffleSilverRupees || ItemData.canUse(age, Items.HOOKSHOT);
                         }
                     },
                     windHallWayTop: {
@@ -5038,11 +5036,8 @@ let MQDungeons = {
                         AltOrder: 20,
                         LongDescription: "In the fire bubble room, you must push the first sun block you see onto the light. You'll need to hit the crystal switches to make the fire disappear. This spawns a white platform that you can hookshot up to so that you can reach the skulltula.",
                         CustomRequirement: function(age) {
-                            if (Settings.GlitchesToAllow.difficultBoomerangTrickThrows && ItemData.canUse(age, Items.BOOMERANG)) {
-                                return true;
-                            }
-                            
-                            return age === Age.ADULT && Items.HOOKSHOT.playerHas;
+                            return (Settings.GlitchesToAllow.difficultBoomerangTrickThrows && ItemData.canUse(age, Items.BOOMERANG)) ||
+                                ItemData.canUse(age, Items.HOOKSHOT);
                         }
                     }
                 }
@@ -5884,50 +5879,35 @@ let MQDungeons = {
             return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.gtgChildAllowed;
         },
         _canVineClip: function(age) {
-            return age === Age.CHILD && 
-                Settings.GlitchesToAllow.gtgChildVineClips && 
-                (age) &&
-                Items.BOMBCHU.playerHas;
+            return Settings.GlitchesToAllow.gtgChildVineClips && 
+                ItemData.canUseAll(age, [Equipment.DEKU_SHIELD, Items.BOMBCHU]);
         },
         Regions: {
             main: {
                 Exits: {
                     armosRoom: {
-                        RequiredChildItems: [Items.FAIRY_SLINGSHOT],
-                        RequiredAdultItems: [Items.FAIRY_BOW]
+                        RequiredItems: [ItemSets.PROJECTILES]
                     },
                     leftArea: {
                         RequiredItems: [ItemSets.FIRE_ITEMS]
                     },
                     backOfMaze: {
-                        RequiredChildItems: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
                         CustomRequirement: function(age) {
-                            if (age === Age.CHILD) {
-                                return Settings.GlitchesToAllow.gtgChildVineClips;
-                            }
-
-                            return Data.canWeirdShot(age);
+                            return MapLocations["Training Grounds"]._canVineClip(age) || Data.canWeirdShot(age);
                         }
                     },
                     mazeCenter: {
                         RequiredChildItems: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
                         CustomRequirement: function(age) {
-                            if (ItemData.getKeyCount("Training Grounds") >= 3) {
-                                return true;
-                            }
-
-                            if (age === Age.CHILD) {
-                                return Settings.GlitchesToAllow.gtgChildVineClips;
-                            }
-
-                            return Data.canWeirdShot(age);
+                            return ItemData.getKeyCount("Training Grounds") >= 3 ||
+                                MapLocations["Training Grounds"]._canVineClip(age) || 
+                                Data.canWeirdShot(age);
                         }
                     },
                     iceArrowsRoom: {
                         Age: Age.CHILD,
-                        RequiredItems: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.gtgChildVineClips;
+                            return MapLocations["Training Grounds"]._canVineClip(age);
                         }
                     },
                     Exit: {
@@ -6472,10 +6452,8 @@ let MQDungeons = {
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canCompleteTrials: function(age) {
             // Requires IsPostWalkCheck to be true on any item location that uses this!!!
-            let canUseLightArrows = age === Age.ADULT && Items.LIGHT_ARROW.playerHas && Equipment.MAGIC.playerHas;
-            if (!canUseLightArrows) { return false; }
-
-            return Data.canAccessMap(age, "Ganon's Castle", "forestTrialEnd") &&
+            return ItemData.canUse(age, Items.LIGHT_ARROW) &&
+                Data.canAccessMap(age, "Ganon's Castle", "forestTrialEnd") &&
                 Data.canAccessMap(age, "Ganon's Castle", "waterTrialEnd") &&
                 Data.canAccessMap(age, "Ganon's Castle", "shadowTrialEnd") &&
                 Data.canAccessMap(age, "Ganon's Castle", "fireTrialEnd") &&
@@ -6816,7 +6794,7 @@ let MQDungeons = {
                 Exits: {
                     fireRoomLate: {
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.ganonFireNoTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
+                            return Settings.GlitchesToAllow.ganonFireNoTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
                         }
                     }
                 },

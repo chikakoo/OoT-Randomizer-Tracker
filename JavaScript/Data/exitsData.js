@@ -2568,7 +2568,7 @@ let OwExits = {
             LongDescription: "After hitting all the switches in the basement, you can enter the boss room.",
             IsPostWalkCheck: true,
             CustomRequirement: function(age) {
-                let canBKSkip = age === Age.ADULT && Settings.GlitchesToAllow.forestBKSkip && Items.HOOKSHOT.playerHas;
+                let canBKSkip = Settings.GlitchesToAllow.forestBKSkip && ItemData.canUse(age, Items.HOOKSHOT);
                 let canAccessPoeRoom = MapLocations["Forest Temple"]._canAccessAllPoeRooms(age);
                 return canBKSkip || canAccessPoeRoom;
             }

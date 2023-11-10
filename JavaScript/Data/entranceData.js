@@ -858,7 +858,7 @@ InteriorGroups = {
 					return !Settings.RandomizerSettings.cowSanity;
 				},
 				canGet: function(age) {
-					return Data.canMilkCows() && (age === Age.ADULT || Items.OCARINA.playerHas || Equipment.KOKIRI_SWORD.playerHas);
+					return Data.canMilkCows() && ItemData.canUseAny(age, [Equipment.MASTER_SWORD, Items.OCARINA, Equipment.KOKIRI_SWORD]);
 				}
 			},
 			"Cow 2": {
@@ -869,7 +869,7 @@ InteriorGroups = {
 					return !Settings.RandomizerSettings.cowSanity;
 				},
 				canGet: function(age) {
-					return Data.canMilkCows() && (age === Age.ADULT || Items.OCARINA.playerHas || Equipment.KOKIRI_SWORD.playerHas);
+					return Data.canMilkCows() && ItemData.canUseAny(age, [Equipment.MASTER_SWORD, Items.OCARINA, Equipment.KOKIRI_SWORD]);
 				}
 			}
 		}
@@ -1419,6 +1419,9 @@ GrottoGroups = {
 	},
 	"3 Scrubs": {
 		tooltip: "This is a grotto with 3 business scrubs.",
+		excludeFromGroup: function() {
+			return !Settings.RandomizerSettings.scrubSanity && !Settings.RandomizerSettings.shuffleBeehives;
+		},
 		buttons: {
 			"Scrub 1": {
 				icon: "Scrub",
@@ -1647,6 +1650,13 @@ GrottoGroups = {
 	},
 	"Cow Grotto": {
 		tooltip: "This grotto has rupees and a cow.",
+		excludeFromGroup: function() {
+			let rupeeAndHeartSetting = Settings.RandomizerSettings.rupeeAndHeartSetting;
+			return !Settings.RandomizerSettings.cowSanity && 
+				!Settings.RandomizerSettings.shuffleBeehives &&
+				rupeeAndHeartSetting !== ShuffleLocationSettings.ALL &&
+				rupeeAndHeartSetting !== ShuffleLocationSettings.OW_ONLY;
+		},
 		buttons: {
 			"Cow": {
 				itemGroup: ItemGroups.COW,
@@ -1925,7 +1935,7 @@ GrottoGroups = {
 				icon: "Heart Piece",
 				description: "To defeat Volvagia, hit her with your hammer when she pops out of the holes. After that, attack it again. Jumpslashes will do more damage, like usual. You can hit it with arrows while it's flying to do additional damage. If it ever drops rocks on you, you can hang off the side of the cliff to avoid damage.",
 				canGet: function(age) {
-					let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
+					let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
 					return tunicCheck && ItemData.canUse(age, Items.MEGATON_HAMMER);
 				},
 				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
@@ -1934,7 +1944,7 @@ GrottoGroups = {
 				icon: "Volvagia",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
-					let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || (age === Age.ADULT && Equipment.GORON_TUNIC.playerHas);
+					let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
 					return tunicCheck && ItemData.canUse(age, Items.MEGATON_HAMMER);
 				},
 				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
@@ -1948,7 +1958,7 @@ GrottoGroups = {
 				icon: "Heart Piece",
 				description: "To defeat morpha, hookshot her nucleus out of the water and hit her to damage her. A good way to kill is to continuously hookshot her to bring her into a corner. Now, get to the other side of her and slash once so it runs into the corner. Now quickly jumpslash it (Z + A) and continue to crouch stab (Hold R, spam B) until it's dead.",
 				canGet: function(age) {
-					return age === Age.ADULT && Items.HOOKSHOT.playerHas;
+					return ItemData.canUse(age, Items.HOOKSHOT);
 				},
 				isAdultOnly: function() { return true; }
 			},
@@ -1956,7 +1966,7 @@ GrottoGroups = {
 				icon: "Morpha",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
-					return age === Age.ADULT && Items.HOOKSHOT.playerHas;
+					return ItemData.canUse(age, Items.HOOKSHOT);
 				},
 				isAdultOnly: function() { return true; },
 				postClick: function(isCompleted) {
