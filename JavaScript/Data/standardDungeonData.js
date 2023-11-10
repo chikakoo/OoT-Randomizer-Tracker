@@ -4088,14 +4088,15 @@ let StandardDungeons = {
             childOnlyArea: {
                 Exits: {
                     childAfterStalfos: {
+                        RequiredChoiceOfChildItems: [ItemSets.SWORDS, ItemSets.EXPLOSIVES], // To clear the first room
                         CustomRequirement: function(age) {
-                            if (Items.BOMBCHU.playerHas || Data.canMegaFlip(age)) { return true; }
-                            if (age === Age.ADULT) {
-                                return ItemData.canUseAny(age, [Items.FAIRY_BOW, UpgradedItems.LONGSHOT]);
-                            }
-                            let canClearFirstRoom = ItemData.canUseAny(age, [ItemSets.SWORDS, ItemSets.EXPLOSIVES]);
-                            let canHitSwitch = ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, Items.BOOMERANG]);
-                            return canClearFirstRoom && canHitSwitch;
+                            return Data.canMegaFlip(age) ||
+                                ItemData.canUseAny(age, [
+                                    ItemSets.PROJECTILES, Items.BOOMERANG, // Hit the switch directly
+                                    Items.BOMBCHU, // Backflip x3 from the opposite wall and drop it
+                                    Equipment.HOVER_BOOTS, // Cross directly
+                                    UpgradedItems.LONGSHOT // Hook the chest across the chasm
+                                ]);
                         }
                     },
                     childSkulltulaInGrateRoom: {
@@ -4138,7 +4139,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 4,
                         AltOrder: 40,
-                        LongDescription: "Enter the child-only crawlspace. Kill all the enemies in the first room to unlock the doors - BEWARE OF FIRE KEESE! Enter the left room. The goal in this room is to hit the switch to lower the bridge to get the chest on the other side. There are a few ways to do this. The easiest way is to simply use the boomerang to go around the bridge blocking the switch. If you have the slingshot, you can inch up to the ledge closest to the door and make a precise shot - be sure to go quick if you don't have the means to kill the stalfos."
+                        LongDescription: "Enter the child-only crawlspace. Kill all the enemies in the first room to unlock the doors - BEWARE OF FIRE KEESE! Enter the left room.</br></br>The goal in this room is to hit the switch to lower the bridge to get the chest on the other side. There are a few ways to do this. The easiest way is to simply use the boomerang to go around the bridge blocking the switch. If you have the slingshot, you can inch up to the ledge closest to the door and make a precise shot - be sure to go quick if you don't have the means to kill the stalfos.<br/><br/>If using a bombchu, get against the wall opposite the switch, backflip x3 and drop it."
                     },
                     "Pot in Child Anubis Room": {
                         ItemGroup: ItemGroups.POT,
