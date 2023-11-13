@@ -3791,7 +3791,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 301, y: 220, floor: "F1" },
                         Age: Age.EITHER,
-                        Order: 11,
+                        Order: 8.01,
                         LongDescription: "First, turn the truth spinner in the main room to the correct skull to open the gate. Now, shoot the torches to the left and right of the gate to create a platform. Alternatively, you can megaflip or hover boots across. Take the left door from the beamos. Kill the enemies to spawn the chest."
                     }
                 }
@@ -4074,7 +4074,7 @@ let MQDungeons = {
                     },
                     "Invisible Spike Ceiling Silver Rupee by Exit": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 156, y: 70, floor: "B2" },
+                        MapInfo: { x: 156, y: 50, floor: "B2" },
                         Age: Age.ADULT,
                         Order: 23.6,
                         LongDescription: "This rupee is above the exit door. It marks an invisible hookshot target. If you need height, kill the redeads to spawn the chest. Backflip onto the chest and hookshot it from there.",
@@ -4202,6 +4202,7 @@ let MQDungeons = {
                         MapInfo: { x: 309, y: 158, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 31,
+                        RequiredItems: [ItemSets.EXPLOSIVES],
                         LongDescription: "In the Gibdo room, bomb the rubble to your right to get to this chest."
                     },
                     "Skulltula in Gibdo Room by Wind Hallway": {
@@ -4209,7 +4210,7 @@ let MQDungeons = {
                         MapInfo: { x: 294, y: 139, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 32,
-                        LongDescription: "In the Gibdo room, bomb the rubble at the back to get to this skulltula."
+                        LongDescription: "In the Gibdo room, bomb the rubble at the back (a crouch-stab will work as well) to get to this skulltula."
                     }
                 }
             },
