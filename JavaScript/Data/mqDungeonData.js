@@ -3646,7 +3646,7 @@ let MQDungeons = {
                     },
                     "Redead Chest in Maze": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 101, y: 108, floor: "F1" },
+                        MapInfo: { x: 100, y: 107, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 4,
                         LongDescription: "After entering the truth spinner room, navigate to the Eye of Truth symbol on the lower left wall. Bomb it to open up the path. Use a key to enter the maze. Head right through the invisible wall. Kill the enemies to spawn the chest."
@@ -3688,7 +3688,7 @@ let MQDungeons = {
                     },
                     "Dead Hand Chest": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 14, y: 143, floor: "F1" },
+                        MapInfo: { x: 15, y: 142, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "In the maze by the entrance, navigate around to the other side of the first room. Play the Song of Time to remove the block in the way (invisible without the lens). In the next room, shoot the middle eye. Now you can enter the northwest door. Kill Dead Hand to spawn the chest.",
@@ -3738,7 +3738,7 @@ let MQDungeons = {
                     },
                     "Scythe Silver Rupee in Left Alcove": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 268, y: 113, floor: "F1" },
+                        MapInfo: { x: 271, y: 113, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 8.3,
                         LongDescription: "This rupee is in the alcove on the left, garded by a giant skulltula."
@@ -3750,21 +3750,20 @@ let MQDungeons = {
                         Order: 8.4,
                         LongDescription: "This rupee is in the northwest corner of the room. Use your hookshot or hover boots to get to it.",
                         CustomRequirement: function(age) {
-                            return Items.HOOKSHOT.playerHas || 
-                                Equipment.HOVER_BOOTS.playerHas || 
+                            return ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]) ||
                                 Settings.GlitchesToAllow.shadowSilverRupeeWithNothing;
                         }
                     },
                     "Scythe Silver Rupee in Back Alcove": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 316, y: 75, floor: "F1" },
+                        MapInfo: { x: 316, y: 78, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 8.5,
                         LongDescription: "This rupee is in the alcove in the back part of the room, guarded by a giant skulltula."
                     },
                     "Scythe Room Silver Rupee Chest": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 345, y: 122, floor: "F1" },
+                        MapInfo: { x: 344, y: 121, floor: "F1" },
                         Age: Age.EITHER,
                         UseAdultAge: function(age) { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                         Order: 9,
@@ -3774,9 +3773,9 @@ let MQDungeons = {
                             if (Settings.RandomizerSettings.shuffleSilverRupees) { 
                                 return Data.canWeirdShot(age) || ItemData.checkSilverRupeeRequirement("Shadow Temple", 0);
                             }
+                            if (age === Age.CHILD) { return false; }
 
-                            return Items.HOOKSHOT.playerHas || 
-                                Equipment.HOVER_BOOTS.playerHas || 
+                            return ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]) ||
                                 Settings.GlitchesToAllow.shadowSilverRupeeWithNothing;
                         }
                     },
@@ -3789,7 +3788,7 @@ let MQDungeons = {
                     },
                     "Chest in Early Gibdos Room": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 301, y: 220, floor: "F1" },
+                        MapInfo: { x: 300, y: 220, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 8.01,
                         LongDescription: "First, turn the truth spinner in the main room to the correct skull to open the gate. Now, shoot the torches to the left and right of the gate to create a platform. Alternatively, you can megaflip or hover boots across. Take the left door from the beamos. Kill the enemies to spawn the chest."

@@ -3403,8 +3403,7 @@ let StandardDungeons = {
                         Order: 8.4,
                         LongDescription: "This rupee is in the northwest corner of the room. Use your hookshot or hoer boots to get to it.",
                         CustomRequirement: function(age) {
-                            return Items.HOOKSHOT.playerHas || 
-                                Equipment.HOVER_BOOTS.playerHas || 
+                            return ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]) ||
                                 Settings.GlitchesToAllow.shadowSilverRupeeWithNothing;
                         }
                     },
@@ -3427,9 +3426,9 @@ let StandardDungeons = {
                             if (Settings.RandomizerSettings.shuffleSilverRupees) { 
                                 return Data.canWeirdShot(age) || ItemData.checkSilverRupeeRequirement("Shadow Temple", 0);
                             }
+                            if (age === Age.CHILD) { return false; }
 
-                            return Items.HOOKSHOT.playerHas || 
-                                Equipment.HOVER_BOOTS.playerHas || 
+                            return ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]) ||
                                 Settings.GlitchesToAllow.shadowSilverRupeeWithNothing;
                         }
                     }
