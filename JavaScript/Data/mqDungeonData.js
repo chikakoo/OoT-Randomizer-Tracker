@@ -6542,8 +6542,7 @@ let MQDungeons = {
                         KeyRequirement: function(age) {
                             let max = 3;
                             let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
-                                Items.BOMB.playerHas && 
-                                (age);
+                                ItemData.canUseAll(age, [Items.BOMB, ItemSets.SHIELDS]);
                             let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && 
                                 ItemData.canUse(age, ItemSets.EXPLOSIVES);
                             let canGlitchIn = canSuperslideIn || canEssClipIn;

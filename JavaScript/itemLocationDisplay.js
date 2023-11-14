@@ -211,9 +211,9 @@ let ItemLocationDisplay = {
 			}
 			
 			let allItemLocationsDiv = dce("div", "item-group");
-			allItemLocationsDiv.onclick = this._toggleItemLocations.bind(this, allItemLocationsDiv);
 			
 			let allItemLocationsTitleDiv = dce("div", "item-group-title");
+			allItemLocationsTitleDiv.onclick = this._toggleItemLocations.bind(this, allItemLocationsDiv);
 			allItemLocationsDiv.appendChild(allItemLocationsTitleDiv);
 			
 			let allItemLocationsImageDiv = dce("div", "item-group-image");
@@ -234,10 +234,10 @@ let ItemLocationDisplay = {
 			Object.keys(groupedItemLocationInfo).forEach(function(groupId) {
 				let itemGroup = groupedItemLocationInfo[groupId]
 				let itemGroupDiv = dce("div", "item-group");
-				itemGroupDiv.onclick = _this._toggleItemLocations.bind(_this, itemGroupDiv);
 				mainContainer.appendChild(itemGroupDiv);
 				
 				let itemGroupTitleDiv = dce("div", "item-group-title");
+				itemGroupTitleDiv.onclick = _this._toggleItemLocations.bind(_this, itemGroupDiv);
 				itemGroupDiv.appendChild(itemGroupTitleDiv);
 				
 				let itemGroupImageDiv = dce("div", "item-group-image");
@@ -245,6 +245,7 @@ let ItemLocationDisplay = {
 				itemGroupTitleDiv.appendChild(itemGroupImageDiv);
 				
 				let itemGroupTextDiv = dce("div", "item-group-text");
+
 				let itemGroupName = getItemGroupName(groupId);
 				if (itemGroupName) {
 					itemGroupTextDiv.innerText = itemGroupName
@@ -275,12 +276,15 @@ let ItemLocationDisplay = {
 			
 			let itemLocationDiv = dce("div", "item-location");
 			let isOwEntrance = false;
+
+			let itemLocationTitleDiv = dce("div", "item-location-title");
+			itemLocationDiv.appendChild(itemLocationTitleDiv);
 			
 			if (itemLocation.ItemGroup !== ItemGroups.OW_ENTRANCE) {
-				itemLocationDiv.onclick = _this.toggleItemObtained.bind(_this, itemLocationDiv, itemLocation);
+				itemLocationTitleDiv.onclick = _this.toggleItemObtained.bind(_this, itemLocationDiv, itemLocation);
 			} else {
 				isOwEntrance = true;
-				itemLocationDiv.onclick = function(event) {
+				itemLocationTitleDiv.onclick = function(event) {
 					event.stopPropagation();
 				}
 			}
@@ -297,9 +301,6 @@ let ItemLocationDisplay = {
 			if (allItemsObtained) {
 				addCssClass(itemLocationDiv, "nodisp");
 			}
-
-			let itemLocationTitleDiv = dce("div", "item-location-title");
-			itemLocationDiv.appendChild(itemLocationTitleDiv);
 
 			let itemLocationAgeIconDiv = dce("div", "item-location-age-icon");
 			itemLocationAgeIconDiv.id = `${itemLocation.Name}-age-icon`;
@@ -425,7 +426,6 @@ let ItemLocationDisplay = {
 	_createMoreInfoDiv: function(itemLocation, itemLocationDiv) {
 		let moreInfoDiv = dce("div", "item-more-info nodisp");
 		moreInfoDiv.id = `${itemLocation.Name}-more-info`;
-		moreInfoDiv.onclick = this.toggleMoreInfo.bind(this, itemLocationDiv, itemLocation, undefined);
 
 		let moreInfoTextDiv = dce("div", "item-more-info-text");
 		moreInfoTextDiv.innerHTML = itemLocation.LongDescription;
