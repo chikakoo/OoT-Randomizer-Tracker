@@ -1023,7 +1023,12 @@ let OwExits = {
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             DefaultEntranceGroupName: "Potion Shop Front",
-            Time: function() { return Time.DAY_ADULT; },
+            Time: function() { 
+                // Adult can clip through the back and then jump to the front
+                return Settings.GlitchesToAllow.kakShopClips
+                    ? Time.EITHER
+                    : Time.DAY_ADULT;
+            },
             MapInfo: { x: 163, y: 92 },
             Age: Age.EITHER,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances; },
