@@ -14,7 +14,7 @@ EntranceData = {
 		}
 
 		let name = entranceGroup.name;
-		entranceGroup.buttonNames.forEach(function(buttonName) {
+		Object.keys(entranceGroup.buttons).forEach(function(buttonName) {
 			let buttonItem;
 
 			if (itemLocation.IsInterior) {
@@ -30,7 +30,7 @@ EntranceData = {
 			}
 
 			if (buttonItem && buttonItem.postClick) {
-				let isCompleted = Object.keys(entranceGroup.completed).includes(buttonName);
+				let isCompleted = entranceGroup.buttons[buttonName].completed;
 				buttonItem.postClick(isCompleted);
 			}
 		});
@@ -2030,53 +2030,26 @@ GrottoGroups = {
 	"Spinning Pot": {
 		tooltip: "The spinning pot in Goron City - excludes the heart piece.",
 		buttons: {
-			"Neutral 1": {
+			"Neutral": {
 				icon: "Neutral Goron",
 				tag: "neutral",
+				count: 3,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Neutral Goron Prize 1."
-			},
-			"Neutral 2": {
-				icon: "Neutral Goron",
-				tag: "neutral",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Neutral Goron Prize 2."
-			},
-			"Neutral 3": {
-				icon: "Neutral Goron",
-				tag: "neutral",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Neutral Goron Prize 3."
+				description: "Neutral Goron Prizes."
 			},
 			"Angry 1": {
 				icon: "Angry Goron",
 				tag: "angry",
+				count: 3,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Angry Goron Prize 1."
+				description: "Angry Goron Prizes."
 			},
-			"Angry 2": {
-				icon: "Angry Goron",
-				tag: "angry",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Angry Goron Prize 2."
-			},
-			"Angry 3": {
-				icon: "Angry Goron",
-				tag: "angry",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Angry Goron Prize 3."
-			},
-			"Happy 1": {
+			"Happy": {
 				icon: "Happy Goron",
 				tag: "happy",
+				count: 2,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Happy Goron Prize 1 - the heart piece item is still in its old spot."
-			},
-			"Happy 2": {
-				icon: "Happy Goron",
-				tag: "happy",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Happy Goron Prize 2 - the heart piece item is still in its old spot."
+				description: "Happy Goron Prizes-1 - the heart piece item is still in its old spot."
 			}
 		}
 	},

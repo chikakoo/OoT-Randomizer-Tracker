@@ -279,7 +279,7 @@ Data = {
                 
                 // If this is a grotto or interior that is NOT shuffled, don't show it if there's no tasks to complete
                 if (itemLocation.IsGrotto || itemLocation.IsInterior) {
-                    return EntranceUI.getNumberOfActiveTasks(itemLocation) > 0;
+                    return EntranceUI.getNumberOfActiveButtons(itemLocation) > 0;
                 }
                 return true;
             }

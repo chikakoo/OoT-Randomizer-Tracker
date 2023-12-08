@@ -84,7 +84,8 @@ let SaveAndLoad = {
                     let overrideObtainableChild = itemLocation.OverrideObtainableChild;
                     let overrideObtainableAdult = itemLocation.OverrideObtainableAdult;
 
-                    let relevantDefaultEntranceGroup = defaultEntranceGroup && Object.keys(defaultEntranceGroup.completed).length > 0;
+                    let relevantDefaultEntranceGroup = defaultEntranceGroup && 
+                        Object.values(defaultEntranceGroup.buttons).some(button => button.completedCount > 0);
                     if (playerHas || notes || owShuffleMap || owShuffleRegion || entranceGroup || relevantDefaultEntranceGroup || overrideObtainableChild || overrideObtainableAdult) {
                         currentMapData = currentMapData || {};
                         currentMapData.Regions = currentMapData.Regions || {};

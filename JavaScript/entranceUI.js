@@ -96,10 +96,20 @@ let EntranceUI = {
 			icon: group.icon,
 			isTempleOfTime: group.isTempleOfTime,
 			hasGossipStone: group.hasGossipStone,
-			completed: {},
-			buttonNames: Object.keys(group.buttons),
+			buttons: {},
 			totalTasks: Object.keys(group.buttons).length
 		};
+
+		Object.keys(group.buttons).forEach(buttonName => {
+			let checksOnButton = group.buttons[buttonName].count;
+			itemLocation[groupProperty].buttons[buttonName] = {
+				hasMultipleChecks: !!checksOnButton,
+				count: checksOnButton || 1,
+				completedCount: 0,
+				completed: false
+			};
+			itemLocation[groupProperty].buttons[buttonName]
+		});
 	},
 
 	/**
@@ -157,31 +167,46 @@ let EntranceUI = {
 			buttonDiv.onclick = function(event) {
 				event.stopPropagation();
 
-				let buttonNames = [buttonName];
 				if (event.shiftKey) {
+					let buttonNames = [];
 					Object.keys(selectedGroup.buttons).forEach(function(currentButtonName) {
-						if (buttonName === currentButtonName) { return; }
-
 						let currentButton = selectedGroup.buttons[currentButtonName];
 						if (currentButton.itemGroup === button.itemGroup && currentButton.tag === button.tag) {
 							buttonNames.push(currentButtonName);
 						}
 					});
+
+					buttonNames.forEach(function(name) {
+						_this._markButtonAsComplete(itemLocationGroup, itemLocation, button, name, buttonDiv, true);
+					});
+				} else {
+					_this._advanceButton(itemLocationGroup.buttons[buttonName]);
+					_this._markButtonAsComplete(itemLocationGroup, itemLocation, button, buttonName, buttonDiv);
 				}
-				
-				let completed = !itemLocationGroup.completed[buttonName];
-				buttonNames.forEach(function(name) {
-					_this._markButtonAsComplete(itemLocationGroup, itemLocation, button, name, buttonDiv, completed);
-				});
 				
 				SocketClient.itemLocationUpdated(itemLocation);
 				refreshAll();
-			}
+			};
 
-			let canGetAsChild = canGetToAsChild && _this._canGetAsAge(button, Age.CHILD) && (!button.canGet || button.canGet(Age.CHILD, itemLocation));
-			let canGetAsAdult = canGetToAsAdult && _this._canGetAsAge(button, Age.ADULT) && (!button.canGet || button.canGet(Age.ADULT, itemLocation));
+			buttonDiv.oncontextmenu = function(event) {
+				event.preventDefault();
+				event.stopPropagation();
+
+				_this._advanceButton(itemLocationGroup.buttons[buttonName], true, event.shiftKey);
+				_this._markButtonAsComplete(itemLocationGroup, itemLocation, button, buttonName, buttonDiv);
+
+				SocketClient.itemLocationUpdated(itemLocation);
+				refreshAll();
+			};
+
+			let canGetAsChild = canGetToAsChild && 
+				_this._canGetAsAge(button, Age.CHILD) && 
+				(!button.canGet || button.canGet(Age.CHILD, itemLocation));
+			let canGetAsAdult = canGetToAsAdult && 
+				_this._canGetAsAge(button, Age.ADULT) && 
+				(!button.canGet || button.canGet(Age.ADULT, itemLocation));
 			
-			if (itemLocationGroup.completed[buttonName]) {
+			if (itemLocationGroup.buttons[buttonName].completed) {
 				addCssClass(buttonDiv, "entrance-group-button-completed");
 			}
 			else if (!canGetAsAdult && !canGetAsChild) {
@@ -189,27 +214,65 @@ let EntranceUI = {
 			}
 			
 			_this._addAgeDiv(buttonDiv, button, canGetAsChild, canGetAsAdult);
-			_this._addTextDiv(buttonDiv, button);
+			_this._addTextDiv(buttonDiv, button, itemLocationGroup.buttons[buttonName]);
 			visibleButtonCount++;
 			itemLocationEntranceTasksContainer.appendChild(buttonDiv);
 		});
 	},
 
-	_markButtonAsComplete: function(itemLocationGroup, itemLocation, button, buttonName, buttonDiv, markAsComplete) {
-		if (!markAsComplete) { 
-			delete itemLocationGroup.completed[buttonName]; 
-			itemLocation.playerHas = false;
-		} else { 
-			itemLocationGroup.completed[buttonName] = true; 
+	/**
+	 * Advances the count on the button - including marking it as completed if necessary
+	 * @param button - The button to advance
+	 * @param onRightClick - Whether this was a right click - will reduce the cont
+	 * @param onShiftHeld - Whether shift was held - will clear the entire entry if right clicked
+	 */
+	_advanceButton: function(button, onRightClick, onShiftHeld) {
+		// Its a normal button, so this becomes a toggle
+		if (!button.hasMultipleChecks) {
+			button.completedCount = button.completedCount >= 1 ? 0 : 1;
+			return;
+		} 
+		
+		// On a right click, reduce the count
+		if (onRightClick) {
+			let countToSet = onShiftHeld ? 0 : button.completedCount - 1;
+			button.completedCount = Math.max(countToSet, 0);
+			return;
+		} 
+
+		// Sanitize the data if everything is completed already
+		if (button.completedCount >= button.count) { 
+			button.completedCount = button.count;
+			return; 
 		}
-		toggleCssClass(buttonDiv, "entrance-group-button-completed");
+
+		// Otherwise, increment the count
+		button.completedCount++;
+	},
+
+	_markButtonAsComplete: function(itemLocationGroup, itemLocation, button, buttonName, buttonDiv, forceComplete) {
+		let buttonData = itemLocationGroup.buttons[buttonName];
+
+		// Force obtain all items in the group
+		if (forceComplete) {
+			buttonData.completedCount = buttonData.count;
+		}
+
+		if (buttonData.completedCount >= buttonData.count) {
+			buttonData.completed = true;
+			addCssClass(buttonDiv, "entrance-group-button-completed");
+		} else {
+			itemLocation.playerHas = false;
+			buttonData.completed = false;
+			removeCssClass(buttonDiv, "entrance-group-button-completed");
+		}
 		
 		if (this.isGroupComplete(itemLocation)) {
 			itemLocation.playerHas = true;
 		}
 
 		if (button.postClick) {
-			button.postClick(itemLocationGroup.completed[buttonName]);
+			button.postClick(itemLocationGroup.buttons[buttonName].completed);
 		}
 	},
 	
@@ -240,12 +303,17 @@ let EntranceUI = {
 
 	/**
 	 * Adds any additional text to the button, if it has any in the iconText property
+	 * Prioritizes adding the item count, if there is any
 	 * @param buttonDiv - the button div
 	 * @param button - the button containing the data
+	 * @param buttonData - the button containing the data we save - used to determine the current number of active tasks
 	 */
-	_addTextDiv: function(buttonDiv, button) {
-		if (button.iconText) {
-			let textDiv = dce("div", "entrance-group-text-div");
+	_addTextDiv: function(buttonDiv, button, buttonData) {
+		let textDiv = dce("div", "entrance-group-text-div");
+		if (buttonData.hasMultipleChecks) {
+			textDiv.innerText = `${buttonData.completedCount}/${buttonData.count}`;
+			buttonDiv.appendChild(textDiv);
+		} else if (button.iconText) {
 			textDiv.innerText = button.iconText;
 			buttonDiv.appendChild(textDiv);
 		}
@@ -316,22 +384,26 @@ let EntranceUI = {
 			throw "Should not call isGroupComplete with an item location that doesn't have a group selected!";
 		}
 		
-		return Object.keys(selectedGroup.completed).length === this.getNumberOfActiveTasks(itemLocation);
+		let _this = this;
+		return Object.values(selectedGroup.buttons).every(button =>
+			_this._excludeButtonFromCounts(button, itemLocation) || button.completed
+		);
 	},
 	
 	/**
 	 * Gets the number of tasks that are currently active (that is, not hidden)
+	 * This ONLY cares about number of active buttons, NOT the tasks ON the buttons!
 	 */
-	getNumberOfActiveTasks: function(itemLocation) {
+	getNumberOfActiveButtons: function(itemLocation) {
 		let selectedGroup = Data.getEntranceGroup(itemLocation);
 		if (!selectedGroup) {
-			throw "Should not call getNumberOfActiveTasks with an item location that doesn't have a group selected!";
+			throw "Should not call getNumberOfActiveButtons with an item location that doesn't have a group selected!";
 		}
 
 		let activeTasks = 0;
 		let entranceData = this.getEntranceData(itemLocation);
 		let _this = this;
-		selectedGroup.buttonNames.forEach(function (buttonName) {
+		Object.keys(selectedGroup.buttons).forEach(buttonName => {
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
 			if (_this._excludeButtonFromCounts(button, itemLocation)) { return; }
 			
@@ -364,15 +436,16 @@ let EntranceUI = {
 		
 		let _this = this;
 		let entranceData = this.getEntranceData(itemLocation);
-		selectedGroup.buttonNames.forEach(function (buttonName) {
-			if (selectedGroup.completed[buttonName]) { return; }
+		Object.keys(selectedGroup.buttons).forEach(function (buttonName) {
+			let buttonData = selectedGroup.buttons[buttonName];
+			if (buttonData.completed) { return; }
 			
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
 			if (_this._excludeButtonFromCounts(button, itemLocation)) { return; }
 			
 			let canGetItem = !button.canGet || button.canGet(age, itemLocation);
 			if (canGetItem && _this._canGetAsAge(button, age)) {
-				numberOfTasks++; 
+				numberOfTasks += buttonData.count - buttonData.completedCount;
 			}
 		});
 		
@@ -394,10 +467,10 @@ let EntranceUI = {
 		let numberOfTasks = 0;
 		let _this = this;
 		let entranceData = this.getEntranceData(itemLocation);
-		selectedGroup.buttonNames.forEach(function (buttonName) {
+		Object.keys(selectedGroup.buttons).forEach(function (buttonName) {
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
 			if (!_this._excludeButtonFromCounts(button, itemLocation) && _this._canGetAsAge(button, age)) {
-				numberOfTasks++; 
+				numberOfTasks += selectedGroup.buttons[buttonName].count;
 			}
 		});
 		
@@ -446,12 +519,10 @@ let EntranceUI = {
 		let numberOfTasks = 0;
 		let _this = this;
 		let entranceData = this.getEntranceData(itemLocation);
-		selectedGroup.buttonNames.forEach(function (buttonName) {
-			if (!selectedGroup.completed[buttonName]) { return; }
-			
+		Object.keys(selectedGroup.buttons).forEach(function (buttonName) {
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
 			if (!_this._excludeButtonFromCounts(button, itemLocation) && _this._canGetAsAge(button, age)) {
-				numberOfTasks++; 
+				numberOfTasks += selectedGroup.buttons[buttonName].completedCount;
 			}
 		});
 		

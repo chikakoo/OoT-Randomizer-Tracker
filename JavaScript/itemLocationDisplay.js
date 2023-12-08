@@ -337,7 +337,7 @@ let ItemLocationDisplay = {
 				if (itemLocation.IsItemLocationGroup) {
 					let entranceGroupDiv = EntranceUI.createEntranceGroupDiv(itemLocation, itemLocationEntranceTasksContainer);
 					let group = Data.getEntranceGroup(itemLocation);
-					let groupSelectedAndCompleted = group && Object.keys(group.completed).length >= group.totalNumberOfTasks;
+					let groupSelectedAndCompleted = group && EntranceUI.isGroupComplete(itemLocation);
 					if (itemLocation.playerHas || groupSelectedAndCompleted) {
 						addCssClass(entranceGroupDiv, "nodisp");
 					}
