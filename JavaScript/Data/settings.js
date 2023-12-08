@@ -134,9 +134,9 @@ let Settings = {
 		iceArrowsActAsBlueFire: true,
 		rupeeAndHeartSetting: ShuffleLocationSettings.ALL,
 		potSetting: ShuffleLocationSettings.ALL,
-		shuffleEmptyPots: true,
+		shuffleEmptyPots: false,
 		crateSetting: ShuffleLocationSettings.ALL,
-		shuffleEmptyCrates: true,
+		shuffleEmptyCrates: false,
 		
 		// Entrance shuffle settings
 		shuffleInteriorEntrances: true,

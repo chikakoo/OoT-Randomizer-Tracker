@@ -214,6 +214,7 @@ InteriorGroups = {
 				}
 			},
 			"Borrow Skull Mask": {
+				icon: "Skull Mask",
 				itemLocation: "Borrow Skull Mask",
 				tag: "skull",
 				description: "After selling the Keaton Mask to the Kakariko Guard, you can borrow this mask.",
@@ -379,24 +380,9 @@ InteriorGroups = {
 				},
 				isAdultOnly: function() { return true; }
 			},
-			"Red Rupee 1": {
-				icon: "Red Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "This rupee is in the water - dive or use iron boots to get it.",
-				canGet: function(age) {
-					return ItemData.canUseAny(age, [Equipment.IRON_BOOTS, UpgradedItems.GOLDEN_SCALE]);
-				}
-			},
-			"Red Rupee 2": {
-				icon: "Red Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "This rupee is in the water - dive or use iron boots to get it.",
-				canGet: function(age) {
-					return ItemData.canUseAny(age, [Equipment.IRON_BOOTS, UpgradedItems.GOLDEN_SCALE]);
-				}
-			},
-			"Red Rupee 3": {
-				icon: "Red Rupee",
+			"3 Red Rupees": {
+				icon: "3 Red Rupees",
+				count: 3,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "This rupee is in the water - dive or use iron boots to get it.",
 				canGet: function(age) {
@@ -430,375 +416,42 @@ InteriorGroups = {
 				},
 				isAdultOnly: function() { return true; }
 			},
-			"Crate as Child 1": {
+			"Child Non-Empty Crates": {
 				icon: "Crate",
 				itemGroup: ItemGroups.CRATE,
 				description: "If not including empty crates, this is the third crate on your left.",
 				isChildOnly: function() { return true; }
 			},
-			"Crate as Child 2": {
+			"Child Empty Crates": {
 				icon: "Crate",
+				count: 3,
 				itemGroup: ItemGroups.CRATE,
-				description: "One of the crates in the room.",
+				description: "One of the empty crates in the room.",
 				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
 				isChildOnly: function() { return true; }
 			},
-			"Crate as Child 3": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "One of the crates in the room.",
-				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
-				isChildOnly: function() { return true; }
-			},
-			"Crate as Child 4": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "One of the crates in the room.",
-				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 1": {
+			"Child Pots": {
 				icon: "Pot",
+				count: 44,
 				itemGroup: ItemGroups.POT,
-				description: "One of the two pots on the top. Use the box with the skulltula on it to jump to it.",
+				tag: "child",
+				description: "One of the many pots in the room. You can reach the top ones by jumping from the box with the skulltula in it.",
 				isChildOnly: function() { return true; }
 			},
-			"Child Pot 2": {
+			"Adult Non-Empty Pots": {
 				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the two pots on the top. Use the box with the skulltula on it to jump to it.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 3": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 4": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 5": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 6": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 7": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 8": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 9": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 10": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 11": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 12": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 13": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 14": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 15": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 16": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 17": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 18": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 19": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 20": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 21": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 22": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 23": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the two pots on the top. Use the box with the skulltula on it to jump to it.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 24": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the two pots on the top. Use the box with the skulltula on it to jump to it.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 25": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 26": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 27": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 28": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 29": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 30": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 31": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 32": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 33": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 34": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 35": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 36": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 37": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 38": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 39": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 40": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 41": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 42": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 43": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Child Pot 44": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room.",
-				isChildOnly: function() { return true; }
-			},
-			"Adult Pot 1": {
-				icon: "Pot",
+				count: 7,
 				itemGroup: ItemGroups.POT,
 				tag: "adult",
 				description: "One of the many pots in the room.",
 				isAdultOnly: function() { return true; }
 			},
-			"Adult Pot 2": {
+			"Adult Empty Pots": {
 				icon: "Pot",
+				count: 4,
 				itemGroup: ItemGroups.POT,
 				tag: "adult",
-				description: "One of the many pots in the room.",
-				isAdultOnly: function() { return true; }
-			},
-			"Adult Pot 3": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				tag: "adult",
-				description: "One of the many pots in the room.",
-				isAdultOnly: function() { return true; }
-			},
-			"Adult Pot 4": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				tag: "adult",
-				description: "One of the many pots in the room.",
-				isAdultOnly: function() { return true; }
-			},
-			"Adult Pot 5": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				tag: "adult",
-				description: "One of the many pots in the room.",
-				isAdultOnly: function() { return true; }
-			},
-			"Adult Pot 6": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				tag: "adult",
-				description: "One of the many pots in the room.",
-				isAdultOnly: function() { return true; }
-			},
-			"Adult Pot 7": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				tag: "adult",
-				description: "One of the many pots in the room.",
-				isAdultOnly: function() { return true; }
-			},
-			"Adult Pot 8": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				tag: "adult",
-				description: "One of the many pots in the room.",
-				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
-				isAdultOnly: function() { return true; }
-			},
-			"Adult Pot 9": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				tag: "adult",
-				description: "One of the many pots in the room.",
-				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
-				isAdultOnly: function() { return true; }
-			},
-			"Adult Pot 10": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				tag: "adult",
-				description: "One of the many pots in the room.",
-				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
-				isAdultOnly: function() { return true; }
-			},
-			"Adult Pot 11": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				tag: "adult",
-				description: "One of the many pots in the room.",
+				description: "One of the many pots in the room - these are the normally empty ones.",
 				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
 				isAdultOnly: function() { return true; }
 			}
@@ -821,21 +474,15 @@ InteriorGroups = {
 		}
 	},
 	"Stable": {
+		icon: "2 Cows",
 		tooltip: "This is the building with the cows in the stables.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.cowSanity; },
 		buttons: {
-			"Cow 1": {
-				icon: "Cow",
+			"Cows": {
+				useGroupImage: true,
+				count: 2,
 				itemGroup: ItemGroups.COW,
-				description: "Play Epona's Song next to the cow.",
-				canGet: function(age) {
-					return Data.canMilkCows(true);
-				}
-			},
-			"Cow 2": {
-				icon: "Cow",
-				itemGroup: ItemGroups.COW,
-				description: "Play Epona's Song next to the cow.",
+				description: "Play Epona's Song next to the cows.",
 				canGet: function(age) {
 					return Data.canMilkCows(true);
 				}
@@ -850,19 +497,9 @@ InteriorGroups = {
 				description: "Push the box out of the way and crawl through the hole to get the item.",
 				isChildOnly: function() { return true; }
 			},
-			"Cow 1": {
-				icon: "Cow",
-				itemGroup: ItemGroups.COW,
-				description: "Play Epona's Song next to the cow.",
-				shouldNotDisplay: function() {
-					return !Settings.RandomizerSettings.cowSanity;
-				},
-				canGet: function(age) {
-					return Data.canMilkCows() && ItemData.canUseAny(age, [Equipment.MASTER_SWORD, Items.OCARINA, Equipment.KOKIRI_SWORD]);
-				}
-			},
-			"Cow 2": {
-				icon: "Cow",
+			"Cows": {
+				icon: "2 Cows",
+				count: 2,
 				itemGroup: ItemGroups.COW,
 				description: "Play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
@@ -876,17 +513,12 @@ InteriorGroups = {
 	},
 	"Bombchu Bowling": {
 		tooltip: "The Bombchu Bowling building.",
+		icon: "Bombchu",
 		buttons: {
-			"Prize 1": {
+			"Prizes": {
 				icon: "Bombchu",
+				count: 2,
 				description: "This is the first prize you can get.",
-				canGet: function(age) {
-					return Data.canPlayBombchuBowling(Age.CHILD);
-				}
-			},
-			"Prize 2": {
-				icon: "Bombchu",
-				description: "This is the second prize you can get",
 				canGet: function(age) {
 					return Data.canPlayBombchuBowling(Age.CHILD);
 				}
@@ -897,11 +529,13 @@ InteriorGroups = {
 		tooltip: "The fishing pond area.",
 		buttons: {
 			"Child Fishing": {
+				useGroupImage: true,
 				description: "The prize you can get as child.",
 				tag: "child",
 				isChildOnly: function() { return true; }
 			},
 			"Adult Fishing": {
+				useGroupImage: true,
 				description: "The prize you can get as adult.",
 				tag: "adult",
 				isAdultOnly: function() { return true; }
@@ -1109,18 +743,8 @@ InteriorGroups = {
 				},
 				isChildOnly: function() { return true; }
 			},
-			"Pot 1": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "This pot is through the door upstairs and to the left."
-			},
-			"Pot 2": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "This pot is through the door upstairs and to the left."
-			},
-			"Pot 3": {
-				icon: "Pot",
+			"3 Pots": {
+				count: 3,
 				itemGroup: ItemGroups.POT,
 				description: "This pot is through the door upstairs and to the left."
 			}
@@ -1156,47 +780,22 @@ InteriorGroups = {
 		icon: "4 Chests",
 		excludeFromGroup: function() { return true; },
 		buttons: {
-			"Chest 1": {
-				icon: "Chest",
-				description: "The upper left chest."
-			},
-			"Chest 2": {
-				icon: "Chest",
-				description: "The lower left chest."
-			},
-			"Chest 3": {
-				icon: "Chest",
-				description: "The upper right chest."
-			},
-			"Chest 4": {
-				icon: "Chest",
-				description: "The lower right chest."
-			},
+			"Chests": {
+				useGroupImage: true,
+				count: 4,
+				description: "The chests."
+			}
 		}
 	},
 	"Saria's House": {
+		icon: "4 Hearts",
 		tooltip: "Saria's House in Kokiri Forest",
 		excludeFromGroup: function() { return true; },
 		buttons: {
-			"Heart 1": {
-				icon: "Recovery Heart",
+			"4 Hearts": {
+				count: 4,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "The upper left heart."
-			},
-			"Heart 2": {
-				icon: "Recovery Heart",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "The lower left heart."
-			},
-			"Heart 3": {
-				icon: "Recovery Heart",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "The upper right heart."
-			},
-			"Heart 4": {
-				icon: "Recovery Heart",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "The lower right heart."
+				description: "The hearts"
 			}
 		}
 	},
@@ -1205,15 +804,11 @@ InteriorGroups = {
 		tooltip: "An interior with two pots.",
 		excludeFromGroup: function() { return true; },
 		buttons: {
-			"Pot 1": {
-				icon: "Pot",
+			"Pots": {
+				useGroupImage: true,
+				count: 2,
 				itemGroup: ItemGroups.POT,
-				description: "Pot 1."
-			},
-			"Pot 2": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 2."
+				description: "One of the pots."
 			}
 		}
 	},
@@ -1222,20 +817,11 @@ InteriorGroups = {
 		tooltip: "An interior with three pots.",
 		excludeFromGroup: function() { return true; },
 		buttons: {
-			"Pot 1": {
-				icon: "Pot",
+			"Pots": {
+				useGroupImage: true,
+				count: 3,
 				itemGroup: ItemGroups.POT,
-				description: "Pot 1."
-			},
-			"Pot 2": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 2."
-			},
-			"Pot 3": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 3."
+				description: "One of the pots."
 			}
 		}
 	},
@@ -1423,24 +1009,9 @@ GrottoGroups = {
 			return !Settings.RandomizerSettings.scrubSanity && !Settings.RandomizerSettings.shuffleBeehives;
 		},
 		buttons: {
-			"Scrub 1": {
+			"Scrubs": {
 				icon: "Scrub",
-				description: "Buy the item from the scrub.",
-				itemGroup: ItemGroups.SCRUB,
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
-			},
-			"Scrub 2": {
-				icon: "Scrub",
-				description: "Buy the item from the scrub.",
-				itemGroup: ItemGroups.SCRUB,
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
-			},
-			"Scrub 3": {
-				icon: "Scrub",
+				count: 3,
 				description: "Buy the item from the scrub.",
 				itemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
@@ -1498,18 +1069,10 @@ GrottoGroups = {
 					return ItemData.canUse(age, ItemSets.FIRE_ITEMS) && Data.canReadGossipStone(age); 
 				}
 			},
-			"Pot 1": {
-				icon: "Pot",
+			"2 Pots": {
+				count: 2,
 				itemGroup: ItemGroups.POT,
-				description: "Burn the web. The pot is in front of the cow.",
-				canGet: function(age) { 
-					return ItemData.canUse(age, ItemSets.FIRE_ITEMS);
-				}
-			},
-			"Pot 2": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Burn the web. The pot is in front of the cow.",
+				description: "Burn the web. The pots are by the cow.",
 				canGet: function(age) { 
 					return ItemData.canUse(age, ItemSets.FIRE_ITEMS);
 				}
@@ -1527,32 +1090,8 @@ GrottoGroups = {
 					return ItemData.canUseAll(age, [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, ItemSets.MUD_WALL_ITEMS]);
 				}
 			},
-			"Pot 1": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Blow up the mud wall in front of you when you enter to get to this pot.",
-				canGet: function(age) { 
-					return ItemData.canUse(age, ItemSets.MUD_WALL_ITEMS);
-				}
-			},
-			"Pot 2": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Blow up the mud wall in front of you when you enter to get to this pot.",
-				canGet: function(age) { 
-					return ItemData.canUse(age, ItemSets.MUD_WALL_ITEMS);
-				}
-			},
-			"Pot 3": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Blow up the mud wall in front of you when you enter to get to this pot.",
-				canGet: function(age) { 
-					return ItemData.canUse(age, ItemSets.MUD_WALL_ITEMS);
-				}
-			},
-			"Pot 4": {
-				icon: "Pot",
+			"4 Pots": {
+				count: 4,
 				itemGroup: ItemGroups.POT,
 				description: "Blow up the mud wall in front of you when you enter to get to this pot.",
 				canGet: function(age) { 
@@ -1576,6 +1115,7 @@ GrottoGroups = {
 		tooltip: "This is the forest stage.",
 		buttons: {
 			"Skull Mask Item": {
+				icon: "Skull Mask",
 				description: "Wear the Skull Mask and stand front and center near the entrance.",
 				isChildOnly: function() { return true; },
 				canGet: function(age) {
@@ -1596,6 +1136,7 @@ GrottoGroups = {
 		tooltip: "This is the grave with the single redead.",
 		buttons: {
 			"Redead Sun's Song Chest": {
+				useGroupImage: true,
 				description: "Play the Sun's Song near the redead to spawn a chest.",
 				canGet: function(age) {
 					return Data.canPlaySong(Songs.SUNS_SONG);
@@ -1641,6 +1182,7 @@ GrottoGroups = {
 		tooltip: "This grotto has 2 redeads.",
 		buttons: {
 			"Chest in 2 Redead Grotto": {
+				useGroupImage: true,
 				description: "Kill the redeads to spawn the chest.",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.SWORDS);
@@ -1667,63 +1209,17 @@ GrottoGroups = {
 				}
 			},
 			"Red Rupee": {
+				icon: "Rupee Circle",
+				count: 7,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				tag: "red",
-				description: "The central rupee."
+				description: "The rupee circle by the entrance."
 			},
-			"Green Rupee 1": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 1."
-			},
-			"Green Rupee 2": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 2."
-			},
-			"Green Rupee 3": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 3."
-			},
-			"Green Rupee 4": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 4."
-			},
-			"Green Rupee 5": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 5."
-			},
-			"Green Rupee 6": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 6."
-			},
-			"Heart 1": {
+			"4 Hearts": {
 				icon: "Recovery Heart",
+				count: 4,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				tag: "heart",
-				description: "One of the heats near the cow."
-			},
-			"Heart 2": {
-				icon: "Recovery Heart",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				tag: "heart",
-				description: "One of the heats near the cow."
-			},
-			"Heart 3": {
-				icon: "Recovery Heart",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				tag: "heart",
-				description: "One of the heats near the cow."
-			},
-			"Heart 4": {
-				icon: "Recovery Heart",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				tag: "heart",
-				description: "One of the heats near the cow."
+				description: "The hearts near the cow."
 			},
 			"Beehive": {
 				itemGroup: ItemGroups.BEEHIVE,
@@ -1739,6 +1235,7 @@ GrottoGroups = {
 		tooltip: "This grotto has a tektite and a heart piece in water.",
 		buttons: {
 			"Water Heart Piece": {
+				useGroupImage: true,
 				description: "Dive down or use iron boots to get the heart piece",
 				canGet: function(age) {
 					return ItemData.canUseAny(age, [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]);
@@ -1761,44 +1258,11 @@ GrottoGroups = {
 		tooltip: "This grotto has an octorok and 8 rupees in the water.",
 		excludeFromGroup: function() { return true; },
 		buttons: {
-			"Red Rupee": {
+			"Rupees in Water": {
+				useGroupImage: true,
+				count: 8,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "The central item."
-			},
-			"Blue Rupee 1": {
-				icon: "Blue Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "One of the three items surrounding the middle item."
-			},
-			"Blue Rupee 2": {
-				icon: "Blue Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "One of the three items surrounding the middle item."
-			},
-			"Blue Rupee 3": {
-				icon: "Blue Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "One of the three items surrounding the middle item."
-			},
-			"Green Rupee 1": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "One of the four outside items."
-			},
-			"Green Rupee 2": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "One of the four outside items."
-			},
-			"Green Rupee 3": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "One of the four outside items."
-			},
-			"Green Rupee 4": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "One of the four outside items."
+				description: "The rupees in the water"
 			}
 		}
 	},
@@ -1857,35 +1321,11 @@ GrottoGroups = {
 	"Barinade": {
 		tooltip: "Barinade in Jabu Jabu's Belly",
 		buttons: {
-			"Pot 1": {
+			"6 Pots": {
 				icon: "Pot",
+				count: 6,
 				itemGroup: ItemGroups.POT,
-				description: "One of the pots on the edge of the room."
-			},
-			"Pot 2": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the pots on the edge of the room."
-			},
-			"Pot 3": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the pots on the edge of the room."
-			},
-			"Pot 4": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the pots on the edge of the room."
-			},
-			"Pot 5": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the pots on the edge of the room."
-			},
-			"Pot 6": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the pots on the edge of the room."
+				description: "The pots on the edge of the room."
 			},
 			"Heart Container": {
 				icon: "Heart Piece",
@@ -2037,7 +1477,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "Neutral Goron Prizes."
 			},
-			"Angry 1": {
+			"Angry": {
 				icon: "Angry Goron",
 				tag: "angry",
 				count: 3,
@@ -2056,230 +1496,66 @@ GrottoGroups = {
 	"2 Hearts": {
 		tooltip: "A group of two recovery hearts",
 		buttons: {
-			"Heart 1": {
-				icon: "Recovery Heart",
+			"Hearts": {
+				useGroupImage: true,
+				count: 2,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Heart 1."
-			},
-			"Heart 2": {
-				icon: "Recovery Heart",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Heart 2."
+				description: "The hearts."
 			}
 		}
 	},
 	"3 Hearts": {
 		tooltip: "A group of three recovery hearts",
 		buttons: {
-			"Heart 1": {
-				icon: "Recovery Heart",
+			"Hearts": {
+				useGroupImage: true,
+				count: 3,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Heart 1."
-			},
-			"Heart 2": {
-				icon: "Recovery Heart",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Heart 2."
-			},
-			"Heart 3": {
-				icon: "Recovery Heart",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Heart 3."
+				description: "The hearts."
 			}
 		}
 	},
 	"2 Green Rupees": {
 		tooltip: "A group of two green rupees.",
 		buttons: {
-			"Green Rupee 1": {
-				icon: "Green Rupee",
+			"Green Rupees": {
+				useGroupImage: true,
+				count: 2,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 1."
-			},
-			"Green Rupee 2": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 2."
+				description: "Green rupees."
 			}
 		}
 	},
 	"7 Green Rupees": {
 		tooltip: "A group of 7 green rupees.",
 		buttons: {
-			"Green Rupee 1": {
-				icon: "Green Rupee",
+			"Green Rupees": {
+				useGroupImage: true,
+				count: 7,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 1."
-			},
-			"Green Rupee 2": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 2."
-			},
-			"Green Rupee 3": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 3."
-			},
-			"Green Rupee 4": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 4."
-			},
-			"Green Rupee 5": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 5."
-			},
-			"Green Rupee 6": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 6."
-			},
-			"Green Rupee 7": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 7."
+				description: "Green rupees."
 			}
 		}
 	},
 	"8 Green Rupees": {
 		tooltip: "A group of 8 green rupees.",
 		buttons: {
-			"Green Rupee 1": {
-				icon: "Green Rupee",
+			"Green Rupees": {
+				useGroupImage: true,
+				count: 8,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 1."
-			},
-			"Green Rupee 2": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 2."
-			},
-			"Green Rupee 3": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 3."
-			},
-			"Green Rupee 4": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 4."
-			},
-			"Green Rupee 5": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 5."
-			},
-			"Green Rupee 6": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 6."
-			},
-			"Green Rupee 7": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 7."
-			},
-			"Green Rupee 8": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 8."
+				description: "Green rupees."
 			}
 		}
 	},
 	"18 Green Rupees": {
 		tooltip: "A group of 18 green rupees.",
 		buttons: {
-			"Green Rupee 1": {
-				icon: "Green Rupee",
+			"Green Rupees": {
+				useGroupImage: true,
+				count: 18,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 1."
-			},
-			"Green Rupee 2": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 2."
-			},
-			"Green Rupee 3": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 3."
-			},
-			"Green Rupee 4": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 4."
-			},
-			"Green Rupee 5": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 5."
-			},
-			"Green Rupee 6": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 6."
-			},
-			"Green Rupee 7": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 7."
-			},
-			"Green Rupee 8": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 8."
-			},
-			"Green Rupee 9": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 9."
-			},
-			"Green Rupee 10": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 10."
-			},
-			"Green Rupee 11": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 11."
-			},
-			"Green Rupee 12": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 12."
-			},
-			"Green Rupee 13": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 13."
-			},
-			"Green Rupee 14": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 14."
-			},
-			"Green Rupee 15": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 15."
-			},
-			"Green Rupee 16": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 16."
-			},
-			"Green Rupee 17": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 17."
-			},
-			"Green Rupee 18": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 18."
+				description: "Green rupees."
 			}
 		}
 	},
@@ -2309,1005 +1585,299 @@ GrottoGroups = {
 		}
 	},
 	"5 Blue Rupees": {
-		tooltip: "A group of 8 green rupees.",
+		tooltip: "A group of 5 blue rupees.",
 		buttons: {
-			"Blue Rupee 1": {
-				icon: "Blue Rupee",
+			"Blue Rupees": {
+				useGroupImage: true,
+				count: 5,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 1."
-			},
-			"Blue Rupee 2": {
-				icon: "Blue Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 2."
-			},
-			"Blue Rupee 3": {
-				icon: "Blue Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 3."
-			},
-			"Blue Rupee 4": {
-				icon: "Blue Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 4."
-			},
-			"Blue Rupee 5": {
-				icon: "Blue Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 5."
+				description: "Blue rupees."
 			}
 		}
 	},
 	"3 Red Rupees": {
-		tooltip: "A group of three red rupees.",
+		tooltip: "A group of 3 red rupees.",
 		buttons: {
-			"Red Rupee 1": {
-				icon: "Red Rupee",
+			"Red Rupees": {
+				useGroupImage: true,
+				count: 3,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 1."
-			},
-			"Red Rupee 2": {
-				icon: "Red Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 2."
-			},
-			"Red Rupee 3": {
-				icon: "Red Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 3."
+				description: "Red rupees."
 			}
 		}
 	},
 	"4 Red Rupees": {
-		tooltip: "A group of four red rupees.",
+		tooltip: "A group of 4 red rupees.",
 		buttons: {
-			"Red Rupee 1": {
-				icon: "Red Rupee",
+			"Red Rupees": {
+				useGroupImage: true,
+				count: 4,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 1."
-			},
-			"Red Rupee 2": {
-				icon: "Red Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 2."
-			},
-			"Red Rupee 3": {
-				icon: "Red Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 3."
-			},
-			"Red Rupee 4": {
-				icon: "Red Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 4."
+				description: "Red rupees."
 			}
 		}
 	},
 	"2 Silver Rupees": {
-		tooltip: "A group of two silver rupees.",
+		tooltip: "A group of 2 silver rupees.",
 		buttons: {
-			"Silver Rupee 1": {
-				icon: "Silver Rupee",
+			"Silver Rupees": {
+				useGroupImage: true,
+				count: 2,
 				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 1."
-			},
-			"Silver Rupee 2": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 2."
+				description: "Silver rupees."
 			}
 		}
 	},
 	"3 Silver Rupees": {
-		tooltip: "A group of three silver rupees.",
+		tooltip: "A group of 3 silver rupees.",
 		buttons: {
-			"Silver Rupee 1": {
-				icon: "Silver Rupee",
+			"Silver Rupees": {
+				useGroupImage: true,
+				count: 3,
 				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 1."
-			},
-			"Silver Rupee 2": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 2."
-			},
-			"Silver Rupee 3": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 3."
+				description: "Silver rupees."
 			}
 		}
 	},
 	"4 Silver Rupees": {
-		tooltip: "A group of four silver rupees.",
+		tooltip: "A group of 4 silver rupees.",
 		buttons: {
-			"Silver Rupee 1": {
-				icon: "Silver Rupee",
+			"Silver Rupees": {
+				useGroupImage: true,
+				count: 4,
 				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 1."
-			},
-			"Silver Rupee 2": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 2."
-			},
-			"Silver Rupee 3": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 3."
-			},
-			"Silver Rupee 4": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 4."
+				description: "Silver rupees."
 			}
 		}
 	},
 	"5 Silver Rupees": {
-		tooltip: "A group of five silver rupees.",
+		tooltip: "A group of 5 silver rupees.",
 		buttons: {
-			"Silver Rupee 1": {
-				icon: "Silver Rupee",
+			"Silver Rupees": {
+				useGroupImage: true,
+				count: 5,
 				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 1."
-			},
-			"Silver Rupee 2": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 2."
-			},
-			"Silver Rupee 3": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 3."
-			},
-			"Silver Rupee 4": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 4."
-			},
-			"Silver Rupee 5": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 5."
+				description: "Silver rupees."
 			}
 		}
 	},
 	"9 Silver Rupees": {
-		tooltip: "A group of nine silver rupees.",
+		tooltip: "A group of 9 silver rupees.",
 		buttons: {
-			"Silver Rupee 1": {
-				icon: "Silver Rupee",
+			"Silver Rupees": {
+				useGroupImage: true,
+				count: 9,
 				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 1."
-			},
-			"Silver Rupee 2": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 2."
-			},
-			"Silver Rupee 3": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 3."
-			},
-			"Silver Rupee 4": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 4."
-			},
-			"Silver Rupee 5": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 5."
-			},
-			"Silver Rupee 6": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 6."
-			},
-			"Silver Rupee 7": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 7."
-			},
-			"Silver Rupee 8": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 8."
-			},
-			"Silver Rupee 9": {
-				icon: "Silver Rupee",
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupee 9."
+				description: "Silver rupees."
 			}
 		}
 	},
 	"Rupee Circle": {
 		tooltip: "A circle of six green rupees surrounding a red rupee.",
 		buttons: {
-			"Red Rupee": {
+			"Rupees": {
+				useGroupImage: true,
+				count: 7,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "The central rupee."
-			},
-			"Green Rupee 1": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 1."
-			},
-			"Green Rupee 2": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 2."
-			},
-			"Green Rupee 3": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 3."
-			},
-			"Green Rupee 4": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 4."
-			},
-			"Green Rupee 5": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 5."
-			},
-			"Green Rupee 6": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 6."
+				description: "One of the rupees from the circle."
 			}
 		}
 	},
 	"Expensive Rupee Circle": {
 		tooltip: "A circle of six blue rupees surrounding a red rupee.",
 		buttons: {
-			"Red Rupee": {
+			"Rupees": {
+				useGroupImage: true,
+				count: 7,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "The central rupee."
-			},
-			"Blue Rupee 1": {
-				icon: "Blue Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 1."
-			},
-			"Blue Rupee 2": {
-				icon: "Blue Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 2."
-			},
-			"Blue Rupee 3": {
-				icon: "Blue Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 3."
-			},
-			"Blue Rupee 4": {
-				icon: "Blue Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 4."
-			},
-			"Blue Rupee 5": {
-				icon: "Blue Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 5."
-			},
-			"Blue Rupee 6": {
-				icon: "Blue Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Rupee 6."
+				description: "One of the rupees from the circle."
 			}
 		}
 	},
 	"9 Skull Rupees": {
 		tooltip: "The ring of rupees that's created when the three skulls in Shadow Temple are broken.",
 		buttons: {
-			"Green Rupee 1": {
-				icon: "Green Rupee",
+			"Rupees": {
+				count: 9,
+				useGroupImage: true,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Green Rupee 1."
-			},
-			"Blue Rupee 1": {
-				icon: "Blue Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Blue Rupee 1."
-			},
-			"Red Rupee 1": {
-				icon: "Red Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Red Rupee 1."
-			},
-			"Green Rupee 2": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Green Rupee 2."
-			},
-			"Blue Rupee 2": {
-				icon: "Blue Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Blue Rupee 2."
-			},
-			"Red Rupee 2": {
-				icon: "Red Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Red Rupee 2."
-			},
-			"Green Rupee 3": {
-				icon: "Green Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Green Rupee 3."
-			},
-			"Blue Rupee 3": {
-				icon: "Blue Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Blue Rupee 3."
-			},
-			"Red Rupee 3": {
-				icon: "Red Rupee",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Red Rupee 3."
+				description: "One of the rupees in the ring."
 			}
 		}
 	},
 	"2 Pots": {
 		tooltip: "A set of 2 pots.",
 		buttons: {
-			"Pot 1": {
-				icon: "Pot",
+			"Pots": {
+				useGroupImage: true,
+				count: 2,
 				itemGroup: ItemGroups.POT,
-				description: "Pot 1."
-			},
-			"Pot 2": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 2."
+				description: "The pots."
 			}
 		}
 	},
 	"3 Pots": {
 		tooltip: "A set of 3 pots.",
 		buttons: {
-			"Pot 1": {
-				icon: "Pot",
+			"Pots": {
+				useGroupImage: true,
+				count: 3,
 				itemGroup: ItemGroups.POT,
-				description: "Pot 1."
-			},
-			"Pot 2": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 2."
-			},
-			"Pot 3": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 3."
+				description: "The pots."
 			}
 		}
 	},
 	"4 Pots": {
 		tooltip: "A set of 4 pots.",
 		buttons: {
-			"Pot 1": {
-				icon: "Pot",
+			"Pots": {
+				useGroupImage: true,
+				count: 4,
 				itemGroup: ItemGroups.POT,
-				description: "Pot 1."
-			},
-			"Pot 2": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 2."
-			},
-			"Pot 3": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 3."
-			},
-			"Pot 4": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 4."
+				description: "The pots."
 			}
 		}
 	},
 	"5 Pots": {
 		tooltip: "A set of 5 pots.",
 		buttons: {
-			"Pot 1": {
-				icon: "Pot",
+			"Pots": {
+				useGroupImage: true,
+				count: 5,
 				itemGroup: ItemGroups.POT,
-				description: "Pot 1."
-			},
-			"Pot 2": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 2."
-			},
-			"Pot 3": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 3."
-			},
-			"Pot 4": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 4."
-			},
-			"Pot 5": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 5."
-			}
-		}
-	},
-	"10 Pots": {
-		tooltip: "A set of 10 pots.",
-		buttons: {
-			"Pot 1": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 1."
-			},
-			"Pot 2": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 2."
-			},
-			"Pot 3": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 3."
-			},
-			"Pot 4": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 4."
-			},
-			"Pot 5": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 5."
-			},
-			"Pot 6": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 6."
-			},
-			"Pot 7": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 7."
-			},
-			"Pot 8": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 8."
-			},
-			"Pot 9": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 9."
-			},
-			"Pot 10": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 10."
+				description: "The pots."
 			}
 		}
 	},
 	"8 Pots": {
 		tooltip: "A set of 8 pots.",
 		buttons: {
-			"Pot 1": {
-				icon: "Pot",
+			"Pots": {
+				useGroupImage: true,
+				count: 8,
 				itemGroup: ItemGroups.POT,
-				description: "Pot 1."
-			},
-			"Pot 2": {
-				icon: "Pot",
+				description: "The pots."
+			}
+		}
+	},
+	"10 Pots": {
+		tooltip: "A set of 10 pots.",
+		buttons: {
+			"Pots": {
+				useGroupImage: true,
+				count: 10,
 				itemGroup: ItemGroups.POT,
-				description: "Pot 2."
-			},
-			"Pot 3": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 3."
-			},
-			"Pot 4": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 4."
-			},
-			"Pot 5": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 5."
-			},
-			"Pot 6": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 6."
-			},
-			"Pot 7": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 7."
-			},
-			"Pot 8": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "Pot 8."
+				description: "The pots."
 			}
 		}
 	},
 	"14 Pots": {
 		tooltip: "A set of 14 pots.",
 		buttons: {
-			"Pot 1": {
-				icon: "Pot",
+			"Pots": {
+				useGroupImage: true,
+				count: 14,
 				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 2": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 3": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 4": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 5": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 6": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 7": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 8": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 9": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 10": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 11": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 12": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 13": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 14": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
+				description: "The pots."
 			}
 		}
 	},
 	"18 Pots": {
 		tooltip: "A set of 18 pots.",
 		buttons: {
-			"Pot 1": {
-				icon: "Pot",
+			"Pots": {
+				useGroupImage: true,
+				count: 18,
 				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 2": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 3": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 4": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 5": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 6": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 7": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 8": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 9": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 10": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 11": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 12": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 13": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 14": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 15": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 16": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 17": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
-			},
-			"Pot 18": {
-				icon: "Pot",
-				itemGroup: ItemGroups.POT,
-				description: "One of the many pots in the room."
+				description: "The pots."
 			}
 		}
 	},
 	"2 Crates": {
 		tooltip: "A set of 2 crates.",
 		buttons: {
-			"Crate 1": {
-				icon: "Crate",
+			"Crates": {
+				useGroupImage: true,
+				count: 2,
 				itemGroup: ItemGroups.CRATE,
-				description: "Crate 1."
-			},
-			"Crate 2": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 2."
+				description: "The crates."
 			}
 		}
 	},
 	"3 Crates": {
 		tooltip: "A set of 3 crates.",
 		buttons: {
-			"Crate 1": {
-				icon: "Crate",
+			"Crates": {
+				useGroupImage: true,
+				count: 3,
 				itemGroup: ItemGroups.CRATE,
-				description: "Crate 1."
-			},
-			"Crate 2": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 2."
-			},
-			"Crate 3": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 3."
+				description: "The crates."
 			}
 		}
 	},
 	"4 Crates": {
 		tooltip: "A set of 4 crates.",
 		buttons: {
-			"Crate 1": {
-				icon: "Crate",
+			"Crates": {
+				useGroupImage: true,
+				count: 4,
 				itemGroup: ItemGroups.CRATE,
-				description: "Crate 1."
-			},
-			"Crate 2": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 2."
-			},
-			"Crate 3": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 3."
-			},
-			"Crate 4": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 4."
+				description: "The crates."
 			}
 		}
 	},
 	"5 Crates": {
 		tooltip: "A set of 5 crates.",
 		buttons: {
-			"Crate 1": {
-				icon: "Crate",
+			"Crates": {
+				useGroupImage: true,
+				count: 5,
 				itemGroup: ItemGroups.CRATE,
-				description: "Crate 1."
-			},
-			"Crate 2": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 2."
-			},
-			"Crate 3": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 3."
-			},
-			"Crate 4": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 4."
-			},
-			"Crate 5": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 5."
+				description: "The crates."
 			}
 		}
 	},
 	"6 Crates": {
 		tooltip: "A set of 6 crates.",
 		buttons: {
-			"Crate 1": {
-				icon: "Crate",
+			"Crates": {
+				useGroupImage: true,
+				count: 6,
 				itemGroup: ItemGroups.CRATE,
-				description: "Crate 1."
-			},
-			"Crate 2": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 2."
-			},
-			"Crate 3": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 3."
-			},
-			"Crate 4": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 4."
-			},
-			"Crate 5": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 5."
-			},
-			"Crate 6": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 6."
+				description: "The crates."
 			}
 		}
 	},
 	"7 Crates": {
 		tooltip: "A set of 7 crates.",
 		buttons: {
-			"Crate 1": {
-				icon: "Crate",
+			"Crates": {
+				useGroupImage: true,
+				count: 7,
 				itemGroup: ItemGroups.CRATE,
-				description: "Crate 1."
-			},
-			"Crate 2": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 2."
-			},
-			"Crate 3": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 3."
-			},
-			"Crate 4": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 4."
-			},
-			"Crate 5": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 5."
-			},
-			"Crate 6": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 6."
-			},
-			"Crate 7": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 7."
+				description: "The crates."
 			}
 		}
 	},
 	"11 Crates": {
 		tooltip: "A set of 11 crates.",
 		buttons: {
-			"Crate 1": {
-				icon: "Crate",
+			"Crates": {
+				useGroupImage: true,
+				count: 11,
 				itemGroup: ItemGroups.CRATE,
-				description: "Crate 1."
-			},
-			"Crate 2": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 2."
-			},
-			"Crate 3": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 3."
-			},
-			"Crate 4": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 4."
-			},
-			"Crate 5": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 5."
-			},
-			"Crate 6": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 6."
-			},
-			"Crate 7": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 7."
-			},
-			"Crate 8": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 8."
-			},
-			"Crate 9": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 9."
-			},
-			"Crate 10": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 10."
-			},
-			"Crate 11": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 11."
+				description: "The crates."
 			}
 		}
 	},
 	"14 Crates": {
 		tooltip: "A set of 14 crates.",
 		buttons: {
-			"Crate 1": {
-				icon: "Crate",
+			"Crates": {
+				useGroupImage: true,
+				count: 14,
 				itemGroup: ItemGroups.CRATE,
-				description: "Crate 1."
-			},
-			"Crate 2": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 2."
-			},
-			"Crate 3": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 3."
-			},
-			"Crate 4": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 4."
-			},
-			"Crate 5": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 5."
-			},
-			"Crate 6": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 6."
-			},
-			"Crate 7": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 7."
-			},
-			"Crate 8": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 8."
-			},
-			"Crate 9": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 9."
-			},
-			"Crate 10": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 10."
-			},
-			"Crate 11": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 11."
-			},
-			"Crate 12": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 12."
-			},
-			"Crate 13": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 13."
-			},
-			"Crate 14": {
-				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "Crate 14."
+				description: "The crates."
 			}
 		}
 	},
@@ -3315,55 +1885,21 @@ GrottoGroups = {
 		tooltip: "A group of 4 chests.",
 		excludeFromGroup: function() { return true; },
 		buttons: {
-			"Chest 1": {
-				icon: "Chest",
-				description: "Chest 1."
-			},
-			"Chest 2": {
-				icon: "Chest",
-				description: "Chest 2."
-			},
-			"Chest 3": {
-				icon: "Chest",
-				description: "Chest 3."
-			},
-			"Chest 4": {
-				icon: "Chest",
-				description: "Chest 4."
+			"Chests": {
+				useGroupImage: true,
+				count: 4,
+				description: "The chests."
 			}
 		}
 	},
 	"7 Chests": {
-		tooltip: "A group of 4 chests.",
+		tooltip: "A group of 7 chests.",
 		excludeFromGroup: function() { return true; },
 		buttons: {
-			"Chest 1": {
-				icon: "Chest",
-				description: "Chest 1."
-			},
-			"Chest 2": {
-				icon: "Chest",
-				description: "Chest 2."
-			},
-			"Chest 3": {
-				icon: "Chest",
-				description: "Chest 3."
-			},
-			"Chest 4": {
-				icon: "Chest",
-				description: "Chest 4."
-			},
-			"Chest 5": {
-				icon: "Chest",
-				description: "Chest 5."
-			},
-			"Chest 6": {
-				icon: "Chest",
-				description: "Chest 6."
-			},
-			"Chest 7": {
-				icon: "Chest",
-				description: "Chest 7."
+			"Chests": {
+				useGroupImage: true,
+				count: 7,
+				description: "The chests."
 			}
 		}
 	},
@@ -3371,17 +1907,10 @@ GrottoGroups = {
 		tooltip: "A group of 2 business scrubs.",
 		icon: "2 Scrubs No Beehive",
 		buttons: {
-			"Scrub 1": {
-				icon: "Scrub",
-				description: "Buy the item from the scrub.",
-				itemGroup: ItemGroups.SCRUB,
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
-			},
-			"Scrub 2": {
-				icon: "Scrub",
-				description: "Buy the item from the scrub.",
+			"Scrubs": {
+				useGroupImage: true,
+				count: 2,
+				description: "Buy the items from the scrubs.",
 				itemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
@@ -3393,33 +1922,10 @@ GrottoGroups = {
 		tooltip: "A group of 4 business scrubs.",
 		icon: "4 Scrubs",
 		buttons: {
-			"Scrub 1": {
-				icon: "Scrub",
-				description: "Buy the item from the scrub.",
-				itemGroup: ItemGroups.SCRUB,
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
-			},
-			"Scrub 2": {
-				icon: "Scrub",
-				description: "Buy the item from the scrub.",
-				itemGroup: ItemGroups.SCRUB,
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
-			},
-			"Scrub 3": {
-				icon: "Scrub",
-				description: "Buy the item from the scrub.",
-				itemGroup: ItemGroups.SCRUB,
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
-			},
-			"Scrub 4": {
-				icon: "Scrub",
-				description: "Buy the item from the scrub.",
+			"Scrubs": {
+				useGroupImage: true,
+				count: 4,
+				description: "Buy the items from the scrubs.",
 				itemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
@@ -3431,41 +1937,10 @@ GrottoGroups = {
 		tooltip: "A group of 5 business scrubs.",
 		icon: "5 Scrubs",
 		buttons: {
-			"Scrub 1": {
-				icon: "Scrub",
-				description: "Buy the item from the scrub.",
-				itemGroup: ItemGroups.SCRUB,
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
-			},
-			"Scrub 2": {
-				icon: "Scrub",
-				description: "Buy the item from the scrub.",
-				itemGroup: ItemGroups.SCRUB,
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
-			},
-			"Scrub 3": {
-				icon: "Scrub",
-				description: "Buy the item from the scrub.",
-				itemGroup: ItemGroups.SCRUB,
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
-			},
-			"Scrub 4": {
-				icon: "Scrub",
-				description: "Buy the item from the scrub.",
-				itemGroup: ItemGroups.SCRUB,
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
-			},
-			"Scrub 5": {
-				icon: "Scrub",
-				description: "Buy the item from the scrub.",
+			"Scrubs": {
+				useGroupImage: true,
+				count: 5,
+				description: "Buy the items from the scrubs.",
 				itemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
@@ -3500,7 +1975,7 @@ GrottoGroups = {
 				isChildOnly: function() { return true; }
 			},
 			"Saria's Song": {
-				icon: "Saria's Song",
+				icon: "Scrub",
 				description: "Play Saria's Song for the frogs.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
@@ -3530,7 +2005,7 @@ GrottoGroups = {
 				isChildOnly: function() { return true; }
 			},
 			"Song of Time": {
-				icon: "Song of Time",
+				icon: "Ocarina of Time",
 				description: "Play the Song of Time for the frogs.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleAllFrogSongs;

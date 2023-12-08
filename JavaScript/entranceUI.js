@@ -45,7 +45,7 @@ let EntranceUI = {
 	 */
 	getEntranceGroupIcon: function(group, groupName) {
 		let iconName = group.icon ? group.icon : groupName;
-		return `url("Images/Entrance Groups/Group - ${iconName}.png")`;
+		return `url("Images/Entrance Groups/${iconName}.png")`;
 	},
 
 	/**
@@ -158,7 +158,9 @@ let EntranceUI = {
 			let buttonDiv = dce("div", "entrance-group-button");
 			let buttonIconName = button.icon ? button.icon : buttonName;
 			buttonDiv.title = button.description;
-			buttonDiv.style.backgroundImage = `url("Images/Entrance Groups/Button - ${buttonIconName}.png")`;
+			buttonDiv.style.backgroundImage = button.useGroupImage
+				? _this.getEntranceGroupIcon(itemLocationGroup, groupName)
+				: `url("Images/Entrance Groups/${buttonIconName}.png")`;
 
 			if (button.time && button.time() === Time.DAY) {
 				addCssClass(buttonDiv, "entrance-group-button-time-day");
