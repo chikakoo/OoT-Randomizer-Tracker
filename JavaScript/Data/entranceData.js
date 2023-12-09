@@ -418,14 +418,15 @@ InteriorGroups = {
 			"Child Non-Empty Crates": {
 				icon: "Crate",
 				itemGroup: ItemGroups.CRATE,
-				description: "If not including empty crates, this is the third crate on your left.",
+				description: "The third crate on your left.",
+				shouldNotDisplay: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; },
 				isChildOnly: function() { return true; }
 			},
-			"Child Empty Crates": {
+			"Child Crates": {
 				icon: "Crate",
-				count: 3,
+				count: 4,
 				itemGroup: ItemGroups.CRATE,
-				description: "One of the empty crates in the room.",
+				description: "The crates in the room.",
 				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
 				isChildOnly: function() { return true; }
 			},
@@ -434,7 +435,7 @@ InteriorGroups = {
 				count: 44,
 				itemGroup: ItemGroups.POT,
 				tag: "child",
-				description: "One of the many pots in the room. You can reach the top ones by jumping from the box with the skulltula in it.",
+				description: "The many pots in the room. You can reach the top ones by jumping from the box with the skulltula in it.",
 				isChildOnly: function() { return true; }
 			},
 			"Adult Non-Empty Pots": {
@@ -442,15 +443,16 @@ InteriorGroups = {
 				count: 7,
 				itemGroup: ItemGroups.POT,
 				tag: "adult",
-				description: "One of the many pots in the room.",
+				description: "The many pots in the room.",
+				shouldNotDisplay: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; },
 				isAdultOnly: function() { return true; }
 			},
-			"Adult Empty Pots": {
+			"Adult Pots": {
 				icon: "Pot",
-				count: 4,
+				count: 11,
 				itemGroup: ItemGroups.POT,
 				tag: "adult",
-				description: "One of the many pots in the room - these are the normally empty ones.",
+				description: "The many pots in the room.",
 				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
 				isAdultOnly: function() { return true; }
 			}
@@ -976,17 +978,13 @@ GrottoGroups = {
 	},
 	"2 Scrubs": {
 		tooltip: "This is a grotto with 2 business scrubs.",
+		excludeFromGroup: function() {
+			return !Settings.RandomizerSettings.scrubSanity && !Settings.RandomizerSettings.shuffleBeehives;
+		},
 		buttons: {
-			"Scrub 1": {
+			"Scrubs": {
 				icon: "Scrub",
-				description: "Buy the item from the scrub - check this even with scrubsanity off in case it's the deku nut upgrade check.",
-				// itemGroup: ItemGroups.SCRUB, // Disabled so it shows up with scrubsanity off, in case of the deku nut scrub
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
-			},
-			"Scrub 2": {
-				icon: "Scrub",
+				count: 2,
 				description: "Buy the item from the scrub.",
 				itemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
@@ -999,7 +997,31 @@ GrottoGroups = {
 				canGet: function(age) {
 					return Data.canBreakBeehive(age, true);
 				}
+			}
+		}
+	},
+	"2 Scrubs (Front on Left)": {
+		icon: "2 Scrubs",
+		tooltip: "This is a grotto with 2 business scrubs, and the front one is on the left. This one is imporant if scrubsanity is off, as it sells the deku nut upgrade.",
+		excludeFromGroup: function() { 
+			// We only want this if theres no scrubsanity, as it is the scrub that sells the nut upgrade
+			return Settings.RandomizerSettings.scrubSanity;
+		},
+		buttons: {
+			"Scrub": {
+				// Note that the item group is excluded - this is because this scrub is still required if there's no scrubsanity
+				description: "The front scrub - it's the only one that sells an upgrade.",
+				canGet: function(age) {
+					return Data.canBuyFromScrub(age);
+				}
 			},
+			"Beehive": {
+				itemGroup: ItemGroups.BEEHIVE,
+				description: "Look on the ceiling for this beehive. If using chus, face the closest wall and backflip. Drop the chu on the 5th red flash.",
+				canGet: function(age) {
+					return Data.canBreakBeehive(age, true);
+				}
+			}
 		}
 	},
 	"3 Scrubs": {
