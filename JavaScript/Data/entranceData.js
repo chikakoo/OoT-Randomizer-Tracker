@@ -2091,5 +2091,43 @@ GrottoGroups = {
 				isAdultOnly: function() { return true; }
 			}
 		}
+	},
+	"2 Items in Tree": {
+		tooltip: "A group of two items in trees",
+		icon: "Adult Archery",
+		buttons: {
+			"Tree Items": {
+				useGroupImage: true,
+				count: 2,
+				description: "Shoot the deku nut on the tree with a slingshot or bow to get the item.",
+				canGet: function(age) {
+					return ItemData.canUse(age, ItemSets.PROJECTILES);
+				}
+			}
+		}
+	},
+	"3 Items in Tree": {
+		tooltip: "A group of three items in trees",
+		icon: "Adult Archery",
+		buttons: {
+			"Tree Items Both Ages": {
+				useGroupImage: true,
+				count: 2,
+				tag: "both",
+				description: "Shoot the deku nut on the trees with a slingshot or bow to get the items.",
+				canGet: function(age) {
+					return ItemData.canUse(age, ItemSets.PROJECTILES);
+				}
+			},
+			"Tree Item Child": {
+				icon: "Child Archery",
+				tag: "child",
+				description: "Shoot the deku nut in the tree that has a skulltula in it as adult with a slingshot to get the item",
+				canGet: function(age) {
+					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
+				},
+				isChildOnly: function() { return true; }
+			}
+		}
 	}
  };

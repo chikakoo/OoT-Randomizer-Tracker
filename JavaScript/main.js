@@ -189,6 +189,8 @@ let shouldDisableItemLocationGroup = function(itemGroup, isDungeon, isScrubSanit
 				}
 				break;
 
+			case ItemGroups.WONDER_ITEM:
+				return !Settings.RandomizerSettings.shuffleWonderItems;
 			case ItemGroups.SILVER_RUPEE:
 				return !Settings.RandomizerSettings.shuffleSilverRupees;
 			case ItemGroups.SCRUB:
