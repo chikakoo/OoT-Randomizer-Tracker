@@ -474,6 +474,24 @@ InteriorGroups = {
 			}
 		}
 	},
+	"Front of Impa's House": {
+		tooltip: "Inside the cage with the cow and the freestanding item.",
+		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleWonderItems; },
+		buttons: {
+			"Red Rupee on Top": {
+				itemGroup: ItemGroups.WONDER_ITEM,
+				icon: "Red Rupee",
+				description: "Climb up the stairs and walk around on the top of the cow pen to get this wonder item."
+			},
+			"Cow": {
+				itemGroup: ItemGroups.COW,
+				description: "Play Epona's Song next to the cow. This is shared with the Back of Impa's House check.",
+				canGet: function(age) {
+					return Data.canMilkCows(true);
+				}
+			}
+		}
+	},
 	"Stable": {
 		icon: "2 Cows",
 		tooltip: "This is the building with the cows in the stables.",

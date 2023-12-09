@@ -1316,6 +1316,23 @@ let MapLocations = {
                             }
                         }
                     },
+                    "Red Rupee on Construction Site": {
+                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        MapImageName: "Red Rupee",
+                        MapInfo: { x: 189, y: 210 },
+                        Age: Age.CHILD,
+                        LongDescription: "Climb up the struture under construction and make your way to the end to get this item. If it's daytime, you can get around the worker by backwalking off the edge and grabbing hold, then climbing back up when he passes by."
+                    },
+                    "Red Rupee in Impa's House": {
+                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        MapImageName: "Red Rupee",
+                        RequiredToAppear: function() {
+                            return !Settings.RandomizerSettings.shuffleInteriorEntrances;
+                        },
+                        MapInfo: { x: 175, y: 248 },
+                        Age: Age.CHILD,
+                        LongDescription: "Enter Impa's house from the front. Climb the stairs and walk around the cow pen area to get this wonder item."
+                    },
                     "Show Guard Letter": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapImageName: "Zelda's Letter",

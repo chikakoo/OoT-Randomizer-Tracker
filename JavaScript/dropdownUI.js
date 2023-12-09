@@ -340,6 +340,12 @@ let DropdownUI = {
         dropdown.title = (itemLocation.EntranceGroup && itemLocation.EntranceGroup.name)
             ? itemLocation.EntranceGroup.name
             : "<no selection>";
+
+        if (itemLocation.IsInterior && !Settings.RandomizerSettings.shuffleInteriorEntrances) {
+            dropdown.disabled = true;
+        } else if (itemLocation.IsGrotto && !Settings.RandomizerSettings.shuffleGrottoEntrances) {
+            dropdown.disabled = true;
+        }
     },
 
     /**
