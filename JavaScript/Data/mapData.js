@@ -1106,6 +1106,34 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "Roll into the first tree to set this skulltula free."
                     },
+                    "Shoot 2 Torches by Drawbridge": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Slingshot Items",
+                        MapInfo: { x: 122, y: 41, floor: "HYR" },
+                        Age: Age.CHILD,
+                        LongDescription: "Shoot the two torches on either side of the drawbridge with your slingshot on the castle wall to get the two wonderitems.",
+                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                    },
+                    "7 Rupees in Moat by Drawbridge": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "7 Green Rupees",
+                        MapInfo: { x: 122, y: 78, floor: "HYR" },
+                        Age: Age.CHILD,
+                        LongDescription: "Swim downstream in the moat by the drawbridge to get these 7 items. Start on the leftmost side, and stay in the middle all the way down.",
+                    },
+                    "3 Rupees in Moat by Crates": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Green Rupees",
+                        MapInfo: { x: 182, y: 52, floor: "HYR" },
+                        Age: Age.CHILD,
+                        LongDescription: "Swim in the water by the milk crates to get these three items.",
+                    },
                     "Wake up Talon": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapImageName: "Weird Egg Chicken",
@@ -1114,8 +1142,11 @@ let MapLocations = {
                         LongDescription: "Wait for the Weird Egg to hatch, then wake up Talon. This unlocks a few things in Lon Lon Ranch.",
                         RequiredItems: [ChildTradeItems.WEIRD_EGG]
                     },
-                    "Zelda's Lullaby": {
-                        ItemGroup: ItemGroups.SONG,
+                    "Castle Courtyard Items": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.GIFT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Castle Courtyard Items",
                         MapInfo: { x: 167, y: 33, floor: "HYR" },
                         Age: Age.CHILD,
                         LongDescription: "After waking up Talon with the Chicken, push the crates down so that you can jump to the crawlspace. Sneak past the guards to meet Zelda to get her letter. After that, try to leave the area to receive this item from Impa.<br/><br/>To megaflip, climb up the right side of the left box, ess right 1 (you should be able to walk to the other box now). Chu flip as normal, or place a bomb a little after the box transition and manually back up to get the distance for the roll. Let go of everything when the flip happens so you don't walk off!",

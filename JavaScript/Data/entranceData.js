@@ -2093,7 +2093,7 @@ GrottoGroups = {
 		}
 	},
 	"2 Items in Tree": {
-		tooltip: "A group of two items in trees",
+		tooltip: "A group of two items in trees.",
 		icon: "Adult Archery",
 		buttons: {
 			"Tree Items": {
@@ -2107,7 +2107,7 @@ GrottoGroups = {
 		}
 	},
 	"3 Items in Tree": {
-		tooltip: "A group of three items in trees",
+		tooltip: "A group of three items in trees.",
 		icon: "Adult Archery",
 		buttons: {
 			"Tree Items Both Ages": {
@@ -2155,6 +2155,21 @@ GrottoGroups = {
 			}
 		}
 	},
+	"2 Slingshot Items": {
+		tooltip: "A group of two items you need the slingshot to get.",
+		icon: "Child Archery",
+		buttons: {
+			"Slingshot Items": {
+				useGroupImage: true,
+				count: 2,
+				description: "Shoot something to get these items.",
+				canGet: function(age) {
+					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
+				},
+				isChildOnly: function() { return true; }
+			}
+		}
+	},
 	"Balcony Wonder Items": {
 		icon: "Wonder Item",
 		tooltip: "These are the items you get by climbing up the balcony by the Bombchu Bowling Alley.",
@@ -2174,6 +2189,27 @@ GrottoGroups = {
 				description: "Climb up the stairs and walk along the catwalk by Bombchu Bowling at night to get these items.",
 				time: function() { return Time.NIGHT; },
 				isChildOnly: function() { return true; }
+			}
+		}
+	},
+	"Castle Courtyard Items": {
+		tooltip: "All the items in the castle courtyard.",
+		icon: "Zelda's Lullaby",
+		buttons: {
+			"Zelda's Letter": {
+				useGroupImage: true,
+				description: "Talk to Zelda to get this check."
+			},
+			"Mario Wonder Item": {
+				icon: "Child Archery",
+				description: "Facing zelda, shoot the right side window (the one with the mario paintings) with your slingshot to get this item.",
+				canGet: function(age) {
+					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
+				}
+			},
+			"Zelda's Lullaby": {
+				icon: "Ocarina of Time",
+				description: "After talking to Zelda, go talk to Impa to get teleported out. You will get this time afterwards.",
 			}
 		}
 	}
