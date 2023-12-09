@@ -990,6 +990,15 @@ let MapLocations = {
                         MapInfo: { x: 250, y: 129 },
                         Age: Age.CHILD,
                         LongDescription: "These crates are on the right side of the archery minigame door. These are the ones there during the night."
+                    },
+                    "Rupees on Balcony": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Balcony Wonder Items",
+                        MapInfo: { x: 213, y: 151 },
+                        Age: Age.CHILD,
+                        LongDescription: "Climb the stairs by bombchu bowling and go across the catwalk to get these items. Note that there are different sets of them depending on if it's night or day!"
                     }
                 }
             },

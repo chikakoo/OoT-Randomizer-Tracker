@@ -162,8 +162,12 @@ let EntranceUI = {
 				? _this.getEntranceGroupIcon(itemLocationGroup, groupName)
 				: `url("Images/Entrance Groups/${buttonIconName}.png")`;
 
-			if (button.time && button.time() === Time.DAY) {
-				addCssClass(buttonDiv, "entrance-group-button-time-day");
+			if (button.time) {
+				if (button.time() === Time.DAY) {
+					addCssClass(buttonDiv, "entrance-group-button-time-day");
+				} else if (button.time() === Time.NIGHT) {
+					addCssClass(buttonDiv, "entrance-group-button-time-night");
+				}
 			}
 
 			buttonDiv.onclick = function(event) {

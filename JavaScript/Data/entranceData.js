@@ -2129,5 +2129,27 @@ GrottoGroups = {
 				isChildOnly: function() { return true; }
 			}
 		}
+	},
+	"Balcony Wonder Items": {
+		icon: "Wonder Item",
+		tooltip: "These are the items you get by climbing up the balcony by the Bombchu Bowling Alley.",
+		buttons: {
+			"Day Balcony Items": {
+				icon: "5 Green Rupees",
+				count: 5,
+				tag: "day",
+				description: "Climb up the stairs and walk along the catwalk by Bombchu Bowling during the day to get these items.",
+				time: function() { return Time.DAY; },
+				isChildOnly: function() { return true; }
+			},
+			"Night Balcony Items": {
+				icon: "2 Blue Rupees",
+				count: 2,
+				tag: "night",
+				description: "Climb up the stairs and walk along the catwalk by Bombchu Bowling at night to get these items.",
+				time: function() { return Time.NIGHT; },
+				isChildOnly: function() { return true; }
+			}
+		}
 	}
  };
