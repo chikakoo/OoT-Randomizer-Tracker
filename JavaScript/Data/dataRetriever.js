@@ -239,6 +239,7 @@ Data = {
     /**
      * Returns whether we should display the item location
      * Checks for owls, dungeons, and OW entrances and adjusts based on their settings
+     * Also includes wonderitems
      * If it's not any of those, will return true
      */
     shouldDisplayItemLocation: function(itemLocation) {
@@ -254,6 +255,10 @@ Data = {
             return itemLocation.IsInteriorExit
                 ? Settings.RandomizerSettings.shuffleInteriorEntrances
                 : Settings.RandomizerSettings.shuffleOverworldEntrances;
+        }
+
+        if (itemLocation.IsWonderItem) {
+            return Settings.RandomizerSettings.shuffleWonderItems;
         }
 
         return true;

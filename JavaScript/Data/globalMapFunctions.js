@@ -45,7 +45,7 @@ let getItemGroupName = function(groupId) {
 		case ItemGroups.OW_ENTRANCE: return "OW Entrances";
 		case ItemGroups.GOSSIP_STONE: return "Gossip Stones";
 		case ItemGroups.LOCKED_DOOR: return "Locked Doors";
-		case ItemGroups.FREESTANDING_RUPEES_AND_HEARTS: return "Freestanding Rupees and Hearts";
+		case ItemGroups.FREESTANDING_RUPEES_AND_HEARTS: return "Rupees and Hearts";
 		case ItemGroups.SILVER_RUPEE: return "Silver Rupees";
 		case ItemGroups.POT: return "Pots";
 		case ItemGroups.CRATE: return "Crates";

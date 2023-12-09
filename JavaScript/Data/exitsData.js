@@ -360,7 +360,7 @@ let OwExits = {
             Map: "Market Entrance",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: 197, y: 24 },
+            MapInfo: { x: 197, y: 21 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Market."
         },

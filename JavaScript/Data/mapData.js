@@ -105,6 +105,15 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "This item is behind Mido's House.",
                     },
+                    "Blue Rupee via Training Sign": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsWonderItem: true,
+                        MapImageName: "Blue Rupee",
+                        RequiredChoiceOfItems: [Equipment.KOKIRI_SWORD, Items.DEKU_STICK],
+                        MapInfo: { x: 132, y: 211 },
+                        Age: Age.CHILD,
+                        LongDescription: "Slash the close sign in the fenced-off training area with your sword or deku sticks to get this item.",
+                    },
                     "Close Maze Blue Rupee": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Blue Rupee",
@@ -112,12 +121,32 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "This item is to your right when you go in the maze.",
                     },
+                    "2 Green Rupees in Maze Grass": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        IsWonderItem: true,
+                        DefaultEntranceGroupName: "2 Green Rupees",
+                        MapInfo: { x: 100, y: 292 },
+                        Age: Age.CHILD,
+                        LongDescription: "These are wonderitems in the maze grass en route to the Kokiri Sword chest."
+                    },
                     "Far Maze Blue Rupee": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Blue Rupee",
                         MapInfo: { x: 78, y: 292 },
                         Age: Age.CHILD,
                         LongDescription: "Go in the maze and follow the right wall to this item.",
+                    },
+                    "3 Green Rupees in Training Area": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        IsWonderItem: true,
+                        DefaultEntranceGroupName: "3 Green Rupees",
+                        MapInfo: { x: 106, y: 226 },
+                        Age: Age.CHILD,
+                        LongDescription: "To get these wonderitems, target the wall just to the left of the crawlspace. Backflip three times to claim these items."
                     },
                     "Blue Rupee Across Bridges": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -152,6 +181,22 @@ let MapLocations = {
                         MapInfo: { x: 163, y: 110 },
                         Age: Age.CHILD,
                         LongDescription: "Search the grass near the Mido's house to find these items."
+                    },
+                    "Blue Rupee via Stepping Stones": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsWonderItem: true,
+                        MapImageName: "Blue Rupee",
+                        MapInfo: { x: 198, y: 132 },
+                        Age: Age.CHILD,
+                        LongDescription: "Jump across the platforms to the left of the shop. If you haven't yet touched the water, you'll get this item.",
+                    },
+                    "Blue Rupee via House of Twins Platforms": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsWonderItem: true,
+                        MapImageName: "Blue Rupee",
+                        MapInfo: { x: 265, y: 165 },
+                        Age: Age.CHILD,
+                        LongDescription: "Start at the house of twins and jump on the big, then small platforms on the way to the shop. If you haven't yet touched the water, you'll get this item.",
                     },
                     "Rupee Circle Above Shop": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -239,6 +284,16 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "From the Kokiri Forest entrance, go right one screen. Shoot the target in the center three times in a row with your Slingshot to get this prize.",
                         RequiredItems: [Items.FAIRY_SLINGSHOT]
+                    },
+                    "3 Rupees in Grass by Ocarina Game": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        IsWonderItem: true,
+                        DefaultEntranceGroupName: "3 Green Rupees",
+                        MapInfo: { x: 251, y: 195 },
+                        Age: Age.CHILD,
+                        LongDescription: "Walk around the grass by the stumps where you play the ocarina memory game to get these three wonderitems."
                     },
                     "Skull Kid's Gift": {
                         ItemGroup: ItemGroups.GIFT,
@@ -530,7 +585,15 @@ let MapLocations = {
                         OwExit: OwExits["Sacred Forest Meadow"]["Grotto near Lost Woods"]
                     }
                 },
-                ItemLocations: {}
+                ItemLocations: {
+                    "Rupee in Grass by Entrance": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Blue Rupee",
+                        MapInfo: { x: 170, y: 287 },
+                        Age: Age.EITHER,
+                        LongDescription: "This wonderitem is in the grass to your left as you enter."
+                    }
+                }
             },
 
             afterGate: {
@@ -553,12 +616,46 @@ let MapLocations = {
                 },
                 
                 ItemLocations: {
+                    "Rupee in First Maze Alcove": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Green Rupee",
+                        MapInfo: { x: 198, y: 231 },
+                        Age: Age.EITHER,
+                        LongDescription: "Enter the maze and turn right - enter the first alcove to the left to get this wonderitem."
+                    },
+                    "Rupee in Second Maze Alcove": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Blue Rupee",
+                        MapInfo: { x: 198, y: 207 },
+                        Age: Age.EITHER,
+                        LongDescription: "Enter the maze and turn right and follow the loop around. The alcove to the right after the turn has this wonderitem."
+                    },
+                    "Rupee in Third Maze Alcove": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Green Rupee",
+                        MapInfo: { x: 176, y: 221 },
+                        Age: Age.EITHER,
+                        LongDescription: "On the left side alcove after the first maze loop around, you will find this wonderitem."
+                    },
+                    "Right Rupee in Northern Maze": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Green Rupee",
+                        MapInfo: { x: 209, y: 147 },
+                        Age: Age.EITHER,
+                        LongDescription: "After the area that you're forced to go through tall grass, go to your right; the alcove with this wonderitem is on the left wall."
+                    },
+                    "Left Rupee in Northern Maze": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Blue Rupee",
+                        MapInfo: { x: 177, y: 147 },
+                        Age: Age.EITHER,
+                        LongDescription: "After the area that you're forced to go through tall grass, go to your left; the alcove with this wonderitem is on the right wall."
+                    },
                     "Skulltula on Wall": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 219, y: 144 },
                         Age: Age.ADULT,
-                        Region: "afterGate",
                         LongDescription: "At night, climb the ladder from the Forest Temple side. The skulltula will be on the left wall.",
                         RequiredItems: [Items.HOOKSHOT]
                     },
@@ -566,7 +663,6 @@ let MapLocations = {
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 200, y: 27 },
                         Age: Age.CHILD,
-                        Region: "afterGate",
                         LongDescription: "After visiting Zelda at the castle, make your way to the end of the maze to get this item.",
                         CustomRequirement: function(age) {
                             return Data.itemLocationObtained("Castle", "main", "Zelda's Lullaby");
@@ -576,28 +672,24 @@ let MapLocations = {
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 190, y: 42 },
                         Age: Age.ADULT,
-                        Region: "afterGate",
                         LongDescription: "Make your way to the end of the maze to get this item."
                     },
                     "Gossip Stone by Forest Temple": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 176, y: 53 },
                         Age: Age.EITHER,
-                        Region: "afterGate",
                         LongDescription: "This stone is in the southwest corner of the area the forest temple is in."
                     },
                     "East Gossip Stone on Maze": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 207, y: 228 },
                         Age: Age.EITHER,
-                        Region: "afterGate",
                         LongDescription: "This stone is on top of the maze. It's the one that's more to the east."
                     },
                     "West Gossip Stone on Maze": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 149, y: 176 },
                         Age: Age.EITHER,
-                        Region: "afterGate",
                         LongDescription: "This stone is on top of the maze. It's the one that's more to the west."
                     }
                 }
@@ -661,9 +753,21 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
+                    "3 Red Rupees by Drawbridge": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        IsWonderItem: true,
+                        Time: function() { return Time.DAY; },
+                        DefaultEntranceGroupName: "3 Red Rupees",
+                        MapInfo: { x: 197, y: 26 },
+                        Age: Age.CHILD,
+                        LongDescription: "These are the wonderitems you get as Child by climbing up the drawbridge and jumping off."
+                    },
                     "Ocarina of Time in Moat": {
                         ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: {x: 207, y: 36},
+                        MapImageName: "Song of Time",
+                        MapInfo: { x: 207, y: 36 },
                         Age: Age.CHILD,
                         LongDescription: "After obtaining all the spiritual stones, stand by the drawbridge to the Market. After the cutscene, grab the Ocarina from the moat.",
                         RequiredMedallions: [

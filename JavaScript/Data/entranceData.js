@@ -135,8 +135,7 @@ InteriorGroups = {
 	"Kokiri Shop": {
 		tooltip: "The Kokiri Forest shop with the rupee in the back.",
 		excludeFromGroup: function() { 
-			return Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.OFF ||
-				Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.DUNGEON_ONLY; 
+			return !Settings.RandomizerSettings.shuffleWonderItems;
 		},
 		isShop: true,
 		skipItemGroupCheck: true,
@@ -1516,11 +1515,22 @@ GrottoGroups = {
 		}
 	},
 	"2 Green Rupees": {
-		tooltip: "A group of two green rupees.",
+		tooltip: "A group of 2 green rupees.",
 		buttons: {
 			"Green Rupees": {
 				useGroupImage: true,
 				count: 2,
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Green rupees."
+			}
+		}
+	},
+	"3 Green Rupees": {
+		tooltip: "A group of 3 green rupees.",
+		buttons: {
+			"Green Rupees": {
+				useGroupImage: true,
+				count: 3,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				description: "Green rupees."
 			}
