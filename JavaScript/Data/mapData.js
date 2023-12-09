@@ -3426,6 +3426,22 @@ let MapLocations = {
                         MapInfo: { x: 189, y: 199 },
                         Age: Age.CHILD,
                         LongDescription: "Navigate to the plateform on the bottom of the ravine to find this crate.",
+                    },
+                    "Red Rupee by Upper Waterfall": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Red Rupee",
+                        IsWonderItem: true,
+                        MapInfo: { x: 201, y: 123 },
+                        Age: Age.ADULT,
+                        LongDescription: "To get this wonderitem, climb the ladder by the waterfall in the chasm. Bonk the wall at the top, and then backflip. Alternatively, you can ride the bean platform (stand in the middle of it)."
+                    },
+                    "Red Rupee by Lower Waterfall": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Red Rupee",
+                        IsWonderItem: true,
+                        MapInfo: { x: 202, y: 209 },
+                        Age: Age.ADULT,
+                        LongDescription: "To get this wonderitem, jump into the chasm so that you land up the river near the ladder. Now, fall (holding neutral) slightly to the right of the center of the watefall to get the item. Alternatively, you can ride the bean platform (stand in the middle of it)."
                     }
                 }
             },
@@ -3880,6 +3896,24 @@ let MapLocations = {
                         MapInfo: { x: 113, y: 194, floor: "J1" },
                         Age: Age.EITHER,
                         LongDescription: "The crate is in the opposite corner of the cell door. You can savewarp here from anywhere in the Thieves' Hideout."
+                    },
+                    "Left Skull Jail 1 Wonderitem": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Fairy Bow",
+                        IsWonderItem: true,
+                        MapInfo: { x: 157, y: 96, floor: "J1" },
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW],
+                        LongDescription: "To the left of the jail, shoot the skull on the wall to get this wonderitem."
+                    },
+                    "Right Skull Jail 1 Wonderitem": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Fairy Bow",
+                        IsWonderItem: true,
+                        MapInfo: { x: 157, y: 196, floor: "J1" },
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW],
+                        LongDescription: "To the right of the jail, shoot the skull on the wall to get this wonderitem."
                     }
                 }
             },
@@ -3917,6 +3951,24 @@ let MapLocations = {
                         MapInfo: { x: 167, y: 11, floor: "J2" },
                         Age: Age.EITHER,
                         LongDescription: "These pots are in the hallway to the left of the jail."
+                    },
+                    "Left Skull Jail 2 Wonderitem": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Fairy Bow",
+                        IsWonderItem: true,
+                        MapInfo: { x: 173, y: 111, floor: "J2" },
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW],
+                        LongDescription: "To the left of the jail, shoot the skull on the wall to get this wonderitem."
+                    },
+                    "Right Skull Jail 2 Wonderitem": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Fairy Bow",
+                        IsWonderItem: true,
+                        MapInfo: { x: 173, y: 184, floor: "J2" },
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW],
+                        LongDescription: "To the right of the jail, shoot the skull on the wall to get this wonderitem."
                     }
                 }
             },
@@ -3967,6 +4019,24 @@ let MapLocations = {
                         MapInfo: { x: 127, y: 115, floor: "J3" },
                         Age: Age.EITHER,
                         LongDescription: "The crates are in the opposite corner of the locked cell door."
+                    },
+                    "Left Skull Jail 3 Wonderitem": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Fairy Bow",
+                        IsWonderItem: true,
+                        MapInfo: { x: 267, y: 147, floor: "J3" },
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW],
+                        LongDescription: "To the left of the jail, shoot the skull on the wall to get this wonderitem."
+                    },
+                    "Right Skull Jail 3 Wonderitem": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Fairy Bow",
+                        IsWonderItem: true,
+                        MapInfo: { x: 115, y: 147, floor: "J3" },
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW],
+                        LongDescription: "To the right of the jail, shoot the skull on the wall to get this wonderitem."
                     }
                 }
             },
@@ -3993,6 +4063,24 @@ let MapLocations = {
                         MapInfo: { x: 80, y: 202, floor: "J4" },
                         Age: Age.EITHER,
                         LongDescription: "The crate is in front of you when you enter the map - grab it quickly then retreat before the guard sees you."
+                    },
+                    "Skull in First Jail 4 Hallway": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Fairy Bow",
+                        IsWonderItem: true,
+                        MapInfo: { x: 202, y: 178, floor: "J4" },
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW],
+                        LongDescription: "Shoot the skull on the wall after the first right turn in the jail 4 area. to get this wonderitem."
+                    },
+                    "Skull Before Jail 4": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Fairy Bow",
+                        IsWonderItem: true,
+                        MapInfo: { x: 142, y: 68, floor: "J4" },
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW],
+                        LongDescription: "Shoot the skull on the wall on the turn just before jail 4 to get this wonderitem."
                     }
                 }
             },
@@ -4001,7 +4089,7 @@ let MapLocations = {
                     jail1: {}, //Savewarp
                     kitchenTopLeft: {
                         CustomRequirement: function(age) {
-                            return Data.canStunKitchenGuards(age) ||  Settings.GlitchesToAllow.gfPassKitchenGuards;
+                            return Data.canStunKitchenGuards(age) || Settings.GlitchesToAllow.gfPassKitchenGuards;
                         }
                     },
                     "Kitchen Far Bottom": {
@@ -4030,6 +4118,15 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "These are the closer crates in the hallway attached to the kitchen."
                     },
+                    "Skull in Kitchen Hallway": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Fairy Bow",
+                        IsWonderItem: true,
+                        MapInfo: { x: 120, y: 251, floor: "KIT" },
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW],
+                        LongDescription: "Shoot the skull at the end of the hallway leading to the kitchen to get this wonderitem."
+                    },
                     "Crate Close to Kitchen": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 203, y: 250, floor: "KIT" },
@@ -4037,6 +4134,17 @@ let MapLocations = {
                         LongDescription: "This is the crate right next to the kitchen - you'll need to deal with one of the guards to get it. To sneak past, you can hide in the corner by the crate and wait for her to pass. You have a limited time after to bonk the crate.",
                         CustomRequirement: function(age) {
                             return Data.canStunKitchenGuards(age) ||  Settings.GlitchesToAllow.gfPassKitchenGuards;
+                        }
+                    },
+                    "Rupee in Soup Pot": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Red Rupee",
+                        IsWonderItem: true,
+                        MapInfo: { x: 269, y: 258, floor: "KIT" },
+                        Age: Age.EITHER,
+                        LongDescription: "Shoot the skull at the end of the hallway leading to the kitchen to get this wonderitem.",
+                        CustomRequirement: function(age) {
+                            return Data.canStunKitchenGuards(age);
                         }
                     }
                 }
@@ -4181,6 +4289,15 @@ let MapLocations = {
                                 ? canSlashStationaryGuard && Items.DEKU_STICK.playerHas // Kokiri Sword isn't long enough!
                                 : canSlashStationaryGuard;
                         }
+                    },
+                    "Upper Room Lower Skull": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Fairy Bow",
+                        IsWonderItem: true,
+                        MapInfo: { x: 186, y: 125, floor: "TOP" },
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW],
+                        LongDescription: "Navigate to the barrier leading to the upper area, then turn around. Shoot the skull up high to get this wonderitem."
                     }
                 }
             },
@@ -4200,7 +4317,17 @@ let MapLocations = {
                         OwExit: OwExits["Thieves' Hideout"]["TH Top Room to GF Above Link's Jail"]
                     }
                 },
-                ItemLocations: {}
+                ItemLocations: {
+                    "Upper Room Upper Skull": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Fairy Bow",
+                        IsWonderItem: true,
+                        MapInfo: { x: 75, y: 125, floor: "TOP" },
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW],
+                        LongDescription: "Navigate to the barrier leading to the lower area, then turn around. Shoot the skull up high to get this wonderitem."
+                    }
+                }
             }
         }
     },
