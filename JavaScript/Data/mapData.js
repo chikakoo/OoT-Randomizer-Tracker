@@ -3549,6 +3549,15 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
+                    "Rupee in Overhanging Sign by Entrance": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Hookshot Hookshot",
+                        IsWonderItem: true,
+                        MapInfo: { x: 97, y: 228 },
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.HOOKSHOT],
+                        LongDescription: "Shoot the overhanging sign by the entrance to Gerudo Valley with your hookshot to get this wonderitem. Note that it only works if you shoot it from the south."
+                    },
                     "Opened Gate": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapImageName: "Gerudo Membership Card",
@@ -3733,6 +3742,15 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
+                    "Rupee in Overhanging Sign by HBA": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Hookshot Hookshot",
+                        IsWonderItem: true,
+                        MapInfo: { x: 164, y: 222 },
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.HOOKSHOT],
+                        LongDescription: "Shoot the overhanging sign by the entrance to horseback archery with your hookshot to get this wonderitem. Note that it only works if you shoot it from the fortress side."
+                    },
                     "2 Crates by HBA Right Target": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
