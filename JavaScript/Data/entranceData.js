@@ -2130,6 +2130,31 @@ GrottoGroups = {
 			}
 		}
 	},
+	"2 Night and 2 Empty Day Crates": {
+		icon: "2 Crates",
+		tooltip: "Two sets of two crates - one for night and one for day. The day ones are empty.",
+		buttons: {
+			"Day Crates": {
+				useGroupImage: true,
+				count: 2,
+				tag: "day",
+				description: "These crates are here during the day.",
+				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
+				time: function() { return Time.DAY; },
+				isChildOnly: function() { return true; }
+			},
+			"Night Crates": {
+				useGroupImage: true,
+				count: 2,
+				tag: "night",
+				description: "These crates are here at night.",
+				time: function() { 
+					return Settings.RandomizerSettings.shuffleEmptyCrates ? Time.NIGHT : Time.EITHER; 
+				},
+				isChildOnly: function() { return true; }
+			}
+		}
+	},
 	"Balcony Wonder Items": {
 		icon: "Wonder Item",
 		tooltip: "These are the items you get by climbing up the balcony by the Bombchu Bowling Alley.",

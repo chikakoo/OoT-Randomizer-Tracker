@@ -949,47 +949,29 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    "2 Day Crates by Bazaar": {
+                    "Crates by Bazaar": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsItemLocationGroup: true,
-                        IsEmpty: true,
-                        DefaultEntranceGroupName: "2 Crates",
-                        Time: function() { return Time.DAY; },
+                        DefaultEntranceGroupName: "2 Night and 2 Empty Day Crates",
                         MapInfo: { x: 303, y: 200 },
+                        Time: function() { 
+                            return !Settings.RandomizerSettings.shuffleEmptyCrates ? Time.NIGHT : Time.EITHER; 
+                        },
                         Age: Age.CHILD,
-                        LongDescription: "These crates are on either side of the bazaar door. These are the ones there during the day."
+                        LongDescription: "These crates are on either side of the bazaar door."
                     },
-                    "2 Night Crates by Bazaar": {
+                    "Crates by Archery": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Crates",
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 303, y: 206 },
-                        Age: Age.CHILD,
-                        LongDescription: "These crates are on either side of the bazaar door. These are the ones there during the night."
-                    },
-                    "2 Day Crates by Archery": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        IsEmpty: true,
-                        DefaultEntranceGroupName: "2 Crates",
-                        Time: function() { return Time.DAY; },
+                        DefaultEntranceGroupName: "2 Night and 2 Empty Day Crates",
+                        Time: function() { 
+                            return !Settings.RandomizerSettings.shuffleEmptyCrates ? Time.NIGHT : Time.EITHER; 
+                        },
                         MapInfo: { x: 250, y: 123 },
                         Age: Age.CHILD,
-                        LongDescription: "These crates are on the right side of the archery minigame door. These are the ones there during the day."
-                    },
-                    "2 Night Crates by Archery": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Crates",
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 250, y: 129 },
-                        Age: Age.CHILD,
-                        LongDescription: "These crates are on the right side of the archery minigame door. These are the ones there during the night."
+                        LongDescription: "These crates are on the right side of the archery minigame door."
                     },
                     "Rupees on Balcony": {
                         ItemGroup: ItemGroups.ENTRANCE,
