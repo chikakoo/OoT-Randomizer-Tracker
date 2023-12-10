@@ -135,7 +135,7 @@ InteriorGroups = {
 	"Kokiri Shop": {
 		tooltip: "The Kokiri Forest shop with the rupee in the back.",
 		excludeFromGroup: function() { 
-			return !Settings.RandomizerSettings.shuffleWonderItems;
+			return !Settings.RandomizerSettings.shuffleWonderitems;
 		},
 		isShop: true,
 		skipItemGroupCheck: true,
@@ -476,12 +476,12 @@ InteriorGroups = {
 	},
 	"Front of Impa's House": {
 		tooltip: "Inside the cage with the cow and the freestanding item.",
-		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleWonderItems; },
+		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleWonderitems; },
 		buttons: {
 			"Red Rupee on Top": {
-				itemGroup: ItemGroups.WONDER_ITEM,
+				itemGroup: ItemGroups.WONDERITEM,
 				icon: "Red Rupee",
-				description: "Climb up the stairs and walk around on the top of the cow pen to get this wonder item."
+				description: "Climb up the stairs and walk around on the top of the cow pen to get this wonderitem."
 			},
 			"Cow": {
 				itemGroup: ItemGroups.COW,
@@ -2199,8 +2199,8 @@ GrottoGroups = {
 			}
 		}
 	},
-	"Balcony Wonder Items": {
-		icon: "Wonder Item",
+	"Balcony Wonderitems": {
+		icon: "Wonderitem",
 		tooltip: "These are the items you get by climbing up the balcony by the Bombchu Bowling Alley.",
 		buttons: {
 			"Day Balcony Items": {
@@ -2229,7 +2229,7 @@ GrottoGroups = {
 				useGroupImage: true,
 				description: "Talk to Zelda to get this check."
 			},
-			"Mario Wonder Item": {
+			"Mario Wonderitem": {
 				icon: "Child Archery",
 				description: "Facing zelda, shoot the right side window (the one with the mario paintings) with your slingshot to get this item.",
 				canGet: function(age) {

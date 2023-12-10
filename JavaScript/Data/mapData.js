@@ -106,7 +106,7 @@ let MapLocations = {
                         LongDescription: "This item is behind Mido's House.",
                     },
                     "Blue Rupee via Training Sign": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Blue Rupee",
                         RequiredChoiceOfItems: [Equipment.KOKIRI_SWORD, Items.DEKU_STICK],
                         MapInfo: { x: 132, y: 211 },
@@ -122,7 +122,7 @@ let MapLocations = {
                     },
                     "2 Green Rupees in Maze Grass": {
                         ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Green Rupees",
                         MapInfo: { x: 100, y: 292 },
@@ -138,7 +138,7 @@ let MapLocations = {
                     },
                     "3 Green Rupees in Training Area": {
                         ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Green Rupees",
                         MapInfo: { x: 106, y: 226 },
@@ -180,14 +180,14 @@ let MapLocations = {
                         LongDescription: "Search the grass near the Mido's house to find these items."
                     },
                     "Blue Rupee via Stepping Stones": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Blue Rupee",
                         MapInfo: { x: 198, y: 132 },
                         Age: Age.CHILD,
                         LongDescription: "Jump across the platforms to the left of the shop. If you haven't yet touched the water, you'll get this item.",
                     },
                     "Blue Rupee via House of Twins Platforms": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Blue Rupee",
                         MapInfo: { x: 265, y: 165 },
                         Age: Age.CHILD,
@@ -282,7 +282,7 @@ let MapLocations = {
                     },
                     "3 Rupees in Grass by Ocarina Game": {
                         ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Green Rupees",
                         MapInfo: { x: 251, y: 195 },
@@ -749,7 +749,7 @@ let MapLocations = {
                 ItemLocations: {
                     "3 Red Rupees by Drawbridge": {
                         ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
                         Time: function() { return Time.DAY; },
                         DefaultEntranceGroupName: "3 Red Rupees",
@@ -975,9 +975,9 @@ let MapLocations = {
                     },
                     "Rupees on Balcony": {
                         ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "Balcony Wonder Items",
+                        DefaultEntranceGroupName: "Balcony Wonderitems",
                         MapInfo: { x: 213, y: 151 },
                         Age: Age.CHILD,
                         LongDescription: "Climb the stairs by bombchu bowling and go across the catwalk to get these items. Note that there are different sets of them depending on if it's night or day!"
@@ -1108,7 +1108,7 @@ let MapLocations = {
                     },
                     "Shoot 2 Torches by Drawbridge": {
                         ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Slingshot Items",
                         MapInfo: { x: 122, y: 41, floor: "HYR" },
@@ -1118,7 +1118,7 @@ let MapLocations = {
                     },
                     "7 Rupees in Moat by Drawbridge": {
                         ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "7 Green Rupees",
                         MapInfo: { x: 122, y: 78, floor: "HYR" },
@@ -1127,7 +1127,7 @@ let MapLocations = {
                     },
                     "3 Rupees in Moat by Crates": {
                         ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Green Rupees",
                         MapInfo: { x: 182, y: 52, floor: "HYR" },
@@ -1317,21 +1317,21 @@ let MapLocations = {
                         }
                     },
                     "Red Rupee on Construction Site": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Red Rupee",
                         MapInfo: { x: 189, y: 210 },
                         Age: Age.CHILD,
                         LongDescription: "Climb up the struture under construction and make your way to the end to get this item. If it's daytime, you can get around the worker by backwalking off the edge and grabbing hold, then climbing back up when he passes by."
                     },
                     "Red Rupee in Impa's House": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Red Rupee",
                         RequiredToAppear: function() {
                             return !Settings.RandomizerSettings.shuffleInteriorEntrances;
                         },
                         MapInfo: { x: 175, y: 248 },
                         Age: Age.CHILD,
-                        LongDescription: "Enter Impa's house from the front. Climb the stairs and walk around the cow pen area to get this wonder item."
+                        LongDescription: "Enter Impa's house from the front. Climb the stairs and walk around the cow pen area to get this wonderitem."
                     },
                     "Show Guard Letter": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -1803,14 +1803,14 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "From the start, follow the right wall to the rupee."
                     },
-                    "4 Wonder Items by Race Rupee 1": {
+                    "4 Wonderitems by Race Rupee 1": {
                         ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Green Rupees",
                         MapInfo: { x: 125, y: 190, floor: "DMP" },
                         Age: Age.EITHER,
-                        LongDescription: "From the start, follow the right wall past the visible item to get these wonder items."
+                        LongDescription: "From the start, follow the right wall past the visible item to get these wonderitems."
                     },
                     "Race Rupee 2": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -1819,12 +1819,12 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "The rupee is on the right after the second turn of the normal route."
                     },
-                    "Wonder Item by Race Rupee 2": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                    "Wonderitem by Race Rupee 2": {
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 129, y: 152, floor: "DMP" },
                         Age: Age.EITHER,
-                        LongDescription: "The item is on the right after the second turn of the normal route. Continue past the visible item to get this wonder item."
+                        LongDescription: "The item is on the right after the second turn of the normal route. Continue past the visible item to get this wonderitem."
                     },
                     "Race Rupee 3": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -1840,9 +1840,9 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "After the first door, the rupee will be on the left."
                     },
-                    "2 Wonder Items by Race Rupee 4": {
+                    "2 Wonderitems by Race Rupee 4": {
                         ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Green Rupees",
                         MapInfo: { x: 117, y: 10, floor: "DMP" },
@@ -1856,8 +1856,8 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "In the big room with the rocks, go down the left path for the rupee."
                     },
-                    "Wonder Item by Race Rupee 5": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                    "Wonderitem by Race Rupee 5": {
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 183, y: 19, floor: "DMP" },
                         Age: Age.EITHER,
@@ -1870,9 +1870,9 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "In the big room with the rocks, go straight, take a right, then follow the left wall to the rupee."
                     },
-                    "2 Wonder Items by Race Rupee 6": {
+                    "2 Wonderitems by Race Rupee 6": {
                         ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Green Rupees",
                         MapInfo: { x: 229, y: 85, floor: "DMP" },
@@ -1886,9 +1886,9 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "After the second door, follow the left wall to the rupee."
                     },
-                    "4 Wonder Items by Race Rupee 7": {
+                    "4 Wonderitems by Race Rupee 7": {
                         ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Green Rupees",
                         MapInfo: { x: 239, y: 132, floor: "DMP" },
@@ -1902,8 +1902,8 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "After the second door, at the ledges, climb up the left ledge for the rupee (watch out for the redead).",
                     },
-                    "Wonder Item by Race Rupee 8": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                    "Wonderitem by Race Rupee 8": {
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 165, y: 160, floor: "DMP" },
                         Age: Age.EITHER,
@@ -3517,14 +3517,14 @@ let MapLocations = {
                         LongDescription: "Navigate to the plateform on the bottom of the ravine to find this crate.",
                     },
                     "Red Rupee by Upper Waterfall": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Red Rupee",
                         MapInfo: { x: 201, y: 123 },
                         Age: Age.ADULT,
                         LongDescription: "To get this wonderitem, climb the ladder by the waterfall in the chasm. Bonk the wall at the top, and then backflip. Alternatively, you can ride the bean platform (stand in the middle of it)."
                     },
                     "Red Rupee by Lower Waterfall": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Red Rupee",
                         MapInfo: { x: 202, y: 209 },
                         Age: Age.ADULT,
@@ -3637,7 +3637,7 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Rupee in Overhanging Sign by Entrance": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Hookshot Hookshot",
                         MapInfo: { x: 97, y: 228 },
                         Age: Age.ADULT,
@@ -3829,7 +3829,7 @@ let MapLocations = {
 
                 ItemLocations: {
                     "Rupee in Overhanging Sign by HBA": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Hookshot Hookshot",
                         MapInfo: { x: 164, y: 222 },
                         Age: Age.ADULT,
@@ -4001,7 +4001,7 @@ let MapLocations = {
                         LongDescription: "The crate is in the opposite corner of the cell door. You can savewarp here from anywhere in the Thieves' Hideout."
                     },
                     "Left Skull Jail 1 Wonderitem": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Fairy Bow",
                         MapInfo: { x: 157, y: 96, floor: "J1" },
                         Age: Age.ADULT,
@@ -4009,7 +4009,7 @@ let MapLocations = {
                         LongDescription: "To the left of the jail, shoot the skull on the wall to get this wonderitem."
                     },
                     "Right Skull Jail 1 Wonderitem": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Fairy Bow",
                         MapInfo: { x: 157, y: 196, floor: "J1" },
                         Age: Age.ADULT,
@@ -4054,7 +4054,7 @@ let MapLocations = {
                         LongDescription: "These pots are in the hallway to the left of the jail."
                     },
                     "Left Skull Jail 2 Wonderitem": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Fairy Bow",
                         MapInfo: { x: 173, y: 111, floor: "J2" },
                         Age: Age.ADULT,
@@ -4062,7 +4062,7 @@ let MapLocations = {
                         LongDescription: "To the left of the jail, shoot the skull on the wall to get this wonderitem."
                     },
                     "Right Skull Jail 2 Wonderitem": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Fairy Bow",
                         MapInfo: { x: 173, y: 184, floor: "J2" },
                         Age: Age.ADULT,
@@ -4120,7 +4120,7 @@ let MapLocations = {
                         LongDescription: "The crates are in the opposite corner of the locked cell door."
                     },
                     "Left Skull Jail 3 Wonderitem": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Fairy Bow",
                         MapInfo: { x: 267, y: 147, floor: "J3" },
                         Age: Age.ADULT,
@@ -4128,7 +4128,7 @@ let MapLocations = {
                         LongDescription: "To the left of the jail, shoot the skull on the wall to get this wonderitem."
                     },
                     "Right Skull Jail 3 Wonderitem": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Fairy Bow",
                         MapInfo: { x: 115, y: 147, floor: "J3" },
                         Age: Age.ADULT,
@@ -4162,7 +4162,7 @@ let MapLocations = {
                         LongDescription: "The crate is in front of you when you enter the map - grab it quickly then retreat before the guard sees you."
                     },
                     "Skull in First Jail 4 Hallway": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Fairy Bow",
                         MapInfo: { x: 202, y: 178, floor: "J4" },
                         Age: Age.ADULT,
@@ -4170,7 +4170,7 @@ let MapLocations = {
                         LongDescription: "Shoot the skull on the wall after the first right turn in the jail 4 area. to get this wonderitem."
                     },
                     "Skull Before Jail 4": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Fairy Bow",
                         MapInfo: { x: 142, y: 68, floor: "J4" },
                         Age: Age.ADULT,
@@ -4214,7 +4214,7 @@ let MapLocations = {
                         LongDescription: "These are the closer crates in the hallway attached to the kitchen."
                     },
                     "Skull in Kitchen Hallway": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Fairy Bow",
                         MapInfo: { x: 120, y: 251, floor: "KIT" },
                         Age: Age.ADULT,
@@ -4231,7 +4231,7 @@ let MapLocations = {
                         }
                     },
                     "Rupee in Soup Pot": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Red Rupee",
                         MapInfo: { x: 269, y: 258, floor: "KIT" },
                         Age: Age.EITHER,
@@ -4384,7 +4384,7 @@ let MapLocations = {
                         }
                     },
                     "Upper Room Lower Skull": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Fairy Bow",
                         MapInfo: { x: 186, y: 125, floor: "TOP" },
                         Age: Age.ADULT,
@@ -4411,7 +4411,7 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Upper Room Upper Skull": {
-                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Fairy Bow",
                         MapInfo: { x: 75, y: 125, floor: "TOP" },
                         Age: Age.ADULT,
@@ -4584,7 +4584,7 @@ let MapLocations = {
                 ItemLocations: {
                     "2 Items in Tree by Great Fairy": {
                         ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Items in Tree",
                         MapInfo: { x: 231, y: 33 },
@@ -4600,7 +4600,7 @@ let MapLocations = {
                     },
                     "3 Items in Tree at Oasis": {
                         ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Items in Tree",
                         MapInfo: { x: 195, y: 246 },

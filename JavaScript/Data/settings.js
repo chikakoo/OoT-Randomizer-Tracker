@@ -129,7 +129,7 @@ let Settings = {
 		shuffleAllFrogSongs: true,
 		shuffleBeehives: true,
 		shuffleSilverRupees: true,
-		shuffleWonderItems: true,
+		shuffleWonderitems: true,
 		bombchusInLogic: true,
 		deadHandNeedsSword: false,
 		iceArrowsActAsBlueFire: true,

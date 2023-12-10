@@ -19,7 +19,7 @@ let ItemGroups = {
 	SHOP: 6,
 	SONG: 7,
 	FREESTANDING_RUPEES_AND_HEARTS: 8,
-	WONDER_ITEM: 9,
+	WONDERITEM: 9,
 	SILVER_RUPEE: 10,
 	POT: 11,
 	CRATE: 12,
@@ -47,7 +47,7 @@ let getItemGroupName = function(groupId) {
 		case ItemGroups.GOSSIP_STONE: return "Gossip Stones";
 		case ItemGroups.LOCKED_DOOR: return "Locked Doors";
 		case ItemGroups.FREESTANDING_RUPEES_AND_HEARTS: return "Rupees and Hearts";
-		case ItemGroups.WONDER_ITEM: return "Wonder Items";
+		case ItemGroups.WONDERITEM: return "Wonderitems";
 		case ItemGroups.SILVER_RUPEE: return "Silver Rupees";
 		case ItemGroups.POT: return "Pots";
 		case ItemGroups.CRATE: return "Crates";
