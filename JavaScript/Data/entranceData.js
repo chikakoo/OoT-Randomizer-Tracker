@@ -1656,6 +1656,18 @@ GrottoGroups = {
 			}
 		}
 	},
+	"6 Green Rupee Wonderitems": {
+		icon: "Green Rupee Wonderitem",
+		tooltip: "A group of 6 green rupee wonderitems.",
+		buttons: {
+			"Green Rupees": {
+				useGroupImage: true,
+				count: 6,
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Green rupee wonderitems."
+			}
+		}
+	},
 	"7 Green Rupee Wonderitems": {
 		icon: "Green Rupee Wonderitem",
 		tooltip: "A group of 7 green rupee wonderitems.",

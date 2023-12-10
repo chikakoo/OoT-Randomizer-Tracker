@@ -880,6 +880,28 @@ let MapLocations = {
                         MapInfo: { x: 250, y: 98 },
                         Age: Age.CHILD,
                         LongDescription: "As Child, this crate is next to Talon's House, by the skulltula tree.",
+                    },
+                    "Wonderitem via Short Gate": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Epona Wonderitem",
+                        MapInfo: { x: 206, y: 153 },
+                        Time: function() { return Time.DAY; },
+                        Age: Age.ADULT,
+                        LongDescription: "As Adult, talk to Ingo if you haven't already rescused Epona to go inside. Play Epona's song and ride epona. Jump over the center of the smaller gate to get this wonderitem.",
+                        CustomRequirement: function(age) {
+                            return Data.canPlaySong(Songs.EPONAS_SONG) || Data.canStaircaseHover(age);
+                        }
+                    },
+                    "Wonderitem via Tall Gate": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Epona Wonderitem",
+                        MapInfo: { x: 144, y: 190 },
+                        Time: function() { return Time.DAY; },
+                        Age: Age.ADULT,
+                        LongDescription: "As Adult, talk to Ingo if you haven't already rescused Epona to go inside. Play Epona's song and ride epona. Jump over the center of the larger gate to get this wonderitem.",
+                        CustomRequirement: function(age) {
+                            return Data.canPlaySong(Songs.EPONAS_SONG) || Data.canStaircaseHover(age);
+                        }
                     }
                 }
             }
@@ -2690,7 +2712,7 @@ let MapLocations = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Green Rupee Wonderitems",
                         MapInfo: { x: 36, y: 193 },
-                        Age: Age.EITHER,
+                        Age: Age.CHILD,
                         LongDescription: "Jump in the water by the mini waterfall and proceed down the center of the river to get these wonderitems."
                     },
                     "Break Rocks Blocking Path": {
@@ -2824,6 +2846,60 @@ let MapLocations = {
                         MapInfo: { x: 308, y: 158 },
                         Age: Age.ADULT,
                         LongDescription: "These rupees are under the water next to the waterfall. You can jump from the Zelda's Lullaby spot to get them (adjust your position to get each one), though it's easiest with the iron boots."
+                    },
+                    "4 Wonderitems in River by Zora's Domain": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Green Rupee Wonderitems",
+                        MapInfo: { x: 233, y: 92 },
+                        Age: Age.CHILD,
+                        LongDescription: "These wonderitems are in the river near Zora's Domain. You will get them all before you reach the wooden bridge."
+                    },
+                    "6 Wonderitems After Underwater Rocks": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "6 Green Rupee Wonderitems",
+                        MapInfo: { x: 159, y: 148 },
+                        Age: Age.CHILD,
+                        LongDescription: "These wonderitems are after the underwater rocks just after you fall down the first mini waterfall. You will get them all before falling down the next mini waterfall."
+                    },
+                    "3 Wonderitems After Platform Ladder": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Green Rupee Wonderitems",
+                        MapInfo: { x: 117, y: 151 },
+                        Age: Age.CHILD,
+                        LongDescription: "These wonderitems are in the mini coordidor after you fall down the waterfall near the ladder leading to the upper cliffs. You will get all of them before you fall down the next mini waterfall."
+                    },
+                    "3 Wonderitems Near Bean Salesman": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Green Rupee Wonderitems",
+                        MapInfo: { x: 55, y: 155 },
+                        Age: Age.CHILD,
+                        LongDescription: "These wonderitems are in the river near the bean salesman. You will get them all before falling down to the first area. Note that you will be forced to fall, so make sure not to get trapped!"
+                    },
+                    "7 Wonderitems Near Frogs": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "7 Green Rupee Wonderitems",
+                        MapInfo: { x: 132, y: 115 },
+                        Age: Age.CHILD,
+                        LongDescription: "These wonderitems are in the river near the frogs. The first three are down the stream near where the river splits from the platform ladder. One is between a couple of the bigger platforms. Two are on either side of the square platform. The final one is just before you fall down the mini waterfall."
+                    },
+                    "4 Wonderitems in Fast Stream After Frogs": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Green Rupee Wonderitems",
+                        MapInfo: { x: 100, y: 133 },
+                        Age: Age.CHILD,
+                        LongDescription: "These wonderitems are the three you get after falling down the mini waterfall near the frog area. You'll get them all before meeting up with the main river."
                     }
                 }
             },
