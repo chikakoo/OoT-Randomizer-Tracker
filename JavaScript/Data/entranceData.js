@@ -480,7 +480,7 @@ InteriorGroups = {
 		buttons: {
 			"Red Rupee on Top": {
 				itemGroup: ItemGroups.WONDERITEM,
-				icon: "Red Rupee",
+				icon: "Red Rupee Wonderitem",
 				description: "Climb up the stairs and walk around on the top of the cow pen to get this wonderitem."
 			},
 			"Cow": {
@@ -1620,6 +1620,66 @@ GrottoGroups = {
 			}
 		}
 	},
+	"2 Green Rupee Wonderitems": {
+		icon: "Green Rupee Wonderitem",
+		tooltip: "A group of 2 green rupee wonderitems.",
+		buttons: {
+			"Green Rupees": {
+				useGroupImage: true,
+				count: 2,
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Green rupee wonderitems."
+			}
+		}
+	},
+	"3 Green Rupee Wonderitems": {
+		icon: "Green Rupee Wonderitem",
+		tooltip: "A group of 3 green rupee wonderitems.",
+		buttons: {
+			"Green Rupees": {
+				useGroupImage: true,
+				count: 3,
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Green rupee wonderitems."
+			}
+		}
+	},
+	"4 Green Rupee Wonderitems": {
+		icon: "Green Rupee Wonderitem",
+		tooltip: "A group of 4 green rupee wonderitems.",
+		buttons: {
+			"Green Rupees": {
+				useGroupImage: true,
+				count: 4,
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Green rupee wonderitems."
+			}
+		}
+	},
+	"7 Green Rupee Wonderitems": {
+		icon: "Green Rupee Wonderitem",
+		tooltip: "A group of 7 green rupee wonderitems.",
+		buttons: {
+			"Green Rupees": {
+				useGroupImage: true,
+				count: 7,
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Green rupee wonderitems."
+			}
+		}
+	},
+	"3 Red Rupee Wonderitems": {
+		icon: "Red Rupee Wonderitem",
+		tooltip: "A group of 3 red rupee wonderitems.",
+		buttons: {
+			"Green Rupees": {
+				useGroupImage: true,
+				count: 3,
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Red rupee wonderitems."
+			}
+		}
+	},
 	"3 Jabu Rupees": {
 		tooltip: "The 3 Jabu rupees with various diving requirements",
 		buttons: {
@@ -2121,11 +2181,11 @@ GrottoGroups = {
 			}
 		}
 	},
-	"2 Items in Tree": {
+	"2 Projectile Wonderitems": {
 		tooltip: "A group of two items in trees.",
-		icon: "Adult Archery",
+		icon: "Projectile Wonderitem",
 		buttons: {
-			"Tree Items": {
+			"Projectile Wonderitems": {
 				useGroupImage: true,
 				count: 2,
 				description: "Shoot the deku nut on the tree with a slingshot or bow to get the item.",
@@ -2135,11 +2195,11 @@ GrottoGroups = {
 			}
 		}
 	},
-	"3 Items in Tree": {
-		tooltip: "A group of three items in trees.",
-		icon: "Adult Archery",
+	"3 Desert Projectile Wonderitems": {
+		tooltip: "Three three projectile wonderitems in the desert.",
+		icon: "Projectile Wonderitem",
 		buttons: {
-			"Tree Items Both Ages": {
+			"Projectile Wonderitems Both Ages": {
 				useGroupImage: true,
 				count: 2,
 				tag: "both",
@@ -2148,8 +2208,8 @@ GrottoGroups = {
 					return ItemData.canUse(age, ItemSets.PROJECTILES);
 				}
 			},
-			"Tree Item Child": {
-				icon: "Child Archery",
+			"Projectile Wonderitems Child": {
+				icon: "Slingshot Wonderitem",
 				tag: "child",
 				description: "Shoot the deku nut in the tree that has a skulltula in it as adult with a slingshot to get the item",
 				canGet: function(age) {
@@ -2184,11 +2244,11 @@ GrottoGroups = {
 			}
 		}
 	},
-	"2 Slingshot Items": {
-		tooltip: "A group of two items you need the slingshot to get.",
-		icon: "Child Archery",
+	"2 Slingshot Wonderitems": {
+		tooltip: "A group of two wonderitems you need the slingshot to get.",
+		icon: "Slingshot Wonderitem",
 		buttons: {
-			"Slingshot Items": {
+			"Slingshot Wonderitems": {
 				useGroupImage: true,
 				count: 2,
 				description: "Shoot something to get these items.",
@@ -2200,11 +2260,11 @@ GrottoGroups = {
 		}
 	},
 	"Balcony Wonderitems": {
-		icon: "Wonderitem",
+		icon: "Green Rupee Wonderitem",
 		tooltip: "These are the items you get by climbing up the balcony by the Bombchu Bowling Alley.",
 		buttons: {
 			"Day Balcony Items": {
-				icon: "5 Green Rupees",
+				icon: "Green Rupee Wonderitem",
 				count: 5,
 				tag: "day",
 				description: "Climb up the stairs and walk along the catwalk by Bombchu Bowling during the day to get these items.",
@@ -2212,7 +2272,7 @@ GrottoGroups = {
 				isChildOnly: function() { return true; }
 			},
 			"Night Balcony Items": {
-				icon: "2 Blue Rupees",
+				icon: "Blue Rupee Wonderitem",
 				count: 2,
 				tag: "night",
 				description: "Climb up the stairs and walk along the catwalk by Bombchu Bowling at night to get these items.",
