@@ -1576,6 +1576,17 @@ GrottoGroups = {
 			}
 		}
 	},
+	"4 Green Rupees": {
+		tooltip: "A group of 4 green rupees.",
+		buttons: {
+			"Green Rupees": {
+				useGroupImage: true,
+				count: 4,
+				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				description: "Green rupees."
+			}
+		}
+	},
 	"7 Green Rupees": {
 		tooltip: "A group of 7 green rupees.",
 		buttons: {

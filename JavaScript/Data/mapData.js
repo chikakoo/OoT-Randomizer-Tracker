@@ -1801,49 +1801,99 @@ let MapLocations = {
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 117, y: 182, floor: "DMP" },
                         Age: Age.EITHER,
-                        LongDescription: "From the start, follow the right wall to the rupee.",
+                        LongDescription: "From the start, follow the right wall to the rupee."
+                    },
+                    "4 Wonder Items by Race Rupee 1": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Green Rupees",
+                        MapInfo: { x: 125, y: 190, floor: "DMP" },
+                        Age: Age.EITHER,
+                        LongDescription: "From the start, follow the right wall past the visible item to get these wonder items."
                     },
                     "Race Rupee 2": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 125, y: 152, floor: "DMP" },
                         Age: Age.EITHER,
-                        LongDescription: "The rupee is on the right after the second turn of the normal route.",
+                        LongDescription: "The rupee is on the right after the second turn of the normal route."
+                    },
+                    "Wonder Item by Race Rupee 2": {
+                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        MapImageName: "Green Rupee",
+                        MapInfo: { x: 129, y: 152, floor: "DMP" },
+                        Age: Age.EITHER,
+                        LongDescription: "The item is on the right after the second turn of the normal route. Continue past the visible item to get this wonder item."
                     },
                     "Race Rupee 3": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 135, y: 58, floor: "DMP" },
                         Age: Age.EITHER,
-                        LongDescription: "Take the right path at the fork after the second turn - keep following the right wall for the rupee.",
+                        LongDescription: "Take the right path at the fork after the second turn - keep following the right wall for the rupee."
                     },
                     "Race Rupee 4": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 126, y: 19, floor: "DMP" },
                         Age: Age.EITHER,
-                        LongDescription: "After the first door, the rupee will be on the left.",
+                        LongDescription: "After the first door, the rupee will be on the left."
+                    },
+                    "2 Wonder Items by Race Rupee 4": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Green Rupees",
+                        MapInfo: { x: 117, y: 10, floor: "DMP" },
+                        Age: Age.EITHER,
+                        LongDescription: "After the first door, the wonderitems will be down the corridor to the left."
                     },
                     "Race Rupee 5": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 173, y: 19, floor: "DMP" },
                         Age: Age.EITHER,
-                        LongDescription: "In the big room with the rocks, go down the left path for the rupee.",
+                        LongDescription: "In the big room with the rocks, go down the left path for the rupee."
+                    },
+                    "Wonder Item by Race Rupee 5": {
+                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        MapImageName: "Green Rupee",
+                        MapInfo: { x: 183, y: 19, floor: "DMP" },
+                        Age: Age.EITHER,
+                        LongDescription: "In the big room with the rocks, go down the left path for the rupee. Take a right after the visible item to get to the wonderitem."
                     },
                     "Race Rupee 6": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 220, y: 85, floor: "DMP" },
                         Age: Age.EITHER,
-                        LongDescription: "In the big room with the rocs, go straight, take a right, then follow the left wall to the rupee.",
+                        LongDescription: "In the big room with the rocks, go straight, take a right, then follow the left wall to the rupee."
+                    },
+                    "2 Wonder Items by Race Rupee 6": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Green Rupees",
+                        MapInfo: { x: 229, y: 85, floor: "DMP" },
+                        Age: Age.EITHER,
+                        LongDescription: "In the big room with the rocks, go straight, take a right, then follow the left wall to the rupee. The two wonderitems are down both directions of the dead end area."
                     },
                     "Race Rupee 7": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 229, y: 122, floor: "DMP" },
                         Age: Age.EITHER,
-                        LongDescription: "After the second door, follow the left wall to the rupee.",
+                        LongDescription: "After the second door, follow the left wall to the rupee."
+                    },
+                    "4 Wonder Items by Race Rupee 7": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDER_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Green Rupees",
+                        MapInfo: { x: 239, y: 132, floor: "DMP" },
+                        Age: Age.EITHER,
+                        LongDescription: "After the second door, follow the left wall to the loop containing the 4 wonderitems."
                     },
                     "Race Rupee 8": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -1851,6 +1901,13 @@ let MapLocations = {
                         MapInfo: { x: 173, y: 160, floor: "DMP" },
                         Age: Age.EITHER,
                         LongDescription: "After the second door, at the ledges, climb up the left ledge for the rupee (watch out for the redead).",
+                    },
+                    "Wonder Item by Race Rupee 8": {
+                        ItemGroup: ItemGroups.WONDER_ITEM,
+                        MapImageName: "Green Rupee",
+                        MapInfo: { x: 165, y: 160, floor: "DMP" },
+                        Age: Age.EITHER,
+                        LongDescription: "After the second door, at the ledges, climb up the left ledge and go next to the redead for the wonderitem.",
                     }
                 }
             },
