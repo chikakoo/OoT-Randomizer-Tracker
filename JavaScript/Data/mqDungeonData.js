@@ -221,6 +221,42 @@ let MQDungeons = {
                     upperBasement: {}
                 },
                 ItemLocations: {
+                    "Wonderitem on West Wall Left Grave": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapInfo: { x: 70, y: 140, floor: "B1" },
+                        MapImageName: "Sword Wonderitem",
+                        Age: Age.EITHER,
+                        Order: 13.6,
+                        LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Note that you can also use Din's Fire. Defeat all the enemies in this room to continue on.<br/><br/>In this next room, swing your sword or deku stick while standing on the left grave on the west wall to spawn the wonderitem.",
+                        RequiredChoiceOfItems: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
+                    },
+                    "Wonderitem on East Grave Near Torches": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapInfo: { x: 113, y: 132, floor: "B1" },
+                        MapImageName: "Sword Wonderitem",
+                        Age: Age.EITHER,
+                        Order: 13.7,
+                        LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Note that you can also use Din's Fire. Defeat all the enemies in this room to continue on.<br/><br/>In this next room, swing your sword or deku stick while standing on the east grave near the torches to spawn the wonderitem.",
+                        RequiredChoiceOfItems: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
+                    },
+                    "Wonderitem on Grave Near Side Room": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapInfo: { x: 67, y: 98, floor: "B1" },
+                        MapImageName: "Sword Wonderitem",
+                        Age: Age.EITHER,
+                        Order: 13.8,
+                        LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Note that you can also use Din's Fire. Defeat all the enemies in this room to continue on.<br/><br/>In this next room, swing your sword or deku stick while standing on the grave near the side room to spawn the wonderitem.",
+                        RequiredChoiceOfItems: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
+                    },
+                    "Wonderitem on Grave Left of Exit": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapInfo: { x: 117, y: 98, floor: "B1" },
+                        MapImageName: "Sword Wonderitem",
+                        Age: Age.EITHER,
+                        Order: 13.9,
+                        LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Note that you can also use Din's Fire. Defeat all the enemies in this room to continue on.<br/><br/>In this next room, swing your sword or deku stick while standing on the grave to the left of the crawlspace exit to spawn the wonderitem.",
+                        RequiredChoiceOfItems: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
+                    },
                     "Skulltula in Grave Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 93, y: 113, floor: "B1" },
