@@ -1025,6 +1025,15 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
+                    "Wonderitem in First Room Left Cow": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapInfo: { x: 164, y: 236, floor: "F1" },
+                        MapImageName: "Slingshot Wonderitem",
+                        Age: Age.CHILD,
+                        Order: 0.9,
+                        LongDescription: "In the first room, shoot the left cow to spawn this wonderitem.",
+                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                    },
                     "Opened First Door": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 173, y: 215, floor: "F1" },
@@ -1052,6 +1061,15 @@ let MQDungeons = {
                         Order: 3,
                         LongDescription: "In the first room, destroy the yellow rock and hit the switch underneath to spawn the chest.",
                         RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+                    },
+                    "Wonderitem in First Room Right Cow": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapInfo: { x: 184, y: 236, floor: "F1" },
+                        MapImageName: "Slingshot Wonderitem",
+                        Age: Age.CHILD,
+                        Order: 3.1,
+                        LongDescription: "In the first room, shoot the right cow to spawn this wonderitem.",
+                        RequiredItems: [Items.FAIRY_SLINGSHOT]
                     },
                     "Chest in Main Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1089,6 +1107,15 @@ let MQDungeons = {
                         Order: 5,
                         LongDescription: "These items are between the jellos in the room after the first door. Use the elevator to get to them."
                     },
+                    "Wonderitem in Elevator Room Cow": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapInfo: { x: 186, y: 179, floor: "F1" },
+                        MapImageName: "Slingshot Wonderitem",
+                        Age: Age.CHILD,
+                        Order: 5.1,
+                        LongDescription: "Shoot the cow in the room after the first door to spawn the wonderitem. It will fall below, so you'll have to retrieve it there!",
+                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                    },
                     "Chest in Elevator Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 209, y: 221, floor: "B1" },
@@ -1122,6 +1149,26 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 9,
                         LongDescription: "Drop down in the main elevator room. Dive underwater opposite the door to get to the hidden room. The rupees are in the water. You'll need iron boots, boomerang, or silver/gold scales for two of them."
+                    },
+                    "3 Wonderitems in Left Big Room Cow": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Slingshot Wonderitems",
+                        MapInfo: { x: 148, y: 84, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 9.1,
+                        LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole normally blocked by the tentacow (upper leftmost hole). Shoot the left cow three times to spawn three different wonderitems."
+                    },
+                    "3 Wonderitems in Right Big Room Cow": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Slingshot Wonderitems",
+                        MapInfo: { x: 158, y: 37, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 9.2,
+                        LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole normally blocked by the tentacow (upper leftmost hole). Shoot the right cow three times to spawn three different wonderitems."
                     },
                     "East Chest in Big Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1204,6 +1251,26 @@ let MQDungeons = {
                         Order: 16,
                         LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. The pots are in the back of this room."
                     },
+                    "3 Wonderitems in Left Like Like Room Cow": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Slingshot Wonderitems",
+                        MapInfo: { x: 186, y: 16, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 16.1,
+                        LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. Shoot the left cow three times to spawn three wonderitems."
+                    },
+                    "3 Wonderitems in Right Like Like Room Cow": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Slingshot Wonderitems",
+                        MapInfo: { x: 205, y: 16, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 16.2,
+                        LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. Shoot the right cow three times to spawn three wonderitems."
+                    },
                     "Chest in Like Like Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 195, y: 12, floor: "F1" },
@@ -1272,6 +1339,15 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
+                    "Wonderitem in Cow After Big Octo": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapInfo: { x: 70, y: 53, floor: "F2" },
+                        MapImageName: "Slingshot Wonderitem",
+                        Age: Age.CHILD,
+                        Order: 20.1,
+                        LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up and shoot the cow on the wall to spawn the wonderitem.",
+                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                    },
                     "2 Small Crates in Elevator Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
@@ -1283,19 +1359,47 @@ let MQDungeons = {
                         Order: 20.1,
                         LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. Shoot the cow in the wall in this room to spawn the crates by the door."
                     },
-                    "Cow After Big Octo": {
+                    "Wonderitem in Wiggler Room Cow": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapInfo: { x: 99, y: 276, floor: "F2" },
+                        MapImageName: "Slingshot Wonderitem",
+                        Age: Age.CHILD,
+                        Order: 20.2,
+                        LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. Shoot the cow in the wall in this room to spawn the wonderitem.",
+                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                    },
+                    "Cow in Wiggler Room": {
                         ItemGroup: ItemGroups.COW,
                         MapInfo: { x: 108, y: 251, floor: "F2" },
                         Age: Age.CHILD,
                         Order: 21,
                         LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. Shoot the cow in the wall in this room to spawn the cow on the ground."
                     },
-                    "Chest After Big Octo": {
+                    "Chest in Wiggler Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 192, y: 188, floor: "F1" },
                         Age: Age.CHILD,
                         Order: 22,
                         LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. In the next room, shoot the next cow on the wall to spawn some boxes. Take them across the jelly things to hold down the switch. Ride the platform down. Shoot the cow near where the platform landed to spawn the chest."
+                    },
+                    "2 Wonderitems in Room Before Boss Right Cow": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Slingshot Wonderitems",
+                        MapInfo: { x: 243, y: 208, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 22.1,
+                        LongDescription: "Shoot the right cow two times (it will rise up) to spawn two wonderitems."
+                    },
+                    "Wonderitem in Room Before Boss Left Cow": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapInfo: { x: 263, y: 188, floor: "F1" },
+                        MapImageName: "Slingshot Wonderitem",
+                        Age: Age.CHILD,
+                        Order: 22.2,
+                        LongDescription: "Shoot the left cow in this room to spawn this wonderitem.",
+                        RequiredItems: [Items.FAIRY_SLINGSHOT]
                     },
                     "Chest in Room Before Boss": {
                         ItemGroup: ItemGroups.CHEST,

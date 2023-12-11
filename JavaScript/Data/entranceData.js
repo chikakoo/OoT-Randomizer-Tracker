@@ -2306,6 +2306,21 @@ GrottoGroups = {
 			}
 		}
 	},
+	"3 Slingshot Wonderitems": {
+		tooltip: "A group of 3 wonderitems you need the slingshot to get.",
+		icon: "Slingshot Wonderitem",
+		buttons: {
+			"Slingshot Wonderitems": {
+				useGroupImage: true,
+				count: 3,
+				description: "Shoot something to get these items.",
+				canGet: function(age) {
+					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
+				},
+				isChildOnly: function() { return true; }
+			}
+		}
+	},
 	"4 Slingshot Wonderitems": {
 		tooltip: "A group of 4 wonderitems you need the slingshot to get.",
 		icon: "Slingshot Wonderitem",
