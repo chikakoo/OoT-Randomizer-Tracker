@@ -2194,7 +2194,7 @@ GrottoGroups = {
 		}
 	},
 	"2 Projectile Wonderitems": {
-		tooltip: "A group of two items in trees.",
+		tooltip: "A group of two wonderitems requiring projectiles.",
 		icon: "Projectile Wonderitem",
 		buttons: {
 			"Projectile Wonderitems": {
@@ -2228,6 +2228,41 @@ GrottoGroups = {
 					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
 				},
 				isChildOnly: function() { return true; }
+			}
+		}
+	},
+	"Hookshot and Bow Wonderitems": {
+		tooltip: "A group of two wonderitems - one requiring hookshot, and one requiring the bow.",
+		icon: "Projectile Wonderitem",
+		buttons: {
+			"Hookshot Wonderitem": {
+				description: "Shoot this with the hookshot to soawn the wonderitem.",
+				canGet: function(age) {
+					return ItemData.canUse(age, Items.HOOKSHOT);
+				},
+				isAdultOnly: function() { return true; }
+			},
+			"Bow Wonderitem": {
+				description: "Shoot this with the bow to soawn the wonderitem.",
+				canGet: function(age) {
+					return ItemData.canUse(age, Items.FAIRY_BOW);
+				},
+				isAdultOnly: function() { return true; }
+			}
+		}
+	},
+	"2 Hookshot Wonderitems": {
+		tooltip: "A group of two wonderitems requiring the hookshot.",
+		icon: "Hookshot Wonderitem",
+		buttons: {
+			"Hookshot Wonderitems": {
+				useGroupImage: true,
+				description: "Shoot this with the hookshot to soawn the wonderitem.",
+				count: 2,
+				canGet: function(age) {
+					return ItemData.canUse(age, Items.HOOKSHOT);
+				},
+				isAdultOnly: function() { return true; }
 			}
 		}
 	},

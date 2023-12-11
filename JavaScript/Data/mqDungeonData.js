@@ -2310,7 +2310,7 @@ let MQDungeons = {
                         MapInfo: { x: 162, y: 102, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 15,
-                        LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to the pots, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
+                        LongDescription: "In the boss key room, hookshot the torch or chest to get to the pots, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
                     },
                     "2 Pots in Boss Key Room": {
                         RequiredToAppear: function() {
@@ -2324,7 +2324,17 @@ let MQDungeons = {
                         MapInfo: { x: 162, y: 102, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 15,
-                        LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to the pot, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
+                        LongDescription: "In the boss key room, hookshot the torch or chest to get to the pot, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
+                    },
+                    "2 Wonderitems in Boss Key Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Hookshot and Bow Wonderitems",
+                        MapInfo: { x: 164, y: 91, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 15.1,
+                        LongDescription: "In the boss key room, hookshot the torch or chest to get to the pots, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side). Shoot the giant face on the wall with your bow and hookshot for two separate wonderitems."
                     }
                 }
             },
@@ -2369,6 +2379,15 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
+                    "Wonderitem in Bottom Maze": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 340, y: 150, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 19.9,
+                        LongDescription: "In the maze, hookshot the giant face you see when you first enter from the door.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
                     "3 Crates Behind Bars in Bottom Maze": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
@@ -2473,6 +2492,26 @@ let MQDungeons = {
                     narrowBridgeRoom: {}
                 },
                 ItemLocations: {
+                    "2 Wonderitems on Wall Near Very Top": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Hookshot Wonderitems",
+                        MapInfo: { x: 312, y: 125, floor: "F4" },
+                        Age: Age.ADULT,
+                        Order: 26.8,
+                        LongDescription: "On top of the boulder maze, play the Song of Time by the bombable pit. Navigate upwards via climbing and the hookshot). In the green room, hookshot the giant face on the wall twice to recieve two wonderitems."
+                    },
+                    "2 Wonderitems on Grate Near Very Top": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Hookshot Wonderitems",
+                        MapInfo: { x: 311, y: 91, floor: "F4" },
+                        Age: Age.ADULT,
+                        Order: 26.9,
+                        LongDescription: "On top of the boulder maze, play the Song of Time by the bombable pit. Navigate upwards via climbing and the hookshot). In the green room, hookshot the face on the first wall you can climb up twice to recieve two wonderitems."
+                    },
                     "Skulltula on Very Top": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 219, y: 147, floor: "F5" },
@@ -2587,6 +2626,15 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 33,
                         LongDescription: "These crates are on the left side of the room with lava and grates. Go to the door to the narrow bridge room and climb up the small ledge to get access to the crates."
+                    },
+                    "Wonderitem in Lava Grate Room": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 216, y: 172, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 32.1,
+                        LongDescription: "In the room with lava and grates, hookshot the upper part of the face that's on the wall of the ledge that the exit door is on.",
+                        RequiredItems: [Items.HOOKSHOT]
                     },
                     "Crate by Lava Grate Room Exit": {
                         ItemGroup: ItemGroups.CRATE,
@@ -2704,12 +2752,30 @@ let MQDungeons = {
                         Order: 39,
                         LongDescription: "From the start of the maze, navigate to the door ahead by jumping on the SoT block. Enter and hookshot across the room. Hammer the switch to unbar the door. Now, navigate around the maze clockwise to get to the door.<br/><br/>By the exit to the fire maze (after you hit the switch to pass the giant fire wall), there are 2 pots to either side of the door."
                     },
+                    "Wonderitem by Flare Dancer Room": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 73, y: 142, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 39.1,
+                        LongDescription: "At the end of the fire wall maze, hookshot the face above the door leading to the flare dancer room to spawn this wonderitem.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
                     "Freestanding Key in Flare Dancer Room": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 37, y: 178, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 40,
                         LongDescription: "Proceed from the center of the maze. Hit the switch to lower the fire wall. Enter the next room and kill the Flare Dancer. Jump on the center platform to make it rise, but immediately get off. The item should be where the platform used to be."
+                    },
+                    "Wonderitem After Flare Dancer Room": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 337, y: 173, floor: "F4" },
+                        Age: Age.ADULT,
+                        Order: 40.1,
+                        LongDescription: "Ride the platform up after the Flare Dancer room. Hookshot the giant face on the wall in the green room to spawn the wonderitem.",
+                        RequiredItems: [Items.HOOKSHOT]
                     }
                 }
             },
@@ -2735,7 +2801,16 @@ let MQDungeons = {
             roomAfterTopOfTemple: {
                 Exits: {},
                 ItemLocations: {
-                    "Skulltula after Top of Temple": {
+                    "Wonderitem After Top of Temple": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 190, y: 136, floor: "F4" },
+                        Age: Age.ADULT,
+                        Order: 43.9,
+                        LongDescription: "From the top of the temple, hammer the face block to continue on. After unlocking the door, hammer the small face on the ground to lower the staircase. Hookshot the giant face that's revealed to spawn the wonderitem (it also unbars the door).",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "Skulltula After Top of Temple": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 208, y: 227, floor: "F4" },
                         Age: Age.ADULT,
