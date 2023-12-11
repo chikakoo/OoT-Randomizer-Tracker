@@ -1771,9 +1771,11 @@ let MapLocations = {
 		MapGroup: MapGroups.KAKARIKO,
         Floors: ["DMP", "WND", "POT"],
         StartingFloorIndex: 0,
+        UsesDisplayGroups: true,
         Regions: {
-            // Dampe's Grave and Windmill area
+            // Dampe's Grave
             dampesGrave: {
+                DisplayGroup: "Dampe's Grave",
                 UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
                 Exits: {
                     windmillTop: {
@@ -1788,18 +1790,6 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    "Hookshot Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 260, y: 247, floor: "DMP" },
-                        Age: Age.EITHER,
-                        LongDescription: "This is the prize for completing the Dampe Race for the first time."
-                    },
-                    "Race Reward": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 267, y: 245, floor: "DMP" },
-                        Age: Age.EITHER,
-                        LongDescription: "This is the prize for completing the Dampe Race in less than one minute."
-                    },
                     "3 Pots Left of Grave Entrance": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -1930,9 +1920,23 @@ let MapLocations = {
                         MapInfo: { x: 165, y: 160, floor: "DMP" },
                         Age: Age.EITHER,
                         LongDescription: "After the second door, at the ledges, climb up the left ledge and go next to the redead for the wonderitem.",
+                    },
+                    "Hookshot Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 260, y: 247, floor: "DMP" },
+                        Age: Age.EITHER,
+                        LongDescription: "This is the prize for completing the Dampe Race for the first time."
+                    },
+                    "Race Reward": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 267, y: 245, floor: "DMP" },
+                        Age: Age.EITHER,
+                        LongDescription: "This is the prize for completing the Dampe Race in less than one minute."
                     }
                 }
             },
+
+            // Windmill
             windmillTop: {
                 ExcludeFromSpawnList: true,
                 Exits: {
@@ -1942,6 +1946,7 @@ let MapLocations = {
                 ItemLocations: {}
             },
             windmillItem: {
+                DisplayGroup: "Windmill",
                 ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {
@@ -1954,6 +1959,7 @@ let MapLocations = {
                 }
             },
             windmill: {
+                DisplayGroup: "Windmill",
                 Exits: {
                     windmillItem: {
                         RequiredChildItems: [Items.BOOMERANG],
@@ -1991,6 +1997,7 @@ let MapLocations = {
 
             // Potion shop
             kakPotionShop: {
+                DisplayGroup: "Potion Shop",
                 Exits: {
                     "Potion Shop Front": {
                         OwExit: OwExits["Windmill-Kak Potion"]["Potion Shop Front"]
@@ -4016,6 +4023,7 @@ let MapLocations = {
         MapGroup: MapGroups.DESERT,
         Floors: ["J1", "J2", "J3", "J4", "KIT", "TOP"],
         StartingFloorIndex: 0,
+        UsesDisplayGroups: true,
         Regions: {
             main: {
                 Exits: {},
@@ -4050,6 +4058,7 @@ let MapLocations = {
                 }
             },
             jail1: {
+                DisplayGroup: "Thieves' Hideout J1",
                 Exits: {
                     main: {},
                     "Jail 1 Left": {
@@ -4104,6 +4113,7 @@ let MapLocations = {
                 }
             },
             jail2: {
+                DisplayGroup: "Thieves' Hideout J2",
                 Exits: {
                     jail1: {}, //Savewarp
                     "Jail 2 Left": {
@@ -4157,6 +4167,7 @@ let MapLocations = {
                 }
             },
             jail3: {
+                DisplayGroup: "Thieves' Hideout J3",
                 Exits: {
                     jail1: {}, //Savewarp
                     "Jail 3 Left": {
@@ -4186,15 +4197,6 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "These pots are on the opposite wall of the closed jail."
                     },
-                    "4 Pots in Open Cell by Jail 3": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "4 Pots",
-                        MapInfo: { x: 157, y: 217, floor: "J3" },
-                        Age: Age.EITHER,
-                        LongDescription: "These pots are in the open cell next to jail 3."
-                    },
                     "2 Crates by Jail 3": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
@@ -4203,6 +4205,15 @@ let MapLocations = {
                         MapInfo: { x: 127, y: 115, floor: "J3" },
                         Age: Age.EITHER,
                         LongDescription: "The crates are in the opposite corner of the locked cell door."
+                    },
+                    "4 Pots in Open Cell by Jail 3": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Pots",
+                        MapInfo: { x: 157, y: 217, floor: "J3" },
+                        Age: Age.EITHER,
+                        LongDescription: "These pots are in the open cell next to jail 3."
                     },
                     "Left Skull Jail 3 Wonderitem": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -4223,6 +4234,7 @@ let MapLocations = {
                 }
             },
             jail4: {
+                DisplayGroup: "Thieves' Hideout J4",
                 jail1: {}, //Savewarp
                 Exits: {
                     "Jail 4 Entrance": {
@@ -4230,16 +4242,6 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    "Jail 4 Guard Key": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 303, y: 38, floor: "J4" },
-                        Age: Age.EITHER,
-                        RequiredItems: [ItemSets.SWORDS],
-                        RequiredToAppear: function() { 
-                            return Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.VANILLA;
-                        },
-                        LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Face the entrance you just left. As Child, you must enter the door to your left and navigate across to the other side of the room. As Adult, you can jump up to the ledge to your right with a slight angled jump. Climb up the vines and navigate to the door near where the skulltula on the wall would be at night.<br/><br/>Once inside, wait for a bit first for the guard and knock her out or sprint past her before following the path to your right. Eventually you'll reach the jail. Take out the guard to get the item."
-                    },
                     "Crate by Jail 4": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 80, y: 202, floor: "J4" },
@@ -4261,10 +4263,21 @@ let MapLocations = {
                         Age: Age.ADULT,
                         RequiredItems: [Items.FAIRY_BOW],
                         LongDescription: "Shoot the skull on the wall on the turn just before jail 4 to get this wonderitem."
+                    },
+                    "Jail 4 Guard Key": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 303, y: 38, floor: "J4" },
+                        Age: Age.EITHER,
+                        RequiredItems: [ItemSets.SWORDS],
+                        RequiredToAppear: function() { 
+                            return Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.VANILLA;
+                        },
+                        LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Face the entrance you just left. As Child, you must enter the door to your left and navigate across to the other side of the room. As Adult, you can jump up to the ledge to your right with a slight angled jump. Climb up the vines and navigate to the door near where the skulltula on the wall would be at night.<br/><br/>Once inside, wait for a bit first for the guard and knock her out or sprint past her before following the path to your right. Eventually you'll reach the jail. Take out the guard to get the item."
                     }
                 }
             },
             kitchenHallway: {
+                DisplayGroup: "Thieves' Hideout Kitchen",
                 Exits: {
                     jail1: {}, //Savewarp
                     kitchenTopLeft: {
@@ -4328,6 +4341,7 @@ let MapLocations = {
                 }
             },
             kitchenTopLeft: {
+                DisplayGroup: "Thieves' Hideout Kitchen",
                 Exits: {
                     jail1: {}, //Savewarp
                     kitchenPots: {
@@ -4357,6 +4371,7 @@ let MapLocations = {
                 ItemLocations: {}
             },
             kitchenTopRight: {
+                DisplayGroup: "Thieves' Hideout Kitchen",
                 Exits: {
                     jail1: {}, //Savewarp
                     kitchenPots: {
@@ -4384,6 +4399,7 @@ let MapLocations = {
                 ItemLocations: {}
             },
             kitchenPots: {
+                DisplayGroup: "Thieves' Hideout Kitchen",
                 ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {
@@ -4399,6 +4415,7 @@ let MapLocations = {
                 }
             },
             topLower: {
+                DisplayGroup: "Thieves' Hideout Top",
                 Exits: {
                     jail1: {}, //Savewarp
                     topUpper: {
@@ -4479,6 +4496,7 @@ let MapLocations = {
                 }
             },
             topUpper: {
+                DisplayGroup: "Thieves' Hideout Top",
                 Exits: {
                     jail1: {}, //Savewarp
                     topLower: {

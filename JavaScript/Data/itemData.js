@@ -519,14 +519,14 @@ let ShopItemDictionary = {
 	"maskoftruth": "Mask of Truth.png",
 	"truth": "Mask of Truth.png",
 
-	"goronmask": "Entrance Groups/Button - Goron Mask.png",
-	"goron": "Entrance Groups/Button - Goron Mask.png",
+	"goronmask": "Goron Mask.png",
+	"goron": "Goron Mask.png",
 
-	"zoramask": "Entrance Groups/Button - Zora Mask.png",
-	"zora": "Entrance Groups/Button - Zora Mask.png",
+	"zoramask": "Zora Mask.png",
+	"zora": "Zora Mask.png",
 
-	"gerudomask": "Entrance Groups/Button - Gerudo Mask.png",
-	"gerudo": "Entrance Groups/Button - Gerudo Mask.png",
+	"gerudomask": "Gerudo Mask.png",
+	"gerudo": "Gerudo Mask.png",
 
 	// Adult trade sequence items
 	"pocketegg": "Pocket Egg Pocket Egg.png",

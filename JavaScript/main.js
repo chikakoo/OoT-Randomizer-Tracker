@@ -37,11 +37,13 @@ let _assignItemLocationAndExitValues = function() {
 			let regions = mapObject[mapName].Regions;
 			Object.keys(regions).forEach(function(regionName) {
 				let itemLocations = regions[regionName].ItemLocations;
+				let displayGroup = regions[regionName].DisplayGroup;
 				Object.keys(itemLocations).forEach(function(itemLocationName) {
 					let itemLocation = itemLocations[itemLocationName];
 					itemLocation.Name = itemLocationName;
 					itemLocation.Map = mapName;
 					itemLocation.Region = regionName;
+					if (displayGroup) { itemLocation.DisplayGroup = displayGroup; }
 					itemLocation.IsDungeon = mapObject[mapName].MapGroup === MapGroups.DUNGEONS;
 				});
 
@@ -49,6 +51,9 @@ let _assignItemLocationAndExitValues = function() {
 				Object.keys(exits).forEach(function(exitName) {
 					let exit = exits[exitName];
 					exit.Name = exitName;
+					if (displayGroup && exit.OwExit) {
+						exit.OwExit.DisplayGroup = displayGroup;
+					}
 				});
 			});
 		});

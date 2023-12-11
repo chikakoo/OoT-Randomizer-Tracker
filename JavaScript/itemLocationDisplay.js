@@ -34,16 +34,37 @@ let ItemLocationDisplay = {
 		if (!mapName) { mapName = this.currentLocationName; }
 
 		let groupedItemLocationInfo = {};
+		let mapInfo = MapLocations[mapName];
+
+		let needToSortDungeon = mapInfo.MapGroup === MapGroups.DUNGEONS &&
+			Settings.TrackerSettings.dungeonItemDisplay === DungeonItemDisplaySettings.BY_SUGGESTED_ORDER;
+		let useDisplayGroups = mapInfo.UsesDisplayGroups;
 		Data.getAllItemLocations(mapName).forEach(function(itemLocation) {
-			let group = itemLocation.OverrideItemGroup !== undefined 
-				? itemLocation.OverrideItemGroup 
-				: itemLocation.ItemGroup;
+			let group = (useDisplayGroups || needToSortDungeon)
+				? (itemLocation.DisplayGroup || "Item Locations")
+				: (itemLocation.OverrideItemGroup || itemLocation.ItemGroup);
 			
 			if (!groupedItemLocationInfo[group]) {
 				groupedItemLocationInfo[group] = [];
 			}
 			groupedItemLocationInfo[group].push(itemLocation);
 		});
+
+		if (needToSortDungeon || useDisplayGroups) {
+			Object.values(groupedItemLocationInfo).forEach(groupedItemLocations => {
+				if (mapInfo.UseAltOrder && mapInfo.UseAltOrder()) {
+					groupedItemLocations.sort((loc1, loc2) => (loc1.AltOrder > loc2.AltOrder) ? 1 : -1);
+				} else {
+					groupedItemLocations.sort((loc1, loc2) => {
+						if (!loc1.Order && !loc2.Order) {
+							return 1;
+						}
+						return (loc1.Order > loc2.Order) ? 1 : -1
+					});
+				}
+			});
+		}
+
 		return groupedItemLocationInfo;
 	},
 
@@ -185,75 +206,36 @@ let ItemLocationDisplay = {
 		let travelDiv = dce("div");
 		travelDiv.id = "travelDiv";
 		mainContainer.appendChild(travelDiv);
-		
-		// Display by suggested order, if applicable
-		// TODO: Use the ELSE code below
-		// - pass true to _createItemLocations to include the additional icon (probably just make it the default behavior)
-		// - rework getGroupedLocationInfo to do what we want, and probably just call it in this function to get the groups
-		// - set the appropriate values on all the item locations
-		// - deal with sorting somehow! probably in getGroupedLocationInfo instead of here
-		// - probably remove DungeonItemDisplaySettings
-		let isDungeon = mapInfo.MapGroup === MapGroups.DUNGEONS;
-		if (isDungeon && Settings.TrackerSettings.dungeonItemDisplay === DungeonItemDisplaySettings.BY_SUGGESTED_ORDER) {
-			let allLocations = [];
-			Object.keys(groupedItemLocationInfo).forEach(function(groupId) {
-				if (groupedItemLocationInfo[groupId]) {
-					groupedItemLocationInfo[groupId].forEach(function(itemLocation) {
-						allLocations.push(itemLocation);
-					});
-				}
-			});
 
-			if (mapInfo.UseAltOrder && mapInfo.UseAltOrder()) {
-				allLocations.sort((loc1, loc2) => (loc1.AltOrder > loc2.AltOrder) ? 1 : -1);
-			} else {
-				allLocations.sort((loc1, loc2) => (loc1.Order > loc2.Order) ? 1 : -1);
+		let _this = this;
+		Object.keys(groupedItemLocationInfo).forEach(function(groupId) {
+			let isSortedDungeon = mapInfo.MapGroup === MapGroups.DUNGEONS &&
+				Settings.TrackerSettings.dungeonItemDisplay === DungeonItemDisplaySettings.BY_SUGGESTED_ORDER;
+			let usesDisplayGroups = isSortedDungeon || mapInfo.UsesDisplayGroups;
+
+			let itemGroup = groupedItemLocationInfo[groupId]
+			let itemGroupDiv = dce("div", "item-group");
+			mainContainer.appendChild(itemGroupDiv);
+			
+			let itemGroupTitleDiv = dce("div", "item-group-title");
+			itemGroupTitleDiv.onclick = _this._toggleItemLocations.bind(_this, itemGroupDiv);
+			itemGroupDiv.appendChild(itemGroupTitleDiv);
+			
+			let itemGroupImageDiv = dce("div", "item-group-image");
+			itemGroupImageDiv.style.backgroundImage = usesDisplayGroups
+				? getItemGroupImageFromName(groupId)
+				: getItemGroupImagePath(groupId);
+			itemGroupTitleDiv.appendChild(itemGroupImageDiv);
+			
+			let itemGroupTextDiv = dce("div", "item-group-text");
+
+			let itemGroupName = usesDisplayGroups ? groupId : getItemGroupName(groupId);
+			if (itemGroupName) {
+				itemGroupTextDiv.innerText = itemGroupName
+				itemGroupTitleDiv.appendChild(itemGroupTextDiv);
+				_this._createItemLocations(itemGroup, itemGroupDiv, usesDisplayGroups);
 			}
-			
-			let allItemLocationsDiv = dce("div", "item-group");
-			
-			let allItemLocationsTitleDiv = dce("div", "item-group-title");
-			allItemLocationsTitleDiv.onclick = this._toggleItemLocations.bind(this, allItemLocationsDiv);
-			allItemLocationsDiv.appendChild(allItemLocationsTitleDiv);
-			
-			let allItemLocationsImageDiv = dce("div", "item-group-image");
-			allItemLocationsImageDiv.style.backgroundImage = getItemGroupImagePath(ItemGroups.CHEST);
-			allItemLocationsTitleDiv.appendChild(allItemLocationsImageDiv);
-			
-			let allItemLocationsTextDiv = dce("div", "item-group-text");
-			allItemLocationsTextDiv.innerText = "Ordered Item Locations";
-			allItemLocationsTitleDiv.appendChild(allItemLocationsTextDiv);
-			
-			mainContainer.appendChild(allItemLocationsDiv);
-			this._createItemLocations(allLocations, allItemLocationsDiv, true);
-		} 
-		
-		// Normal item display
-		else {
-			let _this = this;
-			Object.keys(groupedItemLocationInfo).forEach(function(groupId) {
-				let itemGroup = groupedItemLocationInfo[groupId]
-				let itemGroupDiv = dce("div", "item-group");
-				mainContainer.appendChild(itemGroupDiv);
-				
-				let itemGroupTitleDiv = dce("div", "item-group-title");
-				itemGroupTitleDiv.onclick = _this._toggleItemLocations.bind(_this, itemGroupDiv);
-				itemGroupDiv.appendChild(itemGroupTitleDiv);
-				
-				let itemGroupImageDiv = dce("div", "item-group-image");
-				itemGroupImageDiv.style.backgroundImage = getItemGroupImagePath(groupId);
-				itemGroupTitleDiv.appendChild(itemGroupImageDiv);
-				
-				let itemGroupTextDiv = dce("div", "item-group-text");
-
-				let itemGroupName = getItemGroupName(groupId);
-				if (itemGroupName) {
-					itemGroupTextDiv.innerText = itemGroupName
-					itemGroupTitleDiv.appendChild(itemGroupTextDiv);
-					_this._createItemLocations(itemGroup, itemGroupDiv);
-				}
-			});
-		}
+		});
 	},
 
 	/**

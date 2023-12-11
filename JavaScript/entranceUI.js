@@ -45,7 +45,7 @@ let EntranceUI = {
 	 */
 	getEntranceGroupIcon: function(group, groupName) {
 		let iconName = group.icon ? group.icon : groupName;
-		return `url("Images/Entrance Groups/${iconName}.png")`;
+		return `url("Images/${iconName}.png")`;
 	},
 
 	/**
@@ -160,7 +160,7 @@ let EntranceUI = {
 			buttonDiv.title = button.description;
 			buttonDiv.style.backgroundImage = button.useGroupImage
 				? _this.getEntranceGroupIcon(itemLocationGroup, groupName)
-				: `url("Images/Entrance Groups/${buttonIconName}.png")`;
+				: `url("Images/${buttonIconName}.png")`;
 
 			if (button.time) {
 				if (button.time() === Time.DAY) {

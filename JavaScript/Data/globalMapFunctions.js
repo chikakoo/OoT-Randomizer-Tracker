@@ -57,18 +57,12 @@ let getItemGroupName = function(groupId) {
 };
 
 let getItemGroupImagePath = function(groupId, name) {
-	if (name) {
-		return getItemGroupImageFromName(name);
-	}
-
-	let groupNameString = getItemGroupName(groupId);
-	if (groupNameString === null) { return ""; }
-	
-	return `url("Images/Group Name ${groupNameString}.png")`;
+	let imageName = name || getItemGroupName(groupId);
+	return getItemGroupImageFromName(imageName);
 };
 
 let getItemGroupImageFromName = function(name) {
-	return `url("Images/${name}.png")`;
+	return name ? `url("Images/${name}.png")` : "";
 };
 
 /**
