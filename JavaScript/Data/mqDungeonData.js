@@ -5718,6 +5718,26 @@ let MQDungeons = {
                         Order: 1.1,
                         LongDescription: "In the left alcove at the front of the main room, bomb the rock in the wall. Shoot it with your slingshot or bow to open a gate in the southeast corner of the giant room where the pot is.",
                         RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.PROJECTILES]
+                    },
+                    "4 Wonderitems in Northwest Picture": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Slingshot Wonderitems",
+                        MapInfo: { x: 129, y: 45, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 5.1,
+                        LongDescription: "Shoot the lens of truth picture in the northwest corner of the main room to spawn wonderitems (do it 4 times to get all 4)."
+                    },
+                    "4 Wonderitems in Northeast Picture": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Slingshot Wonderitems",
+                        MapInfo: { x: 261, y: 45, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 5.2,
+                        LongDescription: "Shoot the lens of truth picture in the northeast corner of the main room to spawn wonderitems (do it 4 times to get all 4)."
                     }
                 }
             },
@@ -5728,6 +5748,9 @@ let MQDungeons = {
                         Map: "Bottom of the Well",
                         LockedDoor: "Locked Door in Floor Master Room",
                         RequiredItems: [ItemSets.EXPLOSIVES]
+                    },
+                    eastCenterRoom: {
+                        RequiredItems: [ItemSets.DISTANT_SWITCH_ITEMS]
                     }
                 },
 
@@ -5756,25 +5779,6 @@ let MQDungeons = {
                         Order: 9,
                         LongDescription: "WALL MASTER WARNING:<br/>Navigate to the back of the main room and play Zelda's Lullaby at the triforce. This will open a bunch of gates. Proceed behind you to the center room - the pots are on the right side of the room surrounded by cell walls.<br/><br/>Alternatively, you can bomb the rocks near the middle-west of the main room. Sidehop then jumpslash over the hole in the ground to get to the center area."
                     },
-                    "3 Pots in East Center Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 231, y: 83, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 10,
-                        LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door. Enter it - the pots are marking the invisible path around the room.",
-                        RequiredItems: [ItemSets.DISTANT_SWITCH_ITEMS]
-                    },
-                    "Freestanding Item in East Center Room": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 216, y: 80, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 11,
-                        LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door. Enter it, and navigate counter-clockwise around the room to get to the item.",
-                        RequiredItems: [ItemSets.DISTANT_SWITCH_ITEMS]
-                    },
                     "3 Hearts in Basement": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -5791,6 +5795,38 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 16,
                         LongDescription: "WALL MASTER WARNING:<br/>To get to the basement, you can fall down a hole in the center room (not the very center). Navigate to the northwestern part of the basement to get to the skulltula. Watch out for invisible giant skulltulas on the way."
+                    }
+                }
+            },
+            eastCenterRoom: {
+                Exits: {},
+                ItemLocations: {
+                    "3 Pots in East Center Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 231, y: 83, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 10,
+                        LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door. Enter it - the pots are marking the invisible path around the room."
+                    },
+                    "Freestanding Item in East Center Room": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 216, y: 80, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 11,
+                        LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door. Enter it, and navigate counter-clockwise around the room to get to the item."
+                    },
+                    "4 Wonderitems in East Center Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Slingshot Wonderitems",
+                        MapInfo: { x: 218, y: 74, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 11.1,
+                        LongDescription: "Shoot the lens of truth picture in the east center room to spawn wonderitems (do it 4 times to get all 4)."
                     }
                 }
             },
@@ -6000,12 +6036,21 @@ let MQDungeons = {
                         Order: 17,
                         LongDescription: "Either get here after shooting the eye in the starting room, or going around form the big lava room. Kill all the enemies to spawn the chest.",
                         RequiredChoiceOfChildItems: [Items.DEKU_STICK, Items.BOMB, Items.BOMBCHU]
+                    },
+                    "Wonderitem in Armos Room": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Bow Wonderitem",
+                        MapInfo: { x: 257, y: 221 },
+                        Age: Age.ADULT,
+                        Order: 17.1,
+                        LongDescription: "Either get here after shooting the eye in the starting room, or going around form the big lava room. Shoot the symbol above the door leading to the big lava room to spawn this wonderitem.",
+                        RequiredItems: [Items.FAIRY_BOW]
                     }
                 }
             },
             leftArea: {
                 Exits: {
-                    afterRupeeRoom: {
+                    roomWithSilverBlock: {
                         Map: "Training Grounds",
                         SilverRupeeIndex: 0,
                         CustomRequirement: function(age) {
@@ -6060,7 +6105,7 @@ let MQDungeons = {
                     }
                 }
             },
-            afterRupeeRoom: {
+            roomWithSilverBlock: {
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.gtgChildVineClips && !Settings.RandomizerSettings.shuffleSilverRupees; 
                 },
@@ -6078,7 +6123,7 @@ let MQDungeons = {
                             );
                         }
                     },
-                    spinningRoom: {
+                    eyeStatueRoom: {
                         Age: Age.ADULT,
                         RequiredSongs: [Songs.SONG_OF_TIME],
                         CustomRequirement: function(age) {
@@ -6109,10 +6154,10 @@ let MQDungeons = {
                     }
                 }
             },
-            spinningRoom: {
+            eyeStatueRoom: {
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {
-                    afterRupeeRoom: {
+                    roomWithSilverBlock: {
                         Age: Age.CHILD // This won't be useful as adult
                     },
                     armosRoom: {
@@ -6130,13 +6175,28 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
-                    "Chest in Spinning Room": {
+                    "Wonderitem on Eye Statue": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapInfo: { x: 163, y: 91 },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        Order: 9.9,
+                        LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down.<br/><br/>Use hover boots or the longshot to navigate to the top of the center statue to get this wonderitem.",
+                        CustomRequirement: function(age) {
+                            return Data.canMegaFlip(age) || (age === Age.ADULT && 
+                                (
+                                    Settings.GlitchesToAllow.gtgEyeStatueWonderItemJumpslash || 
+                                    ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT])
+                                )
+                            );
+                        }
+                    },
+                    "Chest in Eye Statue Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 163, y: 60 },
                         Age: Age.ADULT,
                         Order: 10,
                         LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Jump to the spinning ring and shoot the eyes of the statues to spawn the chest.",
-                        Region: "spinningRoom",
                         RequiredItems: [Items.FAIRY_BOW]
                     },
                     "Side Fire Iron Knuckle Chest": {
@@ -6409,7 +6469,7 @@ let MQDungeons = {
             iceArrowsRoom: {
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {
-                    spinningRoom: {
+                    eyeStatueRoom: {
                         Age: Age.CHILD // Only useful for Child
                     }
                 },

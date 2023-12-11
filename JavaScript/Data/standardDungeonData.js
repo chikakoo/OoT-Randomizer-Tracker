@@ -3837,6 +3837,15 @@ let StandardDungeons = {
                         Order: 36,
                         LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room to your right. Cast Din's Fire to take out the spike walls to clear the path to the boss key chest.<br/><br/>If you don't have it, run up against the right side of the wall in the back of the room and have the redead freeze you. You should phase through the wall."
                     },
+                    "Wonderitem in Triple Skull Room": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Bow Wonderitem",
+                        MapInfo: { x: 66, y: 98, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 36.1,
+                        LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room straight across from you.<br/><br/>Once inside, turn around and shoot the picture on the wall with your bow to spawn the wonderitem.",
+                        RequiredItems: [Items.FAIRY_BOW]
+                    },
                     "Skulltula in Triple Skull Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 28, y: 98, floor: "B1" },
@@ -5858,10 +5867,12 @@ let StandardDungeons = {
                         Order: 8.9,
                         LongDescription: "This is the room either after the wolfos room, or after the room with the hammerable pillars. If coming from the former, you need to use your hookshot to hook a target beyond a fake wall above the fake door. If coming from the latter, bash the pillars with your hammer, then shoot the eye switch. Otherwise, you must use scarecrow's song (the scarecrow is near the door) to get up.<br/><br/>Use hover boots to navigate to the top of the center statue to get this wonderitem.",
                         CustomRequirement: function(age) {
-                            if (age === Age.ADULT) {
-                                return Settings.GlitchesToAllow.gtgEyeStatueWonderItemJumpslash || Equipment.HOVER_BOOTS.playerHas;
-                            }
-                            return Data.canMegaFlip(age);
+                            return Data.canMegaFlip(age) || (age === Age.ADULT && 
+                                (
+                                    Settings.GlitchesToAllow.gtgEyeStatueWonderItemJumpslash || 
+                                    ItemData.canUse(age, [Equipment.HOVER_BOOTS])
+                                )
+                            );
                         }
                     },
                     "Eye Statue Room Top Room Chest": {
