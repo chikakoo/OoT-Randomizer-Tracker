@@ -5645,6 +5645,15 @@ let StandardDungeons = {
                         Order: 17.1,
                         LongDescription: "This is either the room to the right of the entrance, or the southern path from the big lava room. Climb the platform from one of the skinny sides to gain access to these hearts.",
                     },
+                    "Wonderitem in Dinalfos/Beamos Room": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Bow Wonderitem",
+                        MapInfo: { x: 257, y: 221 },
+                        Age: Age.ADULT,
+                        Order: 17.2,
+                        LongDescription: "This is either the room to the right of the entrance, or the southern path from the big lava room. Shoot the symbol above the room leading to the big lava room with your bow to spawn this wonderitem.",
+                        RequiredItems: [Items.FAIRY_BOW]
+                    },
                      
                      // Locked Doors
                      "Locked Door 1 On Main Path": {
@@ -5819,7 +5828,7 @@ let StandardDungeons = {
                             );
                         }
                     },
-                    spinningRoom: {
+                    eyeStatueRoomTop: {
                         Age: Age.ADULT,
                         RequiredItems: [Items.HOOKSHOT]
                     }
@@ -5835,13 +5844,45 @@ let StandardDungeons = {
                     }
                 }
             },
-            spinningRoom: {
+            eyeStatueRoomTop: {
                 Exits: {
-                    bigLavaRoomUpperBack: {},
-                    silverBlockRoom: {
-                         // Only useful for Child, so we'll do this way so we don't have to break into top/bottom sections
-                        Age: Age.CHILD
+                    silverBlockRoom: {},
+                    eyeStatueRoomBottom: {}
+                },
+                ItemLocations: {
+                    "Wonderitem on Eye Statue": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapInfo: { x: 163, y: 91 },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        Order: 8.9,
+                        LongDescription: "This is the room either after the wolfos room, or after the room with the hammerable pillars. If coming from the former, you need to use your hookshot to hook a target beyond a fake wall above the fake door. If coming from the latter, bash the pillars with your hammer, then shoot the eye switch. Otherwise, you must use scarecrow's song (the scarecrow is near the door) to get up.<br/><br/>Use hover boots to navigate to the top of the center statue to get this wonderitem.",
+                        CustomRequirement: function(age) {
+                            if (age === Age.ADULT) {
+                                return Settings.GlitchesToAllow.gtgEyeStatueWonderItemJumpslash || Equipment.HOVER_BOOTS.playerHas;
+                            }
+                            return Data.canMegaFlip(age);
+                        }
+                    },
+                    "Eye Statue Room Top Room Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 165, y: 133 },
+                        Age: Age.ADULT,
+                        Order: 10,
+                        LongDescription: "This is the room either after the wolfos room, or after the room with the hammerable pillars. If coming from the former, you need to use your hookshot to hook a target beyond a fake wall above the fake door. If coming from the latter, bash the pillars with your hammer, then shoot the eye switch. In the eye statue room, get to the central platform - it will start spinning. Shoot each eye with an arrow to unlock a door on top. If you came from the wolfos room, jump in the lava to respawn on top to get to it. Otherwise, you must use scarecrow's song (the scarecrow is near the door) to get up.",
+                        RequiredItems: [Items.FAIRY_BOW]
                     }
+                }
+            },
+            eyeStatueRoomBottom: {
+                Exits: {
+                    eyeStatueRoomTop: {
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            return Data.canHookScarecrow(age);
+                        }
+                    },
+                    bigLavaRoomUpperBack: {}
                 },
                 ItemLocations: {
                     "Eye Statue Room Bottom Chest": {
@@ -5851,15 +5892,17 @@ let StandardDungeons = {
                         Order: 9,
                         LongDescription: "This is the room either after the wolfos room, or after the room with the hammerable pillars. If coming from the former, you need to use your hookshot to hook a target beyond a fake wall above the fake door. If coming from the latter, bash the pillars with your hammer, then shoot the eye switch. In the eye statue room, get to the central platform - it will start spinning. Shoot each eye with an arrow to spawn the chest.",
                         RequiredItems: [Items.FAIRY_BOW]
+                    }
+                }
+            },
+            hammerPillarRoom: {
+                Exits: {
+                    eyeStatueRoomBottom: {
+                        RequiredItems: [Items.MEGATON_HAMMER, ItemSets.PROJECTILES]
                     },
-                    "Eye Statue Room Top Room Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 165, y: 133 },
-                        Age: Age.ADULT,
-                        Order: 10,
-                        LongDescription: "This is the room either after the wolfos room, or after the room with the hammerable pillars. If coming from the former, you need to use your hookshot to hook a target beyond a fake wall above the fake door. If coming from the latter, bash the pillars with your hammer, then shoot the eye switch. In the eye statue room, get to the central platform - it will start spinning. Shoot each eye with an arrow to unlock a door on top. If you came from the wolfos room, jump in the lava to respawn on top to get to it. Otherwise, you must use scarecrow's song (the scarecrow is near the door) to get up.",
-                        RequiredItems: [Items.FAIRY_BOW]
-                    },
+                    bigLavaRoomUpperBack: {}
+                },
+                ItemLocations: {
                     "Chest in Room with Pillars": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 256, y: 75 },
@@ -5873,6 +5916,15 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "This is either after the eye statue room, or after the big lava room. Use your hammer on the pillars until you find a floor switch. Step on it to remove the flames from the chest. Be sure to get it before they come back!<br/><br/>If you have no hammer, line up with the front of the chest and walk into the fire and keep holding up. Open the chest when you reach it before the fire wears off."
+                    },
+                    "Wonderitem in Room with Pillars": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Bow Wonderitem",
+                        MapInfo: { x: 255, y: 109 },
+                        Age: Age.ADULT,
+                        Order: 12.1,
+                        LongDescription: "In the room with the hammerable pillars, shoot the symbol above the door leading to the big lava room with your bow to spawn this wonderitem.",
+                        RequiredItems: [Items.FAIRY_BOW]
                     }
                 }
             },
@@ -5963,6 +6015,7 @@ let StandardDungeons = {
             },  
             bigLavaRoomUpperBack: {
                 Exits: {
+                    hammerPillarRoom: {},
                     bigLavaRoomBack: {},
                     waterRoom: {
                         Map: "Training Grounds",
@@ -6114,7 +6167,7 @@ let StandardDungeons = {
             },
             mazeAfterDoor1: {
                 Exits: {
-                    spinningRoom: {
+                    eyeStatueRoomTop: {
                         Age: Age.CHILD,
                         RequiredItems: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
                         CustomRequirement: function(age) {

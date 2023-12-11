@@ -299,6 +299,7 @@ let Settings = {
 		gtgChildVineClips: false,
 		gtgSlopesRoomFireWallSkip: false,
 		gtgSilverBlockSkipWithHammerSuperslide: false,
+		gtgEyeStatueWonderItemJumpslash: false,
 		mqGtgEyeStatueJumpslash: false,
 		
 		ganonFireNoTunic: false,
