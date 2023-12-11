@@ -4558,6 +4558,15 @@ let MQDungeons = {
                         Order: 41,
                         LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>Navigate to the room to your right (the north one). The pot is in front of you."
                     },
+                    "Wonderitem in Triple Skull Room": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Bow Wonderitem",
+                        MapInfo: { x: 66, y: 98, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 43.9,
+                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>In the invisible maze, navigate to the west room. Go through and turn around. Shoot the upper part of the picture above the door to spawn the wonderitem.",
+                        RequiredItems: [Items.FAIRY_BOW]
+                    },
                     "Freestanding Item in Triple Skull Room": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 31, y: 99, floor: "B1" },
@@ -5333,6 +5342,16 @@ let MQDungeons = {
                         Order: 40,
                         AltOrder: 32,
                         LongDescription: "In the beamos room, the puzzle is to play the Song of Time to move the blocks so that the little box falls down onto one of the blocks. Play it by the left side of the room, then by the hole twice. You then use that box to hold the switch down.<br/><br/>The chest is in plain sight in the room."
+                    },
+                    "2 Wonderitems in Room With Lizalfos and Sun": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Sword and Hammer Wonderitem",
+                        MapInfo: { x: 329, y: 106, floor: "F3" },
+                        Order: 40.1,
+                        Age: Age.ADULT,
+                        LongDescription: "After the beamos room puzzle, enter the room that the switch unlocks. Swing your sword and hammer while next to the chest to spawn two wonderitems (one for each item swung)."
                     },
                     "Boss Key Chest": {
                         ItemGroup: ItemGroups.CHEST,

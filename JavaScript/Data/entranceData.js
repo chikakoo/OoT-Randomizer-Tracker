@@ -2336,6 +2336,26 @@ GrottoGroups = {
 			}
 		}
 	},
+	"Sword and Hammer Wonderitem": {
+		tooltip: "A group of wonderitems - one requiring a sword, and one requiring tne hammer.",
+		buttons: {
+			"Sword Wonderitem": {
+				description: "Swing your sword by this place to spawn the wonderitem.",
+				canGet: function(age) {
+					return ItemData.canUseAny(age, [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]);
+				}
+			},
+			"Hammer Wonderitem": {
+				description: "Swing your hammer by this place to spawn the wonderitem.",
+				canGet: function(age) {
+					return ItemData.canUse(age, Items.MEGATON_HAMMER);
+				},
+				isAdultOnly: function() {
+					return !Settings.GlitchesToAllow.equipSwap;
+				}
+			}
+		}
+	},
 	"Balcony Wonderitems": {
 		icon: "Green Rupee Wonderitem",
 		tooltip: "These are the items you get by climbing up the balcony by the Bombchu Bowling Alley.",
