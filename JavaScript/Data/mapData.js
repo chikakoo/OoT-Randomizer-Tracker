@@ -580,9 +580,9 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    "Rupee in Grass by Entrance": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapImageName: "Blue Rupee",
+                    "Wonderitem in Grass by Entrance": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Blue Rupee Wonderitem",
                         MapInfo: { x: 170, y: 287 },
                         Age: Age.EITHER,
                         LongDescription: "This wonderitem is in the grass to your left as you enter."
@@ -610,37 +610,37 @@ let MapLocations = {
                 },
                 
                 ItemLocations: {
-                    "Rupee in First Maze Alcove": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapImageName: "Green Rupee",
+                    "Wonderitem in First Maze Alcove": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Green Rupee Wonderitem",
                         MapInfo: { x: 198, y: 231 },
                         Age: Age.EITHER,
                         LongDescription: "Enter the maze and turn right - enter the first alcove to the left to get this wonderitem."
                     },
-                    "Rupee in Second Maze Alcove": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapImageName: "Blue Rupee",
+                    "Wonderitem in Second Maze Alcove": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Blue Rupee Wonderitem",
                         MapInfo: { x: 198, y: 207 },
                         Age: Age.EITHER,
                         LongDescription: "Enter the maze and turn right and follow the loop around. The alcove to the right after the turn has this wonderitem."
                     },
-                    "Rupee in Third Maze Alcove": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapImageName: "Green Rupee",
+                    "Wonderitem in Third Maze Alcove": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Green Rupee Wonderitem",
                         MapInfo: { x: 176, y: 221 },
                         Age: Age.EITHER,
                         LongDescription: "On the left side alcove after the first maze loop around, you will find this wonderitem."
                     },
-                    "Right Rupee in Northern Maze": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapImageName: "Green Rupee",
+                    "Right Wonderitem in Northern Maze": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Green Rupee Wonderitem",
                         MapInfo: { x: 209, y: 147 },
                         Age: Age.EITHER,
                         LongDescription: "After the area that you're forced to go through tall grass, go to your right; the alcove with this wonderitem is on the left wall."
                     },
-                    "Left Rupee in Northern Maze": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapImageName: "Blue Rupee",
+                    "Left Wonderitem in Northern Maze": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Blue Rupee Wonderitem",
                         MapInfo: { x: 177, y: 147 },
                         Age: Age.EITHER,
                         LongDescription: "After the area that you're forced to go through tall grass, go to your left; the alcove with this wonderitem is on the right wall."
