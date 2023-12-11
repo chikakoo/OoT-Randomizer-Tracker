@@ -2971,16 +2971,10 @@ let MQDungeons = {
                             return ItemData.getKeyCount("Water Temple") >= 1;
                         }
                     },
-                    bossRoom: {
+                    bossRoomAntechamber: {
                         CustomRequirement: function(age) {
-                            if (!ItemData.hasBossKey("Water Temple")) { return false; }
-                
-                            let hasLongshot = ItemData.canUse(age, UpgradedItems.LONGSHOT);
-                            let canSkipLongshot = Data.canHammerHoverBootsSuperslide(age);
-                            let canGetToBossArea = hasLongshot || canSkipLongshot;
-                            if (!canGetToBossArea) { return false; }
-                            
-                            return Items.HOOKSHOT.playerHas;
+                            return ItemData.canUse(age, UpgradedItems.LONGSHOT) ||
+                                Data.canHammerHoverBootsSuperslide(age);
                         }
                     },
 
@@ -2990,20 +2984,38 @@ let MQDungeons = {
                 },
 
                 ItemLocations: {
+                    "Wonderitem Above Low East Room": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 347, y: 132, floor: "F2" },
+                        Age: Age.ADULT,
+                        Order: 3.9,
+                        LongDescription: "Use your iron boots and navigate through the lower eastern room. Put them back on when you reach the very next floor. Navigate through the hole in the wall. Now, hookshot the symbol on the back wall to spawn the wonderitem.",
+                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+                    },
                     "Chest Above Low East Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 330, y: 131, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 4,
-                        LongDescription: "Use your iron boots and navigate through the lower eastern room. Put them back on when you reach the very next floor. Navigate through the hole in the wall. Now, hookshot the back wall to spawn the chest. To open it, hookshot the front then spam A.",
+                        LongDescription: "Use your iron boots and navigate through the lower eastern room. Put them back on when you reach the very next floor. Navigate through the hole in the wall. Now, hookshot the symbol on the back wall to spawn the chest. To open it, hookshot the front then spam A.",
                         RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+                    },
+                    "Wonderitem by Low Water Triforce": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 349, y: 224, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 4.1,
+                        LongDescription: "Use your iron boots and navigate through the lower eastern room. Take them off to rise to the top to get to the triforce room. Use a fire item to light the torches in the four corners of the room to unbar the door.<br/><br/>Enter the next room and optionally defeat all the Stalfos to unbar the door. The wonderitem is spawned by hookshotting the symbol on the back wall.",
+                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT, ItemSets.FIRE_ITEMS]
                     },
                     "Chest by Low Water Triforce": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 334, y: 222, floor: "F3" },
+                        MapInfo: { x: 334, y: 224, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 5,
-                        LongDescription: "Use your iron boots and navigate through the lower eastern room. Take them off to rise to the top to get to the triforce room. Use a fire item to light the torches in the four corners of the room to unbar the door.<br/><br/>Enter the next room and optionally defeat all the Stalfos to unbar the door. The chest is spawned by hitting the back wall with the hookshot.",
+                        LongDescription: "Use your iron boots and navigate through the lower eastern room. Take them off to rise to the top to get to the triforce room. Use a fire item to light the torches in the four corners of the room to unbar the door.<br/><br/>Enter the next room and optionally defeat all the Stalfos to unbar the door. The chest is spawned by hookshotting the symbol on the back wall.",
                         RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT, ItemSets.FIRE_ITEMS]
                     },
                     "3 Crates in Mid South Hallway": {
@@ -3011,7 +3023,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Crates",
-                        MapInfo: { x: 237, y: 195, floor: "F2" },
+                        MapInfo: { x: 245, y: 200, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 8,
                         LongDescription: "Make your way to the mid south wing - you'll need to press the switch to open the gate. Bonk into the crates to break them. Two of them are before the jail cell, and one is just to the left of it.",
@@ -3027,6 +3039,15 @@ let MQDungeons = {
                         Order: 10,
                         LongDescription: "Make your way to the mid south wing - you'll need to press the switch to open the gate. Navigate to the room to the right of the jail cell and bonk into the crates to break them.",
                         RequiredItems: [Equipment.IRON_BOOTS]
+                    },
+                    "Wonderitem in Mid South Room": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 244, y: 256, floor: "F2" },
+                        Age: Age.ADULT,
+                        Order: 10.1,
+                        LongDescription: "Make your way to the mid south wing - you'll need to press the switch to open the gate. Navigate to the room to the right of the jail cell and hookshot the symbol on the wall to spawn the wonderitem.",
+                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
                     },
                     "3 Pots in Mid East Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3078,12 +3099,22 @@ let MQDungeons = {
                     }
                 },
                 ItemLocations: {
+                    "Wonderitem in Lower East Room": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 246, y: 212, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 6.9,
+                        LongDescription: "Lower the water level. Navigate to the room below the water triforce. Light the torches using a fire item or your bow.<br/><br/>Hookshot the symbol on the back wall to spawn the wonderitem.",
+                        RequiredItems: [Items.HOOKSHOT],
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE]
+                    },
                     "Chest in Lower East Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 338, y: 212, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 7,
-                        LongDescription: "Lower the water level. Navigate to the room below the water triforce. Light the torches using a fire item or your bow.<br/><br/>Defeat the enemies in the next room to spawn the chest",
+                        LongDescription: "Lower the water level. Navigate to the room below the water triforce. Light the torches using a fire item or your bow.<br/><br/>Defeat the enemies in the next room to spawn the chest.",
                         RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE]
                     }
                 }
@@ -3196,6 +3227,15 @@ let MQDungeons = {
                         Order: 18,
                         LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. The pots are against the wall to the left."
                     },
+                    "Wonderitem in Mid West Room": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 42, y: 160, floor: "F2" },
+                        Age: Age.ADULT,
+                        Order: 18.1,
+                        LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. Hookshot the symbol on the wall to your left to spawn the wonderitem.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
                     "2 Crates Above Mid West Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
@@ -3272,12 +3312,21 @@ let MQDungeons = {
                         Order: 2,
                         LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top and play the Song of Time to spawn a block you can use Din's fire from to light the torches. Alternatively, well-aimed fire arrows will work. Sink down to the room at the very bottom. The crates are all around!"
                     },
+                    "Wonderitem Below Central Room": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 312, y: 215, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 2.1,
+                        LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top and play the Song of Time to spawn a block you can use Din's fire from to light the torches. Alternatively, well-aimed fire arrows will work. Sink down to the room at the very bottom.<br/><br/>Once here, navigate around the maze. Jump on some platforms at the very end to reveal a switch. Hit it, and then navigate to the grate that opens up and hookshot your way up there. Hookshot the symbol on the wall to spawn the wonderitem.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
                     "Chest Below Central Room": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 291, y: 214, floor: "B1" },
+                        MapInfo: { x: 291, y: 215, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 3,
-                        LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top and play the Song of Time to spawn a block you can use Din's fire from to light the torches. Alternatively, well-aimed fire arrows will work. Sink down to the room at the very bottom.<br/><br/>Once here, navigate around the maze. Jump on some platforms at the very end to reveal a switch. Hit it, and then navigate to the grate that opens up and hookshot your way up there. Hookshot the wall to spawn the chest.",
+                        LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top and play the Song of Time to spawn a block you can use Din's fire from to light the torches. Alternatively, well-aimed fire arrows will work. Sink down to the room at the very bottom.<br/><br/>Once here, navigate around the maze. Jump on some platforms at the very end to reveal a switch. Hit it, and then navigate to the grate that opens up and hookshot your way up there. Hookshot the symbol on the wall to spawn the chest.",
                         RequiredItems: [Items.HOOKSHOT]
                     }
                 }
@@ -3287,6 +3336,26 @@ let MQDungeons = {
                     whirlpoolRoom: {}
                 },
                 ItemLocations: {
+                    "3 Wonderitems on Left Waterfall Room Wall": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Hookshot Wonderitems",
+                        MapInfo: { x: 96, y: 228, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 20.8,
+                        LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot three times to spawn the wonderitems."
+                    },
+                    "3 Wonderitems on Right Waterfall Room Wall": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Hookshot Wonderitems",
+                        MapInfo: { x: 96, y: 213, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 20.9,
+                        LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the right wall and shoot it with your hookshot three times to spawn the wonderitems."
+                    },
                     //TODO: Empty Pots - remove this item, as the one below will replace it
                     "Pot in Lower Rising Dragon Room": {
                         ItemGroup: ItemGroups.POT,
@@ -3340,6 +3409,14 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 23,
                         LongDescription: "After the Dark Link fight, enter the next room. The pots are in the center."
+                    },
+                    "Wonderitem After Dark Link": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 56, y: 30, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 23.1,
+                        LongDescription: "After the Dark Link fight, enter the next room. Shoot the symbol on the back wall to spawn the wonderitem. Note that grate will open when you do so, so don't stand on it!"
                     }
                 }
             },
@@ -3423,6 +3500,27 @@ let MQDungeons = {
                         Order: 27,
                         LongDescription: "In the whirlpool dragon room, use your iron boots or silver scale to go past the little hallway behind the dragon. The crates are on the surface in the next room.",
                         RequiredChoiceOfItems: [Equipment.IRON_BOOTS, Equipment.SCALE]
+                    },
+                    "Wonderitem Behind Dragon Room": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 29, y: 61, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 27.1,
+                        LongDescription: "In the whirlpool dragon room, use your iron boots or silver scale to go past the little hallway behind the dragon. Hookshot the symbol on the wall behind the crates to spawn the wonderitem.",
+                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, Equipment.SCALE],
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "2 Wonderitems in Dragon's Eyes": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Hookshot Wonderitems",
+                        MapInfo: { x: 74, y: 68, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 27.2,
+                        LongDescription: "In the whirlpool dragon room, get on the ledge. Shoot both eyes with your hookshot to spawn two wonderitems. Note that there's a weird thing in the water that sometimes stops your shot - just keep trying!",
+                        RequiredItems: [Items.HOOKSHOT, Equipment.IRON_BOOTS]
                     },
                     "2 Crates by Dragon Room Door": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3543,6 +3641,15 @@ let MQDungeons = {
                         Order: 36,
                         LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom level and use your iron boots to sink down. Use the Scarecrow's Song or hover boots to navigate across the room. Now, turn around and use Fire Arrows to light the three torches to get to the skulltula (it's on the ceiling).",
                         RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                    },
+                    "Wonderitem in Low South Room Jail": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 18, y: 261, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 36.1,
+                        LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom level and use your iron boots to sink down. Use the Scarecrow's Song or hover boots to navigate across the room. Now, turn around and use Fire Arrows to light the three torches to open the cell. Hookshot the symbol on the wall to spawn the wonderitem.",
+                        RequiredItems: [Items.HOOKSHOT]
                     }
                 }
             },
@@ -3597,9 +3704,27 @@ let MQDungeons = {
                     }
                 }
             },
+            tripleWaterSpoutRoom: {
+                Exits: {
+                    dodongoRoom: {},
+                    northWaterfallArea: {}
+                },
+                ItemLocations: {
+                    "2 Wonderitems in Triple Water Spout Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Wonderitems",
+                        MapInfo: { x: 151, y: 44, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 40.9,
+                        LongDescription: "In the water spout room (room in the close door in the low north room), hit the switch to spawn the water spouts. You will get these wonderitems when you jump on the first and last spout."
+                    }
+                }
+            },
             dodongoRoom: {
                 Exits: {
-                    northWaterfallArea: {}
+                    tripleWaterSpoutRoom: {}
                 },
                 ItemLocations: {
                     "2 Pots in Low North Dodongo Room": {
@@ -3683,6 +3808,40 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 47,
                         LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes. Play the Scarecrow's song and hookshot it to get to the opening to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. The item is in the box to your left."
+                    },
+                    "Wonderitem in Room by Low North Waterfall": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 123, y: 49, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 47.1,
+                        LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes. Play the Scarecrow's song and hookshot it to get to the opening to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. In the room, hookshot the symbol on the wall to spawn the wonderitem.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    }
+                }
+            },
+            bossRoomAntechamber: {
+                Exits: {
+                    bossRoom: {
+                        CustomRequirement: function(age) {
+                            // Nayrus love can be used to become immune to the spike traps!
+                            let canGetUp = ItemData.canUseAny(age, [UpgradedItems.LONGSHOT, Items.NAYRUS_LOVE]);
+                            let canGetIn = ItemData.hasBossKey("Water Temple") ||
+                                ItemData.canUseAny(age, [Items.HOOKSHOT, Items.FAIRY_BOW, Items.BOMBCHU]);
+                            return canGetUp && canGetIn;
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "2 Hookshot Wonderitems in Boss Antechamber": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Hookshot Wonderitems",
+                        MapInfo: { x: 226, y: 162, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 48,
+                        LongDescription: "From the main room with the water raised, longshot to the upper north area and enter the door. Hookshot the two symbols on either side of the door you came through to spawn the wonderitems."
                     }
                 }
             },

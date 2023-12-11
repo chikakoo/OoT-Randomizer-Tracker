@@ -2193,6 +2193,17 @@ GrottoGroups = {
 			}
 		}
 	},
+	"2 Wonderitems": {
+		tooltip: "A group of two wonderitems",
+		icon: "Wonderitem",
+		buttons: {
+			"Wonderitems": {
+				useGroupImage: true,
+				count: 2,
+				description: "Get close to this area to get the wonderitems."
+			}
+		}
+	},
 	"2 Projectile Wonderitems": {
 		tooltip: "A group of two wonderitems requiring projectiles.",
 		icon: "Projectile Wonderitem",
@@ -2252,13 +2263,28 @@ GrottoGroups = {
 		}
 	},
 	"2 Hookshot Wonderitems": {
-		tooltip: "A group of two wonderitems requiring the hookshot.",
+		tooltip: "A group of 2 wonderitems requiring the hookshot.",
 		icon: "Hookshot Wonderitem",
 		buttons: {
 			"Hookshot Wonderitems": {
 				useGroupImage: true,
 				description: "Shoot this with the hookshot to soawn the wonderitem.",
 				count: 2,
+				canGet: function(age) {
+					return ItemData.canUse(age, Items.HOOKSHOT);
+				},
+				isAdultOnly: function() { return true; }
+			}
+		}
+	},
+	"3 Hookshot Wonderitems": {
+		tooltip: "A group of 3 wonderitems requiring the hookshot.",
+		icon: "Hookshot Wonderitem",
+		buttons: {
+			"Hookshot Wonderitems": {
+				useGroupImage: true,
+				description: "Shoot this with the hookshot to soawn the wonderitem.",
+				count: 3,
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.HOOKSHOT);
 				},

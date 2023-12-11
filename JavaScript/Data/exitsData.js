@@ -2634,7 +2634,7 @@ let OwExits = {
             MapInfo: { x: 227, y: 135, floor: "F3" },
             Age: Age.ADULT,
             Order: 100,
-            LongDescription: "The boss room is on the opposite side of the entrance to the temple. You can actually immediately get there with no glitches required if you already have the longshot and boss key.<br/><br/>MQ: In the room with the spike traps, either roll up with hover boots equipped, or shoot the crystal switch above the boss door. If you don't have the key, climb on the hookshot targets, sidehop, then jumpslash at the door while holding forward to clip through."
+            LongDescription: "The boss room is on the opposite side of the entrance to the temple. You can actually immediately get there with no glitches required if you already have the longshot and boss key.<br/><br/>MQ: In the room with the spike traps, roll up with hover boots equipped, shoot the crystal switch above the boss door, or use Nayru's Love to safely walk up the slope. If you don't have the key, climb on the hookshot targets (created via the switch - you can use the bow or chus as well to hit it if you couldn't hit it from below), sidehop, then jumpslash at the door while holding forward to clip through."
         }
     },
 
