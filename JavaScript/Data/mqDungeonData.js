@@ -1782,6 +1782,10 @@ let MQDungeons = {
                             return Data.canPlaySong(Songs.SONG_OF_TIME) || ItemData.canUse(age, UpgradedItems.LONGSHOT);
                         }
                     },
+                    outsideEastPlatform: {
+                        Age: Age.ADULT,
+                        RequiredItems: [UpgradedItems.LONGSHOT]
+                    },
                     well: {}
                 },
 
@@ -1831,7 +1835,7 @@ let MQDungeons = {
                         MapInfo: { x: 268, y: 73, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 28,
-                        LongDescription: "Hit the left switch deep in the checkerbaord room. Now backtrack and take the door to the right of where you entered the room (NOT the locked door). Drop down to get the chest. If you don't have the Song of Time, you'll have to navigate all the way around to get back. Otherwise, play it to make a platform back up."
+                        LongDescription: "The quickest way to get here is to longshot the chest from the outside east room. Otherwise...</br><br/>Hit the left switch deep in the checkerbaord room. Now backtrack and take the door to the right of where you entered the room (NOT the locked door). Drop down to get the chest. If you don't have the Song of Time, you'll have to navigate all the way around to get back. Otherwise, play it to make a platform back up."
                     }
                 }
             },
