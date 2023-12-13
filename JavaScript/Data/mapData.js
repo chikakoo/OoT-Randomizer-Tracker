@@ -1338,14 +1338,14 @@ let MapLocations = {
                             }
                         }
                     },
-                    "Red Rupee on Construction Site": {
+                    "Wonderitem on Construction Site": {
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Red Rupee Wonderitem",
                         MapInfo: { x: 189, y: 210 },
                         Age: Age.CHILD,
                         LongDescription: "Climb up the struture under construction and make your way to the end to get this item. If it's daytime, you can get around the worker by backwalking off the edge and grabbing hold, then climbing back up when he passes by."
                     },
-                    "Red Rupee in Impa's House": {
+                    "Wonderitem in Impa's House": {
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Red Rupee Wonderitem",
                         RequiredToAppear: function() {

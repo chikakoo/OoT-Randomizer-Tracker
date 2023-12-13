@@ -168,15 +168,6 @@ let ItemLocationDisplay = {
 				removeCssClass(textDiv, "item-location-walking-to");
 			}
 		});
-
-		// Size the OW elements so the dropdowns align
-		let owEntrancesElements = Array.prototype.slice.call(document.getElementsByClassName("item-location-ow-entrance-text"));
-		if (owEntrancesElements.length > 0) {
-			let maxWidth = Math.max(...owEntrancesElements.map(element => element.getBoundingClientRect().width));
-			owEntrancesElements.forEach(element => {
-				element.style.width = `${maxWidth}px`;
-			});
-		}
 	},
 
 	/**
@@ -233,7 +224,7 @@ let ItemLocationDisplay = {
 			if (itemGroupName) {
 				itemGroupTextDiv.innerText = itemGroupName
 				itemGroupTitleDiv.appendChild(itemGroupTextDiv);
-				_this._createItemLocations(itemGroup, itemGroupDiv, usesDisplayGroups);
+				_this._createItemLocations(itemGroup, itemGroupDiv, usesDisplayGroups, itemGroupName);
 			}
 		});
 	},
@@ -244,7 +235,7 @@ let ItemLocationDisplay = {
 	 * @param itemGroupDiv - the div for the locations
 	 * @param includeGroupIcon - whether to include the group icon; used for ordered locations
 	 */
-	_createItemLocations: function(itemGroup, itemGroupDiv, includeGroupIcon) {
+	_createItemLocations: function(itemGroup, itemGroupDiv, includeGroupIcon, itemGroupName) {
 		let allItemsObtained = itemGroup.every(loc => loc.playerHas);
 		
 		if (itemGroup.every(loc => loc.disabled || loc.Hide)) {
@@ -253,6 +244,7 @@ let ItemLocationDisplay = {
 		}
 
 		let _this = this;
+		let owTextDivs = {};
 		itemGroup.forEach(function(itemLocation) {
 			if (itemLocation.disabled || itemLocation.Hide) { return; }
 			
@@ -306,8 +298,10 @@ let ItemLocationDisplay = {
 			itemLocationTextDiv.innerText = itemLocation.Name;
 			itemLocationTitleDiv.appendChild(itemLocationTextDiv);
 
+			// Collect the ow divs in arrays of groups so we can adjust widths later
 			if (isOwEntrance) {
-				addCssClass(itemLocationTextDiv, "item-location-ow-entrance-text");
+				owTextDivs[itemGroupName] = owTextDivs[itemGroupName] || []
+				owTextDivs[itemGroupName].push(itemLocationTextDiv);
 			}
 
 			// Update the entrance location groups
@@ -351,6 +345,14 @@ let ItemLocationDisplay = {
 			itemLocationDiv.appendChild(moreInfoDiv);
 			
 			_this.refreshNotes(itemLocation, inlineNotesDiv, moreInfoDiv);
+		});
+
+		// Size the OW elements so the dropdowns align
+		Object.values(owTextDivs).forEach(groupedDivs => {
+			let maxWidth = Math.max(...groupedDivs.map(div => div.getBoundingClientRect().width));
+			groupedDivs.forEach(element => {
+				element.style.width = `${maxWidth}px`;
+			});
 		});
 	},
 
