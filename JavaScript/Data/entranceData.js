@@ -1126,7 +1126,10 @@ GrottoGroups = {
 				itemGroup: ItemGroups.SKULLTULA,
 				description: "The skulltula is high up behind the mud wall to your left when you enter.",
 				canGet: function(age) {
-					return ItemData.canUseAll(age, [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, ItemSets.MUD_WALL_ITEMS]);
+					// The staircase hover requires two additional bomb drops to gain enough height
+                    // Start the hover against the wall
+					return ItemData.canUseAll(age, [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, ItemSets.MUD_WALL_ITEMS]) ||
+						Data.canStaircaseHover(age);
 				}
 			},
 			"4 Pots": {

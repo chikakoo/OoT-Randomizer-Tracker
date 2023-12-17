@@ -1902,7 +1902,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Green Rupee Wonderitems",
+                        DefaultEntranceGroupName: "4 Green Rupee Wonderitems",
                         MapInfo: { x: 239, y: 132, floor: "DMP" },
                         Age: Age.EITHER,
                         LongDescription: "After the second door, follow the left wall to the loop containing the 4 wonderitems."
