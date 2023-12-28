@@ -659,7 +659,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "After visiting Zelda at the castle, make your way to the end of the maze to get this item.",
                         CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Castle", "main", "Zelda's Lullaby");
+                            return MapLocations["Castle"].talkedToImpa;
                         }
                     },
                     "Minuet of Forest": {
@@ -888,9 +888,7 @@ let MapLocations = {
                         Time: function() { return Time.DAY; },
                         Age: Age.ADULT,
                         LongDescription: "As Adult, talk to Ingo if you haven't already rescused Epona to go inside. Play Epona's song and ride epona. Jump over the center of the smaller gate to get this wonderitem.",
-                        CustomRequirement: function(age) {
-                            return Data.canPlaySong(Songs.EPONAS_SONG) || Data.canStaircaseHover(age);
-                        }
+                        RequiredSongs: [Songs.EPONAS_SONG]
                     },
                     "Wonderitem via Tall Gate": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -899,9 +897,7 @@ let MapLocations = {
                         Time: function() { return Time.DAY; },
                         Age: Age.ADULT,
                         LongDescription: "As Adult, talk to Ingo if you haven't already rescused Epona to go inside. Play Epona's song and ride epona. Jump over the center of the larger gate to get this wonderitem.",
-                        CustomRequirement: function(age) {
-                            return Data.canPlaySong(Songs.EPONAS_SONG) || Data.canStaircaseHover(age);
-                        }
+                        RequiredSongs: [Songs.EPONAS_SONG]
                     }
                 }
             }
@@ -2477,7 +2473,8 @@ let MapLocations = {
                         LongDescription: "Make your way to the topmost northwest corner of the city and bomb, pick up, or smash the rocks to get here. You can also go to the upper right corner, stand on the box, and backwalk & backflip with hover boots at the last moment to get to this chest (you will be stuck there).",
                         CustomRequirement: function(age) {
                             return ItemData.canUseAny(age, [Items.MEGATON_HAMMER, UpgradedItems.SILVER_GAUNTLETS]) ||
-                                ItemData.canUseAll(age, [Equipment.HOVER_BOOTS, ItemSets.EXPLOSIVES]);
+                                ItemData.canUseAll(age, [Equipment.HOVER_BOOTS, ItemSets.EXPLOSIVES]) ||
+                                Data.canWeirdShot(age);
                         }
                     },
                     "Left Maze Chest": {

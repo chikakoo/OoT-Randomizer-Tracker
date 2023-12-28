@@ -2097,7 +2097,11 @@ GrottoGroups = {
 				canGet: function(age) {
 					return Data.canPlaySong(Songs.ZELDAS_LULLABY);
 				},
-				isChildOnly: function() { return true; }
+				isChildOnly: function() { return true; },
+				postClick: function(isCompleted) {
+					// Mark all of these so that if the dungeon type is switched, we don't lose this data!
+					MapLocations["Castle"].talkedToImpa = isCompleted;
+				}
 			},
 			"Epona's Song": {
 				icon: "Epona's Song",
