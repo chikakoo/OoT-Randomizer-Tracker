@@ -390,10 +390,7 @@ let EntranceUI = {
 			throw "Should not call isGroupComplete with an item location that doesn't have a group selected!";
 		}
 		
-		let _this = this;
-		return Object.values(selectedGroup.buttons).every(button =>
-			_this._excludeButtonFromCounts(button, itemLocation) || button.completed
-		);
+		return this.getNumberOfCompletedTasks(itemLocation) >= this.getNumberOfTasks(itemLocation);
 	},
 	
 	/**
@@ -475,7 +472,7 @@ let EntranceUI = {
 		let entranceData = this.getEntranceData(itemLocation);
 		Object.keys(selectedGroup.buttons).forEach(function (buttonName) {
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
-			if (!_this._excludeButtonFromCounts(button, itemLocation) && _this._canGetAsAge(button, age)) {
+			if (!_this._excludeButtonFromCounts(button, itemLocation) && (age === undefined || _this._canGetAsAge(button, age))) {
 				numberOfTasks += selectedGroup.buttons[buttonName].count;
 			}
 		});
@@ -527,7 +524,7 @@ let EntranceUI = {
 		let entranceData = this.getEntranceData(itemLocation);
 		Object.keys(selectedGroup.buttons).forEach(function (buttonName) {
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
-			if (!_this._excludeButtonFromCounts(button, itemLocation) && _this._canGetAsAge(button, age)) {
+			if (!_this._excludeButtonFromCounts(button, itemLocation) && (age === undefined || _this._canGetAsAge(button, age))) {
 				numberOfTasks += selectedGroup.buttons[buttonName].completedCount;
 			}
 		});
