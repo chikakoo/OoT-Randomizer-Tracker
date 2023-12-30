@@ -6392,7 +6392,8 @@ let StandardDungeons = {
                         MapInfo: { x: 176, y: 233, floor: "FST" },
                         Age: Age.EITHER,
                         Order: 5,
-                        LongDescription: "Enter the forest trial. Kill the wolfos to spawn the chest."
+                        LongDescription: "Enter the forest trial. Kill the wolfos to spawn the chest.",
+                        RequiredItems: [ItemSets.DAMAGING_ITEMS]
                     },
                     "Water Trial Left Chest": {
                         ItemGroup: ItemGroups.CHEST,

@@ -1116,7 +1116,7 @@ let MQDungeons = {
                         LongDescription: "Shoot the cow in the room after the first door to spawn the wonderitem. It will fall below, so you'll have to retrieve it there!",
                         RequiredItems: [Items.FAIRY_SLINGSHOT]
                     },
-                    "Chest in Elevator Room": {
+                    "Chest in Lower Elevator Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 209, y: 221, floor: "B1" },
                         Age: Age.EITHER,
@@ -1158,7 +1158,7 @@ let MQDungeons = {
                         MapInfo: { x: 148, y: 84, floor: "B1" },
                         Age: Age.CHILD,
                         Order: 9.1,
-                        LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole normally blocked by the tentacow (upper leftmost hole). Shoot the left cow three times to spawn three different wonderitems."
+                        LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole normally blocked by the tentacle (upper leftmost hole). Shoot the left cow three times to spawn three different wonderitems."
                     },
                     "3 Wonderitems in Right Big Room Cow": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -1168,7 +1168,7 @@ let MQDungeons = {
                         MapInfo: { x: 158, y: 37, floor: "B1" },
                         Age: Age.CHILD,
                         Order: 9.2,
-                        LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole normally blocked by the tentacow (upper leftmost hole). Shoot the right cow three times to spawn three different wonderitems."
+                        LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole normally blocked by the tentacle (upper leftmost hole). Shoot the right cow three times to spawn three different wonderitems."
                     },
                     "East Chest in Big Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1375,7 +1375,7 @@ let MQDungeons = {
                         Order: 21,
                         LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. Shoot the cow in the wall in this room to spawn the cow on the ground."
                     },
-                    "Chest in Wiggler Room": {
+                    "Chest in Upper Elevator Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 192, y: 188, floor: "F1" },
                         Age: Age.CHILD,

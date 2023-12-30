@@ -98,8 +98,8 @@ let Songs = {
 	MINUET_OF_FOREST: { name: "Minuet of Forest", defaultNotes: "A^<><>", divGroup: 2 },
 	BOLERO_OF_FIRE: { name: "Bolero of Fire", defaultNotes: "vAvA>v>v", divGroup: 2 },
 	SERENADE_OF_WATER: { name: "Serenade of Water", defaultNotes: "Av>><", divGroup: 2 },
-	NOCTURNE_OF_SHADOW: { name: "Nocturne of Shadow", defaultNotes: "<>>A<>v", divGroup: 2 },
 	REQUIEM_OF_SPIRIT: { name: "Requiem of Spirit", defaultNotes: "AvA<>v", divGroup: 2 },
+	NOCTURNE_OF_SHADOW: { name: "Nocturne of Shadow", defaultNotes: "<>>A<>v", divGroup: 2 },
 	PRELUDE_OF_LIGHT: { name: "Prelude of Light", defaultNotes: "^>^><^", divGroup: 2 }
 };
 
