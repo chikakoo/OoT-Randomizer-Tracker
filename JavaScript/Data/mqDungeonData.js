@@ -1794,7 +1794,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 226, y: 98, floor: "F1" },
                         Age: Age.EITHER,
-                        Order: 7,
+                        Order: 7.1,
                         RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         LongDescription: "The skulltula is above the doorframe leading to this room. Get it with your boomerang or hookshot."
                     }
