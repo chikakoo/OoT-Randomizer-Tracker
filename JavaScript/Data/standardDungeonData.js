@@ -5887,12 +5887,7 @@ let StandardDungeons = {
             },
             eyeStatueRoomBottom: {
                 Exits: {
-                    eyeStatueRoomTop: {
-                        Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Data.canHookScarecrow(age);
-                        }
-                    },
+                    // eyeStatueRoomTop cannot be accessed with scarecrow - it won't spawn from below!
                     bigLavaRoomUpperBack: {}
                 },
                 ItemLocations: {
