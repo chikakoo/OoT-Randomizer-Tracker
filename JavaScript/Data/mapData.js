@@ -1312,7 +1312,7 @@ let MapLocations = {
                         MapInfo: { x: 215, y: 240 },
                         MapImageName: "Pocket Egg Pocket Cucco",
                         Age: Age.ADULT,
-                        LongDescription: "Talk to Anju after waking up Talon with the Pocket Cucco.",
+                        LongDescription: "Show Anju the Pocket Cucco to after waking up Talon with it. If entrance shuffle is off, he's in the house near the bottom stairs.",
                         CustomRequirement: function(age) {
                             return this.wokeUpTalon;
                         }

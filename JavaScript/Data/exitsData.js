@@ -994,13 +994,13 @@ let OwExits = {
             LongDescription: "This is the windmill entrance - it's up the stairs near the well."
         },
         "Talon's House": {
-            //TODO: this WOULD be important if we ever did the entire trade sequence
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            DefaultEntranceGroupName: "Talon's House Kakariko",
             MapInfo: { x: 162, y: 165 },
             Age: Age.EITHER,
-            LongDescription: "This is the building straight ahead of the tree, that has crate with the cucco next to it as a child."
+            LongDescription: "This is the building straight ahead of the tree that has the crate with the cucco next to it as a child."
         },
         "Bazaar": {
             ExitRegion: "main",
@@ -1078,11 +1078,11 @@ let OwExits = {
             LongDescription: "This is the building to the right if you are facing the Death Mountain entrance.",
         },
         "Granny's Potion Shop": {
-            //TODO: this WOULD be important if we ever did the entire trade sequence
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             OneWayInteriorSpawnEntrance: true,
+            DefaultEntranceGroupName: "Granny's Potion Shop",
             MapInfo: { x: 240, y: 133 },
             Age: Age.ADULT,
             LongDescription: "This is the building behind the potion shop, near the fence that you do the \"ladder jump\" off of.",
