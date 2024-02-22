@@ -2383,9 +2383,10 @@ let MQDungeons = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
                         Order: 16,
                         CustomRequirement: function(age) {
-                            return age === Age.ADULT || Data.canGroundJumpWithBomb(age);
+                            return age === Age.ADULT || Data.canGroundJumpWithBomb(age) &&
+                                (Equipment.HYLIAN_SHIELD.playerHas && Data.canGroundJumpWithBomb(age));
                         },
-                        LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. The pot is by the blocked doorway."
+                        LongDescription: "Either hookshot to the torch on the right side of the lava room, or backflip from the moving platform to get over the fire wall. As Child, you'll need to equip Hylian shield so it isn't burned. The pot is by the blocked doorway (Child will have to ground jump)."
                     },
                     "Chest by Right Goron in Lava Room": {
                         ItemGroup: ItemGroups.CHEST,

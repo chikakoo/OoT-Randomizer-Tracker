@@ -774,7 +774,7 @@ InteriorGroups = {
 		buttons: {
 			"Wake Up Talon": {
 				icon: "Pocket Cucco",
-				description: "Use the Pocket Cucco next to talon to wake him him. You must then go to Anju to get your reward.",
+				description: "Use the Pocket Cucco next to Talon to wake him. You must then show the cucco to Anju to get your reward.",
 				canGet: function(age) {
 					return AdultTradeItems.POCKET_EGG.playerHas;
 				},
