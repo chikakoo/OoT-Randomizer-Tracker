@@ -790,8 +790,9 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "Fall down one of the holes to get to the main room on the bottom. Enter the door by the vines back up. Either stun the jello with your boomerang to cross, or use hover boots. The pots are on the other side - one is always a fairy.",
-                        RequiredChildItems: [Items.BOOMERANG],
-                        RequiredChoiceOfAdultItems: [Items.BOOMERANG, Equipment.HOVER_BOOTS]
+                        CustomRequirement: function(age) {
+                            return Data.canMegaFlip(age) || ItemData.canUseAny(age, [Items.BOOMERANG, Equipment.HOVER_BOOTS]);
+                        }
                     },
                     "5 Pots in Room by Vines": {
                         RequiredToAppear: function() {
@@ -806,8 +807,9 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "Fall down one of the holes to get to the main room on the bottom. Enter the door by the vines back up. Either stun the jello with your boomerang to cross, or use hover boots. The pots are on the other side.",
-                        RequiredChildItems: [Items.BOOMERANG],
-                        RequiredChoiceOfAdultItems: [Items.BOOMERANG, Equipment.HOVER_BOOTS]
+                        CustomRequirement: function(age) {
+                            return Data.canMegaFlip(age) || ItemData.canUseAny(age, [Items.BOOMERANG, Equipment.HOVER_BOOTS]);
+                        }
                     },
                     "Left Skulltula on Lower Room Wall": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3050,8 +3052,8 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 31,
                         MapInfo: { x: 122, y: 91, floor: "F1" },
-                        LongDescription: "Head to the bottom of the main room - no need to lower the water if you don't want to. Enter the north wing. After you reach the dead end, equip your boots and surface. Longshot to the other side and enter the locked door. Navigate across the room to the other side - might help to kill the tektites. Complete the puzzle in this room (or cross it with hover boots or a megaflip!) which requires you to explode a destroyable wall and push a block onto a switch. After the next room (water switch jumping puzzle), you should see the skulltula on the waterfall to the right.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        LongDescription: "Head to the bottom of the main room - no need to lower the water if you don't want to. Enter the north wing. After you reach the dead end, equip your boots and surface. Longshot to the other side and enter the locked door. Navigate across the room to the other side - might help to kill the tektites. Complete the puzzle in this room (or cross it with hover boots or a megaflip!) which requires you to explode a destroyable wall and push a block onto a switch. After the next room (water switch jumping puzzle), you should see the skulltula on the waterfall to the right.<br/><br/>If you have no hookshot, you can backwalk into it with hover boots starting from the ledge with the door to get the token (you can kill it with your sword by going at it head-on with the hover boots, then jump-slashing).",
+                        RequiredChoiceOfItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Equipment.HOVER_BOOTS]
                     }
                 }
             },
@@ -5069,7 +5071,15 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "When you first enter the spinning scythe room, look to your left. Burn the red ice with your blue fire and enter the room. When you get to the big room, the skulltula will be on the wall to your left.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        CustomRequirement: function(age) {
+                            if (ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS)) {
+                                return true;
+                            }
+
+                            return Settings.GlitchesToAllow.iceBlockSkullWithHovers &&
+                                ItemData.canUse(age, Equipment.HOVER_BOOTS) &&
+                                ItemData.canUseAny(age, [ItemSets.DISTANT_SWITCH_ITEMS, Items.DINS_FIRE]);
+                        }
                     },
                     "Block Silver Rupee in Center": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -5854,6 +5864,7 @@ let StandardDungeons = {
                 }
             },
             eyeStatueRoomTop: {
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {
                     silverBlockRoom: {},
                     eyeStatueRoomBottom: {}
@@ -5878,10 +5889,10 @@ let StandardDungeons = {
                     "Eye Statue Room Top Room Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 165, y: 133 },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "This is the room either after the wolfos room, or after the room with the hammerable pillars. If coming from the former, you need to use your hookshot to hook a target beyond a fake wall above the fake door. If coming from the latter, bash the pillars with your hammer, then shoot the eye switch. In the eye statue room, get to the central platform - it will start spinning. Shoot each eye with an arrow to unlock a door on top. If you came from the wolfos room, jump in the lava to respawn on top to get to it. Otherwise, you must use scarecrow's song (the scarecrow is near the door) to get up.",
-                        RequiredItems: [Items.FAIRY_BOW]
+                        RequiredAdultItems: [Items.FAIRY_BOW]
                     }
                 }
             },

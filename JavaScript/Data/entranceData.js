@@ -2097,11 +2097,7 @@ GrottoGroups = {
 				canGet: function(age) {
 					return Data.canPlaySong(Songs.ZELDAS_LULLABY);
 				},
-				isChildOnly: function() { return true; },
-				postClick: function(isCompleted) {
-					// Mark all of these so that if the dungeon type is switched, we don't lose this data!
-					MapLocations["Castle"].talkedToImpa = isCompleted;
-				}
+				isChildOnly: function() { return true; }
 			},
 			"Epona's Song": {
 				icon: "Epona's Song",
@@ -2429,6 +2425,9 @@ GrottoGroups = {
 			"Zelda's Lullaby": {
 				icon: "Ocarina of Time",
 				description: "After talking to Zelda, go talk to Impa to get teleported out. You will get this time afterwards.",
+				postClick: function(isCompleted) {
+					MapLocations["Castle"].talkedToImpa = isCompleted;
+				}
 			}
 		}
 	}
