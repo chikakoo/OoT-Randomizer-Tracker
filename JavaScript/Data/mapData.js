@@ -4589,7 +4589,9 @@ let MapLocations = {
                         MapInfo: { x: 208, y: 85 },
                         Age: Age.EITHER,
                         LongDescription: "The skulltula is in the outpost in the center of the desert.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        CustomRequirement(age) {
+                            return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS) || Data.canStaircaseHover(age);
+                        }
                     },
                     "3 Crates Across Quicksand": {
                         ItemGroup: ItemGroups.ENTRANCE,
