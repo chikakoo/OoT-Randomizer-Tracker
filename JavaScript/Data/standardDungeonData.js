@@ -4582,10 +4582,11 @@ let StandardDungeons = {
                         Order: 29,
                         AltOrder: 10,
                         LongDescription: "Head to the statue room. Head up to the upper southeast corner of the room. If you face the statue, that's behind and to the right if you. You may have to hookshot up to the platform to get there. Jump to the statue's hand from the platform. You can use hover boots if you want, but they aren't necessary. Play Zelda's Lullaby on the Triforce picture. Now, head back up to the southeast corner. The platform to the right of the hand now has a chest on it. Use your hookshot or hover boots to get to it.",
+                        RequiredSongs: [Songs.ZELDAS_LULLABY],
                         CustomRequirement: function(age) {
-                            if (Settings.GlitchesToAllow.spiritStatueRoomJumps) { return true; }
-                            return Data.canPlaySong(Songs.ZELDAS_LULLABY) &&
-                                (Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas);
+                            return Settings.GlitchesToAllow.spiritStatueRoomJumps ||
+                                Data.canMegaFlip(age) ||
+                                ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]);
                         }
                     },
                     "Chest on Statue's Hand": {

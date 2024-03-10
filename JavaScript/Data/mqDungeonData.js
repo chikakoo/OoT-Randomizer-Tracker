@@ -6606,7 +6606,7 @@ let MQDungeons = {
                     },
                     "Center Fire Iron Knuckle Chest": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 225, y: 90 },
+                        MapInfo: { x: 254, y: 90 },
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Continue past the circle fire room into the next room. Activate the switch above the door to spawn the chest. Step on the swith on one of the walls to remove the fire.",
