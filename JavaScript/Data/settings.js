@@ -193,6 +193,7 @@ let Settings = {
 		
 		// Goron area
 		dmtClipToChestByGoron: false,
+		dmtBombFlowerChestByGoron: false,
 		dmtClimbWithHoverBoots: false,
 		dmtSkullsWithoutHammer: false,
 		goronSpinningUrnWithChus: false,

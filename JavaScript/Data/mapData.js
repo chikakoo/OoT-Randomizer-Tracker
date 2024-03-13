@@ -888,7 +888,8 @@ let MapLocations = {
                         Time: function() { return Time.DAY; },
                         Age: Age.ADULT,
                         LongDescription: "As Adult, talk to Ingo if you haven't already rescused Epona to go inside. Play Epona's song and ride epona. Jump over the center of the smaller gate to get this wonderitem.",
-                        RequiredSongs: [Songs.EPONAS_SONG]
+                        RequiredSongs: [Songs.EPONAS_SONG],
+                        RequiredItems: [Items.OCARINA]
                     },
                     "Wonderitem via Tall Gate": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -897,7 +898,8 @@ let MapLocations = {
                         Time: function() { return Time.DAY; },
                         Age: Age.ADULT,
                         LongDescription: "As Adult, talk to Ingo if you haven't already rescused Epona to go inside. Play Epona's song and ride epona. Jump over the center of the larger gate to get this wonderitem.",
-                        RequiredSongs: [Songs.EPONAS_SONG]
+                        RequiredSongs: [Songs.EPONAS_SONG],
+                        RequiredItems: [Items.OCARINA]
                     }
                 }
             }
@@ -2054,8 +2056,13 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "If you take the left path out of Goron City, the wall to bomb or hammer will be to your right.",
                         CustomRequirement: function(age) {
-                            let canClipIn = Settings.GlitchesToAllow.dmtClipToChestByGoron && ItemData.canUse(age, ItemSets.SWORDS);
-                            return canClipIn || ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS);
+                            let canClipIn = Settings.GlitchesToAllow.dmtClipToChestByGoron && 
+                                ItemData.canUse(age, ItemSets.SWORDS);
+                            let canUseBombFlower = Settings.GlitchesToAllow.dmtBombFlowerChestByGoron && 
+                                ItemData.canUse(age, Equipment.STRENGTH);
+                            return canClipIn || 
+                                canUseBombFlower ||
+                                ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS);
                         }
                     },
                     "Heart Piece Above Dodongo's Cavern": {
