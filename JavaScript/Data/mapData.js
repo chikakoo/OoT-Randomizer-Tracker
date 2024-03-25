@@ -1618,6 +1618,9 @@ let MapLocations = {
                     royalFamilyTomb: {
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
                     },
+                    dampesGrave: {
+                        Age: Age.ADULT
+                    },
                     shadowTemple: {
                         CustomRequirement: function(age) {
                             return Data.canGetToGraveyardTopEarly(age);
@@ -1636,12 +1639,6 @@ let MapLocations = {
                     },
                     "Dampe's Shed": {
                         OwExit: OwExits["Graveyard"]["Dampe's Shed"]
-                    },
-                    "Dampe's Grave": {
-                        OwExit: OwExits["Graveyard"]["Dampe's Grave"]
-                    },
-                    "Dampe's Grave to Dampe Race": {
-                        OwExit: OwExits["Graveyard"]["Dampe's Grave to Dampe Race"]
                     }
                 },
 
@@ -1724,6 +1721,11 @@ let MapLocations = {
                             return Settings.GlitchesToAllow.unloadGrave;
                         }
                     },
+                    dampesGrave: {
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.unloadGrave;
+                        }
+                    },
                     shadowTemple: {
                         RequiredItems: [Equipment.MAGIC, Items.DINS_FIRE]
                     },
@@ -1747,6 +1749,19 @@ let MapLocations = {
                     main: {},
                     "Royal Family's Tomb": {
                         OwExit: OwExits["Graveyard"]["Royal Family's Tomb"]
+                    }
+                },
+                ItemLocations: {}
+            },
+            dampesGrave: {
+                ExcludeFromSpawnList: true,
+                Exits: {
+                    main: {},
+                    "Dampe's Grave": {
+                        OwExit: OwExits["Graveyard"]["Dampe's Grave"]
+                    },
+                    "Dampe's Grave to Dampe Race": {
+                        OwExit: OwExits["Graveyard"]["Dampe's Grave to Dampe Race"]
                     }
                 },
                 ItemLocations: {}

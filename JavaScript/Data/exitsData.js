@@ -1151,7 +1151,7 @@ let OwExits = {
             LongDescription: "Located in the southeast corner of the graveyard.",
         },
         "Dampe's Grave": {
-            ExitRegion: "main",
+            ExitRegion: "dampesGrave",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
             IsComplexEntrance: true,
@@ -1161,7 +1161,8 @@ let OwExits = {
             },
             DefaultEntranceGroupName: "Dampe's Grave",
             MapInfo: { x: 166, y: 86 },
-            Age: Age.ADULT,
+            Age: Age.EITHER,
+            UseAdultAge: function() { return !Settings.GlitchesToAllow.unloadGrave; },
             LongDescription: "Under the grave in the in the northwest corner of the graveyard.",
         },
         "Dampe's Grave to Dampe Race": {

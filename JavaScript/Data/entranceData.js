@@ -197,9 +197,12 @@ InteriorGroups = {
 		},
 		_canBuyMaskOfTruth: function() {
 			return this._isMaskShopOpen() && 
-				Data.itemLocationObtained("Kakariko Village", "main", "Sell Keaton Mask") &&
-				Data.itemLocationObtained("Lost Woods", "firstHalf", "Sell Skull Mask") &&
-				Data.itemLocationObtained("Graveyard", "main", "Sell Spooky Mask") &&
+
+				// Per https://github.com/OoTRandomizer/OoT-Randomizer/issues/2191
+				// - Apparently only bunny hood is checked here - uncomment these once this issue is fixed
+				// Data.itemLocationObtained("Kakariko Village", "main", "Sell Keaton Mask") &&
+				// Data.itemLocationObtained("Lost Woods", "firstHalf", "Sell Skull Mask") &&
+				// Data.itemLocationObtained("Graveyard", "main", "Sell Spooky Mask") &&
 				Data.itemLocationObtained("Hyrule Field", "main", "Sell Bunny Hood");
 		},
 		tooltip: "The Happy Mask Shop",
