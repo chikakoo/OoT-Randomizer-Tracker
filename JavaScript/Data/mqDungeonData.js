@@ -4539,6 +4539,7 @@ let MQDungeons = {
                         MapInfo: { x: 350, y: 193, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 26,
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         LongDescription: "Go through the door at the top of the invisible spike room. You may need hover boots if the clear platforms are there. Navigate through the wind hallway all the way to the door. The skulltula is in plain sight in this room."
                     },
                     "Invisible Chest at End of Wind Hallway": {
