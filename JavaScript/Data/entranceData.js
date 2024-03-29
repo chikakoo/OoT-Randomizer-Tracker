@@ -2368,6 +2368,23 @@ GrottoGroups = {
 			}
 		}
 	},
+	"3 Hammer Wonderitems": {
+		tooltip: "A group of 3 wonderitems you need the hammer to get.",
+		icon: "Hammer Wonderitem",
+		buttons: {
+			"Hammer Wonderitems": {
+				useGroupImage: true,
+				count: 3,
+				description: "Hammer something to get these items.",
+				canGet: function(age) {
+					return ItemData.canUse(age, Items.MEGATON_HAMMER);
+				},
+				isAdultOnly: function() {
+					return !Settings.GlitchesToAllow.equipSwap;
+				}
+			}
+		}
+	},
 	"Sword and Hammer Wonderitem": {
 		tooltip: "A group of wonderitems - one requiring a sword, and one requiring tne hammer.",
 		buttons: {

@@ -3914,7 +3914,7 @@ let MapLocations = {
                     },
                     wastelandEntrance: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT, Equipment.HOVER_BOOTS],
+                        RequiredItems: [Equipment.HOVER_BOOTS],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.gerudoGateSkipAsAdult;
                         }

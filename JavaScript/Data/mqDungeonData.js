@@ -2476,6 +2476,18 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 19,
                         LongDescription: "Open the locked door on the other side of the big lava room. The hearts are on either side at the very top and in the middle of the room where you jump to the block."
+                    },
+                    "3 Wonderitems After Rising Block Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Hammer Wonderitems",
+                        MapInfo: { x: 163, y: 157, floor: "F2" },
+                        RequiredItems: [Items.MEGATON_HAMMER],
+                        Age: Age.EITHER,
+                        Order: 19.1,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        LongDescription: "After the rising block room, hammer the floor with the face on it near the jail cell to get these three items."
                     }
                 }
             },
