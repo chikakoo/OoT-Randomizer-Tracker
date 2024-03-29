@@ -1586,10 +1586,7 @@ let MQDungeons = {
 
                     upperOutside: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.BOMB, Equipment.HOVER_BOOTS],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.forestJumpToTop;
-                        }
+                        RequiredItems: [Equipment.HOVER_BOOTS] // Jumpslash the switch from the block room
                     },
 
                     outsideEast: {

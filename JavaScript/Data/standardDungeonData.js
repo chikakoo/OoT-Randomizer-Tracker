@@ -4763,14 +4763,11 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 40,
                         AltOrder: 35,
-                        LongDescription: "Head to the moving wall room. This is the room to your right if you enter the topmost southeast area of the statue room. It's also the room straight ahead if leaving the 4 armos room.<br/><br/>Head up the wall - longshot up there if you have it. In the next room, play Zelda's Lullaby to open the door in front of you. Bomb or hammer the fake door just to the left of the boss key chest. Shoot the eye switch to spawn some platforms. Now, hookshot up there and hit the switch to put the fire out.",
+                        LongDescription: "Head to the moving wall room. This is the room to your right if you enter the topmost southeast area of the statue room. It's also the room straight ahead if leaving the 4 armos room.<br/><br/>Head up the wall - longshot up there if you have it. In the next room, play Zelda's Lullaby to open the door in front of you. Bomb, hammer, or the fake door just to the left of the boss key chest. Shoot the eye switch to spawn some platforms (with good timing if yu didn't break it). Now, hookshot up there and hit the switch to put the fire out.",
                         RequiredSongs: [Songs.ZELDAS_LULLABY],
                         CustomRequirement: function(age) {
-                            if (Settings.GlitchesToAllow.spiritBKTrick) { return true; }
-                            
-                            let canDestroyDoors = ItemData.canUseAny(age, [ItemSets.EXPLOSIVES, Items.MEGATON_HAMMER]);
-                            let hasRequiredItems = ItemData.canUseAll(age, [Items.FAIRY_BOW, Items.HOOKSHOT]);
-                            return canDestroyDoors && hasRequiredItems;
+                            return Settings.GlitchesToAllow.spiritBKTrick ||
+                                ItemData.canUseAll(age, [Items.FAIRY_BOW, Items.HOOKSHOT]);
                         }
                     },
                     "2 Flying Pots in Upper Giant Mirror Room": {

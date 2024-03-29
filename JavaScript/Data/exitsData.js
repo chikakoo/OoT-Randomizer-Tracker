@@ -1402,9 +1402,9 @@ let OwExits = {
             DefaultEntranceGroupName: "3 Scrubs",
             MapInfo: { x: 278, y: 21 },
             Age: Age.ADULT,
-            LongDescription: "Head to the east side of the middle floor and enter the hallway. You should see a lava room to your left. There is a grotto there with the scrubs. There are a few ways to get across.<br/><br/>One way is to run across the lava to the other side, play the song of time, and then climb onto the block to reach the other side.<br/><br/>Another way is to equip the Goron Tunic, run across the lava for distance and then quickly hookshot the target before the damage cancels you out of your hookshot.<br/><br/>Finally, if you have the longshot and the song of time, play the song at the start of the lava room. Stand on the block and longshot the target to get across.",
+            LongDescription: "Head to the east side of the middle floor and enter the hallway. You should see a lava room to your left. There is a grotto there with the scrubs. There are a few ways to get across.<br/><br/>One way is to run across the lava to the other side, play the song of time, and then climb onto the block to reach the other side.<br/><br/>Another way is to equip the Goron Tunic or use Nayru's Love, run across the lava for distance and then quickly hookshot the target before the damage cancels you out of your hookshot.<br/><br/>Finally, if you have the longshot and the song of time, play the song at the start of the lava room. Stand on the block and longshot the target to get across.",
             CustomRequirement: function(age) {
-                let canHookshotUp = Equipment.GORON_TUNIC.playerHas && Items.HOOKSHOT.playerHas;
+                let canHookshotUp = ItemData.canUseAny(age, [Equipment.GORON_TUNIC, Items.NAYRUS_LOVE]) && Items.HOOKSHOT.playerHas;
                 return canHookshotUp || Data.canPlaySong(Songs.SONG_OF_TIME);
             }
         },

@@ -2322,6 +2322,7 @@ let MapLocations = {
                     scarecrowPlatform: {
                         Age: Age.ADULT,
                         RequiredItems: [UpgradedItems.LONGSHOT],
+                        RequiredSongs: [Songs.SCARECROWS_SONG],
                         CustomRequirement: function(age) {
                             return Data.canHookScarecrow(age);
                         }
@@ -2393,8 +2394,7 @@ let MapLocations = {
                 Exits: {
                     bottom: {
                         Age: Age.ADULT,
-                        RequiredItems: [UpgradedItems.LONGSHOT],
-                        RequiredSongs: [Songs.SCARECROWS_SONG]
+                        RequiredItems: [UpgradedItems.LONGSHOT] // Longshot the wooden plank by the next platform
                     }
                 },
                 ItemLocations: {
