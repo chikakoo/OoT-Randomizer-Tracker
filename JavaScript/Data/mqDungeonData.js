@@ -2978,11 +2978,12 @@ let MQDungeons = {
                         RequiredItems: [Equipment.IRON_BOOTS]
                     },
                     roomBeforeDarkLink: {
-                        //TODO: does hovers + normal hookshot actually work?
-                        RequiredChoiceOfAdultItems: [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS],
-                        RequiredAdultItems: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
-                            return ItemData.getKeyCount("Water Temple") >= 1;
+                            let canGetThereNormally = ItemData.canUse(age, UpgradedItems.LONGSHOT);
+                            let canUseTrick = Settings.GlitchesToAllow.mqWaterWaterfallWithHovers &&
+                                ItemData.canUseAll(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]);
+                            return (canGetThereNormally || canUseTrick) &&
+                                ItemData.getKeyCount("Water Temple") >= 1;
                         }
                     },
                     bossRoomAntechamber: {
@@ -3488,8 +3489,11 @@ let MQDungeons = {
                         MapInfo: { x: 53, y: 62, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 26,
-                        LongDescription: "In the whirlpool dragon room, use your iron boots to sink to the little hallway behind the dragon where the crates reside.",
-                        RequiredItems: [Equipment.IRON_BOOTS]
+                        LongDescription: "In the whirlpool dragon room, use your iron boots or silver scale to sink to the little hallway behind the dragon where the crates reside. You can use chus to blow up the crates and dive for the items (drop on the 6th red flash for the close ones; the 4th red flash for the far ones).",
+                        CustomRequirement: function(age) {
+                            return ItemData.canUse(age, Equipment.IRON_BOOTS) ||
+                                ItemData.canUseAll(age, [Equipment.SCALE, Items.BOMBCHU]);
+                        }
                     },
                     "2 Crates Behind Dragon Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3533,7 +3537,7 @@ let MQDungeons = {
                         MapInfo: { x: 74, y: 68, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 27.2,
-                        LongDescription: "In the whirlpool dragon room, get on the ledge. Shoot both eyes with your hookshot to spawn two wonderitems. Note that there's a weird thing in the water that sometimes stops your shot - just keep trying!",
+                        LongDescription: "In the whirlpool dragon room, use your boots to sink down. Shoot both eyes with your hookshot to spawn two wonderitems. Note that there's a weird thing in the water that sometimes stops your shot - just keep trying!",
                         RequiredItems: [Items.HOOKSHOT, Equipment.IRON_BOOTS]
                     },
                     "2 Crates by Dragon Room Door": {
@@ -3839,7 +3843,7 @@ let MQDungeons = {
                     bossRoom: {
                         CustomRequirement: function(age) {
                             // Nayrus love can be used to become immune to the spike traps!
-                            let canGetUp = ItemData.canUseAny(age, [UpgradedItems.LONGSHOT, Items.NAYRUS_LOVE]);
+                            let canGetUp = ItemData.canUseAny(age, [UpgradedItems.LONGSHOT, Items.NAYRUS_LOVE, Equipment.HOVER_BOOTS]);
                             let canGetIn = ItemData.hasBossKey("Water Temple") ||
                                 ItemData.canUseAny(age, [Items.HOOKSHOT, Items.FAIRY_BOW, Items.BOMBCHU]);
                             return canGetUp && canGetIn;

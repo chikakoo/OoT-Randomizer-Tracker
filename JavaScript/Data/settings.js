@@ -271,6 +271,7 @@ let Settings = {
 		waterEyeSwitchGateFromTop: false,
 		waterDragonChestWithChu: false,
 		waterBKShortcut: false,
+		mqWaterWaterfallWithHovers: false,
 		
 		shadowLensless: false,
 		shadowSilverRupeeWithNothing: false,
