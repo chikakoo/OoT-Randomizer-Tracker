@@ -1285,11 +1285,22 @@ let StandardDungeons = {
                 Exits: {
                     topOfOutsideRight: {
                         Age: Age.ADULT,
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.forestHookshotToWellSwitch
+                                ? ItemData.canUse(age, Items.HOOKSHOT)
+                                : ItemData.canUse(age, UpgradedItems.LONGSHOT);
+                        }
                     },
                     outsideRightLedge: {
                         Age: Age.ADULT,
                         RequiredItems: [Items.HOOKSHOT]
+                    },
+                    skulltulaOnOutsideRightLedge: {
+                        Age: Age.EITHER,
+                        RequiredItems: [Items.BOOMERANG],
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.forestBoomerangSkullOnLedge;
+                        }
                     },
                     outsideLeft: {
                         // This is to swim through the well
@@ -1322,7 +1333,8 @@ let StandardDungeons = {
                     "Skulltula on Outside Right Island": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 269, y: 70, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.forestBoomerangSkullOnLedge; },
                         Order: 10,
                         LongDescription: "There is a skulltula on the landmass on the other wide of the water in the right outside room. You can hookshot to the island via the chest at the right angle. To get to the right outside room, you can either shoot the eye switch in the main room, or climb up the vines in the left outside room and go through the dungeon map room.<br/><br/>If you have no hookshot and are coming from the falling ceiling room, make sure you kill it and drop down on the item from above so you don't miss your chance!"
                     }

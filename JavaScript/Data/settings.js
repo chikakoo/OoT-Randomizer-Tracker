@@ -253,6 +253,8 @@ let Settings = {
 		forestFirstSkullWithBomb: false,
 		forestLedgeClip: false,
 		forestLedgeWithHovers: false,
+		forestBoomerangSkullOnLedge: false,
+		forestHookshotToWellSwitch: false,
 		forestJumpToTop: false,
 		forestBlockSkip: false,
 		forestGreenPoeEarly: false,
