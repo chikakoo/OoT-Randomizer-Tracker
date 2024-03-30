@@ -268,6 +268,12 @@ let StandardDungeons = {
 
             mainRoom: {
                 Exits: {
+                    inDodongoHead: {
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.dodongoOpenHeadWithBombchus &&
+                                ItemData.canUseAll(age, [ItemSets.SHIELDS, Items.BOMBCHU]);
+                        }
+                    },
                     firstFloorSwitch: {
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) { return true; } // Adult can just climb to the switch
@@ -275,7 +281,6 @@ let StandardDungeons = {
                                 (Settings.GlitchesToAllow.dodongoSwitchEarly && Items.BOMBCHU.playerHas && Equipment.DEKU_SHIELD.playerHas);
                         }
                     },
-
                     blueRoom: {
                         RequiredChoiceOfItems: [ItemSets.SWORDS, ItemSets.MUD_WALL_ITEMS]
                     }
@@ -510,7 +515,12 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 20,
                         LongDescription: "In the room with the blades, there's a wall you can destroy that's located near the cliffs with the bomb chest. There are a couple scrubs inside.",
-                        RequiredItems: [ItemSets.MUD_WALL_ITEMS]
+                        CustomRequirement: function(age) {
+                            let hasMudWallItem = ItemData.canUse(age, ItemSets.MUD_WALL_ITEMS);
+                            return age === Age.CHILD
+                                ? hasMudWallItem
+                                : hasMudWallItem || (Settings.RandomizerSettings.dodongoAdultBladeMudWallWithStrength && Equipment.STRENGTH.playerHas);
+                        }
                     },
                     "Heart Behind Block in Blade Room": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -926,7 +936,17 @@ let StandardDungeons = {
             roomBeforeBoss: {
                 Exits: {
                     bossRoom: {
-                        RequiredItems: [Items.BOOMERANG]
+                        CustomRequirement: function(age) {
+                            if (ItemData.canUseAny(age, [Items.BOOMERANG, Items.FAIRY_SLINGSHOT, UpgradedItems.LONGSHOT])) {
+                                return true;
+                            }
+
+                            return Settings.GlitchesToAllow.jabuBossSwitchWithExplosives &&
+                            (
+                                (age === Age.CHILD && Items.BOMBCHU.playerHas) ||
+                                (age == Age.ADULT && Items.BOMB.playerHas)
+                            );
+                        }
                     }
                 },
 
@@ -5396,7 +5416,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 30,
                         LongDescription: "Fall down one of the many pits to get to the basement. This chest is located behind the rocks that are farthest from the ladder. That is, if you face away from the ladder, it's the rightmost set of rocks.",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "Silver Rupee on South Basement Wood Beam": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,

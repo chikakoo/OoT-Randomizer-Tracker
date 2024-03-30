@@ -1423,10 +1423,9 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 244, y: 189, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
-                        RequiredItems: [Items.BOOMERANG],
+                        RequiredChoiceOfItems: [Items.BOOMERANG, UpgradedItems.LONGSHOT],
                         Order: 24,
-                        LongDescription: "Climb up the vines and use your boomerang to get this skulltula."
+                        LongDescription: "Climb up the vines and use your boomerang to get this skulltula. Adult can snipe it from the corner by the entrance to the room with the longshot."
                     }
                 }
             },

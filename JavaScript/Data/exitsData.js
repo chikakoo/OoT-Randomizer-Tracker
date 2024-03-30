@@ -2546,7 +2546,7 @@ let OwExits = {
                 isMQ = MapLocations["Jabu Jabu's Belly"].IsMasterQuest;
                 return isMQ ? false : !Settings.GlitchesToAllow.equipSwap;
             },
-            LongDescription: "Standard: Climb up the webbing and use your boomerang to hit the switch and unblock the door.<br/><br/>MQ: Shoot the cow on the wall a few times to unblock the door."
+            LongDescription: "Standard: Climb up the webbing and use your boomerang to hit the switch and unblock the door. You can also snipe it with the slingshot/bow/longshot if you stand in the corner by the entrance.<br/><br/>MQ: Shoot the cow on the wall a few times to unblock the door."
         }
     },
 

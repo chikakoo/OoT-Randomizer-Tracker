@@ -241,11 +241,14 @@ let Settings = {
 		mqDekuSideRoomRocksBombsOnly: false,
 		
 		dodongoSwitchEarly: true,
-		dodongoAdultJumpToBombChest: true,
 		dodongoScarecrowSkullEarly: true,
 		dodongoTriggerStairsWithBow: false,
+		dodongoAdultJumpToBombChest: true,
+		dodongoAdultBladeMudWallWithStrength: false,
+		dodongoOpenHeadWithBombchus: false,
 		
 		jabuBlueSwitchSkip: false,
+		jabuBossSwitchWithExplosives: false,
 		
 		forestFirstSkullWithBomb: false,
 		forestLedgeClip: false,
