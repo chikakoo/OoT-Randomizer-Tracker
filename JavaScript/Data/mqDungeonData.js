@@ -4000,7 +4000,7 @@ let MQDungeons = {
                     afterTruthSpinner: {
                         CustomRequirement: function(age) {
                             return Data.canMegaFlip(age) ||
-                                ItemData.canUseAny(age, [Items.FIRE_ARROW, Equipment.HOVER_BOOTS]);
+                                ItemData.canUseAny(age, [Items.FIRE_ARROW, Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT]);
                         }
                     }
                 },
@@ -4119,7 +4119,7 @@ let MQDungeons = {
                         MapInfo: { x: 304, y: 113, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 8.1,
-                        LongDescription: "First, turn the truth spinner in the main room to the correct skull to open the gate. Now, shoot the torches to the left and right of the gate to create a platform. Alternatively, you can megaflip or hover boots across. Take the left door from the beamos.<br/><br/>This rupee is to the right of the spinning scythe."
+                        LongDescription: "First, turn the truth spinner in the main room to the correct skull to open the gate. Now, shoot the torches to the left and right of the gate to create a platform. Alternatively, you can megaflip, hover boots, or use longshot (stand in the corner, hookshot the opposite torch, then jumpslash). Take the left door from the beamos.<br/><br/>This rupee is to the right of the spinning scythe."
                     },
                     "Scythe Silver Rupee Left of Scythe": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4191,10 +4191,8 @@ let MQDungeons = {
                 Exits: {
                     invisibleScytheRoom: {},
                     rightSideOfGiantRoom: {
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, Equipment.HOVER_BOOTS]) || 
-                                Data.canMegaFlip(age);
-                        }
+                        // Jump to the left side of the platform:
+                        // https://youtu.be/vmr9uhILL9Q?si=0jDB7UhWQGhtRHAC
                     }
                 },
                 ItemLocations: {}
@@ -4288,7 +4286,7 @@ let MQDungeons = {
                         MapInfo: { x: 142, y: 215, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 15.6,
-                        LLongDescription: "In the giant room, use a fire item to hit the frozen eye switch. This will spawn some platforms in the direction the eye is facing. Use them to get to the right side of the room.<br/><br/>This rupee is in front of the beamos."
+                        LLongDescription: "In the giant room, use a fire item to hit the frozen eye switch, or jump from the beamos platform to the LEFT part of the jutting out land. This will spawn some platforms in the direction the eye is facing. Use them to get to the right side of the room.<br/><br/>This rupee is in front of the beamos."
                     },
                     "Pit Room Silver Rupee in Behind Beamos": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4664,8 +4662,7 @@ let MQDungeons = {
                         MapInfo: { x: 140, y: 104, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 36,
-                        LongDescription: "Navigate to the boat room - this is the room after the Gibdo room by the wind hallway. Get to the boat by pushing the block, or hookshotting up the ladder. Play Zelda's Lullaby to move the boat to the other area. The skulltula is on the wall to the left of where you create the bridge.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        LongDescription: "Navigate to the boat room - this is the room after the Gibdo room by the wind hallway. Get to the boat by pushing the block, or hookshotting up the ladder. Play Zelda's Lullaby to move the boat to the other area. The skulltula is on the wall to the left of where you create the bridge - you can use a pot to kill it and drop down if you have no hookshot."
                     }
                 }
             },

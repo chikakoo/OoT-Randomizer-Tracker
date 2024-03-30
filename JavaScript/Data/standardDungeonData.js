@@ -4110,7 +4110,7 @@ let StandardDungeons = {
                         }
                     },
                     childSkulltulaInGrateRoom: {
-                        RequiredChoiceOfItems: [Items.BOOMERANG, Items.HOOKSHOT]
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     afterSecondCrawlSpace: {}
                 },
@@ -4179,7 +4179,6 @@ let StandardDungeons = {
                 Exits: {
                     childSkulltulaInGrateRoom: {
                         Map: "Spirit Temple",
-                        SilverRupeeIndex: 0,
                         RequiredChoiceOfItems: [Items.FAIRY_SLINGSHOT, Items.DEKU_STICK, ItemSets.FIRE_ITEMS, ItemSets.EXPLOSIVES]
                     }
                 },
@@ -4224,7 +4223,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 7,
                         AltOrder: 43,
-                        LongDescription: "WALL MASTER WARNING:<br/>After killing all the enemies in the first child-only room, enter the right room. There's a skulltula on the grate - kill it and collect it with your Boomerang. If you don't have one, navigate around the rooms counter-clockwise. Collect the silver rupees to lower the bridge. Kill it with bombs, a bombchu (it can slide along the pit at the bottom), Din's Fire, a stick jumpslash from the other side, or a slingshot. You can actually climb the side of the grate that the token is on with a well-angled jump to collect it without a Boomerang."
+                        LongDescription: "WALL MASTER WARNING:<br/>After killing all the enemies in the first child-only room, enter the right room. There's a skulltula on the grate - kill it and collect it with your Boomerang. If you don't have one, navigate around the rooms counter-clockwise. Collect the silver rupees to lower the bridge. Kill it with bombs, a bombchu (it can slide along the pit at the bottom), Din's Fire, a stick jumpslash from the other side, or a slingshot. You can collect it from the opposite side if you climb just above it, press down + A to drop, then hold up."
                     }
                 }
             },
@@ -4492,8 +4491,8 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 16,
                         AltOrder: 13,
-                        LongDescription: "Head to the statue room. On the floor in front of the statue, light the torches with Din's Fire or Fire Arrows to spawn the chest. You can also run a lit deku stick down via the torch in the southwest corner of the room.",
-                        RequiredChoiceOfItems: [Items.DEKU_STICK, ItemSets.FIRE_ITEMS]
+                        LongDescription: "Head to the statue room. On the floor in front of the statue, light the torches with Din's Fire or Fire Arrows to spawn the chest. You can also run a lit deku stick down via the torch in the southwest corner of the room. Finally, you can push the armos statue to the lit torch on the top, backflip on it, and shoot an arrow through it to light the first torch (then go down and light the other).",
+                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, ItemSets.FIRE_ITEMS]
                     },
                     "Sun Block Silver Rupee on Wall by Blocks": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
