@@ -255,6 +255,7 @@ let Settings = {
 		forestLedgeWithHovers: false,
 		forestBoomerangSkullOnLedge: false,
 		forestHookshotToWellSwitch: false,
+		mqForestHoverBootsToDoorFrame: false,
 		forestJumpToTop: false,
 		forestBlockSkip: false,
 		forestGreenPoeEarly: false,
@@ -291,6 +292,7 @@ let Settings = {
 		spiritBlockSkipWithHovers: false,
 		spiritBlockSkipWithBombPush: false,
 		spiritStatueRoomJumps: false,
+		mqSpiritStatueTorchesWithDins: false,
 		spiritSuperslideToMirrorShield: false,
 		spiritBKTrick: false,
 

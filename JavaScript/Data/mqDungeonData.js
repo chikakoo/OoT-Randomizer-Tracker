@@ -1573,6 +1573,11 @@ let MQDungeons = {
                         LockedDoor: "Locked Door by Twisted Corridor",
                         Map: "Forest Temple",
                         CustomRequirement: function(age) {
+                            // Line up with the center wall as you first enter, and drop the chu
+                            if (ItemData.canUseAll(age, [Items.HOOKSHOT, Items.BOMBCHU])) {
+                                return true;
+                            }
+
                             // If you can't push blocks, you MUST do the block skip
                             let hasStrength = Equipment.STRENGTH.playerHas;
                             if (!hasStrength && !Settings.GlitchesToAllow.forestBlockSkip) { return false; } 
@@ -1701,7 +1706,7 @@ let MQDungeons = {
                         MapInfo: { x: 66, y: 45, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 15,
-                        LongDescription: "After the block puzzle room and the untwisted hallway, jump down to get the boss key chest. Be wary of the Wallmaster!"
+                        LongDescription: "After the block puzzle room and the untwisted hallway, jump down to get the boss key chest. Be wary of the Wallmaster!<br/><br/>Note that if you don't have strength, you can get here using chus and hookshot. From the entrance to the block room, go to the center of the wall to your left and drop the chu - it will hit the switch. Now hookshot up the targets and navigate to the door."
                     }
                 }
             },
@@ -1725,11 +1730,11 @@ let MQDungeons = {
                 Exits: {
                     outsideEast: { // Via the well - eye switch doesn't matter because the other way in covers that
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.IRON_BOOTS]
+                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
                     },
                     outsideEastBalcony: { // Burn the web, to go through to the top platform
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.MAGIC, Items.FAIRY_BOW, Items.FIRE_ARROW]
+                        RequiredItems: [Items.FIRE_ARROW]
                     },
                     outsideWestHearts: {
                         RequiredItems: [Items.BOOMERANG],
@@ -1775,8 +1780,17 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         RequiredItems: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) || ItemData.canUse(age, UpgradedItems.LONGSHOT);
+                            if (Data.canPlaySong(Songs.SONG_OF_TIME)) {
+                                return true;
+                            } 
+
+                            return Settings.GlitchesToAllow.forestHookshotToWellSwitch &&
+                                ItemData.canUse(age, UpgradedItems.LONGSHOT);
                         }
+                    },
+                    outsideEastDoorFrame: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.HOOKSHOT]
                     },
                     outsideEastPlatform: {
                         Age: Age.ADULT,
@@ -1784,21 +1798,18 @@ let MQDungeons = {
                     },
                     well: {}
                 },
-
-                ItemLocations: {
-                    "Skulltula Above Outside East Door": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 226, y: 98, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 7.1,
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
-                        LongDescription: "The skulltula is above the doorframe leading to this room. Get it with your boomerang or hookshot."
-                    }
-                }
+                ItemLocations: {}
             },
             outsideEastBalcony: {
                 Exits: {
                     outsideEast: {},
+                    outsideEastDoorFrame: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Equipment.HOVER_BOOTS],
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.mqForestHoverBootsToDoorFrame;
+                        }
+                    },
                     outsideEastPlatform: {
                         Age: Age.ADULT,
                         RequiredItems: [Equipment.HOVER_BOOTS],
@@ -1815,6 +1826,28 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 8,
                         LongDescription: "Hookshot up the doorframe leading to this room. Repeatedly play the Song of Time and jump to the end of the blocks it spawns until you can get to the balcony with the chest.<br/><br/>You can also use the longshot on the vines by the balcony to get up, OR go around from the west room with a fire arrow."
+                    }
+                }
+            },
+            outsideEastDoorFrame: {
+                Exits: {
+                    outsideEastPlatform: {
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            return Data.canHammerHoverBootsSuperslide(age);
+                        }
+                    },
+                    outsideEast: {}
+                },
+
+                ItemLocations: {
+                    "Skulltula Above Outside East Door": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        MapInfo: { x: 226, y: 98, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 7.1,
+                        RequiredChoiceOfItems: [ItemSets.DISTANT_SWITCH_ITEMS, Items.DINS_FIRE],
+                        LongDescription: "The skulltula is above the doorframe leading to this room. Get it with your boomerang or hookshot."
                     }
                 }
             },
@@ -5227,7 +5260,12 @@ let MQDungeons = {
                     },
                     roomRightOfLobby: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.MAGIC, Equipment.MIRROR_SHIELD]
+                        RequiredItems: [Equipment.MIRROR_SHIELD],
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.mqSpiritStatueTorchesWithDins
+                                ? ItemData.canUse(age, ItemSets.FIRE_ITEMS)
+                                : ItemData.canUse(age, Items.FIRE_ARROW);
+                        }
                     }
                 },
 
@@ -6260,7 +6298,8 @@ let MQDungeons = {
                         MapInfo: { x: 333, y: 229, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 13,
-                        LongDescription: "In the Dead Hand room, bomb the back left rubble to reveal the item."
+                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES, Items.BOOMERANG],
+                        LongDescription: "In the Dead Hand room, bomb the back left rubble to reveal the item. You can also stand on in the corner of the rubble and boomerang straight down to get it."
                     }
                 }
             },

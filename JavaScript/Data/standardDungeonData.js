@@ -5272,6 +5272,12 @@ let StandardDungeons = {
                     },
                     bombableHoleRoom: {
                         RequiredItems: [ItemSets.EXPLOSIVES]
+                    },
+                    mapChestArea: {
+                        CustomRequirement: function(age) {
+                            return ItemData.canUseAll(age, [Items.DEKU_STICK, Equipment.STRENGTH]) ||
+                                ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS);
+                        }
                     }
                 },
 
@@ -5422,14 +5428,6 @@ let StandardDungeons = {
                         Order: 29,
                         LongDescription: "These pots are by the entrance to the second wing from the left in the basement."
                     },
-                    "Map Chest in Basement": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 302, y: 238, floor: "B1" },
-                        Age: Age.CHILD,
-                        Order: 30,
-                        LongDescription: "Fall down one of the many pits to get to the basement. This chest is located behind the rocks that are farthest from the ladder. That is, if you face away from the ladder, it's the rightmost set of rocks.",
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
-                    },
                     "Silver Rupee on South Basement Wood Beam": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 176, y: 232, floor: "B1" },
@@ -5485,6 +5483,9 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.botwActorGlitch;
                         }
+                    },
+                    mapChestArea: {
+                        RequiredItems: [Equipment.STRENGTH]
                     }
                 },
 
@@ -5590,6 +5591,18 @@ let StandardDungeons = {
                             if (swordRequired) { return Equipment.KOKIRI_SWORD.playerHas; }
                             return ItemData.canUse(age, ItemSets.SWORDS);
                         }
+                    }
+                }
+            },
+            mapChestArea: {
+                Exits: {},
+                ItemLocations: {
+                    "Map Chest in Basement": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 302, y: 238, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 30,
+                        LongDescription: "Fall down one of the many pits to get to the basement. This chest is located behind the rocks that are farthest from the ladder. That is, if you face away from the ladder, it's the rightmost set of rocks.<br/><br/>You can use the bombchus from the rocks in the corridor to the left to get in. You drop down from the pit room with the beamos. If you can't get there, you can light a deku stick on fire and jumpslash between the rocks to light the bomb flower."
                     }
                 }
             }
