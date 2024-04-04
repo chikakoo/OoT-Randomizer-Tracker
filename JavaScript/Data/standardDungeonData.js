@@ -756,8 +756,8 @@ let StandardDungeons = {
                     },
                     roomBeforeBoss: {
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.jabuBlueSwitchSkip && 
-                                (Data.canMegaFlip(age) || ItemData.canUse(age, Equipment.HOVER_BOOTS));
+                            return ItemData.canUse(age, Equipment.HOVER_BOOTS) ||
+                                (Settings.GlitchesToAllow.jabuBlueSwitchSkip && Data.canMegaFlip(age));
                         }
                     }
                 },
@@ -956,7 +956,7 @@ let StandardDungeons = {
                         MapInfo: { x: 255, y: 194, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 12,
-                        LongDescription: "In the room before the boss room (the one that's slightly green and has a bunch of biris), there's a skulltula on the vines leading up the wall to the door switch.<br/><br/>Note that adult can get here immediately by using the hover boots."
+                        LongDescription: "In the room before the boss room (the one that's slightly green and has a bunch of biris), there's a skulltula on the vines leading up the wall to the door switch.<br/><br/>Note that adult can get here immediately by using the hover boots (grab a box and backwalk off the elevator with hover boots equipped)."
                     }
                 }
             },
@@ -1972,10 +1972,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
-                        LongDescription: "Go up the stairs at the entrance to the temple. Take the right door into the big lava room. Along the back left wall is a platform that will rise up to an alcove after you jump on it (child must megaflip). The pots are there.",
-                        CustomRequirement: function(age) {
-                            return age === Age.ADULT || Data.canMegaFlip(age);
-                        }
+                        LongDescription: "Go up the stairs at the entrance to the temple. Take the right door into the big lava room. Along the back left wall is a platform that will rise up to an alcove after you jump on it (child can jump there from the moving platform). The pots are there."
                     },
                     "Big Lava Room Left Goron": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3640,7 +3637,7 @@ let StandardDungeons = {
                     "Invisible Spike Ground Center Silver Rupee": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 156, y: 72, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 22.1,
                         LongDescription: "This rupee is in front of you as you enter the room."
                     },
