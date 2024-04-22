@@ -77,7 +77,10 @@ SocketClient = {
 					Equipment[itemKey].playerHas = item.playerHas;
 					Equipment[itemKey].currentUpgrade = item.currentUpgrade;
 					
-					if (itemKey === "SKULLTULA_TOKENS") {
+					if (itemKey === "EMPTY_BOTTLES") {
+						Equipment[itemKey].count = item.count;
+						consoleOutput = `Empty bottles were updated - Count: ${item.count}`;
+					} else if (itemKey === "SKULLTULA_TOKENS") {
 						Equipment[itemKey].count = item.count;
 						consoleOutput = `Gold skulltulas were updated - Count: ${item.count}`;
 					} else if (itemKey === "TRIFORCE_SHARDS") {

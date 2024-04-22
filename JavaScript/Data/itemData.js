@@ -27,22 +27,22 @@ let Items = {
 	LIGHT_ARROW: { name: "Light Arrow" },
 	NAYRUS_LOVE: { name: "Nayru's Love" },
 	
-	BOTTLE1: { name: "Empty Bottle" },
-	BIG_POE: { 
-		name: "Big Poe",
-		upgrades: [ "Nothing", "Big Poe", "Empty Bottle" ],
-		useUpgradeAsDisplay: true
+	EMPTY_BOTTLES: { 
+		name: "Empty Bottles", 
+		playerHas: true, 
+		count: 0,
+		tooltip: "Increment for every bottle in the inventory, no matter what's in it."
 	},
-	BLUE_FIRE: { 
-		name: "Blue Fire",
-		upgrades: [ "Nothing", "Blue Fire", "Empty Bottle" ],
-		useUpgradeAsDisplay: true
-	},
-	RUTOS_LETTER: { 
-		name: "Ruto's Letter",
-		upgrades: [ "Nothing", "Ruto's Letter", "Empty Bottle" ],
-		useUpgradeAsDisplay: true
-	}
+
+	// There are okay to select if you can only receive them
+	BUGS: { name: "Bugs", cssClass: "filled-bottle", tooltip: "Enable if you CAN get this, or you already have one." },
+	FISH: { name: "Fish", cssClass: "filled-bottle", tooltip: "Enable if you CAN get this, or you already have one." },
+	BLUE_FIRE: { name: "Blue Fire", cssClass: "filled-bottle", tooltip: "Enable if you CAN get this, or you already have one." },
+
+	// Only select these if you have them in your inventory currently
+	// DESELECT IF YOU DO NOT HAVE THEM!
+	BIG_POE: { name: "Big Poe", cssClass: "filled-bottle", tooltip: "Enable ONLY if you currently have one - disable when it's turned in!" },
+	RUTOS_LETTER: { name: "Ruto's Letter", cssClass: "filled-bottle", tooltip: "Enable ONLY if you currently have this - disable when it's used!"}
 };
 
 /**
@@ -566,8 +566,8 @@ let ShopItemDictionary = {
 	"check": "Claim Check.png",
 	
 	// Bottles and bottled items
-	"emptybottle": "Empty Bottle.png",
-	"bottle": "Empty Bottle.png",
+	"emptybottle": "Empty Bottles.png",
+	"bottle": "Empty Bottles.png",
 	
 	"redpotion": "Red Potion.png",
 	"redpot": "Red Potion.png",
@@ -1614,5 +1614,24 @@ let ItemData = {
 				console.log(`ERROR: Attempted to get silver rupee data for ${mapName}!`);
 				return null;
 		}
+	},
+
+	/**
+	 * Gets the number of empty bottles the player has
+	 * @param {boolean} excludeLetterAndPoe - whether to exclude ruto's letter and the big poe from the counts
+	 */
+	getEmptyBottleCount: function(excludeLetterAndPoe) {
+		let count = Items.EMPTY_BOTTLES.count;
+
+		if (excludeLetterAndPoe) {
+			if (Items.RUTOS_LETTER.playerHas) {
+				count--;
+			}
+			if (Items.BIG_POE.playerHas) {
+				count--;
+			}
+		}
+
+		return Math.max(count, 0);
 	}
 }

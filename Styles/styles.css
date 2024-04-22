@@ -448,6 +448,12 @@ body::-webkit-scrollbar-thumb {
 	width: 30px;
 }
 
+.item.filled-bottle {
+	position: relative;
+	right: 2px;
+	width: 18px;
+}
+
 #normalSongProgress .item.cannot-play-song:not(.playerDoesNotHave),
 #warpSongProgress .item.cannot-play-song:not(.playerDoesNotHave),
 #scarecrowsSongProgress .item.cannot-play-song:not(.playerDoesNotHave) {
@@ -472,7 +478,7 @@ body::-webkit-scrollbar-thumb {
 .countable-item {
 	user-select: none;
 	position: relative;
-	left: 17px;
+	left: 14px;
 	top: 15px;
 	font-weight: bold;
 
@@ -485,7 +491,7 @@ body::-webkit-scrollbar-thumb {
 	background-color: black;
 }
 
-.countable-item.has-max-tokens {
+.countable-item.has-max {
 	color: #ADFF2F;
 }
 

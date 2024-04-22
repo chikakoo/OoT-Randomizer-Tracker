@@ -451,9 +451,6 @@ let MQDungeons = {
                     topOfTorchPuzzleRoom: {
                         RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, Items.DINS_FIRE]
                     },
-                    eastRoom: {
-                        RequiredItems: [Equipment.STRENGTH]
-                    },
                     inDodongoHead: {
                         RequiredItems: [ItemSets.EXPLOSIVES]
                     }
@@ -732,7 +729,10 @@ let MQDungeons = {
             topOfTorchPuzzleRoom: {
                 Exits: {
                     torchPuzzleRoom: {},
-                    upperLizalfosRoom: {}
+                    upperLizalfosRoom: {},
+                    eastRoom: {
+                        RequiredItems: [Equipment.STRENGTH]
+                    }
                 },
 
                 ItemLocations: {

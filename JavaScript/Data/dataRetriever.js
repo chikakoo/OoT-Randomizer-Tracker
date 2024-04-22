@@ -1156,7 +1156,8 @@ Data = {
      */
     canPlaySongs: function(itemLocation) { //TODO: need to add age to check for OI item to actually play...
 		if (itemLocation && !itemLocation.NeedsOcarina) { return true; }
-		return Items.OCARINA.playerHas || (Settings.GlitchesToAllow.ocarinaItems && this.hasBottle());
+		return Items.OCARINA.playerHas || 
+            (Settings.GlitchesToAllow.ocarinaItems && this.hasOcarinaItemsBottle());
     },
 
     /**
@@ -1165,19 +1166,24 @@ Data = {
      */
     canPlayDifficultOcarinaItems(itemLocation) {
 		if (itemLocation && !itemLocation.DifficultOcarinaItems) { return true; }
-		return Items.OCARINA.playerHas || (Settings.GlitchesToAllow.ocarinaItems && Settings.GlitchesToAllow.difficultOcarinaItems && this.hasBottle());
+		return Items.OCARINA.playerHas || 
+            (Settings.GlitchesToAllow.ocarinaItems && Settings.GlitchesToAllow.difficultOcarinaItems && this.hasOcarinaItemsBottle());
 	},
     
     /**
      * Returns whether the player has an empty bottle
-     * Handles checks on whether fille bottles are empty
+     * Handles checks on whether bottles that cannot be emptied are present
      */
 	hasBottle: function(itemLocation) {
 		if (itemLocation && !itemLocation.NeedsBottle) { return true; }
-		return Items.BOTTLE1.playerHas || 
-			(Items.BIG_POE.currentUpgrade > 1) || 
-			(Items.BLUE_FIRE.currentUpgrade > 1) ||
-			(Items.RUTOS_LETTER.currentUpgrade > 1);
+        return ItemData.getEmptyBottleCount(true) > 0;
+    },
+
+    /**
+     * Whether the player has the bottled items required to do the OI glitch
+     */
+    hasOcarinaItemsBottle: function() {
+        return this.hasBottle() && (Items.BUGS.playerHas || Items.FISH.playerHas);
     },
 
     /**
@@ -1192,17 +1198,7 @@ Data = {
      * This check assumes that you already have access to blue fire!
      */
      canOIAndBlueFireWithoutRefilling: function(age) {
-        let bottleArr = [
-            Items.BOTTLE1.playerHas,
-            Items.BIG_POE.currentUpgrade > 1,
-            Items.BLUE_FIRE.playerHas,
-            Items.RUTOS_LETTER.currentUpgrade > 1
-        ];
-        let bottleCount = bottleArr.reduce((acc, value) => {
-            if (value) { return acc + 1; }
-            return acc;
-        }, 0);
-
+        let bottleCount = ItemData.getEmptyBottleCount(true);
         let canUseIceArrows = ItemData.canUse(age, Items.ICE_ARROW);
         let canDoOI = Settings.GlitchesToAllow.ocarinaItems;
         return canDoOI && ((bottleCount >= 1 && canUseIceArrows) || bottleCount > 1);
@@ -1226,10 +1222,26 @@ Data = {
 	},
     
     /**
-     * Returns whether the player can equip swap items
+     * Returns whether the player can equip swap items - this will ONLY care about 
+     * child equpping hammer, and adult equipping sticks/boomerang, since that's all that's useful at the moment
+     * https://www.zeldaspeedruns.com/mm/tech/equip-swap#:~:text=Equip%20Swap%20can%20equip%20items,and%20the%20Light%20Arrow%20slot
+     * 
+     * Logic:
+     * - From whatever side you are equip swapping, the FIRST item in the FIRST column that has items
+     *   needs to be equippable
+     * - Thus, a child trade item forces Adult to require a magic spell to equip swap from the right
+     * - Also, any left-side child items will completely block him from equip swapping from the left
      */
     canEquipSwap: function(age) {
 		if (!Settings.GlitchesToAllow.equipSwap) { return false; }
+
+        //NOTE: current save only has one bottle
+
+
+        // Child
+        //let canChildEquipfromTheLeft
+
+        // The legacy logic, in case things change or it's needed
 		return Boolean(Items.DINS_FIRE.playerHas || (age === Age.CHILD && Items.DEKU_STICK.playerHas));
     },
 

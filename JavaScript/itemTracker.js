@@ -51,7 +51,19 @@ let ItemTracker = {
 					addCssClass(divItem, "cannot-play-song");
 				}
 				
-				if (key === "SKULLTULA_TOKENS") { // Skulltula tokens have different behavior
+				if (key === "EMPTY_BOTTLES") { // Empty bottles have different behavior
+					let divBottleCount = dce("div", "countable-item");
+					divBottleCount.innerText = item.count;
+					divItem.onclick = _this.onEmptyBottleClicked.bind(_this, item, divBottleCount);
+					divItem.oncontextmenu = _this.onEmptyBottleClicked.bind(_this, item, divBottleCount);
+					divItem.appendChild(divBottleCount);
+
+					const maxEmptyBottles = 4;
+					if (item.count >= maxEmptyBottles) {
+						addCssClass(divBottleCount, "has-max");
+					}
+				}
+				else if (key === "SKULLTULA_TOKENS") { // Skulltula tokens have different behavior
 					let divTokenCount = dce("div", "countable-item");
 					divTokenCount.innerText = item.count;
 					divItem.onclick = _this.onTokenClicked.bind(_this, item, divTokenCount);
@@ -60,7 +72,7 @@ let ItemTracker = {
 
 					let maxRequiredTokens = _this._getMaxRequiredTokens();
 					if (maxRequiredTokens === 0 || item.count >= maxRequiredTokens) {
-						addCssClass(divTokenCount, "has-max-tokens");
+						addCssClass(divTokenCount, "has-max");
 					}
 				} else if (key === "TRIFORCE_SHARDS") { // Triforce shards have different behavior
 					let divTriforceCount = dce("div", "countable-item");
@@ -77,6 +89,14 @@ let ItemTracker = {
 				
 				addCssClass(divItem, "item");
 				_this._setStylesForUnownedItem(item, divItem);
+
+				if (item.tooltip) {
+					divItem.title = item.tooltip;
+				}
+
+				if (item.cssClass) {
+					addCssClass(divItem, item.cssClass);
+				}
 				
 				divItems.appendChild(divItem);
 			}
@@ -113,6 +133,22 @@ let ItemTracker = {
 		}
 	},
 
+	onEmptyBottleClicked: function(item, divBottleCount, event) {
+		this._updateCountableItem(item, divBottleCount, event);
+
+		const maxEmptyBottles = 4;
+		removeCssClass(divBottleCount, "has-max");
+		if (item.count >= maxEmptyBottles) {
+			item.count = maxEmptyBottles;
+			divBottleCount.innerText = item.count;
+
+			addCssClass(divBottleCount, "has-max");
+		}
+
+		SocketClient.inventoryUpdated("Items", "EMPTY_BOTTLES", item);
+		refreshAll();
+	},
+
 	/**
 	 * Increments or decrements the token counter
 	 * @param item - the item
@@ -123,12 +159,12 @@ let ItemTracker = {
 		this._updateCountableItem(item, divTokenCount, event);
 
 		let maxRequiredTokens = this._getMaxRequiredTokens();
-		removeCssClass(divTokenCount, "has-max-tokens");
+		removeCssClass(divTokenCount, "has-max");
 		if (item.count >= maxRequiredTokens) { 
 			item.count = maxRequiredTokens; 
 			divTokenCount.innerText = item.count;
 			
-			addCssClass(divTokenCount, "has-max-tokens");
+			addCssClass(divTokenCount, "has-max");
 		}
 		
 		SocketClient.inventoryUpdated("Equipment", "SKULLTULA_TOKENS", item);
