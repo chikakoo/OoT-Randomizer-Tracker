@@ -59,7 +59,8 @@ let ChildTradeItems = {
 	SKULL_MASK: { name: "Skull Mask" },
 	SPOOKY_MASK: { name: "Spooky Mask" },
 	BUNNY_HOOD: { name: "Bunny Hood" },
-	MASK_OF_TRUTH: { name: "Mask of Truth" }
+	MASK_OF_TRUTH: { name: "Mask of Truth" },
+	COSMETIC_MASKS: { name: "Cosmetic Masks", cssClass: "cosmetic-masks" }
 };
 
 /**
@@ -1296,6 +1297,7 @@ let ItemData = {
 			case ChildTradeItems.SPOOKY_MASK:
 			case ChildTradeItems.BUNNY_HOOD:
 			case ChildTradeItems.MASK_OF_TRUTH:
+			case ChildTradeItems.COSMETIC_MASKS:
 			case Equipment.KOKIRI_SWORD:
 			case Equipment.DEKU_SHIELD:
 				return age === Age.CHILD;
@@ -1339,7 +1341,9 @@ let ItemData = {
 			// Equip swappable
 			case Items.DEKU_STICK:
 			case Items.BOOMERANG:
-				return age === Age.CHILD || Data.canEquipSwap(age);
+				return age === Age.CHILD || 
+					Settings.GlitchesToAllow.forceAdultBoomerangEquip ||
+					Data.canEquipSwap(age);
 			case Items.MEGATON_HAMMER:
 			case AdultTradeItems.ODD_MUSHROOM:
 			case AdultTradeItems.POACHERS_SAW:
@@ -1633,5 +1637,35 @@ let ItemData = {
 		}
 
 		return Math.max(count, 0);
+	},
+
+	/**
+	 * Whether the child trade item slot is filled - used for equip swap checks!
+	 */
+	hasChildTradeItem: function() {
+		return ChildTradeItems.COSMETIC_MASKS.playerHas ||
+			ChildTradeItems.WEIRD_EGG.playerHas ||
+			ChildTradeItems.ZELDAS_LETTER.playerHas ||
+			ChildTradeItems.KEATON_MASK.playerHas ||
+			ChildTradeItems.SKULL_MASK.playerHas ||
+			ChildTradeItems.SPOOKY_MASK.playerHas ||
+			ChildTradeItems.BUNNY_HOOD.playerHas ||
+			ChildTradeItems.MASK_OF_TRUTH.playerHas;
+	},
+
+	/**
+	 * Whether the adult trade item slot is filled - used for equip swap checks!
+	 */
+	hasAdultTradeItem: function() {
+		return AdultTradeItems.POCKET_EGG.playerHas ||
+			AdultTradeItems.COJIRO.playerHas ||
+			AdultTradeItems.ODD_MUSHROOM.playerHas ||
+			AdultTradeItems.ODD_POTION.playerHas ||
+			AdultTradeItems.POACHERS_SAW.playerHas ||
+			AdultTradeItems.BROKEN_GORONS_SWORD.playerHas ||
+			AdultTradeItems.PRESCRIPTION.playerHas ||
+			AdultTradeItems.EYEBALL_FROG.playerHas ||
+			AdultTradeItems.EYEDROPS.playerHas ||
+			AdultTradeItems.CLAIM_CHECK.playerHas;
 	}
 }

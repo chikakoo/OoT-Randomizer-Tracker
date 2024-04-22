@@ -162,6 +162,7 @@ let Settings = {
 		bombSuperslide: false,
 		hammerHoverBootsSuperslide: false,
 		equipSwap: false,
+		forceAdultBoomerangEquip: false,
 		weirdShot: false,
 		boomerangThroughWalls: false,
 		difficultBoomerangTrickThrows: false,

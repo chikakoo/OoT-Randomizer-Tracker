@@ -436,6 +436,10 @@ body::-webkit-scrollbar-thumb {
 	width: 20px;
 }
 
+#childTradeItemProgress >.item.cosmetic-masks {
+	height: 14px;
+}
+
 /* Item tracker individual components */
 .item, .small-key, .silver-rupee {
 	background-size: contain;

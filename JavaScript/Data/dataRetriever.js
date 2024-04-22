@@ -1223,7 +1223,8 @@ Data = {
     
     /**
      * Returns whether the player can equip swap items - this will ONLY care about 
-     * child equpping hammer, and adult equipping sticks/boomerang, since that's all that's useful at the moment
+     * child equpping hammer/adult trade item, and adult equipping sticks/boomerang, 
+     * since that's all that's useful at the moment
      * https://www.zeldaspeedruns.com/mm/tech/equip-swap#:~:text=Equip%20Swap%20can%20equip%20items,and%20the%20Light%20Arrow%20slot
      * 
      * Logic:
@@ -1235,14 +1236,65 @@ Data = {
     canEquipSwap: function(age) {
 		if (!Settings.GlitchesToAllow.equipSwap) { return false; }
 
-        //NOTE: current save only has one bottle
-
-
-        // Child
-        //let canChildEquipfromTheLeft
-
         // The legacy logic, in case things change or it's needed
-		return Boolean(Items.DINS_FIRE.playerHas || (age === Age.CHILD && Items.DEKU_STICK.playerHas));
+        let useLegacyLogic = false;
+        if (useLegacyLogic) {
+            return Boolean(Items.DINS_FIRE.playerHas || (age === Age.CHILD && Items.DEKU_STICK.playerHas));
+        }
+
+        let bottleCount = ItemData.getEmptyBottleCount();
+        let hasChildTradeItem = ItemData.hasChildTradeItem();
+
+        // Hammer/adult trade items are the only things that are useful for Child to equip swap
+        if (age === Age.CHILD) {
+            //- From the left:
+            if (bottleCount > 0 || 
+                Items.DEKU_STICK.playerHas || Items.DEKU_NUT.playerHas || Items.BOMB.playerHas ||
+                Items.FAIRY_SLINGSHOT.playerHas || Items.OCARINA.playerHas || Items.BOMBCHU.playerHas ||
+                Items.BOOMERANG.playerHas || Items.LENS_OF_TRUTH.playerHas || Items.MAGIC_BEAN.playerHas)
+            {
+                return true;
+            }
+
+            //- From the right:
+            return hasChildTradeItem ||
+                Items.DINS_FIRE.playerHas || 
+                Items.FARORES_WIND.playerHas || 
+                Items.NAYRUS_LOVE.playerHas;
+        }
+
+        // Adult can only make use of sticks/boomerang, so no need to check the left side
+
+        //- The magics are always good to equip swap with
+        if (Items.DINS_FIRE.playerHas || 
+            Items.FARORES_WIND.playerHas || 
+            Items.NAYRUS_LOVE.playerHas) {
+            return true;
+        }
+
+        //- The child trade item will block adult from equip swapping at this point
+        if (hasChildTradeItem) {
+            return false;
+        }
+
+        //- Otherwise, check all the items until the magic beans, which is another blocker
+        if (bottleCount > 3 || 
+            ItemData.hasAdultTradeItem() ||
+            Items.FIRE_ARROW.playerHas || Items.ICE_ARROW.playerHas || Items.LIGHT_ARROW.playerHas ||
+            Items.FAIRY_BOW.playerHas || Items.HOOKSHOT.playerHas || Items.MEGATON_HAMMER.playerHas ||
+            Items.BOMB.playerHas || Items.BOMBCHU.playerHas)
+        {
+            return true;
+        }
+
+        //- If there's beans, then that's it
+        if (Items.MAGIC_BEAN.playerHas) {
+            return false;
+        }
+
+        //- Otherwise, keep going until the first column
+        return bottleCount > 1 || // Any bottle outside of column 1 works
+            Items.DEKU_NUT.playerHas || Items.OCARINA.playerHas || Items.LENS_OF_TRUTH.playerHas;
     },
 
     /**
