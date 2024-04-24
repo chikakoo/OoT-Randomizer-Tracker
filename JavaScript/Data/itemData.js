@@ -611,18 +611,18 @@ let ShopItemDictionary = {
 	"bottledfish": "Fish.png",
 	"bottlewithfish": "Fish.png",
 	
-	"bluefire": "Blue Fire X.png",
-	"firebottle": "Blue Fire X.png",
-	"bluefirebottle": "Blue Fire X.png",
-	"bottledfire": "Blue Fire X.png",
-	"bottlewithbluefire": "Blue Fire X.png",
+	"bluefire": "Blue Fire.png",
+	"firebottle": "Blue Fire.png",
+	"bluefirebottle": "Blue Fire.png",
+	"bottledfire": "Blue Fire.png",
+	"bottlewithbluefire": "Blue Fire.png",
 	
-	"ruto'sletter": "Ruto's Letter X.png",
-	"rutosletter": "Ruto's Letter X.png",
-	"rutoletter": "Ruto's Letter X.png",
-	"letter": "Ruto's Letter X.png",
-	"letterbottle": "Ruto's Letter X.png",
-	"bottlewithletter": "Ruto's Letter X.png",
+	"ruto'sletter": "Ruto's Letter.png",
+	"rutosletter": "Ruto's Letter.png",
+	"rutoletter": "Ruto's Letter.png",
+	"letter": "Ruto's Letter.png",
+	"letterbottle": "Ruto's Letter.png",
+	"bottlewithletter": "Ruto's Letter.png",
 	
 	// Upgrades
 	"dekustickupgrade": "Deku Stick Upgrade.png",
@@ -1340,6 +1340,9 @@ let ItemData = {
 
 			// Equip swappable
 			case Items.DEKU_STICK:
+				return age === Age.CHILD || 
+					Settings.GlitchesToAllow.forceAdultDekuStickEquip ||
+					Data.canEquipSwap(age);
 			case Items.BOOMERANG:
 				return age === Age.CHILD || 
 					Settings.GlitchesToAllow.forceAdultBoomerangEquip ||

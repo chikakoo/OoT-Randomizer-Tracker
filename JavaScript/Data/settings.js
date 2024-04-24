@@ -163,6 +163,7 @@ let Settings = {
 		hammerHoverBootsSuperslide: false,
 		equipSwap: false,
 		forceAdultBoomerangEquip: false,
+		forceAdultDekuStickEquip: false,
 		weirdShot: false,
 		boomerangThroughWalls: false,
 		difficultBoomerangTrickThrows: false,

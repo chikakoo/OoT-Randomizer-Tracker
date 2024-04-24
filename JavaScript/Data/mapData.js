@@ -1321,7 +1321,8 @@ let MapLocations = {
                     },
                     "Show Poacher's Saw to Carpenter": {
                         ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 135, y: 91 },
+                        Time: function() { return Time.DAY; },
+                        MapInfo: { x: 87, y: 179 },
                         MapImageName: "Poacher's Saw",
                         Age: Age.CHILD,
                         RequiredToAppear: function() { return Settings.GlitchesToAllow.equipSwap; },
@@ -3052,7 +3053,7 @@ let MapLocations = {
                     "Move King Zora": {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 232, y: 38 },
-                        MapImageName: "Ruto's Letter Ruto's Letter",
+                        MapImageName: "Ruto's Letter",
                         RequiredItems: [Items.RUTOS_LETTER],
                         Age: Age.CHILD,
                         LongDescription: "Show Ruto's letter to the king."
