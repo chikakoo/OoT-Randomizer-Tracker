@@ -4271,9 +4271,10 @@ let MQDungeons = {
                         MapInfo: { x: 331, y: 123, floor: "B2" },
                         Age: Age.EITHER,
                         Order: 13,
-                        LongDescription: "To get to this room, first make it to the platform with the two beamos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). The hearts are in the back left corner. Play the Song of Time to spawn a block to get them.",
+                        LongDescription: "To get to this room, first make it to the platform with the two beamos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). The hearts are in the back left corner. Adult can play the Song of Time to spawn a block to get them, child will need the boomerang.",
                         CustomRequirement: function(age) {
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) || ItemData.canUse(age, Items.BOOMERANG);
+                            return ItemData.canUse(age, Items.BOOMERANG) ||
+                                (age === Age.ADULT && Data.canPlaySong(Songs.SONG_OF_TIME));
                         }
                     }
                 }
