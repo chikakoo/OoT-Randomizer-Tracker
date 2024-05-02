@@ -1501,7 +1501,7 @@ let MQDungeons = {
 
                     "Locked Door by Twisted Corridor": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["afterFirstHallway"],
+                        Regions: ["topOfBlockRoom"],
                         MapInfo: { x: 42, y: 198, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 14,
@@ -1568,10 +1568,8 @@ let MQDungeons = {
                         }
                     }, 
 
-                    twistedHallway: {
+                    topOfBlockRoom: {
                         Age: Age.ADULT,
-                        LockedDoor: "Locked Door by Twisted Corridor",
-                        Map: "Forest Temple",
                         CustomRequirement: function(age) {
                             // Line up with the center wall as you first enter, and drop the chu
                             if (ItemData.canUseAll(age, [Items.HOOKSHOT, Items.BOMBCHU])) {
@@ -1597,7 +1595,6 @@ let MQDungeons = {
                         RequiredItems: [ItemSets.PROJECTILES]
                     },
 
-                    //TOOD: verify this one
                     outsideWest: {
                         RequiredItems: [ItemSets.PROJECTILES]
                     },
@@ -1690,6 +1687,15 @@ let MQDungeons = {
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula and into the next door across the big room. The room with the pot is the one after the song of time block (not there as Child). The pots are in the back of the room.<br/><br/>If you don't have the song of time, it's possible to get here from the above room. This is the room after the red poe room - drop down before killing the first Stalfos."
                     }
                 }
+            },
+            topOfBlockRoom: {
+                Exits: {
+                    twistedHallway: {
+                        LockedDoor: "Locked Door by Twisted Corridor",
+                        Map: "Forest Temple"
+                    }
+                },
+                ItemLocations: {}
             },
             twistedHallway: {
                 Exits: {
@@ -3972,10 +3978,14 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["rightSideOfGiantRoom", "invisibleSpikeRoom"],
                         MapInfo: { x: 157, y: 93, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 22,
                         LongDescription: "This is the locked door on the right side of the giant room.",
-                        RequiredItems: [Equipment.HOVER_BOOTS], // This is fine since you couldn't do anything after opening the door if you didn't have them!
+                        CustomRequirement: function(age) {
+                            // This is fine since you couldn't do anything after opening the door if you couldn't do this!
+                            return ItemData.canUse(age, Equipment.HOVER_BOOTS) ||
+                                Data.canMegaFlip(age);
+                        },
                         KeyRequirement: function(age) {
                             let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 3;
                             return { min: 2, max: max };
@@ -4307,10 +4317,12 @@ let MQDungeons = {
                     },
                     fallingSpikesRoom: {},
                     invisibleSpikeRoom: {
-                        Age: Age.ADULT,
                         LockedDoor: "Locked Door in Giant Room",
                         Map: "Shadow Temple",
-                        RequiredItems: [Equipment.HOVER_BOOTS]
+                        CustomRequirement: function(age) {
+                            return ItemData.canUse(age, Equipment.HOVER_BOOTS) ||
+                                Data.canMegaFlip(age);
+                        }
                     }
                 },
                 ItemLocations: {
@@ -4452,21 +4464,21 @@ let MQDungeons = {
                     "Chest in Invisible Spike Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 155, y: 63, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 23,
-                        LongDescription: "From the right side of the giant room, make your way across the invisible platforms to the northwest door. Use a key to open the door. Kill all the enemies to spawn the chest."
+                        LongDescription: "From the right side of the giant room, make your way across the invisible platforms to the northwest door. If megaflipping, pull out a chu when the platform stops closest to the door. Use a key to open the door.<br/><br/>Kill all the enemies to spawn the chest."
                     },
                     "Invisible Spike Ground Center Silver Rupee": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 156, y: 72, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 23.1,
                         LongDescription: "This rupee is in front of you as you enter the room."
                     },
                     "Invisible Spike Right Ground Silver Rupee": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 173, y: 68, floor: "B2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 23.2,
                         LongDescription: "This rupee is in to the right as you enter the room."
                     },
