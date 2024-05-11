@@ -4990,7 +4990,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         RequiredToAppear: function() { return !ItemData.canUse(Age.CHILD, ItemSets.BLUE_FIRE_ITEMS); },
                         MapInfo: { x: 211, y: 114 },
-                        MapImageName: "Blue Fire Blue Fire",
+                        MapImageName: "Blue Fire",
                         Age: Age.ADULT,
                         Order: 6.2,
                         LongDescription: "The east wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows."
@@ -4999,7 +4999,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         RequiredToAppear: function() { return !ItemData.canUse(Age.CHILD, ItemSets.BLUE_FIRE_ITEMS); },
                         MapInfo: { x: 157, y: 114 },
-                        MapImageName: "Blue Fire Blue Fire",
+                        MapImageName: "Blue Fire",
                         Age: Age.ADULT,
                         Order: 6.3,
                         LongDescription: "The west wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows."
