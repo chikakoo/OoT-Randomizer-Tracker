@@ -6122,7 +6122,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["afterFirstCrawlSpace"],
                         MapInfo: { x: 288, y: 123, floor: "F1" },
-                        Age: Age.EITHER,
+                        Age: Age.CHILD,
                         Order: 6,
                         LongDescription: "WALL MASTER WARNING:<br/>This is the locked door you find after the room with the floormasters.",
                         RequiredItems: [ItemSets.DISTANT_SWITCH_ITEMS],

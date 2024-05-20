@@ -56,7 +56,7 @@ InteriorGroups = {
 				itemGroup: ItemGroups.COW,
 				description: "As an adult, beat Malon's Epona challenge to unlock the cow in Link's house.",
 				canGet: function(age) {
-					return Data.canRideEpona(age) && Data.canMilkCows(true) && Data.canAccessMap(age, "Lon Lon Ranch", "main");
+					return Data.itemLocationObtained("Lon Lon Ranch", "main", "Unlock Cow in House") && Data.canMilkCows(true);
 				},
 				isAdultOnly: function() { return true; }
 			}

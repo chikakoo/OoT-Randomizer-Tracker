@@ -900,7 +900,19 @@ let MapLocations = {
                         LongDescription: "As Adult, talk to Ingo if you haven't already rescused Epona to go inside. Play Epona's song and ride epona. Jump over the center of the larger gate to get this wonderitem.",
                         RequiredSongs: [Songs.EPONAS_SONG],
                         RequiredItems: [Items.OCARINA]
-                    }
+                    },
+                    "Unlock Cow in House": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapImageName: "Epona's Song",
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.cowSanity; },
+                        Time: function() { return Time.DAY; },
+                        MapInfo: { x: 176, y: 115 },
+                        Age: Age.ADULT,
+                        LongDescription: "After Epona is freed, talk to Malon and complete the obstacle course in less than 50 seconds. This will unlock the cow in Link's house.",
+                        CustomRequirement: function(age) {
+                            return Data.canRideEpona(age);
+                        }
+                    },
                 }
             }
 		}
