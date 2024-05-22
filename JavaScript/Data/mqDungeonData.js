@@ -6135,14 +6135,18 @@ let MQDungeons = {
             afterFirstCrawlSpace: {
                 Exits: {
                     centerRoom: {
-                        CustomRequirement: function(age) {
-                            let canGetToFromSideRoom = ItemData.canUseAll(age, [ItemSets.EXPLOSIVES, ItemSets.SWORDS]); // Jumpslash in
-                            return canGetToFromSideRoom || Data.canPlaySong(Songs.ZELDAS_LULLABY);
-                        }
+                        RequiredChoiceOfItems: [
+                            ItemSets.BLAST_OR_SMASH_ITEMS, // Bomb the rock, then do an angled right sidehop
+                            Songs.ZELDAS_LULLABY // Open the barred walls
+                        ]
                     },
                     drainedWater: {
-                        // Adult can weridshot into the deadhand area, which is all drainedWater is
-                        RequiredItems: [ItemSets.DISTANT_SWITCH_ITEMS]
+                        // Adult can weridshot into the deadhand area (so the crawlspace doesn't matter), which is all drainedWater is
+                        RequiredChoiceOfItems: [
+                            ItemSets.DISTANT_SWITCH_ITEMS, // Hit the switch
+                            ItemSets.SWORDS, // Any sword item can hit it with a well-timed jumpslash
+                            Songs.ZELDAS_LULLABY, // Open the barred walls, then throw a pot at the switch
+                        ]
                     },
                     coffinRoom: {
                         Map: "Bottom of the Well",
@@ -6206,11 +6210,9 @@ let MQDungeons = {
                     basementCenter: {
                         Map: "Bottom of the Well",
                         LockedDoor: "Locked Door in Floor Master Room",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Age: Age.CHILD
                     },
-                    eastCenterRoom: {
-                        RequiredItems: [ItemSets.DISTANT_SWITCH_ITEMS]
-                    }
+                    eastCenterRoom: {}
                 },
 
                 ItemLocations: {
@@ -6268,14 +6270,14 @@ let MQDungeons = {
                         MapInfo: { x: 231, y: 83, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 10,
-                        LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door. Enter it - the pots are marking the invisible path around the room."
+                        LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door (use a pot if needed). Enter it - the pots are marking the invisible path around the room."
                     },
                     "Freestanding Item in East Center Room": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 216, y: 80, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 11,
-                        LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door. Enter it, and navigate counter-clockwise around the room to get to the item."
+                        LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door (use a pot if needed). Enter it, and navigate counter-clockwise around the room to get to the item."
                     },
                     "4 Wonderitems in East Center Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -6297,7 +6299,7 @@ let MQDungeons = {
                         MapInfo: { x: 317, y: 238, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 12,
-                        LongDescription: "Drain the water by hitting the switch in the back of the main room. Navigate back to the entrance and enter the crawl space leading to the Dead Hand room like normal. Kill him to spawn the chest.",
+                        LongDescription: "Drain the water by hitting the switch in the back of the main room (use a projectile, a pot from the center, or jumpslash it with a sword/stick/hammer). Navigate back to the entrance and enter the crawl space leading to the Dead Hand room like normal. Kill him to spawn the chest.",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) { return true; }
 

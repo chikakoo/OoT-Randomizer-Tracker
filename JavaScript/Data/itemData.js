@@ -1284,6 +1284,11 @@ let ItemData = {
 			return this.canUseAny(age, item.items);
 		}
 
+		// If the item has default notes, it's a song
+		if (item.defaultNotes !== undefined) {
+			return Data.canPlaySong(item);
+		}
+
 		// You can't use an item you don't have!
 		if (!this.playerHasItem(item, lowestUpgrade)) { return false; }
 
