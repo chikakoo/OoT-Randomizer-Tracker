@@ -806,7 +806,11 @@ let OwExits = {
             LongDescription: "At the end of the main rock is a giant block you can pull up with Golden Gauntlets. Alternatively, you can use hover boots and a shield to clip past the block.",
             CustomRequirement: function(age) {
                 return ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS) ||
-                    (Settings.GlitchesToAllow.doubleDefenseEarly && ItemData.canUseAll(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]));
+                    (Settings.GlitchesToAllow.doubleDefenseEarly && 
+                        (
+                            ItemData.canUse(age, ItemSets.EXPLOSIVES) ||
+                            ItemData.canUseAll(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS])
+                        ));
             }
         }
     },
