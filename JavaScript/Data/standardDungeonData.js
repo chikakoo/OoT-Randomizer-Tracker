@@ -937,14 +937,14 @@ let StandardDungeons = {
                 Exits: {
                     bossRoom: {
                         CustomRequirement: function(age) {
-                            if (ItemData.canUseAny(age, [Items.BOOMERANG, Items.FAIRY_SLINGSHOT, UpgradedItems.LONGSHOT])) {
+                            if (ItemData.canUseAny(age, [Items.BOOMERANG, Items.FAIRY_SLINGSHOT, Items.FAIRY_BOW, UpgradedItems.LONGSHOT])) {
                                 return true;
                             }
 
                             return Settings.GlitchesToAllow.jabuBossSwitchWithExplosives &&
                             (
                                 (age === Age.CHILD && Items.BOMBCHU.playerHas) ||
-                                (age == Age.ADULT && Items.BOMB.playerHas)
+                                (age == Age.ADULT && ItemData.canUseAll(age, [Items.BOMB, Equipment.HOVER_BOOTS]))
                             );
                         }
                     }
