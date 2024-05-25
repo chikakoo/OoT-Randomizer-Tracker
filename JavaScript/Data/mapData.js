@@ -2305,6 +2305,7 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
+                    // TODO: Empty Pots - child gets these
                     "4 Pots Near Goron City": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,

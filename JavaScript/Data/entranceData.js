@@ -951,18 +951,18 @@ GrottoGroups = {
 			"Chest": {
 				description: "The chest in the back of the room.",
 			},
-			"Left Beehive": {
-				icon: "Beehive",
-				itemGroup: ItemGroups.BEEHIVE,
-				description: "The beehive on the left side of the grotto. Can use bombs. If using chus, line up with one of the walls under it and drop it on the 7th red flash.",
-				canGet: function(age) {
-					return Data.canBreakBeehive(age);
-				}
-			},
 			"Right Beehive": {
 				icon: "Beehive",
 				itemGroup: ItemGroups.BEEHIVE,
 				description: "The beehive on the right side of the grotto. Can use bombs. If using chus, get on the right side of the hive (the darker wall) and drop it on the 7th red flash.",
+				canGet: function(age) {
+					return Data.canBreakBeehive(age);
+				}
+			},
+			"Left Beehive": {
+				icon: "Beehive",
+				itemGroup: ItemGroups.BEEHIVE,
+				description: "The beehive on the left side of the grotto. Can use bombs. If using chus, line up with the wall to the right of it, in the corner; backflip; drop it on the 6th red flash (closer to the black one after that, if shield-dropping)",
 				canGet: function(age) {
 					return Data.canBreakBeehive(age);
 				}
