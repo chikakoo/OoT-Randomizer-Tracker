@@ -4846,6 +4846,11 @@ let StandardDungeons = {
         Abbreviation: "ICE",
         MapGroup: MapGroups.DUNGEONS,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+        _canDoTripleSlashClip: function(age) {
+            return Settings.GlitchesToAllow.iceTripleSlashClips &&
+                ItemData.canUseAny(age, [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD]) &&
+                ItemData.canUse(age, ItemSets.FIRST_PERSON_ITEMS);
+        },
         Regions: {
             main: {
                 Exits: {
@@ -4876,9 +4881,14 @@ let StandardDungeons = {
                 Exits: {
                     blueFireSideRoom: {
                         CustomRequirement: function(age) {
+                            if (MapLocations["Ice Cavern"]._canDoTripleSlashClip(age)) {
+                                return true;
+                            }
+
                             if (Settings.GlitchesToAllow.iceLedgeClip && age === Age.ADULT) {
                                 return true;
                             }
+
                             let isWallMelted = Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt East Ice Wall");
                             return isWallMelted || ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS);
                         }
@@ -4887,14 +4897,18 @@ let StandardDungeons = {
                         RequiredItems: [ItemSets.BLUE_FIRE_ITEMS]
                     },
                     northRoom: {
-                        Map: "Ice Cavern",
-                        SilverRupeeIndex: 0,
+                        CustomRequirement: function(age) {
+                            return ItemData.checkSilverRupeeRequirement("Ice Cavern", 0) || 
+                                MapLocations["Ice Cavern"]._canDoTripleSlashClip(age);
+                        },
                         Age: Age.ADULT
                     },
                     blockPushRoom: {
                         CustomRequirement: function(age) {
                             let isWallMelted = Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt West Ice Wall");
-                            return isWallMelted || ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS);
+                            return isWallMelted || 
+                                ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS) ||
+                                MapLocations["Ice Cavern"]._canDoTripleSlashClip(age);
                         }
                     }
                 },

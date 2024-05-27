@@ -220,6 +220,10 @@ let ItemSets = {
 		isItemSet: true,
 		items: [Items.BOOMERANG, Items.HOOKSHOT]
 	},
+	FIRST_PERSON_ITEMS: {
+		isItemSet: true,
+		items: [Items.HOOKSHOT, Items.FAIRY_BOW, Items.FAIRY_SLINGSHOT, Items.BOOMERANG]
+	},
 	// Any item you can swing and jumpslash with - includes stick and hammer
 	SWORDS: {
 		isItemSet: true,
