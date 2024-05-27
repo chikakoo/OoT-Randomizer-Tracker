@@ -202,8 +202,9 @@ let MapUI = {
 		if (itemLocation.OwShuffleMap && itemLocation.OwShuffleRegion) {
 			let leadsToMap = MapLocations[itemLocation.OwShuffleMap];
 			let abbreviation = leadsToMap.Abbreviation;
+			let suffix = leadsToMap.Regions[itemLocation.OwShuffleRegion].MapSuffix || "";
 			
-			iconDiv.innerText = `${abbreviation}${this._getWalkInfo(itemLocation)}`;
+			iconDiv.innerText = `${abbreviation}${suffix}${this._getWalkInfo(itemLocation)}`;
 			
 			let owOffset = this._owIconTextHeight / 2;
 			let mapGroup = leadsToMap.MapGroup;
