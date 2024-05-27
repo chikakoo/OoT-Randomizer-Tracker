@@ -304,14 +304,17 @@ let Settings = {
 		iceLedgeClip: false,
 		iceTripleSlashClips: false,
 		iceBlockSkullWithHovers: false,
+		mqIceNorthSkullWithoutSoT: false,
 		mqIceJumpToSkull: false,
 		
 		gtgChildAllowed: false,
 		gtgAdultNoCard: false,
 		gtgNoZoraTunic: false,
 		gtgChildVineClips: false,
+		gtgSlopesRoomWallmasterToRupee: false,
 		gtgSlopesRoomFireWallSkip: false,
 		gtgSilverBlockSkipWithHammerSuperslide: false,
+		gtgSilverBlockRoomExitWithHovers: false,
 		gtgEyeStatueWonderItemJumpslash: false,
 		mqGtgEyeStatueJumpslash: false,
 		

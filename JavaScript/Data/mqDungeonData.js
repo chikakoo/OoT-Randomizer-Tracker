@@ -5999,10 +5999,10 @@ let MQDungeons = {
                                 return true;
                             }
 
-                            let canPlaySongOfTime = Data.canPlaySong(Songs.SONG_OF_TIME);
-                            let canPlayOcarinaNormally = Items.OCARINA.playerHas && Data.hasBottleOrBlueFire(age);;
+                            let sotCheck = Data.canPlaySong(Songs.SONG_OF_TIME) || Settings.GlitchesToAllow.mqIceNorthSkullWithoutSoT;
+                            let canPlayOcarinaNormally = Items.OCARINA.playerHas && Data.hasBottleOrBlueFire(age);
                             let canUseOI = Data.canOIAndBlueFireWithoutRefilling(age);
-                            return canPlaySongOfTime && (canPlayOcarinaNormally || canUseOI);
+                            return sotCheck && (canPlayOcarinaNormally || canUseOI);
                         }
                     },
                     "Chest in North Room": {
@@ -6532,10 +6532,14 @@ let MQDungeons = {
                     "Icicle Silver Rupee on Ceiling": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 80, y: 194 },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgSlopesRoomWallmasterToRupee; },
                         Order: 7.1,
                         LongDescription: "After the sand room, look for the rupee to our right on the ceiling. You can get it with a well-angled hookshot to the ceiling target; get the rest of the distance with a jumpslash.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.gtgSlopesRoomWallmasterToRupee ||
+                                ItemData.canUse(age, Items.HOOKSHOT);
+                        }
                     },
                     "Icicle Silver Rupee in Back Left Area": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -6587,9 +6591,12 @@ let MQDungeons = {
                     },
                     eyeStatueRoom: {
                         Age: Age.ADULT,
-                        RequiredSongs: [Songs.SONG_OF_TIME],
                         CustomRequirement: function(age) {
-                            return Data.hasBottleOrBlueFire(age);
+                            return Data.hasBottleOrBlueFire(age) &&
+                                (
+                                    Data.canPlaySong(Songs.SONG_OF_TIME) ||
+                                    (Settings.GlitchesToAllow.gtgSilverBlockRoomExitWithHovers && ItemData.canUse(age, Equipment.HOVER_BOOTS))
+                                );
                         }
                     }
                 },

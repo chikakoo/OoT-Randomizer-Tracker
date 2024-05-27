@@ -4868,12 +4868,7 @@ let StandardDungeons = {
                         MapImageName: "Blue Rupee",
                         Age: Age.EITHER,
                         Order: 1,
-                        LongDescription: "This rupee is frozen in the ice to the left of the exit of the first big room. You can either melt the ice, jumpslash into it, or use a boomerang to get the item.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, ItemSets.SWORDS) || 
-                                (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG)) || 
-                                ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS);
-                        }
+                        LongDescription: "This rupee is frozen in the ice to the left of the exit of the first big room. You can either melt the ice, or target the wall to right of it and sidehop left to get it."
                     }
                 }
             },
@@ -5849,10 +5844,14 @@ let StandardDungeons = {
                     "Boulder Silver Rupee on Ceiling": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 74, y: 196 },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgSlopesRoomWallmasterToRupee; },
                         Order: 3.1,
-                        LongDescription: "After the sandy stalfos room, you'll find this room. The rupee is on the ceiling a little ahead of the entrance. Use your hookshot to reach it.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        LongDescription: "After the sandy stalfos room, you'll find this room. The rupee is on the ceiling a little ahead of the entrance. Use your hookshot to reach it.<br/><br/>If you have no hookshot, you can trigger the wallmaster then have it take you upward into it.",
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.gtgSlopesRoomWallmasterToRupee ||
+                                ItemData.canUse(age, Items.HOOKSHOT);
+                        }
                     },
                     "Boulder Silver Rupee in Left Area by Void": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -5902,7 +5901,10 @@ let StandardDungeons = {
                     },
                     eyeStatueRoomTop: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT]
+                        CustomRequirement: function(age) {
+                            return ItemData.canUse(age, Items.HOOKSHOT) ||
+                                (Settings.GlitchesToAllow.gtgSilverBlockRoomExitWithHovers && ItemData.canUse(age, Equipment.HOVER_BOOTS));
+                        }
                     }
                 },
 
