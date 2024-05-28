@@ -6372,6 +6372,7 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: ["MN", "FST", "WTR", "SHW", "FIR", "LIT", "SPT"],
         StartingFloorIndex: 0,
+        UsesDisplayGroups: true,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canCompleteTrials: function(age) {
             // Requires IsPostWalkCheck to be true on any item location that uses this!!!
@@ -6385,42 +6386,18 @@ let StandardDungeons = {
         },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Lobby/Hub", imageName: "4 Scrubs" },
                 Exits: {
-                    forestTrailWindRoom: {
-                        Age: Age.ADULT,
-                        RequiredItems: [ItemSets.FIRE_ITEMS],
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.HOOKSHOT]
-                    },
+                    forestTrialRoom1: {},
                     fireTrialRoom1: {
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.ganonFireNoTunic || 
                                 ItemData.canUse(age, Equipment.GORON_TUNIC);
                         }
                     },
-                    waterTrialRoom2: {
-                        RequiredItems: [ItemSets.BLUE_FIRE_ITEMS, ItemSets.FREEZARD_KILL_ITEMS]
-                    },
-                    shadowTrialMiddle: {
-                        Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            let canGetThereNormally = ItemData.canUse(age, Items.FIRE_ARROW);
-                            let canAvoidFireArrows = ItemData.canUseAll(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]);
-                            return canGetThereNormally || canAvoidFireArrows;
-                        }
-                    },
-                    spiritTrialRoom2: {
-                        Map: "Ganon's Castle",
-                        SilverRupeeIndex: 0,
-                        CustomRequirement: function(age) {
-                            if (Settings.RandomizerSettings.shuffleSilverRupees) {
-                                return true;
-                            }
-
-                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && 
-                                ItemData.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
-                            return ItemData.canUse(age, Items.HOOKSHOT) || canAvoidHookshot;
-                        }
-                    },
+                    waterTrialRoom1: {},
+                    shadowTrialStart: {},
+                    spiritTrialRoom1: {},
                     lightTrialRoom1: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
@@ -6434,9 +6411,11 @@ let StandardDungeons = {
                     center: {
                         // The main checks to get here are actually in PostWalk checks on the individual item locations
                         // To clean this up, we need non-items for each of the trial completions
+                    },
+                    Exit: {
+                        OwExit: OwExits["Ganon's Castle"]["Exit"]
                     }
                 },
-
                 ItemLocations: {
                     "4 Scrubs in Secret Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -6447,7 +6426,12 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
-                    },
+                    }
+                }
+            },
+            forestTrialRoom1: {
+                DisplayGroup: { groupName: "Forest Trial", imageName: "Forest Medallion" },
+                ItemLocations: {
                     "Forest Trial Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 176, y: 233, floor: "FST" },
@@ -6455,85 +6439,18 @@ let StandardDungeons = {
                         Order: 5,
                         LongDescription: "Enter the forest trial. Kill the wolfos to spawn the chest.",
                         RequiredItems: [ItemSets.DAMAGING_ITEMS]
-                    },
-                    "Water Trial Left Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 175, y: 215, floor: "WTR" },
-                        Age: Age.EITHER,
-                        Order: 7,
-                        LongDescription: "Enter the water trial. Look for the chest in the back left section of the room."
-                    },
-                    "Water Trial Right Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 213, y: 215, floor: "WTR" },
-                        Age: Age.EITHER,
-                        Order: 8,
-                        LongDescription: "Enter the water trial. Look for the chest in the back right section of the room."
-                    },
-                    "Shadow Trial Close Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 146, y: 226, floor: "SHW" },
-                        Age: Age.EITHER,
-                        Order: 10,
-                        LongDescription: "Enter the shadow trial. The chest is in front of you and a bit to the left on a little island. You can hookshot to it, hover boots to it (you'll need to roll mid-air to get the distance), shoot a fire arrow at a torch to spawn platforms, or play the Song of Time to get a platform you can jump to (Child has this by default).",
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return true; }
-                            return ItemData.canUseAny(age, [Items.FIRE_ARROW, Equipment.HOVER_BOOTS, Items.HOOKSHOT]) ||
-                                Data.canPlaySong(Songs.SONG_OF_TIME);
-                        }
-                    },
-                    "Heart in Spirit Trial": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapInfo: { x: 128, y: 242, floor: "SPT" },
-                        MapImageName: "Recovery Heart",
-                        Age: Age.EITHER,
-                        Order: 27,
-                        LongDescription: "Enter the spirit trial. The heart is on the left wall."
-                    },
-                    "Spirit Silver Rupee in Back Left Corner": {
-                        ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 128, y: 190, floor: "SPT" },
-                        Age: Age.EITHER,
-                        Order: 27.1,
-                        LongDescription: "This rupee is in the back left corner of the room."
-                    },
-                    "Spirit Silver Rupee Near Beamos": {
-                        ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 164, y: 215, floor: "SPT" },
-                        Age: Age.EITHER,
-                        Order: 27.2,
-                        LongDescription: "This rupee is on the ground next to the beamos."
-                    },
-                    "Spirit Silver Rupee in Back Right Corner": {
-                        ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 188, y: 206, floor: "SPT" },
-                        Age: Age.EITHER,
-                        Order: 27.3,
-                        LongDescription: "This rupee is in the back right corner of the room."
-                    },
-                    "Spirit Silver Rupee in Front Right Corner": {
-                        ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 189, y: 253, floor: "SPT" },
-                        Age: Age.EITHER,
-                        Order: 27.4,
-                        LongDescription: "This rupee is in the front right corner of the room."
-                    },
-                    "Spirit Silver Rupee Above Beamos": {
-                        ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 159, y: 221, floor: "SPT" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
-                        Order: 27.5,
-                        LongDescription: "This rupee is above the beamos. Use your hookshot, or perform the ISG hover to get the rupee (remember not to cancel ISG with shield!)",
-                        CustomRequirement: function(age) {
-                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && 
-                                ItemData.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
-                            return ItemData.canUse(age, Items.HOOKSHOT) || canAvoidHookshot;
-                        }
+                    }
+                },
+                Exits: {
+                    forestTrailWindRoom: {
+                        Age: Age.ADULT,
+                        RequiredItems: [ItemSets.FIRE_ITEMS],
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.HOOKSHOT]
                     }
                 }
             },
             forestTrailWindRoom: {
+                DisplayGroup: { groupName: "Forest Trial", imageName: "Forest Medallion" },
                 Exits: {
                     forestTrialEnd: {
                         Map: "Ganon's Castle",
@@ -6579,6 +6496,7 @@ let StandardDungeons = {
                 }
             },
             forestTrialEnd: {
+                DisplayGroup: { groupName: "Forest Trial", imageName: "Forest Medallion" },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Forest Trial End": {
@@ -6593,7 +6511,32 @@ let StandardDungeons = {
                     }
                 }
             },
+            waterTrialRoom1: {
+                DisplayGroup: { groupName: "Water Trial", imageName: "Water Medallion" },
+                ItemLocations: {
+                    "Water Trial Left Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 175, y: 215, floor: "WTR" },
+                        Age: Age.EITHER,
+                        Order: 7,
+                        LongDescription: "Enter the water trial. Look for the chest in the back left section of the room."
+                    },
+                    "Water Trial Right Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 213, y: 215, floor: "WTR" },
+                        Age: Age.EITHER,
+                        Order: 8,
+                        LongDescription: "Enter the water trial. Look for the chest in the back right section of the room."
+                    }
+                },
+                Exits: {
+                    waterTrialRoom2: {
+                        RequiredItems: [ItemSets.BLUE_FIRE_ITEMS, ItemSets.FREEZARD_KILL_ITEMS]
+                    }
+                }
+            },
             waterTrialRoom2: {
+                DisplayGroup: { groupName: "Water Trial", imageName: "Water Medallion" },
                 Exits: {
                     waterTrialEnd: {
                         Age: Age.ADULT,
@@ -6615,6 +6558,7 @@ let StandardDungeons = {
                 }
             },
             waterTrialEnd: {
+                DisplayGroup: { groupName: "Water Trial", imageName: "Water Medallion" },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Water Trial End": {
@@ -6629,15 +6573,35 @@ let StandardDungeons = {
                     }
                 }
             },
-            shadowTrialMiddle: {
-                Exits: {
-                    shadowTrialEnd: {
+            shadowTrialStart: {
+                DisplayGroup: { groupName: "Shadow Trial", imageName: "Shadow Medallion" },
+                ItemLocations: {
+                    "Shadow Trial Close Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 146, y: 226, floor: "SHW" },
+                        Age: Age.EITHER,
+                        Order: 10,
+                        LongDescription: "Enter the shadow trial. The chest is in front of you and a bit to the left on a little island. You can hookshot to it, hover boots to it (you'll need to roll mid-air to get the distance), shoot a fire arrow at a torch to spawn platforms, or play the Song of Time to get a platform you can jump to (Child has this by default).",
                         CustomRequirement: function(age) {
-                            let canUseLens = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas;
-                            return canUseLens || Settings.GlitchesToAllow.gannonShadowTrialLens;
+                            if (age === Age.CHILD) { return true; }
+                            return ItemData.canUseAny(age, [Items.FIRE_ARROW, Equipment.HOVER_BOOTS, Items.HOOKSHOT]) ||
+                                Data.canPlaySong(Songs.SONG_OF_TIME);
                         }
                     }
                 },
+                Exits: {
+                    shadowTrialMiddle: {
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            let canGetThereNormally = ItemData.canUse(age, Items.FIRE_ARROW);
+                            let canAvoidFireArrows = ItemData.canUseAll(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]);
+                            return canGetThereNormally || canAvoidFireArrows;
+                        }
+                    }
+                }
+            },
+            shadowTrialMiddle: {
+                DisplayGroup: { groupName: "Shadow Trial", imageName: "Shadow Medallion" },
                 ItemLocations: {
                     "2 Pots on Shadow Trial Like Like Platform": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -6670,10 +6634,18 @@ let StandardDungeons = {
                             return canUseLens || Settings.GlitchesToAllow.gannonShadowTrialLens;
                         }
                     }
+                },
+                Exits: {
+                    shadowTrialEnd: {
+                        CustomRequirement: function(age) {
+                            let canUseLens = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas;
+                            return canUseLens || Settings.GlitchesToAllow.gannonShadowTrialLens;
+                        }
+                    }
                 }
             },
             shadowTrialEnd: {
-                Exits: {},
+                DisplayGroup: { groupName: "Shadow Trial", imageName: "Shadow Medallion" },
                 ItemLocations: {
                     "2 Pots at Shadow Trial End": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -6689,9 +6661,11 @@ let StandardDungeons = {
                             return canUseLens || Settings.GlitchesToAllow.gannonShadowTrialLens;
                         }
                     }
-                }
+                },
+                Exits: {},
             },
             fireTrialRoom1: {
+                DisplayGroup: { groupName: "Fire Trial", imageName: "Fire Medallion" },
                 UseAdultAge: function() {
                     return !Settings.GlitchesToAllow.ganonFireNoTunic;
                 },
@@ -6756,6 +6730,7 @@ let StandardDungeons = {
                 }
             },
             fireTrialEnd: {
+                DisplayGroup: { groupName: "Fire Trial", imageName: "Fire Medallion" },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Fire Trial End": {
@@ -6771,6 +6746,7 @@ let StandardDungeons = {
                 }
             },
             lightTrialRoom1: {
+                DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
                 Exits: {
                     lightTrialRoom2: {
                         CustomRequirement: function(age) {
@@ -6793,6 +6769,7 @@ let StandardDungeons = {
                 }
             },
             lightTrialRoom2: {
+                DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
                 Exits: {
                     lightTrialRoom3: {
                         CustomRequirement: function(age) {
@@ -6813,6 +6790,7 @@ let StandardDungeons = {
                 }
             },
             lightTrialRoom3: {
+                DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
                 Exits: {
                     lightTrialEnd: {
                         Map: "Ganon's Castle",
@@ -6873,6 +6851,7 @@ let StandardDungeons = {
                 }
             },
             lightTrialEnd: {
+                DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Light Trial End": {
@@ -6887,15 +6866,77 @@ let StandardDungeons = {
                     }
                 }
             },
-            spiritTrialRoom2: {
-                Exits: {
-                    spiritTrialRoom3: {
+            spiritTrialRoom1: {
+                DisplayGroup: { groupName: "Spirit Trial", imageName: "Spirit Medallion" },
+                ItemLocations: {
+                    "Heart in Spirit Trial": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapInfo: { x: 128, y: 242, floor: "SPT" },
+                        MapImageName: "Recovery Heart",
+                        Age: Age.EITHER,
+                        Order: 27,
+                        LongDescription: "Enter the spirit trial. The heart is on the left wall."
+                    },
+                    "Spirit Silver Rupee in Back Left Corner": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 128, y: 190, floor: "SPT" },
+                        Age: Age.EITHER,
+                        Order: 27.1,
+                        LongDescription: "This rupee is in the back left corner of the room."
+                    },
+                    "Spirit Silver Rupee Near Beamos": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 164, y: 215, floor: "SPT" },
+                        Age: Age.EITHER,
+                        Order: 27.2,
+                        LongDescription: "This rupee is on the ground next to the beamos."
+                    },
+                    "Spirit Silver Rupee in Back Right Corner": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 188, y: 206, floor: "SPT" },
+                        Age: Age.EITHER,
+                        Order: 27.3,
+                        LongDescription: "This rupee is in the back right corner of the room."
+                    },
+                    "Spirit Silver Rupee in Front Right Corner": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 189, y: 253, floor: "SPT" },
+                        Age: Age.EITHER,
+                        Order: 27.4,
+                        LongDescription: "This rupee is in the front right corner of the room."
+                    },
+                    "Spirit Silver Rupee Above Beamos": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 159, y: 221, floor: "SPT" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
+                        Order: 27.5,
+                        LongDescription: "This rupee is above the beamos. Use your hookshot, or perform the ISG hover to get the rupee (remember not to cancel ISG with shield!)",
                         CustomRequirement: function(age) {
-                            let weirdShotItem = Items.HOOKSHOT.playerHas ? Items.HOOKSHOT : Items.FAIRY_BOW;
-                            return Items.BOMBCHU.playerHas || Data.canWeirdShot(age, weirdShotItem);
+                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && 
+                                ItemData.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
+                            return ItemData.canUse(age, Items.HOOKSHOT) || canAvoidHookshot;
                         }
                     }
                 },
+                Exits: {
+                    spiritTrialRoom2: {
+                        Map: "Ganon's Castle",
+                        SilverRupeeIndex: 0,
+                        CustomRequirement: function(age) {
+                            if (Settings.RandomizerSettings.shuffleSilverRupees) {
+                                return true;
+                            }
+
+                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && 
+                                ItemData.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
+                            return ItemData.canUse(age, Items.HOOKSHOT) || canAvoidHookshot;
+                        }
+                    }
+                }
+            },
+            spiritTrialRoom2: {
+                DisplayGroup: { groupName: "Spirit Trial", imageName: "Spirit Medallion" },
                 ItemLocations: {
                     "Spirit Trial Chest After Hitting Switch": {
                         ItemGroup: ItemGroups.CHEST,
@@ -6905,15 +6946,18 @@ let StandardDungeons = {
                         Order: 28,
                         LongDescription: "Enter the spirit trial. Collect the rupees to advance to the next room. Hit the switch closest to the barred door with a jumpslash or charged spin attack to spawn the chest."
                     }
+                },
+                Exits: {
+                    spiritTrialRoom3: {
+                        CustomRequirement: function(age) {
+                            let weirdShotItem = Items.HOOKSHOT.playerHas ? Items.HOOKSHOT : Items.FAIRY_BOW;
+                            return Items.BOMBCHU.playerHas || Data.canWeirdShot(age, weirdShotItem);
+                        }
+                    }
                 }
             },
             spiritTrialRoom3: {
-                Exits: {
-                    spiritTrialEnd: {
-                        Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW, Equipment.MIRROR_SHIELD]
-                    }
-                },
+                DisplayGroup: { groupName: "Spirit Trial", imageName: "Spirit Medallion" },
                 ItemLocations: {
                     "Hidden Spirit Trial Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -6923,10 +6967,16 @@ let StandardDungeons = {
                         Order: 29,
                         LongDescription: "Enter the spirit trial. Collect the rupees to advance to the next room. To your left, there is a switch. Line up with the switch and drop a Bombchu. It should navigate itself over to the switch and activate it. This will open the door - enter it. The hidden chest is now in front of you and a little bit to the right. Face the right wall when trying to open it."
                     }
+                },
+                Exits: {
+                    spiritTrialEnd: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW, Equipment.MIRROR_SHIELD]
+                    }
                 }
             },
             spiritTrialEnd: {
-                Exits: {},
+                DisplayGroup: { groupName: "Spirit Trial", imageName: "Spirit Medallion" },
                 ItemLocations: {
                     "2 Pots at Spirit Trial End": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -6942,9 +6992,11 @@ let StandardDungeons = {
                             return canUseLens || Settings.GlitchesToAllow.gannonShadowTrialLens;
                         }
                     }
-                }
+                },
+                Exits: {}
             },
             center: {
+                DisplayGroup: { groupName: "Central Tower", imageName: "Triforce Shards" },
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.staircaseHover; },
                 Exits: {
                     potRoom: {
@@ -6971,6 +7023,7 @@ let StandardDungeons = {
                 }
             },
             potRoom: {
+                DisplayGroup: { groupName: "Central Tower", imageName: "Triforce Shards" },
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.staircaseHover; },
                 Exits: {},
                 ItemLocations: {
