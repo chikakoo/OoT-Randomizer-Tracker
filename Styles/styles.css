@@ -707,6 +707,7 @@ body::-webkit-scrollbar-thumb {
 	height: 25px;
 	padding-left: 15px;
 	background-position-x: 15px;
+	margin-top: 3px;
 }
 
 .item-cannot-obtain {

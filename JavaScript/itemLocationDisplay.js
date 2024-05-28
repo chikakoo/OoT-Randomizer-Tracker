@@ -38,20 +38,34 @@ let ItemLocationDisplay = {
 
 		let needToSortDungeon = mapInfo.MapGroup === MapGroups.DUNGEONS &&
 			Settings.TrackerSettings.dungeonItemDisplay === DungeonItemDisplaySettings.BY_SUGGESTED_ORDER;
-		let useDisplayGroups = mapInfo.UsesDisplayGroups;
+		let usesDisplayGroups = mapInfo.UsesDisplayGroups || needToSortDungeon;
 		Data.getAllItemLocations(mapName).forEach(function(itemLocation) {
-			let group = (useDisplayGroups || needToSortDungeon)
-				? (itemLocation.DisplayGroup || "Item Locations")
-				: (itemLocation.OverrideItemGroup || itemLocation.ItemGroup);
+			let group = itemLocation.OverrideItemGroup || itemLocation.ItemGroup;
+			let imageName = "Chest";
+			if (usesDisplayGroups) {
+				if (itemLocation.DisplayGroup) {
+					group = itemLocation.DisplayGroup.groupName;
+					imageName = itemLocation.DisplayGroup.imageName;
+				} else {
+					group = "Item Locations",
+					imageName = "Chest"
+				}
+			}
 			
 			if (!groupedItemLocationInfo[group]) {
-				groupedItemLocationInfo[group] = [];
+				groupedItemLocationInfo[group] = {
+					itemLocations: [],
+					backgroundImage: usesDisplayGroups
+						? getItemGroupImageFromName(imageName)
+						: getItemGroupImagePath(group)
+				};
 			}
-			groupedItemLocationInfo[group].push(itemLocation);
+			groupedItemLocationInfo[group].itemLocations.push(itemLocation);
 		});
 
-		if (needToSortDungeon || useDisplayGroups) {
-			Object.values(groupedItemLocationInfo).forEach(groupedItemLocations => {
+		if (usesDisplayGroups) {
+			Object.values(groupedItemLocationInfo).forEach(groups => {
+				var groupedItemLocations = groups.itemLocations;
 				if (mapInfo.UseAltOrder && mapInfo.UseAltOrder()) {
 					groupedItemLocations.sort((loc1, loc2) => (loc1.AltOrder > loc2.AltOrder) ? 1 : -1);
 				} else {
@@ -202,9 +216,8 @@ let ItemLocationDisplay = {
 		Object.keys(groupedItemLocationInfo).forEach(function(groupId) {
 			let isSortedDungeon = mapInfo.MapGroup === MapGroups.DUNGEONS &&
 				Settings.TrackerSettings.dungeonItemDisplay === DungeonItemDisplaySettings.BY_SUGGESTED_ORDER;
-			let usesDisplayGroups = isSortedDungeon || mapInfo.UsesDisplayGroups;
-
-			let itemGroup = groupedItemLocationInfo[groupId]
+			
+			let itemGroup = groupedItemLocationInfo[groupId];
 			let itemGroupDiv = dce("div", "item-group");
 			mainContainer.appendChild(itemGroupDiv);
 			
@@ -213,18 +226,17 @@ let ItemLocationDisplay = {
 			itemGroupDiv.appendChild(itemGroupTitleDiv);
 			
 			let itemGroupImageDiv = dce("div", "item-group-image");
-			itemGroupImageDiv.style.backgroundImage = usesDisplayGroups
-				? getItemGroupImageFromName(groupId)
-				: getItemGroupImagePath(groupId);
+			itemGroupImageDiv.style.backgroundImage = itemGroup.backgroundImage;
 			itemGroupTitleDiv.appendChild(itemGroupImageDiv);
 			
 			let itemGroupTextDiv = dce("div", "item-group-text");
 
+			let usesDisplayGroups = isSortedDungeon || mapInfo.UsesDisplayGroups;
 			let itemGroupName = usesDisplayGroups ? groupId : getItemGroupName(groupId);
 			if (itemGroupName) {
 				itemGroupTextDiv.innerText = itemGroupName
 				itemGroupTitleDiv.appendChild(itemGroupTextDiv);
-				_this._createItemLocations(itemGroup, itemGroupDiv, usesDisplayGroups, itemGroupName);
+				_this._createItemLocations(itemGroup.itemLocations, itemGroupDiv, usesDisplayGroups, itemGroupName);
 			}
 		});
 	},

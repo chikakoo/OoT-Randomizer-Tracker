@@ -1801,7 +1801,7 @@ let MapLocations = {
         Regions: {
             // Dampe's Grave
             dampesGrave: {
-                DisplayGroup: "Dampe's Grave",
+                DisplayGroup: { groupName: "Dampe's Grave", imageName: "Dampe's Grave" },
                 UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
                 Exits: {
                     windmillTop: {
@@ -1972,7 +1972,7 @@ let MapLocations = {
                 ItemLocations: {}
             },
             windmillItem: {
-                DisplayGroup: "Windmill",
+                DisplayGroup: { groupName: "Windmill", imageName: "Windmill" },
                 ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {
@@ -1985,7 +1985,8 @@ let MapLocations = {
                 }
             },
             windmill: {
-                DisplayGroup: "Windmill",
+                DisplayGroup: { groupName: "Windmill", imageName: "Windmill" },
+                
                 Exits: {
                     windmillItem: {
                         RequiredChildItems: [Items.BOOMERANG],
@@ -2023,7 +2024,7 @@ let MapLocations = {
 
             // Potion shop
             kakPotionShop: {
-                DisplayGroup: "Potion Shop",
+                DisplayGroup: { groupName: "Potion Shop", imageName: "Potion Shop" },
                 Exits: {
                     "Potion Shop Front": {
                         OwExit: OwExits["Windmill-Kak Potion"]["Potion Shop Front"]
@@ -4091,7 +4092,7 @@ let MapLocations = {
                 }
             },
             jail1: {
-                DisplayGroup: "Thieves' Hideout J1",
+                DisplayGroup: { groupName: "Jail 1", imageName: "Thieves' Hideout J1" },
                 MapSuffix: "1",
                 Exits: {
                     main: {},
@@ -4104,6 +4105,7 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Jail 1 Guard Key": {
+                        Order: 99,
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 213, y: 129, floor: "J1" },
                         Age: Age.EITHER,
@@ -4147,7 +4149,7 @@ let MapLocations = {
                 }
             },
             jail2: {
-                DisplayGroup: "Thieves' Hideout J2",
+                DisplayGroup: { groupName: "Jail 2", imageName: "Thieves' Hideout J2" },
                 MapSuffix: "2",
                 Exits: {
                     jail1: {}, //Savewarp
@@ -4202,7 +4204,7 @@ let MapLocations = {
                 }
             },
             jail3: {
-                DisplayGroup: "Thieves' Hideout J3",
+                DisplayGroup: { groupName: "Jail 3", imageName: "Thieves' Hideout J3" },
                 MapSuffix: "3",
                 Exits: {
                     jail1: {}, //Savewarp
@@ -4270,7 +4272,7 @@ let MapLocations = {
                 }
             },
             jail4: {
-                DisplayGroup: "Thieves' Hideout J4",
+                DisplayGroup: { groupName: "Jail 4", imageName: "Thieves' Hideout J4" },
                 MapSuffix: "4",
                 jail1: {}, //Savewarp
                 Exits: {
@@ -4314,7 +4316,7 @@ let MapLocations = {
                 }
             },
             kitchenHallway: {
-                DisplayGroup: "Thieves' Hideout Kitchen",
+                DisplayGroup: { groupName: "Kitchen", imageName: "Thieves' Hideout Kitchen" },
                 MapSuffix: "K",
                 Exits: {
                     jail1: {}, //Savewarp
@@ -4379,7 +4381,7 @@ let MapLocations = {
                 }
             },
             kitchenTopLeft: {
-                DisplayGroup: "Thieves' Hideout Kitchen",
+                DisplayGroup: { groupName: "Kitchen", imageName: "Thieves' Hideout Kitchen" },
                 MapSuffix: "K",
                 Exits: {
                     jail1: {}, //Savewarp
@@ -4410,7 +4412,7 @@ let MapLocations = {
                 ItemLocations: {}
             },
             kitchenTopRight: {
-                DisplayGroup: "Thieves' Hideout Kitchen",
+                DisplayGroup: { groupName: "Kitchen", imageName: "Thieves' Hideout Kitchen" },
                 MapSuffix: "K",
                 Exits: {
                     jail1: {}, //Savewarp
@@ -4439,7 +4441,7 @@ let MapLocations = {
                 ItemLocations: {}
             },
             kitchenPots: {
-                DisplayGroup: "Thieves' Hideout Kitchen",
+                DisplayGroup: { groupName: "Kitchen", imageName: "Thieves' Hideout Kitchen" },
                 ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {
@@ -4455,7 +4457,7 @@ let MapLocations = {
                 }
             },
             topLower: {
-                DisplayGroup: "Thieves' Hideout Top",
+                DisplayGroup: { groupName: "Top", imageName: "Thieves' Hideout Top" },
                 MapSuffix: "T",
                 Exits: {
                     jail1: {}, //Savewarp
@@ -4537,7 +4539,7 @@ let MapLocations = {
                 }
             },
             topUpper: {
-                DisplayGroup: "Thieves' Hideout Top",
+                DisplayGroup: { groupName: "Top", imageName: "Thieves' Hideout Top" },
                 MapSuffix: "T",
                 Exits: {
                     jail1: {}, //Savewarp

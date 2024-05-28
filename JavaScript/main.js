@@ -43,7 +43,10 @@ let _assignItemLocationAndExitValues = function() {
 					itemLocation.Name = itemLocationName;
 					itemLocation.Map = mapName;
 					itemLocation.Region = regionName;
-					if (displayGroup) { itemLocation.DisplayGroup = displayGroup; }
+					if (displayGroup && !itemLocation.DisplayGroup) 
+					{ 
+						itemLocation.DisplayGroup = displayGroup; 
+					}
 					itemLocation.IsDungeon = mapObject[mapName].MapGroup === MapGroups.DUNGEONS;
 				});
 
