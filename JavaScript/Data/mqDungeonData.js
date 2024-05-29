@@ -1471,6 +1471,7 @@ let MQDungeons = {
         Abbreviation: "FRST",
         MapGroup: MapGroups.DUNGEONS,
         IsMasterQuest: true,
+        UsesDisplayGroups: true,
         Floors: ["F2", "F1", "B1"],
         StartingFloorIndex: 1,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
@@ -1482,6 +1483,7 @@ let MQDungeons = {
         },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Starting Rooms", imageName: "Chest" },
                 Exits: {
                     afterFirstHallway: {
                         LockedDoor: "Locked Door to Lobby",
@@ -1492,7 +1494,6 @@ let MQDungeons = {
                         OwExit: OwExits["Forest Temple"]["Exit"]
                     }
                 },
-
                 ItemLocations: {
                     "Chest in Main Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1524,8 +1525,8 @@ let MQDungeons = {
                         },
                         RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
                     },
-
                     "Locked Door by Twisted Corridor": {
+                        DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Strength Goron's Bracelet" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["topOfBlockRoom"],
                         MapInfo: { x: 42, y: 198, floor: "F2" },
@@ -1536,8 +1537,8 @@ let MQDungeons = {
                             return { min: 2, max: 2 };
                         }
                     },
-
                     "Locked Door After Twisted Hallway": {
+                        DisplayGroup: { groupName: "Untwisted Corridor & Upper Courtyard", imageName: "Boss Key" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["twistedHallway"],
                         MapInfo: { x: 80, y: 57, floor: "F2" },
@@ -1548,8 +1549,8 @@ let MQDungeons = {
                             return { min: 3, max: 3 };
                         }
                     },
-
                     "Locked Door in Blue Poe Room": {
+                        DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["poeRooms"],
                         MapInfo: { x: 282, y: 54, floor: "F2" },
@@ -1560,8 +1561,8 @@ let MQDungeons = {
                             return { min: 4, max: 4 };
                         }
                     },
-
                     "Locked Door in Green Bubble Hallway": {
+                        DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["twistedCooridor2"],
                         MapInfo: { x: 319, y: 154, floor: "F2" },
@@ -1572,8 +1573,8 @@ let MQDungeons = {
                             return { min: 5, max: 5 };
                         }
                     },
-
                     "Locked Door in Falling Ceiling Room": {
+                        DisplayGroup: { groupName: "Falling Ceiling Rooms", imageName: "Small Poe" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["fallingCeilingRoom", "greenPoeRoom"],
                         MapInfo: { x: 318, y: 132, floor: "F1" },
@@ -1587,44 +1588,22 @@ let MQDungeons = {
                 }
             },
             afterFirstHallway: {
+                DisplayGroup: { groupName: "Starting Rooms", imageName: "Chest" },
                 Exits: {
                     roomNorthOfLobby: {
                         CustomRequirement: function(age) {
                             return age === Age.CHILD || Data.canPlaySong(Songs.SONG_OF_TIME);
                         }
                     }, 
-
-                    topOfBlockRoom: {
-                        Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            // Line up with the center wall as you first enter, and drop the chu
-                            if (ItemData.canUseAll(age, [Items.HOOKSHOT, Items.BOMBCHU])) {
-                                return true;
-                            }
-
-                            // If you can't push blocks, you MUST do the block skip
-                            let hasStrength = Equipment.STRENGTH.playerHas;
-                            if (!hasStrength && !Settings.GlitchesToAllow.forestBlockSkip) { return false; } 
-                            
-                            // Need to either push or skip the blocks
-                            let canBlockSkip = (age) && Items.BOMB.playerHas && Equipment.HOVER_BOOTS.playerHas;
-                            return hasStrength || canBlockSkip;
-                        }
-                    },
-
-                    upperOutside: {
-                        Age: Age.ADULT,
-                        RequiredItems: [Equipment.HOVER_BOOTS] // Jumpslash the switch from the block room
-                    },
-
                     outsideEast: {
                         RequiredItems: [ItemSets.PROJECTILES]
                     },
-
                     outsideWest: {
                         RequiredItems: [ItemSets.PROJECTILES]
                     },
-
+                    blockRoom: {
+                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
+                    },
                     greenPoeRoom: {
                         Age: Age.ADULT,
                         RequiredAdultItems: [Items.BOMB, Equipment.HOVER_BOOTS],
@@ -1632,14 +1611,12 @@ let MQDungeons = {
                             return Settings.GlitchesToAllow.forestGreenPoeEarly && (age);
                         }
                     },
-
                     // Note that all item locations here (and in the boss room) will have IsPostWalkCheck set to true, we need to make sure that we can get to both the
                     // fallingCeilingRoom and the firstPoeRoom in order to actually get here
                     basement: {
                         Age: Age.ADULT,
                         RequiredAdultItems: [Items.FAIRY_BOW]
                     },
-
                     bossRoom: {
                         Age: Age.ADULT,
                         RequiredAdultItems: [Items.HOOKSHOT],
@@ -1648,7 +1625,6 @@ let MQDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "3 Pots Left in Lobby": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -1669,17 +1645,11 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 5,
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltulas. the pots are on the ledge to the right."
-                    },
-                    "Skulltula in Block Room": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 66, y: 171, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 13,
-                        LongDescription: "Proceed through the main room's western hallway. The skulltula is to the left on the ground level."
                     }
                 }
             },
             roomNorthOfLobby: {
+                DisplayGroup: { groupName: "Starting Rooms", imageName: "Chest" },
                 Exits: {},
                 ItemLocations: {
                     "Chest North of Main Room": {
@@ -1714,51 +1684,8 @@ let MQDungeons = {
                     }
                 }
             },
-            topOfBlockRoom: {
-                Exits: {
-                    twistedHallway: {
-                        LockedDoor: "Locked Door by Twisted Corridor",
-                        Map: "Forest Temple"
-                    }
-                },
-                ItemLocations: {}
-            },
-            twistedHallway: {
-                Exits: {
-                    upperOutside: {},
-                    poeRooms: {
-                        LockedDoor: "Locked Door After Twisted Hallway",
-                        Map: "Forest Temple"
-                    }
-                },
-
-                ItemLocations: {
-                    "Boss Key": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 66, y: 45, floor: "F2" },
-                        Age: Age.ADULT,
-                        Order: 15,
-                        LongDescription: "After the block puzzle room and the untwisted hallway, jump down to get the boss key chest. Be wary of the Wallmaster!<br/><br/>Note that if you don't have strength, you can get here using chus and hookshot. From the entrance to the block room, go to the center of the wall to your left and drop the chu - it will hit the switch. Now hookshot up the targets and navigate to the door."
-                    }
-                }
-            },
-            upperOutside: {
-                Exits: {
-                    outsideWestHearts: {},
-                    outsideWest: {}
-                },
-
-                ItemLocations: {
-                    "Chest in Redead Room": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 29, y: 100, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 17,
-                        LongDescription: "Fall down the hole in the boss key room. Kill the Floormaster and proceed through the door. Take the first door in one of the small hallways to your right. Kill the redead to spawn the chest."
-                    }
-                }
-            },
             outsideWest: {
+                DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "3 Hearts" },
                 Exits: {
                     outsideEast: { // Via the well - eye switch doesn't matter because the other way in covers that
                         Age: Age.ADULT,
@@ -1787,23 +1714,8 @@ let MQDungeons = {
                     }
                 }
             }, 
-            outsideWestHearts: {
-                Exits: {},
-                ItemLocations: {
-                    "3 Hearts Above Left Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Hearts",
-                        MapInfo: { x: 81, y: 73, floor: "F1" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
-                        Order: 16,
-                        LongDescription: "Fall down the hole in the boss key room. Kill the Floormaster and proceed through the door. <br/><br/>The hearts are on the skinny platform that you have to jump to, near the skulltula on the wall. Be careful not to fall off."
-                    }
-                }
-            },
             outsideEast: {
+                DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "3 Hearts" },
                 Exits: {
                     // Excluding east to west because it would require you to have gone through west anyway
                     // OR to already have the means to get there from the lobby
@@ -1833,6 +1745,7 @@ let MQDungeons = {
                 ItemLocations: {}
             },
             outsideEastBalcony: {
+                DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "3 Hearts" },
                 Exits: {
                     outsideEast: {},
                     outsideEastDoorFrame: {
@@ -1850,7 +1763,6 @@ let MQDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Chest on Outside East Room Balcony": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1862,6 +1774,7 @@ let MQDungeons = {
                 }
             },
             outsideEastDoorFrame: {
+                DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "3 Hearts" },
                 Exits: {
                     outsideEastPlatform: {
                         Age: Age.ADULT,
@@ -1871,7 +1784,6 @@ let MQDungeons = {
                     },
                     outsideEast: {}
                 },
-
                 ItemLocations: {
                     "Skulltula Above Outside East Door": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -1883,24 +1795,8 @@ let MQDungeons = {
                     }
                 }
             },
-            outsideEastPlatform: {
-                Exits: {
-                    fallingCeilingRoom: {
-                        RequiredSongs: [Songs.SONG_OF_TIME]
-                    }
-                },
-
-                ItemLocations: {
-                    "Chest on Outside Platform": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 268, y: 73, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 28,
-                        LongDescription: "The quickest way to get here is to longshot the chest from the outside east room. Otherwise...</br><br/>Hit the left switch deep in the checkerbaord room. Now backtrack and take the door to the right of where you entered the room (NOT the locked door). Drop down to get the chest. If you don't have the Song of Time, you'll have to navigate all the way around to get back. Otherwise, play it to make a platform back up."
-                    }
-                }
-            },
             well: { // Just used as its own location, but not to travel between east and west apparently
+                DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "3 Hearts" },
                 Exits: {},
                 ItemLocations: {
                     "Chest in Well": {
@@ -1938,7 +1834,105 @@ let MQDungeons = {
                     }
                 }
             },
+            blockRoom: {
+                DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Strength Goron's Bracelet" },
+                Exits: {
+                    topOfBlockRoom: {
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            // Line up with the center wall as you first enter, and drop the chu
+                            if (ItemData.canUseAll(age, [Items.HOOKSHOT, Items.BOMBCHU])) {
+                                return true;
+                            }
+
+                            // If you can't push blocks, you MUST do the block skip
+                            let hasStrength = Equipment.STRENGTH.playerHas;
+                            if (!hasStrength && !Settings.GlitchesToAllow.forestBlockSkip) { return false; } 
+                            
+                            // Need to either push or skip the blocks
+                            let canBlockSkip = (age) && Items.BOMB.playerHas && Equipment.HOVER_BOOTS.playerHas;
+                            return hasStrength || canBlockSkip;
+                        }
+                    },
+                    upperOutside: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Equipment.HOVER_BOOTS] // Jumpslash the switch above
+                    }
+                },
+                ItemLocations: {
+                    "Skulltula in Block Room": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        MapInfo: { x: 66, y: 171, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 13,
+                        LongDescription: "Proceed through the main room's western hallway. The skulltula is to the left on the ground level."
+                    }
+                }
+            },
+            topOfBlockRoom: {
+                DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Strength Goron's Bracelet" },
+                Exits: {
+                    twistedHallway: {
+                        LockedDoor: "Locked Door by Twisted Corridor",
+                        Map: "Forest Temple"
+                    }
+                },
+                ItemLocations: {}
+            },
+            twistedHallway: {
+                DisplayGroup: { groupName: "Untwisted Corridor & Upper Courtyard", imageName: "Boss Key" },
+                Exits: {
+                    upperOutside: {},
+                    poeRooms: {
+                        LockedDoor: "Locked Door After Twisted Hallway",
+                        Map: "Forest Temple"
+                    }
+                },
+                ItemLocations: {
+                    "Boss Key": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 66, y: 45, floor: "F2" },
+                        Age: Age.ADULT,
+                        Order: 15,
+                        LongDescription: "After the block puzzle room and the twisted hallway, jump down to get the boss key chest. Be wary of the Wallmaster!<br/><br/>Note that if you don't have strength, you can get here using chus and hookshot. From the entrance to the block room, go to the center of the wall to your left and drop the chu - it will hit the switch. Now hookshot up the targets and navigate to the door."
+                    }
+                }
+            },
+            upperOutside: {
+                DisplayGroup: { groupName: "Untwisted Corridor & Upper Courtyard", imageName: "Boss Key" },
+                Exits: {
+                    outsideWestHearts: {},
+                    outsideWest: {}
+                },
+                ItemLocations: {
+                    "Chest in Redead Room": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 29, y: 100, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 17,
+                        LongDescription: "Fall down the hole in the boss key room. Kill the Floormaster and proceed through the door. Take the first door in one of the small hallways to your right. Kill the redead to spawn the chest."
+                    }
+                }
+            },
+            outsideWestHearts: {
+                DisplayGroup: { groupName: "Untwisted Corridor & Upper Courtyard", imageName: "Boss Key" },
+                Exits: {},
+                ItemLocations: {
+                    "3 Hearts Above Left Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Hearts",
+                        MapInfo: { x: 81, y: 73, floor: "F1" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
+                        Order: 16,
+                        LongDescription: "Fall down the hole in the boss key room. Kill the Floormaster and proceed through the door. <br/><br/>The hearts are on the skinny platform that you have to jump to, near the skulltula on the wall. Be careful not to fall off."
+                    }
+                }
+            },
             poeRooms: {
+                DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
                 Exits: {
                     roomNorthOfLobby: {
                         CustomRequirement: function(age) {
@@ -1953,7 +1947,6 @@ let MQDungeons = {
                         Map: "Forest Temple"
                     }
                 },
-
                 ItemLocations: {
                     "Red Poe Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1997,10 +1990,11 @@ let MQDungeons = {
                         Order: 22,
                         RequiredItems: [Items.FAIRY_BOW],
                         LongDescription: "Head to the blue poe room, which is after the Stalfos room. Shoot the portraits as normal and kill the poe to spawn the chest."
-                    },
+                    }
                 }
             },
             twistedCooridor2: {
+                DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
                 Exits: {
                     carouselRoom: {
                         LockedDoor: "Locked Door in Green Bubble Hallway",
@@ -2010,6 +2004,7 @@ let MQDungeons = {
                 ItemLocations: {}
             },
             carouselRoom: {
+                DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
                 Exits: {
                     fallingCeilingRoom: {
                         RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE]
@@ -2035,7 +2030,25 @@ let MQDungeons = {
                     }
                 }
             },
+            outsideEastPlatform: {
+                DisplayGroup: { groupName: "Falling Ceiling Rooms", imageName: "Small Poe" },
+                Exits: {
+                    fallingCeilingRoom: {
+                        RequiredSongs: [Songs.SONG_OF_TIME]
+                    }
+                },
+                ItemLocations: {
+                    "Chest on Outside Platform": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 268, y: 73, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 27,
+                        LongDescription: "The quickest way to get here is to longshot the chest from the outside east room. Otherwise...</br><br/>Hit the left switch deep in the checkerbaord room. Now backtrack and take the door to the right of where you entered the room (NOT the locked door). Drop down to get the chest. If you don't have the Song of Time, you'll have to navigate all the way around to get back. Otherwise, play it to make a platform back up."
+                    }
+                }
+            },
             fallingCeilingRoom: {
+                DisplayGroup: { groupName: "Falling Ceiling Rooms", imageName: "Small Poe" },
                 Exits: {
                     outsideEastPlatform: {},
                     greenPoeRoom: {
@@ -2043,18 +2056,18 @@ let MQDungeons = {
                         Map: "Forest Temple"
                     }
                 },
-
                 ItemLocations: {
                     "Chest in Checkerboard Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 323, y: 104, floor: "F1" },
                         Age: Age.ADULT,
-                        Order: 27,
+                        Order: 28,
                         LongDescription: "This room is found after twisting the cooridor with the Green Bubbles. Fall down the hole that's now accessible. Once in the room, hit one of the switches in this room to spawn the chest."
                     }
                 }
             },
             greenPoeRoom: {
+                DisplayGroup: { groupName: "Falling Ceiling Rooms", imageName: "Small Poe" },
                 Exits: {
                     fallingCeilingRoom: {
                         LockedDoor: "Locked Door in Falling Ceiling Room",
@@ -2075,6 +2088,7 @@ let MQDungeons = {
                 }
             },
             basement: {
+                DisplayGroup: { groupName: "Basement", imageName: "Forest Medallion" },
                 Exits: {
                     bossRoom: {
                         CustomRequirement: function(age) {
@@ -2082,7 +2096,6 @@ let MQDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "4 Pots in Basement": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2112,6 +2125,7 @@ let MQDungeons = {
                 }
             },
             bossRoom: {
+                DisplayGroup: { groupName: "Basement", imageName: "Forest Medallion" },
                 Exits: {
                     "Boss": {
                         OwExit: OwExits["Forest Temple"]["Boss"]

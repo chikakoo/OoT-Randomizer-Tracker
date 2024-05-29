@@ -1017,6 +1017,7 @@ let StandardDungeons = {
     "Forest Temple": {
         Abbreviation: "FRST",
         MapGroup: MapGroups.DUNGEONS,
+        UsesDisplayGroups: true,
         Floors: ["F2", "F1", "B1"],
         StartingFloorIndex: 1,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
@@ -1042,6 +1043,7 @@ let StandardDungeons = {
         },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Starting Rooms", imageName: "Chest" },
                 Exits: {
                     lobby: {
                         RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
@@ -1050,7 +1052,6 @@ let StandardDungeons = {
                         OwExit: OwExits["Forest Temple"]["Exit"]
                     }
                 },
-
                 ItemLocations: {
                     "Skulltula in First Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -1087,8 +1088,8 @@ let StandardDungeons = {
                             return { min: 1, max: 1 };
                         }
                     },
-
                     "Locked Door by Twisted Corridor": {
+                        DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Strength Goron's Bracelet" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["topOfBlockRoom"],
                         MapInfo: { x: 42, y: 198, floor: "F2" },
@@ -1102,8 +1103,8 @@ let StandardDungeons = {
                             return { min: 2, max: 2 };
                         }
                     },
-
                     "Locked Door in Boss Key Room": {
+                        DisplayGroup: { groupName: "Untwisted Corridor & Upper Courtyard", imageName: "Boss Key" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["twistedCorridor1"],
                         MapInfo: { x: 80, y: 57, floor: "F2" },
@@ -1117,8 +1118,8 @@ let StandardDungeons = {
                             return { min: 3, max: 3 };
                         }
                     },
-
                     "Locked Door in Blue Poe Room": {
+                        DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["firstPoeRoom"],
                         MapInfo: { x: 282, y: 54, floor: "F2" },
@@ -1132,8 +1133,8 @@ let StandardDungeons = {
                             return { min: 4, max: 4 };
                         }
                     },
-
                     "Locked Door in Green Bubble Hallway": {
+                        DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["afterPoeRooms"],
                         MapInfo: { x: 319, y: 154, floor: "F2" },
@@ -1150,6 +1151,7 @@ let StandardDungeons = {
                 }
             },
             lobby: {
+                DisplayGroup: { groupName: "Starting Rooms", imageName: "Chest" },
                 Exits: {
                     outsideLeft: {
                         CustomRequirement: function(age) {
@@ -1157,16 +1159,13 @@ let StandardDungeons = {
                             return Settings.GlitchesToAllow.forestLedgeClip || Data.canPlaySong(Songs.SONG_OF_TIME);
                         }
                     },
-
                     outsideRight: {
                         RequiredItems: [ItemSets.PROJECTILES]
                     },
-
                     blockRoom: {
                         LockedDoor: "Locked Door in Lobby",
                         Map: "Forest Temple"
                     },
-
                     fallingCeilingRoom: {
                         Age: Age.ADULT,
                         RequiredItems: [Items.BOMB, Equipment.HOVER_BOOTS, ItemSets.SHIELDS],
@@ -1174,14 +1173,12 @@ let StandardDungeons = {
                             return Settings.GlitchesToAllow.forestGreenPoeEarly;
                         }
                     },
-
                     // Note that all item locations here (and in the boss room) will have IsPostWalkCheck set to true, we need to make sure that we can get to both the
                     // fallingCeilingRoom and the firstPoeRoom in order to actually get here
                     basement: {
                         Age: Age.ADULT,
                         RequiredAdultItems: [Items.FAIRY_BOW]
                     },
-
                     bossRoom: {
                         Age: Age.ADULT,
                         RequiredAdultItems: [Items.HOOKSHOT],
@@ -1190,7 +1187,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "3 Pots Left in Lobby": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -1225,6 +1221,7 @@ let StandardDungeons = {
                         MapInfo: { x: 170, y: 31, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 6,
+                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS],
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go straight again through the room with the blue bubble. In the next room, kill the two stalfos to spawn the chest."
                     },
                     //TODO: Empty Pots - remove this item, as the one below will replace it
@@ -1252,6 +1249,7 @@ let StandardDungeons = {
                 }
             },
             outsideLeft: {
+                DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "2 Hearts" },
                 Exits: {
                     topOfOutsideRight: {
                         RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
@@ -1289,41 +1287,8 @@ let StandardDungeons = {
                     }
                 }
             },
-            topOfOutsideLeft: {
-                Exits: {
-                    outsideLeft: {},
-                    outsideLeftHearts: {},
-                    blockRoom: {}
-                },
-
-                ItemLocations: {
-                    "Floormaster Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: {x: 27, y: 101, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 19,
-                        LongDescription: "Navigate to the twisted corridor. Shoot the eye switch to untwist the corridor. Now go across the corridor to the room with the boss key chest. Fall down the hole in this room and kill the bubbles to get out. Follow the right wall in this next area until you reach the first door in the side room to the right (careful of the giant deku baba). Kill the floormaster to spawn the chest.",
-                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
-                    }
-                }
-            },
-            outsideLeftHearts: {
-                Exits: {},
-                ItemLocations: {
-                    "2 Hearts Above Left Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Hearts",
-                        MapInfo: { x: 81, y: 73, floor: "F1" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
-                        Order: 17,
-                        LongDescription: "Navigate to the twisted corridor. Shoot the eye switch to untwist the corridor. Now go across the corridor to the room with the boss key chest. Fall down the hole in this room and kill the bubbles to get out.<br/><br/>The hearts are on the skinny platform that you have to jump to, near the skulltula on the wall. Be careful not to fall off."
-                    }
-                }
-            },
             outsideRight: {
+                DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "2 Hearts" },
                 Exits: {
                     topOfOutsideRight: {
                         Age: Age.ADULT,
@@ -1352,13 +1317,13 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             outsideRightLedge: {
+                DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "2 Hearts" },
                 Exits: {
                     outsideRight: {},
                     skulltulaOnOutsideRightLedge: {
                         RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 },
-
                 ItemLocations: {
                     "Chest on Outside Right Island": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1370,6 +1335,7 @@ let StandardDungeons = {
                 }
             },
             skulltulaOnOutsideRightLedge: {
+                DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "2 Hearts" },
                 Exits: {},
                 ItemLocations: {
                     "Skulltula on Outside Right Island": {
@@ -1383,6 +1349,7 @@ let StandardDungeons = {
                 }
             },
             topOfOutsideRight: {
+                DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "2 Hearts" },
                 Exits: {
                     drainedWell: {},
                     outsideRight: {},
@@ -1397,7 +1364,6 @@ let StandardDungeons = {
                         RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     }
                 },
-
                 ItemLocations: {
                     "Dungeon Map": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1410,6 +1376,7 @@ let StandardDungeons = {
                 }
             },
             drainedWell: {
+                DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "2 Hearts" },
                 Exits: {},
                 ItemLocations: {
                     "2 Hearts in Well": {
@@ -1433,6 +1400,7 @@ let StandardDungeons = {
                 }
             },
             blockRoom: {
+                DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     topOfOutsideLeft: {
                         Age: Age.ADULT,
@@ -1453,7 +1421,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Eye Switch in Block Puzzle Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1471,6 +1438,7 @@ let StandardDungeons = {
                 }
             },
             topOfBlockRoom: {
+                DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     twistedCorridor1: {
                         Map: "Forest Temple",
@@ -1487,12 +1455,12 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             untwistedCorridor1: {
+                DisplayGroup: { groupName: "Untwisted Corridor & Upper Courtyard", imageName: "Boss Key" },
                 Exits: {
                     topOfOutsideLeft: {
                         RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     }
                 },
-
                 ItemLocations: {
                     "Boss Key Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1503,7 +1471,43 @@ let StandardDungeons = {
                     }
                 }
             },
+            topOfOutsideLeft: {
+                DisplayGroup: { groupName: "Untwisted Corridor & Upper Courtyard", imageName: "Boss Key" },
+                Exits: {
+                    outsideLeft: {},
+                    outsideLeftHearts: {},
+                    blockRoom: {}
+                },
+                ItemLocations: {
+                    "Floormaster Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: {x: 27, y: 101, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 19,
+                        LongDescription: "Navigate to the twisted corridor. Shoot the eye switch to untwist the corridor. Now go across the corridor to the room with the boss key chest. Fall down the hole in this room and kill the bubbles to get out. Follow the right wall in this next area until you reach the first door in the side room to the right (careful of the giant deku baba). Kill the floormaster to spawn the chest.",
+                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
+                    }
+                }
+            },
+            outsideLeftHearts: {
+                DisplayGroup: { groupName: "Untwisted Corridor & Upper Courtyard", imageName: "Boss Key" },
+                Exits: {},
+                ItemLocations: {
+                    "2 Hearts Above Left Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Hearts",
+                        MapInfo: { x: 81, y: 73, floor: "F1" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
+                        Order: 17,
+                        LongDescription: "Navigate to the twisted corridor. Shoot the eye switch to untwist the corridor. Now go across the corridor to the room with the boss key chest. Fall down the hole in this room and kill the bubbles to get out.<br/><br/>The hearts are on the skinny platform that you have to jump to, near the skulltula on the wall. Be careful not to fall off."
+                    }
+                }
+            },
             twistedCorridor1: {
+                DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
                 Exits: {
                     firstPoeRoom: {
                         Map: "Forest Temple",
@@ -1513,6 +1517,7 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             firstPoeRoom: {
+                DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
                 Exits: {
                     afterPoeRooms: {
                         Map: "Forest Temple",
@@ -1520,7 +1525,6 @@ let StandardDungeons = {
                         RequiredItems: [ItemSets.SWORDS]
                     }
                 },
-
                 ItemLocations: {
                     "Red Poe Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1568,6 +1572,7 @@ let StandardDungeons = {
                 }
             },
             afterPoeRooms: {
+                DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
                 Exits: {
                     carouselRoom: {
                         Map: "Forest Temple",
@@ -1577,6 +1582,7 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             carouselRoom: {
+                DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
                 Exits: {
                     fallingCeilingRoom: {
                         RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE]
@@ -1596,11 +1602,11 @@ let StandardDungeons = {
                 }
             },
             fallingCeilingRoom: {
+                DisplayGroup: { groupName: "Falling Ceiling Rooms", imageName: "Small Poe" },
                 Exits: {
                     skulltulaOnOutsideRightLedge: {},
                     outsideRightLedge: {}
                 },
-
                 ItemLocations: {
                     "Chest in Falling Ceiling Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1622,6 +1628,7 @@ let StandardDungeons = {
                 }
             },
             basement: {
+                DisplayGroup: { groupName: "Basement", imageName: "Forest Medallion" },
                 Exits: {
                     bossRoom: {
                         CustomRequirement: function(age) {
@@ -1629,7 +1636,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Chest in Basement": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1657,6 +1663,7 @@ let StandardDungeons = {
                 }
             },
             bossRoom: {
+                DisplayGroup: { groupName: "Basement", imageName: "Forest Medallion" },
                 Exits: {
                     "Boss": {
                         OwExit: OwExits["Forest Temple"]["Boss"]
