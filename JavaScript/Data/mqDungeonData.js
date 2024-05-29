@@ -6978,6 +6978,7 @@ let MQDungeons = {
         Floors: ["MN", "FST", "WTR", "SHW", "FIR", "LIT", "SPT"],
         MqMapFloors: ["SHW", "FIR"],
         StartingFloorIndex: 0,
+        UsesDisplayGroups: true,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canCompleteTrials: function(age) {
             // Requires IsPostWalkCheck to be true on any item location that uses this!!!
@@ -6991,10 +6992,9 @@ let MQDungeons = {
         },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Lobby/Hub", imageName: "4 Scrubs" },
                 Exits: {
-                    forestTrialEnd: {
-                        RequiredSongs: [Songs.SONG_OF_TIME]
-                    },
+                    forestTrialStart: {},
                     waterRoom: {},
                     shadowSmallPlatform: {
                         Age: Age.ADULT,
@@ -7032,6 +7032,67 @@ let MQDungeons = {
                         Order: 1,
                         LongDescription: "Enter the main room. Walk forward and jump off the ledge and turn around. The wall you're facing is fake - go through it to find the scrubs."
                     },
+
+                    // Locked Doors
+                    "Locked Door in Water Trial": {
+                        DisplayGroup: { groupName: "Water Trial", imageName: "Water Medallion" },
+                        ItemGroup: ItemGroups.LOCKED_DOOR,
+                        Regions: ["waterRoom"],
+                        MapInfo: { x: 193, y: 168, floor: "WTR" },
+                        Age: Age.EITHER,
+                        Order: 12,
+                        LongDescription: "This is the locked door in the water trial, blocked by the red ice.",
+                        RequiredItems: [ItemSets.BLUE_FIRE_ITEMS],
+                        KeyRequirement: function(age) {
+                            let max = 3;
+                            let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
+                                ItemData.canUseAll(age, [Items.BOMB, ItemSets.SHIELDS]);
+                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && 
+                                ItemData.canUse(age, ItemSets.EXPLOSIVES);
+                            let canGlitchIn = canSuperslideIn || canEssClipIn;
+                            let canEnterLightTrial = canGlitchIn || ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
+                            if (!canEnterLightTrial) {
+                                max = 1;
+                            }
+                            return { min: 1, max: max };
+                        }
+                    },
+                    "Locked Door 1 in Light Trial": {
+                        DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
+                        ItemGroup: ItemGroups.LOCKED_DOOR,
+                        Regions: ["lightRoom1"],
+                        MapInfo: { x: 180, y: 174, floor: "LIT" },
+                        Age: Age.ADULT,
+                        Order: 19,
+                        LongDescription: "This is the locked door in the Zelda's Lullaby room of the light trial.",
+                        KeyRequirement: function(age) {
+                            let max = ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS) ? 2 : 1;
+                            return { min: 1, max: max };
+                        }
+                    },
+                    "Locked Door 2 in Light Trial": {
+                        DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
+                        ItemGroup: ItemGroups.LOCKED_DOOR,
+                        Regions: ["lightRoom2Back"],
+                        MapInfo: { x: 180, y: 84, floor: "LIT" },
+                        Age: Age.ADULT,
+                        Order: 21,
+                        LongDescription: "This is the locked door in the boulder/fire wall froom of the light trial.",
+                        KeyRequirement: function(age) {
+                            let max = ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS) ? 3 : 2;
+                            return { min: 2, max: max };
+                        }
+                    }
+                }
+            },
+            forestTrialStart: {
+                DisplayGroup: { groupName: "Forest Trial", imageName: "Forest Medallion" },
+                Exits: {
+                    forestTrialEnd: {
+                        RequiredSongs: [Songs.SONG_OF_TIME]
+                    }
+                },
+                ItemLocations: {
                     "Forest Freestanding Item": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 165, y: 204, floor: "FST" },
@@ -7057,58 +7118,11 @@ let MQDungeons = {
                         Order: 8,
                         LongDescription: "In the second room, shoot the eye switch at the back left side of the room with a fire arrow to spawn the chest. Alternatively, you can also use Din's fire to hit it once at the back of the room. To get across, you can jump and use the wind from the fan if you have no hover boots.",
                         RequiredItems: [ItemSets.FIRE_ITEMS]
-                    },
-
-                    // Locked Doors
-                    "Locked Door in Water Trial": {
-                        ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["waterRoom"],
-                        MapInfo: { x: 193, y: 168, floor: "WTR" },
-                        Age: Age.EITHER,
-                        Order: 12,
-                        LongDescription: "This is the locked door in the water trial, blocked by the red ice.",
-                        RequiredItems: [ItemSets.BLUE_FIRE_ITEMS],
-                        KeyRequirement: function(age) {
-                            let max = 3;
-                            let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
-                                ItemData.canUseAll(age, [Items.BOMB, ItemSets.SHIELDS]);
-                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && 
-                                ItemData.canUse(age, ItemSets.EXPLOSIVES);
-                            let canGlitchIn = canSuperslideIn || canEssClipIn;
-                            let canEnterLightTrial = canGlitchIn || ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
-                            if (!canEnterLightTrial) {
-                                max = 1;
-                            }
-                            return { min: 1, max: max };
-                        }
-                    },
-                    "Locked Door 1 in Light Trial": {
-                        ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["lightRoom1"],
-                        MapInfo: { x: 180, y: 174, floor: "LIT" },
-                        Age: Age.ADULT,
-                        Order: 19,
-                        LongDescription: "This is the locked door in the Zelda's Lullaby room of the light trial.",
-                        KeyRequirement: function(age) {
-                            let max = ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS) ? 2 : 1;
-                            return { min: 1, max: max };
-                        }
-                    },
-                    "Locked Door 2 in Light Trial": {
-                        ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["lightRoom2Back"],
-                        MapInfo: { x: 180, y: 84, floor: "LIT" },
-                        Age: Age.ADULT,
-                        Order: 21,
-                        LongDescription: "This is the locked door in the boulder/fire wall froom of the light trial.",
-                        KeyRequirement: function(age) {
-                            let max = ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS) ? 3 : 2;
-                            return { min: 2, max: max };
-                        }
                     }
                 }
             },
             forestTrialEnd: {
+                DisplayGroup: { groupName: "Forest Trial", imageName: "Forest Medallion" },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Forest Trial End": {
@@ -7124,6 +7138,7 @@ let MQDungeons = {
                 }
             },
             waterRoom: {
+                DisplayGroup: { groupName: "Water Trial", imageName: "Water Medallion" },
                 Exits: {
                     waterTrialBlockPuzzle: {
                         Map: "Ganon's Castle",
@@ -7154,6 +7169,7 @@ let MQDungeons = {
                 }
             },
             waterTrialBlockPuzzle: {
+                DisplayGroup: { groupName: "Water Trial", imageName: "Water Medallion" },
                 Exits: {
                     waterTrialEnd: {
                         Map: "Ganon's Castle",
@@ -7202,6 +7218,7 @@ let MQDungeons = {
                 }
             },
             waterTrialEnd: {
+                DisplayGroup: { groupName: "Water Trial", imageName: "Water Medallion" },
                 UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                 Exits: {},
                 ItemLocations: {
@@ -7218,6 +7235,7 @@ let MQDungeons = {
                 }
             },
             shadowSmallPlatform: {
+                DisplayGroup: { groupName: "Shadow Trial", imageName: "Shadow Medallion" },
                 Exits: {
                     shadowMovingPlatform: {
                         RequiredItems: [Equipment.MAGIC, Items.LENS_OF_TRUTH] // Without lens is really hard, so not including that trick for now
@@ -7242,6 +7260,7 @@ let MQDungeons = {
                 }
             },
             shadowMovingPlatform: {
+                DisplayGroup: { groupName: "Shadow Trial", imageName: "Shadow Medallion" },
                 Exits: {
                     shadowBackSection: {
                         RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, ItemSets.FIRE_ITEMS]
@@ -7272,6 +7291,7 @@ let MQDungeons = {
                 }
             },
             shadowBackSection: {
+                DisplayGroup: { groupName: "Shadow Trial", imageName: "Shadow Medallion" },
                 Exits: {
                     shadowTrialEnd: {
                         Map: "Ganon's Castle",
@@ -7304,6 +7324,7 @@ let MQDungeons = {
                 }
             },
             shadowTrialEnd: {
+                DisplayGroup: { groupName: "Shadow Trial", imageName: "Shadow Medallion" },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Shadow Trial End": {
@@ -7319,6 +7340,7 @@ let MQDungeons = {
                 }
             },
             fireRoomEarly: {
+                DisplayGroup: { groupName: "Fire Trial", imageName: "Fire Medallion" },
                 Exits: {
                     fireRoomLate: {
                         CustomRequirement: function(age) {
@@ -7337,6 +7359,7 @@ let MQDungeons = {
                 }
             },
             fireRoomLate: {
+                DisplayGroup: { groupName: "Fire Trial", imageName: "Fire Medallion" },
                 UseAdultAge: function() {
                     return !Settings.GlitchesToAllow.ganonFireNoTunic;
                 },
@@ -7387,6 +7410,7 @@ let MQDungeons = {
                 }
             },
             fireTrialEnd: {
+                DisplayGroup: { groupName: "Fire Trial", imageName: "Fire Medallion" },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Fire Trial End": {
@@ -7402,6 +7426,7 @@ let MQDungeons = {
                 }
             },
             lightRoom1: {
+                DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
                 Exits: {
                     lightRoom2: {
                         Map: "Ganon's Castle",
@@ -7420,6 +7445,7 @@ let MQDungeons = {
                 }
             },
             lightRoom2 : {
+                DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
                 Exits: {
                     lightRoom2Back: {
                         Age: Age.ADULT,
@@ -7431,6 +7457,7 @@ let MQDungeons = {
                 ItemLocations: {}
             },
             lightRoom2Back:{
+                DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
                 Exits: {
                     lightTrialEnd: {
                         Map: "Ganon's Castle",
@@ -7451,6 +7478,7 @@ let MQDungeons = {
                 }
             },
             lightTrialEnd: {
+                DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Light Trial End": {
@@ -7466,12 +7494,12 @@ let MQDungeons = {
                 }
             },
             spiritRoom2: {
+                DisplayGroup: { groupName: "Spirit Trial", imageName: "Spirit Medallion" },
                 Exits: {
                     spiritRoom3: {
                         RequiredItems: [Items.BOMBCHU]
                     }
                 },
-
                 ItemLocations: {
                     "Spirit Chest After Iron Knuckle": {
                         ItemGroup: ItemGroups.CHEST,
@@ -7483,13 +7511,13 @@ let MQDungeons = {
                 }
             },
             spiritRoom3: {
+                DisplayGroup: { groupName: "Spirit Trial", imageName: "Spirit Medallion" },
                 Exits: {
                     spiritRoom4: {
                         Age: Age.ADULT,
                         RequiredItems: [Equipment.MIRROR_SHIELD, Items.FIRE_ARROW]
                     }
                 },
-
                 ItemLocations: {
                     "Spirit Invisible Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -7501,6 +7529,7 @@ let MQDungeons = {
                 }
             },
             spiritRoom4: {
+                DisplayGroup: { groupName: "Spirit Trial", imageName: "Spirit Medallion" },
                 Exits: {
                     spiritTrialEnd: {}
                 },
@@ -7518,6 +7547,7 @@ let MQDungeons = {
                 }
             },
             spiritTrialEnd: {
+                DisplayGroup: { groupName: "Spirit Trial", imageName: "Spirit Medallion" },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Spirit Trial End": {
@@ -7533,6 +7563,7 @@ let MQDungeons = {
                 }
             },
             center: {
+                DisplayGroup: { groupName: "Central Tower", imageName: "Triforce Shards" },
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.staircaseHover; },
                 Exits: {
                     potRoom: {
@@ -7558,6 +7589,7 @@ let MQDungeons = {
                 }
             },
             potRoom: {
+                DisplayGroup: { groupName: "Central Tower", imageName: "Triforce Shards" },
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.staircaseHover; },
                 Exits: {},
                 ItemLocations: {

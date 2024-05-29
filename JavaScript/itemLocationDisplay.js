@@ -39,7 +39,13 @@ let ItemLocationDisplay = {
 		let needToSortDungeon = mapInfo.MapGroup === MapGroups.DUNGEONS &&
 			Settings.TrackerSettings.dungeonItemDisplay === DungeonItemDisplaySettings.BY_SUGGESTED_ORDER;
 		let usesDisplayGroups = mapInfo.UsesDisplayGroups || needToSortDungeon;
-		Data.getAllItemLocations(mapName).forEach(function(itemLocation) {
+
+		// Sort the locked doors to the end
+		let allItemLocations = Data.getAllItemLocations(mapName);
+		let sortedItemLocations = allItemLocations.filter(loc => loc.ItemGroup !== ItemGroups.LOCKED_DOOR);
+		sortedItemLocations.push(...allItemLocations.filter(loc => loc.ItemGroup === ItemGroups.LOCKED_DOOR));
+
+		sortedItemLocations.forEach(function(itemLocation) {
 			let group = itemLocation.OverrideItemGroup || itemLocation.ItemGroup;
 			let imageName = "Chest";
 			if (usesDisplayGroups) {
@@ -60,6 +66,7 @@ let ItemLocationDisplay = {
 						: getItemGroupImagePath(group)
 				};
 			}
+
 			groupedItemLocationInfo[group].itemLocations.push(itemLocation);
 		});
 
