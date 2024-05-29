@@ -6,6 +6,7 @@ let StandardDungeons = {
         Abbreviation: "DEKU",
         MapGroup: MapGroups.DUNGEONS,
         Floors: [ "F3", "F2", "B1", "B2" ],
+        UsesDisplayGroups: true,
         StartingFloorIndex: 1,
         UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canBurnBasementWeb: function(age) {
@@ -14,7 +15,9 @@ let StandardDungeons = {
         },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Lower Floors", imageName: "Fairy Slingshot" },
                 Exits: {
+                    upperFloor: {},
                     slingshotRoom: {
                         RequiredChoiceOfItems: [Equipment.DEKU_SHIELD, Equipment.HYLIAN_SHIELD, Items.MEGATON_HAMMER]
                     },
@@ -25,7 +28,6 @@ let StandardDungeons = {
                         OwExit: OwExits["Deku Tree"]["Exit"]
                     }
                 },
-                
                 ItemLocations: {
                     "Heart in Lower Lobby": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -41,7 +43,33 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "This chest is located by the vines with the skullwalltulas on the second floor."
+                    }
+                }
+            },
+            slingshotRoom: {
+                DisplayGroup: { groupName: "Lower Floors", imageName: "Fairy Slingshot" },
+                Exits: {},
+                ItemLocations: {
+                    "Slingshot Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 111, y: 246, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 3,
+                        LongDescription: "Enter the second floor door. Use your shield to reflect the scrub's nut back at him. The chest is on the other side in the next room."
                     },
+                    "Slingshot Room Side Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 157, y: 273, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 4,
+                        LongDescription: "This chest is located up the vines on the platform the slingshot chest is on."
+                    }
+                }
+            },
+            upperFloor: {
+                DisplayGroup: { groupName: "Upper Floor", imageName: "Compass" },
+                Exits: {},
+                ItemLocations: {
                     "Compass Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 16, y: 147, floor: "F3" },
@@ -74,28 +102,8 @@ let StandardDungeons = {
                     }
                 }
             },
-
-            slingshotRoom: {
-                Exits: {},
-                ItemLocations: {
-                    "Slingshot Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 111, y: 246, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 3,
-                        LongDescription: "Enter the second floor door. Use your shield to reflect the scrub's nut back at him. The chest is on the other side in the next room."
-                    },
-                    "Slingshot Room Side Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 157, y: 273, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 4,
-                        LongDescription: "This chest is located up the vines on the platform the slingshot chest is on."
-                    }
-                }
-            },
-
             basementBottom: {
+                DisplayGroup: { groupName: "Basement", imageName: "Deku Stick" },
                 Exits: {
                     basementBack: {
                         RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, ItemSets.FIRE_ITEMS],
@@ -136,8 +144,8 @@ let StandardDungeons = {
                     }
                 }
             },
-
             basementBack: {
+                DisplayGroup: { groupName: "Basement", imageName: "Deku Stick" },
                 Exits: { 
                     basementTop: {
                         Age: Age.CHILD
@@ -156,6 +164,7 @@ let StandardDungeons = {
             },
 
             basementTop: {
+                DisplayGroup: { groupName: "Basement", imageName: "Deku Stick" },
                 Exits: {
                     basementBack: {
                         Age: Age.CHILD
@@ -184,8 +193,8 @@ let StandardDungeons = {
                     }
                 }
             },
-
             lowerBasement: {
+                DisplayGroup: { groupName: "Boss Floor", imageName: "Kokiri's Emerald" },
                 Exits: {
                     bossRoom: {
                         CustomRequirement: function(age) {
@@ -221,8 +230,8 @@ let StandardDungeons = {
                     }
                 }
             },
-
             bossRoom: {
+                DisplayGroup: { groupName: "Boss Floor", imageName: "Kokiri's Emerald" },
                 Exits: {
                     "Boss": {
                         OwExit: OwExits["Deku Tree"]["Boss"]
@@ -236,10 +245,12 @@ let StandardDungeons = {
     "Dodongo's Cavern": {
         Abbreviation: "DONG",
         MapGroup: MapGroups.DUNGEONS,
+        UsesDisplayGroups: true,
         Floors: ["F2", "F1"],
         StartingFloorIndex: 1,
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Main Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     mainRoom: {
                         CustomRequirement: function(age) {
@@ -252,7 +263,6 @@ let StandardDungeons = {
                         OwExit: OwExits["Dodongo's Cavern"]["Exit"]
                     }
                 },
-
                 ItemLocations: {
                     "Opened First Wall": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -265,27 +275,31 @@ let StandardDungeons = {
                     }
                 }
             },
-
             mainRoom: {
+                DisplayGroup: { groupName: "Main Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
+                    // We're assuming that this was opened if the first mud wall was opened
+                    lowerEastRooms: {},
+                    blueRoom: {
+                        CustomRequirement: function(age) {
+                            return age === Age.ADULT || 
+                                Data.canGroundJumpWithBomb(age, true);
+                        }
+                    },
+                    staircaseBottom: {
+                        CustomRequirement: function(age) {
+                            if (age === Age.ADULT) { return true; } // Adult can just climb to the switch
+                            return Data.canGroundJumpWithBomb(age, true) || 
+                            (Settings.GlitchesToAllow.dodongoSwitchEarly && Items.BOMBCHU.playerHas && Equipment.DEKU_SHIELD.playerHas);
+                        }
+                    },
                     inDodongoHead: {
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.dodongoOpenHeadWithBombchus &&
                                 ItemData.canUseAll(age, [ItemSets.SHIELDS, Items.BOMBCHU]);
                         }
-                    },
-                    firstFloorSwitch: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; } // Adult can just climb to the switch
-                            return Data.canGroundJumpWithBomb(age, true) || 
-                                (Settings.GlitchesToAllow.dodongoSwitchEarly && Items.BOMBCHU.playerHas && Equipment.DEKU_SHIELD.playerHas);
-                        }
-                    },
-                    blueRoom: {
-                        RequiredChoiceOfItems: [ItemSets.SWORDS, ItemSets.MUD_WALL_ITEMS]
                     }
                 },
-
                 ItemLocations: {
                     "Gossip Stone in Main Room": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -295,6 +309,31 @@ let StandardDungeons = {
                         LongDescription: "This stone is behind the breakable wall in the northeast corner of the main room.",
                         RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
                     },
+                    "Map Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 97, y: 198, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 13,
+                        LongDescription: "Go to the left side of the big main room. Destroy the wall with an explosive, hammer, or blue fire to find this chest.",
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
+                    },
+                    "Scrub in Main Room": {
+                        ItemGroup: ItemGroups.SCRUB,
+                        MapInfo: { x: 97, y: 222, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 14,
+                        LongDescription: "Make your way to the left side of the main room. The scrub is in the wall closest to the entrance to the dungeon."
+                    }
+                }
+            },
+            lowerEastRooms: {
+                DisplayGroup: { groupName: "Lower East Rooms", imageName: "Deku Stick" },
+                Exits: {
+                    blueRoom: {
+                        RequiredItems: [ItemSets.DAMAGING_ITEMS]
+                    }
+                },
+                ItemLocations: {
                     "2 Pots at East Room Entrance": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -371,32 +410,16 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 9,
                         LongDescription: "In the lower lizalfos room, these pots are on the platform to the right of the exit door."
-                    },
-                    "Map Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 97, y: 198, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 13,
-                        LongDescription: "Go to the left side of the big main room. Destroy the wall with an explosive, hammer, or blue fire to find this chest.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
-                    },
-                    "Scrub in Main Room": {
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 97, y: 222, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 14,
-                        LongDescription: "Make your way to the left side of the main room. The scrub is in the wall closest to the entrance to the dungeon."
                     }
                 }
             },
-
             blueRoom: {
+                DisplayGroup: { groupName: "Lower East Rooms", imageName: "Deku Stick" },
                 Exits: {
-                    firstFloorSwitch: {
+                    staircaseBottom: {
                         RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
                     }
                 },
-
                 ItemLocations: {
                     "Scrub by Blue Dodongo Room": {
                         ItemGroup: ItemGroups.SCRUB,
@@ -425,8 +448,8 @@ let StandardDungeons = {
                     }
                 }
             },
-
-            firstFloorSwitch: {
+            staircaseBottom: {
+                DisplayGroup: { groupName: "Staircase Room", imageName: "Bomb" },
                 Exits: {
                     blueRoom: {},
                     skulltulaOnVines: {
@@ -439,7 +462,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Compass Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -451,33 +473,16 @@ let StandardDungeons = {
                     }
                 }
             },
-
             staircaseTop: {
+                DisplayGroup: { groupName: "Staircase Room", imageName: "Bomb" },
                 Exits: {
                     skulltulaOnVines: {},
                     skulltulaAlcoveAboveStairs: {
                         Age: Age.ADULT,
                         RequiredItems: [UpgradedItems.LONGSHOT]
                     },
-                    bombChestFloor: {
-                        CustomRequirement: function(age) {
-                            let adultBombChestEarly = age === Age.ADULT && Settings.GlitchesToAllow.dodongoAdultJumpToBombChest;
-                            let canGroundJumpThere = age === Age.ADULT && Data.canGroundJumpWithBomb(age);
-                            let canMegaflipThere = Items.BOMBCHU.playerHas && Data.canMegaFlip(age);
-                            return adultBombChestEarly || canGroundJumpThere || canMegaflipThere;
-                        }
-                    },
-                    firstEyeSwitchRoom: {
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
-                    },
-                    potsInBladeRoom: {
-                        RequiredItems: [Items.BOOMERANG],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.difficultBoomerangTrickThrows;
-                        }
-                    }
+                    lowerBladeRoom: {}
                 },
-
                 ItemLocations: {
                     "2 Pots Left of Staircase": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -498,42 +503,11 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "Lower the giant staircase. Climb it - the pots are to the Right."
-                    },
-                    "Chest by Bomb Flower": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 201, y: 201, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 19,
-                        LongDescription: "In the room with the blades, this is the chest on the ledge near the Bomb Flower and bombable wall."
-                    },
-                    "2 Scrubs by Blade Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.SCRUB,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Scrubs",
-                        MapInfo: { x: 202, y: 106, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 20,
-                        LongDescription: "In the room with the blades, there's a wall you can destroy that's located near the cliffs with the bomb chest. There are a couple scrubs inside.",
-                        CustomRequirement: function(age) {
-                            let hasMudWallItem = ItemData.canUse(age, ItemSets.MUD_WALL_ITEMS);
-                            return age === Age.CHILD
-                                ? hasMudWallItem
-                                : hasMudWallItem || (Settings.RandomizerSettings.dodongoAdultBladeMudWallWithStrength && Equipment.STRENGTH.playerHas);
-                        }
-                    },
-                    "Heart Behind Block in Blade Room": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapImageName: "Recovery Heart",
-                        MapInfo: { x: 211, y: 196, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 21,
-                        LongDescription: "In the room with the blades, push the block all the way out. There's an item inside its alcove."
                     }
                 }
             },
-
             skulltulaOnVines: {
+                DisplayGroup: { groupName: "Staircase Room", imageName: "Bomb" },
                 Exits: {},
                 ItemLocations: {
                     "Skulltula on Vines by Stairs": {
@@ -546,8 +520,63 @@ let StandardDungeons = {
                     }
                 }
             },
-
+            lowerBladeRoom: {
+                DisplayGroup: { groupName: "Lower Spiketrap Room", imageName: "2 Scrubs No Beehive" },
+                Exits: {
+                    firstEyeSwitchRoom: {
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
+                    },
+                    bombChestFloor: {
+                        CustomRequirement: function(age) {
+                            let adultBombChestEarly = age === Age.ADULT && Settings.GlitchesToAllow.dodongoAdultJumpToBombChest;
+                            let canGroundJumpThere = age === Age.ADULT && Data.canGroundJumpWithBomb(age);
+                            let canMegaflipThere = Items.BOMBCHU.playerHas && Data.canMegaFlip(age);
+                            return adultBombChestEarly || canGroundJumpThere || canMegaflipThere;
+                        }
+                    },
+                    potsInBladeRoom: {
+                        RequiredItems: [Items.BOOMERANG],
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.difficultBoomerangTrickThrows;
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "Heart Behind Block in Blade Room": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Recovery Heart",
+                        MapInfo: { x: 211, y: 196, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 19,
+                        LongDescription: "In the room with the blades, push the block all the way out. There's an item inside its alcove."
+                    },
+                    "Chest by Bomb Flower": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 201, y: 201, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 20,
+                        LongDescription: "In the room with the blades, this is the chest on the ledge near the Bomb Flower and bombable wall."
+                    },
+                    "2 Scrubs by Blade Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.SCRUB,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Scrubs",
+                        MapInfo: { x: 202, y: 106, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 21,
+                        LongDescription: "In the room with the blades, there's a wall you can destroy that's located near the cliffs with the bomb chest. There are a couple scrubs inside.",
+                        CustomRequirement: function(age) {
+                            let hasMudWallItem = ItemData.canUse(age, ItemSets.MUD_WALL_ITEMS);
+                            return age === Age.CHILD
+                                ? hasMudWallItem
+                                : hasMudWallItem || (Settings.RandomizerSettings.dodongoAdultBladeMudWallWithStrength && Equipment.STRENGTH.playerHas);
+                        }
+                    }
+                }
+            },
             potsInBladeRoom: {
+                DisplayGroup: { groupName: "Upper East Rooms", imageName: "Bomb Bag" },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in Blade Room": {
@@ -562,8 +591,8 @@ let StandardDungeons = {
                     }
                 }
             },
-
             firstEyeSwitchRoom: {
+                DisplayGroup: { groupName: "Upper East Rooms", imageName: "Bomb Bag" },
                 Exits: {
                     bombChestFloor: {
                         RequiredChildItems: [Items.FAIRY_SLINGSHOT],
@@ -587,8 +616,8 @@ let StandardDungeons = {
                     }
                 }
             },
-
             upperLizalfosRoom: {
+                DisplayGroup: { groupName: "Upper East Rooms", imageName: "Bomb Bag" },
                 Exits: {
                     bombChestFloor: {
                         RequiredItems: [ItemSets.SWORDS, ItemSets.EXPLOSIVES]
@@ -610,8 +639,8 @@ let StandardDungeons = {
                     }
                 }
             },
-
             bombChestFloor: {
+                DisplayGroup: { groupName: "Upper East Rooms", imageName: "Bomb Bag" },
                 Exits: {
                     inDodongoHead: {
                         RequiredItems: [ItemSets.EXPLOSIVES]
@@ -653,8 +682,8 @@ let StandardDungeons = {
                     }
                 }
             },
-
             skulltulaAlcoveAboveStairs: {
+                DisplayGroup: { groupName: "Staircase Room", imageName: "Bomb" },
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Alcove Above Stairs": {
@@ -667,12 +696,11 @@ let StandardDungeons = {
                     }
                 }
             },
-
             inDodongoHead: {
+                DisplayGroup: { groupName: "Inside Dondongo Head", imageName: "Goron's Ruby" },
                 Exits: {
                     bossRoom: {}
                 },
-
                 ItemLocations: {
                     "Skulltula in Back Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -715,8 +743,8 @@ let StandardDungeons = {
                     }
                 }
             },
-
             bossRoom: {
+                DisplayGroup: { groupName: "Inside Dondongo Head", imageName: "Goron's Ruby" },
                 Exits: {
                     "Boss": {
                         OwExit: OwExits["Dodongo's Cavern"]["Boss"]

@@ -7,29 +7,23 @@ let MQDungeons = {
         Abbreviation: "DEKU",
         MapGroup: MapGroups.DUNGEONS,
         IsMasterQuest: true,
+        UsesDisplayGroups: true,
         Floors: [ "F3", "F2", "B1", "B2" ],
         StartingFloorIndex: 1,
         UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Lower Floors", imageName: "Recovery Heart" },
                 Exits: {
+                    upperFloor: {},
                     compassRoomAntechamber: {
                         RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE]
                     },
-                    waterRoom: {
-                        RequiredItems: [ItemSets.PROJECTILES],
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
-                    },
-                    upperBasement: {
-                        CustomRequirement: function(age) {
-                            return age === Age.ADULT || Settings.GlitchesToAllow.dekuB1Skip;
-                        }
-                    },
+                    basement: {},
                     Exit: {
                         OwExit: OwExits["Deku Tree"]["Exit"]
                     }
                 },
-
                 ItemLocations: {
                     "Heart in Lower Lobby": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -43,7 +37,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 282, y: 82, floor: "F2" },
                         Age: Age.EITHER,
-                        Order: 1,
+                        Order: 1.1,
                         LongDescription: "Climb to the second floor of the dungeon. The chest is by the vines leading to the third floor."
                     },
                     "Crate by Map Chest": {
@@ -59,7 +53,13 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "This skulltula is in the crate by the map chest on the second floor. Roll into it to set it free.",
-                    },
+                    }
+                }
+            },
+            upperFloor: {
+                DisplayGroup: { groupName: "Upper Floor", imageName: "Fairy Slingshot" },
+                Exits: {},
+                ItemLocations: {
                     "2 Crates on Third Floor": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
@@ -93,19 +93,11 @@ let MQDungeons = {
                         Order: 11,
                         LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>Light the unlit torch in this room to spawn the chest. If using a bow, it's easier if you shoot it from the left side of the torch.",
                         RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE]
-                    },
-                    "Basement Web Switch Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 344, y: 81, floor: "B1" },
-                        Age: Age.EITHER,
-                        Order: 12,
-                        LongDescription: "Head to the basement. The goal is to hit the switch to the right of the vines to spawn the chest. If you have Din's Fire, use it on the webs. Otherwise, hit the switch to the left of the vines to light the torch, then use your sticks or shoot an arrow through it to gain access to the switch.",
-                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE]
                     }
                 }
             },
-
             compassRoomAntechamber: {
+                DisplayGroup: { groupName: "Lower Side Room", imageName: "Compass" },
                 Exits: {
                     compassRoom: {
                         RequiredChildItems: [Items.FAIRY_SLINGSHOT],
@@ -123,8 +115,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             compassRoom: {
+                DisplayGroup: { groupName: "Lower Side Room", imageName: "Compass" },
                 Exits: {
                     compassRoomSideArea: {
                         CustomRequirement: function(age) {
@@ -157,8 +149,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             compassRoomSideArea: {
+                DisplayGroup: { groupName: "Lower Side Room", imageName: "Compass" },
                 Exits: {
                     compassRoomSkulltula: {}
                 },
@@ -173,8 +165,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             compassRoomSkulltula: {
+                DisplayGroup: { groupName: "Lower Side Room", imageName: "Compass" },
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Old Slingshot Room": {
@@ -192,8 +184,32 @@ let MQDungeons = {
                     }
                 }
             },
-
+            basement: {
+                DisplayGroup: { groupName: "Basement", imageName: "Deku Stick" },
+                Exits: {
+                    waterRoom: {
+                        RequiredItems: [ItemSets.PROJECTILES],
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
+                    },
+                    upperBasement: {
+                        CustomRequirement: function(age) {
+                            return age === Age.ADULT || Settings.GlitchesToAllow.dekuB1Skip;
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "Basement Web Switch Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 344, y: 81, floor: "B1" },
+                        Age: Age.EITHER,
+                        Order: 12,
+                        LongDescription: "Head to the basement. The goal is to hit the switch to the right of the vines to spawn the chest. If you have Din's Fire, use it on the webs. Otherwise, hit the switch to the left of the vines to light the torch, then use your sticks or shoot an arrow through it to gain access to the switch.",
+                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE]
+                    }
+                }
+            },
             waterRoom: {
+                DisplayGroup: { groupName: "Basement", imageName: "Deku Stick" },
                 Exits: {
                     graveRoom: {}
                 },
@@ -215,8 +231,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             graveRoom: {
+                DisplayGroup: { groupName: "Basement", imageName: "Deku Stick" },
                 Exits: {
                     upperBasement: {}
                 },
@@ -277,8 +293,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             upperBasement: {
+                DisplayGroup: { groupName: "Basement", imageName: "Deku Stick" },
                 Exits: {
                     graveRoom: {
                         Age: Age.CHILD
@@ -312,8 +328,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             lowerBasement: {
+                DisplayGroup: { groupName: "Boss Floor", imageName: "Kokiri's Emerald" },
                 Exits: {
                     bossRoom: {
                         CustomRequirement: function(age) {
@@ -349,8 +365,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             bossRoom: {
+                DisplayGroup: { groupName: "Boss Floor", imageName: "Kokiri's Emerald" },
                 Exits: {
                     "Boss": {
                         OwExit: OwExits["Deku Tree"]["Boss"]
@@ -364,11 +380,13 @@ let MQDungeons = {
     "Dodongo's Cavern": {
         Abbreviation: "DONG",
         MapGroup: MapGroups.DUNGEONS,
+        UsesDisplayGroups: true,
         IsMasterQuest: true,
         Floors: ["F2", "F1"],
         StartingFloorIndex: 1,
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Main Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     mainRoom: {
                         CustomRequirement: function(age) {
@@ -380,7 +398,6 @@ let MQDungeons = {
                         OwExit: OwExits["Dodongo's Cavern"]["Exit"]
                     }
                 },
-
                 ItemLocations: {
                     "Opened First Wall": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -393,8 +410,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             mainRoom: {
+                DisplayGroup: { groupName: "Main Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     upperMainRoom: {
                         RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, Equipment.STRENGTH]
@@ -408,7 +425,6 @@ let MQDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Chest in Main Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -438,8 +454,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             upperMainRoom: {
+                DisplayGroup: { groupName: "Main Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     staircaseBottom: {},
                     mainRoomLedge: {
@@ -457,12 +473,11 @@ let MQDungeons = {
                 },
                 ItemLocations: {}
             },
-
             mainRoomLedge: {
+                DisplayGroup: { groupName: "Main Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     poeRoom: {}
                 },
-
                 ItemLocations: {
                     "Chest on Ledge in Main Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -473,294 +488,8 @@ let MQDungeons = {
                     }
                 }
             },
-
-            staircaseBottom: {
-                Exits: {
-                    staircaseTop: {
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE]) ||
-                                (Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && ItemData.canUse(age, Items.FAIRY_BOW));
-                        }
-                    }
-                },
-                ItemLocations: {
-                    "Skullula by Stair Room": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 46, y: 259, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 19,
-                        LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>Blow up the fake wall by the stairs. Play the song of time in the next room several times to navigate the maze to the skulltula.",
-                        RequiredSongs: [Songs.SONG_OF_TIME]
-                    },
-                    "4 Pots in Stair Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "4 Pots",
-                        MapInfo: { x: 56, y: 193, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 20,
-                        LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>The pots are in the four corners of the bottom part of the room."
-                    },
-                    "2 Crates in Lower Stair Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Crates",
-                        MapInfo: { x: 53, y: 169, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 21,
-                        LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>The crates are in the two corners of the room by the back of the stairs."
-                    },
-                    "Silver Rupee Under Beamos in Stair Room": {
-                        ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 31, y: 184, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 21.1,
-                        LongDescription: "In the stair room, walk into the beamos on the left side of the stairs to get this rupee."
-                    },
-                    "Silver Rupee Under Lower Stair Room Crate": {
-                        ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 33, y: 169, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 21.2,
-                        LongDescription: "In the stair room, break the crate to the left of the stairs to get this rupee."
-                    }
-                }
-            },
-
-            staircaseTop: {
-                Exits: {
-                    staircaseBottom: {},
-                    smallDodongoRoom: {
-                        Map: "Dodongo's Cavern",
-                        SilverRupeeIndex: 0
-                    }
-                },
-
-                ItemLocations: {
-                    "Scrub in Stair Room": {
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: { x: 32, y: 94, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 22,
-                        LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>Lower the stairs like normal. Climb the gray block to reach the scrub at the top."
-                    },
-                    "4 Crates in Upper Stair Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "4 Crates",
-                        MapInfo: { x: 52, y: 97, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 23,
-                        LongDescription: "Lower the stairs in the stair room. The crates are up the stairs in the four corners of the walkways."
-                    },
-                    "Silver Rupee Under Upper Stair Room NW Crate": {
-                        ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 11, y: 97, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 23.1,
-                        LongDescription: "Break the northwest crate in the upper stair room to get this rupee."
-                    },
-                    "Silver Rupee Under Upper Stair Room SE Crate": {
-                        ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 47, y: 133, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 23.2,
-                        LongDescription: "Break the southeast crate in the upper stair room to get this rupee."
-                    },
-                    "Silver Rupee Up Upper Stair Room Vines": {
-                        ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 31, y: 132, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 23.3,
-                        LongDescription: "Climb the vines on the top of the stair room to get this rupee."
-                    }
-                }
-            },
-
-            smallDodongoRoom: {
-                Exits: {
-                    torchPuzzleRoom: {},
-                    staircaseTop: {}
-                },
-                ItemLocations: {
-                    "Chest in Small Dodongo Room": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 29, y: 200, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 24,
-                        LongDescription: "Collect all the silver rupees in the stair room to get here. Defeat all the enemies to spawn the chest."
-                    }
-                }
-            },
-
-            torchPuzzleRoom: {
-                Exits: {
-                    smallDodongoRoom: {},
-                    topOfTorchPuzzleRoom: {
-                        CustomRequirement: function(age) {
-                            let adultBombChestEarly = age === Age.ADULT && Settings.GlitchesToAllow.dodongoAdultJumpToBombChest;
-                            let canMegaflipThere = Items.BOMBCHU.playerHas && Data.canMegaFlip(age);
-                            return adultBombChestEarly || canMegaflipThere;
-                        }
-                    },
-                    upperLizalfosRoom: {
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
-                    }
-                },
-
-                ItemLocations: {
-                    "Heart in Torch Puzzle": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapImageName: "Recovery Heart",
-                        MapInfo: { x: 208, y: 175, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 25,
-                        LongDescription: "In the torch puzzle room, there's an item on the bottom part of the ledge against the back wall."
-                    },
-                    "Chest in Room by Torch Puzzle": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 202, y: 109, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 26,
-                        LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. Kill all the enemies to spawn the chest.",
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
-                    },
-                    "6 Crates in Room by Torch Puzzle": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "6 Crates",
-                        MapInfo: { x: 202, y: 109, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 27,
-                        LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. The crates are in this room.",
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
-                    },
-                    "Skulltula in Room by Torch Puzzle": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 210, y: 108, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 28,
-                        LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. The skulltula is in one of the right boxes.",
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
-                    }
-                }
-            },
-
-            upperLizalfosRoom: {
-                Exits: {
-                    topOfTorchPuzzleRoom: {},
-                    lowerLizalfosRoom: {}
-                },
-
-                ItemLocations: {
-                    "First Fire Puzzle Pot by Entrance": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 251, y: 190, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 29,
-                        LongDescription: "Make your way to the first eye switch puzzle room, either through the torch puzzle room or the upper lizalfos room. This pot is in the corner by the entrance."
-                    },
-                    "First Fire Puzzle Pot by Exit": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 270, y: 205, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 30,
-                        LongDescription: "Make your way to the first eye switch puzzle room, either through the torch puzzle room or the upper lizalfos room. This pot is in the corner by the exit."
-                    },
-                    "Skulltula in Top Lizalfos Room": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 295, y: 122, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 31,
-                        LongDescription: "After completing the torch puzzle, burn the web in the next room. Do the box pushing puzzle in the next room to get to the lizalfos room. Alternatively, you can blow up the rocks at the top of the main room and navigate around backwards to get here.<br/><br/>Bomb the rocks in the back of this room to get to the skulltula.",
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
-                    },
-                    "2 Pots by Top Lizalfos Room Wall": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 341, y: 149, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 32,
-                        LongDescription: "These pots are the ones against the wall without any doors in the top lizalfos room."
-                    },
-                    "2 Pots by Top Lizalfos Room Exit": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 306, y: 162, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 33,
-                        LongDescription: "These pots are the ones by the exit in the top lizalfos room."
-                    },
-                    "2 Pots in Second Fire Puzzle": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 274, y: 168, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 34,
-                        LongDescription: "These pots are in the fire puzzle room after the top lizalfos room in one of the corners."
-                    },
-                    "Crate by Second Fire Puzzle Entrance": {
-                        ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 276, y: 160, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 35,
-                        LongDescription: "In the fire puzzle room after the top lizalfos room, this crate can be found on the ground by the ledge you normally enter from."
-                    },
-                    "Crate by Second Fire Puzzle Exit": {
-                        ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 252, y: 168, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 36,
-                        LongDescription: "In the fire puzzle room after the top lizalfos room, this crate can be found on the ground by the ledge you normally exit from."
-                    }
-                }
-            },
-
-            topOfTorchPuzzleRoom: {
-                Exits: {
-                    torchPuzzleRoom: {},
-                    upperLizalfosRoom: {},
-                    eastRoom: {
-                        RequiredItems: [Equipment.STRENGTH]
-                    }
-                },
-
-                ItemLocations: {
-                    "Chest on Top of Torch Puzzle Room": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 187, y: 176, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 37,
-                        LongDescription: "Either bomb the rocks at the top of the main room, or proceed through the upper lizalfos room to get to the top of the torch puzzle room. The chest is on one of the ledges you can get to by jumping there."
-                    },
-                    "Pot on Torch Puzzle Room Pillar": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 204, y: 174, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 38,
-                        LongDescription: "This pot is the one on the pillar next to the chest."
-                    },
-                    "Pot by Old Bomb Bag Chest": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 184, y: 146, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 39,
-                        LongDescription: "This pot is in the torch puzzle room near where the old bomb bag chest was.."
-                    }
-                }
-            },
-
             eastRoom: {
+                DisplayGroup: { groupName: "Lower East Rooms", imageName: "Small Poe" },
                 Exits: {
                     lowerLizalfosRoom: {
                         RequiredItems: [ItemSets.PROJECTILES],
@@ -770,7 +499,6 @@ let MQDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "2 Pots at East Room Entrance": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -801,8 +529,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             lowerLizalfosRoom: {
+                DisplayGroup: { groupName: "Lower East Rooms", imageName: "Small Poe" },
                 Exits: {
                     eastRoom: {},
                     poeRoom: {}
@@ -818,15 +546,14 @@ let MQDungeons = {
                     }
                 }
             },
-
             poeRoom: {
+                DisplayGroup: { groupName: "Lower East Rooms", imageName: "Small Poe" },
                 Exits: {
                     lowerLizalfosRoom: {},
                     mainRoomLedge: {
                         RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, Items.FAIRY_BOW]
                     }
                 },
-
                 ItemLocations: {
                     "Skulltula Near Poe Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -907,8 +634,290 @@ let MQDungeons = {
                     }
                 }
             },
-
+            staircaseBottom: {
+                DisplayGroup: { groupName: "Staircase & Dodongo Room", imageName: "Bomb" },
+                Exits: {
+                    staircaseTop: {
+                        CustomRequirement: function(age) {
+                            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE]) ||
+                                (Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && ItemData.canUse(age, Items.FAIRY_BOW));
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "Skullula by Stair Room": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        MapInfo: { x: 46, y: 259, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 19,
+                        LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>Blow up the fake wall by the stairs. Play the song of time in the next room several times to navigate the maze to the skulltula.",
+                        RequiredSongs: [Songs.SONG_OF_TIME]
+                    },
+                    "4 Pots in Stair Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Pots",
+                        MapInfo: { x: 56, y: 193, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 20,
+                        LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>The pots are in the four corners of the bottom part of the room."
+                    },
+                    "2 Crates in Lower Stair Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 53, y: 169, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 21,
+                        LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>The crates are in the two corners of the room by the back of the stairs."
+                    },
+                    "Silver Rupee Under Beamos in Stair Room": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 31, y: 184, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 21.1,
+                        LongDescription: "In the stair room, walk into the beamos on the left side of the stairs to get this rupee."
+                    },
+                    "Silver Rupee Under Lower Stair Room Crate": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 33, y: 169, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 21.2,
+                        LongDescription: "In the stair room, break the crate to the left of the stairs to get this rupee."
+                    }
+                }
+            },
+            staircaseTop: {
+                DisplayGroup: { groupName: "Staircase & Dodongo Room", imageName: "Bomb" },
+                Exits: {
+                    staircaseBottom: {},
+                    smallDodongoRoom: {
+                        Map: "Dodongo's Cavern",
+                        SilverRupeeIndex: 0
+                    }
+                },
+                ItemLocations: {
+                    "Scrub in Stair Room": {
+                        ItemGroup: ItemGroups.SCRUB,
+                        MapInfo: { x: 32, y: 94, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 22,
+                        LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>Lower the stairs like normal. Climb the gray block to reach the scrub at the top."
+                    },
+                    "4 Crates in Upper Stair Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Crates",
+                        MapInfo: { x: 52, y: 97, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 23,
+                        LongDescription: "Lower the stairs in the stair room. The crates are up the stairs in the four corners of the walkways."
+                    },
+                    "Silver Rupee Under Upper Stair Room NW Crate": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 11, y: 97, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 23.1,
+                        LongDescription: "Break the northwest crate in the upper stair room to get this rupee."
+                    },
+                    "Silver Rupee Under Upper Stair Room SE Crate": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 47, y: 133, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 23.2,
+                        LongDescription: "Break the southeast crate in the upper stair room to get this rupee."
+                    },
+                    "Silver Rupee Up Upper Stair Room Vines": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 31, y: 132, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 23.3,
+                        LongDescription: "Climb the vines on the top of the stair room to get this rupee."
+                    }
+                }
+            },
+            smallDodongoRoom: {
+                DisplayGroup: { groupName: "Staircase & Dodongo Room", imageName: "Bomb" },
+                Exits: {
+                    torchPuzzleRoom: {},
+                    staircaseTop: {}
+                },
+                ItemLocations: {
+                    "Chest in Small Dodongo Room": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 29, y: 200, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 24,
+                        LongDescription: "Collect all the silver rupees in the stair room to get here. Defeat all the enemies to spawn the chest."
+                    }
+                }
+            },
+            torchPuzzleRoom: {
+                DisplayGroup: { groupName: "Torch Puzzle Room", imageName: "Din's Fire" },
+                Exits: {
+                    smallDodongoRoom: {},
+                    topOfTorchPuzzleRoom: {
+                        CustomRequirement: function(age) {
+                            let adultBombChestEarly = age === Age.ADULT && Settings.GlitchesToAllow.dodongoAdultJumpToBombChest;
+                            let canMegaflipThere = Items.BOMBCHU.playerHas && Data.canMegaFlip(age);
+                            return adultBombChestEarly || canMegaflipThere;
+                        }
+                    },
+                    upperLizalfosRoom: {
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
+                    }
+                },
+                ItemLocations: {
+                    "Heart in Torch Puzzle": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Recovery Heart",
+                        MapInfo: { x: 208, y: 175, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 25,
+                        LongDescription: "In the torch puzzle room, there's an item on the bottom part of the ledge against the back wall."
+                    },
+                    "Chest in Room by Torch Puzzle": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 202, y: 109, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 26,
+                        LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. Kill all the enemies to spawn the chest.",
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
+                    },
+                    "6 Crates in Room by Torch Puzzle": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "6 Crates",
+                        MapInfo: { x: 202, y: 109, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 27,
+                        LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. The crates are in this room.",
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
+                    },
+                    "Skulltula in Room by Torch Puzzle": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        MapInfo: { x: 210, y: 108, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 28,
+                        LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. The skulltula is in one of the right boxes.",
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
+                    }
+                }
+            },
+            upperLizalfosRoom: {
+                DisplayGroup: { groupName: "Upper East Rooms", imageName: "Fairy Slingshot" },
+                Exits: {
+                    topOfTorchPuzzleRoom: {},
+                    lowerLizalfosRoom: {}
+                },
+                ItemLocations: {
+                    "First Fire Puzzle Pot by Entrance": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 251, y: 190, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 29,
+                        LongDescription: "Make your way to the first eye switch puzzle room, either through the torch puzzle room or the upper lizalfos room. This pot is in the corner by the entrance."
+                    },
+                    "First Fire Puzzle Pot by Exit": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 270, y: 205, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 30,
+                        LongDescription: "Make your way to the first eye switch puzzle room, either through the torch puzzle room or the upper lizalfos room. This pot is in the corner by the exit."
+                    },
+                    "Skulltula in Top Lizalfos Room": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        MapInfo: { x: 295, y: 122, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 31,
+                        LongDescription: "After completing the torch puzzle, burn the web in the next room. Do the box pushing puzzle in the next room to get to the lizalfos room. Alternatively, you can blow up the rocks at the top of the main room and navigate around backwards to get here.<br/><br/>Bomb the rocks in the back of this room to get to the skulltula.",
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+                    },
+                    "2 Pots by Top Lizalfos Room Wall": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 341, y: 149, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 32,
+                        LongDescription: "These pots are the ones against the wall without any doors in the top lizalfos room."
+                    },
+                    "2 Pots by Top Lizalfos Room Exit": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 306, y: 162, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 33,
+                        LongDescription: "These pots are the ones by the exit in the top lizalfos room."
+                    },
+                    "2 Pots in Second Fire Puzzle": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 274, y: 168, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 34,
+                        LongDescription: "These pots are in the fire puzzle room after the top lizalfos room in one of the corners."
+                    },
+                    "Crate by Second Fire Puzzle Entrance": {
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 276, y: 160, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 35,
+                        LongDescription: "In the fire puzzle room after the top lizalfos room, this crate can be found on the ground by the ledge you normally enter from."
+                    },
+                    "Crate by Second Fire Puzzle Exit": {
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 252, y: 168, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 36,
+                        LongDescription: "In the fire puzzle room after the top lizalfos room, this crate can be found on the ground by the ledge you normally exit from."
+                    }
+                }
+            },
+            topOfTorchPuzzleRoom: {
+                DisplayGroup: { groupName: "Upper East Rooms", imageName: "Fairy Slingshot" },
+                Exits: {
+                    torchPuzzleRoom: {},
+                    upperLizalfosRoom: {},
+                    eastRoom: {
+                        RequiredItems: [Equipment.STRENGTH]
+                    }
+                },
+                ItemLocations: {
+                    "Chest on Top of Torch Puzzle Room": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 187, y: 176, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 37,
+                        LongDescription: "Either bomb the rocks at the top of the main room, or proceed through the upper lizalfos room to get to the top of the torch puzzle room. The chest is on one of the ledges you can get to by jumping there."
+                    },
+                    "Pot on Torch Puzzle Room Pillar": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 204, y: 174, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 38,
+                        LongDescription: "This pot is the one on the pillar next to the chest."
+                    },
+                    "Pot by Old Bomb Bag Chest": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 184, y: 146, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 39,
+                        LongDescription: "This pot is in the torch puzzle room near where the old bomb bag chest was.."
+                    }
+                }
+            },
             inDodongoHead: {
+                DisplayGroup: { groupName: "Inside Dondongo Head", imageName: "Goron's Ruby" },
                 Exits: {
                     bossRoom: {
                         CustomRequirement: function(age) {
@@ -917,7 +926,6 @@ let MQDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "2 Pots in Boss Door Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -988,8 +996,8 @@ let MQDungeons = {
                     },
                 }
             },
-
             bossRoom: {
+                DisplayGroup: { groupName: "Inside Dondongo Head", imageName: "Goron's Ruby" },
                 Exits: {
                     "Boss": {
                         OwExit: OwExits["Dodongo's Cavern"]["Boss"]
@@ -6992,7 +7000,7 @@ let MQDungeons = {
         },
         Regions: {
             main: {
-                DisplayGroup: { groupName: "Lobby/Hub", imageName: "4 Scrubs" },
+                DisplayGroup: { groupName: "Lobby/Hub", imageName: "5 Scrubs" },
                 Exits: {
                     forestTrialStart: {},
                     waterRoom: {},

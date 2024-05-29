@@ -1122,6 +1122,8 @@ let MapLocations = {
             hyruleCastle: {
                 DisplayGroup: { groupName: "Hyrule Castle", imageName: "Kokiri Sword" },
                 Exits: {
+                    main: {},
+
                     // Interiors & Grottos
                     "Hyrule Great Fairy Fountain": {
                         OwExit: OwExits["Castle"]["Hyrule Great Fairy Fountain"]
@@ -1217,6 +1219,7 @@ let MapLocations = {
             ganonsCastle: {
                 DisplayGroup: { groupName: "Ganon's Castle", imageName: "Adult Icon" },
                 Exits: {
+                    main: {},
                     "Ganon's Castle": {
                         OwExit: OwExits["Castle"]["Ganon's Castle"]
                     },
@@ -3644,18 +3647,6 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "This is the bean patch on the platform at the bottom of the ravine. It's not used to get any items."
                     },
-                    "Heart Piece in Waterfall": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 200, y: 111 },
-                        Age: Age.EITHER,
-                        LongDescription: "The Heart Piece is in a room in the waterfall to the left in the ravine. There's a ladder leading up to it."
-                    },
-                    "Cow on Bottom by Waterfall": {
-                        ItemGroup: ItemGroups.COW,
-                        MapInfo: { x: 183, y: 185 },
-                        Age: Age.CHILD,
-                        LongDescription: "Navigate to the platform on the bottom of the ravine to find this cow."
-                    },
                     "Skulltula in Soil": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 183, y: 191 },
@@ -3663,17 +3654,29 @@ let MapLocations = {
                         LongDescription: "Navigate to the platform on the bottom of the ravine. Plant bugs in the soft soil to spawn the skulltula.",
                         NeedsBottle: true
                     },
+                    "Crate by Cow on Bottom": {
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 189, y: 199 },
+                        Age: Age.CHILD,
+                        LongDescription: "Navigate to the plateform on the bottom of the ravine to find this crate.",
+                    },
+                    "Cow on Bottom by Waterfall": {
+                        ItemGroup: ItemGroups.COW,
+                        MapInfo: { x: 183, y: 185 },
+                        Age: Age.CHILD,
+                        LongDescription: "Navigate to the platform on the bottom of the ravine to find this cow."
+                    },
                     "Gossip Stone by Waterfall": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 185, y: 146 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is in the chasm near the waterfall. It's on the same platform as the cow and soft soil patch."
                     },
-                    "Crate by Cow on Bottom": {
-                        ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 189, y: 199 },
-                        Age: Age.CHILD,
-                        LongDescription: "Navigate to the plateform on the bottom of the ravine to find this crate.",
+                    "Heart Piece in Waterfall": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 200, y: 111 },
+                        Age: Age.EITHER,
+                        LongDescription: "The Heart Piece is in a room in the waterfall to the left in the ravine. There's a ladder leading up to it."
                     },
                     "Red Rupee by Upper Waterfall": {
                         ItemGroup: ItemGroups.WONDERITEM,
