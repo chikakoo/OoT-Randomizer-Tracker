@@ -492,7 +492,7 @@ let OwExits = {
             DefaultEntranceGroupName: "Super Cucco Minigame",
             MapInfo: { x: 230, y: 54 },
             Time: function() {
-                return Data.itemLocationObtained("Castle", "main", "Wake up Talon") 
+                return Data.itemLocationObtained("Castle", "hyruleCastle", "Wake up Talon") 
                     ? Time.DAY_CHILD
                     : Time.EITHER;
             },
@@ -1734,6 +1734,7 @@ let OwExits = {
             Map: "Hyrule Field",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
+            Order: 3,
             MapInfo: {x: 304, y: 114},
             Age: Age.EITHER,
             LongDescription: "This is the eastern exit."
@@ -1743,6 +1744,7 @@ let OwExits = {
             Map: "Gerudo Fortress",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
+            Order: 7,
             MapInfo: {x: 62, y: 51},
             Age: Age.EITHER,
             LongDescription: "This is the western exit."
@@ -1765,6 +1767,7 @@ let OwExits = {
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
             DefaultEntranceGroupName: "Octorok Grotto",
+            Order: 2,
             MapInfo: { x: 220, y: 182 },
             Age: Age.ADULT,
             LongDescription: "From the side closest to Hyrule Field, look to your left. The grotto is under the silver rock. Lift it up with your silver gauntlets to reveal it.",
@@ -1774,6 +1777,7 @@ let OwExits = {
             ExitRegion: "acrossBridge",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
+            Order: 2,
             MapInfo: { x: 141, y: 78 },
             Age: Age.EITHER,
             LongDescription: "This is the tent on the west side of the bridge as adult. Also, the loading zone is actually there as child."
@@ -1783,6 +1787,7 @@ let OwExits = {
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
             DefaultEntranceGroupName: "2 Scrubs",
+            Order: 3,
             MapInfo: { x: 140, y: 56 },
             Age: Age.ADULT,
             LongDescription: "Play the Song of Storms behind the tent to spawn this grotto.",
@@ -1912,18 +1917,6 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "The door in the middle of the fortress where you can walk to the bottom of the vines."
         },
-        "Vines Forward Door": {
-            ExitRegion: "middleFloor",
-            Map: "Thieves' Hideout",
-            Region: "jail3",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
-            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
-            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
-            MapInfo: { x: 165, y: 170 },
-            Age: Age.EITHER,
-            LongDescription: "This is the door straight ahead when you climb the vines on the middle floor of the fortress."
-        },
         "Vines Left Door": {
             ExitRegion: "middleFloor",
             Map: "Thieves' Hideout",
@@ -1935,6 +1928,18 @@ let OwExits = {
             MapInfo: { x: 168, y: 161 },
             Age: Age.EITHER,
             LongDescription: "This is the door to the left when you climb the vines on the middle floor of the fortress."
+        },
+        "Vines Forward Door": {
+            ExitRegion: "middleFloor",
+            Map: "Thieves' Hideout",
+            Region: "jail3",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            CustomRequirement: function(age) { return Settings.RandomizerSettings.shuffleThievesHideout; },
+            MapInfo: { x: 165, y: 170 },
+            Age: Age.EITHER,
+            LongDescription: "This is the door straight ahead when you climb the vines on the middle floor of the fortress."
         },
         "Upper Kitchen Door": {
             ExitRegion: "topOfKitchen",

@@ -3456,8 +3456,10 @@ let MapLocations = {
 	"Gerudo Valley": {
 		Abbreviation: "GVAL",
 		MapGroup: MapGroups.DESERT,
+        UsesDisplayGroups: true,
 		Regions: {
             main: {
+                DisplayGroup: { groupName: "Hyrule Field Side", imageName: "Kokiri Sword" },
                 Exits: {
                     acrossBridge: {
                         CustomRequirement: function(age) {
@@ -3496,6 +3498,7 @@ let MapLocations = {
                     "Skulltula by Tiny Waterfall": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
+                        Order: 1,
                         MapInfo: { x: 264, y: 56 },
                         Age: Age.CHILD,
                         LongDescription: "At night, look to the right of the first tiny bridge by the tiny waterfall. The skulltula is by the water source.",
@@ -3503,8 +3506,8 @@ let MapLocations = {
                     }
                 }
             },
-
             acrossBridge: {
+                DisplayGroup: { groupName: "Gerudo Fortress Side", imageName: "Gerudo Mask" },
                 Exits: {
                     main: {
                         CustomRequirement: function(age) {
@@ -3545,10 +3548,10 @@ let MapLocations = {
                         OwExit: OwExits["Gerudo Valley"]["Tent"]
                     }
                 },
-
                 ItemLocations: {
                     "Chest Behind Rocks": {
                         ItemGroup: ItemGroups.CHEST,
+                        Order: 6,
                         MapInfo: { x: 131, y: 120 },
                         Age: Age.ADULT,
                         LongDescription: "Across the bridge, there are some rocks to the right. Use your hammer on them to reveal the chest.",
@@ -3558,6 +3561,7 @@ let MapLocations = {
                     },
                     "Show Poacher's Saw to Carpenter": {
                         ItemGroup: ItemGroups.GIFT,
+                        Order: 1,
                         MapInfo: { x: 135, y: 91 },
                         MapImageName: "Poacher's Saw",
                         Age: Age.ADULT,
@@ -3575,6 +3579,7 @@ let MapLocations = {
                     "Skulltula on Pillar": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
+                        Order: 5,
                         MapInfo: { x: 144, y: 103 },
                         Age: Age.ADULT,
                         LongDescription: "At night, there's a skulltula high up on the pillar near the rocks to the left side of the area across the bridge.",
@@ -3583,6 +3588,7 @@ let MapLocations = {
                     "Skulltula Behind Tent": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
+                        Order: 4,
                         MapInfo: { x: 144, y: 46 },
                         Age: Age.ADULT,
                         LongDescription: "At night, there's a skulltula on the wall behind the tent.",
@@ -3590,8 +3596,8 @@ let MapLocations = {
                     }
                 }
             },
-
             chasmSilverRockLedge: {
+                DisplayGroup: { groupName: "Hyrule Field Side", imageName: "Kokiri Sword" },
                 ExcludeFromSpawnList: true,
                 Exits: {
                     chasm: {},
@@ -3603,13 +3609,12 @@ let MapLocations = {
                 },
                 ItemLocations: {}
             },
-
             chasmCrateLedge: {
+                DisplayGroup: { groupName: "Chasm Crate Platform", imageName: "Crate" },
                 ExcludeFromSpawnList: true,
                 Exits: {
                     chasm: {}
                 },
-
                 ItemLocations: {
                     "Heart Piece in Crate": {
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -3625,8 +3630,8 @@ let MapLocations = {
                     }
                 }
             },
-
             chasm: {
+                DisplayGroup: { groupName: "In Chasm", imageName: "Magic Bean" },
                 ExcludeFromSpawnList: true,
                 Exits: {
                     chasmDownstream: {}
@@ -3686,8 +3691,8 @@ let MapLocations = {
                     }
                 }
             },
-
             chasmDownstream: {
+                DisplayGroup: { groupName: "In Chasm", imageName: "Magic Bean" },
                 Exits: {
                     "Lake Hylia": {
                         OwExit: OwExits["Gerudo Valley"]["Lake Hylia"]
@@ -3847,11 +3852,11 @@ let MapLocations = {
                     "Middle Left Door": {
                         OwExit: OwExits["Gerudo Fortress"]["Middle Left Door"]
                     },
-                    "Vines Forward Door": {
-                        OwExit: OwExits["Gerudo Fortress"]["Vines Forward Door"]
-                    },
                     "Vines Left Door": {
                         OwExit: OwExits["Gerudo Fortress"]["Vines Left Door"]
+                    },
+                    "Vines Forward Door": {
+                        OwExit: OwExits["Gerudo Fortress"]["Vines Forward Door"]
                     }
                 },
                 ItemLocations: {}
