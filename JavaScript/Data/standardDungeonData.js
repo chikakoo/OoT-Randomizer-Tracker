@@ -758,6 +758,7 @@ let StandardDungeons = {
     "Jabu Jabu's Belly": {
         Abbreviation: "JABU",
         MapGroup: MapGroups.DUNGEONS,
+        UsesDisplayGroups: true,
         Floors: ["F2", "F1", "B1"],
         StartingFloorIndex: 1,
         UseChildAge: function() { 
@@ -766,8 +767,9 @@ let StandardDungeons = {
         },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Elevator Room", imageName: "Crate" },
                 Exits: {
-                    afterFirstRoom: {
+                    elevatorRoom: {
                         RequiredChoiceOfItems: [ItemSets.EXPLOSIVES, ItemSets.PROJECTILES, Items.BOOMERANG, Items.HOOKSHOT]
                     },
                     Exit: {
@@ -776,9 +778,11 @@ let StandardDungeons = {
                 },
                 ItemLocations: {}
             },
-
-            afterFirstRoom: {
+            elevatorRoom: {
+                DisplayGroup: { groupName: "Elevator Room", imageName: "Crate" },
                 Exits: {
+                    basement: {},
+                    tentacleRooms: {},
                     afterBigOcto: {
                         RequiredItems: [Items.BOOMERANG, ItemSets.SWORDS]
                     },
@@ -789,7 +793,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     //TODO: Empty Pots - remove this item, as the one below will replace it
                     "Small Crate in Elevator Room": {
@@ -810,14 +813,13 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 1.1,
                         LongDescription: "After the first room, use the elevator to cross to get to these small crates"
-                    },
-                    "Scrub Behind Octorok Water": {
-                        ItemGroup: ItemGroups.SCRUB,
-                        MapInfo: {x: 117, y: 229, floor: "B1" },
-                        Age: Age.EITHER,
-                        Order: 2,
-                        LongDescription: "In the room with the rising platform (the second room of the dungeon), fall down into the water. Dive down and swim into the adjacent room - it's straight ahead from the door. There's a scrub on the other side."
-                    },
+                    }
+                }
+            },
+            basement: {
+                DisplayGroup: { groupName: "Basement", imageName: "Skulltula Tokens" },
+                Exits: {},
+                ItemLocations: {
                     //TODO: Empty Pots - remove this item, as the one below will replace it
                     "4 Pots in Room by Vines": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -826,7 +828,7 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 32, y: 188, floor: "B1" },
                         Age: Age.EITHER,
-                        Order: 3,
+                        Order: 2,
                         LongDescription: "Fall down one of the holes to get to the main room on the bottom. Enter the door by the vines back up. Either stun the jello with your boomerang to cross, or use hover boots. The pots are on the other side - one is always a fairy.",
                         CustomRequirement: function(age) {
                             return Data.canMegaFlip(age) || ItemData.canUseAny(age, [Items.BOOMERANG, Equipment.HOVER_BOOTS]);
@@ -843,7 +845,7 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "5 Pots",
                         MapInfo: { x: 32, y: 188, floor: "B1" },
                         Age: Age.EITHER,
-                        Order: 3,
+                        Order: 2,
                         LongDescription: "Fall down one of the holes to get to the main room on the bottom. Enter the door by the vines back up. Either stun the jello with your boomerang to cross, or use hover boots. The pots are on the other side.",
                         CustomRequirement: function(age) {
                             return Data.canMegaFlip(age) || ItemData.canUseAny(age, [Items.BOOMERANG, Equipment.HOVER_BOOTS]);
@@ -853,7 +855,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 156, y: 44, floor: "B1" },
                         Age: Age.EITHER,
-                        Order: 4,
+                        Order: 3,
                         LongDescription: "In the room below the one with the holes, there are two skulltulas on the wall. You can reach them from the bottom part with the boomerang - you may have to aim a bit into the cliff, though. Otherwise, you can wait until you kill all the Parasitic Tentacles and drop down the corresponding hole to get an easier angle.",
                         RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
@@ -861,7 +863,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 176, y: 35, floor: "B1" },
                         Age: Age.EITHER,
-                        Order: 5,
+                        Order: 4,
                         LongDescription: "In the room below the one with the holes, there are two skulltulas on the wall. You can reach them from the bottom part with the boomerang - you may have to aim a bit into the cliff, though. Otherwise, you can wait until you kill all the Parasitic Tentacles and drop down the corresponding hole to get an easier angle.",
                         RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
@@ -869,7 +871,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 284, y: 153, floor: "B1" },
                         Age: Age.EITHER,
-                        Order: 6,
+                        Order: 5,
                         LongDescription: "In the room with the water and the switch (the first one you usually take Ruto into), there's a skulltula hanging out on the vines. Take it out, then raise the water to collect its token. Note that you can reach it with a jumpslash if you jump off the cliff then jumpslash when you're a bit closer.",
                     },
                     //TODO: Empty Pots - remove this item, as the one below will replace it
@@ -880,7 +882,7 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 258, y: 152, floor: "B1" },
                         Age: Age.EITHER,
-                        Order: 7,
+                        Order: 6,
                         LongDescription: "These pots are above the vines in the room with the water and the switch (the first one you usually take Ruto into). One of the pots there will always contain a fairy."
                     },
                     "3 Pots Above Vines": {
@@ -894,9 +896,22 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 258, y: 152, floor: "B1" },
                         Age: Age.EITHER,
-                        Order: 7,
+                        Order: 6,
                         LongDescription: "These pots are above the vines in the room with the water and the switch (the first one you usually take Ruto into)."
                     },
+                    "Scrub Behind Octorok Water": {
+                        ItemGroup: ItemGroups.SCRUB,
+                        MapInfo: {x: 117, y: 229, floor: "B1" },
+                        Age: Age.EITHER,
+                        Order: 7,
+                        LongDescription: "In the room with the rising platform (the second room of the dungeon), fall down into the water. Dive down and swim into the adjacent room - it's straight ahead from the door. There's a scrub on the other side."
+                    },
+                }
+            },
+            tentacleRooms: {
+                DisplayGroup: { groupName: "Tentacle Rooms", imageName: "Boomerang" },
+                Exits: {},
+                ItemLocations: {
                     "Boomerang Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 237, y: 58, floor: "F1" },
@@ -925,8 +940,8 @@ let StandardDungeons = {
                     }
                 }
             },
-
             afterBigOcto: {
+                DisplayGroup: { groupName: "Upper Rooms", imageName: "Ruto's Letter" },
                 Exits: {
                     roomBeforeBoss: {}
                 },
@@ -960,8 +975,8 @@ let StandardDungeons = {
                     }
                 }
             },
-
             roomBeforeBoss: {
+                DisplayGroup: { groupName: "Boss Area", imageName: "Zora's Sapphire" },
                 Exits: {
                     bossRoom: {
                         CustomRequirement: function(age) {
@@ -977,7 +992,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Skulltula Near Boss": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -988,8 +1002,8 @@ let StandardDungeons = {
                     }
                 }
             },
-
             bossRoom: {
+                DisplayGroup: { groupName: "Boss Area", imageName: "Zora's Sapphire" },
                 Exits: {
                     "Boss": {
                         OwExit: OwExits["Jabu Jabu's Belly"]["Boss"]
