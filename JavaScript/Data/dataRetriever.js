@@ -694,11 +694,15 @@ Data = {
     /**
      * Returns whether the item location is located in the OwExits object or not
      * This should be used anywhere possible for this in case this changes anymore!
-     * @param itemLocation 
+     * @param itemLocation - The item location
+     * @param requireActualOWExit - Whether we're checking for an actual OW exit (like Windmill, Dampe, or Thieve's Hideout)
      */
-    usesOwExits: function(itemLocation) {
-        return itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE || 
-			(itemLocation.ItemGroup === ItemGroups.ENTRANCE && !itemLocation.IsItemLocationGroup);
+    usesOwExits: function(itemLocation, requireActualOWExit) {
+        if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
+            return true;
+        }
+        return (itemLocation.ItemGroup === ItemGroups.ENTRANCE && !itemLocation.IsItemLocationGroup) &&
+            (!requireActualOWExit || itemLocation.LinkedExit);
     },
 
     /**

@@ -113,13 +113,13 @@ let ItemLocationDisplay = {
 			}
 
 			removeCssClass(textDiv, "item-entrance-known");
-			if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE && 
+			if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE &&
 				itemLocation.OwShuffleMap && 
 				itemLocation.OwShuffleRegion &&
 				itemLocation.OwShuffleExitName) {
 				addCssClass(textDiv, "item-entrance-known");
 			}
-			
+
 			let entranceGroup = Data.getEntranceGroup(itemLocation);
 			if (entranceGroup) {
 				let cannotGetEntranceItem = 
@@ -255,8 +255,6 @@ let ItemLocationDisplay = {
 	 * @param includeGroupIcon - whether to include the group icon; used for ordered locations
 	 */
 	_createItemLocations: function(itemGroup, itemGroupDiv, includeGroupIcon, itemGroupName) {
-		let allItemsObtained = itemGroup.every(loc => loc.playerHas);
-		
 		if (itemGroup.every(loc => loc.disabled || loc.Hide)) {
 			addCssClass(itemGroupDiv, "nodisp");
 			return;
@@ -275,11 +273,20 @@ let ItemLocationDisplay = {
 			
 			if (itemLocation.ItemGroup !== ItemGroups.OW_ENTRANCE) {
 				itemLocationTitleDiv.onclick = _this.toggleItemObtained.bind(_this, itemLocationDiv, itemLocation);
+
+				if (Data.isItemLocationAShop(itemLocation)) {
+					addCssClass(itemLocationDiv, "do-not-hide");
+				}
 			} else {
 				isOwEntrance = true;
 				itemLocationTitleDiv.onclick = function(event) {
 					event.stopPropagation();
 				}
+			}
+
+			// This covers normal OW exits, as well as interior ones
+			if (Data.usesOwExits(itemLocation, true)) {
+				addCssClass(itemLocationDiv, "do-not-hide");
 			}
 			
 			itemLocationDiv.id = itemLocation.Name;
@@ -290,10 +297,6 @@ let ItemLocationDisplay = {
 				MapUI.removeHighlightFromIcons();
 			}
 			itemGroupDiv.appendChild(itemLocationDiv);
-			
-			if (allItemsObtained) {
-				addCssClass(itemLocationDiv, "nodisp");
-			}
 
 			let itemLocationAgeIconDiv = dce("div", "item-location-age-icon");
 			itemLocationAgeIconDiv.id = `${itemLocation.Name}-age-icon`;
@@ -365,6 +368,13 @@ let ItemLocationDisplay = {
 			
 			_this.refreshNotes(itemLocation, inlineNotesDiv, moreInfoDiv);
 		});
+
+		// A group is "done" if all items are either obtained, an overworld entrance, or a shop
+		let allItemsObtained = itemGroup.every(
+			loc => loc.playerHas || Data.usesOwExits(loc, true) || Data.isItemLocationAShop(loc));
+		if (allItemsObtained) {
+			this._toggleItemLocations(itemGroupDiv);
+		}
 
 		// Size the OW elements so the dropdowns align
 		Object.values(owTextDivs).forEach(groupedDivs => {
@@ -530,12 +540,10 @@ let ItemLocationDisplay = {
 		if (event) { event.stopPropagation() };
 		this._setPlaceholderNotesText(itemLocation);
 		
-		let hideClass = false;
 		if (forceOn === undefined) {
-			hideClass = toggleCssClass(itemLocationDiv.lastChild, "nodisp");
+			toggleCssClass(itemLocationDiv.lastChild, "nodisp");
 		} else {
 			addOrRemoveCssClass(itemLocationDiv.lastChild, "nodisp", !forceOn);
-			hideClass = !forceOn;
 		}
 	},
 
@@ -546,9 +554,16 @@ let ItemLocationDisplay = {
 	_toggleItemLocations: function(itemGroupDiv, event) {
 		var children = itemGroupDiv.children;
 		for (let i = 1; i < children.length; i++) { // Ignore the first element - they aren't item locations
-			toggleCssClass(children[i], "nodisp");
+			var childElement = children[i];
+
+			// OW entrances and shops are not hidden, as the info they provide is useful
+			if (!containsCssClass(childElement, "do-not-hide")) {
+				toggleCssClass(children[i], "nodisp");
+			}
 		}
 
-		event.stopPropagation();
+		if (event) {
+			event.stopPropagation();
+		}
 	}
 };
