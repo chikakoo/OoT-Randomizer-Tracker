@@ -716,10 +716,11 @@ let OwExits = {
             LongDescription: "This is the entrance to the main market area."
         },
         "Ganon's Castle": {
-            ExitRegion: "main",
+            ExitRegion: "ganonsCastle",
             Map: "Ganon's Castle",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
+            Order: 3,
             MapInfo: { x: 171, y: 160, floor: "GAN" },
             Age: Age.ADULT,
             LongDescription: "This is the entrance to Ganon's Castle.",
@@ -775,32 +776,35 @@ let OwExits = {
 
         // Interiors
         "Hyrule Great Fairy Fountain": {
-            ExitRegion: "main",
+            ExitRegion: "hyruleCastle",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Fairy Fountain",
+            Order: 3,
             MapInfo: { x: 285, y: 231, floor: "HYR" },
             Age: Age.CHILD,
             LongDescription: "After climbing the vines and jumping off the building, follow the right wall until you reach a rock. Bomb it and enter the crawlspace.",
             RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Song of Storms Grotto": {
-            ExitRegion: "main",
+            ExitRegion: "hyruleCastle",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
             DefaultEntranceGroupName: "Bombable Wall Grotto",
             Age: Age.CHILD,
+            Order: 6,
             MapInfo: { x: 200, y: 92, floor: "HYR" },
             LongDescription: "There's a tree in the corner near the milk boxes at the castle. Play the Song of Storms there to open this grotto.",
             RequiredSongs: [Songs.SONG_OF_STORMS]
         },
         "Ganon Great Fairy Fountain": {
-            ExitRegion: "main",
+            ExitRegion: "ganonsCastle",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Fairy Fountain",
+            Order: 2,
             MapInfo: { x: 308, y: 161, floor: "GAN" },
             Age: Age.ADULT,
             LongDescription: "At the end of the main rock is a giant block you can pull up with Golden Gauntlets. Alternatively, you can use hover boots and a shield to clip past the block.",

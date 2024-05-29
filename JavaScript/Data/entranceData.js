@@ -761,7 +761,7 @@ InteriorGroups = {
 				description: "Only available during the day. This is the prize for completing the minigame.",
 				time: function() { return Time.DAY; },
 				canGet: function(age) {
-					return Data.itemLocationObtained("Castle", "main", "Wake up Talon");
+					return Data.itemLocationObtained("Castle", "hyruleCastle", "Wake up Talon");
 				},
 				isChildOnly: function() { return true; }
 			},

@@ -853,8 +853,8 @@ let MapLocations = {
                         LongDescription: "You can get this after getting Malon's gift and waking up Talon with the Chicken at Hyrule Castle. Take out your Ocarina to get the item.",
                         NeedsOcarina: true,
                         CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Castle", "main", "Gift from Malon") &&
-                                Data.itemLocationObtained("Castle", "main", "Wake up Talon");
+                            return Data.itemLocationObtained("Castle", "hyruleCastle", "Gift from Malon") &&
+                                Data.itemLocationObtained("Castle", "hyruleCastle", "Wake up Talon");
                         }
                     },
                     "4 Pots by Entrance": {
@@ -1102,47 +1102,69 @@ let MapLocations = {
 		MapGroup: MapGroups.FIELD_MARKET,
 		Floors: ["HYR", "GAN"],
 		StartingFloorIndex: 0,
+        UsesDisplayGroups: true,
 		Regions: {
             main: {
+                DisplayGroup: { groupName: "To Market", imageName: "Compass" },
                 Exits: {
+                    hyruleCastle: {
+                        Age: Age.CHILD
+                    },
+                    ganonsCastle: {
+                        Age: Age.ADULT
+                    },
                     "Market": {
                         OwExit: OwExits["Castle"]["Market"]
-                    },
-                    "Ganon's Castle": {
-                        OwExit: OwExits["Castle"]["Ganon's Castle"]
-                    },
-
+                    }
+                },
+                ItemLocations: {}
+            },
+            hyruleCastle: {
+                DisplayGroup: { groupName: "Hyrule Castle", imageName: "Kokiri Sword" },
+                Exits: {
                     // Interiors & Grottos
                     "Hyrule Great Fairy Fountain": {
                         OwExit: OwExits["Castle"]["Hyrule Great Fairy Fountain"]
                     },
                     "Song of Storms Grotto": {
                         OwExit: OwExits["Castle"]["Song of Storms Grotto"]
-                    },
-                    "Ganon Great Fairy Fountain": {
-                        OwExit: OwExits["Castle"]["Ganon Great Fairy Fountain"]
                     }
                 },
-    
                 ItemLocations: {
-                    //-- Hyrule castle
                     "Gift from Malon": {
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 123, y: 248, floor: "HYR" },
+                        Order: 1,
                         Age: Age.CHILD,
                         LongDescription: "Malon is waiting by the vines to the right. If she isn't there, leave the map and come back. Talk to her to receive an item."
                     },
                     "Skulltula in Tree": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 97, y: 245, floor: "HYR" },
+                        Order: 2,
                         Age: Age.CHILD,
                         LongDescription: "Roll into the first tree to set this skulltula free."
+                    },
+                    "Gossip Stone by Vines": {
+                        ItemGroup: ItemGroups.GOSSIP_STONE,
+                        MapInfo: { x: 137, y: 269, floor: "HYR" },
+                        Order: 2.1,
+                        Age: Age.CHILD,
+                        LongDescription: "This stone near the top of the vines."
+                    },
+                    "Gossip Stone by Climbable Stones": {
+                        ItemGroup: ItemGroups.GOSSIP_STONE,
+                        MapInfo: { x: 72, y: 99, floor: "HYR" },
+                        Order: 2.2,
+                        Age: Age.CHILD,
+                        LongDescription: "This stone near the climbable stones near the castle moat."
                     },
                     "Shoot 2 Torches by Drawbridge": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Slingshot Wonderitems",
+                        Order: 4,
                         MapInfo: { x: 122, y: 41, floor: "HYR" },
                         Age: Age.CHILD,
                         LongDescription: "Shoot the two torches on either side of the drawbridge with your slingshot on the castle wall to get the two wonderitems.",
@@ -1153,6 +1175,7 @@ let MapLocations = {
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "7 Green Rupee Wonderitems",
+                        Order: 5,
                         MapInfo: { x: 122, y: 78, floor: "HYR" },
                         Age: Age.CHILD,
                         LongDescription: "Swim downstream in the moat by the drawbridge to get these 7 items. Start on the leftmost side, and stay in the middle all the way down.",
@@ -1162,6 +1185,7 @@ let MapLocations = {
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Green Rupee Wonderitems",
+                        Order: 7,
                         MapInfo: { x: 182, y: 52, floor: "HYR" },
                         Age: Age.CHILD,
                         LongDescription: "Swim in the water by the milk crates to get these three items.",
@@ -1170,6 +1194,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapImageName: "Weird Egg Chicken",
                         Age: Age.CHILD,
+                        Order: 8,
                         MapInfo: { x: 193, y: 38, floor: "HYR" },
                         LongDescription: "Wait for the Weird Egg to hatch, then wake up Talon. This unlocks a few things in Lon Lon Ranch.",
                         RequiredItems: [ChildTradeItems.WEIRD_EGG]
@@ -1181,27 +1206,30 @@ let MapLocations = {
                         DefaultEntranceGroupName: "Castle Courtyard Items",
                         MapInfo: { x: 167, y: 33, floor: "HYR" },
                         Age: Age.CHILD,
+                        Order: 9,
                         LongDescription: "After waking up Talon with the Chicken, push the crates down so that you can jump to the crawlspace. Sneak past the guards to meet Zelda to get her letter. After that, try to leave the area to receive this item from Impa.<br/><br/>To megaflip, climb up the right side of the left box, ess right 1 (you should be able to walk to the other box now). Chu flip as normal, or place a bomb a little after the box transition and manually back up to get the distance for the roll. Let go of everything when the flip happens so you don't walk off!",
                         CustomRequirement: function(age) {
                             return ChildTradeItems.WEIRD_EGG.playerHas || Data.canMegaFlip(age);
                         }
-                    },
-                    "Gossip Stone by Vines": {
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        MapInfo: { x: 137, y: 269, floor: "HYR" },
-                        Age: Age.CHILD,
-                        LongDescription: "This stone near the top of the vines."
-                    },
-                    "Gossip Stone by Climbable Stones": {
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        MapInfo: { x: 72, y: 99, floor: "HYR" },
-                        Age: Age.CHILD,
-                        LongDescription: "This stone near the climbable stones near the castle moat."
+                    }
+                }
+            },
+            ganonsCastle: {
+                DisplayGroup: { groupName: "Ganon's Castle", imageName: "Adult Icon" },
+                Exits: {
+                    "Ganon's Castle": {
+                        OwExit: OwExits["Castle"]["Ganon's Castle"]
                     },
 
-                    //-- Ganon's castle
+                    // Interiors & Grottos
+                    "Ganon Great Fairy Fountain": {
+                        OwExit: OwExits["Castle"]["Ganon Great Fairy Fountain"]
+                    }
+                },
+                ItemLocations: {
                     "Skulltula on Broken Arch": {
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Order: 1,
                         MapInfo: { x: 258, y: 171, floor: "GAN" },
                         Age: Age.ADULT,
                         LongDescription: "A little bit down the path is a broken archway. The skulltula is found on the opposite side of it.<br/><br/>If you don't have hookshot, walk as far as you can up the slope. Hold Z-target and press B to vertical slash the skulltula. Now still as far up as you can be, target the skulltula and press A to jumpslash and retrieve the item.",
