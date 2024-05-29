@@ -241,22 +241,13 @@ let MapLocations = {
     "Lost Woods": {
 		Abbreviation: "LOST",
         MapGroup: MapGroups.FOREST,
+        UsesDisplayGroups: true,
         Regions: {
-            firstHalf: {
+            skullKidAndBridge: {
+                DisplayGroup: { groupName: "Skull Kid & Bridge", imageName: "Skull Mask" },
+                ExcludeFromSpawnList: true,
                 Exits: {
-                    secondHalf: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return true; }
-                            return Settings.GlitchesToAllow.midoSkip || Data.canPlaySong(Songs.SARIAS_SONG);
-                        }
-                    },
-                    kokiriForestWarp: {},
-                    "Goron City": {
-                        OwExit: OwExits["Lost Woods"]["Goron City"]
-                    },
-                    "Zora's River": {
-                        OwExit: OwExits["Lost Woods"]["Zora's River"]
-                    },
+                    nearGoronCity: {},
                     "To Lost Woods Bridge": {
                         OwExit: OwExits["Lost Woods"]["To Lost Woods Bridge"]
                     },
@@ -264,31 +255,9 @@ let MapLocations = {
                         CustomRequirement: function() {
                             return false; // This one is the one-way
                         }
-                    },
-
-                    // Interiors & Grottos
-                    "Grotto by Goron City": {
-                        OwExit: OwExits["Lost Woods"]["Grotto by Goron City"]
                     }
                 },
-    
                 ItemLocations: {
-                    "Target Shooting Prize": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 219, y: 172 },
-                        Age: Age.CHILD,
-                        LongDescription: "From the Kokiri Forest entrance, go right one screen. Shoot the target in the center three times in a row with your Slingshot to get this prize.",
-                        RequiredItems: [Items.FAIRY_SLINGSHOT]
-                    },
-                    "3 Wonderitems in Grass by Ocarina Game": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Green Rupee Wonderitems",
-                        MapInfo: { x: 251, y: 195 },
-                        Age: Age.CHILD,
-                        LongDescription: "Walk around the grass by the stumps where you play the ocarina memory game to get these three wonderitems."
-                    },
                     "Skull Kid's Gift": {
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 96, y: 172 },
@@ -296,6 +265,15 @@ let MapLocations = {
                         LongDescription: "From the Kokiri Forest entrance, go left one screen. Stand on the lower stump and play Saria's Song to get this gift",
                         RequiredSongs: [Songs.SARIAS_SONG],
                         DifficultOcarinaItems: true
+                    },
+                    "Sell Skull Mask": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapInfo: { x: 88, y: 172 },
+                        MapImageName: "Skull Mask",
+                        Age: Age.CHILD,
+                        RequiredItems: [ChildTradeItems.SKULL_MASK],
+                        RequiredSongs: [Songs.SARIAS_SONG],
+                        LongDescription: "First, play Saria's song to the Skull kid. Next, Talk to him while wearing the Skull Mask to sell it to him - this unlocks the Spooky Mask. Recommended to do this AFTER you get the forest stage item.",
                     },
                     "Show Cojiro to Grog": {
                         ItemGroup: ItemGroups.GIFT,
@@ -313,16 +291,12 @@ let MapLocations = {
                         LongDescription: "Fado is the girl by the strump where the skill kid is as Child. Show her the Odd Potion to get an item.",
                         RequiredItems: [AdultTradeItems.ODD_POTION]
                     },
-                    "Ocarina Memory Game": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 240, y: 186 },
+                    "*Plant Bean by Bridge": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        IsBean: true,
+                        MapInfo: { x: 84, y: 222 },
                         Age: Age.CHILD,
-                        LongDescription: "From the Kokiri Forest entrance, go right one screen. Go down the cliff and stand on the lower stump. Take out your Ocarina and win the Simon game to get this prize.",
-                        NeedsOcarina: true,
-                        DifficultOcarinaItems: true,
-                        CustomRequirement: function(age) {
-                            return ItemData.getNumberOfOcarinaButtons() === Object.keys(OcarinaButtons).length;
-                        }
+                        LongDescription: "This is the bean spot by the bridge connecting Kokiri Forest and Hyrule Field. It can be used to get on the bridge."
                     },
                     "Skulltula in Soil by Bridge": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -338,27 +312,67 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "From the Kokiri Forest entrance, go left and follow the path to its end. You'll find the scrub at the end."
                     },
-                    "Sell Skull Mask": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        MapInfo: { x: 88, y: 172 },
-                        MapImageName: "Skull Mask",
-                        Age: Age.CHILD,
-                        RequiredItems: [ChildTradeItems.SKULL_MASK],
-                        RequiredSongs: [Songs.SARIAS_SONG],
-                        LongDescription: "First, play Saria's song to the Skull kid. Next, Talk to him while wearing the Skull Mask to sell it to him - this unlocks the Spooky Mask. Recommended to do this AFTER you get the forest stage item.",
-                    },
                     "Gossip Stone by Bridge Scrub": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 80, y: 281 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is by the business scrub by the bridge.",
+                    }
+                }
+            },
+            nearGoronCity: {
+                DisplayGroup: { groupName: "Near Goron City", imageName: "Goron Mask" },
+                Exits: {
+                    skullKidAndBridge: {},
+                    secondHalf: {
+                        CustomRequirement: function(age) {
+                            if (age === Age.CHILD) { return true; }
+                            return Settings.GlitchesToAllow.midoSkip || Data.canPlaySong(Songs.SARIAS_SONG);
+                        }
                     },
-                    "*Plant Bean by Bridge": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        IsBean: true,
-                        MapInfo: { x: 84, y: 222 },
+                    kokiriForestWarp: {},
+                    "Goron City": {
+                        OwExit: OwExits["Lost Woods"]["Goron City"]
+                    },
+                    "Zora's River": {
+                        OwExit: OwExits["Lost Woods"]["Zora's River"]
+                    },
+
+                    // Interiors & Grottos
+                    "Grotto by Goron City": {
+                        OwExit: OwExits["Lost Woods"]["Grotto by Goron City"]
+                    }
+                },
+                ItemLocations: {
+                    "Target Shooting Prize": {
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 219, y: 172 },
+                        Order: 1,
                         Age: Age.CHILD,
-                        LongDescription: "This is the bean spot by the bridge connecting Kokiri Forest and Hyrule Field. It can be used to get on the bridge."
+                        LongDescription: "From the Kokiri Forest entrance, go right one screen. Shoot the target in the center three times in a row with your Slingshot to get this prize.",
+                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                    },
+                    "3 Wonderitems in Grass by Ocarina Game": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Green Rupee Wonderitems",
+                        MapInfo: { x: 251, y: 195 },
+                        Order: 2,
+                        Age: Age.CHILD,
+                        LongDescription: "Walk around the grass by the stumps where you play the ocarina memory game to get these three wonderitems."
+                    },
+                    "Ocarina Memory Game": {
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 240, y: 186 },
+                        Order: 3,
+                        Age: Age.CHILD,
+                        LongDescription: "From the Kokiri Forest entrance, go right one screen. Go down the cliff and stand on the lower stump. Take out your Ocarina and win the Simon game to get this prize.",
+                        NeedsOcarina: true,
+                        DifficultOcarinaItems: true,
+                        CustomRequirement: function(age) {
+                            return ItemData.getNumberOfOcarinaButtons() === Object.keys(OcarinaButtons).length;
+                        }
                     },
                     "7 Green Rupees in Water": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -367,14 +381,16 @@ let MapLocations = {
                         DefaultEntranceGroupName: "7 Green Rupees",
                         MapImageName: "7 Green Rupees",
                         MapInfo: { x: 273, y: 127 },
+                        Order: 5,
                         Age: Age.CHILD,
                         RequiredChoiceOfItems: [Items.BOOMERANG, Equipment.SCALE],
                         LongDescription: "In the water leading to Zora's River - dive or use the boomerang to get these items.",
                     },
-                    "Close Green Rupee in Water": { //TODO: need to check if this is the only one you can get in this way
+                    "Close Green Rupee in Water": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
                         MapInfo: { x: 277, y: 127 },
+                        Order: 6,
                         Age: Age.CHILD,
                         LongDescription: "In the water leading to Zora's River - dive or use the boomerang to get it. It is automatically received when entering from the water.",
                         IsPostWalkCheck: true,
@@ -391,24 +407,13 @@ let MapLocations = {
                             let otherSideExit = OwExits[toZorasRiver.OwShuffleMap][toZorasRiver.OwShuffleExitName];
                             return Data.getItemObtainability(otherSideExit, age);
                         }
-                    },
-                    "Blue Rupee Under Rock": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapImageName: "Blue Rupee",
-                        MapInfo: { x: 265, y: 28 },
-                        Age: Age.EITHER,
-                        LongDescription: "This item is under the rock one room from the Sacred Forest Meadow.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) ||
-                                (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
-                        }
                     }
                 }
             },
-
             secondHalf: {
+                DisplayGroup: { groupName: "After Mido", imageName: "Saria's Song" },
                 Exits: {
-                    firstHalf: {
+                    nearGoronCity: {
                         CustomRequirement: function(age) {
                             return age === Age.CHILD || 
                                 Data.canPlaySong(Songs.SARIAS_SONG) ||
@@ -424,23 +429,32 @@ let MapLocations = {
                     "Forest Stage Grotto": {
                         OwExit: OwExits["Lost Woods"]["Forest Stage Grotto"]
                     },
-                    "Grotto Near the Sacred Forest Meadow": {
-                        OwExit: OwExits["Lost Woods"]["Grotto Near the Sacred Forest Meadow"]
+                    "Grotto Near Meadow": {
+                        OwExit: OwExits["Lost Woods"]["Grotto Near Meadow"]
                     }
                 },
-
                 ItemLocations: {
                     "Skulltula in Soil by Forest Stage": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 187, y: 66 },
+                        Order: 1,
                         Age: Age.CHILD,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. Plant bugs in the soil in this room.",
                         NeedsBottle: true
+                    },
+                    "*Plant Bean by Forest Stage": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        IsBean: true,
+                        MapInfo: { x: 187, y: 66 },
+                        Order: 2,
+                        Age: Age.CHILD,
+                        LongDescription: "This is the bean spot near the entrance to the Forest Stage. It's used to get a skulltula above as an adult."
                     },
                     "Skulltula by Forest Stage": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 188, y: 56 },
+                        Order: 3,
                         Age: Age.ADULT,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. Plant a magic bean here as a child. Come back as an adult at night and ride the plant up.",
                         CustomRequirement: function(age) {
@@ -454,37 +468,45 @@ let MapLocations = {
                     "Right Scrub by Forest Stage": {
                         ItemGroup: ItemGroups.SCRUB,
                         MapInfo: { x: 194, y: 72 },
+                        Order: 4,
                         Age: Age.CHILD,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. This is the right scrub in this room."
                     },
                     "Left Scrub by Forest Stage": {
                         ItemGroup: ItemGroups.SCRUB,
                         MapInfo: { x: 184, y: 101 },
+                        Order: 5,
                         Age: Age.CHILD,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. This is the left scrub in this room."
                     },
-                    "Front Scrub in Grotto Near the Sacred Forest Meadow": {
+                    "Blue Rupee Under Rock": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Blue Rupee",
+                        MapInfo: { x: 265, y: 28 },
+                        Order: 7,
+                        Age: Age.EITHER,
+                        LongDescription: "This item is under the rock one room from the Sacred Forest Meadow.",
+                        CustomRequirement: function(age) {
+                            return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) ||
+                                (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
+                        }
+                    },
+                    "Front Scrub in Grotto Near Meadow": {
                         ItemGroup: ItemGroups.SCRUB,
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances && !Settings.RandomizerSettings.scrubSanity; },
                         MapInfo: { x: 202, y: 27 },
+                        Order: 9,
                         ScrubSanityNotRequired: true, // Deku nut upgrade
                         Age: Age.EITHER,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, straight, left. Remove the rock in this room. This is the front scrub.",
                         RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
-                    },
-                    "*Plant Bean by Forest Stage": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        IsBean: true,
-                        MapInfo: { x: 187, y: 66 },
-                        Age: Age.CHILD,
-                        LongDescription: "This is the bean spot near the entrance to the Forest Stage. It's used to get a skulltula above as an adult."
                     }
                 }
             },
-
             kokiriForestWarp: {
+                DisplayGroup: { groupName: "To Kokiri Forest", imageName: "Compass" },
                 Exits: {
-                    firstHalf: {
+                    nearGoronCity: {
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return true; }
 

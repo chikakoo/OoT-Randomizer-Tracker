@@ -21,7 +21,7 @@ let OwExits = {
         "Lost Woods Top": {
             ExitRegion: "main",
             Map: "Lost Woods",
-            Region: "firstHalf",
+            Region: "nearGoronCity",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 133, y: 13 },
             Age: Age.EITHER,
@@ -121,20 +121,22 @@ let OwExits = {
             LongDescription: "This is ANY of the entrances leading back to Kokiri."
         },
         "Goron City": {
-            ExitRegion: "firstHalf",
+            ExitRegion: "nearGoronCity",
             Map: "Goron City",
             Region: "lostWoods",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 209, y: 111 },
+            Order: 7,
             Age: Age.EITHER,
             LongDescription: "This is the exit to Goron City."
         },
         "Zora's River": {
-            ExitRegion: "firstHalf",
+            ExitRegion: "nearGoronCity",
             Map: "Zora's River",
             Region: "upstream",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 284, y: 126 },
+            Order: 8,
             Age: Age.EITHER,
             CustomRequirement: function(age) {
                 let canGetToRiver = Equipment.SCALE.playerHas || 
@@ -145,7 +147,7 @@ let OwExits = {
             LongDescription: "This is the exit to Zora's River that you get to by diving."
         },
         "To Lost Woods Bridge": {
-            ExitRegion: "firstHalf",
+            ExitRegion: "skullKidAndBridge",
             Map: "Lost Woods Bridge",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
@@ -169,7 +171,7 @@ let OwExits = {
 
                 return canMegaFlip ||
                     ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT]) ||
-                    Data.itemLocationObtained("Lost Woods", "firstHalf", "*Plant Bean by Bridge");
+                    Data.itemLocationObtained("Lost Woods", "skullKidAndBridge", "*Plant Bean by Bridge");
             },
             OwShuffleMap: "Lost Woods Bridge",
             OwShuffleRegion: "main",
@@ -184,17 +186,19 @@ let OwExits = {
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 211, y: 21 },
+            Order: 10,
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Sacred Forest Meadow."
         },
 
         // Interiors
         "Grotto by Goron City": {
-            ExitRegion: "firstHalf",
+            ExitRegion: "nearGoronCity",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
             DefaultEntranceGroupName: "Generic Grotto",
             MapInfo: { x: 218, y: 118 },
+            Order: 4,
             Age: Age.EITHER,
             LongDescription: "From the Kokiri Forest entrance, go right and then left. Remove the rock on this screen to reveal this grotto.",
             RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
@@ -205,15 +209,17 @@ let OwExits = {
             IsGrotto: true,
             DefaultEntranceGroupName: "Forest Stage",
             MapInfo: { x: 160, y: 86 },
+            Order: 6,
             Age: Age.EITHER,
             LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. In the back of this room, walk around until you fall into this grotto."
         },
-        "Grotto Near the Sacred Forest Meadow": {
+        "Grotto Near Meadow": {
             ExitRegion: "secondHalf",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
             DefaultEntranceGroupName: "2 Scrubs",
             MapInfo: { x: 202, y: 31 },
+            Order: 8,
             Age: Age.EITHER,
             LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, straight, left. Remove the rock in this room to reveal the grotto.",
             RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
@@ -242,13 +248,13 @@ let OwExits = {
         "Bridge to Lost Woods": {
             ExitRegion: "main",
             Map: "Lost Woods",
-            Region: "firstHalf",
+            Region: "skullKidAndBridge",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 148, y: 74 },
             ReadOnly: true,
             ExcludeFromDropdown: true,
             OwShuffleMap: "Lost Woods",
-            OwShuffleRegion: "firstHalf",
+            OwShuffleRegion: "skullKidAndBridge",
             OwShuffleExitName: "To Kokiri Forest",
             Age: Age.EITHER,
             UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip && !Settings.GlitchesToAllow.lwBridgePressureJump; },
@@ -1386,7 +1392,7 @@ let OwExits = {
         "Lost Woods": {
             ExitRegion: "lostWoods",
             Map: "Lost Woods",
-            Region: "firstHalf",
+            Region: "nearGoronCity",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 211, y: 179 },
             Age: Age.EITHER,
@@ -1441,7 +1447,7 @@ let OwExits = {
         "Lost Woods": {
             ExitRegion: "upstream",
             Map: "Lost Woods",
-            Region: "firstHalf",
+            Region: "nearGoronCity",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 330, y: 119},
             Age: Age.EITHER,
@@ -2785,7 +2791,7 @@ let OwExits = {
         "Exit": {
             ExitRegion: "main",
             Map: "Castle",
-            Region: "main",
+            Region: "ganonsCastle",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: -100, y: -100, floor: "F1" },
             ReadOnly: true,

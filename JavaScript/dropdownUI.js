@@ -99,6 +99,7 @@ let DropdownUI = {
         let entranceOptions = {
             isOwl: itemLocation.IsOwl,
             isOneWay: itemLocation.OneWayEntrance,
+            isDungeonExit: itemLocation.IsDungeonExit,
             getInteriors: itemLocation.IsInteriorExit,
             getGrottos: itemLocation.IsGrottoExit
         };
@@ -454,6 +455,15 @@ let DropdownUI = {
             let hiddenExit = entrance.Hide && !(options.isOneWay && entrance.ShowForOneWay); // One-way dropdowns need some hidden entrances
             if (entrance.ExcludeFromDropdown || hiddenExit || entrance.ItemGroup !== itemGroupType) {
                 return;
+            }
+
+            // Dungeon exits ONLY care about dungeon entrances, as that's currently the only way into them
+            // TODO: revisit this when decoupled exits are a thing
+            if (options.isDungeonExit) {
+                if (itemGroupType === ItemGroups.OW_ENTRANCE && entrance.IsDungeonEntrance) {
+                    entrances.push(entranceName);
+                    return;
+                }
             }
 
             // Don't include dungeons or owls in any OW entrance
