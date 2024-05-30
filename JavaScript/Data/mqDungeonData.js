@@ -2140,11 +2140,13 @@ let MQDungeons = {
         Abbreviation: "FIRE",
         MapGroup: MapGroups.DUNGEONS,
         IsMasterQuest: true,
+        UsesDisplayGroups: true,
         Floors: ["F5", "F4", "F3", "F2", "F1"],
         StartingFloorIndex: 4,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Lobby & Boss Key Path", imageName: "Boss Key" },
                 Exits: {
                     roomBeforeBoss: {
                         Age: Age.EITHER,
@@ -2156,19 +2158,16 @@ let MQDungeons = {
                             return Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
                         }
                     },
-
                     lockedAreaByEntrance: {
                         LockedDoor: "Bottom Locked Door in Lobby",
                         Map: "Fire Temple"
                     },
-
                     cellByEntrance: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             return Data.canWeirdShot(age);
                         }
                     },
-
                     bigLavaRoom: {
                         Age: Age.EITHER,
                         RequiredItems: [Items.MEGATON_HAMMER],
@@ -2179,12 +2178,10 @@ let MQDungeons = {
                             return Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
                         }
                     },
-
                     Exit: {
                         OwExit: OwExits["Fire Temple"]["Exit"]
                     }
                 },
-
                 ItemLocations: {
                     "2 Pots by Entrance": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2217,8 +2214,8 @@ let MQDungeons = {
                             return { min: 1, max: Keys.FIRE_TEMPLE.mqTotalKeys() };
                         },
                     },
-
                     "Locked Door in Big Lava Room": {
+                        DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["bigLavaRoom"],
                         MapInfo: { x: 256, y: 202, floor: "F1" },
@@ -2234,8 +2231,8 @@ let MQDungeons = {
                             return { min: 1, max: 2 };
                         },
                     },
-
                     "Locked Door Above Boulder Maze": {
+                        DisplayGroup: { groupName: "Upper Boulder Maze", imageName: "Goron Mask" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["boulderMazeTop"],
                         MapInfo: { x: 277, y: 121, floor: "F3" },
@@ -2246,10 +2243,10 @@ let MQDungeons = {
                             return { min: 2, max: 3 };
                         },
                     },
-
                     "Locked Door After Flare Dancer": {
+                        DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula Tokens" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["fireWallMaze"],
+                        Regions: ["afterFinalFlareDancer"],
                         MapInfo: { x: 39, y: 179, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 41,
@@ -2258,8 +2255,8 @@ let MQDungeons = {
                             return { min: 3, max: 4 };
                         },
                     },
-
                     "Locked Door Under Hammer Floor": {
+                        DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula Tokens" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["roomAfterTopOfTemple"],
                         MapInfo: { x: 71, y: 136, floor: "F4" },
@@ -2272,8 +2269,73 @@ let MQDungeons = {
                     }
                 }
             },
-
+            lockedAreaByEntrance: {
+                DisplayGroup: { groupName: "Lobby & Hammer Path", imageName: "Megaton Hammer" },
+                Exits: {
+                    cellByEntrance: {
+                        RequiredItems: [Items.MEGATON_HAMMER]
+                    }
+                },
+                ItemLocations: {
+                    //TODO: Empty Pots - this will be replaced by the below item
+                    "4 Pots by Iron Knuckle": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Pots",
+                        MapInfo: { x: 107, y: 38, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 8,
+                        LongDescription: "Enter the locked door to the right when you first enter the temple. Defeat the stalfos and proceed. The pots are in the next room - the four you want are the two in the very back, and the two by the door. The rest contain fairies.",
+                        RequiredItems: [ItemSets.DAMAGING_ITEMS]
+                    },
+                    "8 Pots by Iron Knuckle": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "8 Pots",
+                        MapInfo: { x: 107, y: 38, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 8,
+                        LongDescription: "Enter the locked door to the right when you first enter the temple. Defeat the stalfos and proceed. The pots scattered around the next room.",
+                        RequiredItems: [ItemSets.DAMAGING_ITEMS]
+                    },
+                    "Chest After First Flare Dancer": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 57, y: 60, floor: "F1" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
+                        Order: 9,
+                        RequiredChoiceOfAdultItems: [Items.HOOKSHOT, Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU],
+                        RequiredChoiceOfChildItems: [Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU],
+                        LongDescription: "Enter the locked door to the right when you first enter the temple. Navigate around the rooms, defeating the enemies to progress (including an Iron Knuckle). Defeat the Flare Dancer to spawn the chest.",
+                        CustomRequirement: function(age) {
+                            if (age === Age.ADULT) { return true; }
+                            return Data.canGroundJumpWithBomb(age);
+                        }
+                    }
+                }
+            },
+            cellByEntrance: {
+                DisplayGroup: { groupName: "Lobby & Boss Key Path", imageName: "Boss Key" },
+                Exits: {},
+                ItemLocations: {
+                    "Chest by Goron After Flare Dancer": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 61, y: 110, floor: "F1" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        Order: 10,
+                        LongDescription: "After the Flare Dancer, enter the next room. Hit the rusted switch with the hammer to gain access to this chest."
+                    }
+                }
+            },
             roomBeforeBoss: {
+                DisplayGroup: { groupName: "Boss Area", imageName: "Fire Medallion" },
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.fireNoGoronTunic ||
                         (!Settings.GlitchesToAllow.bombSuperslide && !Settings.GlitchesToAllow.fireWallSkip);
@@ -2341,73 +2403,8 @@ let MQDungeons = {
                     }
                 }
             },
-
-            lockedAreaByEntrance: {
-                Exits: {
-                    cellByEntrance: {
-                        RequiredItems: [Items.MEGATON_HAMMER]
-                    }
-                },
-                ItemLocations: {
-                    //TODO: Empty Pots - this will be replaced by the below item
-                    "4 Pots by Iron Knuckle": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "4 Pots",
-                        MapInfo: { x: 107, y: 38, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 8,
-                        LongDescription: "Enter the locked door to the right when you first enter the temple. Defeat the stalfos and proceed. The pots are in the next room - the four you want are the two in the very back, and the two by the door. The rest contain fairies.",
-                        RequiredItems: [ItemSets.DAMAGING_ITEMS]
-                    },
-                    "8 Pots by Iron Knuckle": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "8 Pots",
-                        MapInfo: { x: 107, y: 38, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 8,
-                        LongDescription: "Enter the locked door to the right when you first enter the temple. Defeat the stalfos and proceed. The pots scattered around the next room.",
-                        RequiredItems: [ItemSets.DAMAGING_ITEMS]
-                    },
-                    "Chest After First Flare Dancer": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 57, y: 60, floor: "F1" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
-                        Order: 9,
-                        RequiredChoiceOfAdultItems: [Items.HOOKSHOT, Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU],
-                        RequiredChoiceOfChildItems: [Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU],
-                        LongDescription: "Enter the locked door to the right when you first enter the temple. Navigate around the rooms, defeating the enemies to progress (including an Iron Knuckle). Defeat the Flare Dancer to spawn the chest.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; }
-                            return Data.canGroundJumpWithBomb(age);
-                        }
-                    }
-                }
-            },
-
-            cellByEntrance: {
-                Exits: {},
-                ItemLocations: {
-                    "Chest by Goron After Flare Dancer": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 61, y: 110, floor: "F1" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
-                        Order: 10,
-                        LongDescription: "After the Flare Dancer, enter the next room. Hit the rusted switch with the hammer to gain access to this chest."
-                    }
-                }
-            },
-
             bigLavaRoom: {
+                DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.fireNoGoronTunic ||
                         (!Settings.GlitchesToAllow.bombSuperslide && !Settings.GlitchesToAllow.fireWallSkip) ||
@@ -2477,8 +2474,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             bossKeyRoom: {
+                DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                 Exits: {},
                 ItemLocations: {
                     "Boss Key Chest": {
@@ -2522,8 +2519,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             risingBlockRoom: {
+                DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.fireNoGoronTunic ||
                         !Settings.GlitchesToAllow.equipSwap ||
@@ -2566,14 +2563,13 @@ let MQDungeons = {
                     }
                 }
             },
-
             boulderMaze: {
+                DisplayGroup: { groupName: "Lower Boulder Maze", imageName: "Bomb" },
                 Exits: {
                     boulderMazeTop: {
                         RequiredItems: [Items.HOOKSHOT, ItemSets.EXPLOSIVES]
                     }
                 },
-
                 ItemLocations: {
                     "Wonderitem in Bottom Maze": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -2611,8 +2607,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             boulderMazeTop: {
+                DisplayGroup: { groupName: "Upper Boulder Maze", imageName: "Goron Mask" },
                 Exits: {
                     boulderMaze: {},
                     aboveBoulderMaze: {
@@ -2624,7 +2620,6 @@ let MQDungeons = {
                     },
                     cellBelowBoulderMaze: {}
                 },
-
                 ItemLocations: {
                     "Chest on Maze Top": {
                         ItemGroup: ItemGroups.CHEST,
@@ -2657,8 +2652,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             cellBelowBoulderMaze: {
+                DisplayGroup: { groupName: "Upper Boulder Maze", imageName: "Goron Mask" },
                 Exits: {
                     boulderMazeTop: {}
                 },
@@ -2682,8 +2677,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             aboveBoulderMaze: {
+                DisplayGroup: { groupName: "Top Rooms Above Boulder Maze", imageName: "Hookshot Hookshot" },
                 Exits: {
                     narrowBridgeRoom: {}
                 },
@@ -2717,8 +2712,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             narrowBridgeRoom: {
+                DisplayGroup: { groupName: "Lava & Fire Wall Room", imageName: "Din's Fire" },
                 Exits: {},
                 ItemLocations: {
                     //TODO: Empty Pots - remove this item, as the one below will replace it
@@ -2748,8 +2743,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             roomWithLavaAndGrates: {
+                DisplayGroup: { groupName: "Lava & Fire Wall Room", imageName: "Din's Fire" },
                 Exits: {
                     narrowBridgeRoom: {},
                     fireWallMaze: {
@@ -2853,8 +2848,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             fireWallMaze: {
+                DisplayGroup: { groupName: "Fire Wall Maze", imageName: "Fire Arrow" },
                 Exits: {
                     fireWallMazeRight: {
                         CustomRequirement: function(age) {
@@ -2867,7 +2862,6 @@ let MQDungeons = {
                         RequiredItems: [Items.HOOKSHOT]
                     }
                 },
-
                 ItemLocations: {
                     //TODO Empty Pots - this will be replaced by the next item location
                     "Pot in Left Fire Wall Maze": {
@@ -2900,8 +2894,8 @@ let MQDungeons = {
                     }
                 }
             },
-            
             fireWallMazeRight: {
+                DisplayGroup: { groupName: "Fire Wall Maze", imageName: "Fire Arrow" },
                 Exits: {
                     fireWallMazeEnd: {
                         CustomRequirement: function(age) {
@@ -2929,13 +2923,10 @@ let MQDungeons = {
                     }
                 }
             },
-
             fireWallMazeEnd: {
+                DisplayGroup: { groupName: "Fire Wall Maze", imageName: "Fire Arrow" },
                 Exits: {
-                    topOfTemple: {
-                        LockedDoor: "Locked Door After Flare Dancer",
-                        Map: "Fire Temple"
-                    }
+                    afterFinalFlareDancer: {}
                 },
                 ItemLocations: {
                     "2 Pots by Fire Maze Exit": {
@@ -2956,7 +2947,18 @@ let MQDungeons = {
                         Order: 39.1,
                         LongDescription: "At the end of the fire wall maze, hookshot the face above the door leading to the flare dancer room to spawn this wonderitem.",
                         RequiredItems: [Items.HOOKSHOT]
-                    },
+                    }
+                }
+            },
+            afterFinalFlareDancer: {
+                DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula Tokens" },
+                Exits: {
+                    topOfTemple: {
+                        LockedDoor: "Locked Door After Flare Dancer",
+                        Map: "Fire Temple"
+                    }
+                },
+                ItemLocations: {
                     "Freestanding Key in Flare Dancer Room": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 37, y: 178, floor: "F3" },
@@ -2975,8 +2977,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             topOfTemple: {
+                DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula Tokens" },
                 Exits: {
                     roomAfterTopOfTemple: {
                         LockedDoor: "Locked Door Under Hammer Floor",
@@ -2993,8 +2995,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             roomAfterTopOfTemple: {
+                DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula Tokens" },
                 Exits: {},
                 ItemLocations: {
                     "Wonderitem After Top of Temple": {
@@ -3015,8 +3017,8 @@ let MQDungeons = {
                     }
                 }
             },
-
             bossRoom: {
+                DisplayGroup: { groupName: "Boss Area", imageName: "Fire Medallion" },
                 Exits: {
                     "Boss": {
                         OwExit: OwExits["Fire Temple"]["Boss"]

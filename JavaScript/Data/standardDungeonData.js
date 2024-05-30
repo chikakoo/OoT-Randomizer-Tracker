@@ -1677,6 +1677,7 @@ let StandardDungeons = {
     "Fire Temple": {
         Abbreviation: "FIRE",
         MapGroup: MapGroups.DUNGEONS,
+        UsesDisplayGroups: true,
         Floors: ["F5", "F4", "F3", "F2", "F1"],
         StartingFloorIndex: 4,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
@@ -1686,6 +1687,7 @@ let StandardDungeons = {
         },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Lobby & Boss Key Path", imageName: "Boss Key" },
                 Exits: {
                     bossKeyRoom: {
                         Map: "Fire Temple",
@@ -1708,74 +1710,23 @@ let StandardDungeons = {
                             return Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
                         }
                     },
-                    bossRoom: {
-                        CustomRequirement: function(age) {
-                            let canGetToDoor = age === Age.ADULT || Data.canMegaFlip(age);
-                            let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
-                            return canGetToDoor && tunicCheck && ItemData.hasBossKey("Fire Temple");
-                        }
-                    },
-
-                    Exit: {
-                        OwExit: OwExits["Fire Temple"]["Exit"]
-                    }
-                },
-
-                ItemLocations: {
-                    "Goron Near Boss Door": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: {x: 34, y: 263, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 1,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.fireNoGoronTunic; },
-                        LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper left corner of the room and step on the switch. The chest is inside the Goron cage.",
+                    bossArea: {
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
                         }
                     },
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "2 Pots Near Boss Door": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 45, y: 158, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 2,
-                        LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper right corner of the room using your hookshot, hover boots, or by megaflipping. Climb up to get to the pots (2/4 are fairies).",
-                        CustomRequirement: function(age) {
-                            let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
-                            let canGetThere = Data.canMegaFlip(age) || Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas;
-                            return tunicCheck && canGetThere;
-                        }
-                    },
-                    "4 Pots Near Boss Door": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "4 Pots",
-                        MapInfo: { x: 45, y: 158, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 2,
-                        LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper right corner of the room using your hookshot, hover boots, or by megaflipping. Climb up to get to the pots.",
-                        CustomRequirement: function(age) {
-                            let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
-                            let canGetThere = Data.canMegaFlip(age) || Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas;
-                            return tunicCheck && canGetThere;
-                        }
-                    },
-
+                    Exit: {
+                        OwExit: OwExits["Fire Temple"]["Exit"]
+                    }
+                },
+                ItemLocations: {
                     // Locked Doors
                     "Bottom Locked Door in Lobby": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["main"],
                         MapInfo: { x: 126, y: 214, floor: "F1" },
                         Age: Age.EITHER,
-                        Order: 3,
+                        Order: 1,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         LongDescription: "This is the door behind the pillar on the bottom of the lobby.",
                         RequiredToAppear: function() { return Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.SMALL_KEY_SANITY; },
@@ -1794,7 +1745,7 @@ let StandardDungeons = {
                         Regions: ["main"],
                         MapInfo: { x: 136, y: 203, floor: "F1" },
                         Age: Age.EITHER,
-                        Order: 7,
+                        Order: 8,
                         LongDescription: "This is the top right door in the lobby.",
                         KeyRequirement: function(age) {
                             if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
@@ -1809,6 +1760,7 @@ let StandardDungeons = {
                         }
                     },
                     "Locked Door in Big Lava Room": {
+                        DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["bigLavaRoom"],
                         MapInfo: { x: 257, y: 202, floor: "F1" },
@@ -1828,6 +1780,7 @@ let StandardDungeons = {
                         }
                     },
                     "Locked Door After Rising Block": {
+                        DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["bigLavaRoom"],
                         MapInfo: { x: 247, y: 92, floor: "F2" },
@@ -1847,6 +1800,7 @@ let StandardDungeons = {
                         }
                     },
                     "Locked Door in Boulder Maze": {
+                        DisplayGroup: { groupName: "Lower Boulder Maze", imageName: "Bomb" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["boulderMazeLower"],
                         MapInfo: { x: 289, y: 135, floor: "F3" },
@@ -1866,6 +1820,7 @@ let StandardDungeons = {
                         }
                     },
                     "Locked Door in Crater Room": {
+                        DisplayGroup: { groupName: "Lower Boulder Maze", imageName: "Bomb" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["narrowBridgeRoom", "fireWallRoom"],
                         MapInfo: { x: 283, y: 170, floor: "F3" },
@@ -1889,6 +1844,7 @@ let StandardDungeons = {
                         }
                     },
                     "Locked Door in Fire Wall Room": {
+                        DisplayGroup: { groupName: "Lava & Fire Wall Room", imageName: "Din's Fire" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["fireWallRoom"],
                         MapInfo: { x: 207, y: 170, floor: "F3" },
@@ -1917,6 +1873,7 @@ let StandardDungeons = {
                         }
                     },
                     "Locked Door in Fire Maze Room": {
+                        DisplayGroup: { groupName: "Fire Wall Maze", imageName: "Fire Arrow" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["fireMazeRoomStart"],
                         MapInfo: { x: 119, y: 192, floor: "F3" },
@@ -1947,6 +1904,7 @@ let StandardDungeons = {
                 }
             },
             bossKeyPath: {
+                DisplayGroup: { groupName: "Lobby & Boss Key Path", imageName: "Boss Key" },
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                 Exits: {
                     bossKeyRoom: {
@@ -1959,14 +1917,14 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 122, y: 13, floor: "F1" },
                         Age: Age.EITHER,
-                        Order: 4,
+                        Order: 2,
                         LongDescription: "To the right of the stairs at the entrance of the temple, use your hammer on the side of the column a few times to destroy it. Enter the door. Kill all the enemies and enter the next room. The skulltula is on the back wall by the like-like."
                     },
                     "Flare Dancer Near Entrance": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 57, y: 60, floor: "F1" },
                         Age: Age.EITHER,
-                        Order: 5,
+                        Order: 3,
                         LongDescription: "To the right of the stairs at the entrance of the temple, use your hammer on the side of the column a few times to destroy it. Enter the door. Kill all the enemies and continue until you get to the Flare Dancer room. To kill it - either use your hammer or hookshot to stun it. It will take three Master Sword jumpslashes to kill it. For some reason, the Biggoron's Sword will do less damage. Also, there's no need to try to jumpslash it more than once per cycle, as it won't do damage.",
                         RequiredChoiceOfAdultItems: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER, Items.HOOKSHOT],
                         RequiredChoiceOfChildItems: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER],
@@ -1974,6 +1932,7 @@ let StandardDungeons = {
                 }
             },
             bossKeyRoom: {
+                DisplayGroup: { groupName: "Lobby & Boss Key Path", imageName: "Boss Key" },
                 Exits: {},
                 ItemLocations: {
                     "Boss Key Chest": {
@@ -1981,12 +1940,72 @@ let StandardDungeons = {
                         MapInfo: {x: 63, y: 111, floor: "F1" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { !Settings.GlitchesToAllow.equipSwap; },
-                        Order: 6,
+                        Order: 4,
                         LongDescription: "After the flare dancer room (see the other task), continue to the next room. Hammer the rusted switch to gain access to the boss key chest."
                     }
                 }
             },
+            bossArea: {
+                DisplayGroup: { groupName: "Boss Area", imageName: "Fire Medallion" },
+                Exits: {
+                    bossRoom: {
+                        CustomRequirement: function(age) {
+                            let canGetToDoor = age === Age.ADULT || Data.canMegaFlip(age);
+                            return canGetToDoor && ItemData.hasBossKey("Fire Temple");
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "Goron Near Boss Door": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: {x: 34, y: 263, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 5,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.fireNoGoronTunic; },
+                        LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper left corner of the room and step on the switch. The chest is inside the Goron cage.",
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
+                        }
+                    },
+                    //TODO: Empty Pots - remove this item, as the one below will replace it
+                    "2 Pots Near Boss Door": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 45, y: 158, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 6,
+                        LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper right corner of the room using your hookshot, hover boots, or by megaflipping. Climb up to get to the pots (2/4 are fairies).",
+                        CustomRequirement: function(age) {
+                            let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
+                            let canGetThere = Data.canMegaFlip(age) || Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas;
+                            return tunicCheck && canGetThere;
+                        }
+                    },
+                    "4 Pots Near Boss Door": {
+                        RequiredToAppear: function() {
+                            //TODO: Empty Pots - remove this function, as this will become the default item location
+                            return false;
+                        },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Pots",
+                        MapInfo: { x: 45, y: 158, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 6,
+                        LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper right corner of the room using your hookshot, hover boots, or by megaflipping. Climb up to get to the pots.",
+                        CustomRequirement: function(age) {
+                            let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
+                            let canGetThere = Data.canMegaFlip(age) || Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas;
+                            return tunicCheck && canGetThere;
+                        }
+                    }
+                }
+            },
             bigLavaRoom: {
+                DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.fireNoGoronTunic; },
                 Exits: {
                     bigLavaRoomGoronRight: {
@@ -2033,6 +2052,7 @@ let StandardDungeons = {
                 }
             },
             bigLavaRoomGoronRight: {
+                DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.fireNoGoronTunic ||
                         !Settings.GlitchesToAllow.groundJump;
@@ -2049,6 +2069,7 @@ let StandardDungeons = {
                 }
             },
             bigLavaRoomSoTLedge: {
+                DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.fireNoGoronTunic ||
                         !Settings.GlitchesToAllow.groundJump;
@@ -2065,6 +2086,7 @@ let StandardDungeons = {
                 }
             },
             risingBlockRoom: {
+                DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.fireNoGoronTunic; },
                 Exits: {
                     firstTorchSlugRoom: {
@@ -2086,6 +2108,7 @@ let StandardDungeons = {
                 }
             },
             firstTorchSlugRoom: {
+                DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                 Exits: {
                     boulderMazeLower: {
                         Age: Age.ADULT,
@@ -2113,13 +2136,13 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             boulderMazeLower: {
+                DisplayGroup: { groupName: "Lower Boulder Maze", imageName: "Bomb" },
                 Exits: {
                     narrowBridgeRoom: {
                         Map: "Fire Temple",
                         LockedDoor: "Locked Door in Boulder Maze"
                     }
                 },
-
                 ItemLocations: {
                     "Lower Boulder Maze Goron": {
                         ItemGroup: ItemGroups.CHEST,
@@ -2146,6 +2169,7 @@ let StandardDungeons = {
                 }
             },
             narrowBridgeRoom: {
+                DisplayGroup: { groupName: "Lower Boulder Maze", imageName: "Bomb" },
                 Exits: {
                     mapEnclosure: {
                         RequiredItems: [ItemSets.PROJECTILES]
@@ -2170,6 +2194,7 @@ let StandardDungeons = {
                 }
             },
             fireWallRoom: {
+                DisplayGroup: { groupName: "Lava & Fire Wall Room", imageName: "Din's Fire" },
                 Exits: {
                     mapEnclosure: {},
                     boulderMazeUpper: {},
@@ -2200,6 +2225,7 @@ let StandardDungeons = {
                 }
             },
             mapEnclosure: {
+                DisplayGroup: { groupName: "Lava & Fire Wall Room", imageName: "Din's Fire" },
                 Exits: {
                     narrowBridgeRoom: {},
                     fireWallRoom: {
@@ -2210,7 +2236,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Map Chest in Fire Wall Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -2222,6 +2247,7 @@ let StandardDungeons = {
                 }
             },
             boulderMazeUpper: {
+                DisplayGroup: { groupName: "Upper Boulder Maze", imageName: "Goron Mask" },
                 Exits: {
                     // These first two are used for the jail clip trick
                     boulderMazeLower: {},
@@ -2235,7 +2261,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Upper Boulder Maze Goron": {
                         ItemGroup: ItemGroups.CHEST,
@@ -2247,6 +2272,7 @@ let StandardDungeons = {
                 }
             },
             goronInPit: {
+                DisplayGroup: { groupName: "Upper Boulder Maze", imageName: "Goron Mask" },
                 Exits: {
                     goronInPitCell: {},
                     boulderMazeUpper: {}
@@ -2254,6 +2280,7 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             goronInPitCell: {
+                DisplayGroup: { groupName: "Upper Boulder Maze", imageName: "Goron Mask" },
                 Exits: {},
                 ItemLocations: {
                     "Goron in Bombable Pit": {
@@ -2266,6 +2293,7 @@ let StandardDungeons = {
                 }
             },
             scarecrowRoom: {
+                DisplayGroup: { groupName: "Upper Scarecrow Rooms", imageName: "Hookshot Hookshot" },
                 Exits: {},
                 ItemLocations: {
                     "Skulltula on Climbable Wall After Scarecrow": {
@@ -2292,6 +2320,7 @@ let StandardDungeons = {
                 }
             },
             fireMazeRoomStart: {
+                DisplayGroup: { groupName: "Fire Wall Maze", imageName: "Fire Arrow" },
                 Exits: {
                     fireMazeRoomEnd: {
                         CustomRequirement: function(age) {
@@ -2329,6 +2358,7 @@ let StandardDungeons = {
                 }
             },
             fireMazeRoomEnd: {
+                DisplayGroup: { groupName: "Fire Wall Maze", imageName: "Fire Arrow" },
                 Exits: {
                     centerRoomBottom: {},
                     hammerChestRoom: {
@@ -2349,6 +2379,7 @@ let StandardDungeons = {
                 }
             },
             hammerChestRoom: {
+                DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Megaton Hammer" },
                 Exits: {
                     stairCaseRoomAfterHammer: {
                         RequiredItems: [Items.MEGATON_HAMMER]
@@ -2360,7 +2391,6 @@ let StandardDungeons = {
                     },
                     centerRoomBottom: {}
                 },
-
                 ItemLocations: {
                     "Hammer Chest at Very Top": {
                         ItemGroup: ItemGroups.CHEST,
@@ -2372,6 +2402,7 @@ let StandardDungeons = {
                 }
             },
             stairCaseRoomAfterHammer: {
+                DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Megaton Hammer" },
                 Exits: {},
                 ItemLocations: {
                     "2 Small Crates in Hammer Staircase Room": {
@@ -2388,6 +2419,7 @@ let StandardDungeons = {
                 }
             },
             centerRoomBottom: {
+                DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Megaton Hammer" },
                 Exits: {
                     fireMazeRoomEnd: {},
                     centerRoomTopSwitch: {
@@ -2403,6 +2435,7 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             centerRoomTopSwitch: {
+                DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Megaton Hammer" },
                 Exits: {
                     centerRoomBottom: {},
                     centerRoomCell: {}
@@ -2410,6 +2443,7 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             centerRoomCell: {
+                DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Megaton Hammer" },
                 Exits: {},
                 ItemLocations: {
                     "Goron in Center of Fire Maze": {
@@ -2422,6 +2456,7 @@ let StandardDungeons = {
                 }
             },
             bossRoom: {
+                DisplayGroup: { groupName: "Boss Area", imageName: "Fire Medallion" },
                 Exits: {
                     "Boss": {
                         OwExit: OwExits["Fire Temple"]["Boss"]

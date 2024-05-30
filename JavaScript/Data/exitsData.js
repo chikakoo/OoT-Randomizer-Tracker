@@ -2637,7 +2637,7 @@ let OwExits = {
                         !Settings.GlitchesToAllow.bombSuperslide
                     : !Settings.GlitchesToAllow.megaFlip; 
             },
-            Order: 100,
+            Order: 7,
             LongDescription: "As Adult, you can do a roll-jump from the corner to get to the boss door."
         }
     },
