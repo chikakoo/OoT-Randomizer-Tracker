@@ -966,8 +966,10 @@ let MapLocations = {
 	"Market": {
 		Abbreviation: "MRKT",
 		MapGroup: MapGroups.FIELD_MARKET,
+        UsesDisplayGroups: true,
 		Regions: {
             main: {
+                DisplayGroup: { groupName: "Marketplace", imageName: "Green Rupee" },
                 Exits: {
                     alley: {
                         Age: Age.CHILD
@@ -1009,6 +1011,7 @@ let MapLocations = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Night and 2 Empty Day Crates",
                         MapInfo: { x: 303, y: 200 },
+                        Order: 1,
                         Time: function() { 
                             return !Settings.RandomizerSettings.shuffleEmptyCrates ? Time.NIGHT : Time.EITHER; 
                         },
@@ -1024,6 +1027,7 @@ let MapLocations = {
                             return !Settings.RandomizerSettings.shuffleEmptyCrates ? Time.NIGHT : Time.EITHER; 
                         },
                         MapInfo: { x: 250, y: 123 },
+                        Order: 2,
                         Age: Age.CHILD,
                         LongDescription: "These crates are on the right side of the archery minigame door."
                     },
@@ -1033,13 +1037,14 @@ let MapLocations = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Balcony Wonderitems",
                         MapInfo: { x: 213, y: 151 },
+                        Order: 3,
                         Age: Age.CHILD,
                         LongDescription: "Climb the stairs by bombchu bowling and go across the catwalk to get these items. Note that there are different sets of them depending on if it's night or day!"
                     }
                 }
             },
-
             alley: {
+                DisplayGroup: { groupName: "Alleys", imageName: "Bombchu" },
                 Exits: {
                     main: {},
 

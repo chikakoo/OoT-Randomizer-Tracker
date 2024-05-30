@@ -575,6 +575,7 @@ let OwExits = {
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 261, y: 246},
+            Order: 10,
             Age: Age.EITHER,
             LongDescription: "This is the path to the market entrance."
         },
@@ -584,6 +585,7 @@ let OwExits = {
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 261, y: 47},
+            Order: 11,
             Age: Age.EITHER,
             LongDescription: "This is the entrance to Hyrule Castle."
         },
@@ -593,6 +595,7 @@ let OwExits = {
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 350, y: 136},
+            Order: 12,
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Temple of Time area."
         },
@@ -604,6 +607,7 @@ let OwExits = {
             DefaultEntranceGroupName: "Child Archery",
             Time: function() { return Time.DAY; },
             MapInfo: { x: 234, y: 120 },
+            Order: 4,
             IsInterior: true,
             OneWayInteriorSpawnEntrance: true,
             Age: Age.CHILD,
@@ -616,6 +620,7 @@ let OwExits = {
             DefaultEntranceGroupName: "Happy Mask Shop",
             Time: function() { return Time.DAY; },
             MapInfo: { x: 286, y: 120 },
+            Order: 5,
             OneWayInteriorSpawnEntrance: true,
             Age: Age.CHILD,
             LongDescription: "This is the building just to the right of the Hyrule Castle entrance."
@@ -627,6 +632,7 @@ let OwExits = {
             DefaultEntranceGroupName: "Shop",
             Time: function() { return Time.DAY; },
             MapInfo: { x: 308, y: 159 },
+            Order: 6,
             OneWayInteriorSpawnEntrance: true,
             Age: Age.CHILD,
             LongDescription: "Starting at the market entrance, this is the second building you can enter going counter-clockwise."
@@ -638,6 +644,7 @@ let OwExits = {
             DefaultEntranceGroupName: "Shop",
             Time: function() { return Time.DAY; },
             MapInfo: { x: 308, y: 191 },
+            Order: 7,
             OneWayInteriorSpawnEntrance: true,
             Age: Age.CHILD,
             LongDescription: "Starting at the market entrance, this is the first building you can enter going counter-clockwise."
@@ -649,6 +656,7 @@ let OwExits = {
             DefaultEntranceGroupName: "Treasure Chest Minigame",
             Time: function() { return Time.NIGHT; },
             MapInfo: { x: 215, y: 230 },
+            Order: 8,
             OneWayInteriorSpawnEntrance: true,
             Age: Age.CHILD,
             LongDescription: "This is the building to the right of the market entrance exit - it's only open at night.",
@@ -659,6 +667,7 @@ let OwExits = {
             IsInterior: true,
             DefaultEntranceGroupName: "Bombchu Bowling",
             MapInfo: { x: 205, y: 174 },
+            Order: 9,
             OneWayInteriorSpawnEntrance: true,
             Age: Age.CHILD,
             LongDescription: "This building is the one between the two market alley entrances."
