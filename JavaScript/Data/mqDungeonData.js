@@ -6415,6 +6415,7 @@ let MQDungeons = {
         Abbreviation: "GTG",
         MapGroup: MapGroups.DUNGEONS,
         IsMasterQuest: true,
+        UsesDisplayGroups: true,
         UseAdultAge: function() { 
             return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.gtgChildAllowed;
         },
@@ -6424,6 +6425,7 @@ let MQDungeons = {
         },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Lobby", imageName: "Gerudo Membership Card" },
                 Exits: {
                     armosRoom: {
                         RequiredItems: [ItemSets.PROJECTILES]
@@ -6431,19 +6433,7 @@ let MQDungeons = {
                     leftArea: {
                         RequiredItems: [ItemSets.FIRE_ITEMS]
                     },
-                    backOfMaze: {
-                        CustomRequirement: function(age) {
-                            return MapLocations["Training Grounds"]._canVineClip(age) || Data.canWeirdShot(age);
-                        }
-                    },
-                    mazeCenter: {
-                        RequiredChildItems: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
-                        CustomRequirement: function(age) {
-                            return ItemData.getKeyCount("Training Grounds") >= 3 ||
-                                MapLocations["Training Grounds"]._canVineClip(age) || 
-                                Data.canWeirdShot(age);
-                        }
-                    },
+                    mazeStart: {},
                     iceArrowsRoom: {
                         Age: Age.CHILD,
                         CustomRequirement: function(age) {
@@ -6454,7 +6444,6 @@ let MQDungeons = {
                         OwExit: OwExits["Training Grounds"]["Exit"]
                     }
                 },
-
                 ItemLocations: {
                     "2 Left Pots by Entrance": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -6489,7 +6478,27 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 2.1,
                         LongDescription: "The pots are to the right when you first enter."
+                    }
+                }
+            },
+            mazeStart: {
+                DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
+                Exits: {
+                    backOfMaze: {
+                        CustomRequirement: function(age) {
+                            return MapLocations["Training Grounds"]._canVineClip(age) || Data.canWeirdShot(age);
+                        }
                     },
+                    mazeCenter: {
+                        RequiredChildItems: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
+                        CustomRequirement: function(age) {
+                            return ItemData.getKeyCount("Training Grounds") >= 3 ||
+                                MapLocations["Training Grounds"]._canVineClip(age) || 
+                                Data.canWeirdShot(age);
+                        }
+                    }
+                },
+                ItemLocations: {
                     "Left Maze Path After Door 1": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 152, y: 192 },
@@ -6525,13 +6534,37 @@ let MQDungeons = {
                     }
                 }
             },
+            mazeCenter: {
+                DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
+                Exits: {},
+                ItemLocations: {
+                    "Crate in Maze Center": {
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 164, y: 160 },
+                        Age: Age.EITHER,
+                        Order: 6.1,
+                        LongDescription: "This is the crate at the center of the maze."
+                    },
+                    "Spawn Ice Arrow Chest": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapInfo: { x: 164, y: 160 },
+                        MapImageName: "Megaton Hammer",
+                        Age: Age.EITHER,
+                        Order: 6.2,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        RequiredItems: [Items.MEGATON_HAMMER],
+                        LongDescription: "At the center of the maze, break the crate and hit the switch with the Megaton Hammer to spawn the ice arrow chest."
+                    }
+                }
+            },
             armosRoom: {
+                DisplayGroup: { groupName: "Armos Room", imageName: "Bomb" },
                 Exits: {
                     bigLavaRoomFront: {
                         RequiredChoiceOfChildItems: [Items.DEKU_STICK, Items.BOMB, Items.BOMBCHU]
                     }
                 },
-
                 ItemLocations: {
                     "Chest in Armos Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -6553,6 +6586,7 @@ let MQDungeons = {
                 }
             },
             leftArea: {
+                DisplayGroup: { groupName: "Sandy & Icicle Rooms", imageName: "Silver Rupees" },
                 Exits: {
                     roomWithSilverBlock: {
                         Map: "Training Grounds",
@@ -6562,7 +6596,6 @@ let MQDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Sandy Iron Knuckle Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -6614,6 +6647,7 @@ let MQDungeons = {
                 }
             },
             roomWithSilverBlock: {
+                DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Strength Silver Gauntlets" },
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.gtgChildVineClips && !Settings.RandomizerSettings.shuffleSilverRupees; 
                 },
@@ -6654,6 +6688,7 @@ let MQDungeons = {
                 }
             },
             roomBehindSilverBlock: {
+                DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Strength Silver Gauntlets" },
                 Exits: {},
                 ItemLocations: {
                     "Chest in Room Behind Silver Block": {
@@ -6666,6 +6701,7 @@ let MQDungeons = {
                 }
             },
             eyeStatueRoom: {
+                DisplayGroup: { groupName: "Eye Statue Room", imageName: "Fairy Bow" },
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {
                     roomWithSilverBlock: {
@@ -6684,14 +6720,13 @@ let MQDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Wonderitem on Eye Statue": {
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 163, y: 91 },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
-                        Order: 9.9,
+                        Order: 10,
                         LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down.<br/><br/>Use hover boots or the longshot to navigate to the top of the center statue to get this wonderitem.",
                         CustomRequirement: function(age) {
                             return Data.canMegaFlip(age) || (age === Age.ADULT && 
@@ -6706,7 +6741,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 163, y: 60 },
                         Age: Age.ADULT,
-                        Order: 10,
+                        Order: 11,
                         LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Jump to the spinning ring and shoot the eyes of the statues to spawn the chest.",
                         RequiredItems: [Items.FAIRY_BOW]
                     },
@@ -6727,7 +6762,41 @@ let MQDungeons = {
                     }
                 }
             },
+            iceArrowsRoom: {
+                DisplayGroup: { groupName: "Eye Statue Room", imageName: "Fairy Bow" },
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
+                Exits: {
+                    eyeStatueRoom: {
+                        Age: Age.CHILD // Only useful for Child
+                    }
+                },
+                ItemLocations: {
+                    "Chest Spawned from Maze Center": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 166, y: 132 },
+                        Age: Age.EITHER,
+                        Order: 9.9,
+                        LongDescription: "First, spawn the chest by making your way to the center of the maze. Break the box, then hammer the rusted switch to spawn the chest.<br/><br/>In the eye statue room, hit the lower crystal switch with your hookshot, bow, or explosives. The room with the chest will become unbarred.",
+                        CustomRequirement: function(age) {
+                            // If the chest is already spawned, we're good
+                            if (Data.itemLocationObtained("Training Grounds", "mazeCenter", "Spawn Ice Arrow Chest")) {
+                                return true;
+                            }
+                            
+                            // Otherwise check that we CAN spawn the chest
+                            if (!ItemData.canUse(age, Items.MEGATON_HAMMER)) {
+                                return false;
+                            }
+
+                            return MapLocations["Training Grounds"]._canVineClip(age) ||
+                                Data.canWeirdShot(age) || 
+                                ItemData.getKeyCount("Training Grounds") >= 3;
+                        }
+                    }
+                }
+            },
             bigLavaRoomFront: {
+                DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
                 Exits: {
                     bigLavaRoomWaterDoorPlatform: {
                         Age: Age.ADULT,
@@ -6771,14 +6840,15 @@ let MQDungeons = {
                 }
             },
             bigLavaRoomUpperBack: {
+                DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
                 Exits: {
                     bigLavaRoomBack: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.MAGIC]
+                        RequiredItems: [Items.FIRE_ARROW]
                     },
                     bigLavaRoomBackLeft: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.MAGIC],
+                        RequiredItems: [Items.FIRE_ARROW],
                         CustomRequirement: function(age) {
                             return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
                         }
@@ -6789,12 +6859,14 @@ let MQDungeons = {
                     },
                     backOfMaze: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.MEGATON_HAMMER, UpgradedItems.LONGSHOT]
+                        // Hitting the switch unbars the door from the maze; just need to savewarp after
+                        RequiredItems: [Items.MEGATON_HAMMER] 
                     }
                 },
                 ItemLocations: {}
             },
             bigLavaRoomBack: {
+                DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
                 Exits: {
                     bigLavaRoomBackLeft: {
                         Age: Age.ADULT,
@@ -6847,6 +6919,7 @@ let MQDungeons = {
                 }
             },
             bigLavaRoomBackLeft: {
+                DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
                 Exits: {},
                 ItemLocations: {
                     "Lava Silver Rupee in Back Left": {
@@ -6859,6 +6932,7 @@ let MQDungeons = {
                 }
             },
             bigLavaRoomWaterDoorPlatform: {
+                DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
                 Exits: {
                     bigLavaRoomFront: {
                         RequiredChoiceOfItems: [UpgradedItems.LONGSHOT, ItemSets.FIRE_ITEMS]
@@ -6881,70 +6955,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {}
             },
-            backOfMaze: {
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
-                Exits: {
-                    bigLavaRoomFront: {
-                        Age: Age.EITHER,
-                        CustomRequirement: function(age) {
-                            if (Data.canMegaFlip(age)) { return true; }
-                            if (age === Age.CHILD) { return false; }
-
-                            return ItemData.canUseAny(age, [Items.FIRE_ARROW, UpgradedItems.LONGSHOT]) ||
-                                Data.canBombSuperslideWithHovers(age) ||
-                                Data.canHammerHoverBootsSuperslide(age);
-                        }
-                    },
-                    bigLavaRoomBack: {
-                        Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.MAGIC]
-                    },
-                    bigLavaRoomBackLeft: {
-                        Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.MAGIC]
-                    }
-                },
-                ItemLocations: {
-                    "Close Chest in Back of Maze": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 177, y: 165 },
-                        Age: Age.EITHER,
-                        Order: 14,
-                        LongDescription: "After defeating the enemies in the room with the fire circle and Iron Knuckle, proceed through the door. Hammer the rusted switch, then longshot to the pillar that appears. Go through the hall - the chest is straight ahead."
-                    },
-                    "Far Chest in Back of Maze": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 187, y: 154 },
-                        Age: Age.EITHER,
-                        Order: 15,
-                        LongDescription: "After getting the close chest from the back of the maze, continue along counter-clockwise to get the next chest (there are no doors to go through)."					
-                    }
-                }
-            },
-            mazeCenter: {
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
-                Exits: {},
-                ItemLocations: {
-                    "Crate in Maze Center": {
-                        ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 164, y: 160 },
-                        Age: Age.EITHER,
-                        Order: 6.1,
-                        LongDescription: "This is the crate at the center of the maze."
-                    },
-                    "Spawn Ice Arrow Chest": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        MapInfo: { x: 164, y: 160 },
-                        MapImageName: "Megaton Hammer",
-                        Age: Age.EITHER,
-                        Order: 6.2,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
-                        RequiredItems: [Items.MEGATON_HAMMER],
-                        LongDescription: "At the center of the maze, break the crate and hit the switch with the Megaton Hammer to spawn the ice arrow chest."
-                    }
-                }
-            },
             waterRoom: {
+                DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
                 Exits: {},
                 ItemLocations: {
                     "Chest in Water Room": { 
@@ -6977,36 +6989,44 @@ let MQDungeons = {
                     }
                 }
             },
-            iceArrowsRoom: {
+            backOfMaze: {
+                DisplayGroup: { groupName: "Maze Dead End", imageName: "Chest" },
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {
-                    eyeStatueRoom: {
-                        Age: Age.CHILD // Only useful for Child
+                    bigLavaRoomFront: {
+                        Age: Age.EITHER,
+                        CustomRequirement: function(age) {
+                            if (Data.canMegaFlip(age)) { return true; }
+                            if (age === Age.CHILD) { return false; }
+
+                            return ItemData.canUseAny(age, [Items.FIRE_ARROW, UpgradedItems.LONGSHOT]) ||
+                                Data.canBombSuperslideWithHovers(age) ||
+                                Data.canHammerHoverBootsSuperslide(age);
+                        }
+                    },
+                    bigLavaRoomBack: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.MAGIC]
+                    },
+                    bigLavaRoomBackLeft: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.MAGIC]
                     }
                 },
-
                 ItemLocations: {
-                    "Chest Spawned from Maze Center": {
+                    "Close Chest in Back of Maze": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 166, y: 132 },
+                        MapInfo: { x: 177, y: 165 },
                         Age: Age.EITHER,
-                        Order: 11,
-                        LongDescription: "First, spawn the chest by making your way to the center of the maze. Break the box, then hammer the rusted switch to spawn the chest.<br/><br/>In the eye statue room, hit the lower crystal switch with your hookshot, bow,, or explosives. The room with the chest will become unbarred.",
-                        CustomRequirement: function(age) {
-                            // If the chest is already spawned, we're good
-                            if (Data.itemLocationObtained("Training Grounds", "mazeCenter", "Spawn Ice Arrow Chest")) {
-                                return true;
-                            }
-                            
-                            // Otherwise check that we CAN spawn the chest
-                            if (!ItemData.canUse(age, Items.MEGATON_HAMMER)) {
-                                return false;
-                            }
-
-                            return MapLocations["Training Grounds"]._canVineClip(age) ||
-                                Data.canWeirdShot(age) || 
-                                ItemData.getKeyCount("Training Grounds") >= 3;
-                        }
+                        Order: 14,
+                        LongDescription: "After defeating the enemies in the room with the fire circle and Iron Knuckle, proceed through the door. Hammer the rusted switch, then longshot to the pillar that appears (or savewarp and go through the now-unbarred right door from the maze entrance). Go through the hall - the chest is straight ahead."
+                    },
+                    "Far Chest in Back of Maze": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 187, y: 154 },
+                        Age: Age.EITHER,
+                        Order: 15,
+                        LongDescription: "After getting the close chest from the back of the maze, continue along counter-clockwise to get the next chest (there are no doors to go through)."					
                     }
                 }
             }

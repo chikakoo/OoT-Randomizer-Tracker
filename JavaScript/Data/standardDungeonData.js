@@ -5702,6 +5702,7 @@ let StandardDungeons = {
     "Training Grounds": {
         Abbreviation: "GTG",
         MapGroup: MapGroups.DUNGEONS,
+        UsesDisplayGroups: true,
         UseAdultAge: function() { 
             return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.gtgChildAllowed;
         },
@@ -5727,13 +5728,10 @@ let StandardDungeons = {
         },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Lobby", imageName: "Gerudo Membership Card" },
                 Exits: {
-                    boulderRoom: {
-                        RequiredItems: [ItemSets.SWORDS]
-                    },
-                    bigLavaRoomFront: {
-                        RequiredItems: [ItemSets.EXPLOSIVES]
-                    },
+                    sandyRoom: {},
+                    dinalfosBeamosRoom: {},
                     mazeAfterOptionalDoor1: {
                         Map: "Training Grounds",
                         LockedDoor: "Optional Locked Door 1",
@@ -5752,7 +5750,6 @@ let StandardDungeons = {
                         OwExit: OwExits["Training Grounds"]["Exit"]
                     }
                 },
-
                 ItemLocations: {
                     "Entrance Room Left Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5770,15 +5767,133 @@ let StandardDungeons = {
                         LongDescription: "From the entrance, turn around. Shoot the eye that's near the ceiling to spawn this chest.",
                         RequiredItems: [ItemSets.PROJECTILES]
                     },
-                    "Stalfos Chest in Sandy Room": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 64, y: 225 },
+                     
+                    // Locked Doors
+                    "Locked Door 1 On Main Path": {
+                        DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
+                        ItemGroup: ItemGroups.LOCKED_DOOR,
+                        Regions: ["main"],
+                        MapInfo: { x: 154, y: 174 },
                         Age: Age.EITHER,
-                        Order: 3,
-                        LongDescription: "This is the room to the left of the entrance. I recommend going this way, first, as it only requires the hookshot to make it most of the way around the dungeon. Anyway, kill the stalfos in here within the time limit to get this chest.",
-                        RequiredItems: [ItemSets.SWORDS]
-                     },
-                     "Chest in Dinalfos/Beamos Room": {
+                        Order: 18,
+                        LongDescription: "This is door 1 on the left path of the maze from the main entrance.",
+                        KeyRequirement: function(age) {
+                            return { min: 1, max: 3 };
+                        }
+                    },
+                    "Locked Door 2 On Main Path": {
+                        DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
+                        ItemGroup: ItemGroups.LOCKED_DOOR,
+                        Regions: ["mazeAfterDoor1"],
+                        MapInfo: { x: 135, y: 184 },
+                        Age: Age.EITHER,
+                        Order: 20,
+                        LongDescription: "This is door 2 on the left path of the maze from the main entrance.",
+                        KeyRequirement: function(age) {
+                            let minValue = 2 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
+                            return { min: minValue, max: 4 };
+                        }
+                    },
+                    "Locked Door 3 On Main Path": {
+                        DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
+                        ItemGroup: ItemGroups.LOCKED_DOOR,
+                        Regions: ["mazeAfterDoor2"],
+                        MapInfo: { x: 150, y: 160 },
+                        Age: Age.EITHER,
+                        Order: 22,
+                        LongDescription: "This is door 3 on the left path of the maze from the main entrance.",
+                        KeyRequirement: function(age) {
+                            let minValue = 3 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
+                            return { min: minValue, max: 5 };
+                        }
+                    },
+                    "Locked Door 4 On Main Path": {
+                        DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
+                        ItemGroup: ItemGroups.LOCKED_DOOR,
+                        Regions: ["mazeAfterDoor3"],
+                        MapInfo: { x: 130, y: 139 },
+                        Age: Age.EITHER,
+                        Order: 23,
+                        LongDescription: "This is door 4 on the left path of the maze from the main entrance.",
+                        KeyRequirement: function(age) {
+                            let minValue = 4 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
+                            return { min: minValue, max: 6 };
+                        }
+                    },
+                    "Locked Door 5 On Main Path": {
+                        DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
+                        ItemGroup: ItemGroups.LOCKED_DOOR,
+                        Regions: ["mazeAfterDoor4"],
+                        MapInfo: { x: 163, y: 145 },
+                        Age: Age.EITHER,
+                        Order: 25,
+                        LongDescription: "This is door 5 on the left path of the maze from the main entrance.",
+                        KeyRequirement: function(age) {
+                            let minValue = 5 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
+                            return { min: minValue, max: 7 };
+                        }
+                    },
+                    "Locked Door 6 On Main Path": {
+                        DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
+                        ItemGroup: ItemGroups.LOCKED_DOOR,
+                        Regions: ["mazeAfterDoor5"],
+                        MapInfo: { x: 178, y: 140 },
+                        Age: Age.EITHER,
+                        Order: 27,
+                        LongDescription: "This is door 6 on the left path of the maze from the main entrance.",
+                        KeyRequirement: function(age) {
+                            let minValue = 6 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
+                            return { min: minValue, max: 8 };
+                        }
+                    },
+                    "Locked Door 7 On Main Path": {
+                        DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
+                        ItemGroup: ItemGroups.LOCKED_DOOR,
+                        Regions: ["mazeAfterDoor6"],
+                        MapInfo: { x: 173, y: 156 },
+                        Age: Age.EITHER,
+                        Order: 28,
+                        LongDescription: "This is door 7 on the left path of the maze from the main entrance.",
+                        KeyRequirement: function(age) {
+                            let minValue = 7 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
+                            return { min: minValue, max: 9 };
+                        }
+                    },
+                    "Optional Locked Door 1": {
+                        DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
+                        ItemGroup: ItemGroups.LOCKED_DOOR,
+                        Regions: ["main"],
+                        MapInfo: { x: 173, y: 174 },
+                        Age: Age.EITHER,
+                        Order: 30,
+                        LongDescription: "This is the first door on the right path of the maze from the main entrance. It's recommended to avoid going this way if possible.",
+                        KeyRequirement: function(age) {
+                            return { min: 1, max: 9 };
+                        }
+                    },
+                    "Optional Locked Door 2": {
+                        DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
+                        ItemGroup: ItemGroups.LOCKED_DOOR,
+                        Regions: ["mazeAfterOptionalDoor1", "mazeDeadEnd"],
+                        MapInfo: { x: 197, y: 180 },
+                        Age: Age.EITHER,
+                        Order: 31,
+                        LongDescription: "This is the second door on the right path of the maze from the main entrance. It's recommended to avoid going this way if possible.",
+                        KeyRequirement: function(age) {
+                            return { min: 1, max: 9 };
+                        }
+                    }
+                }
+            },
+            dinalfosBeamosRoom: {
+                DisplayGroup: { groupName: "Dinalfos/Beamos Room", imageName: "Bomb" },
+                Exits: {
+                    bigLavaRoomFront: {
+                        RequiredItems: [ItemSets.EXPLOSIVES]
+                    }
+                },
+                ItemLocations: {
+                    "Chest in Dinalfos/Beamos Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 257, y: 244 },
                         Age: Age.EITHER,
@@ -5804,117 +5919,29 @@ let StandardDungeons = {
                         Order: 17.2,
                         LongDescription: "This is either the room to the right of the entrance, or the southern path from the big lava room. Shoot the symbol above the room leading to the big lava room with your bow to spawn this wonderitem.",
                         RequiredItems: [Items.FAIRY_BOW]
-                    },
-                     
-                     // Locked Doors
-                     "Locked Door 1 On Main Path": {
-                        ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["main"],
-                        MapInfo: { x: 154, y: 174 },
+                    }
+                }
+            },
+            sandyRoom: {
+                DisplayGroup: { groupName: "Sandy & Boulder Rooms", imageName: "Silver Rupees" },
+                Exits: {
+                    boulderRoom: {
+                        RequiredItems: [ItemSets.SWORDS]
+                    }
+                },
+                ItemLocations: {
+                    "Stalfos Chest in Sandy Room": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 64, y: 225 },
                         Age: Age.EITHER,
-                        Order: 18,
-                        LongDescription: "This is door 1 on the left path of the maze from the main entrance.",
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: 3 };
-                        }
-                    },
-                    "Locked Door 2 On Main Path": {
-                        ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["mazeAfterDoor1"],
-                        MapInfo: { x: 135, y: 184 },
-                        Age: Age.EITHER,
-                        Order: 20,
-                        LongDescription: "This is door 2 on the left path of the maze from the main entrance.",
-                        KeyRequirement: function(age) {
-                            let minValue = 2 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
-                            return { min: minValue, max: 4 };
-                        }
-                    },
-                    "Locked Door 3 On Main Path": {
-                        ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["mazeAfterDoor2"],
-                        MapInfo: { x: 150, y: 160 },
-                        Age: Age.EITHER,
-                        Order: 22,
-                        LongDescription: "This is door 3 on the left path of the maze from the main entrance.",
-                        KeyRequirement: function(age) {
-                            let minValue = 3 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
-                            return { min: minValue, max: 5 };
-                        }
-                    },
-                    "Locked Door 4 On Main Path": {
-                        ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["mazeAfterDoor3"],
-                        MapInfo: { x: 130, y: 139 },
-                        Age: Age.EITHER,
-                        Order: 23,
-                        LongDescription: "This is door 4 on the left path of the maze from the main entrance.",
-                        KeyRequirement: function(age) {
-                            let minValue = 4 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
-                            return { min: minValue, max: 6 };
-                        }
-                    },
-                    "Locked Door 5 On Main Path": {
-                        ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["mazeAfterDoor4"],
-                        MapInfo: { x: 163, y: 145 },
-                        Age: Age.EITHER,
-                        Order: 25,
-                        LongDescription: "This is door 5 on the left path of the maze from the main entrance.",
-                        KeyRequirement: function(age) {
-                            let minValue = 5 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
-                            return { min: minValue, max: 7 };
-                        }
-                    },
-                    "Locked Door 6 On Main Path": {
-                        ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["mazeAfterDoor5"],
-                        MapInfo: { x: 178, y: 140 },
-                        Age: Age.EITHER,
-                        Order: 27,
-                        LongDescription: "This is door 6 on the left path of the maze from the main entrance.",
-                        KeyRequirement: function(age) {
-                            let minValue = 6 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
-                            return { min: minValue, max: 8 };
-                        }
-                    },
-                    "Locked Door 7 On Main Path": {
-                        ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["mazeAfterDoor6"],
-                        MapInfo: { x: 173, y: 156 },
-                        Age: Age.EITHER,
-                        Order: 28,
-                        LongDescription: "This is door 7 on the left path of the maze from the main entrance.",
-                        KeyRequirement: function(age) {
-                            let minValue = 7 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
-                            return { min: minValue, max: 9 };
-                        }
-                    },
-                    "Optional Locked Door 1": {
-                        ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["main"],
-                        MapInfo: { x: 173, y: 174 },
-                        Age: Age.EITHER,
-                        Order: 30,
-                        LongDescription: "This is the first door on the right path of the maze from the main entrance. It's recommended to avoid going this way if possible.",
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: 9 };
-                        }
-                    },
-                    "Optional Locked Door 2": {
-                        ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["mazeAfterOptionalDoor1", "mazeDeadEnd"],
-                        MapInfo: { x: 197, y: 180 },
-                        Age: Age.EITHER,
-                        Order: 31,
-                        LongDescription: "This is the second door on the right path of the maze from the main entrance. It's recommended to avoid going this way if possible.",
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: 9 };
-                        }
+                        Order: 3,
+                        LongDescription: "This is the room to the left of the entrance. I recommend going this way, first, as it only requires the hookshot to make it most of the way around the dungeon. Anyway, kill the stalfos in here within the time limit to get this chest.",
+                        RequiredItems: [ItemSets.SWORDS]
                     }
                 }
             },
             boulderRoom: {
+                DisplayGroup: { groupName: "Sandy & Boulder Rooms", imageName: "Silver Rupees" },
                 Exits: {
                     silverBlockRoom: {
                         Map: "Training Grounds",
@@ -5968,6 +5995,7 @@ let StandardDungeons = {
                 }
             },
             silverBlockRoom: {
+                DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Strength Silver Gauntlets" },
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.gtgChildVineClips && !Settings.GlitchesToAllow.gtgSlopesRoomFireWallSkip; 
                 },
@@ -5991,7 +6019,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Wolfos Chest in Room by Silver Block": {
                         ItemGroup: ItemGroups.CHEST,
@@ -6002,7 +6029,42 @@ let StandardDungeons = {
                     }
                 }
             },
+            roomBehindSilverBlock: {
+                DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Strength Silver Gauntlets" },
+                Exits: {},
+                ItemLocations: {
+                    "Silver Block Room Left Spawned Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 68, y: 28 },
+                        Age: Age.ADULT,
+                        Order: 5,
+                        LongDescription: "This is the room you get to after pushing the silver block in the room with the wolfos. If you haven't already, from the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. Step on the switch to remove the iron bars on the door beyond the silver block. The chest spawns after you kill the like-likes."
+                    },
+                    "Silver Block Room Right Spawned Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 78, y: 37 },
+                        Age: Age.ADULT,
+                        Order: 6,
+                        LongDescription: "This is the room you get to after pushing the silver block in the room with the wolfos. If you haven't already, from the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. Step on the switch to remove the iron bars on the door beyond the silver block. The chest spawns after you kill the like-likes."
+                    },
+                    "Silver Block Room Back Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 68, y: 17 },
+                        Age: Age.ADULT,
+                        Order: 7,
+                        LongDescription: "This is the room you get to after pushing the silver block in the room with the wolfos. If you haven't already, from the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. Step on the switch to remove the iron bars on the door beyond the silver block. The chest is in the back of the room."
+                    },
+                    "Silver Block Room Hidden Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 81, y: 22 },
+                        Age: Age.ADULT,
+                        Order: 8,
+                        LongDescription: "This is the room you get to after pushing the silver block in the room with the wolfos. If you haven't already, from the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. Step on the switch to remove the iron bars on the door beyond the silver block. The chest is in the only hole without a visible chest in it."
+                    }
+                }
+            },
             eyeStatueRoomTop: {
+                DisplayGroup: { groupName: "Eye Statue Room", imageName: "Fairy Bow" },
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {
                     silverBlockRoom: {},
@@ -6015,12 +6077,12 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         Order: 8.9,
-                        LongDescription: "This is the room either after the wolfos room, or after the room with the hammerable pillars. If coming from the former, you need to use your hookshot to hook a target beyond a fake wall above the fake door. If coming from the latter, bash the pillars with your hammer, then shoot the eye switch. Otherwise, you must use scarecrow's song (the scarecrow is near the door) to get up.<br/><br/>Use hover boots to navigate to the top of the center statue to get this wonderitem.",
+                        LongDescription: "This is the room after the wolfos room. Use hover boots to navigate to the top of the center statue to get this wonderitem.",
                         CustomRequirement: function(age) {
                             return Data.canMegaFlip(age) || (age === Age.ADULT && 
                                 (
                                     Settings.GlitchesToAllow.gtgEyeStatueWonderItemJumpslash || 
-                                    ItemData.canUse(age, [Equipment.HOVER_BOOTS])
+                                    ItemData.canUse(age, Equipment.HOVER_BOOTS)
                                 )
                             );
                         }
@@ -6030,12 +6092,13 @@ let StandardDungeons = {
                         MapInfo: { x: 165, y: 133 },
                         Age: Age.EITHER,
                         Order: 10,
-                        LongDescription: "This is the room either after the wolfos room, or after the room with the hammerable pillars. If coming from the former, you need to use your hookshot to hook a target beyond a fake wall above the fake door. If coming from the latter, bash the pillars with your hammer, then shoot the eye switch. In the eye statue room, get to the central platform - it will start spinning. Shoot each eye with an arrow to unlock a door on top. If you came from the wolfos room, jump in the lava to respawn on top to get to it. Otherwise, you must use scarecrow's song (the scarecrow is near the door) to get up.",
+                        LongDescription: "From the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. In the eye statue room, get to the central platform - it will start spinning. Shoot each eye with an arrow to unlock a door on top. Jump in the lava to respawn on top to get to it (or spawn the scarecrow by the other door <strong>before you fall</strong> and use it to get back up).",
                         RequiredAdultItems: [Items.FAIRY_BOW]
                     }
                 }
             },
             eyeStatueRoomBottom: {
+                DisplayGroup: { groupName: "Eye Statue Room", imageName: "Fairy Bow" },
                 Exits: {
                     // eyeStatueRoomTop cannot be accessed with scarecrow - it won't spawn from below!
                     bigLavaRoomUpperBack: {}
@@ -6046,12 +6109,13 @@ let StandardDungeons = {
                         MapInfo: { x: 170, y: 91 },
                         Age: Age.ADULT,
                         Order: 9,
-                        LongDescription: "This is the room either after the wolfos room, or after the room with the hammerable pillars. If coming from the former, you need to use your hookshot to hook a target beyond a fake wall above the fake door. If coming from the latter, bash the pillars with your hammer, then shoot the eye switch. In the eye statue room, get to the central platform - it will start spinning. Shoot each eye with an arrow to spawn the chest.",
+                        LongDescription: "From the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. In the eye statue room, get to the central platform - it will start spinning. Shoot each eye with an arrow to spawn the chest.",
                         RequiredItems: [Items.FAIRY_BOW]
                     }
                 }
             },
             hammerPillarRoom: {
+                DisplayGroup: { groupName: "Hammer Pillar Room", imageName: "Megaton Hammer" },
                 Exits: {
                     eyeStatueRoomBottom: {
                         RequiredItems: [Items.MEGATON_HAMMER, ItemSets.PROJECTILES]
@@ -6085,6 +6149,7 @@ let StandardDungeons = {
                 }
             },
             bigLavaRoomFront: {
+                DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
                 Exits: {
                     mazeDeadEnd: {
                         CustomRequirement: function(age) {
@@ -6113,7 +6178,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Lava Silver Rupee in Front Center": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -6145,6 +6209,7 @@ let StandardDungeons = {
                 }
             },
             bigLavaRoomBack: {
+                DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
                 Exits: {
                     bigLavaRoomFront: {
                         CustomRequirement: function(age) {
@@ -6170,6 +6235,7 @@ let StandardDungeons = {
                 }
             },  
             bigLavaRoomUpperBack: {
+                DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
                 Exits: {
                     hammerPillarRoom: {},
                     bigLavaRoomBack: {},
@@ -6196,6 +6262,7 @@ let StandardDungeons = {
                 }
             },
             waterRoom: {
+                DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
                 Exits: {},
                 ItemLocations: {
                     "Topmost Water Room Silver Rupee": {
@@ -6243,52 +6310,8 @@ let StandardDungeons = {
                     }
                 }
             },
-            roomBehindSilverBlock: {
-                Exits: {},
-                ItemLocations: {
-                    "Silver Block Room Left Spawned Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 68, y: 28 },
-                        Age: Age.ADULT,
-                        Order: 5,
-                        LongDescription: "This is the room you get to after pushing the silver block in the room with the wolfos. If you haven't already, from the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. Step on the switch to remove the iron bars on the door beyond the silver block. The chest spawns after you kill the like-likes."
-                    },
-                    "Silver Block Room Right Spawned Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 78, y: 37 },
-                        Age: Age.ADULT,
-                        Order: 6,
-                        LongDescription: "This is the room you get to after pushing the silver block in the room with the wolfos. If you haven't already, from the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. Step on the switch to remove the iron bars on the door beyond the silver block. The chest spawns after you kill the like-likes."
-                    },
-                    "Silver Block Room Back Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 68, y: 17 },
-                        Age: Age.ADULT,
-                        Order: 7,
-                        LongDescription: "This is the room you get to after pushing the silver block in the room with the wolfos. If you haven't already, from the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. Step on the switch to remove the iron bars on the door beyond the silver block. The chest is in the back of the room."
-                    },
-                    "Silver Block Room Hidden Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 81, y: 22 },
-                        Age: Age.ADULT,
-                        Order: 8,
-                        LongDescription: "This is the room you get to after pushing the silver block in the room with the wolfos. If you haven't already, from the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. Step on the switch to remove the iron bars on the door beyond the silver block. The chest is in the only hole without a visible chest in it."
-                    }
-                }
-            },
-            mazeAfterOptionalDoor1: {
-                Exits: {
-                    mazeDeadEnd: {
-                        Map: "Training Grounds",
-                        LockedDoor: "Optional Locked Door 2",
-                        SkipLockedDoor: function(age) {
-                            return MapLocations["Training Grounds"]._canSkipMazeDoors(age);
-                        }
-                    }
-                },
-                ItemLocations: {}
-            },
             mazeDeadEnd: {
+                DisplayGroup: { groupName: "Maze Dead End", imageName: "Song of Time" },
                 Exits: {
                     mazeAfterOptionalDoor1: {
                         Map: "Training Grounds",
@@ -6296,7 +6319,6 @@ let StandardDungeons = {
                     },
                     bigLavaRoomFront: {}
                 },
-
                 ItemLocations: {
                     "Lava Room Key on Platform": {
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -6321,7 +6343,21 @@ let StandardDungeons = {
                     }
                 }
             },
+            mazeAfterOptionalDoor1: {
+                DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
+                Exits: {
+                    mazeDeadEnd: {
+                        Map: "Training Grounds",
+                        LockedDoor: "Optional Locked Door 2",
+                        SkipLockedDoor: function(age) {
+                            return MapLocations["Training Grounds"]._canSkipMazeDoors(age);
+                        }
+                    }
+                },
+                ItemLocations: {}
+            },
             mazeAfterDoor1: {
+                DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
                 Exits: {
                     eyeStatueRoomTop: {
                         Age: Age.CHILD,
@@ -6338,7 +6374,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Left Maze Path After Door 1": {
                         ItemGroup: ItemGroups.CHEST,
@@ -6350,6 +6385,7 @@ let StandardDungeons = {
                 }
             },
             mazeAfterDoor2: {
+                DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
                 Exits: {
                     mazeAfterDoor3: {
                         Map: "Training Grounds",
@@ -6359,7 +6395,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Left Maze Path After Door 2": {
                         ItemGroup: ItemGroups.CHEST,
@@ -6371,6 +6406,7 @@ let StandardDungeons = {
                 }
             },
             mazeAfterDoor3: {
+                DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
                 Exits: {
                     mazeAfterDoor4: {
                         Map: "Training Grounds",
@@ -6383,6 +6419,7 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             mazeAfterDoor4: {
+                DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
                 Exits: {
                     mazeAfterDoor5: {
                         Map: "Training Grounds",
@@ -6392,7 +6429,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Left Maze Path After Door 4": {
                         ItemGroup: ItemGroups.CHEST,
@@ -6404,6 +6440,7 @@ let StandardDungeons = {
                 }
             },
             mazeAfterDoor5: {
+                DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
                 Exits: {
                     mazeAfterDoor6: {
                         Map: "Training Grounds",
@@ -6413,7 +6450,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Left Maze Path After Door 5": {
                         ItemGroup: ItemGroups.CHEST,
@@ -6425,6 +6461,7 @@ let StandardDungeons = {
                 }
             },
             mazeAfterDoor6: {
+                DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
                 Exits: {
                     mazeAfterDoor7: {
                         Map: "Training Grounds",
@@ -6437,6 +6474,7 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             mazeAfterDoor7: {
+                DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
                 Exits: {},
                 ItemLocations: {
                     "Center Maze Chest": {
