@@ -5300,10 +5300,12 @@ let StandardDungeons = {
     "Bottom of the Well": {
         Abbreviation: "WELL",
         MapGroup: MapGroups.DUNGEONS,
+        UsesDisplayGroups: true,
         Floors: ["F1", "B1"],
         StartingFloorIndex: 0,
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Main Area Loop", imageName: "Deku Nut" },
                 Exits: {
                     mainArea: {
                         Age: Age.CHILD,
@@ -5316,6 +5318,7 @@ let StandardDungeons = {
                 ItemLocations: {
                     // Locked Doors
                     "Locked Door After Crawlspace": {
+                        DisplayGroup: { groupName: "Main Area Loop", imageName: "Deku Nut" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["main"],
                         MapInfo: { x: 300, y: 71, floor: "F1" },
@@ -5327,8 +5330,9 @@ let StandardDungeons = {
                         }
                     },
                     "Left Locked Door in Center": {
+                        DisplayGroup: { groupName: "Central Area", imageName: "Compass" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["main"],
+                        Regions: ["centralArea"],
                         MapInfo: { x: 160, y: 121, floor: "F1" },
                         Age: Age.CHILD,
                         Order: 17,
@@ -5338,8 +5342,9 @@ let StandardDungeons = {
                         }
                     },
                     "Right Locked Door in Center": {
+                        DisplayGroup: { groupName: "Central Area", imageName: "Compass" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["main"],
+                        Regions: ["centralArea"],
                         MapInfo: { x: 225, y: 121, floor: "F1" },
                         Age: Age.CHILD,
                         Order: 20,
@@ -5351,31 +5356,21 @@ let StandardDungeons = {
                 }
             },
             mainArea: {
+                DisplayGroup: { groupName: "Main Area Loop", imageName: "Deku Nut" },
                 Exits: {
+                    centralArea: {},
+                    bombableHoleRoom: {
+                        RequiredItems: [ItemSets.EXPLOSIVES]
+                    },
+                    coffinRoom: {},
                     pitRoom: {
                         Map: "Bottom of the Well",
                         LockedDoor: "Locked Door After Crawlspace"
                     },
-                    leftLockedRoom: {
-                        Map: "Bottom of the Well",
-                        LockedDoor: "Left Locked Door in Center"
-                    },
-                    rightLockedRoom: {
-                        Map: "Bottom of the Well",
-                        LockedDoor: "Right Locked Door in Center"
-                    },
                     deadhandRoom: {
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
                     },
-                    bombableHoleRoom: {
-                        RequiredItems: [ItemSets.EXPLOSIVES]
-                    },
-                    mapChestArea: {
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAll(age, [Items.DEKU_STICK, Equipment.STRENGTH]) ||
-                                ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS);
-                        }
-                    }
+                    basement: {}
                 },
                 ItemLocations: {
                     "2 Pots by Entrance": {
@@ -5392,7 +5387,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 231, y: 195, floor: "F1" },
                         Age: Age.CHILD,
-                        Order: 2,
+                        Order: 3,
                         LongDescription: "Get to the main room. Follow the wall in front of you around to the right. There's a fake wall to your left when you first turn the left corner.",
                     },
                     "Chest in Front Left Wall": {
@@ -5411,20 +5406,6 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 5,
                         LongDescription: "These pots are past an invisible wall in the southwest corner of the main room."
-                    },
-                    "Compass Chest in Center": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 167, y: 172, floor: "F1" },
-                        Age: Age.CHILD,
-                        Order: 6,
-                        LongDescription: "From the main room's entrance, follow the path to the left. When you enter the tunnel, hug the right wall until you pass through the fake wall. The chest is in there, but don't go too far in front of it because there's a pit."
-                    },
-                    "Chest by Giant Skulltula in Center": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 221, y: 172, floor: "F1" },
-                        Age: Age.CHILD,
-                        Order: 7,
-                        LongDescription: "Get to the center room, past the fake wall straight ahead from the entrance. This is the chest that's guarded by the giant skulltula in the righthand side cage. DO NOT accidently go to the map chest, as you might accidently fall into the pit."
                     },
                     "Northwest Chest Under Rubble": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5455,6 +5436,100 @@ let StandardDungeons = {
                         LongDescription: "First, drain the water by playing Zelda's Lullaby on the Triforce picture on the north side of the main room. This chest is near the entrance to the coffin room, which is in a room on the left side of the main room.",
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
                     },
+                    "Underwater Chest in Front": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 185, y: 238, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 14,
+                        LongDescription: "First, drain the water by playing Zelda's Lullaby on the Triforce picture on the north side of the main room. This chest is in the pit by the entrance, near the crawlspace to Dead Hand.",
+                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                    }
+                }
+            },
+            bombableHoleRoom: {
+                DisplayGroup: { groupName: "Main Area Loop", imageName: "Deku Nut" },
+                Exits: {},
+                ItemLocations: {
+                    "Chest in Front Bombable Hole": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 182, y: 192, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 2,
+                        LongDescription: "Get to the main room. Bomb the rubble that's in front of you and slightly to the left to gain access to this chest."
+                    }
+                }
+            },
+            centralArea: {
+                DisplayGroup: { groupName: "Central Area", imageName: "Compass" },
+                Exits: {
+                    leftLockedRoom: {
+                        Map: "Bottom of the Well",
+                        LockedDoor: "Left Locked Door in Center"
+                    },
+                    rightLockedRoom: {
+                        Map: "Bottom of the Well",
+                        LockedDoor: "Right Locked Door in Center"
+                    }
+                },
+                ItemLocations: {
+                    "Compass Chest in Center": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 167, y: 172, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 6,
+                        LongDescription: "From the main room's entrance, follow the path to the left. When you enter the tunnel, hug the right wall until you pass through the fake wall. The chest is in there, but don't go too far in front of it because there's a pit."
+                    },
+                    "Chest by Giant Skulltula in Center": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 221, y: 172, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 7,
+                        LongDescription: "Get to the center room, past the fake wall straight ahead from the entrance. This is the chest that's guarded by the giant skulltula in the righthand side cage. DO NOT accidently go to the map chest, as you might accidently fall into the pit."
+                    }
+                }
+            },
+            leftLockedRoom: {
+                DisplayGroup: { groupName: "Central Left Locked Room", imageName: "3 Pots" },
+                Exits: {},
+                ItemLocations: {
+                    "3 Flying Pots in Left Locked Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 160, y: 95, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 18,
+                        LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the left side - the pots are in the back and will fly at you."
+                    },
+                    "Skulltula in Left Locked Room": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        MapInfo: { x: 160, y: 87, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 19,
+                        LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the left side to get to the skulltula.",
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                    }
+                }
+            },
+            rightLockedRoom: {
+                DisplayGroup: { groupName: "Central Right Locked Room", imageName: "Skulltula" },
+                Exits: {},
+                ItemLocations: {
+                    "Skulltula in Right Locked Room": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        MapInfo: { x: 213, y: 80, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 21,
+                        LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the right side. Hug the right wall, moving counter-clockwise, over the invisible floor to get to the skulltula.",
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                    }
+                }
+            },
+            coffinRoom: {
+                DisplayGroup: { groupName: "Coffin Room", imageName: "2 Hearts" },
+                Exits: {},
+                ItemLocations: {
                     "Heart in Open Coffin": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapInfo: { x: 42, y: 130, floor: "F1" },
@@ -5485,95 +5560,11 @@ let StandardDungeons = {
                             return ItemData.canUseAny(age, [Items.DEKU_STICK, ItemSets.FIRE_ITEMS]) ||
                                 (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
                         }
-                    },
-                    "Underwater Chest in Front": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 185, y: 238, floor: "F1" },
-                        Age: Age.CHILD,
-                        Order: 14,
-                        LongDescription: "First, drain the water by playing Zelda's Lullaby on the Triforce picture on the north side of the main room. This chest is in the pit by the entrance, near the crawlspace to Dead Hand.",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
-                    },
-                    "5 Blue Rupees in Basement Center": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "5 Blue Rupees",
-                        MapInfo: { x: 204, y: 155, floor: "B1" },
-                        Age: Age.CHILD,
-                        Order: 27,
-                        LongDescription: "Fall down the central hole (by the wooden X in the center of the dungeon) to get to these rupees."
-                    },
-                    "10 Pots in Second North Wing": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "10 Pots",
-                        MapInfo: { x: 248, y: 103, floor: "B1" },
-                        Age: Age.CHILD,
-                        Order: 28,
-                        LongDescription: "These pots are down the second wing from the left in the basement."
-                    },
-                    "2 Pots by Second North Wing": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 198, y: 174, floor: "B1" },
-                        Age: Age.CHILD,
-                        Order: 29,
-                        LongDescription: "These pots are by the entrance to the second wing from the left in the basement."
-                    },
-                    "Silver Rupee on South Basement Wood Beam": {
-                        ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 176, y: 232, floor: "B1" },
-                        Age: Age.CHILD,
-                        Order: 31,
-                        LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee on the wood beam more to the south, in the central area."
-                    },
-                    "Silver Rupee on North Basement Wood Beam": {
-                        ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 150, y: 201, floor: "B1" },
-                        Age: Age.CHILD,
-                        Order: 32,
-                        LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee on the wood beam more to the north, in the central area."
-                    },
-                    "Silver Rupee by Baesment Ladder": {
-                        ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 114, y: 235, floor: "B1" },
-                        Age: Age.CHILD,
-                        Order: 33,
-                        LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee by the bottom ladder."
-                    },
-                    "Silver Rupee up Basement Ladder": {
-                        ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 93, y: 235, floor: "B1" },
-                        Age: Age.CHILD,
-                        Order: 34,
-                        LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee you get by climbing the bottom ladder."
-                    },
-                    "Silver Rupee up Both Basement Ladders": {
-                        ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 55, y: 247, floor: "B1" },
-                        Age: Age.CHILD,
-                        Order: 35,
-                        LongDescription: "Fall down one of the many pits to get to the basement. Climb both basement ladders; the rupee is to your left."
-                    }
-                }
-            },
-            bombableHoleRoom: {
-                Exits: {},
-                ItemLocations: {
-                    "Chest in Front Bombable Hole": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 182, y: 192, floor: "F1" },
-                        Age: Age.CHILD,
-                        Order: 3,
-                        LongDescription: "Get to the main room. Bomb the rubble that's in front of you and slightly to the left to gain access to this chest."
                     }
                 }
             },
             pitRoom: {
+                DisplayGroup: { groupName: "Pit & Like-Like Rooms", imageName: "Bomb" },
                 Exits: {
                     deadhandRoom: {
                         CustomRequirement: function(age) {
@@ -5584,7 +5575,6 @@ let StandardDungeons = {
                         RequiredItems: [Equipment.STRENGTH]
                     }
                 },
-
                 ItemLocations: {
                     "Pot in Room With Pits": {
                         ItemGroup: ItemGroups.POT,
@@ -5621,43 +5611,8 @@ let StandardDungeons = {
                     }
                 }
             },
-            leftLockedRoom: {
-                Exits: {},
-                ItemLocations: {
-                    "3 Flying Pots in Left Locked Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 160, y: 95, floor: "F1" },
-                        Age: Age.CHILD,
-                        Order: 18,
-                        LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the left side - the pots are in the back and will fly at you."
-                    },
-                    "Skulltula in Left Locked Room": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 160, y: 87, floor: "F1" },
-                        Age: Age.CHILD,
-                        Order: 19,
-                        LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the left side to get to the skulltula.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
-                    }
-                }
-            },
-            rightLockedRoom: {
-                Exits: {},
-                ItemLocations: {
-                    "Skulltula in Right Locked Room": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 213, y: 80, floor: "F1" },
-                        Age: Age.CHILD,
-                        Order: 21,
-                        LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the right side. Hug the right wall, moving counter-clockwise, over the invisible floor to get to the skulltula.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
-                    }
-                }
-            },
             deadhandRoom: {
+                DisplayGroup: { groupName: "Dead Hand Room", imageName: "Lens of Truth" },
                 Exits: {
                     bombableHoleRoom: {
                         RequiredItems: [Equipment.KOKIRI_SWORD],
@@ -5667,7 +5622,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Hidden Chest in Dead Hand Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5690,15 +5644,85 @@ let StandardDungeons = {
                     }
                 }
             },
-            mapChestArea: {
+            basement: {
+                DisplayGroup: { groupName: "Basement", imageName: "Dungeon Map" },
                 Exits: {},
                 ItemLocations: {
+                    "5 Blue Rupees in Basement Center": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "5 Blue Rupees",
+                        MapInfo: { x: 204, y: 155, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 27,
+                        LongDescription: "Fall down the central hole (by the wooden X in the center of the dungeon) to get to these rupees."
+                    },
+                    "10 Pots in Second North Wing": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "10 Pots",
+                        MapInfo: { x: 248, y: 103, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 28,
+                        LongDescription: "These pots are down the second wing from the left in the basement."
+                    },
+                    "2 Pots by Second North Wing": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 198, y: 174, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 29,
+                        LongDescription: "These pots are by the entrance to the second wing from the left in the basement."
+                    },
                     "Map Chest in Basement": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 302, y: 238, floor: "B1" },
                         Age: Age.CHILD,
                         Order: 30,
-                        LongDescription: "Fall down one of the many pits to get to the basement. This chest is located behind the rocks that are farthest from the ladder. That is, if you face away from the ladder, it's the rightmost set of rocks.<br/><br/>You can use the bombchus from the rocks in the corridor to the left to get in. You drop down from the pit room with the beamos. If you can't get there, you can light a deku stick on fire and jumpslash between the rocks to light the bomb flower."
+                        LongDescription: "Fall down one of the many pits to get to the basement. This chest is located behind the rocks that are farthest from the ladder. That is, if you face away from the ladder, it's the rightmost set of rocks.<br/><br/>You can use the bombchus from the rocks in the corridor to the left to get in. You drop down from the pit room with the beamos. If you can't get there, you can light a deku stick on fire and jumpslash between the rocks to light the bomb flower.",
+                        CustomRequirement: function(age) {
+                            return ItemData.canUseAll(age, [Items.DEKU_STICK, Equipment.STRENGTH]) ||
+                                ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS);
+                        }
+                    },
+                    "Silver Rupee on South Basement Wood Beam": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 176, y: 232, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 31,
+                        LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee on the wood beam more to the south, in the central area."
+                    },
+                    "Silver Rupee on North Basement Wood Beam": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 150, y: 201, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 32,
+                        LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee on the wood beam more to the north, in the central area."
+                    },
+                    "Silver Rupee by Baesment Ladder": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 114, y: 235, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 33,
+                        LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee by the bottom ladder."
+                    },
+                    "Silver Rupee up Basement Ladder": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 93, y: 235, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 34,
+                        LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee you get by climbing the bottom ladder."
+                    },
+                    "Silver Rupee up Both Basement Ladders": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 55, y: 247, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 35,
+                        LongDescription: "Fall down one of the many pits to get to the basement. Climb both basement ladders; the rupee is to your left."
                     }
                 }
             }

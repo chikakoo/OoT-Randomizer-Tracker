@@ -6145,6 +6145,7 @@ let MQDungeons = {
         Abbreviation: "WELL",
         MapGroup: MapGroups.DUNGEONS,
         IsMasterQuest: true,
+        UsesDisplayGroups: true,
         Floors: ["F1", "B1"],
         StartingFloorIndex: 0,
         UseChildAge: function() {
@@ -6153,12 +6154,17 @@ let MQDungeons = {
         },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Main Area Loop", imageName: "Slingshot Wonderitem" },
                 Exits: {
                     afterFirstCrawlSpace: {
                         CustomRequirement: function(age) {
                             return age === Age.CHILD || (Data.canWeirdShot(age) && ItemData.canUse(age, UpgradedItems.LONGSHOT));
                         }
-                    }
+                    },
+                    
+                    Exit: {
+                        OwExit: OwExits["Bottom of the Well"]["Exit"]
+                    },
                 },
                 ItemLocations: {
                     // Locked Doors
@@ -6173,7 +6179,6 @@ let MQDungeons = {
                             return { min: 1, max: 2 };
                         }
                     },
-
                     "Locked Door in Floor Master Room": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["afterFirstCrawlSpace"],
@@ -6189,6 +6194,7 @@ let MQDungeons = {
                 }
             },
             afterFirstCrawlSpace: {
+                DisplayGroup: { groupName: "Main Area Loop", imageName: "Slingshot Wonderitem" },
                 Exits: {
                     centerRoom: {
                         RequiredChoiceOfItems: [
@@ -6206,14 +6212,9 @@ let MQDungeons = {
                     },
                     coffinRoom: {
                         Map: "Bottom of the Well",
-                        LockedDoor: "Locked Door in West Main Room",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
-                    },
-                    Exit: {
-                        OwExit: OwExits["Bottom of the Well"]["Exit"]
+                        LockedDoor: "Locked Door in West Main Room"
                     }
                 },
-
                 ItemLocations: {
                     "2 Hearts in Front Bombable Hole": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -6260,133 +6261,8 @@ let MQDungeons = {
                     }
                 }
             },
-            centerRoom: {
-                Exits: {
-                    // Technically this door isn't here, but it's useless to open it if you can't get here so we require it
-                    basementCenter: {
-                        Map: "Bottom of the Well",
-                        LockedDoor: "Locked Door in Floor Master Room",
-                        Age: Age.CHILD
-                    },
-                    eastCenterRoom: {}
-                },
-
-                ItemLocations: {
-                    "Center Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 194, y: 127, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 7,
-                        LongDescription: "WALL MASTER WARNING:<br/>Navigate to the back of the main room and play Zelda's Lullaby at the triforce. This will open a bunch of gates. Proceed behind you to the center room with the chest.<br/><br/>Alternatively, you can bomb the rocks near the middle-west of the main room. Sidehop then jumpslash over the hole in the ground to get to the center area."
-                    },
-                    "Skulltula in West Center Room": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 159, y: 99, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 8,
-                        LongDescription: "WALL MASTER WARNING:<br/>Bomb some rocks near the southwest corner of the main room and press the switch to unbar a door. Make your way to the center either by sidehopping and jumpslashing, or by going around through the already opened gates (opened via the crystal switch in the north part of the main area).<br/><br/>Enter the door that was just unbarred. The skulltula is under the gravestone. Be careful of invisible enemies."
-                    },
-                    "3 Pots in Center Room Cell": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 221, y: 172, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 9,
-                        LongDescription: "WALL MASTER WARNING:<br/>Navigate to the back of the main room and play Zelda's Lullaby at the triforce. This will open a bunch of gates. Proceed behind you to the center room - the pots are on the right side of the room surrounded by cell walls.<br/><br/>Alternatively, you can bomb the rocks near the middle-west of the main room. Sidehop then jumpslash over the hole in the ground to get to the center area."
-                    },
-                    "3 Hearts in Basement": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Hearts",
-                        MapInfo: { x: 295, y: 147, floor: "B1" },
-                        Age: Age.EITHER,
-                        Order: 15,
-                        LongDescription: "WALL MASTER WARNING:<br/>To get to the basement, you can fall down a hole in the center room (not the very center). Navigate to the northeastern path (the second from the right) to get to the hearts."
-                    },
-                    "Skulltula in Basement": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 51, y: 43, floor: "B1" },
-                        Age: Age.EITHER,
-                        Order: 16,
-                        LongDescription: "WALL MASTER WARNING:<br/>To get to the basement, you can fall down a hole in the center room (not the very center). Navigate to the northwestern part of the basement to get to the skulltula. Watch out for invisible giant skulltulas on the way."
-                    }
-                }
-            },
-            eastCenterRoom: {
-                Exits: {},
-                ItemLocations: {
-                    "3 Pots in East Center Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 231, y: 83, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 10,
-                        LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door (use a pot if needed). Enter it - the pots are marking the invisible path around the room."
-                    },
-                    "Freestanding Item in East Center Room": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 216, y: 80, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 11,
-                        LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door (use a pot if needed). Enter it, and navigate counter-clockwise around the room to get to the item."
-                    },
-                    "4 Wonderitems in East Center Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "4 Slingshot Wonderitems",
-                        MapInfo: { x: 218, y: 74, floor: "F1" },
-                        Age: Age.CHILD,
-                        Order: 11.1,
-                        LongDescription: "Shoot the lens of truth picture in the east center room to spawn wonderitems (do it 4 times to get all 4)."
-                    }
-                }
-            },
-            drainedWater: {
-                Exits: {},
-                ItemLocations: {
-                    "Dead Hand Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 317, y: 238, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 12,
-                        LongDescription: "Drain the water by hitting the switch in the back of the main room (use a projectile, a pot from the center, or jumpslash it with a sword/stick/hammer). Navigate back to the entrance and enter the crawl space leading to the Dead Hand room like normal. Kill him to spawn the chest.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; }
-
-                            return Settings.RandomizerSettings.deadHandNeedsSword
-                                ? Equipment.KOKIRI_SWORD.playerHas
-                                : ItemData.canUse(age, ItemSets.SWORDS);
-                        }
-                    },
-                    "Freestanding Item in Dead Hand Room": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 333, y: 229, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 13,
-                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES, Items.BOOMERANG],
-                        LongDescription: "In the Dead Hand room, bomb the back left rubble to reveal the item. You can also stand on in the corner of the rubble and boomerang straight down to get it."
-                    }
-                }
-            },
-            basementCenter: {
-                Exits: {},
-                ItemLocations: {
-                    "Chest in Basement": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 295, y: 235, floor: "B1" },
-                        Age: Age.CHILD,
-                        Order: 14,
-                        LongDescription: "WALL MASTER WARNING:<br/>Crawl through the crawlspace in the back right corner of the main room. Hit the switch in the eye of the picture on the wall to open the door. Ignore the enemies and open the locked door. Bomb the rubble in the next room to reveal a switch. Navigate to the center and fall in the grate that opened.<br/><br/>Press the switch to spawn the chest. Navigate to the southeast part of the basement to get to the chest."
-                    }
-                }
-            },
             coffinRoom: {
+                DisplayGroup: { groupName: "Coffin Room", imageName: "2 Hearts" },
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Coffin Room": {
@@ -6419,6 +6295,149 @@ let MQDungeons = {
                             return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]) ||
                                 (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
                         }
+                    }
+                }
+            },
+            centerRoom: {
+                DisplayGroup: { groupName: "Central Area", imageName: "Dungeon Map" },
+                Exits: {
+                    eastCenterRoom: {}, // Can always use a pot to open this
+                    westCenterRoom: {},
+                    basement: {},
+                    // Technically this door isn't here, but it's useless to open it if you can't get here so we require it
+                    basementCenter: {
+                        Map: "Bottom of the Well",
+                        LockedDoor: "Locked Door in Floor Master Room",
+                        Age: Age.CHILD
+                    }
+                },
+                ItemLocations: {
+                    "Center Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 194, y: 127, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 7,
+                        LongDescription: "WALL MASTER WARNING:<br/>Navigate to the back of the main room and play Zelda's Lullaby at the triforce. This will open a bunch of gates. Proceed behind you to the center room with the chest.<br/><br/>Alternatively, you can bomb the rocks near the middle-west of the main room. Sidehop then jumpslash over the hole in the ground to get to the center area."
+                    },
+                    "3 Pots in Center Room Cell": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 221, y: 172, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 9,
+                        LongDescription: "WALL MASTER WARNING:<br/>Navigate to the back of the main room and play Zelda's Lullaby at the triforce. This will open a bunch of gates. Proceed behind you to the center room - the pots are on the right side of the room surrounded by cell walls.<br/><br/>Alternatively, you can bomb the rocks near the middle-west of the main room. Sidehop then jumpslash over the hole in the ground to get to the center area."
+                    }
+                }
+            },
+            eastCenterRoom: {
+                DisplayGroup: { groupName: "Central East Locked Room", imageName: "Skulltula" },
+                Exits: {},
+                ItemLocations: {
+                    "3 Pots in East Center Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 231, y: 83, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 10,
+                        LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door (use a pot if needed). Enter it - the pots are marking the invisible path around the room."
+                    },
+                    "Freestanding Item in East Center Room": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 216, y: 80, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 11,
+                        LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door (use a pot if needed). Enter it, and navigate counter-clockwise around the room to get to the item."
+                    },
+                    "4 Wonderitems in East Center Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Slingshot Wonderitems",
+                        MapInfo: { x: 218, y: 74, floor: "F1" },
+                        Age: Age.CHILD,
+                        Order: 11.1,
+                        LongDescription: "Shoot the lens of truth picture in the east center room to spawn wonderitems (do it 4 times to get all 4)."
+                    }
+                }
+            },
+            westCenterRoom: {
+                DisplayGroup: { groupName: "Central West Locked Room", imageName: "3 Pots" },
+                Exits: {},
+                ItemLocations: {
+                    "Skulltula in West Center Room": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        MapInfo: { x: 159, y: 99, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 8,
+                        LongDescription: "WALL MASTER WARNING:<br/>Bomb some rocks near the southwest corner of the main room and press the switch to unbar a door. Make your way to the center either by sidehopping and jumpslashing, or by going around through the already opened gates (opened via the crystal switch in the north part of the main area).<br/><br/>Enter the door that was just unbarred. The skulltula is under the gravestone. Be careful of invisible enemies."
+                    }
+                }
+            },
+            drainedWater: {
+                DisplayGroup: { groupName: "Dead Hand Room", imageName: "Compass" },
+                Exits: {},
+                ItemLocations: {
+                    "Dead Hand Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 317, y: 238, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 12,
+                        LongDescription: "Drain the water by hitting the switch in the back of the main room (use a projectile, a pot from the center, or jumpslash it with a sword/stick/hammer). Navigate back to the entrance and enter the crawl space leading to the Dead Hand room like normal. Kill him to spawn the chest.",
+                        CustomRequirement: function(age) {
+                            if (age === Age.ADULT) { return true; }
+
+                            return Settings.RandomizerSettings.deadHandNeedsSword
+                                ? Equipment.KOKIRI_SWORD.playerHas
+                                : ItemData.canUse(age, ItemSets.SWORDS);
+                        }
+                    },
+                    "Freestanding Item in Dead Hand Room": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 333, y: 229, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 13,
+                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES, Items.BOOMERANG],
+                        LongDescription: "In the Dead Hand room, bomb the back left rubble to reveal the item. You can also stand on in the corner of the rubble and boomerang straight down to get it."
+                    }
+                }
+            },
+            basement: {
+                DisplayGroup: { groupName: "Basement", imageName: "Lens of Truth" },
+                Exits: {},
+                ItemLocations: {
+                    "3 Hearts in Basement": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Hearts",
+                        MapInfo: { x: 295, y: 147, floor: "B1" },
+                        Age: Age.EITHER,
+                        Order: 15,
+                        LongDescription: "WALL MASTER WARNING:<br/>To get to the basement, you can fall down a hole in the center room (not the very center). Navigate to the northeastern path (the second from the right) to get to the hearts."
+                    },
+                    "Skulltula in Basement": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        MapInfo: { x: 51, y: 43, floor: "B1" },
+                        Age: Age.EITHER,
+                        Order: 16,
+                        LongDescription: "WALL MASTER WARNING:<br/>To get to the basement, you can fall down a hole in the center room (not the very center). Navigate to the northwestern part of the basement to get to the skulltula. Watch out for invisible giant skulltulas on the way."
+                    }
+                }
+            },
+            basementCenter: {
+                DisplayGroup: { groupName: "Basement", imageName: "Lens of Truth" },
+                Exits: {},
+                ItemLocations: {
+                    "Chest in Basement": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 295, y: 235, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 14,
+                        LongDescription: "WALL MASTER WARNING:<br/>Crawl through the crawlspace in the back right corner of the main room. Hit the switch in the eye of the picture on the wall to open the door. Ignore the enemies and open the locked door. Bomb the rubble in the next room to reveal a switch. Navigate to the center and fall in the grate that opened.<br/><br/>Press the switch to spawn the chest. Navigate to the southeast part of the basement to get to the chest."
                     }
                 }
             }
