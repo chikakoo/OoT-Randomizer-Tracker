@@ -4929,6 +4929,7 @@ let StandardDungeons = {
     "Ice Cavern": {
         Abbreviation: "ICE",
         MapGroup: MapGroups.DUNGEONS,
+        UsesDisplayGroups: true,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canDoTripleSlashClip: function(age) {
             return Settings.GlitchesToAllow.iceTripleSlashClips &&
@@ -4937,6 +4938,7 @@ let StandardDungeons = {
         },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Up to Scythe Room", imageName: "Blue Fire" },
                 Exits: {
                     afterFreezards: {
                         RequiredItems: [ItemSets.FREEZARD_KILL_ITEMS]
@@ -4957,6 +4959,7 @@ let StandardDungeons = {
                 }
             },
             afterFreezards: {
+                DisplayGroup: { groupName: "Up to Scythe Room", imageName: "Blue Fire" },
                 Exits: {
                     blueFireSideRoom: {
                         CustomRequirement: function(age) {
@@ -4991,7 +4994,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "2 Pots After Freezards": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -5074,6 +5076,7 @@ let StandardDungeons = {
                 }
             },
             blueFire: {
+                DisplayGroup: { groupName: "Up to Scythe Room", imageName: "Blue Fire" },
                 Exits: {
                     blueFireSideRoom: {},
                     blockPushRoom: {}
@@ -5099,45 +5102,8 @@ let StandardDungeons = {
                     }
                 }
             },
-            northRoom: {
-                Exits: {
-                    blueFire: {
-                        CustomRequirement: function(age) {
-                            return Data.hasBottle();
-                        }
-                    },
-                },
-                ItemLocations: {
-                    "3 Hearts in Platforming Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Hearts",
-                        MapInfo: { x: 228, y: 22 },
-                        Age: Age.ADULT,
-                        Order: 7,
-                        LongDescription: "This is the room you gain access to after you collect all the silver rupees in the spinning scythe room. Navigate to the upper area by the first freezard - the hearts are on a platform to the right."
-                    },
-                    "Map Chest in Platforming Room": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 192, y: 18 },
-                        Age: Age.ADULT,
-                        Order: 8,
-                        LongDescription: "This is the room you gain access to after you collect all the silver rupees in the spinning scythe room. Navigate to the top and use blue fire on the chest to gain access to it.",
-                        CustomRequirement: function(age) {
-                            return Data.hasBottleOrBlueFire(age);
-                        }
-                    },
-                    "Frozen Pot in Platforming Room": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 193, y: 47 },
-                        Age: Age.ADULT,
-                        Order: 9,
-                        LongDescription: "This pot is frozen in ice on the upper part of the room with the map chest. The easiest ways to get it are to either use blue fire, or crouchstab the pot in the ice. Otherwise, you can get on the edge of the platform, facing away from the pot, and do a spin attack to hit the pot."
-                    }
-                }
-            },
             blueFireSideRoom: {
+                DisplayGroup: { groupName: "Red Ice Room", imageName: "Compass" },
                 Exits: {
                     blueFire: {
                         CustomRequirement: function(age) {
@@ -5176,7 +5142,47 @@ let StandardDungeons = {
                     }
                 }
             },
+            northRoom: {
+                DisplayGroup: { groupName: "Platforming Room", imageName: "Dungeon Map" },
+                Exits: {
+                    blueFire: {
+                        CustomRequirement: function(age) {
+                            return Data.hasBottle();
+                        }
+                    },
+                },
+                ItemLocations: {
+                    "3 Hearts in Platforming Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Hearts",
+                        MapInfo: { x: 228, y: 22 },
+                        Age: Age.ADULT,
+                        Order: 7,
+                        LongDescription: "This is the room you gain access to after you collect all the silver rupees in the spinning scythe room. Navigate to the upper area by the first freezard - the hearts are on a platform to the right."
+                    },
+                    "Map Chest in Platforming Room": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 192, y: 18 },
+                        Age: Age.ADULT,
+                        Order: 8,
+                        LongDescription: "This is the room you gain access to after you collect all the silver rupees in the spinning scythe room. Navigate to the top and use blue fire on the chest to gain access to it.",
+                        CustomRequirement: function(age) {
+                            return Data.hasBottleOrBlueFire(age);
+                        }
+                    },
+                    "Frozen Pot in Platforming Room": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 193, y: 47 },
+                        Age: Age.ADULT,
+                        Order: 9,
+                        LongDescription: "This pot is frozen in ice on the upper part of the room with the map chest. The easiest ways to get it are to either use blue fire, or crouchstab the pot in the ice. Otherwise, you can get on the edge of the platform, facing away from the pot, and do a spin attack to hit the pot."
+                    }
+                }
+            },
             blockPushRoom: {
+                DisplayGroup: { groupName: "Block Room", imageName: "Ice Arrow" },
                 Exits: {
                     hallWayBeforeBoss: {
                         Map: "Ice Cavern",
@@ -5251,6 +5257,7 @@ let StandardDungeons = {
                 }
             },
             hallWayBeforeBoss: {
+                DisplayGroup: { groupName: "Final Hallway & Boss", imageName: "Iron Boots" },
                 Exits: {
                     bossRoom: {}
                 },
@@ -5268,6 +5275,7 @@ let StandardDungeons = {
                 }
             },
             bossRoom: {
+                DisplayGroup: { groupName: "Final Hallway & Boss", imageName: "Iron Boots" },
                 Exits: {},
                 ItemLocations: {
                     "Iron Boots Chest": {
@@ -5305,7 +5313,6 @@ let StandardDungeons = {
                         OwExit: OwExits["Bottom of the Well"]["Exit"]
                     }
                 },
-
                 ItemLocations: {
                     // Locked Doors
                     "Locked Door After Crawlspace": {
@@ -5370,7 +5377,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "2 Pots by Entrance": {
                         ItemGroup: ItemGroups.ENTRANCE,

@@ -5918,9 +5918,11 @@ let MQDungeons = {
         Abbreviation: "ICE",
         MapGroup: MapGroups.DUNGEONS,
         IsMasterQuest: true,
+        UsesDisplayGroups: true,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Up to Center Room", imageName: "Blue Fire" },
                 Exits: {
                     afterFirstRoom: {},
                     Exit: {
@@ -5938,6 +5940,7 @@ let MQDungeons = {
                 }
             },
             afterFirstRoom: {
+                DisplayGroup: { groupName: "Up to Center Room", imageName: "Blue Fire" },
                 Exits: {
                     blueFireRoom: {
                         CustomRequirement: function(age) {
@@ -5995,6 +5998,7 @@ let MQDungeons = {
                 }
             },
             blueFireRoom: {
+                DisplayGroup: { groupName: "Red Ice Chest Room", imageName: "Wolfos Grotto" },
                 Exits: {},
                 ItemLocations: {
                     "Chest in Red Ice": {
@@ -6010,6 +6014,7 @@ let MQDungeons = {
                 }
             },
             northRoom: {
+                DisplayGroup: { groupName: "Platforming Room", imageName: "Compass" },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in North Room": {
@@ -6057,7 +6062,10 @@ let MQDungeons = {
                 }
             },
             bigRoom: {
-                Exits: {},
+                DisplayGroup: { groupName: "Big Blue Room", imageName: "Ice Arrow" },
+                Exits: {
+                    afterBigRoom: {}
+                },
                 ItemLocations: {
                     "Skulltula Under Stairs in Big Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -6085,7 +6093,13 @@ let MQDungeons = {
                             let canUseScarecrow = Data.canHookScarecrow(age) && canPlayScarecrowsSong;
                             return canUseScarecrow ||  Data.canGroundJumpWithBomb(age);
                         }
-                    },
+                    }
+                }
+            },
+            afterBigRoom: {
+                DisplayGroup: { groupName: "Final Hallway & Boss", imageName: "Iron Boots" },
+                Exits: {},
+                ItemLocations: {
                     //TODO: Empty Pots - remove this item, as the one below will replace it
                     "Pot Before Boss Room": {
                         ItemGroup: ItemGroups.POT,
