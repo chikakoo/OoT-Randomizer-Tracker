@@ -1510,7 +1510,7 @@ GrottoGroups = {
   */
  ItemLocationGroups = {
 	"Spinning Pot": {
-		tooltip: "The spinning pot in Goron City - excludes the heart piece.",
+		tooltip: "The spinning pot in Goron City",
 		buttons: {
 			"Neutral": {
 				icon: "Neutral Goron",
@@ -1529,9 +1529,9 @@ GrottoGroups = {
 			"Happy": {
 				icon: "Happy Goron",
 				tag: "happy",
-				count: 2,
+				count: 3,
 				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Happy Goron Prizes-1 - the heart piece item is still in its old spot."
+				description: "Happy Goron Prizes."
 			}
 		}
 	},

@@ -292,7 +292,6 @@ let ShopItemDictionary = {
 	"ksword": "Kokiri Sword.png",
 	"kokiri": "Kokiri Sword.png",
 	
-	"biggoron'ssword": "Biggoron's Sword.png",
 	"biggoronssword": "Biggoron's Sword.png",
 	"biggoronsword": "Biggoron's Sword.png",
 	"bigsword": "Biggoron's Sword.png",
@@ -345,10 +344,8 @@ let ShopItemDictionary = {
 	"adult'swallet": "Wallet X.png",
 	"adultswallet": "Wallet X.png",
 	"giantwallet": "Wallet X.png",
-	"giant'swallet": "Wallet X.png",
 	"giant wallet": "Wallet X.png",
 	"tycoonwallet": "Wallet X.png",
-	"tycoon'swallet": "Wallet X.png",
 	"tycoonswallet": "Wallet X.png",
 	
 	"gerudomembershipcard": "Gerudo Membership Card.png",
@@ -477,23 +474,17 @@ let ShopItemDictionary = {
 	"megatonhammer": "Megaton Hammer.png",
 	"hammer": "Megaton Hammer.png",
 	
-	"din'sfire": "Din's Fire.png",
 	"dinsfire": "Din's Fire.png",
-	"din's": "Din's Fire.png",
 	"dins": "Din's Fire.png",
 	"din": "Din's Fire.png",
 	"fire": "Din's Fire.png",
 	
-	"nayru'slove": "Nayru's Love.png",
 	"nayruslove": "Nayru's Love.png",
-	"nayru's": "Nayru's Love.png",
 	"nayrus": "Nayru's Love.png",
 	"nayru": "Nayru's Love.png",
 	"love": "Nayru's Love.png",
 	
-	"farore's wind": "Farore's Wind.png",
 	"farores wind": "Farore's Wind.png",
-	"farore's": "Farore's Wind.png",
 	"farores": "Farore's Wind.png",
 	"farore": "Farore's Wind.png",
 	"wind": "Farore's Wind.png",
@@ -621,7 +612,6 @@ let ShopItemDictionary = {
 	"bottledfire": "Blue Fire.png",
 	"bottlewithbluefire": "Blue Fire.png",
 	
-	"ruto'sletter": "Ruto's Letter.png",
 	"rutosletter": "Ruto's Letter.png",
 	"rutoletter": "Ruto's Letter.png",
 	"letter": "Ruto's Letter.png",
@@ -846,23 +836,19 @@ let ShopItemDictionary = {
 	"dd": "Double Defense.png",
 		
 	// Songs
-	"zelda'slullaby": "Zelda's Lullaby.png",
 	"zeldaslullaby": "Zelda's Lullaby.png",
 	"lullaby": "Zelda's Lullaby.png",
 	
-	"epona'ssong": "Epona's Song.png",
 	"eponassong": "Epona's Song.png",
 	"eponas": "Epona's Song.png",
 	"epona's": "Epona's Song.png",
 	"epona": "Epona's Song.png",
 	
-	"saria'ssong": "Saria's Song.png",
 	"sariassong": "Saria's Song.png",
 	"sarias": "Saria's Song.png",
 	"saria's": "Saria's Song.png",
 	"saria": "Saria's Song.png",
 	
-	"sun'ssong": "Sun's Song.png",
 	"sunssong": "Sun's Song.png",
 	"sunsong": "Sun's Song.png",
 	"sun's": "Sun's Song.png",
@@ -924,6 +910,23 @@ let ShopItemDictionary = {
 
 	"abutton": "Controller Buttons/A Button.png",
 	"a": "Controller Buttons/A Button.png",
+
+	// Stones/medallions
+	"kokiriemerald": "Kokiri's Emerald.png",
+	"kokirisemerald": "Kokiri's Emerald.png",
+
+	"goronruby": "Goron's Ruby.png",
+	"goronsruby": "Goron's Ruby.png",
+
+	"zorasapphire": "Zora's Sapphire.png",
+	"zorassapphire": "Zora's Sapphire.png",
+
+	"forestmedallion": "Forest Medallion.png",
+	"firemedallion": "Fire Medallion.png",
+	"watermedallion": "Water Medallion.png",
+	"shadowmedallion": "Shadow Medallion.png",
+	"spiritmedallion": "Spirit Medallion.png",
+	"lightmedallion": "Light Medallion.png"
 };
 
 /**

@@ -1074,7 +1074,7 @@ Data = {
                 // This block handles tunics that child cannot buy
                 let item = price.trim().split(" ").slice(1).join(" ").trim();
                 if (age === Age.CHILD && item !== "" && !item.includes("*")) {
-                    let itemKey = item.split("//")[0].trim().replaceAll(" ", "").replaceAll("*", "");
+                    let itemKey = item.split("//")[0].trim().replaceAll(" ", "").replaceAll("*", "").replaceAll("'", "");
                     let itemImage = ShopItemDictionary[itemKey];
                     if (itemImage === "Goron Tunic.png" && numPrice === 200) {
                         return;

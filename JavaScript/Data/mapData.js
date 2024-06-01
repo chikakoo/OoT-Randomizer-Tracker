@@ -2647,7 +2647,6 @@ let MapLocations = {
                     }
                 }
             },
-
             darunia: {
                 Exits: {
                     main: {},
@@ -2686,7 +2685,6 @@ let MapLocations = {
                     }
                 }
             },
-
             lostWoods: {
                 Exits: {
                     lostWoodsRocks: {
@@ -2701,7 +2699,6 @@ let MapLocations = {
                 },
                 ItemLocations: {}
             },
-
             lostWoodsRocks: {
                 ExcludeFromSpawnList: true,
                 Exits: {
@@ -2731,17 +2728,18 @@ let MapLocations = {
                     }
                 }
             },
-
             spinningUrn: {
                 ExcludeFromSpawnList: true,
-
-                // Only used for the one item check, so no need to mark exits
                 Exits: {},
                 ItemLocations: {
                     "Spinning Urn Heart Piece": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 189, y: 126 },
                         Age: Age.CHILD,
+                        RequiredToAppear: function() { 
+                            return Settings.RandomizerSettings.rupeeAndHeartSetting == ShuffleLocationSettings.OFF ||
+                                Settings.RandomizerSettings.rupeeAndHeartSetting == ShuffleLocationSettings.DUNGEON_ONLY;
+                        },
                         LongDescription: "First, light the torches at the bottom of the city. You can either use the lit torch in Darunia's room, or Din's Fire. After that, throw a Bomb or Bomb Flower so that the urn stops on the happiest face to get the item.",
                         CustomRequirement: function(age) {
                             return Items.BOMB.playerHas ||
@@ -2749,7 +2747,7 @@ let MapLocations = {
                                 (Settings.GlitchesToAllow.goronSpinningUrnWithChus && Items.BOMBCHU.playerHas);
                         }
                     },
-                    "8 Items From Spinning Urn": {
+                    "9 Items From Spinning Urn": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
@@ -2765,7 +2763,6 @@ let MapLocations = {
                     }
                 }
             },
-
             shop: {
                 Exits: {
                     main: {},
