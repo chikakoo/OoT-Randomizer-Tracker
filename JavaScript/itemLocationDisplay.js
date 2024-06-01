@@ -262,6 +262,7 @@ let ItemLocationDisplay = {
 
 		let _this = this;
 		let owTextDivs = {};
+		let hiddenLocations = 0;
 		itemGroup.forEach(function(itemLocation) {
 			if (itemLocation.disabled || itemLocation.Hide) { return; }
 			
@@ -273,10 +274,6 @@ let ItemLocationDisplay = {
 			
 			if (itemLocation.ItemGroup !== ItemGroups.OW_ENTRANCE) {
 				itemLocationTitleDiv.onclick = _this.toggleItemObtained.bind(_this, itemLocationDiv, itemLocation);
-
-				if (Data.isItemLocationAShop(itemLocation)) {
-					addCssClass(itemLocationDiv, "do-not-hide");
-				}
 			} else {
 				isOwEntrance = true;
 				itemLocationTitleDiv.onclick = function(event) {
@@ -284,9 +281,12 @@ let ItemLocationDisplay = {
 				}
 			}
 
-			// This covers normal OW exits, as well as interior ones
-			if (Data.usesOwExits(itemLocation, true)) {
+			// Hide item locations that are done and are hideable
+			if (!_this._isItemLocationHideable(itemLocation)) {
 				addCssClass(itemLocationDiv, "do-not-hide");
+			} else if (itemLocation.playerHas) {
+				addCssClass(itemLocationDiv, "nodisp");
+				hiddenLocations++;
 			}
 			
 			itemLocationDiv.id = itemLocation.Name;
@@ -369,13 +369,6 @@ let ItemLocationDisplay = {
 			_this.refreshNotes(itemLocation, inlineNotesDiv, moreInfoDiv);
 		});
 
-		// A group is "done" if all items are either obtained, an overworld entrance, or a shop
-		let allItemsObtained = itemGroup.every(
-			loc => loc.playerHas || Data.usesOwExits(loc, true) || Data.isItemLocationAShop(loc));
-		if (allItemsObtained) {
-			this._toggleItemLocations(itemGroupDiv);
-		}
-
 		// Size the OW elements so the dropdowns align
 		Object.values(owTextDivs).forEach(groupedDivs => {
 			let maxWidth = Math.max(...groupedDivs.map(div => div.getBoundingClientRect().width));
@@ -383,6 +376,23 @@ let ItemLocationDisplay = {
 				element.style.width = `${maxWidth}px`;
 			});
 		});
+
+		// Put a label next to the div indicating hidden items
+		this._updateItemGroupDivText(itemGroupDiv, hiddenLocations);
+
+		// Put the top/bottom borders on the item locations
+		this._updateFirstAndLastLocations(itemGroupDiv);
+	},
+
+	/**
+	 * Whether we EVER hide the item location
+	 * - we NEVER hide shops
+	 * - we NEVER hide OW exits (includes actual OW and interior OWs)
+	 * @param itemLocation - the item location
+	 */
+	_isItemLocationHideable: function(itemLocation) {
+		return !Data.usesOwExits(itemLocation, true) && 
+			!Data.isItemLocationAShop(itemLocation);
 	},
 
 	/**
@@ -552,18 +562,84 @@ let ItemLocationDisplay = {
 	 * @param itemGroupDiv - the div to toggle the locations of
 	 */
 	_toggleItemLocations: function(itemGroupDiv, event) {
-		var children = itemGroupDiv.children;
+		let hideItems = !this._areThereHiddenItems(itemGroupDiv);
+
+		let hiddenLocations = 0;
+		let children = itemGroupDiv.children;
 		for (let i = 1; i < children.length; i++) { // Ignore the first element - they aren't item locations
-			var childElement = children[i];
+			let childElement = children[i];
 
 			// OW entrances and shops are not hidden, as the info they provide is useful
 			if (!containsCssClass(childElement, "do-not-hide")) {
-				toggleCssClass(children[i], "nodisp");
+				addOrRemoveCssClass(childElement, "nodisp", hideItems);
+				if (hideItems) {
+					hiddenLocations++;
+				}
 			}
 		}
 
+		this._updateItemGroupDivText(itemGroupDiv, hiddenLocations);
+		this._updateFirstAndLastLocations(itemGroupDiv);
+
 		if (event) {
 			event.stopPropagation();
+		}
+	},
+
+	/**
+	 * Returns whether there are hidden items in the given div
+	 * @param itemGroupDiv - the item group div
+	 */
+	_areThereHiddenItems(itemGroupDiv) {
+		let textDiv = itemGroupDiv.getElementsByClassName("item-group-text")[0];
+		return textDiv.innerHTML.split("<span").length > 1;
+	},
+
+	/**
+	 * Updates the item group div to display how many items are hdiden
+	 * @param itemGroupDiv - the item group div
+	 * @param hiddenLocations - the number of hidden locations
+	 */
+	_updateItemGroupDivText(itemGroupDiv, hiddenLocations) {
+		let textDiv = itemGroupDiv.getElementsByClassName("item-group-text")[0];
+		let baseText = textDiv.innerHTML.split("<span")[0].trim();
+
+		if (hiddenLocations > 0) {
+			textDiv.innerHTML = `${baseText} <span class="hidden-items-count">(+${hiddenLocations})</span>`;
+		} else {
+			textDiv.innerHTML = baseText;
+		}
+	},
+
+	/**
+	 * Updates the item locations in the group to have the top/bottom borders
+	 * @param itemGroupDiv - the item group div
+	 */
+	_updateFirstAndLastLocations(itemGroupDiv) {
+		let children = itemGroupDiv.children;
+		let firstElement = null;
+		let lastElement = null;
+		for (let i = 1; i < children.length; i++) { // Ignore the first element - they aren't item locations
+			let childElement = children[i];
+			removeCssClass(childElement, "first-item-location");
+			removeCssClass(childElement, "last-item-location");
+
+			if (containsCssClass(childElement, "nodisp")) {
+				continue;
+			}
+
+			if (!firstElement) {
+				firstElement = childElement;
+			}
+			lastElement = childElement;
+		}
+
+		if (firstElement) {
+			addCssClass(firstElement, "first-item-location")
+		}
+
+		if (lastElement) {
+			addCssClass(lastElement, "last-item-location")
 		}
 	}
 };

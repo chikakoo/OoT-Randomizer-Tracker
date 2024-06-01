@@ -565,6 +565,12 @@ body::-webkit-scrollbar-thumb {
 	color: white;
 }
 
+.item-group-title .hidden-items-count {
+	font-size: 16pt;
+	color: green;
+	font-weight: bold;
+}
+
 .item-location {
 	display: flex;
 	flex-direction: column;
@@ -618,12 +624,12 @@ body::-webkit-scrollbar-thumb {
 	background-color: #052675;
 }
 
-.item-location:last-child {
-	border-bottom: 2px solid gold;
+.item-location.first-item-location {
+	border-top: 2px solid gold;
 }
 
-.item-location:nth-child(2) {
-	border-top: 2px solid gold;
+.item-location.last-item-location {
+	border-bottom: 2px solid gold;
 }
 
 .item-location-age-icon, .item-location-group-icon, .item-location-time-icon {
