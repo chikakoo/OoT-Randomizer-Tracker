@@ -228,7 +228,7 @@ InteriorGroups = {
 				description: "After selling the Skull Mask to the Skull Kid in Lost Woods, you can borrow this mask.",
 				canGet: function(age) {
 					return InteriorGroups["Happy Mask Shop"]._isMaskShopOpen() &&
-						Data.itemLocationObtained("Lost Woods", "firstHalf", "Sell Skull Mask");
+						Data.itemLocationObtained("Lost Woods", "skullKidAndBridge", "Sell Skull Mask");
 				}
 			},
 			"Borrow Bunny Hood": {

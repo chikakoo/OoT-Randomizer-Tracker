@@ -5990,8 +5990,9 @@ let StandardDungeons = {
                         Order: 3.1,
                         LongDescription: "After the sandy stalfos room, you'll find this room. The rupee is on the ceiling a little ahead of the entrance. Use your hookshot to reach it.<br/><br/>If you have no hookshot, you can trigger the wallmaster then have it take you upward into it.",
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.gtgSlopesRoomWallmasterToRupee ||
-                                ItemData.canUse(age, Items.HOOKSHOT);
+                            let canUseWallmaster = Settings.GlitchesToAllow.gtgSlopesRoomWallmasterToRupee &&
+                                !ItemData.checkSilverRupeeRequirement("Training Grounds", 0);
+                            return canUseWallmaster || ItemData.canUse(age, Items.HOOKSHOT);
                         }
                     },
                     "Boulder Silver Rupee in Left Area by Void": {
