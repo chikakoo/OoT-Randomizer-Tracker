@@ -4014,11 +4014,13 @@ let MQDungeons = {
         Abbreviation: "SHDW",
         MapGroup: MapGroups.DUNGEONS,
         IsMasterQuest: true,
+        UsesDisplayGroups: true,
         Floors: ["F1", "B1", "B2"],
         StartingFloorIndex: 0,
         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Entrance & Maze Rooms", imageName: "Hover Boots" },
                 Exits: {
                     truthSpinnerRoom: {
                         CustomRequirement: function(age) {
@@ -4035,9 +4037,9 @@ let MQDungeons = {
                         OwExit: OwExits["Shadow Temple"]["Exit"]
                     }
                 },
-
                 ItemLocations: {
                     "Locked Door by Truth Spinner": {
+                        DisplayGroup: { groupName: "Entrance & Maze Rooms", imageName: "Hover Boots" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["truthSpinnerRoom"],
                         MapInfo: { x: 125, y: 152, floor: "F1" },
@@ -4050,6 +4052,7 @@ let MQDungeons = {
                         }
                     },
                     "Locked Door by Beamos": {
+                        DisplayGroup: { groupName: "Gibdos & Scythe Rooms", imageName: "Dungeon Map" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["afterTruthSpinner"],
                         MapInfo: { x: 330, y: 170, floor: "F1" },
@@ -4063,6 +4066,7 @@ let MQDungeons = {
                         }
                     },
                     "Locked Door in Giant Room": {
+                        DisplayGroup: { groupName: "Invisible Scythe & Pit Rooms", imageName: "Lens of Truth" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["rightSideOfGiantRoom", "invisibleSpikeRoom"],
                         MapInfo: { x: 157, y: 93, floor: "B2" },
@@ -4080,6 +4084,7 @@ let MQDungeons = {
                         }
                     },
                     "Locked Door in Invisible Spike Room": {
+                        DisplayGroup: { groupName: "Invisible Spike Room", imageName: "Spooky Mask" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["invisibleSpikeRoom", "windHallway"],
                         MapInfo: { x: 156, y: 46, floor: "B2" },
@@ -4094,6 +4099,7 @@ let MQDungeons = {
                         }
                     },
                     "Locked Door After Fans": {
+                        DisplayGroup: { groupName: "Wind Hallway & Gibdo Room", imageName: "Iron Boots" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["windHallway", "boatRoom"],
                         MapInfo: { x: 303, y: 131, floor: "B1" },
@@ -4107,6 +4113,7 @@ let MQDungeons = {
                         }
                     },
                     "Locked Door in Invisible Wall Room": {
+                        DisplayGroup: { groupName: "Invisible Wall Maze Rooms", imageName: "Boss Key" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["invisibleWallRoom"],
                         MapInfo: { x: 90, y: 79, floor: "B1" },
@@ -4121,6 +4128,7 @@ let MQDungeons = {
                 }
             },
             truthSpinnerRoom: {
+                DisplayGroup: { groupName: "Entrance & Maze Rooms", imageName: "Hover Boots" },
                 Exits: {
                     mazeByEntrance: {
                         LockedDoor: "Locked Door by Truth Spinner",
@@ -4148,6 +4156,7 @@ let MQDungeons = {
                 }
             },
             mazeByEntrance: {
+                DisplayGroup: { groupName: "Entrance & Maze Rooms", imageName: "Hover Boots" },
                 Exits: {
                     mazeBack: {
                         CustomRequirement: function(age) {
@@ -4196,6 +4205,7 @@ let MQDungeons = {
                 }
             },
             mazeBack: {
+                DisplayGroup: { groupName: "Entrance & Maze Rooms", imageName: "Hover Boots" },
                 Exits: {},
                 ItemLocations: {
                     "2 Flying Pots in Back Maze Room": {
@@ -4220,6 +4230,7 @@ let MQDungeons = {
                 }
             },
             afterTruthSpinner: {
+                DisplayGroup: { groupName: "Gibdos & Scythe Rooms", imageName: "Dungeon Map" },
                 Exits: {
                     afterBeamos: {
                         LockedDoor: "Locked Door by Beamos",
@@ -4242,7 +4253,6 @@ let MQDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Scythe Silver Rupee Right of Scythe": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4318,6 +4328,7 @@ let MQDungeons = {
                 }
             },
             afterBeamos: {
+                DisplayGroup: { groupName: "Invisible Scythe & Pit Rooms", imageName: "Lens of Truth" },
                 Exits: {
                     invisibleScytheRoom: {},
                     rightSideOfGiantRoom: {
@@ -4328,6 +4339,7 @@ let MQDungeons = {
                 ItemLocations: {}
             },
             invisibleScytheRoom: {
+                DisplayGroup: { groupName: "Invisible Scythe & Pit Rooms", imageName: "Lens of Truth" },
                 Exits: {
                     gatedAreaInInvisibleScytheRoom: {
                         CustomRequirement: function(age) {
@@ -4378,6 +4390,7 @@ let MQDungeons = {
                 }
             },
             gatedAreaInInvisibleScytheRoom: {
+                DisplayGroup: { groupName: "Invisible Scythe & Pit Rooms", imageName: "Lens of Truth" },
                 UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                 Exits: {},
                 ItemLocations: {
@@ -4398,6 +4411,7 @@ let MQDungeons = {
                 }
             },
             rightSideOfGiantRoom: {
+                DisplayGroup: { groupName: "Invisible Scythe & Pit Rooms", imageName: "Lens of Truth" },
                 Exits: {
                     afterBeamos: {
                         Age: Age.ADULT,
@@ -4461,6 +4475,7 @@ let MQDungeons = {
                 }
             },
             fallingSpikesRoom: {
+                DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     topOfFallingSpikesRoom: {
                         CustomRequirement: function(age) {
@@ -4499,6 +4514,7 @@ let MQDungeons = {
                 }
             },
             topOfFallingSpikesRoom: {
+                DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Strength Goron's Bracelet" },
                 UseAdultAge: function() {  return !Settings.GlitchesToAllow.shadowBackFlipOnSpikes; },
                 Exits: {},
                 ItemLocations: {
@@ -4529,6 +4545,7 @@ let MQDungeons = {
                 }
             },
             invisibleSpikeRoom: {
+                DisplayGroup: { groupName: "Invisible Spike Room", imageName: "Spooky Mask" },
                 Exits: {
                     rightSideOfGiantRoom: {
                         Map: "Shadow Temple",
@@ -4547,7 +4564,6 @@ let MQDungeons = {
                         RequiredItems: [Items.HOOKSHOT, Equipment.HOVER_BOOTS],
                     }
                 },
-
                 ItemLocations: {
                     "Chest in Invisible Spike Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4637,6 +4653,7 @@ let MQDungeons = {
                 }
             },
             leftOfInvisibleSpikeRoom: {
+                DisplayGroup: { groupName: "Invisible Spike Room", imageName: "Spooky Mask" },
                 UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                 Exits: {},
                 ItemLocations: {
@@ -4650,6 +4667,7 @@ let MQDungeons = {
                 }
             },
             windHallWayTop: {
+                DisplayGroup: { groupName: "Wind Hallway & Gibdo Room", imageName: "Iron Boots" },
                 Exits: {
                     invisibleSpikeRoom: {
                         Map: "Shadow Temple",
@@ -4664,6 +4682,7 @@ let MQDungeons = {
                 ItemLocations: {}
             },
             windHallway: {
+                DisplayGroup: { groupName: "Wind Hallway & Gibdo Room", imageName: "Iron Boots" },
                 Exits: {
                     windHallWayTop: {
                         RequiredItems: [Items.HOOKSHOT],
@@ -4738,6 +4757,7 @@ let MQDungeons = {
                 }
             },
             boatRoom: {
+                DisplayGroup: { groupName: "Boat Room Start", imageName: "Zelda's Lullaby" },
                 Exits: {
                     windHallway: {
                         Map: "Shadow Temple",
@@ -4754,6 +4774,7 @@ let MQDungeons = {
                 ItemLocations: {}
             },
             boatRoomLedge: {
+                DisplayGroup: { groupName: "Boat Room Start", imageName: "Zelda's Lullaby" },
                 Exits: {
                     boatRoom: {}
                 },
@@ -4771,6 +4792,7 @@ let MQDungeons = {
                 }
             },
             endOfBoatRide: {
+                DisplayGroup: { groupName: "Boat Room Chasm Areas", imageName: "Fairy Bow" },
                 Exits: {
                     acrossChasm: {
                         CustomRequirement: function(age) {
@@ -4800,17 +4822,13 @@ let MQDungeons = {
                 }
             },
             acrossChasm: {
+                DisplayGroup: { groupName: "Boat Room Chasm Areas", imageName: "Fairy Bow" },
                 Exits: {
-                    invisibleWallRoom: {
+                    chasmPlatform: {
                         RequiredSongs: [Songs.SONG_OF_TIME],
                         RequiredItems: [Items.FAIRY_BOW, UpgradedItems.LONGSHOT]
                     },
-                    bossRoom: {
-                        CustomRequirement: function(age) {
-                            if (!ItemData.hasBossKey("Shadow Temple")) { return false; }
-                            return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
-                        }
-                    }
+                    bossRoomAntechamber: {}
                 },
                 ItemLocations: {
                     "2 Pots by Boss Antechamber": {
@@ -4830,23 +4848,13 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 38,
                         LongDescription: "Navigate across the chasm you arrive at after taking the boat. Climb up the Song of Time block to gain access to the heart."
-                    },
-                    "Skullula Before Boss": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 106, y: 193, floor: "B1" },
-                        Age: Age.ADULT,
-                        Order: 48,
-                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Enter the door on the other side. The skulltula is on the back wall. You'll need to navigate around the room's invisible floors to get to it."
                     }
                 }
             },
-            invisibleWallRoom: {
+            chasmPlatform: {
+                DisplayGroup: { groupName: "Boat Room Chasm Areas", imageName: "Fairy Bow" },
                 Exits: {
-                    afterBurningSpikes: {
-                        LockedDoor: "Locked Door in Invisible Wall Room",
-                        Map: "Shadow Temple",
-                        RequiredItems: [Equipment.MAGIC, Items.DINS_FIRE]
-                    }
+                    invisibleWallRoom: {},
                 },
                 ItemLocations: {
                     "2 Hearts on Chasm Longshot Platform": {
@@ -4858,7 +4866,19 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 39,
                         LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the hearts."
-                    },
+                    }
+                }
+            },
+            invisibleWallRoom: {
+                DisplayGroup: { groupName: "Invisible Wall Maze Rooms", imageName: "Boss Key" },
+                Exits: {
+                    afterBurningSpikes: {
+                        LockedDoor: "Locked Door in Invisible Wall Room",
+                        Map: "Shadow Temple",
+                        RequiredItems: [Equipment.MAGIC, Items.DINS_FIRE]
+                    }
+                },
+                ItemLocations: {
                     "Pot in Spike Wall Room": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 89, y: 51, floor: "B1" },
@@ -4917,6 +4937,7 @@ let MQDungeons = {
                 }
             },
             afterBurningSpikes: {
+                DisplayGroup: { groupName: "Invisible Wall Maze Rooms", imageName: "Boss Key" },
                 Exits: {},
                 ItemLocations: {
                     "Left Chest in Wooden Spike Room": {
@@ -4935,7 +4956,28 @@ let MQDungeons = {
                     }
                 }
             },
+            bossRoomAntechamber: {
+                DisplayGroup: { groupName: "Boss Area", imageName: "Shadow Medallion" },
+                Exits: {
+                    bossRoom: {
+                        CustomRequirement: function(age) {
+                            if (!ItemData.hasBossKey("Shadow Temple")) { return false; }
+                            return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "Skullula Before Boss": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        MapInfo: { x: 106, y: 193, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 48,
+                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Enter the door on the other side. The skulltula is on the back wall. You'll need to navigate around the room's invisible floors to get to it."
+                    }
+                }
+            },
             bossRoom: {
+                DisplayGroup: { groupName: "Boss Area", imageName: "Shadow Medallion" },
                 Exits: {
                     "Boss": {
                         OwExit: OwExits["Shadow Temple"]["Boss"]

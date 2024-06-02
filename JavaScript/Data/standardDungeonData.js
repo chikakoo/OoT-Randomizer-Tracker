@@ -3239,11 +3239,13 @@ let StandardDungeons = {
     "Shadow Temple": {
         Abbreviation: "SHDW",
         MapGroup: MapGroups.DUNGEONS,
+        UsesDisplayGroups: true,
         Floors: ["F1", "B1", "B2"],
         StartingFloorIndex: 0,
         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Entrance & Maze Rooms", imageName: "Hover Boots" },
                 Exits: {
                     truthSpinnerRoom: {
                         CustomRequirement: function(age) {
@@ -3263,6 +3265,7 @@ let StandardDungeons = {
                 ItemLocations: {
                     // Locked Doors
                     "Locked Door by Beamos": {
+                        DisplayGroup: { groupName: "Gibdos & Scythe Rooms", imageName: "Compass" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["afterTruthSpinner"],
                         MapInfo: { x: 330, y: 170, floor: "F1" },
@@ -3292,8 +3295,8 @@ let StandardDungeons = {
                             return { min: 1, max: max };
                         }
                     },
-
                     "Locked Door in Giant Pit Room": {
+                        DisplayGroup: { groupName: "Invisible Scythe & Pit Rooms", imageName: "Strength Goron's Bracelet" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["afterBombableWall", "invisibleSpikeRoom"],
                         MapInfo: { x: 156, y: 92, floor: "B2" },
@@ -3322,8 +3325,8 @@ let StandardDungeons = {
                             return { min: 2, max: max };
                         }
                     },
-
                     "Locked Door in Invisible Spike Room": {
+                        DisplayGroup: { groupName: "Invisible Spike Room", imageName: "Spooky Mask" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["invisibleSpikeRoom", "windHallway"],
                         MapInfo: { x: 156, y: 45, floor: "B2" },
@@ -3353,8 +3356,8 @@ let StandardDungeons = {
                             return { min: min, max: max };
                         }
                     },
-
                     "Locked Door in Gibdo Room": {
+                        DisplayGroup: { groupName: "Wind Hallway & Gibdo Room", imageName: "Iron Boots" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["windHallway", "boatRoomStart"],
                         MapInfo: { x: 303, y: 127, floor: "B1" },
@@ -3385,14 +3388,14 @@ let StandardDungeons = {
                             return { min: min, max: max };
                         }
                     },
-
                     "Locked Door After Boat Ride": {
+                        DisplayGroup: { groupName: "Boat Room Across Chasm", imageName: "Fairy Bow" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["acrossChasmToBossRoom"],
                         MapInfo: { x: 132, y: 136, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 44,
-                        LongDescription: "This is the room with the gibdos after the hallway of fans.",
+                        LongDescription: "This is the door across the chasm after creating the statue bridge.",
                         KeyRequirement: function(age) {
                             let min = 5;
                             if (Settings.GlitchesToAllow.shadowGateClip) {
@@ -3401,10 +3404,11 @@ let StandardDungeons = {
 
                             return { min: min, max: 5 };
                         }
-                    },
+                    }
                 }
             },
             truthSpinnerRoom: {
+                DisplayGroup: { groupName: "Entrance & Maze Rooms", imageName: "Hover Boots" },
                 Exits: {
                     afterTruthSpinner: {
                         CustomRequirement: function(age) {
@@ -3412,7 +3416,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "2 Pots in Map Chest Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3477,6 +3480,7 @@ let StandardDungeons = {
                 }
             },
             afterTruthSpinner: {
+                DisplayGroup: { groupName: "Gibdos & Scythe Rooms", imageName: "Compass" },
                 Exits: {
                     afterBombableWall: {
                         Map: "Shadow Temple",
@@ -3569,6 +3573,7 @@ let StandardDungeons = {
                 }
             },
             afterBombableWall: {
+                DisplayGroup: { groupName: "Invisible Scythe & Pit Rooms", imageName: "Lens of Truth" },
                 Exits: {
                     fallingSpikesRoom: {
                         Map: "Shadow Temple",
@@ -3582,7 +3587,6 @@ let StandardDungeons = {
                         LockedDoor: "Locked Door in Giant Pit Room"
                     }
                 },
-
                 ItemLocations: {
                     "2 Hearts in Invisible Scythe Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3636,6 +3640,7 @@ let StandardDungeons = {
                 }
             },
             fallingSpikesRoom: {
+                DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     topOfFallingSpikesRoom: {
                         CustomRequirement: function(age) {
@@ -3674,6 +3679,7 @@ let StandardDungeons = {
                 }
             },
             topOfFallingSpikesRoom: {
+                DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Strength Goron's Bracelet" },
                 UseAdultAge: function() {  return !Settings.GlitchesToAllow.shadowBackFlipOnSpikes; },
                 Exits: {},
                 ItemLocations: {
@@ -3704,6 +3710,7 @@ let StandardDungeons = {
                 }
             },
             invisibleSpikeRoom: {
+                DisplayGroup: { groupName: "Invisible Spike Room", imageName: "Spooky Mask" },
                 Exits: {
                     afterBombableWall: {
                         Map: "Shadow Temple",
@@ -3727,7 +3734,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Chest in Invisible Spike Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3779,6 +3785,7 @@ let StandardDungeons = {
                 }
             },
             giantSkullRoom: {
+                DisplayGroup: { groupName: "Invisible Spike Room", imageName: "Spooky Mask" },
                 UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                 Exits: {},
                 ItemLocations: {
@@ -3803,6 +3810,7 @@ let StandardDungeons = {
                 }
             },
             windHallway: {
+                DisplayGroup: { groupName: "Wind Hallway & Gibdo Room", imageName: "Iron Boots" },
                 Exits: {
                     invisibleSpikeRoom: {
                         Map: "Shadow Temple",
@@ -3818,7 +3826,6 @@ let StandardDungeons = {
                         LockedDoor: "Locked Door in Gibdo Room"
                     }
                 },
-
                 ItemLocations: {
                     "Invisible Chest at Wind Hallway": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3865,6 +3872,7 @@ let StandardDungeons = {
                 }
             },
             boatRoomStart: {
+                DisplayGroup: { groupName: "Boat Room Start", imageName: "Zelda's Lullaby" },
                 Exits: {
                     windHallway: {
                         Map: "Shadow Temple",
@@ -3884,6 +3892,7 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             boatRoomSkulltula: {
+                DisplayGroup: { groupName: "Boat Room Start", imageName: "Zelda's Lullaby" },
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Boat Room": {
@@ -3899,6 +3908,7 @@ let StandardDungeons = {
                 }
             },
             boatRoomLedge: {
+                DisplayGroup: { groupName: "Boat Room Start", imageName: "Zelda's Lullaby" },
                 Exits: {
                     boatRoomSkulltula: {},
                     boatRoomStart: {}
@@ -3917,6 +3927,7 @@ let StandardDungeons = {
                 }
             },
             boatRoomEnd: {
+                DisplayGroup: { groupName: "Boat Room Start of Chasm", imageName: "Boss Key" },
                 Exits: {
                     chasmScarecrowPlatform: {
                         RequiredSongs: [Songs.SCARECROWS_SONG],
@@ -3929,7 +3940,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Pot on Boat Side of Chasm": {
                         ItemGroup: ItemGroups.POT,
@@ -4021,6 +4031,7 @@ let StandardDungeons = {
                 }
             },
             chasmScarecrowPlatform: {
+                DisplayGroup: { groupName: "Boat Room Across Chasm", imageName: "Fairy Bow" },
                 Exits: {
                     acrossChasmToBossRoom: {}
                 },
@@ -4038,6 +4049,7 @@ let StandardDungeons = {
                 }
             },
             acrossChasmToBossRoom: {
+                DisplayGroup: { groupName: "Boat Room Across Chasm", imageName: "Fairy Bow" },
                 Exits: {
                     chasmScarecrowPlatform: {
                         RequiredSongs: [Songs.SONG_OF_TIME, Songs.SCARECROWS_SONG],
@@ -4077,6 +4089,7 @@ let StandardDungeons = {
                 }
             },
             bossRoom: {
+                DisplayGroup: { groupName: "Boss Area", imageName: "Shadow Medallion" },
                 Exits: {
                     "Boss": {
                         OwExit: OwExits["Shadow Temple"]["Boss"]
