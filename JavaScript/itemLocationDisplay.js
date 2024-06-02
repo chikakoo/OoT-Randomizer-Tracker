@@ -74,17 +74,12 @@ let ItemLocationDisplay = {
 
 		if (usesDisplayGroups) {
 			Object.values(groupedItemLocationInfo).forEach(groups => {
-				var groupedItemLocations = groups.itemLocations;
-				if (mapInfo.UseAltOrder && mapInfo.UseAltOrder()) {
-					groupedItemLocations.sort((loc1, loc2) => (loc1.AltOrder > loc2.AltOrder) ? 1 : -1);
-				} else {
-					groupedItemLocations.sort((loc1, loc2) => {
-						if (!loc1.Order && !loc2.Order) {
-							return 1;
-						}
-						return (loc1.Order > loc2.Order) ? 1 : -1
-					});
-				}
+				groups.itemLocations.sort((loc1, loc2) => {
+					if (!loc1.Order && !loc2.Order) {
+						return 1;
+					}
+					return (loc1.Order > loc2.Order) ? 1 : -1
+				});
 			});
 		}
 
