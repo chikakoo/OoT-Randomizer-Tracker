@@ -40,10 +40,12 @@ let ItemLocationDisplay = {
 			Settings.TrackerSettings.dungeonItemDisplay === DungeonItemDisplaySettings.BY_SUGGESTED_ORDER;
 		let usesDisplayGroups = mapInfo.UsesDisplayGroups || needToSortDungeon;
 
-		// Sort the locked doors to the end
+		// Sort the locked doors to the end, unless we don't want them to be there
 		let allItemLocations = Data.getAllItemLocations(mapName);
-		let sortedItemLocations = allItemLocations.filter(loc => loc.ItemGroup !== ItemGroups.LOCKED_DOOR);
-		sortedItemLocations.push(...allItemLocations.filter(loc => loc.ItemGroup === ItemGroups.LOCKED_DOOR));
+		let sortedItemLocations = allItemLocations.filter(loc => 
+			loc.ItemGroup !== ItemGroups.LOCKED_DOOR || loc.KeepLockedDoorOrder);
+		sortedItemLocations.push(...allItemLocations.filter(loc => 
+			loc.ItemGroup === ItemGroups.LOCKED_DOOR && !loc.KeepLockedDoorOrder));
 
 		sortedItemLocations.forEach(function(itemLocation) {
 			let group = itemLocation.OverrideItemGroup || itemLocation.ItemGroup;

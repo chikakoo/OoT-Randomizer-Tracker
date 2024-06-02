@@ -2470,6 +2470,7 @@ let StandardDungeons = {
     "Water Temple": {
         Abbreviation: "WATR",
         MapGroup: MapGroups.DUNGEONS,
+        UsesDisplayGroups: true,
         Floors: ["F3", "F2", "F1", "B1"],
         StartingFloorIndex: 0,
         UseAdultAge: function() { 
@@ -2501,6 +2502,7 @@ let StandardDungeons = {
         },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Hub/Boss Area (Top North)", imageName: "Water Medallion" },
                 Exits: {
                     midEastWingPots: {
                         CustomRequirement: function(age) {
@@ -2541,10 +2543,10 @@ let StandardDungeons = {
                         OwExit: OwExits["Water Temple"]["Exit"]
                     }
                 },
-
                 ItemLocations: {
                     // Locked Doors
                     "Locked Door on Top Floor": {
+                        KeepLockedDoorOrder: true,
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["highWaterLevel"],
                         MapInfo: { x: 185, y: 220, floor: "F3" },
@@ -2565,6 +2567,7 @@ let StandardDungeons = {
                         }
                     },
                     "Locked Door in Waterfall Room": {
+                        DisplayGroup: { groupName: "Waterfall Path (Top West)", imageName: "Hookshot Longshot" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["waterfallRoom"],
                         MapInfo: { x: 86, y: 220, floor: "F3" },
@@ -2602,6 +2605,7 @@ let StandardDungeons = {
                         }
                     },
                     "Locked Door in Bottom North Room": {
+                        DisplayGroup: { groupName: "Boss Key Loop (Low North)", imageName: "Boss Key" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["roomWithManyTektitesAntechamber"],
                         MapInfo: { x: 191, y: 113, floor: "F1" },
@@ -2619,6 +2623,7 @@ let StandardDungeons = {
                         }
                     },
                     "Locked Door after Boulder Waterfall": {
+                        DisplayGroup: { groupName: "Boss Key Loop (Low North)", imageName: "Boss Key" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["boulderWaterfall"],
                         MapInfo: { x: 123, y: 70, floor: "F1" },
@@ -2636,297 +2641,8 @@ let StandardDungeons = {
                     }
                 }
             },
-            compassRoom: {
-                Exits: {},
-                ItemLocations: {
-                    "Compass on Mid East Wing": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 302, y: 95, floor: "F2" },
-                        LongDescription: "The compass chest is in the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there. Once at the surface, either hit the switch to lower the water around the chest, or just roll into the chest and spam A to open it.",
-                        Age: Age.ADULT,
-                        Order: 25
-                    },
-                    "3 Pots in Mid East Wing": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 283, y: 58, floor: "F2" },
-                        Age: Age.ADULT,
-                        Order: 26,
-                        LongDescription: "The compass room is in the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there. Once at the surface, look in the corner of the room for the pots.",
-                    }
-                }
-            },
-            midEastWingPots: {
-                Exits: {},
-                ItemLocations: {
-                    "2 Pots by Mid East Wing": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 216, y: 131, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 24,
-                        LongDescription: "The pots are by the entrance to the mid eastern wing. If you can't break them normally, you can either get them with the boomerang, or break them with a hookshot/bow/slingshot and dive for the item."
-                    }
-                }
-            },
-            lowEastWingPots: {
-                Exits: {},
-                ItemLocations: {
-                    "2 Pots in Low East Wing": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 287, y: 213, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 16,
-                        LongDescription: "These pots are by the door in the lower eastern wing. Either use iron boots and the hookshot the break them, or drain the water."
-                    }
-                }
-            },
-            lowWaterLevel: {
-                Exits: {
-                    lowEastWingPots: {},
-                    midEastWingPots: {},
-                    compassRoom: {
-                        Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT]
-                    },
-                    bottomSouthWing: {
-                        Age: Age.ADULT,
-                        RequiredItems: [ItemSets.EXPLOSIVES],
-                        RequiredChoiceOfAdultItems: [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS],
-                        RequiredChoiceOfItems: [Equipment.SCALE, Equipment.IRON_BOOTS]
-                    },
-                    midWaterTriforceFloor: {
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DEKU_STICK, Items.DINS_FIRE]
-                    },
-                    centralRoomBottom: {
-                        Map: "Water Temple",
-                        LockedDoor: "Locked Door to Central Room"
-                    },
-                    dragonRoom: {
-                        RequiredItems: [Equipment.STRENGTH],
-                        RequiredChildItems: [Equipment.SCALE],
-                        RequiredChoiceOfAdultItems: [Equipment.SCALE, Equipment.IRON_BOOTS]
-                    },
-                    behindBlockArea: {
-                        CustomRequirement: function(age) {
-                            let canGetToArea = Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
-                            return canGetToArea && Data.canWeirdShot(age);
-                        }
-                    },
-                    roomWithManyTektitesAntechamber: {},
-                    crackedWallArea: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.waterBombableWallEarly;
-                        }
-                    }
-                },
-
-                ItemLocations: {
-                    "Lower Water Level": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        Age: Age.ADULT,
-                        Order: 15,
-                        MapInfo: { x: 291, y: 234, floor: "F3" },
-                        MapImageName: "Zelda's Lullaby",
-                        LongDescription: "To get here, go to the bottom east wing and float up to the top. If you don't have iron boots, you can longshot the torches to get down there!"
-                    },
-                    "Chest After Torches in Bottom East Wing": {
-                        ItemGroup: ItemGroups.CHEST,
-                        Age: Age.EITHER,
-                        Order: 17,
-                        MapInfo: { x: 326, y: 212, floor: "F1" },
-                        LongDescription: "From the entrance of the temple, jump off and sink down to the bottom. Head down the hallway of the east room. Take off your iron boots and float up to the surface. Play Zelda's lullaby at the Triforce to lower the water. Now head back down.<br/><br>In this room, light the torches wih your bow or with Din's fire.<br/><br/>Child can use sticks to light the torches as well, and can kill the enemies in the next room with spin attacks if he has magic",
-                        RequiredChildItems: [Equipment.MAGIC, Equipment.KOKIRI_SWORD],
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DEKU_STICK, ItemSets.FIRE_ITEMS]
-                    }
-                }
-            },
-            bottomSouthWing: {
-                Exits: {},
-                ItemLocations: {
-                    "Skulltula in Low South Wing": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Age: Age.ADULT,
-                        Order: 18,
-                        MapInfo: { x: 19, y: 261, floor: "F1" },
-                        LongDescription: "First, drain the water in the temple. Now head the bottom southern wing. Bomb the cracked floor. Make your way down the corridor into the next room. Cross the water using your hookshot or hover boots. In the back of this room, hit the switch in the cage with a jumpslash or charged spin attack to get to the skulltula."
-                    },
-                    "4 Pots in Low South Wing": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "4 Pots",
-                        MapInfo: { x: 24, y: 268, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 19,
-                        LongDescription: "First, drain the water in the temple. Now head the bottom southern wing. Bomb the cracked floor. Make your way down the corridor into the next room. Cross the water using your hookshot or hover boots. In the back of this room, hit the switch in the cage with a jumpslash or charged spin attack to get to the pots."
-                    }
-                }
-            },
-            midWaterTriforceFloor: {
-                Exits: {
-                    midWaterLevel: {
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
-                    },
-                    centralRoomBottom: {
-                        Age: Age.ADULT,
-                        RequiredItems: [Equipment.IRON_BOOTS]
-                    }
-                },
-
-                ItemLocations: {
-                    "Skulltula by Mid Water Triforce": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Age: Age.EITHER,
-                        Order: 21,
-                        MapInfo: { x: 157, y: 217, floor: "F1" },
-                        LongDescription: "In the room with the middle water level Triforce, there is a skulltula high up on the wall. There are three ways to get it; the bottom two enable the hookshot to be used:<br/>- Use the longshot<br/>- Cast Farore's Wind in the room, raise the water to max, then warp back in<br/>- Enter the room from the middle, then exit from the bottom - the middle area door will not be barred. Come back via the iron boots to get the skulltula with the hookshot after raising the water to max.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
-                        CustomRequirement: function(age) {
-                            // You can just longshot it
-                            if (ItemData.canUse(age, UpgradedItems.LONGSHOT)) { 
-                                return true; 
-                            }
-
-                            if (MapLocations["Water Temple"]._isPlayerLockedOutOfHighWater()) {
-                                return false;
-                            }
-
-                            // Cast FW in the room, then raise the water and recast FW
-                            if (ItemData.canUse(age, Items.FARORES_WIND)) {
-                                return true;
-                            }
-
-                            // Enter the room via the fire door, then exit out the bottom via the locked door
-                            // Now raise the water and return through the fire door with iron boots (the bars will be gone still)
-                            let bottomDoorCheck = Data.itemLocationObtained("Water Temple", "main", "Locked Door to Central Room") ||
-                                ItemData.getKeyCount("Water Temple") === Keys.WATER_TEMPLE.totalKeys();
-                            if (ItemData.canUseAll(age, [Equipment.IRON_BOOTS, ItemSets.FIRE_ITEMS]) && bottomDoorCheck) {
-                                return true;
-                            }
-                        }
-                    }
-                }
-            },
-            centralRoomBottom: {
-                Exits: {
-                    midWaterTriforceFloor: {
-                        RequiredItems: [Items.HOOKSHOT]
-                    }
-                },
-                ItemLocations: {}
-            },
-            midWaterLevel: {
-                Exits: {
-                    highWaterLevel: {
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
-                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES, Items.HOOKSHOT, Items.FAIRY_BOW]
-                    },
-                    midWaterTriforceFloor: {},
-                    behindBlockArea: {
-                        CustomRequirement: function(age) {
-                            // Weirdshot by the right wall in the corner after the hookshot target by the gate (down the hall)
-                            if (Data.canWeirdShot(age)) { return true; }
-
-                            // If not weirdshotting, need to shoot eye AND move the block
-                            if (!ItemData.canUseAll(age, [ItemSets.PROJECTILES, Equipment.STRENGTH])) { 
-                                return false; 
-                            }
-
-                            return Settings.GlitchesToAllow.waterEyeSwitchGateFromTop || // Shoot from the top and run in
-                                ItemsData.canUseAny(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]); // Normal way, either hit target, or run with hovers
-
-                        }
-                    },
-                    crackedWallArea: {}
-                },
-
-                ItemLocations: {
-                    "Chest Under Rising Platform in Middle Room": {
-                        ItemGroup: ItemGroups.CHEST,
-                        Age: Age.ADULT,
-                        Order: 22,
-                        MapInfo: { x: 293, y: 214, floor: "B1" },
-                        RequiredItems: [Items.HOOKSHOT, Equipment.IRON_BOOTS],
-                        LongDescription: "After draining the water, head into the middle room on the bottom. This will initially be a locked door. Once inside, hookshot the target to get up to the mid water level triforce. Play Zelda's Lullaby to raise the water. Now, use your Iron boots to sink down in this room and enter the secret room under the floating block that was just raised up. Hit the crystal switch and defeat the enemies. When they're defeated, take off your boots and rise up to the top right corner of this room for the chest."
-                    }
-                }
-            },
-            behindBlockArea: {
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.waterEyeSwitchGateFromTop; },
-                Exits: {},
-                ItemLocations: {
-                    "Chest Behind Block at Mid Level": {
-                        ItemGroup: ItemGroups.CHEST,
-                        Age: Age.EITHER,
-                        Order: 27,
-                        MapInfo: { x: 243, y: 243, floor: "F2" },
-                        LongDescription: "First, make your way to the top east wing. Push back the block and then go to the southern mid-level.<br/><br/>Shoot the eye switch then quickly longshot the target or use your hover boots to pass the gate. Go down the room and push the red block backward. Now you must make your way back around, this time pushing the block forward out of your way. Head to the right to the chest.<br/><br/>Note that alternatively, you can shoot the eye switch twice to get the block in position."
-                    },
-                    "2 Pots Behind Block at Mid Level": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 245, y: 251, floor: "F2" },
-                        Age: Age.EITHER,
-                        Order: 28,
-                        LongDescription: "First, make your way to the top east wing. Push back the block and then go to the southern mid-level.<br/><br/>Shoot the eye switch then quickly longshot the target or use your hover boots to pass the gate. Go down the room and push the red block backward. Now you must make your way back around, this time pushing the block forward out of your way. Head to the right to the pots.<br/><br/>Note that alternatively, you can shoot the eye switch twice to get the block in position."
-                    }
-                }
-            },
-            crackedWallArea: {
-                Exits: {},
-                ItemLocations: {
-                    "Bombable Wall Chest Below Water Lowering Triforce": {
-                        ItemGroup: ItemGroups.CHEST,
-                        Age: Age.ADULT,
-                        Order: 23,
-                        MapInfo: {x: 333, y: 131, floor: "F2" },
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
-                        LongDescription: "After raising the water to mid level, make your way back toward the low level room. This time, you won't float up all the way to the top. In this room, you will see a cracked wall. Bomb it to get to a chest.",
-                        RequiredItems: [ItemSets.EXPLOSIVES],
-                    }
-                }
-            },
-            highWaterLevel: {
-                Exits: {
-                    bossAntechamber: {
-                        Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            let canSkipLongshot = Data.canHammerHoverBootsSuperslide(age);
-                            return ItemData.canUse(age, UpgradedItems.LONGSHOT) || canSkipLongshot;
-                        }
-                    },
-                    waterfallRoom: {
-                        Map: "Water Temple",
-                        Age: Age.ADULT,
-                        LockedDoor: "Locked Door on Top Floor"
-                    }
-                },
-
-                ItemLocations: {
-                    "Chest by Water Lowering Triforce": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 332, y: 223, floor: "F3" },
-                        Age: Age.ADULT,
-                        Order: 14,
-                        LongDescription: "From the entrance of the temple, jump off and sink down to the bottom (or longshot a torch on the bottom of the east side). Head down the hallway of the east room. Take off your iron boots and float up to the surface. Enter the door and kill the enemies to spawn the chest.",
-                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                        }
-                    }
-                }
-            },
             bossAntechamber: {
+                DisplayGroup: { groupName: "Hub/Boss Area (Top North)", imageName: "Water Medallion" },
                 Exits: {
                     bossRoom: {
                         Age: Age.ADULT,
@@ -2952,7 +2668,27 @@ let StandardDungeons = {
                     }
                 }
             },
+            bossRoom: {
+                DisplayGroup: { groupName: "Hub/Boss Area (Top North)", imageName: "Water Medallion" },
+                Exits: {
+                    "Boss": {
+                        OwExit: OwExits["Water Temple"]["Boss"]
+                    }
+                },
+                ItemLocations: {
+                    "Blue Warp": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        Age: Age.ADULT,
+                        IsBoss: true,
+                        Order: 99,
+                        MapInfo: { x: 227, y: 145, floor: "F3" },
+                        LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
+                        RequiredToAppear: function() { return false; } //TODO: maybe clean this up so this item isn't necessary anymore
+                    }
+                }
+            },
             waterfallRoom: {
+                DisplayGroup: { groupName: "Waterfall Path (Top West)", imageName: "Hookshot Longshot" },
                 Exits: {
                     darkLinkRoom: {
                         Map: "Water Temple",
@@ -2960,7 +2696,6 @@ let StandardDungeons = {
                         LockedDoor: "Locked Door in Waterfall Room"
                     }
                 },
-
                 ItemLocations: {
                     "Skulltula in Waterfall Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -2973,12 +2708,12 @@ let StandardDungeons = {
                 }
             },
             darkLinkRoom: {
+                DisplayGroup: { groupName: "Waterfall Path (Top West)", imageName: "Hookshot Longshot" },
                 Exits: {
                     whirlpoolRoom: {
                         RequiredSongs: [Songs.SONG_OF_TIME]
                     }
                 },
-
                 ItemLocations: {
                     "2 Pots in Room Before Dark Link": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3000,12 +2735,12 @@ let StandardDungeons = {
                 }
             },
             whirlpoolRoom: {
+                DisplayGroup: { groupName: "Waterfall Path (Top West)", imageName: "Hookshot Longshot" },
                 Exits: {
                     dragonRoom: {
                         RequiredItems: [Items.FAIRY_BOW]
                     }
                 },
-
                 ItemLocations: {
                     "Heart 1 in Whirlpool Room": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -3080,6 +2815,7 @@ let StandardDungeons = {
                 }
             },
             dragonRoom: {
+                DisplayGroup: { groupName: "Dragon Whirlpool Room (Top/Low West)", imageName: "Scale Silver Scale" },
                 Exits: {},
                 ItemLocations: {
                     "Chest in Dragon Room at Bottom West Wing": {
@@ -3100,7 +2836,305 @@ let StandardDungeons = {
                     }
                 }
             },
+            highWaterLevel: {
+                DisplayGroup: { groupName: "Water Lowering Rooms (Low East)", imageName: "Ocarina" },
+                Exits: {
+                    bossAntechamber: {
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            let canSkipLongshot = Data.canHammerHoverBootsSuperslide(age);
+                            return ItemData.canUse(age, UpgradedItems.LONGSHOT) || canSkipLongshot;
+                        }
+                    },
+                    waterfallRoom: {
+                        Map: "Water Temple",
+                        Age: Age.ADULT,
+                        LockedDoor: "Locked Door on Top Floor"
+                    }
+                },
+                ItemLocations: {
+                    "Chest by Water Lowering Triforce": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 332, y: 223, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 14,
+                        LongDescription: "From the entrance of the temple, jump off and sink down to the bottom (or longshot a torch on the bottom of the east side). Head down the hallway of the east room. Take off your iron boots and float up to the surface. Enter the door and kill the enemies to spawn the chest.",
+                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT],
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
+                        }
+                    }
+                }
+            },
+            lowWaterLevel: {
+                DisplayGroup: { groupName: "Water Lowering Rooms (Low East)", imageName: "Ocarina" },
+                Exits: {
+                    lowEastWingPots: {},
+                    midEastWingPots: {},
+                    compassRoom: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    bottomSouthWing: {
+                        Age: Age.ADULT,
+                        RequiredItems: [ItemSets.EXPLOSIVES],
+                        RequiredChoiceOfAdultItems: [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS],
+                        RequiredChoiceOfItems: [Equipment.SCALE, Equipment.IRON_BOOTS]
+                    },
+                    midWaterTriforceFloor: {
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DEKU_STICK, Items.DINS_FIRE]
+                    },
+                    centralRoomBottom: {
+                        Map: "Water Temple",
+                        LockedDoor: "Locked Door to Central Room"
+                    },
+                    dragonRoom: {
+                        RequiredItems: [Equipment.STRENGTH],
+                        RequiredChildItems: [Equipment.SCALE],
+                        RequiredChoiceOfAdultItems: [Equipment.SCALE, Equipment.IRON_BOOTS]
+                    },
+                    behindBlockArea: {
+                        CustomRequirement: function(age) {
+                            let canGetToArea = Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
+                            return canGetToArea && Data.canWeirdShot(age);
+                        }
+                    },
+                    roomWithManyTektitesAntechamber: {},
+                    crackedWallArea: {
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.waterBombableWallEarly;
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "Lower Water Level": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        Age: Age.ADULT,
+                        Order: 15,
+                        MapInfo: { x: 291, y: 234, floor: "F3" },
+                        MapImageName: "Zelda's Lullaby",
+                        LongDescription: "To get here, go to the bottom east wing and float up to the top. If you don't have iron boots, you can longshot the torches to get down there!"
+                    },
+                    "Chest After Torches in Bottom East Wing": {
+                        ItemGroup: ItemGroups.CHEST,
+                        Age: Age.EITHER,
+                        Order: 17,
+                        MapInfo: { x: 326, y: 212, floor: "F1" },
+                        LongDescription: "From the entrance of the temple, jump off and sink down to the bottom. Head down the hallway of the east room. Take off your iron boots and float up to the surface. Play Zelda's lullaby at the Triforce to lower the water. Now head back down.<br/><br>In this room, light the torches wih your bow or with Din's fire.<br/><br/>Child can use sticks to light the torches as well, and can kill the enemies in the next room with spin attacks if he has magic",
+                        RequiredChildItems: [Equipment.MAGIC, Equipment.KOKIRI_SWORD],
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DEKU_STICK, ItemSets.FIRE_ITEMS]
+                    }
+                }
+            },
+            lowEastWingPots: {
+                DisplayGroup: { groupName: "Water Lowering Rooms (Low East)", imageName: "Ocarina" },
+                Exits: {},
+                ItemLocations: {
+                    "2 Pots in Low East Wing": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 287, y: 213, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 16,
+                        LongDescription: "These pots are by the door in the lower eastern wing. Either use iron boots and the hookshot the break them, or drain the water."
+                    }
+                }
+            },
+            crackedWallArea: {
+                DisplayGroup: { groupName: "Water Lowering Rooms (Low East)", imageName: "Ocarina" },
+                Exits: {},
+                ItemLocations: {
+                    "Bombable Wall Chest Below Water Lowering Triforce": {
+                        ItemGroup: ItemGroups.CHEST,
+                        Age: Age.ADULT,
+                        Order: 23,
+                        MapInfo: {x: 333, y: 131, floor: "F2" },
+                        RequiredSongs: [Songs.ZELDAS_LULLABY],
+                        LongDescription: "After raising the water to mid level, make your way back toward the low level room. This time, you won't float up all the way to the top. In this room, you will see a cracked wall. Bomb it to get to a chest.",
+                        RequiredItems: [ItemSets.EXPLOSIVES],
+                    }
+                }
+            },
+            bottomSouthWing: {
+                DisplayGroup: { groupName: "Caged Skulltula Room (Low South)", imageName: "Bomb" },
+                Exits: {},
+                ItemLocations: {
+                    "Skulltula in Low South Wing": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Age: Age.ADULT,
+                        Order: 18,
+                        MapInfo: { x: 19, y: 261, floor: "F1" },
+                        LongDescription: "First, drain the water in the temple. Now head the bottom southern wing. Bomb the cracked floor. Make your way down the corridor into the next room. Cross the water using your hookshot or hover boots. In the back of this room, hit the switch in the cage with a jumpslash or charged spin attack to get to the skulltula."
+                    },
+                    "4 Pots in Low South Wing": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Pots",
+                        MapInfo: { x: 24, y: 268, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 19,
+                        LongDescription: "First, drain the water in the temple. Now head the bottom southern wing. Bomb the cracked floor. Make your way down the corridor into the next room. Cross the water using your hookshot or hover boots. In the back of this room, hit the switch in the cage with a jumpslash or charged spin attack to get to the pots."
+                    }
+                }
+            },
+            midWaterTriforceFloor: {
+                DisplayGroup: { groupName: "Central Rooms (Mid/Low)", imageName: "Ocarina of Time" },
+                Exits: {
+                    midWaterLevel: {
+                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                    },
+                    centralRoomBottom: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Equipment.IRON_BOOTS]
+                    }
+                },
+                ItemLocations: {
+                    "Skulltula by Mid Water Triforce": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Age: Age.EITHER,
+                        Order: 21,
+                        MapInfo: { x: 157, y: 217, floor: "F1" },
+                        LongDescription: "In the room with the middle water level Triforce, there is a skulltula high up on the wall. There are three ways to get it; the bottom two enable the hookshot to be used:<br/>- Use the longshot<br/>- Cast Farore's Wind in the room, raise the water to max, then warp back in<br/>- Enter the room from the middle, then exit from the bottom - the middle area door will not be barred. Come back via the iron boots to get the skulltula with the hookshot after raising the water to max.",
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
+                        CustomRequirement: function(age) {
+                            // You can just longshot it
+                            if (ItemData.canUse(age, UpgradedItems.LONGSHOT)) { 
+                                return true; 
+                            }
+
+                            if (MapLocations["Water Temple"]._isPlayerLockedOutOfHighWater()) {
+                                return false;
+                            }
+
+                            // Cast FW in the room, then raise the water and recast FW
+                            if (ItemData.canUse(age, Items.FARORES_WIND)) {
+                                return true;
+                            }
+
+                            // Enter the room via the fire door, then exit out the bottom via the locked door
+                            // Now raise the water and return through the fire door with iron boots (the bars will be gone still)
+                            let bottomDoorCheck = Data.itemLocationObtained("Water Temple", "main", "Locked Door to Central Room") ||
+                                ItemData.getKeyCount("Water Temple") === Keys.WATER_TEMPLE.totalKeys();
+                            if (ItemData.canUseAll(age, [Equipment.IRON_BOOTS, ItemSets.FIRE_ITEMS]) && bottomDoorCheck) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            },
+            centralRoomBottom: {
+                DisplayGroup: { groupName: "Central Rooms (Mid/Low)", imageName: "Ocarina of Time" },
+                Exits: {
+                    midWaterTriforceFloor: {
+                        RequiredItems: [Items.HOOKSHOT]
+                    }
+                },
+                ItemLocations: {}
+            },
+            midWaterLevel: {
+                DisplayGroup: { groupName: "Central Rooms (Mid/Low)", imageName: "Ocarina of Time" },
+                Exits: {
+                    highWaterLevel: {
+                        RequiredSongs: [Songs.ZELDAS_LULLABY],
+                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES, Items.HOOKSHOT, Items.FAIRY_BOW]
+                    },
+                    midWaterTriforceFloor: {},
+                    behindBlockArea: {
+                        CustomRequirement: function(age) {
+                            // Weirdshot by the right wall in the corner after the hookshot target by the gate (down the hall)
+                            if (Data.canWeirdShot(age)) { return true; }
+
+                            // If not weirdshotting, need to shoot eye AND move the block
+                            if (!ItemData.canUseAll(age, [ItemSets.PROJECTILES, Equipment.STRENGTH])) { 
+                                return false; 
+                            }
+
+                            return Settings.GlitchesToAllow.waterEyeSwitchGateFromTop || // Shoot from the top and run in
+                                ItemData.canUseAny(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]); // Normal way, either hit target, or run with hovers
+
+                        }
+                    },
+                    crackedWallArea: {}
+                },
+                ItemLocations: {
+                    "Chest Under Rising Platform in Middle Room": {
+                        ItemGroup: ItemGroups.CHEST,
+                        Age: Age.ADULT,
+                        Order: 22,
+                        MapInfo: { x: 293, y: 214, floor: "B1" },
+                        RequiredItems: [Items.HOOKSHOT, Equipment.IRON_BOOTS],
+                        LongDescription: "After draining the water, head into the middle room on the bottom. This will initially be a locked door. Once inside, hookshot the target to get up to the mid water level triforce. Play Zelda's Lullaby to raise the water. Now, use your Iron boots to sink down in this room and enter the secret room under the floating block that was just raised up. Hit the crystal switch and defeat the enemies. When they're defeated, take off your boots and rise up to the top right corner of this room for the chest."
+                    }
+                }
+            },
+            midEastWingPots: {
+                DisplayGroup: { groupName: "Compass Room (Mid East)", imageName: "Compass" },
+                Exits: {},
+                ItemLocations: {
+                    "2 Pots by Mid East Wing": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 216, y: 131, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 24,
+                        LongDescription: "The pots are by the entrance to the mid eastern wing. If you can't break them normally, you can either get them with the boomerang, or break them with a hookshot/bow/slingshot and dive for the item."
+                    }
+                }
+            },
+            compassRoom: {
+                DisplayGroup: { groupName: "Compass Room (Mid East)", imageName: "Compass" },
+                Exits: {},
+                ItemLocations: {
+                    "Compass on Mid East Wing": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 302, y: 95, floor: "F2" },
+                        LongDescription: "The compass chest is in the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there. Once at the surface, either hit the switch to lower the water around the chest, or just roll into the chest and spam A to open it.",
+                        Age: Age.ADULT,
+                        Order: 25
+                    },
+                    "3 Pots in Mid East Wing": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 283, y: 58, floor: "F2" },
+                        Age: Age.ADULT,
+                        Order: 26,
+                        LongDescription: "The compass room is in the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there. Once at the surface, look in the corner of the room for the pots.",
+                    }
+                }
+            },
+            behindBlockArea: {
+                DisplayGroup: { groupName: "Block Hallways (Top East/Mid South)", imageName: "Strength Silver Gauntlets" },
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.waterEyeSwitchGateFromTop; },
+                Exits: {},
+                ItemLocations: {
+                    "Chest Behind Block at Mid Level": {
+                        ItemGroup: ItemGroups.CHEST,
+                        Age: Age.EITHER,
+                        Order: 27,
+                        MapInfo: { x: 243, y: 243, floor: "F2" },
+                        LongDescription: "First, make your way to the top east wing. Push back the block and then go to the southern mid-level.<br/><br/>Shoot the eye switch then quickly longshot the target or use your hover boots to pass the gate. Go down the room and push the red block backward. Now you must make your way back around, this time pushing the block forward out of your way. Head to the right to the chest.<br/><br/>Note that alternatively, you can shoot the eye switch twice to get the block in position."
+                    },
+                    "2 Pots Behind Block at Mid Level": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 245, y: 251, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 28,
+                        LongDescription: "First, make your way to the top east wing. Push back the block and then go to the southern mid-level.<br/><br/>Shoot the eye switch then quickly longshot the target or use your hover boots to pass the gate. Go down the room and push the red block backward. Now you must make your way back around, this time pushing the block forward out of your way. Head to the right to the pots.<br/><br/>Note that alternatively, you can shoot the eye switch twice to get the block in position."
+                    }
+                }
+            },
             roomWithManyTektitesAntechamber: {
+                DisplayGroup: { groupName: "Boss Key Loop (Low North)", imageName: "Boss Key" },
                 Exits: {
                     roomWithManyTektites: {
                         Map: "Water Temple",
@@ -3112,6 +3146,7 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             roomWithManyTektites: {
+                DisplayGroup: { groupName: "Boss Key Loop (Low North)", imageName: "Boss Key" },
                 Exits: {
                     blockPuzzleRoom: {},
                     boulderWaterfall: {
@@ -3123,6 +3158,7 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             blockPuzzleRoom: {
+                DisplayGroup: { groupName: "Boss Key Loop (Low North)", imageName: "Boss Key" },
                 Exits: {
                     boulderWaterfall: {
                         CustomRequirement: function(age) {
@@ -3149,6 +3185,7 @@ let StandardDungeons = {
                 }
             },
             boulderWaterfall: {
+                DisplayGroup: { groupName: "Boss Key Loop (Low North)", imageName: "Boss Key" },
                 Exits: {
                     bossKeyRoom: {
                         Map: "Water Temple",
@@ -3158,7 +3195,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Skulltula Near Boss Key Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3171,6 +3207,7 @@ let StandardDungeons = {
                 }
             },
             bossKeyRoom: {
+                DisplayGroup: { groupName: "Boss Key Loop (Low North)", imageName: "Boss Key" },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in Boss Key Room": {
@@ -3193,24 +3230,6 @@ let StandardDungeons = {
                         Order: 33,
                         MapInfo: { x: 123, y: 57, floor: "F1" },
                         LongDescription: "From the waterfall, use iron boots to navigate under the water to the locked door to the chest. If you don't have iron boots, you can jump from the platform with the door to the water to sink low enough to advance."
-                    }
-                }
-            },
-            bossRoom: {
-                Exits: {
-                    "Boss": {
-                        OwExit: OwExits["Water Temple"]["Boss"]
-                    }
-                },
-                ItemLocations: {
-                    "Blue Warp": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        Age: Age.ADULT,
-                        IsBoss: true,
-                        Order: 99,
-                        MapInfo: { x: 227, y: 145, floor: "F3" },
-                        LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-                        RequiredToAppear: function() { return false; } //TODO: maybe clean this up so this item isn't necessary anymore
                     }
                 }
             }

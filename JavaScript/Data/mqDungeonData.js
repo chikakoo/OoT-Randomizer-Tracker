@@ -3033,23 +3033,27 @@ let MQDungeons = {
         Abbreviation: "WATR",
         MapGroup: MapGroups.DUNGEONS,
         IsMasterQuest: true,
+        UsesDisplayGroups: true,
         Floors: ["F3", "F2", "F1", "B1"],
         StartingFloorIndex: 0,
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Hub/Boss Area (Top North)", imageName: "Water Medallion" },
                 Exits: {
                     lowEastWingPots: {
                         RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
                     },
-                    midSouthRoomPots: {
+                    midSouthRoom: {
+                        RequiredItems: [Equipment.IRON_BOOTS]
+                    },
+                    midEastRoom: {
                         RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
                     },
                     behindGateInMidSouthRoom: {
                         RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
                     },
-                    lowWaterLevel: {
+                    lowEastRooms: {
                         RequiredItems: [Equipment.IRON_BOOTS],
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
                         }
@@ -3072,12 +3076,127 @@ let MQDungeons = {
                                 Data.canHammerHoverBootsSuperslide(age);
                         }
                     },
-
                     Exit: {
                         OwExit: OwExits["Water Temple"]["Exit"]
                     }
                 },
-
+                ItemLocations: {}
+            },
+            bossRoomAntechamber: {
+                DisplayGroup: { groupName: "Hub/Boss Area (Top North)", imageName: "Water Medallion" },
+                Exits: {
+                    bossRoom: {
+                        CustomRequirement: function(age) {
+                            // Nayrus love can be used to become immune to the spike traps!
+                            let canGetUp = ItemData.canUseAny(age, [UpgradedItems.LONGSHOT, Items.NAYRUS_LOVE, Equipment.HOVER_BOOTS]);
+                            let canGetIn = ItemData.hasBossKey("Water Temple") ||
+                                ItemData.canUseAny(age, [Items.HOOKSHOT, Items.FAIRY_BOW, Items.BOMBCHU]);
+                            return canGetUp && canGetIn;
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "2 Hookshot Wonderitems in Boss Antechamber": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Hookshot Wonderitems",
+                        MapInfo: { x: 226, y: 162, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 48,
+                        LongDescription: "From the main room with the water raised, longshot to the upper north area and enter the door. Hookshot the two symbols on either side of the door you came through to spawn the wonderitems."
+                    }
+                }
+            },
+            bossRoom: {
+                DisplayGroup: { groupName: "Hub/Boss Area (Top North)", imageName: "Water Medallion" },
+                Exits: {
+                    "Boss": {
+                        OwExit: OwExits["Water Temple"]["Boss"]
+                    }
+                },
+                ItemLocations: {
+                    "Blue Warp": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        Age: Age.ADULT,
+                        IsBoss: true,
+                        Order: 99,
+                        MapInfo: { x: 227, y: 145, floor: "F3" },
+                        LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
+                        RequiredToAppear: function() { return false; } //TODO: maybe clean this up so this item isn't necessary anymore
+                    }
+                }
+            },
+            centralRoom: {
+                DisplayGroup: { groupName: "Central Rooms (Center Mid)", imageName: "Ocarina of Time" },
+                Exits: {
+                    underCentralRoom: {
+                        RequiredItems: [Equipment.IRON_BOOTS],
+                        CustomRequirement: function(age) {
+                            let tunicCheck = Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
+                            let canUseFireArrows = ItemData.canUse(age, Items.FIRE_ARROW);
+                            let canUseDinsFire = ItemData.canUse(age, Items.DINS_FIRE);
+                            let canLightTorches = canUseFireArrows || (Data.canPlaySong(Songs.SONG_OF_TIME) && canUseDinsFire);
+                            return tunicCheck && canLightTorches;
+                        }
+                    }
+                },
+                ItemLocations: {
+                    "2 Crates in Upper Central Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 170, y: 211, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 1,
+                        LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top - the crates are on a platform."
+                    }
+                }
+            },
+            underCentralRoom: {
+                DisplayGroup: { groupName: "Central Rooms (Center Mid)", imageName: "Ocarina of Time" },
+                Exits: {},
+                ItemLocations: {
+                    "14 Crates Below Central Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "14 Crates",
+                        MapInfo: { x: 185, y: 165, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 2,
+                        LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top and play the Song of Time to spawn a block you can use Din's fire from to light the torches. Alternatively, well-aimed fire arrows will work. Sink down to the room at the very bottom. The crates are all around!"
+                    },
+                    "Wonderitem Below Central Room": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 312, y: 215, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 2.1,
+                        LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top and play the Song of Time to spawn a block you can use Din's fire from to light the torches. Alternatively, well-aimed fire arrows will work. Sink down to the room at the very bottom.<br/><br/>Once here, navigate around the maze. Jump on some platforms at the very end to reveal a switch. Hit it, and then navigate to the grate that opens up and hookshot your way up there. Hookshot the symbol on the wall to spawn the wonderitem.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "Chest Below Central Room": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 291, y: 215, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 3,
+                        LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top and play the Song of Time to spawn a block you can use Din's fire from to light the torches. Alternatively, well-aimed fire arrows will work. Sink down to the room at the very bottom.<br/><br/>Once here, navigate around the maze. Jump on some platforms at the very end to reveal a switch. Hit it, and then navigate to the grate that opens up and hookshot your way up there. Hookshot the symbol on the wall to spawn the chest.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    }
+                }
+            },
+            lowEastRooms: {
+                DisplayGroup: { groupName: "Water Lowering Rooms (Low East)", imageName: "Ocarina" },
+                Exits: {
+                    lowWaterLevel: {
+                        RequiredSongs: [Songs.ZELDAS_LULLABY],
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
+                        }
+                    }
+                },
                 ItemLocations: {
                     "Wonderitem Above Low East Room": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -3086,7 +3205,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 3.9,
                         LongDescription: "Use your iron boots and navigate through the lower eastern room. Put them back on when you reach the very next floor. Navigate through the hole in the wall. Now, hookshot the symbol on the back wall to spawn the wonderitem.",
-                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+                        RequiredItems: [Items.HOOKSHOT]
                     },
                     "Chest Above Low East Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3094,7 +3213,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 4,
                         LongDescription: "Use your iron boots and navigate through the lower eastern room. Put them back on when you reach the very next floor. Navigate through the hole in the wall. Now, hookshot the symbol on the back wall to spawn the chest. To open it, hookshot the front then spam A.",
-                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+                        RequiredItems: [Items.HOOKSHOT]
                     },
                     "Wonderitem by Low Water Triforce": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -3103,7 +3222,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 4.1,
                         LongDescription: "Use your iron boots and navigate through the lower eastern room. Take them off to rise to the top to get to the triforce room. Use a fire item to light the torches in the four corners of the room to unbar the door.<br/><br/>Enter the next room and optionally defeat all the Stalfos to unbar the door. The wonderitem is spawned by hookshotting the symbol on the back wall.",
-                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT, ItemSets.FIRE_ITEMS]
+                        RequiredItems: [Items.HOOKSHOT, ItemSets.FIRE_ITEMS]
                     },
                     "Chest by Low Water Triforce": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3111,77 +3230,12 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 5,
                         LongDescription: "Use your iron boots and navigate through the lower eastern room. Take them off to rise to the top to get to the triforce room. Use a fire item to light the torches in the four corners of the room to unbar the door.<br/><br/>Enter the next room and optionally defeat all the Stalfos to unbar the door. The chest is spawned by hookshotting the symbol on the back wall.",
-                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT, ItemSets.FIRE_ITEMS]
-                    },
-                    "3 Crates in Mid South Hallway": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Crates",
-                        MapInfo: { x: 245, y: 200, floor: "F2" },
-                        Age: Age.ADULT,
-                        Order: 8,
-                        LongDescription: "Make your way to the mid south wing - you'll need to press the switch to open the gate. Bonk into the crates to break them. Two of them are before the jail cell, and one is just to the left of it.",
-                        RequiredItems: [Equipment.IRON_BOOTS]
-                    },
-                    "5 Crates in Mid South Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "5 Crates",
-                        MapInfo: { x: 245, y: 241, floor: "F2" },
-                        Age: Age.ADULT,
-                        Order: 10,
-                        LongDescription: "Make your way to the mid south wing - you'll need to press the switch to open the gate. Navigate to the room to the right of the jail cell and bonk into the crates to break them.",
-                        RequiredItems: [Equipment.IRON_BOOTS]
-                    },
-                    "Wonderitem in Mid South Room": {
-                        ItemGroup: ItemGroups.WONDERITEM,
-                        MapImageName: "Hookshot Wonderitem",
-                        MapInfo: { x: 244, y: 256, floor: "F2" },
-                        Age: Age.ADULT,
-                        Order: 10.1,
-                        LongDescription: "Make your way to the mid south wing - you'll need to press the switch to open the gate. Navigate to the room to the right of the jail cell and hookshot the symbol on the wall to spawn the wonderitem.",
-                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
-                    },
-                    "3 Pots in Mid East Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 283, y: 58, floor: "F2" },
-                        Age: Age.ADULT,
-                        Order: 15,
-                        LongDescription: "Go to the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there, then hookshot up. Once at the surface, look in the corner of the room for the pots.",
-                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
-                    },
-                    "7 Crates in Mid East Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "7 Crates",
-                        MapInfo: { x: 315, y: 58, floor: "F2" },
-                        Age: Age.ADULT,
-                        Order: 16,
-                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
-                        LongDescription: "Go to the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there, then hookshot up. Once at the surface, the crates are the big ones all around the room.",
-                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
-                    },
-                    "11 Crates in Mid East Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        IsEmpty: true,
-                        DefaultEntranceGroupName: "11 Crates",
-                        MapInfo: { x: 315, y: 58, floor: "F2" },
-                        Age: Age.ADULT,
-                        Order: 16,
-                        LongDescription: "Go to the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there, then hookshot up. Once at the surface, there are 7 big crates, and 4 small ones.",
-                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+                        RequiredItems: [Items.HOOKSHOT, ItemSets.FIRE_ITEMS]
                     }
                 }
             },
             lowWaterLevel: {
+                DisplayGroup: { groupName: "Water Lowering Rooms (Low East)", imageName: "Ocarina" },
                 Exits: {
                     lowEastWingPots: {},
                     midSouthRoomPots: {},
@@ -3215,6 +3269,7 @@ let MQDungeons = {
                 }
             },
             lowEastWingPots: {
+                DisplayGroup: { groupName: "Water Lowering Rooms (Low East)", imageName: "Ocarina" },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in Low East Wing": {
@@ -3229,7 +3284,49 @@ let MQDungeons = {
                     }
                 }
             },
+            midSouthRoom: {
+                DisplayGroup: { groupName: "Skulltula Jail Hallway (Mid South)", imageName: "Skulltula" },
+                Exits: {
+                    midSouthRoomPots: {
+                        // Assumes the water isn't drained
+                        // Another exit into here is from lowWaterLevel, which doesn't need hookshot
+                        RequiredItems: [Items.HOOKSHOT]
+                    }
+                },
+                ItemLocations: {
+                    "3 Crates in Mid South Hallway": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Crates",
+                        MapInfo: { x: 245, y: 200, floor: "F2" },
+                        Age: Age.ADULT,
+                        Order: 8,
+                        LongDescription: "Make your way to the mid south wing - you'll need to press the switch to open the gate. Bonk into the crates to break them. Two of them are before the jail cell, and one is just to the left of it."
+                    },
+                    "5 Crates in Mid South Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "5 Crates",
+                        MapInfo: { x: 245, y: 241, floor: "F2" },
+                        Age: Age.ADULT,
+                        Order: 10,
+                        LongDescription: "Make your way to the mid south wing - you'll need to press the switch to open the gate. Navigate to the room to the right of the jail cell and bonk into the crates to break them."
+                    },
+                    "Wonderitem in Mid South Room": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 244, y: 256, floor: "F2" },
+                        Age: Age.ADULT,
+                        Order: 10.1,
+                        LongDescription: "Make your way to the mid south wing - you'll need to press the switch to open the gate. Navigate to the room to the right of the jail cell and hookshot the symbol on the wall to spawn the wonderitem.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    }
+                }
+            },
             midSouthRoomPots: {
+                DisplayGroup: { groupName: "Skulltula Jail Hallway (Mid South)", imageName: "Skulltula" },
                 Exits: {},
                 ItemLocations: {
                     "Pot in Mid South Hallway": {
@@ -3252,6 +3349,7 @@ let MQDungeons = {
                 }
             },
             behindGateInMidSouthRoom: {
+                DisplayGroup: { groupName: "Skulltula Jail Hallway (Mid South)", imageName: "Skulltula" },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in Mid South Jail": {
@@ -3284,7 +3382,46 @@ let MQDungeons = {
                     }
                 }
             },
+            midEastRoom: {
+                DisplayGroup: { groupName: "Pot and Crate Room (Mid East)", imageName: "7 Crates" },
+                Exits: {},
+                ItemLocations: {
+                    "3 Pots in Mid East Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 283, y: 58, floor: "F2" },
+                        Age: Age.ADULT,
+                        Order: 15,
+                        LongDescription: "Go to the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there, then hookshot up. Once at the surface, look in the corner of the room for the pots."
+                    },
+                    "7 Crates in Mid East Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "7 Crates",
+                        MapInfo: { x: 315, y: 58, floor: "F2" },
+                        Age: Age.ADULT,
+                        Order: 16,
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
+                        LongDescription: "Go to the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there, then hookshot up. Once at the surface, the crates are the big ones all around the room."
+                    },
+                    "11 Crates in Mid East Room": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "11 Crates",
+                        MapInfo: { x: 315, y: 58, floor: "F2" },
+                        Age: Age.ADULT,
+                        Order: 16,
+                        LongDescription: "Go to the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there, then hookshot up. Once at the surface, there are 7 big crates, and 4 small ones."
+                    }
+                }
+            },
             midWaterLevel: {
+                DisplayGroup: { groupName: "Water Raising Rooms (Mid West)", imageName: "Zelda's Lullaby" },
                 Exits: {},
                 ItemLocations: {
                     "6 Crates in Mid West Room": {
@@ -3368,65 +3505,8 @@ let MQDungeons = {
                     }
                 }
             },
-            centralRoom: {
-                Exits: {
-                    underCentralRoom: {
-                        RequiredItems: [Equipment.IRON_BOOTS],
-                        CustomRequirement: function(age) {
-                            let tunicCheck = Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                            let canUseFireArrows = ItemData.canUse(age, Items.FIRE_ARROW);
-                            let canUseDinsFire = ItemData.canUse(age, Items.DINS_FIRE);
-                            let canLightTorches = canUseFireArrows || (Data.canPlaySong(Songs.SONG_OF_TIME) && canUseDinsFire);
-                            return tunicCheck && canLightTorches;
-                        }
-                    }
-                },
-                ItemLocations: {
-                    "2 Crates in Upper Central Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Crates",
-                        MapInfo: { x: 170, y: 211, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 1,
-                        LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top - the crates are on a platform."
-                    }
-                }
-            },
-            underCentralRoom: {
-                Exits: {},
-                ItemLocations: {
-                    "14 Crates Below Central Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "14 Crates",
-                        MapInfo: { x: 185, y: 165, floor: "B1" },
-                        Age: Age.ADULT,
-                        Order: 2,
-                        LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top and play the Song of Time to spawn a block you can use Din's fire from to light the torches. Alternatively, well-aimed fire arrows will work. Sink down to the room at the very bottom. The crates are all around!"
-                    },
-                    "Wonderitem Below Central Room": {
-                        ItemGroup: ItemGroups.WONDERITEM,
-                        MapImageName: "Hookshot Wonderitem",
-                        MapInfo: { x: 312, y: 215, floor: "B1" },
-                        Age: Age.ADULT,
-                        Order: 2.1,
-                        LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top and play the Song of Time to spawn a block you can use Din's fire from to light the torches. Alternatively, well-aimed fire arrows will work. Sink down to the room at the very bottom.<br/><br/>Once here, navigate around the maze. Jump on some platforms at the very end to reveal a switch. Hit it, and then navigate to the grate that opens up and hookshot your way up there. Hookshot the symbol on the wall to spawn the wonderitem.",
-                        RequiredItems: [Items.HOOKSHOT]
-                    },
-                    "Chest Below Central Room": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 291, y: 215, floor: "B1" },
-                        Age: Age.ADULT,
-                        Order: 3,
-                        LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top and play the Song of Time to spawn a block you can use Din's fire from to light the torches. Alternatively, well-aimed fire arrows will work. Sink down to the room at the very bottom.<br/><br/>Once here, navigate around the maze. Jump on some platforms at the very end to reveal a switch. Hit it, and then navigate to the grate that opens up and hookshot your way up there. Hookshot the symbol on the wall to spawn the chest.",
-                        RequiredItems: [Items.HOOKSHOT]
-                    }
-                }
-            },
             roomBeforeDarkLink: {
+                DisplayGroup: { groupName: "Boss Key Loop (Top West)", imageName: "Boss Key" },
                 Exits: {
                     whirlpoolRoom: {}
                 },
@@ -3516,10 +3596,10 @@ let MQDungeons = {
                 }
             },
             whirlpoolRoom: {
+                DisplayGroup: { groupName: "Boss Key Loop (Top West)", imageName: "Boss Key" },
                 Exits: {
                     dragonRoom: {}
                 },
-
                 ItemLocations: {
                     "Skulltula in Whirlpool Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3554,6 +3634,7 @@ let MQDungeons = {
                 }
             },
             dragonRoom: {
+                DisplayGroup: { groupName: "Boss Key Loop (Top West)", imageName: "Boss Key" },
                 Exits: {
                     singleWaterPillarRoom: {
                         RequiredItems: [ItemSets.FIRE_ITEMS],
@@ -3633,6 +3714,7 @@ let MQDungeons = {
                 }
             },
             singleWaterPillarRoom: {
+                DisplayGroup: { groupName: "Boss Key Loop (Top West)", imageName: "Boss Key" },
                 Exits: {
                     afterSingleWaterPillarRoomGate: {
                         CustomRequirement: function(age) {
@@ -3669,6 +3751,7 @@ let MQDungeons = {
                 }
             },
             afterSingleWaterPillarRoomGate: {
+                DisplayGroup: { groupName: "Boss Key Loop (Top West)", imageName: "Boss Key" },
                 Exits: {
                     bottomGateSwitch: {
                         RequiredItems: [Equipment.IRON_BOOTS]
@@ -3685,6 +3768,7 @@ let MQDungeons = {
                 }
             },
             bottomGateSwitch: {
+                DisplayGroup: { groupName: "Skulltula Jail Room (Low South)", imageName: "Fire Arrow" },
                 Exits: {
                     upperTripleTorchRoom: {
                         RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.IRON_BOOTS, Equipment.MAGIC],
@@ -3710,6 +3794,7 @@ let MQDungeons = {
                 }
             },
             upperTripleTorchRoom: {
+                DisplayGroup: { groupName: "Skulltula Jail Room (Low South)", imageName: "Fire Arrow" },
                 Exits: {},
                 ItemLocations: {
                     "4 Pots in Low South Room Jail": {
@@ -3752,6 +3837,7 @@ let MQDungeons = {
                 }
             },
             roomAfterSpikes: {
+                DisplayGroup: { groupName: "Mini Waterfall Loop (Low North)", imageName: "Zora Tunic" },
                 Exits: {
                     dodongoRoom: {
                         RequiredItems: [Items.HOOKSHOT]
@@ -3803,6 +3889,7 @@ let MQDungeons = {
                 }
             },
             tripleWaterSpoutRoom: {
+                DisplayGroup: { groupName: "Mini Waterfall Loop (Low North)", imageName: "Zora Tunic" },
                 Exits: {
                     dodongoRoom: {},
                     northWaterfallArea: {}
@@ -3821,6 +3908,7 @@ let MQDungeons = {
                 }
             },
             dodongoRoom: {
+                DisplayGroup: { groupName: "Mini Waterfall Loop (Low North)", imageName: "Zora Tunic" },
                 Exits: {
                     tripleWaterSpoutRoom: {}
                 },
@@ -3862,6 +3950,7 @@ let MQDungeons = {
                 }
             },
             northWaterfallArea: {
+                DisplayGroup: { groupName: "Mini Waterfall Loop (Low North)", imageName: "Zora Tunic" },
                 Exits: {
                     dodongoRoom: {
                         RequiredItems: [ItemSets.FIRE_ITEMS]
@@ -3915,49 +4004,6 @@ let MQDungeons = {
                         Order: 47.1,
                         LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes. Play the Scarecrow's song and hookshot it to get to the opening to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. In the room, hookshot the symbol on the wall to spawn the wonderitem.",
                         RequiredItems: [Items.HOOKSHOT]
-                    }
-                }
-            },
-            bossRoomAntechamber: {
-                Exits: {
-                    bossRoom: {
-                        CustomRequirement: function(age) {
-                            // Nayrus love can be used to become immune to the spike traps!
-                            let canGetUp = ItemData.canUseAny(age, [UpgradedItems.LONGSHOT, Items.NAYRUS_LOVE, Equipment.HOVER_BOOTS]);
-                            let canGetIn = ItemData.hasBossKey("Water Temple") ||
-                                ItemData.canUseAny(age, [Items.HOOKSHOT, Items.FAIRY_BOW, Items.BOMBCHU]);
-                            return canGetUp && canGetIn;
-                        }
-                    }
-                },
-                ItemLocations: {
-                    "2 Hookshot Wonderitems in Boss Antechamber": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Hookshot Wonderitems",
-                        MapInfo: { x: 226, y: 162, floor: "F3" },
-                        Age: Age.ADULT,
-                        Order: 48,
-                        LongDescription: "From the main room with the water raised, longshot to the upper north area and enter the door. Hookshot the two symbols on either side of the door you came through to spawn the wonderitems."
-                    }
-                }
-            },
-            bossRoom: {
-                Exits: {
-                    "Boss": {
-                        OwExit: OwExits["Water Temple"]["Boss"]
-                    }
-                },
-                ItemLocations: {
-                    "Blue Warp": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        Age: Age.ADULT,
-                        IsBoss: true,
-                        Order: 99,
-                        MapInfo: { x: 227, y: 145, floor: "F3" },
-                        LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-                        RequiredToAppear: function() { return false; } //TODO: maybe clean this up so this item isn't necessary anymore
                     }
                 }
             }
@@ -6161,10 +6207,9 @@ let MQDungeons = {
                             return age === Age.CHILD || (Data.canWeirdShot(age) && ItemData.canUse(age, UpgradedItems.LONGSHOT));
                         }
                     },
-                    
                     Exit: {
                         OwExit: OwExits["Bottom of the Well"]["Exit"]
-                    },
+                    }
                 },
                 ItemLocations: {
                     // Locked Doors
