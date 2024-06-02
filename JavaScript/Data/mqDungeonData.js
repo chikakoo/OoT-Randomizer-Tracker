@@ -4994,9 +4994,6 @@ let MQDungeons = {
         IsMasterQuest: true,
         Floors: ["F4", "F3", "F2", "F1"],
         StartingFloorIndex: 3,
-        UseAltOrder: function() {
-            return ItemData.canUseAll(Age.ADULT, [Items.BOMBCHU, UpgradedItems.SILVER_GAUNTLETS, UpgradedItems.LONGSHOT]);
-        },
         _canAccessAdultSide: function() {
             let canGetUp = ItemData.canUseAll(Age.ADULT, [Items.BOMBCHU, UpgradedItems.LONGSHOT]);
             let canPushBlock = ItemData.canUse(Age.ADULT, UpgradedItems.SILVER_GAUNTLETS);
@@ -5035,7 +5032,6 @@ let MQDungeons = {
                         MapInfo: { x: 192, y: 264, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 1,
-                        AltOrder: 1,
                         LongDescription: "These pots are to your left and right against the walls as you first enter the temple."
                     },
                     "Lobby Silver Rupee in Left Rock": {
@@ -5059,7 +5055,6 @@ let MQDungeons = {
                         MapInfo: { x: 187, y: 215, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 2,
-                        AltOrder: 2,
                         LongDescription: "This chest is there when you first enter the temple."
                     },
                     "Top Left Chest in Lobby": {
@@ -5067,7 +5062,6 @@ let MQDungeons = {
                         MapInfo: { x: 187, y: 203, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 3,
-                        AltOrder: 3,
                         LongDescription: "After you first enter the temple, go up the stairs. Destroy the yellow rock to your right and shoot the eye switch to spawn the chest.",
                         RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.PROJECTILES]
                     },
@@ -5076,7 +5070,6 @@ let MQDungeons = {
                         MapInfo: { x: 203, y: 203, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 4,
-                        AltOrder: 4,
                         LongDescription: "After you first enter the temple, go up the stairs and turn around. There's a crystal switch at the top of one of the pillars that you need to activate to spawn the chest.<br/><br/>The easiest way to hit with the boomerang is to face the pillar directly, and take small steps backwards. Aim it all the way up and try until it works.",
                         RequiredChoiceOfItems: [ItemSets.PROJECTILES, Items.BOOMERANG, Items.BOMBCHU]
                     },
@@ -5088,7 +5081,6 @@ let MQDungeons = {
                         MapInfo: { x: 87, y: 100, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 11,
-                        AltOrder: 50,
                         LongDescription: "This is the door after the second crawlspace on the child side.",
                         KeyRequirement: function(age) {
                             let min = 1;
@@ -5105,7 +5097,6 @@ let MQDungeons = {
                         MapInfo: { x: 67, y: 174, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 14,
-                        AltOrder: 13,
                         LongDescription: "This is the door leading to/from the room with the sun on the floor room.",
                         KeyRequirement: function(age) {
                             // There's only one path for child, and it uses only 2 keys
@@ -5126,7 +5117,6 @@ let MQDungeons = {
                         MapInfo: { x: 32, y: 198, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 25,
-                        AltOrder: 21,
                         LongDescription: "This is the door after the puzzle where you push the sun block into the light.",
                         KeyRequirement: function(age) {
                             // There's only one path for child, and it uses only 3 keys
@@ -5147,7 +5137,6 @@ let MQDungeons = {
                         MapInfo: { x: 256, y: 217, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 38,
-                        AltOrder: 30,
                         LongDescription: "This is the locked door on the upper east part of the statue room.",
                         KeyRequirement: function(age) {
                             let max = 5;
@@ -5163,7 +5152,6 @@ let MQDungeons = {
                         MapInfo: { x: 223, y: 105, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 43,
-                        AltOrder: 35,
                         LongDescription: "This is the locked door in the southwest corner of the room with all the Beamos.",
                         KeyRequirement: function(age) {
                             let min = 2;
@@ -5179,7 +5167,6 @@ let MQDungeons = {
                         MapInfo: { x: 295, y: 169, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 34,
-                        AltOrder: 26,
                         LongDescription: "This is the locked door to the right of the lobby that you get to via the statue room.",
                         KeyRequirement: function(age) {
                             return { min: 1, max: Keys.SPIRIT_TEMPLE.mqTotalKeys() };
@@ -5191,7 +5178,6 @@ let MQDungeons = {
                         MapInfo: { x: 294, y: 144, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 46,
-                        AltOrder: 38,
                         LongDescription: "This is the locked door by the triforce symbol located after the moving wall.",
                         KeyRequirement: function(age) {
                             let min = 3;
@@ -5226,7 +5212,6 @@ let MQDungeons = {
                         MapInfo: { x: 122, y: 207, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 5,
-                        AltOrder: 44,
                         LongDescription: "This is the pot in front of you when you go through the crawlspace."
                     },
                     "2 Hearts in Child Main Room": {
@@ -5237,7 +5222,6 @@ let MQDungeons = {
                         MapInfo: { x: 88, y: 170, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 6,
-                        AltOrder: 45,
                         LongDescription: "These are the hearts surrounded by fire in the room after you go through the crawlspace. You can either get them with the boomerang, shoot the eye switch, or run into the fire and then jumpslash into them.",
                         RequiredChoiceOfItems: [ItemSets.SWORDS, ItemSets.PROJECTILES, Items.BOOMERANG]
                     },
@@ -5246,7 +5230,6 @@ let MQDungeons = {
                         MapInfo: { x: 34, y: 139, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 10,
-                        AltOrder: 46,
                         LongDescription: "In the child area, go through the left door to get to this chest. You can also do the loop from the right side.",
                         RequiredItems: [ItemSets.SWORDS]
                     },
@@ -5255,7 +5238,6 @@ let MQDungeons = {
                         MapInfo: { x: 89, y: 199, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 52,
-                        AltOrder: 51,
                         IsPostWalkCheck: true,
                         LongDescription: "As an adult, navigate through the sun on the floor room until you're in the room with the rusted switch (this is the room after the second crawl space). Hit the switch to spawn the chest. You must go back in time to claim it.<br/>You can also equip swap hammer as Child to get this.",
                         RequiredItems: [Items.BOMBCHU],
@@ -5278,7 +5260,6 @@ let MQDungeons = {
                         MapInfo: { x: 151, y: 76, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 7,
-                        AltOrder: 47,
                         LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. The pots are by the gibdos."
                     },
                     //TODO: Empty Pots - remove this item, as the one below will replace it
@@ -5290,10 +5271,9 @@ let MQDungeons = {
                         MapInfo: { x: 86, y: 19, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 8,
-                        AltOrder: 48,
                         LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. In the next room, kill the Stalfos - this will lower the fire so you can get the pots (one contains a fairy)."
-                     },
-                     "4 Pots in Child Stalfos Room": {
+                    },
+                    "4 Pots in Child Stalfos Room": {
                         RequiredToAppear: function() {
                             //TODO: Empty Pots - remove this function, as this will become the default item location
                             return false;
@@ -5305,15 +5285,13 @@ let MQDungeons = {
                         MapInfo: { x: 86, y: 19, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 8,
-                        AltOrder: 48,
                         LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. In the next room, kill the Stalfos - this will lower the fire so you can get the pots."
-                     },
+                    },
                     "Small Chest in Bridge Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 34, y: 94, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 9,
-                        AltOrder: 49,
                         LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. In the next room, kill the Stalfos and continue on. In this room, pull back the gravestone and hit the switch to lower the bridge. Now kill all the enemies to spawn the chest - you'll need Din's Fire to deal with the Anubis.",
                         RequiredItems: [ItemSets.FIRE_ITEMS]
                     }
@@ -5349,14 +5327,12 @@ let MQDungeons = {
                         LockedDoor: "Locked Door in Sun on Floor Room"
                     }
                 },
-
                 ItemLocations: {
                     "Pot in Room With Sun On Floor": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 88, y: 81, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 12,
-                        AltOrder: 16,
                         LongDescription: "In the room with the sun on the floor, the pot is located on the bottom. As adult, you must hit the switch on top first. As a child, it's at the start of the room (it's the locked door after the crawlspace)."
                     },
                     "Bottom Chest in Room With Sun On Floor": {
@@ -5364,7 +5340,6 @@ let MQDungeons = {
                         MapInfo: { x: 61, y: 142, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 13,
-                        AltOrder: 14,
                         LongDescription: "In the room with the sun on the floor, kill all the enemies to spawn the chest. As child, this is the room after you go through the second crawlspace. As an adult, it's in the bottom southwest corner of the big statue room.",
                         RequiredItems: [ItemSets.EXPLOSIVES]
                     },
@@ -5373,7 +5348,6 @@ let MQDungeons = {
                         MapInfo: { x: 53, y: 194, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 27,
-                        AltOrder: 15,
                         LongDescription: "In the room with the sun on the floor, use an explosive to blow up the wall to light up the sun. This will spawn a chest that you will need to hookshot up to.",
                         RequiredItems: [Items.HOOKSHOT, ItemSets.EXPLOSIVES]
                     }
@@ -5419,7 +5393,6 @@ let MQDungeons = {
                         MapInfo: { x: 147, y: 189, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 14.1,
-                        AltOrder: 10.2,
                         LongDescription: "This pot is on the southwest staircase (the one either age can access)."
                     },
                     "Small Crate by Statue Room Stairs": {
@@ -5428,7 +5401,6 @@ let MQDungeons = {
                         MapInfo: { x: 131, y: 158, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 14.2,
-                        AltOrder: 10.1,
                         LongDescription: "This small crate is next to the southwest staircase. Depending on your age, it may be on a Song of Time block."
                     },
                     "Left Pot in Statue Room": {
@@ -5436,7 +5408,6 @@ let MQDungeons = {
                         MapInfo: { x: 116, y: 135, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 15,
-                        AltOrder: 5,
                         LongDescription: "WALL MASTER WARNING:<br/>This pot is by the left side of the statue."
                     },
                     "Chest in Center of Statue Room": {
@@ -5444,7 +5415,6 @@ let MQDungeons = {
                         MapInfo: { x: 176, y: 148, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 16,
-                        AltOrder: 6,
                         LongDescription: "WALL MASTER WARNING:<br/>Shoot the eye switch on the left side of the statue to spawn this chest.",
                         RequiredChildItems: [Items.FAIRY_SLINGSHOT],
                         RequiredAdultItems: [Items.FAIRY_BOW]
@@ -5457,7 +5427,6 @@ let MQDungeons = {
                         MapInfo: { x: 223, y: 117, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 17,
-                        AltOrder: 7,
                         LongDescription: "WALL MASTER WARNING:<br/>These crates are on the right side of the statue against the back wall.",
                     },
                     "2 Right Pots in Statue Room": {
@@ -5469,7 +5438,6 @@ let MQDungeons = {
                         MapInfo: { x: 239, y: 135, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 18,
-                        AltOrder: 8,
                         LongDescription: "WALL MASTER WARNING:<br/>These pots are on the right side of the statue by the flying pot that gives nothing.",
                     },
                     "3 Right Pots in Statue Room": {
@@ -5481,7 +5449,6 @@ let MQDungeons = {
                         MapInfo: { x: 239, y: 135, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 18,
-                        AltOrder: 8,
                         LongDescription: "WALL MASTER WARNING:<br/>These pots are on the right side of the statue. One of them is a flying pot.",
                     },
                     "Invisible Chest in Statue Room": {
@@ -5489,7 +5456,6 @@ let MQDungeons = {
                         MapInfo: { x: 251, y: 100, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 28,
-                        AltOrder: 9,
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way to the southeast corner using the hookshot. In the northeast part of the room, there's an invisible chest. Hookshot or hover boots to it."
                     },
                     "Chest in Boxes in Statue Room": {
@@ -5497,7 +5463,6 @@ let MQDungeons = {
                         MapInfo: { x: 225, y: 115, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 29,
-                        AltOrder: 10,
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way to the southeast corner using the hookshot. Now get to the hand with the triforce and play Zelda's Lullaby. This will spawn the chest to the right of the statue, under a box.",
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
                     },
@@ -5506,7 +5471,6 @@ let MQDungeons = {
                         MapInfo: { x: 101, y: 100, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 20,
-                        AltOrder: 11,
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way up the western side. The pots are on the northeast platform, so either play the song of time to spawn the block, use hover boots, or megaflip to it.",
                         CustomRequirement: function(age) {
@@ -5525,7 +5489,6 @@ let MQDungeons = {
                         MapInfo: { x: 101, y: 100, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 20,
-                        AltOrder: 11,
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way up the western side. The pots are on the northeast platform, so either play the song of time to spawn the block, use hover boots, or megaflip to it. One of the pots will fly at you.",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT && (Equipment.HOVER_BOOTS.playerHas || Settings.GlitchesToAllow.spiritStatueRoomJumps)) {
@@ -5539,7 +5502,6 @@ let MQDungeons = {
                         MapInfo: { x: 109, y: 100, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 21,
-                        AltOrder: 12,
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way up the western side. The pots are on the northeast platform, so either play the song of time to spawn the block, use hover boots, megaflip, or use boomerang as described.<br/><br/>To use boomerang, first, jump to the statue hand (child requires a jumpslash). Now walk along the arm so you're somewhat near the wall. You should now be able to aim a bit to the left of the pot to get it.",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT && (Equipment.HOVER_BOOTS.playerHas || Settings.GlitchesToAllow.spiritStatueRoomJumps)) {
@@ -5563,7 +5525,6 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                         Order: 19,
-                        AltOrder: 52,
                         LongDescription: "From the statue room, use a fire item on the southern eye switch to get to the maze room. Navigate to the first hole and shoot the eye switch on the lower left wall to spawn the chest.",
                         RequiredChildItems: [Items.FAIRY_SLINGSHOT],
                         RequiredAdultItems: [Items.FAIRY_BOW],
@@ -5587,7 +5548,6 @@ let MQDungeons = {
                         MapInfo: { x: 60, y: 112, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 22,
-                        AltOrder: 17,
                         LongDescription: "From the statue room, you must play the song of time on the ledge near the small box, then reload the room so that the box spawns on the song of time block. With a series of song of time plays, you can move the box up to the switch on the statue's west-side hand. Go through the room and the hallway that unlocks.<br/><br/>The pot is on a ledge in the left part of the room."
                     },
                     "Right Pot in Fire Bubble Room": {
@@ -5595,7 +5555,6 @@ let MQDungeons = {
                         MapInfo: { x: 31, y: 60, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 23,
-                        AltOrder: 18,
                         LongDescription: "From the statue room, you must play the song of time on the ledge near the small box, then reload the room so that the box spawns on the song of time block. With a series of song of time plays, you can move the box up to the switch on the statue's west-side hand. Go through the room and the hallway that unlocks.<br/><br/>The pot is on a ledge in the right part of the room."
                     },
                     "Chest in Fire Bubble Room": {
@@ -5603,7 +5562,6 @@ let MQDungeons = {
                         MapInfo: { x: 80, y: 63, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 24,
-                        AltOrder: 19,
                         LongDescription: "From the statue room, you must play the song of time on the ledge near the small box, then reload the room so that the box spawns on the song of time block. With a series of song of time plays, you can move the box up to the switch on the statue's west-side hand. Go through the room and the hallway that unlocks.<br/><br/>Navigate around the room and push the two sun blocks that are next to each other into the light. This will spawn the chest."
                     },
                     "Skulltula in Fire Bubble Room": {
@@ -5612,7 +5570,6 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
                         Order: 30,
-                        AltOrder: 20,
                         LongDescription: "In the fire bubble room, you must push the first sun block you see onto the light. You'll need to hit the crystal switches to make the fire disappear. This spawns a white platform that you can hookshot up to so that you can reach the skulltula.",
                         CustomRequirement: function(age) {
                             return (Settings.GlitchesToAllow.difficultBoomerangTrickThrows && ItemData.canUse(age, Items.BOOMERANG)) ||
@@ -5632,7 +5589,6 @@ let MQDungeons = {
                         MapInfo: { x: 103, y: 228, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 26,
-                        AltOrder: 22,
                         LongDescription: "Simply navigate to the door from the fire bubble room. Kill the Iron Knuckle in the room after the hallway, and proceed outside to get the chest."
                     }
                 }
@@ -5667,7 +5623,6 @@ let MQDungeons = {
                         MapInfo: { x: 247, y: 226, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 42,
-                        AltOrder: 34,
                         LongDescription: "From the room with the lizalfos and the sun, slash the chest that Navi is going crazy over to open the door. Kill the Floormaster in the next room, and the Iron Knuckle in the room after. The chest will spawn on the hand as you walk in."
                     }
                 }
@@ -5695,7 +5650,6 @@ let MQDungeons = {
                         MapInfo: { x: 328, y: 105, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 40,
-                        AltOrder: 32,
                         LongDescription: "In the beamos room, the puzzle is to play the Song of Time to move the blocks so that the little box falls down onto one of the blocks. Play it by the left side of the room, then by the hole twice. You then use that box to hold the switch down.<br/><br/>The chest is in plain sight in the room."
                     },
                     "2 Wonderitems in Room With Lizalfos and Sun": {
@@ -5713,7 +5667,6 @@ let MQDungeons = {
                         MapInfo: { x: 321, y: 40, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 41,
-                        AltOrder: 33,
                         LongDescription: "In the room with the lizalfos and sun, you can climb the Song of Time block and shine the light on the sun. The chest is in the room that opens.",
                         RequiredItems: [Equipment.MIRROR_SHIELD]
                     }
@@ -5737,7 +5690,6 @@ let MQDungeons = {
                         MapInfo: { x: 255, y: 105, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 38.1,
-                        AltOrder: 30.1,
                         LongDescription: "From the statue room, hookshot to the torch to get to the southeast side. Use a key to go in the top door.<br/><br/>Play the Song of Time by the block in the left side of the room. Now play it twice by the other blocks. You can now get to the small crate.",
                         RequiredSongs: [Songs.SONG_OF_TIME]
                     },
@@ -5746,7 +5698,6 @@ let MQDungeons = {
                         MapInfo: { x: 284, y: 77, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 39,
-                        AltOrder: 31,
                         LongDescription: "From the statue room, hookshot to the torch to get to the southeast side. Use a key to go in the top door. Kill the beamos to spawn the chest.",
                         RequiredItems: [ItemSets.EXPLOSIVES]
                     }
@@ -5776,7 +5727,6 @@ let MQDungeons = {
                         MapInfo: { x: 278, y: 129, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 31,
-                        AltOrder: 23,
                         LongDescription: "WALL MASTER WARNING:<br/>At the statue room, light all 3 torches with fire arrows. Use your hookshot to get to the door that unlocks. In the next room, use your mirror shield on all 3 suns and kill the enemies (including the wall masters). The pots are down the path that opens up."
                     },
                     "Right of Lobby Silver Rupee by Doors": {
@@ -5784,7 +5734,6 @@ let MQDungeons = {
                         MapInfo: { x: 266, y: 175, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 31.1,
-                        AltOrder: 23.1,
                         LongDescription: "This rupee is in the room to the right of the lobby, in the corner by the doors (see Bottom Right Chest in Lobby for details)."
                     },
                     "Skulltula in Sandy Room": {
@@ -5792,7 +5741,6 @@ let MQDungeons = {
                         MapInfo: { x: 235, y: 127, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 32,
-                        AltOrder: 24,
                         LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), go through the west door - be careful, though, as you can't get out if you don't have Zelda's Lullaby. The skulltula is on the ceiling."
                     },
                     "Chest in Sandy Room": {
@@ -5800,7 +5748,6 @@ let MQDungeons = {
                         MapInfo: { x: 226, y: 99, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 33,
-                        AltOrder: 25,
                         LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), go through the west door - be careful, though, as you can't get out if you don't have Zelda's Lullaby. Jump down and kill all the leevers to spawn the chest. Hookshot to it from the top to get it."
                     },
                     "Right of Lobby Silver Rupee by Stairs": {
@@ -5808,7 +5755,6 @@ let MQDungeons = {
                         MapInfo: { x: 266, y: 207, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 36.1,
-                        AltOrder: 28.1,
                         LongDescription: "This rupee is in the room to the right of the lobby, at the base of the stairs (see Bottom Right Chest in Lobby for details)."
                     },
                     "Lobby Silver Rupee in Water": {
@@ -5816,7 +5762,6 @@ let MQDungeons = {
                         MapInfo: { x: 246, y: 211, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 36.2,
-                        AltOrder: 28.2,
                         LongDescription: "This rupee is in the water diving the lobby and the room next to it. First, get to the room to the right of the lobby (see Bottom Right Chest in Lobby for info). Now, use your hammer and smash the rock and hit the switch underneath. This will lower the water and allow you to get the rupee. WARNING: If you stay at in the lobby side, you will be trapped there when the water comes back!",
                         RequiredItems: [Items.MEGATON_HAMMER],
                     }
@@ -5831,7 +5776,6 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                         Order: 37,
-                        AltOrder: 29,
                         LongDescription: "WALL MASTER WARNING:<br/>At the statue room, light all 3 torches with fire arrows. Use your hookshot to get to the door that unlocks. In the next room, use your mirror shield on all 3 suns and kill the enemies (including the wall masters). Navigate through the hallway. Collect all the silver rupees to spawn the chest - a couple of them are in the lobby under some rocks. Use your hammer to hit the rusted switch to make the water go away. Be careful, though, as you can't come back!"
                     }
                 }
@@ -5844,7 +5788,6 @@ let MQDungeons = {
                         MapInfo: { x: 328, y: 77, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 35,
-                        AltOrder: 27,
                         LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), use a key to go through the locked door. Hit the rusted switch with your hammer. Now, play the following songs in each of the opened cells in this order: Song of Time, Epona's Song, Sun's Song, Song of Storms, then Zelda's Lullaby. Enter the room that opens up to you - the skulltula is inside on a wall.",
                         Region: "boulderRoom",
                         RequiredItems: [Items.MEGATON_HAMMER],
@@ -5855,7 +5798,6 @@ let MQDungeons = {
                         MapInfo: { x: 319, y: 61, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 36,
-                        AltOrder: 28,
                         LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), use a key to go through the locked door. Hit the rusted switch with your hammer. Now, play the following songs in each of the opened cells in this order: Song of Time, Epona's Song, Sun's Song, Song of Storms, then Zelda's Lullaby. Enter the room that opens up to you - the chest is in this room.",
                         Region: "boulderRoom",
                         RequiredItems: [Items.MEGATON_HAMMER],
@@ -5879,7 +5821,6 @@ let MQDungeons = {
                         MapInfo: { x: 168, y: 161, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 44,
-                        AltOrder: 36,
                         LongDescription: "These pots are at the bottom of the moving wall room - which is through the locked door after the hallway via the upper southeast statue room."
                     },
                     "5 Moving Wall Room Silver Rupees": {
@@ -5890,7 +5831,6 @@ let MQDungeons = {
                         MapInfo: { x: 167, y: 139, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 44.1,
-                        AltOrder: 36.1,
                         LongDescription: "These rupees are obtained by climbing the moving wall. You may also find it easier to climb up the wall and drop down onto them."
                     }
                 }
@@ -5914,7 +5854,6 @@ let MQDungeons = {
                         MapInfo: { x: 293, y: 153, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 45,
-                        AltOrder: 37,
                         LongDescription: "These pots by the floor triforce after the moving wall room."
                     }
                 }
@@ -5927,7 +5866,6 @@ let MQDungeons = {
                         MapInfo: { x: 265, y: 80, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 47,
-                        AltOrder: 39,
                         LongDescription: "After navigating up the moving wall room - unlock the door you run into at the top. Lure the Iron Knuckle so that he breaks the pillars blocking the skulltula."
                     },
                     "North Skulltula in Iron Knuckle Room": {
@@ -5935,7 +5873,6 @@ let MQDungeons = {
                         MapInfo: { x: 293, y: 26, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 48,
-                        AltOrder: 40,
                         LongDescription: "After navigating up the moving wall room - unlock the door you run into at the top. Lure the Iron Knuckle so that he breaks the pillars blocking the skulltula."
                     }
                 }
@@ -5955,7 +5892,6 @@ let MQDungeons = {
                         MapInfo: { x: 174, y: 156, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 49,
-                        AltOrder: 41,
                         LongDescription: "After the moving wall room, play Zelda's Lullaby to unlock the door. the pots are in the corners on the top part of the room."
                     },
                     "4 Crates in Giant Mirror Room": {
@@ -5966,7 +5902,6 @@ let MQDungeons = {
                         MapInfo: { x: 174, y: 119, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 50,
-                        AltOrder: 42,
                         LongDescription: "After the moving wall room, play Zelda's Lullaby to unlock the door. the crates are in the corners on the bottom part of the room."
                     }
                 }
@@ -5986,7 +5921,6 @@ let MQDungeons = {
                         MapInfo: { x: 170, y: 216, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 51,
-                        AltOrder: 43,
                         LongDescription: "From the beamos room, take the southeast door to get to the wall room. Grab all the silver rupees to unlock the door at the top. Play Zelda's Lullaby at the trifoce to unlock the next room. Hammer the rusted switch in the northwest corner of the next room to get to the mirror maze.<br/><br/>Navigate to the very end of the maze. There's an invisible chest by the bars."
                     }
                 }

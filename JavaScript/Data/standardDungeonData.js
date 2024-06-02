@@ -4105,9 +4105,6 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: ["F4", "F3", "F2", "F1"],
         StartingFloorIndex: 3,
-        UseAltOrder: function() {
-            return ItemData.canUse(Age.ADULT, UpgradedItems.SILVER_GAUNTLETS) && Keys.SPIRIT_TEMPLE.keyCount > 0;
-        },
         _canAccessAdultSide: function() {
             if (ItemData.canUse(Age.ADULT, UpgradedItems.SILVER_GAUNTLETS)) { return true; }
 
@@ -4140,7 +4137,6 @@ let StandardDungeons = {
                         MapInfo: { x: 192, y: 250, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 1,
-                        AltOrder: 1,
                         LongDescription: "These are the pots that fly at you at the entrance to the temple."
                     },
                     "2 Pots in Lobby": {
@@ -4151,7 +4147,6 @@ let StandardDungeons = {
                         MapInfo: { x: 192, y: 236, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 2,
-                        AltOrder: 2,
                         LongDescription: "These pots are on either side of the first staircase in the lobby."
                     },
 
@@ -4162,7 +4157,6 @@ let StandardDungeons = {
                         MapInfo: { x: 87, y: 100, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 9,
-                        AltOrder: 20,
                         LongDescription: "This is the door after the second crawlspace on the child side. It's also the door to the room with the sun on the floor.",
                         KeyRequirement: function(age) {
                             return { min: 1, max: Keys.SPIRIT_TEMPLE.totalKeys()};
@@ -4174,7 +4168,6 @@ let StandardDungeons = {
                         MapInfo: { x: 32, y: 198, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 20,
-                        AltOrder: 25,
                         LongDescription: "This is the door after the puzzle where you push the sun block into the light.",
                         KeyRequirement: function(age) {
                             // There's only one path for child, and it uses only 2 keys
@@ -4195,7 +4188,6 @@ let StandardDungeons = {
                         MapInfo: { x: 272, y: 167, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 25,
-                        AltOrder: 6,
                         LongDescription: "This is the locked door after the silver block on the adult side.",
                         KeyRequirement: function(age) {
                             let minValue = 1;
@@ -4211,7 +4203,6 @@ let StandardDungeons = {
                         MapInfo: { x: 256, y: 217, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 32,
-                        AltOrder: 27,
                         LongDescription: "This is the locked door on the upper east part of the statue room.",
                         KeyRequirement: function(age) {
                             let minValue = 2;
@@ -4227,7 +4218,6 @@ let StandardDungeons = {
                         MapInfo: { x: 223, y: 105, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 38,
-                        AltOrder: 33,
                         LongDescription: "This is the locked door in the southwest corner of the room with Anubises and pits.",
                         KeyRequirement: function(age) {
                             let minValue = 3;
@@ -4272,7 +4262,6 @@ let StandardDungeons = {
                         MapInfo: { x: 39, y: 81, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 3,
-                        AltOrder: 39,
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
                         LongDescription: "Enter the child-only crawlspace. Kill all the enemies in the first room to unlock the doors - BEWARE OF FIRE KEESE! Enter the left room. The goal in this room is to hit the switch to lower the bridge to get the pot on the other side. There are a few ways to do this. The easiest way is to simply use the boomerang to go around the bridge blocking the switch. If you have the slingshot, you can inch up to the ledge closest to the door and make a precise shot - be sure to go quick if you don't have the means to kill the stalfos.<br/><br/>To use a bombchu, line up with the back wall and face the switch. Take out the chu then drop it after the first flash (like 1/2 a second).<br/><br/>Note that the flying pot you want to hit you is the one on the right; the left one contains nothing."
                     },
@@ -4285,7 +4274,6 @@ let StandardDungeons = {
                         MapInfo: { x: 39, y: 81, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 3,
-                        AltOrder: 39,
                         LongDescription: "Enter the child-only crawlspace. Kill all the enemies in the first room to unlock the doors - BEWARE OF FIRE KEESE! Enter the left room. The goal in this room is to hit the switch to lower the bridge to get the pots on the other side. There are a few ways to do this. The easiest way is to simply use the boomerang to go around the bridge blocking the switch. If you have the slingshot, you can inch up to the ledge closest to the door and make a precise shot - be sure to go quick if you don't have the means to kill the stalfos.<br/><br/>To use a bombchu, line up with the back wall and face the switch. Take out the chu then drop it after the first flash (like 1/2 a second)."
                     },
                     "Chest After Stalfos": {
@@ -4293,7 +4281,6 @@ let StandardDungeons = {
                         MapInfo: { x: 31, y: 81, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 4,
-                        AltOrder: 40,
                         LongDescription: "Enter the child-only crawlspace. Kill all the enemies in the first room to unlock the doors - BEWARE OF FIRE KEESE! Enter the left room.</br></br>The goal in this room is to hit the switch to lower the bridge to get the chest on the other side. There are a few ways to do this. The easiest way is to simply use the boomerang to go around the bridge blocking the switch. If you have the slingshot, you can inch up to the ledge closest to the door and make a precise shot - be sure to go quick if you don't have the means to kill the stalfos.<br/><br/>If using a bombchu, get against the wall opposite the switch, backflip x3 and drop it."
                     },
                     "Pot in Child Anubis Room": {
@@ -4301,7 +4288,6 @@ let StandardDungeons = {
                         MapInfo: { x: 74, y: 47, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 5,
-                        AltOrder: 41,
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
                         LongDescription: "Enter the room after the Stalfos with the bridge. The pot is the one right in front of you - the others are empty."
                     },
@@ -4314,7 +4300,6 @@ let StandardDungeons = {
                         MapInfo: { x: 84, y: 37, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 5,
-                        AltOrder: 41,
                         LongDescription: "Enter the room after the Stalfos with the bridge. The potsare in a line in front of you."
                     }
                 }
@@ -4336,7 +4321,6 @@ let StandardDungeons = {
                         MapInfo: { x: 140, y: 90, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 6.1,
-                        AltOrder: 42.1,
                         LongDescription: "WALL MASTER WARNING:<br/>Make your way counter-clockwise around the child-only areas of the temple. In the room with the Anubis, either Din's fire him, or hit the switch then quickly navigate to the side directly opposite the fire so that it dies on it.<br/><br/>These rupees are on the grate itself, so climb up to get them."
                     },
                     "Grate Room Silver Rupee Near Torch": {
@@ -4344,7 +4328,6 @@ let StandardDungeons = {
                         MapInfo: { x: 152, y: 67, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 6.2,
-                        AltOrder: 42.2,
                         LongDescription: "WALL MASTER WARNING:<br/>This rupee is in the corner of the child grate room, near the torch. See the previous location for how to get here.",
                     },
                     "Chest After Anubis Room": {
@@ -4352,7 +4335,6 @@ let StandardDungeons = {
                         MapInfo: { x: 151, y: 75, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 6,
-                        AltOrder: 42,
                         LongDescription: "WALL MASTER WARNING:<br/>Make your way counter-clockwise around the child-only areas of the temple. In the room with the Anubis, either Din's fire him, or hit the switch then quickly navigate to the side directly opposite the fire so that it dies on it. In the room after that - collect the silver rupees to lower the bridge. Now you can use a Deku Stick (or Din's fire) to light the torches on the other side to spawn the chest.<br/><br/>It's important to note that you can use Din's fire on them earlier, or take a flame from the earlier main room to light the torches. This avoids the need for the silver rupees (for this chest) completely.",
                         RequiredChoiceOfItems: [Items.DEKU_STICK, ItemSets.FIRE_ITEMS]
                     }
@@ -4367,7 +4349,6 @@ let StandardDungeons = {
                         MapInfo: {x: 151, y: 90, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 7,
-                        AltOrder: 43,
                         LongDescription: "WALL MASTER WARNING:<br/>After killing all the enemies in the first child-only room, enter the right room. There's a skulltula on the grate - kill it and collect it with your Boomerang. If you don't have one, navigate around the rooms counter-clockwise. Collect the silver rupees to lower the bridge. Kill it with bombs, a bombchu (it can slide along the pit at the bottom), Din's Fire, a stick jumpslash from the other side, or a slingshot. You can collect it from the opposite side if you climb just above it, press down + A to drop, then hold up."
                     }
                 }
@@ -4394,7 +4375,6 @@ let StandardDungeons = {
                         MapInfo: { x: 88, y: 113, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 8,
-                        AltOrder: 21,
                         LongDescription: "These small crates are after the second crawlspace in the child area. Adult can get to them as well if he unlocks the door from the room with the sun on the floor."
                     }
                 }
@@ -4415,7 +4395,6 @@ let StandardDungeons = {
                         MapInfo: { x: 84, y: 78, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 10,
-                        AltOrder: 19,
                         LongDescription: "This is the room you get to as a child after entering the crawlspace and going through the door. As adult, you can enter from the opposite side of the statue room that you normally enter from (bottom door). The pot is on the bottom section by the climbable wall."
                     },
                     "Skulltula in Sun on Floor Room": {
@@ -4423,7 +4402,6 @@ let StandardDungeons = {
                         MapInfo: { x: 35, y: 133, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 11,
-                        AltOrder: 18,
                         LongDescription: "This is the room you get to as a child after entering the crawlspace and going through the door. As adult, you can enter from the opposite side of the statue room that you normally enter from (bottom door). The skulltula is on the wall leading down the climbable wall. You can hit it with a jumpslash, an explosive, Din's Fire, or a ranged weapon."
                     },
                     "Left Chest in Sun on Floor Room": {
@@ -4431,7 +4409,6 @@ let StandardDungeons = {
                         MapInfo: { x: 63, y: 141, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 12,
-                        AltOrder: 16,
                         LongDescription: "This is the room you get to as a child after entering the crawlspace and going through the door.<br/><br/>As adult, you can enter from the opposite side of the statue room that you normally enter from (bottom door).<br/><br/>If you face the door on the top part of the floor, there's a switch up and to your right. Hit it with an explosive or ranged weapon to spawn the chest.",
                         RequiredChoiceOfChildItems: [Items.FAIRY_SLINGSHOT, Items.BOOMERANG, Items.BOMBCHU, Items.BOMB],
                         RequiredChoiceOfAdultItems: [Items.FAIRY_BOW, Items.HOOKSHOT, Items.BOMBCHU, Items.BOMB]
@@ -4441,7 +4418,6 @@ let StandardDungeons = {
                         MapInfo: { x: 51, y: 131, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 13,
-                        AltOrder: 17,
                         LongDescription: "This is the room you get to as a child after entering the crawlspace and going through the door.<br/><br/>As adult, you can enter from the opposite side of the statue room that you normally enter from (bottom door).<br/><br/>If you face the door on the top part of the floor, there's a switch up and to your right. Hit it with an explosive or ranged weapon to spawn the chest.",
                         RequiredChoiceOfChildItems: [Items.FAIRY_SLINGSHOT, Items.BOOMERANG, Items.BOMBCHU, Items.BOMB],
                         RequiredChoiceOfAdultItems: [Items.FAIRY_BOW, Items.HOOKSHOT, Items.BOMBCHU, Items.BOMB]
@@ -4473,7 +4449,6 @@ let StandardDungeons = {
                         MapInfo: { x: 226, y: 99, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 22,
-                        AltOrder: 3,
                         LongDescription: "Head to the room blocked by the silver block. Hit the switch above the beamos to open the doors. Enter the door to the left. Kill the wolfos inside, then play Zelda's Lullaby. You can longshot from the platform, or hookshot from the sandy floor.",
                         RequiredSongs: [Songs.ZELDAS_LULLABY],
                         RequiredItems: [Items.HOOKSHOT]
@@ -4483,7 +4458,6 @@ let StandardDungeons = {
                         MapInfo: { x: 318, y: 135, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 22.1,
-                        AltOrder: 3.1,
                         LongDescription: "Head to the room blocked by the silver block. Hit the switch above the beamos to open the doors. Enter the door to the right.<br/><br>This is the floating rupee at the start of the room. Use hover boots, or roll off the edge and do a delayed jumpslash to get it."
                     },
                     "Boulder Silver Rupee Front Left": {
@@ -4491,7 +4465,6 @@ let StandardDungeons = {
                         MapInfo: { x: 299, y: 138, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 22.2,
-                        AltOrder: 3.2,
                         LongDescription: "This rupee is in the front left alcove of the boulder room."
                     },
                     "Boulder Silver Rupee Front Right": {
@@ -4499,7 +4472,6 @@ let StandardDungeons = {
                         MapInfo: { x: 337, y: 128, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 22.3,
-                        AltOrder: 3.3,
                         LongDescription: "This rupee is in the front right alcove of the boulder room."
                     },
                     "Boulder Silver Rupee Back Right": {
@@ -4507,7 +4479,6 @@ let StandardDungeons = {
                         MapInfo: { x: 337, y: 109, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 22.4,
-                        AltOrder: 3.4,
                         LongDescription: "This rupee is in the back right alcove of the boulder room."
                     },
                     "Boulder Silver Rupee Back Left": {
@@ -4515,7 +4486,6 @@ let StandardDungeons = {
                         MapInfo: { x: 299, y: 106, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 22.5,
-                        AltOrder: 3.5,
                         LongDescription: "This rupee is in the back left alcove of the boulder room."
                     },
                     "Skulltula in Boulder Room": {
@@ -4523,7 +4493,6 @@ let StandardDungeons = {
                         MapInfo: { x: 296, y: 122, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 23,
-                        AltOrder: 4,
                         LongDescription: "Head to the room blocked by the silver block. Hit the switch above the beamos to open the doors. Enter the door to the right. On the left wall, there's a Song of Time block blocking this skulltula. Play the song to move it out of the way.",
                         RequiredSongs: [Songs.SONG_OF_TIME]
                     }
@@ -4537,7 +4506,6 @@ let StandardDungeons = {
                         MapInfo: { x: 319, y: 65, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 24,
-                        AltOrder: 5,
                         LongDescription: "Collect all the silver rupees in the boulder room. The floating one by the start is a bit tricky without hover boots. You can reach it if you roll off the edge, then do a delayed jumpslash to gain enough distance. Once you get all the rupees, enter the next room for the chest. Watch out for the like-like!"
                     }
                 }
@@ -4555,7 +4523,6 @@ let StandardDungeons = {
                         MapInfo: { x: 278, y: 129, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 26,
-                        AltOrder: 7,
                         LongDescription: "Enter the middle door after the silver block room. The pots from the right will fly at you, but watch out for the like like!"
                     },
                     "Left Chest in Invisible Floormaster Room": {
@@ -4563,7 +4530,6 @@ let StandardDungeons = {
                         MapInfo: { x: 330, y: 168, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 27,
-                        AltOrder: 8,
                         LongDescription: "Enter the middle door after the silver block room. This is the chest that appears after facing the snake mirror at the first sun."
                     },
                     "Right Chest in Invisible Floormaster Room": {
@@ -4571,7 +4537,6 @@ let StandardDungeons = {
                         MapInfo: { x: 330, y: 184, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 28,
-                        AltOrder: 9,
                         LongDescription: "Enter the middle door after the silver block room. This is the chest that appears after facing the snake mirror at the second sun."
                     }
                 }
@@ -4599,7 +4564,6 @@ let StandardDungeons = {
                         MapInfo: { x: 112, y: 134, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 13.1,
-                        AltOrder: 11.1,
                         LongDescription: "Head to the statue room. These pots are in a corner to the left of the statue, near the climbable wall."
                     },
                     "Left Flying Pot in Statue Room": {
@@ -4607,7 +4571,6 @@ let StandardDungeons = {
                         MapInfo: { x: 131, y: 118, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 14,
-                        AltOrder: 12,
                         LongDescription: "Head to the statue room. The pot will fly at you if you go to the left of the statue."
                     },
                     "3 Right Pots in Statue Room": {
@@ -4619,7 +4582,6 @@ let StandardDungeons = {
                         MapInfo: { x: 240, y: 134, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 14.1,
-                        AltOrder: 12.1,
                         LongDescription: "Head to the statue room. These pots are in a corner to the right of the statue."
                     },
                     "Right Flying Pot in Statue Room": {
@@ -4627,7 +4589,6 @@ let StandardDungeons = {
                         MapInfo: { x: 224, y: 118, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 15,
-                        AltOrder: 11,
                         LongDescription: "Head to the statue room. The pot will fly at you if you go to the right of the statue."
                     },
                     "Map Chest in Statue Room": {
@@ -4635,7 +4596,6 @@ let StandardDungeons = {
                         MapInfo: { x: 176, y: 147, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 16,
-                        AltOrder: 13,
                         LongDescription: "Head to the statue room. On the floor in front of the statue, light the torches with Din's Fire or Fire Arrows to spawn the chest. You can also run a lit deku stick down via the torch in the southwest corner of the room. Finally, you can push the armos statue to the lit torch on the top, backflip on it, and shoot an arrow through it to light the first torch (then go down and light the other).",
                         RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, ItemSets.FIRE_ITEMS]
                     },
@@ -4644,7 +4604,6 @@ let StandardDungeons = {
                         MapInfo: { x: 65, y: 79, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 16.1,
-                        AltOrder: 21.1,
                         LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor.<br/><br/>This rupee is on the wall by the pushable blocks."
                     },
                     "Sun Block Silver Rupee Midair by Blocks": {
@@ -4652,7 +4611,6 @@ let StandardDungeons = {
                         MapInfo: { x: 50, y: 74, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 16.2,
-                        AltOrder: 21.2,
                         LongDescription: "This rupee is in midair by the pushable blocks."
                     },
                     "Sun Block Silver Rupee Midair by Sunlight": {
@@ -4660,7 +4618,6 @@ let StandardDungeons = {
                         MapInfo: { x: 20, y: 65, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 16.3,
-                        AltOrder: 21.3,
                         LongDescription: "This rupee is in the back right corner by the sunlight. Climb up the nearby platform, or use the blocks to get to it."
                     },
                     "Sun Block Silver Rupee by Entrance": {
@@ -4668,7 +4625,6 @@ let StandardDungeons = {
                         MapInfo: { x: 80, y: 65, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 16.4,
-                        AltOrder: 21.4,
                         LongDescription: "This rupee is just to the left of the entrance door. Use the pushable blocks or the platform by the sunlight to get up on the wall to grab it."
                     },
                     "Sun Block Silver Rupee by Beamos": {
@@ -4676,7 +4632,6 @@ let StandardDungeons = {
                         MapInfo: { x: 71, y: 117, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 16.5,
-                        AltOrder: 21.5,
                         LongDescription: "This rupee is in the left corner by one of the beamos. If you can't kill the beamos (and you're Child), you'll have to push a block over to get it. In this case, it's worth noting that deku nuts stun beamos!"
                     },
                     "Chest in Sun Block Room": {
@@ -4684,7 +4639,6 @@ let StandardDungeons = {
                         MapInfo: { x: 60, y: 117, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 17,
-                        AltOrder: 22,
                         LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor. As child, you can collect the silver rupees to light the golden torch. After that, use a Deku Stick to light the other torches. You can also just use Din's Fire to light them - make sure to light two at once, then get close to the third one before casting it a second time. As adult, your only options are Din's Fire or Fire Arrows.",
                         CustomRequirement: function(age) {
                             let canUseFireItem = ItemData.canUse(age, ItemSets.FIRE_ITEMS);
@@ -4707,7 +4661,6 @@ let StandardDungeons = {
                         MapInfo: { x: 32, y: 157, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 18,
-                        AltOrder: 23,
                         LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor. In this room, there's a ray of light with some blocks nearby. Pull the block with the sun on it straight back and it will become happy when it hits the light, opening the door. The pots are on the walls in the next room."
                     },
                     "Skulltula in Hall Before Silver Knuckle": {
@@ -4715,7 +4668,6 @@ let StandardDungeons = {
                         MapInfo: { x: 32, y: 131, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 19,
-                        AltOrder: 24,
                         LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor. In this room, there's a ray of light with some blocks nearby. Pull the block with the sun on it straight back and it will become happy when it hits the light, opening the door. Once inside the next room, turn around; the skulltula is above the door.",
                         RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
@@ -4724,7 +4676,6 @@ let StandardDungeons = {
                         MapInfo: {x: 254, y: 107, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 29,
-                        AltOrder: 10,
                         LongDescription: "Head to the statue room. Head up to the upper southeast corner of the room. If you face the statue, that's behind and to the right if you. You may have to hookshot up to the platform to get there. Jump to the statue's hand from the platform. You can use hover boots if you want, but they aren't necessary. Play Zelda's Lullaby on the Triforce picture. Now, head back up to the southeast corner. The platform to the right of the hand now has a chest on it. Use your hookshot or hover boots to get to it.",
                         RequiredSongs: [Songs.ZELDAS_LULLABY],
                         CustomRequirement: function(age) {
@@ -4738,7 +4689,6 @@ let StandardDungeons = {
                         MapInfo: {x: 133, y: 130, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 30,
-                        AltOrder: 14,
                         LongDescription: "Head to the statue room. Head up to the upper southeast corner of the room. If you face the statue, that's behind and to the right if you. You may have to hookshot up to the platform to get there. Jump to the statue's hand from the platform. You can use hover boots if you want, but they aren't necessary. Play Zelda's Lullaby on the Triforce picture. If you have the longshot, you can hook the chest that spawns from the other hand from here. If not, head to the upper southwest corner of the room - that's the one closer to the other hand. You can jump to it from there.",
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
                     },
@@ -4748,7 +4698,6 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         Order: 31,
-                        AltOrder: 15,
                         LongDescription: "Head to the statue room. Get to the upper southwest corner of the room. Facing the statue, that would be behind you and to the left. The skulltula is on a platform to the left of the statue. You can Scarecrow's Song or hover boots to get to it.",
                         CustomRequirement: function(age) {
                             let canMegaFlip = Data.canMegaFlip(age);
@@ -4781,14 +4730,12 @@ let StandardDungeons = {
                     },
                     statueHands: {}
                 },
-
                 ItemLocations: {
                     "Silver Gauntlets Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 103, y: 228, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 21,
-                        AltOrder: 26,
                         LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor. In this room, there's a ray of light with some blocks nearby. Pull the block with the sun on it straight back and it will become happy when it hits the light, opening the door. Continue on and you'll run into an Iron Knuckle. After defeating him, continue passed the door and onto the status outside the Spirit Temple. The chest is in front of you.<br/><br/>You can also get here as adult if you longshot from the mirror shield side."
                     }
                 }
@@ -4820,7 +4767,6 @@ let StandardDungeons = {
                         MapInfo: { x: 190, y: 54, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 33,
-                        AltOrder: 28,
                         LongDescription: "Head to the door at the very top of the southeast corner of the statue room. That's the room behind you and to the right if you face the statue. The pot is on the pillar across from the beamos."
                     }
                 }
@@ -4836,7 +4782,6 @@ let StandardDungeons = {
                         MapInfo: { x: 320, y: 41, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 34,
-                        AltOrder: 29,
                         LongDescription: "Head to the door at the very top of the southeast corner of the statue room. That's the room behind you and to the right if you face the statue. When you get to the relevant room, kill the Anubises and the beamos to proceed. If you don't have fire items, play the Song of Time by the barred door. Now, hit the switch and run around the room to lead the Anubises into the fire. Enter the now unbarred door into the room with the 4 armos statues. Enter the room to your left by reflecting the light into the sun with your Mirror Shield. The chest is inside.",
                         RequiredItems: [Equipment.MIRROR_SHIELD]
                     }
@@ -4850,14 +4795,12 @@ let StandardDungeons = {
                     },
                     statueHands: {}
                 },
-
                 ItemLocations: {
                     "Left Chest Before Mirror Knuckle": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 329, y: 165, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 35,
-                        AltOrder: 30,
                         LongDescription: "Get to the 4 armos room - see the other task for how to get there. Get into the room on the right by having an armos step on the switch long enough for you to get in. Bombs, arrows, and the hookshot are useful for this. A little bit up the corridor are two invisible chests on either side of the hallway. Make sure you're facing the wall when attempting to open them."
                     },
                     "Right Chest Before Mirror Knuckle": {
@@ -4865,7 +4808,6 @@ let StandardDungeons = {
                         MapInfo: {x: 317, y: 165, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 36,
-                        AltOrder: 31,
                         LongDescription: "Get to the 4 armos room - see the other task for how to get there. Get into the room on the right by having an armos step on the switch long enough for you to get in. Bombs, arrows, and the hookshot are useful for this. A little bit up the corridor are two invisible chests on either side of the hallway. Make sure you're facing the wall when attempting to open them."
                     },
                     "Mirror Shield Chest": {
@@ -4873,7 +4815,6 @@ let StandardDungeons = {
                         MapInfo: {x: 247, y: 226, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 37,
-                        AltOrder: 32,
                         LongDescription: "Get to the 4 armos room - see the other task for how to get there. Get into the room on the right by having an armos step on the switch long enough for you to get in. Bombs, arrows, and the hookshot are useful for this. After this next room, kill the Iron Knuckle. Proceeding further, you'll reach the outside of the Spirit Temple. Walk a bit onto the hand to spawn the Mirror Shield chest."
                     }
                 }
@@ -4887,7 +4828,6 @@ let StandardDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "2 Hearts in Moving Wall Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -4897,7 +4837,6 @@ let StandardDungeons = {
                         MapInfo: { x: 167, y: 169, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 39,
-                        AltOrder: 34,
                         LongDescription: "Head to the moving wall room. This is the room to your right if you enter the topmost southeast area of the statue room. It's also the room straight ahead if leaving the 4 armos room.<br/><br/>Head up the wall - longshot up there if you have it. Now turn around and use your hookshot/longshot to get to the platform in the back of the room with the room. You can also boomerang them.",
                         RequiredChoiceOfItems: [Items.HOOKSHOT, Items.BOOMERANG]
                     },
@@ -4906,7 +4845,6 @@ let StandardDungeons = {
                         MapInfo: {x: 294, y: 40, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 40,
-                        AltOrder: 35,
                         LongDescription: "Head to the moving wall room. This is the room to your right if you enter the topmost southeast area of the statue room. It's also the room straight ahead if leaving the 4 armos room.<br/><br/>Head up the wall - longshot up there if you have it. In the next room, play Zelda's Lullaby to open the door in front of you. Bomb, hammer, or the fake door just to the left of the boss key chest. Shoot the eye switch to spawn some platforms (with good timing if yu didn't break it). Now, hookshot up there and hit the switch to put the fire out.",
                         RequiredSongs: [Songs.ZELDAS_LULLABY],
                         CustomRequirement: function(age) {
@@ -4922,7 +4860,6 @@ let StandardDungeons = {
                         MapInfo: { x: 171, y: 164, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 41,
-                        AltOrder: 36,
                         LongDescription: "Enter the door to the left of the triforce symbol. One of the two pots will fly into you - the other is just in front of that one."
                     },
                     "4 Flying Pots in Lower Giant Mirror Room": {
@@ -4933,7 +4870,6 @@ let StandardDungeons = {
                         MapInfo: { x: 175, y: 109, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 42,
-                        AltOrder: 37,
                         LongDescription: "Enter the door to the left of the triforce symbol. The pots are on the bottom in the corners by the giant mirror - they will fly at you."
                     },
                     "Chest in Snake Mirror Maze": {
@@ -4941,7 +4877,6 @@ let StandardDungeons = {
                         MapInfo: {x: 51, y: 150, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 43,
-                        AltOrder: 38,
                         LongDescription: "Enter to the door to the left of the triforce symbol. Jumpslash the switch blocked by the bars and enter the next room.<br/><br/>At the start of the snake mirror maze, shine a light on the sun up on the archway into the next room.",
                         RequiredItems: [Equipment.MIRROR_SHIELD]
                     }
