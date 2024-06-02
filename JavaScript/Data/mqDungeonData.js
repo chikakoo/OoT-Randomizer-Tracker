@@ -4992,6 +4992,7 @@ let MQDungeons = {
         Abbreviation: "SPRT",
         MapGroup: MapGroups.DUNGEONS,
         IsMasterQuest: true,
+        UsesDisplayGroups: true,
         Floors: ["F4", "F3", "F2", "F1"],
         StartingFloorIndex: 3,
         _canAccessAdultSide: function() {
@@ -5002,6 +5003,7 @@ let MQDungeons = {
         },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Lobby", imageName: "Requiem of Spirit" },
                 Exits: {
                     bottomRightLobbyChest: {
                         Map: "Spirit Temple",
@@ -5022,7 +5024,6 @@ let MQDungeons = {
                         OwExit: OwExits["Spirit Temple"]["Exit"]
                     }
                 },
-
                 ItemLocations: {
                     "4 Pots in Lobby": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -5076,11 +5077,12 @@ let MQDungeons = {
 
                     // Locked Doors
                     "Locked Door After Second Crawl Space": {
+                        DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["afterSecondCrawlSpace", "roomWithSunOnFloor"],
                         MapInfo: { x: 87, y: 100, floor: "F1" },
                         Age: Age.EITHER,
-                        Order: 11,
+                        Order: 53,
                         LongDescription: "This is the door after the second crawlspace on the child side.",
                         KeyRequirement: function(age) {
                             let min = 1;
@@ -5092,6 +5094,7 @@ let MQDungeons = {
                         }
                     },
                     "Locked Door in Sun on Floor Room": {
+                        DisplayGroup: { groupName: "Sun on Floor Room", imageName: "Bombchu" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["statueRoom", "roomWithSunOnFloor"],
                         MapInfo: { x: 67, y: 174, floor: "F2" },
@@ -5112,6 +5115,7 @@ let MQDungeons = {
                         }
                     },
                     "Locked Door to Silver Gaunts Knuckle": {
+                        DisplayGroup: { groupName: "Fire Bubble & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["fireBubbleRoom"],
                         MapInfo: { x: 32, y: 198, floor: "F3" },
@@ -5132,6 +5136,7 @@ let MQDungeons = {
                         }
                     },
                     "Locked Door in Statue Room": {
+                        DisplayGroup: { groupName: "Statue Room", imageName: "Compass" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["statueRoom"],
                         MapInfo: { x: 256, y: 217, floor: "F2" },
@@ -5147,6 +5152,7 @@ let MQDungeons = {
                         }
                     },
                     "Locked Door in Beamos Room": {
+                        DisplayGroup: { groupName: "Beamos/Lizalfos/Mirror Shield Path", imageName: "Mirror Shield" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["beamosRoom"],
                         MapInfo: { x: 223, y: 105, floor: "F3" },
@@ -5162,6 +5168,7 @@ let MQDungeons = {
                         }
                     },
                     "Locked Door Right of Lobby": {
+                        DisplayGroup: { groupName: "Rooms Beyond Lobby Water", imageName: "Ocarina" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["roomRightOfLobby"],
                         MapInfo: { x: 295, y: 169, floor: "F1" },
@@ -5173,6 +5180,7 @@ let MQDungeons = {
                         }
                     },
                     "Locked Door After Moving Wall": {
+                        DisplayGroup: { groupName: "Moving Wall & Silver Knuckle Room", imageName: "Skulltula" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["afterMovingWallRoom"],
                         MapInfo: { x: 294, y: 144, floor: "F4" },
@@ -5189,7 +5197,22 @@ let MQDungeons = {
                     }
                 }
             },
+            bottomRightLobbyChest: { // This is here so we can get this from the right of lobby room AND the main room due to silver rupee shuffle
+                DisplayGroup: { groupName: "Lobby", imageName: "Requiem of Spirit" },
+                Exits: {},
+                ItemLocations: {
+                    "Bottom Right Chest in Lobby": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 203, y: 215, floor: "F1" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
+                        Order: 37,
+                        LongDescription: "WALL MASTER WARNING:<br/>At the statue room, light all 3 torches with fire arrows. Use your hookshot to get to the door that unlocks. In the next room, use your mirror shield on all 3 suns and kill the enemies (including the wall masters). Navigate through the hallway. Collect all the silver rupees to spawn the chest - a couple of them are in the lobby under some rocks. Use your hammer to hit the rusted switch to make the water go away. Be careful, though, as you can't come back!"
+                    }
+                }
+            },
             childSide: {
+                DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
                 UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                 Exits: {
                     backOfChildBridgeRoom: {
@@ -5249,6 +5272,7 @@ let MQDungeons = {
                 }
             },
             backOfChildBridgeRoom: {
+                DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
                 UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                 Exits: {},
                 ItemLocations: {
@@ -5298,6 +5322,7 @@ let MQDungeons = {
                 }
             },
             afterSecondCrawlSpace: {
+                DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
                 Exits: {
                     roomWithSunOnFloor: {
                         Age: Age.CHILD,
@@ -5315,6 +5340,7 @@ let MQDungeons = {
                 ItemLocations: {}
             },
             roomWithSunOnFloor: {
+                DisplayGroup: { groupName: "Sun on Floor Room", imageName: "Bombchu" },
                 Exits: {
                     afterSecondCrawlSpace: {
                         Age: Age.ADULT,
@@ -5354,6 +5380,7 @@ let MQDungeons = {
                 }
             },
             statueRoom: {
+                DisplayGroup: { groupName: "Statue Room", imageName: "Compass" },
                 Exits: {
                     roomWithSunOnFloor: {
                         Age: Age.ADULT,
@@ -5385,7 +5412,6 @@ let MQDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "Flying Pot on Statue Room Stairs": {
                         ItemGroup: ItemGroups.POT,
@@ -5515,6 +5541,7 @@ let MQDungeons = {
                 }
             },
             silverBlockMaze: {
+                DisplayGroup: { groupName: "Statue Room", imageName: "Compass" },
                 Exits: {
                     statueRoom: {}
                 },
@@ -5535,13 +5562,13 @@ let MQDungeons = {
                 }
             },
             fireBubbleRoom: {
+                DisplayGroup: { groupName: "Fire Bubble & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
                 Exits: {
                     silverGauntsIronKnuckle: {
                         Map: "Spirit Temple",
                         LockedDoor: "Locked Door to Silver Gaunts Knuckle"
                     }
                 },
-
                 ItemLocations: {
                     "Left Pot in Fire Bubble Room": {
                         ItemGroup: ItemGroups.POT,
@@ -5569,7 +5596,7 @@ let MQDungeons = {
                         MapInfo: { x: 68, y: 113, floor: "F3" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
-                        Order: 30,
+                        Order: 24.1,
                         LongDescription: "In the fire bubble room, you must push the first sun block you see onto the light. You'll need to hit the crystal switches to make the fire disappear. This spawns a white platform that you can hookshot up to so that you can reach the skulltula.",
                         CustomRequirement: function(age) {
                             return (Settings.GlitchesToAllow.difficultBoomerangTrickThrows && ItemData.canUse(age, Items.BOOMERANG)) ||
@@ -5579,10 +5606,10 @@ let MQDungeons = {
                 }
             },
             silverGauntsIronKnuckle: {
+                DisplayGroup: { groupName: "Fire Bubble & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
                 Exits: {
                     silverGauntsStatueHand: {}
                 },
-
                 ItemLocations: {
                     "Silver Gauntlets Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5594,6 +5621,7 @@ let MQDungeons = {
                 }
             },
             silverGauntsStatueHand: {
+                DisplayGroup: { groupName: "Fire Bubble & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
                 Exits: {
                     mirrorShieldKnuckle: {
                         Age: Age.ADULT,
@@ -5608,102 +5636,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {}
             },
-            mirrorShieldKnuckle: {
-                Exits: {
-                    lizalfosAndSunRoom: {},
-                    silverGauntsStatueHand: {
-                        RequiredAdultItems: [{item: Items.HOOKSHOT, upgrardeString: "2"}]
-                    },
-                    statueHands: {}
-                },
-
-                ItemLocations: {
-                    "Mirror Shield Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 247, y: 226, floor: "F3" },
-                        Age: Age.ADULT,
-                        Order: 42,
-                        LongDescription: "From the room with the lizalfos and the sun, slash the chest that Navi is going crazy over to open the door. Kill the Floormaster in the next room, and the Iron Knuckle in the room after. The chest will spawn on the hand as you walk in."
-                    }
-                }
-            },
-            statueHands: {
-                Exits: {
-                    "Desert Colossus": {
-                        OwExit: OwExits["Spirit Temple"]["Desert Colossus"]
-                    },
-                    "Desert Colossus Archway": {
-                        OwExit: OwExits["Spirit Temple"]["Desert Colossus Archway"]
-                    }
-                },
-                ItemLocations: {}
-            },
-            lizalfosAndSunRoom: {
-                Exits: {
-                    mirrorShieldKnuckle: {},
-                    beamosRoom: {}
-                },
-
-                ItemLocations: {
-                    "Chest in Room With Lizalfos and Sun": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 328, y: 105, floor: "F3" },
-                        Age: Age.ADULT,
-                        Order: 40,
-                        LongDescription: "In the beamos room, the puzzle is to play the Song of Time to move the blocks so that the little box falls down onto one of the blocks. Play it by the left side of the room, then by the hole twice. You then use that box to hold the switch down.<br/><br/>The chest is in plain sight in the room."
-                    },
-                    "2 Wonderitems in Room With Lizalfos and Sun": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "Sword and Hammer Wonderitem",
-                        MapInfo: { x: 329, y: 106, floor: "F3" },
-                        Order: 40.1,
-                        Age: Age.ADULT,
-                        LongDescription: "After the beamos room puzzle, enter the room that the switch unlocks. Swing your sword and hammer while next to the chest to spawn two wonderitems (one for each item swung)."
-                    },
-                    "Boss Key Chest": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 321, y: 40, floor: "F3" },
-                        Age: Age.ADULT,
-                        Order: 41,
-                        LongDescription: "In the room with the lizalfos and sun, you can climb the Song of Time block and shine the light on the sun. The chest is in the room that opens.",
-                        RequiredItems: [Equipment.MIRROR_SHIELD]
-                    }
-                }
-            },
-            beamosRoom: {
-                Exits: {
-                    lizalfosAndSunRoom: {
-                        RequiredSongs: [Songs.SONG_OF_TIME]
-                    },
-                    movingWallRoom: {
-                        Map: "Spirit Temple",
-                        LockedDoor: "Locked Door in Beamos Room"
-                    }
-                },
-
-                ItemLocations: {
-                    "Small Crate in Beamos Room": {
-                        ItemGroup: ItemGroups.CRATE,
-                        IsEmpty: true,
-                        MapInfo: { x: 255, y: 105, floor: "F3" },
-                        Age: Age.ADULT,
-                        Order: 38.1,
-                        LongDescription: "From the statue room, hookshot to the torch to get to the southeast side. Use a key to go in the top door.<br/><br/>Play the Song of Time by the block in the left side of the room. Now play it twice by the other blocks. You can now get to the small crate.",
-                        RequiredSongs: [Songs.SONG_OF_TIME]
-                    },
-                    "Chest in Beamos Room": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 284, y: 77, floor: "F3" },
-                        Age: Age.ADULT,
-                        Order: 39,
-                        LongDescription: "From the statue room, hookshot to the torch to get to the southeast side. Use a key to go in the top door. Kill the beamos to spawn the chest.",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
-                    }
-                }
-            },
             roomRightOfLobby: {
+                DisplayGroup: { groupName: "Rooms Beyond Lobby Water", imageName: "Ocarina" },
                 Exits: {
                     boulderRoom: {
                         Map: "Spirit Temple",
@@ -5717,7 +5651,6 @@ let MQDungeons = {
                         }
                     }
                 },
-
                 ItemLocations: {
                     "2 Pots Below Quad Wallmaster Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -5767,20 +5700,8 @@ let MQDungeons = {
                     }
                 }
             },
-            bottomRightLobbyChest: { // This is here so we can get this from the right of lobby room AND the main room due to silver rupee shuffle
-                Exits: {},
-                ItemLocations: {
-                    "Bottom Right Chest in Lobby": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 203, y: 215, floor: "F1" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
-                        Order: 37,
-                        LongDescription: "WALL MASTER WARNING:<br/>At the statue room, light all 3 torches with fire arrows. Use your hookshot to get to the door that unlocks. In the next room, use your mirror shield on all 3 suns and kill the enemies (including the wall masters). Navigate through the hallway. Collect all the silver rupees to spawn the chest - a couple of them are in the lobby under some rocks. Use your hammer to hit the rusted switch to make the water go away. Be careful, though, as you can't come back!"
-                    }
-                }
-            },
             boulderRoom: {
+                DisplayGroup: { groupName: "Rooms Beyond Lobby Water", imageName: "Ocarina" },
                 Exits: {},
                 ItemLocations: {
                     "Skulltula After Boulder Room": {
@@ -5805,7 +5726,104 @@ let MQDungeons = {
                     }
                 }
             },
+            statueHands: {
+                DisplayGroup: { groupName: "Fire Bubble & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
+                Exits: {
+                    "Desert Colossus": {
+                        OwExit: OwExits["Spirit Temple"]["Desert Colossus"]
+                    },
+                    "Desert Colossus Archway": {
+                        OwExit: OwExits["Spirit Temple"]["Desert Colossus Archway"]
+                    }
+                },
+                ItemLocations: {}
+            },
+            beamosRoom: {
+                DisplayGroup: { groupName: "Beamos/Lizalfos/Mirror Shield Path", imageName: "Mirror Shield" },
+                Exits: {
+                    lizalfosAndSunRoom: {
+                        RequiredSongs: [Songs.SONG_OF_TIME]
+                    },
+                    movingWallRoom: {
+                        Map: "Spirit Temple",
+                        LockedDoor: "Locked Door in Beamos Room"
+                    }
+                },
+                ItemLocations: {
+                    "Small Crate in Beamos Room": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 255, y: 105, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 38.1,
+                        LongDescription: "From the statue room, hookshot to the torch to get to the southeast side. Use a key to go in the top door.<br/><br/>Play the Song of Time by the block in the left side of the room. Now play it twice by the other blocks. You can now get to the small crate.",
+                        RequiredSongs: [Songs.SONG_OF_TIME]
+                    },
+                    "Chest in Beamos Room": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 284, y: 77, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 39,
+                        LongDescription: "From the statue room, hookshot to the torch to get to the southeast side. Use a key to go in the top door. Kill the beamos to spawn the chest.",
+                        RequiredItems: [ItemSets.EXPLOSIVES]
+                    }
+                }
+            },
+            lizalfosAndSunRoom: {
+                DisplayGroup: { groupName: "Beamos/Lizalfos/Mirror Shield Path", imageName: "Mirror Shield" },
+                Exits: {
+                    mirrorShieldKnuckle: {},
+                    beamosRoom: {}
+                },
+                ItemLocations: {
+                    "Chest in Room With Lizalfos and Sun": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 328, y: 105, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 40,
+                        LongDescription: "In the beamos room, the puzzle is to play the Song of Time to move the blocks so that the little box falls down onto one of the blocks. Play it by the left side of the room, then by the hole twice. You then use that box to hold the switch down.<br/><br/>The chest is in plain sight in the room."
+                    },
+                    "2 Wonderitems in Room With Lizalfos and Sun": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Sword and Hammer Wonderitem",
+                        MapInfo: { x: 329, y: 106, floor: "F3" },
+                        Order: 40.1,
+                        Age: Age.ADULT,
+                        LongDescription: "After the beamos room puzzle, enter the room that the switch unlocks. Swing your sword and hammer while next to the chest to spawn two wonderitems (one for each item swung)."
+                    },
+                    "Boss Key Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 321, y: 40, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 41,
+                        LongDescription: "In the room with the lizalfos and sun, you can climb the Song of Time block and shine the light on the sun. The chest is in the room that opens.",
+                        RequiredItems: [Equipment.MIRROR_SHIELD]
+                    }
+                }
+            },
+            mirrorShieldKnuckle: {
+                DisplayGroup: { groupName: "Beamos/Lizalfos/Mirror Shield Path", imageName: "Mirror Shield" },
+                Exits: {
+                    lizalfosAndSunRoom: {},
+                    silverGauntsStatueHand: {
+                        RequiredAdultItems: [{item: Items.HOOKSHOT, upgrardeString: "2"}]
+                    },
+                    statueHands: {}
+                },
+                ItemLocations: {
+                    "Mirror Shield Chest": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 247, y: 226, floor: "F3" },
+                        Age: Age.ADULT,
+                        Order: 42,
+                        LongDescription: "From the room with the lizalfos and the sun, slash the chest that Navi is going crazy over to open the door. Kill the Floormaster in the next room, and the Iron Knuckle in the room after. The chest will spawn on the hand as you walk in."
+                    }
+                }
+            },
             movingWallRoom: {
+                DisplayGroup: { groupName: "Moving Wall & Silver Knuckle Room", imageName: "Skulltula" },
                 Exits: {
                     afterMovingWallRoom: {
                         Map: "Spirit Temple",
@@ -5836,6 +5854,7 @@ let MQDungeons = {
                 }
             },
             afterMovingWallRoom: {
+                DisplayGroup: { groupName: "Moving Wall & Silver Knuckle Room", imageName: "Skulltula" },
                 Exits: {
                     skulltulaAndKnuckleRoom: {
                         Map: "Spirit Temple",
@@ -5859,6 +5878,7 @@ let MQDungeons = {
                 }
             },
             skulltulaAndKnuckleRoom: {
+                DisplayGroup: { groupName: "Moving Wall & Silver Knuckle Room", imageName: "Skulltula" },
                 Exits: {},
                 ItemLocations: {
                     "West Skulltula in Iron Knuckle Room": {
@@ -5878,6 +5898,7 @@ let MQDungeons = {
                 }
             },
             giantMirrorRoom: {
+                DisplayGroup: { groupName: "Mirror Room & Boss Area", imageName: "Spirit Medallion" },
                 Exits: {
                     mirrorMaze: {
                         RequiredItems: [Items.MEGATON_HAMMER]
@@ -5907,6 +5928,7 @@ let MQDungeons = {
                 }
             },
             mirrorMaze: {
+                DisplayGroup: { groupName: "Mirror Room & Boss Area", imageName: "Spirit Medallion" },
                 Exits: {
                     bossRoom: {
                         RequiredItems: [Equipment.MIRROR_SHIELD],
@@ -5926,6 +5948,7 @@ let MQDungeons = {
                 }
             },
             bossRoom: {
+                DisplayGroup: { groupName: "Mirror Room & Boss Area", imageName: "Spirit Medallion" },
                 Exits: {
                     "Boss": {
                         OwExit: OwExits["Spirit Temple"]["Boss"]

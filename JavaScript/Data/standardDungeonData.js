@@ -4103,6 +4103,7 @@ let StandardDungeons = {
     "Spirit Temple": {
         Abbreviation: "SPRT",
         MapGroup: MapGroups.DUNGEONS,
+        UsesDisplayGroups: true,
         Floors: ["F4", "F3", "F2", "F1"],
         StartingFloorIndex: 3,
         _canAccessAdultSide: function() {
@@ -4114,6 +4115,7 @@ let StandardDungeons = {
         },
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Lobby", imageName: "Requiem of Spirit" },
                 Exits: {
                     childOnlyArea: {
                         Age: Age.CHILD
@@ -4152,6 +4154,7 @@ let StandardDungeons = {
 
                     // Locked Doors
                     "Locked Door After Second Crawl Space": {
+                        DisplayGroup: { groupName: "Sun on Floor Room", imageName: "Bombchu" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["afterSecondCrawlSpace", "roomWithSunOnFloor"],
                         MapInfo: { x: 87, y: 100, floor: "F1" },
@@ -4163,8 +4166,9 @@ let StandardDungeons = {
                         }
                     },
                     "Locked Door to Silver Gaunts Knuckle": {
+                        DisplayGroup: { groupName: "Sun Block & Silver Gauntlets Path", imageName: "Silver Gauntlets" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["statueRoom"],
+                        Regions: ["sunBlockRoom"],
                         MapInfo: { x: 32, y: 198, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 20,
@@ -4183,6 +4187,7 @@ let StandardDungeons = {
                         }
                     },
                     "Locked Door After Silver Block": {
+                        DisplayGroup: { groupName: "Rooms After Silver Block", imageName: "Adult Icon" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["beyondSilverBlock"],
                         MapInfo: { x: 272, y: 167, floor: "F1" },
@@ -4198,6 +4203,7 @@ let StandardDungeons = {
                         }
                     },
                     "Locked Door in Statue Room": {
+                        DisplayGroup: { groupName: "Statue Room", imageName: "Dungeon Map" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["statueRoom"],
                         MapInfo: { x: 256, y: 217, floor: "F2" },
@@ -4213,6 +4219,7 @@ let StandardDungeons = {
                         }
                     },
                     "Locked Door in Anubis Room": {
+                        DisplayGroup: { groupName: "Anubis/Armos/Mirror Shield Path", imageName: "Mirror Shield" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["adultAnubisRoom"],
                         MapInfo: { x: 223, y: 105, floor: "F3" },
@@ -4231,6 +4238,7 @@ let StandardDungeons = {
                 }
             },
             childOnlyArea: {
+                DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
                 Exits: {
                     childAfterStalfos: {
                         RequiredChoiceOfChildItems: [ItemSets.SWORDS, ItemSets.EXPLOSIVES], // To clear the first room
@@ -4252,6 +4260,7 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             childAfterStalfos: {
+                DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
                 UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                 Exits: {
                     childGrateRoom: {}
@@ -4305,6 +4314,7 @@ let StandardDungeons = {
                 }
             },
             childGrateRoom: {
+                DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
                 UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                 Exits: {
                     childSkulltulaInGrateRoom: {
@@ -4341,6 +4351,7 @@ let StandardDungeons = {
                 }
             },
             childSkulltulaInGrateRoom: {
+                DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
                 UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                 Exits: {},
                 ItemLocations: {
@@ -4354,6 +4365,7 @@ let StandardDungeons = {
                 }
             },
             afterSecondCrawlSpace: {
+                DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
                 Exits: {
                     childOnlyArea: {
                         Age: Age.ADULT,
@@ -4380,6 +4392,7 @@ let StandardDungeons = {
                 }
             },
             roomWithSunOnFloor: {
+                DisplayGroup: { groupName: "Sun on Floor Room", imageName: "Bombchu" },
                 Exits: {
                     afterSecondCrawlSpace: {
                         Map: "Spirit Temple",
@@ -4425,6 +4438,7 @@ let StandardDungeons = {
                 }
             },
             beyondSilverBlock: {
+                DisplayGroup: { groupName: "Rooms After Silver Block", imageName: "Adult Icon" },
                 Exits: {
                     openDoorsBySilverBlock: {
                         RequiredChoiceOfAdultItems: [Items.HOOKSHOT, Items.FAIRY_BOW, Items.BOMBCHU]
@@ -4437,6 +4451,7 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             openDoorsBySilverBlock: {
+                DisplayGroup: { groupName: "Rooms After Silver Block", imageName: "Adult Icon" },
                 Exits: {
                     afterBoulderRoom: {
                         Map: "Spirit Temple",
@@ -4499,6 +4514,7 @@ let StandardDungeons = {
                 }
             },
             afterBoulderRoom: {
+                DisplayGroup: { groupName: "Rooms After Silver Block", imageName: "Adult Icon" },
                 Exits: {},
                 ItemLocations: {
                     "Chest After Boulder Room": {
@@ -4511,6 +4527,7 @@ let StandardDungeons = {
                 }
             },
             invisibleFloormasterRoom: {
+                DisplayGroup: { groupName: "Rooms After Silver Block", imageName: "Adult Icon" },
                 Exits: {
                     statueRoom: {}
                 },
@@ -4542,12 +4559,10 @@ let StandardDungeons = {
                 }
             },
             statueRoom: {
+                DisplayGroup: { groupName: "Statue Room", imageName: "Dungeon Map" },
                 Exits: {
                     roomWithSunOnFloor: {},
-                    silverGauntsIronKnuckle: {
-                        Map: "Spirit Temple",
-                        LockedDoor: "Locked Door to Silver Gaunts Knuckle"
-                    },
+                    sunBlockRoom: {},
                     adultAnubisRoom: {
                         Age: Age.ADULT,
                         Map: "Spirit Temple",
@@ -4599,6 +4614,57 @@ let StandardDungeons = {
                         LongDescription: "Head to the statue room. On the floor in front of the statue, light the torches with Din's Fire or Fire Arrows to spawn the chest. You can also run a lit deku stick down via the torch in the southwest corner of the room. Finally, you can push the armos statue to the lit torch on the top, backflip on it, and shoot an arrow through it to light the first torch (then go down and light the other).",
                         RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, ItemSets.FIRE_ITEMS]
                     },
+                    "Chest in Statue Room on Northeast Platform": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: {x: 254, y: 107, floor: "F2" },
+                        Age: Age.ADULT,
+                        Order: 29,
+                        LongDescription: "Head to the statue room. Head up to the upper southeast corner of the room. If you face the statue, that's behind and to the right if you. You may have to hookshot up to the platform to get there. Jump to the statue's hand from the platform. You can use hover boots if you want, but they aren't necessary. Play Zelda's Lullaby on the Triforce picture. Now, head back up to the southeast corner. The platform to the right of the hand now has a chest on it. Use your hookshot or hover boots to get to it.",
+                        RequiredSongs: [Songs.ZELDAS_LULLABY],
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.spiritStatueRoomJumps ||
+                                Data.canMegaFlip(age) ||
+                                ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]);
+                        }
+                    },
+                    "Chest on Statue's Hand": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: {x: 133, y: 130, floor: "F2" },
+                        Age: Age.ADULT,
+                        Order: 30,
+                        LongDescription: "Head to the statue room. Head up to the upper southeast corner of the room. If you face the statue, that's behind and to the right if you. You may have to hookshot up to the platform to get there. Jump to the statue's hand from the platform. You can use hover boots if you want, but they aren't necessary. Play Zelda's Lullaby on the Triforce picture. If you have the longshot, you can hook the chest that spawns from the other hand from here. If not, head to the upper southwest corner of the room - that's the one closer to the other hand. You can jump to it from there.",
+                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                    },
+                    "Skulltula in Statue Room on Northwest Platform": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        MapInfo: {x: 93, y: 101, floor: "F2" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        Order: 31,
+                        LongDescription: "Head to the statue room. Get to the upper southwest corner of the room. Facing the statue, that would be behind you and to the left. The skulltula is on a platform to the left of the statue. You can Scarecrow's Song or hover boots to get to it.",
+                        CustomRequirement: function(age) {
+                            let canMegaFlip = Data.canMegaFlip(age);
+                            if (age === Age.CHILD) {
+                                return canMegaFlip;
+                            }
+
+                            return Settings.GlitchesToAllow.spiritStatueRoomJumps ||
+                                canMegaFlip ||
+                                ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT]) ||
+                                Data.canHookScarecrow(age);
+                        }
+                    }
+                }
+            },
+            sunBlockRoom: {
+                DisplayGroup: { groupName: "Sun Block & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
+                Exits: {
+                    silverGauntsIronKnuckle: {
+                        Map: "Spirit Temple",
+                        LockedDoor: "Locked Door to Silver Gaunts Knuckle"
+                    }
+                },
+                ItemLocations: {
                     "Sun Block Silver Rupee on Wall by Blocks": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 65, y: 79, floor: "F3" },
@@ -4670,56 +4736,18 @@ let StandardDungeons = {
                         Order: 19,
                         LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor. In this room, there's a ray of light with some blocks nearby. Pull the block with the sun on it straight back and it will become happy when it hits the light, opening the door. Once inside the next room, turn around; the skulltula is above the door.",
                         RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
-                    },
-                    "Chest in Statue Room on Northeast Platform": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: {x: 254, y: 107, floor: "F2" },
-                        Age: Age.ADULT,
-                        Order: 29,
-                        LongDescription: "Head to the statue room. Head up to the upper southeast corner of the room. If you face the statue, that's behind and to the right if you. You may have to hookshot up to the platform to get there. Jump to the statue's hand from the platform. You can use hover boots if you want, but they aren't necessary. Play Zelda's Lullaby on the Triforce picture. Now, head back up to the southeast corner. The platform to the right of the hand now has a chest on it. Use your hookshot or hover boots to get to it.",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.spiritStatueRoomJumps ||
-                                Data.canMegaFlip(age) ||
-                                ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]);
-                        }
-                    },
-                    "Chest on Statue's Hand": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: {x: 133, y: 130, floor: "F2" },
-                        Age: Age.ADULT,
-                        Order: 30,
-                        LongDescription: "Head to the statue room. Head up to the upper southeast corner of the room. If you face the statue, that's behind and to the right if you. You may have to hookshot up to the platform to get there. Jump to the statue's hand from the platform. You can use hover boots if you want, but they aren't necessary. Play Zelda's Lullaby on the Triforce picture. If you have the longshot, you can hook the chest that spawns from the other hand from here. If not, head to the upper southwest corner of the room - that's the one closer to the other hand. You can jump to it from there.",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
-                    },
-                    "Skulltula in Statue Room on Northwest Platform": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: {x: 93, y: 101, floor: "F2" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
-                        Order: 31,
-                        LongDescription: "Head to the statue room. Get to the upper southwest corner of the room. Facing the statue, that would be behind you and to the left. The skulltula is on a platform to the left of the statue. You can Scarecrow's Song or hover boots to get to it.",
-                        CustomRequirement: function(age) {
-                            let canMegaFlip = Data.canMegaFlip(age);
-                            if (age === Age.CHILD) {
-                                return canMegaFlip;
-                            }
-
-                            return Settings.GlitchesToAllow.spiritStatueRoomJumps ||
-                                canMegaFlip ||
-                                ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT]) ||
-                                Data.canHookScarecrow(age);
-                        }
                     }
-                }
+                } 
             },
             silverGauntsIronKnuckle: {
+                DisplayGroup: { groupName: "Sun Block & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
                 Exits: {
                     silverGauntsStatueHand: {}
                 },
                 ItemLocations: {}
             },
             silverGauntsStatueHand: {
+                DisplayGroup: { groupName: "Sun Block & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
                 Exits: {
                     mirrorShieldKnuckle: {
                         Age: Age.ADULT,
@@ -4741,6 +4769,7 @@ let StandardDungeons = {
                 }
             },
             statueHands: {
+                DisplayGroup: { groupName: "Sun Block & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
                 Exits: {
                     "Desert Colossus": {
                         OwExit: OwExits["Spirit Temple"]["Desert Colossus"]
@@ -4752,6 +4781,7 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             adultAnubisRoom: {
+                DisplayGroup: { groupName: "Anubis/Armos/Mirror Shield Path", imageName: "Mirror Shield" },
                 Exits: {
                     fourArmosRoom: {
                         RequiredItems: [ItemSets.EXPLOSIVES]
@@ -4772,6 +4802,7 @@ let StandardDungeons = {
                 }
             },
             fourArmosRoom: {
+                DisplayGroup: { groupName: "Anubis/Armos/Mirror Shield Path", imageName: "Mirror Shield" },
                 Exits: {
                     adultAnubisRoom: {},
                     mirrorShieldKnuckle: {}
@@ -4788,6 +4819,7 @@ let StandardDungeons = {
                 }
             },
             mirrorShieldKnuckle: {
+                DisplayGroup: { groupName: "Anubis/Armos/Mirror Shield Path", imageName: "Mirror Shield" },
                 Exits: {
                     fourArmosRoom: {},
                     silverGauntsStatueHand: {
@@ -4820,13 +4852,9 @@ let StandardDungeons = {
                 }
             },
             movingWallRoom: {
+                DisplayGroup: { groupName: "Moving Wall & Boss Key Room", imageName: "Boss Key" },
                 Exits: {
-                    bossRoom: {
-                        RequiredItems: [Items.HOOKSHOT, ItemSets.EXPLOSIVES, Equipment.MIRROR_SHIELD],
-                        CustomRequirement: function(age) {
-                            return ItemData.hasBossKey("Spirit Temple");
-                        }
-                    }
+                    mirrorRoom: {}
                 },
                 ItemLocations: {
                     "2 Hearts in Moving Wall Room": {
@@ -4851,7 +4879,20 @@ let StandardDungeons = {
                             return Settings.GlitchesToAllow.spiritBKTrick ||
                                 ItemData.canUseAll(age, [Items.FAIRY_BOW, Items.HOOKSHOT]);
                         }
-                    },
+                    }
+                }
+            },
+            mirrorRoom: {
+                DisplayGroup: { groupName: "Mirror Room & Boss Area", imageName: "Spirit Medallion" },
+                Exits: {
+                    bossRoom: {
+                        RequiredItems: [Items.HOOKSHOT, ItemSets.EXPLOSIVES, Equipment.MIRROR_SHIELD],
+                        CustomRequirement: function(age) {
+                            return ItemData.hasBossKey("Spirit Temple");
+                        }
+                    }
+                },
+                ItemLocations: {
                     "2 Flying Pots in Upper Giant Mirror Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -4883,6 +4924,7 @@ let StandardDungeons = {
                 }
             },
             bossRoom: {
+                DisplayGroup: { groupName: "Mirror Room & Boss Area", imageName: "Spirit Medallion" },
                 Exits: {
                     "Boss": {
                         OwExit: OwExits["Spirit Temple"]["Boss"]
