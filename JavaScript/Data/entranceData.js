@@ -82,6 +82,10 @@ InteriorGroups = {
 		excludeFromGroup: function() { return Data.templeOfTimeLocation && Data.templeOfTimeLocation.map; },
 		neverHide: true,
 		buttons: {
+			"Free Raru Item": {
+				icon: "Light Medallion",
+				description: "This is the light medallion replacement if dungeon rewards are shuffled. Enter the Master Sword pedestal room to get it.",
+			},
 			"Prelude of Light": {
 				description: "When you have the Forest Medallion, enter the room with the Master Sword pedestal to receive the item.",
 				canGet: function(age) {

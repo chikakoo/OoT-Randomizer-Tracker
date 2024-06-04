@@ -2146,7 +2146,7 @@ let MQDungeons = {
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         Regions: {
             main: {
-                DisplayGroup: { groupName: "Lobby & Boss Key Path", imageName: "Boss Key" },
+                DisplayGroup: { groupName: "Lobby & Hammer Path", imageName: "Megaton Hammer" },
                 Exits: {
                     roomBeforeBoss: {
                         Age: Age.EITHER,
@@ -2321,7 +2321,7 @@ let MQDungeons = {
                 }
             },
             cellByEntrance: {
-                DisplayGroup: { groupName: "Lobby & Boss Key Path", imageName: "Boss Key" },
+                DisplayGroup: { groupName: "Lobby & Hammer Path", imageName: "Megaton Hammer" },
                 Exits: {},
                 ItemLocations: {
                     "Chest by Goron After Flare Dancer": {
