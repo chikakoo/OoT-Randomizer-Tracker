@@ -5808,7 +5808,7 @@ let MQDungeons = {
                 Exits: {
                     lizalfosAndSunRoom: {},
                     silverGauntsStatueHand: {
-                        RequiredAdultItems: [{item: Items.HOOKSHOT, upgrardeString: "2"}]
+                        RequiredAdultItems: [UpgradedItems.LONGSHOT]
                     },
                     statueHands: {}
                 },
@@ -6091,10 +6091,15 @@ let MQDungeons = {
                                 return true;
                             }
 
-                            let sotCheck = Data.canPlaySong(Songs.SONG_OF_TIME) || Settings.GlitchesToAllow.mqIceNorthSkullWithoutSoT;
-                            let canPlayOcarinaNormally = Items.OCARINA.playerHas && Data.hasBottleOrBlueFire(age);
+                            let canMeltIce = Data.hasBottleOrBlueFire(age);
+                            if (canMeltIce && Settings.GlitchesToAllow.mqIceNorthSkullWithoutSoT) {
+                                return true;
+                            }
+
+                            let sotCheck = Data.canPlaySong(Songs.SONG_OF_TIME);
+                            let canPlayOcarinaNormally = Items.OCARINA.playerHas;
                             let canUseOI = Data.canOIAndBlueFireWithoutRefilling(age);
-                            return sotCheck && (canPlayOcarinaNormally || canUseOI);
+                            return canMeltIce && sotCheck && (canPlayOcarinaNormally || canUseOI);
                         }
                     },
                     "Chest in North Room": {
