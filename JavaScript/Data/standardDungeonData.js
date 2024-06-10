@@ -1430,8 +1430,7 @@ let StandardDungeons = {
                         LongDescription: "Navigate to the room with the block puzzle. After pushing the first block, climb up the ladder that it was blocking. Now go straight to the wall in front of you. Follow that wall to the right. Turn right, and you should see an eye switch a bit up the wall in front of you. Shoot it to spawn the chest.",
                         CustomRequirement: function(age) {
                             let canBlockSkip = age === Age.ADULT && Settings.GlitchesToAllow.forestBlockSkip && Data.canGroundJumpWithBomb(age);
-                            let canHoverToMiddleFloor = ItemData.canUse(age, Equipment.HOVER_BOOTS);
-                            let canGetToEyeSwitch = canBlockSkip || canHoverToMiddleFloor || Equipment.STRENGTH.playerHas;
+                            let canGetToEyeSwitch = canBlockSkip || Equipment.STRENGTH.playerHas;
                             return ItemData.canUse(age, ItemSets.PROJECTILES) && canGetToEyeSwitch;
                         }
                     }
@@ -5655,7 +5654,14 @@ let StandardDungeons = {
             },
             basement: {
                 DisplayGroup: { groupName: "Basement", imageName: "Dungeon Map" },
-                Exits: {},
+                Exits: {
+                    mapChestArea: {
+                        CustomRequirement: function(age) {
+                            return ItemData.canUseAll(age, [Items.DEKU_STICK, Equipment.STRENGTH]) ||
+                                ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS);
+                        }
+                    }
+                },
                 ItemLocations: {
                     "5 Blue Rupees in Basement Center": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -5686,17 +5692,6 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 29,
                         LongDescription: "These pots are by the entrance to the second wing from the left in the basement."
-                    },
-                    "Map Chest in Basement": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 302, y: 238, floor: "B1" },
-                        Age: Age.CHILD,
-                        Order: 30,
-                        LongDescription: "Fall down one of the many pits to get to the basement. This chest is located behind the rocks that are farthest from the ladder. That is, if you face away from the ladder, it's the rightmost set of rocks.<br/><br/>You can use the bombchus from the rocks in the corridor to the left to get in. You drop down from the pit room with the beamos. If you can't get there, you can light a deku stick on fire and jumpslash between the rocks to light the bomb flower.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAll(age, [Items.DEKU_STICK, Equipment.STRENGTH]) ||
-                                ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS);
-                        }
                     },
                     "Silver Rupee on South Basement Wood Beam": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -5732,6 +5727,19 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 35,
                         LongDescription: "Fall down one of the many pits to get to the basement. Climb both basement ladders; the rupee is to your left."
+                    }
+                }
+            },
+            mapChestArea: {
+                DisplayGroup: { groupName: "Basement", imageName: "Dungeon Map" },
+                Exits: {},
+                ItemLocations: {
+                    "Map Chest in Basement": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 302, y: 238, floor: "B1" },
+                        Age: Age.CHILD,
+                        Order: 30,
+                        LongDescription: "Fall down one of the many pits to get to the basement. This chest is located behind the rocks that are farthest from the ladder. That is, if you face away from the ladder, it's the rightmost set of rocks.<br/><br/>You can use the bombchus from the rocks in the corridor to the left to get in. You drop down from the pit room with the beamos. If you can't get there, you can light a deku stick on fire and jumpslash between the rocks to light the bomb flower."
                     }
                 }
             }

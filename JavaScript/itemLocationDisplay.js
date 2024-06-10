@@ -278,12 +278,24 @@ let ItemLocationDisplay = {
 				}
 			}
 
-			// Hide item locations that are done and are hideable
+			// Hide item locations that are done/not the shown age and are hideable
 			if (!_this._isItemLocationHideable(itemLocation)) {
 				addCssClass(itemLocationDiv, "do-not-hide");
-			} else if (itemLocation.playerHas) {
-				addCssClass(itemLocationDiv, "nodisp");
-				hiddenLocations++;
+			} else {
+				let hideLocation = itemLocation.playerHas;
+				if (!hideLocation) {
+					let ageToHide = LocationSidebar.getAgesToHide();
+					if (ageToHide) { // If this is null, we aren't hiding by age
+						hideLocation = ageToHide == Age.EITHER || // Hiding both explicitely
+						itemLocation.Age === ageToHide || // Hiding one by default
+						Data.useSpecificAge(itemLocation, ageToHide); // Hiding one due to a setting
+					}
+				}
+				
+				if (hideLocation) {
+					addCssClass(itemLocationDiv, "nodisp");
+					hiddenLocations++;
+				}
 			}
 			
 			itemLocationDiv.id = itemLocation.Name;

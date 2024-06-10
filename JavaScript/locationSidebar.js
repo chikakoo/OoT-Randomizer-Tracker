@@ -1,4 +1,10 @@
 LocationSidebar = {
+    /**
+     * Which ages to show the item locations for
+     */
+    showChildLocations: true,
+    showAdultLocations: true,
+
     refreshLocationList: function() {
         let locationDiv = document.getElementById("locationList");
         locationDiv.innerHTML = "";
@@ -44,6 +50,23 @@ LocationSidebar = {
         removeCssClass(document.getElementById("settingsButton"), "selected-location");
         removeCssClass(document.getElementById("notesButton"), "selected-location");
         removeCssClass(document.getElementById("spawnsButton"), "selected-location");
+    },
+
+    /**
+     * Gets the ages to hide in the tracker
+     * @returns - the age to show (CHILD/ADULT/EITHER/null)
+     */
+    getAgesToHide: function() {
+        if (this.showChildLocations && !this.showAdultLocations) {
+            return Age.ADULT;
+        }
+        if (this.showAdultLocations && !this.showChildLocations) {
+            return Age.CHILD;
+        }
+        if (this.showChildLocations && this.showAdultLocations) {
+            return null;
+        }
+        return Age.EITHER;
     },
 
     /**
@@ -94,9 +117,18 @@ LocationSidebar = {
      * Creates the header TODO icon for the given age
      * These age the child/adult icons above the list of locations
      * If spawn shuffle is on, it will list the age's spawn point in a tooltip
+     * 
+     * Clicking it will toggle the age-specific location display on or off
      */
     _createHeaderTodoIcon: function(age) {
         let todoIconDiv = dce("div", `location-item-header-${age.toLowerCase()}-icon`);
+        todoIconDiv.id = `itemHeader${age}Icon`;
+
+        let showAgeLocations = age === Age.CHILD
+            ? this.showChildLocations
+            : this.showAdultLocations;
+
+        addOrRemoveCssClass(todoIconDiv, "location-item-header-show-age", showAgeLocations);
 
         if (Data.randomizedSpawnLocations.useRandomizedSpawns) {
             todoIconDiv.title = "No spawn set";
@@ -112,7 +144,33 @@ LocationSidebar = {
             }
         }
 
+        todoIconDiv.onclick = this.onTodoIconClick.bind(this, age);
+
         return todoIconDiv;
+    },
+
+    /**
+     * Adjusts the state of the form when the age icon is clicked
+     * - will NEVER result in both ages being off - toggles on the OTHER age in that case
+     * @param age - the age of the todo icon 
+     * @param todoIconDiv - the icon div
+     */
+    onTodoIconClick: function(age) {
+        let childDiv = document.getElementById("itemHeaderChildIcon");
+        let adultDiv = document.getElementById("itemHeaderAdultIcon");
+
+        if (age === Age.CHILD) {
+            this.showChildLocations = !this.showChildLocations;
+        } else {
+            this.showAdultLocations = !this.showAdultLocations;
+        }
+
+        addOrRemoveCssClass(childDiv, "location-item-header-show-age", this.showChildLocations);
+        addOrRemoveCssClass(adultDiv, "location-item-header-show-age", this.showAdultLocations);
+
+        if (LocationSidebar.isLocationAMap()) {
+            ItemLocationDisplay.displayLocation(ItemLocationDisplay.currentLocationName);
+        }
     },
 
     /**
