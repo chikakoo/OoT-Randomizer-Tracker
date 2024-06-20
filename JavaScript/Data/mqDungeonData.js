@@ -971,20 +971,7 @@ let MQDungeons = {
                         Order: 44,
                         LongDescription: "After dealing with all the Armos statues in the Dodongo head, climb up the stairs. Jump to the ledge to get to the skulltula on top."
                     },
-
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "Pot After Armos Army": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 176, y: 58, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 45,
-                        LongDescription: "After dealing with all the Armos statues in the Dodongo head, climb the stairs. This is one of the pots to your left before you enter the hallway. The other one will always contain a fairy."
-                    },
                     "2 Pots After Armos Army": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -993,7 +980,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 45,
                         LongDescription: "After dealing with all the Armos statues in the Dodongo head, climb the stairs. These are the pots to your left before you enter the hallway."
-                    },
+                    }
                 }
             },
             bossRoom: {
@@ -1436,10 +1423,6 @@ let MQDungeons = {
                         LongDescription: "Shoot the left cow in this room to spawn the chest."
                     },
                     "Pot in Room Before Boss": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this is a fairy pot
-                            return false;
-                        },
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 240, y: 160, floor: "F1" },
                         Age: Age.CHILD,
@@ -1660,19 +1643,7 @@ let MQDungeons = {
                         LongDescription: "Proceed straight ahead in the main room. After the hallway, kill the two wolfos to spawn the chest.<br/><br/>If you don't have the song of time, it's possible to get here from the above room. This is the room after the red poe room - drop down before killing the first Stalfos.",
                         RequiredItems: [ItemSets.SWORDS]
                     },
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "Pot North of Main Room": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 168, y: 17, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 7,
-                        LongDescription: "From the start of the temple, go straight through the room with the giant skulltula and into the next door across the big room. The room with the pot is the one after the song of time block (not there as Child). The one on the right is the one you want - the other contains a fairy.<br/><br/>If you don't have the song of time, it's possible to get here from the above room. This is the room after the red poe room - drop down before killing the first Stalfos."
-                    },
                     "2 Pots North of Main Room": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2277,23 +2248,7 @@ let MQDungeons = {
                     }
                 },
                 ItemLocations: {
-                    //TODO: Empty Pots - this will be replaced by the below item
-                    "4 Pots by Iron Knuckle": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "4 Pots",
-                        MapInfo: { x: 107, y: 38, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 8,
-                        LongDescription: "Enter the locked door to the right when you first enter the temple. Defeat the stalfos and proceed. The pots are in the next room - the four you want are the two in the very back, and the two by the door. The rest contain fairies.",
-                        RequiredItems: [ItemSets.DAMAGING_ITEMS]
-                    },
                     "8 Pots by Iron Knuckle": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2485,19 +2440,7 @@ let MQDungeons = {
                         Order: 14,
                         LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to it, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
                     },
-                    //TODO: Empty Pots - will be replaced by the second check
-                    "Pot in Boss Key Room": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 162, y: 102, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 15,
-                        LongDescription: "In the boss key room, hookshot the torch or chest to get to the pots, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
-                    },
                     "2 Pots in Boss Key Room": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2716,22 +2659,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Lava & Fire Wall Room", imageName: "Din's Fire" },
                 Exits: {},
                 ItemLocations: {
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "2 Pots in Narrow Bridge Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 293, y: 155, floor: "F3" },
-                        Age: Age.ADULT,
-                        Order: 29,
-                        LongDescription: "Make your way to the scary room with the giant pit either from the lava room with grates, or by falling from the room at the very top."
-                    },
                     "3 Pots in Narrow Bridge Room": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2863,19 +2791,7 @@ let MQDungeons = {
                     }
                 },
                 ItemLocations: {
-                    //TODO Empty Pots - this will be replaced by the next item location
-                    "Pot in Left Fire Wall Maze": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 87, y: 215, floor: "F3" },
-                        Age: Age.ADULT,
-                        Order: 37,
-                        LongDescription: "Navigate around the lava room and grab a small box. Enter the encaged area and place the box on the blue switch to light some torches. Hookshot the box to get back up. Use your bow to shoot though one of the torches to light a high up torch on the wall. Go through the door to continue.<br/><br/>Navigate around the fire wall maze to the left until you find the pot (the second one contains a fairy)."
-                    },
                     "2 Pots in Left Fire Wall Maze": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -3424,22 +3340,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Water Raising Rooms (Mid West)", imageName: "Zelda's Lullaby" },
                 Exits: {},
                 ItemLocations: {
-                    "6 Crates in Mid West Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "6 Crates",
-                        MapInfo: { x: 41, y: 116, floor: "F2" },
-                        Age: Age.ADULT,
-                        Order: 17,
-                        LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. The crates are in this room.",
-                    },
                     "7 Crates in Mid West Room": {
-                        // TODO: Empty Pots: If 'Water Temple MQ Before Upper Water Switch Lower Small Crate' is still marked as a
-                        // rupee, mark this as empty, and keep the above item location
-                        // If NOT, keep this as is and delete the above item location
-                        RequiredToAppear: function() { return false; }, // Remove me!!!
-
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsItemLocationGroup: true,
@@ -3468,23 +3369,7 @@ let MQDungeons = {
                         LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. Hookshot the symbol on the wall to your left to spawn the wonderitem.",
                         RequiredItems: [Items.HOOKSHOT]
                     },
-                    "2 Crates Above Mid West Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Crates",
-                        MapInfo: { x: 165, y: 247, floor: "F3" },
-                        Age: Age.ADULT,
-                        Order: 19,
-                        LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your longshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. In this room, break the box to your left and hit the switch. Now, hookshot up to the next floor and break the crates.",
-                        RequiredItems: [UpgradedItems.LONGSHOT]
-                    },
                     "3 Crates Above Mid West Room": {
-                        // TODO: Empty Pots: If 'Water Temple MQ Before Upper Water Switch Lower Small Crate' is still marked as a
-                        // rupee, mark this as empty, and keep the above item location
-                        // If NOT, keep this as is and delete the above item location
-                        RequiredToAppear: function() { return false; }, // Remove me!!!
-
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsItemLocationGroup: true,
@@ -3531,19 +3416,7 @@ let MQDungeons = {
                         Order: 20.9,
                         LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the right wall and shoot it with your hookshot three times to spawn the wonderitems."
                     },
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "Pot in Lower Rising Dragon Room": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 40, y: 193, floor: "F3" },
-                        Age: Age.ADULT,
-                        Order: 21,
-                        LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door.<br/><br/>Jump down and kill the three stalfos, then use your hookshot to navigate to the pots. Only the middle one will have an item."
-                    },
                     "3 Pots in Lower Rising Dragon Room": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -3563,19 +3436,7 @@ let MQDungeons = {
                         Order: 22,
                         LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door.<br/><br/>Jump down and kill the three stalfos, then use your hookshot to navigate to the exit door - the pots are on either side of it."
                     },
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "Pot in Room After Dark Link": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 58, y: 43, floor: "F3" },
-                        Age: Age.ADULT,
-                        Order: 23,
-                        LongDescription: "After the Dark Link fight, enter the next room. The pot is the one on the right - the left one will contain a fairy."
-                    },
                     "2 Pots in Room After Dark Link": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -3609,19 +3470,7 @@ let MQDungeons = {
                         LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door. Jump down and kill the three stalfos, then use your hookshot to get through the next room, and then defeat Dark Link. Hookshot the wall in the next room to reach the whirlpool room.<br/><br/>Use your iron boots or longshot across the river until you hear the skulltula. Get it with your hookshot or longshot.",
                         RequiredChoiceOfItems: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT]
                     },
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "Pot in Whirlpool Room": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 49, y: 160, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 25,
-                        LongDescription: "After the Dark Link fight, enter the next room. Hit the back wall with your hookshot to open the way. The pot is the left one at the end of the river - the right one contains a fairy."
-                    },
                     "2 Pots in Whirlpool Room": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -3957,19 +3806,7 @@ let MQDungeons = {
                     }
                 },
                 ItemLocations: {
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "Pot in Room by Low North Waterfall": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 129, y: 53, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 45,
-                        LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes. Play the Scarecrow's song and hookshot it to get to the opening to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. The pot is in the back right corner of the room (the other one is a fairy).",
-                    },
                     "2 Pots in Room by Low North Waterfall": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -5295,22 +5132,7 @@ let MQDungeons = {
                         Order: 7,
                         LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. The pots are by the gibdos."
                     },
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "3 Pots in Child Stalfos Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 86, y: 19, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 8,
-                        LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. In the next room, kill the Stalfos - this will lower the fire so you can get the pots (one contains a fairy)."
-                    },
                     "4 Pots in Child Stalfos Room": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -6036,10 +5858,6 @@ let MQDungeons = {
                         LongDescription: "In the room after the room with the switch, the pots will be on your right."
                     },
                     "2 Back Pots in Center Room": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -6159,19 +5977,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Final Hallway & Boss", imageName: "Iron Boots" },
                 Exits: {},
                 ItemLocations: {
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "Pot Before Boss Room": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 116, y: 162 },
-                        Age: Age.ADULT,
-                        Order: 11,
-                        LongDescription: "This pot is the left one next to the boss door. The right pot contains a fairy.",
-                    },
                     "2 Pots Before Boss Room": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -6286,10 +6092,6 @@ let MQDungeons = {
                         RequiredItems: [ItemSets.EXPLOSIVES]
                     },
                     "Pot Behind Gate": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as it's a fairy pot
-                            return false;
-                        },
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 231, y: 195, floor: "F1" },
                         Age: Age.EITHER,
@@ -6390,7 +6192,7 @@ let MQDungeons = {
                 }
             },
             eastCenterRoom: {
-                DisplayGroup: { groupName: "Central East Locked Room", imageName: "Skulltula" },
+                DisplayGroup: { groupName: "Central East Locked Room", imageName: "3 Pots" },
                 Exits: {},
                 ItemLocations: {
                     "3 Pots in East Center Room": {
@@ -6423,7 +6225,7 @@ let MQDungeons = {
                 }
             },
             westCenterRoom: {
-                DisplayGroup: { groupName: "Central West Locked Room", imageName: "3 Pots" },
+                DisplayGroup: { groupName: "Central West Locked Room", imageName: "Skulltula" },
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in West Center Room": {

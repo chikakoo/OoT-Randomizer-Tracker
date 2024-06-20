@@ -2364,15 +2364,15 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    // TODO: Empty Pots - child gets these
                     "4 Pots Near Goron City": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 56, y: 85 },
-                        Age: Age.ADULT,
-                        LongDescription: "These pots are near the entrance to Goron City. They only have items in them as Adult."
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
+                        LongDescription: "These pots are near the entrance to Goron City. If not shuffling empty pots, they only have items in them as Adult."
                     }
                 }
             },
@@ -4703,21 +4703,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "These crates are by the flags just across the quicksand pit."
                     },
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "3 Pots at Outpost": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 214, y: 89 },
-                        Age: Age.EITHER,
-                        LongDescription: "These pots are in the outpost in the center of the desert (there are 4, but one always gives a fairy)."
-                    },
                     "4 Pots at Outpost": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,

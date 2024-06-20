@@ -709,19 +709,7 @@ let StandardDungeons = {
                         Order: 31,
                         LongDescription: "This is in the series of rooms after you enter the giant dodongo head. After you climb the ledge with the pushable blocks, there's a wall you can destroy. The skulltula is inside."
                     },
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "Pot After Block Push in Back Room": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 176, y: 58, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 32,
-                        LongDescription: "After the block push puzzle in the giant dodongo head, this is one of the pots to your left before you enter the hallway. The other one will always contain a fairy."
-                    },
                     "2 Pots After Block Push in Back Room": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -794,7 +782,6 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
                     "Small Crate in Elevator Room": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 164, y: 177, floor: "F1" },
@@ -820,25 +807,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Basement", imageName: "Skulltula Tokens" },
                 Exits: {},
                 ItemLocations: {
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "4 Pots in Room by Vines": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "4 Pots",
-                        MapInfo: { x: 32, y: 188, floor: "B1" },
-                        Age: Age.EITHER,
-                        Order: 2,
-                        LongDescription: "Fall down one of the holes to get to the main room on the bottom. Enter the door by the vines back up. Either stun the jello with your boomerang to cross, or use hover boots. The pots are on the other side - one is always a fairy.",
-                        CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || ItemData.canUseAny(age, [Items.BOOMERANG, Equipment.HOVER_BOOTS]);
-                        }
-                    },
                     "5 Pots in Room by Vines": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -874,22 +843,7 @@ let StandardDungeons = {
                         Order: 5,
                         LongDescription: "In the room with the water and the switch (the first one you usually take Ruto into), there's a skulltula hanging out on the vines. Take it out, then raise the water to collect its token. Note that you can reach it with a jumpslash if you jump off the cliff then jumpslash when you're a bit closer.",
                     },
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "2 Pots Above Vines": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 258, y: 152, floor: "B1" },
-                        Age: Age.EITHER,
-                        Order: 6,
-                        LongDescription: "These pots are above the vines in the room with the water and the switch (the first one you usually take Ruto into). One of the pots there will always contain a fairy."
-                    },
                     "3 Pots Above Vines": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -946,23 +900,7 @@ let StandardDungeons = {
                     roomBeforeBoss: {}
                 },
                 ItemLocations: {
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "2 Pots After Big Octo": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 101, y: 32, floor: "F2" },
-                        Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
-                        Order: 11,
-                        LongDescription: "After defeating all the tentacles, go defeat Big Octo. Ride up the elevator - the pots are in this room on the back wall. One of them always contains a fairy."
-                    },
                     "3 Pots After Big Octo": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -1224,19 +1162,7 @@ let StandardDungeons = {
                         RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS],
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go straight again through the room with the blue bubble. In the next room, kill the two stalfos to spawn the chest."
                     },
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "Pot Behind Main Room": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 168, y: 17, floor: "F1" },
-                        Age: Age.EITHER,
-                        Order: 7,
-                        LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go straight again through the room with the blue bubble. The pot is the left one in the back of the room. The right pot always contains a fairy."
-                    },
                     "2 Pots Behind Main Room": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -1966,27 +1892,7 @@ let StandardDungeons = {
                             return Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
                         }
                     },
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "2 Pots Near Boss Door": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 45, y: 158, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 6,
-                        LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper right corner of the room using your hookshot, hover boots, or by megaflipping. Climb up to get to the pots (2/4 are fairies).",
-                        CustomRequirement: function(age) {
-                            let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
-                            let canGetThere = Data.canMegaFlip(age) || Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas;
-                            return tunicCheck && canGetThere;
-                        }
-                    },
                     "4 Pots Near Boss Door": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2652,10 +2558,6 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots by Boss Antechamber": {
-                        //TODO: Empty Pots - remove this function, as these pots contain faries
-                        RequiredToAppear: function() { 
-                            return false; 
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2781,19 +2683,7 @@ let StandardDungeons = {
                         Order: 10,
                         LongDescription: "In the whirlpool river, this is one of the items you'll run into while swimming (before the third vortex)."
                     },
-                    //TODO: Empty Pots - remove this item, as the one below will replace it
-                    "Pot at End of Whirlpool Room": {
-                        ItemGroup: ItemGroups.POT,
-                        Age: Age.ADULT,
-                        Order: 11,
-                        MapInfo: { x: 49, y: 160, floor: "F1" },
-                        LongDescription: "Start from the longshot chest room. Play the Song of Time to clear the block from the floor. Drop down. Swim to the end of the room - the pots is the right one on a ledge (the other is a fairy)."
-                    },
                     "2 Pots at End of Whirlpool Room": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this will become the default item location
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -3210,10 +3100,6 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in Boss Key Room": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as these are fairy pots
-                            return false;
-                        },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -6715,10 +6601,6 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Water Trial Pot in Ice Push Room": {
-                        RequiredToAppear: function() {
-                            //TODO: Empty Pots - remove this function, as this is a fairy pot
-                            return false;
-                        },
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 223, y: 117, floor: "WTR" },
                         Age: Age.EITHER,
