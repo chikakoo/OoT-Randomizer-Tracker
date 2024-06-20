@@ -3345,13 +3345,7 @@ let MapLocations = {
                         MapInfo: { x: 171, y: 116 },
                         Age: Age.CHILD,
                         LongDescription: "You'll find this item in the water near the entrance to Zora's Domain. Navi will fly to it when you're close.",
-                        CustomRequirement: function(age) {
-                            if (Equipment.SCALE.playerHas) { return true; }
-                            if (!Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
-                            
-                            let defeatedMorpha = Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
-                            return defeatedMorpha && ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
-                        }
+                        RequiredItems: [Equipment.SCALE]
                     },
                     "Heart Piece on Lab": {
                         ItemGroup: ItemGroups.FREESTANDING,

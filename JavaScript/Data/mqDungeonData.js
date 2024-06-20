@@ -4872,20 +4872,12 @@ let MQDungeons = {
             invisibleWallRoom: {
                 DisplayGroup: { groupName: "Invisible Wall Maze Rooms", imageName: "Boss Key" },
                 Exits: {
-                    afterBurningSpikes: {
+                    spikeWallRoom: {
                         LockedDoor: "Locked Door in Invisible Wall Room",
-                        Map: "Shadow Temple",
-                        RequiredItems: [Equipment.MAGIC, Items.DINS_FIRE]
+                        Map: "Shadow Temple"
                     }
                 },
                 ItemLocations: {
-                    "Pot in Spike Wall Room": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 89, y: 51, floor: "B1" },
-                        Age: Age.ADULT,
-                        Order: 41,
-                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>Navigate to the room to your right (the north one). The pot is in front of you."
-                    },
                     "Wonderitem in Triple Skull Room": {
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Bow Wonderitem",
@@ -4933,6 +4925,23 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 47,
                         LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>In the invisible maze, navigate to the south room. The pots are along the back walls, in the corners."
+                    }
+                }
+            },
+            spikeWallRoom: {
+                DisplayGroup: { groupName: "Invisible Wall Maze Rooms", imageName: "Boss Key" },
+                Exits: {
+                    afterBurningSpikes: {
+                        RequiredItems: [Items.DINS_FIRE]
+                    }
+                },
+                ItemLocations: {
+                    "Pot in Spike Wall Room": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 89, y: 51, floor: "B1" },
+                        Age: Age.ADULT,
+                        Order: 41,
+                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>Navigate to the room to your right (the north one). The pot is in front of you."
                     }
                 }
             },

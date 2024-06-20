@@ -212,7 +212,8 @@ body::-webkit-scrollbar-thumb {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position-x: 5px;
-	background-color: gray;
+	background-color: lightgray;
+	opacity: 0.6;
 }
 
 .location-item-header-child-icon {
@@ -227,6 +228,7 @@ body::-webkit-scrollbar-thumb {
 .location-item-header-child-icon.location-item-header-show-age, 
 .location-item-header-adult-icon.location-item-header-show-age {
 	background-color: green;
+	opacity: 1;
 }
 
 .location-item-todo-count {
