@@ -4158,17 +4158,6 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    "Jail 1 Guard Key": {
-                        Order: 99,
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 213, y: 129, floor: "J1" },
-                        Age: Age.EITHER,
-                        RequiredItems: [ItemSets.SWORDS],
-                        RequiredToAppear: function() { 
-                            return Settings.RandomizerSettings.openGerudosFortress !== OpenGerudosFortressSettings.OPEN;
-                        },
-                        LongDescription: "Enter the leftmost bottom exit to get to the first jail. Take out the guard to get the item. You can savewarp here from anywhere in the Thieves' Hideout."
-                    },
                     "3 Pots by Jail 1": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -4199,6 +4188,16 @@ let MapLocations = {
                         Age: Age.ADULT,
                         RequiredItems: [Items.FAIRY_BOW],
                         LongDescription: "To the right of the jail, shoot the skull on the wall to get this wonderitem."
+                    },
+                    "Jail 1 Guard Key": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 213, y: 129, floor: "J1" },
+                        Age: Age.EITHER,
+                        RequiredItems: [ItemSets.SWORDS],
+                        RequiredToAppear: function() { 
+                            return Settings.RandomizerSettings.openGerudosFortress !== OpenGerudosFortressSettings.OPEN;
+                        },
+                        LongDescription: "Enter the leftmost bottom exit to get to the first jail. Take out the guard to get the item. You can savewarp here from anywhere in the Thieves' Hideout."
                     }
                 }
             },
@@ -4220,16 +4219,6 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    "Jail 2 Guard Key": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 207, y: 132, floor: "J2" },
-                        Age: Age.EITHER,
-                        RequiredItems: [ItemSets.SWORDS],
-                        RequiredToAppear: function() { 
-                            return Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.VANILLA;
-                        },
-                        LongDescription: "Start from jail 1. Face the jail - now turn right and take that exit. Go straight to the other side. The next jail is in the next hole if you hug this wall around the right corner - be careful of guards. Take out the guard to get the item."
-                    },
                     "2 Pots in Jail 2 Hallway": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -4254,6 +4243,16 @@ let MapLocations = {
                         Age: Age.ADULT,
                         RequiredItems: [Items.FAIRY_BOW],
                         LongDescription: "To the right of the jail, shoot the skull on the wall to get this wonderitem."
+                    },
+                    "Jail 2 Guard Key": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 207, y: 132, floor: "J2" },
+                        Age: Age.EITHER,
+                        RequiredItems: [ItemSets.SWORDS],
+                        RequiredToAppear: function() { 
+                            return Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.VANILLA;
+                        },
+                        LongDescription: "Start from jail 1. Face the jail - now turn right and take that exit. Go straight to the other side. The next jail is in the next hole if you hug this wall around the right corner - be careful of guards. Take out the guard to get the item."
                     }
                 }
             },
@@ -4270,16 +4269,6 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    "Jail 3 Guard Key": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 207, y: 188, floor: "J3" },
-                        Age: Age.EITHER,
-                        RequiredItems: [ItemSets.SWORDS],
-                        RequiredToAppear: function() { 
-                            return Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.VANILLA;
-                        },
-                        LongDescription: "Start from jail 2. Face the jail - now turn left and take that exit. Climb the vines straight ahead and take the exit straight in front of you for the next jail. Take out the guard to get the item."
-                    },
                     "3 Pots by Jail 3": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -4322,6 +4311,16 @@ let MapLocations = {
                         Age: Age.ADULT,
                         RequiredItems: [Items.FAIRY_BOW],
                         LongDescription: "To the right of the jail, shoot the skull on the wall to get this wonderitem."
+                    },
+                    "Jail 3 Guard Key": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 207, y: 188, floor: "J3" },
+                        Age: Age.EITHER,
+                        RequiredItems: [ItemSets.SWORDS],
+                        RequiredToAppear: function() { 
+                            return Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.VANILLA;
+                        },
+                        LongDescription: "Start from jail 2. Face the jail - now turn left and take that exit. Climb the vines straight ahead and take the exit straight in front of you for the next jail. Take out the guard to get the item."
                     }
                 }
             },

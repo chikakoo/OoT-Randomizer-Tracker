@@ -1350,7 +1350,7 @@ let MQDungeons = {
                         MapInfo: { x: 70, y: 53, floor: "F2" },
                         MapImageName: "Slingshot Wonderitem",
                         Age: Age.CHILD,
-                        Order: 20.1,
+                        Order: 20,
                         LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up and shoot the cow on the wall to spawn the wonderitem.",
                         RequiredItems: [Items.FAIRY_SLINGSHOT]
                     },
