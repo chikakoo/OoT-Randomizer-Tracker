@@ -3155,7 +3155,9 @@ let MQDungeons = {
                 Exits: {
                     lowEastWingPots: {},
                     midSouthRoomPots: {},
-                    midWaterLevel: {},
+                    midWestRoom: {
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
                     behindGateInMidSouthRoom: {
                         CustomRequirement: function(age) {
                             let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
@@ -3336,7 +3338,7 @@ let MQDungeons = {
                     }
                 }
             },
-            midWaterLevel: {
+            midWestRoom: {
                 DisplayGroup: { groupName: "Water Raising Rooms (Mid West)", imageName: "Zelda's Lullaby" },
                 Exits: {},
                 ItemLocations: {
@@ -3366,8 +3368,7 @@ let MQDungeons = {
                         MapInfo: { x: 42, y: 160, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 18.1,
-                        LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. Hookshot the symbol on the wall to your left to spawn the wonderitem.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. Hookshot the symbol on the wall to your left to spawn the wonderitem."
                     },
                     "3 Crates Above Mid West Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
