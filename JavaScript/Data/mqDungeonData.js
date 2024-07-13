@@ -1328,7 +1328,7 @@ let MQDungeons = {
                         MapInfo: { x: 29, y: 191, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 20,
-                        LongDescription: "After destroying all the tentacles, drop down into the big room and enter the door by the vines. The skulltula is in the back of the room. Kill the enemies (some are invisible) or megaflip to cross to the other wide. Burn the web with a fire item.",
+                        LongDescription: "After destroying all the tentacles, drop down into the big room and enter the door by the vines. The skulltula is in the back of the room. Kill the enemies (some are invisible) or megaflip/hover boots to the other side. Walk around the web to get to the skulltula.",
                         CustomRequirement: function(age) {
                             let canUseLens = ItemData.canUse(age, Items.LENS_OF_TRUTH);
                             let canKillEnemies = canUseLens && ItemData.canUseAny(age, [ItemSets.PROJECTILES, Items.HOOKSHOT]);

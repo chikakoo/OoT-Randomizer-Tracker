@@ -2254,14 +2254,14 @@ GrottoGroups = {
 		icon: "Projectile Wonderitem",
 		buttons: {
 			"Hookshot Wonderitem": {
-				description: "Shoot this with the hookshot to soawn the wonderitem.",
+				description: "Shoot this with the hookshot to spawn the wonderitem.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.HOOKSHOT);
 				},
 				isAdultOnly: function() { return true; }
 			},
 			"Bow Wonderitem": {
-				description: "Shoot this with the bow to soawn the wonderitem.",
+				description: "Shoot this with the bow to spawn the wonderitem.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.FAIRY_BOW);
 				},
@@ -2275,7 +2275,7 @@ GrottoGroups = {
 		buttons: {
 			"Hookshot Wonderitems": {
 				useGroupImage: true,
-				description: "Shoot this with the hookshot to soawn the wonderitem.",
+				description: "Shoot this with the hookshot to spawn the wonderitem.",
 				count: 2,
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.HOOKSHOT);
@@ -2290,7 +2290,7 @@ GrottoGroups = {
 		buttons: {
 			"Hookshot Wonderitems": {
 				useGroupImage: true,
-				description: "Shoot this with the hookshot to soawn the wonderitem.",
+				description: "Shoot this with the hookshot to spawn the wonderitem.",
 				count: 3,
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.HOOKSHOT);
