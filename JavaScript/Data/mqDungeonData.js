@@ -762,8 +762,7 @@ let MQDungeons = {
                     topOfTorchPuzzleRoom: {
                         CustomRequirement: function(age) {
                             let adultBombChestEarly = age === Age.ADULT && Settings.GlitchesToAllow.dodongoAdultJumpToBombChest;
-                            let canMegaflipThere = Items.BOMBCHU.playerHas && Data.canMegaFlip(age);
-                            return adultBombChestEarly || canMegaflipThere;
+                            return adultBombChestEarly || Data.canMegaFlip(age);
                         }
                     },
                     upperLizalfosRoom: {

@@ -530,8 +530,7 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             let adultBombChestEarly = age === Age.ADULT && Settings.GlitchesToAllow.dodongoAdultJumpToBombChest;
                             let canGroundJumpThere = age === Age.ADULT && Data.canGroundJumpWithBomb(age);
-                            let canMegaflipThere = Items.BOMBCHU.playerHas && Data.canMegaFlip(age);
-                            return adultBombChestEarly || canGroundJumpThere || canMegaflipThere;
+                            return adultBombChestEarly || canGroundJumpThere || Data.canMegaFlip(age);
                         }
                     },
                     potsInBladeRoom: {

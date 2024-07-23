@@ -1827,7 +1827,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 77, y: 112 },
             Age: Age.EITHER,
-            LongDescription: "This is the exit to the wasteland. As Child, here's how to skip the gate: climb the ladder; go a bit to the right if you are facing the ladder; angle yourself so that when you sidehop left, you end up on the cliff; walk forward until you are passed the gate; sidehop left and keep holding left."
+            LongDescription: "This is the exit to the wasteland.<br/><br/>Child gate skip: climb the ladder, and get in the corner to the left of the ladder. C-up and put the sword icon on the second half of the metal bar. Sidehop right, retarget, dry roll x2. Sidehop left to get on the cliff. Go forward a bit, then sidehop left back inbounds."
         },
         "Training Grounds": {
             ExitRegion: "main",
