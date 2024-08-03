@@ -7576,8 +7576,7 @@ let MQDungeons = {
                         IsPostWalkCheck: true,
                         LongDescription: "Complete all the trials. Now, go up the center of the castle. This is room after you open the first giant door.",
                         CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Settings.GlitchesToAllow.ganonTrialSkip) || 
-                                Data.canStaircaseHover(age) ||
+                            return Data.canStaircaseHover(age) ||
                                 MapLocations["Ganon's Castle"]._canCompleteTrials(age);
                         }
                     }
