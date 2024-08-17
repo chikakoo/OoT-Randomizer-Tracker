@@ -217,6 +217,7 @@ let Settings = {
 		adultDomainMegaflipClip: false,
 		adultLakesideLabClip: false,
 		childLakesideLabClip: false,
+		adultWaterTempleClip: false,
 		skullInTreeWithHookshot: false,
 		jabuFishless: false,
 		enterJabuAsAdult: false,

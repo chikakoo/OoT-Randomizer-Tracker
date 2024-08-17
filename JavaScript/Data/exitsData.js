@@ -1644,16 +1644,27 @@ let OwExits = {
             UseChildAge: function() { return !Settings.GlitchesToAllow.adultDomainMegaflipClip && !Settings.GlitchesToAllow.adultLakesideLabClip; },
             LongDescription: "This is the entrance to Zora's Domain.",
             CustomRequirement: function(age) {
-                if (age === Age.CHILD && Equipment.SCALE.playerHas) { return true; }
-                if (!Data.canShieldTurn(age)) { return false; }
+                if (age === Age.CHILD && Equipment.SCALE.playerHas) 
+                { 
+                    return true; 
+                }
 
                 if (age === Age.CHILD) {
-                    return Settings.GlitchesToAllow.childLakesideLabClip && ItemData.canUse(age, ItemSets.SWORDS);
+                    return Data.canShieldTurn(age) &&
+                        Settings.GlitchesToAllow.childLakesideLabClip && 
+                        ItemData.canUse(age, ItemSets.SWORDS);
                 }
 
                 let defeatedMorpha = Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
-                return (Settings.GlitchesToAllow.adultLakesideLabClip && defeatedMorpha) ||
-                    (Settings.GlitchesToAllow.adultDomainMegaflipClip && ItemData.canUse(age, ItemSets.EXPLOSIVES));
+                return (
+                        defeatedMorpha &&
+                        Settings.GlitchesToAllow.adultLakesideLabClip && 
+                        ItemData.canUseAny(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS])
+                    ) ||
+                    (
+                        Settings.GlitchesToAllow.adultDomainMegaflipClip && 
+                        ItemData.canUse(age, ItemSets.EXPLOSIVES)
+                    );
             }
         },
         "Owl": {
@@ -1686,15 +1697,24 @@ let OwExits = {
             LongDescription: "This is the entrance to the Water Temple.",
             IsDungeonEntrance: true,
             CustomRequirement: function(age) {
-                let canDoClip = (age === Age.CHILD && Settings.GlitchesToAllow.childLakesideLabClip && ItemData.canUse(age, ItemSets.SWORDS)) ||
-                    (age === Age.ADULT && Settings.GlitchesToAllow.adultLakesideLabClip);
-                if (canDoClip && Data.canShieldTurn(age)) {
+                if (age === Age.CHILD) {
+                    return Settings.GlitchesToAllow.childLakesideLabClip &&
+                        ItemData.canUse(age, ItemSets.SWORDS) &&
+                        Data.canShieldTurn(age);
+                }
+
+                if (Settings.GlitchesToAllow.adultWaterTempleClip) {
+                    return true;
+                }
+
+                if (Settings.GlitchesToAllow.adultLakesideLabClip &&
+                    ItemData.canUseAny(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS])) {
                     return true;
                 }
 
                 let canEnterNormally = ItemData.canUseAll(age, [Equipment.IRON_BOOTS, Items.HOOKSHOT]);
                 let canDiveDown = ItemData.canUseAll(age, [UpgradedItems.LONGSHOT, UpgradedItems.GOLDEN_SCALE]);
-                if (age === Age.ADULT && (canEnterNormally || canDiveDown)) {
+                if (canEnterNormally || canDiveDown) {
                     return true;
                 };
                 if (!Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
