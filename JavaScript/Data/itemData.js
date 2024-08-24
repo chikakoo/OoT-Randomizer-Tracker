@@ -495,6 +495,8 @@ let ShopItemDictionary = {
 	"weird": "Weird Egg Weird Egg.png",
 	"egg": "Weird Egg Weird Egg.png",
 
+	"chicken": "Weird Egg Chicken.png",
+
 	"zeldasletter": "Zelda's Letter.png",
 
 	"keatonmask": "Keaton Mask.png",
@@ -527,6 +529,9 @@ let ShopItemDictionary = {
 	// Adult trade sequence items
 	"pocketegg": "Pocket Egg Pocket Egg.png",
 	"pocket": "Pocket Egg Pocket Egg.png",
+
+	"pocketcucco": "Pocket Egg Pocket Cucco.png",
+	"cucco": "Pocket Egg Pocket Cucco.png",
 
 	"cojiro": "Cojiro.png",
 
