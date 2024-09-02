@@ -1694,12 +1694,13 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         RequiredItems: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
-                            if (Data.canPlaySong(Songs.SONG_OF_TIME)) {
+                            if (Data.canPlaySong(Songs.SONG_OF_TIME) ||
+                                ItemData.canUse(age, UpgradedItems.LONGSHOT)) {
                                 return true;
                             } 
 
                             return Settings.GlitchesToAllow.forestHookshotToWellSwitch &&
-                                ItemData.canUse(age, UpgradedItems.LONGSHOT);
+                                ItemData.canUse(age, Items.HOOKSHOT);
                         }
                     },
                     outsideEastDoorFrame: {
@@ -3295,7 +3296,7 @@ let MQDungeons = {
                         MapInfo: { x: 270, y: 203, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 14,
-                        LongDescription: "At any water level (mid is easiest), navigate to the bottom middle area. Hit the switch to open the gated door. Use Din's Fire to light the torch and get the skulltula behind the cell.<br/><br/>Without a fire item, stand in front of the torch and hookshot it. You can now just walk in. To get out, target the jail and hookshot while holding Z and right while next to the torch."
+                        LongDescription: "At any water level (mid is easiest), navigate to the bottom middle area. Hit the switch to open the gated door. Use Din's Fire to light the torch and get the skulltula behind the cell.<br/><br/>Without a fire item, stand in front of the torch and hookshot it. You can now just walk in. Hookshot the skulltula's legs poking out of the crate to kill it. To get out, target the jail and hookshot while holding Z and right while next to the torch."
                     }
                 }
             },

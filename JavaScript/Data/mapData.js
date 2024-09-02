@@ -2863,8 +2863,12 @@ let MapLocations = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 125, y: 94 },
                         Age: Age.EITHER,
-                        LongDescription: "In the middle of the map, there's a heart piece on a high up platform. You can get this as a child using cuccos to fly to the platform. As adult, you can use hover boots from the cliff that you take a ladder to get up.",
-                        RequiredAdultItems: [Equipment.HOVER_BOOTS]
+                        LongDescription: "In the middle of the map, there's a heart piece on a high up platform. You can get this as a child using cuccos to fly to the platform.<br/><br/>As adult, you can use hover boots from the cliff that you take a ladder to get up.<br/><br/>To megaflip there: from the top with the gossip stone, go to the edge of the cliff and C-Up to face the item. Backflip and turn around. Megaflip from this spot and let go of all buttons.",
+                        CustomRequirement: function(age) {
+                            return age === Age.CHILD ||
+                                ItemData.canUse(age, Equipment.HOVER_BOOTS) ||
+                                Data.canMegaFlip(age);
+                        }
                     },
                     "Heart Piece by Zora's Domain": {
                         ItemGroup: ItemGroups.FREESTANDING,

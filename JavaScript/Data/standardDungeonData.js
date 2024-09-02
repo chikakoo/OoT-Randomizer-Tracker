@@ -5152,7 +5152,11 @@ let StandardDungeons = {
             hallWayBeforeBoss: {
                 DisplayGroup: { groupName: "Final Hallway & Boss", imageName: "Iron Boots" },
                 Exits: {
-                    bossRoom: {}
+                    bossRoom: {
+                        CustomRequirement: function(age) {
+                            return Data.hasBottleOrBlueFire(age);
+                        }
+                    }
                 },
                 ItemLocations: {
                     "2 Pots Before Boss Room": {
@@ -5163,7 +5167,7 @@ let StandardDungeons = {
                         MapInfo: { x: 111, y: 161 },
                         Age: Age.EITHER,
                         Order: 15,
-                        LongDescription: "After completing the block puzzle, these pots are frozen in the red ice before the boss room."
+                        LongDescription: "After completing the block puzzle, these pots are frozen in the red ice before the boss room. You can spinslash to get them and hope RNG places the item by you."
                     }
                 }
             },
