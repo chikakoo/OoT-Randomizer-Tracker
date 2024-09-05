@@ -1248,6 +1248,19 @@ let MQDungeons = {
                         Order: 15.1,
                         LongDescription: "In the room beyond the room with holes, go left to find the crates."
                     },
+                    "3 Wonderitems in Like Like Room": {
+                        //TODO: remove this when this check is actually merged in!
+                        RequiredToAppear: function() { return false; },
+
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Explosive Wonderitems",
+                        MapInfo: { x: 196, y: 17, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 15.99,
+                        LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. Use an explosive on the plant in the middle of the room to spawn these items."
+                    },
                     "2 Pots in Like Like Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,

@@ -2386,6 +2386,20 @@ GrottoGroups = {
 			}
 		}
 	},
+	"3 Explosive Wonderitems": {
+		tooltip: "A group of 3 wonderitems you need explosives to get.",
+		icon: "Explosive Wonderitem",
+		buttons: {
+			"Explosive Wonderitems": {
+				useGroupImage: true,
+				count: 3,
+				description: "Set off an explosive to get these items.",
+				canGet: function(age) {
+					return ItemData.canUse(age, ItemSets.EXPLOSIVES);
+				}
+			}
+		}
+	},
 	"Sword and Hammer Wonderitem": {
 		tooltip: "A group of wonderitems - one requiring a sword, and one requiring tne hammer.",
 		buttons: {
