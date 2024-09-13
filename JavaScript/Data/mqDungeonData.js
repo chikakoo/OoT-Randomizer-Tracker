@@ -1720,6 +1720,10 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         RequiredItems: [Items.HOOKSHOT]
                     },
+                    outsideEastSkulltula: {
+                        Age: Age.EITHER,
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                    },
                     outsideEastPlatform: {
                         Age: Age.ADULT,
                         RequiredItems: [UpgradedItems.LONGSHOT]
@@ -1766,15 +1770,22 @@ let MQDungeons = {
                             return Data.canHammerHoverBootsSuperslide(age);
                         }
                     },
+                    outsideEastSkulltula: {
+                        RequiredChoiceOfItems: [ItemSets.DISTANT_SWITCH_ITEMS, Items.DINS_FIRE]
+                    },
                     outsideEast: {}
                 },
+                ItemLocations: {}
+            },
+            outsideEastSkulltula: {
+                DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "3 Hearts" },
+                Exits: {},
                 ItemLocations: {
                     "Skulltula Above Outside East Door": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 226, y: 98, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 7.1,
-                        RequiredChoiceOfItems: [ItemSets.DISTANT_SWITCH_ITEMS, Items.DINS_FIRE],
                         LongDescription: "The skulltula is above the doorframe leading to this room. Get it with your boomerang or hookshot."
                     }
                 }
