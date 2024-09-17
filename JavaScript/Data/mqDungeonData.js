@@ -1249,9 +1249,6 @@ let MQDungeons = {
                         LongDescription: "In the room beyond the room with holes, go left to find the crates."
                     },
                     "3 Wonderitems in Like Like Room": {
-                        //TODO: remove this when this check is actually merged in!
-                        RequiredToAppear: function() { return false; },
-
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
