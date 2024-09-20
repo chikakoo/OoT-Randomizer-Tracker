@@ -2020,7 +2020,7 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             let canGetByBlock = Data.canGroundJumpWithBomb(age) || Equipment.STRENGTH.playerHas;
                             let canHitSwitchFromAbove = ItemData.canUseAny(age, [ItemSets.EXPLOSIVES, ItemSets.PROJECTILES, Items.HOOKSHOT]);
-                            return canGetByBlock || canHitSwitchFromAbove;
+                            return canGetByBlock && canHitSwitchFromAbove;
                         }
                     },
                     goronInPit: {
