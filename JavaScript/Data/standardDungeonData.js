@@ -1198,9 +1198,10 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Skulltula in Left Room on Wall": {
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         ItemGroup: ItemGroups.SKULLTULA,
+                        Age: Age.EITHER,
                         MapInfo: {x: 83, y: 52, floor: "F1" },
-                        Age: Age.ADULT,
                         Order: 18,
                         RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         LongDescription: "There's a skulltula high up on the wall over the moat in the outside left room. You can get it from the ground with the longshot. Otherwise, you must make your way to the upper platform to grab it. This is the path that you take if you fall in the hole by the boss key chest.",
@@ -1251,11 +1252,12 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Chest on Outside Right Island": {
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 269, y: 77, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 9,
-                        LongDescription: "There is a chest on the landmass on the other wide of the water in the right outside room. You can hookshot to it with the right angle. To get to the right outside room, you can either shoot the eye switch in the main room, or climb up the vines in the left outside room and go through the dungeon map room.<br/><br/>Alternatively, you can get there using hover boots from the platform with the water-draining well switch."
+                        LongDescription: "There is a chest on the landmass on the other wide of the water in the right outside room. You can hookshot to it with the right angle. To get to the right outside room, you can either shoot the eye switch in the main room, or climb up the vines in the left outside room and go through the dungeon map room.<br/><br/>Alternatively, you can get there using hover boots or a chu megaflip from the platform with the water-draining well switch."
                     }
                 }
             },
@@ -1267,9 +1269,12 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 269, y: 70, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.forestBoomerangSkullOnLedge; },
+                        UseAdultAge: function() { 
+                            return !Settings.GlitchesToAllow.forestBoomerangSkullOnLedge &&
+                                !Settings.GlitchesToAllow.canMegaflip;
+                        },
                         Order: 10,
-                        LongDescription: "There is a skulltula on the landmass on the other wide of the water in the right outside room. You can hookshot to the island via the chest at the right angle. To get to the right outside room, you can either shoot the eye switch in the main room, or climb up the vines in the left outside room and go through the dungeon map room.<br/><br/>If you have no hookshot and are coming from the falling ceiling room, make sure you kill it and drop down on the item from above so you don't miss your chance!"
+                        LongDescription: "There is a skulltula on the landmass on the other side of the water in the right outside room. You can hookshot to the island via the chest at the right angle. To get to the right outside room, you can either shoot the eye switch in the main room, or climb up the vines in the left outside room and go through the dungeon map room.<br/><br/>If you have no hookshot and are coming from the falling ceiling room, make sure you kill it and drop down on the item from above so you don't miss your chance!"
                     }
                 }
             },
@@ -1280,13 +1285,21 @@ let StandardDungeons = {
                     outsideRight: {},
                     outsideRightLedge: {
                         Age: Age.ADULT,
-                        RequiredAdultItems: [Equipment.HOVER_BOOTS],
+                        RequiredItems: [Equipment.HOVER_BOOTS],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.forestLedgeWithHovers;
                         }
                     },
                     outsideLeft: {
                         RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
+                    },
+                    fallingCeilingRoom: {
+                        RequiredItems: [Items.BOMBCHU],
+                        CustomRequirement: function(age) {
+                            // Get far on the ledge and aim just for the platform before turning around for the flip
+                            // Will only work with chus
+                            return Data.canMegaFlip(age);
+                        }
                     }
                 },
                 ItemLocations: {
@@ -1328,9 +1341,8 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     topOfOutsideLeft: {
-                        Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || Equipment.HOVER_BOOTS.playerHas;
+                            return Data.canMegaFlip(age) || ItemData.canUse(age, Equipment.HOVER_BOOTS);
                         }
                     },
                     topOfBlockRoom: {
@@ -1404,9 +1416,10 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Floormaster Chest": {
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 27, y: 101, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 19,
                         LongDescription: "Navigate to the twisted corridor. Shoot the eye switch to untwist the corridor. Now go across the corridor to the room with the boss key chest. Fall down the hole in this room and kill the bubbles to get out. Follow the right wall in this next area until you reach the first door in the side room to the right (careful of the giant deku baba). Kill the floormaster to spawn the chest.",
                         RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
@@ -1424,7 +1437,10 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 81, y: 73, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
+                        UseAdultAge: function() { 
+                            return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows &&
+                                !Settings.GlitchesToAllow.megaFlip; 
+                        },
                         Order: 17,
                         LongDescription: "Navigate to the twisted corridor. Shoot the eye switch to untwist the corridor. Now go across the corridor to the room with the boss key chest. Fall down the hole in this room and kill the bubbles to get out.<br/><br/>The hearts are on the skinny platform that you have to jump to, near the skulltula on the wall. Be careful not to fall off."
                     }
@@ -1533,19 +1549,21 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Falling Ceiling Room": {
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 318, y: 116, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 29,
                         LongDescription: "After the blue poe room, go through the door. Now go down the hallway that the ladder leads to and enter the locked room. Either shoot the frozen eye switch so that the arrow goes through the torch, or cast Din's Fire while standing just below the switch. Now, head back to the room with the ladder and fall down the hole. The chest is in the middle of this room. Alternatively, you can spawn a scarecrow in the right outside room that you can longshot to."
                     },
                     "2 Pots in Green Poe Room": {
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 303, y: 146, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 30,
                         LongDescription: "Make your way to the falling ceiling room. Nagivate through it to the green poe room. The pots are by the exit door."
                     }

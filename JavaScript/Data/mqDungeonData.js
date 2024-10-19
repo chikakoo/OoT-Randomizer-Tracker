@@ -2389,11 +2389,9 @@ let MQDungeons = {
                 Exits: {
                     bossKeyRoom: {
                         Age: Age.ADULT,
+                        RequiredItems: [ItemSets.FIRE_ITEMS],
                         CustomRequirement: function(age) {
-                            let canUseDins = Settings.GlitchesToAllow.mqFireLavaRoomDoorWithDins && ItemData.canUse(age, DINS_FIRE);
-                            let canLightTorches = canUseDins || ItemData.canUse(age, Items.FIRE_ARROW)
-                            let canGetUp = Settings.GlitchesToAllow.fireSoTBlockJump || Items.HOOKSHOT.playerHas;
-                            return canLightTorches && canGetUp;
+                            return Settings.GlitchesToAllow.fireSoTBlockJump || Items.HOOKSHOT.playerHas;
                         }
                     },
                     risingBlockRoom: {
@@ -2459,7 +2457,7 @@ let MQDungeons = {
                         MapInfo: { x: 174, y: 85, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 14,
-                        LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to it, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
+                        LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now light the torch in the right side of the room with Din's or a fire arrow to spawn some hookshot pillars. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to it, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
                     },
                     "2 Pots in Boss Key Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
