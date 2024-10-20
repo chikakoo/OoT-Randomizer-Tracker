@@ -1746,6 +1746,16 @@ let MQDungeons = {
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.forestLedgeWithHovers;
                         }
+                    },
+                    fallingCeilingRoom: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.BOMBCHU],
+                        CustomRequirement: function(age) {
+                            // Climb the close edge of the railing, take tiny steps forward, and face barly toward
+                            // the ledge so that rolling doesn't make you fall off
+                            // Only works with a chu
+                            return Data.canMegaFlip(age);
+                        }
                     }
                 },
                 ItemLocations: {
