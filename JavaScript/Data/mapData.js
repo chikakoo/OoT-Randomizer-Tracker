@@ -2835,9 +2835,9 @@ let MapLocations = {
                                 return true; // Normal way in
                             }
 
-                            // Megasidehop trick
+                            // Megasidehop trick - TODO: learn how to do this with bombs
                             return Settings.GlitchesToAllow.megasidehopToZorasDomain &&
-                                ItemData.canUseAll(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]);
+                                ItemData.canUseAll(age, [ItemSets.SHIELDS, ItemSets.SWORDS, Items.BOMBCHU]);
                         }
                     },
                     "Lost Woods": {

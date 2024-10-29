@@ -421,7 +421,7 @@ let ItemTracker = {
 			keyObject.playerHas = keyObject.playerHas || false; // For boss keys
 			
 			smallKeyDiv.id = key;
-			smallKeyDiv.style.backgroundImage = 'url("Images/Small Key.png")';
+			smallKeyDiv.style.backgroundImage = `url("Images/${keyObject.name} Small Key.png")`;
 			smallKeyDiv.onclick = _this.onSmallKeyClicked.bind(_this, keyObject, smallKeyDiv);
 			smallKeyDiv.oncontextmenu = _this.onSmallKeyClicked.bind(_this, keyObject, smallKeyDiv);
 			smallKeyDiv.onmouseover = _this.onSmallKeyMouseOver.bind(_this, keyObject);
