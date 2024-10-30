@@ -37,6 +37,7 @@
 	<link rel="stylesheet" href="Styles/notesPageStyles.css">
 	<link rel="stylesheet" href="Styles/spawnsPageStyles.css">
 	<link rel="stylesheet" href="Styles/settingsPageStyles.css">
+	<link rel="stylesheet" href="Styles/itemTrackerStyles.css">
 </head>
 <body onload="onPageLoad()" oncontextmenu="return false">
 	<div id="buttonControls">
@@ -67,11 +68,21 @@
 					<div id="normalSongProgress"></div>
 					<div id="warpSongProgress"></div>
 					<div id="scarecrowsSongProgress"></div>
-					<div id="medallionProgress"></div>
-					<div id="smallKeyProgress"></div>
-					<div id="bossKeyProgress"></div>
-					<div id="silverRupeeProgress"></div>
 					<div id="ocarinaButtonProgress"></div>
+
+					<div id="medallionProgress" class="item-tracker-vertical"></div>
+
+					<div id="mainDungeonSmallKeyProgress" class="item-tracker-vertical item-tracker-small-keys"></div>
+					<div id="mainDungeonBossKeyProgress" class="item-tracker-vertical"></div>
+					<div id="mainDungeonSilverRupeeProgress" class="item-tracker-vertical item-tracker-silver-rupees"></div>
+
+					<div id="childDungeonSilverRupeeProgress" class="item-tracker-silver-rupees"></div>
+
+					<div id="chestGameAndWellSilverRupeeProgress" class="item-tracker-silver-rupees"></div>
+					<div id="chestGameAndWellSmallKeyProgress" class="item-tracker-small-keys"></div>
+
+					<div id="hideoutAndGtgSilverRupeeProgress" class="item-tracker-silver-rupees"></div>
+					<div id="hideoutAndGtgSmallKeyProgress" class="item-tracker-small-keys"></div>
 				</div>
 				<div id="mapDiv">
 					<div id="mapImageAndIcons" class="map-zoom" 

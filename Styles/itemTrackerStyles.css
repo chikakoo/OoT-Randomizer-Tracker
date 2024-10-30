@@ -1,0 +1,259 @@
+/* Item tracker overall layout */
+#itemTracker, #mapDiv {
+	border: 2px solid #292f38;
+}
+
+#itemTracker {
+	border-right: none;
+}
+
+#itemLabel {
+	display: inline-block;
+	color: gold;
+	width: 185px;
+	font-weight: bold;
+	font-size: 20px;
+	text-overflow: ellipsis;
+	line-height: 23px;
+	max-height: 40px;
+}
+
+#itemTracker > div {
+	display: flex;
+	flex-wrap: wrap;
+	position: absolute;
+}
+
+.item-tracker-vertical {
+	flex-direction: column;
+}
+
+.item-tracker-silver-rupees > .silver-rupee-container {
+	display: flex;
+	flex-direction: row;
+}
+
+#equipmentProgress {
+	width: 120px;
+	top: 175px;
+	left: 7px;
+}
+
+#itemProgress {
+	width: 180px;
+	top: 54px;
+	left: 8px;
+}
+
+#childTradeItemProgress {
+	width: 20px;
+	top: 145px;
+	left: 170px;
+}
+
+#adultTradeItemProgress {
+	width: 40px;
+	top: 145px;
+	left: 129px;
+}
+
+#normalSongProgress {
+	width: 150px;	
+	top: 11px;
+	left: 189px;
+}
+
+#warpSongProgress {
+	width: 150px;
+	top: 36px;
+	left: 189px;
+}
+
+#scarecrowsSongProgress {
+	width: 25px;
+	top: 24px;
+	left: 338px;
+}
+
+#medallionProgress {
+	width: 25px;
+	top: 70px;
+	left: 192px;
+}
+
+#mainDungeonSmallKeyProgress {
+	top: 70px;
+	left: 217px;
+}
+#chestGameAndWellSmallKeyProgress {
+	top: 233px;
+	left: 241px;
+}
+#hideoutAndGtgSmallKeyProgress {
+	top: 262px;
+	left: 241px;
+}
+
+#mainDungeonBossKeyProgress {
+	width: 25px;
+	top: 70px;
+	left: 242px;
+}
+
+#mainDungeonSilverRupeeProgress {
+	top: 121px;
+	left: 268px;
+}
+#childDungeonSilverRupeeProgress {
+	top: 248px;
+	left: 217px;
+}
+#chestGameAndWellSilverRupeeProgress {
+	top: 234px;
+	left: 293px;
+}
+#hideoutAndGtgSilverRupeeProgress {
+	top: 263px;
+	left: 293px;
+}
+
+#ocarinaButtonProgress {
+	width: 90px;
+	top: 71px;
+	left: 272px;
+}
+
+#ocarinaButtonProgress > .item {
+	position: relative;
+	width: 21px;
+}
+
+#ocarinaButtonProgress > .item:last-child {
+	width: 25px;
+}
+
+#normalSongProgress > .item, 
+#warpSongProgress > .item,
+#scarecrowsSongProgress > .item,
+#mainDungeonBossKeyProgress > .item,
+#medallionProgress > .item,
+.item-tracker-small-keys > .small-key {
+	height: 25px;
+	width: 25px;
+}
+.item-tracker-silver-rupees > .silver-rupee-container > .silver-rupee {
+	height: 25px;
+	width: 15px;
+	padding-right: 4px;
+}
+
+#medallionProgress div:nth-child(7) { /* Adds the padding between adult/child dungeons */
+    margin-top: 3px;
+}
+
+#childTradeItemProgress > .item,
+#adultTradeItemProgress > .item {
+	height: 20px;
+	width: 20px;
+}
+
+#childTradeItemProgress >.item.cosmetic-masks {
+	height: 14px;
+}
+
+/* Item tracker individual components */
+.item, .small-key, .silver-rupee {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.item {
+	height: 30px;
+	width: 30px;
+}
+
+.item.filled-bottle {
+	position: relative;
+	right: 2px;
+	width: 18px;
+}
+
+#normalSongProgress .item.cannot-play-song:not(.playerDoesNotHave),
+#warpSongProgress .item.cannot-play-song:not(.playerDoesNotHave),
+#scarecrowsSongProgress .item.cannot-play-song:not(.playerDoesNotHave) {
+	-webkit-filter: drop-shadow(1px 1px 0 red) drop-shadow(-1px -1px 0 red);
+	filter: drop-shadow(1px 1px 0 red)  drop-shadow(-1px -1px 0 red);
+	opacity: 0.9;
+}
+
+.item.playerDoesNotHave {
+	-webkit-filter: grayscale(100%);
+  	filter: grayscale(100%);
+	opacity: 0.6;
+}
+
+.item.playerDoesNotHave:hover {
+	-webkit-filter: grayscale(100%);
+  	filter: grayscale(100%);
+	opacity: 1;
+}
+
+/* Gold skulltula and triforce tracker */
+.countable-item {
+	user-select: none;
+	position: relative;
+	left: 14px;
+	top: 15px;
+	font-weight: bold;
+
+	height: 14px;
+	width: 50%;
+	text-align: center;
+	line-height: 14px;
+
+	color: white;
+	background-color: black;
+}
+
+.countable-item.has-max {
+	color: #ADFF2F;
+}
+
+/* Small key/rupee stuff */
+.small-key {
+	user-select: none;
+}
+
+.key-count, .rupee-count {
+	position: relative;
+	left: 17px;
+	top: 10px;
+	font-weight: bold;
+	width: 8px;
+	height: 8px;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.rupee-count {
+	width: 20px;
+	left: 0;
+	top: 4px;
+	text-align: center;
+}
+
+.no-keys {
+	color: LightGray;
+}
+
+.some-keys {
+	color: white;
+}
+
+.minimum-keys {
+	color: orange;
+}
+
+.all-keys {
+	color: #ADFF2F;
+}

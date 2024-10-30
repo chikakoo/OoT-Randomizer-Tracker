@@ -15,13 +15,45 @@ let ItemTracker = {
 		this._createUIFromItemObject("Songs", Songs, document.getElementById("normalSongProgress"), 1);
 		this._createUIFromItemObject("Songs", Songs, document.getElementById("warpSongProgress"), 2);
 		this._createUIFromItemObject("Songs", Songs, document.getElementById("scarecrowsSongProgress"), 3);
-		this._createUIFromItemObject("Medallions", Medallions, document.getElementById("medallionProgress"));
-
-		this._setUpSmallKeyUI();
-		this._createUIFromItemObject("Keys", Keys, document.getElementById("bossKeyProgress"));
-
-		this._setUpSilverRupeeUI();
 		this._createUIFromItemObject("OcarinaButtons", OcarinaButtons, document.getElementById("ocarinaButtonProgress"));
+		this._createUIFromItemObject("Medallions", Medallions, document.getElementById("medallionProgress"));
+		this._createUIFromItemObject("Keys", Keys, document.getElementById("mainDungeonBossKeyProgress"));
+
+		this._setUpMainDungeonUI();
+		this._setUpChildDungeonUI();
+		this._setUpChestGameAndWellUI();
+		this._setUpHideoutAndGtgProgress();
+	},
+
+	_setUpMainDungeonUI: function() {
+		var smallKeyDiv = document.getElementById("mainDungeonSmallKeyProgress");
+		var smallKeyKeys = Object.keys(Keys).slice(0, 6) // The first 6 dungeons with keys
+		this._setUpSmallKeyUI(smallKeyKeys, smallKeyDiv);
+
+		var silverRupeeDiv = document.getElementById("mainDungeonSilverRupeeProgress");
+		var silverRupeeKeys = Object.keys(SilverRupees).slice(0, 4); // The first 4 dungeons with silver rupees
+		this._setUpSilverRupeeUI(silverRupeeKeys, silverRupeeDiv);
+	},
+
+	_setUpChildDungeonUI: function() {
+		var silverRupeeDiv = document.getElementById("childDungeonSilverRupeeProgress");
+		this._setUpSilverRupeeUI(["DODONGOS_CAVERN"], silverRupeeDiv);
+	},
+
+	_setUpChestGameAndWellUI: function() {
+		var smallKeyDiv = document.getElementById("chestGameAndWellSmallKeyProgress");
+		this._setUpSmallKeyUI(["TREASURE_CHEST_MINIGAME", "BOTTOM_OF_THE_WELL"], smallKeyDiv);
+
+		var silverRupeeDiv = document.getElementById("chestGameAndWellSilverRupeeProgress");
+		this._setUpSilverRupeeUI(["BOTTOM_OF_THE_WELL"], silverRupeeDiv);
+	},
+
+	_setUpHideoutAndGtgProgress: function() {
+		var smallKeyDiv = document.getElementById("hideoutAndGtgSmallKeyProgress");
+		this._setUpSmallKeyUI(["THIEVES_HIDEOUT", "GERUDO_TRAINING_GROUNDS"], smallKeyDiv);
+
+		var silverRupeeDiv = document.getElementById("hideoutAndGtgSilverRupeeProgress");
+		this._setUpSilverRupeeUI(["TRAINING_GROUNDS"], silverRupeeDiv);
 	},
 
 	/**
@@ -402,18 +434,12 @@ let ItemTracker = {
 
 	/**
 	 * Sets up the UI for small keys
+	 * @param silverRupeeKeys - the small key dungeons to create divs for
+	 * @param smallKeyContainer - the container to place all small key objects into
 	 */
-	_setUpSmallKeyUI: function() {
-		let smallKeyProgressDiv = document.getElementById("smallKeyProgress");
+	_setUpSmallKeyUI: function(smallKeyKeys, smallKeyContainer) {
 		let _this = this;
-		Object.keys(Keys).forEach(function(key) {
-			// TODO: potentially something better than this hacky way of positioning this!
-			if (key === "TREASURE_CHEST_MINIGAME") {
-				let fillerDiv = dce("div");
-				fillerDiv.style = "height: 150px;";
-				smallKeyProgressDiv.appendChild(fillerDiv);
-			}
-
+		smallKeyKeys.forEach(function(key) {
 			let smallKeyDiv = dce("div", "small-key no-keys");
 			let keyObject = Keys[key];
 
@@ -428,7 +454,7 @@ let ItemTracker = {
 			smallKeyDiv.onmouseout = _this.onItemMouseOut;
 			
 			_this._createCountDiv(smallKeyDiv, keyObject.keyCount ,"key-count");
-			smallKeyProgressDiv.appendChild(smallKeyDiv);
+			smallKeyContainer.appendChild(smallKeyDiv);
 			_this._updateSmallKeyCss(keyObject, smallKeyDiv);
 		});
 	},
@@ -537,11 +563,12 @@ let ItemTracker = {
 
 	/**
 	 * Sets up the UI for silver rupees
+	 * @param silverRupeeKeys - the silver rupee dungeons to create divs for
+	 * @param silverRupeeDiv - the container to place all silver rupee objects into
 	 */
-	_setUpSilverRupeeUI: function() {
-		let silverRupeeProgressDiv = document.getElementById("silverRupeeProgress");
+	_setUpSilverRupeeUI: function(silverRupeeKeys, silverRupeeContainer) {
 		let _this = this;
-		Object.keys(SilverRupees).forEach(function(rupeeLocation) {
+		silverRupeeKeys.forEach(function(rupeeLocation) {
 			let silverRupeeDivContainer = dce("div", "silver-rupee-container");
 			silverRupeeDivContainer.id = `silverRupeeContainer-${rupeeLocation}`;
 			let rupeeObject = SilverRupees[rupeeLocation];
@@ -550,12 +577,13 @@ let ItemTracker = {
 			let rupeeDataObject = isMasterQuest ? rupeeObject.mqRupeeData : rupeeObject.standardRupeeData;
 
 			let rupeeDataIndices = Object.keys(rupeeDataObject);
-			if (rupeeDataIndices.length < 1) {
-				// Create a div to take up space - we don't want to offset all the rupees
-				let silverRupeeFillerDiv = dce("div", "silver-rupee");
-				silverRupeeFillerDiv.id = `silverRupee-${rupeeLocation}-filler`;
-				silverRupeeDivContainer.appendChild(silverRupeeFillerDiv);
-			}
+            if (rupeeDataIndices.length < 1) {
+                // In the case where a a dungeon does not have any silver rupees,
+				// create a div to take up space so they aren't all shifted upwards
+                let silverRupeeFillerDiv = dce("div", "silver-rupee");
+                silverRupeeFillerDiv.id = `silverRupee-${rupeeLocation}-filler`;
+                silverRupeeDivContainer.appendChild(silverRupeeFillerDiv);
+            }
 
 			rupeeDataIndices.forEach(function(rupeeDataIndex) {
 				let rupeeData = rupeeDataObject[rupeeDataIndex];
@@ -575,7 +603,7 @@ let ItemTracker = {
 				_this._updateSilverRupeeCss(rupeeData.color, rupeeData.total, silverRupeeCount, silverRupeeDiv);
 			});
 
-			silverRupeeProgressDiv.appendChild(silverRupeeDivContainer);
+			silverRupeeContainer.appendChild(silverRupeeDivContainer);
 		});
 	},
 
