@@ -337,7 +337,7 @@ let ItemTracker = {
 	 */
 	_getSongNotesForDisplay: function(songNotes) {
 		// Set to this value for height consistency of songs with and without the A button
-		let displayString = "<span style='display:inline-block; height:24px; width:0px;'></span>"; 
+		let displayString = ""; 
 		ItemData.convertSongNotesString(songNotes).forEach(note => {
 			let dimensions = "";
 			if (note === OcarinaButtons.A_BUTTON) {
@@ -350,7 +350,7 @@ let ItemTracker = {
 			displayString += `<span class="${cssClass}" style="display:inline-block; ${dimensions} background-image:url('./Images/Controller Buttons/${note.name}.png')"></span>`;
 		});
 
-		return displayString;
+		return `<span style='display:inline-block; height:24px; width:185px;'>${displayString}</span>`;
 	},
 	
 	/**
