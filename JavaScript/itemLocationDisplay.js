@@ -584,6 +584,8 @@ let ItemLocationDisplay = {
 		this._updateItemGroupDivText(itemGroupDiv, hiddenLocations);
 		this._updateFirstAndLastLocations(itemGroupDiv);
 
+		MapUI.refreshIcons();
+
 		if (event) {
 			event.stopPropagation();
 		}

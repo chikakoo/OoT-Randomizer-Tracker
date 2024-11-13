@@ -127,6 +127,12 @@ let MapUI = {
 
 		this._currentItemLocations.forEach(function(itemLocation) {
 			if (itemLocation.disabled) { return; }
+
+			// Skip this icon if it's being hidden in the UI
+			let itemLocationDiv = document.getElementById(itemLocation.Name.trim());
+			if (containsCssClass(itemLocationDiv, "nodisp")) {
+				return;
+			}
 			
 			// Skip this icon if it's not for the current floor
 			let floorIsUndefinedOrNull = floor === undefined || floor === null || floor === "";
