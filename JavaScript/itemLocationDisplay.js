@@ -279,10 +279,12 @@ let ItemLocationDisplay = {
 			}
 
 			// Hide item locations that are done/not the shown age and are hideable
-			if (!_this._isItemLocationHideable(itemLocation)) {
+			// We will never hide OW entrances
+			if (Data.usesOwExits(itemLocation, true)) {
 				addCssClass(itemLocationDiv, "do-not-hide");
 			} else {
-				let hideLocation = itemLocation.playerHas;
+				// Do not hide locations with notes so they can be seen (covers shops)
+				let hideLocation = itemLocation.playerHas && !itemLocation.notes;
 				if (!hideLocation) {
 					let ageToHide = LocationSidebar.getAgesToHide();
 					if (ageToHide) {  // If this is null, we aren't hiding by age
@@ -394,17 +396,6 @@ let ItemLocationDisplay = {
 
 		// Put the top/bottom borders on the item locations
 		this._updateFirstAndLastLocations(itemGroupDiv);
-	},
-
-	/**
-	 * Whether we EVER hide the item location
-	 * - we NEVER hide shops
-	 * - we NEVER hide OW exits (includes actual OW and interior OWs)
-	 * @param itemLocation - the item location
-	 */
-	_isItemLocationHideable: function(itemLocation) {
-		return !Data.usesOwExits(itemLocation, true) && 
-			!Data.isItemLocationAShop(itemLocation);
 	},
 
 	/**
