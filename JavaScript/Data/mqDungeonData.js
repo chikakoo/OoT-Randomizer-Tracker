@@ -4692,8 +4692,15 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Boat Room Chasm Areas", imageName: "Fairy Bow" },
                 Exits: {
                     chasmPlatform: {
-                        RequiredSongs: [Songs.SONG_OF_TIME],
-                        RequiredItems: [Items.FAIRY_BOW, UpgradedItems.LONGSHOT]
+                        RequiredItems: [Items.HOOKSHOT, Items.FAIRY_BOW],
+                        CustomRequirement: function(age) {
+                            if (Settings.GlitchesToAllow.mqShadowChasmPlatformWithHookshot &&
+                                Data.canShieldTurn(age)
+                            ) {
+                                return true;
+                            }
+                            return ItemData.canUseAll(age, [Songs.SONG_OF_TIME, UpgradedItems.LONGSHOT])
+                        }
                     },
                     bossRoomAntechamber: {}
                 },

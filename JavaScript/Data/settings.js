@@ -291,6 +291,7 @@ let Settings = {
 		shadowUpperBoatRoomJump: false,
 		shadowPitRoomSilverRupeeSkip: false,
 		shadowChuBombFlowers: false,
+		mqShadowChasmPlatformWithHookshot: false,
 		
 		spiritBlockSkipWithHovers: false,
 		spiritBlockSkipWithBombPush: false,
