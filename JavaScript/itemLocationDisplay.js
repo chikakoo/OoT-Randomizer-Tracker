@@ -480,7 +480,7 @@ let ItemLocationDisplay = {
 			if (itemLocation.notes && itemLocation.notes.length > 0) {
 				addCssClass(expandIconDiv, "item-location-has-notes");
 			}
-			
+
 			SocketClient.itemLocationUpdated(itemLocation);
 			refreshAll();
 		}
@@ -572,7 +572,7 @@ let ItemLocationDisplay = {
 		for (let i = 1; i < children.length; i++) { // Ignore the first element - they aren't item locations
 			let childElement = children[i];
 
-			// OW entrances and shops are not hidden, as the info they provide is useful
+			// OW entrances are not hidden, as the info they provide is useful
 			if (!containsCssClass(childElement, "do-not-hide")) {
 				addOrRemoveCssClass(childElement, "nodisp", hideItems);
 				if (hideItems) {

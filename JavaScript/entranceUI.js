@@ -92,7 +92,6 @@ let EntranceUI = {
 		itemLocation[groupProperty] = {
 			name: groupName,
 			isShop: group.isShop,
-			skipItemGroupCheck: group.skipItemGroupCheck,
 			icon: group.icon,
 			isTempleOfTime: group.isTempleOfTime,
 			hasGossipStone: group.hasGossipStone,

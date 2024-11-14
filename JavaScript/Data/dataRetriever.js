@@ -825,16 +825,6 @@ Data = {
      */
     _canDoItemGroup: function(age, itemLocation) {
 		if (itemLocation && itemLocation.OverrideItemGroupCondition) { return true; }
-
-        if (this.isItemLocationAShop(itemLocation)) {
-            let group = this.getEntranceGroup(itemLocation);
-
-            //TODO: come up with a cleaner way to do this...
-            let skipItemGroupCheck = group && group.skipItemGroupCheck;
-            if (!skipItemGroupCheck) {
-                return this.canBuyFromShop(age, itemLocation);
-            }
-		}
 		
         let itemGroup = itemLocation.OverrideItemGroup
             ? itemLocation.OverrideItemGroup

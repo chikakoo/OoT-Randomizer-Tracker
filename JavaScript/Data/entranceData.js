@@ -142,7 +142,6 @@ InteriorGroups = {
 			return !Settings.RandomizerSettings.shuffleWonderitems;
 		},
 		isShop: true,
-		skipItemGroupCheck: true,
 		buttons: {
 			"Shop": {
 				itemGroup: ItemGroups.SHOP,
