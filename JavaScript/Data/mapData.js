@@ -2864,7 +2864,6 @@ let MapLocations = {
                     }
                 }
             },
-
             upstream: {
                 DuplicateWarpSongPriority: 1,
                 Exits: {
@@ -3061,10 +3060,12 @@ let MapLocations = {
 	},
 
 	"Zora's Domain": {
+        UsesDisplayGroups: true,
 		Abbreviation: "DOMN",
 		MapGroup: MapGroups.WATER,
 		Regions: {
             main: {
+                DisplayGroup: { groupName: "Bottom Area", imageName: "3 Pots" },
                 DuplicateWarpSongPriority: 1,
                 Exits: {
                     behindKing: {
@@ -3106,20 +3107,56 @@ let MapLocations = {
                         OwExit: OwExits["Zora's Domain"]["Song of Storms Grotto"]
                     }
                 },
-
                 ItemLocations: {
-                    "Torch Run": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 154, y: 132 },
-                        Age: Age.CHILD,
-                        LongDescription: "Start at King Zora. Light a Deku Stick on one of the torches and make your way down the stairs. Light the next torch. Follow the left wall, lighting the torches as you go. Once you light the ones in the waterfall, a chest will spawn.",
-                        RequiredItems: [Items.DEKU_STICK]
+                    // Bottom Area
+                    "2 Pots in Front of Shop": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 244, y: 260 },
+                        Age: Age.EITHER,
+                        LongDescription: "These pots are right in front of the shop entrance."
                     },
-                    "Diving Minigame": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 158, y: 75 },
+                    "3 Pots Right of Shop": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 201, y: 260 },
+                        Age: Age.EITHER,
+                        LongDescription: "These pots are just to the right of the shop entrance."
+                    },
+
+                    // Top Area
+                    "Move King Zora": {
+                        DisplayGroup: { groupName: "By King Zora", imageName: "Ruto's Letter" },
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapInfo: { x: 232, y: 38 },
+                        MapImageName: "Ruto's Letter",
+                        RequiredItems: [Items.RUTOS_LETTER],
                         Age: Age.CHILD,
-                        LongDescription: "At the top of the Domain, pay 20 rupees to play the diving minigame. Talk to the Zora after you win to get your prize."
+                        LongDescription: "Show Ruto's letter to the king."
+                    },
+                    "Gossip Stone by King": {
+                        ItemGroup: ItemGroups.GOSSIP_STONE,
+                        MapInfo: { x: 239, y: 63 },
+                        Age: Age.EITHER,
+                        LongDescription: "This stone is in the water in front of the king."
+                    },
+                    "Left Beehive by King": {
+                        ItemGroup: ItemGroups.BEEHIVE,
+                        IsUpperHive: true,
+                        MapInfo: { x: 215, y: 85 },
+                        Age: Age.CHILD,
+                        LongDescription: "Look on the left side of the room on the ceiling for this beehive. If using a chu, go to the wall by the diving minigame tunnel and drop it on the black after the 4th red flash."
+                    },
+                    "Right Beehive by King": {
+                        ItemGroup: ItemGroups.BEEHIVE,
+                        IsUpperHive: true,
+                        MapInfo: { x: 262, y: 74 },
+                        Age: Age.CHILD,
+                        LongDescription: "Look on the right side of the room on the ceiling for this beehive. If using a chu, go to the wall slightly up the ramp that's lined up with the hive - then go a little bit more left (not too precise). Drop it on the black after the 4th red flash."
                     },
                     "Thaw King Zora": {
                         ItemGroup: ItemGroups.GIFT,
@@ -3159,63 +3196,33 @@ let MapLocations = {
                         LongDescription: "At night, make your way up to where the Diving Game start was. On the side of the wall by the waterfall, you'll find a skulltula. If you have no hookshot, you can kill it with a bow or Din's fire and get it with an angled jump. If you fall without getting it, it will respawn.",
                         RequiredChoiceOfItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Items.FAIRY_BOW, Items.DINS_FIRE]
                     },
-                    "Gossip Stone by King": {
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        MapInfo: { x: 239, y: 63 },
-                        Age: Age.EITHER,
-                        LongDescription: "This stone is in the water in front of the king."
-                    },
-                    "Move King Zora": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        MapInfo: { x: 232, y: 38 },
-                        MapImageName: "Ruto's Letter",
-                        RequiredItems: [Items.RUTOS_LETTER],
+
+                    // Top to Bottom Errands
+                    "Torch Run": {
+                        DisplayGroup: { groupName: "Top to Bottom Errands", imageName: "Scale Silver Scale" },
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 154, y: 132 },
                         Age: Age.CHILD,
-                        LongDescription: "Show Ruto's letter to the king."
+                        LongDescription: "Start at King Zora. Light a Deku Stick on one of the torches and make your way down the stairs. Light the next torch. Follow the left wall, lighting the torches as you go. Once you light the ones in the waterfall, a chest will spawn.",
+                        RequiredItems: [Items.DEKU_STICK]
                     },
-                    "2 Pots in Front of Shop": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 244, y: 260 },
-                        Age: Age.EITHER,
-                        LongDescription: "These pots are right in front of the shop entrance."
-                    },
-                    "3 Pots Right of Shop": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 201, y: 260 },
-                        Age: Age.EITHER,
-                        LongDescription: "These pots are just to the right of the shop entrance."
-                    },
-                    "Left Beehive by King": {
-                        ItemGroup: ItemGroups.BEEHIVE,
-                        IsUpperHive: true,
-                        MapInfo: { x: 215, y: 85 },
+                    "Diving Minigame": {
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 158, y: 75 },
                         Age: Age.CHILD,
-                        LongDescription: "Look on the left side of the room on the ceiling for this beehive. If using a chu, go to the wall by the diving minigame tunnel and drop it on the black after the 4th red flash."
-                    },
-                    "Right Beehive by King": {
-                        ItemGroup: ItemGroups.BEEHIVE,
-                        IsUpperHive: true,
-                        MapInfo: { x: 262, y: 74 },
-                        Age: Age.CHILD,
-                        LongDescription: "Look on the right side of the room on the ceiling for this beehive. If using a chu, go to the wall slightly up the ramp that's lined up with the hive - then go a little bit more left (not too precise). Drop it on the black after the 4th red flash."
+                        LongDescription: "At the top of the Domain, pay 20 rupees to play the diving minigame. Talk to the Zora after you win to get your prize."
                     }
                 }
             },
 
             behindKing: {
+                DisplayGroup: { groupName: "By King Zora", imageName: "Ruto's Letter" },
                 Exits: {
                     main: {
                         CustomRequirement: function(age) {
                             return Data.itemLocationObtained("Zora's Domain", "main", "Move King Zora");
                         }
                     },
-
                     "Zora's Fountain": {
                         OwExit: OwExits["Zora's Domain"]["Zora's Fountain"]
                     }
@@ -3234,10 +3241,12 @@ let MapLocations = {
 	},
 
 	"Zora's Fountain": {
+        UsesDisplayGroups: true,
 		Abbreviation: "FNTN",
 		MapGroup: MapGroups.WATER,
 		Regions: {
             main: {
+                DisplayGroup: { groupName: "Land Area", imageName: "Zora's Sapphire" },
                 Exits: {
                     hiddenTunnel: {
                         Age: Age.ADULT,
@@ -3247,24 +3256,66 @@ let MapLocations = {
                                 (Data.canWeirdShot(age) && ItemData.canUse(age, UpgradedItems.LONGSHOT));
                         }
                     },
+
+                    // Land Area
                     "Zora's Domain": {
                         OwExit: OwExits["Zora's Fountain"]["Zora's Domain"]
                     },
                     "Jabu Jabu's Belly": {
                         OwExit: OwExits["Zora's Fountain"]["Jabu Jabu's Belly"]
                     },
-                    "Ice Cavern": {
-                        OwExit: OwExits["Zora's Fountain"]["Ice Cavern"]
-                    },
-
-                    // Interiors & Grottos
                     "Great Fairy Fountain": {
                         OwExit: OwExits["Zora's Fountain"]["Great Fairy Fountain"]
+                    },
+
+                    // Deep Water
+                    "Ice Cavern": {
+                        OwExit: OwExits["Zora's Fountain"]["Ice Cavern"]
                     }
                 },
 
                 ItemLocations: {
+                    // Land Area
+                    "Gossip Stone Left of Jabu Platform": {
+                        ItemGroup: ItemGroups.GOSSIP_STONE,
+                        MapInfo: { x: 122, y: 51 },
+                        Age: Age.EITHER,
+                        LongDescription: "This stone is to the left of the Jabu Jabu platform."
+                    },
+                    "4 Pots by Jabu": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Pots",
+                        MapInfo: { x: 125, y: 98 },
+                        Age: Age.CHILD,
+                        LongDescription: "As Child, these pots are on the corners of the platform by the entrance to Jabu Jabu's Belly."
+                    },
+                    "Skulltula on Wall": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 81, y: 177 },
+                        Age: Age.CHILD,
+                        LongDescription: "At night, you'll find this skulltula on the wall by the giant log.",
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                    },
+                    "Skulltula in Tree": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        MapInfo: { x: 257, y: 234 },
+                        Age: Age.CHILD,
+                        LongDescription: "Go to the southeast corner of the map. Roll into the tree to find this skulltula. Use a pot near Jabu to kill it if you don't have a weapon.",
+                        OverrideItemGroupCondition: true,
+                    },
+                    "Gossip Stone by Fairy Fountain": {
+                        ItemGroup: ItemGroups.GOSSIP_STONE,
+                        MapInfo: { x: 283, y: 232 },
+                        Age: Age.EITHER,
+                        LongDescription: "This stone is on the land near the fairy fountain entrance."
+                    },
+
+                    // Deep Water
                     "Heart Piece on Iceberg": {
+                        DisplayGroup: { groupName: "Deep Water", imageName: "Iron Boots" },
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 257, y: 111 },
                         Age: Age.ADULT,
@@ -3276,42 +3327,6 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Use your iron boots to sink to the middle of the lake. Note that walking down is faster than sinking down! Same applies for going back up.",
                         RequiredItems: [Equipment.IRON_BOOTS]
-                    },
-                    "Skulltula in Tree": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 257, y: 234 },
-                        Age: Age.CHILD,
-                        LongDescription: "Go to the southeast corner of the map. Roll into the tree to find this skulltula. Use a pot near Jabu to kill it if you don't have a weapon.",
-                        OverrideItemGroupCondition: true,
-                    },
-                    "Skulltula on Wall": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 81, y: 177 },
-                        Age: Age.CHILD,
-                        LongDescription: "At night, you'll find this skulltula on the wall by the giant log.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
-                    },
-                    "Gossip Stone Left of Jabu Platform": {
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        MapInfo: { x: 122, y: 51 },
-                        Age: Age.EITHER,
-                        LongDescription: "This stone is to the left of the Jabu Jabu platform."
-                    },
-                    "Gossip Stone by Fairy Fountain": {
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        MapInfo: { x: 283, y: 232 },
-                        Age: Age.EITHER,
-                        LongDescription: "This stone is on the land near the fairy fountain entrance."
-                    },
-                    "4 Pots by Jabu": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "4 Pots",
-                        MapInfo: { x: 125, y: 98 },
-                        Age: Age.CHILD,
-                        LongDescription: "As Child, these pots are on the corners of the platform by the entrance to Jabu Jabu's Belly."
                     },
                     "18 Underwater Green Rupees": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3326,17 +3341,10 @@ let MapLocations = {
                 }
             },
             hiddenTunnel: {
+                DisplayGroup: { groupName: "Hidden Tunnel", imageName: "Strength Silver Gauntlets" },
                 ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {
-                    "Skulltula in Hidden Tunnel": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 312, y: 154 },
-                        Age: Age.ADULT,
-                        LongDescription: "At night, go to the southeast corner of the map. Pick up the silver rock and go down the path. Beware of invisible giant skulltulas! You'll find the skulltula you want after you climb the wall.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
-                    },
                     "3 Pots in Hidden Tunnel": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
@@ -3345,6 +3353,14 @@ let MapLocations = {
                         MapInfo: { x: 266, y: 260 },
                         Age: Age.ADULT,
                         LongDescription: "Go to the southeast corner of the map. Pick up the silver rock and drop down. You should now be next to the pots.",
+                    },
+                    "Skulltula in Hidden Tunnel": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 312, y: 154 },
+                        Age: Age.ADULT,
+                        LongDescription: "At night, go to the southeast corner of the map. Pick up the silver rock and go down the path. Beware of invisible giant skulltulas! You'll find the skulltula you want after you climb the wall.",
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             }

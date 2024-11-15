@@ -1595,6 +1595,7 @@ let OwExits = {
     },
 
     "Zora's Fountain": {
+        // Land Area
         "Zora's Domain": {
             ExitRegion: "main",
             Map: "Zora's Domain",
@@ -1627,18 +1628,6 @@ let OwExits = {
                 return Data.hasBottle(); // Note that this doesn't actually check whether you can get a fish!
             }
         },
-        "Ice Cavern": {
-            ExitRegion: "main",
-            Map: "Ice Cavern",
-            Region: "main",
-            ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: 185, y: 19 },
-            Age: Age.ADULT,
-            LongDescription: "This is the entrance to the Ice Cavern.",
-            IsDungeonEntrance: true
-        },
-
-        // Interiors
         "Great Fairy Fountain": {
             ExitRegion: "main",
             IsInterior: true,
@@ -1649,6 +1638,19 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "Go to the southeast corner of the map. Bomb the wall by the rocks to reveal this entrance.",
             RequiredItems: [ItemSets.EXPLOSIVES]
+        },
+
+        // Deep Water
+        "Ice Cavern": {
+            DisplayGroup: { groupName: "Deep Water", imageName: "Iron Boots" },
+            ExitRegion: "main",
+            Map: "Ice Cavern",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: 185, y: 19 },
+            Age: Age.ADULT,
+            LongDescription: "This is the entrance to the Ice Cavern.",
+            IsDungeonEntrance: true
         }
     },
 
