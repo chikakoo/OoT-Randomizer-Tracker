@@ -558,7 +558,11 @@ Data = {
 	_canDoOldShadowEarly: function(age) {
 		return age === Age.ADULT &&
 			Settings.GlitchesToAllow.oldShadowEarly && 
-            (this.canWeirdShot(age) || ItemData.canUse(age, UpgradedItems.LONGSHOT) || this.itemLocationObtained("Graveyard", "main", "*Plant Bean by Dampe's Grave")) &&
+            (
+                this.canWeirdShot(age) || 
+                ItemData.canUse(age, UpgradedItems.LONGSHOT) || 
+                this.isBeanPlanted("Graveyard", "main", "Soft Soil")
+            ) &&
             ItemData.canUseAll(age, [ItemSets.EXPLOSIVES, ItemSets.SHIELDS]);
     },
 
@@ -621,18 +625,25 @@ Data = {
      * Returns whether the given item location at the given map and region was obtained 
      */
     itemLocationObtained: function(mapName, regionName, itemLocationName) {
-        let map = MapLocations[mapName];
-        if (!map) { 
+        let itemLocation = this.getItemLocation(mapName, regionName, itemLocationName);
+        if (!itemLocation) {
             return false;
-        }
-
-        let itemLocation = map.Regions[regionName].ItemLocations[itemLocationName];
-        if (Settings.RandomizerSettings.autoPlantBeans && itemLocation.IsBean) {
-            return true;
         }
 
 		return itemLocation.playerHas;
 	},
+
+    /**
+     * Gets the item location from the given map/region/name
+     * @param {string} mapName - the map the item location is part of
+     * @param {string} regionName - the region the item location is in
+     * @param {string} itemLocationName - the name of the item location
+     * @returne The associated item location - or null if not found
+     */
+    getItemLocation: function(mapName, regionName, itemLocationName) {
+        let map = MapLocations[mapName];
+        return map?.Regions?.[regionName]?.ItemLocations?.[itemLocationName];
+    },
 
     /**
      * Returns whether you can get the given item at the given age - uses the current calculation
@@ -919,6 +930,24 @@ Data = {
 			return age === Age.CHILD && Items.MAGIC_BEAN.playerHas;
 		}
 		return true;
+    },
+
+    /**
+     * Checks the item location to see if a bean was planted there
+     * @param {string} mapName - the map the item location is part of
+     * @param {string} regionName - the region the item location is in
+     * @param {string} itemLocationName - the name of the item location
+     */
+    isBeanPlanted: function(mapName, regionName, itemLocationName) {
+        let itemLocation = this.getItemLocation(mapName, regionName, itemLocationName);
+
+        let magicBeanLocation = itemLocation?.DefaultEntranceGroup?.buttons?.["Magic Bean"];
+        if (!magicBeanLocation) {
+            console.log(`WARNING: Magic bean item structure incorrect at ${mapName} - ${regionName} - ${itemLocation?.Name}`);
+            return false;
+        }
+
+        return Settings.RandomizerSettings.autoPlantBeans || magicBeanLocation.completed;
     },
     
     /**

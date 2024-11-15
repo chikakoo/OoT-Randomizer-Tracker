@@ -1512,6 +1512,58 @@ GrottoGroups = {
   * Mostly for pot/crate shuffle for areas with a ton of checks
   */
  ItemLocationGroups = {
+	"Soft Soil": {
+		icon: "Bugs",
+		tooltip: "Any of the soft soil patches with a gold skulltula inside.",
+		buttons: {
+			"Skulltula": {
+				itemGroup: ItemGroups.SKULLTULA,
+				description: "Drop bugs on the soil patch to spawn the skulltula.",
+				canGet: function(age) {
+					// Note that we don't check for bugs specifically, just an empty bottle
+					// - This might be something we want to revisit
+					return Data.hasBottle() && ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
+				},
+				isChildOnly: function() { return true; }
+			},
+			"Magic Bean": {
+				description: "Plant a magic bean here as a child to grow a plant to travel with as an adult.",
+				canGet: function(age) {
+					return ItemData.canUse(age, Items.MAGIC_BEAN);
+				},
+				isChildOnly: function() { return true; },
+				shouldNotDisplay: function() {
+					return Settings.RandomizerSettings.autoPlantBeans;
+				}
+			}
+		}
+	},
+	"Soft Soil Skulltula Always Killable": {
+		icon: "Bugs",
+		tooltip: "Any of the soft soil patches with a gold skulltula inside.",
+		buttons: {
+			"Skulltula": {
+				itemGroup: ItemGroups.SKULLTULA,
+				description: "Drop bugs on the soil patch to spawn the skulltula.",
+				canGet: function(age) {
+					// Note that we don't check for bugs specifically, just an empty bottle
+					// - This might be something we want to revisit
+					return Data.hasBottle();
+				},
+				isChildOnly: function() { return true; }
+			},
+			"Magic Bean": {
+				description: "Plant a magic bean here as a child to grow a plant to travel with as an adult.",
+				canGet: function(age) {
+					return ItemData.canUse(age, Items.MAGIC_BEAN);
+				},
+				isChildOnly: function() { return true; },
+				shouldNotDisplay: function() {
+					return Settings.RandomizerSettings.autoPlantBeans;
+				}
+			}
+		}
+	},
 	"Spinning Pot": {
 		tooltip: "The spinning pot in Goron City",
 		buttons: {

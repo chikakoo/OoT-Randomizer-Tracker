@@ -44,7 +44,6 @@ let MapLocations = {
                         OwExit: OwExits["Kokiri Forest"]["Song of Storms Grotto by Lost Woods"]
                     }
                 },
-
                 ItemLocations: {
                     "Kokiri Sword": {
                         ItemGroup: ItemGroups.CHEST,
@@ -52,12 +51,14 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "This is the prize at the end of the boulder maze, though the Hole of Z."
                     },
-                    "Skulltula in Soil": {
-                        ItemGroup: ItemGroups.SKULLTULA,
+                    "Soft Soil": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.NON_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Soft Soil",
                         MapInfo: { x: 284, y: 139 },
                         Age: Age.CHILD,
-                        LongDescription: "Plant bugs in the soil near the Kokiri Shop.",
-                        NeedsBottle: true
+                        LongDescription: "The soft soil patch near the Kokiri Shop. Used to get to the rupees above."
                     },
                     "Skulltula on Know-it-all House": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -76,13 +77,6 @@ let MapLocations = {
                             if (ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS)) { return true; }
                             return Settings.GlitchesToAllow.houseOfTwinsSkullWithHovers && Equipment.HOVER_BOOTS.playerHas;
                         }
-                    },
-                    "*Plant Bean by Kokiri Shop": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        IsBean: true,
-                        MapInfo: { x: 284, y: 139 },
-                        Age: Age.CHILD,
-                        LongDescription: "This is the bean spot by the Kokiri Shop. Used to get the rupees above it."
                     },
                     "Move Mido": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -204,12 +198,11 @@ let MapLocations = {
                         CustomRequirement: function(age) {
                             return ItemData.canUse(age, Items.BOOMERANG) ||
                                 Equipment.HOVER_BOOTS.playerHas || 
-                                Data.itemLocationObtained("Kokiri Forest", "main", "*Plant Bean by Kokiri Shop");
+                                Data.isBeanPlanted("Kokiri Forest", "main", "Soft Soil");
                         }
                     }
                 }
             },
-
             afterMido: {
                 Exits: {
                     main: {},
@@ -217,7 +210,6 @@ let MapLocations = {
                         OwExit: OwExits["Kokiri Forest"]["Deku Tree"]
                     }
                 }, 
-
                 ItemLocations: {
                     "Gossip Stone Left of Deku Tree": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -291,19 +283,14 @@ let MapLocations = {
                         LongDescription: "Fado is the girl by the strump where the skill kid is as Child. Show her the Odd Potion to get an item.",
                         RequiredItems: [AdultTradeItems.ODD_POTION]
                     },
-                    "*Plant Bean by Bridge": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        IsBean: true,
+                    "Soft Soil by Bridge": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.NON_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Soft Soil",
                         MapInfo: { x: 84, y: 222 },
                         Age: Age.CHILD,
-                        LongDescription: "This is the bean spot by the bridge connecting Kokiri Forest and Hyrule Field. It can be used to get on the bridge."
-                    },
-                    "Skulltula in Soil by Bridge": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 84, y: 222 },
-                        Age: Age.CHILD,
-                        LongDescription: "From the Kokiri Forest entrance, go left, and then left. Plant bugs in the soil in this room.",
-                        NeedsBottle: true
+                        LongDescription: "From the Kokiri Forest Entrance, go left, then left again to find this soil patch. Used to get to the bridge."
                     },
                     "Scrub by Bridge": {
                         ItemGroup: ItemGroups.SCRUB,
@@ -434,21 +421,14 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    "Skulltula in Soil by Forest Stage": {
-                        ItemGroup: ItemGroups.SKULLTULA,
+                    "Soft Soil by Forest Stage": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.NON_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Soft Soil",
                         MapInfo: { x: 187, y: 66 },
-                        Order: 1,
                         Age: Age.CHILD,
-                        LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. Plant bugs in the soil in this room.",
-                        NeedsBottle: true
-                    },
-                    "*Plant Bean by Forest Stage": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        IsBean: true,
-                        MapInfo: { x: 187, y: 66 },
-                        Order: 2,
-                        Age: Age.CHILD,
-                        LongDescription: "This is the bean spot near the entrance to the Forest Stage. It's used to get a skulltula above as an adult."
+                        LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again to find this soil patch. Used to get to the skulltula above at night."
                     },
                     "Skulltula by Forest Stage": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -458,7 +438,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. Plant a magic bean here as a child. Come back as an adult at night and ride the plant up.",
                         CustomRequirement: function(age) {
-                            let canRideUp = Data.itemLocationObtained("Lost Woods", "secondHalf", "*Plant Bean by Forest Stage");
+                            let canRideUp = Data.isBeanPlanted("Lost Woods", "secondHalf", "Soft Soil by Forest Stage");
                             let canGetWithHookshot = Settings.GlitchesToAllow.lwSkullWithoutBean && 
                                 Items.HOOKSHOT.playerHas &&
                                 ItemData.canUseAny(age, [Items.DINS_FIRE, Items.FAIRY_BOW, Items.BOMBCHU, UpgradedItems.LONGSHOT]);
@@ -1672,8 +1652,9 @@ let MapLocations = {
                     crateLedge: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            let beanIsPlanted = Data.itemLocationObtained("Graveyard", "main", "*Plant Bean by Dampe's Grave");
-                            return ItemData.canUse(age, UpgradedItems.LONGSHOT) || beanIsPlanted || Data.canWeirdShot(age);
+                            return ItemData.canUse(age, UpgradedItems.LONGSHOT) || 
+                                Data.isBeanPlanted("Graveyard", "main", "Soft Soil") || 
+                                Data.canWeirdShot(age);
                         }
                     },
                     freestandingItemInCrate: {
@@ -1719,12 +1700,14 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "Get to the graveyard when it's barely night time. If you play the Sun's Song, make sure you do it where time passes, then quickly take the exit to Kakariko before it becomes too late. Simply talk to Dampe and pay him 10 rupees to get this item."
                     },
-                    "Skulltula in Soil": {
-                        ItemGroup: ItemGroups.SKULLTULA,
+                    "Soft Soil": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.NON_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Soft Soil",
                         MapInfo: { x: 159, y: 91 },
                         Age: Age.CHILD,
-                        LongDescription: "Plant bugs in the soft soil by Dampe's grave.",
-                        NeedsBottle: true
+                        LongDescription: "The soft soil patch near the Dampe's grave. Used to get to the crate above."
                     },
                     "Skulltula on Back Right Wall": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -1742,13 +1725,6 @@ let MapLocations = {
                         Age: Age.CHILD,
                         RequiredItems: [ChildTradeItems.SPOOKY_MASK],
                         LongDescription: "Talk to the graveyard kid during the day while wearing the Spooky Mask to sell it to him - this unlocks the Bunny Hood.",
-                    },
-                    "*Plant Bean by Dampe's Grave": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        IsBean: true,
-                        MapInfo: { x: 159, y: 91 },
-                        Age: Age.CHILD,
-                        LongDescription: "This is the bean spot by Dampe's Grave. It's used to get to the freestanding heart piece in the box above."
                     }
                 },
             },
@@ -2109,8 +2085,8 @@ let MapLocations = {
                 Exits: {
                     upper: {
                         CustomRequirement: function(age) {
-                            let canRideTrailBeanPlant = age === Age.ADULT && 
-                                Data.itemLocationObtained("Death Mountain Trail", "main", "*Plant Bean by Dodongo's Cavern");
+                            let canRideTrailBeanPlant = age === Age.ADULT &&
+                                Data.isBeanPlanted("Death Mountain Trail", "main", "Soft Soil");
                             let canUseHoverBoots = Settings.GlitchesToAllow.dmtClimbWithHoverBoots && 
                                 ItemData.canUse(age, Equipment.HOVER_BOOTS);
                             let areRocksGone = ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) || 
@@ -2156,14 +2132,15 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "You can do a slight angled backflip near the Bomb Flower above the cavern to get to this. Alternatively, you can plant a bean and ride it up."
                     },
-                    "Skulltula in Soil": {
-                        ItemGroup: ItemGroups.SKULLTULA,
+
+                    "Soft Soil": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.NON_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Soft Soil Skulltula Always Killable",
                         MapInfo: { x: 179, y: 168 },
                         Age: Age.CHILD,
-                        LongDescription: "After removing the boilder by Dodongo's Cavern, the soft soil to plant the bug in is revealed. If you need a weapon to kill it, use the bomb flower from above.",
-                        OverrideItemGroupCondition: true,
-                        RequiredItems: [ItemSets.EXPLOSIVES_OR_STRENGTH],
-                        NeedsBottle: true
+                        LongDescription: "The soft soil inside the entrance to Dodongo's Cavern (under the giant rock). Used to get to the top of the mountain. Use a bomb flower from above to kill the skulltula, if necessary."
                     },
                     "Red Rock by Goron City": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -2181,14 +2158,6 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "From the Kakariko entrance, follow the right wall until you get to the discolored wall. Bomb or hammer it to reveal the skulltula. Child can Deku Stick jumpslash, Bomb, Bombchu, Slingshot, or Boomerang it. Adult can jumpslash it. You can climb the wall to collect the token.",
                         RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
-                    },
-                    "*Plant Bean by Dodongo's Cavern":  {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        IsBean: true,
-                        MapInfo: { x: 179, y: 168 },
-                        Age: Age.CHILD,
-                        LongDescription: "This is the bean spot in the entrance to Dodongo's Cavern. You must first destroy the rock to get to it. It can be used to skip blowing up the rocks to get to the top part of the mountain.",
-                        RequiredItems: [ItemSets.EXPLOSIVES_OR_STRENGTH],
                     },
                     "Break Rocks Blocking Top Path":  {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -2380,14 +2349,14 @@ let MapLocations = {
                     middle: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            let beanPlanted = Data.itemLocationObtained("Death Mountain Crater", "bottom", "*Plant Bean by Bolero Warp Point");
+                            let beanPlanted = Data.isBeanPlanted("Death Mountain Crater", "bottom", "Soft Soil");
                             return beanPlanted || Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas; 
                         }
                     },
                     volcano: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Death Mountain Crater", "bottom", "*Plant Bean by Bolero Warp Point");
+                            return Data.isBeanPlanted("Death Mountain Crater", "bottom", "Soft Soil");
                         }
                     },
                     scarecrowPlatform: {
@@ -2407,25 +2376,20 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
-                    "Skulltula in Soil": {
-                        ItemGroup: ItemGroups.SKULLTULA,
+                    "Soft Soil": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.NON_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Soft Soil",
                         MapInfo: { x: 177, y: 95 },
                         Age: Age.CHILD,
-                        LongDescription: "Use the Bolero of fire to get here as a child. Drop bugs in the nearby soft soil to spawn the skulltula.",
-                        NeedsBottle: true
+                        LongDescription: "The soft soil patch by the Bolero of Fire warp point. Used to get to the heart piece on the volcano."
                     },
                     "Bolero of Fire": {
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 161, y: 84 },
                         Age: Age.ADULT,
                         LongDescription: "You will get this item as adult when you reach the part of the broken bridge that touches the land.",
-                    },
-                    "*Plant Bean by Bolero Warp Point": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        IsBean: true,
-                        MapInfo: { x: 177, y: 95 },
-                        Age: Age.CHILD,
-                        LongDescription: "This is the bean spot by the Bolero of Fire warp point. It helps you get to the heart piece on the volcano.",
                     },
                     "Red Rupee on First Island": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -3356,7 +3320,7 @@ let MapLocations = {
                         LongDescription: "The goal here is to get to the top of the Lakeside Lab. Either ride the bean plant up, or play Scarecrow's Song and hookshot it. Afterward, climb the ladder to get to the item. Watch out for the Guays!",
                         CustomRequirement: function(age) {
                             let canHookshotUp = Data.canPlaySong(Songs.SCARECROWS_SONG) && Items.HOOKSHOT.playerHas;
-                            let canRideUp = Data.itemLocationObtained("Lake Hylia", "main", "*Plant Bean by Lab");
+                            let canRideUp = Data.isBeanPlanted("Lake Hylia", "main", "Soft Soil");
                             return canHookshotUp || canRideUp;
                         }
                     },
@@ -3372,12 +3336,15 @@ let MapLocations = {
                             return canHookshotUp || Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
                         }
                     },
-                    "Skulltula in Soil": {
-                        ItemGroup: ItemGroups.SKULLTULA,
+
+                    "Soft Soil": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.NON_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Soft Soil",
                         MapInfo: { x: 106, y: 71 },
                         Age: Age.CHILD,
-                        LongDescription: "Plant bugs in the soil by the Lakeside Lab to spawn this skulltula.",
-                        NeedsBottle: true
+                        LongDescription: "The soft soil patch near the Lakeside Lab. Used to get to the top of the lab and to the fishing pond."
                     },
                     "Skulltula on Lab": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3405,13 +3372,6 @@ let MapLocations = {
                             return ItemData.canUse(age, UpgradedItems.LONGSHOT) || 
                                 (ItemData.canUse(age, ItemSets.SHIELDS) && Settings.GlitchesToAllow.skullInTreeWithHookshot);
                         }
-                    },
-                    "*Plant Bean by Lab": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        IsBean: true,
-                        MapInfo: { x: 106, y: 71 },
-                        Age: Age.CHILD,
-                        LongDescription: "This is the bean patch by the lab. It can be used to get to the top of the house and to the fishing pond."
                     },
                     "Play Song for Bonooru": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -3660,19 +3620,14 @@ let MapLocations = {
                     chasmDownstream: {}
                 },
                 ItemLocations: {
-                    "Plant Bean by Cow on Bottom": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        IsBean: true,
+                    "Soft Soil": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.NON_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Soft Soil",
                         MapInfo: { x: 183, y: 191 },
                         Age: Age.CHILD,
-                        LongDescription: "This is the bean patch on the platform at the bottom of the ravine. It's not used to get any items."
-                    },
-                    "Skulltula in Soil": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 183, y: 191 },
-                        Age: Age.CHILD,
-                        LongDescription: "Navigate to the platform on the bottom of the ravine. Plant bugs in the soft soil to spawn the skulltula.",
-                        NeedsBottle: true
+                        LongDescription: "The soft soil patch at the bottom of the ravine near the cow. It's not used to get any items."
                     },
                     "Crate by Cow on Bottom": {
                         ItemGroup: ItemGroups.CRATE,
@@ -4748,7 +4703,7 @@ let MapLocations = {
                     archway: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Desert Colossus", "main", "*Plant Bean by Spirit Temple");
+                            return Data.isBeanPlanted("Desert Colossus", "main", "Soft Soil");
                         }
                     },
 
@@ -4781,13 +4736,6 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "Shoot the deku nuts in the two trees by the wall with the great fairy fountain to spawn these wonderitems."
                     },
-                    "Skulltula in Soil": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 63, y: 165 },
-                        Age: Age.CHILD,
-                        LongDescription: "Drop bugs in the soft soil by the Spirit Temple to spawn this skulltula.",
-                        NeedsBottle: true
-                    },
                     "3 Items in Tree at Oasis": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
@@ -4812,10 +4760,19 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "At night, there is a skulltula on a small cliff near the north middle edge of the map. You can hookshot it if the Leevers leave you alone long enough. An easier solution is to ride the bean platform and jump off of it so that you're on top.",
                         CustomRequirement: function(age) {
-                            let canRideUp = Data.itemLocationObtained("Desert Colossus", "main", "*Plant Bean by Spirit Temple");
+                            let canRideUp = Data.isBeanPlanted("Desert Colossus", "main", "Soft Soil");
                             let canUseBoomerang = Settings.GlitchesToAllow.difficultBoomerangTrickThrows && ItemData.canUse(age, Items.BOOMERANG);
                             return canRideUp || canUseBoomerang || Items.HOOKSHOT.playerHas;
                         }
+                    },
+                    "Soft Soil": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.NON_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Soft Soil",
+                        MapInfo: { x: 63, y: 165 },
+                        Age: Age.CHILD,
+                        LongDescription: "The soft soil patch near the Spirit Temple. Used to get the skulltula on the ledge and the heart piece on the arch."
                     },
                     "Requiem of Spirit": {
                         //TODO: with decoupling, we'll have to check that we can enter whatever leads here
@@ -4824,13 +4781,6 @@ let MapLocations = {
                         MapInfo: { x: 63, y: 149 },
                         Age: Age.EITHER,
                         LongDescription: "Enter and exit the Spirit Temple to receive this item."
-                    },
-                    "*Plant Bean by Spirit Temple": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        IsBean: true,
-                        MapInfo: { x: 63, y: 165 },
-                        Age: Age.CHILD,
-                        LongDescription: "This is the bean spot by the Spirit Temple. This is used to more easily get to a skulltula, and to get the heart piece above."
                     },
                     "Gossip Stone by Spirit Temple": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,

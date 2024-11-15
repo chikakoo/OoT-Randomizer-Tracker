@@ -171,7 +171,7 @@ let OwExits = {
 
                 return canMegaFlip ||
                     ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT]) ||
-                    Data.itemLocationObtained("Lost Woods", "skullKidAndBridge", "*Plant Bean by Bridge");
+                    Data.isBeanPlanted("Lost Woods", "skullKidAndBridge", "Soft Soil by Bridge");
             },
             OwShuffleMap: "Lost Woods Bridge",
             OwShuffleRegion: "main",
@@ -1738,7 +1738,7 @@ let OwExits = {
                 if (age === Age.CHILD) { return true; }
                 
                 let canHookshotUp = Data.canPlaySong(Songs.SCARECROWS_SONG) && Items.HOOKSHOT.playerHas;
-                let canRideUp = Data.itemLocationObtained("Lake Hylia", "main", "*Plant Bean by Lab");
+                let canRideUp = Data.isBeanPlanted("Lake Hylia", "main", "Soft Soil");
                 return canHookshotUp || canRideUp || Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
             },
             LongDescription: "This building is in the building across the water to the northeast."
