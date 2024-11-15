@@ -2170,7 +2170,6 @@ let MapLocations = {
                         OwExit: OwExits["Death Mountain Trail"]["Song of Storms Grotto near Goron City"]
                     }
                 },
-
                 ItemLocations: {
                     // Lower Area
                     "In Wall by Kakariko": {
@@ -2276,7 +2275,6 @@ let MapLocations = {
                         OwExit: OwExits["Death Mountain Trail"]["Cow Grotto"]
                     }
                 },
-
                 ItemLocations: {
                     // Upper Area
                     "Trade Biggoron": {
@@ -2313,10 +2311,12 @@ let MapLocations = {
     },
     	
 	"Death Mountain Crater": {
+        UsesDisplayGroups: true,
 		Abbreviation: "DMC",
 		MapGroup: MapGroups.MOUNTAIN,
 		Regions: {
             top: {
+                DisplayGroup: { groupName: "Upper Area", imageName: "Bomb" },
                 Exits: {
                     middle: {
                         CustomRequirement: function(age) {
@@ -2338,14 +2338,7 @@ let MapLocations = {
                         OwExit: OwExits["Death Mountain Crater"]["Grotto in Center of Top Rocks"]
                     }
                 },
-
                 ItemLocations: {
-                    "Heart Piece in Wall": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 186, y: 191 },
-                        Age: Age.EITHER,
-                        LongDescription: "At the top of the crater, you can climb down the wall that's facing the Fire Temple to receive this item - you'll start climbing if you backwalk off it."
-                    },
                     "Skulltula in Crate": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 87, y: 250 },
@@ -2358,6 +2351,12 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "When you enter the crater, follow the left wall. The scrub is on the bottom of the ladder you'll run into."
                     },
+                    "Heart Piece in Wall": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 186, y: 191 },
+                        Age: Age.EITHER,
+                        LongDescription: "At the top of the crater, you can climb down the wall that's facing the Fire Temple to receive this item - you'll start climbing if you backwalk off it."
+                    },
                     "Gossip Stone Behind Bombable Wall": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 284, y: 248 },
@@ -2367,8 +2366,8 @@ let MapLocations = {
                     }
                 }
             },
-
             middle: {
+                DisplayGroup: { groupName: "Middle Area", imageName: "Magic" },
                 Exits: {
                     top: {},
                     bottom: {
@@ -2411,8 +2410,8 @@ let MapLocations = {
                     }
                 }
             },
-
             bottom: {
+                DisplayGroup: { groupName: "Lower Area", imageName: "Fire Medallion" },
                 Exits: {
                     middle: {
                         Age: Age.ADULT,
@@ -2442,7 +2441,6 @@ let MapLocations = {
                         OwExit: OwExits["Death Mountain Crater"]["Bolero Teleport Pad"]
                     }
                 },
-
                 ItemLocations: {
                     "Soft Soil": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2452,12 +2450,6 @@ let MapLocations = {
                         MapInfo: { x: 177, y: 95 },
                         Age: Age.CHILD,
                         LongDescription: "The soft soil patch by the Bolero of Fire warp point. Used to get to the heart piece on the volcano."
-                    },
-                    "Bolero of Fire": {
-                        ItemGroup: ItemGroups.SONG,
-                        MapInfo: { x: 161, y: 84 },
-                        Age: Age.ADULT,
-                        LongDescription: "You will get this item as adult when you reach the part of the broken bridge that touches the land.",
                     },
                     "Red Rupee on First Island": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -2474,11 +2466,17 @@ let MapLocations = {
                         MapInfo: { x: 280, y: 80 },
                         Age: Age.CHILD,
                         LongDescription: "As Child, from the bolero warp, make your way to the second tiny island across the wooden bridges for these items."
+                    },
+                    "Bolero of Fire": {
+                        ItemGroup: ItemGroups.SONG,
+                        MapInfo: { x: 161, y: 84 },
+                        Age: Age.ADULT,
+                        LongDescription: "You will get this item as adult when you reach the part of the broken bridge that touches the land.",
                     }
                 }
             },
-
             volcano: {
+                DisplayGroup: { groupName: "Middle Area", imageName: "Magic" },
                 ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {
@@ -2491,8 +2489,8 @@ let MapLocations = {
                     }
                 }
             },
-
             scarecrowPlatform: {
+                DisplayGroup: { groupName: "Upper Area", imageName: "Bomb" },
                 ExcludeFromSpawnList: true,
                 Exits: {
                     bottom: {
