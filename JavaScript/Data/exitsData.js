@@ -1166,8 +1166,15 @@ let OwExits = {
             LongDescription: "This is the entrance to the Shadow Temple.",
             IsDungeonEntrance: true
         },
-
-        // Interiors
+        "Dampe's Shed": {
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            Time: function() { return Time.NIGHT_CHILD; },
+            MapInfo: { x: 94, y: 246 },
+            Age: Age.EITHER,
+            LongDescription: "Located in the southeast corner of the graveyard.",
+        },
         "Grave with Flowers": {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
@@ -1177,25 +1184,6 @@ let OwExits = {
             MapInfo: { x: 206, y: 144 },
             Age: Age.EITHER,
             LongDescription: "There's a gravestone when you first enter that has flowers in front of it. Pull it back and enter to get to the grotto."
-        },
-        "Unmarked Grave": {
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
-            DefaultEntranceGroupName: "Redead Sun's Song Grave",
-            Time: function() { return Time.NIGHT_CHILD; },
-            MapInfo: { x: 237, y: 184 },
-            Age: Age.EITHER,
-            LongDescription: "Go to the Royal Tomb gravestone at the front of the graveyard - position your camera the other way, toward the entrance. The grave will be the second one to your left."
-        },
-        "Dampe's Shed": {
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
-            Time: function() { return Time.NIGHT_CHILD; },
-            MapInfo: { x: 94, y: 246 },
-            Age: Age.EITHER,
-            LongDescription: "Located in the southeast corner of the graveyard.",
         },
         "Dampe's Grave": {
             ExitRegion: "dampesGrave",
@@ -1230,6 +1218,16 @@ let OwExits = {
             ReadOnly: true,
             Hide: true,
             LongDescription: "This is the route through Dampe's Grave to get to Kakariko via the windmill."
+        },
+        "Unmarked Grave": {
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsGrotto: true,
+            DefaultEntranceGroupName: "Redead Sun's Song Grave",
+            Time: function() { return Time.NIGHT_CHILD; },
+            MapInfo: { x: 237, y: 184 },
+            Age: Age.EITHER,
+            LongDescription: "Go to the Royal Tomb gravestone at the front of the graveyard - position your camera the other way, toward the entrance. The grave will be the second one to your left."
         },
         "Royal Family's Tomb": {
             ExitRegion: "royalFamilyTomb",

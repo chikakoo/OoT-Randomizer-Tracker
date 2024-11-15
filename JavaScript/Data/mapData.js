@@ -1697,10 +1697,12 @@ let MapLocations = {
 	},
     
     "Graveyard": {
+        UsesDisplayGroups: true,
         Abbreviation: "GVYD",
         MapGroup: MapGroups.KAKARIKO,
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Main Area", imageName: "Dampe's Grave" },
                 Exits: {
                     crateLedge: {
                         Age: Age.ADULT,
@@ -1734,18 +1736,26 @@ let MapLocations = {
                     },
 
                     // Interiors & Grottos
+                    "Dampe's Shed": {
+                        OwExit: OwExits["Graveyard"]["Dampe's Shed"]
+                    },
                     "Grave with Flowers": {
                         OwExit: OwExits["Graveyard"]["Grave with Flowers"]
                     },
                     "Unmarked Grave": {
                         OwExit: OwExits["Graveyard"]["Unmarked Grave"]
-                    },
-                    "Dampe's Shed": {
-                        OwExit: OwExits["Graveyard"]["Dampe's Shed"]
                     }
                 },
-
                 ItemLocations: {
+                    "Sell Spooky Mask": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        Time: function() { return Time.DAY; },
+                        MapInfo: { x: 184, y: 145 },
+                        MapImageName: "Spooky Mask",
+                        Age: Age.CHILD,
+                        RequiredItems: [ChildTradeItems.SPOOKY_MASK],
+                        LongDescription: "Talk to the graveyard kid during the day while wearing the Spooky Mask to sell it to him - this unlocks the Bunny Hood.",
+                    },
                     "Dampe's Heart-Pounding Graveyard Tour": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         Time: function() { return Time.NIGHT; },
@@ -1769,19 +1779,11 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "At night, this skulltula is high up on the back right wall of the graveyard.",
                         RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
-                    },
-                    "Sell Spooky Mask": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        Time: function() { return Time.DAY; },
-                        MapInfo: { x: 184, y: 145 },
-                        MapImageName: "Spooky Mask",
-                        Age: Age.CHILD,
-                        RequiredItems: [ChildTradeItems.SPOOKY_MASK],
-                        LongDescription: "Talk to the graveyard kid during the day while wearing the Spooky Mask to sell it to him - this unlocks the Bunny Hood.",
                     }
                 },
             },
             crateLedge: {
+                DisplayGroup: { groupName: "Crate Ledge", imageName: "Crate" },
                 ExcludeFromSpawnList: true,
                 Exits: {
                     freestandingItemInCrate: {},
@@ -1798,6 +1800,7 @@ let MapLocations = {
                 }
             },
             freestandingItemInCrate: {
+                DisplayGroup: { groupName: "Crate Ledge", imageName: "Crate" },
                 ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {
@@ -1811,6 +1814,7 @@ let MapLocations = {
                 }
             },
             top: {
+                DisplayGroup: { groupName: "Main Area", imageName: "Dampe's Grave" },
                 DuplicateWarpSongPriority: 1,
                 Exits: {
                     main: {},
@@ -1831,7 +1835,6 @@ let MapLocations = {
                         OwExit: OwExits["Graveyard"]["Nocturne Teleport Pad"]
                     }
                 },
-
                 ItemLocations: {
                     "Gossip Stone at Top Area": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -1842,6 +1845,7 @@ let MapLocations = {
                 }
             },
             royalFamilyTomb: {
+                DisplayGroup: { groupName: "Main Area", imageName: "Dampe's Grave" },
                 ExcludeFromSpawnList: true,
                 Exits: {
                     main: {},
@@ -1852,6 +1856,7 @@ let MapLocations = {
                 ItemLocations: {}
             },
             dampesGrave: {
+                DisplayGroup: { groupName: "Main Area", imageName: "Dampe's Grave" },
                 ExcludeFromSpawnList: true,
                 Exits: {
                     main: {},
@@ -1865,6 +1870,7 @@ let MapLocations = {
                 ItemLocations: {}
             },
             shadowTemple: {
+                DisplayGroup: { groupName: "Main Area", imageName: "Dampe's Grave" },
                 ExcludeFromSpawnList: true,
                 Exits: {
                     top: {},
