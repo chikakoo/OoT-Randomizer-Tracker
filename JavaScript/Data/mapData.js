@@ -957,10 +957,12 @@ let MapLocations = {
     },
     
     "Market Entrance": {
+        UsesDisplayGroups: true,
 		Abbreviation: "MENT",
 		MapGroup: MapGroups.FIELD_MARKET,
 		Regions: {
             main: {
+                DisplayGroup: { groupName: "Market Entrance", imageName: "3 Pots" },
                 Exits: {
                     "Hyrule Field": {
                         OwExit: OwExits["Market Entrance"]["Hyrule Field"]
@@ -1095,10 +1097,12 @@ let MapLocations = {
     },
     
     "Temple of Time": {
+        UsesDisplayGroups: true,
 		Abbreviation: "ToT",
 		MapGroup: MapGroups.FIELD_MARKET,
 		Regions: {
             main: {
+                DisplayGroup: { groupName: "Courtyard", imageName: "Ocarina of Time" },
                 Exits: {
                     "Market": {
                         OwExit: OwExits["Temple of Time"]["Market"]
@@ -1109,7 +1113,6 @@ let MapLocations = {
                         OwExit: OwExits["Temple of Time"]["Temple of Time"]
                     }
                 },
-
                 ItemLocations: {
                     "Right Gossip Stone": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
