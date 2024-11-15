@@ -1655,6 +1655,7 @@ let OwExits = {
     },
 
     "Lake Hylia": {
+        // Main Area & Pond
         "Hyrule Field": {
             ExitRegion: "main",
             Map: "Hyrule Field",
@@ -1664,7 +1665,36 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to Hyrule Field."
         },
+        "Lakeside Lab": {
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            DefaultEntranceGroupName: "Lakeside Lab",
+            MapInfo: { x: 118, y: 86 },
+            Age: Age.EITHER,
+            LongDescription: "This is the building near the bridge by the lake."
+        },
+        "Fishing Pond": {
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            OneWayInteriorSpawnEntrance: true,
+            DefaultEntranceGroupName: "Fishing Pond",
+            MapInfo: { x: 247, y: 81 },
+            Age: Age.EITHER,
+            CustomRequirement: function(age) {
+                if (age === Age.CHILD) { return true; }
+                
+                let canHookshotUp = Data.canPlaySong(Songs.SCARECROWS_SONG) && Items.HOOKSHOT.playerHas;
+                let canRideUp = Data.isBeanPlanted("Lake Hylia", "main", "Soft Soil");
+                return canHookshotUp || canRideUp || Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
+            },
+            LongDescription: "This building is in the building across the water to the northeast."
+        },
+
+        // Shallow Water
         "Zora's Domain": {
+            DisplayGroup: { groupName: "Shallow Water", imageName: "Ruto's Letter" },
             ExitRegion: "main",
             Map: "Zora's Domain",
             Region: "main",
@@ -1697,7 +1727,10 @@ let OwExits = {
                     );
             }
         },
+
+        // Islands
         "Owl": {
+            DisplayGroup: { groupName: "Islands", imageName: "Water Medallion" },
             ExitRegion: "main",
             Map: "Hyrule Field",
             Region: "main",
@@ -1754,25 +1787,6 @@ let OwExits = {
                 return defeatedMorpha && canHitSwitch;
             }
         },
-
-        // Interiors
-        "Fishing Pond": {
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
-            OneWayInteriorSpawnEntrance: true,
-            DefaultEntranceGroupName: "Fishing Pond",
-            MapInfo: { x: 247, y: 81 },
-            Age: Age.EITHER,
-            CustomRequirement: function(age) {
-                if (age === Age.CHILD) { return true; }
-                
-                let canHookshotUp = Data.canPlaySong(Songs.SCARECROWS_SONG) && Items.HOOKSHOT.playerHas;
-                let canRideUp = Data.isBeanPlanted("Lake Hylia", "main", "Soft Soil");
-                return canHookshotUp || canRideUp || Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
-            },
-            LongDescription: "This building is in the building across the water to the northeast."
-        },
         "Grotto Under Grave": {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
@@ -1781,15 +1795,6 @@ let OwExits = {
             MapInfo: { x: 93, y: 181 },
             Age: Age.EITHER,
             LongDescription: "Pull the gravestone in the middle of the bridge to reveal this grotto."
-        },
-        "Lakeside Lab": {
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
-            DefaultEntranceGroupName: "Lakeside Lab",
-            MapInfo: { x: 118, y: 86 },
-            Age: Age.EITHER,
-            LongDescription: "This is the building near the bridge by the lake."
         }
     },
 

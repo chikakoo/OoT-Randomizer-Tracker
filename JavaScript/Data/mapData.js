@@ -3368,17 +3368,30 @@ let MapLocations = {
 	},
 	
 	"Lake Hylia": {
+        UsesDisplayGroups: true,
 		Abbreviation: "LAKE",
 		MapGroup: MapGroups.WATER,
 		Regions: {
 			main: {
+                DisplayGroup: { groupName: "Main Area & Pond", imageName: "Fishing Pond" },
                 Exits: {
+                    // Main Area & Pond
                     "Hyrule Field": {
                         OwExit: OwExits["Lake Hylia"]["Hyrule Field"]
                     },
+                    "Lakeside Lab": {
+                        OwExit: OwExits["Lake Hylia"]["Lakeside Lab"]
+                    },
+                    "Fishing Pond": {
+                        OwExit: OwExits["Lake Hylia"]["Fishing Pond"]
+                    },
+
+                    // Shallow Water
                     "Zora's Domain": {
                         OwExit: OwExits["Lake Hylia"]["Zora's Domain"]
                     },
+
+                    // Islands
                     "Owl": {
                         OwExit: OwExits["Lake Hylia"]["Owl"]
                     },
@@ -3388,51 +3401,24 @@ let MapLocations = {
                     "Serenade Teleport Pad": {
                         OwExit: OwExits["Lake Hylia"]["Serenade Teleport Pad"]
                     },
-
-                    // Interiors & Grottos
-                    "Fishing Pond": {
-                        OwExit: OwExits["Lake Hylia"]["Fishing Pond"]
-                    },
                     "Grotto Under Grave": {
                         OwExit: OwExits["Lake Hylia"]["Grotto Under Grave"]
-                    },
-                    "Lakeside Lab": {
-                        OwExit: OwExits["Lake Hylia"]["Lakeside Lab"]
                     }
                 },
-
                 ItemLocations: {
-                    "Ruto's Letter": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 171, y: 116 },
+                    // Main Area & Pond
+                    "Play Song for Bonooru": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapInfo: { x: 199, y: 63 },
+                        MapImageName: "Scarecrow's Song",
                         Age: Age.CHILD,
-                        LongDescription: "You'll find this item in the water near the entrance to Zora's Domain. Navi will fly to it when you're close.",
-                        RequiredItems: [Equipment.SCALE]
-                    },
-                    "Heart Piece on Lab": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 111, y: 67 },
-                        Age: Age.ADULT,
-                        LongDescription: "The goal here is to get to the top of the Lakeside Lab. Either ride the bean plant up, or play Scarecrow's Song and hookshot it. Afterward, climb the ladder to get to the item. Watch out for the Guays!",
+                        LongDescription: "Take out the ocarina (OI works) by the lower scarecrow and play it a song that has at least two different pitches.",
+                        RequiredToAppear: function() { return !Songs.SCARECROWS_SONG.playerHas; },
+                        NeedsOcarina: true,
                         CustomRequirement: function(age) {
-                            let canHookshotUp = Data.canPlaySong(Songs.SCARECROWS_SONG) && Items.HOOKSHOT.playerHas;
-                            let canRideUp = Data.isBeanPlanted("Lake Hylia", "main", "Soft Soil");
-                            return canHookshotUp || canRideUp;
+                            return ItemData.getNumberOfOcarinaButtons() >= 2;
                         }
                     },
-                    "Fire Arrows": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        Time: function() { return Time.DAY; },
-                        MapInfo: { x: 247, y: 236 },
-                        Age: Age.ADULT,
-                        LongDescription: "First, get to the platform in the center of the lake - the one with the tree. When the sun is just coming up, stand on the sign and shoot an arrow at it. The item should then spawn. You can get over there either by beating Morpha and swimming there, or by playing Scarecrow's Song and longshotting it.",
-                        RequiredItems: [Items.FAIRY_BOW],
-                        CustomRequirement: function(age) {
-                            let canHookshotUp = Data.canPlaySong(Songs.SCARECROWS_SONG) && ItemData.canUse(age, UpgradedItems.LONGSHOT);
-                            return canHookshotUp || Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
-                        }
-                    },
-
                     "Soft Soil": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.NON_ITEM,
@@ -3450,7 +3436,65 @@ let MapLocations = {
                         LongDescription: "At night, you can find this skulltula on the side of the Lakeside Lab that's nearest the bridge. You can actually jumpslash to the token from the bridge if you don't have the boomerang.",
                         RequiredChoiceOfItems: [Items.BOOMERANG, ItemSets.SWORDS]
                     },
+                    "Claim Scarecrow's Song": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapInfo: { x: 199, y: 63 },
+                        MapImageName: "Scarecrow's Song",
+                        Age: Age.ADULT,
+                        LongDescription: "Take out the ocarina (OI works) by the lower scarecrow and play it the last song you taught it as Child.",
+                        RequiredToAppear: function() { return !Songs.SCARECROWS_SONG.playerHas; },
+                        CustomRequirement: function(age) {
+                            return Data.itemLocationObtained("Lake Hylia", "main", "Play Song for Bonooru");
+                        }
+                    },
+                    "Heart Piece on Lab": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 111, y: 67 },
+                        Age: Age.ADULT,
+                        LongDescription: "The goal here is to get to the top of the Lakeside Lab. Either ride the bean plant up, or play Scarecrow's Song and hookshot it. Afterward, climb the ladder to get to the item. Watch out for the Guays!",
+                        CustomRequirement: function(age) {
+                            let canHookshotUp = Data.canPlaySong(Songs.SCARECROWS_SONG) && Items.HOOKSHOT.playerHas;
+                            let canRideUp = Data.isBeanPlanted("Lake Hylia", "main", "Soft Soil");
+                            return canHookshotUp || canRideUp;
+                        }
+                    },
+                    "Gossip Stone by Lab and Waterfall": {
+                        ItemGroup: ItemGroups.GOSSIP_STONE,
+                        MapInfo: { x: 74, y: 74 },
+                        Age: Age.EITHER,
+                        LongDescription: "This stone is across the little bridge near the lab."
+                    },
+
+                    // Shallow Water
+                    "Green Rupee Near Shore": {
+                        DisplayGroup: { groupName: "Shallow Water", imageName: "Ruto's Letter" },
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Green Rupee",
+                        MapInfo: { x: 171, y: 98 },
+                        Age: Age.CHILD,
+                        LongDescription: "This item is by the entrance to Zora's Domain - you can dive to get it without a scale.",
+                    },
+                    "2 Green Rupees in Deeper Water": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Green Rupees",
+                        MapInfo: { x: 169, y: 105 },
+                        Age: Age.CHILD,
+                        RequiredItems: [UpgradedItems.SILVER_SCALE],
+                        LongDescription: "These items are by the entrance to Zora's Domain - you need a scale to be able to reach them."
+                    },
+                    "Ruto's Letter": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 171, y: 116 },
+                        Age: Age.CHILD,
+                        LongDescription: "You'll find this item in the water near the entrance to Zora's Domain. Navi will fly to it when you're close.",
+                        RequiredItems: [Equipment.SCALE]
+                    },
+
+                    // Islands
                     "Skulltula on Island": {
+                        DisplayGroup: { groupName: "Islands", imageName: "Water Medallion" },
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 252, y: 232 },
@@ -3469,34 +3513,17 @@ let MapLocations = {
                                 (ItemData.canUse(age, ItemSets.SHIELDS) && Settings.GlitchesToAllow.skullInTreeWithHookshot);
                         }
                     },
-                    "Play Song for Bonooru": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        MapInfo: { x: 199, y: 63 },
-                        MapImageName: "Scarecrow's Song",
-                        Age: Age.CHILD,
-                        LongDescription: "Take out the ocarina (OI works) by the lower scarecrow and play it a song that has at least two different pitches.",
-                        RequiredToAppear: function() { return !Songs.SCARECROWS_SONG.playerHas; },
-                        NeedsOcarina: true,
-                        CustomRequirement: function(age) {
-                            return ItemData.getNumberOfOcarinaButtons() >= 2;
-                        }
-                    },
-                    "Claim Scarecrow's Song": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        MapInfo: { x: 199, y: 63 },
-                        MapImageName: "Scarecrow's Song",
+                    "Fire Arrows": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        Time: function() { return Time.DAY; },
+                        MapInfo: { x: 247, y: 236 },
                         Age: Age.ADULT,
-                        LongDescription: "Take out the ocarina (OI works) by the lower scarecrow and play it the last song you taught it as Child.",
-                        RequiredToAppear: function() { return !Songs.SCARECROWS_SONG.playerHas; },
+                        LongDescription: "First, get to the platform in the center of the lake - the one with the tree. When the sun is just coming up, stand on the sign and shoot an arrow at it. The item should then spawn. You can get over there either by beating Morpha and swimming there, or by playing Scarecrow's Song and longshotting it.",
+                        RequiredItems: [Items.FAIRY_BOW],
                         CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Lake Hylia", "main", "Play Song for Bonooru");
+                            let canHookshotUp = Data.canPlaySong(Songs.SCARECROWS_SONG) && ItemData.canUse(age, UpgradedItems.LONGSHOT);
+                            return canHookshotUp || Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
                         }
-                    },
-                    "Gossip Stone by Lab and Waterfall": {
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        MapInfo: { x: 74, y: 74 },
-                        Age: Age.EITHER,
-                        LongDescription: "This stone is across the little bridge near the lab."
                     },
                     "Southwest Gossip Stone": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -3509,23 +3536,6 @@ let MapLocations = {
                         MapInfo: { x: 289, y: 231 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is on the wall in the southeast corner of the lake."
-                    },
-                    "Green Rupee Near Shore": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapImageName: "Green Rupee",
-                        MapInfo: { x: 171, y: 98 },
-                        Age: Age.CHILD,
-                        LongDescription: "This item is by the entrance to Zora's Domain - you can dive to get it without a scale.",
-                    },
-                    "2 Green Rupees in Deeper Water": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Green Rupees",
-                        MapInfo: { x: 169, y: 105 },
-                        Age: Age.CHILD,
-                        RequiredItems: [UpgradedItems.SILVER_SCALE],
-                        LongDescription: "These items are by the entrance to Zora's Domain - you need a scale to be able to reach them."
                     }
                 }
             }
