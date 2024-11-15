@@ -1289,6 +1289,7 @@ let MapLocations = {
 	},
     
     "Kakariko Village": {
+        UsesDisplayGroups: true,
 		Abbreviation: "KAK",
 		MapGroup: MapGroups.KAKARIKO,
         _canChildKillWatchtowerSkull: function() {
@@ -1299,6 +1300,7 @@ let MapLocations = {
         },
 		Regions: {
             main: {
+                DisplayGroup: { groupName: "Lower Area", imageName: "Super Cucco Minigame" },
                 Exits: {
                     beyondGate: {
                         CustomRequirement: function(age) {
@@ -1316,6 +1318,8 @@ let MapLocations = {
                             }
                         }
                     },
+
+                    // Lower Area
                     "Hyrule Field": {
                         OwExit: OwExits["Kakariko Village"]["Hyrule Field"]
                     },
@@ -1325,25 +1329,23 @@ let MapLocations = {
                     "Bottom of the Well": {
                         OwExit: OwExits["Kakariko Village"]["Bottom of the Well"]
                     },
-
-                    // Interiors & Grottos
-                    "Open Grotto Behind Potion Shop": {
-                        OwExit: OwExits["Kakariko Village"]["Open Grotto Behind Potion Shop"]
-                    },
                     "Hidden Grotto near Tree": {
                         OwExit: OwExits["Kakariko Village"]["Hidden Grotto near Tree"]
                     },
-                    "Archery Minigame": {
-                        OwExit: OwExits["Kakariko Village"]["Archery Minigame"]
+                    "Talon's House": {
+                        OwExit: OwExits["Kakariko Village"]["Talon's House"]
                     },
-                    "Back of Impa's House": {
-                        OwExit: OwExits["Kakariko Village"]["Back of Impa's House"]
+                    "House of Skulltula": {
+                        OwExit: OwExits["Kakariko Village"]["House of Skulltula"]
                     },
                     "Impa's House": {
                         OwExit: OwExits["Kakariko Village"]["Impa's House"]
                     },
-                    "House of Skulltula": {
-                        OwExit: OwExits["Kakariko Village"]["House of Skulltula"]
+                    "Back of Impa's House": {
+                        OwExit: OwExits["Kakariko Village"]["Back of Impa's House"]
+                    },
+                    "Archery Minigame": {
+                        OwExit: OwExits["Kakariko Village"]["Archery Minigame"]
                     },
                     "Windmill": {
                         OwExit: OwExits["Kakariko Village"]["Windmill"]
@@ -1351,14 +1353,18 @@ let MapLocations = {
                     "Windmill to Interior": {
                         OwExit: OwExits["Kakariko Village"]["Windmill to Interior"]
                     },
-                    "Talon's House": {
-                        OwExit: OwExits["Kakariko Village"]["Talon's House"]
-                    },
+
+                    // Upper Area
                     "Bazaar": {
                         OwExit: OwExits["Kakariko Village"]["Bazaar"]
                     },
                     "Potion Shop Front": {
                         OwExit: OwExits["Kakariko Village"]["Potion Shop Front"]
+                    },
+
+                    // Enclosed Area
+                    "Open Grotto Behind Potion Shop": {
+                        OwExit: OwExits["Kakariko Village"]["Open Grotto Behind Potion Shop"]
                     },
                     "Potion Shop Back": {
                         OwExit: OwExits["Kakariko Village"]["Potion Shop Back"]
@@ -1370,8 +1376,83 @@ let MapLocations = {
                         OwExit: OwExits["Kakariko Village"]["Granny's Potion Shop"]
                     }
                 },
-                
                 ItemLocations: {
+                    // Lower Area
+                    "Show Poacher's Saw to Carpenter": {
+                        ItemGroup: ItemGroups.GIFT,
+                        Time: function() { return Time.DAY; },
+                        MapInfo: { x: 87, y: 179 },
+                        MapImageName: "Poacher's Saw",
+                        Age: Age.CHILD,
+                        RequiredToAppear: function() { return Settings.GlitchesToAllow.equipSwap; },
+                        LongDescription: "Show the carpenter boss (in front of the tent) the Poacher's Saw to receive an item.",
+                        RequiredItems: [AdultTradeItems.POACHERS_SAW],
+                        PostObtain: function(playerHas, skipSocketUpdate) {
+                            let otherItemLocation = MapLocations["Gerudo Valley"].Regions.acrossBridge.ItemLocations["Show Poacher's Saw to Carpenter"];
+                            Data.setItemObtained(otherItemLocation, playerHas, true);
+
+                            if (skipSocketUpdate) {
+                                SocketClient.itemLocationUpdated(otherItemLocation);
+                            }
+                        }
+                    },
+                    "Skulltula in Tree": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 97, y: 179 },
+                        Age: Age.CHILD,
+                        LongDescription: "At night, roll into the tree in the center of the village to reveal this skulltula. If you have no weapon, use a pot from near the guard by Death Mountain Trail.",
+                        OverrideItemGroupCondition: true
+                    },
+                    "Cucco Crate by Talon's House": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 156, y: 155 },
+                        Age: Age.CHILD,
+                        LongDescription: "This is the crate with the cucco in it next to Talon's House."
+                    },
+                    "Skulltula on House of Skulltulas": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 121, y: 218 },
+                        Age: Age.CHILD,
+                        LongDescription: "At night, you can find this skulltula on the side of the House of Skulltulas. If you have no weapon, use a pot near Impa's house to kill it (up the nearby stairs).",
+                        OverrideItemGroupCondition: true
+                    },
+                    "3 Pots Near Impa's House": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 136, y: 249 },
+                        Age: Age.CHILD,
+                        LongDescription: "These pots are next to the door to Impa's house."
+                    },
+                    "Wonderitem in Impa's House": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Red Rupee Wonderitem",
+                        RequiredToAppear: function() {
+                            return !Settings.RandomizerSettings.shuffleInteriorEntrances;
+                        },
+                        MapInfo: { x: 175, y: 248 },
+                        Age: Age.CHILD,
+                        LongDescription: "Enter Impa's house from the front. Climb the stairs and walk around the cow pen area to get this wonderitem."
+                    },
+                    "Skulltula at Construction Site": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 191, y: 201 },
+                        Age: Age.CHILD,
+                        LongDescription: "At night, you can find this skulltula on the pile of bricks at the construction site. If you have no weapon, use a pot from near the guard by Death Mountain Trail.",
+                        OverrideItemGroupCondition: true
+                    },
+                    "Wonderitem on Construction Site": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Red Rupee Wonderitem",
+                        MapInfo: { x: 189, y: 210 },
+                        Age: Age.CHILD,
+                        LongDescription: "Climb up the struture under construction and make your way to the end to get this item. If it's daytime, you can get around the worker by backwalking off the edge and grabbing hold, then climbing back up when he passes by."
+                    },
                     "Bottle from Cucco Collection": {
                         ItemGroup: ItemGroups.GIFT,
                         Time: function() { return Time.DAY; },
@@ -1379,16 +1460,68 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "This is the prize that Anju gives you after collecting all 7 cuccos in the pen. Note that leaving the map will keep your progress."
                     },
-                    "Gift from the Guy on the Roof": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 212, y: 124 },
-                        Time: function() {
-                            return MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull()
-                                ? Time.EITHER
-                                : Time.DAY_CHILD;
-                        },
-                        Age: Age.EITHER,
-                        LongDescription: "The guy on the roof of the house gives you an item. To get this as a child, climb the giant watchtower, position yourself at the upper left corner, then sidehop left without holding any direction. As an adult, you can either hookshot to the roof from the fence by the windmill, or do a jump to the potion shop roof from the ledge leading to Death Mountain."
+                    "Crate Outside Enclosed Area": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 248, y: 143 },
+                        Age: Age.CHILD,
+                        LongDescription: "This crate is by the gate leading to the enclosed area, on the outside near the windmill platform."
+                    },
+                    "Crate by Windmill": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 264, y: 155 },
+                        Age: Age.CHILD,
+                        LongDescription: "This crate is by the door to the windmill."
+                    },
+                    "Crate by Graveyard": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 333, y: 212 },
+                        Age: Age.CHILD,
+                        LongDescription: "This crate is by the loading zone to the graveyard, in the corner."
+                    },
+                    "2 Crates by Talon's House": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 166, y: 175 },
+                        Age: Age.ADULT,
+                        LongDescription: "These crates are next to Talon's House."
+                    },
+                    "Crate Behind House of Skulltulas": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 108, y: 203 },
+                        Age: Age.ADULT,
+                        LongDescription: "This crate is behind the house of skulltulas, by the ledge."
+                    },
+                    "2 Crates by Impa's House": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 136, y: 245 },
+                        Age: Age.ADULT,
+                        LongDescription: "These crates are next to Impa's House."
+                    },
+                    "Skulltula on Impa's Roof": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 172, y: 260 },
+                        Age: Age.ADULT,
+                        LongDescription: "At night, from the ledge near the entrance to Impa's House, hookshot to the House of Skulltula. From there, hookshot to Impa's house. You'll find the skulltula on the back wall.",
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
+                    "Crate by Archery": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 185, y: 192 },
+                        Age: Age.ADULT,
+                        LongDescription: "This crate is by the entrance to the archery minigame."
                     },
                     "Gift From Anju": {
                         ItemGroup: ItemGroups.GIFT,
@@ -1408,40 +1541,58 @@ let MapLocations = {
                             return this.wokeUpTalon;
                         }
                     },
-                    "Show Poacher's Saw to Carpenter": {
-                        ItemGroup: ItemGroups.GIFT,
-                        Time: function() { return Time.DAY; },
-                        MapInfo: { x: 87, y: 179 },
-                        MapImageName: "Poacher's Saw",
-                        Age: Age.CHILD,
-                        RequiredToAppear: function() { return Settings.GlitchesToAllow.equipSwap; },
-                        LongDescription: "Show the carpenter boss (in front of the tent) the Poacher's Saw to receive an item.",
-                        RequiredItems: [AdultTradeItems.POACHERS_SAW],
-                        PostObtain: function(playerHas, skipSocketUpdate) {
-                            let otherItemLocation = MapLocations["Gerudo Valley"].Regions.acrossBridge.ItemLocations["Show Poacher's Saw to Carpenter"];
-                            Data.setItemObtained(otherItemLocation, playerHas, true);
+                    "Nocturne of Shadow": {
+                        ItemGroup: ItemGroups.SONG,
+                        MapInfo: { x: 35, y: 209 },
+                        Age: Age.ADULT,
+                        LongDescription: "You can get this item if you have the forest, fire, and water medallions. Just enter Kakariko Village as an adult.",
+                        RequiredMedallions: [Medallions.FOREST_MEDALLION, Medallions.FIRE_MEDALLION, Medallions.WATER_MEDALLION]
+                    },
 
-                            if (skipSocketUpdate) {
-                                SocketClient.itemLocationUpdated(otherItemLocation);
-                            }
+                    // Upper Area
+                    "Crate Below Bazaar": {
+                        DisplayGroup: { groupName: "Upper Area", imageName: "Keaton Mask" },
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 99, y: 121 },
+                        Age: Age.CHILD,
+                        LongDescription: "This is the crate just up the stairs, where the beggar is as Adult."
+                    },
+                    "3 Pots Near Watchtower": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 180, y: 111 },
+                        Age: Age.CHILD,
+                        LongDescription: "These pots are near the ladder to the watchtower."
+                    },
+                    "Skulltula on Watchtower": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 169, y: 111 },
+                        Age: Age.CHILD,
+                        LongDescription: "At night, you can find this skulltula on the watchtower ladder. You can kill it with either the slingshot or a bombchu. If you don't have those, you can also climb up as far as you can, and press A to let go of the ladder, then spam the jumpslash button for your sword or stick for the kill.",
+                        CustomRequirement: function(age) {
+                            return MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull();
                         }
                     },
-                    "Wonderitem on Construction Site": {
-                        ItemGroup: ItemGroups.WONDERITEM,
-                        MapImageName: "Red Rupee Wonderitem",
-                        MapInfo: { x: 189, y: 210 },
+                    "3 Pots Near Bazaar": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 110, y: 74 },
                         Age: Age.CHILD,
-                        LongDescription: "Climb up the struture under construction and make your way to the end to get this item. If it's daytime, you can get around the worker by backwalking off the edge and grabbing hold, then climbing back up when he passes by."
+                        LongDescription: "These pots are near the Bazaar entrance close to Death Mountain Trail."
                     },
-                    "Wonderitem in Impa's House": {
-                        ItemGroup: ItemGroups.WONDERITEM,
-                        MapImageName: "Red Rupee Wonderitem",
-                        RequiredToAppear: function() {
-                            return !Settings.RandomizerSettings.shuffleInteriorEntrances;
-                        },
-                        MapInfo: { x: 175, y: 248 },
+                    "Skulltula on Bazaar": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 96, y: 75 },
                         Age: Age.CHILD,
-                        LongDescription: "Enter Impa's house from the front. Climb the stairs and walk around the cow pen area to get this wonderitem."
+                        LongDescription: "At night, you can find this skulltula on the side of the Bazaar (the building by the entrance to Death Mountain). It's near some pots. Use them to kill it if you have no weapon.",
+                        OverrideItemGroupCondition: true
                     },
                     "Show Guard Letter": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -1466,174 +1617,12 @@ let MapLocations = {
                                 Settings.RandomizerSettings.openKakariko === OpenKakarikoSettings.OPEN;
                         }
                     },
-                    "Skulltula in Tree": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 97, y: 179 },
-                        Age: Age.CHILD,
-                        LongDescription: "At night, roll into the tree in the center of the village to reveal this skulltula. If you have no weapon, use a pot from near the guard by Death Mountain Trail.",
-                        OverrideItemGroupCondition: true
-                    },
-                    "Skulltula on House of Skulltulas": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 121, y: 218 },
-                        Age: Age.CHILD,
-                        LongDescription: "At night, you can find this skulltula on the side of the House of Skulltulas. If you have no weapon, use a pot near Impa's house to kill it (up the nearby stairs).",
-                        OverrideItemGroupCondition: true
-                    },
-                    "Skulltula at Construction Site": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 191, y: 201 },
-                        Age: Age.CHILD,
-                        LongDescription: "At night, you can find this skulltula on the pile of bricks at the construction site. If you have no weapon, use a pot from near the guard by Death Mountain Trail.",
-                        OverrideItemGroupCondition: true
-                    },
-                    "Skulltula on Bazaar": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 96, y: 75 },
-                        Age: Age.CHILD,
-                        LongDescription: "At night, you can find this skulltula on the side of the Bazaar (the building by the entrance to Death Mountain). It's near some pots. Use them to kill it if you have no weapon.",
-                        OverrideItemGroupCondition: true
-                    },
-                    "Skulltula on Watchtower": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 169, y: 111 },
-                        Age: Age.CHILD,
-                        LongDescription: "At night, you can find this skulltula on the watchtower ladder. You can kill it with either the slingshot or a bombchu. If you don't have those, you can also climb up as far as you can, and press A to let go of the ladder, then spam the jumpslash button for your sword or stick for the kill.",
-                        CustomRequirement: function(age) {
-                            return MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull();
-                        }
-                    },
-                    "Skulltula on Impa's Roof": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 172, y: 260 },
-                        Age: Age.ADULT,
-                        LongDescription: "At night, from the ledge near the entrance to Impa's House, hookshot to the House of Skulltula. From there, hookshot to Impa's house. You'll find the skulltula on the back wall.",
-                        RequiredItems: [Items.HOOKSHOT]
-                    },
-                    "Nocturne of Shadow": {
-                        ItemGroup: ItemGroups.SONG,
-                        MapInfo: { x: 35, y: 209 },
-                        Age: Age.ADULT,
-                        LongDescription: "You can get this item if you have the forest, fire, and water medallions. Just enter Kakariko Village as an adult.",
-                        RequiredMedallions: [Medallions.FOREST_MEDALLION, Medallions.FIRE_MEDALLION, Medallions.WATER_MEDALLION]
-                    },
-                    "3 Pots Near Impa's House": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 136, y: 249 },
-                        Age: Age.CHILD,
-                        LongDescription: "These pots are next to the door to Impa's house."
-                    },
-                    "3 Pots Near Watchtower": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 180, y: 111 },
-                        Age: Age.CHILD,
-                        LongDescription: "These pots are near the ladder to the watchtower."
-                    },
-                    "3 Pots Near Bazaar": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 110, y: 74 },
-                        Age: Age.CHILD,
-                        LongDescription: "These pots are near the Bazaar entrance close to Death Mountain Trail."
-                    },
-                    "2 Pots Near Granny's Potion Shop": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 242, y: 138 },
-                        Age: Age.CHILD,
-                        LongDescription: "These pots are next to the door to Granny's Potion Shop in the enclosed area."
-                    },
-                    "Crate by Graveyard": {
-                        ItemGroup: ItemGroups.CRATE,
-                        IsEmpty: true,
-                        MapInfo: { x: 333, y: 212 },
-                        Age: Age.CHILD,
-                        LongDescription: "This crate is by the loading zone to the graveyard, in the corner."
-                    },
-                    "Crate by Windmill": {
-                        ItemGroup: ItemGroups.CRATE,
-                        IsEmpty: true,
-                        MapInfo: { x: 264, y: 155 },
-                        Age: Age.CHILD,
-                        LongDescription: "This crate is by the door to the windmill."
-                    },
-                    "Crate Outside Enclosed Area": {
-                        ItemGroup: ItemGroups.CRATE,
-                        IsEmpty: true,
-                        MapInfo: { x: 248, y: 143 },
-                        Age: Age.CHILD,
-                        LongDescription: "This crate is by the gate leading to the enclosed area, on the outside near the windmill platform."
-                    },
-                    "Cucco Crate by Talon's House": {
-                        ItemGroup: ItemGroups.CRATE,
-                        IsEmpty: true,
-                        MapInfo: { x: 156, y: 155 },
-                        Age: Age.CHILD,
-                        LongDescription: "This is the crate with the cucco in it next to Talon's House."
-                    },
-                    "Crate Below Bazaar": {
-                        ItemGroup: ItemGroups.CRATE,
-                        IsEmpty: true,
-                        MapInfo: { x: 99, y: 121 },
-                        Age: Age.CHILD,
-                        LongDescription: "This is the crate just up the stairs, where the beggar is as Adult."
-                    },
                     "Crate by Archery or Beggar": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 185, y: 192 },
                         Age: Age.ADULT,
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
                         LongDescription: "This crate is next to the entrance to the archery minigame or close to the beggar near the watchtower. The drop is shared between the two."
-                    },
-                    "Crate Behind House of Skulltulas": {
-                        ItemGroup: ItemGroups.CRATE,
-                        IsEmpty: true,
-                        MapInfo: { x: 108, y: 203 },
-                        Age: Age.ADULT,
-                        LongDescription: "This crate is behind the house of skulltulas, by the ledge."
-                    },
-                    "2 Crates by Impa's House": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        IsEmpty: true,
-                        DefaultEntranceGroupName: "2 Crates",
-                        MapInfo: { x: 136, y: 245 },
-                        Age: Age.ADULT,
-                        LongDescription: "These crates are next to Impa's House."
-                    },
-                    "Crate by Archery": {
-                        ItemGroup: ItemGroups.CRATE,
-                        IsEmpty: true,
-                        MapInfo: { x: 185, y: 192 },
-                        Age: Age.ADULT,
-                        LongDescription: "This crate is by the entrance to the archery minigame."
-                    },
-                    "2 Crates by Talon's House": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        IsEmpty: true,
-                        DefaultEntranceGroupName: "2 Crates",
-                        MapInfo: { x: 166, y: 175 },
-                        Age: Age.ADULT,
-                        LongDescription: "These crates are next to Talon's House."
                     },
                     "2 Crates by Beggar": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -1652,14 +1641,21 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "This crate is by the entrance to the potion shop."
                     },
-                    "Crate Behind Potion Shop": {
-                        ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 249, y: 134 },
-                        Age: Age.ADULT,
-                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
-                        LongDescription: "One of the four crates in the enclosed area will drop an item - it's random which it is."
+                    "Gift from the Guy on the Roof": {
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 212, y: 124 },
+                        Time: function() {
+                            return MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull()
+                                ? Time.EITHER
+                                : Time.DAY_CHILD;
+                        },
+                        Age: Age.EITHER,
+                        LongDescription: "The guy on the roof of the house gives you an item. To get this as a child, climb the giant watchtower, position yourself at the upper left corner, then sidehop left without holding any direction. As an adult, you can either hookshot to the roof from the fence by the windmill, or do a jump to the potion shop roof from the ledge leading to Death Mountain."
                     },
+
+                    // Enclosed Area
                     "4 Crates Behind Potion Shop": {
+                        DisplayGroup: { groupName: "Enclosed Area", imageName: "Odd Mushroom" },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsItemLocationGroup: true,
@@ -1668,11 +1664,27 @@ let MapLocations = {
                         MapInfo: { x: 249, y: 134 },
                         Age: Age.ADULT,
                         LongDescription: "The four crates in the enclosed area behind the potion shop."
+                    },
+                    "Crate Behind Potion Shop": {
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 249, y: 134 },
+                        Age: Age.ADULT,
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
+                        LongDescription: "One of the four crates in the enclosed area will drop an item - it's random which it is."
+                    },
+                    "2 Pots Near Granny's Potion Shop": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 242, y: 138 },
+                        Age: Age.CHILD,
+                        LongDescription: "These pots are next to the door to Granny's Potion Shop in the enclosed area."
                     }
                 }
             },
-
             beyondGate: {
+                DisplayGroup: { groupName: "Upper Area", imageName: "Keaton Mask" },
                 Exits: {
                     main: {},
                     "Death Mountain Trail": {

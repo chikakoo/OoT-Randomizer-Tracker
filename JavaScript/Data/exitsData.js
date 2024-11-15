@@ -853,6 +853,7 @@ let OwExits = {
     },
 
     "Kakariko Village": {
+        // Lower Area
         "Hyrule Field": {
             ExitRegion: "main",
             Map: "Hyrule Field",
@@ -870,15 +871,6 @@ let OwExits = {
             MapInfo: {x: 302, y: 234},
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the graveyard."
-        },
-        "Death Mountain Trail": {
-            ExitRegion: "beyondGate",
-            Map: "Death Mountain Trail",
-            Region: "main",
-            ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: {x: 126, y: 33},
-            Age: Age.EITHER,
-            LongDescription: "This is the entrance back to Death Mountain."
         },
         "Bottom of the Well": {
             ExitRegion: "main",
@@ -933,22 +925,6 @@ let OwExits = {
                 return Data.itemLocationObtained("Windmill-Kak Potion", "windmill", "Drain Well Water");
             }
         },
-
-        // Interiors
-        "Open Grotto Behind Potion Shop": {
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            Time: function() {
-                return MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull()
-                    ? Time.EITHER
-                    : Time.DAY_CHILD;
-            },
-            IsGrotto: true,
-            DefaultEntranceGroupName: "Generic Grotto",
-            MapInfo: { x: 245, y: 123 },
-            Age: Age.EITHER,
-            LongDescription: "This grotto is located behind the fenced off area located behind the Potion Shop. Child can get there with a cucco or from sidehopping off the watchtower. Adult can simply walk through the Potion Shop."
-        },
         "Hidden Grotto near Tree": {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
@@ -958,6 +934,42 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This hidden grotto is between the tree and Talon's house. There's a slightly darker texture that you need to either hammer or bomb.",
             RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+        },
+        "Talon's House": {
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            DefaultEntranceGroupName: "Talon's House Kakariko",
+            MapInfo: { x: 162, y: 165 },
+            Age: Age.EITHER,
+            LongDescription: "This is the building straight ahead of the tree that has the crate with the cucco next to it as a child."
+        },
+        "House of Skulltula": {
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            DefaultEntranceGroupName: "House of Skulltula",
+            MapInfo: { x: 141, y: 214 },
+            Age: Age.EITHER,
+            LongDescription: "This is the building near Impa's house, with the fence near the door."
+        },
+        "Impa's House": {
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            MapInfo: { x: 141, y: 254 },
+            Age: Age.EITHER,
+            LongDescription: "This is the building that Anju stands by. The entrance is on the opposite site of the cucco pen.",
+        },
+        "Back of Impa's House": {
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            DefaultEntranceGroupName: "Back of Impa's House",
+            Time: function() { return Time.DAY_CHILD; },
+            MapInfo: { x: 182, y: 252 },
+            Age: Age.EITHER,
+            LongDescription: "This is the opening above the cucco pen. You can get there as a child via the owl on the top of Death Mountain, or by using a cucco. To do this, throw it up the building under construction (2 throws), then jump to the border (when the construction worker isn't there), then jump at the platform - don't drop the cucco.<br/><br/>As adult, you must hookshot there. Hookshot first to the House of Skulltulas from the ledge by the entrance to Impa's house. Then, hookshot to Impa's house. Make your way to the ledge.<br/><br/>Alternatively, as adult, you can make your way directly under the opening, and simply hold forward to jump onto the ledge.",
         },
         "Archery Minigame": {
             ExitRegion: "main",
@@ -973,33 +985,6 @@ let OwExits = {
             MapInfo: { x: 190, y: 190 },
             Age: Age.ADULT,
             LongDescription: "This is the building that was being constructed as a child. It's near the well."
-        },
-        "Back of Impa's House": {
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
-            DefaultEntranceGroupName: "Back of Impa's House",
-            Time: function() { return Time.DAY_CHILD; },
-            MapInfo: { x: 182, y: 252 },
-            Age: Age.EITHER,
-            LongDescription: "This is the opening above the cucco pen. You can get there as a child via the owl on the top of Death Mountain, or by using a cucco. To do this, throw it up the building under construction (2 throws), then jump to the border (when the construction worker isn't there), then jump at the platform - don't drop the cucco.<br/><br/>As adult, you must hookshot there. Hookshot first to the House of Skulltulas from the ledge by the entrance to Impa's house. Then, hookshot to Impa's house. Make your way to the ledge.<br/><br/>Alternatively, as adult, you can make your way directly under the opening, and simply hold forward to jump onto the ledge.",
-        },
-        "Impa's House": {
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
-            MapInfo: { x: 141, y: 254 },
-            Age: Age.EITHER,
-            LongDescription: "This is the building that Anju stands by. The entrance is on the opposite site of the cucco pen.",
-        },
-        "House of Skulltula": {
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
-            DefaultEntranceGroupName: "House of Skulltula",
-            MapInfo: { x: 141, y: 214 },
-            Age: Age.EITHER,
-            LongDescription: "This is the building near Impa's house, with the fence near the door."
         },
         "Windmill": {
             ExitRegion: "main",
@@ -1034,16 +1019,20 @@ let OwExits = {
             Hide: true,
             LongDescription: "This is the windmill entrance - it's up the stairs near the well."
         },
-        "Talon's House": {
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
-            DefaultEntranceGroupName: "Talon's House Kakariko",
-            MapInfo: { x: 162, y: 165 },
+
+
+        // Upper Area
+        "Death Mountain Trail": {
+            ExitRegion: "beyondGate",
+            Map: "Death Mountain Trail",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: {x: 126, y: 33},
             Age: Age.EITHER,
-            LongDescription: "This is the building straight ahead of the tree that has the crate with the cucco next to it as a child."
+            LongDescription: "This is the entrance back to Death Mountain."
         },
         "Bazaar": {
+            DisplayGroup: { groupName: "Upper Area", imageName: "Keaton Mask" },
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsInterior: true,
@@ -1077,6 +1066,23 @@ let OwExits = {
                 return Settings.RandomizerSettings.shuffleInteriorEntrances;
             },
             LongDescription: "This is the building to the right if you are facing the Death Mountain entrance.",
+        },
+
+        // Enclosed Area
+        "Open Grotto Behind Potion Shop": {
+            DisplayGroup: { groupName: "Enclosed Area", imageName: "Odd Mushroom" },
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            Time: function() {
+                return MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull()
+                    ? Time.EITHER
+                    : Time.DAY_CHILD;
+            },
+            IsGrotto: true,
+            DefaultEntranceGroupName: "Generic Grotto",
+            MapInfo: { x: 245, y: 123 },
+            Age: Age.EITHER,
+            LongDescription: "This grotto is located behind the fenced off area located behind the Potion Shop. Child can get there with a cucco or from sidehopping off the watchtower. Adult can simply walk through the Potion Shop."
         },
         "Potion Shop Back": {
             // Leaving DefaultEntranceGroupName out since it's fully covered by the front entrance
