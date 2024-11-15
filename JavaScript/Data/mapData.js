@@ -2,8 +2,10 @@ let MapLocations = {
     "Kokiri Forest": {
         Abbreviation: "KOKI",
         MapGroup: MapGroups.FOREST,
+        UsesDisplayGroups: true,
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Main Area", imageName: "Deku Shield" },
                 Exits: {
                     afterMido: {
                         CustomRequirement: function(age) {
@@ -13,26 +15,18 @@ let MapLocations = {
                         }
                     },
 
-                    // Overworld
+                    // Main Area
                     "Lost Woods Bottom": {
                         OwExit: OwExits["Kokiri Forest"]["Lost Woods Bottom"]
                     },
-                    "Lost Woods Top": {
-                        OwExit: OwExits["Kokiri Forest"]["Lost Woods Top"]
+                    "Mido's House": {
+                        OwExit: OwExits["Kokiri Forest"]["Mido's House"]
                     },
-
-                    // Interiors & Grottos
                     "Link's House": {
                         OwExit: OwExits["Kokiri Forest"]["Link's House"]
                     },
                     "Saria's House": {
                         OwExit: OwExits["Kokiri Forest"]["Saria's House"]
-                    },
-                    "Mido's House": {
-                        OwExit: OwExits["Kokiri Forest"]["Mido's House"]
-                    },
-                    "Know-It-All House": {
-                        OwExit: OwExits["Kokiri Forest"]["Know-It-All House"]
                     },
                     "House of Twins": {
                         OwExit: OwExits["Kokiri Forest"]["House of Twins"]
@@ -40,17 +34,21 @@ let MapLocations = {
                     "Shop": {
                         OwExit: OwExits["Kokiri Forest"]["Shop"]
                     },
+
+                    // Upper Ledges
+                    "Lost Woods Top": {
+                        OwExit: OwExits["Kokiri Forest"]["Lost Woods Top"]
+                    },
                     "Song of Storms Grotto by Lost Woods": {
                         OwExit: OwExits["Kokiri Forest"]["Song of Storms Grotto by Lost Woods"]
+                    },
+
+                    // Training Area & Maze
+                    "Know-It-All House": {
+                        OwExit: OwExits["Kokiri Forest"]["Know-It-All House"]
                     }
                 },
                 ItemLocations: {
-                    "Kokiri Sword": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 142, y: 290 },
-                        Age: Age.CHILD,
-                        LongDescription: "This is the prize at the end of the boulder maze, though the Hole of Z."
-                    },
                     "Soft Soil": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.NON_ITEM,
@@ -59,13 +57,6 @@ let MapLocations = {
                         MapInfo: { x: 284, y: 139 },
                         Age: Age.CHILD,
                         LongDescription: "The soft soil patch near the Kokiri Shop. Used to get to the rupees above."
-                    },
-                    "Skulltula on Know-it-all House": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 70, y: 180 },
-                        Age: Age.CHILD,
-                        LongDescription: "Look on the side of the Know-it-all Brothers' house at night. You can get the token with a backflip if you don't have a Boomerang."
                     },
                     "Skulltula on the House of Twins": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -98,46 +89,6 @@ let MapLocations = {
                         MapInfo: { x: 135, y: 95 },
                         Age: Age.CHILD,
                         LongDescription: "This item is behind Mido's House.",
-                    },
-                    "Wonderitem via Training Sign": {
-                        ItemGroup: ItemGroups.WONDERITEM,
-                        MapImageName: "Sword Wonderitem",
-                        RequiredChoiceOfItems: [Equipment.KOKIRI_SWORD, Items.DEKU_STICK],
-                        MapInfo: { x: 132, y: 211 },
-                        Age: Age.CHILD,
-                        LongDescription: "Slash the close sign in the fenced-off training area with your sword or deku sticks to get this item.",
-                    },
-                    "Close Maze Blue Rupee": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapImageName: "Blue Rupee",
-                        MapInfo: { x: 72, y: 278 },
-                        Age: Age.CHILD,
-                        LongDescription: "This item is to your right when you go in the maze.",
-                    },
-                    "2 Wonderitems in Maze Grass": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Green Rupee Wonderitems",
-                        MapInfo: { x: 100, y: 292 },
-                        Age: Age.CHILD,
-                        LongDescription: "These are wonderitems in the maze grass en route to the Kokiri Sword chest."
-                    },
-                    "Far Maze Blue Rupee": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapImageName: "Blue Rupee",
-                        MapInfo: { x: 78, y: 292 },
-                        Age: Age.CHILD,
-                        LongDescription: "Go in the maze and follow the right wall to this item.",
-                    },
-                    "3 Wonderitems in Training Area": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Green Rupee Wonderitems",
-                        MapInfo: { x: 106, y: 226 },
-                        Age: Age.CHILD,
-                        LongDescription: "To get these wonderitems, target the wall just to the left of the crawlspace. Backflip three times to claim these items."
                     },
                     "Blue Rupee Across Bridges": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -187,7 +138,10 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "Start at the house of twins and jump on the big, then small platforms on the way to the shop. If you haven't yet touched the water, you'll get this item.",
                     },
+
+                    // Upper Ledges
                     "Rupee Circle Above Shop": {
+                        DisplayGroup: { groupName: "Upper Ledges", imageName: "Song of Storms" },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
@@ -200,10 +154,67 @@ let MapLocations = {
                                 Equipment.HOVER_BOOTS.playerHas || 
                                 Data.isBeanPlanted("Kokiri Forest", "main", "Soft Soil");
                         }
+                    },
+
+                    // Training area and maze
+                    "Skulltula on Know-it-all House": {
+                        DisplayGroup: { groupName: "Training Area & Maze", imageName: "Kokiri Sword" },
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 70, y: 180 },
+                        Age: Age.CHILD,
+                        LongDescription: "Look on the side of the Know-it-all Brothers' house at night. You can get the token with a backflip if you don't have a Boomerang."
+                    },
+                    "Wonderitem via Training Sign": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Sword Wonderitem",
+                        RequiredChoiceOfItems: [Equipment.KOKIRI_SWORD, Items.DEKU_STICK],
+                        MapInfo: { x: 132, y: 211 },
+                        Age: Age.CHILD,
+                        LongDescription: "Slash the close sign in the fenced-off training area with your sword or deku sticks to get this item.",
+                    },
+                    "3 Wonderitems in Training Area": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Green Rupee Wonderitems",
+                        MapInfo: { x: 106, y: 226 },
+                        Age: Age.CHILD,
+                        LongDescription: "To get these wonderitems, target the wall just to the left of the crawlspace. Backflip three times to claim these items."
+                    },
+                    "Close Maze Blue Rupee": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Blue Rupee",
+                        MapInfo: { x: 72, y: 278 },
+                        Age: Age.CHILD,
+                        LongDescription: "This item is to your right when you go in the maze.",
+                    },
+                    "2 Wonderitems in Maze Grass": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Green Rupee Wonderitems",
+                        MapInfo: { x: 100, y: 292 },
+                        Age: Age.CHILD,
+                        LongDescription: "These are wonderitems in the maze grass en route to the Kokiri Sword chest."
+                    },
+                    "Far Maze Blue Rupee": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Blue Rupee",
+                        MapInfo: { x: 78, y: 292 },
+                        Age: Age.CHILD,
+                        LongDescription: "Go in the maze and follow the right wall to this item.",
+                    },
+                    "Kokiri Sword": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 142, y: 290 },
+                        Age: Age.CHILD,
+                        LongDescription: "This is the prize at the end of the boulder maze, though the Hole of Z."
                     }
                 }
             },
             afterMido: {
+                DisplayGroup: { groupName: "Deku Tree", imageName: "Kokiri's Emerald" },
                 Exits: {
                     main: {},
                     "Deku Tree": {

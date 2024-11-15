@@ -49,11 +49,11 @@ let ItemLocationDisplay = {
 
 		sortedItemLocations.forEach(function(itemLocation) {
 			let group = itemLocation.OverrideItemGroup || itemLocation.ItemGroup;
-			let imageName = "Chest";
+			let imageName = null;
 			if (usesDisplayGroups) {
 				if (itemLocation.DisplayGroup) {
 					group = itemLocation.DisplayGroup.groupName;
-					imageName = itemLocation.DisplayGroup.imageName;
+					imageName ??= itemLocation.DisplayGroup.imageName;
 				} else {
 					group = "Item Locations",
 					imageName = "Chest"

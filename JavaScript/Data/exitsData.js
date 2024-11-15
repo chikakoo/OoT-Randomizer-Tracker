@@ -1,5 +1,6 @@
 let OwExits = {
     "Kokiri Forest": {
+        // Main Area
         "Lost Woods Bottom": {
             ExitRegion: "main",
             Map: "Lost Woods Bridge",
@@ -18,31 +19,15 @@ let OwExits = {
                 return beatDekuTree || canPokeySkip;
             }
         },
-        "Lost Woods Top": {
+        "Mido's House": {
             ExitRegion: "main",
-            Map: "Lost Woods",
-            Region: "nearGoronCity",
-            ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: 133, y: 13 },
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            DefaultEntranceGroupName: "Mido's House",
+            MapInfo: { x: 125, y: 100 },
             Age: Age.EITHER,
-            LongDescription: "This is the entrance to the Lost Woods that is up the vines."
+            LongDescription: "This is the house closest to the entrance to the Lost Woods."
         },
-        "Deku Tree": {
-            ExitRegion: "afterMido",
-            Map: "Deku Tree",
-            Region: "main",
-            ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: 263, y: 65 },
-            Age: Age.EITHER,
-            LongDescription: "This is the entrance to the Deku Tree.",
-            IsDungeonEntrance: true,
-            CustomRequirement: function(age) {
-                let isEntranceShuffle = Data.getDoesEntranceShuffleApply("Deku Tree");
-                return isEntranceShuffle ? true : age === Age.CHILD;
-            }
-        },
-
-        // Interiors
         "Link's House": {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
@@ -62,24 +47,6 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the house to your right if you face away from Link's house."
         },
-        "Mido's House": {
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
-            DefaultEntranceGroupName: "Mido's House",
-            MapInfo: { x: 125, y: 100 },
-            Age: Age.EITHER,
-            LongDescription: "This is the house closest to the entrance to the Lost Woods."
-        },
-        "Know-It-All House": {
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
-            DefaultEntranceGroupName: "2 Pot Interior",
-            MapInfo: { x: 84, y: 179 },
-            Age: Age.EITHER,
-            LongDescription: "This is the house by the fenced off training area."
-        },
         "House of Twins": {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
@@ -98,6 +65,18 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "Found in the middle of the village."
         },
+
+        // Upper Ledges
+        "Lost Woods Top": {
+            DisplayGroup: { groupName: "Upper Ledges", imageName: "Song of Storms" },
+            ExitRegion: "main",
+            Map: "Lost Woods",
+            Region: "nearGoronCity",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: 133, y: 13 },
+            Age: Age.EITHER,
+            LongDescription: "This is the entrance to the Lost Woods that is up the vines."
+        },
         "Song of Storms Grotto by Lost Woods": {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
@@ -107,6 +86,34 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "Play the Song of Storms by the Gossip Stone near the Lost Woods entrance to reveal this grotto.",
             RequiredSongs: [Songs.SONG_OF_STORMS]
+        },
+
+        // Training Area & Maze
+        "Know-It-All House": {
+            DisplayGroup: { groupName: "Training Area & Maze", imageName: "Kokiri Sword" },
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsInterior: true,
+            DefaultEntranceGroupName: "2 Pot Interior",
+            MapInfo: { x: 84, y: 179 },
+            Age: Age.EITHER,
+            LongDescription: "This is the house by the fenced off training area."
+        },
+
+        // Deku Tree
+        "Deku Tree": {
+            ExitRegion: "afterMido",
+            Map: "Deku Tree",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: 263, y: 65 },
+            Age: Age.EITHER,
+            LongDescription: "This is the entrance to the Deku Tree.",
+            IsDungeonEntrance: true,
+            CustomRequirement: function(age) {
+                let isEntranceShuffle = Data.getDoesEntranceShuffleApply("Deku Tree");
+                return isEntranceShuffle ? true : age === Age.CHILD;
+            }
         }
     },
 

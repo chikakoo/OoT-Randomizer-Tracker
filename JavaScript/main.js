@@ -37,26 +37,35 @@ let _assignItemLocationAndExitValues = function() {
 			let regions = mapObject[mapName].Regions;
 			Object.keys(regions).forEach(function(regionName) {
 				let itemLocations = regions[regionName].ItemLocations;
-				let displayGroup = regions[regionName].DisplayGroup;
+				let regionDisplayGroup = regions[regionName].DisplayGroup;
+				let mostRecentRegionDisplayGroup = null;
 				Object.keys(itemLocations).forEach(function(itemLocationName) {
 					let itemLocation = itemLocations[itemLocationName];
 					itemLocation.Name = itemLocationName;
 					itemLocation.Map = mapName;
 					itemLocation.Region = regionName;
-					if (displayGroup && !itemLocation.DisplayGroup) 
-					{ 
-						itemLocation.DisplayGroup = displayGroup; 
+					if (regionDisplayGroup && !itemLocation.DisplayGroup) { 
+						// Use the most recently found display group, if available
+						// Otherwise, we use the one that is on the region level
+						itemLocation.DisplayGroup = mostRecentRegionDisplayGroup
+							? mostRecentRegionDisplayGroup
+							: regionDisplayGroup; 
 					}
+					mostRecentRegionDisplayGroup = itemLocation.DisplayGroup;
 					itemLocation.IsDungeon = mapObject[mapName].MapGroup === MapGroups.DUNGEONS;
 				});
 
 				let exits = regions[regionName].Exits;
+				mostRecentRegionDisplayGroup = null;
 				Object.keys(exits).forEach(function(exitName) {
 					let exit = exits[exitName];
 					exit.Name = exitName;
-					if (displayGroup && exit.OwExit) {
-						exit.OwExit.DisplayGroup = displayGroup;
+					if (regionDisplayGroup && exit.OwExit) {
+						exit.OwExit.DisplayGroup ??= mostRecentRegionDisplayGroup
+							? mostRecentRegionDisplayGroup
+							: regionDisplayGroup;
 					}
+					mostRecentRegionDisplayGroup = exit?.OwExit?.DisplayGroup;
 				});
 			});
 		});

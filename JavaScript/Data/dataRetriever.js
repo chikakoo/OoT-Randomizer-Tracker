@@ -146,7 +146,10 @@ Data = {
             }
         });
 
-        // This block is for the OW exits //TODO: break this off and use it in walk.js when updating the travel div instead
+        // Interiors
+        itemLocations = itemLocations.concat(this.getAllOwExits(mapName, regionName, true));
+
+        // OW exits
         if (Settings.RandomizerSettings.shuffleOverworldEntrances || 
             Settings.RandomizerSettings.shuffleInteriorEntrances || 
             Settings.RandomizerSettings.shuffleDungeonEntrances ||
@@ -154,7 +157,6 @@ Data = {
             itemLocations = itemLocations.concat(this.getAllOwExits(mapName, regionName, false));
         }
 
-        itemLocations = itemLocations.concat(this.getAllOwExits(mapName, regionName, true));
         return itemLocations;
     },
 
