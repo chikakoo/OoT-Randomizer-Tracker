@@ -2820,10 +2820,12 @@ let MapLocations = {
     },
     
 	"Zora's River": {
+        UsesDisplayGroups: true,
 		Abbreviation: "RIVR",
 		MapGroup: MapGroups.WATER,
 		Regions: {
             downstream: {
+                DisplayGroup: { groupName: "Before Rocks", imageName: "Bomb" },
                 Exits: {
                     upstream: {
                         CustomRequirement: function(age) {
@@ -2836,22 +2838,12 @@ let MapLocations = {
                         OwExit: OwExits["Zora's River"]["Hyrule Field"]
                     }
                 },
-
                 ItemLocations: {
                     "Skulltula in Tree": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 9, y: 177 },
                         Age: Age.CHILD,
                         LongDescription: "Enter the river from Hyrule Field. The skulltula will appear if you roll into the tree that's straight ahead."
-                    },
-                    "4 Wonderitems in River by Hyrule Field": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "4 Green Rupee Wonderitems",
-                        MapInfo: { x: 36, y: 193 },
-                        Age: Age.CHILD,
-                        LongDescription: "Jump in the water by the mini waterfall and proceed down the center of the river to get these wonderitems."
                     },
                     "Break Rocks Blocking Path": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -2861,10 +2853,22 @@ let MapLocations = {
                         LongDescription: "Used for co-op. These are the rocks blocking the entrance to Zora's River.",
                         RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS],
                         CoOpOnly: true
+                    },
+                    "4 Wonderitems in River by Hyrule Field": {
+                        DisplayGroup: { groupName: "River Rupees", imageName: "Green Rupee Wonderitem" },
+                        Order: 5,
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.WONDERITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Green Rupee Wonderitems",
+                        MapInfo: { x: 36, y: 193 },
+                        Age: Age.CHILD,
+                        LongDescription: "Jump in the water by the mini waterfall and proceed down the center of the river to get these wonderitems."
                     }
                 }
             },
             upstream: {
+                DisplayGroup: { groupName: "Main Area", imageName: "Magic Bean" },
                 DuplicateWarpSongPriority: 1,
                 Exits: {
                     downstream: {},
@@ -2883,23 +2887,40 @@ let MapLocations = {
                                 ItemData.canUseAll(age, [ItemSets.SHIELDS, ItemSets.SWORDS, Items.BOMBCHU]);
                         }
                     },
-                    "Lost Woods": {
-                        OwExit: OwExits["Zora's River"]["Lost Woods"]
-                    },
 
-                    // Interiors & Grottos
+                    // Main Area
                     "Song of Storms Grotto": {
                         OwExit: OwExits["Zora's River"]["Song of Storms Grotto"]
                     },
+
+                    // On Cliff
                     "Open Grotto on Upper Cliff": {
                         OwExit: OwExits["Zora's River"]["Open Grotto on Upper Cliff"]
                     },
                     "Grotto Under Rock on Upper Cliff": {
                         OwExit: OwExits["Zora's River"]["Grotto Under Rock on Upper Cliff"]
+                    },
+
+                    // By Waterfall
+                    "Lost Woods": {
+                        OwExit: OwExits["Zora's River"]["Lost Woods"]
                     }
                 },
-
                 ItemLocations: {
+                    // Main Area
+                    "Bean Guy": {
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 72, y: 139 },
+                        Age: Age.CHILD,
+                        LongDescription: "This is the guy who sells beans near the Hyrule Field entrance."
+                    },
+                    "Plant Bean by Bean Guy": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        IsBean: true,
+                        MapInfo: { x: 72, y: 142 },
+                        Age: Age.CHILD,
+                        LongDescription: "This is the bean spot by the guy who sells beans. It's only used for convenience sake."
+                    },
                     "Heart Piece on River Platform": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 125, y: 94 },
@@ -2911,23 +2932,6 @@ let MapLocations = {
                                 Data.canMegaFlip(age);
                         }
                     },
-                    "Heart Piece by Zora's Domain": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 266, y: 56 },
-                        Age: Age.EITHER,
-                        LongDescription: "At the end of the river, there's a heart piece on a platform. As child, you can jump there with a cucco or nab it with a Boomerang. As adult, you must use the Hover Boots.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return true; }
-                            if (Equipment.HOVER_BOOTS.playerHas || Settings.GlitchesToAllow.adultWaterfallHPJump) { return true; }
-                            return Items.BOMBCHU.playerHas && Data.canMegaFlip(age);
-                        }
-                    },
-                    "Bean Guy": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 72, y: 139 },
-                        Age: Age.CHILD,
-                        LongDescription: "This is the guy who sells beans near the Hyrule Field entrance."
-                    },
                     "Frog Songs": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.GIFT,
@@ -2937,7 +2941,27 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "All the items you get from the frogs near the middle of the map."
                     },
+
+                    // On Cliff
+                    "Skulltula on Cliff": {
+                        DisplayGroup: { groupName: "On Cliff", imageName: "Super Cucco Minigame" },
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 132, y: 153 },
+                        Age: Age.ADULT,
+                        LongDescription: "At night, go up the ladder closest to Hyrule Field. Jump to the cliff behind you to find the skulltula.",
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                    },
+                    "Gossip Stone on Cliff": {
+                        ItemGroup: ItemGroups.GOSSIP_STONE,
+                        MapInfo: { x: 155, y: 176 },
+                        Age: Age.EITHER,
+                        LongDescription: "Go up the ladder closest to Hyrule Field. The stone is across the tiny bridge."
+                    },
+
+                    // By Waterfall
                     "Skulltula on Ladder": {
+                        DisplayGroup: { groupName: "By Waterfall", imageName: "Zelda's Lullaby" },
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 281, y: 142 },
@@ -2952,32 +2976,16 @@ let MapLocations = {
                         LongDescription: "At night, a little after the wooden bridge leading to Zora's Domain, you'll find a skulltula high up on the wall. You can get it with the hookshot if you stand on the fence.",
                         RequiredItems: [Items.HOOKSHOT]
                     },
-                    "Skulltula on Cliff": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 132, y: 153 },
-                        Age: Age.ADULT,
-                        LongDescription: "At night, go up the ladder closest to Hyrule Field. Jump to the cliff behind you to find the skulltula.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
-                    },
-                    "Plant Bean by Bean Guy": {
-                        ItemGroup: ItemGroups.NON_ITEM,
-                        IsBean: true,
-                        MapInfo: { x: 72, y: 142 },
-                        Age: Age.CHILD,
-                        LongDescription: "This is the bean spot by the guy who sells beans. It's only used for convenience sake."
-                    },
-                    "Gossip Stone on Cliff": {
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        MapInfo: { x: 155, y: 176 },
+                    "Heart Piece by Zora's Domain": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 266, y: 56 },
                         Age: Age.EITHER,
-                        LongDescription: "Go up the ladder closest to Hyrule Field. The stone is across the tiny bridge."
-                    },
-                    "Gossip Stone by Waterfall": {
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        MapInfo: { x: 300, y: 145 },
-                        Age: Age.EITHER,
-                        LongDescription: "This stone is on one of the platforms in the water by the Zora's Domain entrance."
+                        LongDescription: "At the end of the river, there's a heart piece on a platform. As child, you can jump there with a cucco or nab it with a Boomerang. As adult, you must use the Hover Boots.",
+                        CustomRequirement: function(age) {
+                            if (age === Age.CHILD) { return true; }
+                            if (Equipment.HOVER_BOOTS.playerHas || Settings.GlitchesToAllow.adultWaterfallHPJump) { return true; }
+                            return Items.BOMBCHU.playerHas && Data.canMegaFlip(age);
+                        }
                     },
                     "4 Red Rupees by Waterfall": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2988,7 +2996,17 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "These rupees are under the water next to the waterfall. You can jump from the Zelda's Lullaby spot to get them (adjust your position to get each one), though it's easiest with the iron boots."
                     },
+                    "Gossip Stone by Waterfall": {
+                        ItemGroup: ItemGroups.GOSSIP_STONE,
+                        MapInfo: { x: 300, y: 145 },
+                        Age: Age.EITHER,
+                        LongDescription: "This stone is on one of the platforms in the water by the Zora's Domain entrance."
+                    },
+
+                    // River Rupees
                     "4 Wonderitems in River by Zora's Domain": {
+                        DisplayGroup: { groupName: "River Rupees", imageName: "Green Rupee Wonderitem" },
+                        Order: 1,
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
@@ -2998,6 +3016,7 @@ let MapLocations = {
                         LongDescription: "These wonderitems are in the river near Zora's Domain. You will get them all before you reach the wooden bridge."
                     },
                     "6 Wonderitems After Underwater Rocks": {
+                        Order: 2,
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
@@ -3007,6 +3026,7 @@ let MapLocations = {
                         LongDescription: "These wonderitems are after the underwater rocks just after you fall down the first mini waterfall. You will get them all before falling down the next mini waterfall."
                     },
                     "3 Wonderitems After Platform Ladder": {
+                        Order: 3,
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
@@ -3016,6 +3036,7 @@ let MapLocations = {
                         LongDescription: "These wonderitems are in the mini coordidor after you fall down the waterfall near the ladder leading to the upper cliffs. You will get all of them before you fall down the next mini waterfall."
                     },
                     "3 Wonderitems Near Bean Salesman": {
+                        Order: 4,
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
@@ -3025,6 +3046,7 @@ let MapLocations = {
                         LongDescription: "These wonderitems are in the river near the bean salesman. You will get them all before falling down to the first area. Note that you will be forced to fall, so make sure not to get trapped!"
                     },
                     "7 Wonderitems Near Frogs": {
+                        Order: 6,
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
@@ -3034,6 +3056,7 @@ let MapLocations = {
                         LongDescription: "These wonderitems are in the river near the frogs. The first three are down the stream near where the river splits from the platform ladder. One is between a couple of the bigger platforms. Two are on either side of the square platform. The final one is just before you fall down the mini waterfall."
                     },
                     "4 Wonderitems in Fast Stream After Frogs": {
+                        Order: 7,
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,

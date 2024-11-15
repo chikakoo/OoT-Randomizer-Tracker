@@ -1472,6 +1472,7 @@ let OwExits = {
     },
 
     "Zora's River": {
+        // Before Rocks
         "Hyrule Field": {
             ExitRegion: "downstream",
             Map: "Hyrule Field",
@@ -1481,7 +1482,43 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to Hyrule Field at the start of the river - either exit will take you to the same place."
         },
+
+        // Main Area
+        "Song of Storms Grotto": {
+            ExitRegion: "upstream",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsGrotto: true,
+            DefaultEntranceGroupName: "2 Scrubs",
+            MapInfo: { x: 15, y: 145 },
+            Age: Age.EITHER,
+            LongDescription: "Play the Song of Storms in the center of the rocks near the cucco spawn to reveal the grotto.",
+            RequiredSongs: [Songs.SONG_OF_STORMS]
+        },
+
+        // On Cliff
+        "Open Grotto on Upper Cliff": {
+            DisplayGroup: { groupName: "On Cliff", imageName: "Super Cucco Minigame" },
+            ExitRegion: "upstream",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsGrotto: true,
+            DefaultEntranceGroupName: "Generic Grotto",
+            MapInfo: { x: 132, y: 217 },
+            Age: Age.EITHER,
+            LongDescription: "Go up the ladder closest to Hyrule Field. Jump to the cliff behind you and enter the grotto."
+        },
+        "Grotto Under Rock on Upper Cliff": {
+            ExitRegion: "upstream",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsGrotto: true,
+            MapInfo: { x: 159, y: 206 },
+            Age: Age.EITHER,
+            LongDescription: "Go up the ladder closest to Hyrule Field. This grotto is under the yellow rock at the top.",
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+        },
+
+        // By Waterfall
         "Lost Woods": {
+            DisplayGroup: { groupName: "By Waterfall", imageName: "Zelda's Lullaby" },
             ExitRegion: "upstream",
             Map: "Lost Woods",
             Region: "nearGoronCity",
@@ -1499,36 +1536,6 @@ let OwExits = {
             MapInfo: { x: 332, y: 61 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the domain - play Zelda's Lullaby on the symbol by the waterfall."
-        },
-
-        // Interiors
-        "Song of Storms Grotto": {
-            ExitRegion: "upstream",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
-            DefaultEntranceGroupName: "2 Scrubs",
-            MapInfo: { x: 15, y: 145 },
-            Age: Age.EITHER,
-            LongDescription: "Play the Song of Storms in the center of the rocks near the cucco spawn to reveal the grotto.",
-            RequiredSongs: [Songs.SONG_OF_STORMS]
-        },
-        "Open Grotto on Upper Cliff": {
-            ExitRegion: "upstream",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
-            DefaultEntranceGroupName: "Generic Grotto",
-            MapInfo: { x: 132, y: 217 },
-            Age: Age.EITHER,
-            LongDescription: "Go up the ladder closest to Hyrule Field. Jump to the cliff behind you and enter the grotto."
-        },
-        "Grotto Under Rock on Upper Cliff": {
-            ExitRegion: "upstream",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
-            MapInfo: { x: 159, y: 206 },
-            Age: Age.EITHER,
-            LongDescription: "Go up the ladder closest to Hyrule Field. This grotto is under the yellow rock at the top.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         }
     },
 
