@@ -6,7 +6,6 @@ let StandardDungeons = {
         Abbreviation: "DEKU",
         MapGroup: MapGroups.DUNGEONS,
         Floors: [ "F3", "F2", "B1", "B2" ],
-        UsesDisplayGroups: true,
         StartingFloorIndex: 1,
         UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canBurnBasementWeb: function(age) {
@@ -245,7 +244,6 @@ let StandardDungeons = {
     "Dodongo's Cavern": {
         Abbreviation: "DONG",
         MapGroup: MapGroups.DUNGEONS,
-        UsesDisplayGroups: true,
         Floors: ["F2", "F1"],
         StartingFloorIndex: 1,
         Regions: {
@@ -745,7 +743,6 @@ let StandardDungeons = {
     "Jabu Jabu's Belly": {
         Abbreviation: "JABU",
         MapGroup: MapGroups.DUNGEONS,
-        UsesDisplayGroups: true,
         Floors: ["F2", "F1", "B1"],
         StartingFloorIndex: 1,
         UseChildAge: function() { 
@@ -954,7 +951,6 @@ let StandardDungeons = {
     "Forest Temple": {
         Abbreviation: "FRST",
         MapGroup: MapGroups.DUNGEONS,
-        UsesDisplayGroups: true,
         Floors: ["F2", "F1", "B1"],
         StartingFloorIndex: 1,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
@@ -1619,7 +1615,6 @@ let StandardDungeons = {
     "Fire Temple": {
         Abbreviation: "FIRE",
         MapGroup: MapGroups.DUNGEONS,
-        UsesDisplayGroups: true,
         Floors: ["F5", "F4", "F3", "F2", "F1"],
         StartingFloorIndex: 4,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
@@ -2392,7 +2387,6 @@ let StandardDungeons = {
     "Water Temple": {
         Abbreviation: "WATR",
         MapGroup: MapGroups.DUNGEONS,
-        UsesDisplayGroups: true,
         Floors: ["F3", "F2", "F1", "B1"],
         StartingFloorIndex: 0,
         UseAdultAge: function() { 
@@ -3141,7 +3135,6 @@ let StandardDungeons = {
     "Shadow Temple": {
         Abbreviation: "SHDW",
         MapGroup: MapGroups.DUNGEONS,
-        UsesDisplayGroups: true,
         Floors: ["F1", "B1", "B2"],
         StartingFloorIndex: 0,
         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
@@ -4005,7 +3998,6 @@ let StandardDungeons = {
     "Spirit Temple": {
         Abbreviation: "SPRT",
         MapGroup: MapGroups.DUNGEONS,
-        UsesDisplayGroups: true,
         Floors: ["F4", "F3", "F2", "F1"],
         StartingFloorIndex: 3,
         _canAccessAdultSide: function() {
@@ -4840,7 +4832,6 @@ let StandardDungeons = {
     "Ice Cavern": {
         Abbreviation: "ICE",
         MapGroup: MapGroups.DUNGEONS,
-        UsesDisplayGroups: true,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canDoTripleSlashClip: function(age) {
             return Settings.GlitchesToAllow.iceTripleSlashClips &&
@@ -5215,7 +5206,6 @@ let StandardDungeons = {
     "Bottom of the Well": {
         Abbreviation: "WELL",
         MapGroup: MapGroups.DUNGEONS,
-        UsesDisplayGroups: true,
         Floors: ["F1", "B1"],
         StartingFloorIndex: 0,
         Regions: {
@@ -5656,7 +5646,6 @@ let StandardDungeons = {
     "Training Grounds": {
         Abbreviation: "GTG",
         MapGroup: MapGroups.DUNGEONS,
-        UsesDisplayGroups: true,
         UseAdultAge: function() { 
             return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.gtgChildAllowed;
         },
@@ -6449,7 +6438,6 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: ["MN", "FST", "WTR", "SHW", "FIR", "LIT", "SPT"],
         StartingFloorIndex: 0,
-        UsesDisplayGroups: true,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canCompleteTrials: function(age) {
             // Requires IsPostWalkCheck to be true on any item location that uses this!!!

@@ -326,17 +326,6 @@
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsGroupTrackerContainer")' settings>Tracker</span>
 					<div id="settingsGroupTrackerContainer">
-						<div class="settings-radio-group" title="How dungeon item locations will display.">
-							Dungeon Item Display
-							<label onclick='SettingsPage.setOptionValueForTracker("dungeonItemDisplay", event)'
-								title="Displays items in groups - like the overworld locations.">
-								<input type="radio" name="dungeonItemDisplay" value=0>By category
-							</label>
-							<label onclick='SettingsPage.setOptionValueForTracker("dungeonItemDisplay", event)'
-								title="Groups everything into one bunch, in a suggested order to obtain them.">
-								<input type="radio" name="dungeonItemDisplay" value=1>By suggested order
-							</label>
-						</div>
 						<div class="settings-radio-group" title="Route finder settings.">
 							Route Finder Settings
 							<label onclick='SettingsPage.setBooleanValueForTracker("routeBasedOnTime", event)'

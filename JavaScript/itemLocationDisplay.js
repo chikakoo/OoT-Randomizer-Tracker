@@ -34,11 +34,6 @@ let ItemLocationDisplay = {
 		if (!mapName) { mapName = this.currentLocationName; }
 
 		let groupedItemLocationInfo = {};
-		let mapInfo = MapLocations[mapName];
-
-		let needToSortDungeon = mapInfo.MapGroup === MapGroups.DUNGEONS &&
-			Settings.TrackerSettings.dungeonItemDisplay === DungeonItemDisplaySettings.BY_SUGGESTED_ORDER;
-		let usesDisplayGroups = mapInfo.UsesDisplayGroups || needToSortDungeon;
 
 		// Sort the locked doors to the end, unless we don't want them to be there
 		let allItemLocations = Data.getAllItemLocations(mapName);
@@ -50,38 +45,33 @@ let ItemLocationDisplay = {
 		sortedItemLocations.forEach(function(itemLocation) {
 			let group = itemLocation.OverrideItemGroup || itemLocation.ItemGroup;
 			let imageName = null;
-			if (usesDisplayGroups) {
-				if (itemLocation.DisplayGroup) {
-					group = itemLocation.DisplayGroup.groupName;
-					imageName ??= itemLocation.DisplayGroup.imageName;
-				} else {
-					group = "Item Locations",
-					imageName = "Chest"
-				}
+
+			if (itemLocation.DisplayGroup) {
+				group = itemLocation.DisplayGroup.groupName;
+				imageName ??= itemLocation.DisplayGroup.imageName;
+			} else {
+				group = "Item Locations",
+				imageName = "Chest"
 			}
 			
 			if (!groupedItemLocationInfo[group]) {
 				groupedItemLocationInfo[group] = {
 					itemLocations: [],
-					backgroundImage: usesDisplayGroups
-						? getItemGroupImageFromName(imageName)
-						: getItemGroupImagePath(group)
+					backgroundImage: getItemGroupImageFromName(imageName)
 				};
 			}
 
 			groupedItemLocationInfo[group].itemLocations.push(itemLocation);
 		});
 
-		if (usesDisplayGroups) {
-			Object.values(groupedItemLocationInfo).forEach(groups => {
-				groups.itemLocations.sort((loc1, loc2) => {
-					if (!loc1.Order && !loc2.Order) {
-						return 1;
-					}
-					return (loc1.Order > loc2.Order) ? 1 : -1
-				});
+		Object.values(groupedItemLocationInfo).forEach(groups => {
+			groups.itemLocations.sort((loc1, loc2) => {
+				if (!loc1.Order && !loc2.Order) {
+					return 1;
+				}
+				return (loc1.Order > loc2.Order) ? 1 : -1
 			});
-		}
+		});
 
 		return groupedItemLocationInfo;
 	},
@@ -218,9 +208,6 @@ let ItemLocationDisplay = {
 
 		let _this = this;
 		Object.keys(groupedItemLocationInfo).forEach(function(groupId) {
-			let isSortedDungeon = mapInfo.MapGroup === MapGroups.DUNGEONS &&
-				Settings.TrackerSettings.dungeonItemDisplay === DungeonItemDisplaySettings.BY_SUGGESTED_ORDER;
-			
 			let itemGroup = groupedItemLocationInfo[groupId];
 			let itemGroupDiv = dce("div", "item-group");
 			mainContainer.appendChild(itemGroupDiv);
@@ -235,12 +222,11 @@ let ItemLocationDisplay = {
 			
 			let itemGroupTextDiv = dce("div", "item-group-text");
 
-			let usesDisplayGroups = isSortedDungeon || mapInfo.UsesDisplayGroups;
-			let itemGroupName = usesDisplayGroups ? groupId : getItemGroupName(groupId);
+			let itemGroupName = groupId;
 			if (itemGroupName) {
 				itemGroupTextDiv.innerText = itemGroupName
 				itemGroupTitleDiv.appendChild(itemGroupTextDiv);
-				_this._createItemLocations(itemGroup.itemLocations, itemGroupDiv, usesDisplayGroups, itemGroupName);
+				_this._createItemLocations(itemGroup.itemLocations, itemGroupDiv, itemGroupName);
 			}
 		});
 	},
@@ -249,9 +235,9 @@ let ItemLocationDisplay = {
 	 * Creates the item locations
 	 * @param itemGroup - the data for the locations
 	 * @param itemGroupDiv - the div for the locations
-	 * @param includeGroupIcon - whether to include the group icon; used for ordered locations
+	 * @param includeGroupName - the name of the item group
 	 */
-	_createItemLocations: function(itemGroup, itemGroupDiv, includeGroupIcon, itemGroupName) {
+	_createItemLocations: function(itemGroup, itemGroupDiv, itemGroupName) {
 		if (itemGroup.every(loc => loc.disabled || loc.Hide)) {
 			addCssClass(itemGroupDiv, "nodisp");
 			return;
@@ -322,13 +308,10 @@ let ItemLocationDisplay = {
 			itemLocationTimeIconDiv.style.backgroundImage = Data.getTimeImagePath(itemLocation);
 			itemLocationTitleDiv.appendChild(itemLocationTimeIconDiv);
 			
-			if (includeGroupIcon) {
-				let imagePath = getItemLocationGroupIcon(itemLocation);
-
-				let itemLocationIconDiv = dce("div", "item-location-group-icon");
-				itemLocationIconDiv.style.backgroundImage = imagePath;
-				itemLocationTitleDiv.appendChild(itemLocationIconDiv);
-			}
+			let imagePath = getItemLocationGroupIcon(itemLocation);
+			let itemLocationIconDiv = dce("div", "item-location-group-icon");
+			itemLocationIconDiv.style.backgroundImage = imagePath;
+			itemLocationTitleDiv.appendChild(itemLocationIconDiv);
 
 			let itemLocationTextDiv = dce("div", "item-location-text");
 			itemLocationTextDiv.innerText = itemLocation.Name;

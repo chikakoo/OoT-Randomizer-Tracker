@@ -2,7 +2,6 @@ let MapLocations = {
     "Kokiri Forest": {
         Abbreviation: "KOKI",
         MapGroup: MapGroups.FOREST,
-        UsesDisplayGroups: true,
         Regions: {
             main: {
                 DisplayGroup: { groupName: "Main Area", imageName: "Deku Shield" },
@@ -244,7 +243,6 @@ let MapLocations = {
     "Lost Woods": {
 		Abbreviation: "LOST",
         MapGroup: MapGroups.FOREST,
-        UsesDisplayGroups: true,
         Regions: {
             skullKidAndBridge: {
                 DisplayGroup: { groupName: "Skull Kid & Bridge", imageName: "Skull Mask" },
@@ -531,7 +529,6 @@ let MapLocations = {
     },
     
     "Lost Woods Bridge": {
-        UsesDisplayGroups: true,
         Abbreviation: "LWBG",
 		MapGroup: MapGroups.FOREST,
 		Regions: {
@@ -576,7 +573,6 @@ let MapLocations = {
     },
 
     "Sacred Forest Meadow": {
-        UsesDisplayGroups: true,
         Abbreviation: "SFM",
         MapGroup: MapGroups.FOREST,
         Regions: {
@@ -713,7 +709,6 @@ let MapLocations = {
     },
 
     "Hyrule Field": {
-        UsesDisplayGroups: true,
         Abbreviation: "HFLD",
         MapGroup: MapGroups.FIELD_MARKET,
         Regions: {
@@ -819,7 +814,6 @@ let MapLocations = {
     },
 
     "Lon Lon Ranch": {
-        UsesDisplayGroups: true,
 		Abbreviation: "LON",
 		MapGroup: MapGroups.FIELD_MARKET,
 		Regions: {
@@ -957,7 +951,6 @@ let MapLocations = {
     },
     
     "Market Entrance": {
-        UsesDisplayGroups: true,
 		Abbreviation: "MENT",
 		MapGroup: MapGroups.FIELD_MARKET,
 		Regions: {
@@ -984,7 +977,6 @@ let MapLocations = {
 	"Market": {
 		Abbreviation: "MRKT",
 		MapGroup: MapGroups.FIELD_MARKET,
-        UsesDisplayGroups: true,
 		Regions: {
             main: {
                 DisplayGroup: { groupName: "Marketplace", imageName: "Green Rupee" },
@@ -1097,7 +1089,6 @@ let MapLocations = {
     },
     
     "Temple of Time": {
-        UsesDisplayGroups: true,
 		Abbreviation: "ToT",
 		MapGroup: MapGroups.FIELD_MARKET,
 		Regions: {
@@ -1148,7 +1139,6 @@ let MapLocations = {
 		MapGroup: MapGroups.FIELD_MARKET,
 		Floors: ["HYR", "GAN"],
 		StartingFloorIndex: 0,
-        UsesDisplayGroups: true,
 		Regions: {
             main: {
                 DisplayGroup: { groupName: "To Market", imageName: "Compass" },
@@ -1289,7 +1279,6 @@ let MapLocations = {
 	},
     
     "Kakariko Village": {
-        UsesDisplayGroups: true,
 		Abbreviation: "KAK",
 		MapGroup: MapGroups.KAKARIKO,
         _canChildKillWatchtowerSkull: function() {
@@ -1697,7 +1686,6 @@ let MapLocations = {
 	},
     
     "Graveyard": {
-        UsesDisplayGroups: true,
         Abbreviation: "GVYD",
         MapGroup: MapGroups.KAKARIKO,
         Regions: {
@@ -1888,7 +1876,6 @@ let MapLocations = {
 		MapGroup: MapGroups.KAKARIKO,
         Floors: ["DMP", "WND", "POT"],
         StartingFloorIndex: 0,
-        UsesDisplayGroups: true,
         Regions: {
             // Dampe's Grave
             dampesGrave: {
@@ -2137,7 +2124,6 @@ let MapLocations = {
     },
 
     "Death Mountain Trail": {
-        UsesDisplayGroups: true,
 		Abbreviation: "DMT",
 		MapGroup: MapGroups.MOUNTAIN,
 		Regions: {
@@ -2311,7 +2297,6 @@ let MapLocations = {
     },
     	
 	"Death Mountain Crater": {
-        UsesDisplayGroups: true,
 		Abbreviation: "DMC",
 		MapGroup: MapGroups.MOUNTAIN,
 		Regions: {
@@ -2514,7 +2499,6 @@ let MapLocations = {
     },
     
     "Goron City": {
-        UsesDisplayGroups: true,
 		Abbreviation: "GORO",
 		MapGroup: MapGroups.MOUNTAIN,
         _canStopAdultGoron: function(age) {
@@ -2820,7 +2804,6 @@ let MapLocations = {
     },
     
 	"Zora's River": {
-        UsesDisplayGroups: true,
 		Abbreviation: "RIVR",
 		MapGroup: MapGroups.WATER,
 		Regions: {
@@ -3083,7 +3066,6 @@ let MapLocations = {
 	},
 
 	"Zora's Domain": {
-        UsesDisplayGroups: true,
 		Abbreviation: "DOMN",
 		MapGroup: MapGroups.WATER,
 		Regions: {
@@ -3264,7 +3246,6 @@ let MapLocations = {
 	},
 
 	"Zora's Fountain": {
-        UsesDisplayGroups: true,
 		Abbreviation: "FNTN",
 		MapGroup: MapGroups.WATER,
 		Regions: {
@@ -3391,7 +3372,6 @@ let MapLocations = {
 	},
 	
 	"Lake Hylia": {
-        UsesDisplayGroups: true,
 		Abbreviation: "LAKE",
 		MapGroup: MapGroups.WATER,
 		Regions: {
@@ -3568,7 +3548,6 @@ let MapLocations = {
 	"Gerudo Valley": {
 		Abbreviation: "GVAL",
 		MapGroup: MapGroups.DESERT,
-        UsesDisplayGroups: true,
 		Regions: {
             main: {
                 DisplayGroup: { groupName: "Hyrule Field Side", imageName: "Kokiri Sword" },
@@ -3810,7 +3789,6 @@ let MapLocations = {
     },
 
 	"Gerudo Fortress": {
-        UsesDisplayGroups: true,
 		Abbreviation: "FORT",
 		MapGroup: MapGroups.DESERT,
 		StartingFloorIndex: 0,
@@ -4210,7 +4188,6 @@ let MapLocations = {
         MapGroup: MapGroups.DESERT,
         Floors: ["J1", "J2", "J3", "J4", "KIT", "TOP"],
         StartingFloorIndex: 0,
-        UsesDisplayGroups: true,
         Regions: {
             main: {
                 Exits: {},
@@ -4723,7 +4700,6 @@ let MapLocations = {
     },
 
 	"Haunted Wasteland": {
-        UsesDisplayGroups: true,
 		Abbreviation: "HW",
 		MapGroup: MapGroups.DESERT,
 		Regions: {
@@ -4840,7 +4816,6 @@ let MapLocations = {
 	},
     	
 	"Desert Colossus": {
-        UsesDisplayGroups: true,
 		Abbreviation: "DCOL",
 		MapGroup: MapGroups.DESERT,
 		Regions: {

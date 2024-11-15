@@ -31,11 +31,6 @@ let OpenGerudosFortressSettings = {
 	OPEN: 2
 };
 
-let DungeonItemDisplaySettings = {
-	BY_CATEGORY: 0,
-	BY_SUGGESTED_ORDER: 1
-};
-
 let ShuffleLocationSettings = {
 	OFF: 0,
 	ALL: 1,
@@ -92,7 +87,6 @@ let Settings = {
 
 	TrackerSettings: {
 		saveFileName: "",
-		dungeonItemDisplay: DungeonItemDisplaySettings.BY_SUGGESTED_ORDER,
 		deprioritizeDampeToWindmill: true,
 		deprioritizeHyruleField: true,
 		deprioritizeHauntedWasteland: true,

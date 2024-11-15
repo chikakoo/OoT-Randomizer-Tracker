@@ -78,7 +78,6 @@ let SettingsPage = {
         this._initializeRadioButton("entranceShuffleSetting", Settings.RandomizerSettings.entranceShuffleSetting);
         this._initializeRadioButton("gossipStoneSetting", Settings.RandomizerSettings.gossipStoneSetting);
         this._initializeRadioButton("maxRequiredTokens", Settings.RandomizerSettings.maxRequiredTokens);
-        this._initializeRadioButton("dungeonItemDisplay", Settings.TrackerSettings.dungeonItemDisplay);
     },
     
     /**
