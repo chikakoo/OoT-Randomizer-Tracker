@@ -1873,6 +1873,7 @@ let OwExits = {
     },
 
     "Gerudo Fortress": {
+        // Ground Level
         "Gerudo Valley": {
             ExitRegion: "main",
             Map: "Gerudo Valley",
@@ -1883,6 +1884,7 @@ let OwExits = {
             LongDescription: "This is the exit back to the valley."
         },
         "Haunted Wasteland": {
+            DisplayGroup: { groupName: "Ground Level", imageName: "Gerudo Membership Card" },
             ExitRegion: "wastelandEntrance",
             Map: "Haunted Wasteland",
             Region: "entrance",
@@ -1908,8 +1910,6 @@ let OwExits = {
                 return Settings.GlitchesToAllow.gtgAdultNoCard || Data.areGerudoGuardsTame();
             }
         },
-
-        // Interiors
         "Bottom Left Door": {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
@@ -1921,6 +1921,15 @@ let OwExits = {
             MapInfo: { x: 133, y: 125 },
             Age: Age.EITHER,
             LongDescription: "The door at the bottom left of the fortress."
+        },
+        "Song of Storms Grotto": {
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsGrotto: true,
+            MapInfo: { x: 137, y: 172 },
+            Age: Age.ADULT,
+            LongDescription: "Play the song of storms in the center of the crates near the fortress to reveal this grotto.",
+            RequiredSongs: [Songs.SONG_OF_STORMS]
         },
         "Enclave Left Door": {
             ExitRegion: "main",
@@ -1982,6 +1991,8 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "The door to the left (the second one) in the area above Gerudo Training Grounds."
         },
+
+        // Middle Levels
         "Middle Left Door": {
             ExitRegion: "middleFloor",
             Map: "Thieves' Hideout",
@@ -2066,15 +2077,7 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "Normally only reachable from the entrance that leads there. There's a glitch involving a specific hookshot angle from the top of Link's jail as well."
         },
-        "Song of Storms Grotto": {
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
-            MapInfo: { x: 137, y: 172 },
-            Age: Age.ADULT,
-            LongDescription: "Play the song of storms in the center of the crates near the fortress to reveal this grotto.",
-            RequiredSongs: [Songs.SONG_OF_STORMS]
-        },
+
 
         // Hidden, non-Thieves' Hideout shuffle exits for travel purposes
         "Gerudo Fortress to Jail 1": {

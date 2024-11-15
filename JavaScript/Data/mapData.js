@@ -3605,7 +3605,6 @@ let MapLocations = {
                         OwExit: OwExits["Gerudo Valley"]["Hyrule Field"]
                     }
                 },
-
                 ItemLocations: {
                     "Skulltula by Tiny Waterfall": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3811,6 +3810,7 @@ let MapLocations = {
     },
 
 	"Gerudo Fortress": {
+        UsesDisplayGroups: true,
 		Abbreviation: "FORT",
 		MapGroup: MapGroups.DESERT,
 		StartingFloorIndex: 0,
@@ -3821,6 +3821,7 @@ let MapLocations = {
         },
 		Regions: {
             main: {
+                DisplayGroup: { groupName: "Ground Level", imageName: "Gerudo Membership Card" },
                 Exits: {
                     middleFloor: {
                         CustomRequirement: function(age) {
@@ -3857,16 +3858,18 @@ let MapLocations = {
                         }
                     },
 
+                    // Ground Level
                     "Gerudo Valley": {
                         OwExit: OwExits["Gerudo Fortress"]["Gerudo Valley"]
                     },
                     "Training Grounds": {
                         OwExit: OwExits["Gerudo Fortress"]["Training Grounds"]
                     },
-
-                    // Grottos & Interiors
                     "Bottom Left Door": {
                         OwExit: OwExits["Gerudo Fortress"]["Bottom Left Door"]
+                    },
+                    "Song of Storms Grotto": {
+                        OwExit: OwExits["Gerudo Fortress"]["Song of Storms Grotto"]
                     },
                     "Enclave Left Door": {
                         OwExit: OwExits["Gerudo Fortress"]["Enclave Left Door"]
@@ -3882,9 +3885,6 @@ let MapLocations = {
                     },
                     "Left Door Above GTG": {
                         OwExit: OwExits["Gerudo Fortress"]["Left Door Above GTG"]
-                    },
-                    "Song of Storms Grotto": {
-                        OwExit: OwExits["Gerudo Fortress"]["Song of Storms Grotto"]
                     },
 
                     // Hidden exits to travel if Thieves' Hideout shuffle is off
@@ -3944,6 +3944,7 @@ let MapLocations = {
                 }
             },
             middleFloor: {
+                DisplayGroup: { groupName: "Middle and Upper Level", imageName: "Chest" },
                 Exits: {
                     main: {},
                     topOfKitchen: {
@@ -3966,9 +3967,16 @@ let MapLocations = {
                         OwExit: OwExits["Gerudo Fortress"]["Vines Forward Door"]
                     }
                 },
-                ItemLocations: {}
+                ItemLocations: {
+                    "Placeholder": {
+                        Age: Age.EITHER,
+                        RequiredToAppear: function() { return false; },
+                        LongDescription: "Just a placeholder so this group is sorted correctly..."
+                    }
+                }
             },
             topOfKitchen: {
+                DisplayGroup: { groupName: "Middle and Upper Level", imageName: "Chest" },
                 Exits: {
                     jail4Door: {},
                     middleFloor: {},
@@ -4009,6 +4017,7 @@ let MapLocations = {
                 }
             },
             jail4Door: {
+                DisplayGroup: { groupName: "Middle and Upper Level", imageName: "Chest" },
                 Exits: {
                     middleFloor: {},
 
@@ -4025,6 +4034,7 @@ let MapLocations = {
                 ItemLocations: {}
             },
             topOfFortress: {
+                DisplayGroup: { groupName: "Middle and Upper Level", imageName: "Chest" },
                 UseAdultAge: function() {
                     return (!Settings.GlitchesToAllow.groundJump && !Settings.GlitchesToAllow.gfChildJumpByTopKitchen) || 
                         !Settings.GlitchesToAllow.megaFlip;
@@ -4046,6 +4056,7 @@ let MapLocations = {
                 }
             },
             aboveJail1: {
+                DisplayGroup: { groupName: "Middle and Upper Level", imageName: "Chest" },
                 Exits: {
                     main: {},
                     "Door Above Jail 1": {
@@ -4060,6 +4071,7 @@ let MapLocations = {
                 ItemLocations: {}
             },
             aboveLinksJail: {
+                DisplayGroup: { groupName: "Above Link's Jail", imageName: "Purple Rupee" },
                 Exits: {
                     main: {},
                     aboveJail1: {},
@@ -4088,11 +4100,11 @@ let MapLocations = {
                 }
             },
             backArea: {
+                DisplayGroup: { groupName: "Archery Area", imageName: "Fairy Bow" },
                 ExcludeFromSpawnList: true,
                 Exits: {
                     main: {}
                 },
-
                 ItemLocations: {
                     "Rupee in Overhanging Sign by HBA": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -4177,6 +4189,7 @@ let MapLocations = {
             wastelandEntrance: {
                 Exits: {
                     main: {
+                        DisplayGroup: { groupName: "Ground Level", imageName: "Gerudo Membership Card" },
                         CustomRequirement: function(age) {
                             return age === Age.ADULT || Data.itemLocationObtained("Gerudo Fortress", "main", "Opened Gate");
                         }
