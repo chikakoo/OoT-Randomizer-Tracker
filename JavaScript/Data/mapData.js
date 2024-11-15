@@ -819,31 +819,44 @@ let MapLocations = {
     },
 
     "Lon Lon Ranch": {
+        UsesDisplayGroups: true,
 		Abbreviation: "LON",
 		MapGroup: MapGroups.FIELD_MARKET,
 		Regions: {
             main: {
+                DisplayGroup: { groupName: "Entrance", imageName: "Super Cucco Minigame" },
                 Exits: {
+                    // Entrance
                     "Hyrule Field": {
                         OwExit: OwExits["Lon Lon Ranch"]["Hyrule Field"]
                     },
-
-                    // Interiors & Grottos
                     "Talon's House": {
                         OwExit: OwExits["Lon Lon Ranch"]["Talon's House"]
                     },
                     "Stable": {
                         OwExit: OwExits["Lon Lon Ranch"]["Stable"]
                     },
-                    "Cow Shed": {
-                        OwExit: OwExits["Lon Lon Ranch"]["Cow Shed"]
-                    },
+
+                    // Back
                     "Open Grotto in Southwest Corner": {
                         OwExit: OwExits["Lon Lon Ranch"]["Open Grotto in Southwest Corner"]
+                    },
+                    "Cow Shed": {
+                        OwExit: OwExits["Lon Lon Ranch"]["Cow Shed"]
                     }
                 },
 
                 ItemLocations: {
+                    // Entrance
+                    "4 Pots by Entrance": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "4 Pots",
+                        MapInfo: { x: 193, y: 44 },
+                        Age: Age.CHILD,
+                        LongDescription: "As Child, these pots are on the wall near the stable door."
+                    },
                     "Skulltula on Talon's House": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
@@ -852,6 +865,12 @@ let MapLocations = {
                         LongDescription: "At night, there's a skulltula high up on Talon's House.",
                         RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
+                    "Crate by Talon's House": {
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 250, y: 98 },
+                        Age: Age.CHILD,
+                        LongDescription: "As Child, this crate is next to Talon's House, by the skulltula tree.",
+                    },
                     "Skulltula in Tree": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 280, y: 100 },
@@ -859,21 +878,17 @@ let MapLocations = {
                         LongDescription: "The tree is just passed the houses to the left. Roll into it to reveal the skulltula. Use a pot from the beginning to kill it if you have no weapon.",
                         OverrideItemGroupCondition: true
                     },
-                    "Skulltula on Rain Shed": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 233, y: 231  },
+
+                    // Racetrack
+                    "3 Pots in Rain Shed": {
+                        DisplayGroup: { groupName: "Racetrack", imageName: "Epona's Song" },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Pots",
+                        MapInfo: { x: 234, y: 213 },
                         Age: Age.CHILD,
-                        LongDescription: "At night, run around to the back of the corral to find this skulltula. Use a pot from the beginning to kill it if you have no weapon.",
-                        OverrideItemGroupCondition: true
-                    },
-                    "Skulltula on Southwest Wall": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 44, y: 214 },
-                        Age: Age.CHILD,
-                        LongDescription: "At night, there's a skulltula on the southeast wall of the ranch. Facing the cow shed, it's a little bit to the right.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        LongDescription: "As Child, these pots are in the rain shed inside the horse enclosure."
                     },
                     "Epona's Song": {
                         ItemGroup: ItemGroups.SONG,
@@ -886,30 +901,6 @@ let MapLocations = {
                             return Data.itemLocationObtained("Castle", "hyruleCastle", "Gift from Malon") &&
                                 Data.itemLocationObtained("Castle", "hyruleCastle", "Wake up Talon");
                         }
-                    },
-                    "4 Pots by Entrance": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "4 Pots",
-                        MapInfo: { x: 193, y: 44 },
-                        Age: Age.CHILD,
-                        LongDescription: "As Child, these pots are on the wall near the stable door."
-                    },
-                    "3 Pots in Rain Shed": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Pots",
-                        MapInfo: { x: 234, y: 213 },
-                        Age: Age.CHILD,
-                        LongDescription: "As Child, these pots are in the rain shed inside the horse enclosure."
-                    },
-                    "Crate by Talon's House": {
-                        ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 250, y: 98 },
-                        Age: Age.CHILD,
-                        LongDescription: "As Child, this crate is next to Talon's House, by the skulltula tree.",
                     },
                     "Wonderitem via Short Gate": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -941,6 +932,25 @@ let MapLocations = {
                             return Data.canRideEpona(age);
                         }
                     },
+
+                    // Back
+                    "Skulltula on Rain Shed": {
+                        DisplayGroup: { groupName: "Back", imageName: "Cow Shed" },
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 233, y: 231  },
+                        Age: Age.CHILD,
+                        LongDescription: "At night, run around to the back of the corral to find this skulltula. Use a pot from the beginning to kill it if you have no weapon.",
+                        OverrideItemGroupCondition: true
+                    },
+                    "Skulltula on Southwest Wall": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 44, y: 214 },
+                        Age: Age.CHILD,
+                        LongDescription: "At night, there's a skulltula on the southeast wall of the ranch. Facing the cow shed, it's a little bit to the right.",
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                    }
                 }
             }
 		}

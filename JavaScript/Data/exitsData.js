@@ -497,6 +497,7 @@ let OwExits = {
     },
 
     "Lon Lon Ranch": {
+        // Entrance
         "Hyrule Field": {
             ExitRegion: "main",
             Map: "Hyrule Field",
@@ -506,8 +507,6 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance back to Hyrule Field."
         },
-
-        // Interiors
         "Talon's House": {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
@@ -531,6 +530,18 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the first door on your right when you first enter the ranch."
         },
+
+        // Back
+        "Open Grotto in Southwest Corner": {
+            DisplayGroup: { groupName: "Back", imageName: "Cow Shed" },
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            DefaultEntranceGroupName: "3 Scrubs",
+            MapInfo: { x: 290, y: 240 },
+            IsGrotto: true,
+            Age: Age.CHILD,
+            LongDescription: "There's an open grotto as a child at the far southwest corner of the ranch."
+        },
         "Cow Shed": {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
@@ -539,15 +550,6 @@ let OwExits = {
             IsInterior: true,
             Age: Age.EITHER,
             LongDescription: "Head to the back of Lon Lon Ranch to find this building."
-        },
-        "Open Grotto in Southwest Corner": {
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            DefaultEntranceGroupName: "3 Scrubs",
-            MapInfo: { x: 290, y: 240 },
-            IsGrotto: true,
-            Age: Age.CHILD,
-            LongDescription: "There's an open grotto as a child at the far southwest corner of the ranch."
         }
     },
 
