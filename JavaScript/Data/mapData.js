@@ -713,11 +713,14 @@ let MapLocations = {
     },
 
     "Hyrule Field": {
+        UsesDisplayGroups: true,
         Abbreviation: "HFLD",
         MapGroup: MapGroups.FIELD_MARKET,
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Northeast", imageName: "Zelda's Letter" },
                 Exits: {
+                    // Northeast
                     "Lost Woods Bridge": {
                         OwExit: OwExits["Hyrule Field"]["Lost Woods Bridge"]
                     },
@@ -733,19 +736,16 @@ let MapLocations = {
                     "Lon Lon Ranch": {
                         OwExit: OwExits["Hyrule Field"]["Lon Lon Ranch"]
                     },
-                    "Gerudo Valley": {
-                        OwExit: OwExits["Hyrule Field"]["Gerudo Valley"]
-                    },
-                    "Lake Hylia": {
-                        OwExit: OwExits["Hyrule Field"]["Lake Hylia"]
-                    },
-
-                    // Interiors & Grottos
                     "Hidden Grotto by Kakariko": {
                         OwExit: OwExits["Hyrule Field"]["Hidden Grotto by Kakariko"]
                     },
                     "Grotto in Drawbridge Rock": {
                         OwExit: OwExits["Hyrule Field"]["Grotto in Drawbridge Rock"]
+                    },
+
+                    // West
+                    "Gerudo Valley": {
+                        OwExit: OwExits["Hyrule Field"]["Gerudo Valley"]
                     },
                     "Grotto in Rock North of River": {
                         OwExit: OwExits["Hyrule Field"]["Grotto in Rock North of River"]
@@ -756,18 +756,24 @@ let MapLocations = {
                     "Grotto by Gerudo": {
                         OwExit: OwExits["Hyrule Field"]["Grotto by Gerudo"]
                     },
-                    "Grotto by Lake Hylia Fences": {
-                        OwExit: OwExits["Hyrule Field"]["Grotto by Lake Hylia Fences"]
+
+                    // South
+                    "Lake Hylia": {
+                        OwExit: OwExits["Hyrule Field"]["Lake Hylia"]
+                    },
+                    "Grotto in Southeast Forest Rock": {
+                        OwExit: OwExits["Hyrule Field"]["Grotto in Southeast Forest Rock"]
                     },
                     "Open Grotto East of Lake Hylia Fences": {
                         OwExit: OwExits["Hyrule Field"]["Open Grotto East of Lake Hylia Fences"]
                     },
-                    "Grotto in Southeast Forest Rock": {
-                        OwExit: OwExits["Hyrule Field"]["Grotto in Southeast Forest Rock"]
+                    "Grotto by Lake Hylia Fences": {
+                        OwExit: OwExits["Hyrule Field"]["Grotto by Lake Hylia Fences"]
                     }
                 },
 
                 ItemLocations: {
+                    // Northeast
                     "3 Wonderitems by Drawbridge": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
@@ -790,7 +796,10 @@ let MapLocations = {
                             Medallions.ZORAS_SAPPHIRE
                         ]
                     },
+
+                    // West
                     "Sell Bunny Hood": {
+                        DisplayGroup: { groupName: "West", imageName: "Gerudo Membership Card" },
                         ItemGroup: ItemGroups.NON_ITEM,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 184, y: 145 },

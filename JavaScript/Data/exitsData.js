@@ -344,6 +344,7 @@ let OwExits = {
     },
 
     "Hyrule Field": {
+        // Northeast
         "Lost Woods Bridge": {
             ExitRegion: "main",
             Map: "Lost Woods Bridge",
@@ -390,26 +391,6 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to Lon Lon Ranch in the center of the map."
         },
-        "Gerudo Valley": {
-            ExitRegion: "main",
-            Map: "Gerudo Valley",
-            Region: "main",
-            ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: 29, y: 137 },
-            Age: Age.EITHER,
-            LongDescription: "This is the entrance to Gerudo Valley."
-        },
-        "Lake Hylia": {
-            ExitRegion: "main",
-            Map: "Lake Hylia",
-            Region: "main",
-            ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: 64, y: 290 },
-            Age: Age.EITHER,
-            LongDescription: "This is the entrance to Lake Hylia."
-        },
-
-        // Interiors
         "Hidden Grotto by Kakariko": {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
@@ -429,6 +410,18 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "Remove the rock to the left of the Market drawbridge to reveal this grotto.",
             RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+        },
+
+        // West
+        "Gerudo Valley": {
+            DisplayGroup: { groupName: "West", imageName: "Gerudo Membership Card" },
+            ExitRegion: "main",
+            Map: "Gerudo Valley",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: 29, y: 137 },
+            Age: Age.EITHER,
+            LongDescription: "This is the entrance to Gerudo Valley."
         },
         "Grotto in Rock North of River": {
             ExitRegion: "main",
@@ -460,14 +453,26 @@ let OwExits = {
             RequiredChildItems: [ItemSets.BLAST_OR_SMASH_ITEMS],
             RequiredAdultItems: [Items.MEGATON_HAMMER]
         },
-        "Grotto by Lake Hylia Fences": {
+
+        // South
+        "Lake Hylia": {
+            DisplayGroup: { groupName: "South", imageName: "Fishing Pond" },
+            ExitRegion: "main",
+            Map: "Lake Hylia",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: 64, y: 290 },
+            Age: Age.EITHER,
+            LongDescription: "This is the entrance to Lake Hylia."
+        },
+        "Grotto in Southeast Forest Rock": {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
-            DefaultEntranceGroupName: "1 Scrub",
-            MapInfo: { x: 91, y: 267 },
+            DefaultEntranceGroupName: "Generic Grotto",
+            MapInfo: { x: 201, y: 227 },
             Age: Age.EITHER,
-            LongDescription: "There's a hidden grotto in the center of the fences by Lake Hylia. Bomb or hammer there to get in. The scrub is inside.",
+            LongDescription: "In the southeast (a bit south of the Kokiri Forest entrance), there's a small forest that has a rock you can break to reveal this grotto.",
             RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Open Grotto East of Lake Hylia Fences": {
@@ -479,14 +484,14 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is an open grotto just to the east of the square of fences by the Lake Hylia entrance."
         },
-        "Grotto in Southeast Forest Rock": {
+        "Grotto by Lake Hylia Fences": {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
-            DefaultEntranceGroupName: "Generic Grotto",
-            MapInfo: { x: 201, y: 227 },
+            DefaultEntranceGroupName: "1 Scrub",
+            MapInfo: { x: 91, y: 267 },
             Age: Age.EITHER,
-            LongDescription: "In the southeast (a bit south of the Kokiri Forest entrance), there's a small forest that has a rock you can break to reveal this grotto.",
+            LongDescription: "There's a hidden grotto in the center of the fences by Lake Hylia. Bomb or hammer there to get in. The scrub is inside.",
             RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         }
     },
