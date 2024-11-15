@@ -2514,6 +2514,7 @@ let MapLocations = {
     },
     
     "Goron City": {
+        UsesDisplayGroups: true,
 		Abbreviation: "GORO",
 		MapGroup: MapGroups.MOUNTAIN,
         _canStopAdultGoron: function(age) {
@@ -2522,6 +2523,7 @@ let MapLocations = {
         },
 		Regions: {
             main: {
+                DisplayGroup: { groupName: "Top Floor & Maze", imageName: "Megaton Hammer" },
                 Exits: {
                     darunia: {
                         CustomRequirement: function(age) {
@@ -2552,42 +2554,19 @@ let MapLocations = {
                             return MapLocations["Goron City"]._canStopAdultGoron(age);
                         }
                     },
+
+                    // Top Floor
                     "Death Mountain Trail": {
                         OwExit: OwExits["Goron City"]["Death Mountain Trail"]
                     },
 
-                    // Interiors & Grottos
+                    // Middle Floors
                     "Lava Room Grotto": {
                         OwExit: OwExits["Goron City"]["Lava Room Grotto"]
                     }
                 },
-
                 ItemLocations: {
-                    "Stop Rolling Goron as Child": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 165, y: 67 },
-                        Age: Age.CHILD,
-                        LongDescription: "Blow up the rolling goron while he's in the tunnel and talk to him to get the item.",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
-                    },
-                    "Stop Rolling Goron as Adult": {
-                        ItemGroup: ItemGroups.GIFT,
-                        MapInfo: { x: 139, y: 97 },
-                        Age: Age.ADULT,
-                        LongDescription: "Stop the rolling goron with a bomb, bombchu or bomb flower and talk to him to get the item. You can also shoot the bomb flowers with an arrow with the right timing to stop him.",
-                        CustomRequirement: function(age) {
-                            return MapLocations["Goron City"]._canStopAdultGoron(age);
-                        }
-                    },
-                    "Item From Medigoron": {
-                        ItemGroup: ItemGroups.GIFT,
-                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleExpensiveMerchants; },
-                        MapInfo: { x: 117, y: 260 },
-                        Age: Age.ADULT,
-                        LongDescription: "Blow up/hammer the weak walls on the western side of the middle floor. Pay Medigoron 200 rupees for this item.",
-                        RequiredItems: [UpgradedItems.ADULTS_WALLET],
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER]
-                    },
+                    // Top Floor
                     "Leftmost Maze Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 71, y: 24 },
@@ -2614,18 +2593,19 @@ let MapLocations = {
                         LongDescription: "Make your way to the topmost northwest corner of the city. Bomb, hammer, or pick up (only silvers) the rocks to get to the back right corner of the maze for this chest.",
                         RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
                     },
+                    "Maze Crate": {
+                        ItemGroup: ItemGroups.CRATE,
+                        MapInfo: { x: 95, y: 21 },
+                        Age: Age.EITHER,
+                        LongDescription: "Make your way to the topmost northwest corner of the city. Bomb, hammer, or pick up (only silvers) the rocks to get to the back right corner of the maze for this crate.",
+                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
+                    },
                     "Skulltula in Maze Crate": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 91, y: 25 },
                         Age: Age.CHILD,
                         LongDescription: "Make your way to the topmost northwest corner of the city. Bomb or hammer the rocks to get to the back right corner of the maze. Roll into the crate the get this skulltula.",
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
-                    },
-                    "Skulltula on Center Platform": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 180, y: 137 },
-                        Age: Age.ADULT,
-                        LongDescription: "There's a skulltula on the back side of the center platform. You may have to jump for it from the ropes if you don't have a hookshot."
+                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
                     },
                     "Gossip Stone in Maze": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -2634,23 +2614,16 @@ let MapLocations = {
                         LongDescription: "Make your way to the topmost northwest corner of the city. Bomb, hammer, or pick up (only silvers) the rocks to get to the back right corner of the maze for this stone.",
                         RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
                     },
-                    "Gossip Stone By Medigoron": {
-                        ItemGroup: ItemGroups.GOSSIP_STONE,
-                        MapInfo: { x: 115, y: 275 },
-                        Age: Age.EITHER,
-                        LongDescription: "In the southern area of the middle floor, blow up the walls that has bombflowers near it. Eventually, you'll make it to Medigoron, where the stone is.",
-                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.MEGATON_HAMMER]
+                    "Skulltula on Center Platform": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        MapInfo: { x: 180, y: 137 },
+                        Age: Age.ADULT,
+                        LongDescription: "There's a skulltula on the back side of the center platform. You may have to jump for it from the ropes if you don't have a hookshot."
                     },
-                    "2 Pots by Lower Staircase": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Pots",
-                        MapInfo: { x: 189, y: 199 },
-                        Age: Age.EITHER,
-                        LongDescription: "These pots are just after the first set of stairs at the bottom of the city."
-                    },
+
+                    // Middle Floors
                     "3 Pots by Upper Staircase": {
+                        DisplayGroup: { groupName: "Middle Floors", imageName: "Goron Tunic" },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.POT,
                         IsItemLocationGroup: true,
@@ -2659,6 +2632,22 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "From the upper exit, follow the left wall until you reach these pots."
                     },
+                    "Stop Rolling Goron as Child": {
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 165, y: 67 },
+                        Age: Age.CHILD,
+                        LongDescription: "Blow up the rolling goron while he's in the tunnel and talk to him to get the item.",
+                        RequiredItems: [ItemSets.EXPLOSIVES]
+                    },
+                    "Stop Rolling Goron as Adult": {
+                        ItemGroup: ItemGroups.GIFT,
+                        MapInfo: { x: 139, y: 97 },
+                        Age: Age.ADULT,
+                        LongDescription: "Stop the rolling goron with a bomb, bombchu or bomb flower and talk to him to get the item. You can also shoot the bomb flowers with an arrow with the right timing to stop him.",
+                        CustomRequirement: function(age) {
+                            return MapLocations["Goron City"]._canStopAdultGoron(age);
+                        }
+                    },
                     "Pot by Medigoron": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 130, y: 243 },
@@ -2666,16 +2655,38 @@ let MapLocations = {
                         LongDescription: "In the southern area of the middle floor, blow up the walls that has bombflowers near it. Eventually, you'll make it to Medigoron, where the pot is.",
                         RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.MEGATON_HAMMER]
                     },
-                    "Maze Crate": {
-                        ItemGroup: ItemGroups.CRATE,
-                        MapInfo: { x: 95, y: 21 },
+                    "Item From Medigoron": {
+                        ItemGroup: ItemGroups.GIFT,
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleExpensiveMerchants; },
+                        MapInfo: { x: 117, y: 260 },
+                        Age: Age.ADULT,
+                        LongDescription: "Blow up/hammer the weak walls on the western side of the middle floor. Pay Medigoron 200 rupees for this item.",
+                        RequiredItems: [UpgradedItems.ADULTS_WALLET],
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER]
+                    },
+                    "Gossip Stone By Medigoron": {
+                        ItemGroup: ItemGroups.GOSSIP_STONE,
+                        MapInfo: { x: 115, y: 275 },
                         Age: Age.EITHER,
-                        LongDescription: "Make your way to the topmost northwest corner of the city. Bomb, hammer, or pick up (only silvers) the rocks to get to the back right corner of the maze for this crate.",
-                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
+                        LongDescription: "In the southern area of the middle floor, blow up the walls that has bombflowers near it. Eventually, you'll make it to Medigoron, where the stone is.",
+                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.MEGATON_HAMMER]
+                    },
+
+                    // Bottom Floor
+                    "2 Pots by Lower Staircase": {
+                        DisplayGroup: { groupName: "Bottom Floor & Darunia", imageName: "Happy Goron" },
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.POT,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Pots",
+                        MapInfo: { x: 189, y: 199 },
+                        Age: Age.EITHER,
+                        LongDescription: "These pots are just after the first set of stairs at the bottom of the city."
                     }
                 }
             },
             darunia: {
+                DisplayGroup: { groupName: "Bottom Floor & Darunia", imageName: "Happy Goron" },
                 Exits: {
                     main: {},
                     spinningUrn: {
@@ -2693,7 +2704,6 @@ let MapLocations = {
                         OwExit: OwExits["Goron City"]["Death Mountain Crater"]
                     }
                 },
-
                 ItemLocations: {
                     "Darunia's Joy": {
                         ItemGroup: ItemGroups.GIFT,
@@ -2714,6 +2724,7 @@ let MapLocations = {
                 }
             },
             lostWoods: {
+                DisplayGroup: { groupName: "Middle Floors", imageName: "Goron Tunic" },
                 Exits: {
                     lostWoodsRocks: {
                         CustomRequirement: function(age) {
@@ -2728,6 +2739,7 @@ let MapLocations = {
                 ItemLocations: {}
             },
             lostWoodsRocks: {
+                DisplayGroup: { groupName: "Middle Floors", imageName: "Goron Tunic" },
                 ExcludeFromSpawnList: true,
                 Exits: {
                     main: {},
@@ -2757,6 +2769,7 @@ let MapLocations = {
                 }
             },
             spinningUrn: {
+                DisplayGroup: { groupName: "Bottom Floor & Darunia", imageName: "Happy Goron" },
                 ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {
@@ -2792,6 +2805,7 @@ let MapLocations = {
                 }
             },
             shop: {
+                DisplayGroup: { groupName: "Bottom Floor & Darunia", imageName: "Happy Goron" },
                 Exits: {
                     main: {},
 

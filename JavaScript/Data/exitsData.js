@@ -1413,6 +1413,7 @@ let OwExits = {
     },
 
     "Goron City": {
+        // Top Floor
         "Death Mountain Trail": {
             ExitRegion: "main",
             Map: "Death Mountain Trail",
@@ -1422,6 +1423,8 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the trail at the top of the city."
         },
+
+        // Middle Floors
         "Lost Woods": {
             ExitRegion: "lostWoods",
             Map: "Lost Woods",
@@ -1431,18 +1434,8 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance blocked by rocks on the second floor."
         },
-        "Death Mountain Crater": {
-            ExitRegion: "darunia",
-            Map: "Death Mountain Crater",
-            Region: "middle",
-            ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: 185, y: 10 },
-            Age: Age.ADULT,
-            LongDescription: "This is the entrance behind darunia's room - push back the statue."
-        },
-
-        // Interiors
         "Lava Room Grotto": {
+            DisplayGroup: { groupName: "Middle Floors", imageName: "Goron Tunic" },
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,
@@ -1454,6 +1447,17 @@ let OwExits = {
                 let canHookshotUp = ItemData.canUseAny(age, [Equipment.GORON_TUNIC, Items.NAYRUS_LOVE]) && Items.HOOKSHOT.playerHas;
                 return canHookshotUp || Data.canPlaySong(Songs.SONG_OF_TIME);
             }
+        },
+
+        // Bottom FLoor
+        "Death Mountain Crater": {
+            ExitRegion: "darunia",
+            Map: "Death Mountain Crater",
+            Region: "middle",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: 185, y: 10 },
+            Age: Age.ADULT,
+            LongDescription: "This is the entrance behind darunia's room - push back the statue."
         },
         "Shop": {
             ExitRegion: "shop",
