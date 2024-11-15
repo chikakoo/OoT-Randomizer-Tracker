@@ -2415,6 +2415,7 @@ let OwExits = {
     },
 
     "Desert Colossus": {
+        // North Area
         "Haunted Wasteland": {
             ExitRegion: "main",
             Map: "Haunted Wasteland",
@@ -2424,36 +2425,6 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the wasteland."
         },
-        "Archway": {
-            ExitRegion: "archway",
-            Map: "Desert Colossus",
-            Region: "archway",
-            ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: -100, y: -100 },
-            Hide: true,
-            LongDescription: "The archway with the heart piece on it."
-        },
-        "Requiem Teleport Pad": {
-            ExitRegion: "main",
-            Map: "Desert Colossus",
-            Region: "main",
-            ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: -100, y: -100 },
-            Hide: true,
-            LongDescription: "The Requiem of Spirit teleport pad at Desert Colossus.",
-        },
-        "Spirit Temple": {
-            ExitRegion: "main",
-            Map: "Spirit Temple",
-            Region: "main",
-            ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: 63, y: 150 },
-            Age: Age.EITHER,
-            LongDescription: "This is the entrance to the Spirit Temple.",
-            IsDungeonEntrance: true
-        },
-
-        // Interiors
         "Great Fairy Fountain": {
             ExitRegion: "main",
             ItemGroup: ItemGroups.ENTRANCE,
@@ -2474,6 +2445,37 @@ let OwExits = {
             Age: Age.ADULT,
             LongDescription: "Lift the silver rock by the warp song location to reveal this grotto.",
             RequiredItems: [UpgradedItems.SILVER_GAUNTLETS]
+        },
+        "Requiem Teleport Pad": {
+            ExitRegion: "main",
+            Map: "Desert Colossus",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: -100, y: -100 },
+            Hide: true,
+            LongDescription: "The Requiem of Spirit teleport pad at Desert Colossus.",
+        },
+
+        // Spirit Temple Area
+        "Archway": {
+            ExitRegion: "archway",
+            Map: "Desert Colossus",
+            Region: "archway",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: -100, y: -100 },
+            Hide: true,
+            LongDescription: "The archway with the heart piece on it."
+        },
+        "Spirit Temple": {
+            DisplayGroup: { groupName: "North Area", imageName: "Spirit Medallion" },
+            ExitRegion: "main",
+            Map: "Spirit Temple",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: 63, y: 150 },
+            Age: Age.EITHER,
+            LongDescription: "This is the entrance to the Spirit Temple.",
+            IsDungeonEntrance: true
         }
     },
 

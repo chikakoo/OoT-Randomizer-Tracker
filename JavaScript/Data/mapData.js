@@ -4661,10 +4661,12 @@ let MapLocations = {
     },
 
 	"Haunted Wasteland": {
+        UsesDisplayGroups: true,
 		Abbreviation: "HW",
 		MapGroup: MapGroups.DESERT,
 		Regions: {
             entrance: {
+                DisplayGroup: { groupName: "Fortress Side", imageName: "Gerudo Membership Card" },
                 Exits: {
                     outpost: {
                         CustomRequirement: function(age) {
@@ -4686,6 +4688,7 @@ let MapLocations = {
                 }
             },
             outpost: {
+                DisplayGroup: { groupName: "Outpost", imageName: "Lens of Truth" },
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.backwardsWasteland && !Settings.GlitchesToAllow.itemlessSandPit;
                 },
@@ -4706,12 +4709,14 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
-                    "Chest at Outpost": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 208, y: 93 },
+                    "3 Crates Across Quicksand": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Crates",
+                        MapInfo: { x: 294, y: 253 },
                         Age: Age.EITHER,
-                        LongDescription: "In the outpost in the center of the desert, light the two torches to spawn a chest.",
-                        RequiredItems: [ItemSets.FIRE_ITEMS]
+                        LongDescription: "These crates are by the flags just across the quicksand pit."
                     },
                     "Carpet Shop": {
                         ItemGroup: ItemGroups.GIFT,
@@ -4730,14 +4735,12 @@ let MapLocations = {
                             return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS) || Data.canStaircaseHover(age);
                         }
                     },
-                    "3 Crates Across Quicksand": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Crates",
-                        MapInfo: { x: 294, y: 253 },
+                    "Chest at Outpost": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 208, y: 93 },
                         Age: Age.EITHER,
-                        LongDescription: "These crates are by the flags just across the quicksand pit."
+                        LongDescription: "In the outpost in the center of the desert, light the two torches to spawn a chest.",
+                        RequiredItems: [ItemSets.FIRE_ITEMS]
                     },
                     "4 Pots at Outpost": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -4750,8 +4753,8 @@ let MapLocations = {
                     }
                 }
             },
-
             exit: {
+                DisplayGroup: { groupName: "Colossus Side", imageName: "Spirit Medallion" },
                 Exits: {
                     outpost: {
                         CustomRequirement: function(age) {
@@ -4775,10 +4778,12 @@ let MapLocations = {
 	},
     	
 	"Desert Colossus": {
+        UsesDisplayGroups: true,
 		Abbreviation: "DCOL",
 		MapGroup: MapGroups.DESERT,
 		Regions: {
             main: {
+                DisplayGroup: { groupName: "North Area", imageName: "Nayru's Love" },
                 Exits: {
                     archway: {
                         Age: Age.ADULT,
@@ -4787,26 +4792,28 @@ let MapLocations = {
                         }
                     },
 
+                    // North Area
                     "Haunted Wasteland": {
                         OwExit: OwExits["Desert Colossus"]["Haunted Wasteland"]
                     },
-                    "Spirit Temple": {
-                        OwExit: OwExits["Desert Colossus"]["Spirit Temple"]
-                    },
-                    "Requiem Teleport Pad": {
-                        OwExit: OwExits["Desert Colossus"]["Requiem Teleport Pad"]
-                    },
-
-                    // Grottos & Interiors
                     "Great Fairy Fountain": {
                         OwExit: OwExits["Desert Colossus"]["Great Fairy Fountain"]
                     },
                     "Silver Rock Grotto": {
                         OwExit: OwExits["Desert Colossus"]["Silver Rock Grotto"]
+                    },
+                    "Requiem Teleport Pad": {
+                        OwExit: OwExits["Desert Colossus"]["Requiem Teleport Pad"]
+                    },
+
+                    // Spirit Temple Area
+                    "Spirit Temple": {
+                        OwExit: OwExits["Desert Colossus"]["Spirit Temple"]
                     }
                 },
 
                 ItemLocations: {
+                    // North Area
                     "2 Items in Tree by Great Fairy": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
@@ -4816,7 +4823,22 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "Shoot the deku nuts in the two trees by the wall with the great fairy fountain to spawn these wonderitems."
                     },
+                    "Skulltula on Cliff": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 213, y: 91 },
+                        Age: Age.ADULT,
+                        LongDescription: "At night, there is a skulltula on a small cliff near the north middle edge of the map. You can hookshot it if the Leevers leave you alone long enough. An easier solution is to ride the bean platform and jump off of it so that you're on top.",
+                        CustomRequirement: function(age) {
+                            let canRideUp = Data.isBeanPlanted("Desert Colossus", "main", "Soft Soil");
+                            let canUseBoomerang = Settings.GlitchesToAllow.difficultBoomerangTrickThrows && ItemData.canUse(age, Items.BOOMERANG);
+                            return canRideUp || canUseBoomerang || Items.HOOKSHOT.playerHas;
+                        }
+                    },
+
+                    // Oasis
                     "3 Items in Tree at Oasis": {
+                        DisplayGroup: { groupName: "Oasis", imageName: "Song of Storms" },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
@@ -4833,19 +4855,10 @@ let MapLocations = {
                         LongDescription: "At night, there's a skulltula in one of the trees by an oasis at the south middle part of the map.",
                         RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
-                    "Skulltula on Cliff": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 213, y: 91 },
-                        Age: Age.ADULT,
-                        LongDescription: "At night, there is a skulltula on a small cliff near the north middle edge of the map. You can hookshot it if the Leevers leave you alone long enough. An easier solution is to ride the bean platform and jump off of it so that you're on top.",
-                        CustomRequirement: function(age) {
-                            let canRideUp = Data.isBeanPlanted("Desert Colossus", "main", "Soft Soil");
-                            let canUseBoomerang = Settings.GlitchesToAllow.difficultBoomerangTrickThrows && ItemData.canUse(age, Items.BOOMERANG);
-                            return canRideUp || canUseBoomerang || Items.HOOKSHOT.playerHas;
-                        }
-                    },
+
+                    // Spirit Temple Area
                     "Soft Soil": {
+                        DisplayGroup: { groupName: "Spirit Temple Area", imageName: "Spirit Medallion" },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.NON_ITEM,
                         IsItemLocationGroup: true,
@@ -4871,6 +4884,7 @@ let MapLocations = {
                 }
             },
             archway: {
+                DisplayGroup: { groupName: "Spirit Temple Area", imageName: "Spirit Medallion" },
                 ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {
