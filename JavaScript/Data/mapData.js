@@ -531,10 +531,12 @@ let MapLocations = {
     },
     
     "Lost Woods Bridge": {
+        UsesDisplayGroups: true,
         Abbreviation: "LWBG",
 		MapGroup: MapGroups.FOREST,
 		Regions: {
 			main: {
+                DisplayGroup: { groupName: "Bridge", imageName: "Ocarina" },
                 Exits: {
                     "Hyrule Field Bridge": {
                         OwExit: OwExits["Lost Woods Bridge"]["Hyrule Field Bridge"]
@@ -546,7 +548,6 @@ let MapLocations = {
                         OwExit: OwExits["Lost Woods Bridge"]["Kokiri Forest Bridge"]
                     },
                 },
-
                 ItemLocations: {
                     "Saria's Gift": {
                         ItemGroup: ItemGroups.GIFT,
@@ -575,10 +576,12 @@ let MapLocations = {
     },
 
     "Sacred Forest Meadow": {
+        UsesDisplayGroups: true,
         Abbreviation: "SFM",
         MapGroup: MapGroups.FOREST,
         Regions: {
             main: {
+                DisplayGroup: { groupName: "Before Maze", imageName: "Wolfos Grotto" },
                 Exits: {
                     afterGate: {
                         RequiredChildItems: [ItemSets.DAMAGING_ITEMS]
@@ -604,25 +607,27 @@ let MapLocations = {
             },
 
             afterGate: {
+                DisplayGroup: { groupName: "Maze", imageName: "Green Rupee Wonderitem" },
                 Exits: {
                     main: {},
-                    "Forest Temple": {
-                        OwExit: OwExits["Sacred Forest Meadow"]["Forest Temple"]
-                    },
-                    "Minuet Teleport Pad": {
-                        OwExit: OwExits["Sacred Forest Meadow"]["Minuet Teleport Pad"]
-                    },
-
-                    // Interiors & Grottos
+                    // Maze
                     "Grotto in Maze Center": {
                         OwExit: OwExits["Sacred Forest Meadow"]["Grotto in Maze Center"]
                     },
+
+                    // After Maze
+                    "Minuet Teleport Pad": {
+                        OwExit: OwExits["Sacred Forest Meadow"]["Minuet Teleport Pad"]
+                    },
                     "Song of Storms Grotto": {
                         OwExit: OwExits["Sacred Forest Meadow"]["Song of Storms Grotto"]
+                    },
+                    "Forest Temple": {
+                        OwExit: OwExits["Sacred Forest Meadow"]["Forest Temple"]
                     }
                 },
-                
                 ItemLocations: {
+                    // Maze
                     "Wonderitem in First Maze Alcove": {
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Green Rupee Wonderitem",
@@ -666,7 +671,10 @@ let MapLocations = {
                         LongDescription: "At night, climb the ladder from the Forest Temple side. The skulltula will be on the left wall.",
                         RequiredItems: [Items.HOOKSHOT]
                     },
+
+                    // After Maze
                     "Saria's Song": {
+                        DisplayGroup: { groupName: "After Maze", imageName: "Forest Medallion" },
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 200, y: 27 },
                         Age: Age.CHILD,

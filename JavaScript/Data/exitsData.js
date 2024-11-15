@@ -277,6 +277,7 @@ let OwExits = {
     },
 
     "Sacred Forest Meadow": {
+        // Before maze
         "Lost Woods": {
             ExitRegion: "main",
             Map: "Lost Woods",
@@ -286,7 +287,30 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance back into the Lost Woods."
         },
+        "Grotto near Lost Woods": {
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsGrotto: true,
+            DefaultEntranceGroupName: "Wolfos Grotto",
+            MapInfo: { x: 177, y: 274 },
+            Age: Age.EITHER,
+            LongDescription: "This hidden grotto is roughly halfway between the Lost Woods entrance and the maze entrance. It can be revealed with an explosive or a hammer.",
+            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+        },
+
+        // Maze
+        "Grotto in Maze Center": {
+            ExitRegion: "afterGate",
+            IsGrotto: true,
+            ItemGroup: ItemGroups.ENTRANCE,
+            MapInfo: { x: 194, y: 147 },
+            Age: Age.EITHER,
+            LongDescription: "This is the grotto in the center of the maze. You normally need to climb the ladder to get here."
+        },
+
+        // After Maze
         "Minuet Teleport Pad": {
+            DisplayGroup: { groupName: "After Maze", imageName: "Forest Medallion" },
             ExitRegion: "afterGate",
             Map: "Sacred Forest Meadow",
             Region: "afterGate",
@@ -306,26 +330,6 @@ let OwExits = {
             LongDescription: "This is the entrance to the Forest Temple.",
             IsDungeonEntrance: true,
             RequiredItems: [Items.HOOKSHOT]
-        },
-
-        // Interiors
-        "Grotto near Lost Woods": {
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
-            DefaultEntranceGroupName: "Wolfos Grotto",
-            MapInfo: { x: 177, y: 274 },
-            Age: Age.EITHER,
-            LongDescription: "This hidden grotto is roughly halfway between the Lost Woods entrance and the maze entrance. It can be revealed with an explosive or a hammer.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
-        },
-        "Grotto in Maze Center": {
-            ExitRegion: "afterGate",
-            IsGrotto: true,
-            ItemGroup: ItemGroups.ENTRANCE,
-            MapInfo: { x: 194, y: 147 },
-            Age: Age.EITHER,
-            LongDescription: "This is the grotto in the center of the maze. You normally need to climb the ladder to get here."
         },
         "Song of Storms Grotto": {
             ExitRegion: "afterGate",
