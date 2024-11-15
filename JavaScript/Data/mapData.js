@@ -49,6 +49,61 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
+                    "Blue Rupee Behind Mido's": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Blue Rupee",
+                        MapInfo: { x: 135, y: 95 },
+                        Age: Age.CHILD,
+                        LongDescription: "This item is behind Mido's House.",
+                    },
+                    "2 Green Rupees in Grass by Mido's": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Green Rupees",
+                        MapInfo: { x: 163, y: 110 },
+                        Age: Age.CHILD,
+                        LongDescription: "Search the grass near the Mido's house to find these items."
+                    },
+                    "2 Green Rupees in Grass by Know-it-All": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "2 Green Rupees",
+                        MapInfo: { x: 139, y: 169 },
+                        Age: Age.CHILD,
+                        LongDescription: "Search the grass near the Know-it-All Brothers house to find these items."
+                    },
+                    "3 Hearts on Saria's House": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "3 Hearts",
+                        MapInfo: { x: 206, y: 213 },
+                        Age: Age.CHILD,
+                        LongDescription: "Climb up the spiral to Saria's House to get to these items."
+                    },
+                    "Blue Rupee Across Bridges": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapImageName: "Blue Rupee",
+                        MapInfo: { x: 177, y: 138 },
+                        Age: Age.CHILD,
+                        LongDescription: "Go up to Saria's House and cross the two small bridges to get to this item.",
+                    },
+                    "Wonderitem via Stepping Stones": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Blue Rupee Wonderitem",
+                        MapInfo: { x: 198, y: 132 },
+                        Age: Age.CHILD,
+                        LongDescription: "Jump across the platforms to the left of the shop. If you haven't yet touched the water, you'll get this item.",
+                    },
+                    "Wonderitem via House of Twins Platforms": {
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Blue Rupee Wonderitem",
+                        MapInfo: { x: 265, y: 165 },
+                        Age: Age.CHILD,
+                        LongDescription: "Start at the house of twins and jump on the big, then small platforms on the way to the shop. If you haven't yet touched the water, you'll get this item.",
+                    },
                     "Soft Soil": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.NON_ITEM,
@@ -77,71 +132,16 @@ let MapLocations = {
                         LongDescription: "Move Mido by talking to him while you have a Deku Shield and the Kokiri Sword. Necessary to access the Deku Tree if closed Deku is on.",
                         RequiredItems: [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD]
                     },
+
+                    // Upper Ledges
                     "Gossip Stone by Lost Woods": {
+                        DisplayGroup: { groupName: "Upper Ledges", imageName: "Song of Storms" },
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 102, y: 37 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is by the lost woods entrance at the top area of the forest.",
                     },
-                    "Blue Rupee Behind Mido's": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapImageName: "Blue Rupee",
-                        MapInfo: { x: 135, y: 95 },
-                        Age: Age.CHILD,
-                        LongDescription: "This item is behind Mido's House.",
-                    },
-                    "Blue Rupee Across Bridges": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapImageName: "Blue Rupee",
-                        MapInfo: { x: 177, y: 138 },
-                        Age: Age.CHILD,
-                        LongDescription: "Go up to Saria's House and cross the two small bridges to get to this item.",
-                    },
-                    "3 Hearts on Saria's House": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Hearts",
-                        MapInfo: { x: 206, y: 213 },
-                        Age: Age.CHILD,
-                        LongDescription: "Climb up the spiral to Saria's House to get to these items."
-                    },
-                    "2 Green Rupees in Grass by Know-it-All": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Green Rupees",
-                        MapInfo: { x: 139, y: 169 },
-                        Age: Age.CHILD,
-                        LongDescription: "Search the grass near the Know-it-All Brothers house to find these items."
-                    },
-                    "2 Green Rupees in Grass by Mido's": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "2 Green Rupees",
-                        MapInfo: { x: 163, y: 110 },
-                        Age: Age.CHILD,
-                        LongDescription: "Search the grass near the Mido's house to find these items."
-                    },
-                    "Wonderitem via Stepping Stones": {
-                        ItemGroup: ItemGroups.WONDERITEM,
-                        MapImageName: "Blue Rupee Wonderitem",
-                        MapInfo: { x: 198, y: 132 },
-                        Age: Age.CHILD,
-                        LongDescription: "Jump across the platforms to the left of the shop. If you haven't yet touched the water, you'll get this item.",
-                    },
-                    "Wonderitem via House of Twins Platforms": {
-                        ItemGroup: ItemGroups.WONDERITEM,
-                        MapImageName: "Blue Rupee Wonderitem",
-                        MapInfo: { x: 265, y: 165 },
-                        Age: Age.CHILD,
-                        LongDescription: "Start at the house of twins and jump on the big, then small platforms on the way to the shop. If you haven't yet touched the water, you'll get this item.",
-                    },
-
-                    // Upper Ledges
                     "Rupee Circle Above Shop": {
-                        DisplayGroup: { groupName: "Upper Ledges", imageName: "Song of Storms" },
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         IsItemLocationGroup: true,
