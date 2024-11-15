@@ -1241,6 +1241,7 @@ let OwExits = {
     },
 
     "Death Mountain Trail": {
+        // Upper Area
         "Kakariko Village": {
             ExitRegion: "main",
             Map: "Kakariko Village",
@@ -1259,6 +1260,31 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to Goron City."
         },
+        "Song of Storms Grotto near Goron City": {
+            ExitRegion: "main",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsGrotto: true,
+            DefaultEntranceGroupName: "Generic Grotto",
+            MapInfo: { x: 228, y: 172 },
+            Age: Age.EITHER,
+            LongDescription: "Play the Song of Storms in the center of the circle of rocks by Goron City to reveal this grotto",
+            RequiredSongs: [Songs.SONG_OF_STORMS]
+        },
+        "Dodongo's Cavern": {
+            ExitRegion: "main",
+            Map: "Dodongo's Cavern",
+            Region: "main",
+            ItemGroup: ItemGroups.OW_ENTRANCE,
+            MapInfo: { x: 175, y: 172 },
+            Age: Age.EITHER,
+            LongDescription: "This is the entrance to Dodongo's Cavern.",
+            IsDungeonEntrance: true,
+            CustomRequirement: function(age) {
+                return age === Age.ADULT || ItemData.canUse(age, ItemSets.EXPLOSIVES_OR_STRENGTH);
+            }
+        },
+
+        // Lower Area
         "Death Mountain Crater": {
             ExitRegion: "upper",
             Map: "Death Mountain Crater",
@@ -1279,31 +1305,6 @@ let OwExits = {
             Age: Age.CHILD,
             LongDescription: "This is the owl at the top of the mountain by the crater entrance."
         },
-        "Dodongo's Cavern": {
-            ExitRegion: "main",
-            Map: "Dodongo's Cavern",
-            Region: "main",
-            ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: { x: 175, y: 172 },
-            Age: Age.EITHER,
-            LongDescription: "This is the entrance to Dodongo's Cavern.",
-            IsDungeonEntrance: true,
-            CustomRequirement: function(age) {
-                return age === Age.ADULT || ItemData.canUse(age, ItemSets.EXPLOSIVES_OR_STRENGTH);
-            }
-        },
-
-        // Interiors
-        "Song of Storms Grotto near Goron City": {
-            ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
-            DefaultEntranceGroupName: "Generic Grotto",
-            MapInfo: { x: 228, y: 172 },
-            Age: Age.EITHER,
-            LongDescription: "Play the Song of Storms in the center of the circle of rocks by Goron City to reveal this grotto",
-            RequiredSongs: [Songs.SONG_OF_STORMS]
-        },
         "Great Fairy Fountain": {
             ExitRegion: "upper",
             ItemGroup: ItemGroups.ENTRANCE,
@@ -1316,6 +1317,7 @@ let OwExits = {
             RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Cow Grotto": {
+            DisplayGroup: { groupName: "Rocky Path", imageName: "Cow Grotto" },
             ExitRegion: "upper",
             ItemGroup: ItemGroups.ENTRANCE,
             IsGrotto: true,

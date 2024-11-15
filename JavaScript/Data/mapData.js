@@ -2137,10 +2137,12 @@ let MapLocations = {
     },
 
     "Death Mountain Trail": {
+        UsesDisplayGroups: true,
 		Abbreviation: "DMT",
 		MapGroup: MapGroups.MOUNTAIN,
 		Regions: {
             main: {
+                DisplayGroup: { groupName: "Lower Area", imageName: "Goron's Ruby" },
                 Exits: {
                     upper: {
                         CustomRequirement: function(age) {
@@ -2170,6 +2172,23 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
+                    // Lower Area
+                    "In Wall by Kakariko": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        MapInfo: { x: 151, y: 235 },
+                        Age: Age.EITHER,
+                        LongDescription: "From the Kakariko entrance, follow the right wall until you get to the discolored wall. Bomb or hammer it to reveal the skulltula. Child can Deku Stick jumpslash, Bomb, Bombchu, Slingshot, or Boomerang it. Adult can jumpslash it. You can climb the wall to collect the token.",
+                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+                    },
+                    "Soft Soil": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.NON_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Soft Soil Skulltula Always Killable",
+                        MapInfo: { x: 179, y: 168 },
+                        Age: Age.CHILD,
+                        LongDescription: "The soft soil inside the entrance to Dodongo's Cavern (under the giant rock). Used to get to the top of the mountain. Use a bomb flower from above to kill the skulltula, if necessary."
+                    },
                     "Chest in Wall Near Goron City": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 212, y: 207 },
@@ -2185,22 +2204,6 @@ let MapLocations = {
                                 ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS);
                         }
                     },
-                    "Heart Piece Above Dodongo's Cavern": {
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapInfo: { x: 180, y: 146 },
-                        Age: Age.EITHER,
-                        LongDescription: "You can do a slight angled backflip near the Bomb Flower above the cavern to get to this. Alternatively, you can plant a bean and ride it up."
-                    },
-
-                    "Soft Soil": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.NON_ITEM,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "Soft Soil Skulltula Always Killable",
-                        MapInfo: { x: 179, y: 168 },
-                        Age: Age.CHILD,
-                        LongDescription: "The soft soil inside the entrance to Dodongo's Cavern (under the giant rock). Used to get to the top of the mountain. Use a bomb flower from above to kill the skulltula, if necessary."
-                    },
                     "Red Rock by Goron City": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
@@ -2211,14 +2214,16 @@ let MapLocations = {
                             return Settings.GlitchesToAllow.dmtSkullsWithoutHammer || ItemData.canUse(age, Items.MEGATON_HAMMER);
                         }
                     },
-                    "In Wall by Kakariko": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: { x: 151, y: 235 },
+                    "Heart Piece Above Dodongo's Cavern": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 180, y: 146 },
                         Age: Age.EITHER,
-                        LongDescription: "From the Kakariko entrance, follow the right wall until you get to the discolored wall. Bomb or hammer it to reveal the skulltula. Child can Deku Stick jumpslash, Bomb, Bombchu, Slingshot, or Boomerang it. Adult can jumpslash it. You can climb the wall to collect the token.",
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+                        LongDescription: "You can do a slight angled backflip near the Bomb Flower above the cavern to get to this. Alternatively, you can plant a bean and ride it up."
                     },
+
+                    // Rocky Path
                     "Break Rocks Blocking Top Path":  {
+                        DisplayGroup: { groupName: "Rocky Path", imageName: "Cow Grotto" },
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 202, y: 201 },
                         MapImageName: "Bomb",
@@ -2251,8 +2256,8 @@ let MapLocations = {
                     }
                 }
             },
-
             upper: {
+                DisplayGroup: { groupName: "Upper Area", imageName: "Claim Check" },
                 DuplicateWarpSongPriority: 1,
                 Exits: {
                     main: {},
@@ -2273,6 +2278,7 @@ let MapLocations = {
                 },
 
                 ItemLocations: {
+                    // Upper Area
                     "Trade Biggoron": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.GIFT,
@@ -2282,7 +2288,10 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Show Biggoron (at the summit) the trade sequence item to get the check."
                     },
+
+                    // Rocky Path
                     "Red Rock on Upper Path": {
+                        DisplayGroup: { groupName: "Rocky Path", imageName: "Cow Grotto" },
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 217, y: 96 },
