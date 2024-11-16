@@ -1703,6 +1703,9 @@ let MapLocations = {
                     freestandingItemInCrate: {
                         RequiredItems: [Items.BOOMERANG]
                     },
+                    looseItemInCrate: {
+                        RequiredItems: [Items.BOOMERANG, Items.BOMBCHU]
+                    },
                     top: {
                         CustomRequirement: function(age) {
                             return Data.canGetToGraveyardTopEarly(age);
@@ -1775,17 +1778,9 @@ let MapLocations = {
                 ExcludeFromSpawnList: true,
                 Exits: {
                     freestandingItemInCrate: {},
+                    looseItemInCrate: {}
                 },
-                ItemLocations: {
-                    "Crate Above Soft Soil": {
-                        ItemGroup: ItemGroups.CRATE,
-                        IsEmpty: true,
-                        MapInfo: { x: 147, y: 84 },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.boomerangGraveyardHP; },
-                        LongDescription: "Plant a magic bean in the soft soil as a child. Come back as adult to get the item from the crate. Alternatively, the Longshot can reach the crate if you stand on one of the graves."
-                    }
-                }
+                ItemLocations: {}
             },
             freestandingItemInCrate: {
                 DisplayGroup: { groupName: "Crate Ledge", imageName: "Crate" },
@@ -1795,6 +1790,21 @@ let MapLocations = {
                     "Heart Piece in Crate": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 147, y: 78 },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.boomerangGraveyardHP; },
+                        LongDescription: "Plant a magic bean in the soft soil as a child. Come back as adult to get the item from the crate. Alternatively, the Longshot can reach the crate if you stand on one of the graves."
+                    }
+                }
+            },
+            looseItemInCrate: {
+                DisplayGroup: { groupName: "Crate Ledge", imageName: "Crate" },
+                ExcludeFromSpawnList: true,
+                Exits: {},
+                ItemLocations: {
+                    "Crate Above Soft Soil": {
+                        ItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        MapInfo: { x: 147, y: 84 },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.boomerangGraveyardHP; },
                         LongDescription: "Plant a magic bean in the soft soil as a child. Come back as adult to get the item from the crate. Alternatively, the Longshot can reach the crate if you stand on one of the graves."

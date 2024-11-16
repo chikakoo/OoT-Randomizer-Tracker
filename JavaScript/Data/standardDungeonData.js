@@ -3969,7 +3969,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 41,
                         LongDescription: "After departing the boat, either shoot the bombflower to lower the bridge, or use longshot/scarecrow's song from the broken bridge to cross. Play the Song of Time near the broken pillar with the heart to summon a block to use to get it.",
-                        RequiredSongs: [Songs.SONG_OF_TIME]
+                        RequiredChoiceOfItems: [Songs.SONG_OF_TIME, Items.BOOMERANG]
                     },
                     "2 Pots by Boss Antechamber": {
                         ItemGroup: ItemGroups.ENTRANCE,
