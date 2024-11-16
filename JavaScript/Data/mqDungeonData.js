@@ -6961,6 +6961,15 @@ let MQDungeons = {
         MqMapFloors: ["SHW", "FIR"],
         StartingFloorIndex: 0,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
+        _canGetToWaterTrialDoor: function(age) {
+            if (ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS)) {
+                return true;
+            }
+
+            let canHitCrystalSwitch = ItemData.canUseAny(age, 
+                [ItemSets.SWORDS, ItemSets.EXPLOSIVES, ItemSets.PROJECTILES]);
+            return canHitCrystalSwitch && Data.hasBottle(age);
+        },
         _canCompleteTrials: function(age) {
             // Requires IsPostWalkCheck to be true on any item location that uses this!!!
             return ItemData.canUse(age, Items.LIGHT_ARROW) &&
@@ -7023,7 +7032,9 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "This is the locked door in the water trial, blocked by the red ice.",
-                        RequiredItems: [ItemSets.BLUE_FIRE_ITEMS],
+                        CustomRequirement: function(age) {
+                            return MapLocations["Ganon's Castle"]._canGetToWaterTrialDoor(age);
+                        },
                         KeyRequirement: function(age) {
                             let max = 3;
                             let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
@@ -7047,7 +7058,7 @@ let MQDungeons = {
                         Order: 19,
                         LongDescription: "This is the locked door in the Zelda's Lullaby room of the light trial.",
                         KeyRequirement: function(age) {
-                            let max = ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS) ? 2 : 1;
+                            let max = MapLocations["Ganon's Castle"]._canGetToWaterTrialDoor(age) ? 2 : 1;
                             return { min: 1, max: max };
                         }
                     },
@@ -7060,7 +7071,7 @@ let MQDungeons = {
                         Order: 21,
                         LongDescription: "This is the locked door in the boulder/fire wall froom of the light trial.",
                         KeyRequirement: function(age) {
-                            let max = ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS) ? 3 : 2;
+                            let max = MapLocations["Ganon's Castle"]._canGetToWaterTrialDoor(age) ? 3 : 2;
                             return { min: 2, max: max };
                         }
                     }
@@ -7124,7 +7135,9 @@ let MQDungeons = {
                     waterTrialBlockPuzzle: {
                         Map: "Ganon's Castle",
                         LockedDoor: "Locked Door in Water Trial",
-                        RequiredItems: [ItemSets.BLUE_FIRE_ITEMS]
+                        CustomRequirement: function(age) {
+                            return MapLocations["Ganon's Castle"]._canGetToWaterTrialDoor(age);
+                        }
                     }
                 },
                 ItemLocations: {
