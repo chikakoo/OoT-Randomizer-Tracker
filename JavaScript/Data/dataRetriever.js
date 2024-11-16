@@ -541,34 +541,6 @@ Data = {
     },
 
     /**
-     * Returns whether you can get to the graveyard top without warping
-     */
-    canGetToGraveyardTopEarly: function(age) {
-		return this._canHookshotJump(age) || this._canDoOldShadowEarly(age);
-	},
-    
-    /**
-     * Returns whether you can do the hookshot jump
-     */
-     _canHookshotJump: function(age) {
-		return Settings.GlitchesToAllow.hookshotJump && ItemData.canUse(age, Items.HOOKSHOT);
-	},
-    
-    /**
-     * Returns whether you can do the old shadow temple early method
-     */
-	_canDoOldShadowEarly: function(age) {
-		return age === Age.ADULT &&
-			Settings.GlitchesToAllow.oldShadowEarly && 
-            (
-                this.canWeirdShot(age) || 
-                ItemData.canUse(age, UpgradedItems.LONGSHOT) || 
-                this.isBeanPlanted("Graveyard", "main", "Soft Soil")
-            ) &&
-            ItemData.canUseAll(age, [ItemSets.EXPLOSIVES, ItemSets.SHIELDS]);
-    },
-
-    /**
      * Returns whether you can do a staircase hover
      */
     canStaircaseHover: function(age) {

@@ -1706,9 +1706,11 @@ let MapLocations = {
                     looseItemInCrate: {
                         RequiredItems: [Items.BOOMERANG, Items.BOMBCHU]
                     },
-                    top: {
+                    seamAboveShadowTemple: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
-                            return Data.canGetToGraveyardTopEarly(age);
+                            return Settings.GlitchesToAllow.hookshotJump;
                         }
                     },
                     royalFamilyTomb: {
@@ -1716,11 +1718,6 @@ let MapLocations = {
                     },
                     dampesGrave: {
                         Age: Age.ADULT
-                    },
-                    shadowTemple: {
-                        CustomRequirement: function(age) {
-                            return Data.canGetToGraveyardTopEarly(age);
-                        }
                     },
                     "Kakariko Village": {
                         OwExit: OwExits["Graveyard"]["Kakariko Village"]
@@ -1778,7 +1775,13 @@ let MapLocations = {
                 ExcludeFromSpawnList: true,
                 Exits: {
                     freestandingItemInCrate: {},
-                    looseItemInCrate: {}
+                    looseItemInCrate: {},
+                    seamAboveShadowTemple: {
+                        RequiredItems: [ItemSets.EXPLOSIVES, ItemSets.SHIELDS],
+                        CustomRequirement: function() {
+                            return Settings.GlitchesToAllow.oldShadowEarly;
+                        }
+                    }
                 },
                 ItemLocations: {}
             },
@@ -1810,6 +1813,14 @@ let MapLocations = {
                         LongDescription: "Plant a magic bean in the soft soil as a child. Come back as adult to get the item from the crate. Alternatively, the Longshot can reach the crate if you stand on one of the graves."
                     }
                 }
+            },
+            seamAboveShadowTemple: {
+                ExcludeFromSpawnList: true,
+                Exits: {
+                    shadowTemple: {},
+                    top: {}
+                },
+                ItemLocations: {}
             },
             top: {
                 DisplayGroup: { groupName: "Main Area", imageName: "Dampe's Grave" },
