@@ -447,11 +447,19 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. Plant a magic bean here as a child. Come back as an adult at night and ride the plant up.",
                         CustomRequirement: function(age) {
-                            let canRideUp = Data.isBeanPlanted("Lost Woods", "secondHalf", "Soft Soil by Forest Stage");
-                            let canGetWithHookshot = Settings.GlitchesToAllow.lwSkullWithoutBean && 
-                                Items.HOOKSHOT.playerHas &&
-                                ItemData.canUseAny(age, [Items.DINS_FIRE, Items.FAIRY_BOW, Items.BOMBCHU, UpgradedItems.LONGSHOT]);
-                            return canRideUp || canGetWithHookshot;
+                            if (Data.isBeanPlanted("Lost Woods", "secondHalf", "Soft Soil by Forest Stage")) {
+                                return true;
+                            }
+
+                            if (!Settings.GlitchesToAllow.lwSkullWithoutBean) {
+                                return false;
+                            }
+
+                            let canKillSKulltula = ItemData.canUseAny(age, 
+                                [Items.DINS_FIRE, Items.FAIRY_BOW, Items.BOMBCHU, UpgradedItems.LONGSHOT]);
+                            let canGetToken = Items.HOOKSHOT.playerHas || 
+                                (Settings.GlitchesToAllow.difficultBoomerangTrickThrows && ItemData.canUse(age, Items.BOOMERANG));
+                            return canKillSKulltula && canGetToken;
                         }
                     },
                     "Right Scrub by Forest Stage": {
