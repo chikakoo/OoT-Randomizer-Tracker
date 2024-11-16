@@ -6526,10 +6526,9 @@ let MQDungeons = {
                     "Icicle Silver Rupee on Ceiling": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 80, y: 194 },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgSlopesRoomWallmasterToRupee; },
+                        Age: Age.ADULT,
                         Order: 7.1,
-                        LongDescription: "After the sand room, look for the rupee to our right on the ceiling. You can get it with a well-angled hookshot to the ceiling target; get the rest of the distance with a jumpslash.",
+                        LongDescription: "After the sand room, look for the rupee to your right on the ceiling. You can get it with a well-angled hookshot to the ceiling target; get the rest of the distance with a jumpslash.",
                         CustomRequirement: function(age) {
                             let canUseWallmaster = Settings.GlitchesToAllow.gtgSlopesRoomWallmasterToRupee &&
                                 !ItemData.checkSilverRupeeRequirement("Training Grounds", 0);
