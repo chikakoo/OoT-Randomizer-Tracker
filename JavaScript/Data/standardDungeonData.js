@@ -6465,10 +6465,16 @@ let StandardDungeons = {
                     },
                     center: {
                         CustomRequirement: function(age) {
-                            //TODO: Need to include logic for completing all the trials - involves adding a location
-                            // for each trial to flag it as completed
-                            return (age === Age.ADULT && Settings.GlitchesToAllow.ganonTrialSkip) || 
-                                Data.canStaircaseHover(age);
+                            if ((age === Age.ADULT && Settings.GlitchesToAllow.ganonTrialSkip) || Data.canStaircaseHover(age)) {
+                                return true;
+                            }
+
+                            return Data.itemLocationObtained("Ganon's Castle", "forestTrialEnd", "Forest Trial Complete") &&
+                                Data.itemLocationObtained("Ganon's Castle", "waterTrialEnd", "Water Trial Complete") &&
+                                Data.itemLocationObtained("Ganon's Castle", "shadowTrialEnd", "Shadow Trial Complete") &&
+                                Data.itemLocationObtained("Ganon's Castle", "fireTrialEnd", "Fire Trial Complete") &&
+                                Data.itemLocationObtained("Ganon's Castle", "lightTrialEnd", "Light Trial Complete") &&
+                                Data.itemLocationObtained("Ganon's Castle", "spiritTrialEnd", "Spirit Trial Complete");
                         }
                     },
                     Exit: {
@@ -6567,6 +6573,15 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 6,
                         LongDescription: "Enter the forest trial - you must first light all the torches in the room. If you have no bow, you can use Din's Fire if you light the top torch by first hooshotting to it.</br></br>The next room is difficult to do without hover boots, but it can be done if you use the fans to push you across the room (grab the one to your left first and let the fan push you to the platform). The floating rupee can be retrieved after you jump on the switch in the back of the room.<br/><br/>The pots are in the final room that unlocks."
+                    },
+                    "Forest Trial Complete": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapImageName: "Forest Medallion",
+                        MapInfo: { x: 20, y: 20, floor: "FST" },
+                        Age: Age.ADULT,
+                        Order: 6.1,
+                        LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
+                        RequiredItems: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -6625,6 +6640,15 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 9,
                         LongDescription: "Enter the water trial - kill the freezards to unbar the door, then use blue fire to melt the ice to gain access. Complete the block puzzle to get to the ledge. Melt that ice and hammer the switch to make your way to the room with the pots."
+                    },
+                    "Water Trial Complete": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapImageName: "Water Medallion",
+                        MapInfo: { x: 20, y: 20, floor: "WTR" },
+                        Age: Age.ADULT,
+                        Order: 9.1,
+                        LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
+                        RequiredItems: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -6711,11 +6735,16 @@ let StandardDungeons = {
                         MapInfo: { x: 178, y: 5, floor: "SHW" },
                         Age: Age.ADULT,
                         Order: 14,
-                        LongDescription: "After the like-like platform - navigate to the rusted switch after the invisible bridge. Hit it to unbar the door.",
-                        CustomRequirement: function(age) {
-                            let canUseLens = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas;
-                            return canUseLens || Settings.GlitchesToAllow.gannonShadowTrialLens;
-                        }
+                        LongDescription: "After the like-like platform - navigate to the rusted switch after the invisible bridge. Hit it to unbar the door."
+                    },
+                    "Shadow Trial Complete": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapImageName: "Shadow Medallion",
+                        MapInfo: { x: 20, y: 20, floor: "SHW" },
+                        Age: Age.ADULT,
+                        Order: 14.1,
+                        LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
+                        RequiredItems: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -6797,6 +6826,15 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 16,
                         LongDescription: "Enter the fire trial - you must grab all the silver rupees to enter the room with the pots. Equipping hover boots will prevent the platform from sinking, but isn't required."
+                    },
+                    "Fire Trial Complete": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapImageName: "Fire Medallion",
+                        MapInfo: { x: 20, y: 20, floor: "FIR" },
+                        Age: Age.ADULT,
+                        Order: 16.1,
+                        LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
+                        RequiredItems: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -6916,6 +6954,15 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 26,
                         LongDescription: "After the Zelda's Lullaby room, gather all the silver rupees. The room after that is fake - just run through the wall. The pots are in the next one."
+                    },
+                    "Light Trial Complete": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapImageName: "Light Medallion",
+                        MapInfo: { x: 20, y: 20, floor: "LIT" },
+                        Age: Age.ADULT,
+                        Order: 26.1,
+                        LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
+                        RequiredItems: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -7040,11 +7087,16 @@ let StandardDungeons = {
                         MapInfo: { x: 157, y: 71, floor: "SPT" },
                         Age: Age.ADULT,
                         Order: 30,
-                        LongDescription: "After going through the bombchu switch door - either fire arrow the web in the next room, or fire an arrow through the lit torch at it. After that, shine the light on the sun to the right of the entrance to the room to gain access to the pots.",
-                        CustomRequirement: function(age) {
-                            let canUseLens = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas;
-                            return canUseLens || Settings.GlitchesToAllow.gannonShadowTrialLens;
-                        }
+                        LongDescription: "After going through the bombchu switch door - either fire arrow the web in the next room, or fire an arrow through the lit torch at it. After that, shine the light on the sun to the right of the entrance to the room to gain access to the pots."
+                    },
+                    "Spirit Trial Complete": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapImageName: "Spirit Medallion",
+                        MapInfo: { x: 20, y: 20, floor: "SPT" },
+                        Age: Age.ADULT,
+                        Order: 30.1,
+                        LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
+                        RequiredItems: [Items.LIGHT_ARROW]
                     }
                 }
             },

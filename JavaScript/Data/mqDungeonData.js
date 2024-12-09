@@ -6996,10 +6996,17 @@ let MQDungeons = {
                         RequiredItems: [Items.MEGATON_HAMMER]
                     },
                     center: {
-                        //TODO: Need to include logic for completing all the trials - involves adding a location
-                        // for each trial to flag it as completed
                         CustomRequirement: function(age) {
-                            return Data.canStaircaseHover(age);
+                            if (Data.canStaircaseHover(age)) {
+                                return true;
+                            }
+
+                            return Data.itemLocationObtained("Ganon's Castle", "forestTrialEnd", "Forest Trial Complete") &&
+                                Data.itemLocationObtained("Ganon's Castle", "waterTrialEnd", "Water Trial Complete") &&
+                                Data.itemLocationObtained("Ganon's Castle", "shadowTrialEnd", "Shadow Trial Complete") &&
+                                Data.itemLocationObtained("Ganon's Castle", "fireTrialEnd", "Fire Trial Complete") &&
+                                Data.itemLocationObtained("Ganon's Castle", "lightTrialEnd", "Light Trial Complete") &&
+                                Data.itemLocationObtained("Ganon's Castle", "spiritTrialEnd", "Spirit Trial Complete");
                         }
                     }
                 },
@@ -7118,6 +7125,15 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 9,
                         LongDescription: "Enter the forest trial - defeat the stalfos to get to the next room. Now, use the fans to cross. Play the song of time on the corner closest to the floating block - keep playing it until the armos status hits the switch to unbar the door. The pots are inside."
+                    },
+                    "Forest Trial Complete": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapImageName: "Forest Medallion",
+                        MapInfo: { x: 20, y: 20, floor: "FST" },
+                        Age: Age.ADULT,
+                        Order: 9.1,
+                        LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
+                        RequiredItems: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -7217,6 +7233,15 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "Enter the water trial - use a sword weapon behind the random dead hand to hit a switch in the wall to gain access to the blue fire. Melt the red ice wall and proceed through the locked door (make sure you still have blue fire). In the next room, gather the silver rupees, melt the back red ice, and proceed to the room with the pots."
+                    },
+                    "Water Trial Complete": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapImageName: "Water Medallion",
+                        MapInfo: { x: 20, y: 20, floor: "WTR" },
+                        Age: Age.ADULT,
+                        Order: 13.1,
+                        LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
+                        RequiredItems: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -7322,6 +7347,15 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 16,
                         LongDescription: "At the shadow trial, use your lens of truth to navigate across the room. There's an invisible moving invisible platform you'll need to use. To cross the other gap, use hover boots or light the sunken torch to create a platform. Gather all the rupees to open the door to the pots."
+                    },
+                    "Shadow Trial Complete": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapImageName: "Shadow Medallion",
+                        MapInfo: { x: 20, y: 20, floor: "SHW" },
+                        Age: Age.ADULT,
+                        Order: 16.1,
+                        LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
+                        RequiredItems: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -7408,6 +7442,15 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 17,
                         LongDescription: "Enter the fire trial - you must grab all the silver rupees to enter the room with the pots. You can get to the door by either longshotting the hookshot target, or by using hover boots from the thrown silver pillar near the door."
+                    },
+                    "Fire Trial Complete": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapImageName: "Fire Medallion",
+                        MapInfo: { x: 20, y: 20, floor: "FIR" },
+                        Age: Age.ADULT,
+                        Order: 17.1,
+                        LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
+                        RequiredItems: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -7476,6 +7519,15 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 22,
                         LongDescription: "After the Zelda's Lullaby room, use your hookshot or perform a ground jump to get around the fire walls and go in the locked door. Slash the right torch to proceed through the fake wall and into the room where the pots reside."
+                    },
+                    "Light Trial Complete": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapImageName: "Light Medallion",
+                        MapInfo: { x: 20, y: 20, floor: "LIT" },
+                        Age: Age.ADULT,
+                        Order: 22.1,
+                        LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
+                        RequiredItems: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -7545,6 +7597,15 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 29,
                         LongDescription: "In the room with all the suns, shine the light on the spirit medallion symbol to open the door."
+                    },
+                    "Spirit Trial Complete": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapImageName: "Spirit Medallion",
+                        MapInfo: { x: 20, y: 20, floor: "SPT" },
+                        Age: Age.ADULT,
+                        Order: 29.1,
+                        LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
+                        RequiredItems: [Items.LIGHT_ARROW]
                     }
                 }
             },
