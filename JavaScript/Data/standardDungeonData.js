@@ -6439,16 +6439,6 @@ let StandardDungeons = {
         Floors: ["MN", "FST", "WTR", "SHW", "FIR", "LIT", "SPT"],
         StartingFloorIndex: 0,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-        _canCompleteTrials: function(age) {
-            // Requires IsPostWalkCheck to be true on any item location that uses this!!!
-            return ItemData.canUse(age, Items.LIGHT_ARROW) &&
-                Data.canAccessMap(age, "Ganon's Castle", "forestTrialEnd") &&
-                Data.canAccessMap(age, "Ganon's Castle", "waterTrialEnd") &&
-                Data.canAccessMap(age, "Ganon's Castle", "shadowTrialEnd") &&
-                Data.canAccessMap(age, "Ganon's Castle", "fireTrialEnd") &&
-                Data.canAccessMap(age, "Ganon's Castle", "lightTrialEnd") &&
-                Data.canAccessMap(age, "Ganon's Castle", "spiritTrialEnd");
-        },
         Regions: {
             main: {
                 DisplayGroup: { groupName: "Lobby/Hub", imageName: "4 Scrubs" },
@@ -6474,8 +6464,12 @@ let StandardDungeons = {
                         }
                     },
                     center: {
-                        // The main checks to get here are actually in PostWalk checks on the individual item locations
-                        // To clean this up, we need non-items for each of the trial completions
+                        CustomRequirement: function(age) {
+                            //TODO: Need to include logic for completing all the trials - involves adding a location
+                            // for each trial to flag it as completed
+                            return (age === Age.ADULT && Settings.GlitchesToAllow.ganonTrialSkip) || 
+                                Data.canStaircaseHover(age);
+                        }
                     },
                     Exit: {
                         OwExit: OwExits["Ganon's Castle"]["Exit"]
@@ -7055,72 +7049,13 @@ let StandardDungeons = {
                 }
             },
             center: {
-                DisplayGroup: { groupName: "Central Tower", imageName: "Triforce Shards" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.staircaseHover; },
+                DisplayGroup: { groupName: "Lobby/Hub", imageName: "5 Scrubs" },
                 Exits: {
-                    potRoom: {
-                        CustomRequirement: function(age) {
-                            return Settings.RandomizerSettings.potSetting !== ShuffleLocationSettings.OFF || 
-                                ItemData.hasBossKey("Ganon's Castle");
-                        }
+                    "Central Tower": {
+                        OwExit: OwExits["Ganon's Castle"]["Central Tower"]
                     }
                 },
-                ItemLocations: {
-                    "Boss Key Chest in Center": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 155, y: 95, floor: "MN" },
-                        Age: Age.EITHER,
-                        Order: 31,
-                        IsPostWalkCheck: true,
-                        LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
-                        CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Settings.GlitchesToAllow.ganonTrialSkip) || 
-                                Data.canStaircaseHover(age) ||
-                                MapLocations["Ganon's Castle"]._canCompleteTrials(age);
-                        }
-                    }
-                }
-            },
-            potRoom: {
-                DisplayGroup: { groupName: "Central Tower", imageName: "Triforce Shards" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.staircaseHover; },
-                Exits: {},
-                ItemLocations: {
-                    "14 Pots in Pot Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "14 Pots",
-                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
-                        MapInfo: { x: 175, y: 95, floor: "MN" },
-                        Age: Age.EITHER,
-                        Order: 32,
-                        IsPostWalkCheck: true,
-                        LongDescription: "Complete all the trials. Now, go up the center of the castle. This is room after you open the first giant door.",
-                        CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Settings.GlitchesToAllow.ganonTrialSkip) || 
-                                Data.canStaircaseHover(age) ||
-                                MapLocations["Ganon's Castle"]._canCompleteTrials(age);
-                        }
-                    },
-                    "18 Pots in Pot Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "18 Pots",
-                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleEmptyPots; },
-                        MapInfo: { x: 175, y: 95, floor: "MN" },
-                        Age: Age.EITHER,
-                        Order: 32,
-                        IsPostWalkCheck: true,
-                        LongDescription: "Complete all the trials. Now, go up the center of the castle. This is room after you open the first giant door.",
-                        CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Settings.GlitchesToAllow.ganonTrialSkip) || 
-                                Data.canStaircaseHover(age) ||
-                                MapLocations["Ganon's Castle"]._canCompleteTrials(age);
-                        }
-                    }
-                }
+                ItemLocations: {}
             }
         }
     }

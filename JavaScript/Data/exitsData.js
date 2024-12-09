@@ -2484,7 +2484,7 @@ let OwExits = {
             LongDescription: "The archway with the heart piece on it."
         },
         "Spirit Temple": {
-            DisplayGroup: { groupName: "North Area", imageName: "Spirit Medallion" },
+            DisplayGroup: { groupName: "Spirit Temple Area", imageName: "Spirit Medallion" },
             ExitRegion: "main",
             Map: "Spirit Temple",
             Region: "main",
@@ -2874,6 +2874,16 @@ let OwExits = {
             Age: Age.EITHER,
             Order: 0,
             LongDescription: "This is the exit from Ganon's Castle."
+        },
+        "Central Tower": {
+            ExitRegion: "center",
+            ItemGroup: ItemGroups.ENTRANCE,
+            IsBoss: true,
+            DefaultEntranceGroupName: "Ganon's Tower",
+            MapInfo: { x: 165, y: 95, floor: "MN" },
+            Age: Age.EITHER,
+            Order: 100,
+            LongDescription: "Clear the trials in the tower to remove the barrier blocking the central tower."
         }
     }
 }

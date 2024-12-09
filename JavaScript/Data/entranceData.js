@@ -478,7 +478,7 @@ InteriorGroups = {
 		}
 	},
 	"Front of Impa's House": {
-		tooltip: "Inside the cage with the cow and the freestanding item.",
+		tooltip: "Inside the house (outside the cage) with the cow and the freestanding item.",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleWonderitems; },
 		buttons: {
 			"Red Rupee on Top": {
@@ -1505,6 +1505,41 @@ GrottoGroups = {
 				isAdultOnly: function() { return true; }
 			}
 		}
+	},
+	"Ganon's Tower": {
+		tooltip: "The tower in the Center of Ganon's Castle",
+		buttons: {
+			"Boss Key": {
+				description: "This boss key chest is in the room with the two stalfos. Defeat them to gain access to it.",
+				canGet: function(age) {
+					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
+				}
+			},
+			"14 Pots": {
+				description: "These pots are after the fight with the two Iron Knuckles, before the final staircase.",
+				count: 14,
+				canGet: function(age) {
+					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS) &&
+							(Settings.RandomizerSettings.potSetting !== ShuffleLocationSettings.OFF || 
+							ItemData.hasBossKey("Ganon's Castle"));
+				},
+				shouldNotDisplay: function() {
+					return Settings.RandomizerSettings.shuffleEmptyPots;
+				}
+			},
+			"18 Pots": {
+				description: "These pots are after the fight with the two Iron Knuckles, before the final staircase.",
+				count: 18,
+				canGet: function(age) {
+					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS) &&
+							(Settings.RandomizerSettings.potSetting !== ShuffleLocationSettings.OFF || 
+							ItemData.hasBossKey("Ganon's Castle"));
+				},
+				shouldNotDisplay: function() {
+					return !Settings.RandomizerSettings.shuffleEmptyPots;
+				}
+			}
+		}
 	}
  };
 
@@ -1958,28 +1993,6 @@ GrottoGroups = {
 			"Pots": {
 				useGroupImage: true,
 				count: 10,
-				itemGroup: ItemGroups.POT,
-				description: "The pots."
-			}
-		}
-	},
-	"14 Pots": {
-		tooltip: "A set of 14 pots.",
-		buttons: {
-			"Pots": {
-				useGroupImage: true,
-				count: 14,
-				itemGroup: ItemGroups.POT,
-				description: "The pots."
-			}
-		}
-	},
-	"18 Pots": {
-		tooltip: "A set of 18 pots.",
-		buttons: {
-			"Pots": {
-				useGroupImage: true,
-				count: 18,
 				itemGroup: ItemGroups.POT,
 				description: "The pots."
 			}

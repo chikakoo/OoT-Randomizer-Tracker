@@ -3491,8 +3491,8 @@ let MQDungeons = {
                         MapInfo: { x: 37, y: 146, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 24,
-                        LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door. Jump down and kill the three stalfos, then use your hookshot to get through the next room, and then defeat Dark Link. Hookshot the wall in the next room to reach the whirlpool room.<br/><br/>Use your iron boots or longshot across the river until you hear the skulltula. Get it with your hookshot or longshot.",
-                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT]
+                        LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door. Jump down and kill the three stalfos, then use your hookshot to get through the next room, and then defeat Dark Link. Hookshot the wall in the next room to reach the whirlpool room.<br/><br/>As you swim, climb the hookshot target by one of the whirlpools. The skulltula will be somewhere above you.",
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                     },
                     "2 Pots in Whirlpool Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -6969,16 +6969,6 @@ let MQDungeons = {
                 [ItemSets.SWORDS, ItemSets.EXPLOSIVES, ItemSets.PROJECTILES]);
             return canHitCrystalSwitch && Data.hasBottle(age);
         },
-        _canCompleteTrials: function(age) {
-            // Requires IsPostWalkCheck to be true on any item location that uses this!!!
-            return ItemData.canUse(age, Items.LIGHT_ARROW) &&
-                Data.canAccessMap(age, "Ganon's Castle", "forestTrialEnd") &&
-                Data.canAccessMap(age, "Ganon's Castle", "waterTrialEnd") &&
-                Data.canAccessMap(age, "Ganon's Castle", "shadowTrialEnd") &&
-                Data.canAccessMap(age, "Ganon's Castle", "fireTrialEnd") &&
-                Data.canAccessMap(age, "Ganon's Castle", "lightTrialEnd") &&
-                Data.canAccessMap(age, "Ganon's Castle", "spiritTrialEnd");
-        },
         Regions: {
             main: {
                 DisplayGroup: { groupName: "Lobby/Hub", imageName: "5 Scrubs" },
@@ -7006,8 +6996,11 @@ let MQDungeons = {
                         RequiredItems: [Items.MEGATON_HAMMER]
                     },
                     center: {
-                        // The main checks to get here are actually in PostWalk checks on the individual item locations
-                        // To clean this up, we need non-items for each of the trial completions
+                        //TODO: Need to include logic for completing all the trials - involves adding a location
+                        // for each trial to flag it as completed
+                        CustomRequirement: function(age) {
+                            return Data.canStaircaseHover(age);
+                        }
                     }
                 },
                 ItemLocations: {
@@ -7556,69 +7549,13 @@ let MQDungeons = {
                 }
             },
             center: {
-                DisplayGroup: { groupName: "Central Tower", imageName: "Triforce Shards" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.staircaseHover; },
+                DisplayGroup: { groupName: "Lobby/Hub", imageName: "5 Scrubs" },
                 Exits: {
-                    potRoom: {
-                        CustomRequirement: function(age) {
-                            return Settings.RandomizerSettings.potSetting !== ShuffleLocationSettings.OFF || 
-                                ItemData.hasBossKey("Ganon's Castle");
-                        }
+                    "Central Tower": {
+                        OwExit: OwExits["Ganon's Castle"]["Central Tower"]
                     }
                 },
-                ItemLocations: {
-                    "Boss Key Chest in Center": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 155, y: 95, floor: "MN" },
-                        Age: Age.EITHER,
-                        Order: 30,
-                        IsPostWalkCheck: true,
-                        LongDescription: "Complete all the trials. Now go up the center of the castle - the boss key will spawn after you clear the stalfos room.",
-                        CustomRequirement: function(age) {
-                            return Data.canStaircaseHover(age) ||
-                                MapLocations["Ganon's Castle"]._canCompleteTrials(age);
-                        }
-                    }
-                }
-            },
-            potRoom: {
-                DisplayGroup: { groupName: "Central Tower", imageName: "Triforce Shards" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.staircaseHover; },
-                Exits: {},
-                ItemLocations: {
-                    "14 Pots in Pot Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "14 Pots",
-                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
-                        MapInfo: { x: 175, y: 95, floor: "MN" },
-                        Age: Age.EITHER,
-                        Order: 31,
-                        IsPostWalkCheck: true,
-                        LongDescription: "Complete all the trials. Now, go up the center of the castle. This is room after you open the first giant door.",
-                        CustomRequirement: function(age) {
-                            return Data.canStaircaseHover(age) ||
-                                MapLocations["Ganon's Castle"]._canCompleteTrials(age);
-                        }
-                    },
-                    "18 Pots in Pot Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "18 Pots",
-                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleEmptyPots; },
-                        MapInfo: { x: 175, y: 95, floor: "MN" },
-                        Age: Age.EITHER,
-                        Order: 32,
-                        IsPostWalkCheck: true,
-                        LongDescription: "Complete all the trials. Now, go up the center of the castle. This is room after you open the first giant door.",
-                        CustomRequirement: function(age) {
-                            return Data.canStaircaseHover(age) ||
-                                MapLocations["Ganon's Castle"]._canCompleteTrials(age);
-                        }
-                    }
-                }
+                ItemLocations: {}
             }
         }
     }

@@ -430,15 +430,6 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    "Soft Soil by Forest Stage": {
-                        ItemGroup: ItemGroups.ENTRANCE,
-                        OverrideItemGroup: ItemGroups.NON_ITEM,
-                        IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "Soft Soil",
-                        MapInfo: { x: 187, y: 66 },
-                        Age: Age.CHILD,
-                        LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again to find this soil patch. Used to get to the skulltula above at night."
-                    },
                     "Skulltula by Forest Stage": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
@@ -476,6 +467,16 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. This is the left scrub in this room."
                     },
+                    "Soft Soil by Forest Stage": {
+                        ItemGroup: ItemGroups.ENTRANCE,
+                        OverrideItemGroup: ItemGroups.NON_ITEM,
+                        IsItemLocationGroup: true,
+                        DefaultEntranceGroupName: "Soft Soil",
+                        MapInfo: { x: 187, y: 66 },
+                        Order: 5.1,
+                        Age: Age.CHILD,
+                        LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again to find this soil patch. Used to get to the skulltula above at night."
+                    },
                     "Blue Rupee Under Rock": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Blue Rupee",
@@ -488,7 +489,7 @@ let MapLocations = {
                                 (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
                         }
                     },
-                    "Front Scrub in Grotto Near Meadow": {
+                    "Front Scrub Near Grotto Near Meadow": {
                         ItemGroup: ItemGroups.SCRUB,
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances && !Settings.RandomizerSettings.scrubSanity; },
                         MapInfo: { x: 202, y: 27 },
@@ -3242,6 +3243,7 @@ let MapLocations = {
                     },
                     "Diving Minigame": {
                         ItemGroup: ItemGroups.GIFT,
+                        MapImageName: "Scale Silver Scale",
                         MapInfo: { x: 158, y: 75 },
                         Age: Age.CHILD,
                         LongDescription: "At the top of the Domain, pay 20 rupees to play the diving minigame. Talk to the Zora after you win to get your prize."
