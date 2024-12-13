@@ -4100,11 +4100,18 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
+                    "Child Heart Piece Above Link's Jail": {
+                        ItemGroup: ItemGroups.FREESTANDING,
+                        MapInfo: { x: 141, y: 73 },
+                        RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
+                        Age: Age.CHILD,
+                        LongDescription: "This is the freestanding heart piece above the jail as Child Link."
+                    },
                     "Adult Crate Above Link's Jail": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 136, y: 68 },
                         Age: Age.ADULT,
-                        LongDescription: "Note that this is ONLY the crate here as Adult! The Child version a freestanding heart piece that is not in logic.<br/><br/>Navigate to the upper room by either getting caught then jumping to there, or by dropping down from the top where the chest is. Stun the guards (can use your hookshot) and navigate down the long hallway. Hookshot the wooden pillar to pass the barrier. The crate is just ahead of you after the loading zone."
+                        LongDescription: "Note that this is ONLY the crate here as Adult! The Child version is the freestanding heart piece.<br/><br/>If hideout is not shuffled: navigate to the upper room by either getting caught then jumping to there, or by dropping down from the top where the chest is. Stun the guards (can use your hookshot) and navigate down the long hallway. Hookshot the wooden pillar to pass the barrier. The crate is just ahead of you after the loading zone."
                     }
                 }
             },
