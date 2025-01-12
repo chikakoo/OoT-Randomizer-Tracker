@@ -960,8 +960,10 @@ let Keys = {
 			}
 
 			// Skips the two locked doors leading to the carousel room
+			// - Includes the green poe early trick, using bombs and hover boots and...
+			// - The megaflip from the well switch ledge
 			// If pots are shuffled, then you still need use use these keys
-			if (Settings.GlitchesToAllow.forestGreenPoeEarly &&
+			if ((Settings.GlitchesToAllow.forestGreenPoeEarly || Settings.GlitchesToAllow.megaFlip) &&
 					(Settings.RandomizerSettings.potSetting === ShuffleLocationSettings.OFF ||
 					(Settings.RandomizerSettings.potSetting === ShuffleLocationSettings.OW_ONLY))
 			) {
