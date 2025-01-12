@@ -1300,6 +1300,10 @@ let MapLocations = {
             main: {
                 DisplayGroup: { groupName: "Lower Area", imageName: "Super Cucco Minigame" },
                 Exits: {
+                    impasRoof: {
+                        Age: Age.ADULT,
+                        RequiredItems: [Items.HOOKSHOT]
+                    },
                     beyondGate: {
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) {
@@ -1382,6 +1386,7 @@ let MapLocations = {
                         MapInfo: { x: 87, y: 179 },
                         MapImageName: "Poacher's Saw",
                         Age: Age.CHILD,
+                        Order: 1,
                         RequiredToAppear: function() { return Settings.GlitchesToAllow.equipSwap; },
                         LongDescription: "Show the carpenter boss (in front of the tent) the Poacher's Saw to receive an item.",
                         RequiredItems: [AdultTradeItems.POACHERS_SAW],
@@ -1399,6 +1404,7 @@ let MapLocations = {
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 97, y: 179 },
                         Age: Age.CHILD,
+                        Order: 2,
                         LongDescription: "At night, roll into the tree in the center of the village to reveal this skulltula. If you have no weapon, use a pot from near the guard by Death Mountain Trail.",
                         OverrideItemGroupCondition: true
                     },
@@ -1407,6 +1413,7 @@ let MapLocations = {
                         IsEmpty: true,
                         MapInfo: { x: 156, y: 155 },
                         Age: Age.CHILD,
+                        Order: 3,
                         LongDescription: "This is the crate with the cucco in it next to Talon's House."
                     },
                     "Skulltula on House of Skulltulas": {
@@ -1414,6 +1421,7 @@ let MapLocations = {
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 121, y: 218 },
                         Age: Age.CHILD,
+                        Order: 4,
                         LongDescription: "At night, you can find this skulltula on the side of the House of Skulltulas. If you have no weapon, use a pot near Impa's house to kill it (up the nearby stairs).",
                         OverrideItemGroupCondition: true
                     },
@@ -1424,6 +1432,7 @@ let MapLocations = {
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 136, y: 249 },
                         Age: Age.CHILD,
+                        Order: 5,
                         LongDescription: "These pots are next to the door to Impa's house."
                     },
                     "Wonderitem in Impa's House": {
@@ -1434,6 +1443,7 @@ let MapLocations = {
                         },
                         MapInfo: { x: 175, y: 248 },
                         Age: Age.CHILD,
+                        Order: 6,
                         LongDescription: "Enter Impa's house from the front. Climb the stairs and walk around the cow pen area to get this wonderitem."
                     },
                     "Skulltula at Construction Site": {
@@ -1441,6 +1451,7 @@ let MapLocations = {
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 191, y: 201 },
                         Age: Age.CHILD,
+                        Order: 7,
                         LongDescription: "At night, you can find this skulltula on the pile of bricks at the construction site. If you have no weapon, use a pot from near the guard by Death Mountain Trail.",
                         OverrideItemGroupCondition: true
                     },
@@ -1449,6 +1460,7 @@ let MapLocations = {
                         MapImageName: "Red Rupee Wonderitem",
                         MapInfo: { x: 189, y: 210 },
                         Age: Age.CHILD,
+                        Order: 8,
                         LongDescription: "Climb up the struture under construction and make your way to the end to get this item. If it's daytime, you can get around the worker by backwalking off the edge and grabbing hold, then climbing back up when he passes by."
                     },
                     "Bottle from Cucco Collection": {
@@ -1456,6 +1468,7 @@ let MapLocations = {
                         Time: function() { return Time.DAY; },
                         MapInfo: { x: 210, y: 244 },
                         Age: Age.CHILD,
+                        Order: 9,
                         LongDescription: "This is the prize that Anju gives you after collecting all 7 cuccos in the pen. Note that leaving the map will keep your progress."
                     },
                     "Crate Outside Enclosed Area": {
@@ -1463,6 +1476,7 @@ let MapLocations = {
                         IsEmpty: true,
                         MapInfo: { x: 248, y: 143 },
                         Age: Age.CHILD,
+                        Order: 10,
                         LongDescription: "This crate is by the gate leading to the enclosed area, on the outside near the windmill platform."
                     },
                     "Crate by Windmill": {
@@ -1470,6 +1484,7 @@ let MapLocations = {
                         IsEmpty: true,
                         MapInfo: { x: 264, y: 155 },
                         Age: Age.CHILD,
+                        Order: 11,
                         LongDescription: "This crate is by the door to the windmill."
                     },
                     "Crate by Graveyard": {
@@ -1477,6 +1492,7 @@ let MapLocations = {
                         IsEmpty: true,
                         MapInfo: { x: 333, y: 212 },
                         Age: Age.CHILD,
+                        Order: 12,
                         LongDescription: "This crate is by the loading zone to the graveyard, in the corner."
                     },
                     "2 Crates by Talon's House": {
@@ -1487,6 +1503,7 @@ let MapLocations = {
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 166, y: 175 },
                         Age: Age.ADULT,
+                        Order: 13,
                         LongDescription: "These crates are next to Talon's House."
                     },
                     "Crate Behind House of Skulltulas": {
@@ -1494,6 +1511,7 @@ let MapLocations = {
                         IsEmpty: true,
                         MapInfo: { x: 108, y: 203 },
                         Age: Age.ADULT,
+                        Order: 14,
                         LongDescription: "This crate is behind the house of skulltulas, by the ledge."
                     },
                     "2 Crates by Impa's House": {
@@ -1504,21 +1522,15 @@ let MapLocations = {
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 136, y: 245 },
                         Age: Age.ADULT,
+                        Order: 15,
                         LongDescription: "These crates are next to Impa's House."
-                    },
-                    "Skulltula on Impa's Roof": {
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Time: function() { return Time.NIGHT; },
-                        MapInfo: { x: 172, y: 260 },
-                        Age: Age.ADULT,
-                        LongDescription: "At night, from the ledge near the entrance to Impa's House, hookshot to the House of Skulltula. From there, hookshot to Impa's house. You'll find the skulltula on the back wall.",
-                        RequiredItems: [Items.HOOKSHOT]
                     },
                     "Crate by Archery": {
                         ItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
                         MapInfo: { x: 185, y: 192 },
                         Age: Age.ADULT,
+                        Order: 17,
                         LongDescription: "This crate is by the entrance to the archery minigame."
                     },
                     "Gift From Anju": {
@@ -1526,6 +1538,7 @@ let MapLocations = {
                         Time: function() { return Time.DAY; },
                         MapInfo: { x: 205, y: 240 },
                         Age: Age.ADULT,
+                        Order: 18,
                         LongDescription: "Simply talk to Anju (the cucco lady) as adult to get this."
                     },
                     "Anju After Waking Talon": {
@@ -1534,6 +1547,7 @@ let MapLocations = {
                         MapInfo: { x: 215, y: 240 },
                         MapImageName: "Pocket Egg Pocket Cucco",
                         Age: Age.ADULT,
+                        Order: 19,
                         LongDescription: "Show Anju the Pocket Cucco to after waking up Talon with it. If entrance shuffle is off, he's in the house near the bottom stairs.",
                         CustomRequirement: function(age) {
                             return this.wokeUpTalon;
@@ -1543,6 +1557,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 35, y: 209 },
                         Age: Age.ADULT,
+                        Order: 20,
                         LongDescription: "You can get this item if you have the forest, fire, and water medallions. Just enter Kakariko Village as an adult.",
                         RequiredMedallions: [Medallions.FOREST_MEDALLION, Medallions.FIRE_MEDALLION, Medallions.WATER_MEDALLION]
                     },
@@ -1678,6 +1693,22 @@ let MapLocations = {
                         MapInfo: { x: 242, y: 138 },
                         Age: Age.CHILD,
                         LongDescription: "These pots are next to the door to Granny's Potion Shop in the enclosed area."
+                    }
+                }
+            },
+            impasRoof: {
+                DisplayGroup: { groupName: "Lower Area", imageName: "Super Cucco Minigame" },
+                Exits: {
+                    main: {}
+                },
+                ItemLocations: {
+                    "Skulltula on Impa's Roof": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        Time: function() { return Time.NIGHT; },
+                        MapInfo: { x: 172, y: 260 },
+                        Age: Age.ADULT,
+                        Order: 16,
+                        LongDescription: "At night, from the ledge near the entrance to Impa's House, hookshot to the House of Skulltula. From there, hookshot to Impa's house. You'll find the skulltula on the back wall."
                     }
                 }
             },

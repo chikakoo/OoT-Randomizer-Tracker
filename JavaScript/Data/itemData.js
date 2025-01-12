@@ -953,12 +953,21 @@ let Keys = {
 		name: "Forest Temple", 
 		minimumKeys: function() {
 			let minKeys = 5;
+
+			// Skips the lobby door to the block room
 			if (Settings.GlitchesToAllow.forestJumpToTop) {
 				minKeys--;
 			}
-			if (Settings.GlitchesToAllow.forestGreenPoeEarly) {
+
+			// Skips the two locked doors leading to the carousel room
+			// If pots are shuffled, then you still need use use these keys
+			if (Settings.GlitchesToAllow.forestGreenPoeEarly &&
+					(Settings.RandomizerSettings.potSetting === ShuffleLocationSettings.OFF ||
+					(Settings.RandomizerSettings.potSetting === ShuffleLocationSettings.OW_ONLY))
+			) {
 				minKeys -= 2;
 			}
+
 			return minKeys;
 		}, 
 		totalKeys: function() { return 5; },

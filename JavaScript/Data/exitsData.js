@@ -861,6 +861,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 14, y: 213},
             Age: Age.EITHER,
+            Order: 28,
             LongDescription: "This is the entrance back to Hyrule Field."
         },
         "Graveyard": {
@@ -870,6 +871,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 302, y: 234},
             Age: Age.EITHER,
+            Order: 29,
             LongDescription: "This is the entrance to the graveyard."
         },
         "Bottom of the Well": {
@@ -897,6 +899,7 @@ let OwExits = {
             },
             MapInfo: { x: 227, y: 170 },
             Age: Age.EITHER,
+            Order: 30,
             LongDescription: "This is the entrance to the Bottom of the Well.",
             IsDungeonEntrance: true,
             CustomRequirement: function(age) {
@@ -932,6 +935,7 @@ let OwExits = {
             DefaultEntranceGroupName: "Two Redead Grotto",
             MapInfo: { x: 142, y: 169 },
             Age: Age.EITHER,
+            Order: 21,
             LongDescription: "This hidden grotto is between the tree and Talon's house. There's a slightly darker texture that you need to either hammer or bomb.",
             RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
@@ -942,6 +946,7 @@ let OwExits = {
             DefaultEntranceGroupName: "Talon's House Kakariko",
             MapInfo: { x: 162, y: 165 },
             Age: Age.EITHER,
+            Order: 22,
             LongDescription: "This is the building straight ahead of the tree that has the crate with the cucco next to it as a child."
         },
         "House of Skulltula": {
@@ -951,6 +956,7 @@ let OwExits = {
             DefaultEntranceGroupName: "House of Skulltula",
             MapInfo: { x: 141, y: 214 },
             Age: Age.EITHER,
+            Order: 23,
             LongDescription: "This is the building near Impa's house, with the fence near the door."
         },
         "Impa's House": {
@@ -959,6 +965,7 @@ let OwExits = {
             IsInterior: true,
             MapInfo: { x: 141, y: 254 },
             Age: Age.EITHER,
+            Order: 24,
             LongDescription: "This is the building that Anju stands by. The entrance is on the opposite site of the cucco pen.",
         },
         "Back of Impa's House": {
@@ -969,6 +976,7 @@ let OwExits = {
             Time: function() { return Time.DAY_CHILD; },
             MapInfo: { x: 182, y: 252 },
             Age: Age.EITHER,
+            Order: 25,
             LongDescription: "This is the opening above the cucco pen. You can get there as a child via the owl on the top of Death Mountain, or by using a cucco. To do this, throw it up the building under construction (2 throws), then jump to the border (when the construction worker isn't there), then jump at the platform - don't drop the cucco.<br/><br/>As adult, you must hookshot there. Hookshot first to the House of Skulltulas from the ledge by the entrance to Impa's house. Then, hookshot to Impa's house. Make your way to the ledge.<br/><br/>Alternatively, as adult, you can make your way directly under the opening, and simply hold forward to jump onto the ledge.",
         },
         "Archery Minigame": {
@@ -984,6 +992,7 @@ let OwExits = {
             },
             MapInfo: { x: 190, y: 190 },
             Age: Age.ADULT,
+            Order: 26,
             LongDescription: "This is the building that was being constructed as a child. It's near the well."
         },
         "Windmill": {
@@ -994,6 +1003,7 @@ let OwExits = {
             MapInfo: { x: 266, y: 152 },
             IsComplexEntrance: true,
             Age: Age.EITHER,
+            Order: 27,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances; },
             CustomRequirement: function(age) {
                 return Settings.RandomizerSettings.shuffleInteriorEntrances;
@@ -1007,6 +1017,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 266, y: 152 },
             Age: Age.EITHER,
+            Order: 28,
             OneWayEntrance: true,
             RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleInteriorEntrances; },
             CustomRequirement: function(age) {
