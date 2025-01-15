@@ -1330,7 +1330,6 @@ let ItemData = {
 
 		switch(item) {
 			// Child Only
-			case Items.FAIRY_SLINGSHOT:
 			case ChildTradeItems.WEIRD_EGG:
 			case ChildTradeItems.ZELDAS_LETTER:
 			case ChildTradeItems.KEATON_MASK:
@@ -1384,6 +1383,13 @@ let ItemData = {
 				return age === Age.CHILD || 
 					Settings.GlitchesToAllow.forceAdultDekuStickEquip ||
 					Data.canEquipSwap(age);
+			case Items.FAIRY_SLINGSHOT:
+				return age === Age.CHILD || 
+					// Adult can shoot slingshot-type ammo with the bow, but uses arrows as ammo
+					Items.FAIRY_BOW.playerHas && (
+						Settings.GlitchesToAllow.forceAdultSlingshotEquip ||
+						Data.canEquipSwap(age)
+					);
 			case Items.BOOMERANG:
 				return age === Age.CHILD || 
 					Settings.GlitchesToAllow.forceAdultBoomerangEquip ||

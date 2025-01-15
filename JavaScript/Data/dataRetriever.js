@@ -692,7 +692,7 @@ Data = {
 
     /**
      * Returns whether the itemLocation is forcing a specific age to be used
-     * Checks the region and the location itself
+     * Checks the map, region, and location itself
      * @param itemLocation - the item location to check
      * @param age - the age to check for
      * @returns The result, as a boolean
@@ -719,7 +719,7 @@ Data = {
         let isOwExit = this.usesOwExits(itemLocation);
         let mapName = isOwExit ? itemLocation.ExitMap : itemLocation.Map;
         let map = MapLocations[mapName];
-        
+
         if (map[propertyName] && map[propertyName]()) {
             return true;
         }
@@ -1260,7 +1260,7 @@ Data = {
                 Items.NAYRUS_LOVE.playerHas;
         }
 
-        // Adult can only make use of sticks/boomerang, so no need to check the left side
+        // Adult can only make use of sticks/boomerang/slingshot, so no need to check the left side
 
         //- The magics are always good to equip swap with
         if (Items.DINS_FIRE.playerHas || 

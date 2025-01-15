@@ -1876,7 +1876,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 63, y: 111, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         Order: 4,
                         LongDescription: "After the flare dancer room (see the other task), continue to the next room. Hammer the rusted switch to gain access to the boss key chest."
                     }
@@ -2239,6 +2239,12 @@ let StandardDungeons = {
             fireMazeRoomStart: {
                 DisplayGroup: { groupName: "Fire Wall Maze", imageName: "Fire Arrow" },
                 Exits: {
+                    bossRoom: {
+                        Age: Age.ADULT,
+                        CustomRequirement: function(age) {
+                            return Settings.GlitchesToAllow.fireBKSkipFromFireWallMaze;
+                        }
+                    },
                     fireMazeRoomEnd: {
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.fireWallSkip;

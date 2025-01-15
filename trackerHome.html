@@ -792,15 +792,20 @@
 						<input type="checkbox" name="equipSwap" value="equipSwap">
 						🔗Equip Swap
 					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("forceAdultBoomerangEquip", event)'
-						title="Enable this if you have boomerang equipped, but got equip-swapped blocked by a child trade item or magic beans.">
-						<input type="checkbox" name="forceAdultBoomerangEquip" value="forceAdultBoomerangEquip">
-						Force Adult Boomerang Equip
-					</label>
 					<label onclick='SettingsPage.setBooleanValueForGlitches("forceAdultDekuStickEquip", event)'
 						title="Enable this if you have deku sticks equipped, but got equip-swapped blocked by a child trade item or magic beans.">
 						<input type="checkbox" name="forceAdultDekuStickEquip" value="forceAdultDekuStickEquip">
 						Force Adult Deku Stick Equip
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("forceAdultSlingshotEquip", event)'
+						title="Enable this if you have slingshot equipped, but got equip-swapped blocked by a child trade item or magic beans.">
+						<input type="checkbox" name="forceAdultSlingshotEquip" value="forceAdultSlingshotEquip">
+						Force Adult Slingshot Equip
+					</label>
+					<label onclick='SettingsPage.setBooleanValueForGlitches("forceAdultBoomerangEquip", event)'
+						title="Enable this if you have boomerang equipped, but got equip-swapped blocked by a child trade item or magic beans.">
+						<input type="checkbox" name="forceAdultBoomerangEquip" value="forceAdultBoomerangEquip">
+						Force Adult Boomerang Equip
 					</label>
 					<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("weirdShot", "https://youtu.be/x08fkfU2124", event)'
 						title="Bonk on a wall; shield drop bomb, roll, backflip; when bomb almost explodes, roll foward holding down, Z, R, hookshot; release R and Z one after another at the right time">
@@ -1353,6 +1358,16 @@
 							title="This is a jump you can do from the floor with the hammer chest to get to the switch without the Song of Time.">
 							<input type="checkbox" name="fireJumpDownToSoTBlock" value="fireJumpDownToSoTBlock">
 							Jump to Central Song of Time Block Room
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("fireBKSkipFromFireWallMaze", "https://youtu.be/qdH7lE7U8x0?si=YlR8I25OrCF_ydfb", event)'
+							title="Line up with the right side of the pillar; HOLD Z FOREVER; sidehop right until the wall; sideroll; sidehop right; sideroll and pause on the first frame link is falling; unpause and repress Z; wait for camera to pan down (Link's hand should be clipping); with Z held, press A to fall and pause immediately; unpause and hold forward to the boss door">
+							<input type="checkbox" name="fireBKSkipFromFireWallMaze" value="fireBKSkipFromFireWallMaze">
+							🔗BK Skip from Fire Wall Maze
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("mqBossRoomGoronBombClip", "https://youtu.be/4nUZtFL7jLs?si=IFPdXtb2QbqDgj7U&t=9105", event)'
+							title="Get in the corner of the boxes and jail, back to the boxes; slowly backwalk, press A to sideroll; A to roll; take bomb out, wait until it's above your head; shield drop; sidehop left; backflip to corner; wait to clip out; jumpslash and hold forward">
+							<input type="checkbox" name="mqBossRoomGoronBombClip" value="mqBossRoomGoronBombClip">
+							🔗MQ Boss Room Goron Bomb Clip
 						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitches("mqFireLavaRoomDoorWithDins", event)'
 							title="Use Din's Fire on the rising platform at a precise time, then run over to the other torch to light it in time. Very finicky.">

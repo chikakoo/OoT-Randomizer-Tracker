@@ -2400,7 +2400,7 @@ GrottoGroups = {
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
 				},
-				isChildOnly: function() { return true; }
+				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			}
 		}
 	},
@@ -2415,7 +2415,7 @@ GrottoGroups = {
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
 				},
-				isChildOnly: function() { return true; }
+				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			}
 		}
 	},
@@ -2430,7 +2430,7 @@ GrottoGroups = {
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
 				},
-				isChildOnly: function() { return true; }
+				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			}
 		}
 	},
