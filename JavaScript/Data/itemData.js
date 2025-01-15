@@ -229,6 +229,10 @@ let ItemSets = {
 		isItemSet: true,
 		items: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK, Items.MEGATON_HAMMER]
 	},
+	ACUTE_ANGLE_SWORDS: {
+		isItemSet: true,
+		items: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
+	},
 	SHIELDS: {
 		isItemSet: true,
 		items: [Equipment.DEKU_SHIELD, Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD]

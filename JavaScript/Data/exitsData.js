@@ -1056,7 +1056,7 @@ let OwExits = {
             LongDescription: "This is the building to the left if you are facing the Death Mountain entrance.",
             CustomRequirement: function(age) {
                 if (age === Age.ADULT) { return true; }
-                return Settings.GlitchesToAllow.kakShopClips && ItemData.canUse(age, ItemSets.SWORDS);
+                return Settings.GlitchesToAllow.kakShopClips && ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS);
             }
         },
         "Potion Shop Front": {
@@ -1113,7 +1113,7 @@ let OwExits = {
             LongDescription: "This entrance to this is where the open grotto is behind the fence. You can use your hookshot to get back here via the roofs. You can also jump onto the potion shop roof from the Death Mountain entrance with a good angle.",
             CustomRequirement: function(age) {
                 if (age === Age.ADULT) { return true; }
-                return Settings.GlitchesToAllow.kakShopClips && ItemData.canUse(age, ItemSets.SWORDS);
+                return Settings.GlitchesToAllow.kakShopClips && ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS);
             }
         },
         "Potion Shop to Interior": {
@@ -1571,8 +1571,7 @@ let OwExits = {
             LongDescription: "This is the entrance to Zora's River you can get to by diving into the water.",
             RequiredChildItems: [Equipment.SCALE],
             CustomRequirement: function(age) {
-                if (age === Age.CHILD) { return true; }
-                return Settings.GlitchesToAllow.adultDomainToLake && Items.HOOKSHOT.playerHas;
+                return age === Age.CHILD || Settings.GlitchesToAllow.adultDomainToLake;
             }
         },
         "Zora's Fountain": {

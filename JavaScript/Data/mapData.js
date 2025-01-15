@@ -4802,9 +4802,8 @@ let MapLocations = {
                 ExcludeFromSpawnList: true,
                 Exits: {
                     entrance: {
-                        Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.backwardsWasteland && Equipment.HOVER_BOOTS.playerHas;
+                            return Settings.GlitchesToAllow.backwardsWasteland;
                         }
                     },
                     exit: {

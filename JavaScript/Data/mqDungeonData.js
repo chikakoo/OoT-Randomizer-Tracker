@@ -1580,7 +1580,9 @@ let MQDungeons = {
                 Exits: {
                     roomNorthOfLobby: {
                         CustomRequirement: function(age) {
-                            return age === Age.CHILD || Data.canPlaySong(Songs.SONG_OF_TIME);
+                            return age === Age.CHILD || 
+                                Settings.GlitchesToAllow.forestLedgeClip ||
+                                Data.canPlaySong(Songs.SONG_OF_TIME);
                         }
                     }, 
                     outsideEast: {
@@ -1939,7 +1941,6 @@ let MQDungeons = {
                             return !Data.itemLocationObtained("Forest Temple", "poeRooms", "Chest in Stalfos Room");
                         }
                     }, 
-
                     twistedCooridor2: {
                         LockedDoor: "Locked Door in Blue Poe Room",
                         Map: "Forest Temple"
