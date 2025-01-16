@@ -1089,7 +1089,8 @@ GrottoGroups = {
 				itemGroup: ItemGroups.COW,
 				description: "Burn the web, then play Epona's Song next to the cow.",
 				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.FIRE_ITEMS) && Data.canMilkCows();
+					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.TRADE_ITEM_QPA]) &&
+						Data.canMilkCows();
 				}
 			},
 			"Skulltula at Distance": {
@@ -1100,7 +1101,8 @@ GrottoGroups = {
 						return true;
 					}
 					
-					return ItemData.canUseAll(age, [ItemSets.FIRE_ITEMS, ItemSets.GRAB_SHORT_DISTANCE_ITEMS]);
+					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.TRADE_ITEM_QPA]) && 
+						ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS);
 				}
 			},
 			"Gossip Stone": {
@@ -1108,7 +1110,8 @@ GrottoGroups = {
 				itemGroup: ItemGroups.GOSSIP_STONE,
 				description: "Burn the web. The stone is in one of the little rooms.",
 				canGet: function(age) { 
-					return ItemData.canUse(age, ItemSets.FIRE_ITEMS) && Data.canReadGossipStone(age); 
+					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.TRADE_ITEM_QPA]) && 
+						Data.canReadGossipStone(age); 
 				}
 			},
 			"2 Pots": {
@@ -1116,7 +1119,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.POT,
 				description: "Burn the web. The pots are by the cow.",
 				canGet: function(age) { 
-					return ItemData.canUse(age, ItemSets.FIRE_ITEMS);
+					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.TRADE_ITEM_QPA]);
 				}
 			}
 		}
@@ -1196,6 +1199,7 @@ GrottoGroups = {
 				description: "Light the torches in the first room to spawn a chest.<br/><br/>Using flame storage and sticks: get flame storage; line up with the side of the platform by the stairs and the torch; sidehop right x8; sideroll; take out stick (it should be lit now); sidehop to the door - quickly enter at the very left side; the first torch should be lit as you go in - now finish the job.",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.FIRE_ITEMS) ||
+						ItemData.canUse(age, QPAItemSets.TORCH_QPA) ||
 						(Settings.GlitchesToAllow.flameStorage && ItemData.canUse(age, Items.DEKU_STICK));
 				}
 			},

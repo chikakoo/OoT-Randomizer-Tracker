@@ -1260,7 +1260,7 @@ Data = {
                 Items.NAYRUS_LOVE.playerHas;
         }
 
-        // Adult can only make use of sticks/boomerang/slingshot, so no need to check the left side
+        // Adult can only make use of sticks/boomerang/slingshot/child trade item, so no need to check the left side
 
         //- The magics are always good to equip swap with
         if (Items.DINS_FIRE.playerHas || 

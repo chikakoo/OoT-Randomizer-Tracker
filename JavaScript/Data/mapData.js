@@ -3239,8 +3239,12 @@ let MapLocations = {
 
                             return Data.hasBottle() || 
                                 Object.values(AdultTradeItems).some(item => item.playerHas) ||
-                                (Data.canEquipSwap(age) && Items.MAGIC_BEAN.playerHas) ||
-                                ItemData.canUse(age, Items.NAYRUS_LOVE)
+                                ItemData.canUseAny(age, ([
+                                    Items.MAGIC_BEAN, 
+                                    Items.NAYRUS_LOVE, 
+                                    ChildTradeItems.WEIRD_EGG, 
+                                    ChildTradeItems.ZELDAS_LETTER
+                                ]));
                         }
                     },
                     "Show Prescription to King Zora": {

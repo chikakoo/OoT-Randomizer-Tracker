@@ -270,6 +270,17 @@ let ItemSets = {
 };
 
 /**
+ * For efficiency, QPA chcks will be their own item sets
+ * - No hover boots QPA yet, until a spot is found that is required for it
+ */
+let QPAItemSets = {
+	TORCH_QPA: { isQpaItemSet: true, useJumpslash: true, forTorch: true },
+	BLUE_FIRE_QPA: { isQpaItemSet: true, useJumpslash: true, forBlueFire: true },
+	BIGGORONS_SWORD_QPA: { isQpaItemSet: true, useJumpslash: true, forBiggoronsSword: true },
+	TRADE_ITEM_QPA: { isQpaItemSet: true, useCutsceneItem: true }
+};
+
+/**
  * All medallions and spiritual stones
  */
 let Medallions = {
@@ -1320,6 +1331,11 @@ let ItemData = {
 			return this.canUseAny(age, item.items);
 		}
 
+		// If this is a QPA item set, check it accordingly
+		if (item.isQpaItemSet) {
+			return this.canUseQPAItemSet(age, item);
+		}
+
 		// If the item has default notes, it's a song
 		if (item.defaultNotes !== undefined) {
 			return Data.canPlaySong(item);
@@ -1330,8 +1346,6 @@ let ItemData = {
 
 		switch(item) {
 			// Child Only
-			case ChildTradeItems.WEIRD_EGG:
-			case ChildTradeItems.ZELDAS_LETTER:
 			case ChildTradeItems.KEATON_MASK:
 			case ChildTradeItems.SKULL_MASK:
 			case ChildTradeItems.SPOOKY_MASK:
@@ -1394,6 +1408,11 @@ let ItemData = {
 				return age === Age.CHILD || 
 					Settings.GlitchesToAllow.forceAdultBoomerangEquip ||
 					Data.canEquipSwap(age);
+			case ChildTradeItems.WEIRD_EGG:
+			case ChildTradeItems.ZELDAS_LETTER:
+				// For thawing King Zora
+				// TODO: maybe make a setting for force child trade item equipped - may be overkill though
+				return age === Age.CHILD || Data.canEquipSwap(age);
 			case Items.MEGATON_HAMMER:
 			case AdultTradeItems.ODD_MUSHROOM:
 			case AdultTradeItems.POACHERS_SAW:
@@ -1405,6 +1424,63 @@ let ItemData = {
 
 		// Shared items
 		return true;
+	},
+
+	/**
+	 * Logic to calculate whether the player can perform QPA with the given settings
+	 * @param age - Link's age
+	 * @param itemSet - The settings:
+	 * == QPA Types ==
+	 * - useJumpslash: Whether QPA will be performed using an empty jumpslash, requiring a sword item
+	 *   - forBlueFire: Whether this QPA will be used as blue fire to break mud walls, etc
+	 *   - forBiggoronsSword: Whether this QPA will make use of Biggoron's Sword
+	 *   - forTorch: Whether this QPA will be used to light a torch, requiring a stick as child due to his height
+	 * - useCutsceneItem: Whether QPA will be performed using a cutscene item, also requiring a deku stick
+	 * @returns True if the player can use QPA for the purpose they wish to use it for
+	 */
+	canUseQPAItemSet: function(age, itemSet) {
+		if (!Settings.GlitchesToAllow.qpa) {
+			return false;
+		}
+
+		if (itemSet.useJumpslash) {
+			// If we intend this to be used as blue fire, the rando setting needs to be on
+			if (itemSet.forBlueFire && !Settings.RandomizerSettings.iceArrowsActAsBlueFire) {
+				return false;
+			}
+
+			// TODO: uncomment this on when the sword is added to the item list (and force adult)
+			// if (itemSet.forBiggoronsSword && !Equipment.BIGGORONS_SWORD.playerHas) {
+			// 	return false; //TODO: put all the logic there instead, since it's just for adult
+			// }
+
+			// Child is too short to hit the torch with any other weapon
+			return itemSet.forTorch && age === Age.CHILD
+				? this.canUseAll(age, [Items.DEKU_STICK, ItemSets.SHIELDS])
+				: this.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
+		}
+
+		if (itemSet.useCutsceneItem) {
+			if (!this.canUse(age, Items.DEKU_STICK)) {
+				return false;
+			}
+
+			if (age === Age.CHILD) {
+				return Items.MAGIC_BEAN.playerHas ||
+					this.hasChildTradeItem() || 
+
+					// You can't equip swap from the left, since you NEED stick equipped, so the
+					// only items you can do it with are the magic spells
+					(this.hasAdultTradeItem() && 
+						this.canUseAny(age, [Items.DINS_FIRE, Items.FARORES_WIND, Items.NAYRUS_LOVE]));
+			} 
+
+			// Since stick NEEDS to be equipped, you can't equip swap a child trade item/magic beans for this
+			return this.hasAdultTradeItem();
+		}
+
+		console.log("ERROR: Got into canUseQPAItemSet with an unexpected item set!");
+		return false; // Should never get here
 	},
 
 	/**
