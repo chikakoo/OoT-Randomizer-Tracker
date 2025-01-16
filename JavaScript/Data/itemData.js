@@ -121,7 +121,7 @@ let OcarinaButtons = {
 let Equipment = {
 	MASTER_SWORD: { name: "Master Sword", playerHas: true, hide: true },
 	KOKIRI_SWORD: { name: "Kokiri Sword" },
-	MAGIC: { name: "Magic" },
+	BIGGORONS_SWORD: { name: "Biggoron's Sword" },
 	DEKU_SHIELD: { name: "Deku Shield" },
 	STRENGTH: { 
 		name: "Strength", 
@@ -130,7 +130,7 @@ let Equipment = {
 	},
 	
 	GORON_TUNIC: { name: "Goron Tunic" },
-	IRON_BOOTS: { name: "Iron Boots" },
+	ZORA_TUNIC: { name: "Zora Tunic" },
 	HYLIAN_SHIELD: { name: "Hylian Shield" },
 	SCALE: {
 		name: "Scale",
@@ -138,7 +138,7 @@ let Equipment = {
 		useUpgradeAsDisplay: true
 	},
 	
-	ZORA_TUNIC: { name: "Zora Tunic" },
+	IRON_BOOTS: { name: "Iron Boots" },
 	HOVER_BOOTS: { name: "Hover Boots" },
 	MIRROR_SHIELD: { name: "Mirror Shield" },
 	WALLET: { 
@@ -148,9 +148,11 @@ let Equipment = {
 	},
 	
 	GERUDO_MEMBERSHIP_CARD: { name: "Gerudo Membership Card" },
-	STONE_OF_AGONY: { name: "Stone of Agony" },
+	MAGIC: { name: "Magic" },
 	TRIFORCE_SHARDS: { name: "Triforce Shards", playerHas: true, count: 0 },
 	SKULLTULA_TOKENS: { name: "Skulltula Tokens", playerHas: true, count: 0 },
+
+	STONE_OF_AGONY: { name: "Stone of Agony" },
 };
 
 /**
@@ -275,7 +277,7 @@ let ItemSets = {
  */
 let QPAItemSets = {
 	TORCH_QPA: { isQpaItemSet: true, useJumpslash: true, forTorch: true },
-	BLUE_FIRE_QPA: { isQpaItemSet: true, useJumpslash: true, forBlueFire: true },
+	MUD_WALLS_QPA: { isQpaItemSet: true, useJumpslash: true, forMudWalls: true },
 	BIGGORONS_SWORD_QPA: { isQpaItemSet: true, useJumpslash: true, forBiggoronsSword: true },
 	TRADE_ITEM_QPA: { isQpaItemSet: true, useCutsceneItem: true }
 };
@@ -1432,7 +1434,7 @@ let ItemData = {
 	 * @param itemSet - The settings:
 	 * == QPA Types ==
 	 * - useJumpslash: Whether QPA will be performed using an empty jumpslash, requiring a sword item
-	 *   - forBlueFire: Whether this QPA will be used as blue fire to break mud walls, etc
+	 *   - forMudWalls: Whether this QPA will be used to break mud walls
 	 *   - forBiggoronsSword: Whether this QPA will make use of Biggoron's Sword
 	 *   - forTorch: Whether this QPA will be used to light a torch, requiring a stick as child due to his height
 	 * - useCutsceneItem: Whether QPA will be performed using a cutscene item, also requiring a deku stick
@@ -1445,7 +1447,7 @@ let ItemData = {
 
 		if (itemSet.useJumpslash) {
 			// If we intend this to be used as blue fire, the rando setting needs to be on
-			if (itemSet.forBlueFire && !Settings.RandomizerSettings.iceArrowsActAsBlueFire) {
+			if (itemSet.forMudWalls && !Settings.RandomizerSettings.iceArrowsActAsBlueFire) {
 				return false;
 			}
 

@@ -79,6 +79,10 @@ let ItemTracker = {
 					_this._setStyleForOcarinaButton(item, divItem);
 				}
 
+				if (key === "STONE_OF_AGONY") { // The Stone of Agony is positioned slightly differently
+					_this._setStyleForStoneOfAgony(divItem);
+				}
+
 				if (itemObjString === "Songs" && !ItemData.hasAllSongNotes(item)) { // Set CSS for songs that can't be played
 					addCssClass(divItem, "cannot-play-song");
 				}
@@ -163,6 +167,17 @@ let ItemTracker = {
 				buttonDiv.style.left = "2px";
 				return;
 		}
+	},
+
+	/**
+	 * The stone of agony is positions away from the other icons
+	 * This function sets them accordingly
+	 * @param itemDiv - The div for the stone of agony
+	 */
+	_setStyleForStoneOfAgony: function(itemDiv) {
+		itemDiv.style.position = "absolute";
+		itemDiv.style.top = "85px";
+		itemDiv.style.left = "132px";
 	},
 
 	onEmptyBottleClicked: function(item, divBottleCount, event) {
