@@ -91,7 +91,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>Light the unlit torch in this room to spawn the chest. If using a bow, it's easier if you shoot it from the left side of the torch.",
-                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.TORCH_QPA]
+                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.TALL_TORCH_QPA]
                     }
                 }
             },

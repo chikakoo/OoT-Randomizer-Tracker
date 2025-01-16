@@ -277,7 +277,7 @@ let ItemSets = {
  */
 let QPAItemSets = {
 	LEDGE_QPA: { isQpaItemSet: true, useJumpslash: true },
-	TORCH_QPA: { isQpaItemSet: true, useJumpslash: true, forTorch: true },
+	TALL_TORCH_QPA: { isQpaItemSet: true, useJumpslash: true, forTorch: true },
 	MUD_WALLS_QPA: { isQpaItemSet: true, useJumpslash: true, forMudWalls: true },
 	BIGGORONS_SWORD_QPA: { isQpaItemSet: true, useJumpslash: true, forBiggoronsSword: true },
 	TRADE_ITEM_QPA: { isQpaItemSet: true, useCutsceneItem: true }

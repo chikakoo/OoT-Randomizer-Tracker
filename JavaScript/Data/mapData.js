@@ -2563,7 +2563,7 @@ let MapLocations = {
 		Abbreviation: "GORO",
 		MapGroup: MapGroups.MOUNTAIN,
         _canStopAdultGoron: function(age) {
-            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.FAIRY_BOW, QPAItemSets.TORCH_QPA]) ||
+            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.FAIRY_BOW, QPAItemSets.TALL_TORCH_QPA]) ||
                 (Settings.GlitchesToAllow.stopAdultGoronWithFire && ItemData.canUseAny(age, [Items.DINS_FIRE, Items.BLUE_FIRE]));
         },
 		Regions: {
@@ -2599,7 +2599,7 @@ let MapLocations = {
                     shop: {
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) {
-                                return ItemData.canUseAny(age, [ItemSets.MUD_WALL_ITEMS, ItemSets.FIRE_ITEMS, Equipment.STRENGTH, QPAItemSets.TORCH_QPA]);
+                                return ItemData.canUseAny(age, [ItemSets.MUD_WALL_ITEMS, ItemSets.FIRE_ITEMS, Equipment.STRENGTH, QPAItemSets.TALL_TORCH_QPA]);
                             }
                             return MapLocations["Goron City"]._canStopAdultGoron(age);
                         }
@@ -4855,7 +4855,7 @@ let MapLocations = {
                         MapInfo: { x: 208, y: 93 },
                         Age: Age.EITHER,
                         LongDescription: "In the outpost in the center of the desert, light the two torches to spawn a chest.",
-                        RequiredItems: [ItemSets.FIRE_ITEMS]
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA]
                     },
                     "4 Pots at Outpost": {
                         ItemGroup: ItemGroups.ENTRANCE,

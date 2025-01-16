@@ -1199,7 +1199,7 @@ GrottoGroups = {
 				description: "Light the torches in the first room to spawn a chest.<br/><br/>Using flame storage and sticks: get flame storage; line up with the side of the platform by the stairs and the torch; sidehop right x8; sideroll; take out stick (it should be lit now); sidehop to the door - quickly enter at the very left side; the first torch should be lit as you go in - now finish the job.",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.FIRE_ITEMS) ||
-						ItemData.canUse(age, QPAItemSets.TORCH_QPA) ||
+						ItemData.canUse(age, QPAItemSets.TALL_TORCH_QPA) ||
 						(Settings.GlitchesToAllow.flameStorage && ItemData.canUse(age, Items.DEKU_STICK));
 				}
 			},
