@@ -229,11 +229,11 @@ let ItemSets = {
 	// Any item you can swing and jumpslash with - includes stick and hammer
 	SWORDS: {
 		isItemSet: true,
-		items: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK, Items.MEGATON_HAMMER]
+		items: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Equipment.BIGGORONS_SWORD, Items.DEKU_STICK, Items.MEGATON_HAMMER]
 	},
 	ACUTE_ANGLE_SWORDS: {
 		isItemSet: true,
-		items: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
+		items: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Equipment.BIGGORONS_SWORD, Items.DEKU_STICK]
 	},
 	SHIELDS: {
 		isItemSet: true,
@@ -242,7 +242,7 @@ let ItemSets = {
 	DAMAGING_ITEMS: {
 		isItemSet: true,
 		items: [		
-			Equipment.MASTER_SWORD, Equipment.KOKIRI_SWORD, Items.DEKU_STICK,
+			Equipment.MASTER_SWORD, Equipment.BIGGORONS_SWORD, Equipment.KOKIRI_SWORD, Items.DEKU_STICK,
 			Items.DINS_FIRE, Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER,
 			Items.BOOMERANG, Items.FAIRY_SLINGSHOT
 		]
@@ -250,14 +250,14 @@ let ItemSets = {
 	STUNNABLE_ENEMY_KILL_ITEMS: {
 		isItemSet: true,
 		items: [
-			Equipment.MASTER_SWORD, Equipment.KOKIRI_SWORD, Items.DEKU_STICK, Items.FAIRY_SLINGSHOT,
+			Equipment.MASTER_SWORD, Equipment.BIGGORONS_SWORD, Equipment.KOKIRI_SWORD, Items.DEKU_STICK, Items.FAIRY_SLINGSHOT,
 			Items.DINS_FIRE, Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER
 		]
 	},
 	FREEZARD_KILL_ITEMS: {
 		isItemSet: true,
 		items: [
-			Equipment.MASTER_SWORD, Items.DEKU_STICK, Items.MEGATON_HAMMER,
+			Equipment.MASTER_SWORD, Equipment.BIGGORONS_SWORD, Items.DEKU_STICK, Items.MEGATON_HAMMER,
 			Items.BOMB, Items.BOMBCHU, Items.DINS_FIRE
 		]
 	},
@@ -276,6 +276,7 @@ let ItemSets = {
  * - No hover boots QPA yet, until a spot is found that is required for it
  */
 let QPAItemSets = {
+	LEDGE_QPA: { isQpaItemSet: true, useJumpslash: true },
 	TORCH_QPA: { isQpaItemSet: true, useJumpslash: true, forTorch: true },
 	MUD_WALLS_QPA: { isQpaItemSet: true, useJumpslash: true, forMudWalls: true },
 	BIGGORONS_SWORD_QPA: { isQpaItemSet: true, useJumpslash: true, forBiggoronsSword: true },
@@ -1362,6 +1363,7 @@ let ItemData = {
 			case Items.FAIRY_BOW:
 			case Items.HOOKSHOT:
 			case Equipment.MASTER_SWORD:
+			case Equipment.BIGGORONS_SWORD:
 			case Equipment.HYLIAN_SHIELD:
 			case Equipment.MIRROR_SHIELD:
 			case Equipment.IRON_BOOTS:
@@ -1451,10 +1453,10 @@ let ItemData = {
 				return false;
 			}
 
-			// TODO: uncomment this on when the sword is added to the item list (and force adult)
-			// if (itemSet.forBiggoronsSword && !Equipment.BIGGORONS_SWORD.playerHas) {
-			// 	return false; //TODO: put all the logic there instead, since it's just for adult
-			// }
+			// Check for Biggoron's Sword if that's the intent
+			if (itemSet.forBiggoronsSword) {
+				return this.canUseAll(age, [Equipment.BIGGORONS_SWORD, ItemSets.SHIELDS]);
+			}
 
 			// Child is too short to hit the torch with any other weapon
 			return itemSet.forTorch && age === Age.CHILD

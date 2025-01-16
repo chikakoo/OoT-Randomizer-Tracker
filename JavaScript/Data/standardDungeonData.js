@@ -10,7 +10,7 @@ let StandardDungeons = {
         UseChildAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canBurnBasementWeb: function(age) {
             // Adult can shoot through the torch using the bow
-            return ItemData.canUseAny(age, [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE]);
+            return ItemData.canUseAny(age, [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]);
         },
         Regions: {
             main: {
@@ -105,8 +105,14 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Basement", imageName: "Deku Stick" },
                 Exits: {
                     basementBack: {
-                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, ItemSets.FIRE_ITEMS],
-                        RequiredItems: [ItemSets.PROJECTILES]
+                        CustomRequirement: function(age) {
+                            if (ItemData.canUse(age, QPAItemSets.BIGGORONS_SWORD_QPA)) {
+                                return true;
+                            }
+                            
+                            return ItemData.canUseAny(age, [Items.DEKU_STICK, ItemSets.FIRE_ITEMS])  &&
+                                ItemData.canUseAny(age, [ItemSets.PROJECTILES]);
+                        }
                     },
                     basementTop: {
                         CustomRequirement: function(age) {
@@ -156,12 +162,12 @@ let StandardDungeons = {
                         MapInfo: { x: 17, y: 77, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 12,
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, ItemSets.MUD_WALL_ITEMS],
+                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, QPAItemSets.MUD_WALLS_QPA],
                         LongDescription: "If you make your way around the basement, you'll eventually find a circular room where gohma babies drop from the ceiling. One of the side rooms has a bombable wall. Bomb it, then enter the next room. The skulltula is high up on the wall to your left."
                     }
                 }
             },
-
             basementTop: {
                 DisplayGroup: { groupName: "Basement", imageName: "Deku Stick" },
                 Exits: {
