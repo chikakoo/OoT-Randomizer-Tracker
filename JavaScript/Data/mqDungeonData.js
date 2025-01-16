@@ -16,7 +16,7 @@ let MQDungeons = {
                 Exits: {
                     upperFloor: {},
                     compassRoomAntechamber: {
-                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE]
+                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     },
                     basement: {},
                     Exit: {
@@ -91,7 +91,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>Light the unlit torch in this room to spawn the chest. If using a bow, it's easier if you shoot it from the left side of the torch.",
-                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE]
+                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.TORCH_QPA]
                     }
                 }
             },
@@ -188,7 +188,7 @@ let MQDungeons = {
                 Exits: {
                     waterRoom: {
                         RequiredItems: [ItemSets.PROJECTILES],
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]
                     },
                     upperBasement: {
                         CustomRequirement: function(age) {
@@ -203,7 +203,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "Head to the basement. The goal is to hit the switch to the right of the vines to spawn the chest. If you have Din's Fire, use it on the webs. Otherwise, hit the switch to the left of the vines to light the torch, then use your sticks or shoot an arrow through it to gain access to the switch.",
-                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE]
+                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     }
                 }
             },
@@ -301,7 +301,7 @@ let MQDungeons = {
                     lowerBasement: {
                         CustomRequirement: function(age) {
                             let webAlreadyBurned = Data.itemLocationObtained("Deku Tree", "upperBasement", "Burn Basement Web");
-                            let canBurnWeb = ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]);
+                            let canBurnWeb = ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]);
                             return canBurnWeb || webAlreadyBurned || Data.canWeirdShot(age);
                         }
                     }
@@ -323,7 +323,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 16.1,
                         LongDescription: "The web on the basement floor. Use sticks or a fire item to burn it.",
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]
                     }
                 }
             },

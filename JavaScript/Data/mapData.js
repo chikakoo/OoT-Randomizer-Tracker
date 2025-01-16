@@ -2563,7 +2563,7 @@ let MapLocations = {
 		Abbreviation: "GORO",
 		MapGroup: MapGroups.MOUNTAIN,
         _canStopAdultGoron: function(age) {
-            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.FAIRY_BOW]) ||
+            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.FAIRY_BOW, QPAItemSets.TORCH_QPA]) ||
                 (Settings.GlitchesToAllow.stopAdultGoronWithFire && ItemData.canUseAny(age, [Items.DINS_FIRE, Items.BLUE_FIRE]));
         },
 		Regions: {
@@ -2583,7 +2583,12 @@ let MapLocations = {
                             }
 
                             return ItemData.canUseAny(age, [
-                                Items.FAIRY_BOW, Items.DINS_FIRE, Items.BLUE_FIRE, ItemSets.BLAST_OR_SMASH_ITEMS, Equipment.STRENGTH
+                                Items.FAIRY_BOW, 
+                                Items.DINS_FIRE, 
+                                Items.BLUE_FIRE, 
+                                ItemSets.BLAST_OR_SMASH_ITEMS, 
+                                Equipment.STRENGTH,
+                                QPAItemSets.LEDGE_QPA
                             ]);
                         }
                     },
@@ -2594,7 +2599,7 @@ let MapLocations = {
                     shop: {
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) {
-                                return ItemData.canUseAny(age, [ItemSets.MUD_WALL_ITEMS, ItemSets.FIRE_ITEMS, Equipment.STRENGTH]);
+                                return ItemData.canUseAny(age, [ItemSets.MUD_WALL_ITEMS, ItemSets.FIRE_ITEMS, Equipment.STRENGTH, QPAItemSets.TORCH_QPA]);
                             }
                             return MapLocations["Goron City"]._canStopAdultGoron(age);
                         }
@@ -2807,7 +2812,7 @@ let MapLocations = {
 
                             let canGetToMain = Data.canAccessMap(age, "Goron City", "main");
                             let canLightBombFlower = ItemData.canUse(age, Items.DEKU_STICK) && Data.canAccessMap(age, "Goron City", "darunia");
-                            let canExplodeBombFlower = ItemData.canUseAny(age, [Items.FAIRY_BOW, Items.BLUE_FIRE, Equipment.STRENGTH]);
+                            let canExplodeBombFlower = ItemData.canUseAny(age, [Items.FAIRY_BOW, Items.BLUE_FIRE, Equipment.STRENGTH, QPAItemSets.LEDGE_QPA]);
                             return canGetToMain && (canLightBombFlower || canExplodeBombFlower);
                         }
                     }
