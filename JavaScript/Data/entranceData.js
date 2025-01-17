@@ -1089,7 +1089,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.COW,
 				description: "Burn the web, then play Epona's Song next to the cow.",
 				canGet: function(age) {
-					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.TRADE_ITEM_QPA]) &&
+					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]) &&
 						Data.canMilkCows();
 				}
 			},
@@ -1101,7 +1101,7 @@ GrottoGroups = {
 						return true;
 					}
 					
-					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.TRADE_ITEM_QPA]) && 
+					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]) && 
 						ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS);
 				}
 			},
@@ -1110,7 +1110,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.GOSSIP_STONE,
 				description: "Burn the web. The stone is in one of the little rooms.",
 				canGet: function(age) { 
-					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.TRADE_ITEM_QPA]) && 
+					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]) && 
 						Data.canReadGossipStone(age); 
 				}
 			},
@@ -1119,7 +1119,7 @@ GrottoGroups = {
 				itemGroup: ItemGroups.POT,
 				description: "Burn the web. The pots are by the cow.",
 				canGet: function(age) { 
-					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.TRADE_ITEM_QPA]);
+					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]);
 				}
 			}
 		}

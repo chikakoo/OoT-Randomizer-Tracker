@@ -106,7 +106,7 @@ let StandardDungeons = {
                 Exits: {
                     basementBack: {
                         CustomRequirement: function(age) {
-                            if (ItemData.canUse(age, QPAItemSets.BIGGORONS_SWORD_QPA)) {
+                            if (ItemData.canUse(age, QPAItemSets.HIGH_SWITCH_QPA)) {
                                 return true;
                             }
                             
@@ -294,7 +294,7 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) { return true; } // Adult can just climb to the switch
                             return Data.canGroundJumpWithBomb(age, true) || 
-                            (Settings.GlitchesToAllow.dodongoSwitchEarly && Items.BOMBCHU.playerHas && Equipment.DEKU_SHIELD.playerHas);
+                                (Settings.GlitchesToAllow.dodongoSwitchEarly && Items.BOMBCHU.playerHas && Equipment.DEKU_SHIELD.playerHas);
                         }
                     },
                     inDodongoHead: {

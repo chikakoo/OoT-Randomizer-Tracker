@@ -146,10 +146,9 @@ let OwExits = {
             Order: 8,
             Age: Age.EITHER,
             CustomRequirement: function(age) {
-                let canGetToRiver = Equipment.SCALE.playerHas || 
+                return ItemData.canUseAny(age, [Equipment.SCALE, Equipment.IRON_BOOTS]) ||
                     (age === Age.CHILD && Settings.GlitchesToAllow.zorasRiverScalelessChild && ItemData.canUse(age, ItemSets.SWORDS)) ||
                     (age === Age.ADULT && Settings.GlitchesToAllow.zorasRiverScalelessAdult);
-                return canGetToRiver;
             },
             LongDescription: "This is the exit to Zora's River that you get to by diving."
         },
@@ -1534,9 +1533,9 @@ let OwExits = {
             Map: "Lost Woods",
             Region: "nearGoronCity",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: {x: 330, y: 119},
+            MapInfo: { x: 330, y: 119 },
             Age: Age.EITHER,
-            RequiredItems: [Equipment.SCALE],
+            RequiredChoiceOfItems: [Equipment.SCALE, Equipment.IRON_BOOTS],
             LongDescription: "This is the entrance you get to by diving into the water near the waterfall."
         },
         "Zora's Domain": {

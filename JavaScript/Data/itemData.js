@@ -187,6 +187,27 @@ let UpgradedItems = {
 };
 
 /**
+ * For efficiency, QPA chcks will be their own item sets
+ * - No hover boots QPA yet, until a spot is found that is required for it
+ */
+let QPAItemSets = {
+	// No specific requirements, just a usable ledge
+	LEDGE_QPA: { isQpaItemSet: true, useJumpslash: true },
+
+	// Requires sticks or Adult to reach
+	TALL_TORCH_QPA: { isQpaItemSet: true, useJumpslash: true, forTorch: true },
+
+	// Requires the blue fire arrow setting to be on
+	MUD_WALLS_QPA: { isQpaItemSet: true, useJumpslash: true, forMudWalls: true },
+
+	// Requires sticks for Biggoron's sword to reach (either age)
+	HIGH_SWITCH_QPA: { isQpaItemSet: true, useJumpslash: true, forHighSwitch: true },
+
+	// Requires a cutscene item
+	CUTSCENE_ITEM_QPA: { isQpaItemSet: true, useCutsceneItem: true }
+};
+
+/**
  * A list of item sets that can be used to concisely check whether a player can do something
  */
 let ItemSets = {
@@ -268,19 +289,11 @@ let ItemSets = {
 	MUD_WALL_ITEMS: {
 		isItemSet: true,
 		items: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER, Items.BLUE_FIRE, Items.ICE_ARROW]
+	},
+	MUD_WALL_OR_QPA_ITEMS: {
+		isItemSet: true,
+		items: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER, Items.BLUE_FIRE, Items.ICE_ARROW, QPAItemSets.MUD_WALLS_QPA]
 	}
-};
-
-/**
- * For efficiency, QPA chcks will be their own item sets
- * - No hover boots QPA yet, until a spot is found that is required for it
- */
-let QPAItemSets = {
-	LEDGE_QPA: { isQpaItemSet: true, useJumpslash: true },
-	TALL_TORCH_QPA: { isQpaItemSet: true, useJumpslash: true, forTorch: true },
-	MUD_WALLS_QPA: { isQpaItemSet: true, useJumpslash: true, forMudWalls: true },
-	BIGGORONS_SWORD_QPA: { isQpaItemSet: true, useJumpslash: true, forBiggoronsSword: true },
-	TRADE_ITEM_QPA: { isQpaItemSet: true, useCutsceneItem: true }
 };
 
 /**
@@ -1437,7 +1450,7 @@ let ItemData = {
 	 * == QPA Types ==
 	 * - useJumpslash: Whether QPA will be performed using an empty jumpslash, requiring a sword item
 	 *   - forMudWalls: Whether this QPA will be used to break mud walls
-	 *   - forBiggoronsSword: Whether this QPA will make use of Biggoron's Sword
+	 *   - forHighSwitch: Whether this QPA will make use of Biggoron's Sword or deku sticks (as either age)
 	 *   - forTorch: Whether this QPA will be used to light a torch, requiring a stick as child due to his height
 	 * - useCutsceneItem: Whether QPA will be performed using a cutscene item, also requiring a deku stick
 	 * @returns True if the player can use QPA for the purpose they wish to use it for
@@ -1453,9 +1466,10 @@ let ItemData = {
 				return false;
 			}
 
-			// Check for Biggoron's Sword if that's the intent
-			if (itemSet.forBiggoronsSword) {
-				return this.canUseAll(age, [Equipment.BIGGORONS_SWORD, ItemSets.SHIELDS]);
+			// Check for longer weapons
+			if (itemSet.forHighSwitch) {
+				return this.canUseAny(age, [Items.DEKU_STICK, Equipment.BIGGORONS_SWORD]) &&
+					this.canUse(age, ItemSets.SHIELDS);
 			}
 
 			// Child is too short to hit the torch with any other weapon
