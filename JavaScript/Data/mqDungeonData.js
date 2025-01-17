@@ -2208,7 +2208,7 @@ let MQDungeons = {
                 Exits: {
                     roomBeforeBoss: {
                         Age: Age.EITHER,
-                        RequiredItems: [ItemSets.FIRE_ITEMS],
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA],
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD && !Settings.GlitchesToAllow.fireWallSkip && !Data.canBombSuperslide(age)) { 
                                 return false; 
@@ -2439,10 +2439,14 @@ let MQDungeons = {
                         Order: 6,
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner. Roll into a box to break it to reveal a torch. Light all 3 torches in the room to open the gate to the chest.",
                         CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || 
-                                ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]) ||
-                                (Settings.GlitchesToAllow.mqBossRoomGoronBombClip && 
-                                    ItemData.canUseAll(age, [ItemSets.SHIELDS, Items.BOMB]));
+                            if (Settings.GlitchesToAllow.mqBossRoomGoronBombClip && 
+                                    ItemData.canUseAll(age, [ItemSets.SHIELDS, Items.BOMB])) {
+                                return true;
+                            }
+
+                            return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA]) &&
+                                (Data.canMegaFlip(age) || 
+                                    ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]));
                         }
                     }
                 }
@@ -2457,7 +2461,7 @@ let MQDungeons = {
                 Exits: {
                     bossKeyRoom: {
                         Age: Age.ADULT,
-                        RequiredItems: [ItemSets.FIRE_ITEMS],
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.fireSoTBlockJump || Items.HOOKSHOT.playerHas;
                         }
@@ -2508,11 +2512,16 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
                         Order: 17,
+                        RequiredItems: [ItemSets.EXPLOSIVES],
                         CustomRequirement: function(age) {
-                            return age === Age.ADULT || Data.canGroundJumpWithBomb(age);
+                            if (age === Age.CHILD && !Data.canGroundJumpWithBomb(age)) {
+                                return false;
+                            }
+
+                            return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]) ||
+                                ItemData.canUseAll(age, [Items.HOOKSHOT, QPAItemSets.LEDGE_QPA]);
                         },
-                        RequiredItems: [ItemSets.EXPLOSIVES, ItemSets.FIRE_ITEMS],
-                        LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron."
+                        LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron.<br/><br/>If using cutscene item QPA, angle toward the torch at a 45 degree angle when you jumpslash with the deku stick to light it."
                     }
                 }
             },
@@ -2541,7 +2550,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "Hookshot and Bow Wonderitems",
+                        DefaultEntranceGroupName: "QPAable Hookshot and Bow Wonderitems",
                         MapInfo: { x: 164, y: 91, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 15.1,
@@ -2559,7 +2568,7 @@ let MQDungeons = {
                 Exits: {
                     boulderMaze: {
                         Age: Age.ADULT,
-                        RequiredItems: [ItemSets.FIRE_ITEMS]
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, QPAItemSets.HIGH_SWITCH_QPA] // The torch is quite high
                     },
                     cellBelowBoulderMaze: {
                         Age: Age.ADULT,

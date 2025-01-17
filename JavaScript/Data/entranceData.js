@@ -2338,6 +2338,26 @@ GrottoGroups = {
 			}
 		}
 	},
+	"QPAable Hookshot and Bow Wonderitems": {
+		tooltip: "A group of two wonderitems - one requiring hookshot, and one requiring the bow, in an area that QPA can be used.",
+		icon: "Projectile Wonderitem",
+		buttons: {
+			"Hookshot Wonderitem": {
+				description: "Shoot this with the hookshot to spawn the wonderitem.",
+				canGet: function(age) {
+					return ItemData.canUse(age, Items.HOOKSHOT);
+				},
+				isAdultOnly: function() { return true; }
+			},
+			"Bow Wonderitem": {
+				description: "Shoot this with the bow to spawn the wonderitem.",
+				canGet: function(age) {
+					return ItemData.canUseAny(age, [Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]);
+				},
+				isAdultOnly: function() { return !Settings.GlitchesToAllow.qpa; }
+			}
+		}
+	},
 	"2 Hookshot Wonderitems": {
 		tooltip: "A group of 2 wonderitems requiring the hookshot.",
 		icon: "Hookshot Wonderitem",

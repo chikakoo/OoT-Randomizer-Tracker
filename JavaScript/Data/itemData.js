@@ -1483,18 +1483,24 @@ let ItemData = {
 				return false;
 			}
 
+			// We're not checking whether you can USE it, we just need it in the pause menu
+			let hasMagicItem = Items.DINS_FIRE.playerHas || 
+				Items.FARORES_WIND.playerHas || 
+				Items.NAYRUS_LOVE.playerHas;
+
 			if (age === Age.CHILD) {
 				return Items.MAGIC_BEAN.playerHas ||
 					this.hasChildTradeItem() || 
 
 					// You can't equip swap from the left, since you NEED stick equipped, so the
 					// only items you can do it with are the magic spells
-					(this.hasAdultTradeItem() && 
-						this.canUseAny(age, [Items.DINS_FIRE, Items.FARORES_WIND, Items.NAYRUS_LOVE]));
+					(this.hasAdultTradeItem() && hasMagicItem);
 			} 
 
 			// Since stick NEEDS to be equipped, you can't equip swap a child trade item/magic beans for this
-			return this.hasAdultTradeItem();
+			// We need to check whether you can equip the adult trade item AND a stick at the same time, therefore
+			// you MUST equip swap using a magic item
+			return this.hasAdultTradeItem() && hasMagicItem;
 		}
 
 		console.log("ERROR: Got into canUseQPAItemSet with an unexpected item set!");
