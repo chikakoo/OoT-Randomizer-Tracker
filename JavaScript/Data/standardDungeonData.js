@@ -820,7 +820,8 @@ let StandardDungeons = {
                         Order: 2,
                         LongDescription: "Fall down one of the holes to get to the main room on the bottom. Enter the door by the vines back up. Either stun the jello with your boomerang to cross, or use hover boots. The pots are on the other side.",
                         CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || ItemData.canUseAny(age, [Items.BOOMERANG, Equipment.HOVER_BOOTS]);
+                            return Data.canMegaFlip(age) || 
+                                ItemData.canUseAny(age, [Items.BOOMERANG, Equipment.HOVER_BOOTS, QPAItemSets.LEDGE_QPA]);
                         }
                     },
                     "Left Skulltula on Lower Room Wall": {
