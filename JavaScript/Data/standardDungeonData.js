@@ -311,7 +311,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "This stone is behind the breakable wall in the northeast corner of the main room.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     },
                     "Map Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -319,7 +319,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "Go to the left side of the big main room. Destroy the wall with an explosive, hammer, or blue fire to find this chest.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     },
                     "Scrub in Main Room": {
                         ItemGroup: ItemGroups.SCRUB,
@@ -334,7 +334,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Lower East Rooms", imageName: "Deku Stick" },
                 Exits: {
                     blueRoom: {
-                        RequiredItems: [ItemSets.DAMAGING_ITEMS]
+                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     }
                 },
                 ItemLocations: {
@@ -354,7 +354,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "Go to the room to the east of the main room. If you hug the right wall, you'll find a bombable wall. You can either blow it up with your own explosive, or kill a baby Dodongo near the wall.<br/><br/>Once inside, head to the back of the room to find the skulltula.",
-                        RequiredChoiceOfItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS, ItemSets.MUD_WALL_ITEMS]
+                        RequiredChoiceOfItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS, ItemSets.MUD_WALL_OR_QPA_ITEMS]
                     },
                     "2 Pots by East Room Ledge": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -431,7 +431,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "From the entrance, go around the right side of the dungeon until you get to the blue room with dodongos in it. You can also jump up to the switch platform as adult and enter the door to get here. Near the usual entrance to this room, there's a mud wall with a scrub inside. You should be able to run a bomb flower to it if you don't have your own explosives.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     },
                     "3 Pots by Blue Room Start": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -461,7 +461,7 @@ let StandardDungeons = {
                     },
                     staircaseTop: {
                         CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE]) ||
+                            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]) ||
                                 (Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && ItemData.canUse(age, Items.FAIRY_BOW));
                         }
                     }
@@ -473,7 +473,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 15,
                         LongDescription: "Make your way to the room with the Bomb Flowers by the staircase. Destroy the wall near the front of the stairs and enter the room. The chest is here - if you can't kill the armos, you'll have to savewarp after you get the chest.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     }
                 }
             },
@@ -528,7 +528,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Lower Spiketrap Room", imageName: "2 Scrubs No Beehive" },
                 Exits: {
                     firstEyeSwitchRoom: {
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     },
                     bombChestFloor: {
                         CustomRequirement: function(age) {
@@ -570,7 +570,7 @@ let StandardDungeons = {
                         Order: 21,
                         LongDescription: "In the room with the blades, there's a wall you can destroy that's located near the cliffs with the bomb chest. There are a couple scrubs inside.",
                         CustomRequirement: function(age) {
-                            let hasMudWallItem = ItemData.canUse(age, ItemSets.MUD_WALL_ITEMS);
+                            let hasMudWallItem = ItemData.canUse(age, ItemSets.MUD_WALL_OR_QPA_ITEMS);
                             return age === Age.CHILD
                                 ? hasMudWallItem
                                 : hasMudWallItem || (Settings.RandomizerSettings.dodongoAdultBladeMudWallWithStrength && Equipment.STRENGTH.playerHas);
@@ -597,7 +597,7 @@ let StandardDungeons = {
             firstEyeSwitchRoom: {
                 DisplayGroup: { groupName: "Upper East Rooms", imageName: "Bomb Bag" },
                 Exits: {
-                    bombChestFloor: {
+                    upperLizalfosRoom: {
                         RequiredChildItems: [Items.FAIRY_SLINGSHOT],
                         RequiredAdultItems: [Items.FAIRY_BOW]
                     }
@@ -623,10 +623,10 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Upper East Rooms", imageName: "Bomb Bag" },
                 Exits: {
                     bombChestFloor: {
-                        RequiredItems: [ItemSets.SWORDS, ItemSets.EXPLOSIVES]
+                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     },
                     firstEyeSwitchRoom: {
-                        RequiredItems: [ItemSets.SWORDS, ItemSets.EXPLOSIVES]
+                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     }
                 },
                 ItemLocations: {
@@ -681,7 +681,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 29,
                         LongDescription: "At the end of the bridge above the giant dodongo head, destroy the wall. The chest is just inside.",
-                        RequiredItems: [ItemSets.MUD_WALL_ITEMS]
+                        RequiredItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS]
                     }
                 }
             },
@@ -710,7 +710,8 @@ let StandardDungeons = {
                         MapInfo: { x: 193, y: 11, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 31,
-                        LongDescription: "This is in the series of rooms after you enter the giant dodongo head. After you climb the ledge with the pushable blocks, there's a wall you can destroy. The skulltula is inside."
+                        LongDescription: "This is in the series of rooms after you enter the giant dodongo head. After you climb the ledge with the pushable blocks, there's a wall you can destroy. The skulltula is inside.",
+                        RequiredItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS]
                     },
                     "2 Pots After Block Push in Back Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
