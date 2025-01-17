@@ -1529,7 +1529,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
                 Exits: {
                     fallingCeilingRoom: {
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE]
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     }
                 },
                 ItemLocations: {
