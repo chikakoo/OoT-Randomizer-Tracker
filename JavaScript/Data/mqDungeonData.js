@@ -415,7 +415,7 @@ let MQDungeons = {
                         RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, Equipment.STRENGTH]
                     },
                     eastRoom: { 
-                        RequiredItems: [ItemSets.MUD_WALL_ITEMS]
+                        RequiredItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS]
                     },
                     mainRoomLedge: {
                         CustomRequirement: function(age) {
@@ -430,7 +430,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "This chest is in the back right corner of the main room. Bomb, hammer, or blue fire the wall blocking it.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     },
                     "Gossip Stone in Main Room": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -438,7 +438,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "This stone is behind the mud wall in the western area of the main room.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     },
                     "2 Scrubs in Main Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -493,7 +493,7 @@ let MQDungeons = {
                         RequiredItems: [ItemSets.PROJECTILES],
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) { return true; }
-                            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE]);
+                            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]);
                         }
                     }
                 },
@@ -549,7 +549,7 @@ let MQDungeons = {
                 Exits: {
                     lowerLizalfosRoom: {},
                     mainRoomLedge: {
-                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, Items.FAIRY_BOW]
+                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]
                     }
                 },
                 ItemLocations: {
@@ -560,7 +560,7 @@ let MQDungeons = {
                         Order: 7,
                         LongDescription: "In the Poe room, use an explosive/Din's fire/bow on one of the lines of bomb flowers to unbar the door to this room. The skulltula is high up in the back left corner.",
                         RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
-                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, Items.FAIRY_BOW]
+                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]
                     },
                     "Poe Room Pot by Entrance": {
                         ItemGroup: ItemGroups.POT,
@@ -637,7 +637,7 @@ let MQDungeons = {
                 Exits: {
                     staircaseTop: {
                         CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE]) ||
+                            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]) ||
                                 (Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && ItemData.canUse(age, Items.FAIRY_BOW));
                         }
                     }
@@ -757,6 +757,9 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Torch Puzzle Room", imageName: "Din's Fire" },
                 Exits: {
                     smallDodongoRoom: {},
+                    roomByTorchPuzzle: {
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.TALL_TORCH_QPA]
+                    },
                     topOfTorchPuzzleRoom: {
                         CustomRequirement: function(age) {
                             let adultBombChestEarly = age === Age.ADULT && Settings.GlitchesToAllow.dodongoAdultJumpToBombChest;
@@ -764,7 +767,7 @@ let MQDungeons = {
                         }
                     },
                     upperLizalfosRoom: {
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]
                     }
                 },
                 ItemLocations: {
@@ -775,14 +778,19 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 25,
                         LongDescription: "In the torch puzzle room, there's an item on the bottom part of the ledge against the back wall."
-                    },
+                    }
+                }
+            },
+            roomByTorchPuzzle: {
+                DisplayGroup: { groupName: "Torch Puzzle Room", imageName: "Din's Fire" },
+                Exits: {},
+                ItemLocations: {
                     "Chest in Room by Torch Puzzle": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 202, y: 109, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 26,
-                        LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. Kill all the enemies to spawn the chest.",
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
+                        LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. Kill all the enemies to spawn the chest."
                     },
                     "6 Crates in Room by Torch Puzzle": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -792,16 +800,14 @@ let MQDungeons = {
                         MapInfo: { x: 202, y: 109, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 27,
-                        LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. The crates are in this room.",
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
+                        LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. The crates are in this room."
                     },
                     "Skulltula in Room by Torch Puzzle": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 210, y: 108, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 28,
-                        LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. The skulltula is in one of the right boxes.",
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
+                        LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. The skulltula is in one of the right boxes."
                     }
                 }
             },
