@@ -194,6 +194,9 @@ let QPAItemSets = {
 	// No specific requirements, just a usable ledge
 	LEDGE_QPA: { isQpaItemSet: true, useJumpslash: true },
 
+	// Uses hover boots and any ledge
+	HOVER_BOOTS_QPA: { isQpaItemSet: true, useHoverBoots: true },
+
 	// Requires sticks or Adult to reach
 	TALL_TORCH_QPA: { isQpaItemSet: true, useJumpslash: true, forTorch: true },
 
@@ -1452,6 +1455,7 @@ let ItemData = {
 	 *   - forMudWalls: Whether this QPA will be used to break mud walls
 	 *   - forHighSwitch: Whether this QPA will make use of Biggoron's Sword or deku sticks (as either age)
 	 *   - forTorch: Whether this QPA will be used to light a torch, requiring a stick as child due to his height
+	 * - useHoverboots: Whether QPA will be performed as adult using hover boots and an empty jumpslash
 	 * - useCutsceneItem: Whether QPA will be performed using a cutscene item, also requiring a deku stick
 	 * @returns True if the player can use QPA for the purpose they wish to use it for
 	 */
@@ -1476,6 +1480,10 @@ let ItemData = {
 			return itemSet.forTorch && age === Age.CHILD
 				? this.canUseAll(age, [Items.DEKU_STICK, ItemSets.SHIELDS])
 				: this.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
+		}
+
+		if (itemSet.useHoverBoots) {
+			return this.canUseAll(age, [Equipment.HOVER_BOOTS, ItemSets.SHIELDS]);
 		}
 
 		if (itemSet.useCutsceneItem) {

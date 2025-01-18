@@ -2471,7 +2471,6 @@ let MQDungeons = {
                         Map: "Fire Temple",
                     }
                 },
-
                 ItemLocations: {
                     "Left Pot in Big Lava Room": {
                         ItemGroup: ItemGroups.POT,
@@ -2518,7 +2517,7 @@ let MQDungeons = {
                                 return false;
                             }
 
-                            return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]) ||
+                            return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA, QPAItemSets.HOVER_BOOTS_QPA]) ||
                                 ItemData.canUseAll(age, [Items.HOOKSHOT, QPAItemSets.LEDGE_QPA]);
                         },
                         LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron.<br/><br/>If using cutscene item QPA, angle toward the torch at a 45 degree angle when you jumpslash with the deku stick to light it."
