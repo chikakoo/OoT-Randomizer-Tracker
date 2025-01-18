@@ -4257,7 +4257,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 6,
                         LongDescription: "WALL MASTER WARNING:<br/>Make your way counter-clockwise around the child-only areas of the temple. In the room with the Anubis, either Din's fire him, or hit the switch then quickly navigate to the side directly opposite the fire so that it dies on it. In the room after that - collect the silver rupees to lower the bridge. Now you can use a Deku Stick (or Din's fire) to light the torches on the other side to spawn the chest.<br/><br/>It's important to note that you can use Din's fire on them earlier, or take a flame from the earlier main room to light the torches. This avoids the need for the silver rupees (for this chest) completely.",
-                        RequiredChoiceOfItems: [Items.DEKU_STICK, ItemSets.FIRE_ITEMS]
+                        RequiredChoiceOfItems: [Items.DEKU_STICK, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
                     }
                 }
             },
@@ -4523,7 +4523,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 16,
                         LongDescription: "Head to the statue room. On the floor in front of the statue, light the torches with Din's Fire or Fire Arrows to spawn the chest. You can also run a lit deku stick down via the torch in the southwest corner of the room. Finally, you can push the armos statue to the lit torch on the top, backflip on it, and shoot an arrow through it to light the first torch (then go down and light the other).",
-                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, ItemSets.FIRE_ITEMS]
+                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
                     },
                     "Chest in Statue Room on Northeast Platform": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4621,7 +4621,8 @@ let StandardDungeons = {
                             let canUseFireItem = ItemData.canUse(age, ItemSets.FIRE_ITEMS);
                             let canUseStick = ItemData.canUse(age, Items.DEKU_STICK);
                             let canDoFlameStorage = Settings.GlitchesToAllow.flameStorage && canUseStick;
-                            let canLightTorchesWithoutRupees = canDoFlameStorage || canUseFireItem;
+                            let canUseQPA = ItemData.canUse(age, QPAItemSets.LEDGE_QPA);
+                            let canLightTorchesWithoutRupees = canDoFlameStorage || canUseFireItem || canUseQPA;
                             if (canLightTorchesWithoutRupees) {
                                 return true;
                             }
