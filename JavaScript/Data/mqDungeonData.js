@@ -7352,7 +7352,7 @@ let MQDungeons = {
 
                             // Spawn chest by using tools to blow up the bomb flower
                             return ItemData.canUse(age, Items.LENS_OF_TRUTH) &&
-                                ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, ItemSets.FIRE_ITEMS]);
+                                ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]);
                         }
                     }
                 }
@@ -7361,7 +7361,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Shadow Trial", imageName: "Shadow Medallion" },
                 Exits: {
                     shadowBackSection: {
-                        RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, ItemSets.FIRE_ITEMS]
+                        RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
                     }
                 },
                 ItemLocations: {
@@ -7402,8 +7402,8 @@ let MQDungeons = {
                         MapInfo: { x: 186, y: 103, floor: "SHW" },
                         Age: Age.ADULT,
                         Order: 15,
-                        LongDescription: "At the shadow trial, use your lens of truth to navigate across the room. There's an invisible moving invisible platform you'll need to use. To cross the other gap, use hover boots or light the sunken torch to create a platform. After the beamos platform, turn around and shoot the eye switch to spawn the chest.",
-                        RequiredItems: [Items.FAIRY_BOW]
+                        LongDescription: "At the shadow trial, use your lens of truth to navigate across the room. There's an invisible moving invisible platform you'll need to use. To cross the other gap, use hover boots or light the sunken torch to create a platform. After the beamos platform, turn around and shoot the eye switch to spawn the chest.<br/><br/>Using QPA, get ISG and stand in the middle of the transparent platform, with your back to the eye switch. Put away your weapon. Backflip - you should void out and trigger the switch.",
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]
                     },
                     "Shadow Silver Rupee Under Back Beamos": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
