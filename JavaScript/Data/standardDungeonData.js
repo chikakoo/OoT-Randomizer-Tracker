@@ -2450,9 +2450,12 @@ let StandardDungeons = {
                         RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
                     },
                     lowWaterLevel: {
-                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT],
+                        RequiredChoiceOfAdultItems: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT],
                         RequiredSongs: [Songs.ZELDAS_LULLABY],
                         CustomRequirement: function(age) {
+                            if (age === Age.CHILD) {
+                                return Data.itemLocationObtained("Water Temple", "lowWaterLevel", "Lower Water Level");
+                            }
                             return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
                         }
                     },
@@ -2796,7 +2799,7 @@ let StandardDungeons = {
                         RequiredChoiceOfItems: [Equipment.SCALE, Equipment.IRON_BOOTS]
                     },
                     midWaterTriforceFloor: {
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DEKU_STICK, Items.DINS_FIRE]
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DEKU_STICK, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     },
                     centralRoomBottom: {
                         Map: "Water Temple",
@@ -2834,9 +2837,9 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 17,
                         MapInfo: { x: 326, y: 212, floor: "F1" },
-                        LongDescription: "From the entrance of the temple, jump off and sink down to the bottom. Head down the hallway of the east room. Take off your iron boots and float up to the surface. Play Zelda's lullaby at the Triforce to lower the water. Now head back down.<br/><br>In this room, light the torches wih your bow or with Din's fire.<br/><br/>Child can use sticks to light the torches as well, and can kill the enemies in the next room with spin attacks if he has magic",
+                        LongDescription: "From the entrance of the temple, jump off and sink down to the bottom. Head down the hallway of the east room. Take off your iron boots and float up to the surface. Play Zelda's lullaby at the Triforce to lower the water. Now head back down.<br/><br>In this room, light the torches wih your bow or with Din's fire.<br/><br/>Child can use sticks to light the torches as well, and can kill the enemies in the next room with spin attacks if he has magic.",
                         RequiredChildItems: [Equipment.MAGIC, Equipment.KOKIRI_SWORD],
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DEKU_STICK, ItemSets.FIRE_ITEMS]
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DEKU_STICK, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
                     }
                 }
             },
@@ -2850,7 +2853,7 @@ let StandardDungeons = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 287, y: 213, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 16,
                         LongDescription: "These pots are by the door in the lower eastern wing. Either use iron boots and the hookshot the break them, or drain the water."
                     }
@@ -2908,7 +2911,7 @@ let StandardDungeons = {
                 ItemLocations: {
                     "Skulltula by Mid Water Triforce": {
                         ItemGroup: ItemGroups.SKULLTULA,
-                        Age: Age.EITHER,
+                        Age: Age.ADULT,
                         Order: 21,
                         MapInfo: { x: 157, y: 217, floor: "F1" },
                         LongDescription: "In the room with the middle water level Triforce, there is a skulltula high up on the wall. There are three ways to get it; the bottom two enable the hookshot to be used:<br/>- Use the longshot<br/>- Cast Farore's Wind in the room, raise the water to max, then warp back in<br/>- Enter the room from the middle, then exit from the bottom - the middle area door will not be barred. Come back via the iron boots to get the skulltula with the hookshot after raising the water to max.",
