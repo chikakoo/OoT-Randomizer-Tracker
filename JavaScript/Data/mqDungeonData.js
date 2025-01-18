@@ -3275,7 +3275,7 @@ let MQDungeons = {
                         Order: 6.9,
                         LongDescription: "Lower the water level. Navigate to the room below the water triforce. Light the torches using a fire item or your bow.<br/><br/>Hookshot the symbol on the back wall to spawn the wonderitem.",
                         RequiredItems: [Items.HOOKSHOT],
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE]
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     },
                     "Chest in Lower East Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3283,7 +3283,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 7,
                         LongDescription: "Lower the water level. Navigate to the room below the water triforce. Light the torches using a fire item or your bow.<br/><br/>Defeat the enemies in the next room to spawn the chest.",
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE]
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     }
                 }
             },
