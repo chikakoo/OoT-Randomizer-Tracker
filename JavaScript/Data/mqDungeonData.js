@@ -5017,7 +5017,10 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "After you first enter the temple, go up the stairs. Destroy the yellow rock to your right and shoot the eye switch to spawn the chest.",
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.PROJECTILES]
+                        CustomRequirement: function(age) {
+                            return ItemData.canUseAll(age, [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.PROJECTILES]) ||
+                                ItemData.canUse(age, QPAItemSets.LEDGE_QPA);
+                        }
                     },
                     "Top Right Chest in Lobby": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5327,7 +5330,7 @@ let MQDungeons = {
                     },
                     silverBlockMaze: {
                         Age: Age.CHILD,
-                        RequiredItems: [Items.DINS_FIRE]
+                        RequiredChoiceOfItems: [Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     },
                     fireBubbleRoom: {
                         CustomRequirement: function(age) {
@@ -5380,8 +5383,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 16,
                         LongDescription: "WALL MASTER WARNING:<br/>Shoot the eye switch on the left side of the statue to spawn this chest.",
-                        RequiredChildItems: [Items.FAIRY_SLINGSHOT],
-                        RequiredAdultItems: [Items.FAIRY_BOW]
+                        RequiredChoiceOfItems: [ItemSets.PROJECTILES, QPAItemSets.TALL_TORCH_QPA]
                     },
                     "2 Crates in Statue Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
