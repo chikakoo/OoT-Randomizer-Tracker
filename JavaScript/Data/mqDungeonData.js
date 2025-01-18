@@ -6437,7 +6437,7 @@ let MQDungeons = {
                         RequiredItems: [ItemSets.PROJECTILES]
                     },
                     leftArea: {
-                        RequiredItems: [ItemSets.FIRE_ITEMS]
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
                     },
                     mazeStart: {},
                     iceArrowsRoom: {
