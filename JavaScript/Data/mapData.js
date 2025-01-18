@@ -2703,7 +2703,7 @@ let MapLocations = {
                         MapInfo: { x: 130, y: 243 },
                         Age: Age.EITHER,
                         LongDescription: "In the southern area of the middle floor, blow up the walls that has bombflowers near it. Eventually, you'll make it to Medigoron, where the pot is.",
-                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.MEGATON_HAMMER]
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER, QPAItemSets.LEDGE_QPA]
                     },
                     "Item From Medigoron": {
                         ItemGroup: ItemGroups.GIFT,
@@ -2712,14 +2712,14 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Blow up/hammer the weak walls on the western side of the middle floor. Pay Medigoron 200 rupees for this item.",
                         RequiredItems: [UpgradedItems.ADULTS_WALLET],
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER]
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER, QPAItemSets.LEDGE_QPA]
                     },
                     "Gossip Stone By Medigoron": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 115, y: 275 },
                         Age: Age.EITHER,
                         LongDescription: "In the southern area of the middle floor, blow up the walls that has bombflowers near it. Eventually, you'll make it to Medigoron, where the stone is.",
-                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.MEGATON_HAMMER]
+                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER, QPAItemSets.LEDGE_QPA]
                     },
 
                     // Bottom Floor
