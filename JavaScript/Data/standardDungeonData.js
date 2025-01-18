@@ -6517,8 +6517,8 @@ let StandardDungeons = {
                 Exits: {
                     forestTrailWindRoom: {
                         Age: Age.ADULT,
-                        RequiredItems: [ItemSets.FIRE_ITEMS],
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.HOOKSHOT]
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA],
+                        RequiredChoiceOfAdultItems: [Items.FAIRY_BOW, Items.HOOKSHOT]
                     }
                 },
                 ItemLocations: {
