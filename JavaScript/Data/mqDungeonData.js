@@ -6205,15 +6205,18 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 1.1,
                         LongDescription: "In the left alcove at the front of the main room, bomb the rock in the wall. Shoot it with your slingshot or bow to open a gate in the southeast corner of the giant room where the pot is.",
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.PROJECTILES]
+                        CustomRequirement: function(age) {
+                            return ItemData.canUseAll(age, [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.PROJECTILES]) ||
+                                ItemData.canUse(age, QPAItemSets.LEDGE_QPA);
+                        }
                     },
                     "4 Wonderitems in Northwest Picture": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "4 Slingshot Wonderitems",
+                        DefaultEntranceGroupName: "4 High QPAable Slingshot Wonderitems",
                         MapInfo: { x: 129, y: 45, floor: "F1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
                         Age: Age.EITHER,
                         Order: 5.1,
                         LongDescription: "Shoot the lens of truth picture in the northwest corner of the main room to spawn wonderitems (do it 4 times to get all 4)."
@@ -6250,7 +6253,7 @@ let MQDungeons = {
                         Order: 4,
                         LongDescription: "Navigate to the left room in the main area. Unlock the door, then light the torch of the front right coffin (or use the boomerang). The heart is inside.",
                         CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]) ||
+                            return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]) ||
                                 (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
                         }
                     },
@@ -6262,7 +6265,7 @@ let MQDungeons = {
                         Order: 5,
                         LongDescription: "Navigate to the left room in the main area. Unlock the door, then light the torch of the middle left coffin (or use the boomerang). The heart is inside.",
                         CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]) ||
+                            return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]) ||
                                 (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
                         }
                     }

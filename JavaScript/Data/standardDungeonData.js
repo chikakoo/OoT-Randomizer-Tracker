@@ -5469,7 +5469,7 @@ let StandardDungeons = {
                         Order: 12,
                         LongDescription: "Head to the room to the left of the main room. The heart is in the bottom left coffin - light the torch to open it.",
                         CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [Items.DEKU_STICK, ItemSets.FIRE_ITEMS]) ||
+                            return ItemData.canUseAny(age, [Items.DEKU_STICK, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]) ||
                                 (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
                         }
                     },
@@ -5480,7 +5480,7 @@ let StandardDungeons = {
                         Order: 13,
                         LongDescription: "Head to the room to the left of the main room. The heart is in the top left coffin - light the torch to open it.",
                         CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [Items.DEKU_STICK, ItemSets.FIRE_ITEMS]) ||
+                            return ItemData.canUseAny(age, [Items.DEKU_STICK, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]) ||
                                 (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
                         }
                     }

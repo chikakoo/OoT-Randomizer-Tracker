@@ -2458,6 +2458,21 @@ GrottoGroups = {
 			}
 		}
 	},
+	"4 High QPAable Slingshot Wonderitems": {
+		tooltip: "A group of 4 wonderitems you need the slingshot to get, but can reach with QPA and backflips.",
+		icon: "Slingshot Wonderitem",
+		buttons: {
+			"Slingshot Wonderitems": {
+				useGroupImage: true,
+				count: 4,
+				description: "Shoot something to get these items.",
+				canGet: function(age) {
+					return ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, QPAItemSets.TALL_TORCH_QPA]);
+				},
+				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; }
+			}
+		}
+	},
 	"3 Hammer Wonderitems": {
 		tooltip: "A group of 3 wonderitems you need the hammer to get.",
 		icon: "Hammer Wonderitem",
