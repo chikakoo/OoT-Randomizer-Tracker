@@ -4162,8 +4162,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "In the maze by the entrance, navigate around to the other side of the first room. Play the Song of Time to remove the block in the way (invisible without the lens). In the next room, shoot the middle eye. Now you can enter the northwest door. Kill Dead Hand to spawn the chest.",
-                        RequiredChildItems: [Items.FAIRY_SLINGSHOT],
-                        RequiredAdultItems: [Items.FAIRY_BOW]
+                        RequiredChoiceOfItems: [ItemSets.PROJECTILES, QPAItemSets.TALL_TORCH_QPA]
                     }
                 }
             },
@@ -4763,7 +4762,8 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Boat Room Chasm Areas", imageName: "Fairy Bow" },
                 Exits: {
                     chasmPlatform: {
-                        RequiredItems: [Items.HOOKSHOT, Items.FAIRY_BOW],
+                        RequiredItems: [Items.HOOKSHOT],
+                        RequiredChoiceOfItems: [Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA],
                         CustomRequirement: function(age) {
                             if (Settings.GlitchesToAllow.mqShadowChasmPlatformWithHookshot &&
                                 Data.canShieldTurn(age)
@@ -4877,7 +4877,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Invisible Wall Maze Rooms", imageName: "Boss Key" },
                 Exits: {
                     afterBurningSpikes: {
-                        RequiredItems: [Items.DINS_FIRE]
+                        RequiredChoiceOfItems: [Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     }
                 },
                 ItemLocations: {
