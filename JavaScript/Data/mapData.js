@@ -3455,31 +3455,22 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Hyrule Field Side", imageName: "Kokiri Sword" },
                 Exits: {
                     acrossBridge: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) {
-                                let canCrossWithHookshot = Settings.GlitchesToAllow.gvCrossBridgeWithHookshot && 
-                                    ItemData.canUse(age, [ItemSets.SHIELDS, Items.HOOKSHOT]);
-
-                                return canCrossWithHookshot ||
-                                    Data.itemLocationObtained("Thieves' Hideout", "main", "Item From Gerudo") || 
-                                    Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.OPEN ||
-                                    Data.canRideEpona(age) || 
-                                    ItemData.canUse(age, UpgradedItems.LONGSHOT) ||
-                                    Data.canBombSuperslideWithHovers(age) ||
-                                    Data.canHammerHoverBootsSuperslide(age);
-                            }
-                            return Data.canStaircaseHover(age) ||
-                                (Settings.GlitchesToAllow.cuccoJump && Equipment.KOKIRI_SWORD.playerHas);
-                        }
+                        RequiredChoiceOfChildItems: [GlitchItemSets.STAIRCASE_HOVER, GlitchItemSets.CUCCO_JUMP],
+                        RequiredChoiceOfAdultItems: [
+                            SettingSets.OPEN_GERUDO_FORTRESS,
+                            UpgradedItems.LONGSHOT,
+                            ItemLocationSets.ITEM_FROM_GERUDO,
+                            GameStateSets.CAN_RIDE_EPONA,
+                            GlitchItemSets.CROSS_GV_BRIDGE_WITH_HOOKSHOT,
+                            GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS,
+                            GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS]
                     },
                     chasmSilverRockLedge: {},
                     chasmCrateLedge: {
-                        CustomRequirement: function(age) {
-                            return age === Age.CHILD || 
-                                ItemData.canUse(age, UpgradedItems.LONGSHOT) ||
-                                Data.canBombSuperslideWithHovers(age) ||
-                                Data.canHammerHoverBootsSuperslide(age);
-                        }
+                        RequiredChoiceOfAdultItems: [
+                            UpgradedItems.LONGSHOT,
+                            GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS,
+                            GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS] 
                     },
                     chasm: {},
                     "Hyrule Field": {
@@ -3502,30 +3493,21 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Gerudo Fortress Side", imageName: "Gerudo Mask" },
                 Exits: {
                     main: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return true; }
-
-                            let canCrossWithHookshot = Settings.GlitchesToAllow.gvCrossBridgeWithHookshot && 
-                                ItemData.canUse(age, [ItemSets.SHIELDS, Items.HOOKSHOT]);
-
-                            return canCrossWithHookshot ||
-                                Data.itemLocationObtained("Thieves' Hideout", "main", "Item From Gerudo") || 
-                                Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.OPEN ||
-                                Data.canRideEpona(age) || 
-                                ItemData.canUse(age, UpgradedItems.LONGSHOT) ||
-                                Data.canBombSuperslideWithHovers(age) ||
-                                Data.canHammerHoverBootsSuperslide(age);
-                        }
+                        RequiredChoiceOfAdultItems: [
+                            SettingSets.OPEN_GERUDO_FORTRESS,
+                            UpgradedItems.LONGSHOT,
+                            ItemLocationSets.ITEM_FROM_GERUDO,
+                            GameStateSets.CAN_RIDE_EPONA,
+                            GlitchItemSets.CROSS_GV_BRIDGE_WITH_HOOKSHOT,
+                            GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS,
+                            GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS
+                        ]
                     },
                     chasmSilverRockLedge: {
-                        CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age);
-                        }
+                        RequiredItems: [GlitchItemSets.MEGA_FLIP]
                     },
                     chasmCrateLedge: {
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, UpgradedItems.LONGSHOT) || Data.canMegaFlip(age);
-                        }
+                        RequiredChoiceOfItems: [UpgradedItems.LONGSHOT, GlitchItemSets.MEGA_FLIP]
                     },
                     chasm: {},
                     "Gerudo Fortress": {
@@ -3547,9 +3529,7 @@ let MapLocations = {
                         MapInfo: { x: 131, y: 120 },
                         Age: Age.ADULT,
                         LongDescription: "Across the bridge, there are some rocks to the right. Use your hammer on them to reveal the chest.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Items.MEGATON_HAMMER) || Data.canWeirdShot(age);
-                        }
+                        RequiredChoiceOfItems: [Items.MEGATON_HAMMER, GlitchItemSets.WEIRD_SHOT]
                     },
                     "Show Poacher's Saw to Carpenter": {
                         ItemGroup: ItemGroups.GIFT,
@@ -3704,11 +3684,11 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Ground Level", imageName: "Gerudo Membership Card" },
                 Exits: {
                     middleFloor: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.gfJumpToMiddleFloor ||
-                                ItemData.canUseAny(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]) ||
-                                Data.canMegaFlip(age);
-                        }
+                        RequiredChoiceOfItems: [
+                            UpgradedItems.LONGSHOT,
+                            Equipment.HOVER_BOOTS,
+                            GlitchItemSets.GF_JUMP_TO_MIDDLE_FLOOR,
+                            GlitchItemSets.MEGA_FLIP]
                     },
                     topOfKitchen: {
                         Age: Age.ADULT,
@@ -3721,21 +3701,13 @@ let MapLocations = {
                     },
                     aboveLinksJail: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.gfHookshotToAboveLinksJail;
-                        }
+                        RequiredItems: [GlitchItemSets.GF_HOOKSHOT_TO_ABOVE_LINKS_JAIL]
                     },
                     backArea: {
-                        CustomRequirement: function(age) {
-                            return age === Age.CHILD || Data.areGerudoGuardsTame() 
-                        }
+                        RequiredAdultItems: [GameStateSets.ARE_GERUDO_GUARDS_TAME]
                     },
                     wastelandEntrance: {
-                        CustomRequirement: function(age) {
-                            return Data.areGerudoGuardsTame() ||
-                                (age === Age.CHILD && Settings.GlitchesToAllow.gerudoGateSkipAsChild);
-                        }
+                        RequiredChoiceOfItems: [GameStateSets.ARE_GERUDO_GUARDS_TAME, GlitchItemSets.GF_CHILD_GATE_SKIP]
                     },
 
                     // Ground Level
@@ -3797,9 +3769,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         Region: "main",
                         LongDescription: "Talk to the gerudo guard at the top of the ladder to open the gate.",
-                        CustomRequirement: function() {
-                            return Data.areGerudoGuardsTame();
-                        }
+                        RequiredItems: [GameStateSets.ARE_GERUDO_GUARDS_TAME]
                     },
                     "2 Crates Right of Bottom Left Door": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3832,10 +3802,7 @@ let MapLocations = {
                         Age: Age.ADULT
                     },
                     jail4Door: {
-                        CustomRequirement: function(age) {
-                            // Adult will have a route to go via top of kitchen, so don't worry about other methods
-                            return Data.canMegaFlip(age);
-                        }
+                        RequiredItems: [GlitchItemSets.MEGA_FLIP]
                     },
                     "Middle Left Door": {
                         OwExit: OwExits["Gerudo Fortress"]["Middle Left Door"]
@@ -3861,25 +3828,19 @@ let MapLocations = {
                     jail4Door: {},
                     middleFloor: {},
                     topOfFortress: {
-                        CustomRequirement: function(age) {
-                            let canMegaFlip = Data.canMegaFlip(age);
-                            if (age === Age.CHILD) {
-                                return canMegaFlip && 
-                                    (Settings.GlitchesToAllow.gfChildJumpByTopKitchen || Data.canGroundJumpWithBomb(age));
-                            }
-
-                            return canMegaFlip || 
-                                Data.canHookScarecrow(age) ||
-                                ItemData.canUseAny(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]);
-                        }
+                        RequiredChildItems: [GlitchItemSets.MEGA_FLIP],
+                        RequiredChoiceOfChildItems: [GlitchItemSets.GF_CHILD_JUMP_BY_TOP_KITCHEN, GlitchItemSets.GROUND_JUMP],
+                        RequiredChoiceOfAdultItems: [
+                            UpgradedItems.LONGSHOT,
+                            Equipment.HOVER_BOOTS,
+                            GameStateSets.CAN_HOOK_SCARECROW,
+                            GlitchItemSets.MEGA_FLIP]
                     },
                     aboveJail1: {
                         // There is apparently a trick (logic_gf_break_room_jump) to do this with a precise jump as Adult
                         // from near the skulltula platform, but no idea how to do it
                         Age: Age.EITHER,
-                        CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || ItemData.canUse(age, Equipment.HOVER_BOOTS);
-                        }
+                        RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     "Upper Kitchen Door": {
                         OwExit: OwExits["Gerudo Fortress"]["Upper Kitchen Door"]
@@ -3961,10 +3922,7 @@ let MapLocations = {
                     },
                     wastelandEntrance: {
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.HOVER_BOOTS],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.gerudoGateSkipAsAdult;
-                        }
+                        RequiredItems: [GlitchItemSets.GF_ADULT_GATE_SKIP]
                     },
                     "Door Above Link's Jail": {
                         OwExit: OwExits["Gerudo Fortress"]["Door Above Link's Jail"]
@@ -4047,10 +4005,7 @@ let MapLocations = {
                         MapInfo: { x: 246, y: 220 },
                         Age: Age.ADULT,
                         LongDescription: "Ride Epona to the back section of the map during the day. Talk to the Gerudo there to play the archery minigame. Score 1000 points to claim your prize.",
-                        RequiredItems: [Items.FAIRY_BOW],
-                        CustomRequirement: function(age) { 
-                            return Data.canRideEpona(age);
-                        }
+                        RequiredItems: [Items.FAIRY_BOW, GameStateSets.CAN_RIDE_EPONA]
                     },
                     "Archery Minigame 1500 Points": {
                         ItemGroup: ItemGroups.GIFT,
@@ -4058,10 +4013,7 @@ let MapLocations = {
                         MapInfo: { x: 246, y: 225 },
                         Age: Age.ADULT,
                         LongDescription: "Ride Epona to the back section of the map during the day. Talk to the Gerudo there to play the archery minigame. Score 1500 points to claim your prize.",
-                        RequiredItems: [Items.FAIRY_BOW],
-                        CustomRequirement: function(age) { 
-                            return Data.canRideEpona(age); 
-                        }
+                        RequiredItems: [Items.FAIRY_BOW, GameStateSets.CAN_RIDE_EPONA]
                     },
                     "Skulltula on Target": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -4077,11 +4029,8 @@ let MapLocations = {
                 Exits: {
                     main: {
                         DisplayGroup: { groupName: "Ground Level", imageName: "Gerudo Membership Card" },
-                        CustomRequirement: function(age) {
-                            return age === Age.ADULT || Data.itemLocationObtained("Gerudo Fortress", "main", "Opened Gate");
-                        }
+                        RequiredChildItems: [ItemLocationSets.GF_OPENED_GATE]
                     },
-
                     "Haunted Wasteland": {
                         OwExit: OwExits["Gerudo Fortress"]["Haunted Wasteland"]
                     }
@@ -4357,11 +4306,9 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Kitchen", imageName: "Thieves' Hideout Kitchen" },
                 MapSuffix: "K",
                 Exits: {
-                    jail1: {}, //Savewarp
+                    jail1: {}, // Savewarp
                     kitchenTopLeft: {
-                        CustomRequirement: function(age) {
-                            return Data.canStunKitchenGuards(age) || Settings.GlitchesToAllow.gfPassKitchenGuards;
-                        }
+                        RequiredChoiceOfItems: [GameStateSets.CAN_STUN_KITCHEN_GUARDS, GlitchItemSets.GF_PASS_KITCHEN_GUARDS]
                     },
                     "Kitchen Far Bottom": {
                         OwExit: OwExits["Thieves' Hideout"]["Kitchen Far Bottom"]
@@ -4402,9 +4349,7 @@ let MapLocations = {
                         MapInfo: { x: 203, y: 250, floor: "KIT" },
                         Age: Age.EITHER,
                         LongDescription: "This is the crate right next to the kitchen - you'll need to deal with one of the guards to get it. To sneak past, you can hide in the corner by the crate and wait for her to pass. You have a limited time after to bonk the crate.",
-                        CustomRequirement: function(age) {
-                            return Data.canStunKitchenGuards(age) ||  Settings.GlitchesToAllow.gfPassKitchenGuards;
-                        }
+                        RequiredChoiceOfItems: [GameStateSets.CAN_STUN_KITCHEN_GUARDS, GlitchItemSets.GF_PASS_KITCHEN_GUARDS]
                     },
                     "Rupee in Soup Pot": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -4412,9 +4357,7 @@ let MapLocations = {
                         MapInfo: { x: 269, y: 258, floor: "KIT" },
                         Age: Age.EITHER,
                         LongDescription: "Shoot the skull at the end of the hallway leading to the kitchen to get this wonderitem.",
-                        CustomRequirement: function(age) {
-                            return Data.canStunKitchenGuards(age);
-                        }
+                        RequiredItems: [GameStateSets.CAN_STUN_KITCHEN_GUARDS]
                     }
                 }
             },
@@ -4422,18 +4365,14 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Kitchen", imageName: "Thieves' Hideout Kitchen" },
                 MapSuffix: "K",
                 Exits: {
-                    jail1: {}, //Savewarp
+                    jail1: {}, // Savewarp
                     kitchenPots: {
-                        CustomRequirement: function(age) {
-                            return Data.canStunKitchenGuards(age) || ItemData.canUse(age, Items.BOOMERANG);
-                        }
+                        RequiredChoiceOfItems: [Items.BOOMERANG, GameStateSets.CAN_STUN_KITCHEN_GUARDS]
                     },
                     kitchenHallway: {
-                        CustomRequirement: function(age) {
-                            // Their logic says that you can get here without anything with the pass guards trick on
-                            // But it's way too hard!
-                            return Data.canStunKitchenGuards(age);
-                        }
+                        // Their logic says that you can get here without anything with the pass guards trick on
+                        // But it's way too hard!
+                        RequiredChoiceOfItems: [GameStateSets.CAN_STUN_KITCHEN_GUARDS]
                     },
                     kitchenTopRight: {
                         CustomRequirement: function(age) {
@@ -4453,19 +4392,16 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Kitchen", imageName: "Thieves' Hideout Kitchen" },
                 MapSuffix: "K",
                 Exits: {
-                    jail1: {}, //Savewarp
+                    jail1: {}, // Savewarp
                     kitchenPots: {
-                        CustomRequirement: function(age) {
-                            return Data.canStunKitchenGuards(age) || ItemData.canUse(age, Items.BOOMERANG);
-                        }
+                        RequiredChoiceOfItems: [Items.BOOMERANG, GameStateSets.CAN_STUN_KITCHEN_GUARDS]
                     },
                     kitchenTopLeft: {
-                        CustomRequirement: function(age) {
-                            return Data.canStunKitchenGuards(age) || 
-                                Settings.GlitchesToAllow.gfPassKitchenGuards ||
-                                Data.canMegaFlip(age) ||
-                                ItemData.canUse(age, Equipment.HOVER_BOOTS);
-                        }
+                        RequiredChoiceOfItems: [
+                            Equipment.HOVER_BOOTS,
+                            GameStateSets.CAN_STUN_KITCHEN_GUARDS,
+                            GlitchItemSets.GF_PASS_KITCHEN_GUARDS,
+                            GlitchItemSets.MEGA_FLIP]
                     },
                     "Kitchen Top Right": {
                         OwExit: OwExits["Thieves' Hideout"]["Kitchen Top Right"]

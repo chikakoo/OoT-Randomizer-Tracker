@@ -73,6 +73,7 @@ let SettingSets = {
     OPEN_KAKARIKO: () => Settings.RandomizerSettings.openKakariko === OpenKakarikoSettings.OPEN,
     OPEN_ZORAS_FOUNTAIN: () => Settings.RandomizerSettings.openZorasFountain === OpenZorasFountainSettings.ALL,
     OPEN_ADULT_ZORAS_FOUNTAIN: () => Settings.RandomizerSettings.openZorasFountain !== OpenZorasFountainSettings.VANILLA,
+    OPEN_GERUDO_FORTRESS: () => Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.OPEN
 };
 
 /**
@@ -102,6 +103,9 @@ let GlitchItemSets = {
     LONGSHOT_WEIRD_SHOT: (age) => Data.canWeirdShot(age, UpgradedItems.LONGSHOT),
 	MEGA_FLIP:  (age) => Data.canMegaFlip(age),
     CHU_MEGA_FLIP: (age) => ItemData.canUse(age, [Items.BOMBCHU, GlitchItemSets.MEGA_FLIP]),
+    STAIRCASE_HOVER: (age) => Data.canStaircaseHover(age),
+    BOMB_SUPERSLIDE_WITH_HOVERS: (age) => Data.canBombSuperslideWithHovers(age),
+    HAMMER_SUPERSLIDE_WITH_HOVERS: (age) => Data.canHammerHoverBootsSuperslide(age),
 	GROUND_JUMP:  (age) => Data.canGroundJumpWithBomb(age),
 	BOOMERANG_THROUGH_WALLS: (age) => 
         Settings.GlitchesToAllow.boomerangThroughWalls && 
@@ -165,7 +169,25 @@ let GlitchItemSets = {
     ADULT_KING_ZORA_SKIP: (age) => Settings.GlitchesToAllow.clipZoraSkip && age === Age.ADULT,
     LAKE_TREE_SKULL_WITH_HOOKSHOT: (age) => 
         Settings.GlitchesToAllow.skullInTreeWithHookshot && 
-        ItemData.canUse(age, [Items.HOOKSHOT, ItemSets.SHIELDS])
+        ItemData.canUse(age, [Items.HOOKSHOT, ItemSets.SHIELDS]),
+
+    // Desert
+    CUCCO_JUMP: (age) => 
+        Settings.GlitchesToAllow.cuccoJump &&
+        ItemData.canUse(age, [ItemSets.SWORDS]),
+    CROSS_GV_BRIDGE_WITH_HOOKSHOT: (age) =>
+        Settings.GlitchesToAllow.gvCrossBridgeWithHookshot && 
+        ItemData.canUse(age, [ItemSets.SHIELDS, Items.HOOKSHOT]),
+    GF_JUMP_TO_MIDDLE_FLOOR: () => Settings.GlitchesToAllow.gfJumpToMiddleFloor,
+    GF_HOOKSHOT_TO_ABOVE_LINKS_JAIL: (age) => 
+        Settings.GlitchesToAllow.gfHookshotToAboveLinksJail &&
+        ItemData.canUse(age, Items.HOOKSHOT),
+    GF_CHILD_GATE_SKIP: (age) => Settings.GlitchesToAllow.gerudoGateSkipAsChild && age === Age.CHILD,
+    GF_CHILD_JUMP_BY_TOP_KITCHEN: (age) => Settings.GlitchesToAllow.gfChildJumpByTopKitchen && age === Age.CHILD,
+    GF_ADULT_GATE_SKIP: (age) => 
+        Settings.GlitchesToAllow.gerudoGateSkipAsAdult &&
+        ItemData.canUse(age, Equipment.HOVER_BOOTS),
+    GF_PASS_KITCHEN_GUARDS: () => Settings.GlitchesToAllow.gfPassKitchenGuards
 };
 
 /**
@@ -190,6 +212,10 @@ let ItemLocationSets = {
     THAW_KING_ZORA: () => Data.itemLocationObtained("Zora's Domain", "main", "Thaw King Zora"),
     PLAY_SONG_FOR_BONOORU: () => Data.itemLocationObtained("Lake Hylia", "main", "Play Song for Bonooru"),
 
+    // Desert
+    ITEM_FROM_GERUDO: () => Data.itemLocationObtained("Thieves' Hideout", "main", "Item From Gerudo"),
+    GF_OPENED_GATE: () => Data.itemLocationObtained("Gerudo Fortress", "main", "Opened Gate"),
+    
     // Water Temple
     DEFEATED_MORPHA:() => Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp")
 };
@@ -200,7 +226,9 @@ let ItemLocationSets = {
 let GameStateSets = {
     CAN_RIDE_EPONA: (age) => Data.canRideEpona(age),
     CAN_HOOK_SCARECROW: (age) => Data.canHookScarecrow(age),
-    CAN_LONGSHOT_SCARECROW: (age) => Data.canHookScarecrow(age, true)
+    CAN_LONGSHOT_SCARECROW: (age) => Data.canHookScarecrow(age, true),
+    ARE_GERUDO_GUARDS_TAME: () => Data.areGerudoGuardsTame(),
+    CAN_STUN_KITCHEN_GUARDS: (age) => Data.canStunKitchenGuards(age)
 };
 
 /**
