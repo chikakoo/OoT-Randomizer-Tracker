@@ -2741,19 +2741,7 @@ let MapLocations = {
                         MapInfo: { x: 212, y: 178 },
                         MapImageName: "Bomb",
                         Age: Age.EITHER,
-                        LongDescription: "These are the rocks blocking the Lost Woods entrance. Either blow them up (you can shoot the right one with a bow), or use a deku stick lit on fire to activate the nearby bomb flowers.",
-                        IsPostWalkCheck: true,
-                        CustomRequirement: function(age) {
-                            // From woods or main
-                            if (ItemData.canUseAny(age, [ItemSets.BLAST_OR_SMASH_ITEMS, Items.DINS_FIRE])) { 
-                                return true; 
-                            }
-
-                            let canGetToMain = Data.canAccessMap(age, "Goron City", "main");
-                            let canLightBombFlower = ItemData.canUse(age, Items.DEKU_STICK) && Data.canAccessMap(age, "Goron City", "darunia");
-                            let canExplodeBombFlower = ItemData.canUseAny(age, [Items.FAIRY_BOW, Items.BLUE_FIRE, Equipment.STRENGTH, QPAItemSets.LEDGE_QPA]);
-                            return canGetToMain && (canLightBombFlower || canExplodeBombFlower);
-                        }
+                        LongDescription: "These are the rocks blocking the Lost Woods entrance. Either blow them up (you can shoot the right one with a bow), or use a deku stick lit on fire to activate the nearby bomb flowers."
                     }
                 }
             },
@@ -2771,11 +2759,7 @@ let MapLocations = {
                                 Settings.RandomizerSettings.rupeeAndHeartSetting == ShuffleLocationSettings.DUNGEON_ONLY;
                         },
                         LongDescription: "First, light the torches at the bottom of the city. You can either use the lit torch in Darunia's room, or Din's Fire. After that, throw a Bomb or Bomb Flower so that the urn stops on the happiest face to get the item.",
-                        CustomRequirement: function(age) {
-                            return Items.BOMB.playerHas ||
-                                Equipment.STRENGTH.playerHas ||
-                                (Settings.GlitchesToAllow.goronSpinningUrnWithChus && Items.BOMBCHU.playerHas);
-                        }
+                        RequiredChoiceOfItems: [Items.BOMB, Equipment.STRENGTH, GlitchItemSets.URN_WITH_CHUS]
                     },
                     "9 Items From Spinning Urn": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2785,11 +2769,7 @@ let MapLocations = {
                         MapInfo: { x: 189, y: 135 },
                         Age: Age.CHILD,
                         LongDescription: "First, light the torches at the bottom of the city. You can either use the lit torch in Darunia's room, or Din's Fire. After that, throw a Bomb or Bomb Flower so that the urn stops on the face you want.",
-                        CustomRequirement: function(age) {
-                            return Items.BOMB.playerHas ||
-                                Equipment.STRENGTH.playerHas ||
-                                (Settings.GlitchesToAllow.goronSpinningUrnWithChus && Items.BOMBCHU.playerHas);
-                        }
+                        RequiredChoiceOfItems: [Items.BOMB, Equipment.STRENGTH, GlitchItemSets.URN_WITH_CHUS]
                     }
                 }
             },
@@ -2861,19 +2841,12 @@ let MapLocations = {
                 Exits: {
                     downstream: {},
                     inWaterfall: {
-                        CustomRequirement: function(age) {
-                            if (Settings.GlitchesToAllow.hoversToZorasDomain && ItemData.canUse(age, Equipment.HOVER_BOOTS)) {
-                                return true; // Hover boots in
-                            } else if (age === Age.CHILD && Settings.GlitchesToAllow.cuccoToZorasDomain) {
-                                return true; // Flying cucco
-                            } else if (Data.canPlaySong(Songs.ZELDAS_LULLABY)) {
-                                return true; // Normal way in
-                            }
-
-                            // Megasidehop trick - TODO: learn how to do this with bombs
-                            return Settings.GlitchesToAllow.megasidehopToZorasDomain &&
-                                ItemData.canUseAll(age, [ItemSets.SHIELDS, ItemSets.SWORDS, Items.BOMBCHU]);
-                        }
+                        RequiredChoiceOfItems: [
+                            Songs.ZELDAS_LULLABY,
+                            GlitchItemSets.CUCCO_TO_ZORAS_DOMAIN,
+                            GlitchItemSets.HOVERS_TO_ZORAS_DOMAIN,
+                            GlitchItemSets.MEGA_SIDEHOP_TO_ZORAS_DOMAIN
+                        ]
                     },
 
                     // Main Area

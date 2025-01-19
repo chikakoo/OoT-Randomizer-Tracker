@@ -267,6 +267,30 @@ let GlitchItemSets = {
 			Settings.GlitchesToAllow.hoverToVolcanoHP && 
 			ItemData.canUse(age, Equipment.HOVER_BOOTS)
 	},
+	URN_WITH_CHUS: { 
+		isGlitchItemSet: true, 
+		checkFunction: (age) => 
+			Settings.GlitchesToAllow.goronSpinningUrnWithChus && 
+			ItemData.canUseAll(age, [Items.BOMBCHU, Items.DEKU_NUT])
+	},
+
+	// Zora/Lake
+	CUCCO_TO_ZORAS_DOMAIN: { 
+		isGlitchItemSet: true, 
+		checkFunction: (age) => Settings.GlitchesToAllow.cuccoToZorasDomain && age === Age.CHILD 
+	},
+	HOVERS_TO_ZORAS_DOMAIN: { 
+		isGlitchItemSet: true, 
+		checkFunction: (age) => 
+			Settings.GlitchesToAllow.hoversToZorasDomain && 
+			ItemData.canUse(age, Equipment.HOVER_BOOTS)
+	},
+	MEGA_SIDEHOP_TO_ZORAS_DOMAIN: { 
+		isGlitchItemSet: true, 
+		checkFunction: (age) => 
+			Settings.GlitchesToAllow.megasidehopToZorasDomain && 
+			ItemData.canUseAll(age, [ItemSets.SHIELDS, ItemSets.SWORDS, Items.BOMBCHU])
+	},
 };
 
 /**
