@@ -2475,20 +2475,15 @@ let MapLocations = {
                         }
                     },
                     lostWoodsRocks: {
-                        CustomRequirement: function(age) {
-                            if (Data.itemLocationObtained("Goron City", "lostWoodsRocks", "Rocks Blocking Lost Woods")) {
-                                return true;
-                            }
-
-                            return ItemData.canUseAny(age, [
-                                Items.FAIRY_BOW, 
-                                Items.DINS_FIRE, 
-                                Items.BLUE_FIRE, 
-                                ItemSets.BLAST_OR_SMASH_ITEMS, 
-                                Equipment.STRENGTH,
-                                QPAItemSets.LEDGE_QPA
-                            ]);
-                        }
+                        RequiredChoiceOfItems: [
+                            ItemLocationSets.ROCKS_BLOCKING_LOST_WOODS,
+                            Items.FAIRY_BOW, 
+                            Items.DINS_FIRE, 
+                            Items.BLUE_FIRE, 
+                            ItemSets.BLAST_OR_SMASH_ITEMS, 
+                            Equipment.STRENGTH,
+                            QPAItemSets.LEDGE_QPA
+                        ]
                     },
                     spinningUrn: {
                         Age: Age.CHILD,
@@ -2497,7 +2492,11 @@ let MapLocations = {
                     shop: {
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) {
-                                return ItemData.canUseAny(age, [ItemSets.MUD_WALL_ITEMS, ItemSets.FIRE_ITEMS, Equipment.STRENGTH, QPAItemSets.LEDGE_QPA]);
+                                return ItemData.canUseAny(age, [
+                                    ItemSets.MUD_WALL_ITEMS, 
+                                    ItemSets.FIRE_ITEMS, 
+                                    Equipment.STRENGTH, 
+                                    QPAItemSets.LEDGE_QPA]);
                             }
                             return MapLocations["Goron City"]._canStopAdultGoron(age);
                         }
@@ -2675,10 +2674,11 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Middle Floors", imageName: "Goron Tunic" },
                 Exits: {
                     lostWoodsRocks: {
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [ItemSets.BLAST_OR_SMASH_ITEMS, Items.DINS_FIRE]) ||
-                                Data.itemLocationObtained("Goron City", "lostWoodsRocks", "Rocks Blocking Lost Woods");
-                        }
+                        RequiredChoiceOfItems: [
+                            ItemLocationSets.ROCKS_BLOCKING_LOST_WOODS,
+                            ItemSets.BLAST_OR_SMASH_ITEMS, 
+                            Items.DINS_FIRE
+                        ]
                     },
                     "Lost Woods": {
                         OwExit: OwExits["Goron City"]["Lost Woods"]
@@ -2755,11 +2755,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Before Rocks", imageName: "Bomb" },
                 Exits: {
                     upstream: {
-                        CustomRequirement: function(age) {
-                            return age === Age.ADULT || 
-                                ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) ||
-                                Data.itemLocationObtained("Zora's River", "downstream", "Break Rocks Blocking Path");
-                        }
+                        RequiredChoiceOfChildItems: [ItemSets.BLAST_OR_SMASH_ITEMS, ItemLocationSets.ROCKS_BLOCKING_ZORAS_RIVER]
                     },
                     "Hyrule Field": {
                         OwExit: OwExits["Zora's River"]["Hyrule Field"]
@@ -2846,11 +2842,7 @@ let MapLocations = {
                         MapInfo: { x: 125, y: 94 },
                         Age: Age.EITHER,
                         LongDescription: "In the middle of the map, there's a heart piece on a high up platform. You can get this as a child using cuccos to fly to the platform.<br/><br/>As adult, you can use hover boots from the cliff that you take a ladder to get up.<br/><br/>To megaflip there: from the top with the gossip stone, go to the edge of the cliff and C-Up to face the item. Backflip and turn around. Megaflip from this spot and let go of all buttons.",
-                        CustomRequirement: function(age) {
-                            return age === Age.CHILD ||
-                                ItemData.canUse(age, Equipment.HOVER_BOOTS) ||
-                                Data.canMegaFlip(age);
-                        }
+                        RequiredChoiceOfAdultItems: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     "Frog Songs": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2901,11 +2893,10 @@ let MapLocations = {
                         MapInfo: { x: 266, y: 56 },
                         Age: Age.EITHER,
                         LongDescription: "At the end of the river, there's a heart piece on a platform. As child, you can jump there with a cucco or nab it with a Boomerang. As adult, you must use the Hover Boots.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return true; }
-                            if (Equipment.HOVER_BOOTS.playerHas || Settings.GlitchesToAllow.adultWaterfallHPJump) { return true; }
-                            return Items.BOMBCHU.playerHas && Data.canMegaFlip(age);
-                        }
+                        RequiredChoiceOfAdultItems: [
+                            Equipment.HOVER_BOOTS, 
+                            GlitchItemSets.ADULT_WATERFALL_HP_JUMP, 
+                            GlitchItemSets.CHU_MEGA_FLIP]
                     },
                     "4 Red Rupees by Waterfall": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3011,28 +3002,17 @@ let MapLocations = {
                 DuplicateWarpSongPriority: 1,
                 Exits: {
                     behindKing: {
-                        CustomRequirement: function(age) {
-                            // Already moved, or can move now
-                            if (Data.itemLocationObtained("Zora's Domain", "main", "Move King Zora")) { return true; }
-                            if (ItemData.canUse(age, Items.RUTOS_LETTER)) { return true; }
-
-                            // Open Zora's Fountain settings
-                            switch (Settings.RandomizerSettings.openZorasFountain) {
-                                case OpenZorasFountainSettings.ADULT:
-                                    if (age === Age.ADULT) { return true; }
-                                    break;
-                                case OpenZorasFountainSettings.ALL:
-                                    return true;
-				            }
-                
-                            // Glitch past him
-                            let canSkipAsChild = age === Age.CHILD && 
-                                Settings.GlitchesToAllow.chuZoraSkip && 
-                                ItemData.canUse(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD, Items.BOMBCHU]);
-                            let canSkipAsAdult = age === Age.ADULT && Settings.GlitchesToAllow.clipZoraSkip;
-
-                            return canSkipAsChild || canSkipAsAdult;
-                        }
+                        RequiredChoiceOfChildItems: [
+                            ItemLocationSets.MOVE_KING_ZORA,
+                            Items.RUTOS_LETTER,
+                            SettingSets.OPEN_ZORAS_FOUNTAIN,
+                            GlitchItemSets.CHILD_KING_ZORA_SKIP
+                        ],
+                        RequiredChoiceOfAdultItems: [
+                            ItemLocationSets.MOVE_KING_ZORA,
+                            SettingSets.OPEN_ADULT_ZORAS_FOUNTAIN,
+                            GlitchItemSets.ADULT_KING_ZORA_SKIP
+                        ]
                     },
                     "Zora's River": {
                         OwExit: OwExits["Zora's Domain"]["Zora's River"]
@@ -3108,7 +3088,7 @@ let MapLocations = {
                         CustomRequirement: function(age) {
                             if (ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS)) { return true; }
                             if (!Settings.GlitchesToAllow.thawKingZoraWithNothing) { return false; }
-                            if (!Data.itemLocationObtained("Zora's Domain", "main", "Move King Zora") && !SocketClient.isCoOp()) {
+                            if (!ItemData.canUse(age, ItemLocationSets.MOVE_KING_ZORA) && !SocketClient.isCoOp()) {
                                 // The sign reading glitch doesn't seem to work on ModLoader...
                                 return true;
                             }
@@ -3129,10 +3109,7 @@ let MapLocations = {
                         MapImageName: "Prescription",
                         Age: Age.ADULT,
                         LongDescription: "After thawing King Zora, show him the prescription to get an item.",
-                        RequiredItems: [AdultTradeItems.PRESCRIPTION],
-                        CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Zora's Domain", "main", "Thaw King Zora");
-                        }
+                        RequiredItems: [AdultTradeItems.PRESCRIPTION, ItemLocationSets.THAW_KING_ZORA]
                     },
                     "Skulltula on Top of Waterfall": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3166,9 +3143,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "By King Zora", imageName: "Ruto's Letter" },
                 Exits: {
                     main: {
-                        CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Zora's Domain", "main", "Move King Zora");
-                        }
+                        RequiredItems: [ItemLocationSets.MOVE_KING_ZORA]
                     },
                     "Zora's Fountain": {
                         OwExit: OwExits["Zora's Domain"]["Zora's Fountain"]
@@ -3196,11 +3171,9 @@ let MapLocations = {
                 Exits: {
                     hiddenTunnel: {
                         Age: Age.ADULT,
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS],
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, UpgradedItems.SILVER_GAUNTLETS) || 
-                                (Data.canWeirdShot(age) && ItemData.canUse(age, UpgradedItems.LONGSHOT));
-                        }
+                        RequiredChoiceOfItems: [
+                            [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS],
+                            GlitchItemSets.LONGSHOT_WEIRD_SHOT]
                     },
 
                     // Land Area
@@ -3388,20 +3361,14 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Take out the ocarina (OI works) by the lower scarecrow and play it the last song you taught it as Child.",
                         RequiredToAppear: function() { return !Songs.SCARECROWS_SONG.playerHas; },
-                        CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Lake Hylia", "main", "Play Song for Bonooru");
-                        }
+                        RequiredItems: [ItemLocationSets.PLAY_SONG_FOR_BONOORU]
                     },
                     "Heart Piece on Lab": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 111, y: 67 },
                         Age: Age.ADULT,
                         LongDescription: "The goal here is to get to the top of the Lakeside Lab. Either ride the bean plant up, or play Scarecrow's Song and hookshot it. Afterward, climb the ladder to get to the item. Watch out for the Guays!",
-                        CustomRequirement: function(age) {
-                            let canHookshotUp = Data.canPlaySong(Songs.SCARECROWS_SONG) && Items.HOOKSHOT.playerHas;
-                            let canRideUp = Data.isBeanPlanted("Lake Hylia", "main", "Soft Soil");
-                            return canHookshotUp || canRideUp;
-                        }
+                        RequiredChoiceOfItems: [GameStateSets.CAN_HOOK_SCARECROW, BeanSets.LAKE_HYLIA]
                     },
                     "Gossip Stone by Lab and Waterfall": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -3452,11 +3419,7 @@ let MapLocations = {
                         MapInfo: { x: 198, y: 213 },
                         Age: Age.ADULT,
                         LongDescription: "At night, longshot all the way up the tree on the middle island. You'll find the skulltula on top.",
-                        RequiredItems: [Items.HOOKSHOT],
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, UpgradedItems.LONGSHOT) || 
-                                (ItemData.canUse(age, ItemSets.SHIELDS) && Settings.GlitchesToAllow.skullInTreeWithHookshot);
-                        }
+                        RequiredChoiceOfItems: [UpgradedItems.LONGSHOT, GlitchItemSets.LAKE_TREE_SKULL_WITH_HOOKSHOT]
                     },
                     "Fire Arrows": {
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -3465,10 +3428,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "First, get to the platform in the center of the lake - the one with the tree. When the sun is just coming up, stand on the sign and shoot an arrow at it. The item should then spawn. You can get over there either by beating Morpha and swimming there, or by playing Scarecrow's Song and longshotting it.",
                         RequiredItems: [Items.FAIRY_BOW],
-                        CustomRequirement: function(age) {
-                            let canHookshotUp = Data.canPlaySong(Songs.SCARECROWS_SONG) && ItemData.canUse(age, UpgradedItems.LONGSHOT);
-                            return canHookshotUp || Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
-                        }
+                        RequiredChoiceOfItems: [GameStateSets.CAN_LONGSHOT_SCARECROW, ItemLocationSets.DEFEATED_MORPHA]
                     },
                     "Southwest Gossip Stone": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,

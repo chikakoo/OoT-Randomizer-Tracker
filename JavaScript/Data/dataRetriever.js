@@ -1297,8 +1297,9 @@ Data = {
     /**
      * Returns whether the player summon and can hook a scarecrow
      */
-    canHookScarecrow: function(age) {
-		return ItemData.canUse(age, Items.HOOKSHOT) && this.canPlaySong(Songs.SCARECROWS_SONG);
+    canHookScarecrow: function(age, useLongshot) {
+        let item = useLongshot ? UpgradedItems.LONGSHOT : Items.HOOKSHOT;
+		return ItemData.canUse(age, [item, Songs.SCARECROWS_SONG]);
 	},
     
     /**

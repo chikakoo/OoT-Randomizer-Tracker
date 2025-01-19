@@ -71,6 +71,8 @@ let QPAItemSets = {
 let SettingSets = {
     OPEN_DEKU: () => !Settings.RandomizerSettings.closedDeku,
     OPEN_KAKARIKO: () => Settings.RandomizerSettings.openKakariko === OpenKakarikoSettings.OPEN,
+    OPEN_ZORAS_FOUNTAIN: () => Settings.RandomizerSettings.openZorasFountain === OpenZorasFountainSettings.ALL,
+    OPEN_ADULT_ZORAS_FOUNTAIN: () => Settings.RandomizerSettings.openZorasFountain !== OpenZorasFountainSettings.VANILLA,
 };
 
 /**
@@ -86,7 +88,9 @@ let BeanSets = {
     DEATH_MOUNTAIN_TRAIL: (age) => 
         age === Age.ADULT && Data.isBeanPlanted("Death Mountain Trail", "main", "Soft Soil"),
     DEATH_MOUNTAIN_CRATER: (age) => 
-        age === Age.ADULT && Data.isBeanPlanted("Death Mountain Crater", "bottom", "Soft Soil")
+        age === Age.ADULT && Data.isBeanPlanted("Death Mountain Crater", "bottom", "Soft Soil"),
+    LAKE_HYLIA: (age) => 
+        age === Age.ADULT && Data.isBeanPlanted("Lake Hylia", "main", "Soft Soil")
 };
 
 /**
@@ -95,7 +99,9 @@ let BeanSets = {
 let GlitchItemSets = {
 	// Common
 	WEIRD_SHOT: (age) => Data.canWeirdShot(age),
+    LONGSHOT_WEIRD_SHOT: (age) => Data.canWeirdShot(age, UpgradedItems.LONGSHOT),
 	MEGA_FLIP:  (age) => Data.canMegaFlip(age),
+    CHU_MEGA_FLIP: (age) => ItemData.canUse(age, [Items.BOMBCHU, GlitchItemSets.MEGA_FLIP]),
 	GROUND_JUMP:  (age) => Data.canGroundJumpWithBomb(age),
 	BOOMERANG_THROUGH_WALLS: (age) => 
         Settings.GlitchesToAllow.boomerangThroughWalls && 
@@ -145,13 +151,21 @@ let GlitchItemSets = {
         ItemData.canUse(age, [Items.BOMBCHU, Items.DEKU_NUT]),
 
 	// Zora/Lake
+    ADULT_WATERFALL_HP_JUMP: (age) => Settings.GlitchesToAllow.adultWaterfallHPJump && age === Age.ADULT,
 	CUCCO_TO_ZORAS_DOMAIN: (age) => Settings.GlitchesToAllow.cuccoToZorasDomain && age === Age.CHILD,
 	HOVERS_TO_ZORAS_DOMAIN: (age) => 
         Settings.GlitchesToAllow.hoversToZorasDomain && 
         ItemData.canUse(age, Equipment.HOVER_BOOTS),
 	MEGA_SIDEHOP_TO_ZORAS_DOMAIN: (age) => 
         Settings.GlitchesToAllow.megasidehopToZorasDomain && 
-        ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.SWORDS, Items.BOMBCHU])
+        ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.SWORDS, Items.BOMBCHU]),
+    CHILD_KING_ZORA_SKIP: (age) =>
+        Settings.GlitchesToAllow.chuZoraSkip && 
+        ItemData.canUse(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD, Items.BOMBCHU]),
+    ADULT_KING_ZORA_SKIP: (age) => Settings.GlitchesToAllow.clipZoraSkip && age === Age.ADULT,
+    LAKE_TREE_SKULL_WITH_HOOKSHOT: (age) => 
+        Settings.GlitchesToAllow.skullInTreeWithHookshot && 
+        ItemData.canUse(age, [Items.HOOKSHOT, ItemSets.SHIELDS])
 };
 
 /**
@@ -167,14 +181,26 @@ let ItemLocationSets = {
     WAKE_UP_TALON: () => Data.itemLocationObtained("Castle", "hyruleCastle", "Wake up Talon"),
 
     // Death Mountain / Goron
-    DMT_ROCKS_BLOCKING_TOP_PATH: () => Data.itemLocationObtained("Death Mountain Trail", "main", "Break Rocks Blocking Top Path")
+    DMT_ROCKS_BLOCKING_TOP_PATH: () => Data.itemLocationObtained("Death Mountain Trail", "main", "Break Rocks Blocking Top Path"),
+    ROCKS_BLOCKING_LOST_WOODS: () => Data.itemLocationObtained("Goron City", "lostWoodsRocks", "Rocks Blocking Lost Woods"),
+
+    // Zora / Lake
+    ROCKS_BLOCKING_ZORAS_RIVER: () => Data.itemLocationObtained("Zora's River", "downstream", "Break Rocks Blocking Path"),
+    MOVE_KING_ZORA: () => Data.itemLocationObtained("Zora's Domain", "main", "Move King Zora"),
+    THAW_KING_ZORA: () => Data.itemLocationObtained("Zora's Domain", "main", "Thaw King Zora"),
+    PLAY_SONG_FOR_BONOORU: () => Data.itemLocationObtained("Lake Hylia", "main", "Play Song for Bonooru"),
+
+    // Water Temple
+    DEFEATED_MORPHA:() => Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp")
 };
 
 /**
  * Item sets that check various game states
  */
 let GameStateSets = {
-    CAN_RIDE_EPONA: (age) => Data.canRideEpona(age)
+    CAN_RIDE_EPONA: (age) => Data.canRideEpona(age),
+    CAN_HOOK_SCARECROW: (age) => Data.canHookScarecrow(age),
+    CAN_LONGSHOT_SCARECROW: (age) => Data.canHookScarecrow(age, true)
 };
 
 /**
