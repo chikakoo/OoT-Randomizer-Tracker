@@ -118,10 +118,7 @@ let MapLocations = {
                         MapInfo: { x: 261, y: 233 },
                         Age: Age.ADULT,
                         LongDescription: "Look in the middle of the House of Twins at night.",
-                        CustomRequirement: function(age) {
-                            if (ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS)) { return true; }
-                            return Settings.GlitchesToAllow.houseOfTwinsSkullWithHovers && Equipment.HOVER_BOOTS.playerHas;
-                        }
+                        RequiredChoiceOfItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.HOUSE_OF_TWINS_SKULL_WITH_HOVERS]
                     },
                     "Move Mido": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -321,10 +318,7 @@ let MapLocations = {
                 Exits: {
                     skullKidAndBridge: {},
                     secondHalf: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return true; }
-                            return Settings.GlitchesToAllow.midoSkip || Data.canPlaySong(Songs.SARIAS_SONG);
-                        }
+                        RequiredChoiceOfAdultItems: [GlitchItemSets.MIDO_SKIP, Songs.SARIAS_SONG]
                     },
                     kokiriForestWarp: {},
                     "Goron City": {
@@ -367,6 +361,7 @@ let MapLocations = {
                         NeedsOcarina: true,
                         DifficultOcarinaItems: true,
                         CustomRequirement: function(age) {
+                            // TODO: Make this a setting
                             return ItemData.getNumberOfOcarinaButtons() === Object.keys(OcarinaButtons).length;
                         }
                     },
@@ -410,11 +405,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "After Mido", imageName: "Saria's Song" },
                 Exits: {
                     nearGoronCity: {
-                        CustomRequirement: function(age) {
-                            return age === Age.CHILD || 
-                                Data.canPlaySong(Songs.SARIAS_SONG) ||
-                                Data.canMegaFlip(age);
-                        }
+                        RequiredChoiceOfAdultItems: [Songs.SARIAS_SONG, GlitchItemSets.MEGA_FLIP]
                     },
                     kokiriForestWarp: {},
                     "Sacred Forest Meadow": {
@@ -446,11 +437,11 @@ let MapLocations = {
                                 return false;
                             }
 
-                            let canKillSKulltula = ItemData.canUseAny(age, 
+                            let canKillSkulltula = ItemData.canUseAny(age, 
                                 [Items.DINS_FIRE, Items.FAIRY_BOW, Items.BOMBCHU, UpgradedItems.LONGSHOT]);
                             let canGetToken = Items.HOOKSHOT.playerHas || 
                                 (Settings.GlitchesToAllow.difficultBoomerangTrickThrows && ItemData.canUse(age, Items.BOOMERANG));
-                            return canKillSKulltula && canGetToken;
+                            return canKillSkulltula && canGetToken;
                         }
                     },
                     "Right Scrub by Forest Stage": {
@@ -484,10 +475,7 @@ let MapLocations = {
                         Order: 7,
                         Age: Age.EITHER,
                         LongDescription: "This item is under the rock one room from the Sacred Forest Meadow.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) ||
-                                (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
-                        }
+                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.BOOMERANG_THROUGH_WALLS]
                     },
                     "Front Scrub Near Grotto Near Meadow": {
                         ItemGroup: ItemGroups.SCRUB,
@@ -1255,9 +1243,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         Order: 9,
                         LongDescription: "After waking up Talon with the Chicken, push the crates down so that you can jump to the crawlspace. Sneak past the guards to meet Zelda to get her letter. After that, try to leave the area to receive this item from Impa.<br/><br/>To megaflip, climb up the right side of the left box, ess right 1 (you should be able to walk to the other box now). Chu flip as normal, or place a bomb a little after the box transition and manually back up to get the distance for the roll. Let go of everything when the flip happens so you don't walk off!",
-                        CustomRequirement: function(age) {
-                            return ChildTradeItems.WEIRD_EGG.playerHas || Data.canMegaFlip(age);
-                        }
+                        RequiredChoiceOfItems: [ChildTradeItems.WEIRD_EGG, GlitchItemSets.MEGA_FLIP]
                     }
                 }
             },
@@ -1748,10 +1734,7 @@ let MapLocations = {
                     },
                     seamAboveShadowTemple: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.hookshotJump;
-                        }
+                        RequiredItems: [GlitchItemSets.HOOKSHOT_JUMP]
                     },
                     royalFamilyTomb: {
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
@@ -1817,10 +1800,8 @@ let MapLocations = {
                     freestandingItemInCrate: {},
                     looseItemInCrate: {},
                     seamAboveShadowTemple: {
-                        RequiredItems: [ItemSets.EXPLOSIVES, ItemSets.SHIELDS],
-                        CustomRequirement: function() {
-                            return Settings.GlitchesToAllow.oldShadowEarly;
-                        }
+                        Age: Age.ADULT,
+                        RequiredItems: [GlitchItemSets.OLD_SHADOW_EARLY]
                     }
                 },
                 ItemLocations: {}
@@ -1868,14 +1849,10 @@ let MapLocations = {
                 Exits: {
                     main: {},
                     royalFamilyTomb: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.unloadGrave;
-                        }
+                        RequiredItems: [GlitchItemSets.UNLOAD_GRAVE]
                     },
                     dampesGrave: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.unloadGrave;
-                        }
+                        RequiredItems: [GlitchItemSets.UNLOAD_GRAVE]
                     },
                     shadowTemple: {
                         RequiredItems: [Equipment.MAGIC, Items.DINS_FIRE]
@@ -1944,11 +1921,8 @@ let MapLocations = {
                 UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
                 Exits: {
                     windmillTop: {
-                        CustomRequirement: function(age) {
-                            return age === Age.CHILD 
-                                ? Data.canGroundJumpWithBomb(Age.CHILD) 
-                                : Data.canPlaySong(Songs.SONG_OF_TIME);
-                        }
+                        RequiredChildItems: [GlitchItemSets.GROUND_JUMP],
+                        RequiredAdultItems: [Songs.SONG_OF_TIME]
                     },
                     "Grave Exit": {
                         OwExit: OwExits["Windmill-Kak Potion"]["Grave Exit"]
@@ -2129,11 +2103,7 @@ let MapLocations = {
                 Exits: {
                     windmillItem: {
                         RequiredChildItems: [Items.BOOMERANG],
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return true; }
-                            return Settings.GlitchesToAllow.windmillHPWithNothing ||
-                                (Settings.GlitchesToAllow.windmillHPWithHookshot && Items.HOOKSHOT.playerHas)
-                        }
+                        RequiredAdultItems: [GlitchItemSets.WINDMILL_HP_WITH_NOTHING]
                     },
                     "Windmill Exit": {
                         OwExit: OwExits["Windmill-Kak Potion"]["Windmill Exit"]
@@ -2240,15 +2210,10 @@ let MapLocations = {
                         MapInfo: { x: 212, y: 207 },
                         Age: Age.EITHER,
                         LongDescription: "If you take the left path out of Goron City, the wall to bomb or hammer will be to your right.",
-                        CustomRequirement: function(age) {
-                            let canClipIn = Settings.GlitchesToAllow.dmtClipToChestByGoron && 
-                                ItemData.canUse(age, ItemSets.SWORDS);
-                            let canUseBombFlower = Settings.GlitchesToAllow.dmtBombFlowerChestByGoron && 
-                                ItemData.canUse(age, Equipment.STRENGTH);
-                            return canClipIn || 
-                                canUseBombFlower ||
-                                ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS);
-                        }
+                        RequiredChoiceOfItems: [
+                            ItemSets.BLAST_OR_SMASH_ITEMS, 
+                            GlitchItemSets.DMT_CLIP_TO_CHEST, 
+                            GlitchItemSets.DMT_BOMB_FLOWER_TO_CHEST]
                     },
                     "Red Rock by Goron City": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -2256,9 +2221,7 @@ let MapLocations = {
                         MapInfo: { x: 215, y: 167 },
                         Age: Age.ADULT,
                         LongDescription: "At night, leave Goron City. Follow the right wall until you reach a red rock. Break it with your hammer to reveal the skulltula.",
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.dmtSkullsWithoutHammer || ItemData.canUse(age, Items.MEGATON_HAMMER);
-                        }
+                        RequiredChoiceOfItems: [Items.MEGATON_HAMMER, GlitchItemSets.DMT_SKULLS_WITHOUT_HAMMER]
                     },
                     "Heart Piece Above Dodongo's Cavern": {
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -2284,10 +2247,7 @@ let MapLocations = {
                         MapInfo: { x: 206, y: 203 },
                         Age: Age.CHILD,
                         LongDescription: "As a child, this item is under the highest rock that's blocking access to the top of Death Mountain. You can snag it with the boomerang from the bottom with a good angle.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) ||
-                                (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
-                        }
+                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.BOOMERANG_THROUGH_WALLS]
                     },
                     "Blue Rupee in Rock Below Cow Grotto": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -2295,10 +2255,7 @@ let MapLocations = {
                         MapInfo: { x: 190, y: 203 },
                         Age: Age.CHILD,
                         LongDescription: "As a child, this item is under the leftmost rock by the rocks blocking access to the top of Death Mountain. You can snag it with the boomerang if you stand far back enough on the platform.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) ||
-                                (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
-                        }
+                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.BOOMERANG_THROUGH_WALLS]
                     }
                 }
             },
@@ -2342,9 +2299,7 @@ let MapLocations = {
                         MapInfo: { x: 217, y: 96 },
                         Age: Age.ADULT,
                         LongDescription: "At night, take the upper path of the mountain - the one that causes the volcano to erupt. The red rock has a skulltula in it - break it with your hammer.",
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.dmtSkullsWithoutHammer || ItemData.canUse(age, Items.MEGATON_HAMMER);
-                        }
+                        RequiredChoiceOfItems: [Items.MEGATON_HAMMER, GlitchItemSets.DMT_SKULLS_WITHOUT_HAMMER]
                     },
                     "Gossip Stone on Climbable Wall Ledge": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -2365,14 +2320,10 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Upper Area", imageName: "Bomb" },
                 Exits: {
                     middle: {
-                        CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || ItemData.canUse(age, Equipment.HOVER_BOOTS);
-                        }
+                        RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     bottom: {
-                        CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age);
-                        }
+                        RequiredItems: [GlitchItemSets.MEGA_FLIP]
                     },
                     scarecrowPlatform: {},
                     "Mountain Top": {
@@ -2417,19 +2368,10 @@ let MapLocations = {
                 Exits: {
                     top: {},
                     bottom: {
-                        CustomRequirement: function(age) {
-                            if (Data.canMegaFlip(age)) {
-                                return true;
-                            }
-                            
-                            return age === Age.ADULT && (Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas);
-                        }
+                        RequiredChoiceOfItems: [GlitchItemSets.MEGA_FLIP, Items.HOOKSHOT, Equipment.HOVER_BOOTS]
                     },
                     volcano: {
-                        CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || 
-                                (Settings.GlitchesToAllow.hoverToVolcanoHP && ItemData.canUse(age, Equipment.HOVER_BOOTS));
-                        }
+                        RequiredChoiceOfItems: [GlitchItemSets.MEGA_FLIP, GlitchItemSets.HOVER_TO_VOLCANO_HP]
                     },
                     "Goron City": {
                         OwExit: OwExits["Death Mountain Crater"]["Goron City"]
@@ -2475,10 +2417,7 @@ let MapLocations = {
                     scarecrowPlatform: {
                         Age: Age.ADULT,
                         RequiredItems: [UpgradedItems.LONGSHOT],
-                        RequiredSongs: [Songs.SCARECROWS_SONG],
-                        CustomRequirement: function(age) {
-                            return Data.canHookScarecrow(age);
-                        }
+                        RequiredSongs: [Songs.SCARECROWS_SONG]
                     },
                     "Fire Temple": {
                         OwExit: OwExits["Death Mountain Crater"]["Fire Temple"]
@@ -2623,11 +2562,11 @@ let MapLocations = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         LongDescription: "Make your way to the topmost northwest corner of the city and bomb, pick up, or smash the rocks to get here. You can also go to the upper right corner, stand on the box, and backwalk & backflip with hover boots at the last moment to get to this chest (you will be stuck there).",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [Items.MEGATON_HAMMER, UpgradedItems.SILVER_GAUNTLETS]) ||
-                                ItemData.canUseAll(age, [Equipment.HOVER_BOOTS, ItemSets.EXPLOSIVES]) ||
-                                Data.canWeirdShot(age);
-                        }
+                        RequiredChoiceOfItems: [
+                            Items.MEGATON_HAMMER, 
+                            UpgradedItems.SILVER_GAUNTLETS, 
+                            [Equipment.HOVER_BOOTS, ItemSets.EXPLOSIVES],
+                            GlitchItemSets.WEIRD_SHOT]
                     },
                     "Left Maze Chest": {
                         ItemGroup: ItemGroups.CHEST,

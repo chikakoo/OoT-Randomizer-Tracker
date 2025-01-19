@@ -210,6 +210,65 @@ let QPAItemSets = {
 	CUTSCENE_ITEM_QPA: { isQpaItemSet: true, useCutsceneItem: true }
 };
 
+let GlitchItemSets = {
+	// Common
+	WEIRD_SHOT: { isGlitchItemSet: true, checkFunction: (age) => Data.canWeirdShot(age) },
+	MEGA_FLIP:  { isGlitchItemSet: true, checkFunction: (age) => Data.canMegaFlip(age) },
+	GROUND_JUMP:  { isGlitchItemSet: true, checkFunction: (age) => Data.canGroundJumpWithBomb(age) },
+	BOOMERANG_THROUGH_WALLS: {
+		isGlitchItemSet: true, 
+		checkFunction: (age) => 
+			Settings.GlitchesToAllow.boomerangThroughWalls && 
+			ItemData.canUse(age, Items.BOOMERANG)
+	},
+
+	//  Forest
+	HOUSE_OF_TWINS_SKULL_WITH_HOVERS: { 
+		isGlitchItemSet: true, 
+		checkFunction: (age) => 
+			Settings.GlitchesToAllow.houseOfTwinsSkullWithHovers && 
+			ItemData.canUse(age, Equipment.HOVER_BOOTS)
+	},
+	MIDO_SKIP: { isGlitchItemSet: true, checkFunction: () => Settings.GlitchesToAllow.midoSkip },
+
+	// Kakariko/Graveyard
+	WINDMILL_HP_WITH_NOTHING: { isGlitchItemSet: true, checkFunction: () => Settings.GlitchesToAllow.windmillHPWithNothing },
+	HOOKSHOT_JUMP:  { 
+		isGlitchItemSet: true, 
+		checkFunction: (age) => 
+			Settings.GlitchesToAllow.hookshotJump && 
+			ItemData.canUse(age, Items.HOOKSHOT)
+	},
+	OLD_SHADOW_EARLY:  { 
+		isGlitchItemSet: true, 
+		checkFunction: (age) => 
+			Settings.GlitchesToAllow.oldShadowEarly && 
+			ItemData.canUseAll(age, [ItemSets.EXPLOSIVES, ItemSets.SHIELDS])
+	},
+	UNLOAD_GRAVE: { isGlitchItemSet: true, checkFunction: () => Settings.GlitchesToAllow.unloadGrave },
+
+	// Death Mountain/Goron
+	DMT_CLIP_TO_CHEST: { 
+		isGlitchItemSet: true, 
+		checkFunction: (age) => 
+			Settings.GlitchesToAllow.dmtClipToChestByGoron && 
+			ItemData.canUse(age, ItemSets.SWORDS)
+	},
+	DMT_BOMB_FLOWER_TO_CHEST: { 
+		isGlitchItemSet: true, 
+		checkFunction: (age) => 
+			Settings.GlitchesToAllow.dmtBombFlowerChestByGoron && 
+			ItemData.canUse(age, Equipment.STRENGTH)
+	},
+	DMT_SKULLS_WITHOUT_HAMMER: { isGlitchItemSet: true, checkFunction: () => Settings.GlitchesToAllow.dmtSkullsWithoutHammer },
+	HOVER_TO_VOLCANO_HP: { 
+		isGlitchItemSet: true, 
+		checkFunction: (age) => 
+			Settings.GlitchesToAllow.hoverToVolcanoHP && 
+			ItemData.canUse(age, Equipment.HOVER_BOOTS)
+	},
+};
+
 /**
  * A list of item sets that can be used to concisely check whether a player can do something
  */
@@ -1341,6 +1400,14 @@ let ItemData = {
 	 *  > The upgrade is assuemd to be the lowest number required
 	 */
 	canUse: function(age, itemInput) {
+		if (Array.isArray(itemInput)) {
+			return itemInput.every(item => this.canUse(age, item));
+		}
+
+		if (typeof itemInput === "string") {
+			return itemInput === age;
+		}
+
 		// The lowest upgrade to include (ex 2 would be silver/gold gaunts, but not goron bracelet)
 		let lowestUpgrade = itemInput.upgrade;
 		let item = itemInput.item || itemInput;
@@ -1350,9 +1417,13 @@ let ItemData = {
 			return this.canUseAny(age, item.items);
 		}
 
-		// If this is a QPA item set, check it accordingly
+		// If this is a QPA or glitch item set, check it accordingly
 		if (item.isQpaItemSet) {
 			return this.canUseQPAItemSet(age, item);
+		}
+
+		if (item.isGlitchItemSet) {
+			return item.checkFunction(age);
 		}
 
 		// If the item has default notes, it's a song

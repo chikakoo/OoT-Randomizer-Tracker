@@ -169,7 +169,6 @@ let Settings = {
 		// Kakariko/Graveyard
 		watchtowerSkullJumpslash: false,
 		windmillHPWithNothing: true,
-		windmillHPWithHookshot: false,
 		kakShopClips: true,
 		botwAsChildWithCucco: false,
 		botwAsAdultWithCucco: false,
