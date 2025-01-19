@@ -26,22 +26,22 @@ let SetType = {
 let QPAItemSets = {
 	LEDGE_QPA: { 
         checkFunction: (age) => Settings.GlitchesToAllow.qpa &&
-            ItemData.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS])
+            ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS])
     },
 	HOVER_BOOTS_QPA: {
         checkFunction: (age) => Settings.GlitchesToAllow.qpa &&
-            ItemData.canUseAll(age, [Equipment.HOVER_BOOTS, ItemSets.SWORDS, ItemSets.SHIELDS])
+            ItemData.canUse(age, [Equipment.HOVER_BOOTS, ItemSets.SWORDS, ItemSets.SHIELDS])
     },
 	TALL_TORCH_QPA: {
         checkFunction: (age) => Settings.GlitchesToAllow.qpa &&
             (age === Age.CHILD
-                ? ItemData.canUseAll(age, [Items.DEKU_STICK, ItemSets.SHIELDS])
-                : ItemData.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS]))
+                ? ItemData.canUse(age, [Items.DEKU_STICK, ItemSets.SHIELDS])
+                : ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]))
     },
 	MUD_WALLS_QPA: {
         checkFunction: (age) => Settings.GlitchesToAllow.qpa &&
             Settings.RandomizerSettings.iceArrowsActAsBlueFire &&
-            ItemData.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS])
+            ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS])
     },
 	HIGH_SWITCH_QPA: {
         checkFunction: (age) => Settings.GlitchesToAllow.qpa &&
@@ -135,7 +135,7 @@ let GlitchItemSets = {
 	OLD_SHADOW_EARLY:  { 
 		checkFunction: (age) => 
 			Settings.GlitchesToAllow.oldShadowEarly && 
-			ItemData.canUseAll(age, [ItemSets.EXPLOSIVES, ItemSets.SHIELDS])
+			ItemData.canUse(age, [ItemSets.EXPLOSIVES, ItemSets.SHIELDS])
 	},
 	UNLOAD_GRAVE: { checkFunction: () => Settings.GlitchesToAllow.unloadGrave },
 
@@ -159,7 +159,7 @@ let GlitchItemSets = {
 	URN_WITH_CHUS: {
 		checkFunction: (age) => 
 			Settings.GlitchesToAllow.goronSpinningUrnWithChus && 
-			ItemData.canUseAll(age, [Items.BOMBCHU, Items.DEKU_NUT])
+			ItemData.canUse(age, [Items.BOMBCHU, Items.DEKU_NUT])
 	},
 
 	// Zora/Lake
@@ -174,7 +174,7 @@ let GlitchItemSets = {
 	MEGA_SIDEHOP_TO_ZORAS_DOMAIN: {
 		checkFunction: (age) => 
 			Settings.GlitchesToAllow.megasidehopToZorasDomain && 
-			ItemData.canUseAll(age, [ItemSets.SHIELDS, ItemSets.SWORDS, Items.BOMBCHU])
+			ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.SWORDS, Items.BOMBCHU])
 	},
 };
 

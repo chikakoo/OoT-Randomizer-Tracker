@@ -1258,7 +1258,7 @@ let MapLocations = {
 		Abbreviation: "KAK",
 		MapGroup: MapGroups.KAKARIKO,
         _canChildKillWatchtowerSkull: function() {
-            let canUseISG = Settings.GlitchesToAllow.isg && ItemData.canUseAll(Age.CHILD, [ItemSets.SWORDS, ItemSets.SHIELDS]);
+            let canUseISG = Settings.GlitchesToAllow.isg && ItemData.canUse(Age.CHILD, [ItemSets.SWORDS, ItemSets.SHIELDS]);
             let canKillSkullAtDistance = ItemData.canUseAny(Age.CHILD, [Items.FAIRY_SLINGSHOT, Items.BOMBCHU]);
             let canKillSkullWithJumpslash = Settings.GlitchesToAllow.watchtowerSkullJumpslash && ItemData.canUse(Age.CHILD, ItemSets.SWORDS);
             return canUseISG || canKillSkullAtDistance || canKillSkullWithJumpslash;
@@ -3050,7 +3050,7 @@ let MapLocations = {
                             // Glitch past him
                             let canSkipAsChild = age === Age.CHILD && 
                                 Settings.GlitchesToAllow.chuZoraSkip && 
-                                ItemData.canUseAll(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD, Items.BOMBCHU]);
+                                ItemData.canUse(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD, Items.BOMBCHU]);
                             let canSkipAsAdult = age === Age.ADULT && Settings.GlitchesToAllow.clipZoraSkip;
 
                             return canSkipAsChild || canSkipAsAdult;
@@ -3520,7 +3520,7 @@ let MapLocations = {
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) {
                                 let canCrossWithHookshot = Settings.GlitchesToAllow.gvCrossBridgeWithHookshot && 
-                                    ItemData.canUseAll(age, [ItemSets.SHIELDS, Items.HOOKSHOT]);
+                                    ItemData.canUse(age, [ItemSets.SHIELDS, Items.HOOKSHOT]);
 
                                 return canCrossWithHookshot ||
                                     Data.itemLocationObtained("Thieves' Hideout", "main", "Item From Gerudo") || 
@@ -3568,7 +3568,7 @@ let MapLocations = {
                             if (age === Age.CHILD) { return true; }
 
                             let canCrossWithHookshot = Settings.GlitchesToAllow.gvCrossBridgeWithHookshot && 
-                                ItemData.canUseAll(age, [ItemSets.SHIELDS, Items.HOOKSHOT]);
+                                ItemData.canUse(age, [ItemSets.SHIELDS, Items.HOOKSHOT]);
 
                             return canCrossWithHookshot ||
                                 Data.itemLocationObtained("Thieves' Hideout", "main", "Item From Gerudo") || 
@@ -4622,7 +4622,7 @@ let MapLocations = {
                                 return true;
                             }
 
-                            let canSlashStationaryGuard = ItemData.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
+                            let canSlashStationaryGuard = ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
                             return age === Age.CHILD
                                 ? canSlashStationaryGuard && Items.DEKU_STICK.playerHas // Kokiri Sword isn't long enough!
                                 : canSlashStationaryGuard;

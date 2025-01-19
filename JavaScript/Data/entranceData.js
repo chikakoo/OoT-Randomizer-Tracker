@@ -183,7 +183,7 @@ InteriorGroups = {
 				icon: "Blue Potion",
 				description: "After showing the Odd Mushroom to Granny, you can buy this item for 100 rupees. After that, she will sell blue potions.",
 				canGet: function(age) {
-					return ItemData.canUseAll(age, [AdultTradeItems.ODD_MUSHROOM, UpgradedItems.ADULTS_WALLET]);
+					return ItemData.canUse(age, [AdultTradeItems.ODD_MUSHROOM, UpgradedItems.ADULTS_WALLET]);
 				},
 				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; },
 				shouldNotDisplay: function() {
@@ -369,7 +369,7 @@ InteriorGroups = {
 				canGet: function(age) {
 					let hasGoldScale = ItemData.canUse(age, UpgradedItems.GOLDEN_SCALE);
 					let canGetWithoutScale = Settings.GlitchesToAllow.labHPWithoutGoldenScale &&
-						ItemData.canUseAll(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
+						ItemData.canUse(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
 					return hasGoldScale || canGetWithoutScale;
 				}
 			},
@@ -378,7 +378,7 @@ InteriorGroups = {
 				itemGroup: ItemGroups.SKULLTULA,
 				description: "This skulltula is on the bottom of the water area. Equip the iron boots and sink down. Roll into the box to reveal it.",
 				canGet: function(age) {
-					return ItemData.canUseAll(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
+					return ItemData.canUse(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
 				},
 				isAdultOnly: function() { return true; }
 			},
@@ -1134,7 +1134,7 @@ GrottoGroups = {
 				canGet: function(age) {
 					// The staircase hover requires two additional bomb drops to gain enough height
                     // Start the hover against the wall
-					return ItemData.canUseAll(age, [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, ItemSets.MUD_WALL_ITEMS]) ||
+					return ItemData.canUse(age, [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, ItemSets.MUD_WALL_ITEMS]) ||
 						Data.canStaircaseHover(age);
 				}
 			},
@@ -1381,7 +1381,7 @@ GrottoGroups = {
 				icon: "Heart Piece",
 				description: "To defeat Barinade, you need the boomerang and also either a sword or at least 3 Deku Sticks. First, dislodge it from the ceiling using the boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
 				canGet: function(age) {
-					return ItemData.canUseAll(age, [ItemSets.SWORDS, Items.BOOMERANG]);
+					return ItemData.canUse(age, [ItemSets.SWORDS, Items.BOOMERANG]);
 				},
 				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			},
@@ -1389,7 +1389,7 @@ GrottoGroups = {
 				icon: "Barinade",
 				description: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
-					return ItemData.canUseAll(age, [ItemSets.SWORDS, Items.BOOMERANG]);
+					return ItemData.canUse(age, [ItemSets.SWORDS, Items.BOOMERANG]);
 				},
 				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
 			}

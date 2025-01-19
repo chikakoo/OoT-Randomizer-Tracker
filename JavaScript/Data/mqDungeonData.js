@@ -1010,7 +1010,7 @@ let MQDungeons = {
         },
         _canHitMainRoomCowSwitch: function(age) {
             return ItemData.canUse(age, Items.FAIRY_SLINGSHOT) ||
-                ItemData.canUseAll(age, [ItemSets.BLAST_OR_SMASH_ITEMS, QPAItemSets.HIGH_SWITCH_QPA]);
+                ItemData.canUse(age, [ItemSets.BLAST_OR_SMASH_ITEMS, QPAItemSets.HIGH_SWITCH_QPA]);
         },
         Regions: {
             main: {
@@ -1867,7 +1867,7 @@ let MQDungeons = {
                         LongDescription: "This chest is in the well. If you can't drain the water with the eye switch (in the well itself from the east room), you can hookshot the chest and spam the button to open it.",
                         CustomRequirement: function(age) {
                             return ItemData.canUse(age, ItemSets.PROJECTILES) ||
-                                ItemData.canUseAll(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
+                                ItemData.canUse(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
                         }
                     },
                     "3 Hearts in Well": {
@@ -1889,7 +1889,7 @@ let MQDungeons = {
                         LongDescription: "This skulltula is on one of the grates in the water of the well (in the well itself from the east room). If you can't shoot the eye switch to drain the water, you can still get the skulltula with iron boots and the hookshot.",
                         CustomRequirement: function(age) {
                             return ItemData.canUse(age, ItemSets.PROJECTILES) ||
-                                ItemData.canUseAll(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
+                                ItemData.canUse(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
                         }
                     }
                 }
@@ -1901,7 +1901,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             // Line up with the center wall as you first enter, and drop the chu
-                            if (ItemData.canUseAll(age, [Items.HOOKSHOT, Items.BOMBCHU])) {
+                            if (ItemData.canUse(age, [Items.HOOKSHOT, Items.BOMBCHU])) {
                                 return true;
                             }
 
@@ -2440,7 +2440,7 @@ let MQDungeons = {
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner. Roll into a box to break it to reveal a torch. Light all 3 torches in the room to open the gate to the chest.",
                         CustomRequirement: function(age) {
                             if (Settings.GlitchesToAllow.mqBossRoomGoronBombClip && 
-                                    ItemData.canUseAll(age, [ItemSets.SHIELDS, Items.BOMB])) {
+                                    ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB])) {
                                 return true;
                             }
 
@@ -2518,7 +2518,7 @@ let MQDungeons = {
                             }
 
                             return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA, QPAItemSets.HOVER_BOOTS_QPA]) ||
-                                ItemData.canUseAll(age, [Items.HOOKSHOT, QPAItemSets.LEDGE_QPA]);
+                                ItemData.canUse(age, [Items.HOOKSHOT, QPAItemSets.LEDGE_QPA]);
                         },
                         LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron.<br/><br/>If using cutscene item QPA, angle toward the torch at a 45 degree angle when you jumpslash with the deku stick to light it."
                     }
@@ -3081,7 +3081,7 @@ let MQDungeons = {
                         CustomRequirement: function(age) {
                             let canGetThereNormally = ItemData.canUse(age, UpgradedItems.LONGSHOT);
                             let canUseTrick = Settings.GlitchesToAllow.mqWaterWaterfallWithHovers &&
-                                ItemData.canUseAll(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]);
+                                ItemData.canUse(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]);
                             return (canGetThereNormally || canUseTrick) &&
                                 ItemData.getKeyCount("Water Temple") >= 1;
                         }
@@ -3603,7 +3603,7 @@ let MQDungeons = {
                         LongDescription: "In the whirlpool dragon room, use your iron boots or silver scale to sink to the little hallway behind the dragon where the crates reside. You can use chus to blow up the crates and dive for the items (drop on the 6th red flash for the close ones; the 4th red flash for the far ones).",
                         CustomRequirement: function(age) {
                             return ItemData.canUse(age, Equipment.IRON_BOOTS) ||
-                                ItemData.canUseAll(age, [Equipment.SCALE, Items.BOMBCHU]);
+                                ItemData.canUse(age, [Equipment.SCALE, Items.BOMBCHU]);
                         }
                     },
                     "2 Crates Behind Dragon Room": {
@@ -4769,7 +4769,7 @@ let MQDungeons = {
                             ) {
                                 return true;
                             }
-                            return ItemData.canUseAll(age, [Songs.SONG_OF_TIME, UpgradedItems.LONGSHOT])
+                            return ItemData.canUse(age, [Songs.SONG_OF_TIME, UpgradedItems.LONGSHOT])
                         }
                     },
                     bossRoomAntechamber: {}
@@ -4948,7 +4948,7 @@ let MQDungeons = {
         Floors: ["F4", "F3", "F2", "F1"],
         StartingFloorIndex: 3,
         _canAccessAdultSide: function() {
-            let canGetUp = ItemData.canUseAll(Age.ADULT, [Items.BOMBCHU, UpgradedItems.LONGSHOT]);
+            let canGetUp = ItemData.canUse(Age.ADULT, [Items.BOMBCHU, UpgradedItems.LONGSHOT]);
             let canPushBlock = ItemData.canUse(Age.ADULT, UpgradedItems.SILVER_GAUNTLETS);
             let canWeirdShot = Data.canWeirdShot(Age.ADULT) && Items.FAIRY_BOW.playerHas;
             return canGetUp && (canPushBlock || canWeirdShot);
@@ -5017,7 +5017,7 @@ let MQDungeons = {
                         Order: 3,
                         LongDescription: "After you first enter the temple, go up the stairs. Destroy the yellow rock to your right and shoot the eye switch to spawn the chest.",
                         CustomRequirement: function(age) {
-                            return ItemData.canUseAll(age, [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.PROJECTILES]) ||
+                            return ItemData.canUse(age, [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.PROJECTILES]) ||
                                 ItemData.canUse(age, QPAItemSets.LEDGE_QPA);
                         }
                     },
@@ -5176,7 +5176,7 @@ let MQDungeons = {
                         CustomRequirement: function(age) {
                             return ItemData.canUse(age, Items.HOOKSHOT) || // Hookshot the torches
                                 Data.canMegaFlip(age) || 
-                                ItemData.canUseAll(age, [ItemSets.PROJECTILES, Items.BOMBCHU]);
+                                ItemData.canUse(age, [ItemSets.PROJECTILES, Items.BOMBCHU]);
                         }
                     },
                     afterSecondCrawlSpace: {
@@ -6066,7 +6066,7 @@ let MQDungeons = {
                         Order: 10,
                         LongDescription: "This skulltula is on the ledge to your right in the big room. Play the scarecrow's song and hook it, a ground jump to get up there, or use hover boots to get to the taller pillar and longshot it.",
                         CustomRequirement: function(age) {
-                            let canGetWithLongshot = ItemData.canUseAll(age, [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT])
+                            let canGetWithLongshot = ItemData.canUse(age, [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT])
                             if (canGetWithLongshot || Settings.GlitchesToAllow.mqIceJumpToSkull) {
                                 return true;
                             }
@@ -6205,7 +6205,7 @@ let MQDungeons = {
                         Order: 1.1,
                         LongDescription: "In the left alcove at the front of the main room, bomb the rock in the wall. Shoot it with your slingshot or bow to open a gate in the southeast corner of the giant room where the pot is.",
                         CustomRequirement: function(age) {
-                            return ItemData.canUseAll(age, [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.PROJECTILES]) ||
+                            return ItemData.canUse(age, [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.PROJECTILES]) ||
                                 ItemData.canUse(age, QPAItemSets.LEDGE_QPA);
                         }
                     },
@@ -6426,7 +6426,7 @@ let MQDungeons = {
         },
         _canVineClip: function(age) {
             return Settings.GlitchesToAllow.gtgChildVineClips && 
-                ItemData.canUseAll(age, [Equipment.DEKU_SHIELD, Items.BOMBCHU]);
+                ItemData.canUse(age, [Equipment.DEKU_SHIELD, Items.BOMBCHU]);
         },
         Regions: {
             main: {
@@ -6975,7 +6975,7 @@ let MQDungeons = {
                             if (Settings.RandomizerSettings.shuffleSilverRupees) { return true; }
 
                             let tunicCheck = Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                            return tunicCheck && ItemData.canUseAll(age, [Equipment.IRON_BOOTS, ItemSets.FIRE_ITEMS]);
+                            return tunicCheck && ItemData.canUse(age, [Equipment.IRON_BOOTS, ItemSets.FIRE_ITEMS]);
                         }
                     },
                     "3 Silver Rupees in Water Room": {
@@ -7072,7 +7072,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
-                                ItemData.canUseAll(age, [Items.BOMB, ItemSets.SHIELDS]);
+                                ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]);
                             let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && 
                                 ItemData.canUse(age, ItemSets.EXPLOSIVES);
                             return canSuperslideIn || canEssClipIn || ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
@@ -7123,7 +7123,7 @@ let MQDungeons = {
                         KeyRequirement: function(age) {
                             let max = 3;
                             let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
-                                ItemData.canUseAll(age, [Items.BOMB, ItemSets.SHIELDS]);
+                                ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]);
                             let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && 
                                 ItemData.canUse(age, ItemSets.EXPLOSIVES);
                             let canGlitchIn = canSuperslideIn || canEssClipIn;

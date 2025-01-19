@@ -555,7 +555,11 @@ let SilverRupees = {
 let ItemData = {
 	/**
 	 * Gets whether the player can use the given item/upgrade at the given age
-	 * This includees equip swap
+	 * This includes equip swap
+	 * 
+	 * Accepts arrays of items, which will calulate based on the SetType (the first element of the array)
+	 * - SetType.AND (or no set set type): check if ALL of the items in the set can be used
+	 * - SetType.OR: checks if ANY of the items in the set can be used
 	 * 
 	 * If we need to improve performance in the future:
 	 * - We can cache this logic and store it in each item one time per change
@@ -586,7 +590,7 @@ let ItemData = {
 
 		// If we're given an item set, we need to check whether we can use any single one of the items in it
 		if (item.isItemSet) {
-			return this.canUseAny(age, item.items);
+			return this.canUse(age, item.items);
 		}
 
 		// If the item has a check function, it's a custom item set and we should run the function
@@ -697,17 +701,6 @@ let ItemData = {
 		return exactUpgrade
 			? item.currentUpgrade === upgrade
 			: item.currentUpgrade >= upgrade;
-	},
-
-	/**
-	 * Gets whether the age can use all of the given items
-	 * TODO: this is just a passthrough now since we support arrays
-	 * 	in the base function - remove this in the future
-	 * @param age - The age to check
-	 * @param items - An array of items
-	 */
-	canUseAll(age, items) {
-		return this.canUse(age, items);
 	},
 
 	/**

@@ -300,7 +300,7 @@ let StandardDungeons = {
                     inDodongoHead: {
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.dodongoOpenHeadWithBombchus &&
-                                ItemData.canUseAll(age, [ItemSets.SHIELDS, Items.BOMBCHU]);
+                                ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMBCHU]);
                         }
                     }
                 },
@@ -929,7 +929,7 @@ let StandardDungeons = {
                             return Settings.GlitchesToAllow.jabuBossSwitchWithExplosives &&
                             (
                                 (age === Age.CHILD && Items.BOMBCHU.playerHas) ||
-                                (age == Age.ADULT && ItemData.canUseAll(age, [Items.BOMB, Equipment.HOVER_BOOTS]))
+                                (age == Age.ADULT && ItemData.canUse(age, [Items.BOMB, Equipment.HOVER_BOOTS]))
                             );
                         }
                     }
@@ -964,7 +964,7 @@ let StandardDungeons = {
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canJumpToTop: function(age) {
             let canDoTrick = Settings.GlitchesToAllow.forestJumpToTop && 
-                ItemData.canUseAll(age, [Equipment.HOVER_BOOTS, Items.BOMB]);
+                ItemData.canUse(age, [Equipment.HOVER_BOOTS, Items.BOMB]);
     
             // This part ensures that we're not allowing you to do the trick if you can get to the
             // room using the hover boots from the block room, which defeats the whole point because
@@ -2935,7 +2935,7 @@ let StandardDungeons = {
                             // Now raise the water and return through the fire door with iron boots (the bars will be gone still)
                             let bottomDoorCheck = Data.itemLocationObtained("Water Temple", "main", "Locked Door to Central Room") ||
                                 ItemData.getKeyCount("Water Temple") === Keys.WATER_TEMPLE.totalKeys();
-                            if (ItemData.canUseAll(age, [Equipment.IRON_BOOTS, ItemSets.FIRE_ITEMS]) && bottomDoorCheck) {
+                            if (ItemData.canUse(age, [Equipment.IRON_BOOTS, ItemSets.FIRE_ITEMS]) && bottomDoorCheck) {
                                 return true;
                             }
                         }
@@ -2965,7 +2965,7 @@ let StandardDungeons = {
                             if (Data.canWeirdShot(age)) { return true; }
 
                             // If not weirdshotting, need to shoot eye AND move the block
-                            if (!ItemData.canUseAll(age, [ItemSets.PROJECTILES, Equipment.STRENGTH])) { 
+                            if (!ItemData.canUse(age, [ItemSets.PROJECTILES, Equipment.STRENGTH])) { 
                                 return false; 
                             }
 
@@ -4022,7 +4022,7 @@ let StandardDungeons = {
 
             return (Settings.GlitchesToAllow.spiritBlockSkipWithHovers && Equipment.HOVER_BOOTS.playerHas) || (
                 Settings.GlitchesToAllow.spiritBlockSkipWithBombPush && 
-                ItemData.canUseAll(Age.ADULT, [ItemSets.SHIELDS, Items.BOMB]));
+                ItemData.canUse(Age.ADULT, [ItemSets.SHIELDS, Items.BOMB]));
         },
         Regions: {
             main: {
@@ -4789,7 +4789,7 @@ let StandardDungeons = {
                         RequiredSongs: [Songs.ZELDAS_LULLABY],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.spiritBKTrick ||
-                                ItemData.canUseAll(age, [Items.FAIRY_BOW, Items.HOOKSHOT]);
+                                ItemData.canUse(age, [Items.FAIRY_BOW, Items.HOOKSHOT]);
                         }
                     }
                 }
@@ -5572,7 +5572,7 @@ let StandardDungeons = {
                 Exits: {
                     mapChestArea: {
                         CustomRequirement: function(age) {
-                            return ItemData.canUseAll(age, [Items.DEKU_STICK, Equipment.STRENGTH]) ||
+                            return ItemData.canUse(age, [Items.DEKU_STICK, Equipment.STRENGTH]) ||
                                 ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS);
                         }
                     }
@@ -5670,7 +5670,7 @@ let StandardDungeons = {
         _canSkipMazeDoors: function(age) {
             return Data.canWeirdShot(age) ||  (
                 Settings.GlitchesToAllow.gtgChildVineClips && 
-                ItemData.canUseAll(age, [Equipment.DEKU_SHIELD, Items.BOMBCHU])
+                ItemData.canUse(age, [Equipment.DEKU_SHIELD, Items.BOMBCHU])
             );
         },
         _getNumberOfOptionalKeysUsed: function() {
@@ -6475,7 +6475,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
-                                ItemData.canUseAll(age, [Items.BOMB, ItemSets.SHIELDS]);
+                                ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]);
                             let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && 
                                 ItemData.canUse(age, ItemSets.EXPLOSIVES);
                             return canSuperslideIn || canEssClipIn || ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
@@ -6677,7 +6677,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
                             let canGetThereNormally = ItemData.canUse(age, Items.FIRE_ARROW);
-                            let canAvoidFireArrows = ItemData.canUseAll(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]);
+                            let canAvoidFireArrows = ItemData.canUse(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]);
                             return canGetThereNormally || canAvoidFireArrows;
                         }
                     }
@@ -6996,7 +6996,7 @@ let StandardDungeons = {
                             }
 
                             let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && 
-                                ItemData.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
+                                ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
                             return ItemData.canUse(age, Items.HOOKSHOT) || canAvoidHookshot;
                         }
                     }
@@ -7047,7 +7047,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is above the beamos. Use your hookshot, or perform the ISG hover to get the rupee (remember not to cancel ISG with shield!)",
                         CustomRequirement: function(age) {
                             let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && 
-                                ItemData.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
+                                ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
                             return ItemData.canUse(age, Items.HOOKSHOT) || canAvoidHookshot;
                         }
                     }

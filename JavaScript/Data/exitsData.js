@@ -15,7 +15,7 @@ let OwExits = {
                 let bossEntranceGroup = Data.getEntranceGroup(OwExits["Deku Tree"].Boss);
                 let beatDekuTree = bossEntranceGroup && Object.keys(bossEntranceGroup.completed).includes("Blue Warp");
                 let canPokeySkip = Settings.GlitchesToAllow.pokeySkip && 
-                    ItemData.canUseAll(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD]);
+                    ItemData.canUse(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD]);
                 return beatDekuTree || canPokeySkip;
             }
         },
@@ -845,7 +845,7 @@ let OwExits = {
                     (Settings.GlitchesToAllow.doubleDefenseEarly && 
                         (
                             ItemData.canUse(age, ItemSets.EXPLOSIVES) ||
-                            ItemData.canUseAll(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS])
+                            ItemData.canUse(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS])
                         ));
             }
         }
@@ -886,9 +886,9 @@ let OwExits = {
 
                 // If either need to use the glitch, then it should always be strict day requirement
                 let childEarly = Settings.GlitchesToAllow.botwAsChildWithCucco && 
-                    ItemData.canUseAll(Age.CHILD, [ItemSets.SWORDS, ItemSets.SHIELDS]);
+                    ItemData.canUse(Age.CHILD, [ItemSets.SWORDS, ItemSets.SHIELDS]);
                 let adultEarly = Settings.GlitchesToAllow.botwAsAdultWithCucco && 
-                    ItemData.canUseAll(Age.ADULT, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]);
+                    ItemData.canUse(Age.ADULT, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]);
                 if (childEarly || adultEarly) {
                     return Time.DAY;
                 }
@@ -904,7 +904,7 @@ let OwExits = {
             CustomRequirement: function(age) {
                 // Trick using cucco
                 if (Settings.GlitchesToAllow.botwAsAdultWithCucco &&
-                    ItemData.canUseAll(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS])) {
+                    ItemData.canUse(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS])) {
                     return true;
                 }
 
@@ -916,7 +916,7 @@ let OwExits = {
                 // Cucco dive
                 let canGetThereEarly = age === Age.CHILD && 
                     Settings.GlitchesToAllow.botwAsChildWithCucco && 
-                    ItemData.canUseAll(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
+                    ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
                 if (canGetThereEarly) { return true; }
                 
                 // Get in normally - non-interior shuffle
@@ -1634,7 +1634,7 @@ let OwExits = {
             CustomRequirement: function(age) {
                 if (age === Age.ADULT) {
                     return Settings.GlitchesToAllow.enterJabuAsAdult && 
-                        ItemData.canUseAll(age, [ItemSets.SHIELDS, Items.BOMBCHU]);
+                        ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMBCHU]);
                 }
 
                 if (Settings.GlitchesToAllow.jabuFishless && ItemData.canUse(age, ItemSets.SWORDS)) {
@@ -1791,15 +1791,15 @@ let OwExits = {
                     return true;
                 }
 
-                let canEnterNormally = ItemData.canUseAll(age, [Equipment.IRON_BOOTS, Items.HOOKSHOT]);
-                let canDiveDown = ItemData.canUseAll(age, [UpgradedItems.LONGSHOT, UpgradedItems.GOLDEN_SCALE]);
+                let canEnterNormally = ItemData.canUse(age, [Equipment.IRON_BOOTS, Items.HOOKSHOT]);
+                let canDiveDown = ItemData.canUse(age, [UpgradedItems.LONGSHOT, UpgradedItems.GOLDEN_SCALE]);
                 if (canEnterNormally || canDiveDown) {
                     return true;
                 };
                 if (!Settings.RandomizerSettings.shuffleDungeonEntrances) { return false; }
                 
                 let defeatedMorpha = Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
-                let canHitSwitch = ItemData.canUseAll(age, [ItemSets.DAMAGING_ITEMS, UpgradedItems.GOLDEN_SCALE]);
+                let canHitSwitch = ItemData.canUse(age, [ItemSets.DAMAGING_ITEMS, UpgradedItems.GOLDEN_SCALE]);
                 return defeatedMorpha && canHitSwitch;
             }
         },

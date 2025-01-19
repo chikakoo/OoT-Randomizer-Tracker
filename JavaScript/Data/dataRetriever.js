@@ -327,7 +327,7 @@ Data = {
     canEnterDoorOfTime: function(age) {
 		let canSkipAsChild = age === Age.CHILD && Settings.GlitchesToAllow.doorOfTimeSkip && Equipment.KOKIRI_SWORD.playerHas;
 		let canSkipAsAdult = age === Age.ADULT && Settings.GlitchesToAllow.doorOfTimeSkip && 
-            ItemData.canUseAll(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]);
+            ItemData.canUse(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]);
 		
 		let canEnterDoorOfTime = Settings.RandomizerSettings.openDoorOfTime || // Already open
 			canSkipAsChild || canSkipAsAdult || // Door of time skip
@@ -526,7 +526,7 @@ Data = {
      */
 	canMegaFlip: function(age) {
 		return Settings.GlitchesToAllow.megaFlip && 
-            ItemData.canUseAll(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]);
+            ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]);
     },
 
     /**
@@ -537,7 +537,7 @@ Data = {
     canWeirdShot: function(age, item) {
         item = item || Items.HOOKSHOT;
         return Settings.GlitchesToAllow.weirdShot && 
-            ItemData.canUseAll(age, [item, Items.BOMB, ItemSets.SHIELDS]);
+            ItemData.canUse(age, [item, Items.BOMB, ItemSets.SHIELDS]);
     },
 
     /**
@@ -545,7 +545,7 @@ Data = {
      */
     canStaircaseHover: function(age) {
         return Settings.GlitchesToAllow.staircaseHover &&
-            ItemData.canUseAll(age, [Items.BOMB, ItemSets.SWORDS, ItemSets.SHIELDS]);
+            ItemData.canUse(age, [Items.BOMB, ItemSets.SWORDS, ItemSets.SHIELDS]);
     },
 
     /**
@@ -553,7 +553,7 @@ Data = {
      */
     canBombSuperslide: function(age) {
         return Settings.GlitchesToAllow.bombSuperslide &&
-            ItemData.canUseAll(age, [Items.BOMB, ItemSets.SHIELDS]);
+            ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]);
     },
 
     /**
@@ -568,7 +568,7 @@ Data = {
      */
     canHammerHoverBootsSuperslide: function(age) {
         return Settings.GlitchesToAllow.hammerHoverBootsSuperslide &&
-            ItemData.canUseAll(age, [Equipment.HOVER_BOOTS, Items.MEGATON_HAMMER]);
+            ItemData.canUse(age, [Equipment.HOVER_BOOTS, Items.MEGATON_HAMMER]);
     },
     
     /**
@@ -1310,7 +1310,7 @@ Data = {
 		let canPlaySong = Data.canPlaySong(Songs.EPONAS_SONG) && Items.OCARINA.playerHas; // Actual ocarina required, even in race skip
 		let canStealEpona = !Settings.RandomizerSettings.shuffleOverworldEntrances &&
 			Settings.GlitchesToAllow.eponaHover && 
-            ItemData.canUseAll(age, [ItemSets.SHIELDS, Items.BOMB]);
+            ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB]);
 		
 		return canPlaySong || canStealEpona;
 	},
