@@ -570,6 +570,13 @@ let ItemData = {
 	 *  > The upgrade is assuemd to be the lowest number required
 	 */
 	canUse: function(age, itemInput) {
+		// Item inputs that are functions are custom item sets
+		// that have their own function to run
+		if (typeof itemInput === "function") {
+			return itemInput(age);
+		}
+
+		// If it's an array, we must determine whether we should run it as AND or OR
 		if (Array.isArray(itemInput)) {
 			let firstItem = itemInput[0];
 			if (firstItem === SetType.OR || firstItem === SetType.AND) {
@@ -591,11 +598,6 @@ let ItemData = {
 		// If we're given an item set, we need to check whether we can use any single one of the items in it
 		if (item.isItemSet) {
 			return this.canUseAny(age, item.items);
-		}
-
-		// If the item has a check function, it's a custom item set and we should run the function
-		if (item.checkFunction) {
-			return item.checkFunction(age);
 		}
 
 		// If the item has default notes, it's a song

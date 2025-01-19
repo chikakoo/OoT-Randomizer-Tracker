@@ -24,55 +24,44 @@ let SetType = {
  * - CUTSCENE_ITEM_QPA: Sticks + usable cutscene item (trade item with the "can't use this now" cutscene, or magic beans)
  */
 let QPAItemSets = {
-	LEDGE_QPA: { 
-        checkFunction: (age) => Settings.GlitchesToAllow.qpa &&
-            ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS])
-    },
-	HOVER_BOOTS_QPA: {
-        checkFunction: (age) => Settings.GlitchesToAllow.qpa &&
-            ItemData.canUse(age, [Equipment.HOVER_BOOTS, ItemSets.SWORDS, ItemSets.SHIELDS])
-    },
-	TALL_TORCH_QPA: {
-        checkFunction: (age) => Settings.GlitchesToAllow.qpa &&
-            (age === Age.CHILD
+	LEDGE_QPA: (age) => Settings.GlitchesToAllow.qpa &&
+        ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]),
+	HOVER_BOOTS_QPA: (age) => Settings.GlitchesToAllow.qpa &&
+        ItemData.canUse(age, [Equipment.HOVER_BOOTS, ItemSets.SWORDS, ItemSets.SHIELDS]),
+	TALL_TORCH_QPA: (age) => Settings.GlitchesToAllow.qpa && (
+            age === Age.CHILD
                 ? ItemData.canUse(age, [Items.DEKU_STICK, ItemSets.SHIELDS])
-                : ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]))
-    },
-	MUD_WALLS_QPA: {
-        checkFunction: (age) => Settings.GlitchesToAllow.qpa &&
-            Settings.RandomizerSettings.iceArrowsActAsBlueFire &&
-            ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS])
-    },
-	HIGH_SWITCH_QPA: {
-        checkFunction: (age) => Settings.GlitchesToAllow.qpa &&
-            ItemData.canUseAny(age, [Items.DEKU_STICK, Equipment.BIGGORONS_SWORD]) &&
-            ItemData.canUse(age, ItemSets.SHIELDS)
-    },
-	CUTSCENE_ITEM_QPA: {
-        checkFunction: (age) => {
-            if (!Settings.GlitchesToAllow.qpa || !ItemData.canUse(age, Items.DEKU_STICK)) {
-				return false;
-			}
-
-			// We're not checking whether you can USE it, we just need it in the pause menu
-			let hasMagicItem = Items.DINS_FIRE.playerHas || 
-				Items.FARORES_WIND.playerHas || 
-				Items.NAYRUS_LOVE.playerHas;
-
-			if (age === Age.CHILD) {
-				return Items.MAGIC_BEAN.playerHas ||
-                    ItemData.hasChildTradeItem() || 
-
-					// You can't equip swap from the left, since you NEED stick equipped, so the
-					// only items you can do it with are the magic spells
-					(ItemData.hasAdultTradeItem() && hasMagicItem);
-			} 
-
-			// Since stick NEEDS to be equipped, you can't equip swap a child trade item/magic beans for this
-			// We need to check whether you can equip the adult trade item AND a stick at the same time, therefore
-			// you MUST equip swap using a magic item
-			return ItemData.hasAdultTradeItem() && hasMagicItem;
+                : ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS])
+        ),
+	MUD_WALLS_QPA: (age) => Settings.GlitchesToAllow.qpa &&
+        Settings.RandomizerSettings.iceArrowsActAsBlueFire &&
+        ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]),
+	HIGH_SWITCH_QPA: (age) => Settings.GlitchesToAllow.qpa &&
+        ItemData.canUseAny(age, [Items.DEKU_STICK, Equipment.BIGGORONS_SWORD]) &&
+        ItemData.canUse(age, ItemSets.SHIELDS),
+	CUTSCENE_ITEM_QPA: (age) => {
+        if (!Settings.GlitchesToAllow.qpa || !ItemData.canUse(age, Items.DEKU_STICK)) {
+            return false;
         }
+
+        // We're not checking whether you can USE it, we just need it in the pause menu
+        let hasMagicItem = Items.DINS_FIRE.playerHas || 
+            Items.FARORES_WIND.playerHas || 
+            Items.NAYRUS_LOVE.playerHas;
+
+        if (age === Age.CHILD) {
+            return Items.MAGIC_BEAN.playerHas ||
+                ItemData.hasChildTradeItem() || 
+
+                // You can't equip swap from the left, since you NEED stick equipped, so the
+                // only items you can do it with are the magic spells
+                (ItemData.hasAdultTradeItem() && hasMagicItem);
+        } 
+
+        // Since stick NEEDS to be equipped, you can't equip swap a child trade item/magic beans for this
+        // We need to check whether you can equip the adult trade item AND a stick at the same time, therefore
+        // you MUST equip swap using a magic item
+        return ItemData.hasAdultTradeItem() && hasMagicItem;
     }
 };
 
@@ -80,24 +69,24 @@ let QPAItemSets = {
  * Item sets for settings
  */
 let SettingSets = {
-    OPEN_DEKU: { checkFunction: () => !Settings.RandomizerSettings.closedDeku },
-    OPEN_KAKARIKO: { checkFunction: () => Settings.RandomizerSettings.openKakariko === OpenKakarikoSettings.OPEN },
+    OPEN_DEKU: () => !Settings.RandomizerSettings.closedDeku,
+    OPEN_KAKARIKO: () => Settings.RandomizerSettings.openKakariko === OpenKakarikoSettings.OPEN,
 };
 
 /**
  * Sets for planted magic beans
  */
 let BeanSets = {
-    KOKIRI_FOREST: { checkFunction: (age) => 
-        age === Age.ADULT && Data.isBeanPlanted("Kokiri Forest", "main", "Soft Soil") },
-    LOST_WOODS_FOREST_STAGE: { checkFunction: (age) => 
-        age === Age.ADULT && Data.isBeanPlanted("Lost Woods", "secondHalf", "Soft Soil by Forest Stage") },
-    GRAVEYARD: { checkFunction: (age) => 
-        age === Age.ADULT && Data.isBeanPlanted("Graveyard", "main", "Soft Soil") },
-    DEATH_MOUNTAIN_TRAIL: { checkFunction: (age) => 
-        age === Age.ADULT && Data.isBeanPlanted("Death Mountain Trail", "main", "Soft Soil") },
-    DEATH_MOUNTAIN_CRATER: { checkFunction: (age) => 
-        age === Age.ADULT && Data.isBeanPlanted("Death Mountain Crater", "bottom", "Soft Soil") }
+    KOKIRI_FOREST: (age) => 
+        age === Age.ADULT && Data.isBeanPlanted("Kokiri Forest", "main", "Soft Soil"),
+    LOST_WOODS_FOREST_STAGE: (age) => 
+        age === Age.ADULT && Data.isBeanPlanted("Lost Woods", "secondHalf", "Soft Soil by Forest Stage"),
+    GRAVEYARD: (age) => 
+        age === Age.ADULT && Data.isBeanPlanted("Graveyard", "main", "Soft Soil"),
+    DEATH_MOUNTAIN_TRAIL: (age) => 
+        age === Age.ADULT && Data.isBeanPlanted("Death Mountain Trail", "main", "Soft Soil"),
+    DEATH_MOUNTAIN_CRATER: (age) => 
+        age === Age.ADULT && Data.isBeanPlanted("Death Mountain Crater", "bottom", "Soft Soil")
 };
 
 /**
@@ -105,91 +94,64 @@ let BeanSets = {
  */
 let GlitchItemSets = {
 	// Common
-	WEIRD_SHOT: { checkFunction: (age) => Data.canWeirdShot(age) },
-	MEGA_FLIP:  { checkFunction: (age) => Data.canMegaFlip(age) },
-	GROUND_JUMP:  { checkFunction: (age) => Data.canGroundJumpWithBomb(age) },
-	BOOMERANG_THROUGH_WALLS: {
-		checkFunction: (age) => 
-			Settings.GlitchesToAllow.boomerangThroughWalls && 
-			ItemData.canUse(age, Items.BOOMERANG)
-	},
-    BOOMERANG_TRICK_THROWS: {
-		checkFunction: (age) => 
-			Settings.GlitchesToAllow.difficultBoomerangTrickThrows && 
-			ItemData.canUse(age, Items.BOOMERANG)
-	},
+	WEIRD_SHOT: (age) => Data.canWeirdShot(age),
+	MEGA_FLIP:  (age) => Data.canMegaFlip(age),
+	GROUND_JUMP:  (age) => Data.canGroundJumpWithBomb(age),
+	BOOMERANG_THROUGH_WALLS: (age) => 
+        Settings.GlitchesToAllow.boomerangThroughWalls && 
+        ItemData.canUse(age, Items.BOOMERANG),
+    BOOMERANG_TRICK_THROWS: (age) => 
+        Settings.GlitchesToAllow.difficultBoomerangTrickThrows && 
+        ItemData.canUse(age, Items.BOOMERANG),
 
 	// Forest
-	HOUSE_OF_TWINS_SKULL_WITH_HOVERS: { 
-		checkFunction: (age) => 
+	HOUSE_OF_TWINS_SKULL_WITH_HOVERS: (age) => 
 			Settings.GlitchesToAllow.houseOfTwinsSkullWithHovers && 
-			ItemData.canUse(age, Equipment.HOVER_BOOTS)
-	},
-	MIDO_SKIP: { checkFunction: () => Settings.GlitchesToAllow.midoSkip },
-    LOST_WOODS_SKULL_WITHOUT_BEAN: { checkFunction: (age) =>
+			ItemData.canUse(age, Equipment.HOVER_BOOTS),
+	MIDO_SKIP: () => Settings.GlitchesToAllow.midoSkip,
+    LOST_WOODS_SKULL_WITHOUT_BEAN: (age) =>
         Settings.GlitchesToAllow.lwSkullWithoutBean &&
         ItemData.canUse(age, [
             [SetType.OR, Items.DINS_FIRE, Items.FAIRY_BOW, Items.BOMBCHU, UpgradedItems.LONGSHOT], // Kill skulltula
             [SetType.OR, Items.HOOKSHOT, GlitchItemSets.BOOMERANG_TRICK_THROWS] // Get token
-        ])
-    },
+        ]),
 
 	// Kakariko/Graveyard
-	WINDMILL_HP_WITH_NOTHING: { checkFunction: () => Settings.GlitchesToAllow.windmillHPWithNothing },
-	HOOKSHOT_JUMP:  { 
-		checkFunction: (age) => 
-			Settings.GlitchesToAllow.hookshotJump && 
-			ItemData.canUse(age, Items.HOOKSHOT)
-	},
-	OLD_SHADOW_EARLY:  { 
-		checkFunction: (age) => 
-			Settings.GlitchesToAllow.oldShadowEarly && 
-			ItemData.canUse(age, [ItemSets.EXPLOSIVES, ItemSets.SHIELDS])
-	},
-	UNLOAD_GRAVE: { checkFunction: () => Settings.GlitchesToAllow.unloadGrave },
+	WINDMILL_HP_WITH_NOTHING: () => Settings.GlitchesToAllow.windmillHPWithNothing,
+	HOOKSHOT_JUMP: (age) => 
+        Settings.GlitchesToAllow.hookshotJump && 
+        ItemData.canUse(age, Items.HOOKSHOT),
+	OLD_SHADOW_EARLY: (age) => 
+        Settings.GlitchesToAllow.oldShadowEarly && 
+        ItemData.canUse(age, [ItemSets.EXPLOSIVES, ItemSets.SHIELDS]),
+	UNLOAD_GRAVE: () => Settings.GlitchesToAllow.unloadGrave,
 
 	// Death Mountain/Goron
-	DMT_CLIP_TO_CHEST: {
-		checkFunction: (age) => 
-			Settings.GlitchesToAllow.dmtClipToChestByGoron && 
-			ItemData.canUse(age, ItemSets.SWORDS)
-	},
-	DMT_BOMB_FLOWER_TO_CHEST: {
-		checkFunction: (age) => 
-			Settings.GlitchesToAllow.dmtBombFlowerChestByGoron && 
-			ItemData.canUse(age, Equipment.STRENGTH)
-	},
-	DMT_SKULLS_WITHOUT_HAMMER: { checkFunction: () => Settings.GlitchesToAllow.dmtSkullsWithoutHammer },
-    DMT_CLIMB_WITH_HOVER_BOOTS: {
-		checkFunction: (age) => 
-			Settings.GlitchesToAllow.dmtClimbWithHoverBoots && 
-			ItemData.canUse(age, Equipment.HOVER_BOOTS)
-	},
-	HOVER_TO_VOLCANO_HP: {
-		checkFunction: (age) => 
-			Settings.GlitchesToAllow.hoverToVolcanoHP && 
-			ItemData.canUse(age, Equipment.HOVER_BOOTS)
-	},
-	URN_WITH_CHUS: {
-		checkFunction: (age) => 
-			Settings.GlitchesToAllow.goronSpinningUrnWithChus && 
-			ItemData.canUse(age, [Items.BOMBCHU, Items.DEKU_NUT])
-	},
+	DMT_CLIP_TO_CHEST: (age) => 
+        Settings.GlitchesToAllow.dmtClipToChestByGoron && 
+        ItemData.canUse(age, ItemSets.SWORDS),
+	DMT_BOMB_FLOWER_TO_CHEST: (age) => 
+        Settings.GlitchesToAllow.dmtBombFlowerChestByGoron && 
+        ItemData.canUse(age, Equipment.STRENGTH),
+	DMT_SKULLS_WITHOUT_HAMMER: () => Settings.GlitchesToAllow.dmtSkullsWithoutHammer,
+    DMT_CLIMB_WITH_HOVER_BOOTS: (age) => 
+        Settings.GlitchesToAllow.dmtClimbWithHoverBoots && 
+        ItemData.canUse(age, Equipment.HOVER_BOOTS),
+	HOVER_TO_VOLCANO_HP: (age) => 
+        Settings.GlitchesToAllow.hoverToVolcanoHP && 
+        ItemData.canUse(age, Equipment.HOVER_BOOTS),
+	URN_WITH_CHUS: (age) => 
+        Settings.GlitchesToAllow.goronSpinningUrnWithChus && 
+        ItemData.canUse(age, [Items.BOMBCHU, Items.DEKU_NUT]),
 
 	// Zora/Lake
-	CUCCO_TO_ZORAS_DOMAIN: {
-		checkFunction: (age) => Settings.GlitchesToAllow.cuccoToZorasDomain && age === Age.CHILD 
-	},
-	HOVERS_TO_ZORAS_DOMAIN: {
-		checkFunction: (age) => 
-			Settings.GlitchesToAllow.hoversToZorasDomain && 
-			ItemData.canUse(age, Equipment.HOVER_BOOTS)
-	},
-	MEGA_SIDEHOP_TO_ZORAS_DOMAIN: {
-		checkFunction: (age) => 
-			Settings.GlitchesToAllow.megasidehopToZorasDomain && 
-			ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.SWORDS, Items.BOMBCHU])
-	},
+	CUCCO_TO_ZORAS_DOMAIN: (age) => Settings.GlitchesToAllow.cuccoToZorasDomain && age === Age.CHILD,
+	HOVERS_TO_ZORAS_DOMAIN: (age) => 
+        Settings.GlitchesToAllow.hoversToZorasDomain && 
+        ItemData.canUse(age, Equipment.HOVER_BOOTS),
+	MEGA_SIDEHOP_TO_ZORAS_DOMAIN: (age) => 
+        Settings.GlitchesToAllow.megasidehopToZorasDomain && 
+        ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.SWORDS, Items.BOMBCHU])
 };
 
 /**
@@ -198,21 +160,21 @@ let GlitchItemSets = {
  */
 let ItemLocationSets = {
     // Kokiri Forest
-    MOVE_MIDO: { checkFunction: () => Data.itemLocationObtained("Kokiri Forest", "main", "Move Mido") },
+    MOVE_MIDO: () => Data.itemLocationObtained("Kokiri Forest", "main", "Move Mido"),
 
     // Castle
-    GIFT_FROM_MALON: { checkFunction: () => Data.itemLocationObtained("Castle", "hyruleCastle", "Gift from Malon") },
-    WAKE_UP_TALON: { checkFunction: () => Data.itemLocationObtained("Castle", "hyruleCastle", "Wake up Talon") },
+    GIFT_FROM_MALON: () => Data.itemLocationObtained("Castle", "hyruleCastle", "Gift from Malon"),
+    WAKE_UP_TALON: () => Data.itemLocationObtained("Castle", "hyruleCastle", "Wake up Talon"),
 
     // Death Mountain / Goron
-    DMT_ROCKS_BLOCKING_TOP_PATH: { checkFunction: () => Data.itemLocationObtained("Death Mountain Trail", "main", "Break Rocks Blocking Top Path") }
+    DMT_ROCKS_BLOCKING_TOP_PATH: () => Data.itemLocationObtained("Death Mountain Trail", "main", "Break Rocks Blocking Top Path")
 };
 
 /**
  * Item sets that check various game states
  */
 let GameStateSets = {
-    CAN_RIDE_EPONA: { checkFunction: (age) => Data.canRideEpona(age) }
+    CAN_RIDE_EPONA: (age) => Data.canRideEpona(age)
 };
 
 /**
