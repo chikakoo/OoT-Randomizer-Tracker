@@ -590,7 +590,7 @@ let ItemData = {
 
 		// If we're given an item set, we need to check whether we can use any single one of the items in it
 		if (item.isItemSet) {
-			return this.canUse(age, item.items);
+			return this.canUseAny(age, item.items);
 		}
 
 		// If the item has a check function, it's a custom item set and we should run the function

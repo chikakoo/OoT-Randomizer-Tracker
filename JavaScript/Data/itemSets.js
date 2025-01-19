@@ -80,7 +80,8 @@ let QPAItemSets = {
  * Item sets for settings
  */
 let SettingSets = {
-    OPEN_DEKU: { checkFunction: () => !Settings.RandomizerSettings.closedDeku }
+    OPEN_DEKU: { checkFunction: () => !Settings.RandomizerSettings.closedDeku },
+    OPEN_KAKARIKO: { checkFunction: () => Settings.RandomizerSettings.openKakariko === OpenKakarikoSettings.OPEN },
 };
 
 /**
@@ -89,6 +90,7 @@ let SettingSets = {
 let BeanSets = {
     KOKIRI_FOREST: { checkFunction: () => Data.isBeanPlanted("Kokiri Forest", "main", "Soft Soil") },
     LOST_WOODS_FOREST_STAGE: { checkFunction: () => Data.isBeanPlanted("Lost Woods", "secondHalf", "Soft Soil by Forest Stage") },
+    GRAVEYARD: { checkFunction: () => Data.isBeanPlanted("Graveyard", "main", "Soft Soil") }
 };
 
 /**
@@ -110,7 +112,7 @@ let GlitchItemSets = {
 			ItemData.canUse(age, Items.BOOMERANG)
 	},
 
-	//  Forest
+	// Forest
 	HOUSE_OF_TWINS_SKULL_WITH_HOVERS: { 
 		checkFunction: (age) => 
 			Settings.GlitchesToAllow.houseOfTwinsSkullWithHovers && 
@@ -184,7 +186,18 @@ let GlitchItemSets = {
  */
 let ItemLocationSets = {
     // Kokiri Forest
-    MOVE_MIDO: { checkFunction: () => Data.itemLocationObtained("Kokiri Forest", "main", "Move Mido") }
+    MOVE_MIDO: { checkFunction: () => Data.itemLocationObtained("Kokiri Forest", "main", "Move Mido") },
+
+    // Castle
+    GIFT_FROM_MALON: { checkFunction: () => Data.itemLocationObtained("Castle", "hyruleCastle", "Gift from Malon") },
+    WAKE_UP_TALON: { checkFunction: () => Data.itemLocationObtained("Castle", "hyruleCastle", "Wake up Talon") }
+};
+
+/**
+ * Item sets that check various game states
+ */
+let GameStateSets = {
+    CAN_RIDE_EPONA: { checkFunction: (age) => Data.canRideEpona(age) }
 };
 
 /**

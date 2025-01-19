@@ -869,10 +869,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "You can get this after getting Malon's gift and waking up Talon with the Chicken at Hyrule Castle. Take out your Ocarina to get the item.",
                         NeedsOcarina: true,
-                        CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Castle", "hyruleCastle", "Gift from Malon") &&
-                                Data.itemLocationObtained("Castle", "hyruleCastle", "Wake up Talon");
-                        }
+                        RequiredItems: [ItemLocationSets.GIFT_FROM_MALON, ItemLocationSets.WAKE_UP_TALON]
                     },
                     "Wonderitem via Short Gate": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -880,8 +877,7 @@ let MapLocations = {
                         MapInfo: { x: 206, y: 153 },
                         Age: Age.ADULT,
                         LongDescription: "As Adult, talk to Ingo if you haven't already rescused Epona to go inside. Play Epona's song and ride epona. Jump over the center of the smaller gate to get this wonderitem.",
-                        RequiredSongs: [Songs.EPONAS_SONG],
-                        RequiredItems: [Items.OCARINA]
+                        RequiredItems: [Songs.EPONAS_SONG, Items.OCARINA]
                     },
                     "Wonderitem via Tall Gate": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -889,8 +885,7 @@ let MapLocations = {
                         MapInfo: { x: 144, y: 190 },
                         Age: Age.ADULT,
                         LongDescription: "As Adult, talk to Ingo if you haven't already rescused Epona to go inside. Play Epona's song and ride epona. Jump over the center of the larger gate to get this wonderitem.",
-                        RequiredSongs: [Songs.EPONAS_SONG],
-                        RequiredItems: [Items.OCARINA]
+                        RequiredItems: [Songs.EPONAS_SONG, Items.OCARINA]
                     },
                     "Unlock Cow in House": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -900,9 +895,7 @@ let MapLocations = {
                         MapInfo: { x: 176, y: 115 },
                         Age: Age.ADULT,
                         LongDescription: "After Epona is freed, talk to Malon and complete the obstacle course in less than 50 seconds. This will unlock the cow in Link's house.",
-                        CustomRequirement: function(age) {
-                            return Data.canRideEpona(age);
-                        }
+                        RequiredItems: [GameStateSets.CAN_RIDE_EPONA]
                     },
 
                     // Back
@@ -1590,12 +1583,9 @@ let MapLocations = {
                         MapInfo: { x: 123, y: 41 },
                         MapImageName: "Keaton Mask",
                         Age: Age.CHILD,
-                        RequiredItems: [ChildTradeItems.KEATON_MASK],
                         LongDescription: "Talk to the guard while wearing the Keaton mask to sell it to him - this unlocks the Skull Mask.",
-                        CustomRequirement: function(age) {
-                            return ChildTradeItems.ZELDAS_LETTER.playerHas ||
-                                Settings.RandomizerSettings.openKakariko === OpenKakarikoSettings.OPEN;
-                        }
+                        RequiredItems: [ChildTradeItems.KEATON_MASK],
+                        RequiredChoiceOfItems: [ChildTradeItems.ZELDAS_LETTER, SettingSets.OPEN_KAKARIKO]
                     },
                     "Crate by Archery or Beggar": {
                         ItemGroup: ItemGroups.CRATE,
@@ -1701,11 +1691,7 @@ let MapLocations = {
                 Exits: {
                     crateLedge: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, UpgradedItems.LONGSHOT) || 
-                                Data.isBeanPlanted("Graveyard", "main", "Soft Soil") || 
-                                Data.canWeirdShot(age);
-                        }
+                        RequiredChoiceOfItems: [UpgradedItems.LONGSHOT, BeanSets.GRAVEYARD, GlitchItemSets.WEIRD_SHOT]
                     },
                     freestandingItemInCrate: {
                         RequiredItems: [Items.BOOMERANG]
