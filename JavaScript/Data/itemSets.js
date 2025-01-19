@@ -70,10 +70,12 @@ let QPAItemSets = {
  */
 let SettingSets = {
     OPEN_DEKU: () => !Settings.RandomizerSettings.closedDeku,
+    OPEN_FOREST: () => Settings.RandomizerSettings.openForest,
     OPEN_KAKARIKO: () => Settings.RandomizerSettings.openKakariko === OpenKakarikoSettings.OPEN,
     OPEN_ZORAS_FOUNTAIN: () => Settings.RandomizerSettings.openZorasFountain === OpenZorasFountainSettings.ALL,
     OPEN_ADULT_ZORAS_FOUNTAIN: () => Settings.RandomizerSettings.openZorasFountain !== OpenZorasFountainSettings.VANILLA,
-    OPEN_GERUDO_FORTRESS: () => Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.OPEN
+    OPEN_GERUDO_FORTRESS: () => Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.OPEN,
+    SHUFFLE_DUNGEON_ENTRANCES: () => Settings.RandomizerSettings.shuffleDungeonEntrances
 };
 
 /**
@@ -82,6 +84,8 @@ let SettingSets = {
 let BeanSets = {
     KOKIRI_FOREST: (age) => 
         age === Age.ADULT && Data.isBeanPlanted("Kokiri Forest", "main", "Soft Soil"),
+    LOST_WOODS_BRIDGE: (age) =>
+        age === Age.ADULT && Data.isBeanPlanted("Lost Woods", "skullKidAndBridge", "Soft Soil by Bridge"),
     LOST_WOODS_FOREST_STAGE: (age) => 
         age === Age.ADULT && Data.isBeanPlanted("Lost Woods", "secondHalf", "Soft Soil by Forest Stage"),
     GRAVEYARD: (age) => 
@@ -117,9 +121,24 @@ let GlitchItemSets = {
         ItemData.canUse(age, Items.BOOMERANG),
 
 	// Forest
+    POKEY_SKIP: (age) => 
+        Settings.GlitchesToAllow.pokeySkip && 
+        ItemData.canUse(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD]),
 	HOUSE_OF_TWINS_SKULL_WITH_HOVERS: (age) => 
 			Settings.GlitchesToAllow.houseOfTwinsSkullWithHovers && 
 			ItemData.canUse(age, Equipment.HOVER_BOOTS),
+    LW_ADULT_BRIDGE_FROM_TOP: (age) => 
+        age === Age.ADULT &&
+        Settings.GlitchesToAllow.lwAdultBridgeFromTop &&
+        ItemData.canUse(age, ItemSets.SHIELDS),
+    LW_ADULT_BRIDGE_WITH_HOOKSHOT: (age) =>
+        Settings.GlitchesToAllow.lwAdultBridgeWithHookshot &&
+        ItemData.canUse(age, Items.HOOKSHOT),
+    CHILD_ZR_FROM_LW_WITHOUT_SCALE: (age) => 
+        age === Age.CHILD && 
+        Settings.GlitchesToAllow.zorasRiverScalelessChild && 
+        ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS),
+    ADULT_ZR_FROM_LW_WITHOUT_SCALE: (age) => Settings.GlitchesToAllow.zorasRiverScalelessAdult && age === Age.ADULT,
 	MIDO_SKIP: () => Settings.GlitchesToAllow.midoSkip,
     LOST_WOODS_SKULL_WITHOUT_BEAN: (age) =>
         Settings.GlitchesToAllow.lwSkullWithoutBean &&
@@ -127,8 +146,17 @@ let GlitchItemSets = {
             [SetType.OR, Items.DINS_FIRE, Items.FAIRY_BOW, Items.BOMBCHU, UpgradedItems.LONGSHOT], // Kill skulltula
             [SetType.OR, Items.HOOKSHOT, GlitchItemSets.BOOMERANG_TRICK_THROWS] // Get token
         ]),
+    PRESSURE_JUMP: (age) => Settings.GlitchesToAllow.lwBridgePressureJump && Items.BOMB.playerHas,
+
+    // Castle
+    DOUBLE_DEFENSE_EARLY: (age) => Settings.GlitchesToAllow.doubleDefenseEarly &&
+        ItemData.canUse(age, ItemSets.EXPLOSIVES) ||
+        ItemData.canUse(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]),
 
 	// Kakariko/Graveyard
+    KAK_SHOP_CLIPS: (age) => 
+        Settings.GlitchesToAllow.kakShopClips && 
+        ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS),
 	WINDMILL_HP_WITH_NOTHING: () => Settings.GlitchesToAllow.windmillHPWithNothing,
 	HOOKSHOT_JUMP: (age) => 
         Settings.GlitchesToAllow.hookshotJump && 
@@ -231,6 +259,11 @@ let ItemLocationSets = {
  * Item sets that check various game states
  */
 let GameStateSets = {
+    // Note: this checks the Deku Tree boss (not where the tree was shuffled to), unsure if that's correct
+    DEFEATED_DEKU_TREE_BOSS: () => {
+        let bossEntranceGroup = Data.getEntranceGroup(OwExits["Deku Tree"].Boss);
+        return bossEntranceGroup?.buttons && bossEntranceGroup.buttons["Blue Warp"].completed;
+    },
     CAN_RIDE_EPONA: (age) => Data.canRideEpona(age),
     CAN_HOOK_SCARECROW: (age) => Data.canHookScarecrow(age),
     CAN_LONGSHOT_SCARECROW: (age) => Data.canHookScarecrow(age, true),

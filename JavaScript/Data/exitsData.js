@@ -9,15 +9,11 @@ let OwExits = {
             MapInfo: { x: 46, y: 130 },
             Age: Age.EITHER,
             LongDescription: "This is the bottom entrance to the Lost Woods.",
-            CustomRequirement: function(age) {
-                if (age === Age.ADULT || Settings.RandomizerSettings.openForest) { return true; }
-                
-                let bossEntranceGroup = Data.getEntranceGroup(OwExits["Deku Tree"].Boss);
-                let beatDekuTree = bossEntranceGroup && Object.keys(bossEntranceGroup.completed).includes("Blue Warp");
-                let canPokeySkip = Settings.GlitchesToAllow.pokeySkip && 
-                    ItemData.canUse(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD]);
-                return beatDekuTree || canPokeySkip;
-            }
+            RequiredChoiceOfChildItems: [
+                SettingSets.OPEN_FOREST,
+                GameStateSets.DEFEATED_DEKU_TREE_BOSS,
+                GlitchItemSets.POKEY_SKIP
+            ]
         },
         "Mido's House": {
             ExitRegion: "main",
@@ -145,11 +141,11 @@ let OwExits = {
             MapInfo: { x: 284, y: 126 },
             Order: 8,
             Age: Age.EITHER,
-            CustomRequirement: function(age) {
-                return ItemData.canUseAny(age, [Equipment.SCALE, Equipment.IRON_BOOTS]) ||
-                    (age === Age.CHILD && Settings.GlitchesToAllow.zorasRiverScalelessChild && ItemData.canUse(age, ItemSets.SWORDS)) ||
-                    (age === Age.ADULT && Settings.GlitchesToAllow.zorasRiverScalelessAdult);
-            },
+            RequiredChoiceOfItems: [
+                Equipment.SCALE,
+                Equipment.IRON_BOOTS,
+                GlitchItemSets.CHILD_ZR_FROM_LW_WITHOUT_SCALE,
+                GlitchItemSets.ADULT_ZR_FROM_LW_WITHOUT_SCALE],
             LongDescription: "This is the exit to Zora's River that you get to by diving."
         },
         "To Lost Woods Bridge": {
@@ -161,24 +157,14 @@ let OwExits = {
             Age: Age.EITHER,
             UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
             OneWayEntrance: true,
-            CustomRequirement: function(age) {
-                let canMegaFlip = Data.canMegaFlip(age);
-                if (age === Age.CHILD) {
-                    return canMegaFlip;
-                }
-
-                if (Settings.GlitchesToAllow.lwAdultBridgeFromTop && ItemData.canUse(age, ItemSets.SHIELDS)) {
-                    return true;
-                }
-
-                if (Settings.GlitchesToAllow.lwAdultBridgeWithHookshot && Items.HOOKSHOT.playerHas) {
-                    return true;
-                }
-
-                return canMegaFlip ||
-                    ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT]) ||
-                    Data.isBeanPlanted("Lost Woods", "skullKidAndBridge", "Soft Soil by Bridge");
-            },
+            RequiredChildItems: [GlitchItemSets.MEGA_FLIP],
+            RequiredChoiceOfAdultItems: [
+                Equipment.HOVER_BOOTS,
+                UpgradedItems.LONGSHOT,
+                BeanSets.LOST_WOODS_BRIDGE,
+                GlitchItemSets.MEGA_FLIP,
+                GlitchItemSets.LW_ADULT_BRIDGE_FROM_TOP,
+                GlitchItemSets.LW_ADULT_BRIDGE_WITH_HOOKSHOT],
             OwShuffleMap: "Lost Woods Bridge",
             OwShuffleRegion: "main",
             OwShuffleExitName: "Kokiri Forest Bridge",
@@ -265,13 +251,7 @@ let OwExits = {
             Age: Age.EITHER,
             UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip && !Settings.GlitchesToAllow.lwBridgePressureJump; },
             LongDescription: "Longshot from the bridge to the ladder to get to the lost woods.<br/><br/>Megaflip setup: Get in the corner closest to the ladder; take a tiny step back; c-up and face the third rope support; turn 180; dry roll if using bombs; megaflip",
-            CustomRequirement: function(age) {
-                if (ItemData.canUse(age, UpgradedItems.LONGSHOT)) {
-                    return true;
-                }
-                let canPressureJump = Settings.GlitchesToAllow.lwBridgePressureJump && Items.BOMB.playerHas;
-                return canPressureJump || Data.canMegaFlip(age);
-            }
+            RequiredChoiceOfItems: [UpgradedItems.LONGSHOT, GlitchItemSets.MEGA_FLIP, GlitchItemSets.PRESSURE_JUMP]
         }
     },
 
@@ -840,14 +820,7 @@ let OwExits = {
             MapInfo: { x: 308, y: 161, floor: "GAN" },
             Age: Age.ADULT,
             LongDescription: "At the end of the main rock is a giant block you can pull up with Golden Gauntlets. Alternatively, you can use hover boots and a shield to clip past the block.",
-            CustomRequirement: function(age) {
-                return ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS) ||
-                    (Settings.GlitchesToAllow.doubleDefenseEarly && 
-                        (
-                            ItemData.canUse(age, ItemSets.EXPLOSIVES) ||
-                            ItemData.canUse(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS])
-                        ));
-            }
+            RequiredChoiceOfItems: [UpgradedItems.GOLDEN_GAUNTLETS, GlitchItemSets.DOUBLE_DEFENSE_EARLY]
         }
     },
 
@@ -1053,10 +1026,7 @@ let OwExits = {
             UseAdultAge: function() { return !Settings.GlitchesToAllow.kakShopClips; },
             Age: Age.EITHER,
             LongDescription: "This is the building to the left if you are facing the Death Mountain entrance.",
-            CustomRequirement: function(age) {
-                if (age === Age.ADULT) { return true; }
-                return Settings.GlitchesToAllow.kakShopClips && ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS);
-            }
+            RequiredChildItems: [GlitchItemSets.KAK_SHOP_CLIPS]
         },
         "Potion Shop Front": {
             ExitRegion: "main",
@@ -1110,10 +1080,7 @@ let OwExits = {
             UseAdultAge: function() { return !Settings.GlitchesToAllow.kakShopClips; },
             Age: Age.EITHER,
             LongDescription: "This entrance to this is where the open grotto is behind the fence. You can use your hookshot to get back here via the roofs. You can also jump onto the potion shop roof from the Death Mountain entrance with a good angle.",
-            CustomRequirement: function(age) {
-                if (age === Age.ADULT) { return true; }
-                return Settings.GlitchesToAllow.kakShopClips && ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS);
-            }
+            RequiredChildItems: [GlitchItemSets.KAK_SHOP_CLIPS]
         },
         "Potion Shop to Interior": {
             ExitRegion: "main",
@@ -1289,9 +1256,7 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to Dodongo's Cavern.",
             IsDungeonEntrance: true,
-            CustomRequirement: function(age) {
-                return age === Age.ADULT || ItemData.canUse(age, ItemSets.EXPLOSIVES_OR_STRENGTH);
-            }
+            RequiredChildItems: [ItemSets.EXPLOSIVES_OR_STRENGTH]
         },
 
         // Lower Area
@@ -1377,9 +1342,7 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Fire Temple.",
             IsDungeonEntrance: true,
-            CustomRequirement: function(age) {
-                return age === Age.ADULT || Settings.RandomizerSettings.shuffleDungeonEntrances;
-            }
+            RequiredChildItems: [SettingSets.SHUFFLE_DUNGEON_ENTRANCES]
         },
 
         // Interiors
