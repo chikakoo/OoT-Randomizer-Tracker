@@ -2129,15 +2129,12 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Lower Area", imageName: "Goron's Ruby" },
                 Exits: {
                     upper: {
-                        CustomRequirement: function(age) {
-                            let canRideTrailBeanPlant = age === Age.ADULT &&
-                                Data.isBeanPlanted("Death Mountain Trail", "main", "Soft Soil");
-                            let canUseHoverBoots = Settings.GlitchesToAllow.dmtClimbWithHoverBoots && 
-                                ItemData.canUse(age, Equipment.HOVER_BOOTS);
-                            let areRocksGone = ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) || 
-                                Data.itemLocationObtained("Death Mountain Trail", "main", "Break Rocks Blocking Top Path");
-                            return canRideTrailBeanPlant || canUseHoverBoots || areRocksGone;
-                        }
+                        RequiredChoiceOfItems: [
+                            ItemSets.BLAST_OR_SMASH_ITEMS,
+                            BeanSets.DEATH_MOUNTAIN_TRAIL,
+                            GlitchItemSets.DMT_CLIMB_WITH_HOVER_BOOTS,
+                            ItemLocationSets.DMT_ROCKS_BLOCKING_TOP_PATH
+                        ]
                     },
                     "Kakariko Village": {
                         OwExit: OwExits["Death Mountain Trail"]["Kakariko Village"]
@@ -2370,16 +2367,11 @@ let MapLocations = {
                 Exits: {
                     middle: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            let beanPlanted = Data.isBeanPlanted("Death Mountain Crater", "bottom", "Soft Soil");
-                            return beanPlanted || Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas; 
-                        }
+                        RequiredChoiceOfItems: [BeanSets.DEATH_MOUNTAIN_CRATER, Items.HOOKSHOT, Equipment.HOVER_BOOTS]
                     },
                     volcano: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Data.isBeanPlanted("Death Mountain Crater", "bottom", "Soft Soil");
-                        }
+                        RequiredItems: [BeanSets.DEATH_MOUNTAIN_CRATER]
                     },
                     scarecrowPlatform: {
                         Age: Age.ADULT,

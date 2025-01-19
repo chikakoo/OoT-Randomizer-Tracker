@@ -88,9 +88,16 @@ let SettingSets = {
  * Sets for planted magic beans
  */
 let BeanSets = {
-    KOKIRI_FOREST: { checkFunction: () => Data.isBeanPlanted("Kokiri Forest", "main", "Soft Soil") },
-    LOST_WOODS_FOREST_STAGE: { checkFunction: () => Data.isBeanPlanted("Lost Woods", "secondHalf", "Soft Soil by Forest Stage") },
-    GRAVEYARD: { checkFunction: () => Data.isBeanPlanted("Graveyard", "main", "Soft Soil") }
+    KOKIRI_FOREST: { checkFunction: (age) => 
+        age === Age.ADULT && Data.isBeanPlanted("Kokiri Forest", "main", "Soft Soil") },
+    LOST_WOODS_FOREST_STAGE: { checkFunction: (age) => 
+        age === Age.ADULT && Data.isBeanPlanted("Lost Woods", "secondHalf", "Soft Soil by Forest Stage") },
+    GRAVEYARD: { checkFunction: (age) => 
+        age === Age.ADULT && Data.isBeanPlanted("Graveyard", "main", "Soft Soil") },
+    DEATH_MOUNTAIN_TRAIL: { checkFunction: (age) => 
+        age === Age.ADULT && Data.isBeanPlanted("Death Mountain Trail", "main", "Soft Soil") },
+    DEATH_MOUNTAIN_CRATER: { checkFunction: (age) => 
+        age === Age.ADULT && Data.isBeanPlanted("Death Mountain Crater", "bottom", "Soft Soil") }
 };
 
 /**
@@ -153,6 +160,11 @@ let GlitchItemSets = {
 			ItemData.canUse(age, Equipment.STRENGTH)
 	},
 	DMT_SKULLS_WITHOUT_HAMMER: { checkFunction: () => Settings.GlitchesToAllow.dmtSkullsWithoutHammer },
+    DMT_CLIMB_WITH_HOVER_BOOTS: {
+		checkFunction: (age) => 
+			Settings.GlitchesToAllow.dmtClimbWithHoverBoots && 
+			ItemData.canUse(age, Equipment.HOVER_BOOTS)
+	},
 	HOVER_TO_VOLCANO_HP: {
 		checkFunction: (age) => 
 			Settings.GlitchesToAllow.hoverToVolcanoHP && 
@@ -190,7 +202,10 @@ let ItemLocationSets = {
 
     // Castle
     GIFT_FROM_MALON: { checkFunction: () => Data.itemLocationObtained("Castle", "hyruleCastle", "Gift from Malon") },
-    WAKE_UP_TALON: { checkFunction: () => Data.itemLocationObtained("Castle", "hyruleCastle", "Wake up Talon") }
+    WAKE_UP_TALON: { checkFunction: () => Data.itemLocationObtained("Castle", "hyruleCastle", "Wake up Talon") },
+
+    // Death Mountain / Goron
+    DMT_ROCKS_BLOCKING_TOP_PATH: { checkFunction: () => Data.itemLocationObtained("Death Mountain Trail", "main", "Break Rocks Blocking Top Path") }
 };
 
 /**
