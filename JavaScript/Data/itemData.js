@@ -567,7 +567,13 @@ let ItemData = {
 	 */
 	canUse: function(age, itemInput) {
 		if (Array.isArray(itemInput)) {
-			return itemInput.every(item => this.canUse(age, item));
+			let firstItem = itemInput[0];
+			if (firstItem === SetType.OR || firstItem === SetType.AND) {
+				itemInput = itemInput.slice(1);
+			}
+			return firstItem === SetType.OR
+				? itemInput.some(item => this.canUse(age, item))
+				: itemInput.every(item => this.canUse(age, item));
 		}
 
 		if (typeof itemInput === "string") {
@@ -695,11 +701,13 @@ let ItemData = {
 
 	/**
 	 * Gets whether the age can use all of the given items
+	 * TODO: this is just a passthrough now since we support arrays
+	 * 	in the base function - remove this in the future
 	 * @param age - The age to check
 	 * @param items - An array of items
 	 */
 	canUseAll(age, items) {
-		return items.every(item => this.canUse(age, item));
+		return this.canUse(age, items);
 	},
 
 	/**

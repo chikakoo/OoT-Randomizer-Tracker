@@ -1,4 +1,18 @@
 /**
+ * How to compare items in a set - logic will look at the first element to determine the type
+ * - if it is NOT present, defaults to AND
+ * 
+ * EXAMPLES:
+ * [SetType.OR, Items.HOOKSHOT, Items.BOMB]: True if player has EITHER hookshot or bomb
+ * [SetType.AND, Items.HOOKSHOT, Items.BOMB]: True if player has BOTH hookshot and bomb
+ * [Items.HOOKSHOT, Items.BOMB]: True if player has BOTH hookshot and bomb
+ */
+let SetType = {
+    AND: "and",
+    OR: "or"
+}
+
+/**
  * Item sets for doing the quick putaway glitch
  * Uses its own function in ItemData based om the given properties
  * Below is each setting and what is needed to perform it/what it's used for
@@ -63,6 +77,21 @@ let QPAItemSets = {
 };
 
 /**
+ * Item sets for settings
+ */
+let SettingSets = {
+    OPEN_DEKU: { checkFunction: () => !Settings.RandomizerSettings.closedDeku }
+};
+
+/**
+ * Sets for planted magic beans
+ */
+let BeanSets = {
+    KOKIRI_FOREST: { checkFunction: () => Data.isBeanPlanted("Kokiri Forest", "main", "Soft Soil") },
+    LOST_WOODS_FOREST_STAGE: { checkFunction: () => Data.isBeanPlanted("Lost Woods", "secondHalf", "Soft Soil by Forest Stage") },
+};
+
+/**
  * Item sets for performing glitches
  */
 let GlitchItemSets = {
@@ -75,6 +104,11 @@ let GlitchItemSets = {
 			Settings.GlitchesToAllow.boomerangThroughWalls && 
 			ItemData.canUse(age, Items.BOOMERANG)
 	},
+    BOOMERANG_TRICK_THROWS: {
+		checkFunction: (age) => 
+			Settings.GlitchesToAllow.difficultBoomerangTrickThrows && 
+			ItemData.canUse(age, Items.BOOMERANG)
+	},
 
 	//  Forest
 	HOUSE_OF_TWINS_SKULL_WITH_HOVERS: { 
@@ -83,6 +117,13 @@ let GlitchItemSets = {
 			ItemData.canUse(age, Equipment.HOVER_BOOTS)
 	},
 	MIDO_SKIP: { checkFunction: () => Settings.GlitchesToAllow.midoSkip },
+    LOST_WOODS_SKULL_WITHOUT_BEAN: { checkFunction: (age) =>
+        Settings.GlitchesToAllow.lwSkullWithoutBean &&
+        ItemData.canUse(age, [
+            [SetType.OR, Items.DINS_FIRE, Items.FAIRY_BOW, Items.BOMBCHU, UpgradedItems.LONGSHOT], // Kill skulltula
+            [SetType.OR, Items.HOOKSHOT, GlitchItemSets.BOOMERANG_TRICK_THROWS] // Get token
+        ])
+    },
 
 	// Kakariko/Graveyard
 	WINDMILL_HP_WITH_NOTHING: { checkFunction: () => Settings.GlitchesToAllow.windmillHPWithNothing },
@@ -135,6 +176,15 @@ let GlitchItemSets = {
 			Settings.GlitchesToAllow.megasidehopToZorasDomain && 
 			ItemData.canUseAll(age, [ItemSets.SHIELDS, ItemSets.SWORDS, Items.BOMBCHU])
 	},
+};
+
+/**
+ * Item sets for checking if a certain item was obtained
+ * This makes it easier to keep things in a single place in case an item location changes regions or names
+ */
+let ItemLocationSets = {
+    // Kokiri Forest
+    MOVE_MIDO: { checkFunction: () => Data.itemLocationObtained("Kokiri Forest", "main", "Move Mido") }
 };
 
 /**

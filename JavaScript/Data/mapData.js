@@ -7,11 +7,10 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Main Area", imageName: "Deku Shield" },
                 Exits: {
                     afterMido: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT || !Settings.RandomizerSettings.closedDeku) { return true; }
-                            return ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD]) ||
-                                Data.itemLocationObtained("Kokiri Forest", "main", "Move Mido");
-                        }
+                        RequiredChoiceOfChildItems: [
+                            SettingSets.OPEN_DEKU,
+                            [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD],
+                            ItemLocationSets.MOVE_MIDO]
                     },
 
                     // Main Area
@@ -145,11 +144,7 @@ let MapLocations = {
                         MapInfo: { x: 291, y: 106 },
                         Age: Age.ADULT,
                         LongDescription: "Ride the bean platform or use hover boots to reach these items.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Items.BOOMERANG) ||
-                                Equipment.HOVER_BOOTS.playerHas || 
-                                Data.isBeanPlanted("Kokiri Forest", "main", "Soft Soil");
-                        }
+                        RequiredChoiceOfItems: [Items.BOOMERANG, Equipment.HOVER_BOOTS, BeanSets.KOKIRI_FOREST]
                     },
 
                     // Training area and maze
@@ -428,21 +423,7 @@ let MapLocations = {
                         Order: 3,
                         Age: Age.ADULT,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. Plant a magic bean here as a child. Come back as an adult at night and ride the plant up.",
-                        CustomRequirement: function(age) {
-                            if (Data.isBeanPlanted("Lost Woods", "secondHalf", "Soft Soil by Forest Stage")) {
-                                return true;
-                            }
-
-                            if (!Settings.GlitchesToAllow.lwSkullWithoutBean) {
-                                return false;
-                            }
-
-                            let canKillSkulltula = ItemData.canUseAny(age, 
-                                [Items.DINS_FIRE, Items.FAIRY_BOW, Items.BOMBCHU, UpgradedItems.LONGSHOT]);
-                            let canGetToken = Items.HOOKSHOT.playerHas || 
-                                (Settings.GlitchesToAllow.difficultBoomerangTrickThrows && ItemData.canUse(age, Items.BOOMERANG));
-                            return canKillSkulltula && canGetToken;
-                        }
+                        RequiredChoiceOfItems: [BeanSets.LOST_WOODS_FOREST_STAGE, GlitchItemSets.LOST_WOODS_SKULL_WITHOUT_BEAN]
                     },
                     "Right Scrub by Forest Stage": {
                         ItemGroup: ItemGroups.SCRUB,
