@@ -4375,12 +4375,11 @@ let MapLocations = {
                         RequiredChoiceOfItems: [GameStateSets.CAN_STUN_KITCHEN_GUARDS]
                     },
                     kitchenTopRight: {
-                        CustomRequirement: function(age) {
-                            return Data.canStunKitchenGuards(age) || 
-                                Settings.GlitchesToAllow.gfPassKitchenGuards ||
-                                Data.canMegaFlip(age) ||
-                                ItemData.canUse(age, Equipment.HOVER_BOOTS);
-                        }
+                        RequiredChoiceOfItems: [
+                            Equipment.HOVER_BOOTS,
+                            GameStateSets.CAN_STUN_KITCHEN_GUARDS,
+                            GlitchItemSets.GF_PASS_KITCHEN_GUARDS,
+                            GlitchItemSets.MEGA_FLIP]
                     },
                     "Kitchen Top Left": {
                         OwExit: OwExits["Thieves' Hideout"]["Kitchen Top Left"]
@@ -4463,25 +4462,17 @@ let MapLocations = {
                         MapInfo: { x: 345, y: 127, floor: "TOP" },
                         Age: Age.EITHER,
                         LongDescription: "Deal with the guard that's moving. The crate is to the right when you enter the main room - the one close to the corner.<br/><br/>Child can get this without dealing with the stationary guard if you stay close to the wall.<br/><br/>Adult can get this one without dealing with the stationary guard if you bonk into it while staying more to the right.",
-                        CustomRequirement: function(age) {
-                            return Data.canStunOrPassGuardsAtDistance(age) || ItemData.canUse(age, ItemSets.SWORDS);
-                        }
+                        RequiredChoiceOfItems: [ItemSets.SWORDS, GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE]
                     },
                     "Upper Room Far Corner Crate": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 345, y: 117, floor: "TOP" },
                         Age: Age.EITHER,
                         LongDescription: "Deal with the guard that's moving. The crate is to the right when you enter the main room - the one farther from the corner.<br/>Child can get this one if you hug the wall the whole time.<br/>Adult can stab the stationary guard if you crouchstab her, but be careful not to get too close!",
-                        CustomRequirement: function(age) {
-                            if (Data.canStunOrPassGuardsAtDistance(age)) {
-                                return true;
-                            }
-
-                            let canSlashGuards = ItemData.canUse(age, ItemSets.SWORDS);
-                            return age === Age.CHILD
-                                ? canSlashGuards
-                                : canSlashGuards && ItemData.canUse(age, ItemSets.SHIELDS); // Need to crouch stab the stationary guard
-                        }
+                        RequiredChoiceOfChildItems: [GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE, ItemSets.SWORDS],
+                        RequiredChoiceOfAdultItems: [
+                            GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE,
+                            [ItemSets.SWORDS, ItemSets.SHIELDS]], // Need to crouch stab the stationary guard
                     },
                     "2 Pots on Upper Room Table": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -4491,16 +4482,11 @@ let MapLocations = {
                         MapInfo: { x: 309, y: 96, floor: "TOP" },
                         Age: Age.EITHER,
                         LongDescription: "These pots can be retrieved with the boomerang if you're quick. If you can't get them that way...<br/><br/>Deal with the guard that's moving. If you have a shield, and either the Master Sword or a Deku Stick, you can crouchstab the stationary guard, but be careful not to get too close!",
-                        CustomRequirement: function(age) {
-                            if (Data.canStunOrPassGuardsAtDistance(age) || ItemData.canUse(age, Items.BOOMERANG)) {
-                                return true;
-                            }
-
-                            let canSlashStationaryGuard = ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
-                            return age === Age.CHILD
-                                ? canSlashStationaryGuard && Items.DEKU_STICK.playerHas // Kokiri Sword isn't long enough!
-                                : canSlashStationaryGuard;
-                        }
+                        RequiredChoiceOfItems: [
+                            GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE,
+                            Items.BOOMERANG,
+                            [Equipment.MASTER_SWORD, Items.DEKU_STICK, ItemSets.SHIELDS], // Kokiri sword isn't long enough
+                        ]
                     },
                     "Upper Room Lower Skull": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -4552,10 +4538,10 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Fortress Side", imageName: "Gerudo Membership Card" },
                 Exits: {
                     outpost: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.itemlessSandPit || 
-                                ItemData.canUseAny(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]);
-                        }
+                        RequiredChoiceOfItems: [
+                            UpgradedItems.LONGSHOT,
+                            Equipment.HOVER_BOOTS,
+                            GlitchItemSets.HW_ITEMLESS_SAND_PIT]
                     },
                     "Gerudo Fortress": {
                         OwExit: OwExits["Haunted Wasteland"]["Gerudo Fortress"]
@@ -4578,15 +4564,10 @@ let MapLocations = {
                 ExcludeFromSpawnList: true,
                 Exits: {
                     entrance: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.backwardsWasteland;
-                        }
+                        RequiredItems: [GlitchItemSets.BACKWARDS_WASTELAND]
                     },
                     exit: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.wastelandNoLens ||
-                                (Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas);
-                        }
+                        RequiredChoiceOfItems: [Items.LENS_OF_TRUTH, GlitchItemSets.WASTELAND_NO_LENS]
                     }
                 },
 
@@ -4613,9 +4594,7 @@ let MapLocations = {
                         MapInfo: { x: 208, y: 85 },
                         Age: Age.EITHER,
                         LongDescription: "The skulltula is in the outpost in the center of the desert.",
-                        CustomRequirement(age) {
-                            return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS) || Data.canStaircaseHover(age);
-                        }
+                        RequiredChoiceOfItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
                     },
                     "Chest at Outpost": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4639,9 +4618,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Colossus Side", imageName: "Spirit Medallion" },
                 Exits: {
                     outpost: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.backwardsWasteland;
-                        }
+                        RequiredItems: [GlitchItemSets.BACKWARDS_WASTELAND]
                     },
                     "Desert Colossus": {
                         OwExit: OwExits["Haunted Wasteland"]["Desert Colossus"]
@@ -4668,9 +4645,7 @@ let MapLocations = {
                 Exits: {
                     archway: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Data.isBeanPlanted("Desert Colossus", "main", "Soft Soil");
-                        }
+                        RequiredItems: [BeanSets.DESERT_COLOSSUS]
                     },
 
                     // North Area
@@ -4710,11 +4685,10 @@ let MapLocations = {
                         MapInfo: { x: 213, y: 91 },
                         Age: Age.ADULT,
                         LongDescription: "At night, there is a skulltula on a small cliff near the north middle edge of the map. You can hookshot it if the Leevers leave you alone long enough. An easier solution is to ride the bean platform and jump off of it so that you're on top.",
-                        CustomRequirement: function(age) {
-                            let canRideUp = Data.isBeanPlanted("Desert Colossus", "main", "Soft Soil");
-                            let canUseBoomerang = Settings.GlitchesToAllow.difficultBoomerangTrickThrows && ItemData.canUse(age, Items.BOOMERANG);
-                            return canRideUp || canUseBoomerang || Items.HOOKSHOT.playerHas;
-                        }
+                        RequiredChoiceOfItems: [
+                            BeanSets.DESERT_COLOSSUS,
+                            Items.HOOKSHOT,
+                            GlitchItemSets.BOOMERANG_TRICK_THROWS]
                     },
 
                     // Oasis

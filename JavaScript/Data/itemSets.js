@@ -91,7 +91,9 @@ let BeanSets = {
     DEATH_MOUNTAIN_CRATER: (age) => 
         age === Age.ADULT && Data.isBeanPlanted("Death Mountain Crater", "bottom", "Soft Soil"),
     LAKE_HYLIA: (age) => 
-        age === Age.ADULT && Data.isBeanPlanted("Lake Hylia", "main", "Soft Soil")
+        age === Age.ADULT && Data.isBeanPlanted("Lake Hylia", "main", "Soft Soil"),
+    DESERT_COLOSSUS: (age) => 
+        age === Age.ADULT && Data.isBeanPlanted("Desert Colossus", "main", "Soft Soil")
 };
 
 /**
@@ -171,7 +173,7 @@ let GlitchItemSets = {
         Settings.GlitchesToAllow.skullInTreeWithHookshot && 
         ItemData.canUse(age, [Items.HOOKSHOT, ItemSets.SHIELDS]),
 
-    // Desert
+    // Gerudo
     CUCCO_JUMP: (age) => 
         Settings.GlitchesToAllow.cuccoJump &&
         ItemData.canUse(age, [ItemSets.SWORDS]),
@@ -187,7 +189,12 @@ let GlitchItemSets = {
     GF_ADULT_GATE_SKIP: (age) => 
         Settings.GlitchesToAllow.gerudoGateSkipAsAdult &&
         ItemData.canUse(age, Equipment.HOVER_BOOTS),
-    GF_PASS_KITCHEN_GUARDS: () => Settings.GlitchesToAllow.gfPassKitchenGuards
+    GF_PASS_KITCHEN_GUARDS: () => Settings.GlitchesToAllow.gfPassKitchenGuards,
+
+    // Desert
+    HW_ITEMLESS_SAND_PIT: () => Settings.GlitchesToAllow.itemlessSandPit,
+    BACKWARDS_WASTELAND: () => Settings.GlitchesToAllow.backwardsWasteland,
+    WASTELAND_NO_LENS: () => Settings.GlitchesToAllow.wastelandNoLens
 };
 
 /**
@@ -228,7 +235,8 @@ let GameStateSets = {
     CAN_HOOK_SCARECROW: (age) => Data.canHookScarecrow(age),
     CAN_LONGSHOT_SCARECROW: (age) => Data.canHookScarecrow(age, true),
     ARE_GERUDO_GUARDS_TAME: () => Data.areGerudoGuardsTame(),
-    CAN_STUN_KITCHEN_GUARDS: (age) => Data.canStunKitchenGuards(age)
+    CAN_STUN_KITCHEN_GUARDS: (age) => Data.canStunKitchenGuards(age),
+    CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE: (age) => Data.canStunOrPassGuardsAtDistance(age)
 };
 
 /**
