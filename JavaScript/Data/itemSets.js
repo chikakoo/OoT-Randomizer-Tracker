@@ -71,7 +71,9 @@ let QPAItemSets = {
 let SettingSets = {
     OPEN_DEKU: () => !Settings.RandomizerSettings.closedDeku,
     OPEN_FOREST: () => Settings.RandomizerSettings.openForest,
-    OPEN_KAKARIKO: () => Settings.RandomizerSettings.openKakariko === OpenKakarikoSettings.OPEN,
+    VANILLA_KAKARIKO_GATE: () => Settings.RandomizerSettings.openKakariko === OpenKakarikoSettings.VANILLA,
+    OPEN_KAKARIKO_GATE: () => Settings.RandomizerSettings.openKakariko === OpenKakarikoSettings.OPEN,
+    KAKARIKO_GATE_OPENS_WITH_LETTER: () => Settings.RandomizerSettings.openKakariko === OpenKakarikoSettings.OPEN_WITH_ZELDAS_LETTER,
     OPEN_ZORAS_FOUNTAIN: () => Settings.RandomizerSettings.openZorasFountain === OpenZorasFountainSettings.ALL,
     OPEN_ADULT_ZORAS_FOUNTAIN: () => Settings.RandomizerSettings.openZorasFountain !== OpenZorasFountainSettings.VANILLA,
     OPEN_GERUDO_FORTRESS: () => Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.OPEN,
@@ -296,6 +298,7 @@ let ItemLocationSets = {
     WAKE_UP_TALON: () => Data.itemLocationObtained("Castle", "hyruleCastle", "Wake up Talon"),
 
     // Kakariko / Graveyard
+    SHOW_GUARD_LETTER: () => Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter"),
     DRAIN_WELL_WATER: () => Data.itemLocationObtained("Windmill-Kak Potion", "windmill", "Drain Well Water"),
 
     // Death Mountain / Goron

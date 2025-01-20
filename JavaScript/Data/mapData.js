@@ -245,9 +245,7 @@ let MapLocations = {
                         OwExit: OwExits["Lost Woods"]["To Lost Woods Bridge"]
                     },
                     "Bridge To Lost Woods": {
-                        CustomRequirement: function() {
-                            return false; // This one is the one-way
-                        }
+                        Needs: [() => false] // This one is the one-way
                     }
                 },
                 ItemLocations: {
@@ -648,9 +646,7 @@ let MapLocations = {
                         MapInfo: { x: 200, y: 27 },
                         Age: Age.CHILD,
                         LongDescription: "After visiting Zelda at the castle, make your way to the end of the maze to get this item.",
-                        CustomRequirement: function(age) {
-                            return MapLocations["Castle"].talkedToImpa;
-                        }
+                        Needs: [() => MapLocations["Castle"].talkedToImpa]
                     },
                     "Minuet of Forest": {
                         ItemGroup: ItemGroups.SONG,
@@ -1255,20 +1251,9 @@ let MapLocations = {
                         Needs: [Items.HOOKSHOT]
                     },
                     beyondGate: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) {
-                                return true;
-                            }
-
-                            switch(Settings.RandomizerSettings.openKakariko) {
-                                case OpenKakarikoSettings.VANILLA:
-                                    return Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter");
-                                case OpenKakarikoSettings.OPEN_WITH_ZELDAS_LETTER: 
-                                    return ChildTradeItems.ZELDAS_LETTER.playerHas;
-                                default: // OPEN case
-                                    return true;
-                            }
-                        }
+                        ChildNeedsAny: [SettingSets.OPEN_KAKARIKO_GATE,
+                            [SettingSets.KAKARIKO_GATE_OPENS_WITH_LETTER, ChildTradeItems.ZELDAS_LETTER],
+                            [SettingSets.VANILLA_KAKARIKO_GATE, ItemLocationSets.SHOW_GUARD_LETTER]]
                     },
 
                     // Lower Area
@@ -1536,9 +1521,7 @@ let MapLocations = {
                         MapInfo: { x: 169, y: 111 },
                         Age: Age.CHILD,
                         LongDescription: "At night, you can find this skulltula on the watchtower ladder. You can kill it with either the slingshot or a bombchu. If you don't have those, you can also climb up as far as you can, and press A to let go of the ladder, then spam the jumpslash button for your sword or stick for the kill.",
-                        CustomRequirement: function(age) {
-                            return MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull();
-                        }
+                        Needs: [() => MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull()]
                     },
                     "3 Pots Near Bazaar": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -1575,7 +1558,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "Talk to the guard while wearing the Keaton mask to sell it to him - this unlocks the Skull Mask.",
                         Needs: [ChildTradeItems.KEATON_MASK],
-                        NeedsAny: [ChildTradeItems.ZELDAS_LETTER, SettingSets.OPEN_KAKARIKO]
+                        NeedsAny: [ChildTradeItems.ZELDAS_LETTER, SettingSets.OPEN_KAKARIKO_GATE]
                     },
                     "Crate by Archery or Beggar": {
                         ItemGroup: ItemGroups.CRATE,
@@ -2458,10 +2441,8 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Top Floor & Maze", imageName: "Megaton Hammer" },
                 Exits: {
                     darunia: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return Data.canPlaySong(Songs.ZELDAS_LULLABY); }
-                            return MapLocations["Goron City"]._canStopAdultGoron(age);
-                        }
+                        ChildNeeds: [Songs.ZELDAS_LULLABY],
+                        AdultNeeds: [(age) => MapLocations["Goron City"]._canStopAdultGoron(age)]
                     },
                     lostWoodsRocks: {
                         NeedsAny: [
@@ -2479,16 +2460,11 @@ let MapLocations = {
                         NeedsAny: [Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     },
                     shop: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) {
-                                return ItemData.canUseAny(age, [
-                                    ItemSets.MUD_WALL_ITEMS, 
-                                    ItemSets.FIRE_ITEMS, 
-                                    Equipment.STRENGTH, 
-                                    QPAItemSets.LEDGE_QPA]);
-                            }
-                            return MapLocations["Goron City"]._canStopAdultGoron(age);
-                        }
+                        ChildNeedsAny: [ItemSets.MUD_WALL_ITEMS, 
+                            ItemSets.FIRE_ITEMS, 
+                            Equipment.STRENGTH, 
+                            QPAItemSets.LEDGE_QPA],
+                        AdultNeeds: [(age) => MapLocations["Goron City"]._canStopAdultGoron(age)]
                     },
 
                     // Top Floor
@@ -2580,9 +2556,7 @@ let MapLocations = {
                         MapInfo: { x: 139, y: 97 },
                         Age: Age.ADULT,
                         LongDescription: "Stop the rolling goron with a bomb, bombchu or bomb flower and talk to him to get the item. You can also shoot the bomb flowers with an arrow with the right timing to stop him.",
-                        CustomRequirement: function(age) {
-                            return MapLocations["Goron City"]._canStopAdultGoron(age);
-                        }
+                        Needs: [(age) => MapLocations["Goron City"]._canStopAdultGoron(age)]
                     },
                     "Pot by Medigoron": {
                         ItemGroup: ItemGroups.POT,
@@ -3321,10 +3295,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "Take out the ocarina (OI works) by the lower scarecrow and play it a song that has at least two different pitches.",
                         RequiredToAppear: function() { return !Songs.SCARECROWS_SONG.playerHas; },
-                        Needs: [GameStateSets.CAN_PLAY_SONGS],
-                        CustomRequirement: function(age) {
-                            return ItemData.getNumberOfOcarinaButtons() >= 2;
-                        }
+                        Needs: [GameStateSets.CAN_PLAY_SONGS, () => ItemData.getNumberOfOcarinaButtons() >= 2]
                     },
                     "Soft Soil": {
                         ItemGroup: ItemGroups.ENTRANCE,
