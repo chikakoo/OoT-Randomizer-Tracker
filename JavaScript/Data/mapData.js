@@ -256,7 +256,7 @@ let MapLocations = {
                         MapInfo: { x: 96, y: 172 },
                         Age: Age.CHILD,
                         LongDescription: "From the Kokiri Forest entrance, go left one screen. Stand on the lower stump and play Saria's Song to get this gift",
-                        RequiredSongs: [Songs.SARIAS_SONG],
+                        Needs: [Songs.SARIAS_SONG],
                         DifficultOcarinaItems: true
                     },
                     "Sell Skull Mask": {
@@ -264,8 +264,7 @@ let MapLocations = {
                         MapInfo: { x: 88, y: 172 },
                         MapImageName: "Skull Mask",
                         Age: Age.CHILD,
-                        Needs: [ChildTradeItems.SKULL_MASK],
-                        RequiredSongs: [Songs.SARIAS_SONG],
+                        Needs: [ChildTradeItems.SKULL_MASK, Songs.SARIAS_SONG],
                         LongDescription: "First, play Saria's song to the Skull kid. Next, Talk to him while wearing the Skull Mask to sell it to him - this unlocks the Spooky Mask. Recommended to do this AFTER you get the forest stage item.",
                     },
                     "Show Cojiro to Grog": {
@@ -1704,7 +1703,7 @@ let MapLocations = {
                         Needs: [GlitchItemSets.HOOKSHOT_JUMP]
                     },
                     royalFamilyTomb: {
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                        Needs: [Songs.ZELDAS_LULLABY]
                     },
                     dampesGrave: {
                         Age: Age.ADULT
@@ -2093,7 +2092,7 @@ let MapLocations = {
                         MapImageName: "Song of Storms",
                         Age: Age.CHILD,
                         LongDescription: "Play the song of storms by the windmill guy to drain the well water.",
-                        RequiredSongs: [Songs.SONG_OF_STORMS]
+                        Needs: [Songs.SONG_OF_STORMS]
                     }
                 }
             },
@@ -2375,8 +2374,7 @@ let MapLocations = {
                     },
                     scarecrowPlatform: {
                         Age: Age.ADULT,
-                        Needs: [UpgradedItems.LONGSHOT],
-                        RequiredSongs: [Songs.SCARECROWS_SONG]
+                        Needs: [GameStateSets.CAN_LONGSHOT_SCARECROW]
                     },
                     "Fire Temple": {
                         OwExit: OwExits["Death Mountain Crater"]["Fire Temple"]
@@ -2657,7 +2655,7 @@ let MapLocations = {
                         MapInfo: { x: 187, y: 30 },
                         Age: Age.CHILD,
                         LongDescription: "At the bottom of Goron City on the fancy carpet, play Zelda's Lullaby. If you can manage to get to the Goron City entrance from the crater, that works too. Inside, play Saria's Song by Darunia get an item.",
-                        RequiredSongs: [Songs.SARIAS_SONG]
+                        Needs: [Songs.SARIAS_SONG]
                     },
                     "3 Pots by Darunia": {
                         ItemGroup: ItemGroups.ENTRANCE,

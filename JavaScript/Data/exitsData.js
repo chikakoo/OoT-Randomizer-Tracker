@@ -81,7 +81,7 @@ let OwExits = {
             MapInfo: { x: 109, y: 36 },
             Age: Age.EITHER,
             LongDescription: "Play the Song of Storms by the Gossip Stone near the Lost Woods entrance to reveal this grotto.",
-            RequiredSongs: [Songs.SONG_OF_STORMS]
+            Needs: [Songs.SONG_OF_STORMS]
         },
 
         // Training Area & Maze
@@ -318,7 +318,7 @@ let OwExits = {
             MapInfo: { x: 207 , y: 53 },
             Age: Age.EITHER,
             LongDescription: "Play the Song of Storms in the corner of the room with the Forest Temple entrance to reveal the grotto. Facing the forest temple, this is the lower-right corner.",
-            RequiredSongs: [Songs.SONG_OF_STORMS]
+            Needs: [Songs.SONG_OF_STORMS]
         }
     },
 
@@ -808,7 +808,7 @@ let OwExits = {
             Order: 6,
             MapInfo: { x: 200, y: 92, floor: "HYR" },
             LongDescription: "There's a tree in the corner near the milk boxes at the castle. Play the Song of Storms there to open this grotto.",
-            RequiredSongs: [Songs.SONG_OF_STORMS]
+            Needs: [Songs.SONG_OF_STORMS]
         },
         "Ganon Great Fairy Fountain": {
             ExitRegion: "ganonsCastle",
@@ -1245,7 +1245,7 @@ let OwExits = {
             MapInfo: { x: 228, y: 172 },
             Age: Age.EITHER,
             LongDescription: "Play the Song of Storms in the center of the circle of rocks by Goron City to reveal this grotto",
-            RequiredSongs: [Songs.SONG_OF_STORMS]
+            Needs: [Songs.SONG_OF_STORMS]
         },
         "Dodongo's Cavern": {
             ExitRegion: "main",
@@ -1465,7 +1465,7 @@ let OwExits = {
             MapInfo: { x: 15, y: 145 },
             Age: Age.EITHER,
             LongDescription: "Play the Song of Storms in the center of the rocks near the cucco spawn to reveal the grotto.",
-            RequiredSongs: [Songs.SONG_OF_STORMS]
+            Needs: [Songs.SONG_OF_STORMS]
         },
 
         // On Cliff
@@ -1569,7 +1569,7 @@ let OwExits = {
             MapInfo: { x: 118, y: 162 },
             Age: Age.EITHER,
             LongDescription: "On the little island near the ladder up to the Zora's River exit, play the Song of Storms to reveal this grotto.",
-            RequiredSongs: [Songs.SONG_OF_STORMS]
+            Needs: [Songs.SONG_OF_STORMS]
         }
     },
 
@@ -1840,7 +1840,7 @@ let OwExits = {
             MapInfo: { x: 140, y: 56 },
             Age: Age.ADULT,
             LongDescription: "Play the Song of Storms behind the tent to spawn this grotto.",
-            RequiredSongs: [Songs.SONG_OF_STORMS],
+            Needs: [Songs.SONG_OF_STORMS],
         }
     },
 
@@ -1901,7 +1901,7 @@ let OwExits = {
             MapInfo: { x: 137, y: 172 },
             Age: Age.ADULT,
             LongDescription: "Play the song of storms in the center of the crates near the fortress to reveal this grotto.",
-            RequiredSongs: [Songs.SONG_OF_STORMS]
+            Needs: [Songs.SONG_OF_STORMS]
         },
         "Enclave Left Door": {
             ExitRegion: "main",

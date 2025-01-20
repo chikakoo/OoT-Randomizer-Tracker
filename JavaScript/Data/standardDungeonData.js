@@ -2354,8 +2354,7 @@ let StandardDungeons = {
                 Exits: {
                     fireMazeRoomEnd: {},
                     centerRoomTopSwitch: {
-                        Needs: [Items.MEGATON_HAMMER],
-                        RequiredSongs: [Songs.SONG_OF_TIME]
+                        Needs: [Items.MEGATON_HAMMER, Songs.SONG_OF_TIME]
                     },
                     centerRoomCell: {
                         CustomRequirement: function(age) {
@@ -2451,7 +2450,7 @@ let StandardDungeons = {
                     },
                     lowWaterLevel: {
                         AdultNeedsAny: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT],
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
+                        Needs: [Songs.ZELDAS_LULLABY],
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) {
                                 return Data.itemLocationObtained("Water Temple", "lowWaterLevel", "Lower Water Level");
@@ -2640,7 +2639,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Waterfall Path (Top West)", imageName: "Hookshot Longshot" },
                 Exits: {
                     whirlpoolRoom: {
-                        RequiredSongs: [Songs.SONG_OF_TIME]
+                        Needs: [Songs.SONG_OF_TIME]
                     }
                 },
                 ItemLocations: {
@@ -2868,9 +2867,8 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 23,
                         MapInfo: {x: 333, y: 131, floor: "F2" },
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
                         LongDescription: "After raising the water to mid level, make your way back toward the low level room. This time, you won't float up all the way to the top. In this room, you will see a cracked wall. Bomb it to get to a chest.",
-                        Needs: [ItemSets.EXPLOSIVES],
+                        Needs: [Songs.ZELDAS_LULLABY, ItemSets.EXPLOSIVES],
                     }
                 }
             },
@@ -2901,7 +2899,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Central Rooms (Mid/Low)", imageName: "Ocarina of Time" },
                 Exits: {
                     midWaterLevel: {
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                        Needs: [Songs.ZELDAS_LULLABY]
                     },
                     centralRoomBottom: {
                         Age: Age.ADULT,
@@ -2955,7 +2953,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Central Rooms (Mid/Low)", imageName: "Ocarina of Time" },
                 Exits: {
                     highWaterLevel: {
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
+                        Needs: [Songs.ZELDAS_LULLABY],
                         NeedsAny: [ItemSets.EXPLOSIVES, Items.HOOKSHOT, Items.FAIRY_BOW]
                     },
                     midWaterTriforceFloor: {},
@@ -3794,11 +3792,10 @@ let StandardDungeons = {
                         Needs: [UpgradedItems.LONGSHOT]
                     },
                     boatRoomLedge: {
-                        RequiredSongs: [Songs.SCARECROWS_SONG],
-                        Needs: [UpgradedItems.LONGSHOT]
+                        Needs: [GameStateSets.CAN_LONGSHOT_SCARECROW]
                     },
                     boatRoomEnd: {
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                        Needs: [Songs.ZELDAS_LULLABY]
                     }
                 },
                 ItemLocations: {}
@@ -3842,8 +3839,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Boat Room Start of Chasm", imageName: "Boss Key" },
                 Exits: {
                     chasmScarecrowPlatform: {
-                        RequiredSongs: [Songs.SCARECROWS_SONG],
-                        Needs: [UpgradedItems.LONGSHOT]
+                        Needs: [GameStateSets.CAN_LONGSHOT_SCARECROW]
                     },
                     acrossChasmToBossRoom: {
                         CustomRequirement: function(age) {
@@ -3964,8 +3960,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Boat Room Across Chasm", imageName: "Fairy Bow" },
                 Exits: {
                     chasmScarecrowPlatform: {
-                        RequiredSongs: [Songs.SONG_OF_TIME, Songs.SCARECROWS_SONG],
-                        Needs: [Items.HOOKSHOT],
+                        Needs: [Songs.SONG_OF_TIME, GameStateSets.CAN_HOOK_SCARECROW]
                     },
                     bossRoom: {
                         Map: "Shadow Temple",
@@ -4376,8 +4371,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 22,
                         LongDescription: "Head to the room blocked by the silver block. Hit the switch above the beamos to open the doors. Enter the door to the left. Kill the wolfos inside, then play Zelda's Lullaby. You can longshot from the platform, or hookshot from the sandy floor.",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
-                        Needs: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT, Songs.ZELDAS_LULLABY]
                     },
                     "Boulder Silver Rupee in Midair": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4420,7 +4414,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 23,
                         LongDescription: "Head to the room blocked by the silver block. Hit the switch above the beamos to open the doors. Enter the door to the right. On the left wall, there's a Song of Time block blocking this skulltula. Play the song to move it out of the way.",
-                        RequiredSongs: [Songs.SONG_OF_TIME]
+                        Needs: [Songs.SONG_OF_TIME]
                     }
                 }
             },
@@ -4531,7 +4525,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 29,
                         LongDescription: "Head to the statue room. Head up to the upper southeast corner of the room. If you face the statue, that's behind and to the right if you. You may have to hookshot up to the platform to get there. Jump to the statue's hand from the platform. You can use hover boots if you want, but they aren't necessary. Play Zelda's Lullaby on the Triforce picture. Now, head back up to the southeast corner. The platform to the right of the hand now has a chest on it. Use your hookshot or hover boots to get to it.",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
+                        Needs: [Songs.ZELDAS_LULLABY],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.spiritStatueRoomJumps ||
                                 Data.canMegaFlip(age) ||
@@ -4544,7 +4538,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 30,
                         LongDescription: "Head to the statue room. Head up to the upper southeast corner of the room. If you face the statue, that's behind and to the right if you. You may have to hookshot up to the platform to get there. Jump to the statue's hand from the platform. You can use hover boots if you want, but they aren't necessary. Play Zelda's Lullaby on the Triforce picture. If you have the longshot, you can hook the chest that spawns from the other hand from here. If not, head to the upper southwest corner of the room - that's the one closer to the other hand. You can jump to it from there.",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                        Needs: [Songs.ZELDAS_LULLABY]
                     },
                     "Skulltula in Statue Room on Northwest Platform": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -4786,7 +4780,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 40,
                         LongDescription: "Head to the moving wall room. This is the room to your right if you enter the topmost southeast area of the statue room. It's also the room straight ahead if leaving the 4 armos room.<br/><br/>Head up the wall - longshot up there if you have it. In the next room, play Zelda's Lullaby to open the door in front of you. Bomb, hammer, or the fake door just to the left of the boss key chest. Shoot the eye switch to spawn some platforms (with good timing if yu didn't break it). Now, hookshot up there and hit the switch to put the fire out.",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
+                        Needs: [Songs.ZELDAS_LULLABY],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.spiritBKTrick ||
                                 ItemData.canUse(age, [Items.FAIRY_BOW, Items.HOOKSHOT]);
@@ -5291,7 +5285,7 @@ let StandardDungeons = {
                         LockedDoor: "Locked Door After Crawlspace"
                     },
                     deadhandRoom: {
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                        Needs: [Songs.ZELDAS_LULLABY]
                     },
                     basement: {}
                 },
@@ -5357,7 +5351,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 10,
                         LongDescription: "First, drain the water by playing Zelda's Lullaby on the Triforce picture on the north side of the main room. This chest is near the entrance to the coffin room, which is in a room on the left side of the main room.",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                        Needs: [Songs.ZELDAS_LULLABY]
                     },
                     "Underwater Chest in Front": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5365,7 +5359,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 14,
                         LongDescription: "First, drain the water by playing Zelda's Lullaby on the Triforce picture on the north side of the main room. This chest is in the pit by the entrance, near the crawlspace to Dead Hand.",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                        Needs: [Songs.ZELDAS_LULLABY]
                     }
                 }
             },
@@ -6235,7 +6229,7 @@ let StandardDungeons = {
                         Order: 15.6,
                         LongDescription: "Navigate to the water room. See the Lava Room Key on Platform for an explanation on how to get there. First, collect all the silver rupees in the room. Most are straightfoward - you'll need your hover boots to get across some of the platforms. To get the one engulfed in flames, you must first hit the switch next to the raised platform. You can play the Song of Time there to spawn some helpful blocks as well. After you collect all the rupees, enter the door that opens up.<br/><br/>Once inside, play the Song of Time to remove the blocks. Use your iron boots to sink down and collect the rupees. The golden scale can be used to collect this top one - just dive down and let yourself get pushed along the walls.",
                         NeedsAny: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS],
-                        RequiredSongs: [Songs.SONG_OF_TIME], // Seems these blocks ARE there as child
+                        Needs: [Songs.SONG_OF_TIME], // Seems these blocks ARE there as child
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
                         }
@@ -6249,8 +6243,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 15.7,
                         LongDescription: "Navigate to the water room. See the Lava Room Key on Platform for an explanation on how to get there. First, collect all the silver rupees in the room. Most are straightfoward - you'll need your hover boots to get across some of the platforms. To get the one engulfed in flames, you must first hit the switch next to the raised platform. You can play the Song of Time there to spawn some helpful blocks as well. After you collect all the rupees, enter the door that opens up.<br/><br/>Once inside, play the Song of Time to remove the blocks. Use your iron boots to sink down and collect the rupees.",
-                        RequiredSongs: [Songs.SONG_OF_TIME],
-                        Needs: [Equipment.IRON_BOOTS],
+                        Needs: [Equipment.IRON_BOOTS, Songs.SONG_OF_TIME],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
                         }
@@ -6895,7 +6888,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 24,
                         LongDescription: "Enter the light trial and advance to the next room. Play Zelda's Lullaby on the Triforce picture to spawn this chest.",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                        Needs: [Songs.ZELDAS_LULLABY]
                     }
                 }
             },

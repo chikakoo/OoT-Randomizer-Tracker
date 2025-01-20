@@ -226,7 +226,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "From the basement, head to the door to the right of the vines. You'll need to either use Din's Fire or run a lit Deku Stick into this room. Light the torches by the other door to gain access to the water room.<br/><br/>Make your way to the other side of the water room. You'll need to roll or crouch with your shield under the spikey pole. Play the Song of Time by the block to reveal the chest.",
-                        RequiredSongs: [Songs.SONG_OF_TIME]
+                        Needs: [Songs.SONG_OF_TIME]
                     }
                 }
             },
@@ -278,8 +278,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 14,
                         LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Note that you can also use Din's Fire. Defeat all the enemies in this room to continue on.<br/><br/>In this next room, play the Song of Time near the torches to spawn a staircase of blocks. Climb these and use your boomerang or hookshot to get the skulltula on the ceiling.",
-                        RequiredSongs: [Songs.SONG_OF_TIME],
-                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [Songs.SONG_OF_TIME, ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Skulltula by Grave Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -288,7 +287,7 @@ let MQDungeons = {
                         Order: 15,
                         LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Note that you can also use Din's Fire. Light the torches to open the next room. Defeat all the enemies in this room to continue on.<br/><br/>Step on the blue switch in the middle of the torches. Light a stick, use Din's or shoot an arrow to burn the web blocking the left door. The skulltula is in this room.",
                         Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
-                        NeedsAny: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
+                        NeedsAny: [ItemSets.FIRE_ITEMS, Items.FAIRY_BOW, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]
                     }
                 }
             },
@@ -649,7 +648,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 19,
                         LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>Blow up the fake wall by the stairs. Play the song of time in the next room several times to navigate the maze to the skulltula.",
-                        RequiredSongs: [Songs.SONG_OF_TIME]
+                        Needs: [Songs.SONG_OF_TIME]
                     },
                     "4 Pots in Stair Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2113,7 +2112,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Falling Ceiling Rooms", imageName: "Small Poe" },
                 Exits: {
                     fallingCeilingRoom: {
-                        RequiredSongs: [Songs.SONG_OF_TIME]
+                        Needs: [Songs.SONG_OF_TIME]
                     }
                 },
                 ItemLocations: {
@@ -2670,7 +2669,7 @@ let MQDungeons = {
                 Exits: {
                     boulderMaze: {},
                     aboveBoulderMaze: {
-                        RequiredSongs: [Songs.SONG_OF_TIME]
+                        Needs: [Songs.SONG_OF_TIME]
                     },
                     roomWithLavaAndGrates: {
                         LockedDoor: "Locked Door Above Boulder Maze",
@@ -3227,7 +3226,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Water Lowering Rooms (Low East)", imageName: "Ocarina" },
                 Exits: {
                     lowWaterLevel: {
-                        RequiredSongs: [Songs.ZELDAS_LULLABY],
+                        Needs: [Songs.ZELDAS_LULLABY],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
                         }
@@ -3409,7 +3408,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 13,
                         LongDescription: "With low or mid water, navigate to the bottom middle area. Hit the switch to open the gated door. Use Din's Fire to light the torch and get the crates behind the cell.<br/><br/>Without a fire item, stand in front of the torch and hookshot it. You can now just walk in and bonk the crates - remember to have the water lowered, as it will slow you down too much to bonk them! To get out, target the jail and hookshot while holding Z and right while next to the torch.",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                        Needs: [Songs.ZELDAS_LULLABY]
                     },
                     "Skulltula in Mid South Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -4327,7 +4326,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 12.2,
                         LongDescription: "This rupee is in the back right corner of the invisible scythe room. You'll need to play the Song of Time to spawn a block to get it.",
-                        RequiredSongs: [Songs.SONG_OF_TIME]
+                        Needs: [Songs.SONG_OF_TIME]
                     },
                     "2 Hearts in Invisible Scythe Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -4720,11 +4719,10 @@ let MQDungeons = {
                         LockedDoor: "Locked Door After Fans"
                     },
                     boatRoomLedge: {
-                        RequiredSongs: [Songs.SCARECROWS_SONG],
-                        Needs: [UpgradedItems.LONGSHOT]
+                        Needs: [GameStateSets.CAN_LONGSHOT_SCARECROW]
                     },
                     endOfBoatRide: {
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                        Needs: [Songs.ZELDAS_LULLABY]
                     }
                 },
                 ItemLocations: {}
@@ -5464,7 +5462,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 29,
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way to the southeast corner using the hookshot. Now get to the hand with the triforce and play Zelda's Lullaby. This will spawn the chest to the right of the statue, under a box.",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                        Needs: [Songs.ZELDAS_LULLABY]
                     },
                     "Upper Northeast Left Pot in Statue Room": {
                         ItemGroup: ItemGroups.POT,
@@ -5685,9 +5683,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 35,
                         LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), use a key to go through the locked door. Hit the rusted switch with your hammer. Now, play the following songs in each of the opened cells in this order: Song of Time, Epona's Song, Sun's Song, Song of Storms, then Zelda's Lullaby. Enter the room that opens up to you - the skulltula is inside on a wall.",
-                        Region: "boulderRoom",
-                        Needs: [Items.MEGATON_HAMMER],
-                        RequiredSongs: [Songs.SONG_OF_TIME, Songs.EPONAS_SONG, Songs.SUNS_SONG, Songs.SONG_OF_STORMS, Songs.ZELDAS_LULLABY]
+                        Needs: [Items.MEGATON_HAMMER, Songs.SONG_OF_TIME, Songs.EPONAS_SONG, Songs.SUNS_SONG, Songs.SONG_OF_STORMS, Songs.ZELDAS_LULLABY]
                     },
                     "Chest After Boulder Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5695,9 +5691,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 36,
                         LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), use a key to go through the locked door. Hit the rusted switch with your hammer. Now, play the following songs in each of the opened cells in this order: Song of Time, Epona's Song, Sun's Song, Song of Storms, then Zelda's Lullaby. Enter the room that opens up to you - the chest is in this room.",
-                        Region: "boulderRoom",
-                        Needs: [Items.MEGATON_HAMMER],
-                        RequiredSongs: [Songs.SONG_OF_TIME, Songs.EPONAS_SONG, Songs.SUNS_SONG, Songs.SONG_OF_STORMS, Songs.ZELDAS_LULLABY]
+                        Needs: [Items.MEGATON_HAMMER, Songs.SONG_OF_TIME, Songs.EPONAS_SONG, Songs.SUNS_SONG, Songs.SONG_OF_STORMS, Songs.ZELDAS_LULLABY]
                     }
                 }
             },
@@ -5717,7 +5711,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Beamos/Lizalfos/Mirror Shield Path", imageName: "Mirror Shield" },
                 Exits: {
                     lizalfosAndSunRoom: {
-                        RequiredSongs: [Songs.SONG_OF_TIME]
+                        Needs: [Songs.SONG_OF_TIME]
                     },
                     movingWallRoom: {
                         Map: "Spirit Temple",
@@ -5732,7 +5726,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 38.1,
                         LongDescription: "From the statue room, hookshot to the torch to get to the southeast side. Use a key to go in the top door.<br/><br/>Play the Song of Time by the block in the left side of the room. Now play it twice by the other blocks. You can now get to the small crate.",
-                        RequiredSongs: [Songs.SONG_OF_TIME]
+                        Needs: [Songs.SONG_OF_TIME]
                     },
                     "Chest in Beamos Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5836,7 +5830,7 @@ let MQDungeons = {
                         LockedDoor: "Locked Door After Moving Wall"
                     },
                     giantMirrorRoom: {
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                        Needs: [Songs.ZELDAS_LULLABY]
                     }
                 },
                 ItemLocations: {
@@ -7202,7 +7196,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Forest Trial", imageName: "Forest Medallion" },
                 Exits: {
                     forestTrialEnd: {
-                        RequiredSongs: [Songs.SONG_OF_TIME]
+                        Needs: [Songs.SONG_OF_TIME]
                     }
                 },
                 ItemLocations: {
@@ -7591,7 +7585,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 18,
                         LongDescription: "Use your gauntlets to gain access to this area. In the first room, kill all the enemies. In the next room, play Zelda's Lullaby to spawn the chest.",
-                        RequiredSongs: [Songs.ZELDAS_LULLABY]
+                        Needs: [Songs.ZELDAS_LULLABY]
                     }
                 }
             },

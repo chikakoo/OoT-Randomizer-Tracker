@@ -755,10 +755,11 @@ Data = {
         if (!this._passesCustomRequirement(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this._canDoItemGroup(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canPlantBean(age, itemLocation)) { return ItemObtainability.NO; }
-		if (!this._hasRequiredSongs(itemLocation)) { return ItemObtainability.NO; }
+
 		if (!this.hasRequiredMedallions(itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canPlaySongs(itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canPlayDifficultOcarinaItems(itemLocation)) { return ItemObtainability.NO; }
+        
 		if (!this.hasBottle(itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkKeyRequirement(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkSilverRupeeRequirement(itemLocation)) { return ItemObtainability.NO; }
@@ -954,24 +955,6 @@ Data = {
 
         return Settings.RandomizerSettings.autoPlantBeans || magicBeanLocation.completed;
     },
-    
-    /**
-     * Returns whether player has all required songs of the given item location
-     */
-    _hasRequiredSongs: function(itemLocation) {
-		if (!itemLocation.RequiredSongs) { return true; }
-		if (!this.canPlaySongs()) { return false; }
-		let hasAllSongs = true;
-		
-		itemLocation.RequiredSongs.forEach(function(song) {
-			if (!song.playerHas || !ItemData.hasAllSongNotes(song)) {
-				hasAllSongs = false;
-				return;
-			}
-		});
-		
-		return hasAllSongs;
-	},
     
     /**
      * Returns whether player has all required medallions of the given item location
