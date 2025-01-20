@@ -945,9 +945,7 @@ let OwExits = {
             Age: Age.EITHER,
             Order: 27,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances; },
-            CustomRequirement: function(age) {
-                return Settings.RandomizerSettings.shuffleInteriorEntrances;
-            },
+            Needs: [SettingSets.SHUFFLE_INTERIOR_ENTRANCES],
             LongDescription: "This is the windmill entrance - it's up the stairs near the well."
         },
         "Windmill to Interior": {
@@ -960,9 +958,7 @@ let OwExits = {
             Order: 28,
             OneWayEntrance: true,
             RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleInteriorEntrances; },
-            CustomRequirement: function(age) {
-                return !Settings.RandomizerSettings.shuffleInteriorEntrances;
-            },
+            Needs: [SettingSets.VANILLA_INTERIOR_ENTRANCES],
             OwShuffleMap: "Windmill-Kak Potion",
             OwShuffleRegion: "windmill",
             OwShuffleExitName: "Windmill Exit",
@@ -1010,9 +1006,7 @@ let OwExits = {
             MapInfo: { x: 163, y: 92 },
             Age: Age.EITHER,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances; },
-            CustomRequirement: function(age) {
-                return Settings.RandomizerSettings.shuffleInteriorEntrances;
-            },
+            Needs: [SettingSets.SHUFFLE_INTERIOR_ENTRANCES],
             LongDescription: "This is the building to the right if you are facing the Death Mountain entrance.",
         },
 
@@ -1059,9 +1053,7 @@ let OwExits = {
             Age: Age.EITHER,
             OneWayEntrance: true,
             RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleInteriorEntrances; },
-            CustomRequirement: function(age) {
-                return !Settings.RandomizerSettings.shuffleInteriorEntrances;
-            },
+            Needs: [SettingSets.VANILLA_INTERIOR_ENTRANCES],
             OwShuffleMap: "Windmill-Kak Potion",
             OwShuffleRegion: "kakPotionShop",
             OwShuffleExitName: "Potion Shop Front",
@@ -1136,9 +1128,7 @@ let OwExits = {
             IsGrotto: true,
             IsComplexEntrance: true,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances; },
-            CustomRequirement: function(age) {
-                return Settings.RandomizerSettings.shuffleGrottoEntrances;
-            },
+            Needs: [SettingSets.SHUFFLE_GROTTO_ENTRANCES],
             DefaultEntranceGroupName: "Dampe's Grave",
             MapInfo: { x: 166, y: 86 },
             Age: Age.EITHER,
@@ -1154,9 +1144,7 @@ let OwExits = {
             Age: Age.ADULT,
             OneWayEntrance: true,
             RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
-            CustomRequirement: function(age) {
-                return !Settings.RandomizerSettings.shuffleGrottoEntrances;
-            },
+            Needs: [SettingSets.VANILLA_GROTTO_ENTRANCES],
             OwShuffleMap: "Windmill-Kak Potion",
             OwShuffleRegion: "dampesGrave",
             OwShuffleExitName: "Grave Exit",
@@ -1334,11 +1322,7 @@ let OwExits = {
             Age: Age.EITHER,
             UseAdultAge: function() { return !Settings.GlitchesToAllow.childDoubleMagicFairy && !Settings.GlitchesToAllow.equipSwap; },
             LongDescription: "Hammer the silver rocks that are to the left of the Goron City entrance (if you face the entrance) to uncover the entrance.",
-            AdultNeeds: [Items.MEGATON_HAMMER],
-            CustomRequirement: function(age) {
-                if (age === Age.ADULT) { return true; }
-                return ItemData.canUse(age, Items.MEGATON_HAMMER) || Settings.GlitchesToAllow.childDoubleMagicFairy;
-            }
+            NeedsAny: [Items.MEGATON_HAMMER, GlitchItemSets.CHILD_DMC_FAIRY]
         },
         "Grotto in Rock by Goron": {
             ExitRegion: "middle",
@@ -1384,13 +1368,12 @@ let OwExits = {
             MapInfo: { x: 278, y: 21 },
             Age: Age.ADULT,
             LongDescription: "Head to the east side of the middle floor and enter the hallway. You should see a lava room to your left. There is a grotto there with the scrubs. There are a few ways to get across.<br/><br/>One way is to run across the lava to the other side, play the song of time, and then climb onto the block to reach the other side.<br/><br/>Another way is to equip the Goron Tunic or use Nayru's Love, run across the lava for distance and then quickly hookshot the target before the damage cancels you out of your hookshot.<br/><br/>Finally, if you have the longshot and the song of time, play the song at the start of the lava room. Stand on the block and longshot the target to get across.",
-            CustomRequirement: function(age) {
-                let canHookshotUp = ItemData.canUseAny(age, [Equipment.GORON_TUNIC, Items.NAYRUS_LOVE]) && Items.HOOKSHOT.playerHas;
-                return canHookshotUp || Data.canPlaySong(Songs.SONG_OF_TIME);
-            }
+            NeedsAny: [Songs.SONG_OF_TIME,
+                [Items.HOOKSHOT, 
+                    [SetType.OR, Equipment.GORON_TUNIC, Items.NAYRUS_LOVE]]]
         },
 
-        // Bottom FLoor
+        // Bottom Floor
         "Death Mountain Crater": {
             ExitRegion: "darunia",
             Map: "Death Mountain Crater",
@@ -1500,9 +1483,7 @@ let OwExits = {
             UseChildAge: function() { return !Settings.GlitchesToAllow.adultDomainToLake; },
             LongDescription: "This is the entrance to Zora's River you can get to by diving into the water.",
             ChildNeeds: [Equipment.SCALE],
-            CustomRequirement: function(age) {
-                return age === Age.CHILD || Settings.GlitchesToAllow.adultDomainToLake;
-            }
+            AdultNeeds: [GlitchItemSets.ADULT_DOMAIN_TO_LAKE]
         },
         "Zora's Fountain": {
             ExitRegion: "behindKing",
@@ -1524,11 +1505,7 @@ let OwExits = {
             MapInfo: { x: 236, y: 254 },
             Age: Age.EITHER,
             LongDescription: "This is the shop. As an adult, you can either use Blue Fire, or perform the shop skip to get inside.",
-            CustomRequirement: function(age) {
-                if (age === Age.CHILD) { return true; }
-                return ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS) || 
-                    Settings.GlitchesToAllow.blueFireShopSkip;
-            }
+            AdultNeedsAny: [ItemSets.BLUE_FIRE_ITEMS, GlitchItemSets.BLUE_FIRE_SHOP_SKIP]
         },
         "Song of Storms Grotto": {
             ExitRegion: "main",
@@ -1562,18 +1539,8 @@ let OwExits = {
             UseChildAge: function() { return !Settings.GlitchesToAllow.enterJabuAsAdult; },
             LongDescription: "This is the entrance to Jabu Jabu.",
             IsDungeonEntrance: true,
-            CustomRequirement: function(age) {
-                if (age === Age.ADULT) {
-                    return Settings.GlitchesToAllow.enterJabuAsAdult && 
-                        ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMBCHU]);
-                }
-
-                if (Settings.GlitchesToAllow.jabuFishless && ItemData.canUse(age, ItemSets.SWORDS)) {
-                    return true;
-                }
-
-                return Data.hasBottle(); // Note that this doesn't actually check whether you can get a fish!
-            }
+            AdultNeeds: [GlitchItemSets.ADULT_JABU],
+            ChildNeedsAny: [Items.FISH, GlitchItemSets.CHILD_JABU_FISHLESS]
         },
         "Great Fairy Fountain": {
             ExitRegion: "main",
@@ -1629,14 +1596,10 @@ let OwExits = {
             DefaultEntranceGroupName: "Fishing Pond",
             MapInfo: { x: 247, y: 81 },
             Age: Age.EITHER,
-            CustomRequirement: function(age) {
-                if (age === Age.CHILD) { return true; }
-                
-                let canHookshotUp = Data.canPlaySong(Songs.SCARECROWS_SONG) && Items.HOOKSHOT.playerHas;
-                let canRideUp = Data.isBeanPlanted("Lake Hylia", "main", "Soft Soil");
-                return canHookshotUp || canRideUp || Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp");
-            },
-            LongDescription: "This building is in the building across the water to the northeast."
+            LongDescription: "This building is in the building across the water to the northeast.",
+            AdultNeedsAny: [GameStateSets.CAN_HOOK_SCARECROW,
+                BeanSets.LAKE_HYLIA,
+                ItemLocationSets.DEFEATED_MORPHA]
         },
 
         // Shallow Water
@@ -1650,6 +1613,7 @@ let OwExits = {
             Age: Age.EITHER,
             UseChildAge: function() { return !Settings.GlitchesToAllow.adultDomainMegaflipClip && !Settings.GlitchesToAllow.adultLakesideLabClip; },
             LongDescription: "This is the entrance to Zora's Domain.",
+            ChildNeedsAny: [Equipment.SCALE],
             CustomRequirement: function(age) {
                 if (age === Age.CHILD && Equipment.SCALE.playerHas) 
                 { 

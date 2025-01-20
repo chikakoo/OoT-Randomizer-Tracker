@@ -76,8 +76,11 @@ let SettingSets = {
     OPEN_ADULT_ZORAS_FOUNTAIN: () => Settings.RandomizerSettings.openZorasFountain !== OpenZorasFountainSettings.VANILLA,
     OPEN_GERUDO_FORTRESS: () => Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.OPEN,
     SHUFFLE_DUNGEON_ENTRANCES: () => Settings.RandomizerSettings.shuffleDungeonEntrances,
+    SHUFFLE_INTERIOR_ENTRANCES: () => Settings.RandomizerSettings.shuffleInteriorEntrances,
     VANILLA_INTERIOR_ENTRANCES: () => !Settings.RandomizerSettings.shuffleInteriorEntrances,
-    VANILLA_OVERWORLD_ENTRANCES: () => !Settings.RandomizerSettings.shuffleOverworldEntrances
+    VANILLA_OVERWORLD_ENTRANCES: () => !Settings.RandomizerSettings.shuffleOverworldEntrances,
+    SHUFFLE_GROTTO_ENTRANCES: () => !Settings.RandomizerSettings.shuffleGrottoEntrances,
+    VANILLA_GROTTO_ENTRANCES: () => !Settings.RandomizerSettings.shuffleGrottoEntrances
 };
 
 /**
@@ -195,10 +198,14 @@ let GlitchItemSets = {
 	URN_WITH_CHUS: (age) => 
         Settings.GlitchesToAllow.goronSpinningUrnWithChus && 
         ItemData.canUse(age, [Items.BOMBCHU, Items.DEKU_NUT]),
+    CHILD_DMC_FAIRY: (age) => age === Age.CHILD &&
+        Settings.GlitchesToAllow.childDoubleMagicFairy,
 
 	// Zora/Lake
-    ADULT_WATERFALL_HP_JUMP: (age) => Settings.GlitchesToAllow.adultWaterfallHPJump && age === Age.ADULT,
-	CUCCO_TO_ZORAS_DOMAIN: (age) => Settings.GlitchesToAllow.cuccoToZorasDomain && age === Age.CHILD,
+    ADULT_WATERFALL_HP_JUMP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.adultWaterfallHPJump,
+	CUCCO_TO_ZORAS_DOMAIN: (age) => age === Age.CHILD &&
+        Settings.GlitchesToAllow.cuccoToZorasDomain,
 	HOVERS_TO_ZORAS_DOMAIN: (age) => 
         Settings.GlitchesToAllow.hoversToZorasDomain && 
         ItemData.canUse(age, Equipment.HOVER_BOOTS),
@@ -208,10 +215,27 @@ let GlitchItemSets = {
     CHILD_KING_ZORA_SKIP: (age) =>
         Settings.GlitchesToAllow.chuZoraSkip && 
         ItemData.canUse(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD, Items.BOMBCHU]),
-    ADULT_KING_ZORA_SKIP: (age) => Settings.GlitchesToAllow.clipZoraSkip && age === Age.ADULT,
+    ADULT_KING_ZORA_SKIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.clipZoraSkip,
+    ADULT_DOMAIN_TO_LAKE: (age) => age === Age.ADULT && 
+        Settings.GlitchesToAllow.adultDomainToLake,
+    BLUE_FIRE_SHOP_SKIP: () => Settings.GlitchesToAllow.blueFireShopSkip,
+    CHILD_JABU_FISHLESS: (age) => age === Age.CHILD &&
+        Settings.GlitchesToAllow.jabuFishless &&
+        ItemData.canUse(age, ItemSets.SWORDS),
+    ADULT_JABU: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.enterJabuAsAdult &&
+        ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMBCHU]),
     LAKE_TREE_SKULL_WITH_HOOKSHOT: (age) => 
         Settings.GlitchesToAllow.skullInTreeWithHookshot && 
         ItemData.canUse(age, [Items.HOOKSHOT, ItemSets.SHIELDS]),
+    CHILD_LAKESIDE_LAB_CLIP: (age) => age === Age.CHILD &&
+        Settings.GlitchesToAllow.childLakesideLabClip && 
+        Data.canShieldTurn(age) &&
+        ItemData.canUse(age, ItemSets.SWORDS),
+    ADULT_LAKESIDE_LAB_CLIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.adultLakesideLabClip && 
+        ItemData.canUseAny(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]),
 
     // Gerudo
     CUCCO_JUMP: (age) => 
@@ -296,7 +320,8 @@ let GameStateSets = {
     CAN_LONGSHOT_SCARECROW: (age) => Data.canHookScarecrow(age, true),
     ARE_GERUDO_GUARDS_TAME: () => Data.areGerudoGuardsTame(),
     CAN_STUN_KITCHEN_GUARDS: (age) => Data.canStunKitchenGuards(age),
-    CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE: (age) => Data.canStunOrPassGuardsAtDistance(age)
+    CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE: (age) => Data.canStunOrPassGuardsAtDistance(age),
+    HAS_BOTTLE: () => Data.hasBottle()
 };
 
 /**
