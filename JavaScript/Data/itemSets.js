@@ -113,6 +113,10 @@ let GlitchItemSets = {
     BOMB_SUPERSLIDE_WITH_HOVERS: (age) => Data.canBombSuperslideWithHovers(age),
     HAMMER_SUPERSLIDE_WITH_HOVERS: (age) => Data.canHammerHoverBootsSuperslide(age),
 	GROUND_JUMP:  (age) => Data.canGroundJumpWithBomb(age),
+    OCARINA_OR_DIFFICULT_OCARINA_ITEMS: () => Items.OCARINA.playerHas || (
+        Settings.GlitchesToAllow.ocarinaItems &&
+        Settings.GlitchesToAllow.difficultOcarinaItems && 
+        Data.hasOcarinaItemsBottle()),
 	BOOMERANG_THROUGH_WALLS: (age) => 
         Settings.GlitchesToAllow.boomerangThroughWalls && 
         ItemData.canUse(age, Items.BOOMERANG),
@@ -264,6 +268,7 @@ let GameStateSets = {
         let bossEntranceGroup = Data.getEntranceGroup(OwExits["Deku Tree"].Boss);
         return bossEntranceGroup?.buttons && bossEntranceGroup.buttons["Blue Warp"].completed;
     },
+    CAN_PLAY_SONGS: () => Data.canPlaySongs(),
     CAN_RIDE_EPONA: (age) => Data.canRideEpona(age),
     CAN_HOOK_SCARECROW: (age) => Data.canHookScarecrow(age),
     CAN_LONGSHOT_SCARECROW: (age) => Data.canHookScarecrow(age, true),

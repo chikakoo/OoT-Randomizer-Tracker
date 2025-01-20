@@ -256,8 +256,7 @@ let MapLocations = {
                         MapInfo: { x: 96, y: 172 },
                         Age: Age.CHILD,
                         LongDescription: "From the Kokiri Forest entrance, go left one screen. Stand on the lower stump and play Saria's Song to get this gift",
-                        Needs: [Songs.SARIAS_SONG],
-                        DifficultOcarinaItems: true
+                        Needs: [Songs.SARIAS_SONG, GlitchItemSets.OCARINA_OR_DIFFICULT_OCARINA_ITEMS]
                     },
                     "Sell Skull Mask": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -352,12 +351,9 @@ let MapLocations = {
                         Order: 3,
                         Age: Age.CHILD,
                         LongDescription: "From the Kokiri Forest entrance, go right one screen. Go down the cliff and stand on the lower stump. Take out your Ocarina and win the Simon game to get this prize.",
-                        NeedsOcarina: true,
-                        DifficultOcarinaItems: true,
-                        CustomRequirement: function(age) {
+                        Needs: [GlitchItemSets.OCARINA_OR_DIFFICULT_OCARINA_ITEMS,
                             // TODO: Make this a setting
-                            return ItemData.getNumberOfOcarinaButtons() === Object.keys(OcarinaButtons).length;
-                        }
+                            () => ItemData.getNumberOfOcarinaButtons() === Object.keys(OcarinaButtons).length],
                     },
                     "7 Green Rupees in Water": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -863,8 +859,7 @@ let MapLocations = {
                         MapInfo: { x: 174, y: 170 },
                         Age: Age.CHILD,
                         LongDescription: "You can get this after getting Malon's gift and waking up Talon with the Chicken at Hyrule Castle. Take out your Ocarina to get the item.",
-                        NeedsOcarina: true,
-                        Needs: [ItemLocationSets.GIFT_FROM_MALON, ItemLocationSets.WAKE_UP_TALON]
+                        Needs: [GameStateSets.CAN_PLAY_SONGS, ItemLocationSets.GIFT_FROM_MALON, ItemLocationSets.WAKE_UP_TALON]
                     },
                     "Wonderitem via Short Gate": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -2080,7 +2075,7 @@ let MapLocations = {
                         MapInfo: { x: 266, y: 246, floor: "WND" },
                         Age: Age.ADULT,
                         LongDescription: "Take out your ocarina by the windmill guy to get this.",
-                        NeedsOcarina: true
+                        Needs: [GameStateSets.CAN_PLAY_SONGS]
                     },
                     "Drain Well Water": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -3326,7 +3321,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "Take out the ocarina (OI works) by the lower scarecrow and play it a song that has at least two different pitches.",
                         RequiredToAppear: function() { return !Songs.SCARECROWS_SONG.playerHas; },
-                        NeedsOcarina: true,
+                        Needs: [GameStateSets.CAN_PLAY_SONGS],
                         CustomRequirement: function(age) {
                             return ItemData.getNumberOfOcarinaButtons() >= 2;
                         }

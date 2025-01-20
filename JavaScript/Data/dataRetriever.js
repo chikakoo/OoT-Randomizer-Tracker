@@ -755,10 +755,6 @@ Data = {
         if (!this._passesCustomRequirement(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this._canDoItemGroup(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canPlantBean(age, itemLocation)) { return ItemObtainability.NO; }
-
-		if (!this.canPlaySongs(itemLocation)) { return ItemObtainability.NO; }
-		if (!this.canPlayDifficultOcarinaItems(itemLocation)) { return ItemObtainability.NO; }
-        
 		if (!this.hasBottle(itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkKeyRequirement(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkSilverRupeeRequirement(itemLocation)) { return ItemObtainability.NO; }
@@ -1058,21 +1054,10 @@ Data = {
     /**
      * Returns whether the player has the ability to play songs, includes OI and actually having the ocarina
      */
-    canPlaySongs: function(itemLocation) { //TODO: need to add age to check for OI item to actually play...
-		if (itemLocation && !itemLocation.NeedsOcarina) { return true; }
+    canPlaySongs: function() { //TODO: need to add age to check for OI item to actually play...
 		return Items.OCARINA.playerHas || 
             (Settings.GlitchesToAllow.ocarinaItems && this.hasOcarinaItemsBottle());
     },
-
-    /**
-     * Returns whether the player can play songs at a spot that's difficult to perform OI in
-     * Always true if the player has a real ocarina
-     */
-    canPlayDifficultOcarinaItems(itemLocation) {
-		if (itemLocation && !itemLocation.DifficultOcarinaItems) { return true; }
-		return Items.OCARINA.playerHas || 
-            (Settings.GlitchesToAllow.ocarinaItems && Settings.GlitchesToAllow.difficultOcarinaItems && this.hasOcarinaItemsBottle());
-	},
     
     /**
      * Returns whether the player has an empty bottle
