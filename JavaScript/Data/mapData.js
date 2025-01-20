@@ -7,7 +7,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Main Area", imageName: "Deku Shield" },
                 Exits: {
                     afterMido: {
-                        RequiredChoiceOfChildItems: [
+                        ChildNeedsAny: [
                             SettingSets.OPEN_DEKU,
                             [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD],
                             ItemLocationSets.MOVE_MIDO]
@@ -117,7 +117,7 @@ let MapLocations = {
                         MapInfo: { x: 261, y: 233 },
                         Age: Age.ADULT,
                         LongDescription: "Look in the middle of the House of Twins at night.",
-                        RequiredChoiceOfItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.HOUSE_OF_TWINS_SKULL_WITH_HOVERS]
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.HOUSE_OF_TWINS_SKULL_WITH_HOVERS]
                     },
                     "Move Mido": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -125,7 +125,7 @@ let MapLocations = {
                         MapInfo: { x: 300, y: 175 },
                         Age: Age.CHILD,
                         LongDescription: "Move Mido by talking to him while you have a Deku Shield and the Kokiri Sword. Necessary to access the Deku Tree if closed Deku is on.",
-                        RequiredItems: [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD]
+                        Needs: [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD]
                     },
 
                     // Upper Ledges
@@ -144,7 +144,7 @@ let MapLocations = {
                         MapInfo: { x: 291, y: 106 },
                         Age: Age.ADULT,
                         LongDescription: "Ride the bean platform or use hover boots to reach these items.",
-                        RequiredChoiceOfItems: [Items.BOOMERANG, Equipment.HOVER_BOOTS, BeanSets.KOKIRI_FOREST]
+                        NeedsAny: [Items.BOOMERANG, Equipment.HOVER_BOOTS, BeanSets.KOKIRI_FOREST]
                     },
 
                     // Training area and maze
@@ -159,7 +159,7 @@ let MapLocations = {
                     "Wonderitem via Training Sign": {
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Sword Wonderitem",
-                        RequiredChoiceOfItems: [Equipment.KOKIRI_SWORD, Items.DEKU_STICK],
+                        NeedsAny: [Equipment.KOKIRI_SWORD, Items.DEKU_STICK],
                         MapInfo: { x: 132, y: 211 },
                         Age: Age.CHILD,
                         LongDescription: "Slash the close sign in the fenced-off training area with your sword or deku sticks to get this item.",
@@ -264,7 +264,7 @@ let MapLocations = {
                         MapInfo: { x: 88, y: 172 },
                         MapImageName: "Skull Mask",
                         Age: Age.CHILD,
-                        RequiredItems: [ChildTradeItems.SKULL_MASK],
+                        Needs: [ChildTradeItems.SKULL_MASK],
                         RequiredSongs: [Songs.SARIAS_SONG],
                         LongDescription: "First, play Saria's song to the Skull kid. Next, Talk to him while wearing the Skull Mask to sell it to him - this unlocks the Spooky Mask. Recommended to do this AFTER you get the forest stage item.",
                     },
@@ -274,7 +274,7 @@ let MapLocations = {
                         MapImageName: "Cojiro",
                         Age: Age.ADULT,
                         LongDescription: "Grog is the weird guy by the stump where the skull kid is as Child. Show him Cojiro to get an item.",
-                        RequiredItems: [AdultTradeItems.COJIRO]
+                        Needs: [AdultTradeItems.COJIRO]
                     },
                     "Show Odd Potion to Fado": {
                         ItemGroup: ItemGroups.GIFT,
@@ -282,7 +282,7 @@ let MapLocations = {
                         MapImageName: "Odd Potion",
                         Age: Age.ADULT,
                         LongDescription: "Fado is the girl by the strump where the skill kid is as Child. Show her the Odd Potion to get an item.",
-                        RequiredItems: [AdultTradeItems.ODD_POTION]
+                        Needs: [AdultTradeItems.ODD_POTION]
                     },
                     "Soft Soil by Bridge": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -313,7 +313,7 @@ let MapLocations = {
                 Exits: {
                     skullKidAndBridge: {},
                     secondHalf: {
-                        RequiredChoiceOfAdultItems: [GlitchItemSets.MIDO_SKIP, Songs.SARIAS_SONG]
+                        AdultNeedsAny: [GlitchItemSets.MIDO_SKIP, Songs.SARIAS_SONG]
                     },
                     kokiriForestWarp: {},
                     "Goron City": {
@@ -335,7 +335,7 @@ let MapLocations = {
                         Order: 1,
                         Age: Age.CHILD,
                         LongDescription: "From the Kokiri Forest entrance, go right one screen. Shoot the target in the center three times in a row with your Slingshot to get this prize.",
-                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                        Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "3 Wonderitems in Grass by Ocarina Game": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -369,7 +369,7 @@ let MapLocations = {
                         MapInfo: { x: 273, y: 127 },
                         Order: 5,
                         Age: Age.CHILD,
-                        RequiredChoiceOfItems: [Items.BOOMERANG, Equipment.SCALE],
+                        NeedsAny: [Items.BOOMERANG, Equipment.SCALE],
                         LongDescription: "In the water leading to Zora's River - dive or use the boomerang to get these items.",
                     },
                     "Close Green Rupee in Water": {
@@ -400,7 +400,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "After Mido", imageName: "Saria's Song" },
                 Exits: {
                     nearGoronCity: {
-                        RequiredChoiceOfAdultItems: [Songs.SARIAS_SONG, GlitchItemSets.MEGA_FLIP]
+                        AdultNeedsAny: [Songs.SARIAS_SONG, GlitchItemSets.MEGA_FLIP]
                     },
                     kokiriForestWarp: {},
                     "Sacred Forest Meadow": {
@@ -423,7 +423,7 @@ let MapLocations = {
                         Order: 3,
                         Age: Age.ADULT,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. Plant a magic bean here as a child. Come back as an adult at night and ride the plant up.",
-                        RequiredChoiceOfItems: [BeanSets.LOST_WOODS_FOREST_STAGE, GlitchItemSets.LOST_WOODS_SKULL_WITHOUT_BEAN]
+                        NeedsAny: [BeanSets.LOST_WOODS_FOREST_STAGE, GlitchItemSets.LOST_WOODS_SKULL_WITHOUT_BEAN]
                     },
                     "Right Scrub by Forest Stage": {
                         ItemGroup: ItemGroups.SCRUB,
@@ -456,7 +456,7 @@ let MapLocations = {
                         Order: 7,
                         Age: Age.EITHER,
                         LongDescription: "This item is under the rock one room from the Sacred Forest Meadow.",
-                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.BOOMERANG_THROUGH_WALLS]
+                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.BOOMERANG_THROUGH_WALLS]
                     },
                     "Front Scrub Near Grotto Near Meadow": {
                         ItemGroup: ItemGroups.SCRUB,
@@ -466,7 +466,7 @@ let MapLocations = {
                         ScrubSanityNotRequired: true, // Deku nut upgrade
                         Age: Age.EITHER,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, straight, left. Remove the rock in this room. This is the front scrub.",
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+                        Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     }
                 }
             },
@@ -558,7 +558,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Before Maze", imageName: "Wolfos Grotto" },
                 Exits: {
                     afterGate: {
-                        RequiredChildItems: [ItemSets.DAMAGING_ITEMS]
+                        ChildNeeds: [ItemSets.DAMAGING_ITEMS]
                     },
                     "Lost Woods": {
                         OwExit: OwExits["Sacred Forest Meadow"]["Lost Woods"]
@@ -643,7 +643,7 @@ let MapLocations = {
                         MapInfo: { x: 219, y: 144 },
                         Age: Age.ADULT,
                         LongDescription: "At night, climb the ladder from the Forest Temple side. The skulltula will be on the left wall.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
 
                     // After Maze
@@ -778,7 +778,7 @@ let MapLocations = {
                         MapInfo: { x: 184, y: 145 },
                         Age: Age.CHILD,
                         MapImageName: "Bunny Hood",
-                        RequiredItems: [ChildTradeItems.BUNNY_HOOD],
+                        Needs: [ChildTradeItems.BUNNY_HOOD],
                         RequiredMedallions: [
                             Medallions.KOKIRIS_EMERALD,
                             Medallions.GORONS_RUBY,
@@ -835,7 +835,7 @@ let MapLocations = {
                         MapInfo: { x: 240, y: 67 },
                         Age: Age.CHILD,
                         LongDescription: "At night, there's a skulltula high up on Talon's House.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Crate by Talon's House": {
                         ItemGroup: ItemGroups.CRATE,
@@ -869,7 +869,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "You can get this after getting Malon's gift and waking up Talon with the Chicken at Hyrule Castle. Take out your Ocarina to get the item.",
                         NeedsOcarina: true,
-                        RequiredItems: [ItemLocationSets.GIFT_FROM_MALON, ItemLocationSets.WAKE_UP_TALON]
+                        Needs: [ItemLocationSets.GIFT_FROM_MALON, ItemLocationSets.WAKE_UP_TALON]
                     },
                     "Wonderitem via Short Gate": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -877,7 +877,7 @@ let MapLocations = {
                         MapInfo: { x: 206, y: 153 },
                         Age: Age.ADULT,
                         LongDescription: "As Adult, talk to Ingo if you haven't already rescused Epona to go inside. Play Epona's song and ride epona. Jump over the center of the smaller gate to get this wonderitem.",
-                        RequiredItems: [Songs.EPONAS_SONG, Items.OCARINA]
+                        Needs: [Songs.EPONAS_SONG, Items.OCARINA]
                     },
                     "Wonderitem via Tall Gate": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -885,7 +885,7 @@ let MapLocations = {
                         MapInfo: { x: 144, y: 190 },
                         Age: Age.ADULT,
                         LongDescription: "As Adult, talk to Ingo if you haven't already rescused Epona to go inside. Play Epona's song and ride epona. Jump over the center of the larger gate to get this wonderitem.",
-                        RequiredItems: [Songs.EPONAS_SONG, Items.OCARINA]
+                        Needs: [Songs.EPONAS_SONG, Items.OCARINA]
                     },
                     "Unlock Cow in House": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -895,7 +895,7 @@ let MapLocations = {
                         MapInfo: { x: 176, y: 115 },
                         Age: Age.ADULT,
                         LongDescription: "After Epona is freed, talk to Malon and complete the obstacle course in less than 50 seconds. This will unlock the cow in Link's house.",
-                        RequiredItems: [GameStateSets.CAN_RIDE_EPONA]
+                        Needs: [GameStateSets.CAN_RIDE_EPONA]
                     },
 
                     // Back
@@ -914,7 +914,7 @@ let MapLocations = {
                         MapInfo: { x: 44, y: 214 },
                         Age: Age.CHILD,
                         LongDescription: "At night, there's a skulltula on the southeast wall of the ranch. Facing the cow shed, it's a little bit to the right.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             }
@@ -1177,7 +1177,7 @@ let MapLocations = {
                         MapInfo: { x: 122, y: 41, floor: "HYR" },
                         Age: Age.CHILD,
                         LongDescription: "Shoot the two torches on either side of the drawbridge with your slingshot on the castle wall to get the two wonderitems.",
-                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                        Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "7 Rupees in Moat by Drawbridge": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -1206,7 +1206,7 @@ let MapLocations = {
                         Order: 8,
                         MapInfo: { x: 193, y: 38, floor: "HYR" },
                         LongDescription: "Wait for the Weird Egg to hatch, then wake up Talon. This unlocks a few things in Lon Lon Ranch.",
-                        RequiredItems: [ChildTradeItems.WEIRD_EGG]
+                        Needs: [ChildTradeItems.WEIRD_EGG]
                     },
                     "Castle Courtyard Items": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -1217,7 +1217,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         Order: 9,
                         LongDescription: "After waking up Talon with the Chicken, push the crates down so that you can jump to the crawlspace. Sneak past the guards to meet Zelda to get her letter. After that, try to leave the area to receive this item from Impa.<br/><br/>To megaflip, climb up the right side of the left box, ess right 1 (you should be able to walk to the other box now). Chu flip as normal, or place a bomb a little after the box transition and manually back up to get the distance for the roll. Let go of everything when the flip happens so you don't walk off!",
-                        RequiredChoiceOfItems: [ChildTradeItems.WEIRD_EGG, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [ChildTradeItems.WEIRD_EGG, GlitchItemSets.MEGA_FLIP]
                     }
                 }
             },
@@ -1262,7 +1262,7 @@ let MapLocations = {
                 Exits: {
                     impasRoof: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     beyondGate: {
                         CustomRequirement: function(age) {
@@ -1349,7 +1349,7 @@ let MapLocations = {
                         Order: 1,
                         RequiredToAppear: function() { return Settings.GlitchesToAllow.equipSwap; },
                         LongDescription: "Show the carpenter boss (in front of the tent) the Poacher's Saw to receive an item.",
-                        RequiredItems: [AdultTradeItems.POACHERS_SAW],
+                        Needs: [AdultTradeItems.POACHERS_SAW],
                         PostObtain: function(playerHas, skipSocketUpdate) {
                             let otherItemLocation = MapLocations["Gerudo Valley"].Regions.acrossBridge.ItemLocations["Show Poacher's Saw to Carpenter"];
                             Data.setItemObtained(otherItemLocation, playerHas, true);
@@ -1575,7 +1575,7 @@ let MapLocations = {
                         },
                         MapInfo: { x: 107, y: 41 },
                         Age: Age.CHILD,
-                        RequiredItems: [ChildTradeItems.ZELDAS_LETTER],
+                        Needs: [ChildTradeItems.ZELDAS_LETTER],
                         LongDescription: "Show the guard Zelda's Letter. This unlocks the mask trading sequence.",
                     },
                     "Sell Keaton Mask": {
@@ -1584,8 +1584,8 @@ let MapLocations = {
                         MapImageName: "Keaton Mask",
                         Age: Age.CHILD,
                         LongDescription: "Talk to the guard while wearing the Keaton mask to sell it to him - this unlocks the Skull Mask.",
-                        RequiredItems: [ChildTradeItems.KEATON_MASK],
-                        RequiredChoiceOfItems: [ChildTradeItems.ZELDAS_LETTER, SettingSets.OPEN_KAKARIKO]
+                        Needs: [ChildTradeItems.KEATON_MASK],
+                        NeedsAny: [ChildTradeItems.ZELDAS_LETTER, SettingSets.OPEN_KAKARIKO]
                     },
                     "Crate by Archery or Beggar": {
                         ItemGroup: ItemGroups.CRATE,
@@ -1691,17 +1691,17 @@ let MapLocations = {
                 Exits: {
                     crateLedge: {
                         Age: Age.ADULT,
-                        RequiredChoiceOfItems: [UpgradedItems.LONGSHOT, BeanSets.GRAVEYARD, GlitchItemSets.WEIRD_SHOT]
+                        NeedsAny: [UpgradedItems.LONGSHOT, BeanSets.GRAVEYARD, GlitchItemSets.WEIRD_SHOT]
                     },
                     freestandingItemInCrate: {
-                        RequiredItems: [Items.BOOMERANG]
+                        Needs: [Items.BOOMERANG]
                     },
                     looseItemInCrate: {
-                        RequiredItems: [Items.BOOMERANG, Items.BOMBCHU]
+                        Needs: [Items.BOOMERANG, Items.BOMBCHU]
                     },
                     seamAboveShadowTemple: {
                         Age: Age.ADULT,
-                        RequiredItems: [GlitchItemSets.HOOKSHOT_JUMP]
+                        Needs: [GlitchItemSets.HOOKSHOT_JUMP]
                     },
                     royalFamilyTomb: {
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
@@ -1731,7 +1731,7 @@ let MapLocations = {
                         MapInfo: { x: 184, y: 145 },
                         MapImageName: "Spooky Mask",
                         Age: Age.CHILD,
-                        RequiredItems: [ChildTradeItems.SPOOKY_MASK],
+                        Needs: [ChildTradeItems.SPOOKY_MASK],
                         LongDescription: "Talk to the graveyard kid during the day while wearing the Spooky Mask to sell it to him - this unlocks the Bunny Hood.",
                     },
                     "Dampe's Heart-Pounding Graveyard Tour": {
@@ -1756,7 +1756,7 @@ let MapLocations = {
                         MapInfo: { x: 242, y: 264 },
                         Age: Age.CHILD,
                         LongDescription: "At night, this skulltula is high up on the back right wall of the graveyard.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 },
             },
@@ -1768,7 +1768,7 @@ let MapLocations = {
                     looseItemInCrate: {},
                     seamAboveShadowTemple: {
                         Age: Age.ADULT,
-                        RequiredItems: [GlitchItemSets.OLD_SHADOW_EARLY]
+                        Needs: [GlitchItemSets.OLD_SHADOW_EARLY]
                     }
                 },
                 ItemLocations: {}
@@ -1816,13 +1816,13 @@ let MapLocations = {
                 Exits: {
                     main: {},
                     royalFamilyTomb: {
-                        RequiredItems: [GlitchItemSets.UNLOAD_GRAVE]
+                        Needs: [GlitchItemSets.UNLOAD_GRAVE]
                     },
                     dampesGrave: {
-                        RequiredItems: [GlitchItemSets.UNLOAD_GRAVE]
+                        Needs: [GlitchItemSets.UNLOAD_GRAVE]
                     },
                     shadowTemple: {
-                        RequiredItems: [Equipment.MAGIC, Items.DINS_FIRE]
+                        Needs: [Equipment.MAGIC, Items.DINS_FIRE]
                     },
                     "Nocturne Teleport Pad": {
                         OwExit: OwExits["Graveyard"]["Nocturne Teleport Pad"]
@@ -1888,8 +1888,8 @@ let MapLocations = {
                 UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
                 Exits: {
                     windmillTop: {
-                        RequiredChildItems: [GlitchItemSets.GROUND_JUMP],
-                        RequiredAdultItems: [Songs.SONG_OF_TIME]
+                        ChildNeeds: [GlitchItemSets.GROUND_JUMP],
+                        AdultNeeds: [Songs.SONG_OF_TIME]
                     },
                     "Grave Exit": {
                         OwExit: OwExits["Windmill-Kak Potion"]["Grave Exit"]
@@ -2069,8 +2069,8 @@ let MapLocations = {
                 
                 Exits: {
                     windmillItem: {
-                        RequiredChildItems: [Items.BOOMERANG],
-                        RequiredAdultItems: [GlitchItemSets.WINDMILL_HP_WITH_NOTHING]
+                        ChildNeeds: [Items.BOOMERANG],
+                        AdultNeeds: [GlitchItemSets.WINDMILL_HP_WITH_NOTHING]
                     },
                     "Windmill Exit": {
                         OwExit: OwExits["Windmill-Kak Potion"]["Windmill Exit"]
@@ -2129,7 +2129,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Lower Area", imageName: "Goron's Ruby" },
                 Exits: {
                     upper: {
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             ItemSets.BLAST_OR_SMASH_ITEMS,
                             BeanSets.DEATH_MOUNTAIN_TRAIL,
                             GlitchItemSets.DMT_CLIMB_WITH_HOVER_BOOTS,
@@ -2158,7 +2158,7 @@ let MapLocations = {
                         MapInfo: { x: 151, y: 235 },
                         Age: Age.EITHER,
                         LongDescription: "From the Kakariko entrance, follow the right wall until you get to the discolored wall. Bomb or hammer it to reveal the skulltula. Child can Deku Stick jumpslash, Bomb, Bombchu, Slingshot, or Boomerang it. Adult can jumpslash it. You can climb the wall to collect the token.",
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+                        Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "Soft Soil": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2174,7 +2174,7 @@ let MapLocations = {
                         MapInfo: { x: 212, y: 207 },
                         Age: Age.EITHER,
                         LongDescription: "If you take the left path out of Goron City, the wall to bomb or hammer will be to your right.",
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             ItemSets.BLAST_OR_SMASH_ITEMS, 
                             GlitchItemSets.DMT_CLIP_TO_CHEST, 
                             GlitchItemSets.DMT_BOMB_FLOWER_TO_CHEST]
@@ -2185,7 +2185,7 @@ let MapLocations = {
                         MapInfo: { x: 215, y: 167 },
                         Age: Age.ADULT,
                         LongDescription: "At night, leave Goron City. Follow the right wall until you reach a red rock. Break it with your hammer to reveal the skulltula.",
-                        RequiredChoiceOfItems: [Items.MEGATON_HAMMER, GlitchItemSets.DMT_SKULLS_WITHOUT_HAMMER]
+                        NeedsAny: [Items.MEGATON_HAMMER, GlitchItemSets.DMT_SKULLS_WITHOUT_HAMMER]
                     },
                     "Heart Piece Above Dodongo's Cavern": {
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -2202,7 +2202,7 @@ let MapLocations = {
                         MapImageName: "Bomb",
                         Age: Age.EITHER,
                         LongDescription: "Used for co-op. These are the rocks blocking the path to Death Mountain Crater.",
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS],
+                        Needs: [ItemSets.BLAST_OR_SMASH_ITEMS],
                         CoOpOnly: true
                     },
                     "Red Rupee in Rock by Cow Grotto": {
@@ -2211,7 +2211,7 @@ let MapLocations = {
                         MapInfo: { x: 206, y: 203 },
                         Age: Age.CHILD,
                         LongDescription: "As a child, this item is under the highest rock that's blocking access to the top of Death Mountain. You can snag it with the boomerang from the bottom with a good angle.",
-                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.BOOMERANG_THROUGH_WALLS]
+                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.BOOMERANG_THROUGH_WALLS]
                     },
                     "Blue Rupee in Rock Below Cow Grotto": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -2219,7 +2219,7 @@ let MapLocations = {
                         MapInfo: { x: 190, y: 203 },
                         Age: Age.CHILD,
                         LongDescription: "As a child, this item is under the leftmost rock by the rocks blocking access to the top of Death Mountain. You can snag it with the boomerang if you stand far back enough on the platform.",
-                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.BOOMERANG_THROUGH_WALLS]
+                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.BOOMERANG_THROUGH_WALLS]
                     }
                 }
             },
@@ -2263,7 +2263,7 @@ let MapLocations = {
                         MapInfo: { x: 217, y: 96 },
                         Age: Age.ADULT,
                         LongDescription: "At night, take the upper path of the mountain - the one that causes the volcano to erupt. The red rock has a skulltula in it - break it with your hammer.",
-                        RequiredChoiceOfItems: [Items.MEGATON_HAMMER, GlitchItemSets.DMT_SKULLS_WITHOUT_HAMMER]
+                        NeedsAny: [Items.MEGATON_HAMMER, GlitchItemSets.DMT_SKULLS_WITHOUT_HAMMER]
                     },
                     "Gossip Stone on Climbable Wall Ledge": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -2284,10 +2284,10 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Upper Area", imageName: "Bomb" },
                 Exits: {
                     middle: {
-                        RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     bottom: {
-                        RequiredItems: [GlitchItemSets.MEGA_FLIP]
+                        Needs: [GlitchItemSets.MEGA_FLIP]
                     },
                     scarecrowPlatform: {},
                     "Mountain Top": {
@@ -2323,7 +2323,7 @@ let MapLocations = {
                         MapInfo: { x: 284, y: 248 },
                         Age: Age.EITHER,
                         LongDescription: "This stone is behind a bombable wall across a wooden bridge in the top area of the crater.",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     }
                 }
             },
@@ -2332,10 +2332,10 @@ let MapLocations = {
                 Exits: {
                     top: {},
                     bottom: {
-                        RequiredChoiceOfItems: [GlitchItemSets.MEGA_FLIP, Items.HOOKSHOT, Equipment.HOVER_BOOTS]
+                        NeedsAny: [GlitchItemSets.MEGA_FLIP, Items.HOOKSHOT, Equipment.HOVER_BOOTS]
                     },
                     volcano: {
-                        RequiredChoiceOfItems: [GlitchItemSets.MEGA_FLIP, GlitchItemSets.HOVER_TO_VOLCANO_HP]
+                        NeedsAny: [GlitchItemSets.MEGA_FLIP, GlitchItemSets.HOVER_TO_VOLCANO_HP]
                     },
                     "Goron City": {
                         OwExit: OwExits["Death Mountain Crater"]["Goron City"]
@@ -2367,15 +2367,15 @@ let MapLocations = {
                 Exits: {
                     middle: {
                         Age: Age.ADULT,
-                        RequiredChoiceOfItems: [BeanSets.DEATH_MOUNTAIN_CRATER, Items.HOOKSHOT, Equipment.HOVER_BOOTS]
+                        NeedsAny: [BeanSets.DEATH_MOUNTAIN_CRATER, Items.HOOKSHOT, Equipment.HOVER_BOOTS]
                     },
                     volcano: {
                         Age: Age.ADULT,
-                        RequiredItems: [BeanSets.DEATH_MOUNTAIN_CRATER]
+                        Needs: [BeanSets.DEATH_MOUNTAIN_CRATER]
                     },
                     scarecrowPlatform: {
                         Age: Age.ADULT,
-                        RequiredItems: [UpgradedItems.LONGSHOT],
+                        Needs: [UpgradedItems.LONGSHOT],
                         RequiredSongs: [Songs.SCARECROWS_SONG]
                     },
                     "Fire Temple": {
@@ -2439,7 +2439,7 @@ let MapLocations = {
                 Exits: {
                     bottom: {
                         Age: Age.ADULT,
-                        RequiredItems: [UpgradedItems.LONGSHOT] // Longshot the wooden plank by the next platform
+                        Needs: [UpgradedItems.LONGSHOT] // Longshot the wooden plank by the next platform
                     }
                 },
                 ItemLocations: {
@@ -2475,7 +2475,7 @@ let MapLocations = {
                         }
                     },
                     lostWoodsRocks: {
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             ItemLocationSets.ROCKS_BLOCKING_LOST_WOODS,
                             Items.FAIRY_BOW, 
                             Items.DINS_FIRE, 
@@ -2487,7 +2487,7 @@ let MapLocations = {
                     },
                     spinningUrn: {
                         Age: Age.CHILD,
-                        RequiredChoiceOfItems: [Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     },
                     shop: {
                         CustomRequirement: function(age) {
@@ -2520,7 +2520,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         LongDescription: "Make your way to the topmost northwest corner of the city and bomb, pick up, or smash the rocks to get here. You can also go to the upper right corner, stand on the box, and backwalk & backflip with hover boots at the last moment to get to this chest (you will be stuck there).",
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             Items.MEGATON_HAMMER, 
                             UpgradedItems.SILVER_GAUNTLETS, 
                             [Equipment.HOVER_BOOTS, ItemSets.EXPLOSIVES],
@@ -2531,35 +2531,35 @@ let MapLocations = {
                         MapInfo: { x: 78, y: 26 },
                         Age: Age.EITHER,
                         LongDescription: "Make your way to the topmost northwest corner of the city. Bomb, hammer, or pick up (only silvers) the rocks to get to the back right corner of the maze for this chest.",
-                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
+                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
                     },
                     "Right Maze Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 86, y: 26 },
                         Age: Age.EITHER,
                         LongDescription: "Make your way to the topmost northwest corner of the city. Bomb, hammer, or pick up (only silvers) the rocks to get to the back right corner of the maze for this chest.",
-                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
+                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
                     },
                     "Maze Crate": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 95, y: 21 },
                         Age: Age.EITHER,
                         LongDescription: "Make your way to the topmost northwest corner of the city. Bomb, hammer, or pick up (only silvers) the rocks to get to the back right corner of the maze for this crate.",
-                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
+                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
                     },
                     "Skulltula in Maze Crate": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 91, y: 25 },
                         Age: Age.CHILD,
                         LongDescription: "Make your way to the topmost northwest corner of the city. Bomb or hammer the rocks to get to the back right corner of the maze. Roll into the crate the get this skulltula.",
-                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
+                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
                     },
                     "Gossip Stone in Maze": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 82, y: 26 },
                         Age: Age.EITHER,
                         LongDescription: "Make your way to the topmost northwest corner of the city. Bomb, hammer, or pick up (only silvers) the rocks to get to the back right corner of the maze for this stone.",
-                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
+                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS]
                     },
                     "Skulltula on Center Platform": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -2584,7 +2584,7 @@ let MapLocations = {
                         MapInfo: { x: 165, y: 67 },
                         Age: Age.CHILD,
                         LongDescription: "Blow up the rolling goron while he's in the tunnel and talk to him to get the item.",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     },
                     "Stop Rolling Goron as Adult": {
                         ItemGroup: ItemGroups.GIFT,
@@ -2600,7 +2600,7 @@ let MapLocations = {
                         MapInfo: { x: 130, y: 243 },
                         Age: Age.EITHER,
                         LongDescription: "In the southern area of the middle floor, blow up the walls that has bombflowers near it. Eventually, you'll make it to Medigoron, where the pot is.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER, QPAItemSets.LEDGE_QPA]
                     },
                     "Item From Medigoron": {
                         ItemGroup: ItemGroups.GIFT,
@@ -2608,15 +2608,15 @@ let MapLocations = {
                         MapInfo: { x: 117, y: 260 },
                         Age: Age.ADULT,
                         LongDescription: "Blow up/hammer the weak walls on the western side of the middle floor. Pay Medigoron 200 rupees for this item.",
-                        RequiredItems: [UpgradedItems.ADULTS_WALLET],
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER, QPAItemSets.LEDGE_QPA]
+                        Needs: [UpgradedItems.ADULTS_WALLET],
+                        NeedsAny: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER, QPAItemSets.LEDGE_QPA]
                     },
                     "Gossip Stone By Medigoron": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 115, y: 275 },
                         Age: Age.EITHER,
                         LongDescription: "In the southern area of the middle floor, blow up the walls that has bombflowers near it. Eventually, you'll make it to Medigoron, where the stone is.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER, QPAItemSets.LEDGE_QPA]
                     },
 
                     // Bottom Floor
@@ -2637,15 +2637,15 @@ let MapLocations = {
                 Exits: {
                     main: {},
                     spinningUrn: {
-                        RequiredItems: [Items.DEKU_STICK]
+                        Needs: [Items.DEKU_STICK]
                     },
                     lostWoodsRocks: {
                         Age: Age.CHILD, // The stick won't last all the way, no torches as adult
-                        RequiredItems: [Items.DEKU_STICK]
+                        Needs: [Items.DEKU_STICK]
                     },
                     shop: {
                         Age: Age.CHILD,
-                        RequiredItems: [Items.DEKU_STICK]
+                        Needs: [Items.DEKU_STICK]
                     },
                     "Death Mountain Crater": {
                         OwExit: OwExits["Goron City"]["Death Mountain Crater"]
@@ -2674,7 +2674,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Middle Floors", imageName: "Goron Tunic" },
                 Exits: {
                     lostWoodsRocks: {
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             ItemLocationSets.ROCKS_BLOCKING_LOST_WOODS,
                             ItemSets.BLAST_OR_SMASH_ITEMS, 
                             Items.DINS_FIRE
@@ -2718,7 +2718,7 @@ let MapLocations = {
                                 Settings.RandomizerSettings.rupeeAndHeartSetting == ShuffleLocationSettings.DUNGEON_ONLY;
                         },
                         LongDescription: "First, light the torches at the bottom of the city. You can either use the lit torch in Darunia's room, or Din's Fire. After that, throw a Bomb or Bomb Flower so that the urn stops on the happiest face to get the item.",
-                        RequiredChoiceOfItems: [Items.BOMB, Equipment.STRENGTH, GlitchItemSets.URN_WITH_CHUS]
+                        NeedsAny: [Items.BOMB, Equipment.STRENGTH, GlitchItemSets.URN_WITH_CHUS]
                     },
                     "9 Items From Spinning Urn": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2728,7 +2728,7 @@ let MapLocations = {
                         MapInfo: { x: 189, y: 135 },
                         Age: Age.CHILD,
                         LongDescription: "First, light the torches at the bottom of the city. You can either use the lit torch in Darunia's room, or Din's Fire. After that, throw a Bomb or Bomb Flower so that the urn stops on the face you want.",
-                        RequiredChoiceOfItems: [Items.BOMB, Equipment.STRENGTH, GlitchItemSets.URN_WITH_CHUS]
+                        NeedsAny: [Items.BOMB, Equipment.STRENGTH, GlitchItemSets.URN_WITH_CHUS]
                     }
                 }
             },
@@ -2755,7 +2755,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Before Rocks", imageName: "Bomb" },
                 Exits: {
                     upstream: {
-                        RequiredChoiceOfChildItems: [ItemSets.BLAST_OR_SMASH_ITEMS, ItemLocationSets.ROCKS_BLOCKING_ZORAS_RIVER]
+                        ChildNeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, ItemLocationSets.ROCKS_BLOCKING_ZORAS_RIVER]
                     },
                     "Hyrule Field": {
                         OwExit: OwExits["Zora's River"]["Hyrule Field"]
@@ -2774,7 +2774,7 @@ let MapLocations = {
                         MapImageName: "Bomb",
                         Age: Age.CHILD,
                         LongDescription: "Used for co-op. These are the rocks blocking the entrance to Zora's River.",
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS],
+                        Needs: [ItemSets.BLAST_OR_SMASH_ITEMS],
                         CoOpOnly: true
                     },
                     "4 Wonderitems in River by Hyrule Field": {
@@ -2796,7 +2796,7 @@ let MapLocations = {
                 Exits: {
                     downstream: {},
                     inWaterfall: {
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             Songs.ZELDAS_LULLABY,
                             GlitchItemSets.CUCCO_TO_ZORAS_DOMAIN,
                             GlitchItemSets.HOVERS_TO_ZORAS_DOMAIN,
@@ -2842,7 +2842,7 @@ let MapLocations = {
                         MapInfo: { x: 125, y: 94 },
                         Age: Age.EITHER,
                         LongDescription: "In the middle of the map, there's a heart piece on a high up platform. You can get this as a child using cuccos to fly to the platform.<br/><br/>As adult, you can use hover boots from the cliff that you take a ladder to get up.<br/><br/>To megaflip there: from the top with the gossip stone, go to the edge of the cliff and C-Up to face the item. Backflip and turn around. Megaflip from this spot and let go of all buttons.",
-                        RequiredChoiceOfAdultItems: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        AdultNeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     "Frog Songs": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2862,7 +2862,7 @@ let MapLocations = {
                         MapInfo: { x: 132, y: 153 },
                         Age: Age.ADULT,
                         LongDescription: "At night, go up the ladder closest to Hyrule Field. Jump to the cliff behind you to find the skulltula.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Gossip Stone on Cliff": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -2886,14 +2886,14 @@ let MapLocations = {
                         MapInfo: { x: 249, y: 62 },
                         Age: Age.ADULT,
                         LongDescription: "At night, a little after the wooden bridge leading to Zora's Domain, you'll find a skulltula high up on the wall. You can get it with the hookshot if you stand on the fence.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Heart Piece by Zora's Domain": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 266, y: 56 },
                         Age: Age.EITHER,
                         LongDescription: "At the end of the river, there's a heart piece on a platform. As child, you can jump there with a cucco or nab it with a Boomerang. As adult, you must use the Hover Boots.",
-                        RequiredChoiceOfAdultItems: [
+                        AdultNeedsAny: [
                             Equipment.HOVER_BOOTS, 
                             GlitchItemSets.ADULT_WATERFALL_HP_JUMP, 
                             GlitchItemSets.CHU_MEGA_FLIP]
@@ -3002,13 +3002,13 @@ let MapLocations = {
                 DuplicateWarpSongPriority: 1,
                 Exits: {
                     behindKing: {
-                        RequiredChoiceOfChildItems: [
+                        ChildNeedsAny: [
                             ItemLocationSets.MOVE_KING_ZORA,
                             Items.RUTOS_LETTER,
                             SettingSets.OPEN_ZORAS_FOUNTAIN,
                             GlitchItemSets.CHILD_KING_ZORA_SKIP
                         ],
-                        RequiredChoiceOfAdultItems: [
+                        AdultNeedsAny: [
                             ItemLocationSets.MOVE_KING_ZORA,
                             SettingSets.OPEN_ADULT_ZORAS_FOUNTAIN,
                             GlitchItemSets.ADULT_KING_ZORA_SKIP
@@ -3056,7 +3056,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 232, y: 38 },
                         MapImageName: "Ruto's Letter",
-                        RequiredItems: [Items.RUTOS_LETTER],
+                        Needs: [Items.RUTOS_LETTER],
                         Age: Age.CHILD,
                         LongDescription: "Show Ruto's letter to the king."
                     },
@@ -3109,7 +3109,7 @@ let MapLocations = {
                         MapImageName: "Prescription",
                         Age: Age.ADULT,
                         LongDescription: "After thawing King Zora, show him the prescription to get an item.",
-                        RequiredItems: [AdultTradeItems.PRESCRIPTION, ItemLocationSets.THAW_KING_ZORA]
+                        Needs: [AdultTradeItems.PRESCRIPTION, ItemLocationSets.THAW_KING_ZORA]
                     },
                     "Skulltula on Top of Waterfall": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3117,7 +3117,7 @@ let MapLocations = {
                         MapInfo: { x: 168, y: 68 },
                         Age: Age.ADULT,
                         LongDescription: "At night, make your way up to where the Diving Game start was. On the side of the wall by the waterfall, you'll find a skulltula. If you have no hookshot, you can kill it with a bow or Din's fire and get it with an angled jump. If you fall without getting it, it will respawn.",
-                        RequiredChoiceOfItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Items.FAIRY_BOW, Items.DINS_FIRE]
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Items.FAIRY_BOW, Items.DINS_FIRE]
                     },
 
                     // Top to Bottom Errands
@@ -3127,7 +3127,7 @@ let MapLocations = {
                         MapInfo: { x: 154, y: 132 },
                         Age: Age.CHILD,
                         LongDescription: "Start at King Zora. Light a Deku Stick on one of the torches and make your way down the stairs. Light the next torch. Follow the left wall, lighting the torches as you go. Once you light the ones in the waterfall, a chest will spawn.",
-                        RequiredItems: [Items.DEKU_STICK]
+                        Needs: [Items.DEKU_STICK]
                     },
                     "Diving Minigame": {
                         ItemGroup: ItemGroups.GIFT,
@@ -3143,7 +3143,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "By King Zora", imageName: "Ruto's Letter" },
                 Exits: {
                     main: {
-                        RequiredItems: [ItemLocationSets.MOVE_KING_ZORA]
+                        Needs: [ItemLocationSets.MOVE_KING_ZORA]
                     },
                     "Zora's Fountain": {
                         OwExit: OwExits["Zora's Domain"]["Zora's Fountain"]
@@ -3171,7 +3171,7 @@ let MapLocations = {
                 Exits: {
                     hiddenTunnel: {
                         Age: Age.ADULT,
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS],
                             GlitchItemSets.LONGSHOT_WEIRD_SHOT]
                     },
@@ -3216,7 +3216,7 @@ let MapLocations = {
                         MapInfo: { x: 81, y: 177 },
                         Age: Age.CHILD,
                         LongDescription: "At night, you'll find this skulltula on the wall by the giant log.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Skulltula in Tree": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3245,7 +3245,7 @@ let MapLocations = {
                         MapInfo: { x: 209, y: 137 },
                         Age: Age.ADULT,
                         LongDescription: "Use your iron boots to sink to the middle of the lake. Note that walking down is faster than sinking down! Same applies for going back up.",
-                        RequiredItems: [Equipment.IRON_BOOTS]
+                        Needs: [Equipment.IRON_BOOTS]
                     },
                     "18 Underwater Green Rupees": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3254,7 +3254,7 @@ let MapLocations = {
                         DefaultEntranceGroupName: "18 Green Rupees",
                         MapInfo: { x: 235, y: 137 },
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.IRON_BOOTS],
+                        Needs: [Equipment.IRON_BOOTS],
                         LongDescription: "Use your Iron Boots to search the bottom of the fountain for these 18 items.",
                     }
                 }
@@ -3279,7 +3279,7 @@ let MapLocations = {
                         MapInfo: { x: 312, y: 154 },
                         Age: Age.ADULT,
                         LongDescription: "At night, go to the southeast corner of the map. Pick up the silver rock and go down the path. Beware of invisible giant skulltulas! You'll find the skulltula you want after you climb the wall.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             }
@@ -3352,7 +3352,7 @@ let MapLocations = {
                         MapInfo: { x: 104, y: 89 },
                         Age: Age.CHILD,
                         LongDescription: "At night, you can find this skulltula on the side of the Lakeside Lab that's nearest the bridge. You can actually jumpslash to the token from the bridge if you don't have the boomerang.",
-                        RequiredChoiceOfItems: [Items.BOOMERANG, ItemSets.SWORDS]
+                        NeedsAny: [Items.BOOMERANG, ItemSets.SWORDS]
                     },
                     "Claim Scarecrow's Song": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -3361,14 +3361,14 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Take out the ocarina (OI works) by the lower scarecrow and play it the last song you taught it as Child.",
                         RequiredToAppear: function() { return !Songs.SCARECROWS_SONG.playerHas; },
-                        RequiredItems: [ItemLocationSets.PLAY_SONG_FOR_BONOORU]
+                        Needs: [ItemLocationSets.PLAY_SONG_FOR_BONOORU]
                     },
                     "Heart Piece on Lab": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 111, y: 67 },
                         Age: Age.ADULT,
                         LongDescription: "The goal here is to get to the top of the Lakeside Lab. Either ride the bean plant up, or play Scarecrow's Song and hookshot it. Afterward, climb the ladder to get to the item. Watch out for the Guays!",
-                        RequiredChoiceOfItems: [GameStateSets.CAN_HOOK_SCARECROW, BeanSets.LAKE_HYLIA]
+                        NeedsAny: [GameStateSets.CAN_HOOK_SCARECROW, BeanSets.LAKE_HYLIA]
                     },
                     "Gossip Stone by Lab and Waterfall": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -3393,7 +3393,7 @@ let MapLocations = {
                         DefaultEntranceGroupName: "2 Green Rupees",
                         MapInfo: { x: 169, y: 105 },
                         Age: Age.CHILD,
-                        RequiredItems: [UpgradedItems.SILVER_SCALE],
+                        Needs: [UpgradedItems.SILVER_SCALE],
                         LongDescription: "These items are by the entrance to Zora's Domain - you need a scale to be able to reach them."
                     },
                     "Ruto's Letter": {
@@ -3401,7 +3401,7 @@ let MapLocations = {
                         MapInfo: { x: 171, y: 116 },
                         Age: Age.CHILD,
                         LongDescription: "You'll find this item in the water near the entrance to Zora's Domain. Navi will fly to it when you're close.",
-                        RequiredItems: [Equipment.SCALE]
+                        Needs: [Equipment.SCALE]
                     },
 
                     // Islands
@@ -3419,7 +3419,7 @@ let MapLocations = {
                         MapInfo: { x: 198, y: 213 },
                         Age: Age.ADULT,
                         LongDescription: "At night, longshot all the way up the tree on the middle island. You'll find the skulltula on top.",
-                        RequiredChoiceOfItems: [UpgradedItems.LONGSHOT, GlitchItemSets.LAKE_TREE_SKULL_WITH_HOOKSHOT]
+                        NeedsAny: [UpgradedItems.LONGSHOT, GlitchItemSets.LAKE_TREE_SKULL_WITH_HOOKSHOT]
                     },
                     "Fire Arrows": {
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -3427,8 +3427,8 @@ let MapLocations = {
                         MapInfo: { x: 247, y: 236 },
                         Age: Age.ADULT,
                         LongDescription: "First, get to the platform in the center of the lake - the one with the tree. When the sun is just coming up, stand on the sign and shoot an arrow at it. The item should then spawn. You can get over there either by beating Morpha and swimming there, or by playing Scarecrow's Song and longshotting it.",
-                        RequiredItems: [Items.FAIRY_BOW],
-                        RequiredChoiceOfItems: [GameStateSets.CAN_LONGSHOT_SCARECROW, ItemLocationSets.DEFEATED_MORPHA]
+                        Needs: [Items.FAIRY_BOW],
+                        NeedsAny: [GameStateSets.CAN_LONGSHOT_SCARECROW, ItemLocationSets.DEFEATED_MORPHA]
                     },
                     "Southwest Gossip Stone": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -3455,8 +3455,8 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Hyrule Field Side", imageName: "Kokiri Sword" },
                 Exits: {
                     acrossBridge: {
-                        RequiredChoiceOfChildItems: [GlitchItemSets.STAIRCASE_HOVER, GlitchItemSets.CUCCO_JUMP],
-                        RequiredChoiceOfAdultItems: [
+                        ChildNeedsAny: [GlitchItemSets.STAIRCASE_HOVER, GlitchItemSets.CUCCO_JUMP],
+                        AdultNeedsAny: [
                             SettingSets.OPEN_GERUDO_FORTRESS,
                             UpgradedItems.LONGSHOT,
                             ItemLocationSets.ITEM_FROM_GERUDO,
@@ -3467,7 +3467,7 @@ let MapLocations = {
                     },
                     chasmSilverRockLedge: {},
                     chasmCrateLedge: {
-                        RequiredChoiceOfAdultItems: [
+                        AdultNeedsAny: [
                             UpgradedItems.LONGSHOT,
                             GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS,
                             GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS] 
@@ -3485,7 +3485,7 @@ let MapLocations = {
                         MapInfo: { x: 264, y: 56 },
                         Age: Age.CHILD,
                         LongDescription: "At night, look to the right of the first tiny bridge by the tiny waterfall. The skulltula is by the water source.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },
@@ -3493,7 +3493,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Gerudo Fortress Side", imageName: "Gerudo Mask" },
                 Exits: {
                     main: {
-                        RequiredChoiceOfAdultItems: [
+                        AdultNeedsAny: [
                             SettingSets.OPEN_GERUDO_FORTRESS,
                             UpgradedItems.LONGSHOT,
                             ItemLocationSets.ITEM_FROM_GERUDO,
@@ -3504,10 +3504,10 @@ let MapLocations = {
                         ]
                     },
                     chasmSilverRockLedge: {
-                        RequiredItems: [GlitchItemSets.MEGA_FLIP]
+                        Needs: [GlitchItemSets.MEGA_FLIP]
                     },
                     chasmCrateLedge: {
-                        RequiredChoiceOfItems: [UpgradedItems.LONGSHOT, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [UpgradedItems.LONGSHOT, GlitchItemSets.MEGA_FLIP]
                     },
                     chasm: {},
                     "Gerudo Fortress": {
@@ -3529,7 +3529,7 @@ let MapLocations = {
                         MapInfo: { x: 131, y: 120 },
                         Age: Age.ADULT,
                         LongDescription: "Across the bridge, there are some rocks to the right. Use your hammer on them to reveal the chest.",
-                        RequiredChoiceOfItems: [Items.MEGATON_HAMMER, GlitchItemSets.WEIRD_SHOT]
+                        NeedsAny: [Items.MEGATON_HAMMER, GlitchItemSets.WEIRD_SHOT]
                     },
                     "Show Poacher's Saw to Carpenter": {
                         ItemGroup: ItemGroups.GIFT,
@@ -3538,7 +3538,7 @@ let MapLocations = {
                         MapImageName: "Poacher's Saw",
                         Age: Age.ADULT,
                         LongDescription: "Show the carpenter boss (in front of the tent) the Poacher's Saw to receive an item.",
-                        RequiredItems: [AdultTradeItems.POACHERS_SAW],
+                        Needs: [AdultTradeItems.POACHERS_SAW],
                         PostObtain: function(playerHas, skipSocketUpdate) {
                             let otherItemLocation = MapLocations["Kakariko Village"].Regions.main.ItemLocations["Show Poacher's Saw to Carpenter"];
                             Data.setItemObtained(otherItemLocation, playerHas, true);
@@ -3555,7 +3555,7 @@ let MapLocations = {
                         MapInfo: { x: 144, y: 103 },
                         Age: Age.ADULT,
                         LongDescription: "At night, there's a skulltula high up on the pillar near the rocks to the left side of the area across the bridge.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Skulltula Behind Tent": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3564,7 +3564,7 @@ let MapLocations = {
                         MapInfo: { x: 144, y: 46 },
                         Age: Age.ADULT,
                         LongDescription: "At night, there's a skulltula on the wall behind the tent.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },
@@ -3684,7 +3684,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Ground Level", imageName: "Gerudo Membership Card" },
                 Exits: {
                     middleFloor: {
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             UpgradedItems.LONGSHOT,
                             Equipment.HOVER_BOOTS,
                             GlitchItemSets.GF_JUMP_TO_MIDDLE_FLOOR,
@@ -3692,22 +3692,22 @@ let MapLocations = {
                     },
                     topOfKitchen: {
                         Age: Age.ADULT,
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     aboveJail1: {
                         // Can talk to gate guard to get jailed if you have membership card
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     aboveLinksJail: {
                         Age: Age.ADULT,
-                        RequiredItems: [GlitchItemSets.GF_HOOKSHOT_TO_ABOVE_LINKS_JAIL]
+                        Needs: [GlitchItemSets.GF_HOOKSHOT_TO_ABOVE_LINKS_JAIL]
                     },
                     backArea: {
-                        RequiredAdultItems: [GameStateSets.ARE_GERUDO_GUARDS_TAME]
+                        AdultNeeds: [GameStateSets.ARE_GERUDO_GUARDS_TAME]
                     },
                     wastelandEntrance: {
-                        RequiredChoiceOfItems: [GameStateSets.ARE_GERUDO_GUARDS_TAME, GlitchItemSets.GF_CHILD_GATE_SKIP]
+                        NeedsAny: [GameStateSets.ARE_GERUDO_GUARDS_TAME, GlitchItemSets.GF_CHILD_GATE_SKIP]
                     },
 
                     // Ground Level
@@ -3759,7 +3759,7 @@ let MapLocations = {
                         MapImageName: "Hookshot Wonderitem",
                         MapInfo: { x: 97, y: 228 },
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT],
+                        Needs: [Items.HOOKSHOT],
                         LongDescription: "Shoot the overhanging sign by the entrance to Gerudo Valley with your hookshot to get this wonderitem. Note that it only works if you shoot it from the south."
                     },
                     "Opened Gate": {
@@ -3769,7 +3769,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         Region: "main",
                         LongDescription: "Talk to the gerudo guard at the top of the ladder to open the gate.",
-                        RequiredItems: [GameStateSets.ARE_GERUDO_GUARDS_TAME]
+                        Needs: [GameStateSets.ARE_GERUDO_GUARDS_TAME]
                     },
                     "2 Crates Right of Bottom Left Door": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3802,7 +3802,7 @@ let MapLocations = {
                         Age: Age.ADULT
                     },
                     jail4Door: {
-                        RequiredItems: [GlitchItemSets.MEGA_FLIP]
+                        Needs: [GlitchItemSets.MEGA_FLIP]
                     },
                     "Middle Left Door": {
                         OwExit: OwExits["Gerudo Fortress"]["Middle Left Door"]
@@ -3828,9 +3828,9 @@ let MapLocations = {
                     jail4Door: {},
                     middleFloor: {},
                     topOfFortress: {
-                        RequiredChildItems: [GlitchItemSets.MEGA_FLIP],
-                        RequiredChoiceOfChildItems: [GlitchItemSets.GF_CHILD_JUMP_BY_TOP_KITCHEN, GlitchItemSets.GROUND_JUMP],
-                        RequiredChoiceOfAdultItems: [
+                        ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+                        ChildNeedsAny: [GlitchItemSets.GF_CHILD_JUMP_BY_TOP_KITCHEN, GlitchItemSets.GROUND_JUMP],
+                        AdultNeedsAny: [
                             UpgradedItems.LONGSHOT,
                             Equipment.HOVER_BOOTS,
                             GameStateSets.CAN_HOOK_SCARECROW,
@@ -3840,7 +3840,7 @@ let MapLocations = {
                         // There is apparently a trick (logic_gf_break_room_jump) to do this with a precise jump as Adult
                         // from near the skulltula platform, but no idea how to do it
                         Age: Age.EITHER,
-                        RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     "Upper Kitchen Door": {
                         OwExit: OwExits["Gerudo Fortress"]["Upper Kitchen Door"]
@@ -3918,11 +3918,11 @@ let MapLocations = {
                     aboveJail1: {},
                     topOfFortress: {
                         Age: Age.ADULT,
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     wastelandEntrance: {
                         Age: Age.ADULT,
-                        RequiredItems: [GlitchItemSets.GF_ADULT_GATE_SKIP]
+                        Needs: [GlitchItemSets.GF_ADULT_GATE_SKIP]
                     },
                     "Door Above Link's Jail": {
                         OwExit: OwExits["Gerudo Fortress"]["Door Above Link's Jail"]
@@ -3956,7 +3956,7 @@ let MapLocations = {
                         MapImageName: "Hookshot Wonderitem",
                         MapInfo: { x: 164, y: 222 },
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT],
+                        Needs: [Items.HOOKSHOT],
                         LongDescription: "Shoot the overhanging sign by the entrance to horseback archery with your hookshot to get this wonderitem. Note that it only works if you shoot it from the fortress side."
                     },
                     "2 Crates by HBA Right Target": {
@@ -4005,7 +4005,7 @@ let MapLocations = {
                         MapInfo: { x: 246, y: 220 },
                         Age: Age.ADULT,
                         LongDescription: "Ride Epona to the back section of the map during the day. Talk to the Gerudo there to play the archery minigame. Score 1000 points to claim your prize.",
-                        RequiredItems: [Items.FAIRY_BOW, GameStateSets.CAN_RIDE_EPONA]
+                        Needs: [Items.FAIRY_BOW, GameStateSets.CAN_RIDE_EPONA]
                     },
                     "Archery Minigame 1500 Points": {
                         ItemGroup: ItemGroups.GIFT,
@@ -4013,7 +4013,7 @@ let MapLocations = {
                         MapInfo: { x: 246, y: 225 },
                         Age: Age.ADULT,
                         LongDescription: "Ride Epona to the back section of the map during the day. Talk to the Gerudo there to play the archery minigame. Score 1500 points to claim your prize.",
-                        RequiredItems: [Items.FAIRY_BOW, GameStateSets.CAN_RIDE_EPONA]
+                        Needs: [Items.FAIRY_BOW, GameStateSets.CAN_RIDE_EPONA]
                     },
                     "Skulltula on Target": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -4021,7 +4021,7 @@ let MapLocations = {
                         MapInfo: { x: 244, y: 40 },
                         Age: Age.ADULT,
                         LongDescription: "At night, navigate to the back part of the map. Head to the target on the left side to find this skulltula.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },
@@ -4029,7 +4029,7 @@ let MapLocations = {
                 Exits: {
                     main: {
                         DisplayGroup: { groupName: "Ground Level", imageName: "Gerudo Membership Card" },
-                        RequiredChildItems: [ItemLocationSets.GF_OPENED_GATE]
+                        ChildNeeds: [ItemLocationSets.GF_OPENED_GATE]
                     },
                     "Haunted Wasteland": {
                         OwExit: OwExits["Gerudo Fortress"]["Haunted Wasteland"]
@@ -4112,7 +4112,7 @@ let MapLocations = {
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 157, y: 96, floor: "J1" },
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW],
+                        Needs: [Items.FAIRY_BOW],
                         LongDescription: "To the left of the jail, shoot the skull on the wall to get this wonderitem."
                     },
                     "Right Skull Jail 1 Wonderitem": {
@@ -4120,14 +4120,14 @@ let MapLocations = {
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 157, y: 196, floor: "J1" },
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW],
+                        Needs: [Items.FAIRY_BOW],
                         LongDescription: "To the right of the jail, shoot the skull on the wall to get this wonderitem."
                     },
                     "Jail 1 Guard Key": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 213, y: 129, floor: "J1" },
                         Age: Age.EITHER,
-                        RequiredItems: [ItemSets.SWORDS],
+                        Needs: [ItemSets.SWORDS],
                         RequiredToAppear: function() { 
                             return Settings.RandomizerSettings.openGerudosFortress !== OpenGerudosFortressSettings.OPEN;
                         },
@@ -4167,7 +4167,7 @@ let MapLocations = {
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 173, y: 111, floor: "J2" },
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW],
+                        Needs: [Items.FAIRY_BOW],
                         LongDescription: "To the left of the jail, shoot the skull on the wall to get this wonderitem."
                     },
                     "Right Skull Jail 2 Wonderitem": {
@@ -4175,14 +4175,14 @@ let MapLocations = {
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 173, y: 184, floor: "J2" },
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW],
+                        Needs: [Items.FAIRY_BOW],
                         LongDescription: "To the right of the jail, shoot the skull on the wall to get this wonderitem."
                     },
                     "Jail 2 Guard Key": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 207, y: 132, floor: "J2" },
                         Age: Age.EITHER,
-                        RequiredItems: [ItemSets.SWORDS],
+                        Needs: [ItemSets.SWORDS],
                         RequiredToAppear: function() { 
                             return Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.VANILLA;
                         },
@@ -4235,7 +4235,7 @@ let MapLocations = {
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 267, y: 147, floor: "J3" },
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW],
+                        Needs: [Items.FAIRY_BOW],
                         LongDescription: "To the left of the jail, shoot the skull on the wall to get this wonderitem."
                     },
                     "Right Skull Jail 3 Wonderitem": {
@@ -4243,14 +4243,14 @@ let MapLocations = {
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 115, y: 147, floor: "J3" },
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW],
+                        Needs: [Items.FAIRY_BOW],
                         LongDescription: "To the right of the jail, shoot the skull on the wall to get this wonderitem."
                     },
                     "Jail 3 Guard Key": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 207, y: 188, floor: "J3" },
                         Age: Age.EITHER,
-                        RequiredItems: [ItemSets.SWORDS],
+                        Needs: [ItemSets.SWORDS],
                         RequiredToAppear: function() { 
                             return Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.VANILLA;
                         },
@@ -4279,7 +4279,7 @@ let MapLocations = {
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 202, y: 178, floor: "J4" },
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW],
+                        Needs: [Items.FAIRY_BOW],
                         LongDescription: "Shoot the skull on the wall after the first right turn in the jail 4 area. to get this wonderitem."
                     },
                     "Skull Before Jail 4": {
@@ -4287,14 +4287,14 @@ let MapLocations = {
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 142, y: 68, floor: "J4" },
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW],
+                        Needs: [Items.FAIRY_BOW],
                         LongDescription: "Shoot the skull on the wall on the turn just before jail 4 to get this wonderitem."
                     },
                     "Jail 4 Guard Key": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 303, y: 38, floor: "J4" },
                         Age: Age.EITHER,
-                        RequiredItems: [ItemSets.SWORDS],
+                        Needs: [ItemSets.SWORDS],
                         RequiredToAppear: function() { 
                             return Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.VANILLA;
                         },
@@ -4308,7 +4308,7 @@ let MapLocations = {
                 Exits: {
                     jail1: {}, // Savewarp
                     kitchenTopLeft: {
-                        RequiredChoiceOfItems: [GameStateSets.CAN_STUN_KITCHEN_GUARDS, GlitchItemSets.GF_PASS_KITCHEN_GUARDS]
+                        NeedsAny: [GameStateSets.CAN_STUN_KITCHEN_GUARDS, GlitchItemSets.GF_PASS_KITCHEN_GUARDS]
                     },
                     "Kitchen Far Bottom": {
                         OwExit: OwExits["Thieves' Hideout"]["Kitchen Far Bottom"]
@@ -4341,7 +4341,7 @@ let MapLocations = {
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 120, y: 251, floor: "KIT" },
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW],
+                        Needs: [Items.FAIRY_BOW],
                         LongDescription: "Shoot the skull at the end of the hallway leading to the kitchen to get this wonderitem."
                     },
                     "Crate Close to Kitchen": {
@@ -4349,7 +4349,7 @@ let MapLocations = {
                         MapInfo: { x: 203, y: 250, floor: "KIT" },
                         Age: Age.EITHER,
                         LongDescription: "This is the crate right next to the kitchen - you'll need to deal with one of the guards to get it. To sneak past, you can hide in the corner by the crate and wait for her to pass. You have a limited time after to bonk the crate.",
-                        RequiredChoiceOfItems: [GameStateSets.CAN_STUN_KITCHEN_GUARDS, GlitchItemSets.GF_PASS_KITCHEN_GUARDS]
+                        NeedsAny: [GameStateSets.CAN_STUN_KITCHEN_GUARDS, GlitchItemSets.GF_PASS_KITCHEN_GUARDS]
                     },
                     "Rupee in Soup Pot": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -4357,7 +4357,7 @@ let MapLocations = {
                         MapInfo: { x: 269, y: 258, floor: "KIT" },
                         Age: Age.EITHER,
                         LongDescription: "Shoot the skull at the end of the hallway leading to the kitchen to get this wonderitem.",
-                        RequiredItems: [GameStateSets.CAN_STUN_KITCHEN_GUARDS]
+                        Needs: [GameStateSets.CAN_STUN_KITCHEN_GUARDS]
                     }
                 }
             },
@@ -4367,15 +4367,15 @@ let MapLocations = {
                 Exits: {
                     jail1: {}, // Savewarp
                     kitchenPots: {
-                        RequiredChoiceOfItems: [Items.BOOMERANG, GameStateSets.CAN_STUN_KITCHEN_GUARDS]
+                        NeedsAny: [Items.BOOMERANG, GameStateSets.CAN_STUN_KITCHEN_GUARDS]
                     },
                     kitchenHallway: {
                         // Their logic says that you can get here without anything with the pass guards trick on
                         // But it's way too hard!
-                        RequiredChoiceOfItems: [GameStateSets.CAN_STUN_KITCHEN_GUARDS]
+                        NeedsAny: [GameStateSets.CAN_STUN_KITCHEN_GUARDS]
                     },
                     kitchenTopRight: {
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             Equipment.HOVER_BOOTS,
                             GameStateSets.CAN_STUN_KITCHEN_GUARDS,
                             GlitchItemSets.GF_PASS_KITCHEN_GUARDS,
@@ -4393,10 +4393,10 @@ let MapLocations = {
                 Exits: {
                     jail1: {}, // Savewarp
                     kitchenPots: {
-                        RequiredChoiceOfItems: [Items.BOOMERANG, GameStateSets.CAN_STUN_KITCHEN_GUARDS]
+                        NeedsAny: [Items.BOOMERANG, GameStateSets.CAN_STUN_KITCHEN_GUARDS]
                     },
                     kitchenTopLeft: {
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             Equipment.HOVER_BOOTS,
                             GameStateSets.CAN_STUN_KITCHEN_GUARDS,
                             GlitchItemSets.GF_PASS_KITCHEN_GUARDS,
@@ -4436,7 +4436,7 @@ let MapLocations = {
                     jail1: {}, //Savewarp
                     topUpper: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Top Room Lower": {
                         OwExit: OwExits["Thieves' Hideout"]["Top Room Lower"]
@@ -4462,15 +4462,15 @@ let MapLocations = {
                         MapInfo: { x: 345, y: 127, floor: "TOP" },
                         Age: Age.EITHER,
                         LongDescription: "Deal with the guard that's moving. The crate is to the right when you enter the main room - the one close to the corner.<br/><br/>Child can get this without dealing with the stationary guard if you stay close to the wall.<br/><br/>Adult can get this one without dealing with the stationary guard if you bonk into it while staying more to the right.",
-                        RequiredChoiceOfItems: [ItemSets.SWORDS, GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE]
+                        NeedsAny: [ItemSets.SWORDS, GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE]
                     },
                     "Upper Room Far Corner Crate": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 345, y: 117, floor: "TOP" },
                         Age: Age.EITHER,
                         LongDescription: "Deal with the guard that's moving. The crate is to the right when you enter the main room - the one farther from the corner.<br/>Child can get this one if you hug the wall the whole time.<br/>Adult can stab the stationary guard if you crouchstab her, but be careful not to get too close!",
-                        RequiredChoiceOfChildItems: [GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE, ItemSets.SWORDS],
-                        RequiredChoiceOfAdultItems: [
+                        ChildNeedsAny: [GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE, ItemSets.SWORDS],
+                        AdultNeedsAny: [
                             GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE,
                             [ItemSets.SWORDS, ItemSets.SHIELDS]], // Need to crouch stab the stationary guard
                     },
@@ -4482,7 +4482,7 @@ let MapLocations = {
                         MapInfo: { x: 309, y: 96, floor: "TOP" },
                         Age: Age.EITHER,
                         LongDescription: "These pots can be retrieved with the boomerang if you're quick. If you can't get them that way...<br/><br/>Deal with the guard that's moving. If you have a shield, and either the Master Sword or a Deku Stick, you can crouchstab the stationary guard, but be careful not to get too close!",
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE,
                             Items.BOOMERANG,
                             [Equipment.MASTER_SWORD, Items.DEKU_STICK, ItemSets.SHIELDS], // Kokiri sword isn't long enough
@@ -4493,7 +4493,7 @@ let MapLocations = {
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 186, y: 125, floor: "TOP" },
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW],
+                        Needs: [Items.FAIRY_BOW],
                         LongDescription: "Navigate to the barrier leading to the upper area, then turn around. Shoot the skull up high to get this wonderitem."
                     }
                 }
@@ -4505,7 +4505,7 @@ let MapLocations = {
                     jail1: {}, //Savewarp
                     topLower: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Top Room Upper": {
                         OwExit: OwExits["Thieves' Hideout"]["Top Room Upper"]
@@ -4522,7 +4522,7 @@ let MapLocations = {
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 75, y: 125, floor: "TOP" },
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW],
+                        Needs: [Items.FAIRY_BOW],
                         LongDescription: "Navigate to the barrier leading to the lower area, then turn around. Shoot the skull up high to get this wonderitem."
                     }
                 }
@@ -4538,7 +4538,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Fortress Side", imageName: "Gerudo Membership Card" },
                 Exits: {
                     outpost: {
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             UpgradedItems.LONGSHOT,
                             Equipment.HOVER_BOOTS,
                             GlitchItemSets.HW_ITEMLESS_SAND_PIT]
@@ -4564,10 +4564,10 @@ let MapLocations = {
                 ExcludeFromSpawnList: true,
                 Exits: {
                     entrance: {
-                        RequiredItems: [GlitchItemSets.BACKWARDS_WASTELAND]
+                        Needs: [GlitchItemSets.BACKWARDS_WASTELAND]
                     },
                     exit: {
-                        RequiredChoiceOfItems: [Items.LENS_OF_TRUTH, GlitchItemSets.WASTELAND_NO_LENS]
+                        NeedsAny: [Items.LENS_OF_TRUTH, GlitchItemSets.WASTELAND_NO_LENS]
                     }
                 },
 
@@ -4586,22 +4586,22 @@ let MapLocations = {
                         MapInfo: { x: 239, y: 292 },
                         Age: Age.EITHER,
                         LongDescription: "After you cross the sand pit, the shop is along the path to your left. There is a sign by one of the flags that points to it. If you don't have hover boots, you can rolljump, then jumpslash to the corner of the carpet.<br/><br/>If this and medigoron aren't shuffled, this shop will ALWAYS sell bombchus.",
-                        RequiredItems: [UpgradedItems.ADULTS_WALLET],
-                        RequiredChoiceOfItems: [ItemSets.SWORDS, Equipment.HOVER_BOOTS]
+                        Needs: [UpgradedItems.ADULTS_WALLET],
+                        NeedsAny: [ItemSets.SWORDS, Equipment.HOVER_BOOTS]
                     },
                     "Skulltula at Outpost": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 208, y: 85 },
                         Age: Age.EITHER,
                         LongDescription: "The skulltula is in the outpost in the center of the desert.",
-                        RequiredChoiceOfItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
                     },
                     "Chest at Outpost": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 208, y: 93 },
                         Age: Age.EITHER,
                         LongDescription: "In the outpost in the center of the desert, light the two torches to spawn a chest.",
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
                     },
                     "4 Pots at Outpost": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -4618,7 +4618,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Colossus Side", imageName: "Spirit Medallion" },
                 Exits: {
                     outpost: {
-                        RequiredItems: [GlitchItemSets.BACKWARDS_WASTELAND]
+                        Needs: [GlitchItemSets.BACKWARDS_WASTELAND]
                     },
                     "Desert Colossus": {
                         OwExit: OwExits["Haunted Wasteland"]["Desert Colossus"]
@@ -4645,7 +4645,7 @@ let MapLocations = {
                 Exits: {
                     archway: {
                         Age: Age.ADULT,
-                        RequiredItems: [BeanSets.DESERT_COLOSSUS]
+                        Needs: [BeanSets.DESERT_COLOSSUS]
                     },
 
                     // North Area
@@ -4685,7 +4685,7 @@ let MapLocations = {
                         MapInfo: { x: 213, y: 91 },
                         Age: Age.ADULT,
                         LongDescription: "At night, there is a skulltula on a small cliff near the north middle edge of the map. You can hookshot it if the Leevers leave you alone long enough. An easier solution is to ride the bean platform and jump off of it so that you're on top.",
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             BeanSets.DESERT_COLOSSUS,
                             Items.HOOKSHOT,
                             GlitchItemSets.BOOMERANG_TRICK_THROWS]
@@ -4708,7 +4708,7 @@ let MapLocations = {
                         MapInfo: { x: 180, y: 245 },
                         Age: Age.ADULT,
                         LongDescription: "At night, there's a skulltula in one of the trees by an oasis at the south middle part of the map.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
 
                     // Spirit Temple Area

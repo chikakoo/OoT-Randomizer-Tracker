@@ -18,10 +18,10 @@ let StandardDungeons = {
                 Exits: {
                     upperFloor: {},
                     slingshotRoom: {
-                        RequiredChoiceOfItems: [Equipment.DEKU_SHIELD, Equipment.HYLIAN_SHIELD, Items.MEGATON_HAMMER]
+                        NeedsAny: [Equipment.DEKU_SHIELD, Equipment.HYLIAN_SHIELD, Items.MEGATON_HAMMER]
                     },
                     basementBottom: {
-                        RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
+                        NeedsAny: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
                     },
                     Exit: {
                         OwExit: OwExits["Deku Tree"]["Exit"]
@@ -97,7 +97,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "This item can be seen on the top floor, floating close to the path left of the vines you club up. Lined up with the wall, jump from the middle of the ledge, holding neutral to get this item.",
-                        RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
+                        NeedsAny: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
                     }
                 }
             },
@@ -162,8 +162,8 @@ let StandardDungeons = {
                         MapInfo: { x: 17, y: 77, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 12,
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, QPAItemSets.MUD_WALLS_QPA],
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
+                        NeedsAny: [ItemSets.MUD_WALL_ITEMS, QPAItemSets.MUD_WALLS_QPA],
                         LongDescription: "If you make your way around the basement, you'll eventually find a circular room where gohma babies drop from the ceiling. One of the side rooms has a bombable wall. Bomb it, then enter the next room. The skulltula is high up on the wall to your left."
                     }
                 }
@@ -227,8 +227,8 @@ let StandardDungeons = {
                         },
                         MapInfo: { x: 180, y: 192, floor: "B2" },
                         MapImageName: "Deku Nut",
-                        RequiredChildItems: [Equipment.DEKU_SHIELD],
-                        RequiredAdultItems: [Equipment.HYLIAN_SHIELD],
+                        ChildNeeds: [Equipment.DEKU_SHIELD],
+                        AdultNeeds: [Equipment.HYLIAN_SHIELD],
                         Age: Age.EITHER,
                         Order: 13.1,
                         LongDescription: "Mark this after stunning the scrubs in the 2, 3, 1 order.",
@@ -275,7 +275,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "Use an explosive, hammer, or blue fire to break the first wall. This is used to determine whether Child can get in without anything.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
                     }
                 }
             },
@@ -311,7 +311,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "This stone is behind the breakable wall in the northeast corner of the main room.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     },
                     "Map Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -319,7 +319,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "Go to the left side of the big main room. Destroy the wall with an explosive, hammer, or blue fire to find this chest.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     },
                     "Scrub in Main Room": {
                         ItemGroup: ItemGroups.SCRUB,
@@ -334,7 +334,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Lower East Rooms", imageName: "Deku Stick" },
                 Exits: {
                     blueRoom: {
-                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
+                        Needs: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     }
                 },
                 ItemLocations: {
@@ -354,7 +354,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "Go to the room to the east of the main room. If you hug the right wall, you'll find a bombable wall. You can either blow it up with your own explosive, or kill a baby Dodongo near the wall.<br/><br/>Once inside, head to the back of the room to find the skulltula.",
-                        RequiredChoiceOfItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS, ItemSets.MUD_WALL_OR_QPA_ITEMS]
+                        NeedsAny: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS, ItemSets.MUD_WALL_OR_QPA_ITEMS]
                     },
                     "2 Pots by East Room Ledge": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -421,7 +421,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Lower East Rooms", imageName: "Deku Stick" },
                 Exits: {
                     staircaseBottom: {
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
+                        NeedsAny: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
                     }
                 },
                 ItemLocations: {
@@ -431,7 +431,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "From the entrance, go around the right side of the dungeon until you get to the blue room with dodongos in it. You can also jump up to the switch platform as adult and enter the door to get here. Near the usual entrance to this room, there's a mud wall with a scrub inside. You should be able to run a bomb flower to it if you don't have your own explosives.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     },
                     "3 Pots by Blue Room Start": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -457,7 +457,7 @@ let StandardDungeons = {
                 Exits: {
                     blueRoom: {},
                     skulltulaOnVines: {
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     staircaseTop: {
                         CustomRequirement: function(age) {
@@ -473,7 +473,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 15,
                         LongDescription: "Make your way to the room with the Bomb Flowers by the staircase. Destroy the wall near the front of the stairs and enter the room. The chest is here - if you can't kill the armos, you'll have to savewarp after you get the chest.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     }
                 }
             },
@@ -483,7 +483,7 @@ let StandardDungeons = {
                     skulltulaOnVines: {},
                     skulltulaAlcoveAboveStairs: {
                         Age: Age.ADULT,
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     lowerBladeRoom: {}
                 },
@@ -528,7 +528,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Lower Spiketrap Room", imageName: "2 Scrubs No Beehive" },
                 Exits: {
                     firstEyeSwitchRoom: {
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     },
                     bombChestFloor: {
                         CustomRequirement: function(age) {
@@ -538,7 +538,7 @@ let StandardDungeons = {
                         }
                     },
                     potsInBladeRoom: {
-                        RequiredItems: [Items.BOOMERANG],
+                        Needs: [Items.BOOMERANG],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.difficultBoomerangTrickThrows;
                         }
@@ -598,8 +598,8 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Upper East Rooms", imageName: "Bomb Bag" },
                 Exits: {
                     upperLizalfosRoom: {
-                        RequiredChildItems: [Items.FAIRY_SLINGSHOT],
-                        RequiredAdultItems: [Items.FAIRY_BOW]
+                        ChildNeeds: [Items.FAIRY_SLINGSHOT],
+                        AdultNeeds: [Items.FAIRY_BOW]
                     }
                 },
                 ItemLocations: {
@@ -623,10 +623,10 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Upper East Rooms", imageName: "Bomb Bag" },
                 Exits: {
                     bombChestFloor: {
-                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
+                        Needs: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     },
                     firstEyeSwitchRoom: {
-                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
+                        Needs: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     }
                 },
                 ItemLocations: {
@@ -646,7 +646,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Upper East Rooms", imageName: "Bomb Bag" },
                 Exits: {
                     inDodongoHead: {
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     },
                     potsInBladeRoom: {},
                     upperLizalfosRoom: {},
@@ -681,7 +681,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 29,
                         LongDescription: "At the end of the bridge above the giant dodongo head, destroy the wall. The chest is just inside.",
-                        RequiredItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS]
+                        Needs: [ItemSets.MUD_WALL_OR_QPA_ITEMS]
                     }
                 }
             },
@@ -695,7 +695,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 30,
                         LongDescription: "This skulltula is in an alcove above the giant staircase with the Bomb Flowers.<br/><br/>As child, you must first navigate to the switch that raises the platform to the second floor. Now, leave the dungeon and come back in. Take the platform to the second floor and proceed backwards to the staircase room - the staircase is now raised. You can climb the vines on the staircase to get to the skulltula.<br/><br/>As adult, you can do the same thing. If you have the longshot, though, you can get it without needing the staircase up if you stand on a step close to the top.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },
@@ -711,7 +711,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 31,
                         LongDescription: "This is in the series of rooms after you enter the giant dodongo head. After you climb the ledge with the pushable blocks, there's a wall you can destroy. The skulltula is inside.",
-                        RequiredItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS]
+                        Needs: [ItemSets.MUD_WALL_OR_QPA_ITEMS]
                     },
                     "2 Pots After Block Push in Back Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -761,7 +761,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Elevator Room", imageName: "Crate" },
                 Exits: {
                     elevatorRoom: {
-                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES, ItemSets.PROJECTILES, Items.BOOMERANG, Items.HOOKSHOT]
+                        NeedsAny: [ItemSets.EXPLOSIVES, ItemSets.PROJECTILES, Items.BOOMERANG, Items.HOOKSHOT]
                     },
                     Exit: {
                         OwExit: OwExits["Jabu Jabu's Belly"]["Exit"]
@@ -775,7 +775,7 @@ let StandardDungeons = {
                     basement: {},
                     tentacleRooms: {},
                     afterBigOcto: {
-                        RequiredItems: [Items.BOOMERANG, ItemSets.SWORDS]
+                        Needs: [Items.BOOMERANG, ItemSets.SWORDS]
                     },
                     roomBeforeBoss: {
                         CustomRequirement: function(age) {
@@ -830,7 +830,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "In the room below the one with the holes, there are two skulltulas on the wall. You can reach them from the bottom part with the boomerang - you may have to aim a bit into the cliff, though. Otherwise, you can wait until you kill all the Parasitic Tentacles and drop down the corresponding hole to get an easier angle.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Right Skulltula on Lower Room Wall": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -838,7 +838,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 4,
                         LongDescription: "In the room below the one with the holes, there are two skulltulas on the wall. You can reach them from the bottom part with the boomerang - you may have to aim a bit into the cliff, though. Otherwise, you can wait until you kill all the Parasitic Tentacles and drop down the corresponding hole to get an easier angle.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Skulltula on Vines": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -876,7 +876,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "Bring Ruto back up to the first floor. Take her through the room with holes into the next room. Now, hug the right wall all the way to a switch - jump on it with Ruto in your hands. Enter the room. Kill all the stingers to spawn the chest. They can be hurt with explosions, boomerang, slingshot, or jump slashes from a stick or sword.",
-                        RequiredChoiceOfItems: [Items.BOOMERANG, Items.FAIRY_SLINGSHOT, ItemSets.SWORDS, ItemSets.EXPLOSIVES]
+                        NeedsAny: [Items.BOOMERANG, Items.FAIRY_SLINGSHOT, ItemSets.SWORDS, ItemSets.EXPLOSIVES]
                     },
                     "Map Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -885,7 +885,7 @@ let StandardDungeons = {
                         UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         Order: 9,
                         LongDescription: "Bring Ruto back up to the first floor. Take her through the room with holes into the next room. Hug the left wall until you find a switch. Leave Ruto on it and enter. Kill the Parasitic Tentacle with your boomerang to spawn the chest.",
-                        RequiredItems: [Items.BOOMERANG]
+                        Needs: [Items.BOOMERANG]
                     },
                     "Compass Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -894,7 +894,7 @@ let StandardDungeons = {
                         UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         Order: 10,
                         LongDescription: "After killing the Parasitic Tentacle to spawn the Map Chest (see that section), exit the room. Now hug the left wall to the next nearby door. Kill the shaboms within the time limit to spawn this chest. Note that Deku Nuts are a really fast way to take care of this room.",
-                        RequiredItems: [Items.BOOMERANG]
+                        Needs: [Items.BOOMERANG]
                     }
                 }
             },
@@ -987,7 +987,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Starting Rooms", imageName: "Chest" },
                 Exits: {
                     lobby: {
-                        RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
+                        NeedsAny: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
                     },
                     Exit: {
                         OwExit: OwExits["Forest Temple"]["Exit"]
@@ -1101,7 +1101,7 @@ let StandardDungeons = {
                         }
                     },
                     outsideRight: {
-                        RequiredItems: [ItemSets.PROJECTILES]
+                        Needs: [ItemSets.PROJECTILES]
                     },
                     blockRoom: {
                         LockedDoor: "Locked Door in Lobby",
@@ -1109,7 +1109,7 @@ let StandardDungeons = {
                     },
                     fallingCeilingRoom: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.BOMB, Equipment.HOVER_BOOTS, ItemSets.SHIELDS],
+                        Needs: [Items.BOMB, Equipment.HOVER_BOOTS, ItemSets.SHIELDS],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.forestGreenPoeEarly;
                         }
@@ -1118,11 +1118,11 @@ let StandardDungeons = {
                     // fallingCeilingRoom and the firstPoeRoom in order to actually get here
                     basement: {
                         Age: Age.ADULT,
-                        RequiredAdultItems: [Items.FAIRY_BOW]
+                        AdultNeeds: [Items.FAIRY_BOW]
                     },
                     bossRoom: {
                         Age: Age.ADULT,
-                        RequiredAdultItems: [Items.HOOKSHOT],
+                        AdultNeeds: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.forestBKSkip;
                         }
@@ -1154,7 +1154,7 @@ let StandardDungeons = {
                         MapInfo: { x: 191, y: 110, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 5,
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go through the main room until you get to the door on the other side. Turn right to find this skulltula on the wall. You can get it with your hookshot or boomerang."
                     },
                     "Chest Behind Main Room": {
@@ -1162,7 +1162,7 @@ let StandardDungeons = {
                         MapInfo: { x: 170, y: 31, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 6,
-                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS],
+                        Needs: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS],
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go straight again through the room with the blue bubble. In the next room, kill the two stalfos to spawn the chest."
                     },
                     "2 Pots Behind Main Room": {
@@ -1181,7 +1181,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "2 Hearts" },
                 Exits: {
                     topOfOutsideRight: {
-                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
+                        Needs: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     },
                     topOfOutsideLeft: {
                         Age: Age.ADULT,
@@ -1190,14 +1190,14 @@ let StandardDungeons = {
                         }
                     },
                     outsideLeftHearts: {
-                        RequiredItems: [Items.BOOMERANG],
+                        Needs: [Items.BOOMERANG],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.difficultBoomerangTrickThrows;
                         }
                     },
                     outsideRight: {
                         // This is to swim through the well
-                        RequiredChoiceOfItems: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]
+                        NeedsAny: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]
                     }
                 },
                 ItemLocations: {
@@ -1207,7 +1207,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         MapInfo: {x: 83, y: 52, floor: "F1" },
                         Order: 18,
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         LongDescription: "There's a skulltula high up on the wall over the moat in the outside left room. You can get it from the ground with the longshot. Otherwise, you must make your way to the upper platform to grab it. This is the path that you take if you fall in the hole by the boss key chest.",
                         IsPostWalkCheck: true,
                         CustomRequirement: function(age) {
@@ -1230,18 +1230,18 @@ let StandardDungeons = {
                     },
                     outsideRightLedge: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     skulltulaOnOutsideRightLedge: {
                         Age: Age.EITHER,
-                        RequiredItems: [Items.BOOMERANG],
+                        Needs: [Items.BOOMERANG],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.forestBoomerangSkullOnLedge;
                         }
                     },
                     outsideLeft: {
                         // This is to swim through the well
-                        RequiredChoiceOfItems: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]
+                        NeedsAny: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]
                     }
                 },
                 ItemLocations: {}
@@ -1251,7 +1251,7 @@ let StandardDungeons = {
                 Exits: {
                     outsideRight: {},
                     skulltulaOnOutsideRightLedge: {
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 },
                 ItemLocations: {
@@ -1289,16 +1289,16 @@ let StandardDungeons = {
                     outsideRight: {},
                     outsideRightLedge: {
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.HOVER_BOOTS],
+                        Needs: [Equipment.HOVER_BOOTS],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.forestLedgeWithHovers;
                         }
                     },
                     outsideLeft: {
-                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
+                        Needs: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     },
                     fallingCeilingRoom: {
-                        RequiredItems: [Items.BOMBCHU],
+                        Needs: [Items.BOMBCHU],
                         CustomRequirement: function(age) {
                             // Get far on the ledge and aim just for the platform before turning around for the flip
                             // Will only work with chus
@@ -1313,7 +1313,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "You can get here from the left outside room. Proceed up the vines and into the room. Kill the blue bubble to spawn the chest. Alternatively, you can get here by longshotting up the vines in the right outside room.",
-                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
+                        Needs: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     }
                 }
             },
@@ -1337,7 +1337,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "In the outside rooms, there is a chest at the bottom of the well. One way to get there is from the left room. Proceed up the vines, kill the blue bubble, and go into the next room. Now, hookshot or jump to the vines to your left and navigate to the switch on the other platform. This will drain the water. Alternatively, you can start in the right room and longshot up these vines to get to the switch.",
-                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
+                        Needs: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     }
                 }
             },
@@ -1389,7 +1389,7 @@ let StandardDungeons = {
                         Map: "Forest Temple",
                         LockedDoor: "Locked Door by Twisted Corridor",
                         Age: Age.ADULT,
-                        RequiredItems: [ItemSets.PROJECTILES]
+                        Needs: [ItemSets.PROJECTILES]
                     }
                 },
                 ItemLocations: {}
@@ -1398,7 +1398,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Untwisted Corridor & Upper Courtyard", imageName: "Boss Key" },
                 Exits: {
                     topOfOutsideLeft: {
-                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
+                        Needs: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     }
                 },
                 ItemLocations: {
@@ -1426,7 +1426,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 19,
                         LongDescription: "Navigate to the twisted corridor. Shoot the eye switch to untwist the corridor. Now go across the corridor to the room with the boss key chest. Fall down the hole in this room and kill the bubbles to get out. Follow the right wall in this next area until you reach the first door in the side room to the right (careful of the giant deku baba). Kill the floormaster to spawn the chest.",
-                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
+                        Needs: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     }
                 }
             },
@@ -1466,7 +1466,7 @@ let StandardDungeons = {
                     afterPoeRooms: {
                         Map: "Forest Temple",
                         LockedDoor: "Locked Door in Blue Poe Room",
-                        RequiredItems: [ItemSets.SWORDS]
+                        Needs: [ItemSets.SWORDS]
                     }
                 },
                 ItemLocations: {
@@ -1476,7 +1476,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 21,
                         LongDescription: "Navigate to the twisted corridor. Make sure it's still twisted when you go down it. If you jump to the platform at the end, then turn right, you'll see a door. Go through it. Spawn the red poe by shooting the paintings on the wall. Kill it to spawn the chest. Note that Deku Nuts can be used to immediately make the poe visible again.",
-                        RequiredAdultItems: [Items.FAIRY_BOW]
+                        AdultNeeds: [Items.FAIRY_BOW]
                     },
                     "Fairy Bow Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1511,7 +1511,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 25,
                         LongDescription: "This chest is in the room after the fairy bow chest. Shoot the paintings on the wall to spawn the poe. Kill it to spawn the chest. As was the case with the red poe, you can use Deku Nuts to make it immediately visible when it vanishes.",
-                        RequiredAdultItems: [Items.FAIRY_BOW]
+                        AdultNeeds: [Items.FAIRY_BOW]
                     }
                 }
             },
@@ -1529,7 +1529,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
                 Exits: {
                     fallingCeilingRoom: {
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     }
                 },
                 ItemLocations: {
@@ -1599,7 +1599,7 @@ let StandardDungeons = {
                         MapInfo: {x: 132, y: 228, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 32,
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         LongDescription: "After defeating all the poes, head down the basement elevator. Push the wall so that they move clockwise once. You should now be able to access the room with the skulltula",
                         IsPostWalkCheck: true,
                         CustomRequirement: function(age) {
@@ -1854,7 +1854,7 @@ let StandardDungeons = {
                 Exits: {
                     bossKeyRoom: {
                         Map: "Fire Temple",
-                        RequiredItems: [Items.MEGATON_HAMMER]
+                        Needs: [Items.MEGATON_HAMMER]
                     },
                 },
                 ItemLocations: {
@@ -1871,8 +1871,8 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "To the right of the stairs at the entrance of the temple, use your hammer on the side of the column a few times to destroy it. Enter the door. Kill all the enemies and continue until you get to the Flare Dancer room. To kill it - either use your hammer or hookshot to stun it. It will take three Master Sword jumpslashes to kill it. For some reason, the Biggoron's Sword will do less damage. Also, there's no need to try to jumpslash it more than once per cycle, as it won't do damage.",
-                        RequiredChoiceOfAdultItems: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER, Items.HOOKSHOT],
-                        RequiredChoiceOfChildItems: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER],
+                        AdultNeedsAny: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER, Items.HOOKSHOT],
+                        ChildNeedsAny: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER],
                     }
                 }
             },
@@ -2046,7 +2046,7 @@ let StandardDungeons = {
                     },
                     goronInPit: {
                         Age: Age.ADULT,
-                        RequiredAdultItems: [Items.BOMB],
+                        AdultNeeds: [Items.BOMB],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.fireJailClip;
                         }
@@ -2082,7 +2082,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 16,
                         LongDescription: "From the lower entrance of the boulder maze, turn left. Walk in that general direction until you reach the end. You should hear the skulltula through the wall - bomb it to gain access.",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     },
                     "Lower Boulder Maze Side Room Goron": {
                         ItemGroup: ItemGroups.CHEST,
@@ -2097,7 +2097,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Lower Boulder Maze", imageName: "Bomb" },
                 Exits: {
                     mapEnclosure: {
-                        RequiredItems: [ItemSets.PROJECTILES]
+                        Needs: [ItemSets.PROJECTILES]
                     },
 
                     fireWallRoom: {
@@ -2155,7 +2155,7 @@ let StandardDungeons = {
                     narrowBridgeRoom: {},
                     fireWallRoom: {
                         Age: Age.ADULT,
-                        RequiredAdultItems: [Items.MEGATON_HAMMER, Equipment.HOVER_BOOTS],
+                        AdultNeeds: [Items.MEGATON_HAMMER, Equipment.HOVER_BOOTS],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.fireCraterRoomKeySkip;
                         }
@@ -2178,7 +2178,7 @@ let StandardDungeons = {
                     boulderMazeLower: {},
                     fireWallRoom: {},
                     goronInPit: {
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     },
                     scarecrowRoom: {
                         CustomRequirement: function(age) {
@@ -2264,7 +2264,7 @@ let StandardDungeons = {
 
                     },
                     centerRoomTopSwitch: {
-                        RequiredItems: [Items.MEGATON_HAMMER]
+                        Needs: [Items.MEGATON_HAMMER]
                     }
                 },
 
@@ -2293,7 +2293,7 @@ let StandardDungeons = {
                 Exits: {
                     centerRoomBottom: {},
                     hammerChestRoom: {
-                        RequiredItems: [ItemSets.SWORDS, ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.SWORDS, ItemSets.EXPLOSIVES]
                     }
                 },
                 ItemLocations: {
@@ -2313,7 +2313,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Megaton Hammer" },
                 Exits: {
                     stairCaseRoomAfterHammer: {
-                        RequiredItems: [Items.MEGATON_HAMMER]
+                        Needs: [Items.MEGATON_HAMMER]
                     },
                     centerRoomTopSwitch: {
                         CustomRequirement: function(age) {
@@ -2354,7 +2354,7 @@ let StandardDungeons = {
                 Exits: {
                     fireMazeRoomEnd: {},
                     centerRoomTopSwitch: {
-                        RequiredItems: [Items.MEGATON_HAMMER],
+                        Needs: [Items.MEGATON_HAMMER],
                         RequiredSongs: [Songs.SONG_OF_TIME]
                     },
                     centerRoomCell: {
@@ -2443,14 +2443,14 @@ let StandardDungeons = {
                     },
                     lowEastWingPots: {
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+                        Needs: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
                     },
                     compassRoom: {
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+                        Needs: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
                     },
                     lowWaterLevel: {
-                        RequiredChoiceOfAdultItems: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT],
+                        AdultNeedsAny: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT],
                         RequiredSongs: [Songs.ZELDAS_LULLABY],
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) {
@@ -2467,7 +2467,7 @@ let StandardDungeons = {
                     roomWithManyTektitesAntechamber: {
                         Map: "Water Temple",
                         Age: Age.ADULT,
-                        RequiredAdultItems: [Equipment.IRON_BOOTS],
+                        AdultNeeds: [Equipment.IRON_BOOTS],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
                         }
@@ -2507,7 +2507,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 3,
                         LongDescription: "This is the door in the waterfall room with the platforms. You get here from the locked door on the top floor.",
-                        RequiredItems: [Items.HOOKSHOT],
+                        Needs: [Items.HOOKSHOT],
                         KeyRequirement: function(age) {
                             let keysReq = 5;
                             let canDrainWater = Equipment.IRON_BOOTS.playerHas && Data.canPlaySong(Songs.ZELDAS_LULLABY);
@@ -2545,7 +2545,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 29,
                         LongDescription: "This is the door on the bottom north path. You can use iron boots or drain the water to get here. Longshot or backwalk/hover boots/backflip across to get to the door.",
-                        RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT],
+                        NeedsAny: [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT],
                         KeyRequirement: function(age) {
                             let keysReq = 4;
                             if (!Data.canPlaySong(Songs.ZELDAS_LULLABY)) {
@@ -2621,7 +2621,7 @@ let StandardDungeons = {
                 Exits: {
                     darkLinkRoom: {
                         Map: "Water Temple",
-                        RequiredItems: [Items.HOOKSHOT],
+                        Needs: [Items.HOOKSHOT],
                         LockedDoor: "Locked Door in Waterfall Room"
                     }
                 },
@@ -2632,7 +2632,7 @@ let StandardDungeons = {
                         Order: 2,
                         MapInfo: {x: 130, y: 208, floor: "F3" },
                         LongDescription: "With the water raised to the highest level, enter the door at the left side on the upper floor. On the right wall, there is a skulltula. You can easily get it with the longshot. You can also get it with the hookshot if you stand on the very very top right corner of the highest red block. Note that it really does just barely reach - so much so that you won't even see the red indicator dot.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     }
                 }
             },
@@ -2667,7 +2667,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Waterfall Path (Top West)", imageName: "Hookshot Longshot" },
                 Exits: {
                     dragonRoom: {
-                        RequiredItems: [Items.FAIRY_BOW]
+                        Needs: [Items.FAIRY_BOW]
                     }
                 },
                 ItemLocations: {
@@ -2701,7 +2701,7 @@ let StandardDungeons = {
                         Order: 9,
                         MapInfo: { x: 51, y: 121, floor: "F1" },
                         LongDescription: "Start from the longshot chest room. Play the Song of Time to clear the blocks from the floor. Drop down. Now, make your way through the whirlpool room, avoiding them as much as possible. The skulltula is somewhere on the left wall when going down this path - equip the iron boots then hookshot it.",
-                        RequiredItems: [Equipment.IRON_BOOTS, ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [Equipment.IRON_BOOTS, ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Heart 4 in Whirlpool Room": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -2727,7 +2727,7 @@ let StandardDungeons = {
                         Order: 12,
                         MapInfo: { x: 73, y: 150, floor: "F1" },
                         LongDescription: "Start from the longshot chest room. Play the Song of Time to clear the block from the floor. Drop down. Now, make your way through the whirlpool room, avoiding them as much as possible. When you get to the end, shoot the eye switch to open the cage. Now quickly hookshot the chest at the other side to get to it.",
-                        RequiredItems: [Items.FAIRY_BOW]
+                        Needs: [Items.FAIRY_BOW]
                     }
                 }
             },
@@ -2776,7 +2776,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 14,
                         LongDescription: "From the entrance of the temple, jump off and sink down to the bottom (or longshot a torch on the bottom of the east side). Head down the hallway of the east room. Take off your iron boots and float up to the surface. Enter the door and kill the enemies to spawn the chest.",
-                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT],
+                        NeedsAny: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
                         }
@@ -2790,25 +2790,25 @@ let StandardDungeons = {
                     midEastWingPots: {},
                     compassRoom: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     bottomSouthWing: {
                         Age: Age.ADULT,
-                        RequiredItems: [ItemSets.EXPLOSIVES],
-                        RequiredChoiceOfAdultItems: [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS],
-                        RequiredChoiceOfItems: [Equipment.SCALE, Equipment.IRON_BOOTS]
+                        Needs: [ItemSets.EXPLOSIVES],
+                        AdultNeedsAny: [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS],
+                        NeedsAny: [Equipment.SCALE, Equipment.IRON_BOOTS]
                     },
                     midWaterTriforceFloor: {
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DEKU_STICK, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [Items.FAIRY_BOW, Items.DEKU_STICK, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     },
                     centralRoomBottom: {
                         Map: "Water Temple",
                         LockedDoor: "Locked Door to Central Room"
                     },
                     dragonRoom: {
-                        RequiredItems: [Equipment.STRENGTH],
-                        RequiredChildItems: [Equipment.SCALE],
-                        RequiredChoiceOfAdultItems: [Equipment.SCALE, Equipment.IRON_BOOTS]
+                        Needs: [Equipment.STRENGTH],
+                        ChildNeeds: [Equipment.SCALE],
+                        AdultNeedsAny: [Equipment.SCALE, Equipment.IRON_BOOTS]
                     },
                     behindBlockArea: {
                         CustomRequirement: function(age) {
@@ -2838,8 +2838,8 @@ let StandardDungeons = {
                         Order: 17,
                         MapInfo: { x: 326, y: 212, floor: "F1" },
                         LongDescription: "From the entrance of the temple, jump off and sink down to the bottom. Head down the hallway of the east room. Take off your iron boots and float up to the surface. Play Zelda's lullaby at the Triforce to lower the water. Now head back down.<br/><br>In this room, light the torches wih your bow or with Din's fire.<br/><br/>Child can use sticks to light the torches as well, and can kill the enemies in the next room with spin attacks if he has magic.",
-                        RequiredChildItems: [Equipment.MAGIC, Equipment.KOKIRI_SWORD],
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DEKU_STICK, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
+                        ChildNeeds: [Equipment.MAGIC, Equipment.KOKIRI_SWORD],
+                        NeedsAny: [Items.FAIRY_BOW, Items.DEKU_STICK, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
                     }
                 }
             },
@@ -2870,7 +2870,7 @@ let StandardDungeons = {
                         MapInfo: {x: 333, y: 131, floor: "F2" },
                         RequiredSongs: [Songs.ZELDAS_LULLABY],
                         LongDescription: "After raising the water to mid level, make your way back toward the low level room. This time, you won't float up all the way to the top. In this room, you will see a cracked wall. Bomb it to get to a chest.",
-                        RequiredItems: [ItemSets.EXPLOSIVES],
+                        Needs: [ItemSets.EXPLOSIVES],
                     }
                 }
             },
@@ -2905,7 +2905,7 @@ let StandardDungeons = {
                     },
                     centralRoomBottom: {
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.IRON_BOOTS]
+                        Needs: [Equipment.IRON_BOOTS]
                     }
                 },
                 ItemLocations: {
@@ -2915,7 +2915,7 @@ let StandardDungeons = {
                         Order: 21,
                         MapInfo: { x: 157, y: 217, floor: "F1" },
                         LongDescription: "In the room with the middle water level Triforce, there is a skulltula high up on the wall. There are three ways to get it; the bottom two enable the hookshot to be used:<br/>- Use the longshot<br/>- Cast Farore's Wind in the room, raise the water to max, then warp back in<br/>- Enter the room from the middle, then exit from the bottom - the middle area door will not be barred. Come back via the iron boots to get the skulltula with the hookshot after raising the water to max.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         CustomRequirement: function(age) {
                             // You can just longshot it
                             if (ItemData.canUse(age, UpgradedItems.LONGSHOT)) { 
@@ -2946,7 +2946,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Central Rooms (Mid/Low)", imageName: "Ocarina of Time" },
                 Exits: {
                     midWaterTriforceFloor: {
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     }
                 },
                 ItemLocations: {}
@@ -2956,7 +2956,7 @@ let StandardDungeons = {
                 Exits: {
                     highWaterLevel: {
                         RequiredSongs: [Songs.ZELDAS_LULLABY],
-                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES, Items.HOOKSHOT, Items.FAIRY_BOW]
+                        NeedsAny: [ItemSets.EXPLOSIVES, Items.HOOKSHOT, Items.FAIRY_BOW]
                     },
                     midWaterTriforceFloor: {},
                     behindBlockArea: {
@@ -2982,7 +2982,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 22,
                         MapInfo: { x: 293, y: 214, floor: "B1" },
-                        RequiredItems: [Items.HOOKSHOT, Equipment.IRON_BOOTS],
+                        Needs: [Items.HOOKSHOT, Equipment.IRON_BOOTS],
                         LongDescription: "After draining the water, head into the middle room on the bottom. This will initially be a locked door. Once inside, hookshot the target to get up to the mid water level triforce. Play Zelda's Lullaby to raise the water. Now, use your Iron boots to sink down in this room and enter the secret room under the floating block that was just raised up. Hit the crystal switch and defeat the enemies. When they're defeated, take off your boots and rise up to the top right corner of this room for the chest."
                     }
                 }
@@ -3056,7 +3056,7 @@ let StandardDungeons = {
                     roomWithManyTektites: {
                         Map: "Water Temple",
                         Age: Age.ADULT,
-                        RequiredChoiceOfAdultItems: [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT],
+                        AdultNeedsAny: [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT],
                         LockedDoor: "Locked Door in Bottom North Room"
                     },
                 },
@@ -3119,7 +3119,7 @@ let StandardDungeons = {
                         Order: 31,
                         MapInfo: { x: 122, y: 91, floor: "F1" },
                         LongDescription: "Head to the bottom of the main room - no need to lower the water if you don't want to. Enter the north wing. After you reach the dead end, equip your boots and surface. Longshot to the other side and enter the locked door. Navigate across the room to the other side - might help to kill the tektites. Complete the puzzle in this room (or cross it with hover boots or a megaflip!) which requires you to explode a destroyable wall and push a block onto a switch. After the next room (water switch jumping puzzle), you should see the skulltula on the waterfall to the right.<br/><br/>If you have no hookshot, you can backwalk into it with hover boots starting from the ledge with the door to get the token (you can kill it with your sword by going at it head-on with the hover boots, then jump-slashing).",
-                        RequiredChoiceOfItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Equipment.HOVER_BOOTS]
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Equipment.HOVER_BOOTS]
                     }
                 }
             },
@@ -3184,7 +3184,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "This is the door after the truth spinner room with the beamos. It's located behind the bombable wall.",
-                        RequiredItems: [ItemSets.EXPLOSIVES],
+                        Needs: [ItemSets.EXPLOSIVES],
                         KeyRequirement: function(age) {
                             let max = 1;
                             if (Settings.GlitchesToAllow.shadowGateClip){
@@ -3345,7 +3345,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. The dungeon map chest room is somewhere on the wall to your right. You must kill all the enemies inside to get it.",
-                        RequiredItems: [ItemSets.DAMAGING_ITEMS]
+                        Needs: [ItemSets.DAMAGING_ITEMS]
                     },
                     "2 Pots in Front Maze Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3387,7 +3387,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 7,
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. Navigate all the way through the fake wall maze and defeat Deadhand for the chest.",
-                        RequiredItems: [ItemSets.SWORDS]
+                        Needs: [ItemSets.SWORDS]
                     }
                 }
             },
@@ -3396,20 +3396,20 @@ let StandardDungeons = {
                 Exits: {
                     afterBombableWall: {
                         Map: "Shadow Temple",
-                        RequiredItems: [ItemSets.EXPLOSIVES],
+                        Needs: [ItemSets.EXPLOSIVES],
                         LockedDoor: "Locked Door by Beamos"
                     },
                     boatRoomStart: {
                         Age: Age.ADULT,
-                        RequiredChoiceOfItems: [Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD],
+                        NeedsAny: [Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.shadowGateClip;
                         }
                     },
                     boatRoomLedge: {
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.HOVER_BOOTS],
-                        RequiredChoiceOfItems: [Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD],
+                        Needs: [Equipment.HOVER_BOOTS],
+                        NeedsAny: [Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.shadowUpperBoatRoomJump;
                         }
@@ -3423,7 +3423,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "After crossing the gap onto the tongue, proceed down the hallway. At the beamos, take the right path (it's a fake wall) and enter the room. Defeat the gibdos for a chest.",
-                        RequiredItems: [ItemSets.SWORDS]
+                        Needs: [ItemSets.SWORDS]
                     },
                     "Scythe Silver Rupee Right of Scythe": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -3519,7 +3519,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). Take out the enemies in this room to open up the gate - there's a like-like and a few keese in the corners. If you don't have a range weapon, jumpslash at the keese to alert them to you. The chest is behind the gate that opened.",
-                        RequiredItems: [ItemSets.SWORDS]
+                        Needs: [ItemSets.SWORDS]
                     },
                     "Invisible Chest in Invisible Scythe Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3527,7 +3527,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). Take out the enemies in this room to open up the gate - there's a like-like and a few keese in the corners. If you don't have a range weapon, jumpslash at the keese to alert them to you. The chest is next to the visible chest.",
-                        RequiredItems: [ItemSets.SWORDS]
+                        Needs: [ItemSets.SWORDS]
                     },
                     "Skulltula in Invisible Scythe Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3639,7 +3639,7 @@ let StandardDungeons = {
                     windHallway: {
                         Map: "Shadow Temple",
                         Age: Age.ADULT,
-                        RequiredAdultItems: [Items.HOOKSHOT],
+                        AdultNeeds: [Items.HOOKSHOT],
                         LockedDoor: "Locked Door in Invisible Spike Room",
                         CustomRequirement: function(age) {
                             return Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots;
@@ -3653,7 +3653,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 22,
                         LongDescription: "To get here, first head to the area with the beamos and spike traps. Face the door leading to the ceiling spike room. Now turn right. Follow the edge of the pit in front of you all the way to the guillotine. Use your Lens of Truth to navigate the platforms and make it to the door. Once inside, kill all the redeads to spawn the chest. Be careful of the invisible spikes in here - you can equip the Goron Tunic to avoid some damage since they act like lava.",
-                        RequiredItems: [ItemSets.SWORDS]
+                        Needs: [ItemSets.SWORDS]
                     },
                     "Invisible Spike Ground Center Silver Rupee": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -3668,7 +3668,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 22.2,
                         LongDescription: "This rupee is in to the right, just below the hookshot target.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Silver Rupee on Left Wall": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -3676,7 +3676,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 22.3,
                         LongDescription: "This rupee is in to the left, just below the hookshot target.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Silver Rupee on Invisible Ledge": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -3684,7 +3684,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 22.4,
                         LongDescription: "This rupee is on an invisible ledge in the back left corner of the room. There's an invisible hookshot target on the back wall you can use to get up to it.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Midair Silver Rupee by Invisible Ledge": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -3692,7 +3692,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 22.5,
                         LongDescription: "Get to the invisible ledge (see the previous rupee). You can use your hover boots, or roll jump to get to this nearby silver rupee.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     }
                 }
             },
@@ -3727,7 +3727,7 @@ let StandardDungeons = {
                     invisibleSpikeRoom: {
                         Map: "Shadow Temple",
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT],
+                        Needs: [Items.HOOKSHOT],
                         LockedDoor: "Locked Door in Invisible Spike Room",
                         CustomRequirement: function(age) {
                              return Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots;
@@ -3779,7 +3779,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 30,
                         LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. Bomb the rubble to your right to uncover an invisible chest.",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     }
                 }
             },
@@ -3791,11 +3791,11 @@ let StandardDungeons = {
                         LockedDoor: "Locked Door in Gibdo Room"
                     },
                     boatRoomSkulltula: {
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     boatRoomLedge: {
                         RequiredSongs: [Songs.SCARECROWS_SONG],
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     boatRoomEnd: {
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
@@ -3843,7 +3843,7 @@ let StandardDungeons = {
                 Exits: {
                     chasmScarecrowPlatform: {
                         RequiredSongs: [Songs.SCARECROWS_SONG],
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     acrossChasmToBossRoom: {
                         CustomRequirement: function(age) {
@@ -3900,7 +3900,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 36.1,
                         LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room straight across from you.<br/><br/>Once inside, turn around and shoot the picture on the wall with your bow to spawn the wonderitem.",
-                        RequiredItems: [Items.FAIRY_BOW]
+                        Needs: [Items.FAIRY_BOW]
                     },
                     "Skulltula in Triple Skull Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3965,7 +3965,7 @@ let StandardDungeons = {
                 Exits: {
                     chasmScarecrowPlatform: {
                         RequiredSongs: [Songs.SONG_OF_TIME, Songs.SCARECROWS_SONG],
-                        RequiredItems: [Items.HOOKSHOT],
+                        Needs: [Items.HOOKSHOT],
                     },
                     bossRoom: {
                         Map: "Shadow Temple",
@@ -3986,7 +3986,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 41,
                         LongDescription: "After departing the boat, either shoot the bombflower to lower the bridge, or use longshot/scarecrow's song from the broken bridge to cross. Play the Song of Time near the broken pillar with the heart to summon a block to use to get it.",
-                        RequiredChoiceOfItems: [Songs.SONG_OF_TIME, Items.BOOMERANG]
+                        NeedsAny: [Songs.SONG_OF_TIME, Items.BOOMERANG]
                     },
                     "2 Pots by Boss Antechamber": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -4152,7 +4152,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
                 Exits: {
                     childAfterStalfos: {
-                        RequiredChoiceOfChildItems: [ItemSets.SWORDS, ItemSets.EXPLOSIVES], // To clear the first room
+                        ChildNeedsAny: [ItemSets.SWORDS, ItemSets.EXPLOSIVES], // To clear the first room
                         CustomRequirement: function(age) {
                             return Data.canMegaFlip(age) ||
                                 ItemData.canUseAny(age, [
@@ -4164,7 +4164,7 @@ let StandardDungeons = {
                         }
                     },
                     childSkulltulaInGrateRoom: {
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     afterSecondCrawlSpace: {}
                 },
@@ -4230,7 +4230,7 @@ let StandardDungeons = {
                 Exits: {
                     childSkulltulaInGrateRoom: {
                         Map: "Spirit Temple",
-                        RequiredChoiceOfItems: [Items.FAIRY_SLINGSHOT, Items.DEKU_STICK, ItemSets.FIRE_ITEMS, ItemSets.EXPLOSIVES]
+                        NeedsAny: [Items.FAIRY_SLINGSHOT, Items.DEKU_STICK, ItemSets.FIRE_ITEMS, ItemSets.EXPLOSIVES]
                     }
                 },
                 ItemLocations: {
@@ -4257,7 +4257,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 6,
                         LongDescription: "WALL MASTER WARNING:<br/>Make your way counter-clockwise around the child-only areas of the temple. In the room with the Anubis, either Din's fire him, or hit the switch then quickly navigate to the side directly opposite the fire so that it dies on it. In the room after that - collect the silver rupees to lower the bridge. Now you can use a Deku Stick (or Din's fire) to light the torches on the other side to spawn the chest.<br/><br/>It's important to note that you can use Din's fire on them earlier, or take a flame from the earlier main room to light the torches. This avoids the need for the silver rupees (for this chest) completely.",
-                        RequiredChoiceOfItems: [Items.DEKU_STICK, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [Items.DEKU_STICK, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
                     }
                 }
             },
@@ -4310,7 +4310,7 @@ let StandardDungeons = {
                         LockedDoor: "Locked Door After Second Crawl Space"
                     },
                     statueRoom: {
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     }
                 },
                 ItemLocations: {
@@ -4334,8 +4334,8 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "This is the room you get to as a child after entering the crawlspace and going through the door.<br/><br/>As adult, you can enter from the opposite side of the statue room that you normally enter from (bottom door).<br/><br/>If you face the door on the top part of the floor, there's a switch up and to your right. Hit it with an explosive or ranged weapon to spawn the chest.",
-                        RequiredChoiceOfChildItems: [Items.FAIRY_SLINGSHOT, Items.BOOMERANG, Items.BOMBCHU, Items.BOMB],
-                        RequiredChoiceOfAdultItems: [Items.FAIRY_BOW, Items.HOOKSHOT, Items.BOMBCHU, Items.BOMB]
+                        ChildNeedsAny: [Items.FAIRY_SLINGSHOT, Items.BOOMERANG, Items.BOMBCHU, Items.BOMB],
+                        AdultNeedsAny: [Items.FAIRY_BOW, Items.HOOKSHOT, Items.BOMBCHU, Items.BOMB]
                     },
                     "Right Chest in Sun on Floor Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4343,8 +4343,8 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "This is the room you get to as a child after entering the crawlspace and going through the door.<br/><br/>As adult, you can enter from the opposite side of the statue room that you normally enter from (bottom door).<br/><br/>If you face the door on the top part of the floor, there's a switch up and to your right. Hit it with an explosive or ranged weapon to spawn the chest.",
-                        RequiredChoiceOfChildItems: [Items.FAIRY_SLINGSHOT, Items.BOOMERANG, Items.BOMBCHU, Items.BOMB],
-                        RequiredChoiceOfAdultItems: [Items.FAIRY_BOW, Items.HOOKSHOT, Items.BOMBCHU, Items.BOMB]
+                        ChildNeedsAny: [Items.FAIRY_SLINGSHOT, Items.BOOMERANG, Items.BOMBCHU, Items.BOMB],
+                        AdultNeedsAny: [Items.FAIRY_BOW, Items.HOOKSHOT, Items.BOMBCHU, Items.BOMB]
                     }
                 }
             },
@@ -4352,7 +4352,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Rooms After Silver Block", imageName: "Adult Icon" },
                 Exits: {
                     openDoorsBySilverBlock: {
-                        RequiredChoiceOfAdultItems: [Items.HOOKSHOT, Items.FAIRY_BOW, Items.BOMBCHU]
+                        AdultNeedsAny: [Items.HOOKSHOT, Items.FAIRY_BOW, Items.BOMBCHU]
                     },
                     invisibleFloormasterRoom: {
                         Map: "Spirit Temple",
@@ -4377,7 +4377,7 @@ let StandardDungeons = {
                         Order: 22,
                         LongDescription: "Head to the room blocked by the silver block. Hit the switch above the beamos to open the doors. Enter the door to the left. Kill the wolfos inside, then play Zelda's Lullaby. You can longshot from the platform, or hookshot from the sandy floor.",
                         RequiredSongs: [Songs.ZELDAS_LULLABY],
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Boulder Silver Rupee in Midair": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4523,7 +4523,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 16,
                         LongDescription: "Head to the statue room. On the floor in front of the statue, light the torches with Din's Fire or Fire Arrows to spawn the chest. You can also run a lit deku stick down via the torch in the southwest corner of the room. Finally, you can push the armos statue to the lit torch on the top, backflip on it, and shoot an arrow through it to light the first torch (then go down and light the other).",
-                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [Items.DEKU_STICK, Items.FAIRY_BOW, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
                     },
                     "Chest in Statue Room on Northeast Platform": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4647,7 +4647,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 19,
                         LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor. In this room, there's a ray of light with some blocks nearby. Pull the block with the sun on it straight back and it will become happy when it hits the light, opening the door. Once inside the next room, turn around; the skulltula is above the door.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 } 
             },
@@ -4663,7 +4663,7 @@ let StandardDungeons = {
                 Exits: {
                     mirrorShieldKnuckle: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.BOMB, Equipment.HOVER_BOOTS, ItemSets.SHIELDS],
+                        Needs: [Items.BOMB, Equipment.HOVER_BOOTS, ItemSets.SHIELDS],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.spiritSuperslideToMirrorShield;
                         }
@@ -4696,7 +4696,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Anubis/Armos/Mirror Shield Path", imageName: "Mirror Shield" },
                 Exits: {
                     fourArmosRoom: {
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     },
                     movingWallRoom: {
                         Map: "Spirit Temple",
@@ -4726,7 +4726,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 34,
                         LongDescription: "Head to the door at the very top of the southeast corner of the statue room. That's the room behind you and to the right if you face the statue. When you get to the relevant room, kill the Anubises and the beamos to proceed. If you don't have fire items, play the Song of Time by the barred door. Now, hit the switch and run around the room to lead the Anubises into the fire. Enter the now unbarred door into the room with the 4 armos statues. Enter the room to your left by reflecting the light into the sun with your Mirror Shield. The chest is inside.",
-                        RequiredItems: [Equipment.MIRROR_SHIELD]
+                        Needs: [Equipment.MIRROR_SHIELD]
                     }
                 }
             },
@@ -4735,7 +4735,7 @@ let StandardDungeons = {
                 Exits: {
                     fourArmosRoom: {},
                     silverGauntsStatueHand: {
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     statueHands: {}
                 },
@@ -4778,7 +4778,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 39,
                         LongDescription: "Head to the moving wall room. This is the room to your right if you enter the topmost southeast area of the statue room. It's also the room straight ahead if leaving the 4 armos room.<br/><br/>Head up the wall - longshot up there if you have it. Now turn around and use your hookshot/longshot to get to the platform in the back of the room with the room. You can also boomerang them.",
-                        RequiredChoiceOfItems: [Items.HOOKSHOT, Items.BOOMERANG]
+                        NeedsAny: [Items.HOOKSHOT, Items.BOOMERANG]
                     },
                     "Boss Key Chest After Moving Wall Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4798,7 +4798,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Mirror Room & Boss Area", imageName: "Spirit Medallion" },
                 Exits: {
                     bossRoom: {
-                        RequiredItems: [Items.HOOKSHOT, ItemSets.EXPLOSIVES, Equipment.MIRROR_SHIELD],
+                        Needs: [Items.HOOKSHOT, ItemSets.EXPLOSIVES, Equipment.MIRROR_SHIELD],
                         CustomRequirement: function(age) {
                             return ItemData.hasBossKey("Spirit Temple");
                         }
@@ -4831,7 +4831,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 43,
                         LongDescription: "Enter to the door to the left of the triforce symbol. Jumpslash the switch blocked by the bars and enter the next room.<br/><br/>At the start of the snake mirror maze, shine a light on the sun up on the archway into the next room.",
-                        RequiredItems: [Equipment.MIRROR_SHIELD]
+                        Needs: [Equipment.MIRROR_SHIELD]
                     }
                 }
             },
@@ -4861,7 +4861,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Up to Scythe Room", imageName: "Blue Fire" },
                 Exits: {
                     afterFreezards: {
-                        RequiredItems: [ItemSets.FREEZARD_KILL_ITEMS]
+                        Needs: [ItemSets.FREEZARD_KILL_ITEMS]
                     },
                     Exit: {
                         OwExit: OwExits["Ice Cavern"]["Exit"]
@@ -4896,7 +4896,7 @@ let StandardDungeons = {
                         }
                     },
                     blueFire: {
-                        RequiredItems: [ItemSets.BLUE_FIRE_ITEMS]
+                        Needs: [ItemSets.BLUE_FIRE_ITEMS]
                     },
                     northRoom: {
                         CustomRequirement: function(age) {
@@ -4931,7 +4931,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "In the room with the spinning scythe, there's a skulltula up on one of the walls. It's the one to your left when you first enter.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Scythe Silver Rupee by Icicles": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4939,7 +4939,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3.1,
                         LongDescription: "In the room with the spinning scythe, this rupee is behind the icicles on the wall with the skulltula.",
-                        RequiredChoiceOfItems: [ItemSets.SWORDS, ItemSets.EXPLOSIVES]
+                        NeedsAny: [ItemSets.SWORDS, ItemSets.EXPLOSIVES]
                     },
                     "2 Pots in East Scythe Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -5058,7 +5058,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. There's a skulltula up on one of the walls to your left.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },
@@ -5232,7 +5232,7 @@ let StandardDungeons = {
                 Exits: {
                     mainArea: {
                         Age: Age.CHILD,
-                        RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
+                        NeedsAny: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
                     },
                     Exit: {
                         OwExit: OwExits["Bottom of the Well"]["Exit"]
@@ -5283,7 +5283,7 @@ let StandardDungeons = {
                 Exits: {
                     centralArea: {},
                     bombableHoleRoom: {
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     },
                     coffinRoom: {},
                     pitRoom: {
@@ -5336,7 +5336,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 8,
                         LongDescription: "From the main room's entrance, follow the path to the left. Continue straight until you run into either the wall, or the giant skulltula. To the left you can see that there's some rubble in the back. DO NOT simply walk to it - there are pits. Hug the left side of the little alcove to get there safely. Bomb the rubble to get the chest.",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     },
                     "Underwater Pot by Triforce": {
                         ItemGroup: ItemGroups.POT,
@@ -5431,7 +5431,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 19,
                         LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the left side to get to the skulltula.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },
@@ -5445,7 +5445,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 21,
                         LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the right side. Hug the right wall, moving counter-clockwise, over the invisible floor to get to the skulltula.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
                 }
             },
@@ -5495,7 +5495,7 @@ let StandardDungeons = {
                         }
                     },
                     mapChestArea: {
-                        RequiredItems: [Equipment.STRENGTH]
+                        Needs: [Equipment.STRENGTH]
                     }
                 },
                 ItemLocations: {
@@ -5538,7 +5538,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Dead Hand Room", imageName: "Lens of Truth" },
                 Exits: {
                     bombableHoleRoom: {
-                        RequiredItems: [Equipment.KOKIRI_SWORD],
+                        Needs: [Equipment.KOKIRI_SWORD],
                         CustomRequirement: function(age) {
                             // TODO potentially: add an item location for draining the water, as you can't vine clip after that
                             return Settings.GlitchesToAllow.botwVineClip;
@@ -5718,7 +5718,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "From the entrance, turn around. Shoot the eye that's near the ceiling to spawn this chest.",
-                        RequiredItems: [ItemSets.PROJECTILES]
+                        Needs: [ItemSets.PROJECTILES]
                     },
                     "Entrance Room Right Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5726,7 +5726,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "From the entrance, turn around. Shoot the eye that's near the ceiling to spawn this chest.",
-                        RequiredItems: [ItemSets.PROJECTILES]
+                        Needs: [ItemSets.PROJECTILES]
                     },
                      
                     // Locked Doors
@@ -5850,7 +5850,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Dinalfos/Beamos Room", imageName: "Bomb" },
                 Exits: {
                     bigLavaRoomFront: {
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     }
                 },
                 ItemLocations: {
@@ -5860,7 +5860,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "This is either the room to the right of the entrance, or the southern path from the big lava room. Bomb the beamos and kill the lizalfos to spawn this chest.",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     },
                     "2 Hearts in Dinalfos/Beamos Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -5879,7 +5879,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 17.2,
                         LongDescription: "This is either the room to the right of the entrance, or the southern path from the big lava room. Shoot the symbol above the room leading to the big lava room with your bow to spawn this wonderitem.",
-                        RequiredItems: [Items.FAIRY_BOW]
+                        Needs: [Items.FAIRY_BOW]
                     }
                 }
             },
@@ -5887,7 +5887,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Sandy & Boulder Rooms", imageName: "Silver Rupees" },
                 Exits: {
                     boulderRoom: {
-                        RequiredItems: [ItemSets.SWORDS]
+                        Needs: [ItemSets.SWORDS]
                     }
                 },
                 ItemLocations: {
@@ -5897,7 +5897,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "This is the room to the left of the entrance. I recommend going this way, first, as it only requires the hookshot to make it most of the way around the dungeon. Anyway, kill the stalfos in here within the time limit to get this chest.",
-                        RequiredItems: [ItemSets.SWORDS]
+                        Needs: [ItemSets.SWORDS]
                     }
                 }
             },
@@ -5965,7 +5965,7 @@ let StandardDungeons = {
                     boulderRoom: {},
                     roomBehindSilverBlock: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT],
+                        Needs: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
                             return ItemData.canUse(age, UpgradedItems.SILVER_GAUNTLETS) || (
                                 Settings.GlitchesToAllow.gtgSilverBlockSkipWithHammerSuperslide &&
@@ -6055,7 +6055,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "From the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. In the eye statue room, get to the central platform - it will start spinning. Shoot each eye with an arrow to unlock a door on top. Jump in the lava to respawn on top to get to it (or spawn the scarecrow by the other door <strong>before you fall</strong> and use it to get back up).",
-                        RequiredAdultItems: [Items.FAIRY_BOW]
+                        AdultNeeds: [Items.FAIRY_BOW]
                     }
                 }
             },
@@ -6072,7 +6072,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 9,
                         LongDescription: "From the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. In the eye statue room, get to the central platform - it will start spinning. Shoot each eye with an arrow to spawn the chest.",
-                        RequiredItems: [Items.FAIRY_BOW]
+                        Needs: [Items.FAIRY_BOW]
                     }
                 }
             },
@@ -6080,8 +6080,8 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Hammer Pillar Room", imageName: "Megaton Hammer" },
                 Exits: {
                     eyeStatueRoomBottom: {
-                        RequiredItems: [Items.MEGATON_HAMMER],
-                        RequiredChoiceOfItems: [ItemSets.PROJECTILES, QPAItemSets.LEDGE_QPA]
+                        Needs: [Items.MEGATON_HAMMER],
+                        NeedsAny: [ItemSets.PROJECTILES, QPAItemSets.LEDGE_QPA]
                     },
                     bigLavaRoomUpperBack: {}
                 },
@@ -6107,7 +6107,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 12.1,
                         LongDescription: "In the room with the hammerable pillars, shoot the symbol above the door leading to the big lava room with your bow to spawn this wonderitem.",
-                        RequiredItems: [Items.FAIRY_BOW]
+                        Needs: [Items.FAIRY_BOW]
                     }
                 }
             },
@@ -6130,7 +6130,7 @@ let StandardDungeons = {
                     },
                     bigLavaRoomUpperBack: {
                         Age: Age.ADULT,
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     waterRoom: {
                         Map: "Training Grounds",
@@ -6184,7 +6184,7 @@ let StandardDungeons = {
                     },
                     bigLavaRoomUpperBack: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     }
                 },
                 ItemLocations: {
@@ -6220,7 +6220,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 15.5,
                         LongDescription: "This rupee is on the back back platform. Either hookshot here, go get here from going around the dungeon. Use your hookshot to drop down onto the rupee.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     }
                 }
             },
@@ -6234,7 +6234,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 15.6,
                         LongDescription: "Navigate to the water room. See the Lava Room Key on Platform for an explanation on how to get there. First, collect all the silver rupees in the room. Most are straightfoward - you'll need your hover boots to get across some of the platforms. To get the one engulfed in flames, you must first hit the switch next to the raised platform. You can play the Song of Time there to spawn some helpful blocks as well. After you collect all the rupees, enter the door that opens up.<br/><br/>Once inside, play the Song of Time to remove the blocks. Use your iron boots to sink down and collect the rupees. The golden scale can be used to collect this top one - just dive down and let yourself get pushed along the walls.",
-                        RequiredChoiceOfItems: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS],
+                        NeedsAny: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS],
                         RequiredSongs: [Songs.SONG_OF_TIME], // Seems these blocks ARE there as child
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
@@ -6250,7 +6250,7 @@ let StandardDungeons = {
                         Order: 15.7,
                         LongDescription: "Navigate to the water room. See the Lava Room Key on Platform for an explanation on how to get there. First, collect all the silver rupees in the room. Most are straightfoward - you'll need your hover boots to get across some of the platforms. To get the one engulfed in flames, you must first hit the switch next to the raised platform. You can play the Song of Time there to spawn some helpful blocks as well. After you collect all the rupees, enter the door that opens up.<br/><br/>Once inside, play the Song of Time to remove the blocks. Use your iron boots to sink down and collect the rupees.",
                         RequiredSongs: [Songs.SONG_OF_TIME],
-                        RequiredItems: [Equipment.IRON_BOOTS],
+                        Needs: [Equipment.IRON_BOOTS],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
                         }
@@ -6324,7 +6324,7 @@ let StandardDungeons = {
                 Exits: {
                     eyeStatueRoomTop: {
                         Age: Age.CHILD,
-                        RequiredItems: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
+                        Needs: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.gtgChildVineClips;
                         }
@@ -6518,8 +6518,8 @@ let StandardDungeons = {
                 Exits: {
                     forestTrailWindRoom: {
                         Age: Age.ADULT,
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA],
-                        RequiredChoiceOfAdultItems: [Items.FAIRY_BOW, Items.HOOKSHOT]
+                        NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA],
+                        AdultNeedsAny: [Items.FAIRY_BOW, Items.HOOKSHOT]
                     }
                 },
                 ItemLocations: {
@@ -6529,7 +6529,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 5,
                         LongDescription: "Enter the forest trial. Kill the wolfos to spawn the chest.",
-                        RequiredItems: [ItemSets.DAMAGING_ITEMS]
+                        Needs: [ItemSets.DAMAGING_ITEMS]
                     }
                 }
             },
@@ -6600,7 +6600,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 6.1,
                         LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
-                        RequiredItems: [Items.LIGHT_ARROW]
+                        Needs: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -6608,7 +6608,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Water Trial", imageName: "Water Medallion" },
                 Exits: {
                     waterTrialRoom2: {
-                        RequiredItems: [ItemSets.BLUE_FIRE_ITEMS, ItemSets.FREEZARD_KILL_ITEMS]
+                        Needs: [ItemSets.BLUE_FIRE_ITEMS, ItemSets.FREEZARD_KILL_ITEMS]
                     }
                 },
                 ItemLocations: {
@@ -6633,7 +6633,7 @@ let StandardDungeons = {
                 Exits: {
                     waterTrialEnd: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.MEGATON_HAMMER]
+                        Needs: [Items.MEGATON_HAMMER]
                     }
                 },
                 ItemLocations: {
@@ -6667,7 +6667,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 9.1,
                         LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
-                        RequiredItems: [Items.LIGHT_ARROW]
+                        Needs: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -6763,7 +6763,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 14.1,
                         LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
-                        RequiredItems: [Items.LIGHT_ARROW]
+                        Needs: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -6777,7 +6777,7 @@ let StandardDungeons = {
                         Map: "Ganon's Castle",
                         Age: Age.ADULT,
                         SilverRupeeIndex: 2,
-                        RequiredItems: [UpgradedItems.LONGSHOT],
+                        Needs: [UpgradedItems.LONGSHOT],
                         CustomRequirement: function(age) {
                             return Settings.RandomizerSettings.shuffleSilverRupees || 
                                 ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
@@ -6813,7 +6813,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 15.1,
                         LongDescription: "Navigate to the back part of the fire trial. Lift the giant siler pillar to find the rupee underneath.",
-                        RequiredItems: [UpgradedItems.GOLDEN_GAUNTLETS]
+                        Needs: [UpgradedItems.GOLDEN_GAUNTLETS]
                     },
                     "Fire Silver Rupee on Torch Slug Island": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -6828,7 +6828,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 15.3,
                         LongDescription: "After throwing the giant silver pillar, make your way to the island with the torch slug. Use the thrown pillar (now in the lava) to get to the rupee on the sinking platform.",
-                        RequiredItems: [UpgradedItems.GOLDEN_GAUNTLETS]
+                        Needs: [UpgradedItems.GOLDEN_GAUNTLETS]
                     }
                 }
             },
@@ -6853,7 +6853,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 16.1,
                         LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
-                        RequiredItems: [Items.LIGHT_ARROW]
+                        Needs: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -6981,7 +6981,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 26.1,
                         LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
-                        RequiredItems: [Items.LIGHT_ARROW]
+                        Needs: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -7080,7 +7080,7 @@ let StandardDungeons = {
                 Exits: {
                     spiritTrialEnd: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW, Equipment.MIRROR_SHIELD]
+                        Needs: [Items.FAIRY_BOW, Equipment.MIRROR_SHIELD]
                     }
                 },
                 ItemLocations: {
@@ -7115,7 +7115,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 30.1,
                         LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
-                        RequiredItems: [Items.LIGHT_ARROW]
+                        Needs: [Items.LIGHT_ARROW]
                     }
                 }
             },

@@ -16,7 +16,7 @@ let MQDungeons = {
                 Exits: {
                     upperFloor: {},
                     compassRoomAntechamber: {
-                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     },
                     basement: {},
                     Exit: {
@@ -91,7 +91,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>Light the unlit torch in this room to spawn the chest. If using a bow, it's easier if you shoot it from the left side of the torch.",
-                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     }
                 }
             },
@@ -99,8 +99,8 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Lower Side Room", imageName: "Compass" },
                 Exits: {
                     compassRoom: {
-                        RequiredChildItems: [Items.FAIRY_SLINGSHOT],
-                        RequiredAdultItems: [Items.FAIRY_BOW]
+                        ChildNeeds: [Items.FAIRY_SLINGSHOT],
+                        AdultNeeds: [Items.FAIRY_BOW]
                     }
                 },
                 ItemLocations: {
@@ -132,7 +132,7 @@ let MQDungeons = {
                     },
                     compassRoomSkulltula: {
                         Age: Age.ADULT,
-                        RequiredItems: [UpgradedItems.LONGSHOT],
+                        Needs: [UpgradedItems.LONGSHOT],
                         CustomRequirement: function(age) {
                             return Data.canWeirdShot(age);
                         }
@@ -187,8 +187,8 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Basement", imageName: "Deku Stick" },
                 Exits: {
                     waterRoom: {
-                        RequiredItems: [ItemSets.PROJECTILES],
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]
+                        Needs: [ItemSets.PROJECTILES],
+                        NeedsAny: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]
                     },
                     upperBasement: {
                         CustomRequirement: function(age) {
@@ -203,7 +203,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "Head to the basement. The goal is to hit the switch to the right of the vines to spawn the chest. If you have Din's Fire, use it on the webs. Otherwise, hit the switch to the left of the vines to light the torch, then use your sticks or shoot an arrow through it to gain access to the switch.",
-                        RequiredChoiceOfItems: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [Items.DEKU_STICK, Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     }
                 }
             },
@@ -243,7 +243,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 13.6,
                         LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Note that you can also use Din's Fire. Defeat all the enemies in this room to continue on.<br/><br/>In this next room, swing your sword or deku stick while standing on the left grave on the west wall to spawn the wonderitem.",
-                        RequiredChoiceOfItems: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
+                        NeedsAny: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
                     },
                     "Wonderitem on East Grave Near Torches": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -252,7 +252,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 13.7,
                         LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Note that you can also use Din's Fire. Defeat all the enemies in this room to continue on.<br/><br/>In this next room, swing your sword or deku stick while standing on the east grave near the torches to spawn the wonderitem.",
-                        RequiredChoiceOfItems: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
+                        NeedsAny: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
                     },
                     "Wonderitem on Grave Near Side Room": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -261,7 +261,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 13.8,
                         LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Note that you can also use Din's Fire. Defeat all the enemies in this room to continue on.<br/><br/>In this next room, swing your sword or deku stick while standing on the grave near the side room to spawn the wonderitem.",
-                        RequiredChoiceOfItems: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
+                        NeedsAny: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
                     },
                     "Wonderitem on Grave Left of Exit": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -270,7 +270,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 13.9,
                         LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Note that you can also use Din's Fire. Defeat all the enemies in this room to continue on.<br/><br/>In this next room, swing your sword or deku stick while standing on the grave to the left of the crawlspace exit to spawn the wonderitem.",
-                        RequiredChoiceOfItems: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
+                        NeedsAny: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
                     },
                     "Skulltula in Grave Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -279,7 +279,7 @@ let MQDungeons = {
                         Order: 14,
                         LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Note that you can also use Din's Fire. Defeat all the enemies in this room to continue on.<br/><br/>In this next room, play the Song of Time near the torches to spawn a staircase of blocks. Climb these and use your boomerang or hookshot to get the skulltula on the ceiling.",
                         RequiredSongs: [Songs.SONG_OF_TIME],
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Skulltula by Grave Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -287,8 +287,8 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 15,
                         LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Note that you can also use Din's Fire. Light the torches to open the next room. Defeat all the enemies in this room to continue on.<br/><br/>Step on the blue switch in the middle of the torches. Light a stick, use Din's or shoot an arrow to burn the web blocking the left door. The skulltula is in this room.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
+                        NeedsAny: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
                     }
                 }
             },
@@ -323,7 +323,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 16.1,
                         LongDescription: "The web on the basement floor. Use sticks or a fire item to burn it.",
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]
                     }
                 }
             },
@@ -356,8 +356,8 @@ let MQDungeons = {
                         },
                         MapInfo: { x: 180, y: 192, floor: "B2" },
                         MapImageName: "Deku Nut",
-                        RequiredChildItems: [Equipment.DEKU_SHIELD],
-                        RequiredAdultItems: [Equipment.HYLIAN_SHIELD],
+                        ChildNeeds: [Equipment.DEKU_SHIELD],
+                        AdultNeeds: [Equipment.HYLIAN_SHIELD],
                         Age: Age.EITHER,
                         Order: 17.1,
                         LongDescription: "Mark this after stunning the scrubs in the 3, 1, 2 order.",
@@ -404,7 +404,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "Use an explosive or the hammer to break the first wall. This is used to determine whether Adult opened the door for Child.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]
                     }
                 }
             },
@@ -412,10 +412,10 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Main Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     upperMainRoom: {
-                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, Equipment.STRENGTH]
                     },
                     eastRoom: { 
-                        RequiredItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS]
+                        Needs: [ItemSets.MUD_WALL_OR_QPA_ITEMS]
                     },
                     mainRoomLedge: {
                         CustomRequirement: function(age) {
@@ -430,7 +430,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "This chest is in the back right corner of the main room. Bomb, hammer, or blue fire the wall blocking it.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     },
                     "Gossip Stone in Main Room": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -438,7 +438,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "This stone is behind the mud wall in the western area of the main room.",
-                        RequiredChoiceOfItems: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     },
                     "2 Scrubs in Main Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -457,16 +457,16 @@ let MQDungeons = {
                 Exits: {
                     staircaseBottom: {},
                     mainRoomLedge: {
-                        RequiredItems: [ItemSets.SWORDS],
+                        Needs: [ItemSets.SWORDS],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.dodongoSwitchEarly;
                         }
                     },
                     topOfTorchPuzzleRoom: {
-                        RequiredChoiceOfItems: [ItemSets.BLAST_OR_SMASH_ITEMS, Items.DINS_FIRE]
+                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, Items.DINS_FIRE]
                     },
                     inDodongoHead: {
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     }
                 },
                 ItemLocations: {}
@@ -490,7 +490,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Lower East Rooms", imageName: "Small Poe" },
                 Exits: {
                     lowerLizalfosRoom: {
-                        RequiredItems: [ItemSets.PROJECTILES],
+                        Needs: [ItemSets.PROJECTILES],
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) { return true; }
                             return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]);
@@ -549,7 +549,7 @@ let MQDungeons = {
                 Exits: {
                     lowerLizalfosRoom: {},
                     mainRoomLedge: {
-                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]
                     }
                 },
                 ItemLocations: {
@@ -559,8 +559,8 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 7,
                         LongDescription: "In the Poe room, use an explosive/Din's fire/bow on one of the lines of bomb flowers to unbar the door to this room. The skulltula is high up in the back left corner.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
-                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
+                        NeedsAny: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]
                     },
                     "Poe Room Pot by Entrance": {
                         ItemGroup: ItemGroups.POT,
@@ -758,7 +758,7 @@ let MQDungeons = {
                 Exits: {
                     smallDodongoRoom: {},
                     roomByTorchPuzzle: {
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.TALL_TORCH_QPA]
+                        NeedsAny: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.TALL_TORCH_QPA]
                     },
                     topOfTorchPuzzleRoom: {
                         CustomRequirement: function(age) {
@@ -767,7 +767,7 @@ let MQDungeons = {
                         }
                     },
                     upperLizalfosRoom: {
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]
                     }
                 },
                 ItemLocations: {
@@ -838,7 +838,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 31,
                         LongDescription: "After completing the torch puzzle, burn the web in the next room. Do the box pushing puzzle in the next room to get to the lizalfos room. Alternatively, you can blow up the rocks at the top of the main room and navigate around backwards to get here.<br/><br/>Bomb the rocks in the back of this room to get to the skulltula.",
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+                        Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "2 Pots by Top Lizalfos Room Wall": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -892,7 +892,7 @@ let MQDungeons = {
                     torchPuzzleRoom: {},
                     upperLizalfosRoom: {},
                     eastRoom: {
-                        RequiredItems: [Equipment.STRENGTH]
+                        Needs: [Equipment.STRENGTH]
                     }
                 },
                 ItemLocations: {
@@ -1083,7 +1083,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 4.1,
                         LongDescription: "In the first room, destroy the yellow rock and hit the switch underneath to spawn the chest.",
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+                        Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "Chest in Main Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1102,7 +1102,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Lobby & Elevator Room", imageName: "Fairy Slingshot" },
                 Exits: {
                     elevatorRoomPlatform: {
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             Equipment.HOVER_BOOTS,
                             [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT],
                             GlitchItemSets.MEGA_FLIP]
@@ -1110,8 +1110,8 @@ let MQDungeons = {
                     lowerElevatorRoom: {},
                     basement: {},
                     northernRooms: {
-                        RequiredItems: [ItemSets.EXPLOSIVES, Items.FAIRY_SLINGSHOT],
-                        RequiredChoiceOfItems: [Items.BOOMERANG, QPAItemSets.LEDGE_QPA]
+                        Needs: [ItemSets.EXPLOSIVES, Items.FAIRY_SLINGSHOT],
+                        NeedsAny: [Items.BOOMERANG, QPAItemSets.LEDGE_QPA]
                     },
                     afterTentaclesDefeated: {
                         Age: Age.ADULT, // This is if adult cannot equip swap
@@ -1139,7 +1139,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 5.1,
                         LongDescription: "Shoot the cow in the room after the first door to spawn the wonderitem. It will fall below, so you'll have to retrieve it there!",
-                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                        Needs: [Items.FAIRY_SLINGSHOT]
                     }
                 }
             },
@@ -1154,7 +1154,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 5.2,
                         LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. In the next room, shoot the next cow on the wall to spawn some boxes. Take them across the jelly things to hold down the switch. Ride the platform down. Shoot the cow near where the platform landed to spawn the chest.",
-                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                        Needs: [Items.FAIRY_SLINGSHOT]
                     }
                 }
             },
@@ -1175,7 +1175,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 7,
                         LongDescription: "Drop down in the main elevator room. Dive underwater opposite the door to get to the hidden room. Shoot the cow in the water (with a projectile, chu, or hookshot) behind you after you climb up to spawn the chest.",
-                        RequiredChoiceOfItems: [ItemSets.PROJECTILES, Items.BOMBCHU, Items.HOOKSHOT]
+                        NeedsAny: [ItemSets.PROJECTILES, Items.BOMBCHU, Items.HOOKSHOT]
                     },
                     "2 Pots in Hidden Water Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -1232,7 +1232,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole that Ruto normally falls down. Shoot the right cow on the wall to spawn this chest.",
-                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                        Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "West Chest in Big Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1241,7 +1241,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole that Ruto normally falls down. Shoot the left cow on the wall to spawn this chest.",
-                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                        Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "Free Chest in Path to Elevator Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1285,8 +1285,8 @@ let MQDungeons = {
                 UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                 Exits: {
                     afterWebBurnedAndTentaclesCleared: {
-                        RequiredItems: [Items.BOOMERANG],
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]
+                        Needs: [Items.BOOMERANG],
+                        NeedsAny: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]
                     }
                 },
                 ItemLocations: {
@@ -1310,7 +1310,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 15.99,
                         LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. Use an explosive on the plant in the middle of the room to spawn these items.",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     },
                     "2 Pots in Like Like Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -1332,7 +1332,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 16.1,
                         LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. Shoot the left cow three times to spawn three wonderitems.",
-                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                        Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "3 Wonderitems in Right Like Like Room Cow": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -1344,7 +1344,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 16.2,
                         LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. Shoot the right cow three times to spawn three wonderitems.",
-                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                        Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "Chest in Like Like Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1353,7 +1353,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. Shoot the cows, then kill the Like Likes that fall to spawn the chest.",
-                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                        Needs: [Items.FAIRY_SLINGSHOT]
                     }
                 }
             },
@@ -1362,7 +1362,7 @@ let MQDungeons = {
                 UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                 Exits: {
                     afterTentaclesDefeated: {
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+                        Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     }
                 },
                 ItemLocations: {
@@ -1372,7 +1372,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 18,
                         LongDescription: "Using a deku stick to bring a fire from the Like Like room, or a fire item, burn the web to get access to the far west room. After killing the tentacle, head to the far east room and kill that tentacle. Now leave and enter the room to your left. Use the switch and a bomb, or a bombchu to blow up the rock on the ceiling to reveal the skulltula.",
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
+                        NeedsAny: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
                     },
                     "Tentacles Defeated": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -1388,10 +1388,10 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Basement", imageName: "Lon Lon Milk" },
                 Exits: {
                     afterBigOcto: {
-                        RequiredItems: [ItemSets.SWORDS]
+                        Needs: [ItemSets.SWORDS]
                     },
                     roomBeforeBoss: {
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             Equipment.HOVER_BOOTS,
                             [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT],
                             GlitchItemSets.MEGA_FLIP]
@@ -1418,7 +1418,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "After Big Octo", imageName: "Ruto's Letter" },
                 Exits: {
                     wigglerRoomAfterBigOcto: {
-                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                        Needs: [Items.FAIRY_SLINGSHOT]
                     }
                 },
                 ItemLocations: {
@@ -1430,7 +1430,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 20,
                         LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up and shoot the cow on the wall to spawn the wonderitem.",
-                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                        Needs: [Items.FAIRY_SLINGSHOT]
                     }
                 }
             },
@@ -1497,7 +1497,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 22.2,
                         LongDescription: "Shoot the left cow in this room to spawn this wonderitem.",
-                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                        Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "Chest in Room Before Boss": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1506,7 +1506,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 23,
                         LongDescription: "Shoot the left cow in this room to spawn the chest.",
-                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                        Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "Pot in Room Before Boss": {
                         ItemGroup: ItemGroups.POT,
@@ -1519,7 +1519,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 244, y: 189, floor: "F1" },
                         Age: Age.EITHER,
-                        RequiredChoiceOfItems: [Items.BOOMERANG, UpgradedItems.LONGSHOT],
+                        NeedsAny: [Items.BOOMERANG, UpgradedItems.LONGSHOT],
                         Order: 24,
                         LongDescription: "Climb up the vines and use your boomerang to get this skulltula. Adult can snipe it from the corner by the entrance to the room with the longshot."
                     }
@@ -1556,7 +1556,7 @@ let MQDungeons = {
                     afterFirstHallway: {
                         LockedDoor: "Locked Door to Lobby",
                         Map: "Forest Temple",
-                        RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
+                        NeedsAny: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
                     },
                     Exit: {
                         OwExit: OwExits["Forest Temple"]["Exit"]
@@ -1569,14 +1569,14 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "Climb the vines (it's easier to climb from the left side of the tree) and navigate across the trees to hit the switch to spawn the chest.",
-                        RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
+                        NeedsAny: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
                     },
                     "Skulltula in First Hallway": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 163, y: 193, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 2,
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         LongDescription: "The skulltula is above the door at the end of the first hallway."
                     },
 
@@ -1591,7 +1591,7 @@ let MQDungeons = {
                         KeyRequirement: function(age) {
                             return { min: 1, max: 1 };
                         },
-                        RequiredChoiceOfItems: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
+                        NeedsAny: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
                     },
                     "Locked Door by Twisted Corridor": {
                         DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Strength Goron's Bracelet" },
@@ -1666,17 +1666,17 @@ let MQDungeons = {
                         }
                     }, 
                     outsideEast: {
-                        RequiredItems: [ItemSets.PROJECTILES]
+                        Needs: [ItemSets.PROJECTILES]
                     },
                     outsideWest: {
-                        RequiredItems: [ItemSets.PROJECTILES]
+                        Needs: [ItemSets.PROJECTILES]
                     },
                     blockRoom: {
-                        RequiredItems: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
+                        Needs: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     },
                     greenPoeRoom: {
                         Age: Age.ADULT,
-                        RequiredAdultItems: [Items.BOMB, Equipment.HOVER_BOOTS],
+                        AdultNeeds: [Items.BOMB, Equipment.HOVER_BOOTS],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.forestGreenPoeEarly && (age);
                         }
@@ -1685,11 +1685,11 @@ let MQDungeons = {
                     // fallingCeilingRoom and the firstPoeRoom in order to actually get here
                     basement: {
                         Age: Age.ADULT,
-                        RequiredAdultItems: [Items.FAIRY_BOW]
+                        AdultNeeds: [Items.FAIRY_BOW]
                     },
                     bossRoom: {
                         Age: Age.ADULT,
-                        RequiredAdultItems: [Items.HOOKSHOT],
+                        AdultNeeds: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.forestBKSkip;
                         }
@@ -1728,7 +1728,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 6,
                         LongDescription: "Proceed straight ahead in the main room. After the hallway, kill the two wolfos to spawn the chest.<br/><br/>If you don't have the song of time, it's possible to get here from the above room. This is the room after the red poe room - drop down before killing the first Stalfos.",
-                        RequiredItems: [ItemSets.SWORDS]
+                        Needs: [ItemSets.SWORDS]
                     },
                     "2 Pots North of Main Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -1747,14 +1747,14 @@ let MQDungeons = {
                 Exits: {
                     outsideEast: { // Via the well - eye switch doesn't matter because the other way in covers that
                         Age: Age.ADULT,
-                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+                        NeedsAny: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
                     },
                     outsideEastBalcony: { // Burn the web, to go through to the top platform
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FIRE_ARROW]
+                        Needs: [Items.FIRE_ARROW]
                     },
                     outsideWestHearts: {
-                        RequiredItems: [Items.BOOMERANG],
+                        Needs: [Items.BOOMERANG],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.difficultBoomerangTrickThrows;
                         }
@@ -1780,7 +1780,7 @@ let MQDungeons = {
 
                     outsideEastBalcony: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT],
+                        Needs: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
                             if (Data.canPlaySong(Songs.SONG_OF_TIME) ||
                                 ItemData.canUse(age, UpgradedItems.LONGSHOT)) {
@@ -1793,15 +1793,15 @@ let MQDungeons = {
                     },
                     outsideEastDoorFrame: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     outsideEastSkulltula: {
                         Age: Age.EITHER,
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     outsideEastPlatform: {
                         Age: Age.ADULT,
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     well: {}
                 },
@@ -1813,21 +1813,21 @@ let MQDungeons = {
                     outsideEast: {},
                     outsideEastDoorFrame: {
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.HOVER_BOOTS],
+                        Needs: [Equipment.HOVER_BOOTS],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.mqForestHoverBootsToDoorFrame;
                         }
                     },
                     outsideEastPlatform: {
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.HOVER_BOOTS],
+                        Needs: [Equipment.HOVER_BOOTS],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.forestLedgeWithHovers;
                         }
                     },
                     fallingCeilingRoom: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.BOMBCHU],
+                        Needs: [Items.BOMBCHU],
                         CustomRequirement: function(age) {
                             // Climb the close edge of the railing, take tiny steps forward, and face barly toward
                             // the ledge so that rolling doesn't make you fall off
@@ -1856,7 +1856,7 @@ let MQDungeons = {
                         }
                     },
                     outsideEastSkulltula: {
-                        RequiredChoiceOfItems: [ItemSets.DISTANT_SWITCH_ITEMS, Items.DINS_FIRE]
+                        NeedsAny: [ItemSets.DISTANT_SWITCH_ITEMS, Items.DINS_FIRE]
                     },
                     outsideEast: {}
                 },
@@ -1899,7 +1899,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "This chest is in the well. Use iron boots if you can't drain the water with the eye switch (in the well itself from the east room).",
-                        RequiredChoiceOfItems: [ItemSets.PROJECTILES, Equipment.IRON_BOOTS]
+                        NeedsAny: [ItemSets.PROJECTILES, Equipment.IRON_BOOTS]
                     },
                     "Skulltula in Well": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -1936,7 +1936,7 @@ let MQDungeons = {
                     },
                     upperOutside: {
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.HOVER_BOOTS] // Jumpslash the switch above
+                        Needs: [Equipment.HOVER_BOOTS] // Jumpslash the switch above
                     }
                 },
                 ItemLocations: {
@@ -2032,7 +2032,7 @@ let MQDungeons = {
                         MapInfo: { x: 151, y: 52, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 18,
-                        RequiredItems: [Items.FAIRY_BOW],
+                        Needs: [Items.FAIRY_BOW],
                         LongDescription: "Untwist the cooridor by hitting the switch just outside the door to the right of the redead room. Navigate back up to the twisted cooridor and continue through the door to your right. Shoot the portraits as normal and kill the poe to spawn the chest."
                     },
                     "Chest in Stalfos Room": {
@@ -2067,7 +2067,7 @@ let MQDungeons = {
                         MapInfo: { x: 244, y: 52, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 22,
-                        RequiredItems: [Items.FAIRY_BOW],
+                        Needs: [Items.FAIRY_BOW],
                         LongDescription: "Head to the blue poe room, which is after the Stalfos room. Shoot the portraits as normal and kill the poe to spawn the chest."
                     }
                 }
@@ -2086,7 +2086,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
                 Exits: {
                     fallingCeilingRoom: {
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     }
                 },
                 ItemLocations: {
@@ -2228,7 +2228,7 @@ let MQDungeons = {
                 Exits: {
                     roomBeforeBoss: {
                         Age: Age.EITHER,
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA],
+                        NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA],
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD && !Settings.GlitchesToAllow.fireWallSkip && !Data.canBombSuperslide(age)) { 
                                 return false; 
@@ -2248,7 +2248,7 @@ let MQDungeons = {
                     },
                     bigLavaRoom: {
                         Age: Age.EITHER,
-                        RequiredItems: [Items.MEGATON_HAMMER],
+                        Needs: [Items.MEGATON_HAMMER],
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD && !Settings.GlitchesToAllow.fireWallSkip && !Data.canBombSuperslide(age)) { 
                                 return false; 
@@ -2276,7 +2276,7 @@ let MQDungeons = {
                         MapInfo: { x: 61, y: 123, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 2,
-                        RequiredItems: [ItemSets.DAMAGING_ITEMS],
+                        Needs: [ItemSets.DAMAGING_ITEMS],
                         LongDescription: "Enter the left door by the entrance. Kill the Like-Like to spawn the chest."
                     },
 
@@ -2351,7 +2351,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Lobby & Hammer Path", imageName: "Megaton Hammer" },
                 Exits: {
                     cellByEntrance: {
-                        RequiredItems: [Items.MEGATON_HAMMER]
+                        Needs: [Items.MEGATON_HAMMER]
                     }
                 },
                 ItemLocations: {
@@ -2364,7 +2364,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "Enter the locked door to the right when you first enter the temple. Defeat the stalfos and proceed. The pots scattered around the next room.",
-                        RequiredItems: [ItemSets.DAMAGING_ITEMS]
+                        Needs: [ItemSets.DAMAGING_ITEMS]
                     },
                     "Chest After First Flare Dancer": {
                         ItemGroup: ItemGroups.CHEST,
@@ -2372,8 +2372,8 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
                         Order: 9,
-                        RequiredChoiceOfAdultItems: [Items.HOOKSHOT, Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU],
-                        RequiredChoiceOfChildItems: [Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU],
+                        AdultNeedsAny: [Items.HOOKSHOT, Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU],
+                        ChildNeedsAny: [Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU],
                         LongDescription: "Enter the locked door to the right when you first enter the temple. Navigate around the rooms, defeating the enemies to progress (including an Iron Knuckle). Defeat the Flare Dancer to spawn the chest.",
                         CustomRequirement: function(age) {
                             if (age === Age.ADULT) { return true; }
@@ -2481,7 +2481,7 @@ let MQDungeons = {
                 Exits: {
                     bossKeyRoom: {
                         Age: Age.ADULT,
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA],
+                        NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.fireSoTBlockJump || Items.HOOKSHOT.playerHas;
                         }
@@ -2531,7 +2531,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
                         Order: 17,
-                        RequiredItems: [ItemSets.EXPLOSIVES],
+                        Needs: [ItemSets.EXPLOSIVES],
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD && !Data.canGroundJumpWithBomb(age)) {
                                 return false;
@@ -2587,7 +2587,7 @@ let MQDungeons = {
                 Exits: {
                     boulderMaze: {
                         Age: Age.ADULT,
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, QPAItemSets.HIGH_SWITCH_QPA] // The torch is quite high
+                        NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.HIGH_SWITCH_QPA] // The torch is quite high
                     },
                     cellBelowBoulderMaze: {
                         Age: Age.ADULT,
@@ -2613,7 +2613,7 @@ let MQDungeons = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Hammer Wonderitems",
                         MapInfo: { x: 163, y: 157, floor: "F2" },
-                        RequiredItems: [Items.MEGATON_HAMMER],
+                        Needs: [Items.MEGATON_HAMMER],
                         Age: Age.EITHER,
                         Order: 19.1,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
@@ -2625,7 +2625,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Lower Boulder Maze", imageName: "Bomb" },
                 Exits: {
                     boulderMazeTop: {
-                        RequiredItems: [Items.HOOKSHOT, ItemSets.EXPLOSIVES]
+                        Needs: [Items.HOOKSHOT, ItemSets.EXPLOSIVES]
                     }
                 },
                 ItemLocations: {
@@ -2636,7 +2636,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 19.9,
                         LongDescription: "In the maze, hookshot the giant face you see when you first enter from the door.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "3 Crates Behind Bars in Bottom Maze": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2660,7 +2660,7 @@ let MQDungeons = {
                         MapInfo: { x: 283, y: 52, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 21.1,
-                        RequiredItems: [ItemSets.EXPLOSIVES],
+                        Needs: [ItemSets.EXPLOSIVES],
                         LongDescription: "In the north section of the maze, there's a wall you can bomb. There's small crates on the top in the jail you can use to hold the switch down. It's also possible to quickly open the door before it bars again."
                     }
                 }
@@ -2791,7 +2791,7 @@ let MQDungeons = {
                 Exits: {
                     narrowBridgeRoom: {},
                     fireWallMaze: {
-                        RequiredItems: [Items.FAIRY_BOW]
+                        Needs: [Items.FAIRY_BOW]
                     }
                 },
                 ItemLocations: {
@@ -2868,7 +2868,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 32.1,
                         LongDescription: "In the room with lava and grates, hookshot the upper part of the face that's on the wall of the ledge that the exit door is on.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Crate by Lava Grate Room Exit": {
                         ItemGroup: ItemGroups.CRATE,
@@ -2908,7 +2908,7 @@ let MQDungeons = {
                         }
                     },
                     fireWallMazeEnd: {
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     }
                 },
                 ItemLocations: {
@@ -2983,7 +2983,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 39.1,
                         LongDescription: "At the end of the fire wall maze, hookshot the face above the door leading to the flare dancer room to spawn this wonderitem.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     }
                 }
             },
@@ -3010,7 +3010,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 40.1,
                         LongDescription: "Ride the platform up after the Flare Dancer room. Hookshot the giant face on the wall in the green room to spawn the wonderitem.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     }
                 }
             },
@@ -3043,7 +3043,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 43.9,
                         LongDescription: "From the top of the temple, hammer the face block to continue on. After unlocking the door, hammer the small face on the ground to lower the staircase. Hookshot the giant face that's revealed to spawn the wonderitem (it also unbars the door).",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Skulltula After Top of Temple": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3077,25 +3077,25 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Hub/Boss Area (Top North)", imageName: "Water Medallion" },
                 Exits: {
                     lowEastWingPots: {
-                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+                        Needs: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
                     },
                     midSouthRoom: {
-                        RequiredItems: [Equipment.IRON_BOOTS]
+                        Needs: [Equipment.IRON_BOOTS]
                     },
                     midEastRoom: {
-                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+                        Needs: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
                     },
                     behindGateInMidSouthRoom: {
-                        RequiredItems: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
+                        Needs: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
                     },
                     lowEastRooms: {
-                        RequiredItems: [Equipment.IRON_BOOTS],
+                        Needs: [Equipment.IRON_BOOTS],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
                         }
                     },
                     centralRoom: {
-                        RequiredItems: [Equipment.IRON_BOOTS]
+                        Needs: [Equipment.IRON_BOOTS]
                     },
                     roomBeforeDarkLink: {
                         CustomRequirement: function(age) {
@@ -3167,7 +3167,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Central Rooms (Center Mid)", imageName: "Ocarina of Time" },
                 Exits: {
                     underCentralRoom: {
-                        RequiredItems: [Equipment.IRON_BOOTS],
+                        Needs: [Equipment.IRON_BOOTS],
                         CustomRequirement: function(age) {
                             let tunicCheck = Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
                             let canUseFireArrows = ItemData.canUse(age, Items.FIRE_ARROW);
@@ -3211,7 +3211,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 2.1,
                         LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top and play the Song of Time to spawn a block you can use Din's fire from to light the torches. Alternatively, well-aimed fire arrows will work. Sink down to the room at the very bottom.<br/><br/>Once here, navigate around the maze. Jump on some platforms at the very end to reveal a switch. Hit it, and then navigate to the grate that opens up and hookshot your way up there. Hookshot the symbol on the wall to spawn the wonderitem.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Chest Below Central Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3219,7 +3219,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 3,
                         LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top and play the Song of Time to spawn a block you can use Din's fire from to light the torches. Alternatively, well-aimed fire arrows will work. Sink down to the room at the very bottom.<br/><br/>Once here, navigate around the maze. Jump on some platforms at the very end to reveal a switch. Hit it, and then navigate to the grate that opens up and hookshot your way up there. Hookshot the symbol on the wall to spawn the chest.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     }
                 }
             },
@@ -3241,7 +3241,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 3.9,
                         LongDescription: "Use your iron boots and navigate through the lower eastern room. Put them back on when you reach the very next floor. Navigate through the hole in the wall. Now, hookshot the symbol on the back wall to spawn the wonderitem.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Chest Above Low East Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3249,7 +3249,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 4,
                         LongDescription: "Use your iron boots and navigate through the lower eastern room. Put them back on when you reach the very next floor. Navigate through the hole in the wall. Now, hookshot the symbol on the back wall to spawn the chest. To open it, hookshot the front then spam A.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Wonderitem by Low Water Triforce": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -3258,7 +3258,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 4.1,
                         LongDescription: "Use your iron boots and navigate through the lower eastern room. Take them off to rise to the top to get to the triforce room. Use a fire item to light the torches in the four corners of the room to unbar the door.<br/><br/>Enter the next room and optionally defeat all the Stalfos to unbar the door. The wonderitem is spawned by hookshotting the symbol on the back wall.",
-                        RequiredItems: [Items.HOOKSHOT, ItemSets.FIRE_ITEMS]
+                        Needs: [Items.HOOKSHOT, ItemSets.FIRE_ITEMS]
                     },
                     "Chest by Low Water Triforce": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3266,7 +3266,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 5,
                         LongDescription: "Use your iron boots and navigate through the lower eastern room. Take them off to rise to the top to get to the triforce room. Use a fire item to light the torches in the four corners of the room to unbar the door.<br/><br/>Enter the next room and optionally defeat all the Stalfos to unbar the door. The chest is spawned by hookshotting the symbol on the back wall.",
-                        RequiredItems: [Items.HOOKSHOT, ItemSets.FIRE_ITEMS]
+                        Needs: [Items.HOOKSHOT, ItemSets.FIRE_ITEMS]
                     }
                 }
             },
@@ -3276,7 +3276,7 @@ let MQDungeons = {
                     lowEastWingPots: {},
                     midSouthRoomPots: {},
                     midWestRoom: {
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     behindGateInMidSouthRoom: {
                         CustomRequirement: function(age) {
@@ -3293,8 +3293,8 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 6.9,
                         LongDescription: "Lower the water level. Navigate to the room below the water triforce. Light the torches using a fire item or your bow.<br/><br/>Hookshot the symbol on the back wall to spawn the wonderitem.",
-                        RequiredItems: [Items.HOOKSHOT],
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
+                        Needs: [Items.HOOKSHOT],
+                        NeedsAny: [Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     },
                     "Chest in Lower East Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3302,7 +3302,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 7,
                         LongDescription: "Lower the water level. Navigate to the room below the water triforce. Light the torches using a fire item or your bow.<br/><br/>Defeat the enemies in the next room to spawn the chest.",
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     }
                 }
             },
@@ -3328,7 +3328,7 @@ let MQDungeons = {
                     midSouthRoomPots: {
                         // Assumes the water isn't drained
                         // Another exit into here is from lowWaterLevel, which doesn't need hookshot
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     }
                 },
                 ItemLocations: {
@@ -3359,7 +3359,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 10.1,
                         LongDescription: "Make your way to the mid south wing - you'll need to press the switch to open the gate. Navigate to the room to the right of the jail cell and hookshot the symbol on the wall to spawn the wonderitem.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     }
                 }
             },
@@ -3499,7 +3499,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 19,
                         LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your longshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. In this room, break the box to your left and hit the switch. Now, hookshot up to the next floor and break the crates.",
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     "Skulltula Above Mid West Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3507,7 +3507,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 20,
                         LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your longshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. In this room, break the box to your left and hit the switch. Now, hookshot up to the next floor. The skullula is in one of the boxes.",
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     }
                 }
             },
@@ -3589,7 +3589,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 24,
                         LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door. Jump down and kill the three stalfos, then use your hookshot to get through the next room, and then defeat Dark Link. Hookshot the wall in the next room to reach the whirlpool room.<br/><br/>As you swim, climb the hookshot target by one of the whirlpools. The skulltula will be somewhere above you.",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                     },
                     "2 Pots in Whirlpool Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3607,8 +3607,8 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Boss Key Loop (Top West)", imageName: "Boss Key" },
                 Exits: {
                     singleWaterPillarRoom: {
-                        RequiredItems: [ItemSets.FIRE_ITEMS],
-                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, Equipment.SCALE]
+                        Needs: [ItemSets.FIRE_ITEMS],
+                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE]
                     }
                 },
                 ItemLocations: {
@@ -3636,7 +3636,7 @@ let MQDungeons = {
                         Order: 27,
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
                         LongDescription: "In the whirlpool dragon room, use your iron boots or silver scale to go past the little hallway behind the dragon. The crates are the big ones on the surface in the next room.",
-                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, Equipment.SCALE]
+                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE]
                     },
                     "5 Crates Behind Dragon Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3648,7 +3648,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 27,
                         LongDescription: "In the whirlpool dragon room, use your iron boots or silver scale to go past the little hallway behind the dragon. The crates are on the surface in the next room.",
-                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, Equipment.SCALE]
+                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE]
                     },
                     "Wonderitem Behind Dragon Room": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -3657,8 +3657,8 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 27.1,
                         LongDescription: "In the whirlpool dragon room, use your iron boots or silver scale to go past the little hallway behind the dragon. Hookshot the symbol on the wall behind the crates to spawn the wonderitem.",
-                        RequiredChoiceOfItems: [Equipment.IRON_BOOTS, Equipment.SCALE],
-                        RequiredItems: [Items.HOOKSHOT]
+                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE],
+                        Needs: [Items.HOOKSHOT]
                     },
                     "2 Wonderitems in Dragon's Eyes": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3669,7 +3669,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 27.2,
                         LongDescription: "In the whirlpool dragon room, use your boots to sink down. Shoot both eyes with your hookshot to spawn two wonderitems. Note that there's a weird thing in the water that sometimes stops your shot - just keep trying!",
-                        RequiredItems: [Items.HOOKSHOT, Equipment.IRON_BOOTS]
+                        Needs: [Items.HOOKSHOT, Equipment.IRON_BOOTS]
                     },
                     "2 Crates by Dragon Room Door": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3724,7 +3724,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Boss Key Loop (Top West)", imageName: "Boss Key" },
                 Exits: {
                     bottomGateSwitch: {
-                        RequiredItems: [Equipment.IRON_BOOTS]
+                        Needs: [Equipment.IRON_BOOTS]
                     }
                 },
                 ItemLocations: {
@@ -3741,13 +3741,13 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Skulltula Jail Room (Low South)", imageName: "Fire Arrow" },
                 Exits: {
                     upperTripleTorchRoom: {
-                        RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.IRON_BOOTS, Equipment.MAGIC],
+                        Needs: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.IRON_BOOTS, Equipment.MAGIC],
                         CustomRequirement: function(age) {
                             return Data.canHookScarecrow(age) || Equipment.HOVER_BOOTS.playerHas;
                         }
                     },
                     roomAfterSpikes: {
-                        RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT],
+                        NeedsAny: [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT],
                     }
                 },
                 ItemLocations: {
@@ -3793,7 +3793,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 36,
                         LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom level and use your iron boots to sink down. Use the Scarecrow's Song or hover boots to navigate across the room. Now, turn around and use Fire Arrows to light the three torches to get to the skulltula (it's on the ceiling).",
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Wonderitem in Low South Room Jail": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -3802,7 +3802,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 36.1,
                         LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom level and use your iron boots to sink down. Use the Scarecrow's Song or hover boots to navigate across the room. Now, turn around and use Fire Arrows to light the three torches to open the cell. Hookshot the symbol on the wall to spawn the wonderitem.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     }
                 }
             },
@@ -3810,7 +3810,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Mini Waterfall Loop (Low North)", imageName: "Zora Tunic" },
                 Exits: {
                     dodongoRoom: {
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     northWaterfallArea: {
                         CustomRequirement: function(age) {
@@ -3923,7 +3923,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Mini Waterfall Loop (Low North)", imageName: "Zora Tunic" },
                 Exits: {
                     dodongoRoom: {
-                        RequiredItems: [ItemSets.FIRE_ITEMS]
+                        Needs: [ItemSets.FIRE_ITEMS]
                     }
                 },
                 ItemLocations: {
@@ -3961,7 +3961,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 47.1,
                         LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes. Play the Scarecrow's song and hookshot it to get to the opening to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. In the room, hookshot the symbol on the wall to spawn the wonderitem.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     }
                 }
             }
@@ -4003,7 +4003,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "This is the door behind the explodable wall in the truth spinner room.",
-                        RequiredItems: [ItemSets.EXPLOSIVES],
+                        Needs: [ItemSets.EXPLOSIVES],
                         KeyRequirement: function(age) {
                             return { min: 1, max: 6 };
                         }
@@ -4016,7 +4016,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "This is the door near the beamos after the truth spinner room.",
-                        RequiredItems: [ItemSets.EXPLOSIVES],
+                        Needs: [ItemSets.EXPLOSIVES],
                         KeyRequirement: function(age) {
                             let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 2;
                             return { min: 1, max: max };
@@ -4048,7 +4048,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 25,
                         LongDescription: "This is the locked door in the room with the invisible spikes.",
-                        RequiredItems: [Items.HOOKSHOT],
+                        Needs: [Items.HOOKSHOT],
                         KeyRequirement: function(age) {
                             let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 4;
                             let min = Settings.GlitchesToAllow.shadowGateClip ? 2 : 3;
@@ -4090,7 +4090,7 @@ let MQDungeons = {
                     mazeByEntrance: {
                         LockedDoor: "Locked Door by Truth Spinner",
                         Map: "Shadow Temple",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     },
                     afterTruthSpinner: {
                         CustomRequirement: function(age) {
@@ -4181,7 +4181,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "In the maze by the entrance, navigate around to the other side of the first room. Play the Song of Time to remove the block in the way (invisible without the lens). In the next room, shoot the middle eye. Now you can enter the northwest door. Kill Dead Hand to spawn the chest.",
-                        RequiredChoiceOfItems: [ItemSets.PROJECTILES, QPAItemSets.TALL_TORCH_QPA]
+                        NeedsAny: [ItemSets.PROJECTILES, QPAItemSets.TALL_TORCH_QPA]
                     }
                 }
             },
@@ -4191,19 +4191,19 @@ let MQDungeons = {
                     afterBeamos: {
                         LockedDoor: "Locked Door by Beamos",
                         Map: "Shadow Temple",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     },
                     boatRoom: {
                         Age: Age.ADULT,
-                        RequiredChoiceOfItems: [Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD],
+                        NeedsAny: [Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.shadowGateClip;
                         }
                     },
                     boatRoomLedge: {
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.HOVER_BOOTS],
-                        RequiredChoiceOfItems: [Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD],
+                        Needs: [Equipment.HOVER_BOOTS],
+                        NeedsAny: [Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.shadowUpperBoatRoomJump;
                         }
@@ -4371,7 +4371,7 @@ let MQDungeons = {
                 Exits: {
                     afterBeamos: {
                         Age: Age.ADULT,
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     fallingSpikesRoom: {},
                     invisibleSpikeRoom: {
@@ -4414,7 +4414,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 15.9,
                         LongDescription: "These rupees are above the lone pit room beamos. Use your longshot to get to them.",
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     "Chest in Giant Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4517,7 +4517,7 @@ let MQDungeons = {
                     windHallWayTop: {
                         Map: "Shadow Temple",
                         LockedDoor: "Locked Door in Invisible Spike Room",
-                        RequiredItems: [Items.HOOKSHOT, Equipment.HOVER_BOOTS],
+                        Needs: [Items.HOOKSHOT, Equipment.HOVER_BOOTS],
                     }
                 },
                 ItemLocations: {
@@ -4548,7 +4548,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 23.3,
                         LongDescription: "This rupee is in to the right, just below the hookshot target.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Ceiling Silver Rupee by Entrance": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4556,7 +4556,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 23.4,
                         LongDescription: "This rupee is above you as you enter the room. It's the one closer to the entrance.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Ceiling Silver Rupee in Center": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4564,7 +4564,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 23.5,
                         LongDescription: "This rupee is above you as you enter the room. It's the one farther from the entrance.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Ceiling Silver Rupee by Exit": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4572,7 +4572,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 23.6,
                         LongDescription: "This rupee is above the exit door. It marks an invisible hookshot target. If you need height, kill the redeads to spawn the chest. Backflip onto the chest and hookshot it from there.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Midair Silver Rupee on Back Right Wall": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4580,7 +4580,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 23.7,
                         LongDescription: "First, get to the exit door (see the previous rupee). You can roll + jumpslash, or just use hover boots to get the rupee.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Silver Rupee on Left Wall": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4588,7 +4588,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 23.8,
                         LongDescription: "This rupee is in to the left, just below the hookshot target.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Silver Rupee on Invisible Ledge": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4596,7 +4596,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 23.9,
                         LongDescription: "This rupee is on an invisible ledge in the back left corner of the room. There's an invisible hookshot target on the back wall you can use to get up to it.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Midair Silver Rupee by Invisible Ledge": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4604,7 +4604,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 23.91,
                         LongDescription: "Get to the invisible ledge (see the previous rupee). You can use your hover boots, or roll jump to get to this nearby silver rupee.",
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     }
                 }
             },
@@ -4641,7 +4641,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Wind Hallway & Gibdo Room", imageName: "Iron Boots" },
                 Exits: {
                     windHallWayTop: {
-                        RequiredItems: [Items.HOOKSHOT],
+                        Needs: [Items.HOOKSHOT],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.shadowNoIronBoots || Equipment.IRON_BOOTS.playerHas;
                         }
@@ -4658,7 +4658,7 @@ let MQDungeons = {
                         MapInfo: { x: 350, y: 193, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 26,
-                        RequiredItems: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         LongDescription: "Go through the door at the top of the invisible spike room. You may need hover boots if the clear platforms are there. Navigate through the wind hallway all the way to the door. The skulltula is in plain sight in this room."
                     },
                     "Invisible Chest at End of Wind Hallway": {
@@ -4700,7 +4700,7 @@ let MQDungeons = {
                         MapInfo: { x: 309, y: 158, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 31,
-                        RequiredItems: [ItemSets.EXPLOSIVES],
+                        Needs: [ItemSets.EXPLOSIVES],
                         LongDescription: "In the Gibdo room, bomb the rubble to your right to get to this chest."
                     },
                     "Skulltula in Gibdo Room by Wind Hallway": {
@@ -4721,7 +4721,7 @@ let MQDungeons = {
                     },
                     boatRoomLedge: {
                         RequiredSongs: [Songs.SCARECROWS_SONG],
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     endOfBoatRide: {
                         RequiredSongs: [Songs.ZELDAS_LULLABY]
@@ -4781,8 +4781,8 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Boat Room Chasm Areas", imageName: "Fairy Bow" },
                 Exits: {
                     chasmPlatform: {
-                        RequiredItems: [Items.HOOKSHOT],
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA],
+                        Needs: [Items.HOOKSHOT],
+                        NeedsAny: [Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA],
                         CustomRequirement: function(age) {
                             if (Settings.GlitchesToAllow.mqShadowChasmPlatformWithHookshot &&
                                 Data.canShieldTurn(age)
@@ -4849,7 +4849,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 43.9,
                         LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>In the invisible maze, navigate to the west room. Go through and turn around. Shoot the upper part of the picture above the door to spawn the wonderitem.",
-                        RequiredItems: [Items.FAIRY_BOW]
+                        Needs: [Items.FAIRY_BOW]
                     },
                     "Freestanding Item in Triple Skull Room": {
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -4878,7 +4878,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 46,
                         LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>In the invisible maze, navigate to the south room. Use explosives to make Dead Hand spawn. Kill him to spawn the chest.",
-                        RequiredItems: [ItemSets.EXPLOSIVES_OR_STRENGTH]
+                        Needs: [ItemSets.EXPLOSIVES_OR_STRENGTH]
                     },
                     "2 Pots in Bomb Flower Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -4896,7 +4896,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Invisible Wall Maze Rooms", imageName: "Boss Key" },
                 Exits: {
                     afterBurningSpikes: {
-                        RequiredChoiceOfItems: [Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     }
                 },
                 ItemLocations: {
@@ -4986,7 +4986,7 @@ let MQDungeons = {
                     },
                     silverBlockMaze: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.BOMBCHU, UpgradedItems.LONGSHOT],
+                        Needs: [Items.BOMBCHU, UpgradedItems.LONGSHOT],
                         CustomRequirement: function(age) {
                             if (ItemData.canUse(age, UpgradedItems.SILVER_GAUNTLETS)) { return true; }
                             return Data.canWeirdShot(age) && Items.FAIRY_BOW.playerHas;
@@ -5013,7 +5013,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 1.1,
                         LongDescription: "This rupee is under the left rock as you enter the temple.",
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+                        Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "Lobby Silver Rupee in Right Rock": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -5021,7 +5021,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 1.2,
                         LongDescription: "This rupee is under the right rock as you enter the temple.",
-                        RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+                        Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "Bottom Left Chest in Lobby": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5047,7 +5047,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 4,
                         LongDescription: "After you first enter the temple, go up the stairs and turn around. There's a crystal switch at the top of one of the pillars that you need to activate to spawn the chest.<br/><br/>The easiest way to hit with the boomerang is to face the pillar directly, and take small steps backwards. Aim it all the way up and try until it works.",
-                        RequiredChoiceOfItems: [ItemSets.PROJECTILES, Items.BOOMERANG, Items.BOMBCHU]
+                        NeedsAny: [ItemSets.PROJECTILES, Items.BOOMERANG, Items.BOMBCHU]
                     },
 
                     // Locked Doors
@@ -5191,21 +5191,21 @@ let MQDungeons = {
                 UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                 Exits: {
                     acrossChildGrateRoom: {
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             [Items.BOMBCHU, ItemSets.PROJECTILES],
                             UpgradedItems.LONGSHOT, // Hookshot the gibdos
                             Equipment.HOVER_BOOTS,
                             GlitchItemSets.MEGA_FLIP]
                     },
                     backOfChildBridgeRoom: {
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             Items.HOOKSHOT, // Hookshot the torches
                             Equipment.HOVER_BOOTS,
                             GlitchItemSets.MEGA_FLIP]
                     },
                     afterSecondCrawlSpace: {
                         Age: Age.CHILD,
-                        RequiredItems: [Items.BOMBCHU]
+                        Needs: [Items.BOMBCHU]
                     }
                 },
                 ItemLocations: {
@@ -5225,7 +5225,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 6,
                         LongDescription: "These are the hearts surrounded by fire in the room after you go through the crawlspace. You can either get them with the boomerang, shoot the eye switch, or run into the fire and then jumpslash into them.",
-                        RequiredChoiceOfItems: [ItemSets.SWORDS, ItemSets.PROJECTILES, Items.BOOMERANG]
+                        NeedsAny: [ItemSets.SWORDS, ItemSets.PROJECTILES, Items.BOOMERANG]
                     },
                     "Big Chest in Bridge Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5233,7 +5233,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "In the child area, go through the left door to get to this chest. You can also do the loop from the right side.",
-                        RequiredItems: [ItemSets.SWORDS]
+                        Needs: [ItemSets.SWORDS]
                     },
                     "Chest in Child Main Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5242,7 +5242,7 @@ let MQDungeons = {
                         Order: 52,
                         IsPostWalkCheck: true,
                         LongDescription: "As an adult, navigate through the sun on the floor room until you're in the room with the rusted switch (this is the room after the second crawl space). Hit the switch to spawn the chest. You must go back in time to claim it.<br/>You can also equip swap hammer as Child to get this.",
-                        RequiredItems: [Items.BOMBCHU],
+                        Needs: [Items.BOMBCHU],
                         CustomRequirement: function(age) {
                             if (!Items.MEGATON_HAMMER.playerHas) { return false; }
                             return ItemData.canUse(age, Items.MEGATON_HAMMER) || Data.canAccessMap(Age.ADULT, "Spirit Temple", "afterSecondCrawlSpace");
@@ -5255,7 +5255,7 @@ let MQDungeons = {
                 UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                 Exits: {
                     backOfChildBridgeRoom: {
-                        RequiredItems: [ItemSets.SWORDS]
+                        Needs: [ItemSets.SWORDS]
                     }
                 },
                 ItemLocations: {
@@ -5292,7 +5292,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 9,
                         LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. In the next room, kill the Stalfos and continue on. In this room, pull back the gravestone and hit the switch to lower the bridge. Now kill all the enemies to spawn the chest - you'll need a fire item (or bow a bow shot through a torch) to deal with the Anubis.",
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.FAIRY_BOW] // Shoot through a torch
+                        NeedsAny: [ItemSets.FIRE_ITEMS, Items.FAIRY_BOW] // Shoot through a torch
                     }
                 }
             },
@@ -5306,7 +5306,7 @@ let MQDungeons = {
                     },
                     childSide: {
                         Age: Age.ADULT, // Child would already have access from the lobby
-                        RequiredItems: [Items.MEGATON_HAMMER],
+                        Needs: [Items.MEGATON_HAMMER],
                         CustomRequirement: function(age) {
                             return Data.canWeirdShot(age);
                         }
@@ -5342,7 +5342,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "In the room with the sun on the floor, kill all the enemies to spawn the chest. As child, this is the room after you go through the second crawlspace. As an adult, it's in the bottom southwest corner of the big statue room.",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     },
                     "Top Chest in Room With Sun On Floor": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5350,7 +5350,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 27,
                         LongDescription: "In the room with the sun on the floor, use an explosive to blow up the wall to light up the sun. This will spawn a chest that you will need to hookshot up to.",
-                        RequiredItems: [Items.HOOKSHOT, ItemSets.EXPLOSIVES]
+                        Needs: [Items.HOOKSHOT, ItemSets.EXPLOSIVES]
                     }
                 }
             },
@@ -5364,7 +5364,7 @@ let MQDungeons = {
                     },
                     silverBlockMaze: {
                         Age: Age.CHILD,
-                        RequiredChoiceOfItems: [Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     },
                     fireBubbleRoom: {
                         CustomRequirement: function(age) {
@@ -5375,11 +5375,11 @@ let MQDungeons = {
                         LockedDoor: "Locked Door in Statue Room",
                         Map: "Spirit Temple",
                         Age: Age.ADULT,
-                        RequiredItems: [Items.HOOKSHOT]
+                        Needs: [Items.HOOKSHOT]
                     },
                     roomRightOfLobby: {
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.MIRROR_SHIELD],
+                        Needs: [Equipment.MIRROR_SHIELD],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.mqSpiritStatueTorchesWithDins
                                 ? ItemData.canUse(age, ItemSets.FIRE_ITEMS)
@@ -5417,7 +5417,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 16,
                         LongDescription: "WALL MASTER WARNING:<br/>Shoot the eye switch on the left side of the statue to spawn this chest.",
-                        RequiredChoiceOfItems: [ItemSets.PROJECTILES, QPAItemSets.TALL_TORCH_QPA]
+                        NeedsAny: [ItemSets.PROJECTILES, QPAItemSets.TALL_TORCH_QPA]
                     },
                     "2 Crates in Statue Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -5527,8 +5527,8 @@ let MQDungeons = {
                         UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                         Order: 19,
                         LongDescription: "From the statue room, use a fire item on the southern eye switch to get to the maze room. Navigate to the first hole and shoot the eye switch on the lower left wall to spawn the chest.",
-                        RequiredChildItems: [Items.FAIRY_SLINGSHOT],
-                        RequiredAdultItems: [Items.FAIRY_BOW],
+                        ChildNeeds: [Items.FAIRY_SLINGSHOT],
+                        AdultNeeds: [Items.FAIRY_BOW],
                         CustomRequirement: function(age) {
                             return age === Age.CHILD || Data.canWeirdShot(age);
                         }
@@ -5620,7 +5620,7 @@ let MQDungeons = {
                     },
                     bottomRightLobbyChest: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.MEGATON_HAMMER],
+                        Needs: [Items.MEGATON_HAMMER],
                         CustomRequirement: function(age) {
                             return !Settings.RandomizerSettings.shuffleSilverRupees;
                         }
@@ -5671,7 +5671,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 36.2,
                         LongDescription: "This rupee is in the water diving the lobby and the room next to it. First, get to the room to the right of the lobby (see Bottom Right Chest in Lobby for info). Now, use your hammer and smash the rock and hit the switch underneath. This will lower the water and allow you to get the rupee. WARNING: If you stay at in the lobby side, you will be trapped there when the water comes back!",
-                        RequiredItems: [Items.MEGATON_HAMMER],
+                        Needs: [Items.MEGATON_HAMMER],
                     }
                 }
             },
@@ -5686,7 +5686,7 @@ let MQDungeons = {
                         Order: 35,
                         LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), use a key to go through the locked door. Hit the rusted switch with your hammer. Now, play the following songs in each of the opened cells in this order: Song of Time, Epona's Song, Sun's Song, Song of Storms, then Zelda's Lullaby. Enter the room that opens up to you - the skulltula is inside on a wall.",
                         Region: "boulderRoom",
-                        RequiredItems: [Items.MEGATON_HAMMER],
+                        Needs: [Items.MEGATON_HAMMER],
                         RequiredSongs: [Songs.SONG_OF_TIME, Songs.EPONAS_SONG, Songs.SUNS_SONG, Songs.SONG_OF_STORMS, Songs.ZELDAS_LULLABY]
                     },
                     "Chest After Boulder Room": {
@@ -5696,7 +5696,7 @@ let MQDungeons = {
                         Order: 36,
                         LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), use a key to go through the locked door. Hit the rusted switch with your hammer. Now, play the following songs in each of the opened cells in this order: Song of Time, Epona's Song, Sun's Song, Song of Storms, then Zelda's Lullaby. Enter the room that opens up to you - the chest is in this room.",
                         Region: "boulderRoom",
-                        RequiredItems: [Items.MEGATON_HAMMER],
+                        Needs: [Items.MEGATON_HAMMER],
                         RequiredSongs: [Songs.SONG_OF_TIME, Songs.EPONAS_SONG, Songs.SUNS_SONG, Songs.SONG_OF_STORMS, Songs.ZELDAS_LULLABY]
                     }
                 }
@@ -5740,7 +5740,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 39,
                         LongDescription: "From the statue room, hookshot to the torch to get to the southeast side. Use a key to go in the top door. Kill the beamos to spawn the chest.",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     }
                 }
             },
@@ -5774,7 +5774,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 41,
                         LongDescription: "In the room with the lizalfos and sun, you can climb the Song of Time block and shine the light on the sun. The chest is in the room that opens.",
-                        RequiredItems: [Equipment.MIRROR_SHIELD]
+                        Needs: [Equipment.MIRROR_SHIELD]
                     }
                 }
             },
@@ -5783,7 +5783,7 @@ let MQDungeons = {
                 Exits: {
                     lizalfosAndSunRoom: {},
                     silverGauntsStatueHand: {
-                        RequiredAdultItems: [UpgradedItems.LONGSHOT]
+                        AdultNeeds: [UpgradedItems.LONGSHOT]
                     },
                     statueHands: {}
                 },
@@ -5876,7 +5876,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Mirror Room & Boss Area", imageName: "Spirit Medallion" },
                 Exits: {
                     mirrorMaze: {
-                        RequiredItems: [Items.MEGATON_HAMMER]
+                        Needs: [Items.MEGATON_HAMMER]
                     }
                 },
                 ItemLocations: {
@@ -5906,7 +5906,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Mirror Room & Boss Area", imageName: "Spirit Medallion" },
                 Exits: {
                     bossRoom: {
-                        RequiredItems: [Equipment.MIRROR_SHIELD],
+                        Needs: [Equipment.MIRROR_SHIELD],
                         CustomRequirement: function(age) {
                             return ItemData.hasBossKey("Spirit Temple");
                         }
@@ -6048,7 +6048,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 6,
                         LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>On the floor, there's a switch embedded in the ice. Use an explosive to hit it. This will make the block around the heart piece item disappear.",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     },
                     "Skulltula in North Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -6093,7 +6093,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 9,
                         LongDescription: "Across the room from the first room with blue fire, melt the ice wall. Navigate through the hallway to gain access to this room. Turn around once inside, and hit the switch posing as a stalagtite. This will make some stairs vanish near the exit of the room so you can grab the token. Be sure to hit the switch again so you can leave.",
-                        RequiredItems: [ItemSets.DISTANT_SWITCH_ITEMS]
+                        Needs: [ItemSets.DISTANT_SWITCH_ITEMS]
                     },
                     "Skulltula on Ledge in Big Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -6193,7 +6193,7 @@ let MQDungeons = {
                         Age: Age.CHILD,
                         Order: 6,
                         LongDescription: "WALL MASTER WARNING:<br/>This is the locked door you find after the room with the floormasters.",
-                        RequiredItems: [ItemSets.DISTANT_SWITCH_ITEMS],
+                        Needs: [ItemSets.DISTANT_SWITCH_ITEMS],
                         KeyRequirement: function(age) {
                             return { min: 1, max: 2 };
                         }
@@ -6204,14 +6204,14 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Main Area Loop", imageName: "Slingshot Wonderitem" },
                 Exits: {
                     centerRoom: {
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             ItemSets.BLAST_OR_SMASH_ITEMS, // Bomb the rock, then do an angled right sidehop
                             Songs.ZELDAS_LULLABY // Open the barred walls
                         ]
                     },
                     drainedWater: {
                         // Adult can weridshot into the deadhand area (so the crawlspace doesn't matter), which is all drainedWater is
-                        RequiredChoiceOfItems: [
+                        NeedsAny: [
                             ItemSets.DISTANT_SWITCH_ITEMS, // Hit the switch
                             ItemSets.SWORDS, // Any sword item can hit it with a well-timed jumpslash
                             Songs.ZELDAS_LULLABY, // Open the barred walls, then throw a pot at the switch
@@ -6232,7 +6232,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "In the main area, bomb the rubble to the left to get to these hearts.",
-                        RequiredItems: [ItemSets.EXPLOSIVES]
+                        Needs: [ItemSets.EXPLOSIVES]
                     },
                     "Pot Behind Gate": {
                         ItemGroup: ItemGroups.POT,
@@ -6409,7 +6409,7 @@ let MQDungeons = {
                         MapInfo: { x: 333, y: 229, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 13,
-                        RequiredChoiceOfItems: [ItemSets.EXPLOSIVES, Items.BOOMERANG],
+                        NeedsAny: [ItemSets.EXPLOSIVES, Items.BOOMERANG],
                         LongDescription: "In the Dead Hand room, bomb the back left rubble to reveal the item. You can also stand on in the corner of the rubble and boomerang straight down to get it."
                     }
                 }
@@ -6469,10 +6469,10 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Lobby", imageName: "Gerudo Membership Card" },
                 Exits: {
                     armosRoom: {
-                        RequiredItems: [ItemSets.PROJECTILES]
+                        Needs: [ItemSets.PROJECTILES]
                     },
                     leftArea: {
-                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
                     },
                     mazeStart: {},
                     iceArrowsRoom: {
@@ -6531,7 +6531,7 @@ let MQDungeons = {
                         }
                     },
                     mazeCenter: {
-                        RequiredChildItems: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
+                        ChildNeeds: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
                         CustomRequirement: function(age) {
                             return ItemData.getKeyCount("Training Grounds") >= 3 ||
                                 MapLocations["Training Grounds"]._canVineClip(age) || 
@@ -6594,7 +6594,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 6.2,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
-                        RequiredItems: [Items.MEGATON_HAMMER],
+                        Needs: [Items.MEGATON_HAMMER],
                         LongDescription: "At the center of the maze, break the crate and hit the switch with the Megaton Hammer to spawn the ice arrow chest."
                     }
                 }
@@ -6603,7 +6603,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Armos Room", imageName: "Bomb" },
                 Exits: {
                     bigLavaRoomFront: {
-                        RequiredChoiceOfChildItems: [Items.DEKU_STICK, Items.BOMB, Items.BOMBCHU]
+                        ChildNeedsAny: [Items.DEKU_STICK, Items.BOMB, Items.BOMBCHU]
                     }
                 },
                 ItemLocations: {
@@ -6613,7 +6613,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "Either get here after shooting the eye in the starting room, or going around form the big lava room. Kill all the enemies to spawn the chest.",
-                        RequiredChoiceOfChildItems: [Items.DEKU_STICK, Items.BOMB, Items.BOMBCHU]
+                        ChildNeedsAny: [Items.DEKU_STICK, Items.BOMB, Items.BOMBCHU]
                     },
                     "Wonderitem in Armos Room": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -6622,7 +6622,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 17.1,
                         LongDescription: "Either get here after shooting the eye in the starting room, or going around form the big lava room. Shoot the symbol above the door leading to the big lava room to spawn this wonderitem.",
-                        RequiredItems: [Items.FAIRY_BOW]
+                        Needs: [Items.FAIRY_BOW]
                     }
                 }
             },
@@ -6750,7 +6750,7 @@ let MQDungeons = {
                     },
                     armosRoom: {
                         Age: Age.ADULT,
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     bigLavaRoomUpperBack: {},
                     iceArrowsRoom: {
@@ -6784,7 +6784,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 11,
                         LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Jump to the spinning ring and shoot the eyes of the statues to spawn the chest.",
-                        RequiredItems: [Items.FAIRY_BOW]
+                        Needs: [Items.FAIRY_BOW]
                     },
                     "Side Fire Iron Knuckle Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -6799,7 +6799,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Continue past the circle fire room into the next room. Activate the switch above the door to spawn the chest. Step on the swith on one of the walls to remove the fire.",
-                        RequiredItems: [ItemSets.DISTANT_SWITCH_ITEMS]
+                        Needs: [ItemSets.DISTANT_SWITCH_ITEMS]
                     }
                 }
             },
@@ -6841,11 +6841,11 @@ let MQDungeons = {
                 Exits: {
                     bigLavaRoomWaterDoorPlatform: {
                         Age: Age.ADULT,
-                        RequiredChoiceOfItems: [UpgradedItems.LONGSHOT, Items.FAIRY_BOW]
+                        NeedsAny: [UpgradedItems.LONGSHOT, Items.FAIRY_BOW]
                     },
                     bigLavaRoomBack: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW],
+                        Needs: [Items.FAIRY_BOW],
                         CustomRequirement: function(age) {
                             // Getting all silver rupees spawns hookshot targets that you can use to traverse!
                             if (Settings.RandomizerSettings.shuffleSilverRupees && ItemData.checkSilverRupeeRequirement("Training Grounds", 1)) {
@@ -6885,23 +6885,23 @@ let MQDungeons = {
                 Exits: {
                     bigLavaRoomBack: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FIRE_ARROW]
+                        Needs: [Items.FIRE_ARROW]
                     },
                     bigLavaRoomBackLeft: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FIRE_ARROW],
+                        Needs: [Items.FIRE_ARROW],
                         CustomRequirement: function(age) {
                             return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
                         }
                     },
                     bigLavaRoomWaterDoorPlatform: {
                         Age: Age.ADULT,
-                        RequiredItems: [UpgradedItems.LONGSHOT]
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     backOfMaze: {
                         Age: Age.ADULT,
                         // Hitting the switch unbars the door from the maze; just need to savewarp after
-                        RequiredItems: [Items.MEGATON_HAMMER] 
+                        Needs: [Items.MEGATON_HAMMER] 
                     }
                 },
                 ItemLocations: {}
@@ -6976,10 +6976,10 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
                 Exits: {
                     bigLavaRoomFront: {
-                        RequiredChoiceOfItems: [UpgradedItems.LONGSHOT, ItemSets.FIRE_ITEMS]
+                        NeedsAny: [UpgradedItems.LONGSHOT, ItemSets.FIRE_ITEMS]
                     },
                     bigLavaRoomBack: {
-                        RequiredItems: [ItemSets.FIRE_ITEMS],
+                        Needs: [ItemSets.FIRE_ITEMS],
                         CustomRequirement: function(age) {
                             return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
                         }
@@ -7023,7 +7023,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 16.1,
                         LongDescription: "From the big lava room, longshot to the torch by the side door. Light it with a fire item or with your bow from the lit torch, then use your hover boots to collect the rupees. You may need to collect half of them then come back and light the torch again.<br/><br/>Once inside the water room, burn the web, then use your iron boots and hookshot (if you have one) to collect the items.",
-                        RequiredItems: [Equipment.IRON_BOOTS, ItemSets.FIRE_ITEMS],
+                        Needs: [Equipment.IRON_BOOTS, ItemSets.FIRE_ITEMS],
                         CustomRequirement: function(age) {
                             return Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
                         }
@@ -7047,11 +7047,11 @@ let MQDungeons = {
                     },
                     bigLavaRoomBack: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.MAGIC]
+                        Needs: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.MAGIC]
                     },
                     bigLavaRoomBackLeft: {
                         Age: Age.ADULT,
-                        RequiredItems: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.MAGIC]
+                        Needs: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.MAGIC]
                     }
                 },
                 ItemLocations: {
@@ -7115,7 +7115,7 @@ let MQDungeons = {
                         }
                     },
                     spiritRoom2: {
-                        RequiredItems: [Items.MEGATON_HAMMER]
+                        Needs: [Items.MEGATON_HAMMER]
                     },
                     center: {
                         CustomRequirement: function(age) {
@@ -7212,8 +7212,8 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 6,
                         LongDescription: "After dealing with the enemies, wait for the fan to stop spinning, then hookshot up to the ledge. The item is up there.",
-                        RequiredChildItems: [Items.BOOMERANG],
-                        RequiredChoiceOfAdultItems: [Items.HOOKSHOT, Items.BOOMERANG]
+                        ChildNeeds: [Items.BOOMERANG],
+                        AdultNeedsAny: [Items.HOOKSHOT, Items.BOOMERANG]
                     },
                     "Forest Close Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -7221,8 +7221,8 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 7,
                         LongDescription: "In the second room, stand on the upper left side of the first platform. Shoot the eye switch on the back right corner of the room to spawn the chest.",
-                        RequiredChildItems: [Items.FAIRY_SLINGSHOT],
-                        RequiredAdultItems: [Items.FAIRY_BOW]
+                        ChildNeeds: [Items.FAIRY_SLINGSHOT],
+                        AdultNeeds: [Items.FAIRY_BOW]
                     },
                     "Forest Far Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -7230,7 +7230,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "In the second room, shoot the eye switch at the back left side of the room with a fire arrow to spawn the chest. Alternatively, you can also use Din's fire to hit it once at the back of the room. To get across, you can jump and use the wind from the fan if you have no hover boots.",
-                        RequiredItems: [ItemSets.FIRE_ITEMS]
+                        Needs: [ItemSets.FIRE_ITEMS]
                     }
                 }
             },
@@ -7255,7 +7255,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 9.1,
                         LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
-                        RequiredItems: [Items.LIGHT_ARROW]
+                        Needs: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -7363,7 +7363,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 13.1,
                         LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
-                        RequiredItems: [Items.LIGHT_ARROW]
+                        Needs: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -7371,7 +7371,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Shadow Trial", imageName: "Shadow Medallion" },
                 Exits: {
                     shadowMovingPlatform: {
-                        RequiredItems: [Equipment.MAGIC, Items.LENS_OF_TRUTH] // Without lens is really hard, so not including that trick for now
+                        Needs: [Equipment.MAGIC, Items.LENS_OF_TRUTH] // Without lens is really hard, so not including that trick for now
                     }
                 },
                 ItemLocations: {
@@ -7396,7 +7396,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Shadow Trial", imageName: "Shadow Medallion" },
                 Exits: {
                     shadowBackSection: {
-                        RequiredChoiceOfItems: [Equipment.HOVER_BOOTS, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [Equipment.HOVER_BOOTS, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
                     }
                 },
                 ItemLocations: {
@@ -7438,7 +7438,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 15,
                         LongDescription: "At the shadow trial, use your lens of truth to navigate across the room. There's an invisible moving invisible platform you'll need to use. To cross the other gap, use hover boots or light the sunken torch to create a platform. After the beamos platform, turn around and shoot the eye switch to spawn the chest.<br/><br/>Using QPA, get ISG and stand in the middle of the transparent platform, with your back to the eye switch. Put away your weapon. Backflip - you should void out and trigger the switch.",
-                        RequiredChoiceOfItems: [Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]
                     },
                     "Shadow Silver Rupee Under Back Beamos": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -7477,7 +7477,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 16.1,
                         LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
-                        RequiredItems: [Items.LIGHT_ARROW]
+                        Needs: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -7526,7 +7526,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 16.2,
                         LongDescription: "Navigate to the back island with the beamos and giant silver pillar. Lift it with your golden gauntlets to get to the rupee.",
-                        RequiredItems: [UpgradedItems.GOLDEN_GAUNTLETS]
+                        Needs: [UpgradedItems.GOLDEN_GAUNTLETS]
                     },
                     "Fire Silver on Back Left Platform": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -7572,7 +7572,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 17.1,
                         LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
-                        RequiredItems: [Items.LIGHT_ARROW]
+                        Needs: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -7649,7 +7649,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 22.1,
                         LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
-                        RequiredItems: [Items.LIGHT_ARROW]
+                        Needs: [Items.LIGHT_ARROW]
                     }
                 }
             },
@@ -7657,7 +7657,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Spirit Trial", imageName: "Spirit Medallion" },
                 Exits: {
                     spiritRoom3: {
-                        RequiredItems: [Items.BOMBCHU]
+                        Needs: [Items.BOMBCHU]
                     }
                 },
                 ItemLocations: {
@@ -7675,7 +7675,7 @@ let MQDungeons = {
                 Exits: {
                     spiritRoom4: {
                         Age: Age.ADULT,
-                        RequiredItems: [Equipment.MIRROR_SHIELD, Items.FIRE_ARROW]
+                        Needs: [Equipment.MIRROR_SHIELD, Items.FIRE_ARROW]
                     }
                 },
                 ItemLocations: {
@@ -7727,7 +7727,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 29.1,
                         LongDescription: "Shoot the weird thing at the end of the trial with a light arrow to complete it.",
-                        RequiredItems: [Items.LIGHT_ARROW]
+                        Needs: [Items.LIGHT_ARROW]
                     }
                 }
             },

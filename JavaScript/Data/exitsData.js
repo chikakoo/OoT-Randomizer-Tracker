@@ -9,7 +9,7 @@ let OwExits = {
             MapInfo: { x: 46, y: 130 },
             Age: Age.EITHER,
             LongDescription: "This is the bottom entrance to the Lost Woods.",
-            RequiredChoiceOfChildItems: [
+            ChildNeedsAny: [
                 SettingSets.OPEN_FOREST,
                 GameStateSets.DEFEATED_DEKU_TREE_BOSS,
                 GlitchItemSets.POKEY_SKIP
@@ -141,7 +141,7 @@ let OwExits = {
             MapInfo: { x: 284, y: 126 },
             Order: 8,
             Age: Age.EITHER,
-            RequiredChoiceOfItems: [
+            NeedsAny: [
                 Equipment.SCALE,
                 Equipment.IRON_BOOTS,
                 GlitchItemSets.CHILD_ZR_FROM_LW_WITHOUT_SCALE,
@@ -157,8 +157,8 @@ let OwExits = {
             Age: Age.EITHER,
             UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
             OneWayEntrance: true,
-            RequiredChildItems: [GlitchItemSets.MEGA_FLIP],
-            RequiredChoiceOfAdultItems: [
+            ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+            AdultNeedsAny: [
                 Equipment.HOVER_BOOTS,
                 UpgradedItems.LONGSHOT,
                 BeanSets.LOST_WOODS_BRIDGE,
@@ -193,7 +193,7 @@ let OwExits = {
             Order: 4,
             Age: Age.EITHER,
             LongDescription: "From the Kokiri Forest entrance, go right and then left. Remove the rock on this screen to reveal this grotto.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+            Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Forest Stage Grotto": {
             ExitRegion: "secondHalf",
@@ -214,7 +214,7 @@ let OwExits = {
             Order: 8,
             Age: Age.EITHER,
             LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, straight, left. Remove the rock in this room to reveal the grotto.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+            Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         }
     },
 
@@ -251,7 +251,7 @@ let OwExits = {
             Age: Age.EITHER,
             UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip && !Settings.GlitchesToAllow.lwBridgePressureJump; },
             LongDescription: "Longshot from the bridge to the ladder to get to the lost woods.<br/><br/>Megaflip setup: Get in the corner closest to the ladder; take a tiny step back; c-up and face the third rope support; turn 180; dry roll if using bombs; megaflip",
-            RequiredChoiceOfItems: [UpgradedItems.LONGSHOT, GlitchItemSets.MEGA_FLIP, GlitchItemSets.PRESSURE_JUMP]
+            NeedsAny: [UpgradedItems.LONGSHOT, GlitchItemSets.MEGA_FLIP, GlitchItemSets.PRESSURE_JUMP]
         }
     },
 
@@ -274,7 +274,7 @@ let OwExits = {
             MapInfo: { x: 177, y: 274 },
             Age: Age.EITHER,
             LongDescription: "This hidden grotto is roughly halfway between the Lost Woods entrance and the maze entrance. It can be revealed with an explosive or a hammer.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+            Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
 
         // Maze
@@ -308,7 +308,7 @@ let OwExits = {
             Age: Age.ADULT,
             LongDescription: "This is the entrance to the Forest Temple.",
             IsDungeonEntrance: true,
-            RequiredItems: [Items.HOOKSHOT]
+            Needs: [Items.HOOKSHOT]
         },
         "Song of Storms Grotto": {
             ExitRegion: "afterGate",
@@ -378,7 +378,7 @@ let OwExits = {
             MapInfo: { x: 237, y: 23 },
             Age: Age.EITHER,
             LongDescription: "North of the entrance to Kakariko, there's a tree with a hidden grotto - bomb or hammer to open it.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+            Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Grotto in Drawbridge Rock": {
             ExitRegion: "main",
@@ -388,7 +388,7 @@ let OwExits = {
             MapInfo: { x: 170, y: 39 },
             Age: Age.EITHER,
             LongDescription: "Remove the rock to the left of the Market drawbridge to reveal this grotto.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+            Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
 
         // West
@@ -409,7 +409,7 @@ let OwExits = {
             MapInfo: { x: 102, y: 20 },
             Age: Age.EITHER,
             LongDescription: "On the north side of the river to the west of the Market entrance, there's a grotto under a yellow rock.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+            Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Hidden Grotto by North River Tree": {
             ExitRegion: "main",
@@ -419,7 +419,7 @@ let OwExits = {
             MapInfo: { x: 91, y: 57 },
             Age: Age.EITHER,
             LongDescription: "To the west of the Market entrance, there's a lone tree to the south of a river. Bomb or hammer near the tree to reveal this grotto.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+            Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Grotto by Gerudo": {
             ExitRegion: "main",
@@ -429,8 +429,8 @@ let OwExits = {
             MapInfo: { x: 50, y: 103 },
             Age: Age.EITHER,
             LongDescription: "Near the entrance to Gerudo Valley, there's a circle of small rocks. As a child, you can bomb the center to reveal a grotto. As adult, you must hammer the red rock.",
-            RequiredChildItems: [ItemSets.BLAST_OR_SMASH_ITEMS],
-            RequiredAdultItems: [Items.MEGATON_HAMMER]
+            ChildNeeds: [ItemSets.BLAST_OR_SMASH_ITEMS],
+            AdultNeeds: [Items.MEGATON_HAMMER]
         },
 
         // South
@@ -452,7 +452,7 @@ let OwExits = {
             MapInfo: { x: 201, y: 227 },
             Age: Age.EITHER,
             LongDescription: "In the southeast (a bit south of the Kokiri Forest entrance), there's a small forest that has a rock you can break to reveal this grotto.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+            Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Open Grotto East of Lake Hylia Fences": {
             ExitRegion: "main",
@@ -471,7 +471,7 @@ let OwExits = {
             MapInfo: { x: 91, y: 267 },
             Age: Age.EITHER,
             LongDescription: "There's a hidden grotto in the center of the fences by Lake Hylia. Bomb or hammer there to get in. The scrub is inside.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+            Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         }
     },
 
@@ -797,7 +797,7 @@ let OwExits = {
             MapInfo: { x: 285, y: 231, floor: "HYR" },
             Age: Age.CHILD,
             LongDescription: "After climbing the vines and jumping off the building, follow the right wall until you reach a rock. Bomb it and enter the crawlspace.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+            Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Song of Storms Grotto": {
             ExitRegion: "hyruleCastle",
@@ -820,7 +820,7 @@ let OwExits = {
             MapInfo: { x: 308, y: 161, floor: "GAN" },
             Age: Age.ADULT,
             LongDescription: "At the end of the main rock is a giant block you can pull up with Golden Gauntlets. Alternatively, you can use hover boots and a shield to clip past the block.",
-            RequiredChoiceOfItems: [UpgradedItems.GOLDEN_GAUNTLETS, GlitchItemSets.DOUBLE_DEFENSE_EARLY]
+            NeedsAny: [UpgradedItems.GOLDEN_GAUNTLETS, GlitchItemSets.DOUBLE_DEFENSE_EARLY]
         }
     },
 
@@ -909,7 +909,7 @@ let OwExits = {
             Age: Age.EITHER,
             Order: 21,
             LongDescription: "This hidden grotto is between the tree and Talon's house. There's a slightly darker texture that you need to either hammer or bomb.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+            Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Talon's House": {
             ExitRegion: "main",
@@ -1026,7 +1026,7 @@ let OwExits = {
             UseAdultAge: function() { return !Settings.GlitchesToAllow.kakShopClips; },
             Age: Age.EITHER,
             LongDescription: "This is the building to the left if you are facing the Death Mountain entrance.",
-            RequiredChildItems: [GlitchItemSets.KAK_SHOP_CLIPS]
+            ChildNeeds: [GlitchItemSets.KAK_SHOP_CLIPS]
         },
         "Potion Shop Front": {
             ExitRegion: "main",
@@ -1080,7 +1080,7 @@ let OwExits = {
             UseAdultAge: function() { return !Settings.GlitchesToAllow.kakShopClips; },
             Age: Age.EITHER,
             LongDescription: "This entrance to this is where the open grotto is behind the fence. You can use your hookshot to get back here via the roofs. You can also jump onto the potion shop roof from the Death Mountain entrance with a good angle.",
-            RequiredChildItems: [GlitchItemSets.KAK_SHOP_CLIPS]
+            ChildNeeds: [GlitchItemSets.KAK_SHOP_CLIPS]
         },
         "Potion Shop to Interior": {
             ExitRegion: "main",
@@ -1256,7 +1256,7 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to Dodongo's Cavern.",
             IsDungeonEntrance: true,
-            RequiredChildItems: [ItemSets.EXPLOSIVES_OR_STRENGTH]
+            ChildNeeds: [ItemSets.EXPLOSIVES_OR_STRENGTH]
         },
 
         // Lower Area
@@ -1289,7 +1289,7 @@ let OwExits = {
             MapInfo: { x: 220, y: 19 },
             Age: Age.EITHER,
             LongDescription: "This is behind a wall you can destroy on the top of the mountain.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+            Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Cow Grotto": {
             DisplayGroup: { groupName: "Rocky Path", imageName: "Cow Grotto" },
@@ -1300,7 +1300,7 @@ let OwExits = {
             MapInfo: { x: 200, y: 186 },
             Age: Age.EITHER,
             LongDescription: "This is under the yellow rock on the ledge right after you bomb the rocks to reach the upper part of the mountain.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+            Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         }
     },
 
@@ -1342,7 +1342,7 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Fire Temple.",
             IsDungeonEntrance: true,
-            RequiredChildItems: [SettingSets.SHUFFLE_DUNGEON_ENTRANCES]
+            ChildNeeds: [SettingSets.SHUFFLE_DUNGEON_ENTRANCES]
         },
 
         // Interiors
@@ -1354,7 +1354,7 @@ let OwExits = {
             MapInfo: { x: 172, y: 260 },
             Age: Age.EITHER,
             LongDescription: "At the top of the crater, bomb or hammer the middle of the circle of rocks to reveal the grotto.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+            Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Great Fairy Fountain": {
             ExitRegion: "middle",
@@ -1366,7 +1366,7 @@ let OwExits = {
             Age: Age.EITHER,
             UseAdultAge: function() { return !Settings.GlitchesToAllow.childDoubleMagicFairy && !Settings.GlitchesToAllow.equipSwap; },
             LongDescription: "Hammer the silver rocks that are to the left of the Goron City entrance (if you face the entrance) to uncover the entrance.",
-            RequiredAdultItems: [Items.MEGATON_HAMMER],
+            AdultNeeds: [Items.MEGATON_HAMMER],
             CustomRequirement: function(age) {
                 if (age === Age.ADULT) { return true; }
                 return ItemData.canUse(age, Items.MEGATON_HAMMER) || Settings.GlitchesToAllow.childDoubleMagicFairy;
@@ -1381,7 +1381,7 @@ let OwExits = {
             Age: Age.EITHER,
             UseAdultAge: function() { return !Settings.GlitchesToAllow.childDoubleMagicFairy && !Settings.GlitchesToAllow.equipSwap; },
             LongDescription: "Hammer the rock near the entrance to Goron City to access this grotto.",
-            RequiredItems: [Items.MEGATON_HAMMER]
+            Needs: [Items.MEGATON_HAMMER]
         }
     },
 
@@ -1486,7 +1486,7 @@ let OwExits = {
             MapInfo: { x: 159, y: 206 },
             Age: Age.EITHER,
             LongDescription: "Go up the ladder closest to Hyrule Field. This grotto is under the yellow rock at the top.",
-            RequiredItems: [ItemSets.BLAST_OR_SMASH_ITEMS]
+            Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
 
         // By Waterfall
@@ -1498,7 +1498,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 330, y: 119 },
             Age: Age.EITHER,
-            RequiredChoiceOfItems: [Equipment.SCALE, Equipment.IRON_BOOTS],
+            NeedsAny: [Equipment.SCALE, Equipment.IRON_BOOTS],
             LongDescription: "This is the entrance you get to by diving into the water near the waterfall."
         },
         "Zora's Domain": {
@@ -1531,7 +1531,7 @@ let OwExits = {
             Age: Age.EITHER,
             UseChildAge: function() { return !Settings.GlitchesToAllow.adultDomainToLake; },
             LongDescription: "This is the entrance to Zora's River you can get to by diving into the water.",
-            RequiredChildItems: [Equipment.SCALE],
+            ChildNeeds: [Equipment.SCALE],
             CustomRequirement: function(age) {
                 return age === Age.CHILD || Settings.GlitchesToAllow.adultDomainToLake;
             }
@@ -1616,7 +1616,7 @@ let OwExits = {
             MapInfo: { x: 266, y: 269 },
             Age: Age.EITHER,
             LongDescription: "Go to the southeast corner of the map. Bomb the wall by the rocks to reveal this entrance.",
-            RequiredItems: [ItemSets.EXPLOSIVES]
+            Needs: [ItemSets.EXPLOSIVES]
         },
 
         // Deep Water
@@ -1820,7 +1820,7 @@ let OwExits = {
             MapInfo: { x: 220, y: 182 },
             Age: Age.ADULT,
             LongDescription: "From the side closest to Hyrule Field, look to your left. The grotto is under the silver rock. Lift it up with your silver gauntlets to reveal it.",
-            RequiredItems: [UpgradedItems.SILVER_GAUNTLETS]
+            Needs: [UpgradedItems.SILVER_GAUNTLETS]
         },
         "Tent": {
             ExitRegion: "acrossBridge",
@@ -2423,7 +2423,7 @@ let OwExits = {
             MapInfo: { x: 231, y: 51 },
             Age: Age.EITHER,
             LongDescription: "There's a crack in the wall in the north middle of the map. Bomb it to get inside.",
-            RequiredItems: [ItemSets.EXPLOSIVES]
+            Needs: [ItemSets.EXPLOSIVES]
         },
         "Silver Rock Grotto": {
             ExitRegion: "main",
@@ -2433,7 +2433,7 @@ let OwExits = {
             IsGrotto: true,
             Age: Age.ADULT,
             LongDescription: "Lift the silver rock by the warp song location to reveal this grotto.",
-            RequiredItems: [UpgradedItems.SILVER_GAUNTLETS]
+            Needs: [UpgradedItems.SILVER_GAUNTLETS]
         },
         "Requiem Teleport Pad": {
             ExitRegion: "main",

@@ -751,15 +751,10 @@ Data = {
         }
 		
         if (!this._isCorrectAge(age, itemLocation)) { return ItemObtainability.NO; }
+        if (!this._passesNeededRequirements(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._passesCustomRequirement(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this._canDoItemGroup(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canPlantBean(age, itemLocation)) { return ItemObtainability.NO; }
-		if (!this._hasRequiredItems(age, itemLocation, "RequiredItems")) { return ItemObtainability.NO; }
-		if (!this._hasRequiredChildItems(age, itemLocation)) { return ItemObtainability.NO; }
-		if (!this._hasRequiredAdultItems(age, itemLocation)) { return ItemObtainability.NO; }
-		if (!this._hasAnyOfTheseItems(age, itemLocation, "RequiredChoiceOfItems")) { return ItemObtainability.NO; }
-		if (!this._adultHasAnyOfTheseItems(age, itemLocation)) { return ItemObtainability.NO; }
-        if (!this._childHasAnyOfTheseItems(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this._hasRequiredSongs(itemLocation)) { return ItemObtainability.NO; }
 		if (!this.hasRequiredMedallions(itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canPlaySongs(itemLocation)) { return ItemObtainability.NO; }
@@ -769,6 +764,42 @@ Data = {
         if (!this._checkSilverRupeeRequirement(itemLocation)) { return ItemObtainability.NO; }
 
         return ItemObtainability.YES;
+    },
+
+    /**
+     * Checks the needs properties on the given item location
+     * The format consist of arrays of checks, which can contain arrays (see ItemData.canUse)
+     * - Needs: All requirements are fullfilled
+     * - NeedsAny: Any one of the given requirements are fulfilled
+     * - [Child|Adult]Needs: Needs, but only applies to the given age
+     * - [Child|Adult]NeedsAny: NeedsANy, but only applies to the given age
+     * @param age - The age to check
+     * @param itemLocation - The item location to check
+     * @returns True of all properties pass
+     */
+    _passesNeededRequirements: function(age, itemLocation) {
+        let passesCheck = true;
+        ["Needs", "NeedsAny", "ChildNeeds", "ChildNeedsAny", "AdultNeeds", "AdultNeedsAny"].forEach((needsProperty) => {
+            if (!passesCheck || 
+                age === Age.CHILD && needsProperty.startsWith("Adult") ||
+                age === Age.ADULT && needsProperty.startsWith("Child")) 
+            { 
+                return; 
+            }
+
+            let needsValue = itemLocation[needsProperty];
+            if (!needsValue) { return; }
+            if (!Array.isArray(needsValue)) {
+                console.log(`ERROR: Unexpected Needs format when parsing item location: ${itemLocation.Name}`);
+                return;
+            }
+
+            passesCheck = needsProperty.endsWith("Any")
+                ? ItemData.canUseAny(age, needsValue)
+                : ItemData.canUse(age, needsValue);
+        });
+
+        return passesCheck;
     },
 
     /**
@@ -922,95 +953,6 @@ Data = {
         }
 
         return Settings.RandomizerSettings.autoPlantBeans || magicBeanLocation.completed;
-    },
-    
-    /**
-     * Checks whether the player has the required items
-     * This does handle equip swaps
-     * @param age - the age
-     * @param itemLocation - the item location - used to determine whether this check is valid
-     * @param propertyName - the property name, either null, or "RequiredChildItems", or "RequiredAdultItems"
-     */
-    _hasRequiredItems: function(age, itemLocation, propertyName) {
-		if (!itemLocation[propertyName]) { return true; }
-		let hasAllItems = true;
-		
-		itemLocation[propertyName].forEach(function(item) {
-            if (!item) {
-                console.log(`ERROR: Item property not defined on item location: ${itemLocation.Name}; property ${propertyName}`);
-            }
-
-			if (!ItemData.canUse(age, item)) {
-				hasAllItems = false;
-				return;
-			}
-		});
-		
-		return hasAllItems;
-    },
-
-    /**
-     * Returns whether the player has any one of the given items at the given age
-     * @param age - the age to check
-     * @param itemLocation - the item location - used to determine whether this check is valid
-     * @param propertyName - the property name, either null, or "RequiredChildItems", or "RequiredAdultItems"
-     */
-    _hasAnyOfTheseItems: function(age, itemLocation, propertyName) {
-        if (!itemLocation[propertyName]) { return true; }
-        let hasItem = false;
-        
-        itemLocation[propertyName].forEach(function(item) {
-            if (hasItem) { return; }
-            hasItem = ItemData.canUse(age, item);
-        });
-        
-        return hasItem;
-    },
-    
-    /**
-     * Checks whether the player has the required items as a particular age
-     * This does handle equip swaps
-     * @param age - the age - returns true if adult, since this check doesn't matter for them
-     * @param itemLocation - the item location - used to determine whether this check is valid
-     */
-	_hasRequiredChildItems: function(age, itemLocation) {
-		// Note that if age is adult, it's okay because these are items that only child would need
-		if (!itemLocation.RequiredChildItems || age === Age.ADULT) { return true; }
-		return this._hasRequiredItems(age, itemLocation, "RequiredChildItems");
-	},
-    
-    /**
-     * Checks whether the player has the required items as a particular age
-     * This does handle equip swaps
-     * @param age - the age - returns true if child, since this check doesn't matter for them
-     * @param itemLocation - the item location - used to determine whether this check is valid
-     */
-	_hasRequiredAdultItems: function(age, itemLocation) {
-		// Note that if age is child, it's okay because these are items that only adult would need
-		if (!itemLocation.RequiredAdultItems || age === Age.CHILD) { return true; }
-		return this._hasRequiredItems(age, itemLocation, "RequiredAdultItems");
-    },
-    
-    /**
-     * Checks whether child has any of the given items
-     * This does handle equip swaps
-     * @param age - the age - returns true if adult, since this check doesn't matter for them
-     * @param itemLocation - the item location - used to determine whether this check is valid
-     */
-    _childHasAnyOfTheseItems: function(age, itemLocation) {
-		if (!itemLocation.RequiredChoiceOfChildItems || age === Age.ADULT) { return true; }
-		return this._hasAnyOfTheseItems(age, itemLocation, "RequiredChoiceOfChildItems");
-	},
-    
-    /**
-     * Checks whether adult has any of the given items
-     * This does handle equip swaps
-     * @param age - the age - returns true if child, since this check doesn't matter for them
-     * @param itemLocation - the item location - used to determine whether this check is valid
-     */
-	_adultHasAnyOfTheseItems: function(age, itemLocation) {
-		if (!itemLocation.RequiredChoiceOfAdultItems || age === Age.CHILD) { return true; }
-		return this._hasAnyOfTheseItems(age, itemLocation, "RequiredChoiceOfAdultItems");
     },
     
     /**
