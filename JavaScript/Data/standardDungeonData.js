@@ -6080,7 +6080,8 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Hammer Pillar Room", imageName: "Megaton Hammer" },
                 Exits: {
                     eyeStatueRoomBottom: {
-                        RequiredItems: [Items.MEGATON_HAMMER, ItemSets.PROJECTILES]
+                        RequiredItems: [Items.MEGATON_HAMMER],
+                        RequiredChoiceOfItems: [ItemSets.PROJECTILES, QPAItemSets.LEDGE_QPA]
                     },
                     bigLavaRoomUpperBack: {}
                 },

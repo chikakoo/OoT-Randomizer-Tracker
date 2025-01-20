@@ -1101,6 +1101,12 @@ let MQDungeons = {
             elevatorRoom: {
                 DisplayGroup: { groupName: "Lobby & Elevator Room", imageName: "Fairy Slingshot" },
                 Exits: {
+                    elevatorRoomPlatform: {
+                        RequiredChoiceOfItems: [
+                            Equipment.HOVER_BOOTS,
+                            [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT],
+                            GlitchItemSets.MEGA_FLIP]
+                    },
                     lowerElevatorRoom: {},
                     basement: {},
                     northernRooms: {
@@ -1133,6 +1139,21 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 5.1,
                         LongDescription: "Shoot the cow in the room after the first door to spawn the wonderitem. It will fall below, so you'll have to retrieve it there!",
+                        RequiredItems: [Items.FAIRY_SLINGSHOT]
+                    }
+                }
+            },
+            elevatorRoomPlatform: {
+                DisplayGroup: { groupName: "Lobby & Elevator Room", imageName: "Fairy Slingshot" },
+                Exits: {},
+                ItemLocations: {
+                    "Chest in Upper Elevator Room": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 192, y: 188, floor: "F1" },
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        Age: Age.EITHER,
+                        Order: 5.2,
+                        LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. In the next room, shoot the next cow on the wall to spawn some boxes. Take them across the jelly things to hold down the switch. Ride the platform down. Shoot the cow near where the platform landed to spawn the chest.",
                         RequiredItems: [Items.FAIRY_SLINGSHOT]
                     }
                 }
@@ -1367,7 +1388,13 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Basement", imageName: "Lon Lon Milk" },
                 Exits: {
                     afterBigOcto: {
-                        RequiredItems: [ItemSets.SWORDS, ItemSets.BLAST_OR_SMASH_ITEMS]
+                        RequiredItems: [ItemSets.SWORDS]
+                    },
+                    roomBeforeBoss: {
+                        RequiredChoiceOfItems: [
+                            Equipment.HOVER_BOOTS,
+                            [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT],
+                            GlitchItemSets.MEGA_FLIP]
                     }
                 },
                 ItemLocations: {
@@ -1410,6 +1437,7 @@ let MQDungeons = {
             wigglerRoomAfterBigOcto: {
                 DisplayGroup: { groupName: "After Big Octo", imageName: "Ruto's Letter" },
                 Exits: {
+                    elevatorRoomPlatform: {},
                     roomBeforeBoss: {}
                 },
                 ItemLocations: {
@@ -1441,14 +1469,6 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 21,
                         LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. Shoot the cow in the wall in this room to spawn the cow on the ground."
-                    },
-                    "Chest in Upper Elevator Room": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 192, y: 188, floor: "F1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
-                        Age: Age.EITHER,
-                        Order: 22,
-                        LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. In the next room, shoot the next cow on the wall to spawn some boxes. Take them across the jelly things to hold down the switch. Ride the platform down. Shoot the cow near where the platform landed to spawn the chest."
                     }
                 }
             },
@@ -5571,7 +5591,8 @@ let MQDungeons = {
                                 Equipment.HOVER_BOOTS.playerHas;
                         }
                     },
-                    statueHands: {}
+                    statueHands: {},
+                    silverGauntsIronKnuckle: {}
                 },
                 ItemLocations: {}
             },
