@@ -105,19 +105,12 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Basement", imageName: "Deku Stick" },
                 Exits: {
                     basementBack: {
-                        CustomRequirement: function(age) {
-                            if (ItemData.canUse(age, QPAItemSets.HIGH_SWITCH_QPA)) {
-                                return true;
-                            }
-                            
-                            return ItemData.canUseAny(age, [Items.DEKU_STICK, ItemSets.FIRE_ITEMS])  &&
-                                ItemData.canUseAny(age, [ItemSets.PROJECTILES]);
-                        }
+                        NeedsAny: [QPAItemSets.HIGH_SWITCH_QPA,
+                            [ItemSets.PROJECTILES,
+                                [SetType.OR, Items.DEKU_STICK, ItemSets.FIRE_ITEMS]]]
                     },
                     basementTop: {
-                        CustomRequirement: function(age) {
-                            return age === Age.ADULT || Settings.GlitchesToAllow.dekuB1Skip;
-                        }
+                        ChildNeeds: [GlitchItemSets.DEKU_B1_SKIP]
                     }
                 },
 
@@ -142,10 +135,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "This skulltula is the one on the vines in the first basement floor. A well-angled jumpslash from a deku stick can hit it. You can also use the slingshot, boomerang, or a well-timed bomb.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; }
-                            return ItemData.canUseAny(age, [Items.DEKU_STICK, Items.FAIRY_SLINGSHOT, Items.BOOMERANG, Items.BOMB]);
-                        }
+                        ChildNeedsAny: [Items.DEKU_STICK, Items.FAIRY_SLINGSHOT, Items.BOOMERANG, Items.BOMB]
                     }
                 }
             },
@@ -175,12 +165,9 @@ let StandardDungeons = {
                         Age: Age.CHILD
                     },
                     lowerBasement: {
-                        CustomRequirement: function(age) {
-                            let webAlreadyBurned = Data.itemLocationObtained("Deku Tree", "basementTop", "Burn Basement Web");
-                            return webAlreadyBurned ||
-                                MapLocations["Deku Tree"]._canBurnBasementWeb(age) || 
-                                Data.canWeirdShot(age);
-                        }
+                        NeedsAny: [ItemLocationSets.DEKU_WEB_BURNED,
+                            (age) => MapLocations["Deku Tree"]._canBurnBasementWeb(age),
+                            GlitchItemSets.WEIRD_SHOT]
                     }
                 },
                 ItemLocations: {
@@ -192,9 +179,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 12.1,
                         LongDescription: "The web on the basement floor. Use sticks, a fire item, or a bow shot from atop the chest through the torch by the vines in the lower area.",
-                        CustomRequirement: function(age) {
-                            return MapLocations["Deku Tree"]._canBurnBasementWeb(age);
-                        }
+                        Needs: [(age) => MapLocations["Deku Tree"]._canBurnBasementWeb(age)]
                     }
                 }
             },
@@ -202,10 +187,9 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Boss Floor", imageName: "Kokiri's Emerald" },
                 Exits: {
                     bossRoom: {
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [Equipment.DEKU_SHIELD, Equipment.HYLIAN_SHIELD]) ||
-                                Data.itemLocationObtained("Deku Tree", "lowerBasement", "Open Boss Door");
-                        }
+                        NeedsAny: [Equipment.DEKU_SHIELD,
+                            Equipment.HYLIAN_SHIELD,
+                            ItemLocationSets.DEKU_OPENED_BOSS_DOOR]
                     }
                 },
                 ItemLocations: {

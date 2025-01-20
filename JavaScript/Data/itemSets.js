@@ -274,6 +274,9 @@ let GlitchItemSets = {
     BACKWARDS_WASTELAND: () => Settings.GlitchesToAllow.backwardsWasteland,
     WASTELAND_NO_LENS: () => Settings.GlitchesToAllow.wastelandNoLens,
 
+    // Deku Tree
+    DEKU_B1_SKIP: (age) => age === Age.CHILD && Settings.GlitchesToAllow.dekuB1Skip,
+
     // Forest
     FOREST_BK_SKIP: (age) => 
         Settings.GlitchesToAllow.forestBKSkip &&
@@ -314,6 +317,10 @@ let ItemLocationSets = {
     // Desert
     ITEM_FROM_GERUDO: () => Data.itemLocationObtained("Thieves' Hideout", "main", "Item From Gerudo"),
     GF_OPENED_GATE: () => Data.itemLocationObtained("Gerudo Fortress", "main", "Opened Gate"),
+
+    // Deku Tree
+    DEKU_WEB_BURNED: () => Data.itemLocationObtained("Deku Tree", "basementTop", "Burn Basement Web"),
+    DEKU_OPENED_BOSS_DOOR: () => Data.itemLocationObtained("Deku Tree", "lowerBasement", "Open Boss Door"),
 
     // Jabu
     MQ_JABU_ELEVATOR_ROOM_CHEST: () => Data.itemLocationObtained("Jabu Jabu's Belly", "elevatorRoom", "Spawn Chest in Upper Elevator Room"),
