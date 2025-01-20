@@ -5074,7 +5074,7 @@ let MQDungeons = {
                         Regions: ["statueRoom", "roomWithSunOnFloor"],
                         MapInfo: { x: 67, y: 174, floor: "F2" },
                         Age: Age.EITHER,
-                        Order: 14,
+                        Order: 27.1,
                         LongDescription: "This is the door leading to/from the room with the sun on the floor room.",
                         KeyRequirement: function(age) {
                             // There's only one path for child, and it uses only 2 keys
@@ -5190,14 +5190,18 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
                 UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                 Exits: {
+                    acrossChildGrateRoom: {
+                        RequiredChoiceOfItems: [
+                            [Items.BOMBCHU, ItemSets.PROJECTILES],
+                            UpgradedItems.LONGSHOT, // Hookshot the gibdos
+                            Equipment.HOVER_BOOTS,
+                            GlitchItemSets.MEGA_FLIP]
+                    },
                     backOfChildBridgeRoom: {
-                        Age: Age.EITHER,
-                        RequiredItems: [ItemSets.SWORDS],
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Items.HOOKSHOT) || // Hookshot the torches
-                                Data.canMegaFlip(age) || 
-                                ItemData.canUse(age, [ItemSets.PROJECTILES, Items.BOMBCHU]);
-                        }
+                        RequiredChoiceOfItems: [
+                            Items.HOOKSHOT, // Hookshot the torches
+                            Equipment.HOVER_BOOTS,
+                            GlitchItemSets.MEGA_FLIP]
                     },
                     afterSecondCrawlSpace: {
                         Age: Age.CHILD,
@@ -5246,10 +5250,14 @@ let MQDungeons = {
                     }
                 }
             },
-            backOfChildBridgeRoom: {
+            acrossChildGrateRoom: {
                 DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
                 UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
-                Exits: {},
+                Exits: {
+                    backOfChildBridgeRoom: {
+                        RequiredItems: [ItemSets.SWORDS]
+                    }
+                },
                 ItemLocations: {
                     "2 Pots in Child Gibdos Area": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -5270,14 +5278,21 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. In the next room, kill the Stalfos - this will lower the fire so you can get the pots."
-                    },
+                    }
+                }
+            },
+            backOfChildBridgeRoom: {
+                DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
+                UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
+                Exits: {},
+                ItemLocations: {
                     "Small Chest in Bridge Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 34, y: 94, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 9,
-                        LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. In the next room, kill the Stalfos and continue on. In this room, pull back the gravestone and hit the switch to lower the bridge. Now kill all the enemies to spawn the chest - you'll need Din's Fire to deal with the Anubis.",
-                        RequiredItems: [ItemSets.FIRE_ITEMS]
+                        LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. In the next room, kill the Stalfos and continue on. In this room, pull back the gravestone and hit the switch to lower the bridge. Now kill all the enemies to spawn the chest - you'll need a fire item (or bow a bow shot through a torch) to deal with the Anubis.",
+                        RequiredChoiceOfItems: [ItemSets.FIRE_ITEMS, Items.FAIRY_BOW] // Shoot through a torch
                     }
                 }
             },
