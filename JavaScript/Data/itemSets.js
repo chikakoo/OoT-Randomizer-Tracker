@@ -75,7 +75,9 @@ let SettingSets = {
     OPEN_ZORAS_FOUNTAIN: () => Settings.RandomizerSettings.openZorasFountain === OpenZorasFountainSettings.ALL,
     OPEN_ADULT_ZORAS_FOUNTAIN: () => Settings.RandomizerSettings.openZorasFountain !== OpenZorasFountainSettings.VANILLA,
     OPEN_GERUDO_FORTRESS: () => Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.OPEN,
-    SHUFFLE_DUNGEON_ENTRANCES: () => Settings.RandomizerSettings.shuffleDungeonEntrances
+    SHUFFLE_DUNGEON_ENTRANCES: () => Settings.RandomizerSettings.shuffleDungeonEntrances,
+    VANILLA_INTERIOR_ENTRANCES: () => !Settings.RandomizerSettings.shuffleInteriorEntrances,
+    VANILLA_OVERWORLD_ENTRANCES: () => !Settings.RandomizerSettings.shuffleOverworldEntrances
 };
 
 /**
@@ -161,6 +163,12 @@ let GlitchItemSets = {
     KAK_SHOP_CLIPS: (age) => 
         Settings.GlitchesToAllow.kakShopClips && 
         ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS),
+    CHILD_WELL_WITH_CUCCO: (age) => age === Age.CHILD && 
+        Settings.GlitchesToAllow.botwAsChildWithCucco && 
+        ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]),
+    ADULT_WELL_WITH_CUCCO: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.botwAsAdultWithCucco &&
+        ItemData.canUse(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]),
 	WINDMILL_HP_WITH_NOTHING: () => Settings.GlitchesToAllow.windmillHPWithNothing,
 	HOOKSHOT_JUMP: (age) => 
         Settings.GlitchesToAllow.hookshotJump && 
@@ -245,6 +253,9 @@ let ItemLocationSets = {
     // Castle
     GIFT_FROM_MALON: () => Data.itemLocationObtained("Castle", "hyruleCastle", "Gift from Malon"),
     WAKE_UP_TALON: () => Data.itemLocationObtained("Castle", "hyruleCastle", "Wake up Talon"),
+
+    // Kakariko / Graveyard
+    DRAIN_WELL_WATER: () => Data.itemLocationObtained("Windmill-Kak Potion", "windmill", "Drain Well Water"),
 
     // Death Mountain / Goron
     DMT_ROCKS_BLOCKING_TOP_PATH: () => Data.itemLocationObtained("Death Mountain Trail", "main", "Break Rocks Blocking Top Path"),

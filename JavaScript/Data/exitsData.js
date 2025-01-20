@@ -106,10 +106,7 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Deku Tree.",
             IsDungeonEntrance: true,
-            CustomRequirement: function(age) {
-                let isEntranceShuffle = Data.getDoesEntranceShuffleApply("Deku Tree");
-                return isEntranceShuffle ? true : age === Age.CHILD;
-            }
+            AdultNeeds: [() => Data.getDoesEntranceShuffleApply("Deku Tree")]
         }
     },
 
@@ -863,31 +860,13 @@ let OwExits = {
             Order: 30,
             LongDescription: "This is the entrance to the Bottom of the Well.",
             IsDungeonEntrance: true,
-            CustomRequirement: function(age) {
-                // Trick using cucco
-                if (Settings.GlitchesToAllow.botwAsAdultWithCucco &&
-                    ItemData.canUse(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS])) {
-                    return true;
-                }
-
-                if (!Data.canBeAge(Age.CHILD)) { return false; }
-                if (age === Age.ADULT && !Settings.RandomizerSettings.shuffleDungeonEntrances) {
-                    return false;
-                }
-                
-                // Cucco dive
-                let canGetThereEarly = age === Age.CHILD && 
-                    Settings.GlitchesToAllow.botwAsChildWithCucco && 
-                    ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
-                if (canGetThereEarly) { return true; }
-                
-                // Get in normally - non-interior shuffle
-                if (!Settings.RandomizerSettings.shuffleInteriorEntrances) {
-                    return Data.canPlaySong(Songs.SONG_OF_STORMS);
-                }
-                
-                return Data.itemLocationObtained("Windmill-Kak Potion", "windmill", "Drain Well Water");
-            }
+            NeedsAny: [GlitchItemSets.CHILD_WELL_WITH_CUCCO,
+                GlitchItemSets.ADULT_WELL_WITH_CUCCO,
+                ItemLocationSets.DRAIN_WELL_WATER,
+                [SettingSets.VANILLA_INTERIOR_ENTRANCES,
+                    SettingSets.VANILLA_OVERWORLD_ENTRANCES,
+                    () => Data.canBeAge(Age.CHILD),
+                    Songs.SONG_OF_STORMS]]
         },
         "Hidden Grotto near Tree": {
             ExitRegion: "main",
