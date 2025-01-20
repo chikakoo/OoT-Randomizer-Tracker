@@ -755,7 +755,6 @@ Data = {
         if (!this._passesCustomRequirement(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this._canDoItemGroup(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canPlantBean(age, itemLocation)) { return ItemObtainability.NO; }
-		if (!this.hasBottle(itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkKeyRequirement(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkSilverRupeeRequirement(itemLocation)) { return ItemObtainability.NO; }
 
@@ -1063,8 +1062,7 @@ Data = {
      * Returns whether the player has an empty bottle
      * Handles checks on whether bottles that cannot be emptied are present
      */
-	hasBottle: function(itemLocation) {
-		if (itemLocation && !itemLocation.NeedsBottle) { return true; }
+	hasBottle: function() {
         return ItemData.getEmptyBottleCount(true) > 0;
     },
 
