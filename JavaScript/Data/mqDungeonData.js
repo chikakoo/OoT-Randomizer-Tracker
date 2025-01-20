@@ -1011,6 +1011,14 @@ let MQDungeons = {
             return ItemData.canUse(age, Items.FAIRY_SLINGSHOT) ||
                 ItemData.canUse(age, [ItemSets.BLAST_OR_SMASH_ITEMS, QPAItemSets.HIGH_SWITCH_QPA]);
         },
+        _canGetToElevatorRoomPlatformEarly: function(age) {
+            return ItemData.canUseAny(age, [
+                Equipment.HOVER_BOOTS,
+                [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT],
+                [ItemLocationSets.MQ_JABU_ELEVATOR_ROOM_CHEST, Items.HOOKSHOT],
+                GlitchItemSets.MEGA_FLIP
+            ]);
+        },
         Regions: {
             main: {
                 DisplayGroup: { groupName: "Lobby & Elevator Room", imageName: "Fairy Slingshot" },
@@ -1101,10 +1109,8 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Lobby & Elevator Room", imageName: "Fairy Slingshot" },
                 Exits: {
                     elevatorRoomPlatform: {
-                        NeedsAny: [
-                            Equipment.HOVER_BOOTS,
-                            [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT],
-                            GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [ItemLocationSets.MQ_JABU_ELEVATOR_LOWERED,
+                            (age) => MapLocations["Jabu Jabu's Belly"]._canGetToElevatorRoomPlatformEarly(age)]
                     },
                     lowerElevatorRoom: {},
                     basement: {},
@@ -1112,11 +1118,11 @@ let MQDungeons = {
                         Needs: [ItemSets.EXPLOSIVES, Items.FAIRY_SLINGSHOT],
                         NeedsAny: [Items.BOOMERANG, QPAItemSets.LEDGE_QPA]
                     },
-                    afterTentaclesDefeated: {
-                        Age: Age.ADULT, // This is if adult cannot equip swap
-                        CustomRequirement: function(age) {
-                            return Data.itemLocationObtained("Jabu Jabu's Belly", "afterWebBurnedAndTentaclesCleared", "Tentacles Defeated");
-                        }
+                    afterRedTentaclesDefeated: {
+                        Needs: [ItemLocationSets.MQ_JABU_RED_TENTACLES_DEFEATED]
+                    },
+                    afterGreenTentacleDefeated: {
+                        Needs: [ItemLocationSets.MQ_JABU_GREEN_TENTACLE_DEFEATED]
                     }
                 },
                 ItemLocations: {
@@ -1139,6 +1145,21 @@ let MQDungeons = {
                         Order: 5.1,
                         LongDescription: "Shoot the cow in the room after the first door to spawn the wonderitem. It will fall below, so you'll have to retrieve it there!",
                         Needs: [Items.FAIRY_SLINGSHOT]
+                    },
+                    "Spawn Chest in Upper Elevator Room": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 186, y: 179, floor: "F1" },
+                        MapImageName: "Fairy Slingshot",
+                        RequiredToAppear: function() {
+                            let adultCanEnter = Settings.RandomizerSettings.shuffleDungeonEntrances ||
+                                Settings.GlitchesToAllow.enterJabuAsAdult;
+                            let adultCanSpawnIt = ItemData.canUse(Age.ADULT, Items.FAIRY_SLINGSHOT);
+                            return adultCanEnter && !adultCanSpawnIt;
+                        },
+                        Age: Age.CHILD,
+                        Order: 5.2,
+                        LongDescription: "Shoot the cow in the room after the first door to spawn the chest.",
+                        Needs: [Items.FAIRY_SLINGSHOT]
                     }
                 }
             },
@@ -1149,11 +1170,10 @@ let MQDungeons = {
                     "Chest in Upper Elevator Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 192, y: 188, floor: "F1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         Age: Age.EITHER,
-                        Order: 5.2,
+                        Order: 5.3,
                         LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. In the next room, shoot the next cow on the wall to spawn some boxes. Take them across the jelly things to hold down the switch. Ride the platform down. Shoot the cow near where the platform landed to spawn the chest.",
-                        Needs: [Items.FAIRY_SLINGSHOT]
+                        NeedsAny: [Items.FAIRY_SLINGSHOT, ItemLocationSets.MQ_JABU_ELEVATOR_ROOM_CHEST]
                     }
                 }
             },
@@ -1283,9 +1303,12 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Tentacle Rooms", imageName: "Boomerang" },
                 UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                 Exits: {
-                    afterWebBurnedAndTentaclesCleared: {
+                    afterRedTentaclesDefeated: {
                         Needs: [Items.BOOMERANG],
                         NeedsAny: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]
+                    },
+                    afterGreenTentacleDefeated: {
+                        Needs: [Items.BOOMERANG, ItemSets.BLAST_OR_SMASH_ITEMS]
                     }
                 },
                 ItemLocations: {
@@ -1356,60 +1379,71 @@ let MQDungeons = {
                     }
                 }
             },
-            afterWebBurnedAndTentaclesCleared: {
+            afterRedTentaclesDefeated: {
                 DisplayGroup: { groupName: "Tentacle Rooms", imageName: "Boomerang" },
-                UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                 Exits: {
-                    afterTentaclesDefeated: {
-                        Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
+                    roomBeforeBoss: {
+                        NeedsAny: [ItemLocationSets.MQ_JABU_ELEVATOR_LOWERED,
+                            (age) => MapLocations["Jabu Jabu's Belly"]._canGetToElevatorRoomPlatformEarly(age)]
                     }
                 },
                 ItemLocations: {
                     "Skulltula on Ceiling": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 157, y: 14, floor: "F1" },
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
                         Age: Age.EITHER,
                         Order: 18,
                         LongDescription: "Using a deku stick to bring a fire from the Like Like room, or a fire item, burn the web to get access to the far west room. After killing the tentacle, head to the far east room and kill that tentacle. Now leave and enter the room to your left. Use the switch and a bomb, or a bombchu to blow up the rock on the ceiling to reveal the skulltula.",
-                        NeedsAny: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK]
+                        Needs: [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
-                    "Tentacles Defeated": {
+                    "Red Tentacles Defeated": {
                         ItemGroup: ItemGroups.NON_ITEM,
-                        MapInfo: { x: 172, y: 10, floor: "F1" },
+                        MapInfo: { x: 107, y: 56, floor: "F1" },
                         MapImageName: "Boomerang",
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap },
                         Age: Age.EITHER,
                         Order: 19,
-                        LongDescription: "This is the task to defeat the three tentacles. This is used to help see what Adult can do if he cannot use the boomerang."
-                    }
-                }
-            },
-            afterTentaclesDefeated: {
-                DisplayGroup: { groupName: "Basement", imageName: "Lon Lon Milk" },
-                Exits: {
-                    afterBigOcto: {
-                        Needs: [ItemSets.SWORDS]
+                        LongDescription: "This is the task to defeat the two red tentacles (the east/west rooms). This is used to help see what Adult can do if he cannot use the boomerang."
                     },
-                    roomBeforeBoss: {
-                        NeedsAny: [
-                            Equipment.HOVER_BOOTS,
-                            [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT],
-                            GlitchItemSets.MEGA_FLIP]
-                    }
-                },
-                ItemLocations: {
                     "Skulltula Behind Web": {
+                        DisplayGroup: { groupName: "Basement", imageName: "Lon Lon Milk" },
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 29, y: 191, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 20,
                         LongDescription: "After destroying all the tentacles, drop down into the big room and enter the door by the vines. The skulltula is in the back of the room. Kill the enemies (some are invisible) or megaflip/hover boots to the other side. Walk around the web to get to the skulltula.",
-                        CustomRequirement: function(age) {
-                            let canUseLens = ItemData.canUse(age, Items.LENS_OF_TRUTH);
-                            let canKillEnemies = canUseLens && ItemData.canUseAny(age, [ItemSets.PROJECTILES, Items.HOOKSHOT]);
-                            let canCrossWater = canKillEnemies || Data.canMegaFlip(age) || ItemData.canUse(age, Equipment.HOVER_BOOTS);
-                            let canCollectToken = ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS) || Data.canStaircaseHover(age);
-                            return canCrossWater && canCollectToken;
-                        }
+                        Needs: [
+                            // Cross water
+                            [SetType.OR, 
+                                Equipment.HOVER_BOOTS,
+                                [Items.LENS_OF_TRUTH, 
+                                    [SetType.OR, ItemSets.PROJECTILES, Items.HOOKSHOT]],
+                                GlitchItemSets.MEGA_FLIP],
+                            // Collect token
+                            [SetType.OR, 
+                                ItemSets.GRAB_SHORT_DISTANCE_ITEMS,
+                                GlitchItemSets.STAIRCASE_HOVER]]
+                    }
+                }
+            },
+            afterGreenTentacleDefeated: {
+                DisplayGroup: { groupName: "Tentacle Rooms", imageName: "Boomerang" },
+                UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                Exits: {
+                    afterBigOcto: {
+                        Needs: [ItemSets.SWORDS]
+                    }
+                },
+                ItemLocations: {
+                    "Green Tentacle Defeated": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapInfo: { x: 175, y: 14, floor: "F1" },
+                        MapImageName: "Boomerang",
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap },
+                        Age: Age.EITHER,
+                        Order: 19,
+                        LongDescription: "This is the task to defeat the green tentacle (the north rooms). This is used to help see what Adult can do if he cannot use the boomerang."
                     }
                 }
             },
@@ -1435,6 +1469,7 @@ let MQDungeons = {
             },
             wigglerRoomAfterBigOcto: {
                 DisplayGroup: { groupName: "After Big Octo", imageName: "Ruto's Letter" },
+                UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                 Exits: {
                     elevatorRoomPlatform: {},
                     roomBeforeBoss: {}
@@ -1447,7 +1482,6 @@ let MQDungeons = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 102, y: 179, floor: "F2" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         Age: Age.EITHER,
                         Order: 20.1,
                         LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. Shoot the cow in the wall in this room to spawn the crates by the door."
@@ -1456,7 +1490,6 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 99, y: 276, floor: "F2" },
                         MapImageName: "Slingshot Wonderitem",
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         Age: Age.EITHER,
                         Order: 20.2,
                         LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. Shoot the cow in the wall in this room to spawn the wonderitem."
@@ -1464,10 +1497,16 @@ let MQDungeons = {
                     "Cow in Wiggler Room": {
                         ItemGroup: ItemGroups.COW,
                         MapInfo: { x: 108, y: 251, floor: "F2" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         Age: Age.EITHER,
                         Order: 21,
                         LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. Shoot the cow in the wall in this room to spawn the cow on the ground."
+                    },
+                    "Elevator Lowered": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapInfo: { x: 285, y: 235, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 21.1,
+                        LongDescription: "In the wiggler room after the Big Octo, shoot the cow on the wall to reveal some boxes. Use your boomerang to stun the wigglers and bring the box to the switch to open the door. Jump to the platform to lower it and create a path on the lower level."
                     }
                 }
             },
