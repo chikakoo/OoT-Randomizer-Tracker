@@ -5304,10 +5304,7 @@ let MQDungeons = {
                     },
                     childSide: {
                         Age: Age.ADULT, // Child would already have access from the lobby
-                        Needs: [Items.MEGATON_HAMMER],
-                        CustomRequirement: function(age) {
-                            return Data.canWeirdShot(age);
-                        }
+                        Needs: [Items.MEGATON_HAMMER, GlitchItemSets.LONGSHOT_WEIRD_SHOT]
                     }
                 },
                 ItemLocations: {}
@@ -5365,9 +5362,7 @@ let MQDungeons = {
                         NeedsAny: [Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     },
                     fireBubbleRoom: {
-                        CustomRequirement: function(age) {
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) || (age == Age.ADULT && Equipment.HOVER_BOOTS.playerHas);
-                        }
+                        ChildNeedsAny: [Songs.SONG_OF_TIME]
                     },
                     beamosRoom: {
                         LockedDoor: "Locked Door in Statue Room",
@@ -5378,11 +5373,9 @@ let MQDungeons = {
                     roomRightOfLobby: {
                         Age: Age.ADULT,
                         Needs: [Equipment.MIRROR_SHIELD],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.mqSpiritStatueTorchesWithDins
-                                ? ItemData.canUse(age, ItemSets.FIRE_ITEMS)
-                                : ItemData.canUse(age, Items.FIRE_ARROW);
-                        }
+                        NeedsAny: [Items.FIRE_ARROW, 
+                            [QPAItemSets.LEDGE_QPA, Items.HOOKSHOT], // Get ISG, hookshot the right side of each torch
+                            GlitchItemSets.MQ_SPIRIT_STATUE_ROOM_TORCHES_WITH_DINS]
                     }
                 },
                 ItemLocations: {
@@ -5547,21 +5540,21 @@ let MQDungeons = {
                         MapInfo: { x: 60, y: 112, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 22,
-                        LongDescription: "From the statue room, you must play the song of time on the ledge near the small box, then reload the room so that the box spawns on the song of time block. With a series of song of time plays, you can move the box up to the switch on the statue's west-side hand. Go through the room and the hallway that unlocks.<br/><br/>The pot is on a ledge in the left part of the room."
+                        LongDescription: "From the statue room, you must play the song of time on the ledge near the small box, then reload the room so that the box spawns on the song of time block. With a series of song of time plays, you can move the box up to the switch on the statue's west-side hand (Adult can just jump to it with box in hand). Go through the room and the hallway that unlocks.<br/><br/>The pot is on a ledge in the left part of the room."
                     },
                     "Right Pot in Fire Bubble Room": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 31, y: 60, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 23,
-                        LongDescription: "From the statue room, you must play the song of time on the ledge near the small box, then reload the room so that the box spawns on the song of time block. With a series of song of time plays, you can move the box up to the switch on the statue's west-side hand. Go through the room and the hallway that unlocks.<br/><br/>The pot is on a ledge in the right part of the room."
+                        LongDescription: "From the statue room, you must play the song of time on the ledge near the small box, then reload the room so that the box spawns on the song of time block. With a series of song of time plays, you can move the box up to the switch on the statue's west-side hand (Adult can just jump to it with box in hand). Go through the room and the hallway that unlocks.<br/><br/>The pot is on a ledge in the right part of the room."
                     },
                     "Chest in Fire Bubble Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 80, y: 63, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 24,
-                        LongDescription: "From the statue room, you must play the song of time on the ledge near the small box, then reload the room so that the box spawns on the song of time block. With a series of song of time plays, you can move the box up to the switch on the statue's west-side hand. Go through the room and the hallway that unlocks.<br/><br/>Navigate around the room and push the two sun blocks that are next to each other into the light. This will spawn the chest."
+                        LongDescription: "From the statue room, you must play the song of time on the ledge near the small box, then reload the room so that the box spawns on the song of time block. With a series of song of time plays, you can move the box up to the switch on the statue's west-side hand (Adult can just jump to it with box in hand). Go through the room and the hallway that unlocks.<br/><br/>Navigate around the room and push the two sun blocks that are next to each other into the light. This will spawn the chest."
                     },
                     "Skulltula in Fire Bubble Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -5647,7 +5640,8 @@ let MQDungeons = {
                         MapInfo: { x: 235, y: 127, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 32,
-                        LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), go through the west door - be careful, though, as you can't get out if you don't have Zelda's Lullaby. The skulltula is on the ceiling."
+                        LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), go through the west door - be careful, though, as you can't get out if you don't have Zelda's Lullaby. The skulltula is on the ceiling.",
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Chest in Sandy Room": {
                         ItemGroup: ItemGroups.CHEST,

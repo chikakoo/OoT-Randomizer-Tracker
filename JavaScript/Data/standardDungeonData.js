@@ -4371,7 +4371,8 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 22,
                         LongDescription: "Head to the room blocked by the silver block. Hit the switch above the beamos to open the doors. Enter the door to the left. Kill the wolfos inside, then play Zelda's Lullaby. You can longshot from the platform, or hookshot from the sandy floor.",
-                        Needs: [Items.HOOKSHOT, Songs.ZELDAS_LULLABY]
+                        Needs: [Songs.ZELDAS_LULLABY],
+                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS, GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS]
                     },
                     "Boulder Silver Rupee in Midair": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,

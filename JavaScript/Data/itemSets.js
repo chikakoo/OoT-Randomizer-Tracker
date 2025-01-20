@@ -226,7 +226,12 @@ let GlitchItemSets = {
     // Desert
     HW_ITEMLESS_SAND_PIT: () => Settings.GlitchesToAllow.itemlessSandPit,
     BACKWARDS_WASTELAND: () => Settings.GlitchesToAllow.backwardsWasteland,
-    WASTELAND_NO_LENS: () => Settings.GlitchesToAllow.wastelandNoLens
+    WASTELAND_NO_LENS: () => Settings.GlitchesToAllow.wastelandNoLens,
+
+    // Spirit
+    MQ_SPIRIT_STATUE_ROOM_TORCHES_WITH_DINS: (age) => 
+        Settings.GlitchesToAllow.mqSpiritStatueTorchesWithDins &&
+        ItemData.canUse(age, Items.DINS_FIRE)
 };
 
 /**
