@@ -78,9 +78,12 @@ let SettingSets = {
     SHUFFLE_DUNGEON_ENTRANCES: () => Settings.RandomizerSettings.shuffleDungeonEntrances,
     SHUFFLE_INTERIOR_ENTRANCES: () => Settings.RandomizerSettings.shuffleInteriorEntrances,
     VANILLA_INTERIOR_ENTRANCES: () => !Settings.RandomizerSettings.shuffleInteriorEntrances,
+    SHUFFLE_OVERWORLD_ENTRANCES: () => Settings.RandomizerSettings.shuffleOverworldEntrances,
     VANILLA_OVERWORLD_ENTRANCES: () => !Settings.RandomizerSettings.shuffleOverworldEntrances,
-    SHUFFLE_GROTTO_ENTRANCES: () => !Settings.RandomizerSettings.shuffleGrottoEntrances,
-    VANILLA_GROTTO_ENTRANCES: () => !Settings.RandomizerSettings.shuffleGrottoEntrances
+    SHUFFLE_GROTTO_ENTRANCES: () => Settings.RandomizerSettings.shuffleGrottoEntrances,
+    VANILLA_GROTTO_ENTRANCES: () => !Settings.RandomizerSettings.shuffleGrottoEntrances,
+    SHUFFLE_THIEVES_HIDEOUT: () => Settings.RandomizerSettings.shuffleThievesHideout,
+    VANILLA_THIEVES_HIDEOUT: () => !Settings.RandomizerSettings.shuffleThievesHideout
 };
 
 /**
@@ -129,7 +132,7 @@ let GlitchItemSets = {
         Settings.GlitchesToAllow.difficultBoomerangTrickThrows && 
         ItemData.canUse(age, Items.BOOMERANG),
 
-	// Forest
+	// Forest / Woods
     POKEY_SKIP: (age) => 
         Settings.GlitchesToAllow.pokeySkip && 
         ItemData.canUse(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD]),
@@ -236,6 +239,11 @@ let GlitchItemSets = {
     ADULT_LAKESIDE_LAB_CLIP: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.adultLakesideLabClip && 
         ItemData.canUseAny(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]),
+    ADULT_MEGA_FLIP_CLIP_TO_DOMAIN: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.adultDomainMegaflipClip && 
+        ItemData.canUse(age, GlitchItemSets.MEGA_FLIP),
+    ADULT_WATER_TEMPLE_CLIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.adultWaterTempleClip,
 
     // Gerudo
     CUCCO_JUMP: (age) => 
@@ -254,11 +262,20 @@ let GlitchItemSets = {
         Settings.GlitchesToAllow.gerudoGateSkipAsAdult &&
         ItemData.canUse(age, Equipment.HOVER_BOOTS),
     GF_PASS_KITCHEN_GUARDS: () => Settings.GlitchesToAllow.gfPassKitchenGuards,
+    GTG_AS_CHILD: (age) => age === Age.CHILD &&
+        Settings.GlitchesToAllow.gtgChildAllowed,
+    GTG_ADULT_LEDGE_CLIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.gtgAdultNoCard,
 
     // Desert
     HW_ITEMLESS_SAND_PIT: () => Settings.GlitchesToAllow.itemlessSandPit,
     BACKWARDS_WASTELAND: () => Settings.GlitchesToAllow.backwardsWasteland,
     WASTELAND_NO_LENS: () => Settings.GlitchesToAllow.wastelandNoLens,
+
+    // Forest
+    FOREST_BK_SKIP: (age) => 
+        Settings.GlitchesToAllow.forestBKSkip &&
+        ItemData.canUse(age, Items.HOOKSHOT),
 
     // Spirit
     MQ_SPIRIT_STATUE_ROOM_TORCHES_WITH_DINS: (age) => 
