@@ -762,11 +762,9 @@ let MapLocations = {
                         MapInfo: { x: 207, y: 36 },
                         Age: Age.CHILD,
                         LongDescription: "After obtaining all the spiritual stones, stand by the drawbridge to the Market. After the cutscene, grab the Ocarina from the moat.",
-                        RequiredMedallions: [
-                            Medallions.KOKIRIS_EMERALD,
+                        Needs: [Medallions.KOKIRIS_EMERALD,
                             Medallions.GORONS_RUBY,
-                            Medallions.ZORAS_SAPPHIRE
-                        ]
+                            Medallions.ZORAS_SAPPHIRE]
                     },
 
                     // West
@@ -777,12 +775,10 @@ let MapLocations = {
                         MapInfo: { x: 184, y: 145 },
                         Age: Age.CHILD,
                         MapImageName: "Bunny Hood",
-                        Needs: [ChildTradeItems.BUNNY_HOOD],
-                        RequiredMedallions: [
+                        Needs: [ChildTradeItems.BUNNY_HOOD,
                             Medallions.KOKIRIS_EMERALD,
                             Medallions.GORONS_RUBY,
-                            Medallions.ZORAS_SAPPHIRE
-                        ],
+                            Medallions.ZORAS_SAPPHIRE],
                         LongDescription: "Once you have all spiritual stones, a guy will appear in Hyrule Field that runs around Lon Lon Ranch. Talk to him while wearing the Bunny Hood to sell it to him - this unlocks the Mask of Truth.",
                     }
                 }
@@ -1518,7 +1514,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         Order: 20,
                         LongDescription: "You can get this item if you have the forest, fire, and water medallions. Just enter Kakariko Village as an adult.",
-                        RequiredMedallions: [Medallions.FOREST_MEDALLION, Medallions.FIRE_MEDALLION, Medallions.WATER_MEDALLION]
+                        Needs: [Medallions.FOREST_MEDALLION, Medallions.FIRE_MEDALLION, Medallions.WATER_MEDALLION]
                     },
 
                     // Upper Area

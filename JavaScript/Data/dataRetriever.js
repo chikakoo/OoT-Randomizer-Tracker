@@ -756,7 +756,6 @@ Data = {
 		if (!this._canDoItemGroup(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canPlantBean(age, itemLocation)) { return ItemObtainability.NO; }
 
-		if (!this.hasRequiredMedallions(itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canPlaySongs(itemLocation)) { return ItemObtainability.NO; }
 		if (!this.canPlayDifficultOcarinaItems(itemLocation)) { return ItemObtainability.NO; }
         
@@ -955,23 +954,6 @@ Data = {
 
         return Settings.RandomizerSettings.autoPlantBeans || magicBeanLocation.completed;
     },
-    
-    /**
-     * Returns whether player has all required medallions of the given item location
-     */
-	hasRequiredMedallions: function(itemLocation) {
-		if (!itemLocation.RequiredMedallions) { return true; }
-		let hasAllMedallions = true;
-		
-		itemLocation.RequiredMedallions.forEach(function(medallion) {
-			if (!medallion.playerHas) {
-				hasAllMedallions = false;
-				return;
-			}
-		});
-		
-		return hasAllMedallions;
-	},
 
     /**
      * Returns whether the player can buy from the given shop
