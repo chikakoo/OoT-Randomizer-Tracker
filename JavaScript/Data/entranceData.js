@@ -2429,7 +2429,7 @@ GrottoGroups = {
 		}
 	},
 	"3 Slingshot Wonderitems": {
-		tooltip: "A group of 3 wonderitems you need the slingshot to get.",
+		tooltip: "A group of 3 wonderitems you need the slingshot or QPA to get.",
 		icon: "Slingshot Wonderitem",
 		buttons: {
 			"Slingshot Wonderitems": {
@@ -2440,6 +2440,21 @@ GrottoGroups = {
 					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
 				},
 				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
+			}
+		}
+	},
+	"3 QPAable Slingshot Wonderitems": {
+		tooltip: "A group of 3 wonderitems you need the slingshot to get.",
+		icon: "Slingshot Wonderitem",
+		buttons: {
+			"Slingshot Wonderitems": {
+				useGroupImage: true,
+				count: 3,
+				description: "Shoot something to get these items.",
+				canGet: function(age) {
+					return ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, QPAItemSets.LEDGE_QPA]);
+				},
+				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; }
 			}
 		}
 	},

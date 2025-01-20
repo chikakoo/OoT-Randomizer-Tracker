@@ -1206,9 +1206,9 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "3 Slingshot Wonderitems",
+                        DefaultEntranceGroupName: "3 QPAable Slingshot Wonderitems",
                         MapInfo: { x: 148, y: 84, floor: "B1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
                         Age: Age.EITHER,
                         Order: 9.1,
                         LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole normally blocked by the tentacle (upper leftmost hole). Shoot the left cow three times to spawn three different wonderitems."
