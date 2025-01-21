@@ -353,11 +353,16 @@ let GlitchItemSets = {
     FIRE_SOT_BLOCK_FROM_HAMMER_CHEST: () => Settings.GlitchesToAllow.fireJumpDownToSoTBlock,
 
     // Water Temple
+    WATER_BOMBABLE_WALL_EARLY: () => Settings.GlitchesToAllow.waterBombableWallEarly,
     WATER_HOOKSHOT_TO_FLOOR_1: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.waterHookshotToFloor1 &&
         ItemData.canUse(age, Items.HOOKSHOT),
     WATER_JUMP_TO_HIGH_WATER: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.waterHighWaterJump,
+    WATER_EYE_SWITCH_GATE_FROM_TOP: (age) => age === Age.ADULT && 
+        Settings.GlitchesToAllow.waterEyeSwitchGateFromTop,
+    WATER_DRAGON_ROOM_CHEST_WITH_CHU: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.waterDragonChestWithChu,
     WATER_JUMP_TO_WATERFALL_LEDGE: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.waterBKShortcut,
 

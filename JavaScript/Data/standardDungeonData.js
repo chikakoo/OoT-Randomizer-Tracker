@@ -2596,15 +2596,12 @@ let StandardDungeons = {
                         Order: 13,
                         MapInfo: { x: 33, y: 61, floor: "F1" },
                         LongDescription: "There are two ways to get to this room. One way: after draining the water, make your way to the bottom west wing. Push the red block out of the way then follow the path. Get to the other side of the switch and water puzzle to get the dragon and whirlpool room.<br/><br/>The alternate path to this room is to drop down after the vortex room chest (post-Dark Link).<br/><br/>When here, use your Iron Boots to sink down in the upper right corner of the vortex room, on the lower dragon. From there, hookshot the crystal switch in the dragon's mouth. Now hookshot the target in the room that opens up. Unequip your Iron Boots then float up to the chest.<br/><br/>You can also line up a bombchu with the switch from the platform by the door. Now, either use your iron boots to navigate to the door, or dive using the silver scale to get there (you'll have to dive early enough - when you're near the right wall).",
-                        CustomRequirement: function(age) {
-                            let canUseIronBoots = ItemData.canUse(age, Equipment.IRON_BOOTS);
-                            if (Items.BOMBCHU.playerHas) {
-                                let canDiveDownNormally = Equipment.SCALE.playerHas || canUseIronBoots;
-                                return Settings.GlitchesToAllow.waterDragonChestWithChu || canDiveDownNormally;
-                            }
-
-                            return canUseIronBoots && Items.HOOKSHOT.playerHas;
-                        }
+                        NeedsAny: [
+                            [Equipment.IRON_BOOTS, Items.HOOKSHOT], 
+                            [Items.BOMBCHU,
+                                [SetType.OR,
+                                    [SetType.OR, Equipment.SCALE, Equipment.IRON_BOOTS],
+                                    GlitchItemSets.WATER_DRAGON_ROOM_CHEST_WITH_CHU]]],
                     }
                 }
             },
@@ -2613,10 +2610,11 @@ let StandardDungeons = {
                 Exits: {
                     bossAntechamber: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            let canSkipLongshot = Data.canHammerHoverBootsSuperslide(age);
-                            return ItemData.canUse(age, UpgradedItems.LONGSHOT) || canSkipLongshot;
-                        }
+                        NeedsAny: [
+                            UpgradedItems.LONGSHOT,
+                            GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS,
+                            GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS
+                        ]
                     },
                     waterfallRoom: {
                         Map: "Water Temple",
@@ -2631,10 +2629,8 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 14,
                         LongDescription: "From the entrance of the temple, jump off and sink down to the bottom (or longshot a torch on the bottom of the east side). Head down the hallway of the east room. Take off your iron boots and float up to the surface. Enter the door and kill the enemies to spawn the chest.",
-                        NeedsAny: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                        }
+                        Needs: [GameStateSets.WATER_TEMPLE_TUNIC_CHECK],
+                        NeedsAny: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT]
                     }
                 }
             },
@@ -2666,16 +2662,13 @@ let StandardDungeons = {
                         AdultNeedsAny: [Equipment.SCALE, Equipment.IRON_BOOTS]
                     },
                     behindBlockArea: {
-                        CustomRequirement: function(age) {
-                            let canGetToArea = Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
-                            return canGetToArea && Data.canWeirdShot(age);
-                        }
+                        // Get next to the block via the top floor and do a weird shot
+                        Needs: [GlitchItemSets.WEIRD_SHOT],
+                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     roomWithManyTektitesAntechamber: {},
                     crackedWallArea: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.waterBombableWallEarly;
-                        }
+                        Needs: [GlitchItemSets.WATER_BOMBABLE_WALL_EARLY]
                     }
                 },
                 ItemLocations: {
@@ -2814,19 +2807,16 @@ let StandardDungeons = {
                     },
                     midWaterTriforceFloor: {},
                     behindBlockArea: {
-                        CustomRequirement: function(age) {
-                            // Weirdshot by the right wall in the corner after the hookshot target by the gate (down the hall)
-                            if (Data.canWeirdShot(age)) { return true; }
-
-                            // If not weirdshotting, need to shoot eye AND move the block
-                            if (!ItemData.canUse(age, [ItemSets.PROJECTILES, Equipment.STRENGTH])) {
-                                return false;
-                            }
-
-                            return Settings.GlitchesToAllow.waterEyeSwitchGateFromTop || // Shoot from the top and run in
-                                ItemData.canUseAny(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]); // Normal way, either hit target, or run with hovers
-
-                        }
+                        NeedsAny: [
+                            [
+                                [ItemSets.PROJECTILES, Equipment.STRENGTH],
+                                [SetType.OR, 
+                                    UpgradedItems.LONGSHOT, 
+                                    Equipment.HOVER_BOOTS, 
+                                    GlitchItemSets.WATER_EYE_SWITCH_GATE_FROM_TOP]
+                            ],
+                            GlitchItemSets.WEIRD_SHOT
+                        ]
                     },
                     crackedWallArea: {}
                 },
