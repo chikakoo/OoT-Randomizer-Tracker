@@ -333,6 +333,22 @@ let GlitchItemSets = {
         Settings.GlitchesToAllow.forestBKSkip &&
         ItemData.canUse(age, Items.HOOKSHOT),
 
+    // Fire
+    FIRE_FIRST_ROOM_PILLAR_SKIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.fireFirstRoomPillarSkip,
+    FIRE_SOT_BLOCK_JUMP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.fireSoTBlockJump,
+    FIRE_JAIL_CLIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.fireJailClip &&
+        ItemData.canUse(age, Items.BOMB),
+    FIRE_ESCAPE_MAP_ENCLOSURE: (age) => age === Age.ADULT && 
+        Settings.GlitchesToAllow.fireCraterRoomKeySkip &&
+        ItemData.canUse(age, [Items.MEGATON_HAMMER, Equipment.HOVER_BOOTS]),
+    FIRE_BK_SKIP_FROM_FIREWALL_MAZE: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.fireBKSkipFromFireWallMaze,
+    FIRE_FIREWALL_SKIP: () => Settings.GlitchesToAllow.fireWallSkip,
+    FIRE_SOT_BLOCK_FROM_HAMMER_CHEST: () => Settings.GlitchesToAllow.fireJumpDownToSoTBlock,
+
     // Spirit
     MQ_SPIRIT_STATUE_ROOM_TORCHES_WITH_DINS: (age) => 
         Settings.GlitchesToAllow.mqSpiritStatueTorchesWithDins &&
@@ -391,7 +407,10 @@ let ItemLocationSets = {
     MQ_JABU_ELEVATOR_LOWERED: () => Data.itemLocationObtained("Jabu Jabu's Belly", "wigglerRoomAfterBigOcto", "Elevator Lowered"),
 
     // Water Temple
-    DEFEATED_MORPHA:() => Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp")
+    DEFEATED_MORPHA: () => Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp"),
+
+    // Fire Temple
+    OPENED_BOTTOM_LOBBY_DOOR: () => Data.itemLocationObtained("Fire Temple", "main", "Bottom Locked Door in Lobby")
 };
 
 /**
@@ -419,14 +438,16 @@ let GameStateSets = {
     ARE_GERUDO_GUARDS_TAME: () => Data.areGerudoGuardsTame(),
     CAN_STUN_KITCHEN_GUARDS: (age) => Data.canStunKitchenGuards(age),
     CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE: (age) => Data.canStunOrPassGuardsAtDistance(age),
-    HAS_BOTTLE: () => Data.hasBottle()
+    HAS_BOTTLE: () => Data.hasBottle(),
+    FIRE_TEMPLE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC)
 };
 
 /**
  * Item sets related to keys
  */
 let KeySets = {
-    FOREST_BK: () => ItemData.hasBossKey("Forest Temple")
+    FOREST_BK: () => ItemData.hasBossKey("Forest Temple"),
+    FIRE_BK: () => ItemData.hasBossKey("Fire Temple")
 };
 
 /**

@@ -935,7 +935,7 @@ let StandardDungeons = {
         _canAccessAllPoeRooms: function(age) {
             // Requires an IsPostWalkCheck on each item using this!
             return ItemData.canUse(age, [
-                MapAccessSets.FOREST_FIRST_POE_ROOM, 
+                MapAccessSets.FOREST_FIRST_POE_ROOM,
                 MapAccessSets.FOREST_FALLING_CEILING_ROOM]);
         },
         Regions: {
@@ -1544,8 +1544,7 @@ let StandardDungeons = {
         StartingFloorIndex: 4,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canAccessBossKeyPath: function(age) {
-            let canSkipPillar = age === Age.ADULT && Settings.GlitchesToAllow.fireFirstRoomPillarSkip;
-            return ItemData.canUse(age, Items.MEGATON_HAMMER) || canSkipPillar;
+            return ItemData.canUseAny(age, [Items.MEGATON_HAMMER, GlitchItemSets.FIRE_FIRST_ROOM_PILLAR_SKIP]);
         },
         Regions: {
             main: {
@@ -1554,28 +1553,20 @@ let StandardDungeons = {
                     bossKeyRoom: {
                         Map: "Fire Temple",
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Data.canWeirdShot(age);
-                        }
+                        Needs: [GlitchItemSets.WEIRD_SHOT]
                     },
                     bossKeyPath: {
                         Map: "Fire Temple",
                         LockedDoor: "Bottom Locked Door in Lobby",
-                        CustomRequirement: function(age) {
-                            return MapLocations["Fire Temple"]._canAccessBossKeyPath(age);
-                        }
+                        Needs: [(age) => MapLocations["Fire Temple"]._canAccessBossKeyPath(age)]
                     },
                     bigLavaRoom: {
                         Map: "Fire Temple",
                         LockedDoor: "Top Locked Door in Lobby",
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
-                        }
+                        Needs: [GameStateSets.FIRE_TEMPLE_TUNIC_CHECK]
                     },
                     bossArea: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
-                        }
+                        Needs: [GameStateSets.FIRE_TEMPLE_TUNIC_CHECK]
                     },
                     Exit: {
                         OwExit: OwExits["Fire Temple"]["Exit"]
@@ -1598,9 +1589,7 @@ let StandardDungeons = {
                             }
                             return { min: 1, max: Keys.FIRE_TEMPLE.totalKeys()};
                         },
-                        CustomRequirement: function(age) {
-                            return MapLocations["Fire Temple"]._canAccessBossKeyPath(age);
-                        }
+                        Needs: [(age) => MapLocations["Fire Temple"]._canAccessBossKeyPath(age)]
                     },
                     "Top Locked Door in Lobby": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
@@ -1615,7 +1604,7 @@ let StandardDungeons = {
                             }
 
                             let minValue = 1;
-                            if (Data.itemLocationObtained("Fire Temple", "main", "Bottom Locked Door in Lobby")) {
+                            if (ItemLocationSets.OPENED_BOTTOM_LOBBY_DOOR()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 2 };
@@ -1635,7 +1624,7 @@ let StandardDungeons = {
                             }
 
                             let minValue = 2;
-                            if (Data.itemLocationObtained("Fire Temple", "main", "Bottom Locked Door in Lobby")) {
+                            if (ItemLocationSets.OPENED_BOTTOM_LOBBY_DOOR()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 3 };
@@ -1655,7 +1644,7 @@ let StandardDungeons = {
                             }
 
                             let minValue = 3;
-                            if (Data.itemLocationObtained("Fire Temple", "main", "Bottom Locked Door in Lobby")) {
+                            if (ItemLocationSets.OPENED_BOTTOM_LOBBY_DOOR()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 4 };
@@ -1675,7 +1664,7 @@ let StandardDungeons = {
                                 return { min: minValue, max: 4 };
                             }
 
-                            if (Data.itemLocationObtained("Fire Temple", "main", "Bottom Locked Door in Lobby")) {
+                            if (ItemLocationSets.OPENED_BOTTOM_LOBBY_DOOR()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 5 };
@@ -1699,7 +1688,7 @@ let StandardDungeons = {
                                 return { min: minValue, max: 5 };
                             }
 
-                            if (Data.itemLocationObtained("Fire Temple", "main", "Bottom Locked Door in Lobby")) {
+                            if (ItemLocationSets.OPENED_BOTTOM_LOBBY_DOOR()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 6 };
@@ -1728,7 +1717,7 @@ let StandardDungeons = {
                                 return { min: minValue, max: 6 };
                             }
 
-                            if (Data.itemLocationObtained("Fire Temple", "main", "Bottom Locked Door in Lobby")) {
+                            if (ItemLocationSets.OPENED_BOTTOM_LOBBY_DOOR()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 7 };
@@ -1757,7 +1746,7 @@ let StandardDungeons = {
                                 return { min: minValue, max: 7 };
                             }
 
-                            if (Data.itemLocationObtained("Fire Temple", "main", "Bottom Locked Door in Lobby")) {
+                            if (ItemLocationSets.OPENED_BOTTOM_LOBBY_DOOR()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 8 };
@@ -1811,10 +1800,8 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Boss Area", imageName: "Fire Medallion" },
                 Exits: {
                     bossRoom: {
-                        CustomRequirement: function(age) {
-                            let canGetToDoor = age === Age.ADULT || Data.canMegaFlip(age);
-                            return canGetToDoor && ItemData.hasBossKey("Fire Temple");
-                        }
+                        ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+                        Needs: [KeySets.FIRE_BK]
                     }
                 },
                 ItemLocations: {
@@ -1825,9 +1812,6 @@ let StandardDungeons = {
                         Order: 5,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.fireNoGoronTunic; },
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper left corner of the room and step on the switch. The chest is inside the Goron cage.",
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
-                        }
                     },
                     "4 Pots Near Boss Door": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -1838,11 +1822,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 6,
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper right corner of the room using your hookshot, hover boots, or by megaflipping. Climb up to get to the pots.",
-                        CustomRequirement: function(age) {
-                            let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
-                            let canGetThere = Data.canMegaFlip(age) || Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas;
-                            return tunicCheck && canGetThere;
-                        }
+                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     }
                 }
             },
@@ -1851,20 +1831,12 @@ let StandardDungeons = {
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.fireNoGoronTunic; },
                 Exits: {
                     bigLavaRoomGoronRight: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) {
-                                return Data.canGroundJumpWithBomb(age);
-                            }
-                            return ItemData.canUse(age, ItemSets.EXPLOSIVES);
-                        }
+                        ChildNeeds: [GlitchItemSets.GROUND_JUMP],
+                        AdultNeeds: [ItemSets.EXPLOSIVES]
                     },
                     bigLavaRoomSoTLedge: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD && !Data.canGroundJumpWithBomb(age)) { return false; }
-
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) ||
-                                (age === Age.ADULT && Settings.GlitchesToAllow.fireSoTBlockJump);
-                        }
+                        ChildNeeds: [Songs.SONG_OF_TIME, GlitchItemSets.GROUND_JUMP],
+                        AdultNeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.FIRE_SOT_BLOCK_JUMP]
                     },
                     risingBlockRoom: {
                         Map: "Fire Temple",
@@ -1955,24 +1927,18 @@ let StandardDungeons = {
                     boulderMazeLower: {
                         Age: Age.ADULT,
                         Map: "Fire Temple",
-                        CustomRequirement: function(age) {
-                            let canGetByBlock = Data.canGroundJumpWithBomb(age) || Equipment.STRENGTH.playerHas;
-                            let canHitSwitchFromAbove = ItemData.canUseAny(age, [ItemSets.EXPLOSIVES, ItemSets.PROJECTILES, Items.HOOKSHOT]);
-                            return canGetByBlock && canHitSwitchFromAbove;
-                        }
+                        Needs: [
+                            [SetType.OR, GlitchItemSets.GROUND_JUMP, Equipment.STRENGTH], // Get by block
+                            [SetType.OR, ItemSets.EXPLOSIVES, ItemSets.PROJECTILES, Items.HOOKSHOT] // Hit switch from above
+                        ]
                     },
                     goronInPit: {
                         Age: Age.ADULT,
-                        AdultNeeds: [Items.BOMB],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.fireJailClip;
-                        }
+                        Needs: [GlitchItemSets.FIRE_JAIL_CLIP],
                     },
                     goronInPitCell: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Data.canWeirdShot(age);
-                        }
+                        Needs: [GlitchItemSets.WEIRD_SHOT]
                     }
                 },
                 ItemLocations: {}
@@ -2072,10 +2038,7 @@ let StandardDungeons = {
                     narrowBridgeRoom: {},
                     fireWallRoom: {
                         Age: Age.ADULT,
-                        AdultNeeds: [Items.MEGATON_HAMMER, Equipment.HOVER_BOOTS],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.fireCraterRoomKeySkip;
-                        }
+                        Needs: [GlitchItemSets.FIRE_ESCAPE_MAP_ENCLOSURE]
                     }
                 },
                 ItemLocations: {
@@ -2098,9 +2061,7 @@ let StandardDungeons = {
                         Needs: [ItemSets.EXPLOSIVES]
                     },
                     scarecrowRoom: {
-                        CustomRequirement: function(age) {
-                            return Data.canHookScarecrow(age);
-                        }
+                        Needs: [GameStateSets.CAN_HOOK_SCARECROW]
                     }
                 },
                 ItemLocations: {
@@ -2166,22 +2127,17 @@ let StandardDungeons = {
                 Exits: {
                     bossRoom: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.fireBKSkipFromFireWallMaze;
-                        }
+                        Needs: [GlitchItemSets.FIRE_BK_SKIP_FROM_FIREWALL_MAZE]
                     },
                     fireMazeRoomEnd: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.fireWallSkip;
-                        }
+                        Needs: [GlitchItemSets.FIRE_FIREWALL_SKIP]
                     },
                     centerRoomBottom: {
                         Map: "Fire Temple",
                         LockedDoor: "Locked Door in Fire Maze Room"
-
                     },
                     centerRoomTopSwitch: {
-                        Needs: [Items.MEGATON_HAMMER]
+                        Needs: [Equipment.HOVER_BOOTS, Items.MEGATON_HAMMER]
                     }
                 },
 
@@ -2233,9 +2189,7 @@ let StandardDungeons = {
                         Needs: [Items.MEGATON_HAMMER]
                     },
                     centerRoomTopSwitch: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.fireJumpDownToSoTBlock && ItemData.canUse(age, Items.MEGATON_HAMMER);
-                        }
+                        Needs: [GlitchItemSets.FIRE_SOT_BLOCK_FROM_HAMMER_CHEST, Items.MEGATON_HAMMER]
                     },
                     centerRoomBottom: {}
                 },
@@ -2274,9 +2228,7 @@ let StandardDungeons = {
                         Needs: [Items.MEGATON_HAMMER, Songs.SONG_OF_TIME]
                     },
                     centerRoomCell: {
-                        CustomRequirement: function(age) {
-                            return Data.canWeirdShot(age);
-                        }
+                        Needs: [GlitchItemSets.WEIRD_SHOT]
                     }
                 },
                 ItemLocations: {}

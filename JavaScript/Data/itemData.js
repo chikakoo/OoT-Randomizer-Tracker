@@ -629,6 +629,8 @@ let ItemData = {
 			case Equipment.MIRROR_SHIELD:
 			case Equipment.IRON_BOOTS:
 			case Equipment.HOVER_BOOTS:
+			case Equipment.GORON_TUNIC:
+			case Equipment.ZORA_TUNIC:
 			case AdultTradeItems.POCKET_EGG:
 			case AdultTradeItems.COJIRO:
 			case AdultTradeItems.ODD_POTION:
