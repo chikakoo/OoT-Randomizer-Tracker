@@ -86,7 +86,9 @@ let SettingSets = {
     SHUFFLE_GROTTO_ENTRANCES: () => Settings.RandomizerSettings.shuffleGrottoEntrances,
     VANILLA_GROTTO_ENTRANCES: () => !Settings.RandomizerSettings.shuffleGrottoEntrances,
     SHUFFLE_THIEVES_HIDEOUT: () => Settings.RandomizerSettings.shuffleThievesHideout,
-    VANILLA_THIEVES_HIDEOUT: () => !Settings.RandomizerSettings.shuffleThievesHideout
+    VANILLA_THIEVES_HIDEOUT: () => !Settings.RandomizerSettings.shuffleThievesHideout,
+    SHUFFLE_SILVER_RUPEES: () => Settings.RandomizerSettings.shuffleSilverRupees,
+    VANILLA_SILVER_RUPEES: () => !Settings.RandomizerSettings.shuffleSilverRupees
 };
 
 /**
@@ -359,6 +361,19 @@ let GlitchItemSets = {
     WATER_JUMP_TO_WATERFALL_LEDGE: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.waterBKShortcut,
 
+    // Shadow Temple
+    SHADOW_LOWER_BRIDGE_WITH_CHUS: (age) => 
+        Settings.GlitchesToAllow.shadowChuBombFlowers &&
+        ItemData.canUse(age, Items.BOMBCHU),
+    SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.shadowSilverRupeeWithNothing,
+    SHADOW_GATE_CLIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.shadowGateClip &&
+        ItemData.canUse(age, ItemSets.SHIELDS),
+    SHADOW_JUMP_TO_BOAT_ROOM_LEDGE: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.shadowUpperBoatRoomJump &&
+        ItemData.canUse(age, [Equipment.HOVER_BOOTS, ItemSets.SHIELDS]),
+
     // Spirit Temple
     MQ_SPIRIT_STATUE_ROOM_TORCHES_WITH_DINS: (age) => 
         Settings.GlitchesToAllow.mqSpiritStatueTorchesWithDins &&
@@ -416,13 +431,16 @@ let ItemLocationSets = {
     MQ_JABU_GREEN_TENTACLE_DEFEATED: () => Data.itemLocationObtained("Jabu Jabu's Belly", "afterGreenTentacleDefeated", "Green Tentacle Defeated"),
     MQ_JABU_ELEVATOR_LOWERED: () => Data.itemLocationObtained("Jabu Jabu's Belly", "wigglerRoomAfterBigOcto", "Elevator Lowered"),
 
+    // Forest Temple
+    FOREST_OPENED_LOBBY_DOOR: () => Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby"),
+
+    // Fire Temple
+    FIRE_OPENED_BOTTOM_LOBBY_DOOR: () => Data.itemLocationObtained("Fire Temple", "main", "Bottom Locked Door in Lobby"),
+
     // Water Temple
     WATER_LOWERED_WATER_LEVEL: () => Data.itemLocationObtained("Water Temple", "lowWaterLevel", "Lower Water Level"),
     WATER_OPENED_CENTRAL_ROOM: () => Data.itemLocationObtained("Water Temple", "main", "Locked Door to Central Room"),
-    DEFEATED_MORPHA: () => Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp"),
-
-    // Fire Temple
-    FIRE_OPENED_BOTTOM_LOBBY_DOOR: () => Data.itemLocationObtained("Fire Temple", "main", "Bottom Locked Door in Lobby")
+    DEFEATED_MORPHA: () => Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp")
 };
 
 /**
@@ -452,7 +470,9 @@ let GameStateSets = {
     CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE: (age) => Data.canStunOrPassGuardsAtDistance(age),
     HAS_BOTTLE: () => Data.hasBottle(),
     FIRE_TEMPLE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC),
-    WATER_TEMPLE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.waterNoZoraTunic || ItemData.canUse(age, Equipment.ZORA_TUNIC)
+    WATER_TEMPLE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.waterNoZoraTunic || ItemData.canUse(age, Equipment.ZORA_TUNIC),
+    SHADOW_LENS_CHECK: (age) => Settings.GlitchesToAllow.shadowLensless || ItemData.canUse(age, Items.LENS_OF_TRUTH),
+    SHADOW_IRON_BOOTS_CHECK: (age) => Settings.GlitchesToAllow.shadowNoIronBoots || ItemData.canUse(age, Equipment.IRON_BOOTS)
 };
 
 /**

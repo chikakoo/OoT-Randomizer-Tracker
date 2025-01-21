@@ -997,7 +997,7 @@ let StandardDungeons = {
                         Order: 15,
                         LongDescription: "This is the door that's after the block puzzle by the bubbles.",
                         KeyRequirement: function(age) {
-                            if (MapLocations["Forest Temple"]._canJumpToTop(age) && !Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby")) {
+                            if (MapLocations["Forest Temple"]._canJumpToTop(age) && !ItemLocationSets.FOREST_OPENED_LOBBY_DOOR()) {
                                 return { min: 1, max: 2 };
                             }
                             return { min: 2, max: 2 };
@@ -1012,7 +1012,7 @@ let StandardDungeons = {
                         Order: 20,
                         LongDescription: "This is the door that's in the boss key room when the boss key chest is sideways.",
                         KeyRequirement: function(age) {
-                            if (MapLocations["Forest Temple"]._canJumpToTop(age) && !Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby")) {
+                            if (MapLocations["Forest Temple"]._canJumpToTop(age) && !ItemLocationSets.FOREST_OPENED_LOBBY_DOOR()) {
                                 return { min: 2, max: 3 };
                             }
                             return { min: 3, max: 3 };
@@ -1027,7 +1027,7 @@ let StandardDungeons = {
                         Order: 26,
                         LongDescription: "This is the door that's in the blue poe room.",
                         KeyRequirement: function(age) {
-                            if (MapLocations["Forest Temple"]._canJumpToTop(age) && !Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby")) {
+                            if (MapLocations["Forest Temple"]._canJumpToTop(age) && !ItemLocationSets.FOREST_OPENED_LOBBY_DOOR()) {
                                 return { min: 3, max: 4 };
                             }
                             return { min: 4, max: 4 };
@@ -1042,7 +1042,7 @@ let StandardDungeons = {
                         Order: 27,
                         LongDescription: "This is the door that's after the green bubbles, leading to the frozen eye switch.",
                         KeyRequirement: function(age) {
-                            if (MapLocations["Forest Temple"]._canJumpToTop(age) && !Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby")) {
+                            if (MapLocations["Forest Temple"]._canJumpToTop(age) && !ItemLocationSets.FOREST_OPENED_LOBBY_DOOR()) {
                                 return { min: 4, max: 5 };
                             }
                             return { min: 5, max: 5 };
@@ -3006,15 +3006,8 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Entrance & Maze Rooms", imageName: "Hover Boots" },
                 Exits: {
                     truthSpinnerRoom: {
-                        CustomRequirement: function(age) {
-                            let lensCheck = Settings.GlitchesToAllow.shadowLensless || (Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas);
-                            if (!lensCheck) { return false; }
-
-                            let canCrossFirstGap = Data.canMegaFlip(age) ||
-                                (age === Age.ADULT && (Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas));
-
-                            return canCrossFirstGap;
-                        }
+                        Needs: [GameStateSets.SHADOW_LENS_CHECK],
+                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     Exit: {
                         OwExit: OwExits["Shadow Temple"]["Exit"]
@@ -3033,18 +3026,15 @@ let StandardDungeons = {
                         Needs: [ItemSets.EXPLOSIVES],
                         KeyRequirement: function(age) {
                             let max = 1;
-                            if (Settings.GlitchesToAllow.shadowGateClip){
+                            if (Settings.GlitchesToAllow.shadowGateClip) {
                                 max++; // Gibdo room
 
-                                let canGetToInvisibleSpikeRoom = Items.HOOKSHOT.playerHas &&
-                                    (Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots);
-                                if (canGetToInvisibleSpikeRoom) {
+                                if (ItemData.canUse(age, [Items.HOOKSHOT, GameStateSets.SHADOW_IRON_BOOTS_CHECK])) {
                                     max += 2; // Into and out of invisible spike room
                                 }
 
-                                let canHitWithChu = Settings.GlitchesToAllow.shadowChuBombFlowers && Items.BOMBCHU.playerHas;
-                                let canCrossGap = Items.FAIRY_BOW.playerHas || canHitWithChu;
-                                let canGetToBossRoom = Data.canPlaySong(Songs.ZELDAS_LULLABY) && (canHitWithChu || canCrossGap);
+                                let canCrossChasm = ItemData.canUseAny(age, [Items.FAIRY_BOW, GlitchItemSets.SHADOW_LOWER_BRIDGE_WITH_CHUS]);
+                                let canGetToBossRoom = Data.canPlaySong(Songs.ZELDAS_LULLABY) && canCrossChasm;
                                 if (canGetToBossRoom) {
                                     max++; // Boss room door
                                 }
@@ -3066,15 +3056,12 @@ let StandardDungeons = {
                             if (Settings.GlitchesToAllow.shadowGateClip) {
                                 max++; // Gibdo room
 
-                                let canGetToInvisibleSpikeRoom = Items.HOOKSHOT.playerHas &&
-                                    (Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots);
-                                if (canGetToInvisibleSpikeRoom) {
+                                if (ItemData.canUse(age, [Items.HOOKSHOT, GameStateSets.SHADOW_IRON_BOOTS_CHECK])) {
                                     max++; // Into invisible spike room
                                 }
 
-                                let canHitWithChu = Settings.GlitchesToAllow.shadowChuBombFlowers && Items.BOMBCHU.playerHas;
-                                let canCrossGap = Items.FAIRY_BOW.playerHas || canHitWithChu;
-                                let canGetToBossRoom = Data.canPlaySong(Songs.ZELDAS_LULLABY) && (canHitWithChu || canCrossGap);
+                                let canCrossChasm = ItemData.canUseAny(age, [Items.FAIRY_BOW, GlitchItemSets.SHADOW_LOWER_BRIDGE_WITH_CHUS]);
+                                let canGetToBossRoom = Data.canPlaySong(Songs.ZELDAS_LULLABY) && canCrossChasm;
                                 if (canGetToBossRoom) {
                                     max++; // Boss room door
                                 }
@@ -3097,15 +3084,12 @@ let StandardDungeons = {
                             if (Settings.GlitchesToAllow.shadowGateClip) {
                                 max++; // Gibdo room
 
-                                let canGetToInvisibleSpikeRoom = Items.HOOKSHOT.playerHas &&
-                                    (Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots);
-                                if (canGetToInvisibleSpikeRoom) {
+                                if (ItemData.canUse(age, [Items.HOOKSHOT, GameStateSets.SHADOW_IRON_BOOTS_CHECK])) {
                                     min = 2; // Into invisible spike room - no max, as it IS this door
                                 }
 
-                                let canHitWithChu = Settings.GlitchesToAllow.shadowChuBombFlowers && Items.BOMBCHU.playerHas;
-                                let canCrossGap = Items.FAIRY_BOW.playerHas || canHitWithChu;
-                                let canGetToBossRoom = Data.canPlaySong(Songs.ZELDAS_LULLABY) && (canHitWithChu || canCrossGap);
+                                let canCrossChasm = ItemData.canUseAny(age, [Items.FAIRY_BOW, GlitchItemSets.SHADOW_LOWER_BRIDGE_WITH_CHUS]);
+                                let canGetToBossRoom = Data.canPlaySong(Songs.ZELDAS_LULLABY) && canCrossChasm;
                                 if (canGetToBossRoom) {
                                     max++; // Boss room door
                                 }
@@ -3129,15 +3113,12 @@ let StandardDungeons = {
                                 max++; // Gibdo room
                                 min = 1;
 
-                                let canGetToInvisibleSpikeRoom = Items.HOOKSHOT.playerHas &&
-                                    (Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots);
-                                if (canGetToInvisibleSpikeRoom) {
+                                if (ItemData.canUse(age, [Items.HOOKSHOT, GameStateSets.SHADOW_IRON_BOOTS_CHECK])) {
                                     max++; // Into invisible spike room
                                 }
 
-                                let canHitWithChu = Settings.GlitchesToAllow.shadowChuBombFlowers && Items.BOMBCHU.playerHas;
-                                let canCrossGap = Items.FAIRY_BOW.playerHas || canHitWithChu;
-                                let canGetToBossRoom = Data.canPlaySong(Songs.ZELDAS_LULLABY) && (canHitWithChu || canCrossGap);
+                                let canCrossChasm = ItemData.canUseAny(age, [Items.FAIRY_BOW, GlitchItemSets.SHADOW_LOWER_BRIDGE_WITH_CHUS]);
+                                let canGetToBossRoom = Data.canPlaySong(Songs.ZELDAS_LULLABY) && canCrossChasm;
                                 if (canGetToBossRoom) {
                                     max++; // Boss room door
                                 }
@@ -3169,9 +3150,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Entrance & Maze Rooms", imageName: "Hover Boots" },
                 Exits: {
                     afterTruthSpinner: {
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Equipment.HOVER_BOOTS) || Data.canMegaFlip(age);
-                        }
+                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     }
                 },
                 ItemLocations: {
@@ -3247,18 +3226,11 @@ let StandardDungeons = {
                     },
                     boatRoomStart: {
                         Age: Age.ADULT,
-                        NeedsAny: [Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.shadowGateClip;
-                        }
+                        Needs: [GlitchItemSets.SHADOW_GATE_CLIP]
                     },
                     boatRoomLedge: {
                         Age: Age.ADULT,
-                        Needs: [Equipment.HOVER_BOOTS],
-                        NeedsAny: [Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.shadowUpperBoatRoomJump;
-                        }
+                        Needs: [GlitchItemSets.SHADOW_JUMP_TO_BOAT_ROOM_LEDGE]
                     }
                 },
 
@@ -3297,11 +3269,8 @@ let StandardDungeons = {
                         MapInfo: { x: 273, y: 88, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 8.4,
-                        LongDescription: "This rupee is in the northwest corner of the room. Use your hookshot or hoer boots to get to it.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]) ||
-                                Settings.GlitchesToAllow.shadowSilverRupeeWithNothing;
-                        }
+                        LongDescription: "This rupee is in the northwest corner of the room. Use your hookshot or hover boots to get to it.",
+                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING]
                     },
                     "Scythe Silver Rupee in Back Alcove": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -3317,16 +3286,14 @@ let StandardDungeons = {
                         UseAdultAge: function(age) { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                         Order: 9,
                         LongDescription: "After crossing the gap onto the tongue, proceed down the hallway. At the beamos, take the left path (it's a fake wall) and enter the room. Collect all the silver rupees to open the path to a chest.<br/><br/>If you have no hookshot, you can use hover boots to get to the wooden box from one of the wooden platforms.",
-                        CustomRequirement: function(age) {
-                            // We can't check the index via the property here since we don't NEED the rupees to advance in this case
-                            if (Settings.RandomizerSettings.shuffleSilverRupees) {
-                                return Data.canWeirdShot(age) || ItemData.checkSilverRupeeRequirement("Shadow Temple", 0);
-                            }
-                            if (age === Age.CHILD) { return false; }
-
-                            return ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]) ||
-                                Settings.GlitchesToAllow.shadowSilverRupeeWithNothing;
-                        }
+                        NeedsAny: [
+                            [SettingSets.SHUFFLE_SILVER_RUPEES, 
+                                [SetType.OR, 
+                                    GlitchItemSets.WEIRD_SHOT, () => ItemData.checkSilverRupeeRequirement("Shadow Temple", 0)]],
+                            [SettingSets.VANILLA_SILVER_RUPEES,
+                                [SetType.OR,
+                                    Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING]]
+                        ]
                     }
                 }
             },
