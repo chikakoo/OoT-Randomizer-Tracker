@@ -78,6 +78,7 @@ let SettingSets = {
     OPEN_ADULT_ZORAS_FOUNTAIN: () => Settings.RandomizerSettings.openZorasFountain !== OpenZorasFountainSettings.VANILLA,
     OPEN_GERUDO_FORTRESS: () => Settings.RandomizerSettings.openGerudosFortress === OpenGerudosFortressSettings.OPEN,
     SHUFFLE_DUNGEON_ENTRANCES: () => Settings.RandomizerSettings.shuffleDungeonEntrances,
+    VANILLA_DUNGEON_ENTRANCES: () => !Settings.RandomizerSettings.shuffleDungeonEntrances,
     SHUFFLE_INTERIOR_ENTRANCES: () => Settings.RandomizerSettings.shuffleInteriorEntrances,
     VANILLA_INTERIOR_ENTRANCES: () => !Settings.RandomizerSettings.shuffleInteriorEntrances,
     SHUFFLE_OVERWORLD_ENTRANCES: () => Settings.RandomizerSettings.shuffleOverworldEntrances,
@@ -305,7 +306,7 @@ let GlitchItemSets = {
             (age === Age.CHILD && Items.BOMBCHU.playerHas) ||
             (age == Age.ADULT && ItemData.canUse(age, [Items.BOMB, Equipment.HOVER_BOOTS]))),
 
-    // Forest
+    // Forest Temple
     FOREST_FIRST_SKULL_WITH_BOMB: (age) => 
         Settings.GlitchesToAllow.forestFirstSkullWithBomb && 
         ItemData.canUse(age, Items.BOMB),
@@ -333,7 +334,7 @@ let GlitchItemSets = {
         Settings.GlitchesToAllow.forestBKSkip &&
         ItemData.canUse(age, Items.HOOKSHOT),
 
-    // Fire
+    // Fire Temple
     FIRE_FIRST_ROOM_PILLAR_SKIP: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.fireFirstRoomPillarSkip,
     FIRE_SOT_BLOCK_JUMP: (age) => age === Age.ADULT &&
@@ -349,7 +350,16 @@ let GlitchItemSets = {
     FIRE_FIREWALL_SKIP: () => Settings.GlitchesToAllow.fireWallSkip,
     FIRE_SOT_BLOCK_FROM_HAMMER_CHEST: () => Settings.GlitchesToAllow.fireJumpDownToSoTBlock,
 
-    // Spirit
+    // Water Temple
+    WATER_HOOKSHOT_TO_FLOOR_1: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.waterHookshotToFloor1 &&
+        ItemData.canUse(age, Items.HOOKSHOT),
+    WATER_JUMP_TO_HIGH_WATER: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.waterHighWaterJump,
+    WATER_JUMP_TO_WATERFALL_LEDGE: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.waterBKShortcut,
+
+    // Spirit Temple
     MQ_SPIRIT_STATUE_ROOM_TORCHES_WITH_DINS: (age) => 
         Settings.GlitchesToAllow.mqSpiritStatueTorchesWithDins &&
         ItemData.canUse(age, Items.DINS_FIRE)
@@ -407,10 +417,12 @@ let ItemLocationSets = {
     MQ_JABU_ELEVATOR_LOWERED: () => Data.itemLocationObtained("Jabu Jabu's Belly", "wigglerRoomAfterBigOcto", "Elevator Lowered"),
 
     // Water Temple
+    WATER_LOWERED_WATER_LEVEL: () => Data.itemLocationObtained("Water Temple", "lowWaterLevel", "Lower Water Level"),
+    WATER_OPENED_CENTRAL_ROOM: () => Data.itemLocationObtained("Water Temple", "main", "Locked Door to Central Room"),
     DEFEATED_MORPHA: () => Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp"),
 
     // Fire Temple
-    OPENED_BOTTOM_LOBBY_DOOR: () => Data.itemLocationObtained("Fire Temple", "main", "Bottom Locked Door in Lobby")
+    FIRE_OPENED_BOTTOM_LOBBY_DOOR: () => Data.itemLocationObtained("Fire Temple", "main", "Bottom Locked Door in Lobby")
 };
 
 /**
@@ -439,7 +451,8 @@ let GameStateSets = {
     CAN_STUN_KITCHEN_GUARDS: (age) => Data.canStunKitchenGuards(age),
     CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE: (age) => Data.canStunOrPassGuardsAtDistance(age),
     HAS_BOTTLE: () => Data.hasBottle(),
-    FIRE_TEMPLE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC)
+    FIRE_TEMPLE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC),
+    WATER_TEMPLE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.waterNoZoraTunic || ItemData.canUse(age, Equipment.ZORA_TUNIC)
 };
 
 /**
@@ -447,7 +460,10 @@ let GameStateSets = {
  */
 let KeySets = {
     FOREST_BK: () => ItemData.hasBossKey("Forest Temple"),
-    FIRE_BK: () => ItemData.hasBossKey("Fire Temple")
+    FIRE_BK: () => ItemData.hasBossKey("Fire Temple"),
+    WATER_BK: () => ItemData.hasBossKey("Water Temple"),
+    SHADOW_BK: () => ItemData.hasBossKey("Shadow Temple"),
+    SPIRIT_BK: () => ItemData.hasBossKey("Spirit Temple")
 };
 
 /**

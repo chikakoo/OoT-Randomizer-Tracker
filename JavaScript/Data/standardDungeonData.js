@@ -1604,7 +1604,7 @@ let StandardDungeons = {
                             }
 
                             let minValue = 1;
-                            if (ItemLocationSets.OPENED_BOTTOM_LOBBY_DOOR()) {
+                            if (ItemLocationSets.FIRE_OPENED_BOTTOM_LOBBY_DOOR()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 2 };
@@ -1624,7 +1624,7 @@ let StandardDungeons = {
                             }
 
                             let minValue = 2;
-                            if (ItemLocationSets.OPENED_BOTTOM_LOBBY_DOOR()) {
+                            if (ItemLocationSets.FIRE_OPENED_BOTTOM_LOBBY_DOOR()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 3 };
@@ -1644,7 +1644,7 @@ let StandardDungeons = {
                             }
 
                             let minValue = 3;
-                            if (ItemLocationSets.OPENED_BOTTOM_LOBBY_DOOR()) {
+                            if (ItemLocationSets.FIRE_OPENED_BOTTOM_LOBBY_DOOR()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 4 };
@@ -1664,7 +1664,7 @@ let StandardDungeons = {
                                 return { min: minValue, max: 4 };
                             }
 
-                            if (ItemLocationSets.OPENED_BOTTOM_LOBBY_DOOR()) {
+                            if (ItemLocationSets.FIRE_OPENED_BOTTOM_LOBBY_DOOR()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 5 };
@@ -1688,7 +1688,7 @@ let StandardDungeons = {
                                 return { min: minValue, max: 5 };
                             }
 
-                            if (ItemLocationSets.OPENED_BOTTOM_LOBBY_DOOR()) {
+                            if (ItemLocationSets.FIRE_OPENED_BOTTOM_LOBBY_DOOR()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 6 };
@@ -1717,7 +1717,7 @@ let StandardDungeons = {
                                 return { min: minValue, max: 6 };
                             }
 
-                            if (ItemLocationSets.OPENED_BOTTOM_LOBBY_DOOR()) {
+                            if (ItemLocationSets.FIRE_OPENED_BOTTOM_LOBBY_DOOR()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 7 };
@@ -1746,7 +1746,7 @@ let StandardDungeons = {
                                 return { min: minValue, max: 7 };
                             }
 
-                            if (ItemLocationSets.OPENED_BOTTOM_LOBBY_DOOR()) {
+                            if (ItemLocationSets.FIRE_OPENED_BOTTOM_LOBBY_DOOR()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 8 };
@@ -2272,26 +2272,25 @@ let StandardDungeons = {
         Floors: ["F3", "F2", "F1", "B1"],
         StartingFloorIndex: 0,
         UseAdultAge: function() {
-            return !Settings.RandomizerSettings.shuffleDungeonEntrances &&
+            return SettingSets.VANILLA_DUNGEON_ENTRANCES() &&
                 !Settings.GlitchesToAllow.childLakesideLabClip;
         },
         _isPlayerLockedOutOfHighWater: function() {
             // If the player didn't lower the water, then they aren't locked out of it!
-            if (!Data.itemLocationObtained("Water Temple", "lowWaterLevel", "Lower Water Level")) {
+            if (!ItemLocationSets.WATER_LOWERED_WATER_LEVEL()) {
                 return false;
             }
 
             // This check allows the player to get to the high water switch directly while the water is drained
-            let canGetToTopFloorWithWaterLowered = Items.HOOKSHOT.playerHas && Settings.GlitchesToAllow.waterHookshotToFloor1;
-            if (canGetToTopFloorWithWaterLowered || Equipment.HOVER_BOOTS.playerHas) {
-                if (Equipment.HOVER_BOOTS.playerHas || Settings.GlitchesToAllow.waterHighWaterJump) {
+            if (ItemData.canUseAny(Age.ADULT, [Equipment.HOVER_BOOTS, GlitchItemSets.WATER_HOOKSHOT_TO_FLOOR_1])) {
+                if (ItemData.canUseAny(Age.ADULT, [Equipment.HOVER_BOOTS, GlitchItemSets.WATER_JUMP_TO_HIGH_WATER])) {
                     return false;
                 }
             }
 
             // This checks whether the player can get to high water switch the normal way
             let canLightMiddleTorch = ItemData.canUseAny(Age.ADULT, [Items.FAIRY_BOW, ItemSets.FIRE_ITEMS]);
-            let canGetToCentralMidFromBottom = Data.itemLocationObtained("Water Temple", "main", "Locked Door to Central Room") && Items.HOOKSHOT.playerHas;
+            let canGetToCentralMidFromBottom = ItemData.canUse(Age.ADULT, [ItemLocationSets.WATER_OPENED_CENTRAL_ROOM, Items.HOOKSHOT])
             let canRaiseWaterToMid = canLightMiddleTorch || canGetToCentralMidFromBottom;
             let canHitCrystalSwitch = ItemData.canUseAny(Age.ADULT, [ItemSets.EXPLOSIVES, Items.HOOKSHOT, Items.FAIRY_BOW]);
             let canLowerWater = canRaiseWaterToMid && canHitCrystalSwitch;
@@ -2303,11 +2302,11 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Hub/Boss Area (Top North)", imageName: "Water Medallion" },
                 Exits: {
                     midEastWingPots: {
-                        CustomRequirement: function(age) {
-                            if (ItemData.canUse(age, Items.BOOMERANG)) { return true; }
-                            let canBreakPot = ItemData.canUseAny(age, [Items.HOOKSHOT, Items.FAIRY_BOW, Items.FAIRY_SLINGSHOT]);
-                            return canBreakPot && ItemData.canUseAny(age, [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]);
-                        }
+                        NeedsAny: [
+                            Items.BOOMERANG, [
+                                [SetType.OR, Items.HOOKSHOT, ItemSets.PROJECTILES], // Break the pot
+                                [SetType.OR, UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]] // Get the item
+                            ]
                     },
                     lowEastWingPots: {
                         Age: Age.ADULT,
@@ -2318,27 +2317,17 @@ let StandardDungeons = {
                         Needs: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
                     },
                     lowWaterLevel: {
-                        AdultNeedsAny: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT],
-                        Needs: [Songs.ZELDAS_LULLABY],
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) {
-                                return Data.itemLocationObtained("Water Temple", "lowWaterLevel", "Lower Water Level");
-                            }
-                            return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                        }
+                        ChildNeeds: [ItemLocationSets.WATER_LOWERED_WATER_LEVEL],
+                        AdultNeeds: [Songs.ZELDAS_LULLABY, GameStateSets.WATER_TEMPLE_TUNIC_CHECK],
+                        AdultNeedsAny: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT]
                     },
                     highWaterLevel: {
-                        CustomRequirement: function(age) {
-                            return !MapLocations["Water Temple"]._isPlayerLockedOutOfHighWater();
-                        }
+                        Needs: [() => !MapLocations["Water Temple"]._isPlayerLockedOutOfHighWater()]
                     },
                     roomWithManyTektitesAntechamber: {
                         Map: "Water Temple",
                         Age: Age.ADULT,
-                        AdultNeeds: [Equipment.IRON_BOOTS],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                        }
+                        AdultNeeds: [Equipment.IRON_BOOTS, GameStateSets.WATER_TEMPLE_TUNIC_CHECK]
                     },
                     Exit: {
                         OwExit: OwExits["Water Temple"]["Exit"]
@@ -2447,9 +2436,7 @@ let StandardDungeons = {
                 Exits: {
                     bossRoom: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return ItemData.hasBossKey("Water Temple");
-                        }
+                        Needs: [KeySets.WATER_BK]
                     }
                 },
                 ItemLocations: {
@@ -2934,9 +2921,7 @@ let StandardDungeons = {
                 Exits: {
                     blockPuzzleRoom: {},
                     boulderWaterfall: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.waterBKShortcut;
-                        }
+                        Needs: [GlitchItemSets.WATER_JUMP_TO_WATERFALL_LEDGE]
                     }
                 },
                 ItemLocations: {}
@@ -2945,14 +2930,11 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Boss Key Loop (Low North)", imageName: "Boss Key" },
                 Exits: {
                     boulderWaterfall: {
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, Equipment.STRENGTH, ItemSets.EXPLOSIVES]) ||
-                                Data.canMegaFlip(age);
-                        }
-                    },
-                    bossKeyRoom: {
-                        Map: "Water Temple",
-                        LockedDoor: "Locked Door after Boulder Waterfall"
+                        NeedsAny: [
+                            Equipment.HOVER_BOOTS,
+                            [Equipment.STRENGTH, ItemSets.EXPLOSIVES],
+                            GlitchItemSets.MEGA_FLIP
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -2973,10 +2955,7 @@ let StandardDungeons = {
                 Exits: {
                     bossKeyRoom: {
                         Map: "Water Temple",
-                        LockedDoor: "Locked Door after Boulder Waterfall",
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.waterBKShortcut;
-                        }
+                        LockedDoor: "Locked Door after Boulder Waterfall"
                     }
                 },
                 ItemLocations: {
