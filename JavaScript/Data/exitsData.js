@@ -489,7 +489,7 @@ let OwExits = {
             DefaultEntranceGroupName: "Super Cucco Minigame",
             MapInfo: { x: 230, y: 54 },
             Time: function() {
-                return Data.itemLocationObtained("Castle", "hyruleCastle", "Wake up Talon") 
+                return ItemLocationSets.WAKE_UP_TALON()
                     ? Time.DAY_CHILD
                     : Time.EITHER;
             },
@@ -839,16 +839,13 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             Time: function() {
                 // Water already drained means there's no time requirement
-                if (Data.itemLocationObtained("Windmill-Kak Potion", "windmill", "Drain Well Water")) {
+                if (ItemLocationSets.DRAIN_WELL_WATER()) {
                     return Time.EITHER;
                 }
 
                 // If either need to use the glitch, then it should always be strict day requirement
-                let childEarly = Settings.GlitchesToAllow.botwAsChildWithCucco && 
-                    ItemData.canUse(Age.CHILD, [ItemSets.SWORDS, ItemSets.SHIELDS]);
-                let adultEarly = Settings.GlitchesToAllow.botwAsAdultWithCucco && 
-                    ItemData.canUse(Age.ADULT, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]);
-                if (childEarly || adultEarly) {
+                if (GlitchItemSets.CHILD_WELL_WITH_CUCCO(Age.CHILD) ||
+                    GlitchItemSets.ADULT_WELL_WITH_CUCCO(Age.ADULT)) {
                     return Time.DAY;
                 }
 

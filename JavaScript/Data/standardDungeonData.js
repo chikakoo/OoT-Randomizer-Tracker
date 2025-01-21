@@ -241,12 +241,10 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Main Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     mainRoom: {
-                        CustomRequirement: function(age) {
-                            if (Data.itemLocationObtained("Dodongo's Cavern", "main", "Opened First Wall")) { return true; }
-                            return ItemData.canUseAny(age, [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]);
-                        }
+                        NeedsAny: [ItemLocationSets.DODONGO_OPENED_FIRST_WALL,
+                            ItemSets.MUD_WALL_ITEMS,
+                            Equipment.STRENGTH]
                     },
-
                     Exit: {
                         OwExit: OwExits["Dodongo's Cavern"]["Exit"]
                     }
@@ -269,17 +267,11 @@ let StandardDungeons = {
                     // We're assuming that this was opened if the first mud wall was opened
                     lowerEastRooms: {},
                     blueRoom: {
-                        CustomRequirement: function(age) {
-                            return age === Age.ADULT || 
-                                Data.canGroundJumpWithBomb(age, true);
-                        }
+                        ChildNeeds: [GlitchItemSets.GROUND_JUMP_INCLUDING_BOMB_FLOWER]
                     },
                     staircaseBottom: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; } // Adult can just climb to the switch
-                            return Data.canGroundJumpWithBomb(age, true) || 
-                                (Settings.GlitchesToAllow.dodongoSwitchEarly && Items.BOMBCHU.playerHas && Equipment.DEKU_SHIELD.playerHas);
-                        }
+                        ChildNeedsAny: [GlitchItemSets.GROUND_JUMP_INCLUDING_BOMB_FLOWER,
+                            GlitchItemSets.DODONGO_EARLY_SWITCH]
                     },
                     inDodongoHead: {
                         CustomRequirement: function(age) {

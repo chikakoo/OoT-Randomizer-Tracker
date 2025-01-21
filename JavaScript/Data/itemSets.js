@@ -122,7 +122,8 @@ let GlitchItemSets = {
     STAIRCASE_HOVER: (age) => Data.canStaircaseHover(age),
     BOMB_SUPERSLIDE_WITH_HOVERS: (age) => Data.canBombSuperslideWithHovers(age),
     HAMMER_SUPERSLIDE_WITH_HOVERS: (age) => Data.canHammerHoverBootsSuperslide(age),
-	GROUND_JUMP:  (age) => Data.canGroundJumpWithBomb(age),
+	GROUND_JUMP: (age) => Data.canGroundJumpWithBomb(age),
+    GROUND_JUMP_INCLUDING_BOMB_FLOWER: (age) => Data.canGroundJumpWithBomb(age, true),
     OCARINA_OR_DIFFICULT_OCARINA_ITEMS: () => Items.OCARINA.playerHas || (
         Settings.GlitchesToAllow.ocarinaItems &&
         Settings.GlitchesToAllow.difficultOcarinaItems && 
@@ -277,6 +278,11 @@ let GlitchItemSets = {
     // Deku Tree
     DEKU_B1_SKIP: (age) => age === Age.CHILD && Settings.GlitchesToAllow.dekuB1Skip,
 
+    // Dodongo's Cavern
+    DODONGO_EARLY_SWITCH: (age) => 
+        Settings.GlitchesToAllow.dodongoSwitchEarly && 
+        ItemData.canUse(age, [Items.BOMBCHU, Equipment.DEKU_SHIELD]),
+
     // Forest
     FOREST_BK_SKIP: (age) => 
         Settings.GlitchesToAllow.forestBKSkip &&
@@ -296,9 +302,16 @@ let ItemLocationSets = {
     // Kokiri Forest
     MOVE_MIDO: () => Data.itemLocationObtained("Kokiri Forest", "main", "Move Mido"),
 
-    // Castle
+    // Castle / Market / Ranch
     GIFT_FROM_MALON: () => Data.itemLocationObtained("Castle", "hyruleCastle", "Gift from Malon"),
     WAKE_UP_TALON: () => Data.itemLocationObtained("Castle", "hyruleCastle", "Wake up Talon"),
+    UNLOCK_COW_IN_HOUSE: () => Data.itemLocationObtained("Lon Lon Ranch", "main", "Unlock Cow in House"),
+
+    // Mask Sales
+    SELL_KEATON_MASK: () => Data.itemLocationObtained("Kakariko Village", "main", "Sell Keaton Mask"),
+    SELL_SKULL_MASK: () => Data.itemLocationObtained("Lost Woods", "skullKidAndBridge", "Sell Skull Mask"),
+    SELL_SPOOKY_MASK: () => Data.itemLocationObtained("Graveyard", "main", "Sell Spooky Mask"),
+    SELL_BUNNY_HOOD: () => Data.itemLocationObtained("Hyrule Field", "main", "Sell Bunny Hood"),
 
     // Kakariko / Graveyard
     SHOW_GUARD_LETTER: () => Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter"),
@@ -321,6 +334,9 @@ let ItemLocationSets = {
     // Deku Tree
     DEKU_WEB_BURNED: () => Data.itemLocationObtained("Deku Tree", "basementTop", "Burn Basement Web"),
     DEKU_OPENED_BOSS_DOOR: () => Data.itemLocationObtained("Deku Tree", "lowerBasement", "Open Boss Door"),
+
+    // Dodongo's Cavern
+    DODONGO_OPENED_FIRST_WALL: () => Data.itemLocationObtained("Dodongo's Cavern", "main", "Opened First Wall"),
 
     // Jabu
     MQ_JABU_ELEVATOR_ROOM_CHEST: () => Data.itemLocationObtained("Jabu Jabu's Belly", "elevatorRoom", "Spawn Chest in Upper Elevator Room"),

@@ -56,7 +56,7 @@ InteriorGroups = {
 				itemGroup: ItemGroups.COW,
 				description: "As an adult, beat Malon's Epona challenge to unlock the cow in Link's house.",
 				canGet: function(age) {
-					return Data.itemLocationObtained("Lon Lon Ranch", "main", "Unlock Cow in House") && Data.canMilkCows(true);
+					return ItemLocationSets.UNLOCK_COW_IN_HOUSE() && Data.canMilkCows(true);
 				},
 				isAdultOnly: function() { return true; }
 			}
@@ -195,15 +195,15 @@ InteriorGroups = {
 	"Happy Mask Shop": {
 		_isMaskShopOpen: function() {
 			// If kakariko gate is NOT vanilla, we only need Zelda's Letter, otherwise we must show the guard the letter as normal
-			return (Settings.RandomizerSettings.openKakariko !== OpenKakarikoSettings.VANILLA && ChildTradeItems.ZELDAS_LETTER.playerHas) || 
-				Data.itemLocationObtained("Kakariko Village", "main", "Show Guard Letter");
+			return (!SettingSets.VANILLA_KAKARIKO_GATE() && ChildTradeItems.ZELDAS_LETTER.playerHas) || 
+				ItemLocationSets.SHOW_GUARD_LETTER();
 		},
 		_canBuyMaskOfTruth: function() {
 			return this._isMaskShopOpen() && 
-				Data.itemLocationObtained("Kakariko Village", "main", "Sell Keaton Mask") &&
-				Data.itemLocationObtained("Lost Woods", "skullKidAndBridge", "Sell Skull Mask") &&
-				Data.itemLocationObtained("Graveyard", "main", "Sell Spooky Mask") &&
-				Data.itemLocationObtained("Hyrule Field", "main", "Sell Bunny Hood");
+				ItemLocationSets.SELL_KEATON_MASK() &&
+				ItemLocationSets.SELL_SKULL_MASK() &&
+				ItemLocationSets.SELL_SPOOKY_MASK() &&
+				ItemLocationSets.SELL_BUNNY_HOOD();
 		},
 		tooltip: "The Happy Mask Shop",
 		buttons: {
@@ -222,7 +222,7 @@ InteriorGroups = {
 				description: "After selling the Keaton Mask to the Kakariko Guard, you can borrow this mask.",
 				canGet: function(age) {
 					return InteriorGroups["Happy Mask Shop"]._isMaskShopOpen() &&
-						Data.itemLocationObtained("Kakariko Village", "main", "Sell Keaton Mask");
+						ItemLocationSets.SELL_KEATON_MASK();
 				}
 			},
 			"Borrow Spooky Mask": {
@@ -231,7 +231,7 @@ InteriorGroups = {
 				description: "After selling the Skull Mask to the Skull Kid in Lost Woods, you can borrow this mask.",
 				canGet: function(age) {
 					return InteriorGroups["Happy Mask Shop"]._isMaskShopOpen() &&
-						Data.itemLocationObtained("Lost Woods", "skullKidAndBridge", "Sell Skull Mask");
+						ItemLocationSets.SELL_SKULL_MASK();
 				}
 			},
 			"Borrow Bunny Hood": {
@@ -240,7 +240,7 @@ InteriorGroups = {
 				description: "After selling the Spooky Mask to the graveyard kid, you can borrow this mask.",
 				canGet: function(age) {
 					return InteriorGroups["Happy Mask Shop"]._isMaskShopOpen() &&
-						Data.itemLocationObtained("Graveyard", "main", "Sell Spooky Mask");
+						ItemLocationSets.SELL_SPOOKY_MASK();
 				}
 			},
 			"Borrow Mask of Truth": {
@@ -761,7 +761,7 @@ InteriorGroups = {
 				description: "Only available during the day. This is the prize for completing the minigame.",
 				time: function() { return Time.DAY; },
 				canGet: function(age) {
-					return Data.itemLocationObtained("Castle", "hyruleCastle", "Wake up Talon");
+					return ItemLocationSets.WAKE_UP_TALON();
 				},
 				isChildOnly: function() { return true; }
 			},
