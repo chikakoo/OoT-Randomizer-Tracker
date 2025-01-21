@@ -298,11 +298,13 @@ let MQDungeons = {
                         Age: Age.CHILD
                     },
                     lowerBasement: {
-                        CustomRequirement: function(age) {
-                            let webAlreadyBurned = Data.itemLocationObtained("Deku Tree", "upperBasement", "Burn Basement Web");
-                            let canBurnWeb = ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]);
-                            return canBurnWeb || webAlreadyBurned || Data.canWeirdShot(age);
-                        }
+                        NeedsAny: [
+                            ItemSets.FIRE_ITEMS,
+                            Items.DEKU_STICK,
+                            ItemLocationSets.MQ_DEKU_WEB_BURNED,
+                            QPAItemSets.LEDGE_QPA,
+                            GlitchItemSets.WEIRD_SHOT
+                        ]
                     }
                 },
 

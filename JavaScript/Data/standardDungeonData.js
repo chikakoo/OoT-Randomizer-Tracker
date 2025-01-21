@@ -141,10 +141,10 @@ let StandardDungeons = {
             },
             basementBack: {
                 DisplayGroup: { groupName: "Basement", imageName: "Deku Stick" },
-                Exits: { 
+                Exits: {
                     basementTop: {
                         Age: Age.CHILD
-                    } 
+                    }
                 },
                 ItemLocations: {
                     "Skulltula in Back Room": {
@@ -205,7 +205,7 @@ let StandardDungeons = {
                     },
                     "Open Boss Door": {
                         ItemGroup: ItemGroups.NON_ITEM,
-                        RequiredToAppear: function() { 
+                        RequiredToAppear: function() {
                             let haveBothShields = Equipment.DEKU_SHIELD.playerHas && Equipment.HYLIAN_SHIELD.playerHas;
                             return Settings.RandomizerSettings.shuffleDungeonEntrances && !haveBothShields;
                         },
@@ -274,10 +274,7 @@ let StandardDungeons = {
                             GlitchItemSets.DODONGO_EARLY_SWITCH]
                     },
                     inDodongoHead: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.dodongoOpenHeadWithBombchus &&
-                                ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMBCHU]);
-                        }
+                        Needs: [GlitchItemSets.DODONGO_HEAD_WITH_CHUS]
                     }
                 },
                 ItemLocations: {
@@ -349,9 +346,7 @@ let StandardDungeons = {
                         Order: 5,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.dodongoScarecrowSkullEarly; },
                         LongDescription: "Go to the room to the east of the main room. As adult, play scarecrow's song near the wall with the ledge on the left hand side. Hookshot up to it to get to the skulltula. Alternatively, you can push the armos status all the way over to the ledge and backflip onto it to get to the ledge.",
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.dodongoScarecrowSkullEarly || Data.canHookScarecrow(age);
-                        }
+                        NeedsAny: [GameStateSets.CAN_HOOK_SCARECROW, GlitchItemSets.DODONGO_SCARECROW_SKULL_EARLY]
                     },
                     "2 Pots in Lizalfos Antechamber": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -436,10 +431,12 @@ let StandardDungeons = {
                         Needs: [UpgradedItems.LONGSHOT]
                     },
                     staircaseTop: {
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]) ||
-                                (Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && ItemData.canUse(age, Items.FAIRY_BOW));
-                        }
+                        NeedsAny: [
+                            ItemSets.EXPLOSIVES_OR_STRENGTH,
+                            Items.DINS_FIRE,
+                            QPAItemSets.LEDGE_QPA,
+                            GlitchItemSets.DODONGO_TRIGGER_STAIRS_WITH_BOW
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -507,17 +504,15 @@ let StandardDungeons = {
                         NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     },
                     bombChestFloor: {
-                        CustomRequirement: function(age) {
-                            let adultBombChestEarly = age === Age.ADULT && Settings.GlitchesToAllow.dodongoAdultJumpToBombChest;
-                            let canGroundJumpThere = age === Age.ADULT && Data.canGroundJumpWithBomb(age);
-                            return adultBombChestEarly || canGroundJumpThere || Data.canMegaFlip(age);
-                        }
+                        ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+                        AdultNeedsAny: [
+                            GlitchItemSets.DODONGO_ADULT_JUMP_TO_BOMB_CHEST,
+                            GlitchItemSets.GROUND_JUMP,
+                            GlitchItemSets.MEGA_FLIP
+                        ]
                     },
                     potsInBladeRoom: {
-                        Needs: [Items.BOOMERANG],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.difficultBoomerangTrickThrows;
-                        }
+                        Needs: [GlitchItemSets.BOOMERANG_TRICK_THROWS]
                     }
                 },
                 ItemLocations: {
@@ -545,12 +540,8 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 21,
                         LongDescription: "In the room with the blades, there's a wall you can destroy that's located near the cliffs with the bomb chest. There are a couple scrubs inside.",
-                        CustomRequirement: function(age) {
-                            let hasMudWallItem = ItemData.canUse(age, ItemSets.MUD_WALL_OR_QPA_ITEMS);
-                            return age === Age.CHILD
-                                ? hasMudWallItem
-                                : hasMudWallItem || (Settings.RandomizerSettings.dodongoAdultBladeMudWallWithStrength && Equipment.STRENGTH.playerHas);
-                        }
+                        ChildNeeds: [ItemSets.MUD_WALL_ITEMS],
+                        AdultNeedsAny: [ItemSets.MUD_WALL_ITEMS, GlitchItemSets.DODONGO_ADULT_BLADE_ROOM_MUD_WALL_WITH_STRENGTH]
                     }
                 }
             },
@@ -728,9 +719,9 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: ["F2", "F1", "B1"],
         StartingFloorIndex: 1,
-        UseChildAge: function() { 
+        UseChildAge: function() {
             return !Settings.RandomizerSettings.shuffleDungeonEntrances &&
-                !Settings.GlitchesToAllow.enterJabuAsAdult; 
+                !Settings.GlitchesToAllow.enterJabuAsAdult;
         },
         Regions: {
             main: {
@@ -754,10 +745,8 @@ let StandardDungeons = {
                         Needs: [Items.BOOMERANG, ItemSets.SWORDS]
                     },
                     roomBeforeBoss: {
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Equipment.HOVER_BOOTS) ||
-                                (Settings.GlitchesToAllow.jabuBlueSwitchSkip && Data.canMegaFlip(age));
-                        }
+                        Needs: [GlitchItemSets.JABU_BLUE_SWITCH_SKIP],
+                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     }
                 },
                 ItemLocations: {
@@ -795,10 +784,12 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "Fall down one of the holes to get to the main room on the bottom. Enter the door by the vines back up. Either stun the jello with your boomerang to cross, or use hover boots. The pots are on the other side.",
-                        CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || 
-                                ItemData.canUseAny(age, [Items.BOOMERANG, Equipment.HOVER_BOOTS, QPAItemSets.LEDGE_QPA]);
-                        }
+                        NeedsAny: [
+                            Items.BOOMERANG,
+                            Equipment.HOVER_BOOTS,
+                            GlitchItemSets.MEGA_FLIP,
+                            QPAItemSets.LEDGE_QPA
+                        ]
                     },
                     "Left Skulltula on Lower Room Wall": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -897,17 +888,12 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Boss Area", imageName: "Zora's Sapphire" },
                 Exits: {
                     bossRoom: {
-                        CustomRequirement: function(age) {
-                            if (ItemData.canUseAny(age, [Items.BOOMERANG, Items.FAIRY_SLINGSHOT, Items.FAIRY_BOW, UpgradedItems.LONGSHOT])) {
-                                return true;
-                            }
-
-                            return Settings.GlitchesToAllow.jabuBossSwitchWithExplosives &&
-                            (
-                                (age === Age.CHILD && Items.BOMBCHU.playerHas) ||
-                                (age == Age.ADULT && ItemData.canUse(age, [Items.BOMB, Equipment.HOVER_BOOTS]))
-                            );
-                        }
+                        NeedsAny: [
+                            Items.BOOMERANG,
+                            ItemSets.PROJECTILES,
+                            UpgradedItems.LONGSHOT,
+                            GlitchItemSets.JABU_BOSS_SWITCH_WITH_EXPLOSIVES
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -931,7 +917,7 @@ let StandardDungeons = {
             }
         }
     },
-    
+
     "Forest Temple": {
         Abbreviation: "FRST",
         MapGroup: MapGroups.DUNGEONS,
@@ -939,24 +925,18 @@ let StandardDungeons = {
         StartingFloorIndex: 1,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canJumpToTop: function(age) {
-            let canDoTrick = Settings.GlitchesToAllow.forestJumpToTop && 
-                ItemData.canUse(age, [Equipment.HOVER_BOOTS, Items.BOMB]);
-    
-            // This part ensures that we're not allowing you to do the trick if you can get to the
-            // room using the hover boots from the block room, which defeats the whole point because
-            // you wouldn't be skipping that key
             let canGetToFromRightRoom = Items.FAIRY_BOW.playerHas && (
-                ItemData.canUseAny(age, [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]) || 
-                ItemData.canUse(age, UpgradedItems.LONGSHOT)
-            );
-            let canGetToOutsideLeftBeforeBlockRoom = Settings.GlitchesToAllow.forestLedgeClip || Data.canPlaySong(Songs.SONG_OF_TIME) || canGetToFromRightRoom;
-            return canDoTrick && canGetToOutsideLeftBeforeBlockRoom;
+                ItemData.canUseAny(age, [UpgradedItems.GOLDEN_SCALE, UpgradedItems.LONGSHOT, Equipment.IRON_BOOTS]));
+            let canGetToOutsideLeftBeforeBlockRoom = canGetToFromRightRoom ||
+                ItemData.canUseAny(age, [GlitchItemSets.FOREST_LEDGE_CLIP, Songs.SONG_OF_TIME]);
+
+            return GlitchItemSets.FOREST_JUMP_TO_TOP(age) && canGetToOutsideLeftBeforeBlockRoom;
         },
         _canAccessAllPoeRooms: function(age) {
             // Requires an IsPostWalkCheck on each item using this!
-            let canAccessFirstPoes = Data.canAccessMap(age, "Forest Temple", "firstPoeRoom");
-            let canAccessGreenPoeRoom = Data.canAccessMap(age, "Forest Temple", "fallingCeilingRoom");
-            return canAccessFirstPoes && canAccessGreenPoeRoom;
+            return ItemData.canUse(age, [
+                MapAccessSets.FOREST_FIRST_POE_ROOM, 
+                MapAccessSets.FOREST_FALLING_CEILING_ROOM]);
         },
         Regions: {
             main: {
@@ -976,11 +956,14 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "The skulltula is high up on the vines in the first room. You can kill it with a ranged item, din's fire, a bomb from the top (requires a trick), or a bombchu from the ground.",
-                        CustomRequirement: function(age) {
-                            if (Settings.GlitchesToAllow.forestFirstSkullWithBomb && Items.BOMB.playerHas) { return true; }
-                            return ItemData.canUseAny(age, 
-                                [ItemSets.PROJECTILES, Items.BOMBCHU, Items.BOOMERANG, Items.HOOKSHOT, Items.DINS_FIRE]);
-                        }
+                        NeedsAny: [
+                            ItemSets.PROJECTILES,
+                            Items.BOMBCHU,
+                            Items.BOOMERANG,
+                            Items.HOOKSHOT,
+                            Items.DINS_FIRE,
+                            GlitchItemSets.FOREST_FIRST_SKULL_WITH_BOMB
+                        ]
                     },
                     "Chest on Starting Room Tree": {
                         ItemGroup: ItemGroups.CHEST,
@@ -1071,10 +1054,8 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Starting Rooms", imageName: "Chest" },
                 Exits: {
                     outsideLeft: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return true; } // The SoT block is gone as child!
-                            return Settings.GlitchesToAllow.forestLedgeClip || Data.canPlaySong(Songs.SONG_OF_TIME);
-                        }
+                        // The SoT block is gone as child!
+                        AdultNeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.FOREST_LEDGE_CLIP]
                     },
                     outsideRight: {
                         Needs: [ItemSets.PROJECTILES]
@@ -1085,23 +1066,17 @@ let StandardDungeons = {
                     },
                     fallingCeilingRoom: {
                         Age: Age.ADULT,
-                        Needs: [Items.BOMB, Equipment.HOVER_BOOTS, ItemSets.SHIELDS],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.forestGreenPoeEarly;
-                        }
+                        Needs: [GlitchItemSets.FOREST_GREEN_POE_EARLY],
                     },
                     // Note that all item locations here (and in the boss room) will have IsPostWalkCheck set to true, we need to make sure that we can get to both the
                     // fallingCeilingRoom and the firstPoeRoom in order to actually get here
                     basement: {
                         Age: Age.ADULT,
-                        AdultNeeds: [Items.FAIRY_BOW]
+                        Needs: [Items.FAIRY_BOW]
                     },
                     bossRoom: {
                         Age: Age.ADULT,
-                        AdultNeeds: [Items.HOOKSHOT],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.forestBKSkip;
-                        }
+                        Needs: [GlitchItemSets.FOREST_BK_SKIP]
                     }
                 },
                 ItemLocations: {
@@ -1154,66 +1129,40 @@ let StandardDungeons = {
                 }
             },
             outsideLeft: {
-                DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "2 Hearts" },
                 Exits: {
                     topOfOutsideRight: {
                         Needs: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     },
                     topOfOutsideLeft: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return MapLocations["Forest Temple"]._canJumpToTop(age);
-                        }
+                        Needs: [(age) => MapLocations["Forest Temple"]._canJumpToTop(age)]
+                    },
+                    topOfOutsideLeftSkulltula: {
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     outsideLeftHearts: {
-                        Needs: [Items.BOOMERANG],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.difficultBoomerangTrickThrows;
-                        }
+                        Needs: [GlitchItemSets.BOOMERANG_TRICK_THROWS]
                     },
                     outsideRight: {
                         // This is to swim through the well
                         NeedsAny: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]
                     }
                 },
-                ItemLocations: {
-                    "Skulltula in Left Room on Wall": {
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
-                        ItemGroup: ItemGroups.SKULLTULA,
-                        Age: Age.EITHER,
-                        MapInfo: {x: 83, y: 52, floor: "F1" },
-                        Order: 18,
-                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
-                        LongDescription: "There's a skulltula high up on the wall over the moat in the outside left room. You can get it from the ground with the longshot. Otherwise, you must make your way to the upper platform to grab it. This is the path that you take if you fall in the hole by the boss key chest.",
-                        IsPostWalkCheck: true,
-                        CustomRequirement: function(age) {
-                            return Data.canAccessMap(age, "Forest Temple", "topOfOutsideLeft") ||
-                                ItemData.canUse(age, UpgradedItems.LONGSHOT);
-                        }
-                    }
-                }
+                ItemLocations: {}
             },
             outsideRight: {
                 DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "2 Hearts" },
                 Exits: {
                     topOfOutsideRight: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.forestHookshotToWellSwitch
-                                ? ItemData.canUse(age, Items.HOOKSHOT)
-                                : ItemData.canUse(age, UpgradedItems.LONGSHOT);
-                        }
+                        NeedsAny: [UpgradedItems.LONGSHOT, GlitchItemSets.FOREST_HOOKSHOT_TO_WELL_SWITCH]
                     },
                     outsideRightLedge: {
                         Age: Age.ADULT,
                         Needs: [Items.HOOKSHOT]
                     },
                     skulltulaOnOutsideRightLedge: {
-                        Age: Age.EITHER,
-                        Needs: [Items.BOOMERANG],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.forestBoomerangSkullOnLedge;
-                        }
+                        Needs: [GlitchItemSets.FOREST_BOOMERANG_SKULL_ON_LEDGE]
                     },
                     outsideLeft: {
                         // This is to swim through the well
@@ -1249,7 +1198,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 269, y: 70, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
+                        UseAdultAge: function() {
                             return !Settings.GlitchesToAllow.forestBoomerangSkullOnLedge &&
                                 !Settings.GlitchesToAllow.canMegaflip;
                         },
@@ -1265,21 +1214,14 @@ let StandardDungeons = {
                     outsideRight: {},
                     outsideRightLedge: {
                         Age: Age.ADULT,
-                        Needs: [Equipment.HOVER_BOOTS],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.forestLedgeWithHovers;
-                        }
+                        Needs: [GlitchItemSets.FOREST_LEDGE_WITH_HOVER_BOOTS]
                     },
                     outsideLeft: {
                         Needs: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
                     },
                     fallingCeilingRoom: {
-                        Needs: [Items.BOMBCHU],
-                        CustomRequirement: function(age) {
-                            // Get far on the ledge and aim just for the platform before turning around for the flip
-                            // Will only work with chus
-                            return Data.canMegaFlip(age);
-                        }
+                        // Get far on the ledge and aim just for the platform before turning around for the flip
+                        Needs: [GlitchItemSets.CHU_MEGA_FLIP]
                     }
                 },
                 ItemLocations: {
@@ -1321,21 +1263,12 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     topOfOutsideLeft: {
-                        CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || ItemData.canUse(age, Equipment.HOVER_BOOTS);
-                        }
+                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     topOfBlockRoom: {
-                        Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            if (Equipment.STRENGTH.playerHas) {
-                                return true;
-                            }
-                            
-                            // If you can't push blocks, you MUST do the block skip, which is adult only
-                            if (!Settings.GlitchesToAllow.forestBlockSkip || age === Age.CHILD) { return false; } 
-                            return Data.canGroundJumpWithBomb(age) && Equipment.HOVER_BOOTS.playerHas;
-                        }
+                        NeedsAny: [
+                            Equipment.STRENGTH,
+                            [GlitchItemSets.FOREST_BLOCK_SKIP, Equipment.HOVER_BOOTS]]
                     }
                 },
                 ItemLocations: {
@@ -1345,11 +1278,8 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 14,
                         LongDescription: "Navigate to the room with the block puzzle. After pushing the first block, climb up the ladder that it was blocking. Now go straight to the wall in front of you. Follow that wall to the right. Turn right, and you should see an eye switch a bit up the wall in front of you. Shoot it to spawn the chest.",
-                        CustomRequirement: function(age) {
-                            let canBlockSkip = age === Age.ADULT && Settings.GlitchesToAllow.forestBlockSkip && Data.canGroundJumpWithBomb(age);
-                            let canGetToEyeSwitch = canBlockSkip || Equipment.STRENGTH.playerHas;
-                            return ItemData.canUse(age, ItemSets.PROJECTILES) && canGetToEyeSwitch;
-                        }
+                        Needs: [ItemSets.PROJECTILES],
+                        NeedsAny: [Equipment.STRENGTH, GlitchItemSets.FOREST_BLOCK_SKIP]
                     }
                 }
             },
@@ -1390,6 +1320,9 @@ let StandardDungeons = {
             topOfOutsideLeft: {
                 DisplayGroup: { groupName: "Untwisted Corridor & Upper Courtyard", imageName: "Boss Key" },
                 Exits: {
+                    topOfOutsideLeftSkulltula: {
+                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                    },
                     outsideLeft: {},
                     outsideLeftHearts: {},
                     blockRoom: {}
@@ -1406,6 +1339,20 @@ let StandardDungeons = {
                     }
                 }
             },
+            topOfOutsideLeftSkulltula: {
+                DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "2 Hearts" },
+                Exits: {},
+                ItemLocations: {
+                    "Skulltula in Left Room on Wall": {
+                        ItemGroup: ItemGroups.SKULLTULA,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        Age: Age.EITHER,
+                        MapInfo: { x: 83, y: 52, floor: "F1" },
+                        Order: 18,
+                        LongDescription: "There's a skulltula high up on the wall over the moat in the outside left room. You can get it from the ground with the longshot. Otherwise, you must make your way to the upper platform to grab it. This is the path that you take if you fall in the hole by the boss key chest."
+                    }
+                }
+            },
             outsideLeftHearts: {
                 DisplayGroup: { groupName: "Untwisted Corridor & Upper Courtyard", imageName: "Boss Key" },
                 Exits: {},
@@ -1417,9 +1364,9 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 81, y: 73, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { 
+                        UseAdultAge: function() {
                             return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows &&
-                                !Settings.GlitchesToAllow.megaFlip; 
+                                !Settings.GlitchesToAllow.megaFlip;
                         },
                         Order: 17,
                         LongDescription: "Navigate to the twisted corridor. Shoot the eye switch to untwist the corridor. Now go across the corridor to the room with the boss key chest. Fall down the hole in this room and kill the bubbles to get out.<br/><br/>The hearts are on the skinny platform that you have to jump to, near the skulltula on the wall. Be careful not to fall off."
@@ -1553,9 +1500,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Basement", imageName: "Forest Medallion" },
                 Exits: {
                     bossRoom: {
-                        CustomRequirement: function(age) {
-                            return ItemData.hasBossKey("Forest Temple");
-                        }
+                        Needs: [KeySets.FOREST_BK]
                     }
                 },
                 ItemLocations: {
@@ -1566,9 +1511,7 @@ let StandardDungeons = {
                         Order: 31,
                         LongDescription: "After defeating all the poes, head down the basement elevator. Push the wall so that they move clockwise once. You should now be able to access the room with the chest.",
                         IsPostWalkCheck: true,
-                        CustomRequirement: function(age) {
-                            return MapLocations["Forest Temple"]._canAccessAllPoeRooms(age);
-                        }
+                        Needs: [(age) => MapLocations["Forest Temple"]._canAccessAllPoeRooms(age)]
                     },
                     "Skulltula in Basement": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -1578,9 +1521,7 @@ let StandardDungeons = {
                         Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         LongDescription: "After defeating all the poes, head down the basement elevator. Push the wall so that they move clockwise once. You should now be able to access the room with the skulltula",
                         IsPostWalkCheck: true,
-                        CustomRequirement: function(age) {
-                            return MapLocations["Forest Temple"]._canAccessAllPoeRooms(age);
-                        }
+                        Needs: [(age) => MapLocations["Forest Temple"]._canAccessAllPoeRooms(age)]
                     }
                 }
             },
@@ -1954,7 +1895,7 @@ let StandardDungeons = {
             },
             bigLavaRoomGoronRight: {
                 DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
-                UseAdultAge: function() { 
+                UseAdultAge: function() {
                     return !Settings.GlitchesToAllow.fireNoGoronTunic ||
                         !Settings.GlitchesToAllow.groundJump;
                 },
@@ -1971,7 +1912,7 @@ let StandardDungeons = {
             },
             bigLavaRoomSoTLedge: {
                 DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
-                UseAdultAge: function() { 
+                UseAdultAge: function() {
                     return !Settings.GlitchesToAllow.fireNoGoronTunic ||
                         !Settings.GlitchesToAllow.groundJump;
                 },
@@ -2378,7 +2319,7 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: ["F3", "F2", "F1", "B1"],
         StartingFloorIndex: 0,
-        UseAdultAge: function() { 
+        UseAdultAge: function() {
             return !Settings.RandomizerSettings.shuffleDungeonEntrances &&
                 !Settings.GlitchesToAllow.childLakesideLabClip;
         },
@@ -2387,22 +2328,22 @@ let StandardDungeons = {
             if (!Data.itemLocationObtained("Water Temple", "lowWaterLevel", "Lower Water Level")) {
                 return false;
             }
-    
+
             // This check allows the player to get to the high water switch directly while the water is drained
             let canGetToTopFloorWithWaterLowered = Items.HOOKSHOT.playerHas && Settings.GlitchesToAllow.waterHookshotToFloor1;
-            if (canGetToTopFloorWithWaterLowered || Equipment.HOVER_BOOTS.playerHas) { 
+            if (canGetToTopFloorWithWaterLowered || Equipment.HOVER_BOOTS.playerHas) {
                 if (Equipment.HOVER_BOOTS.playerHas || Settings.GlitchesToAllow.waterHighWaterJump) {
-                    return false; 
+                    return false;
                 }
             }
-                
+
             // This checks whether the player can get to high water switch the normal way
             let canLightMiddleTorch = ItemData.canUseAny(Age.ADULT, [Items.FAIRY_BOW, ItemSets.FIRE_ITEMS]);
             let canGetToCentralMidFromBottom = Data.itemLocationObtained("Water Temple", "main", "Locked Door to Central Room") && Items.HOOKSHOT.playerHas;
             let canRaiseWaterToMid = canLightMiddleTorch || canGetToCentralMidFromBottom;
             let canHitCrystalSwitch = ItemData.canUseAny(Age.ADULT, [ItemSets.EXPLOSIVES, Items.HOOKSHOT, Items.FAIRY_BOW]);
             let canLowerWater = canRaiseWaterToMid && canHitCrystalSwitch;
-    
+
             return !canLowerWater;
         },
         Regions: {
@@ -2892,8 +2833,8 @@ let StandardDungeons = {
                         Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                         CustomRequirement: function(age) {
                             // You can just longshot it
-                            if (ItemData.canUse(age, UpgradedItems.LONGSHOT)) { 
-                                return true; 
+                            if (ItemData.canUse(age, UpgradedItems.LONGSHOT)) {
+                                return true;
                             }
 
                             if (MapLocations["Water Temple"]._isPlayerLockedOutOfHighWater()) {
@@ -2939,8 +2880,8 @@ let StandardDungeons = {
                             if (Data.canWeirdShot(age)) { return true; }
 
                             // If not weirdshotting, need to shoot eye AND move the block
-                            if (!ItemData.canUse(age, [ItemSets.PROJECTILES, Equipment.STRENGTH])) { 
-                                return false; 
+                            if (!ItemData.canUse(age, [ItemSets.PROJECTILES, Equipment.STRENGTH])) {
+                                return false;
                             }
 
                             return Settings.GlitchesToAllow.waterEyeSwitchGateFromTop || // Shoot from the top and run in
@@ -3137,10 +3078,10 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             let lensCheck = Settings.GlitchesToAllow.shadowLensless || (Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas);
                             if (!lensCheck) { return false; }
-                            
+
                             let canCrossFirstGap = Data.canMegaFlip(age) ||
                                 (age === Age.ADULT && (Items.HOOKSHOT.playerHas || Equipment.HOVER_BOOTS.playerHas));
-                                
+
                             return canCrossFirstGap;
                         }
                     },
@@ -3164,7 +3105,7 @@ let StandardDungeons = {
                             if (Settings.GlitchesToAllow.shadowGateClip){
                                 max++; // Gibdo room
 
-                                let canGetToInvisibleSpikeRoom = Items.HOOKSHOT.playerHas && 
+                                let canGetToInvisibleSpikeRoom = Items.HOOKSHOT.playerHas &&
                                     (Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots);
                                 if (canGetToInvisibleSpikeRoom) {
                                     max += 2; // Into and out of invisible spike room
@@ -3194,7 +3135,7 @@ let StandardDungeons = {
                             if (Settings.GlitchesToAllow.shadowGateClip) {
                                 max++; // Gibdo room
 
-                                let canGetToInvisibleSpikeRoom = Items.HOOKSHOT.playerHas && 
+                                let canGetToInvisibleSpikeRoom = Items.HOOKSHOT.playerHas &&
                                     (Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots);
                                 if (canGetToInvisibleSpikeRoom) {
                                     max++; // Into invisible spike room
@@ -3225,7 +3166,7 @@ let StandardDungeons = {
                             if (Settings.GlitchesToAllow.shadowGateClip) {
                                 max++; // Gibdo room
 
-                                let canGetToInvisibleSpikeRoom = Items.HOOKSHOT.playerHas && 
+                                let canGetToInvisibleSpikeRoom = Items.HOOKSHOT.playerHas &&
                                     (Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots);
                                 if (canGetToInvisibleSpikeRoom) {
                                     min = 2; // Into invisible spike room - no max, as it IS this door
@@ -3257,7 +3198,7 @@ let StandardDungeons = {
                                 max++; // Gibdo room
                                 min = 1;
 
-                                let canGetToInvisibleSpikeRoom = Items.HOOKSHOT.playerHas && 
+                                let canGetToInvisibleSpikeRoom = Items.HOOKSHOT.playerHas &&
                                     (Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots);
                                 if (canGetToInvisibleSpikeRoom) {
                                     max++; // Into invisible spike room
@@ -3447,7 +3388,7 @@ let StandardDungeons = {
                         LongDescription: "After crossing the gap onto the tongue, proceed down the hallway. At the beamos, take the left path (it's a fake wall) and enter the room. Collect all the silver rupees to open the path to a chest.<br/><br/>If you have no hookshot, you can use hover boots to get to the wooden box from one of the wooden platforms.",
                         CustomRequirement: function(age) {
                             // We can't check the index via the property here since we don't NEED the rupees to advance in this case
-                            if (Settings.RandomizerSettings.shuffleSilverRupees) { 
+                            if (Settings.RandomizerSettings.shuffleSilverRupees) {
                                 return Data.canWeirdShot(age) || ItemData.checkSilverRupeeRequirement("Shadow Temple", 0);
                             }
                             if (age === Age.CHILD) { return false; }
@@ -3992,7 +3933,7 @@ let StandardDungeons = {
             if (ItemData.canUse(Age.ADULT, UpgradedItems.SILVER_GAUNTLETS)) { return true; }
 
             return (Settings.GlitchesToAllow.spiritBlockSkipWithHovers && Equipment.HOVER_BOOTS.playerHas) || (
-                Settings.GlitchesToAllow.spiritBlockSkipWithBombPush && 
+                Settings.GlitchesToAllow.spiritBlockSkipWithBombPush &&
                 ItemData.canUse(Age.ADULT, [ItemSets.SHIELDS, Items.BOMB]));
         },
         Regions: {
@@ -4620,7 +4561,7 @@ let StandardDungeons = {
                         LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor. In this room, there's a ray of light with some blocks nearby. Pull the block with the sun on it straight back and it will become happy when it hits the light, opening the door. Once inside the next room, turn around; the skulltula is above the door.",
                         Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     }
-                } 
+                }
             },
             silverGauntsIronKnuckle: {
                 DisplayGroup: { groupName: "Sun Block & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
@@ -4871,7 +4812,7 @@ let StandardDungeons = {
                     },
                     northRoom: {
                         CustomRequirement: function(age) {
-                            return ItemData.checkSilverRupeeRequirement("Ice Cavern", 0) || 
+                            return ItemData.checkSilverRupeeRequirement("Ice Cavern", 0) ||
                                 MapLocations["Ice Cavern"]._canDoTripleSlashClip(age);
                         },
                         Age: Age.ADULT
@@ -4879,7 +4820,7 @@ let StandardDungeons = {
                     blockPushRoom: {
                         CustomRequirement: function(age) {
                             let isWallMelted = Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt West Ice Wall");
-                            return isWallMelted || 
+                            return isWallMelted ||
                                 ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS) ||
                                 MapLocations["Ice Cavern"]._canDoTripleSlashClip(age);
                         }
@@ -5131,7 +5072,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 13.5,
                         LongDescription: "This rupee is the one to the right of the blue fire. No need to push the block for this one; you can simply climb up and get it."
-                    },                    
+                    },
                     "3 Red Rupees in Block Push Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -5635,12 +5576,12 @@ let StandardDungeons = {
     "Training Grounds": {
         Abbreviation: "GTG",
         MapGroup: MapGroups.DUNGEONS,
-        UseAdultAge: function() { 
+        UseAdultAge: function() {
             return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.gtgChildAllowed;
         },
         _canSkipMazeDoors: function(age) {
             return Data.canWeirdShot(age) ||  (
-                Settings.GlitchesToAllow.gtgChildVineClips && 
+                Settings.GlitchesToAllow.gtgChildVineClips &&
                 ItemData.canUse(age, [Equipment.DEKU_SHIELD, Items.BOMBCHU])
             );
         },
@@ -5699,7 +5640,7 @@ let StandardDungeons = {
                         LongDescription: "From the entrance, turn around. Shoot the eye that's near the ceiling to spawn this chest.",
                         Needs: [ItemSets.PROJECTILES]
                     },
-                     
+
                     // Locked Doors
                     "Locked Door 1 On Main Path": {
                         DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
@@ -5929,8 +5870,8 @@ let StandardDungeons = {
             },
             silverBlockRoom: {
                 DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Strength Silver Gauntlets" },
-                UseAdultAge: function() { 
-                    return !Settings.GlitchesToAllow.gtgChildVineClips && !Settings.GlitchesToAllow.gtgSlopesRoomFireWallSkip; 
+                UseAdultAge: function() {
+                    return !Settings.GlitchesToAllow.gtgChildVineClips && !Settings.GlitchesToAllow.gtgSlopesRoomFireWallSkip;
                 },
                 Exits: {
                     boulderRoom: {},
@@ -6012,9 +5953,9 @@ let StandardDungeons = {
                         Order: 8.9,
                         LongDescription: "This is the room after the wolfos room. Use hover boots to navigate to the top of the center statue to get this wonderitem.",
                         CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || (age === Age.ADULT && 
+                            return Data.canMegaFlip(age) || (age === Age.ADULT &&
                                 (
-                                    Settings.GlitchesToAllow.gtgEyeStatueWonderItemJumpslash || 
+                                    Settings.GlitchesToAllow.gtgEyeStatueWonderItemJumpslash ||
                                     ItemData.canUse(age, Equipment.HOVER_BOOTS)
                                 )
                             );
@@ -6095,7 +6036,7 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return true; }
                             return Data.canPlaySong(Songs.SONG_OF_TIME) ||
-                                Equipment.HOVER_BOOTS.playerHas || 
+                                Equipment.HOVER_BOOTS.playerHas ||
                                 Data.canMegaFlip(age);
                         }
                     },
@@ -6136,7 +6077,7 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return true; }
                             return Data.canPlaySong(Songs.SONG_OF_TIME) ||
-                                Equipment.HOVER_BOOTS.playerHas || 
+                                Equipment.HOVER_BOOTS.playerHas ||
                                 Data.canMegaFlip(age);
                         }
                     }
@@ -6149,7 +6090,7 @@ let StandardDungeons = {
                         CustomRequirement: function(age) {
                             if (age === Age.CHILD) { return true; }
                             return Data.canPlaySong(Songs.SONG_OF_TIME) ||
-                                Equipment.HOVER_BOOTS.playerHas || 
+                                Equipment.HOVER_BOOTS.playerHas ||
                                 Data.canMegaFlip(age);
                         }
                     },
@@ -6167,7 +6108,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is on the back right platform. Use your hover boots, longhsot the upper torch, or go around the dungeon and enter from the upper door to get this rupee."
                     }
                 }
-            },  
+            },
             bigLavaRoomUpperBack: {
                 DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
                 Exits: {
@@ -6435,7 +6376,7 @@ let StandardDungeons = {
                     forestTrialRoom1: {},
                     fireTrialRoom1: {
                         CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.ganonFireNoTunic || 
+                            return Settings.GlitchesToAllow.ganonFireNoTunic ||
                                 ItemData.canUse(age, Equipment.GORON_TUNIC);
                         }
                     },
@@ -6445,9 +6386,9 @@ let StandardDungeons = {
                     lightTrialRoom1: {
                         Age: Age.ADULT,
                         CustomRequirement: function(age) {
-                            let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
+                            let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip &&
                                 ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]);
-                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && 
+                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip &&
                                 ItemData.canUse(age, ItemSets.EXPLOSIVES);
                             return canSuperslideIn || canEssClipIn || ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
                         }
@@ -6749,7 +6690,7 @@ let StandardDungeons = {
                         SilverRupeeIndex: 2,
                         Needs: [UpgradedItems.LONGSHOT],
                         CustomRequirement: function(age) {
-                            return Settings.RandomizerSettings.shuffleSilverRupees || 
+                            return Settings.RandomizerSettings.shuffleSilverRupees ||
                                 ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
                         }
                     }
@@ -6966,7 +6907,7 @@ let StandardDungeons = {
                                 return true;
                             }
 
-                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && 
+                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless &&
                                 ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
                             return ItemData.canUse(age, Items.HOOKSHOT) || canAvoidHookshot;
                         }
@@ -7017,7 +6958,7 @@ let StandardDungeons = {
                         Order: 27.5,
                         LongDescription: "This rupee is above the beamos. Use your hookshot, or perform the ISG hover to get the rupee (remember not to cancel ISG with shield!)",
                         CustomRequirement: function(age) {
-                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless && 
+                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless &&
                                 ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
                             return ItemData.canUse(age, Items.HOOKSHOT) || canAvoidHookshot;
                         }

@@ -282,8 +282,53 @@ let GlitchItemSets = {
     DODONGO_EARLY_SWITCH: (age) => 
         Settings.GlitchesToAllow.dodongoSwitchEarly && 
         ItemData.canUse(age, [Items.BOMBCHU, Equipment.DEKU_SHIELD]),
+    DODONGO_HEAD_WITH_CHUS: (age) =>
+        Settings.GlitchesToAllow.dodongoOpenHeadWithBombchus &&
+        ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMBCHU]),
+    DODONGO_SCARECROW_SKULL_EARLY: () => Settings.GlitchesToAllow.dodongoScarecrowSkullEarly,
+    DODONGO_TRIGGER_STAIRS_WITH_BOW: (age) =>
+        Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && 
+        ItemData.canUse(age, Items.FAIRY_BOW),
+    DODONGO_ADULT_JUMP_TO_BOMB_CHEST: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.dodongoAdultJumpToBombChest,
+    DODONGO_ADULT_BLADE_ROOM_MUD_WALL_WITH_STRENGTH: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.dodongoAdultBladeMudWallWithStrength && 
+        ItemData.canUse(age, Equipment.STRENGTH),
+
+    // Jabu
+    JABU_BLUE_SWITCH_SKIP: (age) => 
+        Settings.GlitchesToAllow.jabuBlueSwitchSkip &&
+        ItemData.canUse(age, ItemSets.SWORDS) &&
+        (age === Age.CHILD || ItemData.canUse(age, ItemSets.SHIELDS)),
+    JABU_BOSS_SWITCH_WITH_EXPLOSIVES: (age) => 
+        Settings.GlitchesToAllow.jabuBossSwitchWithExplosives && (
+            (age === Age.CHILD && Items.BOMBCHU.playerHas) ||
+            (age == Age.ADULT && ItemData.canUse(age, [Items.BOMB, Equipment.HOVER_BOOTS]))),
 
     // Forest
+    FOREST_FIRST_SKULL_WITH_BOMB: (age) => 
+        Settings.GlitchesToAllow.forestFirstSkullWithBomb && 
+        ItemData.canUse(age, Items.BOMB),
+    FOREST_LEDGE_CLIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.forestLedgeClip,
+    FOREST_GREEN_POE_EARLY: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.forestGreenPoeEarly &&
+        ItemData.canUse(age, [Items.BOMB, Equipment.HOVER_BOOTS, ItemSets.SHIELDS]),
+    FOREST_JUMP_TO_TOP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.forestJumpToTop &&
+        ItemData.canUse(age, [Equipment.HOVER_BOOTS, Items.BOMB]),
+    FOREST_HOOKSHOT_TO_WELL_SWITCH: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.forestHookshotToWellSwitch &&
+        ItemData.canUse(age, Items.HOOKSHOT),
+    FOREST_BOOMERANG_SKULL_ON_LEDGE: (age) =>
+        Settings.GlitchesToAllow.forestBoomerangSkullOnLedge &&
+        ItemData.canUse(age, Items.BOOMERANG),
+    FOREST_LEDGE_WITH_HOVER_BOOTS: (age) =>
+        Settings.GlitchesToAllow.forestLedgeWithHovers &&
+        ItemData.canUse(age, Equipment.HOVER_BOOTS),
+    FOREST_BLOCK_SKIP: (age) => age === Age.ADULT && 
+        Settings.GlitchesToAllow.forestBlockSkip && 
+        ItemData.canUse(age, GlitchItemSets.GROUND_JUMP),
     FOREST_BK_SKIP: (age) => 
         Settings.GlitchesToAllow.forestBKSkip &&
         ItemData.canUse(age, Items.HOOKSHOT),
@@ -334,6 +379,7 @@ let ItemLocationSets = {
     // Deku Tree
     DEKU_WEB_BURNED: () => Data.itemLocationObtained("Deku Tree", "basementTop", "Burn Basement Web"),
     DEKU_OPENED_BOSS_DOOR: () => Data.itemLocationObtained("Deku Tree", "lowerBasement", "Open Boss Door"),
+    MQ_DEKU_WEB_BURNED: () => Data.itemLocationObtained("Deku Tree", "upperBasement", "Burn Basement Web"),
 
     // Dodongo's Cavern
     DODONGO_OPENED_FIRST_WALL: () => Data.itemLocationObtained("Dodongo's Cavern", "main", "Opened First Wall"),
@@ -346,6 +392,15 @@ let ItemLocationSets = {
 
     // Water Temple
     DEFEATED_MORPHA:() => Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp")
+};
+
+/**
+ * Item sets for checking if a part of the map can be accessed
+ * These require IsPostWalkCheck if used for any item location logic
+ */
+let MapAccessSets = {
+    FOREST_FIRST_POE_ROOM: (age) => Data.canAccessMap(age, "Forest Temple", "firstPoeRoom"),
+    FOREST_FALLING_CEILING_ROOM: (age) => Data.canAccessMap(age, "Forest Temple", "fallingCeilingRoom")
 };
 
 /**
@@ -365,6 +420,13 @@ let GameStateSets = {
     CAN_STUN_KITCHEN_GUARDS: (age) => Data.canStunKitchenGuards(age),
     CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE: (age) => Data.canStunOrPassGuardsAtDistance(age),
     HAS_BOTTLE: () => Data.hasBottle()
+};
+
+/**
+ * Item sets related to keys
+ */
+let KeySets = {
+    FOREST_BK: () => ItemData.hasBossKey("Forest Temple")
 };
 
 /**
