@@ -3227,7 +3227,6 @@ let StandardDungeons = {
                         Needs: [GlitchItemSets.SHADOW_JUMP_TO_BOAT_ROOM_LEDGE]
                     }
                 },
-
                 ItemLocations: {
                     "Compass Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3283,7 +3282,7 @@ let StandardDungeons = {
                         NeedsAny: [
                             [SettingSets.SHUFFLE_SILVER_RUPEES, 
                                 [SetType.OR, 
-                                    GlitchItemSets.WEIRD_SHOT, () => ItemData.checkSilverRupeeRequirement("Shadow Temple", 0)]],
+                                    GlitchItemSets.WEIRD_SHOT, SilverRupeeSets.SHADOW_SILVER_RUPEES_SCYTHE_ROOM]],
                             [SettingSets.VANILLA_SILVER_RUPEES,
                                 [SetType.OR,
                                     Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING]]
@@ -3296,10 +3295,8 @@ let StandardDungeons = {
                 Exits: {
                     fallingSpikesRoom: {
                         Map: "Shadow Temple",
-                        CustomRequirement: function(age) {
-                            return ItemData.checkSilverRupeeRequirement("Shadow Temple", 1) ||
-                                (Settings.GlitchesToAllow.shadowPitRoomSilverRupeeSkip && ItemData.canUse(age, ItemSets.SWORDS));
-                        }
+                        NeedsAny: [SilverRupeeSets.SHADOW_SILVER_RUPEES_PIT_ROOM, 
+                            GlitchItemSets.SHADOW_PIT_ROOM_SILVER_RUPEES_SKIP],
                     },
                     invisibleSpikeRoom: {
                         Map: "Shadow Temple",
@@ -3316,9 +3313,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). The hearts are in the back left corner. Play the Song of Time to spawn a block to get them.",
-                        CustomRequirement: function(age) {
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) || ItemData.canUse(age, Items.BOOMERANG);
-                        }
+                        NeedsAny: [Songs.SONG_OF_TIME, Items.BOOMERANG]
                     },
                     "Visible Chest in Invisible Scythe Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3342,9 +3337,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 14,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). Take out the enemies in this room to open up the gate - there's a like-like and a few keese in the corners. If you don't have a range weapon, jumpslash at the keese to alert them to you. The skulltula is behind the open gate.<br/><br/>If you are an adult and have no hookshot, you can kill the skulltula with a jumpslash. Line yourself up so that you, the chest, and the token are in a line. Face the other way and do two backflips (Down + Z + spam A). If you were the right distance away, you should grab the token after backflipping off the chest.",
-                        CustomRequirement: function(age) {
-                            return age === Age.ADULT || ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS);
-                        }
+                        ChildNeeds: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "5 Pit Room Silver Rupees": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3362,9 +3355,8 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     topOfFallingSpikesRoom: {
-                        CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
-                        }
+                        ChildNeeds: [GlitchItemSets.SHADOW_BACKFLIP_ON_SPIKES],
+                        AdultNeedsAny: [Equipment.STRENGTH, GlitchItemSets.SHADOW_BACKFLIP_ON_SPIKES]
                     }
                 },
                 ItemLocations: {
@@ -3384,9 +3376,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 16,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. The skulltula is in the first cage to the left near the ceiling spikes. To pass them, you can either use good timing, or pull the block out of the wall to the right (use the lens to find it) to act as an umbrella - assuming you have a strength upgrade.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS) || Data.canStaircaseHover(age);
-                        }
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
                     },
                     "Bottom Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3439,18 +3429,13 @@ let StandardDungeons = {
                     giantSkullRoom: {
                         Map: "Shadow Temple",
                         SilverRupeeIndex: 2,
-                        CustomRequirement: function(age) {
-                            return Settings.RandomizerSettings.shuffleSilverRupees || ItemData.canUse(age, Items.HOOKSHOT);
-                        }
+                        NeedsAny: [SettingSets.SHUFFLE_SILVER_RUPEES, Items.HOOKSHOT]
                     },
                     windHallway: {
                         Map: "Shadow Temple",
                         Age: Age.ADULT,
-                        AdultNeeds: [Items.HOOKSHOT],
+                        Needs: [Items.HOOKSHOT, GameStateSets.SHADOW_IRON_BOOTS_CHECK],
                         LockedDoor: "Locked Door in Invisible Spike Room",
-                        CustomRequirement: function(age) {
-                            return Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots;
-                        }
                     }
                 },
                 ItemLocations: {
@@ -3514,10 +3499,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 23,
                         LongDescription: "To get here, start at the invisible spike room. Collect all the silver rupees using your hookshot. Note that there are a few invisible targets. Enter the room on the bottom that unlocks. Throw a Bomb or Bomb Flower into the giant skull to spawn the key.",
-                        CustomRequirement: function(age) {
-                            let canUseChu = Settings.GlitchesToAllow.shadowGiantSkullsWithChus && Items.BOMBCHU.playerHas;
-                            return canUseChu || Items.BOMB.playerHas || Equipment.STRENGTH.playerHas;
-                        }
+                        NeedsAny: [Items.BOMB, Equipment.STRENGTH, GlitchItemSets.SHADOW_GIANT_SKULLS_WITH_CHU]
                     },
                     "Skulltula in Giant Skull Room": {
                         ItemGroup: ItemGroups.SKULLTULA,

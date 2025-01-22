@@ -378,6 +378,13 @@ let GlitchItemSets = {
     SHADOW_JUMP_TO_BOAT_ROOM_LEDGE: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.shadowUpperBoatRoomJump &&
         ItemData.canUse(age, [Equipment.HOVER_BOOTS, ItemSets.SHIELDS]),
+    SHADOW_PIT_ROOM_SILVER_RUPEES_SKIP: (age) =>
+        Settings.GlitchesToAllow.shadowPitRoomSilverRupeeSkip && 
+        ItemData.canUse(age, ItemSets.SWORDS),
+    SHADOW_BACKFLIP_ON_SPIKES: () => Settings.GlitchesToAllow.shadowBackFlipOnSpikes,
+    SHADOW_GIANT_SKULLS_WITH_CHU: (age) => 
+        Settings.GlitchesToAllow.shadowGiantSkullsWithChus &&
+        ItemData.canUse(age, Items.BOMBCHU),
 
     // Spirit Temple
     MQ_SPIRIT_STATUE_ROOM_TORCHES_WITH_DINS: (age) => 
@@ -489,6 +496,14 @@ let KeySets = {
     WATER_BK: () => ItemData.hasBossKey("Water Temple"),
     SHADOW_BK: () => ItemData.hasBossKey("Shadow Temple"),
     SPIRIT_BK: () => ItemData.hasBossKey("Spirit Temple")
+};
+
+/**
+ * Item sets for silver rupee doors
+ */
+let SilverRupeeSets = {
+    SHADOW_SILVER_RUPEES_SCYTHE_ROOM: () => ItemData.checkSilverRupeeRequirement("Shadow Temple", 0),
+    SHADOW_SILVER_RUPEES_PIT_ROOM: () => ItemData.checkSilverRupeeRequirement("Shadow Temple", 1)
 };
 
 /**
