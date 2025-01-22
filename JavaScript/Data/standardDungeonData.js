@@ -2275,27 +2275,37 @@ let StandardDungeons = {
             return SettingSets.VANILLA_DUNGEON_ENTRANCES() &&
                 !Settings.GlitchesToAllow.childLakesideLabClip;
         },
-        _isPlayerLockedOutOfHighWater: function() {
+        _isPlayerLockedOutOfHighWater: function(age) {
             // If the player didn't lower the water, then they aren't locked out of it!
             if (!ItemLocationSets.WATER_LOWERED_WATER_LEVEL()) {
                 return false;
             }
 
             // This check allows the player to get to the high water switch directly while the water is drained
-            if (ItemData.canUseAny(Age.ADULT, [Equipment.HOVER_BOOTS, GlitchItemSets.WATER_HOOKSHOT_TO_FLOOR_1])) {
-                if (ItemData.canUseAny(Age.ADULT, [Equipment.HOVER_BOOTS, GlitchItemSets.WATER_JUMP_TO_HIGH_WATER])) {
+            if (ItemData.canUseAny(age, [
+                Equipment.HOVER_BOOTS, 
+                [
+                    [SetType.OR,
+                        GlitchItemSets.MEGA_FLIP,
+                        GlitchItemSets.WATER_HOOKSHOT_TO_FLOOR_1
+                    ], 
+                    GlitchItemSets.WATER_JUMP_TO_HIGH_WATER
+                ]])) {
                     return false;
-                }
             }
 
             // This checks whether the player can get to high water switch the normal way
-            let canLightMiddleTorch = ItemData.canUseAny(Age.ADULT, [Items.FAIRY_BOW, ItemSets.FIRE_ITEMS]);
-            let canGetToCentralMidFromBottom = ItemData.canUse(Age.ADULT, [ItemLocationSets.WATER_OPENED_CENTRAL_ROOM, Items.HOOKSHOT])
-            let canRaiseWaterToMid = canLightMiddleTorch || canGetToCentralMidFromBottom;
-            let canHitCrystalSwitch = ItemData.canUseAny(Age.ADULT, [ItemSets.EXPLOSIVES, Items.HOOKSHOT, Items.FAIRY_BOW]);
+            let canRaiseWaterToMid = ItemData.canUseAny(age, [
+                (age) => MapLocations["Water Temple"]._canLightMiddleTorch(age),
+                [ItemLocationSets.WATER_OPENED_CENTRAL_ROOM, Items.HOOKSHOT]]);
+            let canHitCrystalSwitch = ItemData.canUse(age, ItemSets.DISTANT_SWITCH_ITEMS);
             let canLowerWater = canRaiseWaterToMid && canHitCrystalSwitch;
 
             return !canLowerWater;
+        },
+        _canLightMiddleTorch: function(age) {
+            return ItemData.canUseAny(age, 
+                [Items.FAIRY_BOW, Items.DEKU_STICK, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]);
         },
         Regions: {
             main: {
@@ -2322,7 +2332,7 @@ let StandardDungeons = {
                         AdultNeedsAny: [Equipment.IRON_BOOTS, UpgradedItems.LONGSHOT]
                     },
                     highWaterLevel: {
-                        Needs: [() => !MapLocations["Water Temple"]._isPlayerLockedOutOfHighWater()]
+                        Needs: [() => !MapLocations["Water Temple"]._isPlayerLockedOutOfHighWater(Age.ADULT)]
                     },
                     roomWithManyTektitesAntechamber: {
                         Map: "Water Temple",
@@ -2650,7 +2660,7 @@ let StandardDungeons = {
                         NeedsAny: [Equipment.SCALE, Equipment.IRON_BOOTS]
                     },
                     midWaterTriforceFloor: {
-                        NeedsAny: [Items.FAIRY_BOW, Items.DEKU_STICK, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
+                        Needs: [(age) => MapLocations["Water Temple"]._canLightMiddleTorch(age)]
                     },
                     centralRoomBottom: {
                         Map: "Water Temple",
@@ -2758,34 +2768,29 @@ let StandardDungeons = {
                 ItemLocations: {
                     "Skulltula by Mid Water Triforce": {
                         ItemGroup: ItemGroups.SKULLTULA,
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 21,
                         MapInfo: { x: 157, y: 217, floor: "F1" },
-                        LongDescription: "In the room with the middle water level Triforce, there is a skulltula high up on the wall. There are three ways to get it; the bottom two enable the hookshot to be used:<br/>- Use the longshot<br/>- Cast Farore's Wind in the room, raise the water to max, then warp back in<br/>- Enter the room from the middle, then exit from the bottom - the middle area door will not be barred. Come back via the iron boots to get the skulltula with the hookshot after raising the water to max.",
+                        LongDescription: "In the room with the middle water level Triforce, there is a skulltula high up on the wall. There are three ways to get it; the bottom two enable the hookshot to be used:<br/>- Use the longshot<br/>- Cast Farore's Wind in the room, raise the water to max, then warp back in (Child can do this!)<br/>- Light the torch and open the door. Use the hookshot go navigate back up, then jump to the high water platform and raise the water. Come back via the iron boots to get the skulltula with the hookshot or boomreang.",
                         Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
-                        CustomRequirement: function(age) {
-                            // You can just longshot it
-                            if (ItemData.canUse(age, UpgradedItems.LONGSHOT)) {
-                                return true;
-                            }
+                        NeedsAny: [
+                            // Longshot it, OR...
+                            UpgradedItems.LONGSHOT,
 
-                            if (MapLocations["Water Temple"]._isPlayerLockedOutOfHighWater()) {
-                                return false;
-                            }
+                            // FW, raise the water, FW again so you can hookshot or boomerang it (this works with child too!), OR...
+                            [Items.FARORES_WIND, (age) => !MapLocations["Water Temple"]._isPlayerLockedOutOfHighWater(age)],
 
-                            // Cast FW in the room, then raise the water and recast FW
-                            if (ItemData.canUse(age, Items.FARORES_WIND)) {
-                                return true;
-                            }
-
-                            // Enter the room via the fire door, then exit out the bottom via the locked door
-                            // Now raise the water and return through the fire door with iron boots (the bars will be gone still)
-                            let bottomDoorCheck = Data.itemLocationObtained("Water Temple", "main", "Locked Door to Central Room") ||
-                                ItemData.getKeyCount("Water Temple") === Keys.WATER_TEMPLE.totalKeys();
-                            if (ItemData.canUse(age, [Equipment.IRON_BOOTS, ItemSets.FIRE_ITEMS]) && bottomDoorCheck) {
-                                return true;
-                            }
-                        }
+                            // 1. Light the middle room torch
+                            // 2. Navigate up to floor 1
+                            // 3. Raise the water to high
+                            // 4. Use iron boots to enter the now unbarred door, and hookshot/boomerang the skull
+                            [
+                                [(age) => !MapLocations["Water Temple"]._canLightMiddleTorch(age)],
+                                GlitchItemSets.WATER_HOOKSHOT_TO_FLOOR_1,
+                                GlitchItemSets.WATER_JUMP_TO_HIGH_WATER,
+                                Equipment.IRON_BOOTS
+                            ]
+                        ]
                     }
                 }
             },
@@ -2802,8 +2807,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Central Rooms (Mid/Low)", imageName: "Ocarina of Time" },
                 Exits: {
                     highWaterLevel: {
-                        Needs: [Songs.ZELDAS_LULLABY],
-                        NeedsAny: [ItemSets.EXPLOSIVES, Items.HOOKSHOT, Items.FAIRY_BOW]
+                        Needs: [Songs.ZELDAS_LULLABY, ItemSets.DISTANT_SWITCH_ITEMS]
                     },
                     midWaterTriforceFloor: {},
                     behindBlockArea: {
