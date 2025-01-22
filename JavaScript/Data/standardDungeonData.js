@@ -4658,7 +4658,7 @@ let StandardDungeons = {
         },
         Regions: {
             main: {
-                DisplayGroup: { groupName: "Up to Scythe Room", imageName: "Blue Fire" },
+                DisplayGroup: { groupName: "Up to Center Room", imageName: "Blue Fire" },
                 Exits: {
                     afterFreezards: {
                         Needs: [ItemSets.FREEZARD_KILL_ITEMS]
@@ -4679,7 +4679,7 @@ let StandardDungeons = {
                 }
             },
             afterFreezards: {
-                DisplayGroup: { groupName: "Up to Scythe Room", imageName: "Blue Fire" },
+                DisplayGroup: { groupName: "Up to Center Room", imageName: "Blue Fire" },
                 Exits: {
                     blueFireSideRoom: {
                         CustomRequirement: function(age) {
@@ -4796,7 +4796,7 @@ let StandardDungeons = {
                 }
             },
             blueFire: {
-                DisplayGroup: { groupName: "Up to Scythe Room", imageName: "Blue Fire" },
+                DisplayGroup: { groupName: "Up to Center Room", imageName: "Blue Fire" },
                 Exits: {
                     blueFireSideRoom: {},
                     blockPushRoom: {}

@@ -3129,10 +3129,7 @@ let MQDungeons = {
                         Needs: [Equipment.IRON_BOOTS, Items.HOOKSHOT]
                     },
                     lowEastRooms: {
-                        Needs: [Equipment.IRON_BOOTS],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                        }
+                        Needs: [Equipment.IRON_BOOTS, GameStateSets.WATER_TEMPLE_TUNIC_CHECK]
                     },
                     centralRoom: {
                         Needs: [Equipment.IRON_BOOTS]
@@ -3267,10 +3264,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Water Lowering Rooms (Low East)", imageName: "Ocarina" },
                 Exits: {
                     lowWaterLevel: {
-                        Needs: [Songs.ZELDAS_LULLABY],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                        }
+                        Needs: [Songs.ZELDAS_LULLABY]
                     }
                 },
                 ItemLocations: {
@@ -3319,10 +3313,7 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     behindGateInMidSouthRoom: {
-                        CustomRequirement: function(age) {
-                            let canUseDins = Equipment.MAGIC.playerHas && Items.DINS_FIRE.playerHas;
-                            return Items.HOOKSHOT.playerHas || canUseDins;
-                        }
+                        NeedsAny: [Items.HOOKSHOT, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     }
                 },
                 ItemLocations: {
