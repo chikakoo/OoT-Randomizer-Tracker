@@ -3516,11 +3516,8 @@ let StandardDungeons = {
                     invisibleSpikeRoom: {
                         Map: "Shadow Temple",
                         Age: Age.ADULT,
-                        Needs: [Items.HOOKSHOT],
                         LockedDoor: "Locked Door in Invisible Spike Room",
-                        CustomRequirement: function(age) {
-                             return Equipment.IRON_BOOTS.playerHas || Settings.GlitchesToAllow.shadowNoIronBoots;
-                        }
+                        Needs: [Items.HOOKSHOT, GameStateSets.SHADOW_IRON_BOOTS_CHECK],
                     },
                     boatRoomStart: {
                         Map: "Shadow Temple",
@@ -3601,9 +3598,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 31,
                         LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. If you face the front of the boat, you can see the skulltula slightly to your left. You can get it with your longshot - Scarecrow's Song can help, but isn't needed.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS) || Data.canStaircaseHover(age);
-                        }
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
                     }
                 }
             },
@@ -3633,10 +3628,7 @@ let StandardDungeons = {
                         Needs: [GameStateSets.CAN_LONGSHOT_SCARECROW]
                     },
                     acrossChasmToBossRoom: {
-                        CustomRequirement: function(age) {
-                            let canHitWithChu = Settings.GlitchesToAllow.shadowChuBombFlowers && Items.BOMBCHU.playerHas;
-                            return Items.FAIRY_BOW.playerHas || canHitWithChu;
-                        }
+                        NeedsAny: [Items.FAIRY_BOW, GlitchItemSets.SHADOW_LOWER_BRIDGE_WITH_CHUS]
                     }
                 },
                 ItemLocations: {

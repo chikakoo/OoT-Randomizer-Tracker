@@ -367,9 +367,6 @@ let GlitchItemSets = {
         Settings.GlitchesToAllow.waterBKShortcut,
 
     // Shadow Temple
-    SHADOW_LOWER_BRIDGE_WITH_CHUS: (age) => 
-        Settings.GlitchesToAllow.shadowChuBombFlowers &&
-        ItemData.canUse(age, Items.BOMBCHU),
     SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.shadowSilverRupeeWithNothing,
     SHADOW_GATE_CLIP: (age) => age === Age.ADULT &&
@@ -384,6 +381,9 @@ let GlitchItemSets = {
     SHADOW_BACKFLIP_ON_SPIKES: () => Settings.GlitchesToAllow.shadowBackFlipOnSpikes,
     SHADOW_GIANT_SKULLS_WITH_CHU: (age) => 
         Settings.GlitchesToAllow.shadowGiantSkullsWithChus &&
+        ItemData.canUse(age, Items.BOMBCHU),
+    SHADOW_LOWER_BRIDGE_WITH_CHUS: (age) => 
+        Settings.GlitchesToAllow.shadowChuBombFlowers &&
         ItemData.canUse(age, Items.BOMBCHU),
 
     // Spirit Temple
