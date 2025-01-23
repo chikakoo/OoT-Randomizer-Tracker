@@ -413,8 +413,10 @@ InteriorGroups = {
 			"Adult Big Poe Reward": {
 				description: "Give the poe salesman all the poes he needs to get this item.",
 				canGet: function(age) {
-					let canGetToPoe = Data.canAccessMap(age, "Hyrule Field");
-					return (canGetToPoe && Items.FAIRY_BOW.playerHas && Data.hasBottle()) || Items.BIG_POE.playerHas;
+					return ItemData.canUseAny(age, [
+						Items.BIG_POE, 
+						[MapAccessSets.HYRULE_FIELD, Items.FAIRY_BOW, GameStateSets.HAS_BOTTLE]
+					]);
 				},
 				isAdultOnly: function() { return true; }
 			},
@@ -1522,10 +1524,9 @@ GrottoGroups = {
 			"14 Pots": {
 				description: "These pots are after the fight with the two Iron Knuckles, before the final staircase.",
 				count: 14,
+				itemGroup: ItemGroups.POT,
 				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS) &&
-							(Settings.RandomizerSettings.potSetting !== ShuffleLocationSettings.OFF || 
-							ItemData.hasBossKey("Ganon's Castle"));
+					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
 				},
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.shuffleEmptyPots;
@@ -1534,10 +1535,9 @@ GrottoGroups = {
 			"18 Pots": {
 				description: "These pots are after the fight with the two Iron Knuckles, before the final staircase.",
 				count: 18,
+				itemGroup: ItemGroups.POT,
 				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS) &&
-							(Settings.RandomizerSettings.potSetting !== ShuffleLocationSettings.OFF || 
-							ItemData.hasBossKey("Ganon's Castle"));
+					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
 				},
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleEmptyPots;

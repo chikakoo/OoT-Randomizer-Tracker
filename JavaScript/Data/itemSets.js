@@ -530,6 +530,10 @@ let ItemLocationSets = {
     ICE_MELTED_EAST_WALL: () => Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt East Ice Wall"),
     ICE_MELTED_WEST_WALL: () => Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt West Ice Wall"),
 
+    // Gerudo Training Ground
+    GTG_OPENED_OPTIONAL_DOOR_1: () => Data.itemLocationObtained("Training Grounds", "main", "Optional Locked Door 1"),
+    GTG_OPENED_OPTIONAL_DOOR_2: () => Data.itemLocationObtained("Training Grounds", "main", "Optional Locked Door 2"),
+
     // Ganon's Castle
     ALL_TRIALS_COMPLETED:() => Data.itemLocationObtained("Ganon's Castle", "forestTrialEnd", "Forest Trial Complete") &&
         Data.itemLocationObtained("Ganon's Castle", "waterTrialEnd", "Water Trial Complete") &&
@@ -544,6 +548,13 @@ let ItemLocationSets = {
  * These require IsPostWalkCheck if used for any item location logic
  */
 let MapAccessSets = {
+    HYRULE_FIELD: (age) => Data.canAccessMap(age, "Hyrule Field"),
+    HIDEOUT_JAIL_1: (age) => Data.canAccessMap(age, "Thieves' Hideout", "jail1"),
+    HIDEOUT_ALL_JAILS: (age) =>
+        Data.canAccessMap(age, "Thieves' Hideout", "jail1") &&
+        Data.canAccessMap(age, "Thieves' Hideout", "jail2") &&
+        Data.canAccessMap(age, "Thieves' Hideout", "jail3") &&
+        Data.canAccessMap(age, "Thieves' Hideout", "jail4"),
     FOREST_FIRST_POE_ROOM: (age) => Data.canAccessMap(age, "Forest Temple", "firstPoeRoom"),
     FOREST_FALLING_CEILING_ROOM: (age) => Data.canAccessMap(age, "Forest Temple", "fallingCeilingRoom")
 };
@@ -577,6 +588,7 @@ let GameStateSets = {
  * Item sets related to keys
  */
 let KeySets = {
+    HIDEOUT_HAS_ALL_KEYS: () => Keys.THIEVES_HIDEOUT.keyCount >= Keys.THIEVES_HIDEOUT.totalKeys(),
     FOREST_BK: () => ItemData.hasBossKey("Forest Temple"),
     FIRE_BK: () => ItemData.hasBossKey("Fire Temple"),
     WATER_BK: () => ItemData.hasBossKey("Water Temple"),

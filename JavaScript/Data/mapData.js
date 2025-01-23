@@ -4019,19 +4019,13 @@ let MapLocations = {
                             return Settings.RandomizerSettings.openGerudosFortress !== OpenGerudosFortressSettings.OPEN;
                         },
                         LongDescription: "You'll get this from the Gerudo after using all 4 keys on all the jail doors and talking to the prisoners.",
+                        Needs: [KeySets.HIDEOUT_HAS_ALL_KEYS],
                         CustomRequirement: function(age) {
-                            let keyCount = ItemData.getKeyCount("Thieves' Hideout");
-                            let canAccessJail1 = Data.canAccessMap(age, "Thieves' Hideout", "jail1");
-
                             switch(Settings.RandomizerSettings.openGerudosFortress) {
                                 case OpenGerudosFortressSettings.VANILLA:
-                                    return keyCount >= 4 &&
-                                        canAccessJail1 &&
-                                        Data.canAccessMap(age, "Thieves' Hideout", "jail2") &&
-                                        Data.canAccessMap(age, "Thieves' Hideout", "jail3") &&
-                                        Data.canAccessMap(age, "Thieves' Hideout", "jail4");
+                                    return MapAccessSets.HIDEOUT_ALL_JAILS(age);
                                 case OpenGerudosFortressSettings.ONE_CARPENTER:
-                                    return keyCount >= 1 && canAccessJail1;
+                                    return MapAccessSets.HIDEOUT_JAIL_1(age);
                                 default:
                                     return false; // Should not get here...
                             }

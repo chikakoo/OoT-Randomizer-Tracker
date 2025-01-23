@@ -5381,11 +5381,11 @@ let StandardDungeons = {
             // Gets the number of optional keys used in GTG (these are the ones on the right maze path)
             let numberOfKeysUsed = 0;
 
-            if (Data.itemLocationObtained("Training Grounds", "main", "Optional Locked Door 1")) {
+            if (ItemLocationSets.GTG_OPENED_OPTIONAL_DOOR_1()) {
                 numberOfKeysUsed++;
             }
 
-            if (Data.itemLocationObtained("Training Grounds", "main", "Optional Locked Door 2")) {
+            if (ItemLocationSets.GTG_OPENED_OPTIONAL_DOOR_2()) {
                 numberOfKeysUsed++;
             }
 
