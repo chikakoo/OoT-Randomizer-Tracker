@@ -317,7 +317,7 @@ let Settings = {
 		mqGtgEyeStatueJumpslash: false,
 		
 		ganonFireNoTunic: false,
-		gannonShadowTrialLens: false,
+		ganonShadowTrialLensless: false,
 		ganonSpiritHookshotless: false,
 		ganonLightTrialSuperslideSkip: false,
 		ganonLightTrailEssSkip: false,

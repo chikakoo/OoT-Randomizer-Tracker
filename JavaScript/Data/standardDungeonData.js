@@ -5822,10 +5822,6 @@ let StandardDungeons = {
 
                         // This exit is specifically for this setting, the normal exit is from bigLavaRoomUpperBack
                         Needs: [SettingSets.SHUFFLE_SILVER_RUPEES]
-                        // CustomRequirement: function(age) {
-                            
-                        //     return Settings.RandomizerSettings.shuffleSilverRupees;
-                        // }
                     }
                 },
                 ItemLocations: {
@@ -5850,12 +5846,6 @@ let StandardDungeons = {
                         Order: 15.4,
                         LongDescription: "This is the rupee in the fire circle. The switch is in the front part of the room. You can play the Song of Time (or just be Child) near it to spawn some blocks to make this easier to get. Otherwise, quickly navigate using your hover boots to get to this before the fire comes back. Note that a megaflip can get the rupee without hitting the switch!",
                         AdultNeedsAny: [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
-                        // CustomRequirement: function(age) {
-                        //     if (age === Age.CHILD) { return true; }
-                        //     return Data.canPlaySong(Songs.SONG_OF_TIME) ||
-                        //         Equipment.HOVER_BOOTS.playerHas ||
-                        //         Data.canMegaFlip(age);
-                        // }
                     }
                 }
             },
@@ -5864,12 +5854,6 @@ let StandardDungeons = {
                 Exits: {
                     bigLavaRoomFront: {
                         AdultNeedsAny: [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
-                        // CustomRequirement: function(age) {
-                        //     if (age === Age.CHILD) { return true; }
-                        //     return Data.canPlaySong(Songs.SONG_OF_TIME) ||
-                        //         Equipment.HOVER_BOOTS.playerHas ||
-                        //         Data.canMegaFlip(age);
-                        // }
                     },
                     bigLavaRoomUpperBack: {
                         Age: Age.ADULT,
@@ -6130,37 +6114,25 @@ let StandardDungeons = {
                 Exits: {
                     forestTrialRoom1: {},
                     fireTrialRoom1: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.ganonFireNoTunic ||
-                                ItemData.canUse(age, Equipment.GORON_TUNIC);
-                        }
+                        Needs: [GameStateSets.GANON_FIRE_TUNIC_CHECK]
                     },
                     waterTrialRoom1: {},
                     shadowTrialStart: {},
                     spiritTrialRoom1: {},
                     lightTrialRoom1: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip &&
-                                ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]);
-                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip &&
-                                ItemData.canUse(age, ItemSets.EXPLOSIVES);
-                            return canSuperslideIn || canEssClipIn || ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
-                        }
+                        NeedsAny: [
+                            UpgradedItems.GOLDEN_GAUNTLETS, 
+                            GlitchItemSets.GANON_LIGHT_ESS_CLIP, 
+                            GlitchItemSets.GANON_LIGHT_SUPERSLIDE_SKIP
+                        ]
                     },
                     center: {
-                        CustomRequirement: function(age) {
-                            if ((age === Age.ADULT && Settings.GlitchesToAllow.ganonTrialSkip) || Data.canStaircaseHover(age)) {
-                                return true;
-                            }
-
-                            return Data.itemLocationObtained("Ganon's Castle", "forestTrialEnd", "Forest Trial Complete") &&
-                                Data.itemLocationObtained("Ganon's Castle", "waterTrialEnd", "Water Trial Complete") &&
-                                Data.itemLocationObtained("Ganon's Castle", "shadowTrialEnd", "Shadow Trial Complete") &&
-                                Data.itemLocationObtained("Ganon's Castle", "fireTrialEnd", "Fire Trial Complete") &&
-                                Data.itemLocationObtained("Ganon's Castle", "lightTrialEnd", "Light Trial Complete") &&
-                                Data.itemLocationObtained("Ganon's Castle", "spiritTrialEnd", "Spirit Trial Complete");
-                        }
+                        NeedsAny: [
+                            GlitchItemSets.GANON_TRIAL_SKIP, 
+                            GlitchItemSets.STAIRCASE_HOVER, 
+                            ItemLocationSets.ALL_TRIALS_COMPLETED
+                        ]
                     },
                     Exit: {
                         OwExit: OwExits["Ganon's Castle"]["Exit"]
@@ -6342,11 +6314,10 @@ let StandardDungeons = {
                 Exits: {
                     shadowTrialMiddle: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            let canGetThereNormally = ItemData.canUse(age, Items.FIRE_ARROW);
-                            let canAvoidFireArrows = ItemData.canUse(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]);
-                            return canGetThereNormally || canAvoidFireArrows;
-                        }
+                        NeedsAny: [
+                            Items.FIRE_ARROW,
+                            [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -6356,11 +6327,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "Enter the shadow trial. The chest is in front of you and a bit to the left on a little island. You can hookshot to it, hover boots to it (you'll need to roll mid-air to get the distance), shoot a fire arrow at a torch to spawn platforms, or play the Song of Time to get a platform you can jump to (Child has this by default).",
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return true; }
-                            return ItemData.canUseAny(age, [Items.FIRE_ARROW, Equipment.HOVER_BOOTS, Items.HOOKSHOT]) ||
-                                Data.canPlaySong(Songs.SONG_OF_TIME);
-                        }
+                        AdultNeedsAny: [Items.FIRE_ARROW, Equipment.HOVER_BOOTS, Items.HOOKSHOT, Songs.SONG_OF_TIME]
                     }
                 }
             },
@@ -6368,10 +6335,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Shadow Trial", imageName: "Shadow Medallion" },
                 Exits: {
                     shadowTrialEnd: {
-                        CustomRequirement: function(age) {
-                            let canUseLens = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas;
-                            return canUseLens || Settings.GlitchesToAllow.gannonShadowTrialLens;
-                        }
+                        NeedsAny: [Items.LENS_OF_TRUTH, GlitchItemSets.GANON_SHADOW_NO_LENS]
                     }
                 },
                 ItemLocations: {
@@ -6401,10 +6365,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 13,
                         LongDescription: "Enter the shadow trial. First, get to the platform passed the like-like platform. One way to do this is to shoot a fire arrow at the torch to the right. If you can't, then use your longshot to hook the torch. Now get on the very edge of the platform closest to the like-like. Longshot the like-like to get over there. Either use the torch, or use Hover Boots to get to the next platform. The hearts are in front of you on an invislbe bridge (the start of the bridge is lined up with the chest spawn platform).",
-                        CustomRequirement: function(age) {
-                            let canUseLens = Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas;
-                            return canUseLens || Settings.GlitchesToAllow.gannonShadowTrialLens;
-                        }
+                        NeedsAny: [Items.LENS_OF_TRUTH, GlitchItemSets.GANON_SHADOW_NO_LENS]
                     }
                 }
             },
@@ -6442,12 +6403,8 @@ let StandardDungeons = {
                     fireTrialEnd: {
                         Map: "Ganon's Castle",
                         Age: Age.ADULT,
-                        SilverRupeeIndex: 2,
-                        Needs: [UpgradedItems.LONGSHOT],
-                        CustomRequirement: function(age) {
-                            return Settings.RandomizerSettings.shuffleSilverRupees ||
-                                ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
-                        }
+                        Needs: [SilverRupeeSets.GANON_FIRE_SILVER_RUPEES],
+                        NeedsAny: [UpgradedItems.LONGSHOT, GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS]
                     }
                 },
                 ItemLocations: {
@@ -6527,9 +6484,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
                 Exits: {
                     lightTrialRoom2: {
-                        CustomRequirement: function(age) {
-                            return ItemData.getKeyCount("Ganon's Castle") >= 1;
-                        }
+                        Needs: [() => ItemData.getKeyCount("Ganon's Castle") >= 1]
                     }
                 },
                 ItemLocations: {
@@ -6549,9 +6504,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
                 Exits: {
                     lightTrialRoom3: {
-                        CustomRequirement: function(age) {
-                            return ItemData.getKeyCount("Ganon's Castle") >= 2;
-                        }
+                        Needs: [() => ItemData.getKeyCount("Ganon's Castle") >= 2]
                     }
                 },
                 ItemLocations: {
@@ -6570,12 +6523,8 @@ let StandardDungeons = {
                 Exits: {
                     lightTrialEnd: {
                         Map: "Ganon's Castle",
-                        SilverRupeeIndex: 1,
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Settings.RandomizerSettings.shuffleSilverRupees ||
-                                (Items.HOOKSHOT.playerHas || Data.canGroundJumpWithBomb(age));
-                        }
+                        Needs: [SilverRupeeSets.GANON_LIGHT_SILVER_RUPEES]
                     }
                 },
                 ItemLocations: {
@@ -6592,9 +6541,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 25.1,
                         LongDescription: "This rupee is up on the ledge in the center of the room. Use your hooshot, or perform a ground jump to get it.",
-                        CustomRequirement: function(age) {
-                            return Items.HOOKSHOT.playerHas || Data.canGroundJumpWithBomb(age);
-                        }
+                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.GROUND_JUMP]
                     },
                     "Light Silver Rupee in Left Outer Alcove": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -6656,16 +6603,7 @@ let StandardDungeons = {
                 Exits: {
                     spiritTrialRoom2: {
                         Map: "Ganon's Castle",
-                        SilverRupeeIndex: 0,
-                        CustomRequirement: function(age) {
-                            if (Settings.RandomizerSettings.shuffleSilverRupees) {
-                                return true;
-                            }
-
-                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless &&
-                                ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
-                            return ItemData.canUse(age, Items.HOOKSHOT) || canAvoidHookshot;
-                        }
+                        Needs: [SilverRupeeSets.GANON_SPIRIT_SILVER_RUPEES]
                     }
                 },
                 ItemLocations: {
@@ -6712,11 +6650,7 @@ let StandardDungeons = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
                         Order: 27.5,
                         LongDescription: "This rupee is above the beamos. Use your hookshot, or perform the ISG hover to get the rupee (remember not to cancel ISG with shield!)",
-                        CustomRequirement: function(age) {
-                            let canAvoidHookshot = Settings.GlitchesToAllow.ganonSpiritHookshotless &&
-                                ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]);
-                            return ItemData.canUse(age, Items.HOOKSHOT) || canAvoidHookshot;
-                        }
+                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.GANON_SPIRIT_HOOKSHOTLESS]
                     }
                 }
             },
@@ -6724,10 +6658,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Spirit Trial", imageName: "Spirit Medallion" },
                 Exits: {
                     spiritTrialRoom3: {
-                        CustomRequirement: function(age) {
-                            let weirdShotItem = Items.HOOKSHOT.playerHas ? Items.HOOKSHOT : Items.FAIRY_BOW;
-                            return Items.BOMBCHU.playerHas || Data.canWeirdShot(age, weirdShotItem);
-                        }
+                        NeedsAny: [Items.BOMBCHU, GlitchItemSets.PROJECTILE_WEIRD_SHOT]
                     }
                 },
                 ItemLocations: {

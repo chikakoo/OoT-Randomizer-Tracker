@@ -120,6 +120,7 @@ let GlitchItemSets = {
 	// Common
 	WEIRD_SHOT: (age) => Data.canWeirdShot(age),
     LONGSHOT_WEIRD_SHOT: (age) => Data.canWeirdShot(age, UpgradedItems.LONGSHOT),
+    PROJECTILE_WEIRD_SHOT: (age) => Data.canWeirdShot(age, ItemSets.PROJECTILES),
 	MEGA_FLIP:  (age) => Data.canMegaFlip(age),
     CHU_MEGA_FLIP: (age) => ItemData.canUse(age, [Items.BOMBCHU, GlitchItemSets.MEGA_FLIP]),
     STAIRCASE_HOVER: (age) => Data.canStaircaseHover(age),
@@ -443,7 +444,21 @@ let GlitchItemSets = {
         Settings.GlitchesToAllow.gtgSilverBlockRoomExitWithHovers && 
         ItemData.canUse(age, Equipment.HOVER_BOOTS),
     GTG_EYE_STATUE_WONDERITEM_JUMPSLASH: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.gtgEyeStatueWonderItemJumpslash
+        Settings.GlitchesToAllow.gtgEyeStatueWonderItemJumpslash,
+
+    // Ganon's Castle
+    GANON_TRIAL_SKIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.ganonTrialSkip,
+    GANON_SHADOW_NO_LENS: () => Settings.GlitchesToAllow.ganonShadowTrialLensless,
+    GANON_SPIRIT_HOOKSHOTLESS: (age) => 
+        Settings.GlitchesToAllow.ganonSpiritHookshotless &&
+        ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]),
+    GANON_LIGHT_SUPERSLIDE_SKIP: (age) => age === Age.ADULT && 
+        Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip &&
+        ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]),
+    GANON_LIGHT_ESS_CLIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.ganonLightTrailEssSkip &&
+        ItemData.canUse(age, ItemSets.EXPLOSIVES)
 };
 
 /**
@@ -513,7 +528,15 @@ let ItemLocationSets = {
 
     // Ice Cavern
     ICE_MELTED_EAST_WALL: () => Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt East Ice Wall"),
-    ICE_MELTED_WEST_WALL: () => Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt West Ice Wall")
+    ICE_MELTED_WEST_WALL: () => Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt West Ice Wall"),
+
+    // Ganon's Castle
+    ALL_TRIALS_COMPLETED:() => Data.itemLocationObtained("Ganon's Castle", "forestTrialEnd", "Forest Trial Complete") &&
+        Data.itemLocationObtained("Ganon's Castle", "waterTrialEnd", "Water Trial Complete") &&
+        Data.itemLocationObtained("Ganon's Castle", "shadowTrialEnd", "Shadow Trial Complete") &&
+        Data.itemLocationObtained("Ganon's Castle", "fireTrialEnd", "Fire Trial Complete") &&
+        Data.itemLocationObtained("Ganon's Castle", "lightTrialEnd", "Light Trial Complete") &&
+        Data.itemLocationObtained("Ganon's Castle", "spiritTrialEnd", "Spirit Trial Complete")
 };
 
 /**
@@ -546,7 +569,8 @@ let GameStateSets = {
     WATER_TEMPLE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.waterNoZoraTunic || ItemData.canUse(age, Equipment.ZORA_TUNIC),
     SHADOW_LENS_CHECK: (age) => Settings.GlitchesToAllow.shadowLensless || ItemData.canUse(age, Items.LENS_OF_TRUTH),
     SHADOW_IRON_BOOTS_CHECK: (age) => Settings.GlitchesToAllow.shadowNoIronBoots || ItemData.canUse(age, Equipment.IRON_BOOTS),
-    GTG_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.gtgNoZoraTunic || ItemData.canUse(age, Equipment.ZORA_TUNIC)
+    GTG_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.gtgNoZoraTunic || ItemData.canUse(age, Equipment.ZORA_TUNIC),
+    GANON_FIRE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.ganonFireNoTunic || ItemData.canUse(age, Equipment.GORON_TUNIC),
 };
 
 /**
@@ -598,7 +622,19 @@ let SilverRupeeSets = {
         ? ItemData.checkSilverRupeeRequirement("Training Grounds", 2)
         : ItemData.canUse(age, 
             [Equipment.IRON_BOOTS, Songs.SONG_OF_TIME, GameStateSets.GTG_TUNIC_CHECK]),
-    MQ_GTG_SILVER_RUPEES_SLOPES_ROOM: (age) => SilverRupeeSets.GTG_SILVER_RUPEES_SLOPES_ROOM(age)
+    MQ_GTG_SILVER_RUPEES_SLOPES_ROOM: (age) => SilverRupeeSets.GTG_SILVER_RUPEES_SLOPES_ROOM(age),
+    GANON_SPIRIT_SILVER_RUPEES: (age) =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Ganon's Castle", 0)
+        : ItemData.canUseAny(age, [Items.HOOKSHOT, GlitchItemSets.GANON_SPIRIT_HOOKSHOTLESS]),
+    GANON_LIGHT_SILVER_RUPEES: (age) =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Ganon's Castle", 1)
+        : ItemData.canUseAny(age, [Items.HOOKSHOT, GlitchItemSets.GROUND_JUMP]),
+    GANON_FIRE_SILVER_RUPEES: (age) => 
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Ganon's Castle", 2)
+        : ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS)
 };
 
 /**
