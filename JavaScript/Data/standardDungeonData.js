@@ -3697,10 +3697,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 38,
                         LongDescription: "From the room with invisible walls, enter the room that's straight ahead of you (the west room). Use the bomb flower or your own bombs to blow up all three skulls to spawn the 9 items.",
-                        CustomRequirement: function(age) {
-                            let canUseChu = Settings.GlitchesToAllow.shadowGiantSkullsWithChus && Items.BOMBCHU.playerHas;
-                            return canUseChu || Items.BOMB.playerHas || Equipment.STRENGTH.playerHas;
-                        }
+                        NeedsAny: [Items.BOMB, Equipment.STRENGTH, GlitchItemSets.SHADOW_GIANT_SKULLS_WITH_CHU]
                     },
                     "2 Pots in Invisible Floormaster Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3748,12 +3745,8 @@ let StandardDungeons = {
                     bossRoom: {
                         Map: "Shadow Temple",
                         LockedDoor: "Locked Door After Boat Ride",
-                        CustomRequirement: function(age) {
-                            if (!ItemData.hasBossKey("Shadow Temple")) { return false; }
-
-                            let canGetToDoor = Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
-                            return canGetToDoor;
-                        }
+                        Needs: [KeySets.SHADOW_BK],
+                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     }
                 },
                 ItemLocations: {
@@ -3796,11 +3789,10 @@ let StandardDungeons = {
         Floors: ["F4", "F3", "F2", "F1"],
         StartingFloorIndex: 3,
         _canAccessAdultSide: function() {
-            if (ItemData.canUse(Age.ADULT, UpgradedItems.SILVER_GAUNTLETS)) { return true; }
-
-            return (Settings.GlitchesToAllow.spiritBlockSkipWithHovers && Equipment.HOVER_BOOTS.playerHas) || (
-                Settings.GlitchesToAllow.spiritBlockSkipWithBombPush &&
-                ItemData.canUse(Age.ADULT, [ItemSets.SHIELDS, Items.BOMB]));
+            return ItemData.canUseAny(Age.ADULT, [
+                UpgradedItems.SILVER_GAUNTLETS,
+                GlitchItemSets.SPIRIT_BLOCK_SKIP_WITH_HOVER_BOOTS,
+                GlitchItemSets.SPIRIT_BLOCK_SKIP_WITH_BOMB_PUSH]);
         },
         Regions: {
             main: {
@@ -3811,9 +3803,7 @@ let StandardDungeons = {
                     },
                     beyondSilverBlock: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return MapLocations["Spirit Temple"]._canAccessAdultSide();
-                        }
+                        Needs: [() => MapLocations["Spirit Temple"]._canAccessAdultSide()]
                     },
                     Exit: {
                         OwExit: OwExits["Spirit Temple"]["Exit"]
@@ -3869,7 +3859,7 @@ let StandardDungeons = {
                             }
 
                             let minValue = 1;
-                            if (Data.itemLocationObtained("Spirit Temple", "main", "Locked Door After Second Crawl Space")) {
+                            if (ItemLocationSets.SPIRIT_OPENED_DOOR_AFTER_SECOND_CRAWL_SPACE()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 5 };
@@ -3885,7 +3875,7 @@ let StandardDungeons = {
                         LongDescription: "This is the locked door after the silver block on the adult side.",
                         KeyRequirement: function(age) {
                             let minValue = 1;
-                            if (Data.itemLocationObtained("Spirit Temple", "main", "Locked Door After Second Crawl Space")) {
+                            if (ItemLocationSets.SPIRIT_OPENED_DOOR_AFTER_SECOND_CRAWL_SPACE()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 3 };
@@ -3901,7 +3891,7 @@ let StandardDungeons = {
                         LongDescription: "This is the locked door on the upper east part of the statue room.",
                         KeyRequirement: function(age) {
                             let minValue = 2;
-                            if (Data.itemLocationObtained("Spirit Temple", "main", "Locked Door After Second Crawl Space")) {
+                            if (ItemLocationSets.SPIRIT_OPENED_DOOR_AFTER_SECOND_CRAWL_SPACE()) {
                                 minValue++;
                             }
                             return { min: minValue, max: 4 };
@@ -3917,7 +3907,7 @@ let StandardDungeons = {
                         LongDescription: "This is the locked door in the southwest corner of the room with Anubises and pits.",
                         KeyRequirement: function(age) {
                             let minValue = 3;
-                            if (Data.itemLocationObtained("Spirit Temple", "main", "Locked Door After Second Crawl Space")) {
+                            if (ItemLocationSets.SPIRIT_OPENED_DOOR_AFTER_SECOND_CRAWL_SPACE()) {
                                 minValue++;
                             }
 
@@ -3931,15 +3921,13 @@ let StandardDungeons = {
                 Exits: {
                     childAfterStalfos: {
                         ChildNeedsAny: [ItemSets.SWORDS, ItemSets.EXPLOSIVES], // To clear the first room
-                        CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) ||
-                                ItemData.canUseAny(age, [
-                                    ItemSets.PROJECTILES, Items.BOOMERANG, // Hit the switch directly
-                                    Items.BOMBCHU, // Backflip x3 from the opposite wall and drop it
-                                    Equipment.HOVER_BOOTS, // Cross directly
-                                    UpgradedItems.LONGSHOT // Hook the chest across the chasm
-                                ]);
-                        }
+                        NeedsAny: [
+                            GlitchItemSets.MEGA_FLIP,
+                            ItemSets.PROJECTILES, Items.BOOMERANG, // Hit the switch directly
+                            Items.BOMBCHU, // Backflip x3 from the opposite wall and drop it
+                            Equipment.HOVER_BOOTS, // Cross directly
+                            UpgradedItems.LONGSHOT // Hook the chest across the chasm
+                        ]
                     },
                     childSkulltulaInGrateRoom: {
                         Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
@@ -4058,9 +4046,7 @@ let StandardDungeons = {
                 Exits: {
                     childOnlyArea: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Data.canWeirdShot(age);
-                        }
+                        Needs: [GlitchItemSets.WEIRD_SHOT]
                     },
                     roomWithSunOnFloor: {
                         Map: "Spirit Temple",
@@ -4305,16 +4291,17 @@ let StandardDungeons = {
                     },
                     "Chest in Statue Room on Northeast Platform": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: {x: 254, y: 107, floor: "F2" },
+                        MapInfo: { x: 254, y: 107, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 29,
                         LongDescription: "Head to the statue room. Head up to the upper southeast corner of the room. If you face the statue, that's behind and to the right if you. You may have to hookshot up to the platform to get there. Jump to the statue's hand from the platform. You can use hover boots if you want, but they aren't necessary. Play Zelda's Lullaby on the Triforce picture. Now, head back up to the southeast corner. The platform to the right of the hand now has a chest on it. Use your hookshot or hover boots to get to it.",
                         Needs: [Songs.ZELDAS_LULLABY],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.spiritStatueRoomJumps ||
-                                Data.canMegaFlip(age) ||
-                                ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]);
-                        }
+                        NeedsAny: [
+                            Items.HOOKSHOT,
+                            Equipment.HOVER_BOOTS,
+                            GlitchItemSets.MEGA_FLIP,
+                            GlitchItemSets.SPIRIT_STATUE_ROOM_JUMPS
+                        ]
                     },
                     "Chest on Statue's Hand": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4326,22 +4313,19 @@ let StandardDungeons = {
                     },
                     "Skulltula in Statue Room on Northwest Platform": {
                         ItemGroup: ItemGroups.SKULLTULA,
-                        MapInfo: {x: 93, y: 101, floor: "F2" },
+                        MapInfo: { x: 93, y: 101, floor: "F2" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         Order: 31,
                         LongDescription: "Head to the statue room. Get to the upper southwest corner of the room. Facing the statue, that would be behind you and to the left. The skulltula is on a platform to the left of the statue. You can Scarecrow's Song or hover boots to get to it.",
-                        CustomRequirement: function(age) {
-                            let canMegaFlip = Data.canMegaFlip(age);
-                            if (age === Age.CHILD) {
-                                return canMegaFlip;
-                            }
-
-                            return Settings.GlitchesToAllow.spiritStatueRoomJumps ||
-                                canMegaFlip ||
-                                ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT]) ||
-                                Data.canHookScarecrow(age);
-                        }
+                        ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+                        AdultNeedsAny: [
+                            UpgradedItems.LONGSHOT,
+                            Equipment.HOVER_BOOTS,
+                            GameStateSets.CAN_HOOK_SCARECROW,
+                            GlitchItemSets.MEGA_FLIP,
+                            GlitchItemSets.SPIRIT_STATUE_ROOM_JUMPS
+                        ]
                     }
                 }
             },
@@ -4395,19 +4379,16 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor. As child, you can collect the silver rupees to light the golden torch. After that, use a Deku Stick to light the other torches. You can also just use Din's Fire to light them - make sure to light two at once, then get close to the third one before casting it a second time. As adult, your only options are Din's Fire or Fire Arrows.",
-                        CustomRequirement: function(age) {
-                            let canUseFireItem = ItemData.canUse(age, ItemSets.FIRE_ITEMS);
-                            let canUseStick = ItemData.canUse(age, Items.DEKU_STICK);
-                            let canDoFlameStorage = Settings.GlitchesToAllow.flameStorage && canUseStick;
-                            let canUseQPA = ItemData.canUse(age, QPAItemSets.LEDGE_QPA);
-                            let canLightTorchesWithoutRupees = canDoFlameStorage || canUseFireItem || canUseQPA;
-                            if (canLightTorchesWithoutRupees) {
-                                return true;
-                            }
-
-                            let canTurnOnGoldenTorch = !Settings.RandomizerSettings.shuffleSilverRupees || ItemData.checkSilverRupeeRequirement("Spirit Temple", 1);
-                            return canTurnOnGoldenTorch && canUseStick;
-                        }
+                        NeedsAny: [
+                            ItemSets.FIRE_ITEMS, 
+                            GlitchItemSets.FLAME_STORAGE,
+                            QPAItemSets.TALL_TORCH_QPA,
+                            [
+                                Items.DEKU_STICK,
+                                [SetType.OR,
+                                    SettingSets.VANILLA_SILVER_RUPEES, SilverRupeeSets.SPIRIT_SILVER_RUPEES_SUN_BLOCK_ROOM]
+                            ]
+                        ]
                     },
                     "2 Pots in Hall Before Silver Knuckle": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -4441,10 +4422,7 @@ let StandardDungeons = {
                 Exits: {
                     mirrorShieldKnuckle: {
                         Age: Age.ADULT,
-                        Needs: [Items.BOMB, Equipment.HOVER_BOOTS, ItemSets.SHIELDS],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.spiritSuperslideToMirrorShield;
-                        }
+                        Needs: [GlitchItemSets.SPIRIT_SUPERSLIDE_TO_MIRROR_SHIELD]
                     },
                     statueHands: {}
                 },
@@ -4560,15 +4538,15 @@ let StandardDungeons = {
                     },
                     "Boss Key Chest After Moving Wall Room": {
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: {x: 294, y: 40, floor: "F4" },
+                        MapInfo: { x: 294, y: 40, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 40,
                         LongDescription: "Head to the moving wall room. This is the room to your right if you enter the topmost southeast area of the statue room. It's also the room straight ahead if leaving the 4 armos room.<br/><br/>Head up the wall - longshot up there if you have it. In the next room, play Zelda's Lullaby to open the door in front of you. Bomb, hammer, or the fake door just to the left of the boss key chest. Shoot the eye switch to spawn some platforms (with good timing if yu didn't break it). Now, hookshot up there and hit the switch to put the fire out.",
                         Needs: [Songs.ZELDAS_LULLABY],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.spiritBKTrick ||
-                                ItemData.canUse(age, [Items.FAIRY_BOW, Items.HOOKSHOT]);
-                        }
+                        NeedsAny: [
+                            [Items.FAIRY_BOW, Items.HOOKSHOT],
+                            GlitchItemSets.SPIRIT_BK_CHEST_WITH_NOTHING
+                        ]
                     }
                 }
             },
@@ -4576,10 +4554,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Mirror Room & Boss Area", imageName: "Spirit Medallion" },
                 Exits: {
                     bossRoom: {
-                        Needs: [Items.HOOKSHOT, ItemSets.EXPLOSIVES, Equipment.MIRROR_SHIELD],
-                        CustomRequirement: function(age) {
-                            return ItemData.hasBossKey("Spirit Temple");
-                        }
+                        Needs: [KeySets.SPIRIT_BK, Items.HOOKSHOT, ItemSets.EXPLOSIVES, Equipment.MIRROR_SHIELD],
                     }
                 },
                 ItemLocations: {

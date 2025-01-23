@@ -137,6 +137,9 @@ let GlitchItemSets = {
     BOOMERANG_TRICK_THROWS: (age) => 
         Settings.GlitchesToAllow.difficultBoomerangTrickThrows && 
         ItemData.canUse(age, Items.BOOMERANG),
+    FLAME_STORAGE: (age) =>
+        Settings.GlitchesToAllow.flameStorage &&
+        ItemData.canUse(age, Items.DEKU_STICK),
 
 	// Forest / Woods
     POKEY_SKIP: (age) => 
@@ -387,6 +390,18 @@ let GlitchItemSets = {
         ItemData.canUse(age, Items.BOMBCHU),
 
     // Spirit Temple
+    SPIRIT_BLOCK_SKIP_WITH_HOVER_BOOTS: (age) => 
+        Settings.GlitchesToAllow.spiritBlockSkipWithHovers && 
+        ItemData.canUse(age, Equipment.HOVER_BOOTS),
+    SPIRIT_BLOCK_SKIP_WITH_BOMB_PUSH: (age) =>
+        Settings.GlitchesToAllow.spiritBlockSkipWithBombPush &&
+        ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB]),
+    SPIRIT_STATUE_ROOM_JUMPS: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.spiritStatueRoomJumps,
+    SPIRIT_SUPERSLIDE_TO_MIRROR_SHIELD: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.spiritSuperslideToMirrorShield &&
+        ItemData.canUse(age, [Items.BOMB, Equipment.HOVER_BOOTS, ItemSets.SHIELDS]),
+    SPIRIT_BK_CHEST_WITH_NOTHING: () => Settings.GlitchesToAllow.spiritBKTrick,
     MQ_SPIRIT_STATUE_ROOM_TORCHES_WITH_DINS: (age) => 
         Settings.GlitchesToAllow.mqSpiritStatueTorchesWithDins &&
         ItemData.canUse(age, Items.DINS_FIRE)
@@ -452,7 +467,10 @@ let ItemLocationSets = {
     // Water Temple
     WATER_LOWERED_WATER_LEVEL: () => Data.itemLocationObtained("Water Temple", "lowWaterLevel", "Lower Water Level"),
     WATER_OPENED_CENTRAL_ROOM: () => Data.itemLocationObtained("Water Temple", "main", "Locked Door to Central Room"),
-    DEFEATED_MORPHA: () => Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp")
+    DEFEATED_MORPHA: () => Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp"),
+
+    // Spirit Temple
+    SPIRIT_OPENED_DOOR_AFTER_SECOND_CRAWL_SPACE: () => Data.itemLocationObtained("Spirit Temple", "main", "Locked Door After Second Crawl Space")
 };
 
 /**
@@ -503,7 +521,8 @@ let KeySets = {
  */
 let SilverRupeeSets = {
     SHADOW_SILVER_RUPEES_SCYTHE_ROOM: () => ItemData.checkSilverRupeeRequirement("Shadow Temple", 0),
-    SHADOW_SILVER_RUPEES_PIT_ROOM: () => ItemData.checkSilverRupeeRequirement("Shadow Temple", 1)
+    SHADOW_SILVER_RUPEES_PIT_ROOM: () => ItemData.checkSilverRupeeRequirement("Shadow Temple", 1),
+    SPIRIT_SILVER_RUPEES_SUN_BLOCK_ROOM: () => ItemData.checkSilverRupeeRequirement("Spirit Temple", 1)
 };
 
 /**
