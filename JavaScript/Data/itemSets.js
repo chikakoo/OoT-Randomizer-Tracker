@@ -423,7 +423,16 @@ let GlitchItemSets = {
         Settings.GlitchesToAllow.botwActorGlitch,
     WELL_VINE_CLIP: (age) => age === Age.CHILD &&
         Settings.GlitchesToAllow.botwVineClip &&
-        ItemData.canUse(age, Equipment.KOKIRI_SWORD)
+        ItemData.canUse(age, Equipment.KOKIRI_SWORD),
+
+    // Gerudo Training Ground
+    GTG_FIRE_WALL_SKIP: () => Settings.GlitchesToAllow.gtgSlopesRoomFireWallSkip,
+    GTG_WALL_MASTER_TO_SILVER_RUPEE: () => 
+        Settings.GlitchesToAllow.gtgSlopesRoomWallmasterToRupee &&
+        (
+            !Settings.RandomizerSettings.shuffleSilverRupees ||
+            !ItemData.checkSilverRupeeRequirement("Training Grounds", 0) // Can't use SilverRupeeSets due to circular logic (same index in MQ)
+        )
 };
 
 /**
@@ -561,7 +570,12 @@ let SilverRupeeSets = {
     ICE_SILVER_RUPEES_SCYTHE_ROOM: (age) =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Ice Cavern", 0)
-        : age === Age.ADULT
+        : age === Age.ADULT,
+    GTG_SILVER_RUPEES_SLOPES_ROOM: (age) =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Training Grounds", 0)
+        : ItemData.canUseAny(age, [Items.HOOKSHOT, GlitchItemSets.GTG_WALL_MASTER_TO_SILVER_RUPEE]),
+    MQ_GTG_SILVER_RUPEES_SLOPES_ROOM: (age) => SilverRupeeSets.GTG_SILVER_RUPEES_SLOPES_ROOM(age)
 };
 
 /**

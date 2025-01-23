@@ -6636,10 +6636,7 @@ let MQDungeons = {
                 Exits: {
                     roomWithSilverBlock: {
                         Map: "Training Grounds",
-                        SilverRupeeIndex: 0,
-                        CustomRequirement: function(age) {
-                            return Settings.RandomizerSettings.shuffleSilverRupees || ItemData.canUse(age, Items.HOOKSHOT);
-                        }
+                        Needs: [SilverRupeeSets.MQ_GTG_SILVER_RUPEES_SLOPES_ROOM] // Checks for hookshot/wall master glitch
                     }
                 },
                 ItemLocations: {
@@ -6656,11 +6653,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 7.1,
                         LongDescription: "After the sand room, look for the rupee to your right on the ceiling. You can get it with a well-angled hookshot to the ceiling target; get the rest of the distance with a jumpslash.",
-                        CustomRequirement: function(age) {
-                            let canUseWallmaster = Settings.GlitchesToAllow.gtgSlopesRoomWallmasterToRupee &&
-                                !ItemData.checkSilverRupeeRequirement("Training Grounds", 0);
-                            return canUseWallmaster || ItemData.canUse(age, Items.HOOKSHOT);
-                        }
+                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.GTG_WALL_MASTER_TO_SILVER_RUPEE]
                     },
                     "Icicle Silver Rupee in Back Left Area": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,

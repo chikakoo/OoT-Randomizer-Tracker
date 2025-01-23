@@ -5612,10 +5612,8 @@ let StandardDungeons = {
                 Exits: {
                     silverBlockRoom: {
                         Map: "Training Grounds",
-                        SilverRupeeIndex: 0,
-                        CustomRequirement(age) {
-                            return Settings.GlitchesToAllow.gtgSlopesRoomFireWallSkip || ItemData.canUse(age, Items.HOOKSHOT);
-                        }
+                        Needs: [SilverRupeeSets.GTG_SILVER_RUPEES_SLOPES_ROOM], // Checks for hookshot/wall master glitch
+                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.GTG_FIRE_WALL_SKIP]
                     }
                 },
                 ItemLocations: {
@@ -5626,11 +5624,7 @@ let StandardDungeons = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgSlopesRoomWallmasterToRupee; },
                         Order: 3.1,
                         LongDescription: "After the sandy stalfos room, you'll find this room. The rupee is on the ceiling a little ahead of the entrance. Use your hookshot to reach it.<br/><br/>If you have no hookshot, you can trigger the wallmaster then have it take you upward into it.",
-                        CustomRequirement: function(age) {
-                            let canUseWallmaster = Settings.GlitchesToAllow.gtgSlopesRoomWallmasterToRupee &&
-                                !ItemData.checkSilverRupeeRequirement("Training Grounds", 0);
-                            return canUseWallmaster || ItemData.canUse(age, Items.HOOKSHOT);
-                        }
+                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.GTG_WALL_MASTER_TO_SILVER_RUPEE]
                     },
                     "Boulder Silver Rupee in Left Area by Void": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
