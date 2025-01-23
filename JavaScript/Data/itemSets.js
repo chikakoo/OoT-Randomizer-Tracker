@@ -432,7 +432,13 @@ let GlitchItemSets = {
         (
             !Settings.RandomizerSettings.shuffleSilverRupees ||
             !ItemData.checkSilverRupeeRequirement("Training Grounds", 0) // Can't use SilverRupeeSets due to circular logic (same index in MQ)
-        )
+        ),
+    GTG_HAMMER_HOVER_BOOTS_SILVER_BLOCK_SKIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.gtgSilverBlockSkipWithHammerSuperslide &&
+        ItemData.canUse(age, GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS),
+    GTG_SILVER_BLOCK_ROOM_EXIT_WITH_HOVERS: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.gtgSilverBlockRoomExitWithHovers && 
+        ItemData.canUse(age, Equipment.HOVER_BOOTS)
 };
 
 /**

@@ -5663,22 +5663,9 @@ let StandardDungeons = {
                 },
                 Exits: {
                     boulderRoom: {},
-                    roomBehindSilverBlock: {
+                    upperSilverBlockRoom: {
                         Age: Age.ADULT,
-                        Needs: [Items.HOOKSHOT],
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, UpgradedItems.SILVER_GAUNTLETS) || (
-                                Settings.GlitchesToAllow.gtgSilverBlockSkipWithHammerSuperslide &&
-                                Data.canHammerHoverBootsSuperslide(age)
-                            );
-                        }
-                    },
-                    eyeStatueRoomTop: {
-                        Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Items.HOOKSHOT) ||
-                                (Settings.GlitchesToAllow.gtgSilverBlockRoomExitWithHovers && ItemData.canUse(age, Equipment.HOVER_BOOTS));
-                        }
+                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.GTG_SILVER_BLOCK_ROOM_EXIT_WITH_HOVERS]
                     }
                 },
                 ItemLocations: {
@@ -5690,6 +5677,16 @@ let StandardDungeons = {
                         LongDescription: "This is the room either after the stalfos sandy room, or after the silver rupee room with the fire walls. Kill all the wolfos to spawn a chest."
                     }
                 }
+            },
+            upperSilverBlockRoom: {
+                Exits: {
+                    eyeStatueRoomTop: {},
+                    silverBlockRoom: {},
+                    roomBehindSilverBlock: {
+                        NeedsAny: [UpgradedItems.SILVER_GAUNTLETS, GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS]
+                    }
+                },
+                ItemLocations: {}
             },
             roomBehindSilverBlock: {
                 DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Strength Silver Gauntlets" },
@@ -5729,7 +5726,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Eye Statue Room", imageName: "Fairy Bow" },
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {
-                    silverBlockRoom: {},
+                    upperSilverBlockRoom: {},
                     eyeStatueRoomBottom: {}
                 },
                 ItemLocations: {
