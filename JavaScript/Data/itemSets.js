@@ -412,7 +412,11 @@ let GlitchItemSets = {
     ICE_TRIPLE_SLASH_CLIP: (age) =>
         Settings.GlitchesToAllow.iceTripleSlashClips &&
         ItemData.canUseAny(age, [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD]) &&
-        ItemData.canUse(age, ItemSets.FIRST_PERSON_ITEMS)
+        ItemData.canUse(age, ItemSets.FIRST_PERSON_ITEMS),
+    ICE_BLOCK_ROOM_SKULL_WITH_HOVER_BOOTS: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.iceBlockSkullWithHovers &&
+        ItemData.canUse(age, Equipment.HOVER_BOOTS) &&
+        ItemData.canUseAny(age, [ItemSets.DISTANT_SWITCH_ITEMS, Items.DINS_FIRE])
 };
 
 /**

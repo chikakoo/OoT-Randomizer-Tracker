@@ -4766,9 +4766,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Red Ice Room", imageName: "Compass" },
                 Exits: {
                     blueFire: {
-                        CustomRequirement: function(age) {
-                            return Data.hasBottle();
-                        }
+                        Needs: [GameStateSets.HAS_BOTTLE]
                     }
                 },
                 ItemLocations: {
@@ -4778,9 +4776,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. Melt the ice containing the chest.",
-                        CustomRequirement: function(age) {
-                            return Data.hasBottleOrBlueFire(age);
-                        }
+                        NeedsAny: [GameStateSets.HAS_BOTTLE, ItemSets.BLUE_FIRE_ITEMS]
                     },
                     "Heart Piece in Right Red Ice Room": {
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -4788,9 +4784,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. Melt the ice containing the heart piece.",
-                        CustomRequirement: function(age) {
-                            return Data.hasBottleOrBlueFire(age);
-                        }
+                        NeedsAny: [GameStateSets.HAS_BOTTLE, ItemSets.BLUE_FIRE_ITEMS]
                     },
                     "Skulltula in Right Red Ice Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -4806,9 +4800,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Platforming Room", imageName: "Dungeon Map" },
                 Exits: {
                     blueFire: {
-                        CustomRequirement: function(age) {
-                            return Data.hasBottle();
-                        }
+                        Needs: [GameStateSets.HAS_BOTTLE]
                     },
                 },
                 ItemLocations: {
@@ -4828,9 +4820,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 8,
                         LongDescription: "This is the room you gain access to after you collect all the silver rupees in the spinning scythe room. Navigate to the top and use blue fire on the chest to gain access to it.",
-                        CustomRequirement: function(age) {
-                            return Data.hasBottleOrBlueFire(age);
-                        }
+                        NeedsAny: [GameStateSets.HAS_BOTTLE, ItemSets.BLUE_FIRE_ITEMS]
                     },
                     "Frozen Pot in Platforming Room": {
                         ItemGroup: ItemGroups.POT,
@@ -4856,15 +4846,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "When you first enter the spinning scythe room, look to your left. Burn the red ice with your blue fire and enter the room. When you get to the big room, the skulltula will be on the wall to your left.",
-                        CustomRequirement: function(age) {
-                            if (ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS)) {
-                                return true;
-                            }
-
-                            return Settings.GlitchesToAllow.iceBlockSkullWithHovers &&
-                                ItemData.canUse(age, Equipment.HOVER_BOOTS) &&
-                                ItemData.canUseAny(age, [ItemSets.DISTANT_SWITCH_ITEMS, Items.DINS_FIRE]);
-                        }
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.ICE_BLOCK_ROOM_SKULL_WITH_HOVER_BOOTS]
                     },
                     "Block Silver Rupee in Center": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4910,9 +4892,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 14,
                         LongDescription: "When you first enter the spinning scythe room, look to your left. Burn the red ice with your blue fire and enter the room. The rupees are above the area with the blue fire. You can either use the boomerang to get them, or play the Song of Time on the platform with the blue fire to spawn some blocks.",
-                        CustomRequirement: function(age) {
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) || ItemData.canUse(age, Items.BOOMERANG);
-                        }
+                        NeedsAny: [Songs.SONG_OF_TIME, Items.BOOMERANG]
                     }
                 }
             },
@@ -4920,9 +4900,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Final Hallway & Boss", imageName: "Iron Boots" },
                 Exits: {
                     bossRoom: {
-                        CustomRequirement: function(age) {
-                            return Data.hasBottleOrBlueFire(age);
-                        }
+                        NeedsAny: [GameStateSets.HAS_BOTTLE, ItemSets.BLUE_FIRE_ITEMS]
                     }
                 },
                 ItemLocations: {
