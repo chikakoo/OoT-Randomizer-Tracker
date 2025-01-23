@@ -3279,14 +3279,15 @@ let StandardDungeons = {
                         UseAdultAge: function(age) { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                         Order: 9,
                         LongDescription: "After crossing the gap onto the tongue, proceed down the hallway. At the beamos, take the left path (it's a fake wall) and enter the room. Collect all the silver rupees to open the path to a chest.<br/><br/>If you have no hookshot, you can use hover boots to get to the wooden box from one of the wooden platforms.",
-                        NeedsAny: [
-                            [SettingSets.SHUFFLE_SILVER_RUPEES, 
-                                [SetType.OR, 
-                                    GlitchItemSets.WEIRD_SHOT, SilverRupeeSets.SHADOW_SILVER_RUPEES_SCYTHE_ROOM]],
-                            [SettingSets.VANILLA_SILVER_RUPEES,
-                                [SetType.OR,
-                                    Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING]]
-                        ]
+                        NeedsAny: [SilverRupeeSets.SHADOW_SILVER_RUPEES_SCYTHE_ROOM, GlitchItemSets.WEIRD_SHOT]
+                        // NeedsAny: [
+                        //     [SettingSets.SHUFFLE_SILVER_RUPEES, 
+                        //         [SetType.OR, 
+                        //             GlitchItemSets.WEIRD_SHOT, SilverRupeeSets.SHADOW_SILVER_RUPEES_SCYTHE_ROOM]],
+                        //     [SettingSets.VANILLA_SILVER_RUPEES,
+                        //         [SetType.OR,
+                        //             Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING]]
+                        // ]
                     }
                 }
             },
@@ -4383,11 +4384,7 @@ let StandardDungeons = {
                             ItemSets.FIRE_ITEMS, 
                             GlitchItemSets.FLAME_STORAGE,
                             QPAItemSets.TALL_TORCH_QPA,
-                            [
-                                Items.DEKU_STICK,
-                                [SetType.OR,
-                                    SettingSets.VANILLA_SILVER_RUPEES, SilverRupeeSets.SPIRIT_SILVER_RUPEES_SUN_BLOCK_ROOM]
-                            ]
+                            [Items.DEKU_STICK, SilverRupeeSets.SPIRIT_SILVER_RUPEES_SUN_BLOCK_ROOM]
                         ]
                     },
                     "2 Pots in Hall Before Silver Knuckle": {
@@ -4635,36 +4632,26 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Up to Center Room", imageName: "Blue Fire" },
                 Exits: {
                     blueFireSideRoom: {
-                        CustomRequirement: function(age) {
-                            if (MapLocations["Ice Cavern"]._canDoTripleSlashClip(age)) {
-                                return true;
-                            }
-
-                            if (Settings.GlitchesToAllow.iceLedgeClip && age === Age.ADULT) {
-                                return true;
-                            }
-
-                            let isWallMelted = Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt East Ice Wall");
-                            return isWallMelted || ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS);
-                        }
+                        NeedsAny: [
+                            ItemSets.BLUE_FIRE_ITEMS,
+                            ItemLocationSets.ICE_MELTED_EAST_WALL,
+                            GlitchItemSets.ICE_LEDGE_CLIP,
+                            GlitchItemSets.ICE_TRIPLE_SLASH_CLIP
+                        ]
                     },
                     blueFire: {
                         Needs: [ItemSets.BLUE_FIRE_ITEMS]
                     },
                     northRoom: {
-                        CustomRequirement: function(age) {
-                            return ItemData.checkSilverRupeeRequirement("Ice Cavern", 0) ||
-                                MapLocations["Ice Cavern"]._canDoTripleSlashClip(age);
-                        },
-                        Age: Age.ADULT
+                        Age: Age.ADULT,
+                        NeedsAny: [SilverRupeeSets.ICE_SILVER_RUPEES_SCYTHE_ROOM, GlitchItemSets.ICE_TRIPLE_SLASH_CLIP]
                     },
                     blockPushRoom: {
-                        CustomRequirement: function(age) {
-                            let isWallMelted = Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt West Ice Wall");
-                            return isWallMelted ||
-                                ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS) ||
-                                MapLocations["Ice Cavern"]._canDoTripleSlashClip(age);
-                        }
+                        NeedsAny: [
+                            ItemSets.BLUE_FIRE_ITEMS,
+                            ItemLocationSets.ICE_MELTED_WEST_WALL,
+                            GlitchItemSets.ICE_TRIPLE_SLASH_CLIP
+                        ]
                     }
                 },
                 ItemLocations: {

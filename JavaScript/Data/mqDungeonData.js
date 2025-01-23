@@ -4287,16 +4287,7 @@ let MQDungeons = {
                         UseAdultAge: function(age) { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                         Order: 9,
                         LongDescription: "First, turn the truth spinner in the main room to the correct skull to open the gate. Now, shoot the torches to the left and right of the gate to create a platform. Alternatively, you can megaflip or hover boots across. Take the left door from the beamos. Gather all the rupees to open the cell to the chest.",
-                        CustomRequirement: function(age) {
-                            // We can't check the index via the property here since we don't NEED the rupees to advance in this case
-                            if (Settings.RandomizerSettings.shuffleSilverRupees) { 
-                                return Data.canWeirdShot(age) || ItemData.checkSilverRupeeRequirement("Shadow Temple", 0);
-                            }
-                            if (age === Age.CHILD) { return false; }
-
-                            return ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]) ||
-                                Settings.GlitchesToAllow.shadowSilverRupeeWithNothing;
-                        }
+                        NeedsAny: [SilverRupeeSets.SHADOW_SILVER_RUPEES_SCYTHE_ROOM, GlitchItemSets.WEIRD_SHOT]
                     },
                     "Invisible Chest Under Scythe Room": {
                         ItemGroup: ItemGroups.CHEST,

@@ -404,7 +404,15 @@ let GlitchItemSets = {
     SPIRIT_BK_CHEST_WITH_NOTHING: () => Settings.GlitchesToAllow.spiritBKTrick,
     MQ_SPIRIT_STATUE_ROOM_TORCHES_WITH_DINS: (age) => 
         Settings.GlitchesToAllow.mqSpiritStatueTorchesWithDins &&
-        ItemData.canUse(age, Items.DINS_FIRE)
+        ItemData.canUse(age, Items.DINS_FIRE),
+
+    // Ice Cavern
+    ICE_LEDGE_CLIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.iceLedgeClip,
+    ICE_TRIPLE_SLASH_CLIP: (age) =>
+        Settings.GlitchesToAllow.iceTripleSlashClips &&
+        ItemData.canUseAny(age, [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD]) &&
+        ItemData.canUse(age, ItemSets.FIRST_PERSON_ITEMS)
 };
 
 /**
@@ -470,7 +478,11 @@ let ItemLocationSets = {
     DEFEATED_MORPHA: () => Data.itemLocationObtained("Water Temple", "bossRoom", "Blue Warp"),
 
     // Spirit Temple
-    SPIRIT_OPENED_DOOR_AFTER_SECOND_CRAWL_SPACE: () => Data.itemLocationObtained("Spirit Temple", "main", "Locked Door After Second Crawl Space")
+    SPIRIT_OPENED_DOOR_AFTER_SECOND_CRAWL_SPACE: () => Data.itemLocationObtained("Spirit Temple", "main", "Locked Door After Second Crawl Space"),
+
+    // Ice Cavern
+    ICE_MELTED_EAST_WALL: () => Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt East Ice Wall"),
+    ICE_MELTED_WEST_WALL: () => Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt West Ice Wall")
 };
 
 /**
@@ -518,11 +530,27 @@ let KeySets = {
 
 /**
  * Item sets for silver rupee doors
+ * Returns whether the rupees can be collected (and what you need to do so)
+ * OR, if they are shuffled, whether the player has already collected them
  */
 let SilverRupeeSets = {
-    SHADOW_SILVER_RUPEES_SCYTHE_ROOM: () => ItemData.checkSilverRupeeRequirement("Shadow Temple", 0),
-    SHADOW_SILVER_RUPEES_PIT_ROOM: () => ItemData.checkSilverRupeeRequirement("Shadow Temple", 1),
-    SPIRIT_SILVER_RUPEES_SUN_BLOCK_ROOM: () => ItemData.checkSilverRupeeRequirement("Spirit Temple", 1)
+    SHADOW_SILVER_RUPEES_SCYTHE_ROOM: (age) =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+         ? ItemData.checkSilverRupeeRequirement("Shadow Temple", 0)
+         : ItemData.canUseAny(age, 
+            [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING]),
+    SHADOW_SILVER_RUPEES_PIT_ROOM: () =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Shadow Temple", 1)
+        : true,
+    SPIRIT_SILVER_RUPEES_SUN_BLOCK_ROOM: () =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Spirit Temple", 1)
+        : true,
+    ICE_SILVER_RUPEES_SCYTHE_ROOM: (age) =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Ice Cavern", 0)
+        : age === Age.ADULT
 };
 
 /**
