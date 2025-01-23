@@ -125,7 +125,6 @@ let Settings = {
 		shuffleSilverRupees: true,
 		shuffleWonderitems: true,
 		bombchusInLogic: true,
-		deadHandNeedsSword: false,
 		iceArrowsActAsBlueFire: true,
 		rupeeAndHeartSetting: ShuffleLocationSettings.ALL,
 		potSetting: ShuffleLocationSettings.ALL,

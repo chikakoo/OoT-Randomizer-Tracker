@@ -5062,12 +5062,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 9,
                         LongDescription: "In the north part of the main room, there is a pot underwater by the triforce symbol. If you can't play Zelda's Lullaby to drain the water, you can break the pot using a bombchu/boomerang/slingshot then dive in to get the item.",
-                        CustomRequirement: function(age) {
-                            return Data.canPlaySong(Songs.ZELDAS_LULLABY) ||
-                                Items.FAIRY_SLINGSHOT.playerHas ||
-                                Items.BOOMERANG.playerHas ||
-                                Items.BOMBCHU.playerHas;
-                        }
+                        NeedsAny: [Songs.ZELDAS_LULLABY, Items.FAIRY_SLINGSHOT, Items.BOOMERANG, Items.BOMBCHU]
                     },
                     "Underwater Chest by Coffin Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5186,10 +5181,12 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 12,
                         LongDescription: "Head to the room to the left of the main room. The heart is in the bottom left coffin - light the torch to open it.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [Items.DEKU_STICK, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]) ||
-                                (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
-                        }
+                        NeedsAny: [
+                            Items.DEKU_STICK,
+                            ItemSets.FIRE_ITEMS,
+                            GlitchItemSets.BOOMERANG_THROUGH_WALLS,
+                            QPAItemSets.LEDGE_QPA
+                        ]
                     },
                     "Key in Closed Coffin": {
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -5197,10 +5194,12 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 13,
                         LongDescription: "Head to the room to the left of the main room. The heart is in the top left coffin - light the torch to open it.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [Items.DEKU_STICK, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]) ||
-                                (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
-                        }
+                        NeedsAny: [
+                            Items.DEKU_STICK,
+                            ItemSets.FIRE_ITEMS,
+                            GlitchItemSets.BOOMERANG_THROUGH_WALLS,
+                            QPAItemSets.LEDGE_QPA
+                        ]
                     }
                 }
             },
@@ -5208,9 +5207,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Pit & Like-Like Rooms", imageName: "Bomb" },
                 Exits: {
                     deadhandRoom: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.botwActorGlitch;
-                        }
+                        Needs: [GlitchItemSets.WELL_ACTOR_GLITCH]
                     },
                     mapChestArea: {
                         Needs: [Equipment.STRENGTH]
@@ -5244,11 +5241,9 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 26,
                         LongDescription: "This is the room after the crawlspace at the upper right part of the main room. Be careful of the invisible pits in this room. If you don't have the lens - here's one way to get around (it's still difficult). Get to the corner of the room with the chest. Face the left wall (the one the door is NOT on). Do two left sidehops and move a tiny bit more left. Go straight to where the beamos is (or was). Now angle yourself diagonal left toward the door and pray you make it. The skulltula is guarded by a like-like that you don't have to kill.",
-                        CustomRequirement(age) {
-                            // The staircase hover requires two additional bomb drops to gain enough height
-                            // Start the hover against the wall
-                            return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS) || Data.canStaircaseHover(age);
-                        }
+                        // The staircase hover requires two additional bomb drops to gain enough height
+                        // Start the hover against the wall
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
                     }
                 }
             },
@@ -5256,11 +5251,8 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Dead Hand Room", imageName: "Lens of Truth" },
                 Exits: {
                     bombableHoleRoom: {
-                        Needs: [Equipment.KOKIRI_SWORD],
-                        CustomRequirement: function(age) {
-                            // TODO potentially: add an item location for draining the water, as you can't vine clip after that
-                            return Settings.GlitchesToAllow.botwVineClip;
-                        }
+                        // TODO potentially: add an item location for draining the water, as you can't vine clip after that
+                        Needs: [GlitchItemSets.WELL_VINE_CLIP]
                     }
                 },
                 ItemLocations: {
@@ -5277,11 +5269,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 16,
                         LongDescription: "First, drain the water by playing Zelda's Lullaby on the Triforce picture on the north side of the main room. Go back to the pit by the entrance of the main room. Climb through the crawlspace, then through the door to Dead Hand's room. Defeat Dead Hand to spawn the chest. To do so, let the hands grab you, then mash A and B to escape. Hit Dead Hand as he approaches you to damage him. If using sticks, it's recommended to jumpslash him to halve the number of sticks you need, just make sure his head is hittable first.",
-                        CustomRequirement: function(age) {
-                            let swordRequired = Settings.RandomizerSettings.deadHandNeedsSword;
-                            if (swordRequired) { return Equipment.KOKIRI_SWORD.playerHas; }
-                            return ItemData.canUse(age, ItemSets.SWORDS);
-                        }
+                        Needs: [ItemSets.SWORDS]
                     }
                 }
             },
@@ -5289,10 +5277,10 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Basement", imageName: "Dungeon Map" },
                 Exits: {
                     mapChestArea: {
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, [Items.DEKU_STICK, Equipment.STRENGTH]) ||
-                                ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS);
-                        }
+                        NeedsAny: [
+                            ItemSets.BLAST_OR_SMASH_ITEMS,
+                            [Items.DEKU_STICK, Equipment.STRENGTH]
+                        ]
                     }
                 },
                 ItemLocations: {

@@ -416,7 +416,14 @@ let GlitchItemSets = {
     ICE_BLOCK_ROOM_SKULL_WITH_HOVER_BOOTS: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.iceBlockSkullWithHovers &&
         ItemData.canUse(age, Equipment.HOVER_BOOTS) &&
-        ItemData.canUseAny(age, [ItemSets.DISTANT_SWITCH_ITEMS, Items.DINS_FIRE])
+        ItemData.canUseAny(age, [ItemSets.DISTANT_SWITCH_ITEMS, Items.DINS_FIRE]),
+
+    // Bottom of the Well
+    WELL_ACTOR_GLITCH: (age) => age === Age.CHILD &&
+        Settings.GlitchesToAllow.botwActorGlitch,
+    WELL_VINE_CLIP: (age) => age === Age.CHILD &&
+        Settings.GlitchesToAllow.botwVineClip &&
+        ItemData.canUse(age, Equipment.KOKIRI_SWORD)
 };
 
 /**

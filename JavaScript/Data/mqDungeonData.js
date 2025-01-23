@@ -6407,13 +6407,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "Drain the water by hitting the switch in the back of the main room (use a projectile, a pot from the center, or jumpslash it with a sword/stick/hammer). Navigate back to the entrance and enter the crawl space leading to the Dead Hand room like normal. Kill him to spawn the chest.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; }
-
-                            return Settings.RandomizerSettings.deadHandNeedsSword
-                                ? Equipment.KOKIRI_SWORD.playerHas
-                                : ItemData.canUse(age, ItemSets.SWORDS);
-                        }
+                        Needs: [ItemSets.SWORDS]
                     },
                     "Freestanding Item in Dead Hand Room": {
                         ItemGroup: ItemGroups.FREESTANDING,
