@@ -5374,10 +5374,8 @@ let StandardDungeons = {
             return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.gtgChildAllowed;
         },
         _canSkipMazeDoors: function(age) {
-            return Data.canWeirdShot(age) ||  (
-                Settings.GlitchesToAllow.gtgChildVineClips &&
-                ItemData.canUse(age, [Equipment.DEKU_SHIELD, Items.BOMBCHU])
-            );
+            return ItemData.canUseAny(age, 
+                [GlitchItemSets.WEIRD_SHOT, GlitchItemSets.GTG_CHILD_VINE_CLIP])
         },
         _getNumberOfOptionalKeysUsed: function() {
             // Gets the number of optional keys used in GTG (these are the ones on the right maze path)
@@ -5737,14 +5735,11 @@ let StandardDungeons = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         Order: 8.9,
                         LongDescription: "This is the room after the wolfos room. Use hover boots to navigate to the top of the center statue to get this wonderitem.",
-                        CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || (age === Age.ADULT &&
-                                (
-                                    Settings.GlitchesToAllow.gtgEyeStatueWonderItemJumpslash ||
-                                    ItemData.canUse(age, Equipment.HOVER_BOOTS)
-                                )
-                            );
-                        }
+                        NeedsAny: [
+                            Equipment.HOVER_BOOTS, 
+                            GlitchItemSets.MEGA_FLIP, 
+                            GlitchItemSets.GTG_EYE_STATUE_WONDERITEM_JUMPSLASH
+                        ]
                     },
                     "Eye Statue Room Top Room Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5812,18 +5807,10 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
                 Exits: {
                     mazeDeadEnd: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return true; }
-                            return Data.canPlaySong(Songs.SONG_OF_TIME);
-                        }
+                        AdultNeeds: [Songs.SONG_OF_TIME]
                     },
                     bigLavaRoomBack: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return true; }
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) ||
-                                Equipment.HOVER_BOOTS.playerHas ||
-                                Data.canMegaFlip(age);
-                        }
+                        AdultNeedsAny: [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     bigLavaRoomUpperBack: {
                         Age: Age.ADULT,
@@ -5832,10 +5819,13 @@ let StandardDungeons = {
                     waterRoom: {
                         Map: "Training Grounds",
                         SilverRupeeIndex: 1,
-                        CustomRequirement: function(age) {
-                            // This is specifically for this setting, the normal exit is from bigLavaRoomUpperBack
-                            return Settings.RandomizerSettings.shuffleSilverRupees;
-                        }
+
+                        // This exit is specifically for this setting, the normal exit is from bigLavaRoomUpperBack
+                        Needs: [SettingSets.SHUFFLE_SILVER_RUPEES]
+                        // CustomRequirement: function(age) {
+                            
+                        //     return Settings.RandomizerSettings.shuffleSilverRupees;
+                        // }
                     }
                 },
                 ItemLocations: {
@@ -5859,12 +5849,13 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 15.4,
                         LongDescription: "This is the rupee in the fire circle. The switch is in the front part of the room. You can play the Song of Time (or just be Child) near it to spawn some blocks to make this easier to get. Otherwise, quickly navigate using your hover boots to get to this before the fire comes back. Note that a megaflip can get the rupee without hitting the switch!",
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return true; }
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) ||
-                                Equipment.HOVER_BOOTS.playerHas ||
-                                Data.canMegaFlip(age);
-                        }
+                        AdultNeedsAny: [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        // CustomRequirement: function(age) {
+                        //     if (age === Age.CHILD) { return true; }
+                        //     return Data.canPlaySong(Songs.SONG_OF_TIME) ||
+                        //         Equipment.HOVER_BOOTS.playerHas ||
+                        //         Data.canMegaFlip(age);
+                        // }
                     }
                 }
             },
@@ -5872,12 +5863,13 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
                 Exits: {
                     bigLavaRoomFront: {
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD) { return true; }
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) ||
-                                Equipment.HOVER_BOOTS.playerHas ||
-                                Data.canMegaFlip(age);
-                        }
+                        AdultNeedsAny: [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        // CustomRequirement: function(age) {
+                        //     if (age === Age.CHILD) { return true; }
+                        //     return Data.canPlaySong(Songs.SONG_OF_TIME) ||
+                        //         Equipment.HOVER_BOOTS.playerHas ||
+                        //         Data.canMegaFlip(age);
+                        // }
                     },
                     bigLavaRoomUpperBack: {
                         Age: Age.ADULT,
@@ -5901,13 +5893,7 @@ let StandardDungeons = {
                     bigLavaRoomBack: {},
                     waterRoom: {
                         Map: "Training Grounds",
-                        SilverRupeeIndex: 1,
-                        CustomRequirement: function(age) {
-                            if (Settings.RandomizerSettings.shuffleSilverRupees) { return true; }
-
-                            let canGetFireRupee = Data.canPlaySong(Songs.SONG_OF_TIME) || Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
-                            return Items.HOOKSHOT.playerHas && canGetFireRupee; // Hookshot is get the rupee on top, then to hook the torch to get to the front part
-                        }
+                        Needs: [SilverRupeeSets.GTG_SILVER_RUPEES_LAVA_ROOM]
                     }
                 },
                 ItemLocations: {
@@ -5932,10 +5918,7 @@ let StandardDungeons = {
                         Order: 15.6,
                         LongDescription: "Navigate to the water room. See the Lava Room Key on Platform for an explanation on how to get there. First, collect all the silver rupees in the room. Most are straightfoward - you'll need your hover boots to get across some of the platforms. To get the one engulfed in flames, you must first hit the switch next to the raised platform. You can play the Song of Time there to spawn some helpful blocks as well. After you collect all the rupees, enter the door that opens up.<br/><br/>Once inside, play the Song of Time to remove the blocks. Use your iron boots to sink down and collect the rupees. The golden scale can be used to collect this top one - just dive down and let yourself get pushed along the walls.",
                         NeedsAny: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS],
-                        Needs: [Songs.SONG_OF_TIME], // Seems these blocks ARE there as child
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                        }
+                        Needs: [Songs.SONG_OF_TIME, GameStateSets.GTG_TUNIC_CHECK] // Seems these blocks ARE there as child
                     },
                     "4 Silver Rupees in Water Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -5946,10 +5929,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 15.7,
                         LongDescription: "Navigate to the water room. See the Lava Room Key on Platform for an explanation on how to get there. First, collect all the silver rupees in the room. Most are straightfoward - you'll need your hover boots to get across some of the platforms. To get the one engulfed in flames, you must first hit the switch next to the raised platform. You can play the Song of Time there to spawn some helpful blocks as well. After you collect all the rupees, enter the door that opens up.<br/><br/>Once inside, play the Song of Time to remove the blocks. Use your iron boots to sink down and collect the rupees.",
-                        Needs: [Equipment.IRON_BOOTS, Songs.SONG_OF_TIME],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                        }
+                        Needs: [Equipment.IRON_BOOTS, Songs.SONG_OF_TIME, GameStateSets.GTG_TUNIC_CHECK]
                     },
                     "Chest in Water Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5958,14 +5938,7 @@ let StandardDungeons = {
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                         Order: 16,
                         LongDescription: "Navigate to the water room. See the Lava Room Key on Platform for an explanation on how to get there. First, collect all the silver rupees in the room. Most are straightfoward - you'll need your hover boots to get across some of the platforms. To get the one engulfed in flames, you must first hit the switch next to the raised platform. You can play the Song of Time there to spawn some helpful blocks as well. After you collect all the rupees, enter the door that opens up.<br/><br/>Once inside, play the Song of Time to remove the blocks. Use your iron boots to sink down and collect all the rupees. The hookshot helps a lot here, but technically isn't required. Once you're done, rise back up and collect the chest.",
-                        SilverRupeeIndex: 2,
-                        CustomRequirement: function(age) {
-                            if (Settings.RandomizerSettings.shuffleSilverRupees) { return true; }
-
-                            let canSinkIntoWater = Equipment.IRON_BOOTS.playerHas && Data.canPlaySong(Songs.SONG_OF_TIME);
-                            let tunicCheck = Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                            return canSinkIntoWater && tunicCheck;
-                        }
+                        Needs: [SilverRupeeSets.GTG_SILVER_RUPEES_WATER_ROOM]
                     }
                 }
             },
@@ -6020,10 +5993,7 @@ let StandardDungeons = {
                 Exits: {
                     eyeStatueRoomTop: {
                         Age: Age.CHILD,
-                        Needs: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.gtgChildVineClips;
-                        }
+                        Needs: [GlitchItemSets.GTG_CHILD_VINE_CLIP]
                     },
                     mazeAfterDoor2: {
                         Map: "Training Grounds",

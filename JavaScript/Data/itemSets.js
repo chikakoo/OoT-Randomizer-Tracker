@@ -426,6 +426,9 @@ let GlitchItemSets = {
         ItemData.canUse(age, Equipment.KOKIRI_SWORD),
 
     // Gerudo Training Ground
+    GTG_CHILD_VINE_CLIP: (age) => age === Age.CHILD &&
+        Settings.GlitchesToAllow.gtgChildVineClips &&
+        ItemData.canUse(age, [Items.BOMBCHU, Equipment.DEKU_SHIELD]),
     GTG_FIRE_WALL_SKIP: () => Settings.GlitchesToAllow.gtgSlopesRoomFireWallSkip,
     GTG_WALL_MASTER_TO_SILVER_RUPEE: () => 
         Settings.GlitchesToAllow.gtgSlopesRoomWallmasterToRupee &&
@@ -438,7 +441,9 @@ let GlitchItemSets = {
         ItemData.canUse(age, GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS),
     GTG_SILVER_BLOCK_ROOM_EXIT_WITH_HOVERS: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.gtgSilverBlockRoomExitWithHovers && 
-        ItemData.canUse(age, Equipment.HOVER_BOOTS)
+        ItemData.canUse(age, Equipment.HOVER_BOOTS),
+    GTG_EYE_STATUE_WONDERITEM_JUMPSLASH: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.gtgEyeStatueWonderItemJumpslash
 };
 
 /**
@@ -540,7 +545,8 @@ let GameStateSets = {
     FIRE_TEMPLE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC),
     WATER_TEMPLE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.waterNoZoraTunic || ItemData.canUse(age, Equipment.ZORA_TUNIC),
     SHADOW_LENS_CHECK: (age) => Settings.GlitchesToAllow.shadowLensless || ItemData.canUse(age, Items.LENS_OF_TRUTH),
-    SHADOW_IRON_BOOTS_CHECK: (age) => Settings.GlitchesToAllow.shadowNoIronBoots || ItemData.canUse(age, Equipment.IRON_BOOTS)
+    SHADOW_IRON_BOOTS_CHECK: (age) => Settings.GlitchesToAllow.shadowNoIronBoots || ItemData.canUse(age, Equipment.IRON_BOOTS),
+    GTG_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.gtgNoZoraTunic || ItemData.canUse(age, Equipment.ZORA_TUNIC)
 };
 
 /**
@@ -581,6 +587,17 @@ let SilverRupeeSets = {
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Training Grounds", 0)
         : ItemData.canUseAny(age, [Items.HOOKSHOT, GlitchItemSets.GTG_WALL_MASTER_TO_SILVER_RUPEE]),
+    GTG_SILVER_RUPEES_LAVA_ROOM: (age) => 
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Training Grounds", 1)
+        : ItemData.canUse(age, Items.HOOKSHOT) && // Rupee on the top
+            ItemData.canUseAny(age, 
+                [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]), // Fire rupee
+    GTG_SILVER_RUPEES_WATER_ROOM: (age) =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Training Grounds", 2)
+        : ItemData.canUse(age, 
+            [Equipment.IRON_BOOTS, Songs.SONG_OF_TIME, GameStateSets.GTG_TUNIC_CHECK]),
     MQ_GTG_SILVER_RUPEES_SLOPES_ROOM: (age) => SilverRupeeSets.GTG_SILVER_RUPEES_SLOPES_ROOM(age)
 };
 
