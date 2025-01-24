@@ -187,9 +187,11 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Boss Floor", imageName: "Kokiri's Emerald" },
                 Exits: {
                     bossRoom: {
-                        NeedsAny: [Equipment.DEKU_SHIELD,
+                        NeedsAny: [
+                            Equipment.DEKU_SHIELD,
                             Equipment.HYLIAN_SHIELD,
-                            ItemLocationSets.DEKU_OPENED_BOSS_DOOR]
+                            ItemLocationSets.DEKU_OPENED_BOSS_DOOR
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -241,9 +243,11 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Main Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     mainRoom: {
-                        NeedsAny: [ItemLocationSets.DODONGO_OPENED_FIRST_WALL,
+                        NeedsAny: [
+                            ItemLocationSets.DODONGO_OPENED_FIRST_WALL,
                             ItemSets.MUD_WALL_ITEMS,
-                            Equipment.STRENGTH]
+                            Equipment.STRENGTH
+                        ]
                     },
                     Exit: {
                         OwExit: OwExits["Dodongo's Cavern"]["Exit"]
@@ -270,8 +274,7 @@ let StandardDungeons = {
                         ChildNeeds: [GlitchItemSets.GROUND_JUMP_INCLUDING_BOMB_FLOWER]
                     },
                     staircaseBottom: {
-                        ChildNeedsAny: [GlitchItemSets.GROUND_JUMP_INCLUDING_BOMB_FLOWER,
-                            GlitchItemSets.DODONGO_EARLY_SWITCH]
+                        ChildNeeds: [GlitchItemSets.GROUND_JUMP_INCLUDING_BOMB_FLOWER]
                     },
                     inDodongoHead: {
                         Needs: [GlitchItemSets.DODONGO_HEAD_WITH_CHUS]
@@ -1268,7 +1271,8 @@ let StandardDungeons = {
                     topOfBlockRoom: {
                         NeedsAny: [
                             Equipment.STRENGTH,
-                            [GlitchItemSets.FOREST_BLOCK_SKIP, Equipment.HOVER_BOOTS]]
+                            [GlitchItemSets.FOREST_BLOCK_SKIP, Equipment.HOVER_BOOTS]
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -4383,7 +4387,7 @@ let StandardDungeons = {
                         NeedsAny: [
                             ItemSets.FIRE_ITEMS, 
                             GlitchItemSets.FLAME_STORAGE,
-                            QPAItemSets.TALL_TORCH_QPA,
+                            QPAItemSets.LEDGE_QPA,
                             [Items.DEKU_STICK, SilverRupeeSets.SPIRIT_SILVER_RUPEES_SUN_BLOCK_ROOM]
                         ]
                     },

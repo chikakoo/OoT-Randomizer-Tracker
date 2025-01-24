@@ -124,10 +124,16 @@ let GlitchItemSets = {
 	MEGA_FLIP:  (age) => Data.canMegaFlip(age),
     CHU_MEGA_FLIP: (age) => ItemData.canUse(age, [Items.BOMBCHU, GlitchItemSets.MEGA_FLIP]),
     STAIRCASE_HOVER: (age) => Data.canStaircaseHover(age),
+    BOMB_SUPERSLIDE: (age) => Data.canBombSuperslide(age),
     BOMB_SUPERSLIDE_WITH_HOVERS: (age) => Data.canBombSuperslideWithHovers(age),
     HAMMER_SUPERSLIDE_WITH_HOVERS: (age) => Data.canHammerHoverBootsSuperslide(age),
-	GROUND_JUMP: (age) => Data.canGroundJumpWithBomb(age),
-    GROUND_JUMP_INCLUDING_BOMB_FLOWER: (age) => Data.canGroundJumpWithBomb(age, true),
+	GROUND_JUMP: (age) => 
+        Settings.GlitchesToAllow.groundJump && 
+        ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]),
+    GROUND_JUMP_INCLUDING_BOMB_FLOWER: (age) => 
+        Settings.GlitchesToAllow.groundJump &&
+        ItemData.canUse(age, ItemSets.SHIELDS) &&
+        ItemData.canUseAny(age, [ItemSets.EXPLOSIVES, Equipment.STRENGTH]), // Includes the chu in front of bomb flower trick
     OCARINA_OR_DIFFICULT_OCARINA_ITEMS: () => Items.OCARINA.playerHas || (
         Settings.GlitchesToAllow.ocarinaItems &&
         Settings.GlitchesToAllow.difficultOcarinaItems && 
@@ -284,11 +290,14 @@ let GlitchItemSets = {
 
     // Deku Tree
     DEKU_B1_SKIP: (age) => age === Age.CHILD && Settings.GlitchesToAllow.dekuB1Skip,
+    MQ_DEKU_SIDE_ROOM_ROCKS_WITH_HAMMER: (age) =>
+        Settings.GlitchesToAllow.mqDekuSideRoomRocksHammerOnly &&
+        ItemData.canUse(age, Items.MEGATON_HAMMER),
+    MQ_DEKU_SIDE_ROOM_ROCKS_WITH_BOMB: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.mqDekuSideRoomRocksBombsOnly &&
+        ItemData.canUse(age, Items.BOMB),
 
     // Dodongo's Cavern
-    DODONGO_EARLY_SWITCH: (age) => 
-        Settings.GlitchesToAllow.dodongoSwitchEarly && 
-        ItemData.canUse(age, [Items.BOMBCHU, Equipment.DEKU_SHIELD]),
     DODONGO_HEAD_WITH_CHUS: (age) =>
         Settings.GlitchesToAllow.dodongoOpenHeadWithBombchus &&
         ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMBCHU]),
@@ -301,6 +310,9 @@ let GlitchItemSets = {
     DODONGO_ADULT_BLADE_ROOM_MUD_WALL_WITH_STRENGTH: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.dodongoAdultBladeMudWallWithStrength && 
         ItemData.canUse(age, Equipment.STRENGTH),
+    MQ_DODONGO_EARLY_SWITCH: (age) => 
+        Settings.GlitchesToAllow.mqDodongoRecoilSlashToPlatform && 
+        ItemData.canUse(age, ItemSets.SWORDS),
 
     // Jabu
     JABU_BLUE_SWITCH_SKIP: (age) => 
@@ -339,6 +351,9 @@ let GlitchItemSets = {
     FOREST_BK_SKIP: (age) => 
         Settings.GlitchesToAllow.forestBKSkip &&
         ItemData.canUse(age, Items.HOOKSHOT),
+    MQ_FOREST_HOVER_BOOTS_TO_DOOR_FRAME: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.mqForestHoverBootsToDoorFrame &&
+        ItemData.canUse(age, Equipment.HOVER_BOOTS),
 
     // Fire Temple
     FIRE_FIRST_ROOM_PILLAR_SKIP: (age) => age === Age.ADULT &&
@@ -507,6 +522,7 @@ let ItemLocationSets = {
     DODONGO_OPENED_FIRST_WALL: () => Data.itemLocationObtained("Dodongo's Cavern", "main", "Opened First Wall"),
 
     // Jabu
+    MQ_JABU_OPENED_FIRST_ROOR: () => Data.itemLocationObtained("Jabu Jabu's Belly", "main", "Opened First Door"),
     MQ_JABU_ELEVATOR_ROOM_CHEST: () => Data.itemLocationObtained("Jabu Jabu's Belly", "elevatorRoom", "Spawn Chest in Upper Elevator Room"),
     MQ_JABU_RED_TENTACLES_DEFEATED: () => Data.itemLocationObtained("Jabu Jabu's Belly", "afterRedTentaclesDefeated", "Red Tentacles Defeated"),
     MQ_JABU_GREEN_TENTACLE_DEFEATED: () => Data.itemLocationObtained("Jabu Jabu's Belly", "afterGreenTentacleDefeated", "Green Tentacle Defeated"),
@@ -514,6 +530,7 @@ let ItemLocationSets = {
 
     // Forest Temple
     FOREST_OPENED_LOBBY_DOOR: () => Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby"),
+    MQ_FOREST_DID_NOT_CLEAR_UPPER_STALFOS_ROOM: () => !Data.itemLocationObtained("Forest Temple", "poeRooms", "Chest in Stalfos Room"),
 
     // Fire Temple
     FIRE_OPENED_BOTTOM_LOBBY_DOOR: () => Data.itemLocationObtained("Fire Temple", "main", "Bottom Locked Door in Lobby"),

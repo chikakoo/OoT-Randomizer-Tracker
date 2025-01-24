@@ -1210,11 +1210,6 @@
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsDodongosCavernContainer")' settings>Dodongo's Cavern</span>
 					<div id="settingsDodongosCavernContainer">
-						<label onclick='SettingsPage.setBooleanValueForGlitches("dodongoSwitchEarly", event)'
-							title="This is a ground jump with a bombchu as Child Link to access the switch without needing to go around. In MQ, you can also jumpslash recoil from the top floor onto the ledge.">
-							<input type="checkbox" name="dodongoSwitchEarly" value="dodongoSwitchEarly">
-							Main Room Ledge Early
-						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitches("dodongoScarecrowSkullEarly", event)'
 							title="This is a trick where you use the Armos statue to get enough height to get the skulltula you normally need Scarecrow's Song for.">
 							<input type="checkbox" name="dodongoScarecrowSkullEarly" value="dodongoScarecrowSkullEarly">
@@ -1239,6 +1234,11 @@
 							title="Get in the right corner by the ladder; crouchstab x2; shield turn left; instant drop the first chu for eye 1; drop the second chu on the second red for eye 2.">
 							<input type="checkbox" name="dodongoOpenHeadWithBombchus" value="dodongoOpenHeadWithBombchus">
 							🔗Open Giant Head with Chus
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("mqDodongoRecoilSlashToPlatform", event)'
+							title="Get to the second floor and jumpslash at the correct angle into the pillar. If done correctly, you'll recoil onto the platform with the chest in the main room.">
+							<input type="checkbox" name="mqDodongoRecoilSlashToPlatform" value="mqDodongoRecoilSlashToPlatform">
+							MQ Recoil Slash to Platform
 						</label>
 					</div>
 				</div>

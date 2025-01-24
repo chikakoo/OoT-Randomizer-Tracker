@@ -118,24 +118,17 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Lower Side Room", imageName: "Compass" },
                 Exits: {
                     compassRoomSideArea: {
-                        CustomRequirement: function(age) {
-                            let canUseHammer = ItemData.canUse(age, Items.MEGATON_HAMMER);
-                            let canBreakWithChu = Items.BOMBCHU.playerHas;
-                            let canBreakFromSoTBlock = (Data.canPlaySong(Songs.SONG_OF_TIME) && (
-                                Items.BOMB.playerHas ||
-                                canUseHammer
-                            ));
-                            let canBreakWithHammer = Settings.GlitchesToAllow.mqDekuSideRoomRocksHammerOnly && canUseHammer;
-                            let canBreakWithBomb = Settings.GlitchesToAllow.mqDekuSideRoomRocksBombsOnly && age === Age.ADULT && Items.BOMB.playerHas;
-                            return canBreakWithChu || canBreakFromSoTBlock || canBreakWithHammer || canBreakWithBomb;
-                        }
+                        NeedsAny: [
+                            Items.BOMBCHU,
+                            [Songs.SONG_OF_TIME, 
+                                [SetType.OR, Items.BOMB, Items.MEGATON_HAMMER]],
+                            [GlitchItemSets.MQ_DEKU_SIDE_ROOM_ROCKS_WITH_HAMMER],
+                            [GlitchItemSets.MQ_DEKU_SIDE_ROOM_ROCKS_WITH_BOMB]
+                        ]
                     },
                     compassRoomSkulltula: {
                         Age: Age.ADULT,
-                        Needs: [UpgradedItems.LONGSHOT],
-                        CustomRequirement: function(age) {
-                            return Data.canWeirdShot(age);
-                        }
+                        Needs: [GlitchItemSets.LONGSHOT_WEIRD_SHOT]
                     }
                 },
                 ItemLocations: {
@@ -174,12 +167,9 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 7,
                         LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so.<br/><br/>Head to the other side of the room. The room up the vines to the left is blocked by rocks. Use a bombchu to gain access. The skulltula is up on the wall.",
-                        CustomRequirement: function(age) {
-                            // The staircase hover requires one additional bomb drop to gain enough height
-                            // Start the hover against the wall
-                            return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS) || 
-                                Data.canStaircaseHover(age);
-                        }
+                        // The staircase hover requires one additional bomb drop to gain enough height
+                        // Start the hover against the wall
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
                     }
                 }
             },
@@ -191,9 +181,7 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]
                     },
                     upperBasement: {
-                        CustomRequirement: function(age) {
-                            return age === Age.ADULT || Settings.GlitchesToAllow.dekuB1Skip;
-                        }
+                        ChildNeeds: [GlitchItemSets.DEKU_B1_SKIP]
                     }
                 },
                 ItemLocations: {
@@ -332,10 +320,11 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Boss Floor", imageName: "Kokiri's Emerald" },
                 Exits: {
                     bossRoom: {
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [Equipment.DEKU_SHIELD, Equipment.HYLIAN_SHIELD]) ||
-                                Data.itemLocationObtained("Deku Tree", "lowerBasement", "Open Boss Door");
-                        }
+                        NeedsAny: [
+                            Equipment.DEKU_SHIELD,
+                            Equipment.HYLIAN_SHIELD,
+                            ItemLocationSets.DEKU_OPENED_BOSS_DOOR
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -388,10 +377,11 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Main Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     mainRoom: {
-                        CustomRequirement: function(age) {
-                            if (Data.itemLocationObtained("Dodongo's Cavern", "main", "Opened First Wall")) { return true; }
-                            return ItemData.canUseAny(age, [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH]);
-                        }
+                        NeedsAny: [
+                            ItemLocationSets.DODONGO_OPENED_FIRST_WALL,
+                            ItemSets.MUD_WALL_ITEMS,
+                            Equipment.STRENGTH
+                        ]
                     },
                     Exit: {
                         OwExit: OwExits["Dodongo's Cavern"]["Exit"]
@@ -419,9 +409,7 @@ let MQDungeons = {
                         Needs: [ItemSets.MUD_WALL_OR_QPA_ITEMS]
                     },
                     mainRoomLedge: {
-                        CustomRequirement: function(age) {
-                            return age === Age.ADULT || Data.canGroundJumpWithBomb(age);
-                        }
+                        ChildNeeds: [GlitchItemSets.GROUND_JUMP]
                     }
                 },
                 ItemLocations: {
@@ -458,10 +446,7 @@ let MQDungeons = {
                 Exits: {
                     staircaseBottom: {},
                     mainRoomLedge: {
-                        Needs: [ItemSets.SWORDS],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.dodongoSwitchEarly;
-                        }
+                        NeedsAny: [GlitchItemSets.MQ_DODONGO_EARLY_SWITCH]
                     },
                     topOfTorchPuzzleRoom: {
                         NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, Items.DINS_FIRE]
@@ -491,11 +476,8 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Lower East Rooms", imageName: "Small Poe" },
                 Exits: {
                     lowerLizalfosRoom: {
-                        Needs: [ItemSets.PROJECTILES],
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; }
-                            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]);
-                        }
+                        Needs: [ItemSets.PROJECTILES], // Adult can shoot the bomb flower line to reveal the switch
+                        ChildNeedsAny: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     }
                 },
                 ItemLocations: {
@@ -637,10 +619,12 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Staircase & Dodongo Room", imageName: "Bomb" },
                 Exits: {
                     staircaseTop: {
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]) ||
-                                (Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && ItemData.canUse(age, Items.FAIRY_BOW));
-                        }
+                        NeedsAny: [
+                            ItemSets.EXPLOSIVES_OR_STRENGTH,
+                            Items.DINS_FIRE,
+                            QPAItemSets.LEDGE_QPA,
+                            GlitchItemSets.DODONGO_TRIGGER_STAIRS_WITH_BOW
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -762,10 +746,12 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.TALL_TORCH_QPA]
                     },
                     topOfTorchPuzzleRoom: {
-                        CustomRequirement: function(age) {
-                            let adultBombChestEarly = age === Age.ADULT && Settings.GlitchesToAllow.dodongoAdultJumpToBombChest;
-                            return adultBombChestEarly || Data.canMegaFlip(age);
-                        }
+                        ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+                        AdultNeedsAny: [
+                            GlitchItemSets.DODONGO_ADULT_JUMP_TO_BOMB_CHEST,
+                            GlitchItemSets.GROUND_JUMP,
+                            GlitchItemSets.MEGA_FLIP
+                        ]
                     },
                     upperLizalfosRoom: {
                         NeedsAny: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]
@@ -924,10 +910,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Inside Dondongo Head", imageName: "Goron's Ruby" },
                 Exits: {
                     bossRoom: {
-                        CustomRequirement: function(age) {
-                            // Adult can just jump up; Child needs to blow up a bombflower wall
-                            return age === Age.ADULT || ItemData.canUse(age, ItemSets.EXPLOSIVES);
-                        }
+                        // You're guaranteed to have some kind of explosives, which is all you need to get here
                     }
                 },
                 ItemLocations: {
@@ -1026,10 +1009,10 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Lobby & Elevator Room", imageName: "Fairy Slingshot" },
                 Exits: {
                     elevatorRoom: {
-                        CustomRequirement: function(age) {
-                            return MapLocations["Jabu Jabu's Belly"]._canHitMainRoomCowSwitch(age) ||
-                                Data.itemLocationObtained("Jabu Jabu's Belly", "main", "Opened First Door");
-                        }
+                        NeedsAny: [
+                            ItemLocationSets.MQ_JABU_OPENED_FIRST_ROOR,
+                            (age) => MapLocations["Jabu Jabu's Belly"]._canHitMainRoomCowSwitch(age)
+                        ]
                     },
                     Exit: {
                         OwExit: OwExits["Jabu Jabu's Belly"]["Exit"]
@@ -1044,9 +1027,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "In the first room, shoot the right cow to spawn this wonderitem.",
-                        CustomRequirement: function(age) {
-                            return MapLocations["Jabu Jabu's Belly"]._canHitMainRoomCowSwitch(age);
-                        }
+                        Needs: [(age) => MapLocations["Jabu Jabu's Belly"]._canHitMainRoomCowSwitch(age)]
                     },
                     "Wonderitem in First Room Left Cow": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -1056,9 +1037,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "In the first room, shoot the left cow to spawn this wonderitem.",
-                        CustomRequirement: function(age) {
-                            return MapLocations["Jabu Jabu's Belly"]._canHitMainRoomCowSwitch(age);
-                        }
+                        Needs: [(age) => MapLocations["Jabu Jabu's Belly"]._canHitMainRoomCowSwitch(age)]
                     },
                     "Opened First Door": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -1072,9 +1051,7 @@ let MQDungeons = {
                         },
                         Order: 2.1,
                         LongDescription: "In the first room, shoot the left cow to open the door.",
-                        CustomRequirement: function(age) {
-                            return MapLocations["Jabu Jabu's Belly"]._canHitMainRoomCowSwitch(age);
-                        }
+                        Needs: [(age) => MapLocations["Jabu Jabu's Belly"]._canHitMainRoomCowSwitch(age)]
                     },
                     "2 Pots in First Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -1101,9 +1078,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 4.2,
                         LongDescription: "In the first room, shoot the right cow with your slingshot to spawn the chest.",
-                        CustomRequirement: function(age) {
-                            return MapLocations["Jabu Jabu's Belly"]._canHitMainRoomCowSwitch(age);
-                        }
+                        Needs: [(age) => MapLocations["Jabu Jabu's Belly"]._canHitMainRoomCowSwitch(age)]
                     }
                 }
             },
@@ -1294,10 +1269,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 15,
                         LongDescription: "In the path leading to the elevator room, there's a skulltula under the Song of Time block. Play the song to move the block.<br/><br/>If you have the boomerang, you can also aim it to the left and slightly downward to get the skulltula through the block.",
-                        CustomRequirement: function(age) {
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) || 
-                                (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
-                        }
+                        NeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.BOOMERANG_THROUGH_WALLS]
                     }
                 }
             },
@@ -1699,11 +1671,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Starting Rooms", imageName: "Chest" },
                 Exits: {
                     roomNorthOfLobby: {
-                        CustomRequirement: function(age) {
-                            return age === Age.CHILD || 
-                                Settings.GlitchesToAllow.forestLedgeClip ||
-                                Data.canPlaySong(Songs.SONG_OF_TIME);
-                        }
+                        AdultNeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.FOREST_LEDGE_CLIP]
                     }, 
                     outsideEast: {
                         Needs: [ItemSets.PROJECTILES]
@@ -1716,10 +1684,7 @@ let MQDungeons = {
                     },
                     greenPoeRoom: {
                         Age: Age.ADULT,
-                        AdultNeeds: [Items.BOMB, Equipment.HOVER_BOOTS],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.forestGreenPoeEarly && (age);
-                        }
+                        Needs: [GlitchItemSets.FOREST_GREEN_POE_EARLY]
                     },
                     // Note that all item locations here (and in the boss room) will have IsPostWalkCheck set to true, we need to make sure that we can get to both the
                     // fallingCeilingRoom and the firstPoeRoom in order to actually get here
@@ -1729,10 +1694,7 @@ let MQDungeons = {
                     },
                     bossRoom: {
                         Age: Age.ADULT,
-                        AdultNeeds: [Items.HOOKSHOT],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.forestBKSkip;
-                        }
+                        Needs: [GlitchItemSets.FOREST_BK_SKIP]
                     }
                 },
                 ItemLocations: {
@@ -1794,10 +1756,7 @@ let MQDungeons = {
                         Needs: [Items.FIRE_ARROW]
                     },
                     outsideWestHearts: {
-                        Needs: [Items.BOOMERANG],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.difficultBoomerangTrickThrows;
-                        }
+                        Needs: [GlitchItemSets.BOOMERANG_TRICK_THROWS]
                     },
                     well: {}
                 },
@@ -1821,15 +1780,11 @@ let MQDungeons = {
                     outsideEastBalcony: {
                         Age: Age.ADULT,
                         Needs: [Items.HOOKSHOT],
-                        CustomRequirement: function(age) {
-                            if (Data.canPlaySong(Songs.SONG_OF_TIME) ||
-                                ItemData.canUse(age, UpgradedItems.LONGSHOT)) {
-                                return true;
-                            } 
-
-                            return Settings.GlitchesToAllow.forestHookshotToWellSwitch &&
-                                ItemData.canUse(age, Items.HOOKSHOT);
-                        }
+                        NeedsAny: [
+                            Songs.SONG_OF_TIME,
+                            UpgradedItems.LONGSHOT,
+                            GlitchItemSets.FOREST_HOOKSHOT_TO_WELL_SWITCH
+                        ]
                     },
                     outsideEastDoorFrame: {
                         Age: Age.ADULT,
@@ -1853,27 +1808,17 @@ let MQDungeons = {
                     outsideEast: {},
                     outsideEastDoorFrame: {
                         Age: Age.ADULT,
-                        Needs: [Equipment.HOVER_BOOTS],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.mqForestHoverBootsToDoorFrame;
-                        }
+                        Needs: [GlitchItemSets.MQ_FOREST_HOVER_BOOTS_TO_DOOR_FRAME]
                     },
                     outsideEastPlatform: {
                         Age: Age.ADULT,
-                        Needs: [Equipment.HOVER_BOOTS],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.forestLedgeWithHovers;
-                        }
+                        Needs: [GlitchItemSets.FOREST_LEDGE_WITH_HOVER_BOOTS]
                     },
                     fallingCeilingRoom: {
-                        Age: Age.ADULT,
-                        Needs: [Items.BOMBCHU],
-                        CustomRequirement: function(age) {
-                            // Climb the close edge of the railing, take tiny steps forward, and face barly toward
-                            // the ledge so that rolling doesn't make you fall off
-                            // Only works with a chu
-                            return Data.canMegaFlip(age);
-                        }
+                        // Climb the close edge of the railing, take tiny steps forward, and face barely toward
+                        // the ledge so that rolling doesn't make you fall off
+                        // Only works with a chu
+                        Needs: [GlitchItemSets.CHU_MEGA_FLIP]
                     }
                 },
                 ItemLocations: {
@@ -1891,9 +1836,7 @@ let MQDungeons = {
                 Exits: {
                     outsideEastPlatform: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Data.canHammerHoverBootsSuperslide(age);
-                        }
+                        Needs: [GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS]
                     },
                     outsideEastSkulltula: {
                         NeedsAny: [ItemSets.DISTANT_SWITCH_ITEMS, Items.DINS_FIRE]
@@ -1925,10 +1868,10 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 9,
                         LongDescription: "This chest is in the well. If you can't drain the water with the eye switch (in the well itself from the east room), you can hookshot the chest and spam the button to open it.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, ItemSets.PROJECTILES) ||
-                                ItemData.canUse(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
-                        }
+                        NeedsAny: [
+                            ItemSets.PROJECTILES,
+                            [Items.HOOKSHOT, Equipment.IRON_BOOTS]
+                        ]
                     },
                     "3 Hearts in Well": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -1947,10 +1890,10 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "This skulltula is on one of the grates in the water of the well (in the well itself from the east room). If you can't shoot the eye switch to drain the water, you can still get the skulltula with iron boots and the hookshot.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, ItemSets.PROJECTILES) ||
-                                ItemData.canUse(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
-                        }
+                        NeedsAny: [
+                            ItemSets.PROJECTILES,
+                            [Items.HOOKSHOT, Equipment.IRON_BOOTS]
+                        ]
                     }
                 }
             },
@@ -1959,20 +1902,11 @@ let MQDungeons = {
                 Exits: {
                     topOfBlockRoom: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            // Line up with the center wall as you first enter, and drop the chu
-                            if (ItemData.canUse(age, [Items.HOOKSHOT, Items.BOMBCHU])) {
-                                return true;
-                            }
-
-                            // If you can't push blocks, you MUST do the block skip
-                            let hasStrength = Equipment.STRENGTH.playerHas;
-                            if (!hasStrength && !Settings.GlitchesToAllow.forestBlockSkip) { return false; } 
-                            
-                            // Need to either push or skip the blocks
-                            let canBlockSkip = (age) && Items.BOMB.playerHas && Equipment.HOVER_BOOTS.playerHas;
-                            return hasStrength || canBlockSkip;
-                        }
+                        NeedsAny: [
+                            Equipment.STRENGTH,
+                            [Items.HOOKSHOT, Items.BOMBCHU], // Line up with the center wall as you first enter, and drop the chu
+                            [GlitchItemSets.FOREST_BLOCK_SKIP, Equipment.HOVER_BOOTS]
+                        ]
                     },
                     upperOutside: {
                         Age: Age.ADULT,
@@ -2055,11 +1989,9 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
                 Exits: {
                     roomNorthOfLobby: {
-                        CustomRequirement: function(age) {
-                            // You can jump down the hole in this room to get this chest
-                            // This cannot be done if you've already cleared the room, though
-                            return !Data.itemLocationObtained("Forest Temple", "poeRooms", "Chest in Stalfos Room");
-                        }
+                        // You can jump down the hole in this room to bypass the Song of Time block in the lobby
+                        // This cannot be done if you've already cleared the room, though
+                        Needs: [ItemLocationSets.MQ_FOREST_DID_NOT_CLEAR_UPPER_STALFOS_ROOM]
                     }, 
                     twistedCooridor2: {
                         LockedDoor: "Locked Door in Blue Poe Room",
@@ -2210,9 +2142,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Basement", imageName: "Forest Medallion" },
                 Exits: {
                     bossRoom: {
-                        CustomRequirement: function(age) {
-                            return ItemData.hasBossKey("Forest Temple");
-                        }
+                        Needs: [KeySets.FOREST_BK]
                     }
                 },
                 ItemLocations: {
@@ -2226,9 +2156,7 @@ let MQDungeons = {
                         Order: 31,
                         IsPostWalkCheck: true,
                         LongDescription: "After defeating all the Poes, take the elevator to the basement. Push the wall clockwise once. The pots are in the room guarded by two giant skulltulas.",
-                        CustomRequirement: function(age) {
-                            return MapLocations["Forest Temple"]._canAccessAllPoeRooms(age);
-                        }
+                        Needs: [(age) => MapLocations["Forest Temple"]._canAccessAllPoeRooms(age)]
                     },
                     "Chest in Basement": {
                         ItemGroup: ItemGroups.CHEST,
@@ -2237,9 +2165,7 @@ let MQDungeons = {
                         Order: 32,
                         IsPostWalkCheck: true,
                         LongDescription: "After defeating all the Poes, take the elevator to the basement. Push the wall counter-clockwise once to get to the chest.",
-                        CustomRequirement: function(age) {
-                            return MapLocations["Forest Temple"]._canAccessAllPoeRooms(age);
-                        }
+                        Needs: [(age) => MapLocations["Forest Temple"]._canAccessAllPoeRooms(age)]
                     }
                 }
             },
@@ -2267,14 +2193,9 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Lobby & Hammer Path", imageName: "Megaton Hammer" },
                 Exits: {
                     roomBeforeBoss: {
-                        Age: Age.EITHER,
+                        Needs: [GameStateSets.FIRE_TEMPLE_TUNIC_CHECK],
                         NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA],
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD && !Settings.GlitchesToAllow.fireWallSkip && !Data.canBombSuperslide(age)) { 
-                                return false; 
-                            }
-                            return Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
-                        }
+                        ChildNeedsAny: [GlitchItemSets.FIRE_FIREWALL_SKIP, GlitchItemSets.BOMB_SUPERSLIDE]
                     },
                     lockedAreaByEntrance: {
                         LockedDoor: "Bottom Locked Door in Lobby",
@@ -2282,19 +2203,11 @@ let MQDungeons = {
                     },
                     cellByEntrance: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Data.canWeirdShot(age);
-                        }
+                        Needs: [GlitchItemSets.WEIRD_SHOT]
                     },
                     bigLavaRoom: {
-                        Age: Age.EITHER,
-                        Needs: [Items.MEGATON_HAMMER],
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD && !Settings.GlitchesToAllow.fireWallSkip && !Data.canBombSuperslide(age)) { 
-                                return false; 
-                            }
-                            return Settings.GlitchesToAllow.fireNoGoronTunic || Equipment.GORON_TUNIC.playerHas;
-                        }
+                        Needs: [Items.MEGATON_HAMMER, GameStateSets.FIRE_TEMPLE_TUNIC_CHECK],
+                        ChildNeedsAny: [GlitchItemSets.FIRE_FIREWALL_SKIP, GlitchItemSets.BOMB_SUPERSLIDE]
                     },
                     Exit: {
                         OwExit: OwExits["Fire Temple"]["Exit"]
@@ -2412,13 +2325,9 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
                         Order: 9,
-                        AdultNeedsAny: [Items.HOOKSHOT, Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU],
-                        ChildNeedsAny: [Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU],
                         LongDescription: "Enter the locked door to the right when you first enter the temple. Navigate around the rooms, defeating the enemies to progress (including an Iron Knuckle). Defeat the Flare Dancer to spawn the chest.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT) { return true; }
-                            return Data.canGroundJumpWithBomb(age);
-                        }
+                        ChildNeeds: [GlitchItemSets.GROUND_JUMP, ItemSets.SWORDS],
+                        AdultNeedsAny: [Items.HOOKSHOT, Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU]
                     }
                 }
             },
@@ -2444,10 +2353,8 @@ let MQDungeons = {
                 },
                 Exits: {
                     bossRoom: {
-                        Age: Age.EITHER,
-                        CustomRequirement: function(age) {
-                            return (age === Age.ADULT || Data.canMegaFlip(age)) && ItemData.hasBossKey("Fire Temple");
-                        }
+                        ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+                        Needs: [KeySets.FIRE_BK]
                     }
                 },
                 ItemLocations: {
