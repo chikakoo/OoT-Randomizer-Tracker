@@ -2378,10 +2378,7 @@ let MQDungeons = {
                         Order: 4,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner to the crates.<br/><br/>If child, climb the block with the torch in it from the back right corner. Hold forward to jump up the ledge. Use the first ledge box to get to the second one before you break it.",
-                        CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || 
-                                ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]);
-                        }
+                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     "2 Pots in Room Before Boss": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2393,10 +2390,7 @@ let MQDungeons = {
                         Order: 5,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner to the pots.",
-                        CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || 
-                                ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]);
-                        }
+                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     "Chest in Room Before Boss": {
                         ItemGroup: ItemGroups.CHEST,
@@ -2405,16 +2399,15 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 6,
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner. Roll into a box to break it to reveal a torch. Light all 3 torches in the room to open the gate to the chest.",
-                        CustomRequirement: function(age) {
-                            if (Settings.GlitchesToAllow.mqBossRoomGoronBombClip && 
-                                    ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB])) {
-                                return true;
-                            }
-
-                            return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA]) &&
-                                (Data.canMegaFlip(age) || 
-                                    ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]));
-                        }
+                        NeedsAny: [
+                            [
+                                [SetType.OR, // Get to torches
+                                    Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP],
+                                [SetType.OR, // Light torches
+                                    ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA]
+                            ],
+                            GlitchItemSets.MQ_FIRE_BOSS_ROOM_JAIL_CLIP
+                        ]
                     }
                 }
             },
@@ -2428,10 +2421,12 @@ let MQDungeons = {
                 Exits: {
                     bossKeyRoom: {
                         Age: Age.ADULT,
-                        NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.fireSoTBlockJump || Items.HOOKSHOT.playerHas;
-                        }
+                        Needs: [
+                            [SetType.OR, // Light torches
+                                ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA],
+                            [SetType.OR, // Get to door
+                                Items.HOOKSHOT, GlitchItemSets.FIRE_SOT_BLOCK_JUMP]
+                        ]
                     },
                     risingBlockRoom: {
                         LockedDoor: "Locked Door in Big Lava Room",
@@ -2466,11 +2461,8 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
                         Order: 16,
-                        CustomRequirement: function(age) {
-                            return age === Age.ADULT || Data.canGroundJumpWithBomb(age) &&
-                                (Equipment.HYLIAN_SHIELD.playerHas && Data.canGroundJumpWithBomb(age));
-                        },
-                        LongDescription: "Either hookshot to the torch on the right side of the lava room, or backflip from the moving platform to get over the fire wall. As Child, you'll need to equip Hylian shield so it isn't burned. The pot is by the blocked doorway (Child will have to ground jump)."
+                        LongDescription: "Either hookshot to the torch on the right side of the lava room, or backflip from the moving platform to get over the fire wall. As Child, you'll need to equip Hylian shield so it isn't burned. The pot is by the blocked doorway (Child will have to ground jump).",
+                        ChildNeeds: [() => Equipment.HYLIAN_SHIELD.playerHas, GlitchItemSets.GROUND_JUMP]
                     },
                     "Chest by Right Goron in Lava Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -2478,16 +2470,15 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
                         Order: 17,
+                        LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron.<br/><br/>If using cutscene item QPA, angle toward the torch at a 45 degree angle when you jumpslash with the deku stick to light it.",
+                        ChildNeeds: [() => Equipment.HYLIAN_SHIELD.playerHas, GlitchItemSets.GROUND_JUMP],
                         Needs: [ItemSets.EXPLOSIVES],
-                        CustomRequirement: function(age) {
-                            if (age === Age.CHILD && !Data.canGroundJumpWithBomb(age)) {
-                                return false;
-                            }
-
-                            return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA, QPAItemSets.HOVER_BOOTS_QPA]) ||
-                                ItemData.canUse(age, [Items.HOOKSHOT, QPAItemSets.LEDGE_QPA]);
-                        },
-                        LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron.<br/><br/>If using cutscene item QPA, angle toward the torch at a 45 degree angle when you jumpslash with the deku stick to light it."
+                        NeedsAny: [
+                            ItemSets.FIRE_ITEMS, 
+                            QPAItemSets.CUTSCENE_ITEM_QPA,
+                            QPAItemSets.HOVER_BOOTS_QPA,
+                            [Items.HOOKSHOT, QPAItemSets.LEDGE_QPA]
+                        ]
                     }
                 }
             },
@@ -2538,9 +2529,7 @@ let MQDungeons = {
                     },
                     cellBelowBoulderMaze: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Data.canWeirdShot(age);
-                        }
+                        Needs: [GlitchItemSets.WEIRD_SHOT]
                     }
                 },
                 ItemLocations: {
@@ -2843,16 +2832,10 @@ let MQDungeons = {
                 Exits: {
                     bossRoom: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.fireBKSkipFromFireWallMaze;
-                        }
+                        Needs: [GlitchItemSets.FIRE_BK_SKIP_FROM_FIREWALL_MAZE]
                     },
                     fireWallMazeRight: {
-                        CustomRequirement: function(age) {
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) ||
-                                Equipment.HOVER_BOOTS.playerHas ||
-                                Data.canMegaFlip(age);
-                        }
+                        NeedsAny: [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     fireWallMazeEnd: {
                         Needs: [Items.HOOKSHOT]
@@ -2882,9 +2865,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Fire Wall Maze", imageName: "Fire Arrow" },
                 Exits: {
                     fireWallMazeEnd: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.fireWallSkip;
-                        }
+                        Needs: [GlitchItemSets.FIRE_FIREWALL_SKIP]
                     }
                 },
                 ItemLocations: {
@@ -3042,19 +3023,15 @@ let MQDungeons = {
                         Needs: [Equipment.IRON_BOOTS]
                     },
                     roomBeforeDarkLink: {
-                        CustomRequirement: function(age) {
-                            let canGetThereNormally = ItemData.canUse(age, UpgradedItems.LONGSHOT);
-                            let canUseTrick = Settings.GlitchesToAllow.mqWaterWaterfallWithHovers &&
-                                ItemData.canUse(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]);
-                            return (canGetThereNormally || canUseTrick) &&
-                                ItemData.getKeyCount("Water Temple") >= 1;
-                        }
+                        Needs: [() => ItemData.getKeyCount("Water Temple") >= 1],
+                        NeedsAny: [UpgradedItems.LONGSHOT, GlitchItemSets.MQ_WATER_WATERFALL_ROOM_WITH_HOVER_BOOTS]
                     },
                     bossRoomAntechamber: {
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, UpgradedItems.LONGSHOT) ||
-                                Data.canHammerHoverBootsSuperslide(age);
-                        }
+                        NeedsAny: [
+                            UpgradedItems.LONGSHOT,
+                            GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS,
+                            GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS
+                        ]
                     },
                     Exit: {
                         OwExit: OwExits["Water Temple"]["Exit"]
@@ -3066,13 +3043,12 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Hub/Boss Area (Top North)", imageName: "Water Medallion" },
                 Exits: {
                     bossRoom: {
-                        CustomRequirement: function(age) {
-                            // Nayrus love can be used to become immune to the spike traps!
-                            let canGetUp = ItemData.canUseAny(age, [UpgradedItems.LONGSHOT, Items.NAYRUS_LOVE, Equipment.HOVER_BOOTS]);
-                            let canGetIn = ItemData.hasBossKey("Water Temple") ||
-                                ItemData.canUseAny(age, [Items.HOOKSHOT, Items.FAIRY_BOW, Items.BOMBCHU]);
-                            return canGetUp && canGetIn;
-                        }
+                        NeedsAny: [UpgradedItems.LONGSHOT, Items.NAYRUS_LOVE, Equipment.HOVER_BOOTS], // Can get up
+                        Needs: [ // Open or clip through door
+                            SetType.OR,
+                                KeySets.WATER_BK,
+                                Items.HOOKSHOT, Items.FAIRY_BOW, Items.BOMBCHU
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -3111,14 +3087,11 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Central Rooms (Center Mid)", imageName: "Ocarina of Time" },
                 Exits: {
                     underCentralRoom: {
-                        Needs: [Equipment.IRON_BOOTS],
-                        CustomRequirement: function(age) {
-                            let tunicCheck = Settings.GlitchesToAllow.waterNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                            let canUseFireArrows = ItemData.canUse(age, Items.FIRE_ARROW);
-                            let canUseDinsFire = ItemData.canUse(age, Items.DINS_FIRE);
-                            let canLightTorches = canUseFireArrows || (Data.canPlaySong(Songs.SONG_OF_TIME) && canUseDinsFire);
-                            return tunicCheck && canLightTorches;
-                        }
+                        Needs: [Equipment.IRON_BOOTS, GameStateSets.WATER_TEMPLE_TUNIC_CHECK],
+                        NeedsAny: [
+                            Items.FIRE_ARROW,
+                            [Songs.SONG_OF_TIME, Items.DINS_FIRE]
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -3559,10 +3532,10 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 26,
                         LongDescription: "In the whirlpool dragon room, use your iron boots or silver scale to sink to the little hallway behind the dragon where the crates reside. You can use chus to blow up the crates and dive for the items (drop on the 6th red flash for the close ones; the 4th red flash for the far ones).",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Equipment.IRON_BOOTS) ||
-                                ItemData.canUse(age, [Equipment.SCALE, Items.BOMBCHU]);
-                        }
+                        NeedsAny: [
+                            Equipment.IRON_BOOTS,
+                            [Equipment.SCALE, Items.BOMBCHU]
+                        ]
                     },
                     "2 Crates Behind Dragon Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -3625,10 +3598,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Boss Key Loop (Top West)", imageName: "Boss Key" },
                 Exits: {
                     afterSingleWaterPillarRoomGate: {
-                        CustomRequirement: function(age) {
-                            let canWeirdShot = Data.canWeirdShot(age) && ItemData.canUse(age, UpgradedItems.LONGSHOT);
-                            return ItemData.canUse(age, Items.DINS_FIRE) || canWeirdShot;
-                        }
+                        NeedsAny: [Items.DINS_FIRE, GlitchItemSets.LONGSHOT_WEIRD_SHOT]
                     }
                 },
                 ItemLocations: {
@@ -3679,10 +3649,8 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Skulltula Jail Room (Low South)", imageName: "Fire Arrow" },
                 Exits: {
                     upperTripleTorchRoom: {
-                        Needs: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.IRON_BOOTS, Equipment.MAGIC],
-                        CustomRequirement: function(age) {
-                            return Data.canHookScarecrow(age) || Equipment.HOVER_BOOTS.playerHas;
-                        }
+                        Needs: [Items.FIRE_ARROW, Equipment.IRON_BOOTS],
+                        NeedsAny: [Equipment.HOVER_BOOTS, GameStateSets.CAN_HOOK_SCARECROW]
                     },
                     roomAfterSpikes: {
                         NeedsAny: [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT],
@@ -3751,9 +3719,11 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     northWaterfallArea: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.waterBKShortcut || Data.canHookScarecrow(age);
-                        }
+                        NeedsAny: [
+                            Equipment.HOVER_BOOTS,
+                            GameStateSets.CAN_HOOK_SCARECROW, 
+                            GlitchItemSets.WATER_JUMP_TO_WATERFALL_LEDGE
+                        ]
                     }
                 },
                 ItemLocations: {

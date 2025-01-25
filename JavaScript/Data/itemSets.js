@@ -121,7 +121,7 @@ let GlitchItemSets = {
 	WEIRD_SHOT: (age) => Data.canWeirdShot(age),
     LONGSHOT_WEIRD_SHOT: (age) => Data.canWeirdShot(age, UpgradedItems.LONGSHOT),
     PROJECTILE_WEIRD_SHOT: (age) => Data.canWeirdShot(age, ItemSets.PROJECTILES),
-	MEGA_FLIP:  (age) => Data.canMegaFlip(age),
+	MEGA_FLIP: (age) => Data.canMegaFlip(age),
     CHU_MEGA_FLIP: (age) => ItemData.canUse(age, [Items.BOMBCHU, GlitchItemSets.MEGA_FLIP]),
     STAIRCASE_HOVER: (age) => Data.canStaircaseHover(age),
     BOMB_SUPERSLIDE: (age) => Data.canBombSuperslide(age),
@@ -370,6 +370,9 @@ let GlitchItemSets = {
         Settings.GlitchesToAllow.fireBKSkipFromFireWallMaze,
     FIRE_FIREWALL_SKIP: () => Settings.GlitchesToAllow.fireWallSkip,
     FIRE_SOT_BLOCK_FROM_HAMMER_CHEST: () => Settings.GlitchesToAllow.fireJumpDownToSoTBlock,
+    MQ_FIRE_BOSS_ROOM_JAIL_CLIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.mqBossRoomGoronBombClip && 
+        ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB]),
 
     // Water Temple
     WATER_BOMBABLE_WALL_EARLY: () => Settings.GlitchesToAllow.waterBombableWallEarly,
@@ -381,9 +384,13 @@ let GlitchItemSets = {
     WATER_EYE_SWITCH_GATE_FROM_TOP: (age) => age === Age.ADULT && 
         Settings.GlitchesToAllow.waterEyeSwitchGateFromTop,
     WATER_DRAGON_ROOM_CHEST_WITH_CHU: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.waterDragonChestWithChu,
+        Settings.GlitchesToAllow.waterDragonChestWithChu &&
+        Items.BOMBCHU.playerHas,
     WATER_JUMP_TO_WATERFALL_LEDGE: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.waterBKShortcut,
+    MQ_WATER_WATERFALL_ROOM_WITH_HOVER_BOOTS: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.mqWaterWaterfallWithHovers &&
+        ItemData.canUse(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]),
 
     // Shadow Temple
     SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING: (age) => age === Age.ADULT &&

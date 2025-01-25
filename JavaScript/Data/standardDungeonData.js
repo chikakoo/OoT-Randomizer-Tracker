@@ -2611,11 +2611,12 @@ let StandardDungeons = {
                         MapInfo: { x: 33, y: 61, floor: "F1" },
                         LongDescription: "There are two ways to get to this room. One way: after draining the water, make your way to the bottom west wing. Push the red block out of the way then follow the path. Get to the other side of the switch and water puzzle to get the dragon and whirlpool room.<br/><br/>The alternate path to this room is to drop down after the vortex room chest (post-Dark Link).<br/><br/>When here, use your Iron Boots to sink down in the upper right corner of the vortex room, on the lower dragon. From there, hookshot the crystal switch in the dragon's mouth. Now hookshot the target in the room that opens up. Unequip your Iron Boots then float up to the chest.<br/><br/>You can also line up a bombchu with the switch from the platform by the door. Now, either use your iron boots to navigate to the door, or dive using the silver scale to get there (you'll have to dive early enough - when you're near the right wall).",
                         NeedsAny: [
-                            [Equipment.IRON_BOOTS, Items.HOOKSHOT], 
-                            [Items.BOMBCHU,
-                                [SetType.OR,
-                                    [SetType.OR, Equipment.SCALE, Equipment.IRON_BOOTS],
-                                    GlitchItemSets.WATER_DRAGON_ROOM_CHEST_WITH_CHU]]],
+                            [
+                                [SetType.OR, Items.HOOKSHOT, Items.BOMBCHU], // Hit switch
+                                [SetType.OR, Equipment.SCALE, Equipment.IRON_BOOTS] // Dive down
+                            ],
+                            GlitchItemSets.WATER_DRAGON_ROOM_CHEST_WITH_CHU
+                        ]           
                     }
                 }
             },
@@ -2919,7 +2920,7 @@ let StandardDungeons = {
                 Exits: {
                     blockPuzzleRoom: {},
                     boulderWaterfall: {
-                        Needs: [GlitchItemSets.WATER_JUMP_TO_WATERFALL_LEDGE]
+                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.WATER_JUMP_TO_WATERFALL_LEDGE]
                     }
                 },
                 ItemLocations: {}
