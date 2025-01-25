@@ -3888,15 +3888,8 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Entrance & Maze Rooms", imageName: "Hover Boots" },
                 Exits: {
                     truthSpinnerRoom: {
-                        CustomRequirement: function(age) {
-                            let lensCheck = Settings.GlitchesToAllow.shadowLensless || (Equipment.MAGIC.playerHas && Items.LENS_OF_TRUTH.playerHas);
-                            if (!lensCheck) { return false; }
-                            
-                            let canCrossFirstGap = 
-                                ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]) ||
-                                Data.canMegaFlip(age);
-                            return canCrossFirstGap;
-                        }
+                        Needs: [GameStateSets.SHADOW_LENS_CHECK],
+                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     Exit: {
                         OwExit: OwExits["Shadow Temple"]["Exit"]
@@ -3938,11 +3931,8 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 22,
                         LongDescription: "This is the locked door on the right side of the giant room.",
-                        CustomRequirement: function(age) {
-                            // This is fine since you couldn't do anything after opening the door if you couldn't do this!
-                            return ItemData.canUse(age, Equipment.HOVER_BOOTS) ||
-                                Data.canMegaFlip(age);
-                        },
+                        // This logic works from both sides, as you can't do anything from the reverse side without passing this check
+                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP],
                         KeyRequirement: function(age) {
                             let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 3;
                             return { min: 2, max: max };
@@ -4001,10 +3991,12 @@ let MQDungeons = {
                         Needs: [ItemSets.EXPLOSIVES]
                     },
                     afterTruthSpinner: {
-                        CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) ||
-                                ItemData.canUseAny(age, [Items.FIRE_ARROW, Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT]);
-                        }
+                        NeedsAny: [
+                            Items.FIRE_ARROW,
+                            Equipment.HOVER_BOOTS,
+                            UpgradedItems.LONGSHOT,
+                            GlitchItemSets.MEGA_FLIP
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -4024,9 +4016,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Entrance & Maze Rooms", imageName: "Hover Boots" },
                 Exits: {
                     mazeBack: {
-                        CustomRequirement: function(age) {
-                            return age === Age.CHILD || Data.canPlaySong(Songs.SONG_OF_TIME);
-                        }
+                        AdultNeeds: [Songs.SONG_OF_TIME]
                     }
                 },
                 ItemLocations: {
@@ -4089,6 +4079,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "In the maze by the entrance, navigate around to the other side of the first room. Play the Song of Time to remove the block in the way (invisible without the lens). In the next room, shoot the middle eye. Now you can enter the northwest door. Kill Dead Hand to spawn the chest.",
+                        Needs: [ItemSets.SWORDS],
                         NeedsAny: [ItemSets.PROJECTILES, QPAItemSets.TALL_TORCH_QPA]
                     }
                 }
@@ -4103,18 +4094,11 @@ let MQDungeons = {
                     },
                     boatRoom: {
                         Age: Age.ADULT,
-                        NeedsAny: [Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.shadowGateClip;
-                        }
+                        Needs: [GlitchItemSets.SHADOW_GATE_CLIP]
                     },
                     boatRoomLedge: {
                         Age: Age.ADULT,
-                        Needs: [Equipment.HOVER_BOOTS],
-                        NeedsAny: [Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.shadowUpperBoatRoomJump;
-                        }
+                        Needs: [GlitchItemSets.SHADOW_JUMP_TO_BOAT_ROOM_LEDGE]
                     }
                 },
                 ItemLocations: {
@@ -4145,10 +4129,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 8.4,
                         LongDescription: "This rupee is in the northwest corner of the room. Use your hookshot or hover boots to get to it.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]) ||
-                                Settings.GlitchesToAllow.shadowSilverRupeeWithNothing;
-                        }
+                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING]
                     },
                     "Scythe Silver Rupee in Back Alcove": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4197,16 +4178,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Invisible Scythe & Pit Rooms", imageName: "Lens of Truth" },
                 Exits: {
                     gatedAreaInInvisibleScytheRoom: {
-                        CustomRequirement: function(age) {
-                            if (Data.canWeirdShot(age)) { return true; }
-
-                            // We can't check the index via the property here since we don't NEED the rupees to advance in this case
-                            if (Settings.RandomizerSettings.shuffleSilverRupees) { 
-                                return ItemData.checkSilverRupeeRequirement("Shadow Temple", 1);
-                            }
-
-                            return age === Age.ADULT && Data.canPlaySong(Songs.SONG_OF_TIME);
-                        }
+                        NeedsAny: [SilverRupeeSets.MQ_SHADOW_INVISIBLE_SCYTHE_ROOM, GlitchItemSets.WEIRD_SHOT]
                     }
                 },
                 ItemLocations: {
@@ -4237,10 +4209,8 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "To get to this room, first make it to the platform with the two beamos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). The hearts are in the back left corner. Adult can play the Song of Time to spawn a block to get them, child will need the boomerang.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Items.BOOMERANG) ||
-                                (age === Age.ADULT && Data.canPlaySong(Songs.SONG_OF_TIME));
-                        }
+                        ChildNeeds: [Items.BOOMERANG],
+                        AdultNeedsAny: [Items.BOOMERANG, Songs.SONG_OF_TIME]
                     }
                 }
             },
@@ -4276,10 +4246,7 @@ let MQDungeons = {
                     invisibleSpikeRoom: {
                         LockedDoor: "Locked Door in Giant Room",
                         Map: "Shadow Temple",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, Equipment.HOVER_BOOTS) ||
-                                Data.canMegaFlip(age);
-                        }
+                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     }
                 },
                 ItemLocations: {
@@ -4322,10 +4289,7 @@ let MQDungeons = {
                         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                         Order: 16,
                         LongDescription: "In the giant room, use a fire item to hit the frozen eye switch. This will spawn some platforms in the direction the eye is facing. Use them to get to the right side of the room. Once there, gather all the silver rupees to spawn the chest. Two of them are up high and requires the longshot.",
-                        SilverRupeeIndex: 2,
-                        CustomRequirement: function(age) {
-                            return Settings.RandomizerSettings.shuffleSilverRupees || ItemData.canUse(age, UpgradedItems.LONGSHOT);
-                        }
+                        Needs: [SilverRupeeSets.MQ_SHADOW_SILVER_RUPEES_PIT_ROOM]
                     }
                 }
             },
@@ -4333,9 +4297,8 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Strength Goron's Bracelet" },
                 Exits: {
                     topOfFallingSpikesRoom: {
-                        CustomRequirement: function(age) {
-                            return (age === Age.ADULT && Equipment.STRENGTH.playerHas) || Settings.GlitchesToAllow.shadowBackFlipOnSpikes;
-                        }
+                        ChildNeeds: [GlitchItemSets.SHADOW_BACKFLIP_ON_SPIKES],
+                        AdultNeedsAny: [Equipment.STRENGTH, GlitchItemSets.SHADOW_BACKFLIP_ON_SPIKES]
                     }
                 },
                 ItemLocations: {
@@ -4355,9 +4318,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "Get to the right side of the giant room. Hit the switch behind the gate to open it to get to the falling spike room. In the first cell to the left is the skulltula.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS) || Data.canStaircaseHover(age);
-                        }
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
                     },
                     "Bottom Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4408,10 +4369,7 @@ let MQDungeons = {
                     },
                     leftOfInvisibleSpikeRoom: {
                         Map: "Shadow Temple",
-                        SilverRupeeIndex: 3,
-                        CustomRequirement: function(age) {
-                            return Settings.RandomizerSettings.shuffleSilverRupees || ItemData.canUse(age, Items.HOOKSHOT);
-                        }
+                        Needs: [SilverRupeeSets.MQ_SHADOW_SILVER_INVISIBLE_SPIKE_ROOM]
                     },
                     windHallWayTop: {
                         Map: "Shadow Temple",
@@ -4529,9 +4487,7 @@ let MQDungeons = {
                         LockedDoor: "Locked Door in Invisible Spike Room",
                     },
                     windHallway: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.shadowNoIronBoots || Equipment.IRON_BOOTS.playerHas;
-                        }
+                        Needs: [GameStateSets.SHADOW_IRON_BOOTS_CHECK]
                     }
                 },
                 ItemLocations: {}
@@ -4540,10 +4496,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Wind Hallway & Gibdo Room", imageName: "Iron Boots" },
                 Exits: {
                     windHallWayTop: {
-                        Needs: [Items.HOOKSHOT],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.shadowNoIronBoots || Equipment.IRON_BOOTS.playerHas;
-                        }
+                        Needs: [Items.HOOKSHOT, GameStateSets.SHADOW_IRON_BOOTS_CHECK]
                     },
                     boatRoom: {
                         LockedDoor: "Locked Door After Fans",
@@ -4649,10 +4602,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Boat Room Chasm Areas", imageName: "Fairy Bow" },
                 Exits: {
                     acrossChasm: {
-                        CustomRequirement: function(age) {
-                            let canHitWithChu = Settings.GlitchesToAllow.shadowChuBombFlowers && Items.BOMBCHU.playerHas;
-                            return Items.FAIRY_BOW.playerHas || canHitWithChu;
-                        }
+                        NeedsAny: [Items.FAIRY_BOW, GlitchItemSets.SHADOW_LOWER_BRIDGE_WITH_CHUS]
                     }
                 },
                 ItemLocations: {
@@ -4679,16 +4629,19 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Boat Room Chasm Areas", imageName: "Fairy Bow" },
                 Exits: {
                     chasmPlatform: {
-                        Needs: [Items.HOOKSHOT],
-                        NeedsAny: [Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA],
-                        CustomRequirement: function(age) {
-                            if (Settings.GlitchesToAllow.mqShadowChasmPlatformWithHookshot &&
-                                Data.canShieldTurn(age)
-                            ) {
-                                return true;
-                            }
-                            return ItemData.canUse(age, [Songs.SONG_OF_TIME, UpgradedItems.LONGSHOT])
-                        }
+                        Needs: [
+                            Items.HOOKSHOT,
+                            [SetType.OR, // Hit eye switch
+                                Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA],
+                        ],
+                        NeedsAny: [ 
+                            [
+                                [SetType.OR, 
+                                    Songs.SONG_OF_TIME, QPAItemSets.LEDGE_QPA], 
+                                UpgradedItems.LONGSHOT
+                            ],
+                            GlitchItemSets.MQ_SHADOW_CHASM_PLATFORM_WITH_HOOKSHOT // We're including hookshot (bow) extention here
+                        ]
                     },
                     bossRoomAntechamber: {}
                 },
@@ -4765,10 +4718,11 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 45,
                         LongDescription: "From the room with invisible walls, enter the room that's straight ahead of you (the west room). Use the bomb flower or your own bombs to blow up all three skulls to spawn the 9 items.",
-                        CustomRequirement: function(age) {
-                            let canUseChu = Settings.GlitchesToAllow.shadowGiantSkullsWithChus && Items.BOMBCHU.playerHas;
-                            return canUseChu || Items.BOMB.playerHas || Equipment.STRENGTH.playerHas;
-                        }
+                        NeedsAny: [
+                            Items.BOMB,
+                            Equipment.STRENGTH,
+                            GlitchItemSets.SHADOW_GIANT_SKULLS_WITH_CHU
+                        ]
                     },
                     "Bomb Flower Room Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4831,10 +4785,8 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Boss Area", imageName: "Shadow Medallion" },
                 Exits: {
                     bossRoom: {
-                        CustomRequirement: function(age) {
-                            if (!ItemData.hasBossKey("Shadow Temple")) { return false; }
-                            return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
-                        }
+                        Needs: [KeySets.SHADOW_BK],
+                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     }
                 },
                 ItemLocations: {

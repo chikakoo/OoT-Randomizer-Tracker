@@ -411,6 +411,9 @@ let GlitchItemSets = {
     SHADOW_LOWER_BRIDGE_WITH_CHUS: (age) => 
         Settings.GlitchesToAllow.shadowChuBombFlowers &&
         ItemData.canUse(age, Items.BOMBCHU),
+    MQ_SHADOW_CHASM_PLATFORM_WITH_HOOKSHOT: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.mqShadowChasmPlatformWithHookshot &&
+        ItemData.canUse(age, [Items.HOOKSHOT, ItemSets.SHIELDS]),
 
     // Spirit Temple
     SPIRIT_BLOCK_SKIP_WITH_HOVER_BOOTS: (age) => 
@@ -635,6 +638,18 @@ let SilverRupeeSets = {
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Shadow Temple", 1)
         : true,
+    MQ_SHADOW_INVISIBLE_SCYTHE_ROOM: (age) =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Shadow Temple", 1)
+        : age === Age.ADULT && ItemData.canUse(age, Songs.SONG_OF_TIME),
+    MQ_SHADOW_SILVER_RUPEES_PIT_ROOM: (age) =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Shadow Temple", 2)
+        : ItemData.canUse(age, UpgradedItems.LONGSHOT),
+    MQ_SHADOW_SILVER_INVISIBLE_SPIKE_ROOM: (age) =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Shadow Temple", 3)
+        : ItemData.canUse(age, Items.HOOKSHOT),
     SPIRIT_SILVER_RUPEES_SUN_BLOCK_ROOM: () =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Spirit Temple", 1)

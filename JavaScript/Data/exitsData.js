@@ -857,13 +857,17 @@ let OwExits = {
             Order: 30,
             LongDescription: "This is the entrance to the Bottom of the Well.",
             IsDungeonEntrance: true,
-            NeedsAny: [GlitchItemSets.CHILD_WELL_WITH_CUCCO,
+            NeedsAny: [
+                GlitchItemSets.CHILD_WELL_WITH_CUCCO,
                 GlitchItemSets.ADULT_WELL_WITH_CUCCO,
                 ItemLocationSets.DRAIN_WELL_WATER,
-                [SettingSets.VANILLA_INTERIOR_ENTRANCES,
+                [
+                    SettingSets.VANILLA_INTERIOR_ENTRANCES,
                     SettingSets.VANILLA_OVERWORLD_ENTRANCES,
                     () => Data.canBeAge(Age.CHILD),
-                    Songs.SONG_OF_STORMS]]
+                    Songs.SONG_OF_STORMS
+                ]
+            ]
         },
         "Hidden Grotto near Tree": {
             ExitRegion: "main",
