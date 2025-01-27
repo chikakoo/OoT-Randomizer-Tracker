@@ -522,56 +522,6 @@ Data = {
 	},
     
     /**
-     * Returns whether you can megaflip
-     */
-	canMegaFlip: function(age) {
-		return Settings.GlitchesToAllow.megaFlip && 
-            ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]);
-    },
-
-    /**
-     * Returns whether you can weird shot
-     * @param age - the age to check (currently only adult works, must change if we want to include boomerang or slingshot)
-     * @param item - the item to weirdshot with - defaults to hookshot
-     */
-    canWeirdShot: function(age, item) {
-        item = item || Items.HOOKSHOT;
-        return Settings.GlitchesToAllow.weirdShot && 
-            ItemData.canUse(age, [item, Items.BOMB, ItemSets.SHIELDS]);
-    },
-
-    /**
-     * Returns whether you can do a staircase hover
-     */
-    canStaircaseHover: function(age) {
-        return Settings.GlitchesToAllow.staircaseHover &&
-            ItemData.canUse(age, [Items.BOMB, ItemSets.SWORDS, ItemSets.SHIELDS]);
-    },
-
-    /**
-     * Returns whether you can do a superslide using bombs
-     */
-    canBombSuperslide: function(age) {
-        return Settings.GlitchesToAllow.bombSuperslide &&
-            ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]);
-    },
-
-    /**
-     * Returns whether you can do a superslide using bombs and hover boots
-     */
-    canBombSuperslideWithHovers: function(age) {
-        return ItemData.canUse(age, Equipment.HOVER_BOOTS) && this.canBombSuperslide(age);
-    },
-
-    /**
-     * Returns whether you can do a superslide the hammer and hover boots
-     */
-    canHammerHoverBootsSuperslide: function(age) {
-        return Settings.GlitchesToAllow.hammerHoverBootsSuperslide &&
-            ItemData.canUse(age, [Equipment.HOVER_BOOTS, Items.MEGATON_HAMMER]);
-    },
-    
-    /**
 	 * Sets whether the item is obtained
      * Runs the PostObtain function if there is one
 	 * @param itemLocation - The item

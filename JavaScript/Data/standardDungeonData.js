@@ -1203,7 +1203,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() {
                             return !Settings.GlitchesToAllow.forestBoomerangSkullOnLedge &&
-                                !Settings.GlitchesToAllow.canMegaflip;
+                                !Settings.GlitchesToAllow.megaflip;
                         },
                         Order: 10,
                         LongDescription: "There is a skulltula on the landmass on the other side of the water in the right outside room. You can hookshot to the island via the chest at the right angle. To get to the right outside room, you can either shoot the eye switch in the main room, or climb up the vines in the left outside room and go through the dungeon map room.<br/><br/>If you have no hookshot and are coming from the falling ceiling room, make sure you kill it and drop down on the item from above so you don't miss your chance!"

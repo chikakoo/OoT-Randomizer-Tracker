@@ -1099,11 +1099,8 @@ GrottoGroups = {
 				itemGroup: ItemGroups.SKULLTULA,
 				description: "Burn the web. The skulltula is in the section the cow is in.",
 				canGet: function(age) {
-					if (Data.canWeirdShot(age) && ItemData.canUse(age, UpgradedItems.LONGSHOT)) {
-						return true;
-					}
-					
-					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]) && 
+					return ItemData.canUseAny(age, 
+							[ItemSets.FIRE_ITEMS, GlitchItemSets.LONGSHOT_WEIRD_SHOT, QPAItemSets.CUTSCENE_ITEM_QPA]) && 
 						ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS);
 				}
 			},
@@ -1136,8 +1133,10 @@ GrottoGroups = {
 				canGet: function(age) {
 					// The staircase hover requires two additional bomb drops to gain enough height
                     // Start the hover against the wall
-					return ItemData.canUse(age, [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, ItemSets.MUD_WALL_ITEMS]) ||
-						Data.canStaircaseHover(age);
+					return ItemData.canUseAny(age, [
+						[ItemSets.GRAB_SHORT_DISTANCE_ITEMS, ItemSets.MUD_WALL_ITEMS],
+						GlitchItemSets.STAIRCASE_HOVER
+					]);
 				}
 			},
 			"4 Pots": {

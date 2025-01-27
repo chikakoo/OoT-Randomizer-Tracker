@@ -118,15 +118,31 @@ let BeanSets = {
  */
 let GlitchItemSets = {
 	// Common
-	WEIRD_SHOT: (age) => Data.canWeirdShot(age),
-    LONGSHOT_WEIRD_SHOT: (age) => Data.canWeirdShot(age, UpgradedItems.LONGSHOT),
-    PROJECTILE_WEIRD_SHOT: (age) => Data.canWeirdShot(age, ItemSets.PROJECTILES),
-	MEGA_FLIP: (age) => Data.canMegaFlip(age),
-    CHU_MEGA_FLIP: (age) => ItemData.canUse(age, [Items.BOMBCHU, GlitchItemSets.MEGA_FLIP]),
-    STAIRCASE_HOVER: (age) => Data.canStaircaseHover(age),
-    BOMB_SUPERSLIDE: (age) => Data.canBombSuperslide(age),
-    BOMB_SUPERSLIDE_WITH_HOVERS: (age) => Data.canBombSuperslideWithHovers(age),
-    HAMMER_SUPERSLIDE_WITH_HOVERS: (age) => Data.canHammerHoverBootsSuperslide(age),
+    BASE_WEIRD_SHOT: (age) => 
+        Settings.GlitchesToAllow.weirdShot &&
+        ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB]),
+	WEIRD_SHOT: (age) => 
+        ItemData.canUse(age, [GlitchItemSets.BASE_WEIRD_SHOT, Items.HOOKSHOT]),
+    LONGSHOT_WEIRD_SHOT: (age) => 
+        ItemData.canUse(age, [GlitchItemSets.BASE_WEIRD_SHOT, UpgradedItems.LONGSHOT]),
+    PROJECTILE_WEIRD_SHOT: (age) => 
+        ItemData.canUse(age, [GlitchItemSets.BASE_WEIRD_SHOT, ItemSets.PROJECTILES]),
+	MEGA_FLIP: (age) => 
+        Settings.GlitchesToAllow.megaFlip &&
+        ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]),
+    CHU_MEGA_FLIP: (age) => 
+        ItemData.canUse(age, [Items.BOMBCHU, GlitchItemSets.MEGA_FLIP]),
+    STAIRCASE_HOVER: (age) => 
+        Settings.GlitchesToAllow.staircaseHover &&
+        ItemData.canUse(age, [Items.BOMB, ItemSets.SWORDS, ItemSets.SHIELDS]),
+    BOMB_SUPERSLIDE: (age) => 
+        Settings.GlitchesToAllow.bombSuperslide &&
+        ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]),
+    BOMB_SUPERSLIDE_WITH_HOVERS: (age) => 
+        ItemData.canUse(age, [GlitchItemSets.BOMB_SUPERSLIDE, Equipment.HOVER_BOOTS]),
+    HAMMER_SUPERSLIDE_WITH_HOVERS: (age) => 
+        Settings.GlitchesToAllow.hammerHoverBootsSuperslide &&
+        ItemData.canUse(age, [Equipment.HOVER_BOOTS, Items.MEGATON_HAMMER]),
 	GROUND_JUMP: (age) => 
         Settings.GlitchesToAllow.groundJump && 
         ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]),

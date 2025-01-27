@@ -4818,10 +4818,8 @@ let MQDungeons = {
         Floors: ["F4", "F3", "F2", "F1"],
         StartingFloorIndex: 3,
         _canAccessAdultSide: function() {
-            let canGetUp = ItemData.canUse(Age.ADULT, [Items.BOMBCHU, UpgradedItems.LONGSHOT]);
-            let canPushBlock = ItemData.canUse(Age.ADULT, UpgradedItems.SILVER_GAUNTLETS);
-            let canWeirdShot = Data.canWeirdShot(Age.ADULT) && Items.FAIRY_BOW.playerHas;
-            return canGetUp && (canPushBlock || canWeirdShot);
+            return ItemData.canUse(Age.ADULT, [Items.BOMBCHU, UpgradedItems.LONGSHOT]) && // Get up
+                ItemData.canUseAny(Age.ADULT, [UpgradedItems.SILVER_GAUNTLETS, GlitchItemSets.PROJECTILE_WEIRD_SHOT]); // Pass blocks
         },
         Regions: {
             main: {
@@ -4837,8 +4835,7 @@ let MQDungeons = {
                     },
                     silverBlockMaze: {
                         Age: Age.ADULT,
-                        Needs: [Items.BOMBCHU, UpgradedItems.LONGSHOT],
-                        NeedsAny: [UpgradedItems.SILVER_GAUNTLETS, GlitchItemSets.PROJECTILE_WEIRD_SHOT]
+                        Needs: [() => MapLocations["Spirit Temple"]._canAccessAdultSide()]
                     },
                     Exit: {
                         OwExit: OwExits["Spirit Temple"]["Exit"]
