@@ -688,6 +688,16 @@ let SilverRupeeSets = {
         : ItemData.canUse(age, 
             [Equipment.IRON_BOOTS, Songs.SONG_OF_TIME, GameStateSets.GTG_TUNIC_CHECK]),
     MQ_GTG_SILVER_RUPEES_SLOPES_ROOM: (age) => SilverRupeeSets.GTG_SILVER_RUPEES_SLOPES_ROOM(age),
+    MQ_GTG_SILVER_RUPEES_LAVA_ROOM: (age) => 
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Training Grounds", 1)
+        : ItemData.canUseAny(age, [Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]) && // Light the torch
+            ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]), // Grab the rupees
+    MQ_GTG_SILVER_RUPEES_WATER_ROOM: (age) =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Training Grounds", 2)
+        : ItemData.canUse(age, [Equipment.IRON_BOOTS, GameStateSets.GTG_TUNIC_CHECK]) && // Dive down
+            ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]), // Break web
     GANON_SPIRIT_SILVER_RUPEES: (age) =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Ganon's Castle", 0)
@@ -699,7 +709,15 @@ let SilverRupeeSets = {
     GANON_FIRE_SILVER_RUPEES: (age) => 
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Ganon's Castle", 2)
-        : ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS)
+        : ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS),
+    MQ_GANON_FIRE_SILVER_RUPEES: (age) =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Ganon's Castle", 0)
+        : ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS),
+    MQ_GANON_WATER_SILVER_RUPEES: (age) =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Ganon's Castle", 2)
+        : age === Age.ADULT
 };
 
 /**

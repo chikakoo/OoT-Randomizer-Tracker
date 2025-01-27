@@ -6558,14 +6558,13 @@ let MQDungeons = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         Order: 10,
                         LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down.<br/><br/>Use hover boots or the longshot to navigate to the top of the center statue to get this wonderitem.",
-                        CustomRequirement: function(age) {
-                            return Data.canMegaFlip(age) || (age === Age.ADULT && 
-                                (
-                                    Settings.GlitchesToAllow.gtgEyeStatueWonderItemJumpslash || 
-                                    ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT])
-                                )
-                            );
-                        }
+                        ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+                        AdultNeedsAny: [
+                            Equipment.HOVER_BOOTS,
+                            UpgradedItems.LONGSHOT,
+                            GlitchItemSets.MEGA_FLIP,
+                            GlitchItemSets.GTG_EYE_STATUE_WONDERITEM_JUMPSLASH
+                        ]
                     },
                     "Chest in Eye Statue Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -6631,14 +6630,12 @@ let MQDungeons = {
                     },
                     bigLavaRoomBack: {
                         Age: Age.ADULT,
-                        Needs: [Items.FAIRY_BOW],
-                        CustomRequirement: function(age) {
-                            // Getting all silver rupees spawns hookshot targets that you can use to traverse!
-                            if (Settings.RandomizerSettings.shuffleSilverRupees && ItemData.checkSilverRupeeRequirement("Training Grounds", 1)) {
-                                return true;
-                            }
-                            return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
-                        }
+                        Needs: [Items.FAIRY_BOW], // Light torch from here specifically so you can travel directly there (no intermediary)
+                        NeedsAny: [
+                            Equipment.HOVER_BOOTS,
+                            GlitchItemSets.MEGA_FLIP,
+                            SilverRupeeSets.MQ_GTG_SILVER_RUPEES_LAVA_ROOM // Getting all silver rupees spawns hookshot targets that you can use to traverse
+                        ]
                     },
                     armosRoom: {}
                 },
@@ -6676,9 +6673,7 @@ let MQDungeons = {
                     bigLavaRoomBackLeft: {
                         Age: Age.ADULT,
                         Needs: [Items.FIRE_ARROW],
-                        CustomRequirement: function(age) {
-                            return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
-                        }
+                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     bigLavaRoomWaterDoorPlatform: {
                         Age: Age.ADULT,
@@ -6697,35 +6692,28 @@ let MQDungeons = {
                 Exits: {
                     bigLavaRoomBackLeft: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            // Getting all silver rupees spawns hookshot targets that you can use to traverse!
-                            if (Settings.RandomizerSettings.shuffleSilverRupees && ItemData.checkSilverRupeeRequirement("Training Grounds", 1)) {
-                                return true;
-                            }
-                            return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
-                        }
+                        NeedsAny: [
+                            Equipment.HOVER_BOOTS,
+                            GlitchItemSets.MEGA_FLIP,
+                            SilverRupeeSets.MQ_GTG_SILVER_RUPEES_LAVA_ROOM
+                        ]
                     },
                     bigLavaRoomFront: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            // Getting all silver rupees spawns hookshot targets that you can use to traverse!
-                            if (Settings.RandomizerSettings.shuffleSilverRupees && ItemData.checkSilverRupeeRequirement("Training Grounds", 1)) {
-                                return true;
-                            }
-
-                            // Hookshot will let you get to the big water platform first, then navigate before the fires go out
-                            return Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas || Data.canMegaFlip(age);
-                        }
+                        NeedsAny: [
+                            Equipment.HOVER_BOOTS,
+                            Items.HOOKSHOT, // Will let you get to the big water platform first, then navigate before the fires go out
+                            GlitchItemSets.MEGA_FLIP,
+                            SilverRupeeSets.MQ_GTG_SILVER_RUPEES_LAVA_ROOM
+                        ]
                     },
                     bigLavaRoomWaterDoorPlatform: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            // Getting all silver rupees spawns hookshot targets that you can use to traverse!
-                            if (Settings.RandomizerSettings.shuffleSilverRupees && ItemData.checkSilverRupeeRequirement("Training Grounds", 1)) {
-                                return true;
-                            }
-                            return Equipment.HOVER_BOOTS.playerHas || Items.HOOKSHOT.playerHas;
-                        }
+                        NeedsAny: [
+                            Equipment.HOVER_BOOTS,
+                            Items.HOOKSHOT,
+                            SilverRupeeSets.MQ_GTG_SILVER_RUPEES_LAVA_ROOM
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -6765,19 +6753,15 @@ let MQDungeons = {
                         NeedsAny: [UpgradedItems.LONGSHOT, ItemSets.FIRE_ITEMS]
                     },
                     bigLavaRoomBack: {
-                        Needs: [ItemSets.FIRE_ITEMS],
-                        CustomRequirement: function(age) {
-                            return Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age);
-                        }
+                        NeedsAny: [
+                            ItemSets.FIRE_ITEMS, 
+                            Equipment.HOVER_BOOTS, 
+                            GlitchItemSets.MEGA_FLIP, 
+                            QPAItemSets.LEDGE_QPA
+                        ]
                     },
                     waterRoom: {
-                        Map: "Training Grounds",
-                        SilverRupeeIndex: 1,
-                        CustomRequirement: function(age) {
-                            if (Settings.RandomizerSettings.shuffleSilverRupees) { return true; }
-                            return (Equipment.HOVER_BOOTS.playerHas || Data.canMegaFlip(age)) && 
-                                ItemData.canUseAny(age, [Items.FAIRY_BOW, Items.DINS_FIRE]);
-                        }
+                        Needs: [SilverRupeeSets.GTG_SILVER_RUPEES_LAVA_ROOM]
                     }
                 },
                 ItemLocations: {}
@@ -6792,13 +6776,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 16,
                         LongDescription: "From the big lava room, longshot to the torch by the side door. Light it with a fire item or with your bow from the lit torch, then use your hover boots to collect the rupees. You may need to collect half of them then come back and light the torch again.<br/><br/>Once inside the water room, burn the web, then use your iron boots and hookshot (if you have one) to collect all the rupees in the water. The chest will spawn at the top.",
-                        SilverRupeeIndex: 2,
-                        CustomRequirement: function(age) {
-                            if (Settings.RandomizerSettings.shuffleSilverRupees) { return true; }
-
-                            let tunicCheck = Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                            return tunicCheck && ItemData.canUse(age, [Equipment.IRON_BOOTS, ItemSets.FIRE_ITEMS]);
-                        }
+                        Needs: [SilverRupeeSets.MQ_GTG_SILVER_RUPEES_WATER_ROOM]
                     },
                     "3 Silver Rupees in Water Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -6809,10 +6787,8 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 16.1,
                         LongDescription: "From the big lava room, longshot to the torch by the side door. Light it with a fire item or with your bow from the lit torch, then use your hover boots to collect the rupees. You may need to collect half of them then come back and light the torch again.<br/><br/>Once inside the water room, burn the web, then use your iron boots and hookshot (if you have one) to collect the items.",
-                        Needs: [Equipment.IRON_BOOTS, ItemSets.FIRE_ITEMS],
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.gtgNoZoraTunic || Equipment.ZORA_TUNIC.playerHas;
-                        }
+                        Needs: [Equipment.IRON_BOOTS, GameStateSets.GTG_TUNIC_CHECK],
+                        NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
                     }
                 }
             },
@@ -6821,15 +6797,14 @@ let MQDungeons = {
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {
                     bigLavaRoomFront: {
-                        Age: Age.EITHER,
-                        CustomRequirement: function(age) {
-                            if (Data.canMegaFlip(age)) { return true; }
-                            if (age === Age.CHILD) { return false; }
-
-                            return ItemData.canUseAny(age, [Items.FIRE_ARROW, UpgradedItems.LONGSHOT]) ||
-                                Data.canBombSuperslideWithHovers(age) ||
-                                Data.canHammerHoverBootsSuperslide(age);
-                        }
+                        ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+                        AdultNeedsAny: [
+                            Items.FIRE_ARROW,
+                            UpgradedItems.LONGSHOT,
+                            GlitchItemSets.MEGA_FLIP,
+                            GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS,
+                            GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS
+                        ]
                     },
                     bigLavaRoomBack: {
                         Age: Age.ADULT,
@@ -6869,13 +6844,18 @@ let MQDungeons = {
         StartingFloorIndex: 0,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canGetToWaterTrialDoor: function(age) {
-            if (ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS)) {
-                return true;
-            }
-
-            let canHitCrystalSwitch = ItemData.canUseAny(age, 
-                [ItemSets.SWORDS, ItemSets.EXPLOSIVES, ItemSets.PROJECTILES]);
-            return canHitCrystalSwitch && Data.hasBottle(age);
+            return ItemData.canUse(age, [ItemSets.BLUE_FIRE_ITEMS]) || // Already has blue fire
+                ItemData.canUse(age, [ // Can get the blue fire in this room
+                    GameStateSets.HAS_BOTTLE,
+                    [SetType.OR,
+                        ItemSets.SWORDS, ItemSets.EXPLOSIVES, ItemSets.PROJECTILES]
+                ]);
+        },
+        _canEnterLightTrial: function(age) {
+            return ItemData.canUseAny(age, [
+                UpgradedItems.GOLDEN_GAUNTLETS, 
+                GlitchItemSets.GANON_LIGHT_ESS_CLIP, 
+                GlitchItemSets.GANON_LIGHT_SUPERSLIDE_SKIP]);
         },
         Regions: {
             main: {
@@ -6885,37 +6865,21 @@ let MQDungeons = {
                     waterRoom: {},
                     shadowSmallPlatform: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Equipment.HOVER_BOOTS.playerHas || (Items.FAIRY_BOW.playerHas && Items.HOOKSHOT.playerHas);
-                        }
+                        NeedsAny: [
+                            Equipment.HOVER_BOOTS,
+                            [Items.FAIRY_BOW, Items.HOOKSHOT]
+                        ]
                     },
                     fireRoomEarly: {},
                     lightRoom1: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
-                                ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]);
-                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && 
-                                ItemData.canUse(age, ItemSets.EXPLOSIVES);
-                            return canSuperslideIn || canEssClipIn || ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
-                        }
+                        Needs: [(age) => MapLocations["Ganon's Castle"]._canEnterLightTrial(age)]
                     },
                     spiritRoom2: {
                         Needs: [Items.MEGATON_HAMMER]
                     },
                     center: {
-                        CustomRequirement: function(age) {
-                            if (Data.canStaircaseHover(age)) {
-                                return true;
-                            }
-
-                            return Data.itemLocationObtained("Ganon's Castle", "forestTrialEnd", "Forest Trial Complete") &&
-                                Data.itemLocationObtained("Ganon's Castle", "waterTrialEnd", "Water Trial Complete") &&
-                                Data.itemLocationObtained("Ganon's Castle", "shadowTrialEnd", "Shadow Trial Complete") &&
-                                Data.itemLocationObtained("Ganon's Castle", "fireTrialEnd", "Fire Trial Complete") &&
-                                Data.itemLocationObtained("Ganon's Castle", "lightTrialEnd", "Light Trial Complete") &&
-                                Data.itemLocationObtained("Ganon's Castle", "spiritTrialEnd", "Spirit Trial Complete");
-                        }
+                        NeedsAny: [GlitchItemSets.STAIRCASE_HOVER, ItemLocationSets.ALL_TRIALS_COMPLETED]
                     }
                 },
                 ItemLocations: {
@@ -6939,20 +6903,9 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "This is the locked door in the water trial, blocked by the red ice.",
-                        CustomRequirement: function(age) {
-                            return MapLocations["Ganon's Castle"]._canGetToWaterTrialDoor(age);
-                        },
+                        Needs: [(age) => MapLocations["Ganon's Castle"]._canGetToWaterTrialDoor(age)],
                         KeyRequirement: function(age) {
-                            let max = 3;
-                            let canSuperslideIn = Settings.GlitchesToAllow.ganonLightTrialSuperslideSkip && 
-                                ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]);
-                            let canEssClipIn = Settings.GlitchesToAllow.ganonLightTrailEssSkip && 
-                                ItemData.canUse(age, ItemSets.EXPLOSIVES);
-                            let canGlitchIn = canSuperslideIn || canEssClipIn;
-                            let canEnterLightTrial = canGlitchIn || ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
-                            if (!canEnterLightTrial) {
-                                max = 1;
-                            }
+                            let max = MapLocations["Ganon's Castle"]._canEnterLightTrial(age) ? 3 : 1;
                             return { min: 1, max: max };
                         }
                     },
@@ -7051,9 +7004,7 @@ let MQDungeons = {
                     waterTrialBlockPuzzle: {
                         Map: "Ganon's Castle",
                         LockedDoor: "Locked Door in Water Trial",
-                        CustomRequirement: function(age) {
-                            return MapLocations["Ganon's Castle"]._canGetToWaterTrialDoor(age);
-                        }
+                        Needs: [(age) => MapLocations["Ganon's Castle"]._canGetToWaterTrialDoor(age)]
                     }
                 },
                 ItemLocations: {
@@ -7071,10 +7022,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "In the water trial - this heart is in the blue ice in the right side of the room (or use a boomerang trick shot).<br/><br/>To gain access to the blue fire, attack the weird hand thing on the right side of the room to lower the water around the blue fire.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS) || 
-                                (Settings.GlitchesToAllow.boomerangThroughWalls && ItemData.canUse(age, Items.BOOMERANG));
-                        }
+                        NeedsAny: [ItemSets.BLUE_FIRE_ITEMS, GlitchItemSets.BOOMERANG_THROUGH_WALLS]
                     }
                 }
             },
@@ -7083,10 +7031,7 @@ let MQDungeons = {
                 Exits: {
                     waterTrialEnd: {
                         Map: "Ganon's Castle",
-                        SilverRupeeIndex: 2,
-                        CustomRequirement: function(age) {
-                            return age === Age.ADULT || !Settings.RandomizerSettings.shuffleSilverRupees;
-                        }
+                        Needs: [SilverRupeeSets.MQ_GANON_WATER_SILVER_RUPEES]
                     }
                 },
                 ItemLocations: {
@@ -7167,14 +7112,14 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 14,
                         LongDescription: "First, shoot the bomb flower on the right side of the room. Now, use hover boots or your hookshot to reach the chest. Otherwise, navigate to the bomb flower using hover boots/lens and blow it up with a fire item, strength, or your own explosives.",
-                        CustomRequirement: function(age) {
-                            // Chest can already be spawned
-                            if (Items.FAIRY_BOW.playerHas) { return true; }
-
-                            // Spawn chest by using tools to blow up the bomb flower
-                            return ItemData.canUse(age, Items.LENS_OF_TRUTH) &&
-                                ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]);
-                        }
+                        NeedsAny: [
+                            Items.FAIRY_BOW, // Spawn chest
+                            [ // Travel to the bomb flower and blow it up
+                                Items.LENS_OF_TRUTH,
+                                [SetType.OR,
+                                    ItemSets.EXPLOSIVES_OR_STRENGTH, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
+                            ]
+                        ]
                     }
                 }
             },
@@ -7271,9 +7216,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Fire Trial", imageName: "Fire Medallion" },
                 Exits: {
                     fireRoomLate: {
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.ganonFireNoTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
-                        }
+                        Needs: [GameStateSets.GANON_FIRE_TUNIC_CHECK]
                     }
                 },
                 ItemLocations: {
@@ -7293,16 +7236,12 @@ let MQDungeons = {
                 },
                 Exits: {
                     fireTrialEnd: {
-                        Map: "Ganon's Castle",
-                        SilverRupeeIndex: 0,
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            let hasGoldenGauntlets = ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS);
-                            let hasLongshot = ItemData.canUse(age, UpgradedItems.LONGSHOT);
-                            let canGetToDoor = hasLongshot || (hasGoldenGauntlets && Equipment.HOVER_BOOTS.playerHas)
-                            let canUnbarDoor = Settings.RandomizerSettings.shuffleSilverRupees || hasGoldenGauntlets;
-                            return canGetToDoor && canUnbarDoor;
-                        }
+                        Needs: [SilverRupeeSets.MQ_GANON_FIRE_SILVER_RUPEES], // Unbar door
+                        NeedsAny: [ // Get to door
+                            UpgradedItems.LONGSHOT,
+                            [Equipment.HOVER_BOOTS, UpgradedItems.GOLDEN_GAUNTLETS]
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -7386,9 +7325,7 @@ let MQDungeons = {
                 Exits: {
                     lightRoom2Back: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Items.HOOKSHOT.playerHas || Data.canGroundJumpWithBomb(age);
-                        }
+                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.GROUND_JUMP]
                     }
                 }, 
                 ItemLocations: {}
