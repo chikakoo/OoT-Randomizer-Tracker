@@ -318,7 +318,7 @@ Data = {
         }
 
         // In this case, we need to check if the other age can get to the temple
-        return this.canAccessMap(otherAge, "Temple of Time", "main");
+        return MapAccessSets.TEMPLE_OF_TIME(otherAge);
     },
 
     /**
@@ -1098,15 +1098,6 @@ Data = {
         // Child CAN use Hylian Shield for this use case
         return ItemData.canUse(age, ItemSets.SHIELDS) || Equipment.HYLIAN_SHIELD.playerHas;
     },
-
-    /**
-     * Returns whether the player can ground jump using a bomb
-     * @param includeBombFlower - Whether bomb flowers are feasible here (adds a strength check)
-     */
-    canGroundJumpWithBomb: function(age, includeBombFlower) {
-        let hasBombSource = Items.BOMB.playerHas || (includeBombFlower && (Equipment.STRENGTH.playerHas || Items.BOMBCHU.playerHas));
-		return Settings.GlitchesToAllow.groundJump && ItemData.canUse(age, ItemSets.SHIELDS) && hasBombSource;
-	},
     
     /**
      * Returns whether the player can equip swap items - this will ONLY care about 

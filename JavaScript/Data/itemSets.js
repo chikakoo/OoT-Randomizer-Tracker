@@ -585,6 +585,7 @@ let ItemLocationSets = {
  */
 let MapAccessSets = {
     HYRULE_FIELD: (age) => Data.canAccessMap(age, "Hyrule Field"),
+    TEMPLE_OF_TIME: (age) => Data.canAccessMap(age, "Temple of Time", "main"),
     HIDEOUT_JAIL_1: (age) => Data.canAccessMap(age, "Thieves' Hideout", "jail1"),
     HIDEOUT_ALL_JAILS: (age) =>
         Data.canAccessMap(age, "Thieves' Hideout", "jail1") &&
@@ -593,6 +594,8 @@ let MapAccessSets = {
         Data.canAccessMap(age, "Thieves' Hideout", "jail4"),
     FOREST_FIRST_POE_ROOM: (age) => Data.canAccessMap(age, "Forest Temple", "firstPoeRoom"),
     FOREST_FALLING_CEILING_ROOM: (age) => Data.canAccessMap(age, "Forest Temple", "fallingCeilingRoom"),
+    MQ_FOREST_POE_ROOMS: (age) => Data.canAccessMap(age, "Forest Temple", "poeRooms"),
+    MQ_FOREST_GREEN_POE_ROOM: (age) => Data.canAccessMap(age, "Forest Temple", "greenPoeRoom"),
     MQ_SPIRIT_AFTER_SECOND_CRAWLSPACE: (age) => Data.canAccessMap(age, "Spirit Temple", "afterSecondCrawlSpace")
 };
 

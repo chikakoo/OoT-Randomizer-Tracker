@@ -1557,9 +1557,9 @@ let MQDungeons = {
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canAccessAllPoeRooms: function(age) {
             // Requires an IsPostWalkCheck on each item using this!
-            let canAccessFirstPoes = Data.canAccessMap(age, "Forest Temple", "poeRooms");
-            let canAccessGreenPoeRoom = Data.canAccessMap(age, "Forest Temple", "greenPoeRoom");
-            return canAccessFirstPoes && canAccessGreenPoeRoom;
+            return ItemData.canUse(age, [
+                MapAccessSets.MQ_FOREST_POE_ROOMS,
+                MapAccessSets.MQ_FOREST_GREEN_POE_ROOM]);
         },
         Regions: {
             main: {
@@ -6643,9 +6643,11 @@ let MQDungeons = {
                     "Lava Silver Rupee in Front Center": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 247, y: 180 },
-                        Age: Age.ADULT,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip },
+                        Age: Age.EITHER,
                         Order: 15.1,
-                        LongDescription: "This rupee is the one on the platform in front of you, when entering from the aromos room.<br/><br/>To clear the fire around the rupees, use a fire arrow on the unlit torch on the side of the room, or longshot to the torch and use Din's Fire.<br/><br/>If entering from the top, either clear the fire and use hover boots to navigate around, or use your longshot to navigate via the torches (might be good to hit the megaton hammer switch too)."
+                        LongDescription: "This rupee is the one on the platform in front of you, when entering from the aromos room.<br/><br/>To clear the fire around the rupees, use a fire arrow on the unlit torch on the side of the room, or longshot to the torch and use Din's Fire.<br/><br/>If entering from the top, either clear the fire and use hover boots to navigate around, or use your longshot to navigate via the torches (might be good to hit the megaton hammer switch too).",
+                        ChildNeeds: [GlitchItemSets.MEGA_FLIP]
                     },
                     "Lava Silver Rupee in Front Left": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,

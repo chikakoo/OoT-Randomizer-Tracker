@@ -227,7 +227,7 @@ RegionWalker = {
                     foundTempleOfTime = Data.templeOfTimeLocation && Data.templeOfTimeLocation.map;
                     templeOfTimeInfo = { map: Data.templeOfTimeLocation.map, region: Data.templeOfTimeLocation.region };
                 } else {
-                    foundTempleOfTime = Data.canAccessMap(otherAge, "Temple of Time", "main");
+                    foundTempleOfTime = MapAccessSets.TEMPLE_OF_TIME(otherAge);
                     templeOfTimeInfo = { map: "Temple of Time", region: "main" };
                 }
 
