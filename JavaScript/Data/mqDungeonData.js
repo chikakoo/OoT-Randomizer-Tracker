@@ -4828,8 +4828,9 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Lobby", imageName: "Requiem of Spirit" },
                 Exits: {
                     bottomRightLobbyChest: {
-                        Map: "Spirit Temple",
-                        SilverRupeeIndex: 0
+                        // This check is always false for vanilla rupees - important because
+                        // we need to get to the side room to actually get this item
+                        Needs: [SilverRupeeSets.MQ_SPIRIT_SILVER_RUPEES_LOBBY]
                     },
                     childSide: {
                         Age: Age.CHILD,
@@ -4837,10 +4838,7 @@ let MQDungeons = {
                     silverBlockMaze: {
                         Age: Age.ADULT,
                         Needs: [Items.BOMBCHU, UpgradedItems.LONGSHOT],
-                        CustomRequirement: function(age) {
-                            if (ItemData.canUse(age, UpgradedItems.SILVER_GAUNTLETS)) { return true; }
-                            return Data.canWeirdShot(age) && Items.FAIRY_BOW.playerHas;
-                        }
+                        NeedsAny: [UpgradedItems.SILVER_GAUNTLETS, GlitchItemSets.PROJECTILE_WEIRD_SHOT]
                     },
                     Exit: {
                         OwExit: OwExits["Spirit Temple"]["Exit"]
@@ -4886,10 +4884,10 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "After you first enter the temple, go up the stairs. Destroy the yellow rock to your right and shoot the eye switch to spawn the chest.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.PROJECTILES]) ||
-                                ItemData.canUse(age, QPAItemSets.LEDGE_QPA);
-                        }
+                        NeedsAny: [
+                            [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.PROJECTILES],
+                            QPAItemSets.LEDGE_QPA
+                        ]
                     },
                     "Top Right Chest in Lobby": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5093,10 +5091,13 @@ let MQDungeons = {
                         IsPostWalkCheck: true,
                         LongDescription: "As an adult, navigate through the sun on the floor room until you're in the room with the rusted switch (this is the room after the second crawl space). Hit the switch to spawn the chest. You must go back in time to claim it.<br/>You can also equip swap hammer as Child to get this.",
                         Needs: [Items.BOMBCHU],
-                        CustomRequirement: function(age) {
-                            if (!Items.MEGATON_HAMMER.playerHas) { return false; }
-                            return ItemData.canUse(age, Items.MEGATON_HAMMER) || Data.canAccessMap(Age.ADULT, "Spirit Temple", "afterSecondCrawlSpace");
-                        }
+                        NeedsAny: [
+                            [ // Adult can spawn it
+                                () => Items.MEGATON_HAMMER.playerHas,
+                                () => MapAccessSets.MQ_SPIRIT_AFTER_SECOND_CRAWLSPACE(Age.ADULT),
+                            ],
+                            Items.MEGATON_HAMMER // current age can spawn it
+                        ]
                     }
                 }
             },
@@ -5316,12 +5317,12 @@ let MQDungeons = {
                         Order: 20,
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way up the western side. The pots are on the northeast platform, so either play the song of time to spawn the block, use hover boots, or megaflip to it.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT && (Equipment.HOVER_BOOTS.playerHas || Settings.GlitchesToAllow.spiritStatueRoomJumps)) {
-                                return true;
-                            }
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canMegaFlip(age);
-                        }
+                        NeedsAny: [
+                            Songs.SONG_OF_TIME,
+                            Equipment.HOVER_BOOTS,
+                            GlitchItemSets.MEGA_FLIP,
+                            GlitchItemSets.SPIRIT_STATUE_ROOM_JUMPS
+                        ]
                     },
                     "2 Upper Northeast Left Pots in Statue Room": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -5333,12 +5334,12 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 20,
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way up the western side. The pots are on the northeast platform, so either play the song of time to spawn the block, use hover boots, or megaflip to it. One of the pots will fly at you.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT && (Equipment.HOVER_BOOTS.playerHas || Settings.GlitchesToAllow.spiritStatueRoomJumps)) {
-                                return true;
-                            }
-                            return Data.canPlaySong(Songs.SONG_OF_TIME) || Data.canMegaFlip(age);
-                        }
+                        NeedsAny: [
+                            Songs.SONG_OF_TIME,
+                            Equipment.HOVER_BOOTS,
+                            GlitchItemSets.MEGA_FLIP,
+                            GlitchItemSets.SPIRIT_STATUE_ROOM_JUMPS
+                        ]
                     },
                     "Upper Northeast Right Pot in Statue Room": {
                         ItemGroup: ItemGroups.POT,
@@ -5346,14 +5347,13 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 21,
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way up the western side. The pots are on the northeast platform, so either play the song of time to spawn the block, use hover boots, megaflip, or use boomerang as described.<br/><br/>To use boomerang, first, jump to the statue hand (child requires a jumpslash). Now walk along the arm so you're somewhat near the wall. You should now be able to aim a bit to the left of the pot to get it.",
-                        CustomRequirement: function(age) {
-                            if (age === Age.ADULT && (Equipment.HOVER_BOOTS.playerHas || Settings.GlitchesToAllow.spiritStatueRoomJumps)) {
-                                return true;
-                            }
-                            return (Settings.GlitchesToAllow.difficultBoomerangTrickThrows && ItemData.canUse(age, Items.BOOMERANG)) || 
-                                Data.canPlaySong(Songs.SONG_OF_TIME) || 
-                                Data.canMegaFlip(age);
-                        }
+                        NeedsAny: [
+                            Songs.SONG_OF_TIME,
+                            Equipment.HOVER_BOOTS,
+                            GlitchItemSets.MEGA_FLIP,
+                            GlitchItemSets.BOOMERANG_TRICK_THROWS,
+                            GlitchItemSets.SPIRIT_STATUE_ROOM_JUMPS
+                        ]
                     }
                 }
             },
@@ -5371,10 +5371,7 @@ let MQDungeons = {
                         Order: 19,
                         LongDescription: "From the statue room, use a fire item on the southern eye switch to get to the maze room. Navigate to the first hole and shoot the eye switch on the lower left wall to spawn the chest.",
                         ChildNeeds: [Items.FAIRY_SLINGSHOT],
-                        AdultNeeds: [Items.FAIRY_BOW],
-                        CustomRequirement: function(age) {
-                            return age === Age.CHILD || Data.canWeirdShot(age);
-                        }
+                        AdultNeeds: [Items.FAIRY_BOW, GlitchItemSets.WEIRD_SHOT]
                     }
                 }
             },
@@ -5415,10 +5412,7 @@ let MQDungeons = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
                         Order: 24.1,
                         LongDescription: "In the fire bubble room, you must push the first sun block you see onto the light. You'll need to hit the crystal switches to make the fire disappear. This spawns a white platform that you can hookshot up to so that you can reach the skulltula.",
-                        CustomRequirement: function(age) {
-                            return (Settings.GlitchesToAllow.difficultBoomerangTrickThrows && ItemData.canUse(age, Items.BOOMERANG)) ||
-                                ItemData.canUse(age, Items.HOOKSHOT);
-                        }
+                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.BOOMERANG_TRICK_THROWS]
                     }
                 }
             },
@@ -5442,12 +5436,7 @@ let MQDungeons = {
                 Exits: {
                     mirrorShieldKnuckle: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Settings.GlitchesToAllow.spiritSuperslideToMirrorShield &&
-                                (age) &&
-                                Items.BOMB.playerHas &&
-                                Equipment.HOVER_BOOTS.playerHas;
-                        }
+                        Needs: [GlitchItemSets.SPIRIT_SUPERSLIDE_TO_MIRROR_SHIELD]
                     },
                     statueHands: {},
                     silverGauntsIronKnuckle: {}
@@ -5463,10 +5452,9 @@ let MQDungeons = {
                     },
                     bottomRightLobbyChest: {
                         Age: Age.ADULT,
-                        Needs: [Items.MEGATON_HAMMER],
-                        CustomRequirement: function(age) {
-                            return !Settings.RandomizerSettings.shuffleSilverRupees;
-                        }
+                        // Silver rupees NOT being shuffled gets the lobby chest from this side
+                        // by grabbing the last rupee by clearing the water with the hammer switch
+                        Needs: [Items.MEGATON_HAMMER, SettingSets.VANILLA_SILVER_RUPEES]
                     }
                 },
                 ItemLocations: {
@@ -5746,10 +5734,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Mirror Room & Boss Area", imageName: "Spirit Medallion" },
                 Exits: {
                     bossRoom: {
-                        Needs: [Equipment.MIRROR_SHIELD],
-                        CustomRequirement: function(age) {
-                            return ItemData.hasBossKey("Spirit Temple");
-                        }
+                        Needs: [Equipment.MIRROR_SHIELD, KeySets.SPIRIT_BK]
                     }
                 },
                 ItemLocations: {
@@ -5802,21 +5787,15 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Up to Center Room", imageName: "Blue Fire" },
                 Exits: {
                     blueFireRoom: {
-                        CustomRequirement: function(age) {
-                            let canBreakStalagmites = ItemData.canUseAny(age, [ItemSets.SWORDS, ItemSets.EXPLOSIVES]);
-                            return ItemData.canUse(age, ItemSets.FREEZARD_KILL_ITEMS) && canBreakStalagmites;
-                        }
+                        Needs: [ItemSets.FREEZARD_KILL_ITEMS],
+                        NeedsAny: [ItemSets.SWORDS, ItemSets.EXPLOSIVES] // Break stalagmites
                     },
                     northRoom: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Data.hasBottleOrBlueFire(age);
-                        }
+                        NeedsAny: [GameStateSets.HAS_BOTTLE, ItemSets.BLUE_FIRE_ITEMS]
                     },
                     bigRoom: {
-                        CustomRequirement: function(age) {
-                            return Data.hasBottleOrBlueFire(age);
-                        }
+                        NeedsAny: [GameStateSets.HAS_BOTTLE, ItemSets.BLUE_FIRE_ITEMS]
                     }
                 },
                 ItemLocations: {
@@ -5862,9 +5841,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 4,
                         LongDescription: "In the room with the tektites, hit the crystal switch to the right of the door. You can take a pot to the left of the entrance there to do so if you don't have a projectile. You may need to wait on the right hand wall for the boulder to pass.<br/><br/>Navigate through the cavern until you get to the first room with blue fire. Hit the switch to spawn the chest under the red ice. Melt it with blue fire to gain access to it.",
-                        CustomRequirement: function(age) {
-                            return Data.hasBottleOrBlueFire(age);
-                        }
+                        NeedsAny: [GameStateSets.HAS_BOTTLE, ItemSets.BLUE_FIRE_ITEMS]
                     }
                 }
             },
@@ -5896,21 +5873,19 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 7,
                         LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>Play the song of time on the top near the pillar with the skulltula to spawn a block. Climb it, and play the song again. Use blue fire to melt the ice to gain access to the skulltula.",
-                        CustomRequirement: function(age) {
-                            if (ItemData.canUse(age, Items.ICE_ARROW)) {
-                                return true;
-                            }
-
-                            let canMeltIce = Data.hasBottleOrBlueFire(age);
-                            if (canMeltIce && Settings.GlitchesToAllow.mqIceNorthSkullWithoutSoT) {
-                                return true;
-                            }
-
-                            let sotCheck = Data.canPlaySong(Songs.SONG_OF_TIME);
-                            let canPlayOcarinaNormally = Items.OCARINA.playerHas;
-                            let canUseOI = Data.canOIAndBlueFireWithoutRefilling(age);
-                            return canMeltIce && sotCheck && (canPlayOcarinaNormally || canUseOI);
-                        }
+                        NeedsAny: [
+                            Items.ICE_ARROW,
+                            GlitchItemSets.MQ_ICE_NORTH_ROOM_SKULL_WITH_BOTTLED_BLUE_FIRE,
+                            [
+                                GameStateSets.HAS_BOTTLE,
+                                Songs.SONG_OF_TIME,
+                                [
+                                    SetType.OR,
+                                        Items.OCARINA, // No need to use OI
+                                        (age) => Data.canOIAndBlueFireWithoutRefilling(age) // Has a second bottle for the fire AND the OI item (or ice arrows)
+                                ]
+                            ]
+                        ]
                     },
                     "Chest in North Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5941,18 +5916,19 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 10,
                         LongDescription: "This skulltula is on the ledge to your right in the big room. Play the scarecrow's song and hook it, a ground jump to get up there, or use hover boots to get to the taller pillar and longshot it.",
-                        CustomRequirement: function(age) {
-                            let canGetWithLongshot = ItemData.canUse(age, [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT])
-                            if (canGetWithLongshot || Settings.GlitchesToAllow.mqIceJumpToSkull) {
-                                return true;
-                            }
-
-                            let canPlayOcarinaNormally = Items.OCARINA.playerHas && Data.hasBottleOrBlueFire(age);
-                            let canUseOI = Data.canOIAndBlueFireWithoutRefilling(age);
-                            let canPlayScarecrowsSong = canPlayOcarinaNormally || canUseOI;
-                            let canUseScarecrow = Data.canHookScarecrow(age) && canPlayScarecrowsSong;
-                            return canUseScarecrow ||  Data.canGroundJumpWithBomb(age);
-                        }
+                        NeedsAny: [
+                            [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT],
+                            GlitchItemSets.MQ_ICE_JUMP_TO_SKULL,
+                            GlitchItemSets.GROUND_JUMP,
+                            [
+                                GameStateSets.CAN_HOOK_SCARECROW,
+                                [
+                                    SetType.OR,
+                                        Items.OCARINA, // No need to use OI
+                                        (age) => Data.canOIAndBlueFireWithoutRefilling(age) // Has a second bottle for the fire AND the OI item (or ice arrows)
+                                ]
+                            ]
+                        ]
                     }
                 }
             },
@@ -6005,9 +5981,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Main Area Loop", imageName: "Slingshot Wonderitem" },
                 Exits: {
                     afterFirstCrawlSpace: {
-                        CustomRequirement: function(age) {
-                            return age === Age.CHILD || (Data.canWeirdShot(age) && ItemData.canUse(age, UpgradedItems.LONGSHOT));
-                        }
+                        AdultNeeds: [GlitchItemSets.LONGSHOT_WEIRD_SHOT]
                     },
                     Exit: {
                         OwExit: OwExits["Bottom of the Well"]["Exit"]
@@ -6080,10 +6054,10 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 1.1,
                         LongDescription: "In the left alcove at the front of the main room, bomb the rock in the wall. Shoot it with your slingshot or bow to open a gate in the southeast corner of the giant room where the pot is.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.PROJECTILES]) ||
-                                ItemData.canUse(age, QPAItemSets.LEDGE_QPA);
-                        }
+                        NeedsAny: [
+                            [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.PROJECTILES], 
+                            QPAItemSets.LEDGE_QPA
+                        ]
                     },
                     "4 Wonderitems in Northwest Picture": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -6127,10 +6101,12 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 4,
                         LongDescription: "Navigate to the left room in the main area. Unlock the door, then light the torch of the front right coffin (or use the boomerang). The heart is inside.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]) ||
-                                (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
-                        }
+                        NeedsAny: [
+                            ItemSets.FIRE_ITEMS, 
+                            Items.DEKU_STICK, 
+                            GlitchItemSets.BOOMERANG_THROUGH_WALLS,
+                            QPAItemSets.LEDGE_QPA
+                        ]
                     },
                     "Heart in Middle Left Coffin": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -6139,10 +6115,12 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 5,
                         LongDescription: "Navigate to the left room in the main area. Unlock the door, then light the torch of the middle left coffin (or use the boomerang). The heart is inside.",
-                        CustomRequirement: function(age) {
-                            return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]) ||
-                                (ItemData.canUse(age, Items.BOOMERANG) && Settings.GlitchesToAllow.boomerangThroughWalls);
-                        }
+                        NeedsAny: [
+                            ItemSets.FIRE_ITEMS, 
+                            Items.DEKU_STICK, 
+                            GlitchItemSets.BOOMERANG_THROUGH_WALLS,
+                            QPAItemSets.LEDGE_QPA
+                        ]
                     }
                 }
             },
@@ -6294,10 +6272,6 @@ let MQDungeons = {
         UseAdultAge: function() { 
             return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.gtgChildAllowed;
         },
-        _canVineClip: function(age) {
-            return Settings.GlitchesToAllow.gtgChildVineClips && 
-                ItemData.canUse(age, [Equipment.DEKU_SHIELD, Items.BOMBCHU]);
-        },
         Regions: {
             main: {
                 DisplayGroup: { groupName: "Lobby", imageName: "Gerudo Membership Card" },
@@ -6311,9 +6285,7 @@ let MQDungeons = {
                     mazeStart: {},
                     iceArrowsRoom: {
                         Age: Age.CHILD,
-                        CustomRequirement: function(age) {
-                            return MapLocations["Training Grounds"]._canVineClip(age);
-                        }
+                        Needs: [GlitchItemSets.GTG_CHILD_VINE_CLIP]
                     },
                     Exit: {
                         OwExit: OwExits["Training Grounds"]["Exit"]
@@ -6360,17 +6332,14 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
                 Exits: {
                     backOfMaze: {
-                        CustomRequirement: function(age) {
-                            return MapLocations["Training Grounds"]._canVineClip(age) || Data.canWeirdShot(age);
-                        }
+                        NeedsAny: [GlitchItemSets.GTG_CHILD_VINE_CLIP, GlitchItemSets.WEIRD_SHOT]
                     },
                     mazeCenter: {
-                        ChildNeeds: [Items.BOMBCHU, Equipment.DEKU_SHIELD],
-                        CustomRequirement: function(age) {
-                            return ItemData.getKeyCount("Training Grounds") >= 3 ||
-                                MapLocations["Training Grounds"]._canVineClip(age) || 
-                                Data.canWeirdShot(age);
-                        }
+                        NeedsAny: [
+                            () => ItemData.getKeyCount("Training Grounds") >= 3,
+                            GlitchItemSets.GTG_CHILD_VINE_CLIP,
+                            GlitchItemSets.WEIRD_SHOT
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -6401,11 +6370,11 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 6,
                         LongDescription: "This chest is after the fifth door in the left maze path.",
-                        CustomRequirement: function(age) {
-                            return MapLocations["Training Grounds"]._canVineClip(age) || 
-                                Data.canWeirdShot(age) || 
-                                ItemData.getKeyCount("Training Grounds") >= 1;
-                        }
+                        NeedsAny: [
+                            () => ItemData.getKeyCount("Training Grounds") >= 1,
+                            GlitchItemSets.GTG_CHILD_VINE_CLIP,
+                            GlitchItemSets.WEIRD_SHOT
+                        ]
                     }
                 }
             },
@@ -6523,28 +6492,15 @@ let MQDungeons = {
                     leftArea: {
                         Age: Age.CHILD // Only possible via vine clipping and going backwards
                     },
+                    upperSilverBlockRoom: {
+                        Age: Age.ADULT,
+                        NeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.GTG_SILVER_BLOCK_ROOM_EXIT_WITH_HOVERS]
+                    },
                     roomBehindSilverBlock: {
                         Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, UpgradedItems.SILVER_GAUNTLETS) || (
-                                Settings.GlitchesToAllow.gtgSilverBlockSkipWithHammerSuperslide &&
-                                Data.canPlaySong(Songs.SONG_OF_TIME) && 
-                                Data.canHammerHoverBootsSuperslide(age)
-                            );
-                        }
-                    },
-                    eyeStatueRoom: {
-                        Age: Age.ADULT,
-                        CustomRequirement: function(age) {
-                            return Data.hasBottleOrBlueFire(age) &&
-                                (
-                                    Data.canPlaySong(Songs.SONG_OF_TIME) ||
-                                    (Settings.GlitchesToAllow.gtgSilverBlockRoomExitWithHovers && ItemData.canUse(age, Equipment.HOVER_BOOTS))
-                                );
-                        }
+                        Needs: [UpgradedItems.SILVER_GAUNTLETS]
                     }
                 },
-
                 ItemLocations: {
                     "Chest in Room With Silver Block": {
                         ItemGroup: ItemGroups.CHEST,
@@ -6554,6 +6510,18 @@ let MQDungeons = {
                         LongDescription: "Enter the room after the iron knuckle room. Collect the rupees within the time limit and move on to the next room. Defeat the enemies within the time limit to spawn the chest."
                     }
                 }
+            },
+            upperSilverBlockRoom: {
+                Exits: {
+                    eyeStatueRoom: {
+                        NeedsAny: [GameStateSets.HAS_BOTTLE, ItemSets.BLUE_FIRE_ITEMS]
+                    },
+                    roomWithSilverBlock: {},
+                    roomBehindSilverBlock: {
+                        NeedsAny: [GlitchItemSets.GTG_HAMMER_HOVER_BOOTS_SILVER_BLOCK_SKIP]
+                    }
+                },
+                ItemLocations: {}
             },
             roomBehindSilverBlock: {
                 DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Strength Silver Gauntlets" },
@@ -6572,20 +6540,14 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Eye Statue Room", imageName: "Fairy Bow" },
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {
-                    roomWithSilverBlock: {
-                        Age: Age.CHILD // This won't be useful as adult
-                    },
+                    upperSilverBlockRoom: {},
                     armosRoom: {
                         Age: Age.ADULT,
                         Needs: [UpgradedItems.LONGSHOT]
                     },
                     bigLavaRoomUpperBack: {},
                     iceArrowsRoom: {
-                        Age: Age.EITHER,
-                        CustomRequirement: function(age) {
-                            return ItemData.canUse(age, ItemSets.DISTANT_SWITCH_ITEMS) ||
-                                Settings.GlitchesToAllow.mqGtgEyeStatueJumpslash;
-                        }
+                        NeedsAny: [ItemSets.DISTANT_SWITCH_ITEMS, GlitchItemSets.MQ_GTG_EYE_STATUE_SWITCH_JUMPSLASH]
                     }
                 },
                 ItemLocations: {
@@ -6645,21 +6607,18 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 9.9,
                         LongDescription: "First, spawn the chest by making your way to the center of the maze. Break the box, then hammer the rusted switch to spawn the chest.<br/><br/>In the eye statue room, hit the lower crystal switch with your hookshot, bow, or explosives. The room with the chest will become unbarred.",
-                        CustomRequirement: function(age) {
-                            // If the chest is already spawned, we're good
-                            if (Data.itemLocationObtained("Training Grounds", "mazeCenter", "Spawn Ice Arrow Chest")) {
-                                return true;
-                            }
-                            
-                            // Otherwise check that we CAN spawn the chest
-                            if (!ItemData.canUse(age, Items.MEGATON_HAMMER)) {
-                                return false;
-                            }
-
-                            return MapLocations["Training Grounds"]._canVineClip(age) ||
-                                Data.canWeirdShot(age) || 
-                                ItemData.getKeyCount("Training Grounds") >= 3;
-                        }
+                        NeedsAny: [
+                            ItemLocationSets.MQ_GTG_SPAWNED_ICE_ARROW_CHEST, // Already spawned
+                            [ // CAN spawn it
+                                Items.MEGATON_HAMMER,
+                                [
+                                    SetType.OR,
+                                        () => ItemData.getKeyCount("Training Grounds") >= 3,
+                                        GlitchItemSets.GTG_CHILD_VINE_CLIP,
+                                        GlitchItemSets.WEIRD_SHOT
+                                ]
+                            ]
+                        ]
                     }
                 }
             },

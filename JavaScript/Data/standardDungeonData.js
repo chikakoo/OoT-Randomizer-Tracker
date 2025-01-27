@@ -5686,7 +5686,7 @@ let StandardDungeons = {
                     eyeStatueRoomTop: {},
                     silverBlockRoom: {},
                     roomBehindSilverBlock: {
-                        NeedsAny: [UpgradedItems.SILVER_GAUNTLETS, GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS]
+                        NeedsAny: [UpgradedItems.SILVER_GAUNTLETS, GlitchItemSets.GTG_HAMMER_HOVER_BOOTS_SILVER_BLOCK_SKIP]
                     }
                 },
                 ItemLocations: {}

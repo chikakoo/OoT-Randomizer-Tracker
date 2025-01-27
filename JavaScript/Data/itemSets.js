@@ -443,6 +443,11 @@ let GlitchItemSets = {
         Settings.GlitchesToAllow.iceBlockSkullWithHovers &&
         ItemData.canUse(age, Equipment.HOVER_BOOTS) &&
         ItemData.canUseAny(age, [ItemSets.DISTANT_SWITCH_ITEMS, Items.DINS_FIRE]),
+    MQ_ICE_NORTH_ROOM_SKULL_WITH_BOTTLED_BLUE_FIRE: () =>
+        Settings.GlitchesToAllow.mqIceNorthSkullWithoutSoT &&
+        GameStateSets.HAS_BOTTLE(),
+    MQ_ICE_JUMP_TO_SKULL: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.mqIceJumpToSkull,
 
     // Bottom of the Well
     WELL_ACTOR_GLITCH: (age) => age === Age.CHILD &&
@@ -470,6 +475,9 @@ let GlitchItemSets = {
         ItemData.canUse(age, Equipment.HOVER_BOOTS),
     GTG_EYE_STATUE_WONDERITEM_JUMPSLASH: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.gtgEyeStatueWonderItemJumpslash,
+    MQ_GTG_EYE_STATUE_SWITCH_JUMPSLASH: (age) => 
+        Settings.GlitchesToAllow.mqGtgEyeStatueJumpslash &&
+        ItemData.canUse(age, ItemSets.SWORDS),
 
     // Ganon's Castle
     GANON_TRIAL_SKIP: (age) => age === Age.ADULT &&
@@ -560,6 +568,7 @@ let ItemLocationSets = {
     // Gerudo Training Ground
     GTG_OPENED_OPTIONAL_DOOR_1: () => Data.itemLocationObtained("Training Grounds", "main", "Optional Locked Door 1"),
     GTG_OPENED_OPTIONAL_DOOR_2: () => Data.itemLocationObtained("Training Grounds", "main", "Optional Locked Door 2"),
+    MQ_GTG_SPAWNED_ICE_ARROW_CHEST: () => Data.itemLocationObtained("Training Grounds", "mazeCenter", "Spawn Ice Arrow Chest"),
 
     // Ganon's Castle
     ALL_TRIALS_COMPLETED:() => Data.itemLocationObtained("Ganon's Castle", "forestTrialEnd", "Forest Trial Complete") &&
@@ -583,7 +592,8 @@ let MapAccessSets = {
         Data.canAccessMap(age, "Thieves' Hideout", "jail3") &&
         Data.canAccessMap(age, "Thieves' Hideout", "jail4"),
     FOREST_FIRST_POE_ROOM: (age) => Data.canAccessMap(age, "Forest Temple", "firstPoeRoom"),
-    FOREST_FALLING_CEILING_ROOM: (age) => Data.canAccessMap(age, "Forest Temple", "fallingCeilingRoom")
+    FOREST_FALLING_CEILING_ROOM: (age) => Data.canAccessMap(age, "Forest Temple", "fallingCeilingRoom"),
+    MQ_SPIRIT_AFTER_SECOND_CRAWLSPACE: (age) => Data.canAccessMap(age, "Spirit Temple", "afterSecondCrawlSpace")
 };
 
 /**
@@ -654,6 +664,10 @@ let SilverRupeeSets = {
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Spirit Temple", 1)
         : true,
+    MQ_SPIRIT_SILVER_RUPEES_LOBBY: () =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Spirit Temple", 0)
+        : false, // This is a special case - the item this unlocks will be checked in a different way (since it needs a different region)
     ICE_SILVER_RUPEES_SCYTHE_ROOM: (age) =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Ice Cavern", 0)
