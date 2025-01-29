@@ -1243,20 +1243,14 @@ GrottoGroups = {
 		buttons: {
 			"Skulltula": {
 				ItemGroup: ItemGroups.SKULLTULA,
+				Age: Age.CHILD,
 				LongDescription: "Drop bugs on the soil patch to spawn the skulltula.",
-				canGet: function(age) {
-					// Note that we don't check for bugs specifically, just an empty bottle
-					// - This might be something we want to revisit
-					return Data.hasBottle() && ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
-				},
-				isChildOnly: function() { return true; }
+				Needs: [GameStateSets.HAS_BOTTLE]
 			},
 			"Magic Bean": {
+				Age: Age.CHILD,
 				LongDescription: "Plant a magic bean here as a child to grow a plant to travel with as an adult.",
-				canGet: function(age) {
-					return ItemData.canUse(age, Items.MAGIC_BEAN);
-				},
-				isChildOnly: function() { return true; },
+				Needs: [Items.MAGIC_BEAN],
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.autoPlantBeans;
 				}
@@ -1269,20 +1263,15 @@ GrottoGroups = {
 		buttons: {
 			"Skulltula": {
 				ItemGroup: ItemGroups.SKULLTULA,
+				OverrideItemGroupCondition: true,
+				Age: Age.CHILD,
 				LongDescription: "Drop bugs on the soil patch to spawn the skulltula.",
-				canGet: function(age) {
-					// Note that we don't check for bugs specifically, just an empty bottle
-					// - This might be something we want to revisit
-					return Data.hasBottle();
-				},
-				isChildOnly: function() { return true; }
+				Needs: [GameStateSets.HAS_BOTTLE]
 			},
 			"Magic Bean": {
+				Age: Age.CHILD,
 				LongDescription: "Plant a magic bean here as a child to grow a plant to travel with as an adult.",
-				canGet: function(age) {
-					return ItemData.canUse(age, Items.MAGIC_BEAN);
-				},
-				isChildOnly: function() { return true; },
+				Needs: [Items.MAGIC_BEAN],
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.autoPlantBeans;
 				}
@@ -1483,17 +1472,13 @@ GrottoGroups = {
 				icon: "Green Rupee Silver Scale",
 				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				LongDescription: "Requires iron boots, boomerang, or silver scale+.",
-				canGet: function(age) {
-					return ItemData.canUseAny(age, [UpgradedItems.SILVER_SCALE, Items.BOOMERANG, Equipment.IRON_BOOTS]);
-				}
+				NeedsAny: [UpgradedItems.SILVER_SCALE, Items.BOOMERANG, Equipment.IRON_BOOTS]
 			},
 			"Green Rupee 3": {
 				icon: "Green Rupee Gold Scale",
 				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				LongDescription: "Requires iron boots, boomerang, or gold scale.",
-				canGet: function(age) {
-					return ItemData.canUseAny(age, [UpgradedItems.GOLDEN_SCALE, Items.BOOMERANG, Equipment.IRON_BOOTS])
-				}
+				NeedsAny: [UpgradedItems.GOLDEN_SCALE, Items.BOOMERANG, Equipment.IRON_BOOTS]
 			}
 		}
 	},
@@ -1845,79 +1830,66 @@ GrottoGroups = {
 		buttons: {
 			"Zelda's Lullaby": {
 				icon: "Zelda's Lullaby",
+				Age: Age.CHILD,
 				LongDescription: "Play Zelda's Lullaby for the frogs.",
+				Needs: [Songs.ZELDAS_LULLABY],
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
-				},
-				canGet: function(age) {
-					return Data.canPlaySong(Songs.ZELDAS_LULLABY);
-				},
-				isChildOnly: function() { return true; }
+				}
 			},
 			"Epona's Song": {
 				icon: "Epona's Song",
+				Age: Age.CHILD,
 				LongDescription: "Play Epona's Song for the frogs.",
+				Needs: [Songs.EPONAS_SONG],
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
-				},
-				canGet: function(age) {
-					return Data.canPlaySong(Songs.EPONAS_SONG);
-				},
-				isChildOnly: function() { return true; }
+				}
 			},
 			"Saria's Song": {
 				icon: "Scrub",
+				Age: Age.CHILD,
 				LongDescription: "Play Saria's Song for the frogs.",
+				Needs: [Songs.SARIAS_SONG],
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
-				},
-				canGet: function(age) {
-					return Data.canPlaySong(Songs.SARIAS_SONG);
-				},
-				isChildOnly: function() { return true; }
+				}
 			},
 			"Sun's Song": {
 				icon: "Sun's Song",
+				Age: Age.CHILD,
 				LongDescription: "Play the Sun's Song for the frogs.",
+				Needs: [Songs.SUNS_SONG],
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
-				},
-				canGet: function(age) {
-					return Data.canPlaySong(Songs.SUNS_SONG);
-				},
-				isChildOnly: function() { return true; }
+				}
 			},
 			"Song of Storms": {
 				icon: "Song of Storms",
+				Age: Age.CHILD,
 				LongDescription: "Play the Song of Storms for the frogs.",
-				canGet: function(age) {
-					return Data.canPlaySong(Songs.SONG_OF_STORMS);
-				},
-				isChildOnly: function() { return true; }
+				Needs: [Songs.SONG_OF_STORMS]
 			},
 			"Song of Time": {
 				icon: "Ocarina of Time",
+				Age: Age.CHILD,
 				LongDescription: "Play the Song of Time for the frogs.",
+				Needs: [Songs.SONG_OF_TIME],
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
-				},
-				canGet: function(age) {
-					return Data.canPlaySong(Songs.SONG_OF_TIME);
-				},
-				isChildOnly: function() { return true; }
+				}
 			},
 			"Bug Minigame": {
+				Age: Age.CHILD,
 				LongDescription: "Play this after playing all the non-warp songs to the frogs. Answer: A < > v < > v A v A v > < A",
-				canGet: function(age) {
-					return Data.canPlaySongs() &&
-						Songs.ZELDAS_LULLABY.playerHas &&
-						Songs.EPONAS_SONG.playerHas &&
-						Songs.SARIAS_SONG.playerHas &&
-						Songs.SUNS_SONG.playerHas &&
-						Songs.SONG_OF_STORMS.playerHas &&
-						Songs.SONG_OF_TIME.playerHas;
-				},
-				isChildOnly: function() { return true; }
+				Needs: [
+					Songs.ZELDAS_LULLABY,
+					Songs.EPONAS_SONG,
+					Songs.SARIAS_SONG,
+					Songs.SUNS_SONG,
+					Songs.SONG_OF_STORMS,
+					Songs.SONG_OF_TIME
+				]
 			}
 		}
 	},
@@ -1927,27 +1899,21 @@ GrottoGroups = {
 		buttons: {
 			"Broken Goron's Sword": {
 				icon: "Broken Goron's Sword",
+				Age: Age.ADULT,
 				LongDescription: "Show Biggoron the Broken Sword.",
-				canGet: function(age) {
-					return AdultTradeItems.BROKEN_GORONS_SWORD.playerHas;
-				},
-				isAdultOnly: function() { return true; }
+				Needs: [AdultTradeItems.BROKEN_GORONS_SWORD]
 			},
 			"Eyedrops": {
 				icon: "Eyedrops",
+				Age: Age.ADULT,
 				LongDescription: "Show Biggoron the Eyedrops.",
-				canGet: function(age) {
-					return AdultTradeItems.EYEDROPS.playerHas;
-				},
-				isAdultOnly: function() { return true; }
+				Needs: [AdultTradeItems.EYEDROPS]
 			},
 			"Claim Check": {
 				icon: "Claim Check",
+				Age: Age.ADULT,
 				LongDescription: "Show Biggoron the Claim Check.",
-				canGet: function(age) {
-					return AdultTradeItems.CLAIM_CHECK.playerHas;
-				},
-				isAdultOnly: function() { return true; }
+				Needs: [AdultTradeItems.CLAIM_CHECK]
 			}
 		}
 	},
@@ -1970,9 +1936,7 @@ GrottoGroups = {
 				useGroupImage: true,
 				count: 2,
 				LongDescription: "Shoot the deku nut on the tree with a slingshot or bow to get the item.",
-				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.PROJECTILES);
-				}
+				Needs: [ItemSets.PROJECTILES]
 			}
 		}
 	},
@@ -1984,17 +1948,13 @@ GrottoGroups = {
 				useGroupImage: true,
 				count: 2,
 				LongDescription: "Shoot the deku nut on the trees with a slingshot or bow to get the items.",
-				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.PROJECTILES);
-				}
+				Needs: [ItemSets.PROJECTILES]
 			},
 			"Projectile Wonderitems Child": {
 				icon: "Slingshot Wonderitem",
+				Age: Age.CHILD,
 				LongDescription: "Shoot the deku nut in the tree that has a skulltula in it as adult with a slingshot to get the item",
-				canGet: function(age) {
-					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
-				},
-				isChildOnly: function() { return true; }
+				Needs: [Items.FAIRY_SLINGSHOT]
 			}
 		}
 	},
@@ -2003,38 +1963,14 @@ GrottoGroups = {
 		icon: "Projectile Wonderitem",
 		buttons: {
 			"Hookshot Wonderitem": {
+				Age: Age.ADULT,
 				LongDescription: "Shoot this with the hookshot to spawn the wonderitem.",
-				canGet: function(age) {
-					return ItemData.canUse(age, Items.HOOKSHOT);
-				},
-				isAdultOnly: function() { return true; }
+				Needs: [Items.HOOKSHOT]
 			},
 			"Bow Wonderitem": {
+				Age: Age.ADULT,
 				LongDescription: "Shoot this with the bow to spawn the wonderitem.",
-				canGet: function(age) {
-					return ItemData.canUse(age, Items.FAIRY_BOW);
-				},
-				isAdultOnly: function() { return true; }
-			}
-		}
-	},
-	"QPAable Hookshot and Bow Wonderitems": {
-		tooltip: "A group of two wonderitems - one requiring hookshot, and one requiring the bow, in an area that QPA can be used.",
-		icon: "Projectile Wonderitem",
-		buttons: {
-			"Hookshot Wonderitem": {
-				LongDescription: "Shoot this with the hookshot to spawn the wonderitem.",
-				canGet: function(age) {
-					return ItemData.canUse(age, Items.HOOKSHOT);
-				},
-				isAdultOnly: function() { return true; }
-			},
-			"Bow Wonderitem": {
-				LongDescription: "Shoot this with the bow to spawn the wonderitem.",
-				canGet: function(age) {
-					return ItemData.canUseAny(age, [Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]);
-				},
-				isAdultOnly: function() { return !Settings.GlitchesToAllow.qpa; }
+				NeedsAny: [Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]
 			}
 		}
 	},
@@ -2044,12 +1980,10 @@ GrottoGroups = {
 		buttons: {
 			"Hookshot Wonderitems": {
 				useGroupImage: true,
-				LongDescription: "Shoot this with the hookshot to spawn the wonderitem.",
 				count: 2,
-				canGet: function(age) {
-					return ItemData.canUse(age, Items.HOOKSHOT);
-				},
-				isAdultOnly: function() { return true; }
+				Age: Age.ADULT,
+				LongDescription: "Shoot this with the hookshot to spawn the wonderitem.",
+				Needs: [Items.HOOKSHOT]
 			}
 		}
 	},
@@ -2059,12 +1993,10 @@ GrottoGroups = {
 		buttons: {
 			"Hookshot Wonderitems": {
 				useGroupImage: true,
-				LongDescription: "Shoot this with the hookshot to spawn the wonderitem.",
 				count: 3,
-				canGet: function(age) {
-					return ItemData.canUse(age, Items.HOOKSHOT);
-				},
-				isAdultOnly: function() { return true; }
+				Age: Age.ADULT,
+				LongDescription: "Shoot this with the hookshot to spawn the wonderitem.",
+				Needs: [Items.HOOKSHOT]
 			}
 		}
 	},
@@ -2075,19 +2007,19 @@ GrottoGroups = {
 			"Day Crates": {
 				useGroupImage: true,
 				count: 2,
+				Age: Age.CHILD,
 				LongDescription: "These crates are here during the day.",
-				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
 				time: function() { return Time.DAY; },
-				isChildOnly: function() { return true; }
+				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
 			},
 			"Night Crates": {
 				useGroupImage: true,
 				count: 2,
+				Age: Age.CHILD,
 				LongDescription: "These crates are here at night.",
 				time: function() { 
 					return Settings.RandomizerSettings.shuffleEmptyCrates ? Time.NIGHT : Time.EITHER; 
-				},
-				isChildOnly: function() { return true; }
+				}
 			}
 		}
 	},
@@ -2098,11 +2030,10 @@ GrottoGroups = {
 			"Slingshot Wonderitems": {
 				useGroupImage: true,
 				count: 2,
+				Age: Age.EITHER,
+				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
 				LongDescription: "Shoot something to get these items.",
-				canGet: function(age) {
-					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
-				},
-				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
+				Needs: [Items.FAIRY_SLINGSHOT]
 			}
 		}
 	},
@@ -2113,11 +2044,10 @@ GrottoGroups = {
 			"Slingshot Wonderitems": {
 				useGroupImage: true,
 				count: 3,
+				Age: Age.EITHER,
+				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
 				LongDescription: "Shoot something to get these items.",
-				canGet: function(age) {
-					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
-				},
-				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
+				Needs: [Items.FAIRY_SLINGSHOT]
 			}
 		}
 	},
@@ -2128,11 +2058,10 @@ GrottoGroups = {
 			"Slingshot Wonderitems": {
 				useGroupImage: true,
 				count: 3,
+				Age: Age.EITHER,
+				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
 				LongDescription: "Shoot something to get these items.",
-				canGet: function(age) {
-					return ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, QPAItemSets.LEDGE_QPA]);
-				},
-				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; }
+				NeedsAny: [Items.FAIRY_SLINGSHOT, QPAItemSets.LEDGE_QPA]
 			}
 		}
 	},
@@ -2143,11 +2072,10 @@ GrottoGroups = {
 			"Slingshot Wonderitems": {
 				useGroupImage: true,
 				count: 4,
+				Age: Age.EITHER,
+				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
 				LongDescription: "Shoot something to get these items.",
-				canGet: function(age) {
-					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
-				},
-				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
+				Needs: [Items.FAIRY_SLINGSHOT]
 			}
 		}
 	},
@@ -2158,11 +2086,10 @@ GrottoGroups = {
 			"Slingshot Wonderitems": {
 				useGroupImage: true,
 				count: 4,
+				Age: Age.EITHER,
+				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
 				LongDescription: "Shoot something to get these items.",
-				canGet: function(age) {
-					return ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, QPAItemSets.TALL_TORCH_QPA]);
-				},
-				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; }
+				NeedsAny: [Items.FAIRY_SLINGSHOT, QPAItemSets.TALL_TORCH_QPA]
 			}
 		}
 	},
@@ -2173,13 +2100,10 @@ GrottoGroups = {
 			"Hammer Wonderitems": {
 				useGroupImage: true,
 				count: 3,
+				Age: Age.EITHER,
+				UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
 				LongDescription: "Hammer something to get these items.",
-				canGet: function(age) {
-					return ItemData.canUse(age, Items.MEGATON_HAMMER);
-				},
-				isAdultOnly: function() {
-					return !Settings.GlitchesToAllow.equipSwap;
-				}
+				Needs: [Items.MEGATON_HAMMER]
 			}
 		}
 	},
@@ -2191,9 +2115,7 @@ GrottoGroups = {
 				useGroupImage: true,
 				count: 3,
 				LongDescription: "Set off an explosive to get these items.",
-				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.EXPLOSIVES);
-				}
+				Needs: [ItemSets.EXPLOSIVES]
 			}
 		}
 	},
@@ -2202,18 +2124,13 @@ GrottoGroups = {
 		buttons: {
 			"Sword Wonderitem": {
 				LongDescription: "Swing your sword by this place to spawn the wonderitem.",
-				canGet: function(age) {
-					return ItemData.canUseAny(age, [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]);
-				}
+				NeedsAny: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
 			},
 			"Hammer Wonderitem": {
+				Age: Age.EITHER,
+				UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
 				LongDescription: "Swing your hammer by this place to spawn the wonderitem.",
-				canGet: function(age) {
-					return ItemData.canUse(age, Items.MEGATON_HAMMER);
-				},
-				isAdultOnly: function() {
-					return !Settings.GlitchesToAllow.equipSwap;
-				}
+				Needs: [Items.MEGATON_HAMMER]
 			}
 		}
 	},
@@ -2224,16 +2141,16 @@ GrottoGroups = {
 			"Day Balcony Items": {
 				icon: "Green Rupee Wonderitem",
 				count: 5,
-				LongDescription: "Climb up the stairs and walk along the catwalk by Bombchu Bowling during the day to get these items.",
 				time: function() { return Time.DAY; },
-				isChildOnly: function() { return true; }
+				Age: Age.CHILD,
+				LongDescription: "Climb up the stairs and walk along the catwalk by Bombchu Bowling during the day to get these items.",
 			},
 			"Night Balcony Items": {
 				icon: "Blue Rupee Wonderitem",
 				count: 2,
-				LongDescription: "Climb up the stairs and walk along the catwalk by Bombchu Bowling at night to get these items.",
 				time: function() { return Time.NIGHT; },
-				isChildOnly: function() { return true; }
+				Age: Age.CHILD,
+				LongDescription: "Climb up the stairs and walk along the catwalk by Bombchu Bowling at night to get these items.",
 			}
 		}
 	},
@@ -2248,9 +2165,7 @@ GrottoGroups = {
 			"Mario Wonderitem": {
 				icon: "Child Archery",
 				LongDescription: "Facing zelda, shoot the right side window (the one with the mario paintings) with your slingshot to get this item.",
-				canGet: function(age) {
-					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
-				}
+				Needs: [Items.FAIRY_SLINGSHOT]
 			},
 			"Zelda's Lullaby": {
 				icon: "Ocarina of Time",

@@ -2140,7 +2140,8 @@ let MapLocations = {
                         DefaultEntranceGroupName: "Soft Soil Skulltula Always Killable",
                         MapInfo: { x: 179, y: 168 },
                         Age: Age.CHILD,
-                        LongDescription: "The soft soil inside the entrance to Dodongo's Cavern (under the giant rock). Used to get to the top of the mountain. Use a bomb flower from above to kill the skulltula, if necessary."
+                        LongDescription: "The soft soil inside the entrance to Dodongo's Cavern (under the giant rock). Used to get to the top of the mountain. Use a bomb flower from above to kill the skulltula, if necessary.",
+                        Needs: [ItemSets.EXPLOSIVES_OR_STRENGTH]
                     },
                     "Chest in Wall Near Goron City": {
                         ItemGroup: ItemGroups.CHEST,

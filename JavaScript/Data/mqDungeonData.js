@@ -2507,7 +2507,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.ENTRANCE,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         IsItemLocationGroup: true,
-                        DefaultEntranceGroupName: "QPAable Hookshot and Bow Wonderitems",
+                        DefaultEntranceGroupName: "Hookshot and Bow Wonderitems",
                         MapInfo: { x: 164, y: 91, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 15.1,
