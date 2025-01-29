@@ -435,18 +435,18 @@ InteriorGroups = {
 		buttons: {
 			"Freestanding Item": {
 				icon: "Heart Piece",
-				LongDescription: "Push the box out of the way and crawl through the hole to get the item.",
-				isChildOnly: function() { return true; }
+				Age: Age.CHILD,
+				LongDescription: "Push the box out of the way and crawl through the hole to get the item."
 			},
 			"Cows": {
 				icon: "2 Cows",
 				count: 2,
 				ItemGroup: ItemGroups.COW,
 				LongDescription: "Play Epona's Song next to the cow.",
+				NeedsAny: [Items.OCARINA, Equipment.MASTER_SWORD, Equipment.KOKIRI_SWORD],
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.cowSanity;
-				},
-				NeedsAny: [Items.OCARINA, Equipment.MASTER_SWORD, Equipment.KOKIRI_SWORD]
+				}
 			}
 		}
 	},
@@ -1064,8 +1064,7 @@ GrottoGroups = {
 		tooltip: "King Dodongo in Dodongo's Cavern",
 		buttons: {
 			"Chest": {
-				LongDescription: "This chest is in the back of the room.",
-				canGet: function(age) { return true; }
+				LongDescription: "This chest is in the back of the room."
 			},
 			"Heart Container": {
 				icon: "Heart Piece",
@@ -1786,11 +1785,8 @@ GrottoGroups = {
 			"Scrubs": {
 				useGroupImage: true,
 				count: 2,
-				LongDescription: "Buy the items from the scrubs.",
 				ItemGroup: ItemGroups.SCRUB,
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
+				LongDescription: "Buy the items from the scrubs."
 			}
 		}
 	},
@@ -1801,11 +1797,8 @@ GrottoGroups = {
 			"Scrubs": {
 				useGroupImage: true,
 				count: 4,
-				LongDescription: "Buy the items from the scrubs.",
 				ItemGroup: ItemGroups.SCRUB,
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
+				LongDescription: "Buy the items from the scrubs."
 			}
 		}
 	},
@@ -1816,11 +1809,8 @@ GrottoGroups = {
 			"Scrubs": {
 				useGroupImage: true,
 				count: 5,
-				LongDescription: "Buy the items from the scrubs.",
 				ItemGroup: ItemGroups.SCRUB,
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
+				LongDescription: "Buy the items from the scrubs."
 			}
 		}
 	},

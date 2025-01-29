@@ -194,25 +194,12 @@ let EntranceUI = {
 				refreshAll();
 			};
 
-			let canGetAsChild, canGetAsAdult;
-
-			// TODO entrance data rework: delete this part
-			if (button.canGet) {
-				canGetAsChild = canGetToAsChild && 
-					_this._canGetAsAge(button, Age.CHILD) && 
-					(!button.canGet || button.canGet(Age.CHILD, itemLocation));
-				canGetAsAdult = canGetToAsAdult && 
-					_this._canGetAsAge(button, Age.ADULT) && 
-					(!button.canGet || button.canGet(Age.ADULT, itemLocation));
-			} else {
-				canGetAsChild = canGetToAsChild && 
-					_this._canGetAsAge(button, Age.CHILD) && 
-					Data.calculateObtainability(button, Age.CHILD, itemLocation);
-				canGetAsAdult = canGetToAsAdult &&
-					_this._canGetAsAge(button, Age.ADULT) &&
-					Data.calculateObtainability(button, Age.ADULT, itemLocation);
-			}
-			
+			let canGetAsChild = canGetToAsChild && 
+				_this._canGetAsAge(button, Age.CHILD) && 
+				Data.calculateObtainability(button, Age.CHILD, itemLocation);
+			let canGetAsAdult = canGetToAsAdult &&
+				_this._canGetAsAge(button, Age.ADULT) &&
+				Data.calculateObtainability(button, Age.ADULT, itemLocation);
 			
 			if (itemLocationGroup.buttons[buttonName].completed) {
 				addCssClass(buttonDiv, "entrance-group-button-completed");
@@ -292,8 +279,8 @@ let EntranceUI = {
 	 * @param canGetToAsAdult - whether you can get to the item location as an adult
 	 */
 	_addAgeDiv: function(buttonDiv, button, canGetAsChild, canGetAsAdult) {
-		let childOnlyItem = this._canGetAsAge(button, Age.CHILD, true);
-		let adultOnlyItem = this._canGetAsAge(button, Age.ADULT, true);
+		let childOnlyItem = this._canGetAsAge(button, Age.CHILD);
+		let adultOnlyItem = this._canGetAsAge(button, Age.ADULT);
 		
 		let canOnlyGetAsChild = (childOnlyItem && !adultOnlyItem) || (canGetAsChild && !canGetAsAdult);
 		let canOnlyGetAsAdult = (!childOnlyItem && adultOnlyItem) || (!canGetAsChild && canGetAsAdult);
@@ -448,19 +435,8 @@ let EntranceUI = {
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
 			if (_this._excludeButtonFromCounts(button, itemLocation)) { return; }
 			
-			let canGetItem;
-
-			// TODO entrance data rework: delete this part
-			if (button.canGet) {
-				canGetItem = !button.canGet || button.canGet(age, itemLocation);
-				if (canGetItem && _this._canGetAsAge(button, age)) {
-					numberOfTasks += buttonData.count - buttonData.completedCount;
-				}
-			}
-			else {
-				if (_this._canGetAsAge(button, age) && Data.calculateObtainability(button, age, itemLocation)) {
-					numberOfTasks += buttonData.count - buttonData.completedCount;
-				}
+			if (_this._canGetAsAge(button, age) && Data.calculateObtainability(button, age, itemLocation)) {
+				numberOfTasks += buttonData.count - buttonData.completedCount;
 			}
 		});
 		
@@ -496,40 +472,17 @@ let EntranceUI = {
 	 * Returns whether the the playre can ever complete the given task as the given age
 	 * @param button - the button with the task info
 	 * @param age - the age to check (assumes child or adult)
-	 * @param ignoreCanBeAge - TODO entrance (remove this param, not needed anywhere)
 	 * @return True if you can ever get the item as the given age
 	 */
-	_canGetAsAge(button, age, ignoreCanBeAge) {
-		if (!button.canGet) {
-			if (age === undefined || age === Age.EITHER) {
-				console.log("Unspecified age passed to _canGetAsAge!");
-				return true;
-			}
-
-			return age === Age.CHILD
-				? (button.Age !== Age.ADULT) && (!button.UseAdultAge || !button.UseAdultAge())
-				: (button.Age !== Age.CHILD) && (!button.UseChildAge || !button.UseChildAge());
+	_canGetAsAge(button, age) {
+		if (age === undefined || age === Age.EITHER) {
+			console.log("Unspecified age passed to _canGetAsAge!");
+			return true;
 		}
 
-		// TODO entrance data rework: delete this part
-		canGetAsAge = age === Age.EITHER;
-
-		if (!ignoreCanBeAge && age !== Age.EITHER && !Data.canBeAge(age)) {
-			return false;
-		}
-		
-		if (age === Age.ADULT) {
-			canGetAsAge = !button.isChildOnly || !button.isChildOnly();
-
-			// Adult cannot equip the mask of truth
-			if (canGetAsAge && button.itemGroup === ItemGroups.GOSSIP_STONE) {
-				canGetAsAge = Settings.RandomizerSettings.gossipStoneSetting !== GossipStoneSettings.MASK_OF_TRUTH;
-			}
-		} else if (age === Age.CHILD) {
-			canGetAsAge = !button.isAdultOnly || !button.isAdultOnly();
-		}
-		
-		return canGetAsAge;
+		return age === Age.CHILD
+			? (button.Age !== Age.ADULT) && (!button.UseAdultAge || !button.UseAdultAge())
+			: (button.Age !== Age.CHILD) && (!button.UseChildAge || !button.UseChildAge());
 	},
 	
 	/**
