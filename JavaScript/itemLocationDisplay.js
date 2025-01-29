@@ -11,12 +11,12 @@ let ItemLocationDisplay = {
 		if (!LocationSidebar.isLocationAMap(locationName)) { return; }
 		this.currentLocationName = locationName;
 		
-		let mapInfo = MapLocations[locationName];
 		let groupedItemLocationInfo = this.getGroupedLocationInfo(this.currentLocationName);
-		this._setUpItemGroups(groupedItemLocationInfo, mapInfo);
+		this._setUpItemGroups(groupedItemLocationInfo);
 		this.updateItemDisplay();
-
+		
 		let floor;
+		let mapInfo = MapLocations[locationName];
 		let startingFloorIndex = mapInfo.StartingFloorIndex;
 		if (mapInfo.Floors && startingFloorIndex >= 0 && 
 			mapInfo.Floors.length - 1 >= startingFloorIndex) {
@@ -59,6 +59,10 @@ let ItemLocationDisplay = {
 					itemLocations: [],
 					backgroundImage: getItemGroupImageFromName(imageName)
 				};
+			}
+
+			if (!groupedItemLocationInfo[group].description && itemLocation.DisplayGroup?.description) {
+				groupedItemLocationInfo[group].description = itemLocation.DisplayGroup.description;
 			}
 
 			groupedItemLocationInfo[group].itemLocations.push(itemLocation);
@@ -198,7 +202,7 @@ let ItemLocationDisplay = {
 	/**
 	 * Sets up the item group divs - includes the functionality for expanding/collapsing
 	 */
-	_setUpItemGroups: function(groupedItemLocationInfo, mapInfo) {
+	_setUpItemGroups: function(groupedItemLocationInfo) {
 		let mainContainer = document.getElementById("itemLocationsContainer");
 		mainContainer.innerHTML = ""; // Clean this up first so we don't get duplicates
 
@@ -219,6 +223,10 @@ let ItemLocationDisplay = {
 			let itemGroupImageDiv = dce("div", "item-group-image");
 			itemGroupImageDiv.style.backgroundImage = itemGroup.backgroundImage;
 			itemGroupTitleDiv.appendChild(itemGroupImageDiv);
+
+			if (itemGroup.description) {
+				itemGroupImageDiv.title = itemGroup.description;
+			}
 			
 			let itemGroupTextDiv = dce("div", "item-group-text");
 

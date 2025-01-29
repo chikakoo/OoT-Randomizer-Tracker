@@ -47,26 +47,21 @@ InteriorGroups = {
 		neverHide: true,
 		buttons: {
 			"Pot": {
-				itemGroup: ItemGroups.POT,
-				description: "Throw the pot to get an item.",
-				canGet: function(age) { return true; }
+				ItemGroup: ItemGroups.POT,
+				LongDescription: "Throw the pot to get an item."
 			},
 			"Cow in Link's House": {
 				icon: "Cow",
-				itemGroup: ItemGroups.COW,
-				description: "As an adult, beat Malon's Epona challenge to unlock the cow in Link's house.",
-				canGet: function(age) {
-					return ItemLocationSets.UNLOCK_COW_IN_HOUSE() && Data.canMilkCows(true);
-				},
-				isAdultOnly: function() { return true; }
+				ItemGroup: ItemGroups.COW,
+				LongDescription: "As an adult, beat Malon's Epona challenge to unlock the cow in Link's house.",
+				Age: Age.ADULT,
+				Needs: [ItemLocationSets.UNLOCK_COW_IN_HOUSE]
 			}
 		},
 		postClick: function(itemLocation, isSelected) {
-			if (isSelected) {
-				Data.linksHouseLocation = { map: itemLocation.ExitMap, region: itemLocation.ExitRegion };
-			} else {
-				Data.linksHouseLocation = {};
-			}
+			Data.linksHouseLocation = isSelected
+				? { map: itemLocation.ExitMap, region: itemLocation.ExitRegion }
+				: {};
 		},
 		shouldNotTrigger: function(isSelected) {
 			let shouldNotTrigger = isSelected && !!Data.linksHouseLocation.map;
@@ -82,38 +77,27 @@ InteriorGroups = {
 		excludeFromGroup: function() { return Data.templeOfTimeLocation && Data.templeOfTimeLocation.map; },
 		neverHide: true,
 		buttons: {
+			// TODO: DOT skip then Adult doesn't work properly, but does it matter that much...?
 			"Free Raru Item": {
 				icon: "Light Medallion",
-				description: "This is the light medallion replacement if dungeon rewards are shuffled. Enter the Master Sword pedestal room to get it.",
+				LongDescription: "This is the light medallion replacement if dungeon rewards are shuffled. Enter the Master Sword pedestal room to get it.",
+				Needs: [(age) => Data.canEnterDoorOfTime(age)]
 			},
 			"Prelude of Light": {
-				description: "When you have the Forest Medallion, enter the room with the Master Sword pedestal to receive the item.",
-				canGet: function(age) {
-					if (!Medallions.FOREST_MEDALLION.playerHas) {
-						return false;
-					}
-					
-					if (!Settings.RandomizerSettings.openDoorOfTime) {
-						return Data.canPlaySong(Songs.SONG_OF_TIME);
-					}
-					return true;
-				},
-				isAdultOnly: function() { return true; }
+				Age: Age.ADULT,
+				LongDescription: "When you have the Forest Medallion, enter the room with the Master Sword pedestal to receive the item.",
+				Needs: [Medallions.FOREST_MEDALLION, (age) => Data.canEnterDoorOfTime(age)]
 			},
 			"Light Arrows": {
-				description: "When you have the Shadow and Spirit Medallions, simply enter the Temple of Time as adult to receive the item.",
-				canGet: function(age) {
-					return Medallions.SHADOW_MEDALLION.playerHas && Medallions.SPIRIT_MEDALLION.playerHas;
-				},
-				isAdultOnly: function() { return true; }
+				Age: Age.ADULT,
+				LongDescription: "When you have the Shadow and Spirit Medallions, simply enter the Temple of Time as adult to receive the item.",
+				Needs: [Medallions.SHADOW_MEDALLION, Medallions.SPIRIT_MEDALLION, (age) => Data.canEnterDoorOfTime(age)]
 			}
 		},
 		postClick: function(itemLocation, isSelected) {
-			if (isSelected) {
-				Data.templeOfTimeLocation = { map: itemLocation.ExitMap, region: itemLocation.ExitRegion };
-			} else {
-				Data.templeOfTimeLocation = {};
-			}
+			Data.templeOfTimeLocation = isSelected
+				? { map: itemLocation.ExitMap, region: itemLocation.ExitRegion }
+				: {};
 		},
 		shouldNotTrigger: function(isSelected) {
 			let shouldNotTrigger = isSelected && !!Data.templeOfTimeLocation.map;
@@ -128,11 +112,8 @@ InteriorGroups = {
 		isShop: true,
 		buttons: {
 			"Shop": {
-				itemGroup: ItemGroups.SHOP,
-				description: "Buy the items you need here - put anything you need to get later in the notes.",
-				canGet: function(age,  itemLocation) {
-					return Data.canBuyFromShop(age, itemLocation);
-				}
+				ItemGroup: ItemGroups.SHOP,
+				LongDescription: "Buy the items you need here - put anything you need to get later in the notes."
 			}
 		}
 	},
@@ -144,15 +125,12 @@ InteriorGroups = {
 		isShop: true,
 		buttons: {
 			"Shop": {
-				itemGroup: ItemGroups.SHOP,
-				description: "Buy the items you need here - put anything you need to get later in the notes.",
-				canGet: function(age,  itemLocation) {
-					return Data.canBuyFromShop(age, itemLocation);
-				}
+				ItemGroup: ItemGroups.SHOP,
+				LongDescription: "Buy the items you need here - put anything you need to get later in the notes."
 			},
 			"Blue Rupee": {
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Go in the space to the right of the shop to get this item."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Go in the space to the right of the shop to get this item."
 			}
 		}
 	},
@@ -173,19 +151,17 @@ InteriorGroups = {
 		buttons: {
 			"Show Odd Mushroom to Granny": {
 				icon: "Odd Mushroom",
-				description: "Show Granny the Odd Mushroom to recieve an item.",
-				canGet: function(age) {
-					return ItemData.canUse(age, AdultTradeItems.ODD_MUSHROOM);
-				},
-				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
+				LongDescription: "Show Granny the Odd Mushroom to recieve an item.",
+				Age: Age.EITHER,
+				UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				Needs: [AdultTradeItems.ODD_MUSHROOM]
 			},
 			"Buy Blue Potion Item": {
 				icon: "Blue Potion",
-				description: "After showing the Odd Mushroom to Granny, you can buy this item for 100 rupees. After that, she will sell blue potions.",
-				canGet: function(age) {
-					return ItemData.canUse(age, [AdultTradeItems.ODD_MUSHROOM, UpgradedItems.ADULTS_WALLET]);
-				},
-				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				LongDescription: "After showing the Odd Mushroom to Granny, you can buy this item for 100 rupees. After that, she will sell blue potions.",
+				Age: Age.EITHER,
+				UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				Needs: [AdultTradeItems.ODD_MUSHROOM, UpgradedItems.ADULTS_WALLET],
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleExpensiveMerchants;
 				}
@@ -210,7 +186,7 @@ InteriorGroups = {
 			"Borrow Keaton Mask": {
 				itemLocation: "Borrow Keaton Mask",
 				tag: "keaton",
-				description: "After showing the Kakariko Village guard Zelda's Letter (or having the letter when the gate is opened), you can borrow this mask.",
+				LongDescription: "After showing the Kakariko Village guard Zelda's Letter (or having the letter when the gate is opened), you can borrow this mask.",
 				canGet: function(age) {
 					return InteriorGroups["Happy Mask Shop"]._isMaskShopOpen();
 				}
@@ -219,7 +195,7 @@ InteriorGroups = {
 				icon: "Skull Mask",
 				itemLocation: "Borrow Skull Mask",
 				tag: "skull",
-				description: "After selling the Keaton Mask to the Kakariko Guard, you can borrow this mask.",
+				LongDescription: "After selling the Keaton Mask to the Kakariko Guard, you can borrow this mask.",
 				canGet: function(age) {
 					return InteriorGroups["Happy Mask Shop"]._isMaskShopOpen() &&
 						ItemLocationSets.SELL_KEATON_MASK();
@@ -228,7 +204,7 @@ InteriorGroups = {
 			"Borrow Spooky Mask": {
 				itemLocation: "Borrow Spooky Mask",
 				tag: "spooky",
-				description: "After selling the Skull Mask to the Skull Kid in Lost Woods, you can borrow this mask.",
+				LongDescription: "After selling the Skull Mask to the Skull Kid in Lost Woods, you can borrow this mask.",
 				canGet: function(age) {
 					return InteriorGroups["Happy Mask Shop"]._isMaskShopOpen() &&
 						ItemLocationSets.SELL_SKULL_MASK();
@@ -237,7 +213,7 @@ InteriorGroups = {
 			"Borrow Bunny Hood": {
 				itemLocation: "Borrow Bunny Hood",
 				tag: "bunny",
-				description: "After selling the Spooky Mask to the graveyard kid, you can borrow this mask.",
+				LongDescription: "After selling the Spooky Mask to the graveyard kid, you can borrow this mask.",
 				canGet: function(age) {
 					return InteriorGroups["Happy Mask Shop"]._isMaskShopOpen() &&
 						ItemLocationSets.SELL_SPOOKY_MASK();
@@ -247,7 +223,7 @@ InteriorGroups = {
 				icon: "Mask of Truth",
 				tag: "truth",
 				itemLocation: "Borrow Mask of Truth",
-				description: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
+				LongDescription: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
 				canGet: function(age) {
 					return InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth();
 				}
@@ -256,7 +232,7 @@ InteriorGroups = {
 				icon: "Goron Mask",
 				tag: "truth",
 				itemLocation: "Borrow Goron Mask",
-				description: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
+				LongDescription: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
 				canGet: function(age) {
 					return InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth();
 				}
@@ -265,7 +241,7 @@ InteriorGroups = {
 				icon: "Zora Mask",
 				tag: "truth",
 				itemLocation: "Borrow Zora Mask",
-				description: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
+				LongDescription: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
 				canGet: function(age) {
 					return InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth();
 				}
@@ -274,7 +250,7 @@ InteriorGroups = {
 				icon: "Gerudo Mask",
 				tag: "truth",
 				itemLocation: "Borrow Gerudo Mask",
-				description: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
+				LongDescription: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
 				canGet: function(age) {
 					return InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth();
 				}
@@ -285,7 +261,7 @@ InteriorGroups = {
 		tooltip: "Any of the Great Fairy Fountains.",
 		buttons: {
 			"Fairy Fountain": {
-				description: "Play Zelda's Lullaby at the triforce symbol to get this item.",
+				LongDescription: "Play Zelda's Lullaby at the triforce symbol to get this item.",
 				canGet: function(age) {
 					return Data.canPlaySong(Songs.ZELDAS_LULLABY);
 				}
@@ -302,7 +278,7 @@ InteriorGroups = {
 				icon: "Skulltula",
 				iconText: "10",
 				tag: "10",
-				description: "Talk to the guy on the right hand side.",
+				LongDescription: "Talk to the guy on the right hand side.",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 10;
 				},
@@ -314,7 +290,7 @@ InteriorGroups = {
 				icon: "Skulltula",
 				iconText: "20",
 				tag: "20",
-				description: "Talk to the guy on the left hand side.",
+				LongDescription: "Talk to the guy on the left hand side.",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 20;
 				},
@@ -326,7 +302,7 @@ InteriorGroups = {
 				icon: "Skulltula",
 				iconText: "30",
 				tag: "30",
-				description: "Talk to the middle guy.",
+				LongDescription: "Talk to the middle guy.",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 30;
 				},
@@ -338,7 +314,7 @@ InteriorGroups = {
 				icon: "Skulltula",
 				iconText: "40",
 				tag: "40",
-				description: "Talk to the guy second from the left",
+				LongDescription: "Talk to the guy second from the left",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 40;
 				},
@@ -350,7 +326,7 @@ InteriorGroups = {
 				icon: "Skulltula",
 				iconText: "50",
 				tag: "50",
-				description: "Talk to the guy second from the right",
+				LongDescription: "Talk to the guy second from the right",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 50;
 				},
@@ -365,7 +341,7 @@ InteriorGroups = {
 		buttons: {
 			"Lakeside Heart Piece": {
 				icon: "Heart Piece",
-				description: "Use the golden scale and dive to touch the bottom of the water area. The professor will give you this item.",
+				LongDescription: "Use the golden scale and dive to touch the bottom of the water area. The professor will give you this item.",
 				canGet: function(age) {
 					let hasGoldScale = ItemData.canUse(age, UpgradedItems.GOLDEN_SCALE);
 					let canGetWithoutScale = Settings.GlitchesToAllow.labHPWithoutGoldenScale &&
@@ -375,8 +351,8 @@ InteriorGroups = {
 			},
 			"Lakeside Skulltula": {
 				icon: "Skulltula",
-				itemGroup: ItemGroups.SKULLTULA,
-				description: "This skulltula is on the bottom of the water area. Equip the iron boots and sink down. Roll into the box to reveal it.",
+				ItemGroup: ItemGroups.SKULLTULA,
+				LongDescription: "This skulltula is on the bottom of the water area. Equip the iron boots and sink down. Roll into the box to reveal it.",
 				canGet: function(age) {
 					return ItemData.canUse(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
 				},
@@ -385,15 +361,15 @@ InteriorGroups = {
 			"3 Red Rupees": {
 				icon: "3 Red Rupees",
 				count: 3,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "This rupee is in the water - dive or use iron boots to get it.",
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "This rupee is in the water - dive or use iron boots to get it.",
 				canGet: function(age) {
 					return ItemData.canUseAny(age, [Equipment.IRON_BOOTS, UpgradedItems.GOLDEN_SCALE]);
 				}
 			},
 			"Show Eyeball Frog to Scientist": {
 				icon: "Eyeball Frog",
-				description: "Show the Eyeball Frog to the scientist to receive an item.",
+				LongDescription: "Show the Eyeball Frog to the scientist to receive an item.",
 				canGet: function(age) {
 					return ItemData.canUse(age, AdultTradeItems.EYEBALL_FROG);
 				},
@@ -406,12 +382,12 @@ InteriorGroups = {
 		buttons: {
 			"Child Skulltula": {
 				icon: "Skulltula",
-				itemGroup: ItemGroups.SKULLTULA,
-				description: "This is the skulltula in the crate in the back of the room.",
+				ItemGroup: ItemGroups.SKULLTULA,
+				LongDescription: "This is the skulltula in the crate in the back of the room.",
 				isChildOnly: function() { return true; }
 			},
 			"Adult Big Poe Reward": {
-				description: "Give the poe salesman all the poes he needs to get this item.",
+				LongDescription: "Give the poe salesman all the poes he needs to get this item.",
 				canGet: function(age) {
 					return ItemData.canUseAny(age, [
 						Items.BIG_POE, 
@@ -422,42 +398,42 @@ InteriorGroups = {
 			},
 			"Child Non-Empty Crates": {
 				icon: "Crate",
-				itemGroup: ItemGroups.CRATE,
-				description: "The third crate on your left.",
+				ItemGroup: ItemGroups.CRATE,
+				LongDescription: "The third crate on your left.",
 				shouldNotDisplay: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; },
 				isChildOnly: function() { return true; }
 			},
 			"Child Crates": {
 				icon: "Crate",
 				count: 4,
-				itemGroup: ItemGroups.CRATE,
-				description: "The crates in the room.",
+				ItemGroup: ItemGroups.CRATE,
+				LongDescription: "The crates in the room.",
 				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
 				isChildOnly: function() { return true; }
 			},
 			"Child Pots": {
 				icon: "Pot",
 				count: 44,
-				itemGroup: ItemGroups.POT,
+				ItemGroup: ItemGroups.POT,
 				tag: "child",
-				description: "The many pots in the room. You can reach the top ones by jumping from the box with the skulltula in it.",
+				LongDescription: "The many pots in the room. You can reach the top ones by jumping from the box with the skulltula in it.",
 				isChildOnly: function() { return true; }
 			},
 			"Adult Non-Empty Pots": {
 				icon: "Pot",
 				count: 7,
-				itemGroup: ItemGroups.POT,
+				ItemGroup: ItemGroups.POT,
 				tag: "adult",
-				description: "The many pots in the room.",
+				LongDescription: "The many pots in the room.",
 				shouldNotDisplay: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; },
 				isAdultOnly: function() { return true; }
 			},
 			"Adult Pots": {
 				icon: "Pot",
 				count: 11,
-				itemGroup: ItemGroups.POT,
+				ItemGroup: ItemGroups.POT,
 				tag: "adult",
-				description: "The many pots in the room.",
+				LongDescription: "The many pots in the room.",
 				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
 				isAdultOnly: function() { return true; }
 			}
@@ -468,11 +444,11 @@ InteriorGroups = {
 		buttons: {
 			"Freestanding Item": {
 				icon: "Heart Piece",
-				description: "Simply grab the item in the room."
+				LongDescription: "Simply grab the item in the room."
 			},
 			"Cow": {
-				itemGroup: ItemGroups.COW,
-				description: "Play Epona's Song next to the cow.",
+				ItemGroup: ItemGroups.COW,
+				LongDescription: "Play Epona's Song next to the cow.",
 				canGet: function(age) {
 					return Data.canMilkCows(true);
 				}
@@ -484,13 +460,13 @@ InteriorGroups = {
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleWonderitems; },
 		buttons: {
 			"Red Rupee on Top": {
-				itemGroup: ItemGroups.WONDERITEM,
+				ItemGroup: ItemGroups.WONDERITEM,
 				icon: "Red Rupee Wonderitem",
-				description: "Climb up the stairs and walk around on the top of the cow pen to get this wonderitem."
+				LongDescription: "Climb up the stairs and walk around on the top of the cow pen to get this wonderitem."
 			},
 			"Cow": {
-				itemGroup: ItemGroups.COW,
-				description: "Play Epona's Song next to the cow. This is shared with the Back of Impa's House check.",
+				ItemGroup: ItemGroups.COW,
+				LongDescription: "Play Epona's Song next to the cow. This is shared with the Back of Impa's House check.",
 				canGet: function(age) {
 					return Data.canMilkCows(true);
 				}
@@ -505,8 +481,8 @@ InteriorGroups = {
 			"Cows": {
 				useGroupImage: true,
 				count: 2,
-				itemGroup: ItemGroups.COW,
-				description: "Play Epona's Song next to the cows.",
+				ItemGroup: ItemGroups.COW,
+				LongDescription: "Play Epona's Song next to the cows.",
 				canGet: function(age) {
 					return Data.canMilkCows(true);
 				}
@@ -518,14 +494,14 @@ InteriorGroups = {
 		buttons: {
 			"Freestanding Item": {
 				icon: "Heart Piece",
-				description: "Push the box out of the way and crawl through the hole to get the item.",
+				LongDescription: "Push the box out of the way and crawl through the hole to get the item.",
 				isChildOnly: function() { return true; }
 			},
 			"Cows": {
 				icon: "2 Cows",
 				count: 2,
-				itemGroup: ItemGroups.COW,
-				description: "Play Epona's Song next to the cow.",
+				ItemGroup: ItemGroups.COW,
+				LongDescription: "Play Epona's Song next to the cow.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.cowSanity;
 				},
@@ -542,7 +518,7 @@ InteriorGroups = {
 			"Prizes": {
 				icon: "Bombchu",
 				count: 2,
-				description: "This is the first prize you can get.",
+				LongDescription: "This is the first prize you can get.",
 				canGet: function(age) {
 					return Data.canPlayBombchuBowling(Age.CHILD);
 				}
@@ -554,18 +530,18 @@ InteriorGroups = {
 		buttons: {
 			"Child Fishing": {
 				useGroupImage: true,
-				description: "The prize you can get as child.",
+				LongDescription: "The prize you can get as child.",
 				tag: "child",
 				isChildOnly: function() { return true; }
 			},
 			"Adult Fishing": {
 				useGroupImage: true,
-				description: "The prize you can get as adult.",
+				LongDescription: "The prize you can get as adult.",
 				tag: "adult",
 				isAdultOnly: function() { return true; }
 			},
 			"Hyrule Loach": {
-				description: "The Hyrule Loach. First, find the sinking lure in the fishing pond. Recommended to choose the easier option in the randomizer so it always spawns. Otherwise, it is here 1/4 attempts. It's usually by the lilypads.",
+				LongDescription: "The Hyrule Loach. First, find the sinking lure in the fishing pond. Recommended to choose the easier option in the randomizer so it always spawns. Otherwise, it is here 1/4 attempts. It's usually by the lilypads.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleHyruleLoach;
 				}
@@ -576,7 +552,7 @@ InteriorGroups = {
 		tooltip: "This is the archery minigame. The shopkeeper will only be here as a child.",
 		buttons: {
 			"Child Archery": {
-				description: "This is the prize for completing the minigame as child.",
+				LongDescription: "This is the prize for completing the minigame as child.",
 				isChildOnly: function() { return true; }
 			}
 		}
@@ -585,7 +561,7 @@ InteriorGroups = {
 		tooltip: "This is the archery minigame. The shopkeeper will only be here as adult.",
 		buttons: {
 			"Adult Archery": {
-				description: "This is the prize for completing the minigame as adult.",
+				LongDescription: "This is the prize for completing the minigame as adult.",
 				canGet: function(age) {
 					return Items.FAIRY_BOW.playerHas;
 				},
@@ -598,7 +574,7 @@ InteriorGroups = {
 		buttons: {
 			"Salesman": {
 				icon: "Shop",
-				description: "Talk to the salesman and buy the item for 10 rupees.",
+				LongDescription: "Talk to the salesman and buy the item for 10 rupees.",
 				shouldNotDisplay: function() { 
 					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
 				}
@@ -606,7 +582,7 @@ InteriorGroups = {
 			"Room 1 Back Chest": {
 				icon: "Chest",
 				iconText: "1",
-				description: "The back chest in room 1.",
+				LongDescription: "The back chest in room 1.",
 				shouldNotDisplay: function() { 
 					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
 				},
@@ -620,7 +596,7 @@ InteriorGroups = {
 			"Room 1 Front Chest": {
 				icon: "Chest",
 				iconText: "1",
-				description: "The front chest in room 1.",
+				LongDescription: "The front chest in room 1.",
 				shouldNotDisplay: function() { 
 					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
 				},
@@ -634,7 +610,7 @@ InteriorGroups = {
 			"Room 2 Back Chest": {
 				icon: "Chest",
 				iconText: "2",
-				description: "The back chest in room 2.",
+				LongDescription: "The back chest in room 2.",
 				shouldNotDisplay: function() { 
 					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
 				},
@@ -648,7 +624,7 @@ InteriorGroups = {
 			"Room 2 Front Chest": {
 				icon: "Chest",
 				iconText: "2",
-				description: "The front chest in room 2.",
+				LongDescription: "The front chest in room 2.",
 				shouldNotDisplay: function() { 
 					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
 				},
@@ -662,7 +638,7 @@ InteriorGroups = {
 			"Room 3 Back Chest": {
 				icon: "Chest",
 				iconText: "3",
-				description: "The back chest in room 3.",
+				LongDescription: "The back chest in room 3.",
 				shouldNotDisplay: function() { 
 					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
 				},
@@ -676,7 +652,7 @@ InteriorGroups = {
 			"Room 3 Front Chest": {
 				icon: "Chest",
 				iconText: "3",
-				description: "The front chest in room 3.",
+				LongDescription: "The front chest in room 3.",
 				shouldNotDisplay: function() { 
 					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
 				},
@@ -690,7 +666,7 @@ InteriorGroups = {
 			"Room 4 Back Chest": {
 				icon: "Chest",
 				iconText: "4",
-				description: "The back chest in room 4.",
+				LongDescription: "The back chest in room 4.",
 				shouldNotDisplay: function() { 
 					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
 				},
@@ -704,7 +680,7 @@ InteriorGroups = {
 			"Room 4 Front Chest": {
 				icon: "Chest",
 				iconText: "4",
-				description: "The front chest in room 4.",
+				LongDescription: "The front chest in room 4.",
 				shouldNotDisplay: function() { 
 					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
 				},
@@ -718,7 +694,7 @@ InteriorGroups = {
 			"Room 5 Back Chest": {
 				icon: "Chest",
 				iconText: "5",
-				description: "The back chest in room 5.",
+				LongDescription: "The back chest in room 5.",
 				shouldNotDisplay: function() { 
 					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
 				},
@@ -732,7 +708,7 @@ InteriorGroups = {
 			"Room 5 Front Chest": {
 				icon: "Chest",
 				iconText: "5",
-				description: "The front chest in room 5.",
+				LongDescription: "The front chest in room 5.",
 				shouldNotDisplay: function() { 
 					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
 				},
@@ -746,7 +722,7 @@ InteriorGroups = {
 			"Prize": {
 				icon: "Chest",
 				iconText: "♥",
-				description: "This is the prize for completing the minigame.",
+				LongDescription: "This is the prize for completing the minigame.",
 				canGet: function(age) {
 					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
 						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
@@ -760,7 +736,7 @@ InteriorGroups = {
 		tooltip: "Talon's House in Lon Lon Ranch",
 		buttons: {
 			"Super Cucco Minigame": {
-				description: "Only available during the day. This is the prize for completing the minigame.",
+				LongDescription: "Only available during the day. This is the prize for completing the minigame.",
 				time: function() { return Time.DAY; },
 				canGet: function(age) {
 					return ItemLocationSets.WAKE_UP_TALON();
@@ -769,8 +745,8 @@ InteriorGroups = {
 			},
 			"3 Pots": {
 				count: 3,
-				itemGroup: ItemGroups.POT,
-				description: "This pot is through the door upstairs and to the left."
+				ItemGroup: ItemGroups.POT,
+				LongDescription: "This pot is through the door upstairs and to the left."
 			}
 		}
 	},
@@ -779,7 +755,7 @@ InteriorGroups = {
 		buttons: {
 			"Wake Up Talon": {
 				icon: "Pocket Cucco",
-				description: "Use the Pocket Cucco next to Talon to wake him. You must then show the cucco to Anju to get your reward.",
+				LongDescription: "Use the Pocket Cucco next to Talon to wake him. You must then show the cucco to Anju to get your reward.",
 				canGet: function(age) {
 					return AdultTradeItems.POCKET_EGG.playerHas;
 				},
@@ -807,7 +783,7 @@ InteriorGroups = {
 			"Chests": {
 				useGroupImage: true,
 				count: 4,
-				description: "The chests."
+				LongDescription: "The chests."
 			}
 		}
 	},
@@ -818,8 +794,8 @@ InteriorGroups = {
 		buttons: {
 			"4 Hearts": {
 				count: 4,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "The hearts"
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "The hearts"
 			}
 		}
 	},
@@ -831,8 +807,8 @@ InteriorGroups = {
 			"Pots": {
 				useGroupImage: true,
 				count: 2,
-				itemGroup: ItemGroups.POT,
-				description: "One of the pots."
+				ItemGroup: ItemGroups.POT,
+				LongDescription: "One of the pots."
 			}
 		}
 	},
@@ -844,8 +820,8 @@ InteriorGroups = {
 			"Pots": {
 				useGroupImage: true,
 				count: 3,
-				itemGroup: ItemGroups.POT,
-				description: "One of the pots."
+				ItemGroup: ItemGroups.POT,
+				LongDescription: "One of the pots."
 			}
 		}
 	},
@@ -951,28 +927,28 @@ GrottoGroups = {
 		hasGossipStone: true,
 		buttons: {
 			"Chest": {
-				description: "The chest in the back of the room.",
+				LongDescription: "The chest in the back of the room.",
 			},
 			"Right Beehive": {
 				icon: "Beehive",
-				itemGroup: ItemGroups.BEEHIVE,
-				description: "The beehive on the right side of the grotto. Can use bombs. If using chus, get on the right side of the hive (the darker wall) and drop it on the 7th red flash.",
+				ItemGroup: ItemGroups.BEEHIVE,
+				LongDescription: "The beehive on the right side of the grotto. Can use bombs. If using chus, get on the right side of the hive (the darker wall) and drop it on the 7th red flash.",
 				canGet: function(age) {
 					return Data.canBreakBeehive(age);
 				}
 			},
 			"Left Beehive": {
 				icon: "Beehive",
-				itemGroup: ItemGroups.BEEHIVE,
-				description: "The beehive on the left side of the grotto. Can use bombs. If using chus, line up with the wall to the right of it, in the corner; backflip; drop it on the 6th red flash (closer to the black one after that, if shield-dropping)",
+				ItemGroup: ItemGroups.BEEHIVE,
+				LongDescription: "The beehive on the left side of the grotto. Can use bombs. If using chus, line up with the wall to the right of it, in the corner; backflip; drop it on the 6th red flash (closer to the black one after that, if shield-dropping)",
 				canGet: function(age) {
 					return Data.canBreakBeehive(age);
 				}
 			},
 			"Gossip Stone": {
 				icon: "Mask of Truth",
-				itemGroup: ItemGroups.GOSSIP_STONE,
-				description: "The gossip stone in the middle of the room.",
+				ItemGroup: ItemGroups.GOSSIP_STONE,
+				LongDescription: "The gossip stone in the middle of the room.",
 				canGet: function(age) { 
 					return Data.canReadGossipStone(age); 
 				}
@@ -984,15 +960,15 @@ GrottoGroups = {
 		buttons: {
 			"Scrub 1": {
 				icon: "Scrub",
-				description: "Buy the item from the scrub - this is still a check with scrubsanity off because it sells a heart piece.",
-				// itemGroup: ItemGroups.SCRUB, // Disabled so it shows up with scrubsanity off
+				LongDescription: "Buy the item from the scrub - this is still a check with scrubsanity off because it sells a heart piece.",
+				// ItemGroup: ItemGroups.SCRUB, // Disabled so it shows up with scrubsanity off
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
 			},
 			"Beehive": {
-				itemGroup: ItemGroups.BEEHIVE,
-				description: "Look on the ceiling for this beehive. Can use bombs. If using chus, get in the corner by the hive, facing the lighter wall. Sidehop right, left, then press A and let go of everything. Drop the chu on the 7th red flash.",
+				ItemGroup: ItemGroups.BEEHIVE,
+				LongDescription: "Look on the ceiling for this beehive. Can use bombs. If using chus, get in the corner by the hive, facing the lighter wall. Sidehop right, left, then press A and let go of everything. Drop the chu on the 7th red flash.",
 				canGet: function(age) {
 					return Data.canBreakBeehive(age);
 				}
@@ -1008,15 +984,15 @@ GrottoGroups = {
 			"Scrubs": {
 				icon: "Scrub",
 				count: 2,
-				description: "Buy the item from the scrub.",
-				itemGroup: ItemGroups.SCRUB,
+				LongDescription: "Buy the item from the scrub.",
+				ItemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
 			},
 			"Beehive": {
-				itemGroup: ItemGroups.BEEHIVE,
-				description: "Look on the ceiling for this beehive. If using chus, face the closest wall and backflip. Drop the chu on the 5th red flash.",
+				ItemGroup: ItemGroups.BEEHIVE,
+				LongDescription: "Look on the ceiling for this beehive. If using chus, face the closest wall and backflip. Drop the chu on the 5th red flash.",
 				canGet: function(age) {
 					return Data.canBreakBeehive(age, true);
 				}
@@ -1033,14 +1009,14 @@ GrottoGroups = {
 		buttons: {
 			"Scrub": {
 				// Note that the item group is excluded - this is because this scrub is still required if there's no scrubsanity
-				description: "The front scrub - it's the only one that sells an upgrade.",
+				LongDescription: "The front scrub - it's the only one that sells an upgrade.",
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
 			},
 			"Beehive": {
-				itemGroup: ItemGroups.BEEHIVE,
-				description: "Look on the ceiling for this beehive. If using chus, face the closest wall and backflip. Drop the chu on the 5th red flash.",
+				ItemGroup: ItemGroups.BEEHIVE,
+				LongDescription: "Look on the ceiling for this beehive. If using chus, face the closest wall and backflip. Drop the chu on the 5th red flash.",
 				canGet: function(age) {
 					return Data.canBreakBeehive(age, true);
 				}
@@ -1056,15 +1032,15 @@ GrottoGroups = {
 			"Scrubs": {
 				icon: "Scrub",
 				count: 3,
-				description: "Buy the item from the scrub.",
-				itemGroup: ItemGroups.SCRUB,
+				LongDescription: "Buy the item from the scrub.",
+				ItemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
 			},
 			"Beehive": {
-				itemGroup: ItemGroups.BEEHIVE,
-				description: "Look on the right at the ceiling for this beehive. If using chus, face the closest wall and backflip. Drop the chu on the 5th red flash.",
+				ItemGroup: ItemGroups.BEEHIVE,
+				LongDescription: "Look on the right at the ceiling for this beehive. If using chus, face the closest wall and backflip. Drop the chu on the 5th red flash.",
 				canGet: function(age) {
 					return Data.canBreakBeehive(age, true);
 				}
@@ -1075,8 +1051,8 @@ GrottoGroups = {
 		tooltip: "This grotto has a big skulltula and a gold skulltula on the upper wall.",
 		buttons: {
 			"Skulltula at Distance": {
-				itemGroup: ItemGroups.SKULLTULA,
-				description: "The gold skulltula is on the wall behind the big skulltula.",
+				ItemGroup: ItemGroups.SKULLTULA,
+				LongDescription: "The gold skulltula is on the wall behind the big skulltula.",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS);
 				}
@@ -1088,16 +1064,16 @@ GrottoGroups = {
 		hasGossipStone: true,
 		buttons: {
 			"Cow": {
-				itemGroup: ItemGroups.COW,
-				description: "Burn the web, then play Epona's Song next to the cow.",
+				ItemGroup: ItemGroups.COW,
+				LongDescription: "Burn the web, then play Epona's Song next to the cow.",
 				canGet: function(age) {
 					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]) &&
 						Data.canMilkCows();
 				}
 			},
 			"Skulltula at Distance": {
-				itemGroup: ItemGroups.SKULLTULA,
-				description: "Burn the web. The skulltula is in the section the cow is in.",
+				ItemGroup: ItemGroups.SKULLTULA,
+				LongDescription: "Burn the web. The skulltula is in the section the cow is in.",
 				canGet: function(age) {
 					return ItemData.canUseAny(age, 
 							[ItemSets.FIRE_ITEMS, GlitchItemSets.LONGSHOT_WEIRD_SHOT, QPAItemSets.CUTSCENE_ITEM_QPA]) && 
@@ -1106,8 +1082,8 @@ GrottoGroups = {
 			},
 			"Gossip Stone": {
 				icon: "Mask of Truth",
-				itemGroup: ItemGroups.GOSSIP_STONE,
-				description: "Burn the web. The stone is in one of the little rooms.",
+				ItemGroup: ItemGroups.GOSSIP_STONE,
+				LongDescription: "Burn the web. The stone is in one of the little rooms.",
 				canGet: function(age) { 
 					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]) && 
 						Data.canReadGossipStone(age); 
@@ -1115,8 +1091,8 @@ GrottoGroups = {
 			},
 			"2 Pots": {
 				count: 2,
-				itemGroup: ItemGroups.POT,
-				description: "Burn the web. The pots are by the cow.",
+				ItemGroup: ItemGroups.POT,
+				LongDescription: "Burn the web. The pots are by the cow.",
 				canGet: function(age) { 
 					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]);
 				}
@@ -1128,8 +1104,8 @@ GrottoGroups = {
 		hasGossipStone: true,
 		buttons: {
 			"Skulltula in Bombable Wall Grotto": {
-				itemGroup: ItemGroups.SKULLTULA,
-				description: "The skulltula is high up behind the mud wall to your left when you enter.",
+				ItemGroup: ItemGroups.SKULLTULA,
+				LongDescription: "The skulltula is high up behind the mud wall to your left when you enter.",
 				canGet: function(age) {
 					// The staircase hover requires two additional bomb drops to gain enough height
                     // Start the hover against the wall
@@ -1141,16 +1117,16 @@ GrottoGroups = {
 			},
 			"4 Pots": {
 				count: 4,
-				itemGroup: ItemGroups.POT,
-				description: "Blow up the mud wall in front of you when you enter to get to this pot.",
+				ItemGroup: ItemGroups.POT,
+				LongDescription: "Blow up the mud wall in front of you when you enter to get to this pot.",
 				canGet: function(age) { 
 					return ItemData.canUse(age, ItemSets.MUD_WALL_ITEMS);
 				}
 			},
 			"Gossip Stone": {
 				icon: "Mask of Truth",
-				itemGroup: ItemGroups.GOSSIP_STONE,
-				description: "The gossip stone is behind the mud wall in front of you when you enter.",
+				ItemGroup: ItemGroups.GOSSIP_STONE,
+				LongDescription: "The gossip stone is behind the mud wall in front of you when you enter.",
 				canGet: function(age) { 
 					return ItemData.canUse(age, ItemSets.MUD_WALL_ITEMS) && Data.canReadGossipStone(age); 
 				},
@@ -1165,7 +1141,7 @@ GrottoGroups = {
 		buttons: {
 			"Skull Mask Item": {
 				icon: "Skull Mask",
-				description: "Wear the Skull Mask and stand front and center near the entrance.",
+				LongDescription: "Wear the Skull Mask and stand front and center near the entrance.",
 				isChildOnly: function() { return true; },
 				canGet: function(age) {
 					return ChildTradeItems.SKULL_MASK.playerHas;
@@ -1173,7 +1149,7 @@ GrottoGroups = {
 			},
 			"Mask of Truth Item": {
 				icon: "Mask of Truth",
-				description: "Wear the Mask of Truth and stand front and center near the entrance.",
+				LongDescription: "Wear the Mask of Truth and stand front and center near the entrance.",
 				isChildOnly: function() { return true; },
 				canGet: function(age) {
 					return ChildTradeItems.MASK_OF_TRUTH.playerHas;
@@ -1186,7 +1162,7 @@ GrottoGroups = {
 		buttons: {
 			"Redead Sun's Song Chest": {
 				useGroupImage: true,
-				description: "Play the Sun's Song near the redead to spawn a chest.",
+				LongDescription: "Play the Sun's Song near the redead to spawn a chest.",
 				canGet: function(age) {
 					return Data.canPlaySong(Songs.SUNS_SONG);
 				}
@@ -1197,7 +1173,7 @@ GrottoGroups = {
 		tooltip: "The Royal Family's Tomb.",
 		buttons: {
 			"Chest by Lighting Torches": {
-				description: "Light the torches in the first room to spawn a chest.<br/><br/>Using flame storage and sticks: get flame storage; line up with the side of the platform by the stairs and the torch; sidehop right x8; sideroll; take out stick (it should be lit now); sidehop to the door - quickly enter at the very left side; the first torch should be lit as you go in - now finish the job.",
+				LongDescription: "Light the torches in the first room to spawn a chest.<br/><br/>Using flame storage and sticks: get flame storage; line up with the side of the platform by the stairs and the torch; sidehop right x8; sideroll; take out stick (it should be lit now); sidehop to the door - quickly enter at the very left side; the first torch should be lit as you go in - now finish the job.",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.FIRE_ITEMS) ||
 						ItemData.canUse(age, QPAItemSets.TALL_TORCH_QPA) ||
@@ -1205,7 +1181,7 @@ GrottoGroups = {
 				}
 			},
 			"Sun's Song": {
-				description: "Go through the rooms to get the item at the end.",
+				LongDescription: "Go through the rooms to get the item at the end.",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
 				}
@@ -1222,7 +1198,7 @@ GrottoGroups = {
 		tooltip: "This grotto has crystal walls and 2 wolfos.",
 		buttons: {
 			"Chest in Wolfos Grotto": {
-				description: "Kill the wolfos to spawn the chest.",
+				LongDescription: "Kill the wolfos to spawn the chest.",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
 				}
@@ -1234,7 +1210,7 @@ GrottoGroups = {
 		buttons: {
 			"Chest in 2 Redead Grotto": {
 				useGroupImage: true,
-				description: "Kill the redeads to spawn the chest.",
+				LongDescription: "Kill the redeads to spawn the chest.",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.SWORDS);
 				}
@@ -1252,9 +1228,9 @@ GrottoGroups = {
 		},
 		buttons: {
 			"Cow": {
-				itemGroup: ItemGroups.COW,
+				ItemGroup: ItemGroups.COW,
 				tag: "cow",
-				description: "Play Epona's Song next to the cow.",
+				LongDescription: "Play Epona's Song next to the cow.",
 				canGet: function(age) {
 					return Data.canMilkCows();
 				}
@@ -1262,20 +1238,20 @@ GrottoGroups = {
 			"Red Rupee": {
 				icon: "Rupee Circle",
 				count: 7,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "The rupee circle by the entrance."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "The rupee circle by the entrance."
 			},
 			"4 Hearts": {
 				icon: "Recovery Heart",
 				count: 4,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				tag: "heart",
-				description: "The hearts near the cow."
+				LongDescription: "The hearts near the cow."
 			},
 			"Beehive": {
-				itemGroup: ItemGroups.BEEHIVE,
+				ItemGroup: ItemGroups.BEEHIVE,
 				tag: "beehive",
-				description: "The beehive on the back/right side of the grotto. Can use bombs. If using chus, line up with one of the walls under it and drop it on the 6th red flash.",
+				LongDescription: "The beehive on the back/right side of the grotto. Can use bombs. If using chus, line up with one of the walls under it and drop it on the 6th red flash.",
 				canGet: function(age) {
 					return Data.canBreakBeehive(age);
 				}
@@ -1287,7 +1263,7 @@ GrottoGroups = {
 		buttons: {
 			"Water Heart Piece": {
 				useGroupImage: true,
-				description: "Dive down or use iron boots to get the heart piece",
+				LongDescription: "Dive down or use iron boots to get the heart piece",
 				canGet: function(age) {
 					return ItemData.canUseAny(age, [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]);
 				}
@@ -1301,7 +1277,7 @@ GrottoGroups = {
 		excludeFromGroup: function() { return true; },
 		buttons: {
 			"Chest": {
-				description: "The chest."
+				LongDescription: "The chest."
 			}
 		}
 	},
@@ -1312,8 +1288,8 @@ GrottoGroups = {
 			"Rupees in Water": {
 				useGroupImage: true,
 				count: 8,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "The rupees in the water"
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "The rupees in the water"
 			}
 		}
 	},
@@ -1328,7 +1304,7 @@ GrottoGroups = {
 		buttons: {
 			"Heart Container": {
 				icon: "Heart Piece",
-				description: "To defeat Gohma, you must first stun her when her eye is red. You can use the slingshot or deku nuts to do this - nuts don't stun her for nearly as long, though. Once she's down, attack her. The quickest kill is with three deku stick jumpslashes (or one then two crouch stabs).",
+				LongDescription: "To defeat Gohma, you must first stun her when her eye is red. You can use the slingshot or deku nuts to do this - nuts don't stun her for nearly as long, though. Once she's down, attack her. The quickest kill is with three deku stick jumpslashes (or one then two crouch stabs).",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.SWORDS) && 
 						ItemData.canUseAny(age, [Items.DEKU_NUT, Items.FAIRY_SLINGSHOT]);
@@ -1336,7 +1312,7 @@ GrottoGroups = {
 			},
 			"Blue Warp": {
 				icon: "Gohma",
-				description: "Step in the blue warp after defeating the boss to receive a medallion.",
+				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.SWORDS) && 
 						ItemData.canUseAny(age, [Items.DEKU_NUT, Items.FAIRY_SLINGSHOT]);
@@ -1348,12 +1324,12 @@ GrottoGroups = {
 		tooltip: "King Dodongo in Dodongo's Cavern",
 		buttons: {
 			"Chest": {
-				description: "This chest is in the back of the room.",
+				LongDescription: "This chest is in the back of the room.",
 				canGet: function(age) { return true; }
 			},
 			"Heart Container": {
 				icon: "Heart Piece",
-				description: "To defeat King Dodongo, you must throw a bomb or bomb flower into his mouth, and then attack him afterward. Note that you should follow him as he rolls so that he gets up faster. If using bomb flowers, try to get them a little bit early, as you need time to run back to him before he shoots his fireball. The quickest kill is with 2 deku stick/master sword jumpslashes, or 1 biggoron's sword jumpslash.",
+				LongDescription: "To defeat King Dodongo, you must throw a bomb or bomb flower into his mouth, and then attack him afterward. Note that you should follow him as he rolls so that he gets up faster. If using bomb flowers, try to get them a little bit early, as you need time to run back to him before he shoots his fireball. The quickest kill is with 2 deku stick/master sword jumpslashes, or 1 biggoron's sword jumpslash.",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) &&
 						ItemData.canUseAny(age, [Items.BOMB, Equipment.STRENGTH]);
@@ -1361,7 +1337,7 @@ GrottoGroups = {
 			},
 			"Blue Warp": {
 				icon: "King Dodongo",
-				description: "Step in the blue warp after defeating the boss to receive a medallion.",
+				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) &&
 						ItemData.canUseAny(age, [Items.BOMB, Equipment.STRENGTH]);
@@ -1375,12 +1351,12 @@ GrottoGroups = {
 			"6 Pots": {
 				icon: "Pot",
 				count: 6,
-				itemGroup: ItemGroups.POT,
-				description: "The pots on the edge of the room."
+				ItemGroup: ItemGroups.POT,
+				LongDescription: "The pots on the edge of the room."
 			},
 			"Heart Container": {
 				icon: "Heart Piece",
-				description: "To defeat Barinade, you need the boomerang and also either a sword or at least 3 Deku Sticks. First, dislodge it from the ceiling using the boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
+				LongDescription: "To defeat Barinade, you need the boomerang and also either a sword or at least 3 Deku Sticks. First, dislodge it from the ceiling using the boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
 				canGet: function(age) {
 					return ItemData.canUse(age, [ItemSets.SWORDS, Items.BOOMERANG]);
 				},
@@ -1388,7 +1364,7 @@ GrottoGroups = {
 			},
 			"Blue Warp": {
 				icon: "Barinade",
-				description: "Step in the blue warp after defeating the boss to receive a medallion.",
+				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					return ItemData.canUse(age, [ItemSets.SWORDS, Items.BOOMERANG]);
 				},
@@ -1401,7 +1377,7 @@ GrottoGroups = {
 		buttons: {
 			"Heart Container": {
 				icon: "Heart Piece",
-				description: "For phase 1 of Phantom Ganon, you must shoot the real version of him that comes out of the paintings. You can use your bow or hookshot for that. The real one is lighter and is the only one that makes sound. Phase 2 is the familiar tenis match. Stun him with his own attacks and damage him when he's stunned. You can also just spam him with the boomerang!",
+				LongDescription: "For phase 1 of Phantom Ganon, you must shoot the real version of him that comes out of the paintings. You can use your bow or hookshot for that. The real one is lighter and is the only one that makes sound. Phase 2 is the familiar tenis match. Stun him with his own attacks and damage him when he's stunned. You can also just spam him with the boomerang!",
 				canGet: function(age) {
 					let canStunBoss = ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT, Items.FAIRY_BOW]);
 					let canDamageBoss = ItemData.canUseAny(age, [ItemSets.SWORDS, Items.BOOMERANG]);
@@ -1410,7 +1386,7 @@ GrottoGroups = {
 			},
 			"Blue Warp": {
 				icon: "Phantom Ganon",
-				description: "Step in the blue warp after defeating the boss to receive a medallion.",
+				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					let canStunBoss = ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT, Items.FAIRY_BOW]);
 					let canDamageBoss = ItemData.canUseAny(age, [ItemSets.SWORDS, Items.BOOMERANG]);
@@ -1424,7 +1400,7 @@ GrottoGroups = {
 		buttons: {
 			"Heart Container": {
 				icon: "Heart Piece",
-				description: "To defeat Volvagia, hit her with your hammer when she pops out of the holes. After that, attack it again. Jumpslashes will do more damage, like usual. You can hit it with arrows while it's flying to do additional damage. If it ever drops rocks on you, you can hang off the side of the cliff to avoid damage.",
+				LongDescription: "To defeat Volvagia, hit her with your hammer when she pops out of the holes. After that, attack it again. Jumpslashes will do more damage, like usual. You can hit it with arrows while it's flying to do additional damage. If it ever drops rocks on you, you can hang off the side of the cliff to avoid damage.",
 				canGet: function(age) {
 					let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
 					return tunicCheck && ItemData.canUse(age, Items.MEGATON_HAMMER);
@@ -1433,7 +1409,7 @@ GrottoGroups = {
 			},
 			"Blue Warp": {
 				icon: "Volvagia",
-				description: "Step in the blue warp after defeating the boss to receive a medallion.",
+				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
 					return tunicCheck && ItemData.canUse(age, Items.MEGATON_HAMMER);
@@ -1447,7 +1423,7 @@ GrottoGroups = {
 		buttons: {
 			"Heart Container": {
 				icon: "Heart Piece",
-				description: "To defeat morpha, hookshot her nucleus out of the water and hit her to damage her. A good way to kill is to continuously hookshot her to bring her into a corner. Now, get to the other side of her and slash once so it runs into the corner. Now quickly jumpslash it (Z + A) and continue to crouch stab (Hold R, spam B) until it's dead.",
+				LongDescription: "To defeat morpha, hookshot her nucleus out of the water and hit her to damage her. A good way to kill is to continuously hookshot her to bring her into a corner. Now, get to the other side of her and slash once so it runs into the corner. Now quickly jumpslash it (Z + A) and continue to crouch stab (Hold R, spam B) until it's dead.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.HOOKSHOT);
 				},
@@ -1455,7 +1431,7 @@ GrottoGroups = {
 			},
 			"Blue Warp": {
 				icon: "Morpha",
-				description: "Step in the blue warp after defeating the boss to receive a medallion.",
+				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.HOOKSHOT);
 				},
@@ -1474,7 +1450,7 @@ GrottoGroups = {
 		buttons: {
 			"Heart Container": {
 				icon: "Heart Piece",
-				description: "When fighting Bongo Bongo, it helps to NOT have the Hover Boots equipped. When the fight starts, if you hold down, he won't circle you right away. Hit his hands with your bow or hookshot, or slingshot to stun them. Now hit him before he hits you and damage him as much as you can. If you have magic, quickspins can actually stunlock him for a 1-cycle if you do them perfectly.",
+				LongDescription: "When fighting Bongo Bongo, it helps to NOT have the Hover Boots equipped. When the fight starts, if you hold down, he won't circle you right away. Hit his hands with your bow or hookshot, or slingshot to stun them. Now hit him before he hits you and damage him as much as you can. If you have magic, quickspins can actually stunlock him for a 1-cycle if you do them perfectly.",
 				canGet: function(age) {
 					let canStunHands = ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT, Items.FAIRY_BOW]);
 					return ItemData.canUse(age, ItemSets.SWORDS) && canStunHands;
@@ -1482,7 +1458,7 @@ GrottoGroups = {
 			},
 			"Blue Warp": {
 				icon: "Bongo Bongo",
-				description: "Step in the blue warp after defeating the boss to receive a medallion.",
+				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					let canStunHands = ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT, Items.FAIRY_BOW]);
 					return ItemData.canUse(age, ItemSets.SWORDS) && canStunHands;
@@ -1495,7 +1471,7 @@ GrottoGroups = {
 		buttons: {
 			"Heart Container": {
 				icon: "Heart Piece",
-				description: "To defeat Twinrova, reflect one of the sister's shots at the other one. Do this four times to get to the second phase. Now, you must charge your shield with 3 of the same kind of attack. When you do, your shield will shoot it at Twinrova, stunning her. Go hit her! As usual, a jumpslash (Z + A) then crouch stabs (R + spam B) do the most damage.",
+				LongDescription: "To defeat Twinrova, reflect one of the sister's shots at the other one. Do this four times to get to the second phase. Now, you must charge your shield with 3 of the same kind of attack. When you do, your shield will shoot it at Twinrova, stunning her. Go hit her! As usual, a jumpslash (Z + A) then crouch stabs (R + spam B) do the most damage.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Equipment.MIRROR_SHIELD);
 				},
@@ -1503,7 +1479,7 @@ GrottoGroups = {
 			},
 			"Blue Warp": {
 				icon: "Twinrova",
-				description: "Step in the blue warp after defeating the boss to receive a medallion.",
+				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Equipment.MIRROR_SHIELD);
 				},
@@ -1515,15 +1491,15 @@ GrottoGroups = {
 		tooltip: "The tower in the Center of Ganon's Castle",
 		buttons: {
 			"Boss Key": {
-				description: "This boss key chest is in the room with the two stalfos. Defeat them to gain access to it.",
+				LongDescription: "This boss key chest is in the room with the two stalfos. Defeat them to gain access to it.",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
 				}
 			},
 			"14 Pots": {
-				description: "These pots are after the fight with the two Iron Knuckles, before the final staircase.",
+				LongDescription: "These pots are after the fight with the two Iron Knuckles, before the final staircase.",
 				count: 14,
-				itemGroup: ItemGroups.POT,
+				ItemGroup: ItemGroups.POT,
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
 				},
@@ -1532,9 +1508,9 @@ GrottoGroups = {
 				}
 			},
 			"18 Pots": {
-				description: "These pots are after the fight with the two Iron Knuckles, before the final staircase.",
+				LongDescription: "These pots are after the fight with the two Iron Knuckles, before the final staircase.",
 				count: 18,
-				itemGroup: ItemGroups.POT,
+				ItemGroup: ItemGroups.POT,
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
 				},
@@ -1556,8 +1532,8 @@ GrottoGroups = {
 		tooltip: "Any of the soft soil patches with a gold skulltula inside.",
 		buttons: {
 			"Skulltula": {
-				itemGroup: ItemGroups.SKULLTULA,
-				description: "Drop bugs on the soil patch to spawn the skulltula.",
+				ItemGroup: ItemGroups.SKULLTULA,
+				LongDescription: "Drop bugs on the soil patch to spawn the skulltula.",
 				canGet: function(age) {
 					// Note that we don't check for bugs specifically, just an empty bottle
 					// - This might be something we want to revisit
@@ -1566,7 +1542,7 @@ GrottoGroups = {
 				isChildOnly: function() { return true; }
 			},
 			"Magic Bean": {
-				description: "Plant a magic bean here as a child to grow a plant to travel with as an adult.",
+				LongDescription: "Plant a magic bean here as a child to grow a plant to travel with as an adult.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.MAGIC_BEAN);
 				},
@@ -1582,8 +1558,8 @@ GrottoGroups = {
 		tooltip: "Any of the soft soil patches with a gold skulltula inside.",
 		buttons: {
 			"Skulltula": {
-				itemGroup: ItemGroups.SKULLTULA,
-				description: "Drop bugs on the soil patch to spawn the skulltula.",
+				ItemGroup: ItemGroups.SKULLTULA,
+				LongDescription: "Drop bugs on the soil patch to spawn the skulltula.",
 				canGet: function(age) {
 					// Note that we don't check for bugs specifically, just an empty bottle
 					// - This might be something we want to revisit
@@ -1592,7 +1568,7 @@ GrottoGroups = {
 				isChildOnly: function() { return true; }
 			},
 			"Magic Bean": {
-				description: "Plant a magic bean here as a child to grow a plant to travel with as an adult.",
+				LongDescription: "Plant a magic bean here as a child to grow a plant to travel with as an adult.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.MAGIC_BEAN);
 				},
@@ -1610,22 +1586,22 @@ GrottoGroups = {
 				icon: "Neutral Goron",
 				tag: "neutral",
 				count: 3,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Neutral Goron Prizes."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Neutral Goron Prizes."
 			},
 			"Angry": {
 				icon: "Angry Goron",
 				tag: "angry",
 				count: 3,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Angry Goron Prizes."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Angry Goron Prizes."
 			},
 			"Happy": {
 				icon: "Happy Goron",
 				tag: "happy",
 				count: 3,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Happy Goron Prizes."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Happy Goron Prizes."
 			}
 		}
 	},
@@ -1635,8 +1611,8 @@ GrottoGroups = {
 			"Hearts": {
 				useGroupImage: true,
 				count: 2,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "The hearts."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "The hearts."
 			}
 		}
 	},
@@ -1646,8 +1622,8 @@ GrottoGroups = {
 			"Hearts": {
 				useGroupImage: true,
 				count: 3,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "The hearts."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "The hearts."
 			}
 		}
 	},
@@ -1657,8 +1633,8 @@ GrottoGroups = {
 			"Green Rupees": {
 				useGroupImage: true,
 				count: 2,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Green rupees."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Green rupees."
 			}
 		}
 	},
@@ -1668,8 +1644,8 @@ GrottoGroups = {
 			"Green Rupees": {
 				useGroupImage: true,
 				count: 3,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Green rupees."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Green rupees."
 			}
 		}
 	},
@@ -1679,8 +1655,8 @@ GrottoGroups = {
 			"Green Rupees": {
 				useGroupImage: true,
 				count: 4,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Green rupees."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Green rupees."
 			}
 		}
 	},
@@ -1690,8 +1666,8 @@ GrottoGroups = {
 			"Green Rupees": {
 				useGroupImage: true,
 				count: 7,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Green rupees."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Green rupees."
 			}
 		}
 	},
@@ -1701,8 +1677,8 @@ GrottoGroups = {
 			"Green Rupees": {
 				useGroupImage: true,
 				count: 8,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Green rupees."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Green rupees."
 			}
 		}
 	},
@@ -1712,8 +1688,8 @@ GrottoGroups = {
 			"Green Rupees": {
 				useGroupImage: true,
 				count: 18,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Green rupees."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Green rupees."
 			}
 		}
 	},
@@ -1724,8 +1700,8 @@ GrottoGroups = {
 			"Green Rupees": {
 				useGroupImage: true,
 				count: 2,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Green rupee wonderitems."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Green rupee wonderitems."
 			}
 		}
 	},
@@ -1736,8 +1712,8 @@ GrottoGroups = {
 			"Green Rupees": {
 				useGroupImage: true,
 				count: 3,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Green rupee wonderitems."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Green rupee wonderitems."
 			}
 		}
 	},
@@ -1748,8 +1724,8 @@ GrottoGroups = {
 			"Green Rupees": {
 				useGroupImage: true,
 				count: 4,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Green rupee wonderitems."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Green rupee wonderitems."
 			}
 		}
 	},
@@ -1760,8 +1736,8 @@ GrottoGroups = {
 			"Green Rupees": {
 				useGroupImage: true,
 				count: 6,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Green rupee wonderitems."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Green rupee wonderitems."
 			}
 		}
 	},
@@ -1772,8 +1748,8 @@ GrottoGroups = {
 			"Green Rupees": {
 				useGroupImage: true,
 				count: 7,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Green rupee wonderitems."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Green rupee wonderitems."
 			}
 		}
 	},
@@ -1784,8 +1760,8 @@ GrottoGroups = {
 			"Green Rupees": {
 				useGroupImage: true,
 				count: 3,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Red rupee wonderitems."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Red rupee wonderitems."
 			}
 		}
 	},
@@ -1793,21 +1769,21 @@ GrottoGroups = {
 		tooltip: "The 3 Jabu rupees with various diving requirements",
 		buttons: {
 			"Green Rupee": {
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Can be obtained by diving to it."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Can be obtained by diving to it."
 			},
 			"Green Rupee 2": {
 				icon: "Green Rupee Silver Scale",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Requires iron boots, boomerang, or silver scale+.",
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Requires iron boots, boomerang, or silver scale+.",
 				canGet: function(age) {
 					return ItemData.canUseAny(age, [UpgradedItems.SILVER_SCALE, Items.BOOMERANG, Equipment.IRON_BOOTS]);
 				}
 			},
 			"Green Rupee 3": {
 				icon: "Green Rupee Gold Scale",
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Requires iron boots, boomerang, or gold scale.",
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Requires iron boots, boomerang, or gold scale.",
 				canGet: function(age) {
 					return ItemData.canUseAny(age, [UpgradedItems.GOLDEN_SCALE, Items.BOOMERANG, Equipment.IRON_BOOTS])
 				}
@@ -1820,8 +1796,8 @@ GrottoGroups = {
 			"Blue Rupees": {
 				useGroupImage: true,
 				count: 5,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Blue rupees."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Blue rupees."
 			}
 		}
 	},
@@ -1831,8 +1807,8 @@ GrottoGroups = {
 			"Red Rupees": {
 				useGroupImage: true,
 				count: 3,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Red rupees."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Red rupees."
 			}
 		}
 	},
@@ -1842,8 +1818,8 @@ GrottoGroups = {
 			"Red Rupees": {
 				useGroupImage: true,
 				count: 4,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "Red rupees."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "Red rupees."
 			}
 		}
 	},
@@ -1853,8 +1829,8 @@ GrottoGroups = {
 			"Silver Rupees": {
 				useGroupImage: true,
 				count: 2,
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupees."
+				ItemGroup: ItemGroups.SILVER_RUPEE,
+				LongDescription: "Silver rupees."
 			}
 		}
 	},
@@ -1864,8 +1840,8 @@ GrottoGroups = {
 			"Silver Rupees": {
 				useGroupImage: true,
 				count: 3,
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupees."
+				ItemGroup: ItemGroups.SILVER_RUPEE,
+				LongDescription: "Silver rupees."
 			}
 		}
 	},
@@ -1875,8 +1851,8 @@ GrottoGroups = {
 			"Silver Rupees": {
 				useGroupImage: true,
 				count: 4,
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupees."
+				ItemGroup: ItemGroups.SILVER_RUPEE,
+				LongDescription: "Silver rupees."
 			}
 		}
 	},
@@ -1886,8 +1862,8 @@ GrottoGroups = {
 			"Silver Rupees": {
 				useGroupImage: true,
 				count: 5,
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupees."
+				ItemGroup: ItemGroups.SILVER_RUPEE,
+				LongDescription: "Silver rupees."
 			}
 		}
 	},
@@ -1897,8 +1873,8 @@ GrottoGroups = {
 			"Silver Rupees": {
 				useGroupImage: true,
 				count: 9,
-				itemGroup: ItemGroups.SILVER_RUPEE,
-				description: "Silver rupees."
+				ItemGroup: ItemGroups.SILVER_RUPEE,
+				LongDescription: "Silver rupees."
 			}
 		}
 	},
@@ -1908,8 +1884,8 @@ GrottoGroups = {
 			"Rupees": {
 				useGroupImage: true,
 				count: 7,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "One of the rupees from the circle."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "One of the rupees from the circle."
 			}
 		}
 	},
@@ -1919,8 +1895,8 @@ GrottoGroups = {
 			"Rupees": {
 				useGroupImage: true,
 				count: 7,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "One of the rupees from the circle."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "One of the rupees from the circle."
 			}
 		}
 	},
@@ -1930,8 +1906,8 @@ GrottoGroups = {
 			"Rupees": {
 				count: 9,
 				useGroupImage: true,
-				itemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				description: "One of the rupees in the ring."
+				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+				LongDescription: "One of the rupees in the ring."
 			}
 		}
 	},
@@ -1941,8 +1917,8 @@ GrottoGroups = {
 			"Pots": {
 				useGroupImage: true,
 				count: 2,
-				itemGroup: ItemGroups.POT,
-				description: "The pots."
+				ItemGroup: ItemGroups.POT,
+				LongDescription: "The pots."
 			}
 		}
 	},
@@ -1952,8 +1928,8 @@ GrottoGroups = {
 			"Pots": {
 				useGroupImage: true,
 				count: 3,
-				itemGroup: ItemGroups.POT,
-				description: "The pots."
+				ItemGroup: ItemGroups.POT,
+				LongDescription: "The pots."
 			}
 		}
 	},
@@ -1963,8 +1939,8 @@ GrottoGroups = {
 			"Pots": {
 				useGroupImage: true,
 				count: 4,
-				itemGroup: ItemGroups.POT,
-				description: "The pots."
+				ItemGroup: ItemGroups.POT,
+				LongDescription: "The pots."
 			}
 		}
 	},
@@ -1974,8 +1950,8 @@ GrottoGroups = {
 			"Pots": {
 				useGroupImage: true,
 				count: 5,
-				itemGroup: ItemGroups.POT,
-				description: "The pots."
+				ItemGroup: ItemGroups.POT,
+				LongDescription: "The pots."
 			}
 		}
 	},
@@ -1985,8 +1961,8 @@ GrottoGroups = {
 			"Pots": {
 				useGroupImage: true,
 				count: 8,
-				itemGroup: ItemGroups.POT,
-				description: "The pots."
+				ItemGroup: ItemGroups.POT,
+				LongDescription: "The pots."
 			}
 		}
 	},
@@ -1996,8 +1972,8 @@ GrottoGroups = {
 			"Pots": {
 				useGroupImage: true,
 				count: 10,
-				itemGroup: ItemGroups.POT,
-				description: "The pots."
+				ItemGroup: ItemGroups.POT,
+				LongDescription: "The pots."
 			}
 		}
 	},
@@ -2007,8 +1983,8 @@ GrottoGroups = {
 			"Crates": {
 				useGroupImage: true,
 				count: 2,
-				itemGroup: ItemGroups.CRATE,
-				description: "The crates."
+				ItemGroup: ItemGroups.CRATE,
+				LongDescription: "The crates."
 			}
 		}
 	},
@@ -2018,8 +1994,8 @@ GrottoGroups = {
 			"Crates": {
 				useGroupImage: true,
 				count: 3,
-				itemGroup: ItemGroups.CRATE,
-				description: "The crates."
+				ItemGroup: ItemGroups.CRATE,
+				LongDescription: "The crates."
 			}
 		}
 	},
@@ -2029,8 +2005,8 @@ GrottoGroups = {
 			"Crates": {
 				useGroupImage: true,
 				count: 4,
-				itemGroup: ItemGroups.CRATE,
-				description: "The crates."
+				ItemGroup: ItemGroups.CRATE,
+				LongDescription: "The crates."
 			}
 		}
 	},
@@ -2040,8 +2016,8 @@ GrottoGroups = {
 			"Crates": {
 				useGroupImage: true,
 				count: 5,
-				itemGroup: ItemGroups.CRATE,
-				description: "The crates."
+				ItemGroup: ItemGroups.CRATE,
+				LongDescription: "The crates."
 			}
 		}
 	},
@@ -2051,8 +2027,8 @@ GrottoGroups = {
 			"Crates": {
 				useGroupImage: true,
 				count: 6,
-				itemGroup: ItemGroups.CRATE,
-				description: "The crates."
+				ItemGroup: ItemGroups.CRATE,
+				LongDescription: "The crates."
 			}
 		}
 	},
@@ -2062,8 +2038,8 @@ GrottoGroups = {
 			"Crates": {
 				useGroupImage: true,
 				count: 7,
-				itemGroup: ItemGroups.CRATE,
-				description: "The crates."
+				ItemGroup: ItemGroups.CRATE,
+				LongDescription: "The crates."
 			}
 		}
 	},
@@ -2073,8 +2049,8 @@ GrottoGroups = {
 			"Crates": {
 				useGroupImage: true,
 				count: 11,
-				itemGroup: ItemGroups.CRATE,
-				description: "The crates."
+				ItemGroup: ItemGroups.CRATE,
+				LongDescription: "The crates."
 			}
 		}
 	},
@@ -2084,8 +2060,8 @@ GrottoGroups = {
 			"Crates": {
 				useGroupImage: true,
 				count: 14,
-				itemGroup: ItemGroups.CRATE,
-				description: "The crates."
+				ItemGroup: ItemGroups.CRATE,
+				LongDescription: "The crates."
 			}
 		}
 	},
@@ -2096,7 +2072,7 @@ GrottoGroups = {
 			"Chests": {
 				useGroupImage: true,
 				count: 4,
-				description: "The chests."
+				LongDescription: "The chests."
 			}
 		}
 	},
@@ -2107,7 +2083,7 @@ GrottoGroups = {
 			"Chests": {
 				useGroupImage: true,
 				count: 7,
-				description: "The chests."
+				LongDescription: "The chests."
 			}
 		}
 	},
@@ -2118,8 +2094,8 @@ GrottoGroups = {
 			"Scrubs": {
 				useGroupImage: true,
 				count: 2,
-				description: "Buy the items from the scrubs.",
-				itemGroup: ItemGroups.SCRUB,
+				LongDescription: "Buy the items from the scrubs.",
+				ItemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
@@ -2133,8 +2109,8 @@ GrottoGroups = {
 			"Scrubs": {
 				useGroupImage: true,
 				count: 4,
-				description: "Buy the items from the scrubs.",
-				itemGroup: ItemGroups.SCRUB,
+				LongDescription: "Buy the items from the scrubs.",
+				ItemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
@@ -2148,8 +2124,8 @@ GrottoGroups = {
 			"Scrubs": {
 				useGroupImage: true,
 				count: 5,
-				description: "Buy the items from the scrubs.",
-				itemGroup: ItemGroups.SCRUB,
+				LongDescription: "Buy the items from the scrubs.",
+				ItemGroup: ItemGroups.SCRUB,
 				canGet: function(age) {
 					return Data.canBuyFromScrub(age);
 				}
@@ -2158,11 +2134,11 @@ GrottoGroups = {
 	},
 	"Frogs": {
 		tooltip: "The frogs in Zora's River",
-		description: "All items that come from the Zora's River frogs.",
+		LongDescription: "All items that come from the Zora's River frogs.",
 		buttons: {
 			"Zelda's Lullaby": {
 				icon: "Zelda's Lullaby",
-				description: "Play Zelda's Lullaby for the frogs.",
+				LongDescription: "Play Zelda's Lullaby for the frogs.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
 				},
@@ -2173,7 +2149,7 @@ GrottoGroups = {
 			},
 			"Epona's Song": {
 				icon: "Epona's Song",
-				description: "Play Epona's Song for the frogs.",
+				LongDescription: "Play Epona's Song for the frogs.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
 				},
@@ -2184,7 +2160,7 @@ GrottoGroups = {
 			},
 			"Saria's Song": {
 				icon: "Scrub",
-				description: "Play Saria's Song for the frogs.",
+				LongDescription: "Play Saria's Song for the frogs.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
 				},
@@ -2195,7 +2171,7 @@ GrottoGroups = {
 			},
 			"Sun's Song": {
 				icon: "Sun's Song",
-				description: "Play the Sun's Song for the frogs.",
+				LongDescription: "Play the Sun's Song for the frogs.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
 				},
@@ -2206,7 +2182,7 @@ GrottoGroups = {
 			},
 			"Song of Storms": {
 				icon: "Song of Storms",
-				description: "Play the Song of Storms for the frogs.",
+				LongDescription: "Play the Song of Storms for the frogs.",
 				canGet: function(age) {
 					return Data.canPlaySong(Songs.SONG_OF_STORMS);
 				},
@@ -2214,7 +2190,7 @@ GrottoGroups = {
 			},
 			"Song of Time": {
 				icon: "Ocarina of Time",
-				description: "Play the Song of Time for the frogs.",
+				LongDescription: "Play the Song of Time for the frogs.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
 				},
@@ -2224,7 +2200,7 @@ GrottoGroups = {
 				isChildOnly: function() { return true; }
 			},
 			"Bug Minigame": {
-				description: "Play this after playing all the non-warp songs to the frogs. Answer: A < > v < > v A v A v > < A",
+				LongDescription: "Play this after playing all the non-warp songs to the frogs. Answer: A < > v < > v A v A v > < A",
 				canGet: function(age) {
 					return Data.canPlaySongs() &&
 						Songs.ZELDAS_LULLABY.playerHas &&
@@ -2240,11 +2216,11 @@ GrottoGroups = {
 	},
 	"Trade Biggoron": {
 		tooltip: "The frogs in Zora's River",
-		description: "All items that come from the Zora's River frogs.",
+		LongDescription: "All items that come from the Zora's River frogs.",
 		buttons: {
 			"Broken Goron's Sword": {
 				icon: "Broken Goron's Sword",
-				description: "Show Biggoron the Broken Sword.",
+				LongDescription: "Show Biggoron the Broken Sword.",
 				canGet: function(age) {
 					return AdultTradeItems.BROKEN_GORONS_SWORD.playerHas;
 				},
@@ -2252,7 +2228,7 @@ GrottoGroups = {
 			},
 			"Eyedrops": {
 				icon: "Eyedrops",
-				description: "Show Biggoron the Eyedrops.",
+				LongDescription: "Show Biggoron the Eyedrops.",
 				canGet: function(age) {
 					return AdultTradeItems.EYEDROPS.playerHas;
 				},
@@ -2260,7 +2236,7 @@ GrottoGroups = {
 			},
 			"Claim Check": {
 				icon: "Claim Check",
-				description: "Show Biggoron the Claim Check.",
+				LongDescription: "Show Biggoron the Claim Check.",
 				canGet: function(age) {
 					return AdultTradeItems.CLAIM_CHECK.playerHas;
 				},
@@ -2275,7 +2251,7 @@ GrottoGroups = {
 			"Wonderitems": {
 				useGroupImage: true,
 				count: 2,
-				description: "Get close to this area to get the wonderitems."
+				LongDescription: "Get close to this area to get the wonderitems."
 			}
 		}
 	},
@@ -2286,7 +2262,7 @@ GrottoGroups = {
 			"Projectile Wonderitems": {
 				useGroupImage: true,
 				count: 2,
-				description: "Shoot the deku nut on the tree with a slingshot or bow to get the item.",
+				LongDescription: "Shoot the deku nut on the tree with a slingshot or bow to get the item.",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.PROJECTILES);
 				}
@@ -2301,7 +2277,7 @@ GrottoGroups = {
 				useGroupImage: true,
 				count: 2,
 				tag: "both",
-				description: "Shoot the deku nut on the trees with a slingshot or bow to get the items.",
+				LongDescription: "Shoot the deku nut on the trees with a slingshot or bow to get the items.",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.PROJECTILES);
 				}
@@ -2309,7 +2285,7 @@ GrottoGroups = {
 			"Projectile Wonderitems Child": {
 				icon: "Slingshot Wonderitem",
 				tag: "child",
-				description: "Shoot the deku nut in the tree that has a skulltula in it as adult with a slingshot to get the item",
+				LongDescription: "Shoot the deku nut in the tree that has a skulltula in it as adult with a slingshot to get the item",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
 				},
@@ -2322,14 +2298,14 @@ GrottoGroups = {
 		icon: "Projectile Wonderitem",
 		buttons: {
 			"Hookshot Wonderitem": {
-				description: "Shoot this with the hookshot to spawn the wonderitem.",
+				LongDescription: "Shoot this with the hookshot to spawn the wonderitem.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.HOOKSHOT);
 				},
 				isAdultOnly: function() { return true; }
 			},
 			"Bow Wonderitem": {
-				description: "Shoot this with the bow to spawn the wonderitem.",
+				LongDescription: "Shoot this with the bow to spawn the wonderitem.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.FAIRY_BOW);
 				},
@@ -2342,14 +2318,14 @@ GrottoGroups = {
 		icon: "Projectile Wonderitem",
 		buttons: {
 			"Hookshot Wonderitem": {
-				description: "Shoot this with the hookshot to spawn the wonderitem.",
+				LongDescription: "Shoot this with the hookshot to spawn the wonderitem.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.HOOKSHOT);
 				},
 				isAdultOnly: function() { return true; }
 			},
 			"Bow Wonderitem": {
-				description: "Shoot this with the bow to spawn the wonderitem.",
+				LongDescription: "Shoot this with the bow to spawn the wonderitem.",
 				canGet: function(age) {
 					return ItemData.canUseAny(age, [Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]);
 				},
@@ -2363,7 +2339,7 @@ GrottoGroups = {
 		buttons: {
 			"Hookshot Wonderitems": {
 				useGroupImage: true,
-				description: "Shoot this with the hookshot to spawn the wonderitem.",
+				LongDescription: "Shoot this with the hookshot to spawn the wonderitem.",
 				count: 2,
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.HOOKSHOT);
@@ -2378,7 +2354,7 @@ GrottoGroups = {
 		buttons: {
 			"Hookshot Wonderitems": {
 				useGroupImage: true,
-				description: "Shoot this with the hookshot to spawn the wonderitem.",
+				LongDescription: "Shoot this with the hookshot to spawn the wonderitem.",
 				count: 3,
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.HOOKSHOT);
@@ -2395,7 +2371,7 @@ GrottoGroups = {
 				useGroupImage: true,
 				count: 2,
 				tag: "day",
-				description: "These crates are here during the day.",
+				LongDescription: "These crates are here during the day.",
 				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
 				time: function() { return Time.DAY; },
 				isChildOnly: function() { return true; }
@@ -2404,7 +2380,7 @@ GrottoGroups = {
 				useGroupImage: true,
 				count: 2,
 				tag: "night",
-				description: "These crates are here at night.",
+				LongDescription: "These crates are here at night.",
 				time: function() { 
 					return Settings.RandomizerSettings.shuffleEmptyCrates ? Time.NIGHT : Time.EITHER; 
 				},
@@ -2419,7 +2395,7 @@ GrottoGroups = {
 			"Slingshot Wonderitems": {
 				useGroupImage: true,
 				count: 2,
-				description: "Shoot something to get these items.",
+				LongDescription: "Shoot something to get these items.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
 				},
@@ -2434,7 +2410,7 @@ GrottoGroups = {
 			"Slingshot Wonderitems": {
 				useGroupImage: true,
 				count: 3,
-				description: "Shoot something to get these items.",
+				LongDescription: "Shoot something to get these items.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
 				},
@@ -2449,7 +2425,7 @@ GrottoGroups = {
 			"Slingshot Wonderitems": {
 				useGroupImage: true,
 				count: 3,
-				description: "Shoot something to get these items.",
+				LongDescription: "Shoot something to get these items.",
 				canGet: function(age) {
 					return ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, QPAItemSets.LEDGE_QPA]);
 				},
@@ -2464,7 +2440,7 @@ GrottoGroups = {
 			"Slingshot Wonderitems": {
 				useGroupImage: true,
 				count: 4,
-				description: "Shoot something to get these items.",
+				LongDescription: "Shoot something to get these items.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
 				},
@@ -2479,7 +2455,7 @@ GrottoGroups = {
 			"Slingshot Wonderitems": {
 				useGroupImage: true,
 				count: 4,
-				description: "Shoot something to get these items.",
+				LongDescription: "Shoot something to get these items.",
 				canGet: function(age) {
 					return ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, QPAItemSets.TALL_TORCH_QPA]);
 				},
@@ -2494,7 +2470,7 @@ GrottoGroups = {
 			"Hammer Wonderitems": {
 				useGroupImage: true,
 				count: 3,
-				description: "Hammer something to get these items.",
+				LongDescription: "Hammer something to get these items.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.MEGATON_HAMMER);
 				},
@@ -2511,7 +2487,7 @@ GrottoGroups = {
 			"Explosive Wonderitems": {
 				useGroupImage: true,
 				count: 3,
-				description: "Set off an explosive to get these items.",
+				LongDescription: "Set off an explosive to get these items.",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.EXPLOSIVES);
 				}
@@ -2522,13 +2498,13 @@ GrottoGroups = {
 		tooltip: "A group of wonderitems - one requiring a sword, and one requiring tne hammer.",
 		buttons: {
 			"Sword Wonderitem": {
-				description: "Swing your sword by this place to spawn the wonderitem.",
+				LongDescription: "Swing your sword by this place to spawn the wonderitem.",
 				canGet: function(age) {
 					return ItemData.canUseAny(age, [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]);
 				}
 			},
 			"Hammer Wonderitem": {
-				description: "Swing your hammer by this place to spawn the wonderitem.",
+				LongDescription: "Swing your hammer by this place to spawn the wonderitem.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.MEGATON_HAMMER);
 				},
@@ -2546,7 +2522,7 @@ GrottoGroups = {
 				icon: "Green Rupee Wonderitem",
 				count: 5,
 				tag: "day",
-				description: "Climb up the stairs and walk along the catwalk by Bombchu Bowling during the day to get these items.",
+				LongDescription: "Climb up the stairs and walk along the catwalk by Bombchu Bowling during the day to get these items.",
 				time: function() { return Time.DAY; },
 				isChildOnly: function() { return true; }
 			},
@@ -2554,7 +2530,7 @@ GrottoGroups = {
 				icon: "Blue Rupee Wonderitem",
 				count: 2,
 				tag: "night",
-				description: "Climb up the stairs and walk along the catwalk by Bombchu Bowling at night to get these items.",
+				LongDescription: "Climb up the stairs and walk along the catwalk by Bombchu Bowling at night to get these items.",
 				time: function() { return Time.NIGHT; },
 				isChildOnly: function() { return true; }
 			}
@@ -2566,18 +2542,18 @@ GrottoGroups = {
 		buttons: {
 			"Zelda's Letter": {
 				useGroupImage: true,
-				description: "Talk to Zelda to get this check."
+				LongDescription: "Talk to Zelda to get this check."
 			},
 			"Mario Wonderitem": {
 				icon: "Child Archery",
-				description: "Facing zelda, shoot the right side window (the one with the mario paintings) with your slingshot to get this item.",
+				LongDescription: "Facing zelda, shoot the right side window (the one with the mario paintings) with your slingshot to get this item.",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
 				}
 			},
 			"Zelda's Lullaby": {
 				icon: "Ocarina of Time",
-				description: "After talking to Zelda, go talk to Impa to get teleported out. You will get this time afterwards.",
+				LongDescription: "After talking to Zelda, go talk to Impa to get teleported out. You will get this time afterwards.",
 				postClick: function(isCompleted) {
 					MapLocations["Castle"].talkedToImpa = isCompleted;
 				}

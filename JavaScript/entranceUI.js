@@ -133,8 +133,12 @@ let EntranceUI = {
 			let shouldNotDisplayButton = button.shouldNotDisplay && button.shouldNotDisplay();
 			let shouldExcludeEquivalentItem = false;
 
+			// TODO entrance
 			if (!shouldNotDisplayButton && button.itemGroup) {
 				shouldNotDisplayButton = shouldDisableItemLocationGroup(button.itemGroup, itemLocation.IsDungeon);
+			}
+			if (!shouldNotDisplayButton && button.ItemGroup) {
+				shouldNotDisplayButton = shouldDisableItemLocationGroup(button.ItemGroup, itemLocation.IsDungeon);
 			}
 
 			if (itemLocation.IsInterior || itemLocation.IsGrotto) {
@@ -156,7 +160,7 @@ let EntranceUI = {
 			
 			let buttonDiv = dce("div", "entrance-group-button");
 			let buttonIconName = button.icon ? button.icon : buttonName;
-			buttonDiv.title = button.description;
+			buttonDiv.title = button.LongDescription || button.description; // TODO entrance
 			buttonDiv.style.backgroundImage = button.useGroupImage
 				? _this.getEntranceGroupIcon(itemLocationGroup, groupName)
 				: `url("Images/${buttonIconName}.png")`;
@@ -204,12 +208,25 @@ let EntranceUI = {
 				refreshAll();
 			};
 
-			let canGetAsChild = canGetToAsChild && 
-				_this._canGetAsAge(button, Age.CHILD) && 
-				(!button.canGet || button.canGet(Age.CHILD, itemLocation));
-			let canGetAsAdult = canGetToAsAdult && 
-				_this._canGetAsAge(button, Age.ADULT) && 
-				(!button.canGet || button.canGet(Age.ADULT, itemLocation));
+			let canGetAsChild, canGetAsAdult;
+
+			// TODO entrance data rework: delete this part
+			if (button.canGet) {
+				canGetAsChild = canGetToAsChild && 
+					_this._canGetAsAge(button, Age.CHILD) && 
+					(!button.canGet || button.canGet(Age.CHILD, itemLocation));
+				canGetAsAdult = canGetToAsAdult && 
+					_this._canGetAsAge(button, Age.ADULT) && 
+					(!button.canGet || button.canGet(Age.ADULT, itemLocation));
+			} else {
+				canGetAsChild = canGetToAsChild && 
+					_this._canGetAsAge(button, Age.CHILD) && 
+					Data.calculateObtainability(button, Age.CHILD, itemLocation);
+				canGetAsAdult = canGetToAsAdult &&
+					_this._canGetAsAge(button, Age.ADULT) &&
+					Data.calculateObtainability(button, Age.ADULT, itemLocation);
+			}
+			
 			
 			if (itemLocationGroup.buttons[buttonName].completed) {
 				addCssClass(buttonDiv, "entrance-group-button-completed");
@@ -445,9 +462,19 @@ let EntranceUI = {
 			let button = entranceData[selectedGroup.name].buttons[buttonName];
 			if (_this._excludeButtonFromCounts(button, itemLocation)) { return; }
 			
-			let canGetItem = !button.canGet || button.canGet(age, itemLocation);
-			if (canGetItem && _this._canGetAsAge(button, age)) {
-				numberOfTasks += buttonData.count - buttonData.completedCount;
+			let canGetItem;
+
+			// TODO entrance data rework: delete this part
+			if (button.canGet) {
+				canGetItem = !button.canGet || button.canGet(age, itemLocation);
+				if (canGetItem && _this._canGetAsAge(button, age)) {
+					numberOfTasks += buttonData.count - buttonData.completedCount;
+				}
+			}
+			else {
+				if (_this._canGetAsAge(button, age) && Data.calculateObtainability(button, age, itemLocation)) {
+					numberOfTasks += buttonData.count - buttonData.completedCount;
+				}
 			}
 		});
 		
@@ -483,10 +510,22 @@ let EntranceUI = {
 	 * Returns whether the is<Age>Only function will allow you to ever complete the task
 	 * as the given age
 	 * @param button - the button with the task info
-	 * @param age - the age to check
+	 * @param age - the age to check (assumes child or adult)
 	 * @return
 	 */
 	_canGetAsAge(button, age, ignoreCanBeAge) {
+		if (!button.canGet) {
+			if (age === undefined || age === Age.EITHER) {
+				console.log("Unspecified age passed to _canGetAsAge!");
+				return true;
+			}
+
+			return age === Age.CHILD
+				? !button.UseAdultAge || !button.UseAdultAge()
+				: !button.UseChildAge || !button.UseChildAge();
+		}
+
+		// TODO entrance data rework: delete this part
 		canGetAsAge = age === Age.EITHER;
 
 		if (!ignoreCanBeAge && age !== Age.EITHER && !Data.canBeAge(age)) {
@@ -540,6 +579,7 @@ let EntranceUI = {
 	_excludeButtonFromCounts: function(button, itemLocation) {
 		return button.excluded || 
 			(button.shouldNotDisplay && button.shouldNotDisplay()) || 
-			(button.itemGroup && shouldDisableItemLocationGroup(button.itemGroup, itemLocation.IsDungeon));
+			(button.itemGroup && shouldDisableItemLocationGroup(button.itemGroup, itemLocation.IsDungeon)) || // TODO entrance
+			(button.ItemGroup && shouldDisableItemLocationGroup(button.ItemGroup, itemLocation.IsDungeon));
 	}
 }

@@ -688,8 +688,9 @@ Data = {
      * This assumes that you can already gain access to the region it is in
      * @param itemLocation - the item location data - this may be an item or a region
      * @param age - the age
+     * @param mainItemLocation - used with entrance data to compute shop item obtainability
      */
-    calculateObtainability: function(itemLocation, age) {
+    calculateObtainability: function(itemLocation, age, mainItemLocation) {
         // If this is a spawn location, and you can get the item, no need to check anything else
         if (this._isSpawnItemAndCanGet(age, itemLocation)) {
             return ItemObtainability.YES;
@@ -703,7 +704,7 @@ Data = {
         if (!this._isCorrectAge(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._passesNeededRequirements(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._passesCustomRequirement(age, itemLocation)) { return ItemObtainability.NO; }
-		if (!this._canDoItemGroup(age, itemLocation)) { return ItemObtainability.NO; }
+		if (!this._canDoItemGroup(age, itemLocation, mainItemLocation)) { return ItemObtainability.NO; }
 		if (!this.canPlantBean(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkKeyRequirement(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkSilverRupeeRequirement(itemLocation)) { return ItemObtainability.NO; }
@@ -783,8 +784,11 @@ Data = {
     
     /**
      * Checks whether you can do the tasks in the item group
+     * @param itemLocation - the item location data - this may be an item or a region
+     * @param age - the age
+     * @param mainItemLocation - used with entrance data to compute shop item obtainability
      */
-    _canDoItemGroup: function(age, itemLocation) {
+    _canDoItemGroup: function(age, itemLocation, mainItemLocation) {
 		if (itemLocation && itemLocation.OverrideItemGroupCondition) { return true; }
 		
         let itemGroup = itemLocation.OverrideItemGroup
@@ -799,6 +803,11 @@ Data = {
 				return this.canBuyFromScrub(age);
             case ItemGroups.BEEHIVE:
                 return this.canBreakBeehive(age, itemLocation.IsUpperHive);
+            case ItemGroups.SHOP:
+                let shopItemLocation = itemLocation.notes
+                    ? itemLocation
+                    : mainItemLocation;
+                return this.canBuyFromShop(age, shopItemLocation);
 			case ItemGroups.GOSSIP_STONE:
                 return this.canReadGossipStone(age);
             case ItemGroups.LOCKED_DOOR:
@@ -905,7 +914,7 @@ Data = {
      * Takes the item prices from the notes into account
      */
     canBuyFromShop: function(age, itemLocation) {
-		if (itemLocation.notes) {
+		if (itemLocation?.notes) {
 			let priceSplit = itemLocation.notes.split(";");
 			let minAmount = 1000;
 			

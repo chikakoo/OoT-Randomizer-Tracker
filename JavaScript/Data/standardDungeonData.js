@@ -46,7 +46,11 @@ let StandardDungeons = {
                 }
             },
             slingshotRoom: {
-                DisplayGroup: { groupName: "Lower Floors", imageName: "Fairy Slingshot" },
+                DisplayGroup: { 
+                    groupName: "Lower Floors", 
+                    imageName: "Fairy Slingshot",
+                    description: "Slingshot room: Enter the second floor door. Use your shield to reflect the scrub's nut back at him to unbar the door to this room."
+                },
                 Exits: {},
                 ItemLocations: {
                     "Slingshot Chest": {
@@ -54,14 +58,14 @@ let StandardDungeons = {
                         MapInfo: { x: 111, y: 246, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 3,
-                        LongDescription: "Enter the second floor door. Use your shield to reflect the scrub's nut back at him. The chest is on the other side in the next room."
+                        LongDescription: "The chest is up the vines."
                     },
                     "Slingshot Room Side Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 157, y: 273, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 4,
-                        LongDescription: "This chest is located up the vines on the platform the slingshot chest is on."
+                        LongDescription: "This chest is up the second set of vines next to the big chest."
                     }
                 }
             },
