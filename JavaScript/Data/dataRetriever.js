@@ -512,16 +512,6 @@ Data = {
     },
     
     /**
-     * Returns whether you can play bombchu bowling
-     */
-	canPlayBombchuBowling: function(age) {
-		if (age === Age.ADULT) { return false; }
-		
-		let chusAreInLogic = Settings.RandomizerSettings.bombchusInLogic;
-		return (chusAreInLogic && Items.BOMBCHU.playerHas) || (!chusAreInLogic && Items.BOMB.playerHas);
-	},
-    
-    /**
 	 * Sets whether the item is obtained
      * Runs the PostObtain function if there is one
 	 * @param itemLocation - The item

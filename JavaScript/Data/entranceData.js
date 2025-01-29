@@ -457,10 +457,8 @@ InteriorGroups = {
 			"Prizes": {
 				icon: "Bombchu",
 				count: 2,
-				LongDescription: "This is the first prize you can get.",
-				canGet: function(age) {
-					return Data.canPlayBombchuBowling(Age.CHILD);
-				}
+				LongDescription: "The prizes from the minigame.",
+				Needs: [GameStateSets.CAN_PLAY_BOMBCHU_BOWLING]
 			}
 		}
 	},
@@ -489,8 +487,8 @@ InteriorGroups = {
 		tooltip: "This is the archery minigame. The shopkeeper will only be here as a child.",
 		buttons: {
 			"Child Archery": {
-				LongDescription: "This is the prize for completing the minigame as child.",
-				isChildOnly: function() { return true; }
+				Age: Age.CHILD,
+				LongDescription: "This is the prize for completing the minigame as child."
 			}
 		}
 	},
@@ -498,11 +496,9 @@ InteriorGroups = {
 		tooltip: "This is the archery minigame. The shopkeeper will only be here as adult.",
 		buttons: {
 			"Adult Archery": {
+				Age: Age.ADULT,
 				LongDescription: "This is the prize for completing the minigame as adult.",
-				canGet: function(age) {
-					return Items.FAIRY_BOW.playerHas;
-				},
-				isAdultOnly: function() { return true; }
+				Needs: [Items.FAIRY_BOW]
 			}
 		}
 	},
@@ -512,160 +508,51 @@ InteriorGroups = {
 			"Salesman": {
 				icon: "Shop",
 				LongDescription: "Talk to the salesman and buy the item for 10 rupees.",
-				shouldNotDisplay: function() { 
-					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
-				}
+				shouldNotDisplay: SettingSets.VANILLA_CHEST_MINIGAME_KEYS
 			},
-			"Room 1 Back Chest": {
+			"Room 1 Chests": {
 				icon: "Chest",
-				iconText: "1",
-				LongDescription: "The back chest in room 1.",
-				shouldNotDisplay: function() { 
-					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
-				},
-				canGet: function(age) {
-					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
-						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
-					}
-					return ItemData.getKeyCount("Treasure Chest Minigame") >= 1;
-				}
+				count: 2,
+				LongDescription: "The chests in room 1.",
+				shouldNotDisplay: SettingSets.VANILLA_CHEST_MINIGAME_KEYS,
+				Needs: [() => ItemData.getKeyCount("Treasure Chest Minigame") >= 1]
 			},
-			"Room 1 Front Chest": {
+			"Room 2 Chests": {
 				icon: "Chest",
-				iconText: "1",
-				LongDescription: "The front chest in room 1.",
-				shouldNotDisplay: function() { 
-					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
-				},
-				canGet: function(age) {
-					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
-						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
-					}
-					return ItemData.getKeyCount("Treasure Chest Minigame") >= 1;
-				}
+				count: 2,
+				LongDescription: "The chests in room 2.",
+				shouldNotDisplay: SettingSets.VANILLA_CHEST_MINIGAME_KEYS,
+				Needs: [() => ItemData.getKeyCount("Treasure Chest Minigame") >= 2]
 			},
-			"Room 2 Back Chest": {
+			"Room 3 Chests": {
 				icon: "Chest",
-				iconText: "2",
-				LongDescription: "The back chest in room 2.",
-				shouldNotDisplay: function() { 
-					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
-				},
-				canGet: function(age) {
-					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
-						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
-					}
-					return ItemData.getKeyCount("Treasure Chest Minigame") >= 2;
-				}
+				count: 2,
+				LongDescription: "The chests in room 3.",
+				shouldNotDisplay: SettingSets.VANILLA_CHEST_MINIGAME_KEYS,
+				Needs: [() => ItemData.getKeyCount("Treasure Chest Minigame") >= 3]
 			},
-			"Room 2 Front Chest": {
+			"Room 4 Chests": {
 				icon: "Chest",
-				iconText: "2",
-				LongDescription: "The front chest in room 2.",
-				shouldNotDisplay: function() { 
-					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
-				},
-				canGet: function(age) {
-					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
-						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
-					}
-					return ItemData.getKeyCount("Treasure Chest Minigame") >= 2;
-				}
+				count: 2,
+				LongDescription: "The chests in room 4.",
+				shouldNotDisplay: SettingSets.VANILLA_CHEST_MINIGAME_KEYS,
+				Needs: [() => ItemData.getKeyCount("Treasure Chest Minigame") >= 4]
 			},
-			"Room 3 Back Chest": {
+			"Room 5 Chests": {
 				icon: "Chest",
-				iconText: "3",
-				LongDescription: "The back chest in room 3.",
-				shouldNotDisplay: function() { 
-					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
-				},
-				canGet: function(age) {
-					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
-						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
-					}
-					return ItemData.getKeyCount("Treasure Chest Minigame") >= 3;
-				}
-			},
-			"Room 3 Front Chest": {
-				icon: "Chest",
-				iconText: "3",
-				LongDescription: "The front chest in room 3.",
-				shouldNotDisplay: function() { 
-					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
-				},
-				canGet: function(age) {
-					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
-						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
-					}
-					return ItemData.getKeyCount("Treasure Chest Minigame") >= 3;
-				}
-			},
-			"Room 4 Back Chest": {
-				icon: "Chest",
-				iconText: "4",
-				LongDescription: "The back chest in room 4.",
-				shouldNotDisplay: function() { 
-					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
-				},
-				canGet: function(age) {
-					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
-						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
-					}
-					return ItemData.getKeyCount("Treasure Chest Minigame") >= 4;
-				}
-			},
-			"Room 4 Front Chest": {
-				icon: "Chest",
-				iconText: "4",
-				LongDescription: "The front chest in room 4.",
-				shouldNotDisplay: function() { 
-					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
-				},
-				canGet: function(age) {
-					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
-						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
-					}
-					return ItemData.getKeyCount("Treasure Chest Minigame") >= 4;
-				}
-			},
-			"Room 5 Back Chest": {
-				icon: "Chest",
-				iconText: "5",
-				LongDescription: "The back chest in room 5.",
-				shouldNotDisplay: function() { 
-					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
-				},
-				canGet: function(age) {
-					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
-						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
-					}
-					return ItemData.getKeyCount("Treasure Chest Minigame") >= 5;
-				}
-			},
-			"Room 5 Front Chest": {
-				icon: "Chest",
-				iconText: "5",
-				LongDescription: "The front chest in room 5.",
-				shouldNotDisplay: function() { 
-					return Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA; 
-				},
-				canGet: function(age) {
-					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
-						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
-					}
-					return ItemData.getKeyCount("Treasure Chest Minigame") >= 5;
-				}
+				count: 2,
+				LongDescription: "The chests in room 5.",
+				shouldNotDisplay: SettingSets.VANILLA_CHEST_MINIGAME_KEYS,
+				Needs: [() => ItemData.getKeyCount("Treasure Chest Minigame") >= 5]
 			},
 			"Prize": {
 				icon: "Chest",
 				iconText: "♥",
 				LongDescription: "This is the prize for completing the minigame.",
-				canGet: function(age) {
-					if (Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA) {
-						return Items.LENS_OF_TRUTH.playerHas && Equipment.MAGIC.playerHas;
-					}
-					return ItemData.getKeyCount("Treasure Chest Minigame") >= 6;
-				}
+				NeedsAny: [
+					[SettingSets.VANILLA_CHEST_MINIGAME_KEYS, Items.LENS_OF_TRUTH],
+					() => ItemData.getKeyCount("Treasure Chest Minigame") >= 6
+				]
 			}
 		}
 	},
@@ -673,12 +560,10 @@ InteriorGroups = {
 		tooltip: "Talon's House in Lon Lon Ranch",
 		buttons: {
 			"Super Cucco Minigame": {
-				LongDescription: "Only available during the day. This is the prize for completing the minigame.",
 				time: function() { return Time.DAY; },
-				canGet: function(age) {
-					return ItemLocationSets.WAKE_UP_TALON();
-				},
-				isChildOnly: function() { return true; }
+				Age: Age.CHILD,
+				LongDescription: "Only available during the day. This is the prize for completing the minigame.",
+				Needs: [ItemLocationSets.WAKE_UP_TALON]
 			},
 			"3 Pots": {
 				count: 3,
@@ -692,11 +577,9 @@ InteriorGroups = {
 		buttons: {
 			"Wake Up Talon": {
 				icon: "Pocket Cucco",
+				Age: Age.ADULT,
 				LongDescription: "Use the Pocket Cucco next to Talon to wake him. You must then show the cucco to Anju to get your reward.",
-				canGet: function(age) {
-					return AdultTradeItems.POCKET_EGG.playerHas;
-				},
-				isAdultOnly: function() { return true; },
+				Needs: [AdultTradeItems.POCKET_EGG],
 				postClick: function(isCompleted) {
 					// Set an item location-specific variable here so that the player knows they need to talk to Anju next
 					MapLocations["Kakariko Village"].Regions.main.ItemLocations["Anju After Waking Talon"].wokeUpTalon = isCompleted;
@@ -765,91 +648,91 @@ InteriorGroups = {
 	"TH - Jail 1 Left": {
 		icon: "Thieves' Hideout J1",
 		tooltip: "The door to the left of jail 1 in the Thieves' Hideout.",
-		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Jail 1 Left"]
 	},
 	"TH - Jail 1 Right": {
 		icon: "Thieves' Hideout J1",
 		tooltip: "The door to the right of jail 1 in the Thieves' Hideout.",
-		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Jail 1 Right"]
 	},
 	"TH - Jail 2 Left": {
 		icon: "Thieves' Hideout J2",
 		tooltip: "The door to the left of jail 2 in the Thieves' Hideout.",
-		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Jail 2 Left"]
 	},
 	"TH - Jail 2 Right": {
 		icon: "Thieves' Hideout J2",
 		tooltip: "The door to the right of jail 2 in the Thieves' Hideout.",
-		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Jail 2 Right"]
 	},
 	"TH - Jail 3 Left": {
 		icon: "Thieves' Hideout J3",
 		tooltip: "The door to the left of jail 3 in the Thieves' Hideout.",
-		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Jail 3 Left"]
 	},
 	"TH - Jail 3 Right": {
 		icon: "Thieves' Hideout J3",
 		tooltip: "The door to the right of jail 3 in the Thieves' Hideout.",
-		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Jail 3 Right"]
 	},
 	"TH - Jail 4 Entrance": {
 		icon: "Thieves' Hideout J4",
 		tooltip: "The only exit in the jail 4 area.",
-		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Jail 4 Entrance"]
 	},
 	"TH - Kitchen Far Bottom": {
 		icon: "Thieves' Hideout Kitchen",
 		tooltip: "This is the entrance at the very end of cooridor on the bottom part of the kitchen.",
-		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Kitchen Far Bottom"]
 	},
 	"TH - Kitchen Middle Bottom": {
 		icon: "Thieves' Hideout Kitchen",
 		tooltip: "This is the entrance at the middle of the cooridor on the bottom part of the kitchen.",
-		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Kitchen Middle Bottom"]
 	},
 	"TH - Kitchen Top Left": {
 		icon: "Thieves' Hideout Kitchen",
 		tooltip: "From the perspective of the guards, this is the exit to the left on top of the ramps in the main area of the kitchen.",
-		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Kitchen Top Left"]
 	},
 	"TH - Kitchen Top Right": {
 		icon: "Thieves' Hideout Kitchen",
 		tooltip: "From the perspective of the guards, this is the exit to the right on top of the ramps in the main area of the kitchen.",
-		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Kitchen Top Right"]
 	},
 	"TH - Top Room Lower": {
 		icon: "Thieves' Hideout Top",
 		tooltip: "This is the entrance on the bottom part of the room above jail 1.",
-		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Top Room Lower"]
 	},
 	"TH - Top Room Upper": {
 		icon: "Thieves' Hideout Top",
 		tooltip: "This is the entrance on the upper part of the room above jail 1.",
-		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleThievesHideout; },
+		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
 		overworldLink: OwExits["Thieves' Hideout"]["Top Room Upper"]
 	}
@@ -869,26 +752,17 @@ GrottoGroups = {
 			"Right Beehive": {
 				icon: "Beehive",
 				ItemGroup: ItemGroups.BEEHIVE,
-				LongDescription: "The beehive on the right side of the grotto. Can use bombs. If using chus, get on the right side of the hive (the darker wall) and drop it on the 7th red flash.",
-				canGet: function(age) {
-					return Data.canBreakBeehive(age);
-				}
+				LongDescription: "The beehive on the right side of the grotto. Can use bombs. If using chus, get on the right side of the hive (the darker wall) and drop it on the 7th red flash."
 			},
 			"Left Beehive": {
 				icon: "Beehive",
 				ItemGroup: ItemGroups.BEEHIVE,
-				LongDescription: "The beehive on the left side of the grotto. Can use bombs. If using chus, line up with the wall to the right of it, in the corner; backflip; drop it on the 6th red flash (closer to the black one after that, if shield-dropping)",
-				canGet: function(age) {
-					return Data.canBreakBeehive(age);
-				}
+				LongDescription: "The beehive on the left side of the grotto. Can use bombs. If using chus, line up with the wall to the right of it, in the corner; backflip; drop it on the 6th red flash (closer to the black one after that, if shield-dropping)"
 			},
 			"Gossip Stone": {
 				icon: "Mask of Truth",
 				ItemGroup: ItemGroups.GOSSIP_STONE,
-				LongDescription: "The gossip stone in the middle of the room.",
-				canGet: function(age) { 
-					return Data.canReadGossipStone(age); 
-				}
+				LongDescription: "The gossip stone in the middle of the room."
 			}
 		}
 	},
@@ -897,19 +771,14 @@ GrottoGroups = {
 		buttons: {
 			"Scrub 1": {
 				icon: "Scrub",
-				LongDescription: "Buy the item from the scrub - this is still a check with scrubsanity off because it sells a heart piece.",
 				// ItemGroup: ItemGroups.SCRUB, // Disabled so it shows up with scrubsanity off
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
+				LongDescription: "Buy the item from the scrub - this is still a check with scrubsanity off because it sells a heart piece.",
+				Needs: [(age) => Data.canBuyFromScrub(age)]
 			},
 			"Beehive": {
 				ItemGroup: ItemGroups.BEEHIVE,
-				LongDescription: "Look on the ceiling for this beehive. Can use bombs. If using chus, get in the corner by the hive, facing the lighter wall. Sidehop right, left, then press A and let go of everything. Drop the chu on the 7th red flash.",
-				canGet: function(age) {
-					return Data.canBreakBeehive(age);
-				}
-			},
+				LongDescription: "Look on the ceiling for this beehive. Can use bombs. If using chus, get in the corner by the hive, facing the lighter wall. Sidehop right, left, then press A and let go of everything. Drop the chu on the 7th red flash."
+			}
 		}
 	},
 	"2 Scrubs": {
@@ -921,18 +790,13 @@ GrottoGroups = {
 			"Scrubs": {
 				icon: "Scrub",
 				count: 2,
-				LongDescription: "Buy the item from the scrub.",
 				ItemGroup: ItemGroups.SCRUB,
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
+				LongDescription: "Buy the item from the scrub.",
 			},
 			"Beehive": {
 				ItemGroup: ItemGroups.BEEHIVE,
-				LongDescription: "Look on the ceiling for this beehive. If using chus, face the closest wall and backflip. Drop the chu on the 5th red flash.",
-				canGet: function(age) {
-					return Data.canBreakBeehive(age, true);
-				}
+				IsUpperHive: true,
+				LongDescription: "Look on the ceiling for this beehive. If using chus, face the closest wall and backflip. Drop the chu on the 5th red flash."
 			}
 		}
 	},
@@ -945,18 +809,14 @@ GrottoGroups = {
 		},
 		buttons: {
 			"Scrub": {
-				// Note that the item group is excluded - this is because this scrub is still required if there's no scrubsanity
+				// ItemGroup: ItemGroups.SCRUB, // Disabled so it shows up with scrubsanity off
 				LongDescription: "The front scrub - it's the only one that sells an upgrade.",
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
+				Needs: [(age) => Data.canBuyFromScrub(age)]
 			},
 			"Beehive": {
 				ItemGroup: ItemGroups.BEEHIVE,
-				LongDescription: "Look on the ceiling for this beehive. If using chus, face the closest wall and backflip. Drop the chu on the 5th red flash.",
-				canGet: function(age) {
-					return Data.canBreakBeehive(age, true);
-				}
+				IsUpperHive: true,
+				LongDescription: "Look on the ceiling for this beehive. If using chus, face the closest wall and backflip. Drop the chu on the 5th red flash."
 			}
 		}
 	},
@@ -969,18 +829,13 @@ GrottoGroups = {
 			"Scrubs": {
 				icon: "Scrub",
 				count: 3,
-				LongDescription: "Buy the item from the scrub.",
 				ItemGroup: ItemGroups.SCRUB,
-				canGet: function(age) {
-					return Data.canBuyFromScrub(age);
-				}
+				LongDescription: "Buy the item from the scrub.",
 			},
 			"Beehive": {
 				ItemGroup: ItemGroups.BEEHIVE,
-				LongDescription: "Look on the right at the ceiling for this beehive. If using chus, face the closest wall and backflip. Drop the chu on the 5th red flash.",
-				canGet: function(age) {
-					return Data.canBreakBeehive(age, true);
-				}
+				IsUpperHive: true,
+				LongDescription: "Look on the right at the ceiling for this beehive. If using chus, face the closest wall and backflip. Drop the chu on the 5th red flash."
 			}
 		}
 	},
@@ -990,10 +845,8 @@ GrottoGroups = {
 			"Skulltula at Distance": {
 				ItemGroup: ItemGroups.SKULLTULA,
 				LongDescription: "The gold skulltula is on the wall behind the big skulltula.",
-				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS);
-				}
-			},
+				Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+			}
 		}
 	},
 	"Cow and Web Grotto": {
@@ -1008,28 +861,20 @@ GrottoGroups = {
 			"Skulltula at Distance": {
 				ItemGroup: ItemGroups.SKULLTULA,
 				LongDescription: "Burn the web. The skulltula is in the section the cow is in.",
-				canGet: function(age) {
-					return ItemData.canUseAny(age, 
-							[ItemSets.FIRE_ITEMS, GlitchItemSets.LONGSHOT_WEIRD_SHOT, QPAItemSets.CUTSCENE_ITEM_QPA]) && 
-						ItemData.canUse(age, ItemSets.GRAB_SHORT_DISTANCE_ITEMS);
-				}
+				Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
+				NeedsAny: [ItemSets.FIRE_ITEMS, GlitchItemSets.LONGSHOT_WEIRD_SHOT, QPAItemSets.CUTSCENE_ITEM_QPA]
 			},
 			"Gossip Stone": {
 				icon: "Mask of Truth",
 				ItemGroup: ItemGroups.GOSSIP_STONE,
 				LongDescription: "Burn the web. The stone is in one of the little rooms.",
-				canGet: function(age) { 
-					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]) && 
-						Data.canReadGossipStone(age); 
-				}
+				NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]
 			},
 			"2 Pots": {
 				count: 2,
 				ItemGroup: ItemGroups.POT,
 				LongDescription: "Burn the web. The pots are by the cow.",
-				canGet: function(age) { 
-					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]);
-				}
+				NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]
 			}
 		}
 	},
@@ -1040,30 +885,22 @@ GrottoGroups = {
 			"Skulltula in Bombable Wall Grotto": {
 				ItemGroup: ItemGroups.SKULLTULA,
 				LongDescription: "The skulltula is high up behind the mud wall to your left when you enter.",
-				canGet: function(age) {
-					// The staircase hover requires two additional bomb drops to gain enough height
-                    // Start the hover against the wall
-					return ItemData.canUseAny(age, [
-						[ItemSets.GRAB_SHORT_DISTANCE_ITEMS, ItemSets.MUD_WALL_ITEMS],
-						GlitchItemSets.STAIRCASE_HOVER
-					]);
-				}
+				NeedsAny: [
+					[ItemSets.GRAB_SHORT_DISTANCE_ITEMS, ItemSets.MUD_WALL_ITEMS],
+					GlitchItemSets.STAIRCASE_HOVER
+				]
 			},
 			"4 Pots": {
 				count: 4,
 				ItemGroup: ItemGroups.POT,
 				LongDescription: "Blow up the mud wall in front of you when you enter to get to this pot.",
-				canGet: function(age) { 
-					return ItemData.canUse(age, ItemSets.MUD_WALL_ITEMS);
-				}
+				Needs: [ItemSets.MUD_WALL_ITEMS]
 			},
 			"Gossip Stone": {
 				icon: "Mask of Truth",
 				ItemGroup: ItemGroups.GOSSIP_STONE,
 				LongDescription: "The gossip stone is behind the mud wall in front of you when you enter.",
-				canGet: function(age) { 
-					return ItemData.canUse(age, ItemSets.MUD_WALL_ITEMS) && Data.canReadGossipStone(age); 
-				},
+				Needs: [ItemSets.MUD_WALL_ITEMS],
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.gossipStoneSetting === GossipStoneSettings.HIDE;
 				}
@@ -1075,19 +912,15 @@ GrottoGroups = {
 		buttons: {
 			"Skull Mask Item": {
 				icon: "Skull Mask",
+				Age: Age.CHILD,
 				LongDescription: "Wear the Skull Mask and stand front and center near the entrance.",
-				isChildOnly: function() { return true; },
-				canGet: function(age) {
-					return ChildTradeItems.SKULL_MASK.playerHas;
-				}
+				Needs: [ChildTradeItems.SKULL_MASK]
 			},
 			"Mask of Truth Item": {
 				icon: "Mask of Truth",
+				Age: Age.CHILD,
 				LongDescription: "Wear the Mask of Truth and stand front and center near the entrance.",
-				isChildOnly: function() { return true; },
-				canGet: function(age) {
-					return ChildTradeItems.MASK_OF_TRUTH.playerHas;
-				}
+				Needs: [ChildTradeItems.MASK_OF_TRUTH]
 			}
 		}
 	},
@@ -1097,9 +930,7 @@ GrottoGroups = {
 			"Redead Sun's Song Chest": {
 				useGroupImage: true,
 				LongDescription: "Play the Sun's Song near the redead to spawn a chest.",
-				canGet: function(age) {
-					return Data.canPlaySong(Songs.SUNS_SONG);
-				}
+				Needs: [Songs.SUNS_SONG]
 			}
 		}
 	},
@@ -1108,17 +939,11 @@ GrottoGroups = {
 		buttons: {
 			"Chest by Lighting Torches": {
 				LongDescription: "Light the torches in the first room to spawn a chest.<br/><br/>Using flame storage and sticks: get flame storage; line up with the side of the platform by the stairs and the torch; sidehop right x8; sideroll; take out stick (it should be lit now); sidehop to the door - quickly enter at the very left side; the first torch should be lit as you go in - now finish the job.",
-				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.FIRE_ITEMS) ||
-						ItemData.canUse(age, QPAItemSets.TALL_TORCH_QPA) ||
-						(Settings.GlitchesToAllow.flameStorage && ItemData.canUse(age, Items.DEKU_STICK));
-				}
+				NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA, GlitchItemSets.FLAME_STORAGE]
 			},
 			"Sun's Song": {
 				LongDescription: "Go through the rooms to get the item at the end.",
-				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
-				}
+				Needs: [ItemSets.DAMAGING_ITEMS]
 			}
 		}
 	},
@@ -1133,9 +958,7 @@ GrottoGroups = {
 		buttons: {
 			"Chest in Wolfos Grotto": {
 				LongDescription: "Kill the wolfos to spawn the chest.",
-				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
-				}
+				Needs: [ItemSets.DAMAGING_ITEMS]
 			}
 		}
 	},
@@ -1145,9 +968,7 @@ GrottoGroups = {
 			"Chest in 2 Redead Grotto": {
 				useGroupImage: true,
 				LongDescription: "Kill the redeads to spawn the chest.",
-				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.SWORDS);
-				}
+				Needs: [ItemSets.SWORDS]
 			}
 		}
 	},
@@ -1179,10 +1000,7 @@ GrottoGroups = {
 			},
 			"Beehive": {
 				ItemGroup: ItemGroups.BEEHIVE,
-				LongDescription: "The beehive on the back/right side of the grotto. Can use bombs. If using chus, line up with one of the walls under it and drop it on the 6th red flash.",
-				canGet: function(age) {
-					return Data.canBreakBeehive(age);
-				}
+				LongDescription: "The beehive on the back/right side of the grotto. Can use bombs. If using chus, line up with one of the walls under it and drop it on the 6th red flash."
 			}
 		}
 	},
@@ -1192,9 +1010,7 @@ GrottoGroups = {
 			"Water Heart Piece": {
 				useGroupImage: true,
 				LongDescription: "Dive down or use iron boots to get the heart piece",
-				canGet: function(age) {
-					return ItemData.canUseAny(age, [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]);
-				}
+				NeedsAny: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]
 			}
 		}
 	},
@@ -1233,18 +1049,14 @@ GrottoGroups = {
 			"Heart Container": {
 				icon: "Heart Piece",
 				LongDescription: "To defeat Gohma, you must first stun her when her eye is red. You can use the slingshot or deku nuts to do this - nuts don't stun her for nearly as long, though. Once she's down, attack her. The quickest kill is with three deku stick jumpslashes (or one then two crouch stabs).",
-				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.SWORDS) && 
-						ItemData.canUseAny(age, [Items.DEKU_NUT, Items.FAIRY_SLINGSHOT]);
-				}
+				Needs: [ItemSets.SWORDS],
+				NeedsAny: [Items.DEKU_NUT, Items.FAIRY_SLINGSHOT]
 			},
 			"Blue Warp": {
 				icon: "Gohma",
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.SWORDS) && 
-						ItemData.canUseAny(age, [Items.DEKU_NUT, Items.FAIRY_SLINGSHOT]);
-				}
+				Needs: [ItemSets.SWORDS],
+				NeedsAny: [Items.DEKU_NUT, Items.FAIRY_SLINGSHOT]
 			}
 		}
 	},
@@ -1258,18 +1070,14 @@ GrottoGroups = {
 			"Heart Container": {
 				icon: "Heart Piece",
 				LongDescription: "To defeat King Dodongo, you must throw a bomb or bomb flower into his mouth, and then attack him afterward. Note that you should follow him as he rolls so that he gets up faster. If using bomb flowers, try to get them a little bit early, as you need time to run back to him before he shoots his fireball. The quickest kill is with 2 deku stick/master sword jumpslashes, or 1 biggoron's sword jumpslash.",
-				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) &&
-						ItemData.canUseAny(age, [Items.BOMB, Equipment.STRENGTH]);
-				}
+				Needs: [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.SWORDS],
+				NeedsAny: [Items.BOMB, Equipment.STRENGTH]
 			},
 			"Blue Warp": {
 				icon: "King Dodongo",
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.BLAST_OR_SMASH_ITEMS) &&
-						ItemData.canUseAny(age, [Items.BOMB, Equipment.STRENGTH]);
-				}
+				Needs: [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.SWORDS],
+				NeedsAny: [Items.BOMB, Equipment.STRENGTH]
 			}
 		}
 	},
@@ -1284,19 +1092,17 @@ GrottoGroups = {
 			},
 			"Heart Container": {
 				icon: "Heart Piece",
+				Age: Age.EITHER,
+				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
 				LongDescription: "To defeat Barinade, you need the boomerang and also either a sword or at least 3 Deku Sticks. First, dislodge it from the ceiling using the boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
-				canGet: function(age) {
-					return ItemData.canUse(age, [ItemSets.SWORDS, Items.BOOMERANG]);
-				},
-				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
+				Needs: [ItemSets.SWORDS, Items.BOOMERANG]
 			},
 			"Blue Warp": {
 				icon: "Barinade",
+				Age: Age.EITHER,
+				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-				canGet: function(age) {
-					return ItemData.canUse(age, [ItemSets.SWORDS, Items.BOOMERANG]);
-				},
-				isChildOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
+				Needs: [ItemSets.SWORDS, Items.BOOMERANG]
 			}
 		}
 	},
@@ -1306,20 +1112,18 @@ GrottoGroups = {
 			"Heart Container": {
 				icon: "Heart Piece",
 				LongDescription: "For phase 1 of Phantom Ganon, you must shoot the real version of him that comes out of the paintings. You can use your bow or hookshot for that. The real one is lighter and is the only one that makes sound. Phase 2 is the familiar tenis match. Stun him with his own attacks and damage him when he's stunned. You can also just spam him with the boomerang!",
-				canGet: function(age) {
-					let canStunBoss = ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT, Items.FAIRY_BOW]);
-					let canDamageBoss = ItemData.canUseAny(age, [ItemSets.SWORDS, Items.BOOMERANG]);
-					return canStunBoss && canDamageBoss;
-				}
+				Needs: [
+					[SetType.OR, Items.HOOKSHOT, ItemSets.PROJECTILES], // Stun boss
+					[SetType.OR, ItemSets.SWORDS, Items.BOOMERANG] // Damage boss
+				]
 			},
 			"Blue Warp": {
 				icon: "Phantom Ganon",
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-				canGet: function(age) {
-					let canStunBoss = ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT, Items.FAIRY_BOW]);
-					let canDamageBoss = ItemData.canUseAny(age, [ItemSets.SWORDS, Items.BOOMERANG]);
-					return canStunBoss && canDamageBoss;
-				}
+				Needs: [
+					[SetType.OR, Items.HOOKSHOT, ItemSets.PROJECTILES], // Stun boss
+					[SetType.OR, ItemSets.SWORDS, Items.BOOMERANG] // Damage boss
+				]
 			}
 		}
 	},
@@ -1328,21 +1132,17 @@ GrottoGroups = {
 		buttons: {
 			"Heart Container": {
 				icon: "Heart Piece",
+				Age: Age.EITHER,
+				UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap || !Settings.GlitchesToAllow.fireNoGoronTunic; },
 				LongDescription: "To defeat Volvagia, hit her with your hammer when she pops out of the holes. After that, attack it again. Jumpslashes will do more damage, like usual. You can hit it with arrows while it's flying to do additional damage. If it ever drops rocks on you, you can hang off the side of the cliff to avoid damage.",
-				canGet: function(age) {
-					let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
-					return tunicCheck && ItemData.canUse(age, Items.MEGATON_HAMMER);
-				},
-				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
+				Needs: [GameStateSets.FIRE_TEMPLE_TUNIC_CHECK, Items.MEGATON_HAMMER]
 			},
 			"Blue Warp": {
 				icon: "Volvagia",
+				Age: Age.EITHER,
+				UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap || !Settings.GlitchesToAllow.fireNoGoronTunic; },
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-				canGet: function(age) {
-					let tunicCheck = Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC);
-					return tunicCheck && ItemData.canUse(age, Items.MEGATON_HAMMER);
-				},
-				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
+				Needs: [GameStateSets.FIRE_TEMPLE_TUNIC_CHECK, Items.MEGATON_HAMMER]
 			}
 		}
 	},
@@ -1351,19 +1151,15 @@ GrottoGroups = {
 		buttons: {
 			"Heart Container": {
 				icon: "Heart Piece",
+				Age: Age.ADULT,
 				LongDescription: "To defeat morpha, hookshot her nucleus out of the water and hit her to damage her. A good way to kill is to continuously hookshot her to bring her into a corner. Now, get to the other side of her and slash once so it runs into the corner. Now quickly jumpslash it (Z + A) and continue to crouch stab (Hold R, spam B) until it's dead.",
-				canGet: function(age) {
-					return ItemData.canUse(age, Items.HOOKSHOT);
-				},
-				isAdultOnly: function() { return true; }
+				Needs: [Items.HOOKSHOT]
 			},
 			"Blue Warp": {
 				icon: "Morpha",
+				Age: Age.ADULT,
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-				canGet: function(age) {
-					return ItemData.canUse(age, Items.HOOKSHOT);
-				},
-				isAdultOnly: function() { return true; },
+				Needs: [Items.HOOKSHOT],
 				postClick: function(isCompleted) {
 					// Mark all of these so that if the dungeon type is switched, we don't lose this data!
 					MapLocations["Water Temple"].Regions.bossRoom.ItemLocations["Blue Warp"].playerHas = isCompleted;
@@ -1379,18 +1175,14 @@ GrottoGroups = {
 			"Heart Container": {
 				icon: "Heart Piece",
 				LongDescription: "When fighting Bongo Bongo, it helps to NOT have the Hover Boots equipped. When the fight starts, if you hold down, he won't circle you right away. Hit his hands with your bow or hookshot, or slingshot to stun them. Now hit him before he hits you and damage him as much as you can. If you have magic, quickspins can actually stunlock him for a 1-cycle if you do them perfectly.",
-				canGet: function(age) {
-					let canStunHands = ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT, Items.FAIRY_BOW]);
-					return ItemData.canUse(age, ItemSets.SWORDS) && canStunHands;
-				}
+				Needs: [ItemSets.SWORDS],
+				NeedsAny: [Items.HOOKSHOT, ItemSets.PROJECTILES]
 			},
 			"Blue Warp": {
 				icon: "Bongo Bongo",
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-				canGet: function(age) {
-					let canStunHands = ItemData.canUseAny(age, [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT, Items.FAIRY_BOW]);
-					return ItemData.canUse(age, ItemSets.SWORDS) && canStunHands;
-				}
+				Needs: [ItemSets.SWORDS],
+				NeedsAny: [Items.HOOKSHOT, ItemSets.PROJECTILES]
 			}
 		}
 	},
@@ -1399,19 +1191,15 @@ GrottoGroups = {
 		buttons: {
 			"Heart Container": {
 				icon: "Heart Piece",
+				Age: Age.ADULT,
 				LongDescription: "To defeat Twinrova, reflect one of the sister's shots at the other one. Do this four times to get to the second phase. Now, you must charge your shield with 3 of the same kind of attack. When you do, your shield will shoot it at Twinrova, stunning her. Go hit her! As usual, a jumpslash (Z + A) then crouch stabs (R + spam B) do the most damage.",
-				canGet: function(age) {
-					return ItemData.canUse(age, Equipment.MIRROR_SHIELD);
-				},
-				isAdultOnly: function() { return true; }
+				Needs: [Equipment.MIRROR_SHIELD]
 			},
 			"Blue Warp": {
 				icon: "Twinrova",
+				Age: Age.ADULT,
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-				canGet: function(age) {
-					return ItemData.canUse(age, Equipment.MIRROR_SHIELD);
-				},
-				isAdultOnly: function() { return true; }
+				Needs: [Equipment.MIRROR_SHIELD]
 			}
 		}
 	},
@@ -1420,17 +1208,13 @@ GrottoGroups = {
 		buttons: {
 			"Boss Key": {
 				LongDescription: "This boss key chest is in the room with the two stalfos. Defeat them to gain access to it.",
-				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
-				}
+				Needs: [ItemSets.DAMAGING_ITEMS]
 			},
 			"14 Pots": {
 				LongDescription: "These pots are after the fight with the two Iron Knuckles, before the final staircase.",
 				count: 14,
 				ItemGroup: ItemGroups.POT,
-				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
-				},
+				Needs: [ItemSets.DAMAGING_ITEMS],
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.shuffleEmptyPots;
 				}
@@ -1439,9 +1223,7 @@ GrottoGroups = {
 				LongDescription: "These pots are after the fight with the two Iron Knuckles, before the final staircase.",
 				count: 18,
 				ItemGroup: ItemGroups.POT,
-				canGet: function(age) {
-					return ItemData.canUse(age, ItemSets.DAMAGING_ITEMS);
-				},
+				Needs: [ItemSets.DAMAGING_ITEMS],
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleEmptyPots;
 				}

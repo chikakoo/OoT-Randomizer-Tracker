@@ -88,7 +88,8 @@ let SettingSets = {
     SHUFFLE_THIEVES_HIDEOUT: () => Settings.RandomizerSettings.shuffleThievesHideout,
     VANILLA_THIEVES_HIDEOUT: () => !Settings.RandomizerSettings.shuffleThievesHideout,
     SHUFFLE_SILVER_RUPEES: () => Settings.RandomizerSettings.shuffleSilverRupees,
-    VANILLA_SILVER_RUPEES: () => !Settings.RandomizerSettings.shuffleSilverRupees
+    VANILLA_SILVER_RUPEES: () => !Settings.RandomizerSettings.shuffleSilverRupees,
+    VANILLA_CHEST_MINIGAME_KEYS: () => Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA
 };
 
 /**
@@ -634,6 +635,10 @@ let GameStateSets = {
     ARE_GERUDO_GUARDS_TAME: () => Data.areGerudoGuardsTame(),
     CAN_STUN_KITCHEN_GUARDS: (age) => Data.canStunKitchenGuards(age),
     CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE: (age) => Data.canStunOrPassGuardsAtDistance(age),
+    CAN_PLAY_BOMBCHU_BOWLING: () =>
+        Settings.RandomizerSettings.bombchusInLogic
+        ? Items.BOMBCHU.playerHas
+        : Items.BOMB.playerHas,
     HAS_BOTTLE: () => Data.hasBottle(),
     FIRE_TEMPLE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC),
     WATER_TEMPLE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.waterNoZoraTunic || ItemData.canUse(age, Equipment.ZORA_TUNIC),

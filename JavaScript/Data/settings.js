@@ -163,7 +163,7 @@ let Settings = {
 		boomerangThroughWalls: false,
 		difficultBoomerangTrickThrows: false,
 		breakBeehivesWithBombs: true,
-		breakBeehivesWithChus: false,
+		breakBeehivesWithChus: true,
 		
 		// Kakariko/Graveyard
 		watchtowerSkullJumpslash: false,

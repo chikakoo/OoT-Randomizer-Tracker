@@ -117,7 +117,6 @@ let StandardDungeons = {
                         ChildNeeds: [GlitchItemSets.DEKU_B1_SKIP]
                     }
                 },
-
                 ItemLocations: {
                     "Chest in Basement": {
                         ItemGroup: ItemGroups.CHEST,
@@ -169,9 +168,11 @@ let StandardDungeons = {
                         Age: Age.CHILD
                     },
                     lowerBasement: {
-                        NeedsAny: [ItemLocationSets.DEKU_WEB_BURNED,
+                        NeedsAny: [
+                            ItemLocationSets.DEKU_WEB_BURNED,
                             (age) => MapLocations["Deku Tree"]._canBurnBasementWeb(age),
-                            GlitchItemSets.WEIRD_SHOT]
+                            GlitchItemSets.WEIRD_SHOT
+                        ]
                     }
                 },
                 ItemLocations: {
