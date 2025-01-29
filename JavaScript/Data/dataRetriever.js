@@ -994,10 +994,8 @@ Data = {
     
     /**
      * Returns whether the player can milk cows
-     * @param ocarinaForced - whether we're forcing the ocarina, as opposed to using OI to skip it
      */
-	canMilkCows: function(ocarinaForced) {
-		if (ocarinaForced && !Items.OCARINA.playerHas) { return false; }
+	canMilkCows: function() {
 		return this.canPlaySong(Songs.EPONAS_SONG);
     },
     

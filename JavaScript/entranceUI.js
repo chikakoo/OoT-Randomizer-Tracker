@@ -133,10 +133,6 @@ let EntranceUI = {
 			let shouldNotDisplayButton = button.shouldNotDisplay && button.shouldNotDisplay();
 			let shouldExcludeEquivalentItem = false;
 
-			// TODO entrance
-			if (!shouldNotDisplayButton && button.itemGroup) {
-				shouldNotDisplayButton = shouldDisableItemLocationGroup(button.itemGroup, itemLocation.IsDungeon);
-			}
 			if (!shouldNotDisplayButton && button.ItemGroup) {
 				shouldNotDisplayButton = shouldDisableItemLocationGroup(button.ItemGroup, itemLocation.IsDungeon);
 			}
@@ -160,7 +156,7 @@ let EntranceUI = {
 			
 			let buttonDiv = dce("div", "entrance-group-button");
 			let buttonIconName = button.icon ? button.icon : buttonName;
-			buttonDiv.title = button.LongDescription || button.description; // TODO entrance
+			buttonDiv.title = button.LongDescription;
 			buttonDiv.style.backgroundImage = button.useGroupImage
 				? _this.getEntranceGroupIcon(itemLocationGroup, groupName)
 				: `url("Images/${buttonIconName}.png")`;
@@ -177,17 +173,7 @@ let EntranceUI = {
 				event.stopPropagation();
 
 				if (event.shiftKey) {
-					let buttonNames = [];
-					Object.keys(selectedGroup.buttons).forEach(function(currentButtonName) {
-						let currentButton = selectedGroup.buttons[currentButtonName];
-						if (currentButton.itemGroup === button.itemGroup && currentButton.tag === button.tag) {
-							buttonNames.push(currentButtonName);
-						}
-					});
-
-					buttonNames.forEach(function(name) {
-						_this._markButtonAsComplete(itemLocationGroup, itemLocation, button, name, buttonDiv, true);
-					});
+					_this._markButtonAsComplete(itemLocationGroup, itemLocation, button, buttonName, buttonDiv, true);
 				} else {
 					_this._advanceButton(itemLocationGroup.buttons[buttonName]);
 					_this._markButtonAsComplete(itemLocationGroup, itemLocation, button, buttonName, buttonDiv);
@@ -507,11 +493,11 @@ let EntranceUI = {
 	},
 	
 	/**
-	 * Returns whether the is<Age>Only function will allow you to ever complete the task
-	 * as the given age
+	 * Returns whether the the playre can ever complete the given task as the given age
 	 * @param button - the button with the task info
 	 * @param age - the age to check (assumes child or adult)
-	 * @return
+	 * @param ignoreCanBeAge - TODO entrance (remove this param, not needed anywhere)
+	 * @return True if you can ever get the item as the given age
 	 */
 	_canGetAsAge(button, age, ignoreCanBeAge) {
 		if (!button.canGet) {
@@ -521,8 +507,8 @@ let EntranceUI = {
 			}
 
 			return age === Age.CHILD
-				? !button.UseAdultAge || !button.UseAdultAge()
-				: !button.UseChildAge || !button.UseChildAge();
+				? (button.Age !== Age.ADULT) && (!button.UseAdultAge || !button.UseAdultAge())
+				: (button.Age !== Age.CHILD) && (!button.UseChildAge || !button.UseChildAge());
 		}
 
 		// TODO entrance data rework: delete this part
@@ -578,8 +564,7 @@ let EntranceUI = {
 	 */
 	_excludeButtonFromCounts: function(button, itemLocation) {
 		return button.excluded || 
-			(button.shouldNotDisplay && button.shouldNotDisplay()) || 
-			(button.itemGroup && shouldDisableItemLocationGroup(button.itemGroup, itemLocation.IsDungeon)) || // TODO entrance
+			(button.shouldNotDisplay && button.shouldNotDisplay()) ||
 			(button.ItemGroup && shouldDisableItemLocationGroup(button.ItemGroup, itemLocation.IsDungeon));
 	}
 }

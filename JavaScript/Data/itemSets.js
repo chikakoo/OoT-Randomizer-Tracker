@@ -264,6 +264,9 @@ let GlitchItemSets = {
     LAKE_TREE_SKULL_WITH_HOOKSHOT: (age) => 
         Settings.GlitchesToAllow.skullInTreeWithHookshot && 
         ItemData.canUse(age, [Items.HOOKSHOT, ItemSets.SHIELDS]),
+    LAB_HP_WITHOUT_SCALE: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.labHPWithoutGoldenScale &&
+        ItemData.canUse(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]),
     CHILD_LAKESIDE_LAB_CLIP: (age) => age === Age.CHILD &&
         Settings.GlitchesToAllow.childLakesideLabClip && 
         Data.canShieldTurn(age) &&

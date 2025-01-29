@@ -55,7 +55,7 @@ InteriorGroups = {
 				ItemGroup: ItemGroups.COW,
 				LongDescription: "As an adult, beat Malon's Epona challenge to unlock the cow in Link's house.",
 				Age: Age.ADULT,
-				Needs: [ItemLocationSets.UNLOCK_COW_IN_HOUSE]
+				Needs: [ItemLocationSets.UNLOCK_COW_IN_HOUSE, Items.OCARINA]
 			}
 		},
 		postClick: function(itemLocation, isSelected) {
@@ -169,91 +169,70 @@ InteriorGroups = {
 		}
 	},
 	"Happy Mask Shop": {
-		_isMaskShopOpen: function() {
+		_isMaskShopOpen: function(age) {
 			// If kakariko gate is NOT vanilla, we only need Zelda's Letter, otherwise we must show the guard the letter as normal
-			return (!SettingSets.VANILLA_KAKARIKO_GATE() && ChildTradeItems.ZELDAS_LETTER.playerHas) || 
-				ItemLocationSets.SHOW_GUARD_LETTER();
+			return ItemData.canUseAny(age, [
+				ItemLocationSets.SHOW_GUARD_LETTER,
+				// If not vanilla, you just need to HAVE the letter; it doesn't matter if you can use it
+				[() => !SettingSets.VANILLA_KAKARIKO_GATE(), () => ChildTradeItems.ZELDAS_LETTER.playerHas]
+			]);
 		},
-		_canBuyMaskOfTruth: function() {
-			return this._isMaskShopOpen() && 
-				ItemLocationSets.SELL_KEATON_MASK() &&
-				ItemLocationSets.SELL_SKULL_MASK() &&
-				ItemLocationSets.SELL_SPOOKY_MASK() &&
-				ItemLocationSets.SELL_BUNNY_HOOD();
+		_canBuyMaskOfTruth: function(age) {
+			return ItemData.canUse(age, [
+				(age) => this._isMaskShopOpen(age),
+				ItemLocationSets.SELL_KEATON_MASK,
+				ItemLocationSets.SELL_SKULL_MASK,
+				ItemLocationSets.SELL_SPOOKY_MASK,
+				ItemLocationSets.SELL_BUNNY_HOOD
+			]);
 		},
 		tooltip: "The Happy Mask Shop",
 		buttons: {
 			"Borrow Keaton Mask": {
-				itemLocation: "Borrow Keaton Mask",
-				tag: "keaton",
 				LongDescription: "After showing the Kakariko Village guard Zelda's Letter (or having the letter when the gate is opened), you can borrow this mask.",
-				canGet: function(age) {
-					return InteriorGroups["Happy Mask Shop"]._isMaskShopOpen();
-				}
+				Needs: [(age) => InteriorGroups["Happy Mask Shop"]._isMaskShopOpen(age)]
 			},
 			"Borrow Skull Mask": {
 				icon: "Skull Mask",
-				itemLocation: "Borrow Skull Mask",
-				tag: "skull",
 				LongDescription: "After selling the Keaton Mask to the Kakariko Guard, you can borrow this mask.",
-				canGet: function(age) {
-					return InteriorGroups["Happy Mask Shop"]._isMaskShopOpen() &&
-						ItemLocationSets.SELL_KEATON_MASK();
-				}
+				Needs: [
+					(age) => InteriorGroups["Happy Mask Shop"]._isMaskShopOpen(age), 
+					ItemLocationSets.SELL_KEATON_MASK
+				]
 			},
 			"Borrow Spooky Mask": {
-				itemLocation: "Borrow Spooky Mask",
-				tag: "spooky",
 				LongDescription: "After selling the Skull Mask to the Skull Kid in Lost Woods, you can borrow this mask.",
-				canGet: function(age) {
-					return InteriorGroups["Happy Mask Shop"]._isMaskShopOpen() &&
-						ItemLocationSets.SELL_SKULL_MASK();
-				}
+				Needs: [
+					(age) => InteriorGroups["Happy Mask Shop"]._isMaskShopOpen(age), 
+					ItemLocationSets.SELL_SKULL_MASK
+				]
 			},
 			"Borrow Bunny Hood": {
-				itemLocation: "Borrow Bunny Hood",
-				tag: "bunny",
 				LongDescription: "After selling the Spooky Mask to the graveyard kid, you can borrow this mask.",
-				canGet: function(age) {
-					return InteriorGroups["Happy Mask Shop"]._isMaskShopOpen() &&
-						ItemLocationSets.SELL_SPOOKY_MASK();
-				}
+				Needs: [
+					(age) => InteriorGroups["Happy Mask Shop"]._isMaskShopOpen(age), 
+					ItemLocationSets.SELL_SPOOKY_MASK
+				]
 			},
 			"Borrow Mask of Truth": {
 				icon: "Mask of Truth",
-				tag: "truth",
-				itemLocation: "Borrow Mask of Truth",
 				LongDescription: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
-				canGet: function(age) {
-					return InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth();
-				}
+				Needs: [(age) => InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth(age)]
 			},
 			"Borrow Goron Mask": {
 				icon: "Goron Mask",
-				tag: "truth",
-				itemLocation: "Borrow Goron Mask",
 				LongDescription: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
-				canGet: function(age) {
-					return InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth();
-				}
+				Needs: [(age) => InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth(age)]
 			},
 			"Borrow Zora Mask": {
 				icon: "Zora Mask",
-				tag: "truth",
-				itemLocation: "Borrow Zora Mask",
 				LongDescription: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
-				canGet: function(age) {
-					return InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth();
-				}
+				Needs: [(age) => InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth(age)]
 			},
 			"Borrow Gerudo Mask": {
 				icon: "Gerudo Mask",
-				tag: "truth",
-				itemLocation: "Borrow Gerudo Mask",
 				LongDescription: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
-				canGet: function(age) {
-					return InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth();
-				}
+				Needs: [(age) => InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth(age)]
 			}
 		}
 	},
@@ -262,9 +241,7 @@ InteriorGroups = {
 		buttons: {
 			"Fairy Fountain": {
 				LongDescription: "Play Zelda's Lullaby at the triforce symbol to get this item.",
-				canGet: function(age) {
-					return Data.canPlaySong(Songs.ZELDAS_LULLABY);
-				}
+				Needs: [Songs.ZELDAS_LULLABY]
 			}
 		}
 	},
@@ -277,62 +254,47 @@ InteriorGroups = {
 			"10 Reward": {
 				icon: "Skulltula",
 				iconText: "10",
-				tag: "10",
 				LongDescription: "Talk to the guy on the right hand side.",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 10;
 				},
-				canGet: function(age) {
-					return Equipment.SKULLTULA_TOKENS.count >= 10;
-				}
+				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 10]
 			},
 			"20 Reward": {
 				icon: "Skulltula",
 				iconText: "20",
-				tag: "20",
 				LongDescription: "Talk to the guy on the left hand side.",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 20;
 				},
-				canGet: function(age) {
-					return Equipment.SKULLTULA_TOKENS.count >= 20;
-				}
+				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 20]
 			},
 			"30 Reward": {
 				icon: "Skulltula",
 				iconText: "30",
-				tag: "30",
 				LongDescription: "Talk to the middle guy.",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 30;
 				},
-				canGet: function(age) {
-					return Equipment.SKULLTULA_TOKENS.count >= 30;
-				}
+				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 30]
 			},
 			"40 Reward": {
 				icon: "Skulltula",
 				iconText: "40",
-				tag: "40",
 				LongDescription: "Talk to the guy second from the left",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 40;
 				},
-				canGet: function(age) {
-					return Equipment.SKULLTULA_TOKENS.count >= 40;
-				}
+				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 40]
 			},
 			"50 Reward": {
 				icon: "Skulltula",
 				iconText: "50",
-				tag: "50",
 				LongDescription: "Talk to the guy second from the right",
 				shouldNotDisplay: function() {
 					return Settings.RandomizerSettings.maxRequiredTokens < 50;
 				},
-				canGet: function(age) {
-					return Equipment.SKULLTULA_TOKENS.count >= 50;
-				}
+				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 50]
 			}
 		}
 	},
@@ -342,38 +304,28 @@ InteriorGroups = {
 			"Lakeside Heart Piece": {
 				icon: "Heart Piece",
 				LongDescription: "Use the golden scale and dive to touch the bottom of the water area. The professor will give you this item.",
-				canGet: function(age) {
-					let hasGoldScale = ItemData.canUse(age, UpgradedItems.GOLDEN_SCALE);
-					let canGetWithoutScale = Settings.GlitchesToAllow.labHPWithoutGoldenScale &&
-						ItemData.canUse(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
-					return hasGoldScale || canGetWithoutScale;
-				}
+				NeedsAny: [UpgradedItems.GOLDEN_SCALE, GlitchItemSets.LAB_HP_WITHOUT_SCALE]
 			},
 			"Lakeside Skulltula": {
 				icon: "Skulltula",
+				Age: Age.ADULT,
 				ItemGroup: ItemGroups.SKULLTULA,
 				LongDescription: "This skulltula is on the bottom of the water area. Equip the iron boots and sink down. Roll into the box to reveal it.",
-				canGet: function(age) {
-					return ItemData.canUse(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]);
-				},
-				isAdultOnly: function() { return true; }
+				Needs: [Items.HOOKSHOT, Equipment.IRON_BOOTS]
 			},
 			"3 Red Rupees": {
 				icon: "3 Red Rupees",
 				count: 3,
 				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				LongDescription: "This rupee is in the water - dive or use iron boots to get it.",
-				canGet: function(age) {
-					return ItemData.canUseAny(age, [Equipment.IRON_BOOTS, UpgradedItems.GOLDEN_SCALE]);
-				}
+				NeedsAny: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]
 			},
 			"Show Eyeball Frog to Scientist": {
 				icon: "Eyeball Frog",
+				Age: Age.EITHER,
+				UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
 				LongDescription: "Show the Eyeball Frog to the scientist to receive an item.",
-				canGet: function(age) {
-					return ItemData.canUse(age, AdultTradeItems.EYEBALL_FROG);
-				},
-				isAdultOnly: function() { return !Settings.GlitchesToAllow.equipSwap; }
+				Needs: [AdultTradeItems.EYEBALL_FROG]
 			}
 		}
 	},
@@ -383,59 +335,54 @@ InteriorGroups = {
 			"Child Skulltula": {
 				icon: "Skulltula",
 				ItemGroup: ItemGroups.SKULLTULA,
-				LongDescription: "This is the skulltula in the crate in the back of the room.",
-				isChildOnly: function() { return true; }
+				Age: Age.CHILD,
+				LongDescription: "This is the skulltula in the crate in the back of the room."
 			},
 			"Adult Big Poe Reward": {
+				Age: Age.ADULT,
 				LongDescription: "Give the poe salesman all the poes he needs to get this item.",
-				canGet: function(age) {
-					return ItemData.canUseAny(age, [
-						Items.BIG_POE, 
-						[MapAccessSets.HYRULE_FIELD, Items.FAIRY_BOW, GameStateSets.HAS_BOTTLE]
-					]);
-				},
-				isAdultOnly: function() { return true; }
+				NeedsAny: [
+					Items.BIG_POE, 
+					[MapAccessSets.HYRULE_FIELD, Items.FAIRY_BOW, GameStateSets.HAS_BOTTLE]
+				]
 			},
 			"Child Non-Empty Crates": {
 				icon: "Crate",
 				ItemGroup: ItemGroups.CRATE,
+				Age: Age.CHILD,
 				LongDescription: "The third crate on your left.",
 				shouldNotDisplay: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; },
-				isChildOnly: function() { return true; }
 			},
 			"Child Crates": {
 				icon: "Crate",
 				count: 4,
 				ItemGroup: ItemGroups.CRATE,
+				Age: Age.CHILD,
 				LongDescription: "The crates in the room.",
 				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
-				isChildOnly: function() { return true; }
 			},
 			"Child Pots": {
 				icon: "Pot",
 				count: 44,
 				ItemGroup: ItemGroups.POT,
-				tag: "child",
-				LongDescription: "The many pots in the room. You can reach the top ones by jumping from the box with the skulltula in it.",
-				isChildOnly: function() { return true; }
+				Age: Age.CHILD,
+				LongDescription: "The many pots in the room. You can reach the top ones by jumping from the box with the skulltula in it."
 			},
 			"Adult Non-Empty Pots": {
 				icon: "Pot",
 				count: 7,
 				ItemGroup: ItemGroups.POT,
-				tag: "adult",
+				Age: Age.ADULT,
 				LongDescription: "The many pots in the room.",
-				shouldNotDisplay: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; },
-				isAdultOnly: function() { return true; }
+				shouldNotDisplay: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; }
 			},
 			"Adult Pots": {
 				icon: "Pot",
 				count: 11,
 				ItemGroup: ItemGroups.POT,
-				tag: "adult",
+				Age: Age.ADULT,
 				LongDescription: "The many pots in the room.",
-				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
-				isAdultOnly: function() { return true; }
+				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; }
 			}
 		}
 	},
@@ -449,9 +396,7 @@ InteriorGroups = {
 			"Cow": {
 				ItemGroup: ItemGroups.COW,
 				LongDescription: "Play Epona's Song next to the cow.",
-				canGet: function(age) {
-					return Data.canMilkCows(true);
-				}
+				Needs: [Items.OCARINA]
 			}
 		}
 	},
@@ -467,9 +412,7 @@ InteriorGroups = {
 			"Cow": {
 				ItemGroup: ItemGroups.COW,
 				LongDescription: "Play Epona's Song next to the cow. This is shared with the Back of Impa's House check.",
-				canGet: function(age) {
-					return Data.canMilkCows(true);
-				}
+				Needs: [Items.OCARINA]
 			}
 		}
 	},
@@ -483,9 +426,7 @@ InteriorGroups = {
 				count: 2,
 				ItemGroup: ItemGroups.COW,
 				LongDescription: "Play Epona's Song next to the cows.",
-				canGet: function(age) {
-					return Data.canMilkCows(true);
-				}
+				Needs: [Items.OCARINA]
 			}
 		}
 	},
@@ -505,9 +446,7 @@ InteriorGroups = {
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.cowSanity;
 				},
-				canGet: function(age) {
-					return Data.canMilkCows() && ItemData.canUseAny(age, [Equipment.MASTER_SWORD, Items.OCARINA, Equipment.KOKIRI_SWORD]);
-				}
+				NeedsAny: [Items.OCARINA, Equipment.MASTER_SWORD, Equipment.KOKIRI_SWORD]
 			}
 		}
 	},
@@ -530,15 +469,13 @@ InteriorGroups = {
 		buttons: {
 			"Child Fishing": {
 				useGroupImage: true,
+				Age: Age.CHILD,
 				LongDescription: "The prize you can get as child.",
-				tag: "child",
-				isChildOnly: function() { return true; }
 			},
 			"Adult Fishing": {
 				useGroupImage: true,
+				Age: Age.ADULT,
 				LongDescription: "The prize you can get as adult.",
-				tag: "adult",
-				isAdultOnly: function() { return true; }
 			},
 			"Hyrule Loach": {
 				LongDescription: "The Hyrule Loach. First, find the sinking lure in the fishing pond. Recommended to choose the easier option in the randomizer so it always spawns. Otherwise, it is here 1/4 attempts. It's usually by the lilypads.",
@@ -1066,10 +1003,7 @@ GrottoGroups = {
 			"Cow": {
 				ItemGroup: ItemGroups.COW,
 				LongDescription: "Burn the web, then play Epona's Song next to the cow.",
-				canGet: function(age) {
-					return ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]) &&
-						Data.canMilkCows();
-				}
+				NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]
 			},
 			"Skulltula at Distance": {
 				ItemGroup: ItemGroups.SKULLTULA,
@@ -1229,11 +1163,7 @@ GrottoGroups = {
 		buttons: {
 			"Cow": {
 				ItemGroup: ItemGroups.COW,
-				tag: "cow",
-				LongDescription: "Play Epona's Song next to the cow.",
-				canGet: function(age) {
-					return Data.canMilkCows();
-				}
+				LongDescription: "Play Epona's Song next to the cow."
 			},
 			"Red Rupee": {
 				icon: "Rupee Circle",
@@ -1245,12 +1175,10 @@ GrottoGroups = {
 				icon: "Recovery Heart",
 				count: 4,
 				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-				tag: "heart",
 				LongDescription: "The hearts near the cow."
 			},
 			"Beehive": {
 				ItemGroup: ItemGroups.BEEHIVE,
-				tag: "beehive",
 				LongDescription: "The beehive on the back/right side of the grotto. Can use bombs. If using chus, line up with one of the walls under it and drop it on the 6th red flash.",
 				canGet: function(age) {
 					return Data.canBreakBeehive(age);
@@ -1584,21 +1512,18 @@ GrottoGroups = {
 		buttons: {
 			"Neutral": {
 				icon: "Neutral Goron",
-				tag: "neutral",
 				count: 3,
 				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				LongDescription: "Neutral Goron Prizes."
 			},
 			"Angry": {
 				icon: "Angry Goron",
-				tag: "angry",
 				count: 3,
 				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				LongDescription: "Angry Goron Prizes."
 			},
 			"Happy": {
 				icon: "Happy Goron",
-				tag: "happy",
 				count: 3,
 				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				LongDescription: "Happy Goron Prizes."
@@ -2276,7 +2201,6 @@ GrottoGroups = {
 			"Projectile Wonderitems Both Ages": {
 				useGroupImage: true,
 				count: 2,
-				tag: "both",
 				LongDescription: "Shoot the deku nut on the trees with a slingshot or bow to get the items.",
 				canGet: function(age) {
 					return ItemData.canUse(age, ItemSets.PROJECTILES);
@@ -2284,7 +2208,6 @@ GrottoGroups = {
 			},
 			"Projectile Wonderitems Child": {
 				icon: "Slingshot Wonderitem",
-				tag: "child",
 				LongDescription: "Shoot the deku nut in the tree that has a skulltula in it as adult with a slingshot to get the item",
 				canGet: function(age) {
 					return ItemData.canUse(age, Items.FAIRY_SLINGSHOT);
@@ -2370,7 +2293,6 @@ GrottoGroups = {
 			"Day Crates": {
 				useGroupImage: true,
 				count: 2,
-				tag: "day",
 				LongDescription: "These crates are here during the day.",
 				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
 				time: function() { return Time.DAY; },
@@ -2379,7 +2301,6 @@ GrottoGroups = {
 			"Night Crates": {
 				useGroupImage: true,
 				count: 2,
-				tag: "night",
 				LongDescription: "These crates are here at night.",
 				time: function() { 
 					return Settings.RandomizerSettings.shuffleEmptyCrates ? Time.NIGHT : Time.EITHER; 
@@ -2521,7 +2442,6 @@ GrottoGroups = {
 			"Day Balcony Items": {
 				icon: "Green Rupee Wonderitem",
 				count: 5,
-				tag: "day",
 				LongDescription: "Climb up the stairs and walk along the catwalk by Bombchu Bowling during the day to get these items.",
 				time: function() { return Time.DAY; },
 				isChildOnly: function() { return true; }
@@ -2529,7 +2449,6 @@ GrottoGroups = {
 			"Night Balcony Items": {
 				icon: "Blue Rupee Wonderitem",
 				count: 2,
-				tag: "night",
 				LongDescription: "Climb up the stairs and walk along the catwalk by Bombchu Bowling at night to get these items.",
 				time: function() { return Time.NIGHT; },
 				isChildOnly: function() { return true; }
