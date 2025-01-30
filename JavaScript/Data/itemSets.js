@@ -680,7 +680,13 @@ let SilverRupeeSets = {
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Shadow Temple", 1)
         : true,
-    MQ_SHADOW_INVISIBLE_SCYTHE_ROOM: (age) =>
+    SHADOW_SILVER_RUPEES_INVISIBLE_SPIKES_ROOM: (age) =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Shadow Temple", 2)
+        : age === Age.ADULT && ItemData.canUse(age, Items.HOOKSHOT),
+    MQ_SHADOW_SILVER_RUPEES_SCYTHE_ROOM: (age) => 
+        SilverRupeeSets.SHADOW_SILVER_RUPEES_SCYTHE_ROOM(age),    
+    MQ_SHADOW_SILVER_RUPEES_INVISIBLE_SCYTHE_ROOM: (age) =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Shadow Temple", 1)
         : age === Age.ADULT && ItemData.canUse(age, Songs.SONG_OF_TIME),

@@ -3438,9 +3438,7 @@ let StandardDungeons = {
                         LockedDoor: "Locked Door in Giant Pit Room"
                     },
                     giantSkullRoom: {
-                        Map: "Shadow Temple",
-                        SilverRupeeIndex: 2,
-                        NeedsAny: [SettingSets.SHUFFLE_SILVER_RUPEES, Items.HOOKSHOT]
+                        Needs: [SilverRupeeSets.SHADOW_SILVER_RUPEES_INVISIBLE_SPIKES_ROOM]
                     },
                     windHallway: {
                         Map: "Shadow Temple",

@@ -4145,7 +4145,7 @@ let MQDungeons = {
                         UseAdultAge: function(age) { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                         Order: 9,
                         LongDescription: "First, turn the truth spinner in the main room to the correct skull to open the gate. Now, shoot the torches to the left and right of the gate to create a platform. Alternatively, you can megaflip or hover boots across. Take the left door from the beamos. Gather all the rupees to open the cell to the chest.",
-                        NeedsAny: [SilverRupeeSets.SHADOW_SILVER_RUPEES_SCYTHE_ROOM, GlitchItemSets.WEIRD_SHOT]
+                        NeedsAny: [SilverRupeeSets.MQ_SHADOW_SILVER_RUPEES_SCYTHE_ROOM, GlitchItemSets.WEIRD_SHOT]
                     },
                     "Invisible Chest Under Scythe Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4178,7 +4178,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Invisible Scythe & Pit Rooms", imageName: "Lens of Truth" },
                 Exits: {
                     gatedAreaInInvisibleScytheRoom: {
-                        NeedsAny: [SilverRupeeSets.MQ_SHADOW_INVISIBLE_SCYTHE_ROOM, GlitchItemSets.WEIRD_SHOT]
+                        NeedsAny: [SilverRupeeSets.MQ_SHADOW_SILVER_RUPEES_INVISIBLE_SCYTHE_ROOM, GlitchItemSets.WEIRD_SHOT]
                     }
                 },
                 ItemLocations: {
