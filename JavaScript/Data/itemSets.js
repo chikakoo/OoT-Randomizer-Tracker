@@ -89,7 +89,8 @@ let SettingSets = {
     VANILLA_THIEVES_HIDEOUT: () => !Settings.RandomizerSettings.shuffleThievesHideout,
     SHUFFLE_SILVER_RUPEES: () => Settings.RandomizerSettings.shuffleSilverRupees,
     VANILLA_SILVER_RUPEES: () => !Settings.RandomizerSettings.shuffleSilverRupees,
-    VANILLA_CHEST_MINIGAME_KEYS: () => Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA
+    VANILLA_CHEST_MINIGAME_KEYS: () => Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA,
+    AUTO_PLANT_BEANS: () => Settings.RandomizerSettings.autoPlantBeans
 };
 
 /**

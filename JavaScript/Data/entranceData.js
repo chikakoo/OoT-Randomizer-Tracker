@@ -1250,9 +1250,7 @@ GrottoGroups = {
 				Age: Age.CHILD,
 				LongDescription: "Plant a magic bean here as a child to grow a plant to travel with as an adult.",
 				Needs: [Items.MAGIC_BEAN],
-				shouldNotDisplay: function() {
-					return Settings.RandomizerSettings.autoPlantBeans;
-				}
+				shouldNotDisplay: SettingSets.AUTO_PLANT_BEANS
 			}
 		}
 	},
@@ -1271,9 +1269,7 @@ GrottoGroups = {
 				Age: Age.CHILD,
 				LongDescription: "Plant a magic bean here as a child to grow a plant to travel with as an adult.",
 				Needs: [Items.MAGIC_BEAN],
-				shouldNotDisplay: function() {
-					return Settings.RandomizerSettings.autoPlantBeans;
-				}
+				shouldNotDisplay: SettingSets.AUTO_PLANT_BEANS
 			}
 		}
 	},

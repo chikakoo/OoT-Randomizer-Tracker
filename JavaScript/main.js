@@ -149,12 +149,6 @@ let _performItemDisabling = function() {
 				}
 			}
 
-			// Beans
-			if (Settings.RandomizerSettings.autoPlantBeans && itemLocation.IsBean) {
-				itemLocation.disabled = true;
-				return;
-			}
-			
 			// Co-op locations when it's not co-op
 			if (itemLocation.CoOpOnly && !SocketClient.isCoOp()) {
 				itemLocation.disabled = true;

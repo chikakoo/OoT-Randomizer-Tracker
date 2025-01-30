@@ -2796,10 +2796,11 @@ let MapLocations = {
                     },
                     "Plant Bean by Bean Guy": {
                         ItemGroup: ItemGroups.NON_ITEM,
-                        IsBean: true,
                         MapInfo: { x: 72, y: 142 },
                         Age: Age.CHILD,
-                        LongDescription: "This is the bean spot by the guy who sells beans. It's only used for convenience sake."
+                        RequiredToAppear: () => !SettingSets.AUTO_PLANT_BEANS(),
+                        LongDescription: "This is the bean spot by the guy who sells beans. It's only used for convenience sake.",
+                        Needs: [Items.MAGIC_BEAN]
                     },
                     "Heart Piece on River Platform": {
                         ItemGroup: ItemGroups.FREESTANDING,

@@ -695,7 +695,6 @@ Data = {
         if (!this._passesNeededRequirements(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._passesCustomRequirement(age, itemLocation)) { return ItemObtainability.NO; }
 		if (!this._canDoItemGroup(age, itemLocation, mainItemLocation)) { return ItemObtainability.NO; }
-		if (!this.canPlantBean(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkKeyRequirement(age, itemLocation)) { return ItemObtainability.NO; }
         if (!this._checkSilverRupeeRequirement(itemLocation)) { return ItemObtainability.NO; }
 
@@ -869,16 +868,6 @@ Data = {
             }
         });
         return ItemData.getKeyCount(mapName) - usedKeys;
-    },
-
-    /**
-     * Returns whether the player is able to plant a bean
-     */
-    canPlantBean: function(age, itemLocation) {
-		if (itemLocation && itemLocation.IsBean) {
-			return age === Age.CHILD && Items.MAGIC_BEAN.playerHas;
-		}
-		return true;
     },
 
     /**
