@@ -488,30 +488,6 @@ Data = {
     },
 
     /**
-     * Returns whether the Gerudo guards will capture you
-     */
-    areGerudoGuardsTame: function() {
-		return Equipment.GERUDO_MEMBERSHIP_CARD.playerHas;
-	},
-
-    /**
-     * Whether you can pass the Geurdo guards without using a sword
-     */
-    canStunOrPassGuardsAtDistance: function(age) {
-        return Data.areGerudoGuardsTame() || 
-            ItemData.canUse(age, Items.HOOKSHOT) || 
-            ItemData.canUse(age, Items.FAIRY_BOW);
-    },
-
-    /**
-     * Whether you can stun (or pass, if they are tamed) the Gerudo guards in the kitchen
-     */
-    canStunKitchenGuards: function(age) {
-        return this.canStunOrPassGuardsAtDistance(age) ||
-            (Settings.GlitchesToAllow.gfKitchenGuardsWithSword && ItemData.canUse(age, ItemSets.SWORDS));
-    },
-    
-    /**
 	 * Sets whether the item is obtained
      * Runs the PostObtain function if there is one
 	 * @param itemLocation - The item

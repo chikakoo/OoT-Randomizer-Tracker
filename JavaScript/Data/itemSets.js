@@ -633,9 +633,13 @@ let GameStateSets = {
     CAN_RIDE_EPONA: (age) => Data.canRideEpona(age),
     CAN_HOOK_SCARECROW: (age) => Data.canHookScarecrow(age),
     CAN_LONGSHOT_SCARECROW: (age) => Data.canHookScarecrow(age, true),
-    ARE_GERUDO_GUARDS_TAME: () => Data.areGerudoGuardsTame(),
-    CAN_STUN_KITCHEN_GUARDS: (age) => Data.canStunKitchenGuards(age),
-    CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE: (age) => Data.canStunOrPassGuardsAtDistance(age),
+    ARE_GERUDO_GUARDS_TAME: () => Equipment.GERUDO_MEMBERSHIP_CARD.playerHas,
+    CAN_STUN_KITCHEN_GUARDS: (age) => 
+        ItemData.canUse(age, GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE) ||
+        (Settings.GlitchesToAllow.gfKitchenGuardsWithSword && ItemData.canUse(age, ItemSets.SWORDS)),
+    CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE: (age) => 
+        ItemData.canUseAny(age, 
+            [GameStateSets.ARE_GERUDO_GUARDS_TAME, Items.HOOKSHOT, Items.FAIRY_BOW]),
     CAN_PLAY_BOMBCHU_BOWLING: () =>
         Settings.RandomizerSettings.bombchusInLogic
         ? Items.BOMBCHU.playerHas
