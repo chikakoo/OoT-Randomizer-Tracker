@@ -671,6 +671,11 @@ let KeySets = {
  * OR, if they are shuffled, whether the player has already collected them
  */
 let SilverRupeeSets = {
+    MQ_DODONGOS_CAVERN_SILVER_RUPEES_STAIRCASE_ROOM: () =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Dodongo's Cavern", 0)
+        : true,
+
     SHADOW_SILVER_RUPEES_SCYTHE_ROOM: (age) =>
         Settings.RandomizerSettings.shuffleSilverRupees
          ? ItemData.checkSilverRupeeRequirement("Shadow Temple", 0)
@@ -698,18 +703,35 @@ let SilverRupeeSets = {
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Shadow Temple", 3)
         : ItemData.canUse(age, Items.HOOKSHOT),
+
+    // SPIRIT_SILVER_RUPEES_GRATE_ROOM (index 0):
+    // Not needed, as there's an easy way to get the skull without them!
     SPIRIT_SILVER_RUPEES_SUN_BLOCK_ROOM: () =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Spirit Temple", 1)
+        : true,
+    SPIRIT_SILVER_RUPEES_BOULDER_ROOM: () =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Spirit Temple", 2)
         : true,
     MQ_SPIRIT_SILVER_RUPEES_LOBBY: () =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Spirit Temple", 0)
         : false, // This is a special case - the item this unlocks will be checked in a different way (since it needs a different region)
+    MQ_SPIRIT_SILVER_RUPEES_MOVING_WALL_ROOM: () =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Spirit Temple", 1)
+        : true,
+
     ICE_SILVER_RUPEES_SCYTHE_ROOM: (age) =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Ice Cavern", 0)
         : age === Age.ADULT,
+    ICE_SILVER_RUPEES_BLOCK_PUSH_ROOM: () =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Ice Cavern", 1)
+        : true,
+
     GTG_SILVER_RUPEES_SLOPES_ROOM: (age) =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Training Grounds", 0)
@@ -736,6 +758,7 @@ let SilverRupeeSets = {
         ? ItemData.checkSilverRupeeRequirement("Training Grounds", 2)
         : ItemData.canUse(age, [Equipment.IRON_BOOTS, GameStateSets.GTG_TUNIC_CHECK]) && // Dive down
             ItemData.canUseAny(age, [ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]), // Break web
+
     GANON_SPIRIT_SILVER_RUPEES: (age) =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Ganon's Castle", 0)
@@ -748,10 +771,18 @@ let SilverRupeeSets = {
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Ganon's Castle", 2)
         : ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS),
+    GANON_FOREST_SILVER_RUPEES: () => 
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Ganon's Castle", 3)
+        : true,
     MQ_GANON_FIRE_SILVER_RUPEES: (age) =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Ganon's Castle", 0)
         : ItemData.canUse(age, UpgradedItems.GOLDEN_GAUNTLETS),
+    MQ_GANON_SHADOW_SILVER_RUPEES: () =>
+        Settings.RandomizerSettings.shuffleSilverRupees
+        ? ItemData.checkSilverRupeeRequirement("Ganon's Castle", 1)
+        : true,
     MQ_GANON_WATER_SILVER_RUPEES: (age) =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Ganon's Castle", 2)

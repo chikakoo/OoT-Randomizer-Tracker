@@ -677,8 +677,7 @@ let MQDungeons = {
                 Exits: {
                     staircaseBottom: {},
                     smallDodongoRoom: {
-                        Map: "Dodongo's Cavern",
-                        SilverRupeeIndex: 0
+                        Needs: [SilverRupeeSets.MQ_DODONGOS_CAVERN_SILVER_RUPEES_STAIRCASE_ROOM]
                     }
                 },
                 ItemLocations: {
@@ -5626,8 +5625,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Moving Wall & Silver Knuckle Room", imageName: "Skulltula" },
                 Exits: {
                     afterMovingWallRoom: {
-                        Map: "Spirit Temple",
-                        SilverRupeeIndex: 1
+                        Needs: [SilverRupeeSets.MQ_SPIRIT_SILVER_RUPEES_MOVING_WALL_ROOM]
                     }
                 },
                 ItemLocations: {
@@ -7157,8 +7155,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Shadow Trial", imageName: "Shadow Medallion" },
                 Exits: {
                     shadowTrialEnd: {
-                        Map: "Ganon's Castle",
-                        SilverRupeeIndex: 1
+                        Needs: [SilverRupeeSets.MQ_GANON_SHADOW_SILVER_RUPEES]
                     }
                 },
                 ItemLocations: {

@@ -4004,7 +4004,7 @@ let StandardDungeons = {
                 UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
                 Exits: {
                     childSkulltulaInGrateRoom: {
-                        Map: "Spirit Temple",
+                        // Don't need the silver rupees - documented in the description of the skulltula item
                         NeedsAny: [Items.FAIRY_SLINGSHOT, Items.DEKU_STICK, ItemSets.FIRE_ITEMS, ItemSets.EXPLOSIVES]
                     }
                 },
@@ -4138,8 +4138,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Rooms After Silver Block", imageName: "Adult Icon" },
                 Exits: {
                     afterBoulderRoom: {
-                        Map: "Spirit Temple",
-                        SilverRupeeIndex: 2
+                        Needs: [SilverRupeeSets.SPIRIT_SILVER_RUPEES_BOULDER_ROOM]
                     }
                 },
                 ItemLocations: {
@@ -4843,8 +4842,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Block Room", imageName: "Ice Arrow" },
                 Exits: {
                     hallWayBeforeBoss: {
-                        Map: "Ice Cavern",
-                        SilverRupeeIndex: 1
+                        Needs: [SilverRupeeSets.ICE_SILVER_RUPEES_BLOCK_PUSH_ROOM]
                     }
                 },
                 ItemLocations: {
@@ -5825,11 +5823,8 @@ let StandardDungeons = {
                         Needs: [UpgradedItems.LONGSHOT]
                     },
                     waterRoom: {
-                        Map: "Training Grounds",
-                        SilverRupeeIndex: 1,
-
                         // This exit is specifically for this setting, the normal exit is from bigLavaRoomUpperBack
-                        Needs: [SettingSets.SHUFFLE_SILVER_RUPEES]
+                        Needs: [SettingSets.SHUFFLE_SILVER_RUPEES, SilverRupeeSets.GTG_SILVER_RUPEES_LAVA_ROOM]
                     }
                 },
                 ItemLocations: {
@@ -5884,7 +5879,6 @@ let StandardDungeons = {
                     hammerPillarRoom: {},
                     bigLavaRoomBack: {},
                     waterRoom: {
-                        Map: "Training Grounds",
                         Needs: [SilverRupeeSets.GTG_SILVER_RUPEES_LAVA_ROOM]
                     }
                 },
@@ -6183,8 +6177,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Forest Trial", imageName: "Forest Medallion" },
                 Exits: {
                     forestTrialEnd: {
-                        Map: "Ganon's Castle",
-                        SilverRupeeIndex: 3
+                        Needs: [SilverRupeeSets.GANON_FOREST_SILVER_RUPEES]
                     }
                 },
                 ItemLocations: {
