@@ -92,8 +92,8 @@ let Songs = {
 	EPONAS_SONG: { name: "Epona's Song", defaultNotes: "^<>^<>", divGroup: 1 },
 	SARIAS_SONG: { name: "Saria's Song", defaultNotes: "v><v><", divGroup: 1 },
 	SUNS_SONG: { name: "Sun's Song", defaultNotes: ">v^>v^", divGroup: 1 },
-	SONG_OF_STORMS: { name: "Song of Storms", defaultNotes: "Av^Av^", divGroup: 1 },
 	SONG_OF_TIME: { name: "Song of Time", defaultNotes: ">Av>Av", divGroup: 1 },
+	SONG_OF_STORMS: { name: "Song of Storms", defaultNotes: "Av^Av^", divGroup: 1 },
 	SCARECROWS_SONG: {name: "Scarecrow's Song", defaultNotes: "", divGroup: 3 },
 	
 	MINUET_OF_FOREST: { name: "Minuet of Forest", defaultNotes: "A^<><>", divGroup: 2 },
