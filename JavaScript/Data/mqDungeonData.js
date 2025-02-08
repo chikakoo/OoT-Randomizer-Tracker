@@ -3193,6 +3193,9 @@ let MQDungeons = {
                     },
                     behindGateInMidSouthRoom: {
                         NeedsAny: [Items.HOOKSHOT, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
+                    },
+                    bottomGateSwitch: {
+                        Needs: [GlitchItemSets.WEIRD_SHOT]
                     }
                 },
                 ItemLocations: {
@@ -3596,6 +3599,7 @@ let MQDungeons = {
             singleWaterPillarRoom: {
                 DisplayGroup: { groupName: "Boss Key Loop (Top West)", imageName: "Boss Key" },
                 Exits: {
+                    dragonRoom: {},
                     afterSingleWaterPillarRoomGate: {
                         NeedsAny: [Items.DINS_FIRE, GlitchItemSets.LONGSHOT_WEIRD_SHOT]
                     }
@@ -3630,6 +3634,7 @@ let MQDungeons = {
             afterSingleWaterPillarRoomGate: {
                 DisplayGroup: { groupName: "Boss Key Loop (Top West)", imageName: "Boss Key" },
                 Exits: {
+                    singleWaterPillarRoom: {},
                     bottomGateSwitch: {
                         Needs: [Equipment.IRON_BOOTS]
                     }
@@ -3647,8 +3652,14 @@ let MQDungeons = {
             bottomGateSwitch: {
                 DisplayGroup: { groupName: "Skulltula Jail Room (Low South)", imageName: "Fire Arrow" },
                 Exits: {
+                    afterSingleWaterPillarRoomGate: {
+                        // Either weird shot (which you'd use to get here), or you came from here
+                    },
                     upperTripleTorchRoom: {
-                        Needs: [Items.FIRE_ARROW, Equipment.IRON_BOOTS],
+                        Needs: [
+                            Equipment.IRON_BOOTS,
+                            [SetType.OR, Items.FIRE_ARROW, GlitchItemSets.WEIRD_SHOT]
+                        ],
                         NeedsAny: [Equipment.HOVER_BOOTS, GameStateSets.CAN_HOOK_SCARECROW]
                     },
                     roomAfterSpikes: {
