@@ -2640,6 +2640,10 @@ let StandardDungeons = {
                         Map: "Water Temple",
                         Age: Age.ADULT,
                         LockedDoor: "Locked Door on Top Floor"
+                    },
+                    outOfBoundsWithHighWater: {
+                        Age: Age.ADULT,
+                        Needs: [GlitchItemSets.WATER_HOOKSHOT_OUT_OF_BOUNDS]
                     }
                 },
                 ItemLocations: {
@@ -2832,7 +2836,11 @@ let StandardDungeons = {
                             GlitchItemSets.WEIRD_SHOT
                         ]
                     },
-                    crackedWallArea: {}
+                    crackedWallArea: {},
+                    outOfBoundsWithMidWater: {
+                        Age: Age.ADULT,
+                        Needs: [GlitchItemSets.WATER_HOOKSHOT_OUT_OF_BOUNDS]
+                    }
                 },
                 ItemLocations: {
                     "Chest Under Rising Platform in Middle Room": {
@@ -2907,6 +2915,21 @@ let StandardDungeons = {
                         LongDescription: "First, make your way to the top east wing. Push back the block and then go to the southern mid-level.<br/><br/>Shoot the eye switch then quickly longshot the target or use your hover boots to pass the gate. Go down the room and push the red block backward. Now you must make your way back around, this time pushing the block forward out of your way. Head to the right to the pots.<br/><br/>Note that alternatively, you can shoot the eye switch twice to get the block in position."
                     }
                 }
+            },
+            outOfBoundsWithHighWater: {
+                // High water can do everything mid water can in this case
+                Exits: {
+                    outOfBoundsWithMidWater: {},
+                    behindBlockArea: {}
+                },
+                ItemLocations: {}
+            },
+            outOfBoundsWithMidWater: {
+                Exits: {
+                    dragonRoom: {},
+                    bottomSouthWing: {}
+                },
+                ItemLocations: {}
             },
             roomWithManyTektitesAntechamber: {
                 DisplayGroup: { groupName: "Boss Key Loop (Low North)", imageName: "Boss Key" },
@@ -6186,7 +6209,7 @@ let StandardDungeons = {
                         MapInfo: { x: 159, y: 170, floor: "FST" },
                         Age: Age.ADULT,
                         Order: 5.1,
-                        LongDescription: "Enter the forest trial - you must first light all the torches in the room. If you have no bow, you can use Din's Fire if you light the top torch by first hooshotting to it.</br></br>This rupee is to your left as you enter. If you jump when the fans are going you'll be pushed to the next platform and can continue on."
+                        LongDescription: "Enter the forest trial - you must first light all the torches in the room. If you have no bow, you can use Din's Fire if you light the top torch by first hookshotting to it.</br></br>This rupee is to your left as you enter. If you jump when the fans are going you'll be pushed to the next platform and can continue on."
                     },
                     "Forest Silver Rupee on Right Platform": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -6230,7 +6253,7 @@ let StandardDungeons = {
                         MapInfo: { x: 178, y: 65, floor: "FST" },
                         Age: Age.ADULT,
                         Order: 6,
-                        LongDescription: "Enter the forest trial - you must first light all the torches in the room. If you have no bow, you can use Din's Fire if you light the top torch by first hooshotting to it.</br></br>The next room is difficult to do without hover boots, but it can be done if you use the fans to push you across the room (grab the one to your left first and let the fan push you to the platform). The floating rupee can be retrieved after you jump on the switch in the back of the room.<br/><br/>The pots are in the final room that unlocks."
+                        LongDescription: "Enter the forest trial - you must first light all the torches in the room. If you have no bow, you can use Din's Fire if you light the top torch by first hookshotting to it.</br></br>The next room is difficult to do without hover boots, but it can be done if you use the fans to push you across the room (grab the one to your left first and let the fan push you to the platform). The floating rupee can be retrieved after you jump on the switch in the back of the room.<br/><br/>The pots are in the final room that unlocks."
                     },
                     "Forest Trial Complete": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -6541,7 +6564,7 @@ let StandardDungeons = {
                         MapInfo: { x: 180, y: 127, floor: "LIT" },
                         Age: Age.ADULT,
                         Order: 25.1,
-                        LongDescription: "This rupee is up on the ledge in the center of the room. Use your hooshot, or perform a ground jump to get it.",
+                        LongDescription: "This rupee is up on the ledge in the center of the room. Use your hookshot, or perform a ground jump to get it.",
                         NeedsAny: [Items.HOOKSHOT, GlitchItemSets.GROUND_JUMP]
                     },
                     "Light Silver Rupee in Left Outer Alcove": {

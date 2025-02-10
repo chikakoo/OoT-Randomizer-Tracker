@@ -409,6 +409,9 @@ let GlitchItemSets = {
         Items.BOMBCHU.playerHas,
     WATER_JUMP_TO_WATERFALL_LEDGE: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.waterBKShortcut,
+    WATER_HOOKSHOT_OUT_OF_BOUNDS: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.waterHookshotOutOfBounds &&
+        ItemData.canUse(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS, GameStateSets.WATER_TEMPLE_TUNIC_CHECK]),
     MQ_WATER_WATERFALL_ROOM_WITH_HOVER_BOOTS: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.mqWaterWaterfallWithHovers &&
         ItemData.canUse(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]),
