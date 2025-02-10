@@ -70,7 +70,11 @@ let StandardDungeons = {
                 }
             },
             upperFloor: {
-                DisplayGroup: { groupName: "Upper Floor", imageName: "Compass" },
+                DisplayGroup: { 
+                    groupName: "Upper Floor", 
+                    imageName: "Compass",
+                    description: "Climb the vines to reach the upper floor.\x0A\x0ACompass room: Go around the upper floor and enter the door."
+                },
                 Exits: {},
                 ItemLocations: {
                     "Compass Chest": {
@@ -78,21 +82,21 @@ let StandardDungeons = {
                         MapInfo: { x: 16, y: 147, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 5,
-                        LongDescription: "Make your way to the top floor. Go around the room until you find the door. Hit the switch and jump on the platforms to the opposite side of the room for this chest.",
+                        LongDescription: "Hit the switch and jump on the platforms to the opposite side of the room for this chest.",
                     },
                     "Compass Side Room Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 115, y: 199, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 6,
-                        LongDescription: "Make your way to the top floor. Go around the room until you find the door. Hit the switch and jump on the platforms to the left side room for this chest. You do not need to kill the giant skulltula if you jump far enough to the left.",
+                        LongDescription: "Hit the switch and jump on the platforms to the left side room for this chest. You do not need to kill the giant skulltula if you jump far enough to the left.",
                     },
                     "Skulltula in Compass Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 115, y: 207, floor: "F3" },
                         Age: Age.EITHER,
                         Order: 7,
-                        LongDescription: "Make your way to the top floor. Go around the room until you find the door. Hit the switch and jump on the platforms to the left side room for this skulltula. You do not need to kill the giant skulltula if you jump far enough to the left."
+                        LongDescription: "Hit the switch and jump on the platforms to the left side room for this skulltula. You do not need to kill the giant skulltula if you jump far enough to the left."
                     },
                     "Heart in Upper Lobby": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -106,7 +110,11 @@ let StandardDungeons = {
                 }
             },
             basementBottom: {
-                DisplayGroup: { groupName: "Basement", imageName: "Deku Stick" },
+                DisplayGroup: { 
+                    groupName: "Basement", 
+                    imageName: "Deku Stick",
+                    description: "From the top floor, either kill or stun one one of the giant skulltulas. Jump toward the center of the room and immediately let go of the joystick. You should fall to the basement. If you can use Din's Fire, you can use that instead."
+                },
                 Exits: {
                     basementBack: {
                         NeedsAny: [QPAItemSets.HIGH_SWITCH_QPA,
@@ -123,21 +131,21 @@ let StandardDungeons = {
                         MapInfo: { x: 343, y: 81, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 9,
-                        LongDescription: "From the top floor, either kill or stun one one of the giant skulltulas. Jump toward the center of the room and immediately let go of the joystick. You should fall to the basement. If you can use Din's Fire, you can use that instead. The chest is on the platform to the left of the vines."
+                        LongDescription: "The chest is on the platform to the left of the vines."
                     },
                     "Skulltula on Basement Gate": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 297, y: 51, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 10,
-                        LongDescription: "This skulltula is in the in the basement you enter when you go in the first pit. If you face the vines, it's the one on the wall to the left."
+                        LongDescription: "If you face the vines, the skulltula is on the wall to the left."
                     },
                     "Skulltula on Basement Vines": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 348, y: 104, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 11,
-                        LongDescription: "This skulltula is the one on the vines in the first basement floor. A well-angled jumpslash from a deku stick can hit it. You can also use the slingshot, boomerang, or a well-timed bomb.",
+                        LongDescription: "This skulltula is the one on the vines. A well-angled jumpslash from a deku stick can hit it. You can also use the slingshot, boomerang, or a well-timed bomb.",
                         ChildNeedsAny: [Items.DEKU_STICK, Items.FAIRY_SLINGSHOT, Items.BOOMERANG, Items.BOMB]
                     }
                 }
@@ -189,7 +197,11 @@ let StandardDungeons = {
                 }
             },
             lowerBasement: {
-                DisplayGroup: { groupName: "Boss Floor", imageName: "Kokiri's Emerald" },
+                DisplayGroup: { 
+                    groupName: "Boss Floor", 
+                    imageName: "Kokiri's Emerald",
+                    description: "Burn the web in the basement with a stick, or fire item, then jump in the hole to reach this location."
+                },
                 Exits: {
                     bossRoom: {
                         NeedsAny: [
@@ -222,7 +234,7 @@ let StandardDungeons = {
                         AdultNeeds: [Equipment.HYLIAN_SHIELD],
                         Age: Age.EITHER,
                         Order: 13.1,
-                        LongDescription: "Mark this after stunning the scrubs in the 2, 3, 1 order.",
+                        LongDescription: "Mark this after stunning the scrubs in the 2, 3, 1 order (3, 1, 2 in MQ).",
                     }
                 }
             },
