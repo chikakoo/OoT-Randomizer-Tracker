@@ -2705,6 +2705,10 @@ let StandardDungeons = {
                     roomWithManyTektitesAntechamber: {},
                     crackedWallArea: {
                         Needs: [GlitchItemSets.WATER_BOMBABLE_WALL_EARLY]
+                    },
+                    outOfBoundsWithLowWater: {
+                        Age: Age.ADULT,
+                        Needs: [GlitchItemSets.WATER_HOOKSHOT_OUT_OF_BOUNDS_LOW_WATER]
                     }
                 },
                 ItemLocations: {
@@ -2752,8 +2756,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 23,
                         MapInfo: {x: 333, y: 131, floor: "F2" },
-                        LongDescription: "After raising the water to mid level, make your way back toward the low level room. This time, you won't float up all the way to the top. In this room, you will see a cracked wall. Bomb it to get to a chest.",
-                        Needs: [Songs.ZELDAS_LULLABY, ItemSets.EXPLOSIVES],
+                        LongDescription: "After raising the water to mid level, make your way back toward the low level room. This time, you won't float up all the way to the top. In this room, you will see a cracked wall. Bomb it to get to a chest."
                     }
                 }
             },
@@ -2848,7 +2851,9 @@ let StandardDungeons = {
                             GlitchItemSets.WEIRD_SHOT
                         ]
                     },
-                    crackedWallArea: {},
+                    crackedWallArea: {
+                        Needs: [ItemSets.EXPLOSIVES]
+                    },
                     outOfBoundsWithMidWater: {
                         Age: Age.ADULT,
                         Needs: [GlitchItemSets.WATER_HOOKSHOT_OUT_OF_BOUNDS]
@@ -2932,6 +2937,7 @@ let StandardDungeons = {
                 // High water can do everything mid water can in this case
                 Exits: {
                     outOfBoundsWithMidWater: {},
+                    crackedWallArea: {},
                     behindBlockArea: {}
                 },
                 ItemLocations: {}
@@ -2939,7 +2945,19 @@ let StandardDungeons = {
             outOfBoundsWithMidWater: {
                 Exits: {
                     dragonRoom: {},
-                    bottomSouthWing: {}
+                    bottomSouthWing: {},
+                    behindBlockArea: {
+                        NeedsAny: [Equipment.STRENGTH, GlitchItemSets.WEIRD_SHOT]
+                    }
+                },
+                ItemLocations: {}
+            },
+            outOfBoundsWithLowWater: {
+                Exits: {
+                    dragonRoom: {},
+                    behindBlockArea: {
+                        NeedsAny: [Equipment.STRENGTH, GlitchItemSets.WEIRD_SHOT]
+                    }
                 },
                 ItemLocations: {}
             },

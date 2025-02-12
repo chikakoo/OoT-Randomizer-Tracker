@@ -396,7 +396,9 @@ let GlitchItemSets = {
         ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB]),
 
     // Water Temple
-    WATER_BOMBABLE_WALL_EARLY: () => Settings.GlitchesToAllow.waterBombableWallEarly,
+    WATER_BOMBABLE_WALL_EARLY: (age) => 
+        Settings.GlitchesToAllow.waterBombableWallEarly &&
+        ItemData.canUse(age, [ItemSets.EXPLOSIVES]),
     WATER_HOOKSHOT_TO_FLOOR_1: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.waterHookshotToFloor1 &&
         ItemData.canUse(age, Items.HOOKSHOT),
@@ -412,6 +414,9 @@ let GlitchItemSets = {
     WATER_HOOKSHOT_OUT_OF_BOUNDS: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.waterHookshotOutOfBounds &&
         ItemData.canUse(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS, GameStateSets.WATER_TEMPLE_TUNIC_CHECK]),
+    WATER_HOOKSHOT_OUT_OF_BOUNDS_LOW_WATER: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.waterHookshotOutOfBounds &&
+        ItemData.canUse(age, [Items.HOOKSHOT]),
     MQ_WATER_WATERFALL_ROOM_WITH_HOVER_BOOTS: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.mqWaterWaterfallWithHovers &&
         ItemData.canUse(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]),
