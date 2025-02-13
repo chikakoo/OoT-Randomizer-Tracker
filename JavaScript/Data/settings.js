@@ -164,6 +164,11 @@ let Settings = {
 		difficultBoomerangTrickThrows: false,
 		breakBeehivesWithBombs: true,
 		breakBeehivesWithChus: true,
+
+		// HF/Market/Castle
+		doorOfTimeSkip: false,
+		doubleDefenseEarly: false,
+		adultGrottoByGVWithoutHammer: false,
 		
 		// Kakariko/Graveyard
 		watchtowerSkullJumpslash: false,
@@ -322,11 +327,7 @@ let Settings = {
 		ganonSpiritHookshotless: false,
 		ganonLightTrialSuperslideSkip: false,
 		ganonLightTrailEssSkip: false,
-		ganonTrialSkip: false,
-		
-		// Other
-		doorOfTimeSkip: false,
-		doubleDefenseEarly: false
+		ganonTrialSkip: false
 	},
 	
 	/**

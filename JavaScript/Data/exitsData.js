@@ -427,7 +427,7 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "Near the entrance to Gerudo Valley, there's a circle of small rocks. As a child, you can bomb the center to reveal a grotto. As adult, you must hammer the red rock.",
             ChildNeeds: [ItemSets.BLAST_OR_SMASH_ITEMS],
-            AdultNeeds: [Items.MEGATON_HAMMER]
+            AdultNeedsAny: [Items.MEGATON_HAMMER, GlitchItemSets.ADULT_GROTTO_BY_GV_WITHOUT_HAMMER]
         },
 
         // South

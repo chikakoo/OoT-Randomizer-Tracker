@@ -353,7 +353,7 @@
 					</div>
 				</div>
 				
-				<!--  Progression -->
+				<!-- Progression -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsGroupProgressionContainer")' settings>Progression</span>
 					<div id="settingsGroupProgressionContainer">
@@ -526,7 +526,7 @@
 					</div>
 				</div>
 				
-				<!--  Logic Settings -->
+				<!-- Logic Settings -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsGroupLogicContainer")' settings>Logic</span>
 					<div id="settingsGroupLogicContainer">
@@ -740,110 +740,122 @@
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsCommonItemsContainer")' settings>Common/Misc</span>
 					<div id="settingsCommonItemsContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("ocarinaItems", event)'
-						title="Requires a bottle and some item to play. Skips needing to use an Ocarina to play songs.">
-						<input type="checkbox" name="ocarinaItems" value="ocarinaItems">
-						Ocarina Items
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("difficultOcarinaItems", event)'
-						title="This is for harder areas to execute the ocarina items glitch - includes the Skull Kid ocarina minigame and the Skull Kid you play Saria's Song for.">
-						<input type="checkbox" name="difficultOcarinaItems" value="difficultOcarinaItems">
-						Harder Ocarina Items
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("megaFlip", event)'
-						title="Requires a shield you can hold in front of you, and some kind of explosive. Results in a backflip with a ton of distance, allowing you to reach certain places early.">
-						<input type="checkbox" name="megaFlip" value="megaFlip">
-						Mega Flip
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("isg", event)'
-						title="Requires a sword and a shield. Interrupt a crouch stab with an A butotn action or Navi text on the correct frame.">
-						<input type="checkbox" name="isg" value="isg">
-						Infinite Sword Glitch
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("qpa", "https://www.zeldaspeedruns.com/oot/tech/quick-putaway-glitched-damage-value", event)'
-						title="WITH A SHORT LEDGE: At a ledge you fall down but can't grab, slowly walk off (value of 27 is high enough); press A for one frame; press B or your sword item (to jumpslash) on the next frame; it worked if you jumpslash with no item&#013;&#013;WITH A CUTSCENE ITEM: Take out a deku stick and wait for the Put Away option; press A to put it away, and press the cutscene item on the next frame&#013;&#013;Note that most torches can be lit as c]Child by getting ISG and backflipping into them.">
-						<input type="checkbox" name="qpa" value="qpa">
-						🔗Quick Putaway
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("flameStorage", event)'
-						title="Take your stick out and put it away by a torch at the right timing. The next time you take it out, it will be lit, as long as the torch is still loaded.">
-						<input type="checkbox" name="flameStorage" value="flameStorage">
-						Flame Storage
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("groundJump", event)'
-						title="Requires a shield and an explosive - shield the explosive after you've tried to pick it up. Your next backflip will now be straight up.">
-						<input type="checkbox" name="groundJump" value="groundJump">
-						Ground Jump
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("staircaseHover", event)'
-						title="Uses two bombs and ISG to gain some height so that a backflip can collect items or cross walls that are too high up.">
-						<input type="checkbox" name="staircaseHover" value="staircaseHover">
-						Staircase Hover
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("bombSuperslide", event)'
-						title="Requires bombs and a shield to do a superslide to move backwards very quickly.">
-						<input type="checkbox" name="bombSuperslide" value="bombSuperslide">
-						Bomb Superslide
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("hammerHoverBootsSuperslide", event)'
-						title="Hit a wall and equip hover boots on the right frame to slide backwards really quickly to cross gaps.">
-						<input type="checkbox" name="hammerHoverBootsSuperslide" value="hammerHoverBootsSuperslide">
-						Hammer & Hover Boots Superslide
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("equipSwap", "https://youtube.com/shorts/-TU2NRzkMp8", event)'
-						title="Mouse over the item you want to equip; advance the screen; advance back to the items; on the right frame, press up left or up right (toward the item menu) and a c-button to equip that item.&#013;&#013;Timing: When the farthest side edge (i.e. on the right screen, use the left edge) of the item name box on the bottom lines up with the corner of the pause menu.">
-						<input type="checkbox" name="equipSwap" value="equipSwap">
-						🔗Equip Swap
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("forceAdultDekuStickEquip", event)'
-						title="Enable this if you have deku sticks equipped, but got equip-swapped blocked by a child trade item or magic beans.">
-						<input type="checkbox" name="forceAdultDekuStickEquip" value="forceAdultDekuStickEquip">
-						Force Adult Deku Stick Equip
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("forceAdultSlingshotEquip", event)'
-						title="Enable this if you have slingshot equipped, but got equip-swapped blocked by a child trade item or magic beans.">
-						<input type="checkbox" name="forceAdultSlingshotEquip" value="forceAdultSlingshotEquip">
-						Force Adult Slingshot Equip
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("forceAdultBoomerangEquip", event)'
-						title="Enable this if you have boomerang equipped, but got equip-swapped blocked by a child trade item or magic beans.">
-						<input type="checkbox" name="forceAdultBoomerangEquip" value="forceAdultBoomerangEquip">
-						Force Adult Boomerang Equip
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("weirdShot", "https://youtu.be/x08fkfU2124", event)'
-						title="Bonk on a wall; shield drop bomb, roll, backflip; when bomb almost explodes, roll foward holding down, Z, R, hookshot; release R and Z one after another at the right time">
-						<input type="checkbox" name="weirdShot" value="weirdShot">
-						🔗Weird Shot
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("boomerangThroughWalls", event)'
-						title="Used in various places to throw a boomerang at an angle to snag items through walls or rocks.">
-						<input type="checkbox" name="boomerangThroughWalls" value="boomerangThroughWalls">
-						Boomerang Items Through Walls
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("difficultBoomerangTrickThrows", event)'
-						title="Used in various places to throw a boomerang to retrieve freestanding items.">
-						<input type="checkbox" name="difficultBoomerangTrickThrows" value="difficultBoomerangTrickThrows">
-						Difficult Boomerang Trick Throws
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("breakBeehivesWithBombs", event)'
-						title="Cook a bomb long enough to blow up beehives. In each case, throw the bomb at the beehive so that it blows up on it.">
-						<input type="checkbox" name="breakBeehivesWithBombs" value="breakBeehivesWithBombs">
-						Break Beehives with Bombs
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("breakBeehivesWithChus", event)'
-						title="Cook a bombchu long enough to blow up beehives. Each check should have a rough timing in its description.">
-						<input type="checkbox" name="breakBeehivesWithChus" value="breakBeehivesWithChus">
-						Break Beehives with Bombchus
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("doorOfTimeSkip", event)'
-						title="Requires the Kokiri Sword. Lets you skip getting the Song of Time and an Ocarina to get past the Door of Time. Pointless if Open Door of Time is on.">
-						<input type="checkbox" name="doorOfTimeSkip" value="doorOfTimeSkip">
-						Door of Time Skip
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("doubleDefenseEarly", "https://www.youtube.com/watch?v=omUKghUMFsU", event)'
-						title="1. Get into the right corner; C-up and line up so the right edge of the sword icon is covered by the wall; crouch-stab; on the first recoil frame, equip hovers and hold left&#013;&#013;2. Get into the left corner and target the wall; turn right (you can get out of the corner to do the next part now, just hold the angle); right ess turn x1 if using a bomb, x2 if using a chu; get back in the corner if you aren't there; pull your explosive and let it explode">
-						<input type="checkbox" name="doubleDefenseEarly" value="doubleDefenseEarly">
-						🔗Double Defense Early
-					</label>
+							title="Requires a bottle and some item to play. Skips needing to use an Ocarina to play songs.">
+							<input type="checkbox" name="ocarinaItems" value="ocarinaItems">
+							Ocarina Items
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("difficultOcarinaItems", event)'
+							title="This is for harder areas to execute the ocarina items glitch - includes the Skull Kid ocarina minigame and the Skull Kid you play Saria's Song for.">
+							<input type="checkbox" name="difficultOcarinaItems" value="difficultOcarinaItems">
+							Harder Ocarina Items
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("megaFlip", event)'
+							title="Requires a shield you can hold in front of you, and some kind of explosive. Results in a backflip with a ton of distance, allowing you to reach certain places early.">
+							<input type="checkbox" name="megaFlip" value="megaFlip">
+							Mega Flip
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("isg", event)'
+							title="Requires a sword and a shield. Interrupt a crouch stab with an A butotn action or Navi text on the correct frame.">
+							<input type="checkbox" name="isg" value="isg">
+							Infinite Sword Glitch
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("qpa", "https://www.zeldaspeedruns.com/oot/tech/quick-putaway-glitched-damage-value", event)'
+							title="WITH A SHORT LEDGE: At a ledge you fall down but can't grab, slowly walk off (value of 27 is high enough); press A for one frame; press B or your sword item (to jumpslash) on the next frame; it worked if you jumpslash with no item&#013;&#013;WITH A CUTSCENE ITEM: Take out a deku stick and wait for the Put Away option; press A to put it away, and press the cutscene item on the next frame&#013;&#013;Note that most torches can be lit as c]Child by getting ISG and backflipping into them.">
+							<input type="checkbox" name="qpa" value="qpa">
+							🔗Quick Putaway
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("flameStorage", event)'
+							title="Take your stick out and put it away by a torch at the right timing. The next time you take it out, it will be lit, as long as the torch is still loaded.">
+							<input type="checkbox" name="flameStorage" value="flameStorage">
+							Flame Storage
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("groundJump", event)'
+							title="Requires a shield and an explosive - shield the explosive after you've tried to pick it up. Your next backflip will now be straight up.">
+							<input type="checkbox" name="groundJump" value="groundJump">
+							Ground Jump
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("staircaseHover", event)'
+							title="Uses two bombs and ISG to gain some height so that a backflip can collect items or cross walls that are too high up.">
+							<input type="checkbox" name="staircaseHover" value="staircaseHover">
+							Staircase Hover
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("bombSuperslide", event)'
+							title="Requires bombs and a shield to do a superslide to move backwards very quickly.">
+							<input type="checkbox" name="bombSuperslide" value="bombSuperslide">
+							Bomb Superslide
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("hammerHoverBootsSuperslide", event)'
+							title="Hit a wall and equip hover boots on the right frame to slide backwards really quickly to cross gaps.">
+							<input type="checkbox" name="hammerHoverBootsSuperslide" value="hammerHoverBootsSuperslide">
+							Hammer & Hover Boots Superslide
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("equipSwap", "https://youtube.com/shorts/-TU2NRzkMp8", event)'
+							title="Mouse over the item you want to equip; advance the screen; advance back to the items; on the right frame, press up left or up right (toward the item menu) and a c-button to equip that item.&#013;&#013;Timing: When the farthest side edge (i.e. on the right screen, use the left edge) of the item name box on the bottom lines up with the corner of the pause menu.">
+							<input type="checkbox" name="equipSwap" value="equipSwap">
+							🔗Equip Swap
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("forceAdultDekuStickEquip", event)'
+							title="Enable this if you have deku sticks equipped, but got equip-swapped blocked by a child trade item or magic beans.">
+							<input type="checkbox" name="forceAdultDekuStickEquip" value="forceAdultDekuStickEquip">
+							Force Adult Deku Stick Equip
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("forceAdultSlingshotEquip", event)'
+							title="Enable this if you have slingshot equipped, but got equip-swapped blocked by a child trade item or magic beans.">
+							<input type="checkbox" name="forceAdultSlingshotEquip" value="forceAdultSlingshotEquip">
+							Force Adult Slingshot Equip
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("forceAdultBoomerangEquip", event)'
+							title="Enable this if you have boomerang equipped, but got equip-swapped blocked by a child trade item or magic beans.">
+							<input type="checkbox" name="forceAdultBoomerangEquip" value="forceAdultBoomerangEquip">
+							Force Adult Boomerang Equip
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("weirdShot", "https://youtu.be/x08fkfU2124", event)'
+							title="Bonk on a wall; shield drop bomb, roll, backflip; when bomb almost explodes, roll foward holding down, Z, R, hookshot; release R and Z one after another at the right time">
+							<input type="checkbox" name="weirdShot" value="weirdShot">
+							🔗Weird Shot
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("boomerangThroughWalls", event)'
+							title="Used in various places to throw a boomerang at an angle to snag items through walls or rocks.">
+							<input type="checkbox" name="boomerangThroughWalls" value="boomerangThroughWalls">
+							Boomerang Items Through Walls
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("difficultBoomerangTrickThrows", event)'
+							title="Used in various places to throw a boomerang to retrieve freestanding items.">
+							<input type="checkbox" name="difficultBoomerangTrickThrows" value="difficultBoomerangTrickThrows">
+							Difficult Boomerang Trick Throws
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("breakBeehivesWithBombs", event)'
+							title="Cook a bomb long enough to blow up beehives. In each case, throw the bomb at the beehive so that it blows up on it.">
+							<input type="checkbox" name="breakBeehivesWithBombs" value="breakBeehivesWithBombs">
+							Break Beehives with Bombs
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("breakBeehivesWithChus", event)'
+							title="Cook a bombchu long enough to blow up beehives. Each check should have a rough timing in its description.">
+							<input type="checkbox" name="breakBeehivesWithChus" value="breakBeehivesWithChus">
+							Break Beehives with Bombchus
+						</label>
+					</div>
+				</div>
+
+				<!-- Hyrule Field/ToT/Castle -->
+				<div class="settings-group">
+					<span onclick='SettingsPage.showOrHideGroup(event, "settingsHFMarketCastleContainer")' settings>HF/Market/Castle</span>
+					<div id="settingsHFMarketCastleContainer">
+						<label onclick='SettingsPage.setBooleanValueForGlitches("doorOfTimeSkip", event)'
+							title="Requires the Kokiri Sword. Lets you skip getting the Song of Time and an Ocarina to get past the Door of Time. Pointless if Open Door of Time is on.">
+							<input type="checkbox" name="doorOfTimeSkip" value="doorOfTimeSkip">
+							Door of Time Skip
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("doubleDefenseEarly", "https://www.youtube.com/watch?v=omUKghUMFsU", event)'
+							title="1. Get into the right corner; C-up and line up so the right edge of the sword icon is covered by the wall; crouch-stab; on the first recoil frame, equip hovers and hold left&#013;&#013;2. Get into the left corner and target the wall; turn right (you can get out of the corner to do the next part now, just hold the angle); right ess turn x1 if using a bomb, x2 if using a chu; get back in the corner if you aren't there; pull your explosive and let it explode">
+							<input type="checkbox" name="doubleDefenseEarly" value="doubleDefenseEarly">
+							🔗Double Defense Early
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("adultGrottoByGVWithoutHammer", "https://youtu.be/3eVAxXI-4Yc?si=hj0gWviYVCf2CpHk", event)'
+							title="Blow up hole under rock; line up with fifth fence post and climb up/jump off; backwalk to align with fence; shield drop bomb and instant backflip; immediately left/right sidehop; hold up to climb fence; RELEASE UP when climb starts, and hold shield; backflip off fence; backflip to hole">
+							<input type="checkbox" name="adultGrottoByGVWithoutHammer" value="adultGrottoByGVWithoutHammer">
+							🔗Adult Grotto by GV Without Hammer
+						</label>
 					</div>
 				</div>
 				
@@ -852,50 +864,50 @@
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsKakarikoContainer")' settings>Kakariko/Graveyard</span>
 					<div id="settingsKakarikoContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("watchtowerSkullJumpslash", event)'
-						title="This is a jumpslash to kill the skulltula on the watchtower without a ranged weapon.">
-						<input type="checkbox" name="watchtowerSkullJumpslash" value="watchtowerSkullJumpslash">
-						Jumpslash to kill watchtower skulltula
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("windmillHPWithNothing", event)'
-						title="This is a couple jumps you can do in the windmill to get the heart piece as Adult without needing to get there via the Dampe race.">
-						<input type="checkbox" name="windmillHPWithNothing" value="windmillHPWithNothing">
-						Windmill Heart Piece Without Items as Adult
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("kakShopClips", event)'
-						title="This takes advantage of acute angles and allows child Link access to both Kakariko village shops and adult access to the archery and back of potion shop at night.">
-						<input type="checkbox" name="kakShopClips" value="kakShopClips">
-						Kakariko Shops Clips
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("botwAsChildWithCucco", event)'
-						title="Get ISG off a cucco and use it to get to the well without draining the water.">
-						<input type="checkbox" name="botwAsChildWithCucco" value="botwAsChildWithCucco">
-						Well as Child with Cucco
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("botwAsAdultWithCucco", event)'
-						title="Longshot up the windmill. Using hover boots, pick up the cucco and navigate behind you. Jumpslash at the fence to get thorough and pick up the cucco. Now backwalk off with hover boots and navigate to the well loading zone.">
-						<input type="checkbox" name="botwAsAdultWithCucco" value="botwAsAdultWithCucco">
-						Well as Adult with Cucco
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("boomerangGraveyardHP", event)'
-						title="This is a precise angle followed by a series of sidehops and backflips to nab the heart piece on the cliff using the boomerang. Can also grab the freestanding item if you break the crate with chus (drop at 5th red flash).">
-						<input type="checkbox" name="boomerangGraveyardHP" value="boomerangGraveyardHP">
-						Graveyard Box Heart Piece with Boomerang
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("unloadGrave", event)'
-						title="This is to get into the Royal Family Tomb without Zelda's Lullaby, or Dampe's grave as Child. If you load and unload the grave from the top of the graveyard enough times, it will be gone.">
-						<input type="checkbox" name="unloadGrave" value="unloadGrave">
-						Unload Royal Family's Tomb/Dampe's Grave
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("oldShadowEarly", event)'
-						title="This uses an explosive to get to the seam near the heart piece box. You then seamwalk all the way to the temple.">
-						<input type="checkbox" name="oldShadowEarly" value="oldShadowEarly">
-						Old Shadow Temple Early Method
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("hookshotJump", "https://youtu.be/HTU0fKl-6uQ", event)'
-						title="Hookshot in hand, get in the corner by the shed; sidehop right; hold up, A to roll, release up, spam hookshot - you should now be in a weird animation; on or after the third cycle, press hookshot right before the red dot appears; if it works, hold down just before you start descending; ISG off the poe and go to shadow normally">
-						<input type="checkbox" name="hookshotJump" value="hookshotJump">
-						🔗Hookshot Jump for Shadow Temple Early
-					</label>
+							title="This is a jumpslash to kill the skulltula on the watchtower without a ranged weapon.">
+							<input type="checkbox" name="watchtowerSkullJumpslash" value="watchtowerSkullJumpslash">
+							Jumpslash to kill watchtower skulltula
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("windmillHPWithNothing", event)'
+							title="This is a couple jumps you can do in the windmill to get the heart piece as Adult without needing to get there via the Dampe race.">
+							<input type="checkbox" name="windmillHPWithNothing" value="windmillHPWithNothing">
+							Windmill Heart Piece Without Items as Adult
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("kakShopClips", event)'
+							title="This takes advantage of acute angles and allows child Link access to both Kakariko village shops and adult access to the archery and back of potion shop at night.">
+							<input type="checkbox" name="kakShopClips" value="kakShopClips">
+							Kakariko Shops Clips
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("botwAsChildWithCucco", event)'
+							title="Get ISG off a cucco and use it to get to the well without draining the water.">
+							<input type="checkbox" name="botwAsChildWithCucco" value="botwAsChildWithCucco">
+							Well as Child with Cucco
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("botwAsAdultWithCucco", event)'
+							title="Longshot up the windmill. Using hover boots, pick up the cucco and navigate behind you. Jumpslash at the fence to get thorough and pick up the cucco. Now backwalk off with hover boots and navigate to the well loading zone.">
+							<input type="checkbox" name="botwAsAdultWithCucco" value="botwAsAdultWithCucco">
+							Well as Adult with Cucco
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("boomerangGraveyardHP", event)'
+							title="This is a precise angle followed by a series of sidehops and backflips to nab the heart piece on the cliff using the boomerang. Can also grab the freestanding item if you break the crate with chus (drop at 5th red flash).">
+							<input type="checkbox" name="boomerangGraveyardHP" value="boomerangGraveyardHP">
+							Graveyard Box Heart Piece with Boomerang
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("unloadGrave", event)'
+							title="This is to get into the Royal Family Tomb without Zelda's Lullaby, or Dampe's grave as Child. If you load and unload the grave from the top of the graveyard enough times, it will be gone.">
+							<input type="checkbox" name="unloadGrave" value="unloadGrave">
+							Unload Royal Family's Tomb/Dampe's Grave
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("oldShadowEarly", event)'
+							title="This uses an explosive to get to the seam near the heart piece box. You then seamwalk all the way to the temple.">
+							<input type="checkbox" name="oldShadowEarly" value="oldShadowEarly">
+							Old Shadow Temple Early Method
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("hookshotJump", "https://youtu.be/HTU0fKl-6uQ", event)'
+							title="Hookshot in hand, get in the corner by the shed; sidehop right; hold up, A to roll, release up, spam hookshot - you should now be in a weird animation; on or after the third cycle, press hookshot right before the red dot appears; if it works, hold down just before you start descending; ISG off the poe and go to shadow normally">
+							<input type="checkbox" name="hookshotJump" value="hookshotJump">
+							🔗Hookshot Jump for Shadow Temple Early
+						</label>
 					</div>
 				</div>
 				
@@ -1084,8 +1096,8 @@
 							<input type="checkbox" name="childLakesideLabClip" value="childLakesideLabClip">
 							Child Lakeside Lab Clip
 						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("adultWaterTempleClip", "https://youtu.be/wsbAfbVWn0A?si=Zeyv2o-JtJPudEB9", event)'
-							title="Target the back side of the fire arrow tablet; sidehop right; sideroll (hold target); sidehop left; turn left; dry roll; backflip and pull sword midair; 3x ess right; 3 sidehops right; backwalk, keep holding down; a bit after you touch the ground and keep falling, B to jumpslash (2 frame window); rotate to left then up quickly during jumpslash; swim to entrance">
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("adultWaterTempleClip", "https://youtu.be/xORo1AjwxyQ?si=jtyt-yQGRI5cP4WX&t=11", event)'
+							title="With water drained, climb the ledge to the right of the ZD entrance. Sidehop left into the wall. Turn right. Ledge clip and swim to the right side of the water in the center of the lake. Navigate out of bounds through the wall to the temple.">
 							<input type="checkbox" name="adultWaterTempleClip" value="adultWaterTempleClip">
 							🔗Adult Water Temple Clip
 						</label>

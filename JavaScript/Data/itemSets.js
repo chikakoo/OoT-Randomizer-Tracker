@@ -166,6 +166,14 @@ let GlitchItemSets = {
         Settings.GlitchesToAllow.flameStorage &&
         ItemData.canUse(age, Items.DEKU_STICK),
 
+    // HF / Market / Castle
+    DOUBLE_DEFENSE_EARLY: (age) => Settings.GlitchesToAllow.doubleDefenseEarly &&
+        ItemData.canUse(age, ItemSets.EXPLOSIVES) ||
+        ItemData.canUse(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]),
+    ADULT_GROTTO_BY_GV_WITHOUT_HAMMER: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.adultGrottoByGVWithoutHammer &&
+        ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]),
+
 	// Forest / Woods
     POKEY_SKIP: (age) => 
         Settings.GlitchesToAllow.pokeySkip && 
@@ -193,11 +201,6 @@ let GlitchItemSets = {
             [SetType.OR, Items.HOOKSHOT, GlitchItemSets.BOOMERANG_TRICK_THROWS] // Get token
         ]),
     PRESSURE_JUMP: (age) => Settings.GlitchesToAllow.lwBridgePressureJump && Items.BOMB.playerHas,
-
-    // Castle
-    DOUBLE_DEFENSE_EARLY: (age) => Settings.GlitchesToAllow.doubleDefenseEarly &&
-        ItemData.canUse(age, ItemSets.EXPLOSIVES) ||
-        ItemData.canUse(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]),
 
 	// Kakariko/Graveyard
     KAK_SHOP_CLIPS: (age) => 
