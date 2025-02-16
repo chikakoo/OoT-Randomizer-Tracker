@@ -912,13 +912,15 @@ GrottoGroups = {
 		buttons: {
 			"Skull Mask Item": {
 				icon: "Skull Mask",
-				Age: Age.CHILD,
+				Age: Age.EITHER,
+				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
 				LongDescription: "Wear the Skull Mask and stand front and center near the entrance.",
 				Needs: [ChildTradeItems.SKULL_MASK]
 			},
 			"Mask of Truth Item": {
 				icon: "Mask of Truth",
-				Age: Age.CHILD,
+				Age: Age.EITHER,
+				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
 				LongDescription: "Wear the Mask of Truth and stand front and center near the entrance.",
 				Needs: [ChildTradeItems.MASK_OF_TRUTH]
 			}

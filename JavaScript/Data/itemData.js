@@ -611,10 +611,8 @@ let ItemData = {
 		switch(item) {
 			// Child Only
 			case ChildTradeItems.KEATON_MASK:
-			case ChildTradeItems.SKULL_MASK:
 			case ChildTradeItems.SPOOKY_MASK:
 			case ChildTradeItems.BUNNY_HOOD:
-			case ChildTradeItems.MASK_OF_TRUTH:
 			case ChildTradeItems.COSMETIC_MASKS:
 			case Equipment.KOKIRI_SWORD:
 			case Equipment.DEKU_SHIELD:
@@ -677,6 +675,8 @@ let ItemData = {
 					Data.canEquipSwap(age);
 			case ChildTradeItems.WEIRD_EGG:
 			case ChildTradeItems.ZELDAS_LETTER:
+			case ChildTradeItems.SKULL_MASK:
+			case ChildTradeItems.MASK_OF_TRUTH:
 				// For thawing King Zora
 				// TODO: maybe make a setting for force child trade item equipped - may be overkill though
 				return age === Age.CHILD || Data.canEquipSwap(age);

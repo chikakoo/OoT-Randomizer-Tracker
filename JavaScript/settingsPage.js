@@ -11,6 +11,7 @@ let SettingsPage = {
 
     _glitchesSettingsGroupids: [
         "settingsCommonItemsContainer",
+        "settingsHFMarketCastleContainer",
         "settingsKakarikoContainer",
         "settingsForestContainer",
         "settingsMountainContainer",
