@@ -1862,7 +1862,7 @@ let MapLocations = {
                 Exits: {
                     windmillTop: {
                         ChildNeeds: [GlitchItemSets.GROUND_JUMP],
-                        AdultNeeds: [Songs.SONG_OF_TIME]
+                        AdultNeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.ADULT_DAMPE_RACE_SOT_BLOCK_CLIP]
                     },
                     "Grave Exit": {
                         OwExit: OwExits["Windmill-Kak Potion"]["Grave Exit"]

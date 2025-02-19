@@ -209,6 +209,9 @@ let GlitchItemSets = {
     PRESSURE_JUMP: (age) => Settings.GlitchesToAllow.lwBridgePressureJump && Items.BOMB.playerHas,
 
 	// Kakariko/Graveyard
+    ADULT_DAMPE_RACE_SOT_BLOCK_CLIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.dampeSoTBlockClip &&
+        ItemData.canUse(age, ItemSets.EXPLOSIVES),
     KAK_SHOP_CLIPS: (age) => 
         Settings.GlitchesToAllow.kakShopClips && 
         ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS),
