@@ -160,6 +160,7 @@ let Settings = {
 		forceAdultSlingshotEquip: false,
 		forceAdultBoomerangEquip: false,
 		weirdShot: false,
+		hookshotExtensionSotBlocks: false,
 		boomerangThroughWalls: false,
 		difficultBoomerangTrickThrows: false,
 		breakBeehivesWithBombs: true,

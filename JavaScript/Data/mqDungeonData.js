@@ -208,13 +208,13 @@ let MQDungeons = {
                         Order: 12.1,
                         LongDescription: "From the basement, head to the door to the right of the vines. You'll need to either use Din's Fire or run a lit Deku Stick into this room. Light the torches by the other door to gain access to the water room. The chest will be to your left."
                     },
-                    "Chest via Song of Time Block": {
+                    "Chest in Song of Time Block": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 181, y: 225, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 13,
-                        LongDescription: "From the basement, head to the door to the right of the vines. You'll need to either use Din's Fire or run a lit Deku Stick into this room. Light the torches by the other door to gain access to the water room.<br/><br/>Make your way to the other side of the water room. You'll need to roll or crouch with your shield under the spikey pole. Play the Song of Time by the block to reveal the chest.",
-                        Needs: [Songs.SONG_OF_TIME]
+                        LongDescription: "From the basement, head to the door to the right of the vines. You'll need to either use Din's Fire or run a lit Deku Stick into this room. Light the torches by the other door to gain access to the water room.<br/><br/>Make your way to the other side of the water room. You'll need to roll or crouch with your shield under the spikey pole. Play the Song of Time by the block to reveal the chest.<br/><br/>The hookshot extention glitch can be used to get this from the left side of the block.",
+                        NeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.HOOKSHOT_EXTENSION_SOT_BLOCKS]
                     }
                 }
             },
@@ -1267,8 +1267,8 @@ let MQDungeons = {
                         MapInfo: { x: 297, y: 147, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 15,
-                        LongDescription: "In the path leading to the elevator room, there's a skulltula under the Song of Time block. Play the song to move the block.<br/><br/>If you have the boomerang, you can also aim it to the left and slightly downward to get the skulltula through the block.",
-                        NeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.BOOMERANG_THROUGH_WALLS]
+                        LongDescription: "In the path leading to the elevator room, there's a skulltula under the Song of Time block. Play the song to move the block.<br/><br/>If you have the boomerang, you can also aim it to the left and slightly downward to get the skulltula through the block.<br/><br/>The hookshot extension can be used for this from the left side of the block (pretty precise). First, kill the skulltula with your sword through the block.",
+                        NeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.BOOMERANG_THROUGH_WALLS, GlitchItemSets.HOOKSHOT_EXTENSION_SOT_BLOCKS]
                     }
                 }
             },
@@ -4640,17 +4640,16 @@ let MQDungeons = {
                 Exits: {
                     chasmPlatform: {
                         Needs: [
-                            Items.HOOKSHOT,
-                            [SetType.OR, // Hit eye switch
-                                Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA],
-                        ],
-                        NeedsAny: [ 
-                            [
-                                [SetType.OR, 
-                                    Songs.SONG_OF_TIME, QPAItemSets.LEDGE_QPA], 
-                                UpgradedItems.LONGSHOT
-                            ],
-                            GlitchItemSets.MQ_SHADOW_CHASM_PLATFORM_WITH_HOOKSHOT // We're including hookshot (bow) extention here
+                            // Hit the eye switch
+                            [SetType.OR,
+                                [Songs.SONG_OF_TIME, Items.FAIRY_BOW],
+                                QPAItemSets.LEDGE_QPA,
+                                GlitchItemSets.BOW_EXTENSION_SOT_BLOCKS],
+                            
+                            // Cross the gap
+                            [SetType.OR,
+                                UpgradedItems.LONGSHOT,
+                                GlitchItemSets.MQ_SHADOW_CHASM_PLATFORM_WITH_HOOKSHOT]
                         ]
                     },
                     bossRoomAntechamber: {}

@@ -129,6 +129,12 @@ let GlitchItemSets = {
         ItemData.canUse(age, [GlitchItemSets.BASE_WEIRD_SHOT, UpgradedItems.LONGSHOT]),
     PROJECTILE_WEIRD_SHOT: (age) => 
         ItemData.canUse(age, [GlitchItemSets.BASE_WEIRD_SHOT, ItemSets.PROJECTILES]),
+    HOOKSHOT_EXTENSION_SOT_BLOCKS: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.hookshotExtensionSotBlocks &&
+        ItemData.canUse(age, Items.HOOKSHOT),
+    BOW_EXTENSION_SOT_BLOCKS: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.hookshotExtensionSotBlocks &&
+        ItemData.canUse(age, Items.FAIRY_BOW),
 	MEGA_FLIP: (age) => 
         Settings.GlitchesToAllow.megaFlip &&
         ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]),
