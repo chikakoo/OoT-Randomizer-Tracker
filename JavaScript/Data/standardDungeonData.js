@@ -4696,8 +4696,7 @@ let StandardDungeons = {
                             ItemSets.BLUE_FIRE_ITEMS,
                             ItemLocationSets.ICE_MELTED_EAST_WALL,
                             GlitchItemSets.ICE_LEDGE_CLIP,
-                            [Age.CHILD, GlitchItemSets.LUNGE_STORAGE_NEEDING_QUICKDRAW],
-                            [Age.ADULT, GlitchItemSets.LUNGE_STORAGE],
+                            GlitchItemSets.LUNGE_STORAGE,
                             GlitchItemSets.ICE_TRIPLE_SLASH_CLIP
                         ]
                     },
@@ -4817,7 +4816,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 6.2,
                         LongDescription: "The east wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows.<br/><br/>" +
-                            "<a href='https://youtu.be/lpeeGtoNEj4?si=e32Rtuv3PW2wAOKh', target='_blank', title='Target ice at left corner; ess left x5; get in corner; backflip; dryroll; jumpslash (quick draw if using sword); hold up'>LUNGE STORAGE CHILD</a><br/>" +
+                            "<a href='https://youtu.be/So_oaJC9a9A?si=eGMpp0KukH7O3fft', target='_blank', title='Target wall to the left of the ice; sidehop right & roll; ess right x1; get in corner (sliding on the left wall); jumpslash while holding up'>LUNGE STORAGE CHILD</a><br/>" +
                             "<a href='https://youtu.be/Fdg0uEKrXUY?si=AY-Bgi9JrsuLydDn', target='_blank', title='Stand just to the left of the right sloped part of the ice; sidehop left; jumpslash while holding forward'>LUNGE STORAGE ADULT</a>"
                     },
                     "Melt West Ice Wall": {
