@@ -157,6 +157,7 @@ let Settings = {
 		hammerHoverBootsSuperslide: false,
 		equipSwap: false,
 		forceAdultDekuStickEquip: false,
+		forceAdultQPACutsceneItemEquip: false,
 		forceAdultSlingshotEquip: false,
 		forceAdultBoomerangEquip: false,
 		weirdShot: false,

@@ -58,13 +58,10 @@ let QPAItemSets = {
                 (ItemData.hasAdultTradeItem() && hasMagicItem);
         } 
 
-        // Since stick NEEDS to be equipped, you can't equip swap a child trade item/magic beans for this
-        // We need to check whether you can equip the adult trade item AND a stick at the same time, therefore
-        // you MUST equip swap using a magic item
-        //
-        // TECHNICALLY - force stick can allow multiple equip swaps for this, but it's so rare that we're not
-        // including it at this time
-        return ItemData.hasAdultTradeItem() && hasMagicItem;
+        // Either adult can double equip swap sticks AND a QPA cutscene item,
+        // OR they can equip sticks AND an adult trade item
+        return Settings.GlitchesToAllow.forceAdultQPACutsceneItemEquip ||
+            (ItemData.hasAdultTradeItem() && hasMagicItem);
     }
 };
 
