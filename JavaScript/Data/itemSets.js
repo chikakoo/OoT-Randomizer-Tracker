@@ -231,6 +231,9 @@ let GlitchItemSets = {
     ADULT_WELL_WITH_CUCCO: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.botwAsAdultWithCucco &&
         ItemData.canUse(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]),
+    ADULT_WELL_WITH_CHUS: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.botwAsAdultWihChus &&
+        ItemData.canUse(age, [Items.BOMBCHU, ItemSets.SHIELDS]),
 	WINDMILL_HP_WITH_NOTHING: () => Settings.GlitchesToAllow.windmillHPWithNothing,
 	HOOKSHOT_JUMP: (age) => 
         Settings.GlitchesToAllow.hookshotJump && 

@@ -180,6 +180,7 @@ let Settings = {
 		kakShopClips: true,
 		botwAsChildWithCucco: false,
 		botwAsAdultWithCucco: false,
+		botwAsAdultWihChus: false,
 		boomerangGraveyardHP: false,
 		unloadGrave: false,
 		oldShadowEarly: false,

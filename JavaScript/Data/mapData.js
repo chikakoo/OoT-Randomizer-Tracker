@@ -2140,7 +2140,7 @@ let MapLocations = {
                                 ItemSets.BLAST_OR_SMASH_ITEMS, 
                                 [GlitchItemSets.LUNGE_STORAGE_NEEDING_QUICKDRAW, ItemSets.DISTANCE_DAMAGING_ITEMS]
                             ],
-                            AdultNeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.LUNGE_STORAGE]
+                            AdultNeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.LUNGE_STORAGE_NEEDING_QUICKDRAW]
                     },
                     "Soft Soil": {
                         ItemGroup: ItemGroups.ENTRANCE,
@@ -2451,7 +2451,8 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Top Floor & Maze", imageName: "Megaton Hammer" },
                 Exits: {
                     darunia: {
-                        ChildNeeds: [Songs.ZELDAS_LULLABY],
+                        // Megasidehop glitch: https://youtu.be/tMSiqzY3E2o?si=s5EryJsZdgEAfBe2
+                        ChildNeedsAny: [Songs.ZELDAS_LULLABY, GlitchItemSets.MEGA_FLIP],
                         AdultNeeds: [(age) => MapLocations["Goron City"]._canStopAdultGoron(age)]
                     },
                     lostWoodsRocks: {
@@ -2606,7 +2607,11 @@ let MapLocations = {
                 }
             },
             darunia: {
-                DisplayGroup: { groupName: "Bottom Floor & Darunia", imageName: "Happy Goron" },
+                DisplayGroup: { 
+                    groupName: "Bottom Floor & Darunia", 
+                    imageName: "Happy Goron",
+                    description: "MEGA SIDEHOP FROM MAIN: Target the right wall before the tunnel; sidehop right + sideroll; turn 180; line up so the middle of your head is just to the left of the darker texture; backflip x1; backflip again (if using bombs, shield drop in the air); megasidehop left"
+                },
                 Exits: {
                     main: {},
                     spinningUrn: {

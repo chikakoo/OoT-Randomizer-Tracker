@@ -843,10 +843,19 @@ let OwExits = {
                     return Time.EITHER;
                 }
 
-                // If either need to use the glitch, then it should always be strict day requirement
-                if (GlitchItemSets.CHILD_WELL_WITH_CUCCO(Age.CHILD) ||
-                    GlitchItemSets.ADULT_WELL_WITH_CUCCO(Age.ADULT)) {
-                    return Time.DAY;
+                let childNeedsDay = GlitchItemSets.CHILD_WELL_WITH_CUCCO(Age.CHILD);
+                let adultNeedsDay = GlitchItemSets.ADULT_WELL_WITH_CUCCO(Age.ADULT);
+                let adultCanGetAtEither = GlitchItemSets.ADULT_WELL_WITH_CHUS(Age.ADULT);
+
+                if (adultCanGetAtEither) {
+                    return childNeedsDay 
+                        ? Time.DAY_CHILD // Child needs day; adult can do it
+                        : Time.EITHER; // Adult can do it, but child cannot
+                }
+
+                // If either need to use the cucco glitch, then it should always be strict day requirement
+                if (childNeedsDay || adultNeedsDay) {
+                    return Time.DAY
                 }
 
                 // Neither can get there
@@ -860,6 +869,7 @@ let OwExits = {
             NeedsAny: [
                 GlitchItemSets.CHILD_WELL_WITH_CUCCO,
                 GlitchItemSets.ADULT_WELL_WITH_CUCCO,
+                GlitchItemSets.ADULT_WELL_WITH_CHUS,
                 ItemLocationSets.DRAIN_WELL_WATER,
                 [
                     SettingSets.VANILLA_INTERIOR_ENTRANCES,
