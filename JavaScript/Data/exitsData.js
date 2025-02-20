@@ -918,7 +918,7 @@ let OwExits = {
             MapInfo: { x: 182, y: 252 },
             Age: Age.EITHER,
             Order: 25,
-            LongDescription: "This is the opening above the cucco pen. You can get there as a child via the owl on the top of Death Mountain, or by using a cucco. To do this, throw it up the building under construction (2 throws), then jump to the border (when the construction worker isn't there), then jump at the platform - don't drop the cucco.<br/><br/>As adult, you must hookshot there. Hookshot first to the House of Skulltulas from the ledge by the entrance to Impa's house. Then, hookshot to Impa's house. Make your way to the ledge.<br/><br/>Alternatively, as adult, you can make your way directly under the opening, and simply hold forward to jump onto the ledge.",
+            LongDescription: "The opening above the cucco pen.<br/><br/>Child: Grab a cucco and throw it up the building under construction. Hold forward and jump off, then angle your joystick to the top-right until you're lined up with the platform.<br/><br/>Adult: Jump onto the wood under the opening, then hold forward while under it to clip into the ledge."
         },
         "Archery Minigame": {
             ExitRegion: "main",
@@ -977,7 +977,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 126, y: 33},
             Age: Age.EITHER,
-            LongDescription: "This is the entrance back to Death Mountain."
+            LongDescription: "This is the entrance back to Death Mountain.<br/><br/><a href='https://youtu.be/0BobG5dZv14?si=rlM7WqoQHEOz0K4k' target='_blank' title='Target wall to the right of the corner; sidehop left; sideroll release Z; get in corner; sidehop right; sidehop left; roll x2; sidehop right; sidehop left; roll x3; backflip x2; turn right; sidehop left; turn left; roll; backflip; press sword to take it out (or take out stick after landing); sidehop right once; buffer another sidehop right; buffer a neutral jumpslash; hold up'>LUNGE STORAGE CLIP</a>"
         },
         "Bazaar": {
             DisplayGroup: { groupName: "Upper Area", imageName: "Keaton Mask" },

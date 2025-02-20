@@ -4696,6 +4696,8 @@ let StandardDungeons = {
                             ItemSets.BLUE_FIRE_ITEMS,
                             ItemLocationSets.ICE_MELTED_EAST_WALL,
                             GlitchItemSets.ICE_LEDGE_CLIP,
+                            [Age.CHILD, GlitchItemSets.LUNGE_STORAGE_NEEDING_QUICKDRAW],
+                            [Age.ADULT, GlitchItemSets.LUNGE_STORAGE],
                             GlitchItemSets.ICE_TRIPLE_SLASH_CLIP
                         ]
                     },
@@ -4704,12 +4706,17 @@ let StandardDungeons = {
                     },
                     northRoom: {
                         Age: Age.ADULT,
-                        NeedsAny: [SilverRupeeSets.ICE_SILVER_RUPEES_SCYTHE_ROOM, GlitchItemSets.ICE_TRIPLE_SLASH_CLIP]
+                        NeedsAny: [
+                            SilverRupeeSets.ICE_SILVER_RUPEES_SCYTHE_ROOM,
+                            GlitchItemSets.LUNGE_STORAGE,
+                            GlitchItemSets.ICE_TRIPLE_SLASH_CLIP
+                        ]
                     },
                     blockPushRoom: {
                         NeedsAny: [
                             ItemSets.BLUE_FIRE_ITEMS,
                             ItemLocationSets.ICE_MELTED_WEST_WALL,
+                            [Age.CHILD, GlitchItemSets.LUNGE_STORAGE],
                             GlitchItemSets.ICE_TRIPLE_SLASH_CLIP
                         ]
                     }
@@ -4809,7 +4816,9 @@ let StandardDungeons = {
                         MapImageName: "Blue Fire",
                         Age: Age.ADULT,
                         Order: 6.2,
-                        LongDescription: "The east wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows."
+                        LongDescription: "The east wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows.<br/><br/>" +
+                            "<a href='https://youtu.be/lpeeGtoNEj4?si=e32Rtuv3PW2wAOKh', target='_blank', title='Target ice at left corner; ess left x5; get in corner; backflip; dryroll; jumpslash (quick draw if using sword); hold up'>LUNGE STORAGE CHILD</a><br/>" +
+                            "<a href='https://youtu.be/Fdg0uEKrXUY?si=AY-Bgi9JrsuLydDn', target='_blank', title='Stand just to the left of the right sloped part of the ice; sidehop left; jumpslash while holding forward'>LUNGE STORAGE ADULT</a>"
                     },
                     "Melt West Ice Wall": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -4818,7 +4827,8 @@ let StandardDungeons = {
                         MapImageName: "Blue Fire",
                         Age: Age.ADULT,
                         Order: 6.3,
-                        LongDescription: "The west wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows."
+                        LongDescription: "The west wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows.<br/><br/>" +
+                            "<a href='https://youtu.be/U63cwX4pOaU?si=LEkJ0dKcLc0qOejL', target='_blank', title='Target left wall by skulltula; turn right; go to the corner left of the red ice; jumpslash while holding forward'>LUNGE STORAGE CHILD</a>"
                     }
                 }
             },
@@ -4857,7 +4867,11 @@ let StandardDungeons = {
                 }
             },
             northRoom: {
-                DisplayGroup: { groupName: "Platforming Room", imageName: "Dungeon Map" },
+                DisplayGroup: { 
+                    groupName: "Platforming Room", 
+                    imageName: "Dungeon Map",
+                    description: "LUNGE STORAGE ADULT: Fall and climb off the ledge across from the gate; ess left x4; get into corner; jumpslash while holding forward; walk in bounds"
+                },
                 Exits: {
                     blueFire: {
                         Needs: [GameStateSets.HAS_BOTTLE]

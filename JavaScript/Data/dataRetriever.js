@@ -1001,14 +1001,6 @@ Data = {
         let canDoOI = Settings.GlitchesToAllow.ocarinaItems;
         return canDoOI && ((bottleCount >= 1 && canUseIceArrows) || bottleCount > 1);
     },
-
-    /**
-     * Returns whether the player can do a shield turn
-     */
-    canShieldTurn: function(age) {
-        // Child CAN use Hylian Shield for this use case
-        return ItemData.canUse(age, ItemSets.SHIELDS) || Equipment.HYLIAN_SHIELD.playerHas;
-    },
     
     /**
      * Returns whether the player can equip swap items - this will ONLY care about 

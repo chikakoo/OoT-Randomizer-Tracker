@@ -32,6 +32,10 @@ body::-webkit-scrollbar-thumb {
 	background-color: gold;
 }
 
+a {
+	color: gold;
+}
+
 #buttonControls {
 	position: absolute;
 	top: 0;

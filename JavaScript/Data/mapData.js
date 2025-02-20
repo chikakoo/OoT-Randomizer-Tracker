@@ -1251,9 +1251,12 @@ let MapLocations = {
                         Needs: [Items.HOOKSHOT]
                     },
                     beyondGate: {
-                        ChildNeedsAny: [SettingSets.OPEN_KAKARIKO_GATE,
+                        ChildNeedsAny: [
+                            SettingSets.OPEN_KAKARIKO_GATE,
                             [SettingSets.KAKARIKO_GATE_OPENS_WITH_LETTER, ChildTradeItems.ZELDAS_LETTER],
-                            [SettingSets.VANILLA_KAKARIKO_GATE, ItemLocationSets.SHOW_GUARD_LETTER]]
+                            [SettingSets.VANILLA_KAKARIKO_GATE, ItemLocationSets.SHOW_GUARD_LETTER],
+                            GlitchItemSets.LUNGE_STORAGE
+                        ]
                     },
 
                     // Lower Area
@@ -2130,8 +2133,14 @@ let MapLocations = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 151, y: 235 },
                         Age: Age.EITHER,
-                        LongDescription: "From the Kakariko entrance, follow the right wall until you get to the discolored wall. Bomb or hammer it to reveal the skulltula. Child can Deku Stick jumpslash, Bomb, Bombchu, Slingshot, or Boomerang it. Adult can jumpslash it. You can climb the wall to collect the token.",
-                        Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
+                        LongDescription: "From the Kakariko entrance, follow the right wall until you get to the discolored wall. Bomb or hammer it to reveal the skulltula. Child can Deku Stick jumpslash, Bomb, Bombchu, Slingshot, or Boomerang it. Adult can jumpslash it. You can climb the wall to collect the token.<br/><br/>" +
+                            "<a href = 'https://youtu.be/gzQCfY-RK6E?si=CtJhJjOD5O61rlYv' target='_blank' title='Target the left side of the slanted wall closer to the center; ess left x6; run to corner (the center of your hat should be to the left of the corner of the wall); backflip x3; retarget; neutral roll x6; jumpslash (if using sword, quick draw first); hold up'>LUNGE STORAGE CHILD<br/>" +
+                            "<a href = 'https://youtu.be/JB1TbNckk7k?si=y_yrQjvcAtS38BBJ' target='_blank' title='Target the left side of the slanted wall in the corner; sidehop right; retarget; sidehop left; quick draw; jumpslash; hold up'>LUNGE STORAGE ADULT",
+                            ChildNeedsAny: [
+                                ItemSets.BLAST_OR_SMASH_ITEMS, 
+                                [GlitchItemSets.LUNGE_STORAGE_NEEDING_QUICKDRAW, ItemSets.DISTANCE_DAMAGING_ITEMS]
+                            ],
+                            AdultNeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.LUNGE_STORAGE]
                     },
                     "Soft Soil": {
                         ItemGroup: ItemGroups.ENTRANCE,

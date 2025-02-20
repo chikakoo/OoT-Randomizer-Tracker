@@ -168,6 +168,16 @@ let GlitchItemSets = {
     BOOMERANG_TRICK_THROWS: (age) => 
         Settings.GlitchesToAllow.difficultBoomerangTrickThrows && 
         ItemData.canUse(age, Items.BOOMERANG),
+    LUNGE_STORAGE: (age) =>
+        Settings.GlitchesToAllow.lungeStorage &&
+        ItemData.canUseAny(age, [Equipment.MASTER_SWORD, Equipment.KOKIRI_SWORD, Items.DEKU_STICK]),
+    LUNGE_STORAGE_NEEDING_QUICKDRAW: (age) =>
+        Settings.GlitchesToAllow.lungeStorage &&
+        ItemData.canUseAny(age, [Items.DEKU_STICK, Equipment.BIGGORONS_SWORD, GlitchItemSets.QUICKDRAW]),
+    QUICKDRAW: (age) => 
+        age === Age.CHILD
+            ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
+            : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
     FLAME_STORAGE: (age) =>
         Settings.GlitchesToAllow.flameStorage &&
         ItemData.canUse(age, Items.DEKU_STICK),
@@ -283,7 +293,6 @@ let GlitchItemSets = {
         ItemData.canUse(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]),
     CHILD_LAKESIDE_LAB_CLIP: (age) => age === Age.CHILD &&
         Settings.GlitchesToAllow.childLakesideLabClip && 
-        Data.canShieldTurn(age) &&
         ItemData.canUse(age, ItemSets.SWORDS),
     ADULT_LAKESIDE_LAB_CLIP: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.adultLakesideLabClip && 
@@ -870,6 +879,12 @@ let ItemSets = {
 			Items.BOOMERANG, Items.FAIRY_SLINGSHOT
 		]
 	},
+    DISTANCE_DAMAGING_ITEMS: {
+        isItemSet: true,
+		items: [
+			Items.DINS_FIRE, Items.BOMB, Items.BOMBCHU, Items.BOOMERANG, Items.FAIRY_SLINGSHOT
+		]
+    },
 	STUNNABLE_ENEMY_KILL_ITEMS: {
 		isItemSet: true,
 		items: [

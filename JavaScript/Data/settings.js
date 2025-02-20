@@ -150,6 +150,7 @@ let Settings = {
 		megaFlip: false,
 		isg: false,
 		qpa: false,
+		lungeStorage: false,
 		flameStorage: false,
 		groundJump: false,
 		staircaseHover: false,
