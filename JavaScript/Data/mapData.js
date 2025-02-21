@@ -4462,7 +4462,8 @@ let MapLocations = {
                         NeedsAny: [
                             GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE,
                             Items.BOOMERANG,
-                            [Equipment.MASTER_SWORD, Items.DEKU_STICK, ItemSets.SHIELDS], // Kokiri sword isn't long enough
+                            [SetType.OR,
+                                Equipment.MASTER_SWORD, Items.DEKU_STICK, ItemSets.SHIELDS], // Kokiri sword isn't long enough
                         ]
                     },
                     "Upper Room Lower Skull": {
