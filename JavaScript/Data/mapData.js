@@ -1798,7 +1798,11 @@ let MapLocations = {
                         Needs: [GlitchItemSets.UNLOAD_GRAVE]
                     },
                     shadowTemple: {
-                        Needs: [Equipment.MAGIC, Items.DINS_FIRE]
+                        NeedsAny: [
+                            Items.DINS_FIRE, 
+                            GlitchItemSets.CHILD_SHADOW_BOMB_PUSH, 
+                            GlitchItemSets.ADULT_SHADOW_LEDGE_CLIP
+                        ]
                     },
                     "Nocturne Teleport Pad": {
                         OwExit: OwExits["Graveyard"]["Nocturne Teleport Pad"]
@@ -3431,7 +3435,10 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Hyrule Field Side", imageName: "Kokiri Sword" },
                 Exits: {
                     acrossBridge: {
-                        ChildNeedsAny: [GlitchItemSets.STAIRCASE_HOVER, GlitchItemSets.CUCCO_JUMP],
+                        ChildNeedsAny: [
+                            GlitchItemSets.STAIRCASE_HOVER, 
+                            GlitchItemSets.CHU_MEGA_FLIP,
+                            GlitchItemSets.CUCCO_JUMP],
                         AdultNeedsAny: [
                             SettingSets.OPEN_GERUDO_FORTRESS,
                             UpgradedItems.LONGSHOT,

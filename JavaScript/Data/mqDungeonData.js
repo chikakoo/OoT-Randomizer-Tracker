@@ -4652,7 +4652,9 @@ let MQDungeons = {
                                 GlitchItemSets.MQ_SHADOW_CHASM_PLATFORM_WITH_HOOKSHOT]
                         ]
                     },
-                    bossRoomAntechamber: {}
+                    bossRoomDoor: {
+                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                    }
                 },
                 ItemLocations: {
                     "2 Pots by Boss Antechamber": {
@@ -4790,12 +4792,11 @@ let MQDungeons = {
                     }
                 }
             },
-            bossRoomAntechamber: {
+            bossRoomDoor: {
                 DisplayGroup: { groupName: "Boss Area", imageName: "Shadow Medallion" },
                 Exits: {
                     bossRoom: {
-                        Needs: [KeySets.SHADOW_BK],
-                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [KeySets.SHADOW_BK, GlitchItemSets.SHADOW_BK_SKIP]
                     }
                 },
                 ItemLocations: {
@@ -5796,7 +5797,7 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.SWORDS, ItemSets.EXPLOSIVES] // Break stalagmites
                     },
                     northRoom: {
-                        Age: Age.ADULT,
+                        ChildNeeds: [GlitchItemSets.ICE_CHILD_UPPER_ROOM],
                         NeedsAny: [GameStateSets.HAS_BOTTLE, ItemSets.BLUE_FIRE_ITEMS]
                     },
                     bigRoom: {
@@ -5852,6 +5853,7 @@ let MQDungeons = {
             },
             northRoom: {
                 DisplayGroup: { groupName: "Platforming Room", imageName: "Compass" },
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.iceChildUpperRoom; },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in North Room": {
@@ -5860,14 +5862,14 @@ let MQDungeons = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 213, y: 13 },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 5,
                         LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>In the next room, the pots are along the wall, somewhat separated.",
                     },
                     "Heart Piece in North Room": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 228, y: 22 },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 6,
                         LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>On the floor, there's a switch embedded in the ice. Use an explosive to hit it. This will make the block around the heart piece item disappear.",
                         Needs: [ItemSets.EXPLOSIVES]
@@ -5875,7 +5877,7 @@ let MQDungeons = {
                     "Skulltula in North Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 192, y: 45 },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 7,
                         LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>Play the song of time on the top near the pillar with the skulltula to spawn a block. Climb it, and play the song again. Use blue fire to melt the ice to gain access to the skulltula.",
                         NeedsAny: [
@@ -5895,7 +5897,7 @@ let MQDungeons = {
                     "Chest in North Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 188, y: 20 },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. In the room at the end of the hallway, you'll find the chest on one of the ledges after some parkour."
                     }

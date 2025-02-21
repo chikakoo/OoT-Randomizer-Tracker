@@ -185,6 +185,8 @@ let Settings = {
 		unloadGrave: false,
 		oldShadowEarly: false,
 		hookshotJump: false,
+		childShadowWithBombPush: false,
+		adultShadowLedgeClip: false,
 		
 		// Forest
 		pokeySkip: false,
@@ -299,6 +301,7 @@ let Settings = {
 		shadowPitRoomSilverRupeeSkip: false,
 		shadowChuBombFlowers: false,
 		mqShadowChasmPlatformWithHookshot: false,
+		shadowBKSkip: false,
 		
 		spiritBlockSkipWithHovers: false,
 		spiritBlockSkipWithBombPush: false,
@@ -311,6 +314,7 @@ let Settings = {
 		botwVineClip: false, // Useless if no actor glitch
 
 		iceLedgeClip: false,
+		iceChildUpperRoom: false,
 		iceTripleSlashClips: false,
 		iceBlockSkullWithHovers: false,
 		mqIceNorthSkullWithoutSoT: false,

@@ -210,13 +210,11 @@ let GlitchItemSets = {
         ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS),
     ADULT_ZR_FROM_LW_WITHOUT_SCALE: (age) => Settings.GlitchesToAllow.zorasRiverScalelessAdult && age === Age.ADULT,
 	MIDO_SKIP: () => Settings.GlitchesToAllow.midoSkip,
-    LOST_WOODS_SKULL_WITHOUT_BEAN: (age) =>
+    LOST_WOODS_SKULL_WITHOUT_BEAN: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.lwSkullWithoutBean &&
-        ItemData.canUse(age, [
-            [SetType.OR, Items.DINS_FIRE, Items.FAIRY_BOW, Items.BOMBCHU, UpgradedItems.LONGSHOT], // Kill skulltula
-            [SetType.OR, Items.HOOKSHOT, GlitchItemSets.BOOMERANG_TRICK_THROWS] // Get token
-        ]),
-    PRESSURE_JUMP: (age) => Settings.GlitchesToAllow.lwBridgePressureJump && Items.BOMB.playerHas,
+        // Note that you can ALWAYS kill the skull with the weird pause triple slash glitch
+        ItemData.canUseAny(age, [Items.HOOKSHOT, GlitchItemSets.BOOMERANG_TRICK_THROWS]),
+    PRESSURE_JUMP: () => Settings.GlitchesToAllow.lwBridgePressureJump && Items.BOMB.playerHas,
 
 	// Kakariko/Graveyard
     ADULT_DAMPE_RACE_SOT_BLOCK_CLIP: (age) => age === Age.ADULT &&
@@ -242,6 +240,12 @@ let GlitchItemSets = {
         Settings.GlitchesToAllow.oldShadowEarly && 
         ItemData.canUse(age, [ItemSets.EXPLOSIVES, ItemSets.SHIELDS]),
 	UNLOAD_GRAVE: () => Settings.GlitchesToAllow.unloadGrave,
+    CHILD_SHADOW_BOMB_PUSH: (age) => age === Age.CHILD &&
+        Settings.GlitchesToAllow.childShadowWithBombPush &&
+        ItemData.canUse(age, [Items.BOMB, ItemSets.SWORDS]) &&
+        (Equipment.DEKU_SHIELD.playerHas || Equipment.HYLIAN_SHIELD.playerHas), // We're just using it to shield drop
+    ADULT_SHADOW_LEDGE_CLIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.adultShadowLedgeClip,
 
 	// Death Mountain/Goron
 	DMT_CLIP_TO_CHEST: (age) => 
@@ -287,7 +291,12 @@ let GlitchItemSets = {
         ItemData.canUse(age, ItemSets.SWORDS),
     ADULT_JABU: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.enterJabuAsAdult &&
-        ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMBCHU]),
+        ItemData.canUse(age, [
+            ItemSets.SHIELDS, 
+            [SetType.OR,
+                Items.BOMBCHU,
+                [Items.BOMB, Equipment.HOVER_BOOTS]]
+        ]),
     LAKE_TREE_SKULL_WITH_HOOKSHOT: (age) => 
         Settings.GlitchesToAllow.skullInTreeWithHookshot && 
         ItemData.canUse(age, [Items.HOOKSHOT, ItemSets.SHIELDS]),
@@ -467,6 +476,9 @@ let GlitchItemSets = {
     MQ_SHADOW_CHASM_PLATFORM_WITH_HOOKSHOT: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.mqShadowChasmPlatformWithHookshot &&
         ItemData.canUse(age, [Items.HOOKSHOT, ItemSets.SHIELDS]),
+    SHADOW_BK_SKIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.shadowBKSkip &&
+        ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]),
 
     // Spirit Temple
     SPIRIT_BLOCK_SKIP_WITH_HOVER_BOOTS: (age) => 
@@ -488,6 +500,9 @@ let GlitchItemSets = {
     // Ice Cavern
     ICE_LEDGE_CLIP: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.iceLedgeClip,
+    ICE_CHILD_UPPER_ROOM: (age) => age === Age.CHILD &&
+        Settings.GlitchesToAllow.iceChildUpperRoom &&
+        ItemData.canUse(age, GlitchItemSets.GROUND_JUMP_INCLUDING_BOMB_FLOWER), // Pots can be used in the same way
     ICE_TRIPLE_SLASH_CLIP: (age) =>
         Settings.GlitchesToAllow.iceTripleSlashClips &&
         ItemData.canUseAny(age, [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD]) &&

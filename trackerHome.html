@@ -933,6 +933,16 @@
 							<input type="checkbox" name="hookshotJump" value="hookshotJump">
 							🔗Hookshot Jump for Shadow Temple Early
 						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("childShadowWithBombPush", "https://youtu.be/s6ne3eG_DOE?si=IFtafimKZVjAqVem", event)'
+							title="Target the wall right of the entrance; backwalk into it; turn 180; sidehop right; backflip x2 (take out sword mid backflip, if using Kokiri Sword); jumpslash + R; sidehop left; vertical slash; turn left (DO NOT HOLD FORWARD INTO THE WALL); instadrop 3 bombs quickly (keep Z held); hold left; starting on the first frame you can see both your feet touching to the right of the bomb (2 frames) - sidehop right x3; sidehop left">
+							<input type="checkbox" name="childShadowWithBombPush" value="childShadowWithBombPush">
+							🔗Child Shadow With Bomb Push
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("adultShadowLedgeClip", "https://youtu.be/9YiWh9rqHgM?si=A1WRvzpdj4F4XBtL", event)'
+							title="Target the right wall; backflip; sideroll; retarget; turn 180; sidehop left; sideroll; retarget; hold target and SLOWLY walk up the seam (very finnicky); get close to the ledge; A to roll; pause on the first frame link is grabbing the ledge; pause buffer a new Z press during unpause lag; on one of the frames you see your hair, quickly A to let go + B to jumpslash + hold forward to clip in">
+							<input type="checkbox" name="adultShadowLedgeClip" value="adultShadowLedgeClip">
+							🔗Adult Shadow Ledge Clip
+						</label>
 					</div>
 				</div>
 				
@@ -955,8 +965,8 @@
 							<input type="checkbox" name="houseOfTwinsSkullWithHovers" value="houseOfTwinsSkullWithHovers">
 							House of Twins Skulltula With Only Hover Boots
 						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("lwSkullWithoutBean", "https://youtu.be/YFLxEw2_PBw", event)'
-							title="Kill the skull (chu/Din's it, or shoot it from where the grass meets the wall on the left); line up with the cliff where it was; backflip x2; hookshot just above the ledge.">
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("lwSkullWithoutBean", ["https://youtu.be/YFLxEw2_PBw", "https://youtu.be/vvMUitRUo5c?si=bT8m4cIzBJQAYs_f"], event)'
+							title="Kill the skull (chu/Din's it, or shoot it from where the grass meets the wall on the left); line up with the cliff where it was; backflip x2; hookshot just above the ledge.&#013;&#013;If you don't have an item to kill it, stand a bit passed the corner of the grass by the skulltula, perpendicular to the wall; c-up and face the edge of the log; hold forward and triple slash, pausing at the START of the third slash; pause 42 more times (total of 43); after the last unpause, it should die (yeah, really).">
 							<input type="checkbox" name="lwSkullWithoutBean" value="lwSkullWithoutBean">
 							🔗Lost Woods Skulltula by Forest Stage Without Bean
 						</label>
@@ -1090,7 +1100,7 @@
 							🔗Jabu Fish Skip
 						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("enterJabuAsAdult", "https://youtu.be/NmtGis95m-A", event)'
-							title="get ISG; from corner, backflip x2, roll untarget, left, roll untarget, right, roll hold target; run to the ledge, chu until 9th red; Z + shield + right + A&#013;&#013;hold up between up/up-right (x between 29 and 41) - will see link walk in place; chu until blue after 8th red flash; shield + right (KEEP SHIELD FOREVER); buffer until link jerks right; A; pause until the right explosion frame; A + left">
+							title="WITH CHUS:&#013;Get ISG; from corner, backflip x2, roll untarget, left, roll untarget, right, roll hold target; run to the ledge, chu until 9th red; Z + shield + right + A&#013;&#013;Hold up between up/up-right (x between 29 and 41) - will see link walk in place; chu until blue after 8th red flash; shield + right (KEEP SHIELD FOREVER); buffer until link jerks right; A; pause until the right explosion frame; A + left&#013;&#013;WITH BOMBS + HOVER BOOTS:&#013;Start with kokiri boots; get in corner, facing west with the pillar to the left of you; turn 180; roll; sidehop right; roll + release target; shield turn right; roll;equip hovers&#013;&#013;take out bomb; 4 frames to A + R to roll and mash right sidehop (big blue is last frame); let go of everything; on the first frame where your left arm is greater than 45 degrees, pause; equip kokiri boots; B during unpause lag; wait at least one frame; equip hover boots; unpause and wait">
 							<input type="checkbox" name="enterJabuAsAdult" value="enterJabuAsAdult">
 							🔗Enter Jabu as Adult
 						</label>
@@ -1139,85 +1149,85 @@
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsDesertContainer")' settings>Desert Areas</span>
 					<div id="settingsDesertContainer">
 						<label onclick='SettingsPage.setBooleanValueForGlitches("eponaHover", event)'
-						title="This is a staircase hover using bombs and ISG in order to get Epona without Epona's Song.">
-						<input type="checkbox" name="eponaHover" value="eponaHover">
-						Epona without Song
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("cuccoJump", event)'
-						title="The imfamous trick to get over the gate in Gerudo Valley as Child Link using a cucco and a jumpslash.">
-						<input type="checkbox" name="cuccoJump" value="cuccoJump">
-						Cucco Jump
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("gvCrossBridgeWithHookshot", "https://youtu.be/RMqzj3XLqqg", event)'
-						title="Get in corner; sidehop right x3; dry roll; shield turn right; three shield scoots forward; hookshot extend; aim vertically until you see the dot (if on tent side, aim a VERY tiny bit more left and make sure you aim as high as the dot lets you); release and hold forward">
-						<input type="checkbox" name="gvCrossBridgeWithHookshot" value="gvCrossBridgeWithHookshot">
-						🔗Cross Gerudo Valley Bridge with Hookshot
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("gfJumpToMiddleFloor", event)'
-						title="Slight angled jump from ledges above GTG to get to the main middle floor area of the fortress.">
-						<input type="checkbox" name="gfJumpToMiddleFloor" value="gfJumpToMiddleFloor">
-						Jump to GF Middle Floor from Bottom
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("gfChildJumpByTopKitchen", event)'
-						title="Target the ledge on the left; backflip and hold right until you ledge grab; angle so the right edge of c-left lines up with the fortress wall; A-up to roll and pause immediately; hold between up and left and unpause (more left is more safe).">
-						<input type="checkbox" name="gfChildJumpByTopKitchen" value="gfChildJumpByTopKitchen">
-						🔗Child Jump by Top Kitchen
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("gfHookshotToAboveLinksJail", event)'
-						title="Get to the platform you use to escape from the jail. Turn right and move to the wall, closer to the right side (Link's right foot should be over the edge). Turn around and aim up; hookshot the corner of the wood and you should clip to the top area.">
-						<input type="checkbox" name="gfHookshotToAboveLinksJail" value="gfHookshotToAboveLinksJail">
-						Hookshot to Above Link's Jail
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("gfPassKitchenGuards", event)'
-						title="Sneak past the Gerudo Fortress guards in the kitchen with no items to get between the upper exits.">
-						<input type="checkbox" name="gfPassKitchenGuards" value="gfPassKitchenGuards">
-						Pass GF Kitchen Guards with Nothing
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("gfKitchenGuardsWithSword", event)'
-						title="Stun the kitchen guards with a sword or Deku Stick. Hit them when they aren't looking at you.">
-						<input type="checkbox" name="gfKitchenGuardsWithSword" value="gfKitchenGuardsWithSword">
-						Stun GF Kitchen Guards with Sword
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("gfTopGuardsWithSword", event)'
-						title="Stun the guards in the top room with a sword or Deku Stick. Hit the one that walks when she's not looking. The one that doesn't move needs to be crouch-stabbed.">
-						<input type="checkbox" name="gfTopGuardsWithSword" value="gfTopGuardsWithSword">
-						Stun GF Top Guards with Sword
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("gtgChildAllowed", "https://youtu.be/v1winCiXBPc", event)'
-						title="Use antigrav or the precise jumpslash to get to the Gerudo Training Grounds as child.">
-						<input type="checkbox" name="gtgChildAllowed" value="gtgChildAllowed">
-						🔗Enter GTG as Child
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("gtgAdultNoCard", event)'
-						title="Clip into the Gerudo Training Grounds using a ledge clip from the mid-level.">
-						<input type="checkbox" name="gtgAdultNoCard" value="gtgAdultNoCard">
-						Enter GTG as Adult with Ledge Clip
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("gerudoGateSkipAsChild", event)'
-						title="This is a sidehop to get into the Haunted Wasteland from Gerudo Valley.">
-						<input type="checkbox" name="gerudoGateSkipAsChild" value="gerudoGateSkipAsChild">
-						Gerudo Fortress Gate Skip as Child
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("gerudoGateSkipAsAdult", "https://youtu.be/kIZzkYggvbE", event)'
-						title="Uses hover boots to get into the Haunted Wasteland as adult without freeing the carpenters.">
-						<input type="checkbox" name="gerudoGateSkipAsAdult" value="gerudoGateSkipAsAdult">
-						🔗Gerudo Fortress Gate Skip as Adult
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("itemlessSandPit", event)'
-						title="Allows you to skip the hover boots or longshot by backwalking and then sidehopping at a precise location.">
-						<input type="checkbox" name="itemlessSandPit" value="itemlessSandPit">
-						Haunted Wasteland Cross Sand Pit without Items
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitches("wastelandNoLens", event)'
-						title="Navigate the Wasteland without the Poe's help.">
-						<input type="checkbox" name="wastelandNoLens" value="wastelandNoLens">
-						Haunted Wasteland without Lens of Truth
-					</label>
-					<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("backwardsWasteland", "https://youtu.be/W-sEiOKyMOI", event)'
-						title="From HW side, turn down-right; sidehop left until arrows on minimap aren't touching; backwalk until you see the crate on the left; turn up-right and backwalk; go ~5 seconds (or when the hills are a little bit apart); turn left and walk to the outpost; if going all the way, follow the flags back to the salesman/chasm&#013;&#013;To cross the last sand pit, get the same angle as the middle crate by the flags, and backwalk across. It can be a bit finnicky - make sure you have speed. It works a bit better if positioned more to the right (facing away from the chasm).">
-						<input type="checkbox" name="backwardsWasteland" value="backwardsWasteland">
-						🔗Backwards Haunted Wasteland
-					</label>
+							title="This is a staircase hover using bombs and ISG in order to get Epona without Epona's Song.">
+							<input type="checkbox" name="eponaHover" value="eponaHover">
+							Epona without Song
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("cuccoJump", event)'
+							title="The imfamous trick to get over the gate in Gerudo Valley as Child Link using a cucco and a jumpslash.">
+							<input type="checkbox" name="cuccoJump" value="cuccoJump">
+							Cucco Jump
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("gvCrossBridgeWithHookshot", "https://youtu.be/RMqzj3XLqqg", event)'
+							title="Get in corner; sidehop right x3; dry roll; shield turn right; three shield scoots forward; hookshot extend; aim vertically until you see the dot (if on tent side, aim a VERY tiny bit more left and make sure you aim as high as the dot lets you); release and hold forward">
+							<input type="checkbox" name="gvCrossBridgeWithHookshot" value="gvCrossBridgeWithHookshot">
+							🔗Cross Gerudo Valley Bridge with Hookshot
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("gfJumpToMiddleFloor", event)'
+							title="Slight angled jump from ledges above GTG to get to the main middle floor area of the fortress.">
+							<input type="checkbox" name="gfJumpToMiddleFloor" value="gfJumpToMiddleFloor">
+							Jump to GF Middle Floor from Bottom
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("gfChildJumpByTopKitchen", event)'
+							title="Target the ledge on the left; backflip and hold right until you ledge grab; angle so the right edge of c-left lines up with the fortress wall; A-up to roll and pause immediately; hold between up and left and unpause (more left is more safe).">
+							<input type="checkbox" name="gfChildJumpByTopKitchen" value="gfChildJumpByTopKitchen">
+							🔗Child Jump by Top Kitchen
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("gfHookshotToAboveLinksJail", event)'
+							title="Get to the platform you use to escape from the jail. Turn right and move to the wall, closer to the right side (Link's right foot should be over the edge). Turn around and aim up; hookshot the corner of the wood and you should clip to the top area.">
+							<input type="checkbox" name="gfHookshotToAboveLinksJail" value="gfHookshotToAboveLinksJail">
+							Hookshot to Above Link's Jail
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("gfPassKitchenGuards", event)'
+							title="Sneak past the Gerudo Fortress guards in the kitchen with no items to get between the upper exits.">
+							<input type="checkbox" name="gfPassKitchenGuards" value="gfPassKitchenGuards">
+							Pass GF Kitchen Guards with Nothing
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("gfKitchenGuardsWithSword", event)'
+							title="Stun the kitchen guards with a sword or Deku Stick. Hit them when they aren't looking at you.">
+							<input type="checkbox" name="gfKitchenGuardsWithSword" value="gfKitchenGuardsWithSword">
+							Stun GF Kitchen Guards with Sword
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("gfTopGuardsWithSword", event)'
+							title="Stun the guards in the top room with a sword or Deku Stick. Hit the one that walks when she's not looking. The one that doesn't move needs to be crouch-stabbed.">
+							<input type="checkbox" name="gfTopGuardsWithSword" value="gfTopGuardsWithSword">
+							Stun GF Top Guards with Sword
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("gtgChildAllowed", "https://youtu.be/v1winCiXBPc", event)'
+							title="Use antigrav or the precise jumpslash to get to the Gerudo Training Grounds as child.">
+							<input type="checkbox" name="gtgChildAllowed" value="gtgChildAllowed">
+							🔗Enter GTG as Child
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("gtgAdultNoCard", event)'
+							title="Clip into the Gerudo Training Grounds using a ledge clip from the mid-level.">
+							<input type="checkbox" name="gtgAdultNoCard" value="gtgAdultNoCard">
+							Enter GTG as Adult with Ledge Clip
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("gerudoGateSkipAsChild", event)'
+							title="This is a sidehop to get into the Haunted Wasteland from Gerudo Valley.">
+							<input type="checkbox" name="gerudoGateSkipAsChild" value="gerudoGateSkipAsChild">
+							Gerudo Fortress Gate Skip as Child
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("gerudoGateSkipAsAdult", "https://youtu.be/kIZzkYggvbE", event)'
+							title="Uses hover boots to get into the Haunted Wasteland as adult without freeing the carpenters.">
+							<input type="checkbox" name="gerudoGateSkipAsAdult" value="gerudoGateSkipAsAdult">
+							🔗Gerudo Fortress Gate Skip as Adult
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("itemlessSandPit", event)'
+							title="Allows you to skip the hover boots or longshot by backwalking and then sidehopping at a precise location.">
+							<input type="checkbox" name="itemlessSandPit" value="itemlessSandPit">
+							Haunted Wasteland Cross Sand Pit without Items
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitches("wastelandNoLens", event)'
+							title="Navigate the Wasteland without the Poe's help.">
+							<input type="checkbox" name="wastelandNoLens" value="wastelandNoLens">
+							Haunted Wasteland without Lens of Truth
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("backwardsWasteland", "https://youtu.be/W-sEiOKyMOI", event)'
+							title="From HW side, turn down-right; sidehop left until arrows on minimap aren't touching; backwalk until you see the crate on the left; turn up-right and backwalk; go ~5 seconds (or when the hills are a little bit apart); turn left and walk to the outpost; if going all the way, follow the flags back to the salesman/chasm&#013;&#013;To cross the last sand pit, get the same angle as the middle crate by the flags, and backwalk across. It can be a bit finnicky - make sure you have speed. It works a bit better if positioned more to the right (facing away from the chasm).">
+							<input type="checkbox" name="backwardsWasteland" value="backwardsWasteland">
+							🔗Backwards Haunted Wasteland
+						</label>
 					</div>
 				</div>
 
@@ -1517,6 +1527,11 @@
 							<input type="checkbox" name="mqShadowChasmPlatformWithHookshot" value="mqShadowChasmPlatformWithHookshot">
 							🔗MQ Chasm Platform With Hookshot
 						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("shadowBKSkip", ["https://youtu.be/TEuG7LaOkUs?si=HA9oz6znu4adliNp", "https://youtu.be/hQ8V2rzwqJE?si=D0E8xwJpilZnNALDs"], event)'
+							title="WITH CHUS:&#013;Target door; turn right; crouch stab while holding left x2; backwalk off the ledge and climb up; repress Z and hold it; chu to third black frame; backwalk off the ledge, hold up while climbing back up, then IMMEDIATELY hold left and pause buffer; advance until you are against the wall and your right leg is horizontal (next 2 frames okay too); keep holding left, press A to roll; pause until link is grabbing the ledge; buffer Z input during unpause lag (keep it held); wait&#013;&#013;WITH BOMBS:&#013;Grab the left ledge; bonk on door frame; pull out bomb and shield drop after 2 frames (keep Z the whole time); dry roll; sidehop right + left; on the SECOND FRAME of the 8th red flash, A to roll; buffer until link is grabbing the ledge; re-buffer Z and wait">
+							<input type="checkbox" name="shadowBKSkip" value="shadowBKSkip">
+							🔗Boss Key Skip
+						</label>
 					</div>
 				</div>
 				
@@ -1582,6 +1597,11 @@
 							title="Adult can do a ledge clip on the left side of the top of the platform you have to climb on top of.">
 							<input type="checkbox" name="iceLedgeClip" value="iceLedgeClip">
 							🔗Ledge Clip in Circular Room
+						</label>
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("iceChildUpperRoom", "https://youtu.be/04YmwtNHipI?si=o95sbubX7DyBCNhC", event)'
+							title="Ground jump to first ledge; get in right corner; left sidehop and climb back up; shield turn right; dry roll; turn 180; c-up and turn a very small amount left; roll and hold up; pause when link jumps and touches the wall (should be low down); buffer a Z to target the wall">
+							<input type="checkbox" name="iceChildUpperRoom" value="iceChildUpperRoom">
+							🔗Upper Room As Child
 						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("iceTripleSlashClips", "https://www.youtube.com/watch?v=TaPkaFDyfeY", event)'
 							title="For all positions, get the angle first (see below), get to the left corner of the ice, then turn around so you're facing away. Quickly spam B and press Z just after you start the third slash. Pause on the second frame after you hit the wall (the one after the sound starts; also the one after the sparks are bright blue). Take out a first-person item. Cancel it; you will be clipped in.&#013;&#013;ADULT LEFT: Target the wall to the left of the ice; sidehop right; retarget; ess right x1&#013;&#013;ADULT RIGHT: Target the front of the ice&#013;&#013;ADULT UPPER: Target the short wall by the left cliff&#013;&#013;CHILD LEFT: Target the side of the icicle closest to the room entrance (the camera will show the red ice still); sidehop left and sideroll; retarget; ess right x2&#013;&#013;CHILD RIGHT: Target the side of the lower stair by the room entrance on the side of the red ice; turn around; ess right x6">

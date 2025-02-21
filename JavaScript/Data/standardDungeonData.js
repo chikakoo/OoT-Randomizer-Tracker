@@ -3807,8 +3807,15 @@ let StandardDungeons = {
                     bossRoom: {
                         Map: "Shadow Temple",
                         LockedDoor: "Locked Door After Boat Ride",
-                        Needs: [KeySets.SHADOW_BK],
-                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        Needs: [
+                            // Cross Gap
+                            [SetType.OR, 
+                                Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP],
+
+                            // Enter Door
+                            [SetType.OR,
+                                KeySets.SHADOW_BK, GlitchItemSets.SHADOW_BK_SKIP]
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -4661,11 +4668,6 @@ let StandardDungeons = {
         Abbreviation: "ICE",
         MapGroup: MapGroups.DUNGEONS,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-        _canDoTripleSlashClip: function(age) {
-            return Settings.GlitchesToAllow.iceTripleSlashClips &&
-                ItemData.canUseAny(age, [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD]) &&
-                ItemData.canUse(age, ItemSets.FIRST_PERSON_ITEMS);
-        },
         Regions: {
             main: {
                 DisplayGroup: { groupName: "Up to Center Room", imageName: "Blue Fire" },
@@ -4704,8 +4706,12 @@ let StandardDungeons = {
                         Needs: [ItemSets.BLUE_FIRE_ITEMS]
                     },
                     northRoom: {
-                        Age: Age.ADULT,
-                        NeedsAny: [
+                        Age: Age.EITHER,
+                        ChildNeeds: [
+                            SilverRupeeSets.ICE_SILVER_RUPEES_SCYTHE_ROOM,
+                            GlitchItemSets.ICE_CHILD_UPPER_ROOM
+                        ],
+                        AdultNeedsAny: [
                             SilverRupeeSets.ICE_SILVER_RUPEES_SCYTHE_ROOM,
                             GlitchItemSets.LUNGE_STORAGE,
                             GlitchItemSets.ICE_TRIPLE_SLASH_CLIP
@@ -4871,6 +4877,7 @@ let StandardDungeons = {
                     imageName: "Dungeon Map",
                     description: "LUNGE STORAGE ADULT: Fall and climb off the ledge across from the gate; ess left x4; get into corner; jumpslash while holding forward; walk in bounds"
                 },
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.iceChildUpperRoom; },
                 Exits: {
                     blueFire: {
                         Needs: [GameStateSets.HAS_BOTTLE]
@@ -4883,14 +4890,14 @@ let StandardDungeons = {
                         IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Hearts",
                         MapInfo: { x: 228, y: 22 },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 7,
                         LongDescription: "This is the room you gain access to after you collect all the silver rupees in the spinning scythe room. Navigate to the upper area by the first freezard - the hearts are on a platform to the right."
                     },
                     "Map Chest in Platforming Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 192, y: 18 },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "This is the room you gain access to after you collect all the silver rupees in the spinning scythe room. Navigate to the top and use blue fire on the chest to gain access to it.",
                         NeedsAny: [GameStateSets.HAS_BOTTLE, ItemSets.BLUE_FIRE_ITEMS]
@@ -4898,7 +4905,7 @@ let StandardDungeons = {
                     "Frozen Pot in Platforming Room": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 193, y: 47 },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 9,
                         LongDescription: "This pot is frozen in ice on the upper part of the room with the map chest. The easiest ways to get it are to either use blue fire, or crouchstab the pot in the ice. Otherwise, you can get on the edge of the platform, facing away from the pot, and do a spin attack to hit the pot."
                     }
