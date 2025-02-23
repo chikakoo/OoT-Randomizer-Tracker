@@ -840,93 +840,62 @@ let SilverRupeeSets = {
  * A list of item sets that can be used to concisely check whether a player can do something
  */
 let ItemSets = {
-	EXPLOSIVES: {
-		isItemSet: true,
-		items: [Items.BOMB, Items.BOMBCHU]
-	},
-	EXPLOSIVES_OR_STRENGTH: {
-		isItemSet: true,
-		items: [Items.BOMB, Items.BOMBCHU, Equipment.STRENGTH]
-	},
-	BLAST_OR_SMASH_ITEMS: {
-		isItemSet: true,
-		items: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER]
-	},
-	FIRE_ITEMS: {
-		isItemSet: true,
-		items: [Items.DINS_FIRE, Items.FIRE_ARROW]
-	},
-	PROJECTILES: {
-		isItemSet: true,
-		items: [Items.FAIRY_SLINGSHOT, Items.FAIRY_BOW]
-	},
-	DISTANT_SWITCH_ITEMS: {
-		isItemSet: true,
-		items: [
-			Items.BOMB, Items.BOMBCHU, 
-			Items.FAIRY_BOW, Items.FAIRY_SLINGSHOT, 
-			Items.BOOMERANG, Items.HOOKSHOT
-		]
-	},
-	GRAB_SHORT_DISTANCE_ITEMS: {
-		isItemSet: true,
-		items: [Items.BOOMERANG, Items.HOOKSHOT]
-	},
-	FIRST_PERSON_ITEMS: {
-		isItemSet: true,
-		items: [Items.HOOKSHOT, Items.FAIRY_BOW, Items.FAIRY_SLINGSHOT, Items.BOOMERANG]
-	},
+    EXPLOSIVES: (age) => ItemData.canUseAny(age, [
+        Items.BOMB, Items.BOMBCHU
+    ]),
+	EXPLOSIVES_OR_STRENGTH: (age) => ItemData.canUseAny(age, [
+        ItemSets.EXPLOSIVES, Equipment.STRENGTH
+    ]),
+	BLAST_OR_SMASH_ITEMS: (age) => ItemData.canUseAny(age, [
+        ItemSets.EXPLOSIVES, Items.MEGATON_HAMMER
+    ]),
+	FIRE_ITEMS: (age) => ItemData.canUseAny(age, [
+        Items.DINS_FIRE, Items.FIRE_ARROW
+    ]),
+	PROJECTILES: (age) => ItemData.canUseAny(age, [
+        Items.FAIRY_SLINGSHOT, Items.FAIRY_BOW
+    ]),
+    GRAB_SHORT_DISTANCE_ITEMS: (age) => ItemData.canUseAny(age, [
+        Items.BOOMERANG, Items.HOOKSHOT
+    ]),
+	DISTANT_SWITCH_ITEMS: (age) => ItemData.canUseAny(age, [
+        ItemSets.EXPLOSIVES, ItemSets.PROJECTILES, ItemSets.GRAB_SHORT_DISTANCE_ITEMS
+    ]),
+	FIRST_PERSON_ITEMS: (age) => ItemData.canUseAny(age, [
+        ItemSets.PROJECTILES, ItemSets.GRAB_SHORT_DISTANCE_ITEMS
+    ]),
 	// Any item you can swing and jumpslash with - includes stick and hammer
-	SWORDS: {
-		isItemSet: true,
-		items: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Equipment.BIGGORONS_SWORD, Items.DEKU_STICK, Items.MEGATON_HAMMER]
-	},
-	ACUTE_ANGLE_SWORDS: {
-		isItemSet: true,
-		items: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Equipment.BIGGORONS_SWORD, Items.DEKU_STICK]
-	},
-	SHIELDS: {
-		isItemSet: true,
-		items: [Equipment.DEKU_SHIELD, Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD]
-	},
-	DAMAGING_ITEMS: {
-		isItemSet: true,
-		items: [		
-			Equipment.MASTER_SWORD, Equipment.BIGGORONS_SWORD, Equipment.KOKIRI_SWORD, Items.DEKU_STICK,
-			Items.DINS_FIRE, Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER,
-			Items.BOOMERANG, Items.FAIRY_SLINGSHOT
-		]
-	},
-    DISTANCE_DAMAGING_ITEMS: {
-        isItemSet: true,
-		items: [
-			Items.DINS_FIRE, Items.BOMB, Items.BOMBCHU, Items.BOOMERANG, Items.FAIRY_SLINGSHOT
-		]
-    },
-	STUNNABLE_ENEMY_KILL_ITEMS: {
-		isItemSet: true,
-		items: [
-			Equipment.MASTER_SWORD, Equipment.BIGGORONS_SWORD, Equipment.KOKIRI_SWORD, Items.DEKU_STICK, Items.FAIRY_SLINGSHOT,
-			Items.DINS_FIRE, Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER
-		]
-	},
-	FREEZARD_KILL_ITEMS: {
-		isItemSet: true,
-		items: [
-			Equipment.MASTER_SWORD, Equipment.BIGGORONS_SWORD, Items.DEKU_STICK, Items.MEGATON_HAMMER,
-			Items.BOMB, Items.BOMBCHU, Items.DINS_FIRE
-		]
-	},
-	BLUE_FIRE_ITEMS: {
-		isItemSet: true,
-		items: [Items.BLUE_FIRE, Items.ICE_ARROW]
-	},
-	MUD_WALL_ITEMS: {
-		isItemSet: true,
-		items: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER, Items.BLUE_FIRE, Items.ICE_ARROW]
-	},
-	MUD_WALL_OR_QPA_ITEMS: {
-		isItemSet: true,
-		items: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER, Items.BLUE_FIRE, Items.ICE_ARROW, QPAItemSets.MUD_WALLS_QPA]
-	}
+	SWORDS: (age) => ItemData.canUseAny(age, [
+        ItemSets.ACUTE_ANGLE_SWORDS, Items.MEGATON_HAMMER
+    ]),
+	ACUTE_ANGLE_SWORDS: (age) => ItemData.canUseAny(age, [
+        Equipment.KOKIRI_SWORD, Items.DEKU_STICK,
+        Equipment.MASTER_SWORD, Equipment.BIGGORONS_SWORD
+    ]),
+	SHIELDS: (age) => ItemData.canUseAny(age, [
+        Equipment.DEKU_SHIELD, Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD
+    ]),
+	DAMAGING_ITEMS: (age) => ItemData.canUseAny(age, [
+        ItemSets.SWORDS, ItemSets.EXPLOSIVES, ItemSets.PROJECTILES,
+        Items.DINS_FIRE, Items.BOOMERANG
+    ]),
+    DISTANCE_DAMAGING_ITEMS: (age) => ItemData.canUseAny(age, [
+        ItemSets.DISTANT_SWITCH_ITEMS, Items.DINS_FIRE
+    ]),
+	STUNNABLE_ENEMY_KILL_ITEMS: (age) => ItemData.canUseAny(age, [
+        ItemSets.SWORDS, ItemSets.PROJECTILES, ItemSets.EXPLOSIVES, Items.DINS_FIRE, 
+    ]),
+	FREEZARD_KILL_ITEMS: (age) => ItemData.canUseAny(age, [
+        Equipment.MASTER_SWORD, Equipment.BIGGORONS_SWORD, Items.DEKU_STICK, Items.MEGATON_HAMMER,
+        ItemSets.EXPLOSIVES, Items.DINS_FIRE
+    ]),
+	BLUE_FIRE_ITEMS: (age) => ItemData.canUseAny(age, [
+        Items.BLUE_FIRE, Items.ICE_ARROW
+    ]),
+	MUD_WALL_ITEMS: (age) => ItemData.canUseAny(age, [
+        ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.BLUE_FIRE_ITEMS
+    ]),
+	MUD_WALL_OR_QPA_ITEMS: (age) => ItemData.canUseAny(age, [
+        ItemSets.MUD_WALL_ITEMS, QPAItemSets.MUD_WALLS_QPA
+    ])
 };

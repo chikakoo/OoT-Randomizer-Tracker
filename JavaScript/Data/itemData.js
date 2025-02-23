@@ -595,11 +595,6 @@ let ItemData = {
 		let lowestUpgrade = itemInput.upgrade;
 		let item = itemInput.item || itemInput;
 
-		// If we're given an item set, we need to check whether we can use any single one of the items in it
-		if (item.isItemSet) {
-			return this.canUseAny(age, item.items);
-		}
-
 		// If the item has default notes, it's a song
 		if (item.defaultNotes !== undefined) {
 			return Data.canPlaySong(item);
