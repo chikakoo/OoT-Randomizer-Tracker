@@ -298,14 +298,15 @@ let SpawnsPage = {
         this._addOptionsToDropdown(["Overworld"], dropdown, defaultValue)
         Data.getEntrancesFromMapAndRegion(map, region).forEach(function(itemLocation) {
             let isInteriorShuffle = Settings.RandomizerSettings.shuffleInteriorEntrances;
+            let isEntrance = Data.isEntrance(itemLocation);
             if (isInteriorShuffle && 
-                itemLocation.ItemGroup === ItemGroups.ENTRANCE &&
+                isEntrance &&
                 itemLocation.OneWayInteriorSpawnEntrance
             ) {
                 removeCssClass(dropdown, "nodisp");
                 _this._addOptionsToDropdown([itemLocation.Name], dropdown, defaultValue)
             } else if (!isInteriorShuffle &&
-                itemLocation.ItemGroup !== ItemGroups.ENTRANCE &&
+                !isEntrance &&
                 itemLocation.OneWayInteriorSpawnEntrance) {
                     removeCssClass(dropdown, "nodisp");
                     _this._addOptionsToDropdown([itemLocation.Name], dropdown, defaultValue)

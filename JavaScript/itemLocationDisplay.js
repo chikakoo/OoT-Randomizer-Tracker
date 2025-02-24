@@ -332,7 +332,7 @@ let ItemLocationDisplay = {
 			}
 
 			// Update the entrance location groups
-			if (itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
+			if (Data.isEntrance(itemLocation)) {
 				let itemLocationEntranceTasksContainer = dce("div", "item-location-entrance-task-container");
 				itemLocationEntranceTasksContainer.id = `${itemLocation.Name}-entrance-tasks`;
 				itemLocationTitleDiv.appendChild(itemLocationEntranceTasksContainer);
@@ -522,7 +522,7 @@ let ItemLocationDisplay = {
 			addCssClass(itemLocationDiv, "item-obtained");
 		}
 
-		if (itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
+		if (Data.isEntrance(itemLocation)) {
 			let entranceGroupId = `${itemLocation.Name}-entrance-groups`;
 			let entranceGroupDiv = document.getElementById(entranceGroupId);
 			if (entranceGroupDiv) {

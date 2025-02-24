@@ -573,7 +573,7 @@ RegionWalker = {
      * Non entrances are okay to set the data for, since we still have logic for them to compute
      */
     _markCanObtainItemInfo: function(itemLocation, age, value, spawnOrWarpData) {
-        let isEntrance = itemLocation.ItemGroup === ItemGroups.ENTRANCE;
+        let isEntrance = Data.isEntrance(itemLocation);
         if (isEntrance && this.doesItemLocationHaveSpawnOrWalkData(itemLocation, age)) {
             return;
         }

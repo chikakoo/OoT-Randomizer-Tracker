@@ -90,45 +90,6 @@ Data = {
 	},
 
     /**
-     * Appends the given message to all notes, delimited by a semicolon and space if
-     * there is already notes there
-     * @param {String} message - the message to append
-     * @param {Array<*>} excludedItemGroups - the item groups to exclude
-     */
-    appendToAllNotes: function(message, excludedItemGroups) {
-        excludedItemGroups = excludedItemGroups || [];
-
-        this.getAllItemLocations(null, null, false).forEach(function(itemLocation) {
-            if (excludedItemGroups.includes(itemLocation.ItemGroup)) {
-                return;
-            }
-
-            let notes = itemLocation.notes;
-            let hasNotes = notes !== undefined && notes.length > 0;
-            itemLocation.notes = hasNotes ? `${notes}; message` : message;
-        });
-
-        SocketClient._syncAllItemLocations();
-        refreshAll();
-    },
-
-    /**
-     * Used for the co-op challenge where one player uses the base game items, and the
-     * other uses the randomizer
-     * @param {String} message - the message to append
-     */
-    appendToAllNotesForCoOpChallenge: function(message) {
-        this.appendToAllNotes(message, [
-            ItemGroups.SHOP, 
-            ItemGroups.NON_ITEM, 
-            ItemGroups.ENTRANCE, 
-            ItemGroups.OW_ENTRANCE, 
-            ItemGroups.COW,
-            ItemGroups.SKULLTULA
-        ]);
-    },
-
-    /**
      * Gets all item locations under the given map name/region
      * If no region name is given, gets them for the entire map
      * If no map name is given, gets all of them
@@ -172,12 +133,13 @@ Data = {
             if (!mapName || mapName === currentMap) {
                 Object.keys(OwExits[currentMap]).forEach(function(entranceName) {
                     let currentEntrance = OwExits[currentMap][entranceName];
+                    let isEntrance = Data.isEntrance(currentEntrance);
 
-                    if (getInteriors && currentEntrance.ItemGroup !== ItemGroups.ENTRANCE) {
+                    if (getInteriors && !isEntrance) {
                         return;
                     }
 
-                    if (!getInteriors && currentEntrance.ItemGroup === ItemGroups.ENTRANCE) {
+                    if (!getInteriors && isEntrance) {
                         return;
                     }
 
@@ -231,7 +193,7 @@ Data = {
         let itemLocations = [];
         Object.keys(OwExits[mapName]).forEach(function(entranceName) {
             let currentEntrance = OwExits[mapName][entranceName];
-            if (currentEntrance.ItemGroup === ItemGroups.ENTRANCE && regionName === currentEntrance.ExitRegion) {
+            if (Data.isEntrance(currentEntrance) && regionName === currentEntrance.ExitRegion) {
                 itemLocations = itemLocations.concat(currentEntrance);
             }
         });
@@ -267,7 +229,7 @@ Data = {
      * @return - true if it is not applicable, or if it was set up correctly; false if we should disable the location
      */
     setUpDefaultEntranceGroup: function(itemLocation) {
-        if (itemLocation.ItemGroup !== ItemGroups.ENTRANCE) 
+        if (!Data.isEntrance(itemLocation)) 
         { 
             return true;
         }
@@ -571,12 +533,41 @@ Data = {
      * @param itemLocation - the item location
      */
     getEntranceGroup: function(itemLocation) {
-        if (!itemLocation || itemLocation.ItemGroup !== ItemGroups.ENTRANCE) { return null; }
+        if (!Data.isEntrance(itemLocation)) { return null; }
 
         if (this.usesDefaultGroup(itemLocation)) {
             return itemLocation.DefaultEntranceGroup;
         }
         return itemLocation.EntranceGroup;
+    },
+
+    /**
+     * Returns whether the given item location is an entrance (NOT including overworld)
+     * Note that we DO normally consider the GROUP type an entrance
+     * due to how the icons are displayed
+     * @param itemLocation - the item location
+     */
+    isEntrance: function(itemLocation) {
+        if (!itemLocation) {
+            return false;
+        }
+
+        return this.isNonItemGroupEntrance(itemLocation) ||
+            itemLocation.ItemGroup === ItemGroups.GROUP;
+    },
+
+    /**
+     * Returns whether the given item location is an entrance (NOT including overworld) (excluding groups)
+     * @param itemLocation - the item location
+     */
+    isNonItemGroupEntrance: function(itemLocation) {
+        if (!itemLocation) {
+            return false;
+        }
+
+        return itemLocation.ItemGroup === ItemGroups.GROTTO ||
+            itemLocation.ItemGroup === ItemGroups.INTERIOR ||
+            itemLocation.ItemGroup === ItemGroups.BOSS_ENTRANCE;
     },
 
     /**
@@ -602,7 +593,7 @@ Data = {
         if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
             return true;
         }
-        return (itemLocation.ItemGroup === ItemGroups.ENTRANCE && !itemLocation.IsItemLocationGroup) &&
+        return this.isNonItemGroupEntrance(itemLocation) &&
             (!requireActualOWExit || itemLocation.LinkedExit);
     },
 

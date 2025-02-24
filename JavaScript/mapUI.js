@@ -170,7 +170,7 @@ let MapUI = {
 
 			let cannotGetEntranceItem = false;
 			let entranceGroup = Data.getEntranceGroup(itemLocation);
-			if (entranceGroup && itemLocation.ItemGroup === ItemGroups.ENTRANCE) {
+			if (entranceGroup && Data.isEntrance(itemLocation)) {
 				cannotGetEntranceItem = 
 					EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.CHILD) ===  0 &&
 					EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.ADULT) ===  0;

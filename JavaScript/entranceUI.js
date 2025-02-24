@@ -57,7 +57,7 @@ let EntranceUI = {
 	getEntranceGroupIconOrSelectedEntrance: function(itemLocation) {
 		let group = Data.getEntranceGroup(itemLocation);
 		let groupId = itemLocation.ItemGroup;
-		return (groupId === ItemGroups.ENTRANCE && group)
+		return (Data.isEntrance(itemLocation) && group)
 			? this.getEntranceGroupIcon(group, group.name)
 			: getItemGroupImagePath(groupId, itemLocation);
 	},

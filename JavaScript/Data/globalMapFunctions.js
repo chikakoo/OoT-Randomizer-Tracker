@@ -25,10 +25,13 @@ let ItemGroups = {
 	CRATE: 12,
 	BEEHIVE: 13,
 	NON_ITEM: 14,
-	ENTRANCE: 15,
-	OW_ENTRANCE: 16,
-	GOSSIP_STONE: 17,
-	LOCKED_DOOR: 18
+	INTERIOR: 15,
+	GROTTO: 16,
+	BOSS_ENTRANCE: 17,
+	GROUP: 18,
+	OW_ENTRANCE: 19,
+	GOSSIP_STONE: 20,
+	LOCKED_DOOR: 21
 };
 
 let getItemGroupName = function(groupId) {

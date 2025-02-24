@@ -107,7 +107,7 @@ let DropdownUI = {
         if (itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE) {
             this._refreshOWLocationDropdown(itemLocation, loc, entrance, entranceOptions);
             this._refreshOWEntranceDropdown(itemLocation, loc, entrance, entranceOptions);
-        } else if ((itemLocation.ItemGroup === ItemGroups.ENTRANCE && !itemLocation.IsItemLocationGroup)) {
+        } else if (Data.isNonItemGroupEntrance(itemLocation)) {
             this._refreshInteriorOrGrottoDropdown(
                 itemLocation, 
                 loc,
@@ -448,9 +448,7 @@ let DropdownUI = {
     _getDropdownOptions: function(mapName, options) {
         let entrances = [];
         let exits = OwExits[mapName];
-        let itemGroupType = options.getInteriors || options.getGrottos
-            ? ItemGroups.ENTRANCE
-            : ItemGroups.OW_ENTRANCE;
+        let getOwEntrances = !options.getInteriors && !options.getGrottos;
 
         Object.keys(exits).forEach(function(entranceName) {
             let entrance = exits[entranceName];
@@ -460,31 +458,37 @@ let DropdownUI = {
                 return;
             }
 
-            // Dungeon exits ONLY care about dungeon entrances, as that's currently the only way into them
-            // TODO: revisit this when decoupled exits are a thing
-            if (options.isDungeonExit) {
-                if (itemGroupType === ItemGroups.OW_ENTRANCE && entrance.IsDungeonEntrance) {
+            let itemGroup = entrance.ItemGroup;
+            if (getOwEntrances && itemGroup !== ItemGroups.OW_ENTRANCE) {
+                return;
+            }
+
+            if (!getOwEntrances && !Data.isEntrance(entrance)) {
+                return;
+            }
+
+            if (getOwEntrances) {
+                // Dungeon exits ONLY care about dungeon entrances, as that's currently the only way into them
+                // TODO: revisit this when decoupled exits are a thing
+                if (options.isDungeonExit && entrance.IsDungeonEntrance) {
                     entrances.push(entranceName);
                     return;
                 }
-            }
 
-            // Don't include dungeons or owls in any OW entrance
-            if (itemGroupType === ItemGroups.OW_ENTRANCE && 
-                !entrance.IsDungeonEntrance && 
-                !entrance.IsOwl)
-            {
-                entrances.push(entranceName);
-                return;
-            }
-
-            // Only grab the set of entrances that matter for interiors
-            if (entrance.ItemGroup === itemGroupType && 
-                ((options.getInteriors && entrance.IsInterior) ||
-                (options.getGrottos && entrance.IsGrotto))) 
-            {
-                entrances.push(entranceName);
-                return;
+                // Don't include dungeons or owls in any OW entrance
+                if (!entrance.IsDungeonEntrance && !entrance.IsOwl)
+                {
+                    entrances.push(entranceName);
+                    return;
+                }
+            } else {
+                // Only grab the set of entrances that matter for interiors/grottos
+                if ((options.getInteriors && entrance.ItemGroup === ItemGroups.INTERIOR) ||
+                    (options.getGrottos && entrance.ItemGroup === ItemGroups.GROTTO))
+                {
+                    entrances.push(entranceName);
+                    return;
+                }
             }
         });
         

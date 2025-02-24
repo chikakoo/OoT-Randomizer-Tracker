@@ -169,7 +169,7 @@ SocketClient = {
 	 */
 	updateAllItemLocations(allItemLocations) {
 		allItemLocations.forEach(function(itemLocation) {
-			let map = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE || itemLocation.ItemGroup === ItemGroups.ENTRANCE
+			let map = itemLocation.ItemGroup === ItemGroups.OW_ENTRANCE || Data.isEntrance(itemLocation)
 				? itemLocation.ExitMap 
 				: itemLocation.Map;
 
@@ -236,7 +236,7 @@ SocketClient = {
 		
 		// An entrance was sent, and there's no group selected
 		// We should clear the group and refresh the dropdown appropriately
-		else if (itemLocation.ItemGroup === ItemGroups.ENTRANCE && !sentGroup) {
+		else if (Data.isEntrance(itemLocation) && !sentGroup) {
 			// Grab this data before clearing the group!
 			let matchingOwShuffleMap = matchingLocation.OwShuffleMap;
 			let matchingOwShuffleExitName = matchingLocation.OwShuffleExitName;
@@ -274,7 +274,7 @@ SocketClient = {
 	_updateOwDropdown: function(itemLocation) {
 		let locDropdown = DropdownUI.getItemLocationDropdown(itemLocation);
 		let entranceDropdown = DropdownUI.getEntranceDropdown(itemLocation);
-		let isInteriorOrGrotto = itemLocation.ItemGroup === ItemGroups.ENTRANCE && !itemLocation.IsItemLocationGroup;
+		let isInteriorOrGrotto = Data.isNonItemGroupEntrance(itemLocation);
 		if (locDropdown && (entranceDropdown || isInteriorOrGrotto)) {
 			DropdownUI.refreshEntranceDropdowns(itemLocation, locDropdown, entranceDropdown);
 		}
