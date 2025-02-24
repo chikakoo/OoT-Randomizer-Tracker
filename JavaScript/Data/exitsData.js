@@ -17,8 +17,7 @@ let OwExits = {
         },
         "Mido's House": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Mido's House",
             MapInfo: { x: 125, y: 100 },
             Age: Age.EITHER,
@@ -26,8 +25,7 @@ let OwExits = {
         },
         "Link's House": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             IsComplexEntrance: true,
             DefaultEntranceGroupName: "Link's House",
             MapInfo: { x: 170, y: 236 },
@@ -36,8 +34,7 @@ let OwExits = {
         },
         "Saria's House": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Saria's House",
             MapInfo: { x: 204, y: 228 },
             Age: Age.EITHER,
@@ -45,8 +42,7 @@ let OwExits = {
         },
         "House of Twins": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "2 Pot Interior",
             MapInfo: { x: 252, y: 248 },
             Age: Age.EITHER,
@@ -54,9 +50,8 @@ let OwExits = {
         },
         "Shop": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Kokiri Shop",
-            IsInterior: true,
             MapInfo: { x: 245, y: 128 },
             Age: Age.EITHER,
             LongDescription: "Found in the middle of the village."
@@ -75,8 +70,7 @@ let OwExits = {
         },
         "Song of Storms Grotto by Lost Woods": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Generic Grotto",
             MapInfo: { x: 109, y: 36 },
             Age: Age.EITHER,
@@ -88,8 +82,7 @@ let OwExits = {
         "Know-It-All House": {
             DisplayGroup: { groupName: "Training Area & Maze", imageName: "Kokiri Sword" },
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "2 Pot Interior",
             MapInfo: { x: 84, y: 179 },
             Age: Age.EITHER,
@@ -183,8 +176,7 @@ let OwExits = {
         // Interiors
         "Grotto by Goron City": {
             ExitRegion: "nearGoronCity",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Generic Grotto",
             MapInfo: { x: 218, y: 118 },
             Order: 4,
@@ -194,8 +186,7 @@ let OwExits = {
         },
         "Forest Stage Grotto": {
             ExitRegion: "secondHalf",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Forest Stage",
             MapInfo: { x: 160, y: 86 },
             Order: 6,
@@ -204,8 +195,7 @@ let OwExits = {
         },
         "Grotto Near Meadow": {
             ExitRegion: "secondHalf",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "2 Scrubs",
             MapInfo: { x: 202, y: 31 },
             Order: 8,
@@ -265,8 +255,7 @@ let OwExits = {
         },
         "Grotto near Lost Woods": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Wolfos Grotto",
             MapInfo: { x: 177, y: 274 },
             Age: Age.EITHER,
@@ -277,8 +266,7 @@ let OwExits = {
         // Maze
         "Grotto in Maze Center": {
             ExitRegion: "afterGate",
-            IsGrotto: true,
-            ItemGroup: ItemGroups.ENTRANCE,
+            ItemGroup: ItemGroups.GROTTO,
             MapInfo: { x: 194, y: 147 },
             Age: Age.EITHER,
             LongDescription: "This is the grotto in the center of the maze. You normally need to climb the ladder to get here."
@@ -309,9 +297,8 @@ let OwExits = {
         },
         "Song of Storms Grotto": {
             ExitRegion: "afterGate",
-            IsGrotto: true,
             DefaultEntranceGroupName: "2 Scrubs",
-            ItemGroup: ItemGroups.ENTRANCE,
+            ItemGroup: ItemGroups.GROTTO,
             MapInfo: { x: 207 , y: 53 },
             Age: Age.EITHER,
             LongDescription: "Play the Song of Storms in the corner of the room with the Forest Temple entrance to reveal the grotto. Facing the forest temple, this is the lower-right corner.",
@@ -369,8 +356,7 @@ let OwExits = {
         },
         "Hidden Grotto by Kakariko": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Skulltula at Distance",
             MapInfo: { x: 237, y: 23 },
             Age: Age.EITHER,
@@ -379,8 +365,7 @@ let OwExits = {
         },
         "Grotto in Drawbridge Rock": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Generic Grotto",
             MapInfo: { x: 170, y: 39 },
             Age: Age.EITHER,
@@ -401,8 +386,7 @@ let OwExits = {
         },
         "Grotto in Rock North of River": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             MapInfo: { x: 102, y: 20 },
             Age: Age.EITHER,
             LongDescription: "On the north side of the river to the west of the Market entrance, there's a grotto under a yellow rock.",
@@ -410,8 +394,7 @@ let OwExits = {
         },
         "Hidden Grotto by North River Tree": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Water Heart Piece Grotto",
             MapInfo: { x: 91, y: 57 },
             Age: Age.EITHER,
@@ -420,8 +403,7 @@ let OwExits = {
         },
         "Grotto by Gerudo": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Cow and Web Grotto",
             MapInfo: { x: 50, y: 103 },
             Age: Age.EITHER,
@@ -443,8 +425,7 @@ let OwExits = {
         },
         "Grotto in Southeast Forest Rock": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Generic Grotto",
             MapInfo: { x: 201, y: 227 },
             Age: Age.EITHER,
@@ -453,8 +434,7 @@ let OwExits = {
         },
         "Open Grotto East of Lake Hylia Fences": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Generic Grotto",
             MapInfo: { x: 112, y: 272 },
             Age: Age.EITHER,
@@ -462,8 +442,7 @@ let OwExits = {
         },
         "Grotto by Lake Hylia Fences": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "1 Scrub",
             MapInfo: { x: 91, y: 267 },
             Age: Age.EITHER,
@@ -485,7 +464,7 @@ let OwExits = {
         },
         "Talon's House": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Super Cucco Minigame",
             MapInfo: { x: 230, y: 54 },
             Time: function() {
@@ -493,16 +472,14 @@ let OwExits = {
                     ? Time.DAY_CHILD
                     : Time.EITHER;
             },
-            IsInterior: true,
             Age: Age.EITHER,
             LongDescription: "This is the first door on your left when you first enter the ranch."
         },
         "Stable": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Stable",
             MapInfo: { x: 198, y: 54 },
-            IsInterior: true,
             Age: Age.EITHER,
             LongDescription: "This is the first door on your right when you first enter the ranch."
         },
@@ -511,19 +488,17 @@ let OwExits = {
         "Open Grotto in Southwest Corner": {
             DisplayGroup: { groupName: "Back", imageName: "Cow Shed" },
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "3 Scrubs",
             MapInfo: { x: 290, y: 240 },
-            IsGrotto: true,
             Age: Age.CHILD,
             LongDescription: "There's an open grotto as a child at the far southwest corner of the ranch."
         },
         "Cow Shed": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Cow Shed",
             MapInfo: { x: 106, y: 265 },
-            IsInterior: true,
             Age: Age.EITHER,
             LongDescription: "Head to the back of Lon Lon Ranch to find this building."
         }
@@ -553,8 +528,7 @@ let OwExits = {
         // Interiors
         "Guard House": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Market Guard House",
             MapInfo: { x: 203, y: 233 },
             Age: Age.EITHER,
@@ -597,20 +571,18 @@ let OwExits = {
         // Interiors
         "Archery Minigame": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Child Archery",
             Time: function() { return Time.DAY; },
             MapInfo: { x: 234, y: 120 },
             Order: 4,
-            IsInterior: true,
             OneWayInteriorSpawnEntrance: true,
             Age: Age.CHILD,
             LongDescription: "This is the building just to the left of the Hyrule Castle entrance."
         },
         "Happy Mask Shop": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Happy Mask Shop",
             Time: function() { return Time.DAY; },
             MapInfo: { x: 286, y: 120 },
@@ -621,8 +593,7 @@ let OwExits = {
         },
         "Potion Shop": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Shop",
             Time: function() { return Time.DAY; },
             MapInfo: { x: 308, y: 159 },
@@ -633,8 +604,7 @@ let OwExits = {
         },
         "Bazaar": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Shop",
             Time: function() { return Time.DAY; },
             MapInfo: { x: 308, y: 191 },
@@ -645,8 +615,7 @@ let OwExits = {
         },
         "Treasure Chest Minigame": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Treasure Chest Minigame",
             Time: function() { return Time.NIGHT; },
             MapInfo: { x: 215, y: 230 },
@@ -657,8 +626,7 @@ let OwExits = {
         },
         "Bombchu Bowling": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Bombchu Bowling",
             MapInfo: { x: 205, y: 174 },
             Order: 9,
@@ -668,8 +636,7 @@ let OwExits = {
         },
         "Bombchu Shop": {
             ExitRegion: "alley",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Shop",
             Time: function() { return Time.NIGHT; },
             MapInfo: { x: 130, y: 232 },
@@ -679,8 +646,7 @@ let OwExits = {
         },
         "Door in Right Market Alley": {
             ExitRegion: "alley",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "3 Pot Interior",
             Time: function() { return Time.NIGHT; },
             MapInfo: { x: 112, y: 112 },
@@ -704,8 +670,7 @@ let OwExits = {
         // Interiors
         "Temple of Time": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             IsComplexEntrance: true,
             DefaultEntranceGroupName: "Temple of Time",
             MapInfo: { x: 198, y: 37 },
@@ -775,8 +740,7 @@ let OwExits = {
         // Interiors
         "Hyrule Great Fairy Fountain": {
             ExitRegion: "hyruleCastle",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Fairy Fountain",
             Order: 3,
@@ -787,8 +751,7 @@ let OwExits = {
         },
         "Song of Storms Grotto": {
             ExitRegion: "hyruleCastle",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Bombable Wall Grotto",
             Age: Age.CHILD,
             Order: 6,
@@ -798,8 +761,7 @@ let OwExits = {
         },
         "Ganon Great Fairy Fountain": {
             ExitRegion: "ganonsCastle",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Fairy Fountain",
             Order: 2,
@@ -881,8 +843,7 @@ let OwExits = {
         },
         "Hidden Grotto near Tree": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Two Redead Grotto",
             MapInfo: { x: 142, y: 169 },
             Age: Age.EITHER,
@@ -892,8 +853,7 @@ let OwExits = {
         },
         "Talon's House": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Talon's House Kakariko",
             MapInfo: { x: 162, y: 165 },
             Age: Age.EITHER,
@@ -902,8 +862,7 @@ let OwExits = {
         },
         "House of Skulltula": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "House of Skulltula",
             MapInfo: { x: 141, y: 214 },
             Age: Age.EITHER,
@@ -912,8 +871,7 @@ let OwExits = {
         },
         "Impa's House": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             MapInfo: { x: 141, y: 254 },
             Age: Age.EITHER,
             Order: 24,
@@ -921,8 +879,7 @@ let OwExits = {
         },
         "Back of Impa's House": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Back of Impa's House",
             Time: function() { return Time.DAY_CHILD; },
             MapInfo: { x: 182, y: 252 },
@@ -932,8 +889,7 @@ let OwExits = {
         },
         "Archery Minigame": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Adult Archery",
             Time: function() { 
@@ -948,8 +904,7 @@ let OwExits = {
         },
         "Windmill": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Windmill",
             MapInfo: { x: 266, y: 152 },
             IsComplexEntrance: true,
@@ -992,8 +947,7 @@ let OwExits = {
         "Bazaar": {
             DisplayGroup: { groupName: "Upper Area", imageName: "Keaton Mask" },
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Shop",
             Time: function() { return Settings.GlitchesToAllow.kakShopClips ? Time.DAY_ADULT : Time.DAY; },
@@ -1005,8 +959,7 @@ let OwExits = {
         },
         "Potion Shop Front": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Potion Shop Front",
             Time: function() { 
                 // Adult can clip through the back and then jump to the front
@@ -1025,13 +978,12 @@ let OwExits = {
         "Open Grotto Behind Potion Shop": {
             DisplayGroup: { groupName: "Enclosed Area", imageName: "Odd Mushroom" },
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
+            ItemGroup: ItemGroups.GROTTO,
             Time: function() {
                 return MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull()
                     ? Time.EITHER
                     : Time.DAY_CHILD;
             },
-            IsGrotto: true,
             DefaultEntranceGroupName: "Generic Grotto",
             MapInfo: { x: 245, y: 123 },
             Age: Age.EITHER,
@@ -1040,8 +992,7 @@ let OwExits = {
         "Potion Shop Back": {
             // Leaving DefaultEntranceGroupName out since it's fully covered by the front entrance
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
             Time: function() {
                 if (!Settings.GlitchesToAllow.kakShopClips) { return Time.DAY; }
@@ -1074,8 +1025,7 @@ let OwExits = {
         },
         "Granny's Potion Shop": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Granny's Potion Shop",
             MapInfo: { x: 240, y: 133 },
@@ -1116,8 +1066,7 @@ let OwExits = {
         },
         "Dampe's Shed": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             Time: function() { return Time.NIGHT_CHILD; },
             MapInfo: { x: 94, y: 246 },
             Age: Age.EITHER,
@@ -1125,8 +1074,7 @@ let OwExits = {
         },
         "Grave with Flowers": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "1 Chest",
             Time: function() { return Time.NIGHT_CHILD; },
             MapInfo: { x: 206, y: 144 },
@@ -1135,8 +1083,7 @@ let OwExits = {
         },
         "Dampe's Grave": {
             ExitRegion: "dampesGrave",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             IsComplexEntrance: true,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleGrottoEntrances; },
             Needs: [SettingSets.SHUFFLE_GROTTO_ENTRANCES],
@@ -1165,8 +1112,7 @@ let OwExits = {
         },
         "Unmarked Grave": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Redead Sun's Song Grave",
             Time: function() { return Time.NIGHT_CHILD; },
             MapInfo: { x: 237, y: 184 },
@@ -1175,10 +1121,9 @@ let OwExits = {
         },
         "Royal Family's Tomb": {
             ExitRegion: "royalFamilyTomb",
-            ItemGroup: ItemGroups.ENTRANCE,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Royal Family's Tomb",
             MapInfo: { x: 303, y: 143 },
-            IsGrotto: true,
             Age: Age.EITHER,
             LongDescription: "Play Zelda's Lullaby in front of the big grave in the back of the graveyard to reveal this entrance."
         }
@@ -1206,8 +1151,7 @@ let OwExits = {
         },
         "Song of Storms Grotto near Goron City": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Generic Grotto",
             MapInfo: { x: 228, y: 172 },
             Age: Age.EITHER,
@@ -1249,8 +1193,7 @@ let OwExits = {
         },
         "Great Fairy Fountain": {
             ExitRegion: "upper",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Fairy Fountain",
             MapInfo: { x: 220, y: 19 },
@@ -1261,8 +1204,7 @@ let OwExits = {
         "Cow Grotto": {
             DisplayGroup: { groupName: "Rocky Path", imageName: "Cow Grotto" },
             ExitRegion: "upper",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Cow Grotto",
             MapInfo: { x: 200, y: 186 },
             Age: Age.EITHER,
@@ -1315,8 +1257,7 @@ let OwExits = {
         // Interiors
         "Grotto in Center of Top Rocks": {
             ExitRegion: "top",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Generic Grotto",
             MapInfo: { x: 172, y: 260 },
             Age: Age.EITHER,
@@ -1325,8 +1266,7 @@ let OwExits = {
         },
         "Great Fairy Fountain": {
             ExitRegion: "middle",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Fairy Fountain",
             MapInfo: { x: 65, y: 170 },
@@ -1337,8 +1277,7 @@ let OwExits = {
         },
         "Grotto in Rock by Goron": {
             ExitRegion: "middle",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "3 Scrubs",
             MapInfo: { x: 64, y: 60 },
             Age: Age.EITHER,
@@ -1373,8 +1312,7 @@ let OwExits = {
         "Lava Room Grotto": {
             DisplayGroup: { groupName: "Middle Floors", imageName: "Goron Tunic" },
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "3 Scrubs",
             MapInfo: { x: 278, y: 21 },
             Age: Age.ADULT,
@@ -1396,8 +1334,7 @@ let OwExits = {
         },
         "Shop": {
             ExitRegion: "shop",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Shop",
             MapInfo: { x: 159, y: 132 },
@@ -1421,8 +1358,7 @@ let OwExits = {
         // Main Area
         "Song of Storms Grotto": {
             ExitRegion: "upstream",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "2 Scrubs",
             MapInfo: { x: 15, y: 145 },
             Age: Age.EITHER,
@@ -1434,8 +1370,7 @@ let OwExits = {
         "Open Grotto on Upper Cliff": {
             DisplayGroup: { groupName: "On Cliff", imageName: "Super Cucco Minigame" },
             ExitRegion: "upstream",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Generic Grotto",
             MapInfo: { x: 132, y: 217 },
             Age: Age.EITHER,
@@ -1443,8 +1378,7 @@ let OwExits = {
         },
         "Grotto Under Rock on Upper Cliff": {
             ExitRegion: "upstream",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             MapInfo: { x: 159, y: 206 },
             Age: Age.EITHER,
             LongDescription: "Go up the ladder closest to Hyrule Field. This grotto is under the yellow rock at the top.",
@@ -1509,8 +1443,7 @@ let OwExits = {
         // Interiors
         "Shop": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Shop",
             MapInfo: { x: 236, y: 254 },
@@ -1520,8 +1453,7 @@ let OwExits = {
         },
         "Song of Storms Grotto": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             MapInfo: { x: 118, y: 162 },
             Age: Age.EITHER,
             LongDescription: "On the little island near the ladder up to the Zora's River exit, play the Song of Storms to reveal this grotto.",
@@ -1555,10 +1487,9 @@ let OwExits = {
         },
         "Great Fairy Fountain": {
             ExitRegion: "main",
-            IsInterior: true,
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Fairy Fountain",
-            ItemGroup: ItemGroups.ENTRANCE,
+            ItemGroup: ItemGroups.INTERIOR,
             MapInfo: { x: 266, y: 269 },
             Age: Age.EITHER,
             LongDescription: "Go to the southeast corner of the map. Bomb the wall by the rocks to reveal this entrance.",
@@ -1592,8 +1523,7 @@ let OwExits = {
         },
         "Lakeside Lab": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Lakeside Lab",
             MapInfo: { x: 118, y: 86 },
             Age: Age.EITHER,
@@ -1601,8 +1531,7 @@ let OwExits = {
         },
         "Fishing Pond": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Fishing Pond",
             MapInfo: { x: 247, y: 81 },
@@ -1668,8 +1597,7 @@ let OwExits = {
         },
         "Grotto Under Grave": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "3 Scrubs",
             MapInfo: { x: 93, y: 181 },
             Age: Age.EITHER,
@@ -1713,8 +1641,7 @@ let OwExits = {
         // Interiors
         "Grotto Under Silver Rock": {
             ExitRegion: "chasmSilverRockLedge",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Octorok Grotto",
             Order: 2,
             MapInfo: { x: 220, y: 182 },
@@ -1724,8 +1651,7 @@ let OwExits = {
         },
         "Tent": {
             ExitRegion: "acrossBridge",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             Order: 2,
             MapInfo: { x: 141, y: 78 },
             Age: Age.EITHER,
@@ -1733,8 +1659,7 @@ let OwExits = {
         },
         "Song of Storms Grotto Behind Tent": {
             ExitRegion: "acrossBridge",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "2 Scrubs",
             Order: 3,
             MapInfo: { x: 140, y: 56 },
@@ -1781,8 +1706,7 @@ let OwExits = {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "jail1",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
             Needs: [SettingSets.SHUFFLE_THIEVES_HIDEOUT],
             MapInfo: { x: 133, y: 125 },
@@ -1791,8 +1715,7 @@ let OwExits = {
         },
         "Song of Storms Grotto": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsGrotto: true,
+            ItemGroup: ItemGroups.GROTTO,
             MapInfo: { x: 137, y: 172 },
             Age: Age.ADULT,
             LongDescription: "Play the song of storms in the center of the crates near the fortress to reveal this grotto.",
@@ -1802,8 +1725,7 @@ let OwExits = {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "jail1",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
             Needs: [SettingSets.SHUFFLE_THIEVES_HIDEOUT],
             MapInfo: { x: 138, y: 165 },
@@ -1814,8 +1736,7 @@ let OwExits = {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "kitchenHallway",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
             Needs: [SettingSets.SHUFFLE_THIEVES_HIDEOUT],
             MapInfo: { x: 145, y: 170 },
@@ -1826,8 +1747,7 @@ let OwExits = {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "jail2",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
             Needs: [SettingSets.SHUFFLE_THIEVES_HIDEOUT],
             MapInfo: { x: 133, y: 179 },
@@ -1838,8 +1758,7 @@ let OwExits = {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "jail3",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
             Needs: [SettingSets.SHUFFLE_THIEVES_HIDEOUT],
             MapInfo: { x: 144, y: 189 },
@@ -1850,8 +1769,7 @@ let OwExits = {
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "kitchenHallway",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
             Needs: [SettingSets.SHUFFLE_THIEVES_HIDEOUT],
             MapInfo: { x: 145, y: 177 },
@@ -1864,8 +1782,7 @@ let OwExits = {
             ExitRegion: "middleFloor",
             Map: "Thieves' Hideout",
             Region: "jail2",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
             Needs: [SettingSets.SHUFFLE_THIEVES_HIDEOUT],
             MapInfo: { x: 151, y: 142 },
@@ -1876,8 +1793,7 @@ let OwExits = {
             ExitRegion: "middleFloor",
             Map: "Thieves' Hideout",
             Region: "kitchenTopLeft",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
             Needs: [SettingSets.SHUFFLE_THIEVES_HIDEOUT],
             MapInfo: { x: 168, y: 161 },
@@ -1888,8 +1804,7 @@ let OwExits = {
             ExitRegion: "middleFloor",
             Map: "Thieves' Hideout",
             Region: "jail3",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
             Needs: [SettingSets.SHUFFLE_THIEVES_HIDEOUT],
             MapInfo: { x: 165, y: 170 },
@@ -1900,8 +1815,7 @@ let OwExits = {
             ExitRegion: "topOfKitchen",
             Map: "Thieves' Hideout",
             Region: "kitchenTopRight",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
             Needs: [SettingSets.SHUFFLE_THIEVES_HIDEOUT],
             MapInfo: { x: 184, y: 147 },
@@ -1912,8 +1826,7 @@ let OwExits = {
             ExitRegion: "jail4Door",
             Map: "Thieves' Hideout",
             Region: "jail4",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
             Needs: [SettingSets.SHUFFLE_THIEVES_HIDEOUT],
             MapInfo: { x: 177, y: 133 },
@@ -1924,8 +1837,7 @@ let OwExits = {
             ExitRegion: "aboveJail1",
             Map: "Thieves' Hideout",
             Region: "topLower",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
             Needs: [SettingSets.SHUFFLE_THIEVES_HIDEOUT],
             MapInfo: { x: 156, y: 115 },
@@ -1936,8 +1848,7 @@ let OwExits = {
             ExitRegion: "aboveLinksJail",
             Map: "Thieves' Hideout",
             Region: "topUpper",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleThievesHideout; },
             Needs: [SettingSets.SHUFFLE_THIEVES_HIDEOUT],
             MapInfo: { x: 151, y: 68 },
@@ -2311,8 +2222,7 @@ let OwExits = {
         },
         "Great Fairy Fountain": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsInterior: true,
+            ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Fairy Fountain",
             MapInfo: { x: 231, y: 51 },
@@ -2322,10 +2232,9 @@ let OwExits = {
         },
         "Silver Rock Grotto": {
             ExitRegion: "main",
-            ItemGroup: ItemGroups.ENTRANCE,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "2 Scrubs",
             MapInfo: { x: 117, y: 81 },
-            IsGrotto: true,
             Age: Age.ADULT,
             LongDescription: "Lift the silver rock by the warp song location to reveal this grotto.",
             Needs: [UpgradedItems.SILVER_GAUNTLETS]
@@ -2438,8 +2347,7 @@ let OwExits = {
         },
         "Boss": {
             ExitRegion: "bossRoom",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsBoss: true,
+            ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Gohma",
             MapInfo: { x: 242, y: 248, floor: "B2" },
             Age: Age.EITHER,
@@ -2463,8 +2371,7 @@ let OwExits = {
         },
         "Boss": {
             ExitRegion: "bossRoom",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsBoss: true,
+            ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "King Dodongo",
             MapInfo: { x: 116, y: 110, floor: "F1" },
             Age: Age.EITHER,
@@ -2488,8 +2395,7 @@ let OwExits = {
         },
         "Boss": {
             ExitRegion: "bossRoom",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsBoss: true,
+            ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Barinade",
             MapInfo: { x: 242, y: 150, floor: "F1" },
             Age: Age.EITHER,
@@ -2517,10 +2423,9 @@ let OwExits = {
         },
         "Boss": {
             ExitRegion: "bossRoom",
-            ItemGroup: ItemGroups.ENTRANCE,
+            ItemGroup: ItemGroups.BOSS_ENTRANCE,
             MapInfo: { x: 184, y: 107, floor: "B1" },
             Age: Age.ADULT,
-            IsBoss: true,
             DefaultEntranceGroupName: "Phantom Ganon",
             Order: 100,
             LongDescription: "After hitting all the switches in the basement, you can enter the boss room.",
@@ -2545,8 +2450,7 @@ let OwExits = {
         },
         "Boss": {
             ExitRegion: "bossRoom",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsBoss: true,
+            ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Volvagia",
             MapInfo: { x: 25, y: 207, floor: "F1" },
             Age: Age.EITHER,
@@ -2578,8 +2482,7 @@ let OwExits = {
         },
         "Boss": {
             ExitRegion: "bossRoom",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsBoss: true,
+            ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Morpha",
             MapInfo: { x: 227, y: 135, floor: "F3" },
             Age: Age.ADULT,
@@ -2603,8 +2506,7 @@ let OwExits = {
         },
         "Boss": {
             ExitRegion: "bossRoom",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsBoss: true,
+            ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Bongo Bongo",
             MapInfo: { x: 132, y: 210, floor: "B1" },
             Age: Age.ADULT,
@@ -2659,8 +2561,7 @@ let OwExits = {
         },
         "Boss": {
             ExitRegion: "bossRoom",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsBoss: true,
+            ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Twinrova",
             MapInfo: { x: 178, y: 71, floor: "F2" },
             Age: Age.ADULT,
@@ -2729,8 +2630,7 @@ let OwExits = {
         },
         "Central Tower": {
             ExitRegion: "center",
-            ItemGroup: ItemGroups.ENTRANCE,
-            IsBoss: true,
+            ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Ganon's Tower",
             MapInfo: { x: 165, y: 95, floor: "MN" },
             Age: Age.EITHER,

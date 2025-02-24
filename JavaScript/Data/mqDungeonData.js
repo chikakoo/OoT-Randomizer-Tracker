@@ -60,9 +60,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Crates on Third Floor": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 157, y: 149, floor: "F3" },
                         Age: Age.EITHER,
@@ -329,9 +328,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "3 Hearts in Lower Basement": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Hearts",
                         MapInfo: { x: 246, y: 105, floor: "B2" },
                         Age: Age.EITHER,
@@ -430,9 +428,8 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     },
                     "2 Scrubs in Main Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SCRUB,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Scrubs",
                         MapInfo: { x: 100, y: 222, floor: "F1" },
                         Age: Age.EITHER,
@@ -482,9 +479,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots at East Room Entrance": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 193, y: 230, floor: "F1" },
                         Age: Age.EITHER,
@@ -499,9 +495,8 @@ let MQDungeons = {
                         LongDescription: "Blow up the east room door somehow. You may need to run a bomb flower from the very top floor if you have no other way.<br/><br/>Once in the east room, blow up the fake wall on the right. The scrub is inside."
                     },
                     "2 Pots by East Room Exit": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 306, y: 212, floor: "F1" },
                         Age: Age.EITHER,
@@ -560,9 +555,8 @@ let MQDungeons = {
                         LongDescription: "This pot is on the right side of the giant pillar by the entrance.",
                     },
                     "2 Crates by First Pillar": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 230, y: 158, floor: "F1" },
                         Age: Age.EITHER,
@@ -577,9 +571,8 @@ let MQDungeons = {
                         LongDescription: "This pot is in the middle of the room on the left side of the two smaller pillars.",
                     },
                     "2 Crates in Middle": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 232, y: 181, floor: "F1" },
                         Age: Age.EITHER,
@@ -587,9 +580,8 @@ let MQDungeons = {
                         LongDescription: "These crates are in the middle of the room on the left side of the two smaller pillars."
                     },
                     "2 Crates on Left Wall by Exit": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 209, y: 200, floor: "F1" },
                         Age: Age.EITHER,
@@ -604,9 +596,8 @@ let MQDungeons = {
                         LongDescription: "This pot is to the right of the exit door in a very minor alcove."
                     },
                     "2 Crates on Right Wall by Exit": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 205, y: 173, floor: "F1" },
                         Age: Age.EITHER,
@@ -637,9 +628,8 @@ let MQDungeons = {
                         Needs: [Songs.SONG_OF_TIME]
                     },
                     "4 Pots in Stair Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 56, y: 193, floor: "F1" },
                         Age: Age.EITHER,
@@ -647,9 +637,8 @@ let MQDungeons = {
                         LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>The pots are in the four corners of the bottom part of the room."
                     },
                     "2 Crates in Lower Stair Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 53, y: 169, floor: "F1" },
                         Age: Age.EITHER,
@@ -689,9 +678,8 @@ let MQDungeons = {
                         LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>Lower the stairs like normal. Climb the gray block to reach the scrub at the top."
                     },
                     "4 Crates in Upper Stair Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Crates",
                         MapInfo: { x: 52, y: 97, floor: "F2" },
                         Age: Age.EITHER,
@@ -779,9 +767,8 @@ let MQDungeons = {
                         LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. Kill all the enemies to spawn the chest."
                     },
                     "6 Crates in Room by Torch Puzzle": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "6 Crates",
                         MapInfo: { x: 202, y: 109, floor: "F2" },
                         Age: Age.EITHER,
@@ -827,9 +814,8 @@ let MQDungeons = {
                         Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "2 Pots by Top Lizalfos Room Wall": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 341, y: 149, floor: "F2" },
                         Age: Age.EITHER,
@@ -837,9 +823,8 @@ let MQDungeons = {
                         LongDescription: "These pots are the ones against the wall without any doors in the top lizalfos room."
                     },
                     "2 Pots by Top Lizalfos Room Exit": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 306, y: 162, floor: "F2" },
                         Age: Age.EITHER,
@@ -847,9 +832,8 @@ let MQDungeons = {
                         LongDescription: "These pots are the ones by the exit in the top lizalfos room."
                     },
                     "2 Pots in Second Fire Puzzle": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 274, y: 168, floor: "F2" },
                         Age: Age.EITHER,
@@ -914,9 +898,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Boss Door Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 125, y: 118, floor: "F1" },
                         Age: Age.EITHER,
@@ -924,9 +907,8 @@ let MQDungeons = {
                         LongDescription: "Once in the Dodongo head, look in two of the corners of the next big room for these pots."
                     },
                     "2 Pots in Back Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 194, y: 77, floor: "F1" },
                         Age: Age.EITHER,
@@ -941,9 +923,8 @@ let MQDungeons = {
                         LongDescription: "Once in the Dodongo head, navigate counter-clockwise around the rooms. Enter the door near all the Armos statues. In this room, the chest is under the gravestone."
                     },
                     "2 Pots in Back Poe Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 199, y: 20, floor: "F1" },
                         Age: Age.EITHER,
@@ -958,9 +939,8 @@ let MQDungeons = {
                         LongDescription: "After dealing with all the Armos statues in the Dodongo head, climb up the stairs. Jump to the ledge to get to the skulltula on top."
                     },
                     "2 Pots After Armos Army": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 176, y: 58, floor: "F1" },
                         Age: Age.EITHER,
@@ -1053,9 +1033,8 @@ let MQDungeons = {
                         Needs: [(age) => MapLocations["Jabu Jabu's Belly"]._canHitMainRoomCowSwitch(age)]
                     },
                     "2 Pots in First Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 165, y: 246, floor: "F1" },
                         Age: Age.EITHER,
@@ -1103,9 +1082,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts in Elevator Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 162, y: 187, floor: "F1" },
                         Age: Age.EITHER,
@@ -1173,9 +1151,8 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.PROJECTILES, Items.BOMBCHU, Items.HOOKSHOT]
                     },
                     "2 Pots in Hidden Water Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 116, y: 224, floor: "B1" },
                         Age: Age.EITHER,
@@ -1183,9 +1160,8 @@ let MQDungeons = {
                         LongDescription: "Drop down in the main elevator room. Dive underwater opposite the door to get to the hidden room. The pots are on the platform."
                     },
                     "3 Rupees in Hidden Water Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Jabu Rupees",
                         MapInfo: { x: 132, y: 229, floor: "B1" },
                         Age: Age.EITHER,
@@ -1199,9 +1175,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "3 Wonderitems in Left Big Room Cow": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 QPAable Slingshot Wonderitems",
                         MapInfo: { x: 148, y: 84, floor: "B1" },
                         UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
@@ -1210,9 +1185,8 @@ let MQDungeons = {
                         LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole normally blocked by the tentacle (upper leftmost hole). Shoot the left cow three times to spawn three different wonderitems."
                     },
                     "3 Wonderitems in Right Big Room Cow": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Slingshot Wonderitems",
                         MapInfo: { x: 158, y: 37, floor: "B1" },
                         UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
@@ -1253,9 +1227,8 @@ let MQDungeons = {
                         LongDescription: "Solve the puzzle in the room below the holes to enter the path leading to the elevator room. Defeat all the enemies in the water to spawn the chest."
                     },
                     "2 Pots in Path to Elevator Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 258, y: 153, floor: "B1" },
                         Age: Age.EITHER,
@@ -1286,10 +1259,9 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Small Crates in Northern Hallways": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 156, y: 60, floor: "F1" },
                         Age: Age.EITHER,
@@ -1297,9 +1269,8 @@ let MQDungeons = {
                         LongDescription: "In the room beyond the room with holes, go left to find the crates."
                     },
                     "3 Wonderitems in Like Like Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Explosive Wonderitems",
                         MapInfo: { x: 196, y: 17, floor: "F1" },
                         Age: Age.EITHER,
@@ -1308,9 +1279,8 @@ let MQDungeons = {
                         Needs: [ItemSets.EXPLOSIVES]
                     },
                     "2 Pots in Like Like Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 192, y: 12, floor: "F1" },
                         Age: Age.EITHER,
@@ -1318,9 +1288,8 @@ let MQDungeons = {
                         LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. The pots are in the back of this room."
                     },
                     "3 Wonderitems in Left Like Like Room Cow": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Slingshot Wonderitems",
                         MapInfo: { x: 186, y: 16, floor: "F1" },
                         UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
@@ -1330,9 +1299,8 @@ let MQDungeons = {
                         Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "3 Wonderitems in Right Like Like Room Cow": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Slingshot Wonderitems",
                         MapInfo: { x: 205, y: 16, floor: "F1" },
                         UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
@@ -1449,10 +1417,9 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Small Crates in Wiggler Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 102, y: 179, floor: "F2" },
                         Age: Age.EITHER,
@@ -1490,9 +1457,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Wonderitems in Room Before Boss Right Cow": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Slingshot Wonderitems",
                         MapInfo: { x: 243, y: 208, floor: "F1" },
                         UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
@@ -1698,9 +1664,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "3 Pots Left in Lobby": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 142, y: 166, floor: "F1" },
                         Age: Age.EITHER,
@@ -1708,9 +1673,8 @@ let MQDungeons = {
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltulas. the pots are on the ledge to the left."
                     },
                     "3 Pots Right in Lobby": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 194, y: 164, floor: "F1" },
                         Age: Age.EITHER,
@@ -1732,9 +1696,8 @@ let MQDungeons = {
                         Needs: [ItemSets.SWORDS]
                     },
                     "2 Pots North of Main Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 171, y: 17, floor: "F1" },
                         Age: Age.EITHER,
@@ -1873,9 +1836,8 @@ let MQDungeons = {
                         ]
                     },
                     "3 Hearts in Well": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Hearts",
                         MapInfo: { x: 181, y: 48, floor: "B1" },
                         Age: Age.EITHER,
@@ -1972,9 +1934,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "3 Hearts Above Left Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Hearts",
                         MapInfo: { x: 81, y: 73, floor: "F1" },
                         Age: Age.EITHER,
@@ -2014,9 +1975,8 @@ let MQDungeons = {
                         LongDescription: "Untwist the cooridor by hitting the switch just outside the door to the right of the redead room. Navigate back up to the twisted cooridor and continue through the door to your right. Navigate through the Red Poe room and kill the three Stalfos to spawn the chest.<br/><br/>NOTE: If you can't play the song of time, consider dropping down before killing the first stalfos to get a chest that you'll lock yourself out of."
                     },
                     "4 Pots in Upper Stalfos Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 192, y: 48, floor: "F2" },
                         Age: Age.ADULT,
@@ -2024,9 +1984,8 @@ let MQDungeons = {
                         LongDescription: "These pots are against the walls in the room after the red poe room."
                     },
                     "3 Pots in Blue Poe Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 240, y: 43, floor: "F2" },
                         Age: Age.ADULT,
@@ -2062,9 +2021,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Crates on Carousel Room Floor": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 331, y: 208, floor: "F2" },
                         Age: Age.ADULT,
@@ -2126,9 +2084,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Green Poe Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 303, y: 146, floor: "F1" },
                         Age: Age.ADULT,
@@ -2146,9 +2103,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "4 Pots in Basement": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 137, y: 238, floor: "B1" },
                         Age: Age.ADULT,
@@ -2214,9 +2170,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots by Entrance": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 99, y: 250, floor: "F1" },
                         Age: Age.EITHER,
@@ -2308,9 +2263,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "8 Pots by Iron Knuckle": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "8 Pots",
                         MapInfo: { x: 107, y: 38, floor: "F1" },
                         Age: Age.EITHER,
@@ -2358,9 +2312,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Left Crates in Room Before Boss": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 40, y: 253, floor: "F1" },
                         Age: Age.EITHER,
@@ -2368,9 +2321,8 @@ let MQDungeons = {
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper left corner to the crates."
                     },
                     "4 Right Crates in Room Before Boss": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Crates",
                         MapInfo: { x: 37, y: 166, floor: "F1" },
                         Age: Age.EITHER,
@@ -2380,9 +2332,8 @@ let MQDungeons = {
                         NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     "2 Pots in Room Before Boss": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 33, y: 161, floor: "F1" },
                         Age: Age.EITHER,
@@ -2493,9 +2444,8 @@ let MQDungeons = {
                         LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now light the torch in the right side of the room with Din's or a fire arrow to spawn some hookshot pillars. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to it, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
                     },
                     "2 Pots in Boss Key Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 162, y: 102, floor: "F1" },
                         Age: Age.ADULT,
@@ -2503,9 +2453,8 @@ let MQDungeons = {
                         LongDescription: "In the boss key room, hookshot the torch or chest to get to the pot, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
                     },
                     "2 Wonderitems in Boss Key Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Hookshot and Bow Wonderitems",
                         MapInfo: { x: 164, y: 91, floor: "F1" },
                         Age: Age.ADULT,
@@ -2533,9 +2482,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "3 Hearts in Rising Block Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Hearts",
                         MapInfo: { x: 293, y: 203, floor: "F1" },
                         Age: Age.EITHER,
@@ -2543,9 +2491,8 @@ let MQDungeons = {
                         LongDescription: "Open the locked door on the other side of the big lava room. The hearts are on either side at the very top and in the middle of the room where you jump to the block."
                     },
                     "3 Wonderitems After Rising Block Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Hammer Wonderitems",
                         MapInfo: { x: 163, y: 157, floor: "F2" },
                         Needs: [Items.MEGATON_HAMMER],
@@ -2574,9 +2521,8 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "3 Crates Behind Bars in Bottom Maze": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Crates",
                         MapInfo: { x: 318, y: 211, floor: "F3" },
                         Age: Age.ADULT,
@@ -2622,9 +2568,8 @@ let MQDungeons = {
                         LongDescription: "In the northeast area of the maze, find the fake wall and bomb it. Hammer the switch inside. Hookshot up one of the targets that appear and make your way toward the crystal switch. Trigger it (jumpslash, spin attack, Din's, explosive, etc.). The chest is hidden in one of the crates."
                     },
                     "3 Crates on Maze Top": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Crates",
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
                         MapInfo: { x: 297, y: 217, floor: "F3" },
@@ -2633,9 +2578,8 @@ let MQDungeons = {
                         LongDescription: "Navigate to the cell on the top of the maze. Bomb or jumpslash the switch (then come back up) to open it. The crates are inside. Don't break the small crates if you wish to use them (they have no items)!"
                     },
                     "5 Crates on Maze Top": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "5 Crates",
                         RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; },
                         MapInfo: { x: 297, y: 217, floor: "F3" },
@@ -2652,9 +2596,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "6 Crates in Hole Under Maze": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "6 Crates",
                         MapInfo: { x: 135, y: 105, floor: "F2" },
                         Age: Age.ADULT,
@@ -2677,9 +2620,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Wonderitems on Wall Near Very Top": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hookshot Wonderitems",
                         MapInfo: { x: 312, y: 125, floor: "F4" },
                         Age: Age.ADULT,
@@ -2687,9 +2629,8 @@ let MQDungeons = {
                         LongDescription: "On top of the boulder maze, play the Song of Time by the bombable pit. Navigate upwards via climbing and the hookshot). In the green room, hookshot the giant face on the wall twice to recieve two wonderitems."
                     },
                     "2 Wonderitems on Grate Near Very Top": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hookshot Wonderitems",
                         MapInfo: { x: 311, y: 91, floor: "F4" },
                         Age: Age.ADULT,
@@ -2710,9 +2651,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "3 Pots in Narrow Bridge Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 293, y: 155, floor: "F3" },
                         Age: Age.ADULT,
@@ -2731,9 +2671,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Crates in Right Lava Grate Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 265, y: 110, floor: "F3" },
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
@@ -2742,9 +2681,8 @@ let MQDungeons = {
                         LongDescription: "These crates are on the right side of the room with lava and grates."
                     },
                     "3 Crates in Right Lava Grate Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Crates",
                         MapInfo: { x: 265, y: 110, floor: "F3" },
                         RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; },
@@ -2768,9 +2706,8 @@ let MQDungeons = {
                         LongDescription: "This crate is on the little one on the little island in the center of the room with lava and grates."
                     },
                     "2 Pots in Left Lava Grate Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 271, y: 179, floor: "F3" },
                         Age: Age.ADULT,
@@ -2786,9 +2723,8 @@ let MQDungeons = {
                         LongDescription: "This crate is on the left side of the room with lava and grates. Go to the door to the narrow bridge room and climb up the small ledge to get access to the crate."
                     },
                     "3 Crates in Left Lava Grate Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Crates",
                         MapInfo: { x: 265, y: 176, floor: "F3" },
                         RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; },
@@ -2814,9 +2750,8 @@ let MQDungeons = {
                         LongDescription: "This crate is near the exit of the lava grate room (the one leading to the fire wall maze)."
                     },
                     "2 Crates by Lava Grate Room Exit": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 212, y: 176, floor: "F3" },
                         RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; },
@@ -2842,9 +2777,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Left Fire Wall Maze": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 87, y: 215, floor: "F3" },
                         Age: Age.ADULT,
@@ -2869,9 +2803,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Fire Wall Maze Right": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 102, y: 108, floor: "F3" },
                         Age: Age.ADULT,
@@ -2894,9 +2827,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots by Fire Maze Exit": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 76, y: 144, floor: "F3" },
                         Age: Age.ADULT,
@@ -3052,9 +2984,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Hookshot Wonderitems in Boss Antechamber": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hookshot Wonderitems",
                         MapInfo: { x: 226, y: 162, floor: "F3" },
                         Age: Age.ADULT,
@@ -3074,7 +3005,6 @@ let MQDungeons = {
                     "Blue Warp": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         Age: Age.ADULT,
-                        IsBoss: true,
                         Order: 99,
                         MapInfo: { x: 227, y: 145, floor: "F3" },
                         LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
@@ -3095,9 +3025,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Crates in Upper Central Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 170, y: 211, floor: "F1" },
                         Age: Age.ADULT,
@@ -3111,9 +3040,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "14 Crates Below Central Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "14 Crates",
                         MapInfo: { x: 185, y: 165, floor: "B1" },
                         Age: Age.ADULT,
@@ -3224,9 +3152,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in Low East Wing": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 287, y: 213, floor: "F1" },
                         Age: Age.ADULT,
@@ -3246,9 +3173,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "3 Crates in Mid South Hallway": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Crates",
                         MapInfo: { x: 245, y: 200, floor: "F2" },
                         Age: Age.ADULT,
@@ -3256,9 +3182,8 @@ let MQDungeons = {
                         LongDescription: "Make your way to the mid south wing - you'll need to press the switch to open the gate. Bonk into the crates to break them. Two of them are before the jail cell, and one is just to the left of it."
                     },
                     "5 Crates in Mid South Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "5 Crates",
                         MapInfo: { x: 245, y: 241, floor: "F2" },
                         Age: Age.ADULT,
@@ -3288,9 +3213,8 @@ let MQDungeons = {
                         LongDescription: "Make your way to the mid south room - you'll need to press the switch to open the gate. If the water isn't drained, you'll need to use your hookshot the break this hallway pot."
                     },
                     "2 Pots in Mid South Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 250, y: 248, floor: "F2" },
                         Age: Age.ADULT,
@@ -3304,9 +3228,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in Mid South Jail": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 259, y: 203, floor: "F2" },
                         Age: Age.ADULT,
@@ -3314,9 +3237,8 @@ let MQDungeons = {
                         LongDescription: "At any water level (mid is easiest), navigate to the bottom middle area. Hit the switch to open the gated door. Use Din's Fire to light the torch and get the pots behind the cell.<br/><br/>Without a fire item, stand in front of the torch and hookshot it. You can now just walk in. To get out, target the jail and hookshot while holding Z and right while next to the torch."
                     },
                     "2 Crates in Mid South Jail": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 270, y: 203, floor: "F2" },
                         Age: Age.ADULT,
@@ -3338,9 +3260,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "3 Pots in Mid East Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 283, y: 58, floor: "F2" },
                         Age: Age.ADULT,
@@ -3348,9 +3269,8 @@ let MQDungeons = {
                         LongDescription: "Go to the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there, then hookshot up. Once at the surface, look in the corner of the room for the pots."
                     },
                     "7 Crates in Mid East Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "7 Crates",
                         MapInfo: { x: 315, y: 58, floor: "F2" },
                         Age: Age.ADULT,
@@ -3359,9 +3279,8 @@ let MQDungeons = {
                         LongDescription: "Go to the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there, then hookshot up. Once at the surface, the crates are the big ones all around the room."
                     },
                     "11 Crates in Mid East Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "11 Crates",
                         MapInfo: { x: 315, y: 58, floor: "F2" },
@@ -3376,9 +3295,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "7 Crates in Mid West Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "7 Crates",
                         MapInfo: { x: 41, y: 116, floor: "F2" },
                         Age: Age.ADULT,
@@ -3386,9 +3304,8 @@ let MQDungeons = {
                         LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. The crates are in this room.",
                     },
                     "3 Pots in Mid West Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 41, y: 155, floor: "F2" },
                         Age: Age.ADULT,
@@ -3404,9 +3321,8 @@ let MQDungeons = {
                         LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. Hookshot the symbol on the wall to your left to spawn the wonderitem."
                     },
                     "3 Crates Above Mid West Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Crates",
                         MapInfo: { x: 165, y: 247, floor: "F3" },
                         Age: Age.ADULT,
@@ -3431,9 +3347,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "3 Wonderitems on Left Waterfall Room Wall": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Hookshot Wonderitems",
                         MapInfo: { x: 96, y: 228, floor: "F3" },
                         Age: Age.ADULT,
@@ -3441,9 +3356,8 @@ let MQDungeons = {
                         LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot three times to spawn the wonderitems."
                     },
                     "3 Wonderitems on Right Waterfall Room Wall": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Hookshot Wonderitems",
                         MapInfo: { x: 96, y: 213, floor: "F3" },
                         Age: Age.ADULT,
@@ -3451,9 +3365,8 @@ let MQDungeons = {
                         LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the right wall and shoot it with your hookshot three times to spawn the wonderitems."
                     },
                     "3 Pots in Lower Rising Dragon Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 40, y: 193, floor: "F3" },
                         Age: Age.ADULT,
@@ -3461,9 +3374,8 @@ let MQDungeons = {
                         LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door.<br/><br/>Jump down and kill the three stalfos, then use your hookshot to navigate to the pots."
                     },
                     "2 Pots in Upper Dragon Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 55, y: 161, floor: "F3" },
                         Age: Age.ADULT,
@@ -3471,9 +3383,8 @@ let MQDungeons = {
                         LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door.<br/><br/>Jump down and kill the three stalfos, then use your hookshot to navigate to the exit door - the pots are on either side of it."
                     },
                     "2 Pots in Room After Dark Link": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 58, y: 43, floor: "F3" },
                         Age: Age.ADULT,
@@ -3505,9 +3416,8 @@ let MQDungeons = {
                         Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                     },
                     "2 Pots in Whirlpool Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 49, y: 160, floor: "F1" },
                         Age: Age.ADULT,
@@ -3526,9 +3436,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "4 Underwater Crates in Dragon Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Crates",
                         MapInfo: { x: 53, y: 62, floor: "F1" },
                         Age: Age.ADULT,
@@ -3540,9 +3449,8 @@ let MQDungeons = {
                         ]
                     },
                     "2 Crates Behind Dragon Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 33, y: 62, floor: "F1" },
                         Age: Age.ADULT,
@@ -3552,9 +3460,8 @@ let MQDungeons = {
                         NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE]
                     },
                     "5 Crates Behind Dragon Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "5 Crates",
                         MapInfo: { x: 33, y: 62, floor: "F1" },
@@ -3574,9 +3481,8 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "2 Wonderitems in Dragon's Eyes": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hookshot Wonderitems",
                         MapInfo: { x: 74, y: 68, floor: "F1" },
                         Age: Age.ADULT,
@@ -3585,9 +3491,8 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT, Equipment.IRON_BOOTS]
                     },
                     "2 Crates by Dragon Room Door": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 95, y: 61, floor: "F1" },
                         Age: Age.ADULT,
@@ -3620,9 +3525,8 @@ let MQDungeons = {
                         LongDescription: "Navigate around the whirlpool room. In the room with the dragon, use your iron boots or silver scale to navigate to the back. Light the torches on the walls to unbar the door. The crate is to your right in the next room."
                     },
                     "4 Crates in Lower Single Water Pillar Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Crates",
                         MapInfo: { x: 95, y: 111, floor: "F1" },
                         Age: Age.ADULT,
@@ -3668,9 +3572,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "6 Underwater Crates in Low South Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "6 Crates",
                         MapInfo: { x: 86, y: 261, floor: "F1" },
                         Age: Age.ADULT,
@@ -3684,9 +3587,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "4 Pots in Low South Room Jail": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 24, y: 261, floor: "F1" },
                         Age: Age.ADULT,
@@ -3694,9 +3596,8 @@ let MQDungeons = {
                         LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom level and use your iron boots to sink down. Use the Scarecrow's Song or hover boots to navigate across the room. Now, turn around and use Fire Arrows to light the three torches to get to the pots."
                     },
                     "3 Crates in Low South Room Jail": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Crates",
                         MapInfo: { x: 27, y: 252, floor: "F1" },
                         Age: Age.ADULT,
@@ -3738,9 +3639,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Crates in Low North Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 192, y: 104, floor: "F1" },
                         Age: Age.ADULT,
@@ -3748,9 +3648,8 @@ let MQDungeons = {
                         LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom north room. Cross it with your longshot or hover boots (jumpslash, or backwalk/backflip). The crates are in the next room."
                     },
                     "6 Underwater Crates in Low North Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "6 Crates",
                         MapInfo: { x: 192, y: 76, floor: "F1" },
                         Age: Age.ADULT,
@@ -3758,9 +3657,8 @@ let MQDungeons = {
                         LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom north room. Cross it with your longshot or hover boots (jumpslash, or backwalk/backflip). The crates are under the water in the next room."
                     },
                     "4 Crates Behind Low North Room Gate": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Crates",
                         MapInfo: { x: 191, y: 50, floor: "F1" },
                         Age: Age.ADULT,
@@ -3784,9 +3682,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Wonderitems in Triple Water Spout Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Wonderitems",
                         MapInfo: { x: 151, y: 44, floor: "F1" },
                         Age: Age.ADULT,
@@ -3802,9 +3699,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Low North Dodongo Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 298, y: 23, floor: "F1" },
                         Age: Age.ADULT,
@@ -3812,9 +3708,8 @@ let MQDungeons = {
                         LongDescription: "In the dodongo room (room beyond the gate in the low north room), you'll find the pots along the back-right wall."
                     },
                     "3 Crates in Low North Dodongo Room Pit": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Crates",
                         MapInfo: { x: 276, y: 41, floor: "F1" },
                         Age: Age.ADULT,
@@ -3846,9 +3741,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Room by Low North Waterfall": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 124, y: 53, floor: "F1" },
                         Age: Age.ADULT,
@@ -3856,9 +3750,8 @@ let MQDungeons = {
                         LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes. Play the Scarecrow's song and hookshot it to get to the opening to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. The pots are in the back corners of the room.",
                     },
                     "5 Crates in Room by Low North Waterfall": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "5 Crates",
                         MapInfo: { x: 124, y: 60, floor: "F1" },
                         Age: Age.ADULT,
@@ -4011,9 +3904,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "4 Crates by Truth Spinner": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Crates",
                         MapInfo: { x: 139, y: 169, floor: "F1" },
                         Age: Age.EITHER,
@@ -4031,9 +3923,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Redead Maze Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 107, y: 108, floor: "F1" },
                         Age: Age.EITHER,
@@ -4048,9 +3939,8 @@ let MQDungeons = {
                         LongDescription: "After entering the truth spinner room, navigate to the Eye of Truth symbol on the lower left wall. Bomb it to open up the path. Use a key to enter the maze. Head right through the invisible wall. Kill the enemies to spawn the chest."
                     },
                     "2 Flying Pots in Front Maze Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 102, y: 163, floor: "F1" },
                         Age: Age.EITHER,
@@ -4058,9 +3948,8 @@ let MQDungeons = {
                         LongDescription: "In the left (south) part of the first maze loop from the entrance, these two pots will fly at you."
                     },
                     "2 Pots in Front Maze Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 92, y: 153, floor: "F1" },
                         Age: Age.EITHER,
@@ -4074,9 +3963,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Flying Pots in Back Maze Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 65, y: 163, floor: "F1" },
                         Age: Age.EITHER,
@@ -4193,9 +4081,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "9 Invisible Scythe Silver Rupees in Center": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SILVER_RUPEE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "9 Silver Rupees",
                         MapInfo: { x: 313, y: 141, floor: "B2" },
                         Age: Age.EITHER,
@@ -4211,9 +4098,8 @@ let MQDungeons = {
                         Needs: [Songs.SONG_OF_TIME]
                     },
                     "2 Hearts in Invisible Scythe Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 331, y: 123, floor: "B2" },
                         Age: Age.EITHER,
@@ -4282,9 +4168,8 @@ let MQDungeons = {
                         LLongDescription: "This rupee is by the chasm near the lone pit room beamos."
                     },
                     "2 Pit Room Silver Rupees Above Beamos": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SILVER_RUPEE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Silver Rupees",
                         MapInfo: { x: 137, y: 215, floor: "B2" },
                         Age: Age.ADULT,
@@ -4313,9 +4198,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Lower Pots in Falling Spikes Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 51, y: 211, floor: "B2" },
                         Age: Age.EITHER,
@@ -4359,9 +4243,8 @@ let MQDungeons = {
                         LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. Press the switch to spawn the chest."
                     },
                     "2 Upper Pots in Falling Spikes Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 82, y: 209, floor: "B2" },
                         Age: Age.EITHER,
@@ -4531,9 +4414,8 @@ let MQDungeons = {
                         LongDescription: "In the room at the end of the wind hallway, there's an invisible chest in the upper right corner."
                     },
                     "2 Flying Pots in Gibdo Room by Wind Hallway": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 302, y: 142, floor: "B1" },
                         Age: Age.ADULT,
@@ -4541,9 +4423,8 @@ let MQDungeons = {
                         LongDescription: "In the big part of the wind hallway, go through the invisible wall on the left side. You may need to use the wind to your advantage. The pots will fly at you as you approach the back of the room."
                     },
                     "2 Pots in Gibdo Room by Wind Hallway": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 302, y: 152, floor: "B1" },
                         Age: Age.ADULT,
@@ -4597,9 +4478,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts in Boat Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 280, y: 114, floor: "B1" },
                         Age: Age.ADULT,
@@ -4617,9 +4497,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots on Boat Side of Chasm": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 135, y: 104, floor: "B1" },
                         Age: Age.ADULT,
@@ -4658,9 +4537,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots by Boss Antechamber": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 132, y: 128, floor: "B1" },
                         Age: Age.ADULT,
@@ -4684,9 +4562,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts on Chasm Longshot Platform": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 120, y: 116, floor: "B1" },
                         Age: Age.ADULT,
@@ -4721,9 +4598,8 @@ let MQDungeons = {
                         LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>In the invisible maze, navigate to the west room. The item is behind the triple skulls."
                     },
                     "9 Rupees in Triple Skull Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "9 Skull Rupees",
                         MapInfo: { x: 38, y: 99, floor: "B1" },
                         Age: Age.ADULT,
@@ -4744,9 +4620,8 @@ let MQDungeons = {
                         Needs: [ItemSets.EXPLOSIVES_OR_STRENGTH]
                     },
                     "2 Pots in Bomb Flower Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 89, y: 131, floor: "B1" },
                         Age: Age.ADULT,
@@ -4853,9 +4728,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "4 Pots in Lobby": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 192, y: 264, floor: "F1" },
                         Age: Age.EITHER,
@@ -5072,9 +4946,8 @@ let MQDungeons = {
                         LongDescription: "This is the pot in front of you when you go through the crawlspace."
                     },
                     "2 Hearts in Child Main Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 88, y: 170, floor: "F1" },
                         Age: Age.EITHER,
@@ -5118,9 +4991,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Child Gibdos Area": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 151, y: 76, floor: "F1" },
                         Age: Age.EITHER,
@@ -5128,9 +5000,8 @@ let MQDungeons = {
                         LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. The pots are by the gibdos."
                     },
                     "4 Pots in Child Stalfos Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 86, y: 19, floor: "F1" },
                         Age: Age.EITHER,
@@ -5271,9 +5142,8 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.PROJECTILES, QPAItemSets.TALL_TORCH_QPA]
                     },
                     "2 Crates in Statue Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 223, y: 117, floor: "F2" },
                         Age: Age.EITHER,
@@ -5281,9 +5151,8 @@ let MQDungeons = {
                         LongDescription: "WALL MASTER WARNING:<br/>These crates are on the right side of the statue against the back wall.",
                     },
                     "2 Right Pots in Statue Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
                         MapInfo: { x: 239, y: 135, floor: "F2" },
@@ -5292,9 +5161,8 @@ let MQDungeons = {
                         LongDescription: "WALL MASTER WARNING:<br/>These pots are on the right side of the statue by the flying pot that gives nothing.",
                     },
                     "3 Right Pots in Statue Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 239, y: 135, floor: "F2" },
@@ -5332,9 +5200,8 @@ let MQDungeons = {
                         ]
                     },
                     "2 Upper Northeast Left Pots in Statue Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 101, y: 100, floor: "F2" },
@@ -5466,9 +5333,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots Below Quad Wallmaster Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 278, y: 129, floor: "F1" },
                         Age: Age.ADULT,
@@ -5594,9 +5460,8 @@ let MQDungeons = {
                         LongDescription: "In the beamos room, the puzzle is to play the Song of Time to move the blocks so that the little box falls down onto one of the blocks. Play it by the left side of the room, then by the hole twice. You then use that box to hold the switch down.<br/><br/>The chest is in plain sight in the room."
                     },
                     "2 Wonderitems in Room With Lizalfos and Sun": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Sword and Hammer Wonderitem",
                         MapInfo: { x: 329, y: 106, floor: "F3" },
                         Order: 40.1,
@@ -5641,9 +5506,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Moving Wall Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 168, y: 161, floor: "F3" },
                         Age: Age.ADULT,
@@ -5651,9 +5515,8 @@ let MQDungeons = {
                         LongDescription: "These pots are at the bottom of the moving wall room - which is through the locked door after the hallway via the upper southeast statue room."
                     },
                     "5 Moving Wall Room Silver Rupees": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SILVER_RUPEE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "5 Silver Rupees",
                         MapInfo: { x: 167, y: 139, floor: "F3" },
                         Age: Age.ADULT,
@@ -5675,9 +5538,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots After Moving Wall Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 293, y: 153, floor: "F4" },
                         Age: Age.ADULT,
@@ -5715,9 +5577,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "4 Pots in Giant Mirror Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 174, y: 156, floor: "F4" },
                         Age: Age.ADULT,
@@ -5725,9 +5586,8 @@ let MQDungeons = {
                         LongDescription: "After the moving wall room, play Zelda's Lullaby to unlock the door. the pots are in the corners on the top part of the room."
                     },
                     "4 Crates in Giant Mirror Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Crates",
                         MapInfo: { x: 174, y: 119, floor: "F4" },
                         Age: Age.ADULT,
@@ -5806,9 +5666,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots After Switch": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 182, y: 179 },
                         Age: Age.EITHER,
@@ -5816,9 +5675,8 @@ let MQDungeons = {
                         LongDescription: "These pots are in the transition doorway after you hit the switch in the first room."
                     },
                     "2 Right Pots in Center Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 204, y: 121 },
                         Age: Age.EITHER,
@@ -5826,9 +5684,8 @@ let MQDungeons = {
                         LongDescription: "In the room after the room with the switch, the pots will be on your right."
                     },
                     "2 Back Pots in Center Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 184, y: 95 },
                         Age: Age.EITHER,
@@ -5857,9 +5714,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in North Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 213, y: 13 },
                         Age: Age.EITHER,
@@ -5944,9 +5800,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots Before Boss Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 116, y: 162 },
                         Age: Age.ADULT,
@@ -6045,9 +5900,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts in Front Bombable Hole": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 183, y: 194, floor: "F1" },
                         Age: Age.EITHER,
@@ -6067,9 +5921,8 @@ let MQDungeons = {
                         ]
                     },
                     "4 Wonderitems in Northwest Picture": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 High QPAable Slingshot Wonderitems",
                         MapInfo: { x: 129, y: 45, floor: "F1" },
                         UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
@@ -6078,9 +5931,8 @@ let MQDungeons = {
                         LongDescription: "Shoot the lens of truth picture in the northwest corner of the main room to spawn wonderitems (do it 4 times to get all 4)."
                     },
                     "4 Wonderitems in Northeast Picture": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Slingshot Wonderitems",
                         MapInfo: { x: 261, y: 45, floor: "F1" },
                         UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
@@ -6153,9 +6005,8 @@ let MQDungeons = {
                         LongDescription: "WALL MASTER WARNING:<br/>Navigate to the back of the main room and play Zelda's Lullaby at the triforce. This will open a bunch of gates. Proceed behind you to the center room with the chest.<br/><br/>Alternatively, you can bomb the rocks near the middle-west of the main room. Sidehop then jumpslash over the hole in the ground to get to the center area."
                     },
                     "3 Pots in Center Room Cell": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 221, y: 172, floor: "F1" },
                         Age: Age.EITHER,
@@ -6169,9 +6020,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "3 Pots in East Center Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 231, y: 83, floor: "F1" },
                         Age: Age.EITHER,
@@ -6186,9 +6036,8 @@ let MQDungeons = {
                         LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door (use a pot if needed). Enter it, and navigate counter-clockwise around the room to get to the item."
                     },
                     "4 Wonderitems in East Center Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Slingshot Wonderitems",
                         MapInfo: { x: 218, y: 74, floor: "F1" },
                         UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
@@ -6238,9 +6087,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "3 Hearts in Basement": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Hearts",
                         MapInfo: { x: 295, y: 147, floor: "B1" },
                         Age: Age.EITHER,
@@ -6300,9 +6148,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Left Pots by Entrance": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 146, y: 252 },
                         Age: Age.EITHER,
@@ -6324,9 +6171,8 @@ let MQDungeons = {
                         LongDescription: "This chest is to the right when you first enter."
                     },
                     "2 Right Pots by Entrance": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 183, y: 252 },
                         Age: Age.EITHER,
@@ -6788,9 +6634,8 @@ let MQDungeons = {
                         Needs: [SilverRupeeSets.MQ_GTG_SILVER_RUPEES_WATER_ROOM]
                     },
                     "3 Silver Rupees in Water Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SILVER_RUPEE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Silver Rupees",
                         MapInfo: { x: 306, y: 169 },
                         Age: Age.ADULT,
@@ -6893,9 +6738,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "5 Scrubs in Secret Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SCRUB,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "5 Scrubs",
                         MapInfo: { x: 249, y: 235, floor: "MN" },
                         Age: Age.EITHER,
@@ -6987,9 +6831,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Forest Trial End": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 178, y: 65, floor: "FST" },
                         Age: Age.EITHER,
@@ -7087,9 +6930,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Water Trial End": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 192, y: 10, floor: "WTR" },
                         Age: Age.EITHER,
@@ -7200,9 +7042,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Shadow Trial End": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 178, y: 5, floor: "SHW" },
                         Age: Age.ADULT,
@@ -7289,9 +7130,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Fire Trial End": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 178, y: 77, floor: "FIR" },
                         Age: Age.ADULT,
@@ -7348,9 +7188,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts at Light Trial": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 213, y: 130, floor: "LIT" },
                         Age: Age.ADULT,
@@ -7364,9 +7203,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Light Trial End": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 180, y: 10, floor: "LIT" },
                         Age: Age.ADULT,
@@ -7426,9 +7264,8 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "4 Spirit Sun Chests": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CHEST,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Chests",
                         MapInfo: { x: 157, y: 119, floor: "SPT" },
                         Age: Age.ADULT,
@@ -7442,9 +7279,8 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Spirit Trial End": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 157, y: 71, floor: "SPT" },
                         Age: Age.ADULT,

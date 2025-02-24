@@ -213,9 +213,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "3 Hearts in Lower Basement": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Hearts",
                         MapInfo: { x: 246, y: 105, floor: "B2" },
                         Age: Age.EITHER,
@@ -332,9 +331,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots at East Room Entrance": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 206, y: 220, floor: "F1" },
                         Age: Age.EITHER,
@@ -350,9 +348,8 @@ let StandardDungeons = {
                         NeedsAny: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS, ItemSets.MUD_WALL_OR_QPA_ITEMS]
                     },
                     "2 Pots by East Room Ledge": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 228, y: 220, floor: "F1" },
                         Age: Age.EITHER,
@@ -369,9 +366,8 @@ let StandardDungeons = {
                         NeedsAny: [GameStateSets.CAN_HOOK_SCARECROW, GlitchItemSets.DODONGO_SCARECROW_SKULL_EARLY]
                     },
                     "2 Pots in Lizalfos Antechamber": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 310, y: 195, floor: "F1" },
                         Age: Age.EITHER,
@@ -387,9 +383,8 @@ let StandardDungeons = {
                         LongDescription: "In the lower lizalfos room, head to the platform closest to the lavafall. Jump through the lavafall on the side that's closer to the wall to get to ths item."
                     },
                     "2 Pots Left of Lizalfos Room Exit": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 280, y: 148, floor: "F1" },
                         Age: Age.EITHER,
@@ -397,9 +392,8 @@ let StandardDungeons = {
                         LongDescription: "In the lower lizalfos room, these pots are on the platform to the left of the exit door."
                     },
                     "2 Pots Right of Lizalfos Room Exit": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 311, y: 128, floor: "F1" },
                         Age: Age.EITHER,
@@ -425,9 +419,8 @@ let StandardDungeons = {
                         NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
                     },
                     "3 Pots by Blue Room Start": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 221, y: 146, floor: "F1" },
                         Age: Age.EITHER,
@@ -482,9 +475,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots Left of Staircase": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 12, y: 96, floor: "F2" },
                         Age: Age.EITHER,
@@ -492,9 +484,8 @@ let StandardDungeons = {
                         LongDescription: "Lower the giant staircase. Climb it - the pots are to the left."
                     },
                     "2 Pots Right of Staircase": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 51, y: 96, floor: "F2" },
                         Age: Age.EITHER,
@@ -552,9 +543,8 @@ let StandardDungeons = {
                         LongDescription: "In the room with the blades, this is the chest on the ledge near the Bomb Flower and bombable wall."
                     },
                     "2 Scrubs by Blade Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SCRUB,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Scrubs",
                         MapInfo: { x: 202, y: 106, floor: "F2" },
                         Age: Age.EITHER,
@@ -570,9 +560,8 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in Blade Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 202, y: 172, floor: "F2" },
                         Age: Age.EITHER,
@@ -618,9 +607,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts in Upper Lizalfos Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 296, y: 123, floor: "F2" },
                         Age: Age.EITHER,
@@ -701,9 +689,8 @@ let StandardDungeons = {
                         Needs: [ItemSets.MUD_WALL_OR_QPA_ITEMS]
                     },
                     "2 Pots After Block Push in Back Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 176, y: 58, floor: "F1" },
                         Age: Age.EITHER,
@@ -711,9 +698,8 @@ let StandardDungeons = {
                         LongDescription: "After the block push puzzle in the giant dodongo head, these are the pots to your left before you enter the hallway."
                     },
                     "2 Pots in Hall Before Final Block": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 143, y: 53, floor: "F1" },
                         Age: Age.EITHER,
@@ -779,10 +765,9 @@ let StandardDungeons = {
                         LongDescription: "After the first room, break the small crate on the right for this item. The left one drops nothing."
                     },
                     "2 Small Crates in Elevator Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 164, y: 177, floor: "F1" },
                         Age: Age.EITHER,
@@ -796,9 +781,8 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "5 Pots in Room by Vines": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "5 Pots",
                         MapInfo: { x: 32, y: 188, floor: "B1" },
                         Age: Age.EITHER,
@@ -835,9 +819,8 @@ let StandardDungeons = {
                         LongDescription: "In the room with the water and the switch (the first one you usually take Ruto into), there's a skulltula hanging out on the vines. Take it out, then raise the water to collect its token. Note that you can reach it with a jumpslash if you jump off the cliff then jumpslash when you're a bit closer.",
                     },
                     "3 Pots Above Vines": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 258, y: 152, floor: "B1" },
                         Age: Age.EITHER,
@@ -892,9 +875,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "3 Pots After Big Octo": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 101, y: 32, floor: "F2" },
                         Age: Age.EITHER,
@@ -1101,9 +1083,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "3 Pots Left in Lobby": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 142, y: 166, floor: "F1" },
                         Age: Age.EITHER,
@@ -1111,9 +1092,8 @@ let StandardDungeons = {
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. the pots are on the ledge to the left."
                     },
                     "3 Pots Right in Lobby": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 194, y: 164, floor: "F1" },
                         Age: Age.EITHER,
@@ -1137,9 +1117,8 @@ let StandardDungeons = {
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go straight again through the room with the blue bubble. In the next room, kill the two stalfos to spawn the chest."
                     },
                     "2 Pots Behind Main Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 171, y: 17, floor: "F1" },
                         Age: Age.EITHER,
@@ -1260,9 +1239,8 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Hearts in Well": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 181, y: 48, floor: "B1" },
                         Age: Age.EITHER,
@@ -1379,9 +1357,8 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Hearts Above Left Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 81, y: 73, floor: "F1" },
                         Age: Age.EITHER,
@@ -1430,9 +1407,8 @@ let StandardDungeons = {
                         LongDescription: "Go to the room after the red poe room. Kill the stalfos that spawns. After that, kill the two others to spawn the chest.",
                     },
                     "4 Pots in Upper Stalfos Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 192, y: 48, floor: "F2" },
                         Age: Age.ADULT,
@@ -1440,9 +1416,8 @@ let StandardDungeons = {
                         LongDescription: "These pots are against the walls in the room after the red poe room."
                     },
                     "3 Pots in Blue Poe Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 240, y: 43, floor: "F2" },
                         Age: Age.ADULT,
@@ -1478,9 +1453,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Carousel Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 331, y: 208, floor: "F2" },
                         Age: Age.ADULT,
@@ -1506,9 +1480,8 @@ let StandardDungeons = {
                     },
                     "2 Pots in Green Poe Room": {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 303, y: 146, floor: "F1" },
                         Age: Age.EITHER,
@@ -1835,9 +1808,8 @@ let StandardDungeons = {
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper left corner of the room and step on the switch. The chest is inside the Goron cage.",
                     },
                     "4 Pots Near Boss Door": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 45, y: 158, floor: "F1" },
                         Age: Age.ADULT,
@@ -1867,9 +1839,8 @@ let StandardDungeons = {
 
                 ItemLocations: {
                     "3 Pots on Big Lava Room Ledge": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 227, y: 162, floor: "F1" },
                         Age: Age.EITHER,
@@ -1931,9 +1902,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "3 Hearts on Left Ledge": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Hearts",
                         MapInfo: { x: 324, y: 176, floor: "F1" },
                         Age: Age.EITHER,
@@ -2011,9 +1981,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "3 Hearts in Narrow Bridge Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Hearts",
                         MapInfo: { x: 293, y: 155, floor: "F3" },
                         Age: Age.ADULT,
@@ -2034,9 +2003,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts on Fire Wall Room Pillars": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 231, y: 147, floor: "F3" },
                         Age: Age.ADULT,
@@ -2171,9 +2139,8 @@ let StandardDungeons = {
                         LongDescription: "Make your way to the maze of tiny fire walls. This is the locked door in the giant fire wall room. To get to the Compass chest, you must enter the door to the right of the entrance. Make your way through the maze to that door, being careful of the spawning fires."
                     },
                     "4 Pots by Left Fire Maze Totem": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 84, y: 215, floor: "F3" },
                         Age: Age.ADULT,
@@ -2192,9 +2159,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "4 Pots by Right Fire Maze Exit": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 76, y: 144, floor: "F3" },
                         Age: Age.ADULT,
@@ -2229,10 +2195,9 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Small Crates in Hammer Staircase Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 141, y: 63, floor: "F4" },
                         Age: Age.ADULT,
@@ -2472,9 +2437,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots by Boss Antechamber": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 227, y: 175, floor: "F3" },
                         Age: Age.ADULT,
@@ -2494,7 +2458,6 @@ let StandardDungeons = {
                     "Blue Warp": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         Age: Age.ADULT,
-                        IsBoss: true,
                         Order: 99,
                         MapInfo: { x: 227, y: 145, floor: "F3" },
                         LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
@@ -2531,9 +2494,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Room Before Dark Link": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 55, y: 161, floor: "F3" },
                         Age: Age.ADULT,
@@ -2598,9 +2560,8 @@ let StandardDungeons = {
                         LongDescription: "In the whirlpool river, this is one of the items you'll run into while swimming (before the third vortex)."
                     },
                     "2 Pots at End of Whirlpool Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         Age: Age.ADULT,
                         Order: 11,
@@ -2736,9 +2697,8 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in Low East Wing": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 287, y: 213, floor: "F1" },
                         Age: Age.EITHER,
@@ -2772,9 +2732,8 @@ let StandardDungeons = {
                         LongDescription: "First, drain the water in the temple. Now head the bottom southern wing. Bomb the cracked floor. Make your way down the corridor into the next room. Cross the water using your hookshot or hover boots. In the back of this room, hit the switch in the cage with a jumpslash or charged spin attack to get to the skulltula."
                     },
                     "4 Pots in Low South Wing": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 24, y: 268, floor: "F1" },
                         Age: Age.ADULT,
@@ -2875,9 +2834,8 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots by Mid East Wing": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 216, y: 131, floor: "F2" },
                         Age: Age.EITHER,
@@ -2898,9 +2856,8 @@ let StandardDungeons = {
                         Order: 25
                     },
                     "3 Pots in Mid East Wing": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 283, y: 58, floor: "F2" },
                         Age: Age.ADULT,
@@ -2922,9 +2879,8 @@ let StandardDungeons = {
                         LongDescription: "First, make your way to the top east wing. Push back the block and then go to the southern mid-level.<br/><br/>Shoot the eye switch then quickly longshot the target or use your hover boots to pass the gate. Go down the room and push the red block backward. Now you must make your way back around, this time pushing the block forward out of your way. Head to the right to the chest.<br/><br/>Note that alternatively, you can shoot the eye switch twice to get the block in position."
                     },
                     "2 Pots Behind Block at Mid Level": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 245, y: 251, floor: "F2" },
                         Age: Age.EITHER,
@@ -2996,9 +2952,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Low North Block Puzzle Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 298, y: 23, floor: "F1" },
                         Age: Age.ADULT,
@@ -3031,9 +2986,8 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in Boss Key Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 124, y: 53, floor: "F1" },
                         Age: Age.ADULT,
@@ -3212,9 +3166,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Map Chest Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 101, y: 121, floor: "F1" },
                         Age: Age.EITHER,
@@ -3230,9 +3183,8 @@ let StandardDungeons = {
                         Needs: [ItemSets.DAMAGING_ITEMS]
                     },
                     "2 Pots in Front Maze Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 92, y: 153, floor: "F1" },
                         Age: Age.EITHER,
@@ -3247,9 +3199,8 @@ let StandardDungeons = {
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. Circle around the central pillar and go through the fake wall. Go to your left and the pot should fly into you."
                     },
                     "3 Pots in Back Maze Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 62, y: 163, floor: "F1" },
                         Age: Age.EITHER,
@@ -3369,9 +3320,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts in Invisible Scythe Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 331, y: 123, floor: "B2" },
                         Age: Age.EITHER,
@@ -3404,9 +3354,8 @@ let StandardDungeons = {
                         ChildNeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
                     },
                     "5 Pit Room Silver Rupees": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SILVER_RUPEE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "5 Silver Rupees",
                         MapInfo: { x: 137, y: 215, floor: "B2" },
                         Age: Age.EITHER,
@@ -3425,9 +3374,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Lower Pots in Falling Spikes Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 51, y: 211, floor: "B2" },
                         Age: Age.EITHER,
@@ -3471,9 +3419,8 @@ let StandardDungeons = {
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. Pull the block out of the wall to the right (use the lens to find it) to act as an umbrella to pass the ceiling spikes. Once it's as far as it can go, jump onto it. Hit the switch on top and then get the chest that spawns."
                     },
                     "2 Upper Pots in Falling Spikes Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 82, y: 209, floor: "B2" },
                         Age: Age.EITHER,
@@ -3595,9 +3542,8 @@ let StandardDungeons = {
                         LongDescription: "Start at the invisible spikes room. Navigate to the door on the upper platform. If you don't have the longshot, you'll need to first backflip on the chest to get enough height to hit the invisible target. Navigate through the fans using your Iron Boots. Use your hookshot on the horizontal wooden pillar to pass the gap. Make your way to the end of the hallway and enter the door. There is an invisible chest in the back right corner of this room."
                     },
                     "2 Flying Pots in Gibdo Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 302, y: 142, floor: "B1" },
                         Age: Age.ADULT,
@@ -3605,9 +3551,8 @@ let StandardDungeons = {
                         LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. The pots will fly at you as you approach the back of the room."
                     },
                     "2 Pots in Gibdo Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 302, y: 152, floor: "B1" },
                         Age: Age.ADULT,
@@ -3672,9 +3617,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts in Boat Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 280, y: 114, floor: "B1" },
                         Age: Age.ADULT,
@@ -3703,9 +3647,8 @@ let StandardDungeons = {
                         LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across.<br/><br/>The pot is the one on the right near where the bridge falls (the other pot is empty)."
                     },
                     "2 Pots on Boat Side of Chasm": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 138, y: 104, floor: "B1" },
@@ -3751,9 +3694,8 @@ let StandardDungeons = {
                         LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room straight across from you to get to the skulltula."
                     },
                     "9 Rupees in Triple Skull Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "9 Skull Rupees",
                         MapInfo: { x: 38, y: 99, floor: "B1" },
                         Age: Age.ADULT,
@@ -3762,9 +3704,8 @@ let StandardDungeons = {
                         NeedsAny: [Items.BOMB, Equipment.STRENGTH, GlitchItemSets.SHADOW_GIANT_SKULLS_WITH_CHU]
                     },
                     "2 Pots in Invisible Floormaster Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 89, y: 131, floor: "B1" },
                         Age: Age.ADULT,
@@ -3787,9 +3728,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts on Chasm Scarecrow Platform": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 120, y: 116, floor: "B1" },
                         Age: Age.ADULT,
@@ -3829,9 +3769,8 @@ let StandardDungeons = {
                         NeedsAny: [Songs.SONG_OF_TIME, Items.BOOMERANG]
                     },
                     "2 Pots by Boss Antechamber": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 132, y: 128, floor: "B1" },
                         Age: Age.ADULT,
@@ -3880,9 +3819,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Flying Pots in Lobby": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 192, y: 250, floor: "F1" },
                         Age: Age.EITHER,
@@ -3890,9 +3828,8 @@ let StandardDungeons = {
                         LongDescription: "These are the pots that fly at you at the entrance to the temple."
                     },
                     "2 Pots in Lobby": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 192, y: 236, floor: "F1" },
                         Age: Age.EITHER,
@@ -4021,9 +3958,8 @@ let StandardDungeons = {
                         LongDescription: "Enter the child-only crawlspace. Kill all the enemies in the first room to unlock the doors - BEWARE OF FIRE KEESE! Enter the left room. The goal in this room is to hit the switch to lower the bridge to get the pot on the other side. There are a few ways to do this. The easiest way is to simply use the boomerang to go around the bridge blocking the switch. If you have the slingshot, you can inch up to the ledge closest to the door and make a precise shot - be sure to go quick if you don't have the means to kill the stalfos.<br/><br/>To use a bombchu, line up with the back wall and face the switch. Take out the chu then drop it after the first flash (like 1/2 a second).<br/><br/>Note that the flying pot you want to hit you is the one on the right; the left one contains nothing."
                     },
                     "2 Flying Pots After Stalfos": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 39, y: 81, floor: "F1" },
@@ -4047,9 +3983,8 @@ let StandardDungeons = {
                         LongDescription: "Enter the room after the Stalfos with the bridge. The pot is the one right in front of you - the others are empty."
                     },
                     "4 Pots in Child Anubis Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 84, y: 37, floor: "F1" },
@@ -4070,9 +4005,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "4 Grate Room Silver Rupees on Grate": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SILVER_RUPEE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Silver Rupees",
                         MapInfo: { x: 140, y: 90, floor: "F1" },
                         Age: Age.EITHER,
@@ -4124,9 +4058,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Crates After Second Crawlspace": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 88, y: 113, floor: "F1" },
                         Age: Age.EITHER,
@@ -4276,9 +4209,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Flying Pots in Invisible Floormaster Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 278, y: 129, floor: "F1" },
                         Age: Age.ADULT,
@@ -4314,9 +4246,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "3 Left Pots in Statue Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 112, y: 134, floor: "F2" },
@@ -4332,9 +4263,8 @@ let StandardDungeons = {
                         LongDescription: "Head to the statue room. The pot will fly at you if you go to the left of the statue."
                     },
                     "3 Right Pots in Statue Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 240, y: 134, floor: "F2" },
@@ -4455,9 +4385,8 @@ let StandardDungeons = {
                         ]
                     },
                     "2 Pots in Hall Before Silver Knuckle": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 32, y: 157, floor: "F3" },
                         Age: Age.EITHER,
@@ -4590,9 +4519,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts in Moving Wall Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 167, y: 169, floor: "F3" },
                         Age: Age.ADULT,
@@ -4623,9 +4551,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Flying Pots in Upper Giant Mirror Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 171, y: 164, floor: "F4" },
                         Age: Age.ADULT,
@@ -4633,9 +4560,8 @@ let StandardDungeons = {
                         LongDescription: "Enter the door to the left of the triforce symbol. One of the two pots will fly into you - the other is just in front of that one."
                     },
                     "4 Flying Pots in Lower Giant Mirror Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 175, y: 109, floor: "F4" },
                         Age: Age.ADULT,
@@ -4728,9 +4654,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots After Freezards": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 166, y: 164 },
                         Age: Age.EITHER,
@@ -4754,9 +4679,8 @@ let StandardDungeons = {
                         NeedsAny: [ItemSets.SWORDS, ItemSets.EXPLOSIVES]
                     },
                     "2 Pots in East Scythe Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 204, y: 121 },
                         Age: Age.EITHER,
@@ -4885,9 +4809,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "3 Hearts in Platforming Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Hearts",
                         MapInfo: { x: 228, y: 22 },
                         Age: Age.EITHER,
@@ -4963,9 +4886,8 @@ let StandardDungeons = {
                         LongDescription: "This rupee is the one to the right of the blue fire. No need to push the block for this one; you can simply climb up and get it."
                     },
                     "3 Red Rupees in Block Push Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Red Rupees",
                         MapInfo: { x: 97, y: 103 },
                         Age: Age.EITHER,
@@ -4984,9 +4906,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots Before Boss Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 111, y: 161 },
                         Age: Age.EITHER,
@@ -5094,9 +5015,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots by Entrance": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 194, y: 248, floor: "F1" },
                         Age: Age.CHILD,
@@ -5118,9 +5038,8 @@ let StandardDungeons = {
                         LongDescription: "This chest is in a fake wall to the left when you first enter the main room."
                     },
                     "3 Pots Left of Entrance": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 100, y: 223, floor: "F1" },
                         Age: Age.CHILD,
@@ -5208,9 +5127,8 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "3 Flying Pots in Left Locked Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 160, y: 95, floor: "F1" },
                         Age: Age.CHILD,
@@ -5364,9 +5282,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "5 Blue Rupees in Basement Center": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "5 Blue Rupees",
                         MapInfo: { x: 204, y: 155, floor: "B1" },
                         Age: Age.CHILD,
@@ -5374,9 +5291,8 @@ let StandardDungeons = {
                         LongDescription: "Fall down the central hole (by the wooden X in the center of the dungeon) to get to these rupees."
                     },
                     "10 Pots in Second North Wing": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "10 Pots",
                         MapInfo: { x: 248, y: 103, floor: "B1" },
                         Age: Age.CHILD,
@@ -5384,9 +5300,8 @@ let StandardDungeons = {
                         LongDescription: "These pots are down the second wing from the left in the basement."
                     },
                     "2 Pots by Second North Wing": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 198, y: 174, floor: "B1" },
                         Age: Age.CHILD,
@@ -5646,9 +5561,8 @@ let StandardDungeons = {
                         Needs: [ItemSets.EXPLOSIVES]
                     },
                     "2 Hearts in Dinalfos/Beamos Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 273, y: 262 },
                         Age: Age.EITHER,
@@ -5980,9 +5894,8 @@ let StandardDungeons = {
                         Needs: [Songs.SONG_OF_TIME, GameStateSets.GTG_TUNIC_CHECK] // Seems these blocks ARE there as child
                     },
                     "4 Silver Rupees in Water Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SILVER_RUPEE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Silver Rupees",
                         MapInfo: { x: 306, y: 169 },
                         Age: Age.ADULT,
@@ -6215,9 +6128,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "4 Scrubs in Secret Room": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SCRUB,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Scrubs",
                         MapInfo: { x: 249, y: 235, floor: "MN" },
                         Age: Age.EITHER,
@@ -6296,9 +6208,8 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Forest Trial End": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 178, y: 65, floor: "FST" },
                         Age: Age.ADULT,
@@ -6363,9 +6274,8 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Water Trial End": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 192, y: 10, floor: "WTR" },
                         Age: Age.ADULT,
@@ -6414,9 +6324,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots on Shadow Trial Like Like Platform": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 185, y: 135, floor: "SHW" },
                         Age: Age.ADULT,
@@ -6431,9 +6340,8 @@ let StandardDungeons = {
                         LongDescription: "Enter the shadow trial. First, get to the platform passed the like-like platform. One way to do this is to shoot a fire arrow at the torch to the right. If you can't, then use your longshot to hook the torch. Now get on the very edge of the platform closest to the like-like. Longshot the like-like to get over there. Either use the torch, or use Hover Boots to get to the next platform. Down and to the right is a switch. Navigate to it. Once you press it, either hookshot to it or void out and come back for it.",
                     },
                     "3 Hearts on Invisible Shadow Trial Bridge": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Hearts",
                         MapInfo: { x: 176, y: 61, floor: "SHW" },
                         Age: Age.ADULT,
@@ -6448,9 +6356,8 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Shadow Trial End": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 178, y: 5, floor: "SHW" },
                         Age: Age.ADULT,
@@ -6534,9 +6441,8 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Fire Trial End": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 178, y: 77, floor: "FIR" },
                         Age: Age.ADULT,
@@ -6563,9 +6469,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Light Trial Chests": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.GIFT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "7 Chests",
                         MapInfo: { x: 181, y: 249, floor: "LIT" },
                         Age: Age.ADULT,
@@ -6652,9 +6557,8 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Light Trial End": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 180, y: 10, floor: "LIT" },
                         Age: Age.ADULT,
@@ -6770,9 +6674,8 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Spirit Trial End": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 157, y: 71, floor: "SPT" },
                         Age: Age.ADULT,

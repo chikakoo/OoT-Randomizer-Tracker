@@ -55,27 +55,24 @@ let MapLocations = {
                         LongDescription: "This item is behind Mido's House.",
                     },
                     "2 Green Rupees in Grass by Mido's": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Green Rupees",
                         MapInfo: { x: 163, y: 110 },
                         Age: Age.CHILD,
                         LongDescription: "Search the grass near the Mido's house to find these items."
                     },
                     "2 Green Rupees in Grass by Know-it-All": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Green Rupees",
                         MapInfo: { x: 139, y: 169 },
                         Age: Age.CHILD,
                         LongDescription: "Search the grass near the Know-it-All Brothers house to find these items."
                     },
                     "3 Hearts on Saria's House": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Hearts",
                         MapInfo: { x: 206, y: 213 },
                         Age: Age.CHILD,
@@ -103,9 +100,8 @@ let MapLocations = {
                         LongDescription: "Start at the house of twins and jump on the big, then small platforms on the way to the shop. If you haven't yet touched the water, you'll get this item.",
                     },
                     "Soft Soil": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.NON_ITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Soft Soil",
                         MapInfo: { x: 284, y: 139 },
                         Age: Age.CHILD,
@@ -137,9 +133,8 @@ let MapLocations = {
                         LongDescription: "This stone is by the lost woods entrance at the top area of the forest.",
                     },
                     "Rupee Circle Above Shop": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Rupee Circle",
                         MapInfo: { x: 291, y: 106 },
                         Age: Age.ADULT,
@@ -165,9 +160,8 @@ let MapLocations = {
                         LongDescription: "Slash the close sign in the fenced-off training area with your sword or deku sticks to get this item.",
                     },
                     "3 Wonderitems in Training Area": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Green Rupee Wonderitems",
                         MapInfo: { x: 106, y: 226 },
                         Age: Age.CHILD,
@@ -181,9 +175,8 @@ let MapLocations = {
                         LongDescription: "This item is to your right when you go in the maze.",
                     },
                     "2 Wonderitems in Maze Grass": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Green Rupee Wonderitems",
                         MapInfo: { x: 100, y: 292 },
                         Age: Age.CHILD,
@@ -281,9 +274,8 @@ let MapLocations = {
                         Needs: [AdultTradeItems.ODD_POTION]
                     },
                     "Soft Soil by Bridge": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.NON_ITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Soft Soil",
                         MapInfo: { x: 84, y: 222 },
                         Age: Age.CHILD,
@@ -334,9 +326,8 @@ let MapLocations = {
                         Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "3 Wonderitems in Grass by Ocarina Game": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Green Rupee Wonderitems",
                         MapInfo: { x: 251, y: 195 },
                         Order: 2,
@@ -355,9 +346,8 @@ let MapLocations = {
                         ]
                     },
                     "7 Green Rupees in Water": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "7 Green Rupees",
                         MapImageName: "7 Green Rupees",
                         MapInfo: { x: 273, y: 127 },
@@ -434,9 +424,8 @@ let MapLocations = {
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. This is the left scrub in this room."
                     },
                     "Soft Soil by Forest Stage": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.NON_ITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Soft Soil",
                         MapInfo: { x: 187, y: 66 },
                         Order: 5.1,
@@ -740,9 +729,8 @@ let MapLocations = {
                 ItemLocations: {
                     // Northeast
                     "3 Wonderitems by Drawbridge": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         Time: function() { return Time.DAY; },
                         DefaultEntranceGroupName: "3 Red Rupee Wonderitems",
                         MapInfo: { x: 197, y: 26 },
@@ -809,9 +797,8 @@ let MapLocations = {
                 ItemLocations: {
                     // Entrance
                     "4 Pots by Entrance": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 193, y: 44 },
                         Age: Age.CHILD,
@@ -842,9 +829,8 @@ let MapLocations = {
                     // Racetrack
                     "3 Pots in Rain Shed": {
                         DisplayGroup: { groupName: "Racetrack", imageName: "Epona's Song" },
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 234, y: 213 },
                         Age: Age.CHILD,
@@ -974,9 +960,8 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Crates by Bazaar": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Night and 2 Empty Day Crates",
                         MapInfo: { x: 303, y: 200 },
                         Order: 1,
@@ -987,9 +972,8 @@ let MapLocations = {
                         LongDescription: "These crates are on either side of the bazaar door."
                     },
                     "Crates by Archery": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Night and 2 Empty Day Crates",
                         Time: function() { 
                             return !Settings.RandomizerSettings.shuffleEmptyCrates ? Time.NIGHT : Time.EITHER; 
@@ -1000,9 +984,8 @@ let MapLocations = {
                         LongDescription: "These crates are on the right side of the archery minigame door."
                     },
                     "Wonderitems on Balcony": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Balcony Wonderitems",
                         MapInfo: { x: 213, y: 151 },
                         Order: 3,
@@ -1156,9 +1139,8 @@ let MapLocations = {
                         LongDescription: "This stone near the climbable stones near the castle moat."
                     },
                     "Shoot 2 Torches by Drawbridge": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Slingshot Wonderitems",
                         Order: 4,
                         MapInfo: { x: 122, y: 41, floor: "HYR" },
@@ -1167,9 +1149,8 @@ let MapLocations = {
                         Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "7 Rupees in Moat by Drawbridge": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "7 Green Rupee Wonderitems",
                         Order: 5,
                         MapInfo: { x: 122, y: 78, floor: "HYR" },
@@ -1177,9 +1158,8 @@ let MapLocations = {
                         LongDescription: "Swim downstream in the moat by the drawbridge to get these 7 items. Start on the leftmost side, and stay in the middle all the way down.",
                     },
                     "3 Rupees in Moat by Crates": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Green Rupee Wonderitems",
                         Order: 7,
                         MapInfo: { x: 182, y: 52, floor: "HYR" },
@@ -1196,9 +1176,8 @@ let MapLocations = {
                         Needs: [ChildTradeItems.WEIRD_EGG]
                     },
                     "Castle Courtyard Items": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.GIFT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Castle Courtyard Items",
                         MapInfo: { x: 167, y: 33, floor: "HYR" },
                         Age: Age.CHILD,
@@ -1365,9 +1344,8 @@ let MapLocations = {
                         OverrideItemGroupCondition: true
                     },
                     "3 Pots Near Impa's House": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 136, y: 249 },
                         Age: Age.CHILD,
@@ -1435,9 +1413,8 @@ let MapLocations = {
                         LongDescription: "This crate is by the loading zone to the graveyard, in the corner."
                     },
                     "2 Crates by Talon's House": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 166, y: 175 },
@@ -1454,9 +1431,8 @@ let MapLocations = {
                         LongDescription: "This crate is behind the house of skulltulas, by the ledge."
                     },
                     "2 Crates by Impa's House": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 136, y: 245 },
@@ -1511,9 +1487,8 @@ let MapLocations = {
                         LongDescription: "This is the crate just up the stairs, where the beggar is as Adult."
                     },
                     "3 Pots Near Watchtower": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 180, y: 111 },
                         Age: Age.CHILD,
@@ -1528,9 +1503,8 @@ let MapLocations = {
                         Needs: [() => MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull()]
                     },
                     "3 Pots Near Bazaar": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 110, y: 74 },
                         Age: Age.CHILD,
@@ -1572,9 +1546,8 @@ let MapLocations = {
                         LongDescription: "This crate is next to the entrance to the archery minigame or close to the beggar near the watchtower. The drop is shared between the two."
                     },
                     "2 Crates by Beggar": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 118, y: 122 },
@@ -1603,9 +1576,8 @@ let MapLocations = {
                     // Enclosed Area
                     "4 Crates Behind Potion Shop": {
                         DisplayGroup: { groupName: "Enclosed Area", imageName: "Odd Mushroom" },
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "4 Crates",
                         MapInfo: { x: 249, y: 134 },
@@ -1620,9 +1592,8 @@ let MapLocations = {
                         LongDescription: "One of the four crates in the enclosed area will drop an item - it's random which it is."
                     },
                     "2 Pots Near Granny's Potion Shop": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 242, y: 138 },
                         Age: Age.CHILD,
@@ -1719,9 +1690,8 @@ let MapLocations = {
                         LongDescription: "Get to the graveyard when it's barely night time. If you play the Sun's Song, make sure you do it where time passes, then quickly take the exit to Kakariko before it becomes too late. Simply talk to Dampe and pay him 10 rupees to get this item."
                     },
                     "Soft Soil": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.NON_ITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Soft Soil",
                         MapInfo: { x: 159, y: 91 },
                         Age: Age.CHILD,
@@ -1878,18 +1848,16 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "3 Pots Left of Grave Entrance": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 79, y: 256, floor: "DMP" },
                         Age: Age.EITHER,
                         LongDescription: "These pots are to the left of the spawn pad."
                     },
                     "3 Pots Right of Grave Entrance": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 116, y: 256, floor: "DMP" },
                         Age: Age.EITHER,
@@ -1903,9 +1871,8 @@ let MapLocations = {
                         LongDescription: "From the start, follow the right wall to the rupee."
                     },
                     "4 Wonderitems by Race Rupee 1": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Green Rupee Wonderitems",
                         MapInfo: { x: 125, y: 190, floor: "DMP" },
                         Age: Age.EITHER,
@@ -1940,9 +1907,8 @@ let MapLocations = {
                         LongDescription: "After the first door, the rupee will be on the left."
                     },
                     "2 Wonderitems by Race Rupee 4": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Green Rupee Wonderitems",
                         MapInfo: { x: 117, y: 10, floor: "DMP" },
                         Age: Age.EITHER,
@@ -1970,9 +1936,8 @@ let MapLocations = {
                         LongDescription: "In the big room with the rocks, go straight, take a right, then follow the left wall to the rupee."
                     },
                     "2 Wonderitems by Race Rupee 6": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Green Rupee Wonderitems",
                         MapInfo: { x: 229, y: 85, floor: "DMP" },
                         Age: Age.EITHER,
@@ -1986,9 +1951,8 @@ let MapLocations = {
                         LongDescription: "After the second door, follow the left wall to the rupee."
                     },
                     "4 Wonderitems by Race Rupee 7": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Green Rupee Wonderitems",
                         MapInfo: { x: 239, y: 132, floor: "DMP" },
                         Age: Age.EITHER,
@@ -2148,9 +2112,8 @@ let MapLocations = {
                             AdultNeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.LUNGE_STORAGE_NEEDING_QUICKDRAW]
                     },
                     "Soft Soil": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.NON_ITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Soft Soil Skulltula Always Killable",
                         MapInfo: { x: 179, y: 168 },
                         Age: Age.CHILD,
@@ -2234,9 +2197,8 @@ let MapLocations = {
                 ItemLocations: {
                     // Upper Area
                     "Trade Biggoron": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.GIFT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Trade Biggoron",
                         MapInfo: { x: 243, y: 28 },
                         Age: Age.ADULT,
@@ -2339,9 +2301,8 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "4 Pots Near Goron City": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 56, y: 85 },
                         Age: Age.EITHER,
@@ -2374,9 +2335,8 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Soft Soil": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.NON_ITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Soft Soil",
                         MapInfo: { x: 177, y: 95 },
                         Age: Age.CHILD,
@@ -2390,9 +2350,8 @@ let MapLocations = {
                         LongDescription: "As Child, from the Bolero warp, make your way to the first tiny island across the wooden bridge for this item.",
                     },
                     "Rupee Circle on Second Island": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Expensive Rupee Circle",
                         MapInfo: { x: 280, y: 80 },
                         Age: Age.CHILD,
@@ -2431,9 +2390,8 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Rupee Circle on Scarecrow Platform": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Rupee Circle",
                         MapInfo: { x: 283, y: 132 },
                         Age: Age.ADULT,
@@ -2552,9 +2510,8 @@ let MapLocations = {
                     // Middle Floors
                     "3 Pots by Upper Staircase": {
                         DisplayGroup: { groupName: "Middle Floors", imageName: "Goron Tunic" },
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 79, y: 120 },
                         Age: Age.EITHER,
@@ -2601,9 +2558,8 @@ let MapLocations = {
                     // Bottom Floor
                     "2 Pots by Lower Staircase": {
                         DisplayGroup: { groupName: "Bottom Floor & Darunia", imageName: "Happy Goron" },
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 189, y: 199 },
                         Age: Age.EITHER,
@@ -2643,9 +2599,8 @@ let MapLocations = {
                         Needs: [Songs.SARIAS_SONG]
                     },
                     "3 Pots by Darunia": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 204, y: 39 },
                         Age: Age.EITHER,
@@ -2704,9 +2659,8 @@ let MapLocations = {
                         NeedsAny: [Items.BOMB, Equipment.STRENGTH, GlitchItemSets.URN_WITH_CHUS]
                     },
                     "9 Items From Spinning Urn": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Spinning Pot",
                         MapInfo: { x: 189, y: 135 },
                         Age: Age.CHILD,
@@ -2763,9 +2717,8 @@ let MapLocations = {
                     "4 Wonderitems in River by Hyrule Field": {
                         DisplayGroup: { groupName: "River Rupees", imageName: "Green Rupee Wonderitem" },
                         Order: 5,
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Green Rupee Wonderitems",
                         MapInfo: { x: 36, y: 193 },
                         Age: Age.CHILD,
@@ -2829,9 +2782,8 @@ let MapLocations = {
                         AdultNeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
                     },
                     "Frog Songs": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.GIFT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Frogs",
                         MapInfo: { x: 155, y: 102 },
                         Age: Age.CHILD,
@@ -2883,9 +2835,8 @@ let MapLocations = {
                             GlitchItemSets.CHU_MEGA_FLIP]
                     },
                     "4 Red Rupees by Waterfall": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Red Rupees",
                         MapInfo: { x: 308, y: 158 },
                         Age: Age.ADULT,
@@ -2902,9 +2853,8 @@ let MapLocations = {
                     "4 Wonderitems in River by Zora's Domain": {
                         DisplayGroup: { groupName: "River Rupees", imageName: "Green Rupee Wonderitem" },
                         Order: 1,
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Green Rupee Wonderitems",
                         MapInfo: { x: 233, y: 92 },
                         Age: Age.CHILD,
@@ -2912,9 +2862,8 @@ let MapLocations = {
                     },
                     "6 Wonderitems After Underwater Rocks": {
                         Order: 2,
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "6 Green Rupee Wonderitems",
                         MapInfo: { x: 159, y: 148 },
                         Age: Age.CHILD,
@@ -2922,9 +2871,8 @@ let MapLocations = {
                     },
                     "3 Wonderitems After Platform Ladder": {
                         Order: 3,
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Green Rupee Wonderitems",
                         MapInfo: { x: 117, y: 151 },
                         Age: Age.CHILD,
@@ -2932,9 +2880,8 @@ let MapLocations = {
                     },
                     "3 Wonderitems Near Bean Salesman": {
                         Order: 4,
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Green Rupee Wonderitems",
                         MapInfo: { x: 55, y: 155 },
                         Age: Age.CHILD,
@@ -2942,9 +2889,8 @@ let MapLocations = {
                     },
                     "7 Wonderitems Near Frogs": {
                         Order: 6,
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "7 Green Rupee Wonderitems",
                         MapInfo: { x: 132, y: 115 },
                         Age: Age.CHILD,
@@ -2952,9 +2898,8 @@ let MapLocations = {
                     },
                     "4 Wonderitems in Fast Stream After Frogs": {
                         Order: 7,
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Green Rupee Wonderitems",
                         MapInfo: { x: 100, y: 133 },
                         Age: Age.CHILD,
@@ -3016,18 +2961,16 @@ let MapLocations = {
                 ItemLocations: {
                     // Bottom Area
                     "2 Pots in Front of Shop": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 244, y: 260 },
                         Age: Age.EITHER,
                         LongDescription: "These pots are right in front of the shop entrance."
                     },
                     "3 Pots Right of Shop": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 201, y: 260 },
                         Age: Age.EITHER,
@@ -3186,9 +3129,8 @@ let MapLocations = {
                         LongDescription: "This stone is to the left of the Jabu Jabu platform."
                     },
                     "4 Pots by Jabu": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 125, y: 98 },
                         Age: Age.CHILD,
@@ -3232,9 +3174,8 @@ let MapLocations = {
                         Needs: [Equipment.IRON_BOOTS]
                     },
                     "18 Underwater Green Rupees": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "18 Green Rupees",
                         MapInfo: { x: 235, y: 137 },
                         Age: Age.ADULT,
@@ -3249,9 +3190,8 @@ let MapLocations = {
                 Exits: {},
                 ItemLocations: {
                     "3 Pots in Hidden Tunnel": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 266, y: 260 },
                         Age: Age.ADULT,
@@ -3319,9 +3259,8 @@ let MapLocations = {
                         Needs: [GameStateSets.CAN_PLAY_SONGS, () => ItemData.getNumberOfOcarinaButtons() >= 2]
                     },
                     "Soft Soil": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.NON_ITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Soft Soil",
                         MapInfo: { x: 106, y: 71 },
                         Age: Age.CHILD,
@@ -3368,9 +3307,8 @@ let MapLocations = {
                         LongDescription: "This item is by the entrance to Zora's Domain - you can dive to get it without a scale.",
                     },
                     "2 Green Rupees in Deeper Water": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Green Rupees",
                         MapInfo: { x: 169, y: 105 },
                         Age: Age.CHILD,
@@ -3594,9 +3532,8 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Soft Soil": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.NON_ITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Soft Soil",
                         MapInfo: { x: 183, y: 191 },
                         Age: Age.CHILD,
@@ -3756,9 +3693,8 @@ let MapLocations = {
                         Needs: [GameStateSets.ARE_GERUDO_GUARDS_TAME]
                     },
                     "2 Crates Right of Bottom Left Door": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 124, y: 154 },
@@ -3766,9 +3702,8 @@ let MapLocations = {
                         LongDescription: "These are the two crates on the bottom to the right of the bottom left hideout entrance."
                     },
                     "4 Crates in Bottom Enclave": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "4 Crates",
                         MapInfo: { x: 132, y: 176 },
@@ -3944,9 +3879,8 @@ let MapLocations = {
                         LongDescription: "Shoot the overhanging sign by the entrance to horseback archery with your hookshot to get this wonderitem. Note that it only works if you shoot it from the fortress side."
                     },
                     "2 Crates by HBA Right Target": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 241, y: 252 },
@@ -3954,9 +3888,8 @@ let MapLocations = {
                         LongDescription: "These are the crates by the horseback archery's giant right target."
                     },
                     "2 Crates by HBA Start": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 250, y: 233 },
@@ -3964,9 +3897,8 @@ let MapLocations = {
                         LongDescription: "These are the crates by the start of the horseback archery minigame."
                     },
                     "6 Crates by HBA Center Targets": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "6 Crates",
                         MapInfo: { x: 266, y: 144 },
@@ -3974,9 +3906,8 @@ let MapLocations = {
                         LongDescription: "These are the crates by horseback archery's center targets."
                     },
                     "2 Crates by HBA Left Target": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         IsEmpty: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 243, y: 52 },
@@ -4071,9 +4002,8 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "3 Pots by Jail 1": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 113, y: 107, floor: "J1" },
                         Age: Age.EITHER,
@@ -4132,9 +4062,8 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "2 Pots in Jail 2 Hallway": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 167, y: 11, floor: "J2" },
                         Age: Age.EITHER,
@@ -4182,27 +4111,24 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "3 Pots by Jail 3": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 260, y: 115, floor: "J3" },
                         Age: Age.EITHER,
                         LongDescription: "These pots are on the opposite wall of the closed jail."
                     },
                     "2 Crates by Jail 3": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 127, y: 115, floor: "J3" },
                         Age: Age.EITHER,
                         LongDescription: "The crates are in the opposite corner of the locked cell door."
                     },
                     "4 Pots in Open Cell by Jail 3": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 157, y: 217, floor: "J3" },
                         Age: Age.EITHER,
@@ -4297,18 +4223,16 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "2 Far Crates in Kitchen Hallway": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 108, y: 130, floor: "KIT" },
                         Age: Age.EITHER,
                         LongDescription: "These are the far away crates in the hallway attached to the kitchen."
                     },
                     "2 Mid Crates in Kitchen Hallway": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Crates",
                         MapInfo: { x: 131, y: 212, floor: "KIT" },
                         Age: Age.EITHER,
@@ -4397,9 +4321,8 @@ let MapLocations = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots on Kitchen Table": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 267, y: 210, floor: "KIT" },
                         Age: Age.EITHER,
@@ -4453,9 +4376,8 @@ let MapLocations = {
                             [ItemSets.SWORDS, ItemSets.SHIELDS]], // Need to crouch stab the stationary guard
                     },
                     "2 Pots on Upper Room Table": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 309, y: 96, floor: "TOP" },
                         Age: Age.EITHER,
@@ -4552,9 +4474,8 @@ let MapLocations = {
 
                 ItemLocations: {
                     "3 Crates Across Quicksand": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Crates",
                         MapInfo: { x: 294, y: 253 },
                         Age: Age.EITHER,
@@ -4583,9 +4504,8 @@ let MapLocations = {
                         NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
                     },
                     "4 Pots at Outpost": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 214, y: 89 },
                         Age: Age.EITHER,
@@ -4650,9 +4570,8 @@ let MapLocations = {
                 ItemLocations: {
                     // North Area
                     "2 Items in Tree by Great Fairy": {
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "2 Projectile Wonderitems",
                         MapInfo: { x: 231, y: 33 },
                         Age: Age.EITHER,
@@ -4673,9 +4592,8 @@ let MapLocations = {
                     // Oasis
                     "3 Items in Tree at Oasis": {
                         DisplayGroup: { groupName: "Oasis", imageName: "Song of Storms" },
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "3 Desert Projectile Wonderitems",
                         MapInfo: { x: 195, y: 246 },
                         Age: Age.EITHER,
@@ -4693,9 +4611,8 @@ let MapLocations = {
                     // Spirit Temple Area
                     "Soft Soil": {
                         DisplayGroup: { groupName: "Spirit Temple Area", imageName: "Spirit Medallion" },
-                        ItemGroup: ItemGroups.ENTRANCE,
+                        ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.NON_ITEM,
-                        IsItemLocationGroup: true,
                         DefaultEntranceGroupName: "Soft Soil",
                         MapInfo: { x: 63, y: 165 },
                         Age: Age.CHILD,
