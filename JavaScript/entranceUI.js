@@ -59,7 +59,7 @@ let EntranceUI = {
 		let groupId = itemLocation.ItemGroup;
 		return (groupId === ItemGroups.ENTRANCE && group)
 			? this.getEntranceGroupIcon(group, group.name)
-			: getItemGroupImagePath(groupId, itemLocation.MapImageName);
+			: getItemGroupImagePath(groupId, itemLocation);
 	},
 
 	/**

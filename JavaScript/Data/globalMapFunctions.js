@@ -56,11 +56,36 @@ let getItemGroupName = function(groupId) {
 	}
 };
 
-let getItemGroupImagePath = function(groupId, name) {
-	let imageName = name || getItemGroupName(groupId);
+/**
+ * Gets the item group image path to display
+ * @param {number} groupId - The ID of the group image to look up
+ * @param {Object} itemLocation - The item location to display
+ * @returns The group image path, in the following priority order
+ * - 1. MapImageName of the itemLocation, as it's the overridden display icon
+ * - 2. The image from the item group name
+ *    - If it's an Entrance, will show the proper image for interior, grotto, or boss
+ */
+let getItemGroupImagePath = function(groupId, itemLocation) {
+	let imageName = itemLocation?.MapImageName || getItemGroupName(groupId);
+
+	if (itemLocation && imageName === "Entrances") {
+		imageName = itemLocation.IsInterior
+			? "Interiors"
+			: "Grottos";
+
+		if (itemLocation.IsBoss) {
+			imageName = "Boss Key";
+		}
+	}
+	
 	return getItemGroupImageFromName(imageName);
 };
 
+/**
+ * 
+ * @param {string} name - The name of the image name
+ * @returns The item group image from the given name
+ */
 let getItemGroupImageFromName = function(name) {
 	return name ? `url("Images/${name}.png")` : "";
 };
@@ -79,7 +104,7 @@ let getItemLocationGroupIcon = function(itemLocation) {
 		let itemGroup = itemLocation.OverrideItemGroup
 			? itemLocation.OverrideItemGroup
 			: itemLocation.ItemGroup;
-		return getItemGroupImagePath(itemGroup);
+		return getItemGroupImagePath(itemGroup, itemLocation);
 	}
  };
 

@@ -337,11 +337,14 @@ let DropdownUI = {
      * @param dropdown - the dropdown
      */
     _updateInteriorOrGrottoStyles: function(itemLocation, dropdown) {
-        dropdown.style.backgroundImage = EntranceUI.getEntranceGroupIconOrSelectedEntrance(itemLocation);
-        dropdown.title = (itemLocation.EntranceGroup && itemLocation.EntranceGroup.name)
-            ? itemLocation.EntranceGroup.name
-            : "<no selection>";
-
+        if (itemLocation.EntranceGroup?.name) {
+            dropdown.title = itemLocation.EntranceGroup.name;
+            dropdown.style.backgroundImage = EntranceUI.getEntranceGroupIconOrSelectedEntrance(itemLocation);
+        } else {
+            dropdown.title = "<no selection>";
+            dropdown.style.backgroundImage = "";
+        }
+        
         if (itemLocation.IsInterior && !Settings.RandomizerSettings.shuffleInteriorEntrances) {
             dropdown.disabled = true;
         } else if (itemLocation.IsGrotto && !Settings.RandomizerSettings.shuffleGrottoEntrances) {
