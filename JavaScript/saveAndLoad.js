@@ -420,8 +420,8 @@ let SaveAndLoad = {
                 if (loadedOwExitData.EntranceGroup) {
                     exitingExitData.EntranceGroup = loadedOwExitData.EntranceGroup;
 
-                    let interiorObj = Data.isNonItemGroupEntrance(itemLocation)
-                        ? EntranceUI.getEntranceData(itemLocation)
+                    let interiorObj = Data.isNonItemGroupEntrance(exitingExitData)
+                        ? EntranceUI.getEntranceData(exitingExitData)
                         : null;
 
                     if (interiorObj && interiorObj[loadedOwExitData.EntranceGroup.name].postClick) {

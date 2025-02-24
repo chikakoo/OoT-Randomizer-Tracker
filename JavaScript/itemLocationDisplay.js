@@ -337,7 +337,7 @@ let ItemLocationDisplay = {
 				itemLocationEntranceTasksContainer.id = `${itemLocation.Name}-entrance-tasks`;
 				itemLocationTitleDiv.appendChild(itemLocationEntranceTasksContainer);
 				
-				if (itemLocation.IsItemLocationGroup) {
+				if (itemLocation.ItemGroup === ItemGroups.GROUP) {
 					let entranceGroupDiv = EntranceUI.createEntranceGroupDiv(itemLocation, itemLocationEntranceTasksContainer);
 					let group = Data.getEntranceGroup(itemLocation);
 					let groupSelectedAndCompleted = group && EntranceUI.isGroupComplete(itemLocation);
