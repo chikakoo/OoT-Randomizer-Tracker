@@ -715,7 +715,9 @@ let ItemData = {
 	 * Gets the key count from the current map name
 	 */
 	getKeyCount: function(mapName) {
-		if (mapName !== "Thieves' Hideout" && Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY) {
+		if (mapName !== "Thieves' Hideout" &&
+			mapName !== "Treasure Chest Minigame" &&
+			Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.KEYSY) {
 			return 99;
 		}
 

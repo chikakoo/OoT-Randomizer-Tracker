@@ -351,7 +351,8 @@ let MapLocations = {
                         LongDescription: "From the Kokiri Forest entrance, go right one screen. Go down the cliff and stand on the lower stump. Take out your Ocarina and win the Simon game to get this prize.",
                         Needs: [GlitchItemSets.OCARINA_OR_DIFFICULT_OCARINA_ITEMS,
                             // TODO: Make this a setting
-                            () => ItemData.getNumberOfOcarinaButtons() === Object.keys(OcarinaButtons).length],
+                            () => ItemData.getNumberOfOcarinaButtons() >= 3
+                        ]
                     },
                     "7 Green Rupees in Water": {
                         ItemGroup: ItemGroups.ENTRANCE,
