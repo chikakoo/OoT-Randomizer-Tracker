@@ -88,7 +88,7 @@ let getItemGroupImageFromName = function(name) {
 * @param itemLocation - the item location to get the group image for
 */
 let getItemLocationGroupIcon = function(itemLocation) {
-	if (itemLocation.IsItemLocationGroup && itemLocation.DefaultEntranceGroupName) {
+	if (itemLocation.ItemGroup === ItemGroups.GROUP && itemLocation.DefaultEntranceGroupName) {
 		let groupName = itemLocation.DefaultEntranceGroupName;
 		return EntranceUI.getEntranceGroupIcon(ItemLocationGroups[groupName], groupName);
 	} else if (itemLocation.MapImageName) {

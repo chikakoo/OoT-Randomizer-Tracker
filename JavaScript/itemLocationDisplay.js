@@ -118,7 +118,7 @@ let ItemLocationDisplay = {
 					EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.ADULT) === 0;
 
 				if (cannotGetEntranceItem) {
-					if (itemLocation.IsItemLocationGroup) {
+					if (itemLocation.ItemGroup === ItemGroups.GROUP) {
 						addCssClass(textDiv, "item-cannot-obtain");
 					} else {
 						addCssClass(textDiv, "item-entrance-known");

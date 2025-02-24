@@ -221,7 +221,7 @@ SocketClient = {
 			}
 			EntranceData.runPostClicks(matchingLocation);
 
-			if (!itemLocation.IsItemLocationGroup) {
+			if (itemLocation.ItemGroup !== ItemGroups.GROUP) {
 				this._updateInteriorOrGrottoDropdown(matchingLocation);
 
 				// In case this entrance leads to an overworld, we ALSO need to refresh those dropdowns
