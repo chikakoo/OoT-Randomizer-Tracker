@@ -370,11 +370,10 @@ let SaveAndLoad = {
         let property = isDefaultGroup ? "DefaultEntranceGroup" : "EntranceGroup";
         itemLocation[property] = loadedItemLocationInfo[property];
 
-        let interiorObj = null;
-        if (itemLocation.IsInterior) { interiorObj = InteriorGroups; }
-        else if (itemLocation.IsGrotto) { interiorObj = GrottoGroups; }
-        else if (itemLocation.IsBoss) { interiorObj = BossGroups; }
-
+        let interiorObj = Data.isNonItemGroupEntrance(itemLocation)
+            ? EntranceUI.getEntranceData(itemLocation)
+            : null;
+        
         if (interiorObj && interiorObj[itemLocation[property].name].postClick) {
             interiorObj[itemLocation[property].name].postClick(itemLocation, true);
         }
@@ -421,10 +420,9 @@ let SaveAndLoad = {
                 if (loadedOwExitData.EntranceGroup) {
                     exitingExitData.EntranceGroup = loadedOwExitData.EntranceGroup;
 
-                    let interiorObj = null;
-                    if (exitingExitData.IsInterior) { interiorObj = InteriorGroups; }
-                    else if (exitingExitData.IsGrotto) { interiorObj = GrottoGroups; }
-                    else if (exitingExitData.IsBoss) { interiorObj = BossGroups }
+                    let interiorObj = Data.isNonItemGroupEntrance(itemLocation)
+                        ? EntranceUI.getEntranceData(itemLocation)
+                        : null;
 
                     if (interiorObj && interiorObj[loadedOwExitData.EntranceGroup.name].postClick) {
                         interiorObj[loadedOwExitData.EntranceGroup.name].postClick(exitingExitData, true);

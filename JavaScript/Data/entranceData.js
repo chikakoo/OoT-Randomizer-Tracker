@@ -9,7 +9,7 @@ EntranceData = {
 			return;
 		}
 		
-		if (!itemLocation.IsInterior && !itemLocation.IsGrotto && !itemLocation.IsBoss) {
+		if (!Data.isNonItemGroupEntrance(itemLocation)) {
 			return;
 		}
 
@@ -17,15 +17,15 @@ EntranceData = {
 		Object.keys(entranceGroup.buttons).forEach(function(buttonName) {
 			let buttonItem;
 
-			if (itemLocation.IsInterior) {
+			if (itemLocation.ItemGroup === ItemGroups.INTERIOR) {
 				buttonItem = InteriorGroups[name].buttons[buttonName];
 			}
 
-			else if (itemLocation.IsGrotto) {
+			else if (itemLocation.ItemGroup === ItemGroups.GROTTO) {
 				buttonItem = GrottoGroups[name].buttons[buttonName];
 			}
 
-			else if (itemLocation.IsBoss) {
+			else if (itemLocation.ItemGroup === ItemGroups.BOSS_ENTRANCE) {
 				buttonItem = BossGroups[name].buttons[buttonName];
 			}
 

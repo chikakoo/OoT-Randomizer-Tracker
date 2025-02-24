@@ -242,7 +242,7 @@ Data = {
                 }
                 
                 // If this is a grotto or interior that is NOT shuffled, don't show it if there's no tasks to complete
-                if (itemLocation.IsGrotto || itemLocation.IsInterior) {
+                if (Data.isInteriorOrGrotto(itemLocation)) {
                     return EntranceUI.getNumberOfActiveButtons(itemLocation) > 0;
                 }
                 return true;
@@ -557,6 +557,19 @@ Data = {
     },
 
     /**
+     * Returns whether the given item location is an interior or grotto
+     * @param itemLocation - the item location
+     */
+    isInteriorOrGrotto: function(itemLocation) {
+        if (!itemLocation) {
+            return false;
+        }
+
+        return itemLocation.ItemGroup === ItemGroups.GROTTO ||
+            itemLocation.ItemGroup === ItemGroups.INTERIOR;
+    },
+
+    /**
      * Returns whether the given item location is an entrance (NOT including overworld) (excluding groups)
      * @param itemLocation - the item location
      */
@@ -576,10 +589,13 @@ Data = {
      * @returns - true if so; false otherwise
      */
     usesDefaultGroup: function(itemLocation) {
-        let isInteriorAndUseDefault = !Settings.RandomizerSettings.shuffleInteriorEntrances && itemLocation.IsInterior;
-        let isGrottoAndUseDefault = !Settings.RandomizerSettings.shuffleGrottoEntrances && itemLocation.IsGrotto;
-        let isBossAndUseDefault = !Settings.RandomizerSettings.shuffleBossEntrances && itemLocation.IsBoss;
-        let isItemLocationGroup = itemLocation.IsItemLocationGroup;
+        let isInteriorAndUseDefault = !Settings.RandomizerSettings.shuffleInteriorEntrances && 
+            itemLocation.ItemGroup === ItemGroups.INTERIOR;
+        let isGrottoAndUseDefault = !Settings.RandomizerSettings.shuffleGrottoEntrances && 
+            itemLocation.ItemGroup === ItemGroups.GROTTO;
+        let isBossAndUseDefault = !Settings.RandomizerSettings.shuffleBossEntrances && 
+            itemLocation.ItemGroup === ItemGroups.BOSS_ENTRANCE;
+        let isItemLocationGroup = itemLocation.ItemGroup === ItemGroups.GROUP;
         return isInteriorAndUseDefault || isGrottoAndUseDefault || isBossAndUseDefault || isItemLocationGroup;
     },
 

@@ -345,9 +345,11 @@ let DropdownUI = {
             dropdown.style.backgroundImage = "";
         }
         
-        if (itemLocation.IsInterior && !Settings.RandomizerSettings.shuffleInteriorEntrances) {
+        if (itemLocation.ItemGroup === ItemGroups.INTERIOR &&
+            !Settings.RandomizerSettings.shuffleInteriorEntrances) {
             dropdown.disabled = true;
-        } else if (itemLocation.IsGrotto && !Settings.RandomizerSettings.shuffleGrottoEntrances) {
+        } else if (itemLocation.ItemGroup === ItemGroups.GROTTO &&
+            !Settings.RandomizerSettings.shuffleGrottoEntrances) {
             dropdown.disabled = true;
         }
     },
@@ -421,8 +423,10 @@ let DropdownUI = {
 			if (dungeonCheck && thievesHideoutCheck) {
                 // Don't add the map if it doesn't have the entrance type we're looking for
                 let itemLocs = Data.getAllItemLocations(mapName);
-                if (entranceOptions.getInteriors && !itemLocs.some(itemLoc => itemLoc.IsInterior) ||
-                    entranceOptions.getGrottos && !itemLocs.some(itemLoc => itemLoc.IsGrotto)) {
+                if (entranceOptions.getInteriors && 
+                        !itemLocs.some(itemLoc => itemLoc.ItemGroup === ItemGroups.INTERIOR) ||
+                    entranceOptions.getGrottos && 
+                        !itemLocs.some(itemLoc => itemLoc.ItemGroup === ItemGroups.GROTTO)) {
                     return;
                 }
 

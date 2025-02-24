@@ -26,16 +26,14 @@ let EntranceUI = {
 	 * @return
 	 */
 	getEntranceData: function(itemLocation) {
-		if (itemLocation.IsInterior) {
-			return InteriorGroups;
-		} else if (itemLocation.IsGrotto) {
-			return GrottoGroups;
-		} else if (itemLocation.IsBoss) {
-			return BossGroups;
-		} else if (itemLocation.IsItemLocationGroup) {
-			return ItemLocationGroups;
+		switch(itemLocation.ItemGroup) {
+			case ItemGroups.INTERIOR: return InteriorGroups;
+			case ItemGroups.GROTTO: return GrottoGroups;
+			case ItemGroups.BOSS_ENTRANCE: return BossGroups;
+			case ItemGroups.GROUP: return ItemLocationGroups;
+			default:
+				throw `${itemLocation.Name} was meant to be an interior, grotto, or boss but doesn't have the correct group type!`;
 		}
-		throw `${itemLocation.Name} was meant to be an interior, grotto, or boss but doesn't have the correct properties set!`;
 	},
 	
 	/**
@@ -137,9 +135,11 @@ let EntranceUI = {
 				shouldNotDisplayButton = shouldDisableItemLocationGroup(button.ItemGroup, itemLocation.IsDungeon);
 			}
 
-			if (itemLocation.IsInterior || itemLocation.IsGrotto) {
+			let isInterior = itemLocation.ItemGroup === ItemGroups.INTERIOR;
+			let isGrotto = itemLocation.ItemGroup === ItemGroups.GROTTO;
+			if (isInterior || isGrotto) {
 				let itemsToExclude;
-				if (itemLocation.IsInterior) {
+				if (isInterior) {
 					itemsToExclude = Settings.ItemLocationsToExclude.Interiors;
 				} else {
 					itemsToExclude = Settings.ItemLocationsToExclude.Grottos;

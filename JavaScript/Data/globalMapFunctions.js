@@ -45,7 +45,9 @@ let getItemGroupName = function(groupId) {
 		case ItemGroups.SHOP: return "Shops";
 		case ItemGroups.SONG: return "Songs";
 		case ItemGroups.NON_ITEM: return "Non-items";
-		case ItemGroups.ENTRANCE: return "Entrances"; //TODO: relabel this to interior/grotto somehow
+		case ItemGroups.INTERIOR: return "Interiors";
+		case ItemGroups.GROTTO: return "Grottos";
+		case ItemGroups.BOSS_ENTRANCE: return "Boss Key";
 		case ItemGroups.OW_ENTRANCE: return "OW Entrances";
 		case ItemGroups.GOSSIP_STONE: return "Gossip Stones";
 		case ItemGroups.LOCKED_DOOR: return "Locked Doors";
@@ -66,21 +68,9 @@ let getItemGroupName = function(groupId) {
  * @returns The group image path, in the following priority order
  * - 1. MapImageName of the itemLocation, as it's the overridden display icon
  * - 2. The image from the item group name
- *    - If it's an Entrance, will show the proper image for interior, grotto, or boss
  */
 let getItemGroupImagePath = function(groupId, itemLocation) {
 	let imageName = itemLocation?.MapImageName || getItemGroupName(groupId);
-
-	if (itemLocation && imageName === "Entrances") {
-		imageName = itemLocation.IsInterior
-			? "Interiors"
-			: "Grottos";
-
-		if (itemLocation.IsBoss) {
-			imageName = "Boss Key";
-		}
-	}
-	
 	return getItemGroupImageFromName(imageName);
 };
 
