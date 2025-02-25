@@ -561,6 +561,10 @@ select:disabled {
 	background-color: azure;
 }
 
+.dropdown-group option:nth-of-type(2n) {
+    background-color: lightblue;
+}
+
 .ow-location-dropdown {
 	width: 163px;
 }
