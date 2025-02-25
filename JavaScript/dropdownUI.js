@@ -260,7 +260,8 @@ let DropdownUI = {
             let tooltip = group ? group.tooltip : "";
             dropdownOptions.push({
                 option: groupName, 
-                tooltip: tooltip
+                tooltip: tooltip,
+                icon: group?.dropdownIcon
             });
         });
         this._fillStringDropdown(locDropdown, dropdownOptions, defaultOption);
@@ -358,7 +359,7 @@ let DropdownUI = {
      * Adds a list of options to the given dropdown element
      * @param dropdown - The dropdown element
      * @param options - The options to put into the dropdown - an array of objects containing:
-     * { option: "string value", tooltip: "string tooltip" } OR just a string of options
+     * { option: "string value", tooltip: "string tooltip", icon: "option icon" } OR just a string of options
      * @param useInlineColors - Whether to look up the inline color (for OW locations)
      * @param defaultValue - The value to select by default
      */
@@ -371,7 +372,9 @@ let DropdownUI = {
 
             let optionElement = dce("option");
             optionElement.value = option;
-            optionElement.innerText = option;
+            optionElement.innerText = optionObject?.icon
+                ? `${optionObject.icon} ${option}`
+                : option;
 
             if (optionObject.tooltip) {
                 optionElement.title = optionObject.tooltip;

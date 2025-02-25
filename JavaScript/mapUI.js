@@ -172,8 +172,8 @@ let MapUI = {
 			let entranceGroup = Data.getEntranceGroup(itemLocation);
 			if (entranceGroup && Data.isEntrance(itemLocation)) {
 				cannotGetEntranceItem = 
-					EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.CHILD) ===  0 &&
-					EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.ADULT) ===  0;
+					EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.CHILD) === 0 &&
+					EntranceUI.getNumberOfCompletableTasks(itemLocation, Age.ADULT) === 0;
 			}
 			if (cannotGetEntranceItem || !Data.getItemObtainability(itemLocation)) {
 				addCssClass(iconDiv, "cannot-get");

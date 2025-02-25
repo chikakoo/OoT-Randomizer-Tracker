@@ -558,13 +558,6 @@ select:disabled {
 
 .dropdown-group option {
 	font-size: 10pt;
-}
-
-.dropdown-group option:nth-of-type(2n) {
-	background-color: lightblue;
-}
-
-.dropdown-group option {
 	background-color: azure;
 }
 
@@ -594,6 +587,10 @@ select:disabled {
 }
 
 .interior-grotto-dropdown-group option {
-	color: black;
-	background-color: azure;
+	color: white;
+	background-color: black;
+}
+
+.interior-grotto-dropdown-group option:nth-of-type(2n) {
+	background-color: #303030
 }
