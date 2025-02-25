@@ -458,7 +458,7 @@ let DropdownUI = {
             let entrance = exits[entranceName];
 
             let hiddenExit = entrance.Hide && !(options.isOneWay && entrance.ShowForOneWay); // One-way dropdowns need some hidden entrances
-            if (entrance.ExcludeFromDropdown || hiddenExit || entrance.ItemGroup !== itemGroupType) {
+            if (entrance.ExcludeFromDropdown || hiddenExit) {
                 return;
             }
 
