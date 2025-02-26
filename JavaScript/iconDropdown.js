@@ -42,7 +42,16 @@ let IconDropdown = {
             }
 
             let dropdownOptions = document.getElementById(_this._getOptionsContainerId(dropdownId));
+            dropdownOptions.style.removeProperty("bottom");
             toggleCssClass(dropdownOptions, "nodisp");
+
+            // Show on the top if the bottom part is cut off
+            let elementRect = dropdownOptions.getBoundingClientRect();
+            let windowHeight = window.innerHeight;
+
+            if (elementRect.bottom - windowHeight > 0) {
+                dropdownOptions.style.bottom = `25px`;
+            }
         };
 
         dropdownContainer.onmouseleave = function() {

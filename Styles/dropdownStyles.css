@@ -1,5 +1,7 @@
 .icon-dropdown-container {
     font-size: 12pt;
+    position: relative;
+    display: inline-block;
 }
 
 .icon-dropdown-button {
@@ -30,7 +32,9 @@
     position: absolute;
     border-radius: 10px;
     overflow-y: scroll;
+    overscroll-behavior: contain;
     height: 400px;
+    width: 200px;
     z-index: 100;
 }
 
