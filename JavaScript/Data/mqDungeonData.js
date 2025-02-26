@@ -1871,7 +1871,10 @@ let MQDungeons = {
                     },
                     upperOutside: {
                         Age: Age.ADULT,
-                        Needs: [Equipment.HOVER_BOOTS] // Jumpslash the switch above
+                        NeedsAny: [
+                            Equipment.HOVER_BOOTS, // Jumpslash the switch above
+                            [GlitchItemSets.WEIRD_SHOT, GlitchItemSets.MEGA_FLIP] // Weird shot with your side to the switch
+                        ] 
                     }
                 },
                 ItemLocations: {
