@@ -56,6 +56,7 @@ let IconDropdown = {
 
         dropdownContainer.onmouseleave = function() {
             let dropdownOptions = document.getElementById(_this._getOptionsContainerId(dropdownId));
+            dropdownOptions.scrollTop = 0;
             addCssClass(dropdownOptions, "nodisp");
         };
 
