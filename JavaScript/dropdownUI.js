@@ -67,29 +67,6 @@ let DropdownUI = {
     },
 
     /**
-     * Creates the interior dropdown div for a given item location
-     * @param itemLocation - the item location
-     * @param itemLocationTextDiv - the main div of the item location - passed in to provide right-click travel
-     */
-    createInteriorOrGrottoDropdown: function(itemLocation, itemLocationTextDiv) {
-        let dropdownGroup = dce("div", "dropdown-group interior-grotto-dropdown-group");
-        let dropdown = dce("select");
-        dropdown.id = this.getItemLocationDropdownId(itemLocation);
-
-        itemLocationTextDiv.oncontextmenu = function() {
-            let mapName = itemLocation.OwShuffleMap;
-            if (mapName) {
-                ItemLocationDisplay.displayLocation(mapName);
-                Walk.updateTravelDiv();	
-            }
-        };
-
-        dropdownGroup.appendChild(dropdown);
-
-        return dropdownGroup;
-    },
-
-    /**
      * Refreshes the entrance dropdowns so that they contain the correct text/choices/click handlers
      * @param itemLocation - the item location
      * @param loc - the main location dropdown (optional)
@@ -241,6 +218,67 @@ let DropdownUI = {
         if (oldOwExit && ItemLocationDisplay.currentLocationName === oldOwExit.ExitMap && !oldOwExit.LinkedExit) {
             this.refreshEntranceDropdowns(oldOwExit);
         }
+    },
+
+    /**
+     * Creates the interior dropdown div for a given item location
+     * @param itemLocation - the item location
+     * @param itemLocationTextDiv - the main div of the item location - passed in to provide right-click travel
+     */
+    createInteriorOrGrottoDropdown: function(itemLocation, itemLocationTextDiv) {
+        let dropdownId = this.getItemLocationDropdownId(itemLocation);
+        let options = this._getInteriorOrGrottoDropdownOptions(itemLocation);
+        let dropdown = IconDropdown.create(dropdownId, options);
+
+        itemLocationTextDiv.oncontextmenu = function() {
+            let mapName = itemLocation.OwShuffleMap;
+            if (mapName) {
+                ItemLocationDisplay.displayLocation(mapName);
+                Walk.updateTravelDiv();	
+            }
+        };
+
+        return dropdown;
+    },
+
+    // *   - option: <the string value>
+    // *   - callback: (optional) <a function to call when a new option is selected>
+    // *      - The function accepts a parameter containing the selected value
+    // *   - selected: (optional) <a boolean for whether this option should be selected by default>
+    // *   - tooltip: (optional) <the tooltip to display for the option>
+    // *   - icon: (optional) <the url for the icon to include (the entire style to set in backgroundImage)>
+    // *   - backgroundColor: (optional) <the background color to use for the option - maintains it when selected too>
+    // *   - textColor: (optional) <the text color to use for the option>
+    // *   - selectedTextValue: (optional) <the text to show on the button if this option is selected>
+    // *   - selectedIconValue: (optional) <the icon to show on the button if this option is selected>
+    _getInteriorOrGrottoDropdownOptions: function(itemLocation) {
+        //TODO: callbacks for options
+
+        let interiorOrGrottoObject = EntranceUI.getEntranceData(itemLocation);
+
+        let defaultOption = itemLocation.EntranceGroup
+            ? itemLocation.EntranceGroup.name
+            : null;
+
+        let locationChoices = EntranceUI.getFilteredGroupNames(interiorOrGrottoObject, defaultOption, itemLocation);
+        let dropdownOptions = [{
+            option: "<no selection>",
+            selectedTextValue: "🔽"
+        }];
+
+        locationChoices.forEach(groupName => {
+            let group = interiorOrGrottoObject[groupName];
+            let icon = EntranceUI.getEntranceGroupIcon(group, groupName);
+            dropdownOptions.push({
+                option: groupName,
+                selected: groupName === defaultOption,
+                tooltip: group.tooltip,
+                icon: icon,
+                selectedIconValue: icon
+            });
+        });
+
+        return dropdownOptions;
     },
 
     _refreshInteriorOrGrottoDropdown: function(itemLocation, loc, interiorOrGrottoObject) {

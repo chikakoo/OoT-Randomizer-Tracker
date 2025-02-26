@@ -348,8 +348,6 @@ let ItemLocationDisplay = {
 				} else {
 					let dropdownGroup = DropdownUI.createInteriorOrGrottoDropdown(itemLocation, itemLocationTextDiv);
 					itemLocationTitleDiv.insertBefore(dropdownGroup, itemLocationTextDiv);
-
-					DropdownUI.refreshEntranceDropdowns(itemLocation);
 				}
 			}
 
