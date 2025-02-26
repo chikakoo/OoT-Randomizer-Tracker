@@ -322,6 +322,7 @@ a {
 
 .item-group-title, .item-location-title {
 	display: flex;
+	align-items: center;
 }
 
 .item-group-title {
