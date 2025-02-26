@@ -287,7 +287,7 @@ SocketClient = {
 	_updateInteriorOrGrottoDropdown: function(itemLocation) {
 		let locDropdown = DropdownUI.getItemLocationDropdown(itemLocation);
 		if (locDropdown) {
-			DropdownUI.refreshEntranceDropdowns(itemLocation, locDropdown);
+			DropdownUI.refreshEntranceDropdowns(itemLocation);
 		}
 	},
 	

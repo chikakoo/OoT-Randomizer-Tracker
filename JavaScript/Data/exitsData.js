@@ -751,7 +751,7 @@ let OwExits = {
         },
         "Song of Storms Grotto": {
             ExitRegion: "hyruleCastle",
-            ItemGroup: ItemGroups.INTERIOR,
+            ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Bombable Wall Grotto",
             Age: Age.CHILD,
             Order: 6,

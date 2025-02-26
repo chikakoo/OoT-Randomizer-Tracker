@@ -17,9 +17,15 @@ let IconDropdown = {
      *   - textColor: (optional) <the text color to use for the option>
      *   - selectedTextValue: (optional) <the text to show on the button if this option is selected>
      *   - selectedIconValue: (optional) <the icon to show on teh button if this option is selected>
+     * @param {boolean} disabled - Whether to not show the options button
      */
-    create: function(dropdownId, options) {
-        let dropdownContainer = dce("div", "icon-dropdown-container");
+    create: function(dropdownId, options, disabled) {
+        let existingElement = document.getElementById(dropdownId);
+        if (existingElement) {
+            existingElement.innerHTML = "";
+        }
+
+        let dropdownContainer = existingElement || dce("div", "icon-dropdown-container");
         let dropdownButton = dce("div", "icon-dropdown-button");
         
         dropdownContainer.id = dropdownId;
@@ -30,6 +36,10 @@ let IconDropdown = {
         let _this = this;
         dropdownContainer.onclick = function(event) {
             event.stopPropagation();
+
+            if (disabled) {
+                return;
+            }
 
             let dropdownOptions = document.getElementById(_this._getOptionsContainerId(dropdownId));
             toggleCssClass(dropdownOptions, "nodisp");
@@ -96,7 +106,6 @@ let IconDropdown = {
                 _this._setOption(dropdown, optionElement);
                 wasOptionSelected = true;
             }
-
             
             optionElement.onclick = _this._setOption.bind(_this, dropdown, optionElement, option.callback);
 
@@ -104,7 +113,7 @@ let IconDropdown = {
             optionsContainer.appendChild(optionElement);
         });
 
-        if (!wasOptionSelected) {
+        if (!wasOptionSelected && options.length > 0) {
             _this._setOption(dropdown, optionsContainer.firstChild)
         }
 

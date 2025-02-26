@@ -85,10 +85,7 @@ let DropdownUI = {
             this._refreshOWLocationDropdown(itemLocation, loc, entrance, entranceOptions);
             this._refreshOWEntranceDropdown(itemLocation, loc, entrance, entranceOptions);
         } else if (Data.isNonItemGroupEntrance(itemLocation)) {
-            this._refreshInteriorOrGrottoDropdown(
-                itemLocation, 
-                loc,
-                EntranceUI.getEntranceData(itemLocation));
+            this._refreshInteriorOrGrottoDropdown(itemLocation, loc);
         }
     },
 
@@ -176,6 +173,36 @@ let DropdownUI = {
         this._updateOWDropdown(itemLocation, mapName, entranceName, !entrances);
     },
 
+     /**
+     * Adds a list of options to the given dropdown element
+     * @param {HTMLELement} dropdown - The dropdown element
+     * @param {Array<string>} options - The options to put into the dropdown
+     * @param {boolean} useInlineColors - Whether to look up the inline color (for OW locations)
+     * @param {string} defaultValue - The value to select by default
+     */
+     _fillStringDropdown: function(dropdown, options, defaultValue, useInlineColors) {
+        let _this = this;
+        options.forEach(function(option) {
+            let optionElement = dce("option");
+            optionElement.value = option;
+            optionElement.innerText = option;
+
+            if (option === defaultValue) {
+                optionElement.selected = "selected";
+            }
+
+            if (useInlineColors) {
+                if (option === "<no selection>") {
+                    optionElement.style.color = "black";
+                } else {
+                    _this._setMapInlineBackgroundColorForElement(optionElement, option);
+                }
+            }
+
+            dropdown.appendChild(optionElement);
+        });
+    },
+
     /**
      * Callback for when the entrance dropdown changes
      * @param itemLocation - The item location the dropdown belongs to
@@ -202,7 +229,7 @@ let DropdownUI = {
     },
 
     /**
-     * Refreshes/sets the entrance dropdowns in the case that the entrance lead to the same map
+     * Refreshes/sets the OW dropdowns in the case that the entrance lead to the same map
      * To be called after Data.setOWLocationFound
      * @param setOwLocationFoundResults - the results from Data.setOWLocationFound
      */
@@ -226,10 +253,6 @@ let DropdownUI = {
      * @param itemLocationTextDiv - the main div of the item location - passed in to provide right-click travel
      */
     createInteriorOrGrottoDropdown: function(itemLocation, itemLocationTextDiv) {
-        let dropdownId = this.getItemLocationDropdownId(itemLocation);
-        let options = this._getInteriorOrGrottoDropdownOptions(itemLocation);
-        let dropdown = IconDropdown.create(dropdownId, options);
-
         itemLocationTextDiv.oncontextmenu = function() {
             let mapName = itemLocation.OwShuffleMap;
             if (mapName) {
@@ -238,39 +261,67 @@ let DropdownUI = {
             }
         };
 
-        return dropdown;
+        return this._refreshInteriorOrGrottoDropdown(itemLocation);
     },
 
-    // *   - option: <the string value>
-    // *   - callback: (optional) <a function to call when a new option is selected>
-    // *      - The function accepts a parameter containing the selected value
-    // *   - selected: (optional) <a boolean for whether this option should be selected by default>
-    // *   - tooltip: (optional) <the tooltip to display for the option>
-    // *   - icon: (optional) <the url for the icon to include (the entire style to set in backgroundImage)>
-    // *   - backgroundColor: (optional) <the background color to use for the option - maintains it when selected too>
-    // *   - textColor: (optional) <the text color to use for the option>
-    // *   - selectedTextValue: (optional) <the text to show on the button if this option is selected>
-    // *   - selectedIconValue: (optional) <the icon to show on the button if this option is selected>
+    /**
+     * Refreshes (recreates) the state of an interior/grotto/boss dropdown
+     * @param {Object} itemLocation - The item location
+     * @return The new dropdown
+     */
+    _refreshInteriorOrGrottoDropdown: function(itemLocation) {
+        let dropdownId = DropdownUI.getItemLocationDropdownId(itemLocation);
+        let options = DropdownUI._getInteriorOrGrottoDropdownOptions(itemLocation);
+        let disabled = DropdownUI._disableInteriorOrGrottoDropdown(itemLocation);
+        return IconDropdown.create(dropdownId, options, disabled);
+    },
+
+    /**
+     * Whether the interior or grotto dropdown for the given item location should be diabled, based
+     * on the item group and whether we're shuffling them
+     * @param {Object} itemLocation - The item location to check
+     */
+    _disableInteriorOrGrottoDropdown: function(itemLocation) {
+        switch(itemLocation.ItemGroup) {
+            case ItemGroups.INTERIOR: 
+                return !Settings.RandomizerSettings.shuffleInteriorEntrances;
+            case ItemGroups.GROTTO:
+                return !Settings.RandomizerSettings.shuffleGrottoEntrances;
+            case ItemGroups.BOSS_ENTRANCE:
+                return !Settings.RandomizerSettings.shuffleBossEntrances;
+            default:
+                throw `Checked interior/grotto/boss dropdown for item location: ${itemLocation.Name}`;
+        }
+    },
+
+    /**
+     * Gets the interior/grotto/boss dropdown options object for the given item location
+     * @param {Object} itemLocation - The item location to get options for
+     * @returns The options - see IconDropdown.create for documentation
+     */
     _getInteriorOrGrottoDropdownOptions: function(itemLocation) {
-        //TODO: callbacks for options
+        let entranceDataObject = EntranceUI.getEntranceData(itemLocation);
 
-        let interiorOrGrottoObject = EntranceUI.getEntranceData(itemLocation);
-
-        let defaultOption = itemLocation.EntranceGroup
-            ? itemLocation.EntranceGroup.name
+        let groupProperty = Data.usesDefaultGroup(itemLocation) ? "DefaultEntranceGroup" : "EntranceGroup";
+        let defaultOption = itemLocation[groupProperty]
+            ? itemLocation[groupProperty].name
             : null;
 
-        let locationChoices = EntranceUI.getFilteredGroupNames(interiorOrGrottoObject, defaultOption, itemLocation);
+        let locationChoices = EntranceUI.getFilteredGroupNames(entranceDataObject, defaultOption, itemLocation);
         let dropdownOptions = [{
             option: "<no selection>",
+            callback: this.onInteriorOrGrottoDropdownChange.bind(this, itemLocation),
+            icon: "Blank Icon", // Hack to set an invalid CSS style for the background
             selectedTextValue: "🔽"
         }];
 
+        let _this = this;
         locationChoices.forEach(groupName => {
-            let group = interiorOrGrottoObject[groupName];
+            let group = entranceDataObject[groupName];
             let icon = EntranceUI.getEntranceGroupIcon(group, groupName);
             dropdownOptions.push({
                 option: groupName,
+                callback: _this.onInteriorOrGrottoDropdownChange.bind(_this, itemLocation),
                 selected: groupName === defaultOption,
                 tooltip: group.tooltip,
                 icon: icon,
@@ -281,40 +332,16 @@ let DropdownUI = {
         return dropdownOptions;
     },
 
-    _refreshInteriorOrGrottoDropdown: function(itemLocation, loc, interiorOrGrottoObject) {
-        let locDropdown = loc || this.getItemLocationDropdown(itemLocation);
-        locDropdown.innerHTML = "";
-
-        let defaultOption = itemLocation.EntranceGroup
-            ? itemLocation.EntranceGroup.name
-            : null;
-
-        let locationChoices = EntranceUI.getFilteredGroupNames(interiorOrGrottoObject, defaultOption, itemLocation);
-        locationChoices.unshift("<no selection>");
-
-        let dropdownOptions = [];
-        locationChoices.forEach(groupName => {
-            let group = interiorOrGrottoObject[groupName];
-            let tooltip = group ? group.tooltip : "";
-            dropdownOptions.push({
-                option: groupName, 
-                tooltip: tooltip,
-                icon: group?.dropdownIcon
-            });
-        });
-        this._fillStringDropdown(locDropdown, dropdownOptions, defaultOption);
-
-        locDropdown.onclick = function(event) { event.stopPropagation(); }
-        locDropdown.onchange = this.onInteriorOrGrottoDropdownChange.bind(this, interiorOrGrottoObject, itemLocation);
-        this._updateInteriorOrGrottoStyles(itemLocation, locDropdown);
-    },
-
-    onInteriorOrGrottoDropdownChange: function(entranceData, itemLocation, event) {
-        event.stopPropagation();
-        let groupName = event.currentTarget.value;
+    /**
+     * The callback for when an interior/grotto/boss dropdown is changed
+     * @param {Object} itemLocation - The item location (comes from the bind calls)
+     * @param {string} groupName - The curent group name (comes from the callback call)
+     */
+    onInteriorOrGrottoDropdownChange: function(itemLocation, groupName) {
+        let entranceDataObject = EntranceUI.getEntranceData(itemLocation);
 
         // Clear the old group data out first
-        let oldGroup = itemLocation.EntranceGroup && entranceData[itemLocation.EntranceGroup.name];
+        let oldGroup = itemLocation.EntranceGroup && entranceDataObject[itemLocation.EntranceGroup.name];
         if (oldGroup) {
             if (oldGroup.overworldLink) {
                 Data.setOWLocationFound(
@@ -330,7 +357,6 @@ let DropdownUI = {
 
         if (groupName === "<no selection>") {
             EntranceUI.clearGroupChoice(itemLocation);
-            this._updateInteriorOrGrottoStyles(itemLocation, event.target);
             SocketClient.itemLocationUpdated(itemLocation);
             return;
         }
@@ -346,13 +372,12 @@ let DropdownUI = {
         
         ItemLocationDisplay.refreshNotes(itemLocation); 
 
-        let group = entranceData[groupName];
+        let group = entranceDataObject[groupName];
         if (group.overworldLink) {
            Data.setOWLocationFound(ItemLocationDisplay.currentLocationName, itemLocation, group.overworldLink.ExitMap, group.overworldLink.Name);
         }
 
         this._tryFirePostClick(itemLocation, group, true);
-        this._updateInteriorOrGrottoStyles(itemLocation, event.target);
         SocketClient.itemLocationUpdated(itemLocation);
         refreshAll();
     },
@@ -368,70 +393,6 @@ let DropdownUI = {
         if (shouldFirePostClick && group.postClick) {
             group.postClick(itemLocation, groupSelected);
         }
-    },
-
-    /**
-     * Updates the styles of the interior or grotto dropdown
-     * @param itemLocation - the item location
-     * @param dropdown - the dropdown
-     */
-    _updateInteriorOrGrottoStyles: function(itemLocation, dropdown) {
-        if (itemLocation.EntranceGroup?.name) {
-            dropdown.title = itemLocation.EntranceGroup.name;
-            dropdown.style.backgroundImage = EntranceUI.getEntranceGroupIconOrSelectedEntrance(itemLocation);
-        } else {
-            dropdown.title = "<no selection>";
-            dropdown.style.backgroundImage = "";
-        }
-        
-        if (itemLocation.ItemGroup === ItemGroups.INTERIOR &&
-            !Settings.RandomizerSettings.shuffleInteriorEntrances) {
-            dropdown.disabled = true;
-        } else if (itemLocation.ItemGroup === ItemGroups.GROTTO &&
-            !Settings.RandomizerSettings.shuffleGrottoEntrances) {
-            dropdown.disabled = true;
-        }
-    },
-
-    /**
-     * Adds a list of options to the given dropdown element
-     * @param dropdown - The dropdown element
-     * @param options - The options to put into the dropdown - an array of objects containing:
-     * { option: "string value", tooltip: "string tooltip", icon: "option icon" } OR just a string of options
-     * @param useInlineColors - Whether to look up the inline color (for OW locations)
-     * @param defaultValue - The value to select by default
-     */
-    _fillStringDropdown: function(dropdown, options, defaultValue, useInlineColors) {
-        let _this = this;
-        options.forEach(function(optionObject) {
-            let option = optionObject.option
-                ? optionObject.option
-                : optionObject;
-
-            let optionElement = dce("option");
-            optionElement.value = option;
-            optionElement.innerText = optionObject?.icon
-                ? `${optionObject.icon} ${option}`
-                : option;
-
-            if (optionObject.tooltip) {
-                optionElement.title = optionObject.tooltip;
-            }
-            
-            if (option === defaultValue) {
-                optionElement.selected = "selected";
-            }
-
-            if (useInlineColors) {
-                if (option === "<no selection>") {
-                    optionElement.style.color = "black";
-                } else {
-                    _this._setMapInlineBackgroundColorForElement(optionElement, option);
-                }
-            }
-
-            dropdown.appendChild(optionElement);
-        });
     },
 
     /**
