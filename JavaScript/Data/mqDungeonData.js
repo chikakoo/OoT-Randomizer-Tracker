@@ -3433,6 +3433,9 @@ let MQDungeons = {
             dragonRoom: {
                 DisplayGroup: { groupName: "Boss Key Loop (Top West)", imageName: "Boss Key" },
                 Exits: {
+                    whirlpoolRoom: {
+                        Needs: [UpgradedItems.LONGSHOT]
+                    },
                     singleWaterPillarRoom: {
                         Needs: [ItemSets.FIRE_ITEMS],
                         NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE]
