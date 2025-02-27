@@ -3126,6 +3126,7 @@ let MQDungeons = {
                         NeedsAny: [Items.HOOKSHOT, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     },
                     bottomGateSwitch: {
+                        // Angle diagonally so the knockback doesn't make you fall
                         Needs: [GlitchItemSets.WEIRD_SHOT]
                     }
                 },
