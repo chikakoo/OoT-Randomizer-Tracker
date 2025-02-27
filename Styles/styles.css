@@ -360,7 +360,7 @@ a {
 	color: white;
 }
 
-.item-location:hover, .item-location:hover:nth-child(even) {
+.item-location:hover, .item-location:hover:nth-child(even of :not(.nodisp)) {
 	background-color: #000099;
 }
 
@@ -388,7 +388,7 @@ a {
 	color: white;
 }
 
-.item-location:nth-child(even) {
+.item-location:nth-child(even of :not(.nodisp)) {
 	background-color: #052675;
 }
 
