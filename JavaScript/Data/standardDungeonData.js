@@ -5141,7 +5141,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 19,
                         LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the left side to get to the skulltula.",
-                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
                     }
                 }
             },
@@ -5155,7 +5155,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 21,
                         LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the right side. Hug the right wall, moving counter-clockwise, over the invisible floor to get to the skulltula.",
-                        Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
                     }
                 }
             },
