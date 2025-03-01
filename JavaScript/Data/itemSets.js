@@ -279,8 +279,8 @@ let GlitchItemSets = {
         Settings.GlitchesToAllow.megasidehopToZorasDomain && 
         ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.SWORDS, Items.BOMBCHU]),
     CHILD_KING_ZORA_SKIP: (age) =>
-        Settings.GlitchesToAllow.chuZoraSkip && 
-        ItemData.canUse(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD, Items.BOMBCHU]),
+        Settings.GlitchesToAllow.explosiveZoraSkip && 
+        ItemData.canUse(age, ItemSets.EXPLOSIVES),
     ADULT_KING_ZORA_SKIP: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.clipZoraSkip,
     ADULT_DOMAIN_TO_LAKE: (age) => age === Age.ADULT && 
@@ -376,7 +376,7 @@ let GlitchItemSets = {
     JABU_BOSS_SWITCH_WITH_EXPLOSIVES: (age) => 
         Settings.GlitchesToAllow.jabuBossSwitchWithExplosives && (
             (age === Age.CHILD && Items.BOMBCHU.playerHas) ||
-            (age == Age.ADULT && ItemData.canUse(age, [Items.BOMB, Equipment.HOVER_BOOTS]))),
+            (age === Age.ADULT && ItemData.canUse(age, [Items.BOMB, Equipment.HOVER_BOOTS]))),
 
     // Forest Temple
     FOREST_FIRST_SKULL_WITH_BOMB: (age) => 
