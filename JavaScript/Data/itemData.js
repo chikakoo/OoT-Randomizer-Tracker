@@ -264,11 +264,11 @@ let Keys = {
 	SHADOW_TEMPLE: { 
 		name: "Shadow Temple",
 		minimumKeys: function() { 
-			return Settings.GlitchesToAllow.shadowGateClip ? 4 : 5;
+			return SettingSets.SHADOW_GATE_CLIP() ? 4 : 5;
 		},
 		totalKeys: function() { return 5; },
 		
-		mqMinimumKeys: function() { return Settings.GlitchesToAllow.shadowGateClip ? 5 : 6; },
+		mqMinimumKeys: function() { return SettingSets.SHADOW_GATE_CLIP() ? 5 : 6; },
 		mqTotalKeys: function() { return 6; }
 	},
 	SPIRIT_TEMPLE: { 
@@ -975,6 +975,15 @@ let ItemData = {
 			ChildTradeItems.SPOOKY_MASK.playerHas ||
 			ChildTradeItems.BUNNY_HOOD.playerHas ||
 			ChildTradeItems.MASK_OF_TRUTH.playerHas;
+	},
+
+	/**
+	 * Whether you have a cutscene item in the child trade slot
+	 * This is any item except for the masks
+	 */
+	hasChildCutsceneTradeItem: function() {
+		return ChildTradeItems.WEIRD_EGG.playerHas ||
+			ChildTradeItems.ZELDAS_LETTER.playerHas;
 	},
 
 	/**

@@ -4047,7 +4047,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Jail 2", imageName: "Thieves' Hideout J2" },
                 MapSuffix: "2",
                 Exits: {
-                    jail1: {}, //Savewarp
+                    jail1: {}, // Savewarp
                     "Jail 2 Left": {
                         OwExit: OwExits["Thieves' Hideout"]["Jail 2 Left"]
                     },
@@ -4101,7 +4101,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Jail 3", imageName: "Thieves' Hideout J3" },
                 MapSuffix: "3",
                 Exits: {
-                    jail1: {}, //Savewarp
+                    jail1: {}, // Savewarp
                     "Jail 3 Left": {
                         OwExit: OwExits["Thieves' Hideout"]["Jail 3 Left"]
                     },
@@ -4165,8 +4165,8 @@ let MapLocations = {
             jail4: {
                 DisplayGroup: { groupName: "Jail 4", imageName: "Thieves' Hideout J4" },
                 MapSuffix: "4",
-                jail1: {}, //Savewarp
                 Exits: {
+                    jail1: {}, // Savewarp
                     "Jail 4 Entrance": {
                         OwExit: OwExits["Thieves' Hideout"]["Jail 4 Entrance"]
                     }

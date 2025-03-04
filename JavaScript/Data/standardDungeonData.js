@@ -3037,18 +3037,13 @@ let StandardDungeons = {
                         Needs: [ItemSets.EXPLOSIVES],
                         KeyRequirement: function(age) {
                             let max = 1;
-                            if (Settings.GlitchesToAllow.shadowGateClip) {
+
+                            if (SettingSets.SHADOW_GATE_CLIP()) {
                                 max++; // Gibdo room
+                            }
 
-                                if (ItemData.canUse(age, [Items.HOOKSHOT, GameStateSets.SHADOW_IRON_BOOTS_CHECK])) {
-                                    max += 2; // Into and out of invisible spike room
-                                }
-
-                                let canCrossChasm = ItemData.canUseAny(age, [Items.FAIRY_BOW, GlitchItemSets.SHADOW_LOWER_BRIDGE_WITH_CHUS]);
-                                let canGetToBossRoom = Data.canPlaySong(Songs.ZELDAS_LULLABY) && canCrossChasm;
-                                if (canGetToBossRoom) {
-                                    max++; // Boss room door
-                                }
+                            if (Settings.GlitchesToAllow.shadowAdultGateClip) {
+                                max += 3; // Giant pit + invisible spikes (backwards from bigdo); boss room doors
                             }
 
                             return { min: 1, max: max };
@@ -3064,18 +3059,13 @@ let StandardDungeons = {
                         LongDescription: "This is the door after the invisible moving platform in the giant pit room.",
                         KeyRequirement: function(age) {
                             let max = 2;
-                            if (Settings.GlitchesToAllow.shadowGateClip) {
+
+                            if (SettingSets.SHADOW_GATE_CLIP()) {
                                 max++; // Gibdo room
+                            }
 
-                                if (ItemData.canUse(age, [Items.HOOKSHOT, GameStateSets.SHADOW_IRON_BOOTS_CHECK])) {
-                                    max++; // Into invisible spike room
-                                }
-
-                                let canCrossChasm = ItemData.canUseAny(age, [Items.FAIRY_BOW, GlitchItemSets.SHADOW_LOWER_BRIDGE_WITH_CHUS]);
-                                let canGetToBossRoom = Data.canPlaySong(Songs.ZELDAS_LULLABY) && canCrossChasm;
-                                if (canGetToBossRoom) {
-                                    max++; // Boss room door
-                                }
+                            if (Settings.GlitchesToAllow.shadowAdultGateClip) {
+                                max += 2; // Invisible spike room (backward from gibdo room); boss room
                             }
 
                             return { min: 2, max: max };
@@ -3090,20 +3080,16 @@ let StandardDungeons = {
                         Order: 25,
                         LongDescription: "This is the door in the room with redeads and invisible floor spikes that you have to hookshot up to",
                         KeyRequirement: function(age) {
-                            let max = 3;
+                            let max = 3; // Beamos; bit pit; itself
                             let min = 3;
-                            if (Settings.GlitchesToAllow.shadowGateClip) {
+
+                            if (SettingSets.SHADOW_GATE_CLIP()) {
                                 max++; // Gibdo room
+                            }
 
-                                if (ItemData.canUse(age, [Items.HOOKSHOT, GameStateSets.SHADOW_IRON_BOOTS_CHECK])) {
-                                    min = 2; // Into invisible spike room - no max, as it IS this door
-                                }
-
-                                let canCrossChasm = ItemData.canUseAny(age, [Items.FAIRY_BOW, GlitchItemSets.SHADOW_LOWER_BRIDGE_WITH_CHUS]);
-                                let canGetToBossRoom = Data.canPlaySong(Songs.ZELDAS_LULLABY) && canCrossChasm;
-                                if (canGetToBossRoom) {
-                                    max++; // Boss room door
-                                }
+                            if (Settings.GlitchesToAllow.shadowAdultGateClip) {
+                                min = 2; // Backwards from the gibdo room
+                                max++; // Boss room door
                             }
 
                             return { min: min, max: max };
@@ -3114,25 +3100,20 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["windHallway", "boatRoomStart"],
                         MapInfo: { x: 303, y: 127, floor: "B1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.shadowChildGateClip; },
                         Order: 30.1,
                         LongDescription: "This is the room with the gibdos after the hallway of fans.",
                         KeyRequirement: function(age) {
-                            let max = 2;
+                            let max = 4; // All doors except the boss
                             let min = 4;
-                            if (Settings.GlitchesToAllow.shadowGateClip) {
-                                max++; // Gibdo room
-                                min = 1;
 
-                                if (ItemData.canUse(age, [Items.HOOKSHOT, GameStateSets.SHADOW_IRON_BOOTS_CHECK])) {
-                                    max++; // Into invisible spike room
-                                }
+                            if (SettingSets.SHADOW_GATE_CLIP()) {
+                                min = 1; // No additional keys if you can do the clip
+                            }
 
-                                let canCrossChasm = ItemData.canUseAny(age, [Items.FAIRY_BOW, GlitchItemSets.SHADOW_LOWER_BRIDGE_WITH_CHUS]);
-                                let canGetToBossRoom = Data.canPlaySong(Songs.ZELDAS_LULLABY) && canCrossChasm;
-                                if (canGetToBossRoom) {
-                                    max++; // Boss room door
-                                }
+                            if (Settings.GlitchesToAllow.shadowAdultGateClip) {
+                                max++; // Boss door
                             }
 
                             return { min: min, max: max };
@@ -3147,9 +3128,9 @@ let StandardDungeons = {
                         Order: 44,
                         LongDescription: "This is the door across the chasm after creating the statue bridge.",
                         KeyRequirement: function(age) {
-                            let min = 5;
-                            if (Settings.GlitchesToAllow.shadowGateClip) {
-                                min = 1;
+                            let min = 5; // Every door
+                            if (Settings.GlitchesToAllow.shadowAdultGateClip) {
+                                min = 1; // Can skip every door if you go here directly
                             }
 
                             return { min: min, max: 5 };
@@ -3233,8 +3214,8 @@ let StandardDungeons = {
                         LockedDoor: "Locked Door by Beamos"
                     },
                     boatRoomStart: {
-                        Age: Age.ADULT,
-                        Needs: [GlitchItemSets.SHADOW_GATE_CLIP]
+                        ChildNeeds: [GlitchItemSets.SHADOW_CHILD_GATE_CLIP],
+                        AdultNeeds: [GlitchItemSets.SHADOW_ADULT_GATE_CLIP]
                     },
                     boatRoomLedge: {
                         Age: Age.ADULT,
@@ -3546,7 +3527,8 @@ let StandardDungeons = {
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 302, y: 142, floor: "B1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
                         Order: 27,
                         LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. The pots will fly at you as you approach the back of the room."
                     },
@@ -3555,21 +3537,24 @@ let StandardDungeons = {
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 302, y: 152, floor: "B1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
                         Order: 28,
                         LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. The pots are on either side of the gibdos."
                     },
                     "Chest in Gibdo Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 302, y: 146, floor: "B1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
                         Order: 29,
                         LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. Kill the gibdos to spawn the chest."
                     },
                     "Chest in Rubble in Gibdo Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 309, y: 156, floor: "B1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
                         Order: 30,
                         LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. Bomb the rubble to your right to uncover an invisible chest.",
                         Needs: [ItemSets.EXPLOSIVES]

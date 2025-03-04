@@ -51,7 +51,7 @@ let QPAItemSets = {
 
         if (age === Age.CHILD) {
             return Items.MAGIC_BEAN.playerHas ||
-                ItemData.hasChildTradeItem() || 
+                ItemData.hasChildCutsceneTradeItem() || 
 
                 // You can't equip swap from the left, since you NEED stick equipped, so the
                 // only items you can do it with are the magic spells
@@ -90,7 +90,11 @@ let SettingSets = {
     SHUFFLE_SILVER_RUPEES: () => Settings.RandomizerSettings.shuffleSilverRupees,
     VANILLA_SILVER_RUPEES: () => !Settings.RandomizerSettings.shuffleSilverRupees,
     VANILLA_CHEST_MINIGAME_KEYS: () => Settings.RandomizerSettings.chestMinigameSmallKeySetting === SmallKeySettings.VANILLA,
-    AUTO_PLANT_BEANS: () => Settings.RandomizerSettings.autoPlantBeans
+    AUTO_PLANT_BEANS: () => Settings.RandomizerSettings.autoPlantBeans,
+
+    // This is used when we're just checking the setting; not whether you have the items to actually do it
+    SHADOW_GATE_CLIP: () => Settings.GlitchesToAllow.shadowChildGateClip || 
+        Settings.GlitchesToAllow.shadowAdultGateClip
 };
 
 /**
@@ -457,8 +461,11 @@ let GlitchItemSets = {
     // Shadow Temple
     SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.shadowSilverRupeeWithNothing,
-    SHADOW_GATE_CLIP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.shadowGateClip &&
+    SHADOW_CHILD_GATE_CLIP: (age) => age === Age.CHILD &&
+        Settings.GlitchesToAllow.shadowChildGateClip &&
+        ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]),
+    SHADOW_ADULT_GATE_CLIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.shadowAdultGateClip &&
         ItemData.canUse(age, ItemSets.SHIELDS),
     SHADOW_JUMP_TO_BOAT_ROOM_LEDGE: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.shadowUpperBoatRoomJump &&

@@ -3829,7 +3829,7 @@ let MQDungeons = {
                         LongDescription: "This is the door near the beamos after the truth spinner room.",
                         Needs: [ItemSets.EXPLOSIVES],
                         KeyRequirement: function(age) {
-                            let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 2;
+                            let max = SettingSets.SHADOW_GATE_CLIP() ? 6 : 2;
                             return { min: 1, max: max };
                         }
                     },
@@ -3844,7 +3844,7 @@ let MQDungeons = {
                         // This logic works from both sides, as you can't do anything from the reverse side without passing this check
                         NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP],
                         KeyRequirement: function(age) {
-                            let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 3;
+                            let max = SettingSets.SHADOW_GATE_CLIP() ? 6 : 3;
                             return { min: 2, max: max };
                         }
                     },
@@ -3858,8 +3858,9 @@ let MQDungeons = {
                         LongDescription: "This is the locked door in the room with the invisible spikes.",
                         Needs: [Items.HOOKSHOT],
                         KeyRequirement: function(age) {
-                            let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 4;
-                            let min = Settings.GlitchesToAllow.shadowGateClip ? 2 : 3;
+                            let canGateClip = SettingSets.SHADOW_GATE_CLIP();
+                            let max = canGateClip ? 6 : 4;
+                            let min = canGateClip ? 2 : 3;
                             return { min: min, max: max };
                         }
                     },
@@ -3868,12 +3869,14 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["windHallway", "boatRoom"],
                         MapInfo: { x: 303, y: 131, floor: "B1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
                         Order: 33,
                         LongDescription: "This is the locked door in the Gibdos room after all the fans.",
                         KeyRequirement: function(age) {
-                            let max = Settings.GlitchesToAllow.shadowGateClip ? 6 : 5;
-                            let min = Settings.GlitchesToAllow.shadowGateClip ? 1 : 4;
+                            let canGateClip = SettingSets.SHADOW_GATE_CLIP();
+                            let max = canGateClip ? 6 : 5;
+                            let min = canGateClip ? 1 : 4;
                             return { min: min, max: max };
                         }
                     },
@@ -3886,7 +3889,7 @@ let MQDungeons = {
                         Order: 40,
                         LongDescription: "This is the locked door in the invisible wall room.",
                         KeyRequirement: function(age) {
-                            let min = Settings.GlitchesToAllow.shadowGateClip ? 1 : 5;
+                            let min = SettingSets.SHADOW_GATE_CLIP() ? 1 : 5;
                             return { min: min, max: 6 };
                         }
                     }
@@ -3998,8 +4001,8 @@ let MQDungeons = {
                         Needs: [ItemSets.EXPLOSIVES]
                     },
                     boatRoom: {
-                        Age: Age.ADULT,
-                        Needs: [GlitchItemSets.SHADOW_GATE_CLIP]
+                        ChildNeeds: [GlitchItemSets.SHADOW_CHILD_GATE_CLIP],
+                        AdultNeeds: [GlitchItemSets.SHADOW_ADULT_GATE_CLIP]
                     },
                     boatRoomLedge: {
                         Age: Age.ADULT,
@@ -4403,7 +4406,6 @@ let MQDungeons = {
                         Map: "Shadow Temple"
                     }
                 },
-
                 ItemLocations: {
                     "Skulltula at End of Wind Hallway": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -4425,7 +4427,8 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 302, y: 142, floor: "B1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
                         Order: 28,
                         LongDescription: "In the big part of the wind hallway, go through the invisible wall on the left side. You may need to use the wind to your advantage. The pots will fly at you as you approach the back of the room."
                     },
@@ -4434,21 +4437,24 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 302, y: 152, floor: "B1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
                         Order: 29,
                         LongDescription: "In the big part of the wind hallway, go through the invisible wall on the left side. You may need to use the wind to your advantage. The pots are next to the gibdos."
                     },
                     "Chest in Gibdo Room by Wind Hallway": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 301, y: 148, floor: "B1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
                         Order: 30,
                         LongDescription: "In the big part of the wind hallway, go through the invisible wall on the left side. You may need to use the wind to your advantage. Kill the Gibdos to spawn the chest."
                     },
                     "Hidden Chest in Gibdo Room by Wind Hallway": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 309, y: 158, floor: "B1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
                         Order: 31,
                         Needs: [ItemSets.EXPLOSIVES],
                         LongDescription: "In the Gibdo room, bomb the rubble to your right to get to this chest."
@@ -4456,7 +4462,8 @@ let MQDungeons = {
                     "Skulltula in Gibdo Room by Wind Hallway": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 294, y: 139, floor: "B1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
                         Order: 32,
                         LongDescription: "In the Gibdo room, bomb the rubble at the back (a crouch-stab will work as well) to get to this skulltula."
                     }
