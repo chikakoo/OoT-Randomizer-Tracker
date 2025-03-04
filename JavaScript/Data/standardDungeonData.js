@@ -1271,7 +1271,7 @@ let StandardDungeons = {
                     topOfBlockRoom: {
                         NeedsAny: [
                             Equipment.STRENGTH,
-                            [GlitchItemSets.FOREST_BLOCK_SKIP, Equipment.HOVER_BOOTS]
+                            [GlitchItemSets.FOREST_BLOCK_SKIP_WITH_HOVER_BOOTS]
                         ]
                     }
                 },
@@ -1283,7 +1283,8 @@ let StandardDungeons = {
                         Order: 14,
                         LongDescription: "Navigate to the room with the block puzzle. After pushing the first block, climb up the ladder that it was blocking. Now go straight to the wall in front of you. Follow that wall to the right. Turn right, and you should see an eye switch a bit up the wall in front of you. Shoot it to spawn the chest.",
                         Needs: [ItemSets.PROJECTILES],
-                        NeedsAny: [Equipment.STRENGTH, GlitchItemSets.FOREST_BLOCK_SKIP]
+                        ChildNeedsAny: [Equipment.STRENGTH, GlitchItemSets.FOREST_CHILD_BLOCK_SKIP],
+                        AdultNeedsAny: [Equipment.STRENGTH, GlitchItemSets.GROUND_JUMP],
                     }
                 }
             },

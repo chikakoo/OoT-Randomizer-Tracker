@@ -1866,7 +1866,7 @@ let MQDungeons = {
                         NeedsAny: [
                             Equipment.STRENGTH,
                             [Items.HOOKSHOT, Items.BOMBCHU], // Line up with the center wall as you first enter, and drop the chu
-                            [GlitchItemSets.FOREST_BLOCK_SKIP, Equipment.HOVER_BOOTS]
+                            [GlitchItemSets.FOREST_BLOCK_SKIP_WITH_HOVER_BOOTS]
                         ]
                     },
                     upperOutside: {

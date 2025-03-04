@@ -267,7 +267,8 @@ let Settings = {
 		forestHookshotToWellSwitch: false,
 		mqForestHoverBootsToDoorFrame: false,
 		forestJumpToTop: false,
-		forestBlockSkip: false,
+		forestChildBlockSkip: false,
+		forestBlockSkipWithHoverBoots: false,
 		forestGreenPoeEarly: false,
 		forestBKSkip: false,
 		

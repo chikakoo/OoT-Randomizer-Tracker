@@ -406,9 +406,19 @@ let GlitchItemSets = {
     FOREST_LEDGE_WITH_HOVER_BOOTS: (age) =>
         Settings.GlitchesToAllow.forestLedgeWithHovers &&
         ItemData.canUse(age, Equipment.HOVER_BOOTS),
-    FOREST_BLOCK_SKIP: (age) => age === Age.ADULT && 
+    FOREST_CHILD_BLOCK_SKIP: (age) => age === Age.CHILD &&
+        Settings.GlitchesToAllow.forestChildBlockSkip &&
+        ItemData.canUse(age, ItemSets.EXPLOSIVES) &&
+        ItemData.canUseAny(age, [
+            [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD], // Sword to get to position; need to shield exploion
+            [Items.DEKU_STICK,  // To get into position
+                [SetType.OR, 
+                    Items.BOMB, // Don't need to shield drop a bomb
+                    ItemSets.SHIELD_DROP_SHIELDS]] // Must shield drop chu
+        ]),
+    FOREST_BLOCK_SKIP_WITH_HOVER_BOOTS: (age) => age === Age.ADULT && 
         Settings.GlitchesToAllow.forestBlockSkip && 
-        ItemData.canUse(age, GlitchItemSets.GROUND_JUMP),
+        ItemData.canUse(age, [Equipment.HOVER_BOOTS, GlitchItemSets.GROUND_JUMP]),
     FOREST_BK_SKIP: (age) => 
         Settings.GlitchesToAllow.forestBKSkip &&
         ItemData.canUse(age, Items.HOOKSHOT),
@@ -885,6 +895,11 @@ let ItemSets = {
 	SHIELDS: (age) => ItemData.canUseAny(age, [
         Equipment.DEKU_SHIELD, Equipment.HYLIAN_SHIELD, Equipment.MIRROR_SHIELD
     ]),
+    SHIELD_DROP_SHIELDS: (age) => {
+        return age === Age.CHILD
+            ? Equipment.DEKU_SHIELD.playerHas || Equipment.HYLIAN_SHIELD.playerHas
+            : ItemData.canUse(age, ItemSets.SHIELDS);
+    },
 	DAMAGING_ITEMS: (age) => ItemData.canUseAny(age, [
         ItemSets.SWORDS, ItemSets.EXPLOSIVES, ItemSets.PROJECTILES,
         Items.DINS_FIRE, Items.BOOMERANG
