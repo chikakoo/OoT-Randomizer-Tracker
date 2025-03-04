@@ -347,7 +347,10 @@ let GlitchItemSets = {
     WASTELAND_NO_LENS: () => Settings.GlitchesToAllow.wastelandNoLens,
 
     // Deku Tree
-    DEKU_B1_SKIP: (age) => age === Age.CHILD && Settings.GlitchesToAllow.dekuB1Skip,
+    DEKU_B1_SKIP: (age) => age === Age.CHILD && 
+        Settings.GlitchesToAllow.dekuB1Skip,
+    DEKU_ADULT_CLIP_TO_BOSS_ROOM: (age) => age === Age.ADULT && 
+        Settings.GlitchesToAllow.dekuAdultClipToBossRoom,
     MQ_DEKU_SIDE_ROOM_ROCKS_WITH_HAMMER: (age) =>
         Settings.GlitchesToAllow.mqDekuSideRoomRocksHammerOnly &&
         ItemData.canUse(age, Items.MEGATON_HAMMER),

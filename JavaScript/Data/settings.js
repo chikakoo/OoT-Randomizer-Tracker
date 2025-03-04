@@ -246,6 +246,7 @@ let Settings = {
 		
 		// Dungeons
 		dekuB1Skip: true,
+		dekuAdultClipToBossRoom: false,
 		mqDekuSideRoomRocksHammerOnly: false,
 		mqDekuSideRoomRocksBombsOnly: false,
 		

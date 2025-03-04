@@ -75,7 +75,12 @@ let StandardDungeons = {
                     imageName: "Compass",
                     description: "Climb the vines to reach the upper floor.\x0A\x0ACompass room: Go around the upper floor and enter the door."
                 },
-                Exits: {},
+                Exits: {
+                    bossRoom: {
+                        Age: Age.ADULT,
+                        Needs: [GlitchItemSets.DEKU_ADULT_CLIP_TO_BOSS_ROOM]
+                    }
+                },
                 ItemLocations: {
                     "Compass Chest": {
                         ItemGroup: ItemGroups.CHEST,
