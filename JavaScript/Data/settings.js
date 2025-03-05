@@ -191,7 +191,7 @@ let Settings = {
 		// Forest
 		pokeySkip: false,
 		midoSkip: true,
-		houseOfTwinsSkullWithHovers: false,
+		houseOfTwinsSkullWithoutHookshot: false,
 		lwSkullWithoutBean: false,
 		lwAdultBridgeFromTop: false,
 		lwAdultBridgeWithHookshot: true,

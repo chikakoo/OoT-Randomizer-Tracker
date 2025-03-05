@@ -124,6 +124,9 @@ let BeanSets = {
  */
 let GlitchItemSets = {
 	// Common
+    ISG: (age) =>
+        Settings.GlitchesToAllow.isg &&
+        ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]),
     BASE_WEIRD_SHOT: (age) => 
         Settings.GlitchesToAllow.weirdShot &&
         ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB]),
@@ -198,9 +201,9 @@ let GlitchItemSets = {
     POKEY_SKIP: (age) => 
         Settings.GlitchesToAllow.pokeySkip && 
         ItemData.canUse(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD]),
-	HOUSE_OF_TWINS_SKULL_WITH_HOVERS: (age) => 
-			Settings.GlitchesToAllow.houseOfTwinsSkullWithHovers && 
-			ItemData.canUse(age, Equipment.HOVER_BOOTS),
+	HOUSE_OF_TWINS_SKULL_WITHOUT_HOOKSHOT: (age) => 
+        Settings.GlitchesToAllow.houseOfTwinsSkullWithoutHookshot && 
+        ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, GlitchItemSets.ISG]),
     LW_ADULT_BRIDGE_FROM_TOP: (age) => 
         age === Age.ADULT &&
         Settings.GlitchesToAllow.lwAdultBridgeFromTop &&
@@ -224,6 +227,9 @@ let GlitchItemSets = {
     ADULT_DAMPE_RACE_SOT_BLOCK_CLIP: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.dampeSoTBlockClip &&
         ItemData.canUse(age, ItemSets.EXPLOSIVES),
+    WATCHTOWER_SKULL_JUMPSLASH: (age) => age === Age.CHILD &&
+        Settings.GlitchesToAllow.watchtowerSkullJumpslash &&
+        ItemData.canUse(age, ItemSets.SWORDS),
     KAK_SHOP_CLIPS: (age) => 
         Settings.GlitchesToAllow.kakShopClips && 
         ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS),

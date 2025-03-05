@@ -113,7 +113,7 @@ let MapLocations = {
                         MapInfo: { x: 261, y: 233 },
                         Age: Age.ADULT,
                         LongDescription: "Look in the middle of the House of Twins at night.",
-                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.HOUSE_OF_TWINS_SKULL_WITH_HOVERS]
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.HOUSE_OF_TWINS_SKULL_WITHOUT_HOOKSHOT]
                     },
                     "Move Mido": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -1216,12 +1216,12 @@ let MapLocations = {
     "Kakariko Village": {
 		Abbreviation: "KAK",
 		MapGroup: MapGroups.KAKARIKO,
-        _canChildKillWatchtowerSkull: function() {
-            let canUseISG = Settings.GlitchesToAllow.isg && ItemData.canUse(Age.CHILD, [ItemSets.SWORDS, ItemSets.SHIELDS]);
-            let canKillSkullAtDistance = ItemData.canUseAny(Age.CHILD, [Items.FAIRY_SLINGSHOT, Items.BOMBCHU]);
-            let canKillSkullWithJumpslash = Settings.GlitchesToAllow.watchtowerSkullJumpslash && ItemData.canUse(Age.CHILD, ItemSets.SWORDS);
-            return canUseISG || canKillSkullAtDistance || canKillSkullWithJumpslash;
-        },
+        _canChildKillWatchtowerSkull: () => 
+            ItemData.canUseAny(Age.CHILD, [
+                Items.FAIRY_SLINGSHOT, 
+                Items.BOMBCHU, 
+                GlitchItemSets.ISG, 
+                GlitchItemSets.WATCHTOWER_SKULL_JUMPSLASH]),
 		Regions: {
             main: {
                 DisplayGroup: { groupName: "Lower Area", imageName: "Super Cucco Minigame" },
