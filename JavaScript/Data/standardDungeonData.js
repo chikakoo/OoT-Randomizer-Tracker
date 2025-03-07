@@ -308,7 +308,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "This stone is behind the breakable wall in the northeast corner of the main room.",
-                        NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA, Equipment.STRENGTH]
                     },
                     "Map Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -316,7 +316,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "Go to the left side of the big main room. Destroy the wall with an explosive, hammer, or blue fire to find this chest.",
-                        NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA, Equipment.STRENGTH]
                     },
                     "Scrub in Main Room": {
                         ItemGroup: ItemGroups.SCRUB,
@@ -350,7 +350,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "Go to the room to the east of the main room. If you hug the right wall, you'll find a bombable wall. You can either blow it up with your own explosive, or kill a baby Dodongo near the wall.<br/><br/>Once inside, head to the back of the room to find the skulltula.",
-                        NeedsAny: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS, ItemSets.MUD_WALL_OR_QPA_ITEMS]
+                        NeedsAny: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS, ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA]
                     },
                     "2 Pots by East Room Ledge": {
                         ItemGroup: ItemGroups.GROUP,
@@ -421,7 +421,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "From the entrance, go around the right side of the dungeon until you get to the blue room with dodongos in it. You can also jump up to the switch platform as adult and enter the door to get here. Near the usual entrance to this room, there's a mud wall with a scrub inside. You should be able to run a bomb flower to it if you don't have your own explosives.",
-                        NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA, Equipment.STRENGTH]
                     },
                     "3 Pots by Blue Room Start": {
                         ItemGroup: ItemGroups.GROUP,
@@ -464,7 +464,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 15,
                         LongDescription: "Make your way to the room with the Bomb Flowers by the staircase. Destroy the wall near the front of the stairs and enter the room. The chest is here - if you can't kill the armos, you'll have to savewarp after you get the chest.",
-                        NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA, Equipment.STRENGTH]
                     }
                 }
             },
@@ -517,7 +517,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Lower Spiketrap Room", imageName: "2 Scrubs No Beehive" },
                 Exits: {
                     firstEyeSwitchRoom: {
-                        NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA, Equipment.STRENGTH]
                     },
                     bombChestFloor: {
                         ChildNeeds: [GlitchItemSets.MEGA_FLIP],
@@ -661,7 +661,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 29,
                         LongDescription: "At the end of the bridge above the giant dodongo head, destroy the wall. The chest is just inside.",
-                        Needs: [ItemSets.MUD_WALL_OR_QPA_ITEMS]
+                        Needs: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA]
                     }
                 }
             },
@@ -691,7 +691,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 31,
                         LongDescription: "This is in the series of rooms after you enter the giant dodongo head. After you climb the ledge with the pushable blocks, there's a wall you can destroy. The skulltula is inside.",
-                        Needs: [ItemSets.MUD_WALL_OR_QPA_ITEMS]
+                        Needs: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA]
                     },
                     "2 Pots After Block Push in Back Room": {
                         ItemGroup: ItemGroups.GROUP,

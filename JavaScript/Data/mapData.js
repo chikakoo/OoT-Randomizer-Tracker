@@ -1772,6 +1772,7 @@ let MapLocations = {
                         NeedsAny: [
                             Items.DINS_FIRE, 
                             GlitchItemSets.CHILD_SHADOW_BOMB_PUSH, 
+                            [Age.CHILD, QPAItemSets.LEDGE_QPA], // Lighting the torches with a stick as child is easy
                             GlitchItemSets.ADULT_SHADOW_LEDGE_CLIP
                         ]
                     },
@@ -2434,10 +2435,12 @@ let MapLocations = {
                         NeedsAny: [Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     },
                     shop: {
-                        ChildNeedsAny: [ItemSets.MUD_WALL_ITEMS, 
+                        ChildNeedsAny: [
+                            ItemSets.MUD_WALL_ITEMS, 
                             ItemSets.FIRE_ITEMS, 
                             Equipment.STRENGTH, 
-                            QPAItemSets.LEDGE_QPA],
+                            QPAItemSets.LEDGE_QPA
+                        ],
                         AdultNeeds: [(age) => MapLocations["Goron City"]._canStopAdultGoron(age)]
                     },
 
@@ -2536,7 +2539,7 @@ let MapLocations = {
                         MapInfo: { x: 130, y: 243 },
                         Age: Age.EITHER,
                         LongDescription: "In the southern area of the middle floor, blow up the walls that has bombflowers near it. Eventually, you'll make it to Medigoron, where the pot is.",
-                        NeedsAny: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, QPAItemSets.LEDGE_QPA]
                     },
                     "Item From Medigoron": {
                         ItemGroup: ItemGroups.GIFT,
@@ -2545,14 +2548,14 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "Blow up/hammer the weak walls on the western side of the middle floor. Pay Medigoron 200 rupees for this item.",
                         Needs: [UpgradedItems.ADULTS_WALLET],
-                        NeedsAny: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, QPAItemSets.LEDGE_QPA]
                     },
                     "Gossip Stone By Medigoron": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
                         MapInfo: { x: 115, y: 275 },
                         Age: Age.EITHER,
                         LongDescription: "In the southern area of the middle floor, blow up the walls that has bombflowers near it. Eventually, you'll make it to Medigoron, where the stone is.",
-                        NeedsAny: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, Items.MEGATON_HAMMER, QPAItemSets.LEDGE_QPA]
+                        NeedsAny: [ItemSets.MUD_WALL_ITEMS, Equipment.STRENGTH, QPAItemSets.LEDGE_QPA]
                     },
 
                     // Bottom Floor
@@ -3412,7 +3415,11 @@ let MapLocations = {
                 }
             },
             acrossBridge: {
-                DisplayGroup: { groupName: "Gerudo Fortress Side", imageName: "Gerudo Mask" },
+                DisplayGroup: { 
+                    groupName: "Gerudo Fortress Side", 
+                    imageName: "Gerudo Mask",
+                    description: "CHU MEGAFLIP (CHILD): Backflip once from the right side of the gate; turn around and megaflip"
+                },
                 Exits: {
                     main: {
                         AdultNeedsAny: [

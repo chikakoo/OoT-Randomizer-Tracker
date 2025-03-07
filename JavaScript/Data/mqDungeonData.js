@@ -404,7 +404,7 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, Equipment.STRENGTH]
                     },
                     eastRoom: { 
-                        Needs: [ItemSets.MUD_WALL_OR_QPA_ITEMS]
+                        Needs: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA]
                     },
                     mainRoomLedge: {
                         ChildNeeds: [GlitchItemSets.GROUND_JUMP]
@@ -417,7 +417,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "This chest is in the back right corner of the main room. Bomb, hammer, or blue fire the wall blocking it.",
-                        NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA, Equipment.STRENGTH]
                     },
                     "Gossip Stone in Main Room": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -425,7 +425,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "This stone is behind the mud wall in the western area of the main room.",
-                        NeedsAny: [ItemSets.MUD_WALL_OR_QPA_ITEMS, Equipment.STRENGTH]
+                        NeedsAny: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA, Equipment.STRENGTH]
                     },
                     "2 Scrubs in Main Room": {
                         ItemGroup: ItemGroups.GROUP,

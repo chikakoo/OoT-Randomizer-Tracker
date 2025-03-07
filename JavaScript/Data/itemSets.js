@@ -19,9 +19,10 @@ let SetType = {
  * - LEDGE_QPA: Shallow ledge and jumpslash
  * - HOVER_BOOTS_QPA: Any ledge and hover boots
  * - TALL_TORCH_QPA: Ledge QPA + any sword weapon that isn't Kokiri Sword
- * - MUD_WALLS_QPA: Ledge QPA + blue fire arrows setting
+ * - MUD_WALLS_LEDGE_QPA: Ledge QPA + blue fire arrows setting
  * - HIGH_SWITCH_QPA: Ledge QPA + sticks or Biggoron's sword (as they are two-handed)
  * - CUTSCENE_ITEM_QPA: Sticks + usable cutscene item (trade item with the "can't use this now" cutscene, or magic beans)
+ *   - This one assumes that you can accomplish what you need with only a jumpslash
  */
 let QPAItemSets = {
 	LEDGE_QPA: (age) => Settings.GlitchesToAllow.qpa &&
@@ -33,9 +34,8 @@ let QPAItemSets = {
                 ? ItemData.canUse(age, [Items.DEKU_STICK, ItemSets.SHIELDS])
                 : ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS])
         ),
-	MUD_WALLS_QPA: (age) => Settings.GlitchesToAllow.qpa &&
-        Settings.RandomizerSettings.iceArrowsActAsBlueFire &&
-        ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]),
+	MUD_WALLS_LEDGE_QPA: (age) => Settings.RandomizerSettings.iceArrowsActAsBlueFire &&
+        ItemData.canUse(age, QPAItemSets.LEDGE_QPA),
 	HIGH_SWITCH_QPA: (age) => Settings.GlitchesToAllow.qpa &&
         ItemData.canUseAny(age, [Items.DEKU_STICK, Equipment.BIGGORONS_SWORD]) &&
         ItemData.canUse(age, ItemSets.SHIELDS),
@@ -924,9 +924,9 @@ let ItemSets = {
         Items.BLUE_FIRE, Items.ICE_ARROW
     ]),
 	MUD_WALL_ITEMS: (age) => ItemData.canUseAny(age, [
-        ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.BLUE_FIRE_ITEMS
+        ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.BLUE_FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA
     ]),
-	MUD_WALL_OR_QPA_ITEMS: (age) => ItemData.canUseAny(age, [
-        ItemSets.MUD_WALL_ITEMS, QPAItemSets.MUD_WALLS_QPA
+	MUD_WALL_ITEMS_OR_LEDGE_QPA: (age) => ItemData.canUseAny(age, [
+        ItemSets.MUD_WALL_ITEMS, QPAItemSets.MUD_WALLS_LEDGE_QPA
     ])
 };
