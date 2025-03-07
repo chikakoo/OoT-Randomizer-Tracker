@@ -2010,8 +2010,8 @@ GrottoGroups = {
 			},
 			"Bow Wonderitem": {
 				Age: Age.ADULT,
-				LongDescription: "Shoot this with the bow to spawn the wonderitem.",
-				NeedsAny: [Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]
+				LongDescription: "Shoot this with the bow to spawn the wonderitem. Ledge or cutscene item QPA works to get this as well.",
+				NeedsAny: [Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA, QPAItemSets.CUTSCENE_ITEM_QPA]
 			}
 		}
 	},
@@ -2121,7 +2121,7 @@ GrottoGroups = {
 		}
 	},
 	"4 High QPAable Slingshot Wonderitems": {
-		tooltip: "A group of 4 wonderitems you need the slingshot to get, but can reach with QPA and backflips.",
+		tooltip: "A group of 4 wonderitems you need the slingshot to get, but can reach with QPA and backflips or cutscene QPA.",
 		icon: "Slingshot Wonderitem",
 		buttons: {
 			"Slingshot Wonderitems": {
@@ -2129,8 +2129,22 @@ GrottoGroups = {
 				count: 4,
 				Age: Age.EITHER,
 				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
-				LongDescription: "Shoot something to get these items.",
-				NeedsAny: [Items.FAIRY_SLINGSHOT, QPAItemSets.TALL_TORCH_QPA]
+				LongDescription: "Shoot something to get these items. Can also use ISG QPA and backflips, or cutscene QPA lined up to break the stick on it.",
+				NeedsAny: [Items.FAIRY_SLINGSHOT, QPAItemSets.TALL_TORCH_QPA, QPAItemSets.CUTSCENE_ITEM_QPA]
+			}
+		}
+	},
+	"4 Child Cutscene QPAable Slingshot Wonderitems": {
+		tooltip: "A group of 4 wonderitems you need the slingshot to get, but only child can reach with cutscene QPA.",
+		icon: "Slingshot Wonderitem",
+		buttons: {
+			"Slingshot Wonderitems": {
+				useGroupImage: true,
+				count: 4,
+				Age: Age.EITHER,
+				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				LongDescription: "Shoot something to get these items. Child can also use cutsceene QPA lined up to break the stick on it.",
+				NeedsAny: [Items.FAIRY_SLINGSHOT, QPAItemSets.CUTSCENE_ITEM_QPA]
 			}
 		}
 	},

@@ -2453,7 +2453,7 @@ let MQDungeons = {
                         MapInfo: { x: 162, y: 102, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 15,
-                        LongDescription: "In the boss key room, hookshot the torch or chest to get to the pot, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
+                        LongDescription: "In the boss key room, hookshot the torch or chest to get to the pot, or hold forward to jump up slightly, THEN HOLD BACK and jumpslash over the fire (easiest on the rightmost side)."
                     },
                     "2 Wonderitems in Boss Key Room": {
                         ItemGroup: ItemGroups.GROUP,
@@ -2462,7 +2462,7 @@ let MQDungeons = {
                         MapInfo: { x: 164, y: 91, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 15.1,
-                        LongDescription: "In the boss key room, hookshot the torch or chest to get to the pots, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side). Shoot the giant face on the wall with your bow and hookshot for two separate wonderitems."
+                        LongDescription: "In the boss key room, hookshot the torch or chest to get to the pots, or hold forward to jump up slightly, THEN HOLD BACK and jumpslash over the fire (easiest on the rightmost side). Shoot the giant face on the wall with your bow and hookshot for two separate wonderitems.<br/><br/>Cutscene Item QPA works for this if you do the broken stick setup from behind the torch."
                     }
                 }
             },
@@ -6052,12 +6052,12 @@ let MQDungeons = {
                     "4 Wonderitems in East Center Room": {
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
-                        DefaultEntranceGroupName: "4 Slingshot Wonderitems",
+                        DefaultEntranceGroupName: "4 Child Cutscene QPAable Slingshot Wonderitems",
                         MapInfo: { x: 218, y: 74, floor: "F1" },
                         UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
                         Age: Age.EITHER,
                         Order: 11.1,
-                        LongDescription: "Shoot the lens of truth picture in the east center room to spawn wonderitems (do it 4 times to get all 4)."
+                        LongDescription: "Shoot the lens of truth picture in the east center room to spawn wonderitems (do it 4 times to get all 4). Cutscene QPA works as Child if you break the stick from the corner to the left of the picture."
                     }
                 }
             },
