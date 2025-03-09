@@ -70,7 +70,13 @@ let getItemGroupName = function(groupId) {
  * - 2. The image from the item group name
  */
 let getItemGroupImagePath = function(groupId, itemLocation) {
-	let imageName = itemLocation?.MapImageName || getItemGroupName(groupId);
+	let imageName = itemLocation.MapImageName;
+	if (!imageName) {
+		imageName = itemLocation.IsDungeonEntrance
+			? "Dungeon Map"
+			: getItemGroupName(groupId);
+	}
+
 	return getItemGroupImageFromName(imageName);
 };
 
