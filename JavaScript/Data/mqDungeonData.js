@@ -4716,10 +4716,6 @@ let MQDungeons = {
         IsMasterQuest: true,
         Floors: ["F4", "F3", "F2", "F1"],
         StartingFloorIndex: 3,
-        _canAccessAdultSide: function() {
-            return ItemData.canUse(Age.ADULT, [Items.BOMBCHU, UpgradedItems.LONGSHOT]) && // Get up
-                ItemData.canUseAny(Age.ADULT, [UpgradedItems.SILVER_GAUNTLETS, GlitchItemSets.PROJECTILE_WEIRD_SHOT]); // Pass blocks
-        },
         Regions: {
             main: {
                 DisplayGroup: { groupName: "Lobby", imageName: "Requiem of Spirit" },
@@ -4734,7 +4730,12 @@ let MQDungeons = {
                     },
                     silverBlockMaze: {
                         Age: Age.ADULT,
-                        Needs: [() => MapLocations["Spirit Temple"]._canAccessAdultSide()]
+                        Needs: [Items.BOMBCHU, UpgradedItems.LONGSHOT],
+                        NeedsAny: [UpgradedItems.SILVER_GAUNTLETS, GlitchItemSets.PROJECTILE_WEIRD_SHOT]
+                    },
+                    roomRightOfLobby: {
+                        ChildNeeds: [GlitchItemSets.MQ_SPIRIT_CHILD_GEYSER_SKIP],
+                        AdultNeeds: [GlitchItemSets.MQ_SPIRIT_ADULT_GEYSER_SKIP]
                     },
                     Exit: {
                         OwExit: OwExits["Spirit Temple"]["Exit"]
@@ -4803,10 +4804,9 @@ let MQDungeons = {
                         Order: 53,
                         LongDescription: "This is the door after the second crawlspace on the child side.",
                         KeyRequirement: function(age) {
-                            let min = 1;
-                            if (age === Age.ADULT) {
-                                min = 2; // Adult needs to go through the sun on floor room
-                            }
+                            let min = age === Age.ADULT
+                                ? 2 // This + sun on floor room
+                                : 1; // This
 
                             return { min: min, max: Keys.SPIRIT_TEMPLE.mqTotalKeys() };
                         }
@@ -4820,15 +4820,10 @@ let MQDungeons = {
                         Order: 27.1,
                         LongDescription: "This is the door leading to/from the room with the sun on the floor room.",
                         KeyRequirement: function(age) {
-                            // There's only one path for child, and it uses only 2 keys
-                            if (!MapLocations["Spirit Temple"]._canAccessAdultSide()) {
-                                return { min: 2, max: 2 };
-                            }
+                            let min = age === Age.ADULT || Settings.GlitchesToAllow.mqSpiritChildGeyserSkip
+                                ? 1 // This (Adult + geyser path doesn't need any other doors)
+                                : 2; // Child needs door after second crawl space
 
-                            let min = 2;
-                            if (age === Age.ADULT) {
-                                min = 1; // Adult doesn't need to go through any doors for this
-                            }
                             return { min: min, max: Keys.SPIRIT_TEMPLE.mqTotalKeys() };
                         }
                     },
@@ -4841,31 +4836,27 @@ let MQDungeons = {
                         Order: 25,
                         LongDescription: "This is the door after the puzzle where you push the sun block into the light.",
                         KeyRequirement: function(age) {
-                            // There's only one path for child, and it uses only 3 keys
-                            if (!MapLocations["Spirit Temple"]._canAccessAdultSide()) {
-                                return { min: 3, max: 3 };
-                            }
+                            let min = age === Age.ADULT || Settings.GlitchesToAllow.mqSpiritChildGeyserSkip
+                                ? 1 // This (Adult + geyser path doesn't need any other doors)
+                                : 3; // After second crawlspace; sun on room; this
 
-                            let min = 3;
-                            if (age === Age.ADULT) {
-                                min = 1; // Adult doesn't need to go through any doors for this
-                            }
                             return { min: min, max: Keys.SPIRIT_TEMPLE.mqTotalKeys() };
                         }
                     },
                     "Locked Door in Statue Room": {
                         DisplayGroup: { groupName: "Statue Room", imageName: "Compass" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["statueRoom"],
+                        Regions: ["adultStatueRoomSide"],
                         MapInfo: { x: 256, y: 217, floor: "F2" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
                         Order: 38,
                         LongDescription: "This is the locked door on the upper east part of the statue room.",
                         KeyRequirement: function(age) {
-                            let max = 5;
-                            if (Settings.GlitchesToAllow.spiritSuperslideToMirrorShield) {
-                                max = Keys.SPIRIT_TEMPLE.mqTotalKeys();
-                            }
+                            let max = age === Age.ADULT && Settings.GlitchesToAllow.spiritSuperslideToMirrorShield
+                                ? Keys.SPIRIT_TEMPLE.mqTotalKeys() // Every door except beamos room + after moving wall door
+                                : 5; // Going this way allows the rest of the doors to be reached
+                            
                             return { min: 1, max: max };
                         }
                     },
@@ -4874,15 +4865,13 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["beamosRoom"],
                         MapInfo: { x: 223, y: 105, floor: "F3" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
                         Order: 43,
                         LongDescription: "This is the locked door in the southwest corner of the room with all the Beamos.",
                         KeyRequirement: function(age) {
-                            let min = 2;
-                            if (Settings.GlitchesToAllow.spiritSuperslideToMirrorShield) {
-                                min--;
-                            }
-                            return { min: min, max: 6 };
+                            let min = 2; // This + statue room door OR this + silver gaunts door w/superslide (2 either way)
+                            return { min: min, max: 6 }; // Max is every door except the after moving wall door
                         }
                     },
                     "Locked Door Right of Lobby": {
@@ -4890,7 +4879,8 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["roomRightOfLobby"],
                         MapInfo: { x: 295, y: 169, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
                         Order: 34,
                         LongDescription: "This is the locked door to the right of the lobby that you get to via the statue room.",
                         KeyRequirement: function(age) {
@@ -4902,14 +4892,12 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["afterMovingWallRoom"],
                         MapInfo: { x: 294, y: 144, floor: "F4" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
                         Order: 46,
                         LongDescription: "This is the locked door by the triforce symbol located after the moving wall.",
                         KeyRequirement: function(age) {
-                            let min = 3;
-                            if (Settings.GlitchesToAllow.spiritSuperslideToMirrorShield) {
-                                min--;
-                            }
+                            let min = 3; // This + beamos room + EITHER statue room OR silver gaunts door (w/superslide) = 3 keys
                             return { min: min, max: Keys.SPIRIT_TEMPLE.mqTotalKeys() };
                         }
                     }
@@ -4923,9 +4911,13 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 203, y: 215, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees; },
+                        UseAdultAge: function() { 
+                            return !Settings.RandomizerSettings.shuffleSilverRupees && // Can't spawn as child by getting other items
+                                (!Settings.RandomizerSettings.mqSpiritChildGeyserSkip || // Can't spawn as child by collecting the rupees
+                                    !Settings.RandomizerSettings.equipSwap); 
+                        },
                         Order: 37,
-                        LongDescription: "WALL MASTER WARNING:<br/>At the statue room, light all 3 torches with fire arrows. Use your hookshot to get to the door that unlocks. In the next room, use your mirror shield on all 3 suns and kill the enemies (including the wall masters). Navigate through the hallway. Collect all the silver rupees to spawn the chest - a couple of them are in the lobby under some rocks. Use your hammer to hit the rusted switch to make the water go away. Be careful, though, as you can't come back!"
+                        LongDescription: "This chest will just be here if you have the silver rupees with silver rupee shuffle on. Otherwise...<br/><br/>Go to the room to the right of the lobby. Collect all the silver rupees there as well to spawn the chest - a couple of them are in the lobby under some rocks. Use your hammer to hit the rusted switch to make the water go away. Be careful, though, as you can't come back!"
                     }
                 }
             },
@@ -5095,7 +5087,11 @@ let MQDungeons = {
                 }
             },
             statueRoom: {
-                DisplayGroup: { groupName: "Statue Room", imageName: "Compass" },
+                DisplayGroup: { 
+                    groupName: "Statue Room", 
+                    imageName: "Compass",
+                    description: "If navigating as Adult via the geyser room: the longshot can be used to clip past the grate if you aim just below it."
+                },
                 Exits: {
                     roomWithSunOnFloor: {
                         Age: Age.ADULT,
@@ -5109,18 +5105,9 @@ let MQDungeons = {
                     fireBubbleRoom: {
                         ChildNeedsAny: [Songs.SONG_OF_TIME]
                     },
-                    beamosRoom: {
-                        LockedDoor: "Locked Door in Statue Room",
-                        Map: "Spirit Temple",
+                    adultStatueRoomSide: {
                         Age: Age.ADULT,
                         Needs: [Items.HOOKSHOT]
-                    },
-                    roomRightOfLobby: {
-                        Age: Age.ADULT,
-                        Needs: [Equipment.MIRROR_SHIELD],
-                        NeedsAny: [Items.FIRE_ARROW, 
-                            [QPAItemSets.LEDGE_QPA, Items.HOOKSHOT], // Get ISG, hookshot the right side of each torch
-                            GlitchItemSets.MQ_SPIRIT_STATUE_ROOM_TORCHES_WITH_DINS]
                     }
                 },
                 ItemLocations: {
@@ -5183,21 +5170,6 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 18,
                         LongDescription: "WALL MASTER WARNING:<br/>These pots are on the right side of the statue. One of them is a flying pot.",
-                    },
-                    "Invisible Chest in Statue Room": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 251, y: 100, floor: "F2" },
-                        Age: Age.ADULT,
-                        Order: 28,
-                        LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way to the southeast corner using the hookshot. In the northeast part of the room, there's an invisible chest. Hookshot or hover boots to it."
-                    },
-                    "Chest in Boxes in Statue Room": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 225, y: 115, floor: "F2" },
-                        Age: Age.ADULT,
-                        Order: 29,
-                        LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way to the southeast corner using the hookshot. Now get to the hand with the triforce and play Zelda's Lullaby. This will spawn the chest to the right of the statue, under a box.",
-                        Needs: [Songs.ZELDAS_LULLABY]
                     },
                     "Upper Northeast Left Pot in Statue Room": {
                         ItemGroup: ItemGroups.POT,
@@ -5331,15 +5303,75 @@ let MQDungeons = {
                 },
                 ItemLocations: {}
             },
-            roomRightOfLobby: {
-                DisplayGroup: { groupName: "Rooms Beyond Lobby Water", imageName: "Ocarina" },
+            adultStatueRoomSide: {
+                DisplayGroup: { groupName: "Statue Room", imageName: "Compass" },
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
                 Exits: {
+                    roomRightOfLobby: {
+                        Age: Age.ADULT,
+                        Needs: [Equipment.MIRROR_SHIELD], // To spawn all floormasters
+                        NeedsAny: [ // To unbar the door from the statue room
+                            Items.FIRE_ARROW, 
+                            QPAItemSets.LEDGE_QPA, // Get ISG, hookshot the right side of each torch
+                            GlitchItemSets.MQ_SPIRIT_STATUE_ROOM_TORCHES_WITH_DINS
+                        ]
+                    },
+                    beamosRoom: {
+                        LockedDoor: "Locked Door in Statue Room",
+                        Map: "Spirit Temple"
+                    },
+                    statueRoom: {}
+                },
+                ItemLocations: {
+                    "Invisible Chest in Statue Room": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 251, y: 100, floor: "F2" },
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        Order: 28,
+                        LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way to the southeast corner using the hookshot. In the northeast part of the room, there's an invisible chest. Hookshot or hover boots to it."
+                    },
+                    "Chest in Boxes in Statue Room": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 225, y: 115, floor: "F2" },
+                        Age: Age.EITHER,
+                        Order: 29,
+                        LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way to the southeast corner using the hookshot. Now get to the hand with the triforce and play Zelda's Lullaby. This will spawn the chest to the right of the statue, under a box.",
+                        Needs: [Songs.ZELDAS_LULLABY],
+                        ChildNeedsAny: [ItemSets.SWORDS, GlitchItemSets.MEGA_FLIP]
+                    },
+                    "Open Grate to Room Right of Lobby": {
+                        ItemGroup: ItemGroups.NON_ITEM,
+                        MapInfo: { x: 310, y: 135, floor: "F2" },
+                        MapImageName: "Mirror Shield",
+                        Age: Age.ADULT,
+                        RequiredToAppear: function() { return Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                        Order: 29.1,
+                        LongDescription: "WALL MASTER WARNING:<br/>Go through the lower door to the southeast in the statue room. Kill all enemies in the room, including the floormasters that spawn when shining the light on the suns. This will open the grate.",
+                    }
+                }
+            },
+            roomRightOfLobby: {
+                DisplayGroup: { 
+                    groupName: "Rooms Beyond Lobby Water", 
+                    imageName: "Ocarina",
+                    description: "At the statue room, light all 3 torches with fire arrows. Use your hookshot to get to the door that unlocks. In the next room, use your mirror shield on all 3 suns and kill the enemies (including the wall masters). Navigate through the hallway to get to this area."
+                },
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                Exits: {
+                    adultStatueRoomSide: {
+                        ChildNeeds: [ItemLocationSets.MQ_SPIRIT_OPENED_GRATE_TO_RIGHT_OF_LOBBY],
+                        AdultNeedsAny: [
+                            ItemLocationSets.MQ_SPIRIT_OPENED_GRATE_TO_RIGHT_OF_LOBBY,
+                            UpgradedItems.LONGSHOT // Longshot JUST below the grate to clip through
+                        ]
+                    },
                     boulderRoom: {
                         Map: "Spirit Temple",
                         LockedDoor: "Locked Door Right of Lobby"
                     },
                     bottomRightLobbyChest: {
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         // Silver rupees NOT being shuffled gets the lobby chest from this side
                         // by grabbing the last rupee by clearing the water with the hammer switch
                         Needs: [Items.MEGATON_HAMMER, SettingSets.VANILLA_SILVER_RUPEES]
@@ -5351,23 +5383,23 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 278, y: 129, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 31,
                         LongDescription: "WALL MASTER WARNING:<br/>At the statue room, light all 3 torches with fire arrows. Use your hookshot to get to the door that unlocks. In the next room, use your mirror shield on all 3 suns and kill the enemies (including the wall masters). The pots are down the path that opens up."
                     },
                     "Right of Lobby Silver Rupee by Doors": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 266, y: 175, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 31.1,
                         LongDescription: "This rupee is in the room to the right of the lobby, in the corner by the doors (see Bottom Right Chest in Lobby for details)."
                     },
                     "Skulltula in Sandy Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 235, y: 127, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 32,
-                        LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), go through the west door - be careful, though, as you can't get out if you don't have Zelda's Lullaby. The skulltula is on the ceiling.",
+                        LongDescription: "From the room to the right of the lobby, go through the west door - be careful, though, as you can't get out if you don't have Zelda's Lullaby. The skulltula is on the ceiling.",
                         Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Chest in Sandy Room": {
@@ -5375,19 +5407,20 @@ let MQDungeons = {
                         MapInfo: { x: 226, y: 99, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 33,
-                        LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), go through the west door - be careful, though, as you can't get out if you don't have Zelda's Lullaby. Jump down and kill all the leevers to spawn the chest. Hookshot to it from the top to get it."
+                        LongDescription: "From the room to the right of the lobby, go through the west door - be careful, though, as you can't get out if you don't have Zelda's Lullaby. Jump down and kill all the leevers to spawn the chest. Hookshot to it from the top to get it."
                     },
                     "Right of Lobby Silver Rupee by Stairs": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 266, y: 207, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 36.1,
-                        LongDescription: "This rupee is in the room to the right of the lobby, at the base of the stairs (see Bottom Right Chest in Lobby for details)."
+                        LongDescription: "This rupee is in the room to the right of the lobby, at the base of the stairs."
                     },
                     "Lobby Silver Rupee in Water": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 246, y: 211, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { !Settings.GlitchesToAllow.equipSwap; },
                         Order: 36.2,
                         LongDescription: "This rupee is in the water diving the lobby and the room next to it. First, get to the room to the right of the lobby (see Bottom Right Chest in Lobby for info). Now, use your hammer and smash the rock and hit the switch underneath. This will lower the water and allow you to get the rupee.<br/><br/>Alternatively, if you have Longshot and have spawns the bottom right chest in lobby, you can line the rupee up between you and the chest and longshot to it to claim the rupee.<br/><br/>WARNING: If you stay at in the lobby side, you will be trapped there when the water comes back!",
                         NeedsAny: [
@@ -5399,12 +5432,16 @@ let MQDungeons = {
             },
             boulderRoom: {
                 DisplayGroup: { groupName: "Rooms Beyond Lobby Water", imageName: "Ocarina" },
+                UseAdultAge: function() { 
+                    return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip ||
+                        !Settings.GlitchesToAllow.equipSwap; 
+                },
                 Exits: {},
                 ItemLocations: {
                     "Skulltula After Boulder Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 328, y: 77, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 35,
                         LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), use a key to go through the locked door. Hit the rusted switch with your hammer. Now, play the following songs in each of the opened cells in this order: Song of Time, Epona's Song, Sun's Song, Song of Storms, then Zelda's Lullaby. Enter the room that opens up to you - the skulltula is inside on a wall.",
                         Needs: [Items.MEGATON_HAMMER, Songs.SONG_OF_TIME, Songs.EPONAS_SONG, Songs.SUNS_SONG, Songs.SONG_OF_STORMS, Songs.ZELDAS_LULLABY]
@@ -5412,7 +5449,7 @@ let MQDungeons = {
                     "Chest After Boulder Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 319, y: 61, floor: "F1" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 36,
                         LongDescription: "From the room to the right of the lobby (see the Bottom Right Chest in Lobby item), use a key to go through the locked door. Hit the rusted switch with your hammer. Now, play the following songs in each of the opened cells in this order: Song of Time, Epona's Song, Sun's Song, Song of Storms, then Zelda's Lullaby. Enter the room that opens up to you - the chest is in this room.",
                         Needs: [Items.MEGATON_HAMMER, Songs.SONG_OF_TIME, Songs.EPONAS_SONG, Songs.SUNS_SONG, Songs.SONG_OF_STORMS, Songs.ZELDAS_LULLABY]
@@ -5432,7 +5469,12 @@ let MQDungeons = {
                 ItemLocations: {}
             },
             beamosRoom: {
-                DisplayGroup: { groupName: "Beamos/Lizalfos/Mirror Shield Path", imageName: "Mirror Shield" },
+                DisplayGroup: { 
+                    groupName: "Beamos/Lizalfos/Mirror Shield Path", 
+                    imageName: "Mirror Shield",
+                    description: "BEAMOS ROOM: is the upper locked door in the Adult side of the statue room.\x0A\x0ALIZALFOS ROOM: In the beamos room, the puzzle is to play the Song of Time to move the blocks so that the little box falls down onto one of the blocks. Play it by the left side of the room, then by the hole twice. You then use that box to hold the switch down."
+                },
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
                 Exits: {
                     lizalfosAndSunRoom: {
                         Needs: [Songs.SONG_OF_TIME]
@@ -5447,7 +5489,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
                         MapInfo: { x: 255, y: 105, floor: "F3" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 38.1,
                         LongDescription: "From the statue room, hookshot to the torch to get to the southeast side. Use a key to go in the top door.<br/><br/>Play the Song of Time by the block in the left side of the room. Now play it twice by the other blocks. You can now get to the small crate.",
                         Needs: [Songs.SONG_OF_TIME]
@@ -5455,7 +5497,7 @@ let MQDungeons = {
                     "Chest in Beamos Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 284, y: 77, floor: "F3" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 39,
                         LongDescription: "From the statue room, hookshot to the torch to get to the southeast side. Use a key to go in the top door. Kill the beamos to spawn the chest.",
                         Needs: [ItemSets.EXPLOSIVES]
@@ -5464,26 +5506,29 @@ let MQDungeons = {
             },
             lizalfosAndSunRoom: {
                 DisplayGroup: { groupName: "Beamos/Lizalfos/Mirror Shield Path", imageName: "Mirror Shield" },
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
                 Exits: {
-                    mirrorShieldKnuckle: {},
+                    mirrorShieldKnuckle: {
+                        NeedsAny: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
+                    },
                     beamosRoom: {}
                 },
                 ItemLocations: {
                     "Chest in Room With Lizalfos and Sun": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 328, y: 105, floor: "F3" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 40,
-                        LongDescription: "In the beamos room, the puzzle is to play the Song of Time to move the blocks so that the little box falls down onto one of the blocks. Play it by the left side of the room, then by the hole twice. You then use that box to hold the switch down.<br/><br/>The chest is in plain sight in the room."
+                        LongDescription: "The chest is in plain sight in the room."
                     },
                     "2 Wonderitems in Room With Lizalfos and Sun": {
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "Sword and Hammer Wonderitem",
                         MapInfo: { x: 329, y: 106, floor: "F3" },
+                        Age: Age.EITHER,
                         Order: 40.1,
-                        Age: Age.ADULT,
-                        LongDescription: "After the beamos room puzzle, enter the room that the switch unlocks. Swing your sword and hammer while next to the chest to spawn two wonderitems (one for each item swung)."
+                        LongDescription: "Swing your sword and hammer while next to the chest to spawn two wonderitems (one for each item swung)."
                     },
                     "Boss Key Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5497,10 +5542,12 @@ let MQDungeons = {
             },
             mirrorShieldKnuckle: {
                 DisplayGroup: { groupName: "Beamos/Lizalfos/Mirror Shield Path", imageName: "Mirror Shield" },
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
                 Exits: {
                     lizalfosAndSunRoom: {},
                     silverGauntsStatueHand: {
-                        AdultNeeds: [UpgradedItems.LONGSHOT]
+                        Age: Age.ADULT,
+                        Needs: [UpgradedItems.LONGSHOT]
                     },
                     statueHands: {}
                 },
@@ -5508,7 +5555,7 @@ let MQDungeons = {
                     "Mirror Shield Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 247, y: 226, floor: "F3" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 42,
                         LongDescription: "From the room with the lizalfos and the sun, slash the chest that Navi is going crazy over to open the door. Kill the Floormaster in the next room, and the Iron Knuckle in the room after. The chest will spawn on the hand as you walk in."
                     }
@@ -5516,6 +5563,7 @@ let MQDungeons = {
             },
             movingWallRoom: {
                 DisplayGroup: { groupName: "Moving Wall & Silver Knuckle Room", imageName: "Skulltula" },
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
                 Exits: {
                     afterMovingWallRoom: {
                         Needs: [SilverRupeeSets.MQ_SPIRIT_SILVER_RUPEES_MOVING_WALL_ROOM]
@@ -5527,7 +5575,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 168, y: 161, floor: "F3" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 44,
                         LongDescription: "These pots are at the bottom of the moving wall room - which is through the locked door after the hallway via the upper southeast statue room."
                     },
@@ -5536,7 +5584,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.SILVER_RUPEE,
                         DefaultEntranceGroupName: "5 Silver Rupees",
                         MapInfo: { x: 167, y: 139, floor: "F3" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 44.1,
                         LongDescription: "These rupees are obtained by climbing the moving wall. You may also find it easier to climb up the wall and drop down onto them."
                     }
@@ -5544,6 +5592,7 @@ let MQDungeons = {
             },
             afterMovingWallRoom: {
                 DisplayGroup: { groupName: "Moving Wall & Silver Knuckle Room", imageName: "Skulltula" },
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
                 Exits: {
                     skulltulaAndKnuckleRoom: {
                         Map: "Spirit Temple",
@@ -5559,7 +5608,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 293, y: 153, floor: "F4" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 45,
                         LongDescription: "These pots by the floor triforce after the moving wall room."
                     }
@@ -5567,19 +5616,20 @@ let MQDungeons = {
             },
             skulltulaAndKnuckleRoom: {
                 DisplayGroup: { groupName: "Moving Wall & Silver Knuckle Room", imageName: "Skulltula" },
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
                 Exits: {},
                 ItemLocations: {
                     "West Skulltula in Iron Knuckle Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 265, y: 80, floor: "F4" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 47,
                         LongDescription: "After navigating up the moving wall room - unlock the door you run into at the top. Lure the Iron Knuckle so that he breaks the pillars blocking the skulltula."
                     },
                     "North Skulltula in Iron Knuckle Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 293, y: 26, floor: "F4" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 48,
                         LongDescription: "After navigating up the moving wall room - unlock the door you run into at the top. Lure the Iron Knuckle so that he breaks the pillars blocking the skulltula."
                     }
@@ -5587,6 +5637,7 @@ let MQDungeons = {
             },
             giantMirrorRoom: {
                 DisplayGroup: { groupName: "Mirror Room & Boss Area", imageName: "Spirit Medallion" },
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
                 Exits: {
                     mirrorMaze: {
                         Needs: [Items.MEGATON_HAMMER]
@@ -5598,7 +5649,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "4 Pots",
                         MapInfo: { x: 174, y: 156, floor: "F4" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 49,
                         LongDescription: "After the moving wall room, play Zelda's Lullaby to unlock the door. the pots are in the corners on the top part of the room."
                     },
@@ -5607,7 +5658,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "4 Crates",
                         MapInfo: { x: 174, y: 119, floor: "F4" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 50,
                         LongDescription: "After the moving wall room, play Zelda's Lullaby to unlock the door. the crates are in the corners on the bottom part of the room."
                     }
@@ -5615,16 +5666,17 @@ let MQDungeons = {
             },
             mirrorMaze: {
                 DisplayGroup: { groupName: "Mirror Room & Boss Area", imageName: "Spirit Medallion" },
+                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
                 Exits: {
                     bossRoom: {
-                        Needs: [Equipment.MIRROR_SHIELD, KeySets.SPIRIT_BK]
+                        Needs: [Items.HOOKSHOT, Equipment.MIRROR_SHIELD, KeySets.SPIRIT_BK]
                     }
                 },
                 ItemLocations: {
                     "Invisible Chest in Mirror Maze": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 170, y: 216, floor: "F4" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 51,
                         LongDescription: "From the beamos room, take the southeast door to get to the wall room. Grab all the silver rupees to unlock the door at the top. Play Zelda's Lullaby at the trifoce to unlock the next room. Hammer the rusted switch in the northwest corner of the next room to get to the mirror maze.<br/><br/>Navigate to the very end of the maze. There's an invisible chest by the bars."
                     }

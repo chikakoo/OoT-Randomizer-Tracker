@@ -659,6 +659,7 @@ let ItemLocationSets = {
 
     // Spirit Temple
     SPIRIT_OPENED_DOOR_AFTER_SECOND_CRAWL_SPACE: () => Data.itemLocationObtained("Spirit Temple", "main", "Locked Door After Second Crawl Space"),
+    MQ_SPIRIT_OPENED_GRATE_TO_RIGHT_OF_LOBBY: () => Data.itemLocationObtained("Spirit Temple", "adultStatueRoomSide", "Open Grate to Room Right of Lobby"),
 
     // Ice Cavern
     ICE_MELTED_EAST_WALL: () => Data.itemLocationObtained("Ice Cavern", "blueFire", "Melt East Ice Wall"),

@@ -2130,7 +2130,7 @@ GrottoGroups = {
 		}
 	},
 	"Sword and Hammer Wonderitem": {
-		tooltip: "A group of wonderitems - one requiring a sword, and one requiring tne hammer.",
+		tooltip: "A group of wonderitems - one requiring a sword, and one requiring the hammer.",
 		buttons: {
 			"Sword Wonderitem": {
 				LongDescription: "Swing your sword by this place to spawn the wonderitem.",
