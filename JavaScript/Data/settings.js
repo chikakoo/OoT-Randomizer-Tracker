@@ -309,9 +309,11 @@ let Settings = {
 		spiritBlockSkipWithHovers: false,
 		spiritBlockSkipWithBombPush: false,
 		spiritStatueRoomJumps: false,
-		mqSpiritStatueTorchesWithDins: false,
 		spiritSuperslideToMirrorShield: false,
 		spiritBKTrick: false,
+		mqSpiritStatueTorchesWithDins: false,
+		mqSpiritChildGeyserSkip: false,
+		mqSpiritAdultGeyserSkip: false,
 
 		botwActorGlitch: false,
 		botwVineClip: false, // Useless if no actor glitch

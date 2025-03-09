@@ -522,6 +522,11 @@ let GlitchItemSets = {
     MQ_SPIRIT_STATUE_ROOM_TORCHES_WITH_DINS: (age) => 
         Settings.GlitchesToAllow.mqSpiritStatueTorchesWithDins &&
         ItemData.canUse(age, Items.DINS_FIRE),
+    MQ_SPIRIT_CHILD_GEYSER_SKIP: (age) => age === Age.CHILD &&
+        Settings.GlitchesToAllow.mqSpiritChildGeyserSkip,
+    MQ_SPIRIT_ADULT_GEYSER_SKIP: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.mqSpiritAdultGeyserSkip &&
+        ItemData.canUse(age, ItemSets.SHIELDS),
 
     // Ice Cavern
     ICE_LEDGE_CLIP: (age) => age === Age.ADULT &&

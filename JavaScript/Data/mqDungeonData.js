@@ -5389,8 +5389,11 @@ let MQDungeons = {
                         MapInfo: { x: 246, y: 211, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 36.2,
-                        LongDescription: "This rupee is in the water diving the lobby and the room next to it. First, get to the room to the right of the lobby (see Bottom Right Chest in Lobby for info). Now, use your hammer and smash the rock and hit the switch underneath. This will lower the water and allow you to get the rupee. WARNING: If you stay at in the lobby side, you will be trapped there when the water comes back!",
-                        Needs: [Items.MEGATON_HAMMER],
+                        LongDescription: "This rupee is in the water diving the lobby and the room next to it. First, get to the room to the right of the lobby (see Bottom Right Chest in Lobby for info). Now, use your hammer and smash the rock and hit the switch underneath. This will lower the water and allow you to get the rupee.<br/><br/>Alternatively, if you have Longshot and have spawns the bottom right chest in lobby, you can line the rupee up between you and the chest and longshot to it to claim the rupee.<br/><br/>WARNING: If you stay at in the lobby side, you will be trapped there when the water comes back!",
+                        NeedsAny: [
+                            Items.MEGATON_HAMMER,
+                            [UpgradedItems.LONGSHOT, SilverRupeeSets.MQ_SPIRIT_SILVER_RUPEES_LOBBY]
+                        ]
                     }
                 }
             },
