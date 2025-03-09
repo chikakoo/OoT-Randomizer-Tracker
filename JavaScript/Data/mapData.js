@@ -1168,7 +1168,7 @@ let MapLocations = {
                     },
                     "Wake up Talon": {
                         ItemGroup: ItemGroups.NON_ITEM,
-                        MapImageName: "Weird Egg Chicken",
+                        MapImageName: "Chicken",
                         Age: Age.CHILD,
                         Order: 8,
                         MapInfo: { x: 193, y: 38, floor: "HYR" },
@@ -1460,7 +1460,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.GIFT,
                         Time: function() { return Time.DAY; },
                         MapInfo: { x: 215, y: 240 },
-                        MapImageName: "Pocket Egg Pocket Cucco",
+                        MapImageName: "Pocket Cucco",
                         Age: Age.ADULT,
                         Order: 19,
                         LongDescription: "Show Anju the Pocket Cucco to after waking up Talon with it. If entrance shuffle is off, he's in the house near the bottom stairs.",
@@ -3052,7 +3052,7 @@ let MapLocations = {
 
                     // Top to Bottom Errands
                     "Torch Run": {
-                        DisplayGroup: { groupName: "Top to Bottom Errands", imageName: "Scale Silver Scale" },
+                        DisplayGroup: { groupName: "Top to Bottom Errands", imageName: "Silver Scale" },
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 154, y: 132 },
                         Age: Age.CHILD,
@@ -3061,7 +3061,7 @@ let MapLocations = {
                     },
                     "Diving Minigame": {
                         ItemGroup: ItemGroups.GIFT,
-                        MapImageName: "Scale Silver Scale",
+                        MapImageName: "Silver Scale",
                         MapInfo: { x: 158, y: 75 },
                         Age: Age.CHILD,
                         LongDescription: "At the top of the Domain, pay 20 rupees to play the diving minigame. Talk to the Zora after you win to get your prize."
@@ -3188,7 +3188,7 @@ let MapLocations = {
                 }
             },
             hiddenTunnel: {
-                DisplayGroup: { groupName: "Hidden Tunnel", imageName: "Strength Silver Gauntlets" },
+                DisplayGroup: { groupName: "Hidden Tunnel", imageName: "Silver Gauntlets" },
                 ExcludeFromSpawnList: true,
                 Exits: {},
                 ItemLocations: {

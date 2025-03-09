@@ -261,7 +261,7 @@ let StandardDungeons = {
         StartingFloorIndex: 1,
         Regions: {
             main: {
-                DisplayGroup: { groupName: "Main Room", imageName: "Strength Goron's Bracelet" },
+                DisplayGroup: { groupName: "Main Room", imageName: "Goron's Bracelet" },
                 Exits: {
                     mainRoom: {
                         NeedsAny: [
@@ -287,7 +287,7 @@ let StandardDungeons = {
                 }
             },
             mainRoom: {
-                DisplayGroup: { groupName: "Main Room", imageName: "Strength Goron's Bracelet" },
+                DisplayGroup: { groupName: "Main Room", imageName: "Goron's Bracelet" },
                 Exits: {
                     // We're assuming that this was opened if the first mud wall was opened
                     lowerEastRooms: {},
@@ -996,7 +996,7 @@ let StandardDungeons = {
                         }
                     },
                     "Locked Door by Twisted Corridor": {
-                        DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Strength Goron's Bracelet" },
+                        DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Goron's Bracelet" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["topOfBlockRoom"],
                         MapInfo: { x: 42, y: 198, floor: "F2" },
@@ -1263,7 +1263,7 @@ let StandardDungeons = {
                 }
             },
             blockRoom: {
-                DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Strength Goron's Bracelet" },
+                DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Goron's Bracelet" },
                 Exits: {
                     topOfOutsideLeft: {
                         NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
@@ -1289,7 +1289,7 @@ let StandardDungeons = {
                 }
             },
             topOfBlockRoom: {
-                DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Strength Goron's Bracelet" },
+                DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Goron's Bracelet" },
                 Exits: {
                     twistedCorridor1: {
                         Map: "Forest Temple",
@@ -2091,7 +2091,7 @@ let StandardDungeons = {
                 }
             },
             scarecrowRoom: {
-                DisplayGroup: { groupName: "Upper Scarecrow Rooms", imageName: "Hookshot Hookshot" },
+                DisplayGroup: { groupName: "Upper Scarecrow Rooms", imageName: "Hookshot" },
                 Exits: {},
                 ItemLocations: {
                     "Skulltula on Climbable Wall After Scarecrow": {
@@ -2359,7 +2359,7 @@ let StandardDungeons = {
                         }
                     },
                     "Locked Door in Waterfall Room": {
-                        DisplayGroup: { groupName: "Waterfall Path (Top West)", imageName: "Hookshot Longshot" },
+                        DisplayGroup: { groupName: "Waterfall Path (Top West)", imageName: "Longshot" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["waterfallRoom"],
                         MapInfo: { x: 86, y: 220, floor: "F3" },
@@ -2472,7 +2472,7 @@ let StandardDungeons = {
                 }
             },
             waterfallRoom: {
-                DisplayGroup: { groupName: "Waterfall Path (Top West)", imageName: "Hookshot Longshot" },
+                DisplayGroup: { groupName: "Waterfall Path (Top West)", imageName: "Longshot" },
                 Exits: {
                     darkLinkRoom: {
                         Map: "Water Temple",
@@ -2492,7 +2492,7 @@ let StandardDungeons = {
                 }
             },
             darkLinkRoom: {
-                DisplayGroup: { groupName: "Waterfall Path (Top West)", imageName: "Hookshot Longshot" },
+                DisplayGroup: { groupName: "Waterfall Path (Top West)", imageName: "Longshot" },
                 Exits: {
                     whirlpoolRoom: {
                         Needs: [Songs.SONG_OF_TIME]
@@ -2518,7 +2518,7 @@ let StandardDungeons = {
                 }
             },
             whirlpoolRoom: {
-                DisplayGroup: { groupName: "Waterfall Path (Top West)", imageName: "Hookshot Longshot" },
+                DisplayGroup: { groupName: "Waterfall Path (Top West)", imageName: "Longshot" },
                 Exits: {
                     dragonRoom: {
                         Needs: [Items.FAIRY_BOW]
@@ -2585,7 +2585,7 @@ let StandardDungeons = {
                 }
             },
             dragonRoom: {
-                DisplayGroup: { groupName: "Dragon Whirlpool Room (Top/Low West)", imageName: "Scale Silver Scale" },
+                DisplayGroup: { groupName: "Dragon Whirlpool Room (Top/Low West)", imageName: "Silver Scale" },
                 Exits: {},
                 ItemLocations: {
                     "Chest in Dragon Room at Bottom West Wing": {
@@ -2873,7 +2873,7 @@ let StandardDungeons = {
                 }
             },
             behindBlockArea: {
-                DisplayGroup: { groupName: "Block Hallways (Top East/Mid South)", imageName: "Strength Silver Gauntlets" },
+                DisplayGroup: { groupName: "Block Hallways (Top East/Mid South)", imageName: "Silver Gauntlets" },
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.waterEyeSwitchGateFromTop; },
                 Exits: {},
                 ItemLocations: {
@@ -3056,7 +3056,7 @@ let StandardDungeons = {
                         }
                     },
                     "Locked Door in Giant Pit Room": {
-                        DisplayGroup: { groupName: "Invisible Scythe & Pit Rooms", imageName: "Strength Goron's Bracelet" },
+                        DisplayGroup: { groupName: "Invisible Scythe & Pit Rooms", imageName: "Goron's Bracelet" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["afterBombableWall", "invisibleSpikeRoom"],
                         MapInfo: { x: 156, y: 92, floor: "B2" },
@@ -3352,7 +3352,7 @@ let StandardDungeons = {
                 }
             },
             fallingSpikesRoom: {
-                DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Strength Goron's Bracelet" },
+                DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Goron's Bracelet" },
                 Exits: {
                     topOfFallingSpikesRoom: {
                         ChildNeeds: [GlitchItemSets.SHADOW_BACKFLIP_ON_SPIKES],
@@ -3387,7 +3387,7 @@ let StandardDungeons = {
                 }
             },
             topOfFallingSpikesRoom: {
-                DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Strength Goron's Bracelet" },
+                DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Goron's Bracelet" },
                 UseAdultAge: function() {  return !Settings.GlitchesToAllow.shadowBackFlipOnSpikes; },
                 Exits: {},
                 ItemLocations: {
@@ -4319,7 +4319,7 @@ let StandardDungeons = {
                 }
             },
             sunBlockRoom: {
-                DisplayGroup: { groupName: "Sun Block & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
+                DisplayGroup: { groupName: "Sun Block & Silver Gauntlets Path", imageName: "Silver Gauntlets" },
                 Exits: {
                     silverGauntsIronKnuckle: {
                         Map: "Spirit Temple",
@@ -4395,14 +4395,14 @@ let StandardDungeons = {
                 }
             },
             silverGauntsIronKnuckle: {
-                DisplayGroup: { groupName: "Sun Block & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
+                DisplayGroup: { groupName: "Sun Block & Silver Gauntlets Path", imageName: "Silver Gauntlets" },
                 Exits: {
                     silverGauntsStatueHand: {}
                 },
                 ItemLocations: {}
             },
             silverGauntsStatueHand: {
-                DisplayGroup: { groupName: "Sun Block & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
+                DisplayGroup: { groupName: "Sun Block & Silver Gauntlets Path", imageName: "Silver Gauntlets" },
                 Exits: {
                     mirrorShieldKnuckle: {
                         Age: Age.ADULT,
@@ -4421,7 +4421,7 @@ let StandardDungeons = {
                 }
             },
             statueHands: {
-                DisplayGroup: { groupName: "Sun Block & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
+                DisplayGroup: { groupName: "Sun Block & Silver Gauntlets Path", imageName: "Silver Gauntlets" },
                 Exits: {
                     "Desert Colossus": {
                         OwExit: OwExits["Spirit Temple"]["Desert Colossus"]
@@ -5641,7 +5641,7 @@ let StandardDungeons = {
                 }
             },
             silverBlockRoom: {
-                DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Strength Silver Gauntlets" },
+                DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Silver Gauntlets" },
                 UseAdultAge: function() {
                     return !Settings.GlitchesToAllow.gtgChildVineClips && !Settings.GlitchesToAllow.gtgSlopesRoomFireWallSkip;
                 },
@@ -5673,7 +5673,7 @@ let StandardDungeons = {
                 ItemLocations: {}
             },
             roomBehindSilverBlock: {
-                DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Strength Silver Gauntlets" },
+                DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Silver Gauntlets" },
                 Exits: {},
                 ItemLocations: {
                     "Silver Block Room Left Spawned Chest": {

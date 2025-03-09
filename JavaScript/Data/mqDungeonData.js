@@ -372,7 +372,7 @@ let MQDungeons = {
         StartingFloorIndex: 1,
         Regions: {
             main: {
-                DisplayGroup: { groupName: "Main Room", imageName: "Strength Goron's Bracelet" },
+                DisplayGroup: { groupName: "Main Room", imageName: "Goron's Bracelet" },
                 Exits: {
                     mainRoom: {
                         NeedsAny: [
@@ -398,7 +398,7 @@ let MQDungeons = {
                 }
             },
             mainRoom: {
-                DisplayGroup: { groupName: "Main Room", imageName: "Strength Goron's Bracelet" },
+                DisplayGroup: { groupName: "Main Room", imageName: "Goron's Bracelet" },
                 Exits: {
                     upperMainRoom: {
                         NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, Equipment.STRENGTH]
@@ -439,7 +439,7 @@ let MQDungeons = {
                 }
             },
             upperMainRoom: {
-                DisplayGroup: { groupName: "Main Room", imageName: "Strength Goron's Bracelet" },
+                DisplayGroup: { groupName: "Main Room", imageName: "Goron's Bracelet" },
                 Exits: {
                     staircaseBottom: {},
                     mainRoomLedge: {
@@ -455,7 +455,7 @@ let MQDungeons = {
                 ItemLocations: {}
             },
             mainRoomLedge: {
-                DisplayGroup: { groupName: "Main Room", imageName: "Strength Goron's Bracelet" },
+                DisplayGroup: { groupName: "Main Room", imageName: "Goron's Bracelet" },
                 Exits: {
                     poeRoom: {}
                 },
@@ -1132,7 +1132,7 @@ let MQDungeons = {
                 }
             },
             lowerElevatorRoom: {
-                DisplayGroup: { groupName: "Lower Elevator Room", imageName: "Scale Silver Scale" },
+                DisplayGroup: { groupName: "Lower Elevator Room", imageName: "Silver Scale" },
                 Exits: {},
                 ItemLocations: {
                     "Chest in Lower Elevator Room": {
@@ -1571,7 +1571,7 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
                     },
                     "Locked Door by Twisted Corridor": {
-                        DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Strength Goron's Bracelet" },
+                        DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Goron's Bracelet" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["topOfBlockRoom"],
                         MapInfo: { x: 42, y: 198, floor: "F2" },
@@ -1859,7 +1859,7 @@ let MQDungeons = {
                 }
             },
             blockRoom: {
-                DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Strength Goron's Bracelet" },
+                DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Goron's Bracelet" },
                 Exits: {
                     topOfBlockRoom: {
                         Age: Age.ADULT,
@@ -1888,7 +1888,7 @@ let MQDungeons = {
                 }
             },
             topOfBlockRoom: {
-                DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Strength Goron's Bracelet" },
+                DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Goron's Bracelet" },
                 Exits: {
                     twistedHallway: {
                         LockedDoor: "Locked Door by Twisted Corridor",
@@ -2617,7 +2617,7 @@ let MQDungeons = {
                 }
             },
             aboveBoulderMaze: {
-                DisplayGroup: { groupName: "Top Rooms Above Boulder Maze", imageName: "Hookshot Hookshot" },
+                DisplayGroup: { groupName: "Top Rooms Above Boulder Maze", imageName: "Hookshot" },
                 Exits: {
                     narrowBridgeRoom: {}
                 },
@@ -4199,7 +4199,7 @@ let MQDungeons = {
                 }
             },
             fallingSpikesRoom: {
-                DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Strength Goron's Bracelet" },
+                DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Goron's Bracelet" },
                 Exits: {
                     topOfFallingSpikesRoom: {
                         ChildNeeds: [GlitchItemSets.SHADOW_BACKFLIP_ON_SPIKES],
@@ -4234,7 +4234,7 @@ let MQDungeons = {
                 }
             },
             topOfFallingSpikesRoom: {
-                DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Strength Goron's Bracelet" },
+                DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Goron's Bracelet" },
                 UseAdultAge: function() {  return !Settings.GlitchesToAllow.shadowBackFlipOnSpikes; },
                 Exits: {},
                 ItemLocations: {
@@ -4833,7 +4833,7 @@ let MQDungeons = {
                         }
                     },
                     "Locked Door to Silver Gaunts Knuckle": {
-                        DisplayGroup: { groupName: "Fire Bubble & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
+                        DisplayGroup: { groupName: "Fire Bubble & Silver Gauntlets Path", imageName: "Silver Gauntlets" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["fireBubbleRoom"],
                         MapInfo: { x: 32, y: 198, floor: "F3" },
@@ -5264,7 +5264,7 @@ let MQDungeons = {
                 }
             },
             fireBubbleRoom: {
-                DisplayGroup: { groupName: "Fire Bubble & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
+                DisplayGroup: { groupName: "Fire Bubble & Silver Gauntlets Path", imageName: "Silver Gauntlets" },
                 Exits: {
                     silverGauntsIronKnuckle: {
                         Map: "Spirit Temple",
@@ -5305,7 +5305,7 @@ let MQDungeons = {
                 }
             },
             silverGauntsIronKnuckle: {
-                DisplayGroup: { groupName: "Fire Bubble & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
+                DisplayGroup: { groupName: "Fire Bubble & Silver Gauntlets Path", imageName: "Silver Gauntlets" },
                 Exits: {
                     silverGauntsStatueHand: {}
                 },
@@ -5320,7 +5320,7 @@ let MQDungeons = {
                 }
             },
             silverGauntsStatueHand: {
-                DisplayGroup: { groupName: "Fire Bubble & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
+                DisplayGroup: { groupName: "Fire Bubble & Silver Gauntlets Path", imageName: "Silver Gauntlets" },
                 Exits: {
                     mirrorShieldKnuckle: {
                         Age: Age.ADULT,
@@ -5417,7 +5417,7 @@ let MQDungeons = {
                 }
             },
             statueHands: {
-                DisplayGroup: { groupName: "Fire Bubble & Silver Gauntlets Path", imageName: "Strength Silver Gauntlets" },
+                DisplayGroup: { groupName: "Fire Bubble & Silver Gauntlets Path", imageName: "Silver Gauntlets" },
                 Exits: {
                     "Desert Colossus": {
                         OwExit: OwExits["Spirit Temple"]["Desert Colossus"]
@@ -6351,7 +6351,7 @@ let MQDungeons = {
                 }
             },
             roomWithSilverBlock: {
-                DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Strength Silver Gauntlets" },
+                DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Silver Gauntlets" },
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.gtgChildVineClips && !Settings.RandomizerSettings.shuffleSilverRupees; 
                 },
@@ -6391,7 +6391,7 @@ let MQDungeons = {
                 ItemLocations: {}
             },
             roomBehindSilverBlock: {
-                DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Strength Silver Gauntlets" },
+                DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Silver Gauntlets" },
                 Exits: {},
                 ItemLocations: {
                     "Chest in Room Behind Silver Block": {

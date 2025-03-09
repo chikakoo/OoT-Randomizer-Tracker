@@ -409,7 +409,8 @@ let ItemTracker = {
 		let upgradeIndex = this.getUpgradeIndex(item);
 		
 		if (!item.playerHas && !item.playerAlwaysHas) {
-			return "X";
+			// Show the first version of the item
+			return item.upgrades[1];
 		}
 		
 		if (upgradeIndex !== undefined && item.upgrades !== undefined && item.upgrades.length > upgradeIndex) {
@@ -442,7 +443,7 @@ let ItemTracker = {
 		
 		if (item.upgrades) {
 			let itemUpgrade = this.getUpgradeName(item);
-			return `url("Images/${iconName} ${itemUpgrade}.png")`;
+			return `url("Images/${itemUpgrade}.png")`;
 		} else {
 			return `url("Images/${iconName}.png")`;
 		}
