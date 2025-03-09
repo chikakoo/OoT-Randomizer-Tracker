@@ -3787,12 +3787,6 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: ["F4", "F3", "F2", "F1"],
         StartingFloorIndex: 3,
-        _canAccessAdultSide: function() {
-            return ItemData.canUseAny(Age.ADULT, [
-                UpgradedItems.SILVER_GAUNTLETS,
-                GlitchItemSets.SPIRIT_BLOCK_SKIP_WITH_HOVER_BOOTS,
-                GlitchItemSets.SPIRIT_BLOCK_SKIP_WITH_BOMB_PUSH]);
-        },
         Regions: {
             main: {
                 DisplayGroup: { groupName: "Lobby", imageName: "Requiem of Spirit" },
@@ -3802,7 +3796,11 @@ let StandardDungeons = {
                     },
                     beyondSilverBlock: {
                         Age: Age.ADULT,
-                        Needs: [() => MapLocations["Spirit Temple"]._canAccessAdultSide()]
+                        NeedsAny: [
+                            UpgradedItems.SILVER_GAUNTLETS,
+                            GlitchItemSets.SPIRIT_BLOCK_SKIP_WITH_HOVER_BOOTS,
+                            GlitchItemSets.SPIRIT_BLOCK_SKIP_WITH_BOMB_PUSH
+                        ]
                     },
                     Exit: {
                         OwExit: OwExits["Spirit Temple"]["Exit"]
@@ -3850,16 +3848,11 @@ let StandardDungeons = {
                         Order: 20,
                         LongDescription: "This is the door after the puzzle where you push the sun block into the light.",
                         KeyRequirement: function(age) {
-                            // There's only one path for child, and it uses only 2 keys
-                            if (!MapLocations["Spirit Temple"]._canAccessAdultSide()) {
-                                return { min: 2, max: 2 };
-                            }
+                            let min = age === Age.CHILD
+                                ? 2 // This + door after crawlspace
+                                : 1; // This
 
-                            let minValue = 1;
-                            if (ItemLocationSets.SPIRIT_OPENED_DOOR_AFTER_SECOND_CRAWL_SPACE()) {
-                                minValue++;
-                            }
-                            return { min: minValue, max: 5 };
+                            return { min: min, max: Keys.SPIRIT_TEMPLE.totalKeys() };
                         }
                     },
                     "Locked Door After Silver Block": {
@@ -3871,11 +3864,8 @@ let StandardDungeons = {
                         Order: 25,
                         LongDescription: "This is the locked door after the silver block on the adult side.",
                         KeyRequirement: function(age) {
-                            let minValue = 1;
-                            if (ItemLocationSets.SPIRIT_OPENED_DOOR_AFTER_SECOND_CRAWL_SPACE()) {
-                                minValue++;
-                            }
-                            return { min: minValue, max: 3 };
+                            // Max: this + after crawlspace + silver gaunts
+                            return { min: 1, max: 3 };
                         }
                     },
                     "Locked Door in Statue Room": {
@@ -3887,11 +3877,12 @@ let StandardDungeons = {
                         Order: 32,
                         LongDescription: "This is the locked door on the upper east part of the statue room.",
                         KeyRequirement: function(age) {
-                            let minValue = 2;
-                            if (ItemLocationSets.SPIRIT_OPENED_DOOR_AFTER_SECOND_CRAWL_SPACE()) {
-                                minValue++;
-                            }
-                            return { min: minValue, max: 4 };
+                            let max = Settings.GlitchesToAllow.spiritSuperslideToMirrorShield
+                                ? Keys.SPIRIT_TEMPLE.totalKeys() // Can skip this door in this case and open the one beyond it
+                                : 4; // All doors except the one beyond it
+                                
+                            // Min: this + door after silver block
+                            return { min: 2, max: max };
                         }
                     },
                     "Locked Door in Anubis Room": {
@@ -3903,12 +3894,8 @@ let StandardDungeons = {
                         Order: 38,
                         LongDescription: "This is the locked door in the southwest corner of the room with Anubises and pits.",
                         KeyRequirement: function(age) {
-                            let minValue = 3;
-                            if (ItemLocationSets.SPIRIT_OPENED_DOOR_AFTER_SECOND_CRAWL_SPACE()) {
-                                minValue++;
-                            }
-
-                            return { min: minValue, max: 5 };
+                            // this + after silver block + EITHER statue room OR silver gaunts with superslide
+                            return { min: 3, max: Keys.SPIRIT_TEMPLE.totalKeys() };
                         }
                     }
                 }
