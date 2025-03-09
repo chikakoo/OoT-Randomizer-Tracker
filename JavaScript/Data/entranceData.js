@@ -89,6 +89,7 @@ InteriorGroups = {
 				Needs: [Medallions.FOREST_MEDALLION, (age) => Data.canEnterDoorOfTime(age)]
 			},
 			"Light Arrows": {
+				icon: "Light Arrow",
 				Age: Age.ADULT,
 				LongDescription: "When you have the Shadow and Spirit Medallions, simply enter the Temple of Time as adult to receive the item.",
 				Needs: [Medallions.SHADOW_MEDALLION, Medallions.SPIRIT_MEDALLION, (age) => Data.canEnterDoorOfTime(age)]
@@ -943,6 +944,7 @@ GrottoGroups = {
 		tooltip: "The Royal Family's Tomb.",
 		buttons: {
 			"Chest by Lighting Torches": {
+				icon: "Din's Fire",
 				LongDescription: "Light the torches in the first room to spawn a chest.\x0A\x0AUsing flame storage and sticks: get flame storage; line up with the side of the platform by the stairs and the torch; sidehop right x8; sideroll; take out stick (it should be lit now); sidehop to the door - quickly enter at the very left side; the first torch should be lit as you go in - now finish the job.",
 				NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA, GlitchItemSets.FLAME_STORAGE]
 			},
@@ -1873,6 +1875,7 @@ GrottoGroups = {
 				}
 			},
 			"Bug Minigame": {
+				icon: "Bugs",
 				Age: Age.CHILD,
 				LongDescription: "Play this after playing all the non-warp songs to the frogs. Answer: A < > v < > v A v A v > < A",
 				Needs: [
