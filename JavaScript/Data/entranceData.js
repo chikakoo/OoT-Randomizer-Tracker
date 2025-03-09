@@ -43,7 +43,6 @@ EntranceData = {
 InteriorGroups = {
 	"Link's House": {
 		tooltip: "Link's House",
-		dropdownIcon: "🧝",
 		excludeFromGroup: function() { return Data.linksHouseLocation && Data.linksHouseLocation.map; },
 		neverHide: true,
 		buttons: {
@@ -74,7 +73,6 @@ InteriorGroups = {
 	},
 	"Temple of Time": {
 		tooltip: "The Temple of Time",
-		dropdownIcon: "🕒",
 		isTempleOfTime: true,
 		excludeFromGroup: function() { return Data.templeOfTimeLocation && Data.templeOfTimeLocation.map; },
 		neverHide: true,
@@ -111,7 +109,6 @@ InteriorGroups = {
 	},
 	"Shop": {
 		tooltip: "Any shop except the Happy Mask Shop or potion shop with two exits.",
-		dropdownIcon: "💸",
 		isShop: true,
 		buttons: {
 			"Shop": {
@@ -122,7 +119,6 @@ InteriorGroups = {
 	},
 	"Kokiri Shop": {
 		tooltip: "The Kokiri Forest shop with the rupee in the back.",
-		dropdownIcon: "🌲💸",
 		excludeFromGroup: function() { 
 			return !Settings.RandomizerSettings.shuffleWonderitems;
 		},
@@ -140,21 +136,18 @@ InteriorGroups = {
 	},
 	"Potion Shop Front": {
 		tooltip: "The Kakariko potion shop - this is the front entrance (closest to the camera).",
-		dropdownIcon: "🔽",
 		neverHide: true,
 		buttons: {},
 		overworldLink: OwExits["Windmill-Kak Potion"]["Potion Shop Front"]
 	},
 	"Potion Shop Back": {
 		tooltip: "The Kakariko potion shop - this is the back entrance (farthest from the camera).",
-		dropdownIcon: "🔼",
 		neverHide: true,
 		buttons: {},
 		overworldLink: OwExits["Windmill-Kak Potion"]["Potion Shop Back"]
 	},
 	"Granny's Potion Shop": {
 		tooltip: "The potion shop with the red carpet and the granny holding a cat.",
-		dropdownIcon: "🍄",
 		buttons: {
 			"Show Odd Mushroom to Granny": {
 				icon: "Odd Mushroom",
@@ -194,7 +187,6 @@ InteriorGroups = {
 			]);
 		},
 		tooltip: "The Happy Mask Shop",
-		dropdownIcon: "😷",
 		buttons: {
 			"Borrow Keaton Mask": {
 				LongDescription: "After showing the Kakariko Village guard Zelda's Letter (or having the letter when the gate is opened), you can borrow this mask.",
@@ -246,7 +238,6 @@ InteriorGroups = {
 	},
 	"Fairy Fountain": {
 		tooltip: "Any of the Great Fairy Fountains.",
-		dropdownIcon: "🧚",
 		buttons: {
 			"Fairy Fountain": {
 				LongDescription: "Play Zelda's Lullaby at the triforce symbol to get this item.",
@@ -256,7 +247,6 @@ InteriorGroups = {
 	},
 	"House of Skulltula": {
 		tooltip: "The building you turn in skulltula rewards.",
-		dropdownIcon: "🕷",
 		shouldNotDisplay: function() {
 			return Settings.RandomizerSettings.maxRequiredTokens === 0;
 		},
@@ -310,7 +300,6 @@ InteriorGroups = {
 	},
 	"Lakeside Lab": {
 		tooltip: "This is the lab with the professor and the pool of water in the back.",
-		dropdownIcon: "🐸",
 		buttons: {
 			"Lakeside Heart Piece": {
 				icon: "Heart Piece",
@@ -342,7 +331,6 @@ InteriorGroups = {
 	},
 	"Market Guard House": {
 		tooltip: "This is the pot room as a child, and the big poe buyer room as an adult.",
-		dropdownIcon: "🍯",
 		buttons: {
 			"Child Skulltula": {
 				icon: "Skulltula",
@@ -400,7 +388,6 @@ InteriorGroups = {
 	},
 	"Back of Impa's House": {
 		tooltip: "Inside the cage with the cow and the freestanding item.",
-		dropdownIcon: "⏫",
 		buttons: {
 			"Freestanding Item": {
 				icon: "Heart Piece",
@@ -415,7 +402,6 @@ InteriorGroups = {
 	},
 	"Front of Impa's House": {
 		tooltip: "Inside the house (outside the cage) with the cow and the freestanding item.",
-		dropdownIcon: "⏬",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleWonderitems; },
 		buttons: {
 			"Red Rupee on Top": {
@@ -433,7 +419,6 @@ InteriorGroups = {
 	"Stable": {
 		icon: "2 Cows",
 		tooltip: "This is the building with the cows in the stables.",
-		dropdownIcon: "🐴",
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.cowSanity; },
 		buttons: {
 			"Cows": {
@@ -447,7 +432,6 @@ InteriorGroups = {
 	},
 	"Cow Shed": {
 		tooltip: "This is the building with the cows and boxes you can push for the freestanding item",
-		dropdownIcon: "🐄",
 		buttons: {
 			"Freestanding Item": {
 				icon: "Heart Piece",
@@ -468,7 +452,6 @@ InteriorGroups = {
 	},
 	"Bombchu Bowling": {
 		tooltip: "The Bombchu Bowling building.",
-		dropdownIcon: "🎳",
 		icon: "Bombchu",
 		buttons: {
 			"Prizes": {
@@ -481,7 +464,6 @@ InteriorGroups = {
 	},
 	"Fishing Pond": {
 		tooltip: "The fishing pond area.",
-		dropdownIcon: "🎣",
 		buttons: {
 			"Child Fishing": {
 				useGroupImage: true,
@@ -503,7 +485,6 @@ InteriorGroups = {
 	},
 	"Child Archery": {
 		tooltip: "This is the archery minigame. The shopkeeper will only be here as a child.",
-		dropdownIcon: "🏹",
 		buttons: {
 			"Child Archery": {
 				Age: Age.CHILD,
@@ -513,7 +494,6 @@ InteriorGroups = {
 	},
 	"Adult Archery": {
 		tooltip: "This is the archery minigame. The shopkeeper will only be here as adult.",
-		dropdownIcon: "🏹",
 		buttons: {
 			"Adult Archery": {
 				Age: Age.ADULT,
@@ -524,7 +504,6 @@ InteriorGroups = {
 	},
 	"Treasure Chest Minigame": {
 		tooltip: "The minigame where you probably want the Lens of Truth.",
-		dropdownIcon: "🪞",
 		buttons: {
 			"Salesman": {
 				icon: "Shop",
@@ -579,7 +558,6 @@ InteriorGroups = {
 	},
 	"Super Cucco Minigame": {
 		tooltip: "Talon's House in Lon Lon Ranch",
-		dropdownIcon: "🐔",
 		buttons: {
 			"Super Cucco Minigame": {
 				time: function() { return Time.DAY; },
@@ -596,7 +574,6 @@ InteriorGroups = {
 	},
 	"Talon's House Kakariko": {
 		tooltip: "Talon's House in Kakariko - as Child, the room has one woman in it by a stove, with 2 beds next to her.",
-		dropdownIcon: "😴",
 		buttons: {
 			"Wake Up Talon": {
 				icon: "Pocket Cucco",
@@ -613,7 +590,6 @@ InteriorGroups = {
 	"Windmill": {
 		neverHide: true,
 		tooltip: "Kakariko Windmill",
-		dropdownIcon: "🌦",
 		buttons: {},
 		overworldLink: OwExits["Windmill-Kak Potion"]["Windmill Exit"]
 	},
@@ -671,7 +647,6 @@ InteriorGroups = {
 	},
 	"Jail 1 Left": {
 		icon: "Thieves' Hideout J1",
-		dropdownIcon: "🔒⬅️",
 		tooltip: "The door to the left of jail 1 in the Thieves' Hideout.",
 		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
@@ -679,7 +654,6 @@ InteriorGroups = {
 	},
 	"Jail 1 Right": {
 		icon: "Thieves' Hideout J1",
-		dropdownIcon: "🔒➡️",
 		tooltip: "The door to the right of jail 1 in the Thieves' Hideout.",
 		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
@@ -687,7 +661,6 @@ InteriorGroups = {
 	},
 	"Jail 2 Left": {
 		icon: "Thieves' Hideout J2",
-		dropdownIcon: "🔒⏪",
 		tooltip: "The door to the left of jail 2 in the Thieves' Hideout.",
 		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
@@ -695,7 +668,6 @@ InteriorGroups = {
 	},
 	"Jail 2 Right": {
 		icon: "Thieves' Hideout J2",
-		dropdownIcon: "🔒⏩",
 		tooltip: "The door to the right of jail 2 in the Thieves' Hideout.",
 		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
@@ -703,7 +675,6 @@ InteriorGroups = {
 	},
 	"Jail 3 Left": {
 		icon: "Thieves' Hideout J3",
-		dropdownIcon: "🔒◀️",
 		tooltip: "The door to the left of jail 3 in the Thieves' Hideout.",
 		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
@@ -711,7 +682,6 @@ InteriorGroups = {
 	},
 	"Jail 3 Right": {
 		icon: "Thieves' Hideout J3",
-		dropdownIcon: "🔒▶️",
 		tooltip: "The door to the right of jail 3 in the Thieves' Hideout.",
 		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
@@ -719,7 +689,6 @@ InteriorGroups = {
 	},
 	"Jail 4 Entrance": {
 		icon: "Thieves' Hideout J4",
-		dropdownIcon: "🔒⬇️",
 		tooltip: "The only exit in the jail 4 area.",
 		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
@@ -727,7 +696,6 @@ InteriorGroups = {
 	},
 	"Kitchen Far Bottom": {
 		icon: "Thieves' Hideout Kitchen",
-		dropdownIcon: "⏬",
 		tooltip: "This is the entrance at the very end of cooridor on the bottom part of the kitchen.",
 		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
@@ -735,7 +703,6 @@ InteriorGroups = {
 	},
 	"Kitchen Middle Bottom": {
 		icon: "Thieves' Hideout Kitchen",
-		dropdownIcon: "🔽",
 		tooltip: "This is the entrance at the middle of the cooridor on the bottom part of the kitchen.",
 		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
@@ -743,7 +710,6 @@ InteriorGroups = {
 	},
 	"Kitchen Top Left": {
 		icon: "Thieves' Hideout Kitchen",
-		dropdownIcon: "🔼⬅️",
 		tooltip: "From the perspective of the guards, this is the exit to the left on top of the ramps in the main area of the kitchen.",
 		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
@@ -751,7 +717,6 @@ InteriorGroups = {
 	},
 	"Kitchen Top Right": {
 		icon: "Thieves' Hideout Kitchen",
-		dropdownIcon: "🔼➡️",
 		tooltip: "From the perspective of the guards, this is the exit to the right on top of the ramps in the main area of the kitchen.",
 		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
@@ -759,7 +724,6 @@ InteriorGroups = {
 	},
 	"Top Room Lower": {
 		icon: "Thieves' Hideout Top",
-		dropdownIcon: "⬇️",
 		tooltip: "This is the entrance on the bottom part of the room above jail 1.",
 		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
@@ -767,7 +731,6 @@ InteriorGroups = {
 	},
 	"Top Room Upper": {
 		icon: "Thieves' Hideout Top",
-		dropdownIcon: "⬆️",
 		tooltip: "This is the entrance on the upper part of the room above jail 1.",
 		excludeFromGroup: SettingSets.VANILLA_THIEVES_HIDEOUT,
 		buttons: {},
@@ -781,7 +744,6 @@ InteriorGroups = {
 GrottoGroups = {
 	"Generic Grotto": {
 		tooltip: "This is the generic grotto with a chest, a gossip stone, bugs, and a fish.",
-		dropdownIcon: "🐝",
 		hasGossipStone: true,
 		buttons: {
 			"Chest": {
@@ -806,7 +768,6 @@ GrottoGroups = {
 	},
 	"1 Scrub": {
 		tooltip: "This is a grotto with 1 business scrub.",
-		dropdownIcon: "🌰",
 		buttons: {
 			"Scrub 1": {
 				icon: "Scrub",
@@ -822,7 +783,6 @@ GrottoGroups = {
 	},
 	"2 Scrubs": {
 		tooltip: "This is a grotto with 2 business scrubs.",
-		dropdownIcon: "🌰",
 		excludeFromGroup: function() {
 			return !Settings.RandomizerSettings.scrubSanity && !Settings.RandomizerSettings.shuffleBeehives;
 		},
@@ -842,7 +802,6 @@ GrottoGroups = {
 	},
 	"2 Scrubs (Front on Left)": {
 		icon: "2 Scrubs",
-		dropdownIcon: "🌰",
 		tooltip: "This is a grotto with 2 business scrubs, and the front one is on the left. This one is imporant if scrubsanity is off, as it sells the deku nut upgrade.",
 		excludeFromGroup: function() { 
 			// We only want this if theres no scrubsanity, as it is the scrub that sells the nut upgrade
@@ -863,7 +822,6 @@ GrottoGroups = {
 	},
 	"3 Scrubs": {
 		tooltip: "This is a grotto with 3 business scrubs.",
-		dropdownIcon: "🌰",
 		excludeFromGroup: function() {
 			return !Settings.RandomizerSettings.scrubSanity && !Settings.RandomizerSettings.shuffleBeehives;
 		},
@@ -883,7 +841,6 @@ GrottoGroups = {
 	},
 	"Skulltula at Distance": {
 		tooltip: "This grotto has a big skulltula and a gold skulltula on the upper wall.",
-		dropdownIcon: "🪃",
 		buttons: {
 			"Skulltula at Distance": {
 				ItemGroup: ItemGroups.SKULLTULA,
@@ -894,7 +851,6 @@ GrottoGroups = {
 	},
 	"Cow and Web Grotto": {
 		tooltip: "This is the grotto with webs on the walls, a cow, and a skulltula.",
-		dropdownIcon: "🕸",
 		hasGossipStone: true,
 		buttons: {
 			"Cow": {
@@ -924,7 +880,6 @@ GrottoGroups = {
 	},
 	"Bombable Wall Grotto": {
 		tooltip: "This is the grotto with bombable walls and many skulltula sounds.",
-		dropdownIcon: "💣",
 		hasGossipStone: true,
 		buttons: {
 			"Skulltula in Bombable Wall Grotto": {
@@ -954,7 +909,6 @@ GrottoGroups = {
 	},
 	"Forest Stage": {
 		tooltip: "This is the forest stage.",
-		dropdownIcon: "💀",
 		buttons: {
 			"Skull Mask Item": {
 				icon: "Skull Mask",
@@ -974,7 +928,6 @@ GrottoGroups = {
 	},
 	"Redead Sun's Song Grave": {
 		tooltip: "This is the grave with the single redead.",
-		dropdownIcon: "🌞",
 		buttons: {
 			"Redead Sun's Song Chest": {
 				useGroupImage: true,
@@ -985,10 +938,9 @@ GrottoGroups = {
 	},
 	"Royal Family's Tomb": {
 		tooltip: "The Royal Family's Tomb.",
-		dropdownIcon: "👑",
 		buttons: {
 			"Chest by Lighting Torches": {
-				LongDescription: "Light the torches in the first room to spawn a chest.<br/><br/>Using flame storage and sticks: get flame storage; line up with the side of the platform by the stairs and the torch; sidehop right x8; sideroll; take out stick (it should be lit now); sidehop to the door - quickly enter at the very left side; the first torch should be lit as you go in - now finish the job.",
+				LongDescription: "Light the torches in the first room to spawn a chest.\x0A\x0AUsing flame storage and sticks: get flame storage; line up with the side of the platform by the stairs and the torch; sidehop right x8; sideroll; take out stick (it should be lit now); sidehop to the door - quickly enter at the very left side; the first torch should be lit as you go in - now finish the job.",
 				NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA, GlitchItemSets.FLAME_STORAGE]
 			},
 			"Sun's Song": {
@@ -999,14 +951,12 @@ GrottoGroups = {
 	},
 	"Dampe's Grave": {
 		neverHide: true,
-		dropdownIcon: "🪦",
 		tooltip: "Dampe's Grave - Be sure to mark the windmill entrance to see those items!",
 		buttons: {},
 		overworldLink: OwExits["Windmill-Kak Potion"]["Grave Exit"]
 	},
 	"Wolfos Grotto": {
 		tooltip: "This grotto has crystal walls and 2 wolfos.",
-		dropdownIcon: "🐺",
 		buttons: {
 			"Chest in Wolfos Grotto": {
 				LongDescription: "Kill the wolfos to spawn the chest.",
@@ -1016,7 +966,6 @@ GrottoGroups = {
 	},
 	"Two Redead Grotto": {
 		tooltip: "This grotto has 2 redeads.",
-		dropdownIcon: "🧟",
 		buttons: {
 			"Chest in 2 Redead Grotto": {
 				useGroupImage: true,
@@ -1027,7 +976,6 @@ GrottoGroups = {
 	},
 	"Cow Grotto": {
 		tooltip: "This grotto has rupees and a cow.",
-		dropdownIcon: "🐮",
 		excludeFromGroup: function() {
 			let rupeeAndHeartSetting = Settings.RandomizerSettings.rupeeAndHeartSetting;
 			return !Settings.RandomizerSettings.cowSanity && 
@@ -1060,7 +1008,6 @@ GrottoGroups = {
 	},
 	"Water Heart Piece Grotto": {
 		tooltip: "This grotto has a tektite and a heart piece in water.",
-		dropdownIcon: "🌊",
 		buttons: {
 			"Water Heart Piece": {
 				useGroupImage: true,
@@ -1099,6 +1046,7 @@ GrottoGroups = {
  */
  BossGroups = {
 	"Gohma": {
+		icon: "Kokiri's Emerald",
 		tooltip: "Gohma in the Deku Tree",
 		buttons: {
 			"Heart Container": {
@@ -1108,7 +1056,7 @@ GrottoGroups = {
 				NeedsAny: [Items.DEKU_NUT, Items.FAIRY_SLINGSHOT]
 			},
 			"Blue Warp": {
-				icon: "Gohma",
+				icon: "Kokiri's Emerald",
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				Needs: [ItemSets.SWORDS],
 				NeedsAny: [Items.DEKU_NUT, Items.FAIRY_SLINGSHOT]
@@ -1116,6 +1064,7 @@ GrottoGroups = {
 		}
 	},
 	"King Dodongo": {
+		icon: "Goron's Ruby",
 		tooltip: "King Dodongo in Dodongo's Cavern",
 		buttons: {
 			"Chest": {
@@ -1128,7 +1077,7 @@ GrottoGroups = {
 				NeedsAny: [Items.BOMB, Equipment.STRENGTH]
 			},
 			"Blue Warp": {
-				icon: "King Dodongo",
+				icon: "Goron's Ruby",
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				Needs: [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.SWORDS],
 				NeedsAny: [Items.BOMB, Equipment.STRENGTH]
@@ -1136,6 +1085,7 @@ GrottoGroups = {
 		}
 	},
 	"Barinade": {
+		icon: "Zora's Sapphire",
 		tooltip: "Barinade in Jabu Jabu's Belly",
 		buttons: {
 			"6 Pots": {
@@ -1152,7 +1102,7 @@ GrottoGroups = {
 				Needs: [ItemSets.SWORDS, Items.BOOMERANG]
 			},
 			"Blue Warp": {
-				icon: "Barinade",
+				icon: "Zora's Sapphire",
 				Age: Age.EITHER,
 				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
@@ -1161,6 +1111,7 @@ GrottoGroups = {
 		}
 	},
 	"Phantom Ganon": {
+		icon: "Forest Medallion",
 		tooltip: "Phantom Ganon in the Forest Temple",
 		buttons: {
 			"Heart Container": {
@@ -1172,7 +1123,7 @@ GrottoGroups = {
 				]
 			},
 			"Blue Warp": {
-				icon: "Phantom Ganon",
+				icon: "Forest Medallion",
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				Needs: [
 					[SetType.OR, Items.HOOKSHOT, ItemSets.PROJECTILES], // Stun boss
@@ -1182,6 +1133,7 @@ GrottoGroups = {
 		}
 	},
 	"Volvagia": {
+		icon: "Fire Medallion",
 		tooltip: "Volvagia in the Fire Temple",
 		buttons: {
 			"Heart Container": {
@@ -1192,7 +1144,7 @@ GrottoGroups = {
 				Needs: [GameStateSets.FIRE_TEMPLE_TUNIC_CHECK, Items.MEGATON_HAMMER]
 			},
 			"Blue Warp": {
-				icon: "Volvagia",
+				icon: "Fire Medallion",
 				Age: Age.EITHER,
 				UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap || !Settings.GlitchesToAllow.fireNoGoronTunic; },
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
@@ -1201,6 +1153,7 @@ GrottoGroups = {
 		}
 	},
 	"Morpha": {
+		icon: "Water Medallion",
 		tooltip: "Morpha in the Water Temple",
 		buttons: {
 			"Heart Container": {
@@ -1210,7 +1163,7 @@ GrottoGroups = {
 				Needs: [Items.HOOKSHOT]
 			},
 			"Blue Warp": {
-				icon: "Morpha",
+				icon: "Water Medallion",
 				Age: Age.ADULT,
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				Needs: [Items.HOOKSHOT],
@@ -1224,6 +1177,7 @@ GrottoGroups = {
 		}
 	},
 	"Bongo Bongo": {
+		icon: "Shadow Medallion",
 		tooltip: "Bongo Bongo in the Shadow Temple",
 		buttons: {
 			"Heart Container": {
@@ -1233,7 +1187,7 @@ GrottoGroups = {
 				NeedsAny: [Items.HOOKSHOT, ItemSets.PROJECTILES]
 			},
 			"Blue Warp": {
-				icon: "Bongo Bongo",
+				icon: "Shadow Medallion",
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				Needs: [ItemSets.SWORDS],
 				NeedsAny: [Items.HOOKSHOT, ItemSets.PROJECTILES]
@@ -1241,6 +1195,7 @@ GrottoGroups = {
 		}
 	},
 	"Twinrova": {
+		icon: "Spirit Medallion",
 		tooltip: "Twinrova in the Spirit Temple",
 		buttons: {
 			"Heart Container": {
@@ -1250,7 +1205,7 @@ GrottoGroups = {
 				Needs: [Equipment.MIRROR_SHIELD]
 			},
 			"Blue Warp": {
-				icon: "Twinrova",
+				icon: "Spirit Medallion",
 				Age: Age.ADULT,
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				Needs: [Equipment.MIRROR_SHIELD]
@@ -1258,6 +1213,7 @@ GrottoGroups = {
 		}
 	},
 	"Ganon's Tower": {
+		icon: "Light Medallion",
 		tooltip: "The tower in the Center of Ganon's Castle",
 		buttons: {
 			"Boss Key": {

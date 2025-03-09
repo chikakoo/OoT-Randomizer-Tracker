@@ -4863,7 +4863,7 @@ let MQDungeons = {
                         LongDescription: "This is the locked door on the upper east part of the statue room.",
                         KeyRequirement: function(age) {
                             let max = 5;
-                            if (Settings.spiritSuperslideToMirrorShield) {
+                            if (Settings.GlitchesToAllow.spiritSuperslideToMirrorShield) {
                                 max = Keys.SPIRIT_TEMPLE.mqTotalKeys();
                             }
                             return { min: 1, max: max };
@@ -4879,7 +4879,7 @@ let MQDungeons = {
                         LongDescription: "This is the locked door in the southwest corner of the room with all the Beamos.",
                         KeyRequirement: function(age) {
                             let min = 2;
-                            if (Settings.spiritSuperslideToMirrorShield) {
+                            if (Settings.GlitchesToAllow.spiritSuperslideToMirrorShield) {
                                 min--;
                             }
                             return { min: min, max: 6 };
@@ -4907,7 +4907,7 @@ let MQDungeons = {
                         LongDescription: "This is the locked door by the triforce symbol located after the moving wall.",
                         KeyRequirement: function(age) {
                             let min = 3;
-                            if (Settings.spiritSuperslideToMirrorShield) {
+                            if (Settings.GlitchesToAllow.spiritSuperslideToMirrorShield) {
                                 min--;
                             }
                             return { min: min, max: Keys.SPIRIT_TEMPLE.mqTotalKeys() };

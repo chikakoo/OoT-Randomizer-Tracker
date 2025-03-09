@@ -4716,9 +4716,11 @@ let StandardDungeons = {
                     "Scythe Silver Rupee in Midair": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 193, y: 102 },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
+                        UseAdultAge: function() { return !Settings.GlitchesToAllow.iceChildUpperRoom; },
                         Order: 6.1,
-                        LongDescription: "This rupee is the one in midair in the back right part of the spinning scythe room. As adult, climb up the ledge and jump off to get it."
+                        LongDescription: "This rupee is the one in midair in the back right part of the spinning scythe room. As adult, climb up the ledge and jump off to get it.",
+                        ChildNeeds: [GlitchItemSets.ICE_CHILD_UPPER_ROOM]
                     }
                 }
             },
