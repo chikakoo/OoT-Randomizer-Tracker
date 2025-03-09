@@ -782,7 +782,7 @@ let StandardDungeons = {
                 }
             },
             basement: {
-                DisplayGroup: { groupName: "Basement", imageName: "Skulltula Tokens" },
+                DisplayGroup: { groupName: "Basement", imageName: "Skulltula" },
                 Exits: {},
                 ItemLocations: {
                     "5 Pots in Room by Vines": {
@@ -5574,7 +5574,7 @@ let StandardDungeons = {
                 }
             },
             sandyRoom: {
-                DisplayGroup: { groupName: "Sandy & Boulder Rooms", imageName: "Silver Rupees" },
+                DisplayGroup: { groupName: "Sandy & Boulder Rooms", imageName: "Silver Rupee" },
                 Exits: {
                     boulderRoom: {
                         Needs: [ItemSets.SWORDS]
@@ -5592,7 +5592,7 @@ let StandardDungeons = {
                 }
             },
             boulderRoom: {
-                DisplayGroup: { groupName: "Sandy & Boulder Rooms", imageName: "Silver Rupees" },
+                DisplayGroup: { groupName: "Sandy & Boulder Rooms", imageName: "Silver Rupee" },
                 Exits: {
                     silverBlockRoom: {
                         Map: "Training Grounds",

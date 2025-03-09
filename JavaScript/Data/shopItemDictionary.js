@@ -102,15 +102,15 @@ let ShopItemDictionary = {
 	"agony": "Stone of Agony.png",
 	"stone": "Stone of Agony.png",
 	
-	"goldskulltulatoken": "Skulltula Tokens.png",
-	"skulltulatoken": "Skulltula Tokens.png",
-	"goldskulltoken": "Skulltula Tokens.png",
-	"skulltoken": "Skulltula Tokens.png",
-	"token": "Skulltula Tokens.png",
-	"tok": "Skulltula Tokens.png",
-	"tkn": "Skulltula Tokens.png",
-	"skulltula": "Skulltula Tokens.png",
-	"skull": "Skulltula Tokens.png",
+	"goldskulltulatoken": "Skulltula.png",
+	"skulltulatoken": "Skulltula.png",
+	"goldskulltoken": "Skulltula.png",
+	"skulltoken": "Skulltula.png",
+	"token": "Skulltula.png",
+	"tok": "Skulltula.png",
+	"tkn": "Skulltula.png",
+	"skulltula": "Skulltula.png",
+	"skull": "Skulltula.png",
 
 	
 	// Inventory

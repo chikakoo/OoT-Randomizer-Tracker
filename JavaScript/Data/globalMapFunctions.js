@@ -36,27 +36,27 @@ let ItemGroups = {
 
 let getItemGroupName = function(groupId) {
 	switch(Number(groupId)) {
-		case ItemGroups.CHEST: return "Chests";
+		case ItemGroups.CHEST: return "Chest";
 		case ItemGroups.GIFT: return "Prizes and Gifts";
-		case ItemGroups.FREESTANDING: return "Freestanding Items";
-		case ItemGroups.COW: return "Cows";
-		case ItemGroups.SKULLTULA: return "Gold Skulltulas";
-		case ItemGroups.SCRUB: return "Business Scrubs";
-		case ItemGroups.SHOP: return "Shops";
+		case ItemGroups.FREESTANDING: return "Piece of Heart";
+		case ItemGroups.COW: return "Cow";
+		case ItemGroups.SKULLTULA: return "Skulltula";
+		case ItemGroups.SCRUB: return "Scrub";
+		case ItemGroups.SHOP: return "Shop";
 		case ItemGroups.SONG: return "Songs";
-		case ItemGroups.NON_ITEM: return "Non-items";
+		case ItemGroups.NON_ITEM: return "Magic Bean";
 		case ItemGroups.INTERIOR: return "Interiors";
 		case ItemGroups.GROTTO: return "Grottos";
 		case ItemGroups.BOSS_ENTRANCE: return "Boss Key";
-		case ItemGroups.OW_ENTRANCE: return "OW Entrances";
-		case ItemGroups.GOSSIP_STONE: return "Gossip Stones";
+		case ItemGroups.OW_ENTRANCE: return "Compass";
+		case ItemGroups.GOSSIP_STONE: return "Mask of Truth";
 		case ItemGroups.LOCKED_DOOR: return "Locked Doors";
 		case ItemGroups.FREESTANDING_RUPEES_AND_HEARTS: return "Rupees and Hearts";
-		case ItemGroups.WONDERITEM: return "Wonderitems";
-		case ItemGroups.SILVER_RUPEE: return "Silver Rupees";
-		case ItemGroups.POT: return "Pots";
-		case ItemGroups.CRATE: return "Crates";
-		case ItemGroups.BEEHIVE: return "Beehives";
+		case ItemGroups.WONDERITEM: return "Wonderitem";
+		case ItemGroups.SILVER_RUPEE: return "Silver Rupee";
+		case ItemGroups.POT: return "Pot";
+		case ItemGroups.CRATE: return "Crate";
+		case ItemGroups.BEEHIVE: return "Beehive";
 		default: return null;
 	}
 };

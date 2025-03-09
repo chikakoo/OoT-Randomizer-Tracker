@@ -2232,7 +2232,7 @@ let MQDungeons = {
                         },
                     },
                     "Locked Door After Flare Dancer": {
-                        DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula Tokens" },
+                        DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["afterFinalFlareDancer"],
                         MapInfo: { x: 39, y: 179, floor: "F3" },
@@ -2244,7 +2244,7 @@ let MQDungeons = {
                         },
                     },
                     "Locked Door Under Hammer Floor": {
-                        DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula Tokens" },
+                        DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["roomAfterTopOfTemple"],
                         MapInfo: { x: 71, y: 136, floor: "F4" },
@@ -2850,7 +2850,7 @@ let MQDungeons = {
                 }
             },
             afterFinalFlareDancer: {
-                DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula Tokens" },
+                DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula" },
                 Exits: {
                     topOfTemple: {
                         LockedDoor: "Locked Door After Flare Dancer",
@@ -2877,7 +2877,7 @@ let MQDungeons = {
                 }
             },
             topOfTemple: {
-                DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula Tokens" },
+                DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula" },
                 Exits: {
                     roomAfterTopOfTemple: {
                         LockedDoor: "Locked Door Under Hammer Floor",
@@ -2895,7 +2895,7 @@ let MQDungeons = {
                 }
             },
             roomAfterTopOfTemple: {
-                DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula Tokens" },
+                DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula" },
                 Exits: {},
                 ItemLocations: {
                     "Wonderitem After Top of Temple": {
@@ -6297,7 +6297,7 @@ let MQDungeons = {
                 }
             },
             leftArea: {
-                DisplayGroup: { groupName: "Sandy & Icicle Rooms", imageName: "Silver Rupees" },
+                DisplayGroup: { groupName: "Sandy & Icicle Rooms", imageName: "Silver Rupee" },
                 Exits: {
                     roomWithSilverBlock: {
                         Map: "Training Grounds",

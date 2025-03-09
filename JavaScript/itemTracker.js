@@ -430,20 +430,21 @@ let ItemTracker = {
 	 * Gets the image path of the given item
 	 */
 	getItemImagePath: function(item, itemType) {
+		let iconName = item.icon || item.name;
+
 		if (itemType === "OcarinaButtons") {
-			return `url("Images/Controller Buttons/${item.name}.png")`;
+			return `url("Images/Controller Buttons/${iconName}.png")`;
 		}
 
 		if (item.totalKeys) { // Set up for boss keys
 			return `url("Images/Boss Key.png")`;
 		}
 		
-		let itemName = item.name;
 		if (item.upgrades) {
 			let itemUpgrade = this.getUpgradeName(item);
-			return `url("Images/${itemName} ${itemUpgrade}.png")`;
+			return `url("Images/${iconName} ${itemUpgrade}.png")`;
 		} else {
-			return `url("Images/${itemName}.png")`;
+			return `url("Images/${iconName}.png")`;
 		}
 	},
 

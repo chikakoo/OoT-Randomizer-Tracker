@@ -189,6 +189,7 @@ InteriorGroups = {
 		tooltip: "The Happy Mask Shop",
 		buttons: {
 			"Borrow Keaton Mask": {
+				icon: "Keaton Mask",
 				LongDescription: "After showing the Kakariko Village guard Zelda's Letter (or having the letter when the gate is opened), you can borrow this mask.",
 				Needs: [(age) => InteriorGroups["Happy Mask Shop"]._isMaskShopOpen(age)]
 			},
@@ -201,6 +202,7 @@ InteriorGroups = {
 				]
 			},
 			"Borrow Spooky Mask": {
+				icon: "Spooky Mask",
 				LongDescription: "After selling the Skull Mask to the Skull Kid in Lost Woods, you can borrow this mask.",
 				Needs: [
 					(age) => InteriorGroups["Happy Mask Shop"]._isMaskShopOpen(age), 
@@ -208,6 +210,7 @@ InteriorGroups = {
 				]
 			},
 			"Borrow Bunny Hood": {
+				icon: "Bunny Hood",
 				LongDescription: "After selling the Spooky Mask to the graveyard kid, you can borrow this mask.",
 				Needs: [
 					(age) => InteriorGroups["Happy Mask Shop"]._isMaskShopOpen(age), 
@@ -302,7 +305,7 @@ InteriorGroups = {
 		tooltip: "This is the lab with the professor and the pool of water in the back.",
 		buttons: {
 			"Lakeside Heart Piece": {
-				icon: "Heart Piece",
+				icon: "Piece of Heart",
 				LongDescription: "Use the golden scale and dive to touch the bottom of the water area. The professor will give you this item.",
 				NeedsAny: [UpgradedItems.GOLDEN_SCALE, GlitchItemSets.LAB_HP_WITHOUT_SCALE]
 			},
@@ -390,7 +393,7 @@ InteriorGroups = {
 		tooltip: "Inside the cage with the cow and the freestanding item.",
 		buttons: {
 			"Freestanding Item": {
-				icon: "Heart Piece",
+				icon: "Piece of Heart",
 				LongDescription: "Simply grab the item in the room."
 			},
 			"Cow": {
@@ -434,7 +437,7 @@ InteriorGroups = {
 		tooltip: "This is the building with the cows and boxes you can push for the freestanding item",
 		buttons: {
 			"Freestanding Item": {
-				icon: "Heart Piece",
+				icon: "Piece of Heart",
 				Age: Age.CHILD,
 				LongDescription: "Push the box out of the way and crawl through the hole to get the item."
 			},
@@ -506,7 +509,7 @@ InteriorGroups = {
 		tooltip: "The minigame where you probably want the Lens of Truth.",
 		buttons: {
 			"Salesman": {
-				icon: "Shop",
+				icon: "Treasure Chest Minigame Small Key",
 				LongDescription: "Talk to the salesman and buy the item for 10 rupees.",
 				shouldNotDisplay: SettingSets.VANILLA_CHEST_MINIGAME_KEYS
 			},
@@ -1019,6 +1022,7 @@ GrottoGroups = {
 
 	// Non-shuffle only locations
 	"1 Chest": {
+		icon: "Chest",
 		tooltip: "The grave that only has one chest",
 		excludeFromGroup: function() { return true; },
 		buttons: {
@@ -1050,7 +1054,6 @@ GrottoGroups = {
 		tooltip: "Gohma in the Deku Tree",
 		buttons: {
 			"Heart Container": {
-				icon: "Heart Piece",
 				LongDescription: "To defeat Gohma, you must first stun her when her eye is red. You can use the slingshot or deku nuts to do this - nuts don't stun her for nearly as long, though. Once she's down, attack her. The quickest kill is with three deku stick jumpslashes (or one then two crouch stabs).",
 				Needs: [ItemSets.SWORDS],
 				NeedsAny: [Items.DEKU_NUT, Items.FAIRY_SLINGSHOT]
@@ -1071,7 +1074,6 @@ GrottoGroups = {
 				LongDescription: "This chest is in the back of the room."
 			},
 			"Heart Container": {
-				icon: "Heart Piece",
 				LongDescription: "To defeat King Dodongo, you must throw a bomb or bomb flower into his mouth, and then attack him afterward. Note that you should follow him as he rolls so that he gets up faster. If using bomb flowers, try to get them a little bit early, as you need time to run back to him before he shoots his fireball. The quickest kill is with 2 deku stick/master sword jumpslashes, or 1 biggoron's sword jumpslash.",
 				Needs: [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.SWORDS],
 				NeedsAny: [Items.BOMB, Equipment.STRENGTH]
@@ -1095,7 +1097,6 @@ GrottoGroups = {
 				LongDescription: "The pots on the edge of the room."
 			},
 			"Heart Container": {
-				icon: "Heart Piece",
 				Age: Age.EITHER,
 				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
 				LongDescription: "To defeat Barinade, you need the boomerang and also either a sword or at least 3 Deku Sticks. First, dislodge it from the ceiling using the boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
@@ -1115,7 +1116,6 @@ GrottoGroups = {
 		tooltip: "Phantom Ganon in the Forest Temple",
 		buttons: {
 			"Heart Container": {
-				icon: "Heart Piece",
 				LongDescription: "For phase 1 of Phantom Ganon, you must shoot the real version of him that comes out of the paintings. You can use your bow or hookshot for that. The real one is lighter and is the only one that makes sound. Phase 2 is the familiar tenis match. Stun him with his own attacks and damage him when he's stunned. You can also just spam him with the boomerang!",
 				Needs: [
 					[SetType.OR, Items.HOOKSHOT, ItemSets.PROJECTILES], // Stun boss
@@ -1137,7 +1137,6 @@ GrottoGroups = {
 		tooltip: "Volvagia in the Fire Temple",
 		buttons: {
 			"Heart Container": {
-				icon: "Heart Piece",
 				Age: Age.EITHER,
 				UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap || !Settings.GlitchesToAllow.fireNoGoronTunic; },
 				LongDescription: "To defeat Volvagia, hit her with your hammer when she pops out of the holes. After that, attack it again. Jumpslashes will do more damage, like usual. You can hit it with arrows while it's flying to do additional damage. If it ever drops rocks on you, you can hang off the side of the cliff to avoid damage.",
@@ -1157,7 +1156,6 @@ GrottoGroups = {
 		tooltip: "Morpha in the Water Temple",
 		buttons: {
 			"Heart Container": {
-				icon: "Heart Piece",
 				Age: Age.ADULT,
 				LongDescription: "To defeat morpha, hookshot her nucleus out of the water and hit her to damage her. A good way to kill is to continuously hookshot her to bring her into a corner. Now, get to the other side of her and slash once so it runs into the corner. Now quickly jumpslash it (Z + A) and continue to crouch stab (Hold R, spam B) until it's dead.",
 				Needs: [Items.HOOKSHOT]
@@ -1181,7 +1179,6 @@ GrottoGroups = {
 		tooltip: "Bongo Bongo in the Shadow Temple",
 		buttons: {
 			"Heart Container": {
-				icon: "Heart Piece",
 				LongDescription: "When fighting Bongo Bongo, it helps to NOT have the Hover Boots equipped. When the fight starts, if you hold down, he won't circle you right away. Hit his hands with your bow or hookshot, or slingshot to stun them. Now hit him before he hits you and damage him as much as you can. If you have magic, quickspins can actually stunlock him for a 1-cycle if you do them perfectly.",
 				Needs: [ItemSets.SWORDS],
 				NeedsAny: [Items.HOOKSHOT, ItemSets.PROJECTILES]
@@ -1199,7 +1196,6 @@ GrottoGroups = {
 		tooltip: "Twinrova in the Spirit Temple",
 		buttons: {
 			"Heart Container": {
-				icon: "Heart Piece",
 				Age: Age.ADULT,
 				LongDescription: "To defeat Twinrova, reflect one of the sister's shots at the other one. Do this four times to get to the second phase. Now, you must charge your shield with 3 of the same kind of attack. When you do, your shield will shoot it at Twinrova, stunning her. Go hit her! As usual, a jumpslash (Z + A) then crouch stabs (R + spam B) do the most damage.",
 				Needs: [Equipment.MIRROR_SHIELD]

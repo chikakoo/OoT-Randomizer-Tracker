@@ -150,7 +150,7 @@ let Equipment = {
 	GERUDO_MEMBERSHIP_CARD: { name: "Gerudo Membership Card" },
 	MAGIC: { name: "Magic" },
 	TRIFORCE_SHARDS: { name: "Triforce Shards", playerHas: true, count: 0 },
-	SKULLTULA_TOKENS: { name: "Skulltula Tokens", playerHas: true, count: 0 },
+	SKULLTULA_TOKENS: { name: "Skulltula Tokens", icon: "Skulltula", playerHas: true, count: 0 },
 
 	STONE_OF_AGONY: { name: "Stone of Agony" },
 };
