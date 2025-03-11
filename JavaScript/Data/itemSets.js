@@ -288,6 +288,8 @@ let GlitchItemSets = {
 	MEGA_SIDEHOP_TO_ZORAS_DOMAIN: (age) => 
         Settings.GlitchesToAllow.megasidehopToZorasDomain && 
         ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.SWORDS, Items.BOMBCHU]),
+    DOMAIN_SKULL_WITH_JUMPSLASH: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.domainSkullWithJumpslash,
     CHILD_KING_ZORA_SKIP: (age) =>
         Settings.GlitchesToAllow.explosiveZoraSkip && 
         ItemData.canUse(age, ItemSets.EXPLOSIVES),

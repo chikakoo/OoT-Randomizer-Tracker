@@ -264,8 +264,11 @@ let MQDungeons = {
                         MapInfo: { x: 93, y: 113, floor: "B1" },
                         Age: Age.EITHER,
                         Order: 14,
-                        LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Note that you can also use Din's Fire. Defeat all the enemies in this room to continue on.<br/><br/>In this next room, play the Song of Time near the torches to spawn a staircase of blocks. Climb these and use your boomerang or hookshot to get the skulltula on the ceiling.",
-                        Needs: [Songs.SONG_OF_TIME, ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        LongDescription: "Head to the water room. Step on the blue switch, then quickly light a stick on fire. Ride the platform across - hold R to use your shield or roll so you don't get hit by the spikes. Light the torches to open the next room. Note that you can also use Din's Fire. Defeat all the enemies in this room to continue on.<br/><br/>In this next room, either use your longshot or play the Song of Time near the torches to spawn a staircase of blocks. Climb these and use your boomerang or hookshot to get the skulltula on the ceiling.",
+                        NeedsAny: [
+                            [Songs.SONG_OF_TIME, ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
+                            UpgradedItems.LONGSHOT
+                        ]
                     },
                     "Skulltula by Grave Room": {
                         ItemGroup: ItemGroups.SKULLTULA,

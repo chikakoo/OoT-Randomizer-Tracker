@@ -214,6 +214,7 @@ let Settings = {
 		cuccoToZorasDomain: false,
 		hoversToZorasDomain: true,
 		megasidehopToZorasDomain: false,
+		domainSkullWithJumpslash: false,
 		explosiveZoraSkip: false,
 		clipZoraSkip: true,
 		blueFireShopSkip: false,

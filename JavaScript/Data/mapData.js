@@ -3047,7 +3047,12 @@ let MapLocations = {
                         MapInfo: { x: 168, y: 68 },
                         Age: Age.ADULT,
                         LongDescription: "At night, make your way up to where the Diving Game start was. On the side of the wall by the waterfall, you'll find a skulltula. If you have no hookshot, you can kill it with a bow or Din's fire and get it with an angled jump. If you fall without getting it, it will respawn.",
-                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Items.FAIRY_BOW, Items.DINS_FIRE]
+                        NeedsAny: [
+                            ItemSets.GRAB_SHORT_DISTANCE_ITEMS, 
+                            Items.FAIRY_BOW, 
+                            Items.DINS_FIRE,
+                            GlitchItemSets.DOMAIN_SKULL_WITH_JUMPSLASH
+                        ]
                     },
 
                     // Top to Bottom Errands
