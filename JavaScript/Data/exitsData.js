@@ -1329,8 +1329,9 @@ let OwExits = {
             Region: "middle",
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 185, y: 10 },
-            Age: Age.ADULT,
-            LongDescription: "This is the entrance behind darunia's room - push back the statue."
+            Age: Age.EITHER,
+            LongDescription: "This is the entrance behind darunia's room - push back the statue.",
+            ChildNeeds: [GlitchItemSets.CHILD_GORON_STATUE_CLIP]
         },
         "Shop": {
             ExitRegion: "shop",

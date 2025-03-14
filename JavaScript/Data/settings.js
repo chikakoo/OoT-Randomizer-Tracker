@@ -205,6 +205,7 @@ let Settings = {
 		dmtClimbWithHoverBoots: false,
 		dmtSkullsWithoutHammer: false,
 		goronSpinningUrnWithChus: false,
+		goronChildStatueSkip: false,
 		stopAdultGoronWithFire: false,
 		hoverToVolcanoHP: false,
 		childDoubleMagicFairy: false,

@@ -274,6 +274,15 @@ let GlitchItemSets = {
 	URN_WITH_CHUS: (age) => 
         Settings.GlitchesToAllow.goronSpinningUrnWithChus && 
         ItemData.canUse(age, [Items.BOMBCHU, Items.DEKU_NUT]),
+    CHILD_GORON_STATUE_CLIP: (age) => age === Age.CHILD &&
+        Settings.GlitchesToAllow.goronChildStatueSkip &&
+        ItemData.canUseAny(age, [
+            Equipment.DEKU_SHIELD, // Pot Push
+            [ // Explosive push
+                ItemSets.EXPLOSIVES,
+                [SetType.OR, Equipment.KOKIRI_SWORD, Items.DEKU_STICK]
+            ]
+        ]),
     CHILD_DMC_FAIRY: (age) => age === Age.CHILD &&
         Settings.GlitchesToAllow.childDoubleMagicFairy,
 
