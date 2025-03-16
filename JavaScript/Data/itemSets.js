@@ -283,8 +283,11 @@ let GlitchItemSets = {
                 [SetType.OR, Equipment.KOKIRI_SWORD, Items.DEKU_STICK]
             ]
         ]),
-    CHILD_DMC_FAIRY: (age) => age === Age.CHILD &&
-        Settings.GlitchesToAllow.childDoubleMagicFairy,
+    CHILD_SIDEHOP_TO_DMC_FAIRY: (age) => age === Age.CHILD &&
+        Settings.GlitchesToAllow.childSidehopToDoubleMagic,
+    ADULT_RECOIL_TO_DMC_FAIRY: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.adultRecoilHoverBootsToDoubleMagic &&
+        ItemData.canUse(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]),
 
 	// Zora/Lake
     ADULT_WATERFALL_HP_JUMP: (age) => age === Age.ADULT &&
@@ -491,6 +494,9 @@ let GlitchItemSets = {
     // Shadow Temple
     SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.shadowSilverRupeeWithNothing,
+
+    // If Child can ever get here without explosives, then this trick would be good:
+    // https://youtu.be/pP4JNCU8fgU
     SHADOW_CHILD_GATE_CLIP: (age) => age === Age.CHILD &&
         Settings.GlitchesToAllow.shadowChildGateClip &&
         ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]),

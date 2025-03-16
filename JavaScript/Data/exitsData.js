@@ -1271,9 +1271,14 @@ let OwExits = {
             DefaultEntranceGroupName: "Fairy Fountain",
             MapInfo: { x: 65, y: 170 },
             Age: Age.EITHER,
-            UseAdultAge: function() { return !Settings.GlitchesToAllow.childDoubleMagicFairy && !Settings.GlitchesToAllow.equipSwap; },
-            LongDescription: "Hammer the silver rocks that are to the left of the Goron City entrance (if you face the entrance) to uncover the entrance.",
-            NeedsAny: [Items.MEGATON_HAMMER, GlitchItemSets.CHILD_DMC_FAIRY]
+            UseAdultAge: function() { return !Settings.GlitchesToAllow.childSidehopToDoubleMagic && !Settings.GlitchesToAllow.equipSwap; },
+            LongDescription: "Hammer the silver rocks that are to the left of the Goron City entrance (if you face the entrance) to uncover the entrance.\x0A\x0AYou can megaflip here from the corner by the ladder as any age, as well.",
+            NeedsAny: [
+                Items.MEGATON_HAMMER, 
+                GlitchItemSets.MEGA_FLIP,
+                GlitchItemSets.CHILD_SIDEHOP_TO_DMC_FAIRY,
+                GlitchItemSets.ADULT_RECOIL_TO_DMC_FAIRY
+            ]
         },
         "Grotto in Rock by Goron": {
             ExitRegion: "middle",
@@ -1281,7 +1286,7 @@ let OwExits = {
             DefaultEntranceGroupName: "3 Scrubs",
             MapInfo: { x: 64, y: 60 },
             Age: Age.EITHER,
-            UseAdultAge: function() { return !Settings.GlitchesToAllow.childDoubleMagicFairy && !Settings.GlitchesToAllow.equipSwap; },
+            UseAdultAge: function() { return !Settings.GlitchesToAllow.childSidehopToDoubleMagic && !Settings.GlitchesToAllow.equipSwap; },
             LongDescription: "Hammer the rock near the entrance to Goron City to access this grotto.",
             Needs: [Items.MEGATON_HAMMER]
         }

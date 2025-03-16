@@ -208,7 +208,8 @@ let Settings = {
 		goronChildStatueSkip: false,
 		stopAdultGoronWithFire: false,
 		hoverToVolcanoHP: false,
-		childDoubleMagicFairy: false,
+		childSidehopToDoubleMagic: false,
+		adultRecoilHoverBootsToDoubleMagic: false,
 
 		// Zora/Lake
 		adultWaterfallHPJump: false,

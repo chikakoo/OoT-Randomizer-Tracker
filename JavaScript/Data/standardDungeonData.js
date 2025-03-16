@@ -5181,7 +5181,11 @@ let StandardDungeons = {
                 }
             },
             pitRoom: {
-                DisplayGroup: { groupName: "Pit & Like-Like Rooms", imageName: "Bomb" },
+                DisplayGroup: { 
+                    groupName: "Pit & Like-Like Rooms", 
+                    imageName: "Bomb",
+                    description: "Go through the crawlspace in the northwest corner to find these rooms.\x0A\x0ATo navigate to the like-like room door without lens, kill all the enemies then get in the corner by the chest;  sidehop x2; bonk on wall; turn right; sidehop right; sideroll + release; dryroll to the door."
+                },
                 Exits: {
                     deadhandRoom: {
                         Needs: [GlitchItemSets.WELL_ACTOR_GLITCH]

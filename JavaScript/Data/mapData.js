@@ -2415,7 +2415,8 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Top Floor & Maze", imageName: "Megaton Hammer" },
                 Exits: {
                     darunia: {
-                        // Megasidehop glitch: https://youtu.be/tMSiqzY3E2o?si=s5EryJsZdgEAfBe2
+                        // Megasidehop glitch: https://youtu.be/tMSiqzY3E2o
+                        // With chu: https://youtu.be/-WZITINbip0
                         ChildNeedsAny: [Songs.ZELDAS_LULLABY, GlitchItemSets.MEGA_FLIP],
                         AdultNeeds: [(age) => MapLocations["Goron City"]._canStopAdultGoron(age)]
                     },
@@ -2574,7 +2575,7 @@ let MapLocations = {
                 DisplayGroup: { 
                     groupName: "Bottom Floor & Darunia", 
                     imageName: "Happy Goron",
-                    description: "MEGA SIDEHOP FROM MAIN: Target the right wall before the tunnel; sidehop right + sideroll; turn 180; line up so the middle of your head is just to the left of the darker texture; backflip x1; backflip again (if using bombs, shield drop in the air); megasidehop left"
+                    description: "MEGA SIDEHOP FROM MAIN:\x0A- BOMB: Target the right wall before the tunnel; sidehop right + sideroll; turn 180; line up so the middle of your head is just to the left of the darker texture; backflip x1; backflip again, shield drop bomb in the air; megasidehop left\x0A- CHU: Line up between the two leftmost fenceposts; turn left; sidehop right; sideroll; turn 180; megasidehop"
                 },
                 Exits: {
                     main: {},
