@@ -4579,6 +4579,10 @@ let StandardDungeons = {
                     afterFreezards: {
                         Needs: [ItemSets.FREEZARD_KILL_ITEMS]
                     },
+                    bossRoom: {
+                        Age: Age.ADULT,
+                        Needs: [GlitchItemSets.ICE_IN_REVERSE]
+                    },
                     Exit: {
                         OwExit: OwExits["Ice Cavern"]["Exit"]
                     }
@@ -4880,8 +4884,20 @@ let StandardDungeons = {
             hallWayBeforeBoss: {
                 DisplayGroup: { groupName: "Final Hallway & Boss", imageName: "Iron Boots" },
                 Exits: {
+                    // Used when going backwards - has bottle is okay here since you can always get to the blue fire
+                    blockPushRoom: {
+                        NeedsAny: [
+                            GameStateSets.HAS_BOTTLE, 
+                            ItemSets.BLUE_FIRE_ITEMS,
+                            GlitchItemSets.MEGA_FLIP
+                        ]
+                    },
                     bossRoom: {
-                        NeedsAny: [GameStateSets.HAS_BOTTLE, ItemSets.BLUE_FIRE_ITEMS]
+                        NeedsAny: [
+                            GameStateSets.HAS_BOTTLE, 
+                            ItemSets.BLUE_FIRE_ITEMS,
+                            GlitchItemSets.MEGA_FLIP
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -4897,8 +4913,15 @@ let StandardDungeons = {
                 }
             },
             bossRoom: {
-                DisplayGroup: { groupName: "Final Hallway & Boss", imageName: "Iron Boots" },
-                Exits: {},
+                DisplayGroup: { 
+                    groupName: "Final Hallway & Boss", 
+                    imageName: "Iron Boots",
+                    description: "You can destroy the ice with normal methods, or megaflip from the right-hand side of the smaller ice."
+                },
+                Exits: {
+                    // Technically you can get the pots here, without passing the ice, so allow this region with nothing
+                    hallWayBeforeBoss: {}
+                },
                 ItemLocations: {
                     "Iron Boots Chest": {
                         ItemGroup: ItemGroups.CHEST,

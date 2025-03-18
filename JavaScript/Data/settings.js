@@ -321,6 +321,7 @@ let Settings = {
 		botwActorGlitch: false,
 		botwVineClip: false, // Useless if no actor glitch
 
+		iceInReverse: false,
 		iceLedgeClip: false,
 		iceChildUpperRoom: false,
 		iceTripleSlashClips: false,

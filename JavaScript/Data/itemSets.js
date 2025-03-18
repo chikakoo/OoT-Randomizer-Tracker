@@ -546,6 +546,9 @@ let GlitchItemSets = {
         ItemData.canUse(age, ItemSets.SHIELDS),
 
     // Ice Cavern
+    ICE_IN_REVERSE: (age) => age === Age.ADULT &&
+        Settings.GlitchesToAllow.iceInReverse &&
+        ItemData.canUse(age, Equipment.IRON_BOOTS),
     ICE_LEDGE_CLIP: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.iceLedgeClip,
     ICE_CHILD_UPPER_ROOM: (age) => age === Age.CHILD &&
