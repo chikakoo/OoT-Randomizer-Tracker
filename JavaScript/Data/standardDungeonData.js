@@ -292,10 +292,10 @@ let StandardDungeons = {
                     // We're assuming that this was opened if the first mud wall was opened
                     lowerEastRooms: {},
                     blueRoom: {
-                        ChildNeeds: [GlitchItemSets.GROUND_JUMP_INCLUDING_BOMB_FLOWER]
+                        ChildNeeds: [Tricks.groundJump.canDoWithBombOrStrength]
                     },
                     staircaseBottom: {
-                        ChildNeeds: [GlitchItemSets.GROUND_JUMP_INCLUDING_BOMB_FLOWER]
+                        ChildNeeds: [Tricks.groundJump.canDoWithBombOrStrength]
                     },
                     inDodongoHead: {
                         Needs: [GlitchItemSets.DODONGO_HEAD_WITH_CHUS]
@@ -520,11 +520,11 @@ let StandardDungeons = {
                         NeedsAny: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA, Equipment.STRENGTH]
                     },
                     bombChestFloor: {
-                        ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+                        ChildNeeds: [Tricks.megaFlip.canDo],
                         AdultNeedsAny: [
                             GlitchItemSets.DODONGO_ADULT_JUMP_TO_BOMB_CHEST,
-                            GlitchItemSets.GROUND_JUMP,
-                            GlitchItemSets.MEGA_FLIP
+                            Tricks.groundJump.canDoWithBomb,
+                            Tricks.megaFlip.canDo
                         ]
                     },
                     potsInBladeRoom: {
@@ -757,7 +757,7 @@ let StandardDungeons = {
                     },
                     roomBeforeBoss: {
                         Needs: [GlitchItemSets.JABU_BLUE_SWITCH_SKIP],
-                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     }
                 },
                 ItemLocations: {
@@ -796,7 +796,7 @@ let StandardDungeons = {
                         NeedsAny: [
                             Items.BOOMERANG,
                             Equipment.HOVER_BOOTS,
-                            GlitchItemSets.MEGA_FLIP,
+                            Tricks.megaFlip.canDo,
                             QPAItemSets.LEDGE_QPA
                         ]
                     },
@@ -1225,7 +1225,7 @@ let StandardDungeons = {
                     },
                     fallingCeilingRoom: {
                         // Get far on the ledge and aim just for the platform before turning around for the flip
-                        Needs: [GlitchItemSets.CHU_MEGA_FLIP]
+                        Needs: [Tricks.megaFlip.canDoWithChu]
                     }
                 },
                 ItemLocations: {
@@ -1266,7 +1266,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Goron's Bracelet" },
                 Exits: {
                     topOfOutsideLeft: {
-                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
                     topOfBlockRoom: {
                         NeedsAny: [
@@ -1284,7 +1284,7 @@ let StandardDungeons = {
                         LongDescription: "Navigate to the room with the block puzzle. After pushing the first block, climb up the ladder that it was blocking. Now go straight to the wall in front of you. Follow that wall to the right. Turn right, and you should see an eye switch a bit up the wall in front of you. Shoot it to spawn the chest.",
                         Needs: [ItemSets.PROJECTILES],
                         ChildNeedsAny: [Equipment.STRENGTH, GlitchItemSets.FOREST_CHILD_BLOCK_SKIP],
-                        AdultNeedsAny: [Equipment.STRENGTH, GlitchItemSets.GROUND_JUMP],
+                        AdultNeedsAny: [Equipment.STRENGTH, Tricks.groundJump.canDoWithBomb],
                     }
                 }
             },
@@ -1800,7 +1800,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Boss Area", imageName: "Fire Medallion" },
                 Exits: {
                     bossRoom: {
-                        ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+                        ChildNeeds: [Tricks.megaFlip.canDo],
                         Needs: [KeySets.FIRE_BK]
                     }
                 },
@@ -1821,7 +1821,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 6,
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper right corner of the room using your hookshot, hover boots, or by megaflipping. Climb up to get to the pots.",
-                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     }
                 }
             },
@@ -1830,11 +1830,11 @@ let StandardDungeons = {
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.fireNoGoronTunic; },
                 Exits: {
                     bigLavaRoomGoronRight: {
-                        ChildNeeds: [GlitchItemSets.GROUND_JUMP],
+                        ChildNeeds: [Tricks.groundJump.canDoWithBomb],
                         AdultNeeds: [ItemSets.EXPLOSIVES]
                     },
                     bigLavaRoomSoTLedge: {
-                        ChildNeeds: [Songs.SONG_OF_TIME, GlitchItemSets.GROUND_JUMP],
+                        ChildNeeds: [Songs.SONG_OF_TIME, Tricks.groundJump.canDoWithBomb],
                         AdultNeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.FIRE_SOT_BLOCK_JUMP]
                     },
                     risingBlockRoom: {
@@ -1925,7 +1925,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Map: "Fire Temple",
                         Needs: [
-                            [SetType.OR, GlitchItemSets.GROUND_JUMP, Equipment.STRENGTH], // Get by block
+                            [SetType.OR, Tricks.groundJump.canDoWithBomb, Equipment.STRENGTH], // Get by block
                             [SetType.OR, ItemSets.EXPLOSIVES, ItemSets.PROJECTILES, Items.HOOKSHOT] // Hit switch from above
                         ]
                     },
@@ -2278,7 +2278,7 @@ let StandardDungeons = {
                 Equipment.HOVER_BOOTS, 
                 [
                     [SetType.OR,
-                        GlitchItemSets.MEGA_FLIP,
+                        Tricks.megaFlip.canDo,
                         GlitchItemSets.WATER_HOOKSHOT_TO_FLOOR_1
                     ], 
                     GlitchItemSets.WATER_JUMP_TO_HIGH_WATER
@@ -2667,7 +2667,7 @@ let StandardDungeons = {
                     behindBlockArea: {
                         // Get next to the block via the top floor and do a weird shot
                         Needs: [GlitchItemSets.WEIRD_SHOT],
-                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
                     roomWithManyTektitesAntechamber: {},
                     crackedWallArea: {
@@ -2952,7 +2952,7 @@ let StandardDungeons = {
                         NeedsAny: [
                             Equipment.HOVER_BOOTS,
                             [Equipment.STRENGTH, ItemSets.EXPLOSIVES],
-                            GlitchItemSets.MEGA_FLIP
+                            Tricks.megaFlip.canDo
                         ]
                     }
                 },
@@ -3024,7 +3024,7 @@ let StandardDungeons = {
                 Exits: {
                     truthSpinnerRoom: {
                         Needs: [GameStateSets.SHADOW_LENS_CHECK],
-                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
                     Exit: {
                         OwExit: OwExits["Shadow Temple"]["Exit"]
@@ -3148,7 +3148,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Entrance & Maze Rooms", imageName: "Hover Boots" },
                 Exits: {
                     afterTruthSpinner: {
-                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     }
                 },
                 ItemLocations: {
@@ -3741,7 +3741,7 @@ let StandardDungeons = {
                         Needs: [
                             // Cross Gap
                             [SetType.OR, 
-                                Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP],
+                                Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo],
 
                             // Enter Door
                             [SetType.OR,
@@ -3906,7 +3906,7 @@ let StandardDungeons = {
                     childAfterStalfos: {
                         ChildNeedsAny: [ItemSets.SWORDS, ItemSets.EXPLOSIVES], // To clear the first room
                         NeedsAny: [
-                            GlitchItemSets.MEGA_FLIP,
+                            Tricks.megaFlip.canDo,
                             ItemSets.PROJECTILES, Items.BOOMERANG, // Hit the switch directly
                             Items.BOMBCHU, // Backflip x3 from the opposite wall and drop it
                             Equipment.HOVER_BOOTS, // Cross directly
@@ -4275,7 +4275,7 @@ let StandardDungeons = {
                         NeedsAny: [
                             Items.HOOKSHOT,
                             Equipment.HOVER_BOOTS,
-                            GlitchItemSets.MEGA_FLIP,
+                            Tricks.megaFlip.canDo,
                             GlitchItemSets.SPIRIT_STATUE_ROOM_JUMPS
                         ]
                     },
@@ -4294,12 +4294,12 @@ let StandardDungeons = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         Order: 31,
                         LongDescription: "Head to the statue room. Get to the upper southwest corner of the room. Facing the statue, that would be behind you and to the left. The skulltula is on a platform to the left of the statue. You can Scarecrow's Song or hover boots to get to it.",
-                        ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+                        ChildNeeds: [Tricks.megaFlip.canDo],
                         AdultNeedsAny: [
                             UpgradedItems.LONGSHOT,
                             Equipment.HOVER_BOOTS,
                             GameStateSets.CAN_HOOK_SCARECROW,
-                            GlitchItemSets.MEGA_FLIP,
+                            Tricks.megaFlip.canDo,
                             GlitchItemSets.SPIRIT_STATUE_ROOM_JUMPS
                         ]
                     }
@@ -4357,7 +4357,7 @@ let StandardDungeons = {
                         LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor. As child, you can collect the silver rupees to light the golden torch. After that, use a Deku Stick to light the other torches. You can also just use Din's Fire to light them - make sure to light two at once, then get close to the third one before casting it a second time. As adult, your only options are Din's Fire or Fire Arrows.",
                         NeedsAny: [
                             ItemSets.FIRE_ITEMS, 
-                            GlitchItemSets.FLAME_STORAGE,
+                            Tricks.flameStorage.canDo,
                             QPAItemSets.LEDGE_QPA,
                             [Items.DEKU_STICK, SilverRupeeSets.SPIRIT_SILVER_RUPEES_SUN_BLOCK_ROOM]
                         ]
@@ -4606,7 +4606,7 @@ let StandardDungeons = {
                             ItemSets.BLUE_FIRE_ITEMS,
                             ItemLocationSets.ICE_MELTED_EAST_WALL,
                             GlitchItemSets.ICE_LEDGE_CLIP,
-                            GlitchItemSets.LUNGE_STORAGE,
+                            Tricks.lungeStorage.canDo,
                             GlitchItemSets.ICE_TRIPLE_SLASH_CLIP
                         ]
                     },
@@ -4621,7 +4621,7 @@ let StandardDungeons = {
                         ],
                         AdultNeedsAny: [
                             SilverRupeeSets.ICE_SILVER_RUPEES_SCYTHE_ROOM,
-                            GlitchItemSets.LUNGE_STORAGE,
+                            Tricks.lungeStorage.canDo,
                             GlitchItemSets.ICE_TRIPLE_SLASH_CLIP
                         ]
                     },
@@ -4629,7 +4629,7 @@ let StandardDungeons = {
                         NeedsAny: [
                             ItemSets.BLUE_FIRE_ITEMS,
                             ItemLocationSets.ICE_MELTED_WEST_WALL,
-                            [Age.CHILD, GlitchItemSets.LUNGE_STORAGE],
+                            [Age.CHILD, Tricks.lungeStorage.canDo],
                             GlitchItemSets.ICE_TRIPLE_SLASH_CLIP
                         ]
                     }
@@ -4889,14 +4889,14 @@ let StandardDungeons = {
                         NeedsAny: [
                             GameStateSets.HAS_BOTTLE, 
                             ItemSets.BLUE_FIRE_ITEMS,
-                            GlitchItemSets.MEGA_FLIP
+                            Tricks.megaFlip.canDo
                         ]
                     },
                     bossRoom: {
                         NeedsAny: [
                             GameStateSets.HAS_BOTTLE, 
                             ItemSets.BLUE_FIRE_ITEMS,
-                            GlitchItemSets.MEGA_FLIP
+                            Tricks.megaFlip.canDo
                         ]
                     }
                 },
@@ -5737,7 +5737,7 @@ let StandardDungeons = {
                         LongDescription: "This is the room after the wolfos room. Use hover boots to navigate to the top of the center statue to get this wonderitem.",
                         NeedsAny: [
                             Equipment.HOVER_BOOTS, 
-                            GlitchItemSets.MEGA_FLIP, 
+                            Tricks.megaFlip.canDo, 
                             GlitchItemSets.GTG_EYE_STATUE_WONDERITEM_JUMPSLASH
                         ]
                     },
@@ -5810,7 +5810,7 @@ let StandardDungeons = {
                         AdultNeeds: [Songs.SONG_OF_TIME]
                     },
                     bigLavaRoomBack: {
-                        AdultNeedsAny: [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        AdultNeedsAny: [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
                     bigLavaRoomUpperBack: {
                         Age: Age.ADULT,
@@ -5842,7 +5842,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 15.4,
                         LongDescription: "This is the rupee in the fire circle. The switch is in the front part of the room. You can play the Song of Time (or just be Child) near it to spawn some blocks to make this easier to get. Otherwise, quickly navigate using your hover boots to get to this before the fire comes back. Note that a megaflip can get the rupee without hitting the switch!",
-                        AdultNeedsAny: [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        AdultNeedsAny: [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     }
                 }
             },
@@ -5850,7 +5850,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
                 Exits: {
                     bigLavaRoomFront: {
-                        AdultNeedsAny: [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        AdultNeedsAny: [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
                     bigLavaRoomUpperBack: {
                         Age: Age.ADULT,
@@ -6527,7 +6527,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 25.1,
                         LongDescription: "This rupee is up on the ledge in the center of the room. Use your hookshot, or perform a ground jump to get it.",
-                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.GROUND_JUMP]
+                        NeedsAny: [Items.HOOKSHOT, Tricks.groundJump.canDoWithBomb]
                     },
                     "Light Silver Rupee in Left Outer Alcove": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,

@@ -384,7 +384,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "After Mido", imageName: "Saria's Song" },
                 Exits: {
                     nearGoronCity: {
-                        AdultNeedsAny: [Songs.SARIAS_SONG, GlitchItemSets.MEGA_FLIP]
+                        AdultNeedsAny: [Songs.SARIAS_SONG, Tricks.megaFlip.canDo]
                     },
                     kokiriForestWarp: {},
                     "Sacred Forest Meadow": {
@@ -1183,7 +1183,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         Order: 9,
                         LongDescription: "After waking up Talon with the Chicken, push the crates down so that you can jump to the crawlspace. Sneak past the guards to meet Zelda to get her letter. After that, try to leave the area to receive this item from Impa.<br/><br/>To megaflip, climb up the right side of the left box, ess right 1 (you should be able to walk to the other box now). Chu flip as normal, or place a bomb a little after the box transition and manually back up to get the distance for the roll. Let go of everything when the flip happens so you don't walk off!",
-                        NeedsAny: [ChildTradeItems.WEIRD_EGG, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [ChildTradeItems.WEIRD_EGG, Tricks.megaFlip.canDo]
                     }
                 }
             },
@@ -1220,7 +1220,7 @@ let MapLocations = {
             ItemData.canUseAny(Age.CHILD, [
                 Items.FAIRY_SLINGSHOT, 
                 Items.BOMBCHU, 
-                GlitchItemSets.ISG, 
+                Tricks.isg.canDo, 
                 GlitchItemSets.WATCHTOWER_SKULL_JUMPSLASH]),
 		Regions: {
             main: {
@@ -1235,7 +1235,7 @@ let MapLocations = {
                             SettingSets.OPEN_KAKARIKO_GATE,
                             [SettingSets.KAKARIKO_GATE_OPENS_WITH_LETTER, ChildTradeItems.ZELDAS_LETTER],
                             [SettingSets.VANILLA_KAKARIKO_GATE, ItemLocationSets.SHOW_GUARD_LETTER],
-                            GlitchItemSets.LUNGE_STORAGE
+                            Tricks.lungeStorage.canDo
                         ]
                     },
 
@@ -1840,7 +1840,7 @@ let MapLocations = {
                 UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleGrottoEntrances; },
                 Exits: {
                     windmillTop: {
-                        ChildNeeds: [GlitchItemSets.GROUND_JUMP],
+                        ChildNeeds: [Tricks.groundJump.canDoWithBomb],
                         AdultNeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.ADULT_DAMPE_RACE_SOT_BLOCK_CLIP]
                     },
                     "Grave Exit": {
@@ -2108,9 +2108,9 @@ let MapLocations = {
                             "<a href = 'https://youtu.be/JB1TbNckk7k?si=y_yrQjvcAtS38BBJ' target='_blank' title='Target the left side of the slanted wall in the corner; sidehop right; retarget; sidehop left; quick draw; jumpslash; hold up'>LUNGE STORAGE ADULT",
                             ChildNeedsAny: [
                                 ItemSets.BLAST_OR_SMASH_ITEMS, 
-                                [GlitchItemSets.LUNGE_STORAGE_NEEDING_QUICKDRAW, ItemSets.DISTANCE_DAMAGING_ITEMS]
+                                [Tricks.lungeStorage.canDoWithQuickDraw, ItemSets.DISTANCE_DAMAGING_ITEMS]
                             ],
-                            AdultNeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.LUNGE_STORAGE_NEEDING_QUICKDRAW]
+                            AdultNeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, Tricks.lungeStorage.canDoWithQuickDraw]
                     },
                     "Soft Soil": {
                         ItemGroup: ItemGroups.GROUP,
@@ -2235,10 +2235,10 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Upper Area", imageName: "Bomb" },
                 Exits: {
                     middle: {
-                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
                     bottom: {
-                        Needs: [GlitchItemSets.MEGA_FLIP]
+                        Needs: [Tricks.megaFlip.canDo]
                     },
                     scarecrowPlatform: {},
                     "Mountain Top": {
@@ -2283,10 +2283,10 @@ let MapLocations = {
                 Exits: {
                     top: {},
                     bottom: {
-                        NeedsAny: [GlitchItemSets.MEGA_FLIP, Items.HOOKSHOT, Equipment.HOVER_BOOTS]
+                        NeedsAny: [Tricks.megaFlip.canDo, Items.HOOKSHOT, Equipment.HOVER_BOOTS]
                     },
                     volcano: {
-                        NeedsAny: [GlitchItemSets.MEGA_FLIP, GlitchItemSets.HOVER_TO_VOLCANO_HP]
+                        NeedsAny: [Tricks.megaFlip.canDo, GlitchItemSets.HOVER_TO_VOLCANO_HP]
                     },
                     "Goron City": {
                         OwExit: OwExits["Death Mountain Crater"]["Goron City"]
@@ -2417,7 +2417,7 @@ let MapLocations = {
                     darunia: {
                         // Megasidehop glitch: https://youtu.be/tMSiqzY3E2o
                         // With chu: https://youtu.be/-WZITINbip0
-                        ChildNeedsAny: [Songs.ZELDAS_LULLABY, GlitchItemSets.MEGA_FLIP],
+                        ChildNeedsAny: [Songs.ZELDAS_LULLABY, Tricks.megaFlip.canDo],
                         AdultNeeds: [(age) => MapLocations["Goron City"]._canStopAdultGoron(age)]
                     },
                     lostWoodsRocks: {
@@ -2783,7 +2783,7 @@ let MapLocations = {
                         MapInfo: { x: 125, y: 94 },
                         Age: Age.EITHER,
                         LongDescription: "In the middle of the map, there's a heart piece on a high up platform. You can get this as a child using cuccos to fly to the platform.<br/><br/>As adult, you can use hover boots from the cliff that you take a ladder to get up.<br/><br/>To megaflip there: from the top with the gossip stone, go to the edge of the cliff and C-Up to face the item. Backflip and turn around. Megaflip from this spot and let go of all buttons.",
-                        AdultNeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        AdultNeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
                     "Frog Songs": {
                         ItemGroup: ItemGroups.GROUP,
@@ -2836,7 +2836,7 @@ let MapLocations = {
                         AdultNeedsAny: [
                             Equipment.HOVER_BOOTS, 
                             GlitchItemSets.ADULT_WATERFALL_HP_JUMP, 
-                            GlitchItemSets.CHU_MEGA_FLIP]
+                            Tricks.megaFlip.canDoWithChu]
                     },
                     "4 Red Rupees by Waterfall": {
                         ItemGroup: ItemGroups.GROUP,
@@ -3024,7 +3024,7 @@ let MapLocations = {
                                 return true;
                             }
 
-                            return Data.hasBottle() || 
+                            return GameStateSets.HAS_BOTTLE() || 
                                 Object.values(AdultTradeItems).some(item => item.playerHas) ||
                                 ItemData.canUseAny(age, ([
                                     Items.MAGIC_BEAN, 
@@ -3385,7 +3385,7 @@ let MapLocations = {
                     acrossBridge: {
                         ChildNeedsAny: [
                             GlitchItemSets.STAIRCASE_HOVER, 
-                            GlitchItemSets.CHU_MEGA_FLIP,
+                            Tricks.megaFlip.canDoWithChu,
                             GlitchItemSets.CUCCO_JUMP],
                         AdultNeedsAny: [
                             SettingSets.OPEN_GERUDO_FORTRESS,
@@ -3439,10 +3439,10 @@ let MapLocations = {
                         ]
                     },
                     chasmSilverRockLedge: {
-                        Needs: [GlitchItemSets.MEGA_FLIP]
+                        Needs: [Tricks.megaFlip.canDo]
                     },
                     chasmCrateLedge: {
-                        NeedsAny: [UpgradedItems.LONGSHOT, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [UpgradedItems.LONGSHOT, Tricks.megaFlip.canDo]
                     },
                     chasm: {},
                     "Gerudo Fortress": {
@@ -3622,7 +3622,7 @@ let MapLocations = {
                             UpgradedItems.LONGSHOT,
                             Equipment.HOVER_BOOTS,
                             GlitchItemSets.GF_JUMP_TO_MIDDLE_FLOOR,
-                            GlitchItemSets.MEGA_FLIP]
+                            Tricks.megaFlip.canDo]
                     },
                     topOfKitchen: {
                         Age: Age.ADULT,
@@ -3734,7 +3734,7 @@ let MapLocations = {
                         Age: Age.ADULT
                     },
                     jail4Door: {
-                        Needs: [GlitchItemSets.MEGA_FLIP]
+                        Needs: [Tricks.megaFlip.canDo]
                     },
                     "Middle Left Door": {
                         OwExit: OwExits["Gerudo Fortress"]["Middle Left Door"]
@@ -3760,19 +3760,19 @@ let MapLocations = {
                     jail4Door: {},
                     middleFloor: {},
                     topOfFortress: {
-                        ChildNeeds: [GlitchItemSets.MEGA_FLIP],
-                        ChildNeedsAny: [GlitchItemSets.GF_CHILD_JUMP_BY_TOP_KITCHEN, GlitchItemSets.GROUND_JUMP],
+                        ChildNeeds: [Tricks.megaFlip.canDo],
+                        ChildNeedsAny: [GlitchItemSets.GF_CHILD_JUMP_BY_TOP_KITCHEN, Tricks.groundJump.canDoWithBomb],
                         AdultNeedsAny: [
                             UpgradedItems.LONGSHOT,
                             Equipment.HOVER_BOOTS,
                             GameStateSets.CAN_HOOK_SCARECROW,
-                            GlitchItemSets.MEGA_FLIP]
+                            Tricks.megaFlip.canDo]
                     },
                     aboveJail1: {
                         // There is apparently a trick (logic_gf_break_room_jump) to do this with a precise jump as Adult
                         // from near the skulltula platform, but no idea how to do it
                         Age: Age.EITHER,
-                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
                     "Upper Kitchen Door": {
                         OwExit: OwExits["Gerudo Fortress"]["Upper Kitchen Door"]
@@ -4294,7 +4294,7 @@ let MapLocations = {
                             Equipment.HOVER_BOOTS,
                             GameStateSets.CAN_STUN_KITCHEN_GUARDS,
                             GlitchItemSets.GF_PASS_KITCHEN_GUARDS,
-                            GlitchItemSets.MEGA_FLIP]
+                            Tricks.megaFlip.canDo]
                     },
                     "Kitchen Top Left": {
                         OwExit: OwExits["Thieves' Hideout"]["Kitchen Top Left"]
@@ -4315,7 +4315,7 @@ let MapLocations = {
                             Equipment.HOVER_BOOTS,
                             GameStateSets.CAN_STUN_KITCHEN_GUARDS,
                             GlitchItemSets.GF_PASS_KITCHEN_GUARDS,
-                            GlitchItemSets.MEGA_FLIP]
+                            Tricks.megaFlip.canDo]
                     },
                     "Kitchen Top Right": {
                         OwExit: OwExits["Thieves' Hideout"]["Kitchen Top Right"]

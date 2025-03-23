@@ -410,7 +410,7 @@ let MQDungeons = {
                         Needs: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA]
                     },
                     mainRoomLedge: {
-                        ChildNeeds: [GlitchItemSets.GROUND_JUMP]
+                        ChildNeeds: [Tricks.groundJump.canDoWithBomb]
                     }
                 },
                 ItemLocations: {
@@ -736,11 +736,11 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.TALL_TORCH_QPA]
                     },
                     topOfTorchPuzzleRoom: {
-                        ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+                        ChildNeeds: [Tricks.megaFlip.canDo],
                         AdultNeedsAny: [
                             GlitchItemSets.DODONGO_ADULT_JUMP_TO_BOMB_CHEST,
-                            GlitchItemSets.GROUND_JUMP,
-                            GlitchItemSets.MEGA_FLIP
+                            Tricks.groundJump.canDoWithBomb,
+                            Tricks.megaFlip.canDo
                         ]
                     },
                     upperLizalfosRoom: {
@@ -983,7 +983,7 @@ let MQDungeons = {
                 Equipment.HOVER_BOOTS,
                 [Items.FAIRY_SLINGSHOT, Items.HOOKSHOT],
                 [ItemLocationSets.MQ_JABU_ELEVATOR_ROOM_CHEST, Items.HOOKSHOT],
-                GlitchItemSets.MEGA_FLIP
+                Tricks.megaFlip.canDo
             ]);
         },
         Regions: {
@@ -1005,7 +1005,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 184, y: 236, floor: "F1" },
                         MapImageName: "Slingshot Wonderitem",
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "In the first room, shoot the right cow to spawn this wonderitem.",
@@ -1015,7 +1015,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 164, y: 236, floor: "F1" },
                         MapImageName: "Slingshot Wonderitem",
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "In the first room, shoot the left cow to spawn this wonderitem.",
@@ -1025,7 +1025,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 173, y: 215, floor: "F1" },
                         MapImageName: "Fairy Slingshot",
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
                         Age: Age.EITHER,
                         RequiredToAppear: function() { 
                             return Settings.RandomizerSettings.shuffleDungeonEntrances ||
@@ -1055,7 +1055,7 @@ let MQDungeons = {
                     "Chest in Main Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 181, y: 279, floor: "F1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
                         Age: Age.EITHER,
                         Order: 4.2,
                         LongDescription: "In the first room, shoot the right cow with your slingshot to spawn the chest.",
@@ -1182,7 +1182,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "3 QPAable Slingshot Wonderitems",
                         MapInfo: { x: 148, y: 84, floor: "B1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
                         Age: Age.EITHER,
                         Order: 9.1,
                         LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole normally blocked by the tentacle (upper leftmost hole). Shoot the left cow three times to spawn three different wonderitems."
@@ -1335,7 +1335,7 @@ let MQDungeons = {
                     "Skulltula on Ceiling": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 157, y: 14, floor: "F1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
                         Age: Age.EITHER,
                         Order: 18,
                         LongDescription: "Using a deku stick to bring a fire from the Like Like room, or a fire item, burn the web to get access to the far west room. After killing the tentacle, head to the far east room and kill that tentacle. Now leave and enter the room to your left. Use the switch and a bomb, or a bombchu to blow up the rock on the ceiling to reveal the skulltula.",
@@ -1363,7 +1363,7 @@ let MQDungeons = {
                                 Equipment.HOVER_BOOTS,
                                 [Items.LENS_OF_TRUTH, 
                                     [SetType.OR, ItemSets.PROJECTILES, Items.HOOKSHOT]],
-                                GlitchItemSets.MEGA_FLIP],
+                                Tricks.megaFlip.canDo],
                             // Collect token
                             [SetType.OR, 
                                 ItemSets.GRAB_SHORT_DISTANCE_ITEMS,
@@ -1783,7 +1783,7 @@ let MQDungeons = {
                         // Climb the close edge of the railing, take tiny steps forward, and face barely toward
                         // the ledge so that rolling doesn't make you fall off
                         // Only works with a chu
-                        Needs: [GlitchItemSets.CHU_MEGA_FLIP]
+                        Needs: [Tricks.megaFlip.canDoWithChu]
                     }
                 },
                 ItemLocations: {
@@ -1876,7 +1876,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         NeedsAny: [
                             Equipment.HOVER_BOOTS, // Jumpslash the switch above
-                            [GlitchItemSets.WEIRD_SHOT, GlitchItemSets.MEGA_FLIP] // Weird shot with your side to the switch
+                            [GlitchItemSets.WEIRD_SHOT, Tricks.megaFlip.canDo] // Weird shot with your side to the switch
                         ] 
                     }
                 },
@@ -2285,7 +2285,7 @@ let MQDungeons = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
                         Order: 9,
                         LongDescription: "Enter the locked door to the right when you first enter the temple. Navigate around the rooms, defeating the enemies to progress (including an Iron Knuckle). Defeat the Flare Dancer to spawn the chest.",
-                        ChildNeeds: [GlitchItemSets.GROUND_JUMP, ItemSets.SWORDS],
+                        ChildNeeds: [Tricks.groundJump.canDoWithBomb, ItemSets.SWORDS],
                         AdultNeedsAny: [Items.HOOKSHOT, Items.MEGATON_HAMMER, Items.BOMB, Items.BOMBCHU]
                     }
                 }
@@ -2312,7 +2312,7 @@ let MQDungeons = {
                 },
                 Exits: {
                     bossRoom: {
-                        ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+                        ChildNeeds: [Tricks.megaFlip.canDo],
                         Needs: [KeySets.FIRE_BK]
                     }
                 },
@@ -2335,7 +2335,7 @@ let MQDungeons = {
                         Order: 4,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner to the crates.<br/><br/>If child, climb the block with the torch in it from the back right corner. Hold forward to jump up the ledge. Use the first ledge box to get to the second one before you break it.",
-                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
                     "2 Pots in Room Before Boss": {
                         ItemGroup: ItemGroups.GROUP,
@@ -2346,7 +2346,7 @@ let MQDungeons = {
                         Order: 5,
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner to the pots.",
-                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
                     "Chest in Room Before Boss": {
                         ItemGroup: ItemGroups.CHEST,
@@ -2358,7 +2358,7 @@ let MQDungeons = {
                         NeedsAny: [
                             [
                                 [SetType.OR, // Get to torches
-                                    Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP],
+                                    Items.HOOKSHOT, Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo],
                                 [SetType.OR, // Light torches
                                     ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA]
                             ],
@@ -2418,7 +2418,7 @@ let MQDungeons = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
                         Order: 16,
                         LongDescription: "Either hookshot to the torch on the right side of the lava room, or backflip from the moving platform to get over the fire wall. As Child, you'll need to equip Hylian shield so it isn't burned. The pot is by the blocked doorway (Child will have to ground jump).",
-                        ChildNeeds: [() => Equipment.HYLIAN_SHIELD.playerHas, GlitchItemSets.GROUND_JUMP]
+                        ChildNeeds: [() => Equipment.HYLIAN_SHIELD.playerHas, Tricks.groundJump.canDoWithBomb]
                     },
                     "Chest by Right Goron in Lava Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -2427,7 +2427,7 @@ let MQDungeons = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
                         Order: 17,
                         LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron.<br/><br/>If using cutscene item QPA, angle toward the torch at a 45 degree angle when you jumpslash with the deku stick to light it.",
-                        ChildNeeds: [() => Equipment.HYLIAN_SHIELD.playerHas, GlitchItemSets.GROUND_JUMP],
+                        ChildNeeds: [() => Equipment.HYLIAN_SHIELD.playerHas, Tricks.groundJump.canDoWithBomb],
                         Needs: [ItemSets.EXPLOSIVES],
                         NeedsAny: [
                             ItemSets.FIRE_ITEMS, 
@@ -2775,7 +2775,7 @@ let MQDungeons = {
                         Needs: [GlitchItemSets.FIRE_BK_SKIP_FROM_FIREWALL_MAZE]
                     },
                     fireWallMazeRight: {
-                        NeedsAny: [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
                     fireWallMazeEnd: {
                         Needs: [Items.HOOKSHOT]
@@ -3802,7 +3802,7 @@ let MQDungeons = {
                 Exits: {
                     truthSpinnerRoom: {
                         Needs: [GameStateSets.SHADOW_LENS_CHECK],
-                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
                     Exit: {
                         OwExit: OwExits["Shadow Temple"]["Exit"]
@@ -3845,7 +3845,7 @@ let MQDungeons = {
                         Order: 22,
                         LongDescription: "This is the locked door on the right side of the giant room.",
                         // This logic works from both sides, as you can't do anything from the reverse side without passing this check
-                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP],
+                        NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo],
                         KeyRequirement: function(age) {
                             let max = SettingSets.SHADOW_GATE_CLIP() ? 6 : 3;
                             return { min: 2, max: max };
@@ -3911,7 +3911,7 @@ let MQDungeons = {
                             Items.FIRE_ARROW,
                             Equipment.HOVER_BOOTS,
                             UpgradedItems.LONGSHOT,
-                            GlitchItemSets.MEGA_FLIP
+                            Tricks.megaFlip.canDo
                         ]
                     }
                 },
@@ -4155,7 +4155,7 @@ let MQDungeons = {
                     invisibleSpikeRoom: {
                         LockedDoor: "Locked Door in Giant Room",
                         Map: "Shadow Temple",
-                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     }
                 },
                 ItemLocations: {
@@ -4549,7 +4549,7 @@ let MQDungeons = {
                         ]
                     },
                     bossRoomDoor: {
-                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     }
                 },
                 ItemLocations: {
@@ -4933,13 +4933,13 @@ let MQDungeons = {
                             [Items.BOMBCHU, ItemSets.PROJECTILES],
                             UpgradedItems.LONGSHOT, // Hookshot the gibdos
                             Equipment.HOVER_BOOTS,
-                            GlitchItemSets.MEGA_FLIP]
+                            Tricks.megaFlip.canDo]
                     },
                     backOfChildBridgeRoom: {
                         NeedsAny: [
                             Items.HOOKSHOT, // Hookshot the torches
                             Equipment.HOVER_BOOTS,
-                            GlitchItemSets.MEGA_FLIP]
+                            Tricks.megaFlip.canDo]
                     },
                     afterSecondCrawlSpace: {
                         Age: Age.CHILD,
@@ -5184,7 +5184,7 @@ let MQDungeons = {
                         NeedsAny: [
                             Songs.SONG_OF_TIME,
                             Equipment.HOVER_BOOTS,
-                            GlitchItemSets.MEGA_FLIP,
+                            Tricks.megaFlip.canDo,
                             GlitchItemSets.SPIRIT_STATUE_ROOM_JUMPS
                         ]
                     },
@@ -5200,7 +5200,7 @@ let MQDungeons = {
                         NeedsAny: [
                             Songs.SONG_OF_TIME,
                             Equipment.HOVER_BOOTS,
-                            GlitchItemSets.MEGA_FLIP,
+                            Tricks.megaFlip.canDo,
                             GlitchItemSets.SPIRIT_STATUE_ROOM_JUMPS
                         ]
                     },
@@ -5213,7 +5213,7 @@ let MQDungeons = {
                         NeedsAny: [
                             Songs.SONG_OF_TIME,
                             Equipment.HOVER_BOOTS,
-                            GlitchItemSets.MEGA_FLIP,
+                            Tricks.megaFlip.canDo,
                             GlitchItemSets.BOOMERANG_TRICK_THROWS,
                             GlitchItemSets.SPIRIT_STATUE_ROOM_JUMPS
                         ]
@@ -5341,7 +5341,7 @@ let MQDungeons = {
                         Order: 29,
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way to the southeast corner using the hookshot. Now get to the hand with the triforce and play Zelda's Lullaby. This will spawn the chest to the right of the statue, under a box.",
                         Needs: [Songs.ZELDAS_LULLABY],
-                        ChildNeedsAny: [ItemSets.SWORDS, GlitchItemSets.MEGA_FLIP]
+                        ChildNeedsAny: [ItemSets.SWORDS, Tricks.megaFlip.canDo]
                     },
                     "Open Grate to Room Right of Lobby": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -5854,7 +5854,7 @@ let MQDungeons = {
                         NeedsAny: [
                             [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT],
                             GlitchItemSets.MQ_ICE_JUMP_TO_SKULL,
-                            GlitchItemSets.GROUND_JUMP,
+                            Tricks.groundJump.canDoWithBomb,
                             [
                                 GameStateSets.CAN_HOOK_SCARECROW,
                                 [
@@ -5997,7 +5997,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "4 High QPAable Slingshot Wonderitems",
                         MapInfo: { x: 129, y: 45, floor: "F1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
+                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
                         Age: Age.EITHER,
                         Order: 5.1,
                         LongDescription: "Shoot the lens of truth picture in the northwest corner of the main room to spawn wonderitems (do it 4 times to get all 4)."
@@ -6483,11 +6483,11 @@ let MQDungeons = {
                         UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
                         Order: 10,
                         LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down.<br/><br/>Use hover boots or the longshot to navigate to the top of the center statue to get this wonderitem.",
-                        ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+                        ChildNeeds: [Tricks.megaFlip.canDo],
                         AdultNeedsAny: [
                             Equipment.HOVER_BOOTS,
                             UpgradedItems.LONGSHOT,
-                            GlitchItemSets.MEGA_FLIP,
+                            Tricks.megaFlip.canDo,
                             GlitchItemSets.GTG_EYE_STATUE_WONDERITEM_JUMPSLASH
                         ]
                     },
@@ -6558,7 +6558,7 @@ let MQDungeons = {
                         Needs: [Items.FAIRY_BOW], // Light torch from here specifically so you can travel directly there (no intermediary)
                         NeedsAny: [
                             Equipment.HOVER_BOOTS,
-                            GlitchItemSets.MEGA_FLIP,
+                            Tricks.megaFlip.canDo,
                             SilverRupeeSets.MQ_GTG_SILVER_RUPEES_LAVA_ROOM // Getting all silver rupees spawns hookshot targets that you can use to traverse
                         ]
                     },
@@ -6572,7 +6572,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 15.1,
                         LongDescription: "This rupee is the one on the platform in front of you, when entering from the aromos room.<br/><br/>To clear the fire around the rupees, use a fire arrow on the unlit torch on the side of the room, or longshot to the torch and use Din's Fire.<br/><br/>If entering from the top, either clear the fire and use hover boots to navigate around, or use your longshot to navigate via the torches (might be good to hit the megaton hammer switch too).",
-                        ChildNeeds: [GlitchItemSets.MEGA_FLIP]
+                        ChildNeeds: [Tricks.megaFlip.canDo]
                     },
                     "Lava Silver Rupee in Front Left": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -6600,7 +6600,7 @@ let MQDungeons = {
                     bigLavaRoomBackLeft: {
                         Age: Age.ADULT,
                         Needs: [Items.FIRE_ARROW],
-                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]
+                        NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
                     bigLavaRoomWaterDoorPlatform: {
                         Age: Age.ADULT,
@@ -6621,7 +6621,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         NeedsAny: [
                             Equipment.HOVER_BOOTS,
-                            GlitchItemSets.MEGA_FLIP,
+                            Tricks.megaFlip.canDo,
                             SilverRupeeSets.MQ_GTG_SILVER_RUPEES_LAVA_ROOM
                         ]
                     },
@@ -6630,7 +6630,7 @@ let MQDungeons = {
                         NeedsAny: [
                             Equipment.HOVER_BOOTS,
                             Items.HOOKSHOT, // Will let you get to the big water platform first, then navigate before the fires go out
-                            GlitchItemSets.MEGA_FLIP,
+                            Tricks.megaFlip.canDo,
                             SilverRupeeSets.MQ_GTG_SILVER_RUPEES_LAVA_ROOM
                         ]
                     },
@@ -6683,7 +6683,7 @@ let MQDungeons = {
                         NeedsAny: [
                             ItemSets.FIRE_ITEMS, 
                             Equipment.HOVER_BOOTS, 
-                            GlitchItemSets.MEGA_FLIP, 
+                            Tricks.megaFlip.canDo, 
                             QPAItemSets.LEDGE_QPA
                         ]
                     },
@@ -6723,11 +6723,11 @@ let MQDungeons = {
                 UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
                 Exits: {
                     bigLavaRoomFront: {
-                        ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+                        ChildNeeds: [Tricks.megaFlip.canDo],
                         AdultNeedsAny: [
                             Items.FIRE_ARROW,
                             UpgradedItems.LONGSHOT,
-                            GlitchItemSets.MEGA_FLIP,
+                            Tricks.megaFlip.canDo,
                             GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS,
                             GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS
                         ]
@@ -7245,7 +7245,7 @@ let MQDungeons = {
                 Exits: {
                     lightRoom2Back: {
                         Age: Age.ADULT,
-                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.GROUND_JUMP]
+                        NeedsAny: [Items.HOOKSHOT, Tricks.groundJump.canDoWithBomb]
                     }
                 }, 
                 ItemLocations: {}

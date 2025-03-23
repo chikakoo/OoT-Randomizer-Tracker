@@ -734,53 +734,15 @@
 				</div>
 			</div>
 			
-			<div id="glitchesAndTricksContainer">
+			<!-- <div class="nodisp">
 				<span class="settings-header" onclick="SettingsPage.expandOrCollapseAllGlitchesSettings()">Glitches/Tricks</span>
 				
-				<!-- Common/Misc -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsCommonItemsContainer")' settings>Common/Misc</span>
 					<div id="settingsCommonItemsContainer">
-						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("ocarinaItems", "https://www.zeldaspeedruns.com/oot/tech/ocarina-items", event)'
-							title="Empty + recatch bugs or fish so you are holding the bottle; backflip, quickly press a working item then the bottle you are holding before you land; you should now be playing an ocarina&#013;&#013;Working items include any sword, stick, hammer, explosive, slingshot, bow, hookshot, and boomerang">
-							<input type="checkbox" name="ocarinaItems" value="ocarinaItems">
-							🔗Ocarina Items
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("difficultOcarinaItems", event)'
-							title="This is for harder areas to execute the ocarina items glitch - includes the Skull Kid ocarina minigame and the Skull Kid you play Saria's Song for.">
-							<input type="checkbox" name="difficultOcarinaItems" value="difficultOcarinaItems">
-							Harder Ocarina Items
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("megaFlip", event)'
-							title="For all of these, face toward where you want to go; turn 180&#013;&#013;MEGAFLIP:&#013;- BOMB: Move forward a little bit; dryroll; insta drop + roll; backflip; roll and spam backflip + shield when the bomb is about to explode&#013;- CHU: Chu to black after the 7th red flash, or the next frame (the 8th red flash); shield drop it and roll (keep Z and shield held); backflip on the frame Link is looking upward, but his shield is not out&#013;&#013;MEGASIDEHOP:&#013;- BOMB: Same as megaflip, but roll on any of the last 5 frames of the explosion, and spam left sidehop + shield&#013;- CHU: Roll at the rhythm of when an 8th red flash WOULD happen if the frequency didn't increase; spam left sidehop + shield">
-							<input type="checkbox" name="megaFlip" value="megaFlip">
-							Megaflip and Megasidehop
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("isg", event)'
-							title="Requires a sword and a shield. Interrupt a crouch stab with an A butotn action or Navi text on the correct frame.">
-							<input type="checkbox" name="isg" value="isg">
-							Infinite Sword Glitch
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("qpa", "https://www.zeldaspeedruns.com/oot/tech/quick-putaway-glitched-damage-value", event)'
-							title="WITH A SHORT LEDGE: At a ledge you fall down but can't grab, slowly walk off (value of 27 is high enough); press A for one frame; press B or your sword item (to jumpslash) on the next frame; it worked if you jumpslash with no item&#013;&#013;WITH A CUTSCENE ITEM: Take out a deku stick and wait for the Put Away option; press A to put it away, and press the cutscene item on the next frame. Perform this, then break a stick to get the glitched value on the stick. Doing so while breaking a stick on a mud wall will break it without needing a shield (AND will activate QPA on all weapons).&#013;&#013;Both ages can get broken stick by facing a vertical wall; turn right; ess left x3; jumpslash with stick.&#013;&#013;Note that most torches can be lit as Child by getting ISG and backflipping into them.">
-							<input type="checkbox" name="qpa" value="qpa">
-							🔗Quick Putaway
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("lungeStorage", "https://www.zeldaspeedruns.com/oot/tech/lunge-storage", event)'
-							title="Get close to any ledge and face so aren't facing the dropoff with your sword weapon out; press up and the sword weapon at the same time; it worked if you fell or are now hanging off the ledge.">
-							<input type="checkbox" name="lungeStorage" value="lungeStorage">
-							🔗Lunge Storage
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("flameStorage", event)'
-							title="Take your stick out and put it away by a torch at the right timing. The next time you take it out, it will be lit, as long as the torch is still loaded.">
-							<input type="checkbox" name="flameStorage" value="flameStorage">
-							Flame Storage
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("groundJump", event)'
-							title="Requires a shield and an explosive - shield the explosive after you've tried to pick it up. Your next backflip will now be straight up.">
-							<input type="checkbox" name="groundJump" value="groundJump">
-							Ground Jump
-						</label>
+
+
+
 						<label onclick='SettingsPage.setBooleanValueForGlitches("staircaseHover", event)'
 							title="Uses two bombs and ISG to gain some height so that a backflip can collect items or cross walls that are too high up.">
 							<input type="checkbox" name="staircaseHover" value="staircaseHover">
@@ -854,7 +816,6 @@
 					</div>
 				</div>
 
-				<!-- Hyrule Field/ToT/Castle -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsHFMarketCastleContainer")' settings>HF/Market/Castle</span>
 					<div id="settingsHFMarketCastleContainer">
@@ -876,7 +837,6 @@
 					</div>
 				</div>
 				
-				<!-- Kakariko/Graveyard -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsKakarikoContainer")' settings>Kakariko/Graveyard</span>
 					<div id="settingsKakarikoContainer">
@@ -948,7 +908,6 @@
 					</div>
 				</div>
 				
-				<!-- Forest -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsForestContainer")' settings>Forest Areas</span>
 					<div id="settingsForestContainer">
@@ -1000,7 +959,6 @@
 					</div>
 				</div>
 				
-				<!-- Mountain Area -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsMountainContainer")' settings>Mountain Areas</span>
 					<div id="settingsMountainContainer">
@@ -1057,7 +1015,6 @@
 					</div>
 				</div>
 
-				<!-- Zora Areas -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsZoraContainer")' settings>Zora Areas</span>
 					<div id="settingsZoraContainer">
@@ -1124,7 +1081,6 @@
 					</div>
 				</div>
 				
-				<!-- Lake Hylia -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsLakeContainer")' settings>Lake Hylia</span>
 					<div id="settingsLakeContainer">
@@ -1161,7 +1117,6 @@
 					</div>
 				</div>
 				
-				<!-- Desert Areas -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsDesertContainer")' settings>Desert Areas</span>
 					<div id="settingsDesertContainer">
@@ -1248,7 +1203,6 @@
 					</div>
 				</div>
 
-				<!-- Deku Tree -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsDekuTreeContainer")' settings>Deku Tree</span>
 					<div id="settingsDekuTreeContainer">
@@ -1275,7 +1229,6 @@
 					</div>
 				</div>
 
-				<!-- Dodongo's Cavern -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsDodongosCavernContainer")' settings>Dodongo's Cavern</span>
 					<div id="settingsDodongosCavernContainer">
@@ -1312,7 +1265,6 @@
 					</div>
 				</div>
 				
-				<!-- Jabu Jabu's Belly -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsJabuContainer")' settings>Jabu Jabu's Belly</span>
 					<div id="settingsJabuContainer">
@@ -1329,7 +1281,6 @@
 					</div>
 				</div>
 				
-				<!-- Forest Temple -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsForestTempleContainer")' settings>Forest Temple</span>
 					<div id="settingsForestTempleContainer">
@@ -1373,10 +1324,10 @@
 							<input type="checkbox" name="forestChildBlockSkip" value="forestChildBlockSkip">
 							🔗Child Block Skip
 						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("forestBlockSkipWithHoverBoots", event)'
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("forestBlockSkipWithHoverBoots", "https://youtu.be/dIcQMuPA4mc", event)'
 							title="Ground jump over block 1; ground jump on left side of block 2; get a running start; roll diagonal, then and change roll roward the ledge and grab it">
 							<input type="checkbox" name="forestBlockSkipWithHoverBoots" value="forestBlockSkipWithHoverBoots">
-							Top of Block Room With Ground Jump/Hover Boots
+							🔗Adult Block Skip
 						</label>
 						<label onclick='SettingsPage.setBooleanValueForGlitches("forestGreenPoeEarly", event)'
 							title="Get to green poe early from lobby: get in the corner, hold Z; sidehop left x4; shield drop bomb; dry roll x2; tap up to climb; second damage frame, equip boots and hold up.">
@@ -1391,7 +1342,6 @@
 					</div>
 				</div>
 				
-				<!-- Fire Temple -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsFireTempleContainer")' settings>Fire Temple</span>
 					<div id="settingsFireTempleContainer">
@@ -1410,7 +1360,7 @@
 							<input type="checkbox" name="fireSoTBlockJump" value="fireSoTBlockJump">
 							🔗Song of Time Block Jump
 						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitchesWIthLink("fireJailClip", "https://youtu.be/URWEcSrTRgg", event)'
+						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("fireJailClip", "https://youtu.be/cwKxLtyjkH4", event)'
 							title="Jump to the side with the block and climb up after ledge grabbing; tap up to retain the camera angle; hold Z and get into the corner by the block; release everything; take out a bomb and wait for it to explode; hold left immediately after">
 							<input type="checkbox" name="fireJailClip" value="fireJailClip">
 							🔗Jail Clip
@@ -1448,7 +1398,6 @@
 					</div>
 				</div>
 				
-				<!-- Water Temple -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsWaterTempleContainer")' settings>Water Temple</span>
 					<div id="settingsWaterTempleContainer">
@@ -1500,7 +1449,6 @@
 					</div>
 				</div>
 				
-				<!-- Shadow Temple -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsShadowTempleContainer")' settings>Shadow Temple</span>
 					<div id="settingsShadowTempleContainer">
@@ -1567,7 +1515,6 @@
 					</div>
 				</div>
 				
-				<!-- Spirit Temple -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsSpiritTempleContainer")' settings>Spirit Temple</span>
 					<div id="settingsSpiritTempleContainer">
@@ -1613,8 +1560,7 @@
 						</label>
 					</div>
 				</div>
-				
-				<!-- Bottom of the Well -->
+			
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsBOTWContainer")' settings>Bottom of the Well</span>
 					<div id="settingsBOTWContainer">
@@ -1631,7 +1577,6 @@
 					</div>
 				</div>
 
-				<!-- Ice Cavern -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsIceCavernContainer")' settings>Ice Cavern</span>
 					<div id="settingsIceCavernContainer">
@@ -1673,7 +1618,6 @@
 					</div>
 				</div>
 				
-				<!-- Gerudo Training Grounds -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsGTGContainer")' settings>Gerudo Training Grounds</span>
 					<div id="settingsGTGContainer">
@@ -1721,7 +1665,6 @@
 					</div>
 				</div>
 				
-				<!-- Ganon's Castle -->
 				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsGanonsCastleContainer")' settings>Ganon's Castle</span>
 					<div id="settingsGanonsCastleContainer">
@@ -1757,7 +1700,9 @@
 						</label>
 					</div>
 				</div>
-			</div>
+			</div> -->
+
+			<div id="tricksContainer"></div>
 		</div>
 	</div>
 </body>

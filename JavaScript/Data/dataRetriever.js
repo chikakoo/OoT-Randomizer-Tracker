@@ -965,37 +965,7 @@ Data = {
      * @param song - the song to check
      */
     canPlaySong: function(song) {
-		return this.canPlaySongs() && song.playerHas && ItemData.hasAllSongNotes(song);
-    },
-    
-    /**
-     * Returns whether the player has the ability to play songs, includes OI and actually having the ocarina
-     */
-    canPlaySongs: function() { //TODO: need to add age to check for OI item to actually play...
-		return Items.OCARINA.playerHas || 
-            (Settings.GlitchesToAllow.ocarinaItems && this.hasOcarinaItemsBottle());
-    },
-    
-    /**
-     * Returns whether the player has an empty bottle
-     * Handles checks on whether bottles that cannot be emptied are present
-     */
-	hasBottle: function() {
-        return ItemData.getEmptyBottleCount(true) > 0;
-    },
-
-    /**
-     * Whether the player has the bottled items required to do the OI glitch
-     */
-    hasOcarinaItemsBottle: function() {
-        return this.hasBottle() && (Items.BUGS.playerHas || Items.FISH.playerHas);
-    },
-
-    /**
-     * Returns whether the player has the actual blue fire item or an empty bottle
-     */
-    hasBottleOrBlueFire: function(age) {
-        return this.hasBottle() || ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS);
+		return GameStateSets.CAN_PLAY_SONGS() && song.playerHas && ItemData.hasAllSongNotes(song);
     },
 
     /**
@@ -1005,7 +975,7 @@ Data = {
      canOIAndBlueFireWithoutRefilling: function(age) {
         let bottleCount = ItemData.getEmptyBottleCount(true);
         let canUseIceArrows = ItemData.canUse(age, Items.ICE_ARROW);
-        let canDoOI = Settings.GlitchesToAllow.ocarinaItems;
+        let canDoOI = Tricks.ocarinaItems.canDo();
         return canDoOI && ((bottleCount >= 1 && canUseIceArrows) || bottleCount > 1);
     },
     

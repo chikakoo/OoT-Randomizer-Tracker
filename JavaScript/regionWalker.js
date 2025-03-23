@@ -281,7 +281,7 @@ RegionWalker = {
      * Seeds up the seeds for where Link can warp to
      */
     _setUpSeedsForWarpSongs: function(age) {
-        if (!Data.canPlaySongs()) { return; }
+        if (!GameStateSets.CAN_PLAY_SONGS()) { return; }
 
         if (Songs.MINUET_OF_FOREST.playerHas && ItemData.hasAllSongNotes(Songs.MINUET_OF_FOREST)) {
             this._addWarpLocationForSong(age, Songs.MINUET_OF_FOREST);

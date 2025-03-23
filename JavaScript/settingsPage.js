@@ -2,34 +2,11 @@ let SettingsPage = {
     _randomizerSettingsExpanded: true,
     _glitchesSettingsExpanded: true,
 
-    _randomizerSettingsGroupids: [
+    _randomizerSettingsGroupIds: [
         "settingsGroupTrackerContainer",
         "settingsGroupProgressionContainer",
         "settingsGroupLogicContainer",
         "settingsGroupItemsContainer"
-    ],
-
-    _glitchesSettingsGroupids: [
-        "settingsCommonItemsContainer",
-        "settingsHFMarketCastleContainer",
-        "settingsKakarikoContainer",
-        "settingsForestContainer",
-        "settingsMountainContainer",
-        "settingsZoraContainer",
-        "settingsLakeContainer",
-        "settingsDesertContainer",
-        "settingsDekuTreeContainer",
-        "settingsDodongosCavernContainer",
-        "settingsJabuContainer",
-        "settingsForestTempleContainer",
-        "settingsFireTempleContainer",
-        "settingsWaterTempleContainer",
-        "settingsShadowTempleContainer",
-        "settingsSpiritTempleContainer",
-        "settingsBOTWContainer",
-        "settingsIceCavernContainer",
-        "settingsGTGContainer",
-        "settingsGanonsCastleContainer"
     ],
 
     display: function() {
@@ -40,6 +17,7 @@ let SettingsPage = {
         this._initializeCheckBoxes();
         this._initializeRadioButtons();
         this._initializeInputFields();
+        this._initializeTricksContainer();
     },
 
     /**
@@ -49,10 +27,6 @@ let SettingsPage = {
         let _this = this;
         Object.keys(Settings.RandomizerSettings).forEach(function(settingName) {
             _this.setCheckboxStateForRandomizer(settingName);
-        });
-
-        Object.keys(Settings.GlitchesToAllow).forEach(function(settingName) {
-            _this.setCheckboxStateForGlitches(settingName);
         });
 
         Object.keys(Settings.TrackerSettings).forEach(function(settingName) {
@@ -129,20 +103,6 @@ let SettingsPage = {
             inputElement[0].checked = settingValue;
         }
     },
-    
-    /**
-	 * Sets the checkbox state of the given setting. This is used by each input element
-	 * when first loading the page.
-	 */
-	setCheckboxStateForGlitches: function(settingName) {
-		let settingValue = Settings.GlitchesToAllow[settingName];
-		if (settingValue === undefined) { return; }
-
-        let inputElement = document.getElementsByName(settingName);
-        if (inputElement[0]) {
-            inputElement[0].checked = settingValue;
-        }
-	},
 
     /**
 	 * Sets the checkbox state of the given setting. This is used by each input element
@@ -176,31 +136,106 @@ let SettingsPage = {
 		refreshAll();
 	},
 
-	/**
-	 * Sets the value of the given setting name to whether the event's
-	 * target is checked or not
-	 * @param settingName: The name of the setting - this is the key of the Setting object
-	 * @param event: Used to stop propagation to prevent double execution
-	 */
-	setBooleanValueForGlitches: function(settingName, event) {
-        event.stopPropagation();
+    /**
+     * Initialized the tricks container based on the Tricks object
+     */
+    _initializeTricksContainer() {
+        let tricksHeader = dce("span", "settings-header");
+        tricksHeader.innerText = "Glitches/Tricks";
+        tricksHeader.onclick = SettingsPage.expandOrCollapseAllGlitchesSettings.bind(this);
 
-        if (event.shiftKey) {
-            event.preventDefault();
+        let tricksContainer = document.getElementById("tricksContainer");
+        tricksContainer.innerHTML = "";
+        tricksContainer.appendChild(tricksHeader);
+
+        let _this = this;
+        let currentCategoryContainerDiv;
+        let currentCategoryTricksContainerDiv;
+        Object.keys(Tricks).forEach(trickName => {
+            let trick = Tricks[trickName];
+
+            if (trick.isCategory) {
+                let categoryTricksContainerId = `settings-tricks-container-${trick.displayText}`;
+
+                currentCategoryContainerDiv = dce("div", "settings-group");
+                currentCategoryContainerDiv.innerText = trick.displayText;
+                currentCategoryContainerDiv.id = `settings-trick-category-${trick.displayText}`;
+                currentCategoryContainerDiv.onclick = _this.showOrHideGroup.bind(_this, null, categoryTricksContainerId, undefined);
+
+                currentCategoryTricksContainerDiv = dce("div", "settings-tricks-container")
+                currentCategoryTricksContainerDiv.id = categoryTricksContainerId;
+                
+                tricksContainer.appendChild(currentCategoryContainerDiv);
+                currentCategoryContainerDiv.appendChild(currentCategoryTricksContainerDiv);
+                return;
+            }
+
+            let trickDiv = dce("div");
+            trickDiv.id = `settings-trick-${trick.displayText}`;
+
+            let trickLabel = dce("label");
+            trickLabel.title = trick.description;
+            trickLabel.onclick = function(event) {
+                event.stopPropagation();
+                _this.setBooleanValueForTricks(trickName);
+            };
+
+            let trickCheckbox = dce("input");
+            trickCheckbox.type = "checkbox";
+            trickCheckbox.name = trickName;
+            trickCheckbox.value = trickName;
+            trickCheckbox.checked = trick.enabled;
+
+            let trickDisplayText = dce("span");
+            trickDisplayText.innerText = trick.displayText;
+
+            trickLabel.appendChild(trickCheckbox);
+            trickLabel.appendChild(trickDisplayText);
+            trickDiv.appendChild(trickLabel);
+
+            _this._appendLinksToTrick(trickDiv, trick.links);
+
+            currentCategoryTricksContainerDiv.appendChild(trickDiv);
+        });
+    },
+
+    _appendLinksToTrick: function(trickDiv, linkObjects) {
+        if (!linkObjects) {
             return;
         }
 
-		if (Settings.GlitchesToAllow[settingName] === undefined) {
-			Settings.GlitchesToAllow[settingName] = false;
+        Object.values(linkObjects).forEach(linkObject => {
+            let link = dce("span", "settings-link");
+            link.innerText = "🔗";
+            link.title = linkObject.description;
+            link.onclick = function(event) {
+                event.stopPropagation();
+                window.open(linkObject.url, '_blank');
+            }
+                
+            trickDiv.appendChild(link);
+        });
+    },
+
+	/**
+	 * Sets the enabled value of the given trick name to whether the event's
+	 * target is checked or not
+	 * @param trickName: The name of the trick - this is the key of the Tricks object
+	 */
+	setBooleanValueForTricks: function(trickName) {
+		if (Tricks[trickName] === undefined) {
+			console.log(`ERROR: tried to set value for non-existant glitch: `);
+            return;
 		}
 
-		let inputElement = document.getElementsByName(settingName)[0];
-		Settings.GlitchesToAllow[settingName] = inputElement.checked;
+		let inputElement = document.getElementsByName(trickName)[0];
+		Tricks[trickName].enabled = inputElement.checked;
 		ItemTracker.setUp();
 		refreshAll();
     },
 
     /**
+     * TODO: is this needed?
 	 * Sets the value of the given setting name to whether the event's
 	 * target is checked or not
 	 * @param settingName: The name of the setting - this is the key of the Setting object
@@ -308,7 +343,7 @@ let SettingsPage = {
     expandOrCollapseAllRandomizerSettings() {
         let _this = this;
         this._randomizerSettingsExpanded = !this._randomizerSettingsExpanded;
-        this._randomizerSettingsGroupids.forEach(function(id) {
+        this._randomizerSettingsGroupIds.forEach(function(id) {
             _this.showOrHideGroup(null, id, !_this._randomizerSettingsExpanded);
         });
     },
@@ -319,8 +354,9 @@ let SettingsPage = {
     expandOrCollapseAllGlitchesSettings() {
         let _this = this;
         this._glitchesSettingsExpanded = !this._glitchesSettingsExpanded;
-        this._glitchesSettingsGroupids.forEach(function(id) {
-            _this.showOrHideGroup(null, id, !_this._glitchesSettingsExpanded);
+
+        [...document.querySelectorAll(".settings-tricks-container")].forEach(function(categoryDiv) {
+            _this.showOrHideGroup(null, categoryDiv.id, !_this._glitchesSettingsExpanded);
         });
     }
 }

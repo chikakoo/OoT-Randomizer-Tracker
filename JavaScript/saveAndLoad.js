@@ -31,6 +31,7 @@ let SaveAndLoad = {
             EntranceShuffleData: this._getEntranceShuffleDataToSave(),
             RandomizedSpawnLocations: Data.randomizedSpawnLocations,
             Settings: Settings,
+            Tricks: this._getEnabledTricks(),
             Items: Items,
             ChildTradeItems: ChildTradeItems,
             AdultTradeItems: AdultTradeItems,
@@ -172,6 +173,20 @@ let SaveAndLoad = {
             OwExitData: owExitData
         }
     },
+
+    /**
+     * Gets all enabled tricks - we save the keys in an array, and turn only them on
+     * when a save is loaded
+     */
+    _getEnabledTricks: function() {
+        let enabledTrickKeys = [];
+        Object.keys(Tricks).forEach(trickKey => {
+            if (Tricks[trickKey].enabled) {
+                enabledTrickKeys.push(trickKey);
+            }
+        })
+        return enabledTrickKeys;
+    },
     
     /**
      * Gets the data to save for the keys the player has
@@ -265,6 +280,7 @@ let SaveAndLoad = {
      */
     _loadSaveFile(loadedObject) {
         if (loadedObject.Settings) { Settings = loadedObject.Settings; }
+        if (loadedObject.Tricks) { this._loadTricks(loadedObject.Tricks); }
         if (loadedObject.Items) { this._loadItemObject(Items, loadedObject.Items); }
         if (loadedObject.ChildTradeItems) { this._loadItemObject(ChildTradeItems, loadedObject.ChildTradeItems); }
         if (loadedObject.AdultTradeItems) { this._loadItemObject(AdultTradeItems, loadedObject.AdultTradeItems); }
@@ -308,6 +324,12 @@ let SaveAndLoad = {
         this.currentlyLoading = false;
         SocketClient.syncAll(); // Sync to all clients if in co-op mode
         alert("File loaded successfully!");
+    },
+
+    _loadTricks: function(loadedTrickObject) {
+        Object.keys(Tricks).forEach(trickKey => {
+            Tricks[trickKey].enabled = loadedTrickObject.includes(trickKey);
+        });
     },
 
     _loadMapDataObject: function(currentObject, loadedObject, skipDungeons) {

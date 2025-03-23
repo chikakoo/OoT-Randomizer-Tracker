@@ -147,12 +147,12 @@ let OwExits = {
             Age: Age.EITHER,
             UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
             OneWayEntrance: true,
-            ChildNeeds: [GlitchItemSets.MEGA_FLIP],
+            ChildNeeds: [Tricks.megaFlip.canDo],
             AdultNeedsAny: [
                 Equipment.HOVER_BOOTS,
                 UpgradedItems.LONGSHOT,
                 BeanSets.LOST_WOODS_BRIDGE,
-                GlitchItemSets.MEGA_FLIP,
+                Tricks.megaFlip.canDo,
                 GlitchItemSets.LW_ADULT_BRIDGE_FROM_TOP,
                 GlitchItemSets.LW_ADULT_BRIDGE_WITH_HOOKSHOT],
             OwShuffleMap: "Lost Woods Bridge",
@@ -238,7 +238,7 @@ let OwExits = {
             Age: Age.EITHER,
             UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip && !Settings.GlitchesToAllow.lwBridgePressureJump; },
             LongDescription: "Longshot from the bridge to the ladder to get to the lost woods.<br/><br/>Megaflip setup: Get in the corner closest to the ladder; take a tiny step back; c-up and face the third rope support; turn 180; dry roll if using bombs; megaflip",
-            NeedsAny: [UpgradedItems.LONGSHOT, GlitchItemSets.MEGA_FLIP, GlitchItemSets.PRESSURE_JUMP]
+            NeedsAny: [UpgradedItems.LONGSHOT, Tricks.megaFlip.canDo, GlitchItemSets.PRESSURE_JUMP]
         }
     },
 
@@ -1275,7 +1275,7 @@ let OwExits = {
             LongDescription: "Hammer the silver rocks that are to the left of the Goron City entrance (if you face the entrance) to uncover the entrance.\x0A\x0AYou can megaflip here from the corner by the ladder as any age, as well.",
             NeedsAny: [
                 Items.MEGATON_HAMMER, 
-                GlitchItemSets.MEGA_FLIP,
+                Tricks.megaFlip.canDo,
                 GlitchItemSets.CHILD_SIDEHOP_TO_DMC_FAIRY,
                 GlitchItemSets.ADULT_RECOIL_TO_DMC_FAIRY
             ]
@@ -2556,7 +2556,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 174, y: 241, floor: "F3" },
             Age: Age.EITHER,
-            Needs: [GlitchItemSets.MEGA_FLIP],
+            Needs: [Tricks.megaFlip.canDo],
             LongDescription: "This is the exit to the archway from the statue hands from the spirit temple",
             ReadOnly: true,
             Hide: true,

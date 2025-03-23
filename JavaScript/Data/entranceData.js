@@ -946,7 +946,7 @@ GrottoGroups = {
 			"Chest by Lighting Torches": {
 				icon: "Din's Fire",
 				LongDescription: "Light the torches in the first room to spawn a chest.\x0A\x0AUsing flame storage and sticks: get flame storage; line up with the side of the platform by the stairs and the torch; sidehop right x8; sideroll; take out stick (it should be lit now); sidehop to the door - quickly enter at the very left side; the first torch should be lit as you go in - now finish the job.",
-				NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA, GlitchItemSets.FLAME_STORAGE]
+				NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA, Tricks.flameStorage.canDo]
 			},
 			"Sun's Song": {
 				LongDescription: "Go through the rooms to get the item at the end.",
@@ -2055,7 +2055,7 @@ GrottoGroups = {
 				useGroupImage: true,
 				count: 3,
 				Age: Age.EITHER,
-				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
+				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
 				LongDescription: "Shoot something to get these items.",
 				NeedsAny: [Items.FAIRY_SLINGSHOT, QPAItemSets.LEDGE_QPA]
 			}
@@ -2083,7 +2083,7 @@ GrottoGroups = {
 				useGroupImage: true,
 				count: 4,
 				Age: Age.EITHER,
-				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Settings.GlitchesToAllow.qpa; },
+				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
 				LongDescription: "Shoot something to get these items. Can also use ISG QPA and backflips, or cutscene QPA lined up to break the stick on it.",
 				NeedsAny: [Items.FAIRY_SLINGSHOT, QPAItemSets.TALL_TORCH_QPA, QPAItemSets.CUTSCENE_ITEM_QPA]
 			}

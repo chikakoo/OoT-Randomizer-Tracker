@@ -25,22 +25,22 @@ let SetType = {
  *   - This one assumes that you can accomplish what you need with only a jumpslash
  */
 let QPAItemSets = {
-	LEDGE_QPA: (age) => Settings.GlitchesToAllow.qpa &&
+	LEDGE_QPA: (age) => Tricks.qpa.enabled &&
         ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]),
-	HOVER_BOOTS_QPA: (age) => Settings.GlitchesToAllow.qpa &&
+	HOVER_BOOTS_QPA: (age) => Tricks.qpa.enabled &&
         ItemData.canUse(age, [Equipment.HOVER_BOOTS, ItemSets.SWORDS, ItemSets.SHIELDS]),
-	TALL_TORCH_QPA: (age) => Settings.GlitchesToAllow.qpa && (
+	TALL_TORCH_QPA: (age) => Tricks.qpa.enabled && (
             age === Age.CHILD
                 ? ItemData.canUse(age, [Items.DEKU_STICK, ItemSets.SHIELDS])
                 : ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS])
         ),
 	MUD_WALLS_LEDGE_QPA: (age) => Settings.RandomizerSettings.iceArrowsActAsBlueFire &&
         ItemData.canUse(age, QPAItemSets.LEDGE_QPA),
-	HIGH_SWITCH_QPA: (age) => Settings.GlitchesToAllow.qpa &&
+	HIGH_SWITCH_QPA: (age) => Tricks.qpa.enabled &&
         ItemData.canUseAny(age, [Items.DEKU_STICK, Equipment.BIGGORONS_SWORD]) &&
         ItemData.canUse(age, ItemSets.SHIELDS),
 	CUTSCENE_ITEM_QPA: (age) => {
-        if (!Settings.GlitchesToAllow.qpa || !ItemData.canUse(age, Items.DEKU_STICK)) {
+        if (!Tricks.qpa.enabled || !ItemData.canUse(age, Items.DEKU_STICK)) {
             return false;
         }
 
@@ -123,10 +123,15 @@ let BeanSets = {
  * Item sets for performing glitches
  */
 let GlitchItemSets = {
+    // KEEPING THESE AFTER REWORK (ones with no specific setting)
+    OCARINA_OR_DIFFICULT_OCARINA_ITEMS: () => Items.OCARINA.playerHas || 
+        Tricks.difficultOcarinaItems.canDo(),
+    QUICKDRAW: (age) => 
+        age === Age.CHILD
+            ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
+            : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
+        
 	// Common
-    ISG: (age) =>
-        Settings.GlitchesToAllow.isg &&
-        ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]),
     BASE_WEIRD_SHOT: (age) => 
         Settings.GlitchesToAllow.weirdShot &&
         ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB]),
@@ -142,11 +147,6 @@ let GlitchItemSets = {
     BOW_EXTENSION_SOT_BLOCKS: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.hookshotExtensionSotBlocks &&
         ItemData.canUse(age, Items.FAIRY_BOW),
-	MEGA_FLIP: (age) => 
-        Settings.GlitchesToAllow.megaFlip &&
-        ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]),
-    CHU_MEGA_FLIP: (age) => 
-        ItemData.canUse(age, [Items.BOMBCHU, GlitchItemSets.MEGA_FLIP]),
     STAIRCASE_HOVER: (age) => 
         Settings.GlitchesToAllow.staircaseHover &&
         ItemData.canUse(age, [Items.BOMB, ItemSets.SWORDS, ItemSets.SHIELDS]),
@@ -158,6 +158,8 @@ let GlitchItemSets = {
     HAMMER_SUPERSLIDE_WITH_HOVERS: (age) => 
         Settings.GlitchesToAllow.hammerHoverBootsSuperslide &&
         ItemData.canUse(age, [Equipment.HOVER_BOOTS, Items.MEGATON_HAMMER]),
+
+
 	GROUND_JUMP: (age) => 
         Settings.GlitchesToAllow.groundJump && 
         ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]),
@@ -165,29 +167,13 @@ let GlitchItemSets = {
         Settings.GlitchesToAllow.groundJump &&
         ItemData.canUse(age, ItemSets.SHIELDS) &&
         ItemData.canUseAny(age, [ItemSets.EXPLOSIVES, Equipment.STRENGTH]), // Includes the chu in front of bomb flower trick
-    OCARINA_OR_DIFFICULT_OCARINA_ITEMS: () => Items.OCARINA.playerHas || (
-        Settings.GlitchesToAllow.ocarinaItems &&
-        Settings.GlitchesToAllow.difficultOcarinaItems && 
-        Data.hasOcarinaItemsBottle()),
+
 	BOOMERANG_THROUGH_WALLS: (age) => 
         Settings.GlitchesToAllow.boomerangThroughWalls && 
         ItemData.canUse(age, Items.BOOMERANG),
     BOOMERANG_TRICK_THROWS: (age) => 
         Settings.GlitchesToAllow.difficultBoomerangTrickThrows && 
         ItemData.canUse(age, Items.BOOMERANG),
-    LUNGE_STORAGE: (age) =>
-        Settings.GlitchesToAllow.lungeStorage &&
-        ItemData.canUseAny(age, [Equipment.MASTER_SWORD, Equipment.KOKIRI_SWORD, Items.DEKU_STICK]),
-    LUNGE_STORAGE_NEEDING_QUICKDRAW: (age) =>
-        Settings.GlitchesToAllow.lungeStorage &&
-        ItemData.canUseAny(age, [Items.DEKU_STICK, Equipment.BIGGORONS_SWORD, GlitchItemSets.QUICKDRAW]),
-    QUICKDRAW: (age) => 
-        age === Age.CHILD
-            ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
-            : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
-    FLAME_STORAGE: (age) =>
-        Settings.GlitchesToAllow.flameStorage &&
-        ItemData.canUse(age, Items.DEKU_STICK),
 
     // HF / Market / Castle
     DOUBLE_DEFENSE_EARLY: (age) => Settings.GlitchesToAllow.doubleDefenseEarly &&
@@ -203,7 +189,7 @@ let GlitchItemSets = {
         ItemData.canUse(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD]),
 	HOUSE_OF_TWINS_SKULL_WITHOUT_HOOKSHOT: (age) => 
         Settings.GlitchesToAllow.houseOfTwinsSkullWithoutHookshot && 
-        ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, GlitchItemSets.ISG]),
+        ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, Tricks.isg.canDo]),
     LW_ADULT_BRIDGE_FROM_TOP: (age) => 
         age === Age.ADULT &&
         Settings.GlitchesToAllow.lwAdultBridgeFromTop &&
@@ -335,7 +321,7 @@ let GlitchItemSets = {
         ItemData.canUseAny(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]),
     ADULT_MEGA_FLIP_CLIP_TO_DOMAIN: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.adultDomainMegaflipClip && 
-        ItemData.canUse(age, GlitchItemSets.MEGA_FLIP),
+        ItemData.canUse(age, Tricks.megaFlip.canDo),
     ADULT_WATER_TEMPLE_CLIP: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.adultWaterTempleClip,
 
@@ -438,7 +424,7 @@ let GlitchItemSets = {
         ]),
     FOREST_BLOCK_SKIP_WITH_HOVER_BOOTS: (age) => age === Age.ADULT && 
         Settings.GlitchesToAllow.forestBlockSkip && 
-        ItemData.canUse(age, [Equipment.HOVER_BOOTS, GlitchItemSets.GROUND_JUMP]),
+        ItemData.canUse(age, [Equipment.HOVER_BOOTS, Tricks.groundJump.canDoWithBomb]),
     FOREST_BK_SKIP: (age) => 
         Settings.GlitchesToAllow.forestBKSkip &&
         ItemData.canUse(age, Items.HOOKSHOT),
@@ -553,7 +539,7 @@ let GlitchItemSets = {
         Settings.GlitchesToAllow.iceLedgeClip,
     ICE_CHILD_UPPER_ROOM: (age) => age === Age.CHILD &&
         Settings.GlitchesToAllow.iceChildUpperRoom &&
-        ItemData.canUse(age, GlitchItemSets.GROUND_JUMP_INCLUDING_BOMB_FLOWER), // Pots can be used in the same way
+        ItemData.canUse(age, Tricks.groundJump.canDoWithBombOrStrength), // Pots can be used in the same way
     ICE_TRIPLE_SLASH_CLIP: (age) =>
         Settings.GlitchesToAllow.iceTripleSlashClips &&
         ItemData.canUseAny(age, [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD]) &&
@@ -727,7 +713,7 @@ let GameStateSets = {
         let bossEntranceGroup = Data.getEntranceGroup(OwExits["Deku Tree"].Boss);
         return bossEntranceGroup?.buttons && bossEntranceGroup.buttons["Blue Warp"].completed;
     },
-    CAN_PLAY_SONGS: () => Data.canPlaySongs(),
+    CAN_PLAY_SONGS: () => Items.OCARINA.playerHas || Tricks.ocarinaItems.canDo(),
     CAN_RIDE_EPONA: (age) => Data.canRideEpona(age),
     CAN_HOOK_SCARECROW: (age) => Data.canHookScarecrow(age),
     CAN_LONGSHOT_SCARECROW: (age) => Data.canHookScarecrow(age, true),
@@ -742,7 +728,7 @@ let GameStateSets = {
         Settings.RandomizerSettings.bombchusInLogic
         ? Items.BOMBCHU.playerHas
         : Items.BOMB.playerHas,
-    HAS_BOTTLE: () => Data.hasBottle(),
+    HAS_BOTTLE: () => ItemData.getEmptyBottleCount(true) > 0,
     FIRE_TEMPLE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC),
     WATER_TEMPLE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.waterNoZoraTunic || ItemData.canUse(age, Equipment.ZORA_TUNIC),
     SHADOW_LENS_CHECK: (age) => Settings.GlitchesToAllow.shadowLensless || ItemData.canUse(age, Items.LENS_OF_TRUTH),
@@ -839,7 +825,7 @@ let SilverRupeeSets = {
         ? ItemData.checkSilverRupeeRequirement("Training Grounds", 1)
         : ItemData.canUse(age, Items.HOOKSHOT) && // Rupee on the top
             ItemData.canUseAny(age, 
-                [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]), // Fire rupee
+                [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]), // Fire rupee
     GTG_SILVER_RUPEES_WATER_ROOM: (age) =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Training Grounds", 2)
@@ -850,7 +836,7 @@ let SilverRupeeSets = {
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Training Grounds", 1)
         : ItemData.canUseAny(age, [Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]) && // Light the torch
-            ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, GlitchItemSets.MEGA_FLIP]), // Grab the rupees
+            ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]), // Grab the rupees
     MQ_GTG_SILVER_RUPEES_WATER_ROOM: (age) =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Training Grounds", 2)
@@ -864,7 +850,7 @@ let SilverRupeeSets = {
     GANON_LIGHT_SILVER_RUPEES: (age) =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Ganon's Castle", 1)
-        : ItemData.canUseAny(age, [Items.HOOKSHOT, GlitchItemSets.GROUND_JUMP]),
+        : ItemData.canUseAny(age, [Items.HOOKSHOT, Tricks.groundJump.canDoWithBomb]),
     GANON_FIRE_SILVER_RUPEES: (age) => 
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Ganon's Castle", 2)

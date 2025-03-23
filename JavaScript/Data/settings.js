@@ -353,3 +353,105 @@ let Settings = {
 	 */
 	PlayerNumber: 1
 };
+
+let Tricks = {
+	// Common/Misc
+	categoryCommonMisc: {
+		isCategory: true,
+		displayText: "Common/Misc"
+	},
+	ocarinaItems: {
+		enabled: true,
+		canDo: () => Tricks.ocarinaItems.enabled &&
+			GameStateSets.HAS_BOTTLE() &&
+			(Items.BUGS.playerHas || Items.FISH.playerHas),
+		displayText: "Ocarina Items",
+		description: "Empty + recatch bugs or fish so you are holding the bottle; backflip, quickly press a working item then the bottle you are holding before you land; you should now be playing an ocarina\x0A\x0AWorking items include any sword, stick, hammer, explosive, slingshot, bow, hookshot, and boomerang",
+		links: [{
+			url: "https://www.zeldaspeedruns.com/oot/tech/ocarina-items",
+			description: "ZSR Trick Page"
+		}]
+	},
+	difficultOcarinaItems: {
+		enabled: true,
+		canDo: () => Tricks.difficultOcarinaItems.enabled &&
+			GameStateSets.HAS_BOTTLE() &&
+			(Items.BUGS.playerHas || Items.FISH.playerHas),
+		displayText: "Harder Ocarina Items",
+		description: "This is for harder areas to execute the ocarina items glitch - includes the Skull Kid ocarina minigame and the Skull Kid you play Saria's Song for.",
+		links: [{
+			url: "https://www.zeldaspeedruns.com/oot/tech/ocarina-items",
+			description: "ZSR Trick Page"
+		}]
+	},
+	megaFlip: {
+		enabled: true,
+		canDo: (age) => Tricks.megaFlip.enabled &&
+			ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]),
+		canDoWithChu: (age) => Tricks.megaFlip.canDo(age) && 
+			Items.BOMBCHU.playerHas,
+		displayText: "Megaflip and Megasidehop",
+		description: "For all of these, face toward where you want to go; turn 180\x0A\x0AMEGAFLIP:\x0A- BOMB: Move forward a little bit; dryroll; insta drop + roll; backflip; roll and spam backflip + shield when the bomb is about to explode\x0A- CHU: Chu to black after the 7th red flash, or the next frame (the 8th red flash); shield drop it and roll (keep Z and shield held); backflip on the frame Link is looking upward, but his shield is not out\x0A\x0AMEGASIDEHOP:\x0A- BOMB: Same as megaflip, but roll on any of the last 5 frames of the explosion, and spam left sidehop + shield\x0A- CHU: Roll at the rhythm of when an 8th red flash WOULD happen if the frequency didn't increase; spam left sidehop + shield"
+	},
+	isg: {
+		enabled: false,
+		canDo: (age) => Tricks.isg.enabled &&
+        	ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]),
+		displayText: "Infinite Sword Glitch",
+		description: "Requires a sword and a shield. Interrupt a crouch stab with an A button action or Navi text on the correct frame."
+	},
+	qpa: {
+		// Note that we're omitting the canDo for now in favor of QPAItemSets
+		enabled: false,
+		displayText: "Quick Putaway",
+		description: "WITH A SHORT LEDGE: At a ledge you fall down but can't grab, slowly walk off (value of 27 is high enough); press A for one frame; press B or your sword item (to jumpslash) on the next frame; it worked if you jumpslash with no item\x0A\x0AWITH A CUTSCENE ITEM: Take out a deku stick and wait for the Put Away option; press A to put it away, and press the cutscene item on the next frame. Perform this, then break a stick to get the glitched value on the stick. Doing so while breaking a stick on a mud wall will break it without needing a shield (AND will activate QPA on all weapons).\x0A\x0ABoth ages can get broken stick by facing a vertical wall; turn right; ess left x3; jumpslash with stick.\x0A\x0ANote that most torches can be lit as Child by getting ISG and backflipping into them.",
+		links: [{
+			url: "https://www.zeldaspeedruns.com/oot/tech/quick-putaway-glitched-damage-value",
+			description: "ZSR Trick Page"
+		}]
+	},
+	lungeStorage: {
+		enabled: false,
+		canDo: (age) => Tricks.lungeStorage.enabled &&
+			ItemData.canUseAny(age, [
+				Equipment.MASTER_SWORD, 
+				Equipment.KOKIRI_SWORD, 
+				Items.DEKU_STICK]),
+		canDoWithQuickDraw: (age) => Tricks.lungeStorage.enabled &&
+			ItemData.canUseAny(age, [
+				Items.DEKU_STICK, 
+				Equipment.BIGGORONS_SWORD, 
+				GlitchItemSets.QUICKDRAW]),
+		displayText: "Lunge Storage",
+		description: "Get close to any ledge and face so aren't facing the dropoff with your sword weapon out; press up and the sword weapon at the same time; it worked if you fell or are now hanging off the ledge.",
+		links: [{
+			url: "https://www.zeldaspeedruns.com/oot/tech/lunge-storage",
+			description: "ZSR Trick Page"
+		}]
+	},
+	flameStorage: {
+		enabled: false,
+		canDo: (age) => Tricks.flameStorage.enabled &&
+			ItemData.canUse(age, Items.DEKU_STICK),
+		displayText: "Flame Storage",
+		description: "Line up with a torch so that it will light when you take it out. With Navi out (press A if she isn't), press the stick and then A to put it away quickly. The next time you take it out, it will be lit as long as the torch is still loaded."
+	},	
+	groundJump: {
+		enabled: false,
+		canDoWithBomb: (age) => Tricks.groundJump.enabled &&
+			ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]),
+		canDoWithBombOrStrength: (age) => Tricks.groundJump.enabled && // Includes bombflowers or pots
+			ItemData.canUse(age, ItemSets.SHIELDS) &&
+			ItemData.canUseAny(age, [ItemSets.EXPLOSIVES, Equipment.STRENGTH]),
+		displayText: "Ground Jump",
+		description: "Place a bomb/bombflower in front of you; take out a sword and take a step back; hold Z and shield and press A; if it worked, you'll shield the explosion and your next backflip will be straight up\x0A\x0AWith chus (works with bombflowers and pots), position as far as you can from it so that the A button still says Grab; take out a chu; press R, then A + R quickly (keep R held); you'll shield the explosion and store a ground jump if you done correctly",
+	},
+	TEST: {
+		enabled: false,
+		canDo: (age) => true,
+		displayText: "TEST",
+		description: "TEST",
+		links: [{}]
+	},
+
+};
