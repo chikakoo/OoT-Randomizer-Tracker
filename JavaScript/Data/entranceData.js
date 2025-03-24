@@ -891,7 +891,7 @@ GrottoGroups = {
 				LongDescription: "The skulltula is high up behind the mud wall to your left when you enter.",
 				NeedsAny: [
 					[ItemSets.GRAB_SHORT_DISTANCE_ITEMS, ItemSets.MUD_WALL_ITEMS],
-					GlitchItemSets.STAIRCASE_HOVER
+					Tricks.staircaseHover.canDo
 				]
 			},
 			"4 Pots": {

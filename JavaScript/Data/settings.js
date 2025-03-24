@@ -446,6 +446,29 @@ let Tricks = {
 		displayText: "Ground Jump",
 		description: "Place a bomb/bombflower in front of you; take out a sword and take a step back; hold Z and shield and press A; if it worked, you'll shield the explosion and your next backflip will be straight up\x0A\x0AWith chus (works with bombflowers and pots), position as far as you can from it so that the A button still says Grab; take out a chu; press R, then A + R quickly (keep R held); you'll shield the explosion and store a ground jump if you done correctly",
 	},
+	staircaseHover: {
+		enabled: false,
+		canDo: (age) => Tricks.staircaseHover.enabled &&
+			ItemData.canUse(age, [Items.BOMB, ItemSets.SWORDS, ItemSets.SHIELDS]),
+		displayText: "Staircase Hover",
+		description: "Get ISG; shield drop a bomb; sidehop; drop another; holding Z, walk between the bombs; backflip just before the first bomb explodes, then again before the second; can drop more bombs and time more backflips if you need more height"
+	},
+
+
+	//TODO next: finish this and write out better instructions
+	bombSuperslide: {
+		enabled: false,
+		canDo: (age) => true,
+		displayText: "Bomb Superslide",
+		description: "Requires bombs and a shield to do a superslide to move backwards very quickly."
+	},
+	hammerHoverBootsSuperslide: {
+		enabled: false,
+		canDo: (age) => true,
+		displayText: "Hammer & Hover Boots Superslide",
+		description: "Hit a wall and equip hover boots on the right frame to slide backwards really quickly to cross gaps.",
+		links: [{}]
+	},
 	TEST: {
 		enabled: false,
 		canDo: (age) => true,
@@ -453,5 +476,4 @@ let Tricks = {
 		description: "TEST",
 		links: [{}]
 	},
-
 };

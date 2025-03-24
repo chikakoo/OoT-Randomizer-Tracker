@@ -168,7 +168,7 @@ let MQDungeons = {
                         LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so.<br/><br/>Head to the other side of the room. The room up the vines to the left is blocked by rocks. Use a bombchu to gain access. The skulltula is up on the wall.",
                         // The staircase hover requires one additional bomb drop to gain enough height
                         // Start the hover against the wall
-                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Tricks.staircaseHover.canDo]
                     }
                 }
             },
@@ -1367,7 +1367,7 @@ let MQDungeons = {
                             // Collect token
                             [SetType.OR, 
                                 ItemSets.GRAB_SHORT_DISTANCE_ITEMS,
-                                GlitchItemSets.STAIRCASE_HOVER]]
+                                Tricks.staircaseHover.canDo]]
                     }
                 }
             },
@@ -4225,7 +4225,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "Get to the right side of the giant room. Hit the switch behind the gate to open it to get to the falling spike room. In the first cell to the left is the skulltula.",
-                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Tricks.staircaseHover.canDo]
                     },
                     "Bottom Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -6805,7 +6805,7 @@ let MQDungeons = {
                         Needs: [Items.MEGATON_HAMMER]
                     },
                     center: {
-                        NeedsAny: [GlitchItemSets.STAIRCASE_HOVER, ItemLocationSets.ALL_TRIALS_COMPLETED]
+                        NeedsAny: [Tricks.staircaseHover.canDo, ItemLocationSets.ALL_TRIALS_COMPLETED]
                     }
                 },
                 ItemLocations: {

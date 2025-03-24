@@ -149,7 +149,6 @@ let SettingsPage = {
         tricksContainer.appendChild(tricksHeader);
 
         let _this = this;
-        let currentCategoryContainerDiv;
         let currentCategoryTricksContainerDiv;
         Object.keys(Tricks).forEach(trickName => {
             let trick = Tricks[trickName];
@@ -157,21 +156,27 @@ let SettingsPage = {
             if (trick.isCategory) {
                 let categoryTricksContainerId = `settings-tricks-container-${trick.displayText}`;
 
-                currentCategoryContainerDiv = dce("div", "settings-group");
-                currentCategoryContainerDiv.innerText = trick.displayText;
-                currentCategoryContainerDiv.id = `settings-trick-category-${trick.displayText}`;
-                currentCategoryContainerDiv.onclick = _this.showOrHideGroup.bind(_this, null, categoryTricksContainerId, undefined);
+                let categoryContainerDiv = dce("div", "settings-group");
+                categoryContainerDiv.id = `settings-trick-category-${trick.displayText}`;
+                categoryContainerDiv.onclick = _this.showOrHideGroup.bind(_this, null, categoryTricksContainerId, undefined);
+
+                let categoryTitle = dce("span");
+                categoryTitle.innerText = trick.displayText;
 
                 currentCategoryTricksContainerDiv = dce("div", "settings-tricks-container")
                 currentCategoryTricksContainerDiv.id = categoryTricksContainerId;
                 
-                tricksContainer.appendChild(currentCategoryContainerDiv);
-                currentCategoryContainerDiv.appendChild(currentCategoryTricksContainerDiv);
+                categoryContainerDiv.appendChild(categoryTitle);
+                categoryContainerDiv.appendChild(currentCategoryTricksContainerDiv);
+                tricksContainer.appendChild(categoryContainerDiv);
                 return;
             }
 
-            let trickDiv = dce("div");
+            let trickDiv = dce("div", "settings-trick");
             trickDiv.id = `settings-trick-${trick.displayText}`;
+            trickDiv.onclick = function(event) {
+                event.stopPropagation();
+            };
 
             let trickLabel = dce("label");
             trickLabel.title = trick.description;
@@ -193,13 +198,13 @@ let SettingsPage = {
             trickLabel.appendChild(trickDisplayText);
             trickDiv.appendChild(trickLabel);
 
-            _this._appendLinksToTrick(trickDiv, trick.links);
+            _this._appendLinksToTrick(trickLabel, trick.links);
 
             currentCategoryTricksContainerDiv.appendChild(trickDiv);
         });
     },
 
-    _appendLinksToTrick: function(trickDiv, linkObjects) {
+    _appendLinksToTrick: function(trickLabel, linkObjects) {
         if (!linkObjects) {
             return;
         }
@@ -210,10 +215,11 @@ let SettingsPage = {
             link.title = linkObject.description;
             link.onclick = function(event) {
                 event.stopPropagation();
+                event.preventDefault();
                 window.open(linkObject.url, '_blank');
             }
                 
-            trickDiv.appendChild(link);
+            trickLabel.appendChild(link);
         });
     },
 

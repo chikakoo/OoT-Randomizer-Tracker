@@ -147,9 +147,8 @@ let GlitchItemSets = {
     BOW_EXTENSION_SOT_BLOCKS: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.hookshotExtensionSotBlocks &&
         ItemData.canUse(age, Items.FAIRY_BOW),
-    STAIRCASE_HOVER: (age) => 
-        Settings.GlitchesToAllow.staircaseHover &&
-        ItemData.canUse(age, [Items.BOMB, ItemSets.SWORDS, ItemSets.SHIELDS]),
+
+
     BOMB_SUPERSLIDE: (age) => 
         Settings.GlitchesToAllow.bombSuperslide &&
         ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]),
@@ -159,14 +158,6 @@ let GlitchItemSets = {
         Settings.GlitchesToAllow.hammerHoverBootsSuperslide &&
         ItemData.canUse(age, [Equipment.HOVER_BOOTS, Items.MEGATON_HAMMER]),
 
-
-	GROUND_JUMP: (age) => 
-        Settings.GlitchesToAllow.groundJump && 
-        ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]),
-    GROUND_JUMP_INCLUDING_BOMB_FLOWER: (age) => 
-        Settings.GlitchesToAllow.groundJump &&
-        ItemData.canUse(age, ItemSets.SHIELDS) &&
-        ItemData.canUseAny(age, [ItemSets.EXPLOSIVES, Equipment.STRENGTH]), // Includes the chu in front of bomb flower trick
 
 	BOOMERANG_THROUGH_WALLS: (age) => 
         Settings.GlitchesToAllow.boomerangThroughWalls && 

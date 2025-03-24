@@ -3338,7 +3338,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 14,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). Take out the enemies in this room to open up the gate - there's a like-like and a few keese in the corners. If you don't have a range weapon, jumpslash at the keese to alert them to you. The skulltula is behind the open gate.<br/><br/>If you are an adult and have no hookshot, you can kill the skulltula with a jumpslash. Line yourself up so that you, the chest, and the token are in a line. Face the other way and do two backflips (Down + Z + spam A). If you were the right distance away, you should grab the token after backflipping off the chest.",
-                        ChildNeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
+                        ChildNeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Tricks.staircaseHover.canDo]
                     },
                     "5 Pit Room Silver Rupees": {
                         ItemGroup: ItemGroups.GROUP,
@@ -3375,7 +3375,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 16,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn right, and time your jump to the rising and falling platform. Hover Boots help here if you have them. After making it to the next area, collect all the silver rupees. Now enter the area that opened up. The skulltula is in the first cage to the left near the ceiling spikes. To pass them, you can either use good timing, or pull the block out of the wall to the right (use the lens to find it) to act as an umbrella - assuming you have a strength upgrade.",
-                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Tricks.staircaseHover.canDo]
                     },
                     "Bottom Chest in Falling Spikes Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3596,7 +3596,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 31,
                         LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. If you face the front of the boat, you can see the skulltula slightly to your left. You can get it with your longshot - Scarecrow's Song can help, but isn't needed.",
-                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Tricks.staircaseHover.canDo]
                     }
                 }
             },
@@ -5144,7 +5144,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 19,
                         LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the left side to get to the skulltula.",
-                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Tricks.staircaseHover.canDo]
                     }
                 }
             },
@@ -5158,7 +5158,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 21,
                         LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the right side. Hug the right wall, moving counter-clockwise, over the invisible floor to get to the skulltula.",
-                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Tricks.staircaseHover.canDo]
                     }
                 }
             },
@@ -5247,7 +5247,7 @@ let StandardDungeons = {
                         LongDescription: "This is the room after the crawlspace at the upper right part of the main room. Be careful of the invisible pits in this room. If you don't have the lens - here's one way to get around (it's still difficult). Get to the corner of the room with the chest. Face the left wall (the one the door is NOT on). Do two left sidehops and move a tiny bit more left. Go straight to where the beamos is (or was). Now angle yourself diagonal left toward the door and pray you make it. The skulltula is guarded by a like-like that you don't have to kill.",
                         // The staircase hover requires two additional bomb drops to gain enough height
                         // Start the hover against the wall
-                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Tricks.staircaseHover.canDo]
                     }
                 }
             },
@@ -6125,7 +6125,7 @@ let StandardDungeons = {
                     center: {
                         NeedsAny: [
                             GlitchItemSets.GANON_TRIAL_SKIP, 
-                            GlitchItemSets.STAIRCASE_HOVER, 
+                            Tricks.staircaseHover.canDo, 
                             ItemLocationSets.ALL_TRIALS_COMPLETED
                         ]
                     },

@@ -3384,7 +3384,7 @@ let MapLocations = {
                 Exits: {
                     acrossBridge: {
                         ChildNeedsAny: [
-                            GlitchItemSets.STAIRCASE_HOVER, 
+                            Tricks.staircaseHover.canDo, 
                             Tricks.megaFlip.canDoWithChu,
                             GlitchItemSets.CUCCO_JUMP],
                         AdultNeedsAny: [
@@ -4507,7 +4507,7 @@ let MapLocations = {
                         MapInfo: { x: 208, y: 85 },
                         Age: Age.EITHER,
                         LongDescription: "The skulltula is in the outpost in the center of the desert.",
-                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.STAIRCASE_HOVER]
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Tricks.staircaseHover.canDo]
                     },
                     "Chest at Outpost": {
                         ItemGroup: ItemGroups.CHEST,

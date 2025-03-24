@@ -52,7 +52,8 @@
     flex-direction: column;
 }
 
-.settings-group > span:hover, .settings-save-file-group > span:hover {
+.settings-group > span:hover,
+.settings-save-file-group > span:hover {
     color: orange;
 }
 
@@ -62,8 +63,14 @@
     width: max-content;
 }
 
-.settings-group label:hover {
+.settings-group label:hover,
+.settings-trick label:hover {
     color: red;
+}
+
+.settings-trick label:hover:has(> .settings-link:hover) {
+    text-decoration: underline;
+    color: lightblue;
 }
 
 .settings-important {
