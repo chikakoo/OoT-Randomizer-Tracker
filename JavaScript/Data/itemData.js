@@ -321,7 +321,7 @@ let Keys = {
 		minimumKeys: function() { 
 			let canChildAccess = Settings.RandomizerSettings.shuffleDungeonEntrances || Settings.GlitchesToAllow.gtgChildAllowed;
 			let canChildSkipKeys = Settings.GlitchesToAllow.gtgChildVineClips && canChildAccess;
-			let canSkipKeys = canChildSkipKeys || Settings.GlitchesToAllow.weirdShot;
+			let canSkipKeys = canChildSkipKeys || Tricks.weirdShot.enabled;
 			return canSkipKeys ? 0 : 7;
 		}, 
 		totalKeys: function() { return 9; }, 
@@ -330,7 +330,7 @@ let Keys = {
 		mqMinimumKeys: function() {
 			let canChildAccess = Settings.RandomizerSettings.shuffleDungeonEntrances || Settings.GlitchesToAllow.gtgChildAllowed;
 			let canChildSkipKeys = Settings.GlitchesToAllow.gtgChildVineClips && canChildAccess;
-			let canSkipKeys = canChildSkipKeys || Settings.GlitchesToAllow.weirdShot;
+			let canSkipKeys = canChildSkipKeys || Tricks.weirdShot.enabled;
 			return canSkipKeys ? 0 : 3;
 		},
 		mqTotalKeys: function() { return 3; }

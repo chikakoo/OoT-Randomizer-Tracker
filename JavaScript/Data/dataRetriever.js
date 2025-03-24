@@ -928,13 +928,15 @@ Data = {
      * @param {Boolean} isUpperHive - Whether bombs can reach it and whether you need the bombchu trick for it
      */
     canBreakBeehive: function(age, isUpperHive) {
-        let canBreakWithBombs = Settings.GlitchesToAllow.breakBeehivesWithBombs && Items.BOMB.playerHas;
-        if (!isUpperHive && canBreakWithBombs) {
+        if (!isUpperHive && Tricks.breakBeehivesWithBombs.canDo()) {
             return true;
         }
 
-        let canBreakWithChus = Settings.GlitchesToAllow.breakBeehivesWithChus && Items.BOMBCHU.playerHas;
-        return canBreakWithChus || ItemData.canUseAny(age, [Items.BOOMERANG, Items.HOOKSHOT]);
+        return ItemData.canUseAny(age, [
+            Items.BOOMERANG, 
+            Items.HOOKSHOT, 
+            Tricks.breakBeehivesWithChus.canDo
+        ]);
     },
     
     /**

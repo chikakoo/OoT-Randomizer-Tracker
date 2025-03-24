@@ -509,27 +509,63 @@ let Tricks = {
 			description: "Video"
 		}]
 	},
-	TEST2: {
+	weirdShot: {
 		enabled: false,
-		canDo: (age) => true,
-		displayText: "TEST",
-		description: "TEST",
+		_hasBasicItems: (age) => Tricks.weirdShot.enabled &&
+        	ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB]),
+		canDo: (age) => Tricks.weirdShot._hasBasicItems(age) &&
+			ItemData.canUse(age, Items.HOOKSHOT),
+		canDoWithLongshot: (age) => Tricks.weirdShot._hasBasicItems(age) &&
+			ItemData.canUse(age, UpgradedItems.LONGSHOT),
+		canDoWithProjectiles: (age) => Tricks.weirdShot._hasBasicItems(age) &&
+			ItemData.canUse(age, ItemSets.PROJECTILES),
+		displayText: "Weird Shot",
+		description: "Works with hookshot, longshot, and any projectiles.\x0A\x0ABonk on a wall; shield drop bomb, roll, backflip; press hookshot and shield quickly so it's out (and keep Z and R held); when bomb almost explodes, roll foward holding down, Z, R, hookshot; release R and Z one after another at the right time",
 		links: [{
-			url: "",
+			url: "https://youtu.be/x08fkfU2124",
 			description: "Video"
 		}]
 	},
-	TEST3: {
+	hookshotExtensionSotBlocks: {
 		enabled: false,
-		canDo: (age) => true,
-		displayText: "TEST",
-		description: "TEST",
-		links: [{
-			url: "",
-			description: "Video"
-		}]
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.hookshotExtensionSotBlocks.enabled &&
+			ItemData.canUse(age, Items.HOOKSHOT),
+		canDoWithBow: (age) => age === Age.ADULT &&
+			Tricks.hookshotExtensionSotBlocks.enabled &&
+			ItemData.canUse(age, Items.FAIRY_BOW),
+		displayText: "Hookshot Extention Through SoT Blocks",
+		description: "Get in the very corner of the block so you clip through; take out hookshot (or bow); press A, then hookshot and up again real quick; aim down and hit what you are trying to hit.\x0A\x0ACurrently has uses in MQ Deku, MQ Jabu, and MQ Shadow."
 	},
-	TEST4: {
+	boomerangThroughWalls: {
+		enabled: false,
+		canDo: (age) => Tricks.boomerangThroughWalls.enabled &&
+			ItemData.canUse(age, Items.BOOMERANG),
+		displayText: "Boomerang Items Through Walls",
+		description: "Used in various places to throw a boomerang at an angle to snag items through walls or rocks."
+	},
+	boomerangTrickThrows: {
+		enabled: false,
+		canDo: (age) => Tricks.boomerangTrickThrows.enabled &&
+			ItemData.canUse(age, Items.BOOMERANG),
+		displayText: "Boomerang Trick Throws",
+		description: "Used in various places to throw a boomerang to retrieve freestanding items."
+	},
+	breakBeehivesWithBombs: {
+		enabled: false,
+		canDo: () => Tricks.breakBeehivesWithBombs.enabled && Items.BOMB.playerHas,
+		displayText: "Break Beehives with Bombs",
+		description: "Cook a bomb long enough to blow up beehives. In each case, throw the bomb at the beehive so that it blows up on it."
+	},
+	breakBeehivesWithChus: {
+		enabled: false,
+		canDo: () => Tricks.breakBeehivesWithChus.enabled && Items.BOMBCHU.playerHas,
+		displayText: "Break Beehives with Bombchus",
+		description: "Cook a bombchu long enough to blow up beehives. Each check should have a rough timing in its description."
+	},
+
+
+	TEST: {
 		enabled: false,
 		canDo: (age) => true,
 		displayText: "TEST",

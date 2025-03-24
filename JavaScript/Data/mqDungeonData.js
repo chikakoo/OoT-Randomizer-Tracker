@@ -127,7 +127,7 @@ let MQDungeons = {
                     },
                     compassRoomSkulltula: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.LONGSHOT_WEIRD_SHOT]
+                        Needs: [Tricks.weirdShot.canDoWithLongshot]
                     }
                 },
                 ItemLocations: {
@@ -213,7 +213,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "From the basement, head to the door to the right of the vines. You'll need to either use Din's Fire or run a lit Deku Stick into this room. Light the torches by the other door to gain access to the water room.<br/><br/>Make your way to the other side of the water room. You'll need to roll or crouch with your shield under the spikey pole. Play the Song of Time by the block to reveal the chest.<br/><br/>The hookshot extention glitch can be used to get this from the left side of the block.",
-                        NeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.HOOKSHOT_EXTENSION_SOT_BLOCKS]
+                        NeedsAny: [Songs.SONG_OF_TIME, Tricks.hookshotExtensionSotBlocks.canDo]
                     }
                 }
             },
@@ -293,7 +293,7 @@ let MQDungeons = {
                             Items.DEKU_STICK,
                             ItemLocationSets.MQ_DEKU_WEB_BURNED,
                             QPAItemSets.LEDGE_QPA,
-                            GlitchItemSets.WEIRD_SHOT
+                            Tricks.weirdShot.canDo
                         ]
                     }
                 },
@@ -1244,7 +1244,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 15,
                         LongDescription: "In the path leading to the elevator room, there's a skulltula under the Song of Time block. Play the song to move the block.<br/><br/>If you have the boomerang, you can also aim it to the left and slightly downward to get the skulltula through the block.<br/><br/>The hookshot extension can be used for this from the left side of the block (pretty precise). First, kill the skulltula with your sword through the block.",
-                        NeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.BOOMERANG_THROUGH_WALLS, GlitchItemSets.HOOKSHOT_EXTENSION_SOT_BLOCKS]
+                        NeedsAny: [Songs.SONG_OF_TIME, Tricks.boomerangThroughWalls.canDo, Tricks.hookshotExtensionSotBlocks.canDo]
                     }
                 }
             },
@@ -1721,7 +1721,7 @@ let MQDungeons = {
                         Needs: [Items.FIRE_ARROW]
                     },
                     outsideWestHearts: {
-                        Needs: [GlitchItemSets.BOOMERANG_TRICK_THROWS]
+                        Needs: [Tricks.boomerangTrickThrows.canDo]
                     },
                     well: {}
                 },
@@ -1876,7 +1876,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         NeedsAny: [
                             Equipment.HOVER_BOOTS, // Jumpslash the switch above
-                            [GlitchItemSets.WEIRD_SHOT, Tricks.megaFlip.canDo] // Weird shot with your side to the switch
+                            [Tricks.weirdShot.canDo, Tricks.megaFlip.canDo] // Weird shot with your side to the switch
                         ] 
                     }
                 },
@@ -1945,7 +1945,7 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "3 Hearts",
                         MapInfo: { x: 81, y: 73, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
+                        UseAdultAge: function() { return !Tricks.boomerangTrickThrows.enabled; },
                         Order: 16,
                         LongDescription: "Fall down the hole in the boss key room. Kill the Floormaster and proceed through the door. <br/><br/>The hearts are on the skinny platform that you have to jump to, near the skulltula on the wall. Be careful not to fall off."
                     }
@@ -2164,7 +2164,7 @@ let MQDungeons = {
                     },
                     cellByEntrance: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.WEIRD_SHOT]
+                        Needs: [Tricks.weirdShot.canDo]
                     },
                     bigLavaRoom: {
                         Needs: [Items.MEGATON_HAMMER, GameStateSets.FIRE_TEMPLE_TUNIC_CHECK],
@@ -2483,7 +2483,7 @@ let MQDungeons = {
                     },
                     cellBelowBoulderMaze: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.WEIRD_SHOT]
+                        Needs: [Tricks.weirdShot.canDo]
                     }
                 },
                 ItemLocations: {
@@ -3130,7 +3130,7 @@ let MQDungeons = {
                     },
                     bottomGateSwitch: {
                         // Angle diagonally so the knockback doesn't make you fall
-                        Needs: [GlitchItemSets.WEIRD_SHOT]
+                        Needs: [Tricks.weirdShot.canDo]
                     }
                 },
                 ItemLocations: {
@@ -3516,7 +3516,7 @@ let MQDungeons = {
                 Exits: {
                     dragonRoom: {},
                     afterSingleWaterPillarRoomGate: {
-                        NeedsAny: [Items.DINS_FIRE, GlitchItemSets.LONGSHOT_WEIRD_SHOT]
+                        NeedsAny: [Items.DINS_FIRE, Tricks.weirdShot.canDoWithLongshot]
                     }
                 },
                 ItemLocations: {
@@ -3572,7 +3572,7 @@ let MQDungeons = {
                     upperTripleTorchRoom: {
                         Needs: [
                             Equipment.IRON_BOOTS,
-                            [SetType.OR, Items.FIRE_ARROW, GlitchItemSets.WEIRD_SHOT]
+                            [SetType.OR, Items.FIRE_ARROW, Tricks.weirdShot.canDo]
                         ],
                         NeedsAny: [Equipment.HOVER_BOOTS, GameStateSets.CAN_HOOK_SCARECROW]
                     },
@@ -4056,7 +4056,7 @@ let MQDungeons = {
                         UseAdultAge: function(age) { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                         Order: 9,
                         LongDescription: "First, turn the truth spinner in the main room to the correct skull to open the gate. Now, shoot the torches to the left and right of the gate to create a platform. Alternatively, you can megaflip or hover boots across. Take the left door from the beamos. Gather all the rupees to open the cell to the chest.",
-                        NeedsAny: [SilverRupeeSets.MQ_SHADOW_SILVER_RUPEES_SCYTHE_ROOM, GlitchItemSets.WEIRD_SHOT]
+                        NeedsAny: [SilverRupeeSets.MQ_SHADOW_SILVER_RUPEES_SCYTHE_ROOM, Tricks.weirdShot.canDo]
                     },
                     "Invisible Chest Under Scythe Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4089,7 +4089,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Invisible Scythe & Pit Rooms", imageName: "Lens of Truth" },
                 Exits: {
                     gatedAreaInInvisibleScytheRoom: {
-                        NeedsAny: [SilverRupeeSets.MQ_SHADOW_SILVER_RUPEES_INVISIBLE_SCYTHE_ROOM, GlitchItemSets.WEIRD_SHOT]
+                        NeedsAny: [SilverRupeeSets.MQ_SHADOW_SILVER_RUPEES_INVISIBLE_SCYTHE_ROOM, Tricks.weirdShot.canDo]
                     }
                 },
                 ItemLocations: {
@@ -4540,7 +4540,7 @@ let MQDungeons = {
                             [SetType.OR,
                                 [Songs.SONG_OF_TIME, Items.FAIRY_BOW],
                                 QPAItemSets.LEDGE_QPA,
-                                GlitchItemSets.BOW_EXTENSION_SOT_BLOCKS],
+                                Tricks.hookshotExtensionSotBlocks.canDoWithBow],
                             
                             // Cross the gap
                             [SetType.OR,
@@ -4734,7 +4734,7 @@ let MQDungeons = {
                     silverBlockMaze: {
                         Age: Age.ADULT,
                         Needs: [Items.BOMBCHU, UpgradedItems.LONGSHOT],
-                        NeedsAny: [UpgradedItems.SILVER_GAUNTLETS, GlitchItemSets.PROJECTILE_WEIRD_SHOT]
+                        NeedsAny: [UpgradedItems.SILVER_GAUNTLETS, Tricks.weirdShot.canDoWithProjectiles]
                     },
                     roomRightOfLobby: {
                         ChildNeeds: [GlitchItemSets.MQ_SPIRIT_CHILD_GEYSER_SKIP],
@@ -4926,7 +4926,7 @@ let MQDungeons = {
             },
             childSide: {
                 DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
-                UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
+                UseChildAge: function() { return !Tricks.weirdShot.enabled; },
                 Exits: {
                     acrossChildGrateRoom: {
                         NeedsAny: [
@@ -4992,7 +4992,7 @@ let MQDungeons = {
             },
             acrossChildGrateRoom: {
                 DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
-                UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
+                UseChildAge: function() { return !Tricks.weirdShot.enabled; },
                 Exits: {
                     backOfChildBridgeRoom: {
                         Needs: [ItemSets.SWORDS]
@@ -5021,7 +5021,7 @@ let MQDungeons = {
             },
             backOfChildBridgeRoom: {
                 DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
-                UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
+                UseChildAge: function() { return !Tricks.weirdShot.enabled; },
                 Exits: {},
                 ItemLocations: {
                     "Small Chest in Bridge Room": {
@@ -5044,7 +5044,7 @@ let MQDungeons = {
                     },
                     childSide: {
                         Age: Age.ADULT, // Child would already have access from the lobby
-                        Needs: [Items.MEGATON_HAMMER, GlitchItemSets.LONGSHOT_WEIRD_SHOT]
+                        Needs: [Items.MEGATON_HAMMER, Tricks.weirdShot.canDoWithLongshot]
                     }
                 },
                 ItemLocations: {}
@@ -5214,7 +5214,7 @@ let MQDungeons = {
                             Songs.SONG_OF_TIME,
                             Equipment.HOVER_BOOTS,
                             Tricks.megaFlip.canDo,
-                            GlitchItemSets.BOOMERANG_TRICK_THROWS,
+                            Tricks.boomerangTrickThrows.canDo,
                             GlitchItemSets.SPIRIT_STATUE_ROOM_JUMPS
                         ]
                     }
@@ -5230,11 +5230,11 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 174, y: 227, floor: "F2" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
+                        UseChildAge: function() { return !Tricks.weirdShot.enabled; },
                         Order: 19,
                         LongDescription: "From the statue room, use a fire item on the southern eye switch to get to the maze room. Navigate to the first hole and shoot the eye switch on the lower left wall to spawn the chest.",
                         ChildNeeds: [Items.FAIRY_SLINGSHOT],
-                        AdultNeeds: [Items.FAIRY_BOW, GlitchItemSets.WEIRD_SHOT]
+                        AdultNeeds: [Items.FAIRY_BOW, Tricks.weirdShot.canDo]
                     }
                 }
             },
@@ -5272,10 +5272,10 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 68, y: 113, floor: "F3" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows; },
+                        UseAdultAge: function() { return !Tricks.boomerangTrickThrows.enabled; },
                         Order: 24.1,
                         LongDescription: "In the fire bubble room, you must push the first sun block you see onto the light. You'll need to hit the crystal switches to make the fire disappear. This spawns a white platform that you can hookshot up to so that you can reach the skulltula.",
-                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.BOOMERANG_TRICK_THROWS]
+                        NeedsAny: [Items.HOOKSHOT, Tricks.boomerangTrickThrows.canDo]
                     }
                 }
             },
@@ -5906,7 +5906,7 @@ let MQDungeons = {
         Floors: ["F1", "B1"],
         StartingFloorIndex: 0,
         UseChildAge: function() {
-            return !Settings.GlitchesToAllow.weirdShot || ( // Can't get past crawlspace
+            return !Tricks.weirdShot.enabled || ( // Can't get past crawlspace
                 !Settings.RandomizerSettings.shuffleDungeonEntrances && // Can't enter dungeon ever
                 !Settings.GlitchesToAllow.botwAsAdultWithCucco);
         },
@@ -5915,7 +5915,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Main Area Loop", imageName: "Slingshot Wonderitem" },
                 Exits: {
                     afterFirstCrawlSpace: {
-                        AdultNeeds: [GlitchItemSets.LONGSHOT_WEIRD_SHOT]
+                        AdultNeeds: [Tricks.weirdShot.canDoWithLongshot]
                     },
                     Exit: {
                         OwExit: OwExits["Bottom of the Well"]["Exit"]
@@ -6035,7 +6035,7 @@ let MQDungeons = {
                         NeedsAny: [
                             ItemSets.FIRE_ITEMS, 
                             Items.DEKU_STICK, 
-                            GlitchItemSets.BOOMERANG_THROUGH_WALLS,
+                            Tricks.boomerangThroughWalls.canDo,
                             QPAItemSets.LEDGE_QPA
                         ]
                     },
@@ -6049,7 +6049,7 @@ let MQDungeons = {
                         NeedsAny: [
                             ItemSets.FIRE_ITEMS, 
                             Items.DEKU_STICK, 
-                            GlitchItemSets.BOOMERANG_THROUGH_WALLS,
+                            Tricks.boomerangThroughWalls.canDo,
                             QPAItemSets.LEDGE_QPA
                         ]
                     }
@@ -6257,13 +6257,13 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
                 Exits: {
                     backOfMaze: {
-                        NeedsAny: [GlitchItemSets.GTG_CHILD_VINE_CLIP, GlitchItemSets.WEIRD_SHOT]
+                        NeedsAny: [GlitchItemSets.GTG_CHILD_VINE_CLIP, Tricks.weirdShot.canDo]
                     },
                     mazeCenter: {
                         NeedsAny: [
                             () => ItemData.getKeyCount("Training Grounds") >= 3,
                             GlitchItemSets.GTG_CHILD_VINE_CLIP,
-                            GlitchItemSets.WEIRD_SHOT
+                            Tricks.weirdShot.canDo
                         ]
                     }
                 },
@@ -6298,7 +6298,7 @@ let MQDungeons = {
                         NeedsAny: [
                             () => ItemData.getKeyCount("Training Grounds") >= 1,
                             GlitchItemSets.GTG_CHILD_VINE_CLIP,
-                            GlitchItemSets.WEIRD_SHOT
+                            Tricks.weirdShot.canDo
                         ]
                     }
                 }
@@ -6539,7 +6539,7 @@ let MQDungeons = {
                                     SetType.OR,
                                         () => ItemData.getKeyCount("Training Grounds") >= 3,
                                         GlitchItemSets.GTG_CHILD_VINE_CLIP,
-                                        GlitchItemSets.WEIRD_SHOT
+                                        Tricks.weirdShot.canDo
                                 ]
                             ]
                         ]
@@ -6946,7 +6946,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "In the water trial - this heart is in the blue ice in the right side of the room (or use a boomerang trick shot).<br/><br/>To gain access to the blue fire, attack the weird hand thing on the right side of the room to lower the water around the blue fire.",
-                        NeedsAny: [ItemSets.BLUE_FIRE_ITEMS, GlitchItemSets.BOOMERANG_THROUGH_WALLS]
+                        NeedsAny: [ItemSets.BLUE_FIRE_ITEMS, Tricks.boomerangThroughWalls.canDo]
                     }
                 }
             },

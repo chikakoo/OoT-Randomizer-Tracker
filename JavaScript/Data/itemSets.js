@@ -128,31 +128,6 @@ let GlitchItemSets = {
         age === Age.CHILD
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
-        
-	// Common
-    BASE_WEIRD_SHOT: (age) => 
-        Settings.GlitchesToAllow.weirdShot &&
-        ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB]),
-	WEIRD_SHOT: (age) => 
-        ItemData.canUse(age, [GlitchItemSets.BASE_WEIRD_SHOT, Items.HOOKSHOT]),
-    LONGSHOT_WEIRD_SHOT: (age) => 
-        ItemData.canUse(age, [GlitchItemSets.BASE_WEIRD_SHOT, UpgradedItems.LONGSHOT]),
-    PROJECTILE_WEIRD_SHOT: (age) => 
-        ItemData.canUse(age, [GlitchItemSets.BASE_WEIRD_SHOT, ItemSets.PROJECTILES]),
-
-    HOOKSHOT_EXTENSION_SOT_BLOCKS: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.hookshotExtensionSotBlocks &&
-        ItemData.canUse(age, Items.HOOKSHOT),
-    BOW_EXTENSION_SOT_BLOCKS: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.hookshotExtensionSotBlocks &&
-        ItemData.canUse(age, Items.FAIRY_BOW),
-
-	BOOMERANG_THROUGH_WALLS: (age) => 
-        Settings.GlitchesToAllow.boomerangThroughWalls && 
-        ItemData.canUse(age, Items.BOOMERANG),
-    BOOMERANG_TRICK_THROWS: (age) => 
-        Settings.GlitchesToAllow.difficultBoomerangTrickThrows && 
-        ItemData.canUse(age, Items.BOOMERANG),
 
     // HF / Market / Castle
     DOUBLE_DEFENSE_EARLY: (age) => Settings.GlitchesToAllow.doubleDefenseEarly &&
@@ -185,7 +160,7 @@ let GlitchItemSets = {
     LOST_WOODS_SKULL_WITHOUT_BEAN: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.lwSkullWithoutBean &&
         // Note that you can ALWAYS kill the skull with the weird pause triple slash glitch
-        ItemData.canUseAny(age, [Items.HOOKSHOT, GlitchItemSets.BOOMERANG_TRICK_THROWS]),
+        ItemData.canUseAny(age, [Items.HOOKSHOT, Tricks.boomerangTrickThrows.canDo]),
     PRESSURE_JUMP: () => Settings.GlitchesToAllow.lwBridgePressureJump && Items.BOMB.playerHas,
 
 	// Kakariko/Graveyard

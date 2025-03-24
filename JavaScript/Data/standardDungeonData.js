@@ -184,7 +184,7 @@ let StandardDungeons = {
                         NeedsAny: [
                             ItemLocationSets.DEKU_WEB_BURNED,
                             (age) => MapLocations["Deku Tree"]._canBurnBasementWeb(age),
-                            GlitchItemSets.WEIRD_SHOT
+                            Tricks.weirdShot.canDo
                         ]
                     }
                 },
@@ -528,7 +528,7 @@ let StandardDungeons = {
                         ]
                     },
                     potsInBladeRoom: {
-                        Needs: [GlitchItemSets.BOOMERANG_TRICK_THROWS]
+                        Needs: [Tricks.boomerangTrickThrows.canDo]
                     }
                 },
                 ItemLocations: {
@@ -1145,7 +1145,7 @@ let StandardDungeons = {
                         Needs: [UpgradedItems.LONGSHOT]
                     },
                     outsideLeftHearts: {
-                        Needs: [GlitchItemSets.BOOMERANG_TRICK_THROWS]
+                        Needs: [Tricks.boomerangTrickThrows.canDo]
                     },
                     outsideRight: {
                         // This is to swim through the well
@@ -1369,7 +1369,7 @@ let StandardDungeons = {
                         MapInfo: { x: 81, y: 73, floor: "F1" },
                         Age: Age.EITHER,
                         UseAdultAge: function() {
-                            return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows &&
+                            return !Tricks.boomerangTrickThrows.enabled &&
                                 !Tricks.megaFlip.enabled;
                         },
                         Order: 17,
@@ -1553,7 +1553,7 @@ let StandardDungeons = {
                     bossKeyRoom: {
                         Map: "Fire Temple",
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.WEIRD_SHOT]
+                        Needs: [Tricks.weirdShot.canDo]
                     },
                     bossKeyPath: {
                         Map: "Fire Temple",
@@ -1935,7 +1935,7 @@ let StandardDungeons = {
                     },
                     goronInPitCell: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.WEIRD_SHOT]
+                        Needs: [Tricks.weirdShot.canDo]
                     }
                 },
                 ItemLocations: {}
@@ -2220,7 +2220,7 @@ let StandardDungeons = {
                         Needs: [Items.MEGATON_HAMMER, Songs.SONG_OF_TIME]
                     },
                     centerRoomCell: {
-                        Needs: [GlitchItemSets.WEIRD_SHOT]
+                        Needs: [Tricks.weirdShot.canDo]
                     }
                 },
                 ItemLocations: {}
@@ -2666,7 +2666,7 @@ let StandardDungeons = {
                     },
                     behindBlockArea: {
                         // Get next to the block via the top floor and do a weird shot
-                        Needs: [GlitchItemSets.WEIRD_SHOT],
+                        Needs: [Tricks.weirdShot.canDo],
                         NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
                     roomWithManyTektitesAntechamber: {},
@@ -2813,7 +2813,7 @@ let StandardDungeons = {
                                     Equipment.HOVER_BOOTS, 
                                     GlitchItemSets.WATER_EYE_SWITCH_GATE_FROM_TOP]
                             ],
-                            GlitchItemSets.WEIRD_SHOT
+                            Tricks.weirdShot.canDo
                         ]
                     },
                     crackedWallArea: {
@@ -2909,7 +2909,7 @@ let StandardDungeons = {
                     dragonRoom: {},
                     bottomSouthWing: {},
                     behindBlockArea: {
-                        NeedsAny: [Equipment.STRENGTH, GlitchItemSets.WEIRD_SHOT]
+                        NeedsAny: [Equipment.STRENGTH, Tricks.weirdShot.canDo]
                     }
                 },
                 ItemLocations: {}
@@ -2918,7 +2918,7 @@ let StandardDungeons = {
                 Exits: {
                     dragonRoom: {},
                     behindBlockArea: {
-                        NeedsAny: [Equipment.STRENGTH, GlitchItemSets.WEIRD_SHOT]
+                        NeedsAny: [Equipment.STRENGTH, Tricks.weirdShot.canDo]
                     }
                 },
                 ItemLocations: {}
@@ -3280,15 +3280,7 @@ let StandardDungeons = {
                         UseAdultAge: function(age) { return !Settings.RandomizerSettings.shuffleSilverRupees; },
                         Order: 9,
                         LongDescription: "After crossing the gap onto the tongue, proceed down the hallway. At the beamos, take the left path (it's a fake wall) and enter the room. Collect all the silver rupees to open the path to a chest.<br/><br/>If you have no hookshot, you can use hover boots to get to the wooden box from one of the wooden platforms.",
-                        NeedsAny: [SilverRupeeSets.SHADOW_SILVER_RUPEES_SCYTHE_ROOM, GlitchItemSets.WEIRD_SHOT]
-                        // NeedsAny: [
-                        //     [SettingSets.SHUFFLE_SILVER_RUPEES, 
-                        //         [SetType.OR, 
-                        //             GlitchItemSets.WEIRD_SHOT, SilverRupeeSets.SHADOW_SILVER_RUPEES_SCYTHE_ROOM]],
-                        //     [SettingSets.VANILLA_SILVER_RUPEES,
-                        //         [SetType.OR,
-                        //             Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING]]
-                        // ]
+                        NeedsAny: [SilverRupeeSets.SHADOW_SILVER_RUPEES_SCYTHE_ROOM, Tricks.weirdShot.canDo]
                     }
                 }
             },
@@ -3922,7 +3914,7 @@ let StandardDungeons = {
             },
             childAfterStalfos: {
                 DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
-                UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
+                UseChildAge: function() { return !Tricks.weirdShot.enabled; },
                 Exits: {
                     childGrateRoom: {}
                 },
@@ -3974,7 +3966,7 @@ let StandardDungeons = {
             },
             childGrateRoom: {
                 DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
-                UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
+                UseChildAge: function() { return !Tricks.weirdShot.enabled; },
                 Exits: {
                     childSkulltulaInGrateRoom: {
                         // Don't need the silver rupees - documented in the description of the skulltula item
@@ -4010,7 +4002,7 @@ let StandardDungeons = {
             },
             childSkulltulaInGrateRoom: {
                 DisplayGroup: { groupName: "Child Rooms", imageName: "Kokiri Sword" },
-                UseChildAge: function() { return !Settings.GlitchesToAllow.weirdShot; },
+                UseChildAge: function() { return !Tricks.weirdShot.enabled; },
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Grate Room": {
@@ -4027,7 +4019,7 @@ let StandardDungeons = {
                 Exits: {
                     childOnlyArea: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.WEIRD_SHOT]
+                        Needs: [Tricks.weirdShot.canDo]
                     },
                     roomWithSunOnFloor: {
                         Map: "Spirit Temple",
@@ -5184,7 +5176,7 @@ let StandardDungeons = {
                         NeedsAny: [
                             Items.DEKU_STICK,
                             ItemSets.FIRE_ITEMS,
-                            GlitchItemSets.BOOMERANG_THROUGH_WALLS,
+                            Tricks.boomerangThroughWalls.canDo,
                             QPAItemSets.LEDGE_QPA
                         ]
                     },
@@ -5197,7 +5189,7 @@ let StandardDungeons = {
                         NeedsAny: [
                             Items.DEKU_STICK,
                             ItemSets.FIRE_ITEMS,
-                            GlitchItemSets.BOOMERANG_THROUGH_WALLS,
+                            Tricks.boomerangThroughWalls.canDo,
                             QPAItemSets.LEDGE_QPA
                         ]
                     }
@@ -5376,7 +5368,7 @@ let StandardDungeons = {
         },
         _canSkipMazeDoors: function(age) {
             return ItemData.canUseAny(age, 
-                [GlitchItemSets.WEIRD_SHOT, GlitchItemSets.GTG_CHILD_VINE_CLIP])
+                [Tricks.weirdShot.canDo, GlitchItemSets.GTG_CHILD_VINE_CLIP])
         },
         _getNumberOfOptionalKeysUsed: function() {
             // Gets the number of optional keys used in GTG (these are the ones on the right maze path)
@@ -6643,7 +6635,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Spirit Trial", imageName: "Spirit Medallion" },
                 Exits: {
                     spiritTrialRoom3: {
-                        NeedsAny: [Items.BOMBCHU, GlitchItemSets.PROJECTILE_WEIRD_SHOT]
+                        NeedsAny: [Items.BOMBCHU, Tricks.weirdShot.canDoWithProjectiles]
                     }
                 },
                 ItemLocations: {

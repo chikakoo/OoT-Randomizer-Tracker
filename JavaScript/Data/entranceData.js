@@ -866,7 +866,7 @@ GrottoGroups = {
 				ItemGroup: ItemGroups.SKULLTULA,
 				LongDescription: "Burn the web. The skulltula is in the section the cow is in.",
 				Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
-				NeedsAny: [ItemSets.FIRE_ITEMS, GlitchItemSets.LONGSHOT_WEIRD_SHOT, QPAItemSets.CUTSCENE_ITEM_QPA]
+				NeedsAny: [ItemSets.FIRE_ITEMS, Tricks.weirdShot.canDoWithLongshot, QPAItemSets.CUTSCENE_ITEM_QPA]
 			},
 			"Gossip Stone": {
 				icon: "Mask of Truth",

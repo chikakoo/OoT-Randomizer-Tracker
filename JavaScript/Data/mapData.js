@@ -439,7 +439,7 @@ let MapLocations = {
                         Order: 7,
                         Age: Age.EITHER,
                         LongDescription: "This item is under the rock one room from the Sacred Forest Meadow.",
-                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.BOOMERANG_THROUGH_WALLS]
+                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, Tricks.boomerangThroughWalls.canDo]
                     },
                     "Front Scrub Near Grotto Near Meadow": {
                         ItemGroup: ItemGroups.SCRUB,
@@ -1639,7 +1639,7 @@ let MapLocations = {
                 Exits: {
                     crateLedge: {
                         Age: Age.ADULT,
-                        NeedsAny: [UpgradedItems.LONGSHOT, BeanSets.GRAVEYARD, GlitchItemSets.WEIRD_SHOT]
+                        NeedsAny: [UpgradedItems.LONGSHOT, BeanSets.GRAVEYARD, Tricks.weirdShot.canDo]
                     },
                     freestandingItemInCrate: {
                         Needs: [Items.BOOMERANG]
@@ -2163,7 +2163,7 @@ let MapLocations = {
                         MapInfo: { x: 206, y: 203 },
                         Age: Age.CHILD,
                         LongDescription: "As a child, this item is under the highest rock that's blocking access to the top of Death Mountain. You can snag it with the boomerang from the bottom with a good angle.",
-                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.BOOMERANG_THROUGH_WALLS]
+                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, Tricks.boomerangThroughWalls.canDo]
                     },
                     "Blue Rupee in Rock Below Cow Grotto": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -2171,7 +2171,7 @@ let MapLocations = {
                         MapInfo: { x: 190, y: 203 },
                         Age: Age.CHILD,
                         LongDescription: "As a child, this item is under the leftmost rock by the rocks blocking access to the top of Death Mountain. You can snag it with the boomerang if you stand far back enough on the platform.",
-                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, GlitchItemSets.BOOMERANG_THROUGH_WALLS]
+                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, Tricks.boomerangThroughWalls.canDo]
                     }
                 }
             },
@@ -2467,7 +2467,7 @@ let MapLocations = {
                             Items.MEGATON_HAMMER, 
                             UpgradedItems.SILVER_GAUNTLETS, 
                             [Equipment.HOVER_BOOTS, ItemSets.EXPLOSIVES],
-                            GlitchItemSets.WEIRD_SHOT]
+                            Tricks.weirdShot.canDo]
                     },
                     "Left Maze Chest": {
                         ItemGroup: ItemGroups.CHEST,
@@ -3109,7 +3109,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         NeedsAny: [
                             [ItemSets.BLAST_OR_SMASH_ITEMS, UpgradedItems.SILVER_GAUNTLETS],
-                            GlitchItemSets.LONGSHOT_WEIRD_SHOT]
+                            Tricks.weirdShot.canDoWithLongshot]
                     },
 
                     // Land Area
@@ -3464,7 +3464,7 @@ let MapLocations = {
                         MapInfo: { x: 131, y: 120 },
                         Age: Age.ADULT,
                         LongDescription: "Across the bridge, there are some rocks to the right. Use your hammer on them to reveal the chest.",
-                        NeedsAny: [Items.MEGATON_HAMMER, GlitchItemSets.WEIRD_SHOT]
+                        NeedsAny: [Items.MEGATON_HAMMER, Tricks.weirdShot.canDo]
                     },
                     "Show Poacher's Saw to Carpenter": {
                         ItemGroup: ItemGroups.GIFT,
@@ -4599,7 +4599,7 @@ let MapLocations = {
                         NeedsAny: [
                             BeanSets.DESERT_COLOSSUS,
                             Items.HOOKSHOT,
-                            GlitchItemSets.BOOMERANG_TRICK_THROWS]
+                            Tricks.boomerangTrickThrows.canDo]
                     },
 
                     // Oasis
