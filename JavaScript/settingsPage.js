@@ -2,13 +2,6 @@ let SettingsPage = {
     _randomizerSettingsExpanded: true,
     _glitchesSettingsExpanded: true,
 
-    _randomizerSettingsGroupIds: [
-        "settingsGroupTrackerContainer",
-        "settingsGroupProgressionContainer",
-        "settingsGroupLogicContainer",
-        "settingsGroupItemsContainer"
-    ],
-
     display: function() {
         LocationSidebar.updateSidebarLocation();
         LocationSidebar.displayContainer("settingsContainer");
@@ -155,7 +148,7 @@ let SettingsPage = {
 
             if (trick.isCategory) {
                 let categoryTricksContainerId = `settings-tricks-container-${trick.displayText}`;
-
+                
                 let categoryContainerDiv = dce("div", "settings-group");
                 categoryContainerDiv.id = `settings-trick-category-${trick.displayText}`;
                 categoryContainerDiv.onclick = _this.showOrHideGroup.bind(_this, null, categoryTricksContainerId, undefined);
@@ -165,6 +158,7 @@ let SettingsPage = {
 
                 currentCategoryTricksContainerDiv = dce("div", "settings-tricks-container")
                 currentCategoryTricksContainerDiv.id = categoryTricksContainerId;
+                addOrRemoveCssClass(currentCategoryTricksContainerDiv, "nodisp", !_this._glitchesSettingsExpanded);
                 
                 categoryContainerDiv.appendChild(categoryTitle);
                 categoryContainerDiv.appendChild(currentCategoryTricksContainerDiv);
@@ -238,28 +232,6 @@ let SettingsPage = {
 		Tricks[trickName].enabled = inputElement.checked;
 		ItemTracker.setUp();
 		refreshAll();
-    },
-
-    /**
-     * TODO: is this needed?
-	 * Sets the value of the given setting name to whether the event's
-	 * target is checked or not
-	 * @param settingName: The name of the setting - this is the key of the Setting object
-     * @param link: The link(s) to follow if ctrl+click is used
-	 * @param event: Used to stop propagation to prevent double execution
-	 */
-	setBooleanValueForGlitchesWithLink: function(settingName, link, event) {
-        if (event.ctrlKey) {
-            event.preventDefault();
-
-            if (Array.isArray(link)) {
-                link.forEach(l => window.open(l, '_blank'));
-            } else {
-                window.open(link, '_blank');
-            }
-        } else {
-            this.setBooleanValueForGlitches(settingName, event);
-        } 
     },
 
     /**
@@ -349,8 +321,9 @@ let SettingsPage = {
     expandOrCollapseAllRandomizerSettings() {
         let _this = this;
         this._randomizerSettingsExpanded = !this._randomizerSettingsExpanded;
-        this._randomizerSettingsGroupIds.forEach(function(id) {
-            _this.showOrHideGroup(null, id, !_this._randomizerSettingsExpanded);
+
+        [...document.querySelectorAll("#randomizerSettingsContainer .settings-group > div")].forEach(function(categoryDiv) {
+            _this.showOrHideGroup(null, categoryDiv.id, !_this._randomizerSettingsExpanded);
         });
     },
 
