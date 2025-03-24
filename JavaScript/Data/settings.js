@@ -552,20 +552,92 @@ let Tricks = {
 		description: "Used in various places to throw a boomerang to retrieve freestanding items."
 	},
 	breakBeehivesWithBombs: {
-		enabled: false,
+		enabled: true,
 		canDo: () => Tricks.breakBeehivesWithBombs.enabled && Items.BOMB.playerHas,
 		displayText: "Break Beehives with Bombs",
 		description: "Cook a bomb long enough to blow up beehives. In each case, throw the bomb at the beehive so that it blows up on it."
 	},
 	breakBeehivesWithChus: {
-		enabled: false,
+		enabled: true,
 		canDo: () => Tricks.breakBeehivesWithChus.enabled && Items.BOMBCHU.playerHas,
 		displayText: "Break Beehives with Bombchus",
 		description: "Cook a bombchu long enough to blow up beehives. Each check should have a rough timing in its description."
 	},
 
+	// HF/Market/Castle
+	categoryHFMarketCastle: {
+		isCategory: true,
+		displayText: "HF/Market/Castle"
+	},
+	doorOfTimeSkip: {
+		enabled: false,
+		canDo: (age) => Tricks.doorOfTimeSkip.enabled &&
+			ItemData.canUseAny(age, [
+				[Age.CHILD, Equipment.DEKU_SHIELD, Equipment.KOKIRI_SWORD],
+				[Age.ADULT, ItemSets.SHIELDS, Equipment.HOVER_BOOTS]
+			]),
+		displayText: "Door of Time Skip",
+		description: "CHILD: Get lunge storage off the altar; target the door; sidehop left; sideroll untarget; sidehop right; sideroll hold target; sidehop right; sidehop left; sideroll hold target; ess right x1; quickdraw; jumpslash holding nothing\x0A\x0AADULT: Target left side of the left pillar; sidehop right; sideroll untarget; ess right x2; get into right corner; holding nothing, slash + shield x2; croushstab; equip hover boots on second frame of sparks; hold right after clipping",
+		links: [
+			{
+				url: "https://youtu.be/rsQsebyHhxY",
+				description: "Video - Child"
+			},
+			{
+				url: "https://youtu.be/pzZstuQrx70",
+				description: "Video - Adult"
+			}
+		]	
+	},
+	doubleDefenseEarly: {
+		enabled: false,
+		canDo: (age) => Tricks.doubleDefenseEarly.enabled &&
+			ItemData.canUseAny(age, [
+				ItemSets.EXPLOSIVES,
+				[ItemSets.SHIELDS, Equipment.HOVER_BOOTS]
+			]),
+		displayText: "Double Defense Early",
+		description: "WITH RECOIL: Get into the right corner; C-up and line up so the right edge of the sword icon is covered by the wall; crouch-stab; on the first recoil frame, equip hovers and hold left\x0A\x0AWITH EXPLOSIVES: Get into the left corner and target the wall; turn right (you can get out of the corner to do the next part now, just hold the angle); right ess turn x1 if using a bomb, x2 if using a chu; get back in the corner if you aren't there; pull your explosive and let it explode",
+		links: [
+			{
+				url: "https://youtu.be/h10O9zU2FWE",
+				description: "Video - using recoil"
+			},
+			{
+				url: "https://www.youtube.com/watch?v=omUKghUMFsU",
+				description: "Video - using explosives"
+			}
+		]
+	},
+	adultGrottoByGVWithoutHammer: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.adultGrottoByGVWithoutHammer.enabled &&
+			ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]),
+		displayText: "Adult Grotto by GV Without Hammer",
+		description: "Blow up hole under rock; line up with fifth fence post and climb up/jump off; backwalk to align with fence; shield drop bomb and instant backflip; immediately left/right sidehop; hold up to climb fence; RELEASE UP when climb starts, and hold shield; backflip off fence; backflip to hole",
+		links: [{
+			url: "https://youtu.be/3eVAxXI-4Yc",
+			description: "Video"
+		}]
+	},
 
-	TEST: {
+	// Kakariko/Graveyard
+	categoryKakarikoGraveyard: {
+		isCategory: true,
+		displayText: "Kakariko/Graveyard"
+	},
+	TEST4: {
+		enabled: false,
+		canDo: (age) => true,
+		displayText: "TEST",
+		description: "TEST",
+		links: [{
+			url: "",
+			description: "Video"
+		}]
+	},
+	TEST5: {
 		enabled: false,
 		canDo: (age) => true,
 		displayText: "TEST",

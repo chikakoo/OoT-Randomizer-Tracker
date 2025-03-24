@@ -409,7 +409,7 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "Near the entrance to Gerudo Valley, there's a circle of small rocks. As a child, you can bomb the center to reveal a grotto. As adult, you must hammer the red rock.",
             ChildNeeds: [ItemSets.BLAST_OR_SMASH_ITEMS],
-            AdultNeedsAny: [Items.MEGATON_HAMMER, GlitchItemSets.ADULT_GROTTO_BY_GV_WITHOUT_HAMMER]
+            AdultNeedsAny: [Items.MEGATON_HAMMER, Tricks.adultGrottoByGVWithoutHammer.canDo]
         },
 
         // South
@@ -768,7 +768,7 @@ let OwExits = {
             MapInfo: { x: 308, y: 161, floor: "GAN" },
             Age: Age.ADULT,
             LongDescription: "At the end of the main rock is a giant block you can pull up with Golden Gauntlets. Alternatively, you can use hover boots and a shield to clip past the block.",
-            NeedsAny: [UpgradedItems.GOLDEN_GAUNTLETS, GlitchItemSets.DOUBLE_DEFENSE_EARLY]
+            NeedsAny: [UpgradedItems.GOLDEN_GAUNTLETS, Tricks.doubleDefenseEarly.canDo]
         }
     },
 

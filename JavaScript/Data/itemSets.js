@@ -128,15 +128,7 @@ let GlitchItemSets = {
         age === Age.CHILD
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
-
-    // HF / Market / Castle
-    DOUBLE_DEFENSE_EARLY: (age) => Settings.GlitchesToAllow.doubleDefenseEarly &&
-        ItemData.canUse(age, ItemSets.EXPLOSIVES) ||
-        ItemData.canUse(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]),
-    ADULT_GROTTO_BY_GV_WITHOUT_HAMMER: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.adultGrottoByGVWithoutHammer &&
-        ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]),
-
+            
 	// Forest / Woods
     POKEY_SKIP: (age) => 
         Settings.GlitchesToAllow.pokeySkip && 

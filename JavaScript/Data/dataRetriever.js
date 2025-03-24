@@ -287,15 +287,9 @@ Data = {
      * Checks whether it's possible to enter the door of time from the temple of time
      */
     canEnterDoorOfTime: function(age) {
-		let canSkipAsChild = age === Age.CHILD && Settings.GlitchesToAllow.doorOfTimeSkip && Equipment.KOKIRI_SWORD.playerHas;
-		let canSkipAsAdult = age === Age.ADULT && Settings.GlitchesToAllow.doorOfTimeSkip && 
-            ItemData.canUse(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]);
-		
-		let canEnterDoorOfTime = Settings.RandomizerSettings.openDoorOfTime || // Already open
-			canSkipAsChild || canSkipAsAdult || // Door of time skip
-			this.canPlaySong(Songs.SONG_OF_TIME); // Can open with Song of Time
-		
-		return canEnterDoorOfTime;
+		return Settings.RandomizerSettings.openDoorOfTime || // Already open
+            this.canPlaySong(Songs.SONG_OF_TIME) || // Can open with Song of Time
+            Tricks.doorOfTimeSkip.canDo(age) // DoT skip
 	},
 
     /**
