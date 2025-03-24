@@ -131,14 +131,19 @@ let SettingsPage = {
 
     /**
      * Initialized the tricks container based on the Tricks object
+     * Only initializes the actual HTML once - if already done, will set the state of the checkboxes
      */
     _initializeTricksContainer() {
+        let tricksContainer = document.getElementById("tricksContainer");
+        if (tricksContainer.innerHTML !== "") {
+            this._setTrickCheckboxes();
+            return;
+        }
+
         let tricksHeader = dce("span", "settings-header");
         tricksHeader.innerText = "Glitches/Tricks";
         tricksHeader.onclick = SettingsPage.expandOrCollapseAllGlitchesSettings.bind(this);
 
-        let tricksContainer = document.getElementById("tricksContainer");
-        tricksContainer.innerHTML = "";
         tricksContainer.appendChild(tricksHeader);
 
         let _this = this;
@@ -151,10 +156,10 @@ let SettingsPage = {
                 
                 let categoryContainerDiv = dce("div", "settings-group");
                 categoryContainerDiv.id = `settings-trick-category-${trick.displayText}`;
-                categoryContainerDiv.onclick = _this.showOrHideGroup.bind(_this, null, categoryTricksContainerId, undefined);
-
+                
                 let categoryTitle = dce("span");
                 categoryTitle.innerText = trick.displayText;
+                categoryTitle.onclick = _this.showOrHideGroup.bind(_this, null, categoryTricksContainerId, undefined);
 
                 currentCategoryTricksContainerDiv = dce("div", "settings-tricks-container")
                 currentCategoryTricksContainerDiv.id = categoryTricksContainerId;
@@ -198,6 +203,13 @@ let SettingsPage = {
         });
     },
 
+    /**
+     * Appends links to the trick label so they can be viewed for reference
+     * @param {HTMLElement} trickLabel - The label to append the links to
+     * @param {Array<Object>} linkObjects - An array of objects, 
+     * containing url to link to, and a description to use as a tooltip
+     * @returns 
+     */
     _appendLinksToTrick: function(trickLabel, linkObjects) {
         if (!linkObjects) {
             return;
@@ -214,6 +226,18 @@ let SettingsPage = {
             }
                 
             trickLabel.appendChild(link);
+        });
+    },
+
+    /**
+     * Sets the checkboxes of all tricks to the state of the Tricks object
+     */
+    _setTrickCheckboxes: function() {
+        Object.keys(Tricks).forEach(trickName => {
+            let checkbox = document.querySelector(`input[name="${trickName}"]`);
+            if (checkbox) {
+                checkbox.checked = Tricks[trickName].enabled;
+            }
         });
     },
 
