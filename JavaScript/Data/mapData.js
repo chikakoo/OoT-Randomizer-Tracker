@@ -1221,7 +1221,7 @@ let MapLocations = {
                 Items.FAIRY_SLINGSHOT, 
                 Items.BOMBCHU, 
                 Tricks.isg.canDo, 
-                GlitchItemSets.WATCHTOWER_SKULL_JUMPSLASH]),
+                Tricks.watchtowerSkullJumpslash.canDo]),
 		Regions: {
             main: {
                 DisplayGroup: { groupName: "Lower Area", imageName: "Super Cucco Minigame" },
@@ -2016,7 +2016,7 @@ let MapLocations = {
                 Exits: {
                     windmillItem: {
                         ChildNeeds: [Items.BOOMERANG],
-                        AdultNeeds: [GlitchItemSets.WINDMILL_HP_WITH_NOTHING]
+                        AdultNeeds: [Tricks.windmillHPWithNothing.canDo]
                     },
                     "Windmill Exit": {
                         OwExit: OwExits["Windmill-Kak Potion"]["Windmill Exit"]

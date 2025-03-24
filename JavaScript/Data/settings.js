@@ -627,7 +627,22 @@ let Tricks = {
 		isCategory: true,
 		displayText: "Kakariko/Graveyard"
 	},
-	TEST4: {
+	watchtowerSkullJumpslash: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.watchtowerSkullJumpslash.enabled &&
+			ItemData.canUse(age, ItemSets.SWORDS),
+		displayText: "Jumpslash Watchtower Skulltula",
+		description: "Climb up to the skulltula, one step before it will hit you off the tower; A to let go, then immediately jumpslash to kill it"
+	},
+	windmillHPWithNothing: {
+		enabled: true,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.windmillHPWithNothing.enabled,
+		displayText: "Adult Windmill HP With Nothing",
+		description: "Jump on the spinning platform; jump on the pillar to the left; roll jump to the center of the spinning thing; navigate to the heart piece"
+	},
+	TEST6: {
 		enabled: false,
 		canDo: (age) => true,
 		displayText: "TEST",
@@ -637,7 +652,7 @@ let Tricks = {
 			description: "Video"
 		}]
 	},
-	TEST5: {
+	TEST7: {
 		enabled: false,
 		canDo: (age) => true,
 		displayText: "TEST",

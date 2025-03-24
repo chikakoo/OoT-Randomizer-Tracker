@@ -159,9 +159,6 @@ let GlitchItemSets = {
     ADULT_DAMPE_RACE_SOT_BLOCK_CLIP: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.dampeSoTBlockClip &&
         ItemData.canUse(age, ItemSets.EXPLOSIVES),
-    WATCHTOWER_SKULL_JUMPSLASH: (age) => age === Age.CHILD &&
-        Settings.GlitchesToAllow.watchtowerSkullJumpslash &&
-        ItemData.canUse(age, ItemSets.SWORDS),
     KAK_SHOP_CLIPS: (age) => 
         Settings.GlitchesToAllow.kakShopClips && 
         ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS),
@@ -174,7 +171,6 @@ let GlitchItemSets = {
     ADULT_WELL_WITH_CHUS: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.botwAsAdultWihChus &&
         Items.BOMBCHU.playerHas,
-	WINDMILL_HP_WITH_NOTHING: () => Settings.GlitchesToAllow.windmillHPWithNothing,
 	HOOKSHOT_JUMP: (age) => 
         Settings.GlitchesToAllow.hookshotJump && 
         ItemData.canUse(age, Items.HOOKSHOT),
