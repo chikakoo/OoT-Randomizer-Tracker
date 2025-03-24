@@ -992,7 +992,7 @@ Data = {
      * - Also, any left-side child items will completely block him from equip swapping from the left
      */
     canEquipSwap: function(age) {
-		if (!Settings.GlitchesToAllow.equipSwap) { return false; }
+		if (!Tricks.equipSwap.enabled) { return false; }
 
         // The legacy logic, in case things change or it's needed
         let useLegacyLogic = false;

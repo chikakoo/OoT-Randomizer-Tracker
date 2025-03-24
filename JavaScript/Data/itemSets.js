@@ -60,7 +60,7 @@ let QPAItemSets = {
 
         // Either adult can double equip swap sticks AND a QPA cutscene item,
         // OR they can equip sticks AND an adult trade item
-        return Settings.GlitchesToAllow.forceAdultQPACutsceneItemEquip ||
+        return Tricks.forceAdultQPACutsceneItemEquip.enabled ||
             (ItemData.hasAdultTradeItem() && hasMagicItem);
     }
 };
@@ -124,8 +124,6 @@ let BeanSets = {
  */
 let GlitchItemSets = {
     // KEEPING THESE AFTER REWORK (ones with no specific setting)
-    OCARINA_OR_DIFFICULT_OCARINA_ITEMS: () => Items.OCARINA.playerHas || 
-        Tricks.difficultOcarinaItems.canDo(),
     QUICKDRAW: (age) => 
         age === Age.CHILD
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
@@ -141,23 +139,13 @@ let GlitchItemSets = {
         ItemData.canUse(age, [GlitchItemSets.BASE_WEIRD_SHOT, UpgradedItems.LONGSHOT]),
     PROJECTILE_WEIRD_SHOT: (age) => 
         ItemData.canUse(age, [GlitchItemSets.BASE_WEIRD_SHOT, ItemSets.PROJECTILES]),
+
     HOOKSHOT_EXTENSION_SOT_BLOCKS: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.hookshotExtensionSotBlocks &&
         ItemData.canUse(age, Items.HOOKSHOT),
     BOW_EXTENSION_SOT_BLOCKS: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.hookshotExtensionSotBlocks &&
         ItemData.canUse(age, Items.FAIRY_BOW),
-
-
-    BOMB_SUPERSLIDE: (age) => 
-        Settings.GlitchesToAllow.bombSuperslide &&
-        ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]),
-    BOMB_SUPERSLIDE_WITH_HOVERS: (age) => 
-        ItemData.canUse(age, [GlitchItemSets.BOMB_SUPERSLIDE, Equipment.HOVER_BOOTS]),
-    HAMMER_SUPERSLIDE_WITH_HOVERS: (age) => 
-        Settings.GlitchesToAllow.hammerHoverBootsSuperslide &&
-        ItemData.canUse(age, [Equipment.HOVER_BOOTS, Items.MEGATON_HAMMER]),
-
 
 	BOOMERANG_THROUGH_WALLS: (age) => 
         Settings.GlitchesToAllow.boomerangThroughWalls && 
@@ -565,7 +553,7 @@ let GlitchItemSets = {
         ),
     GTG_HAMMER_HOVER_BOOTS_SILVER_BLOCK_SKIP: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.gtgSilverBlockSkipWithHammerSuperslide &&
-        ItemData.canUse(age, GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS),
+        ItemData.canUse(age, Tricks.hammerHoverBootsSuperslide.canDo),
     GTG_SILVER_BLOCK_ROOM_EXIT_WITH_HOVERS: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.gtgSilverBlockRoomExitWithHovers && 
         ItemData.canUse(age, Equipment.HOVER_BOOTS),
@@ -704,7 +692,10 @@ let GameStateSets = {
         let bossEntranceGroup = Data.getEntranceGroup(OwExits["Deku Tree"].Boss);
         return bossEntranceGroup?.buttons && bossEntranceGroup.buttons["Blue Warp"].completed;
     },
-    CAN_PLAY_SONGS: () => Items.OCARINA.playerHas || Tricks.ocarinaItems.canDo(),
+    CAN_PLAY_SONGS: () => 
+        Items.OCARINA.playerHas || Tricks.ocarinaItems.canDo(),
+    CAN_PLAY_SONGS_INCLUDING_DIFFICULT_OI: () => 
+        Items.OCARINA.playerHas || Tricks.difficultOcarinaItems.canDo(),
     CAN_RIDE_EPONA: (age) => Data.canRideEpona(age),
     CAN_HOOK_SCARECROW: (age) => Data.canHookScarecrow(age),
     CAN_LONGSHOT_SCARECROW: (age) => Data.canHookScarecrow(age, true),

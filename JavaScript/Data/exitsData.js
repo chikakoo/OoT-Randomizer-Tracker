@@ -145,7 +145,7 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 86, y: 251},
             Age: Age.EITHER,
-            UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+            UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
             OneWayEntrance: true,
             ChildNeeds: [Tricks.megaFlip.canDo],
             AdultNeedsAny: [
@@ -236,7 +236,7 @@ let OwExits = {
             OwShuffleRegion: "skullKidAndBridge",
             OwShuffleExitName: "To Kokiri Forest",
             Age: Age.EITHER,
-            UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip && !Settings.GlitchesToAllow.lwBridgePressureJump; },
+            UseAdultAge: function() { return !Tricks.megaFlip.enabled && !Settings.GlitchesToAllow.lwBridgePressureJump; },
             LongDescription: "Longshot from the bridge to the ladder to get to the lost woods.<br/><br/>Megaflip setup: Get in the corner closest to the ladder; take a tiny step back; c-up and face the third rope support; turn 180; dry roll if using bombs; megaflip",
             NeedsAny: [UpgradedItems.LONGSHOT, Tricks.megaFlip.canDo, GlitchItemSets.PRESSURE_JUMP]
         }
@@ -1271,7 +1271,11 @@ let OwExits = {
             DefaultEntranceGroupName: "Fairy Fountain",
             MapInfo: { x: 65, y: 170 },
             Age: Age.EITHER,
-            UseAdultAge: function() { return !Settings.GlitchesToAllow.childSidehopToDoubleMagic && !Settings.GlitchesToAllow.equipSwap; },
+            UseAdultAge: function() { 
+                return !Settings.GlitchesToAllow.childSidehopToDoubleMagic &&
+                    !Tricks.equipSwap.enabled &&
+                    !Tricks.megaFlip.enabled;
+            },
             LongDescription: "Hammer the silver rocks that are to the left of the Goron City entrance (if you face the entrance) to uncover the entrance.\x0A\x0AYou can megaflip here from the corner by the ladder as any age, as well.",
             NeedsAny: [
                 Items.MEGATON_HAMMER, 
@@ -1286,7 +1290,7 @@ let OwExits = {
             DefaultEntranceGroupName: "3 Scrubs",
             MapInfo: { x: 64, y: 60 },
             Age: Age.EITHER,
-            UseAdultAge: function() { return !Settings.GlitchesToAllow.childSidehopToDoubleMagic && !Settings.GlitchesToAllow.equipSwap; },
+            UseAdultAge: function() { return !Settings.GlitchesToAllow.childSidehopToDoubleMagic && !Tricks.equipSwap.enabled; },
             LongDescription: "Hammer the rock near the entrance to Goron City to access this grotto.",
             Needs: [Items.MEGATON_HAMMER]
         }
@@ -2408,7 +2412,7 @@ let OwExits = {
             Order: 100,
             UseChildAge: function() { 
                 isMQ = MapLocations["Jabu Jabu's Belly"].IsMasterQuest;
-                return isMQ ? false : !Settings.GlitchesToAllow.equipSwap;
+                return isMQ ? false : !Tricks.equipSwap.enabled;
             },
             LongDescription: "Standard: Climb up the webbing and use your boomerang to hit the switch and unblock the door. You can also snipe it with the slingshot/bow/longshot if you stand in the corner by the entrance.<br/><br/>MQ: Shoot the cow on the wall a few times to unblock the door."
         }
@@ -2463,10 +2467,10 @@ let OwExits = {
             UseAdultAge: function() { 
                 let isMQ = MapLocations["Fire Temple"].IsMasterQuest;
                 return isMQ
-                    ? !Settings.GlitchesToAllow.megaFlip ||
+                    ? !Tricks.megaFlip.enabled ||
                         !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                        !Settings.GlitchesToAllow.bombSuperslide
-                    : !Settings.GlitchesToAllow.megaFlip; 
+                        !Tricks.bombSuperslide.enabled
+                    : !Tricks.megaFlip.enabled; 
             },
             Order: 7,
             LongDescription: "As Adult, you can do a roll-jump from the corner to get to the boss door."

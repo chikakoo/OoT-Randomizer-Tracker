@@ -247,7 +247,7 @@ let MapLocations = {
                         MapInfo: { x: 96, y: 172 },
                         Age: Age.CHILD,
                         LongDescription: "From the Kokiri Forest entrance, go left one screen. Stand on the lower stump and play Saria's Song to get this gift",
-                        Needs: [Songs.SARIAS_SONG, GlitchItemSets.OCARINA_OR_DIFFICULT_OCARINA_ITEMS]
+                        Needs: [Songs.SARIAS_SONG, GameStateSets.CAN_PLAY_SONGS_INCLUDING_DIFFICULT_OI]
                     },
                     "Sell Skull Mask": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -340,7 +340,7 @@ let MapLocations = {
                         Order: 3,
                         Age: Age.CHILD,
                         LongDescription: "From the Kokiri Forest entrance, go right one screen. Go down the cliff and stand on the lower stump. Take out your Ocarina and win the Simon game to get this prize.",
-                        Needs: [GlitchItemSets.OCARINA_OR_DIFFICULT_OCARINA_ITEMS,
+                        Needs: [GameStateSets.CAN_PLAY_SONGS_INCLUDING_DIFFICULT_OI,
                             // TODO: Make this a setting
                             () => ItemData.getNumberOfOcarinaButtons() >= 3
                         ]
@@ -1305,7 +1305,7 @@ let MapLocations = {
                         MapImageName: "Poacher's Saw",
                         Age: Age.CHILD,
                         Order: 1,
-                        RequiredToAppear: function() { return Settings.GlitchesToAllow.equipSwap; },
+                        RequiredToAppear: function() { return Tricks.equipSwap.enabled; },
                         LongDescription: "Show the carpenter boss (in front of the tent) the Poacher's Saw to receive an item.",
                         Needs: [AdultTradeItems.POACHERS_SAW],
                         PostObtain: function(playerHas, skipSocketUpdate) {
@@ -2375,7 +2375,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 134, y: 78 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         LongDescription: "Plant a bean in the soft soil by the Bolero warp point then ride it up to the volcano. You can also use hover boots near the entrance to Goron City to get it."
                     }
                 }
@@ -2461,7 +2461,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 71, y: 24 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseAdultAge: function() { return !Tricks.equipSwap.enabled; },
                         LongDescription: "Make your way to the topmost northwest corner of the city and bomb, pick up, or smash the rocks to get here. You can also go to the upper right corner, stand on the box, and backwalk & backflip with hover boots at the last moment to get to this chest (you will be stuck there).",
                         NeedsAny: [
                             Items.MEGATON_HAMMER, 
@@ -3393,15 +3393,15 @@ let MapLocations = {
                             ItemLocationSets.ITEM_FROM_GERUDO,
                             GameStateSets.CAN_RIDE_EPONA,
                             GlitchItemSets.CROSS_GV_BRIDGE_WITH_HOOKSHOT,
-                            GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS,
-                            GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS]
+                            Tricks.bombSuperslide.canDoWithHoverBoots,
+                            Tricks.hammerHoverBootsSuperslide.canDo]
                     },
                     chasmSilverRockLedge: {},
                     chasmCrateLedge: {
                         AdultNeedsAny: [
                             UpgradedItems.LONGSHOT,
-                            GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS,
-                            GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS] 
+                            Tricks.bombSuperslide.canDoWithHoverBoots,
+                            Tricks.hammerHoverBootsSuperslide.canDo] 
                     },
                     chasm: {},
                     "Hyrule Field": {
@@ -3434,8 +3434,8 @@ let MapLocations = {
                             ItemLocationSets.ITEM_FROM_GERUDO,
                             GameStateSets.CAN_RIDE_EPONA,
                             GlitchItemSets.CROSS_GV_BRIDGE_WITH_HOOKSHOT,
-                            GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS,
-                            GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS
+                            Tricks.bombSuperslide.canDoWithHoverBoots,
+                            Tricks.hammerHoverBootsSuperslide.canDo
                         ]
                     },
                     chasmSilverRockLedge: {
@@ -3809,8 +3809,8 @@ let MapLocations = {
             topOfFortress: {
                 DisplayGroup: { groupName: "Middle and Upper Level", imageName: "Chest" },
                 UseAdultAge: function() {
-                    return (!Settings.GlitchesToAllow.groundJump && !Settings.GlitchesToAllow.gfChildJumpByTopKitchen) || 
-                        !Settings.GlitchesToAllow.megaFlip;
+                    return (!Tricks.groundJump.enabled && !Settings.GlitchesToAllow.gfChildJumpByTopKitchen) || 
+                        !Tricks.megaFlip.enabled;
                 },
                 ExcludeFromSpawnList: true,
                 Exits: {
@@ -4656,7 +4656,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 87, y: 135 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         LongDescription: "Plant a magic bean in the soil by the Spirit Temple. Come back as an adult and ride it to the heart piece on the giant arch."
                     }
                 }

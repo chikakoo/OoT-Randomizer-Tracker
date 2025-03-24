@@ -857,7 +857,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 99, y: 57, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Order: 9,
                         LongDescription: "Bring Ruto back up to the first floor. Take her through the room with holes into the next room. Hug the left wall until you find a switch. Leave Ruto on it and enter. Kill the Parasitic Tentacle with your boomerang to spawn the chest.",
                         Needs: [Items.BOOMERANG]
@@ -866,7 +866,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 147, y: 17, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Order: 10,
                         LongDescription: "After killing the Parasitic Tentacle to spawn the Map Chest (see that section), exit the room. Now hug the left wall to the next nearby door. Kill the shaboms within the time limit to spawn this chest. Note that Deku Nuts are a really fast way to take care of this room.",
                         Needs: [Items.BOOMERANG]
@@ -885,7 +885,7 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "3 Pots",
                         MapInfo: { x: 101, y: 32, floor: "F2" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Order: 11,
                         LongDescription: "After defeating all the tentacles, go defeat Big Octo. Ride up the elevator - the pots are in this room on the back wall."
                     }
@@ -1185,7 +1185,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Chest on Outside Right Island": {
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 269, y: 77, floor: "F1" },
                         Age: Age.EITHER,
@@ -1204,7 +1204,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() {
                             return !Settings.GlitchesToAllow.forestBoomerangSkullOnLedge &&
-                                !Settings.GlitchesToAllow.megaflip;
+                                !Tricks.megaFlip.enabled;
                         },
                         Order: 10,
                         LongDescription: "There is a skulltula on the landmass on the other side of the water in the right outside room. You can hookshot to the island via the chest at the right angle. To get to the right outside room, you can either shoot the eye switch in the main room, or climb up the vines in the left outside room and go through the dungeon map room.<br/><br/>If you have no hookshot and are coming from the falling ceiling room, make sure you kill it and drop down on the item from above so you don't miss your chance!"
@@ -1334,7 +1334,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Floormaster Chest": {
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 27, y: 101, floor: "F1" },
                         Age: Age.EITHER,
@@ -1350,7 +1350,7 @@ let StandardDungeons = {
                 ItemLocations: {
                     "Skulltula in Left Room on Wall": {
                         ItemGroup: ItemGroups.SKULLTULA,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         Age: Age.EITHER,
                         MapInfo: { x: 83, y: 52, floor: "F1" },
                         Order: 18,
@@ -1370,7 +1370,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() {
                             return !Settings.GlitchesToAllow.difficultBoomerangTrickThrows &&
-                                !Settings.GlitchesToAllow.megaFlip;
+                                !Tricks.megaFlip.enabled;
                         },
                         Order: 17,
                         LongDescription: "Navigate to the twisted corridor. Shoot the eye switch to untwist the corridor. Now go across the corridor to the room with the boss key chest. Fall down the hole in this room and kill the bubbles to get out.<br/><br/>The hearts are on the skinny platform that you have to jump to, near the skulltula on the wall. Be careful not to fall off."
@@ -1477,7 +1477,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Falling Ceiling Room": {
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 318, y: 116, floor: "F1" },
                         Age: Age.EITHER,
@@ -1485,7 +1485,7 @@ let StandardDungeons = {
                         LongDescription: "After the blue poe room, go through the door. Now go down the hallway that the ladder leads to and enter the locked room. Either shoot the frozen eye switch so that the arrow goes through the torch, or cast Din's Fire while standing just below the switch. Now, head back to the room with the ladder and fall down the hole. The chest is in the middle of this room. Alternatively, you can spawn a scarecrow in the right outside room that you can longshot to."
                     },
                     "2 Pots in Green Poe Room": {
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -1580,7 +1580,7 @@ let StandardDungeons = {
                         MapInfo: { x: 126, y: 214, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 1,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseAdultAge: function() { return !Tricks.equipSwap.enabled; },
                         LongDescription: "This is the door behind the pillar on the bottom of the lobby.",
                         RequiredToAppear: function() { return Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.SMALL_KEY_SANITY; },
                         KeyRequirement: function(age) {
@@ -1756,7 +1756,7 @@ let StandardDungeons = {
             },
             bossKeyPath: {
                 DisplayGroup: { groupName: "Lobby & Boss Key Path", imageName: "Boss Key" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                UseAdultAge: function() { return !Tricks.equipSwap.enabled; },
                 Exits: {
                     bossKeyRoom: {
                         Map: "Fire Temple",
@@ -1790,7 +1790,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 63, y: 111, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Order: 4,
                         LongDescription: "After the flare dancer room (see the other task), continue to the next room. Hammer the rusted switch to gain access to the boss key chest."
                     }
@@ -1851,7 +1851,7 @@ let StandardDungeons = {
                         MapInfo: { x: 227, y: 162, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 8,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the right door into the big lava room. Along the back left wall is a platform that will rise up to an alcove after you jump on it (child can jump there from the moving platform). The pots are there."
                     },
                     "Big Lava Room Left Goron": {
@@ -1867,7 +1867,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                 UseAdultAge: function() {
                     return !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                        !Settings.GlitchesToAllow.groundJump;
+                        !Tricks.groundJump.enabled;
                 },
                 Exits: {},
                 ItemLocations: {
@@ -1884,7 +1884,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                 UseAdultAge: function() {
                     return !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                        !Settings.GlitchesToAllow.groundJump;
+                        !Tricks.groundJump.enabled;
                 },
                 Exits: {},
                 ItemLocations: {
@@ -2611,8 +2611,8 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         NeedsAny: [
                             UpgradedItems.LONGSHOT,
-                            GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS,
-                            GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS
+                            Tricks.bombSuperslide.canDoWithHoverBoots,
+                            Tricks.hammerHoverBootsSuperslide.canDo
                         ]
                     },
                     waterfallRoom: {
@@ -3017,7 +3017,7 @@ let StandardDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         Floors: ["F1", "B1", "B2"],
         StartingFloorIndex: 0,
-        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+        UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
         Regions: {
             main: {
                 DisplayGroup: { groupName: "Entrance & Maze Rooms", imageName: "Hover Boots" },
@@ -4120,7 +4120,7 @@ let StandardDungeons = {
                         Order: 22,
                         LongDescription: "Head to the room blocked by the silver block. Hit the switch above the beamos to open the doors. Enter the door to the left. Kill the wolfos inside, then play Zelda's Lullaby. You can longshot from the platform, or hookshot from the sandy floor.",
                         Needs: [Songs.ZELDAS_LULLABY],
-                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS, GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS]
+                        NeedsAny: [Items.HOOKSHOT, Tricks.bombSuperslide.canDoWithHoverBoots, Tricks.hammerHoverBootsSuperslide.canDo]
                     },
                     "Boulder Silver Rupee in Midair": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4291,7 +4291,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 93, y: 101, floor: "F2" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         Order: 31,
                         LongDescription: "Head to the statue room. Get to the upper southwest corner of the room. Facing the statue, that would be behind you and to the left. The skulltula is on a platform to the left of the statue. You can Scarecrow's Song or hover boots to get to it.",
                         ChildNeeds: [Tricks.megaFlip.canDo],
@@ -5732,7 +5732,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 163, y: 91 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         Order: 8.9,
                         LongDescription: "This is the room after the wolfos room. Use hover boots to navigate to the top of the center statue to get this wonderitem.",
                         NeedsAny: [
@@ -6392,7 +6392,7 @@ let StandardDungeons = {
                         Map: "Ganon's Castle",
                         Age: Age.ADULT,
                         Needs: [SilverRupeeSets.GANON_FIRE_SILVER_RUPEES],
-                        NeedsAny: [UpgradedItems.LONGSHOT, GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS]
+                        NeedsAny: [UpgradedItems.LONGSHOT, Tricks.bombSuperslide.canDoWithHoverBoots]
                     }
                 },
                 ItemLocations: {

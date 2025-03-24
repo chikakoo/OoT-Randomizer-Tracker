@@ -222,7 +222,7 @@ let Keys = {
 			// - Includes the green poe early trick, using bombs and hover boots and...
 			// - The megaflip from the well switch ledge
 			// If pots are shuffled, then you still need use use these keys
-			if ((Settings.GlitchesToAllow.forestGreenPoeEarly || Settings.GlitchesToAllow.megaFlip) &&
+			if ((Settings.GlitchesToAllow.forestGreenPoeEarly || Tricks.megaFlip.enabled) &&
 					(Settings.RandomizerSettings.potSetting === ShuffleLocationSettings.OFF ||
 					(Settings.RandomizerSettings.potSetting === ShuffleLocationSettings.OW_ONLY))
 			) {
@@ -655,18 +655,18 @@ let ItemData = {
 			// Equip swappable
 			case Items.DEKU_STICK:
 				return age === Age.CHILD || 
-					Settings.GlitchesToAllow.forceAdultDekuStickEquip ||
+					Tricks.forceAdultDekuStickEquip.enabled ||
 					Data.canEquipSwap(age);
 			case Items.FAIRY_SLINGSHOT:
 				return age === Age.CHILD || 
 					// Adult can shoot slingshot-type ammo with the bow, but uses arrows as ammo
 					Items.FAIRY_BOW.playerHas && (
-						Settings.GlitchesToAllow.forceAdultSlingshotEquip ||
+						Tricks.forceAdultSlingshotEquip.enabled ||
 						Data.canEquipSwap(age)
 					);
 			case Items.BOOMERANG:
 				return age === Age.CHILD || 
-					Settings.GlitchesToAllow.forceAdultBoomerangEquip ||
+					Tricks.forceAdultBoomerangEquip.enabled ||
 					Data.canEquipSwap(age);
 			case ChildTradeItems.WEIRD_EGG:
 			case ChildTradeItems.ZELDAS_LETTER:

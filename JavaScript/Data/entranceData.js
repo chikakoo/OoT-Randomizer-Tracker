@@ -154,14 +154,14 @@ InteriorGroups = {
 				icon: "Odd Mushroom",
 				LongDescription: "Show Granny the Odd Mushroom to recieve an item.",
 				Age: Age.EITHER,
-				UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				UseAdultAge: function() { return !Tricks.equipSwap.enabled; },
 				Needs: [AdultTradeItems.ODD_MUSHROOM]
 			},
 			"Buy Blue Potion Item": {
 				icon: "Blue Potion",
 				LongDescription: "After showing the Odd Mushroom to Granny, you can buy this item for 100 rupees. After that, she will sell blue potions.",
 				Age: Age.EITHER,
-				UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				UseAdultAge: function() { return !Tricks.equipSwap.enabled; },
 				Needs: [AdultTradeItems.ODD_MUSHROOM, UpgradedItems.ADULTS_WALLET],
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleExpensiveMerchants;
@@ -327,7 +327,7 @@ InteriorGroups = {
 			"Show Eyeball Frog to Scientist": {
 				icon: "Eyeball Frog",
 				Age: Age.EITHER,
-				UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				UseAdultAge: function() { return !Tricks.equipSwap.enabled; },
 				LongDescription: "Show the Eyeball Frog to the scientist to receive an item.",
 				Needs: [AdultTradeItems.EYEBALL_FROG]
 			}
@@ -917,14 +917,14 @@ GrottoGroups = {
 			"Skull Mask Item": {
 				icon: "Skull Mask",
 				Age: Age.EITHER,
-				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				UseChildAge: function() { return !Tricks.equipSwap.enabled; },
 				LongDescription: "Wear the Skull Mask and stand front and center near the entrance.",
 				Needs: [ChildTradeItems.SKULL_MASK]
 			},
 			"Mask of Truth Item": {
 				icon: "Mask of Truth",
 				Age: Age.EITHER,
-				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				UseChildAge: function() { return !Tricks.equipSwap.enabled; },
 				LongDescription: "Wear the Mask of Truth and stand front and center near the entrance.",
 				Needs: [ChildTradeItems.MASK_OF_TRUTH]
 			}
@@ -1100,14 +1100,14 @@ GrottoGroups = {
 			},
 			"Heart Container": {
 				Age: Age.EITHER,
-				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				UseChildAge: function() { return !Tricks.equipSwap.enabled; },
 				LongDescription: "To defeat Barinade, you need the boomerang and also either a sword or at least 3 Deku Sticks. First, dislodge it from the ceiling using the boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
 				Needs: [ItemSets.SWORDS, Items.BOOMERANG]
 			},
 			"Blue Warp": {
 				icon: "Zora's Sapphire",
 				Age: Age.EITHER,
-				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				UseChildAge: function() { return !Tricks.equipSwap.enabled; },
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				Needs: [ItemSets.SWORDS, Items.BOOMERANG]
 			}
@@ -1140,14 +1140,14 @@ GrottoGroups = {
 		buttons: {
 			"Heart Container": {
 				Age: Age.EITHER,
-				UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap || !Settings.GlitchesToAllow.fireNoGoronTunic; },
+				UseAdultAge: function() { return !Tricks.equipSwap.enabled || !Settings.GlitchesToAllow.fireNoGoronTunic; },
 				LongDescription: "To defeat Volvagia, hit her with your hammer when she pops out of the holes. After that, attack it again. Jumpslashes will do more damage, like usual. You can hit it with arrows while it's flying to do additional damage. If it ever drops rocks on you, you can hang off the side of the cliff to avoid damage.",
 				Needs: [GameStateSets.FIRE_TEMPLE_TUNIC_CHECK, Items.MEGATON_HAMMER]
 			},
 			"Blue Warp": {
 				icon: "Fire Medallion",
 				Age: Age.EITHER,
-				UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap || !Settings.GlitchesToAllow.fireNoGoronTunic; },
+				UseAdultAge: function() { return !Tricks.equipSwap.enabled || !Settings.GlitchesToAllow.fireNoGoronTunic; },
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				Needs: [GameStateSets.FIRE_TEMPLE_TUNIC_CHECK, Items.MEGATON_HAMMER]
 			}
@@ -2027,7 +2027,7 @@ GrottoGroups = {
 				useGroupImage: true,
 				count: 2,
 				Age: Age.EITHER,
-				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				UseChildAge: function() { return !Tricks.equipSwap.enabled; },
 				LongDescription: "Shoot something to get these items.",
 				Needs: [Items.FAIRY_SLINGSHOT]
 			}
@@ -2041,7 +2041,7 @@ GrottoGroups = {
 				useGroupImage: true,
 				count: 3,
 				Age: Age.EITHER,
-				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				UseChildAge: function() { return !Tricks.equipSwap.enabled; },
 				LongDescription: "Shoot something to get these items.",
 				Needs: [Items.FAIRY_SLINGSHOT]
 			}
@@ -2055,7 +2055,7 @@ GrottoGroups = {
 				useGroupImage: true,
 				count: 3,
 				Age: Age.EITHER,
-				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
+				UseChildAge: function() { return !Tricks.equipSwap.enabled && !Tricks.qpa.enabled; },
 				LongDescription: "Shoot something to get these items.",
 				NeedsAny: [Items.FAIRY_SLINGSHOT, QPAItemSets.LEDGE_QPA]
 			}
@@ -2069,7 +2069,7 @@ GrottoGroups = {
 				useGroupImage: true,
 				count: 4,
 				Age: Age.EITHER,
-				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				UseChildAge: function() { return !Tricks.equipSwap.enabled; },
 				LongDescription: "Shoot something to get these items.",
 				Needs: [Items.FAIRY_SLINGSHOT]
 			}
@@ -2083,7 +2083,7 @@ GrottoGroups = {
 				useGroupImage: true,
 				count: 4,
 				Age: Age.EITHER,
-				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
+				UseChildAge: function() { return !Tricks.equipSwap.enabled && !Tricks.qpa.enabled; },
 				LongDescription: "Shoot something to get these items. Can also use ISG QPA and backflips, or cutscene QPA lined up to break the stick on it.",
 				NeedsAny: [Items.FAIRY_SLINGSHOT, QPAItemSets.TALL_TORCH_QPA, QPAItemSets.CUTSCENE_ITEM_QPA]
 			}
@@ -2097,7 +2097,7 @@ GrottoGroups = {
 				useGroupImage: true,
 				count: 4,
 				Age: Age.EITHER,
-				UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				UseChildAge: function() { return !Tricks.equipSwap.enabled; },
 				LongDescription: "Shoot something to get these items. Child can also use cutsceene QPA lined up to break the stick on it.",
 				NeedsAny: [Items.FAIRY_SLINGSHOT, QPAItemSets.CUTSCENE_ITEM_QPA]
 			}
@@ -2111,7 +2111,7 @@ GrottoGroups = {
 				useGroupImage: true,
 				count: 3,
 				Age: Age.EITHER,
-				UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				UseAdultAge: function() { return !Tricks.equipSwap.enabled; },
 				LongDescription: "Hammer something to get these items.",
 				Needs: [Items.MEGATON_HAMMER]
 			}
@@ -2138,7 +2138,7 @@ GrottoGroups = {
 			},
 			"Hammer Wonderitem": {
 				Age: Age.EITHER,
-				UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+				UseAdultAge: function() { return !Tricks.equipSwap.enabled; },
 				LongDescription: "Swing your hammer by this place to spawn the wonderitem.",
 				Needs: [Items.MEGATON_HAMMER]
 			}

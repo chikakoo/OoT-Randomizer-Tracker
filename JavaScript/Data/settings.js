@@ -355,6 +355,32 @@ let Settings = {
 };
 
 let Tricks = {
+	// Force Equips
+	categoryForceEquips: {
+		isCategory: true,
+		displayText: "Force Equips"
+	},
+	forceAdultDekuStickEquip: {
+		enabled: false,
+		displayText: "Force Adult Deku Stick Equip",
+		description: "Enable this if you have deku sticks equipped, but got equip-swapped blocked by a child trade item or magic beans."
+	},
+	forceAdultQPACutsceneItemEquip: {
+		enabled: false,
+		displayText: "Force Adult QPA Cutscene Item Equip",
+		description: "Enable this if you can double equip swap sticks and a QPA cutscene item, to allow adult to do Cutscene Item QPA."
+	},
+	forceAdultSlingshotEquip: {
+		enabled: false,
+		displayText: "Force Adult Slingshot Equip",
+		description: "Enable this if you have slingshot equipped, but got equip-swapped blocked by a child trade item or magic beans."
+	},
+	forceAdultBoomerangEquip: {
+		enabled: false,
+		displayText: "Force Adult Boomerang Equip",
+		description: "Enable this if you have boomerang equipped, but got equip-swapped blocked by a child trade item or magic beans."
+	},
+
 	// Common/Misc
 	categoryCommonMisc: {
 		isCategory: true,
@@ -385,7 +411,7 @@ let Tricks = {
 		}]
 	},
 	megaFlip: {
-		enabled: true,
+		enabled: false,
 		canDo: (age) => Tricks.megaFlip.enabled &&
 			ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]),
 		canDoWithChu: (age) => Tricks.megaFlip.canDo(age) && 
@@ -453,27 +479,64 @@ let Tricks = {
 		displayText: "Staircase Hover",
 		description: "Get ISG; shield drop a bomb; sidehop; drop another; holding Z, walk between the bombs; backflip just before the first bomb explodes, then again before the second; can drop more bombs and time more backflips if you need more height"
 	},
-
-
-	//TODO next: finish this and write out better instructions
 	bombSuperslide: {
 		enabled: false,
-		canDo: (age) => true,
+		canDo: (age) => Tricks.bombSuperslide.enabled &&
+			ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]),
+		canDoWithHoverBoots: (age) => Tricks.bombSuperslide.canDo(age) &&
+			ItemData.canUse(age, Equipment.HOVER_BOOTS),
 		displayText: "Bomb Superslide",
-		description: "Requires bombs and a shield to do a superslide to move backwards very quickly."
+		description: "Shield drop a bomb; sidehop; shield drop a bomb; backflip; retarget; dry roll; wait until the bomb is about to explode; hold Z and R (forever) and press A to roll; spam A during the roll"
 	},
 	hammerHoverBootsSuperslide: {
 		enabled: false,
-		canDo: (age) => true,
+		canDo: (age) => Tricks.hammerHoverBootsSuperslide.enabled &&
+			ItemData.canUse(age, [Equipment.HOVER_BOOTS, Items.MEGATON_HAMMER]),
 		displayText: "Hammer & Hover Boots Superslide",
-		description: "Hit a wall and equip hover boots on the right frame to slide backwards really quickly to cross gaps.",
-		links: [{}]
+		description: "Hit a wall with your hammer; pause on the first frame the hammer is up high; equip hover boots; hold in Link's forward direction (usually down) to travel really far",
+		links: [{
+			url: "https://youtu.be/Mvu23cQBX2Q?t=19",
+			description: "Video - the start of it is the frame to pause on."
+		}]
 	},
-	TEST: {
+	equipSwap: {
+		// Excluding canDo for now in favor of Data.canEquipSwap
+		enabled: false,
+		displayText: "Equip Swap",
+		description: "Mouse over the item you want to equip; advance the screen; advance back to the items; on the right frame, press up left or up right (toward the item menu) and a c-button to equip that item.\x0A\x0ATiming: When the farthest side edge (i.e. on the right screen, use the left edge) of the item name box on the bottom lines up with the corner of the pause menu.",
+		links: [{
+			url: "https://youtube.com/shorts/-TU2NRzkMp8",
+			description: "Video"
+		}]
+	},
+	TEST2: {
 		enabled: false,
 		canDo: (age) => true,
 		displayText: "TEST",
 		description: "TEST",
-		links: [{}]
+		links: [{
+			url: "",
+			description: "Video"
+		}]
+	},
+	TEST3: {
+		enabled: false,
+		canDo: (age) => true,
+		displayText: "TEST",
+		description: "TEST",
+		links: [{
+			url: "",
+			description: "Video"
+		}]
+	},
+	TEST4: {
+		enabled: false,
+		canDo: (age) => true,
+		displayText: "TEST",
+		description: "TEST",
+		links: [{
+			url: "",
+			description: "Video"
+		}]
 	},
 };

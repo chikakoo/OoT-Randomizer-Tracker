@@ -1005,7 +1005,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 184, y: 236, floor: "F1" },
                         MapImageName: "Slingshot Wonderitem",
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled && !Tricks.qpa.enabled; },
                         Age: Age.EITHER,
                         Order: 1,
                         LongDescription: "In the first room, shoot the right cow to spawn this wonderitem.",
@@ -1015,7 +1015,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 164, y: 236, floor: "F1" },
                         MapImageName: "Slingshot Wonderitem",
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled && !Tricks.qpa.enabled; },
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "In the first room, shoot the left cow to spawn this wonderitem.",
@@ -1025,7 +1025,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 173, y: 215, floor: "F1" },
                         MapImageName: "Fairy Slingshot",
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled && !Tricks.qpa.enabled; },
                         Age: Age.EITHER,
                         RequiredToAppear: function() { 
                             return Settings.RandomizerSettings.shuffleDungeonEntrances ||
@@ -1055,7 +1055,7 @@ let MQDungeons = {
                     "Chest in Main Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 181, y: 279, floor: "F1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled && !Tricks.qpa.enabled; },
                         Age: Age.EITHER,
                         Order: 4.2,
                         LongDescription: "In the first room, shoot the right cow with your slingshot to spawn the chest.",
@@ -1097,7 +1097,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 186, y: 179, floor: "F1" },
                         MapImageName: "Slingshot Wonderitem",
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Age: Age.EITHER,
                         Order: 5.1,
                         LongDescription: "Shoot the cow in the room after the first door to spawn the wonderitem. It will fall below, so you'll have to retrieve it there!",
@@ -1182,7 +1182,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "3 QPAable Slingshot Wonderitems",
                         MapInfo: { x: 148, y: 84, floor: "B1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled && !Tricks.qpa.enabled; },
                         Age: Age.EITHER,
                         Order: 9.1,
                         LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole normally blocked by the tentacle (upper leftmost hole). Shoot the left cow three times to spawn three different wonderitems."
@@ -1192,7 +1192,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "3 Slingshot Wonderitems",
                         MapInfo: { x: 158, y: 37, floor: "B1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Age: Age.EITHER,
                         Order: 9.2,
                         LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole normally blocked by the tentacle (upper leftmost hole). Shoot the right cow three times to spawn three different wonderitems."
@@ -1200,7 +1200,7 @@ let MQDungeons = {
                     "East Chest in Big Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 205, y: 54, floor: "B1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole that Ruto normally falls down. Shoot the right cow on the wall to spawn this chest.",
@@ -1209,7 +1209,7 @@ let MQDungeons = {
                     "West Chest in Big Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 175, y: 108, floor: "B1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole that Ruto normally falls down. Shoot the left cow on the wall to spawn this chest.",
@@ -1250,7 +1250,7 @@ let MQDungeons = {
             },
             northernRooms: {
                 DisplayGroup: { groupName: "Tentacle Rooms", imageName: "Boomerang" },
-                UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                 Exits: {
                     afterRedTentaclesDefeated: {
                         Needs: [Items.BOOMERANG],
@@ -1295,7 +1295,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "3 Slingshot Wonderitems",
                         MapInfo: { x: 186, y: 16, floor: "F1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Age: Age.EITHER,
                         Order: 16.1,
                         LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. Shoot the left cow three times to spawn three wonderitems.",
@@ -1306,7 +1306,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "3 Slingshot Wonderitems",
                         MapInfo: { x: 205, y: 16, floor: "F1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Age: Age.EITHER,
                         Order: 16.2,
                         LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. Shoot the right cow three times to spawn three wonderitems.",
@@ -1315,7 +1315,7 @@ let MQDungeons = {
                     "Chest in Like Like Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 195, y: 12, floor: "F1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. Shoot the cows, then kill the Like Likes that fall to spawn the chest.",
@@ -1335,7 +1335,7 @@ let MQDungeons = {
                     "Skulltula on Ceiling": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 157, y: 14, floor: "F1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled && !Tricks.qpa.enabled; },
                         Age: Age.EITHER,
                         Order: 18,
                         LongDescription: "Using a deku stick to bring a fire from the Like Like room, or a fire item, burn the web to get access to the far west room. After killing the tentacle, head to the far east room and kill that tentacle. Now leave and enter the room to your left. Use the switch and a bomb, or a bombchu to blow up the rock on the ceiling to reveal the skulltula.",
@@ -1345,7 +1345,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 107, y: 56, floor: "F1" },
                         MapImageName: "Boomerang",
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled },
                         Age: Age.EITHER,
                         Order: 19,
                         LongDescription: "This is the task to defeat the two red tentacles (the east/west rooms). This is used to help see what Adult can do if he cannot use the boomerang."
@@ -1373,7 +1373,7 @@ let MQDungeons = {
             },
             afterGreenTentacleDefeated: {
                 DisplayGroup: { groupName: "Tentacle Rooms", imageName: "Boomerang" },
-                UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                 Exits: {
                     afterBigOcto: {
                         Needs: [ItemSets.SWORDS]
@@ -1384,7 +1384,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 175, y: 14, floor: "F1" },
                         MapImageName: "Boomerang",
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled },
                         Age: Age.EITHER,
                         Order: 19,
                         LongDescription: "This is the task to defeat the green tentacle (the north rooms). This is used to help see what Adult can do if he cannot use the boomerang."
@@ -1403,7 +1403,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 70, y: 53, floor: "F2" },
                         MapImageName: "Slingshot Wonderitem",
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Age: Age.EITHER,
                         Order: 20,
                         LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up and shoot the cow on the wall to spawn the wonderitem.",
@@ -1413,7 +1413,7 @@ let MQDungeons = {
             },
             wigglerRoomAfterBigOcto: {
                 DisplayGroup: { groupName: "After Big Octo", imageName: "Ruto's Letter" },
-                UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                 Exits: {
                     elevatorRoomPlatform: {},
                     roomBeforeBoss: {}
@@ -1464,7 +1464,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "2 Slingshot Wonderitems",
                         MapInfo: { x: 243, y: 208, floor: "F1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Age: Age.EITHER,
                         Order: 22.1,
                         LongDescription: "Shoot the right cow two times (it will rise up) to spawn two wonderitems."
@@ -1473,7 +1473,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 263, y: 188, floor: "F1" },
                         MapImageName: "Slingshot Wonderitem",
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Age: Age.EITHER,
                         Order: 22.2,
                         LongDescription: "Shoot the left cow in this room to spawn this wonderitem.",
@@ -1482,7 +1482,7 @@ let MQDungeons = {
                     "Chest in Room Before Boss": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 234, y: 175, floor: "F1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Age: Age.EITHER,
                         Order: 23,
                         LongDescription: "Shoot the left cow in this room to spawn the chest.",
@@ -1801,7 +1801,7 @@ let MQDungeons = {
                 Exits: {
                     outsideEastPlatform: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS]
+                        Needs: [Tricks.hammerHoverBootsSuperslide.canDo]
                     },
                     outsideEastSkulltula: {
                         NeedsAny: [ItemSets.DISTANT_SWITCH_ITEMS, Items.DINS_FIRE]
@@ -2156,7 +2156,7 @@ let MQDungeons = {
                     roomBeforeBoss: {
                         Needs: [GameStateSets.FIRE_TEMPLE_TUNIC_CHECK],
                         NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA],
-                        ChildNeedsAny: [GlitchItemSets.FIRE_FIREWALL_SKIP, GlitchItemSets.BOMB_SUPERSLIDE]
+                        ChildNeedsAny: [GlitchItemSets.FIRE_FIREWALL_SKIP, Tricks.bombSuperslide.canDo]
                     },
                     lockedAreaByEntrance: {
                         LockedDoor: "Bottom Locked Door in Lobby",
@@ -2168,7 +2168,7 @@ let MQDungeons = {
                     },
                     bigLavaRoom: {
                         Needs: [Items.MEGATON_HAMMER, GameStateSets.FIRE_TEMPLE_TUNIC_CHECK],
-                        ChildNeedsAny: [GlitchItemSets.FIRE_FIREWALL_SKIP, GlitchItemSets.BOMB_SUPERSLIDE]
+                        ChildNeedsAny: [GlitchItemSets.FIRE_FIREWALL_SKIP, Tricks.bombSuperslide.canDo]
                     },
                     Exit: {
                         OwExit: OwExits["Fire Temple"]["Exit"]
@@ -2213,8 +2213,8 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { 
                             return !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                                (!Settings.GlitchesToAllow.bombSuperslide && !Settings.GlitchesToAllow.fireWallSkip) ||
-                                !Settings.GlitchesToAllow.equipSwap;
+                                (!Tricks.bombSuperslide.enabled && !Settings.GlitchesToAllow.fireWallSkip) ||
+                                !Tricks.equipSwap.enabled;
                         },
                         Order: 18,
                         LongDescription: "This is the locked door on the far side of the big lava room.",
@@ -2282,7 +2282,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 57, y: 60, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
+                        UseAdultAge: function() { return !Tricks.groundJump.enabled; },
                         Order: 9,
                         LongDescription: "Enter the locked door to the right when you first enter the temple. Navigate around the rooms, defeating the enemies to progress (including an Iron Knuckle). Defeat the Flare Dancer to spawn the chest.",
                         ChildNeeds: [Tricks.groundJump.canDoWithBomb, ItemSets.SWORDS],
@@ -2298,7 +2298,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 61, y: 110, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseAdultAge: function() { return !Tricks.equipSwap.enabled; },
                         Order: 10,
                         LongDescription: "After the Flare Dancer, enter the next room. Hit the rusted switch with the hammer to gain access to this chest."
                     }
@@ -2308,7 +2308,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Boss Area", imageName: "Fire Medallion" },
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                        (!Settings.GlitchesToAllow.bombSuperslide && !Settings.GlitchesToAllow.fireWallSkip);
+                        (!Tricks.bombSuperslide.enabled && !Settings.GlitchesToAllow.fireWallSkip);
                 },
                 Exits: {
                     bossRoom: {
@@ -2333,7 +2333,7 @@ let MQDungeons = {
                         MapInfo: { x: 37, y: 166, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 4,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner to the crates.<br/><br/>If child, climb the block with the torch in it from the back right corner. Hold forward to jump up the ledge. Use the first ledge box to get to the second one before you break it.",
                         NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
@@ -2344,7 +2344,7 @@ let MQDungeons = {
                         MapInfo: { x: 33, y: 161, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 5,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner to the pots.",
                         NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
@@ -2371,8 +2371,8 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                        (!Settings.GlitchesToAllow.bombSuperslide && !Settings.GlitchesToAllow.fireWallSkip) ||
-                        !Settings.GlitchesToAllow.equipSwap;
+                        (!Tricks.bombSuperslide.enabled && !Settings.GlitchesToAllow.fireWallSkip) ||
+                        !Tricks.equipSwap.enabled;
                 },
                 Exits: {
                     bossKeyRoom: {
@@ -2415,7 +2415,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 190, y: 263, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
+                        UseAdultAge: function() { return !Tricks.groundJump.enabled; },
                         Order: 16,
                         LongDescription: "Either hookshot to the torch on the right side of the lava room, or backflip from the moving platform to get over the fire wall. As Child, you'll need to equip Hylian shield so it isn't burned. The pot is by the blocked doorway (Child will have to ground jump).",
                         ChildNeeds: [() => Equipment.HYLIAN_SHIELD.playerHas, Tricks.groundJump.canDoWithBomb]
@@ -2424,7 +2424,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 202, y: 287, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.groundJump; },
+                        UseAdultAge: function() { return !Tricks.groundJump.enabled; },
                         Order: 17,
                         LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron.<br/><br/>If using cutscene item QPA, angle toward the torch at a 45 degree angle when you jumpslash with the deku stick to light it.",
                         ChildNeeds: [() => Equipment.HYLIAN_SHIELD.playerHas, Tricks.groundJump.canDoWithBomb],
@@ -2473,8 +2473,8 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                        !Settings.GlitchesToAllow.equipSwap ||
-                        (!Settings.GlitchesToAllow.bombSuperslide && !Settings.GlitchesToAllow.fireWallSkip);
+                        !Tricks.equipSwap.enabled ||
+                        (!Tricks.bombSuperslide.enabled && !Settings.GlitchesToAllow.fireWallSkip);
                 },
                 Exits: {
                     boulderMaze: {
@@ -2504,7 +2504,7 @@ let MQDungeons = {
                         Needs: [Items.MEGATON_HAMMER],
                         Age: Age.EITHER,
                         Order: 19.1,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseAdultAge: function() { return !Tricks.equipSwap.enabled; },
                         LongDescription: "After the rising block room, hammer the floor with the face on it near the jail cell to get these three items."
                     }
                 }
@@ -2966,8 +2966,8 @@ let MQDungeons = {
                     bossRoomAntechamber: {
                         NeedsAny: [
                             UpgradedItems.LONGSHOT,
-                            GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS,
-                            GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS
+                            Tricks.bombSuperslide.canDoWithHoverBoots,
+                            Tricks.hammerHoverBootsSuperslide.canDo
                         ]
                     },
                     Exit: {
@@ -3795,7 +3795,7 @@ let MQDungeons = {
         IsMasterQuest: true,
         Floors: ["F1", "B1", "B2"],
         StartingFloorIndex: 0,
-        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+        UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
         Regions: {
             main: {
                 DisplayGroup: { groupName: "Entrance & Maze Rooms", imageName: "Hover Boots" },
@@ -5330,7 +5330,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 251, y: 100, floor: "F2" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         Order: 28,
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way to the southeast corner using the hookshot. In the northeast part of the room, there's an invisible chest. Hookshot or hover boots to it."
                     },
@@ -5423,7 +5423,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 246, y: 211, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { !Settings.GlitchesToAllow.equipSwap; },
+                        UseAdultAge: function() { !Tricks.equipSwap.enabled; },
                         Order: 36.2,
                         LongDescription: "This rupee is in the water diving the lobby and the room next to it. First, get to the room to the right of the lobby (see Bottom Right Chest in Lobby for info). Now, use your hammer and smash the rock and hit the switch underneath. This will lower the water and allow you to get the rupee.<br/><br/>Alternatively, if you have Longshot and have spawns the bottom right chest in lobby, you can line the rupee up between you and the chest and longshot to it to claim the rupee.<br/><br/>WARNING: If you stay at in the lobby side, you will be trapped there when the water comes back!",
                         NeedsAny: [
@@ -5437,7 +5437,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Rooms Beyond Lobby Water", imageName: "Ocarina" },
                 UseAdultAge: function() { 
                     return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip ||
-                        !Settings.GlitchesToAllow.equipSwap; 
+                        !Tricks.equipSwap.enabled; 
                 },
                 Exits: {},
                 ItemLocations: {
@@ -5997,7 +5997,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "4 High QPAable Slingshot Wonderitems",
                         MapInfo: { x: 129, y: 45, floor: "F1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap && !Tricks.qpa.enabled; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled && !Tricks.qpa.enabled; },
                         Age: Age.EITHER,
                         Order: 5.1,
                         LongDescription: "Shoot the lens of truth picture in the northwest corner of the main room to spawn wonderitems (do it 4 times to get all 4)."
@@ -6007,7 +6007,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "4 Slingshot Wonderitems",
                         MapInfo: { x: 261, y: 45, floor: "F1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Age: Age.EITHER,
                         Order: 5.2,
                         LongDescription: "Shoot the lens of truth picture in the northeast corner of the main room to spawn wonderitems (do it 4 times to get all 4)."
@@ -6112,7 +6112,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "4 Child Cutscene QPAable Slingshot Wonderitems",
                         MapInfo: { x: 218, y: 74, floor: "F1" },
-                        UseChildAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
                         Age: Age.EITHER,
                         Order: 11.1,
                         LongDescription: "Shoot the lens of truth picture in the east center room to spawn wonderitems (do it 4 times to get all 4). Cutscene QPA works as Child if you break the stick from the corner to the left of the picture."
@@ -6321,7 +6321,7 @@ let MQDungeons = {
                         MapImageName: "Megaton Hammer",
                         Age: Age.EITHER,
                         Order: 6.2,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.equipSwap; },
+                        UseAdultAge: function() { return !Tricks.equipSwap.enabled; },
                         Needs: [Items.MEGATON_HAMMER],
                         LongDescription: "At the center of the maze, break the crate and hit the switch with the Megaton Hammer to spawn the ice arrow chest."
                     }
@@ -6480,7 +6480,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 163, y: 91 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip; },
+                        UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         Order: 10,
                         LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down.<br/><br/>Use hover boots or the longshot to navigate to the top of the center statue to get this wonderitem.",
                         ChildNeeds: [Tricks.megaFlip.canDo],
@@ -6568,7 +6568,7 @@ let MQDungeons = {
                     "Lava Silver Rupee in Front Center": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 247, y: 180 },
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.megaFlip },
+                        UseAdultAge: function() { return !Tricks.megaFlip.enabled },
                         Age: Age.EITHER,
                         Order: 15.1,
                         LongDescription: "This rupee is the one on the platform in front of you, when entering from the aromos room.<br/><br/>To clear the fire around the rupees, use a fire arrow on the unlit torch on the side of the room, or longshot to the torch and use Din's Fire.<br/><br/>If entering from the top, either clear the fire and use hover boots to navigate around, or use your longshot to navigate via the torches (might be good to hit the megaton hammer switch too).",
@@ -6728,8 +6728,8 @@ let MQDungeons = {
                             Items.FIRE_ARROW,
                             UpgradedItems.LONGSHOT,
                             Tricks.megaFlip.canDo,
-                            GlitchItemSets.BOMB_SUPERSLIDE_WITH_HOVERS,
-                            GlitchItemSets.HAMMER_SUPERSLIDE_WITH_HOVERS
+                            Tricks.bombSuperslide.canDoWithHoverBoots,
+                            Tricks.hammerHoverBootsSuperslide.canDo
                         ]
                     },
                     bigLavaRoomBack: {
