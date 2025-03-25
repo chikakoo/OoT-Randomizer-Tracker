@@ -128,32 +128,6 @@ let GlitchItemSets = {
         age === Age.CHILD
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
-            
-	// Forest / Woods
-    POKEY_SKIP: (age) => 
-        Settings.GlitchesToAllow.pokeySkip && 
-        ItemData.canUse(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD]),
-	HOUSE_OF_TWINS_SKULL_WITHOUT_HOOKSHOT: (age) => 
-        Settings.GlitchesToAllow.houseOfTwinsSkullWithoutHookshot && 
-        ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, Tricks.isg.canDo]),
-    LW_ADULT_BRIDGE_FROM_TOP: (age) => 
-        age === Age.ADULT &&
-        Settings.GlitchesToAllow.lwAdultBridgeFromTop &&
-        ItemData.canUse(age, ItemSets.SHIELDS),
-    LW_ADULT_BRIDGE_WITH_HOOKSHOT: (age) =>
-        Settings.GlitchesToAllow.lwAdultBridgeWithHookshot &&
-        ItemData.canUse(age, Items.HOOKSHOT),
-    CHILD_ZR_FROM_LW_WITHOUT_SCALE: (age) => 
-        age === Age.CHILD && 
-        Settings.GlitchesToAllow.zorasRiverScalelessChild && 
-        ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS),
-    ADULT_ZR_FROM_LW_WITHOUT_SCALE: (age) => Settings.GlitchesToAllow.zorasRiverScalelessAdult && age === Age.ADULT,
-	MIDO_SKIP: () => Settings.GlitchesToAllow.midoSkip,
-    LOST_WOODS_SKULL_WITHOUT_BEAN: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.lwSkullWithoutBean &&
-        // Note that you can ALWAYS kill the skull with the weird pause triple slash glitch
-        ItemData.canUseAny(age, [Items.HOOKSHOT, Tricks.boomerangTrickThrows.canDo]),
-    PRESSURE_JUMP: () => Settings.GlitchesToAllow.lwBridgePressureJump && Items.BOMB.playerHas,
 
 	// Death Mountain/Goron
 	DMT_CLIP_TO_CHEST: (age) => 

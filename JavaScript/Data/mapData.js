@@ -113,7 +113,10 @@ let MapLocations = {
                         MapInfo: { x: 261, y: 233 },
                         Age: Age.ADULT,
                         LongDescription: "Look in the middle of the House of Twins at night.",
-                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.HOUSE_OF_TWINS_SKULL_WITHOUT_HOOKSHOT]
+                        NeedsAny: [
+                            ItemSets.GRAB_SHORT_DISTANCE_ITEMS, 
+                            Tricks.houseOfTwinsSkullWithoutHookshot.canDo
+                        ]
                     },
                     "Move Mido": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -301,7 +304,7 @@ let MapLocations = {
                 Exits: {
                     skullKidAndBridge: {},
                     secondHalf: {
-                        AdultNeedsAny: [GlitchItemSets.MIDO_SKIP, Songs.SARIAS_SONG]
+                        AdultNeedsAny: [Tricks.midoSkip.canDo, Songs.SARIAS_SONG]
                     },
                     kokiriForestWarp: {},
                     "Goron City": {
@@ -407,7 +410,10 @@ let MapLocations = {
                         Order: 3,
                         Age: Age.ADULT,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. Plant a magic bean here as a child. Come back as an adult at night and ride the plant up.",
-                        NeedsAny: [BeanSets.LOST_WOODS_FOREST_STAGE, GlitchItemSets.LOST_WOODS_SKULL_WITHOUT_BEAN]
+                        NeedsAny: [
+                            BeanSets.LOST_WOODS_FOREST_STAGE, 
+                            Tricks.lwSkullWithoutBean.canDo
+                        ]
                     },
                     "Right Scrub by Forest Stage": {
                         ItemGroup: ItemGroups.SCRUB,

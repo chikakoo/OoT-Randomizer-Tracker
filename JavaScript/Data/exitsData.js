@@ -12,7 +12,7 @@ let OwExits = {
             ChildNeedsAny: [
                 SettingSets.OPEN_FOREST,
                 GameStateSets.DEFEATED_DEKU_TREE_BOSS,
-                GlitchItemSets.POKEY_SKIP
+                Tricks.pokeySkip.canDo
             ]
         },
         "Mido's House": {
@@ -134,8 +134,8 @@ let OwExits = {
             NeedsAny: [
                 Equipment.SCALE,
                 Equipment.IRON_BOOTS,
-                GlitchItemSets.CHILD_ZR_FROM_LW_WITHOUT_SCALE,
-                GlitchItemSets.ADULT_ZR_FROM_LW_WITHOUT_SCALE],
+                Tricks.zorasRiverScalelessChild.canDo,
+                Tricks.zorasRiverScalelessAdult.canDo],
             LongDescription: "This is the exit to Zora's River that you get to by diving."
         },
         "To Lost Woods Bridge": {
@@ -153,8 +153,8 @@ let OwExits = {
                 UpgradedItems.LONGSHOT,
                 BeanSets.LOST_WOODS_BRIDGE,
                 Tricks.megaFlip.canDo,
-                GlitchItemSets.LW_ADULT_BRIDGE_FROM_TOP,
-                GlitchItemSets.LW_ADULT_BRIDGE_WITH_HOOKSHOT],
+                Tricks.lwAdultBridgeFromTop.canDo,
+                Tricks.lwAdultBridgeWithHookshot.canDo],
             OwShuffleMap: "Lost Woods Bridge",
             OwShuffleRegion: "main",
             OwShuffleExitName: "Kokiri Forest Bridge",
@@ -236,9 +236,13 @@ let OwExits = {
             OwShuffleRegion: "skullKidAndBridge",
             OwShuffleExitName: "To Kokiri Forest",
             Age: Age.EITHER,
-            UseAdultAge: function() { return !Tricks.megaFlip.enabled && !Settings.GlitchesToAllow.lwBridgePressureJump; },
+            UseAdultAge: function() { return !Tricks.megaFlip.enabled && !Tricks.lwBridgePressureJump.enabled; },
             LongDescription: "Longshot from the bridge to the ladder to get to the lost woods.<br/><br/>Megaflip setup: Get in the corner closest to the ladder; take a tiny step back; c-up and face the third rope support; turn 180; dry roll if using bombs; megaflip",
-            NeedsAny: [UpgradedItems.LONGSHOT, Tricks.megaFlip.canDo, GlitchItemSets.PRESSURE_JUMP]
+            NeedsAny: [
+                UpgradedItems.LONGSHOT, 
+                Tricks.megaFlip.canDo, 
+                Tricks.lwBridgePressureJump.canDo
+            ]
         }
     },
 

@@ -355,7 +355,7 @@ let Settings = {
 };
 
 let Tricks = {
-	// Force Equips
+	//#region Force Equips
 	categoryForceEquips: {
 		isCategory: true,
 		displayText: "Force Equips"
@@ -380,8 +380,9 @@ let Tricks = {
 		displayText: "Force Adult Boomerang Equip",
 		description: "Enable this if you have boomerang equipped, but got equip-swapped blocked by a child trade item or magic beans."
 	},
+	//#endregion Force Equips
 
-	// Common/Misc
+	//#region Common/Misc
 	categoryCommonMisc: {
 		isCategory: true,
 		displayText: "Common/Misc"
@@ -563,8 +564,126 @@ let Tricks = {
 		displayText: "Break Beehives with Bombchus",
 		description: "Cook a bombchu long enough to blow up beehives. Each check should have a rough timing in its description."
 	},
+	//#endregion Common/Misc
 
-	// HF/Market/Castle
+	//#region Forest Areas
+	categoryForestAreas: {
+		isCategory: true,
+		displayText: "Forest Areas"
+	},
+	pokeySkip: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.pokeySkip.enabled &&
+			ItemData.canUse(age, [ItemSets.SWORDS, Equipment.DEKU_SHIELD]),
+		displayText: "Pokey Skip",
+		description: "Target the right wall by the Kokiri blocking the entrance; turn right; B to slash + hold shield; crouch stab and get ISG; step back and roll past the guy",
+		links: [{
+			url: "https://youtu.be/DKyqJXD94BE",
+			description: "Video"
+		}]
+	},
+	houseOfTwinsSkullWithoutHookshot: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.houseOfTwinsSkullWithoutHookshot.enabled &&
+			ItemData.canUseAny(age, [Equipment.HOVER_BOOTS, Tricks.isg.canDo]),
+		displayText: "House of Twins Skulltula Without Hookshot",
+		description: "ISG:\x0AGet isg; target the root right of the door; with this angle, get against the back right root and sidehop left to the corner; backflip; sidehop left; tap down to go down just a bit more; sidehop left and RELEASE TARGET during the hop; tap down to turn around (if you can't turn, you didn't release target in time); backflip; kill the skulltula and backflip to get the token\x0A\x0AHOVER BOOTS:\x0ASeamwalk up the back right root of the House of Twins; use hover boots to get on the house; kill the skulltuls and backflip to get the token",
+		links: [{
+			url: "https://youtu.be/FRJ3T6v0XmA",
+			description: "Video - using ISG"
+		}]
+	},
+	midoSkip: {
+		enabled: false,
+		canDo: (age) => Tricks.midoSkip.enabled,
+		displayText: "Adult Mido Skip",
+		description: "Get in the corner by mido; C-up and line up the A button so the right side is barely touching the ledge (or a pixel or so is visible; backflip (can buffer it during unpause lag if you want)",
+		links: [{
+			url: "https://youtu.be/ZmgEGIGPbiM",
+			description: "Video"
+		}]
+	},
+	lwSkullWithoutBean: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.lwSkullWithoutBean.enabled &&
+			// No need to check whether you can kill it due to the pause trick
+			ItemData.canUseAny(age, [Items.HOOKSHOT, Tricks.boomerangTrickThrows.canDo]),
+		displayText: "Skulltula by Forest Stage Without Bean",
+		description: "Kill the skull (chu/Din's it, or shoot it from where the grass meets the wall on the left); line up with the cliff where it was; backflip x2; hookshot just above the ledge.\x0A\x0AIf you don't have an item to kill it, stand a bit passed the corner of the grass by the skulltula, perpendicular to the wall; c-up and face the edge of the log; hold forward and triple slash, pausing at the START of the third slash; pause 42 more times (total of 43); after the last unpause, it should die (yeah, really).",
+		links: [
+			{
+				url: "https://youtu.be/YFLxEw2_PBw",
+				description: "Video - using distance item"
+			},
+			{
+				url: "https://youtu.be/vvMUitRUo5c",
+				description: "Video - using pause trick"
+			}
+		]
+	},
+	lwAdultBridgeFromTop: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT && 
+			Tricks.lwAdultBridgeFromTop.enabled,
+		displayText: "Adult Bridge Jump From Top",
+		description: "From the top, get into the left corner; backflip; sidehop right; turn right; Z and up A; keep holding up until after you jump off the log; press B on one of the two frames where Link's arm is lined up with the bottom of the gossip stone",
+		links: [{
+			url: "https://youtu.be/UVDXKqqcQuI",
+			description: "Video"
+		}]
+	},
+	lwAdultBridgeWithHookshot: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.lwAdultBridgeWithHookshot.enabled &&
+			ItemData.canUse(age, Items.HOOKSHOT),
+		displayText: "Adult Bridge With Hookshot",
+		description: "Get into the left side; line up just to the right of where the slope changes; hookshot in the corner where the tree meets the bridge (no red dot)",
+		links: [{
+			url: "https://youtu.be/UVDXKqqcQuI?t=61",
+			description: "Video"
+		}]
+	},
+	lwBridgePressureJump: {
+		enabled: false,
+		canDo: (age) => Tricks.lwBridgePressureJump.enabled &&
+			Items.BOMB.playerHas,
+		displayText: "Pressure Jump to Lost Woods",
+		description: "Drop a bomb in the tunnel by the corner close to the ladder at the Kokiri Forest exit; get in the corner; if child, move right a tiny bit; hold forward as the bomb is about to explode",
+		links: [{
+			url: "https://youtu.be/WLco0OJznEE",
+			description: "Video"
+		}]
+	},
+	zorasRiverScalelessChild: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.zorasRiverScalelessChild.enabled &&
+			ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS),
+		displayText: "Child Clip to River",
+		description: "Get in the left corner by the water; backflip; roll untarget; sidehop right; roll untarget; sidehop left; roll hold target\x0A\x0AWith Z held, slash; backflip; sidehop right and jumpslash on the right frame; swim to the loading zone",
+		links: [{
+			url: "https://youtu.be/7kDXQZZw-wk?t=128",
+			description: "Video"
+		}]
+	},
+	zorasRiverScalelessAdult: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.zorasRiverScalelessAdult.enabled,
+		displayText: "Adult Clip to River",
+		description: "Get in corner; sidehop right x3, left x1; climb up; keep hold of ess right; B to jumpslash; A + B to jumpslash again when ripples are almost gone",
+		links: [{
+			url: "https://youtu.be/MbLnc5-q-Nc",
+			description: "Video"
+		}]
+	},
+	//#endregion Forest Areas
+
+	//#region HF/Market/Castle
 	categoryHFMarketCastle: {
 		isCategory: true,
 		displayText: "HF/Market/Castle"
@@ -621,8 +740,9 @@ let Tricks = {
 			description: "Video"
 		}]
 	},
+	//#endregion HF/Market/Castle
 
-	// Kakariko/Graveyard
+	//#region Kakariko/Graveyard
 	categoryKakarikoGraveyard: {
 		isCategory: true,
 		displayText: "Kakariko/Graveyard"
@@ -757,12 +877,13 @@ let Tricks = {
 			description: "Video"
 		}]
 	},
+	//#endregion Kakariko/Graveyard
 
 
 
 	TEST: {
 		enabled: false,
-		canDo: (age) => true,
+		canDo: (age) => Tricks.TEST.enabled,
 		displayText: "TEST",
 		description: "TEST",
 		links: [{
