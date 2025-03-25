@@ -155,36 +155,6 @@ let GlitchItemSets = {
         ItemData.canUseAny(age, [Items.HOOKSHOT, Tricks.boomerangTrickThrows.canDo]),
     PRESSURE_JUMP: () => Settings.GlitchesToAllow.lwBridgePressureJump && Items.BOMB.playerHas,
 
-	// Kakariko/Graveyard
-    ADULT_DAMPE_RACE_SOT_BLOCK_CLIP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.dampeSoTBlockClip &&
-        ItemData.canUse(age, ItemSets.EXPLOSIVES),
-    KAK_SHOP_CLIPS: (age) => 
-        Settings.GlitchesToAllow.kakShopClips && 
-        ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS),
-    CHILD_WELL_WITH_CUCCO: (age) => age === Age.CHILD && 
-        Settings.GlitchesToAllow.botwAsChildWithCucco && 
-        ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]),
-    ADULT_WELL_WITH_CUCCO: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.botwAsAdultWithCucco &&
-        ItemData.canUse(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]),
-    ADULT_WELL_WITH_CHUS: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.botwAsAdultWihChus &&
-        Items.BOMBCHU.playerHas,
-	HOOKSHOT_JUMP: (age) => 
-        Settings.GlitchesToAllow.hookshotJump && 
-        ItemData.canUse(age, Items.HOOKSHOT),
-	OLD_SHADOW_EARLY: (age) => 
-        Settings.GlitchesToAllow.oldShadowEarly && 
-        ItemData.canUse(age, [ItemSets.EXPLOSIVES, ItemSets.SHIELDS]),
-	UNLOAD_GRAVE: () => Settings.GlitchesToAllow.unloadGrave,
-    CHILD_SHADOW_BOMB_PUSH: (age) => age === Age.CHILD &&
-        Settings.GlitchesToAllow.childShadowWithBombPush &&
-        ItemData.canUse(age, [Items.BOMB, ItemSets.SWORDS]) &&
-        (Equipment.DEKU_SHIELD.playerHas || Equipment.HYLIAN_SHIELD.playerHas), // We're just using it to shield drop
-    ADULT_SHADOW_LEDGE_CLIP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.adultShadowLedgeClip,
-
 	// Death Mountain/Goron
 	DMT_CLIP_TO_CHEST: (age) => 
         Settings.GlitchesToAllow.dmtClipToChestByGoron && 

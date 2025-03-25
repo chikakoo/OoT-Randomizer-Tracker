@@ -805,9 +805,9 @@ let OwExits = {
                     return Time.EITHER;
                 }
 
-                let childNeedsDay = GlitchItemSets.CHILD_WELL_WITH_CUCCO(Age.CHILD);
-                let adultNeedsDay = GlitchItemSets.ADULT_WELL_WITH_CUCCO(Age.ADULT);
-                let adultCanGetAtEither = GlitchItemSets.ADULT_WELL_WITH_CHUS(Age.ADULT);
+                let childNeedsDay = Tricks.botwAsChildWithCucco.canDo(Age.CHILD);
+                let adultNeedsDay = Tricks.botwAsAdultWithCucco.canDo(Age.ADULT);
+                let adultCanGetAtEither = Tricks.botwAsAdultWihChus.canDo(Age.ADULT);
 
                 if (adultCanGetAtEither) {
                     return childNeedsDay 
@@ -829,9 +829,9 @@ let OwExits = {
             LongDescription: "This is the entrance to the Bottom of the Well.",
             IsDungeonEntrance: true,
             NeedsAny: [
-                GlitchItemSets.CHILD_WELL_WITH_CUCCO,
-                GlitchItemSets.ADULT_WELL_WITH_CUCCO,
-                GlitchItemSets.ADULT_WELL_WITH_CHUS,
+                Tricks.botwAsChildWithCucco.canDo,
+                Tricks.botwAsAdultWithCucco.canDo,
+                Tricks.botwAsAdultWihChus.canDo,
                 ItemLocationSets.DRAIN_WELL_WATER,
                 [
                     SettingSets.VANILLA_INTERIOR_ENTRANCES,
@@ -893,7 +893,7 @@ let OwExits = {
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Adult Archery",
             Time: function() { 
-                return Settings.GlitchesToAllow.kakShopClips && ItemData.canUse(Age.ADULT, ItemSets.SHIELDS) 
+                return Tricks.kakShopClips.canDoForArchery(Age.ADULT) 
                     ? Time.EITHER 
                     : Time.DAY;
             },
@@ -950,12 +950,12 @@ let OwExits = {
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Shop",
-            Time: function() { return Settings.GlitchesToAllow.kakShopClips ? Time.DAY_ADULT : Time.DAY; },
+            Time: function() { return Tricks.kakShopClips.canDo ? Time.DAY_ADULT : Time.DAY; },
             MapInfo: { x: 117, y: 89 },
-            UseAdultAge: function() { return !Settings.GlitchesToAllow.kakShopClips; },
+            UseAdultAge: function() { return !Tricks.kakShopClips.canDo; },
             Age: Age.EITHER,
             LongDescription: "This is the building to the left if you are facing the Death Mountain entrance.",
-            ChildNeeds: [GlitchItemSets.KAK_SHOP_CLIPS]
+            ChildNeeds: [Tricks.kakShopClips.canDo]
         },
         "Potion Shop Front": {
             ExitRegion: "main",
@@ -963,7 +963,7 @@ let OwExits = {
             DefaultEntranceGroupName: "Potion Shop Front",
             Time: function() { 
                 // Adult can clip through the back and then jump to the front
-                return Settings.GlitchesToAllow.kakShopClips
+                return Tricks.kakShopClips.canDo
                     ? Time.EITHER
                     : Time.DAY_ADULT;
             },
@@ -995,16 +995,16 @@ let OwExits = {
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
             Time: function() {
-                if (!Settings.GlitchesToAllow.kakShopClips) { return Time.DAY; }
+                if (!Tricks.kakShopClips.canDo) { return Time.DAY; }
                 return MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull()
                     ? Time.EITHER
                     : Time.DAY_CHILD;
             },
             MapInfo: { x: 192, y: 96 },
-            UseAdultAge: function() { return !Settings.GlitchesToAllow.kakShopClips; },
+            UseAdultAge: function() { return !Tricks.kakShopClips.canDo; },
             Age: Age.EITHER,
             LongDescription: "This entrance to this is where the open grotto is behind the fence. You can use your hookshot to get back here via the roofs. You can also jump onto the potion shop roof from the Death Mountain entrance with a good angle.",
-            ChildNeeds: [GlitchItemSets.KAK_SHOP_CLIPS]
+            ChildNeeds: [Tricks.kakShopClips.canDo]
         },
         "Potion Shop to Interior": {
             ExitRegion: "main",

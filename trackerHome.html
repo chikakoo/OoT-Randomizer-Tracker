@@ -738,70 +738,9 @@
 				<span class="settings-header" onclick="SettingsPage.expandOrCollapseAllGlitchesSettings()">Glitches/Tricks</span>
 				
 				<div class="settings-group">
-					<span onclick='SettingsPage.showOrHideGroup(event, "settingsKakarikoContainer")' settings>Kakariko/Graveyard</span>
-					<div id="settingsKakarikoContainer">
-
-						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("dampeSoTBlockClip", "https://youtu.be/M61crTXnjT0", event)'
-							title="Face block; ess 1 right for bomb; 2 for chu; get in right corner next to block; hold target & wait for explosion.">
-							<input type="checkbox" name="dampeSoTBlockClip" value="dampeSoTBlockClip">
-							🔗Adult Dampe Race SoT Block Clip
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("kakShopClips", event)'
-							title="This takes advantage of acute angles and allows child Link access to both Kakariko village shops and adult access to the archery and back of potion shop at night.">
-							<input type="checkbox" name="kakShopClips" value="kakShopClips">
-							Kakariko Shops Clips
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("botwAsChildWithCucco", event)'
-							title="Get ISG off a cucco and use it to get to the well without draining the water.">
-							<input type="checkbox" name="botwAsChildWithCucco" value="botwAsChildWithCucco">
-							Well as Child with Cucco
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("botwAsAdultWithCucco", event)'
-							title="Longshot up the windmill. Using hover boots, pick up the cucco and navigate behind you. Jumpslash at the fence to get thorough and pick up the cucco. Now backwalk off with hover boots and navigate to the well loading zone.">
-							<input type="checkbox" name="botwAsAdultWithCucco" value="botwAsAdultWithCucco">
-							Well as Adult with Cucco
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("botwAsAdultWihChus", "https://youtu.be/ofu8P2v65-g", event)'
-							title="Backwalk off the ledge by the windmill and climb up; ess right x2; neutral roll x2; take out chu and backwalk ON THE SAME FRAME; climb up; target the left wall; sidehop right; sidehop left; A to roll; Z on first frame you are grabbing the ledge; keep Z held">
-							<input type="checkbox" name="botwAsAdultWihChus" value="botwAsAdultWihChus">
-							🔗Well as Adult with Chus
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("boomerangGraveyardHP", event)'
-							title="This is a precise angle followed by a series of sidehops and backflips to nab the heart piece on the cliff using the boomerang. Can also grab the freestanding item if you break the crate with chus (drop at 5th red flash).">
-							<input type="checkbox" name="boomerangGraveyardHP" value="boomerangGraveyardHP">
-							Graveyard Box Heart Piece with Boomerang
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("unloadGrave", event)'
-							title="This is to get into the Royal Family Tomb without Zelda's Lullaby, or Dampe's grave as Child. If you load and unload the grave from the top of the graveyard enough times, it will be gone.">
-							<input type="checkbox" name="unloadGrave" value="unloadGrave">
-							Unload Royal Family's Tomb/Dampe's Grave
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitches("oldShadowEarly", event)'
-							title="This uses an explosive to get to the seam near the heart piece box. You then seamwalk all the way to the temple.">
-							<input type="checkbox" name="oldShadowEarly" value="oldShadowEarly">
-							Old Shadow Temple Early Method
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("hookshotJump", "https://youtu.be/HTU0fKl-6uQ", event)'
-							title="Hookshot in hand, get in the corner by the shed; sidehop right; hold up, A to roll, release up, spam hookshot - you should now be in a weird animation; on or after the third cycle, press hookshot right before the red dot appears; if it works, hold down just before you start descending; ISG off the poe and go to shadow normally">
-							<input type="checkbox" name="hookshotJump" value="hookshotJump">
-							🔗Hookshot Jump for Shadow Temple Early
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("childShadowWithBombPush", "https://youtu.be/s6ne3eG_DOE?si=IFtafimKZVjAqVem", event)'
-							title="Target the wall right of the entrance; backwalk into it; turn 180; sidehop right; backflip x2 (take out sword mid backflip, if using Kokiri Sword); jumpslash + R; sidehop left; vertical slash; turn left (DO NOT HOLD FORWARD INTO THE WALL); instadrop 3 bombs quickly (keep Z held); hold left; starting on the first frame you can see both your feet touching to the right of the bomb (2 frames) - sidehop right x3; sidehop left">
-							<input type="checkbox" name="childShadowWithBombPush" value="childShadowWithBombPush">
-							🔗Child Shadow With Bomb Push
-						</label>
-						<label onclick='SettingsPage.setBooleanValueForGlitchesWithLink("adultShadowLedgeClip", "https://youtu.be/9YiWh9rqHgM?si=A1WRvzpdj4F4XBtL", event)'
-							title="Target the right wall; backflip; sideroll; retarget; turn 180; sidehop left; sideroll; retarget; hold target and SLOWLY walk up the seam (very finnicky); get close to the ledge; A to roll; pause on the first frame link is grabbing the ledge; pause buffer a new Z press during unpause lag; on one of the frames you see your hair, quickly A to let go + B to jumpslash + hold forward to clip in">
-							<input type="checkbox" name="adultShadowLedgeClip" value="adultShadowLedgeClip">
-							🔗Adult Shadow Ledge Clip
-						</label>
-					</div>
-				</div>
-				
-				<div class="settings-group">
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsForestContainer")' settings>Forest Areas</span>
 					<div id="settingsForestContainer">
+						
 						<label onclick='SettingsPage.setBooleanValueForGlitches("pokeySkip", event)'
 							title="Used to escape the forest using a shield and sword. Only does something if open forest is off.">
 							<input type="checkbox" name="pokeySkip" value="pokeySkip">

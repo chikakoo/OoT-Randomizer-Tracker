@@ -1642,14 +1642,14 @@ let MapLocations = {
                         NeedsAny: [UpgradedItems.LONGSHOT, BeanSets.GRAVEYARD, Tricks.weirdShot.canDo]
                     },
                     freestandingItemInCrate: {
-                        Needs: [Items.BOOMERANG]
+                        Needs: [Tricks.boomerangGraveyardHP.canDo]
                     },
                     looseItemInCrate: {
-                        Needs: [Items.BOOMERANG, Items.BOMBCHU]
+                        Needs: [Tricks.boomerangGraveyardHP.canDo, Items.BOMBCHU]
                     },
                     seamAboveShadowTemple: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.HOOKSHOT_JUMP]
+                        Needs: [Tricks.hookshotJump.canDo]
                     },
                     royalFamilyTomb: {
                         Needs: [Songs.ZELDAS_LULLABY]
@@ -1715,7 +1715,7 @@ let MapLocations = {
                     looseItemInCrate: {},
                     seamAboveShadowTemple: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.OLD_SHADOW_EARLY]
+                        Needs: [Tricks.oldShadowEarly.canDo]
                     }
                 },
                 ItemLocations: {}
@@ -1729,7 +1729,7 @@ let MapLocations = {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 147, y: 78 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.boomerangGraveyardHP; },
+                        UseAdultAge: function() { return !Tricks.boomerangGraveyardHP.enabled; },
                         LongDescription: "Plant a magic bean in the soft soil as a child. Come back as adult to get the item from the crate. Alternatively, the Longshot can reach the crate if you stand on one of the graves."
                     }
                 }
@@ -1744,7 +1744,7 @@ let MapLocations = {
                         IsEmpty: true,
                         MapInfo: { x: 147, y: 84 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.boomerangGraveyardHP; },
+                        UseAdultAge: function() { return !Tricks.boomerangGraveyardHP.enabled; },
                         LongDescription: "Plant a magic bean in the soft soil as a child. Come back as adult to get the item from the crate. Alternatively, the Longshot can reach the crate if you stand on one of the graves."
                     }
                 }
@@ -1763,17 +1763,17 @@ let MapLocations = {
                 Exits: {
                     main: {},
                     royalFamilyTomb: {
-                        Needs: [GlitchItemSets.UNLOAD_GRAVE]
+                        Needs: [Tricks.unloadGrave.canDo]
                     },
                     dampesGrave: {
-                        Needs: [GlitchItemSets.UNLOAD_GRAVE]
+                        Needs: [Tricks.unloadGrave.canDo]
                     },
                     shadowTemple: {
                         NeedsAny: [
                             Items.DINS_FIRE, 
-                            GlitchItemSets.CHILD_SHADOW_BOMB_PUSH, 
+                            Tricks.childShadowWithBombPush.canDo, 
                             [Age.CHILD, QPAItemSets.LEDGE_QPA], // Lighting the torches with a stick as child is easy
-                            GlitchItemSets.ADULT_SHADOW_LEDGE_CLIP
+                            Tricks.adultShadowLedgeClip.canDo
                         ]
                     },
                     "Nocturne Teleport Pad": {
@@ -1841,7 +1841,7 @@ let MapLocations = {
                 Exits: {
                     windmillTop: {
                         ChildNeeds: [Tricks.groundJump.canDoWithBomb],
-                        AdultNeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.ADULT_DAMPE_RACE_SOT_BLOCK_CLIP]
+                        AdultNeedsAny: [Songs.SONG_OF_TIME, Tricks.dampeSoTBlockClip.canDo]
                     },
                     "Grave Exit": {
                         OwExit: OwExits["Windmill-Kak Potion"]["Grave Exit"]

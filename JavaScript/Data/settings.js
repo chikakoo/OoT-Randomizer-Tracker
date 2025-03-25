@@ -642,17 +642,125 @@ let Tricks = {
 		displayText: "Adult Windmill HP With Nothing",
 		description: "Jump on the spinning platform; jump on the pillar to the left; roll jump to the center of the spinning thing; navigate to the heart piece"
 	},
-	TEST6: {
+	dampeSoTBlockClip: {
 		enabled: false,
-		canDo: (age) => true,
-		displayText: "TEST",
-		description: "TEST",
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.dampeSoTBlockClip.enabled &&
+			ItemData.canUse(age, ItemSets.EXPLOSIVES),
+		displayText: "Adult Dampe Race SoT Block Clip",
+		description: "Face block; ess 1 right for bomb, 2 for chu; get in right corner next to block; hold target & wait for explosion.",
 		links: [{
-			url: "",
+			url: "https://youtu.be/M61crTXnjT0",
 			description: "Video"
 		}]
 	},
-	TEST7: {
+	kakShopClips: {
+		enabled: false,
+		canDo: (age) => Tricks.kakShopClips.enabled && 
+			ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS),
+		canDoForArchery: (age) => age === Age.ADULT &&
+			Tricks.kakShopClips.enabled && 
+			ItemData.canUse(Age.ADULT, ItemSets.SHIELDS),
+		displayText: "Kakariko Shops Clips",
+		description: "BAZAAR CHILD:\x0AGet from the corner closest to death mountain; C-up so the A button is to the right of the corner by ~an A button's length; jumpslash and shield, or tap forward to not clip back in\x0A\x0ABACK OF POTION SHOP (BOTH):\x0AFrom the corner up the ladder in the back area, C-up so the A button is on the corner, but slightly to the left; jumpslash and shield, or tap forward to not clip back in; if you end up on the right side, you can angle yourself and sidehop + jumpslash to get to the other side\x0A\x0AARCHERY AT NIGHT (ADULT):\x0AGet in the corner of the crate and the shop, facing the crate; sidehop left; sideroll untarget; crouchstab x2; jumpslash and hold forward"
+	},
+	botwAsChildWithCucco: {
+		enabled: false,
+		canDo: (age) => Tricks.botwAsChildWithCucco.enabled && 
+			ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]),
+		displayText: "Child Well with Cucco",
+		description: "Note: DO NOT backwalk or have bunny hood equipped during this, or the cuccos will attack!\x0A\x0AGet ISG off a cucco, stand by the wall surrounding the well, facing away from it; quickly shield drop the cucco and backflip; hold the direction of the well when the cutscene ends (usually left)"
+	},
+	botwAsAdultWithCucco: {
+		enabled: false,
+		canDo: (age) => Tricks.botwAsAdultWithCucco.enabled && 
+			ItemData.canUse(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]),
+		displayText: "Adult Well with Cucco",
+		description: "Longshot up the windmill. Using hover boots, pick up the cucco and navigate behind you. Jumpslash at the fence to get thorough and pick up the cucco. Now backwalk off with hover boots and navigate to the well loading zone."
+	},
+	botwAsAdultWihChus: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.botwAsAdultWihChus.enabled &&
+			Items.BOMBCHU.playerHas,
+		displayText: "Adult Well with Chus",
+		description: "Backwalk off the ledge by the windmill and climb up; ess right x2; neutral roll x2; take out chu and backwalk ON THE SAME FRAME; climb up; target the left wall; sidehop right; sidehop left; A to roll; Z on first frame you are grabbing the ledge; keep Z held",
+		links: [{
+			url: "https://youtu.be/ofu8P2v65-g",
+			description: "Video"
+		}]
+	},
+	boomerangGraveyardHP: {
+		enabled: false,
+		canDo: (age) => Tricks.boomerangGraveyardHP.enabled &&
+			ItemData.canUse(age, Items.BOOMERANG),
+		displayText: "Box Heart Piece with Boomerang",
+		description: "Climb the ledge; turn right; sidle a bit left; aim the boomerang so Link's head just barely covers the far green ledge; throw it; quickly sidehop left x3, then backflip x2",
+		links: [{
+			url: "https://youtu.be/r-d-bw3sq8s",
+			description: "Video"
+		}]
+	},
+	unloadGrave: {
+		enabled: false,
+		canDo: () => Tricks.unloadGrave.enabled,
+		displayText: "Unload Graves",
+		description: "This is to get into the Royal Family Tomb without Zelda's Lullaby, or Dampe's grave as Child. If you load and unload the grave from the top of the graveyard enough times, it will be gone."
+	},
+	oldShadowEarly: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.oldShadowEarly.enabled &&
+			ItemData.canUse(age, [ItemSets.EXPLOSIVES, ItemSets.SHIELDS]),
+		displayText: "Old Shadow Early",
+		description: "This uses an explosive to get to the seam near the heart piece box. You then seamwalk all the way to the temple.",
+		links: [{
+			url: "https://youtu.be/2sGY6J8O9eE",
+			description: "Video"
+		}]
+	},
+	hookshotJump: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.hookshotJump.enabled &&
+			ItemData.canUse(age, Items.HOOKSHOT),
+		displayText: "Hookshot Jump for Shadow Early",
+		description: "Hookshot in hand, get in the corner by the shed; sidehop right; hold up, A to roll, release up, spam hookshot - you should now be in a weird animation; on or after the third cycle, press hookshot right before the red dot appears; if it works, hold down just before you start descending; ISG off the poe and go to shadow normally",
+		links: [{
+			url: "https://youtu.be/HTU0fKl-6uQ",
+			description: "Video"
+		}]
+	},
+	childShadowWithBombPush: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.childShadowWithBombPush.enabled &&
+			ItemData.canUse(age, [
+				Items.BOMB, 
+				ItemSets.SWORDS, 
+				ItemSets.SHIELD_DROP_SHIELDS]),
+		displayText: "Child Shadow With Bomb Push",
+		description: "Target the wall right of the entrance; backwalk into it; turn 180; sidehop right; backflip x2 (take out sword mid backflip, if using Kokiri Sword); jumpslash + R; sidehop left; vertical slash; turn left (DO NOT HOLD FORWARD INTO THE WALL)\x0A\x0AInstadrop 3 bombs quickly (keep Z held); hold left; starting on the first frame you can see both your feet touching to the right of the bomb (2 frames) - sidehop right x3; sidehop left",
+		links: [{
+			url: "https://youtu.be/s6ne3eG_DOE",
+			description: "Video"
+		}]
+	},
+	adultShadowLedgeClip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.adultShadowLedgeClip.enabled,
+		displayText: "Adult Shadow Ledge Clip",
+		description: "Target the right wall; backflip; sideroll; retarget; turn 180; sidehop left; sideroll; retarget; hold target and SLOWLY walk up the seam (very finnicky); get close to the ledge; A to roll; pause on the first frame link is grabbing the ledge; pause buffer a new Z press during unpause lag; on one of the frames you see your hair, quickly A to let go + B to jumpslash + hold forward to clip in",
+		links: [{
+			url: "https://youtu.be/9YiWh9rqHgM",
+			description: "Video"
+		}]
+	},
+
+
+
+	TEST: {
 		enabled: false,
 		canDo: (age) => true,
 		displayText: "TEST",
