@@ -1276,7 +1276,7 @@ let OwExits = {
             MapInfo: { x: 65, y: 170 },
             Age: Age.EITHER,
             UseAdultAge: function() { 
-                return !Settings.GlitchesToAllow.childSidehopToDoubleMagic &&
+                return !Tricks.childSidehopToDoubleMagic.enabled &&
                     !Tricks.equipSwap.enabled &&
                     !Tricks.megaFlip.enabled;
             },
@@ -1284,8 +1284,8 @@ let OwExits = {
             NeedsAny: [
                 Items.MEGATON_HAMMER, 
                 Tricks.megaFlip.canDo,
-                GlitchItemSets.CHILD_SIDEHOP_TO_DMC_FAIRY,
-                GlitchItemSets.ADULT_RECOIL_TO_DMC_FAIRY
+                Tricks.childSidehopToDoubleMagic.canDo,
+                Tricks.adultRecoilHoverBootsToDoubleMagic.canDo
             ]
         },
         "Grotto in Rock by Goron": {
@@ -1294,7 +1294,7 @@ let OwExits = {
             DefaultEntranceGroupName: "3 Scrubs",
             MapInfo: { x: 64, y: 60 },
             Age: Age.EITHER,
-            UseAdultAge: function() { return !Settings.GlitchesToAllow.childSidehopToDoubleMagic && !Tricks.equipSwap.enabled; },
+            UseAdultAge: function() { return !Tricks.equipSwap.enabled; },
             LongDescription: "Hammer the rock near the entrance to Goron City to access this grotto.",
             Needs: [Items.MEGATON_HAMMER]
         }
@@ -1344,7 +1344,7 @@ let OwExits = {
             MapInfo: { x: 185, y: 10 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance behind darunia's room - push back the statue.",
-            ChildNeeds: [GlitchItemSets.CHILD_GORON_STATUE_CLIP]
+            ChildNeeds: [Tricks.goronChildStatueSkip.canDo]
         },
         "Shop": {
             ExitRegion: "shop",

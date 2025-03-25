@@ -2084,7 +2084,7 @@ let MapLocations = {
                         NeedsAny: [
                             ItemSets.BLAST_OR_SMASH_ITEMS,
                             BeanSets.DEATH_MOUNTAIN_TRAIL,
-                            GlitchItemSets.DMT_CLIMB_WITH_HOVER_BOOTS,
+                            Tricks.dmtClimbWithHoverBoots.canDo,
                             ItemLocationSets.DMT_ROCKS_BLOCKING_TOP_PATH
                         ]
                     },
@@ -2134,8 +2134,8 @@ let MapLocations = {
                         LongDescription: "If you take the left path out of Goron City, the wall to bomb or hammer will be to your right.",
                         NeedsAny: [
                             ItemSets.BLAST_OR_SMASH_ITEMS, 
-                            GlitchItemSets.DMT_CLIP_TO_CHEST, 
-                            GlitchItemSets.DMT_BOMB_FLOWER_TO_CHEST]
+                            Tricks.dmtClipToChestByGoron.canDo, 
+                            Tricks.dmtBombFlowerChestByGoron.canDo]
                     },
                     "Red Rock by Goron City": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -2143,7 +2143,7 @@ let MapLocations = {
                         MapInfo: { x: 215, y: 167 },
                         Age: Age.ADULT,
                         LongDescription: "At night, leave Goron City. Follow the right wall until you reach a red rock. Break it with your hammer to reveal the skulltula.",
-                        NeedsAny: [Items.MEGATON_HAMMER, GlitchItemSets.DMT_SKULLS_WITHOUT_HAMMER]
+                        NeedsAny: [Items.MEGATON_HAMMER, Tricks.dmtSkullsWithoutHammer.canDo]
                     },
                     "Heart Piece Above Dodongo's Cavern": {
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -2220,7 +2220,7 @@ let MapLocations = {
                         MapInfo: { x: 217, y: 96 },
                         Age: Age.ADULT,
                         LongDescription: "At night, take the upper path of the mountain - the one that causes the volcano to erupt. The red rock has a skulltula in it - break it with your hammer.",
-                        NeedsAny: [Items.MEGATON_HAMMER, GlitchItemSets.DMT_SKULLS_WITHOUT_HAMMER]
+                        NeedsAny: [Items.MEGATON_HAMMER, Tricks.dmtSkullsWithoutHammer.canDo]
                     },
                     "Gossip Stone on Climbable Wall Ledge": {
                         ItemGroup: ItemGroups.GOSSIP_STONE,
@@ -2292,7 +2292,7 @@ let MapLocations = {
                         NeedsAny: [Tricks.megaFlip.canDo, Items.HOOKSHOT, Equipment.HOVER_BOOTS]
                     },
                     volcano: {
-                        NeedsAny: [Tricks.megaFlip.canDo, GlitchItemSets.HOVER_TO_VOLCANO_HP]
+                        NeedsAny: [Tricks.megaFlip.canDo, Tricks.hoverBootsToVolcanoHP.canDo]
                     },
                     "Goron City": {
                         OwExit: OwExits["Death Mountain Crater"]["Goron City"]
@@ -2413,8 +2413,12 @@ let MapLocations = {
 		Abbreviation: "GORO",
 		MapGroup: MapGroups.MOUNTAIN,
         _canStopAdultGoron: function(age) {
-            return ItemData.canUseAny(age, [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]) ||
-                (Settings.GlitchesToAllow.stopAdultGoronWithFire && ItemData.canUseAny(age, [Items.DINS_FIRE, Items.BLUE_FIRE]));
+            return ItemData.canUseAny(age, [
+                ItemSets.EXPLOSIVES_OR_STRENGTH, 
+                Items.FAIRY_BOW,
+                QPAItemSets.LEDGE_QPA,
+                Tricks.stopAdultGoronWithFire.canDo
+            ]);
         },
 		Regions: {
             main: {
@@ -2666,7 +2670,7 @@ let MapLocations = {
                                 Settings.RandomizerSettings.rupeeAndHeartSetting == ShuffleLocationSettings.DUNGEON_ONLY;
                         },
                         LongDescription: "First, light the torches at the bottom of the city. You can either use the lit torch in Darunia's room, or Din's Fire. After that, throw a Bomb or Bomb Flower so that the urn stops on the happiest face to get the item.",
-                        NeedsAny: [Items.BOMB, Equipment.STRENGTH, GlitchItemSets.URN_WITH_CHUS]
+                        NeedsAny: [Items.BOMB, Equipment.STRENGTH, Tricks.goronUrnWithChus.canDo]
                     },
                     "9 Items From Spinning Urn": {
                         ItemGroup: ItemGroups.GROUP,
@@ -2675,7 +2679,7 @@ let MapLocations = {
                         MapInfo: { x: 189, y: 135 },
                         Age: Age.CHILD,
                         LongDescription: "First, light the torches at the bottom of the city. You can either use the lit torch in Darunia's room, or Din's Fire. After that, throw a Bomb or Bomb Flower so that the urn stops on the face you want.",
-                        NeedsAny: [Items.BOMB, Equipment.STRENGTH, GlitchItemSets.URN_WITH_CHUS]
+                        NeedsAny: [Items.BOMB, Equipment.STRENGTH, Tricks.goronUrnWithChus.canDo]
                     }
                 }
             },

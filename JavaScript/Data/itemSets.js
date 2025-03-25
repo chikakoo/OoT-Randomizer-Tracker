@@ -129,38 +129,6 @@ let GlitchItemSets = {
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
 
-	// Death Mountain/Goron
-	DMT_CLIP_TO_CHEST: (age) => 
-        Settings.GlitchesToAllow.dmtClipToChestByGoron && 
-        ItemData.canUse(age, ItemSets.SWORDS),
-	DMT_BOMB_FLOWER_TO_CHEST: (age) => 
-        Settings.GlitchesToAllow.dmtBombFlowerChestByGoron && 
-        ItemData.canUse(age, Equipment.STRENGTH),
-	DMT_SKULLS_WITHOUT_HAMMER: () => Settings.GlitchesToAllow.dmtSkullsWithoutHammer,
-    DMT_CLIMB_WITH_HOVER_BOOTS: (age) => 
-        Settings.GlitchesToAllow.dmtClimbWithHoverBoots && 
-        ItemData.canUse(age, Equipment.HOVER_BOOTS),
-	HOVER_TO_VOLCANO_HP: (age) => 
-        Settings.GlitchesToAllow.hoverToVolcanoHP && 
-        ItemData.canUse(age, Equipment.HOVER_BOOTS),
-	URN_WITH_CHUS: (age) => 
-        Settings.GlitchesToAllow.goronSpinningUrnWithChus && 
-        ItemData.canUse(age, [Items.BOMBCHU, Items.DEKU_NUT]),
-    CHILD_GORON_STATUE_CLIP: (age) => age === Age.CHILD &&
-        Settings.GlitchesToAllow.goronChildStatueSkip &&
-        ItemData.canUseAny(age, [
-            Equipment.DEKU_SHIELD, // Pot Push
-            [ // Explosive push
-                ItemSets.EXPLOSIVES,
-                [SetType.OR, Equipment.KOKIRI_SWORD, Items.DEKU_STICK]
-            ]
-        ]),
-    CHILD_SIDEHOP_TO_DMC_FAIRY: (age) => age === Age.CHILD &&
-        Settings.GlitchesToAllow.childSidehopToDoubleMagic,
-    ADULT_RECOIL_TO_DMC_FAIRY: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.adultRecoilHoverBootsToDoubleMagic &&
-        ItemData.canUse(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]),
-
 	// Zora/Lake
     ADULT_WATERFALL_HP_JUMP: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.adultWaterfallHPJump,

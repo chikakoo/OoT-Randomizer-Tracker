@@ -879,7 +879,131 @@ let Tricks = {
 	},
 	//#endregion Kakariko/Graveyard
 
-
+	//#region Mountain Areas
+	categoryMountainAreas: {
+		isCategory: true,
+		displayText: "Mountain Areas"
+	},
+	dmtClipToChestByGoron: {
+		enabled: false,
+		canDo: (age) => Tricks.dmtClipToChestByGoron.enabled &&
+			ItemData.canUse(age, ItemSets.SWORDS),
+		displayText: "DMT Clip to Chest By Goron",
+		description: "Take out sword/stick; backwalk to grab the ledge above it (won't always work...); sidehop and pause when he's lined up with the corner (almost immediately); jumpslash + hold up. Adult gets more frames for the jumpslash.",
+		links: [{
+			url: "https://youtu.be/iJ0IJqKqhhg",
+			description: "Video"
+		}]
+	},
+	dmtBombFlowerChestByGoron: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.dmtBombFlowerChestByGoron.enabled &&
+			Equipment.STRENGTH.playerHas,
+		displayText: "DMT Bomb Flower to Chest By Goron",
+		description: "(Child only) Pick up the bomb flower above Dodongo's Cavern and backwalk to the path the chest is at - walk towards the bombable wall and throw the bomb flower to blow it up. Timing is tight, so it isn't free."
+	},
+	dmtClimbWithHoverBoots: {
+		enabled: false,
+		canDo: (age) => Tricks.dmtClimbWithHoverBoots.enabled &&
+			ItemData.canUse(age, Equipment.HOVER_BOOTS),
+		displayText: "DMT Pass Rocks with Hover Boots",
+		description: "Target wall next to the boulder; turn right to face it; sidehop left; sideroll and retarget; sidehop right - equip hover boots in midair; keep target held and hold up until you are at the top.",
+		links: [{
+			url: "https://youtu.be/5KWbTFgAvMI",
+			description: "Video"
+		}]
+	},
+	dmtSkullsWithoutHammer: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT && 
+			Tricks.dmtSkullsWithoutHammer.enabled,
+		displayText: "DMT Rock Skulltulas Without Hammer",
+		description: "ROCK BY GORON:\x0AKill skull; set in the corner left of the rock, facing the wall; sidehop right; A to sideroll (release Z); swing sword holding nothing; target skulltula; jumpslash.\x0A\x0AUPPER ROCK:\x0AKill skull; backflip into the rock from the north side into the acute angle",
+		links: [{
+			url: "https://youtu.be/hnj5SncIHsk",
+			description: "Video - rock by Goron"
+		}]
+	},
+	goronUrnWithChus: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.goronUrnWithChus.enabled &&
+			Items.BOMBCHU.playerHas,
+		displayText: "Stop Goron Urn With Bombchus",
+		description: "Drop a chu into the spinning urn after the 3rd or 4th flash to stop it. Deku nuts can help, but aren't necessary."
+	},
+	stopAdultGoronWithFire: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT && 
+			Tricks.stopAdultGoronWithFire.enabled &&
+			ItemData.canUseAny(age, [Items.DINS_FIRE, Items.BLUE_FIRE]),
+		displayText: "Stop Adult Goron With Fire",
+		description: "DIN'S FIRE:\x0AGet by the left bombflower; while he is going counter-clocksise, cast Din's Fire right when he gets behind the fences\x0A\x0ABLUE FIRE:\x0AFace the door by Medigoron; get in the corner by the right bomb flower; angle camera so you can see the tunnel (exit first-person mode); when the goron is barely behind the fence (and going counter-clockwise), release the fire",
+		links: [{
+			url: "https://youtu.be/y6i0ziTsmCk",
+			description: "Video - Din's fire"
+		}]
+	},
+	goronChildStatueSkip: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.goronChildStatueSkip.enabled &&
+			ItemData.canUseAny(age, [
+				Equipment.DEKU_SHIELD, // Pot Push
+				[ // Explosive push
+					ItemSets.EXPLOSIVES,
+					[SetType.OR, Equipment.KOKIRI_SWORD, Items.DEKU_STICK]
+				]
+			]),
+		displayText: "Child DMC Exit from Goron",
+		description: "STICK + EXPLOSIVE\x0ATarget right corner wall; turn right; backflip into corner\x0A- BOMB: retarget; dry roll; place bomb (take out and place quickly); backwalk from bomb; backflip into corner; slash with stick\x0A- CHU: slash with stick; drop chu\x0A\x0ASWORD + EXPLOSIVE\x0ATarget left corner wall; turn left; backflip into corner; retarget; dry roll\x0A- BOMB: place bomb; holding nothing, slash torch\x0A- CHU: holding nothing, slash the torch; drop chu\x0A\x0ADEKU SHIELD + POT\x0APick up pot; target wall to the right of the statue; back up a bit; ess right x3; walk right until the torch nudges you to the left; pause on Link's breathing cycle when the pot is higher up (lots of rames); sidewalk left; on the frame Link nudges to the left sharply (one after you are centered with the wall design), press shield (keep sidewalking left)",
+		links: [
+			{
+				url: "https://youtu.be/UCnoWTA4xE8",
+				description: "Video - explosives (use other vid for pot push)"
+			},
+			{
+				url: "https://youtu.be/UQ3ARylC9fs",
+				description: "Video - pot push"
+			}
+		]
+	},
+	hoverBootsToVolcanoHP: {
+		enabled: false,
+		canDo: (age) => Tricks.hoverBootsToVolcanoHP.enabled &&
+			ItemData.canUse(age, Equipment.HOVER_BOOTS),
+		displayText: "Hover Boots to Volcano HP",
+		description: "You can use hover boots to get the volcano if you use them by the bridge to the fairy fountain.",
+		links: [{
+			url: "https://youtu.be/rbxaO5lNUTU",
+			description: "Video"
+		}]
+	},
+	childSidehopToDoubleMagic: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.childSidehopToDoubleMagic.enabled,
+		displayText: "Child Sidehop to DMC Fairy",
+		description: "Target the wall to the left of the rocks; spam right sidehops until you are in; can also time frame-perfect A presses.",
+		links: [{
+			url: "https://youtu.be/oj0vLc3SZmc",
+			description: "Video"
+		}]
+	},
+	adultRecoilHoverBootsToDoubleMagic: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.adultRecoilHoverBootsToDoubleMagic.enabled &&
+			ItemData.canUse(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]),
+		displayText: "Adult Recoil to DMC Fairy",
+		description: "Get in left corner of rocks; C-up and put the cliff between the A and C-left button; dry roll x2; crouchstab; pause on first recoil frame; equip hovers; unpause and hold down",
+		links: [{
+			url: "https://youtu.be/-3BJBREE2eY?t=50",
+			description: "Video - note that the setup described is not included"
+		}]
+	},
+	//#endregion Mountain Areas
 
 	TEST: {
 		enabled: false,
