@@ -2748,9 +2748,9 @@ let MapLocations = {
                     inWaterfall: {
                         NeedsAny: [
                             Songs.ZELDAS_LULLABY,
-                            GlitchItemSets.CUCCO_TO_ZORAS_DOMAIN,
-                            GlitchItemSets.HOVERS_TO_ZORAS_DOMAIN,
-                            GlitchItemSets.MEGA_SIDEHOP_TO_ZORAS_DOMAIN
+                            Tricks.cuccoToZorasDomain.canDo,
+                            Tricks.hoverBootsToZorasDomain.canDo,
+                            Tricks.megasidehopToZorasDomain.canDo
                         ]
                     },
 
@@ -2845,7 +2845,7 @@ let MapLocations = {
                         LongDescription: "At the end of the river, there's a heart piece on a platform. As child, you can jump there with a cucco or nab it with a Boomerang. As adult, you must use the Hover Boots.",
                         AdultNeedsAny: [
                             Equipment.HOVER_BOOTS, 
-                            GlitchItemSets.ADULT_WATERFALL_HP_JUMP, 
+                            Tricks.adultWaterfallHPJump.canDo, 
                             Tricks.megaFlip.canDoWithChu]
                     },
                     "4 Red Rupees by Waterfall": {
@@ -2949,12 +2949,12 @@ let MapLocations = {
                             ItemLocationSets.MOVE_KING_ZORA,
                             Items.RUTOS_LETTER,
                             SettingSets.OPEN_ZORAS_FOUNTAIN,
-                            GlitchItemSets.CHILD_KING_ZORA_SKIP
+                            Tricks.childKingZoraSkip.canDo
                         ],
                         AdultNeedsAny: [
                             ItemLocationSets.MOVE_KING_ZORA,
                             SettingSets.OPEN_ADULT_ZORAS_FOUNTAIN,
-                            GlitchItemSets.ADULT_KING_ZORA_SKIP
+                            Tricks.adultKingZoraSkip.canDo
                         ]
                     },
                     "Zora's River": {
@@ -3025,24 +3025,8 @@ let MapLocations = {
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 245, y: 48 },
                         Age: Age.ADULT,
-                        LongDescription: "Dump Blue Fire on the frozen King Zora to thaw him. Talk to him from the platform in front of him and he will give you an item.<br/><br/>You can also use any item that link takes out above his head (or Nayru's Love) to thaw him. Backwalk up the stairs, then take out the item after the black loading zone. Turn around and he should be thawed.",
-                        CustomRequirement: function(age) {
-                            if (ItemData.canUse(age, ItemSets.BLUE_FIRE_ITEMS)) { return true; }
-                            if (!Settings.GlitchesToAllow.thawKingZoraWithNothing) { return false; }
-                            if (!ItemData.canUse(age, ItemLocationSets.MOVE_KING_ZORA) && !SocketClient.isCoOp()) {
-                                // The sign reading glitch doesn't seem to work on ModLoader...
-                                return true;
-                            }
-
-                            return GameStateSets.HAS_BOTTLE() || 
-                                Object.values(AdultTradeItems).some(item => item.playerHas) ||
-                                ItemData.canUseAny(age, ([
-                                    Items.MAGIC_BEAN, 
-                                    Items.NAYRUS_LOVE, 
-                                    ChildTradeItems.WEIRD_EGG, 
-                                    ChildTradeItems.ZELDAS_LETTER
-                                ]));
-                        }
+                        LongDescription: "Dump Blue Fire on the frozen King Zora to thaw him. Talk to him from the platform in front of him and he will give you an item.<br/><br/>You can also use any item that link takes out above his head (or Nayru's Love/bugs/fish) to thaw him. Backwalk up the stairs, then take out the item after the black loading zone. Turn around and he should be thawed.",
+                        NeedsAny: [ItemSets.BLUE_FIRE_ITEMS, Tricks.thawKingZoraWithoutBlueFire.canDo]
                     },
                     "Show Prescription to King Zora": {
                         ItemGroup: ItemGroups.GIFT,
@@ -3050,7 +3034,8 @@ let MapLocations = {
                         MapImageName: "Prescription",
                         Age: Age.ADULT,
                         LongDescription: "After thawing King Zora, show him the prescription to get an item.",
-                        Needs: [AdultTradeItems.PRESCRIPTION, ItemLocationSets.THAW_KING_ZORA]
+                        Needs: [AdultTradeItems.PRESCRIPTION],
+                        NeedsAny: [ItemSets.BLUE_FIRE_ITEMS, Tricks.thawKingZoraWithoutBlueFire.canDo]
                     },
                     "Skulltula on Top of Waterfall": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3062,7 +3047,7 @@ let MapLocations = {
                             ItemSets.GRAB_SHORT_DISTANCE_ITEMS, 
                             Items.FAIRY_BOW, 
                             Items.DINS_FIRE,
-                            GlitchItemSets.DOMAIN_SKULL_WITH_JUMPSLASH
+                            Tricks.domainSkullWithJumpslash.canDo
                         ]
                     },
 

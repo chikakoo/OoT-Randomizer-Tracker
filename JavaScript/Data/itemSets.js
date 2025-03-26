@@ -129,38 +129,7 @@ let GlitchItemSets = {
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
 
-	// Zora/Lake
-    ADULT_WATERFALL_HP_JUMP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.adultWaterfallHPJump,
-	CUCCO_TO_ZORAS_DOMAIN: (age) => age === Age.CHILD &&
-        Settings.GlitchesToAllow.cuccoToZorasDomain,
-	HOVERS_TO_ZORAS_DOMAIN: (age) => 
-        Settings.GlitchesToAllow.hoversToZorasDomain && 
-        ItemData.canUse(age, Equipment.HOVER_BOOTS),
-	MEGA_SIDEHOP_TO_ZORAS_DOMAIN: (age) => 
-        Settings.GlitchesToAllow.megasidehopToZorasDomain && 
-        ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.SWORDS, Items.BOMBCHU]),
-    DOMAIN_SKULL_WITH_JUMPSLASH: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.domainSkullWithJumpslash,
-    CHILD_KING_ZORA_SKIP: (age) =>
-        Settings.GlitchesToAllow.explosiveZoraSkip && 
-        ItemData.canUse(age, ItemSets.EXPLOSIVES),
-    ADULT_KING_ZORA_SKIP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.clipZoraSkip,
-    ADULT_DOMAIN_TO_LAKE: (age) => age === Age.ADULT && 
-        Settings.GlitchesToAllow.adultDomainToLake,
-    BLUE_FIRE_SHOP_SKIP: () => Settings.GlitchesToAllow.blueFireShopSkip,
-    CHILD_JABU_FISHLESS: (age) => age === Age.CHILD &&
-        Settings.GlitchesToAllow.jabuFishless &&
-        ItemData.canUse(age, ItemSets.SWORDS),
-    ADULT_JABU: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.enterJabuAsAdult &&
-        ItemData.canUse(age, [
-            ItemSets.SHIELDS, 
-            [SetType.OR,
-                Items.BOMBCHU,
-                [Items.BOMB, Equipment.HOVER_BOOTS]]
-        ]),
+    // Lake
     LAKE_TREE_SKULL_WITH_HOOKSHOT: (age) => 
         Settings.GlitchesToAllow.skullInTreeWithHookshot && 
         ItemData.canUse(age, [Items.HOOKSHOT, ItemSets.SHIELDS]),
@@ -483,7 +452,6 @@ let ItemLocationSets = {
     // Zora / Lake
     ROCKS_BLOCKING_ZORAS_RIVER: () => Data.itemLocationObtained("Zora's River", "downstream", "Break Rocks Blocking Path"),
     MOVE_KING_ZORA: () => Data.itemLocationObtained("Zora's Domain", "main", "Move King Zora"),
-    THAW_KING_ZORA: () => Data.itemLocationObtained("Zora's Domain", "main", "Thaw King Zora"),
     PLAY_SONG_FOR_BONOORU: () => Data.itemLocationObtained("Lake Hylia", "main", "Play Song for Bonooru"),
 
     // Desert

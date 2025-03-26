@@ -732,7 +732,7 @@ let StandardDungeons = {
         StartingFloorIndex: 1,
         UseChildAge: function() {
             return !Settings.RandomizerSettings.shuffleDungeonEntrances &&
-                !Settings.GlitchesToAllow.enterJabuAsAdult;
+                !Tricks.enterJabuAsAdult.enabled;
         },
         Regions: {
             main: {

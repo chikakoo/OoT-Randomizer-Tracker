@@ -1005,6 +1005,194 @@ let Tricks = {
 	},
 	//#endregion Mountain Areas
 
+	//#region Zora Areas
+	categoryZoraAreas: {
+		isCategory: true,
+		displayText: "Zora Areas"
+	},
+	adultWaterfallHPJump: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.adultWaterfallHPJump.enabled,
+		displayText: "Adult ZR Waterfall Item With Nothing",
+		description: "Get in the corner, by the HP, facing the taller wall; backflip; sidehip left; roll + untarget; roll; climb up; roll; release everything and hold down",
+		links: [{
+			url: "https://youtu.be/FXxvf0IgmhQ",
+			description: "Video"
+		}]
+	},
+	cuccoToZorasDomain: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.cuccoToZorasDomain.enabled,
+		displayText: "Cucco to Zora's Domain",
+		description: "Bring a cucco to the Zora's Domain entrance; jump from the left side of the waterfall (not precise), and fly into it from the side to bypass the Zelda's Lullaby requirement",
+		links: [{
+			url: "https://youtu.be/1juo8sED_Go",
+			description: "Video"
+		}]
+	},
+	hoverBootsToZorasDomain: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.hoverBootsToZorasDomain.enabled &&
+			ItemData.canUse(age, Equipment.HOVER_BOOTS),
+		displayText: "Hover Boots to Zora's Domain",
+		description: "Climb the right side of the corner of the pool of water; ess right x2, or C-up to the right a bit; equip hovers and mash rolls until you grab the ledge",
+		links: [{
+			url: "https://youtu.be/B0kbnE3AmYc",
+			description: "Video"
+		}]
+	},
+	megasidehopToZorasDomain: {
+		enabled: false,
+		canDo: (age) => Tricks.megasidehopToZorasDomain.enabled &&
+			ItemData.canUse(age, [ItemSets.SWORDS, Tricks.megaFlip.canDoWithChu]),
+		displayText: "Mega Sidehop to Zora's Domain",
+		description: "Get ISG; target the left wall; back up and ess left x3; hold z forever; scoot to the right in the corner; take out chu; A + R + Spam right sidehop",
+		links: [{
+			url: "https://youtu.be/_CPM8Ziorg4",
+			description: "Video"
+		}]
+	},
+	domainSkullWithJumpslash: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.domainSkullWithJumpslash.enabled,
+		displayText: "Domain Skulltula With Jumpslash",
+		description: "Target the right wall at the tunnel entrance; navigate to the middle of the tunnel and sidehop left into the corner; WAIT FOR LINK TO SLIDE FOR ALL OF THESE: backflip x2; sideroll hold target; sidehop right; turn right\x0A\x0AB to swing sword - wait a bit before releasing (but not so much that you spin attack); re-press target, as it would be disabled if you did it right; jumpslash; after landing (BEFORE LINK GETS UP), immediately hold up and start spamming the next jumpslash; jump to get the token",
+		links: [{
+			url: "https://youtu.be/jYyJNrJ3oOQ",
+			description: "Video"
+		}]
+	},
+	childKingZoraSkip: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.childKingZoraSkip.enabled &&
+			ItemData.canUse(age, ItemSets.EXPLOSIVES),
+		displayText: "Child King Zora Skip With Explosives",
+		description: "BOMB POSITION:\x0ATarget King Zora's wall; turn rght; ess left x1; get into corner to your right; backflip\x0A\x0ACHU POSITION:\x0ATarget pedestal's right side; turn 180; sidehop left; sideroll release target; retarget; get into the corner to the right of the pedestal with this angle\x0A\x0AONCE IN POSITION:\x0AKeep Z held forever; pause buffer explosive and up (keep it held); hold back to stay in bounds once clipped; swim behind the king",
+		links: [{
+			url: "https://youtu.be/DvyxtoMnw_U",
+			description: "Video"
+		}]
+	},
+	adultKingZoraSkip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.adultKingZoraSkip.enabled,
+		displayText: "Adult King Zora Skip",
+		description: "Target the angled wall to the left of the king; get in the acute angle to the right; jumpslash and tap forward (or hold shield) to stay in bounds; swim behind the king",
+		links: [{
+			url: "https://youtu.be/WTo716QYDf0",
+			description: "Video"
+		}]
+	},
+	blueFireShopSkip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.blueFireShopSkip.enabled,
+		displayText: "Zora Shop Blue Fire Skip",
+		description: "Target the wall to the left of the pots; turn around; get in the corner to the right of the ice; QUICKLY hold Z and slash, then hold right and slash; left sidehop; jumpslash\x0A\x0AIf you have a shield, you can shield after the first slash and not have to do the other slash quickly",
+		links: [{
+			url: "https://youtu.be/DQbvZACdRTM",
+			description: "Video - can do without shield (see tooltip)"
+		}]
+	},
+	thawKingZoraWithoutBlueFire: {
+		enabled: true,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.thawKingZoraWithoutBlueFire.enabled &&
+			ItemData.canUseAny(age, [
+				// Backwalk and use the cutscene item
+				Items.BUGS,
+				Items.FISH,
+				ItemData.hasAdultTradeItem,
+				Items.MAGIC_BEAN,
+				Items.NAYRUS_LOVE,
+				ChildTradeItems.WEIRD_EGG,
+				ChildTradeItems.ZELDAS_LETTER,
+
+				// Sign reading glitch - doesn't seem to work on ModLoader
+				[
+					() => !ItemLocationSets.MOVE_KING_ZORA(),
+					() => !SocketClient.isCoOp()
+				]
+			]),
+		displayText: "Thaw King Zora Without Blue Fire",
+		description: "KING NOT MOVED:\x0ALeft-sidehop up from the bottom of the stairs. Center with the torch, then go barely to the left. Back up as much as you can and check the sign. Now go back down and up to reload the king, and he will be unthawed.\x0A\x0AKING IN ANY POSITION:\x0ABackwalk up the stairs until just passed the black part (the loading zone). Use bugs/fish/potion/trade item/Nayru's Love (equipped swapped beans work too) and go back down and up the stairs. The king will be unthawed.",
+		links: [
+			{
+				url: "https://youtu.be/73O5FHcmdFE",
+				description: "Video - king not moved (reading the sign)"
+			},
+			{
+				url: "https://youtu.be/4hV2OuOnE28",
+				description: "Video - king in any position (cutscene item)"
+			}
+		]	
+	},
+	adultDomainToLake: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.adultDomainToLake.enabled,
+		displayText: "Adult Domain to Lake",
+		description: "WITHOUT HOOKSHOT: Climb up the ladder; from the top, left sidehop; A to sideroll (untarget); ess right 1; right sidehop; hold down - you should be glitched into the wall; press A to fall and hold up to stay out of bounds\x0A\x0AWITH HOOKSHOT: From the corner of the small island, hookshot the top right part of the ladder and hold nothing; A, then B immediately\x0A\x0AONCE OUT OF BOUNDS: Walk parallel to the void as far as you can; turn left and sidehop right into the void; jumpslash when link disappears and navigate to the loading zone.",
+		links: [
+			{
+				url: "https://youtu.be/nFNtKyGu-Jo",
+				description: "Video - without hookshot"
+			},
+			{
+				url: "https://youtu.be/C-KEp5ON4lQ",
+				description: "Video - with hookshot"
+			}
+		]
+	},
+	jabuFishless: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.jabuFishless.enabled &&
+			ItemData.canUse(age, ItemSets.SWORDS),
+		displayText: "Jabu Fish Skip",
+		description: "METHOD 1: Face the rail in the right corner; sidehop left; turn right; sidehop left and press A to jumpslash the left side of the pillar - you should recoil back into the loading zone if you hit the right frame\x0A\x0AMETHOD 2: Face the pillar in the right corner, hold nothing and slash sword; turn left and target; release Z; climb up, immediately hold left; A to jumpslash when sword is parallel to your foot",
+		links: [
+			{
+				url: "https://youtu.be/fTGsrd5sqzE",
+				description: "Video - method 1"
+			},
+			{
+				url: "https://youtu.be/ZKSvxu1koOw",
+				description: "Video - method 2 (excludes the slash setup)"
+			}
+		]
+	},
+	enterJabuAsAdult: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.enterJabuAsAdult.enabled &&
+			ItemData.canUse(age, [
+				ItemSets.SHIELDS, 
+				[SetType.OR,
+					Items.BOMBCHU,
+					[Items.BOMB, Equipment.HOVER_BOOTS]]
+			]),
+		displayText: "Enter Jabu as Adult",
+		description: "WITH CHUS:\x0AGet ISG; from corner, backflip x2, roll untarget, left, roll untarget, right, roll hold target; run to the ledge, chu until 9th red; Z + shield + right + A\x0A\x0AHold up between up/up-right (x between 29 and 41) - will see link walk in place; chu until blue after 8th red flash; shield + right (KEEP SHIELD FOREVER); buffer until link jerks right; A; pause until the right explosion frame; A + left\x0A\x0AWITH BOMBS + HOVER BOOTS:\x0AStart with kokiri boots; get in corner, facing west with the pillar to the left of you; turn 180; roll; sidehop right; roll + release target; shield turn right; roll;equip hovers\x0A\x0Atake out bomb; 4 frames to A + R to roll and mash right sidehop (big blue is last frame); let go of everything; on the first frame where your left arm is greater than 45 degrees, pause; equip kokiri boots; B during unpause lag; wait at least one frame; equip hover boots; unpause and wait",
+		links: [
+			{
+				url: "https://youtu.be/NmtGis95m-A",
+				description: "Video - bombchus"
+			},
+			{
+				url: "https://youtu.be/bVo9JfEze1s",
+				description: "Video - bombs and hover boots (setup in tooltip to get to the position is more precise)"
+			}
+		]	
+	},
+	//#endregion Zora Areas
+
 	TEST: {
 		enabled: false,
 		canDo: (age) => Tricks.TEST.enabled,

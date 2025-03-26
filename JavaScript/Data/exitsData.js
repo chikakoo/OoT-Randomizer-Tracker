@@ -1439,10 +1439,10 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 173, y: 241},
             Age: Age.EITHER,
-            UseChildAge: function() { return !Settings.GlitchesToAllow.adultDomainToLake; },
+            UseChildAge: function() { return !Tricks.adultDomainToLake.canDo; },
             LongDescription: "This is the entrance to Zora's River you can get to by diving into the water.",
             ChildNeeds: [Equipment.SCALE],
-            AdultNeeds: [GlitchItemSets.ADULT_DOMAIN_TO_LAKE]
+            AdultNeeds: [Tricks.adultDomainToLake.canDo]
         },
         "Zora's Fountain": {
             ExitRegion: "behindKing",
@@ -1463,7 +1463,7 @@ let OwExits = {
             MapInfo: { x: 236, y: 254 },
             Age: Age.EITHER,
             LongDescription: "This is the shop. As an adult, you can either use Blue Fire, or perform the shop skip to get inside.",
-            AdultNeedsAny: [ItemSets.BLUE_FIRE_ITEMS, GlitchItemSets.BLUE_FIRE_SHOP_SKIP]
+            AdultNeedsAny: [ItemSets.BLUE_FIRE_ITEMS, Tricks.blueFireShopSkip.canDo]
         },
         "Song of Storms Grotto": {
             ExitRegion: "main",
@@ -1493,11 +1493,11 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 142, y: 97 },
             Age: Age.EITHER,
-            UseChildAge: function() { return !Settings.GlitchesToAllow.enterJabuAsAdult; },
+            UseChildAge: function() { return !Tricks.enterJabuAsAdult.enabled; },
             LongDescription: "This is the entrance to Jabu Jabu.",
             IsDungeonEntrance: true,
-            AdultNeeds: [GlitchItemSets.ADULT_JABU],
-            ChildNeedsAny: [Items.FISH, GlitchItemSets.CHILD_JABU_FISHLESS]
+            AdultNeeds: [Tricks.enterJabuAsAdult.canDo],
+            ChildNeedsAny: [Items.FISH, Tricks.jabuFishless.canDo]
         },
         "Great Fairy Fountain": {
             ExitRegion: "main",

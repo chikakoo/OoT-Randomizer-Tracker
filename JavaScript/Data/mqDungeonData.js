@@ -972,7 +972,7 @@ let MQDungeons = {
         StartingFloorIndex: 1,
         UseChildAge: function() { 
             return !Settings.RandomizerSettings.shuffleDungeonEntrances &&
-                !Settings.GlitchesToAllow.enterJabuAsAdult; 
+                !Tricks.enterJabuAsAdult.enabled; 
         },
         _canHitMainRoomCowSwitch: function(age) {
             return ItemData.canUse(age, Items.FAIRY_SLINGSHOT) ||
@@ -1029,7 +1029,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         RequiredToAppear: function() { 
                             return Settings.RandomizerSettings.shuffleDungeonEntrances ||
-                                Settings.GlitchesToAllow.enterJabuAsAdult; 
+                                Tricks.enterJabuAsAdult.enabled; 
                         },
                         Order: 2.1,
                         LongDescription: "In the first room, shoot the left cow to open the door.",
@@ -1109,7 +1109,7 @@ let MQDungeons = {
                         MapImageName: "Fairy Slingshot",
                         RequiredToAppear: function() {
                             let adultCanEnter = Settings.RandomizerSettings.shuffleDungeonEntrances ||
-                                Settings.GlitchesToAllow.enterJabuAsAdult;
+                                Tricks.enterJabuAsAdult.enabled;
                             let adultCanSpawnIt = ItemData.canUse(Age.ADULT, Items.FAIRY_SLINGSHOT);
                             return adultCanEnter && !adultCanSpawnIt;
                         },

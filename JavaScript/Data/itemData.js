@@ -668,12 +668,13 @@ let ItemData = {
 				return age === Age.CHILD || 
 					Tricks.forceAdultBoomerangEquip.enabled ||
 					Data.canEquipSwap(age);
+			case Items.MAGIC_BEAN:
 			case ChildTradeItems.WEIRD_EGG:
 			case ChildTradeItems.ZELDAS_LETTER:
 			case ChildTradeItems.SKULL_MASK:
 			case ChildTradeItems.MASK_OF_TRUTH:
 				// For thawing King Zora
-				// TODO: maybe make a setting for force child trade item equipped - may be overkill though
+				// TODO: maybe make a setting for force child trade item/magic bean equipped - may be overkill though
 				return age === Age.CHILD || Data.canEquipSwap(age);
 			case Items.MEGATON_HAMMER:
 			case AdultTradeItems.ODD_MUSHROOM:
