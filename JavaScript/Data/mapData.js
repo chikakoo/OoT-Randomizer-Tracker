@@ -3342,7 +3342,7 @@ let MapLocations = {
                         MapInfo: { x: 198, y: 213 },
                         Age: Age.ADULT,
                         LongDescription: "At night, longshot all the way up the tree on the middle island. You'll find the skulltula on top.",
-                        NeedsAny: [UpgradedItems.LONGSHOT, GlitchItemSets.LAKE_TREE_SKULL_WITH_HOOKSHOT]
+                        NeedsAny: [UpgradedItems.LONGSHOT, Tricks.skullInTreeWithHookshot.canDo]
                     },
                     "Fire Arrows": {
                         ItemGroup: ItemGroups.FREESTANDING,

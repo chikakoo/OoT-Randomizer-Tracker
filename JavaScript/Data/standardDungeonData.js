@@ -2265,7 +2265,7 @@ let StandardDungeons = {
         StartingFloorIndex: 0,
         UseAdultAge: function() {
             return SettingSets.VANILLA_DUNGEON_ENTRANCES() &&
-                !Settings.GlitchesToAllow.childLakesideLabClip;
+                !Tricks.childLakesideLabClip.enabled;
         },
         _isPlayerLockedOutOfHighWater: function(age) {
             // If the player didn't lower the water, then they aren't locked out of it!

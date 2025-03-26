@@ -129,25 +129,6 @@ let GlitchItemSets = {
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
 
-    // Lake
-    LAKE_TREE_SKULL_WITH_HOOKSHOT: (age) => 
-        Settings.GlitchesToAllow.skullInTreeWithHookshot && 
-        ItemData.canUse(age, [Items.HOOKSHOT, ItemSets.SHIELDS]),
-    LAB_HP_WITHOUT_SCALE: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.labHPWithoutGoldenScale &&
-        ItemData.canUse(age, [Items.HOOKSHOT, Equipment.IRON_BOOTS]),
-    CHILD_LAKESIDE_LAB_CLIP: (age) => age === Age.CHILD &&
-        Settings.GlitchesToAllow.childLakesideLabClip && 
-        ItemData.canUse(age, ItemSets.SWORDS),
-    ADULT_LAKESIDE_LAB_CLIP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.adultLakesideLabClip && 
-        ItemData.canUseAny(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]),
-    ADULT_MEGA_FLIP_CLIP_TO_DOMAIN: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.adultDomainMegaflipClip && 
-        ItemData.canUse(age, Tricks.megaFlip.canDo),
-    ADULT_WATER_TEMPLE_CLIP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.adultWaterTempleClip,
-
     // Gerudo
     CUCCO_JUMP: (age) => 
         Settings.GlitchesToAllow.cuccoJump &&
@@ -539,9 +520,15 @@ let GameStateSets = {
         Items.OCARINA.playerHas || Tricks.ocarinaItems.canDo(),
     CAN_PLAY_SONGS_INCLUDING_DIFFICULT_OI: () => 
         Items.OCARINA.playerHas || Tricks.difficultOcarinaItems.canDo(),
-    CAN_RIDE_EPONA: (age) => Data.canRideEpona(age),
-    CAN_HOOK_SCARECROW: (age) => Data.canHookScarecrow(age),
-    CAN_LONGSHOT_SCARECROW: (age) => Data.canHookScarecrow(age, true),
+    CAN_RIDE_EPONA: (age) => age === Age.ADULT &&
+        ItemData.canUseAny(age, [
+            [Songs.EPONAS_SONG, Items.OCARINA], // Get Epona legit (or race skip - either requires real ocarina)
+            [SettingSets.VANILLA_OVERWORLD_ENTRANCES, Tricks.staircaseHover.canDo] // Steal Epona
+        ]),
+    CAN_HOOK_SCARECROW: (age) => 
+        ItemData.canUse(age, [Items.HOOKSHOT, Songs.SCARECROWS_SONG]),
+    CAN_LONGSHOT_SCARECROW: (age) => 
+        ItemData.canUse(age, [UpgradedItems.LONGSHOT, Songs.SCARECROWS_SONG]),
     ARE_GERUDO_GUARDS_TAME: () => Equipment.GERUDO_MEMBERSHIP_CARD.playerHas,
     CAN_STUN_KITCHEN_GUARDS: (age) => 
         ItemData.canUse(age, GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE) ||

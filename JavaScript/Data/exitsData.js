@@ -1565,11 +1565,13 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 169, y: 89},
             Age: Age.EITHER,
-            UseChildAge: function() { return !Settings.GlitchesToAllow.adultDomainMegaflipClip && !Settings.GlitchesToAllow.adultLakesideLabClip; },
+            UseChildAge: function() { return !Tricks.adultDomainMegaflipClip.enabled && !Tricks.adultLakesideLabClip.enabled; },
             LongDescription: "This is the entrance to Zora's Domain.",
-            ChildNeedsAny: [Equipment.SCALE, GlitchItemSets.CHILD_LAKESIDE_LAB_CLIP],
-            AdultNeedsAny: [GlitchItemSets.ADULT_MEGA_FLIP_CLIP_TO_DOMAIN,
-                [ItemLocationSets.DEFEATED_MORPHA, GlitchItemSets.ADULT_LAKESIDE_LAB_CLIP]]
+            ChildNeedsAny: [Equipment.SCALE, Tricks.childLakesideLabClip.canDo],
+            AdultNeedsAny: [
+                Tricks.adultDomainMegaflipClip.canDo,
+                [ItemLocationSets.DEFEATED_MORPHA, Tricks.adultLakesideLabClip.canDo]
+            ]
         },
 
         // Islands
@@ -1603,11 +1605,13 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Water Temple.",
             IsDungeonEntrance: true,
-            ChildNeeds: [GlitchItemSets.CHILD_LAKESIDE_LAB_CLIP],
-            AdultNeedsAny: [[Equipment.IRON_BOOTS, Items.HOOKSHOT], // Normal entrance
+            ChildNeeds: [Tricks.childLakesideLabClip.canDo],
+            AdultNeedsAny: [
+                [Equipment.IRON_BOOTS, Items.HOOKSHOT], // Normal entrance
                 [UpgradedItems.LONGSHOT, UpgradedItems.GOLDEN_SCALE], // Dive down
-                GlitchItemSets.ADULT_WATER_TEMPLE_CLIP, 
-                GlitchItemSets.ADULT_LAKESIDE_LAB_CLIP],
+                Tricks.adultWaterTempleClip.canDo, 
+                Tricks.adultLakesideLabClip.canDo
+            ]
         },
         "Grotto Under Grave": {
             ExitRegion: "main",

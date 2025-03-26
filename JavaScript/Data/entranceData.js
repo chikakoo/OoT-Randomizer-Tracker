@@ -308,7 +308,7 @@ InteriorGroups = {
 			"Lakeside Heart Piece": {
 				icon: "Piece of Heart",
 				LongDescription: "Use the golden scale and dive to touch the bottom of the water area. The professor will give you this item.",
-				NeedsAny: [UpgradedItems.GOLDEN_SCALE, GlitchItemSets.LAB_HP_WITHOUT_SCALE]
+				NeedsAny: [UpgradedItems.GOLDEN_SCALE, Tricks.labHPWithoutGoldenScale.canDo]
 			},
 			"Lakeside Skulltula": {
 				icon: "Skulltula",

@@ -1193,6 +1193,93 @@ let Tricks = {
 	},
 	//#endregion Zora Areas
 
+	//#region Lake Hylia
+	categoryLakeHylia: {
+		isCategory: true,
+		displayText: "Lake Hylia"
+	},
+	labHPWithoutGoldenScale: {
+		enabled: false,
+		canDo: (age) => Tricks.labHPWithoutGoldenScale.enabled &&
+			ItemData.canUse(age, [Equipment.IRON_BOOTS, Items.HOOKSHOT]),
+		displayText: "Lakeside Lab HP without Golden Scale",
+		description: "Sink to the bottom with iron boots; stand away from the box; shoot hookshot at the box, and pause before the chain reaches it; equip hover boots; you should hear the jingle indicating it worked",
+		links: [{
+			url: "https://youtu.be/l7YcOq6IyiU",
+			description: "Video"
+		}]
+	},
+	adultDomainMegaflipClip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.adultDomainMegaflipClip.enabled &&
+			ItemData.canUse(age, Tricks.megaFlip.canDo),
+		displayText: "Adult ZD from Lake With Megaflip",
+		description: "Climb up next to the south pillar. Sidehop left x2, backflip x5. 2F ess turn right. Shield turn around. Dry roll once.\x0A- BOMB: shield drop + roll, backflip, megaflip (backflip on the first shield frame)\x0A- BOMBCHU: backflip, shield flick, megaflip.\x0A\x0ARelease all buttons after the flip starts. Walk to the loading zone.",
+		links: [{
+			url: "https://youtu.be/LOgjpPd5A_Y",
+			description: "Video"
+		}]
+	},
+	childLakesideLabClip: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.childLakesideLabClip.enabled &&
+			ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS),
+		displayText: "Child Lakeside Lab Clip",
+		description: "Align with lab so you're facing east; backwalk sideroll and release; left sidehop sideroll release; get in corner; slash; left sidehop; right sidehop; slash; backflip; jumpslash; turn 180; backflip x2\x0A\x0ATO WATER TEMPLE:\x0AAlign with wall so hat is in the black crease; sidehop right holding Z; turn around when scene is not visible; swim (SPAM B!) to the left side exposed sky triangle until link's arrow is a little embedded in the island before going in.\x0A\x0ATO ZORA'S DOMAIN:\x0AFollow the water temple steps, but get back in the water earlier; navigate to the loading zone, using the minimap as reference",
+		links: [{
+			url: "https://youtu.be/yJJC1pq2K4s",
+			description: "Video - to Water Temple"
+		}]
+	},
+	adultLakesideLabClip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.adultLakesideLabClip.enabled &&
+			ItemData.canUseAny(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]),
+		displayText: "Adult Lakeside Lab Clip",
+		description: "BACKFLIPS:\x0AGet in corner by lab, hold Z; sidehop left; roll; backflip; sidehop right; roll and release Z; quick draw; shield turn 180; jumpslash and shield; backflip x3\x0A\x0AHOVER BOOTS:\x0AClimb the fence by the door of the lab; equip hovers; rotate around and grab the fence again from the left; if done right, you will be clipped in\x0A\x0AAFTER - GETTING TO TEMPLE (water drained):\x0AJump in the empty triangle to get to the water; swim to the right side of the temple, toward the out of bounds water; once there, the camera will snap back; swim into the cetner, staying out of bound, then into the temple\x0A\x0AAFTER - GETTING TO ZD (high water):\x0AAlign with back wall so hat is in the black crease; sidehop right;hold down after a couple seconds; navigate to where Zora's Domain entrance is (use the minimap for guidance)",
+		links: [
+			{
+				url: "https://youtu.be/_nEkqyZeVYU",
+				description: "Video - lab clip + Water Temple entry"
+			},
+			{
+				url: "https://youtu.be/miV2w7_zqr0",
+				description: "Video - hover boots clip to lab"
+			},
+			{
+				url: "https://youtu.be/bqZahkLlCRs",
+				description: "Video - lab clip to domain (see child lab clip for video that matches description, this one's not the same)"
+			}
+		]
+	},
+	adultWaterTempleClip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.adultWaterTempleClip.enabled,
+		displayText: "Adult Water Temple Clip",
+		description: "With water drained, climb the ledge to the right of the ZD entrance; sidehop left into the wall; turn to face the wall; ledge clip and swim to the right side of the water in the center of the lake; avigate out of bounds through the wall to the temple",
+		links: [{
+			url: "https://youtu.be/xORo1AjwxyQ?t=11",
+			description: "Video"
+		}]
+	},
+	skullInTreeWithHookshot: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.skullInTreeWithHookshot.enabled &&
+			ItemData.canUse(age, [Items.HOOKSHOT, ItemSets.SHIELDS]),
+		displayText: "Skulltula in Tree with Hookshot",
+		description: "Get ISG off the fire arrow plaque; target the tree stump left of the warp pad; sidehop right; dry roll until you stop moving; sidehop right x2; aim for the triangle vertex (see video); if you make it up, aim for the vertex above the branch; spam jumpslash",
+		links: [{
+			url: "https://youtu.be/I4SqvdaamYs",
+			description: "Video"
+		}]
+	},
+	//#endregion Lake Hylia
+
 	TEST: {
 		enabled: false,
 		canDo: (age) => Tricks.TEST.enabled,

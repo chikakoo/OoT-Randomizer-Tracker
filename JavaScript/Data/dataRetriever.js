@@ -1050,29 +1050,7 @@ Data = {
         return bottleCount > 1 || // Any bottle outside of column 1 works
             Items.DEKU_NUT.playerHas || Items.OCARINA.playerHas || Items.LENS_OF_TRUTH.playerHas;
     },
-
-    /**
-     * Returns whether the player summon and can hook a scarecrow
-     */
-    canHookScarecrow: function(age, useLongshot) {
-        let item = useLongshot ? UpgradedItems.LONGSHOT : Items.HOOKSHOT;
-		return ItemData.canUse(age, [item, Songs.SCARECROWS_SONG]);
-	},
     
-    /**
-     * Returns whether you can ride epona
-     */
-    canRideEpona: function(age) {
-		if (age === Age.CHILD) { return false; }
-		
-		let canPlaySong = Data.canPlaySong(Songs.EPONAS_SONG) && Items.OCARINA.playerHas; // Actual ocarina required, even in race skip
-		let canStealEpona = !Settings.RandomizerSettings.shuffleOverworldEntrances &&
-			Settings.GlitchesToAllow.eponaHover && 
-            ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB]);
-		
-		return canPlaySong || canStealEpona;
-	},
-
     /**
      * Returns whether the item location passes the key requirement
      * Can return any ItemObtainability
