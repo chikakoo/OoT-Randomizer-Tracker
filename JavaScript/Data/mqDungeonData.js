@@ -6197,7 +6197,7 @@ let MQDungeons = {
         MapGroup: MapGroups.DUNGEONS,
         IsMasterQuest: true,
         UseAdultAge: function() { 
-            return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.gtgChildAllowed;
+            return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Tricks.gtgChildWithAntigrav.enabled;
         },
         Regions: {
             main: {

@@ -3381,13 +3381,13 @@ let MapLocations = {
                         ChildNeedsAny: [
                             Tricks.staircaseHover.canDo, 
                             Tricks.megaFlip.canDoWithChu,
-                            GlitchItemSets.CUCCO_JUMP],
+                            Tricks.cuccoJump.canDo],
                         AdultNeedsAny: [
                             SettingSets.OPEN_GERUDO_FORTRESS,
                             UpgradedItems.LONGSHOT,
                             ItemLocationSets.ITEM_FROM_GERUDO,
                             GameStateSets.CAN_RIDE_EPONA,
-                            GlitchItemSets.CROSS_GV_BRIDGE_WITH_HOOKSHOT,
+                            Tricks.gvCrossBridgeWithHookshot.canDo,
                             Tricks.bombSuperslide.canDoWithHoverBoots,
                             Tricks.hammerHoverBootsSuperslide.canDo]
                     },
@@ -3428,7 +3428,7 @@ let MapLocations = {
                             UpgradedItems.LONGSHOT,
                             ItemLocationSets.ITEM_FROM_GERUDO,
                             GameStateSets.CAN_RIDE_EPONA,
-                            GlitchItemSets.CROSS_GV_BRIDGE_WITH_HOOKSHOT,
+                            Tricks.gvCrossBridgeWithHookshot.canDo,
                             Tricks.bombSuperslide.canDoWithHoverBoots,
                             Tricks.hammerHoverBootsSuperslide.canDo
                         ]
@@ -3616,8 +3616,9 @@ let MapLocations = {
                         NeedsAny: [
                             UpgradedItems.LONGSHOT,
                             Equipment.HOVER_BOOTS,
-                            GlitchItemSets.GF_JUMP_TO_MIDDLE_FLOOR,
-                            Tricks.megaFlip.canDo]
+                            Tricks.gfJumpToMiddleFloor.canDo,
+                            Tricks.megaFlip.canDo
+                        ]
                     },
                     topOfKitchen: {
                         Age: Age.ADULT,
@@ -3630,13 +3631,13 @@ let MapLocations = {
                     },
                     aboveLinksJail: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.GF_HOOKSHOT_TO_ABOVE_LINKS_JAIL]
+                        Needs: [Tricks.gfHookshotToAboveLinksJail.canDo]
                     },
                     backArea: {
                         AdultNeeds: [GameStateSets.ARE_GERUDO_GUARDS_TAME]
                     },
                     wastelandEntrance: {
-                        NeedsAny: [GameStateSets.ARE_GERUDO_GUARDS_TAME, GlitchItemSets.GF_CHILD_GATE_SKIP]
+                        NeedsAny: [GameStateSets.ARE_GERUDO_GUARDS_TAME, Tricks.gfChildGateSkip.canDo]
                     },
 
                     // Ground Level
@@ -3756,7 +3757,7 @@ let MapLocations = {
                     middleFloor: {},
                     topOfFortress: {
                         ChildNeeds: [Tricks.megaFlip.canDo],
-                        ChildNeedsAny: [GlitchItemSets.GF_CHILD_JUMP_BY_TOP_KITCHEN, Tricks.groundJump.canDoWithBomb],
+                        ChildNeedsAny: [Tricks.gfChildJumpByTopKitchen.canDo, Tricks.groundJump.canDoWithBomb],
                         AdultNeedsAny: [
                             UpgradedItems.LONGSHOT,
                             Equipment.HOVER_BOOTS,
@@ -3804,7 +3805,7 @@ let MapLocations = {
             topOfFortress: {
                 DisplayGroup: { groupName: "Middle and Upper Level", imageName: "Chest" },
                 UseAdultAge: function() {
-                    return (!Tricks.groundJump.enabled && !Settings.GlitchesToAllow.gfChildJumpByTopKitchen) || 
+                    return (!Tricks.groundJump.enabled && !Tricks.gfChildJumpByTopKitchen.enabled) || 
                         !Tricks.megaFlip.enabled;
                 },
                 ExcludeFromSpawnList: true,
@@ -3849,7 +3850,7 @@ let MapLocations = {
                     },
                     wastelandEntrance: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.GF_ADULT_GATE_SKIP]
+                        Needs: [Tricks.gfAdultGateSkip.canDo]
                     },
                     "Door Above Link's Jail": {
                         OwExit: OwExits["Gerudo Fortress"]["Door Above Link's Jail"]
@@ -4220,7 +4221,7 @@ let MapLocations = {
                 Exits: {
                     jail1: {}, // Savewarp
                     kitchenTopLeft: {
-                        NeedsAny: [GameStateSets.CAN_STUN_KITCHEN_GUARDS, GlitchItemSets.GF_PASS_KITCHEN_GUARDS]
+                        NeedsAny: [GameStateSets.CAN_STUN_GUARDS, Tricks.gfPassKitchenGuards.canDo]
                     },
                     "Kitchen Far Bottom": {
                         OwExit: OwExits["Thieves' Hideout"]["Kitchen Far Bottom"]
@@ -4259,7 +4260,7 @@ let MapLocations = {
                         MapInfo: { x: 203, y: 250, floor: "KIT" },
                         Age: Age.EITHER,
                         LongDescription: "This is the crate right next to the kitchen - you'll need to deal with one of the guards to get it. To sneak past, you can hide in the corner by the crate and wait for her to pass. You have a limited time after to bonk the crate.",
-                        NeedsAny: [GameStateSets.CAN_STUN_KITCHEN_GUARDS, GlitchItemSets.GF_PASS_KITCHEN_GUARDS]
+                        NeedsAny: [GameStateSets.CAN_STUN_GUARDS, Tricks.gfPassKitchenGuards.canDo]
                     },
                     "Rupee in Soup Pot": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -4267,7 +4268,7 @@ let MapLocations = {
                         MapInfo: { x: 269, y: 258, floor: "KIT" },
                         Age: Age.EITHER,
                         LongDescription: "Shoot the skull at the end of the hallway leading to the kitchen to get this wonderitem.",
-                        Needs: [GameStateSets.CAN_STUN_KITCHEN_GUARDS]
+                        Needs: [GameStateSets.CAN_STUN_GUARDS]
                     }
                 }
             },
@@ -4277,18 +4278,18 @@ let MapLocations = {
                 Exits: {
                     jail1: {}, // Savewarp
                     kitchenPots: {
-                        NeedsAny: [Items.BOOMERANG, GameStateSets.CAN_STUN_KITCHEN_GUARDS]
+                        NeedsAny: [Items.BOOMERANG, GameStateSets.CAN_STUN_GUARDS]
                     },
                     kitchenHallway: {
                         // Their logic says that you can get here without anything with the pass guards trick on
                         // But it's way too hard!
-                        NeedsAny: [GameStateSets.CAN_STUN_KITCHEN_GUARDS]
+                        NeedsAny: [GameStateSets.CAN_STUN_GUARDS]
                     },
                     kitchenTopRight: {
                         NeedsAny: [
                             Equipment.HOVER_BOOTS,
-                            GameStateSets.CAN_STUN_KITCHEN_GUARDS,
-                            GlitchItemSets.GF_PASS_KITCHEN_GUARDS,
+                            GameStateSets.CAN_STUN_GUARDS,
+                            Tricks.gfPassKitchenGuards.canDo,
                             Tricks.megaFlip.canDo]
                     },
                     "Kitchen Top Left": {
@@ -4303,13 +4304,13 @@ let MapLocations = {
                 Exits: {
                     jail1: {}, // Savewarp
                     kitchenPots: {
-                        NeedsAny: [Items.BOOMERANG, GameStateSets.CAN_STUN_KITCHEN_GUARDS]
+                        NeedsAny: [Items.BOOMERANG, GameStateSets.CAN_STUN_GUARDS]
                     },
                     kitchenTopLeft: {
                         NeedsAny: [
                             Equipment.HOVER_BOOTS,
-                            GameStateSets.CAN_STUN_KITCHEN_GUARDS,
-                            GlitchItemSets.GF_PASS_KITCHEN_GUARDS,
+                            GameStateSets.CAN_STUN_GUARDS,
+                            Tricks.gfPassKitchenGuards.canDo,
                             Tricks.megaFlip.canDo]
                     },
                     "Kitchen Top Right": {
@@ -4351,8 +4352,6 @@ let MapLocations = {
                         OwExit: OwExits["Thieves' Hideout"]["Top Room Lower"]
                     }
                 },
-                // For some reason, their logic doesn't have a trick for Child to use a sword to attack the guards
-                // We will keep gfTopGuardsWithSword as a setting just in case, but will also remove the adult requirement too
                 ItemLocations: {
                     "Upper Room Crate 1": {
                         ItemGroup: ItemGroups.CRATE,
@@ -4371,17 +4370,20 @@ let MapLocations = {
                         MapInfo: { x: 345, y: 127, floor: "TOP" },
                         Age: Age.EITHER,
                         LongDescription: "Deal with the guard that's moving. The crate is to the right when you enter the main room - the one close to the corner.<br/><br/>Child can get this without dealing with the stationary guard if you stay close to the wall.<br/><br/>Adult can get this one without dealing with the stationary guard if you bonk into it while staying more to the right.",
-                        NeedsAny: [ItemSets.SWORDS, GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE]
+                        NeedsAny: [GameStateSets.CAN_STUN_GUARDS]
                     },
                     "Upper Room Far Corner Crate": {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 345, y: 117, floor: "TOP" },
                         Age: Age.EITHER,
                         LongDescription: "Deal with the guard that's moving. The crate is to the right when you enter the main room - the one farther from the corner.<br/>Child can get this one if you hug the wall the whole time.<br/>Adult can stab the stationary guard if you crouchstab her, but be careful not to get too close!",
-                        ChildNeedsAny: [GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE, ItemSets.SWORDS],
+                        // Child is small enough to not need to stun the stationary guard
+                        ChildNeedsAny: [GameStateSets.CAN_STUN_GUARDS], 
                         AdultNeedsAny: [
                             GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE,
-                            [ItemSets.SWORDS, ItemSets.SHIELDS]], // Need to crouch stab the stationary guard
+                            // Adult needs to stun the stationary guard
+                            Tricks.gfGuardsWithSword.canDoForTopRoomGuards 
+                        ]
                     },
                     "2 Pots on Upper Room Table": {
                         ItemGroup: ItemGroups.GROUP,
@@ -4393,8 +4395,7 @@ let MapLocations = {
                         NeedsAny: [
                             GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE,
                             Items.BOOMERANG,
-                            [SetType.OR,
-                                Equipment.MASTER_SWORD, Items.DEKU_STICK, ItemSets.SHIELDS], // Kokiri sword isn't long enough
+                            Tricks.gfGuardsWithSword.canDoForTopRoomGuards
                         ]
                     },
                     "Upper Room Lower Skull": {

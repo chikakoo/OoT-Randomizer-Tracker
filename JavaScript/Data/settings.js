@@ -1280,6 +1280,134 @@ let Tricks = {
 	},
 	//#endregion Lake Hylia
 
+	//#region Gerudo Valley/Fortress
+	categoryGerodoValleyFortress: {
+		isCategory: true,
+		displayText: "Gerudo Valley/Fortress"
+	},
+	cuccoJump: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.cuccoJump.enabled &&
+			ItemData.canUse(age, Equipment.KOKIRI_SWORD),
+		displayText: "Cucco Jump",
+		description: "Pick up cucco; target right side of gate; turn 180; throw behind you; turn 180; Z + B to vertical slash x2; diagonal slash (Z + B + Right); backflip + pick up cucco\x0A\x0ATurn left; throw cucco; turn right; sidehop left x2 (pause buffer the second one); turn right + pick up cucco\x0A\x0AHold backwalk until you move back one frame, then release; ess left x3; with nothing else held - hold forward until link moves his feet; hold up left; jumpslash (B) when Link is hidden by the wall, close to the gate (3 frames)",
+		links: [{
+			url: "https://youtu.be/dHCi0YEcUbA",
+			description: "Video"
+		}]
+	},
+	gvCrossBridgeWithHookshot: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT && 
+			Tricks.gvCrossBridgeWithHookshot.enabled &&
+			ItemData.canUse(age, [ItemSets.SHIELDS, Items.HOOKSHOT]),
+		displayText: "Cross GV Bridge with Hookshot",
+		description: "Get in left corner, to the left of the little pillar; sidehop right x3; dry roll; shield turn right; three shield scoots forward; hookshot extend\x0A\x0AAim vertically until you see the dot (if on tent side, aim a VERY tiny bit more left and make sure you aim as high as the dot lets you); release and hold forward",
+		links: [{
+			url: "https://youtu.be/RMqzj3XLqqg",
+			description: "Video"
+		}]
+	},
+	gfJumpToMiddleFloor: {
+		enabled: false,
+		canDo: () => Tricks.gfJumpToMiddleFloor.enabled,
+		displayText: "Jump to GF Middle Floor from Bottom",
+		description: "Get to the platform by the door above GTG; stand bit before the second brick line texture, and C-up to you're a little bit to the right of the ledge; take a couple steps back; roll jump over to grab the ledge"
+	},
+	gfHookshotToAboveLinksJail: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.gfHookshotToAboveLinksJail.enabled &&
+			ItemData.canUse(age, Items.HOOKSHOT),
+		displayText: "Hookshot to Above Link's Jail",
+		description: "Hookshot the platform you use to escape from the jail; turn right and move to the wall; turn left and backwalk off; turn left; aim hookshot straight up and hookshot the corner fo the wooden thing to clip through",
+		links: [{
+			url: "https://youtu.be/qnTt085EzGA",
+			description: "Video - not exactly the same (probably not as consistent as the description)"
+		}]
+	},
+	gfChildJumpByTopKitchen: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.gfChildJumpByTopKitchen.enabled,
+		displayText: "Child Jump by Top Kitchen",
+		description: "Target the ledge; backflip; turn left and backwalk off; climb up and turn right; angle so the right edge of c-left lines up with the fortress wall; A-up to roll pause after a few frames (but BEFORE you jump); unpause + hold left"
+	},
+	gtgChildWithAntigrav: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.gtgChildWithAntigrav.enabled,
+		displayText: "Child GTG with Antigrav",
+		description: "Walk up the right seam by the entrance to the back of Gerudo Fortress; navigate to the dark texture by the start of the cliff overpass; press Link against the wall from the left edge of this texture; C-up - you should see through the world; place the triangle texture below the left side of the left c-button; turn left; sidehop right\x0A\x0AIf it worked, you'll slide down the wall, skipping the loading zone - navigate to where GTG would be to enter it",
+		links: [{
+			url: "https://youtu.be/8p1W2Be_zh0",
+			description: "Video - not the same, but shows where it is (this is a really old trick). ISG not needed, and the jump will be from the left side of the darker texture to the left of where the video jumps."
+		}]
+	},
+	gtgAdultWithLedgeClip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.gtgAdultWithLedgeClip.enabled,
+		displayText: "Adult GTG with Ledge Clip",
+		description: "Get to the platform with the uppermost vines, above the two vines exits; ledge clip by the forward vines door; facing away from the wall (clipped into it), sidehop left x2; sidehop right + sideroll untarget; hold backwalk",
+		links: [{
+			url: "https://youtu.be/KWVirB7SWg8?t=24",
+			description: "Video"
+		}]
+	},
+	gfChildGateSkip: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.gfChildGateSkip.enabled,
+		displayText: "GF Gate Skip as Child",
+		description: "Climb the ladder by the gate; get into the right corner, and face the wall with the ladder; C-up and place the B bottom on the right half of the bar to your right; siide hop right; retarget; roll x2; sidehop left to clip out; walk along the wall toward the desert a bit; sidehop left to get back in bounds",
+		links: [{
+			url: "https://youtu.be/2UuPWZnuw-s",
+			description: "Video - doesn't have my setup"
+		}]
+	},
+	gfAdultGateSkip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.gfAdultGateSkip.enabled &&
+			ItemData.canUse(age, Equipment.HOVER_BOOTS),
+		displayText: "GF Gate Skip as Adult",
+		description: "From above Link's jail, target the back rail, then backwalk away; sidehop right; roll + untarget; get in the right corner; sidehop right; hold forward to jump up\x0A\x0AEquip hover boots and run forward, then roll left; quickly target the wall and sidehop left + delay a jumpslash to gain more distance; navigate along the wall further down so you can sidehop left in bounds behind the gate",
+		links: [{
+			url: "https://youtu.be/kIZzkYggvbE?t=12",
+			description: "Video"
+		}]
+	},
+	gfPassKitchenGuards: {
+		enabled: false,
+		canDo: () => Tricks.gfPassKitchenGuards.enabled,
+		displayText: "Pass GF Kitchen Guards with Nothing",
+		description: "Sneak past the Gerudo Fortress guards in the kitchen with no items to get between the upper exits."
+	},
+	gfGuardsWithSword: { 
+		enabled: false,
+		canDo: (age) => Tricks.gfGuardsWithSword.enabled &&
+			ItemData.canUse(age, ItemSets.SWORDS),
+		// The stationary guard here needs to be crouch-stabbed with a long enough weapon
+		canDoForTopRoomGuards: (age) => Tricks.gfGuardsWithSword.enabled &&
+			ItemData.canUse(age, [
+				ItemSets.SHIELDS,
+				[SetType.OR,
+					Equipment.MASTER_SWORD, Items.DEKU_STICK]
+			]),
+		displayText: "Stun GF Guards with Sword",
+		description: "Stun the Gerudo guards with a sword or Deku Stick. Hit them when they aren't looking at you.\x0A\x0AFor the top room, the one that doesn't move needs to be crouch-stabbed with a long weapon (Kokiri Sword doesn't work)."
+	},
+	//#endregion Gerudo Valley/Fortress
+
+	//#region 
+	categoryWastelandColossus: {
+		isCategory: true,
+		displayText: "Wasteland/Colossus"
+	},
+	//#endregion Haunted Wasteland/Colossus
+
 	TEST: {
 		enabled: false,
 		canDo: (age) => Tricks.TEST.enabled,

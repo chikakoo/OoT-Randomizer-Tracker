@@ -5364,7 +5364,7 @@ let StandardDungeons = {
         Abbreviation: "GTG",
         MapGroup: MapGroups.DUNGEONS,
         UseAdultAge: function() {
-            return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Settings.GlitchesToAllow.gtgChildAllowed;
+            return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Tricks.gtgChildWithAntigrav.enabled;
         },
         _canSkipMazeDoors: function(age) {
             return ItemData.canUseAny(age, 

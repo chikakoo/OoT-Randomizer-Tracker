@@ -129,28 +129,6 @@ let GlitchItemSets = {
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
 
-    // Gerudo
-    CUCCO_JUMP: (age) => 
-        Settings.GlitchesToAllow.cuccoJump &&
-        ItemData.canUse(age, [ItemSets.SWORDS]),
-    CROSS_GV_BRIDGE_WITH_HOOKSHOT: (age) =>
-        Settings.GlitchesToAllow.gvCrossBridgeWithHookshot && 
-        ItemData.canUse(age, [ItemSets.SHIELDS, Items.HOOKSHOT]),
-    GF_JUMP_TO_MIDDLE_FLOOR: () => Settings.GlitchesToAllow.gfJumpToMiddleFloor,
-    GF_HOOKSHOT_TO_ABOVE_LINKS_JAIL: (age) => 
-        Settings.GlitchesToAllow.gfHookshotToAboveLinksJail &&
-        ItemData.canUse(age, Items.HOOKSHOT),
-    GF_CHILD_GATE_SKIP: (age) => Settings.GlitchesToAllow.gerudoGateSkipAsChild && age === Age.CHILD,
-    GF_CHILD_JUMP_BY_TOP_KITCHEN: (age) => Settings.GlitchesToAllow.gfChildJumpByTopKitchen && age === Age.CHILD,
-    GF_ADULT_GATE_SKIP: (age) => 
-        Settings.GlitchesToAllow.gerudoGateSkipAsAdult &&
-        ItemData.canUse(age, Equipment.HOVER_BOOTS),
-    GF_PASS_KITCHEN_GUARDS: () => Settings.GlitchesToAllow.gfPassKitchenGuards,
-    GTG_AS_CHILD: (age) => age === Age.CHILD &&
-        Settings.GlitchesToAllow.gtgChildAllowed,
-    GTG_ADULT_LEDGE_CLIP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.gtgAdultNoCard,
-
     // Desert
     HW_ITEMLESS_SAND_PIT: () => Settings.GlitchesToAllow.itemlessSandPit,
     BACKWARDS_WASTELAND: () => Settings.GlitchesToAllow.backwardsWasteland,
@@ -530,9 +508,11 @@ let GameStateSets = {
     CAN_LONGSHOT_SCARECROW: (age) => 
         ItemData.canUse(age, [UpgradedItems.LONGSHOT, Songs.SCARECROWS_SONG]),
     ARE_GERUDO_GUARDS_TAME: () => Equipment.GERUDO_MEMBERSHIP_CARD.playerHas,
-    CAN_STUN_KITCHEN_GUARDS: (age) => 
-        ItemData.canUse(age, GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE) ||
-        (Settings.GlitchesToAllow.gfKitchenGuardsWithSword && ItemData.canUse(age, ItemSets.SWORDS)),
+    CAN_STUN_GUARDS: (age) => 
+        ItemData.canUseAny(age, [
+            GameStateSets.CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE,
+            Tricks.gfGuardsWithSword.canDo
+        ]),
     CAN_STUN_OR_PASS_GUARDS_AT_DISTANCE: (age) => 
         ItemData.canUseAny(age, 
             [GameStateSets.ARE_GERUDO_GUARDS_TAME, Items.HOOKSHOT, Items.FAIRY_BOW]),

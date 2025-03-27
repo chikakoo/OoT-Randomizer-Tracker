@@ -1717,8 +1717,8 @@ let OwExits = {
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Gerudo Training Grounds.",
             IsDungeonEntrance: true,
-            ChildNeeds: [GlitchItemSets.GTG_AS_CHILD],
-            AdultNeedsAny: [GameStateSets.ARE_GERUDO_GUARDS_TAME, GlitchItemSets.GTG_ADULT_LEDGE_CLIP]
+            ChildNeeds: [Tricks.gtgChildWithAntigrav.canDo],
+            AdultNeedsAny: [GameStateSets.ARE_GERUDO_GUARDS_TAME, Tricks.gtgAdultWithLedgeClip.canDo]
         },
         "Bottom Left Door": {
             ExitRegion: "main",
