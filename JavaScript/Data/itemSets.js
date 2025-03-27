@@ -128,12 +128,7 @@ let GlitchItemSets = {
         age === Age.CHILD
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
-
-    // Desert
-    HW_ITEMLESS_SAND_PIT: () => Settings.GlitchesToAllow.itemlessSandPit,
-    BACKWARDS_WASTELAND: () => Settings.GlitchesToAllow.backwardsWasteland,
-    WASTELAND_NO_LENS: () => Settings.GlitchesToAllow.wastelandNoLens,
-
+            
     // Deku Tree
     DEKU_B1_SKIP: (age) => age === Age.CHILD && 
         Settings.GlitchesToAllow.dekuB1Skip,

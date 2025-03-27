@@ -1401,13 +1401,54 @@ let Tricks = {
 	},
 	//#endregion Gerudo Valley/Fortress
 
-	//#region 
+	//#region Haunted Wasteland/Colossus
 	categoryWastelandColossus: {
 		isCategory: true,
 		displayText: "Wasteland/Colossus"
 	},
+	itemlessSandPit: {
+		enabled: false,
+		canDo: () => Tricks.itemlessSandPit.enabled,
+		displayText: "HW Cross Sand Pit without Items",
+		description: "Get to almost the left edge of the quicksand chasm; C-up so you're facing the corner of the other side; turn around and roll forward so you're out of the sand; backwalk; sidehop left when you reach the other side before you void",
+		links: [{
+			url: "https://youtu.be/rNtUYnNWToY",
+			description: "Video"
+		}]
+	},
+	wastelandNoLens: {
+		enabled: false,
+		canDo: () => Tricks.wastelandNoLens.enabled,
+		displayText: "HW without Lens of Truth",
+		description: "From the right side of the outpost, walk forward until the sand changes angles - cross the angle, but only barely; turn left and follow the seam\x0A\x0AWhen you reach the next hill, angle yourself and cross the second light stripe, then follow the hill with the seam to your right to the top of the hill\x0A\x0AFollow the seam until you are at the same colored stripe that the create in the distance is on, then go straight to the crate; from there, go straight west to the exit",
+		links: [{
+			url: "https://youtu.be/h5_EiPTjdEk?t=62",
+			description: "Video - not exactly the same, but should do the trick"
+		}]
+	},
+	backwardsWasteland: {
+		enabled: false,
+		canDo: () => Tricks.backwardsWasteland.enabled,
+		displayText: "Backwards Haunted Wasteland",
+		description: "From Colossus side, walk forward to the crate; follow the seam in the sand away from the crate until you go downhill - then go to the top of the dune on your right; face east, then follow with the seam to your left until you reach the next to last white stripe; cross to the other side and keep following - seam now to your right; cross to the outpost when it's south of you\x0A\x0AIf going all the way, follow the flags back to the salesman/chasm\x0A\x0ATo cross the last sand pit, get the same angle as the middle crate by the flags, and backwalk across. It can be a bit finnicky - make sure you have speed. It works a bit better if positioned more to the right (facing away from the chasm).",
+		links: [
+			{
+				url: "https://youtu.be/W-sEiOKyMOI",
+				description: "Video - to outpost (not the same - quicker, but not as easy)"
+			},
+			{
+				url: "https://youtu.be/mVqEgMWwj-g?t=275",
+				description: "Video - chasm backwalk"
+			}
+		]
+	},
 	//#endregion Haunted Wasteland/Colossus
 
+	//#region Deku Tree
+	categoryDekuTree: {
+		isCategory: true,
+		displayText: "Deku Tree"
+	},
 	TEST: {
 		enabled: false,
 		canDo: (age) => Tricks.TEST.enabled,
@@ -1418,4 +1459,5 @@ let Tricks = {
 			description: "Video"
 		}]
 	},
+	//#endregion Deku Tree
 };

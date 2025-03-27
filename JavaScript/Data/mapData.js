@@ -4451,7 +4451,7 @@ let MapLocations = {
                         NeedsAny: [
                             UpgradedItems.LONGSHOT,
                             Equipment.HOVER_BOOTS,
-                            GlitchItemSets.HW_ITEMLESS_SAND_PIT]
+                            Tricks.itemlessSandPit.canDo]
                     },
                     "Gerudo Fortress": {
                         OwExit: OwExits["Haunted Wasteland"]["Gerudo Fortress"]
@@ -4469,15 +4469,15 @@ let MapLocations = {
             outpost: {
                 DisplayGroup: { groupName: "Outpost", imageName: "Lens of Truth" },
                 UseAdultAge: function() { 
-                    return !Settings.GlitchesToAllow.backwardsWasteland && !Settings.GlitchesToAllow.itemlessSandPit;
+                    return !Tricks.backwardsWasteland.enabled && !Tricks.itemlessSandPit.enabled;
                 },
                 ExcludeFromSpawnList: true,
                 Exits: {
                     entrance: {
-                        Needs: [GlitchItemSets.BACKWARDS_WASTELAND]
+                        Needs: [Tricks.backwardsWasteland.canDo]
                     },
                     exit: {
-                        NeedsAny: [Items.LENS_OF_TRUTH, GlitchItemSets.WASTELAND_NO_LENS]
+                        NeedsAny: [Items.LENS_OF_TRUTH, Tricks.wastelandNoLens.canDo]
                     }
                 },
 
@@ -4526,7 +4526,7 @@ let MapLocations = {
                 DisplayGroup: { groupName: "Colossus Side", imageName: "Spirit Medallion" },
                 Exits: {
                     outpost: {
-                        Needs: [GlitchItemSets.BACKWARDS_WASTELAND]
+                        Needs: [Tricks.backwardsWasteland.canDo]
                     },
                     "Desert Colossus": {
                         OwExit: OwExits["Haunted Wasteland"]["Desert Colossus"]
