@@ -78,7 +78,7 @@ let StandardDungeons = {
                 Exits: {
                     bossRoom: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.DEKU_ADULT_CLIP_TO_BOSS_ROOM]
+                        Needs: [Tricks.dekuAdultClipToBossRoom.canDo]
                     }
                 },
                 ItemLocations: {
@@ -127,7 +127,7 @@ let StandardDungeons = {
                                 [SetType.OR, Items.DEKU_STICK, ItemSets.FIRE_ITEMS]]]
                     },
                     basementTop: {
-                        ChildNeeds: [GlitchItemSets.DEKU_B1_SKIP]
+                        ChildNeeds: [Tricks.dekuB1Skip.canDo]
                     }
                 },
                 ItemLocations: {

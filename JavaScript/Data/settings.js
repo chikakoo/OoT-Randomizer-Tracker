@@ -613,16 +613,14 @@ let Tricks = {
 			ItemData.canUseAny(age, [Items.HOOKSHOT, Tricks.boomerangTrickThrows.canDo]),
 		displayText: "Skulltula by Forest Stage Without Bean",
 		description: "Kill the skull (chu/Din's it, or shoot it from where the grass meets the wall on the left); line up with the cliff where it was; backflip x2; hookshot just above the ledge.\x0A\x0AIf you don't have an item to kill it, stand a bit passed the corner of the grass by the skulltula, perpendicular to the wall; c-up and face the edge of the log; hold forward and triple slash, pausing at the START of the third slash; pause 42 more times (total of 43); after the last unpause, it should die (yeah, really).",
-		links: [
-			{
-				url: "https://youtu.be/YFLxEw2_PBw",
-				description: "Video - using distance item"
-			},
-			{
-				url: "https://youtu.be/vvMUitRUo5c",
-				description: "Video - using pause trick"
-			}
-		]
+		links: [{
+			url: "https://youtu.be/YFLxEw2_PBw",
+			description: "Video - using distance item"
+		},
+		{
+			url: "https://youtu.be/vvMUitRUo5c",
+			description: "Video - using pause trick"
+		}]
 	},
 	lwAdultBridgeFromTop: {
 		enabled: false,
@@ -697,16 +695,14 @@ let Tricks = {
 			]),
 		displayText: "Door of Time Skip",
 		description: "CHILD: Get lunge storage off the altar; target the door; sidehop left; sideroll untarget; sidehop right; sideroll hold target; sidehop right; sidehop left; sideroll hold target; ess right x1; quickdraw; jumpslash holding nothing\x0A\x0AADULT: Target left side of the left pillar; sidehop right; sideroll untarget; ess right x2; get into right corner; holding nothing, slash + shield x2; croushstab; equip hover boots on second frame of sparks; hold right after clipping",
-		links: [
-			{
-				url: "https://youtu.be/rsQsebyHhxY",
-				description: "Video - Child"
-			},
-			{
-				url: "https://youtu.be/pzZstuQrx70",
-				description: "Video - Adult"
-			}
-		]	
+		links: [{
+			url: "https://youtu.be/rsQsebyHhxY",
+			description: "Video - Child"
+		},
+		{
+			url: "https://youtu.be/pzZstuQrx70",
+			description: "Video - Adult"
+		}]	
 	},
 	doubleDefenseEarly: {
 		enabled: false,
@@ -717,16 +713,14 @@ let Tricks = {
 			]),
 		displayText: "Double Defense Early",
 		description: "WITH RECOIL: Get into the right corner; C-up and line up so the right edge of the sword icon is covered by the wall; crouch-stab; on the first recoil frame, equip hovers and hold left\x0A\x0AWITH EXPLOSIVES: Get into the left corner and target the wall; turn right (you can get out of the corner to do the next part now, just hold the angle); right ess turn x1 if using a bomb, x2 if using a chu; get back in the corner if you aren't there; pull your explosive and let it explode",
-		links: [
-			{
-				url: "https://youtu.be/h10O9zU2FWE",
-				description: "Video - using recoil"
-			},
-			{
-				url: "https://www.youtube.com/watch?v=omUKghUMFsU",
-				description: "Video - using explosives"
-			}
-		]
+		links: [{
+			url: "https://youtu.be/h10O9zU2FWE",
+			description: "Video - using recoil"
+		},
+		{
+			url: "https://www.youtube.com/watch?v=omUKghUMFsU",
+			description: "Video - using explosives"
+		}]
 	},
 	adultGrottoByGVWithoutHammer: {
 		enabled: false,
@@ -958,16 +952,14 @@ let Tricks = {
 			]),
 		displayText: "Child DMC Exit from Goron",
 		description: "STICK + EXPLOSIVE\x0ATarget right corner wall; turn right; backflip into corner\x0A- BOMB: retarget; dry roll; place bomb (take out and place quickly); backwalk from bomb; backflip into corner; slash with stick\x0A- CHU: slash with stick; drop chu\x0A\x0ASWORD + EXPLOSIVE\x0ATarget left corner wall; turn left; backflip into corner; retarget; dry roll\x0A- BOMB: place bomb; holding nothing, slash torch\x0A- CHU: holding nothing, slash the torch; drop chu\x0A\x0ADEKU SHIELD + POT\x0APick up pot; target wall to the right of the statue; back up a bit; ess right x3; walk right until the torch nudges you to the left; pause on Link's breathing cycle when the pot is higher up (lots of rames); sidewalk left; on the frame Link nudges to the left sharply (one after you are centered with the wall design), press shield (keep sidewalking left)",
-		links: [
-			{
-				url: "https://youtu.be/UCnoWTA4xE8",
-				description: "Video - explosives (use other vid for pot push)"
-			},
-			{
-				url: "https://youtu.be/UQ3ARylC9fs",
-				description: "Video - pot push"
-			}
-		]
+		links: [{
+			url: "https://youtu.be/UCnoWTA4xE8",
+			description: "Video - explosives (use other vid for pot push)"
+		},
+		{
+			url: "https://youtu.be/UQ3ARylC9fs",
+			description: "Video - pot push"
+		}]
 	},
 	hoverBootsToVolcanoHP: {
 		enabled: false,
@@ -1122,16 +1114,14 @@ let Tricks = {
 			]),
 		displayText: "Thaw King Zora Without Blue Fire",
 		description: "KING NOT MOVED:\x0ALeft-sidehop up from the bottom of the stairs. Center with the torch, then go barely to the left. Back up as much as you can and check the sign. Now go back down and up to reload the king, and he will be unthawed.\x0A\x0AKING IN ANY POSITION:\x0ABackwalk up the stairs until just passed the black part (the loading zone). Use bugs/fish/potion/trade item/Nayru's Love (equipped swapped beans work too) and go back down and up the stairs. The king will be unthawed.",
-		links: [
-			{
-				url: "https://youtu.be/73O5FHcmdFE",
-				description: "Video - king not moved (reading the sign)"
-			},
-			{
-				url: "https://youtu.be/4hV2OuOnE28",
-				description: "Video - king in any position (cutscene item)"
-			}
-		]	
+		links: [{
+			url: "https://youtu.be/73O5FHcmdFE",
+			description: "Video - king not moved (reading the sign)"
+		},
+		{
+			url: "https://youtu.be/4hV2OuOnE28",
+			description: "Video - king in any position (cutscene item)"
+		}]	
 	},
 	adultDomainToLake: {
 		enabled: false,
@@ -1139,16 +1129,14 @@ let Tricks = {
 			Tricks.adultDomainToLake.enabled,
 		displayText: "Adult Domain to Lake",
 		description: "WITHOUT HOOKSHOT: Climb up the ladder; from the top, left sidehop; A to sideroll (untarget); ess right 1; right sidehop; hold down - you should be glitched into the wall; press A to fall and hold up to stay out of bounds\x0A\x0AWITH HOOKSHOT: From the corner of the small island, hookshot the top right part of the ladder and hold nothing; A, then B immediately\x0A\x0AONCE OUT OF BOUNDS: Walk parallel to the void as far as you can; turn left and sidehop right into the void; jumpslash when link disappears and navigate to the loading zone.",
-		links: [
-			{
-				url: "https://youtu.be/nFNtKyGu-Jo",
-				description: "Video - without hookshot"
-			},
-			{
-				url: "https://youtu.be/C-KEp5ON4lQ",
-				description: "Video - with hookshot"
-			}
-		]
+		links: [{
+			url: "https://youtu.be/nFNtKyGu-Jo",
+			description: "Video - without hookshot"
+		},
+		{
+			url: "https://youtu.be/C-KEp5ON4lQ",
+			description: "Video - with hookshot"
+		}]
 	},
 	jabuFishless: {
 		enabled: false,
@@ -1157,16 +1145,14 @@ let Tricks = {
 			ItemData.canUse(age, ItemSets.SWORDS),
 		displayText: "Jabu Fish Skip",
 		description: "METHOD 1: Face the rail in the right corner; sidehop left; turn right; sidehop left and press A to jumpslash the left side of the pillar - you should recoil back into the loading zone if you hit the right frame\x0A\x0AMETHOD 2: Face the pillar in the right corner, hold nothing and slash sword; turn left and target; release Z; climb up, immediately hold left; A to jumpslash when sword is parallel to your foot",
-		links: [
-			{
-				url: "https://youtu.be/fTGsrd5sqzE",
-				description: "Video - method 1"
-			},
-			{
-				url: "https://youtu.be/ZKSvxu1koOw",
-				description: "Video - method 2 (excludes the slash setup)"
-			}
-		]
+		links: [{
+			url: "https://youtu.be/fTGsrd5sqzE",
+			description: "Video - method 1"
+		},
+		{
+			url: "https://youtu.be/ZKSvxu1koOw",
+			description: "Video - method 2 (excludes the slash setup)"
+		}]
 	},
 	enterJabuAsAdult: {
 		enabled: false,
@@ -1180,16 +1166,14 @@ let Tricks = {
 			]),
 		displayText: "Enter Jabu as Adult",
 		description: "WITH CHUS:\x0AGet ISG; from corner, backflip x2, roll untarget, left, roll untarget, right, roll hold target; run to the ledge, chu until 9th red; Z + shield + right + A\x0A\x0AHold up between up/up-right (x between 29 and 41) - will see link walk in place; chu until blue after 8th red flash; shield + right (KEEP SHIELD FOREVER); buffer until link jerks right; A; pause until the right explosion frame; A + left\x0A\x0AWITH BOMBS + HOVER BOOTS:\x0AStart with kokiri boots; get in corner, facing west with the pillar to the left of you; turn 180; roll; sidehop right; roll + release target; shield turn right; roll;equip hovers\x0A\x0Atake out bomb; 4 frames to A + R to roll and mash right sidehop (big blue is last frame); let go of everything; on the first frame where your left arm is greater than 45 degrees, pause; equip kokiri boots; B during unpause lag; wait at least one frame; equip hover boots; unpause and wait",
-		links: [
-			{
-				url: "https://youtu.be/NmtGis95m-A",
-				description: "Video - bombchus"
-			},
-			{
-				url: "https://youtu.be/bVo9JfEze1s",
-				description: "Video - bombs and hover boots (setup in tooltip to get to the position is more precise)"
-			}
-		]	
+		links: [{
+			url: "https://youtu.be/NmtGis95m-A",
+			description: "Video - bombchus"
+		},
+		{
+			url: "https://youtu.be/bVo9JfEze1s",
+			description: "Video - bombs and hover boots (setup in tooltip to get to the position is more precise)"
+		}]	
 	},
 	//#endregion Zora Areas
 
@@ -1240,20 +1224,18 @@ let Tricks = {
 			ItemData.canUseAny(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]),
 		displayText: "Adult Lakeside Lab Clip",
 		description: "BACKFLIPS:\x0AGet in corner by lab, hold Z; sidehop left; roll; backflip; sidehop right; roll and release Z; quick draw; shield turn 180; jumpslash and shield; backflip x3\x0A\x0AHOVER BOOTS:\x0AClimb the fence by the door of the lab; equip hovers; rotate around and grab the fence again from the left; if done right, you will be clipped in\x0A\x0AAFTER - GETTING TO TEMPLE (water drained):\x0AJump in the empty triangle to get to the water; swim to the right side of the temple, toward the out of bounds water; once there, the camera will snap back; swim into the cetner, staying out of bound, then into the temple\x0A\x0AAFTER - GETTING TO ZD (high water):\x0AAlign with back wall so hat is in the black crease; sidehop right;hold down after a couple seconds; navigate to where Zora's Domain entrance is (use the minimap for guidance)",
-		links: [
-			{
-				url: "https://youtu.be/_nEkqyZeVYU",
-				description: "Video - lab clip + Water Temple entry"
-			},
-			{
-				url: "https://youtu.be/miV2w7_zqr0",
-				description: "Video - hover boots clip to lab"
-			},
-			{
-				url: "https://youtu.be/bqZahkLlCRs",
-				description: "Video - lab clip to domain (see child lab clip for video that matches description, this one's not the same)"
-			}
-		]
+		links: [{
+			url: "https://youtu.be/_nEkqyZeVYU",
+			description: "Video - lab clip + Water Temple entry"
+		},
+		{
+			url: "https://youtu.be/miV2w7_zqr0",
+			description: "Video - hover boots clip to lab"
+		},
+		{
+			url: "https://youtu.be/bqZahkLlCRs",
+			description: "Video - lab clip to domain (see child lab clip for video that matches description, this one's not the same)"
+		}]
 	},
 	adultWaterTempleClip: {
 		enabled: false,
@@ -1431,16 +1413,14 @@ let Tricks = {
 		canDo: () => Tricks.backwardsWasteland.enabled,
 		displayText: "Backwards Haunted Wasteland",
 		description: "From Colossus side, walk forward to the crate; follow the seam in the sand away from the crate until you go downhill - then go to the top of the dune on your right; face east, then follow with the seam to your left until you reach the next to last white stripe; cross to the other side and keep following - seam now to your right; cross to the outpost when it's south of you\x0A\x0AIf going all the way, follow the flags back to the salesman/chasm\x0A\x0ATo cross the last sand pit, get the same angle as the middle crate by the flags, and backwalk across. It can be a bit finnicky - make sure you have speed. It works a bit better if positioned more to the right (facing away from the chasm).",
-		links: [
-			{
-				url: "https://youtu.be/W-sEiOKyMOI",
-				description: "Video - to outpost (not the same - quicker, but not as easy)"
-			},
-			{
-				url: "https://youtu.be/mVqEgMWwj-g?t=275",
-				description: "Video - chasm backwalk"
-			}
-		]
+		links: [{
+			url: "https://youtu.be/W-sEiOKyMOI",
+			description: "Video - to outpost (not the same - quicker, but not as easy)"
+		},
+		{
+			url: "https://youtu.be/mVqEgMWwj-g?t=275",
+			description: "Video - chasm backwalk"
+		}]
 	},
 	//#endregion Haunted Wasteland/Colossus
 
@@ -1449,7 +1429,54 @@ let Tricks = {
 		isCategory: true,
 		displayText: "Deku Tree"
 	},
-	TEST: {
+	dekuB1Skip: {
+		enabled: false,
+		canDo: () => Tricks.dekuB1Skip.enabled,
+		displayText: "B1 Skip",
+		description: "TO START:\x0ATarget the wall to the left of the block, get to the right and dry roll into the corner; backflip x2; sidehop right; sidehop left\x0A\x0AWITHOUT C-UP:\x0ATurn right; backflip + side roll (hold target); turn 180; backflip; side roll (release target); dry roll; dry roll and hold up\x0A\x0AWITH C-UP:\x0AC-up and line up the left edge of the B button with the gray ceiling support texture (see video); dry roll; dry roll and hold up",
+		links: [{
+			url: "https://youtu.be/3qSQHW6X-10?t=61",
+			description: "Video - without c-up"
+		},
+		{
+			url: "https://youtu.be/fWV3XslET2Y?t=16",
+			description: "Video - with c-up"
+		}]
+	},
+	dekuAdultClipToBossRoom: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.dekuAdultClipToBossRoom.enabled,
+		displayText: "Adult Clip to Boss Room",
+		description: "(Does not work in MQ). From the compass room, hit the switch and target the wall; turn 180; sidehop right to the corner; sidehop left x2; backflip (keep Z held FOREVER); hold forward until you grab the ledge; wait for the platform to stop\x0A\x0AA to let go, B to jumpslash (a lot of frames, but don't do it on frame 1)",
+		links: [{
+			url: "https://youtu.be/l0EMy-y--n0",
+			description: "Video"
+		}]
+	},
+	mqDekuHammerCompassRocks: {
+		enabled: false,
+		canDo: (age) => Tricks.mqDekuHammerCompassRocks.enabled &&
+			ItemData.canUse(age, Items.MEGATON_HAMMER),
+		displayText: "MQ Hammer Compass Room Rocks",
+		description: "Climb the vines as high as you can between the rocks. Press A to ungrab, and spam the hammer button to jumpslash the rocks."
+	},
+	mqDekuAdultBombCompassRocks: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.mqDekuAdultBombCompassRocks.enabled &&
+			Items.BOMB.playerHas,
+		displayText: "MQ Bomb Compass Room Rocks",
+		description: "As an adult, cook a bomb for the right amount of time and throw it at the rocks to break them."
+	},
+	//#endregion Deku Tree
+
+	//#region Dodongo's Cavern
+	categoryDodongosCavern: {
+		isCategory: true,
+		displayText: "Dodongo's Cavern"
+	},
+	TEST1: {
 		enabled: false,
 		canDo: (age) => Tricks.TEST.enabled,
 		displayText: "TEST",
@@ -1459,5 +1486,22 @@ let Tricks = {
 			description: "Video"
 		}]
 	},
-	//#endregion Deku Tree
+	//#endregion Dodongo's Cavern
+
+	//#region Jabu Jabu's Belly
+	categoryJabuJabusBelly: {
+		isCategory: true,
+		displayText: "Jabu Jabu's Belly"
+	},
+	TEST2: {
+		enabled: false,
+		canDo: (age) => Tricks.TEST.enabled,
+		displayText: "TEST",
+		description: "TEST",
+		links: [{
+			url: "",
+			description: "Video"
+		}]
+	},
+	//#endregion Jabu Jabu's Belly
 };

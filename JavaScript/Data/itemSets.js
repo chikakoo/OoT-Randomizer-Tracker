@@ -128,18 +128,6 @@ let GlitchItemSets = {
         age === Age.CHILD
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
-            
-    // Deku Tree
-    DEKU_B1_SKIP: (age) => age === Age.CHILD && 
-        Settings.GlitchesToAllow.dekuB1Skip,
-    DEKU_ADULT_CLIP_TO_BOSS_ROOM: (age) => age === Age.ADULT && 
-        Settings.GlitchesToAllow.dekuAdultClipToBossRoom,
-    MQ_DEKU_SIDE_ROOM_ROCKS_WITH_HAMMER: (age) =>
-        Settings.GlitchesToAllow.mqDekuSideRoomRocksHammerOnly &&
-        ItemData.canUse(age, Items.MEGATON_HAMMER),
-    MQ_DEKU_SIDE_ROOM_ROCKS_WITH_BOMB: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.mqDekuSideRoomRocksBombsOnly &&
-        ItemData.canUse(age, Items.BOMB),
 
     // Dodongo's Cavern
     DODONGO_HEAD_WITH_CHUS: (age) =>

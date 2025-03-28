@@ -121,8 +121,8 @@ let MQDungeons = {
                             Items.BOMBCHU,
                             [Songs.SONG_OF_TIME, 
                                 [SetType.OR, Items.BOMB, Items.MEGATON_HAMMER]],
-                            [GlitchItemSets.MQ_DEKU_SIDE_ROOM_ROCKS_WITH_HAMMER],
-                            [GlitchItemSets.MQ_DEKU_SIDE_ROOM_ROCKS_WITH_BOMB]
+                            [Tricks.mqDekuHammerCompassRocks.canDo],
+                            [Tricks.mqDekuAdultBombCompassRocks.canDo]
                         ]
                     },
                     compassRoomSkulltula: {
@@ -180,7 +180,7 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.FIRE_ITEMS, Items.DEKU_STICK, QPAItemSets.LEDGE_QPA]
                     },
                     upperBasement: {
-                        ChildNeeds: [GlitchItemSets.DEKU_B1_SKIP]
+                        ChildNeeds: [Tricks.dekuB1Skip.canDo]
                     }
                 },
                 ItemLocations: {
