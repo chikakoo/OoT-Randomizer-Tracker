@@ -129,16 +129,6 @@ let GlitchItemSets = {
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
 
-    // Jabu
-    JABU_BLUE_SWITCH_SKIP: (age) => 
-        Settings.GlitchesToAllow.jabuBlueSwitchSkip &&
-        ItemData.canUse(age, ItemSets.SWORDS) &&
-        (age === Age.CHILD || ItemData.canUse(age, ItemSets.SHIELDS)),
-    JABU_BOSS_SWITCH_WITH_EXPLOSIVES: (age) => 
-        Settings.GlitchesToAllow.jabuBossSwitchWithExplosives && (
-            (age === Age.CHILD && Items.BOMBCHU.playerHas) ||
-            (age === Age.ADULT && ItemData.canUse(age, [Items.BOMB, Equipment.HOVER_BOOTS]))),
-
     // Forest Temple
     FOREST_FIRST_SKULL_WITH_BOMB: (age) => 
         Settings.GlitchesToAllow.forestFirstSkullWithBomb && 

@@ -756,7 +756,7 @@ let StandardDungeons = {
                         Needs: [Items.BOOMERANG, ItemSets.SWORDS]
                     },
                     roomBeforeBoss: {
-                        Needs: [GlitchItemSets.JABU_BLUE_SWITCH_SKIP],
+                        Needs: [Tricks.jabuBlueSwitchSkip.canDo],
                         NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     }
                 },
@@ -899,7 +899,7 @@ let StandardDungeons = {
                             Items.BOOMERANG,
                             ItemSets.PROJECTILES,
                             UpgradedItems.LONGSHOT,
-                            GlitchItemSets.JABU_BOSS_SWITCH_WITH_EXPLOSIVES
+                            Tricks.jabuBossSwitchWithExplosives.canDo
                         ]
                     }
                 },

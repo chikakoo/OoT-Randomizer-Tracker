@@ -1549,7 +1549,42 @@ let Tricks = {
 		isCategory: true,
 		displayText: "Jabu Jabu's Belly"
 	},
-	TEST2: {
+	jabuBlueSwitchSkip: {
+		enabled: false,
+		canDo: (age) => Tricks.jabuBlueSwitchSkip.enabled &&
+			ItemData.canUse(age, ItemSets.SWORDS) &&
+			(age === Age.CHILD || ItemData.canUse(age, ItemSets.SHIELDS)),
+		displayText: "Blue Switch Skip",
+		description: "At the switch, line up with center of the door - turn and bonk on switch\x0A- ADULT ONLY STEP: Holding nothing, slash and shield\x0A- Jumpslash onto switch; roll and press A on the right frame (can mash it)",
+		links: [{
+			url: "https://youtu.be/529rrE6d0tk",
+			description: "Video - adult (not exactly the same - the adjustment is mentioned in a comment)"
+		}]
+	},
+	jabuBossSwitchWithExplosives: {
+		enabled: false,
+		canDo: (age) => Tricks.jabuBossSwitchWithExplosives.enabled && (
+            (age === Age.CHILD && Items.BOMBCHU.playerHas) ||
+            (age === Age.ADULT && ItemData.canUse(age, [Items.BOMB, Equipment.HOVER_BOOTS]))),
+		displayText: "Boss Door Switch with Explosives",
+		description: "CHILD:\x0AGet in the left corner, facing the exit door; backflip x3; immediately take out a chu and drop it (NOT A SHIELD DROP)\x0A\x0AADULT:\x0AWith hover boots equipped, climb up the first set of vines; climb the back vines in the middle and drop down; turn 180; pull out a bomb and wait a half second; run around off the cliff (not very far, just until you're around the blocker) and throw the bomb at the switch",
+		links: [{
+			url: "https://youtu.be/Y2wk8b17K0o?t=99",
+			description: "Video - child"
+		},
+		{
+			url: "https://youtu.be/Y2wk8b17K0o?t=115",
+			description: "Video - adult"
+		}]
+	},
+	//#endregion Jabu Jabu's Belly
+
+	//#region Forest Temple
+	categoryForestTemple: {
+		isCategory: true,
+		displayText: "Forest Temple"
+	},
+	TEST: {
 		enabled: false,
 		canDo: (age) => Tricks.TEST.enabled,
 		displayText: "TEST",
@@ -1559,5 +1594,22 @@ let Tricks = {
 			description: "Video"
 		}]
 	},
-	//#endregion Jabu Jabu's Belly
+	//#endregion Forest Temple
+
+	//#region TEST Temple
+	categoryTEST: {
+		isCategory: true,
+		displayText: "TEST"
+	},
+	TESTXXXX: {
+		enabled: false,
+		canDo: (age) => Tricks.TEST.enabled,
+		displayText: "TEST",
+		description: "TEST",
+		links: [{
+			url: "",
+			description: "Video"
+		}]
+	},
+	//#endregion TEST Temple
 };
