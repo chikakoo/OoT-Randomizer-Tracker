@@ -1487,6 +1487,17 @@ let Tricks = {
 			description: "Video"
 		}]
 	},
+	mqDodongoRecoilSlashToPlatform: {
+		enabled: false,
+		canDo: (age) => Tricks.mqDodongoRecoilSlashToPlatform.enabled && 
+        	ItemData.canUse(age, ItemSets.SWORDS),
+		displayText: "MQ Recoil Slash to Platform",
+		description: "Target the wall on the second wall, to the left of the texture in the video; turn 180; sidehop right + sideroll (untarget); sidehop left; jumpslash from this spot",
+		links: [{
+			url: "https://youtu.be/SfP1NagL3fs",
+			description: "Video"
+		}]
+	},
 	dodongoScarecrowSkullEarly: {
 		enabled: false,
 		canDo: () => Tricks.dodongoScarecrowSkullEarly.enabled,
@@ -1528,17 +1539,6 @@ let Tricks = {
 		description: "Pull the block out until it stops; push it toward the mud wall 9 times; climb up it and jump to the mudwall by the ladder, then to the bomb flower; grab the bomb flower; jump to the block and run the mudwall",
 		links: [{
 			url: "https://youtu.be/jNiJrMrJlLU?t=195",
-			description: "Video"
-		}]
-	},
-	mqDodongoRecoilSlashToPlatform: {
-		enabled: false,
-		canDo: (age) => Tricks.mqDodongoRecoilSlashToPlatform.enabled && 
-        	ItemData.canUse(age, ItemSets.SWORDS),
-		displayText: "MQ Recoil Slash to Platform",
-		description: "Target the wall on the second wall, to the left of the texture in the video; turn 180; sidehop right + sideroll (untarget); sidehop left; jumpslash from this spot",
-		links: [{
-			url: "https://youtu.be/SfP1NagL3fs",
 			description: "Video"
 		}]
 	},
@@ -1584,24 +1584,147 @@ let Tricks = {
 		isCategory: true,
 		displayText: "Forest Temple"
 	},
-	TEST: {
+	forestFirstSkullWithBomb: {
 		enabled: false,
-		canDo: (age) => Tricks.TEST.enabled,
-		displayText: "TEST",
-		description: "TEST",
+		canDo: () => Tricks.forestFirstSkullWithBomb.enabled &&
+			Items.BOMB.playerHas,
+		displayText: "First Skulltula with Bomb",
+		description: "Cook a bomb and throw it at the skulltula from the tree to kill it"
+	},
+	forestGreenPoeEarly: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.forestGreenPoeEarly.enabled &&
+			ItemData.canUse(age, [
+				Items.BOMB, 
+				Equipment.HOVER_BOOTS, 
+				ItemSets.SHIELDS]),
+		displayText: "Green Poe Area Early",
+		description: "From lobby entrance, get in the right corner, facing the rail; sidehop left x4; shield drop bomb; dry roll x2; tap up to climb; second damage frame, equip hover boots and hold up",
 		links: [{
-			url: "",
+			url: "https://youtu.be/p4TgxwZcgyg",
+			description: "Video"
+		}]
+	},
+	forestSoTBlockLedgeClip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.forestSoTBlockLedgeClip.enabled,
+		displayText: "Song of Time Block Ledge Clip",
+		description: "Works on the Song of Time block blocking the west room in standard, and the one blocking the north corridor in MQ\x0A\x0AClimb the back left corner of the block, then turn left and target the wall; sidehop right; sidehop left; Z on the first frame Link is grabbing the ledge; A to drop down",
+		links: [{
+			url: "https://youtu.be/4nUZtFL7jLs?&t=5809",
+			description: "Video"
+		}]
+	},
+	forestLedgeWithHoverBoots: {
+		enabled: false,
+		canDo: (age) => Tricks.forestLedgeWithHoverBoots.enabled &&
+			ItemData.canUse(age, Equipment.HOVER_BOOTS),
+		displayText: "Ledge with Hover Boots",
+		description: "From the top area where the well switch normally is, you can do a precise jump with hover boots to the ledge with the chest",
+		links: [{
+			url: "https://youtu.be/EXh2G-05QxA",
+			description: "Video"
+		}]
+	},
+	forestBoomerangSkullOnLedge: {
+		enabled: false,
+		canDo: (age) => Tricks.forestBoomerangSkullOnLedge.enabled &&
+        	ItemData.canUse(age, Items.BOOMERANG),
+		displayText: "Ledge Skulltula with Boomerang",
+		description: "Face the wall by the river nearer to the well; turn right; sidehop right x4; slowly backwalk into the water and release; when Link surfaces, hold forward until he climbs; take out boomerang and line up your shot.\x0A\x0A- Child: line the left ear's tip with the corner of the platform - go a bit more left to get the actual token\x0A- Adult: line the right ear just above the skulltula - face the skulltula directly to get the actual token",
+		links: [{
+			url: "https://youtu.be/gR-ndJFJuq0?t=164",
+			description: "Video - child"
+		}]
+	},
+	forestHookshotToWellSwitch: {
+		enabled: false,
+		canDo: (age) => Tricks.forestHookshotToWellSwitch.enabled &&
+			ItemData.canUse(age, Items.HOOKSHOT),
+		displayText: "Hookshot to Well Switch",
+		description: "Get in the corner; sidehop right x2 + side roll (hold target); backflip; retarget; dryroll; hookshot as high as possible then hold up",
+		links: [{
+			url: "https://youtu.be/gR-ndJFJuq0?t=205",
+			description: "Video"
+		}]
+	},
+	mqForestHoverBootsToDoorFrame: {
+		enabled: false,
+		canDo: (age) => Tricks.mqForestHoverBootsToDoorFrame.enabled &&
+			ItemData.canUse(age, Equipment.HOVER_BOOTS),
+		displayText: "MQ Hover Boots to Door Frame",
+		description: "From the upper balcony, equip hover boots and climb up on the rail in the corner; c-up and face the door frame; spin in a tight circle, roll on the frame, then roll again, jumpslash to get the last of the distance",
+		links: [{
+			url: "https://youtu.be/gR-ndJFJuq0?t=279",
+			description: "Video"
+		}]
+	},
+	forestMegaJumpToLedge: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.forestMegaJumpToLedge.enabled &&
+			ItemData.canUse(age, [Equipment.HOVER_BOOTS, Items.BOMB]),
+		displayText: "Mega Jump to Ledge",
+		description: "Up the vines by the well, get in the corner against the back wall by the ledge; turn right; take out a bomb; on the 2nd damage frame, equip hover boots and hold left",
+		links: [{
+			url: "https://youtu.be/PbbE8QJWsxw",
+			description: "Video"
+		}]
+	},
+	forestChildBlockSkip: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.forestChildBlockSkip.enabled &&
+			ItemData.canUse(age, ItemSets.EXPLOSIVES) &&
+			ItemData.canUseAny(age, [
+				[Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD], // Sword to get to position; need to shield exploion
+				[Items.DEKU_STICK,  // To get into position
+					[SetType.OR, 
+						Items.BOMB, // Don't need to shield drop a bomb
+						ItemSets.SHIELD_DROP_SHIELDS]] // Must shield drop chu
+			]),
+		displayText: "Child Block Skip",
+		description: "FOR ALL:\x0ATarget block; back up a bit; left sidehop; sideroll + release; make sure you are in corner\x0A\x0ASWORD:\x0ACrouchstab; jumpslash + shield; turn 180\x0A- BOMB: press it twice to place it and hold R\x0A- BOMBCHU: take it and hold shield anywhere on 9th red or later\x0A\x0ASTICK:\x0ATurn 180; swing stick + shield\x0A- BOMB: press it twice to place it and wait (DO NOT HOLD SHIELD)\x0A- BOMBCHU: take it and shield drop anywhere from 8th black or later (MAKE SURE TO RELEASE SHIELD)",
+		links: [{
+			url: "https://youtu.be/--lG5DBCfD0",
+			description: "Video"
+		}]
+	},
+	forestBlockSkipWithHoverBoots: {
+		enabled: false,
+		canDo: (age) => Tricks.forestBlockSkipWithHoverBoots.enabled && 
+        	ItemData.canUse(age, [
+				Equipment.HOVER_BOOTS, 
+				Tricks.groundJump.canDoWithBomb]),
+		displayText: "Adult Block Skip",
+		description: "Ground jump over block 1; ground jump on left side of block 2; get a running start; roll diagonal, then and change roll roward the ledge and grab it",
+		links: [{
+			url: "https://youtu.be/dIcQMuPA4mc",
+			description: "Video"
+		}]
+	},
+	forestBKSkip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.forestBKSkip.enabled &&
+			ItemData.canUse(age, Items.HOOKSHOT),
+		displayText: "Boss Key Skip",
+		description: "Up the stairs from the north room of the lobby, get in the right corner; take out hookshot and aim so the red dot is slightly left of the door; A to exit view, but hold Z; backflip, press hookshot mid flip (you should now be clipped into the rail)\x0A\x0ABackwalk to grab the ledge; A to fall; walk so you're centered with the stairs (still out of bounds); roll jump in the abyss; jumpslash at some point for more distance",
+		links: [{
+			url: "https://youtu.be/5DfkXaHgeG4",
 			description: "Video"
 		}]
 	},
 	//#endregion Forest Temple
 
-	//#region TEST Temple
-	categoryTEST: {
+	//#region Fire Temple
+	categoryFireTemple: {
 		isCategory: true,
-		displayText: "TEST"
+		displayText: "Fire Temple"
 	},
-	TESTXXXX: {
+	TEST1: {
 		enabled: false,
 		canDo: (age) => Tricks.TEST.enabled,
 		displayText: "TEST",
@@ -1611,5 +1734,56 @@ let Tricks = {
 			description: "Video"
 		}]
 	},
-	//#endregion TEST Temple
+	//#endregion Fire Temple
+
+	//#region Water Temple
+	categoryWaterTemple: {
+		isCategory: true,
+		displayText: "Water Temple"
+	},
+	TEST2: {
+		enabled: false,
+		canDo: (age) => Tricks.TEST.enabled,
+		displayText: "TEST",
+		description: "TEST",
+		links: [{
+			url: "",
+			description: "Video"
+		}]
+	},
+	//#endregion Water Temple
+
+	//#region Shadow Temple
+	categoryShadowTemple: {
+		isCategory: true,
+		displayText: "Shadow Temple"
+	},
+	TEST3: {
+		enabled: false,
+		canDo: (age) => Tricks.TEST.enabled,
+		displayText: "TEST",
+		description: "TEST",
+		links: [{
+			url: "",
+			description: "Video"
+		}]
+	},
+	//#endregion Shadow Temple
+
+	//#region Spirit Temple
+	categorySpiritTemple: {
+		isCategory: true,
+		displayText: "Spirit Temple"
+	},
+	TEST4: {
+		enabled: false,
+		canDo: (age) => Tricks.TEST.enabled,
+		displayText: "TEST",
+		description: "TEST",
+		links: [{
+			url: "",
+			description: "Video"
+		}]
+	},
+	//#endregion Spirit Temple
 };

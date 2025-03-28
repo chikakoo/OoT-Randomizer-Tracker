@@ -1639,7 +1639,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Starting Rooms", imageName: "Chest" },
                 Exits: {
                     roomNorthOfLobby: {
-                        AdultNeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.FOREST_LEDGE_CLIP]
+                        AdultNeedsAny: [Songs.SONG_OF_TIME, Tricks.forestSoTBlockLedgeClip.canDo]
                     }, 
                     outsideEast: {
                         Needs: [ItemSets.PROJECTILES]
@@ -1652,7 +1652,7 @@ let MQDungeons = {
                     },
                     greenPoeRoom: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.FOREST_GREEN_POE_EARLY]
+                        Needs: [Tricks.forestGreenPoeEarly.canDo]
                     },
                     // Note that all item locations here (and in the boss room) will have IsPostWalkCheck set to true, we need to make sure that we can get to both the
                     // fallingCeilingRoom and the firstPoeRoom in order to actually get here
@@ -1662,7 +1662,7 @@ let MQDungeons = {
                     },
                     bossRoom: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.FOREST_BK_SKIP]
+                        Needs: [Tricks.forestBKSkip.canDo]
                     }
                 },
                 ItemLocations: {
@@ -1748,7 +1748,7 @@ let MQDungeons = {
                         NeedsAny: [
                             Songs.SONG_OF_TIME,
                             UpgradedItems.LONGSHOT,
-                            GlitchItemSets.FOREST_HOOKSHOT_TO_WELL_SWITCH
+                            Tricks.forestHookshotToWellSwitch.canDo
                         ]
                     },
                     outsideEastDoorFrame: {
@@ -1773,11 +1773,11 @@ let MQDungeons = {
                     outsideEast: {},
                     outsideEastDoorFrame: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.MQ_FOREST_HOVER_BOOTS_TO_DOOR_FRAME]
+                        Needs: [Tricks.mqForestHoverBootsToDoorFrame.canDo]
                     },
                     outsideEastPlatform: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.FOREST_LEDGE_WITH_HOVER_BOOTS]
+                        Needs: [Tricks.forestLedgeWithHoverBoots.canDo]
                     },
                     fallingCeilingRoom: {
                         // Climb the close edge of the railing, take tiny steps forward, and face barely toward
@@ -1869,7 +1869,7 @@ let MQDungeons = {
                         NeedsAny: [
                             Equipment.STRENGTH,
                             [Items.HOOKSHOT, Items.BOMBCHU], // Line up with the center wall as you first enter, and drop the chu
-                            [GlitchItemSets.FOREST_BLOCK_SKIP_WITH_HOVER_BOOTS]
+                            Tricks.forestBlockSkipWithHoverBoots.canDo
                         ]
                     },
                     upperOutside: {

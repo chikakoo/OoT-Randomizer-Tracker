@@ -933,11 +933,17 @@ let StandardDungeons = {
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canJumpToTop: function(age) {
             let canGetToFromRightRoom = Items.FAIRY_BOW.playerHas && (
-                ItemData.canUseAny(age, [UpgradedItems.GOLDEN_SCALE, UpgradedItems.LONGSHOT, Equipment.IRON_BOOTS]));
+                ItemData.canUseAny(age, [
+                    UpgradedItems.GOLDEN_SCALE,
+                    UpgradedItems.LONGSHOT, 
+                    Equipment.IRON_BOOTS]));
             let canGetToOutsideLeftBeforeBlockRoom = canGetToFromRightRoom ||
-                ItemData.canUseAny(age, [GlitchItemSets.FOREST_LEDGE_CLIP, Songs.SONG_OF_TIME]);
+                ItemData.canUseAny(age, [
+                    Songs.SONG_OF_TIME,
+                    Tricks.forestSoTBlockLedgeClip.canDo]);
 
-            return GlitchItemSets.FOREST_JUMP_TO_TOP(age) && canGetToOutsideLeftBeforeBlockRoom;
+            return canGetToOutsideLeftBeforeBlockRoom &&
+                Tricks.forestMegaJumpToLedge.canDo(age);
         },
         _canAccessAllPoeRooms: function(age) {
             // Requires an IsPostWalkCheck on each item using this!
@@ -969,7 +975,7 @@ let StandardDungeons = {
                             Items.BOOMERANG,
                             Items.HOOKSHOT,
                             Items.DINS_FIRE,
-                            GlitchItemSets.FOREST_FIRST_SKULL_WITH_BOMB
+                            Tricks.forestFirstSkullWithBomb.canDo
                         ]
                     },
                     "Chest on Starting Room Tree": {
@@ -1062,7 +1068,10 @@ let StandardDungeons = {
                 Exits: {
                     outsideLeft: {
                         // The SoT block is gone as child!
-                        AdultNeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.FOREST_LEDGE_CLIP]
+                        AdultNeedsAny: [
+                            Songs.SONG_OF_TIME, 
+                            Tricks.forestSoTBlockLedgeClip.canDo
+                        ]
                     },
                     outsideRight: {
                         Needs: [ItemSets.PROJECTILES]
@@ -1073,7 +1082,7 @@ let StandardDungeons = {
                     },
                     fallingCeilingRoom: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.FOREST_GREEN_POE_EARLY],
+                        Needs: [Tricks.forestGreenPoeEarly.canDo],
                     },
                     // Note that all item locations here (and in the boss room) will have IsPostWalkCheck set to true, we need to make sure that we can get to both the
                     // fallingCeilingRoom and the firstPoeRoom in order to actually get here
@@ -1083,7 +1092,7 @@ let StandardDungeons = {
                     },
                     bossRoom: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.FOREST_BK_SKIP]
+                        Needs: [Tricks.forestBKSkip.canDo]
                     }
                 },
                 ItemLocations: {
@@ -1159,14 +1168,14 @@ let StandardDungeons = {
                 Exits: {
                     topOfOutsideRight: {
                         Age: Age.ADULT,
-                        NeedsAny: [UpgradedItems.LONGSHOT, GlitchItemSets.FOREST_HOOKSHOT_TO_WELL_SWITCH]
+                        NeedsAny: [UpgradedItems.LONGSHOT, Tricks.forestHookshotToWellSwitch.canDo]
                     },
                     outsideRightLedge: {
                         Age: Age.ADULT,
                         Needs: [Items.HOOKSHOT]
                     },
                     skulltulaOnOutsideRightLedge: {
-                        Needs: [GlitchItemSets.FOREST_BOOMERANG_SKULL_ON_LEDGE]
+                        Needs: [Tricks.forestBoomerangSkullOnLedge.canDo]
                     },
                     outsideLeft: {
                         // This is to swim through the well
@@ -1203,7 +1212,7 @@ let StandardDungeons = {
                         MapInfo: { x: 269, y: 70, floor: "F1" },
                         Age: Age.EITHER,
                         UseAdultAge: function() {
-                            return !Settings.GlitchesToAllow.forestBoomerangSkullOnLedge &&
+                            return !Tricks.forestBoomerangSkullOnLedge.enabled &&
                                 !Tricks.megaFlip.enabled;
                         },
                         Order: 10,
@@ -1218,7 +1227,7 @@ let StandardDungeons = {
                     outsideRight: {},
                     outsideRightLedge: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.FOREST_LEDGE_WITH_HOVER_BOOTS]
+                        Needs: [Tricks.forestLedgeWithHoverBoots.canDo]
                     },
                     outsideLeft: {
                         Needs: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS]
@@ -1271,7 +1280,7 @@ let StandardDungeons = {
                     topOfBlockRoom: {
                         NeedsAny: [
                             Equipment.STRENGTH,
-                            [GlitchItemSets.FOREST_BLOCK_SKIP_WITH_HOVER_BOOTS]
+                            Tricks.forestBlockSkipWithHoverBoots.canDo
                         ]
                     }
                 },
@@ -1283,7 +1292,7 @@ let StandardDungeons = {
                         Order: 14,
                         LongDescription: "Navigate to the room with the block puzzle. After pushing the first block, climb up the ladder that it was blocking. Now go straight to the wall in front of you. Follow that wall to the right. Turn right, and you should see an eye switch a bit up the wall in front of you. Shoot it to spawn the chest.",
                         Needs: [ItemSets.PROJECTILES],
-                        ChildNeedsAny: [Equipment.STRENGTH, GlitchItemSets.FOREST_CHILD_BLOCK_SKIP],
+                        ChildNeedsAny: [Equipment.STRENGTH, Tricks.forestChildBlockSkip.canDo],
                         AdultNeedsAny: [Equipment.STRENGTH, Tricks.groundJump.canDoWithBomb],
                     }
                 }

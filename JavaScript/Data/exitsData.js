@@ -2448,8 +2448,10 @@ let OwExits = {
             Order: 100,
             LongDescription: "After hitting all the switches in the basement, you can enter the boss room.",
             IsPostWalkCheck: true,
-            NeedsAny: [GlitchItemSets.FOREST_BK_SKIP,
-                (age) => MapLocations["Forest Temple"]._canAccessAllPoeRooms(age)]
+            NeedsAny: [
+                Tricks.forestBKSkip.canDo,
+                (age) => MapLocations["Forest Temple"]._canAccessAllPoeRooms(age)
+            ]
         }
     },
 

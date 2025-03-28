@@ -129,47 +129,6 @@ let GlitchItemSets = {
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
 
-    // Forest Temple
-    FOREST_FIRST_SKULL_WITH_BOMB: (age) => 
-        Settings.GlitchesToAllow.forestFirstSkullWithBomb && 
-        ItemData.canUse(age, Items.BOMB),
-    FOREST_LEDGE_CLIP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.forestLedgeClip,
-    FOREST_GREEN_POE_EARLY: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.forestGreenPoeEarly &&
-        ItemData.canUse(age, [Items.BOMB, Equipment.HOVER_BOOTS, ItemSets.SHIELDS]),
-    FOREST_JUMP_TO_TOP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.forestJumpToTop &&
-        ItemData.canUse(age, [Equipment.HOVER_BOOTS, Items.BOMB]),
-    FOREST_HOOKSHOT_TO_WELL_SWITCH: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.forestHookshotToWellSwitch &&
-        ItemData.canUse(age, Items.HOOKSHOT),
-    FOREST_BOOMERANG_SKULL_ON_LEDGE: (age) =>
-        Settings.GlitchesToAllow.forestBoomerangSkullOnLedge &&
-        ItemData.canUse(age, Items.BOOMERANG),
-    FOREST_LEDGE_WITH_HOVER_BOOTS: (age) =>
-        Settings.GlitchesToAllow.forestLedgeWithHovers &&
-        ItemData.canUse(age, Equipment.HOVER_BOOTS),
-    FOREST_CHILD_BLOCK_SKIP: (age) => age === Age.CHILD &&
-        Settings.GlitchesToAllow.forestChildBlockSkip &&
-        ItemData.canUse(age, ItemSets.EXPLOSIVES) &&
-        ItemData.canUseAny(age, [
-            [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD], // Sword to get to position; need to shield exploion
-            [Items.DEKU_STICK,  // To get into position
-                [SetType.OR, 
-                    Items.BOMB, // Don't need to shield drop a bomb
-                    ItemSets.SHIELD_DROP_SHIELDS]] // Must shield drop chu
-        ]),
-    FOREST_BLOCK_SKIP_WITH_HOVER_BOOTS: (age) => age === Age.ADULT && 
-        Settings.GlitchesToAllow.forestBlockSkip && 
-        ItemData.canUse(age, [Equipment.HOVER_BOOTS, Tricks.groundJump.canDoWithBomb]),
-    FOREST_BK_SKIP: (age) => 
-        Settings.GlitchesToAllow.forestBKSkip &&
-        ItemData.canUse(age, Items.HOOKSHOT),
-    MQ_FOREST_HOVER_BOOTS_TO_DOOR_FRAME: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.mqForestHoverBootsToDoorFrame &&
-        ItemData.canUse(age, Equipment.HOVER_BOOTS),
-
     // Fire Temple
     FIRE_FIRST_ROOM_PILLAR_SKIP: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.fireFirstRoomPillarSkip,

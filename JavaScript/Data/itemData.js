@@ -214,7 +214,7 @@ let Keys = {
 			let minKeys = 5;
 
 			// Skips the lobby door to the block room
-			if (Settings.GlitchesToAllow.forestJumpToTop) {
+			if (Tricks.forestMegaJumpToLedge.enabled) {
 				minKeys--;
 			}
 
@@ -222,7 +222,7 @@ let Keys = {
 			// - Includes the green poe early trick, using bombs and hover boots and...
 			// - The megaflip from the well switch ledge
 			// If pots are shuffled, then you still need use use these keys
-			if ((Settings.GlitchesToAllow.forestGreenPoeEarly || Tricks.megaFlip.enabled) &&
+			if ((Tricks.forestGreenPoeEarly.enabled || Tricks.megaFlip.enabled) &&
 					(Settings.RandomizerSettings.potSetting === ShuffleLocationSettings.OFF ||
 					(Settings.RandomizerSettings.potSetting === ShuffleLocationSettings.OW_ONLY))
 			) {
