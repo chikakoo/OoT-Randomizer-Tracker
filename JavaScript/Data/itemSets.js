@@ -129,23 +129,6 @@ let GlitchItemSets = {
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
 
-    // Dodongo's Cavern
-    DODONGO_HEAD_WITH_CHUS: (age) =>
-        Settings.GlitchesToAllow.dodongoOpenHeadWithBombchus &&
-        ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMBCHU]),
-    DODONGO_SCARECROW_SKULL_EARLY: () => Settings.GlitchesToAllow.dodongoScarecrowSkullEarly,
-    DODONGO_TRIGGER_STAIRS_WITH_BOW: (age) =>
-        Settings.GlitchesToAllow.dodongoTriggerStairsWithBow && 
-        ItemData.canUse(age, Items.FAIRY_BOW),
-    DODONGO_ADULT_JUMP_TO_BOMB_CHEST: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.dodongoAdultJumpToBombChest,
-    DODONGO_ADULT_BLADE_ROOM_MUD_WALL_WITH_STRENGTH: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.dodongoAdultBladeMudWallWithStrength && 
-        ItemData.canUse(age, Equipment.STRENGTH),
-    MQ_DODONGO_EARLY_SWITCH: (age) => 
-        Settings.GlitchesToAllow.mqDodongoRecoilSlashToPlatform && 
-        ItemData.canUse(age, ItemSets.SWORDS),
-
     // Jabu
     JABU_BLUE_SWITCH_SKIP: (age) => 
         Settings.GlitchesToAllow.jabuBlueSwitchSkip &&

@@ -446,7 +446,7 @@ let MQDungeons = {
                 Exits: {
                     staircaseBottom: {},
                     mainRoomLedge: {
-                        NeedsAny: [GlitchItemSets.MQ_DODONGO_EARLY_SWITCH]
+                        NeedsAny: [Tricks.mqDodongoRecoilSlashToPlatform.canDo]
                     },
                     topOfTorchPuzzleRoom: {
                         NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, Items.DINS_FIRE]
@@ -617,7 +617,7 @@ let MQDungeons = {
                             ItemSets.EXPLOSIVES_OR_STRENGTH,
                             Items.DINS_FIRE,
                             QPAItemSets.LEDGE_QPA,
-                            GlitchItemSets.DODONGO_TRIGGER_STAIRS_WITH_BOW
+                            Tricks.dodongoTriggerStairsWithBow.canDo
                         ]
                     }
                 },
@@ -738,7 +738,7 @@ let MQDungeons = {
                     topOfTorchPuzzleRoom: {
                         ChildNeeds: [Tricks.megaFlip.canDo],
                         AdultNeedsAny: [
-                            GlitchItemSets.DODONGO_ADULT_JUMP_TO_BOMB_CHEST,
+                            Tricks.dodongoAdultJumpToBombChest.canDo,
                             Tricks.groundJump.canDoWithBomb,
                             Tricks.megaFlip.canDo
                         ]

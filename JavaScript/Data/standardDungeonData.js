@@ -298,7 +298,7 @@ let StandardDungeons = {
                         ChildNeeds: [Tricks.groundJump.canDoWithBombOrStrength]
                     },
                     inDodongoHead: {
-                        Needs: [GlitchItemSets.DODONGO_HEAD_WITH_CHUS]
+                        Needs: [Tricks.dodongoOpenHeadWithBombchus.canDo]
                     }
                 },
                 ItemLocations: {
@@ -366,9 +366,9 @@ let StandardDungeons = {
                         MapInfo: { x: 220, y: 215, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 5,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.dodongoScarecrowSkullEarly; },
+                        UseAdultAge: function() { return !Tricks.dodongoScarecrowSkullEarly.enabled; },
                         LongDescription: "Go to the room to the east of the main room. As adult, play scarecrow's song near the wall with the ledge on the left hand side. Hookshot up to it to get to the skulltula. Alternatively, you can push the armos status all the way over to the ledge and backflip onto it to get to the ledge.",
-                        NeedsAny: [GameStateSets.CAN_HOOK_SCARECROW, GlitchItemSets.DODONGO_SCARECROW_SKULL_EARLY]
+                        NeedsAny: [GameStateSets.CAN_HOOK_SCARECROW, Tricks.dodongoScarecrowSkullEarly.canDo]
                     },
                     "2 Pots in Lizalfos Antechamber": {
                         ItemGroup: ItemGroups.GROUP,
@@ -453,7 +453,7 @@ let StandardDungeons = {
                             ItemSets.EXPLOSIVES_OR_STRENGTH,
                             Items.DINS_FIRE,
                             QPAItemSets.LEDGE_QPA,
-                            GlitchItemSets.DODONGO_TRIGGER_STAIRS_WITH_BOW
+                            Tricks.dodongoTriggerStairsWithBow.canDo
                         ]
                     }
                 },
@@ -522,7 +522,7 @@ let StandardDungeons = {
                     bombChestFloor: {
                         ChildNeeds: [Tricks.megaFlip.canDo],
                         AdultNeedsAny: [
-                            GlitchItemSets.DODONGO_ADULT_JUMP_TO_BOMB_CHEST,
+                            Tricks.dodongoAdultJumpToBombChest.canDo,
                             Tricks.groundJump.canDoWithBomb,
                             Tricks.megaFlip.canDo
                         ]
@@ -556,7 +556,7 @@ let StandardDungeons = {
                         Order: 21,
                         LongDescription: "In the room with the blades, there's a wall you can destroy that's located near the cliffs with the bomb chest. There are a couple scrubs inside.",
                         ChildNeeds: [ItemSets.MUD_WALL_ITEMS],
-                        AdultNeedsAny: [ItemSets.MUD_WALL_ITEMS, GlitchItemSets.DODONGO_ADULT_BLADE_ROOM_MUD_WALL_WITH_STRENGTH]
+                        AdultNeedsAny: [ItemSets.MUD_WALL_ITEMS, Tricks.dodongoAdultBladeMudWallWithStrength.canDo]
                     }
                 }
             },

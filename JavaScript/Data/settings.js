@@ -1476,13 +1476,69 @@ let Tricks = {
 		isCategory: true,
 		displayText: "Dodongo's Cavern"
 	},
-	TEST1: {
+	dodongoOpenHeadWithBombchus: {
 		enabled: false,
-		canDo: (age) => Tricks.TEST.enabled,
-		displayText: "TEST",
-		description: "TEST",
+		canDo: (age) => Tricks.dodongoOpenHeadWithBombchus.enabled &&
+			ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMBCHU]),
+		displayText: "Open Giant Head with Chus",
+		description: "Get in the right corner by the ladder; crouchstab x2; shield turn left\x0A- EYE 1: Instant drop chu (shield + chu at the same time)\x0A- EYE 2: Shield drop chu on the second red flash",
 		links: [{
-			url: "",
+			url: "https://youtu.be/jNiJrMrJlLU?t=258",
+			description: "Video"
+		}]
+	},
+	dodongoScarecrowSkullEarly: {
+		enabled: false,
+		canDo: () => Tricks.dodongoScarecrowSkullEarly.enabled,
+		displayText: "Scarecrow Skulltula Early",
+		description: "Push an Armos statue from the back of the room against ledge the skulltula is above; backflip on the armos; position yourself in the middle of it; roll jump, holding forawrd, to gain enough height to grab it",
+		links: [{
+			url: "https://youtu.be/ZUknxm_SsBQ",
+			description: "Video - can push it against the wall too, it's not that precise"
+		}]
+	},
+	dodongoTriggerStairsWithBow: {
+		enabled: false,
+		canDo: (age) => Tricks.dodongoTriggerStairsWithBow.enabled &&
+			ItemData.canUse(age, Items.FAIRY_BOW),
+		displayText: "Trigger Stairs with Bow",
+		description: "Shoot the bomb flowers by the stairs one after another; if done quickly enough, they will trigger the stairs to fall\x0A\x0AIt helps to get them more in a line when aiming at them",
+		links: [{
+			url: "https://youtu.be/u0EPv1GmsBk",
+			description: "Video"
+		}]
+	},
+	dodongoAdultJumpToBombChest: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.dodongoAdultJumpToBombChest.enabled,
+		displayText: "Adult Jump to Bomb Chest",
+		description: "As Adult, get to the start of the blade room, still up the ladder; roll jump to the platform to the left to grab it and skip the puzzle rooms",
+		links: [{
+			url: "https://youtu.be/QuYVNrTVvQ0",
+			description: "Video"
+		}]
+	},
+	dodongoAdultBladeMudWallWithStrength: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.dodongoAdultBladeMudWallWithStrength.enabled &&
+			Equipment.STRENGTH.playerHas,
+		displayText: "Adult Blade Room Mud Wall with Bomb Flower",
+		description: "Pull the block out until it stops; push it toward the mud wall 9 times; climb up it and jump to the mudwall by the ladder, then to the bomb flower; grab the bomb flower; jump to the block and run the mudwall",
+		links: [{
+			url: "https://youtu.be/jNiJrMrJlLU?t=195",
+			description: "Video"
+		}]
+	},
+	mqDodongoRecoilSlashToPlatform: {
+		enabled: false,
+		canDo: (age) => Tricks.mqDodongoRecoilSlashToPlatform.enabled && 
+        	ItemData.canUse(age, ItemSets.SWORDS),
+		displayText: "MQ Recoil Slash to Platform",
+		description: "Target the wall on the second wall, to the left of the texture in the video; turn 180; sidehop right + sideroll (untarget); sidehop left; jumpslash from this spot",
+		links: [{
+			url: "https://youtu.be/SfP1NagL3fs",
 			description: "Video"
 		}]
 	},
