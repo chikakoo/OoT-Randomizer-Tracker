@@ -1724,15 +1724,108 @@ let Tricks = {
 		isCategory: true,
 		displayText: "Fire Temple"
 	},
-	TEST1: {
+	fireNoGoronTunic: {
 		enabled: false,
-		canDo: (age) => Tricks.TEST.enabled,
-		displayText: "TEST",
-		description: "TEST",
+		canDo: () => Tricks.fireNoGoronTunic.enabled,
+		displayText: "No Goron Tunic",
+		description: "Takes out the Goron Tunic requirement for doing the lava rooms of the fire temple"
+	},
+	fireFirstRoomPillarSkip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.fireFirstRoomPillarSkip.enabled,
+		displayText: "First Room Pillar Skip",
+		description: "In both cases, get in the left corner by the pillar, facing it.\x0A- WITH SHIELD: Sidehop left; roll + release; crouchstab x2; jumpslash\x0A- WITHOUT SHIELD: Backflip; sidehop right; roll + release; turn left; sidehop left; horizonal slash (sword without Z); jumpslash; wait for Link to stand; jumpslash",
 		links: [{
-			url: "",
+			url: "https://youtu.be/XF8EobqomC4?t=7",
+			description: "Video - with shield"
+		},
+		{
+			url: "https://youtu.be/6jdvmahw20g",
+			description: "Video - no shield"
+		}]
+	},
+	mqBossRoomGoronBombClip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.mqBossRoomGoronBombClip.enabled &&
+			ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB]),
+		displayText: "MQ Boss Room Goron Bomb Clip",
+		description: "Get in the corner of the boxes and jail, back to the boxes; slowly backwalk, press A to sideroll; A to roll; take bomb out, wait until it's above your head; shield drop; sidehop left; backflip to corner; wait to clip out; jumpslash and hold forward",
+		links: [{
+			url: "https://youtu.be/4nUZtFL7jLs?t=9105",
 			description: "Video"
 		}]
+	},
+	fireSoTBlockJump: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.fireSoTBlockJump.enabled,
+		displayText: "Song of Time Block Jump",
+		description: "Exit left big lava room goron jail; face up before camera changes; sidehop left x3, backflip x2; sidehop right; sideroll and hold Z and up during roll.",
+		links: [{
+			url: "https://youtu.be/hBBeXaBuFik",
+			description: "Video"
+		}]
+	},
+	mqFireLavaRoomDoorWithDins: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.mqFireLavaRoomDoorWithDins.enabled &&
+			ItemData.canUse(age, Items.DINS_FIRE),
+		displayText: "MQ Lava Room Torches with Din's Fire",
+		description: "Use Din's Fire on the rising platform when it's at the bottom (should light the top one); quickly run over to the other torch to light it in time"
+	},
+	fireBlockClip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.fireBlockClip.enabled &&
+			Items.BOMB.playerHas,
+		displayText: "Block Clip",
+		description: "Jump to the side with the block and climb up after ledge grabbing; tap up to retain the camera angle; hold Z and get into the corner by the block; release everything; take out a bomb and wait for it to explode; hold left immediately after",
+		links: [{
+			url: "https://youtu.be/cwKxLtyjkH4",
+			description: "Video"
+		}]
+	},
+	fireEscapeMapEnclosure: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.fireEscapeMapEnclosure.enabled &&
+			Tricks.hammerHoverBootsSuperslide.canDo(age),
+		displayText: "Recoil From Map Enclosure",
+		description: "Do a recoil super slide off the map chest in the enclosed room to get to the ledge to the fire wall room to skip a key",
+		links: [{
+			url: "https://youtu.be/NzqOrs9t_wI?t=8",
+			description: "Video - can line it up manually; no set up required"
+		}]
+	},
+	fireBKSkipFromFireWallMaze: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.fireBKSkipFromFireWallMaze.enabled,
+		displayText: "BK Skip from Fire Wall Maze",
+		description: "Line up with the right side of the pillar; HOLD Z FOREVER; sidehop right until the wall; sideroll; sidehop right\x0A\x0ASideroll and pause on the first frame link is falling; unpause and repress Z; wait for camera to pan down (Link's hand should be clipping); with Z held, press A to fall and pause immediately; unpause and hold forward to the boss door",
+		links: [{
+			url: "https://youtu.be/qdH7lE7U8x0",
+			description: "Video"
+		}]
+	},
+	fireWallSkip: {
+		enabled: false,
+		canDo: () => Tricks.fireWallSkip.enabled,
+		displayText: "Fire Wall Skip",
+		description: "Standard/MQ (maze room):\x0AOn the right side, stand a bit from the right maze wall and sidehop into it to fall to the other side.\x0A\x0AMQ (lobby):\x0AChild can sidehop through the right gap by the stairs. Stand by the pillar to the right as close to the gap as possible without the fire showing up. Angle yourself and sidehop into the gap to get through.",
+		links: [{
+			url: "https://youtu.be/qL9F_FemT2Y",
+			description: "Video - maze room"
+		}]
+	},
+	fireJumpDownToSoTBlock: {
+		enabled: false,
+		canDo: () => Tricks.fireJumpDownToSoTBlock.enabled,
+		displayText: "Jump to Central SoT Block Room",
+		description: "From the hammer chest, jump into the crater and hold the direction of the Song of Time block to land on the ledge"
 	},
 	//#endregion Fire Temple
 

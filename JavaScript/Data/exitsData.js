@@ -2478,7 +2478,7 @@ let OwExits = {
                 let isMQ = MapLocations["Fire Temple"].IsMasterQuest;
                 return isMQ
                     ? !Tricks.megaFlip.enabled ||
-                        !Settings.GlitchesToAllow.fireNoGoronTunic ||
+                        !Tricks.fireNoGoronTunic.enabled ||
                         !Tricks.bombSuperslide.enabled
                     : !Tricks.megaFlip.enabled; 
             },

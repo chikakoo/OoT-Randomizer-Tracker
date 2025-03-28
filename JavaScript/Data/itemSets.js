@@ -129,25 +129,6 @@ let GlitchItemSets = {
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
 
-    // Fire Temple
-    FIRE_FIRST_ROOM_PILLAR_SKIP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.fireFirstRoomPillarSkip,
-    FIRE_SOT_BLOCK_JUMP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.fireSoTBlockJump,
-    FIRE_JAIL_CLIP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.fireJailClip &&
-        ItemData.canUse(age, Items.BOMB),
-    FIRE_ESCAPE_MAP_ENCLOSURE: (age) => age === Age.ADULT && 
-        Settings.GlitchesToAllow.fireCraterRoomKeySkip &&
-        ItemData.canUse(age, [Items.MEGATON_HAMMER, Equipment.HOVER_BOOTS]),
-    FIRE_BK_SKIP_FROM_FIREWALL_MAZE: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.fireBKSkipFromFireWallMaze,
-    FIRE_FIREWALL_SKIP: () => Settings.GlitchesToAllow.fireWallSkip,
-    FIRE_SOT_BLOCK_FROM_HAMMER_CHEST: () => Settings.GlitchesToAllow.fireJumpDownToSoTBlock,
-    MQ_FIRE_BOSS_ROOM_JAIL_CLIP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.mqBossRoomGoronBombClip && 
-        ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB]),
-
     // Water Temple
     WATER_BOMBABLE_WALL_EARLY: (age) => 
         Settings.GlitchesToAllow.waterBombableWallEarly &&
@@ -436,7 +417,7 @@ let GameStateSets = {
         ? Items.BOMBCHU.playerHas
         : Items.BOMB.playerHas,
     HAS_BOTTLE: () => ItemData.getEmptyBottleCount(true) > 0,
-    FIRE_TEMPLE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.fireNoGoronTunic || ItemData.canUse(age, Equipment.GORON_TUNIC),
+    FIRE_TEMPLE_TUNIC_CHECK: (age) => Tricks.fireNoGoronTunic.enabled || ItemData.canUse(age, Equipment.GORON_TUNIC),
     WATER_TEMPLE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.waterNoZoraTunic || ItemData.canUse(age, Equipment.ZORA_TUNIC),
     SHADOW_LENS_CHECK: (age) => Settings.GlitchesToAllow.shadowLensless || ItemData.canUse(age, Items.LENS_OF_TRUTH),
     SHADOW_IRON_BOOTS_CHECK: (age) => Settings.GlitchesToAllow.shadowNoIronBoots || ItemData.canUse(age, Equipment.IRON_BOOTS),

@@ -1553,7 +1553,9 @@ let StandardDungeons = {
         StartingFloorIndex: 4,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         _canAccessBossKeyPath: function(age) {
-            return ItemData.canUseAny(age, [Items.MEGATON_HAMMER, GlitchItemSets.FIRE_FIRST_ROOM_PILLAR_SKIP]);
+            return ItemData.canUseAny(age, [
+                Items.MEGATON_HAMMER, 
+                Tricks.fireFirstRoomPillarSkip.canDo]);
         },
         Regions: {
             main: {
@@ -1689,7 +1691,7 @@ let StandardDungeons = {
                         LongDescription: "This is the locked door in the crater room with narrow ledges.",
                         KeyRequirement: function(age) {
                             let minValue = 5;
-                            if (Settings.GlitchesToAllow.fireJailClip) {
+                            if (Tricks.fireBlockClip.enabled) {
                                 minValue = 4;
                             }
 
@@ -1713,12 +1715,12 @@ let StandardDungeons = {
                         LongDescription: "This is the locked door you reach after going through the room with the big fire wall.",
                         KeyRequirement: function(age) {
                             let minValue = 6;
-                            if (Settings.GlitchesToAllow.fireJailClip) {
+                            if (Tricks.fireBlockClip.enabled) {
                                 // Skip both doors in the crater room
                                 minValue-= 2;
                             }
 
-                            else if (Settings.GlitchesToAllow.fireCraterRoomKeySkip) {
+                            else if (Tricks.fireEscapeMapEnclosure.enabled) {
                                 minValue--;
                             }
 
@@ -1742,12 +1744,12 @@ let StandardDungeons = {
                         LongDescription: "This is the locked door you reach after going through the fire wall maze.",
                         KeyRequirement: function(age) {
                             let minValue = 7;
-                            if (Settings.GlitchesToAllow.fireJailClip) {
+                            if (Tricks.fireBlockClip.enabled) {
                                 // Skip both doors in the crater room
                                 minValue-= 2;
                             }
 
-                            else if (Settings.GlitchesToAllow.fireCraterRoomKeySkip) {
+                            else if (Tricks.fireEscapeMapEnclosure.enabled) {
                                 minValue--;
                             }
 
@@ -1786,8 +1788,8 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "To the right of the stairs at the entrance of the temple, use your hammer on the side of the column a few times to destroy it. Enter the door. Kill all the enemies and continue until you get to the Flare Dancer room. To kill it - either use your hammer or hookshot to stun it. It will take three Master Sword jumpslashes to kill it. For some reason, the Biggoron's Sword will do less damage. Also, there's no need to try to jumpslash it more than once per cycle, as it won't do damage.",
-                        AdultNeedsAny: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER, Items.HOOKSHOT],
-                        ChildNeedsAny: [Items.BOMB, Items.BOMBCHU, Items.MEGATON_HAMMER],
+                        AdultNeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, Items.HOOKSHOT],
+                        ChildNeeds: [ItemSets.BLAST_OR_SMASH_ITEMS],
                     }
                 }
             },
@@ -1819,7 +1821,7 @@ let StandardDungeons = {
                         MapInfo: {x: 34, y: 263, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 5,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.fireNoGoronTunic; },
+                        UseAdultAge: function() { return !Tricks.fireNoGoronTunic.enabled; },
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper left corner of the room and step on the switch. The chest is inside the Goron cage.",
                     },
                     "4 Pots Near Boss Door": {
@@ -1836,7 +1838,7 @@ let StandardDungeons = {
             },
             bigLavaRoom: {
                 DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.fireNoGoronTunic; },
+                UseAdultAge: function() { return !Tricks.fireNoGoronTunic.enabled; },
                 Exits: {
                     bigLavaRoomGoronRight: {
                         ChildNeeds: [Tricks.groundJump.canDoWithBomb],
@@ -1844,7 +1846,7 @@ let StandardDungeons = {
                     },
                     bigLavaRoomSoTLedge: {
                         ChildNeeds: [Songs.SONG_OF_TIME, Tricks.groundJump.canDoWithBomb],
-                        AdultNeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.FIRE_SOT_BLOCK_JUMP]
+                        AdultNeedsAny: [Songs.SONG_OF_TIME, Tricks.fireSoTBlockJump.canDo]
                     },
                     risingBlockRoom: {
                         Map: "Fire Temple",
@@ -1875,7 +1877,7 @@ let StandardDungeons = {
             bigLavaRoomGoronRight: {
                 DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                 UseAdultAge: function() {
-                    return !Settings.GlitchesToAllow.fireNoGoronTunic ||
+                    return !Tricks.fireNoGoronTunic.enabled ||
                         !Tricks.groundJump.enabled;
                 },
                 Exits: {},
@@ -1892,7 +1894,7 @@ let StandardDungeons = {
             bigLavaRoomSoTLedge: {
                 DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                 UseAdultAge: function() {
-                    return !Settings.GlitchesToAllow.fireNoGoronTunic ||
+                    return !Tricks.fireNoGoronTunic.enabled ||
                         !Tricks.groundJump.enabled;
                 },
                 Exits: {},
@@ -1908,7 +1910,7 @@ let StandardDungeons = {
             },
             risingBlockRoom: {
                 DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.fireNoGoronTunic; },
+                UseAdultAge: function() { return !Tricks.fireNoGoronTunic.enabled; },
                 Exits: {
                     firstTorchSlugRoom: {
                         Map: "Fire Temple",
@@ -1940,7 +1942,7 @@ let StandardDungeons = {
                     },
                     goronInPit: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.FIRE_JAIL_CLIP],
+                        Needs: [Tricks.fireBlockClip.canDo],
                     },
                     goronInPitCell: {
                         Age: Age.ADULT,
@@ -2042,7 +2044,7 @@ let StandardDungeons = {
                     narrowBridgeRoom: {},
                     fireWallRoom: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.FIRE_ESCAPE_MAP_ENCLOSURE]
+                        Needs: [Tricks.fireEscapeMapEnclosure.canDo]
                     }
                 },
                 ItemLocations: {
@@ -2131,10 +2133,10 @@ let StandardDungeons = {
                 Exits: {
                     bossRoom: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.FIRE_BK_SKIP_FROM_FIREWALL_MAZE]
+                        Needs: [Tricks.fireBKSkipFromFireWallMaze.canDo]
                     },
                     fireMazeRoomEnd: {
-                        Needs: [GlitchItemSets.FIRE_FIREWALL_SKIP]
+                        Needs: [Tricks.fireWallSkip.canDo]
                     },
                     centerRoomBottom: {
                         Map: "Fire Temple",
@@ -2191,7 +2193,7 @@ let StandardDungeons = {
                         Needs: [Items.MEGATON_HAMMER]
                     },
                     centerRoomTopSwitch: {
-                        Needs: [GlitchItemSets.FIRE_SOT_BLOCK_FROM_HAMMER_CHEST, Items.MEGATON_HAMMER]
+                        Needs: [Tricks.fireJumpDownToSoTBlock.canDo, Items.MEGATON_HAMMER]
                     },
                     centerRoomBottom: {}
                 },

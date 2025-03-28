@@ -2156,7 +2156,7 @@ let MQDungeons = {
                     roomBeforeBoss: {
                         Needs: [GameStateSets.FIRE_TEMPLE_TUNIC_CHECK],
                         NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA],
-                        ChildNeedsAny: [GlitchItemSets.FIRE_FIREWALL_SKIP, Tricks.bombSuperslide.canDo]
+                        ChildNeedsAny: [Tricks.fireWallSkip.canDo, Tricks.bombSuperslide.canDo]
                     },
                     lockedAreaByEntrance: {
                         LockedDoor: "Bottom Locked Door in Lobby",
@@ -2168,7 +2168,7 @@ let MQDungeons = {
                     },
                     bigLavaRoom: {
                         Needs: [Items.MEGATON_HAMMER, GameStateSets.FIRE_TEMPLE_TUNIC_CHECK],
-                        ChildNeedsAny: [GlitchItemSets.FIRE_FIREWALL_SKIP, Tricks.bombSuperslide.canDo]
+                        ChildNeedsAny: [Tricks.fireWallSkip.canDo, Tricks.bombSuperslide.canDo]
                     },
                     Exit: {
                         OwExit: OwExits["Fire Temple"]["Exit"]
@@ -2212,8 +2212,8 @@ let MQDungeons = {
                         MapInfo: { x: 256, y: 202, floor: "F1" },
                         Age: Age.EITHER,
                         UseAdultAge: function() { 
-                            return !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                                (!Tricks.bombSuperslide.enabled && !Settings.GlitchesToAllow.fireWallSkip) ||
+                            return !Tricks.fireNoGoronTunic.enabled ||
+                                (!Tricks.bombSuperslide.enabled && !Tricks.fireWallSkip.enabled) ||
                                 !Tricks.equipSwap.enabled;
                         },
                         Order: 18,
@@ -2307,8 +2307,8 @@ let MQDungeons = {
             roomBeforeBoss: {
                 DisplayGroup: { groupName: "Boss Area", imageName: "Fire Medallion" },
                 UseAdultAge: function() { 
-                    return !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                        (!Tricks.bombSuperslide.enabled && !Settings.GlitchesToAllow.fireWallSkip);
+                    return !Tricks.fireNoGoronTunic.enabled ||
+                        (!Tricks.bombSuperslide.enabled && !Tricks.fireWallSkip.enabled);
                 },
                 Exits: {
                     bossRoom: {
@@ -2362,7 +2362,7 @@ let MQDungeons = {
                                 [SetType.OR, // Light torches
                                     ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA]
                             ],
-                            GlitchItemSets.MQ_FIRE_BOSS_ROOM_JAIL_CLIP
+                            Tricks.mqBossRoomGoronBombClip.canDo
                         ]
                     }
                 }
@@ -2370,8 +2370,8 @@ let MQDungeons = {
             bigLavaRoom: {
                 DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                 UseAdultAge: function() { 
-                    return !Settings.GlitchesToAllow.fireNoGoronTunic ||
-                        (!Tricks.bombSuperslide.enabled && !Settings.GlitchesToAllow.fireWallSkip) ||
+                    return !Tricks.fireNoGoronTunic.enabled ||
+                        (!Tricks.bombSuperslide.enabled && !Tricks.fireWallSkip.enabled) ||
                         !Tricks.equipSwap.enabled;
                 },
                 Exits: {
@@ -2379,9 +2379,11 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Needs: [
                             [SetType.OR, // Light torches
-                                ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA],
+                                Items.FIRE_ARROW, 
+                                QPAItemSets.TALL_TORCH_QPA,
+                                Tricks.mqFireLavaRoomDoorWithDins.canDo],
                             [SetType.OR, // Get to door
-                                Items.HOOKSHOT, GlitchItemSets.FIRE_SOT_BLOCK_JUMP]
+                                Items.HOOKSHOT, Tricks.fireSoTBlockJump.canDo]
                         ]
                     },
                     risingBlockRoom: {
@@ -2472,9 +2474,9 @@ let MQDungeons = {
             risingBlockRoom: {
                 DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
                 UseAdultAge: function() { 
-                    return !Settings.GlitchesToAllow.fireNoGoronTunic ||
+                    return !Tricks.fireNoGoronTunic.enabled ||
                         !Tricks.equipSwap.enabled ||
-                        (!Tricks.bombSuperslide.enabled && !Settings.GlitchesToAllow.fireWallSkip);
+                        (!Tricks.bombSuperslide.enabled && !Tricks.fireWallSkip.enabled);
                 },
                 Exits: {
                     boulderMaze: {
@@ -2772,7 +2774,7 @@ let MQDungeons = {
                 Exits: {
                     bossRoom: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.FIRE_BK_SKIP_FROM_FIREWALL_MAZE]
+                        Needs: [Tricks.fireBKSkipFromFireWallMaze.canDo]
                     },
                     fireWallMazeRight: {
                         NeedsAny: [Songs.SONG_OF_TIME, Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
@@ -2804,7 +2806,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Fire Wall Maze", imageName: "Fire Arrow" },
                 Exits: {
                     fireWallMazeEnd: {
-                        Needs: [GlitchItemSets.FIRE_FIREWALL_SKIP]
+                        Needs: [Tricks.fireWallSkip.canDo]
                     }
                 },
                 ItemLocations: {

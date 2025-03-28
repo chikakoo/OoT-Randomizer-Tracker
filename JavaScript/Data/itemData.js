@@ -241,9 +241,9 @@ let Keys = {
 		minimumKeys: function() {
 			let minKeys = 8;
 			if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) { minKeys--; }
-			if (Settings.GlitchesToAllow.fireCraterRoomKeySkip) { minKeys--; }
-			if (Settings.GlitchesToAllow.fireJailClip) { minKeys--;}
-			if (Settings.GlitchesToAllow.fireWallSkip) { minKeys--; }
+			if (Tricks.fireEscapeMapEnclosure.enabled) { minKeys--; }
+			if (Tricks.fireBlockClip.enabled) { minKeys--;}
+			if (Tricks.fireWallSkip.enabled) { minKeys--; }
 			return minKeys;
 		}, 
 		totalKeys: function() {

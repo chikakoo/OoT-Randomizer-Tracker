@@ -1140,14 +1140,14 @@ GrottoGroups = {
 		buttons: {
 			"Heart Container": {
 				Age: Age.EITHER,
-				UseAdultAge: function() { return !Tricks.equipSwap.enabled || !Settings.GlitchesToAllow.fireNoGoronTunic; },
+				UseAdultAge: function() { return !Tricks.equipSwap.enabled || !Tricks.fireNoGoronTunic.enabled; },
 				LongDescription: "To defeat Volvagia, hit her with your hammer when she pops out of the holes. After that, attack it again. Jumpslashes will do more damage, like usual. You can hit it with arrows while it's flying to do additional damage. If it ever drops rocks on you, you can hang off the side of the cliff to avoid damage.",
 				Needs: [GameStateSets.FIRE_TEMPLE_TUNIC_CHECK, Items.MEGATON_HAMMER]
 			},
 			"Blue Warp": {
 				icon: "Fire Medallion",
 				Age: Age.EITHER,
-				UseAdultAge: function() { return !Tricks.equipSwap.enabled || !Settings.GlitchesToAllow.fireNoGoronTunic; },
+				UseAdultAge: function() { return !Tricks.equipSwap.enabled || !Tricks.fireNoGoronTunic.enabled; },
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				Needs: [GameStateSets.FIRE_TEMPLE_TUNIC_CHECK, Items.MEGATON_HAMMER]
 			}
