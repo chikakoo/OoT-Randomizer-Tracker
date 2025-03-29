@@ -2171,23 +2171,6 @@ let Tricks = {
 	},
 	//#endregion Spirit Temple
 
-	//#region Bottom of the Well
-	categoryBottomOfTheWell: {
-		isCategory: true,
-		displayText: "Bottom of the Well"
-	},
-	TEST6: {
-		enabled: false,
-		canDo: (age) => Tricks.TEST.enabled,
-		displayText: "TEST",
-		description: "TEST",
-		links: [{
-			url: "",
-			description: "Video"
-		}]
-	},
-	//#endregion Bottom of the Well
-
 	//#region Ice Cavern
 	categoryIceCavern: {
 		isCategory: true,
@@ -2205,6 +2188,37 @@ let Tricks = {
 	},
 	//#endregion Ice Cavern
 
+	//#region Bottom of the Well
+	categoryBottomOfTheWell: {
+		isCategory: true,
+		displayText: "Bottom of the Well"
+	},
+	botwActorGlitch: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.botwActorGlitch.enabled,
+		displayText: "Actor Glitch",
+		description: "Go through the crawlspace in the northeast area of the dungeon; hold down left notch, but more down (value of 35 works; spam A a tiny bit after you gain control; if it works, you'll hear the door opening, but you won't go through",
+		links: [{
+			url: "https://youtu.be/YriOarvhd9E",
+			description: "Video"
+		}]
+	},
+	botwVineClip: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.botwVineClip.enabled &&
+			Tricks.botwActorGlitch.enabled &&
+			ItemData.canUse(age, Equipment.KOKIRI_SWORD),
+		displayText: "Vine Clip",
+		description: "Requires actor glitch; see the link for instructions",
+		links: [{
+			url: "https://www.zeldaspeedruns.com/oot/dungeon-tricks/bottom-of-the-well",
+			description: "Video - ZSR page; scroll down to Vine Clip"
+		}]
+	},
+	//#endregion Bottom of the Well
+	
 	//#region Gerudo Training Grounds
 	categoryGerudoTrainingGrounds: {
 		isCategory: true,

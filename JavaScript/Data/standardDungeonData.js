@@ -5228,7 +5228,7 @@ let StandardDungeons = {
                 },
                 Exits: {
                     deadhandRoom: {
-                        Needs: [GlitchItemSets.WELL_ACTOR_GLITCH]
+                        Needs: [Tricks.botwActorGlitch.canDo]
                     },
                     mapChestArea: {
                         Needs: [Equipment.STRENGTH]
@@ -5273,7 +5273,7 @@ let StandardDungeons = {
                 Exits: {
                     bombableHoleRoom: {
                         // TODO potentially: add an item location for draining the water, as you can't vine clip after that
-                        Needs: [GlitchItemSets.WELL_VINE_CLIP]
+                        Needs: [Tricks.botwVineClip.canDo]
                     }
                 },
                 ItemLocations: {

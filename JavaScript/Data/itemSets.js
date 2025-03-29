@@ -151,13 +151,6 @@ let GlitchItemSets = {
     MQ_ICE_JUMP_TO_SKULL: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.mqIceJumpToSkull,
 
-    // Bottom of the Well
-    WELL_ACTOR_GLITCH: (age) => age === Age.CHILD &&
-        Settings.GlitchesToAllow.botwActorGlitch,
-    WELL_VINE_CLIP: (age) => age === Age.CHILD &&
-        Settings.GlitchesToAllow.botwVineClip &&
-        ItemData.canUse(age, Equipment.KOKIRI_SWORD),
-
     // Gerudo Training Ground
     GTG_CHILD_VINE_CLIP: (age) => age === Age.CHILD &&
         Settings.GlitchesToAllow.gtgChildVineClips &&
