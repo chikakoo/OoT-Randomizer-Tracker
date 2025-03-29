@@ -93,8 +93,7 @@ let SettingSets = {
     AUTO_PLANT_BEANS: () => Settings.RandomizerSettings.autoPlantBeans,
 
     // This is used when we're just checking the setting; not whether you have the items to actually do it
-    SHADOW_GATE_CLIP: () => Settings.GlitchesToAllow.shadowChildGateClip || 
-        Settings.GlitchesToAllow.shadowAdultGateClip
+    SHADOW_GATE_CLIP: () => Tricks.shadowChildGateClip.enabled || Tricks.shadowAdultGateClip.enabled
 };
 
 /**
@@ -128,38 +127,6 @@ let GlitchItemSets = {
         age === Age.CHILD
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
-
-    // Shadow Temple
-    SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.shadowSilverRupeeWithNothing,
-
-    // If Child can ever get here without explosives, then this trick would be good:
-    // https://youtu.be/pP4JNCU8fgU
-    SHADOW_CHILD_GATE_CLIP: (age) => age === Age.CHILD &&
-        Settings.GlitchesToAllow.shadowChildGateClip &&
-        ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]),
-    SHADOW_ADULT_GATE_CLIP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.shadowAdultGateClip &&
-        ItemData.canUse(age, ItemSets.SHIELDS),
-    SHADOW_JUMP_TO_BOAT_ROOM_LEDGE: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.shadowUpperBoatRoomJump &&
-        ItemData.canUse(age, [Equipment.HOVER_BOOTS, ItemSets.SHIELDS]),
-    SHADOW_PIT_ROOM_SILVER_RUPEES_SKIP: (age) =>
-        Settings.GlitchesToAllow.shadowPitRoomSilverRupeeSkip && 
-        ItemData.canUse(age, ItemSets.SWORDS),
-    SHADOW_BACKFLIP_ON_SPIKES: () => Settings.GlitchesToAllow.shadowBackFlipOnSpikes,
-    SHADOW_GIANT_SKULLS_WITH_CHU: (age) => 
-        Settings.GlitchesToAllow.shadowGiantSkullsWithChus &&
-        ItemData.canUse(age, Items.BOMBCHU),
-    SHADOW_LOWER_BRIDGE_WITH_CHUS: (age) => 
-        Settings.GlitchesToAllow.shadowChuBombFlowers &&
-        ItemData.canUse(age, Items.BOMBCHU),
-    MQ_SHADOW_CHASM_PLATFORM_WITH_HOOKSHOT: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.mqShadowChasmPlatformWithHookshot &&
-        ItemData.canUse(age, [Items.HOOKSHOT, ItemSets.SHIELDS]),
-    SHADOW_BK_SKIP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.shadowBKSkip &&
-        ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]),
 
     // Spirit Temple
     SPIRIT_BLOCK_SKIP_WITH_HOVER_BOOTS: (age) => 
@@ -393,8 +360,8 @@ let GameStateSets = {
     HAS_BOTTLE: () => ItemData.getEmptyBottleCount(true) > 0,
     FIRE_TEMPLE_TUNIC_CHECK: (age) => Tricks.fireNoGoronTunic.enabled || ItemData.canUse(age, Equipment.GORON_TUNIC),
     WATER_TEMPLE_TUNIC_CHECK: (age) => Tricks.waterNoZoraTunic.enabled || ItemData.canUse(age, Equipment.ZORA_TUNIC),
-    SHADOW_LENS_CHECK: (age) => Settings.GlitchesToAllow.shadowLensless || ItemData.canUse(age, Items.LENS_OF_TRUTH),
-    SHADOW_IRON_BOOTS_CHECK: (age) => Settings.GlitchesToAllow.shadowNoIronBoots || ItemData.canUse(age, Equipment.IRON_BOOTS),
+    SHADOW_LENS_CHECK: (age) => Tricks.shadowLensless.enabled || ItemData.canUse(age, Items.LENS_OF_TRUTH),
+    SHADOW_IRON_BOOTS_CHECK: (age) => Tricks.shadowNoIronBoots.enabled || ItemData.canUse(age, Equipment.IRON_BOOTS),
     GTG_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.gtgNoZoraTunic || ItemData.canUse(age, Equipment.ZORA_TUNIC),
     GANON_FIRE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.ganonFireNoTunic || ItemData.canUse(age, Equipment.GORON_TUNIC),
 };
@@ -426,7 +393,7 @@ let SilverRupeeSets = {
         Settings.RandomizerSettings.shuffleSilverRupees
          ? ItemData.checkSilverRupeeRequirement("Shadow Temple", 0)
          : ItemData.canUseAny(age, 
-            [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING]),
+            [Items.HOOKSHOT, Equipment.HOVER_BOOTS, Tricks.shadowScytheSilverRupeeWithNothing.canDo]),
     SHADOW_SILVER_RUPEES_PIT_ROOM: () =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Shadow Temple", 1)

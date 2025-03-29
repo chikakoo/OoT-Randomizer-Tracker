@@ -3059,7 +3059,7 @@ let StandardDungeons = {
                                 max++; // Gibdo room
                             }
 
-                            if (Settings.GlitchesToAllow.shadowAdultGateClip) {
+                            if (Tricks.shadowAdultGateClip.enabled) {
                                 max += 3; // Giant pit + invisible spikes (backwards from bigdo); boss room doors
                             }
 
@@ -3081,7 +3081,7 @@ let StandardDungeons = {
                                 max++; // Gibdo room
                             }
 
-                            if (Settings.GlitchesToAllow.shadowAdultGateClip) {
+                            if (Tricks.shadowAdultGateClip.enabled) {
                                 max += 2; // Invisible spike room (backward from gibdo room); boss room
                             }
 
@@ -3104,7 +3104,7 @@ let StandardDungeons = {
                                 max++; // Gibdo room
                             }
 
-                            if (Settings.GlitchesToAllow.shadowAdultGateClip) {
+                            if (Tricks.shadowAdultGateClip.enabled) {
                                 min = 2; // Backwards from the gibdo room
                                 max++; // Boss room door
                             }
@@ -3118,7 +3118,7 @@ let StandardDungeons = {
                         Regions: ["windHallway", "boatRoomStart"],
                         MapInfo: { x: 303, y: 127, floor: "B1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.shadowChildGateClip; },
+                        UseAdultAge: function() { return !Tricks.shadowChildGateClip.enabled; },
                         Order: 30.1,
                         LongDescription: "This is the room with the gibdos after the hallway of fans.",
                         KeyRequirement: function(age) {
@@ -3129,7 +3129,7 @@ let StandardDungeons = {
                                 min = 1; // No additional keys if you can do the clip
                             }
 
-                            if (Settings.GlitchesToAllow.shadowAdultGateClip) {
+                            if (Tricks.shadowAdultGateClip.enabled) {
                                 max++; // Boss door
                             }
 
@@ -3146,7 +3146,7 @@ let StandardDungeons = {
                         LongDescription: "This is the door across the chasm after creating the statue bridge.",
                         KeyRequirement: function(age) {
                             let min = 5; // Every door
-                            if (Settings.GlitchesToAllow.shadowAdultGateClip) {
+                            if (Tricks.shadowAdultGateClip.enabled) {
                                 min = 1; // Can skip every door if you go here directly
                             }
 
@@ -3231,12 +3231,12 @@ let StandardDungeons = {
                         LockedDoor: "Locked Door by Beamos"
                     },
                     boatRoomStart: {
-                        ChildNeeds: [GlitchItemSets.SHADOW_CHILD_GATE_CLIP],
-                        AdultNeeds: [GlitchItemSets.SHADOW_ADULT_GATE_CLIP]
+                        ChildNeeds: [Tricks.shadowChildGateClip.canDo],
+                        AdultNeeds: [Tricks.shadowAdultGateClip.canDo]
                     },
                     boatRoomLedge: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.SHADOW_JUMP_TO_BOAT_ROOM_LEDGE]
+                        Needs: [Tricks.shadowJumpToBoatRoomLedge.canDo]
                     }
                 },
                 ItemLocations: {
@@ -3275,7 +3275,11 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 8.4,
                         LongDescription: "This rupee is in the northwest corner of the room. Use your hookshot or hover boots to get to it.",
-                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING]
+                        NeedsAny: [
+                            Items.HOOKSHOT, 
+                            Equipment.HOVER_BOOTS, 
+                            Tricks.shadowScytheSilverRupeeWithNothing.canDo
+                        ]
                     },
                     "Scythe Silver Rupee in Back Alcove": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -3300,8 +3304,10 @@ let StandardDungeons = {
                 Exits: {
                     fallingSpikesRoom: {
                         Map: "Shadow Temple",
-                        NeedsAny: [SilverRupeeSets.SHADOW_SILVER_RUPEES_PIT_ROOM, 
-                            GlitchItemSets.SHADOW_PIT_ROOM_SILVER_RUPEES_SKIP],
+                        NeedsAny: [
+                            SilverRupeeSets.SHADOW_SILVER_RUPEES_PIT_ROOM, 
+                            Tricks.shadowPitRoomSilverRupeeSkip.canDo
+                        ],
                     },
                     invisibleSpikeRoom: {
                         Map: "Shadow Temple",
@@ -3358,8 +3364,8 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Goron's Bracelet" },
                 Exits: {
                     topOfFallingSpikesRoom: {
-                        ChildNeeds: [GlitchItemSets.SHADOW_BACKFLIP_ON_SPIKES],
-                        AdultNeedsAny: [Equipment.STRENGTH, GlitchItemSets.SHADOW_BACKFLIP_ON_SPIKES]
+                        ChildNeeds: [Tricks.shadowBackFlipOnSpikes.canDo],
+                        AdultNeedsAny: [Equipment.STRENGTH, Tricks.shadowBackFlipOnSpikes.canDo]
                     }
                 },
                 ItemLocations: {
@@ -3391,7 +3397,7 @@ let StandardDungeons = {
             },
             topOfFallingSpikesRoom: {
                 DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Goron's Bracelet" },
-                UseAdultAge: function() {  return !Settings.GlitchesToAllow.shadowBackFlipOnSpikes; },
+                UseAdultAge: function() {  return !Tricks.shadowBackFlipOnSpikes.enabled; },
                 Exits: {},
                 ItemLocations: {
                     "Top Switchless Chest in Falling Spikes Room": {
@@ -3498,7 +3504,11 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 23,
                         LongDescription: "To get here, start at the invisible spike room. Collect all the silver rupees using your hookshot. Note that there are a few invisible targets. Enter the room on the bottom that unlocks. Throw a Bomb or Bomb Flower into the giant skull to spawn the key.",
-                        NeedsAny: [Items.BOMB, Equipment.STRENGTH, GlitchItemSets.SHADOW_GIANT_SKULLS_WITH_CHU]
+                        NeedsAny: [
+                            Items.BOMB, 
+                            Equipment.STRENGTH, 
+                            Tricks.shadowGiantSkullsWithChus.canDo
+                        ]
                     },
                     "Skulltula in Giant Skull Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -3537,7 +3547,7 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 302, y: 142, floor: "B1" },
                         Age: Age.EITHER,
-                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
+                        UseAdultAge: () => !Tricks.shadowChildGateClip.enabled,
                         Order: 27,
                         LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. The pots will fly at you as you approach the back of the room."
                     },
@@ -3547,7 +3557,7 @@ let StandardDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 302, y: 152, floor: "B1" },
                         Age: Age.EITHER,
-                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
+                        UseAdultAge: () => !Tricks.shadowChildGateClip.enabled,
                         Order: 28,
                         LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. The pots are on either side of the gibdos."
                     },
@@ -3555,7 +3565,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 302, y: 146, floor: "B1" },
                         Age: Age.EITHER,
-                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
+                        UseAdultAge: () => !Tricks.shadowChildGateClip.enabled,
                         Order: 29,
                         LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. Kill the gibdos to spawn the chest."
                     },
@@ -3563,7 +3573,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 309, y: 156, floor: "B1" },
                         Age: Age.EITHER,
-                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
+                        UseAdultAge: () => !Tricks.shadowChildGateClip.enabled,
                         Order: 30,
                         LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. Bomb the rubble to your right to uncover an invisible chest.",
                         Needs: [ItemSets.EXPLOSIVES]
@@ -3628,7 +3638,7 @@ let StandardDungeons = {
                         Needs: [GameStateSets.CAN_LONGSHOT_SCARECROW]
                     },
                     acrossChasmToBossRoom: {
-                        NeedsAny: [Items.FAIRY_BOW, GlitchItemSets.SHADOW_LOWER_BRIDGE_WITH_CHUS]
+                        NeedsAny: [Items.FAIRY_BOW, Tricks.shadowChuBombFlowers.canDo]
                     }
                 },
                 ItemLocations: {
@@ -3695,7 +3705,11 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 38,
                         LongDescription: "From the room with invisible walls, enter the room that's straight ahead of you (the west room). Use the bomb flower or your own bombs to blow up all three skulls to spawn the 9 items.",
-                        NeedsAny: [Items.BOMB, Equipment.STRENGTH, GlitchItemSets.SHADOW_GIANT_SKULLS_WITH_CHU]
+                        NeedsAny: [
+                            Items.BOMB, 
+                            Equipment.STRENGTH, 
+                            Tricks.shadowGiantSkullsWithChus.canDo
+                        ]
                     },
                     "2 Pots in Invisible Floormaster Room": {
                         ItemGroup: ItemGroups.GROUP,
@@ -3748,7 +3762,7 @@ let StandardDungeons = {
 
                             // Enter Door
                             [SetType.OR,
-                                KeySets.SHADOW_BK, GlitchItemSets.SHADOW_BK_SKIP]
+                                KeySets.SHADOW_BK, Tricks.shadowBKSkip.canDo]
                         ]
                     }
                 },

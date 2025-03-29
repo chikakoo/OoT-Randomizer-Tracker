@@ -3875,7 +3875,7 @@ let MQDungeons = {
                         Regions: ["windHallway", "boatRoom"],
                         MapInfo: { x: 303, y: 131, floor: "B1" },
                         Age: Age.EITHER,
-                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
+                        UseAdultAge: () => !Tricks.shadowChildGateClip.enabled,
                         Order: 33,
                         LongDescription: "This is the locked door in the Gibdos room after all the fans.",
                         KeyRequirement: function(age) {
@@ -4006,12 +4006,12 @@ let MQDungeons = {
                         Needs: [ItemSets.EXPLOSIVES]
                     },
                     boatRoom: {
-                        ChildNeeds: [GlitchItemSets.SHADOW_CHILD_GATE_CLIP],
-                        AdultNeeds: [GlitchItemSets.SHADOW_ADULT_GATE_CLIP]
+                        ChildNeeds: [Tricks.shadowChildGateClip.canDo],
+                        AdultNeeds: [Tricks.shadowAdultGateClip.canDo]
                     },
                     boatRoomLedge: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.SHADOW_JUMP_TO_BOAT_ROOM_LEDGE]
+                        Needs: [Tricks.shadowJumpToBoatRoomLedge.canDo]
                     }
                 },
                 ItemLocations: {
@@ -4042,7 +4042,11 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 8.4,
                         LongDescription: "This rupee is in the northwest corner of the room. Use your hookshot or hover boots to get to it.",
-                        NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, GlitchItemSets.SHADOW_SCYTHE_SILVER_RUPEE_WITH_NOTHING]
+                        NeedsAny: [
+                            Items.HOOKSHOT, 
+                            Equipment.HOVER_BOOTS, 
+                            Tricks.shadowScytheSilverRupeeWithNothing.canDo
+                        ]
                     },
                     "Scythe Silver Rupee in Back Alcove": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -4207,8 +4211,8 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Goron's Bracelet" },
                 Exits: {
                     topOfFallingSpikesRoom: {
-                        ChildNeeds: [GlitchItemSets.SHADOW_BACKFLIP_ON_SPIKES],
-                        AdultNeedsAny: [Equipment.STRENGTH, GlitchItemSets.SHADOW_BACKFLIP_ON_SPIKES]
+                        ChildNeeds: [Tricks.shadowBackFlipOnSpikes.canDo],
+                        AdultNeedsAny: [Equipment.STRENGTH, Tricks.shadowBackFlipOnSpikes.canDo]
                     }
                 },
                 ItemLocations: {
@@ -4240,7 +4244,7 @@ let MQDungeons = {
             },
             topOfFallingSpikesRoom: {
                 DisplayGroup: { groupName: "Falling Spikes Room", imageName: "Goron's Bracelet" },
-                UseAdultAge: function() {  return !Settings.GlitchesToAllow.shadowBackFlipOnSpikes; },
+                UseAdultAge: function() {  return !Tricks.shadowBackFlipOnSpikes.enabled; },
                 Exits: {},
                 ItemLocations: {
                     "Top Switchless Chest in Falling Spikes Room": {
@@ -4433,7 +4437,7 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 302, y: 142, floor: "B1" },
                         Age: Age.EITHER,
-                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
+                        UseAdultAge: () => !Tricks.shadowChildGateClip.enabled,
                         Order: 28,
                         LongDescription: "In the big part of the wind hallway, go through the invisible wall on the left side. You may need to use the wind to your advantage. The pots will fly at you as you approach the back of the room."
                     },
@@ -4443,7 +4447,7 @@ let MQDungeons = {
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 302, y: 152, floor: "B1" },
                         Age: Age.EITHER,
-                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
+                        UseAdultAge: () => !Tricks.shadowChildGateClip.enabled,
                         Order: 29,
                         LongDescription: "In the big part of the wind hallway, go through the invisible wall on the left side. You may need to use the wind to your advantage. The pots are next to the gibdos."
                     },
@@ -4451,7 +4455,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 301, y: 148, floor: "B1" },
                         Age: Age.EITHER,
-                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
+                        UseAdultAge: () => !Tricks.shadowChildGateClip.enabled,
                         Order: 30,
                         LongDescription: "In the big part of the wind hallway, go through the invisible wall on the left side. You may need to use the wind to your advantage. Kill the Gibdos to spawn the chest."
                     },
@@ -4459,7 +4463,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 309, y: 158, floor: "B1" },
                         Age: Age.EITHER,
-                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
+                        UseAdultAge: () => !Tricks.shadowChildGateClip.enabled,
                         Order: 31,
                         Needs: [ItemSets.EXPLOSIVES],
                         LongDescription: "In the Gibdo room, bomb the rubble to your right to get to this chest."
@@ -4468,7 +4472,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 294, y: 139, floor: "B1" },
                         Age: Age.EITHER,
-                        UseAdultAge: () => !Settings.GlitchesToAllow.shadowChildGateClip,
+                        UseAdultAge: () => !Tricks.shadowChildGateClip.enabled,
                         Order: 32,
                         LongDescription: "In the Gibdo room, bomb the rubble at the back (a crouch-stab will work as well) to get to this skulltula."
                     }
@@ -4511,7 +4515,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Boat Room Chasm Areas", imageName: "Fairy Bow" },
                 Exits: {
                     acrossChasm: {
-                        NeedsAny: [Items.FAIRY_BOW, GlitchItemSets.SHADOW_LOWER_BRIDGE_WITH_CHUS]
+                        NeedsAny: [Items.FAIRY_BOW, Tricks.shadowChuBombFlowers.canDo]
                     }
                 },
                 ItemLocations: {
@@ -4547,7 +4551,7 @@ let MQDungeons = {
                             // Cross the gap
                             [SetType.OR,
                                 UpgradedItems.LONGSHOT,
-                                GlitchItemSets.MQ_SHADOW_CHASM_PLATFORM_WITH_HOOKSHOT]
+                                Tricks.mqShadowChasmPlatformWithHookshot.canDo]
                         ]
                     },
                     bossRoomDoor: {
@@ -4627,7 +4631,7 @@ let MQDungeons = {
                         NeedsAny: [
                             Items.BOMB,
                             Equipment.STRENGTH,
-                            GlitchItemSets.SHADOW_GIANT_SKULLS_WITH_CHU
+                            Tricks.shadowGiantSkullsWithChus.canDo
                         ]
                     },
                     "Bomb Flower Room Chest": {
@@ -4690,7 +4694,7 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Boss Area", imageName: "Shadow Medallion" },
                 Exits: {
                     bossRoom: {
-                        NeedsAny: [KeySets.SHADOW_BK, GlitchItemSets.SHADOW_BK_SKIP]
+                        NeedsAny: [KeySets.SHADOW_BK, Tricks.shadowBKSkip.canDo]
                     }
                 },
                 ItemLocations: {

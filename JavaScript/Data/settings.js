@@ -1941,14 +1941,138 @@ let Tricks = {
 		isCategory: true,
 		displayText: "Shadow Temple"
 	},
-	TEST3: {
+	shadowLensless: {
 		enabled: false,
-		canDo: (age) => Tricks.TEST.enabled,
-		displayText: "TEST",
-		description: "TEST",
+		canDo: () => Tricks.shadowLensless.enabled,
+		displayText: "No Lens of Truth",
+		description: "Removes the lens of truth requirement for the Shadow Temple"
+	},
+	shadowScytheSilverRupeeWithNothing: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.shadowScytheSilverRupeeWithNothing.enabled,
+		displayText: "Scythe Silver Rupee with Nothing",
+		description: "For the silver rupee in mid-air; target the wood box the rupee is near; back up a bit and ess left x1; backflip into the wooden beam; roll jump to grab the ledge",
 		links: [{
-			url: "",
+			url: "https://youtu.be/GXD4s-eotxU",
 			description: "Video"
+		}]
+	},
+	shadowChildGateClip: {
+		enabled: false,
+		// This trick would be good if child could ever get here without needing explosives:
+		// https://youtu.be/pP4JNCU8fgU
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.shadowChildGateClip.enabled &&
+			ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]),
+		displayText: "Child Gate Clip to Boat Area",
+		description: "BOMBS:\x0ATarget wall left of climbable wall; turn right; sidehop right x3; backflip to the wall; ess left x3; take out bomb; A to set it down; hold R; A to drop down\x0A\x0ABOMBCHUS:\x0ATarget back in the hole the block is in; turn right; backwalk to the edge; backflip out; turn right; shield drop chu; walk to the wall; sidehop right; sidehop left; C-up to straighen camera; shield turn 180; hold R; A to drop down",
+		links: [{
+			url: "https://youtu.be/3L59Qxjnlxo",
+			description: "Video"
+		}]
+	},
+	shadowAdultGateClip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.shadowAdultGateClip.enabled &&
+			ItemData.canUse(age, ItemSets.SHIELDS),
+		displayText: "Adult Gate Clip to Boat Area",
+		description: "Get in the corner; sidehop left x3; sword + shield x2; sword only x1; jumpslash to clip; spam A to jumpslash out",
+		links: [{
+			url: "https://youtu.be/oX-dmoggudk",
+			description: "Video - the start of it shows the trick, minus the jumpslash out"
+		}]
+	},
+	shadowJumpToBoatRoomLedge: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.shadowJumpToBoatRoomLedge.enabled &&
+			ItemData.canUse(age, [ItemSets.SHIELDS, Equipment.HOVER_BOOTS]),
+		displayText: "Boat Area Upper Ledge Without Scarecrow",
+		description: "Get in the corner; sidehop left x3; sword + shield x2; sword only x1; jumpslash to clip (hold shield); shield turn left; walk forward until you can't; backflip\x0A\x0AC-up and angle so the B button trades places with the A button; roll forward holding up, hold left immediately; equip hover boots after you grab ledge; hold down to get on ledge.",
+		links: [{
+			url: "https://youtu.be/oX-dmoggudk",
+			description: "Video"
+		}]
+	},
+	shadowPitRoomSilverRupeeSkip: {
+		enabled: false,
+		canDo: (age) => Tricks.shadowPitRoomSilverRupeeSkip.enabled && 
+        	ItemData.canUse(age, [
+				ItemSets.ACUTE_ANGLE_SWORDS,
+				[SetType.OR,
+					Equipment.MASTER_SWORD, 
+					Equipment.KOKIRI_SWORD,
+					ItemSets.SHIELDS]
+			]),
+		displayText: "Pit Room Silver Rupee Skip",
+		description: "CHILD WITH SHIELD AND STICK/SWORD:\x0AGet in the left corner, sidehop right, ess left x1, crouch stab, jumpslash holding neutral, hold forward after the clip to stay inbounds\x0A\x0ACHILD KOKIRI SWORD ONLY:\x0ARoll against the wall near the corner and target the corner (you'll be at a slight angle - if your left foot is higher, you're in the wrong place); sidehop right; Z + Slash x2; jumpslash and hold neutral; hold forward after the clip to stay inbounds\x0A\x0AADULT WITH SHIELD:\x0ARoll against the wall near the corner and target the corner (you'll be at a slight angle - if your left foot is higher, you're in the wrong place); Z + Slash + Shield x2; sidehop right; jumpslash and hold forward; keep forward held to stay inbounds",
+		links: [{
+			url: "https://youtu.be/PqIQtOlsoo0",
+			description: "Video - child kokiri sword; adult with shield"
+		}]
+	},
+	shadowBackFlipOnSpikes: {
+		enabled: false,
+		canDo: () => Tricks.shadowBackFlipOnSpikes.enabled,
+		displayText: "Backflip on Top of Falling Spikes",
+		description: "Line up with the edge of the falling spikes; time a backflip just before the spikes start falling and you'll end up on top (there are two sounds that happens - backflip between the two of them)",
+		links: [{
+			url: "https://youtube.com/shorts/-xM7NHZKCVY",
+			description: "Video"
+		}]
+	},
+	shadowGiantSkullsWithChus: {
+		enabled: false,
+		canDo: () => Tricks.shadowGiantSkullsWithChus.enabled &&
+			Items.BOMBCHU.playerHas,
+		displayText: "Destroy Giant Skulls with Bombchus",
+		description: "This allows you to use a bombchu to blow up the giant skulls in Shadow Temple, including the three rotating ones. Line up so you are directly facing the skull, then drop the chu on the 4th red flash. It should blow up while inside."
+	},
+	shadowNoIronBoots: {
+		enabled: false,
+		canDo: () => Tricks.shadowNoIronBoots.enabled,
+		displayText: "Fan Rooms without Iron Boots",
+		description: "Removes the iron boot requirement for passing the fans"
+	},
+	shadowChuBombFlowers: {
+		enabled: false,
+		canDo: () => Tricks.shadowChuBombFlowers.enabled &&
+			Items.BOMBCHU.playerHas,
+		displayText: "Bombchus to Lower the Bridge",
+		description: "Backwalk off the edge at the corner of the opposite chasm, hold Z as you get up; backflip x2; sideroll; target the wall; sidehop right; slash the wall; press B and hold to spin attack, then hold shield; shield drop chu",
+		links: [{
+			url: "https://youtu.be/bXYyyLaM70Y",
+			description: "Video"
+		}]
+	},
+	mqShadowChasmPlatformWithHookshot: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.mqShadowChasmPlatformWithHookshot.enabled &&
+			ItemData.canUse(age, [Items.HOOKSHOT, ItemSets.SHIELDS]),
+		displayText: "MQ Chasm Platform With Hookshot",
+		description: "TO SHOOT THE EYE WITHOUT SOT:\x0ALine up with it from behind the block, do hookshot extension with bow, and aim slightly down.\x0A\x0ATO GET ON THE PLATFORM:\x0AShoot the eye; with the SoT block there, climb up the back side of it so the pillar is to your right; turn right and climb up; sidehop left; turn right; dry roll x2; slash sword + shield; turn right; slash sword + shield; do hookshot extension - it will just barely reach the lower left corner of the target.",
+		links: [{
+			url: "https://youtu.be/yETJj8vOIOA",
+			description: "Video"
+		}]
+	},
+	shadowBKSkip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.shadowBKSkip.enabled &&
+			ItemData.canUse(age, [ItemSets.SHIELDS, ItemSets.EXPLOSIVES]),
+		displayText: "Boss Key Skip",
+		description: "WITH CHUS:\x0ATarget door; turn right; crouch stab while holding left x2; backwalk off the ledge and climb up; repress Z and hold it; chu to third black frame; backwalk off the ledge, hold up while climbing back up, then IMMEDIATELY hold left and pause buffer; advance until you are against the wall and your right leg is horizontal (next 2 frames okay too); keep holding left, press A to roll; pause until link is grabbing the ledge; buffer Z input during unpause lag (keep it held); wait\x0A\x0AWITH BOMBS:\x0AGrab the left ledge; bonk on door frame; pull out bomb and shield drop after 2 frames (keep Z the whole time); dry roll; sidehop right + left; on the SECOND FRAME of the 8th red flash, A to roll; buffer until link is grabbing the ledge; re-buffer Z and wait",
+		links: [{
+			url: "https://youtu.be/TEuG7LaOkUs",
+			description: "Video - chus"
+		},
+		{
+			url: "https://youtu.be/hQ8V2rzwqJE",
+			description: "Video - bombs"
 		}]
 	},
 	//#endregion Shadow Temple
