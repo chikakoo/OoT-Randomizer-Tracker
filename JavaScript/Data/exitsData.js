@@ -1094,7 +1094,7 @@ let OwExits = {
             DefaultEntranceGroupName: "Dampe's Grave",
             MapInfo: { x: 166, y: 86 },
             Age: Age.EITHER,
-            UseAdultAge: function() { return !Settings.GlitchesToAllow.unloadGrave; },
+            UseAdultAge: function() { return !Tricks.unloadGrave.enabled; },
             LongDescription: "Under the grave in the in the northwest corner of the graveyard.",
         },
         "Dampe's Grave to Dampe Race": {

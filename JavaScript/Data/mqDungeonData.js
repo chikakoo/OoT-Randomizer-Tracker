@@ -5912,9 +5912,19 @@ let MQDungeons = {
         Floors: ["F1", "B1"],
         StartingFloorIndex: 0,
         UseChildAge: function() {
-            return !Tricks.weirdShot.enabled || ( // Can't get past crawlspace
-                !Settings.RandomizerSettings.shuffleDungeonEntrances && // Can't enter dungeon ever
-                !Settings.GlitchesToAllow.botwAsAdultWithCucco);
+            // Can't get past crawlspace - it becomes child only
+            if (!Tricks.weirdShot.enabled) {
+                return true;
+            }
+
+            // Can always get here if dungeons are shuffled - so NOT child only
+            if (Settings.RandomizerSettings.shuffleDungeonEntrances) {
+                return false;
+            }
+
+            // These tricks are the ways into the well entrance if dungeons are not shuffled
+            return !Tricks.botwAsAdultWithCucco.enabled &&
+                !Tricks.botwAsAdultWihChus.enabled;
         },
         Regions: {
             main: {

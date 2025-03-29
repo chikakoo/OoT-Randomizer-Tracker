@@ -142,211 +142,6 @@ let Settings = {
 		randomizeOwlDrops: true,
 		decoupleEntrances: false //TODO: this will probably be a setting to decouple in the different pools instead
 	},
-		
-	GlitchesToAllow: {
-		// Common
-		ocarinaItems: true,
-		difficultOcarinaItems: true,
-		megaFlip: false,
-		isg: false,
-		qpa: false,
-		lungeStorage: false,
-		flameStorage: false,
-		groundJump: false,
-		staircaseHover: false,
-		bombSuperslide: false,
-		hammerHoverBootsSuperslide: false,
-		equipSwap: false,
-		forceAdultDekuStickEquip: false,
-		forceAdultQPACutsceneItemEquip: false,
-		forceAdultSlingshotEquip: false,
-		forceAdultBoomerangEquip: false,
-		weirdShot: false,
-		hookshotExtensionSotBlocks: false,
-		boomerangThroughWalls: false,
-		difficultBoomerangTrickThrows: false,
-		breakBeehivesWithBombs: true,
-		breakBeehivesWithChus: true,
-
-		// HF/Market/Castle
-		doorOfTimeSkip: false,
-		doubleDefenseEarly: false,
-		adultGrottoByGVWithoutHammer: false,
-		
-		// Kakariko/Graveyard
-		watchtowerSkullJumpslash: false,
-		windmillHPWithNothing: true,
-		dampeSoTBlockClip: false,
-		kakShopClips: true,
-		botwAsChildWithCucco: false,
-		botwAsAdultWithCucco: false,
-		botwAsAdultWihChus: false,
-		boomerangGraveyardHP: false,
-		unloadGrave: false,
-		oldShadowEarly: false,
-		hookshotJump: false,
-		childShadowWithBombPush: false,
-		adultShadowLedgeClip: false,
-		
-		// Forest
-		pokeySkip: false,
-		midoSkip: true,
-		houseOfTwinsSkullWithoutHookshot: false,
-		lwSkullWithoutBean: false,
-		lwAdultBridgeFromTop: false,
-		lwAdultBridgeWithHookshot: true,
-		lwBridgePressureJump: false,
-		zorasRiverScalelessChild: false,
-		zorasRiverScalelessAdult: false,
-		
-		// Goron area
-		dmtClipToChestByGoron: false,
-		dmtBombFlowerChestByGoron: false,
-		dmtClimbWithHoverBoots: false,
-		dmtSkullsWithoutHammer: false,
-		goronSpinningUrnWithChus: false,
-		goronChildStatueSkip: false,
-		stopAdultGoronWithFire: false,
-		hoverToVolcanoHP: false,
-		childSidehopToDoubleMagic: false,
-		adultRecoilHoverBootsToDoubleMagic: false,
-
-		// Zora/Lake
-		adultWaterfallHPJump: false,
-		cuccoToZorasDomain: false,
-		hoversToZorasDomain: true,
-		megasidehopToZorasDomain: false,
-		domainSkullWithJumpslash: false,
-		explosiveZoraSkip: false,
-		clipZoraSkip: true,
-		blueFireShopSkip: false,
-		thawKingZoraWithNothing: true,
-		adultDomainToLake: false,
-		labHPWithoutGoldenScale: false,
-		adultDomainMegaflipClip: false,
-		adultLakesideLabClip: false,
-		childLakesideLabClip: false,
-		adultWaterTempleClip: false,
-		skullInTreeWithHookshot: false,
-		jabuFishless: false,
-		enterJabuAsAdult: false,
-		
-		// Desert
-		eponaHover: false,
-		cuccoJump: false,
-		gvCrossBridgeWithHookshot: false,
-		gfJumpToMiddleFloor: false,
-		gfChildJumpByTopKitchen: false,
-		gfHookshotToAboveLinksJail: false,
-		gfPassKitchenGuards: false,
-		gfKitchenGuardsWithSword: false,
-		gfTopGuardsWithSword: false,
-		gerudoGateSkipAsChild: true,
-		gerudoGateSkipAsAdult: false,
-		itemlessSandPit: true,
-		wastelandNoLens: false,
-		backwardsWasteland: false,
-		
-		// Dungeons
-		dekuB1Skip: true,
-		dekuAdultClipToBossRoom: false,
-		mqDekuSideRoomRocksHammerOnly: false,
-		mqDekuSideRoomRocksBombsOnly: false,
-		
-		dodongoScarecrowSkullEarly: true,
-		dodongoTriggerStairsWithBow: false,
-		dodongoAdultJumpToBombChest: true,
-		dodongoAdultBladeMudWallWithStrength: false,
-		dodongoOpenHeadWithBombchus: false,
-		mqDodongoRecoilSlashToPlatform: false,
-		
-		jabuBlueSwitchSkip: false,
-		jabuBossSwitchWithExplosives: false,
-		
-		forestFirstSkullWithBomb: false,
-		forestLedgeClip: false,
-		forestLedgeWithHovers: false,
-		forestBoomerangSkullOnLedge: false,
-		forestHookshotToWellSwitch: false,
-		mqForestHoverBootsToDoorFrame: false,
-		forestJumpToTop: false,
-		forestChildBlockSkip: false,
-		forestBlockSkipWithHoverBoots: false,
-		forestGreenPoeEarly: false,
-		forestBKSkip: false,
-		
-		fireNoGoronTunic: false,
-		fireFirstRoomPillarSkip: false,
-		fireSoTBlockJump: false,
-		fireJailClip: false,
-		fireCraterRoomKeySkip: false,
-		fireWallSkip: false,
-		fireJumpDownToSoTBlock: false,
-		fireBKSkipFromFireWallMaze: false,
-		mqBossRoomGoronBombClip: false,
-		mqFireLavaRoomDoorWithDins: false,
-		
-		waterNoZoraTunic: false,
-		waterHighWaterJump: false,
-		waterHookshotToFloor1: false,
-		waterBombableWallEarly: false,
-		waterEyeSwitchGateFromTop: false,
-		waterDragonChestWithChu: false,
-		waterBKShortcut: false,
-		waterHookshotOutOfBounds: false,
-		mqWaterWaterfallWithHovers: false,
-		
-		shadowLensless: false,
-		shadowSilverRupeeWithNothing: false,
-		shadowBackFlipOnSpikes: false,
-		shadowGiantSkullsWithChus: false,
-		shadowNoIronBoots: false,
-		shadowChildGateClip: false,
-		shadowAdultGateClip: false,
-		shadowUpperBoatRoomJump: false,
-		shadowPitRoomSilverRupeeSkip: false,
-		shadowChuBombFlowers: false,
-		mqShadowChasmPlatformWithHookshot: false,
-		shadowBKSkip: false,
-		
-		spiritBlockSkipWithHovers: false,
-		spiritBlockSkipWithBombPush: false,
-		spiritStatueRoomJumps: false,
-		spiritSuperslideToMirrorShield: false,
-		spiritBKTrick: false,
-		mqSpiritStatueTorchesWithDins: false,
-		mqSpiritChildGeyserSkip: false,
-		mqSpiritAdultGeyserSkip: false,
-
-		botwActorGlitch: false,
-		botwVineClip: false, // Useless if no actor glitch
-
-		iceInReverse: false,
-		iceLedgeClip: false,
-		iceChildUpperRoom: false,
-		iceTripleSlashClips: false,
-		iceBlockSkullWithHovers: false,
-		mqIceNorthSkullWithoutSoT: false,
-		mqIceJumpToSkull: false,
-		
-		gtgChildAllowed: false,
-		gtgAdultNoCard: false,
-		gtgNoZoraTunic: false,
-		gtgChildVineClips: false,
-		gtgSlopesRoomWallmasterToRupee: false,
-		gtgSlopesRoomFireWallSkip: false,
-		gtgSilverBlockSkipWithHammerSuperslide: false,
-		gtgSilverBlockRoomExitWithHovers: false,
-		gtgEyeStatueWonderItemJumpslash: false,
-		mqGtgEyeStatueJumpslash: false,
-		
-		ganonFireNoTunic: false,
-		ganonShadowTrialLensless: false,
-		ganonSpiritHookshotless: false,
-		ganonLightTrialSuperslideSkip: false,
-		ganonLightTrailEssSkip: false,
-		ganonTrialSkip: false
-	},
 	
 	/**
 	 * For the spoiler log notes parser - this is so it knows what player you are
@@ -596,7 +391,7 @@ let Tricks = {
 		}]
 	},
 	midoSkip: {
-		enabled: false,
+		enabled: true,
 		canDo: (age) => Tricks.midoSkip.enabled,
 		displayText: "Adult Mido Skip",
 		description: "Get in the corner by mido; C-up and line up the A button so the right side is barely touching the ledge (or a pixel or so is visible; backflip (can buffer it during unpause lag if you want)",
@@ -634,7 +429,7 @@ let Tricks = {
 		}]
 	},
 	lwAdultBridgeWithHookshot: {
-		enabled: false,
+		enabled: true,
 		canDo: (age) => age === Age.ADULT &&
 			Tricks.lwAdultBridgeWithHookshot.enabled &&
 			ItemData.canUse(age, Items.HOOKSHOT),
@@ -1025,7 +820,7 @@ let Tricks = {
 		}]
 	},
 	hoverBootsToZorasDomain: {
-		enabled: false,
+		enabled: true,
 		canDo: (age) => age === Age.ADULT &&
 			Tricks.hoverBootsToZorasDomain.enabled &&
 			ItemData.canUse(age, Equipment.HOVER_BOOTS),
@@ -1389,7 +1184,7 @@ let Tricks = {
 		displayText: "Wasteland/Colossus"
 	},
 	itemlessSandPit: {
-		enabled: false,
+		enabled: true,
 		canDo: () => Tricks.itemlessSandPit.enabled,
 		displayText: "HW Cross Sand Pit without Items",
 		description: "Get to almost the left edge of the quicksand chasm; C-up so you're facing the corner of the other side; turn around and roll forward so you're out of the sand; backwalk; sidehop left when you reach the other side before you void",
@@ -1499,7 +1294,7 @@ let Tricks = {
 		}]
 	},
 	dodongoScarecrowSkullEarly: {
-		enabled: false,
+		enabled: true,
 		canDo: () => Tricks.dodongoScarecrowSkullEarly.enabled,
 		displayText: "Scarecrow Skulltula Early",
 		description: "Push an Armos statue from the back of the room against ledge the skulltula is above; backflip on the armos; position yourself in the middle of it; roll jump, holding forawrd, to gain enough height to grab it",
@@ -1520,7 +1315,7 @@ let Tricks = {
 		}]
 	},
 	dodongoAdultJumpToBombChest: {
-		enabled: false,
+		enabled: true,
 		canDo: (age) => age === Age.ADULT &&
 			Tricks.dodongoAdultJumpToBombChest.enabled,
 		displayText: "Adult Jump to Bomb Chest",

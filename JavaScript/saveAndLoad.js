@@ -31,7 +31,7 @@ let SaveAndLoad = {
             EntranceShuffleData: this._getEntranceShuffleDataToSave(),
             RandomizedSpawnLocations: Data.randomizedSpawnLocations,
             Settings: Settings,
-            Tricks: this._getEnabledTricks(),
+            Tricks: this._getTrickSaveObject(),
             Items: Items,
             ChildTradeItems: ChildTradeItems,
             AdultTradeItems: AdultTradeItems,
@@ -178,14 +178,12 @@ let SaveAndLoad = {
      * Gets all enabled tricks - we save the keys in an array, and turn only them on
      * when a save is loaded
      */
-    _getEnabledTricks: function() {
-        let enabledTrickKeys = [];
+    _getTrickSaveObject: function() {
+        let trickSaveObject = {};
         Object.keys(Tricks).forEach(trickKey => {
-            if (Tricks[trickKey].enabled) {
-                enabledTrickKeys.push(trickKey);
-            }
+            trickSaveObject[trickKey] = Tricks[trickKey].enabled
         })
-        return enabledTrickKeys;
+        return trickSaveObject;
     },
     
     /**
@@ -328,7 +326,7 @@ let SaveAndLoad = {
 
     _loadTricks: function(loadedTrickObject) {
         Object.keys(Tricks).forEach(trickKey => {
-            Tricks[trickKey].enabled = loadedTrickObject.includes(trickKey);
+            Tricks[trickKey].enabled = loadedTrickObject[trickKey] || false;
         });
     },
 
