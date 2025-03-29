@@ -2392,14 +2392,69 @@ let Tricks = {
 		isCategory: true,
 		displayText: "Ganon's Castle"
 	},
-	TEST9: {
+	ganonFireTrialNoTunic: {
 		enabled: false,
-		canDo: (age) => Tricks.TEST.enabled,
-		displayText: "TEST",
-		description: "TEST",
+		canDo: () => Tricks.ganonFireTrialNoTunic.enabled,
+		displayText: "Fire Trial without Goron Tunic",
+		description: "Allows you to complete the fire trial without a Goron Tunic. Note that you'll need a sufficient number of hearts to do so!"
+	},
+	ganonShadowTrialLensless: {
+		enabled: false,
+		canDo: () => Tricks.ganonShadowTrialLensless.enabled,
+		displayText: "Shadow Trial without Lens of Truth",
+		description: "Allows you to get the three hearts and complete the Shadow Trial without the lens. To get the hearts, start at the chest spawn pad and walk straight (you will jump and land, hold back a bit). Now, run straight to grab all the hearts."
+	},
+	ganonSpiritTrialHookshotless: {
+		enabled: false,
+		canDo: (age) => Tricks.ganonSpiritTrialHookshotless.enabled &&
+        	ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]),
+		displayText: "Spirit Trial without Hookshot",
+		description: "Push the left armos back 9-10 times; get ISG; line yourself up with the armos and the beamos; turn around; backflip on x2 to get the rupee",
 		links: [{
-			url: "",
+			url: "https://youtu.be/LRLfTPs7W6g?t=8",
 			description: "Video"
+		}]
+	},
+	ganonLightTrialSuperslideSkip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.ganonLightTrialSuperslideSkip.enabled &&
+			ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]),
+		displayText: "Light Trial using a Superslide",
+		description: "Target the wall left of the giant pillar; sidehop right and roll (release); back up so you don't lose your angle; backwalk a bit so you have a bunch of room; superslide from this spot (sidehop left, bomb, sidehop right, bomb); release all except shield and up",
+		links: [{
+			url: "https://youtu.be/V9L-ePeEhH0",
+			description: "Video"
+		}]
+	},
+	ganonLightTrailEssSkip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.ganonLightTrailEssSkip.enabled &&
+			ItemData.canUseAny(age, [
+				Items.BOMBCHU,
+				[Items.BOMB, ItemSets.SHIELDS]
+			]),
+		displayText: "Light Trial using Ess Clip",
+		description: "BOMBS AND SHIELD:\x0ATarget wall; back up a bit;ess right x3; roll into corner; shield turn down; manually place bomb; target and shield turn back to face the pillar; wait\x0A\x0ACHUS:\x0ATarget wall; back up a bit; ess right 1; roll into corner; hold ess right until the camera stops; turn up; ess right 1; pull out chu and let it explode",
+		links: [{
+			url: "https://youtu.be/8etiSYO0Xak",
+			description: "Video - bombs"
+		},
+		{
+			url: "https://youtu.be/6KyyTAcTnbE",
+			description: "Video - chus"
+		}]
+	},
+	ganonTrialSkip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.ganonTrialSkip.enabled,
+		displayText: "Trial Skip",
+		description: "In spirit trial, push the first armos all the way to the wall, then twice towards the door; jumpslash into the right corner to clip outside\x0A\x0ATarget the wall to the right of the door; sidehop left x5; backwalk; still holding Z, walk forward a bit, then right a bit; backwalk into the loading zone",
+		links: [{
+			url: "https://youtu.be/IjJ2m4ocmcA",
+			description: "Video - jumpslashes from left side of armos, but it is much easier from the right"
 		}]
 	}
 	//#endregion Ganon's Castle

@@ -6786,8 +6786,8 @@ let MQDungeons = {
         _canEnterLightTrial: function(age) {
             return ItemData.canUseAny(age, [
                 UpgradedItems.GOLDEN_GAUNTLETS, 
-                GlitchItemSets.GANON_LIGHT_ESS_CLIP, 
-                GlitchItemSets.GANON_LIGHT_SUPERSLIDE_SKIP]);
+                Tricks.ganonLightTrailEssSkip.canDo, 
+                Tricks.ganonLightTrialSuperslideSkip.canDo]);
         },
         Regions: {
             main: {
@@ -7159,7 +7159,7 @@ let MQDungeons = {
             fireRoomLate: {
                 DisplayGroup: { groupName: "Fire Trial", imageName: "Fire Medallion" },
                 UseAdultAge: function() {
-                    return !Settings.GlitchesToAllow.ganonFireNoTunic;
+                    return !Tricks.ganonFireTrialNoTunic.enabled;
                 },
                 Exits: {
                     fireTrialEnd: {

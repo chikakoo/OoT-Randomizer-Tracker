@@ -6135,13 +6135,13 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         NeedsAny: [
                             UpgradedItems.GOLDEN_GAUNTLETS, 
-                            GlitchItemSets.GANON_LIGHT_ESS_CLIP, 
-                            GlitchItemSets.GANON_LIGHT_SUPERSLIDE_SKIP
+                            Tricks.ganonLightTrailEssSkip.canDo, 
+                            Tricks.ganonLightTrialSuperslideSkip.canDo
                         ]
                     },
                     center: {
                         NeedsAny: [
-                            GlitchItemSets.GANON_TRIAL_SKIP, 
+                            Tricks.ganonTrialSkip.canDo, 
                             Tricks.staircaseHover.canDo, 
                             ItemLocationSets.ALL_TRIALS_COMPLETED
                         ]
@@ -6343,7 +6343,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Shadow Trial", imageName: "Shadow Medallion" },
                 Exits: {
                     shadowTrialEnd: {
-                        NeedsAny: [Items.LENS_OF_TRUTH, GlitchItemSets.GANON_SHADOW_NO_LENS]
+                        Needs: [GameStateSets.GANON_SHADOW_LENS_CHECK]
                     }
                 },
                 ItemLocations: {
@@ -6371,7 +6371,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 13,
                         LongDescription: "Enter the shadow trial. First, get to the platform passed the like-like platform. One way to do this is to shoot a fire arrow at the torch to the right. If you can't, then use your longshot to hook the torch. Now get on the very edge of the platform closest to the like-like. Longshot the like-like to get over there. Either use the torch, or use Hover Boots to get to the next platform. The hearts are in front of you on an invislbe bridge (the start of the bridge is lined up with the chest spawn platform).",
-                        NeedsAny: [Items.LENS_OF_TRUTH, GlitchItemSets.GANON_SHADOW_NO_LENS]
+                        Needs: [GameStateSets.GANON_SHADOW_LENS_CHECK]
                     }
                 }
             },
@@ -6402,7 +6402,7 @@ let StandardDungeons = {
             fireTrialRoom1: {
                 DisplayGroup: { groupName: "Fire Trial", imageName: "Fire Medallion" },
                 UseAdultAge: function() {
-                    return !Settings.GlitchesToAllow.ganonFireNoTunic;
+                    return !Tricks.ganonFireTrialNoTunic.enabled;
                 },
                 Exits: {
                     fireTrialEnd: {
@@ -6649,10 +6649,10 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 159, y: 221, floor: "SPT" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
+                        UseAdultAge: function() { return !Tricks.ganonSpiritTrialHookshotless.enabled; },
                         Order: 27.5,
                         LongDescription: "This rupee is above the beamos. Use your hookshot, or perform the ISG hover to get the rupee (remember not to cancel ISG with shield!)",
-                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.GANON_SPIRIT_HOOKSHOTLESS]
+                        NeedsAny: [Items.HOOKSHOT, Tricks.ganonSpiritTrialHookshotless.canDo]
                     }
                 }
             },
@@ -6668,7 +6668,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 242, y: 184, floor: "SPT" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees && !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees && !Tricks.ganonSpiritTrialHookshotless.enabled; },
                         Order: 28,
                         LongDescription: "Enter the spirit trial. Collect the rupees to advance to the next room. Hit the switch closest to the barred door with a jumpslash or charged spin attack to spawn the chest."
                     }
@@ -6687,7 +6687,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 239, y: 120, floor: "SPT" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees && !Settings.GlitchesToAllow.ganonSpiritHookshotless; },
+                        UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleSilverRupees && !Tricks.ganonSpiritTrialHookshotless.enabled; },
                         Order: 29,
                         LongDescription: "Enter the spirit trial. Collect the rupees to advance to the next room. To your left, there is a switch. Line up with the switch and drop a Bombchu. It should navigate itself over to the switch and activate it. This will open the door - enter it. The hidden chest is now in front of you and a little bit to the right. Face the right wall when trying to open it."
                     }
