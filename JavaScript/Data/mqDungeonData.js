@@ -5735,7 +5735,7 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.SWORDS, ItemSets.EXPLOSIVES] // Break stalagmites
                     },
                     northRoom: {
-                        ChildNeeds: [GlitchItemSets.ICE_CHILD_UPPER_ROOM],
+                        ChildNeeds: [Tricks.iceChildNorthRoom.canDo],
                         NeedsAny: [GameStateSets.HAS_BOTTLE, ItemSets.BLUE_FIRE_ITEMS]
                     },
                     bigRoom: {
@@ -5788,7 +5788,7 @@ let MQDungeons = {
             },
             northRoom: {
                 DisplayGroup: { groupName: "Platforming Room", imageName: "Compass" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.iceChildUpperRoom; },
+                UseAdultAge: function() { return !Tricks.iceChildNorthRoom.enabled; },
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in North Room": {
@@ -5816,7 +5816,7 @@ let MQDungeons = {
                         LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>Play the song of time on the top near the pillar with the skulltula to spawn a block. Climb it, and play the song again. Use blue fire to melt the ice to gain access to the skulltula.",
                         NeedsAny: [
                             Items.ICE_ARROW,
-                            GlitchItemSets.MQ_ICE_NORTH_ROOM_SKULL_WITH_BOTTLED_BLUE_FIRE,
+                            Tricks.mqIceNorthSkullWithoutSoT.canDo,
                             [
                                 GameStateSets.HAS_BOTTLE,
                                 Songs.SONG_OF_TIME,
@@ -5859,7 +5859,7 @@ let MQDungeons = {
                         LongDescription: "This skulltula is on the ledge to your right in the big room. Play the scarecrow's song and hook it, a ground jump to get up there, or use hover boots to get to the taller pillar and longshot it.",
                         NeedsAny: [
                             [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT],
-                            GlitchItemSets.MQ_ICE_JUMP_TO_SKULL,
+                            Tricks.mqIceJumpToSkull.canDo,
                             Tricks.groundJump.canDoWithBomb,
                             [
                                 GameStateSets.CAN_HOOK_SCARECROW,

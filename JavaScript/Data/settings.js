@@ -2176,14 +2176,86 @@ let Tricks = {
 		isCategory: true,
 		displayText: "Ice Cavern"
 	},
-	TEST7: {
+	iceInReverse: {
 		enabled: false,
-		canDo: (age) => Tricks.TEST.enabled,
-		displayText: "TEST",
-		description: "TEST",
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.iceInReverse.enabled &&
+			ItemData.canUse(age, Equipment.IRON_BOOTS),
+		displayText: "Boss Room From Freezard Room",
+		description: "Standard only; MQ door won't open from the reverse side.\x0A\x0AFrom the entrance to the first main room, target the longer wall to the right of the blue crystal; hold this angle, then backflip into the acute angle of the crystal; let go of Z and hold down-left after the backflip; once clipped, hold up to get to the water; once in bounds, equip iron boots to go in the door\x0A\x0ACan cross the red ice afterwards by targeting left of the door; backflip; megaflip using normal setups",
 		links: [{
-			url: "",
+			url: "https://youtu.be/rNavLsMzt6g",
+			description: "Video - clipping out, rise up to the door at 0:20 instead of what the video does"
+		},
+		{
+			url: "https://youtu.be/xwSz8xT4Qr4",
+			description: "Video - megaflipping past the red ice"
+		}]
+	},
+	iceLedgeClip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.iceLedgeClip.enabled,
+		displayText: "Ledge Clip to North Room",
+		description: "Target the left wall by the ledge; get in the actue angle corner by the gate; ledge clip as normal (sidehop left, roll, Z at the right time)",
+		links: [{
+			url: "https://youtu.be/a7jXaIcQes4",
 			description: "Video"
+		}]
+	},
+	iceChildNorthRoom: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.iceChildNorthRoom.enabled &&
+			ItemData.canUse(age, Tricks.groundJump.canDoWithBombOrStrength),
+		displayText: "North Room As Child",
+		description: "Ground jump to first ledge; get in right corner; left sidehop and climb back up; shield turn right; dry roll; turn 180; c-up and turn a very small amount left; roll and hold up; pause when Link jumps and touches the wall (should be low down); buffer a Z to target the wall",
+		links: [{
+			url: "https://youtu.be/04YmwtNHipI",
+			description: "Video - description modified so you don't need a sword"
+		}]
+	},
+	iceTripleSlashClips: {
+		enabled: false,
+		canDo: (age) => Tricks.iceTripleSlashClips.enabled &&
+			ItemData.canUseAny(age, [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD]) &&
+			ItemData.canUse(age, ItemSets.FIRST_PERSON_ITEMS),
+		displayText: "Triple Slash Clips in Circular Room",
+		description: "For all positions, get the angle first (see below), get to the left corner of the ice, then turn around so you're facing away. Quickly spam B and press Z just after you start the third slash. Pause on the second frame after you hit the wall (the one after the sound starts; also the one after the sparks are bright blue). Take out a first-person item. Cancel it; you will be clipped in.\x0A\x0AADULT LEFT: Target the wall to the left of the ice; sidehop right; retarget; ess right x1\x0A\x0AADULT RIGHT: Target the front of the ice\x0A\x0AADULT UPPER: Target the short wall by the left cliff\x0A\x0ACHILD LEFT: Target the side of the icicle closest to the room entrance (the camera will show the red ice still); sidehop left and sideroll; retarget; ess right x2\x0A\x0ACHILD RIGHT: Target the side of the lower stair by the room entrance on the side of the red ice; turn around; ess right x6",
+		links: [{
+			url: "https://youtu.be/TaPkaFDyfeY",
+			description: "Video"
+		}]
+	},
+	mqIceNorthSkullWithoutSoT: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.mqIceNorthSkullWithoutSoT.enabled &&
+        	GameStateSets.HAS_BOTTLE(),
+		displayText: "MQ North Skull Without Song of Time",
+		description: "Get in the left corner behind the chest; ess right x1; dry roll x1; ess left x1; target; slash sword; backflip x4; ess left x6; sidehop left; dump blue fire on the frame you land",
+		links: [{
+			url: "https://youtu.be/gHV3T98IMZc?t=138",
+			description: "Video"
+		}]
+	},
+	iceBlockSkullWithHoverBoots: {
+		enabled: false,
+		canDo: (age) => Tricks.iceBlockSkullWithHoverBoots.enabled &&
+			ItemData.canUse(age, Equipment.HOVER_BOOTS) &&
+			ItemData.canUseAny(age, [ItemSets.DISTANT_SWITCH_ITEMS, Items.DINS_FIRE]),
+		displayText: "Hover Boots to Block Room Skulltula",
+		description: "With hover boots, you can grab the skulltula token on the wall in the block room by back-walk hovering from the pillar then backflipping at the right time.\x0A\x0AIf using a chu to kill it, stand on the line two squares to the right of the skulltula."
+	},
+	mqIceJumpToSkull: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.mqIceJumpToSkull.enabled,
+		displayText: "MQ Jump to Skulltula",
+		description: "Line up with against the wall, center of the fourth square from the hole; ess right 1; swing your sword; sidehop (LET GO OF Z) & hold up-left",
+		links: [{
+			url: "https://youtu.be/8CxFAN7mwlU",
+			description: "Video - not exactly the same"
 		}]
 	},
 	//#endregion Ice Cavern

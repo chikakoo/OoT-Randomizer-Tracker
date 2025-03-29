@@ -128,29 +128,6 @@ let GlitchItemSets = {
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
 
-    // Ice Cavern
-    ICE_IN_REVERSE: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.iceInReverse &&
-        ItemData.canUse(age, Equipment.IRON_BOOTS),
-    ICE_LEDGE_CLIP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.iceLedgeClip,
-    ICE_CHILD_UPPER_ROOM: (age) => age === Age.CHILD &&
-        Settings.GlitchesToAllow.iceChildUpperRoom &&
-        ItemData.canUse(age, Tricks.groundJump.canDoWithBombOrStrength), // Pots can be used in the same way
-    ICE_TRIPLE_SLASH_CLIP: (age) =>
-        Settings.GlitchesToAllow.iceTripleSlashClips &&
-        ItemData.canUseAny(age, [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD]) &&
-        ItemData.canUse(age, ItemSets.FIRST_PERSON_ITEMS),
-    ICE_BLOCK_ROOM_SKULL_WITH_HOVER_BOOTS: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.iceBlockSkullWithHovers &&
-        ItemData.canUse(age, Equipment.HOVER_BOOTS) &&
-        ItemData.canUseAny(age, [ItemSets.DISTANT_SWITCH_ITEMS, Items.DINS_FIRE]),
-    MQ_ICE_NORTH_ROOM_SKULL_WITH_BOTTLED_BLUE_FIRE: () =>
-        Settings.GlitchesToAllow.mqIceNorthSkullWithoutSoT &&
-        GameStateSets.HAS_BOTTLE(),
-    MQ_ICE_JUMP_TO_SKULL: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.mqIceJumpToSkull,
-
     // Gerudo Training Ground
     GTG_CHILD_VINE_CLIP: (age) => age === Age.CHILD &&
         Settings.GlitchesToAllow.gtgChildVineClips &&

@@ -4598,7 +4598,7 @@ let StandardDungeons = {
                     },
                     bossRoom: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.ICE_IN_REVERSE]
+                        Needs: [Tricks.iceInReverse.canDo]
                     },
                     Exit: {
                         OwExit: OwExits["Ice Cavern"]["Exit"]
@@ -4622,9 +4622,9 @@ let StandardDungeons = {
                         NeedsAny: [
                             ItemSets.BLUE_FIRE_ITEMS,
                             ItemLocationSets.ICE_MELTED_EAST_WALL,
-                            GlitchItemSets.ICE_LEDGE_CLIP,
+                            Tricks.iceLedgeClip.canDo,
                             Tricks.lungeStorage.canDo,
-                            GlitchItemSets.ICE_TRIPLE_SLASH_CLIP
+                            Tricks.iceTripleSlashClips.canDo
                         ]
                     },
                     blueFire: {
@@ -4634,12 +4634,12 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         ChildNeeds: [
                             SilverRupeeSets.ICE_SILVER_RUPEES_SCYTHE_ROOM,
-                            GlitchItemSets.ICE_CHILD_UPPER_ROOM
+                            Tricks.iceChildNorthRoom.canDo
                         ],
                         AdultNeedsAny: [
                             SilverRupeeSets.ICE_SILVER_RUPEES_SCYTHE_ROOM,
                             Tricks.lungeStorage.canDo,
-                            GlitchItemSets.ICE_TRIPLE_SLASH_CLIP
+                            Tricks.iceTripleSlashClips.canDo
                         ]
                     },
                     blockPushRoom: {
@@ -4647,7 +4647,7 @@ let StandardDungeons = {
                             ItemSets.BLUE_FIRE_ITEMS,
                             ItemLocationSets.ICE_MELTED_WEST_WALL,
                             [Age.CHILD, Tricks.lungeStorage.canDo],
-                            GlitchItemSets.ICE_TRIPLE_SLASH_CLIP
+                            Tricks.iceTripleSlashClips.canDo
                         ]
                     }
                 },
@@ -4725,10 +4725,10 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 193, y: 102 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.iceChildUpperRoom; },
+                        UseAdultAge: function() { return !Tricks.iceChildNorthRoom.enabled; },
                         Order: 6.1,
                         LongDescription: "This rupee is the one in midair in the back right part of the spinning scythe room. As adult, climb up the ledge and jump off to get it.",
-                        ChildNeeds: [GlitchItemSets.ICE_CHILD_UPPER_ROOM]
+                        ChildNeeds: [Tricks.iceChildNorthRoom.canDo]
                     }
                 }
             },
@@ -4802,7 +4802,7 @@ let StandardDungeons = {
                     imageName: "Dungeon Map",
                     description: "LUNGE STORAGE ADULT: Fall and climb off the ledge across from the gate; ess left x4; get into corner; jumpslash while holding forward; walk in bounds"
                 },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.iceChildUpperRoom; },
+                UseAdultAge: function() { return !Tricks.iceChildNorthRoom.enabled; },
                 Exits: {
                     blueFire: {
                         Needs: [GameStateSets.HAS_BOTTLE]
@@ -4849,7 +4849,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "When you first enter the spinning scythe room, look to your left. Burn the red ice with your blue fire and enter the room. When you get to the big room, the skulltula will be on the wall to your left.",
-                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, GlitchItemSets.ICE_BLOCK_ROOM_SKULL_WITH_HOVER_BOOTS]
+                        NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Tricks.iceBlockSkullWithHoverBoots.canDo]
                     },
                     "Block Silver Rupee in Center": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
