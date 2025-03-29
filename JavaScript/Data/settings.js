@@ -2082,7 +2082,101 @@ let Tricks = {
 		isCategory: true,
 		displayText: "Spirit Temple"
 	},
-	TEST4: {
+	spiritBlockSkipWithHoverBoots: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.spiritBlockSkipWithHoverBoots.enabled &&
+			ItemData.canUse(age, Equipment.HOVER_BOOTS),
+		displayText: "Silver Block Skip with Hover Boots",
+		description: "Climb the ledge by the silver block, then jump to the nose of the snake statue; roll at the silver block and equip hover boots; roll and angle toward the block to climb on top",
+		links: [{
+			url: "https://youtu.be/2Ba5K4fIrps",
+			description: "Video"
+		}]
+	},
+	spiritBlockSkipWithBombPush: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.spiritBlockSkipWithBombPush.enabled &&
+			ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB]),
+		displayText: "Silver Block Skip with Bomb Push",
+		description: "Get ISG; face wall to the right of the block; sidehop right + sideroll untarget; ess 2 left; back into corner; shield drop 2 bombs (bombs above head first); dry roll; backflip; hold shield; flick shield to remove ISG\x0A\x0AC-up and put the sword on the moon; take a step back or two; roll and hold forward, then hold up right",
+		links: [{
+			url: "https://youtu.be/9f3Qh0L_qCE",
+			description: "Video"
+		}]
+	},
+	mqSpiritChildGeyserSkip: {
+		enabled: false,
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.mqSpiritChildGeyserSkip.enabled,
+		displayText: "MQ Child Geyser Skip",
+		description: "Target the right side of the pillar to the left of the geyser hallway; backwalk against the wall with the geyser with this angle until you start rising, then let go of everything"
+	},
+	mqSpiritAdultGeyserSkip: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.mqSpiritAdultGeyserSkip.enabled &&
+			ItemData.canUse(age, ItemSets.SHIELDS),
+		displayText: "MQ Adult Geyser Skip",
+		description: "Target the left little wall opposite the geyser; walk slightly away and do a manual spin attack, hold shield during it to maintain your angle; ess left x3; get in the corner; crouch stab; backflip; (keep Z held) right sidehop; jumpslash when Link's sock is slightly offscreen (very inconsistent)",
+		links: [{
+			url: "https://youtu.be/TwXja9VfIcU",
+			description: "Video"
+		}]
+	},
+	spiritStatueRoomJumps: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.spiritStatueRoomJumps.enabled,
+		displayText: "Statue Room Jumps",
+		description: "Get on either of the statue hands. Angle yourself so you can jump from the wrist to the nearby ledge - you should be positioned so you get the most height. Do a roll jump and hold forward to grab the ledge.",
+		links: [{
+			url: "https://youtu.be/Y2EQTni4oZY?t=436",
+			description: "Video"
+		}]
+	},
+	mqSpiritStatueTorchesWithDins: {
+		enabled: false,
+		canDo: (age) => Tricks.mqSpiritStatueTorchesWithDins.enabled &&
+        	ItemData.canUse(age, Items.DINS_FIRE),
+		displayText: "MQ Statue Room Torches with Din's Fire",
+		description: "Target the pillar of the left torch with your back to the lower door; backwalk to the corner where door is; left sidehop x2; backflip; dryroll; dryroll x13; backflip; retarget & dryroll x2; cast Din's; sidehop right x9; cast Din's",
+		links: [{
+			url: "https://youtu.be/Y2EQTni4oZY?t=674",
+			description: "Video"
+		}]
+	},
+	spiritSuperslideToMirrorShield: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.spiritSuperslideToMirrorShield.enabled &&
+			ItemData.canUse(age, [Items.BOMB, Equipment.HOVER_BOOTS, ItemSets.SHIELDS]),
+		displayText: "Superslide to Mirror Shield",
+		description: "Do a bomb + hover boots super slide done at the side with the silver gauntlets to get to the side with the mirror shield; jumpslash when Link starts colliding with the camera",
+		links: [{
+			url: "https://youtu.be/blxx5gh-ido?t=22",
+			description: "Video - easier with a 2 bomb superslide from the tunnel (use the left side)"
+		}]
+	},
+	spiritBKWithNothing: {
+		enabled: false,
+		canDo: () => Tricks.spiritBKWithNothing.enabled,
+		displayText: "Boss Key Chest With Nothing",
+		description: "Run into a torch slug near the chest, then quickly run to open it during the invincibility frames",
+		links: [{
+			url: "https://youtu.be/4jiUWu7W-6U",
+			description: "Video"
+		}]
+	},
+	//#endregion Spirit Temple
+
+	//#region Bottom of the Well
+	categoryBottomOfTheWell: {
+		isCategory: true,
+		displayText: "Bottom of the Well"
+	},
+	TEST6: {
 		enabled: false,
 		canDo: (age) => Tricks.TEST.enabled,
 		displayText: "TEST",
@@ -2092,5 +2186,56 @@ let Tricks = {
 			description: "Video"
 		}]
 	},
-	//#endregion Spirit Temple
+	//#endregion Bottom of the Well
+
+	//#region Ice Cavern
+	categoryIceCavern: {
+		isCategory: true,
+		displayText: "Ice Cavern"
+	},
+	TEST7: {
+		enabled: false,
+		canDo: (age) => Tricks.TEST.enabled,
+		displayText: "TEST",
+		description: "TEST",
+		links: [{
+			url: "",
+			description: "Video"
+		}]
+	},
+	//#endregion Ice Cavern
+
+	//#region Gerudo Training Grounds
+	categoryGerudoTrainingGrounds: {
+		isCategory: true,
+		displayText: "Gerudo Training Grounds"
+	},
+	TEST8: {
+		enabled: false,
+		canDo: (age) => Tricks.TEST.enabled,
+		displayText: "TEST",
+		description: "TEST",
+		links: [{
+			url: "",
+			description: "Video"
+		}]
+	},
+	//#endregion Gerudo Training Grounds
+
+	//#region Ganon's Castle
+	categoryGanonsCastle: {
+		isCategory: true,
+		displayText: "Ganon's Castle"
+	},
+	TEST9: {
+		enabled: false,
+		canDo: (age) => Tricks.TEST.enabled,
+		displayText: "TEST",
+		description: "TEST",
+		links: [{
+			url: "",
+			description: "Video"
+		}]
+	}
+	//#endregion Ganon's Castle
 };

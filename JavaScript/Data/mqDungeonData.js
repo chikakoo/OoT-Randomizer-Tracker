@@ -4743,8 +4743,8 @@ let MQDungeons = {
                         NeedsAny: [UpgradedItems.SILVER_GAUNTLETS, Tricks.weirdShot.canDoWithProjectiles]
                     },
                     roomRightOfLobby: {
-                        ChildNeeds: [GlitchItemSets.MQ_SPIRIT_CHILD_GEYSER_SKIP],
-                        AdultNeeds: [GlitchItemSets.MQ_SPIRIT_ADULT_GEYSER_SKIP]
+                        ChildNeeds: [Tricks.mqSpiritChildGeyserSkip.canDo],
+                        AdultNeeds: [Tricks.mqSpiritAdultGeyserSkip.canDo]
                     },
                     Exit: {
                         OwExit: OwExits["Spirit Temple"]["Exit"]
@@ -4829,7 +4829,7 @@ let MQDungeons = {
                         Order: 27.1,
                         LongDescription: "This is the door leading to/from the room with the sun on the floor room.",
                         KeyRequirement: function(age) {
-                            let min = age === Age.ADULT || Settings.GlitchesToAllow.mqSpiritChildGeyserSkip
+                            let min = age === Age.ADULT || Tricks.mqSpiritChildGeyserSkip.enabled
                                 ? 1 // This (Adult + geyser path doesn't need any other doors)
                                 : 2; // Child needs door after second crawl space
 
@@ -4845,7 +4845,7 @@ let MQDungeons = {
                         Order: 25,
                         LongDescription: "This is the door after the puzzle where you push the sun block into the light.",
                         KeyRequirement: function(age) {
-                            let min = age === Age.ADULT || Settings.GlitchesToAllow.mqSpiritChildGeyserSkip
+                            let min = age === Age.ADULT || Tricks.mqSpiritChildGeyserSkip.enabled
                                 ? 1 // This (Adult + geyser path doesn't need any other doors)
                                 : 3; // After second crawlspace; sun on room; this
 
@@ -4858,11 +4858,11 @@ let MQDungeons = {
                         Regions: ["adultStatueRoomSide"],
                         MapInfo: { x: 256, y: 217, floor: "F2" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                        UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                         Order: 38,
                         LongDescription: "This is the locked door on the upper east part of the statue room.",
                         KeyRequirement: function(age) {
-                            let max = age === Age.ADULT && Settings.GlitchesToAllow.spiritSuperslideToMirrorShield
+                            let max = age === Age.ADULT && Tricks.spiritSuperslideToMirrorShield.enabled
                                 ? Keys.SPIRIT_TEMPLE.mqTotalKeys() // Every door except beamos room + after moving wall door
                                 : 5; // Going this way allows the rest of the doors to be reached
                             
@@ -4875,7 +4875,7 @@ let MQDungeons = {
                         Regions: ["beamosRoom"],
                         MapInfo: { x: 223, y: 105, floor: "F3" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                        UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                         Order: 43,
                         LongDescription: "This is the locked door in the southwest corner of the room with all the Beamos.",
                         KeyRequirement: function(age) {
@@ -4889,7 +4889,7 @@ let MQDungeons = {
                         Regions: ["roomRightOfLobby"],
                         MapInfo: { x: 295, y: 169, floor: "F1" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                        UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                         Order: 34,
                         LongDescription: "This is the locked door to the right of the lobby that you get to via the statue room.",
                         KeyRequirement: function(age) {
@@ -4902,7 +4902,7 @@ let MQDungeons = {
                         Regions: ["afterMovingWallRoom"],
                         MapInfo: { x: 294, y: 144, floor: "F4" },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                        UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                         Order: 46,
                         LongDescription: "This is the locked door by the triforce symbol located after the moving wall.",
                         KeyRequirement: function(age) {
@@ -5191,7 +5191,7 @@ let MQDungeons = {
                             Songs.SONG_OF_TIME,
                             Equipment.HOVER_BOOTS,
                             Tricks.megaFlip.canDo,
-                            GlitchItemSets.SPIRIT_STATUE_ROOM_JUMPS
+                            Tricks.spiritStatueRoomJumps.canDo
                         ]
                     },
                     "2 Upper Northeast Left Pots in Statue Room": {
@@ -5207,7 +5207,7 @@ let MQDungeons = {
                             Songs.SONG_OF_TIME,
                             Equipment.HOVER_BOOTS,
                             Tricks.megaFlip.canDo,
-                            GlitchItemSets.SPIRIT_STATUE_ROOM_JUMPS
+                            Tricks.spiritStatueRoomJumps.canDo
                         ]
                     },
                     "Upper Northeast Right Pot in Statue Room": {
@@ -5221,7 +5221,7 @@ let MQDungeons = {
                             Equipment.HOVER_BOOTS,
                             Tricks.megaFlip.canDo,
                             Tricks.boomerangTrickThrows.canDo,
-                            GlitchItemSets.SPIRIT_STATUE_ROOM_JUMPS
+                            Tricks.spiritStatueRoomJumps.canDo
                         ]
                     }
                 }
@@ -5305,7 +5305,7 @@ let MQDungeons = {
                 Exits: {
                     mirrorShieldKnuckle: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.SPIRIT_SUPERSLIDE_TO_MIRROR_SHIELD]
+                        Needs: [Tricks.spiritSuperslideToMirrorShield.canDo]
                     },
                     statueHands: {},
                     silverGauntsIronKnuckle: {}
@@ -5314,7 +5314,7 @@ let MQDungeons = {
             },
             adultStatueRoomSide: {
                 DisplayGroup: { groupName: "Statue Room", imageName: "Compass" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                 Exits: {
                     roomRightOfLobby: {
                         Age: Age.ADULT,
@@ -5322,7 +5322,7 @@ let MQDungeons = {
                         NeedsAny: [ // To unbar the door from the statue room
                             Items.FIRE_ARROW, 
                             QPAItemSets.LEDGE_QPA, // Get ISG, hookshot the right side of each torch
-                            GlitchItemSets.MQ_SPIRIT_STATUE_ROOM_TORCHES_WITH_DINS
+                            Tricks.mqSpiritStatueTorchesWithDins.canDo
                         ]
                     },
                     beamosRoom: {
@@ -5354,7 +5354,7 @@ let MQDungeons = {
                         MapInfo: { x: 310, y: 135, floor: "F2" },
                         MapImageName: "Mirror Shield",
                         Age: Age.ADULT,
-                        RequiredToAppear: function() { return Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                        RequiredToAppear: function() { return Tricks.mqSpiritChildGeyserSkip.enabled; },
                         Order: 29.1,
                         LongDescription: "WALL MASTER WARNING:<br/>Go through the lower door to the southeast in the statue room. Kill all enemies in the room, including the floormasters that spawn when shining the light on the suns. This will open the grate.",
                     }
@@ -5366,7 +5366,7 @@ let MQDungeons = {
                     imageName: "Ocarina",
                     description: "At the statue room, light all 3 torches with fire arrows. Use your hookshot to get to the door that unlocks. In the next room, use your mirror shield on all 3 suns and kill the enemies (including the wall masters). Navigate through the hallway to get to this area."
                 },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                 Exits: {
                     adultStatueRoomSide: {
                         ChildNeeds: [ItemLocationSets.MQ_SPIRIT_OPENED_GRATE_TO_RIGHT_OF_LOBBY],
@@ -5442,7 +5442,7 @@ let MQDungeons = {
             boulderRoom: {
                 DisplayGroup: { groupName: "Rooms Beyond Lobby Water", imageName: "Ocarina" },
                 UseAdultAge: function() { 
-                    return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip ||
+                    return !Tricks.mqSpiritChildGeyserSkip.enabled ||
                         !Tricks.equipSwap.enabled; 
                 },
                 Exits: {},
@@ -5483,7 +5483,7 @@ let MQDungeons = {
                     imageName: "Mirror Shield",
                     description: "BEAMOS ROOM: is the upper locked door in the Adult side of the statue room.\x0A\x0ALIZALFOS ROOM: In the beamos room, the puzzle is to play the Song of Time to move the blocks so that the little box falls down onto one of the blocks. Play it by the left side of the room, then by the hole twice. You then use that box to hold the switch down."
                 },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                 Exits: {
                     lizalfosAndSunRoom: {
                         Needs: [Songs.SONG_OF_TIME]
@@ -5515,7 +5515,7 @@ let MQDungeons = {
             },
             lizalfosAndSunRoom: {
                 DisplayGroup: { groupName: "Beamos/Lizalfos/Mirror Shield Path", imageName: "Mirror Shield" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                 Exits: {
                     mirrorShieldKnuckle: {
                         NeedsAny: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
@@ -5551,7 +5551,7 @@ let MQDungeons = {
             },
             mirrorShieldKnuckle: {
                 DisplayGroup: { groupName: "Beamos/Lizalfos/Mirror Shield Path", imageName: "Mirror Shield" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                 Exits: {
                     lizalfosAndSunRoom: {},
                     silverGauntsStatueHand: {
@@ -5572,7 +5572,7 @@ let MQDungeons = {
             },
             movingWallRoom: {
                 DisplayGroup: { groupName: "Moving Wall & Silver Knuckle Room", imageName: "Skulltula" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                 Exits: {
                     afterMovingWallRoom: {
                         Needs: [SilverRupeeSets.MQ_SPIRIT_SILVER_RUPEES_MOVING_WALL_ROOM]
@@ -5601,7 +5601,7 @@ let MQDungeons = {
             },
             afterMovingWallRoom: {
                 DisplayGroup: { groupName: "Moving Wall & Silver Knuckle Room", imageName: "Skulltula" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                 Exits: {
                     skulltulaAndKnuckleRoom: {
                         Map: "Spirit Temple",
@@ -5625,7 +5625,7 @@ let MQDungeons = {
             },
             skulltulaAndKnuckleRoom: {
                 DisplayGroup: { groupName: "Moving Wall & Silver Knuckle Room", imageName: "Skulltula" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                 Exits: {},
                 ItemLocations: {
                     "West Skulltula in Iron Knuckle Room": {
@@ -5646,7 +5646,7 @@ let MQDungeons = {
             },
             giantMirrorRoom: {
                 DisplayGroup: { groupName: "Mirror Room & Boss Area", imageName: "Spirit Medallion" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                 Exits: {
                     mirrorMaze: {
                         Needs: [Items.MEGATON_HAMMER]
@@ -5675,7 +5675,7 @@ let MQDungeons = {
             },
             mirrorMaze: {
                 DisplayGroup: { groupName: "Mirror Room & Boss Area", imageName: "Spirit Medallion" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.mqSpiritChildGeyserSkip; },
+                UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                 Exits: {
                     bossRoom: {
                         Needs: [Items.HOOKSHOT, Equipment.MIRROR_SHIELD, KeySets.SPIRIT_BK]

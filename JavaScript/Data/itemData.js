@@ -275,7 +275,7 @@ let Keys = {
 		name: "Spirit Temple", 
 		minimumKeys: function() { 
 			// There's a child door that's optional, so 4 is the default
-			return Settings.GlitchesToAllow.spiritSuperslideToMirrorShield ? 3 : 4;
+			return Tricks.spiritSuperslideToMirrorShield.enabled ? 3 : 4;
 		},
 		totalKeys: function() { return 5; },
 		

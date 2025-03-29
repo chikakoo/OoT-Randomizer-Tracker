@@ -128,28 +128,6 @@ let GlitchItemSets = {
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
 
-    // Spirit Temple
-    SPIRIT_BLOCK_SKIP_WITH_HOVER_BOOTS: (age) => 
-        Settings.GlitchesToAllow.spiritBlockSkipWithHovers && 
-        ItemData.canUse(age, Equipment.HOVER_BOOTS),
-    SPIRIT_BLOCK_SKIP_WITH_BOMB_PUSH: (age) =>
-        Settings.GlitchesToAllow.spiritBlockSkipWithBombPush &&
-        ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB]),
-    SPIRIT_STATUE_ROOM_JUMPS: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.spiritStatueRoomJumps,
-    SPIRIT_SUPERSLIDE_TO_MIRROR_SHIELD: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.spiritSuperslideToMirrorShield &&
-        ItemData.canUse(age, [Items.BOMB, Equipment.HOVER_BOOTS, ItemSets.SHIELDS]),
-    SPIRIT_BK_CHEST_WITH_NOTHING: () => Settings.GlitchesToAllow.spiritBKTrick,
-    MQ_SPIRIT_STATUE_ROOM_TORCHES_WITH_DINS: (age) => 
-        Settings.GlitchesToAllow.mqSpiritStatueTorchesWithDins &&
-        ItemData.canUse(age, Items.DINS_FIRE),
-    MQ_SPIRIT_CHILD_GEYSER_SKIP: (age) => age === Age.CHILD &&
-        Settings.GlitchesToAllow.mqSpiritChildGeyserSkip,
-    MQ_SPIRIT_ADULT_GEYSER_SKIP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.mqSpiritAdultGeyserSkip &&
-        ItemData.canUse(age, ItemSets.SHIELDS),
-
     // Ice Cavern
     ICE_IN_REVERSE: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.iceInReverse &&

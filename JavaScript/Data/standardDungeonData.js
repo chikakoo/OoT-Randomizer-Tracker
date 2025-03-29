@@ -3815,8 +3815,8 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         NeedsAny: [
                             UpgradedItems.SILVER_GAUNTLETS,
-                            GlitchItemSets.SPIRIT_BLOCK_SKIP_WITH_HOVER_BOOTS,
-                            GlitchItemSets.SPIRIT_BLOCK_SKIP_WITH_BOMB_PUSH
+                            Tricks.spiritBlockSkipWithHoverBoots.canDo,
+                            Tricks.spiritBlockSkipWithBombPush.canDo
                         ]
                     },
                     Exit: {
@@ -3894,7 +3894,7 @@ let StandardDungeons = {
                         Order: 32,
                         LongDescription: "This is the locked door on the upper east part of the statue room.",
                         KeyRequirement: function(age) {
-                            let max = Settings.GlitchesToAllow.spiritSuperslideToMirrorShield
+                            let max = Tricks.spiritSuperslideToMirrorShield.enabled
                                 ? Keys.SPIRIT_TEMPLE.totalKeys() // Can skip this door in this case and open the one beyond it
                                 : 4; // All doors except the one beyond it
                                 
@@ -4293,7 +4293,7 @@ let StandardDungeons = {
                             Items.HOOKSHOT,
                             Equipment.HOVER_BOOTS,
                             Tricks.megaFlip.canDo,
-                            GlitchItemSets.SPIRIT_STATUE_ROOM_JUMPS
+                            Tricks.spiritStatueRoomJumps.canDo
                         ]
                     },
                     "Chest on Statue's Hand": {
@@ -4317,7 +4317,7 @@ let StandardDungeons = {
                             Equipment.HOVER_BOOTS,
                             GameStateSets.CAN_HOOK_SCARECROW,
                             Tricks.megaFlip.canDo,
-                            GlitchItemSets.SPIRIT_STATUE_ROOM_JUMPS
+                            Tricks.spiritStatueRoomJumps.canDo
                         ]
                     }
                 }
@@ -4410,7 +4410,7 @@ let StandardDungeons = {
                 Exits: {
                     mirrorShieldKnuckle: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.SPIRIT_SUPERSLIDE_TO_MIRROR_SHIELD]
+                        Needs: [Tricks.spiritSuperslideToMirrorShield.canDo]
                     },
                     statueHands: {}
                 },
@@ -4528,11 +4528,11 @@ let StandardDungeons = {
                         MapInfo: { x: 294, y: 40, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 40,
-                        LongDescription: "Head to the moving wall room. This is the room to your right if you enter the topmost southeast area of the statue room. It's also the room straight ahead if leaving the 4 armos room.<br/><br/>Head up the wall - longshot up there if you have it. In the next room, play Zelda's Lullaby to open the door in front of you. Bomb, hammer, or the fake door just to the left of the boss key chest. Shoot the eye switch to spawn some platforms (with good timing if yu didn't break it). Now, hookshot up there and hit the switch to put the fire out.",
+                        LongDescription: "Head to the moving wall room. This is the room to your right if you enter the topmost southeast area of the statue room. It's also the room straight ahead if leaving the 4 armos room.<br/><br/>Head up the wall - longshot up there if you have it. In the next room, play Zelda's Lullaby to open the door in front of you. Bomb or hammer the fake door just to the left of the boss key chest. Shoot the eye switch to spawn some platforms (with good timing if yu didn't break it). Now, hookshot up there and hit the switch to put the fire out.",
                         Needs: [Songs.ZELDAS_LULLABY],
                         NeedsAny: [
-                            [Items.FAIRY_BOW, Items.HOOKSHOT],
-                            GlitchItemSets.SPIRIT_BK_CHEST_WITH_NOTHING
+                            [Items.FAIRY_BOW, Items.HOOKSHOT, ItemSets.BLAST_OR_SMASH_ITEMS],
+                            Tricks.spiritBKWithNothing.canDo
                         ]
                     }
                 }
