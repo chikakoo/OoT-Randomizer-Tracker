@@ -6218,7 +6218,7 @@ let MQDungeons = {
                     mazeStart: {},
                     iceArrowsRoom: {
                         Age: Age.CHILD,
-                        Needs: [GlitchItemSets.GTG_CHILD_VINE_CLIP]
+                        Needs: [Tricks.gtgChildVineClips.canDo]
                     },
                     Exit: {
                         OwExit: OwExits["Training Grounds"]["Exit"]
@@ -6263,12 +6263,12 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
                 Exits: {
                     backOfMaze: {
-                        NeedsAny: [GlitchItemSets.GTG_CHILD_VINE_CLIP, Tricks.weirdShot.canDo]
+                        NeedsAny: [Tricks.gtgChildVineClips.canDo, Tricks.weirdShot.canDo]
                     },
                     mazeCenter: {
                         NeedsAny: [
                             () => ItemData.getKeyCount("Training Grounds") >= 3,
-                            GlitchItemSets.GTG_CHILD_VINE_CLIP,
+                            Tricks.gtgChildVineClips.canDo,
                             Tricks.weirdShot.canDo
                         ]
                     }
@@ -6303,7 +6303,7 @@ let MQDungeons = {
                         LongDescription: "This chest is after the fifth door in the left maze path.",
                         NeedsAny: [
                             () => ItemData.getKeyCount("Training Grounds") >= 1,
-                            GlitchItemSets.GTG_CHILD_VINE_CLIP,
+                            Tricks.gtgChildVineClips.canDo,
                             Tricks.weirdShot.canDo
                         ]
                     }
@@ -6311,7 +6311,7 @@ let MQDungeons = {
             },
             mazeCenter: {
                 DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
+                UseAdultAge: function() { return !Tricks.gtgChildVineClips.enabled; },
                 Exits: {},
                 ItemLocations: {
                     "Crate in Maze Center": {
@@ -6382,7 +6382,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 7.1,
                         LongDescription: "After the sand room, look for the rupee to your right on the ceiling. You can get it with a well-angled hookshot to the ceiling target; get the rest of the distance with a jumpslash.",
-                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.GTG_WALL_MASTER_TO_SILVER_RUPEE]
+                        NeedsAny: [Items.HOOKSHOT, Tricks.gtgSlopesRoomWallmasterToRupee.canDo]
                     },
                     "Icicle Silver Rupee in Back Left Area": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -6417,7 +6417,7 @@ let MQDungeons = {
             roomWithSilverBlock: {
                 DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Silver Gauntlets" },
                 UseAdultAge: function() { 
-                    return !Settings.GlitchesToAllow.gtgChildVineClips && !Settings.RandomizerSettings.shuffleSilverRupees; 
+                    return !Tricks.gtgChildVineClips.enabled && !Settings.RandomizerSettings.shuffleSilverRupees; 
                 },
                 Exits: {
                     leftArea: {
@@ -6425,7 +6425,7 @@ let MQDungeons = {
                     },
                     upperSilverBlockRoom: {
                         Age: Age.ADULT,
-                        NeedsAny: [Songs.SONG_OF_TIME, GlitchItemSets.GTG_SILVER_BLOCK_ROOM_EXIT_WITH_HOVERS]
+                        NeedsAny: [Songs.SONG_OF_TIME, Tricks.gtgSilverBlockRoomExitWithHoverBoots.canDo]
                     },
                     roomBehindSilverBlock: {
                         Age: Age.ADULT,
@@ -6449,7 +6449,7 @@ let MQDungeons = {
                     },
                     roomWithSilverBlock: {},
                     roomBehindSilverBlock: {
-                        NeedsAny: [GlitchItemSets.GTG_HAMMER_HOVER_BOOTS_SILVER_BLOCK_SKIP]
+                        NeedsAny: [Tricks.gtgSilverBlockSkipWithHammerSuperslide.canDo]
                     }
                 },
                 ItemLocations: {}
@@ -6469,7 +6469,7 @@ let MQDungeons = {
             },
             eyeStatueRoom: {
                 DisplayGroup: { groupName: "Eye Statue Room", imageName: "Fairy Bow" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
+                UseAdultAge: function() { return !Tricks.gtgChildVineClips.enabled; },
                 Exits: {
                     upperSilverBlockRoom: {},
                     armosRoom: {
@@ -6478,7 +6478,7 @@ let MQDungeons = {
                     },
                     bigLavaRoomUpperBack: {},
                     iceArrowsRoom: {
-                        NeedsAny: [ItemSets.DISTANT_SWITCH_ITEMS, GlitchItemSets.MQ_GTG_EYE_STATUE_SWITCH_JUMPSLASH]
+                        NeedsAny: [ItemSets.DISTANT_SWITCH_ITEMS, Tricks.mqGtgEyeStatueJumpslash.canDo]
                     }
                 },
                 ItemLocations: {
@@ -6494,7 +6494,7 @@ let MQDungeons = {
                             Equipment.HOVER_BOOTS,
                             UpgradedItems.LONGSHOT,
                             Tricks.megaFlip.canDo,
-                            GlitchItemSets.GTG_EYE_STATUE_WONDERITEM_JUMPSLASH
+                            Tricks.gtgEyeStatueWonderItemJumpslash.canDo
                         ]
                     },
                     "Chest in Eye Statue Room": {
@@ -6524,7 +6524,7 @@ let MQDungeons = {
             },
             iceArrowsRoom: {
                 DisplayGroup: { groupName: "Eye Statue Room", imageName: "Fairy Bow" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
+                UseAdultAge: function() { return !Tricks.gtgChildVineClips.enabled; },
                 Exits: {
                     eyeStatueRoom: {
                         Age: Age.CHILD // Only useful for Child
@@ -6544,7 +6544,7 @@ let MQDungeons = {
                                 [
                                     SetType.OR,
                                         () => ItemData.getKeyCount("Training Grounds") >= 3,
-                                        GlitchItemSets.GTG_CHILD_VINE_CLIP,
+                                        Tricks.gtgChildVineClips.canDo,
                                         Tricks.weirdShot.canDo
                                 ]
                             ]
@@ -6726,7 +6726,7 @@ let MQDungeons = {
             },
             backOfMaze: {
                 DisplayGroup: { groupName: "Maze Dead End", imageName: "Chest" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
+                UseAdultAge: function() { return !Tricks.gtgChildVineClips.enabled; },
                 Exits: {
                     bigLavaRoomFront: {
                         ChildNeeds: [Tricks.megaFlip.canDo],

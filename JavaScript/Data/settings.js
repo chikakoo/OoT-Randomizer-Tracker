@@ -2291,22 +2291,101 @@ let Tricks = {
 	},
 	//#endregion Bottom of the Well
 	
-	//#region Gerudo Training Grounds
-	categoryGerudoTrainingGrounds: {
+	//#region Gerudo Training Ground
+	categoryGerudoTrainingGround: {
 		isCategory: true,
-		displayText: "Gerudo Training Grounds"
+		displayText: "Gerudo Training Ground"
 	},
-	TEST8: {
+	gtgChildVineClips: {
 		enabled: false,
-		canDo: (age) => Tricks.TEST.enabled,
-		displayText: "TEST",
-		description: "TEST",
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.gtgChildVineClips.enabled &&
+			ItemData.canUse(age, [Items.BOMBCHU, Equipment.DEKU_SHIELD]),
+		displayText: "Child Vine Clips",
+		description: "Climb up about 10 steps up one of the grates; press down + A to let go; before you hit the ground, press chu, then immediately up and R (shield) at the same time",
 		links: [{
-			url: "",
+			url: "https://youtu.be/inULJqfmkRk",
 			description: "Video"
 		}]
 	},
-	//#endregion Gerudo Training Grounds
+	gtgSlopesRoomWallmasterToRupee: {
+		enabled: false,
+		canDo: () => Tricks.gtgSlopesRoomWallmasterToRupee.enabled &&
+			(
+				!Settings.RandomizerSettings.shuffleSilverRupees ||
+				// Can't use SilverRupeeSets due to circular logic (same index in MQ)
+				!ItemData.checkSilverRupeeRequirement("Training Grounds", 0) 
+			),
+		displayText: "Slopes Room Wall Master to Ceiling Rupee",
+		description: "STANDARD:\x0ATrigger the wallmaster, then walk under the rupee and have him carry you to it.\x0A\x0AMQ:\x0AFrom the entrance, turn right and target the wall; sidehop left x6; sidehop right; roll release target; target; dryroll; wait for the wallmaster",
+		links: [{
+			url: "https://youtu.be/UNPL-NnIcXs?t=131",
+			description: "Video"
+		}]
+	},
+	gtgSlopesRoomFireWallSkip: {
+		enabled: false,
+		canDo: () => Tricks.gtgSlopesRoomFireWallSkip.enabled,
+		displayText: "Slopes Room Fire Wall Skip",
+		description: "CHILD:\x0AGet close to the right wall of the firewall where it doesn't show up; angle slightly to the right; sidehop left into it\x0A\x0AADULT:\x0AGet to the parallel wall to the left; turn right and walk into the wall; turn left; sidehop & sideroll (release); turn right; dry roll; backwalk",
+		links: [{
+			url: "https://youtu.be/EBx-bOaQW4k?t=14",
+			description: "Video - adult"
+		}]
+	},
+	gtgSilverBlockRoomExitWithHoverBoots: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.gtgSilverBlockRoomExitWithHoverBoots.enabled && 
+			ItemData.canUse(age, Equipment.HOVER_BOOTS),
+		displayText: "Hover Boots to Silver Block Room Exit",
+		description: "After spawning the chest, backflip onto it; angle toward the ledge; equip hover boots; with enough speed, roll toward the ledge and you should grab it",
+		links: [{
+			url: "https://youtu.be/UNPL-NnIcXs?t=234",
+			description: "Video"
+		}]
+	},
+	gtgSilverBlockSkipWithHammerSuperslide: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.gtgSilverBlockSkipWithHammerSuperslide.enabled &&
+			ItemData.canUse(age, Tricks.hammerHoverBootsSuperslide.canDo),
+		displayText: "Pass Silver Block Using Hammer Superslide",
+		description: "Face the wall to the right of the hole; turn 180; backflip; sideroll; backflip; right sidehop; sideroll retarget; ess left 1; hold Z until camera is all the way in\x0A\x0ASwing hammer; release target on first frame you see Link; hold down; hold left on frame where Link's hat takes up the entire screen",
+		links: [{
+			url: "https://youtu.be/aXzxaSUUr_c",
+			description: "Video"
+		}]
+	},
+	gtgEyeStatueWonderItemJumpslash: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.gtgEyeStatueWonderItemJumpslash.enabled,
+		displayText: "Wonderitem in Statue Room With Jumpslash",
+		description: "Line up with the corner middle pillar from the top level (precise angle). Jump off and jumpslash at the right time to make it to the top. Proceed to the top of the statue to get the wonderitem.",
+		links: [{
+			url: "https://youtu.be/UNPL-NnIcXs?t=431",
+			description: "Video"
+		}]
+	},
+	mqGtgEyeStatueJumpslash: {
+		enabled: false,
+		canDo: (age) => Tricks.mqGtgEyeStatueJumpslash.enabled &&
+        	ItemData.canUse(age, ItemSets.SWORDS),
+		displayText: "MQ Jumpslash Eye Statue Crystal Switch",
+		description: "Lets you hit the crystal switch in the eye statue room with just a sword. To do so, line up with the crystal from the lower level, jump off, and jumpslash a tiny bit later.",
+		links: [{
+			url: "https://youtu.be/UNPL-NnIcXs?t=419",
+			description: "Video"
+		}]
+	},
+	gtgNoZoraTunic: {
+		enabled: false,
+		canDo: () => Tricks.gtgNoZoraTunic.enabled,
+		displayText: "Water Puzzle Chest no Zora Tunic",
+		description: "Removes the Zora Tunic requirement for the room with the water and silver rupees",
+	},
+	//#endregion Gerudo Training Ground
 
 	//#region Ganon's Castle
 	categoryGanonsCastle: {

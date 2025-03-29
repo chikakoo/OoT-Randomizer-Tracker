@@ -5393,7 +5393,7 @@ let StandardDungeons = {
         },
         _canSkipMazeDoors: function(age) {
             return ItemData.canUseAny(age, 
-                [Tricks.weirdShot.canDo, GlitchItemSets.GTG_CHILD_VINE_CLIP])
+                [Tricks.weirdShot.canDo, Tricks.gtgChildVineClips.canDo])
         },
         _getNumberOfOptionalKeysUsed: function() {
             // Gets the number of optional keys used in GTG (these are the ones on the right maze path)
@@ -5628,7 +5628,7 @@ let StandardDungeons = {
                     silverBlockRoom: {
                         Map: "Training Grounds",
                         Needs: [SilverRupeeSets.GTG_SILVER_RUPEES_SLOPES_ROOM], // Checks for hookshot/wall master glitch
-                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.GTG_FIRE_WALL_SKIP]
+                        NeedsAny: [Items.HOOKSHOT, Tricks.gtgSlopesRoomFireWallSkip.canDo]
                     }
                 },
                 ItemLocations: {
@@ -5636,10 +5636,10 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 74, y: 196 },
                         Age: Age.EITHER,
-                        UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgSlopesRoomWallmasterToRupee; },
+                        UseAdultAge: function() { return !Tricks.gtgSlopesRoomWallmasterToRupee.enabled; },
                         Order: 3.1,
                         LongDescription: "After the sandy stalfos room, you'll find this room. The rupee is on the ceiling a little ahead of the entrance. Use your hookshot to reach it.<br/><br/>If you have no hookshot, you can trigger the wallmaster then have it take you upward into it.",
-                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.GTG_WALL_MASTER_TO_SILVER_RUPEE]
+                        NeedsAny: [Items.HOOKSHOT, Tricks.gtgSlopesRoomWallmasterToRupee.canDo]
                     },
                     "Boulder Silver Rupee in Left Area by Void": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
@@ -5674,13 +5674,13 @@ let StandardDungeons = {
             silverBlockRoom: {
                 DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Silver Gauntlets" },
                 UseAdultAge: function() {
-                    return !Settings.GlitchesToAllow.gtgChildVineClips && !Settings.GlitchesToAllow.gtgSlopesRoomFireWallSkip;
+                    return !Tricks.gtgChildVineClips.enabled && !Tricks.gtgSlopesRoomFireWallSkip.enabled;
                 },
                 Exits: {
                     boulderRoom: {},
                     upperSilverBlockRoom: {
                         Age: Age.ADULT,
-                        NeedsAny: [Items.HOOKSHOT, GlitchItemSets.GTG_SILVER_BLOCK_ROOM_EXIT_WITH_HOVERS]
+                        NeedsAny: [Items.HOOKSHOT, Tricks.gtgSilverBlockRoomExitWithHoverBoots.canDo]
                     }
                 },
                 ItemLocations: {
@@ -5698,7 +5698,7 @@ let StandardDungeons = {
                     eyeStatueRoomTop: {},
                     silverBlockRoom: {},
                     roomBehindSilverBlock: {
-                        NeedsAny: [UpgradedItems.SILVER_GAUNTLETS, GlitchItemSets.GTG_HAMMER_HOVER_BOOTS_SILVER_BLOCK_SKIP]
+                        NeedsAny: [UpgradedItems.SILVER_GAUNTLETS, Tricks.gtgSilverBlockSkipWithHammerSuperslide.canDo]
                     }
                 },
                 ItemLocations: {}
@@ -5739,7 +5739,7 @@ let StandardDungeons = {
             },
             eyeStatueRoomTop: {
                 DisplayGroup: { groupName: "Eye Statue Room", imageName: "Fairy Bow" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.gtgChildVineClips; },
+                UseAdultAge: function() { return !Tricks.gtgChildVineClips.enabled; },
                 Exits: {
                     upperSilverBlockRoom: {},
                     eyeStatueRoomBottom: {}
@@ -5755,7 +5755,7 @@ let StandardDungeons = {
                         NeedsAny: [
                             Equipment.HOVER_BOOTS, 
                             Tricks.megaFlip.canDo, 
-                            GlitchItemSets.GTG_EYE_STATUE_WONDERITEM_JUMPSLASH
+                            Tricks.gtgEyeStatueWonderItemJumpslash.canDo
                         ]
                     },
                     "Eye Statue Room Top Room Chest": {
@@ -5989,7 +5989,7 @@ let StandardDungeons = {
                 Exits: {
                     eyeStatueRoomTop: {
                         Age: Age.CHILD,
-                        Needs: [GlitchItemSets.GTG_CHILD_VINE_CLIP]
+                        Needs: [Tricks.gtgChildVineClips.canDo]
                     },
                     mazeAfterDoor2: {
                         Map: "Training Grounds",

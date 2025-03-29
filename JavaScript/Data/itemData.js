@@ -320,7 +320,7 @@ let Keys = {
 		name: "Training Grounds", 
 		minimumKeys: function() { 
 			let canChildAccess = Settings.RandomizerSettings.shuffleDungeonEntrances || Tricks.gtgChildWithAntigrav.enabled;
-			let canChildSkipKeys = Settings.GlitchesToAllow.gtgChildVineClips && canChildAccess;
+			let canChildSkipKeys = Tricks.gtgChildVineClips.enabled && canChildAccess;
 			let canSkipKeys = canChildSkipKeys || Tricks.weirdShot.enabled;
 			return canSkipKeys ? 0 : 7;
 		}, 
@@ -329,7 +329,7 @@ let Keys = {
 		
 		mqMinimumKeys: function() {
 			let canChildAccess = Settings.RandomizerSettings.shuffleDungeonEntrances || Tricks.gtgChildWithAntigrav.enabled;
-			let canChildSkipKeys = Settings.GlitchesToAllow.gtgChildVineClips && canChildAccess;
+			let canChildSkipKeys = Tricks.gtgChildVineClips.enabled && canChildAccess;
 			let canSkipKeys = canChildSkipKeys || Tricks.weirdShot.enabled;
 			return canSkipKeys ? 0 : 3;
 		},

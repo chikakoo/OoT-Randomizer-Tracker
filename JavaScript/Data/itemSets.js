@@ -128,29 +128,6 @@ let GlitchItemSets = {
             ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
             : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
 
-    // Gerudo Training Ground
-    GTG_CHILD_VINE_CLIP: (age) => age === Age.CHILD &&
-        Settings.GlitchesToAllow.gtgChildVineClips &&
-        ItemData.canUse(age, [Items.BOMBCHU, Equipment.DEKU_SHIELD]),
-    GTG_FIRE_WALL_SKIP: () => Settings.GlitchesToAllow.gtgSlopesRoomFireWallSkip,
-    GTG_WALL_MASTER_TO_SILVER_RUPEE: () => 
-        Settings.GlitchesToAllow.gtgSlopesRoomWallmasterToRupee &&
-        (
-            !Settings.RandomizerSettings.shuffleSilverRupees ||
-            !ItemData.checkSilverRupeeRequirement("Training Grounds", 0) // Can't use SilverRupeeSets due to circular logic (same index in MQ)
-        ),
-    GTG_HAMMER_HOVER_BOOTS_SILVER_BLOCK_SKIP: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.gtgSilverBlockSkipWithHammerSuperslide &&
-        ItemData.canUse(age, Tricks.hammerHoverBootsSuperslide.canDo),
-    GTG_SILVER_BLOCK_ROOM_EXIT_WITH_HOVERS: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.gtgSilverBlockRoomExitWithHovers && 
-        ItemData.canUse(age, Equipment.HOVER_BOOTS),
-    GTG_EYE_STATUE_WONDERITEM_JUMPSLASH: (age) => age === Age.ADULT &&
-        Settings.GlitchesToAllow.gtgEyeStatueWonderItemJumpslash,
-    MQ_GTG_EYE_STATUE_SWITCH_JUMPSLASH: (age) => 
-        Settings.GlitchesToAllow.mqGtgEyeStatueJumpslash &&
-        ItemData.canUse(age, ItemSets.SWORDS),
-
     // Ganon's Castle
     GANON_TRIAL_SKIP: (age) => age === Age.ADULT &&
         Settings.GlitchesToAllow.ganonTrialSkip,
@@ -310,7 +287,7 @@ let GameStateSets = {
     WATER_TEMPLE_TUNIC_CHECK: (age) => Tricks.waterNoZoraTunic.enabled || ItemData.canUse(age, Equipment.ZORA_TUNIC),
     SHADOW_LENS_CHECK: (age) => Tricks.shadowLensless.enabled || ItemData.canUse(age, Items.LENS_OF_TRUTH),
     SHADOW_IRON_BOOTS_CHECK: (age) => Tricks.shadowNoIronBoots.enabled || ItemData.canUse(age, Equipment.IRON_BOOTS),
-    GTG_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.gtgNoZoraTunic || ItemData.canUse(age, Equipment.ZORA_TUNIC),
+    GTG_TUNIC_CHECK: (age) => Tricks.gtgNoZoraTunic.enabled || ItemData.canUse(age, Equipment.ZORA_TUNIC),
     GANON_FIRE_TUNIC_CHECK: (age) => Settings.GlitchesToAllow.ganonFireNoTunic || ItemData.canUse(age, Equipment.GORON_TUNIC),
 };
 
@@ -396,7 +373,7 @@ let SilverRupeeSets = {
     GTG_SILVER_RUPEES_SLOPES_ROOM: (age) =>
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Training Grounds", 0)
-        : ItemData.canUseAny(age, [Items.HOOKSHOT, GlitchItemSets.GTG_WALL_MASTER_TO_SILVER_RUPEE]),
+        : ItemData.canUseAny(age, [Items.HOOKSHOT, Tricks.gtgSlopesRoomWallmasterToRupee.canDo]),
     GTG_SILVER_RUPEES_LAVA_ROOM: (age) => 
         Settings.RandomizerSettings.shuffleSilverRupees
         ? ItemData.checkSilverRupeeRequirement("Training Grounds", 1)
