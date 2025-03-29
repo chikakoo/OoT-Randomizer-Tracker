@@ -2290,11 +2290,11 @@ let StandardDungeons = {
                 [
                     [SetType.OR,
                         Tricks.megaFlip.canDo,
-                        GlitchItemSets.WATER_HOOKSHOT_TO_FLOOR_1
-                    ], 
-                    GlitchItemSets.WATER_JUMP_TO_HIGH_WATER
-                ]])) {
-                    return false;
+                        Tricks.waterHookshotToFloor1.canDo], 
+                    Tricks.waterHighWaterJump.canDo
+                ]])
+            ) {
+                return false;
             }
 
             // This checks whether the player can get to high water switch the normal way
@@ -2610,7 +2610,7 @@ let StandardDungeons = {
                                 [SetType.OR, Items.HOOKSHOT, Items.BOMBCHU], // Hit switch
                                 [SetType.OR, Equipment.SCALE, Equipment.IRON_BOOTS] // Dive down
                             ],
-                            GlitchItemSets.WATER_DRAGON_ROOM_CHEST_WITH_CHU
+                            Tricks.waterDragonChestWithChu.canDo
                         ]           
                     }
                 }
@@ -2633,7 +2633,7 @@ let StandardDungeons = {
                     },
                     outOfBoundsWithHighWater: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.WATER_HOOKSHOT_OUT_OF_BOUNDS]
+                        Needs: [Tricks.waterHookshotOutOfBounds.canDoWithHighWater]
                     }
                 },
                 ItemLocations: {
@@ -2682,11 +2682,11 @@ let StandardDungeons = {
                     },
                     roomWithManyTektitesAntechamber: {},
                     crackedWallArea: {
-                        Needs: [GlitchItemSets.WATER_BOMBABLE_WALL_EARLY]
+                        Needs: [Tricks.waterBombableWallEarly.canDo]
                     },
                     outOfBoundsWithLowWater: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.WATER_HOOKSHOT_OUT_OF_BOUNDS_LOW_WATER]
+                        Needs: [Tricks.waterHookshotOutOfBounds.canDoWithLowWater]
                     }
                 },
                 ItemLocations: {
@@ -2791,8 +2791,8 @@ let StandardDungeons = {
                             // 4. Use iron boots to enter the now unbarred door, and hookshot/boomerang the skull
                             [
                                 [(age) => !MapLocations["Water Temple"]._canLightMiddleTorch(age)],
-                                GlitchItemSets.WATER_HOOKSHOT_TO_FLOOR_1,
-                                GlitchItemSets.WATER_JUMP_TO_HIGH_WATER,
+                                Tricks.waterHookshotToFloor1.canDo,
+                                Tricks.waterHighWaterJump.canDo,
                                 Equipment.IRON_BOOTS
                             ]
                         ]
@@ -2822,7 +2822,7 @@ let StandardDungeons = {
                                 [SetType.OR, 
                                     UpgradedItems.LONGSHOT, 
                                     Equipment.HOVER_BOOTS, 
-                                    GlitchItemSets.WATER_EYE_SWITCH_GATE_FROM_TOP]
+                                    Tricks.waterEyeSwitchGateFromTop.canDo]
                             ],
                             Tricks.weirdShot.canDo
                         ]
@@ -2832,7 +2832,7 @@ let StandardDungeons = {
                     },
                     outOfBoundsWithMidWater: {
                         Age: Age.ADULT,
-                        Needs: [GlitchItemSets.WATER_HOOKSHOT_OUT_OF_BOUNDS]
+                        Needs: [Tricks.waterHookshotOutOfBounds.canDoWithHighWater]
                     }
                 },
                 ItemLocations: {
@@ -2885,7 +2885,7 @@ let StandardDungeons = {
             },
             behindBlockArea: {
                 DisplayGroup: { groupName: "Block Hallways (Top East/Mid South)", imageName: "Silver Gauntlets" },
-                UseAdultAge: function() { return !Settings.GlitchesToAllow.waterEyeSwitchGateFromTop; },
+                UseAdultAge: function() { return !Tricks.waterEyeSwitchGateFromTop.enabled; },
                 Exits: {},
                 ItemLocations: {
                     "Chest Behind Block at Mid Level": {
@@ -2951,7 +2951,7 @@ let StandardDungeons = {
                 Exits: {
                     blockPuzzleRoom: {},
                     boulderWaterfall: {
-                        NeedsAny: [Equipment.HOVER_BOOTS, GlitchItemSets.WATER_JUMP_TO_WATERFALL_LEDGE]
+                        NeedsAny: [Equipment.HOVER_BOOTS, Tricks.waterBKJumpToWaterfall.canDo]
                     }
                 },
                 ItemLocations: {}

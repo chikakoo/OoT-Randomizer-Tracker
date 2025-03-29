@@ -2963,7 +2963,7 @@ let MQDungeons = {
                     },
                     roomBeforeDarkLink: {
                         Needs: [() => ItemData.getKeyCount("Water Temple") >= 1],
-                        NeedsAny: [UpgradedItems.LONGSHOT, GlitchItemSets.MQ_WATER_WATERFALL_ROOM_WITH_HOVER_BOOTS]
+                        NeedsAny: [UpgradedItems.LONGSHOT, Tricks.mqWaterWaterfallWithHoverBoots.canDo]
                     },
                     bossRoomAntechamber: {
                         NeedsAny: [
@@ -3645,7 +3645,7 @@ let MQDungeons = {
                         NeedsAny: [
                             Equipment.HOVER_BOOTS,
                             GameStateSets.CAN_HOOK_SCARECROW, 
-                            GlitchItemSets.WATER_JUMP_TO_WATERFALL_LEDGE
+                            Tricks.waterBKJumpToWaterfall.canDo
                         ]
                     }
                 },

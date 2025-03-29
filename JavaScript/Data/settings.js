@@ -1834,14 +1834,104 @@ let Tricks = {
 		isCategory: true,
 		displayText: "Water Temple"
 	},
-	TEST2: {
+	waterNoZoraTunic: {
 		enabled: false,
-		canDo: (age) => Tricks.TEST.enabled,
-		displayText: "TEST",
-		description: "TEST",
+		canDo: () => Tricks.waterNoZoraTunic.enabled,
+		displayText: "No Zora Tunic",
+		description: "Removes the Zora Tunic requirement to dive deep into the water temple"
+	},
+	mqWaterWaterfallWithHoverBoots: {
+		enabled: false,
+		canDo: (age) => Tricks.mqWaterWaterfallWithHoverBoots.enabled &&
+			ItemData.canUse(age, [Items.HOOKSHOT, Equipment.HOVER_BOOTS]),
+		displayText: "MQ Waterfall with Hover Boots and Hookshot",
+		description: "Ride the platform down; equip hovers, backwalk and backflip to the first pillar; hookshot to the upper left pillar and fall to the one below; unequip hovers; hookshot the corner of the one to the right; pause 2 frames after the hookshot stops (you will see the bottom of Link's boot); equip hovers",
 		links: [{
-			url: "",
+			url: "https://youtu.be/EvPZkiaced4?t=506",
 			description: "Video"
+		}]
+	},
+	waterHookshotToFloor1: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.waterHookshotToFloor1.enabled &&
+			ItemData.canUse(age, Items.HOOKSHOT),
+		displayText: "Hookshot to Floor 1",
+		description: "Get close to the edge of where the block was on the middle floor against the wall; aim up and hookshot the corner of the hookshot target; jumpslash to gain more distance",
+		links: [{
+			url: "https://youtu.be/ejlkXRIeafI",
+			description: "Video - setup not actually required"
+		}]
+	},
+	waterHighWaterJump: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.waterHighWaterJump.enabled,
+		displayText: "Jump to High Water Level Triforce",
+		description: "Line up with the middle of the wall texture near the high water triforce, on the entrance side; turn 180; sideroll release; hold forward\x0A\x0ACan also do it manually, as it's not that precise",
+		links: [{
+			url: "https://youtu.be/MHji8_BAQxQ",
+			description: "Video"
+		}]
+	},
+	waterBombableWallEarly: {
+		enabled: false,
+		canDo: (age) => Tricks.waterBombableWallEarly.enabled &&
+			ItemData.canUse(age, ItemSets.EXPLOSIVES),
+		displayText: "Bombable Wall Chest Early",
+		description: "Target the wall with the door; sidehop right; roll release; move against the pillar the triforce symbol is near; backflip; sidehop left; jumpslash when Link is under the ceiling\x0A\x0ACan also do with hover boots with this angle by simply sidestepping on the pit, then sidehopping left",
+		links: [{
+			url: "https://youtu.be/EvPZkiaced4?t=136",
+			description: "Video - different than the description, but close enough"
+		}]
+	},
+	waterEyeSwitchGateFromTop: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.waterEyeSwitchGateFromTop.enabled,
+		displayText: "Eye Switch Gate From Top",
+		description: "At mid water, from the area above the eye switch in the center, position yourself so that you're all the way against the wall. Do a VERY precise shot to hit the eye, then jump down before the gate closes.\x0A\x0AIf you are a child, you can do this if you navigate to the top from the route bringing you to the high water triforce.",
+		links: [{
+			url: "https://youtu.be/EvPZkiaced4?t=423",
+			description: "Video"
+		}]
+	},
+	waterDragonChestWithChu: {
+		enabled: false,
+		canDo: () => Tricks.waterDragonChestWithChu.enabled &&
+			Items.BOMBCHU.playerHas,
+		displayText: "Dragon Room Chest with Only Bombchu",
+		description: "At the whirlpool dragon room, drop a chu straight at where the crystal switch is. Right before it hits the switch, jump into the water so you sink down during the cutscene. Now spam B and swim into the gate. This can be used to get the chest as child Link as well as to skip iron boots/scale as adult.",
+		links: [{
+			url: "https://youtu.be/f-0z68eGH1M?t=9",
+			description: "Video - beginning setup not necessary"
+		}]
+	},
+	waterBKJumpToWaterfall: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.waterBKJumpToWaterfall.enabled,
+		displayText: "Water BK Jump to Waterfall",
+		description: "From the door, sidehop left; roll untarget; sidehop right; sidehop left; roll untarget; sidehop right x2; sidewalk right a bit more so you're line up with the ledge; roll jump to the ledge (time with the boulders!)",
+		links: [{
+			url: "https://youtu.be/EvPZkiaced4?t=203",
+			description: "Video"
+		}]
+	},
+	waterHookshotOutOfBounds: {
+		enabled: false,
+		canDoWithHighWater: (age) => Tricks.waterHookshotOutOfBounds.enabled &&
+			ItemData.canUse(age, [
+				Items.HOOKSHOT, 
+				Equipment.IRON_BOOTS, 
+				GameStateSets.WATER_TEMPLE_TUNIC_CHECK]),
+		canDoWithLowWater: (age) => Tricks.waterHookshotOutOfBounds.enabled &&
+			ItemData.canUse(age, Items.HOOKSHOT),
+		displayText: "Hookshot Out of Bounds",
+		description: "(Vanilla only): Lower east torches - hold Z and hookshot the torch with it to your right (angle joystick to the right) to clip out of bounds.\x0A\x0AMid east chest (low east - high): Navigate above the hallway to load the area, then swim to behind the room and up to the room with the chest.\x0A\x0AWater block room chest (mid south - high): Navigate to ABOVE the hallway with the eye switch and strength block. Use iron boots to sink down partially while halfway down the hallway. Swim around to load the hallway and get to the chest.\x0A\x0AWater block room hallway (mid south - any): Navigate to the temple starting water; you can float up at any water level. Angle the camera toward the center of the main room, then swim to the hallway before you clip back in bounds. This gets you in the hallway, but not to the chest.\x0A\x0ADragon head room (low west - any): Navigate to the passage beyond the block.\x0A\x0AJail room (low south - mid or high): Swim to above the corridor to hit the loading zone.",
+		links: [{
+			url: "https://youtu.be/zddpkhXmklU",
+			description: "Video - shows where the starting water is for the water block room hallway version"
 		}]
 	},
 	//#endregion Water Temple
