@@ -119,17 +119,6 @@ let BeanSets = {
 };
 
 /**
- * Item sets for performing glitches
- */
-let GlitchItemSets = {
-    // KEEPING THESE AFTER REWORK (ones with no specific setting)
-    QUICKDRAW: (age) => 
-        age === Age.CHILD
-            ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
-            : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS])
-};
-
-/**
  * Item sets for checking if a certain item was obtained
  * This makes it easier to keep things in a single place in case an item location changes regions or names
  */
@@ -268,6 +257,10 @@ let GameStateSets = {
         Settings.RandomizerSettings.bombchusInLogic
         ? Items.BOMBCHU.playerHas
         : Items.BOMB.playerHas,
+    CAN_QUICKDRAW: (age) => 
+        age === Age.CHILD
+            ? ItemData.canUse(age, [Equipment.KOKIRI_SWORD, Equipment.DEKU_SHIELD])
+            : ItemData.canUse(age, [Equipment.MASTER_SWORD, ItemSets.SHIELDS]),
     HAS_BOTTLE: () => ItemData.getEmptyBottleCount(true) > 0,
     FIRE_TEMPLE_TUNIC_CHECK: (age) => Tricks.fireNoGoronTunic.enabled || ItemData.canUse(age, Equipment.GORON_TUNIC),
     WATER_TEMPLE_TUNIC_CHECK: (age) => Tricks.waterNoZoraTunic.enabled || ItemData.canUse(age, Equipment.ZORA_TUNIC),

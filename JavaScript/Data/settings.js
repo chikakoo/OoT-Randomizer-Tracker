@@ -243,7 +243,7 @@ let Tricks = {
 			ItemData.canUseAny(age, [
 				Items.DEKU_STICK, 
 				Equipment.BIGGORONS_SWORD, 
-				GlitchItemSets.QUICKDRAW]),
+				GameStateSets.CAN_QUICKDRAW]),
 		displayText: "Lunge Storage",
 		description: "Get close to any ledge and face so aren't facing the dropoff with your sword weapon out; press up and the sword weapon at the same time; it worked if you fell or are now hanging off the ledge.",
 		links: [{
@@ -392,7 +392,7 @@ let Tricks = {
 	},
 	midoSkip: {
 		enabled: true,
-		canDo: (age) => Tricks.midoSkip.enabled,
+		canDo: () => Tricks.midoSkip.enabled,
 		displayText: "Adult Mido Skip",
 		description: "Get in the corner by mido; C-up and line up the A button so the right side is barely touching the ledge (or a pixel or so is visible; backflip (can buffer it during unpause lag if you want)",
 		links: [{
@@ -442,7 +442,7 @@ let Tricks = {
 	},
 	lwBridgePressureJump: {
 		enabled: false,
-		canDo: (age) => Tricks.lwBridgePressureJump.enabled &&
+		canDo: () => Tricks.lwBridgePressureJump.enabled &&
 			Items.BOMB.playerHas,
 		displayText: "Pressure Jump to Lost Woods",
 		description: "Drop a bomb in the tunnel by the corner close to the ladder at the Kokiri Forest exit; get in the corner; if child, move right a tiny bit; hold forward as the bomb is about to explode",
