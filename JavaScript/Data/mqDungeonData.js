@@ -2559,7 +2559,10 @@ let MQDungeons = {
                 Exits: {
                     boulderMaze: {},
                     aboveBoulderMaze: {
-                        Needs: [Songs.SONG_OF_TIME]
+                        NeedsAny: [,
+                            Songs.SONG_OF_TIME,
+                            Tricks.fireLongshotToTopOfTower.canDo,
+                        ]
                     },
                     roomWithLavaAndGrates: {
                         LockedDoor: "Locked Door Above Boulder Maze",

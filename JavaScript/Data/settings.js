@@ -892,31 +892,30 @@ let Tricks = {
 		canDo: (age) => age === Age.ADULT &&
 			Tricks.thawKingZoraWithoutBlueFire.enabled &&
 			ItemData.canUseAny(age, [
-				// Backwalk and use the cutscene item
+				// If in co-op, can't do the sign reading glitch
+				() => !SocketClient.isCoOp(),
 				Items.BUGS,
 				Items.FISH,
 				ItemData.hasAdultTradeItem,
 				Items.MAGIC_BEAN,
 				Items.NAYRUS_LOVE,
 				ChildTradeItems.WEIRD_EGG,
-				ChildTradeItems.ZELDAS_LETTER,
-
-				// Sign reading glitch - doesn't seem to work on ModLoader
-				[
-					() => !ItemLocationSets.MOVE_KING_ZORA(),
-					() => !SocketClient.isCoOp()
-				]
+				ChildTradeItems.ZELDAS_LETTER
 			]),
 		displayText: "Thaw King Zora Without Blue Fire",
-		description: "KING NOT MOVED:\x0ALeft-sidehop up from the bottom of the stairs. Center with the torch, then go barely to the left. Back up as much as you can and check the sign. Now go back down and up to reload the king, and he will be unthawed.\x0A\x0AKING IN ANY POSITION:\x0ABackwalk up the stairs until just passed the black part (the loading zone). Use bugs/fish/potion/trade item/Nayru's Love (equipped swapped beans work too) and go back down and up the stairs. The king will be unthawed.",
+		description: "KING NOT MOVED:\x0ALeft-sidehop up from the bottom of the stairs. Center with the torch, then go barely to the left. Back up as much as you can and check the sign. Now go back down and up to reload the king, and he will be unthawed.\x0A\x0AKING MOVED:\x0AGet in the corner of the right side of the stairs; turn 180; sidehop up the stairs x17; retarget; roll; sidehop left; sidehop right; sidehop left; sidehop right x5; backflip; read the sign; go down then back up the stairs\x0A\x0AKING IN ANY POSITION:\x0ABackwalk up the stairs until just passed the black part (the loading zone). Use bugs/fish/potion/trade item/Nayru's Love (equipped swapped beans work too) and go back down and up the stairs. The king will be unthawed.",
 		links: [{
 			url: "https://youtu.be/73O5FHcmdFE",
 			description: "Video - king not moved (reading the sign)"
 		},
 		{
+			url: "https://youtu.be/qJtAOh2GKqE",
+			description: "Video - king moved (reading the sign)"
+		},
+		{
 			url: "https://youtu.be/4hV2OuOnE28",
 			description: "Video - king in any position (cutscene item)"
-		}]	
+		}]
 	},
 	adultDomainToLake: {
 		enabled: false,
@@ -1583,6 +1582,18 @@ let Tricks = {
 			description: "Video"
 		}]
 	},
+	fireLongshotToTopOfTower: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.fireLongshotToTopOfTower.enabled &&
+			ItemData.canUse(age, UpgradedItems.LONGSHOT),
+		displayText: "Fire Longshot to Top Of Tower",
+		description: "Jump to the short ledge by the pit platform; backwalk off the end; turn right, backwalk off; sidehop left x2; sidehop right; roll + hold target\x0A\x0AHold hookshot button and aim at top corner; nudge left until reticle disappears; adjust down until you see it again; adjust upward until it disappears; fire",
+		links: [{
+			url: "https://youtu.be/eOWmHOChE-M",
+			description: "Video"
+		}]
+	},
 	fireEscapeMapEnclosure: {
 		enabled: false,
 		canDo: (age) => age === Age.ADULT &&
@@ -1995,6 +2006,29 @@ let Tricks = {
 		description: "Target the left wall by the ledge; get in the actue angle corner by the gate; ledge clip as normal (sidehop left, roll, Z at the right time)",
 		links: [{
 			url: "https://youtu.be/a7jXaIcQes4",
+			description: "Video"
+		}]
+	},
+	iceRedIceChestWithBomb: {
+		enabled: false,
+		canDo: () => Tricks.iceRedIceChestWithBomb.enabled &&
+			Items.BOMB.playerHas,
+		displayText: "Red Ice Chest With Bomb",
+		description: "Face the chest; turn 180; place bomb; turn back toward chest; pause on 2nd damage frame (Link will be bent over, almost covered by explosion; hold A during unpause lag",
+		links: [{
+			url: "https://youtu.be/8E9bRc9-6LM?t=11",
+			description: "Video"
+		}]
+	},
+	iceRedIceHPWithBomb: {
+		enabled: false,
+		canDo: (age) => Tricks.iceRedIceHPWithBomb.enabled &&
+			ItemData.canUseAny(age, [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD]) &&
+			ItemData.canUse(age, [ItemSets.SHIELDS, Items.BOMB]),
+		displayText: "Red Ice HP With Bomb",
+		description: "(Finicky) Target wall left of HP; turn left; walk between the ice and the wall and let it push you back; place a bomb; squeeze most of the way though; face down right as you're being pushed back; crouch stab",
+		links: [{
+			url: "https://youtu.be/8E9bRc9-6LM?t=30",
 			description: "Video"
 		}]
 	},

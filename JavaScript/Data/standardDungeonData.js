@@ -2067,7 +2067,10 @@ let StandardDungeons = {
                         Needs: [ItemSets.EXPLOSIVES]
                     },
                     scarecrowRoom: {
-                        Needs: [GameStateSets.CAN_HOOK_SCARECROW]
+                        NeedsAny: [
+                            GameStateSets.CAN_HOOK_SCARECROW, 
+                            Tricks.fireLongshotToTopOfTower.canDo
+                        ]
                     }
                 },
                 ItemLocations: {
@@ -4776,7 +4779,11 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 10,
                         LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. Melt the ice containing the chest.",
-                        NeedsAny: [GameStateSets.HAS_BOTTLE, ItemSets.BLUE_FIRE_ITEMS]
+                        NeedsAny: [
+                            GameStateSets.HAS_BOTTLE, 
+                            ItemSets.BLUE_FIRE_ITEMS,
+                            Tricks.iceRedIceChestWithBomb.canDo
+                        ]
                     },
                     "Heart Piece in Right Red Ice Room": {
                         ItemGroup: ItemGroups.FREESTANDING,
@@ -4784,7 +4791,11 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "When you first enter the spinning scythe room, look to your right. Burn the red ice with your blue fire and enter the room. Melt the ice containing the heart piece.",
-                        NeedsAny: [GameStateSets.HAS_BOTTLE, ItemSets.BLUE_FIRE_ITEMS]
+                        NeedsAny: [
+                            GameStateSets.HAS_BOTTLE, 
+                            ItemSets.BLUE_FIRE_ITEMS,
+                            Tricks.iceRedIceHPWithBomb.canDo
+                        ]
                     },
                     "Skulltula in Right Red Ice Room": {
                         ItemGroup: ItemGroups.SKULLTULA,
