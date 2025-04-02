@@ -34,6 +34,16 @@ EntranceData = {
 				buttonItem.postClick(isCompleted);
 			}
 		});
+	},
+
+	/**
+	 * Returns whether the player can exit the boss entrance to the room of the dungeon
+	 * @param {string} dungeon - the dungeon to check
+	 * @returns True if the player can exit; false otherwise
+	 */
+	canExitFromBossEntrance: function(dungeon) {
+		let entranceGroupName = Data.getEntranceGroup(OwExits[dungeon].Boss)?.name;
+		return BossGroups[entranceGroupName]?.canExitFromEntrance
 	}
 },
 
@@ -1054,6 +1064,7 @@ GrottoGroups = {
 	"Gohma": {
 		icon: "Kokiri's Emerald",
 		tooltip: "Gohma in the Deku Tree",
+		canExitFromEntrance: true,
 		buttons: {
 			"Heart Container": {
 				LongDescription: "To defeat Gohma, you must first stun her when her eye is red. You can use the slingshot or deku nuts to do this - nuts don't stun her for nearly as long, though. Once she's down, attack her. The quickest kill is with three deku stick jumpslashes (or one then two crouch stabs).",
@@ -1071,6 +1082,7 @@ GrottoGroups = {
 	"King Dodongo": {
 		icon: "Goron's Ruby",
 		tooltip: "King Dodongo in Dodongo's Cavern",
+		canExitFromEntrance: true,
 		buttons: {
 			"Chest": {
 				LongDescription: "This chest is in the back of the room."
@@ -1213,6 +1225,7 @@ GrottoGroups = {
 	"Ganon's Tower": {
 		icon: "Light Medallion",
 		tooltip: "The tower in the Center of Ganon's Castle",
+		canExitFromEntrance: true,
 		buttons: {
 			"Boss Key": {
 				LongDescription: "This boss key chest is in the room with the two stalfos. Defeat them to gain access to it.",
@@ -1859,12 +1872,6 @@ GrottoGroups = {
 					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
 				}
 			},
-			"Song of Storms": {
-				icon: "Song of Storms",
-				Age: Age.CHILD,
-				LongDescription: "Play the Song of Storms for the frogs.",
-				Needs: [Songs.SONG_OF_STORMS]
-			},
 			"Song of Time": {
 				icon: "Ocarina of Time",
 				Age: Age.CHILD,
@@ -1873,6 +1880,12 @@ GrottoGroups = {
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleAllFrogSongs;
 				}
+			},
+			"Song of Storms": {
+				icon: "Song of Storms",
+				Age: Age.CHILD,
+				LongDescription: "Play the Song of Storms for the frogs.",
+				Needs: [Songs.SONG_OF_STORMS]
 			},
 			"Bug Minigame": {
 				icon: "Bugs",

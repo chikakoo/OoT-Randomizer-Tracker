@@ -208,6 +208,7 @@ let StandardDungeons = {
                     description: "Burn the web in the basement with a stick, or fire item, then jump in the hole to reach this location."
                 },
                 Exits: {
+                    basementBottom: {},
                     bossRoom: {
                         NeedsAny: [
                             Equipment.DEKU_SHIELD,
@@ -245,6 +246,9 @@ let StandardDungeons = {
             bossRoom: {
                 DisplayGroup: { groupName: "Boss Floor", imageName: "Kokiri's Emerald" },
                 Exits: {
+                    lowerBasement: {
+                        Needs: [() => EntranceData.canExitFromBossEntrance("Deku Tree")]
+                    },
                     "Boss": {
                         OwExit: OwExits["Deku Tree"]["Boss"]
                     }
@@ -3064,6 +3068,8 @@ let StandardDungeons = {
 
                             if (Tricks.shadowAdultGateClip.enabled) {
                                 max += 3; // Giant pit + invisible spikes (backwards from bigdo); boss room doors
+                            } else if (Tricks.shadowClipToBossAntechamber.enabled) {
+                                max++; // Boss room door
                             }
 
                             return { min: 1, max: max };
@@ -3086,6 +3092,8 @@ let StandardDungeons = {
 
                             if (Tricks.shadowAdultGateClip.enabled) {
                                 max += 2; // Invisible spike room (backward from gibdo room); boss room
+                            } else if (Tricks.shadowClipToBossAntechamber.enabled) {
+                                max++; // Boss room door
                             }
 
                             return { min: 2, max: max };
@@ -3110,6 +3118,8 @@ let StandardDungeons = {
                             if (Tricks.shadowAdultGateClip.enabled) {
                                 min = 2; // Backwards from the gibdo room
                                 max++; // Boss room door
+                            } else if (Tricks.shadowClipToBossAntechamber.enabled) {
+                                max++; // Boss room door
                             }
 
                             return { min: min, max: max };
@@ -3132,7 +3142,7 @@ let StandardDungeons = {
                                 min = 1; // No additional keys if you can do the clip
                             }
 
-                            if (Tricks.shadowAdultGateClip.enabled) {
+                            if (Tricks.shadowAdultGateClip.enabled || Tricks.shadowClipToBossAntechamber.enabled) {
                                 max++; // Boss door
                             }
 
@@ -3142,14 +3152,14 @@ let StandardDungeons = {
                     "Locked Door After Boat Ride": {
                         DisplayGroup: { groupName: "Boat Room Across Chasm", imageName: "Fairy Bow" },
                         ItemGroup: ItemGroups.LOCKED_DOOR,
-                        Regions: ["acrossChasmToBossRoom"],
+                        Regions: ["acrossChasmToBossRoom", "bossRoomAnteChamber"],
                         MapInfo: { x: 132, y: 136, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 44,
                         LongDescription: "This is the door across the chasm after creating the statue bridge.",
                         KeyRequirement: function(age) {
                             let min = 5; // Every door
-                            if (Tricks.shadowAdultGateClip.enabled) {
+                            if (Tricks.shadowAdultGateClip.enabled || Tricks.shadowClipToBossAntechamber.enabled) {
                                 min = 1; // Can skip every door if you go here directly
                             }
 
@@ -3163,6 +3173,10 @@ let StandardDungeons = {
                 Exits: {
                     afterTruthSpinner: {
                         NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
+                    },
+                    bossRoom: {
+                        Age: Age.ADULT,
+                        Needs: [Tricks.shadowClipToBossAntechamber.canDo]
                     }
                 },
                 ItemLocations: {
@@ -3752,21 +3766,21 @@ let StandardDungeons = {
             acrossChasmToBossRoom: {
                 DisplayGroup: { groupName: "Boat Room Across Chasm", imageName: "Fairy Bow" },
                 Exits: {
+                    boatRoomEnd: {
+                        NeedsAny: [
+                            ItemSets.EXPLOSIVES_OR_STRENGTH, 
+                            Items.FAIRY_BOW,
+                            Items.DINS_FIRE,
+                            Items.BLUE_FIRE,
+                            QPAItemSets.LEDGE_QPA
+                        ]
+                    },
                     chasmScarecrowPlatform: {
                         Needs: [Songs.SONG_OF_TIME, GameStateSets.CAN_HOOK_SCARECROW]
                     },
-                    bossRoom: {
+                    bossRoomAnteChamber: {
                         Map: "Shadow Temple",
-                        LockedDoor: "Locked Door After Boat Ride",
-                        Needs: [
-                            // Cross Gap
-                            [SetType.OR, 
-                                Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo],
-
-                            // Enter Door
-                            [SetType.OR,
-                                KeySets.SHADOW_BK, Tricks.shadowBKSkip.canDo]
-                        ]
+                        LockedDoor: "Locked Door After Boat Ride"
                     }
                 },
                 ItemLocations: {
@@ -3790,9 +3804,34 @@ let StandardDungeons = {
                     }
                 }
             },
+            bossRoomAnteChamber: {
+                Exits: {
+                    acrossChasmToBossRoom: {
+                        // Assuming coming from the boss room with trick
+                        Map: "Shadow Temple",
+                        LockedDoor: "Locked Door After Boat Ride",
+                        NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
+                    },
+                    bossRoom: {
+                        Needs: [
+                            // Cross Gap
+                            [SetType.OR, 
+                                Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo],
+
+                            // Enter Door
+                            [SetType.OR,
+                                KeySets.SHADOW_BK, Tricks.shadowBKSkip.canDo]
+                        ]
+                    }
+                },
+                ItemLocations: {}
+            },
             bossRoom: {
                 DisplayGroup: { groupName: "Boss Area", imageName: "Shadow Medallion" },
                 Exits: {
+                    bossRoomAnteChamber: {
+                        Needs: [() => EntranceData.canExitFromBossEntrance("Shadow Temple")]
+                    },
                     "Boss": {
                         OwExit: OwExits["Shadow Temple"]["Boss"]
                     }

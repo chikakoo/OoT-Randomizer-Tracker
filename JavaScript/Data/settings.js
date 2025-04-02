@@ -457,9 +457,9 @@ let Tricks = {
 			Tricks.zorasRiverScalelessChild.enabled &&
 			ItemData.canUse(age, ItemSets.ACUTE_ANGLE_SWORDS),
 		displayText: "Child Clip to River",
-		description: "Get in the left corner by the water; backflip; roll untarget; sidehop right; roll untarget; sidehop left; roll hold target\x0A\x0AWith Z held, slash; backflip; sidehop right and jumpslash on the right frame; swim to the loading zone",
+		description: "Target the left side of the stone wall; turn left and walk to the wall; sidehop left; sideroll + hold; sidehop left; backflip (take out Kokiri sword mid flip if not using sticks)\x0A\x0ATake out stick now if using them; sidehop right; jumpslash when lined up with corner of stone",
 		links: [{
-			url: "https://youtu.be/7kDXQZZw-wk?t=128",
+			url: "https://youtu.be/DF1ZS95oves?t=26",
 			description: "Video"
 		}]
 	},
@@ -1863,6 +1863,22 @@ let Tricks = {
 		links: [{
 			url: "https://youtu.be/yETJj8vOIOA",
 			description: "Video"
+		}]
+	},
+	shadowClipToBossAntechamber: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.shadowClipToBossAntechamber.enabled &&
+			ItemData.canUse(age, [
+				Tricks.shadowBKSkip.canDo,
+				Equipment.HOVER_BOOTS, 
+				ItemSets.EXPLOSIVES,
+				ItemSets.SHIELDS]),
+		displayText: "Clip to Boss Antechamber",
+		description: "Shadow BK skip required to be on!\x0A\x0ABOTH EXPLOSIVE TYPES:\x0ATarget left side of chest; turn left; backflip + roll hold target; vertical slash + R; forward to front of chest:\x0A\x0ABOMB:\x0ATurn around; sidehop left; sideroll retarget; vertical slash + R x2; ess left x2; drop bomb here + backflip + megaflip\x0A\x0ABOMBCHU:\x0ATurn right; sidehop left; roll retarget; turn right; ess left x2; megaflip\x0A\x0AAFTER FLIPPING:\x0AEquip hover boots midair and ONLY HOLD Z\x0A\x0AAFTER CLIPPING:\x0AJumpslash when Link starts falling and hold R; turn right; ess right x2; go forward until hover boots activate, and roll; stop when on the platform; take off boots and backwalk to grab the ledge;climb up and dry roll x2; turn left and walk to the wall - this is the boss door (must do BK skip to get in, as the door is not loaded)",
+		links: [{
+			url: "https://youtu.be/CNl5EKBqXwQ",
+			description: "Video - description uses the backup strat and a setup after the clip not needing hookshot"
 		}]
 	},
 	shadowBKSkip: {

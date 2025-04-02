@@ -3837,7 +3837,13 @@ let MQDungeons = {
                         LongDescription: "This is the door near the beamos after the truth spinner room.",
                         Needs: [ItemSets.EXPLOSIVES],
                         KeyRequirement: function(age) {
-                            let max = SettingSets.SHADOW_GATE_CLIP() ? 6 : 2;
+                            let max = 2; // Maze and this door
+                            if (SettingSets.SHADOW_GATE_CLIP()) {
+                                max = 6; // Can get every other key
+                            } else if (Tricks.shadowClipToBossAntechamber.enabled) {
+                                max++; // Invisible wall room
+                            }
+
                             return { min: 1, max: max };
                         }
                     },
@@ -3852,7 +3858,13 @@ let MQDungeons = {
                         // This logic works from both sides, as you can't do anything from the reverse side without passing this check
                         NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo],
                         KeyRequirement: function(age) {
-                            let max = SettingSets.SHADOW_GATE_CLIP() ? 6 : 3;
+                            let max = 3; // Maze, beamos, and this door
+                            if (SettingSets.SHADOW_GATE_CLIP()) {
+                                max = 6; // Can get every other key
+                            } else if (Tricks.shadowClipToBossAntechamber.enabled) {
+                                max++; // Invisible wall room
+                            }
+
                             return { min: 2, max: max };
                         }
                     },
@@ -3866,9 +3878,15 @@ let MQDungeons = {
                         LongDescription: "This is the locked door in the room with the invisible spikes.",
                         Needs: [Items.HOOKSHOT],
                         KeyRequirement: function(age) {
-                            let canGateClip = SettingSets.SHADOW_GATE_CLIP();
-                            let max = canGateClip ? 6 : 4;
-                            let min = canGateClip ? 2 : 3;
+                            let max = 4; // Maze, beamos, entrance to this room, this door
+                            let min = 3; // Maze is optional
+                            if (SettingSets.SHADOW_GATE_CLIP()) {
+                                max = 6; // Can get every other key
+                                min = 2; // Door after fans, this door
+                            } else if (Tricks.shadowClipToBossAntechamber.enabled) {
+                                max++; // Invisible wall room
+                            }
+
                             return { min: min, max: max };
                         }
                     },
@@ -3882,9 +3900,16 @@ let MQDungeons = {
                         Order: 33,
                         LongDescription: "This is the locked door in the Gibdos room after all the fans.",
                         KeyRequirement: function(age) {
-                            let canGateClip = SettingSets.SHADOW_GATE_CLIP();
-                            let max = canGateClip ? 6 : 5;
-                            let min = canGateClip ? 1 : 4;
+                            let max = 5; // Maze, beamos, invis spike  entrance, invis spike exit, this door
+                            let min = 4; // Maze is optional
+
+                            if (SettingSets.SHADOW_GATE_CLIP()) {
+                                max = 6; // Can get every other key
+                                min = 1; // Can get here directly
+                            } else if (Tricks.shadowClipToBossAntechamber.enabled) {
+                                max++; // Invisible wall room
+                            }
+
                             return { min: min, max: max };
                         }
                     },
@@ -3897,7 +3922,13 @@ let MQDungeons = {
                         Order: 40,
                         LongDescription: "This is the locked door in the invisible wall room.",
                         KeyRequirement: function(age) {
-                            let min = SettingSets.SHADOW_GATE_CLIP() ? 1 : 5;
+                            let min = 5; // Need every key besides maze
+                            if (SettingSets.SHADOW_GATE_CLIP()) {
+                                min = 1; // Can get here directly
+                            } else if (Tricks.shadowClipToBossAntechamber.enabled) {
+                                min = 2; // Maze door + this
+                            }
+
                             return { min: min, max: 6 };
                         }
                     }
@@ -3978,7 +4009,12 @@ let MQDungeons = {
             },
             mazeBack: {
                 DisplayGroup: { groupName: "Entrance & Maze Rooms", imageName: "Hover Boots" },
-                Exits: {},
+                Exits: {
+                    bossRoom: {
+                        Age: Age.ADULT,
+                        Needs: [Tricks.shadowClipToBossAntechamber.canDo]
+                    }
+                },
                 ItemLocations: {
                     "2 Flying Pots in Back Maze Room": {
                         ItemGroup: ItemGroups.GROUP,
@@ -4543,6 +4579,15 @@ let MQDungeons = {
             acrossChasm: {
                 DisplayGroup: { groupName: "Boat Room Chasm Areas", imageName: "Fairy Bow" },
                 Exits: {
+                    endOfBoatRide: {
+                        NeedsAny: [
+                            ItemSets.EXPLOSIVES_OR_STRENGTH, 
+                            Items.FAIRY_BOW,
+                            Items.DINS_FIRE,
+                            Items.BLUE_FIRE,
+                            QPAItemSets.LEDGE_QPA
+                        ]
+                    },
                     chasmPlatform: {
                         Needs: [
                             // Hit the eye switch
@@ -4696,6 +4741,9 @@ let MQDungeons = {
             bossRoomDoor: {
                 DisplayGroup: { groupName: "Boss Area", imageName: "Shadow Medallion" },
                 Exits: {
+                    acrossChasm: {
+                        NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
+                    },
                     bossRoom: {
                         NeedsAny: [KeySets.SHADOW_BK, Tricks.shadowBKSkip.canDo]
                     }
@@ -4713,6 +4761,9 @@ let MQDungeons = {
             bossRoom: {
                 DisplayGroup: { groupName: "Boss Area", imageName: "Shadow Medallion" },
                 Exits: {
+                    bossRoomDoor: {
+                        Needs: [() => EntranceData.canExitFromBossEntrance("Shadow Temple")]
+                    },
                     "Boss": {
                         OwExit: OwExits["Shadow Temple"]["Boss"]
                     }
