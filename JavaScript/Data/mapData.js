@@ -2085,6 +2085,7 @@ let MapLocations = {
                             ItemSets.BLAST_OR_SMASH_ITEMS,
                             BeanSets.DEATH_MOUNTAIN_TRAIL,
                             Tricks.dmtClimbWithHoverBoots.canDo,
+                            Tricks.dmtTopWithHookshotJump.canDo,
                             ItemLocationSets.DMT_ROCKS_BLOCKING_TOP_PATH
                         ]
                     },

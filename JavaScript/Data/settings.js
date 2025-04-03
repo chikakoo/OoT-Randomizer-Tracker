@@ -703,6 +703,18 @@ let Tricks = {
 			description: "Video"
 		}]
 	},
+	dmtTopWithHookshotJump: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.dmtTopWithHookshotJump.enabled &&
+			ItemData.canUse(age, Items.HOOKSHOT),
+		displayText: "DMT Pass Rocks with Hookshot Jump",
+		description: "Target the wall to the left of the fence to the right of Goron City; sidehop right; sideroll release; keeping this angle; slide against the wall until you are in the corner\x0A\x0AKeep Z held forever; B to vertical slash; take out hookshot, then A to cancel so you're still holding it; A + forward to roll; release forward after bonk and spam hookshot; you should now be in the weird glitched state\x0A\x0APress hookshot on the 3th time the hookshot dot appears (4th cycle); hold down immediately after shooting",
+		links: [{
+			url: "https://youtu.be/a1lk1_-b-ho?t=23",
+			description: "Video"
+		}]
+	},
 	dmtSkullsWithoutHammer: {
 		enabled: false,
 		canDo: (age) => age === Age.ADULT && 
