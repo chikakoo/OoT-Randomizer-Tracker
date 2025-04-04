@@ -166,5 +166,6 @@ let setDungeonTypeOfMap = function(mapName, mapType) {
 		MapLocations[mapName] = MQDungeons[mapName];
 		MQDungeons[mapName].IsInUse = true;
 	}
+	LockedDoorWalker.compute(mapName);
 	ItemTracker.setUp();
 };

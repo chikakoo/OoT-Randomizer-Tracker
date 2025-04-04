@@ -1076,7 +1076,7 @@ Data = {
         }
         
         let keyReq = LockedDoorWalker.getKeyRequirement(lockedDoor, age);
-        if (!keyReq) {
+        if (!keyReq || keyReq.min === 0 || keyReq.max === 0) { // min/max should NEVER be 0, would indicate an issue
             console.log(`ERROR: no key requirement found for ${map} as ${age}`);
             return ItemObtainability.NO;
         }

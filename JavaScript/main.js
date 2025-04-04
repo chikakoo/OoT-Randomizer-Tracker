@@ -25,6 +25,7 @@ let onPageLoad = function() {
 	LocationSidebar.refreshLocationList();
 	ItemTracker.setUp();
 	ItemLocationDisplay.displayLocation("Kokiri Forest");
+	LockedDoorWalker.computeAll();
 };
 
 /**

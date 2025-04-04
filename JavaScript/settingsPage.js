@@ -254,6 +254,7 @@ let SettingsPage = {
 
 		let inputElement = document.getElementsByName(trickName)[0];
 		Tricks[trickName].enabled = inputElement.checked;
+        LockedDoorWalker.computeAll();
 		ItemTracker.setUp();
 		refreshAll();
     },

@@ -316,6 +316,7 @@ let SaveAndLoad = {
         ItemTracker.setUp();
         purgeLocations();
         
+        LockedDoorWalker.computeAll();
         refreshAll();
         ItemLocationDisplay.displayLocation("Kokiri Forest");
 
