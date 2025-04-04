@@ -817,7 +817,8 @@ Data = {
             return false;
         }
 
-        if (ItemData.getKeyCount(map) < itemLocation.KeyRequirement(age).min) {
+        let keyReq = LockedDoorWalker.getKeyRequirement(itemLocation, age);
+        if (ItemData.getKeyCount(map) < keyReq.min) {
             return false;
         }
         

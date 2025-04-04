@@ -1568,8 +1568,11 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "This is the door at the end of the first hallway.",
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: 1 };
+                        StartingDoorRequirement: () => true,
+                        NextDoors: { 
+                            "Locked Door by Twisted Corridor": () => true,
+                            "Locked Door in Falling Ceiling Room": () => 
+                                Tricks.megaFlip.enabled || Tricks.forestGreenPoeEarly.enabled,
                         },
                         NeedsAny: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
                     },
@@ -1581,9 +1584,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 14,
                         LongDescription: "This is the door that's after the block puzzle by the bubbles.",
-                        KeyRequirement: function(age) {
-                            return { min: 2, max: 2 };
-                        }
+                        NextDoors: { "Locked Door After Twisted Hallway": () => true }
                     },
                     "Locked Door After Twisted Hallway": {
                         DisplayGroup: { groupName: "Untwisted Corridor & Upper Courtyard", imageName: "Boss Key" },
@@ -1593,9 +1594,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 17.1,
                         LongDescription: "This is the door that's in the boss key room when the boss key chest is sideways.",
-                        KeyRequirement: function(age) {
-                            return { min: 3, max: 3 };
-                        }
+                        NextDoors: { "Locked Door in Blue Poe Room": () => true }
                     },
                     "Locked Door in Blue Poe Room": {
                         DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
@@ -1605,9 +1604,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 23,
                         LongDescription: "This is the door that's in the blue poe room.",
-                        KeyRequirement: function(age) {
-                            return { min: 4, max: 4 };
-                        }
+                        NextDoors: { "Locked Door in Green Bubble Hallway": () => true }
                     },
                     "Locked Door in Green Bubble Hallway": {
                         DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
@@ -1617,9 +1614,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 24,
                         LongDescription: "This is the door that's after the green bubbles, leading to the frozen eye switch.",
-                        KeyRequirement: function(age) {
-                            return { min: 5, max: 5 };
-                        }
+                        NextDoors: { "Locked Door in Falling Ceiling Room": () => true }
                     },
                     "Locked Door in Falling Ceiling Room": {
                         DisplayGroup: { groupName: "Falling Ceiling Rooms", imageName: "Small Poe" },
@@ -1628,10 +1623,7 @@ let MQDungeons = {
                         MapInfo: { x: 318, y: 132, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 29,
-                        LongDescription: "This is the door that's at the end of the falling ceiling room.",
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: 6 };
-                        }
+                        LongDescription: "This is the door that's at the end of the falling ceiling room."
                     }
                 }
             },

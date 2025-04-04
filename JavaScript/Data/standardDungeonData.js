@@ -935,20 +935,6 @@ let StandardDungeons = {
         Floors: ["F2", "F1", "B1"],
         StartingFloorIndex: 1,
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
-        _canJumpToTop: function(age) {
-            let canGetToFromRightRoom = Items.FAIRY_BOW.playerHas && (
-                ItemData.canUseAny(age, [
-                    UpgradedItems.GOLDEN_SCALE,
-                    UpgradedItems.LONGSHOT, 
-                    Equipment.IRON_BOOTS]));
-            let canGetToOutsideLeftBeforeBlockRoom = canGetToFromRightRoom ||
-                ItemData.canUseAny(age, [
-                    Songs.SONG_OF_TIME,
-                    Tricks.forestSoTBlockLedgeClip.canDo]);
-
-            return canGetToOutsideLeftBeforeBlockRoom &&
-                Tricks.forestMegaJumpToLedge.canDo(age);
-        },
         _canAccessAllPoeRooms: function(age) {
             // Requires an IsPostWalkCheck on each item using this!
             return ItemData.canUse(age, [
@@ -999,13 +985,7 @@ let StandardDungeons = {
                         Order: 13,
                         LongDescription: "This is the western door in the lobby.",
                         StartingDoorRequirement: () => true,
-                        NextDoors: { "Locked Door by Twisted Corridor": () => true },
-                        KeyRequirement: function(age) {
-                            if (MapLocations["Forest Temple"]._canJumpToTop(age)) {
-                                return { min: 1, max: Keys.FOREST_TEMPLE.totalKeys() };
-                            }
-                            return { min: 1, max: 1 };
-                        }
+                        NextDoors: { "Locked Door by Twisted Corridor": () => true }
                     },
                     "Locked Door by Twisted Corridor": {
                         DisplayGroup: { groupName: "Block Puzzle Room", imageName: "Goron's Bracelet" },
@@ -1016,13 +996,7 @@ let StandardDungeons = {
                         Order: 15,
                         LongDescription: "This is the door that's after the block puzzle by the bubbles.",
                         StartingDoorRequirement: () => Tricks.forestMegaJumpToLedge.enabled,
-                        NextDoors: { "Locked Door in Boss Key Room": () => true },
-                        KeyRequirement: function(age) {
-                            if (MapLocations["Forest Temple"]._canJumpToTop(age) && !ItemLocationSets.FOREST_OPENED_LOBBY_DOOR()) {
-                                return { min: 1, max: 2 };
-                            }
-                            return { min: 2, max: 2 };
-                        }
+                        NextDoors: { "Locked Door in Boss Key Room": () => true }
                     },
                     "Locked Door in Boss Key Room": {
                         DisplayGroup: { groupName: "Untwisted Corridor & Upper Courtyard", imageName: "Boss Key" },
@@ -1032,13 +1006,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 20,
                         LongDescription: "This is the door that's in the boss key room when the boss key chest is sideways.",
-                        NextDoors: { "Locked Door in Blue Poe Room": () => true },
-                        KeyRequirement: function(age) {
-                            if (MapLocations["Forest Temple"]._canJumpToTop(age) && !ItemLocationSets.FOREST_OPENED_LOBBY_DOOR()) {
-                                return { min: 2, max: 3 };
-                            }
-                            return { min: 3, max: 3 };
-                        }
+                        NextDoors: { "Locked Door in Blue Poe Room": () => true }
                     },
                     "Locked Door in Blue Poe Room": {
                         DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
@@ -1048,13 +1016,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 26,
                         LongDescription: "This is the door that's in the blue poe room.",
-                        NextDoors: { "Locked Door in Green Bubble Hallway": () => true },
-                        KeyRequirement: function(age) {
-                            if (MapLocations["Forest Temple"]._canJumpToTop(age) && !ItemLocationSets.FOREST_OPENED_LOBBY_DOOR()) {
-                                return { min: 3, max: 4 };
-                            }
-                            return { min: 4, max: 4 };
-                        }
+                        NextDoors: { "Locked Door in Green Bubble Hallway": () => true }
                     },
                     "Locked Door in Green Bubble Hallway": {
                         DisplayGroup: { groupName: "Twisted Corridor Rooms", imageName: "Fairy Bow" },
@@ -1063,13 +1025,7 @@ let StandardDungeons = {
                         MapInfo: { x: 319, y: 154, floor: "F2" },
                         Age: Age.ADULT,
                         Order: 27,
-                        LongDescription: "This is the door that's after the green bubbles, leading to the frozen eye switch.",
-                        KeyRequirement: function(age) {
-                            if (MapLocations["Forest Temple"]._canJumpToTop(age) && !ItemLocationSets.FOREST_OPENED_LOBBY_DOOR()) {
-                                return { min: 4, max: 5 };
-                            }
-                            return { min: 5, max: 5 };
-                        }
+                        LongDescription: "This is the door that's after the green bubbles, leading to the frozen eye switch."
                     }
                 }
             },
@@ -1158,7 +1114,7 @@ let StandardDungeons = {
                     },
                     topOfOutsideLeft: {
                         Age: Age.ADULT,
-                        Needs: [(age) => MapLocations["Forest Temple"]._canJumpToTop(age)]
+                        Needs: [Tricks.forestMegaJumpToLedge.canDo]
                     },
                     topOfOutsideLeftSkulltula: {
                         Needs: [UpgradedItems.LONGSHOT]

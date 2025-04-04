@@ -101,7 +101,7 @@ let LockedDoorWalker = {
     },
 
     /**
-     * Gets all the locked door names that the player can open without opening others
+     * Gets all the locked door names for a dungeon
      * - Locked doors are currently always in the main region
      * - TODO: probably revamp this, because it's not very clean
      * @param {string} dungeon - The dungeon to get the starting locked doors for
@@ -110,24 +110,61 @@ let LockedDoorWalker = {
      */
     _getAllLockedDoorNames: function(dungeon) {
         let lockedDoorNames = [];
-        Object.keys(MapLocations[dungeon].Regions.main.ItemLocations).forEach(lockedDoorName => {
-            lockedDoorNames.push(lockedDoorName);
+        let mainItemLocations = MapLocations[dungeon].Regions.main.ItemLocations;
+        Object.keys(mainItemLocations).forEach(lockedDoorName => {
+            if (mainItemLocations[lockedDoorName].ItemGroup === ItemGroups.LOCKED_DOOR) {
+                lockedDoorNames.push(lockedDoorName);
+            }
         });
         return lockedDoorNames;
     },
 
+    /**
+     * Gets all the locked doors for a dungeon
+     * - Locked doors are currently always in the main region
+     * @param {string} dungeon - The dungeon to get the starting locked doors for
+     * @param {string} age - The age the get the starting locked doors for
+     * @returns {Array<string>} - An array of the names of all locked doors
+     */
+    _getAllLockedDoors: function(dungeon) {
+        let lockedDoors = [];
+        let mainItemLocations = MapLocations[dungeon].Regions.main.ItemLocations;
+        Object.values(mainItemLocations).forEach(lockedDoor => {
+            if (lockedDoor.ItemGroup === ItemGroups.LOCKED_DOOR) {
+                lockedDoors.push(lockedDoor);
+            }
+        });
+        return lockedDoors;
+    },
+
+    /**
+     * Computes the maximum number of doors you can open before opening the given door
+     * @param {string} dungeon - The dungeon
+     * @param {string} age - The age
+     * @param {string} doorName - The door to compute maxes for
+     */
     _computeMaxes: function(dungeon, age, doorName) {
         let _this = this;
         let visitedDoors = [];
         this._getAllStartingLockedDoorNames(dungeon, age).forEach(startingDoor => {
-            _this._computeMaxesFromStartingSet(dungeon, age, doorName, startingDoor, visitedDoors);
+            _this._computeMaxesFromDoor(dungeon, age, doorName, startingDoor, visitedDoors);
         });
 
         let door = _this.getLockedDoorObject(dungeon, doorName);
         _this._setMaxKeyRequirement(door, age, visitedDoors.length + 1); // The +1 covers the door itself
     },
 
-    _computeMaxesFromStartingSet: function(dungeon, age, targetDoorName, currentDoorName, visitedDoors) {
+    /**
+     * Computes the maximum number of doors you can open using a depth-first search
+     * - Goes to every door, excluding the target door
+     * @param {string} dungeon - The dungeon
+     * @param {string} age - The age
+     * @param {string} targetDoorName - THe door we're computing the max for
+     * @param {string} currentDoorName - The current door we're visiting
+     * @param {Array<string>} visitedDoors - An array of door names we've already visited
+     * @returns Void, but modifies visited doors - the length of this + 1 is the max value
+     */
+    _computeMaxesFromDoor: function(dungeon, age, targetDoorName, currentDoorName, visitedDoors) {
         // Don't continue through the target door or a door we've seen already
         if (currentDoorName === targetDoorName || visitedDoors.includes(currentDoorName)) {
             return;
