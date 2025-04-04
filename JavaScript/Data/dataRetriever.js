@@ -1064,18 +1064,23 @@ Data = {
             return ItemObtainability.YES;
         }
 
-        let lockedDoor = MapLocations[itemLocation.Map].Regions.main.ItemLocations[itemLocation.LockedDoor];
+        let map = itemLocation.Map;
+        let lockedDoor = LockedDoorWalker.getLockedDoorObject(map, itemLocation.LockedDoor);
         if (lockedDoor.playerHas)
         {
             return ItemObtainability.YES;
         }
 
-        let map = itemLocation.Map;
         if (this.getRemainingKeys(map) < 1) {
             return ItemObtainability.NO; // No keys left to open any doors!
         }
         
-        let keyReq = lockedDoor.KeyRequirement(age);
+        let keyReq = LockedDoorWalker.getKeyRequirement(lockedDoor, age);
+        if (!keyReq) {
+            console.log(`ERROR: no key requirement found for ${map} as ${age}`);
+            return ItemObtainability.NO;
+        }
+
         let currentKeyCount = ItemData.getKeyCount(map);
 		if (currentKeyCount < keyReq.max) { return ItemObtainability.NO; }
 		return ItemObtainability.YES; 

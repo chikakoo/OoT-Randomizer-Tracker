@@ -6000,6 +6000,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "This is the door on the west side of the main room.",
+                        StartingDoorRequirement: () => true,
                         KeyRequirement: function(age) {
                             return { min: 1, max: 2 };
                         }
@@ -6012,6 +6013,7 @@ let MQDungeons = {
                         Order: 6,
                         LongDescription: "WALL MASTER WARNING:<br/>This is the locked door you find after the room with the floormasters.",
                         Needs: [ItemSets.DISTANT_SWITCH_ITEMS],
+                        StartingDoorRequirement: () => true,
                         KeyRequirement: function(age) {
                             return { min: 1, max: 2 };
                         }

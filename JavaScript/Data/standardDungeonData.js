@@ -998,6 +998,8 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "This is the western door in the lobby.",
+                        StartingDoorRequirement: () => true,
+                        NextDoors: { "Locked Door by Twisted Corridor": () => true },
                         KeyRequirement: function(age) {
                             if (MapLocations["Forest Temple"]._canJumpToTop(age)) {
                                 return { min: 1, max: Keys.FOREST_TEMPLE.totalKeys() };
@@ -1013,6 +1015,8 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 15,
                         LongDescription: "This is the door that's after the block puzzle by the bubbles.",
+                        StartingDoorRequirement: () => Tricks.forestMegaJumpToLedge.enabled,
+                        NextDoors: { "Locked Door in Boss Key Room": () => true },
                         KeyRequirement: function(age) {
                             if (MapLocations["Forest Temple"]._canJumpToTop(age) && !ItemLocationSets.FOREST_OPENED_LOBBY_DOOR()) {
                                 return { min: 1, max: 2 };
@@ -1028,6 +1032,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 20,
                         LongDescription: "This is the door that's in the boss key room when the boss key chest is sideways.",
+                        NextDoors: { "Locked Door in Blue Poe Room": () => true },
                         KeyRequirement: function(age) {
                             if (MapLocations["Forest Temple"]._canJumpToTop(age) && !ItemLocationSets.FOREST_OPENED_LOBBY_DOOR()) {
                                 return { min: 2, max: 3 };
@@ -1043,6 +1048,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 26,
                         LongDescription: "This is the door that's in the blue poe room.",
+                        NextDoors: { "Locked Door in Green Bubble Hallway": () => true },
                         KeyRequirement: function(age) {
                             if (MapLocations["Forest Temple"]._canJumpToTop(age) && !ItemLocationSets.FOREST_OPENED_LOBBY_DOOR()) {
                                 return { min: 3, max: 4 };
@@ -5036,6 +5042,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 22,
                         LongDescription: "This is the door after the crawlspace in the northeast corner of the main room.",
+                        StartingDoorRequirement: () => true,
                         KeyRequirement: function(age) {
                             return { min: 1, max: 3 };
                         }
@@ -5048,6 +5055,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 17,
                         LongDescription: "This is left locked door in the center of the main room.",
+                        StartingDoorRequirement: () => true,
                         KeyRequirement: function(age) {
                             return { min: 1, max: 3 };
                         }
@@ -5060,6 +5068,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 20,
                         LongDescription: "This is right locked door in the center of the main room.",
+                        StartingDoorRequirement: () => true,
                         KeyRequirement: function(age) {
                             return { min: 1, max: 3 };
                         }
