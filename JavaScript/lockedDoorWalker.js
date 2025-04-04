@@ -61,6 +61,8 @@ let LockedDoorWalker = {
 
     /**
      * Performs a breadth-first search to compute mins for the given dungeon
+     * TODO: OverrideKeyRequirement won't really work for this at the moment
+     * - currently, there's no doors where that matters
      * @param {string} dungeon - The dungeon
      * @param {string} age - The age
      * @param {Array<string>} doorNamesToVisitNext - An Array of door names, indicating the current set of doors
@@ -170,9 +172,13 @@ let LockedDoorWalker = {
             return;
         }
 
-        visitedDoors.push(currentDoorName);
-
         let door = this.getLockedDoorObject(dungeon, currentDoorName);
+
+        // Only count the door if we actually need to use a key to open it
+        if (!door.OverrideKeyRequirement || !door.OverrideKeyRequirement()) {
+            visitedDoors.push(currentDoorName);
+        }
+        
         if (!door.NextDoors) {
             return;
         }
@@ -180,7 +186,7 @@ let LockedDoorWalker = {
         let _this = this;
         Object.keys(door.NextDoors).forEach(nextDoorName => {
             if (door.NextDoors[nextDoorName]?.(age)) {
-                _this._computeMaxesFromStartingSet(dungeon, age, targetDoorName, nextDoorName, visitedDoors);
+                _this._computeMaxesFromDoor(dungeon, age, targetDoorName, nextDoorName, visitedDoors);
             }
         });
     },
@@ -220,7 +226,10 @@ let LockedDoorWalker = {
      * @param {number} minValue - The value to set
      */
     _setMinKeyRequirement: function(door, age, minValue) {
-        if (age === Age.CHILD) {
+        if (door.OverrideKeyRequirement && door.OverrideKeyRequirement()) {
+            door.KeyRequirementChild = { min: -1, max: -1 };
+            door.KeyRequirementAdult = { min: -1, max: -1 };
+        } else if (age === Age.CHILD) {
             door.KeyRequirementChild = door.KeyRequirementChild || { min: 0, max: 0 }
             door.KeyRequirementChild.min = minValue;
         } else if (age === Age.ADULT) {
@@ -236,7 +245,10 @@ let LockedDoorWalker = {
      * @param {number} maxValue - The value to set
      */
     _setMaxKeyRequirement: function(door, age, maxValue) {
-        if (age === Age.CHILD) {
+        if (door.OverrideKeyRequirement && door.OverrideKeyRequirement()) {
+            door.KeyRequirementChild = { min: -1, max: -1 };
+            door.KeyRequirementAdult = { min: -1, max: -1 };
+        } else if (age === Age.CHILD) {
             door.KeyRequirementChild = door.KeyRequirementChild || { min: 0, max: 0 }
             door.KeyRequirementChild.max = maxValue;
         } else if (age === Age.ADULT) {

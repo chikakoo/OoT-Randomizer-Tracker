@@ -2193,9 +2193,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 7,
                         LongDescription: "This is the locked door on the right side of the lobby.",
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: Keys.FIRE_TEMPLE.mqTotalKeys() };
-                        },
+                        StartingDoorRequirement: () => true
                     },
                     "Locked Door in Big Lava Room": {
                         DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
@@ -2210,9 +2208,8 @@ let MQDungeons = {
                         },
                         Order: 18,
                         LongDescription: "This is the locked door on the far side of the big lava room.",
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: 2 };
-                        },
+                        StartingDoorRequirement: () => true,
+                        NextDoors: { "Locked Door Above Boulder Maze": () => true }
                     },
                     "Locked Door Above Boulder Maze": {
                         DisplayGroup: { groupName: "Upper Boulder Maze", imageName: "Goron Mask" },
@@ -2222,9 +2219,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 28,
                         LongDescription: "This is the locked door on the top of the boulder maze.",
-                        KeyRequirement: function(age) {
-                            return { min: 2, max: 3 };
-                        },
+                        NextDoors: { "Locked Door After Flare Dancer": () => true }
                     },
                     "Locked Door After Flare Dancer": {
                         DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula" },
@@ -2234,9 +2229,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 41,
                         LongDescription: "This is the locked door after riding the elevator up from the Flare Dancer fight.",
-                        KeyRequirement: function(age) {
-                            return { min: 3, max: 4 };
-                        },
+                        NextDoors: { "Locked Door Under Hammer Floor": () => true }
                     },
                     "Locked Door Under Hammer Floor": {
                         DisplayGroup: { groupName: "After Final Flare Dancer", imageName: "Skulltula" },
@@ -2245,10 +2238,7 @@ let MQDungeons = {
                         MapInfo: { x: 71, y: 136, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 43,
-                        LongDescription: "This is the locked door after pounding the floor down at the top of the temple.",
-                        KeyRequirement: function(age) {
-                            return { min: 4, max: 5 };
-                        }
+                        LongDescription: "This is the locked door after pounding the floor down at the top of the temple."
                     }
                 }
             },

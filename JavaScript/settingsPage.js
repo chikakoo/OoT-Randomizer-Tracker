@@ -288,6 +288,8 @@ let SettingsPage = {
 
         let value = document.querySelector(`input[name="${settingName}"]:checked`).value;
         Settings.RandomizerSettings[settingName] = isNaN(Number(value)) ? value : Number(value);
+
+        LockedDoorWalker.computeAll(); // Specifically, the keysanity setting
         ItemTracker.setUp();
         refreshAll();
     },

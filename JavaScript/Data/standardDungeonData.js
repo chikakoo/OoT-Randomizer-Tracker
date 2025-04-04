@@ -1560,13 +1560,9 @@ let StandardDungeons = {
                         UseAdultAge: function() { return !Tricks.equipSwap.enabled; },
                         LongDescription: "This is the door behind the pillar on the bottom of the lobby.",
                         RequiredToAppear: function() { return Settings.RandomizerSettings.smallKeySetting === SmallKeySettings.SMALL_KEY_SANITY; },
-                        KeyRequirement: function(age) {
-                            if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
-                                return { min: 0, max: 0 };
-                            }
-                            return { min: 1, max: Keys.FIRE_TEMPLE.totalKeys()};
-                        },
-                        Needs: [(age) => MapLocations["Fire Temple"]._canAccessBossKeyPath(age)]
+                        OverrideKeyRequirement: () => 
+                            Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY,
+                        StartingDoorRequirement: () => true
                     },
                     "Top Locked Door in Lobby": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
@@ -1575,17 +1571,8 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 8,
                         LongDescription: "This is the top right door in the lobby.",
-                        KeyRequirement: function(age) {
-                            if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
-                                return { min: 1, max: 1 };
-                            }
-
-                            let minValue = 1;
-                            if (ItemLocationSets.FIRE_OPENED_BOTTOM_LOBBY_DOOR()) {
-                                minValue++;
-                            }
-                            return { min: minValue, max: 2 };
-                        }
+                        StartingDoorRequirement: () => true,
+                        NextDoors: { "Locked Door in Big Lava Room": () => true }
                     },
                     "Locked Door in Big Lava Room": {
                         DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
@@ -1595,17 +1582,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 12,
                         LongDescription: "This is the door on the east side of the big lava room.",
-                        KeyRequirement: function(age) {
-                            if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
-                                return { min: 2, max: 2 };
-                            }
-
-                            let minValue = 2;
-                            if (ItemLocationSets.FIRE_OPENED_BOTTOM_LOBBY_DOOR()) {
-                                minValue++;
-                            }
-                            return { min: minValue, max: 3 };
-                        }
+                        NextDoors: { "Locked Door After Rising Block": () => true }
                     },
                     "Locked Door After Rising Block": {
                         DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
@@ -1615,16 +1592,10 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 14,
                         LongDescription: "This is the door you reach after riding the block up the fire pillar.",
-                        KeyRequirement: function(age) {
-                            if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
-                                return { min: 3, max: 3 };
-                            }
-
-                            let minValue = 3;
-                            if (ItemLocationSets.FIRE_OPENED_BOTTOM_LOBBY_DOOR()) {
-                                minValue++;
-                            }
-                            return { min: minValue, max: 4 };
+                        NextDoors: { 
+                            "Locked Door in Boulder Maze": () => true,
+                            "Locked Door in Crater Room": () => Tricks.fireBlockClip.enabled,
+                            "Locked Door in Fire Wall Room": () => Tricks.fireBlockClip.enabled,
                         }
                     },
                     "Locked Door in Boulder Maze": {
@@ -1635,16 +1606,9 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 18,
                         LongDescription: "This is the locked door in the boulder maze.",
-                        KeyRequirement: function(age) {
-                            let minValue = 4;
-                            if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
-                                return { min: minValue, max: 4 };
-                            }
-
-                            if (ItemLocationSets.FIRE_OPENED_BOTTOM_LOBBY_DOOR()) {
-                                minValue++;
-                            }
-                            return { min: minValue, max: 5 };
+                        NextDoors: { 
+                            "Locked Door in Crater Room": () => true,
+                            "Locked Door in Fire Wall Room": () => Tricks.fireEscapeMapEnclosure.enabled,
                         }
                     },
                     "Locked Door in Crater Room": {
@@ -1655,21 +1619,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 21,
                         LongDescription: "This is the locked door in the crater room with narrow ledges.",
-                        KeyRequirement: function(age) {
-                            let minValue = 5;
-                            if (Tricks.fireBlockClip.enabled) {
-                                minValue = 4;
-                            }
-
-                            if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
-                                return { min: minValue, max: 5 };
-                            }
-
-                            if (ItemLocationSets.FIRE_OPENED_BOTTOM_LOBBY_DOOR()) {
-                                minValue++;
-                            }
-                            return { min: minValue, max: 6 };
-                        }
+                        NextDoors: { "Locked Door in Fire Wall Room": () => true }
                     },
                     "Locked Door in Fire Wall Room": {
                         DisplayGroup: { groupName: "Lava & Fire Wall Room", imageName: "Din's Fire" },
@@ -1679,26 +1629,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 29,
                         LongDescription: "This is the locked door you reach after going through the room with the big fire wall.",
-                        KeyRequirement: function(age) {
-                            let minValue = 6;
-                            if (Tricks.fireBlockClip.enabled) {
-                                // Skip both doors in the crater room
-                                minValue-= 2;
-                            }
-
-                            else if (Tricks.fireEscapeMapEnclosure.enabled) {
-                                minValue--;
-                            }
-
-                            if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
-                                return { min: minValue, max: 6 };
-                            }
-
-                            if (ItemLocationSets.FIRE_OPENED_BOTTOM_LOBBY_DOOR()) {
-                                minValue++;
-                            }
-                            return { min: minValue, max: 7 };
-                        }
+                        NextDoors: { "Locked Door in Fire Maze Room": () => true }
                     },
                     "Locked Door in Fire Maze Room": {
                         DisplayGroup: { groupName: "Fire Wall Maze", imageName: "Fire Arrow" },
@@ -1707,27 +1638,7 @@ let StandardDungeons = {
                         MapInfo: { x: 119, y: 192, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 32,
-                        LongDescription: "This is the locked door you reach after going through the fire wall maze.",
-                        KeyRequirement: function(age) {
-                            let minValue = 7;
-                            if (Tricks.fireBlockClip.enabled) {
-                                // Skip both doors in the crater room
-                                minValue-= 2;
-                            }
-
-                            else if (Tricks.fireEscapeMapEnclosure.enabled) {
-                                minValue--;
-                            }
-
-                            if (Settings.RandomizerSettings.smallKeySetting !== SmallKeySettings.SMALL_KEY_SANITY) {
-                                return { min: minValue, max: 7 };
-                            }
-
-                            if (ItemLocationSets.FIRE_OPENED_BOTTOM_LOBBY_DOOR()) {
-                                minValue++;
-                            }
-                            return { min: minValue, max: 8 };
-                        }
+                        LongDescription: "This is the locked door you reach after going through the fire wall maze."
                     }
                 }
             },

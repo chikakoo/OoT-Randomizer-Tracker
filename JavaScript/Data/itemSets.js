@@ -170,11 +170,7 @@ let ItemLocationSets = {
     MQ_JABU_ELEVATOR_LOWERED: () => Data.itemLocationObtained("Jabu Jabu's Belly", "wigglerRoomAfterBigOcto", "Elevator Lowered"),
 
     // Forest Temple
-    FOREST_OPENED_LOBBY_DOOR: () => Data.itemLocationObtained("Forest Temple", "main", "Locked Door in Lobby"),
     MQ_FOREST_DID_NOT_CLEAR_UPPER_STALFOS_ROOM: () => !Data.itemLocationObtained("Forest Temple", "poeRooms", "Chest in Stalfos Room"),
-
-    // Fire Temple
-    FIRE_OPENED_BOTTOM_LOBBY_DOOR: () => Data.itemLocationObtained("Fire Temple", "main", "Bottom Locked Door in Lobby"),
 
     // Water Temple
     WATER_LOWERED_WATER_LEVEL: () => Data.itemLocationObtained("Water Temple", "lowWaterLevel", "Lower Water Level"),

@@ -1067,7 +1067,7 @@ Data = {
 
         let map = itemLocation.Map;
         let lockedDoor = LockedDoorWalker.getLockedDoorObject(map, itemLocation.LockedDoor);
-        if (lockedDoor.playerHas)
+        if (lockedDoor.playerHas || lockedDoor.OverrideKeyRequirement)
         {
             return ItemObtainability.YES;
         }
