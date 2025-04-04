@@ -4806,13 +4806,8 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 53,
                         LongDescription: "This is the door after the second crawlspace on the child side.",
-                        KeyRequirement: function(age) {
-                            let min = age === Age.ADULT
-                                ? 2 // This + sun on floor room
-                                : 1; // This
-
-                            return { min: min, max: Keys.SPIRIT_TEMPLE.mqTotalKeys() };
-                        }
+                        StartingDoorRequirement: (age) => age === Age.CHILD,
+                        NextDoors: { "Locked Door in Sun on Floor Room": () => true }
                     },
                     "Locked Door in Sun on Floor Room": {
                         DisplayGroup: { groupName: "Sun on Floor Room", imageName: "Bombchu" },
@@ -4822,12 +4817,10 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 27.1,
                         LongDescription: "This is the door leading to/from the room with the sun on the floor room.",
-                        KeyRequirement: function(age) {
-                            let min = age === Age.ADULT || Tricks.mqSpiritChildGeyserSkip.enabled
-                                ? 1 // This (Adult + geyser path doesn't need any other doors)
-                                : 2; // Child needs door after second crawl space
-
-                            return { min: min, max: Keys.SPIRIT_TEMPLE.mqTotalKeys() };
+                        StartingDoorRequirement: (age) => age === Age.ADULT || Tricks.mqSpiritChildGeyserSkip.enabled,
+                        NextDoors: { 
+                            "Locked Door After Second Crawl Space": () => true,
+                            "Locked Door to Silver Gaunts Knuckle": () => true
                         }
                     },
                     "Locked Door to Silver Gaunts Knuckle": {
@@ -4838,13 +4831,8 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 25,
                         LongDescription: "This is the door after the puzzle where you push the sun block into the light.",
-                        KeyRequirement: function(age) {
-                            let min = age === Age.ADULT || Tricks.mqSpiritChildGeyserSkip.enabled
-                                ? 1 // This (Adult + geyser path doesn't need any other doors)
-                                : 3; // After second crawlspace; sun on room; this
-
-                            return { min: min, max: Keys.SPIRIT_TEMPLE.mqTotalKeys() };
-                        }
+                        StartingDoorRequirement: (age) => age === Age.ADULT || Tricks.mqSpiritChildGeyserSkip.enabled,
+                        NextDoors: { "Locked Door in Beamos Room": () => Tricks.spiritSuperslideToMirrorShield.enabled }
                     },
                     "Locked Door in Statue Room": {
                         DisplayGroup: { groupName: "Statue Room", imageName: "Compass" },
@@ -4855,12 +4843,10 @@ let MQDungeons = {
                         UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                         Order: 38,
                         LongDescription: "This is the locked door on the upper east part of the statue room.",
-                        KeyRequirement: function(age) {
-                            let max = age === Age.ADULT && Tricks.spiritSuperslideToMirrorShield.enabled
-                                ? Keys.SPIRIT_TEMPLE.mqTotalKeys() // Every door except beamos room + after moving wall door
-                                : 5; // Going this way allows the rest of the doors to be reached
-                            
-                            return { min: 1, max: max };
+                        StartingDoorRequirement: (age) => age === Age.ADULT,
+                        NextDoors: {
+                            "Locked Door in Beamos Room": () => true,
+                            "Locked Door to Silver Gaunts Knuckle": () => true // Longshot from mirror shield - no tricks here
                         }
                     },
                     "Locked Door in Beamos Room": {
@@ -4872,10 +4858,7 @@ let MQDungeons = {
                         UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                         Order: 43,
                         LongDescription: "This is the locked door in the southwest corner of the room with all the Beamos.",
-                        KeyRequirement: function(age) {
-                            let min = 2; // This + statue room door OR this + silver gaunts door w/superslide (2 either way)
-                            return { min: min, max: 6 }; // Max is every door except the after moving wall door
-                        }
+                        NextDoors: { "Locked Door After Moving Wall": () => true }
                     },
                     "Locked Door Right of Lobby": {
                         DisplayGroup: { groupName: "Rooms Beyond Lobby Water", imageName: "Ocarina" },
@@ -4886,9 +4869,7 @@ let MQDungeons = {
                         UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                         Order: 34,
                         LongDescription: "This is the locked door to the right of the lobby that you get to via the statue room.",
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: Keys.SPIRIT_TEMPLE.mqTotalKeys() };
-                        }
+                        StartingDoorRequirement: (age) => age === Age.ADULT
                     },
                     "Locked Door After Moving Wall": {
                         DisplayGroup: { groupName: "Moving Wall & Silver Knuckle Room", imageName: "Skulltula" },
@@ -4898,11 +4879,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                         Order: 46,
-                        LongDescription: "This is the locked door by the triforce symbol located after the moving wall.",
-                        KeyRequirement: function(age) {
-                            let min = 3; // This + beamos room + EITHER statue room OR silver gaunts door (w/superslide) = 3 keys
-                            return { min: min, max: Keys.SPIRIT_TEMPLE.mqTotalKeys() };
-                        }
+                        LongDescription: "This is the locked door by the triforce symbol located after the moving wall."
                     }
                 }
             },
@@ -5940,10 +5917,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 2,
                         LongDescription: "This is the door on the west side of the main room.",
-                        StartingDoorRequirement: () => true,
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: 2 };
-                        }
+                        StartingDoorRequirement: () => true
                     },
                     "Locked Door in Floor Master Room": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
@@ -5953,10 +5927,7 @@ let MQDungeons = {
                         Order: 6,
                         LongDescription: "WALL MASTER WARNING:<br/>This is the locked door you find after the room with the floormasters.",
                         Needs: [ItemSets.DISTANT_SWITCH_ITEMS],
-                        StartingDoorRequirement: () => true,
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: 2 };
-                        }
+                        StartingDoorRequirement: () => true
                     }
                 }
             },

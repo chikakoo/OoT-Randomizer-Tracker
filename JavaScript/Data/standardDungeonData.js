@@ -3670,9 +3670,8 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 9,
                         LongDescription: "This is the door after the second crawlspace on the child side. It's also the door to the room with the sun on the floor.",
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: Keys.SPIRIT_TEMPLE.totalKeys()};
-                        }
+                        StartingDoorRequirement: (age) => age === Age.CHILD,
+                        NextDoors: { "Locked Door to Silver Gaunts Knuckle": () => true }
                     },
                     "Locked Door to Silver Gaunts Knuckle": {
                         DisplayGroup: { groupName: "Sun Block & Silver Gauntlets Path", imageName: "Silver Gauntlets" },
@@ -3682,13 +3681,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 20,
                         LongDescription: "This is the door after the puzzle where you push the sun block into the light.",
-                        KeyRequirement: function(age) {
-                            let min = age === Age.CHILD
-                                ? 2 // This + door after crawlspace
-                                : 1; // This
-
-                            return { min: min, max: Keys.SPIRIT_TEMPLE.totalKeys() };
-                        }
+                        NextDoors: { "Locked Door in Anubis Room": () => Tricks.spiritSuperslideToMirrorShield.enabled }
                     },
                     "Locked Door After Silver Block": {
                         DisplayGroup: { groupName: "Rooms After Silver Block", imageName: "Adult Icon" },
@@ -3698,9 +3691,11 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 25,
                         LongDescription: "This is the locked door after the silver block on the adult side.",
-                        KeyRequirement: function(age) {
-                            // Max: this + after crawlspace + silver gaunts
-                            return { min: 1, max: 3 };
+                        StartingDoorRequirement: () => true,
+                        NextDoors: {
+                            "Locked Door After Second Crawl Space": () => true,
+                            "Locked Door to Silver Gaunts Knuckle": () => true,
+                            "Locked Door in Statue Room": () => true
                         }
                     },
                     "Locked Door in Statue Room": {
@@ -3711,13 +3706,9 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 32,
                         LongDescription: "This is the locked door on the upper east part of the statue room.",
-                        KeyRequirement: function(age) {
-                            let max = Tricks.spiritSuperslideToMirrorShield.enabled
-                                ? Keys.SPIRIT_TEMPLE.totalKeys() // Can skip this door in this case and open the one beyond it
-                                : 4; // All doors except the one beyond it
-                                
-                            // Min: this + door after silver block
-                            return { min: 2, max: max };
+                        NextDoors: { 
+                            "Locked Door in Anubis Room": () => true,
+                            "Locked Door After Silver Block": () => true // Longshot from mirror shield - no tricks here
                         }
                     },
                     "Locked Door in Anubis Room": {
@@ -3727,11 +3718,7 @@ let StandardDungeons = {
                         MapInfo: { x: 223, y: 105, floor: "F3" },
                         Age: Age.ADULT,
                         Order: 38,
-                        LongDescription: "This is the locked door in the southwest corner of the room with Anubises and pits.",
-                        KeyRequirement: function(age) {
-                            // this + after silver block + EITHER statue room OR silver gaunts with superslide
-                            return { min: 3, max: Keys.SPIRIT_TEMPLE.totalKeys() };
-                        }
+                        LongDescription: "This is the locked door in the southwest corner of the room with Anubises and pits."
                     }
                 }
             },
@@ -4812,10 +4799,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 22,
                         LongDescription: "This is the door after the crawlspace in the northeast corner of the main room.",
-                        StartingDoorRequirement: () => true,
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: 3 };
-                        }
+                        StartingDoorRequirement: () => true
                     },
                     "Left Locked Door in Center": {
                         DisplayGroup: { groupName: "Central Area", imageName: "Compass" },
@@ -4825,10 +4809,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 17,
                         LongDescription: "This is left locked door in the center of the main room.",
-                        StartingDoorRequirement: () => true,
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: 3 };
-                        }
+                        StartingDoorRequirement: () => true
                     },
                     "Right Locked Door in Center": {
                         DisplayGroup: { groupName: "Central Area", imageName: "Compass" },
@@ -4838,10 +4819,7 @@ let StandardDungeons = {
                         Age: Age.CHILD,
                         Order: 20,
                         LongDescription: "This is right locked door in the center of the main room.",
-                        StartingDoorRequirement: () => true,
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: 3 };
-                        }
+                        StartingDoorRequirement: () => true
                     }
                 }
             },
