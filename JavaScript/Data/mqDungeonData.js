@@ -3805,9 +3805,7 @@ let MQDungeons = {
                         Order: 2,
                         LongDescription: "This is the door behind the explodable wall in the truth spinner room.",
                         Needs: [ItemSets.EXPLOSIVES],
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: 6 };
-                        }
+                        StartingDoorRequirement: () => true
                     },
                     "Locked Door by Beamos": {
                         DisplayGroup: { groupName: "Gibdos & Scythe Rooms", imageName: "Dungeon Map" },
@@ -3818,16 +3816,8 @@ let MQDungeons = {
                         Order: 12,
                         LongDescription: "This is the door near the beamos after the truth spinner room.",
                         Needs: [ItemSets.EXPLOSIVES],
-                        KeyRequirement: function(age) {
-                            let max = 2; // Maze and this door
-                            if (SettingSets.SHADOW_GATE_CLIP()) {
-                                max = 6; // Can get every other key
-                            } else if (Tricks.shadowClipToBossAntechamber.enabled) {
-                                max++; // Invisible wall room
-                            }
-
-                            return { min: 1, max: max };
-                        }
+                        StartingDoorRequirement: () => true,
+                        NextDoors: { "Locked Door in Giant Room": () => true }
                     },
                     "Locked Door in Giant Room": {
                         DisplayGroup: { groupName: "Invisible Scythe & Pit Rooms", imageName: "Lens of Truth" },
@@ -3839,16 +3829,7 @@ let MQDungeons = {
                         LongDescription: "This is the locked door on the right side of the giant room.",
                         // This logic works from both sides, as you can't do anything from the reverse side without passing this check
                         NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo],
-                        KeyRequirement: function(age) {
-                            let max = 3; // Maze, beamos, and this door
-                            if (SettingSets.SHADOW_GATE_CLIP()) {
-                                max = 6; // Can get every other key
-                            } else if (Tricks.shadowClipToBossAntechamber.enabled) {
-                                max++; // Invisible wall room
-                            }
-
-                            return { min: 2, max: max };
-                        }
+                        NextDoors: { "Locked Door in Invisible Spike Room": () => true }
                     },
                     "Locked Door in Invisible Spike Room": {
                         DisplayGroup: { groupName: "Invisible Spike Room", imageName: "Spooky Mask" },
@@ -3859,17 +3840,9 @@ let MQDungeons = {
                         Order: 25,
                         LongDescription: "This is the locked door in the room with the invisible spikes.",
                         Needs: [Items.HOOKSHOT],
-                        KeyRequirement: function(age) {
-                            let max = 4; // Maze, beamos, entrance to this room, this door
-                            let min = 3; // Maze is optional
-                            if (SettingSets.SHADOW_GATE_CLIP()) {
-                                max = 6; // Can get every other key
-                                min = 2; // Door after fans, this door
-                            } else if (Tricks.shadowClipToBossAntechamber.enabled) {
-                                max++; // Invisible wall room
-                            }
-
-                            return { min: min, max: max };
+                        NextDoors: { 
+                            "Locked Door in Giant Room": () => Tricks.shadowAdultGateClip.enabled,
+                            "Locked Door After Fans": () => true 
                         }
                     },
                     "Locked Door After Fans": {
@@ -3881,18 +3854,10 @@ let MQDungeons = {
                         UseAdultAge: () => !Tricks.shadowChildGateClip.enabled,
                         Order: 33,
                         LongDescription: "This is the locked door in the Gibdos room after all the fans.",
-                        KeyRequirement: function(age) {
-                            let max = 5; // Maze, beamos, invis spike  entrance, invis spike exit, this door
-                            let min = 4; // Maze is optional
-
-                            if (SettingSets.SHADOW_GATE_CLIP()) {
-                                max = 6; // Can get every other key
-                                min = 1; // Can get here directly
-                            } else if (Tricks.shadowClipToBossAntechamber.enabled) {
-                                max++; // Invisible wall room
-                            }
-
-                            return { min: min, max: max };
+                        StartingDoorRequirement: () => SettingSets.SHADOW_GATE_CLIP(),
+                        NextDoors: { 
+                            "Locked Door in Invisible Spike Room": () => Tricks.shadowAdultGateClip.enabled,
+                            "Locked Door in Invisible Wall Room": () => true
                         }
                     },
                     "Locked Door in Invisible Wall Room": {
@@ -3903,16 +3868,9 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 40,
                         LongDescription: "This is the locked door in the invisible wall room.",
-                        KeyRequirement: function(age) {
-                            let min = 5; // Need every key besides maze
-                            if (SettingSets.SHADOW_GATE_CLIP()) {
-                                min = 1; // Can get here directly
-                            } else if (Tricks.shadowClipToBossAntechamber.enabled) {
-                                min = 2; // Maze door + this
-                            }
-
-                            return { min: min, max: 6 };
-                        }
+                        StartingDoorRequirement: () =>
+                            Tricks.shadowAdultGateClip.enabled ||
+                            (Tricks.shadowClipToBossAntechamber.enabled && Tricks.shadowBKSkip.enabled)
                     }
                 }
             },

@@ -2236,18 +2236,8 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 1,
                         LongDescription: "This is the door on the top west floor of the temple. You need the water raised to open it.",
-                        KeyRequirement: function(age) {
-                            let keysReq = 4;
-                            let canDrainWater = Equipment.IRON_BOOTS.playerHas && Data.canPlaySong(Songs.ZELDAS_LULLABY);
-                            if (!canDrainWater) {
-                                keysReq--; // Can't open the central door
-                            }
-                            if (!Equipment.IRON_BOOTS.playerHas || !ItemData.canUse(Age.ADULT, UpgradedItems.LONGSHOT)) {
-                                keysReq -= 2; // Can't open the tektite room doors
-                            }
-
-                            return { min: 1, max: keysReq };
-                        }
+                        StartingDoorRequirement: () => true,
+                        NextDoors: { "Locked Door in Waterfall Room": () => true }
                     },
                     "Locked Door in Waterfall Room": {
                         DisplayGroup: { groupName: "Waterfall Path (Top West)", imageName: "Longshot" },
@@ -2257,19 +2247,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 3,
                         LongDescription: "This is the door in the waterfall room with the platforms. You get here from the locked door on the top floor.",
-                        Needs: [Items.HOOKSHOT],
-                        KeyRequirement: function(age) {
-                            let keysReq = 5;
-                            let canDrainWater = Equipment.IRON_BOOTS.playerHas && Data.canPlaySong(Songs.ZELDAS_LULLABY);
-                            if (!canDrainWater) {
-                                keysReq--; // Can't open the central door
-                            }
-                            if (!Equipment.IRON_BOOTS.playerHas || !ItemData.canUse(Age.ADULT, UpgradedItems.LONGSHOT)) {
-                                keysReq -= 2; // Can't open the tektite room doors
-                            }
-
-                            return { min: 2, max: keysReq };
-                        }
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Locked Door to Central Room": {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
@@ -2278,14 +2256,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 20,
                         LongDescription: "OPTIONAL DOOR: This is the door on the bottom floor leading into the central room. The water needs to be drained to open it.<br/><br/>Note that this door is entirely optional if you have a bow or fire item, as you can light a torch on the central middle platform to get here.",
-                        KeyRequirement: function(age) {
-                            let keysReq = 5;
-                            if (!ItemData.canUse(Age.ADULT, UpgradedItems.LONGSHOT)) {
-                                keysReq -= 2; // Can't open the tektite room doors
-                            }
-
-                            return { min: 1, max: keysReq };
-                        }
+                        StartingDoorRequirement: () => true
                     },
                     "Locked Door in Bottom North Room": {
                         DisplayGroup: { groupName: "Boss Key Loop (Low North)", imageName: "Boss Key" },
@@ -2296,14 +2267,8 @@ let StandardDungeons = {
                         Order: 29,
                         LongDescription: "This is the door on the bottom north path. You can use iron boots or drain the water to get here. Longshot or backwalk/hover boots/backflip across to get to the door.",
                         NeedsAny: [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT],
-                        KeyRequirement: function(age) {
-                            let keysReq = 4;
-                            if (!Data.canPlaySong(Songs.ZELDAS_LULLABY)) {
-                                keysReq--; // Can't open the central door
-                            }
-
-                            return { min: 1, max: keysReq };
-                        }
+                        StartingDoorRequirement: () => true,
+                        NextDoors: { "Locked Door after Boulder Waterfall": () => true }
                     },
                     "Locked Door after Boulder Waterfall": {
                         DisplayGroup: { groupName: "Boss Key Loop (Low North)", imageName: "Boss Key" },
@@ -2312,15 +2277,7 @@ let StandardDungeons = {
                         MapInfo: { x: 123, y: 70, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 32,
-                        LongDescription: "This is the door you reach after passing the boulder waterfall in the room behind the locked door in the bottom north room.",
-                        KeyRequirement: function(age) {
-                            let keysReq = 5;
-                            if (!Data.canPlaySong(Songs.ZELDAS_LULLABY)) {
-                                keysReq--; // Can't open the central door
-                            }
-
-                            return { min: 2, max: keysReq };
-                        }
+                        LongDescription: "This is the door you reach after passing the boulder waterfall in the room behind the locked door in the bottom north room."
                     }
                 }
             },
@@ -2932,21 +2889,8 @@ let StandardDungeons = {
                         Order: 10,
                         LongDescription: "This is the door after the truth spinner room with the beamos. It's located behind the bombable wall.",
                         Needs: [ItemSets.EXPLOSIVES],
-                        KeyRequirement: function(age) {
-                            let max = 1;
-
-                            if (SettingSets.SHADOW_GATE_CLIP()) {
-                                max++; // Gibdo room
-                            }
-
-                            if (Tricks.shadowAdultGateClip.enabled) {
-                                max += 3; // Giant pit + invisible spikes (backwards from bigdo); boss room doors
-                            } else if (Tricks.shadowClipToBossAntechamber.enabled) {
-                                max++; // Boss room door
-                            }
-
-                            return { min: 1, max: max };
-                        }
+                        StartingDoorRequirement: () => true,
+                        NextDoors: { "Locked Door in Giant Pit Room": () => true }
                     },
                     "Locked Door in Giant Pit Room": {
                         DisplayGroup: { groupName: "Invisible Scythe & Pit Rooms", imageName: "Goron's Bracelet" },
@@ -2956,21 +2900,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 21,
                         LongDescription: "This is the door after the invisible moving platform in the giant pit room.",
-                        KeyRequirement: function(age) {
-                            let max = 2;
-
-                            if (SettingSets.SHADOW_GATE_CLIP()) {
-                                max++; // Gibdo room
-                            }
-
-                            if (Tricks.shadowAdultGateClip.enabled) {
-                                max += 2; // Invisible spike room (backward from gibdo room); boss room
-                            } else if (Tricks.shadowClipToBossAntechamber.enabled) {
-                                max++; // Boss room door
-                            }
-
-                            return { min: 2, max: max };
-                        }
+                        NextDoors: { "Locked Door in Invisible Spike Room": () => true }
                     },
                     "Locked Door in Invisible Spike Room": {
                         DisplayGroup: { groupName: "Invisible Spike Room", imageName: "Spooky Mask" },
@@ -2980,22 +2910,9 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 25,
                         LongDescription: "This is the door in the room with redeads and invisible floor spikes that you have to hookshot up to",
-                        KeyRequirement: function(age) {
-                            let max = 3; // Beamos; bit pit; itself
-                            let min = 3;
-
-                            if (SettingSets.SHADOW_GATE_CLIP()) {
-                                max++; // Gibdo room
-                            }
-
-                            if (Tricks.shadowAdultGateClip.enabled) {
-                                min = 2; // Backwards from the gibdo room
-                                max++; // Boss room door
-                            } else if (Tricks.shadowClipToBossAntechamber.enabled) {
-                                max++; // Boss room door
-                            }
-
-                            return { min: min, max: max };
+                        NextDoors: { 
+                            "Locked Door in Giant Pit Room": () => Tricks.shadowAdultGateClip.enabled,
+                            "Locked Door in Gibdo Room": () => true 
                         }
                     },
                     "Locked Door in Gibdo Room": {
@@ -3007,19 +2924,10 @@ let StandardDungeons = {
                         UseAdultAge: function() { return !Tricks.shadowChildGateClip.enabled; },
                         Order: 30.1,
                         LongDescription: "This is the room with the gibdos after the hallway of fans.",
-                        KeyRequirement: function(age) {
-                            let max = 4; // All doors except the boss
-                            let min = 4;
-
-                            if (SettingSets.SHADOW_GATE_CLIP()) {
-                                min = 1; // No additional keys if you can do the clip
-                            }
-
-                            if (Tricks.shadowAdultGateClip.enabled || Tricks.shadowClipToBossAntechamber.enabled) {
-                                max++; // Boss door
-                            }
-
-                            return { min: min, max: max };
+                        StartingDoorRequirement: () => SettingSets.SHADOW_GATE_CLIP(),
+                        NextDoors: { 
+                            "Locked Door in Invisible Spike Room": () => Tricks.shadowAdultGateClip.enabled,
+                            "Locked Door After Boat Ride": () => true
                         }
                     },
                     "Locked Door After Boat Ride": {
@@ -3030,14 +2938,9 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 44,
                         LongDescription: "This is the door across the chasm after creating the statue bridge.",
-                        KeyRequirement: function(age) {
-                            let min = 5; // Every door
-                            if (Tricks.shadowAdultGateClip.enabled || Tricks.shadowClipToBossAntechamber.enabled) {
-                                min = 1; // Can skip every door if you go here directly
-                            }
-
-                            return { min: min, max: 5 };
-                        }
+                        StartingDoorRequirement: () =>
+                            Tricks.shadowAdultGateClip.enabled ||
+                            (Tricks.shadowClipToBossAntechamber.enabled && Tricks.shadowBKSkip.enabled)
                     }
                 }
             },
