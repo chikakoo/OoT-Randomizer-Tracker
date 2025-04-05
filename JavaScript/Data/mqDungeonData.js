@@ -6760,12 +6760,6 @@ let MQDungeons = {
                         ItemSets.SWORDS, ItemSets.EXPLOSIVES, ItemSets.PROJECTILES]
                 ]);
         },
-        _canEnterLightTrial: function(age) {
-            return ItemData.canUseAny(age, [
-                UpgradedItems.GOLDEN_GAUNTLETS, 
-                Tricks.ganonLightTrailEssSkip.canDo, 
-                Tricks.ganonLightTrialSuperslideSkip.canDo]);
-        },
         Regions: {
             main: {
                 DisplayGroup: { groupName: "Lobby/Hub", imageName: "5 Scrubs" },
@@ -6782,7 +6776,11 @@ let MQDungeons = {
                     fireRoomEarly: {},
                     lightRoom1: {
                         Age: Age.ADULT,
-                        Needs: [(age) => MapLocations["Ganon's Castle"]._canEnterLightTrial(age)]
+                        NeedsAny: [
+                            UpgradedItems.GOLDEN_GAUNTLETS, 
+                            Tricks.ganonLightTrailEssSkip.canDo, 
+                            Tricks.ganonLightTrialSuperslideSkip.canDo
+                        ]
                     },
                     spiritRoom2: {
                         Needs: [Items.MEGATON_HAMMER]
@@ -6812,10 +6810,7 @@ let MQDungeons = {
                         Order: 12,
                         LongDescription: "This is the locked door in the water trial, blocked by the red ice.",
                         Needs: [(age) => MapLocations["Ganon's Castle"]._canGetToWaterTrialDoor(age)],
-                        KeyRequirement: function(age) {
-                            let max = MapLocations["Ganon's Castle"]._canEnterLightTrial(age) ? 3 : 1;
-                            return { min: 1, max: max };
-                        }
+                        StartingDoorRequirement: () => true
                     },
                     "Locked Door 1 in Light Trial": {
                         DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
@@ -6825,10 +6820,8 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 19,
                         LongDescription: "This is the locked door in the Zelda's Lullaby room of the light trial.",
-                        KeyRequirement: function(age) {
-                            let max = MapLocations["Ganon's Castle"]._canGetToWaterTrialDoor(age) ? 2 : 1;
-                            return { min: 1, max: max };
-                        }
+                        StartingDoorRequirement: () => true,
+                        NextDoors: { "Locked Door 2 in Light Trial": () => true }
                     },
                     "Locked Door 2 in Light Trial": {
                         DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
@@ -6837,11 +6830,7 @@ let MQDungeons = {
                         MapInfo: { x: 180, y: 84, floor: "LIT" },
                         Age: Age.ADULT,
                         Order: 21,
-                        LongDescription: "This is the locked door in the boulder/fire wall froom of the light trial.",
-                        KeyRequirement: function(age) {
-                            let max = MapLocations["Ganon's Castle"]._canGetToWaterTrialDoor(age) ? 3 : 2;
-                            return { min: 2, max: max };
-                        }
+                        LongDescription: "This is the locked door in the boulder/fire wall froom of the light trial."
                     }
                 }
             },

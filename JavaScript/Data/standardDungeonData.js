@@ -5202,20 +5202,6 @@ let StandardDungeons = {
             return ItemData.canUseAny(age, 
                 [Tricks.weirdShot.canDo, Tricks.gtgChildVineClips.canDo])
         },
-        _getNumberOfOptionalKeysUsed: function() {
-            // Gets the number of optional keys used in GTG (these are the ones on the right maze path)
-            let numberOfKeysUsed = 0;
-
-            if (ItemLocationSets.GTG_OPENED_OPTIONAL_DOOR_1()) {
-                numberOfKeysUsed++;
-            }
-
-            if (ItemLocationSets.GTG_OPENED_OPTIONAL_DOOR_2()) {
-                numberOfKeysUsed++;
-            }
-
-            return numberOfKeysUsed;
-        },
         Regions: {
             main: {
                 DisplayGroup: { groupName: "Lobby", imageName: "Gerudo Membership Card" },
@@ -5235,6 +5221,27 @@ let StandardDungeons = {
                         SkipLockedDoor: function(age) {
                             return MapLocations["Training Grounds"]._canSkipMazeDoors(age);
                         }
+                    },
+                    mazeAfterDoor2: {
+                        Needs: [(age) => MapLocations["Training Grounds"]._canSkipMazeDoors(age)]
+                    },
+                    mazeAfterDoor3: {
+                        Needs: [(age) => MapLocations["Training Grounds"]._canSkipMazeDoors(age)]
+                    },
+                    mazeAfterDoor4: {
+                        Needs: [(age) => MapLocations["Training Grounds"]._canSkipMazeDoors(age)]
+                    },
+                    mazeAfterDoor5: {
+                        Needs: [(age) => MapLocations["Training Grounds"]._canSkipMazeDoors(age)]
+                    },
+                    mazeAfterDoor6: {
+                        Needs: [(age) => MapLocations["Training Grounds"]._canSkipMazeDoors(age)]
+                    },
+                    mazeAfterDoor7: {
+                        Needs: [(age) => MapLocations["Training Grounds"]._canSkipMazeDoors(age)]
+                    },
+                    mazeDeadEnd: {
+                        Needs: [(age) => MapLocations["Training Grounds"]._canSkipMazeDoors(age)]
                     },
                     Exit: {
                         OwExit: OwExits["Training Grounds"]["Exit"]
@@ -5267,9 +5274,8 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 18,
                         LongDescription: "This is door 1 on the left path of the maze from the main entrance.",
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: 3 };
-                        }
+                        StartingDoorRequirement: () => true,
+                        NextDoors: { "Locked Door 2 On Main Path": () => true }
                     },
                     "Locked Door 2 On Main Path": {
                         DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
@@ -5279,10 +5285,10 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 20,
                         LongDescription: "This is door 2 on the left path of the maze from the main entrance.",
-                        KeyRequirement: function(age) {
-                            let minValue = 2 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
-                            return { min: minValue, max: 4 };
-                        }
+                        StartingDoorRequirement: (age) => age === Age.CHILD
+                            ? Tricks.gtgChildVineClips.enabled
+                            : Tricks.weirdShot.enabled,
+                        NextDoors: { "Locked Door 3 On Main Path": () => true }
                     },
                     "Locked Door 3 On Main Path": {
                         DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
@@ -5292,10 +5298,10 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 22,
                         LongDescription: "This is door 3 on the left path of the maze from the main entrance.",
-                        KeyRequirement: function(age) {
-                            let minValue = 3 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
-                            return { min: minValue, max: 5 };
-                        }
+                        StartingDoorRequirement: (age) => age === Age.CHILD
+                            ? Tricks.gtgChildVineClips.enabled
+                            : Tricks.weirdShot.enabled,
+                        NextDoors: { "Locked Door 4 On Main Path": () => true }
                     },
                     "Locked Door 4 On Main Path": {
                         DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
@@ -5305,10 +5311,10 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 23,
                         LongDescription: "This is door 4 on the left path of the maze from the main entrance.",
-                        KeyRequirement: function(age) {
-                            let minValue = 4 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
-                            return { min: minValue, max: 6 };
-                        }
+                        StartingDoorRequirement: (age) => age === Age.CHILD
+                            ? Tricks.gtgChildVineClips.enabled
+                            : Tricks.weirdShot.enabled,
+                        NextDoors: { "Locked Door 5 On Main Path": () => true }
                     },
                     "Locked Door 5 On Main Path": {
                         DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
@@ -5318,10 +5324,10 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 25,
                         LongDescription: "This is door 5 on the left path of the maze from the main entrance.",
-                        KeyRequirement: function(age) {
-                            let minValue = 5 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
-                            return { min: minValue, max: 7 };
-                        }
+                        StartingDoorRequirement: (age) => age === Age.CHILD
+                            ? Tricks.gtgChildVineClips.enabled
+                            : Tricks.weirdShot.enabled,
+                        NextDoors: { "Locked Door 6 On Main Path": () => true }
                     },
                     "Locked Door 6 On Main Path": {
                         DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
@@ -5331,10 +5337,10 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 27,
                         LongDescription: "This is door 6 on the left path of the maze from the main entrance.",
-                        KeyRequirement: function(age) {
-                            let minValue = 6 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
-                            return { min: minValue, max: 8 };
-                        }
+                        StartingDoorRequirement: (age) => age === Age.CHILD
+                            ? Tricks.gtgChildVineClips.enabled
+                            : Tricks.weirdShot.enabled,
+                        NextDoors: { "Locked Door 7 On Main Path": () => true }
                     },
                     "Locked Door 7 On Main Path": {
                         DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
@@ -5344,10 +5350,9 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 28,
                         LongDescription: "This is door 7 on the left path of the maze from the main entrance.",
-                        KeyRequirement: function(age) {
-                            let minValue = 7 + MapLocations["Training Grounds"]._getNumberOfOptionalKeysUsed();
-                            return { min: minValue, max: 9 };
-                        }
+                        StartingDoorRequirement: (age) => age === Age.CHILD
+                            ? Tricks.gtgChildVineClips.enabled
+                            : Tricks.weirdShot.enabled
                     },
                     "Optional Locked Door 1": {
                         DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
@@ -5357,9 +5362,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 30,
                         LongDescription: "This is the first door on the right path of the maze from the main entrance. It's recommended to avoid going this way if possible.",
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: 9 };
-                        }
+                        StartingDoorRequirement: () => true
                     },
                     "Optional Locked Door 2": {
                         DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
@@ -5369,9 +5372,8 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 31,
                         LongDescription: "This is the second door on the right path of the maze from the main entrance. It's recommended to avoid going this way if possible.",
-                        KeyRequirement: function(age) {
-                            return { min: 1, max: 9 };
-                        }
+                        StartingDoorRequirement: () => true,
+                        NextDoors: { "Optional Locked Door 1": () => true }
                     }
                 }
             },
