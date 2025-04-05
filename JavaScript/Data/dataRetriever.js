@@ -813,12 +813,13 @@ Data = {
         if (!itemLocation.Regions) { return false; }
 
         let map = itemLocation.Map;
-        if (this.getRemainingKeys(map) < 1) {
+        let remainingKeys = this.getRemainingKeys(map);
+        if (remainingKeys < 1) {
             return false;
         }
 
         let keyReq = LockedDoorWalker.getKeyRequirement(itemLocation, age);
-        if (ItemData.getKeyCount(map) < keyReq.min) {
+        if (remainingKeys < keyReq.min) {
             return false;
         }
         
@@ -1067,7 +1068,7 @@ Data = {
 
         let map = itemLocation.Map;
         let lockedDoor = LockedDoorWalker.getLockedDoorObject(map, itemLocation.LockedDoor);
-        if (lockedDoor.playerHas || lockedDoor.OverrideKeyRequirement)
+        if (LockedDoorWalker.canIgnoreKeyRequirement(lockedDoor, age))
         {
             return ItemObtainability.YES;
         }

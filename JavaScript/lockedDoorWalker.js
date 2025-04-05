@@ -1,5 +1,9 @@
 /**
  * Used to compute the min/max values of KeyRequirements for locked doors
+ * - min: The minimum number of keys that you would be guaranteed to be able to open the door
+ *   - Computed based on the number of keys you CURRENTLY HAD
+ * - max: The maximum number of keys that you could ever use before opening this door
+ *   - Includes actually opening the door
  */
 let LockedDoorWalker = {
     /**
@@ -8,6 +12,7 @@ let LockedDoorWalker = {
      * - If that doesn't exist, return null
      * @param {object} door - The door to get the key requirement for
      * @param {string} age - The age to get the key requirement for
+     * @returns The key requirement { min: #, max: # } - or null if not found
      */
     getKeyRequirement: function(door, age) {
         if (age === Age.CHILD) {
@@ -19,6 +24,18 @@ let LockedDoorWalker = {
         }
 
         return null;
+    },
+
+    /**
+     * Returns whether the key requirement can be ignored
+     * - If the door is already opened
+     * - If the door has OverrideKeyRequirement set and it returns true
+     * @param {object} door - The door object
+     * @param {string} age - The age
+     * @returns True if it can be ignored; false otherwise
+     */
+    canIgnoreKeyRequirement: function(door, age) {
+        return door.playerHas || (door.OverrideKeyRequirement && door.OverrideKeyRequirement(age));
     },
 
     /**
@@ -56,13 +73,18 @@ let LockedDoorWalker = {
      */
     _computeMins: function(dungeon, age) {
         let startingDoors = this._getAllStartingLockedDoorNames(dungeon, age);
-        this._computeMinsVisitDoorSet(dungeon, age, startingDoors, [], 1);
+        let startingDoorsToVisit = [];
+
+        let _this = this;
+        startingDoors.forEach(doorName => {
+            _this._pushNextMinDoorsToVisit(dungeon, age, doorName, [], startingDoorsToVisit, true);
+        }); 
+
+        this._computeMinsVisitDoorSet(dungeon, age, startingDoorsToVisit, [], 1);
     },
 
     /**
      * Performs a breadth-first search to compute mins for the given dungeon
-     * TODO: OverrideKeyRequirement won't really work for this at the moment
-     * - currently, there's no doors where that matters
      * @param {string} dungeon - The dungeon
      * @param {string} age - The age
      * @param {Array<string>} doorNamesToVisitNext - An Array of door names, indicating the current set of doors
@@ -85,21 +107,42 @@ let LockedDoorWalker = {
             _this._setMinKeyRequirement(door, age, doorsOpened);
 
             // Compute which doors can be visited next from this door
-            if (!door.NextDoors) {
-                return;
-            }
-
-            Object.keys(door.NextDoors).forEach(nextDoorName => {
-                if (!visitedDoors.includes(nextDoorName) &&
-                    door.NextDoors[nextDoorName]?.(age)) {
-                    nextDoorsToVisit.push(nextDoorName);
-                }
-            });
+            _this._pushNextMinDoorsToVisit(dungeon, age, doorName, visitedDoors, nextDoorsToVisit);
         });
 
         if (nextDoorsToVisit.length > 0) {
             this._computeMinsVisitDoorSet(dungeon, age, nextDoorsToVisit, visitedDoors, doorsOpened + 1);
         }
+    },
+
+    _pushNextMinDoorsToVisit: function(dungeon, age, nextDoorName, visitedDoors, nextDoorsToVisit, isStartingDoor) {
+        let door = this.getLockedDoorObject(dungeon, nextDoorName);
+
+        // Starting doors must be included in the list if they can't be ignored
+        if (isStartingDoor && !this.canIgnoreKeyRequirement(door)) {
+            nextDoorsToVisit.push(nextDoorName);
+            return;
+        }
+
+        // If there's nowhere to go, we're done here
+        if (!door.NextDoors) {
+            return;
+        }
+
+        let _this = this;
+        Object.keys(door.NextDoors).forEach(nextDoorName => {
+            let isDoorAlreadyVisited = visitedDoors.includes(nextDoorName) || nextDoorsToVisit.includes(nextDoorName);
+            if (!isDoorAlreadyVisited && door.NextDoors[nextDoorName]?.(age)) {
+                let nextDoor = _this.getLockedDoorObject(dungeon, nextDoorName);
+    
+                if (_this.canIgnoreKeyRequirement(nextDoor)) {
+                    _this._pushNextMinDoorsToVisit(dungeon, age, nextDoorName, visitedDoors, nextDoorsToVisit)
+                } else {
+                    // If the door can't be ignored, add it to the list
+                    nextDoorsToVisit.push(nextDoorName);
+                }
+            }
+        }) 
     },
 
     /**

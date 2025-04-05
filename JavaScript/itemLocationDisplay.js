@@ -528,6 +528,10 @@ let ItemLocationDisplay = {
 			}
 		}
 
+		if (itemLocation.ItemGroup === ItemGroups.LOCKED_DOOR) {
+			LockedDoorWalker.compute(itemLocation.Map);
+		}
+
 		SocketClient.itemLocationUpdated(itemLocation);
 		refreshAll();
 	},

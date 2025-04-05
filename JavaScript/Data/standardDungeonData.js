@@ -1678,7 +1678,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 63, y: 111, floor: "F1" },
                         Age: Age.EITHER,
-                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
+                        UseAdultAge: function() { return !Tricks.equipSwap.enabled; },
                         Order: 4,
                         LongDescription: "After the flare dancer room (see the other task), continue to the next room. Hammer the rusted switch to gain access to the boss key chest."
                     }
