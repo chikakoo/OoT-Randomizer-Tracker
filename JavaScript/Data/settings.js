@@ -2274,14 +2274,17 @@ let Tricks = {
 	},
 	ganonLightTrialSuperslideSkip: {
 		enabled: false,
-		canDo: (age) => age === Age.ADULT &&
-			Tricks.ganonLightTrialSuperslideSkip.enabled &&
+		canDo: (age) => Tricks.ganonLightTrialSuperslideSkip.enabled &&
 			ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]),
 		displayText: "Light Trial using a Superslide",
-		description: "Target the wall left of the giant pillar; sidehop right and roll (release); back up so you don't lose your angle; backwalk a bit so you have a bunch of room; superslide from this spot (sidehop left, bomb, sidehop right, bomb); release all except shield and up",
+		description: "START:\x0ATarget the wall left of the giant pillar; sidehop right and roll (release); back up so you don't lose your angle; backwalk a bit so you have a bunch of room; superslide from this spot (sidehop left, bomb, sidehop right, bomb); release all except shield and up\x0A\x0ACHILD STEP:\x0AAfter the superslide, dry roll + spam left sidehop x1 to actually clip in",
 		links: [{
 			url: "https://youtu.be/V9L-ePeEhH0",
-			description: "Video"
+			description: "Video - adult + child initial superslide"
+		},
+		{
+			url: "https://youtu.be/t-oxJtgBZ14",
+			description: "Video - child after superslide (description uses the adult for the initial superslide)"
 		}]
 	},
 	ganonLightTrailEssSkip: {

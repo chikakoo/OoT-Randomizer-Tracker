@@ -5941,8 +5941,8 @@ let StandardDungeons = {
                     shadowTrialStart: {},
                     spiritTrialRoom1: {},
                     lightTrialRoom1: {
-                        Age: Age.ADULT,
-                        NeedsAny: [
+                        ChildNeeds: [Tricks.ganonLightTrialSuperslideSkip.canDo],
+                        AdultNeedsAny: [
                             UpgradedItems.GOLDEN_GAUNTLETS, 
                             Tricks.ganonLightTrailEssSkip.canDo, 
                             Tricks.ganonLightTrialSuperslideSkip.canDo
@@ -6295,6 +6295,7 @@ let StandardDungeons = {
             },
             lightTrialRoom1: {
                 DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
+                UseAdultAge: () => !Tricks.ganonLightTrialSuperslideSkip.enabled,
                 Exits: {
                     lightTrialRoom2: {
                         Needs: [() => ItemData.getKeyCount("Ganon's Castle") >= 1]
@@ -6306,7 +6307,7 @@ let StandardDungeons = {
                         OverrideItemGroup: ItemGroups.GIFT,
                         DefaultEntranceGroupName: "7 Chests",
                         MapInfo: { x: 181, y: 249, floor: "LIT" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 17,
                         LongDescription: "These are the chests in the light trial - kill all the enemies to spawn the center one."
                     }
@@ -6314,6 +6315,7 @@ let StandardDungeons = {
             },
             lightTrialRoom2: {
                 DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
+                UseAdultAge: () => !Tricks.ganonLightTrialSuperslideSkip.enabled,
                 Exits: {
                     lightTrialRoom3: {
                         Needs: [() => ItemData.getKeyCount("Ganon's Castle") >= 2]
@@ -6323,7 +6325,7 @@ let StandardDungeons = {
                     "Light Trial Zelda's Lullaby Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 195, y: 196, floor: "LIT" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 24,
                         LongDescription: "Enter the light trial and advance to the next room. Play Zelda's Lullaby on the Triforce picture to spawn this chest.",
                         Needs: [Songs.ZELDAS_LULLABY]
@@ -6332,10 +6334,9 @@ let StandardDungeons = {
             },
             lightTrialRoom3: {
                 DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
+                UseAdultAge: () => !Tricks.ganonLightTrialSuperslideSkip.enabled,
                 Exits: {
                     lightTrialEnd: {
-                        Map: "Ganon's Castle",
-                        Age: Age.ADULT,
                         Needs: [SilverRupeeSets.GANON_LIGHT_SILVER_RUPEES]
                     }
                 },
@@ -6343,7 +6344,7 @@ let StandardDungeons = {
                     "Pot at Light Trial": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 180, y: 138, floor: "LIT" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 25,
                         LongDescription: "The pot is in front of you after the Zelda's Lullaby room."
                     },
@@ -6358,28 +6359,28 @@ let StandardDungeons = {
                     "Light Silver Rupee in Left Outer Alcove": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 147, y: 131, floor: "LIT" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 25.2,
                         LongDescription: "This rupee is on the left side of the room, in an alcove along the outer wall."
                     },
                     "Light Silver Rupee in Left Inner Alcove": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 173, y: 126, floor: "LIT" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 25.3,
                         LongDescription: "This rupee is on the left side of the room, in an alcove along the center wall."
                     },
                     "Light Silver Rupee in Right Inner Alcove": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 187, y: 126, floor: "LIT" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 25.4,
                         LongDescription: "This rupee is on the right side of the room, in an alcover along the center wall."
                     },
                     "Light Silver Rupee in Right Outer Alcove": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 212, y: 131, floor: "LIT" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 25.5,
                         LongDescription: "This rupee is on the right side of th eroom, in an alcove along the outer wall."
                     }
@@ -6387,6 +6388,8 @@ let StandardDungeons = {
             },
             lightTrialEnd: {
                 DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
+                UseAdultAge: () => !Tricks.ganonLightTrialSuperslideSkip.enabled ||
+                    SettingSets.VANILLA_SILVER_RUPEES(),
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Light Trial End": {
@@ -6394,7 +6397,7 @@ let StandardDungeons = {
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 180, y: 10, floor: "LIT" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 26,
                         LongDescription: "After the Zelda's Lullaby room, gather all the silver rupees. The room after that is fake - just run through the wall. The pots are in the next one."
                     },

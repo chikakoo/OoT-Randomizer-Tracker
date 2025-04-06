@@ -6775,8 +6775,8 @@ let MQDungeons = {
                     },
                     fireRoomEarly: {},
                     lightRoom1: {
-                        Age: Age.ADULT,
-                        NeedsAny: [
+                        ChildNeeds: [Tricks.ganonLightTrialSuperslideSkip.canDo],
+                        AdultNeedsAny: [
                             UpgradedItems.GOLDEN_GAUNTLETS, 
                             Tricks.ganonLightTrailEssSkip.canDo, 
                             Tricks.ganonLightTrialSuperslideSkip.canDo
@@ -6817,7 +6817,8 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["lightRoom1"],
                         MapInfo: { x: 180, y: 174, floor: "LIT" },
-                        Age: Age.ADULT,
+                        UseAdultAge: () => !Tricks.ganonLightTrialSuperslideSkip.enabled,
+                        Age: Age.EITHER,
                         Order: 19,
                         LongDescription: "This is the locked door in the Zelda's Lullaby room of the light trial.",
                         StartingDoorRequirement: () => true,
@@ -6828,7 +6829,9 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.LOCKED_DOOR,
                         Regions: ["lightRoom2Back"],
                         MapInfo: { x: 180, y: 84, floor: "LIT" },
-                        Age: Age.ADULT,
+                        UseAdultAge: () => !Tricks.ganonLightTrialSuperslideSkip.enabled ||
+                            !Tricks.megaFlip.enabled,
+                        Age: Age.EITHER,
                         Order: 21,
                         LongDescription: "This is the locked door in the boulder/fire wall froom of the light trial."
                     }
@@ -7195,6 +7198,7 @@ let MQDungeons = {
             },
             lightRoom1: {
                 DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
+                UseAdultAge: () => !Tricks.ganonLightTrialSuperslideSkip.enabled,
                 Exits: {
                     lightRoom2: {
                         Map: "Ganon's Castle",
@@ -7205,7 +7209,7 @@ let MQDungeons = {
                     "Light Zelda's Lullaby Chest": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 194, y: 197, floor: "LIT" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 18,
                         LongDescription: "Use your gauntlets to gain access to this area. In the first room, kill all the enemies. In the next room, play Zelda's Lullaby to spawn the chest.",
                         Needs: [Songs.ZELDAS_LULLABY]
@@ -7216,14 +7220,20 @@ let MQDungeons = {
                 DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
                 Exits: {
                     lightRoom2Back: {
-                        Age: Age.ADULT,
-                        NeedsAny: [Items.HOOKSHOT, Tricks.groundJump.canDoWithBomb]
+                        ChildNeeds: [Tricks.megaFlip.canDo],
+                        AdultNeedsAny: [
+                            Items.HOOKSHOT,
+                            Tricks.groundJump.canDoWithBomb,
+                            Tricks.megaFlip.canDo
+                        ]
                     }
                 }, 
                 ItemLocations: {}
             },
             lightRoom2Back:{
                 DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
+                UseAdultAge: () => !Tricks.ganonLightTrialSuperslideSkip.enabled ||
+                    !Tricks.megaFlip.enabled,
                 Exits: {
                     lightTrialEnd: {
                         Map: "Ganon's Castle",
@@ -7236,14 +7246,16 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "2 Hearts",
                         MapInfo: { x: 213, y: 130, floor: "LIT" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 20,
-                        LongDescription: "After the Zelda's Lullaby room, use your hookshot or perform a ground jump to get around the fire walls. The hearts are in the two holes in the wall."
+                        LongDescription: "After the Zelda's Lullaby room, use your hookshot, a ground jump, or a megaflip to get around the fire walls. The hearts are in the two holes in the wall."
                     }
                 }
             },
             lightTrialEnd: {
                 DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
+                UseAdultAge: () => !Tricks.ganonLightTrialSuperslideSkip.enabled ||
+                    !Tricks.megaFlip.enabled,
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Light Trial End": {
@@ -7251,7 +7263,7 @@ let MQDungeons = {
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 180, y: 10, floor: "LIT" },
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 22,
                         LongDescription: "After the Zelda's Lullaby room, use your hookshot or perform a ground jump to get around the fire walls and go in the locked door. Slash the right torch to proceed through the fake wall and into the room where the pots reside."
                     },
