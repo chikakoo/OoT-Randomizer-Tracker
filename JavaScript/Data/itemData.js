@@ -264,7 +264,11 @@ let Keys = {
 	SHADOW_TEMPLE: { 
 		name: "Shadow Temple",
 		minimumKeys: function() { 
-			return SettingSets.SHADOW_GATE_CLIP() ? 4 : 5;
+			let min = SettingSets.SHADOW_GATE_CLIP() ? 4 : 5;
+			if (Tricks.shadowClipToBossAntechamber.enabled) {
+				min--;
+			}
+			return min;
 		},
 		totalKeys: function() { return 5; },
 		

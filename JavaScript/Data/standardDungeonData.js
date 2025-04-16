@@ -2913,7 +2913,8 @@ let StandardDungeons = {
                         NextDoors: { 
                             "Locked Door in Giant Pit Room": () => Tricks.shadowAdultGateClip.enabled,
                             "Locked Door in Gibdo Room": () => true 
-                        }
+                        },
+                        Needs: [Items.HOOKSHOT]
                     },
                     "Locked Door in Gibdo Room": {
                         DisplayGroup: { groupName: "Wind Hallway & Gibdo Room", imageName: "Iron Boots" },
@@ -3258,7 +3259,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 22.2,
                         LongDescription: "This rupee is in to the right, just below the hookshot target.",
-                        Needs: [Items.HOOKSHOT]
+                        NeedsAny: [Items.HOOKSHOT, Tricks.staircaseHover.canDo]
                     },
                     "Invisible Spike Silver Rupee on Left Wall": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,

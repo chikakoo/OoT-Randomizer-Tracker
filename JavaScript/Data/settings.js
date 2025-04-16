@@ -489,7 +489,7 @@ let Tricks = {
 				[Age.ADULT, ItemSets.SHIELDS, Equipment.HOVER_BOOTS]
 			]),
 		displayText: "Door of Time Skip",
-		description: "CHILD: Get lunge storage off the altar; target the door; sidehop left; sideroll untarget; sidehop right; sideroll hold target; sidehop right; sidehop left; sideroll hold target; ess right x1; quickdraw; jumpslash holding nothing\x0A\x0AADULT: Target left side of the left pillar; sidehop right; sideroll untarget; ess right x2; get into right corner; holding nothing, slash + shield x2; croushstab; equip hover boots on second frame of sparks; hold right after clipping",
+		description: "CHILD: Get lunge storage off the altar; target the left side of the door; sidehop left; sideroll untarget; sidehop right; sideroll hold target; sidehop right; sidehop left; sideroll hold target; ess right x1; quickdraw; jumpslash holding nothing\x0A\x0AADULT: Target left side of the left pillar; sidehop right; sideroll untarget; ess right x2; get into right corner; holding nothing, slash + shield x2; croushstab; equip hover boots on second frame of sparks; hold right after clipping",
 		links: [{
 			url: "https://youtu.be/rsQsebyHhxY",
 			description: "Video - Child"

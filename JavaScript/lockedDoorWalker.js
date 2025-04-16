@@ -136,6 +136,7 @@ let LockedDoorWalker = {
                 let nextDoor = _this.getLockedDoorObject(dungeon, nextDoorName);
     
                 if (_this.canIgnoreKeyRequirement(nextDoor)) {
+                    visitedDoors.push(nextDoor.Name);
                     _this._pushNextMinDoorsToVisit(dungeon, age, nextDoorName, visitedDoors, nextDoorsToVisit)
                 } else {
                     // If the door can't be ignored, add it to the list
