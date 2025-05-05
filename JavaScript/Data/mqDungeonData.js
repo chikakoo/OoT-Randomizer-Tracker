@@ -2368,6 +2368,13 @@ let MQDungeons = {
                                 Items.HOOKSHOT, Tricks.fireSoTBlockJump.canDo]
                         ]
                     },
+                    lavaRoomRightSideLedge: {
+                        ChildNeeds: [Tricks.groundJump.canDoWithBomb],
+                        ChildNeedsAny: [
+                            () => Equipment.HYLIAN_SHIELD.playerHas,
+                                Tricks.megaFlip.canDo
+                        ]
+                    },
                     risingBlockRoom: {
                         LockedDoor: "Locked Door in Big Lava Room",
                         Map: "Fire Temple",
@@ -2394,31 +2401,6 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the right door into the big lava room. Along the back left wall is a platform that will rise up to an alcove after you jump on it. The pot is there."
-                    },
-                    "Right Pot in Big Lava Room": {
-                        ItemGroup: ItemGroups.POT,
-                        MapInfo: { x: 190, y: 263, floor: "F1" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Tricks.groundJump.enabled; },
-                        Order: 16,
-                        LongDescription: "Either hookshot to the torch on the right side of the lava room, or backflip from the moving platform to get over the fire wall. As Child, you'll need to equip Hylian shield so it isn't burned. The pot is by the blocked doorway (Child will have to ground jump).",
-                        ChildNeeds: [() => Equipment.HYLIAN_SHIELD.playerHas, Tricks.groundJump.canDoWithBomb]
-                    },
-                    "Chest by Right Goron in Lava Room": {
-                        ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 202, y: 287, floor: "F1" },
-                        Age: Age.EITHER,
-                        UseAdultAge: function() { return !Tricks.groundJump.enabled; },
-                        Order: 17,
-                        LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron.<br/><br/>If using cutscene item QPA, angle toward the torch at a 45 degree angle when you jumpslash with the deku stick to light it.",
-                        ChildNeeds: [() => Equipment.HYLIAN_SHIELD.playerHas, Tricks.groundJump.canDoWithBomb],
-                        Needs: [ItemSets.EXPLOSIVES],
-                        NeedsAny: [
-                            ItemSets.FIRE_ITEMS, 
-                            QPAItemSets.CUTSCENE_ITEM_QPA,
-                            QPAItemSets.HOVER_BOOTS_QPA,
-                            [Items.HOOKSHOT, QPAItemSets.LEDGE_QPA]
-                        ]
                     }
                 }
             },
@@ -2450,6 +2432,40 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 15.1,
                         LongDescription: "In the boss key room, hookshot the torch or chest to get to the pots, or hold forward to jump up slightly, THEN HOLD BACK and jumpslash over the fire (easiest on the rightmost side). Shoot the giant face on the wall with your bow and hookshot for two separate wonderitems.<br/><br/>Cutscene Item QPA works for this if you do the broken stick setup from behind the torch."
+                    }
+                }
+            },
+            lavaRoomRightSideLedge: {
+                DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
+                UseAdultAge: function() { return !Tricks.groundJump.enabled; },
+                Exits: {},
+                ItemLocations: {
+                    "Right Pot in Big Lava Room": {
+                        ItemGroup: ItemGroups.POT,
+                        MapInfo: { x: 190, y: 263, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 16,
+                        LongDescription: "Either hookshot to the torch on the right side of the lava room, or backflip from the moving platform to get over the fire wall. As Child, you'll need to equip Hylian shield so it isn't burned. The pot is by the blocked doorway (Child will have to ground jump)."
+                    },
+                    "Chest by Right Goron in Lava Room": {
+                        ItemGroup: ItemGroups.CHEST,
+                        MapInfo: { x: 202, y: 287, floor: "F1" },
+                        Age: Age.EITHER,
+                        Order: 17,
+                        LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron.<br/><br/>If using cutscene item QPA, angle toward the torch at a 45 degree angle when you jumpslash with the deku stick to light it.",
+                        Needs: [ItemSets.EXPLOSIVES],
+                        NeedsAny: [
+                            // Light torch normally, or with QPA obtained on this side
+                            ItemSets.FIRE_ITEMS,
+                            QPAItemSets.CUTSCENE_ITEM_QPA,
+                            QPAItemSets.HOVER_BOOTS_QPA,
+
+                            // QPA with ledge elsewhere, then hookshot or megaflip over the fire wall
+                            [
+                                QPAItemSets.TALL_TORCH_QPA,
+                                [SetType.OR, Items.HOOKSHOT, Tricks.megaFlip.canDo]
+                            ]
+                        ]
                     }
                 }
             },
