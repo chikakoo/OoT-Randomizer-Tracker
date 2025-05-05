@@ -1209,11 +1209,11 @@ let MQDungeons = {
                     "West Chest in Big Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 175, y: 108, floor: "B1" },
-                        UseChildAge: function() { return !Tricks.equipSwap.enabled; },
+                        UseChildAge: function() { return !Tricks.equipSwap.enabled && !Tricks.qpa.enabled; },
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole that Ruto normally falls down. Shoot the left cow on the wall to spawn this chest.",
-                        Needs: [Items.FAIRY_SLINGSHOT]
+                        NeedsAny: [Items.FAIRY_SLINGSHOT, QPAItemSets.LEDGE_QPA]
                     },
                     "Free Chest in Path to Elevator Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -4869,7 +4869,7 @@ let MQDungeons = {
                         UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                         Order: 34,
                         LongDescription: "This is the locked door to the right of the lobby that you get to via the statue room.",
-                        StartingDoorRequirement: (age) => age === Age.ADULT
+                        StartingDoorRequirement: (age) => age === Age.ADULT || Tricks.mqSpiritChildGeyserSkip.enabled
                     },
                     "Locked Door After Moving Wall": {
                         DisplayGroup: { groupName: "Moving Wall & Silver Knuckle Room", imageName: "Skulltula" },
@@ -5387,7 +5387,8 @@ let MQDungeons = {
                         MapInfo: { x: 226, y: 99, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 33,
-                        LongDescription: "From the room to the right of the lobby, go through the west door - be careful, though, as you can't get out if you don't have Zelda's Lullaby. Jump down and kill all the leevers to spawn the chest. Hookshot to it from the top to get it."
+                        LongDescription: "From the room to the right of the lobby, go through the west door - be careful, though, as you can't get out if you don't have Zelda's Lullaby. Jump down and kill all the leevers to spawn the chest. Longshot to it from the top to get it.",
+                        NeedsAny: [UpgradedItems.LONGSHOT, Tricks.hammerHoverBootsSuperslide.canDo]
                     },
                     "Right of Lobby Silver Rupee by Stairs": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,

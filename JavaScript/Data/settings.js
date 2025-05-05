@@ -1953,7 +1953,7 @@ let Tricks = {
 			Tricks.mqSpiritAdultGeyserSkip.enabled &&
 			ItemData.canUse(age, ItemSets.SHIELDS),
 		displayText: "MQ Adult Geyser Skip",
-		description: "Target the left little wall opposite the geyser; walk slightly away and do a manual spin attack, hold shield during it to maintain your angle; ess left x3; get in the corner; crouch stab; backflip; (keep Z held) right sidehop; jumpslash when Link's sock is slightly offscreen (very inconsistent)",
+		description: "Target the left little wall opposite the geyser; walk slightly away and do a manual spin attack, hold shield during it to maintain your angle; ess left x3; get in the corner; crouch stab; backflip; (keep Z held) sidehop left; jumpslash when Link's sock is slightly offscreen (very inconsistent)",
 		links: [{
 			url: "https://youtu.be/TwXja9VfIcU",
 			description: "Video"
