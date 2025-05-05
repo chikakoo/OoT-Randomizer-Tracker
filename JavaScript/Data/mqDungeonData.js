@@ -2368,11 +2368,14 @@ let MQDungeons = {
                                 Items.HOOKSHOT, Tricks.fireSoTBlockJump.canDo]
                         ]
                     },
+                    potOnLavaRoomRightSide: {
+                        Needs: [Tricks.boomerangTrickThrows.canDo]
+                    },
                     lavaRoomRightSideLedge: {
                         ChildNeeds: [Tricks.groundJump.canDoWithBomb],
                         ChildNeedsAny: [
                             () => Equipment.HYLIAN_SHIELD.playerHas,
-                                Tricks.megaFlip.canDo
+                            Tricks.megaFlip.canDo
                         ]
                     },
                     risingBlockRoom: {
@@ -2435,22 +2438,31 @@ let MQDungeons = {
                     }
                 }
             },
-            lavaRoomRightSideLedge: {
+            potOnLavaRoomRightSide: {
                 DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
-                UseAdultAge: function() { return !Tricks.groundJump.enabled; },
                 Exits: {},
                 ItemLocations: {
                     "Right Pot in Big Lava Room": {
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 190, y: 263, floor: "F1" },
                         Age: Age.EITHER,
+                        UseAdultAge: function() { return !Tricks.groundJump.enabled && !Tricks.boomerangTrickThrows.enabled; },
                         Order: 16,
-                        LongDescription: "Either hookshot to the torch on the right side of the lava room, or backflip from the moving platform to get over the fire wall. As Child, you'll need to equip Hylian shield so it isn't burned. The pot is by the blocked doorway (Child will have to ground jump)."
-                    },
+                        LongDescription: "Either hookshot to the torch on the right side of the lava room, or backflip from the moving platform to get over the fire wall. As Child, you'll need to equip Hylian shield so it isn't burned. The pot is by the blocked doorway (Child will have to ground jump).<br/><br/>You can also get it from the moving platform with a boomerang trick throw."
+                    }
+                }
+            },
+            lavaRoomRightSideLedge: {
+                DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
+                Exits: {
+                    potOnLavaRoomRightSide: {}
+                },
+                ItemLocations: {
                     "Chest by Right Goron in Lava Room": {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 202, y: 287, floor: "F1" },
                         Age: Age.EITHER,
+                        UseAdultAge: function() { return !Tricks.groundJump.enabled; },
                         Order: 17,
                         LongDescription: "Either hookshot to the torch on the right side of the lava room, or do an angled jump from the moving platform to get over the fire wall. Bomb the blocked doorway to enter. Use a fire item to light the torches outside the jail. The chest is by the goron.<br/><br/>If using cutscene item QPA, angle toward the torch at a 45 degree angle when you jumpslash with the deku stick to light it.",
                         Needs: [ItemSets.EXPLOSIVES],
