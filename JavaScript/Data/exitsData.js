@@ -2410,7 +2410,9 @@ let OwExits = {
             MapInfo: { x: 242, y: 248, floor: "B2" },
             Age: Age.EITHER,
             Order: 100,
-            LongDescription: "You get here after stunning the deku scrubs in this order (left to right): 2, 3, 1 (3, 1, 2  in MQ)."
+            LongDescription: "You get here after stunning the deku scrubs in this order (left to right): 2, 3, 1 (3, 1, 2  in MQ).",
+            TricksToShow: [Tricks.dekuAdultClipToBossRoom],
+            IgnoreTricksToShow: () => MapLocations["Deku Tree"].IsMasterQuest
         }
     },
 
@@ -2462,7 +2464,9 @@ let OwExits = {
                 isMQ = MapLocations["Jabu Jabu's Belly"].IsMasterQuest;
                 return isMQ ? false : !Tricks.equipSwap.enabled;
             },
-            LongDescription: "Standard: Climb up the webbing and use your boomerang to hit the switch and unblock the door. You can also snipe it with the slingshot/bow/longshot if you stand in the corner by the entrance.<br/><br/>MQ: Shoot the cow on the wall a few times to unblock the door."
+            LongDescription: "Standard: Climb up the webbing and use your boomerang to hit the switch and unblock the door. You can also snipe it with the slingshot/bow/longshot if you stand in the corner by the entrance.<br/><br/>MQ: Shoot the cow on the wall a few times to unblock the door.",
+            TricksToShow: [Tricks.jabuBossSwitchWithExplosives],
+            IgnoreTricksToShow: () => MapLocations["Jabu Jabu's Belly"].IsMasterQuest
         }
     },
 
@@ -2487,6 +2491,7 @@ let OwExits = {
             DefaultEntranceGroupName: "Phantom Ganon",
             Order: 100,
             LongDescription: "After hitting all the switches in the basement, you can enter the boss room.",
+            TricksToShow: [Tricks.forestBKSkip],
             IsPostWalkCheck: true,
             NeedsAny: [
                 Tricks.forestBKSkip.canDo,
@@ -2523,7 +2528,8 @@ let OwExits = {
                     : !Tricks.megaFlip.enabled; 
             },
             Order: 7,
-            LongDescription: "As Adult, you can do a roll-jump from the corner to get to the boss door."
+            LongDescription: "As Adult, you can do a roll-jump from the corner to get to the boss door.",
+            TricksToShow: [Tricks.fireBKSkipFromFireWallMaze]
         }
     },
 
@@ -2571,7 +2577,8 @@ let OwExits = {
             MapInfo: { x: 132, y: 210, floor: "B1" },
             Age: Age.ADULT,
             Order: 100,
-            LongDescription: "Enter the door across the chasm and navigate across the invisible floors to get to the boss."
+            LongDescription: "Enter the door across the chasm and navigate across the invisible floors to get to the boss.",
+            TricksToShow: [Tricks.shadowClipToBossAntechamber, Tricks.shadowBKSkip]
         }
     },
 
@@ -2695,7 +2702,9 @@ let OwExits = {
             MapInfo: { x: 165, y: 95, floor: "MN" },
             Age: Age.EITHER,
             Order: 100,
-            LongDescription: "Clear the trials in the tower to remove the barrier blocking the central tower."
+            LongDescription: "Clear the trials in the tower to remove the barrier blocking the central tower.",
+            TricksToShow: [Tricks.ganonTrialSkip],
+            IgnoreTricksToShow: () => MapLocations["Ganon's Castle"].IsMasterQuest
         }
     }
 }

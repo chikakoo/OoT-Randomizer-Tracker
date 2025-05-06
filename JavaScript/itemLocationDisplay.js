@@ -63,6 +63,13 @@ let ItemLocationDisplay = {
 
 			if (!groupedItemLocationInfo[group].description && itemLocation.DisplayGroup?.description) {
 				groupedItemLocationInfo[group].description = itemLocation.DisplayGroup.description;
+
+				if (itemLocation.DisplayGroup.tricksToShow) {
+					itemLocation.DisplayGroup.tricksToShow.forEach(trick => {
+						groupedItemLocationInfo[group].tricks = groupedItemLocationInfo[group].tricks || {};
+						groupedItemLocationInfo[group].tricks[trick.displayText] = trick;
+					});
+				}
 			}
 
 			groupedItemLocationInfo[group].itemLocations.push(itemLocation);
@@ -224,6 +231,8 @@ let ItemLocationDisplay = {
 			itemGroupImageDiv.style.backgroundImage = itemGroup.backgroundImage;
 			itemGroupTitleDiv.appendChild(itemGroupImageDiv);
 
+			_this._createTrickReferenceDivs(itemGroup, itemGroupTitleDiv);
+
 			if (itemGroup.description) {
 				itemGroupImageDiv.title = itemGroup.description;
 			}
@@ -237,6 +246,30 @@ let ItemLocationDisplay = {
 				_this._createItemLocations(itemGroup.itemLocations, itemGroupDiv, itemGroupName);
 			}
 		});
+	},
+
+	/**
+	 * Creates references for tricks in an item group
+	 * @param itemGroup - the item group to create tricks for
+	 * @param itemGroupTitleDiv - the title div for the item group
+	 */
+	_createTrickReferenceDivs: function(itemGroup, itemGroupTitleDiv) {
+		if (itemGroup.tricks) {
+			let itemGroupTrickContainer = dce("div", "item-group-trick-container");
+			itemGroupTitleDiv.appendChild(itemGroupTrickContainer);
+
+			let trickNumber = 1;
+			Object.values(itemGroup.tricks).forEach(trick => {
+				if (trick) {
+					let trickDiv = dce("div", "item-group-trick")
+					trickDiv.innerText = `[${trickNumber}]`;
+					trickDiv.title = `=== ${trick.displayText} ===\x0A${trick.description}`;
+
+					itemGroupTrickContainer.appendChild(trickDiv);
+				}
+				trickNumber++;
+			});
+		}
 	},
 
 	/**
@@ -457,7 +490,7 @@ let ItemLocationDisplay = {
 		let moreInfoTextDiv = dce("div", "item-more-info-text");
 		moreInfoTextDiv.innerHTML = itemLocation.LongDescription || "";
 
-		if (itemLocation.TricksToShow) {
+		if (itemLocation.TricksToShow && (!itemLocation.IgnoreTricksToShow || !itemLocation.IgnoreTricksToShow())) {
 			let tricksContainer = dce("div", "item-more-info-text-tricks-container");
 			moreInfoTextDiv.appendChild(tricksContainer);
 

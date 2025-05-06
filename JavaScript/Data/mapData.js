@@ -2163,7 +2163,12 @@ let MapLocations = {
 
                     // Rocky Path
                     "Break Rocks Blocking Top Path":  {
-                        DisplayGroup: { groupName: "Rocky Path", imageName: "Cow Grotto" },
+                        DisplayGroup: { 
+                            groupName: "Rocky Path", 
+                            imageName: "Cow Grotto",
+                            description: "Either climb the normal way passed the rocks, or use the hover boots or hookshot jump glitches.",
+                            tricksToShow: [Tricks.dmtClimbWithHoverBoots, Tricks.dmtTopWithHookshotJump]
+                        },
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 202, y: 201 },
                         MapImageName: "Bomb",
@@ -2194,7 +2199,8 @@ let MapLocations = {
                 DisplayGroup: { 
                     groupName: "Upper Area", 
                     imageName: "Claim Check" ,
-                    description: "Either climb the normal way passed the rocks, or use the hover boots or hookshot jump glitches."
+                    description: "Either climb the normal way passed the rocks, or use the hover boots or hookshot jump glitches.",
+                    tricksToShow: [Tricks.dmtClimbWithHoverBoots, Tricks.dmtTopWithHookshotJump]
                 },
                 DuplicateWarpSongPriority: 1,
                 Exits: {

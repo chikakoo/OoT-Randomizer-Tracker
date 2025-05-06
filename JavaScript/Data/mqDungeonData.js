@@ -152,7 +152,8 @@ let MQDungeons = {
                         MapInfo: { x: 157, y: 273, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 6,
-                        LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so. The heart is on the left side of the room."
+                        LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so. The heart is on the left side of the room.",
+                        TricksToShow: [Tricks.mqDekuHammerCompassRocks, Tricks.mqDekuAdultBombCompassRocks]
                     }
                 }
             },
@@ -166,6 +167,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 7,
                         LongDescription: "Burn the spider web on the second floor. If you have Din's Fire, you can use that. Otherwise, hit the switch on the third floor to light the torches, then use a Deku Stick to do so.<br/><br/>Head to the other side of the room. The room up the vines to the left is blocked by rocks. Use a bombchu to gain access. The skulltula is up on the wall.",
+                        TricksToShow: [Tricks.mqDekuHammerCompassRocks, Tricks.mqDekuAdultBombCompassRocks],
                         // The staircase hover requires one additional bomb drop to gain enough height
                         // Start the hover against the wall
                         NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Tricks.staircaseHover.canDo]
@@ -283,7 +285,12 @@ let MQDungeons = {
                 }
             },
             upperBasement: {
-                DisplayGroup: { groupName: "Basement", imageName: "Deku Stick" },
+                DisplayGroup: { 
+                    groupName: "Basement", 
+                    imageName: "Deku Stick",
+                    description: "Go around the basement floors to get here.",
+                    tricksToShow: [Tricks.dekuB1Skip]
+                },
                 Exits: {
                     graveRoom: {
                         Age: Age.CHILD
@@ -469,12 +476,18 @@ let MQDungeons = {
                         MapInfo: { x: 182, y: 200, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 16,
-                        LongDescription: "Navigate through the Poe room to get to this chest on the ledge on the right side of the main room. This may require you to go through most of the dungeon first."
+                        LongDescription: "Navigate through the Poe room to get to this chest on the ledge on the right side of the main room. This may require you to go through most of the dungeon first.",
+                        TricksToShow: [Tricks.mqDodongoRecoilSlashToPlatform]
                     }
                 }
             },
             eastRoom: {
-                DisplayGroup: { groupName: "Lower East Rooms", imageName: "Small Poe" },
+                DisplayGroup: { 
+                    groupName: "Lower East Rooms", 
+                    imageName: "Small Poe",
+                    description: "The rooms reached by blowing up the wall in the lower east part of the dungeon (or going around form the Poe/Lizalfos rooms).",
+                    tricksToShow: [Tricks.mqDodongoRecoilSlashToPlatform]
+                },
                 Exits: {
                     lowerLizalfosRoom: {
                         Needs: [ItemSets.PROJECTILES], // Adult can shoot the bomb flower line to reveal the switch
@@ -611,7 +624,12 @@ let MQDungeons = {
                 }
             },
             staircaseBottom: {
-                DisplayGroup: { groupName: "Staircase & Dodongo Room", imageName: "Bomb" },
+                DisplayGroup: { 
+                    groupName: "Staircase & Dodongo Room", 
+                    imageName: "Bomb",
+                    description: "The room with the staircase, reached after hitting the switch on the top across the bridge by the giant Dodongo head.",
+                    tricksToShow: [Tricks.dodongoTriggerStairsWithBow]
+                },
                 Exits: {
                     staircaseTop: {
                         NeedsAny: [
@@ -789,7 +807,12 @@ let MQDungeons = {
                 }
             },
             upperLizalfosRoom: {
-                DisplayGroup: { groupName: "Upper East Rooms", imageName: "Fairy Slingshot" },
+                DisplayGroup: { 
+                    groupName: "Upper East Rooms", 
+                    imageName: "Fairy Slingshot",
+                    description: "The puzzle rooms after the torch puzzle room.",
+                    tricksToShow: [Tricks.dodongoAdultJumpToBombChest]
+                },
                 Exits: {
                     topOfTorchPuzzleRoom: {},
                     lowerLizalfosRoom: {}
@@ -894,7 +917,12 @@ let MQDungeons = {
                 }
             },
             inDodongoHead: {
-                DisplayGroup: { groupName: "Inside Dondongo Head", imageName: "Goron's Ruby" },
+                DisplayGroup: { 
+                    groupName: "Inside Dondongo Head", 
+                    imageName: "Goron's Ruby",
+                    description: "Bomb the eyes of the giant Dodongo to enter its head.",
+                    tricksToShow: [Tricks.dodongoOpenHeadWithBombchus]
+                },
                 Exits: {
                     bossRoom: {
                         // You're guaranteed to have some kind of explosives, which is all you need to get here
@@ -1690,6 +1718,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 6,
                         LongDescription: "Proceed straight ahead in the main room. After the hallway, kill the two wolfos to spawn the chest.<br/><br/>If you don't have the song of time, it's possible to get here from the above room. This is the room after the red poe room - drop down before killing the first Stalfos.",
+                        TricksToShow: [Tricks.forestSoTBlockLedgeClip],
                         Needs: [ItemSets.SWORDS]
                     },
                     "2 Pots North of Main Room": {
@@ -1699,12 +1728,18 @@ let MQDungeons = {
                         MapInfo: { x: 171, y: 17, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 7,
-                        LongDescription: "From the start of the temple, go straight through the room with the giant skulltula and into the next door across the big room. The room with the pot is the one after the song of time block (not there as Child). The pots are in the back of the room.<br/><br/>If you don't have the song of time, it's possible to get here from the above room. This is the room after the red poe room - drop down before killing the first Stalfos."
+                        LongDescription: "From the start of the temple, go straight through the room with the giant skulltula and into the next door across the big room. The room with the pot is the one after the song of time block (not there as Child). The pots are in the back of the room.<br/><br/>If you don't have the song of time, it's possible to get here from the above room. This is the room after the red poe room - drop down before killing the first Stalfos.",
+                        TricksToShow: [Tricks.forestSoTBlockLedgeClip],
                     }
                 }
             },
             outsideWest: {
-                DisplayGroup: { groupName: "Lower Courtyards & Well", imageName: "3 Hearts" },
+                DisplayGroup: { 
+                    groupName: "Lower Courtyards & Well", 
+                    imageName: "3 Hearts",
+                    description: "The outside courtyard rooms, accessed by the eye switch from the lobby, or after the twisted cooridor.",
+                    tricksToShow: [Tricks.forestHookshotToWellSwitch]
+                },
                 Exits: {
                     outsideEast: { // Via the well - eye switch doesn't matter because the other way in covers that
                         Age: Age.ADULT,
@@ -1813,7 +1848,8 @@ let MQDungeons = {
                         MapInfo: { x: 226, y: 98, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 7.1,
-                        LongDescription: "The skulltula is above the doorframe leading to this room. Get it with your boomerang or hookshot."
+                        LongDescription: "The skulltula is above the doorframe leading to this room. Get it with your boomerang or hookshot.",
+                        TricksToShow: [Tricks.mqForestHoverBootsToDoorFrame]
                     }
                 }
             },
@@ -1895,7 +1931,12 @@ let MQDungeons = {
                 ItemLocations: {}
             },
             twistedHallway: {
-                DisplayGroup: { groupName: "Untwisted Corridor & Upper Courtyard", imageName: "Boss Key" },
+                DisplayGroup: { 
+                    groupName: "Untwisted Corridor & Upper Courtyard", 
+                    imageName: "Boss Key",
+                    description: "The area above the upper courtyard that you drop to it from, and the upper courtyard itself.",
+                    tricksToShow: [Tricks.forestBlockSkipWithHoverBoots]
+                },
                 Exits: {
                     upperOutside: {},
                     poeRooms: {
@@ -2039,7 +2080,12 @@ let MQDungeons = {
                 }
             },
             outsideEastPlatform: {
-                DisplayGroup: { groupName: "Falling Ceiling Rooms", imageName: "Small Poe" },
+                DisplayGroup: { 
+                    groupName: "Falling Ceiling Rooms", 
+                    imageName: "Small Poe",
+                    description: "The room with the falling ceiling and the green poe room, reached after falling down after the red/green poe rooms.",
+                    tricksToShow: [Tricks.forestGreenPoeEarly]
+                },
                 Exits: {
                     fallingCeilingRoom: {
                         Needs: [Songs.SONG_OF_TIME]
@@ -2051,7 +2097,8 @@ let MQDungeons = {
                         MapInfo: { x: 268, y: 73, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 27,
-                        LongDescription: "The quickest way to get here is to longshot the chest from the outside east room. Otherwise...</br><br/>Hit the left switch deep in the checkerbaord room. Now backtrack and take the door to the right of where you entered the room (NOT the locked door). Drop down to get the chest. If you don't have the Song of Time, you'll have to navigate all the way around to get back. Otherwise, play it to make a platform back up."
+                        LongDescription: "The quickest way to get here is to longshot the chest from the outside east room. Otherwise...</br><br/>Hit the left switch deep in the checkerbaord room. Now backtrack and take the door to the right of where you entered the room (NOT the locked door). Drop down to get the chest. If you don't have the Song of Time, you'll have to navigate all the way around to get back. Otherwise, play it to make a platform back up.",
+                        TricksToShow: [Tricks.forestLedgeWithHoverBoots]
                     }
                 }
             },
@@ -2145,7 +2192,12 @@ let MQDungeons = {
         UseAdultAge: function() { return !Settings.RandomizerSettings.shuffleDungeonEntrances; },
         Regions: {
             main: {
-                DisplayGroup: { groupName: "Lobby & Hammer Path", imageName: "Megaton Hammer" },
+                DisplayGroup: { 
+                    groupName: "Lobby & Hammer Path", 
+                    imageName: "Megaton Hammer",
+                    description: "The first room of the temple.",
+                    tricksToShow: [Tricks.fireWallSkip]
+                },
                 Exits: {
                     roomBeforeBoss: {
                         Needs: [GameStateSets.FIRE_TEMPLE_TUNIC_CHECK],
@@ -2339,6 +2391,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 6,
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper right corner. Roll into a box to break it to reveal a torch. Light all 3 torches in the room to open the gate to the chest.",
+                        TricksToShow: [Tricks.mqBossRoomGoronBombClip],
                         NeedsAny: [
                             [
                                 [SetType.OR, // Get to torches
@@ -2352,7 +2405,12 @@ let MQDungeons = {
                 }
             },
             bigLavaRoom: {
-                DisplayGroup: { groupName: "Big Lava Room", imageName: "Goron Tunic" },
+                DisplayGroup: { 
+                    groupName: "Big Lava Room", 
+                    imageName: "Goron Tunic",
+                    description: "BOSS KEY ROOM: Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now light the torch in the right side of the room with Din's or a fire arrow to spawn some hookshot pillars. Now, enter the door above the left goron room.",
+                    tricksToShow: [Tricks.mqFireLavaRoomDoorWithDins, Tricks.fireSoTBlockJump]
+                },
                 UseAdultAge: function() { 
                     return !Tricks.fireNoGoronTunic.enabled ||
                         (!Tricks.bombSuperslide.enabled && !Tricks.fireWallSkip.enabled) ||
@@ -2418,7 +2476,7 @@ let MQDungeons = {
                         MapInfo: { x: 174, y: 85, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 14,
-                        LongDescription: "Light the two torches - one is on a platform you need to ride up to, and the other is by the door on the left side of the room. Now light the torch in the right side of the room with Din's or a fire arrow to spawn some hookshot pillars. Now you can enter the door above the left goron room to get to the room with the chest. Hookshot the torch or chest to get to it, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
+                        LongDescription: "The chest is beyond the wall of fire in the back of the room. Hookshot the torch or chest to get to it, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
                     },
                     "2 Pots in Boss Key Room": {
                         ItemGroup: ItemGroups.GROUP,
@@ -2637,7 +2695,12 @@ let MQDungeons = {
                 }
             },
             aboveBoulderMaze: {
-                DisplayGroup: { groupName: "Top Rooms Above Boulder Maze", imageName: "Hookshot" },
+                DisplayGroup: { 
+                    groupName: "Top Rooms Above Boulder Maze", 
+                    imageName: "Hookshot",
+                    description: "On top of the boulder maze, play the Song of Time by the bombable pit. Climb the spawned platforms, then hookshot to the ledge. Hookshot the next ledge and ride the platform upwards.",
+                    tricksToShow: [Tricks.fireLongshotToTopOfTower]
+                },
                 Exits: {
                     narrowBridgeRoom: {}
                 },
@@ -2649,7 +2712,7 @@ let MQDungeons = {
                         MapInfo: { x: 312, y: 125, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 26.8,
-                        LongDescription: "On top of the boulder maze, play the Song of Time by the bombable pit. Navigate upwards via climbing and the hookshot). In the green room, hookshot the giant face on the wall twice to recieve two wonderitems."
+                        LongDescription: "In the green room, hookshot the giant face on the wall twice to recieve two wonderitems."
                     },
                     "2 Wonderitems on Grate Near Very Top": {
                         ItemGroup: ItemGroups.GROUP,
@@ -2658,14 +2721,14 @@ let MQDungeons = {
                         MapInfo: { x: 311, y: 91, floor: "F4" },
                         Age: Age.ADULT,
                         Order: 26.9,
-                        LongDescription: "On top of the boulder maze, play the Song of Time by the bombable pit. Navigate upwards via climbing and the hookshot). In the green room, hookshot the face on the first wall you can climb up twice to recieve two wonderitems."
+                        LongDescription: "In the green room, hookshot the face on the first wall you can climb up twice to recieve two wonderitems."
                     },
                     "Skulltula on Very Top": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 219, y: 147, floor: "F5" },
                         Age: Age.ADULT,
                         Order: 27,
-                        LongDescription: "On top of the boulder maze, play the Song of Time by the bombable pit. Navigate upwards via climbing and the hookshot). After the green room, make your way around the room and hammer the rusted switch by the fire circle. Now jump down and hit the switch. Use the new hookshot target to quickly get up and pull the block away. The skulltula is underneath."
+                        LongDescription: "After the green room, make your way around the room and hammer the rusted switch by the fire circle. Now jump down and hit the switch. Use the new hookshot target to quickly get up and pull the block away. The skulltula is underneath."
                     }
                 }
             },
@@ -3365,7 +3428,12 @@ let MQDungeons = {
                 }
             },
             roomBeforeDarkLink: {
-                DisplayGroup: { groupName: "Boss Key Loop (Top West)", imageName: "Boss Key" },
+                DisplayGroup: { 
+                    groupName: "Boss Key Loop (Top West)", 
+                    imageName: "Boss Key",
+                    description: "The top west route leading to Dark Link.",
+                    tricksToShow: [Tricks.mqWaterWaterfallWithHoverBoots]
+                },
                 Exits: {
                     whirlpoolRoom: {}
                 },
@@ -3651,7 +3719,12 @@ let MQDungeons = {
                 }
             },
             roomAfterSpikes: {
-                DisplayGroup: { groupName: "Mini Waterfall Loop (Low North)", imageName: "Zora Tunic" },
+                DisplayGroup: { 
+                    groupName: "Mini Waterfall Loop (Low North)", 
+                    imageName: "Zora Tunic",
+                    description: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom north room. Cross it with your longshot or hover boots (jumpslash, or backwalk/backflip). Enter the next room.",
+                    tricksToShow: [Tricks.waterBKJumpToWaterfall]
+                },
                 Exits: {
                     dodongoRoom: {
                         Needs: [Items.HOOKSHOT]
@@ -3672,7 +3745,7 @@ let MQDungeons = {
                         MapInfo: { x: 192, y: 104, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 37,
-                        LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom north room. Cross it with your longshot or hover boots (jumpslash, or backwalk/backflip). The crates are in the next room."
+                        LongDescription: "The crates are by the entrance to the room."
                     },
                     "6 Underwater Crates in Low North Room": {
                         ItemGroup: ItemGroups.GROUP,
@@ -3681,7 +3754,7 @@ let MQDungeons = {
                         MapInfo: { x: 192, y: 76, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 38,
-                        LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom north room. Cross it with your longshot or hover boots (jumpslash, or backwalk/backflip). The crates are under the water in the next room."
+                        LongDescription: "The crates are submerged in the water."
                     },
                     "4 Crates Behind Low North Room Gate": {
                         ItemGroup: ItemGroups.GROUP,
@@ -3690,14 +3763,14 @@ let MQDungeons = {
                         MapInfo: { x: 191, y: 50, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 39,
-                        LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes.<br/><br/>Once in this room, navigate to the farthest box in the back of the room and use your iron boots to sink down onto it. Hookshot the center of the ceiling, around the second brick texture to hookshot an unintended hookshot target to get over the gate where the crates reside.<br/><br/>The intended path involves going around the rooms to your left, through the waterfall entrance. You'd either spawn the scarecrow, or do the glich to get across."
+                        LongDescription: "Navigate to the farthest box in the back of the room and use your iron boots to sink down onto it. Hookshot the center of the ceiling, around the second brick texture to hookshot an unintended hookshot target to get over the gate where the crates reside.<br/><br/>The intended path involves going around the rooms to your left, through the waterfall entrance. You'd either spawn the scarecrow, or do the glich to get across."
                     },
                     "Skulltula Behind Low North Room Gate": {
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 185, y: 50, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 40,
-                        LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes.<br/><br/>Once in this room, navigate to the farthest box in the back of the room and use your iron boots to sink down onto it. Hookshot the center of the ceiling, around the second brick texture to hookshot an unintended hookshot target to get over the gate. The skulltula would be to your left.<br/><br/>The intended path involves going around the rooms to your left, through the waterfall entrance. You'd either spawn the scarecrow, or do the glich to get across."
+                        LongDescription: "Navigate to the farthest box in the back of the room and use your iron boots to sink down onto it. Hookshot the center of the ceiling, around the second brick texture to hookshot an unintended hookshot target to get over the gate. The skulltula would be to your left.<br/><br/>The intended path involves going around the rooms to your left, through the waterfall entrance. You'd either spawn the scarecrow, or do the glich to get across."
                     }
                 }
             },
@@ -3774,7 +3847,7 @@ let MQDungeons = {
                         MapInfo: { x: 124, y: 53, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 45,
-                        LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes. Play the Scarecrow's song and hookshot it to get to the opening to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. The pots are in the back corners of the room.",
+                        LongDescription: "Play the Scarecrow's song and hookshot it to get to the opening by the waterfall to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. The pots are in the back corners of the room.",
                     },
                     "5 Crates in Room by Low North Waterfall": {
                         ItemGroup: ItemGroups.GROUP,
@@ -3783,14 +3856,14 @@ let MQDungeons = {
                         MapInfo: { x: 124, y: 60, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 46,
-                        LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes. Play the Scarecrow's song and hookshot it to get to the opening to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. The crates are along the walls in the room.",
+                        LongDescription: "Play the Scarecrow's song and hookshot it to get to the opening by the waterfall to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. The crates are along the walls in the room.",
                     },
                     "Freestanding Item in Room by Low North Waterfall": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 115, y: 64, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 47,
-                        LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes. Play the Scarecrow's song and hookshot it to get to the opening to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. The item is in the box to your left."
+                        LongDescription: "Play the Scarecrow's song and hookshot it to get to the opening by the waterfall to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. The item is in the box to your left."
                     },
                     "Wonderitem in Room by Low North Waterfall": {
                         ItemGroup: ItemGroups.WONDERITEM,
@@ -3798,7 +3871,7 @@ let MQDungeons = {
                         MapInfo: { x: 123, y: 49, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 47.1,
-                        LongDescription: "After navigating around and hitting the switch after getting the chest in the single water pillar room, head to the bottom floor and enter the north area. Use your longshot or hover boots to cross the spikes. Play the Scarecrow's song and hookshot it to get to the opening to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. In the room, hookshot the symbol on the wall to spawn the wonderitem.",
+                        LongDescription: "Play the Scarecrow's song and hookshot it to get to the opening by the waterfall to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. In the room, hookshot the symbol on the wall to spawn the wonderitem.",
                         Needs: [Items.HOOKSHOT]
                     }
                 }
@@ -4051,6 +4124,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 8.4,
                         LongDescription: "This rupee is in the northwest corner of the room. Use your hookshot or hover boots to get to it.",
+                        TricksToShow: [Tricks.shadowScytheSilverRupeeWithNothing],
                         NeedsAny: [
                             Items.HOOKSHOT, 
                             Equipment.HOVER_BOOTS, 
@@ -4488,7 +4562,7 @@ let MQDungeons = {
                 }
             },
             boatRoom: {
-                DisplayGroup: { groupName: "Boat Room Start", imageName: "Zelda's Lullaby" },
+                DisplayGroup: { groupName: "Boat Room Start",  imageName: "Zelda's Lullaby" },
                 Exits: {
                     windHallway: {
                         Map: "Shadow Temple",
@@ -4504,7 +4578,12 @@ let MQDungeons = {
                 ItemLocations: {}
             },
             boatRoomLedge: {
-                DisplayGroup: { groupName: "Boat Room Start", imageName: "Zelda's Lullaby" },
+                DisplayGroup: { 
+                    groupName: "Boat Room Start", 
+                    imageName: "Zelda's Lullaby",
+                    description: "The room with the giant boat that you get to after the fan/gibdos room.",
+                    tricksToShow: [Tricks.shadowChildGateClip, Tricks.shadowAdultGateClip] 
+                },
                 Exits: {
                     boatRoom: {}
                 },
@@ -4516,12 +4595,18 @@ let MQDungeons = {
                         MapInfo: { x: 280, y: 114, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 34,
-                        LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole.<br/><br/>Play scarecrow's song from the boat and longshot it to get to the platform with the hearts."
+                        LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole.<br/><br/>Play scarecrow's song from the boat and longshot it to get to the platform with the hearts.",
+                        TricksToShow: [Tricks.shadowJumpToBoatRoomLedge]
                     }
                 }
             },
             endOfBoatRide: {
-                DisplayGroup: { groupName: "Boat Room Chasm Areas", imageName: "Fairy Bow" },
+                DisplayGroup: { 
+                    groupName: "Boat Room Chasm Areas", 
+                    imageName: "Fairy Bow",
+                    description: "The areas on either side of the chasm that you get to after riding the giant boat.",
+                    tricksToShow: [Tricks.shadowChuBombFlowers]
+                },
                 Exits: {
                     acrossChasm: {
                         NeedsAny: [Items.FAIRY_BOW, Tricks.shadowChuBombFlowers.canDo]
@@ -4609,12 +4694,18 @@ let MQDungeons = {
                         MapInfo: { x: 120, y: 116, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 39,
-                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the hearts."
+                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the hearts.",
+                        TricksToShow: [Tricks.mqShadowChasmPlatformWithHookshot]
                     }
                 }
             },
             invisibleWallRoom: {
-                DisplayGroup: { groupName: "Invisible Wall Maze Rooms", imageName: "Boss Key" },
+                DisplayGroup: { 
+                    groupName: "Invisible Wall Maze Rooms", 
+                    imageName: "Boss Key",
+                    description: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.",
+                    tricksToShow: [Tricks.mqShadowChasmPlatformWithHookshot]
+                },
                 Exits: {
                     spikeWallRoom: {
                         LockedDoor: "Locked Door in Invisible Wall Room",
@@ -4628,7 +4719,7 @@ let MQDungeons = {
                         MapInfo: { x: 66, y: 98, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 43.9,
-                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>In the invisible maze, navigate to the west room. Go through and turn around. Shoot the upper part of the picture above the door to spawn the wonderitem.",
+                        LongDescription: "In the invisible maze, navigate to the west room. Go through and turn around. Shoot the upper part of the picture above the door to spawn the wonderitem.",
                         Needs: [Items.FAIRY_BOW]
                     },
                     "Freestanding Item in Triple Skull Room": {
@@ -4636,7 +4727,7 @@ let MQDungeons = {
                         MapInfo: { x: 31, y: 99, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 44,
-                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>In the invisible maze, navigate to the west room. The item is behind the triple skulls."
+                        LongDescription: "In the invisible maze, navigate to the west room. The item is behind the triple skulls."
                     },
                     "9 Rupees in Triple Skull Room": {
                         ItemGroup: ItemGroups.GROUP,
@@ -4646,6 +4737,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 45,
                         LongDescription: "From the room with invisible walls, enter the room that's straight ahead of you (the west room). Use the bomb flower or your own bombs to blow up all three skulls to spawn the 9 items.",
+                        TricksToShow: [Tricks.shadowGiantSkullsWithChus],
                         NeedsAny: [
                             Items.BOMB,
                             Equipment.STRENGTH,
@@ -4657,7 +4749,7 @@ let MQDungeons = {
                         MapInfo: { x: 89, y: 144, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 46,
-                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>In the invisible maze, navigate to the south room. Use explosives to make Dead Hand spawn. Kill him to spawn the chest.",
+                        LongDescription: "In the invisible maze, navigate to the south room. Use explosives to make Dead Hand spawn. Kill him to spawn the chest.",
                         Needs: [ItemSets.EXPLOSIVES_OR_STRENGTH]
                     },
                     "2 Pots in Bomb Flower Room": {
@@ -4667,7 +4759,7 @@ let MQDungeons = {
                         MapInfo: { x: 89, y: 131, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 47,
-                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>In the invisible maze, navigate to the south room. The pots are along the back walls, in the corners."
+                        LongDescription: "In the invisible maze, navigate to the south room. The pots are along the back walls, in the corners."
                     }
                 }
             },
@@ -4684,7 +4776,7 @@ let MQDungeons = {
                         MapInfo: { x: 89, y: 51, floor: "B1" },
                         Age: Age.ADULT,
                         Order: 41,
-                        LongDescription: "Navigate across the chasm you arrive at after taking the boat. Play the Song of Time to remove the block, then shoot the eye switch. Longshot up to the target to get to the switch to unbar the door.<br/><br/>Navigate to the room to your right (the north one). The pot is in front of you."
+                        LongDescription: "Navigate to the room to your right (the north one). The pot is in front of you."
                     }
                 }
             },
@@ -5188,6 +5280,7 @@ let MQDungeons = {
                         Order: 20,
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyPots; },
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way up the western side. The pots are on the northeast platform, so either play the song of time to spawn the block, use hover boots, or megaflip to it.",
+                        TricksToShow: [Tricks.spiritStatueRoomJumps],
                         NeedsAny: [
                             Songs.SONG_OF_TIME,
                             Equipment.HOVER_BOOTS,
@@ -5204,6 +5297,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 20,
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way up the western side. The pots are on the northeast platform, so either play the song of time to spawn the block, use hover boots, or megaflip to it. One of the pots will fly at you.",
+                        TricksToShow: [Tricks.spiritStatueRoomJumps],
                         NeedsAny: [
                             Songs.SONG_OF_TIME,
                             Equipment.HOVER_BOOTS,
@@ -5217,6 +5311,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 21,
                         LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way up the western side. The pots are on the northeast platform, so either play the song of time to spawn the block, use hover boots, megaflip, or use boomerang as described.<br/><br/>To use boomerang, first, jump to the statue hand (child requires a jumpslash). Now walk along the arm so you're somewhat near the wall. You should now be able to aim a bit to the left of the pot to get it.",
+                        TricksToShow: [Tricks.spiritStatueRoomJumps],
                         NeedsAny: [
                             Songs.SONG_OF_TIME,
                             Equipment.HOVER_BOOTS,
@@ -5339,7 +5434,14 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         Order: 28,
-                        LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way to the southeast corner using the hookshot. In the northeast part of the room, there's an invisible chest. Hookshot or hover boots to it."
+                        LongDescription: "WALL MASTER WARNING:<br/>In the statue room, make your way to the southeast corner using the hookshot. In the northeast part of the room, there's an invisible chest. Hookshot or hover boots to it.",
+                        TricksToShow: [Tricks.spiritStatueRoomJumps],
+                        NeedsAny: [
+                            Items.HOOKSHOT,
+                            Equipment.HOVER_BOOTS,
+                            Tricks.megaFlip.canDo,
+                            Tricks.spiritStatueRoomJumps.canDo
+                        ]
                     },
                     "Chest in Boxes in Statue Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5365,7 +5467,12 @@ let MQDungeons = {
                 DisplayGroup: { 
                     groupName: "Rooms Beyond Lobby Water", 
                     imageName: "Ocarina",
-                    description: "At the statue room, light all 3 torches with fire arrows. Use your hookshot to get to the door that unlocks. In the next room, use your mirror shield on all 3 suns and kill the enemies (including the wall masters). Navigate through the hallway to get to this area."
+                    description: "At the statue room, light all 3 torches with fire arrows. Use your hookshot to get to the door that unlocks. In the next room, use your mirror shield on all 3 suns and kill the enemies (including the wall masters). Navigate through the hallway to get to this area.",
+                    tricksToShow: [
+                        Tricks.mqSpiritChildGeyserSkip,
+                        Tricks.mqSpiritAdultGeyserSkip,
+                        Tricks.mqSpiritStatueTorchesWithDins
+                    ]
                 },
                 UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                 Exits: {
@@ -5483,7 +5590,8 @@ let MQDungeons = {
                 DisplayGroup: { 
                     groupName: "Beamos/Lizalfos/Mirror Shield Path", 
                     imageName: "Mirror Shield",
-                    description: "BEAMOS ROOM: is the upper locked door in the Adult side of the statue room.\x0A\x0ALIZALFOS ROOM: In the beamos room, the puzzle is to play the Song of Time to move the blocks so that the little box falls down onto one of the blocks. Play it by the left side of the room, then by the hole twice. You then use that box to hold the switch down."
+                    description: "BEAMOS ROOM: is the upper locked door in the Adult side of the statue room.\x0A\x0ALIZALFOS ROOM: In the beamos room, the puzzle is to play the Song of Time to move the blocks so that the little box falls down onto one of the blocks. Play it by the left side of the room, then by the hole twice. You then use that box to hold the switch down.",
+                    tricksToShow: [Tricks.spiritSuperslideToMirrorShield]
                 },
                 UseAdultAge: function() { return !Tricks.mqSpiritChildGeyserSkip.enabled; },
                 Exits: {
@@ -5789,7 +5897,12 @@ let MQDungeons = {
                 }
             },
             northRoom: {
-                DisplayGroup: { groupName: "Platforming Room", imageName: "Compass" },
+                DisplayGroup: { 
+                    groupName: "Platforming Room", 
+                    imageName: "Compass",
+                    description: "The room up the ledges, and beyond the red ice in the circular room.",
+                    tricksToShow: [Tricks.iceChildNorthRoom]
+                },
                 UseAdultAge: function() { return !Tricks.iceChildNorthRoom.enabled; },
                 Exits: {},
                 ItemLocations: {
@@ -5816,6 +5929,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 7,
                         LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>Play the song of time on the top near the pillar with the skulltula to spawn a block. Climb it, and play the song again. Use blue fire to melt the ice to gain access to the skulltula.",
+                        TricksToShow: [Tricks.mqIceNorthSkullWithoutSoT],
                         NeedsAny: [
                             Items.ICE_ARROW,
                             Tricks.mqIceNorthSkullWithoutSoT.canDo,
@@ -5859,6 +5973,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 10,
                         LongDescription: "This skulltula is on the ledge to your right in the big room. Play the scarecrow's song and hook it, a ground jump to get up there, or use hover boots to get to the taller pillar and longshot it.",
+                        TricksToShow: [Tricks.mqIceJumpToSkull],
                         NeedsAny: [
                             [Equipment.HOVER_BOOTS, UpgradedItems.LONGSHOT],
                             Tricks.mqIceJumpToSkull.canDo,
@@ -6268,7 +6383,12 @@ let MQDungeons = {
                 }
             },
             mazeStart: {
-                DisplayGroup: { groupName: "Maze", imageName: "Ice Arrow" },
+                DisplayGroup: { 
+                    groupName: "Maze", 
+                    imageName: "Ice Arrow",
+                    description: "The door maze accessible by going straight ahead from the dungeon's entrance.",
+                    tricksToShow: [Tricks.gtgChildVineClips]
+                },
                 Exits: {
                     backOfMaze: {
                         NeedsAny: [Tricks.gtgChildVineClips.canDo, Tricks.weirdShot.canDo]
@@ -6390,6 +6510,7 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 7.1,
                         LongDescription: "After the sand room, look for the rupee to your right on the ceiling. You can get it with a well-angled hookshot to the ceiling target; get the rest of the distance with a jumpslash.",
+                        TricksToShow: [Tricks.gtgSlopesRoomWallmasterToRupee],
                         NeedsAny: [Items.HOOKSHOT, Tricks.gtgSlopesRoomWallmasterToRupee.canDo]
                     },
                     "Icicle Silver Rupee in Back Left Area": {
@@ -6423,7 +6544,15 @@ let MQDungeons = {
                 }
             },
             roomWithSilverBlock: {
-                DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Silver Gauntlets" },
+                DisplayGroup: { 
+                    groupName: "Silver Block Rooms", 
+                    imageName: "Silver Gauntlets",
+                    description: "Collect the silver rupees in the slopes room and navigate to the unlocked door to get to this area.",
+                    tricksToShow: [
+                        Tricks.gtgSilverBlockRoomExitWithHoverBoots,
+                        Tricks.gtgSilverBlockSkipWithHammerSuperslide
+                    ]
+                },
                 UseAdultAge: function() { 
                     return !Tricks.gtgChildVineClips.enabled && !Settings.RandomizerSettings.shuffleSilverRupees; 
                 },
@@ -6545,6 +6674,7 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 9.9,
                         LongDescription: "First, spawn the chest by making your way to the center of the maze. Break the box, then hammer the rusted switch to spawn the chest.<br/><br/>In the eye statue room, hit the lower crystal switch with your hookshot, bow, or explosives. The room with the chest will become unbarred.",
+                        TricksToShow: [Tricks.mqGtgEyeStatueJumpslash],
                         NeedsAny: [
                             ItemLocationSets.MQ_GTG_SPAWNED_ICE_ARROW_CHEST, // Already spawned
                             [ // CAN spawn it
@@ -7228,7 +7358,12 @@ let MQDungeons = {
                 }
             },
             lightRoom1: {
-                DisplayGroup: { groupName: "Light Trial", imageName: "Light Medallion" },
+                DisplayGroup: { 
+                    groupName: "Light Trial", 
+                    imageName: "Light Medallion",
+                    description: "The light trial.",
+                    tricksToShow: [Tricks.ganonLightTrialSuperslideSkip, Tricks.ganonLightTrailEssSkip] 
+                },
                 UseAdultAge: () => !Tricks.ganonLightTrialSuperslideSkip.enabled,
                 Exits: {
                     lightRoom2: {

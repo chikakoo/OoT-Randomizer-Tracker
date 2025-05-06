@@ -466,6 +466,20 @@ a {
 	background-repeat: no-repeat;
 }
 
+.item-group-trick-container {
+	display: flex;
+	margin-bottom: 8px;
+}
+
+.item-group-trick {
+	font-size: 10pt;
+	color: white;
+}
+
+.item-group-trick:hover {
+	color: red;
+}
+
 .item-location-age-icon {
 	z-index: 1;
 }

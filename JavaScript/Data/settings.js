@@ -1576,7 +1576,7 @@ let Tricks = {
 		canDo: (age) => age === Age.ADULT &&
 			Tricks.fireSoTBlockJump.enabled,
 		displayText: "Song of Time Block Jump",
-		description: "Exit left big lava room goron jail; face up before camera changes; sidehop left x3, backflip x2; sidehop right; sideroll and hold Z and up during roll.",
+		description: "Exit the left big lava room goron jail; face up before camera changes; sidehop left x3, backflip x2; sidehop right; sideroll and hold Z and up during roll.",
 		links: [{
 			url: "https://youtu.be/hBBeXaBuFik",
 			description: "Video"
