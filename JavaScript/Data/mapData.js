@@ -2428,7 +2428,10 @@ let MapLocations = {
                     darunia: {
                         // Megasidehop glitch: https://youtu.be/tMSiqzY3E2o
                         // With chu: https://youtu.be/-WZITINbip0
-                        ChildNeedsAny: [Songs.ZELDAS_LULLABY, Tricks.megaFlip.canDo],
+                        ChildNeedsAny: [
+                            Songs.ZELDAS_LULLABY, 
+                            [Items.BOMB, Tricks.megaFlip.canDo] // Not sure how to do with Chu... it never works
+                        ], 
                         AdultNeeds: [(age) => MapLocations["Goron City"]._canStopAdultGoron(age)]
                     },
                     lostWoodsRocks: {
