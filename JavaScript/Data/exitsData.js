@@ -9,6 +9,7 @@ let OwExits = {
             MapInfo: { x: 46, y: 130 },
             Age: Age.EITHER,
             LongDescription: "This is the bottom entrance to the Lost Woods.",
+            TricksToShow: [Tricks.pokeySkip],
             ChildNeedsAny: [
                 SettingSets.OPEN_FOREST,
                 GameStateSets.DEFEATED_DEKU_TREE_BOSS,
@@ -136,7 +137,8 @@ let OwExits = {
                 Equipment.IRON_BOOTS,
                 Tricks.zorasRiverScalelessChild.canDo,
                 Tricks.zorasRiverScalelessAdult.canDo],
-            LongDescription: "This is the exit to Zora's River that you get to by diving."
+            LongDescription: "This is the exit to Zora's River that you get to by diving.",
+            TricksToShow: [Tricks.zorasRiverScalelessChild, Tricks.zorasRiverScalelessAdult]
         },
         "To Lost Woods Bridge": {
             ExitRegion: "skullKidAndBridge",
@@ -160,7 +162,8 @@ let OwExits = {
             OwShuffleExitName: "Kokiri Forest Bridge",
             ReadOnly: true,
             ExcludeFromDropdown: true,
-            LongDescription: "This is taken via the magic bean, hover boots, longshotting (hookshotting with a trick), megaflipping, or precise jumping to the bridge."
+            LongDescription: "This is taken via the magic bean, hover boots, longshotting (hookshotting with a trick), megaflipping, or precise jumping to the bridge.",
+            TricksToShow: [Tricks.lwAdultBridgeFromTop, Tricks.lwAdultBridgeWithHookshot]
         },
         "Sacred Forest Meadow": {
             ExitRegion: "secondHalf",
@@ -238,6 +241,7 @@ let OwExits = {
             Age: Age.EITHER,
             UseAdultAge: function() { return !Tricks.megaFlip.enabled && !Tricks.lwBridgePressureJump.enabled; },
             LongDescription: "Longshot from the bridge to the ladder to get to the lost woods.<br/><br/>Megaflip setup: Get in the corner closest to the ladder; take a tiny step back; c-up and face the third rope support; turn 180; dry roll if using bombs; megaflip",
+            TricksToShow: [Tricks.lwBridgePressureJump],
             NeedsAny: [
                 UpgradedItems.LONGSHOT, 
                 Tricks.megaFlip.canDo, 
@@ -412,6 +416,7 @@ let OwExits = {
             MapInfo: { x: 50, y: 103 },
             Age: Age.EITHER,
             LongDescription: "Near the entrance to Gerudo Valley, there's a circle of small rocks. As a child, you can bomb the center to reveal a grotto. As adult, you must hammer the red rock.",
+            TricksToShow: [Tricks.adultGrottoByGVWithoutHammer],
             ChildNeeds: [ItemSets.BLAST_OR_SMASH_ITEMS],
             AdultNeedsAny: [Items.MEGATON_HAMMER, Tricks.adultGrottoByGVWithoutHammer.canDo]
         },
@@ -772,6 +777,7 @@ let OwExits = {
             MapInfo: { x: 308, y: 161, floor: "GAN" },
             Age: Age.ADULT,
             LongDescription: "At the end of the main rock is a giant block you can pull up with Golden Gauntlets. Alternatively, you can use hover boots and a shield to clip past the block.",
+            TricksToShow: [Tricks.doubleDefenseEarly],
             NeedsAny: [UpgradedItems.GOLDEN_GAUNTLETS, Tricks.doubleDefenseEarly.canDo]
         }
     },
@@ -831,6 +837,7 @@ let OwExits = {
             Age: Age.EITHER,
             Order: 30,
             LongDescription: "This is the entrance to the Bottom of the Well.",
+            TricksToShow: [Tricks.botwAsChildWithCucco, Tricks.botwAsAdultWithCucco, Tricks.botwAsAdultWihChus],
             IsDungeonEntrance: true,
             NeedsAny: [
                 Tricks.botwAsChildWithCucco.canDo,
@@ -904,7 +911,8 @@ let OwExits = {
             MapInfo: { x: 190, y: 190 },
             Age: Age.ADULT,
             Order: 26,
-            LongDescription: "This is the building that was being constructed as a child. It's near the well."
+            LongDescription: "This is the building that was being constructed as a child. It's near the well.",
+            TricksToShow: [Tricks.kakShopClips]
         },
         "Windmill": {
             ExitRegion: "main",
@@ -959,6 +967,7 @@ let OwExits = {
             UseAdultAge: function() { return !Tricks.kakShopClips.canDo; },
             Age: Age.EITHER,
             LongDescription: "This is the building to the left if you are facing the Death Mountain entrance.",
+            TricksToShow: [Tricks.kakShopClips],
             ChildNeeds: [Tricks.kakShopClips.canDo]
         },
         "Potion Shop Front": {
@@ -976,6 +985,7 @@ let OwExits = {
             RequiredToAppear: function() { return Settings.RandomizerSettings.shuffleInteriorEntrances; },
             Needs: [SettingSets.SHUFFLE_INTERIOR_ENTRANCES],
             LongDescription: "This is the building to the right if you are facing the Death Mountain entrance.",
+            TricksToShow: [Tricks.kakShopClips]
         },
 
         // Enclosed Area
@@ -1008,6 +1018,7 @@ let OwExits = {
             UseAdultAge: function() { return !Tricks.kakShopClips.canDo; },
             Age: Age.EITHER,
             LongDescription: "This entrance to this is where the open grotto is behind the fence. You can use your hookshot to get back here via the roofs. You can also jump onto the potion shop roof from the Death Mountain entrance with a good angle.",
+            TricksToShow: [Tricks.kakShopClips],
             ChildNeeds: [Tricks.kakShopClips.canDo]
         },
         "Potion Shop to Interior": {
@@ -1066,6 +1077,12 @@ let OwExits = {
             MapInfo: { x: 345, y: 137 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Shadow Temple.",
+            TricksToShow: [
+                Tricks.hookshotJump, 
+                Tricks.oldShadowEarly, 
+                Tricks.childShadowWithBombPush, 
+                Tricks.adultShadowLedgeClip
+            ],
             IsDungeonEntrance: true
         },
         "Dampe's Shed": {
@@ -1096,6 +1113,7 @@ let OwExits = {
             Age: Age.EITHER,
             UseAdultAge: function() { return !Tricks.unloadGrave.enabled; },
             LongDescription: "Under the grave in the in the northwest corner of the graveyard.",
+            TricksToShow: [Tricks.unloadGrave]
         },
         "Dampe's Grave to Dampe Race": {
             ExitRegion: "main",
@@ -1129,7 +1147,8 @@ let OwExits = {
             DefaultEntranceGroupName: "Royal Family's Tomb",
             MapInfo: { x: 303, y: 143 },
             Age: Age.EITHER,
-            LongDescription: "Play Zelda's Lullaby in front of the big grave in the back of the graveyard to reveal this entrance."
+            LongDescription: "Play Zelda's Lullaby in front of the big grave in the back of the graveyard to reveal this entrance.",
+            TricksToShow: [Tricks.unloadGrave]
         }
     },
 
@@ -1281,6 +1300,7 @@ let OwExits = {
                     !Tricks.megaFlip.enabled;
             },
             LongDescription: "Hammer the silver rocks that are to the left of the Goron City entrance (if you face the entrance) to uncover the entrance.\x0A\x0AYou can megaflip here from the corner by the ladder as any age, as well.",
+            TricksToShow: [Tricks.childSidehopToDoubleMagic, Tricks.adultRecoilHoverBootsToDoubleMagic],
             NeedsAny: [
                 Items.MEGATON_HAMMER, 
                 Tricks.megaFlip.canDo,
@@ -1344,6 +1364,7 @@ let OwExits = {
             MapInfo: { x: 185, y: 10 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance behind darunia's room - push back the statue.",
+            TricksToShow: [Tricks.goronChildStatueSkip],
             ChildNeeds: [Tricks.goronChildStatueSkip.canDo]
         },
         "Shop": {
@@ -1418,7 +1439,12 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 332, y: 61 },
             Age: Age.EITHER,
-            LongDescription: "This is the entrance to the domain - play Zelda's Lullaby on the symbol by the waterfall."
+            LongDescription: "This is the entrance to the domain - play Zelda's Lullaby on the symbol by the waterfall.",
+            TricksToShow: [
+                Tricks.cuccoToZorasDomain,
+                Tricks.hoverBootsToZorasDomain,
+                Tricks.megasidehopToZorasDomain
+            ]
         }
     },
 
@@ -1441,6 +1467,7 @@ let OwExits = {
             Age: Age.EITHER,
             UseChildAge: function() { return !Tricks.adultDomainToLake.canDo; },
             LongDescription: "This is the entrance to Zora's River you can get to by diving into the water.",
+            TricksToShow: [Tricks.adultDomainToLake],
             ChildNeeds: [Equipment.SCALE],
             AdultNeeds: [Tricks.adultDomainToLake.canDo]
         },
@@ -1451,7 +1478,8 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 219, y: 44},
             Age: Age.EITHER,
-            LongDescription: "This is the entrance to Zora's Fountain behind King Zora."
+            LongDescription: "This is the entrance to Zora's Fountain behind King Zora.",
+            TricksToShow: [Tricks.childKingZoraSkip, Tricks.adultKingZoraSkip]
         },
 
         // Interiors
@@ -1463,6 +1491,7 @@ let OwExits = {
             MapInfo: { x: 236, y: 254 },
             Age: Age.EITHER,
             LongDescription: "This is the shop. As an adult, you can either use Blue Fire, or perform the shop skip to get inside.",
+            TricksToShow: [Tricks.blueFireShopSkip],
             AdultNeedsAny: [ItemSets.BLUE_FIRE_ITEMS, Tricks.blueFireShopSkip.canDo]
         },
         "Song of Storms Grotto": {
@@ -1495,6 +1524,7 @@ let OwExits = {
             Age: Age.EITHER,
             UseChildAge: function() { return !Tricks.enterJabuAsAdult.enabled; },
             LongDescription: "This is the entrance to Jabu Jabu.",
+            TricksToShow: [Tricks.jabuFishless, Tricks.enterJabuAsAdult],
             IsDungeonEntrance: true,
             AdultNeeds: [Tricks.enterJabuAsAdult.canDo],
             ChildNeedsAny: [Items.FISH, Tricks.jabuFishless.canDo]
@@ -1567,6 +1597,7 @@ let OwExits = {
             Age: Age.EITHER,
             UseChildAge: function() { return !Tricks.adultDomainMegaflipClip.enabled && !Tricks.adultLakesideLabClip.enabled; },
             LongDescription: "This is the entrance to Zora's Domain.",
+            TricksToShow: [Tricks.childLakesideLabClip, Tricks.adultLakesideLabClip, Tricks.adultDomainMegaflipClip],
             ChildNeedsAny: [Equipment.SCALE, Tricks.childLakesideLabClip.canDo],
             AdultNeedsAny: [
                 Tricks.adultDomainMegaflipClip.canDo,
@@ -1604,6 +1635,7 @@ let OwExits = {
             MapInfo: { x: 204, y: 215 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Water Temple.",
+            TricksToShow: [Tricks.childLakesideLabClip, Tricks.adultLakesideLabClip, Tricks.adultWaterTempleClip],
             IsDungeonEntrance: true,
             ChildNeeds: [Tricks.childLakesideLabClip.canDo],
             AdultNeedsAny: [
@@ -1632,7 +1664,8 @@ let OwExits = {
             Order: 3,
             MapInfo: {x: 304, y: 114},
             Age: Age.EITHER,
-            LongDescription: "This is the eastern exit."
+            LongDescription: "This is the eastern exit.",
+            TricksToShow: [Tricks.gvCrossBridgeWithHookshot]
         },
         "Gerudo Fortress": {
             ExitRegion: "acrossBridge",
@@ -1642,7 +1675,8 @@ let OwExits = {
             Order: 7,
             MapInfo: {x: 62, y: 51},
             Age: Age.EITHER,
-            LongDescription: "This is the western exit."
+            LongDescription: "This is the western exit.",
+            TricksToShow: [Tricks.cuccoJump, Tricks.gvCrossBridgeWithHookshot]
         },
         "Lake Hylia": {
             ExitRegion: "chasmDownstream",
@@ -1706,7 +1740,8 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: { x: 77, y: 112 },
             Age: Age.EITHER,
-            LongDescription: "This is the exit to the wasteland.<br/><br/>Child gate skip: climb the ladder, and get in the corner to the left of the ladder. C-up and put the sword icon on the second half of the metal bar. Sidehop right, retarget, dry roll x2. Sidehop left to get on the cliff. Go forward a bit, then sidehop left back inbounds."
+            LongDescription: "This is the exit to the wasteland.",
+            TricksToShow: [Tricks.gfChildGateSkip, Tricks.gfAdultGateSkip]
         },
         "Training Grounds": {
             ExitRegion: "main",
@@ -1716,6 +1751,7 @@ let OwExits = {
             MapInfo: { x: 124, y: 197 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Gerudo Training Grounds.",
+            TricksToShow: [Tricks.gtgChildWithAntigrav, Tricks.gtgAdultWithLedgeClip],
             IsDungeonEntrance: true,
             ChildNeeds: [Tricks.gtgChildWithAntigrav.canDo],
             AdultNeedsAny: [GameStateSets.ARE_GERUDO_GUARDS_TAME, Tricks.gtgAdultWithLedgeClip.canDo]
@@ -1860,7 +1896,8 @@ let OwExits = {
             Needs: [SettingSets.SHUFFLE_THIEVES_HIDEOUT],
             MapInfo: { x: 156, y: 115 },
             Age: Age.EITHER,
-            LongDescription: "Can be reached from the top of Link's jail, from backflipping from the very top area, from using hover boots in the area by by upper kitchen exit, or from dropping down to it from the chest on top."
+            LongDescription: "Can be reached from the top of Link's jail, from backflipping from the very top area, from using hover boots in the area by by upper kitchen exit, or from dropping down to it from the chest on top.",
+            TricksToShow: [Tricks.gfChildJumpByTopKitchen]
         },
         "Door Above Link's Jail": {
             ExitRegion: "aboveLinksJail",
@@ -1871,7 +1908,8 @@ let OwExits = {
             Needs: [SettingSets.SHUFFLE_THIEVES_HIDEOUT],
             MapInfo: { x: 151, y: 68 },
             Age: Age.EITHER,
-            LongDescription: "Normally only reachable from the entrance that leads there. There's a glitch involving a specific hookshot angle from the top of Link's jail as well."
+            LongDescription: "Normally only reachable from the entrance that leads there. There's a glitch involving a specific hookshot angle from the top of Link's jail as well.",
+            TricksToShow: [Tricks.gfHookshotToAboveLinksJail]
         },
 
 
@@ -2214,7 +2252,8 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 310, y: 281},
             Age: Age.EITHER,
-            LongDescription: "This is the entrance back to the fortress."
+            LongDescription: "This is the entrance back to the fortress.",
+            TricksToShow: [Tricks.backwardsWasteland]
         },
         "Desert Colossus": {
             ExitRegion: "exit",
@@ -2223,7 +2262,8 @@ let OwExits = {
             ItemGroup: ItemGroups.OW_ENTRANCE,
             MapInfo: {x: 45, y: 133},
             Age: Age.EITHER,
-            LongDescription: "This is the entrance to the colossus."
+            LongDescription: "This is the entrance to the colossus.",
+            TricksToShow: [Tricks.itemlessSandPit, Tricks.wastelandNoLens]
         }
     },
 

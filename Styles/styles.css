@@ -510,6 +510,15 @@ a {
 	text-decoration: none;
 }
 
+.item-more-info-text-tricks-container {
+	margin-top: 10px;
+}
+
+.item-more-info-text-trick {
+	color: gold;
+	font-size: 12pt;
+}
+
 textarea {
 	width: 95%;
 	margin-top: 5px;

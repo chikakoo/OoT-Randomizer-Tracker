@@ -523,7 +523,7 @@ let Tricks = {
 			Tricks.adultGrottoByGVWithoutHammer.enabled &&
 			ItemData.canUse(age, [Items.BOMB, ItemSets.SHIELDS]),
 		displayText: "Adult Grotto by GV Without Hammer",
-		description: "Blow up hole under rock; line up with fifth fence post and climb up/jump off; backwalk to align with fence; shield drop bomb and instant backflip; immediately left/right sidehop; hold up to climb fence; RELEASE UP when climb starts, and hold shield; backflip off fence; backflip to hole",
+		description: "Blow up hole under rock; line up with fifth fence post and climb up/jump off; backwalk to align with fence; shield drop bomb and instant backflip; immediately left/right sidehop; hold up to climb fence; RELEASE UP when climb starts, and hold shield; backflip off fence; backwalk to hole",
 		links: [{
 			url: "https://youtu.be/3eVAxXI-4Yc",
 			description: "Video"
@@ -578,14 +578,22 @@ let Tricks = {
 		canDo: (age) => Tricks.botwAsChildWithCucco.enabled && 
 			ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]),
 		displayText: "Child Well with Cucco",
-		description: "Note: DO NOT backwalk or have bunny hood equipped during this, or the cuccos will attack!\x0A\x0AGet ISG off a cucco, stand by the wall surrounding the well, facing away from it; quickly shield drop the cucco and backflip; hold the direction of the well when the cutscene ends (usually left)"
+		description: "Note: DO NOT backwalk or have bunny hood equipped during this, or the cuccos will attack!\x0A\x0AGet ISG off a cucco, stand by the wall surrounding the well, facing away from it; quickly shield drop the cucco and backflip; hold the direction of the well when the cutscene ends (usually left)",
+		links: [{
+			url: "https://youtu.be/M8_YL4KAOmo",
+			description: "Video"
+		}]
 	},
 	botwAsAdultWithCucco: {
 		enabled: false,
 		canDo: (age) => Tricks.botwAsAdultWithCucco.enabled && 
 			ItemData.canUse(age, [UpgradedItems.LONGSHOT, Equipment.HOVER_BOOTS]),
 		displayText: "Adult Well with Cucco",
-		description: "Longshot up the windmill. Using hover boots, pick up the cucco and navigate behind you. Jumpslash at the fence to get thorough and pick up the cucco. Now backwalk off with hover boots and navigate to the well loading zone."
+		description: "Longshot up the windmill. Using hover boots, pick up the cucco and navigate behind you. Jumpslash at the fence to get thorough and pick up the cucco. Now backwalk off with hover boots and navigate to the well loading zone.",
+		links: [{
+			url: "https://youtube.com/shorts/ryGLk4tXaZs",
+			description: "Video"
+		}]
 	},
 	botwAsAdultWihChus: {
 		enabled: false,

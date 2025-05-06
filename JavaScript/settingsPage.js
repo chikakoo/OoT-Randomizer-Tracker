@@ -197,7 +197,7 @@ let SettingsPage = {
             trickLabel.appendChild(trickDisplayText);
             trickDiv.appendChild(trickLabel);
 
-            _this._appendLinksToTrick(trickLabel, trick.links);
+            _this.appendLinksToTrick(trickLabel, trick.links);
 
             currentCategoryTricksContainerDiv.appendChild(trickDiv);
         });
@@ -210,7 +210,7 @@ let SettingsPage = {
      * containing url to link to, and a description to use as a tooltip
      * @returns 
      */
-    _appendLinksToTrick: function(trickLabel, linkObjects) {
+    appendLinksToTrick: function(trickLabel, linkObjects) {
         if (!linkObjects) {
             return;
         }

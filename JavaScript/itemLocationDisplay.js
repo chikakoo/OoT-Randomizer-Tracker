@@ -366,7 +366,7 @@ let ItemLocationDisplay = {
 			let locationIconsDiv = _this._createLocationIconsDiv(itemLocationDiv, itemLocation, mapFloor);
 			itemLocationTitleDiv.appendChild(locationIconsDiv);
 			
-			let moreInfoDiv = _this._createMoreInfoDiv(itemLocation, itemLocationDiv);
+			let moreInfoDiv = _this._createMoreInfoDiv(itemLocation);
 			itemLocationDiv.appendChild(moreInfoDiv);
 			
 			_this.refreshNotes(itemLocation, inlineNotesDiv, moreInfoDiv);
@@ -438,16 +438,41 @@ let ItemLocationDisplay = {
 	 * Creates the div containing the help text
 	 * @param itemLocation: the item location
 	 */
-	_createMoreInfoDiv: function(itemLocation, itemLocationDiv) {
+	_createMoreInfoDiv: function(itemLocation) {
 		let moreInfoDiv = dce("div", "item-more-info nodisp");
 		moreInfoDiv.id = `${itemLocation.Name}-more-info`;
 
-		let moreInfoTextDiv = dce("div", "item-more-info-text");
-		moreInfoTextDiv.innerHTML = itemLocation.LongDescription;
-		moreInfoDiv.appendChild(moreInfoTextDiv);
-
+		moreInfoDiv.appendChild(this._createMoreInfoTextDiv(itemLocation));
 		moreInfoDiv.appendChild(this._createNotesDiv(itemLocation));
 		return moreInfoDiv;
+	},
+
+	/**
+	 * Creates the div for the actual text
+	 * Includes any tricks to display, with appropriate links
+	 * @param itemLocation: the item location
+	 * @returns The text div
+	 */
+	_createMoreInfoTextDiv: function(itemLocation) {
+		let moreInfoTextDiv = dce("div", "item-more-info-text");
+		moreInfoTextDiv.innerHTML = itemLocation.LongDescription || "";
+
+		if (itemLocation.TricksToShow) {
+			let tricksContainer = dce("div", "item-more-info-text-tricks-container");
+			moreInfoTextDiv.appendChild(tricksContainer);
+
+			itemLocation.TricksToShow.forEach(trick => {
+				let trickDiv = dce("div", "item-more-info-text-trick");
+				trickDiv.innerText = trick.displayText;
+				trickDiv.title = trick.description;
+
+				SettingsPage.appendLinksToTrick(trickDiv, trick.links)
+
+				tricksContainer.appendChild(trickDiv);
+			});
+		}
+		
+		return moreInfoTextDiv;
 	},
 
 	/**

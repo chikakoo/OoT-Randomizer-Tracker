@@ -52,7 +52,7 @@ let MapLocations = {
                         MapImageName: "Blue Rupee",
                         MapInfo: { x: 135, y: 95 },
                         Age: Age.CHILD,
-                        LongDescription: "This item is behind Mido's House.",
+                        LongDescription: "This item is behind Mido's House."
                     },
                     "2 Green Rupees in Grass by Mido's": {
                         ItemGroup: ItemGroups.GROUP,
@@ -116,7 +116,8 @@ let MapLocations = {
                         NeedsAny: [
                             ItemSets.GRAB_SHORT_DISTANCE_ITEMS, 
                             Tricks.houseOfTwinsSkullWithoutHookshot.canDo
-                        ]
+                        ],
+                        TricksToShow: [Tricks.houseOfTwinsSkullWithoutHookshot]
                     },
                     "Move Mido": {
                         ItemGroup: ItemGroups.NON_ITEM,
@@ -410,6 +411,7 @@ let MapLocations = {
                         Order: 3,
                         Age: Age.ADULT,
                         LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. Plant a magic bean here as a child. Come back as an adult at night and ride the plant up.",
+                        TricksToShow: [Tricks.lwSkullWithoutBean],
                         NeedsAny: [
                             BeanSets.LOST_WOODS_FOREST_STAGE, 
                             Tricks.lwSkullWithoutBean.canDo
@@ -1505,8 +1507,9 @@ let MapLocations = {
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 169, y: 111 },
                         Age: Age.CHILD,
-                        LongDescription: "At night, you can find this skulltula on the watchtower ladder. You can kill it with either the slingshot or a bombchu. If you don't have those, you can also climb up as far as you can, and press A to let go of the ladder, then spam the jumpslash button for your sword or stick for the kill.",
-                        Needs: [() => MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull()]
+                        LongDescription: "At night, you can find this skulltula on the watchtower ladder. You can kill it with either the slingshot or a bombchu.",
+                        Needs: [() => MapLocations["Kakariko Village"]._canChildKillWatchtowerSkull()],
+                        TricksToShow: [Tricks.watchtowerSkullJumpslash]
                     },
                     "3 Pots Near Bazaar": {
                         ItemGroup: ItemGroups.GROUP,
@@ -1736,7 +1739,8 @@ let MapLocations = {
                         MapInfo: { x: 147, y: 78 },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Tricks.boomerangGraveyardHP.enabled; },
-                        LongDescription: "Plant a magic bean in the soft soil as a child. Come back as adult to get the item from the crate. Alternatively, the Longshot can reach the crate if you stand on one of the graves."
+                        LongDescription: "Plant a magic bean in the soft soil as a child. Come back as adult to get the item from the crate. Alternatively, the Longshot can reach the crate if you stand on one of the graves.",
+                        TricksToShow: [Tricks.boomerangGraveyardHP]
                     }
                 }
             },
@@ -1751,7 +1755,8 @@ let MapLocations = {
                         MapInfo: { x: 147, y: 84 },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Tricks.boomerangGraveyardHP.enabled; },
-                        LongDescription: "Plant a magic bean in the soft soil as a child. Come back as adult to get the item from the crate. Alternatively, the Longshot can reach the crate if you stand on one of the graves."
+                        LongDescription: "Plant a magic bean in the soft soil as a child. Come back as adult to get the item from the crate. Alternatively, the Longshot can reach the crate if you stand on one of the graves.<br/><br/>You can break the crate from the bottom with a chu dropped on the 5th red flash. The boomerang trick can be used to grab the item.",
+                        TricksToShow: [Tricks.boomerangGraveyardHP]
                     }
                 }
             },
@@ -2136,7 +2141,9 @@ let MapLocations = {
                         NeedsAny: [
                             ItemSets.BLAST_OR_SMASH_ITEMS, 
                             Tricks.dmtClipToChestByGoron.canDo, 
-                            Tricks.dmtBombFlowerChestByGoron.canDo]
+                            Tricks.dmtBombFlowerChestByGoron.canDo
+                        ],
+                        TricksToShow: [Tricks.dmtClipToChestByGoron, Tricks.dmtBombFlowerChestByGoron]
                     },
                     "Red Rock by Goron City": {
                         ItemGroup: ItemGroups.SKULLTULA,
@@ -2144,6 +2151,7 @@ let MapLocations = {
                         MapInfo: { x: 215, y: 167 },
                         Age: Age.ADULT,
                         LongDescription: "At night, leave Goron City. Follow the right wall until you reach a red rock. Break it with your hammer to reveal the skulltula.",
+                        TricksToShow: [Tricks.dmtSkullsWithoutHammer],
                         NeedsAny: [Items.MEGATON_HAMMER, Tricks.dmtSkullsWithoutHammer.canDo]
                     },
                     "Heart Piece Above Dodongo's Cavern": {
@@ -2183,7 +2191,11 @@ let MapLocations = {
                 }
             },
             upper: {
-                DisplayGroup: { groupName: "Upper Area", imageName: "Claim Check" },
+                DisplayGroup: { 
+                    groupName: "Upper Area", 
+                    imageName: "Claim Check" ,
+                    description: "Either climb the normal way passed the rocks, or use the hover boots or hookshot jump glitches."
+                },
                 DuplicateWarpSongPriority: 1,
                 Exits: {
                     main: {},
@@ -2221,6 +2233,7 @@ let MapLocations = {
                         MapInfo: { x: 217, y: 96 },
                         Age: Age.ADULT,
                         LongDescription: "At night, take the upper path of the mountain - the one that causes the volcano to erupt. The red rock has a skulltula in it - break it with your hammer.",
+                        TricksToShow: [Tricks.dmtSkullsWithoutHammer],
                         NeedsAny: [Items.MEGATON_HAMMER, Tricks.dmtSkullsWithoutHammer.canDo]
                     },
                     "Gossip Stone on Climbable Wall Ledge": {
@@ -2383,7 +2396,8 @@ let MapLocations = {
                         MapInfo: { x: 134, y: 78 },
                         Age: Age.EITHER,
                         UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
-                        LongDescription: "Plant a bean in the soft soil by the Bolero warp point then ride it up to the volcano. You can also use hover boots near the entrance to Goron City to get it."
+                        LongDescription: "Plant a bean in the soft soil by the Bolero warp point then ride it up to the volcano. You can also use hover boots near the entrance to Goron City to get it.",
+                        TricksToShow: [Tricks.hoverBootsToVolcanoHP]
                     }
                 }
             },
@@ -2547,6 +2561,7 @@ let MapLocations = {
                         MapInfo: { x: 139, y: 97 },
                         Age: Age.ADULT,
                         LongDescription: "Stop the rolling goron with a bomb, bombchu or bomb flower and talk to him to get the item. You can also shoot the bomb flowers with an arrow with the right timing to stop him.",
+                        TricksToShow: [Tricks.stopAdultGoronWithFire],
                         Needs: [(age) => MapLocations["Goron City"]._canStopAdultGoron(age)]
                     },
                     "Pot by Medigoron": {
@@ -2674,6 +2689,7 @@ let MapLocations = {
                                 Settings.RandomizerSettings.rupeeAndHeartSetting == ShuffleLocationSettings.DUNGEON_ONLY;
                         },
                         LongDescription: "First, light the torches at the bottom of the city. You can either use the lit torch in Darunia's room, or Din's Fire. After that, throw a Bomb or Bomb Flower so that the urn stops on the happiest face to get the item.",
+                        TricksToShow: [Tricks.goronUrnWithChus],
                         NeedsAny: [Items.BOMB, Equipment.STRENGTH, Tricks.goronUrnWithChus.canDo]
                     },
                     "9 Items From Spinning Urn": {
@@ -2683,6 +2699,7 @@ let MapLocations = {
                         MapInfo: { x: 189, y: 135 },
                         Age: Age.CHILD,
                         LongDescription: "First, light the torches at the bottom of the city. You can either use the lit torch in Darunia's room, or Din's Fire. After that, throw a Bomb or Bomb Flower so that the urn stops on the face you want.",
+                        TricksToShow: [Tricks.goronUrnWithChus],
                         NeedsAny: [Items.BOMB, Equipment.STRENGTH, Tricks.goronUrnWithChus.canDo]
                     }
                 }
@@ -2847,10 +2864,12 @@ let MapLocations = {
                         MapInfo: { x: 266, y: 56 },
                         Age: Age.EITHER,
                         LongDescription: "At the end of the river, there's a heart piece on a platform. As child, you can jump there with a cucco or nab it with a Boomerang. As adult, you must use the Hover Boots.",
+                        TricksToShow: [Tricks.adultWaterfallHPJump],
                         AdultNeedsAny: [
                             Equipment.HOVER_BOOTS, 
                             Tricks.adultWaterfallHPJump.canDo, 
-                            Tricks.megaFlip.canDoWithChu]
+                            Tricks.megaFlip.canDoWithChu
+                        ]
                     },
                     "4 Red Rupees by Waterfall": {
                         ItemGroup: ItemGroups.GROUP,
@@ -3030,6 +3049,7 @@ let MapLocations = {
                         MapInfo: { x: 245, y: 48 },
                         Age: Age.ADULT,
                         LongDescription: "Dump Blue Fire on the frozen King Zora to thaw him. Talk to him from the platform in front of him and he will give you an item.<br/><br/>You can also use any item that link takes out above his head (or Nayru's Love/bugs/fish) to thaw him. Backwalk up the stairs, then take out the item after the black loading zone. Turn around and he should be thawed.",
+                        TricksToShow: [Tricks.thawKingZoraWithoutBlueFire],
                         NeedsAny: [ItemSets.BLUE_FIRE_ITEMS, Tricks.thawKingZoraWithoutBlueFire.canDo]
                     },
                     "Show Prescription to King Zora": {
@@ -3047,6 +3067,7 @@ let MapLocations = {
                         MapInfo: { x: 168, y: 68 },
                         Age: Age.ADULT,
                         LongDescription: "At night, make your way up to where the Diving Game start was. On the side of the wall by the waterfall, you'll find a skulltula. If you have no hookshot, you can kill it with a bow or Din's fire and get it with an angled jump. If you fall without getting it, it will respawn.",
+                        TricksToShow: [Tricks.domainSkullWithJumpslash],
                         NeedsAny: [
                             ItemSets.GRAB_SHORT_DISTANCE_ITEMS, 
                             Items.FAIRY_BOW, 
@@ -3346,6 +3367,7 @@ let MapLocations = {
                         MapInfo: { x: 198, y: 213 },
                         Age: Age.ADULT,
                         LongDescription: "At night, longshot all the way up the tree on the middle island. You'll find the skulltula on top.",
+                        TricksToShow: [Tricks.skullInTreeWithHookshot],
                         NeedsAny: [UpgradedItems.LONGSHOT, Tricks.skullInTreeWithHookshot.canDo]
                     },
                     "Fire Arrows": {
@@ -3824,7 +3846,8 @@ let MapLocations = {
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 176, y: 101 },
                         Age: Age.EITHER,
-                        LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Enter the other door to your right. Now either hookshot the wooden horizontal beam, use your hover boots to get across, or take out the guards with your bow to get across to the path directly in front of you. Face the camera to your back and turn left. Climb up the wall and walk to the end. Jump across to the next platform. Climb up the vines to your left.<br /><br />You should be able to either longshot to the chest, or roll across with your hover boots."
+                        LongDescription: "Start from jail 3. Face the jail - now turn left and take that exit. Enter the other door to your right. Now either hookshot the wooden horizontal beam, use your hover boots to get across, or take out the guards with your bow to get across to the path directly in front of you. Face the camera to your back and turn left. Climb up the wall and walk to the end. Jump across to the next platform. Climb up the vines to your left.<br/><br/>You should be able to either longshot to the chest, or roll across with your hover boots.",
+                        TricksToShow: [Tricks.gfChildJumpByTopKitchen]
                     }
                 }
             },
@@ -3872,7 +3895,8 @@ let MapLocations = {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 136, y: 68 },
                         Age: Age.ADULT,
-                        LongDescription: "Note that this is ONLY the crate here as Adult! The Child version is the freestanding heart piece.<br/><br/>If hideout is not shuffled: navigate to the upper room by either getting caught then jumping to there, or by dropping down from the top where the chest is. Stun the guards (can use your hookshot) and navigate down the long hallway. Hookshot the wooden pillar to pass the barrier. The crate is just ahead of you after the loading zone."
+                        LongDescription: "Note that this is ONLY the crate here as Adult! The Child version is the freestanding heart piece.<br/><br/>If hideout is not shuffled: navigate to the upper room by either getting caught then jumping to there, or by dropping down from the top where the chest is. Stun the guards (can use your hookshot) and navigate down the long hallway. Hookshot the wooden pillar to pass the barrier. The crate is just ahead of you after the loading zone.",
+                        TricksToShow: [Tricks.gfHookshotToAboveLinksJail]
                     }
                 }
             },
@@ -4541,7 +4565,8 @@ let MapLocations = {
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 129, y: 129 },
                         Age: Age.EITHER,
-                        LongDescription: "The crate is by the leevers just east of the Desert Colossus entrance. If coming from Desert Colossus, just walk straight until you run into the crate."
+                        LongDescription: "The crate is by the leevers just east of the Desert Colossus entrance. If coming from Desert Colossus, just walk straight until you run into the crate.",
+                        TricksToShow: [Tricks.wastelandNoLens]
                     }
                 }
             }
