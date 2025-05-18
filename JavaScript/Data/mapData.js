@@ -2117,7 +2117,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "From the Kakariko entrance, follow the right wall until you get to the discolored wall. Bomb or hammer it to reveal the skulltula. Child can Deku Stick jumpslash, Bomb, Bombchu, Slingshot, or Boomerang it. Adult can jumpslash it. You can climb the wall to collect the token.<br/><br/>" +
                             "<a href = 'https://youtu.be/gzQCfY-RK6E?si=CtJhJjOD5O61rlYv' target='_blank' title='Target the left side of the slanted wall closer to the center; ess left x6; run to corner (the center of your hat should be to the left of the corner of the wall); backflip x3; retarget; neutral roll x6; jumpslash (if using sword, quick draw first); hold up'>LUNGE STORAGE CHILD<br/>" +
-                            "<a href = 'https://youtu.be/JB1TbNckk7k?si=y_yrQjvcAtS38BBJ' target='_blank' title='Target the left side of the slanted wall in the corner; sidehop right; retarget; sidehop left; quick draw; jumpslash; hold up'>LUNGE STORAGE ADULT",
+                            "<a href = 'https://youtu.be/JB1TbNckk7k?si=y_yrQjvcAtS38BBJ' target='_blank' title='Target the left side of the slanted wall in the corner; sidehop right; retarget; dry roll; sidehop left; quick draw; jumpslash; hold up'>LUNGE STORAGE ADULT",
                             ChildNeedsAny: [
                                 ItemSets.BLAST_OR_SMASH_ITEMS, 
                                 [Tricks.lungeStorage.canDoWithQuickDraw, ItemSets.DISTANCE_DAMAGING_ITEMS]

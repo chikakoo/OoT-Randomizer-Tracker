@@ -231,8 +231,6 @@ let ItemLocationDisplay = {
 			itemGroupImageDiv.style.backgroundImage = itemGroup.backgroundImage;
 			itemGroupTitleDiv.appendChild(itemGroupImageDiv);
 
-			_this._createTrickReferenceDivs(itemGroup, itemGroupTitleDiv);
-
 			if (itemGroup.description) {
 				itemGroupImageDiv.title = itemGroup.description;
 			}
@@ -245,6 +243,8 @@ let ItemLocationDisplay = {
 				itemGroupTitleDiv.appendChild(itemGroupTextDiv);
 				_this._createItemLocations(itemGroup.itemLocations, itemGroupDiv, itemGroupName);
 			}
+
+			_this._createTrickReferenceDivs(itemGroup, itemGroupTitleDiv);
 		});
 	},
 

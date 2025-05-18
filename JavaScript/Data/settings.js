@@ -575,7 +575,8 @@ let Tricks = {
 	},
 	botwAsChildWithCucco: {
 		enabled: false,
-		canDo: (age) => Tricks.botwAsChildWithCucco.enabled && 
+		canDo: (age) => age === Age.CHILD &&
+			Tricks.botwAsChildWithCucco.enabled && 
 			ItemData.canUse(age, [ItemSets.SWORDS, ItemSets.SHIELDS]),
 		displayText: "Child Well with Cucco",
 		description: "Note: DO NOT backwalk or have bunny hood equipped during this, or the cuccos will attack!\x0A\x0AGet ISG off a cucco, stand by the wall surrounding the well, facing away from it; quickly shield drop the cucco and backflip; hold the direction of the well when the cutscene ends (usually left)",
