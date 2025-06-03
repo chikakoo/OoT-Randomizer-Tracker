@@ -1751,10 +1751,18 @@ let OwExits = {
             MapInfo: { x: 124, y: 197 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the Gerudo Training Grounds.",
-            TricksToShow: [Tricks.gtgChildWithAntigrav, Tricks.gtgAdultWithLedgeClip],
+            TricksToShow: [
+                Tricks.gfAdultBackAreaWithoutCard,
+                Tricks.gfUnloadLowerAreaWithAntigrav,
+                Tricks.gtgAdultWithLedgeClip
+            ],
             IsDungeonEntrance: true,
-            ChildNeeds: [Tricks.gtgChildWithAntigrav.canDo],
-            AdultNeedsAny: [GameStateSets.ARE_GERUDO_GUARDS_TAME, Tricks.gtgAdultWithLedgeClip.canDo]
+            ChildNeeds: [Tricks.gfUnloadLowerAreaWithAntigrav.canDo],
+            AdultNeedsAny: [
+                GameStateSets.ARE_GERUDO_GUARDS_TAME, 
+                Tricks.gfUnloadLowerAreaWithAntigrav.canDo,
+                Tricks.gtgAdultWithLedgeClip.canDo
+            ]
         },
         "Bottom Left Door": {
             ExitRegion: "main",

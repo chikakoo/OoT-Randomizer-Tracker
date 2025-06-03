@@ -3666,7 +3666,10 @@ let MapLocations = {
                         Needs: [Tricks.gfHookshotToAboveLinksJail.canDo]
                     },
                     backArea: {
-                        AdultNeeds: [GameStateSets.ARE_GERUDO_GUARDS_TAME]
+                        AdultNeedsAny: [
+                            GameStateSets.ARE_GERUDO_GUARDS_TAME,
+                            Tricks.gfAdultBackAreaWithoutCard.canDo
+                        ]
                     },
                     wastelandEntrance: {
                         NeedsAny: [GameStateSets.ARE_GERUDO_GUARDS_TAME, Tricks.gfChildGateSkip.canDo]
@@ -3907,7 +3910,12 @@ let MapLocations = {
                 }
             },
             backArea: {
-                DisplayGroup: { groupName: "Archery Area", imageName: "Fairy Bow" },
+                DisplayGroup: { 
+                    groupName: "Archery Area", 
+                    imageName: "Fairy Bow",
+                    description: "The back area of the fortress, which normally requires the Membership Card as Adult.",
+                    tricksToShow: [Tricks.gfAdultBackAreaWithoutCard]
+                },
                 ExcludeFromSpawnList: true,
                 Exits: {
                     main: {}

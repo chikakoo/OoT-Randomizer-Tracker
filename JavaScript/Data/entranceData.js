@@ -2111,8 +2111,11 @@ GrottoGroups = {
 				count: 4,
 				Age: Age.EITHER,
 				UseChildAge: function() { return !Tricks.equipSwap.enabled; },
-				LongDescription: "Shoot something to get these items. Child can also use cutsceene QPA lined up to break the stick on it.",
-				NeedsAny: [Items.FAIRY_SLINGSHOT, QPAItemSets.CUTSCENE_ITEM_QPA]
+				LongDescription: "Shoot something to get these items. Child can also use cutscene QPA lined up to break the stick on it.",
+				NeedsAny: [
+					Items.FAIRY_SLINGSHOT, 
+					[Age.CHILD, QPAItemSets.CUTSCENE_ITEM_QPA]
+				]
 			}
 		}
 	},

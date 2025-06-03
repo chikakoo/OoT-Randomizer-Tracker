@@ -61,7 +61,8 @@ let QPAItemSets = {
         // Either adult can double equip swap sticks AND a QPA cutscene item,
         // OR they can equip sticks AND an adult trade item
         return Tricks.forceAdultQPACutsceneItemEquip.enabled ||
-            (ItemData.hasAdultTradeItem() && hasMagicItem);
+            (ItemData.hasAdultTradeItem() 
+                && (hasMagicItem || Tricks.forceAdultDekuStickEquip.enabled));
     }
 };
 

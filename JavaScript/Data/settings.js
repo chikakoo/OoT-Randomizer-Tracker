@@ -1131,15 +1131,20 @@ let Tricks = {
 		displayText: "Child Jump by Top Kitchen",
 		description: "Target the ledge; backflip; turn left and backwalk off; climb up and turn right; angle so the right edge of c-left lines up with the fortress wall; A-up to roll pause after a few frames (but BEFORE you jump); unpause + hold left"
 	},
-	gtgChildWithAntigrav: {
+	gfUnloadLowerAreaWithAntigrav: {
 		enabled: false,
-		canDo: (age) => age === Age.CHILD &&
-			Tricks.gtgChildWithAntigrav.enabled,
-		displayText: "Child GTG with Antigrav",
-		description: "Walk up the right seam by the entrance to the back of Gerudo Fortress; navigate to the dark texture by the start of the cliff overpass; press Link against the wall from the left edge of this texture; C-up - you should see through the world; place the triangle texture below the left side of the left c-button; turn left; sidehop right\x0A\x0AIf it worked, you'll slide down the wall, skipping the loading zone - navigate to where GTG would be to enter it",
+		canDo: (age) => 
+			Tricks.gfUnloadLowerAreaWithAntigrav.enabled &&
+			(age === Age.CHILD || Tricks.gfAdultBackAreaWithoutCard.enabled),
+		displayText: "Unload Lower GF Area",
+		description: "Walk up the right seam by the entrance to the back of Gerudo Fortress; navigate to the dark texture by the start of the cliff overpass; press Link against the wall from the left edge of this texture; C-up - you should see through the world; place the triangle texture below the left side of the left c-button; turn left; sidehop right\x0A\x0AIf it worked, you'll slide down the wall, skipping the loading zone - navigate to where GTG or HW would be to enter it",
 		links: [{
 			url: "https://youtu.be/8p1W2Be_zh0",
-			description: "Video - not the same, but shows where it is (this is a really old trick). ISG not needed, and the jump will be from the left side of the darker texture to the left of where the video jumps."
+			description: "Child GF - not the same, but shows where it is (this is a really old trick). ISG not needed, and the jump will be from the left side of the darker texture to the left of where the video jumps."
+		},
+		{
+			url: "https://youtu.be/J6-DxPJkiPI&t=74",
+			description: "Adult HW"
 		}]
 	},
 	gtgAdultWithLedgeClip: {
@@ -1173,6 +1178,17 @@ let Tricks = {
 		description: "From above Link's jail, target the back rail, then backwalk away; sidehop right; roll + untarget; get in the right corner; sidehop right; hold forward to jump up\x0A\x0AEquip hover boots and run forward, then roll left; quickly target the wall and sidehop left + delay a jumpslash to gain more distance; navigate along the wall further down so you can sidehop left in bounds behind the gate",
 		links: [{
 			url: "https://youtu.be/kIZzkYggvbE?t=12",
+			description: "Video"
+		}]
+	},
+	gfAdultBackAreaWithoutCard: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.gfAdultBackAreaWithoutCard.enabled,
+		displayText: "GF Adult Back Area Without Card",
+		description: "Target the uppermost wall with the vines on the top right of the fortress; back up a little, sidewalk right so you're lined up to jump off; hold forward and you should pass the guard",
+		links: [{
+			url: "https://youtu.be/J6-DxPJkiPI?t=59",
 			description: "Video"
 		}]
 	},

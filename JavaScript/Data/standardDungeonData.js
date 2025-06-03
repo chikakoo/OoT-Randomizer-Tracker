@@ -3212,7 +3212,7 @@ let StandardDungeons = {
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "To get to this room, first make it to the platform with the stalfos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). The hearts are in the back left corner. Play the Song of Time to spawn a block to get them.",
-                        NeedsAny: [Songs.SONG_OF_TIME, Items.BOOMERANG]
+                        NeedsAny: [Songs.SONG_OF_TIME, Items.BOOMERANG, Tricks.staircaseHover.canDo]
                     },
                     "Visible Chest in Invisible Scythe Room": {
                         ItemGroup: ItemGroups.CHEST,
@@ -5346,7 +5346,7 @@ let StandardDungeons = {
         Abbreviation: "GTG",
         MapGroup: MapGroups.DUNGEONS,
         UseAdultAge: function() {
-            return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Tricks.gtgChildWithAntigrav.enabled;
+            return !Settings.RandomizerSettings.shuffleDungeonEntrances && !Tricks.gfUnloadLowerAreaWithAntigrav.enabled;
         },
         _canSkipMazeDoors: function(age) {
             return ItemData.canUseAny(age, 
