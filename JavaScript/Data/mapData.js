@@ -3971,7 +3971,11 @@ let MapLocations = {
                         MapInfo: { x: 246, y: 220 },
                         Age: Age.ADULT,
                         LongDescription: "Ride Epona to the back section of the map during the day. Talk to the Gerudo there to play the archery minigame. Score 1000 points to claim your prize.",
-                        Needs: [Items.FAIRY_BOW, GameStateSets.CAN_RIDE_EPONA]
+                        Needs: [
+                            Items.FAIRY_BOW, 
+                            GameStateSets.CAN_RIDE_EPONA,
+                            GameStateSets.ARE_GERUDO_GUARDS_TAME
+                        ]
                     },
                     "Archery Minigame 1500 Points": {
                         ItemGroup: ItemGroups.GIFT,
@@ -3979,7 +3983,11 @@ let MapLocations = {
                         MapInfo: { x: 246, y: 225 },
                         Age: Age.ADULT,
                         LongDescription: "Ride Epona to the back section of the map during the day. Talk to the Gerudo there to play the archery minigame. Score 1500 points to claim your prize.",
-                        Needs: [Items.FAIRY_BOW, GameStateSets.CAN_RIDE_EPONA]
+                        Needs: [
+                            Items.FAIRY_BOW, 
+                            GameStateSets.CAN_RIDE_EPONA,
+                            GameStateSets.ARE_GERUDO_GUARDS_TAME
+                        ]
                     },
                     "Skulltula on Target": {
                         ItemGroup: ItemGroups.SKULLTULA,
