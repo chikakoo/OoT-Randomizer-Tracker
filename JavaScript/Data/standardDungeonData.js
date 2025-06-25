@@ -4684,7 +4684,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 211, y: 114 },
                         MapImageName: "Blue Fire",
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 6.2,
                         LongDescription: "The east wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows.<br/><br/>" +
                             "<a href='https://youtu.be/So_oaJC9a9A?si=eGMpp0KukH7O3fft', target='_blank', title='Target wall to the left of the ice; sidehop right & roll; ess right x1; get in corner (sliding on the left wall); jumpslash while holding up'>LUNGE STORAGE CHILD</a><br/>" +
@@ -4694,7 +4694,7 @@ let StandardDungeons = {
                         ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 157, y: 114 },
                         MapImageName: "Blue Fire",
-                        Age: Age.ADULT,
+                        Age: Age.EITHER,
                         Order: 6.3,
                         LongDescription: "The west wall in the scythe room. Used to track whether child can get to this area if only adult can melt the wall with blue fire arrows.<br/><br/>" +
                             "<a href='https://youtu.be/U63cwX4pOaU?si=LEkJ0dKcLc0qOejL', target='_blank', title='Target left wall by skulltula; turn right; go to the corner left of the red ice; jumpslash while holding forward'>LUNGE STORAGE CHILD</a>"

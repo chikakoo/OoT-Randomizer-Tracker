@@ -309,6 +309,15 @@ InteriorGroups = {
 					return Settings.RandomizerSettings.maxRequiredTokens < 50;
 				},
 				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 50]
+			},
+			"100 Reward": {
+				icon: "Skulltula",
+				iconText: "100",
+				LongDescription: "Talk to center guy",
+				shouldNotDisplay: function() {
+					return Settings.RandomizerSettings.maxRequiredTokens < 100;
+				},
+				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 100]
 			}
 		}
 	},
@@ -349,6 +358,7 @@ InteriorGroups = {
 			"Child Skulltula": {
 				icon: "Skulltula",
 				ItemGroup: ItemGroups.SKULLTULA,
+				OverrideItemGroupCondition: true,
 				Age: Age.CHILD,
 				LongDescription: "This is the skulltula in the crate in the back of the room."
 			},
