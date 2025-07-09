@@ -3643,7 +3643,8 @@ let StandardDungeons = {
                     tricksToShow: [Tricks.shadowChuBombFlowers]
                 },
                 Exits: {
-                    acrossChasmToBossRoom: {}
+                    acrossChasmToBossRoom: {},
+                    pillarAcrossChasm: {}
                 },
                 ItemLocations: {
                     "2 Hearts on Chasm Scarecrow Platform": {
@@ -3658,7 +3659,7 @@ let StandardDungeons = {
                 }
             },
             acrossChasmToBossRoom: {
-                DisplayGroup: { groupName: "Boat Room Across Chasm", imageName: "Fairy Bow" },
+                DisplayGroup: { groupName: "Boat Room Across Chasm" },
                 Exits: {
                     boatRoomEnd: {
                         NeedsAny: [
@@ -3669,6 +3670,9 @@ let StandardDungeons = {
                             QPAItemSets.LEDGE_QPA
                         ]
                     },
+                    pillarAcrossChasm: {
+                        NeedsAny: [Songs.SONG_OF_TIME, Items.BOOMERANG]
+                    },
                     chasmScarecrowPlatform: {
                         Needs: [Songs.SONG_OF_TIME, GameStateSets.CAN_HOOK_SCARECROW]
                     },
@@ -3678,15 +3682,6 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Heart on Pillar Across Chasm": {
-                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
-                        MapInfo: { x: 125, y: 124, floor: "B1" },
-                        MapImageName: "Recovery Heart",
-                        Age: Age.ADULT,
-                        Order: 41,
-                        LongDescription: "Play the Song of Time near the broken pillar with the heart to summon a block to use to get it.",
-                        NeedsAny: [Songs.SONG_OF_TIME, Items.BOOMERANG]
-                    },
                     "2 Pots by Boss Antechamber": {
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
@@ -3696,6 +3691,20 @@ let StandardDungeons = {
                         Order: 43,
                         LongDescription: "These pots are by the boss antechamber entrance across the chasm."
                     }
+                }
+            },
+            pillarAcrossChasm: {
+                DisplayGroup: { groupName: "Boat Room Across Chasm" },
+                Exits: {},
+                ItemLocations: {
+                    "Heart on Pillar Across Chasm": {
+                        ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
+                        MapInfo: { x: 125, y: 124, floor: "B1" },
+                        MapImageName: "Recovery Heart",
+                        Age: Age.ADULT,
+                        Order: 41,
+                        LongDescription: "Play the Song of Time near the broken pillar with the heart to summon a block to use to get it.<br/><br/>You can also jump there from the scarecrow platform if you time a jumpslash."
+                    },
                 }
             },
             bossRoomAnteChamber: {

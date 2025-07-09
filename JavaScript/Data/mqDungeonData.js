@@ -4916,7 +4916,12 @@ let MQDungeons = {
                         Age: Age.EITHER,
                         Order: 4,
                         LongDescription: "After you first enter the temple, go up the stairs and turn around. There's a crystal switch at the top of one of the pillars that you need to activate to spawn the chest.<br/><br/>The easiest way to hit with the boomerang is to face the pillar directly, and take small steps backwards. Aim it all the way up and try until it works.",
-                        NeedsAny: [ItemSets.PROJECTILES, Items.BOOMERANG, Items.BOMBCHU]
+                        NeedsAny: [
+                            ItemSets.PROJECTILES,
+                            Items.HOOKSHOT,
+                            Items.BOOMERANG, 
+                            Items.BOMBCHU
+                        ]
                     },
 
                     // Locked Doors
@@ -6693,6 +6698,9 @@ let MQDungeons = {
             bigLavaRoomFront: {
                 DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
                 Exits: {
+                    bigLavaRoomFrontLeftRupee: {
+                        Age: Age.ADULT
+                    },
                     bigLavaRoomWaterDoorPlatform: {
                         Age: Age.ADULT,
                         NeedsAny: [UpgradedItems.LONGSHOT, Items.FAIRY_BOW]
@@ -6718,19 +6726,26 @@ let MQDungeons = {
                         LongDescription: "This rupee is the one on the platform in front of you, when entering from the aromos room.<br/><br/>To clear the fire around the rupees, use a fire arrow on the unlit torch on the side of the room, or longshot to the torch and use Din's Fire.<br/><br/>If entering from the top, either clear the fire and use hover boots to navigate around, or use your longshot to navigate via the torches (might be good to hit the megaton hammer switch too).",
                         ChildNeeds: [Tricks.megaFlip.canDo]
                     },
-                    "Lava Silver Rupee in Front Left": {
-                        ItemGroup: ItemGroups.SILVER_RUPEE,
-                        MapInfo: { x: 234, y: 173 },
-                        Age: Age.ADULT,
-                        Order: 15.2,
-                        LongDescription: "This rupee is the one on the platform to your left when entering from the aromos room."
-                    },
                     "Lava Silver Rupee in Front Right": {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 261, y: 171 },
                         Age: Age.ADULT,
                         Order: 15.3,
                         LongDescription: "This rupee is the one on the platform to your right when entering from the aromos room."
+                    }
+                }
+            },
+            bigLavaRoomFrontLeftRupee: {
+                DisplayGroup: { groupName: "Lava & Water Rooms", imageName: "Din's Fire" },
+                UseAdultAge: function() { return !Tricks.gtgChildVineClips.enabled; },
+                Exits: {},
+                ItemLocations: {
+                    "Lava Silver Rupee in Front Left": {
+                        ItemGroup: ItemGroups.SILVER_RUPEE,
+                        MapInfo: { x: 234, y: 173 },
+                        Age: Age.EITHER,
+                        Order: 15.2,
+                        LongDescription: "This rupee is the one on the platform to your left when entering from the aromos room.<br/><br/>You can get this without clearing the fire by dropping down from the maze room entrance, lining up with the rupee, getting hit and then jumpslashing into the fire."
                     }
                 }
             },
@@ -6883,6 +6898,9 @@ let MQDungeons = {
                     bigLavaRoomBackLeft: {
                         Age: Age.ADULT,
                         Needs: [Items.FAIRY_BOW, Items.FIRE_ARROW, Equipment.MAGIC]
+                    },
+                    bigLavaRoomFrontLeftRupee: {
+                        ChildNeeds: [ItemSets.SWORDS]
                     }
                 },
                 ItemLocations: {
