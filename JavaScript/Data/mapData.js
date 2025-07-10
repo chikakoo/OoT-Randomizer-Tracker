@@ -3666,9 +3666,8 @@ let MapLocations = {
                         Needs: [Tricks.gfHookshotToAboveLinksJail.canDo]
                     },
                     backArea: {
-                        AdultNeedsAny: [
-                            GameStateSets.ARE_GERUDO_GUARDS_TAME,
-                            Tricks.gfAdultBackAreaWithoutCard.canDo
+                        AdultNeeds: [
+                            GameStateSets.ARE_GERUDO_GUARDS_TAME
                         ]
                     },
                     wastelandEntrance: {
@@ -3805,6 +3804,9 @@ let MapLocations = {
                         Age: Age.EITHER,
                         NeedsAny: [Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
+                    backArea: {
+                        AdultNeeds: [Tricks.gfAdultBackAreaWithoutCard.canDo]
+                    },
                     "Upper Kitchen Door": {
                         OwExit: OwExits["Gerudo Fortress"]["Upper Kitchen Door"]
                     }
@@ -3918,7 +3920,10 @@ let MapLocations = {
                 },
                 ExcludeFromSpawnList: true,
                 Exits: {
-                    main: {}
+                    main: {},
+                    wastelandEntrance: {
+                        Needs: [Tricks.gfUnloadLowerAreaWithAntigrav.canDo]
+                    }
                 },
                 ItemLocations: {
                     "Rupee in Overhanging Sign by HBA": {
