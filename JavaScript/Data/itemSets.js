@@ -423,6 +423,8 @@ let ItemSets = {
 	PROJECTILES: (age) => ItemData.canUseAny(age, [
         Items.FAIRY_SLINGSHOT, Items.FAIRY_BOW
     ]),
+    SLINGSHOT_ITEM_ONLY: (age) => Data.canEquipSwap(age) &&
+        Items.FAIRY_SLINGSHOT.playerHas,
     GRAB_SHORT_DISTANCE_ITEMS: (age) => ItemData.canUseAny(age, [
         Items.BOOMERANG, Items.HOOKSHOT
     ]),

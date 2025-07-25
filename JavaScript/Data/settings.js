@@ -1540,9 +1540,12 @@ let Tricks = {
 		enabled: false,
 		canDo: (age) => age === Age.ADULT &&
 			Tricks.forestBKSkip.enabled &&
-			ItemData.canUse(age, Items.HOOKSHOT),
+			ItemData.canUseAny(age, [
+				Items.HOOKSHOT, 
+				Items.FAIRY_BOW, 
+				ItemSets.SLINGSHOT_ITEM_ONLY]),
 		displayText: "Boss Key Skip",
-		description: "Up the stairs from the north room of the lobby, get in the right corner; take out hookshot and aim so the red dot is slightly left of the door; A to exit view, but hold Z; backflip, press hookshot mid flip (you should now be clipped into the rail)\x0A\x0ABackwalk to grab the ledge; A to fall; walk so you're centered with the stairs (still out of bounds); roll jump in the abyss; jumpslash at some point for more distance",
+		description: "Up the stairs from the north room of the lobby, get in the right corner; take out hookshot/bow/slingshot and aim slightly left of the door; A to exit view, but hold Z\x0A\x0AHookshot: Backflip and press hookshot mid flip\x0AProjctile weapon: Hold the button to start shooting (don't actually need ammo); backflip; release mid flip\x0A\x0AIf timed correctly, you should now be clipped into the rail\x0A\x0ABackwalk to grab the ledge; A to fall; walk so you're centered with the stairs (still out of bounds); roll jump in the abyss; jumpslash shortly after Link screams for more distance",
 		links: [{
 			url: "https://youtu.be/5DfkXaHgeG4",
 			description: "Video"

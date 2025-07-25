@@ -5463,6 +5463,7 @@ let MQDungeons = {
                         MapImageName: "Mirror Shield",
                         Age: Age.ADULT,
                         RequiredToAppear: function() { return Tricks.mqSpiritChildGeyserSkip.enabled; },
+                        Needs: [Equipment.MIRROR_SHIELD],
                         Order: 29.1,
                         LongDescription: "WALL MASTER WARNING:<br/>Go through the lower door to the southeast in the statue room. Kill all enemies in the room, including the floormasters that spawn when shining the light on the suns. This will open the grate.",
                     }
