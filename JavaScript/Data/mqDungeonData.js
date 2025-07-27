@@ -7078,7 +7078,11 @@ let MQDungeons = {
                 }
             },
             waterRoom: {
-                DisplayGroup: { groupName: "Water Trial", imageName: "Water Medallion" },
+                DisplayGroup: { 
+                    groupName: "Water Trial", 
+                    imageName: "Water Medallion",
+                    description: "To get to the end as Child from the block room:\x0A- Push the left block to the red ice\x0A- Backflip on the blue rock and jump to the other block\x0A- Jump to the block you pushed\x0A- Drop blue fire by the red ice (slightly away from the wall so it doesn't go out of bounds)" 
+                },
                 Exits: {
                     waterTrialBlockPuzzle: {
                         Map: "Ganon's Castle",
