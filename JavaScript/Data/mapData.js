@@ -2085,6 +2085,10 @@ let MapLocations = {
             main: {
                 DisplayGroup: { groupName: "Lower Area", imageName: "Goron's Ruby" },
                 Exits: {
+                    blueRupeeRock: {
+                        Age: Age.CHILD,
+                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, Tricks.boomerangThroughWalls.canDo]
+                    },
                     upper: {
                         NeedsAny: [
                             ItemSets.BLAST_OR_SMASH_ITEMS,
@@ -2184,14 +2188,22 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "As a child, this item is under the highest rock that's blocking access to the top of Death Mountain. You can snag it with the boomerang from the bottom with a good angle.",
                         NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, Tricks.boomerangThroughWalls.canDo]
-                    },
+                    }
+                }
+            },
+            blueRupeeRock: {
+                ExcludeFromSpawnList: true,
+                DisplayGroup: { groupName: "Rocky Path", imageName: "Cow Grotto" },
+                Exits: {
+                    main: {}
+                },
+                ItemLocations: {
                     "Blue Rupee in Rock Below Cow Grotto": {
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Blue Rupee",
                         MapInfo: { x: 190, y: 203 },
                         Age: Age.CHILD,
-                        LongDescription: "As a child, this item is under the leftmost rock by the rocks blocking access to the top of Death Mountain. You can snag it with the boomerang if you stand far back enough on the platform.",
-                        NeedsAny: [ItemSets.BLAST_OR_SMASH_ITEMS, Tricks.boomerangThroughWalls.canDo]
+                        LongDescription: "As a child, this item is under the leftmost rock by the rocks blocking access to the top of Death Mountain. You can also get it...<br/>- With the boomerang if you stand far back enough on the platform<br/>- From above if you jump directly on top of the rock from the upper ledge"
                     }
                 }
             },
@@ -2205,6 +2217,7 @@ let MapLocations = {
                 DuplicateWarpSongPriority: 1,
                 Exits: {
                     main: {},
+                    blueRupeeRock: {},
                     "Death Mountain Crater": {
                         OwExit: OwExits["Death Mountain Trail"]["Death Mountain Crater"]
                     },
