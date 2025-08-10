@@ -538,7 +538,7 @@ let ShopItemDictionary = {
 
 	"bluerupee": "Blue Rupee.png",
 	"blue": "Blue Rupee.png",
-	"rupees(5)": "Green Rupee.png",
+	"rupees(5)": "Blue Rupee.png",
 
 	"redrupee": "Red Rupee.png",
 	"red": "Red Rupee.png",
