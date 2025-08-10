@@ -32,7 +32,7 @@ let SpoilerLogDungeonNameMap = {
     "Gerudo Training Ground": "Training Grounds",
 
     "Ganons Castle": "Ganon's Castle"
-}
+};
 
 /**
  * The spoiler log lists these in a form of:
@@ -53,4 +53,4 @@ let SpoilerLogBossEntranceMap = {
     "Twinrova Boss Room|Spirit Temple Before Boss": "Twinrova",
 
     "Ganons Castle Tower|Ganons Castle Main": "Ganon's Tower"
-}
+};
