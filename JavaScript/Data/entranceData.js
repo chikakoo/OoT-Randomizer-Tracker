@@ -1083,6 +1083,7 @@ GrottoGroups = {
 				NeedsAny: [Items.DEKU_NUT, Items.FAIRY_SLINGSHOT]
 			},
 			"Blue Warp": {
+				SpoilerLogName: "Queen Gohma",
 				icon: "Kokiri's Emerald",
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				Needs: [ItemSets.SWORDS],
@@ -1099,11 +1100,13 @@ GrottoGroups = {
 				LongDescription: "This chest is in the back of the room."
 			},
 			"Heart Container": {
+				SpoilerLogName: "Dodongos Cavern King Dodongo Heart",
 				LongDescription: "To defeat King Dodongo, you must throw a bomb or bomb flower into his mouth, and then attack him afterward. Note that you should follow him as he rolls so that he gets up faster. If using bomb flowers, try to get them a little bit early, as you need time to run back to him before he shoots his fireball. The quickest kill is with 2 deku stick/master sword jumpslashes, or 1 biggoron's sword jumpslash.",
 				Needs: [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.SWORDS],
 				NeedsAny: [Items.BOMB, Equipment.STRENGTH]
 			},
 			"Blue Warp": {
+				SpoilerLogName: "King Dodongo",
 				icon: "Goron's Ruby",
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				Needs: [ItemSets.BLAST_OR_SMASH_ITEMS, ItemSets.SWORDS],
@@ -1122,13 +1125,15 @@ GrottoGroups = {
 				LongDescription: "The pots on the edge of the room."
 			},
 			"Heart Container": {
+				SpoilerLogName: "Jabu Jabus Belly Barinade Heart",
 				Age: Age.EITHER,
 				UseChildAge: function() { return !Tricks.equipSwap.enabled; },
 				LongDescription: "To defeat Barinade, you need the boomerang and also either a sword or at least 3 Deku Sticks. First, dislodge it from the ceiling using the boomerang on it a few times (Z-targetting is your friend). Once it's down, throw your boomerang at it directly. When it's stunned, kill the biris. Deku Nuts are one fast way to do this if you have some. There's two rounds of this. Once all the biris are dead, throw your boomerang at it again to stun it. Now you can attack it. Repeat until it's dead. This will take 2 Deku Stick jumpslashes and 1 normal Deku Stick hit (or 5 Kokiri Sword jumpslashes).",
 				Needs: [ItemSets.SWORDS, Items.BOOMERANG]
 			},
 			"Blue Warp": {
-				icon: "Zora's Sapphire",
+				SpoilerLogName: "King Dodongo",
+				icon: "Barinade",
 				Age: Age.EITHER,
 				UseChildAge: function() { return !Tricks.equipSwap.enabled; },
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
@@ -1141,6 +1146,7 @@ GrottoGroups = {
 		tooltip: "Phantom Ganon in the Forest Temple",
 		buttons: {
 			"Heart Container": {
+				SpoilerLogName: "Forest Temple Phantom Ganon Heart",
 				LongDescription: "For phase 1 of Phantom Ganon, you must shoot the real version of him that comes out of the paintings. You can use your bow or hookshot for that. The real one is lighter and is the only one that makes sound. Phase 2 is the familiar tenis match. Stun him with his own attacks and damage him when he's stunned. You can also just spam him with the boomerang!",
 				Needs: [
 					[SetType.OR, Items.HOOKSHOT, ItemSets.PROJECTILES], // Stun boss
@@ -1148,6 +1154,7 @@ GrottoGroups = {
 				]
 			},
 			"Blue Warp": {
+				SpoilerLogName: "Phantom Ganon",
 				icon: "Forest Medallion",
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				Needs: [
@@ -1183,11 +1190,13 @@ GrottoGroups = {
 		tooltip: "Morpha in the Water Temple",
 		buttons: {
 			"Heart Container": {
+				SpoilerLogName: "Water Temple Morpha Heart",
 				Age: Age.ADULT,
 				LongDescription: "To defeat morpha, hookshot her nucleus out of the water and hit her to damage her. A good way to kill is to continuously hookshot her to bring her into a corner. Now, get to the other side of her and slash once so it runs into the corner. Now quickly jumpslash it (Z + A) and continue to crouch stab (Hold R, spam B) until it's dead.",
 				Needs: [Items.HOOKSHOT]
 			},
 			"Blue Warp": {
+				SpoilerLogName: "Morpha",
 				icon: "Water Medallion",
 				Age: Age.ADULT,
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
@@ -1225,11 +1234,13 @@ GrottoGroups = {
 		tooltip: "Twinrova in the Spirit Temple",
 		buttons: {
 			"Heart Container": {
+				SpoilerLogName: "Spirit Temple Twinrova Heart",
 				Age: Age.ADULT,
 				LongDescription: "To defeat Twinrova, reflect one of the sister's shots at the other one. Do this four times to get to the second phase. Now, you must charge your shield with 3 of the same kind of attack. When you do, your shield will shoot it at Twinrova, stunning her. Go hit her! As usual, a jumpslash (Z + A) then crouch stabs (R + spam B) do the most damage.",
 				Needs: [Equipment.MIRROR_SHIELD]
 			},
 			"Blue Warp": {
+				SpoilerLogName: "Twinrova",
 				icon: "Spirit Medallion",
 				Age: Age.ADULT,
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
