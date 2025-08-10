@@ -100,7 +100,25 @@ let _addToSpoilerLogItemMap = function(itemLocation) {
 		spoilerLogNameObject.forEach(data => {
 			let name = data.name;
 			if (data.count) {
-				for (let i = 1; i <= data.count; i++) {
+				let min = 1;
+				let max = data.count;
+				if (typeof data.count === 'object') {
+					min = data.count.min;
+					max = data.count.max;
+
+					if (!min || !max) {
+						console.log(`ERROR: min or max not found on count on item location ${itemLocation.name}`);
+						return;
+					}
+
+					if (min > max) {
+						let temp = min;
+						min = max;
+						max = temp;
+					}
+				}
+
+				for (let i = min; i <= max; i++) {
 					let spoilerLogEntry = name.replace("{#}", i);
 					SpoilerLogItemMap[spoilerLogEntry] = itemLocation;
 				}
