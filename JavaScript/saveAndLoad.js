@@ -506,13 +506,14 @@ let SaveAndLoad = {
             let itemName = logItem.item
                 ? logItem.item
                 : logItem;
-
-            let itemLocation = SpoilerLogItemMap[logLocation];
-            if (itemLocation.notes) {
-                itemLocation.notes += `; ${itemName}`;
-            } else {
-                itemLocation.notes = itemName;
-            }
+            
+            SpoilerLogItemMap[logLocation].forEach(itemLocation => {
+                if (itemLocation.notes) {
+                    itemLocation.notes += `; ${itemName}`;
+                } else {
+                    itemLocation.notes = itemName;
+                }
+            });
         });
 
         alert("Spoiler log loaded successfully!");

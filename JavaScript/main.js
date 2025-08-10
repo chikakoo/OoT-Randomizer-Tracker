@@ -97,7 +97,7 @@ let _addToSpoilerLogItemMap = function(itemLocation) {
 	}
 
 	if (typeof spoilerLogNameObject === "string") {
-		SpoilerLogItemMap[itemLocation.SpoilerLogName] = itemLocation;
+		_addItemLocationToSpoilerLogItemMap(itemLocation.SpoilerLogName, itemLocation);
 	} else {
 		spoilerLogNameObject.forEach(data => {
 			let name = data.name;
@@ -122,13 +122,18 @@ let _addToSpoilerLogItemMap = function(itemLocation) {
 
 				for (let i = min; i <= max; i++) {
 					let spoilerLogEntry = name.replace("{#}", i);
-					SpoilerLogItemMap[spoilerLogEntry] = itemLocation;
+					_addItemLocationToSpoilerLogItemMap(spoilerLogEntry, itemLocation);
 				}
 			} else {
-				SpoilerLogItemMap[name] = itemLocation;
+				_addItemLocationToSpoilerLogItemMap(name, itemLocation);
 			}
 		});
 	}
+};
+
+let _addItemLocationToSpoilerLogItemMap = function(name, itemLocation) {
+	SpoilerLogItemMap[name] ??= [];
+	SpoilerLogItemMap[name].push(itemLocation);
 };
 
 let _addToSpoilerLogExitMap = function(exit) {
