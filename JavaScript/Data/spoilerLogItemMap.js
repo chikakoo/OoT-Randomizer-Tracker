@@ -8,13 +8,31 @@
 // }
 
 /**
- * Populated when the site is first loaded
+ * Populated when the spoiler log is being parsed
  */
 let SpoilerLogItemMap = {};
-let SpoilerLogInteriorMap = {};
-let SpoilerLogGrottoMap = {};
-
 let SpoilerLogBossMap = {};
+
+/**
+ * A map of the spoiler log dungeon names to the ones we use
+ */
+let SpoilerLogDungeonNameMap = {
+    "Deku Tree": "Deku Tree",
+    "Dodongos Cavern": "Dodongo's Cavern",
+    "Jabu Jabus Belly": "Jabu Jabu's Belly",
+
+    "Forest Temple": "Forest Temple",
+    "Fire Temple": "Fire Temple",
+    "Water Temple": "Water Temple",
+    "Shadow Temple": "Shadow Temple",
+    "Spirit Temple": "Spirit Temple",
+
+    "Ice Cavern": "Ice Cavern",
+    "Bottom of the Well": "Bottom of the Well",
+    "Gerudo Training Ground": "Training Grounds",
+
+    "Ganons Castle": "Ganon's Castle"
+}
 
 /**
  * The spoiler log lists these in a form of:

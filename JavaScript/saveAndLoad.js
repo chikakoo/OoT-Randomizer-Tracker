@@ -484,6 +484,7 @@ let SaveAndLoad = {
     _loadSpoilerLog: function(spoilerLogData) {
         // TODO: select the correct MQ/standard dungeon here so the correct map is in MapLocations
 
+        this._setDungeonTypes(spoilerLogData);
         this._populateSpoilerLogBossMap();
 
         // Fill all entrance data first first
@@ -526,6 +527,18 @@ let SaveAndLoad = {
         refreshAll();
         ItemLocationDisplay.displayLocation("Kokiri Forest");
         alert("Spoiler log loaded successfully!");
+    },
+
+    _setDungeonTypes: function(spoilerLogData) {
+        Object.keys(spoilerLogData.dungeons).forEach(spoilerDungeonName => {
+            let dungeonName = SpoilerLogDungeonNameMap[spoilerDungeonName]
+            let spoilerIsMQ = spoilerLogData.dungeons[spoilerDungeonName] === "mq";
+
+            let dungeon = MapLocations[dungeonName];
+            if (!!dungeon.IsMasterQuest !== spoilerIsMQ) {
+                toggleDungeonMapType(dungeonName);
+            }
+        });
     },
 
     _populateSpoilerLogBossMap: function() {
