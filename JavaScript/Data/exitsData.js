@@ -2412,6 +2412,7 @@ let OwExits = {
             LongDescription: "This is the exit from the Deku Tree."
         },
         "Boss": {
+            SpoilerLogName: "Deku Tree Before Boss -> Queen Gohma Boss Room",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Gohma",
@@ -2462,6 +2463,7 @@ let OwExits = {
             LongDescription: "This is the exit from Jabu Jabu's Belly."
         },
         "Boss": {
+            SpoilerLogName: "Jabu Jabus Belly Before Boss -> Barinade Boss Room",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Barinade",
@@ -2555,6 +2557,7 @@ let OwExits = {
             LongDescription: "This is the exit from the Water Temple."
         },
         "Boss": {
+            SpoilerLogName: "Water Temple Before Boss -> Morpha Boss Room",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Morpha",
@@ -2579,6 +2582,7 @@ let OwExits = {
             LongDescription: "This is the exit from the Shadow Temple."
         },
         "Boss": {
+            SpoilerLogName: "Shadow Temple Before Boss -> Bongo Bongo Boss Room",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Bongo Bongo",

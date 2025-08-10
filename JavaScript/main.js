@@ -80,6 +80,8 @@ let _assignItemLocationAndExitValues = function() {
 			exit.Name = exitName;
 			exit.ExitMap = mapName;
 			exit.IsDungeon = exit.ItemGroup === ItemGroups.BOSS_ENTRANCE;
+
+			_addToSpoilerLogExitMap(exit);
 		});
 	});
 };
@@ -126,6 +128,12 @@ let _addToSpoilerLogItemMap = function(itemLocation) {
 				SpoilerLogItemMap[name] = itemLocation;
 			}
 		});
+	}
+};
+
+let _addToSpoilerLogExitMap = function(exit) {
+	if (exit.SpoilerLogName) {
+		SpoilerLogBossMap[exit.SpoilerLogName] = exit;;
 	}
 };
 

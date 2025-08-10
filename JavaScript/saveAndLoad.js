@@ -482,28 +482,39 @@ let SaveAndLoad = {
      * @param {any} spoilerLogData: The loaded spoiler log data
      */
     _loadSpoilerLog: function(spoilerLogData) {
+        // Bosses
+        Object.keys(spoilerLogData.entrances).forEach(entrance => {
+            if (!SpoilerLogBossMap[entrance]) {
+                // TODO when done: if this DOES NOT have an entry, log an error
+                return;
+            }
+
+            let exitToModify = SpoilerLogBossMap[entrance];
+            let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
+            let exitLeadsTo = SpoilerLogBossEntranceMap[`${spoilerExitLeadsTo.region}|${spoilerExitLeadsTo.from}`];
+            EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo);
+        });
+
+        // Normal locations
         Object.keys(spoilerLogData.locations).forEach(logLocation => {
-            // TODO when done: if this DOES NOT have an entry, log an error
-            if (SpoilerLogItemMap[logLocation]) {
-                let itemLocation = this._getMatchingItemLocation(SpoilerLogItemMap[logLocation]);
+            if (!SpoilerLogItemMap[logLocation]) {
+                // TODO when done: if this DOES NOT have an entry, log an error
+                return;
+            }
 
-                let logItem = spoilerLogData.locations[logLocation];
-                let itemName = logItem.item
-                    ? logItem.item
-                    : logItem;
+            let logItem = spoilerLogData.locations[logLocation];
+            let itemName = logItem.item
+                ? logItem.item
+                : logItem;
 
-                if (itemLocation.notes) {
-                    itemLocation.notes += `; ${itemName}`;
-                } else {
-                    itemLocation.notes = itemName;
-                }
+            let itemLocation = SpoilerLogItemMap[logLocation];
+            if (itemLocation.notes) {
+                itemLocation.notes += `; ${itemName}`;
+            } else {
+                itemLocation.notes = itemName;
             }
         });
 
         alert("Spoiler log loaded successfully!");
     },
-
-    _getMatchingItemLocation: function(itemMap) {
-        return itemMap; //TODO: if this works for every item, no need for this function
-    }
 };
