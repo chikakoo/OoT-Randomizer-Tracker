@@ -1162,12 +1162,14 @@ GrottoGroups = {
 		tooltip: "Volvagia in the Fire Temple",
 		buttons: {
 			"Heart Container": {
+				SpoilerLogName: "Fire Temple Volvagia Heart",
 				Age: Age.EITHER,
 				UseAdultAge: function() { return !Tricks.equipSwap.enabled || !Tricks.fireNoGoronTunic.enabled; },
 				LongDescription: "To defeat Volvagia, hit her with your hammer when she pops out of the holes. After that, attack it again. Jumpslashes will do more damage, like usual. You can hit it with arrows while it's flying to do additional damage. If it ever drops rocks on you, you can hang off the side of the cliff to avoid damage.",
 				Needs: [GameStateSets.FIRE_TEMPLE_TUNIC_CHECK, Items.MEGATON_HAMMER]
 			},
 			"Blue Warp": {
+				SpoilerLogName: "Volvagia",
 				icon: "Fire Medallion",
 				Age: Age.EITHER,
 				UseAdultAge: function() { return !Tricks.equipSwap.enabled || !Tricks.fireNoGoronTunic.enabled; },
@@ -1204,11 +1206,13 @@ GrottoGroups = {
 		tooltip: "Bongo Bongo in the Shadow Temple",
 		buttons: {
 			"Heart Container": {
+				SpoilerLogName: "Bongo Bongo",
 				LongDescription: "When fighting Bongo Bongo, it helps to NOT have the Hover Boots equipped. When the fight starts, if you hold down, he won't circle you right away. Hit his hands with your bow or hookshot, or slingshot to stun them. Now hit him before he hits you and damage him as much as you can. If you have magic, quickspins can actually stunlock him for a 1-cycle if you do them perfectly.",
 				Needs: [ItemSets.SWORDS],
 				NeedsAny: [Items.HOOKSHOT, ItemSets.PROJECTILES]
 			},
 			"Blue Warp": {
+				SpoilerLogName: "Shadow Temple Bongo Bongo Heart",
 				icon: "Shadow Medallion",
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				Needs: [ItemSets.SWORDS],

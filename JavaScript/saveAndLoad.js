@@ -503,7 +503,11 @@ let SaveAndLoad = {
 
         this._populateSpoilerLogItemMap();
 
-        // Normal locations
+        // Place each item to update in a map array containing objects with the following format
+        // - itemLocation: the item location to modify
+        // - order: the order the spoiler log item should be added to the location
+        // - itemName: the string to add to the notes
+        let updateData = {};
         Object.keys(spoilerLogData.locations).forEach(logLocation => {
             if (!SpoilerLogItemMap[logLocation]) {
                 // TODO when done: if this DOES NOT have an entry, log an error
@@ -514,16 +518,36 @@ let SaveAndLoad = {
             let itemName = logItem.item
                 ? logItem.item
                 : logItem;
-            
-            SpoilerLogItemMap[logLocation].forEach(itemLocation => {
-                if (itemLocation.notes) {
-                    itemLocation.notes += `; ${itemName}`;
-                } else {
-                    itemLocation.notes = itemName;
-                }
+
+            SpoilerLogItemMap[logLocation].itemLocations.forEach(itemLocation => {
+                let key = `${itemLocation.Name}|${itemLocation.Map}|${itemLocation.Region}`;
+                updateData[key] ??= [];
+                updateData[key].push({
+                    itemLocation: itemLocation,
+                    order: SpoilerLogItemMap[logLocation].order,
+                    itemName: itemName,
+                });
             });
         });
 
+        // Sort the update data by the order so it matches with the tracker
+        Object.values(updateData).sort((a, b) =>
+            a.order < b.order ? -1 : 1
+        );
+
+        // Use the sorted update values to update the notes
+        Object.values(updateData).forEach(updateInfoArray => {
+            updateInfoArray.forEach(updateInfo => {
+                let itemLocation = updateInfo.itemLocation;
+                let itemName = updateInfo.itemName;
+                if (itemLocation.notes) {
+                    itemLocation.notes += `; ${itemName}`;
+                } else {
+                    itemLocation.notes = `${itemName}`;
+                }
+            });
+        });
+            
         refreshAll();
         ItemLocationDisplay.displayLocation("Kokiri Forest");
         alert("Spoiler log loaded successfully!");
@@ -564,20 +588,36 @@ let SaveAndLoad = {
                 });
             });
         });
+
+        Object.keys(OwExits).forEach(function(mapName) {
+            Object.keys(OwExits[mapName]).forEach(function(exitName) {
+                let exit = OwExits[mapName][exitName];
+                let entranceGroup = Data.getEntranceGroup(exit);
+                if (entranceGroup) {
+                    let entranceData = EntranceUI.getEntranceData(exit);
+                    let entranceDataButtons = entranceData[entranceGroup.name].buttons;
+                    let order = 1;
+                    Object.values(entranceDataButtons).forEach(button => {
+                        _this._addToSpoilerLogItemMap(exit, button.SpoilerLogName, order);
+                        order++;
+                    });
+                }
+            });
+	    });
     },
 
     /**
      * Adds the item location to the spoiler log item map
      * Assumes it has been populated with its map and region
      */
-    _addToSpoilerLogItemMap: function(itemLocation) {
-        let spoilerLogNameObject = itemLocation.SpoilerLogName;
+    _addToSpoilerLogItemMap: function(itemLocation, spoilerLogName, order) {
+        let spoilerLogNameObject = spoilerLogName || itemLocation.SpoilerLogName;
         if (!spoilerLogNameObject) {
             return;
         }
 
         if (typeof spoilerLogNameObject === "string") {
-            this._addItemLocationToSpoilerLogItemMap(itemLocation.SpoilerLogName, itemLocation);
+            this._addItemLocationToSpoilerLogItemMap(spoilerLogNameObject, itemLocation, order);
         } else {
             spoilerLogNameObject.forEach(data => {
                 let name = data.name;
@@ -602,18 +642,22 @@ let SaveAndLoad = {
 
                     for (let i = min; i <= max; i++) {
                         let spoilerLogEntry = name.replace("{#}", i);
-                        this._addItemLocationToSpoilerLogItemMap(spoilerLogEntry, itemLocation);
+                        this._addItemLocationToSpoilerLogItemMap(spoilerLogEntry, itemLocation, order);
                     }
                 } else {
-                    this._addItemLocationToSpoilerLogItemMap(name, itemLocation);
+                    this._addItemLocationToSpoilerLogItemMap(name, itemLocation, order);
                 }
             });
         }
     },
 
-     _addItemLocationToSpoilerLogItemMap: function(name, itemLocation) {
-        SpoilerLogItemMap[name] ??= [];
-        SpoilerLogItemMap[name].push(itemLocation);
+     _addItemLocationToSpoilerLogItemMap: function(name, itemLocation, order) {
+        SpoilerLogItemMap[name] ??= { itemLocations: [] };
+        SpoilerLogItemMap[name].itemLocations.push(itemLocation);
+
+        if (order && order > 0) {
+            SpoilerLogItemMap[name].order = order;
+        }
     },
 
     _addToSpoilerLogExitMap: function(exit) {
