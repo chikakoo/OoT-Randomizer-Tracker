@@ -269,14 +269,19 @@ let SaveAndLoad = {
         let loadedObject = JSON.parse(lines); 
     
         this.currentlyLoading = true;
-        this._loadSaveFile(loadedObject);
+
+        if (loadedObject[":version"]) {
+            this._loadSpoilerLog(loadedObject);
+        } else {
+            this._loadSaveFile(loadedObject);
+        }
     },
     
     /**
      * Loads the save file
      * @param loadedObject - the loaded file data
      */
-    _loadSaveFile(loadedObject) {
+    _loadSaveFile: function(loadedObject) {
         if (loadedObject.Settings) { Settings = loadedObject.Settings; }
         if (loadedObject.Tricks) { this._loadTricks(loadedObject.Tricks); }
         if (loadedObject.Items) { this._loadItemObject(Items, loadedObject.Items); }
@@ -469,5 +474,36 @@ let SaveAndLoad = {
                 EntranceData.runPostClicks(exitingExitData);
             });
         });
+    },
+
+    /**
+     * Fills each location with what item is contained at which location in the notes
+     * Includes filling out shuffled entrances/interiors/overworld exits
+     * @param {any} spoilerLogData: The loaded spoiler log data
+     */
+    _loadSpoilerLog: function(spoilerLogData) {
+        Object.keys(spoilerLogData.locations).forEach(logLocation => {
+            // TODO when done: if this DOES NOT have an entry, log an error
+            if (SpoilerLogItemMap[logLocation]) {
+                let itemLocation = this._getMatchingItemLocation(SpoilerLogItemMap[logLocation]);
+
+                let logItem = spoilerLogData.locations[logLocation];
+                let itemName = logItem.item
+                    ? logItem.item
+                    : logItem;
+
+                if (itemLocation.notes) {
+                    itemLocation.notes += `; ${itemName}`;
+                } else {
+                    itemLocation.notes = itemName;
+                }
+            }
+        });
+
+        alert("Spoiler log loaded successfully!");
+    },
+
+    _getMatchingItemLocation: function(itemMap) {
+        return itemMap; //TODO: if this works for every item, no need for this function
     }
 };

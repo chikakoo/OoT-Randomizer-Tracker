@@ -3965,11 +3965,11 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "These are the crates by the start of the horseback archery minigame."
                     },
-                    "6 Crates by HBA Center Targets": {
+                    "7 Crates by HBA Center Targets": {
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
-                        DefaultEntranceGroupName: "6 Crates",
+                        DefaultEntranceGroupName: "7 Crates",
                         MapInfo: { x: 266, y: 144 },
                         Age: Age.EITHER,
                         LongDescription: "These are the crates by horseback archery's center targets."

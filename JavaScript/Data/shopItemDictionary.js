@@ -497,6 +497,7 @@ let ShopItemDictionary = {
 	"smallkeygtg": "Training Grounds Small Key.png",
 	"keygtg": "Training Grounds Small Key.png",
 	"skgtg": "Training Grounds Small Key.png",
+	"smallkey(gerudotrainingground)": "Training Grounds Small Key.png",
 
 	"ganonsmallkey": "Ganon's Castle Small Key.png",
 	"ganonkey": "Ganon's Castle Small Key.png",
@@ -513,6 +514,7 @@ let ShopItemDictionary = {
 	"chestminigamekey": "Treasure Chest Minigame Small Key.png",
 	"chestgamekey": "Treasure Chest Minigame Small Key.png",
 	"chestkey": "Treasure Chest Minigame Small Key.png",
+	"smallkey(treasurechestgame)": "Treasure Chest Minigame Small Key.png",
 
 	"ganonbosskey": "Ganon's Castle Boss Key.png",
 	"ganonbigkey": "Ganon's Castle Boss Key.png",
@@ -532,9 +534,11 @@ let ShopItemDictionary = {
 
 	"greenrupee": "Green Rupee.png",
 	"green": "Green Rupee.png",
+	"rupee(1)": "Green Rupee.png",
 
 	"bluerupee": "Blue Rupee.png",
 	"blue": "Blue Rupee.png",
+	"rupees(5)": "Green Rupee.png",
 
 	"redrupee": "Red Rupee.png",
 	"red": "Red Rupee.png",

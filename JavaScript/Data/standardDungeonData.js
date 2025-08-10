@@ -29,6 +29,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Heart in Lower Lobby": {
+                        SpoilerLogName: "Deku Tree Lower Lobby Recovery Heart",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 245, y: 28, floor: "F2" },
@@ -37,6 +38,7 @@ let StandardDungeons = {
                         LongDescription: "Climb up the vines on the first floor. Jump to the small platform to your left. The item is on the end of that platform; you have to jump off for it.",
                     },
                     "Map Chest": {
+                        SpoilerLogName: "Deku Tree Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 282, y: 82, floor: "F2" },
                         Age: Age.EITHER,
@@ -54,6 +56,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Slingshot Chest": {
+                        SpoilerLogName: "Deku Tree Slingshot Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 111, y: 246, floor: "F2" },
                         Age: Age.EITHER,
@@ -61,6 +64,7 @@ let StandardDungeons = {
                         LongDescription: "The chest is up the vines."
                     },
                     "Slingshot Room Side Chest": {
+                        SpoilerLogName: "Deku Tree Slingshot Room Side Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 157, y: 273, floor: "F2" },
                         Age: Age.EITHER,
@@ -83,6 +87,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Compass Chest": {
+                        SpoilerLogName: "Deku Tree Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 16, y: 147, floor: "F3" },
                         Age: Age.EITHER,
@@ -90,6 +95,7 @@ let StandardDungeons = {
                         LongDescription: "Hit the switch and jump on the platforms to the opposite side of the room for this chest.",
                     },
                     "Compass Side Room Chest": {
+                        SpoilerLogName: "Deku Tree Compass Room Side Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 115, y: 199, floor: "F3" },
                         Age: Age.EITHER,
@@ -97,6 +103,7 @@ let StandardDungeons = {
                         LongDescription: "Hit the switch and jump on the platforms to the left side room for this chest. You do not need to kill the giant skulltula if you jump far enough to the left.",
                     },
                     "Skulltula in Compass Room": {
+                        SpoilerLogName: "Deku Tree GS Compass Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 115, y: 207, floor: "F3" },
                         Age: Age.EITHER,
@@ -104,6 +111,7 @@ let StandardDungeons = {
                         LongDescription: "Hit the switch and jump on the platforms to the left side room for this skulltula. You do not need to kill the giant skulltula if you jump far enough to the left."
                     },
                     "Heart in Upper Lobby": {
+                        SpoilerLogName: "Deku Tree Upper Lobby Recovery Heart",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 291, y: 152, floor: "F3" },
@@ -133,6 +141,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Basement": {
+                        SpoilerLogName: "Deku Tree Basement Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 343, y: 81, floor: "B1" },
                         Age: Age.EITHER,
@@ -140,6 +149,7 @@ let StandardDungeons = {
                         LongDescription: "The chest is on the platform to the left of the vines."
                     },
                     "Skulltula on Basement Gate": {
+                        SpoilerLogName: "Deku Tree GS Basement Gate",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 297, y: 51, floor: "B1" },
                         Age: Age.EITHER,
@@ -147,6 +157,7 @@ let StandardDungeons = {
                         LongDescription: "If you face the vines, the skulltula is on the wall to the left."
                     },
                     "Skulltula on Basement Vines": {
+                        SpoilerLogName: "Deku Tree GS Basement Vines",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 348, y: 104, floor: "B1" },
                         Age: Age.EITHER,
@@ -165,6 +176,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Skulltula in Back Room": {
+                        SpoilerLogName: "Deku Tree GS Basement Back Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 17, y: 77, floor: "B1" },
                         Age: Age.EITHER,
@@ -220,6 +232,8 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "3 Hearts in Lower Basement": {
+                        SpoilerLogName: "Deku Tree Basement Recovery Heart {#}",
+                        SpoilerLogCount: 3,
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "3 Hearts",

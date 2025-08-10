@@ -54,6 +54,8 @@ let _assignItemLocationAndExitValues = function() {
 					}
 					mostRecentRegionDisplayGroup = itemLocation.DisplayGroup;
 					itemLocation.IsDungeon = mapObject[mapName].MapGroup === MapGroups.DUNGEONS;
+
+					_addToSpoilerLogItemMap(itemLocation);
 				});
 
 				let exits = regions[regionName].Exits;
@@ -80,6 +82,23 @@ let _assignItemLocationAndExitValues = function() {
 			exit.IsDungeon = exit.ItemGroup === ItemGroups.BOSS_ENTRANCE;
 		});
 	});
+};
+
+/**
+ * Adds the item location to the spoiler log item map
+ * Assumes it has been populated with its map and region
+ */
+let _addToSpoilerLogItemMap = function(itemLocation) {
+	if (itemLocation.SpoilerLogName) {
+		if (itemLocation.SpoilerLogCount) {
+			for (let i = 1; i <= itemLocation.SpoilerLogCount; i++) {
+				let spoilerLogEntry = itemLocation.SpoilerLogName.replace("{#}", i);
+				SpoilerLogItemMap[spoilerLogEntry] = itemLocation;
+			}
+		} else {
+			SpoilerLogItemMap[itemLocation.SpoilerLogName] = itemLocation;
+		}
+	}
 };
 
 /**

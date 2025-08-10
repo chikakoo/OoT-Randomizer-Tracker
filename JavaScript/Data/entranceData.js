@@ -1077,6 +1077,7 @@ GrottoGroups = {
 		canExitFromEntrance: true,
 		buttons: {
 			"Heart Container": {
+				SpoilerLogName: "Deku Tree Queen Gohma Heart",
 				LongDescription: "To defeat Gohma, you must first stun her when her eye is red. You can use the slingshot or deku nuts to do this - nuts don't stun her for nearly as long, though. Once she's down, attack her. The quickest kill is with three deku stick jumpslashes (or one then two crouch stabs).",
 				Needs: [ItemSets.SWORDS],
 				NeedsAny: [Items.DEKU_NUT, Items.FAIRY_SLINGSHOT]
