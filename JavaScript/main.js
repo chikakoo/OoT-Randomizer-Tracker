@@ -54,8 +54,6 @@ let _assignItemLocationAndExitValues = function() {
 					}
 					mostRecentRegionDisplayGroup = itemLocation.DisplayGroup;
 					itemLocation.IsDungeon = mapObject[mapName].MapGroup === MapGroups.DUNGEONS;
-
-					_addToSpoilerLogItemMap(itemLocation);
 				});
 
 				let exits = regions[regionName].Exits;
@@ -80,66 +78,8 @@ let _assignItemLocationAndExitValues = function() {
 			exit.Name = exitName;
 			exit.ExitMap = mapName;
 			exit.IsDungeon = exit.ItemGroup === ItemGroups.BOSS_ENTRANCE;
-
-			_addToSpoilerLogExitMap(exit);
 		});
 	});
-};
-
-/**
- * Adds the item location to the spoiler log item map
- * Assumes it has been populated with its map and region
- */
-let _addToSpoilerLogItemMap = function(itemLocation) {
-	let spoilerLogNameObject = itemLocation.SpoilerLogName;
-	if (!spoilerLogNameObject) {
-		return;
-	}
-
-	if (typeof spoilerLogNameObject === "string") {
-		_addItemLocationToSpoilerLogItemMap(itemLocation.SpoilerLogName, itemLocation);
-	} else {
-		spoilerLogNameObject.forEach(data => {
-			let name = data.name;
-			if (data.count) {
-				let min = 1;
-				let max = data.count;
-				if (typeof data.count === 'object') {
-					min = data.count.min;
-					max = data.count.max;
-
-					if (!min || !max) {
-						console.log(`ERROR: min or max not found on count on item location ${itemLocation.name}`);
-						return;
-					}
-
-					if (min > max) {
-						let temp = min;
-						min = max;
-						max = temp;
-					}
-				}
-
-				for (let i = min; i <= max; i++) {
-					let spoilerLogEntry = name.replace("{#}", i);
-					_addItemLocationToSpoilerLogItemMap(spoilerLogEntry, itemLocation);
-				}
-			} else {
-				_addItemLocationToSpoilerLogItemMap(name, itemLocation);
-			}
-		});
-	}
-};
-
-let _addItemLocationToSpoilerLogItemMap = function(name, itemLocation) {
-	SpoilerLogItemMap[name] ??= [];
-	SpoilerLogItemMap[name].push(itemLocation);
-};
-
-let _addToSpoilerLogExitMap = function(exit) {
-	if (exit.SpoilerLogExitName) {
-		SpoilerLogBossMap[exit.SpoilerLogExitName] = exit;;
-	}
 };
 
 /**

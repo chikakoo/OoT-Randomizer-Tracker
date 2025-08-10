@@ -482,7 +482,12 @@ let SaveAndLoad = {
      * @param {any} spoilerLogData: The loaded spoiler log data
      */
     _loadSpoilerLog: function(spoilerLogData) {
-        // Bosses
+        // TODO: select the correct MQ/standard dungeon here so the correct map is in MapLocations
+
+        this._populateSpoilerLogBossMap();
+
+        // Fill all entrance data first first
+        // TODO: interior/grotto/ow
         Object.keys(spoilerLogData.entrances).forEach(entrance => {
             if (!SpoilerLogBossMap[entrance]) {
                 // TODO when done: if this DOES NOT have an entry, log an error
@@ -494,6 +499,8 @@ let SaveAndLoad = {
             let exitLeadsTo = SpoilerLogBossEntranceMap[`${spoilerExitLeadsTo.region}|${spoilerExitLeadsTo.from}`];
             EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo);
         });
+
+        this._populateSpoilerLogItemMap();
 
         // Normal locations
         Object.keys(spoilerLogData.locations).forEach(logLocation => {
@@ -520,4 +527,85 @@ let SaveAndLoad = {
         ItemLocationDisplay.displayLocation("Kokiri Forest");
         alert("Spoiler log loaded successfully!");
     },
+
+    _populateSpoilerLogBossMap: function() {
+        SpoilerLogBossMap = {};
+
+        let _this = this;
+        Object.keys(OwExits).forEach(function(mapName) {
+            Object.keys(OwExits[mapName]).forEach(function(exitName) {
+                let exit = OwExits[mapName][exitName];
+                _this._addToSpoilerLogExitMap(exit);
+            });
+	    });
+    },
+
+    _populateSpoilerLogItemMap: function() {
+        SpoilerLogItemMap = {};
+        
+        let _this = this;
+        Object.values(MapLocations).forEach(function(map) {
+            Object.values(map.Regions).forEach(function(region) {
+                Object.values(region.ItemLocations).forEach(function(itemLocation) {
+                    _this._addToSpoilerLogItemMap(itemLocation);
+                });
+            });
+        });
+    },
+
+    /**
+     * Adds the item location to the spoiler log item map
+     * Assumes it has been populated with its map and region
+     */
+    _addToSpoilerLogItemMap: function(itemLocation) {
+        let spoilerLogNameObject = itemLocation.SpoilerLogName;
+        if (!spoilerLogNameObject) {
+            return;
+        }
+
+        if (typeof spoilerLogNameObject === "string") {
+            this._addItemLocationToSpoilerLogItemMap(itemLocation.SpoilerLogName, itemLocation);
+        } else {
+            spoilerLogNameObject.forEach(data => {
+                let name = data.name;
+                if (data.count) {
+                    let min = 1;
+                    let max = data.count;
+                    if (typeof data.count === 'object') {
+                        min = data.count.min;
+                        max = data.count.max;
+
+                        if (!min || !max) {
+                            console.log(`ERROR: min or max not found on count on item location ${itemLocation.name}`);
+                            return;
+                        }
+
+                        if (min > max) {
+                            let temp = min;
+                            min = max;
+                            max = temp;
+                        }
+                    }
+
+                    for (let i = min; i <= max; i++) {
+                        let spoilerLogEntry = name.replace("{#}", i);
+                        this._addItemLocationToSpoilerLogItemMap(spoilerLogEntry, itemLocation);
+                    }
+                } else {
+                    this._addItemLocationToSpoilerLogItemMap(name, itemLocation);
+                }
+            });
+        }
+    },
+
+     _addItemLocationToSpoilerLogItemMap: function(name, itemLocation) {
+        SpoilerLogItemMap[name] ??= [];
+        SpoilerLogItemMap[name].push(itemLocation);
+    },
+
+    _addToSpoilerLogExitMap: function(exit) {
+        if (exit.SpoilerLogExitName) {
+            SpoilerLogBossMap[exit.SpoilerLogExitName] = exit;
+        }
+    }
 };
