@@ -232,8 +232,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "3 Hearts in Lower Basement": {
-                        SpoilerLogName: "Deku Tree Basement Recovery Heart {#}",
-                        SpoilerLogCount: 3,
+                        SpoilerLogName: [
+                            { name: "Deku Tree Basement Recovery Heart {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "3 Hearts",

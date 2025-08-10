@@ -89,15 +89,25 @@ let _assignItemLocationAndExitValues = function() {
  * Assumes it has been populated with its map and region
  */
 let _addToSpoilerLogItemMap = function(itemLocation) {
-	if (itemLocation.SpoilerLogName) {
-		if (itemLocation.SpoilerLogCount) {
-			for (let i = 1; i <= itemLocation.SpoilerLogCount; i++) {
-				let spoilerLogEntry = itemLocation.SpoilerLogName.replace("{#}", i);
-				SpoilerLogItemMap[spoilerLogEntry] = itemLocation;
+	let spoilerLogNameObject = itemLocation.SpoilerLogName;
+	if (!spoilerLogNameObject) {
+		return;
+	}
+
+	if (typeof spoilerLogNameObject === "string") {
+		SpoilerLogItemMap[itemLocation.SpoilerLogName] = itemLocation;
+	} else {
+		spoilerLogNameObject.forEach(data => {
+			let name = data.name;
+			if (data.count) {
+				for (let i = 1; i <= data.count; i++) {
+					let spoilerLogEntry = name.replace("{#}", i);
+					SpoilerLogItemMap[spoilerLogEntry] = itemLocation;
+				}
+			} else {
+				SpoilerLogItemMap[name] = itemLocation;
 			}
-		} else {
-			SpoilerLogItemMap[itemLocation.SpoilerLogName] = itemLocation;
-		}
+		});
 	}
 };
 
