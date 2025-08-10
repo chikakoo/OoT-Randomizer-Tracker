@@ -4955,6 +4955,7 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Crate by Quicksand": {
+                        SpoilerLogName: "Wasteland Crate Before Quicksand",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 311, y: 266 },
                         Age: Age.EITHER,
@@ -4979,6 +4980,9 @@ let MapLocations = {
 
                 ItemLocations: {
                     "3 Crates Across Quicksand": {
+                        SpoilerLogName: [
+                            { name: "Wasteland Crate After Quicksand {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "3 Crates",
@@ -4987,6 +4991,7 @@ let MapLocations = {
                         LongDescription: "These crates are by the flags just across the quicksand pit."
                     },
                     "Carpet Shop": {
+                        SpoilerLogName: "Wasteland Bombchu Salesman",
                         ItemGroup: ItemGroups.GIFT,
                         MapInfo: { x: 239, y: 292 },
                         Age: Age.EITHER,
@@ -4995,6 +5000,7 @@ let MapLocations = {
                         NeedsAny: [ItemSets.SWORDS, Equipment.HOVER_BOOTS]
                     },
                     "Skulltula at Outpost": {
+                        SpoilerLogName: "Wasteland GS",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 208, y: 85 },
                         Age: Age.EITHER,
@@ -5002,6 +5008,7 @@ let MapLocations = {
                         NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Tricks.staircaseHover.canDo]
                     },
                     "Chest at Outpost": {
+                        SpoilerLogName: "Wasteland Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 208, y: 93 },
                         Age: Age.EITHER,
@@ -5009,6 +5016,9 @@ let MapLocations = {
                         NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
                     },
                     "4 Pots at Outpost": {
+                        SpoilerLogName: [
+                            { name: "Wasteland Near GS Pot {#}", count: 4 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "4 Pots",
@@ -5030,6 +5040,7 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Crate near Colossus": {
+                        SpoilerLogName: "Wasteland Crate Near Colossus",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 129, y: 129 },
                         Age: Age.EITHER,
