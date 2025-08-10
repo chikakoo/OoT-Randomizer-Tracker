@@ -48,7 +48,7 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Blue Rupee Behind Mido's": {
-                        SpoilerLogName:"KF Behind Midos Blue Rupee",
+                        SpoilerLogName: "KF Behind Midos Blue Rupee",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Blue Rupee",
                         MapInfo: { x: 135, y: 95 },

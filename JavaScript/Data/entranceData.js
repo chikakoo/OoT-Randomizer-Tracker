@@ -1254,10 +1254,12 @@ GrottoGroups = {
 		canExitFromEntrance: true,
 		buttons: {
 			"Boss Key": {
+				SpoilerLogName: "Ganons Tower Boss Key Chest",
 				LongDescription: "This boss key chest is in the room with the two stalfos. Defeat them to gain access to it.",
 				Needs: [ItemSets.DAMAGING_ITEMS]
 			},
 			"14 Pots": {
+				SpoilerLogName: [{ name: "Ganons Tower Pot {#}", count: 14 }],
 				LongDescription: "These pots are after the fight with the two Iron Knuckles, before the final staircase.",
 				count: 14,
 				ItemGroup: ItemGroups.POT,
@@ -1267,6 +1269,7 @@ GrottoGroups = {
 				}
 			},
 			"18 Pots": {
+				SpoilerLogName: [{ name: "Ganons Tower Pot {#}", count: 18 }],
 				LongDescription: "These pots are after the fight with the two Iron Knuckles, before the final staircase.",
 				count: 18,
 				ItemGroup: ItemGroups.POT,
