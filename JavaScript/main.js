@@ -137,8 +137,8 @@ let _addItemLocationToSpoilerLogItemMap = function(name, itemLocation) {
 };
 
 let _addToSpoilerLogExitMap = function(exit) {
-	if (exit.SpoilerLogName) {
-		SpoilerLogBossMap[exit.SpoilerLogName] = exit;;
+	if (exit.SpoilerLogExitName) {
+		SpoilerLogBossMap[exit.SpoilerLogExitName] = exit;;
 	}
 };
 

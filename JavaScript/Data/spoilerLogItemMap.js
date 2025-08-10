@@ -25,10 +25,14 @@ let SpoilerLogBossMap = {};
  */
 let SpoilerLogBossEntranceMap = {
     "Queen Gohma Boss Room|Deku Tree Before Boss": "Gohma",
-
+    "King Dodongo Boss Room|Dodongos Cavern Before Boss": "King Dodongo",
     "Barinade Boss Room|Jabu Jabus Belly Before Boss": "Barinade",
 
+    "Phantom Ganon Boss Room|Forest Temple Before Boss": "Phantom Ganon",
     "Volvagia Boss Room|Fire Temple Before Boss": "Volvagia",
     "Morpha Boss Room|Water Temple Before Boss": "Morpha",
-    "Bongo Bongo Boss Room|Shadow Temple Before Boss": "Bongo Bongo"
+    "Bongo Bongo Boss Room|Shadow Temple Before Boss": "Bongo Bongo",
+    "Twinrova Boss Room|Spirit Temple Before Boss": "Twinrova",
+
+    "Ganons Castle Tower|Ganons Castle Main": "Ganon's Tower"
 }

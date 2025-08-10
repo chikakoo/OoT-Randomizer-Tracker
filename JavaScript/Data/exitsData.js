@@ -2412,7 +2412,7 @@ let OwExits = {
             LongDescription: "This is the exit from the Deku Tree."
         },
         "Boss": {
-            SpoilerLogName: "Deku Tree Before Boss -> Queen Gohma Boss Room",
+            SpoilerLogExitName: "Deku Tree Before Boss -> Queen Gohma Boss Room",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Gohma",
@@ -2439,6 +2439,7 @@ let OwExits = {
             LongDescription: "This is the exit from Dodongo's Cavern."
         },
         "Boss": {
+            SpoilerLogExitName: "Dodongos Cavern Before Boss -> King Dodongo Boss Room",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "King Dodongo",
@@ -2463,7 +2464,7 @@ let OwExits = {
             LongDescription: "This is the exit from Jabu Jabu's Belly."
         },
         "Boss": {
-            SpoilerLogName: "Jabu Jabus Belly Before Boss -> Barinade Boss Room",
+            SpoilerLogExitName: "Jabu Jabus Belly Before Boss -> Barinade Boss Room",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Barinade",
@@ -2494,6 +2495,7 @@ let OwExits = {
             LongDescription: "This is the exit from the Forest Temple."
         },
         "Boss": {
+            SpoilerLogExitName: "Forest Temple Before Boss -> Phantom Ganon Boss Room",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.BOSS_ENTRANCE,
             MapInfo: { x: 184, y: 107, floor: "B1" },
@@ -2524,6 +2526,7 @@ let OwExits = {
             LongDescription: "This is the exit from the Fire Temple."
         },
         "Boss": {
+            SpoilerLogExitName: "Fire Temple Before Boss -> Volvagia Boss Room",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Volvagia",
@@ -2557,7 +2560,7 @@ let OwExits = {
             LongDescription: "This is the exit from the Water Temple."
         },
         "Boss": {
-            SpoilerLogName: "Water Temple Before Boss -> Morpha Boss Room",
+            SpoilerLogExitName: "Water Temple Before Boss -> Morpha Boss Room",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Morpha",
@@ -2582,7 +2585,7 @@ let OwExits = {
             LongDescription: "This is the exit from the Shadow Temple."
         },
         "Boss": {
-            SpoilerLogName: "Shadow Temple Before Boss -> Bongo Bongo Boss Room",
+            SpoilerLogExitName: "Shadow Temple Before Boss -> Bongo Bongo Boss Room",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Bongo Bongo",
@@ -2639,6 +2642,7 @@ let OwExits = {
             OwShuffleExitName: "Archway"
         },
         "Boss": {
+            SpoilerLogExitName: "Spirit Temple Before Boss -> Twinrova Boss Room",
             ExitRegion: "bossRoom",
             ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Twinrova",
@@ -2708,6 +2712,7 @@ let OwExits = {
             LongDescription: "This is the exit from Ganon's Castle."
         },
         "Central Tower": {
+            SpoilerLogExitName: "Ganons Castle Main -> Ganons Castle Tower",
             ExitRegion: "center",
             ItemGroup: ItemGroups.BOSS_ENTRANCE,
             DefaultEntranceGroupName: "Ganon's Tower",
