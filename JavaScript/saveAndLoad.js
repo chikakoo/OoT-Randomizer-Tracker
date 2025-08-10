@@ -516,6 +516,8 @@ let SaveAndLoad = {
             });
         });
 
+        refreshAll();
+        ItemLocationDisplay.displayLocation("Kokiri Forest");
         alert("Spoiler log loaded successfully!");
     },
 };
