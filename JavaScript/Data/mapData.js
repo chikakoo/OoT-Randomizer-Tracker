@@ -5086,7 +5086,10 @@ let MapLocations = {
 
                 ItemLocations: {
                     // North Area
-                    "2 Items in Tree by Great Fairy": {
+                    "2 Items in Tree by Great Fairy": { // TODO Mapping: Check this
+                        SpoilerLogName: [
+                            { name: "Colossus Tree Wonderitem {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "2 Projectile Wonderitems",
@@ -5095,6 +5098,7 @@ let MapLocations = {
                         LongDescription: "Shoot the deku nuts in the two trees by the wall with the great fairy fountain to spawn these wonderitems."
                     },
                     "Skulltula on Cliff": {
+                        SpoilerLogName: "Colossus GS Hill",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 213, y: 91 },
@@ -5107,7 +5111,11 @@ let MapLocations = {
                     },
 
                     // Oasis
-                    "3 Items in Tree at Oasis": {
+                    "3 Items in Tree at Oasis": { // TODO Mapping: Check this
+                        SpoilerLogName: [
+                            { name: "Colossus Tree Wonderitem {#}", count: { min: 4 , max: 5 } },
+                            { name: "Colossus Tree Wonderitem 3 Child" }
+                        ],
                         DisplayGroup: { groupName: "Oasis", imageName: "Song of Storms" },
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
@@ -5117,6 +5125,7 @@ let MapLocations = {
                         LongDescription: "At the oasis, shoot the deku nuts in the three trees with a slingshot or bow to spawn these wonderitems. Note that only Child can spawn the one that normally has the skulltula in it."
                     },
                     "Skulltula on Tree by Oasis": {
+                        SpoilerLogName: "Colossus GS Tree",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Time: function() { return Time.NIGHT; },
                         MapInfo: { x: 180, y: 245 },
@@ -5127,6 +5136,7 @@ let MapLocations = {
 
                     // Spirit Temple Area
                     "Soft Soil": {
+                        SpoilerLogName: "Colossus GS Bean Patch",
                         DisplayGroup: { groupName: "Spirit Temple Area", imageName: "Spirit Medallion" },
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.NON_ITEM,
@@ -5138,6 +5148,7 @@ let MapLocations = {
                     "Requiem of Spirit": {
                         //TODO: with decoupling, we'll have to check that we can enter whatever leads here
                         // this will be the same as the check for the lost woods bridge!
+                        SpoilerLogName: "Sheik at Colossus",
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 63, y: 149 },
                         Age: Age.EITHER,
@@ -5157,6 +5168,7 @@ let MapLocations = {
                 Exits: {},
                 ItemLocations: {
                     "Heart Piece on Platform": {
+                        SpoilerLogName: "Colossus Freestanding PoH",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 87, y: 135 },
                         Age: Age.EITHER,
