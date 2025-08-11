@@ -347,11 +347,13 @@ InteriorGroups = {
 		tooltip: "This is the lab with the professor and the pool of water in the back.",
 		buttons: {
 			"Lakeside Heart Piece": {
+				SpoilerLogName: "LH Lab Dive",
 				icon: "Piece of Heart",
 				LongDescription: "Use the golden scale and dive to touch the bottom of the water area. The professor will give you this item.",
 				NeedsAny: [UpgradedItems.GOLDEN_SCALE, Tricks.labHPWithoutGoldenScale.canDo]
 			},
 			"Lakeside Skulltula": {
+				SpoilerLogName: "LH GS Lab Crate",
 				icon: "Skulltula",
 				Age: Age.ADULT,
 				ItemGroup: ItemGroups.SKULLTULA,
@@ -359,6 +361,7 @@ InteriorGroups = {
 				Needs: [Items.HOOKSHOT, Equipment.IRON_BOOTS]
 			},
 			"3 Red Rupees": {
+				SpoilerLogName: [{ name: "LH Lab Dive Red Rupee {#}", count: 3 }],
 				icon: "3 Red Rupees",
 				count: 3,
 				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -366,6 +369,7 @@ InteriorGroups = {
 				NeedsAny: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]
 			},
 			"Show Eyeball Frog to Scientist": {
+				SpoilerLogName: "LH Trade Eyeball Frog",
 				icon: "Eyeball Frog",
 				Age: Age.EITHER,
 				UseAdultAge: function() { return !Tricks.equipSwap.enabled; },
@@ -539,16 +543,19 @@ InteriorGroups = {
 		tooltip: "The fishing pond area.",
 		buttons: {
 			"Child Fishing": {
+				SpoilerLogName: "LH Child Fishing",
 				useGroupImage: true,
 				Age: Age.CHILD,
 				LongDescription: "The prize you can get as child.",
 			},
 			"Adult Fishing": {
+				SpoilerLogName: "LH Adult Fishing",
 				useGroupImage: true,
 				Age: Age.ADULT,
 				LongDescription: "The prize you can get as adult.",
 			},
 			"Hyrule Loach": {
+				SpoilerLogName: "LH Loach Fishing",
 				LongDescription: "The Hyrule Loach. First, find the sinking lure in the fishing pond. Recommended to choose the easier option in the randomizer so it always spawns. Otherwise, it is here 1/4 attempts. It's usually by the lilypads.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleHyruleLoach;

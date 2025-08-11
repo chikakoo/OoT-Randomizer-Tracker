@@ -126,7 +126,7 @@ let SpoilerLogInteriorEntranceMap = {
         items: ["OGC Great Fairy Reward"]
     },
 
-    // Kakariko Village
+    // Kakariko Village and Graveyard
     "Kak Carpenter Boss House": { entranceGroup: "Talon's House Kakariko" },
     "Kak House of Skulltula": { entranceGroup: "House of Skulltula" },
     "Kak Impas House": { entranceGroup: "Front of Impa's House" },
@@ -140,20 +140,36 @@ let SpoilerLogInteriorEntranceMap = {
     "Kak Potion Shop Front": { entranceGroup: "Potion Shop Front" },
     "Kak Potion Shop Back": { entranceGroup: "Potion Shop Back" },
     "Kak Odd Medicine Building": { entranceGroup: "Granny's Potion Shop" },
+    "Graveyard Dampes House": { items: [] },
 
-    // Generic interiors
+    // Death Mountain and Goron City
     "DMT Great Fairy Fountain": { 
         entranceGroup: "Fairy Fountain",
         items: ["DMT Great Fairy Reward"]
+    },
+    "GC Shop": {
+        entranceGroup: "Shop",
+        items: [{ name: "GC Shop Item {#}", count: 8 }]
     },
     "DMC Great Fairy Fountain": { 
         entranceGroup: "Fairy Fountain",
         items: ["DMC Great Fairy Reward"]
     },
+
+    // Zora and Lake
+    "ZD Shop": {
+        entranceGroup: "Shop",
+        items: [{ name: "ZD Shop Item {#}", count: 8 }]
+    },
     "ZF Great Fairy Fountain": { 
         entranceGroup: "Fairy Fountain",
         items: ["ZF Great Fairy Reward"]
     },
+    "LH Lab": { entranceGroup: "Lakeside Lab" },
+    "LH Fishing Hole": { entranceGroup: "Fishing Pond" },
+
+    // Generic interiors
+    
     "Colossus Great Fairy Fountain": { 
         entranceGroup: "Fairy Fountain",
         items: ["Colossus Great Fairy Reward"]
