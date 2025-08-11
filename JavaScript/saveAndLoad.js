@@ -488,7 +488,7 @@ let SaveAndLoad = {
         this._populateSpoilerLogExitMap();
 
         // Fill all entrance data first first
-        // TODO: interior/grotto/ow + make more generic
+        // TODO: grotto/ow + make more generic
         _this = this;
         Object.keys(spoilerLogData.entrances).forEach(entrance => {
             if (SpoilerLogInteriorMap[entrance]) {
