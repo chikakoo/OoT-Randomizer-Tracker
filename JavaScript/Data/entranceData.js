@@ -584,12 +584,14 @@ InteriorGroups = {
 		tooltip: "Talon's House in Lon Lon Ranch",
 		buttons: {
 			"Super Cucco Minigame": {
+				SpoilerLogName: "LLR Talons Chickens",
 				time: function() { return Time.DAY; },
 				Age: Age.CHILD,
 				LongDescription: "Only available during the day. This is the prize for completing the minigame.",
 				Needs: [ItemLocationSets.WAKE_UP_TALON]
 			},
 			"3 Pots": {
+				SpoilerLogName: [{ name: "LLR Talons House Pot {#}", count: 3 }],
 				count: 3,
 				ItemGroup: ItemGroups.POT,
 				LongDescription: "This pot is through the door upstairs and to the left."

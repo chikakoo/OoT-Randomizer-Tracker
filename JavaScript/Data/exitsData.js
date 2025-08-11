@@ -34,6 +34,7 @@ let OwExits = {
             LongDescription: "This is the house with the ladder."
         },
         "Saria's House": {
+            //SpoilerLogExitName: "Kokiri Forest -> KF Sarias House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Saria's House",
@@ -472,6 +473,7 @@ let OwExits = {
             LongDescription: "This is the entrance back to Hyrule Field."
         },
         "Talon's House": {
+            //SpoilerLogExitName: "Lon Lon Ranch -> LLR Talons House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Super Cucco Minigame",
@@ -536,6 +538,7 @@ let OwExits = {
 
         // Interiors
         "Guard House": {
+            SpoilerLogExitName: "Market Entrance -> Market Guard House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Market Guard House",
@@ -590,6 +593,7 @@ let OwExits = {
             LongDescription: "This is the building just to the left of the Hyrule Castle entrance."
         },
         "Happy Mask Shop": {
+            SpoilerLogExitName: "Market -> Market Mask Shop",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Happy Mask Shop",
@@ -601,6 +605,7 @@ let OwExits = {
             LongDescription: "This is the building just to the right of the Hyrule Castle entrance."
         },
         "Potion Shop": {
+            SpoilerLogExitName: "Market -> Market Potion Shop",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Shop",
@@ -1039,6 +1044,7 @@ let OwExits = {
             LongDescription: "This is the building to the right if you are facing the Death Mountain entrance.",
         },
         "Granny's Potion Shop": {
+            SpoilerLogExitName: "Kak Backyard -> Kak Odd Medicine Building",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -1765,6 +1771,7 @@ let OwExits = {
             ]
         },
         "Bottom Left Door": {
+            SpoilerLogExitName: "Gerudo Fortress -> Hideout 1 Torch Jail",
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "jail1",

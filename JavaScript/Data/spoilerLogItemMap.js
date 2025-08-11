@@ -11,6 +11,7 @@
  * Populated when the spoiler log is being parsed
  */
 let SpoilerLogItemMap = {};
+let SpoilerLogInteriorMap = {};
 let SpoilerLogBossMap = {};
 
 /**
@@ -34,13 +35,65 @@ let SpoilerLogDungeonNameMap = {
     "Ganons Castle": "Ganon's Castle"
 };
 
+// let SpoilerLogGenericInteriorEntranceMap = {
+//     "HC Great Fairy Fountain": [],
+//     "DMC Great Fairy Fountain": ["DMC Great Fairy Reward"],
+//     "Colossus Great Fairy Fountain": ["Colossus Great Fairy Reward"]
+// };
+
 /**
  * The spoiler log lists these in a form of:
  * region: <what the boss room is>
  * from: <the normal way to get there>
  * 
  * We will key this b "region|from" so we can find it easily
+ * 
+ * Ones that aren't like that will be mapped as their string version
  */
+
+let SpoilerLogInteriorEntranceMap = {
+
+    //"Kak Carpenter Boss House": "Talon's House Kakariko",
+
+    "LLR Talons House": { entranceGroup: "Super Cucco Minigame" },
+
+    // Generic interiors
+    "HC Great Fairy Fountain": { 
+        entranceGroup: "Fairy Fountain",
+        items: ["HC Great Fairy Reward"]
+    },
+    "DMT Great Fairy Fountain": { 
+        entranceGroup: "Fairy Fountain",
+        items: ["DMT Great Fairy Reward"]
+    },
+    "DMC Great Fairy Fountain": { 
+        entranceGroup: "Fairy Fountain",
+        items: ["DMC Great Fairy Reward"]
+    },
+    "ZF Great Fairy Fountain": { 
+        entranceGroup: "Fairy Fountain",
+        items: ["ZF Great Fairy Reward"]
+    },
+    "Colossus Great Fairy Fountain": { 
+        entranceGroup: "Fairy Fountain",
+        items: ["Colossus Great Fairy Reward"]
+    },
+    "OGC Great Fairy Fountain": { 
+        entranceGroup: "Fairy Fountain",
+        items: ["OGC Great Fairy Reward"]
+    },
+
+    // Unselectable interiors
+    "KF Midos House": { 
+        items: [
+            "KF Midos Top Left Chest",
+            "KF Midos Top Right Chest",
+            "KF Midos Bottom Left Chest",
+            "KF Midos Bottom Right Chest"
+        ]
+     },
+};
+
 let SpoilerLogBossEntranceMap = {
     "Queen Gohma Boss Room|Deku Tree Before Boss": "Gohma",
     "King Dodongo Boss Room|Dodongos Cavern Before Boss": "King Dodongo",

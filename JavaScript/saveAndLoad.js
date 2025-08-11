@@ -482,23 +482,42 @@ let SaveAndLoad = {
      * @param {any} spoilerLogData: The loaded spoiler log data
      */
     _loadSpoilerLog: function(spoilerLogData) {
-        // TODO: select the correct MQ/standard dungeon here so the correct map is in MapLocations
+        SpoilerLogItemMap = {};
 
         this._setDungeonTypes(spoilerLogData);
-        this._populateSpoilerLogBossMap();
+        this._populateSpoilerLogExitMap();
 
         // Fill all entrance data first first
-        // TODO: interior/grotto/ow
+        // TODO: interior/grotto/ow + make more generic
         Object.keys(spoilerLogData.entrances).forEach(entrance => {
-            if (!SpoilerLogBossMap[entrance]) {
-                // TODO when done: if this DOES NOT have an entry, log an error
+            if (SpoilerLogInteriorMap[entrance]) {
+                let exitToModify = SpoilerLogInteriorMap[entrance];
+                let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
+
+                // No region/from yet, but change if needed
+                let exitLeadsTo = SpoilerLogInteriorEntranceMap[spoilerExitLeadsTo]; 
+                if (exitLeadsTo.entranceGroup) {
+                    EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo.entranceGroup);
+                }
+                
+                // Non-unique locations (fairy fountains, generic grottos, etc)
+                let knownSpoilerEntries = exitLeadsTo.items || [];
+                knownSpoilerEntries.forEach(spoilerEntry => {
+                    this._addItemLocationToSpoilerLogItemMap(spoilerEntry, exitToModify);
+                });
+
                 return;
             }
 
-            let exitToModify = SpoilerLogBossMap[entrance];
-            let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
-            let exitLeadsTo = SpoilerLogBossEntranceMap[`${spoilerExitLeadsTo.region}|${spoilerExitLeadsTo.from}`];
-            EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo);
+            if (SpoilerLogBossMap[entrance]) {
+                let exitToModify = SpoilerLogBossMap[entrance];
+                let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
+                let exitLeadsTo = SpoilerLogBossEntranceMap[`${spoilerExitLeadsTo.region}|${spoilerExitLeadsTo.from}`];
+                EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo);
+                return;
+            }
+
+            // TODO when done: if this DOES NOT have an entry, log an error
         });
 
         this._populateSpoilerLogItemMap();
@@ -565,21 +584,25 @@ let SaveAndLoad = {
         });
     },
 
-    _populateSpoilerLogBossMap: function() {
+    _populateSpoilerLogExitMap: function() {
+        SpoilerLogInteriorMap = {};
         SpoilerLogBossMap = {};
 
         let _this = this;
         Object.keys(OwExits).forEach(function(mapName) {
             Object.keys(OwExits[mapName]).forEach(function(exitName) {
                 let exit = OwExits[mapName][exitName];
-                _this._addToSpoilerLogExitMap(exit);
+
+                if (exit.ItemGroup === ItemGroups.INTERIOR) {
+                    _this._addToSpoilerLogExitMap(exit, SpoilerLogInteriorMap);
+                } else if (exit.ItemGroup === ItemGroups.BOSS_ENTRANCE) {
+                    _this._addToSpoilerLogExitMap(exit, SpoilerLogBossMap);
+                }
             });
 	    });
     },
 
     _populateSpoilerLogItemMap: function() {
-        SpoilerLogItemMap = {};
-        
         let _this = this;
         Object.values(MapLocations).forEach(function(map) {
             Object.values(map.Regions).forEach(function(region) {
@@ -660,9 +683,9 @@ let SaveAndLoad = {
         }
     },
 
-    _addToSpoilerLogExitMap: function(exit) {
+    _addToSpoilerLogExitMap: function(exit, mapToFill) {
         if (exit.SpoilerLogExitName) {
-            SpoilerLogBossMap[exit.SpoilerLogExitName] = exit;
+            mapToFill[exit.SpoilerLogExitName] = exit;
         }
     }
 };
