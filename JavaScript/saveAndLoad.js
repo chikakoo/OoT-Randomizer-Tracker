@@ -600,10 +600,12 @@ let SaveAndLoad = {
                 let exitLeadsTo = SpoilerLogBossEntranceMap[_this._getSpoilerLogLocationKey(spoilerExitLeadsTo)];
                 EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo);
                 DropdownUI.onInteriorOrGrottoDropdownChange(exitToModify, exitLeadsTo);
-                return;
             }
 
-            // TODO when done: if this DOES NOT have an entry, log an error
+            else {
+                // TODO: enable when all entrances are done to catch new ones on an update
+                //console.log(`WARNING: No entrance mapping was found for entrance ${entrance}`)
+            }
         });
     },
 
