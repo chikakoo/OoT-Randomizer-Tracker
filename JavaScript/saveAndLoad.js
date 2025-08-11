@@ -496,15 +496,18 @@ let SaveAndLoad = {
 
                 // No region/from yet, but change if needed
                 let exitLeadsTo = SpoilerLogInteriorEntranceMap[spoilerExitLeadsTo]; 
+
+                if (!exitLeadsTo) { 
+                    // TODO: log an error here saying there's an 
+                    // unmapped exit in the interior entrance map
+                    return; 
+                }
+
                 if (exitLeadsTo.entranceGroup) {
                     EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo.entranceGroup);
                 }
-                
-                // Non-unique locations (fairy fountains, generic grottos, etc)
-                let knownSpoilerEntries = exitLeadsTo.items || [];
-                knownSpoilerEntries.forEach(spoilerEntry => {
-                    this._addItemLocationToSpoilerLogItemMap(spoilerEntry, exitToModify);
-                });
+
+                this._addItemLocationToSpoilerLogItemMap(exitLeadsTo.items || [], exitToModify);
 
                 return;
             }
@@ -644,48 +647,86 @@ let SaveAndLoad = {
             return;
         }
 
-        if (typeof spoilerLogNameObject === "string") {
-            this._addItemLocationToSpoilerLogItemMap(spoilerLogNameObject, itemLocation, order);
-        } else {
-            spoilerLogNameObject.forEach(data => {
-                let name = data.name;
-                if (data.count) {
-                    let min = 1;
-                    let max = data.count;
-                    if (typeof data.count === 'object') {
-                        min = data.count.min;
-                        max = data.count.max;
-
-                        if (!min || !max) {
-                            console.log(`ERROR: min or max not found on count on item location ${itemLocation.name}`);
-                            return;
-                        }
-
-                        if (min > max) {
-                            let temp = min;
-                            min = max;
-                            max = temp;
-                        }
-                    }
-
-                    for (let i = min; i <= max; i++) {
-                        let spoilerLogEntry = name.replace("{#}", i);
-                        this._addItemLocationToSpoilerLogItemMap(spoilerLogEntry, itemLocation, order);
-                    }
-                } else {
-                    this._addItemLocationToSpoilerLogItemMap(name, itemLocation, order);
-                }
-            });
-        }
+        this._addItemLocationToSpoilerLogItemMap(spoilerLogNameObject, itemLocation, order);
     },
 
-     _addItemLocationToSpoilerLogItemMap: function(name, itemLocation, order) {
-        SpoilerLogItemMap[name] ??= { itemLocations: [] };
-        SpoilerLogItemMap[name].itemLocations.push(itemLocation);
+    /**
+     * Adds the item location to the spoiler log entry map
+     * Includes parsing every spoiler log entry passed in
+     * @param {string | object} spoilerLogEntryObject - The spoiler log key or object containing it
+     * @param {object} itemLocation - The item location associated with the spoiler log entry
+     * @param {number} order - For sorting
+     */
+    _addItemLocationToSpoilerLogItemMap: function(spoilerLogEntryObject, itemLocation, order) {
+        let spoilerLogEntries = this._getSpoilerLogEntries(spoilerLogEntryObject);
+        spoilerLogEntries.forEach(spoilerLogEntryName => {
+            SpoilerLogItemMap[spoilerLogEntryName] ??= { itemLocations: [] };
+            SpoilerLogItemMap[spoilerLogEntryName].itemLocations.push(itemLocation);
 
-        if (order && order > 0) {
-            SpoilerLogItemMap[name].order = order;
-        }
+            if (order && order > 0) {
+                SpoilerLogItemMap[spoilerLogEntryName].order = order;
+            }
+        });
+    },
+
+    /**
+     * Spoiler log entry objects can either be:
+     * - A string
+     * - An array of objects with either a string for the name, or...
+     *   - name: The name of the entry, using {#} for tokens
+     *   - count: Either a number or an object representing the range of numbers to
+     *      create multiple spoiler log objects for
+     *     - If it's an object, it will contain min and max for the range
+     * 
+     * For example, "Test {#}", with a count of 3, creates three entries:
+     * - Test 1; Test 2; Test3
+     * @param {string | Array<object>} spoilerLogEntryObject 
+     * @returns An array of strings containing keys to the spoiler log entries
+     */
+    _getSpoilerLogEntries: function(spoilerLogEntryObject) {
+        // Object passed as a string - return it in an array
+        if (typeof spoilerLogEntryObject === "string") {
+            return [spoilerLogEntryObject];
+        } 
+
+        let output = [];
+        spoilerLogEntryObject.forEach(data => {
+            let name = typeof data === "string"
+                ? data
+                : data.name;
+            if (data.count) {
+                let min = 1;
+                let max = data.count;
+
+                // Count has a min/max, so we need to parse it
+                if (typeof data.count === 'object') {
+                    min = data.count.min;
+                    max = data.count.max;
+
+                    if (!min || !max) {
+                        console.log(`ERROR: min or max not found on: ${name}`);
+                        return;
+                    }
+
+                    if (min > max) {
+                        let temp = min;
+                        min = max;
+                        max = temp;
+                    }
+                }
+
+                for (let i = min; i <= max; i++) {
+                    let spoilerLogEntry = name.replace("{#}", i);
+                    output.push(spoilerLogEntry);
+                }
+
+            // No count, just push the name
+            } else {
+                output.push(name);
+            }
+        });
+
+        return output;
     },
 
     _addToSpoilerLogExitMap: function(exit, mapToFill) {

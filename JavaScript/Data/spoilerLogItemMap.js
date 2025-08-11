@@ -52,9 +52,23 @@ let SpoilerLogDungeonNameMap = {
  */
 
 let SpoilerLogInteriorEntranceMap = {
+    "KF Midos House": { 
+        items: [
+            "KF Midos Top Left Chest",
+            "KF Midos Top Right Chest",
+            "KF Midos Bottom Left Chest",
+            "KF Midos Bottom Right Chest"
+        ]
+     },
     "KF Links House": { entranceGroup: "Link's House" },
+    "KF Sarias House": {
+        items: [{ 
+            name: "KF Sarias House Recovery Heart {#}", 
+            count: 4 
+        }]
+    },
 
-    "Kak Carpenter Boss House": { entranceGroup:"Talon's House Kakariko" },
+    "Kak Carpenter Boss House": { entranceGroup: "Talon's House Kakariko" },
 
     "LLR Talons House": { entranceGroup: "Super Cucco Minigame" },
 
@@ -82,17 +96,7 @@ let SpoilerLogInteriorEntranceMap = {
     "OGC Great Fairy Fountain": { 
         entranceGroup: "Fairy Fountain",
         items: ["OGC Great Fairy Reward"]
-    },
-
-    // Unselectable interiors
-    "KF Midos House": { 
-        items: [
-            "KF Midos Top Left Chest",
-            "KF Midos Top Right Chest",
-            "KF Midos Bottom Left Chest",
-            "KF Midos Bottom Right Chest"
-        ]
-     },
+    }
 };
 
 let SpoilerLogBossEntranceMap = {
