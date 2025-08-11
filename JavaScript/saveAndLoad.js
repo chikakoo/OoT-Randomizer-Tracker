@@ -505,6 +505,7 @@ let SaveAndLoad = {
 
                 if (exitLeadsTo.entranceGroup) {
                     EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo.entranceGroup);
+                    DropdownUI.onInteriorOrGrottoDropdownChange(exitToModify, exitLeadsTo.entranceGroup);
                 }
 
                 this._addItemLocationToSpoilerLogItemMap(exitLeadsTo.items || [], exitToModify);
@@ -517,6 +518,7 @@ let SaveAndLoad = {
                 let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
                 let exitLeadsTo = SpoilerLogBossEntranceMap[`${spoilerExitLeadsTo.region}|${spoilerExitLeadsTo.from}`];
                 EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo);
+                DropdownUI.onInteriorOrGrottoDropdownChange(exitToModify, exitLeadsTo);
                 return;
             }
 

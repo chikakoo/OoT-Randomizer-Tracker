@@ -91,16 +91,19 @@ InteriorGroups = {
 		buttons: {
 			// TODO: DOT skip then Adult doesn't work properly, but does it matter that much...?
 			"Free Raru Item": {
+				SpoilerLogName: "ToT Reward from Rauru",
 				icon: "Light Medallion",
 				LongDescription: "This is the light medallion replacement if dungeon rewards are shuffled. Enter the Master Sword pedestal room to get it.",
 				Needs: [(age) => Data.canEnterDoorOfTime(age)]
 			},
 			"Prelude of Light": {
+				SpoilerLogName: "Sheik at Temple",
 				Age: Age.ADULT,
 				LongDescription: "When you have the Forest Medallion, enter the room with the Master Sword pedestal to receive the item.",
 				Needs: [Medallions.FOREST_MEDALLION, (age) => Data.canEnterDoorOfTime(age)]
 			},
 			"Light Arrows": {
+				SpoilerLogName: "ToT Light Arrows Cutscene",
 				icon: "Light Arrow",
 				Age: Age.ADULT,
 				LongDescription: "When you have the Shadow and Spirit Medallions, simply enter the Temple of Time as adult to receive the item.",
@@ -163,6 +166,7 @@ InteriorGroups = {
 		tooltip: "The potion shop with the red carpet and the granny holding a cat.",
 		buttons: {
 			"Show Odd Mushroom to Granny": {
+				SpoilerLogName: "Kak Granny Trade Odd Mushroom",
 				icon: "Odd Mushroom",
 				LongDescription: "Show Granny the Odd Mushroom to recieve an item.",
 				Age: Age.EITHER,
@@ -170,6 +174,7 @@ InteriorGroups = {
 				Needs: [AdultTradeItems.ODD_MUSHROOM]
 			},
 			"Buy Blue Potion Item": {
+				SpoilerLogName: "Kak Granny Buy Blue Potion",
 				icon: "Blue Potion",
 				LongDescription: "After showing the Odd Mushroom to Granny, you can buy this item for 100 rupees. After that, she will sell blue potions.",
 				Age: Age.EITHER,
@@ -276,6 +281,7 @@ InteriorGroups = {
 		},
 		buttons: {
 			"10 Reward": {
+				SpoilerLogName: "Kak 10 Gold Skulltula Reward",
 				icon: "Skulltula",
 				iconText: "10",
 				LongDescription: "Talk to the guy on the right hand side.",
@@ -285,6 +291,7 @@ InteriorGroups = {
 				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 10]
 			},
 			"20 Reward": {
+				SpoilerLogName: "Kak 20 Gold Skulltula Reward",
 				icon: "Skulltula",
 				iconText: "20",
 				LongDescription: "Talk to the guy on the left hand side.",
@@ -294,6 +301,7 @@ InteriorGroups = {
 				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 20]
 			},
 			"30 Reward": {
+				SpoilerLogName: "Kak 30 Gold Skulltula Reward",
 				icon: "Skulltula",
 				iconText: "30",
 				LongDescription: "Talk to the middle guy.",
@@ -303,6 +311,7 @@ InteriorGroups = {
 				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 30]
 			},
 			"40 Reward": {
+				SpoilerLogName: "Kak 40 Gold Skulltula Reward",
 				icon: "Skulltula",
 				iconText: "40",
 				LongDescription: "Talk to the guy second from the left",
@@ -312,6 +321,7 @@ InteriorGroups = {
 				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 40]
 			},
 			"50 Reward": {
+				SpoilerLogName: "Kak 50 Gold Skulltula Reward",
 				icon: "Skulltula",
 				iconText: "50",
 				LongDescription: "Talk to the guy second from the right",
@@ -321,6 +331,8 @@ InteriorGroups = {
 				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 50]
 			},
 			"100 Reward": {
+				// TODO: check this name when updating the rando
+				//SpoilerLogName: "Kak 100 Gold Skulltula Reward",
 				icon: "Skulltula",
 				iconText: "100",
 				LongDescription: "Talk to center guy",
@@ -434,10 +446,12 @@ InteriorGroups = {
 		tooltip: "Inside the cage with the cow and the freestanding item.",
 		buttons: {
 			"Freestanding Item": {
+				SpoilerLogName: "Kak Impas House Freestanding PoH",
 				icon: "Piece of Heart",
 				LongDescription: "Simply grab the item in the room."
 			},
 			"Cow": {
+				SpoilerLogName: "Kak Impas House Cow",
 				ItemGroup: ItemGroups.COW,
 				LongDescription: "Play Epona's Song next to the cow.",
 				Needs: [Items.OCARINA]
@@ -449,11 +463,13 @@ InteriorGroups = {
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleWonderitems; },
 		buttons: {
 			"Red Rupee on Top": {
+				SpoilerLogName: "Kak Impas House Wonderitem",
 				ItemGroup: ItemGroups.WONDERITEM,
 				icon: "Red Rupee Wonderitem",
 				LongDescription: "Climb up the stairs and walk around on the top of the cow pen to get this wonderitem."
 			},
 			"Cow": {
+				SpoilerLogName: "Kak Impas House Cow",
 				ItemGroup: ItemGroups.COW,
 				LongDescription: "Play Epona's Song next to the cow. This is shared with the Back of Impa's House check.",
 				Needs: [Items.OCARINA]
@@ -554,6 +570,7 @@ InteriorGroups = {
 		tooltip: "This is the archery minigame. The shopkeeper will only be here as adult.",
 		buttons: {
 			"Adult Archery": {
+				SpoilerLogName: "Kak Shooting Gallery Reward",
 				Age: Age.ADULT,
 				LongDescription: "This is the prize for completing the minigame as adult.",
 				Needs: [Items.FAIRY_BOW]

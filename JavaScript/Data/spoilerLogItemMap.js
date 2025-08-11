@@ -115,16 +115,33 @@ let SpoilerLogInteriorEntranceMap = {
         items: [{ name: "Market Man in Green House Pot {#}", count: 3}]
     },
 
-    // Kakariko Village
-    "Kak Carpenter Boss House": { entranceGroup: "Talon's House Kakariko" },
-
-
-
-    // Generic interiors
+    // Temple of Time and Castle
+    "Temple of Time": { entranceGroup: "Temple of Time" },
     "HC Great Fairy Fountain": { 
         entranceGroup: "Fairy Fountain",
         items: ["HC Great Fairy Reward"]
     },
+    "OGC Great Fairy Fountain": { 
+        entranceGroup: "Fairy Fountain",
+        items: ["OGC Great Fairy Reward"]
+    },
+
+    // Kakariko Village
+    "Kak Carpenter Boss House": { entranceGroup: "Talon's House Kakariko" },
+    "Kak House of Skulltula": { entranceGroup: "House of Skulltula" },
+    "Kak Impas House": { entranceGroup: "Front of Impa's House" },
+    "Kak Impas House Back": { entranceGroup: "Back of Impa's House" },
+    "Kak Shooting Gallery": { entranceGroup: "Adult Archery" },
+    "Kak Windmill": { entranceGroup: "Windmill" },
+    "Kak Bazaar": {
+        entranceGroup: "Shop",
+        items: [{ name: "Kak Bazaar Item {#}", count: 8 }]
+    },
+    "Kak Potion Shop Front": { entranceGroup: "Potion Shop Front" },
+    "Kak Potion Shop Back": { entranceGroup: "Potion Shop Back" },
+    "Kak Odd Medicine Building": { entranceGroup: "Granny's Potion Shop" },
+
+    // Generic interiors
     "DMT Great Fairy Fountain": { 
         entranceGroup: "Fairy Fountain",
         items: ["DMT Great Fairy Reward"]
@@ -140,10 +157,6 @@ let SpoilerLogInteriorEntranceMap = {
     "Colossus Great Fairy Fountain": { 
         entranceGroup: "Fairy Fountain",
         items: ["Colossus Great Fairy Reward"]
-    },
-    "OGC Great Fairy Fountain": { 
-        entranceGroup: "Fairy Fountain",
-        items: ["OGC Great Fairy Reward"]
     }
 };
 
