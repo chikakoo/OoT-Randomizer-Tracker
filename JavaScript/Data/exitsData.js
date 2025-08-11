@@ -17,6 +17,7 @@ let OwExits = {
             ]
         },
         "Mido's House": {
+            SpoilerLogExitName: "Kokiri Forest -> KF Midos House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Mido's House",
@@ -25,6 +26,7 @@ let OwExits = {
             LongDescription: "This is the house closest to the entrance to the Lost Woods."
         },
         "Link's House": {
+            SpoilerLogExitName: "Kokiri Forest -> KF Links House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             IsComplexEntrance: true,
@@ -34,7 +36,7 @@ let OwExits = {
             LongDescription: "This is the house with the ladder."
         },
         "Saria's House": {
-            //SpoilerLogExitName: "Kokiri Forest -> KF Sarias House",
+            SpoilerLogExitName: "Kokiri Forest -> KF Sarias House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Saria's House",
@@ -43,6 +45,7 @@ let OwExits = {
             LongDescription: "This is the house to your right if you face away from Link's house."
         },
         "House of Twins": {
+            SpoilerLogExitName: "Kokiri Forest -> KF House of Twins",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "2 Pot Interior",
@@ -51,6 +54,7 @@ let OwExits = {
             LongDescription: "This is the house across from the shop."
         },
         "Shop": {
+            SpoilerLogExitName: "Kokiri Forest -> KF Kokiri Shop",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Kokiri Shop",
@@ -82,6 +86,7 @@ let OwExits = {
 
         // Training Area & Maze
         "Know-It-All House": {
+            SpoilerLogExitName: "Kokiri Forest -> KF Know It All House",
             DisplayGroup: { groupName: "Training Area & Maze", imageName: "Kokiri Sword" },
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
@@ -473,7 +478,7 @@ let OwExits = {
             LongDescription: "This is the entrance back to Hyrule Field."
         },
         "Talon's House": {
-            //SpoilerLogExitName: "Lon Lon Ranch -> LLR Talons House",
+            SpoilerLogExitName: "Lon Lon Ranch -> LLR Talons House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Super Cucco Minigame",
@@ -487,6 +492,7 @@ let OwExits = {
             LongDescription: "This is the first door on your left when you first enter the ranch."
         },
         "Stable": {
+            SpoilerLogExitName: "Lon Lon Ranch -> LLR Stables",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Stable",
@@ -506,6 +512,7 @@ let OwExits = {
             LongDescription: "There's an open grotto as a child at the far southwest corner of the ranch."
         },
         "Cow Shed": {
+            SpoilerLogExitName: "Lon Lon Ranch -> LLR Tower",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Cow Shed",
@@ -582,6 +589,7 @@ let OwExits = {
 
         // Interiors
         "Archery Minigame": {
+            SpoilerLogExitName: "Market -> Market Shooting Gallery",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Child Archery",
@@ -617,6 +625,7 @@ let OwExits = {
             LongDescription: "Starting at the market entrance, this is the second building you can enter going counter-clockwise."
         },
         "Bazaar": {
+            SpoilerLogExitName: "Market -> Market Bazaar",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Shop",
@@ -628,6 +637,7 @@ let OwExits = {
             LongDescription: "Starting at the market entrance, this is the first building you can enter going counter-clockwise."
         },
         "Treasure Chest Minigame": {
+            SpoilerLogExitName: "Market -> Market Treasure Chest Game",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Treasure Chest Minigame",
@@ -639,6 +649,7 @@ let OwExits = {
             LongDescription: "This is the building to the right of the market entrance exit - it's only open at night.",
         },
         "Bombchu Bowling": {
+            SpoilerLogExitName: "Market -> Market Bombchu Bowling",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Bombchu Bowling",
@@ -649,6 +660,7 @@ let OwExits = {
             LongDescription: "This building is the one between the two market alley entrances."
         },
         "Bombchu Shop": {
+            SpoilerLogExitName: "Market Back Alley -> Market Bombchu Shop",
             ExitRegion: "alley",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Shop",
@@ -659,6 +671,7 @@ let OwExits = {
             LongDescription: "This door only opens at night. Starting at the market entrance, go straight right into the alley. Take the first door on the left wall to get to the door."
         },
         "Door in Right Market Alley": {
+            SpoilerLogExitName: "Market Back Alley -> Market Man in Green House",
             ExitRegion: "alley",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "3 Pot Interior",
@@ -683,6 +696,7 @@ let OwExits = {
 
         // Interiors
         "Temple of Time": {
+            SpoilerLogExitName: "ToT Entrance -> Temple of Time",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             IsComplexEntrance: true,
@@ -1233,6 +1247,7 @@ let OwExits = {
             LongDescription: "This is the owl at the top of the mountain by the crater entrance."
         },
         "Great Fairy Fountain": {
+            SpoilerLogExitName: "Death Mountain Summit -> DMT Great Fairy Fountain",
             ExitRegion: "upper",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -1306,6 +1321,7 @@ let OwExits = {
             Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Great Fairy Fountain": {
+            SpoilerLogExitName: "DMC Lower Nearby -> DMC Great Fairy Fountain",
             ExitRegion: "middle",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -1503,6 +1519,7 @@ let OwExits = {
 
         // Interiors
         "Shop": {
+            SpoilerLogExitName: "Zoras Domain -> ZD Shop",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -1549,6 +1566,7 @@ let OwExits = {
             ChildNeedsAny: [Items.FISH, Tricks.jabuFishless.canDo]
         },
         "Great Fairy Fountain": {
+            SpoilerLogExitName: "Zoras Fountain -> ZF Great Fairy Fountain",
             ExitRegion: "main",
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Fairy Fountain",
@@ -1585,6 +1603,7 @@ let OwExits = {
             LongDescription: "This is the entrance to Hyrule Field."
         },
         "Lakeside Lab": {
+            SpoilerLogExitName: "Lake Hylia -> LH Lab",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Lakeside Lab",
@@ -1593,6 +1612,7 @@ let OwExits = {
             LongDescription: "This is the building near the bridge by the lake."
         },
         "Fishing Pond": {
+            SpoilerLogExitName: "LH Fishing Island -> LH Fishing Hole",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -1741,6 +1761,7 @@ let OwExits = {
         }
     },
 
+    // TODO Mapping: Check the GF exits
     "Gerudo Fortress": {
         // Ground Level
         "Gerudo Valley": {
