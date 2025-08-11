@@ -93,8 +93,27 @@ let SpoilerLogInteriorEntranceMap = {
     "LLR Stables": { entranceGroup: "Stable" },
     "LLR Tower": { entranceGroup: "Cow Shed" },
 
-    // Market Entrance
+    // Market Entrance and Market
     "Market Guard House": { entranceGroup: "Market Guard House"},
+    "Market Shooting Gallery": { entranceGroup: "Child Archery" },
+    "Market Mask Shop": { entranceGroup: "Happy Mask Shop" },
+    "Market Potion Shop": { 
+        entranceGroup: "Shop",
+        items: [{ name: "Market Potion Shop Item {#}", count: 8 }]
+    },
+    "Market Bazaar": { 
+        entranceGroup: "Shop",
+        items: [{ name: "Market Bazaar Item {#}", count: 8 }]
+    },
+    "Market Treasure Chest Game": { entranceGroup: "Treasure Chest Minigame" },
+    "Market Bombchu Bowling": { entranceGroup: "Bombchu Bowling" },
+    "Market Bombchu Shop": {
+        entranceGroup: "Shop",
+        items: [{ name: "Market Bombchu Shop Item {#}", count: 8 }]
+    },
+    "Market Man in Green House": {
+        items: [{ name: "Market Man in Green House Pot {#}", count: 3}]
+    },
 
     // Kakariko Village
     "Kak Carpenter Boss House": { entranceGroup: "Talon's House Kakariko" },

@@ -202,11 +202,13 @@ InteriorGroups = {
 		tooltip: "The Happy Mask Shop",
 		buttons: {
 			"Borrow Keaton Mask": {
+				SpoilerLogName: "Market Mask Shop Item 6",
 				icon: "Keaton Mask",
 				LongDescription: "After showing the Kakariko Village guard Zelda's Letter (or having the letter when the gate is opened), you can borrow this mask.",
 				Needs: [(age) => InteriorGroups["Happy Mask Shop"]._isMaskShopOpen(age)]
 			},
 			"Borrow Skull Mask": {
+				SpoilerLogName: "Market Mask Shop Item 5",
 				icon: "Skull Mask",
 				LongDescription: "After selling the Keaton Mask to the Kakariko Guard, you can borrow this mask.",
 				Needs: [
@@ -215,6 +217,7 @@ InteriorGroups = {
 				]
 			},
 			"Borrow Spooky Mask": {
+				SpoilerLogName: "Market Mask Shop Item 8",
 				icon: "Spooky Mask",
 				LongDescription: "After selling the Skull Mask to the Skull Kid in Lost Woods, you can borrow this mask.",
 				Needs: [
@@ -223,6 +226,7 @@ InteriorGroups = {
 				]
 			},
 			"Borrow Bunny Hood": {
+				SpoilerLogName: "Market Mask Shop Item 7",
 				icon: "Bunny Hood",
 				LongDescription: "After selling the Spooky Mask to the graveyard kid, you can borrow this mask.",
 				Needs: [
@@ -231,21 +235,25 @@ InteriorGroups = {
 				]
 			},
 			"Borrow Mask of Truth": {
+				SpoilerLogName: "Market Mask Shop Item 3",
 				icon: "Mask of Truth",
 				LongDescription: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
 				Needs: [(age) => InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth(age)]
 			},
 			"Borrow Goron Mask": {
+				SpoilerLogName: "Market Mask Shop Item 4",
 				icon: "Goron Mask",
 				LongDescription: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
 				Needs: [(age) => InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth(age)]
 			},
 			"Borrow Zora Mask": {
+				SpoilerLogName: "Market Mask Shop Item 2",
 				icon: "Zora Mask",
 				LongDescription: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
 				Needs: [(age) => InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth(age)]
 			},
 			"Borrow Gerudo Mask": {
+				SpoilerLogName: "Market Mask Shop Item 1",
 				icon: "Gerudo Mask",
 				LongDescription: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
 				Needs: [(age) => InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth(age)]
@@ -500,6 +508,10 @@ InteriorGroups = {
 		icon: "Bombchu",
 		buttons: {
 			"Prizes": {
+				SpoilerLogName: [
+					"Market Bombchu Bowling First Prize",
+					"Market Bombchu Bowling Second Prize"
+				],
 				icon: "Bombchu",
 				count: 2,
 				LongDescription: "The prizes from the minigame.",
@@ -532,6 +544,7 @@ InteriorGroups = {
 		tooltip: "This is the archery minigame. The shopkeeper will only be here as a child.",
 		buttons: {
 			"Child Archery": {
+				SpoilerLogName: "Market Shooting Gallery Reward",
 				Age: Age.CHILD,
 				LongDescription: "This is the prize for completing the minigame as child."
 			}
@@ -551,11 +564,16 @@ InteriorGroups = {
 		tooltip: "The minigame where you probably want the Lens of Truth.",
 		buttons: {
 			"Salesman": {
+				SpoilerLogName: "Market Treasure Chest Game Salesman",
 				icon: "Treasure Chest Minigame Small Key",
 				LongDescription: "Talk to the salesman and buy the item for 10 rupees.",
 				shouldNotDisplay: SettingSets.VANILLA_CHEST_MINIGAME_KEYS
 			},
 			"Room 1 Chests": {
+				SpoilerLogName: [
+					"Market Treasure Chest Game Room 1 Bottom",
+					"Market Treasure Chest Game Room 1 Top"
+				],
 				icon: "Chest",
 				count: 2,
 				LongDescription: "The chests in room 1.",
@@ -563,6 +581,10 @@ InteriorGroups = {
 				Needs: [() => ItemData.getKeyCount("Treasure Chest Minigame") >= 1]
 			},
 			"Room 2 Chests": {
+				SpoilerLogName: [
+					"Market Treasure Chest Game Room 2 Bottom",
+					"Market Treasure Chest Game Room 2 Top"
+				],
 				icon: "Chest",
 				count: 2,
 				LongDescription: "The chests in room 2.",
@@ -570,6 +592,10 @@ InteriorGroups = {
 				Needs: [() => ItemData.getKeyCount("Treasure Chest Minigame") >= 2]
 			},
 			"Room 3 Chests": {
+				SpoilerLogName: [
+					"Market Treasure Chest Game Room 3 Bottom",
+					"Market Treasure Chest Game Room 3 Top"
+				],
 				icon: "Chest",
 				count: 2,
 				LongDescription: "The chests in room 3.",
@@ -577,6 +603,10 @@ InteriorGroups = {
 				Needs: [() => ItemData.getKeyCount("Treasure Chest Minigame") >= 3]
 			},
 			"Room 4 Chests": {
+				SpoilerLogName: [
+					"Market Treasure Chest Game Room 4 Bottom",
+					"Market Treasure Chest Game Room 4 Top"
+				],
 				icon: "Chest",
 				count: 2,
 				LongDescription: "The chests in room 4.",
@@ -584,6 +614,10 @@ InteriorGroups = {
 				Needs: [() => ItemData.getKeyCount("Treasure Chest Minigame") >= 4]
 			},
 			"Room 5 Chests": {
+				SpoilerLogName: [
+					"Market Treasure Chest Game Room 5 Bottom",
+					"Market Treasure Chest Game Room 5 Top"
+				],
 				icon: "Chest",
 				count: 2,
 				LongDescription: "The chests in room 5.",
@@ -591,6 +625,7 @@ InteriorGroups = {
 				Needs: [() => ItemData.getKeyCount("Treasure Chest Minigame") >= 5]
 			},
 			"Prize": {
+				SpoilerLogName: "Market Treasure Chest Game Reward",
 				icon: "Chest",
 				iconText: "♥",
 				LongDescription: "This is the prize for completing the minigame.",
