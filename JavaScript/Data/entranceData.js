@@ -57,10 +57,12 @@ InteriorGroups = {
 		neverHide: true,
 		buttons: {
 			"Pot": {
+				SpoilerLogName: "KF Links House Pot",
 				ItemGroup: ItemGroups.POT,
 				LongDescription: "Throw the pot to get an item."
 			},
 			"Cow in Link's House": {
+				SpoilerLogName: "KF Links House Cow",
 				icon: "Cow",
 				ItemGroup: ItemGroups.COW,
 				LongDescription: "As an adult, beat Malon's Epona challenge to unlock the cow in Link's house.",

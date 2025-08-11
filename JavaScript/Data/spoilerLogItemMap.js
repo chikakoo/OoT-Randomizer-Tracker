@@ -52,8 +52,9 @@ let SpoilerLogDungeonNameMap = {
  */
 
 let SpoilerLogInteriorEntranceMap = {
+    "KF Links House": { entranceGroup: "Link's House" },
 
-    //"Kak Carpenter Boss House": "Talon's House Kakariko",
+    "Kak Carpenter Boss House": { entranceGroup:"Talon's House Kakariko" },
 
     "LLR Talons House": { entranceGroup: "Super Cucco Minigame" },
 

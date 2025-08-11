@@ -539,7 +539,7 @@ let SaveAndLoad = {
                 : logItem;
 
             SpoilerLogItemMap[logLocation].itemLocations.forEach(itemLocation => {
-                let key = `${itemLocation.Name}|${itemLocation.Map}|${itemLocation.Region}`;
+                let key = `${itemLocation.Name}|${itemLocation.ExitMap || itemLocation.Map}|${itemLocation.ExitRegion || itemLocation.Region}`;
                 updateData[key] ??= [];
                 updateData[key].push({
                     itemLocation: itemLocation,
@@ -556,7 +556,12 @@ let SaveAndLoad = {
 
         // Use the sorted update values to update the notes
         Object.values(updateData).forEach(updateInfoArray => {
-            updateInfoArray.forEach(updateInfo => {
+            updateInfoArray.sort((a, b) => {
+                if (a.order < b.order) {
+                    return -1
+                }
+                return a.order > b.order ? 1 : 0;
+            }).forEach(updateInfo => {
                 let itemLocation = updateInfo.itemLocation;
                 let itemName = updateInfo.itemName;
                 if (itemLocation.notes) {

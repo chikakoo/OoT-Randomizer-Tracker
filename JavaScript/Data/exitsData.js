@@ -962,6 +962,7 @@ let OwExits = {
             LongDescription: "This is the entrance back to Death Mountain.<br/><br/><a href='https://youtu.be/0BobG5dZv14?si=rlM7WqoQHEOz0K4k' target='_blank' title='Target wall to the right of the corner; sidehop left; sideroll release Z; get in corner; sidehop right; sidehop left; roll x2; sidehop right; sidehop left; roll x3; backflip x2; turn right; sidehop left; turn left; roll; backflip; press sword to take it out (or take out stick after landing); sidehop right once; buffer another sidehop right; buffer a neutral jumpslash; hold up'>LUNGE STORAGE CLIP</a>"
         },
         "Bazaar": {
+            SpoilerLogExitName: "Kakariko Village -> Kak Bazaar",
             DisplayGroup: { groupName: "Upper Area", imageName: "Keaton Mask" },
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
