@@ -358,6 +358,7 @@ InteriorGroups = {
 		tooltip: "This is the pot room as a child, and the big poe buyer room as an adult.",
 		buttons: {
 			"Child Skulltula": {
+				SpoilerLogName: "Market GS Guard House",
 				icon: "Skulltula",
 				ItemGroup: ItemGroups.SKULLTULA,
 				OverrideItemGroupCondition: true,
@@ -365,6 +366,7 @@ InteriorGroups = {
 				LongDescription: "This is the skulltula in the crate in the back of the room."
 			},
 			"Adult Big Poe Reward": {
+				SpoilerLogName: "Market 10 Big Poes",
 				Age: Age.ADULT,
 				LongDescription: "Give the poe salesman all the poes he needs to get this item.",
 				NeedsAny: [
@@ -373,6 +375,7 @@ InteriorGroups = {
 				]
 			},
 			"Child Non-Empty Crates": {
+				SpoilerLogName: "Market Guard House Child Crate 4",
 				icon: "Crate",
 				ItemGroup: ItemGroups.CRATE,
 				Age: Age.CHILD,
@@ -380,6 +383,7 @@ InteriorGroups = {
 				shouldNotDisplay: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; },
 			},
 			"Child Crates": {
+				SpoilerLogName: [{ name: "Market Guard House Child Crate {#}", count: 4 }],
 				icon: "Crate",
 				count: 4,
 				ItemGroup: ItemGroups.CRATE,
@@ -388,6 +392,7 @@ InteriorGroups = {
 				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
 			},
 			"Child Pots": {
+				SpoilerLogName: [{ name: "Market Guard House Child Pot {#}", count: 44 }],
 				icon: "Pot",
 				count: 44,
 				ItemGroup: ItemGroups.POT,
@@ -395,14 +400,19 @@ InteriorGroups = {
 				LongDescription: "The many pots in the room. You can reach the top ones by jumping from the box with the skulltula in it."
 			},
 			"Adult Non-Empty Pots": {
+				SpoilerLogName: [{ 
+					name: "Market Guard House Adult Pot {#}", 
+					tokens: ["1", "3", "4", "6", "7", "9", "11"]
+				}],
 				icon: "Pot",
 				count: 7,
 				ItemGroup: ItemGroups.POT,
 				Age: Age.ADULT,
 				LongDescription: "The many pots in the room.",
-				shouldNotDisplay: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; }
+				shouldNotDisplay: function() { return Settings.RandomizerSettings.shuffleEmptyPots; }
 			},
 			"Adult Pots": {
+				SpoilerLogName: [{ name: "Market Guard House Adult Pot {#}", count: 11 }],
 				icon: "Pot",
 				count: 11,
 				ItemGroup: ItemGroups.POT,
@@ -448,6 +458,10 @@ InteriorGroups = {
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.cowSanity; },
 		buttons: {
 			"Cows": {
+				SpoilerLogName: [
+					"LLR Stables Left Cow",
+					"LLR Stables Right Cow"
+				],
 				useGroupImage: true,
 				count: 2,
 				ItemGroup: ItemGroups.COW,
@@ -460,11 +474,16 @@ InteriorGroups = {
 		tooltip: "This is the building with the cows and boxes you can push for the freestanding item",
 		buttons: {
 			"Freestanding Item": {
+				SpoilerLogName: "LLR Freestanding PoH",
 				icon: "Piece of Heart",
 				Age: Age.CHILD,
 				LongDescription: "Push the box out of the way and crawl through the hole to get the item."
 			},
 			"Cows": {
+				SpoilerLogName: [
+					"LLR Tower Left Cow",
+					"LLR Tower Right Cow"
+				],
 				icon: "2 Cows",
 				count: 2,
 				ItemGroup: ItemGroups.COW,

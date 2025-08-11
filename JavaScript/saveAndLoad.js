@@ -629,8 +629,10 @@ let SaveAndLoad = {
                     let entranceDataButtons = entranceData[entranceGroup.name].buttons;
                     let order = 1;
                     Object.values(entranceDataButtons).forEach(button => {
-                        _this._addToSpoilerLogItemMap(exit, button.SpoilerLogName, order);
-                        order++;
+                        if (!button.shouldNotDisplay || !button.shouldNotDisplay()) {
+                            _this._addToSpoilerLogItemMap(exit, button.SpoilerLogName, order);
+                            order++;
+                        }
                     });
                 }
             });
@@ -678,6 +680,7 @@ let SaveAndLoad = {
      *   - count: Either a number or an object representing the range of numbers to
      *      create multiple spoiler log objects for
      *     - If it's an object, it will contain min and max for the range
+     *   - tokens: An array of strings to use as the tokens
      * 
      * For example, "Test {#}", with a count of 3, creates three entries:
      * - Test 1; Test 2; Test3
@@ -721,7 +724,14 @@ let SaveAndLoad = {
                     output.push(spoilerLogEntry);
                 }
 
-            // No count, just push the name
+            // If no count, check for tokens
+            } else if (data.tokens) {
+                data.tokens.forEach(token => {
+                    let spoilerLogEntry = name.replace("{#}", token);
+                    output.push(spoilerLogEntry);
+                })
+
+            // No  or tokens, just push the name
             } else {
                 output.push(name);
             }

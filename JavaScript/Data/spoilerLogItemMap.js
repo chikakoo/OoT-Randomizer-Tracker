@@ -52,6 +52,7 @@ let SpoilerLogDungeonNameMap = {
  */
 
 let SpoilerLogInteriorEntranceMap = {
+    // Kokiri Forest
     "KF Midos House": { 
         items: [
             "KF Midos Top Left Chest",
@@ -87,9 +88,18 @@ let SpoilerLogInteriorEntranceMap = {
         }]
     },
 
+    // Lon Lon Ranch
+    "LLR Talons House": { entranceGroup: "Super Cucco Minigame" },
+    "LLR Stables": { entranceGroup: "Stable" },
+    "LLR Tower": { entranceGroup: "Cow Shed" },
+
+    // Market Entrance
+    "Market Guard House": { entranceGroup: "Market Guard House"},
+
+    // Kakariko Village
     "Kak Carpenter Boss House": { entranceGroup: "Talon's House Kakariko" },
 
-    "LLR Talons House": { entranceGroup: "Super Cucco Minigame" },
+
 
     // Generic interiors
     "HC Great Fairy Fountain": { 
