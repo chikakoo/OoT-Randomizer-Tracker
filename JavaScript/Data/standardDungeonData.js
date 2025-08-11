@@ -331,6 +331,7 @@ let StandardDungeons = {
                         NeedsAny: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA, Equipment.STRENGTH]
                     },
                     "Map Chest": {
+                        SpoilerLogName: "Dodongos Cavern Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 97, y: 198, floor: "F1" },
                         Age: Age.EITHER,
@@ -339,6 +340,7 @@ let StandardDungeons = {
                         NeedsAny: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA, Equipment.STRENGTH]
                     },
                     "Scrub in Main Room": {
+                        SpoilerLogName: "Dodongos Cavern Deku Scrub Lobby",
                         ItemGroup: ItemGroups.SCRUB,
                         MapInfo: { x: 97, y: 222, floor: "F1" },
                         Age: Age.EITHER,
@@ -355,7 +357,10 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "2 Pots at East Room Entrance": {
+                    "2 Pots at East Room Entrance": { // TODO Mapping: Check this
+                        SpoilerLogName: [
+                            { name: "Dodongos Cavern Right Side Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -365,6 +370,7 @@ let StandardDungeons = {
                         LongDescription: "Go to the room to the east of the main room. The pots are in front of you in the first alcove to the left."
                     },
                     "Skulltula in East Room": {
+                        SpoilerLogName: "Dodongos Cavern GS Side Room Near Lower Lizalfos",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 242, y: 274, floor: "F1" },
                         Age: Age.EITHER,
@@ -372,7 +378,10 @@ let StandardDungeons = {
                         LongDescription: "Go to the room to the east of the main room. If you hug the right wall, you'll find a bombable wall. You can either blow it up with your own explosive, or kill a baby Dodongo near the wall.<br/><br/>Once inside, head to the back of the room to find the skulltula.",
                         NeedsAny: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS, ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA]
                     },
-                    "2 Pots by East Room Ledge": {
+                    "2 Pots by East Room Ledge": { // TODO Mapping: Check this
+                        SpoilerLogName: [
+                            { name: "Dodongos Cavern Right Side Pot {#}", count: { min: 3, max: 4 } }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -382,6 +391,7 @@ let StandardDungeons = {
                         LongDescription: "Go to the room to the east of the main room. The pots are on the left wall near the small ledge."
                     },
                     "Skulltula on East Room Ledge": {
+                        SpoilerLogName: "Dodongos Cavern GS Scarecrow",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 220, y: 215, floor: "F1" },
                         Age: Age.EITHER,
@@ -391,7 +401,10 @@ let StandardDungeons = {
                         TricksToShow: [Tricks.dodongoScarecrowSkullEarly],
                         NeedsAny: [GameStateSets.CAN_HOOK_SCARECROW, Tricks.dodongoScarecrowSkullEarly.canDo]
                     },
-                    "2 Pots in Lizalfos Antechamber": {
+                    "2 Pots in Lizalfos Antechamber": { // TODO Mapping: Check this
+                        SpoilerLogName: [
+                            { name: "Dodongos Cavern Right Side Pot {#}", count: { min: 5, max: 6 } }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -401,6 +414,7 @@ let StandardDungeons = {
                         LongDescription: "Go to the room to the east of the main room and push the armos on the switch to unbar the door. The pots are in the next room."
                     },
                     "Heart in Lavafall Cave": {
+                        SpoilerLogName: "Dodongos Cavern Lower Lizalfos Hidden Recovery Heart",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 335, y: 166, floor: "F1" },
@@ -408,7 +422,10 @@ let StandardDungeons = {
                         Order: 7,
                         LongDescription: "In the lower lizalfos room, head to the platform closest to the lavafall. Jump through the lavafall on the side that's closer to the wall to get to ths item."
                     },
-                    "2 Pots Left of Lizalfos Room Exit": {
+                    "2 Pots Left of Lizalfos Room Exit": { // TODO Mapping: Check this
+                        SpoilerLogName: [
+                            { name: "Dodongos Cavern Lower Lizalfos Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -417,7 +434,10 @@ let StandardDungeons = {
                         Order: 8,
                         LongDescription: "In the lower lizalfos room, these pots are on the platform to the left of the exit door."
                     },
-                    "2 Pots Right of Lizalfos Room Exit": {
+                    "2 Pots Right of Lizalfos Room Exit": { // TODO Mapping: Check this
+                        SpoilerLogName: [
+                            { name: "Dodongos Cavern Lower Lizalfos Pot {#}", count: { min: 3, max: 4 } }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -437,6 +457,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Scrub by Blue Dodongo Room": {
+                        SpoilerLogName: "Dodongos Cavern Deku Scrub Side Room Near Dodongos",
                         ItemGroup: ItemGroups.SCRUB,
                         MapInfo: { x: 245, y: 85, floor: "F1" },
                         Age: Age.EITHER,
@@ -444,7 +465,10 @@ let StandardDungeons = {
                         LongDescription: "From the entrance, go around the right side of the dungeon until you get to the blue room with dodongos in it. You can also jump up to the switch platform as adult and enter the door to get here. Near the usual entrance to this room, there's a mud wall with a scrub inside. You should be able to run a bomb flower to it if you don't have your own explosives.",
                         NeedsAny: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA, Equipment.STRENGTH]
                     },
-                    "3 Pots by Blue Room Start": {
+                    "3 Pots by Blue Room Start": { // TODO Mapping: Check this and pot below
+                        SpoilerLogName: [
+                            { name: "Dodongos Cavern Torch Room Pot {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -454,6 +478,7 @@ let StandardDungeons = {
                         LongDescription: "From the entrance, go around the right side of the dungeon until you get to the blue room with dodongos in it. You can also jump up to the switch platform as adult and enter the door to get here.<br/><br/>Near the first pillar, there are three pots. Two on one side, and one on the other."
                     },
                     "Pot by Blue Room End": {
+                        SpoilerLogName: "Dodongos Cavern Torch Room Pot 4",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 217, y: 190, floor: "F1" },
                         Age: Age.EITHER,
@@ -485,6 +510,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Compass Chest": {
+                        SpoilerLogName: "Dodongos Cavern Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 41, y: 259, floor: "F1" },
                         Age: Age.EITHER,
@@ -505,7 +531,10 @@ let StandardDungeons = {
                     lowerBladeRoom: {}
                 },
                 ItemLocations: {
-                    "2 Pots Left of Staircase": {
+                    "2 Pots Left of Staircase": { // TODO Mapping: Check this and two pots below
+                        SpoilerLogName: [
+                            { name: "Dodongos Cavern Staircase Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -515,13 +544,16 @@ let StandardDungeons = {
                         LongDescription: "Lower the giant staircase. Climb it - the pots are to the left."
                     },
                     "2 Pots Right of Staircase": {
+                        SpoilerLogName: [
+                            { name: "Dodongos Cavern Staircase Pot {#}", count: { min: 3, max: 4 } }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
                         MapInfo: { x: 51, y: 96, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 17,
-                        LongDescription: "Lower the giant staircase. Climb it - the pots are to the Right."
+                        LongDescription: "Lower the giant staircase. Climb it - the pots are to the right."
                     }
                 }
             },
@@ -530,6 +562,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Skulltula on Vines by Stairs": {
+                        SpoilerLogName: "Dodongos Cavern GS Vines Above Stairs",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 29, y: 136, floor: "F2" },
                         Age: Age.EITHER,
@@ -559,6 +592,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Heart Behind Block in Blade Room": {
+                        SpoilerLogName: "Dodongos Cavern Blade Room Behind Block Recovery Heart",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 211, y: 196, floor: "F2" },
@@ -567,6 +601,7 @@ let StandardDungeons = {
                         LongDescription: "In the room with the blades, push the block all the way out. There's an item inside its alcove."
                     },
                     "Chest by Bomb Flower": {
+                        SpoilerLogName: "Dodongos Cavern Bomb Flower Platform Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 201, y: 201, floor: "F2" },
                         Age: Age.EITHER,
@@ -574,13 +609,17 @@ let StandardDungeons = {
                         LongDescription: "In the room with the blades, this is the chest on the ledge near the Bomb Flower and bombable wall."
                     },
                     "2 Scrubs by Blade Room": {
+                        SpoilerLogName: [
+                            { name: "Dodongos Cavern Deku Scrub Near Bomb Bag Left" },
+                            { name: "Dodongos Cavern Deku Scrub Near Bomb Bag Right" }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SCRUB,
                         DefaultEntranceGroupName: "2 Scrubs",
                         MapInfo: { x: 202, y: 106, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 21,
-                        LongDescription: "In the room with the blades, there's a wall you can destroy that's located near the cliffs with the bomb chest. There are a couple scrubs inside.",
+                        LongDescription: "In the room with the blades, there's a wall you can destroy that's located near the cliffs with the bomb chest. There are a couple of scrubs inside.",
                         TricksToShow: [Tricks.dodongoAdultBladeMudWallWithStrength],
                         ChildNeeds: [ItemSets.MUD_WALL_ITEMS],
                         AdultNeedsAny: [ItemSets.MUD_WALL_ITEMS, Tricks.dodongoAdultBladeMudWallWithStrength.canDo]
@@ -597,6 +636,9 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in Blade Room": {
+                        SpoilerLogName: [
+                            { name: "Dodongos Cavern Blade Room Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -616,7 +658,8 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "First Eye Switch Pot by Entrance": {
+                    "First Eye Switch Pot by Entrance": { // TODO Mapping: Check this and pot below
+                        SpoilerLogName: "Dodongos Cavern Single Eye Switch Room Pot 1",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 251, y: 190, floor: "F2" },
                         Age: Age.EITHER,
@@ -624,6 +667,7 @@ let StandardDungeons = {
                         LongDescription: "Make your way to the first eye switch puzzle room, either through the blade room or the upper lizalfos room. This pot is in the corner by the entrance."
                     },
                     "First Eye Switch Pot by Exit": {
+                        SpoilerLogName: "Dodongos Cavern Single Eye Switch Room Pot 2",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 270, y: 205, floor: "F2" },
                         Age: Age.EITHER,
@@ -644,6 +688,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts in Upper Lizalfos Room": {
+                        SpoilerLogName: [
+                            { name: "Dodongos Cavern Lizalfos Upper Recovery Heart {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "2 Hearts",
@@ -666,7 +713,8 @@ let StandardDungeons = {
                 },
 
                 ItemLocations: {
-                    "Second Eye Switch Pot by Entrance": {
+                    "Second Eye Switch Pot by Entrance": { // TODO Mapping: Check this and pot below
+                        SpoilerLogName: "Dodongos Cavern Double Eye Switch Room Pot 1",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 275, y: 166, floor: "F2" },
                         Age: Age.EITHER,
@@ -674,6 +722,7 @@ let StandardDungeons = {
                         LongDescription: "Make your way to the second eye switch puzzle room, either through upper lizalfos room or by going backwards form the bomb chest. This pot is in the corner by the entrance."
                     },
                     "Second Eye Switch Pot by Exit": {
+                        SpoilerLogName: "Dodongos Cavern Double Eye Switch Room Pot 2",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 252, y: 153, floor: "F2" },
                         Age: Age.EITHER,
@@ -681,6 +730,7 @@ let StandardDungeons = {
                         LongDescription: "Make your way to the second eye switch puzzle room, either through upper lizalfos room or by going backwards form the bomb chest. This pot is in the corner by the exit."
                     },
                     "Bomb Bag Chest": {
+                        SpoilerLogName: "Dodongos Cavern Bomb Bag Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 184, y: 145, floor: "F2" },
                         Age: Age.EITHER,
@@ -688,6 +738,7 @@ let StandardDungeons = {
                         LongDescription: "This is the chest elevated on the platform in the room with the blades. You normally get here after the second Lizalfos fight. There are tricks to megaflip as a child to get here earlier. You can also simply jump to a nearby platform as adult to skip that fight."
                     },
                     "Chest at End of Bridge": {
+                        SpoilerLogName: "Dodongos Cavern End of Bridge Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 84, y: 149, floor: "F2" },
                         Age: Age.EITHER,
@@ -702,6 +753,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Alcove Above Stairs": {
+                        SpoilerLogName: "Dodongos Cavern GS Alcove Above Stairs",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 31, y: 94, floor: "F2" },
                         Age: Age.EITHER,
@@ -723,6 +775,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Skulltula in Back Room": {
+                        SpoilerLogName: "Dodongos Cavern GS Back Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 193, y: 11, floor: "F1" },
                         Age: Age.EITHER,
@@ -730,7 +783,10 @@ let StandardDungeons = {
                         LongDescription: "This is in the series of rooms after you enter the giant dodongo head. After you climb the ledge with the pushable blocks, there's a wall you can destroy. The skulltula is inside.",
                         Needs: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA]
                     },
-                    "2 Pots After Block Push in Back Room": {
+                    "2 Pots After Block Push in Back Room": { // TODO Mapping: Check this and pots below
+                        SpoilerLogName: [
+                            { name: "Dodongos Cavern Last Block Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -740,6 +796,9 @@ let StandardDungeons = {
                         LongDescription: "After the block push puzzle in the giant dodongo head, these are the pots to your left before you enter the hallway."
                     },
                     "2 Pots in Hall Before Final Block": {
+                        SpoilerLogName: [
+                            { name: "Dodongos Cavern Last Block Pot {#}", count: { min: 3, max: 4 } }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
