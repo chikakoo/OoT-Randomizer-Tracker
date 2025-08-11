@@ -484,7 +484,7 @@ let ShopItemDictionary = {
 	"bigkeyshadow": "Shadow Temple Boss Key.png",
 	"bkshadow": "Shadow Temple Boss Key.png",
 	"bosskeyshadowtemple": "Shadow Temple Boss Key.png",
-	"bosskey(shadowtemple)": "Spirit Temple Boss Key.png",
+	"bosskey(shadowtemple)": "Shadow Temple Boss Key.png",
 
 	"spirittemplesmallkey": "Spirit Temple Small Key.png",
 	"spiritsmallkey": "Spirit Temple Small Key.png",
@@ -587,6 +587,7 @@ let ShopItemDictionary = {
 	"redrupee": "Red Rupee.png",
 	"red": "Red Rupee.png",
 	"rupees(20)": "Red Rupee.png",
+	"rupees(treasurechestgame)(20)": "Red Rupee.png",
 	
 	"purplerupee": "Purple Rupee.png",
 	"purple": "Purple Rupee.png",
