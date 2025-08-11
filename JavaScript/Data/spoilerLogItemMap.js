@@ -67,6 +67,25 @@ let SpoilerLogInteriorEntranceMap = {
             count: 4 
         }]
     },
+    "KF House of Twins": {
+        items: [{ 
+            name: "KF House of Twins Pot {#}", 
+            count: 2 
+        }]
+    },
+    "KF Kokiri Shop": {
+        entranceGroup: "Kokiri Shop",
+        items: [
+            "KF Shop Wonderitem",
+            { name: "KF Shop Item {#}", count: 8 }
+        ]
+    },
+    "KF Know It All House": {
+        items: [{ 
+            name: "KF Know it All House Pot {#}", 
+            count: 2 
+        }]
+    },
 
     "Kak Carpenter Boss House": { entranceGroup: "Talon's House Kakariko" },
 

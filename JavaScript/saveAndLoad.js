@@ -658,14 +658,15 @@ let SaveAndLoad = {
      * @param {number} order - For sorting
      */
     _addItemLocationToSpoilerLogItemMap: function(spoilerLogEntryObject, itemLocation, order) {
+        order = order || 1;
+
         let spoilerLogEntries = this._getSpoilerLogEntries(spoilerLogEntryObject);
         spoilerLogEntries.forEach(spoilerLogEntryName => {
             SpoilerLogItemMap[spoilerLogEntryName] ??= { itemLocations: [] };
             SpoilerLogItemMap[spoilerLogEntryName].itemLocations.push(itemLocation);
+            SpoilerLogItemMap[spoilerLogEntryName].order = order;
 
-            if (order && order > 0) {
-                SpoilerLogItemMap[spoilerLogEntryName].order = order;
-            }
+            order++;
         });
     },
 
