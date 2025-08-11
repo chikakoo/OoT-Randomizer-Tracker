@@ -1092,22 +1092,29 @@ GrottoGroups = {
 		},
 		buttons: {
 			"Cow": {
+				SpoilerLogName: "DMT Cow Grotto Cow",
 				ItemGroup: ItemGroups.COW,
 				LongDescription: "Play Epona's Song next to the cow."
 			},
 			"Red Rupee": {
+				SpoilerLogName: [
+					{ name: "DMT Cow Grotto Green Rupee {#}", count: 6 },
+					"DMT Cow Grotto Red Rupee"
+				],
 				icon: "Rupee Circle",
 				count: 7,
 				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				LongDescription: "The rupee circle by the entrance."
 			},
 			"4 Hearts": {
+				SpoilerLogName: [{ name: "DMT Cow Grotto Recovery Heart {#}", count: 4}],
 				icon: "Recovery Heart",
 				count: 4,
 				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				LongDescription: "The hearts near the cow."
 			},
 			"Beehive": {
+				SpoilerLogName: "DMT Cow Grotto Beehive",
 				ItemGroup: ItemGroups.BEEHIVE,
 				LongDescription: "The beehive on the back/right side of the grotto. Can use bombs. If using chus, line up with one of the walls under it and drop it on the 6th red flash."
 			}

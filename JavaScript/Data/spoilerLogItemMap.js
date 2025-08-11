@@ -219,7 +219,7 @@ let SpoilerLogInteriorEntranceMap = {
 };
 
 let SpoilerLogGrottoEntranceMap = {
-
+    "DMT Cow Grotto": { entranceGroup: "Cow Grotto" }
 };
 
 let SpoilerLogBossEntranceMap = {
