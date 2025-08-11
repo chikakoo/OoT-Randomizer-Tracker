@@ -753,6 +753,7 @@ let OwExits = {
 
         // Interiors
         "Hyrule Great Fairy Fountain": {
+            SpoilerLogExitName: "Hyrule Castle Grounds -> HC Great Fairy Fountain",
             ExitRegion: "hyruleCastle",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -774,6 +775,7 @@ let OwExits = {
             Needs: [Songs.SONG_OF_STORMS]
         },
         "Ganon Great Fairy Fountain": {
+            SpoilerLogExitName: "Ganons Castle Grounds -> OGC Great Fairy Fountain",
             ExitRegion: "ganonsCastle",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -868,6 +870,7 @@ let OwExits = {
             Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Talon's House": {
+            SpoilerLogExitName: "Kakariko Village -> Kak Carpenter Boss House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Talon's House Kakariko",
@@ -877,6 +880,7 @@ let OwExits = {
             LongDescription: "This is the building straight ahead of the tree that has the crate with the cucco next to it as a child."
         },
         "House of Skulltula": {
+            SpoilerLogExitName: "Kakariko Village -> Kak House of Skulltula",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "House of Skulltula",
@@ -886,6 +890,7 @@ let OwExits = {
             LongDescription: "This is the building near Impa's house, with the fence near the door."
         },
         "Impa's House": {
+            SpoilerLogExitName: "Kakariko Village -> Kak Impas House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             MapInfo: { x: 141, y: 254 },
@@ -894,6 +899,7 @@ let OwExits = {
             LongDescription: "This is the building that Anju stands by. The entrance is on the opposite site of the cucco pen.",
         },
         "Back of Impa's House": {
+            SpoilerLogExitName: "Kak Impas Ledge -> Kak Impas House Back",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Back of Impa's House",
@@ -904,6 +910,7 @@ let OwExits = {
             LongDescription: "The opening above the cucco pen.<br/><br/>Child: Grab a cucco and throw it up the building under construction. Hold forward and jump off, then angle your joystick to the top-right until you're lined up with the platform.<br/><br/>Adult: Jump onto the wood under the opening, then hold forward while under it to clip into the ledge."
         },
         "Archery Minigame": {
+            SpoilerLogExitName: "Kakariko Village -> Kak Shooting Gallery",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -920,6 +927,7 @@ let OwExits = {
             TricksToShow: [Tricks.kakShopClips]
         },
         "Windmill": {
+            SpoilerLogExitName: "Kakariko Village -> Kak Windmill",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Windmill",
@@ -977,6 +985,7 @@ let OwExits = {
             ChildNeeds: [Tricks.kakShopClips.canDo]
         },
         "Potion Shop Front": {
+            SpoilerLogExitName: "Kakariko Village -> Kak Potion Shop Front",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Potion Shop Front",
@@ -1011,6 +1020,7 @@ let OwExits = {
         },
         "Potion Shop Back": {
             // Leaving DefaultEntranceGroupName out since it's fully covered by the front entrance
+            SpoilerLogExitName: "Kak Backyard -> Kak Potion Shop Back",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -1093,6 +1103,7 @@ let OwExits = {
             IsDungeonEntrance: true
         },
         "Dampe's Shed": {
+            SpoilerLogExitName: "Graveyard -> Graveyard Dampes House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             Time: function() { return Time.NIGHT_CHILD; },
@@ -1375,6 +1386,7 @@ let OwExits = {
             ChildNeeds: [Tricks.goronChildStatueSkip.canDo]
         },
         "Shop": {
+            SpoilerLogExitName: "Goron City -> GC Shop",
             ExitRegion: "shop",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -1709,6 +1721,7 @@ let OwExits = {
             Needs: [UpgradedItems.SILVER_GAUNTLETS]
         },
         "Tent": {
+            SpoilerLogExitName: "GV Fortress Side -> GV Carpenter Tent",
             ExitRegion: "acrossBridge",
             ItemGroup: ItemGroups.INTERIOR,
             Order: 2,
@@ -1792,6 +1805,7 @@ let OwExits = {
             Needs: [Songs.SONG_OF_STORMS]
         },
         "Enclave Left Door": {
+            SpoilerLogExitName: "GF Entrances Behind Crates -> Hideout 1 Torch Jail",
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "jail1",
@@ -1803,6 +1817,7 @@ let OwExits = {
             LongDescription: "The left door at the bottom in the enclaves with the crates."
         },
         "Enclave Right Door": {
+            SpoilerLogExitName: "GF Entrances Behind Crates -> Hideout Kitchen Hallway",
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "kitchenHallway",
@@ -1814,6 +1829,7 @@ let OwExits = {
             LongDescription: "The right door at the bottom in the enclaves with the crates."
         },
         "Bottom Right Door": {
+            SpoilerLogExitName: "Gerudo Fortress -> Hideout 4 Torches Jail",
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "jail2",
@@ -1825,6 +1841,7 @@ let OwExits = {
             LongDescription: "The door just to the left of Gerudo Training Grounds."
         },
         "Right Door Above GTG": {
+            SpoilerLogExitName: "Gerudo Fortress -> Hideout 2 Torches Jail",
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "jail3",
@@ -1836,6 +1853,7 @@ let OwExits = {
             LongDescription: "The door to the right (the first one) in the area above Gerudo Training Grounds."
         },
         "Left Door Above GTG": {
+            SpoilerLogExitName: "Gerudo Fortress -> Hideout Kitchen Hallway",
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "kitchenHallway",
@@ -1849,6 +1867,7 @@ let OwExits = {
 
         // Middle Levels
         "Middle Left Door": {
+            SpoilerLogExitName: "GF Roof Entrance Cluster -> Hideout 4 Torches Jail",
             ExitRegion: "middleFloor",
             Map: "Thieves' Hideout",
             Region: "jail2",
@@ -1860,6 +1879,7 @@ let OwExits = {
             LongDescription: "The door in the middle of the fortress where you can walk to the bottom of the vines."
         },
         "Vines Left Door": {
+            SpoilerLogExitName: "GF Roof Entrance Cluster -> Hideout Kitchen Front",
             ExitRegion: "middleFloor",
             Map: "Thieves' Hideout",
             Region: "kitchenTopLeft",
@@ -1871,6 +1891,7 @@ let OwExits = {
             LongDescription: "This is the door to the left when you climb the vines on the middle floor of the fortress."
         },
         "Vines Forward Door": {
+            SpoilerLogExitName: "GF Roof Entrance Cluster -> Hideout 2 Torches Jail",
             ExitRegion: "middleFloor",
             Map: "Thieves' Hideout",
             Region: "jail3",
@@ -1882,6 +1903,7 @@ let OwExits = {
             LongDescription: "This is the door straight ahead when you climb the vines on the middle floor of the fortress."
         },
         "Upper Kitchen Door": {
+            SpoilerLogExitName: "GF Kitchen Roof Access -> Hideout Kitchen Rear",
             ExitRegion: "topOfKitchen",
             Map: "Thieves' Hideout",
             Region: "kitchenTopRight",
@@ -1893,6 +1915,7 @@ let OwExits = {
             LongDescription: "This is the door on the top of the right side of the fortress, above the door to jail 4 and nearest to the skulltula. Adult can do a trick jump near the vines to get to this door from the middle level."
         },
         "Upper Jail Door": {
+            SpoilerLogExitName: "GF 3 Torches Jail Exterior -> Hideout 3 Torches Jail",
             ExitRegion: "jail4Door",
             Map: "Thieves' Hideout",
             Region: "jail4",
@@ -1904,6 +1927,7 @@ let OwExits = {
             LongDescription: "This door needs to be dropped down to from an upper area of the fortress. If not using entrance shuffle, you can get here from navigating around the kitchen's upper exit."
         },
         "Door Above Jail 1": {
+            SpoilerLogExitName: "GF Break Room Entrance -> Hideout Break Room",
             ExitRegion: "aboveJail1",
             Map: "Thieves' Hideout",
             Region: "topLower",
@@ -1916,6 +1940,7 @@ let OwExits = {
             TricksToShow: [Tricks.gfChildJumpByTopKitchen]
         },
         "Door Above Link's Jail": {
+            SpoilerLogExitName: "GF Balcony -> Hideout Hall to Balcony",
             ExitRegion: "aboveLinksJail",
             Map: "Thieves' Hideout",
             Region: "topUpper",
@@ -1927,7 +1952,6 @@ let OwExits = {
             LongDescription: "Normally only reachable from the entrance that leads there. There's a glitch involving a specific hookshot angle from the top of Link's jail as well.",
             TricksToShow: [Tricks.gfHookshotToAboveLinksJail]
         },
-
 
         // Hidden, non-Thieves' Hideout shuffle exits for travel purposes
         "Gerudo Fortress to Jail 1": {
@@ -2295,6 +2319,7 @@ let OwExits = {
             LongDescription: "This is the entrance to the wasteland."
         },
         "Great Fairy Fountain": {
+            SpoilerLogExitName: "Desert Colossus -> Colossus Great Fairy Fountain",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
