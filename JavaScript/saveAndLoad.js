@@ -616,8 +616,10 @@ let SaveAndLoad = {
         let _this = this;
         Object.values(MapLocations).forEach(function(map) {
             Object.values(map.Regions).forEach(function(region) {
+                let order = 1;
                 Object.values(region.ItemLocations).forEach(function(itemLocation) {
-                    _this._addToSpoilerLogItemMap(itemLocation);
+                    order = _this._addToSpoilerLogItemMap(itemLocation);
+                    order++;
                 });
             });
         });
@@ -632,7 +634,7 @@ let SaveAndLoad = {
                     let order = 1;
                     Object.values(entranceDataButtons).forEach(button => {
                         if (!button.shouldNotDisplay || !button.shouldNotDisplay()) {
-                            _this._addToSpoilerLogItemMap(exit, button.SpoilerLogName, order);
+                            order = _this._addToSpoilerLogItemMap(exit, button.SpoilerLogName, order);
                             order++;
                         }
                     });
@@ -644,6 +646,7 @@ let SaveAndLoad = {
     /**
      * Adds the item location to the spoiler log item map
      * Assumes it has been populated with its map and region
+     * @returns The last order value used (for sorting)
      */
     _addToSpoilerLogItemMap: function(itemLocation, spoilerLogName, order) {
         let spoilerLogNameObject = spoilerLogName || itemLocation.SpoilerLogName;
@@ -651,7 +654,7 @@ let SaveAndLoad = {
             return;
         }
 
-        this._addItemLocationToSpoilerLogItemMap(spoilerLogNameObject, itemLocation, order);
+        return this._addItemLocationToSpoilerLogItemMap(spoilerLogNameObject, itemLocation, order);
     },
 
     /**
@@ -660,6 +663,7 @@ let SaveAndLoad = {
      * @param {string | object} spoilerLogEntryObject - The spoiler log key or object containing it
      * @param {object} itemLocation - The item location associated with the spoiler log entry
      * @param {number} order - For sorting
+     * @returns The last order value used (for sorting)
      */
     _addItemLocationToSpoilerLogItemMap: function(spoilerLogEntryObject, itemLocation, order) {
         order = order || 1;
@@ -672,6 +676,8 @@ let SaveAndLoad = {
 
             order++;
         });
+
+        return order;
     },
 
     /**
