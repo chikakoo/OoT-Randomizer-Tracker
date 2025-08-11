@@ -57,10 +57,12 @@ InteriorGroups = {
 		neverHide: true,
 		buttons: {
 			"Pot": {
+				SpoilerLogName: "KF Links House Pot",
 				ItemGroup: ItemGroups.POT,
 				LongDescription: "Throw the pot to get an item."
 			},
 			"Cow in Link's House": {
+				SpoilerLogName: "KF Links House Cow",
 				icon: "Cow",
 				ItemGroup: ItemGroups.COW,
 				LongDescription: "As an adult, beat Malon's Epona challenge to unlock the cow in Link's house.",
@@ -89,16 +91,19 @@ InteriorGroups = {
 		buttons: {
 			// TODO: DOT skip then Adult doesn't work properly, but does it matter that much...?
 			"Free Raru Item": {
+				SpoilerLogName: "ToT Reward from Rauru",
 				icon: "Light Medallion",
 				LongDescription: "This is the light medallion replacement if dungeon rewards are shuffled. Enter the Master Sword pedestal room to get it.",
 				Needs: [(age) => Data.canEnterDoorOfTime(age)]
 			},
 			"Prelude of Light": {
+				SpoilerLogName: "Sheik at Temple",
 				Age: Age.ADULT,
 				LongDescription: "When you have the Forest Medallion, enter the room with the Master Sword pedestal to receive the item.",
 				Needs: [Medallions.FOREST_MEDALLION, (age) => Data.canEnterDoorOfTime(age)]
 			},
 			"Light Arrows": {
+				SpoilerLogName: "ToT Light Arrows Cutscene",
 				icon: "Light Arrow",
 				Age: Age.ADULT,
 				LongDescription: "When you have the Shadow and Spirit Medallions, simply enter the Temple of Time as adult to receive the item.",
@@ -161,6 +166,7 @@ InteriorGroups = {
 		tooltip: "The potion shop with the red carpet and the granny holding a cat.",
 		buttons: {
 			"Show Odd Mushroom to Granny": {
+				SpoilerLogName: "Kak Granny Trade Odd Mushroom",
 				icon: "Odd Mushroom",
 				LongDescription: "Show Granny the Odd Mushroom to recieve an item.",
 				Age: Age.EITHER,
@@ -168,6 +174,7 @@ InteriorGroups = {
 				Needs: [AdultTradeItems.ODD_MUSHROOM]
 			},
 			"Buy Blue Potion Item": {
+				SpoilerLogName: "Kak Granny Buy Blue Potion",
 				icon: "Blue Potion",
 				LongDescription: "After showing the Odd Mushroom to Granny, you can buy this item for 100 rupees. After that, she will sell blue potions.",
 				Age: Age.EITHER,
@@ -200,11 +207,13 @@ InteriorGroups = {
 		tooltip: "The Happy Mask Shop",
 		buttons: {
 			"Borrow Keaton Mask": {
+				SpoilerLogName: "Market Mask Shop Item 6",
 				icon: "Keaton Mask",
 				LongDescription: "After showing the Kakariko Village guard Zelda's Letter (or having the letter when the gate is opened), you can borrow this mask.",
 				Needs: [(age) => InteriorGroups["Happy Mask Shop"]._isMaskShopOpen(age)]
 			},
 			"Borrow Skull Mask": {
+				SpoilerLogName: "Market Mask Shop Item 5",
 				icon: "Skull Mask",
 				LongDescription: "After selling the Keaton Mask to the Kakariko Guard, you can borrow this mask.",
 				Needs: [
@@ -213,6 +222,7 @@ InteriorGroups = {
 				]
 			},
 			"Borrow Spooky Mask": {
+				SpoilerLogName: "Market Mask Shop Item 8",
 				icon: "Spooky Mask",
 				LongDescription: "After selling the Skull Mask to the Skull Kid in Lost Woods, you can borrow this mask.",
 				Needs: [
@@ -221,6 +231,7 @@ InteriorGroups = {
 				]
 			},
 			"Borrow Bunny Hood": {
+				SpoilerLogName: "Market Mask Shop Item 7",
 				icon: "Bunny Hood",
 				LongDescription: "After selling the Spooky Mask to the graveyard kid, you can borrow this mask.",
 				Needs: [
@@ -229,21 +240,25 @@ InteriorGroups = {
 				]
 			},
 			"Borrow Mask of Truth": {
+				SpoilerLogName: "Market Mask Shop Item 3",
 				icon: "Mask of Truth",
 				LongDescription: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
 				Needs: [(age) => InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth(age)]
 			},
 			"Borrow Goron Mask": {
+				SpoilerLogName: "Market Mask Shop Item 4",
 				icon: "Goron Mask",
 				LongDescription: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
 				Needs: [(age) => InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth(age)]
 			},
 			"Borrow Zora Mask": {
+				SpoilerLogName: "Market Mask Shop Item 2",
 				icon: "Zora Mask",
 				LongDescription: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
 				Needs: [(age) => InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth(age)]
 			},
 			"Borrow Gerudo Mask": {
+				SpoilerLogName: "Market Mask Shop Item 1",
 				icon: "Gerudo Mask",
 				LongDescription: "After you sell the Keaton Mask, Skull Mask, Spooky Mask, and the Bunny Hood, you can borrow this mask.",
 				Needs: [(age) => InteriorGroups["Happy Mask Shop"]._canBuyMaskOfTruth(age)]
@@ -266,6 +281,7 @@ InteriorGroups = {
 		},
 		buttons: {
 			"10 Reward": {
+				SpoilerLogName: "Kak 10 Gold Skulltula Reward",
 				icon: "Skulltula",
 				iconText: "10",
 				LongDescription: "Talk to the guy on the right hand side.",
@@ -275,6 +291,7 @@ InteriorGroups = {
 				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 10]
 			},
 			"20 Reward": {
+				SpoilerLogName: "Kak 20 Gold Skulltula Reward",
 				icon: "Skulltula",
 				iconText: "20",
 				LongDescription: "Talk to the guy on the left hand side.",
@@ -284,6 +301,7 @@ InteriorGroups = {
 				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 20]
 			},
 			"30 Reward": {
+				SpoilerLogName: "Kak 30 Gold Skulltula Reward",
 				icon: "Skulltula",
 				iconText: "30",
 				LongDescription: "Talk to the middle guy.",
@@ -293,6 +311,7 @@ InteriorGroups = {
 				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 30]
 			},
 			"40 Reward": {
+				SpoilerLogName: "Kak 40 Gold Skulltula Reward",
 				icon: "Skulltula",
 				iconText: "40",
 				LongDescription: "Talk to the guy second from the left",
@@ -302,6 +321,7 @@ InteriorGroups = {
 				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 40]
 			},
 			"50 Reward": {
+				SpoilerLogName: "Kak 50 Gold Skulltula Reward",
 				icon: "Skulltula",
 				iconText: "50",
 				LongDescription: "Talk to the guy second from the right",
@@ -311,6 +331,8 @@ InteriorGroups = {
 				Needs: [() => Equipment.SKULLTULA_TOKENS.count >= 50]
 			},
 			"100 Reward": {
+				// TODO: check this name when updating the rando
+				//SpoilerLogName: "Kak 100 Gold Skulltula Reward",
 				icon: "Skulltula",
 				iconText: "100",
 				LongDescription: "Talk to center guy",
@@ -325,11 +347,13 @@ InteriorGroups = {
 		tooltip: "This is the lab with the professor and the pool of water in the back.",
 		buttons: {
 			"Lakeside Heart Piece": {
+				SpoilerLogName: "LH Lab Dive",
 				icon: "Piece of Heart",
 				LongDescription: "Use the golden scale and dive to touch the bottom of the water area. The professor will give you this item.",
 				NeedsAny: [UpgradedItems.GOLDEN_SCALE, Tricks.labHPWithoutGoldenScale.canDo]
 			},
 			"Lakeside Skulltula": {
+				SpoilerLogName: "LH GS Lab Crate",
 				icon: "Skulltula",
 				Age: Age.ADULT,
 				ItemGroup: ItemGroups.SKULLTULA,
@@ -337,6 +361,7 @@ InteriorGroups = {
 				Needs: [Items.HOOKSHOT, Equipment.IRON_BOOTS]
 			},
 			"3 Red Rupees": {
+				SpoilerLogName: [{ name: "LH Lab Dive Red Rupee {#}", count: 3 }],
 				icon: "3 Red Rupees",
 				count: 3,
 				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
@@ -344,6 +369,7 @@ InteriorGroups = {
 				NeedsAny: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]
 			},
 			"Show Eyeball Frog to Scientist": {
+				SpoilerLogName: "LH Trade Eyeball Frog",
 				icon: "Eyeball Frog",
 				Age: Age.EITHER,
 				UseAdultAge: function() { return !Tricks.equipSwap.enabled; },
@@ -356,6 +382,7 @@ InteriorGroups = {
 		tooltip: "This is the pot room as a child, and the big poe buyer room as an adult.",
 		buttons: {
 			"Child Skulltula": {
+				SpoilerLogName: "Market GS Guard House",
 				icon: "Skulltula",
 				ItemGroup: ItemGroups.SKULLTULA,
 				OverrideItemGroupCondition: true,
@@ -363,6 +390,7 @@ InteriorGroups = {
 				LongDescription: "This is the skulltula in the crate in the back of the room."
 			},
 			"Adult Big Poe Reward": {
+				SpoilerLogName: "Market 10 Big Poes",
 				Age: Age.ADULT,
 				LongDescription: "Give the poe salesman all the poes he needs to get this item.",
 				NeedsAny: [
@@ -371,6 +399,7 @@ InteriorGroups = {
 				]
 			},
 			"Child Non-Empty Crates": {
+				SpoilerLogName: "Market Guard House Child Crate 4",
 				icon: "Crate",
 				ItemGroup: ItemGroups.CRATE,
 				Age: Age.CHILD,
@@ -378,6 +407,7 @@ InteriorGroups = {
 				shouldNotDisplay: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; },
 			},
 			"Child Crates": {
+				SpoilerLogName: [{ name: "Market Guard House Child Crate {#}", count: 4 }],
 				icon: "Crate",
 				count: 4,
 				ItemGroup: ItemGroups.CRATE,
@@ -386,6 +416,7 @@ InteriorGroups = {
 				shouldNotDisplay: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
 			},
 			"Child Pots": {
+				SpoilerLogName: [{ name: "Market Guard House Child Pot {#}", count: 44 }],
 				icon: "Pot",
 				count: 44,
 				ItemGroup: ItemGroups.POT,
@@ -393,14 +424,19 @@ InteriorGroups = {
 				LongDescription: "The many pots in the room. You can reach the top ones by jumping from the box with the skulltula in it."
 			},
 			"Adult Non-Empty Pots": {
+				SpoilerLogName: [{ 
+					name: "Market Guard House Adult Pot {#}", 
+					tokens: ["1", "3", "4", "6", "7", "9", "11"]
+				}],
 				icon: "Pot",
 				count: 7,
 				ItemGroup: ItemGroups.POT,
 				Age: Age.ADULT,
 				LongDescription: "The many pots in the room.",
-				shouldNotDisplay: function() { return Settings.RandomizerSettings.shuffleEmptyCrates; }
+				shouldNotDisplay: function() { return Settings.RandomizerSettings.shuffleEmptyPots; }
 			},
 			"Adult Pots": {
+				SpoilerLogName: [{ name: "Market Guard House Adult Pot {#}", count: 11 }],
 				icon: "Pot",
 				count: 11,
 				ItemGroup: ItemGroups.POT,
@@ -414,10 +450,12 @@ InteriorGroups = {
 		tooltip: "Inside the cage with the cow and the freestanding item.",
 		buttons: {
 			"Freestanding Item": {
+				SpoilerLogName: "Kak Impas House Freestanding PoH",
 				icon: "Piece of Heart",
 				LongDescription: "Simply grab the item in the room."
 			},
 			"Cow": {
+				SpoilerLogName: "Kak Impas House Cow",
 				ItemGroup: ItemGroups.COW,
 				LongDescription: "Play Epona's Song next to the cow.",
 				Needs: [Items.OCARINA]
@@ -429,11 +467,13 @@ InteriorGroups = {
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.shuffleWonderitems; },
 		buttons: {
 			"Red Rupee on Top": {
+				SpoilerLogName: "Kak Impas House Wonderitem",
 				ItemGroup: ItemGroups.WONDERITEM,
 				icon: "Red Rupee Wonderitem",
 				LongDescription: "Climb up the stairs and walk around on the top of the cow pen to get this wonderitem."
 			},
 			"Cow": {
+				SpoilerLogName: "Kak Impas House Cow",
 				ItemGroup: ItemGroups.COW,
 				LongDescription: "Play Epona's Song next to the cow. This is shared with the Back of Impa's House check.",
 				Needs: [Items.OCARINA]
@@ -446,6 +486,10 @@ InteriorGroups = {
 		excludeFromGroup: function() { return !Settings.RandomizerSettings.cowSanity; },
 		buttons: {
 			"Cows": {
+				SpoilerLogName: [
+					"LLR Stables Left Cow",
+					"LLR Stables Right Cow"
+				],
 				useGroupImage: true,
 				count: 2,
 				ItemGroup: ItemGroups.COW,
@@ -458,11 +502,16 @@ InteriorGroups = {
 		tooltip: "This is the building with the cows and boxes you can push for the freestanding item",
 		buttons: {
 			"Freestanding Item": {
+				SpoilerLogName: "LLR Freestanding PoH",
 				icon: "Piece of Heart",
 				Age: Age.CHILD,
 				LongDescription: "Push the box out of the way and crawl through the hole to get the item."
 			},
 			"Cows": {
+				SpoilerLogName: [
+					"LLR Tower Left Cow",
+					"LLR Tower Right Cow"
+				],
 				icon: "2 Cows",
 				count: 2,
 				ItemGroup: ItemGroups.COW,
@@ -479,6 +528,10 @@ InteriorGroups = {
 		icon: "Bombchu",
 		buttons: {
 			"Prizes": {
+				SpoilerLogName: [
+					"Market Bombchu Bowling First Prize",
+					"Market Bombchu Bowling Second Prize"
+				],
 				icon: "Bombchu",
 				count: 2,
 				LongDescription: "The prizes from the minigame.",
@@ -490,16 +543,19 @@ InteriorGroups = {
 		tooltip: "The fishing pond area.",
 		buttons: {
 			"Child Fishing": {
+				SpoilerLogName: "LH Child Fishing",
 				useGroupImage: true,
 				Age: Age.CHILD,
 				LongDescription: "The prize you can get as child.",
 			},
 			"Adult Fishing": {
+				SpoilerLogName: "LH Adult Fishing",
 				useGroupImage: true,
 				Age: Age.ADULT,
 				LongDescription: "The prize you can get as adult.",
 			},
 			"Hyrule Loach": {
+				SpoilerLogName: "LH Loach Fishing",
 				LongDescription: "The Hyrule Loach. First, find the sinking lure in the fishing pond. Recommended to choose the easier option in the randomizer so it always spawns. Otherwise, it is here 1/4 attempts. It's usually by the lilypads.",
 				shouldNotDisplay: function() {
 					return !Settings.RandomizerSettings.shuffleHyruleLoach;
@@ -511,6 +567,7 @@ InteriorGroups = {
 		tooltip: "This is the archery minigame. The shopkeeper will only be here as a child.",
 		buttons: {
 			"Child Archery": {
+				SpoilerLogName: "Market Shooting Gallery Reward",
 				Age: Age.CHILD,
 				LongDescription: "This is the prize for completing the minigame as child."
 			}
@@ -520,6 +577,7 @@ InteriorGroups = {
 		tooltip: "This is the archery minigame. The shopkeeper will only be here as adult.",
 		buttons: {
 			"Adult Archery": {
+				SpoilerLogName: "Kak Shooting Gallery Reward",
 				Age: Age.ADULT,
 				LongDescription: "This is the prize for completing the minigame as adult.",
 				Needs: [Items.FAIRY_BOW]
@@ -530,11 +588,16 @@ InteriorGroups = {
 		tooltip: "The minigame where you probably want the Lens of Truth.",
 		buttons: {
 			"Salesman": {
+				SpoilerLogName: "Market Treasure Chest Game Salesman",
 				icon: "Treasure Chest Minigame Small Key",
 				LongDescription: "Talk to the salesman and buy the item for 10 rupees.",
 				shouldNotDisplay: SettingSets.VANILLA_CHEST_MINIGAME_KEYS
 			},
 			"Room 1 Chests": {
+				SpoilerLogName: [
+					"Market Treasure Chest Game Room 1 Bottom",
+					"Market Treasure Chest Game Room 1 Top"
+				],
 				icon: "Chest",
 				count: 2,
 				LongDescription: "The chests in room 1.",
@@ -542,6 +605,10 @@ InteriorGroups = {
 				Needs: [() => ItemData.getKeyCount("Treasure Chest Minigame") >= 1]
 			},
 			"Room 2 Chests": {
+				SpoilerLogName: [
+					"Market Treasure Chest Game Room 2 Bottom",
+					"Market Treasure Chest Game Room 2 Top"
+				],
 				icon: "Chest",
 				count: 2,
 				LongDescription: "The chests in room 2.",
@@ -549,6 +616,10 @@ InteriorGroups = {
 				Needs: [() => ItemData.getKeyCount("Treasure Chest Minigame") >= 2]
 			},
 			"Room 3 Chests": {
+				SpoilerLogName: [
+					"Market Treasure Chest Game Room 3 Bottom",
+					"Market Treasure Chest Game Room 3 Top"
+				],
 				icon: "Chest",
 				count: 2,
 				LongDescription: "The chests in room 3.",
@@ -556,6 +627,10 @@ InteriorGroups = {
 				Needs: [() => ItemData.getKeyCount("Treasure Chest Minigame") >= 3]
 			},
 			"Room 4 Chests": {
+				SpoilerLogName: [
+					"Market Treasure Chest Game Room 4 Bottom",
+					"Market Treasure Chest Game Room 4 Top"
+				],
 				icon: "Chest",
 				count: 2,
 				LongDescription: "The chests in room 4.",
@@ -563,6 +638,10 @@ InteriorGroups = {
 				Needs: [() => ItemData.getKeyCount("Treasure Chest Minigame") >= 4]
 			},
 			"Room 5 Chests": {
+				SpoilerLogName: [
+					"Market Treasure Chest Game Room 5 Bottom",
+					"Market Treasure Chest Game Room 5 Top"
+				],
 				icon: "Chest",
 				count: 2,
 				LongDescription: "The chests in room 5.",
@@ -570,6 +649,7 @@ InteriorGroups = {
 				Needs: [() => ItemData.getKeyCount("Treasure Chest Minigame") >= 5]
 			},
 			"Prize": {
+				SpoilerLogName: "Market Treasure Chest Game Reward",
 				icon: "Chest",
 				iconText: "♥",
 				LongDescription: "This is the prize for completing the minigame.",
@@ -584,12 +664,14 @@ InteriorGroups = {
 		tooltip: "Talon's House in Lon Lon Ranch",
 		buttons: {
 			"Super Cucco Minigame": {
+				SpoilerLogName: "LLR Talons Chickens",
 				time: function() { return Time.DAY; },
 				Age: Age.CHILD,
 				LongDescription: "Only available during the day. This is the prize for completing the minigame.",
 				Needs: [ItemLocationSets.WAKE_UP_TALON]
 			},
 			"3 Pots": {
+				SpoilerLogName: [{ name: "LLR Talons House Pot {#}", count: 3 }],
 				count: 3,
 				ItemGroup: ItemGroups.POT,
 				LongDescription: "This pot is through the door upstairs and to the left."

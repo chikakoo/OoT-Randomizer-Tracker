@@ -17,6 +17,7 @@ let OwExits = {
             ]
         },
         "Mido's House": {
+            SpoilerLogExitName: "Kokiri Forest -> KF Midos House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Mido's House",
@@ -25,6 +26,7 @@ let OwExits = {
             LongDescription: "This is the house closest to the entrance to the Lost Woods."
         },
         "Link's House": {
+            SpoilerLogExitName: "Kokiri Forest -> KF Links House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             IsComplexEntrance: true,
@@ -34,6 +36,7 @@ let OwExits = {
             LongDescription: "This is the house with the ladder."
         },
         "Saria's House": {
+            SpoilerLogExitName: "Kokiri Forest -> KF Sarias House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Saria's House",
@@ -42,6 +45,7 @@ let OwExits = {
             LongDescription: "This is the house to your right if you face away from Link's house."
         },
         "House of Twins": {
+            SpoilerLogExitName: "Kokiri Forest -> KF House of Twins",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "2 Pot Interior",
@@ -50,6 +54,7 @@ let OwExits = {
             LongDescription: "This is the house across from the shop."
         },
         "Shop": {
+            SpoilerLogExitName: "Kokiri Forest -> KF Kokiri Shop",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Kokiri Shop",
@@ -81,6 +86,7 @@ let OwExits = {
 
         // Training Area & Maze
         "Know-It-All House": {
+            SpoilerLogExitName: "Kokiri Forest -> KF Know It All House",
             DisplayGroup: { groupName: "Training Area & Maze", imageName: "Kokiri Sword" },
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
@@ -472,6 +478,7 @@ let OwExits = {
             LongDescription: "This is the entrance back to Hyrule Field."
         },
         "Talon's House": {
+            SpoilerLogExitName: "Lon Lon Ranch -> LLR Talons House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Super Cucco Minigame",
@@ -485,6 +492,7 @@ let OwExits = {
             LongDescription: "This is the first door on your left when you first enter the ranch."
         },
         "Stable": {
+            SpoilerLogExitName: "Lon Lon Ranch -> LLR Stables",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Stable",
@@ -504,6 +512,7 @@ let OwExits = {
             LongDescription: "There's an open grotto as a child at the far southwest corner of the ranch."
         },
         "Cow Shed": {
+            SpoilerLogExitName: "Lon Lon Ranch -> LLR Tower",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Cow Shed",
@@ -536,6 +545,7 @@ let OwExits = {
 
         // Interiors
         "Guard House": {
+            SpoilerLogExitName: "Market Entrance -> Market Guard House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Market Guard House",
@@ -579,6 +589,7 @@ let OwExits = {
 
         // Interiors
         "Archery Minigame": {
+            SpoilerLogExitName: "Market -> Market Shooting Gallery",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Child Archery",
@@ -590,6 +601,7 @@ let OwExits = {
             LongDescription: "This is the building just to the left of the Hyrule Castle entrance."
         },
         "Happy Mask Shop": {
+            SpoilerLogExitName: "Market -> Market Mask Shop",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Happy Mask Shop",
@@ -601,6 +613,7 @@ let OwExits = {
             LongDescription: "This is the building just to the right of the Hyrule Castle entrance."
         },
         "Potion Shop": {
+            SpoilerLogExitName: "Market -> Market Potion Shop",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Shop",
@@ -612,6 +625,7 @@ let OwExits = {
             LongDescription: "Starting at the market entrance, this is the second building you can enter going counter-clockwise."
         },
         "Bazaar": {
+            SpoilerLogExitName: "Market -> Market Bazaar",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Shop",
@@ -623,6 +637,7 @@ let OwExits = {
             LongDescription: "Starting at the market entrance, this is the first building you can enter going counter-clockwise."
         },
         "Treasure Chest Minigame": {
+            SpoilerLogExitName: "Market -> Market Treasure Chest Game",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Treasure Chest Minigame",
@@ -634,6 +649,7 @@ let OwExits = {
             LongDescription: "This is the building to the right of the market entrance exit - it's only open at night.",
         },
         "Bombchu Bowling": {
+            SpoilerLogExitName: "Market -> Market Bombchu Bowling",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Bombchu Bowling",
@@ -644,6 +660,7 @@ let OwExits = {
             LongDescription: "This building is the one between the two market alley entrances."
         },
         "Bombchu Shop": {
+            SpoilerLogExitName: "Market Back Alley -> Market Bombchu Shop",
             ExitRegion: "alley",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Shop",
@@ -654,6 +671,7 @@ let OwExits = {
             LongDescription: "This door only opens at night. Starting at the market entrance, go straight right into the alley. Take the first door on the left wall to get to the door."
         },
         "Door in Right Market Alley": {
+            SpoilerLogExitName: "Market Back Alley -> Market Man in Green House",
             ExitRegion: "alley",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "3 Pot Interior",
@@ -678,6 +696,7 @@ let OwExits = {
 
         // Interiors
         "Temple of Time": {
+            SpoilerLogExitName: "ToT Entrance -> Temple of Time",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             IsComplexEntrance: true,
@@ -748,6 +767,7 @@ let OwExits = {
 
         // Interiors
         "Hyrule Great Fairy Fountain": {
+            SpoilerLogExitName: "Hyrule Castle Grounds -> HC Great Fairy Fountain",
             ExitRegion: "hyruleCastle",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -769,6 +789,7 @@ let OwExits = {
             Needs: [Songs.SONG_OF_STORMS]
         },
         "Ganon Great Fairy Fountain": {
+            SpoilerLogExitName: "Ganons Castle Grounds -> OGC Great Fairy Fountain",
             ExitRegion: "ganonsCastle",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -863,6 +884,7 @@ let OwExits = {
             Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Talon's House": {
+            SpoilerLogExitName: "Kakariko Village -> Kak Carpenter Boss House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Talon's House Kakariko",
@@ -872,6 +894,7 @@ let OwExits = {
             LongDescription: "This is the building straight ahead of the tree that has the crate with the cucco next to it as a child."
         },
         "House of Skulltula": {
+            SpoilerLogExitName: "Kakariko Village -> Kak House of Skulltula",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "House of Skulltula",
@@ -881,6 +904,7 @@ let OwExits = {
             LongDescription: "This is the building near Impa's house, with the fence near the door."
         },
         "Impa's House": {
+            SpoilerLogExitName: "Kakariko Village -> Kak Impas House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             MapInfo: { x: 141, y: 254 },
@@ -889,6 +913,7 @@ let OwExits = {
             LongDescription: "This is the building that Anju stands by. The entrance is on the opposite site of the cucco pen.",
         },
         "Back of Impa's House": {
+            SpoilerLogExitName: "Kak Impas Ledge -> Kak Impas House Back",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Back of Impa's House",
@@ -899,6 +924,7 @@ let OwExits = {
             LongDescription: "The opening above the cucco pen.<br/><br/>Child: Grab a cucco and throw it up the building under construction. Hold forward and jump off, then angle your joystick to the top-right until you're lined up with the platform.<br/><br/>Adult: Jump onto the wood under the opening, then hold forward while under it to clip into the ledge."
         },
         "Archery Minigame": {
+            SpoilerLogExitName: "Kakariko Village -> Kak Shooting Gallery",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -915,6 +941,7 @@ let OwExits = {
             TricksToShow: [Tricks.kakShopClips]
         },
         "Windmill": {
+            SpoilerLogExitName: "Kakariko Village -> Kak Windmill",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Windmill",
@@ -957,6 +984,7 @@ let OwExits = {
             LongDescription: "This is the entrance back to Death Mountain.<br/><br/><a href='https://youtu.be/0BobG5dZv14?si=rlM7WqoQHEOz0K4k' target='_blank' title='Target wall to the right of the corner; sidehop left; sideroll release Z; get in corner; sidehop right; sidehop left; roll x2; sidehop right; sidehop left; roll x3; backflip x2; turn right; sidehop left; turn left; roll; backflip; press sword to take it out (or take out stick after landing); sidehop right once; buffer another sidehop right; buffer a neutral jumpslash; hold up'>LUNGE STORAGE CLIP</a>"
         },
         "Bazaar": {
+            SpoilerLogExitName: "Kakariko Village -> Kak Bazaar",
             DisplayGroup: { groupName: "Upper Area", imageName: "Keaton Mask" },
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
@@ -971,6 +999,7 @@ let OwExits = {
             ChildNeeds: [Tricks.kakShopClips.canDo]
         },
         "Potion Shop Front": {
+            SpoilerLogExitName: "Kakariko Village -> Kak Potion Shop Front",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Potion Shop Front",
@@ -1005,6 +1034,7 @@ let OwExits = {
         },
         "Potion Shop Back": {
             // Leaving DefaultEntranceGroupName out since it's fully covered by the front entrance
+            SpoilerLogExitName: "Kak Backyard -> Kak Potion Shop Back",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -1039,6 +1069,7 @@ let OwExits = {
             LongDescription: "This is the building to the right if you are facing the Death Mountain entrance.",
         },
         "Granny's Potion Shop": {
+            SpoilerLogExitName: "Kak Backyard -> Kak Odd Medicine Building",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -1086,6 +1117,7 @@ let OwExits = {
             IsDungeonEntrance: true
         },
         "Dampe's Shed": {
+            SpoilerLogExitName: "Graveyard -> Graveyard Dampes House",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             Time: function() { return Time.NIGHT_CHILD; },
@@ -1215,6 +1247,7 @@ let OwExits = {
             LongDescription: "This is the owl at the top of the mountain by the crater entrance."
         },
         "Great Fairy Fountain": {
+            SpoilerLogExitName: "Death Mountain Summit -> DMT Great Fairy Fountain",
             ExitRegion: "upper",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -1288,6 +1321,7 @@ let OwExits = {
             Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Great Fairy Fountain": {
+            SpoilerLogExitName: "DMC Lower Nearby -> DMC Great Fairy Fountain",
             ExitRegion: "middle",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -1368,6 +1402,7 @@ let OwExits = {
             ChildNeeds: [Tricks.goronChildStatueSkip.canDo]
         },
         "Shop": {
+            SpoilerLogExitName: "Goron City -> GC Shop",
             ExitRegion: "shop",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -1484,6 +1519,7 @@ let OwExits = {
 
         // Interiors
         "Shop": {
+            SpoilerLogExitName: "Zoras Domain -> ZD Shop",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -1530,6 +1566,7 @@ let OwExits = {
             ChildNeedsAny: [Items.FISH, Tricks.jabuFishless.canDo]
         },
         "Great Fairy Fountain": {
+            SpoilerLogExitName: "Zoras Fountain -> ZF Great Fairy Fountain",
             ExitRegion: "main",
             OneWayInteriorSpawnEntrance: true,
             DefaultEntranceGroupName: "Fairy Fountain",
@@ -1566,6 +1603,7 @@ let OwExits = {
             LongDescription: "This is the entrance to Hyrule Field."
         },
         "Lakeside Lab": {
+            SpoilerLogExitName: "Lake Hylia -> LH Lab",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             DefaultEntranceGroupName: "Lakeside Lab",
@@ -1574,6 +1612,7 @@ let OwExits = {
             LongDescription: "This is the building near the bridge by the lake."
         },
         "Fishing Pond": {
+            SpoilerLogExitName: "LH Fishing Island -> LH Fishing Hole",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,
@@ -1702,6 +1741,7 @@ let OwExits = {
             Needs: [UpgradedItems.SILVER_GAUNTLETS]
         },
         "Tent": {
+            SpoilerLogExitName: "GV Fortress Side -> GV Carpenter Tent",
             ExitRegion: "acrossBridge",
             ItemGroup: ItemGroups.INTERIOR,
             Order: 2,
@@ -1721,6 +1761,7 @@ let OwExits = {
         }
     },
 
+    // TODO Mapping: Check the GF exits
     "Gerudo Fortress": {
         // Ground Level
         "Gerudo Valley": {
@@ -1765,6 +1806,7 @@ let OwExits = {
             ]
         },
         "Bottom Left Door": {
+            SpoilerLogExitName: "Gerudo Fortress -> Hideout 1 Torch Jail",
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "jail1",
@@ -1784,6 +1826,7 @@ let OwExits = {
             Needs: [Songs.SONG_OF_STORMS]
         },
         "Enclave Left Door": {
+            SpoilerLogExitName: "GF Entrances Behind Crates -> Hideout 1 Torch Jail",
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "jail1",
@@ -1795,6 +1838,7 @@ let OwExits = {
             LongDescription: "The left door at the bottom in the enclaves with the crates."
         },
         "Enclave Right Door": {
+            SpoilerLogExitName: "GF Entrances Behind Crates -> Hideout Kitchen Hallway",
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "kitchenHallway",
@@ -1806,6 +1850,7 @@ let OwExits = {
             LongDescription: "The right door at the bottom in the enclaves with the crates."
         },
         "Bottom Right Door": {
+            SpoilerLogExitName: "Gerudo Fortress -> Hideout 4 Torches Jail",
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "jail2",
@@ -1817,6 +1862,7 @@ let OwExits = {
             LongDescription: "The door just to the left of Gerudo Training Grounds."
         },
         "Right Door Above GTG": {
+            SpoilerLogExitName: "Gerudo Fortress -> Hideout 2 Torches Jail",
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "jail3",
@@ -1828,6 +1874,7 @@ let OwExits = {
             LongDescription: "The door to the right (the first one) in the area above Gerudo Training Grounds."
         },
         "Left Door Above GTG": {
+            SpoilerLogExitName: "Gerudo Fortress -> Hideout Kitchen Hallway",
             ExitRegion: "main",
             Map: "Thieves' Hideout",
             Region: "kitchenHallway",
@@ -1841,6 +1888,7 @@ let OwExits = {
 
         // Middle Levels
         "Middle Left Door": {
+            SpoilerLogExitName: "GF Roof Entrance Cluster -> Hideout 4 Torches Jail",
             ExitRegion: "middleFloor",
             Map: "Thieves' Hideout",
             Region: "jail2",
@@ -1852,6 +1900,7 @@ let OwExits = {
             LongDescription: "The door in the middle of the fortress where you can walk to the bottom of the vines."
         },
         "Vines Left Door": {
+            SpoilerLogExitName: "GF Roof Entrance Cluster -> Hideout Kitchen Front",
             ExitRegion: "middleFloor",
             Map: "Thieves' Hideout",
             Region: "kitchenTopLeft",
@@ -1863,6 +1912,7 @@ let OwExits = {
             LongDescription: "This is the door to the left when you climb the vines on the middle floor of the fortress."
         },
         "Vines Forward Door": {
+            SpoilerLogExitName: "GF Roof Entrance Cluster -> Hideout 2 Torches Jail",
             ExitRegion: "middleFloor",
             Map: "Thieves' Hideout",
             Region: "jail3",
@@ -1874,6 +1924,7 @@ let OwExits = {
             LongDescription: "This is the door straight ahead when you climb the vines on the middle floor of the fortress."
         },
         "Upper Kitchen Door": {
+            SpoilerLogExitName: "GF Kitchen Roof Access -> Hideout Kitchen Rear",
             ExitRegion: "topOfKitchen",
             Map: "Thieves' Hideout",
             Region: "kitchenTopRight",
@@ -1885,6 +1936,7 @@ let OwExits = {
             LongDescription: "This is the door on the top of the right side of the fortress, above the door to jail 4 and nearest to the skulltula. Adult can do a trick jump near the vines to get to this door from the middle level."
         },
         "Upper Jail Door": {
+            SpoilerLogExitName: "GF 3 Torches Jail Exterior -> Hideout 3 Torches Jail",
             ExitRegion: "jail4Door",
             Map: "Thieves' Hideout",
             Region: "jail4",
@@ -1896,6 +1948,7 @@ let OwExits = {
             LongDescription: "This door needs to be dropped down to from an upper area of the fortress. If not using entrance shuffle, you can get here from navigating around the kitchen's upper exit."
         },
         "Door Above Jail 1": {
+            SpoilerLogExitName: "GF Break Room Entrance -> Hideout Break Room",
             ExitRegion: "aboveJail1",
             Map: "Thieves' Hideout",
             Region: "topLower",
@@ -1908,6 +1961,7 @@ let OwExits = {
             TricksToShow: [Tricks.gfChildJumpByTopKitchen]
         },
         "Door Above Link's Jail": {
+            SpoilerLogExitName: "GF Balcony -> Hideout Hall to Balcony",
             ExitRegion: "aboveLinksJail",
             Map: "Thieves' Hideout",
             Region: "topUpper",
@@ -1919,7 +1973,6 @@ let OwExits = {
             LongDescription: "Normally only reachable from the entrance that leads there. There's a glitch involving a specific hookshot angle from the top of Link's jail as well.",
             TricksToShow: [Tricks.gfHookshotToAboveLinksJail]
         },
-
 
         // Hidden, non-Thieves' Hideout shuffle exits for travel purposes
         "Gerudo Fortress to Jail 1": {
@@ -2287,6 +2340,7 @@ let OwExits = {
             LongDescription: "This is the entrance to the wasteland."
         },
         "Great Fairy Fountain": {
+            SpoilerLogExitName: "Desert Colossus -> Colossus Great Fairy Fountain",
             ExitRegion: "main",
             ItemGroup: ItemGroups.INTERIOR,
             OneWayInteriorSpawnEntrance: true,

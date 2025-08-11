@@ -345,7 +345,7 @@ let DropdownUI = {
         if (oldGroup) {
             if (oldGroup.overworldLink) {
                 Data.setOWLocationFound(
-                    ItemLocationDisplay.currentLocationName, 
+                    itemLocation.ExitMap, 
                     itemLocation, 
                     oldGroup.overworldLink.ExitMap, 
                     oldGroup.overworldLink.Name,
@@ -364,17 +364,20 @@ let DropdownUI = {
         EntranceUI.initializeEntranceGroupData(itemLocation, groupName);
 
         let itemLocationEntranceTasksContainer = document.getElementById(`${itemLocation.Name}-entrance-tasks`);
-        EntranceUI.createButtonDivs(itemLocation, itemLocationEntranceTasksContainer);
+        if (itemLocationEntranceTasksContainer) {
+            EntranceUI.createButtonDivs(itemLocation, itemLocationEntranceTasksContainer);
+        }
         
-        if (Data.isItemLocationAShop(itemLocation)) {
-            ItemLocationDisplay.toggleMoreInfo(document.getElementById(itemLocation.Name), itemLocation, true);
+        let itemLocationContainer = document.getElementById(itemLocation.Name);
+        if (itemLocationContainer && Data.isItemLocationAShop(itemLocation)) {
+            ItemLocationDisplay.toggleMoreInfo(itemLocationContainer, itemLocation, true);
         }
         
         ItemLocationDisplay.refreshNotes(itemLocation); 
 
         let group = entranceDataObject[groupName];
         if (group.overworldLink) {
-           Data.setOWLocationFound(ItemLocationDisplay.currentLocationName, itemLocation, group.overworldLink.ExitMap, group.overworldLink.Name);
+           Data.setOWLocationFound(itemLocation.ExitMap, itemLocation, group.overworldLink.ExitMap, group.overworldLink.Name);
         }
 
         this._tryFirePostClick(itemLocation, group, true);

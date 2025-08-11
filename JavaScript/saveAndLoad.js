@@ -482,23 +482,46 @@ let SaveAndLoad = {
      * @param {any} spoilerLogData: The loaded spoiler log data
      */
     _loadSpoilerLog: function(spoilerLogData) {
-        // TODO: select the correct MQ/standard dungeon here so the correct map is in MapLocations
+        SpoilerLogItemMap = {};
 
         this._setDungeonTypes(spoilerLogData);
-        this._populateSpoilerLogBossMap();
+        this._populateSpoilerLogExitMap();
 
         // Fill all entrance data first first
-        // TODO: interior/grotto/ow
+        // TODO: grotto/ow + make more generic
+        _this = this;
         Object.keys(spoilerLogData.entrances).forEach(entrance => {
-            if (!SpoilerLogBossMap[entrance]) {
-                // TODO when done: if this DOES NOT have an entry, log an error
+            if (SpoilerLogInteriorMap[entrance]) {
+                let exitToModify = SpoilerLogInteriorMap[entrance];
+                let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
+                let exitLeadsTo = SpoilerLogInteriorEntranceMap[_this._getSpoilerLogLocationKey(spoilerExitLeadsTo)]; 
+
+                if (!exitLeadsTo) { 
+                    // TODO: log an error here saying there's an 
+                    // unmapped exit in the interior entrance map
+                    return; 
+                }
+
+                if (exitLeadsTo.entranceGroup) {
+                    EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo.entranceGroup);
+                    DropdownUI.onInteriorOrGrottoDropdownChange(exitToModify, exitLeadsTo.entranceGroup);
+                }
+
+                this._addItemLocationToSpoilerLogItemMap(exitLeadsTo.items || [], exitToModify);
+
                 return;
             }
 
-            let exitToModify = SpoilerLogBossMap[entrance];
-            let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
-            let exitLeadsTo = SpoilerLogBossEntranceMap[`${spoilerExitLeadsTo.region}|${spoilerExitLeadsTo.from}`];
-            EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo);
+            if (SpoilerLogBossMap[entrance]) {
+                let exitToModify = SpoilerLogBossMap[entrance];
+                let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
+                let exitLeadsTo = SpoilerLogBossEntranceMap[_this._getSpoilerLogLocationKey(spoilerExitLeadsTo)];
+                EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo);
+                DropdownUI.onInteriorOrGrottoDropdownChange(exitToModify, exitLeadsTo);
+                return;
+            }
+
+            // TODO when done: if this DOES NOT have an entry, log an error
         });
 
         this._populateSpoilerLogItemMap();
@@ -520,7 +543,7 @@ let SaveAndLoad = {
                 : logItem;
 
             SpoilerLogItemMap[logLocation].itemLocations.forEach(itemLocation => {
-                let key = `${itemLocation.Name}|${itemLocation.Map}|${itemLocation.Region}`;
+                let key = `${itemLocation.Name}|${itemLocation.ExitMap || itemLocation.Map}|${itemLocation.ExitRegion || itemLocation.Region}`;
                 updateData[key] ??= [];
                 updateData[key].push({
                     itemLocation: itemLocation,
@@ -537,7 +560,12 @@ let SaveAndLoad = {
 
         // Use the sorted update values to update the notes
         Object.values(updateData).forEach(updateInfoArray => {
-            updateInfoArray.forEach(updateInfo => {
+            updateInfoArray.sort((a, b) => {
+                if (a.order < b.order) {
+                    return -1
+                }
+                return a.order > b.order ? 1 : 0;
+            }).forEach(updateInfo => {
                 let itemLocation = updateInfo.itemLocation;
                 let itemName = updateInfo.itemName;
                 if (itemLocation.notes) {
@@ -565,26 +593,32 @@ let SaveAndLoad = {
         });
     },
 
-    _populateSpoilerLogBossMap: function() {
+    _populateSpoilerLogExitMap: function() {
+        SpoilerLogInteriorMap = {};
         SpoilerLogBossMap = {};
 
         let _this = this;
         Object.keys(OwExits).forEach(function(mapName) {
             Object.keys(OwExits[mapName]).forEach(function(exitName) {
                 let exit = OwExits[mapName][exitName];
-                _this._addToSpoilerLogExitMap(exit);
+
+                if (exit.ItemGroup === ItemGroups.INTERIOR) {
+                    _this._addToSpoilerLogExitMap(exit, SpoilerLogInteriorMap);
+                } else if (exit.ItemGroup === ItemGroups.BOSS_ENTRANCE) {
+                    _this._addToSpoilerLogExitMap(exit, SpoilerLogBossMap);
+                }
             });
 	    });
     },
 
     _populateSpoilerLogItemMap: function() {
-        SpoilerLogItemMap = {};
-        
         let _this = this;
         Object.values(MapLocations).forEach(function(map) {
             Object.values(map.Regions).forEach(function(region) {
+                let order = 1;
                 Object.values(region.ItemLocations).forEach(function(itemLocation) {
-                    _this._addToSpoilerLogItemMap(itemLocation);
+                    order = _this._addToSpoilerLogItemMap(itemLocation);
+                    order++;
                 });
             });
         });
@@ -598,8 +632,10 @@ let SaveAndLoad = {
                     let entranceDataButtons = entranceData[entranceGroup.name].buttons;
                     let order = 1;
                     Object.values(entranceDataButtons).forEach(button => {
-                        _this._addToSpoilerLogItemMap(exit, button.SpoilerLogName, order);
-                        order++;
+                        if (!button.shouldNotDisplay || !button.shouldNotDisplay()) {
+                            order = _this._addToSpoilerLogItemMap(exit, button.SpoilerLogName, order);
+                            order++;
+                        }
                     });
                 }
             });
@@ -609,6 +645,7 @@ let SaveAndLoad = {
     /**
      * Adds the item location to the spoiler log item map
      * Assumes it has been populated with its map and region
+     * @returns The last order value used (for sorting)
      */
     _addToSpoilerLogItemMap: function(itemLocation, spoilerLogName, order) {
         let spoilerLogNameObject = spoilerLogName || itemLocation.SpoilerLogName;
@@ -616,53 +653,115 @@ let SaveAndLoad = {
             return;
         }
 
-        if (typeof spoilerLogNameObject === "string") {
-            this._addItemLocationToSpoilerLogItemMap(spoilerLogNameObject, itemLocation, order);
-        } else {
-            spoilerLogNameObject.forEach(data => {
-                let name = data.name;
-                if (data.count) {
-                    let min = 1;
-                    let max = data.count;
-                    if (typeof data.count === 'object') {
-                        min = data.count.min;
-                        max = data.count.max;
+        return this._addItemLocationToSpoilerLogItemMap(spoilerLogNameObject, itemLocation, order);
+    },
 
-                        if (!min || !max) {
-                            console.log(`ERROR: min or max not found on count on item location ${itemLocation.name}`);
-                            return;
-                        }
+    /**
+     * Adds the item location to the spoiler log entry map
+     * Includes parsing every spoiler log entry passed in
+     * @param {string | object} spoilerLogEntryObject - The spoiler log key or object containing it
+     * @param {object} itemLocation - The item location associated with the spoiler log entry
+     * @param {number} order - For sorting
+     * @returns The last order value used (for sorting)
+     */
+    _addItemLocationToSpoilerLogItemMap: function(spoilerLogEntryObject, itemLocation, order) {
+        order = order || 1;
 
-                        if (min > max) {
-                            let temp = min;
-                            min = max;
-                            max = temp;
-                        }
+        let spoilerLogEntries = this._getSpoilerLogEntries(spoilerLogEntryObject);
+        spoilerLogEntries.forEach(spoilerLogEntryName => {
+            SpoilerLogItemMap[spoilerLogEntryName] ??= { itemLocations: [] };
+            SpoilerLogItemMap[spoilerLogEntryName].itemLocations.push(itemLocation);
+            SpoilerLogItemMap[spoilerLogEntryName].order = order;
+
+            order++;
+        });
+
+        return order;
+    },
+
+    /**
+     * Spoiler log entry objects can either be:
+     * - A string
+     * - An array of objects with either a string for the name, or...
+     *   - name: The name of the entry, using {#} for tokens
+     *   - count: Either a number or an object representing the range of numbers to
+     *      create multiple spoiler log objects for
+     *     - If it's an object, it will contain min and max for the range
+     *   - tokens: An array of strings to use as the tokens
+     * 
+     * For example, "Test {#}", with a count of 3, creates three entries:
+     * - Test 1; Test 2; Test3
+     * @param {string | Array<object>} spoilerLogEntryObject 
+     * @returns An array of strings containing keys to the spoiler log entries
+     */
+    _getSpoilerLogEntries: function(spoilerLogEntryObject) {
+        // Object passed as a string - return it in an array
+        if (typeof spoilerLogEntryObject === "string") {
+            return [spoilerLogEntryObject];
+        } 
+
+        let output = [];
+        spoilerLogEntryObject.forEach(data => {
+            let name = typeof data === "string"
+                ? data
+                : data.name;
+            if (data.count) {
+                let min = 1;
+                let max = data.count;
+
+                // Count has a min/max, so we need to parse it
+                if (typeof data.count === 'object') {
+                    min = data.count.min;
+                    max = data.count.max;
+
+                    if (!min || !max) {
+                        console.log(`ERROR: min or max not found on: ${name}`);
+                        return;
                     }
 
-                    for (let i = min; i <= max; i++) {
-                        let spoilerLogEntry = name.replace("{#}", i);
-                        this._addItemLocationToSpoilerLogItemMap(spoilerLogEntry, itemLocation, order);
+                    if (min > max) {
+                        let temp = min;
+                        min = max;
+                        max = temp;
                     }
-                } else {
-                    this._addItemLocationToSpoilerLogItemMap(name, itemLocation, order);
                 }
-            });
-        }
+
+                for (let i = min; i <= max; i++) {
+                    let spoilerLogEntry = name.replace("{#}", i);
+                    output.push(spoilerLogEntry);
+                }
+
+            // If no count, check for tokens
+            } else if (data.tokens) {
+                data.tokens.forEach(token => {
+                    let spoilerLogEntry = name.replace("{#}", token);
+                    output.push(spoilerLogEntry);
+                })
+
+            // No  or tokens, just push the name
+            } else {
+                output.push(name);
+            }
+        });
+
+        return output;
     },
 
-     _addItemLocationToSpoilerLogItemMap: function(name, itemLocation, order) {
-        SpoilerLogItemMap[name] ??= { itemLocations: [] };
-        SpoilerLogItemMap[name].itemLocations.push(itemLocation);
-
-        if (order && order > 0) {
-            SpoilerLogItemMap[name].order = order;
-        }
-    },
-
-    _addToSpoilerLogExitMap: function(exit) {
+    _addToSpoilerLogExitMap: function(exit, mapToFill) {
         if (exit.SpoilerLogExitName) {
-            SpoilerLogBossMap[exit.SpoilerLogExitName] = exit;
+            mapToFill[exit.SpoilerLogExitName] = exit;
         }
+    },
+
+    /**
+     * Gets the spoiler log location key given the location
+     * - If it is a string, just returns it
+     * - If it's an object, it will be formatted as "<spoilerLogLocation.region>|<spoilerLogLocation.from>"
+     * @param {*} spoilerLogLocation 
+     */
+    _getSpoilerLogLocationKey: function(spoilerLogLocation) {
+        return typeof spoilerLogLocation === "string"
+            ? spoilerLogLocation
+            : `${spoilerLogLocation.region}|${spoilerLogLocation.from}`;
     }
 };
