@@ -489,13 +489,12 @@ let SaveAndLoad = {
 
         // Fill all entrance data first first
         // TODO: interior/grotto/ow + make more generic
+        _this = this;
         Object.keys(spoilerLogData.entrances).forEach(entrance => {
             if (SpoilerLogInteriorMap[entrance]) {
                 let exitToModify = SpoilerLogInteriorMap[entrance];
                 let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
-
-                // No region/from yet, but change if needed
-                let exitLeadsTo = SpoilerLogInteriorEntranceMap[spoilerExitLeadsTo]; 
+                let exitLeadsTo = SpoilerLogInteriorEntranceMap[_this._getSpoilerLogLocationKey(spoilerExitLeadsTo)]; 
 
                 if (!exitLeadsTo) { 
                     // TODO: log an error here saying there's an 
@@ -516,7 +515,7 @@ let SaveAndLoad = {
             if (SpoilerLogBossMap[entrance]) {
                 let exitToModify = SpoilerLogBossMap[entrance];
                 let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
-                let exitLeadsTo = SpoilerLogBossEntranceMap[`${spoilerExitLeadsTo.region}|${spoilerExitLeadsTo.from}`];
+                let exitLeadsTo = SpoilerLogBossEntranceMap[_this._getSpoilerLogLocationKey(spoilerExitLeadsTo)];
                 EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo);
                 DropdownUI.onInteriorOrGrottoDropdownChange(exitToModify, exitLeadsTo);
                 return;
@@ -752,5 +751,17 @@ let SaveAndLoad = {
         if (exit.SpoilerLogExitName) {
             mapToFill[exit.SpoilerLogExitName] = exit;
         }
+    },
+
+    /**
+     * Gets the spoiler log location key given the location
+     * - If it is a string, just returns it
+     * - If it's an object, it will be formatted as "<spoilerLogLocation.region>|<spoilerLogLocation.from>"
+     * @param {*} spoilerLogLocation 
+     */
+    _getSpoilerLogLocationKey: function(spoilerLogLocation) {
+        return typeof spoilerLogLocation === "string"
+            ? spoilerLogLocation
+            : `${spoilerLogLocation.region}|${spoilerLogLocation.from}`;
     }
 };

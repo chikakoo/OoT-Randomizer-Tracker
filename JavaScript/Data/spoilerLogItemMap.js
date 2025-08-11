@@ -168,8 +168,49 @@ let SpoilerLogInteriorEntranceMap = {
     "LH Lab": { entranceGroup: "Lakeside Lab" },
     "LH Fishing Hole": { entranceGroup: "Fishing Pond" },
 
-    // Generic interiors
-    
+    // Gerudo Valley / Fortress
+    "GV Carpenter Tent": { items: [] },
+    "Hideout 1 Torch Jail|Gerudo Fortress": { 
+        entranceGroup: "Jail 1 Left" // Bottom Left Door
+    }, 
+    "Hideout 1 Torch Jail|GF Entrances Behind Crates": {
+        entranceGroup: "Jail 1 Right" // Enclave Left Door
+    },
+    "Hideout Kitchen Hallway|GF Entrances Behind Crates": {
+        entranceGroup: "Kitchen Far Bottom" // Enclave Right Door
+    },
+    "Hideout 4 Torches Jail|Gerudo Fortress": {
+        entranceGroup: "Jail 2 Right" // Bottom Right Door
+    },
+    "Hideout 2 Torches Jail|Gerudo Fortress": {
+        entranceGroup: "Jail 3 Right" // Right Door Above GTG
+    },
+    "Hideout Kitchen Hallway|Gerudo Fortress": {
+        entranceGroup: "Kitchen Middle Bottom" // Left Door Above GTG
+    },
+    "Hideout 4 Torches Jail|GF Roof Entrance Cluster": {
+        entranceGroup: "Jail 2 Left" // Middle Left Door
+    },
+    "Hideout Kitchen Front|GF Roof Entrance Cluster": {
+        entranceGroup: "Kitchen Top Left" // Vines Left Door
+    },
+    "Hideout 2 Torches Jail|GF Roof Entrance Cluster": {
+        entranceGroup: "Jail 3 Left" // Vines Forward Door
+    },
+    "Hideout Kitchen Rear|GF Kitchen Roof Access": {
+        entranceGroup: "Kitchen Top Right" // Upper Kitchen Door
+    },
+    "Hideout 3 Torches Jail|GF 3 Torches Jail Exterior": {
+        entranceGroup: "Jail 4 Entrance" // Upper Jail Door
+    },
+    "Hideout Break Room|GF Break Room Entrance": {
+        entranceGroup: "Top Room Lower" // Door Above Jail 1
+    },
+    "Hideout Hall to Balcony|GF Balcony": {
+        entranceGroup: "Top Room Upper" // Door Above Link's Jail
+    },
+
+    // Desert
     "Colossus Great Fairy Fountain": { 
         entranceGroup: "Fairy Fountain",
         items: ["Colossus Great Fairy Reward"]
