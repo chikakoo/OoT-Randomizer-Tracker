@@ -12,6 +12,7 @@
  */
 let SpoilerLogItemMap = {};
 let SpoilerLogInteriorMap = {};
+let SpoilerLogGrottoMap = {};
 let SpoilerLogBossMap = {};
 
 /**
@@ -215,6 +216,10 @@ let SpoilerLogInteriorEntranceMap = {
         entranceGroup: "Fairy Fountain",
         items: ["Colossus Great Fairy Reward"]
     }
+};
+
+let SpoilerLogGrottoEntranceMap = {
+
 };
 
 let SpoilerLogBossEntranceMap = {

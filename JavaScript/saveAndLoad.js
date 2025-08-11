@@ -486,44 +486,7 @@ let SaveAndLoad = {
 
         this._setDungeonTypes(spoilerLogData);
         this._populateSpoilerLogExitMap();
-
-        // Fill all entrance data first first
-        // TODO: grotto/ow + make more generic
-        _this = this;
-        Object.keys(spoilerLogData.entrances).forEach(entrance => {
-            if (SpoilerLogInteriorMap[entrance]) {
-                let exitToModify = SpoilerLogInteriorMap[entrance];
-                let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
-                let exitLeadsTo = SpoilerLogInteriorEntranceMap[_this._getSpoilerLogLocationKey(spoilerExitLeadsTo)]; 
-
-                if (!exitLeadsTo) { 
-                    // TODO: log an error here saying there's an 
-                    // unmapped exit in the interior entrance map
-                    return; 
-                }
-
-                if (exitLeadsTo.entranceGroup) {
-                    EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo.entranceGroup);
-                    DropdownUI.onInteriorOrGrottoDropdownChange(exitToModify, exitLeadsTo.entranceGroup);
-                }
-
-                this._addItemLocationToSpoilerLogItemMap(exitLeadsTo.items || [], exitToModify);
-
-                return;
-            }
-
-            if (SpoilerLogBossMap[entrance]) {
-                let exitToModify = SpoilerLogBossMap[entrance];
-                let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
-                let exitLeadsTo = SpoilerLogBossEntranceMap[_this._getSpoilerLogLocationKey(spoilerExitLeadsTo)];
-                EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo);
-                DropdownUI.onInteriorOrGrottoDropdownChange(exitToModify, exitLeadsTo);
-                return;
-            }
-
-            // TODO when done: if this DOES NOT have an entry, log an error
-        });
-
+        this._assignAndPopulateEntrances(spoilerLogData);
         this._populateSpoilerLogItemMap();
 
         // Place each item to update in a map array containing objects with the following format
@@ -591,20 +554,76 @@ let SaveAndLoad = {
 
     _populateSpoilerLogExitMap: function() {
         SpoilerLogInteriorMap = {};
+        SpoilerLogGrottoMap = {};
         SpoilerLogBossMap = {};
 
         let _this = this;
         Object.keys(OwExits).forEach(function(mapName) {
             Object.keys(OwExits[mapName]).forEach(function(exitName) {
                 let exit = OwExits[mapName][exitName];
-
-                if (exit.ItemGroup === ItemGroups.INTERIOR) {
-                    _this._addToSpoilerLogExitMap(exit, SpoilerLogInteriorMap);
-                } else if (exit.ItemGroup === ItemGroups.BOSS_ENTRANCE) {
-                    _this._addToSpoilerLogExitMap(exit, SpoilerLogBossMap);
+                switch(exit.ItemGroup) {
+                    case ItemGroups.INTERIOR:
+                        _this._addToSpoilerLogExitMap(exit, SpoilerLogInteriorMap);
+                        break;
+                    case ItemGroups.GROTTO:
+                        _this._addToSpoilerLogExitMap(exit, SpoilerLogGrottoMap);
+                        break;
+                    case ItemGroups.BOSS_ENTRANCE: 
+                        _this._addToSpoilerLogExitMap(exit, SpoilerLogBossMap);
+                        break;
                 }
             });
 	    });
+    },
+
+    _assignAndPopulateEntrances: function(spoilerLogData) {
+        // Fill all entrance data first first
+        // TODO: Ow
+        _this = this;
+        Object.keys(spoilerLogData.entrances).forEach(entrance => {
+            // Interiors
+            if (SpoilerLogInteriorMap[entrance]) {
+                this._addInteriorOrGrottoEntrance(
+                    spoilerLogData, entrance, SpoilerLogInteriorMap, SpoilerLogInteriorEntranceMap);
+            }
+
+            // Grottos
+            else if (SpoilerLogGrottoMap[entrance]) {
+                this._addInteriorOrGrottoEntrance(
+                    spoilerLogData, entrance, SpoilerLogGrottoMap, SpoilerLogGrottoEntranceMap);
+            }
+
+            // Bosses
+            else if (SpoilerLogBossMap[entrance]) {
+                let exitToModify = SpoilerLogBossMap[entrance];
+                let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
+                let exitLeadsTo = SpoilerLogBossEntranceMap[_this._getSpoilerLogLocationKey(spoilerExitLeadsTo)];
+                EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo);
+                DropdownUI.onInteriorOrGrottoDropdownChange(exitToModify, exitLeadsTo);
+                return;
+            }
+
+            // TODO when done: if this DOES NOT have an entry, log an error
+        });
+    },
+
+    _addInteriorOrGrottoEntrance: function(spoilerLogData, entrance, spoilerLogMap, spoilerLogEntranceMap) {
+        let exitToModify = spoilerLogMap[entrance];
+        let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
+        let exitLeadsTo = spoilerLogEntranceMap[_this._getSpoilerLogLocationKey(spoilerExitLeadsTo)]; 
+
+        if (!exitLeadsTo) { 
+            // TODO: log an error here saying there's an 
+            // unmapped exit in the entrance map
+            return; 
+        }
+
+        if (exitLeadsTo.entranceGroup) {
+            EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo.entranceGroup);
+            DropdownUI.onInteriorOrGrottoDropdownChange(exitToModify, exitLeadsTo.entranceGroup);
+        }
+
+        this._addItemLocationToSpoilerLogItemMap(exitLeadsTo.items || [], exitToModify);
     },
 
     _populateSpoilerLogItemMap: function() {
