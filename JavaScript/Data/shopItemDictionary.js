@@ -161,8 +161,11 @@ let ShopItemDictionary = {
 	
 	"bombchus": "Bombchu.png",
 	"bombchus(5)": "Bombchu.png",
+	"bombchu(5)": "Bombchu.png",
 	"bombchus(10)": "Bombchu.png",
+	"bombchu(10)": "Bombchu.png",
 	"bombchus(20)": "Bombchu.png",
+	"bombchu(20)": "Bombchu.png",
 	"bombchu": "Bombchu.png",
 	"chus": "Bombchu.png",
 	"chu": "Bombchu.png",
@@ -314,7 +317,8 @@ let ShopItemDictionary = {
 	"bottledfairy": "Fairy.png",
 	"bottlewithfairy": "Fairy.png",
 	
-	"fairydrop": "Walk Icon.png",
+	"fairydrop": "Fairy Drop.png",
+	"fairysspirit": "Fairy Drop.png",
 	
 	"poe": "Small Poe.png",
 	"poebottle": "Small Poe.png",
@@ -333,6 +337,7 @@ let ShopItemDictionary = {
 	"bottlewithmilk": "Lon Lon Milk.png",
 	
 	"bugs": "Bugs.png",
+	"bottlebug": "Bugs.png",
 	"bottledbugs": "Bugs.png",
 	"bottlewithbugs": "Bugs.png",
 
@@ -373,6 +378,7 @@ let ShopItemDictionary = {
 	"bombs": "Bomb.png",
 	"bombs(5)": "Bomb.png",
 	"bombs(10)": "Bomb.png",
+	"bombs(20)": "Bomb.png",
 	
 	"bundleofarrows": "Arrows.png",
 	"arrows": "Arrows.png",
@@ -380,6 +386,7 @@ let ShopItemDictionary = {
 	"arrows(5)": "Arrows.png",
 	"arrows(10)": "Arrows.png",
 	"arrows(30)": "Arrows.png",
+	"arrows(50)": "Arrows.png",
 
 	"dekuseeds": "Deku Seeds.png",
 	"dekuseed": "Deku Seeds.png",
@@ -458,7 +465,7 @@ let ShopItemDictionary = {
 	"bosskeywater": "Water Temple Boss Key.png",
 	"bigkeywater": "Water Temple Boss Key.png",
 	"bkwater": "Water Temple Boss Key.png",
-	"bigkey(watertemple)": "Water Temple Boss Key.png",
+	"bosskey(watertemple)": "Water Temple Boss Key.png",
 
 	"shadowtemplesmallkey": "Shadow Temple Small Key.png",
 	"shadowsmallkey": "Shadow Temple Small Key.png",
@@ -477,6 +484,7 @@ let ShopItemDictionary = {
 	"bigkeyshadow": "Shadow Temple Boss Key.png",
 	"bkshadow": "Shadow Temple Boss Key.png",
 	"bosskeyshadowtemple": "Shadow Temple Boss Key.png",
+	"bosskey(shadowtemple)": "Spirit Temple Boss Key.png",
 
 	"spirittemplesmallkey": "Spirit Temple Small Key.png",
 	"spiritsmallkey": "Spirit Temple Small Key.png",
@@ -564,28 +572,7 @@ let ShopItemDictionary = {
 	// Rupees
 	"silverrupee": "Silver Rupee.png",
 	"silver": "Silver Rupee.png",
-	"silverrupeepouch(dodongoscavernstaircase)": "Silver Rupee.png",
-	"silverrupeepouch(icecavernspinningscythe)": "Silver Rupee.png",
-	"silverrupeepouch(icecavernpushblock)": "Silver Rupee.png",
-	"silverrupeepouch(bottomofthewellbasement)": "Silver Rupee.png",
-	"silverrupeepouch(shadowtemplescytheshortcut)": "Silver Rupee.png",
-	"silverrupeepouch(shadowtempleinvisibleblades)": "Silver Rupee.png",
-	"silverrupeepouch(shadowtemplehugepit)": "Silver Rupee.png",
-	"silverrupeepouch(shadowtempleinvisiblespikes)": "Silver Rupee.png",
-	"silverrupeepouch(gerudotraininggroundslopes)": "Silver Rupee.png",
-	"silverrupeepouch(gerudotraininggroundlava)": "Silver Rupee.png",
-	"silverrupeepouch(gerudotraininggroundwater)": "Silver Rupee.png",
-	"silverrupeepouch(spirittemplechildearlytorches)": "Silver Rupee.png",
-	"silverrupeepouch(spirittempleadultboulders)": "Silver Rupee.png",
-	"silverrupeepouch(spirittemplelobbyandloweradult)": "Silver Rupee.png",
-	"silverrupeepouch(spirittemplesunblock)": "Silver Rupee.png",
-	"silverrupeepouch(spirittempleadultclimb)": "Silver Rupee.png",
-	"silverrupeepouch(ganonscastlespirittrial)": "Silver Rupee.png",
-	"silverrupeepouch(ganonscastlelighttrial)": "Silver Rupee.png",
-	"silverrupeepouch((ganonscastlefiretrial)": "Silver Rupee.png",
-	"silverrupeepouch(ganonscastleshadowtrial)": "Silver Rupee.png",
-	"silverrupeepouch((ganonscastlewatertrial)": "Silver Rupee.png",
-	"silverrupeepouch(ganonscastleforesttrial)": "Silver Rupee.png",
+	"silverrupeepouch": "Silver Rupee.png",
 
 	"greenrupee": "Green Rupee.png",
 	"green": "Green Rupee.png",

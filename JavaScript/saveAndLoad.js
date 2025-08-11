@@ -537,11 +537,7 @@ let SaveAndLoad = {
                 return;
             }
 
-            let logItem = spoilerLogData.locations[logLocation];
-            let itemName = logItem.item
-                ? logItem.item
-                : logItem;
-
+            let itemName = this._getLogItemString(spoilerLogData.locations[logLocation]);
             SpoilerLogItemMap[logLocation].itemLocations.forEach(itemLocation => {
                 let key = `${itemLocation.Name}|${itemLocation.ExitMap || itemLocation.Map}|${itemLocation.ExitRegion || itemLocation.Region}`;
                 updateData[key] ??= [];
@@ -757,11 +753,49 @@ let SaveAndLoad = {
      * Gets the spoiler log location key given the location
      * - If it is a string, just returns it
      * - If it's an object, it will be formatted as "<spoilerLogLocation.region>|<spoilerLogLocation.from>"
-     * @param {*} spoilerLogLocation 
+     * @param {string | object} spoilerLogLocation 
      */
     _getSpoilerLogLocationKey: function(spoilerLogLocation) {
         return typeof spoilerLogLocation === "string"
             ? spoilerLogLocation
             : `${spoilerLogLocation.region}|${spoilerLogLocation.from}`;
+    },
+
+    /**
+     * Gets the string form of the log item, to place directly into the comments
+     * - If a string, return it
+     * - Else, parse in the form of this (assume empty strings where properties don't exist):
+     *   - <price> <item>
+     * 
+     * In all cases...
+     * - Trim off the start of the item if it starts with "Buy "
+     * - Trim to the end all instances of " for " (handles prices that say Buy X for X Rupees)
+     * - Include a comment for silver rupee pouches
+     * @param {string | object} logItem 
+     */
+    _getLogItemString: function(logItem) {
+        let itemName = logItem.item
+            ? logItem.item
+            : logItem;
+        let comment = "";
+
+        if (itemName.startsWith("Buy ")) {
+            itemName = itemName.slice(4);
+        }
+
+        if (itemName.includes(" for ")) {
+            itemName = itemName.split(" for ")[0];
+        }
+
+        if (itemName.startsWith("Silver Rupee Pouch (")) {
+            comment = `//Pouch: ${itemName.split("(")[1].replace(")", "")}`;
+            itemName = "Silver Rupee Pouch";
+        }
+
+        let output = logItem.price 
+            ? `${logItem.price} ${itemName} ${comment}`
+            : `${itemName} ${comment}`;
+
+        return output.trim();
     }
 };
