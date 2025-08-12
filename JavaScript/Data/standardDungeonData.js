@@ -857,7 +857,8 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Small Crate in Elevator Room": {
+                    "Small Crate in Elevator Room": { 
+                        SpoilerLogName: "Jabu Jabus Belly Small Wooden Crate 2",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 164, y: 177, floor: "F1" },
                         Age: Age.EITHER,
@@ -866,6 +867,9 @@ let StandardDungeons = {
                         LongDescription: "After the first room, break the small crate on the right for this item. The left one drops nothing."
                     },
                     "2 Small Crates in Elevator Room": {
+                        SpoilerLogName: [
+                            { name: "Jabu Jabus Belly Small Wooden Crate {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
@@ -873,7 +877,7 @@ let StandardDungeons = {
                         MapInfo: { x: 164, y: 177, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 1.1,
-                        LongDescription: "After the first room, use the elevator to cross to get to these small crates"
+                        LongDescription: "After the first room, use the elevator to cross to get to these small crates."
                     }
                 }
             },
@@ -882,6 +886,9 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "5 Pots in Room by Vines": {
+                        SpoilerLogName: [
+                            { name: "Jabu Jabus Belly Basement 2 Octoroks Pot {#}", count: 5 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "5 Pots",
@@ -896,7 +903,8 @@ let StandardDungeons = {
                             QPAItemSets.LEDGE_QPA
                         ]
                     },
-                    "Left Skulltula on Lower Room Wall": {
+                    "Left Skulltula on Lower Room Wall": { // TODO Mapping: Check this and one below
+                        SpoilerLogName: "Jabu Jabus Belly GS Lobby Basement Lower",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 156, y: 44, floor: "B1" },
                         Age: Age.EITHER,
@@ -905,6 +913,7 @@ let StandardDungeons = {
                         Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Right Skulltula on Lower Room Wall": {
+                        SpoilerLogName: "Jabu Jabus Belly GS Lobby Basement Upper",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 176, y: 35, floor: "B1" },
                         Age: Age.EITHER,
@@ -913,6 +922,7 @@ let StandardDungeons = {
                         Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Skulltula on Vines": {
+                        SpoilerLogName: "Jabu Jabus Belly GS Water Switch Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 284, y: 153, floor: "B1" },
                         Age: Age.EITHER,
@@ -920,6 +930,9 @@ let StandardDungeons = {
                         LongDescription: "In the room with the water and the switch (the first one you usually take Ruto into), there's a skulltula hanging out on the vines. Take it out, then raise the water to collect its token. Note that you can reach it with a jumpslash if you jump off the cliff then jumpslash when you're a bit closer.",
                     },
                     "3 Pots Above Vines": {
+                        SpoilerLogName: [
+                            { name: "Jabu Jabus Belly Basement Switch Room Pot {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -929,6 +942,7 @@ let StandardDungeons = {
                         LongDescription: "These pots are above the vines in the room with the water and the switch (the first one you usually take Ruto into)."
                     },
                     "Scrub Behind Octorok Water": {
+                        SpoilerLogName: "Jabu Jabus Belly Deku Scrub",
                         ItemGroup: ItemGroups.SCRUB,
                         MapInfo: {x: 117, y: 229, floor: "B1" },
                         Age: Age.EITHER,
@@ -942,6 +956,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Boomerang Chest": {
+                        SpoilerLogName: "Jabu Jabus Belly Boomerang Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 237, y: 58, floor: "F1" },
                         Age: Age.EITHER,
@@ -950,6 +965,7 @@ let StandardDungeons = {
                         NeedsAny: [Items.BOOMERANG, Items.FAIRY_SLINGSHOT, ItemSets.SWORDS, ItemSets.EXPLOSIVES]
                     },
                     "Map Chest": {
+                        SpoilerLogName: "Jabu Jabus Belly Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 99, y: 57, floor: "F1" },
                         Age: Age.EITHER,
@@ -959,6 +975,7 @@ let StandardDungeons = {
                         Needs: [Items.BOOMERANG]
                     },
                     "Compass Chest": {
+                        SpoilerLogName: "Jabu Jabus Belly Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 147, y: 17, floor: "F1" },
                         Age: Age.EITHER,
@@ -976,6 +993,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "3 Pots After Big Octo": {
+                        SpoilerLogName: [
+                            { name : "Jabu Jabus Belly Above Big Octo Pot {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -1006,6 +1026,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Skulltula Near Boss": {
+                        SpoilerLogName: "Jabu Jabus Belly GS Near Boss",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 255, y: 194, floor: "F1" },
                         Age: Age.EITHER,
