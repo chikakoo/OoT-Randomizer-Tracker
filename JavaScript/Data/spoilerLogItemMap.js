@@ -47,7 +47,7 @@ let SpoilerLogDungeonNameMap = {
  * region: <what the boss room is>
  * from: <the normal way to get there>
  * 
- * We will key this b "region|from" so we can find it easily
+ * We will key this as "region|from" so we can find it easily
  * 
  * Ones that aren't like that will be mapped as their string version
  */
@@ -141,7 +141,7 @@ let SpoilerLogInteriorEntranceMap = {
     "Kak Potion Shop Front": { entranceGroup: "Potion Shop Front" },
     "Kak Potion Shop Back": { entranceGroup: "Potion Shop Back" },
     "Kak Odd Medicine Building": { entranceGroup: "Granny's Potion Shop" },
-    "Graveyard Dampes House": { items: [] },
+    "Graveyard Dampes House": {},
 
     // Death Mountain and Goron City
     "DMT Great Fairy Fountain": { 
@@ -170,7 +170,7 @@ let SpoilerLogInteriorEntranceMap = {
     "LH Fishing Hole": { entranceGroup: "Fishing Pond" },
 
     // Gerudo Valley / Fortress
-    "GV Carpenter Tent": { items: [] },
+    "GV Carpenter Tent": {},
     "Hideout 1 Torch Jail|Gerudo Fortress": { 
         entranceGroup: "Jail 1 Left" // Bottom Left Door
     }, 
@@ -219,7 +219,195 @@ let SpoilerLogInteriorEntranceMap = {
 };
 
 let SpoilerLogGrottoEntranceMap = {
+    // Kokiri Forest
+    "KF Storms Grotto": {
+        entranceGroup: "Generic Grotto",
+        items: [ // TODO Mapping: check the order of beehives
+            "KF Storms Grotto Chest",
+            { name: "KF Storms Grotto Beehive {#}", count: 2 }
+        ]
+    },
 
+    // Lost Woods
+    "LW Near Shortcuts Grotto": {
+        entranceGroup: "Generic Grotto",
+        items: [ // TODO Mapping: check the order of beehives
+            "LW Near Shortcuts Grotto Chest",
+            { name: "LW Near Shortcuts Grotto Beehive {#}", count: 2 }
+        ]
+    },
+    "Deku Theater": { entranceGroup: "Forest Stage" },
+    "LW Scrubs Grotto": { 
+        // Note: if scrubsanity is off, this is wrong... should be
+        // 2 Scrubs (Front on Left) instead
+        entranceGroup: "2 Scrubs",
+        items: [
+            "LW Deku Scrub Grotto Front",
+            "LW Deku Scrub Grotto Rear",
+            "LW Scrubs Grotto Beehive"
+        ]
+    },
+
+    // Sacred Forest Meadow
+    "SFM Wolfos Grotto": { entranceGroup: "Wolfos Grotto" },
+    "SFM Fairy Grotto": {},
+    "SFM Storms Grotto": {
+        entranceGroup: "2 Scrubs",
+        items: [
+            "SFM Deku Scrub Grotto Front",
+            "SFM Deku Scrub Grotto Rear",
+            "SFM Storms Grotto Beehive"
+        ]
+    },
+
+    // Hyrule Field
+    "HF Near Kak Grotto": { entranceGroup: "Skulltula at Distance" },
+    "HF Near Market Grotto": {
+        entranceGroup: "Generic Grotto",
+        items: [ // TODO Mapping: check the order of beehives
+            "HF Near Market Grotto Chest",
+            { name: "HF Near Market Grotto Beehive {#}", count: 2 }
+        ]
+    },
+    "HF Fairy Grotto": {},
+    "HF Tektite Grotto": { entranceGroup: "Water Heart Piece Grotto" },
+    "HF Cow Grotto": { entranceGroup: "Cow and Web Grotto" },
+    "HF Southeast Grotto": {
+        entranceGroup: "Generic Grotto",
+        items: [ // TODO Mapping: check the order of beehives
+            "HF Southeast Grotto Chest",
+            { name: "HF Southeast Grotto Beehive {#}", count: 2 }
+        ]
+    },
+    "HF Open Grotto": {
+        entranceGroup: "Generic Grotto",
+        items: [ // TODO Mapping: check the order of beehives
+            "HF Open Grotto Chest",
+            { name: "HF Open Grotto Beehive {#}", count: 2 }
+        ]
+    },
+    "HF Inside Fence Grotto": { entranceGroup: "1 Scrub" },
+
+    // Lon Lon Ranch
+    "LLR Grotto": {
+        entranceGroup: "3 Scrubs",
+        items: [
+            {
+                name: "LLR Deku Scrub Grotto {#}",
+                tokens: ["Left", "Center", "Right"]
+            },
+            "LLR Grotto Beehive"
+        ]
+    },
+
+    // Castle
+    "HC Storms Grotto": { entranceGroup: "Bombable Wall Grotto" },
+
+    // Kakariko Village and Graveyard
+    "Kak Redead Grotto": { entranceGroup: "Two Redead Grotto" },
+    "Kak Open Grotto": {
+        entranceGroup: "Generic Grotto",
+        items: [ // TODO Mapping: check the order of beehives
+            "Kak Open Grotto Chest",
+            { name: "Kak Open Grotto Beehive {#}", count: 2 }
+        ]
+    },
+    "Graveyard Shield Grave": { items: ["Graveyard Shield Grave Chest"] },
+    "Graveyard Dampes Grave": { entranceGroup: "Dampe's Grave" },
+    "Graveyard Heart Piece Grave": { entranceGroup: "Redead Sun's Song Grave" },
+    "Graveyard Royal Familys Tomb": { entranceGroup: "Royal Family's Tomb" },
+
+    // Death Mountain / Goron City
+    "DMT Storms Grotto": {
+        entranceGroup: "Generic Grotto",
+        items: [ // TODO Mapping: check the order of beehives
+            "DMT Storms Grotto Chest",
+            { name: "DMT Storms Grotto Beehive {#}", count: 2 }
+        ]
+    },
+    "DMT Cow Grotto": { entranceGroup: "Cow Grotto" },
+    "GC Grotto": {
+        entranceGroup: "3 Scrubs",
+        items: [
+            {
+                name: "GC Deku Scrub Grotto {#}",
+                tokens: ["Left", "Center", "Right"]
+            }, 
+            "GC Grotto Beehive"
+        ]
+    },
+    "DMC Upper Grotto": {
+        entranceGroup: "Generic Grotto",
+        items: [ // TODO Mapping: check the order of beehives
+            "DMC Upper Grotto Chest",
+            { name: "DMC Upper Grotto Beehive {#}", count: 2 }
+        ]
+    },
+    "DMC Hammer Grotto": {
+        entranceGroup: "3 Scrubs",
+        items: [
+            {
+                name: "DMC Deku Scrub Grotto {#}",
+                tokens: ["Left", "Center", "Right"]
+            }, 
+            "DMC Hammer Grotto Beehive"
+        ]
+    },
+
+    // Zora and Lake
+    "ZR Storms Grotto": {
+        entranceGroup: "2 Scrubs",
+        items: [
+            "ZR Deku Scrub Grotto Front",
+            "ZR Deku Scrub Grotto Rear",
+            "ZR Storms Grotto Beehive"
+        ]
+    },
+    "ZR Open Grotto": {
+        entranceGroup: "Generic Grotto",
+        items: [ // TODO Mapping: check the order of beehives
+            "ZR Open Grotto Chest",
+            { name: "ZR Open Grotto Beehive {#}", count: 2 }
+        ]
+    },
+    "ZR Fairy Grotto": {},
+    "ZD Storms Grotto": {},
+    "LH Grotto": {
+        entranceGroup: "3 Scrubs",
+        items: [
+            {
+                name: "LH Deku Scrub Grotto {#}",
+                tokens: ["Left", "Center", "Right"]
+            }, 
+            "LH Grotto Beehive"
+        ]
+    },
+
+    // Gerudo and Desert
+    "GV Octorok Grotto": {
+        items: [
+            "GV Octorok Grotto Red Rupee",
+            { name: "GV Octorok Grotto Blue Rupee {#}", count: 3 },
+            { name: "GV Octorok Grotto Green Rupee {#}", count: 4 }
+        ]
+    },
+    "GV Storms Grotto": {
+        entranceGroup: "2 Scrubs",
+        items: [
+            "GV Deku Scrub Grotto Front",
+            "GV Deku Scrub Grotto Rear",
+            "GV Storms Grotto Beehive"
+        ]
+    },
+    "GF Storms Grotto": {},
+    "Colossus Grotto": {
+        entranceGroup: "2 Scrubs",
+        items: [
+            "Colossus Deku Scrub Grotto Front",
+            "Colossus Deku Scrub Grotto Rear",
+            "Colossus Grotto Beehive"
+        ]
+    }
 };
 
 let SpoilerLogBossEntranceMap = {

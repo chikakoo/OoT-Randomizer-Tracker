@@ -876,12 +876,14 @@ GrottoGroups = {
 		tooltip: "This is a grotto with 1 business scrub.",
 		buttons: {
 			"Scrub 1": {
+				SpoilerLogName: "HF Deku Scrub Grotto",
 				icon: "Scrub",
 				// ItemGroup: ItemGroups.SCRUB, // Disabled so it shows up with scrubsanity off
 				LongDescription: "Buy the item from the scrub - this is still a check with scrubsanity off because it sells a heart piece.",
 				Needs: [(age) => Data.canBuyFromScrub(age)]
 			},
 			"Beehive": {
+				SpoilerLogName: "HF Inside Fence Grotto Beehive",
 				ItemGroup: ItemGroups.BEEHIVE,
 				LongDescription: "Look on the ceiling for this beehive. Can use bombs. If using chus, get in the corner by the hive, facing the lighter wall. Sidehop right, left, then press A and let go of everything. Drop the chu on the 7th red flash."
 			}
@@ -949,6 +951,7 @@ GrottoGroups = {
 		tooltip: "This grotto has a big skulltula and a gold skulltula on the upper wall.",
 		buttons: {
 			"Skulltula at Distance": {
+				SpoilerLogName: "HF GS Near Kak Grotto",
 				ItemGroup: ItemGroups.SKULLTULA,
 				LongDescription: "The gold skulltula is on the wall behind the big skulltula.",
 				Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
@@ -960,11 +963,13 @@ GrottoGroups = {
 		hasGossipStone: true,
 		buttons: {
 			"Cow": {
+				SpoilerLogName: "HF Cow Grotto Cow",
 				ItemGroup: ItemGroups.COW,
 				LongDescription: "Burn the web, then play Epona's Song next to the cow.",
 				NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]
 			},
 			"Skulltula at Distance": {
+				SpoilerLogName: "HF GS Cow Grotto",
 				ItemGroup: ItemGroups.SKULLTULA,
 				LongDescription: "Burn the web. The skulltula is in the section the cow is in.",
 				Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
@@ -977,6 +982,7 @@ GrottoGroups = {
 				NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.CUTSCENE_ITEM_QPA]
 			},
 			"2 Pots": {
+				SpoilerLogName: [{ name: "HF Cow Grotto Pot {#}", count: 2 }],
 				count: 2,
 				ItemGroup: ItemGroups.POT,
 				LongDescription: "Burn the web. The pots are by the cow.",
@@ -989,6 +995,7 @@ GrottoGroups = {
 		hasGossipStone: true,
 		buttons: {
 			"Skulltula in Bombable Wall Grotto": {
+				SpoilerLogName: "HC GS Storms Grotto",
 				ItemGroup: ItemGroups.SKULLTULA,
 				LongDescription: "The skulltula is high up behind the mud wall to your left when you enter.",
 				NeedsAny: [
@@ -997,6 +1004,7 @@ GrottoGroups = {
 				]
 			},
 			"4 Pots": {
+				SpoilerLogName: [{ name: "HC Storms Grotto Pot {#}", count: 4}],
 				count: 4,
 				ItemGroup: ItemGroups.POT,
 				LongDescription: "Blow up the mud wall in front of you when you enter to get to this pot.",
@@ -1017,6 +1025,7 @@ GrottoGroups = {
 		tooltip: "This is the forest stage.",
 		buttons: {
 			"Skull Mask Item": {
+				SpoilerLogName: "Deku Theater Skull Mask",
 				icon: "Skull Mask",
 				Age: Age.EITHER,
 				UseChildAge: function() { return !Tricks.equipSwap.enabled; },
@@ -1024,6 +1033,7 @@ GrottoGroups = {
 				Needs: [ChildTradeItems.SKULL_MASK]
 			},
 			"Mask of Truth Item": {
+				SpoilerLogName: "Deku Theater Mask of Truth",
 				icon: "Mask of Truth",
 				Age: Age.EITHER,
 				UseChildAge: function() { return !Tricks.equipSwap.enabled; },
@@ -1036,6 +1046,7 @@ GrottoGroups = {
 		tooltip: "This is the grave with the single redead.",
 		buttons: {
 			"Redead Sun's Song Chest": {
+				SpoilerLogName: "Graveyard Heart Piece Grave Chest",
 				useGroupImage: true,
 				LongDescription: "Play the Sun's Song near the redead to spawn a chest.",
 				Needs: [Songs.SUNS_SONG]
@@ -1046,11 +1057,13 @@ GrottoGroups = {
 		tooltip: "The Royal Family's Tomb.",
 		buttons: {
 			"Chest by Lighting Torches": {
+				SpoilerLogName: "Graveyard Royal Familys Tomb Chest",
 				icon: "Din's Fire",
 				LongDescription: "Light the torches in the first room to spawn a chest.\x0A\x0AUsing flame storage and sticks: get flame storage; line up with the side of the platform by the stairs and the torch; sidehop right x8; sideroll; take out stick (it should be lit now); sidehop to the door - quickly enter at the very left side; the first torch should be lit as you go in - now finish the job.",
 				NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA, Tricks.flameStorage.canDo]
 			},
 			"Sun's Song": {
+				SpoilerLogName: "Song from Royal Familys Tomb",
 				LongDescription: "Go through the rooms to get the item at the end.",
 				Needs: [ItemSets.DAMAGING_ITEMS]
 			}
@@ -1066,6 +1079,7 @@ GrottoGroups = {
 		tooltip: "This grotto has crystal walls and 2 wolfos.",
 		buttons: {
 			"Chest in Wolfos Grotto": {
+				SpoilerLogName: "SFM Wolfos Grotto Chest",
 				LongDescription: "Kill the wolfos to spawn the chest.",
 				Needs: [ItemSets.DAMAGING_ITEMS]
 			}
@@ -1075,6 +1089,7 @@ GrottoGroups = {
 		tooltip: "This grotto has 2 redeads.",
 		buttons: {
 			"Chest in 2 Redead Grotto": {
+				SpoilerLogName: "Kak Redead Grotto Chest",
 				useGroupImage: true,
 				LongDescription: "Kill the redeads to spawn the chest.",
 				Needs: [ItemSets.SWORDS]
@@ -1092,22 +1107,29 @@ GrottoGroups = {
 		},
 		buttons: {
 			"Cow": {
+				SpoilerLogName: "DMT Cow Grotto Cow",
 				ItemGroup: ItemGroups.COW,
 				LongDescription: "Play Epona's Song next to the cow."
 			},
 			"Red Rupee": {
+				SpoilerLogName: [
+					{ name: "DMT Cow Grotto Green Rupee {#}", count: 6 },
+					"DMT Cow Grotto Red Rupee"
+				],
 				icon: "Rupee Circle",
 				count: 7,
 				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				LongDescription: "The rupee circle by the entrance."
 			},
 			"4 Hearts": {
+				SpoilerLogName: [{ name: "DMT Cow Grotto Recovery Heart {#}", count: 4}],
 				icon: "Recovery Heart",
 				count: 4,
 				ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
 				LongDescription: "The hearts near the cow."
 			},
 			"Beehive": {
+				SpoilerLogName: "DMT Cow Grotto Beehive",
 				ItemGroup: ItemGroups.BEEHIVE,
 				LongDescription: "The beehive on the back/right side of the grotto. Can use bombs. If using chus, line up with one of the walls under it and drop it on the 6th red flash."
 			}
@@ -1117,6 +1139,7 @@ GrottoGroups = {
 		tooltip: "This grotto has a tektite and a heart piece in water.",
 		buttons: {
 			"Water Heart Piece": {
+				SpoilerLogName: "HF Tektite Grotto Freestanding PoH",
 				useGroupImage: true,
 				LongDescription: "Dive down or use iron boots to get the heart piece",
 				NeedsAny: [UpgradedItems.GOLDEN_SCALE, Equipment.IRON_BOOTS]

@@ -75,6 +75,7 @@ let OwExits = {
             LongDescription: "This is the entrance to the Lost Woods that is up the vines."
         },
         "Song of Storms Grotto by Lost Woods": {
+            SpoilerLogExitName: "Kokiri Forest -> KF Storms Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Generic Grotto",
@@ -184,6 +185,7 @@ let OwExits = {
 
         // Interiors
         "Grotto by Goron City": {
+            SpoilerLogExitName: "Lost Woods -> LW Near Shortcuts Grotto",
             ExitRegion: "nearGoronCity",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Generic Grotto",
@@ -194,6 +196,7 @@ let OwExits = {
             Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Forest Stage Grotto": {
+            SpoilerLogExitName: "LW Beyond Mido -> Deku Theater",
             ExitRegion: "secondHalf",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Forest Stage",
@@ -203,6 +206,7 @@ let OwExits = {
             LongDescription: "From the Kokiri Forest entrance, take this path: right, left, right, left, then left again. In the back of this room, walk around until you fall into this grotto."
         },
         "Grotto Near Meadow": {
+            SpoilerLogExitName: "LW Beyond Mido -> LW Scrubs Grotto",
             ExitRegion: "secondHalf",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "2 Scrubs",
@@ -268,6 +272,7 @@ let OwExits = {
             LongDescription: "This is the entrance back into the Lost Woods."
         },
         "Grotto near Lost Woods": {
+            SpoilerLogExitName: "SFM Entryway -> SFM Wolfos Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Wolfos Grotto",
@@ -279,6 +284,7 @@ let OwExits = {
 
         // Maze
         "Grotto in Maze Center": {
+            SpoilerLogExitName: "Sacred Forest Meadow -> SFM Fairy Grotto",
             ExitRegion: "afterGate",
             ItemGroup: ItemGroups.GROTTO,
             MapInfo: { x: 194, y: 147 },
@@ -310,6 +316,7 @@ let OwExits = {
             Needs: [Items.HOOKSHOT]
         },
         "Song of Storms Grotto": {
+            SpoilerLogExitName: "Sacred Forest Meadow -> SFM Storms Grotto",
             ExitRegion: "afterGate",
             DefaultEntranceGroupName: "2 Scrubs",
             ItemGroup: ItemGroups.GROTTO,
@@ -369,6 +376,7 @@ let OwExits = {
             LongDescription: "This is the entrance to Lon Lon Ranch in the center of the map."
         },
         "Hidden Grotto by Kakariko": {
+            SpoilerLogExitName: "Hyrule Field -> HF Near Kak Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Skulltula at Distance",
@@ -378,6 +386,7 @@ let OwExits = {
             Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Grotto in Drawbridge Rock": {
+            SpoilerLogExitName: "Hyrule Field -> HF Near Market Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Generic Grotto",
@@ -399,6 +408,7 @@ let OwExits = {
             LongDescription: "This is the entrance to Gerudo Valley."
         },
         "Grotto in Rock North of River": {
+            SpoilerLogExitName: "Hyrule Field -> HF Fairy Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             MapInfo: { x: 102, y: 20 },
@@ -407,6 +417,7 @@ let OwExits = {
             Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Hidden Grotto by North River Tree": {
+            SpoilerLogExitName: "Hyrule Field -> HF Tektite Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Water Heart Piece Grotto",
@@ -416,6 +427,7 @@ let OwExits = {
             Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Grotto by Gerudo": {
+            SpoilerLogExitName: "Hyrule Field -> HF Cow Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Cow and Web Grotto",
@@ -439,6 +451,7 @@ let OwExits = {
             LongDescription: "This is the entrance to Lake Hylia."
         },
         "Grotto in Southeast Forest Rock": {
+            SpoilerLogExitName: "Hyrule Field -> HF Southeast Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Generic Grotto",
@@ -448,6 +461,7 @@ let OwExits = {
             Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Open Grotto East of Lake Hylia Fences": {
+            SpoilerLogExitName: "Hyrule Field -> HF Open Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Generic Grotto",
@@ -456,6 +470,7 @@ let OwExits = {
             LongDescription: "This is an open grotto just to the east of the square of fences by the Lake Hylia entrance."
         },
         "Grotto by Lake Hylia Fences": {
+            SpoilerLogExitName: "Hyrule Field -> HF Inside Fence Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "1 Scrub",
@@ -503,6 +518,7 @@ let OwExits = {
 
         // Back
         "Open Grotto in Southwest Corner": {
+            SpoilerLogExitName: "Lon Lon Ranch -> LLR Grotto",
             DisplayGroup: { groupName: "Back", imageName: "Cow Shed" },
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
@@ -779,6 +795,7 @@ let OwExits = {
             Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Song of Storms Grotto": {
+            SpoilerLogExitName: "Hyrule Castle Grounds -> HC Storms Grotto",
             ExitRegion: "hyruleCastle",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Bombable Wall Grotto",
@@ -874,6 +891,7 @@ let OwExits = {
             ]
         },
         "Hidden Grotto near Tree": {
+            SpoilerLogExitName: "Kakariko Village -> Kak Redead Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Two Redead Grotto",
@@ -1019,6 +1037,7 @@ let OwExits = {
 
         // Enclosed Area
         "Open Grotto Behind Potion Shop": {
+            SpoilerLogExitName: "Kak Backyard -> Kak Open Grotto",
             DisplayGroup: { groupName: "Enclosed Area", imageName: "Odd Mushroom" },
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
@@ -1126,6 +1145,7 @@ let OwExits = {
             LongDescription: "Located in the southeast corner of the graveyard.",
         },
         "Grave with Flowers": {
+            SpoilerLogExitName: "Graveyard -> Graveyard Shield Grave",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "1 Chest",
@@ -1135,6 +1155,7 @@ let OwExits = {
             LongDescription: "There's a gravestone when you first enter that has flowers in front of it. Pull it back and enter to get to the grotto."
         },
         "Dampe's Grave": {
+            SpoilerLogExitName: "Graveyard -> Graveyard Dampes Grave",
             ExitRegion: "dampesGrave",
             ItemGroup: ItemGroups.GROTTO,
             IsComplexEntrance: true,
@@ -1165,6 +1186,7 @@ let OwExits = {
             LongDescription: "This is the route through Dampe's Grave to get to Kakariko via the windmill."
         },
         "Unmarked Grave": {
+            SpoilerLogExitName: "Graveyard -> Graveyard Heart Piece Grave",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Redead Sun's Song Grave",
@@ -1174,6 +1196,7 @@ let OwExits = {
             LongDescription: "Go to the Royal Tomb gravestone at the front of the graveyard - position your camera the other way, toward the entrance. The grave will be the second one to your left."
         },
         "Royal Family's Tomb": {
+            SpoilerLogExitName: "Graveyard -> Graveyard Royal Familys Tomb",
             ExitRegion: "royalFamilyTomb",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Royal Family's Tomb",
@@ -1205,6 +1228,7 @@ let OwExits = {
             LongDescription: "This is the entrance to Goron City."
         },
         "Song of Storms Grotto near Goron City": {
+            SpoilerLogExitName: "Death Mountain -> DMT Storms Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Generic Grotto",
@@ -1258,6 +1282,7 @@ let OwExits = {
             Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
         },
         "Cow Grotto": {
+            SpoilerLogExitName: "Death Mountain Summit -> DMT Cow Grotto",
             DisplayGroup: { groupName: "Rocky Path", imageName: "Cow Grotto" },
             ExitRegion: "upper",
             ItemGroup: ItemGroups.GROTTO,
@@ -1312,6 +1337,7 @@ let OwExits = {
 
         // Interiors
         "Grotto in Center of Top Rocks": {
+            SpoilerLogExitName: "DMC Upper Nearby -> DMC Upper Grotto",
             ExitRegion: "top",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Generic Grotto",
@@ -1343,6 +1369,7 @@ let OwExits = {
             ]
         },
         "Grotto in Rock by Goron": {
+            SpoilerLogExitName: "DMC Lower Nearby -> DMC Hammer Grotto",
             ExitRegion: "middle",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "3 Scrubs",
@@ -1377,6 +1404,7 @@ let OwExits = {
             LongDescription: "This is the entrance blocked by rocks on the second floor."
         },
         "Lava Room Grotto": {
+            SpoilerLogExitName: "GC Grotto Platform -> GC Grotto",
             DisplayGroup: { groupName: "Middle Floors", imageName: "Goron Tunic" },
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
@@ -1427,6 +1455,7 @@ let OwExits = {
 
         // Main Area
         "Song of Storms Grotto": {
+            SpoilerLogExitName: "Zora River -> ZR Storms Grotto",
             ExitRegion: "upstream",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "2 Scrubs",
@@ -1438,6 +1467,7 @@ let OwExits = {
 
         // On Cliff
         "Open Grotto on Upper Cliff": {
+            SpoilerLogExitName: "Zora River -> ZR Open Grotto",
             DisplayGroup: { groupName: "On Cliff", imageName: "Super Cucco Minigame" },
             ExitRegion: "upstream",
             ItemGroup: ItemGroups.GROTTO,
@@ -1447,6 +1477,7 @@ let OwExits = {
             LongDescription: "Go up the ladder closest to Hyrule Field. Jump to the cliff behind you and enter the grotto."
         },
         "Grotto Under Rock on Upper Cliff": {
+            SpoilerLogExitName: "Zora River -> ZR Fairy Grotto",
             ExitRegion: "upstream",
             ItemGroup: ItemGroups.GROTTO,
             MapInfo: { x: 159, y: 206 },
@@ -1531,6 +1562,7 @@ let OwExits = {
             AdultNeedsAny: [ItemSets.BLUE_FIRE_ITEMS, Tricks.blueFireShopSkip.canDo]
         },
         "Song of Storms Grotto": {
+            SpoilerLogExitName: "Zoras Domain -> ZD Storms Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             MapInfo: { x: 118, y: 162 },
@@ -1685,6 +1717,7 @@ let OwExits = {
             ]
         },
         "Grotto Under Grave": {
+            SpoilerLogExitName: "Lake Hylia -> LH Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "3 Scrubs",
@@ -1731,6 +1764,7 @@ let OwExits = {
 
         // Interiors
         "Grotto Under Silver Rock": {
+            SpoilerLogExitName: "GV Grotto Ledge -> GV Octorok Grotto",
             ExitRegion: "chasmSilverRockLedge",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "Octorok Grotto",
@@ -1750,6 +1784,7 @@ let OwExits = {
             LongDescription: "This is the tent on the west side of the bridge as adult. Also, the loading zone is actually there as child."
         },
         "Song of Storms Grotto Behind Tent": {
+            SpoilerLogExitName: "GV Fortress Side -> GV Storms Grotto",
             ExitRegion: "acrossBridge",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "2 Scrubs",
@@ -1818,6 +1853,7 @@ let OwExits = {
             LongDescription: "The door at the bottom left of the fortress."
         },
         "Song of Storms Grotto": {
+            SpoilerLogExitName: "GF Entrances Behind Crates -> GF Storms Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             MapInfo: { x: 137, y: 172 },
@@ -2351,6 +2387,7 @@ let OwExits = {
             Needs: [ItemSets.EXPLOSIVES]
         },
         "Silver Rock Grotto": {
+            SpoilerLogExitName: "Desert Colossus -> Colossus Grotto",
             ExitRegion: "main",
             ItemGroup: ItemGroups.GROTTO,
             DefaultEntranceGroupName: "2 Scrubs",
