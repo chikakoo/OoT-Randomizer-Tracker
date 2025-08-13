@@ -2,6 +2,7 @@ let OwExits = {
     "Kokiri Forest": {
         // Main Area
         "Lost Woods Bottom": {
+            SpoilerLogExitName: "Kokiri Forest -> LW Bridge From Forest",
             ExitRegion: "main",
             Map: "Lost Woods Bridge",
             Region: "main",
@@ -65,6 +66,7 @@ let OwExits = {
 
         // Upper Ledges
         "Lost Woods Top": {
+            SpoilerLogExitName: "Kokiri Forest -> Lost Woods",
             DisplayGroup: { groupName: "Upper Ledges", imageName: "Song of Storms" },
             ExitRegion: "main",
             Map: "Lost Woods",
@@ -114,6 +116,7 @@ let OwExits = {
 
     "Lost Woods": {
         "To Kokiri Forest": {
+            SpoilerLogExitName: "LW Forest Exit -> Kokiri Forest",
             ExitRegion: "kokiriForestWarp",
             Map: "Kokiri Forest",
             Region: "main",
@@ -123,6 +126,7 @@ let OwExits = {
             LongDescription: "This is ANY of the entrances leading back to Kokiri."
         },
         "Goron City": {
+            SpoilerLogExitName: "Lost Woods -> GC Woods Warp",
             ExitRegion: "nearGoronCity",
             Map: "Goron City",
             Region: "lostWoods",
@@ -133,6 +137,7 @@ let OwExits = {
             LongDescription: "This is the exit to Goron City."
         },
         "Zora's River": {
+            SpoilerLogExitName: "Lost Woods -> Zora River",
             ExitRegion: "nearGoronCity",
             Map: "Zora's River",
             Region: "upstream",
@@ -174,6 +179,7 @@ let OwExits = {
             TricksToShow: [Tricks.lwAdultBridgeFromTop, Tricks.lwAdultBridgeWithHookshot]
         },
         "Sacred Forest Meadow": {
+            SpoilerLogExitName: "LW Beyond Mido -> SFM Entryway",
             ExitRegion: "secondHalf",
             Map: "Sacred Forest Meadow",
             Region: "main",
@@ -221,6 +227,7 @@ let OwExits = {
 
     "Lost Woods Bridge": {
         "Kokiri Forest Bridge": {
+            SpoilerLogExitName: "LW Bridge -> Kokiri Forest",
             ExitRegion: "main",
             Map: "Kokiri Forest",
             Region: "main",
@@ -230,6 +237,7 @@ let OwExits = {
             LongDescription: "This is the Kokiri Forest exit from the bridge."
         },
         "Hyrule Field Bridge": {
+            SpoilerLogExitName: "LW Bridge -> Hyrule Field",
             ExitRegion: "main",
             Map: "Hyrule Field",
             Region: "main",
@@ -264,6 +272,7 @@ let OwExits = {
     "Sacred Forest Meadow": {
         // Before maze
         "Lost Woods": {
+            SpoilerLogExitName: "SFM Entryway -> LW Beyond Mido",
             ExitRegion: "main",
             Map: "Lost Woods",
             Region: "secondHalf",
@@ -332,6 +341,7 @@ let OwExits = {
     "Hyrule Field": {
         // Northeast
         "Lost Woods Bridge": {
+            SpoilerLogExitName: "Hyrule Field -> LW Bridge",
             ExitRegion: "main",
             Map: "Lost Woods Bridge",
             Region: "main",
@@ -341,6 +351,7 @@ let OwExits = {
             LongDescription: "This is the entrance to the Kokiri Forest."
         },
         "Zora's River": {
+            SpoilerLogExitName: "Hyrule Field -> ZR Front",
             ExitRegion: "main",
             Map: "Zora's River",
             Region: "downstream",
@@ -350,6 +361,7 @@ let OwExits = {
             LongDescription: "This is the entrance to Zora's River. The water and land exits will go to the same place."
         },
         "Kakariko Village": {
+            SpoilerLogExitName: "Hyrule Field -> Kakariko Village",
             ExitRegion: "main",
             Map: "Kakariko Village",
             Region: "main",
@@ -360,6 +372,7 @@ let OwExits = {
             LongDescription: "This is the entrance to Kakariko."
         },
         "Market": {
+            SpoilerLogExitName: "Hyrule Field -> Market Entrance",
             ExitRegion: "main",
             Map: "Market Entrance",
             Region: "main",
@@ -369,6 +382,7 @@ let OwExits = {
             LongDescription: "This is the entrance to the Market."
         },
         "Lon Lon Ranch": {
+            SpoilerLogExitName: "Hyrule Field -> Lon Lon Ranch",
             ExitRegion: "main",
             Map: "Lon Lon Ranch",
             Region: "main",
@@ -400,6 +414,7 @@ let OwExits = {
 
         // West
         "Gerudo Valley": {
+            SpoilerLogExitName: "Hyrule Field -> Gerudo Valley",
             DisplayGroup: { groupName: "West", imageName: "Gerudo Membership Card" },
             ExitRegion: "main",
             Map: "Gerudo Valley",
@@ -443,6 +458,7 @@ let OwExits = {
 
         // South
         "Lake Hylia": {
+            SpoilerLogExitName: "Hyrule Field -> Lake Hylia",
             DisplayGroup: { groupName: "South", imageName: "Fishing Pond" },
             ExitRegion: "main",
             Map: "Lake Hylia",
@@ -486,6 +502,7 @@ let OwExits = {
     "Lon Lon Ranch": {
         // Entrance
         "Hyrule Field": {
+            SpoilerLogExitName: "Lon Lon Ranch -> Hyrule Field",
             ExitRegion: "main",
             Map: "Hyrule Field",
             Region: "main",
@@ -542,6 +559,7 @@ let OwExits = {
 
     "Market Entrance": {
         "Hyrule Field": {
+            SpoilerLogExitName: "Market Entrance -> Hyrule Field",
             ExitRegion: "main",
             Map: "Hyrule Field",
             Region: "main",
@@ -552,6 +570,7 @@ let OwExits = {
             LongDescription: "This is the entrance back to Hyrule field."
         },
         "Market": {
+            SpoilerLogExitName: "Market Entrance -> Market",
             ExitRegion: "main",
             Map: "Market",
             Region: "main",
@@ -575,6 +594,7 @@ let OwExits = {
 
     "Market": {
         "Market Entrance": {
+            SpoilerLogExitName: "Market -> Market Entrance",
             ExitRegion: "main",
             Map: "Market Entrance",
             Region: "main",
@@ -585,6 +605,7 @@ let OwExits = {
             LongDescription: "This is the path to the market entrance."
         },
         "Hyrule Castle": {
+            SpoilerLogExitName: "Market -> Castle Grounds",
             ExitRegion: "main",
             Map: "Castle",
             Region: "main",
@@ -595,6 +616,7 @@ let OwExits = {
             LongDescription: "This is the entrance to Hyrule Castle."
         },
         "Temple of Time": {
+            SpoilerLogExitName: "Market -> ToT Entrance",
             ExitRegion: "main",
             Map: "Temple of Time",
             Region: "main",
@@ -703,6 +725,7 @@ let OwExits = {
 
     "Temple of Time": {
         "Market": {
+            SpoilerLogExitName: "ToT Entrance -> Market",
             ExitRegion: "main",
             Map: "Market",
             Region: "main",
@@ -727,6 +750,7 @@ let OwExits = {
 
     "Castle": {
         "Market": {
+            SpoilerLogExitName: "Castle Grounds -> Market",
             ExitRegion: "main",
             Map: "Market",
             Region: "main",
@@ -826,6 +850,7 @@ let OwExits = {
     "Kakariko Village": {
         // Lower Area
         "Hyrule Field": {
+            SpoilerLogExitName: "Kakariko Village -> Hyrule Field",
             ExitRegion: "main",
             Map: "Hyrule Field",
             Region: "main",
@@ -836,6 +861,7 @@ let OwExits = {
             LongDescription: "This is the entrance back to Hyrule Field."
         },
         "Graveyard": {
+            SpoilerLogExitName: "Kakariko Village -> Graveyard",
             ExitRegion: "main",
             Map: "Graveyard",
             Region: "main",
@@ -994,9 +1020,9 @@ let OwExits = {
             LongDescription: "This is the windmill entrance - it's up the stairs near the well."
         },
 
-
         // Upper Area
         "Death Mountain Trail": {
+            SpoilerLogExitName: "Kak Behind Gate -> Death Mountain",
             ExitRegion: "beyondGate",
             Map: "Death Mountain Trail",
             Region: "main",
@@ -1105,6 +1131,7 @@ let OwExits = {
 
     "Graveyard": {
         "Kakariko Village": {
+            SpoilerLogExitName: "Graveyard -> Kakariko Village",
             ExitRegion: "main",
             Map: "Kakariko Village",
             Region: "main",
@@ -1215,6 +1242,7 @@ let OwExits = {
     "Death Mountain Trail": {
         // Upper Area
         "Kakariko Village": {
+            SpoilerLogExitName: "Death Mountain -> Kak Behind Gate",
             ExitRegion: "main",
             Map: "Kakariko Village",
             Region: "beyondGate",
@@ -1224,6 +1252,7 @@ let OwExits = {
             LongDescription: "This is the entrance back to the village."
         },
         "Goron City": {
+            SpoilerLogExitName: "Death Mountain -> Goron City",
             ExitRegion: "main",
             Map: "Goron City",
             Region: "main",
@@ -1257,6 +1286,7 @@ let OwExits = {
 
         // Lower Area
         "Death Mountain Crater": {
+            SpoilerLogExitName: "Death Mountain Summit -> DMC Upper Local",
             ExitRegion: "upper",
             Map: "Death Mountain Crater",
             Region: "top",
@@ -1266,6 +1296,7 @@ let OwExits = {
             LongDescription: "This is the entrance to the crater at the top of the mountain"
         },
         "Owl": {
+            SpoilerLogExitName: "DMT Owl Flight -> Kak Impas Rooftop",
             ExitRegion: "upper",
             Map: "Kakariko Village",
             Region: "main",
@@ -1302,6 +1333,7 @@ let OwExits = {
 
     "Death Mountain Crater": {
         "Mountain Top": {
+            SpoilerLogExitName: "DMC Upper Nearby -> Death Mountain Summit",
             ExitRegion: "top",
             Map: "Death Mountain Trail",
             Region: "upper",
@@ -1311,6 +1343,7 @@ let OwExits = {
             LongDescription: "This is the entrance at the top of the crater."
         },
         "Goron City": {
+            SpoilerLogExitName: "DMC Lower Nearby -> GC Darunias Chamber",
             ExitRegion: "middle",
             Map: "Goron City",
             Region: "darunia",
@@ -1391,6 +1424,7 @@ let OwExits = {
     "Goron City": {
         // Top Floor
         "Death Mountain Trail": {
+            SpoilerLogExitName: "Goron City -> Death Mountain",
             ExitRegion: "main",
             Map: "Death Mountain Trail",
             Region: "main",
@@ -1402,6 +1436,7 @@ let OwExits = {
 
         // Middle Floors
         "Lost Woods": {
+            SpoilerLogExitName: "GC Woods Warp -> Lost Woods",
             ExitRegion: "lostWoods",
             Map: "Lost Woods",
             Region: "nearGoronCity",
@@ -1426,6 +1461,7 @@ let OwExits = {
 
         // Bottom Floor
         "Death Mountain Crater": {
+            SpoilerLogExitName: "GC Darunias Chamber -> DMC Lower Local",
             ExitRegion: "darunia",
             Map: "Death Mountain Crater",
             Region: "middle",
@@ -1451,11 +1487,12 @@ let OwExits = {
     "Zora's River": {
         // Before Rocks
         "Hyrule Field": {
+            SpoilerLogExitName: "ZR Front -> Hyrule Field",
             ExitRegion: "downstream",
             Map: "Hyrule Field",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: {x: 13, y: 246},
+            MapInfo: { x: 13, y: 246 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to Hyrule Field at the start of the river - either exit will take you to the same place."
         },
@@ -1495,6 +1532,7 @@ let OwExits = {
 
         // By Waterfall
         "Lost Woods": {
+            SpoilerLogExitName: "Zora River -> LW Underwater Entrance",
             DisplayGroup: { groupName: "By Waterfall", imageName: "Zelda's Lullaby" },
             ExitRegion: "upstream",
             Map: "Lost Woods",
@@ -1506,6 +1544,7 @@ let OwExits = {
             LongDescription: "This is the entrance you get to by diving into the water near the waterfall."
         },
         "Zora's Domain": {
+            SpoilerLogExitName: "ZR Behind Waterfall -> Zoras Domain",
             ExitRegion: "inWaterfall",
             Map: "Zora's Domain",
             Region: "main",
@@ -1523,6 +1562,7 @@ let OwExits = {
 
     "Zora's Domain": {
         "Zora's River": {
+            SpoilerLogExitName: "Zoras Domain -> ZR Behind Waterfall",
             ExitRegion: "main",
             Map: "Zora's River",
             Region: "upstream",
@@ -1532,6 +1572,7 @@ let OwExits = {
             LongDescription: "This is the entrance to Zora's River."
         },
         "Lake Hylia": {
+            SpoilerLogExitName: "Zoras Domain -> Lake Hylia",
             ExitRegion: "main",
             Map: "Lake Hylia",
             Region: "main",
@@ -1545,6 +1586,7 @@ let OwExits = {
             AdultNeeds: [Tricks.adultDomainToLake.canDo]
         },
         "Zora's Fountain": {
+            SpoilerLogExitName: "ZD Behind King Zora -> Zoras Fountain",
             ExitRegion: "behindKing",
             Map: "Zora's Fountain",
             Region: "main",
@@ -1582,6 +1624,7 @@ let OwExits = {
     "Zora's Fountain": {
         // Land Area
         "Zora's Domain": {
+            SpoilerLogExitName: "Zoras Fountain -> ZD Behind King Zora",
             ExitRegion: "main",
             Map: "Zora's Domain",
             Region: "behindKing",
@@ -1635,6 +1678,7 @@ let OwExits = {
     "Lake Hylia": {
         // Main Area & Pond
         "Hyrule Field": {
+            SpoilerLogExitName: "Lake Hylia -> Hyrule Field",
             ExitRegion: "main",
             Map: "Hyrule Field",
             Region: "main",
@@ -1668,6 +1712,7 @@ let OwExits = {
 
         // Shallow Water
         "Zora's Domain": {
+            SpoilerLogExitName: "Lake Hylia -> Zoras Domain",
             DisplayGroup: { groupName: "Shallow Water", imageName: "Ruto's Letter" },
             ExitRegion: "main",
             Map: "Zora's Domain",
@@ -1687,6 +1732,7 @@ let OwExits = {
 
         // Islands
         "Owl": {
+            SpoilerLogExitName: "LH Owl Flight -> Hyrule Field",
             DisplayGroup: { groupName: "Islands", imageName: "Water Medallion" },
             ExitRegion: "main",
             Map: "Hyrule Field",
@@ -1739,6 +1785,7 @@ let OwExits = {
 
     "Gerudo Valley": {
         "Hyrule Field": {
+            SpoilerLogExitName: "Gerudo Valley -> Hyrule Field",
             ExitRegion: "main",
             Map: "Hyrule Field",
             Region: "main",
@@ -1750,6 +1797,7 @@ let OwExits = {
             TricksToShow: [Tricks.gvCrossBridgeWithHookshot]
         },
         "Gerudo Fortress": {
+            SpoilerLogExitName: "GV Fortress Side -> Gerudo Fortress",
             ExitRegion: "acrossBridge",
             Map: "Gerudo Fortress",
             Region: "main",
@@ -1761,6 +1809,7 @@ let OwExits = {
             TricksToShow: [Tricks.cuccoJump, Tricks.gvCrossBridgeWithHookshot]
         },
         "Lake Hylia": {
+            SpoilerLogExitName: "GV Lower Stream -> Lake Hylia",
             ExitRegion: "chasmDownstream",
             Map: "Lake Hylia",
             Region: "main",
@@ -1810,6 +1859,7 @@ let OwExits = {
     "Gerudo Fortress": {
         // Ground Level
         "Gerudo Valley": {
+            SpoilerLogExitName: "Gerudo Fortress -> GV Fortress Side",
             ExitRegion: "main",
             Map: "Gerudo Valley",
             Region: "acrossBridge",
@@ -1819,6 +1869,7 @@ let OwExits = {
             LongDescription: "This is the exit back to the valley."
         },
         "Haunted Wasteland": {
+            SpoilerLogExitName: "GF Outside Gate -> Wasteland Near Fortress",
             DisplayGroup: { groupName: "Ground Level", imageName: "Gerudo Membership Card" },
             ExitRegion: "wastelandEntrance",
             Map: "Haunted Wasteland",
@@ -2354,21 +2405,23 @@ let OwExits = {
 
     "Haunted Wasteland": {
         "Gerudo Fortress": {
+            SpoilerLogExitName: "Wasteland Near Fortress -> GF Outside Gate",
             ExitRegion: "entrance",
             Map: "Gerudo Fortress",
             Region: "wastelandEntrance",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: {x: 310, y: 281},
+            MapInfo: { x: 310, y: 281 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance back to the fortress.",
             TricksToShow: [Tricks.backwardsWasteland]
         },
         "Desert Colossus": {
+            SpoilerLogExitName: "Wasteland Near Colossus -> Desert Colossus",
             ExitRegion: "exit",
             Map: "Desert Colossus",
             Region: "main",
             ItemGroup: ItemGroups.OW_ENTRANCE,
-            MapInfo: {x: 45, y: 133},
+            MapInfo: { x: 45, y: 133 },
             Age: Age.EITHER,
             LongDescription: "This is the entrance to the colossus.",
             TricksToShow: [Tricks.itemlessSandPit, Tricks.wastelandNoLens]
@@ -2378,6 +2431,7 @@ let OwExits = {
     "Desert Colossus": {
         // North Area
         "Haunted Wasteland": {
+            SpoilerLogExitName: "Desert Colossus -> Wasteland Near Colossus",
             ExitRegion: "main",
             Map: "Haunted Wasteland",
             Region: "exit",

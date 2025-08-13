@@ -417,14 +417,29 @@ let SpoilerLogBossEntranceMap = {
 };
 
 let SpoilerLogOwEntranceMap = {
+    "|": {
+        map: "", exit: ""
+    },
+
+    // Kokiri Forest
+    "Kokiri Forest|LW Bridge": {
+        map: "Kokiri Forest", exit: "Lost Woods Bottom"
+    },
+
+    // Death Mountain
+    "Death Mountain|Kak Behind Gate": {
+        map: "Death Mountain Trail", exit: "Kakariko Village"
+    },
+
+    // Dungeons
     "Deku Tree Lobby|KF Outside Deku Tree": { 
         map: "Deku Tree", exit: "Exit" 
     },
-    "Jabu Jabus Belly Beginning|Zoras Fountain": { 
-        map: "Jabu Jabu's Belly", exit: "Exit" 
-    },
     "Dodongos Cavern Beginning|Death Mountain": { 
         map: "Dodongo's Cavern", exit: "Exit" 
+    },
+    "Jabu Jabus Belly Beginning|Zoras Fountain": { 
+        map: "Jabu Jabu's Belly", exit: "Exit" 
     },
 
     "Forest Temple Lobby|SFM Forest Temple Entrance Ledge": { 
