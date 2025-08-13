@@ -411,15 +411,15 @@ let SpoilerLogGrottoEntranceMap = {
 };
 
 let SpoilerLogBossEntranceMap = {
-    "Queen Gohma Boss Room|Deku Tree Before Boss": "Gohma",
-    "King Dodongo Boss Room|Dodongos Cavern Before Boss": "King Dodongo",
-    "Barinade Boss Room|Jabu Jabus Belly Before Boss": "Barinade",
+    "Queen Gohma Boss Room|Deku Tree Before Boss": { entranceGroup: "Gohma" },
+    "King Dodongo Boss Room|Dodongos Cavern Before Boss": { entranceGroup: "King Dodongo" },
+    "Barinade Boss Room|Jabu Jabus Belly Before Boss": { entranceGroup: "Barinade" },
 
-    "Phantom Ganon Boss Room|Forest Temple Before Boss": "Phantom Ganon",
-    "Volvagia Boss Room|Fire Temple Before Boss": "Volvagia",
-    "Morpha Boss Room|Water Temple Before Boss": "Morpha",
-    "Bongo Bongo Boss Room|Shadow Temple Before Boss": "Bongo Bongo",
-    "Twinrova Boss Room|Spirit Temple Before Boss": "Twinrova",
+    "Phantom Ganon Boss Room|Forest Temple Before Boss": { entranceGroup: "Phantom Ganon" },
+    "Volvagia Boss Room|Fire Temple Before Boss": { entranceGroup: "Volvagia" },
+    "Morpha Boss Room|Water Temple Before Boss": { entranceGroup: "Morpha" },
+    "Bongo Bongo Boss Room|Shadow Temple Before Boss": { entranceGroup: "Bongo Bongo" },
+    "Twinrova Boss Room|Spirit Temple Before Boss": { entranceGroup: "Twinrova" },
 
-    "Ganons Castle Tower|Ganons Castle Main": "Ganon's Tower"
+    "Ganons Castle Tower|Ganons Castle Main": { entranceGroup: "Ganon's Tower" }
 };

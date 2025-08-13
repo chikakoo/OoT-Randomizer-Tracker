@@ -595,11 +595,8 @@ let SaveAndLoad = {
 
             // Bosses
             else if (SpoilerLogBossMap[entrance]) {
-                let exitToModify = SpoilerLogBossMap[entrance];
-                let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
-                let exitLeadsTo = SpoilerLogBossEntranceMap[_this._getSpoilerLogLocationKey(spoilerExitLeadsTo)];
-                EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo);
-                DropdownUI.onInteriorOrGrottoDropdownChange(exitToModify, exitLeadsTo);
+                this._addInteriorOrGrottoEntrance(
+                    spoilerLogData, entrance, SpoilerLogBossMap, SpoilerLogBossEntranceMap);
             }
 
             else {
