@@ -547,23 +547,63 @@ let SpoilerLogOwEntranceMap = {
         map: "Death Mountain Crater", exit: "Goron City"
     },
 
+    // Zora Areas
+    "ZR Front|Hyrule Field": {
+        map: "Zora's River", exit: "Hyrule Field"
+    },
+    "Zora River|Lost Woods": {
+        map: "Zora's River", exit: "Lost Woods"
+    },
+    "ZR Behind Waterfall|Zoras Domain": {
+        map: "Zora's River", exit: "Zora's Domain"
+    },
+    "Zoras Domain|ZR Behind Waterfall": {
+        map: "Zora's Domain", exit: "Zora's River"
+    },
+    "Zoras Domain|Lake Hylia": {
+        map: "Zora's Domain", exit: "Lake Hylia"
+    },
+    "ZD Behind King Zora|Zoras Fountain": {
+        map: "Zora's Domain", exit: "Zora's Fountain"
+    },
+    "Zoras Fountain|ZD Behind King Zora": {
+        map: "Zora's Fountain", exit: "Zora's Domain"
+    },
 
-    "|": {
-        map: "", exit: ""
+    // Lake Hylia
+    "Lake Hylia|Hyrule Field": {
+        map: "Lake Hylia", exit: "Hyrule Field"
     },
-    "|": {
-        map: "", exit: ""
-    },
-    "|": {
-        map: "", exit: ""
+    "Lake Hylia|Zoras Domain": {
+        map: "Lake Hylia", exit: "Zora's Domain"
     },
 
-    // Desert
+    // Desert Areas
+    "Gerudo Valley|Hyrule Field": {
+        map: "Gerudo Valley", exit: "Hyrule Field"
+    },
+    "GV Fortress Side|Gerudo Fortress": {
+        map: "Gerudo Valley", exit: "Gerudo Fortress"
+    },
+    "Gerudo Fortress|GV Fortress Side": {
+        map: "Gerudo Fortress", exit: "Gerudo Valley"
+    },
+    "GF Outside Gate|Wasteland Near Fortress": {
+        map: "Gerudo Fortress", exit: "Haunted Wasteland"
+    },
+    "Wasteland Near Fortress|GF Outside Gate": {
+        map: "Haunted Wasteland", exit: "Gerudo Fortress"
+    },
+    "Wasteland Near Colossus|Desert Colossus": {
+        map: "Haunted Wasteland", exit: "Desert Colossus"
+    },
+    "Desert Colossus|Wasteland Near Colossus": {
+        map: "Desert Colossus", exit: "Haunted Wasteland"
+    },
     "Desert Colossus|Twinrova Boss Room": {
         // One-way exit, so just list as the main entrance
         map: "Desert Colossus", exit: "Haunted Wasteland"
     },
-
 
     // Dungeons
     "Deku Tree Lobby|KF Outside Deku Tree": { 

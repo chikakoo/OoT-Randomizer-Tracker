@@ -589,7 +589,6 @@ let SaveAndLoad = {
      * @param {object} spoilerLogData - The spoiler log's JSON
      */
     _assignAndPopulateEntrances: function(spoilerLogData) {
-        // TODO: Ow
         _this = this;
         Object.keys(spoilerLogData.entrances).forEach(entrance => {
             // Interiors
