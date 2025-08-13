@@ -14,6 +14,7 @@ let SpoilerLogItemMap = {};
 let SpoilerLogInteriorMap = {};
 let SpoilerLogGrottoMap = {};
 let SpoilerLogBossMap = {};
+let SpoilerLogOwMap = {};
 
 /**
  * A map of the spoiler log dungeon names to the ones we use
@@ -422,4 +423,46 @@ let SpoilerLogBossEntranceMap = {
     "Twinrova Boss Room|Spirit Temple Before Boss": { entranceGroup: "Twinrova" },
 
     "Ganons Castle Tower|Ganons Castle Main": { entranceGroup: "Ganon's Tower" }
+};
+
+let SpoilerLogOwEntranceMap = {
+    "Deku Tree Lobby|KF Outside Deku Tree": { 
+        map: "Deku Tree", exit: "Exit" 
+    },
+    "Jabu Jabus Belly Beginning|Zoras Fountain": { 
+        map: "Jabu Jabu's Belly", exit: "Exit" 
+    },
+    "Dodongos Cavern Beginning|Death Mountain": { 
+        map: "Dodongo's Cavern", exit: "Exit" 
+    },
+
+    "Forest Temple Lobby|SFM Forest Temple Entrance Ledge": { 
+        map: "Forest Temple", exit: "Exit" 
+    },
+    "Fire Temple Lower|DMC Fire Temple Entrance": { 
+        map: "Fire Temple", exit: "Exit" 
+    },
+    "Water Temple Lobby|Lake Hylia": { 
+        map: "Water Temple", exit: "Exit" 
+    },
+    "Shadow Temple Entryway|Graveyard Warp Pad Region": { 
+        map: "Shadow Temple", exit: "Exit" 
+    },
+    "Spirit Temple Lobby|Desert Colossus": { 
+        map: "Spirit Temple", exit: "Exit" 
+    },
+
+    "Ice Cavern Beginning|ZF Ice Ledge": { 
+        map: "Ice Cavern", exit: "Exit" 
+    },
+    "Bottom of the Well|Kakariko Village": { 
+        map: "Bottom of the Well", exit: "Exit" 
+    },
+    "Gerudo Training Ground Lobby|Gerudo Fortress": { 
+        map: "Training Grounds", exit: "Exit" 
+    },
+
+    "Ganons Castle Lobby|Ganons Castle Grounds": { 
+        map: "Ganon's Castle", exit: "Exit" 
+    }
 };

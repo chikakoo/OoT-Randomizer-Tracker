@@ -346,8 +346,7 @@ Data = {
      * @param fromMapName - the map you're setting the info for
      * @param from - the item location of the exit you took
      * @param toMapName - the map you selected
-     * @param toRegion - the region you selected
-     * @param itemLocationName - the item location you're setting the info on
+     * @param toLocationName - the entrance name you're going to
      * @param clear - whether we're only clearing the data
      * @returns - an object containing the toOwExit, fromOwExit, and oldOwexit
      */

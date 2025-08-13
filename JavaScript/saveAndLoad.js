@@ -556,6 +556,7 @@ let SaveAndLoad = {
         SpoilerLogInteriorMap = {};
         SpoilerLogGrottoMap = {};
         SpoilerLogBossMap = {};
+        SpoilerLogOwMap = {};
 
         let _this = this;
         Object.keys(OwExits).forEach(function(mapName) {
@@ -571,13 +572,23 @@ let SaveAndLoad = {
                     case ItemGroups.BOSS_ENTRANCE: 
                         _this._addToSpoilerLogExitMap(exit, SpoilerLogBossMap);
                         break;
+                    case ItemGroups.OW_ENTRANCE:
+                        _this._addToSpoilerLogExitMap(exit, SpoilerLogOwMap);
+                        break;
                 }
             });
 	    });
     },
 
+    /**
+     * Adds each enterance to the SpoilerLogItemMap if they are generic
+     * 
+     * Those that have an entrance group will have it selected and will be
+     * looped through later on when all item locations are checked
+     * 
+     * @param {object} spoilerLogData - The spoiler log's JSON
+     */
     _assignAndPopulateEntrances: function(spoilerLogData) {
-        // Fill all entrance data first first
         // TODO: Ow
         _this = this;
         Object.keys(spoilerLogData.entrances).forEach(entrance => {
@@ -597,6 +608,18 @@ let SaveAndLoad = {
             else if (SpoilerLogBossMap[entrance]) {
                 this._addInteriorOrGrottoEntrance(
                     spoilerLogData, entrance, SpoilerLogBossMap, SpoilerLogBossEntranceMap);
+            }
+
+            // Overworld
+            else if (SpoilerLogOwMap[entrance]) {
+                let exitToModify = SpoilerLogOwMap[entrance];
+                let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
+                let exitLeadsTo = SpoilerLogOwEntranceMap[_this._getSpoilerLogLocationKey(spoilerExitLeadsTo)]; 
+                Data.setOWLocationFound(
+                    exitToModify.ExitMap, 
+                    exitToModify, 
+                    exitLeadsTo.map, 
+                    exitLeadsTo.exit)
             }
 
             else {

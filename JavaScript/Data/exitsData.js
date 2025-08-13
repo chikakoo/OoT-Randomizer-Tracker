@@ -99,6 +99,7 @@ let OwExits = {
 
         // Deku Tree
         "Deku Tree": {
+            SpoilerLogExitName: "KF Outside Deku Tree -> Deku Tree Lobby",
             ExitRegion: "afterMido",
             Map: "Deku Tree",
             Region: "main",
@@ -305,6 +306,7 @@ let OwExits = {
             LongDescription: "The Minuet of Forest teleport pad at the end of the Sacred Forest Meadow.",
         },
         "Forest Temple": {
+            SpoilerLogExitName: "SFM Forest Temple Entrance Ledge -> Forest Temple Lobby",
             ExitRegion: "afterGate",
             Map: "Forest Temple",
             Region: "main",
@@ -734,6 +736,7 @@ let OwExits = {
             LongDescription: "This is the entrance to the main market area."
         },
         "Ganon's Castle": {
+            SpoilerLogExitName: "Ganons Castle Grounds -> Ganons Castle Lobby",
             ExitRegion: "ganonsCastle",
             Map: "Ganon's Castle",
             Region: "main",
@@ -843,6 +846,7 @@ let OwExits = {
             LongDescription: "This is the entrance to the graveyard."
         },
         "Bottom of the Well": {
+            SpoilerLogExitName: "Kakariko Village -> Bottom of the Well",
             ExitRegion: "main",
             Map: "Bottom of the Well",
             Region: "main",
@@ -1120,6 +1124,7 @@ let OwExits = {
             LongDescription: "The Nocturne of Shadow teleport pad on the top part of the graveyard.",
         },
         "Shadow Temple": {
+            SpoilerLogExitName: "Graveyard Warp Pad Region -> Shadow Temple Entryway",
             ExitRegion: "shadowTemple",
             Map: "Shadow Temple",
             Region: "main",
@@ -1238,6 +1243,7 @@ let OwExits = {
             Needs: [Songs.SONG_OF_STORMS]
         },
         "Dodongo's Cavern": {
+            SpoilerLogExitName: "Death Mountain -> Dodongos Cavern Beginning",
             ExitRegion: "main",
             Map: "Dodongo's Cavern",
             Region: "main",
@@ -1324,6 +1330,7 @@ let OwExits = {
             LongDescription: "The Bolero of Fire teleport pad at the bottom of Death Mountain Crater.",
         },
         "Fire Temple": {
+            SpoilerLogExitName: "DMC Fire Temple Entrance -> Fire Temple Lower",
             ExitRegion: "bottom",
             Map: "Fire Temple",
             Region: "main",
@@ -1584,6 +1591,7 @@ let OwExits = {
             LongDescription: "This is the entrance to Zora's Domain."
         },
         "Jabu Jabu's Belly": {
+            SpoilerLogExitName: "Zoras Fountain -> Jabu Jabus Belly Beginning",
             ExitRegion: "main",
             Map: "Jabu Jabu's Belly",
             Region: "main",
@@ -1611,6 +1619,7 @@ let OwExits = {
 
         // Deep Water
         "Ice Cavern": {
+            SpoilerLogExitName: "ZF Ice Ledge -> Ice Cavern Beginning",
             DisplayGroup: { groupName: "Deep Water", imageName: "Iron Boots" },
             ExitRegion: "main",
             Map: "Ice Cavern",
@@ -1699,6 +1708,7 @@ let OwExits = {
             LongDescription: "The Serenade of Water teleport pad on the island in Lake Hylia.",
         },
         "Water Temple": {
+            SpoilerLogExitName: "Lake Hylia -> Water Temple Lobby",
             ExitRegion: "main",
             Map: "Water Temple",
             Region: "main",
@@ -1820,6 +1830,7 @@ let OwExits = {
             TricksToShow: [Tricks.gfChildGateSkip, Tricks.gfAdultGateSkip]
         },
         "Training Grounds": {
+            SpoilerLogExitName: "Gerudo Fortress -> Gerudo Training Ground Lobby",
             ExitRegion: "main",
             Map: "Training Grounds",
             Region: "main",
@@ -2417,6 +2428,7 @@ let OwExits = {
             LongDescription: "The archway with the heart piece on it."
         },
         "Spirit Temple": {
+            SpoilerLogExitName: "Desert Colossus -> Spirit Temple Lobby",
             DisplayGroup: { groupName: "Spirit Temple Area", imageName: "Spirit Medallion" },
             ExitRegion: "main",
             Map: "Spirit Temple",
