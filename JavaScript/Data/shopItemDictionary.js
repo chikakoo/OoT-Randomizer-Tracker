@@ -14,6 +14,7 @@ let ShopItemDictionary = {
 	"bigsword": "Biggoron's Sword.png",
 	"bsword": "Biggoron's Sword.png",
 	"biggoron": "Biggoron's Sword.png",
+	"giantsknife": "Giant's Knife.png",
 	
 	"ironboots": "Iron Boots.png",
 	"ironboot": "Iron Boots.png",
@@ -215,7 +216,7 @@ let ShopItemDictionary = {
 	"nayru": "Nayru's Love.png",
 	"love": "Nayru's Love.png",
 	
-	"farores wind": "Farore's Wind.png",
+	"faroreswind": "Farore's Wind.png",
 	"farores": "Farore's Wind.png",
 	"farore": "Farore's Wind.png",
 	"wind": "Farore's Wind.png",
@@ -572,7 +573,7 @@ let ShopItemDictionary = {
 	// Rupees
 	"silverrupee": "Silver Rupee.png",
 	"silver": "Silver Rupee.png",
-	"silverrupeepouch": "Silver Rupee.png",
+	"silverrupeepouch": "Silver Rupee Pouch.png",
 
 	"greenrupee": "Green Rupee.png",
 	"green": "Green Rupee.png",
@@ -718,6 +719,6 @@ let ShopItemDictionary = {
 	"lightmedallion": "Light Medallion.png",
 
 	// Misc 
-	"nothing": "Wonderitem.png",
+	"nothing": "Nothing.png",
 	"icetrap": "Ice Trap.png"
 };

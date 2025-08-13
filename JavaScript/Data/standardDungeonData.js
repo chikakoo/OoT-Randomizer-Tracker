@@ -1072,6 +1072,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Skulltula in First Room": {
+                        SpoilerLogName: "Forest Temple GS First Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 193, y: 271, floor: "F1" },
                         Age: Age.EITHER,
@@ -1088,6 +1089,7 @@ let StandardDungeons = {
                         ]
                     },
                     "Chest on Starting Room Tree": {
+                        SpoilerLogName: "Forest Temple First Room Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 151, y: 254, floor: "F1" },
                         Age: Age.EITHER,
@@ -1182,6 +1184,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "3 Pots Left in Lobby": {
+                        SpoilerLogName: [
+                            { name: "Forest Temple Center Room Left Pot {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -1191,6 +1196,9 @@ let StandardDungeons = {
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. the pots are on the ledge to the left."
                     },
                     "3 Pots Right in Lobby": {
+                        SpoilerLogName: [
+                            { name: "Forest Temple Center Room Right Pot {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -1200,6 +1208,7 @@ let StandardDungeons = {
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. the pots are on the ledge to the right."
                     },
                     "Skulltula in Main Room": {
+                        SpoilerLogName: "Forest Temple GS Lobby",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 191, y: 110, floor: "F1" },
                         Age: Age.EITHER,
@@ -1208,6 +1217,7 @@ let StandardDungeons = {
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go through the main room until you get to the door on the other side. Turn right to find this skulltula on the wall. You can get it with your hookshot or boomerang."
                     },
                     "Chest Behind Main Room": {
+                        SpoilerLogName: "Forest Temple First Stalfos Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 170, y: 31, floor: "F1" },
                         Age: Age.EITHER,
@@ -1216,6 +1226,9 @@ let StandardDungeons = {
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltula. Now, go straight again through the room with the blue bubble. In the next room, kill the two stalfos to spawn the chest."
                     },
                     "2 Pots Behind Main Room": {
+                        SpoilerLogName: [
+                            { name: "Forest Temple Lower Stalfos Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -1284,6 +1297,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Chest on Outside Right Island": {
+                        SpoilerLogName: "Forest Temple Raised Island Courtyard Chest",
                         UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 269, y: 77, floor: "F1" },
@@ -1299,6 +1313,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Skulltula on Outside Right Island": {
+                        SpoilerLogName: "Forest Temple GS Raised Island Courtyard",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 269, y: 70, floor: "F1" },
                         Age: Age.EITHER,
@@ -1331,6 +1346,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Dungeon Map": {
+                        SpoilerLogName: "Forest Temple Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 184, y: 111, floor: "F2" },
                         Age: Age.EITHER,
@@ -1345,6 +1361,9 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Hearts in Well": {
+                        SpoilerLogName: [
+                            { name: "Forest Temple Well Recovery Heart {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "2 Hearts",
@@ -1354,6 +1373,7 @@ let StandardDungeons = {
                         LongDescription: "In the outside rooms, there are two hearts in the well. One way to get there is from the left room. Proceed up the vines, kill the blue bubble, and go into the next room. Now, hookshot or jump to the vines to your left and navigate to the switch on the other platform. This will drain the water. Alternatively, you can start in the right room and longshot up these vines to get to the switch."
                     },
                     "Chest in Well": {
+                        SpoilerLogName: "Forest Temple Well Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 126, y: 48, floor: "B1" },
                         Age: Age.EITHER,
@@ -1378,6 +1398,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Eye Switch in Block Puzzle Room": {
+                        SpoilerLogName: "Forest Temple Eye Switch Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 56, y: 226, floor: "F1" },
                         Age: Age.EITHER,
@@ -1421,6 +1442,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Boss Key Chest": {
+                        SpoilerLogName: "Forest Temple Boss Key Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 66, y: 45, floor: "F2" },
                         Age: Age.ADULT,
@@ -1441,6 +1463,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Floormaster Chest": {
+                        SpoilerLogName: "Forest Temple Floormaster Chest",
                         UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 27, y: 101, floor: "F1" },
@@ -1456,6 +1479,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Left Room on Wall": {
+                        SpoilerLogName: "Forest Temple GS Level Island Courtyard",
                         ItemGroup: ItemGroups.SKULLTULA,
                         UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         Age: Age.EITHER,
@@ -1470,6 +1494,9 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Hearts Above Left Room": {
+                        SpoilerLogName: [
+                            { name: "Forest Temple Courtyard Recovery Heart {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "2 Hearts",
@@ -1505,6 +1532,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Red Poe Chest": {
+                        SpoilerLogName: "Forest Temple Red Poe Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 151, y: 54, floor: "F2" },
                         Age: Age.ADULT,
@@ -1513,6 +1541,7 @@ let StandardDungeons = {
                         AdultNeeds: [Items.FAIRY_BOW]
                     },
                     "Fairy Bow Chest": {
+                        SpoilerLogName: "Forest Temple Bow Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 190, y: 61, floor: "F2" },
                         Age: Age.ADULT,
@@ -1520,6 +1549,9 @@ let StandardDungeons = {
                         LongDescription: "Go to the room after the red poe room. Kill the stalfos that spawns. After that, kill the two others to spawn the chest.",
                     },
                     "4 Pots in Upper Stalfos Room": {
+                        SpoilerLogName: [
+                            { name: "Forest Temple Upper Stalfos Pot {#}", count: 4 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "4 Pots",
@@ -1529,6 +1561,9 @@ let StandardDungeons = {
                         LongDescription: "These pots are against the walls in the room after the red poe room."
                     },
                     "3 Pots in Blue Poe Room": {
+                        SpoilerLogName: [
+                            { name: "Forest Temple Blue Poe Room Pot {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -1538,6 +1573,7 @@ let StandardDungeons = {
                         LongDescription: "These pots are in the room after the fairy bow chest, just to your left when you enter."
                     },
                     "Blue Poe Chest": {
+                        SpoilerLogName: "Forest Temple Blue Poe Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 224, y: 54, floor: "F2" },
                         Age: Age.ADULT,
@@ -1566,6 +1602,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Carousel Room": {
+                        SpoilerLogName: [
+                            { name: "Forest Temple Frozen Eye Switch Room Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -1589,6 +1628,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Falling Ceiling Room": {
+                        SpoilerLogName: "Forest Temple Falling Ceiling Room Chest",
                         UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 318, y: 116, floor: "F1" },
@@ -1597,6 +1637,9 @@ let StandardDungeons = {
                         LongDescription: "After the blue poe room, go through the door. Now go down the hallway that the ladder leads to and enter the locked room. Either shoot the frozen eye switch so that the arrow goes through the torch, or cast Din's Fire while standing just below the switch. Now, head back to the room with the ladder and fall down the hole. The chest is in the middle of this room. Alternatively, you can spawn a scarecrow in the right outside room that you can longshot to."
                     },
                     "2 Pots in Green Poe Room": {
+                        SpoilerLogName: [
+                            { name: "Forest Temple Green Poe Room Pot {#}", count: 2 }
+                        ],
                         UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
@@ -1617,6 +1660,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Basement": {
+                        SpoilerLogName: "Forest Temple Basement Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 138, y: 237, floor: "B1" },
                         Age: Age.ADULT,
@@ -1626,6 +1670,7 @@ let StandardDungeons = {
                         Needs: [(age) => MapLocations["Forest Temple"]._canAccessAllPoeRooms(age)]
                     },
                     "Skulltula in Basement": {
+                        SpoilerLogName: "Forest Temple GS Basement",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 132, y: 228, floor: "B1" },
                         Age: Age.ADULT,
