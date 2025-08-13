@@ -16,6 +16,16 @@ NotesPage = {
 	},
 
 	/**
+	 * Fired when Enter is pressed while focused on the filter field
+	 * @param event - The event containing the pressed key
+	 */
+	onFilterKeyDown: function(event) {
+		if (event.key === 'Enter') {
+			this.display();
+		}
+	},
+
+	/**
 	 * Adjusts the notes for the important locations
 	 * Currently only for the temple of time
 	 * 
@@ -47,6 +57,8 @@ NotesPage = {
 		
 		let notesDiv = document.getElementById(`${sectionType}NotesContent`);
 		notesDiv.innerHTML = "";
+
+		let filterText = document.getElementById("notesFilterInput").value;
 		
 		_this = this;
 		Object.keys(MapLocations).forEach(function(mapName) {
@@ -54,6 +66,12 @@ NotesPage = {
 			let mapDiv = dce("div");
 			Data.getAllItemLocations(mapName).forEach(function(itemLocation) {
 				if (itemLocation.disabled || !itemLocation.notes) { return; }
+
+				if (filterText && 
+					!itemLocation.notes.toLowerCase().includes(filterText.toLowerCase().trim())) {
+					return;
+				}
+
 				if (conditionToCheck(itemLocation)) {
 					if (!doesMapHaveNotes) {
 						doesMapHaveNotes = true;
@@ -79,7 +97,6 @@ NotesPage = {
 			}
 		});
 	},
-	
 	
 	/**
 	 * Create the note div for the given item location

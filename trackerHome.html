@@ -130,6 +130,14 @@
 					</div>
 				</div>
 			</span>
+			<div id="notesFilterContainer">
+				<input type="text" 
+					id="notesFilterInput"
+					placeholder="notes filter" 
+					title="Filters out item locations containing the text in the fitler"
+					onblur='NotesPage.display()'
+					onkeydown='NotesPage.onFilterKeyDown(event)'>
+			</div>
 			<div class="notes-group" id="importantLocationsContainer">Important Locations
 				<div class="notes-content note-div-container">
 					<div class="note-div-container">
