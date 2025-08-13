@@ -448,15 +448,114 @@ let SpoilerLogOwEntranceMap = {
         map: "Sacred Forest Meadow", exit: "Lost Woods"
     },
 
-    // Kakariko Village
+    // Hyrule Field
+    "Hyrule Field|LW Bridge": {
+        map: "Hyrule Field", exit: "Lost Woods Bridge"
+    },
+    "Hyrule Field|ZR Front": {
+        map: "Hyrule Field", exit: "Zora's River"
+    },
+    "Hyrule Field|Kakariko Village": {
+        map: "Hyrule Field", exit: "Kakariko Village"
+    },
+    "Hyrule Field|Market Entrance": {
+        map: "Hyrule Field", exit: "Market"
+    },
+    "Hyrule Field|Lon Lon Ranch": {
+        map: "Hyrule Field", exit: "Lon Lon Ranch"
+    },
+    "Hyrule Field|Gerudo Valley": {
+        map: "Hyrule Field", exit: "Gerudo Valley"
+    },
+    "Hyrule Field|Lake Hylia": {
+        map: "Hyrule Field", exit: "Lake Hylia"
+    },
+    "Hyrule Field|LH Owl Flight": {
+        // One-way exit, so list the closest place
+        map: "Hyrule Field", exit: "Market"
+    },
+    
+    // Lon Lon Ranch
+    "Lon Lon Ranch|Hyrule Field": {
+        map: "Lon Lon Ranch", exit: "Hyrule Field"
+    },
+
+    // Market, Temple of Time, and Castle
+    "Market Entrance|Hyrule Field": {
+        map: "Market Entrance", exit: "Hyrule Field"
+    },
+    "Market Entrance|Market": {
+        map: "Market Entrance", exit: "Market"
+    },
+    "Market|Market Entrance": {
+        map: "Market", exit: "Market Entrance"
+    },
+    "Market|Castle Grounds": {
+        map: "Market", exit: "Hyrule Castle"
+    },
+    "Market|ToT Entrance": {
+        map: "Market", exit: "Temple of Time"
+    },
+    "ToT Entrance|Market": {
+        map: "Temple of Time", exit: "Market"
+    },
+    "Castle Grounds|Market": {
+        map: "Castle", exit: "Market"
+    },
+
+    // Kakariko Village and Graveyard
+    "Kakariko Village|Hyrule Field": {
+        map: "Kakariko Village", exit: "Hyrule Field"
+    },
+    "Kakariko Village|Graveyard": {
+        map: "Kakariko Village", exit: "Graveyard"
+    },
+    "Kak Behind Gate|Death Mountain": {
+        map: "Kakariko Village", exit: "Death Mountain Trail"
+    },
     "Kak Impas Rooftop|DMT Owl Flight": {
         // One-way exit, so just list as the main entrance
         map: "Kakariko Village", exit: "Hyrule Field"
     },
+    "Graveyard|Kakariko Village": {
+        map: "Graveyard", exit: "Kakariko Village"
+    },
 
-    // Death Mountain
+    // Death Mountain and Goron City
     "Death Mountain|Kak Behind Gate": {
         map: "Death Mountain Trail", exit: "Kakariko Village"
+    },
+    "Death Mountain|Goron City": {
+        map: "Death Mountain Trail", exit: "Goron City"
+    },
+    "Death Mountain Summit|DMC Upper Nearby": {
+        map: "Death Mountain Trail", exit: "Death Mountain Crater"
+    },
+    "Goron City|Death Mountain": {
+        map: "Goron City", exit: "Death Mountain Trail"
+    },
+    "GC Woods Warp|Lost Woods": {
+        map: "Goron City", exit: "Lost Woods"
+    },
+    "GC Darunias Chamber|DMC Lower Nearby": {
+        map: "Goron City", exit: "Death Mountain Crater"
+    },
+    "DMC Upper Local|Death Mountain Summit": {
+        map: "Death Mountain Crater", exit: "Mountain Top"
+    },
+    "DMC Lower Local|GC Darunias Chamber": {
+        map: "Death Mountain Crater", exit: "Goron City"
+    },
+
+
+    "|": {
+        map: "", exit: ""
+    },
+    "|": {
+        map: "", exit: ""
+    },
+    "|": {
+        map: "", exit: ""
     },
 
     // Desert
