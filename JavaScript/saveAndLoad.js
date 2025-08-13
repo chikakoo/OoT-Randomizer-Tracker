@@ -594,32 +594,26 @@ let SaveAndLoad = {
         Object.keys(spoilerLogData.entrances).forEach(entrance => {
             // Interiors
             if (SpoilerLogInteriorMap[entrance]) {
-                this._addInteriorOrGrottoEntrance(
+                this._addSpoilerLogEntrance(
                     spoilerLogData, entrance, SpoilerLogInteriorMap, SpoilerLogInteriorEntranceMap);
             }
 
             // Grottos
             else if (SpoilerLogGrottoMap[entrance]) {
-                this._addInteriorOrGrottoEntrance(
+                this._addSpoilerLogEntrance(
                     spoilerLogData, entrance, SpoilerLogGrottoMap, SpoilerLogGrottoEntranceMap);
             }
 
             // Bosses
             else if (SpoilerLogBossMap[entrance]) {
-                this._addInteriorOrGrottoEntrance(
+                this._addSpoilerLogEntrance(
                     spoilerLogData, entrance, SpoilerLogBossMap, SpoilerLogBossEntranceMap);
             }
 
             // Overworld
             else if (SpoilerLogOwMap[entrance]) {
-                let exitToModify = SpoilerLogOwMap[entrance];
-                let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
-                let exitLeadsTo = SpoilerLogOwEntranceMap[_this._getSpoilerLogLocationKey(spoilerExitLeadsTo)]; 
-                Data.setOWLocationFound(
-                    exitToModify.ExitMap, 
-                    exitToModify, 
-                    exitLeadsTo.map, 
-                    exitLeadsTo.exit)
+                this._addSpoilerLogEntrance(
+                    spoilerLogData, entrance, SpoilerLogOwMap, SpoilerLogOwEntranceMap);
             }
 
             else {
@@ -629,7 +623,7 @@ let SaveAndLoad = {
         });
     },
 
-    _addInteriorOrGrottoEntrance: function(spoilerLogData, entrance, spoilerLogMap, spoilerLogEntranceMap) {
+    _addSpoilerLogEntrance: function(spoilerLogData, entrance, spoilerLogMap, spoilerLogEntranceMap) {
         let exitToModify = spoilerLogMap[entrance];
         let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
         let exitLeadsTo = spoilerLogEntranceMap[_this._getSpoilerLogLocationKey(spoilerExitLeadsTo)]; 
@@ -640,9 +634,20 @@ let SaveAndLoad = {
             return; 
         }
 
+        // Grotto/Interior/Boss
         if (exitLeadsTo.entranceGroup) {
             EntranceUI.initializeEntranceGroupData(exitToModify, exitLeadsTo.entranceGroup);
             DropdownUI.onInteriorOrGrottoDropdownChange(exitToModify, exitLeadsTo.entranceGroup);
+        } 
+        
+        // Overworld - return early, as we don't need to add item locations for them
+        else if (exitLeadsTo.map && exitLeadsTo.exit) {
+            Data.setOWLocationFound(
+                exitToModify.ExitMap, 
+                exitToModify, 
+                exitLeadsTo.map, 
+                exitLeadsTo.exit);
+            return;
         }
 
         this._addItemLocationToSpoilerLogItemMap(exitLeadsTo.items || [], exitToModify);
@@ -829,7 +834,7 @@ let SaveAndLoad = {
         }
 
         if (itemName.startsWith("Silver Rupee Pouch (")) {
-            comment = `//Pouch: ${itemName.split("(")[1].replace(")", "")}`;
+            comment = `//${itemName.split("(")[1].replace(")", "")}`;
             itemName = "Silver Rupee Pouch";
         }
 
