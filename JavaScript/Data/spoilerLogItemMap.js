@@ -417,19 +417,54 @@ let SpoilerLogBossEntranceMap = {
 };
 
 let SpoilerLogOwEntranceMap = {
-    "|": {
-        map: "", exit: ""
-    },
-
     // Kokiri Forest
     "Kokiri Forest|LW Bridge": {
         map: "Kokiri Forest", exit: "Lost Woods Bottom"
+    },
+    "Kokiri Forest|LW Forest Exit": {
+        map: "Kokiri Forest", exit: "Lost Woods Top"
+    },
+
+    // Lost Woods and Sacred Forest Meadow
+    "Lost Woods|Kokiri Forest": {
+        map: "Lost Woods", exit: "To Kokiri Forest"
+    },
+    "Lost Woods|GC Woods Warp": {
+        map: "Lost Woods", exit: "Goron City"
+    },
+    "LW Underwater Entrance|Zora River": {
+        map: "Lost Woods", exit: "Zora's River"
+    },
+    "LW Beyond Mido|SFM Entryway": {
+        map: "Lost Woods", exit: "Sacred Forest Meadow"
+    },
+    "LW Bridge From Forest|Kokiri Forest": {
+        map: "Lost Woods Bridge", exit: "Kokiri Forest Bridge"
+    },
+    "LW Bridge|Hyrule Field": {
+        map: "Lost Woods Bridge", exit: "Hyrule Field Bridge"
+    },
+    "SFM Entryway|LW Beyond Mido": {
+        map: "Sacred Forest Meadow", exit: "Lost Woods"
+    },
+
+    // Kakariko Village
+    "Kak Impas Rooftop|DMT Owl Flight": {
+        // One-way exit, so just list as the main entrance
+        map: "Kakariko Village", exit: "Hyrule Field"
     },
 
     // Death Mountain
     "Death Mountain|Kak Behind Gate": {
         map: "Death Mountain Trail", exit: "Kakariko Village"
     },
+
+    // Desert
+    "Desert Colossus|Twinrova Boss Room": {
+        // One-way exit, so just list as the main entrance
+        map: "Desert Colossus", exit: "Haunted Wasteland"
+    },
+
 
     // Dungeons
     "Deku Tree Lobby|KF Outside Deku Tree": { 
