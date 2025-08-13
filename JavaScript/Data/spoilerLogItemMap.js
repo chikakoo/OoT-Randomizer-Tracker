@@ -28,11 +28,25 @@ let SpoilerLogDungeonNameMap = {
     "Ganons Castle": "Ganon's Castle"
 };
 
-// let SpoilerLogGenericInteriorEntranceMap = {
-//     "HC Great Fairy Fountain": [],
-//     "DMC Great Fairy Fountain": ["DMC Great Fairy Reward"],
-//     "Colossus Great Fairy Fountain": ["Colossus Great Fairy Reward"]
-// };
+/**
+ * A map of the spoiler log entrances that we know about but
+ * aren't making use of at the moment
+ * 
+ * This is a map for quick lookup
+ */
+let SpoilerLogSkippedEntrancesMap = {
+    // Spawns
+    "Adult Spawn -> Temple of Time": true,
+    "Child Spawn -> KF Links House": true,
+
+    // Songs
+    "Bolero of Fire Warp -> DMC Central Local": true,
+    "Minuet of Forest Warp -> Sacred Forest Meadow": true,
+    "Nocturne of Shadow Warp -> Graveyard Warp Pad Region": true,
+    "Prelude of Light Warp -> Temple of Time": true,
+    "Requiem of Spirit Warp -> Desert Colossus": true,
+    "Serenade of Water Warp -> Lake Hylia": true
+};
 
 /**
  * The spoiler log lists these in a form of:

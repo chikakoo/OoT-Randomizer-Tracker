@@ -496,7 +496,8 @@ let SaveAndLoad = {
         let updateData = {};
         Object.keys(spoilerLogData.locations).forEach(logLocation => {
             if (!SpoilerLogItemMap[logLocation]) {
-                // TODO when done: if this DOES NOT have an entry, log an error
+                // TODO: Uncomment this when all item locations are done
+                //console.log(`WARNING: No entry found in our maps for spoiler log key ${logLocation}`);
                 return;
             }
 
@@ -615,9 +616,15 @@ let SaveAndLoad = {
                     spoilerLogData, entrance, SpoilerLogOwMap, SpoilerLogOwEntranceMap);
             }
 
+            // Other
+            else if (SpoilerLogSkippedEntrancesMap[entrance]) {
+                // Do nothing - we acknowledge the entrance but know we
+                // aren't going to do anything with it at the moment
+            }
+
+            // Not found
             else {
-                // TODO: enable when all entrances are done to catch new ones on an update
-                //console.log(`WARNING: No entrance mapping was found for entrance ${entrance}`)
+                console.log(`WARNING: No entrance mapping was found for entrance ${entrance}`)
             }
         });
     },
@@ -627,9 +634,8 @@ let SaveAndLoad = {
         let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
         let exitLeadsTo = spoilerLogEntranceMap[_this._getSpoilerLogLocationKey(spoilerExitLeadsTo)]; 
 
-        if (!exitLeadsTo) { 
-            // TODO: log an error here saying there's an 
-            // unmapped exit in the entrance map
+        if (!exitLeadsTo) {
+            console.log(`WARNING: Unmapped exit in the entrance map for entrance ${entrance}, where the exit leads to ${exitLeadsTo}`);
             return; 
         }
 

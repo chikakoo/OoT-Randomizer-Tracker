@@ -808,10 +808,14 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "These are the wonderitems you get as Child by climbing up the drawbridge and jumping off."
                     },
-                    "Ocarina of Time in Moat": {
-                        SpoilerLogName: "HF Ocarina of Time Item",
-                        ItemGroup: ItemGroups.FREESTANDING,
-                        MapImageName: "Song of Time",
+                    "Song of Time Cutscene": {
+                        SpoilerLogName: [
+                            "HF Ocarina of Time Item",
+                            "Song from Ocarina of Time"
+                        ],
+                        ItemGroup: ItemGroups.GROUP,
+                        OverrideItemGroup: ItemGroups.FREESTANDING,
+                        DefaultEntranceGroupName: "Song of Time Cutscene",
                         MapInfo: { x: 207, y: 36 },
                         Age: Age.CHILD,
                         LongDescription: "After obtaining all the spiritual stones, stand by the drawbridge to the Market. After the cutscene, grab the Ocarina from the moat.",
@@ -1080,8 +1084,8 @@ let MapLocations = {
                     },
                     "Wonderitems on Balcony": {
                         SpoilerLogName: [
-                            { name: "Market Daytime Balcony Wonderitem", count: 5 },
-                            { name: "Market Night Balcony Wonderitem", count: 2 }
+                            { name: "Market Daytime Balcony Wonderitem {#}", count: 5 },
+                            { name: "Market Night Balcony Wonderitem {#}", count: 2 }
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
@@ -4923,7 +4927,7 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     "Upper Room Upper Skull": { // TODO Mapping: Check this
-                        SpoilerLogName: "Hideout Break Room Wonderitem",
+                        SpoilerLogName: "Hideout Break Room Hall to Balcony Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 75, y: 125, floor: "TOP" },

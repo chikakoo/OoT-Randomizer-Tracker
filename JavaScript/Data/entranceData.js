@@ -1202,6 +1202,7 @@ GrottoGroups = {
 		canExitFromEntrance: true,
 		buttons: {
 			"Chest": {
+				SpoilerLogName: "Dodongos Cavern Boss Room Chest",
 				LongDescription: "This chest is in the back of the room."
 			},
 			"Heart Container": {
@@ -1224,6 +1225,7 @@ GrottoGroups = {
 		tooltip: "Barinade in Jabu Jabu's Belly",
 		buttons: {
 			"6 Pots": {
+				SpoilerLogName: [{ name: "Jabu Jabus Belly Barinade Pot {#}", count: 6 }],
 				icon: "Pot",
 				count: 6,
 				ItemGroup: ItemGroups.POT,
@@ -1237,8 +1239,8 @@ GrottoGroups = {
 				Needs: [ItemSets.SWORDS, Items.BOOMERANG]
 			},
 			"Blue Warp": {
-				SpoilerLogName: "King Dodongo",
-				icon: "Barinade",
+				SpoilerLogName: "Barinade",
+				icon: "Zora's Sapphire",
 				Age: Age.EITHER,
 				UseChildAge: function() { return !Tricks.equipSwap.enabled; },
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
@@ -1426,6 +1428,21 @@ GrottoGroups = {
 				LongDescription: "Plant a magic bean here as a child to grow a plant to travel with as an adult.",
 				Needs: [Items.MAGIC_BEAN],
 				shouldNotDisplay: SettingSets.AUTO_PLANT_BEANS
+			}
+		}
+	},
+	"Song of Time Cutscene": {
+		icon: "Song of Time",
+		tooltip: "The Song of Time Cutscene you get by getting the Ocarina of Time in the moat",
+		buttons: {
+			"Ocarina in Moat": {
+				Age: Age.CHILD,
+				icon: "Ocarina",
+				LongDescription: "The Ocarina from the Hyrule Castle moat after getting the three spiritual stones."
+			},
+			"Song of Time": {
+				Age: Age.CHILD,
+				LongDescription: "You will get this automatically after getting the Ocarina of Time from the moat."
 			}
 		}
 	},
