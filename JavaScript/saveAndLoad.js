@@ -667,7 +667,7 @@ let SaveAndLoad = {
     _addToSpoilerLogItemMap: function(itemLocation, spoilerLogName, order) {
         let spoilerLogNameObject = spoilerLogName || itemLocation.SpoilerLogName;
         if (!spoilerLogNameObject) {
-            return;
+            return order;
         }
 
         return this._addItemLocationToSpoilerLogItemMap(spoilerLogNameObject, itemLocation, order);

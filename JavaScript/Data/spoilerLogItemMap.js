@@ -47,7 +47,7 @@ let SpoilerLogDungeonNameMap = {
  * region: <what the boss room is>
  * from: <the normal way to get there>
  * 
- * We will key this b "region|from" so we can find it easily
+ * We will key this as "region|from" so we can find it easily
  * 
  * Ones that aren't like that will be mapped as their string version
  */
@@ -219,7 +219,78 @@ let SpoilerLogInteriorEntranceMap = {
 };
 
 let SpoilerLogGrottoEntranceMap = {
+    // Kokiri Forest
+    "KF Storms Grotto": {
+        entranceGroup: "Generic Grotto",
+        items: [ // TODO Mapping: check the order of beehives
+            "KF Storms Grotto Chest",
+            { name: "KF Storms Grotto Beehive {#}", count: 2 }
+        ]
+    },
+
+    // Lost Woods
+    "LW Near Shortcuts Grotto": {
+        entranceGroup: "Generic Grotto",
+        items: [ // TODO Mapping: check the order of beehives
+            "LW Near Shortcuts Grotto Chest",
+            { name: "LW Near Shortcuts Grotto Beehive {#}", count: 2 }
+        ]
+    },
+    "Deku Theater": { entranceGroup: "Forest Stage" },
+    "LW Scrubs Grotto": { 
+        // Note: if scrubsanity is off, this is wrong... should be
+        // 2 Scrubs (Front on Left) instead
+        entranceGroup: "2 Scrubs",
+        items: [
+            "LW Deku Scrub Grotto Front",
+            "LW Deku Scrub Grotto Rear",
+            "LW Scrubs Grotto Beehive"
+        ]
+    },
+
+    // Sacred Forest Meadow
+    "SFM Wolfos Grotto": { entranceGroup: "Wolfos Grotto" },
+    "SFM Fairy Grotto": { items: [] },
+    "SFM Storms Grotto": {
+        entranceGroup: "2 Scrubs",
+        items: [
+            "SFM Deku Scrub Grotto Front",
+            "SFM Deku Scrub Grotto Rear",
+            "SFM Storms Grotto Beehive"
+        ]
+    },
+
+    // Hyrule Field
+    "HF Near Kak Grotto": { entranceGroup: "Skulltula at Distance" },
+    "HF Near Market Grotto": {
+        entranceGroup: "Generic Grotto",
+        items: [ // TODO Mapping: check the order of beehives
+            "HF Near Market Grotto Chest",
+            { name: "HF Near Market Grotto Beehive {#}", count: 2 }
+        ]
+    },
+    "HF Fairy Grotto": { items: [] },
+    "HF Tektite Grotto": { entranceGroup: "Water Heart Piece Grotto" },
+    "HF Cow Grotto": { entranceGroup: "Cow and Web Grotto" },
+    "HF Southeast Grotto": {
+        entranceGroup: "Generic Grotto",
+        items: [ // TODO Mapping: check the order of beehives
+            "HF Southeast Grotto Chest",
+            { name: "HF Southeast Grotto Beehive {#}", count: 2 }
+        ]
+    },
+    "HF Open Grotto": {
+        entranceGroup: "Generic Grotto",
+        items: [ // TODO Mapping: check the order of beehives
+            "HF Open Grotto Chest",
+            { name: "HF Open Grotto Beehive {#}", count: 2 }
+        ]
+    },
+    "HF Inside Fence Grotto": { entranceGroup: "1 Scrub" },
+
+    // Death Mountain Trial
     "DMT Cow Grotto": { entranceGroup: "Cow Grotto" }
+    
 };
 
 let SpoilerLogBossEntranceMap = {
