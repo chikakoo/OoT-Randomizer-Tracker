@@ -141,7 +141,7 @@ let SpoilerLogInteriorEntranceMap = {
     "Kak Potion Shop Front": { entranceGroup: "Potion Shop Front" },
     "Kak Potion Shop Back": { entranceGroup: "Potion Shop Back" },
     "Kak Odd Medicine Building": { entranceGroup: "Granny's Potion Shop" },
-    "Graveyard Dampes House": { items: [] },
+    "Graveyard Dampes House": {},
 
     // Death Mountain and Goron City
     "DMT Great Fairy Fountain": { 
@@ -170,7 +170,7 @@ let SpoilerLogInteriorEntranceMap = {
     "LH Fishing Hole": { entranceGroup: "Fishing Pond" },
 
     // Gerudo Valley / Fortress
-    "GV Carpenter Tent": { items: [] },
+    "GV Carpenter Tent": {},
     "Hideout 1 Torch Jail|Gerudo Fortress": { 
         entranceGroup: "Jail 1 Left" // Bottom Left Door
     }, 
@@ -250,7 +250,7 @@ let SpoilerLogGrottoEntranceMap = {
 
     // Sacred Forest Meadow
     "SFM Wolfos Grotto": { entranceGroup: "Wolfos Grotto" },
-    "SFM Fairy Grotto": { items: [] },
+    "SFM Fairy Grotto": {},
     "SFM Storms Grotto": {
         entranceGroup: "2 Scrubs",
         items: [
@@ -269,7 +269,7 @@ let SpoilerLogGrottoEntranceMap = {
             { name: "HF Near Market Grotto Beehive {#}", count: 2 }
         ]
     },
-    "HF Fairy Grotto": { items: [] },
+    "HF Fairy Grotto": {},
     "HF Tektite Grotto": { entranceGroup: "Water Heart Piece Grotto" },
     "HF Cow Grotto": { entranceGroup: "Cow and Web Grotto" },
     "HF Southeast Grotto": {
@@ -287,6 +287,32 @@ let SpoilerLogGrottoEntranceMap = {
         ]
     },
     "HF Inside Fence Grotto": { entranceGroup: "1 Scrub" },
+
+    // Lon Lon Ranch
+    "LLR Grotto": {
+        entranceGroup: "3 Scrubs",
+        items: [{
+            name: "LLR Deku Scrub Grotto {#}",
+            tokens: ["Left", "Center", "Right"]
+        }]
+    },
+
+    // Castle
+    "HC Storms Grotto": { entranceGroup: "Bombable Wall Grotto" },
+
+    // Kakariko Village and Graveyard
+    "Kak Redead Grotto": { entranceGroup: "Two Redead Grotto" },
+    "Kak Open Grotto": {
+        entranceGroup: "Generic Grotto",
+        items: [ // TODO Mapping: check the order of beehives
+            "Kak Open Grotto Chest",
+            { name: "Kak Open Grotto Beehive {#}", count: 2 }
+        ]
+    },
+    "Graveyard Shield Grave": { items: ["Graveyard Shield Grave Chest"] },
+    "Graveyard Dampes Grave": { entranceGroup: "Dampe's Grave" },
+    "Graveyard Heart Piece Grave": { entranceGroup: "Redead Sun's Song Grave" },
+    "Graveyard Royal Familys Tomb": { entranceGroup: "Royal Family's Tomb" },
 
     // Death Mountain Trial
     "DMT Cow Grotto": { entranceGroup: "Cow Grotto" }

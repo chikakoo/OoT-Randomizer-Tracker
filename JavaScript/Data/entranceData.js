@@ -995,6 +995,7 @@ GrottoGroups = {
 		hasGossipStone: true,
 		buttons: {
 			"Skulltula in Bombable Wall Grotto": {
+				SpoilerLogName: "HC GS Storms Grotto",
 				ItemGroup: ItemGroups.SKULLTULA,
 				LongDescription: "The skulltula is high up behind the mud wall to your left when you enter.",
 				NeedsAny: [
@@ -1003,6 +1004,7 @@ GrottoGroups = {
 				]
 			},
 			"4 Pots": {
+				SpoilerLogName: [{ name: "HC Storms Grotto Pot {#}", count: 4}],
 				count: 4,
 				ItemGroup: ItemGroups.POT,
 				LongDescription: "Blow up the mud wall in front of you when you enter to get to this pot.",
@@ -1044,6 +1046,7 @@ GrottoGroups = {
 		tooltip: "This is the grave with the single redead.",
 		buttons: {
 			"Redead Sun's Song Chest": {
+				SpoilerLogName: "Graveyard Heart Piece Grave Chest",
 				useGroupImage: true,
 				LongDescription: "Play the Sun's Song near the redead to spawn a chest.",
 				Needs: [Songs.SUNS_SONG]
@@ -1054,11 +1057,13 @@ GrottoGroups = {
 		tooltip: "The Royal Family's Tomb.",
 		buttons: {
 			"Chest by Lighting Torches": {
+				SpoilerLogName: "Graveyard Royal Familys Tomb Chest",
 				icon: "Din's Fire",
 				LongDescription: "Light the torches in the first room to spawn a chest.\x0A\x0AUsing flame storage and sticks: get flame storage; line up with the side of the platform by the stairs and the torch; sidehop right x8; sideroll; take out stick (it should be lit now); sidehop to the door - quickly enter at the very left side; the first torch should be lit as you go in - now finish the job.",
 				NeedsAny: [ItemSets.FIRE_ITEMS, QPAItemSets.TALL_TORCH_QPA, Tricks.flameStorage.canDo]
 			},
 			"Sun's Song": {
+				SpoilerLogName: "Song from Royal Familys Tomb",
 				LongDescription: "Go through the rooms to get the item at the end.",
 				Needs: [ItemSets.DAMAGING_ITEMS]
 			}
@@ -1084,6 +1089,7 @@ GrottoGroups = {
 		tooltip: "This grotto has 2 redeads.",
 		buttons: {
 			"Chest in 2 Redead Grotto": {
+				SpoilerLogName: "Kak Redead Grotto Chest",
 				useGroupImage: true,
 				LongDescription: "Kill the redeads to spawn the chest.",
 				Needs: [ItemSets.SWORDS]
