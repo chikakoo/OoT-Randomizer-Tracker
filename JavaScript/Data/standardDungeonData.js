@@ -2546,6 +2546,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots by Boss Antechamber": {
+                        SpoilerLogName: [
+                            { name: "Water Temple Near Boss Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -2563,8 +2566,9 @@ let StandardDungeons = {
                         OwExit: OwExits["Water Temple"]["Boss"]
                     }
                 },
-                ItemLocations: {
+                ItemLocations: { //TODO Mapping: Not sure if needed?
                     "Blue Warp": {
+                        SpoilerLogName: "Morpha",
                         ItemGroup: ItemGroups.FREESTANDING,
                         Age: Age.ADULT,
                         Order: 99,
@@ -2585,6 +2589,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Skulltula in Waterfall Room": {
+                        SpoilerLogName: "Water Temple GS Falling Platform Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Age: Age.ADULT,
                         Order: 2,
@@ -2602,7 +2607,10 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "2 Pots in Room Before Dark Link": {
+                    "2 Pots in Room Before Dark Link": { // TODO Mapping: Check this
+                        SpoilerLogName: [
+                            { name: "Water Temple Like Like Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -2612,6 +2620,7 @@ let StandardDungeons = {
                         LongDescription: "With the water level to the top, enter the door at the left on the upper floor. The pots are by the exit door of this room."
                     },
                     "Longshot Chest": {
+                        SpoilerLogName: "Water Temple Longshot Chest",
                         ItemGroup: ItemGroups.CHEST,
                         Age: Age.ADULT,
                         Order: 5,
@@ -2628,7 +2637,8 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Heart 1 in Whirlpool Room": {
+                    "Heart 1 in Whirlpool Room": { //TODO Mapping: Check this and other hearts in location
+                        SpoilerLogName: "Water Temple River Recovery Heart 1",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 22, y: 158, floor: "F1" },
@@ -2637,6 +2647,7 @@ let StandardDungeons = {
                         LongDescription: "In the whirlpool river, this is one of the items you'll run into while swimming (before the first vortex)."
                     },
                     "Heart 2 in Whirlpool Room": {
+                        SpoilerLogName: "Water Temple River Recovery Heart 2",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 32, y: 159, floor: "F1" },
@@ -2645,6 +2656,7 @@ let StandardDungeons = {
                         LongDescription: "In the whirlpool river, this is one of the items you'll run into while swimming (after the first vortex)."
                     },
                     "Heart 3 in Whirlpool Room": {
+                        SpoilerLogName: "Water Temple River Recovery Heart 3",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 45, y: 127, floor: "F1" },
@@ -2653,6 +2665,7 @@ let StandardDungeons = {
                         LongDescription: "In the whirlpool river, this is one of the items you'll run into while swimming (before the second vortex, by the skulltula)."
                     },
                     "Skulltula in Whirlpool Room": {
+                        SpoilerLogName: "Water Temple GS River",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Age: Age.ADULT,
                         Order: 9,
@@ -2661,6 +2674,7 @@ let StandardDungeons = {
                         Needs: [Equipment.IRON_BOOTS, ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Heart 4 in Whirlpool Room": {
+                        SpoilerLogName: "Water Temple River Recovery Heart 4",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 55, y: 148, floor: "F1" },
@@ -2669,6 +2683,9 @@ let StandardDungeons = {
                         LongDescription: "In the whirlpool river, this is one of the items you'll run into while swimming (before the third vortex)."
                     },
                     "2 Pots at End of Whirlpool Room": {
+                        SpoilerLogName: [
+                            { name: "Water Temple River Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -2678,6 +2695,7 @@ let StandardDungeons = {
                         LongDescription: "Start from the longshot chest room. Play the Song of Time to clear the block from the floor. Drop down. Swim to the end of the room - the pots are on a ledge."
                     },
                     "Chest at End of Whirlpool Room": {
+                        SpoilerLogName: "Water Temple River Chest",
                         ItemGroup: ItemGroups.CHEST,
                         Age: Age.ADULT,
                         Order: 12,
@@ -2696,6 +2714,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Chest in Dragon Room at Bottom West Wing": {
+                        SpoilerLogName: "Water Temple Dragon Chest",
                         ItemGroup: ItemGroups.CHEST,
                         Age: Age.EITHER,
                         Order: 13,
@@ -2734,7 +2753,8 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Chest by Water Lowering Triforce": {
+                    "Chest by Water Lowering Triforce": { // TODO Mapping: Is this right?
+                        SpoilerLogName: "Water Temple Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 332, y: 223, floor: "F3" },
                         Age: Age.ADULT,
@@ -2796,9 +2816,10 @@ let StandardDungeons = {
                         LongDescription: "To get here, go to the bottom east wing and float up to the top. If you don't have iron boots, you can longshot the torches to get down there!"
                     },
                     "Chest After Torches in Bottom East Wing": {
+                        SpoilerLogName: "Water Temple Torches Chest",
                         ItemGroup: ItemGroups.CHEST,
                         Age: Age.EITHER,
-                        Order: 17,
+                        Order: 17,  
                         MapInfo: { x: 326, y: 212, floor: "F1" },
                         LongDescription: "From the entrance of the temple, jump off and sink down to the bottom. Head down the hallway of the east room. Take off your iron boots and float up to the surface. Play Zelda's lullaby at the Triforce to lower the water. Now head back down.<br/><br>In this room, light the torches wih your bow or with Din's fire.<br/><br/>Child can use sticks to light the torches as well, and can kill the enemies in the next room with spin attacks if he has magic.",
                         ChildNeeds: [Equipment.MAGIC, Equipment.KOKIRI_SWORD],
@@ -2810,7 +2831,10 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Water Lowering Rooms (Low East)", imageName: "Ocarina" },
                 Exits: {},
                 ItemLocations: {
-                    "2 Pots in Low East Wing": {
+                    "2 Pots in Low East Wing": { //TODO Mapping: Check this
+                        SpoilerLogName: [
+                            { name: "Water Temple L1 Torch Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -2826,6 +2850,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Bombable Wall Chest Below Water Lowering Triforce": {
+                        SpoilerLogName: "Water Temple Cracked Wall Chest",
                         ItemGroup: ItemGroups.CHEST,
                         Age: Age.ADULT,
                         Order: 23,
@@ -2844,6 +2869,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Low South Wing": {
+                        SpoilerLogName: "Water Temple GS Behind Gate",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Age: Age.ADULT,
                         Order: 18,
@@ -2852,6 +2878,9 @@ let StandardDungeons = {
                         TricksToShow: [Tricks.waterHookshotOutOfBounds]
                     },
                     "4 Pots in Low South Wing": {
+                        SpoilerLogName: [
+                            { name: "Water Temple Behind Gate Pot {#}", count: 4 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "4 Pots",
@@ -2875,7 +2904,8 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Skulltula by Mid Water Triforce": {
+                    "Skulltula by Mid Water Triforce": { //TODO Mapping: Check this
+                        SpoilerLogName: "Water Temple GS Central Pillar",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Age: Age.EITHER,
                         Order: 21,
@@ -2940,7 +2970,8 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Chest Under Rising Platform in Middle Room": {
+                    "Chest Under Rising Platform in Middle Room": { //TODO Mapping: Check this
+                        SpoilerLogName: "Water Temple Central Pillar Chest",
                         ItemGroup: ItemGroups.CHEST,
                         Age: Age.ADULT,
                         Order: 22,
@@ -2954,7 +2985,10 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Compass Room (Mid East)", imageName: "Compass" },
                 Exits: {},
                 ItemLocations: {
-                    "2 Pots by Mid East Wing": {
+                    "2 Pots by Mid East Wing": { //TODO Mapping: Check this
+                        SpoilerLogName: [
+                            { name: "Water Temple Main Room L2 Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -2970,6 +3004,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Compass on Mid East Wing": {
+                        SpoilerLogName: "Water Temple Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 302, y: 95, floor: "F2" },
                         LongDescription: "The compass chest is in the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there. Once at the surface, either hit the switch to lower the water around the chest, or just roll into the chest and spam A to open it.",
@@ -2977,6 +3012,9 @@ let StandardDungeons = {
                         Order: 25
                     },
                     "3 Pots in Mid East Wing": {
+                        SpoilerLogName: [
+                            { name: "Water Temple Near Compass Pot {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -2996,7 +3034,8 @@ let StandardDungeons = {
                 UseAdultAge: function() { return !Tricks.waterEyeSwitchGateFromTop.enabled; },
                 Exits: {},
                 ItemLocations: {
-                    "Chest Behind Block at Mid Level": {
+                    "Chest Behind Block at Mid Level": { // TODO Mapping: Check these
+                        SpoilerLogName: "Water Temple Central Bow Target Chest",
                         ItemGroup: ItemGroups.CHEST,
                         Age: Age.EITHER,
                         Order: 27,
@@ -3005,6 +3044,9 @@ let StandardDungeons = {
                         TricksToShow: [Tricks.waterEyeSwitchGateFromTop, Tricks.waterHookshotOutOfBounds]
                     },
                     "2 Pots Behind Block at Mid Level": {
+                        SpoilerLogName: [
+                            { name: "Water Temple Central Bow Target Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3084,6 +3126,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Low North Block Puzzle Room": {
+                        SpoilerLogName: [
+                            { name: "Water Temple North Basement Block Puzzle Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3104,6 +3149,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Skulltula Near Boss Key Room": {
+                        SpoilerLogName: "Water Temple GS Near Boss Key Chest",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Age: Age.ADULT,
                         Order: 31,
@@ -3118,6 +3164,9 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in Boss Key Room": {
+                        SpoilerLogName: [
+                            { name: "Water Temple Boss Key Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3127,6 +3176,7 @@ let StandardDungeons = {
                         LongDescription: "From the waterfall, use iron boots to navigate under the water to the locked door to the chest. If you don't have iron boots, you can jump from the platform with the door to the water to sink low enough to advance. The pots are in the back corners of the room."
                     },
                     "Boss Key Chest": {
+                        SpoilerLogName: "Water Temple Boss Key Chest",
                         ItemGroup: ItemGroups.CHEST,
                         Age: Age.ADULT,
                         Order: 33,
