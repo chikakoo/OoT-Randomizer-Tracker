@@ -1837,6 +1837,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Skulltula in Like-Like Room by Start": {
+                        SpoilerLogName: "Fire Temple GS Boss Key Loop",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 122, y: 13, floor: "F1" },
                         Age: Age.EITHER,
@@ -1844,6 +1845,7 @@ let StandardDungeons = {
                         LongDescription: "To the right of the stairs at the entrance of the temple, use your hammer on the side of the column a few times to destroy it. Enter the door. Kill all the enemies and enter the next room. The skulltula is on the back wall by the like-like."
                     },
                     "Flare Dancer Near Entrance": {
+                        SpoilerLogName: "Fire Temple Flare Dancer Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 57, y: 60, floor: "F1" },
                         Age: Age.EITHER,
@@ -1859,6 +1861,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Boss Key Chest": {
+                        SpoilerLogName: "Fire Temple Boss Key Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 63, y: 111, floor: "F1" },
                         Age: Age.EITHER,
@@ -1878,6 +1881,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Goron Near Boss Door": {
+                        SpoilerLogName: "Fire Temple Near Boss Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 34, y: 263, floor: "F1" },
                         Age: Age.EITHER,
@@ -1886,6 +1890,9 @@ let StandardDungeons = {
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the left door into the small room with lava. Navigate to the upper left corner of the room and step on the switch. The chest is inside the Goron cage.",
                     },
                     "4 Pots Near Boss Door": {
+                        SpoilerLogName: [
+                            { name: "Fire Temple Near Boss Pot {#}", count: 4 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "4 Pots",
@@ -1917,6 +1924,9 @@ let StandardDungeons = {
 
                 ItemLocations: {
                     "3 Pots on Big Lava Room Ledge": {
+                        SpoilerLogName: [
+                            { name: "Fire Temple Big Lava Room Pot {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -1926,7 +1936,8 @@ let StandardDungeons = {
                         UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the right door into the big lava room. Along the back left wall is a platform that will rise up to an alcove after you jump on it (child can jump there from the moving platform). The pots are there."
                     },
-                    "Big Lava Room Left Goron": {
+                    "Big Lava Room Left Goron": { //TODO Mapping: Check this
+                        SpoilerLogName: "Fire Temple Big Lava Room Lower Open Door Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 277, y: 141, floor: "F1" },
                         Age: Age.EITHER,
@@ -1943,7 +1954,8 @@ let StandardDungeons = {
                 },
                 Exits: {},
                 ItemLocations: {
-                    "Big Lava Room Right Goron": {
+                    "Big Lava Room Right Goron": { //TODO Mapping: Check this
+                        SpoilerLogName: "Fire Temple Big Lava Room Blocked Door Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 198, y: 280, floor: "F1" },
                         Age: Age.EITHER,
@@ -1961,6 +1973,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Upper Left Big Lava Room": {
+                        SpoilerLogName: "Fire Temple GS Song of Time Room",
                         MapInfo: {x: 164, y: 90, floor: "F1" },
                         ItemGroup: ItemGroups.SKULLTULA,
                         Age: Age.EITHER,
@@ -1981,6 +1994,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "3 Hearts on Left Ledge": {
+                        SpoilerLogName: [
+                            { name: "Fire Temple Elevator Room Recovery Heart {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "3 Hearts",
@@ -2023,6 +2039,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Lower Boulder Maze Goron": {
+                        SpoilerLogName: "Fire Temple Boulder Maze Lower Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 320, y: 201, floor: "F3" },
                         Age: Age.ADULT,
@@ -2030,6 +2047,7 @@ let StandardDungeons = {
                         LongDescription: "When you first enter the boulder maze, turn to the right. Walk in that general direction and you'll eventually find a Goron and a chest in a cage. Step on the switch to get in."
                     },
                     "Skulltula in Weak Wall in Boulder Maze": {
+                        SpoilerLogName: "Fire Temple GS Boulder Maze",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 322, y: 103, floor: "F3" },
                         Age: Age.ADULT,
@@ -2038,6 +2056,7 @@ let StandardDungeons = {
                         Needs: [ItemSets.EXPLOSIVES]
                     },
                     "Lower Boulder Maze Side Room Goron": {
+                        SpoilerLogName: "Fire Temple Boulder Maze Side Room Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 283, y: 51, floor: "F3" },
                         Age: Age.ADULT,
@@ -2060,6 +2079,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "3 Hearts in Narrow Bridge Room": {
+                        SpoilerLogName: [
+                            { name: "Fire Temple Narrow Path Room Recovery Heart {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "3 Hearts",
@@ -2086,7 +2108,10 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "2 Hearts on Fire Wall Room Pillars": {
+                    "2 Hearts on Fire Wall Room Pillars": { //TODO Mapping: Check this and below
+                        SpoilerLogName: [
+                            { name: "Fire Temple Moving Fire Room Recovery Heart {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "2 Hearts",
@@ -2096,6 +2121,7 @@ let StandardDungeons = {
                         LongDescription: "Make your way to the scary room with the giant pit that you get to from the boulder maze. Go through the locked door from there. Climb up two of the pillars in the middle of the room to get these items."
                     },
                     "Heart in Fire Wall Room Back": {
+                        SpoilerLogName: "Fire Temple Moving Fire Room Recovery Heart 3",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 265, y: 104, floor: "F3" },
@@ -2116,6 +2142,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Map Chest in Fire Wall Room": {
+                        SpoilerLogName: "Fire Temple Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 258, y: 150, floor: "F3" },
                         Age: Age.ADULT,
@@ -2147,6 +2174,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Upper Boulder Maze Goron": {
+                        SpoilerLogName: "Fire Temple Boulder Maze Upper Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 302, y: 222, floor: "F3" },
                         Age: Age.ADULT,
@@ -2168,6 +2196,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Goron in Bombable Pit": {
+                        SpoilerLogName: "Fire Temple Boulder Maze Shortcut Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 164, y: 90, floor: "F2" },
                         Age: Age.ADULT,
@@ -2186,6 +2215,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Skulltula on Climbable Wall After Scarecrow": {
+                        SpoilerLogName: "Fire Temple GS Scarecrow Climb",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 335, y: 84, floor: "F4" },
                         Age: Age.ADULT,
@@ -2193,6 +2223,7 @@ let StandardDungeons = {
                         LongDescription: "The skullutla is on a climbable wall in the rooms after the elevator platform."
                     },
                     "Skulltula on Top After Scarecrow": {
+                        SpoilerLogName: "Fire Temple GS Scarecrow Top",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 241, y: 156, floor: "F5" },
                         Age: Age.ADULT,
@@ -2200,6 +2231,7 @@ let StandardDungeons = {
                         LongDescription: "Navigate through the next room's switch puzzle into the outside room. The skulltula should be on the wall to your left."
                     },
                     "Chest in Scarecrow Song Area": {
+                        SpoilerLogName: "Fire Temple Scarecrow Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 220, y: 148, floor: "F5" },
                         Age: Age.ADULT,
@@ -2234,6 +2266,7 @@ let StandardDungeons = {
 
                 ItemLocations: {
                     "Compass Chest in Fire Maze": {
+                        SpoilerLogName: "Fire Temple Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 191, y: 81, floor: "F3" },
                         Age: Age.ADULT,
@@ -2241,6 +2274,9 @@ let StandardDungeons = {
                         LongDescription: "Make your way to the maze of tiny fire walls. This is the locked door in the giant fire wall room. To get to the Compass chest, you must enter the door to the right of the entrance. Make your way through the maze to that door, being careful of the spawning fires."
                     },
                     "4 Pots by Left Fire Maze Totem": {
+                        SpoilerLogName: [
+                            { name: "Fire Temple Flame Maze Left Side Pot {#}", count: 4 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "4 Pots",
@@ -2261,6 +2297,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "4 Pots by Right Fire Maze Exit": {
+                        SpoilerLogName: [
+                            { name: "Fire Temple Flame Maze Right Side Pot {#}", count: 4 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "4 Pots",
@@ -2284,6 +2323,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Hammer Chest at Very Top": {
+                        SpoilerLogName: "Fire Temple Megaton Hammer Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 43, y: 157, floor: "F5" },
                         Age: Age.ADULT,
@@ -2297,6 +2337,9 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Small Crates in Hammer Staircase Room": {
+                        SpoilerLogName: [
+                            { name: "Fire Temple Hammer Staircase Small Wooden Crate {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
@@ -2334,6 +2377,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Goron in Center of Fire Maze": {
+                        SpoilerLogName: "Fire Temple Highest Goron Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 124, y: 162, floor: "F3" },
                         Age: Age.ADULT,
