@@ -32,6 +32,7 @@ let SaveAndLoad = {
             RandomizedSpawnLocations: Data.randomizedSpawnLocations,
             Settings: Settings,
             Tricks: this._getTrickSaveObject(),
+            LocationNotes: LocationNotes,
             Items: Items,
             ChildTradeItems: ChildTradeItems,
             AdultTradeItems: AdultTradeItems,
@@ -285,6 +286,7 @@ let SaveAndLoad = {
         if (loadedObject.Settings) { Settings = loadedObject.Settings; }
         if (loadedObject.Tricks) { this._loadTricks(loadedObject.Tricks); }
         if (loadedObject.Items) { this._loadItemObject(Items, loadedObject.Items); }
+        if (loadedObject.LocationNotes) { LocationNotes = loadedObject.LocationNotes; }
         if (loadedObject.ChildTradeItems) { this._loadItemObject(ChildTradeItems, loadedObject.ChildTradeItems); }
         if (loadedObject.AdultTradeItems) { this._loadItemObject(AdultTradeItems, loadedObject.AdultTradeItems); }
         if (loadedObject.Equipment) { this._loadItemObject(Equipment, loadedObject.Equipment); }

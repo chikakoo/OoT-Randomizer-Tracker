@@ -213,6 +213,9 @@ let ItemLocationDisplay = {
 		let mainContainer = document.getElementById("itemLocationsContainer");
 		mainContainer.innerHTML = ""; // Clean this up first so we don't get duplicates
 
+		let locationNotesDiv = this._createLocationNotesDiv();
+		mainContainer.appendChild(locationNotesDiv);
+
 		let travelDiv = dce("div");
 		travelDiv.id = "travelDiv";
 		mainContainer.appendChild(travelDiv);
@@ -246,6 +249,43 @@ let ItemLocationDisplay = {
 
 			_this._createTrickReferenceDivs(itemGroup, itemGroupTitleDiv);
 		});
+	},
+
+	_createLocationNotesDiv: function() {
+		let locationNotesDiv = dce("div");
+		locationNotesDiv.id = "locationNotesDiv";
+		locationNotesDiv.innerText = LocationNotes[ItemLocationDisplay.currentLocationName] ||
+			ItemLocationDisplay.currentLocationName;
+
+		locationNotesDiv.onclick = function() {
+			addCssClass(locationNotesDiv, "nodisp");
+			removeCssClass(locationNotesTextArea, "nodisp");
+		};
+
+		let locationNotesTextArea = dce("textarea", "nodisp");
+		locationNotesTextArea.id = "locationNotesTextArea";
+		locationNotesTextArea.value = locationNotesDiv.innerText;
+
+		locationNotesTextArea.onblur = function() {
+			let text = locationNotesTextArea.value.trim();
+			if (!text) {
+				text = ItemLocationDisplay.currentLocationName;
+			}
+
+			locationNotesTextArea.value = text;
+			locationNotesDiv.innerText = text;
+
+			addCssClass(locationNotesTextArea, "nodisp");
+			removeCssClass(locationNotesDiv, "nodisp");
+
+			LocationNotes[ItemLocationDisplay.currentLocationName] = text;
+		};
+
+		let locationNotesContainer = dce("div");
+		locationNotesContainer.appendChild(locationNotesDiv);
+		locationNotesContainer.appendChild(locationNotesTextArea);
+
+		return locationNotesContainer;
 	},
 
 	/**

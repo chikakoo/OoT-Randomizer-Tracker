@@ -124,8 +124,7 @@ a {
 }
 
 /* Children */
-
-#travelDiv {
+#travelDiv, #locationNotesDiv  {
 	color: white;
 	margin-right: 10px;
 	margin-left: 10px;

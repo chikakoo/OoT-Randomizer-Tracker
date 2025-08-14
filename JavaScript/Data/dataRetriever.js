@@ -7,6 +7,12 @@ let ItemObtainability = {
 	MAYBE: 2
 };
 
+/**
+ * Populated by the item location display - contains an object:
+ * - <Location Name>: <Notes>
+ */
+let LocationNotes = {};
+
 Data = {
     /**
      * These are used for interior shuffle and overworld shuffle to determine various things
