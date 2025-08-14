@@ -228,18 +228,18 @@ let SpoilerLogGrottoEntranceMap = {
     // Kokiri Forest
     "KF Storms Grotto": {
         entranceGroup: "Generic Grotto",
-        items: [ // TODO Mapping: check the order of beehives
+        items: [
             "KF Storms Grotto Chest",
-            { name: "KF Storms Grotto Beehive {#}", count: 2 }
+            { name: "KF Storms Grotto Beehive {#}", tokens: [2, 1] }
         ]
     },
 
     // Lost Woods
     "LW Near Shortcuts Grotto": {
         entranceGroup: "Generic Grotto",
-        items: [ // TODO Mapping: check the order of beehives
+        items: [
             "LW Near Shortcuts Grotto Chest",
-            { name: "LW Near Shortcuts Grotto Beehive {#}", count: 2 }
+            { name: "LW Near Shortcuts Grotto Beehive {#}", tokens: [2, 1] }
         ]
     },
     "Deku Theater": { entranceGroup: "Forest Stage" },
@@ -270,9 +270,9 @@ let SpoilerLogGrottoEntranceMap = {
     "HF Near Kak Grotto": { entranceGroup: "Skulltula at Distance" },
     "HF Near Market Grotto": {
         entranceGroup: "Generic Grotto",
-        items: [ // TODO Mapping: check the order of beehives
+        items: [
             "HF Near Market Grotto Chest",
-            { name: "HF Near Market Grotto Beehive {#}", count: 2 }
+            { name: "HF Near Market Grotto Beehive {#}", tokens: [2, 1] }
         ]
     },
     "HF Fairy Grotto": {},
@@ -280,16 +280,16 @@ let SpoilerLogGrottoEntranceMap = {
     "HF Cow Grotto": { entranceGroup: "Cow and Web Grotto" },
     "HF Southeast Grotto": {
         entranceGroup: "Generic Grotto",
-        items: [ // TODO Mapping: check the order of beehives
+        items: [
             "HF Southeast Grotto Chest",
-            { name: "HF Southeast Grotto Beehive {#}", count: 2 }
+            { name: "HF Southeast Grotto Beehive {#}", tokens: [2, 1] }
         ]
     },
     "HF Open Grotto": {
         entranceGroup: "Generic Grotto",
-        items: [ // TODO Mapping: check the order of beehives
+        items: [
             "HF Open Grotto Chest",
-            { name: "HF Open Grotto Beehive {#}", count: 2 }
+            { name: "HF Open Grotto Beehive {#}", tokens: [2, 1] }
         ]
     },
     "HF Inside Fence Grotto": { entranceGroup: "1 Scrub" },
@@ -313,9 +313,9 @@ let SpoilerLogGrottoEntranceMap = {
     "Kak Redead Grotto": { entranceGroup: "Two Redead Grotto" },
     "Kak Open Grotto": {
         entranceGroup: "Generic Grotto",
-        items: [ // TODO Mapping: check the order of beehives
+        items: [
             "Kak Open Grotto Chest",
-            { name: "Kak Open Grotto Beehive {#}", count: 2 }
+            { name: "Kak Open Grotto Beehive {#}", tokens: [2, 1] }
         ]
     },
     "Graveyard Shield Grave": { items: ["Graveyard Shield Grave Chest"] },
@@ -326,9 +326,9 @@ let SpoilerLogGrottoEntranceMap = {
     // Death Mountain / Goron City
     "DMT Storms Grotto": {
         entranceGroup: "Generic Grotto",
-        items: [ // TODO Mapping: check the order of beehives
+        items: [
             "DMT Storms Grotto Chest",
-            { name: "DMT Storms Grotto Beehive {#}", count: 2 }
+            { name: "DMT Storms Grotto Beehive {#}", tokens: [2, 1] }
         ]
     },
     "DMT Cow Grotto": { entranceGroup: "Cow Grotto" },
@@ -344,9 +344,9 @@ let SpoilerLogGrottoEntranceMap = {
     },
     "DMC Upper Grotto": {
         entranceGroup: "Generic Grotto",
-        items: [ // TODO Mapping: check the order of beehives
+        items: [
             "DMC Upper Grotto Chest",
-            { name: "DMC Upper Grotto Beehive {#}", count: 2 }
+            { name: "DMC Upper Grotto Beehive {#}", tokens: [2, 1] }
         ]
     },
     "DMC Hammer Grotto": {
@@ -371,9 +371,9 @@ let SpoilerLogGrottoEntranceMap = {
     },
     "ZR Open Grotto": {
         entranceGroup: "Generic Grotto",
-        items: [ // TODO Mapping: check the order of beehives
+        items: [
             "ZR Open Grotto Chest",
-            { name: "ZR Open Grotto Beehive {#}", count: 2 }
+            { name: "ZR Open Grotto Beehive {#}", tokens: [2, 1] }
         ]
     },
     "ZR Fairy Grotto": {},

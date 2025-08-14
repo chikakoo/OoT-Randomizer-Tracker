@@ -904,7 +904,7 @@ let StandardDungeons = {
                         ]
                     },
                     "Left Skulltula on Lower Room Wall": { // TODO Mapping: Check this and one below
-                        SpoilerLogName: "Jabu Jabus Belly GS Lobby Basement Lower",
+                        SpoilerLogName: "Jabu Jabus Belly GS Lobby Basement Upper",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 156, y: 44, floor: "B1" },
                         Age: Age.EITHER,
@@ -913,7 +913,7 @@ let StandardDungeons = {
                         Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Right Skulltula on Lower Room Wall": {
-                        SpoilerLogName: "Jabu Jabus Belly GS Lobby Basement Upper",
+                        SpoilerLogName: "Jabu Jabus Belly GS Lobby Basement Lower",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 176, y: 35, floor: "B1" },
                         Age: Age.EITHER,

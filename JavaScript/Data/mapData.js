@@ -2028,9 +2028,9 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    "3 Pots Left of Grave Entrance": { // TODO Mapping: Check this
+                    "3 Pots Left of Grave Entrance": {
                         SpoilerLogName: [
-                            { name: "Graveyard Dampe Pot {#}", count: 3}
+                            { name: "Graveyard Dampe Pot {#}", tokens: [3, 4, 6] }
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
@@ -2039,9 +2039,9 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "These pots are to the left of the spawn pad."
                     },
-                    "3 Pots Right of Grave Entrance": { // TODO Mapping: Check this
+                    "3 Pots Right of Grave Entrance": {
                         SpoilerLogName: [
-                            { name: "Graveyard Dampe Pot {#}", count: {min: 4, max:6} }
+                            { name: "Graveyard Dampe Pot {#}", tokens: [1, 2, 5] }
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
@@ -2050,7 +2050,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "These pots are to the right of the spawn pad."
                     },
-                    "Race Rupee 1": { // TODO Mapping: Check all race rupees + wonderitems
+                    "Race Rupee 1": {
                         SpoilerLogName: "Graveyard Dampe Race Rupee 1",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Green Rupee",
@@ -2607,7 +2607,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "The soft soil patch by the Bolero of Fire warp point. Used to get to the heart piece on the volcano."
                     },
-                    "Red Rupee on First Island": { //TODO Mapping: Check this
+                    "Red Rupee on First Island": {
                         SpoilerLogName: "DMC Child Red Rupee 1",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Red Rupee",
@@ -2615,7 +2615,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "As Child, from the Bolero warp, make your way to the first tiny island across the wooden bridge for this item.",
                     },
-                    "Rupee Circle on Second Island": { //TODO Mapping: Check this
+                    "Rupee Circle on Second Island": {
                         SpoilerLogName: [
                             { name: "DMC Child Red Rupee 2" },
                             { name: "DMC Child Blue Rupee {#}", count: 6}
@@ -2740,7 +2740,7 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     // Top Floor
-                    "Leftmost Maze Chest": { //TODO Mapping: Check this
+                    "Leftmost Maze Chest": {
                         SpoilerLogName: "GC Maze Left Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 71, y: 24 },
@@ -2753,7 +2753,7 @@ let MapLocations = {
                             [Equipment.HOVER_BOOTS, ItemSets.EXPLOSIVES],
                             Tricks.weirdShot.canDo]
                     },
-                    "Left Maze Chest": { //TODO Mapping: Check this
+                    "Left Maze Chest": {
                         SpoilerLogName: "GC Maze Center Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 78, y: 26 },
@@ -3033,9 +3033,10 @@ let MapLocations = {
                         CoOpOnly: true
                     },
                     "4 Wonderitems in River by Hyrule Field": {
-                        SpoilerLogName: [
-                            { name: "ZR Child Front River Wonderitem {#}", count: 4 }
-                        ],
+                        SpoilerLogName: [{ 
+                            name: "ZR Child Front River Wonderitem {#}", 
+                            tokens: [4, 2, 1, 3]
+                        }],
                         DisplayGroup: { groupName: "River Rupees", imageName: "Green Rupee Wonderitem" },
                         Order: 5,
                         ItemGroup: ItemGroups.GROUP,
@@ -3191,10 +3192,11 @@ let MapLocations = {
                     },
 
                     // River Rupees
-                    "4 Wonderitems in River by Zora's Domain": { // TODO Mapping: Check order of all wonderitems in ZR
-                        SpoilerLogName: [
-                            { name: "ZR Child River Wonderitem {#}", count: 4}
-                        ], 
+                    "4 Wonderitems in River by Zora's Domain": {
+                        SpoilerLogName: [{ 
+                            name: "ZR Child River Wonderitem {#}", 
+                            tokens: [4, 3, 2, 1]
+                        }], 
                         DisplayGroup: { groupName: "River Rupees", imageName: "Green Rupee Wonderitem" },
                         Order: 1,
                         ItemGroup: ItemGroups.GROUP,
@@ -3205,9 +3207,10 @@ let MapLocations = {
                         LongDescription: "These wonderitems are in the river near Zora's Domain. You will get them all before you reach the wooden bridge."
                     },
                     "6 Wonderitems After Underwater Rocks": {
-                        SpoilerLogName: [
-                            { name: "ZR Child River Wonderitem {#}", count: { min: 5, max: 10} }
-                        ], 
+                        SpoilerLogName: [{ 
+                            name: "ZR Child River Wonderitem {#}", 
+                            tokens: [24, 22, 20, 18, 26, 17] 
+                        }], 
                         Order: 2,
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
@@ -3218,7 +3221,7 @@ let MapLocations = {
                     },
                     "3 Wonderitems After Platform Ladder": {
                         SpoilerLogName: [
-                            { name: "ZR Child River Wonderitem {#}", count: { min: 11, max: 13} }
+                            { name: "ZR Child River Wonderitem {#}", tokens: [16, 14, 12] }
                         ], 
                         Order: 3,
                         ItemGroup: ItemGroups.GROUP,
@@ -3229,9 +3232,10 @@ let MapLocations = {
                         LongDescription: "These wonderitems are in the mini coordidor after you fall down the waterfall near the ladder leading to the upper cliffs. You will get all of them before you fall down the next mini waterfall."
                     },
                     "3 Wonderitems Near Bean Salesman": {
-                        SpoilerLogName: [
-                            { name: "ZR Child River Wonderitem {#}", count: { min: 14, max: 16} }
-                        ], 
+                        SpoilerLogName: [{ 
+                            name: "ZR Child River Wonderitem {#}", 
+                            tokens: [7, 6, 5]
+                        }], 
                         Order: 4,
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
@@ -3241,9 +3245,10 @@ let MapLocations = {
                         LongDescription: "These wonderitems are in the river near the bean salesman. You will get them all before falling down to the first area. Note that you will be forced to fall, so make sure not to get trapped!"
                     },
                     "7 Wonderitems Near Frogs": {
-                        SpoilerLogName: [
-                            { name: "ZR Child River Wonderitem {#}", count: { min: 17, max: 23} }
-                        ], 
+                        SpoilerLogName: [{ 
+                            name: "ZR Child River Wonderitem {#}", 
+                            tokens: [23, 21, 19, 15, 13, 11, 8]
+                        }], 
                         Order: 6,
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
@@ -3253,9 +3258,10 @@ let MapLocations = {
                         LongDescription: "These wonderitems are in the river near the frogs. The first three are down the stream near where the river splits from the platform ladder. One is between a couple of the bigger platforms. Two are on either side of the square platform. The final one is just before you fall down the mini waterfall."
                     },
                     "4 Wonderitems in Fast Stream After Frogs": {
-                        SpoilerLogName: [
-                            { name: "ZR Child River Wonderitem {#}", count: { min: 24, max: 27} }
-                        ], 
+                        SpoilerLogName: [{ 
+                            name: "ZR Child River Wonderitem {#}", 
+                            tokens: [25, 10, 9, 27]
+                        }], 
                         Order: 7,
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
@@ -3319,9 +3325,9 @@ let MapLocations = {
                 },
                 ItemLocations: {
                     // Bottom Area
-                    "2 Pots in Front of Shop": { // TODO Mapping: Check this
+                    "2 Pots in Front of Shop": {
                         SpoilerLogName: [
-                            { name: "ZD Pot {#}", count: 2 }
+                            { name: "ZD Pot {#}", tokens: [1, 3] }
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
@@ -3330,9 +3336,9 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "These pots are right in front of the shop entrance."
                     },
-                    "3 Pots Right of Shop": { // TODO Mapping: Check this
+                    "3 Pots Right of Shop": {
                         SpoilerLogName: [
-                            { name: "ZD Pot {#}", count: { min: 3, max: 5 } }
+                            { name: "ZD Pot {#}", tokens: [2, 4, 5] }
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
@@ -3358,7 +3364,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "This stone is in the water in front of the king."
                     },
-                    "Left Beehive by King": { // TODO Mapping: Check this
+                    "Left Beehive by King": {
                         SpoilerLogName: "ZD In Front of King Zora Beehive 1",
                         ItemGroup: ItemGroups.BEEHIVE,
                         IsUpperHive: true,
@@ -3366,7 +3372,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "Look on the left side of the room on the ceiling for this beehive. If using a chu, go to the wall by the diving minigame tunnel and drop it on the black after the 4th red flash."
                     },
-                    "Right Beehive by King": { // TODO Mapping: Check this
+                    "Right Beehive by King": {
                         SpoilerLogName: "ZD In Front of King Zora Beehive 2",
                         ItemGroup: ItemGroups.BEEHIVE,
                         IsUpperHive: true,
@@ -4104,9 +4110,9 @@ let MapLocations = {
                         LongDescription: "Talk to the gerudo guard at the top of the ladder to open the gate.",
                         Needs: [GameStateSets.ARE_GERUDO_GUARDS_TAME]
                     },
-                    "2 Crates Right of Bottom Left Door": { // TODO Mapping: Check all the crates in Fortress
+                    "2 Crates Right of Bottom Left Door": {
                         SpoilerLogName: [
-                            { name: "GF Crate {#}", count: 2}
+                            { name: "GF Crate {#}", count: 2 }
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
@@ -4314,9 +4320,9 @@ let MapLocations = {
                         Needs: [Items.HOOKSHOT],
                         LongDescription: "Shoot the overhanging sign by the entrance to horseback archery with your hookshot to get this wonderitem. Note that it only works if you shoot it from the fortress side."
                     },
-                    "2 Crates by HBA Right Target": { // TODO Mapping: Check all following crates in Fortres
+                    "2 Crates by HBA Right Target": {
                         SpoilerLogName: [
-                            { name: "GF HBA Crate {#}", count: 2 }
+                            { name: "GF HBA Crate {#}", count: { min: 2, max: 3 } }
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
@@ -4328,7 +4334,7 @@ let MapLocations = {
                     },
                     "2 Crates by HBA Start": {
                         SpoilerLogName: [
-                            { name: "GF HBA Crate {#}", count: { min: 3, max: 4} }
+                            { name: "GF HBA Crate {#}", count: { min: 5, max: 6 } }
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
@@ -4339,9 +4345,10 @@ let MapLocations = {
                         LongDescription: "These are the crates by the start of the horseback archery minigame."
                     },
                     "7 Crates by HBA Center Targets": {
-                        SpoilerLogName: [
-                            { name: "GF HBA Crate {#}", count: { min: 5, max: 11} }
-                        ],
+                        SpoilerLogName: [{ 
+                            name: "GF HBA Crate {#}", 
+                            tokens: [13, 12, 11, 10, 9, 8, 7]
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
@@ -4351,9 +4358,10 @@ let MapLocations = {
                         LongDescription: "These are the crates by horseback archery's center targets."
                     },
                     "2 Crates by HBA Left Target": {
-                        SpoilerLogName: [
-                            { name: "GF HBA Crate {#}", count: { min: 12, max: 13} }
-                        ],
+                        SpoilerLogName: [{ 
+                            name: "GF HBA Crate {#}", 
+                            tokens: [4, 1] 
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
@@ -4479,8 +4487,8 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "The crate is in the opposite corner of the cell door. You can savewarp here from anywhere in the Thieves' Hideout."
                     },
-                    "Left Skull Jail 1 Wonderitem": { // TODO Mapping: Check left and right 
-                        SpoilerLogName: "Hideout 1 Torch Jail Wonderitem 1",
+                    "Left Skull Jail 1 Wonderitem": {
+                        SpoilerLogName: "Hideout 1 Torch Jail Wonderitem 2",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 157, y: 96, floor: "J1" },
@@ -4489,7 +4497,7 @@ let MapLocations = {
                         LongDescription: "To the left of the jail, shoot the skull on the wall to get this wonderitem."
                     },
                     "Right Skull Jail 1 Wonderitem": {
-                        SpoilerLogName: "Hideout 1 Torch Jail Wonderitem 2",
+                        SpoilerLogName: "Hideout 1 Torch Jail Wonderitem 1",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 157, y: 196, floor: "J1" },
@@ -4539,7 +4547,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "These pots are in the hallway to the left of the jail."
                     },
-                    "Left Skull Jail 2 Wonderitem": { // TODO Mapping: Check left and right
+                    "Left Skull Jail 2 Wonderitem": {
                         SpoilerLogName: "Hideout 4 Torch Jail Wonderitem 1",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Bow Wonderitem",
@@ -4616,8 +4624,8 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "These pots are in the open cell next to jail 3."
                     },
-                    "Left Skull Jail 3 Wonderitem": { // TODO Mapping: Check left and right
-                        SpoilerLogName: "Hideout 2 Torch Jail Wonderitem 1",
+                    "Left Skull Jail 3 Wonderitem": {
+                        SpoilerLogName: "Hideout 2 Torch Jail Wonderitem 2",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 267, y: 147, floor: "J3" },
@@ -4626,7 +4634,7 @@ let MapLocations = {
                         LongDescription: "To the left of the jail, shoot the skull on the wall to get this wonderitem."
                     },
                     "Right Skull Jail 3 Wonderitem": {
-                        SpoilerLogName: "Hideout 2 Torch Jail Wonderitem 2",
+                        SpoilerLogName: "Hideout 2 Torch Jail Wonderitem 1",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 115, y: 147, floor: "J3" },
@@ -4664,7 +4672,7 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "The crate is in front of you when you enter the map - grab it quickly then retreat before the guard sees you."
                     },
-                    "Skull in First Jail 4 Hallway": { // TODO Mapping: Check this
+                    "Skull in First Jail 4 Hallway": {
                         SpoilerLogName: "Hideout 3 Torch Jail Wonderitem 1",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Bow Wonderitem",
@@ -4673,7 +4681,7 @@ let MapLocations = {
                         Needs: [Items.FAIRY_BOW],
                         LongDescription: "Shoot the skull on the wall after the first right turn in the jail 4 area. to get this wonderitem."
                     },
-                    "Skull Before Jail 4": { // TODO Mapping: Check this
+                    "Skull Before Jail 4": {
                         SpoilerLogName: "Hideout 3 Torch Jail Wonderitem 2",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Bow Wonderitem",
@@ -4711,9 +4719,9 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    "2 Far Crates in Kitchen Hallway": { // TODO Mapping: Check this
+                    "2 Far Crates in Kitchen Hallway": {
                         SpoilerLogName: [
-                            { name: "Hideout Near Kitchen Crate {#}", count: 2 }
+                            { name: "Hideout Near Kitchen Crate {#}", count: {min: 4, max: 5} }
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
@@ -4722,9 +4730,9 @@ let MapLocations = {
                         Age: Age.EITHER,
                         LongDescription: "These are the far away crates in the hallway attached to the kitchen."
                     },
-                    "2 Mid Crates in Kitchen Hallway": { // TODO Mapping: Check this
+                    "2 Mid Crates in Kitchen Hallway": {
                         SpoilerLogName: [
-                            { name: "Hideout Near Kitchen Crate {#}", count: {min: 3, max: 4} }
+                            { name: "Hideout Near Kitchen Crate {#}", count: { min: 2, max: 3 } }
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
@@ -4742,8 +4750,8 @@ let MapLocations = {
                         Needs: [Items.FAIRY_BOW],
                         LongDescription: "Shoot the skull at the end of the hallway leading to the kitchen to get this wonderitem."
                     },
-                    "Crate Close to Kitchen": { // TODO Mapping: Check this
-                        SpoilerLogName: "Hideout Near Kitchen Crate 5",
+                    "Crate Close to Kitchen": {
+                        SpoilerLogName: "Hideout Near Kitchen Crate 1",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 203, y: 250, floor: "KIT" },
                         Age: Age.EITHER,
@@ -4897,7 +4905,7 @@ let MapLocations = {
                             Tricks.gfGuardsWithSword.canDoForTopRoomGuards
                         ]
                     },
-                    "Upper Room Lower Skull": { // TODO Mapping: Check this
+                    "Upper Room Lower Skull": {
                         SpoilerLogName: "Hideout Break Room Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Bow Wonderitem",
@@ -4927,7 +4935,7 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    "Upper Room Upper Skull": { // TODO Mapping: Check this
+                    "Upper Room Upper Skull": {
                         SpoilerLogName: "Hideout Break Room Hall to Balcony Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Bow Wonderitem",
@@ -5091,9 +5099,9 @@ let MapLocations = {
 
                 ItemLocations: {
                     // North Area
-                    "2 Items in Tree by Great Fairy": { // TODO Mapping: Check this
+                    "2 Items in Tree by Great Fairy": {
                         SpoilerLogName: [
-                            { name: "Colossus Tree Wonderitem {#}", count: 2 }
+                            { name: "Colossus Tree Wonderitem {#}", count: { min: 4 , max: 5 } }
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
@@ -5116,9 +5124,9 @@ let MapLocations = {
                     },
 
                     // Oasis
-                    "3 Items in Tree at Oasis": { // TODO Mapping: Check this
+                    "3 Items in Tree at Oasis": {
                         SpoilerLogName: [
-                            { name: "Colossus Tree Wonderitem {#}", count: { min: 4 , max: 5 } },
+                            { name: "Colossus Tree Wonderitem {#}", count: 2 },
                             { name: "Colossus Tree Wonderitem 3 Child" }
                         ],
                         DisplayGroup: { groupName: "Oasis", imageName: "Song of Storms" },
