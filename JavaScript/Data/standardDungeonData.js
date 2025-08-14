@@ -357,7 +357,7 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "2 Pots at East Room Entrance": { // TODO Mapping: Check this
+                    "2 Pots at East Room Entrance": {
                         SpoilerLogName: [
                             { name: "Dodongos Cavern Right Side Pot {#}", count: 2 }
                         ],
@@ -378,7 +378,7 @@ let StandardDungeons = {
                         LongDescription: "Go to the room to the east of the main room. If you hug the right wall, you'll find a bombable wall. You can either blow it up with your own explosive, or kill a baby Dodongo near the wall.<br/><br/>Once inside, head to the back of the room to find the skulltula.",
                         NeedsAny: [ItemSets.STUNNABLE_ENEMY_KILL_ITEMS, ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA]
                     },
-                    "2 Pots by East Room Ledge": { // TODO Mapping: Check this
+                    "2 Pots by East Room Ledge": {
                         SpoilerLogName: [
                             { name: "Dodongos Cavern Right Side Pot {#}", count: { min: 3, max: 4 } }
                         ],
@@ -401,7 +401,7 @@ let StandardDungeons = {
                         TricksToShow: [Tricks.dodongoScarecrowSkullEarly],
                         NeedsAny: [GameStateSets.CAN_HOOK_SCARECROW, Tricks.dodongoScarecrowSkullEarly.canDo]
                     },
-                    "2 Pots in Lizalfos Antechamber": { // TODO Mapping: Check this
+                    "2 Pots in Lizalfos Antechamber": {
                         SpoilerLogName: [
                             { name: "Dodongos Cavern Right Side Pot {#}", count: { min: 5, max: 6 } }
                         ],
@@ -422,7 +422,7 @@ let StandardDungeons = {
                         Order: 7,
                         LongDescription: "In the lower lizalfos room, head to the platform closest to the lavafall. Jump through the lavafall on the side that's closer to the wall to get to ths item."
                     },
-                    "2 Pots Left of Lizalfos Room Exit": { // TODO Mapping: Check this
+                    "2 Pots Left of Lizalfos Room Exit": {
                         SpoilerLogName: [
                             { name: "Dodongos Cavern Lower Lizalfos Pot {#}", count: 2 }
                         ],
@@ -434,7 +434,7 @@ let StandardDungeons = {
                         Order: 8,
                         LongDescription: "In the lower lizalfos room, these pots are on the platform to the left of the exit door."
                     },
-                    "2 Pots Right of Lizalfos Room Exit": { // TODO Mapping: Check this
+                    "2 Pots Right of Lizalfos Room Exit": {
                         SpoilerLogName: [
                             { name: "Dodongos Cavern Lower Lizalfos Pot {#}", count: { min: 3, max: 4 } }
                         ],
@@ -465,10 +465,11 @@ let StandardDungeons = {
                         LongDescription: "From the entrance, go around the right side of the dungeon until you get to the blue room with dodongos in it. You can also jump up to the switch platform as adult and enter the door to get here. Near the usual entrance to this room, there's a mud wall with a scrub inside. You should be able to run a bomb flower to it if you don't have your own explosives.",
                         NeedsAny: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA, Equipment.STRENGTH]
                     },
-                    "3 Pots by Blue Room Start": { // TODO Mapping: Check this and pot below
-                        SpoilerLogName: [
-                            { name: "Dodongos Cavern Torch Room Pot {#}", count: 3 }
-                        ],
+                    "3 Pots by Blue Room Start": {
+                        SpoilerLogName: [{ 
+                            name: "Dodongos Cavern Torch Room Pot {#}", 
+                            tokens: [1, 4, 3] 
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -478,7 +479,7 @@ let StandardDungeons = {
                         LongDescription: "From the entrance, go around the right side of the dungeon until you get to the blue room with dodongos in it. You can also jump up to the switch platform as adult and enter the door to get here.<br/><br/>Near the first pillar, there are three pots. Two on one side, and one on the other."
                     },
                     "Pot by Blue Room End": {
-                        SpoilerLogName: "Dodongos Cavern Torch Room Pot 4",
+                        SpoilerLogName: "Dodongos Cavern Torch Room Pot 2",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 217, y: 190, floor: "F1" },
                         Age: Age.EITHER,
@@ -531,7 +532,7 @@ let StandardDungeons = {
                     lowerBladeRoom: {}
                 },
                 ItemLocations: {
-                    "2 Pots Left of Staircase": { // TODO Mapping: Check this and two pots below
+                    "2 Pots Left of Staircase": {
                         SpoilerLogName: [
                             { name: "Dodongos Cavern Staircase Pot {#}", count: 2 }
                         ],
@@ -658,8 +659,8 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "First Eye Switch Pot by Entrance": { // TODO Mapping: Check this and pot below
-                        SpoilerLogName: "Dodongos Cavern Single Eye Switch Room Pot 1",
+                    "First Eye Switch Pot by Entrance": {
+                        SpoilerLogName: "Dodongos Cavern Single Eye Switch Room Pot 2",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 251, y: 190, floor: "F2" },
                         Age: Age.EITHER,
@@ -667,7 +668,7 @@ let StandardDungeons = {
                         LongDescription: "Make your way to the first eye switch puzzle room, either through the blade room or the upper lizalfos room. This pot is in the corner by the entrance."
                     },
                     "First Eye Switch Pot by Exit": {
-                        SpoilerLogName: "Dodongos Cavern Single Eye Switch Room Pot 2",
+                        SpoilerLogName: "Dodongos Cavern Single Eye Switch Room Pot 1",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 270, y: 205, floor: "F2" },
                         Age: Age.EITHER,
@@ -713,7 +714,7 @@ let StandardDungeons = {
                 },
 
                 ItemLocations: {
-                    "Second Eye Switch Pot by Entrance": { // TODO Mapping: Check this and pot below
+                    "Second Eye Switch Pot by Entrance": {
                         SpoilerLogName: "Dodongos Cavern Double Eye Switch Room Pot 1",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 275, y: 166, floor: "F2" },
@@ -783,10 +784,11 @@ let StandardDungeons = {
                         LongDescription: "This is in the series of rooms after you enter the giant dodongo head. After you climb the ledge with the pushable blocks, there's a wall you can destroy. The skulltula is inside.",
                         Needs: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA]
                     },
-                    "2 Pots After Block Push in Back Room": { // TODO Mapping: Check this and pots below
-                        SpoilerLogName: [
-                            { name: "Dodongos Cavern Last Block Pot {#}", count: 2 }
-                        ],
+                    "2 Pots After Block Push in Back Room": {
+                        SpoilerLogName: [{ 
+                            name: "Dodongos Cavern Last Block Pot {#}", 
+                            count: { min: 3, max: 4 }
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -797,7 +799,7 @@ let StandardDungeons = {
                     },
                     "2 Pots in Hall Before Final Block": {
                         SpoilerLogName: [
-                            { name: "Dodongos Cavern Last Block Pot {#}", count: { min: 3, max: 4 } }
+                            { name: "Dodongos Cavern Last Block Pot {#}", count: 2 }
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
@@ -903,7 +905,7 @@ let StandardDungeons = {
                             QPAItemSets.LEDGE_QPA
                         ]
                     },
-                    "Left Skulltula on Lower Room Wall": { // TODO Mapping: Check this and one below
+                    "Left Skulltula on Lower Room Wall": {
                         SpoilerLogName: "Jabu Jabus Belly GS Lobby Basement Upper",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 156, y: 44, floor: "B1" },
@@ -1936,7 +1938,7 @@ let StandardDungeons = {
                         UseAdultAge: function() { return !Tricks.megaFlip.enabled; },
                         LongDescription: "Go up the stairs at the entrance to the temple. Take the right door into the big lava room. Along the back left wall is a platform that will rise up to an alcove after you jump on it (child can jump there from the moving platform). The pots are there."
                     },
-                    "Big Lava Room Left Goron": { //TODO Mapping: Check this
+                    "Big Lava Room Left Goron": {
                         SpoilerLogName: "Fire Temple Big Lava Room Lower Open Door Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 277, y: 141, floor: "F1" },
@@ -1954,7 +1956,7 @@ let StandardDungeons = {
                 },
                 Exits: {},
                 ItemLocations: {
-                    "Big Lava Room Right Goron": { //TODO Mapping: Check this
+                    "Big Lava Room Right Goron": {
                         SpoilerLogName: "Fire Temple Big Lava Room Blocked Door Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 198, y: 280, floor: "F1" },
@@ -2108,7 +2110,7 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "2 Hearts on Fire Wall Room Pillars": { //TODO Mapping: Check this and below
+                    "2 Hearts on Fire Wall Room Pillars": {
                         SpoilerLogName: [
                             { name: "Fire Temple Moving Fire Room Recovery Heart {#}", count: 2 }
                         ],
@@ -2610,7 +2612,7 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "2 Pots in Room Before Dark Link": { // TODO Mapping: Check this
+                    "2 Pots in Room Before Dark Link": {
                         SpoilerLogName: [
                             { name: "Water Temple Like Like Pot {#}", count: 2 }
                         ],
@@ -2640,7 +2642,7 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Heart 1 in Whirlpool Room": { //TODO Mapping: Check this and other hearts in location
+                    "Heart 1 in Whirlpool Room": {
                         SpoilerLogName: "Water Temple River Recovery Heart 1",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
@@ -2756,7 +2758,7 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Chest by Water Lowering Triforce": { // TODO Mapping: Is this right?
+                    "Chest by Water Lowering Triforce": {
                         SpoilerLogName: "Water Temple Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 332, y: 223, floor: "F3" },
@@ -2834,7 +2836,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Water Lowering Rooms (Low East)", imageName: "Ocarina" },
                 Exits: {},
                 ItemLocations: {
-                    "2 Pots in Low East Wing": { //TODO Mapping: Check this
+                    "2 Pots in Low East Wing": {
                         SpoilerLogName: [
                             { name: "Water Temple L1 Torch Pot {#}", count: 2 }
                         ],
@@ -2907,7 +2909,7 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Skulltula by Mid Water Triforce": { //TODO Mapping: Check this
+                    "Skulltula by Mid Water Triforce": {
                         SpoilerLogName: "Water Temple GS Central Pillar",
                         ItemGroup: ItemGroups.SKULLTULA,
                         Age: Age.EITHER,
@@ -2973,7 +2975,7 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Chest Under Rising Platform in Middle Room": { //TODO Mapping: Check this
+                    "Chest Under Rising Platform in Middle Room": {
                         SpoilerLogName: "Water Temple Central Pillar Chest",
                         ItemGroup: ItemGroups.CHEST,
                         Age: Age.ADULT,
@@ -2988,7 +2990,7 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Compass Room (Mid East)", imageName: "Compass" },
                 Exits: {},
                 ItemLocations: {
-                    "2 Pots by Mid East Wing": { //TODO Mapping: Check this
+                    "2 Pots by Mid East Wing": {
                         SpoilerLogName: [
                             { name: "Water Temple Main Room L2 Pot {#}", count: 2 }
                         ],
@@ -3037,7 +3039,7 @@ let StandardDungeons = {
                 UseAdultAge: function() { return !Tricks.waterEyeSwitchGateFromTop.enabled; },
                 Exits: {},
                 ItemLocations: {
-                    "Chest Behind Block at Mid Level": { // TODO Mapping: Check these
+                    "Chest Behind Block at Mid Level": {
                         SpoilerLogName: "Water Temple Central Bow Target Chest",
                         ItemGroup: ItemGroups.CHEST,
                         Age: Age.EITHER,
