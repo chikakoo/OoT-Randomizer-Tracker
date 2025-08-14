@@ -87,6 +87,7 @@ let Settings = {
 
 	TrackerSettings: {
 		saveFileName: "",
+		enableLocationNotes: false,
 		deprioritizeDampeToWindmill: true,
 		deprioritizeHyruleField: true,
 		deprioritizeHauntedWasteland: true,

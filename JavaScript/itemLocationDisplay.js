@@ -214,8 +214,10 @@ let ItemLocationDisplay = {
 		mainContainer.innerHTML = ""; // Clean this up first so we don't get duplicates
 
 		let locationNotesDiv = this._createLocationNotesDiv();
-		mainContainer.appendChild(locationNotesDiv);
-
+		if (locationNotesDiv) {
+			mainContainer.appendChild(locationNotesDiv);
+		}
+		
 		let travelDiv = dce("div");
 		travelDiv.id = "travelDiv";
 		mainContainer.appendChild(travelDiv);
@@ -252,6 +254,10 @@ let ItemLocationDisplay = {
 	},
 
 	_createLocationNotesDiv: function() {
+		if (!Settings.TrackerSettings.enableLocationNotes) {
+			return;
+		}
+		
 		let locationNotesDiv = dce("div");
 		locationNotesDiv.id = "locationNotesDiv";
 		locationNotesDiv.innerText = LocationNotes[ItemLocationDisplay.currentLocationName] ||

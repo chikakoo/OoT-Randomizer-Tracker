@@ -485,6 +485,7 @@ let SaveAndLoad = {
      */
     _loadSpoilerLog: function(spoilerLogData) {
         SpoilerLogItemMap = {};
+        Settings.TrackerSettings.enableLocationNotes = true;
 
         this._setDungeonTypes(spoilerLogData);
         this._populateSpoilerLogExitMap();

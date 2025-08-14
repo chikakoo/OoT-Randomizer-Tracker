@@ -341,7 +341,11 @@
 					<span onclick='SettingsPage.showOrHideGroup(event, "settingsGroupTrackerContainer")' settings>Tracker</span>
 					<div id="settingsGroupTrackerContainer">
 						<div class="settings-radio-group" title="Route finder settings.">
-							Route Finder Settings
+							Display Settings
+							<label onclick='SettingsPage.setBooleanValueForTracker("enableLocationNotes", event)'
+								title="Enables location notes. Modify them by clicking them at the top of each page (defaults to the location name).">
+								<input type="checkbox" name="enableLocationNotes" value="enableLocationNotes">Enable Location Notes
+							</label>
 							<label onclick='SettingsPage.setBooleanValueForTracker("routeBasedOnTime", event)'
 								title="NOT COMPLETED YET: If on, will route based on rough time estimates rather than number of exits to take.">
 								<input type="checkbox" name="routeBasedOnTime" value="routeBasedOnTime">Route Based on Travel Time
