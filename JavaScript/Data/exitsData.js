@@ -1855,7 +1855,6 @@ let OwExits = {
         }
     },
 
-    // TODO Mapping: Check the GF exits
     "Gerudo Fortress": {
         // Ground Level
         "Gerudo Valley": {

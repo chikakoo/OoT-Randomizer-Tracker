@@ -2566,15 +2566,18 @@ let StandardDungeons = {
                         OwExit: OwExits["Water Temple"]["Boss"]
                     }
                 },
-                ItemLocations: { //TODO Mapping: Not sure if needed?
+                ItemLocations: {
+                    //TODO: maybe clean this up so this item isn't necessary anymore
+                    // Note that this item will never be visible - it is used to help determine whether you
+                    // have the ability to raise/lower the water in Lake Hylia via the gossip stone as adult
+                    // See the ItemLocationSet DEFEATED_MORPHA for where this is used
                     "Blue Warp": {
-                        SpoilerLogName: "Morpha",
                         ItemGroup: ItemGroups.FREESTANDING,
                         Age: Age.ADULT,
                         Order: 99,
                         MapInfo: { x: 227, y: 145, floor: "F3" },
                         LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-                        RequiredToAppear: function() { return false; } //TODO: maybe clean this up so this item isn't necessary anymore
+                        RequiredToAppear: function() { return false; } 
                     }
                 }
             },

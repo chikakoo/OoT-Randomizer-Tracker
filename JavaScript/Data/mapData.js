@@ -646,7 +646,7 @@ let MapLocations = {
                 ItemLocations: {
                     // Maze
                     "Wonderitem in First Maze Alcove": {
-                        SpoilerLogName : "SFM Maze Wonderitem 1",
+                        SpoilerLogName : "SFM Maze Wonderitem 2",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Green Rupee Wonderitem",
                         MapInfo: { x: 198, y: 231 },
@@ -654,7 +654,7 @@ let MapLocations = {
                         LongDescription: "Enter the maze and turn right - enter the first alcove to the left to get this wonderitem."
                     },
                     "Wonderitem in Second Maze Alcove": {
-                        SpoilerLogName : "SFM Maze Wonderitem 2",
+                        SpoilerLogName : "SFM Maze Wonderitem 5",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Blue Rupee Wonderitem",
                         MapInfo: { x: 198, y: 207 },
@@ -662,23 +662,23 @@ let MapLocations = {
                         LongDescription: "Enter the maze and turn right and follow the loop around. The alcove to the right after the turn has this wonderitem."
                     },
                     "Wonderitem in Third Maze Alcove": {
-                        SpoilerLogName : "SFM Maze Wonderitem 3",
+                        SpoilerLogName : "SFM Maze Wonderitem 1",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Green Rupee Wonderitem",
                         MapInfo: { x: 176, y: 221 },
                         Age: Age.EITHER,
                         LongDescription: "On the left side alcove after the first maze loop around, you will find this wonderitem."
                     },
-                    "Right Wonderitem in Northern Maze": { //TODO Mapping: check this
-                        SpoilerLogName : "SFM Maze Wonderitem 4",
+                    "Right Wonderitem in Northern Maze": {
+                        SpoilerLogName : "SFM Maze Wonderitem 3",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Green Rupee Wonderitem",
                         MapInfo: { x: 209, y: 147 },
                         Age: Age.EITHER,
                         LongDescription: "After the area that you're forced to go through tall grass, go to your right; the alcove with this wonderitem is on the left wall."
                     },
-                    "Left Wonderitem in Northern Maze": { //TODO Mapping: check this
-                        SpoilerLogName : "SFM Maze Wonderitem 5",
+                    "Left Wonderitem in Northern Maze": {
+                        SpoilerLogName : "SFM Maze Wonderitem 4",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Blue Rupee Wonderitem",
                         MapInfo: { x: 177, y: 147 },
@@ -930,7 +930,7 @@ let MapLocations = {
                         LongDescription: "You can get this after getting Malon's gift and waking up Talon with the Chicken at Hyrule Castle. Take out your Ocarina to get the item.",
                         Needs: [GameStateSets.CAN_PLAY_SONGS, ItemLocationSets.GIFT_FROM_MALON, ItemLocationSets.WAKE_UP_TALON]
                     },
-                    "Wonderitem via Short Gate": { //TODO Mapping: Check this
+                    "Wonderitem via Short Gate": {
                         SpoilerLogName: "LLR Epona Hurdle Wonderitem 1",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Epona Wonderitem",
@@ -939,7 +939,7 @@ let MapLocations = {
                         LongDescription: "As Adult, talk to Ingo if you haven't already rescued Epona to go inside. Play Epona's song and ride Epona. Jump over the center of the smaller gate to get this wonderitem.",
                         Needs: [Songs.EPONAS_SONG, Items.OCARINA]
                     },
-                    "Wonderitem via Tall Gate": { //TODO Mapping: Check this
+                    "Wonderitem via Tall Gate": {
                         SpoilerLogName: "LLR Epona Hurdle Wonderitem 2",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Epona Wonderitem",
@@ -1049,7 +1049,7 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    "Crates by Bazaar": { // TODO Mapping: Check this
+                    "Crates by Bazaar": {
                         SpoilerLogName: [
                             { name: "Market Day Crate {#}", count: { min: 3, max : 4 } },
                             { name: "Market Night Green Rupee Crate {#}", count: { min: 2, max : 3 } }
@@ -1065,7 +1065,7 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "These crates are on either side of the bazaar door."
                     },
-                    "Crates by Archery": { // TODO Mapping: Check this
+                    "Crates by Archery": {
                         SpoilerLogName: [
                             { name: "Market Day Crate {#}", count: 2 },
                             { name: "Market Night Red Rupee Crate" },
@@ -1258,9 +1258,10 @@ let MapLocations = {
                         LongDescription: "Shoot the two torches on either side of the drawbridge with your slingshot on the castle wall to get the two wonderitems.",
                         Needs: [Items.FAIRY_SLINGSHOT]
                     },
-                    "7 Rupees in Moat by Drawbridge": { //TODO Mapping: Check this
+                    "7 Rupees in Moat by Drawbridge": {
                         SpoilerLogName: [
-                            { name: "HC Castle Moat Wonderitem {#}", count: 7 },
+                            { name: "HC Castle Moat Wonderitem {#}", count: 6 },
+                            "HC Castle Moat Wonderitem 8"
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
@@ -1270,9 +1271,10 @@ let MapLocations = {
                         Age: Age.CHILD,
                         LongDescription: "Swim downstream in the moat by the drawbridge to get these 7 items. Start on the leftmost side, and stay in the middle all the way down.",
                     },
-                    "3 Rupees in Moat by Crates": { //TODO Mapping: Check this
+                    "3 Rupees in Moat by Crates": {
                         SpoilerLogName: [
-                            { name: "HC Castle Moat Wonderitem {#}", count: { min: 8, max : 10 } },
+                            "HC Castle Moat Wonderitem 7",
+                            { name: "HC Castle Moat Wonderitem {#}", count: { min: 9, max : 10 } },
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
@@ -1450,8 +1452,8 @@ let MapLocations = {
                         LongDescription: "At night, roll into the tree in the center of the village to reveal this skulltula. If you have no weapon, use a pot from near the guard by Death Mountain Trail.",
                         OverrideItemGroupCondition: true
                     },
-                    "Cucco Crate by Talon's House": { // TODO Mapping: Check this
-                        SpoilerLogName: "Kak Child Crate 1",
+                    "Cucco Crate by Talon's House": {
+                        SpoilerLogName: "Kak Child Crate 2",
                         ItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
                         MapInfo: { x: 156, y: 155 },
@@ -1521,8 +1523,8 @@ let MapLocations = {
                         Order: 9,
                         LongDescription: "This is the prize that Anju gives you after collecting all 7 cuccos in the pen. Note that leaving the map will keep your progress."
                     },
-                    "Crate Outside Enclosed Area": { // TODO Mapping: Check this
-                        SpoilerLogName: "Kak Child Crate 2",
+                    "Crate Outside Enclosed Area": {
+                        SpoilerLogName: "Kak Child Crate 3",
                         ItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
                         MapInfo: { x: 248, y: 143 },
@@ -1530,8 +1532,8 @@ let MapLocations = {
                         Order: 10,
                         LongDescription: "This crate is by the gate leading to the enclosed area, on the outside near the windmill platform."
                     },
-                    "Crate by Windmill": { // TODO Mapping: Check this
-                        SpoilerLogName: "Kak Child Crate 3",
+                    "Crate by Windmill": {
+                        SpoilerLogName: "Kak Child Crate 4",
                         ItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
                         MapInfo: { x: 264, y: 155 },
@@ -1539,8 +1541,8 @@ let MapLocations = {
                         Order: 11,
                         LongDescription: "This crate is by the door to the windmill."
                     },
-                    "Crate by Graveyard": { // TODO Mapping: Check this
-                        SpoilerLogName: "Kak Child Crate 4",
+                    "Crate by Graveyard": {
+                        SpoilerLogName: "Kak Child Crate 5",
                         ItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
                         MapInfo: { x: 333, y: 212 },
@@ -1548,9 +1550,9 @@ let MapLocations = {
                         Order: 12,
                         LongDescription: "This crate is by the loading zone to the graveyard, in the corner."
                     },
-                    "2 Crates by Talon's House": { // TODO Mapping: Check this
+                    "2 Crates by Talon's House": {
                         SpoilerLogName: [
-                            { name: "Kak Adult Crate {#}", count: 2 }
+                            { name: "Kak Adult Crate {#}", count: { min: 5, max: 6 } }
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
@@ -1561,8 +1563,8 @@ let MapLocations = {
                         Order: 13,
                         LongDescription: "These crates are next to Talon's House."
                     },
-                    "Crate Behind House of Skulltulas": { // TODO Mapping: Check this
-                        SpoilerLogName: "Kak Adult Crate 3",
+                    "Crate Behind House of Skulltulas": {
+                        SpoilerLogName: "Kak Adult Crate 1",
                         ItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
                         MapInfo: { x: 108, y: 203 },
@@ -1570,10 +1572,8 @@ let MapLocations = {
                         Order: 14,
                         LongDescription: "This crate is behind the house of skulltulas, by the ledge."
                     },
-                    "2 Crates by Impa's House": { // TODO Mapping: Check this
-                        SpoilerLogName: [
-                            { name: "Kak Adult Crate {#}", count: { min: 4, max: 5 } }
-                        ],
+                    "2 Crates by Impa's House": {
+                        SpoilerLogName: [{ name: "Kak Adult Crate {#}", count: { min: 3, max: 4 } }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
@@ -1583,7 +1583,7 @@ let MapLocations = {
                         Order: 15,
                         LongDescription: "These crates are next to Impa's House."
                     },
-                    "Crate by Archery": { // TODO Mapping: Check this - not working
+                    "Crate by Archery": {
                         SpoilerLogName: "Kak Adult Arrows Crate",
                         ItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
@@ -1625,8 +1625,8 @@ let MapLocations = {
                     },
 
                     // Upper Area
-                    "Crate Below Bazaar": { // TODO Mapping: Check this
-                        SpoilerLogName: "Kak Child Crate 5",
+                    "Crate Below Bazaar": {
+                        SpoilerLogName: "Kak Child Crate 1",
                         DisplayGroup: { groupName: "Upper Area", imageName: "Keaton Mask" },
                         ItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
@@ -1657,7 +1657,7 @@ let MapLocations = {
                     },
                     "3 Pots Near Bazaar": {
                         SpoilerLogName: [
-                            { name: "Kak Near Guards House Pot {#}", count: 3}
+                            { name: "Kak Near Guards House Pot {#}", count: 3 }
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
@@ -1703,9 +1703,10 @@ let MapLocations = {
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
                         LongDescription: "This crate is next to the entrance to the archery minigame or close to the beggar near the watchtower. The drop is shared between the two."
                     },
-                    "2 Crates by Beggar": { // TODO Mapping: Check this
+                    "2 Crates by Beggar": {
                         SpoilerLogName: [
-                            { name: "Kak Adult Crate {#}", count: { min: 6, max: 7 } }
+                            "Kak Adult Crate 2",
+                            "Kak Adult Crate 7"
                         ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
@@ -1715,7 +1716,7 @@ let MapLocations = {
                         Age: Age.ADULT,
                         LongDescription: "These crates are next to the beggar up the stairs."
                     },
-                    "Crate by Potion Shop Entrance": { // TODO Mapping: Check this
+                    "Crate by Potion Shop Entrance": {
                         SpoilerLogName: "Kak Adult Crate 8",
                         ItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
