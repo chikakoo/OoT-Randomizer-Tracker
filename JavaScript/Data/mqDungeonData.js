@@ -5193,6 +5193,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "4 Pots in Lobby": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple MQ Lobby Pot {#}",
+                            count: 4
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "4 Pots",
@@ -5202,6 +5206,7 @@ let MQDungeons = {
                         LongDescription: "These pots are to your left and right against the walls as you first enter the temple."
                     },
                     "Lobby Silver Rupee in Left Rock": {
+                        SpoilerLogName: "Spirit Temple MQ Lobby and Lower Adult Silver Rupee Left Boulder",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 179, y: 240, floor: "F1" },
                         Age: Age.EITHER,
@@ -5210,6 +5215,7 @@ let MQDungeons = {
                         Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "Lobby Silver Rupee in Right Rock": {
+                        SpoilerLogName: "Spirit Temple MQ Lobby and Lower Adult Silver Rupee Right Boulder",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 206, y: 240, floor: "F1" },
                         Age: Age.EITHER,
@@ -5218,6 +5224,7 @@ let MQDungeons = {
                         Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "Bottom Left Chest in Lobby": {
+                        SpoilerLogName: "Spirit Temple MQ Entrance Front Left Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 187, y: 215, floor: "F1" },
                         Age: Age.EITHER,
@@ -5225,6 +5232,7 @@ let MQDungeons = {
                         LongDescription: "This chest is there when you first enter the temple."
                     },
                     "Top Left Chest in Lobby": {
+                        SpoilerLogName: "Spirit Temple MQ Entrance Back Left Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 187, y: 203, floor: "F1" },
                         Age: Age.EITHER,
@@ -5236,6 +5244,7 @@ let MQDungeons = {
                         ]
                     },
                     "Top Right Chest in Lobby": {
+                        SpoilerLogName: "Spirit Temple MQ Entrance Back Right Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 203, y: 203, floor: "F1" },
                         Age: Age.EITHER,
@@ -5340,6 +5349,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Bottom Right Chest in Lobby": {
+                        SpoilerLogName: "Spirit Temple MQ Entrance Front Right Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 203, y: 215, floor: "F1" },
                         Age: Age.EITHER,
@@ -5377,6 +5387,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Pot in Child Main Room": {
+                        SpoilerLogName: "Spirit Temple MQ Child Torch Slugs Room Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 122, y: 207, floor: "F1" },
                         Age: Age.EITHER,
@@ -5384,6 +5395,10 @@ let MQDungeons = {
                         LongDescription: "This is the pot in front of you when you go through the crawlspace."
                     },
                     "2 Hearts in Child Main Room": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple MQ Child Recovery Heart {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "2 Hearts",
@@ -5394,6 +5409,7 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.SWORDS, ItemSets.PROJECTILES, Items.BOOMERANG]
                     },
                     "Big Chest in Bridge Room": {
+                        SpoilerLogName: "Spirit Temple MQ Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 34, y: 139, floor: "F1" },
                         Age: Age.EITHER,
@@ -5402,6 +5418,7 @@ let MQDungeons = {
                         Needs: [ItemSets.SWORDS]
                     },
                     "Chest in Child Main Room": {
+                        SpoilerLogName: "Spirit Temple MQ Child Hammer Switch Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 89, y: 199, floor: "F1" },
                         Age: Age.EITHER,
@@ -5429,6 +5446,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Child Gibdos Area": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple MQ Child 3 Gibdo Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -5438,6 +5459,10 @@ let MQDungeons = {
                         LongDescription: "Kill all the enemies in the room after going through the crawlspace. Go through the door that unlocks. In this room, push back the right grave and hit the switch under it. Now, drop a bombchu through the gap that just opened up to reveal an eye switch. Shoot the switch and make your way across. The pots are by the gibdos."
                     },
                     "4 Pots in Child Stalfos Room": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple MQ Child Stalfos Fight Pot {#}",
+                            count: 4
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "4 Pots",
@@ -5454,6 +5479,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Small Chest in Bridge Room": {
+                        SpoilerLogName: "Spirit Temple MQ Map Room Enemy Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 34, y: 94, floor: "F1" },
                         Age: Age.EITHER,
@@ -5494,6 +5520,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Pot in Room With Sun On Floor": {
+                        SpoilerLogName: "Spirit Temple MQ Child Climb Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 88, y: 81, floor: "F1" },
                         Age: Age.EITHER,
@@ -5501,6 +5528,7 @@ let MQDungeons = {
                         LongDescription: "In the room with the sun on the floor, the pot is located on the bottom. As adult, you must hit the switch on top first. As a child, it's at the start of the room (it's the locked door after the crawlspace)."
                     },
                     "Bottom Chest in Room With Sun On Floor": {
+                        SpoilerLogName: "Spirit Temple MQ Child Climb North Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 61, y: 142, floor: "F2" },
                         Age: Age.EITHER,
@@ -5509,6 +5537,7 @@ let MQDungeons = {
                         Needs: [ItemSets.EXPLOSIVES]
                     },
                     "Top Chest in Room With Sun On Floor": {
+                        SpoilerLogName: "Spirit Temple MQ Child Climb South Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 53, y: 194, floor: "F2" },
                         Age: Age.ADULT,
@@ -5544,6 +5573,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Flying Pot on Statue Room Stairs": {
+                        SpoilerLogName: "Spirit Temple MQ Central Chamber Flying Pot Stairs",
                         ItemGroup: ItemGroups.POT,
                         IsEmpty: true,
                         MapInfo: { x: 147, y: 189, floor: "F2" },
@@ -5552,6 +5582,7 @@ let MQDungeons = {
                         LongDescription: "This pot is on the southwest staircase (the one either age can access)."
                     },
                     "Small Crate by Statue Room Stairs": {
+                        SpoilerLogName: "Spirit Temple MQ Central Chamber Small Wooden Crate",
                         ItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
                         MapInfo: { x: 131, y: 158, floor: "F2" },
@@ -5560,6 +5591,7 @@ let MQDungeons = {
                         LongDescription: "This small crate is next to the southwest staircase. Depending on your age, it may be on a Song of Time block."
                     },
                     "Left Pot in Statue Room": {
+                        SpoilerLogName: "Spirit Temple MQ Central Chamber Floor Pot 2",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 116, y: 135, floor: "F2" },
                         Age: Age.EITHER,
@@ -5567,6 +5599,7 @@ let MQDungeons = {
                         LongDescription: "WALL MASTER WARNING:<br/>This pot is by the left side of the statue."
                     },
                     "Chest in Center of Statue Room": {
+                        SpoilerLogName: "Spirit Temple MQ Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 176, y: 148, floor: "F2" },
                         Age: Age.EITHER,
@@ -5575,6 +5608,10 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.PROJECTILES, QPAItemSets.TALL_TORCH_QPA]
                     },
                     "2 Crates in Statue Room": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple MQ Central Chamber Crate {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -5584,6 +5621,10 @@ let MQDungeons = {
                         LongDescription: "WALL MASTER WARNING:<br/>These crates are on the right side of the statue against the back wall.",
                     },
                     "2 Right Pots in Statue Room": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple MQ Central Chamber Floor Pot {#}",
+                            tokens: [1, 3]
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -5594,6 +5635,13 @@ let MQDungeons = {
                         LongDescription: "WALL MASTER WARNING:<br/>These pots are on the right side of the statue by the flying pot that gives nothing.",
                     },
                     "3 Right Pots in Statue Room": {
+                        SpoilerLogName: [
+                            "Spirit Temple MQ Central Chamber Flying Pot Floor",
+                            {
+                                name: "Spirit Temple MQ Central Chamber Floor Pot {#}",
+                                tokens: [1, 3]
+                            }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         IsEmpty: true,
@@ -5604,6 +5652,7 @@ let MQDungeons = {
                         LongDescription: "WALL MASTER WARNING:<br/>These pots are on the right side of the statue. One of them is a flying pot.",
                     },
                     "Upper Northeast Left Pot in Statue Room": {
+                        SpoilerLogName: "Spirit Temple MQ Central Chamber Top Left Pot (Left)",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 101, y: 100, floor: "F2" },
                         Age: Age.EITHER,
@@ -5619,6 +5668,10 @@ let MQDungeons = {
                         ]
                     },
                     "2 Upper Northeast Left Pots in Statue Room": {
+                        SpoilerLogName: [
+                            "Spirit Temple MQ Central Chamber Top Left Pot (Left)",
+                            "Spirit Temple MQ Central Chamber Flying Pot Top Left"
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         IsEmpty: true,
@@ -5636,6 +5689,7 @@ let MQDungeons = {
                         ]
                     },
                     "Upper Northeast Right Pot in Statue Room": {
+                        SpoilerLogName: "Spirit Temple MQ Central Chamber Top Left Pot (Right)",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 109, y: 100, floor: "F2" },
                         Age: Age.EITHER,
@@ -5659,6 +5713,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Silver Block Maze": {
+                        SpoilerLogName: "Spirit Temple MQ Silver Block Hallway Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 174, y: 227, floor: "F2" },
                         Age: Age.EITHER,
@@ -5680,6 +5735,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Left Pot in Fire Bubble Room": {
+                        SpoilerLogName: "Spirit Temple MQ Sun Block Room Pot 1",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 60, y: 112, floor: "F3" },
                         Age: Age.EITHER,
@@ -5687,6 +5743,7 @@ let MQDungeons = {
                         LongDescription: "From the statue room, you must play the song of time on the ledge near the small box, then reload the room so that the box spawns on the song of time block. With a series of song of time plays, you can move the box up to the switch on the statue's west-side hand (Adult can just jump to it with box in hand). Go through the room and the hallway that unlocks.<br/><br/>The pot is on a ledge in the left part of the room."
                     },
                     "Right Pot in Fire Bubble Room": {
+                        SpoilerLogName: "Spirit Temple MQ Sun Block Room Pot 2",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 31, y: 60, floor: "F3" },
                         Age: Age.EITHER,
@@ -5694,6 +5751,7 @@ let MQDungeons = {
                         LongDescription: "From the statue room, you must play the song of time on the ledge near the small box, then reload the room so that the box spawns on the song of time block. With a series of song of time plays, you can move the box up to the switch on the statue's west-side hand (Adult can just jump to it with box in hand). Go through the room and the hallway that unlocks.<br/><br/>The pot is on a ledge in the right part of the room."
                     },
                     "Chest in Fire Bubble Room": {
+                        SpoilerLogName: "Spirit Temple MQ Sun Block Room Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 80, y: 63, floor: "F3" },
                         Age: Age.EITHER,
@@ -5701,6 +5759,7 @@ let MQDungeons = {
                         LongDescription: "From the statue room, you must play the song of time on the ledge near the small box, then reload the room so that the box spawns on the song of time block. With a series of song of time plays, you can move the box up to the switch on the statue's west-side hand (Adult can just jump to it with box in hand). Go through the room and the hallway that unlocks.<br/><br/>Navigate around the room and push the two sun blocks that are next to each other into the light. This will spawn the chest."
                     },
                     "Skulltula in Fire Bubble Room": {
+                        SpoilerLogName: "Spirit Temple MQ GS Sun Block Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 68, y: 113, floor: "F3" },
                         Age: Age.EITHER,
@@ -5718,6 +5777,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Silver Gauntlets Chest": {
+                        SpoilerLogName: "Spirit Temple Silver Gauntlets Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 103, y: 228, floor: "F3" },
                         Age: Age.EITHER,
@@ -5759,6 +5819,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Invisible Chest in Statue Room": {
+                        SpoilerLogName: "Spirit Temple MQ Statue Room Invisible Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 251, y: 100, floor: "F2" },
                         Age: Age.EITHER,
@@ -5774,6 +5835,7 @@ let MQDungeons = {
                         ]
                     },
                     "Chest in Boxes in Statue Room": {
+                        SpoilerLogName: "Spirit Temple MQ Statue Room Lullaby Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 225, y: 115, floor: "F2" },
                         Age: Age.EITHER,
@@ -5827,6 +5889,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots Below Quad Wallmaster Room": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple MQ Below 4 Wallmasters Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -5836,6 +5902,7 @@ let MQDungeons = {
                         LongDescription: "WALL MASTER WARNING:<br/>At the statue room, light all 3 torches with fire arrows. Use your hookshot to get to the door that unlocks. In the next room, use your mirror shield on all 3 suns and kill the enemies (including the wall masters). The pots are down the path that opens up."
                     },
                     "Right of Lobby Silver Rupee by Doors": {
+                        SpoilerLogName: "Spirit Temple MQ Lobby and Lower Adult Silver Rupee Near Door",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 266, y: 175, floor: "F1" },
                         Age: Age.EITHER,
@@ -5843,6 +5910,7 @@ let MQDungeons = {
                         LongDescription: "This rupee is in the room to the right of the lobby, in the corner by the doors (see Bottom Right Chest in Lobby for details)."
                     },
                     "Skulltula in Sandy Room": {
+                        SpoilerLogName: "Spirit Temple MQ GS Leever Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 235, y: 127, floor: "F1" },
                         Age: Age.EITHER,
@@ -5851,6 +5919,7 @@ let MQDungeons = {
                         Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Chest in Sandy Room": {
+                        SpoilerLogName: "Spirit Temple MQ Leever Room Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 226, y: 99, floor: "F1" },
                         Age: Age.ADULT,
@@ -5859,6 +5928,7 @@ let MQDungeons = {
                         NeedsAny: [UpgradedItems.LONGSHOT, Tricks.hammerHoverBootsSuperslide.canDo]
                     },
                     "Right of Lobby Silver Rupee by Stairs": {
+                        SpoilerLogName: "Spirit Temple MQ Lobby and Lower Adult Silver Rupee Behind Water Jet",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 266, y: 207, floor: "F1" },
                         Age: Age.EITHER,
@@ -5866,6 +5936,7 @@ let MQDungeons = {
                         LongDescription: "This rupee is in the room to the right of the lobby, at the base of the stairs."
                     },
                     "Lobby Silver Rupee in Water": {
+                        SpoilerLogName: "Spirit Temple MQ Lobby and Lower Adult Silver Rupee Water Jet",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 246, y: 211, floor: "F1" },
                         Age: Age.EITHER,
@@ -5888,6 +5959,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Skulltula After Boulder Room": {
+                        SpoilerLogName: "Spirit Temple MQ GS Symphony Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 328, y: 77, floor: "F1" },
                         Age: Age.EITHER,
@@ -5896,6 +5968,7 @@ let MQDungeons = {
                         Needs: [Items.MEGATON_HAMMER, Songs.SONG_OF_TIME, Songs.EPONAS_SONG, Songs.SUNS_SONG, Songs.SONG_OF_STORMS, Songs.ZELDAS_LULLABY]
                     },
                     "Chest After Boulder Room": {
+                        SpoilerLogName: "Spirit Temple MQ Symphony Room Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 319, y: 61, floor: "F1" },
                         Age: Age.EITHER,
@@ -5936,6 +6009,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Small Crate in Beamos Room": {
+                        SpoilerLogName: "Spirit Temple MQ Beamos Room Small Wooden Crate",
                         ItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
                         MapInfo: { x: 255, y: 105, floor: "F3" },
@@ -5945,6 +6019,7 @@ let MQDungeons = {
                         Needs: [Songs.SONG_OF_TIME]
                     },
                     "Chest in Beamos Room": {
+                        SpoilerLogName: "Spirit Temple MQ Beamos Room Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 284, y: 77, floor: "F3" },
                         Age: Age.EITHER,
@@ -5965,6 +6040,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Room With Lizalfos and Sun": {
+                        SpoilerLogName: "Spirit Temple MQ Chest Switch Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 328, y: 105, floor: "F3" },
                         Age: Age.EITHER,
@@ -5972,6 +6048,10 @@ let MQDungeons = {
                         LongDescription: "The chest is in plain sight in the room."
                     },
                     "2 Wonderitems in Room With Lizalfos and Sun": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple MQ Chest Switch {#} Wonderitem",
+                            tokens: ["Sword", "Hammer"]
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "Sword and Hammer Wonderitem",
@@ -5981,6 +6061,7 @@ let MQDungeons = {
                         LongDescription: "Swing your sword and hammer while next to the chest to spawn two wonderitems (one for each item swung)."
                     },
                     "Boss Key Chest": {
+                        SpoilerLogName: "Spirit Temple MQ Boss Key Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 321, y: 40, floor: "F3" },
                         Age: Age.ADULT,
@@ -6003,6 +6084,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Mirror Shield Chest": {
+                        SpoilerLogName: "Spirit Temple Mirror Shield Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 247, y: 226, floor: "F3" },
                         Age: Age.EITHER,
@@ -6021,6 +6103,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Moving Wall Room": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple MQ Shifting Wall Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -6030,6 +6116,10 @@ let MQDungeons = {
                         LongDescription: "These pots are at the bottom of the moving wall room - which is through the locked door after the hallway via the upper southeast statue room."
                     },
                     "5 Moving Wall Room Silver Rupees": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple MQ Adult Climb Silver Rupee {#}",
+                            count: 5
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SILVER_RUPEE,
                         DefaultEntranceGroupName: "5 Silver Rupees",
@@ -6054,6 +6144,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots After Moving Wall Room": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple MQ After Shifting Wall Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -6070,6 +6164,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "West Skulltula in Iron Knuckle Room": {
+                        SpoilerLogName: "Spirit Temple MQ GS Nine Thrones Room West",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 265, y: 80, floor: "F4" },
                         Age: Age.EITHER,
@@ -6077,6 +6172,7 @@ let MQDungeons = {
                         LongDescription: "After navigating up the moving wall room - unlock the door you run into at the top. Lure the Iron Knuckle so that he breaks the pillars blocking the skulltula."
                     },
                     "North Skulltula in Iron Knuckle Room": {
+                        SpoilerLogName: "Spirit Temple MQ GS Nine Thrones Room North",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 293, y: 26, floor: "F4" },
                         Age: Age.EITHER,
@@ -6095,6 +6191,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "4 Pots in Giant Mirror Room": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple MQ Big Mirror Pot {#}",
+                            count: 4
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "4 Pots",
@@ -6104,6 +6204,10 @@ let MQDungeons = {
                         LongDescription: "After the moving wall room, play Zelda's Lullaby to unlock the door. the pots are in the corners on the top part of the room."
                     },
                     "4 Crates in Giant Mirror Room": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple MQ Big Mirror Crate {#}",
+                            count: 4
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "4 Crates",
@@ -6124,6 +6228,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Invisible Chest in Mirror Maze": {
+                        SpoilerLogName: "Spirit Temple MQ Mirror Puzzle Invisible Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 170, y: 216, floor: "F4" },
                         Age: Age.EITHER,

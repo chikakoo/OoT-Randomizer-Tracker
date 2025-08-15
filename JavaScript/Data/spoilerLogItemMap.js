@@ -614,10 +614,6 @@ let SpoilerLogOwEntranceMap = {
     "Desert Colossus|Wasteland Near Colossus": {
         map: "Desert Colossus", exit: "Haunted Wasteland"
     },
-    "Desert Colossus|Twinrova Boss Room": {
-        // One-way exit, so just list as the main entrance
-        map: "Desert Colossus", exit: "Haunted Wasteland"
-    },
 
     // Dungeons
     "Deku Tree Lobby|KF Outside Deku Tree": { 
@@ -680,4 +676,30 @@ let SpoilerLogOwEntranceMap = {
     // For now, leaving blank since the typical one-ways can't
     // ever be mapped to it
     "Temple of Time|Prelude of Light Warp": {},
+
+    // Boss Warps
+    "KF Outside Deku Tree|Queen Gohma Boss Room": {
+        map: "Kokiri Forest", exit: "Lost Woods Bottom"
+    },
+    "Death Mountain|King Dodongo Boss Room": {
+        map: "Death Mountain Trail", exit: "Kakariko Village"
+    },
+    "Zoras Fountain|Barinade Boss Room": {
+        map: "Zora's Fountain", exit: "Zora's Domain"
+    },
+    "Sacred Forest Meadow|Phantom Ganon Boss Room": {
+        map: "Sacred Forest Meadow", exit: "Minuet Teleport Pad"
+    },
+    "DMC Central Local|Volvagia Boss Room": {
+        map: "Death Mountain Crater", exit: "Bolero Teleport Pad"
+    },
+    "Lake Hylia|Morpha Boss Room": {
+        map: "Lake Hylia", exit: "Hyrule Field"
+    },
+    "Graveyard Warp Pad Region|Bongo Bongo Boss Room": {
+        map: "Graveyard", exit: "Nocturne Teleport Pad"
+    },
+    "Desert Colossus|Twinrova Boss Room": {
+        map: "Desert Colossus", exit: "Haunted Wasteland"
+    }
 };
