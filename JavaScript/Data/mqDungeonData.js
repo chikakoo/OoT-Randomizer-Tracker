@@ -6680,6 +6680,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Left Pots by Entrance": {
+                        SpoilerLogName: [{
+                            name: "Gerudo Training Ground MQ Lobby Left Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -6689,6 +6693,7 @@ let MQDungeons = {
                         LongDescription: "The pots are to the left when you first enter."
                     },
                     "Left Chest by Entrance": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Lobby Left Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 152, y: 233 },
                         Age: Age.EITHER,
@@ -6696,6 +6701,7 @@ let MQDungeons = {
                         LongDescription: "This chest is to the left when you first enter."
                     },
                     "Right Chest by Entrance": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Lobby Right Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 175, y: 233 },
                         Age: Age.EITHER,
@@ -6703,6 +6709,10 @@ let MQDungeons = {
                         LongDescription: "This chest is to the right when you first enter."
                     },
                     "2 Right Pots by Entrance": {
+                        SpoilerLogName: [{
+                            name: "Gerudo Training Ground MQ Lobby Right Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -6734,6 +6744,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Left Maze Path After Door 1": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Hidden Ceiling Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 152, y: 192 },
                         Age: Age.EITHER,
@@ -6741,6 +6752,7 @@ let MQDungeons = {
                         LongDescription: "From the main maze entrance, take the first left door. Climb the grate to your left up to the chest."
                     },
                     "Left Maze Path After Door 2": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Maze Path First Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 130, y: 163 },
                         Age: Age.EITHER,
@@ -6748,6 +6760,7 @@ let MQDungeons = {
                         LongDescription: "This chest is after the second door in the left maze path."
                     },
                     "Left Maze Path After Door 4": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Maze Path Second Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 142, y: 136 },
                         Age: Age.EITHER,
@@ -6755,6 +6768,7 @@ let MQDungeons = {
                         LongDescription: "This chest is after the fourth door in the left maze path."
                     },
                     "Left Maze Path After Door 5": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Maze Path Third Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 148, y: 137 },
                         Age: Age.EITHER,
@@ -6774,6 +6788,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Crate in Maze Center": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Maze Crate",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 164, y: 160 },
                         Age: Age.EITHER,
@@ -6801,6 +6816,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Armos Room": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Dinolfos Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 257, y: 244 },
                         Age: Age.EITHER,
@@ -6809,6 +6825,7 @@ let MQDungeons = {
                         ChildNeedsAny: [Items.DEKU_STICK, Items.BOMB, Items.BOMBCHU]
                     },
                     "Wonderitem in Armos Room": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Dinolfos Arrow Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 257, y: 221 },
@@ -6829,6 +6846,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Sandy Iron Knuckle Chest": {
+                        SpoilerLogName: "Gerudo Training Ground MQ First Iron Knuckle Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 65, y: 225 },
                         Age: Age.EITHER,
@@ -6836,6 +6854,7 @@ let MQDungeons = {
                         LongDescription: "From the main entrance, light the torches and go through the door that unlocks. Kill the Iron Knuckle to spawn the chest."
                     },
                     "Icicle Silver Rupee on Ceiling": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Icicle Room Silver Rupee Ceiling",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 80, y: 194 },
                         Age: Age.ADULT,
@@ -6845,6 +6864,7 @@ let MQDungeons = {
                         NeedsAny: [Items.HOOKSHOT, Tricks.gtgSlopesRoomWallmasterToRupee.canDo]
                     },
                     "Icicle Silver Rupee in Back Left Area": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Icicle Room Silver Rupee Freezard",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 53, y: 198 },
                         Age: Age.EITHER,
@@ -6852,6 +6872,7 @@ let MQDungeons = {
                         LongDescription: "This rupee is in the left area, guarded by a freezard. If you can't kill, run into it from behind to get the item."
                     },
                     "Icicle Silver Rupee by Ledge in Midair": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Icicle Room Silver Rupee Center",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 75, y: 148 },
                         Age: Age.EITHER,
@@ -6859,6 +6880,7 @@ let MQDungeons = {
                         LongDescription: "WALL MASTER WARNING: This rupee is the one floating in mid-air from the entrance. Naivigate around the maze, and drop down to get it. If you don't have a hookshot, there's a route from the entrance if you take the second right."
                     },
                     "Icicle Silver Rupee Over Right Area Void": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Icicle Room Silver Rupee Above Void",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 94, y: 203 },
                         Age: Age.EITHER,
@@ -6866,6 +6888,7 @@ let MQDungeons = {
                         LongDescription: "This rupee is over the void in the right side of the room. There's a fire-free path if you take the second right from the entrance. You can backwalk off the ledge to avoid voiding out."
                     },
                     "Icicle Silver Rupee Behind Icicles": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Icicle Room Silver Rupee Icicles",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 94, y: 128 },
                         Age: Age.EITHER,
@@ -6902,6 +6925,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Room With Silver Block": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Before Heavy Block Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 89, y: 84 },
                         Age: Age.EITHER,
@@ -6927,6 +6951,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Chest in Room Behind Silver Block": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Heavy Block Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 68, y: 17 },
                         Age: Age.ADULT,
@@ -6951,6 +6976,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Wonderitem on Eye Statue": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Eye Statue Proximity Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 163, y: 91 },
                         Age: Age.EITHER,
@@ -6966,6 +6992,7 @@ let MQDungeons = {
                         ]
                     },
                     "Chest in Eye Statue Room": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Eye Statue Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 163, y: 60 },
                         Age: Age.ADULT,
@@ -6974,6 +7001,7 @@ let MQDungeons = {
                         Needs: [Items.FAIRY_BOW]
                     },
                     "Side Fire Iron Knuckle Chest": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Second Iron Knuckle Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 256, y: 76 },
                         Age: Age.EITHER,
@@ -6981,11 +7009,12 @@ let MQDungeons = {
                         LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Continue past the circle fire room into the next room. Kill the enemies within the time limit to spawn the chest."
                     },
                     "Center Fire Iron Knuckle Chest": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Flame Circle Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 254, y: 90 },
                         Age: Age.EITHER,
                         Order: 13,
-                        LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Continue past the circle fire room into the next room. Activate the switch above the door to spawn the chest. Step on the swith on one of the walls to remove the fire.",
+                        LongDescription: "Get to the room with the silver block. Get the blue fire, then play the Song of Time by where the opening usually is to get up. Melt the ice wall and continue down. Continue past the circle fire room into the next room. Activate the switch above the door to spawn the chest. Step on the switch on one of the walls to remove the fire.",
                         Needs: [ItemSets.DISTANT_SWITCH_ITEMS]
                     }
                 }
@@ -7000,6 +7029,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest Spawned from Maze Center": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Ice Arrows Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 166, y: 132 },
                         Age: Age.EITHER,
@@ -7044,6 +7074,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Lava Silver Rupee in Front Center": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Lava Room Silver Rupee Front Center",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 247, y: 180 },
                         UseAdultAge: function() { return !Tricks.megaFlip.enabled },
@@ -7053,6 +7084,7 @@ let MQDungeons = {
                         ChildNeeds: [Tricks.megaFlip.canDo]
                     },
                     "Lava Silver Rupee in Front Right": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Lava Room Silver Rupee Front Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 261, y: 171 },
                         Age: Age.ADULT,
@@ -7067,6 +7099,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Lava Silver Rupee in Front Left": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Lava Room Silver Rupee Front Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 234, y: 173 },
                         Age: Age.EITHER,
@@ -7130,6 +7163,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Lava Silver Rupee in Back Center": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Lava Room Silver Rupee Back Center",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 252, y: 155 },
                         Age: Age.ADULT,
@@ -7137,6 +7171,7 @@ let MQDungeons = {
                         LongDescription: "This rupee is on the back center platform. Clear the fire as normal, and use your hover boots to get to it. Hover boots not required if coming from either of the top areas."
                     },
                     "Lava Silver Rupee in Back Right": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Lava Room Silver Rupee Back Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 262, y: 144 },
                         Age: Age.ADULT,
@@ -7150,6 +7185,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Lava Silver Rupee in Back Left": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Lava Room Silver Rupee Back Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 236, y: 145 },
                         Age: Age.ADULT,
@@ -7183,6 +7219,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Chest in Water Room": { 
+                        SpoilerLogName: "Gerudo Training Ground MQ Underwater Silver Rupee Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 297, y: 160 },
                         Age: Age.ADULT,
@@ -7191,6 +7228,10 @@ let MQDungeons = {
                         Needs: [SilverRupeeSets.MQ_GTG_SILVER_RUPEES_WATER_ROOM]
                     },
                     "3 Silver Rupees in Water Room": {
+                        SpoilerLogName: [{
+                            name: "Gerudo Training Ground MQ Underwater Silver Rupee {#}",
+                            tokens: ["Middle", "Front Right", "Back Left"]
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SILVER_RUPEE,
                         DefaultEntranceGroupName: "3 Silver Rupees",
@@ -7231,6 +7272,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Close Chest in Back of Maze": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Maze Right Central Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 177, y: 165 },
                         Age: Age.EITHER,
@@ -7238,6 +7280,7 @@ let MQDungeons = {
                         LongDescription: "After defeating the enemies in the room with the fire circle and Iron Knuckle, proceed through the door. Hammer the rusted switch, then longshot to the pillar that appears (or savewarp and go through the now-unbarred right door from the maze entrance). Go through the hall - the chest is straight ahead."
                     },
                     "Far Chest in Back of Maze": {
+                        SpoilerLogName: "Gerudo Training Ground MQ Maze Right Side Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 187, y: 154 },
                         Age: Age.EITHER,
