@@ -3291,6 +3291,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Map Chest Room": {
+                        SpoilerLogName: [
+                            { name: "Shadow Temple Map Chest Room Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3300,6 +3303,7 @@ let StandardDungeons = {
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. The room is somewhere on your right. The pots are in the back corners of the room."
                     },
                     "Dungeon Map Chest": {
+                        SpoilerLogName: "Shadow Temple Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 100, y: 107, floor: "F1" },
                         Age: Age.EITHER,
@@ -3308,6 +3312,9 @@ let StandardDungeons = {
                         Needs: [ItemSets.DAMAGING_ITEMS]
                     },
                     "2 Pots in Front Maze Room": {
+                        SpoilerLogName: [
+                            { name: "Shadow Temple Whispering Walls Front Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3317,6 +3324,7 @@ let StandardDungeons = {
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. Circle around the central pillar until you find the pots."
                     },
                     "Flying Pot in Back Maze Room": {
+                        SpoilerLogName: "Shadow Temple Whispering Walls Flying Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 71, y: 163, floor: "F1" },
                         Age: Age.EITHER,
@@ -3324,6 +3332,9 @@ let StandardDungeons = {
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. Circle around the central pillar and go through the fake wall. Go to your left and the pot should fly into you."
                     },
                     "3 Pots in Back Maze Room": {
+                        SpoilerLogName: [
+                            { name: "Shadow Temple Whispering Walls Left Pot {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -3333,6 +3344,7 @@ let StandardDungeons = {
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. Circle around the central pillar and go through the fake wall. The pots are in the next room on the left."
                     },
                     "Pot by Dead Hand Entrance": {
+                        SpoilerLogName: "Shadow Temple Whispering Walls Near Dead Hand Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 55, y: 148, floor: "F1" },
                         Age: Age.EITHER,
@@ -3340,6 +3352,7 @@ let StandardDungeons = {
                         LongDescription: "From the start of the temple, cross the first gap then go through the wall. Now, turn left and walk all the way to the wall. There is a fake wall to your left - go through it. Go through the next couple walls. Circle around the central pillar and go through the fake wall. The pot is on the other side of the room by the fake wall to Dead Hand."
                     },
                     "Hover Boots Chest": {
+                        SpoilerLogName: "Shadow Temple Hover Boots Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 15, y: 142, floor: "F1" },
                         Age: Age.EITHER,
@@ -3368,6 +3381,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Compass Chest": {
+                        SpoilerLogName: "Shadow Temple Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 300, y: 220, floor: "F1" },
                         Age: Age.EITHER,
@@ -3376,6 +3390,7 @@ let StandardDungeons = {
                         Needs: [ItemSets.SWORDS]
                     },
                     "Scythe Silver Rupee Right of Scythe": {
+                        SpoilerLogName: "Shadow Temple Scythe Shortcut Silver Rupee Center Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 304, y: 113, floor: "F1" },
                         Age: Age.EITHER,
@@ -3383,6 +3398,7 @@ let StandardDungeons = {
                         LongDescription: "Take the left door from the beamos to get to the scythe room. This rupee is to the right of the spinning scythe."
                     },
                     "Scythe Silver Rupee Left of Scythe": {
+                        SpoilerLogName: "Shadow Temple Scythe Shortcut Silver Rupee Center Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 292, y: 99, floor: "F1" },
                         Age: Age.EITHER,
@@ -3390,6 +3406,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is to the left of the spinning scythe."
                     },
                     "Scythe Silver Rupee in Left Alcove": {
+                        SpoilerLogName: "Shadow Temple Scythe Shortcut Silver Rupee Left Alcove",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 271, y: 113, floor: "F1" },
                         Age: Age.EITHER,
@@ -3397,6 +3414,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is in the alcove on the left."
                     },
                     "Scythe Silver Rupee in Midair": {
+                        SpoilerLogName: "Shadow Temple Scythe Shortcut Silver Rupee Ledge",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 273, y: 88, floor: "F1" },
                         Age: Age.ADULT,
@@ -3410,6 +3428,7 @@ let StandardDungeons = {
                         ]
                     },
                     "Scythe Silver Rupee in Back Alcove": {
+                        SpoilerLogName: "Shadow Temple Scythe Shortcut Silver Rupee Back Alcove",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 316, y: 78, floor: "F1" },
                         Age: Age.EITHER,
@@ -3417,6 +3436,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is in the alcove in the back part of the room."
                     },
                     "Scythe Room Silver Rupee Chest": {
+                        SpoilerLogName: "Shadow Temple Early Silver Rupee Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 344, y: 121, floor: "F1" },
                         Age: Age.EITHER,
@@ -3444,6 +3464,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts in Invisible Scythe Room": {
+                        SpoilerLogName: [
+                            { name: "Shadow Temple Invisible Blades Recovery Heart {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "2 Hearts",
@@ -3454,6 +3477,7 @@ let StandardDungeons = {
                         NeedsAny: [Songs.SONG_OF_TIME, Items.BOOMERANG, Tricks.staircaseHover.canDo]
                     },
                     "Visible Chest in Invisible Scythe Room": {
+                        SpoilerLogName: "Shadow Temple Invisible Blades Visible Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 344, y: 138, floor: "B2" },
                         Age: Age.EITHER,
@@ -3462,6 +3486,7 @@ let StandardDungeons = {
                         Needs: [ItemSets.SWORDS]
                     },
                     "Invisible Chest in Invisible Scythe Room": {
+                        SpoilerLogName: "Shadow Temple Invisible Blades Invisible Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 344, y: 143, floor: "B2" },
                         Age: Age.EITHER,
@@ -3470,6 +3495,7 @@ let StandardDungeons = {
                         Needs: [ItemSets.SWORDS]
                     },
                     "Skulltula in Invisible Scythe Room": {
+                        SpoilerLogName: "Shadow Temple GS Invisible Blades Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 348, y: 140, floor: "B2" },
                         Age: Age.EITHER,
@@ -3478,6 +3504,13 @@ let StandardDungeons = {
                         ChildNeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Tricks.staircaseHover.canDo]
                     },
                     "5 Pit Room Silver Rupees": {
+                        SpoilerLogName: [
+                            "Shadow Temple Huge Pit Silver Rupee Left",
+                            "Shadow Temple Huge Pit Silver Rupee Center Front",
+                            "Shadow Temple Huge Pit Silver Rupee Center",
+                            "Shadow Temple Huge Pit Silver Rupee Center Back",
+                            "Shadow Temple Huge Pit Silver Rupee Right"
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SILVER_RUPEE,
                         DefaultEntranceGroupName: "5 Silver Rupees",
@@ -3503,6 +3536,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Lower Pots in Falling Spikes Room": {
+                        SpoilerLogName: [
+                            { name: "Shadow Temple Falling Spikes Lower Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3512,6 +3548,7 @@ let StandardDungeons = {
                         LongDescription: "The pots are to the right of the falling spikes, guarded by the spike trap."
                     },
                     "Skulltula in Falling Spikes Room": {
+                        SpoilerLogName: "Shadow Temple GS Falling Spikes Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 52, y: 238, floor: "B2" },
                         Age: Age.EITHER,
@@ -3520,6 +3557,7 @@ let StandardDungeons = {
                         NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Tricks.staircaseHover.canDo]
                     },
                     "Bottom Chest in Falling Spikes Room": {
+                        SpoilerLogName: "Shadow Temple Falling Spikes Lower Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 37, y: 212, floor: "B2" },
                         Age: Age.EITHER,
@@ -3534,6 +3572,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Top Switchless Chest in Falling Spikes Room": {
+                        SpoilerLogName: "Shadow Temple Falling Spikes Upper Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 16, y: 239, floor: "B2" },
                         Age: Age.EITHER,
@@ -3542,6 +3581,7 @@ let StandardDungeons = {
                         TricksToShow: [Tricks.shadowBackFlipOnSpikes]
                     },
                     "Top Switch Chest in Falling Spikes Room": {
+                        SpoilerLogName: "Shadow Temple Falling Spikes Switch Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 76, y: 209, floor: "B2" },
                         Age: Age.EITHER,
@@ -3550,6 +3590,9 @@ let StandardDungeons = {
                         TricksToShow: [Tricks.shadowBackFlipOnSpikes]
                     },
                     "2 Upper Pots in Falling Spikes Room": {
+                        SpoilerLogName: [
+                            { name: "Shadow Temple Falling Spikes Upper Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3581,6 +3624,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Invisible Spike Room": {
+                        SpoilerLogName: "Shadow Temple Invisible Spikes Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 156, y: 64, floor: "B2" },
                         Age: Age.EITHER,
@@ -3589,6 +3633,7 @@ let StandardDungeons = {
                         Needs: [ItemSets.SWORDS]
                     },
                     "Invisible Spike Ground Center Silver Rupee": {
+                        SpoilerLogName: "Shadow Temple Invisible Spikes Silver Rupee Center",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 156, y: 72, floor: "B2" },
                         Age: Age.EITHER,
@@ -3596,6 +3641,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is in front of you as you enter the room."
                     },
                     "Invisible Spike Silver Rupee on Right Wall": {
+                        SpoilerLogName: "Shadow Temple Invisible Spikes Silver Rupee Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 184, y: 65, floor: "B2" },
                         Age: Age.ADULT,
@@ -3604,6 +3650,7 @@ let StandardDungeons = {
                         NeedsAny: [Items.HOOKSHOT, Tricks.staircaseHover.canDo]
                     },
                     "Invisible Spike Silver Rupee on Left Wall": {
+                        SpoilerLogName: "Shadow Temple Invisible Spikes Silver Rupee Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 136, y: 82, floor: "B2" },
                         Age: Age.ADULT,
@@ -3612,6 +3659,7 @@ let StandardDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Silver Rupee on Invisible Ledge": {
+                        SpoilerLogName: "Shadow Temple Invisible Spikes Silver Rupee Ledge",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 132, y: 52, floor: "B2" },
                         Age: Age.ADULT,
@@ -3620,6 +3668,7 @@ let StandardDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Midair Silver Rupee by Invisible Ledge": {
+                        SpoilerLogName: "Shadow Temple Invisible Spikes Silver Rupee Near Ledge",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 140, y: 60, floor: "B2" },
                         Age: Age.ADULT,
@@ -3635,6 +3684,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Key in Giant Skull": {
+                        SpoilerLogName: "Shadow Temple Freestanding Key",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 92, y: 70, floor: "B2" },
                         Age: Age.EITHER,
@@ -3648,6 +3698,7 @@ let StandardDungeons = {
                         ]
                     },
                     "Skulltula in Giant Skull Room": {
+                        SpoilerLogName: "Shadow Temple GS Single Giant Pot",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 77, y: 68, floor: "B2" },
                         Age: Age.EITHER,
@@ -3672,6 +3723,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Invisible Chest at Wind Hallway": {
+                        SpoilerLogName: "Shadow Temple Wind Hint Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 344, y: 198, floor: "B1"  },
                         Age: Age.ADULT,
@@ -3679,6 +3731,9 @@ let StandardDungeons = {
                         LongDescription: "Start at the invisible spikes room. Navigate to the door on the upper platform. If you don't have the longshot, you'll need to first backflip on the chest to get enough height to hit the invisible target. Navigate through the fans using your Iron Boots. Use your hookshot on the horizontal wooden pillar to pass the gap. Make your way to the end of the hallway and enter the door. There is an invisible chest in the back right corner of this room."
                     },
                     "2 Flying Pots in Gibdo Room": {
+                        SpoilerLogName: [
+                            { name: "Shadow Temple After Wind Flying Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3689,6 +3744,9 @@ let StandardDungeons = {
                         LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. The pots will fly at you as you approach the back of the room."
                     },
                     "2 Pots in Gibdo Room": {
+                        SpoilerLogName: [
+                            { name: "Shadow Temple After Wind Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3699,6 +3757,7 @@ let StandardDungeons = {
                         LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. The pots are on either side of the gibdos."
                     },
                     "Chest in Gibdo Room": {
+                        SpoilerLogName: "Shadow Temple After Wind Enemy Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 302, y: 146, floor: "B1" },
                         Age: Age.EITHER,
@@ -3707,6 +3766,7 @@ let StandardDungeons = {
                         LongDescription: "Start at the invisible chest at the end of the wind hallway. Exit this room - there is a fake wall directly across from the first fan to your left. Use its wind power to get enough speed to jump the gap. You don't actually need the Hover Boots to make the jump, but they do help. Kill the gibdos to spawn the chest."
                     },
                     "Chest in Rubble in Gibdo Room": {
+                        SpoilerLogName: "Shadow Temple After Wind Hidden Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 309, y: 156, floor: "B1" },
                         Age: Age.EITHER,
@@ -3746,6 +3806,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Boat Room": {
+                        SpoilerLogName: "Shadow Temple GS Near Ship",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 274, y: 116, floor: "B1" },
                         Age: Age.ADULT,
@@ -3764,6 +3825,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts in Boat Room": {
+                        SpoilerLogName: [
+                            { name: "Shadow Temple Before Boat Recovery Heart {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "2 Hearts",
@@ -3787,6 +3851,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Pot on Boat Side of Chasm": {
+                        SpoilerLogName: "Shadow Temple After Boat Pot 2",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 135, y: 104, floor: "B1" },
                         Age: Age.ADULT,
@@ -3795,6 +3860,9 @@ let StandardDungeons = {
                         LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across.<br/><br/>The pot is the one on the right near where the bridge falls (the other pot is empty)."
                     },
                     "2 Pots on Boat Side of Chasm": {
+                        SpoilerLogName: [
+                            { name: "Shadow Temple After Boat Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         IsEmpty: true,
@@ -3805,6 +3873,7 @@ let StandardDungeons = {
                         LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. The parts are near where the bridge falls."
                     },
                     "Pot in Spike Wall Room": {
+                        SpoilerLogName: "Shadow Temple Spike Walls Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 89, y: 51, floor: "B1" },
                         Age: Age.ADULT,
@@ -3812,6 +3881,7 @@ let StandardDungeons = {
                         LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room to your right. The pot is in front of you."
                     },
                     "Chest in Spike Wall Room": {
+                        SpoilerLogName: "Shadow Temple Spike Walls Left Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 70, y: 52, floor: "B1" },
                         Age: Age.ADULT,
@@ -3819,6 +3889,7 @@ let StandardDungeons = {
                         LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room to your right. Cast Din's Fire to take out the spike walls to clear the path to the chest.<br/><br/>If you don't have it, run up against the left side of the wall in the back of the room and have the redead freeze you. You should phase through the wall."
                     },
                     "Boss Key Chest in Spike Wall Room": {
+                        SpoilerLogName: "Shadow Temple Boss Key Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 108, y: 52, floor: "B1" },
                         Age: Age.ADULT,
@@ -3826,6 +3897,7 @@ let StandardDungeons = {
                         LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room to your right. Cast Din's Fire to take out the spike walls to clear the path to the boss key chest.<br/><br/>If you don't have it, run up against the right side of the wall in the back of the room and have the redead freeze you. You should phase through the wall."
                     },
                     "Wonderitem in Triple Skull Room": {
+                        SpoilerLogName: "Shadow Temple 3 Spinning Pots Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 66, y: 98, floor: "B1" },
@@ -3835,6 +3907,7 @@ let StandardDungeons = {
                         Needs: [Items.FAIRY_BOW]
                     },
                     "Skulltula in Triple Skull Room": {
+                        SpoilerLogName: "Shadow Temple GS Triple Giant Pot",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 28, y: 98, floor: "B1" },
                         Age: Age.ADULT,
@@ -3842,6 +3915,9 @@ let StandardDungeons = {
                         LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across. Enter the door on the end of the room. Navigate to the room straight across from you to get to the skulltula."
                     },
                     "9 Rupees in Triple Skull Room": {
+                        SpoilerLogName: [
+                            { name: "Shadow Temple 3 Spinning Pots Rupee {#}", count: 9 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "9 Skull Rupees",
@@ -3857,6 +3933,9 @@ let StandardDungeons = {
                         ]
                     },
                     "2 Pots in Invisible Floormaster Room": {
+                        SpoilerLogName: [
+                            { name: "Shadow Temple Invisible Floormaster Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3866,6 +3945,7 @@ let StandardDungeons = {
                         LongDescription: "From the invisible wall room, enter the room to the left (the south room). The pots are on the back wall in the corners."
                     },
                     "Chest in Invisible Floormaster Room": {
+                        SpoilerLogName: "Shadow Temple Invisible Floormaster Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 89, y: 148, floor: "B1" },
                         Age: Age.ADULT,
@@ -3887,6 +3967,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts on Chasm Scarecrow Platform": {
+                        SpoilerLogName: [
+                            { name: "Shadow Temple After Boat Upper Recovery Heart {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "2 Hearts",
@@ -3922,6 +4005,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots by Boss Antechamber": {
+                        SpoilerLogName: [
+                            { name: "Shadow Temple Near Boss Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3937,6 +4023,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Heart on Pillar Across Chasm": {
+                        SpoilerLogName: "Shadow Temple After Boat Lower Recovery Heart",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapInfo: { x: 125, y: 124, floor: "B1" },
                         MapImageName: "Recovery Heart",
