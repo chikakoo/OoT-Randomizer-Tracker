@@ -3070,6 +3070,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Hookshot Wonderitems in Boss Antechamber": {
+                        SpoilerLogName: [{ 
+                            name: "Water Temple MQ Boss Hallway Hookshot Wonderitem {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "2 Hookshot Wonderitems",
@@ -3088,13 +3092,17 @@ let MQDungeons = {
                     }
                 },
                 ItemLocations: {
+                    //TODO: maybe clean this up so this item isn't necessary anymore
+                    // Note that this item will never be visible - it is used to help determine whether you
+                    // have the ability to raise/lower the water in Lake Hylia via the gossip stone as adult
+                    // See the ItemLocationSet DEFEATED_MORPHA for where this is used
                     "Blue Warp": {
                         ItemGroup: ItemGroups.FREESTANDING,
                         Age: Age.ADULT,
                         Order: 99,
                         MapInfo: { x: 227, y: 145, floor: "F3" },
                         LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
-                        RequiredToAppear: function() { return false; } //TODO: maybe clean this up so this item isn't necessary anymore
+                        RequiredToAppear: function() { return false; }
                     }
                 }
             },
@@ -3111,6 +3119,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Crates in Upper Central Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Central Pillar Upper Crate {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -3126,6 +3138,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "14 Crates Below Central Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Central Pillar Lower Crate {#}",
+                            count: 14
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "14 Crates",
@@ -3135,6 +3151,7 @@ let MQDungeons = {
                         LongDescription: "With the water at its highest, use your iron boots to enter the door at mid level in the main room. Rise to the top and play the Song of Time to spawn a block you can use Din's fire from to light the torches. Alternatively, well-aimed fire arrows will work. Sink down to the room at the very bottom. The crates are all around!"
                     },
                     "Wonderitem Below Central Room": {
+                        SpoilerLogName: "Water Temple MQ Below Central Pillar Hookshot Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Hookshot Wonderitem",
                         MapInfo: { x: 312, y: 215, floor: "B1" },
@@ -3144,6 +3161,7 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "Chest Below Central Room": {
+                        SpoilerLogName: "Water Temple MQ Central Pillar Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 291, y: 215, floor: "B1" },
                         Age: Age.ADULT,
@@ -3162,6 +3180,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Wonderitem Above Low East Room": {
+                        SpoilerLogName: "Water Temple MQ Longshot Chest Hookshot Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Hookshot Wonderitem",
                         MapInfo: { x: 347, y: 132, floor: "F2" },
@@ -3171,6 +3190,7 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "Chest Above Low East Room": {
+                        SpoilerLogName: "Water Temple MQ Longshot Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 330, y: 131, floor: "F2" },
                         Age: Age.ADULT,
@@ -3179,6 +3199,7 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "Wonderitem by Low Water Triforce": {
+                        SpoilerLogName: "Water Temple MQ Map Chest Hookshot Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Hookshot Wonderitem",
                         MapInfo: { x: 349, y: 224, floor: "F3" },
@@ -3188,6 +3209,7 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT, ItemSets.FIRE_ITEMS]
                     },
                     "Chest by Low Water Triforce": {
+                        SpoilerLogName: "Water Temple MQ Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 334, y: 224, floor: "F3" },
                         Age: Age.ADULT,
@@ -3215,6 +3237,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Wonderitem in Lower East Room": {
+                        SpoilerLogName: "Water Temple MQ Compass Chest Hookshot Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Hookshot Wonderitem",
                         MapInfo: { x: 246, y: 212, floor: "F1" },
@@ -3225,6 +3248,7 @@ let MQDungeons = {
                         NeedsAny: [Items.FAIRY_BOW, Items.DINS_FIRE, QPAItemSets.LEDGE_QPA]
                     },
                     "Chest in Lower East Room": {
+                        SpoilerLogName: "Water Temple MQ Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 338, y: 212, floor: "F1" },
                         Age: Age.ADULT,
@@ -3239,6 +3263,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in Low East Wing": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ L1 Torch Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3260,6 +3288,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "3 Crates in Mid South Hallway": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Lizalfos Hallway Hall Crate {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "3 Crates",
@@ -3269,6 +3301,10 @@ let MQDungeons = {
                         LongDescription: "Make your way to the mid south wing - you'll need to press the switch to open the gate. Bonk into the crates to break them. Two of them are before the jail cell, and one is just to the left of it."
                     },
                     "5 Crates in Mid South Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Lizalfos Hallway Room Crate {#}",
+                            count: 5
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "5 Crates",
@@ -3278,6 +3314,7 @@ let MQDungeons = {
                         LongDescription: "Make your way to the mid south wing - you'll need to press the switch to open the gate. Navigate to the room to the right of the jail cell and bonk into the crates to break them."
                     },
                     "Wonderitem in Mid South Room": {
+                        SpoilerLogName: "Water Temple MQ Lizalfos Hallway Hookshot Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Hookshot Wonderitem",
                         MapInfo: { x: 244, y: 256, floor: "F2" },
@@ -3293,6 +3330,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Pot in Mid South Hallway": {
+                        SpoilerLogName: "Water Temple MQ Lizalfos Hallway Pot 1",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 234, y: 205, floor: "F2" },
                         Age: Age.ADULT,
@@ -3300,6 +3338,10 @@ let MQDungeons = {
                         LongDescription: "Make your way to the mid south room - you'll need to press the switch to open the gate. If the water isn't drained, you'll need to use your hookshot the break this hallway pot."
                     },
                     "2 Pots in Mid South Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Lizalfos Hallway Pot {#}",
+                            count: { min: 2, max: 3 }
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3315,6 +3357,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in Mid South Jail": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Lizalfos Hallway Gate Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3324,6 +3370,10 @@ let MQDungeons = {
                         LongDescription: "At any water level (mid is easiest), navigate to the bottom middle area. Hit the switch to open the gated door. Use Din's Fire to light the torch and get the pots behind the cell.<br/><br/>Without a fire item, stand in front of the torch and hookshot it. You can now just walk in. To get out, target the jail and hookshot while holding Z and right while next to the torch."
                     },
                     "2 Crates in Mid South Jail": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Lizalfos Hallway Gate Crate {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -3334,6 +3384,7 @@ let MQDungeons = {
                         Needs: [Songs.ZELDAS_LULLABY]
                     },
                     "Skulltula in Mid South Room": {
+                        SpoilerLogName: "Water Temple MQ GS Lizalfos Hallway",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 270, y: 203, floor: "F2" },
                         Age: Age.ADULT,
@@ -3347,6 +3398,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "3 Pots in Mid East Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Storage Room Pot {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -3356,6 +3411,10 @@ let MQDungeons = {
                         LongDescription: "Go to the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there, then hookshot up. Once at the surface, look in the corner of the room for the pots."
                     },
                     "7 Crates in Mid East Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Storage Room Crate {#}",
+                            count: 7
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "7 Crates",
@@ -3366,6 +3425,16 @@ let MQDungeons = {
                         LongDescription: "Go to the east wing on the middle level. You do not need to change the water level to get to it - just toggle your Iron Boots as needed to get there, then hookshot up. Once at the surface, the crates are the big ones all around the room."
                     },
                     "11 Crates in Mid East Room": {
+                        SpoilerLogName: [
+                            {
+                                name: "Water Temple MQ Storage Room Crate {#}",
+                                count: 7
+                            },
+                            {
+                                name: "Water Temple MQ Storage Room Small Wooden Crate {#}",
+                                count: 4
+                            }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
@@ -3382,6 +3451,13 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "7 Crates in Mid West Room": {
+                        SpoilerLogName: [
+                            {
+                                name: "Water Temple MQ Before Upper Water Switch Lower Crate {#}",
+                                count: 6
+                            },
+                            "Water Temple MQ Before Upper Water Switch Lower Small Crate"
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "7 Crates",
@@ -3391,6 +3467,10 @@ let MQDungeons = {
                         LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. The crates are in this room.",
                     },
                     "3 Pots in Mid West Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Before Upper Water Switch Pot {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -3400,6 +3480,7 @@ let MQDungeons = {
                         LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. The pots are against the wall to the left."
                     },
                     "Wonderitem in Mid West Room": {
+                        SpoilerLogName: "Water Temple MQ Upper Water Switch Hookshot Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Hookshot Wonderitem",
                         MapInfo: { x: 42, y: 160, floor: "F2" },
@@ -3408,6 +3489,13 @@ let MQDungeons = {
                         LongDescription: "With the water at mid, head to the eastern room on the middle floor. Use your hookshot to navigate to the top of the room. Grab a box and run it all the way back to the central platform. Put it on the blue switch on the other side. Hookshot the symbol on the wall to your left to spawn the wonderitem."
                     },
                     "3 Crates Above Mid West Room": {
+                        SpoilerLogName: [
+                            {
+                                name: "Water Temple MQ Before Upper Water Switch Upper Crate {#}",
+                                count: 2
+                            },
+                            "Water Temple MQ Before Upper Water Switch Upper Small Crate"
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "3 Crates",
@@ -3418,6 +3506,7 @@ let MQDungeons = {
                         Needs: [UpgradedItems.LONGSHOT]
                     },
                     "Skulltula Above Mid West Room": {
+                        SpoilerLogName: "Water Temple MQ GS Before Upper Water Switch",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 160, y: 247, floor: "F3" },
                         Age: Age.ADULT,
@@ -3439,6 +3528,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "3 Wonderitems on Left Waterfall Room Wall": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Hookshot Waterfall Left Hookshot Wonderitem {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "3 Hookshot Wonderitems",
@@ -3448,6 +3541,10 @@ let MQDungeons = {
                         LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot three times to spawn the wonderitems."
                     },
                     "3 Wonderitems on Right Waterfall Room Wall": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Hookshot Waterfall Right Hookshot Wonderitem {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "3 Hookshot Wonderitems",
@@ -3457,6 +3554,10 @@ let MQDungeons = {
                         LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the right wall and shoot it with your hookshot three times to spawn the wonderitems."
                     },
                     "3 Pots in Lower Rising Dragon Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Before Dark Link Lower Pot {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -3466,6 +3567,10 @@ let MQDungeons = {
                         LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door.<br/><br/>Jump down and kill the three stalfos, then use your hookshot to navigate to the pots."
                     },
                     "2 Pots in Upper Dragon Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Before Dark Link Top Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3475,6 +3580,10 @@ let MQDungeons = {
                         LongDescription: "With the water at its highest, navigate to the top floor and open the locked door to the west. Use your hookshot to hit the crystal switch above the opening after you get to the main room. Navigate to the left wall and shoot it with your hookshot to raise the hookshot target. Now, enter the door.<br/><br/>Jump down and kill the three stalfos, then use your hookshot to navigate to the exit door - the pots are on either side of it."
                     },
                     "2 Pots in Room After Dark Link": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Room After Dark Link Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3484,6 +3593,7 @@ let MQDungeons = {
                         LongDescription: "After the Dark Link fight, enter the next room. The pots are in the center."
                     },
                     "Wonderitem After Dark Link": {
+                        SpoilerLogName: "Water Temple MQ After Dark Link Hookshot Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Hookshot Wonderitem",
                         MapInfo: { x: 56, y: 30, floor: "F3" },
@@ -3500,6 +3610,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Skulltula in Whirlpool Room": {
+                        SpoilerLogName: "Water Temple MQ GS River",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 37, y: 146, floor: "F1" },
                         Age: Age.ADULT,
@@ -3508,6 +3619,10 @@ let MQDungeons = {
                         Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
                     },
                     "2 Pots in Whirlpool Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ River Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3531,6 +3646,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "4 Underwater Crates in Dragon Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Dragon Statue Submerged Crate {#}",
+                            count: 4
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "4 Crates",
@@ -3544,6 +3663,10 @@ let MQDungeons = {
                         ]
                     },
                     "2 Crates Behind Dragon Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Dragon Statue By Torches Crate {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -3555,6 +3678,16 @@ let MQDungeons = {
                         NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE]
                     },
                     "5 Crates Behind Dragon Room": {
+                        SpoilerLogName: [
+                            {
+                                name: "Water Temple MQ Dragon Statue By Torches Crate {#}",
+                                count: 2
+                            },
+                            {
+                                name: "Water Temple MQ Dragon Statue By Torches Small Wooden Crate {#}",
+                                count: 3
+                            }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
@@ -3566,6 +3699,7 @@ let MQDungeons = {
                         NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE]
                     },
                     "Wonderitem Behind Dragon Room": {
+                        SpoilerLogName: "Water Temple MQ Dragon Statue Crates Hookshot Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Hookshot Wonderitem",
                         MapInfo: { x: 29, y: 61, floor: "F1" },
@@ -3576,6 +3710,10 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "2 Wonderitems in Dragon's Eyes": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Dragon Statue Eyes Hookshot Wonderitem {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "2 Hookshot Wonderitems",
@@ -3586,6 +3724,10 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT, Equipment.IRON_BOOTS]
                     },
                     "2 Crates by Dragon Room Door": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Dragon Statue Near Door Crate {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -3606,6 +3748,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Pot in Upper Single Water Pillar Room": {
+                        SpoilerLogName: "Water Temple MQ Boss Key Chest Room Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 102, y: 95, floor: "F1" },
                         Age: Age.ADULT,
@@ -3613,6 +3756,7 @@ let MQDungeons = {
                         LongDescription: "Navigate around the whirlpool room. In the room with the dragon, use your iron boots or silver scale to navigate to the back. Light the torches on the walls to unbar the door. The pot is to your left in the next room."
                     },
                     "Crate in Upper Single Water Pillar Room": {
+                        SpoilerLogName: "Water Temple MQ Boss Key Chest Room Upper Crate",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 89, y: 95, floor: "F1" },
                         Age: Age.ADULT,
@@ -3620,6 +3764,10 @@ let MQDungeons = {
                         LongDescription: "Navigate around the whirlpool room. In the room with the dragon, use your iron boots or silver scale to navigate to the back. Light the torches on the walls to unbar the door. The crate is to your right in the next room."
                     },
                     "4 Crates in Lower Single Water Pillar Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Boss Key Chest Room Lower Crate {#}",
+                            count: 4
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "4 Crates",
@@ -3640,6 +3788,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest Behind Single Water Pillar Gate": {
+                        SpoilerLogName: "Water Temple MQ Boss Key Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 95, y: 126, floor: "F1" },
                         Age: Age.ADULT,
@@ -3667,6 +3816,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "6 Underwater Crates in Low South Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Triple Wall Torch Submerged Crate {#}",
+                            count: 6
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "6 Crates",
@@ -3682,6 +3835,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "4 Pots in Low South Room Jail": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Triple Wall Torch Pot {#}",
+                            count: 4
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "4 Pots",
@@ -3691,6 +3848,10 @@ let MQDungeons = {
                         LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom level and use your iron boots to sink down. Use the Scarecrow's Song or hover boots to navigate across the room. Now, turn around and use Fire Arrows to light the three torches to get to the pots."
                     },
                     "3 Crates in Low South Room Jail": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Triple Wall Torch Behind Gate Crate {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "3 Crates",
@@ -3700,6 +3861,7 @@ let MQDungeons = {
                         LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom level and use your iron boots to sink down. Use the Scarecrow's Song or hover boots to navigate across the room. Now, turn around and use Fire Arrows to light the three torches to get to the crates."
                     },
                     "Skulltula in Low South Room Jail": {
+                        SpoilerLogName: "Water Temple MQ GS Triple Wall Torch",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 30, y: 261, floor: "F1" },
                         Age: Age.ADULT,
@@ -3708,13 +3870,14 @@ let MQDungeons = {
                         Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Wonderitem in Low South Room Jail": {
+                        SpoilerLogName: "Water Temple MQ Triple Wall Torch Hookshot/Bow Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
-                        MapImageName: "Hookshot Wonderitem",
+                        MapImageName: "Projectile Wonderitem",
                         MapInfo: { x: 18, y: 261, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 36.1,
-                        LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom level and use your iron boots to sink down. Use the Scarecrow's Song or hover boots to navigate across the room. Now, turn around and use Fire Arrows to light the three torches to open the cell. Hookshot the symbol on the wall to spawn the wonderitem.",
-                        Needs: [Items.HOOKSHOT]
+                        LongDescription: "After hitting the switch after getting the chest in the room with a single water pillar, navigate to the bottom level and use your iron boots to sink down. Use the Scarecrow's Song or hover boots to navigate across the room. Now, turn around and use Fire Arrows to light the three torches to open the cell. Shoot the wall with your hookshot or bow to spawn the wonderitem.",
+                        NeedsAny: [Items.HOOKSHOT, Items.FAIRY_BOW]
                     }
                 }
             },
@@ -3739,6 +3902,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Crates in Low North Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Freestanding Key Area Front Crate {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -3748,6 +3915,10 @@ let MQDungeons = {
                         LongDescription: "The crates are by the entrance to the room."
                     },
                     "6 Underwater Crates in Low North Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Freestanding Key Area Submerged Crate {#}",
+                            count: 6
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "6 Crates",
@@ -3757,6 +3928,10 @@ let MQDungeons = {
                         LongDescription: "The crates are submerged in the water."
                     },
                     "4 Crates Behind Low North Room Gate": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Freestanding Key Area Behind Gate Crate {#}",
+                            count: 4
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "4 Crates",
@@ -3766,6 +3941,7 @@ let MQDungeons = {
                         LongDescription: "Navigate to the farthest box in the back of the room and use your iron boots to sink down onto it. Hookshot the center of the ceiling, around the second brick texture to hookshot an unintended hookshot target to get over the gate where the crates reside.<br/><br/>The intended path involves going around the rooms to your left, through the waterfall entrance. You'd either spawn the scarecrow, or do the glich to get across."
                     },
                     "Skulltula Behind Low North Room Gate": {
+                        SpoilerLogName: "Water Temple MQ GS Freestanding Key Area",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 185, y: 50, floor: "F1" },
                         Age: Age.ADULT,
@@ -3782,6 +3958,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Wonderitems in Triple Water Spout Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ 3 Water Spouts Proximity Wonderitem {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "2 Wonderitems",
@@ -3799,6 +3979,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Low North Dodongo Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Dodongo Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3808,6 +3992,10 @@ let MQDungeons = {
                         LongDescription: "In the dodongo room (room beyond the gate in the low north room), you'll find the pots along the back-right wall."
                     },
                     "3 Crates in Low North Dodongo Room Pit": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Dodongo Room Lower Crate {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "3 Crates",
@@ -3817,6 +4005,7 @@ let MQDungeons = {
                         LongDescription: "In the dodongo room (room beyond the gate in the low north room), you'll find the crates in the pit with the dodongos."
                     },
                     "Crate in Low North Dodongo Room": {
+                        SpoilerLogName: "Water Temple MQ Dodongo Room Upper Crate",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 255, y: 24, floor: "F1" },
                         Age: Age.ADULT,
@@ -3824,6 +4013,7 @@ let MQDungeons = {
                         LongDescription: "In the dodongo room (room beyond the gate in the low north room), you'll find this crate on the left ledge in the corner of the room."
                     },
                     "Crate in Low North Dodongo Room Hallway": {
+                        SpoilerLogName: "Water Temple MQ Dodongo Room Hall Crate",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 301, y: 67, floor: "F1" },
                         Age: Age.ADULT,
@@ -3841,6 +4031,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Room by Low North Waterfall": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Freestanding Key Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -3850,6 +4044,10 @@ let MQDungeons = {
                         LongDescription: "Play the Scarecrow's song and hookshot it to get to the opening by the waterfall to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. The pots are in the back corners of the room.",
                     },
                     "5 Crates in Room by Low North Waterfall": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Freestanding Key Room Crate {#}",
+                            count: 5
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "5 Crates",
@@ -3859,6 +4057,7 @@ let MQDungeons = {
                         LongDescription: "Play the Scarecrow's song and hookshot it to get to the opening by the waterfall to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. The crates are along the walls in the room.",
                     },
                     "Freestanding Item in Room by Low North Waterfall": {
+                        SpoilerLogName: "Water Temple MQ Freestanding Key",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 115, y: 64, floor: "F1" },
                         Age: Age.ADULT,
@@ -3866,6 +4065,7 @@ let MQDungeons = {
                         LongDescription: "Play the Scarecrow's song and hookshot it to get to the opening by the waterfall to the left.<br/><br/>Jump into the water by the waterfall and follow the path around to a door. The item is in the box to your left."
                     },
                     "Wonderitem in Room by Low North Waterfall": {
+                        SpoilerLogName: "Water Temple MQ Freestanding Key Hookshot Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Hookshot Wonderitem",
                         MapInfo: { x: 123, y: 49, floor: "F1" },

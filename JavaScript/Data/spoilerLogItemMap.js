@@ -658,5 +658,26 @@ let SpoilerLogOwEntranceMap = {
 
     "Ganons Castle Lobby|Ganons Castle Grounds": { 
         map: "Ganon's Castle", exit: "Exit" 
-    }
+    },
+
+    // Songs
+    "Sacred Forest Meadow|Minuet of Forest Warp": {
+        map: "Sacred Forest Meadow", exit: "Minuet Teleport Pad"
+    },
+    "DMC Central Local|Bolero of Fire Warp": {
+        map: "Death Mountain Crater", exit: "Bolero Teleport Pad"
+    },
+    "Lake Hylia|Serenade of Water Warp": {
+        map: "Lake Hylia", exit: "Hyrule Field"
+    },
+    "Graveyard Warp Pad Region|Nocturne of Shadow Warp": {
+        map: "Graveyard", exit: "Nocturne Teleport Pad"
+    },
+    "Desert Colossus|Requiem of Spirit Warp": {
+        map: "Desert Colossus", exit: "Haunted Wasteland"
+    },
+    // Hard to know where ToT goes since it's an interior
+    // For now, leaving blank since the typical one-ways can't
+    // ever be mapped to it
+    "Temple of Time|Prelude of Light Warp": {},
 };
