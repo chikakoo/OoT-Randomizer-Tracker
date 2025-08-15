@@ -487,6 +487,7 @@ let SaveAndLoad = {
         SpoilerLogItemMap = {};
         Settings.TrackerSettings.enableLocationNotes = true;
 
+        this._setEntranceShuffleSettings(spoilerLogData);
         this._setDungeonTypes(spoilerLogData);
         this._populateSpoilerLogExitMap();
         this._assignAndPopulateEntrances(spoilerLogData);
@@ -544,6 +545,25 @@ let SaveAndLoad = {
         alert("Spoiler log loaded successfully!");
     },
 
+    /**
+     * Set the randomizer entrance settings equal to the spoiler log's
+     * @param {object} spoilerLogData - The spoiler log data
+     */
+    _setEntranceShuffleSettings: function(spoilerLogData) {
+        Settings.RandomizerSettings.shuffleInteriorEntrances = 
+            spoilerLogData.settings.shuffle_interior_entrances !== "off";
+        Settings.RandomizerSettings.shuffleGrottoEntrances = 
+            spoilerLogData.settings.shuffle_grotto_entrances;
+        Settings.RandomizerSettings.shuffleOverworldEntrances =
+            spoilerLogData.settings.shuffle_overworld_entrances;
+        Settings.RandomizerSettings.shuffleBossEntrances =
+            spoilerLogData.settings.shuffle_bosses !== "off";
+    },
+
+    /**
+     * Sets up standard/mq dungeons in the randomizer equal to the spoiler log's settings
+     * @param {object} spoilerLogData - The spoiler log data
+     */
     _setDungeonTypes: function(spoilerLogData) {
         Object.keys(spoilerLogData.dungeons).forEach(spoilerDungeonName => {
             let dungeonName = SpoilerLogDungeonNameMap[spoilerDungeonName]
@@ -556,6 +576,11 @@ let SaveAndLoad = {
         });
     },
 
+    /**
+     * Set up the exit maps based on the spoiler log data on each exit
+     * Clears out each map initially
+     * Also handles adding to the main map directly (if necessary) if the exit type is not shuffled
+     */
     _populateSpoilerLogExitMap: function() {
         SpoilerLogInteriorMap = {};
         SpoilerLogGrottoMap = {};
@@ -569,19 +594,44 @@ let SaveAndLoad = {
                 switch(exit.ItemGroup) {
                     case ItemGroups.INTERIOR:
                         _this._addToSpoilerLogExitMap(exit, SpoilerLogInteriorMap);
+                         if (!Settings.RandomizerSettings.shuffleInteriorEntrances) {
+                            _this._addItemLocationForNonShuffledEntrance(SpoilerLogInteriorEntranceMap, exit);
+                        }
                         break;
                     case ItemGroups.GROTTO:
                         _this._addToSpoilerLogExitMap(exit, SpoilerLogGrottoMap);
+                        if (!Settings.RandomizerSettings.shuffleGrottoEntrances) {
+                            _this._addItemLocationForNonShuffledEntrance(SpoilerLogGrottoEntranceMap, exit);
+                        }
                         break;
                     case ItemGroups.BOSS_ENTRANCE: 
                         _this._addToSpoilerLogExitMap(exit, SpoilerLogBossMap);
+                        if (!Settings.RandomizerSettings.shuffleBossEntrances) {
+                            _this._addItemLocationForNonShuffledEntrance(SpoilerLogGrottoEntranceMap, exit, true);
+                        }
                         break;
                     case ItemGroups.OW_ENTRANCE:
-                        _this._addToSpoilerLogExitMap(exit, SpoilerLogOwMap);
+                        _this._addToSpoilerLogExitMap(exit, SpoilerLogBossEntranceMap);
                         break;
                 }
             });
 	    });
+    },
+
+    /**
+     * Adds the given exit to the spoiler log item map 
+     * Expected to be called when the exit it unshuffled
+     * @param {object} spoilerLogEntranceMap - The entrance map to use
+     * @param {object} exit - The exit to modify
+     * @param {boolean} entranceMapHasMapAndRegion - Whether the key of the entrance map has the map and the region
+     */
+    _addItemLocationForNonShuffledEntrance(spoilerLogEntranceMap, exit, entranceMapHasMapAndRegion) {
+        let exitNameTokens = exit.SpoilerLogExitName.split(" -> ");
+        let spoilerExitName = entranceMapHasMapAndRegion
+            ? `${exitNameTokens[1]}|${exitNameTokens[0]}`
+            : exitNameTokens[1];
+        let exitLeadsTo = spoilerLogEntranceMap[spoilerExitName]; 
+        this._addItemLocationToSpoilerLogItemMap(exitLeadsTo?.items || [], exit);
     },
 
     /**
@@ -632,6 +682,14 @@ let SaveAndLoad = {
         });
     },
 
+    /**
+     * Adds the spoiler log entrance to th espoiler log item map
+     * Also handles selecting the correct dropdown option and calling the post click
+     * @param {object} spoilerLogData - The spoiler log data
+     * @param {object} entrance - The entrance from the spoiler log (the key)
+     * @param {object} spoilerLogMap - The spoiler log map associated with this entrance type
+     * @param {object} spoilerLogEntranceMap - The spoiler log entrance map ssociated with this entrance type
+     */
     _addSpoilerLogEntrance: function(spoilerLogData, entrance, spoilerLogMap, spoilerLogEntranceMap) {
         let exitToModify = spoilerLogMap[entrance];
         let spoilerExitLeadsTo = spoilerLogData.entrances[entrance];
@@ -661,6 +719,13 @@ let SaveAndLoad = {
         this._addItemLocationToSpoilerLogItemMap(exitLeadsTo.items || [], exitToModify);
     },
 
+    /**
+     * Populates the spoiler log item map, which is used to directly add
+     * the notes to the tracker
+     * 
+     * For item locations in MapLocations, adds each location to the map
+     * For OwExits, goes through each button to add to the map
+     */
     _populateSpoilerLogItemMap: function() {
         let _this = this;
         Object.values(MapLocations).forEach(function(map) {
@@ -797,6 +862,11 @@ let SaveAndLoad = {
         return output;
     },
 
+    /**
+     * Adds the exit to the given spoiler log exit map
+     * @param {object} exit - The exit to fill the map with
+     * @param {object} mapToFill - The map to fill
+     */
     _addToSpoilerLogExitMap: function(exit, mapToFill) {
         if (exit.SpoilerLogExitName) {
             mapToFill[exit.SpoilerLogExitName] = exit;
