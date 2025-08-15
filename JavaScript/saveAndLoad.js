@@ -607,11 +607,11 @@ let SaveAndLoad = {
                     case ItemGroups.BOSS_ENTRANCE: 
                         _this._addToSpoilerLogExitMap(exit, SpoilerLogBossMap);
                         if (!Settings.RandomizerSettings.shuffleBossEntrances) {
-                            _this._addItemLocationForNonShuffledEntrance(SpoilerLogGrottoEntranceMap, exit, true);
+                            _this._addItemLocationForNonShuffledEntrance(SpoilerLogBossEntranceMap, exit, true);
                         }
                         break;
                     case ItemGroups.OW_ENTRANCE:
-                        _this._addToSpoilerLogExitMap(exit, SpoilerLogBossEntranceMap);
+                        _this._addToSpoilerLogExitMap(exit, SpoilerLogOwMap);
                         break;
                 }
             });
