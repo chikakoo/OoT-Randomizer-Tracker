@@ -4196,6 +4196,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "4 Crates by Truth Spinner": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ Truth Spinner Small Wooden Crate {#}",
+                            count: 4
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "4 Crates",
@@ -4215,6 +4219,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Redead Maze Room": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ Compass Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4224,6 +4232,7 @@ let MQDungeons = {
                         LongDescription: "After entering the truth spinner room, navigate to the Eye of Truth symbol on the lower left wall. Bomb it to open up the path. Use a key to enter the maze. Head right through the invisible wall. The chests are in the back right corner of the next room."
                     },
                     "Redead Chest in Maze": {
+                        SpoilerLogName: "Shadow Temple MQ Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 100, y: 107, floor: "F1" },
                         Age: Age.EITHER,
@@ -4231,6 +4240,10 @@ let MQDungeons = {
                         LongDescription: "After entering the truth spinner room, navigate to the Eye of Truth symbol on the lower left wall. Bomb it to open up the path. Use a key to enter the maze. Head right through the invisible wall. Kill the enemies to spawn the chest."
                     },
                     "2 Flying Pots in Front Maze Room": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ Whispering Walls Before Time Block Flying Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4240,6 +4253,10 @@ let MQDungeons = {
                         LongDescription: "In the left (south) part of the first maze loop from the entrance, these two pots will fly at you."
                     },
                     "2 Pots in Front Maze Room": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ Whispering Walls Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4260,6 +4277,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Flying Pots in Back Maze Room": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ Whispering Walls After Time Block Flying Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4269,6 +4290,7 @@ let MQDungeons = {
                         LongDescription: "If adult, play the Song of Time by the wall marked by the two pots to advance to the next maze section. On the left side with the eyes, these pots will fly at you."
                     },
                     "Dead Hand Chest": {
+                        SpoilerLogName: "Shadow Temple MQ Hover Boots Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 15, y: 142, floor: "F1" },
                         Age: Age.EITHER,
@@ -4298,6 +4320,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Scythe Silver Rupee Right of Scythe": {
+                        SpoilerLogName: "Shadow Temple MQ Scythe Shortcut Silver Rupee Center Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 304, y: 113, floor: "F1" },
                         Age: Age.EITHER,
@@ -4305,6 +4328,7 @@ let MQDungeons = {
                         LongDescription: "First, turn the truth spinner in the main room to the correct skull to open the gate. Now, shoot the torches to the left and right of the gate to create a platform. Alternatively, you can megaflip, hover boots, or use longshot (stand in the corner, hookshot the opposite torch, then jumpslash). Take the left door from the beamos.<br/><br/>This rupee is to the right of the spinning scythe."
                     },
                     "Scythe Silver Rupee Left of Scythe": {
+                        SpoilerLogName: "Shadow Temple MQ Scythe Shortcut Silver Rupee Center Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 292, y: 99, floor: "F1" },
                         Age: Age.EITHER,
@@ -4312,6 +4336,7 @@ let MQDungeons = {
                         LongDescription: "This rupee is to the left of the spinning scythe."
                     },
                     "Scythe Silver Rupee in Left Alcove": {
+                        SpoilerLogName: "Shadow Temple MQ Scythe Shortcut Silver Rupee Left Alcove",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 271, y: 113, floor: "F1" },
                         Age: Age.EITHER,
@@ -4319,6 +4344,7 @@ let MQDungeons = {
                         LongDescription: "This rupee is in the alcove on the left, garded by a giant skulltula."
                     },
                     "Scythe Silver Rupee in Midair": {
+                        SpoilerLogName: "Shadow Temple MQ Scythe Shortcut Silver Rupee Ledge",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 273, y: 88, floor: "F1" },
                         Age: Age.ADULT,
@@ -4332,6 +4358,7 @@ let MQDungeons = {
                         ]
                     },
                     "Scythe Silver Rupee in Back Alcove": {
+                        SpoilerLogName: "Shadow Temple MQ Scythe Shortcut Silver Rupee Back Alcove",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 316, y: 78, floor: "F1" },
                         Age: Age.EITHER,
@@ -4339,6 +4366,7 @@ let MQDungeons = {
                         LongDescription: "This rupee is in the alcove in the back part of the room, guarded by a giant skulltula."
                     },
                     "Scythe Room Silver Rupee Chest": {
+                        SpoilerLogName: "Shadow Temple MQ Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 344, y: 121, floor: "F1" },
                         Age: Age.EITHER,
@@ -4348,6 +4376,7 @@ let MQDungeons = {
                         NeedsAny: [SilverRupeeSets.MQ_SHADOW_SILVER_RUPEES_SCYTHE_ROOM, Tricks.weirdShot.canDo]
                     },
                     "Invisible Chest Under Scythe Room": {
+                        SpoilerLogName: "Shadow Temple MQ Near Ship Invisible Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 278, y: 122, floor: "B1" },
                         Age: Age.EITHER,
@@ -4355,6 +4384,7 @@ let MQDungeons = {
                         LongDescription: "Facing away from the door into the scythe room, go to the upper right room and fall down the invisible hole. There is an invisible chest to the right of the climbable wall."
                     },
                     "Chest in Early Gibdos Room": {
+                        SpoilerLogName: "Shadow Temple MQ Early Gibdos Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 300, y: 220, floor: "F1" },
                         Age: Age.EITHER,
@@ -4383,6 +4413,16 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "9 Invisible Scythe Silver Rupees in Center": {
+                        SpoilerLogName: [
+                            {
+                                name: "Shadow Temple MQ Invisible Blades Silver Rupee {#}",
+                                count: 6
+                            },
+                            {
+                                name: "Shadow Temple MQ Invisible Blades Silver Rupee {#}",
+                                tokens: ["Back Right", "Back Left", "Like Like"]
+                            }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SILVER_RUPEE,
                         DefaultEntranceGroupName: "9 Silver Rupees",
@@ -4392,6 +4432,7 @@ let MQDungeons = {
                         LongDescription: "To get to this room, first make it to the platform with the two beamos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to).<br/><br/>The rupees are spread out in the center of the room where the invisible scythe is. One is under the Like Like, so kill it or lure it out to get it."
                     },
                     "Invisible Scythe Silver Rupee in Corner": {
+                        SpoilerLogName: "Shadow Temple MQ Invisible Blades Silver Rupee Song of Time Block",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 331, y: 160, floor: "B2" },
                         Age: Age.ADULT,
@@ -4400,6 +4441,10 @@ let MQDungeons = {
                         Needs: [Songs.SONG_OF_TIME]
                     },
                     "2 Hearts in Invisible Scythe Room": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ Invisible Blades Recovery Heart {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "2 Hearts",
@@ -4418,6 +4463,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Visible Chest in Invisible Scythe Room": {
+                        SpoilerLogName: "Shadow Temple MQ Invisible Blades Visible Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 343, y: 138, floor: "B2" },
                         Age: Age.EITHER,
@@ -4425,6 +4471,7 @@ let MQDungeons = {
                         LongDescription: "Bomb the wall after the beamos and open the locked door. Navigate through the hallways until you get to a dead end. Make a left at the fork and follow the wall, jumping across the invisible platforms. Enter the door.<br/><br/>Gather all the silver rupees - you'll need the Song of Time for one of them. This will open the door to the chest."
                     },
                     "Invisible Chest in Invisible Scythe Room": {
+                        SpoilerLogName: "Shadow Temple MQ Invisible Blades Invisible Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 343, y: 142, floor: "B2" },
                         Age: Age.EITHER,
@@ -4449,6 +4496,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Pit Room Silver Rupee in Front of Beamos": {
+                        SpoilerLogName: "Shadow Temple MQ Huge Pit Silver Rupee Center Front",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 142, y: 215, floor: "B2" },
                         Age: Age.EITHER,
@@ -4456,6 +4504,7 @@ let MQDungeons = {
                         LLongDescription: "In the giant room, use a fire item to hit the frozen eye switch, or jump from the beamos platform to the LEFT part of the jutting out land. This will spawn some platforms in the direction the eye is facing. Use them to get to the right side of the room.<br/><br/>This rupee is in front of the beamos."
                     },
                     "Pit Room Silver Rupee in Behind Beamos": {
+                        SpoilerLogName: "Shadow Temple MQ Huge Pit Silver Rupee Center Back",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 132, y: 215, floor: "B2" },
                         Age: Age.EITHER,
@@ -4463,6 +4512,7 @@ let MQDungeons = {
                         LLongDescription: "This rupee is in behind of the lone pit room beamos."
                     },
                     "Pit Room Silver Rupee by Chasm": {
+                        SpoilerLogName: "Shadow Temple MQ Huge Pit Silver Rupee Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 138, y: 195, floor: "B2" },
                         Age: Age.EITHER,
@@ -4470,6 +4520,10 @@ let MQDungeons = {
                         LLongDescription: "This rupee is by the chasm near the lone pit room beamos."
                     },
                     "2 Pit Room Silver Rupees Above Beamos": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ Huge Pit Silver Rupee Ceiling {#}",
+                            tokens: ["Upper", "Lower"]
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SILVER_RUPEE,
                         DefaultEntranceGroupName: "2 Silver Rupees",
@@ -4480,6 +4534,7 @@ let MQDungeons = {
                         Needs: [UpgradedItems.LONGSHOT]
                     },
                     "Chest in Giant Room": {
+                        SpoilerLogName: "Shadow Temple MQ Beamos Silver Rupees Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 138, y: 241, floor: "B2" },
                         Age: Age.EITHER,
@@ -4500,6 +4555,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Lower Pots in Falling Spikes Room": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ Falling Spikes Lower Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4509,6 +4568,7 @@ let MQDungeons = {
                         LongDescription: "Get to the right side of the giant room. Hit the switch behind the gate to open it to get to the falling spikes room. The pots are in the alcove to the right of the first set of spikes."
                     },
                     "Skulltula in Falling Spikes Room": { 
+                        SpoilerLogName: "Shadow Temple MQ GS Falling Spikes Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 53, y: 237, floor: "B2" },
                         Age: Age.EITHER,
@@ -4517,6 +4577,7 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Tricks.staircaseHover.canDo]
                     },
                     "Bottom Chest in Falling Spikes Room": {
+                        SpoilerLogName: "Shadow Temple MQ Falling Spikes Lower Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 36, y: 213, floor: "B2" },
                         Age: Age.EITHER,
@@ -4531,6 +4592,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Top Switchless Chest in Falling Spikes Room": {
+                        SpoilerLogName: "Shadow Temple MQ Falling Spikes Upper Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 17, y: 239, floor: "B2" },
                         Age: Age.EITHER,
@@ -4538,6 +4600,7 @@ let MQDungeons = {
                         LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. The chest is in the southeast corner."
                     },
                     "Top Switch Chest in Falling Spikes Room": {
+                        SpoilerLogName: "Shadow Temple MQ Falling Spikes Switch Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 76, y: 209, floor: "B2" },
                         Age: Age.EITHER,
@@ -4545,6 +4608,10 @@ let MQDungeons = {
                         LongDescription: "Make your way to the top part of the falling spike room. You may have to use the hidden block in the wall. Press the switch to spawn the chest."
                     },
                     "2 Upper Pots in Falling Spikes Room": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ Falling Spikes Upper Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4574,6 +4641,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Invisible Spike Room": {
+                        SpoilerLogName: "Shadow Temple MQ Invisible Spikes Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 155, y: 63, floor: "B2" },
                         Age: Age.EITHER,
@@ -4581,6 +4649,7 @@ let MQDungeons = {
                         LongDescription: "From the right side of the giant room, make your way across the invisible platforms to the northwest door. If megaflipping, pull out a chu when the platform stops closest to the door. Use a key to open the door.<br/><br/>Kill all the enemies to spawn the chest."
                     },
                     "Invisible Spike Ground Center Silver Rupee": {
+                        SpoilerLogName: "Shadow Temple MQ Invisible Spikes Silver Rupee Center Front",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 156, y: 72, floor: "B2" },
                         Age: Age.EITHER,
@@ -4588,6 +4657,7 @@ let MQDungeons = {
                         LongDescription: "This rupee is in front of you as you enter the room."
                     },
                     "Invisible Spike Right Ground Silver Rupee": {
+                        SpoilerLogName: "Shadow Temple MQ Invisible Spikes Silver Rupee Center Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 173, y: 68, floor: "B2" },
                         Age: Age.EITHER,
@@ -4595,6 +4665,7 @@ let MQDungeons = {
                         LongDescription: "This rupee is in to the right as you enter the room."
                     },
                     "Invisible Spike Silver Rupee on Right Wall": {
+                        SpoilerLogName: "Shadow Temple MQ Invisible Spikes Silver Rupee Right Hookshot Target",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 184, y: 65, floor: "B2" },
                         Age: Age.ADULT,
@@ -4603,6 +4674,7 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Ceiling Silver Rupee by Entrance": {
+                        SpoilerLogName: "Shadow Temple MQ Invisible Spikes Silver Rupee Ceiling Front",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 156, y: 84, floor: "B2" },
                         Age: Age.ADULT,
@@ -4611,6 +4683,7 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Ceiling Silver Rupee in Center": {
+                        SpoilerLogName: "Shadow Temple MQ Invisible Spikes Silver Rupee Ceiling Middle",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 156, y: 70, floor: "B2" },
                         Age: Age.ADULT,
@@ -4619,6 +4692,7 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Ceiling Silver Rupee by Exit": {
+                        SpoilerLogName: "Shadow Temple MQ Invisible Spikes Silver Rupee Ceiling Back",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 156, y: 50, floor: "B2" },
                         Age: Age.ADULT,
@@ -4627,6 +4701,7 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Midair Silver Rupee on Back Right Wall": {
+                        SpoilerLogName: "Shadow Temple MQ Invisible Spikes Silver Rupee Back Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 175, y: 52, floor: "B2" },
                         Age: Age.ADULT,
@@ -4635,6 +4710,7 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Silver Rupee on Left Wall": {
+                        SpoilerLogName: "Shadow Temple MQ Invisible Spikes Silver Rupee Left Hookshot Target",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 136, y: 82, floor: "B2" },
                         Age: Age.ADULT,
@@ -4643,6 +4719,7 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Silver Rupee on Invisible Ledge": {
+                        SpoilerLogName: "Shadow Temple MQ Invisible Spikes Silver Rupee Ledge",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 132, y: 52, floor: "B2" },
                         Age: Age.ADULT,
@@ -4651,6 +4728,7 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "Invisible Spike Midair Silver Rupee by Invisible Ledge": {
+                        SpoilerLogName: "Shadow Temple MQ Invisible Spikes Silver Rupee Near Ledge",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 140, y: 60, floor: "B2" },
                         Age: Age.ADULT,
@@ -4666,6 +4744,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Chest in Stalfos Room": {
+                        SpoilerLogName: "Shadow Temple MQ Stalfos Room Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 68, y: 68, floor: "B2" },
                         Age: Age.EITHER,
@@ -4700,6 +4779,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Skulltula at End of Wind Hallway": {
+                        SpoilerLogName: "Shadow Temple MQ GS Wind Hint Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 350, y: 193, floor: "B1" },
                         Age: Age.ADULT,
@@ -4708,6 +4788,7 @@ let MQDungeons = {
                         LongDescription: "Go through the door at the top of the invisible spike room. You may need hover boots if the clear platforms are there. Navigate through the wind hallway all the way to the door. The skulltula is in plain sight in this room."
                     },
                     "Invisible Chest at End of Wind Hallway": {
+                        SpoilerLogName: "Shadow Temple MQ Wind Hint Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 344, y: 199, floor: "B1" },
                         Age: Age.ADULT,
@@ -4715,6 +4796,10 @@ let MQDungeons = {
                         LongDescription: "In the room at the end of the wind hallway, there's an invisible chest in the upper right corner."
                     },
                     "2 Flying Pots in Gibdo Room by Wind Hallway": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ After Wind Flying Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4725,6 +4810,10 @@ let MQDungeons = {
                         LongDescription: "In the big part of the wind hallway, go through the invisible wall on the left side. You may need to use the wind to your advantage. The pots will fly at you as you approach the back of the room."
                     },
                     "2 Pots in Gibdo Room by Wind Hallway": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ After Wind Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4735,6 +4824,7 @@ let MQDungeons = {
                         LongDescription: "In the big part of the wind hallway, go through the invisible wall on the left side. You may need to use the wind to your advantage. The pots are next to the gibdos."
                     },
                     "Chest in Gibdo Room by Wind Hallway": {
+                        SpoilerLogName: "Shadow Temple MQ After Wind Enemy Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 301, y: 148, floor: "B1" },
                         Age: Age.EITHER,
@@ -4743,6 +4833,7 @@ let MQDungeons = {
                         LongDescription: "In the big part of the wind hallway, go through the invisible wall on the left side. You may need to use the wind to your advantage. Kill the Gibdos to spawn the chest."
                     },
                     "Hidden Chest in Gibdo Room by Wind Hallway": {
+                        SpoilerLogName: "Shadow Temple MQ After Wind Hidden Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 309, y: 158, floor: "B1" },
                         Age: Age.EITHER,
@@ -4752,6 +4843,7 @@ let MQDungeons = {
                         LongDescription: "In the Gibdo room, bomb the rubble to your right to get to this chest."
                     },
                     "Skulltula in Gibdo Room by Wind Hallway": {
+                        SpoilerLogName: "Shadow Temple MQ GS After Wind",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 294, y: 139, floor: "B1" },
                         Age: Age.EITHER,
@@ -4789,6 +4881,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts in Boat Room": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ Before Boat Recovery Heart {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "2 Hearts",
@@ -4814,6 +4910,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots on Boat Side of Chasm": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ After Boat Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4823,6 +4923,7 @@ let MQDungeons = {
                         LongDescription: "Get to the room with the boat. To get up, either hookshot the ladder (be on the opposite side you hook - for example, stand on the left, and hookshot the upper right part of the ladder), or push the block to the hole. Play Zelda's Lullaby on the Triforce picture and ride the boat across.<br/><br/>The pots are near where the statue falls to form the bridge."
                     },
                     "Skulltula in Chasm": {
+                        SpoilerLogName: "Shadow Temple MQ GS After Ship",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 140, y: 104, floor: "B1" },
                         Age: Age.ADULT,
@@ -4863,6 +4964,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots by Boss Antechamber": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ Near Boss Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4872,6 +4977,7 @@ let MQDungeons = {
                         LongDescription: "Navigate across the chasm you arrive at after taking the boat. These pots are by the boss antechamber entrance."
                     },
                     "Heart on Pillar Across Chasm": {
+                        SpoilerLogName: "Shadow Temple MQ After Boat Lower Recovery Heart",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapInfo: { x: 125, y: 124, floor: "B1" },
                         MapImageName: "Recovery Heart",
@@ -4888,6 +4994,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts on Chasm Longshot Platform": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ After Boat Upper Recovery Heart {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "2 Hearts",
@@ -4914,6 +5024,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Wonderitem in Triple Skull Room": {
+                        SpoilerLogName: "Shadow Temple MQ 3 Spinning Pots Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 66, y: 98, floor: "B1" },
@@ -4923,6 +5034,7 @@ let MQDungeons = {
                         Needs: [Items.FAIRY_BOW]
                     },
                     "Freestanding Item in Triple Skull Room": {
+                        SpoilerLogName: "Shadow Temple MQ Freestanding Key",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 31, y: 99, floor: "B1" },
                         Age: Age.ADULT,
@@ -4930,6 +5042,10 @@ let MQDungeons = {
                         LongDescription: "In the invisible maze, navigate to the west room. The item is behind the triple skulls."
                     },
                     "9 Rupees in Triple Skull Room": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ 3 Spinning Pots Rupee {#}",
+                            count: 9
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "9 Skull Rupees",
@@ -4945,6 +5061,7 @@ let MQDungeons = {
                         ]
                     },
                     "Bomb Flower Room Chest": {
+                        SpoilerLogName: "Shadow Temple MQ Bomb Flower Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 89, y: 144, floor: "B1" },
                         Age: Age.ADULT,
@@ -4953,6 +5070,10 @@ let MQDungeons = {
                         Needs: [ItemSets.EXPLOSIVES_OR_STRENGTH]
                     },
                     "2 Pots in Bomb Flower Room": {
+                        SpoilerLogName: [{
+                            name: "Shadow Temple MQ Bomb Flower Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4972,6 +5093,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Pot in Spike Wall Room": {
+                        SpoilerLogName: "Shadow Temple MQ Spike Walls Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 89, y: 51, floor: "B1" },
                         Age: Age.ADULT,
@@ -4985,6 +5107,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Left Chest in Wooden Spike Room": {
+                        SpoilerLogName: "Shadow Temple MQ Spike Walls Left Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 70, y: 52, floor: "B1" },
                         Age: Age.ADULT,
@@ -4992,6 +5115,7 @@ let MQDungeons = {
                         LongDescription: "Ride the boat to the other side. Now, shoot the bomb flowers to create a bridge. Play the Song of Time at the block and shoot the eye switch. Next, play the song again to respawn the block. Now you can shoot the hookshot target on the upper wall and hit the switch to open the door to the invisible maze.<br/><br/>Navigate to the north room and open the locked door. Use Din's Fire to get rid of the spikes. The chest is on the left."
                     },
                     "Right Chest in Wooden Spike Room": {
+                        SpoilerLogName: "Shadow Temple MQ Boss Key Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 108, y: 52, floor: "B1" },
                         Age: Age.ADULT,
@@ -5012,6 +5136,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Skullula Before Boss": {
+                        SpoilerLogName: "Shadow Temple MQ GS Near Boss",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 106, y: 193, floor: "B1" },
                         Age: Age.ADULT,

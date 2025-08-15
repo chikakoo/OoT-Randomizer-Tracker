@@ -851,7 +851,7 @@ let SaveAndLoad = {
                 data.tokens.forEach(token => {
                     let spoilerLogEntry = name.replace("{#}", token);
                     output.push(spoilerLogEntry);
-                })
+                });
 
             // No  or tokens, just push the name
             } else {
