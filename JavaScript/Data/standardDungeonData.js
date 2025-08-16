@@ -5359,6 +5359,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots by Entrance": {
+                        SpoilerLogName: [
+                            { name: "Bottom of the Well Near Entrance Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -5368,6 +5371,7 @@ let StandardDungeons = {
                         LongDescription: "These pots are by the first fake wall of the dungeon."
                     },
                     "Chest in Front Right Wall": {
+                        SpoilerLogName: "Bottom of the Well Right Bottom Fake Wall Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 231, y: 195, floor: "F1" },
                         Age: Age.CHILD,
@@ -5375,6 +5379,7 @@ let StandardDungeons = {
                         LongDescription: "Get to the main room. Follow the wall in front of you around to the right. There's a fake wall to your left when you first turn the left corner.",
                     },
                     "Chest in Front Left Wall": {
+                        SpoilerLogName: "Bottom of the Well Front Left Fake Wall Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 158, y: 194, floor: "F1" },
                         Age: Age.CHILD,
@@ -5382,6 +5387,9 @@ let StandardDungeons = {
                         LongDescription: "This chest is in a fake wall to the left when you first enter the main room."
                     },
                     "3 Pots Left of Entrance": {
+                        SpoilerLogName: [
+                            { name: "Bottom of the Well Left Side Pot {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -5391,6 +5399,7 @@ let StandardDungeons = {
                         LongDescription: "These pots are past an invisible wall in the southwest corner of the main room."
                     },
                     "Northwest Chest Under Rubble": {
+                        SpoilerLogName: "Bottom of the Well Back Left Bombable Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 93, y: 49, floor: "F1" },
                         Age: Age.CHILD,
@@ -5399,6 +5408,7 @@ let StandardDungeons = {
                         Needs: [ItemSets.EXPLOSIVES]
                     },
                     "Underwater Pot by Triforce": {
+                        SpoilerLogName: "Bottom of the Well Underwater Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 195, y: 41, floor: "F1" },
                         Age: Age.CHILD,
@@ -5407,6 +5417,7 @@ let StandardDungeons = {
                         NeedsAny: [Songs.ZELDAS_LULLABY, Items.FAIRY_SLINGSHOT, Items.BOOMERANG, Items.BOMBCHU]
                     },
                     "Underwater Chest by Coffin Room": {
+                        SpoilerLogName: "Bottom of the Well Underwater Left Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 93, y: 137, floor: "F1" },
                         Age: Age.CHILD,
@@ -5415,6 +5426,7 @@ let StandardDungeons = {
                         Needs: [Songs.ZELDAS_LULLABY]
                     },
                     "Underwater Chest in Front": {
+                        SpoilerLogName: "Bottom of the Well Underwater Front Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 185, y: 238, floor: "F1" },
                         Age: Age.CHILD,
@@ -5429,6 +5441,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Chest in Front Bombable Hole": {
+                        SpoilerLogName: "Bottom of the Well Front Center Bombable Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 182, y: 192, floor: "F1" },
                         Age: Age.CHILD,
@@ -5452,6 +5465,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Compass Chest in Center": {
+                        SpoilerLogName: "Bottom of the Well Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 167, y: 172, floor: "F1" },
                         Age: Age.CHILD,
@@ -5459,6 +5473,7 @@ let StandardDungeons = {
                         LongDescription: "From the main room's entrance, follow the path to the left. When you enter the tunnel, hug the right wall until you pass through the fake wall. The chest is in there, but don't go too far in front of it because there's a pit."
                     },
                     "Chest by Giant Skulltula in Center": {
+                        SpoilerLogName: "Bottom of the Well Center Skulltula Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 221, y: 172, floor: "F1" },
                         Age: Age.CHILD,
@@ -5472,6 +5487,9 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "3 Flying Pots in Left Locked Room": {
+                        SpoilerLogName: [
+                            { name: "Bottom of the Well West Inner Room Flying Pot {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -5495,6 +5513,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Right Locked Room": {
+                        SpoilerLogName: "Bottom of the Well GS East Inner Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 213, y: 80, floor: "F1" },
                         Age: Age.CHILD,
@@ -5508,7 +5527,8 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Coffin Room", imageName: "2 Hearts" },
                 Exits: {},
                 ItemLocations: {
-                    "Heart in Open Coffin": {
+                    "Heart in Open Coffin": { // TODO Mapping: Check this and below heart
+                        SpoilerLogName: "Bottom of the Well Coffin Recovery Heart 1",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapInfo: { x: 42, y: 130, floor: "F1" },
                         MapImageName: "Recovery Heart",
@@ -5517,6 +5537,7 @@ let StandardDungeons = {
                         LongDescription: "Head to the room to the left of the main room. The heart is in the open coffin by the gibdo.",
                     },
                     "Heart in Closed Coffin": {
+                        SpoilerLogName: "Bottom of the Well Coffin Recovery Heart 2",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapInfo: { x: 57, y: 144, floor: "F1" },
                         MapImageName: "Recovery Heart",
@@ -5531,6 +5552,7 @@ let StandardDungeons = {
                         ]
                     },
                     "Key in Closed Coffin": {
+                        SpoilerLogName: "Bottom of the Well Freestanding Key",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 29, y: 144, floor: "F1" },
                         Age: Age.CHILD,
@@ -5561,6 +5583,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Pot in Room With Pits": {
+                        SpoilerLogName: "Bottom of the Well Fire Keese Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 284, y: 85, floor: "F1" },
                         Age: Age.CHILD,
@@ -5568,6 +5591,7 @@ let StandardDungeons = {
                         LongDescription: "This is the room after the crawlspace at the upper right part of the main room. Be careful of the invisible pits in this room. To get to this pot safely, hug the right wall from the entrance until you get to it."
                     },
                     "Chest in Room With Pits": {
+                        SpoilerLogName: "Bottom of the Well Fire Keese Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 302, y: 114, floor: "F1" },
                         Age: Age.CHILD,
@@ -5575,6 +5599,7 @@ let StandardDungeons = {
                         LongDescription: "This is the room after the crawlspace at the upper right part of the main room. Be careful of the invisible pits in this room. To get to this chest safely, hug the left wall REALLY close."
                     },
                     "Chest in Like-Like Room": {
+                        SpoilerLogName: "Bottom of the Well Like Like Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 299, y: 137, floor: "F1" },
                         Age: Age.CHILD,
@@ -5582,6 +5607,7 @@ let StandardDungeons = {
                         LongDescription: "This is the room after the crawlspace at the upper right part of the main room. Be careful of the invisible pits in this room. If you don't have the lens - here's one way to get around (it's still difficult). Get to the corner of the room with the chest. Face the left wall (the one the door is NOT on). Do two left sidehops and move a tiny bit more left. Go straight to where the beamos is (or was). Now angle yourself diagonal left toward the door and pray you make it. The chest is guarded by a like-like that you don't have to kill."
                     },
                     "Skulltula in Like-Like Room": {
+                        SpoilerLogName: "Bottom of the Well GS Like Like Cage",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 307, y: 137, floor: "F1" },
                         Age: Age.CHILD,
@@ -5608,6 +5634,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Hidden Chest in Dead Hand Room": {
+                        SpoilerLogName: "Bottom of the Well Invisible Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 332, y: 243, floor: "F1" },
                         Age: Age.CHILD,
@@ -5615,6 +5642,7 @@ let StandardDungeons = {
                         LongDescription: "First, drain the water by playing Zelda's Lullaby on the Triforce picture on the north side of the main room. Go back to the pit by the entrance of the main room. Climb through the crawlspace, then through the door to Dead Hand's room. The hidden chest is straight ahead of you."
                     },
                     "Dead Hand Chest": {
+                        SpoilerLogName: "Bottom of the Well Lens of Truth Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 318, y: 243, floor: "F1" },
                         Age: Age.CHILD,
@@ -5636,6 +5664,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "5 Blue Rupees in Basement Center": {
+                        SpoilerLogName: [
+                            { name: "Bottom of the Well Center Room Pit Fall Blue Rupee {#}", count: 5}
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "5 Blue Rupees",
@@ -5644,7 +5675,10 @@ let StandardDungeons = {
                         Order: 27,
                         LongDescription: "Fall down the central hole (by the wooden X in the center of the dungeon) to get to these rupees."
                     },
-                    "10 Pots in Second North Wing": {
+                    "10 Pots in Second North Wing": { // TODO Mapping: Check these and 2 pots below 
+                        SpoilerLogName: [
+                            { name: "Bottom of the Well Basement Pot {#}", count: 10 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "10 Pots",
@@ -5654,6 +5688,9 @@ let StandardDungeons = {
                         LongDescription: "These pots are down the second wing from the left in the basement."
                     },
                     "2 Pots by Second North Wing": {
+                        SpoilerLogName: [
+                            { name: "Bottom of the Well Basement Pot {#}", count: { min: 11, max: 12 } }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -5662,21 +5699,24 @@ let StandardDungeons = {
                         Order: 29,
                         LongDescription: "These pots are by the entrance to the second wing from the left in the basement."
                     },
-                    "Silver Rupee on South Basement Wood Beam": {
+                    "Silver Rupee on South Basement Wood Beam": { // TODO Mapping: Check this
+                        SpoilerLogName: "Bottom of the Well Basement Silver Rupee Wood Beam Front",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 176, y: 232, floor: "B1" },
                         Age: Age.CHILD,
                         Order: 31,
                         LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee on the wood beam more to the south, in the central area."
                     },
-                    "Silver Rupee on North Basement Wood Beam": {
+                    "Silver Rupee on North Basement Wood Beam": { // TODO Mapping: Check this
+                        SpoilerLogName: "Bottom of the Well Basement Silver Rupee Wood Beam Back",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 150, y: 201, floor: "B1" },
                         Age: Age.CHILD,
                         Order: 32,
                         LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee on the wood beam more to the north, in the central area."
                     },
-                    "Silver Rupee by Baesment Ladder": {
+                    "Silver Rupee by Basement Ladder": {
+                        SpoilerLogName: "Bottom of the Well Basement Silver Rupee Ladders Bottom",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 114, y: 235, floor: "B1" },
                         Age: Age.CHILD,
@@ -5684,6 +5724,7 @@ let StandardDungeons = {
                         LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee by the bottom ladder."
                     },
                     "Silver Rupee up Basement Ladder": {
+                        SpoilerLogName: "Bottom of the Well Basement Silver Rupee Ladders Middle",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 93, y: 235, floor: "B1" },
                         Age: Age.CHILD,
@@ -5691,6 +5732,7 @@ let StandardDungeons = {
                         LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee you get by climbing the bottom ladder."
                     },
                     "Silver Rupee up Both Basement Ladders": {
+                        SpoilerLogName: "Bottom of the Well Basement Silver Rupee Ladders Top",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 55, y: 247, floor: "B1" },
                         Age: Age.CHILD,
@@ -5704,6 +5746,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Map Chest in Basement": {
+                        SpoilerLogName: "Bottom of the Well Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 302, y: 238, floor: "B1" },
                         Age: Age.CHILD,
