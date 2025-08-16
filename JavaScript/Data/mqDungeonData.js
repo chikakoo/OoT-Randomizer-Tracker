@@ -1676,6 +1676,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Main Room": {
+                        SpoilerLogName: "Forest Temple MQ First Room Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 188, y: 251, floor: "F1" },
                         Age: Age.EITHER,
@@ -1684,6 +1685,7 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.DAMAGING_ITEMS, Items.DEKU_NUT]
                     },
                     "Skulltula in First Hallway": {
+                        SpoilerLogName: "Forest Temple MQ GS First Hallway",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 163, y: 193, floor: "F1" },
                         Age: Age.EITHER,
@@ -1791,6 +1793,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "3 Pots Left in Lobby": {
+                        SpoilerLogName: [{
+                            name: "Forest Temple MQ Center Room Left Pot {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -1800,6 +1806,10 @@ let MQDungeons = {
                         LongDescription: "From the start of the temple, go straight through the room with the giant skulltulas. the pots are on the ledge to the left."
                     },
                     "3 Pots Right in Lobby": {
+                        SpoilerLogName: [{
+                            name: "Forest Temple MQ Center Room Right Pot {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -1815,6 +1825,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Chest North of Main Room": {
+                        SpoilerLogName: "Forest Temple MQ Wolfos Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 170, y: 31, floor: "F1" },
                         Age: Age.EITHER,
@@ -1824,6 +1835,10 @@ let MQDungeons = {
                         Needs: [ItemSets.SWORDS]
                     },
                     "2 Pots North of Main Room": {
+                        SpoilerLogName: [{
+                            name: "Forest Temple MQ Wolfos Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -1856,9 +1871,9 @@ let MQDungeons = {
                     },
                     well: {}
                 },
-
                 ItemLocations: {
                     "Skulltula in Outside West Room": {
+                        SpoilerLogName: "Forest Temple MQ GS Level Island Courtyard",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 81, y: 124, floor: "F1" },
                         Age: Age.EITHER,
@@ -1919,6 +1934,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest on Outside East Room Balcony": {
+                        SpoilerLogName: "Forest Temple MQ Raised Island Courtyard Upper Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 224, y: 53, floor: "F1" },
                         Age: Age.ADULT,
@@ -1946,6 +1962,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Skulltula Above Outside East Door": {
+                        SpoilerLogName: "Forest Temple MQ GS Raised Island Courtyard",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 226, y: 98, floor: "F1" },
                         Age: Age.EITHER,
@@ -1960,6 +1977,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Chest in Well": {
+                        SpoilerLogName: "Forest Temple MQ Well Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 242, y: 46, floor: "B1" },
                         Age: Age.EITHER,
@@ -1971,6 +1989,10 @@ let MQDungeons = {
                         ]
                     },
                     "3 Hearts in Well": {
+                        SpoilerLogName: [{
+                            name: "Forest Temple MQ Well Recovery Heart {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "3 Hearts",
@@ -1981,6 +2003,7 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.PROJECTILES, Equipment.IRON_BOOTS]
                     },
                     "Skulltula in Well": {
+                        SpoilerLogName: "Forest Temple MQ GS Well",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 114, y: 34, floor: "B1" },
                         Age: Age.EITHER,
@@ -2014,6 +2037,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Skulltula in Block Room": {
+                        SpoilerLogName: "Forest Temple MQ GS Block Push Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 66, y: 171, floor: "F1" },
                         Age: Age.EITHER,
@@ -2048,6 +2072,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Boss Key": {
+                        SpoilerLogName: "Forest Temple MQ Boss Key Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 66, y: 45, floor: "F2" },
                         Age: Age.ADULT,
@@ -2064,6 +2089,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Redead Room": {
+                        SpoilerLogName: "Forest Temple MQ Redead Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 29, y: 100, floor: "F1" },
                         Age: Age.ADULT,
@@ -2077,6 +2103,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "3 Hearts Above Left Room": {
+                        SpoilerLogName: [{
+                            name: "Forest Temple MQ Courtyard Recovery Heart {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "3 Hearts",
@@ -2103,6 +2133,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Red Poe Chest": {
+                        SpoilerLogName: "Forest Temple MQ Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 151, y: 52, floor: "F2" },
                         Age: Age.ADULT,
@@ -2111,6 +2142,7 @@ let MQDungeons = {
                         LongDescription: "Untwist the cooridor by hitting the switch just outside the door to the right of the redead room. Navigate back up to the twisted cooridor and continue through the door to your right. Shoot the portraits as normal and kill the poe to spawn the chest."
                     },
                     "Chest in Stalfos Room": {
+                        SpoilerLogName: "Forest Temple MQ Bow Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 191, y: 65, floor: "F2" },
                         Age: Age.ADULT,
@@ -2118,6 +2150,10 @@ let MQDungeons = {
                         LongDescription: "Untwist the cooridor by hitting the switch just outside the door to the right of the redead room. Navigate back up to the twisted cooridor and continue through the door to your right. Navigate through the Red Poe room and kill the three Stalfos to spawn the chest.<br/><br/>NOTE: If you can't play the song of time, consider dropping down before killing the first stalfos to get a chest that you'll lock yourself out of."
                     },
                     "4 Pots in Upper Stalfos Room": {
+                        SpoilerLogName: [{
+                            name: "Forest Temple MQ Upper Stalfos Pot {#}",
+                            count: 4
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "4 Pots",
@@ -2127,6 +2163,10 @@ let MQDungeons = {
                         LongDescription: "These pots are against the walls in the room after the red poe room."
                     },
                     "3 Pots in Blue Poe Room": {
+                        SpoilerLogName: [{
+                            name: "Forest Temple MQ Blue Poe Room Pot {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -2136,6 +2176,7 @@ let MQDungeons = {
                         LongDescription: "These pots are in the room after the fairy bow chest, just to your left when you enter."
                     },
                     "Blue Poe Chest": {
+                        SpoilerLogName: "Forest Temple MQ Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 244, y: 52, floor: "F2" },
                         Age: Age.ADULT,
@@ -2163,7 +2204,11 @@ let MQDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "2 Crates on Carousel Room Floor": {
+                    "2 Crates on Carousel Room Floor": { //TODO Mapping: check this and the next
+                        SpoilerLogName: [{
+                            name: "Forest Temple MQ Frozen Eye Switch Room Small Wooden Crate {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -2173,6 +2218,7 @@ let MQDungeons = {
                         LongDescription: "After the blue poe room, go through the door. Now go down the hallway that the ladder leads to and enter the locked room. The crates are the small ones in the back left corner of the room."
                     },
                     "Crate on Carousel Room Platform": {
+                        SpoilerLogName: "Forest Temple MQ Frozen Eye Switch Room Small Wooden Crate 3",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 298, y: 193, floor: "F2" },
                         Age: Age.ADULT,
@@ -2195,11 +2241,12 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest on Outside Platform": {
+                        SpoilerLogName: "Forest Temple MQ Raised Island Courtyard Lower Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 268, y: 73, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 27,
-                        LongDescription: "The quickest way to get here is to longshot the chest from the outside east room. Otherwise...</br><br/>Hit the left switch deep in the checkerbaord room. Now backtrack and take the door to the right of where you entered the room (NOT the locked door). Drop down to get the chest. If you don't have the Song of Time, you'll have to navigate all the way around to get back. Otherwise, play it to make a platform back up.",
+                        LongDescription: "The quickest way to get here is to longshot the chest from the outside east room. Otherwise...<br/><br/>Hit the left switch deep in the checkerbaord room. Now backtrack and take the door to the right of where you entered the room (NOT the locked door). Drop down to get the chest. If you don't have the Song of Time, you'll have to navigate all the way around to get back. Otherwise, play it to make a platform back up.",
                         TricksToShow: [Tricks.forestLedgeWithHoverBoots]
                     }
                 }
@@ -2215,6 +2262,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Checkerboard Room": {
+                        SpoilerLogName: "Forest Temple MQ Falling Ceiling Room Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 323, y: 104, floor: "F1" },
                         Age: Age.ADULT,
@@ -2233,6 +2281,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Green Poe Room": {
+                        SpoilerLogName: [{
+                            name: "Forest Temple MQ Green Poe Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -2252,6 +2304,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "4 Pots in Basement": {
+                        SpoilerLogName: [{
+                            name: "Forest Temple MQ Basement Pot {#}",
+                            count: 4
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "4 Pots",
@@ -2263,6 +2319,7 @@ let MQDungeons = {
                         Needs: [(age) => MapLocations["Forest Temple"]._canAccessAllPoeRooms(age)]
                     },
                     "Chest in Basement": {
+                        SpoilerLogName: "Forest Temple MQ Basement Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 143, y: 156, floor: "B1" },
                         Age: Age.ADULT,
