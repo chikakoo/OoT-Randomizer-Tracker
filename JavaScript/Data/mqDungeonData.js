@@ -2222,6 +2222,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots by Entrance": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ First Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -2231,6 +2235,7 @@ let MQDungeons = {
                         LongDescription: "The pots are to your left and right in the corners as you enter the temple."
                     },
                     "Like-Like Chest By Entrance": {
+                        SpoilerLogName: "Fire Temple MQ Map Room Side Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 61, y: 123, floor: "F1" },
                         Age: Age.EITHER,
@@ -2305,6 +2310,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "8 Pots by Iron Knuckle": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Iron Knuckle Room Pot {#}",
+                            count: 8
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "8 Pots",
@@ -2315,6 +2324,7 @@ let MQDungeons = {
                         Needs: [ItemSets.DAMAGING_ITEMS]
                     },
                     "Chest After First Flare Dancer": {
+                        SpoilerLogName: "Fire Temple MQ Megaton Hammer Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 57, y: 60, floor: "F1" },
                         Age: Age.EITHER,
@@ -2331,6 +2341,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Chest by Goron After Flare Dancer": {
+                        SpoilerLogName: "Fire Temple MQ Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 61, y: 110, floor: "F1" },
                         Age: Age.EITHER,
@@ -2354,6 +2365,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Left Crates in Room Before Boss": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Near Boss Left Crate {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -2363,6 +2378,10 @@ let MQDungeons = {
                         LongDescription: "Use a fire item to light the four torches in the room to unlock the door. In the next room, navigate to the upper left corner to the crates."
                     },
                     "4 Right Crates in Room Before Boss": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Near Boss Right {#}",
+                            tokens: ["Lower Crate 1", "Lower Crate 2", "Mid Crate", "Upper Crate"]
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "4 Crates",
@@ -2374,6 +2393,10 @@ let MQDungeons = {
                         NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
                     "2 Pots in Room Before Boss": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Near Boss Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -2385,6 +2408,7 @@ let MQDungeons = {
                         NeedsAny: [Items.HOOKSHOT, Equipment.HOVER_BOOTS, Tricks.megaFlip.canDo]
                     },
                     "Chest in Room Before Boss": {
+                        SpoilerLogName: "Fire Temple MQ Near Boss Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 36, y: 263, floor: "F1" },
                         Region: "roomBeforeBoss",
@@ -2445,6 +2469,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Left Pot in Big Lava Room": {
+                        SpoilerLogName: "Fire Temple MQ Big Lava Room Left Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 204, y: 150, floor: "F1" },
                         Age: Age.EITHER,
@@ -2452,6 +2477,7 @@ let MQDungeons = {
                         LongDescription: "The pot is near the door on the left side of the big lava room."
                     },
                     "Skulltula by Left Goron in Lava Room": {
+                        SpoilerLogName: "Fire Temple MQ GS Big Lava Room Open Door",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 280, y: 139, floor: "F1" },
                         Age: Age.EITHER,
@@ -2459,6 +2485,7 @@ let MQDungeons = {
                         LongDescription: "Go to the left side of the big lava room. Hammer the switch to gain access to the skulltula."
                     },
                     "Pot on Big Lava Room Ledge": {
+                        SpoilerLogName: "Fire Temple MQ Big Lava Room Alcove Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 227, y: 162, floor: "F1" },
                         Age: Age.EITHER,
@@ -2472,6 +2499,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Boss Key Chest": {
+                        SpoilerLogName: "Fire Temple MQ Boss Key Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 174, y: 85, floor: "F1" },
                         Age: Age.ADULT,
@@ -2479,6 +2507,10 @@ let MQDungeons = {
                         LongDescription: "The chest is beyond the wall of fire in the back of the room. Hookshot the torch or chest to get to it, or hold forward to jump up slightly and then jumpslash over the fire (easiest on the rightmost side)."
                     },
                     "2 Pots in Boss Key Room": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Boss Key Chest Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -2488,6 +2520,10 @@ let MQDungeons = {
                         LongDescription: "In the boss key room, hookshot the torch or chest to get to the pot, or hold forward to jump up slightly, THEN HOLD BACK and jumpslash over the fire (easiest on the rightmost side)."
                     },
                     "2 Wonderitems in Boss Key Room": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Boss Key {#} Wonderitem",
+                            tokens: ["Hookshot", "Arrow"]
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "Hookshot and Bow Wonderitems",
@@ -2503,6 +2539,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Right Pot in Big Lava Room": {
+                        SpoilerLogName: "Fire Temple MQ Big Lava Room Right Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 190, y: 263, floor: "F1" },
                         Age: Age.EITHER,
@@ -2519,6 +2556,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest by Right Goron in Lava Room": {
+                        SpoilerLogName: "Fire Temple MQ Big Lava Room Blocked Door Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 202, y: 287, floor: "F1" },
                         Age: Age.EITHER,
@@ -2560,6 +2598,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "3 Hearts in Rising Block Room": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Elevator Room Recovery Heart {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "3 Hearts",
@@ -2569,6 +2611,10 @@ let MQDungeons = {
                         LongDescription: "Open the locked door on the other side of the big lava room. The hearts are on either side at the very top and in the middle of the room where you jump to the block."
                     },
                     "3 Wonderitems After Rising Block Room": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Shortcut Room Hammer Wonderitem {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "3 Hammer Wonderitems",
@@ -2590,6 +2636,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Wonderitem in Bottom Maze": {
+                        SpoilerLogName: "Fire Temple MQ Maze Face On Wall Hookshot Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Hookshot Wonderitem",
                         MapInfo: { x: 340, y: 150, floor: "F3" },
@@ -2599,6 +2646,10 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "3 Crates Behind Bars in Bottom Maze": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Lower Lizalfos Maze Crate {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "3 Crates",
@@ -2608,6 +2659,7 @@ let MQDungeons = {
                         LongDescription: "In the maze, there's a switch behind some metal bars. Use a jumpslash to hit it to open the cell to access the crates."
                     },
                     "Chest Behind Bars in Bottom Maze": {
+                        SpoilerLogName: "Fire Temple MQ Lizalfos Maze Lower Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 321, y: 212, floor: "F3" },
                         Age: Age.ADULT,
@@ -2615,6 +2667,7 @@ let MQDungeons = {
                         LongDescription: "In the maze, there's a switch behind some metal bars. Use a jumpslash to hit it. The chest is in one of the crates."
                     },
                     "Goron by Maze": {
+                        SpoilerLogName: "Fire Temple MQ Lizalfos Maze Side Room Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 283, y: 52, floor: "F3" },
                         Age: Age.ADULT,
@@ -2642,6 +2695,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest on Maze Top": {
+                        SpoilerLogName: "Fire Temple MQ Lizalfos Maze Upper Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 300, y: 221, floor: "F3" },
                         Age: Age.ADULT,
@@ -2649,6 +2703,10 @@ let MQDungeons = {
                         LongDescription: "In the northeast area of the maze, find the fake wall and bomb it. Hammer the switch inside. Hookshot up one of the targets that appear and make your way toward the crystal switch. Trigger it (jumpslash, spin attack, Din's, explosive, etc.). The chest is hidden in one of the crates."
                     },
                     "3 Crates on Maze Top": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Upper Lizalfos Maze Crate {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "3 Crates",
@@ -2659,6 +2717,16 @@ let MQDungeons = {
                         LongDescription: "Navigate to the cell on the top of the maze. Bomb or jumpslash the switch (then come back up) to open it. The crates are inside. Don't break the small crates if you wish to use them (they have no items)!"
                     },
                     "5 Crates on Maze Top": {
+                        SpoilerLogName: [
+                            {
+                                name: "Fire Temple MQ Upper Lizalfos Maze Crate {#}",
+                                count: 3
+                            },
+                            {
+                                name: "Fire Temple MQ Upper Lizalfos Maze Small Wooden Crate {#}",
+                                count: 2
+                            }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "5 Crates",
@@ -2677,6 +2745,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "6 Crates in Hole Under Maze": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Shortcut Crate {#}",
+                            count: 6,
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "6 Crates",
@@ -2686,6 +2758,7 @@ let MQDungeons = {
                         LongDescription: "Bomb the crack in the floor on top of the maze. The crates are down the hole."
                     },
                     "Chest in Hole Under Maze": {
+                        SpoilerLogName: "Fire Temple MQ Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 164, y: 97, floor: "F2" },
                         Age: Age.ADULT,
@@ -2706,6 +2779,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Wonderitems on Wall Near Very Top": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Elevator Above Maze Hookshot Wonderitem {#}",
+                            count: { min: 3, max: 4 }
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "2 Hookshot Wonderitems",
@@ -2715,6 +2792,10 @@ let MQDungeons = {
                         LongDescription: "In the green room, hookshot the giant face on the wall twice to recieve two wonderitems."
                     },
                     "2 Wonderitems on Grate Near Very Top": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Elevator Above Maze Hookshot Wonderitem {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "2 Hookshot Wonderitems",
@@ -2724,6 +2805,7 @@ let MQDungeons = {
                         LongDescription: "In the green room, hookshot the face on the first wall you can climb up twice to recieve two wonderitems."
                     },
                     "Skulltula on Very Top": {
+                        SpoilerLogName: "Fire Temple MQ GS Skull On Fire",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 219, y: 147, floor: "F5" },
                         Age: Age.ADULT,
@@ -2737,6 +2819,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "3 Pots in Narrow Bridge Room": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Narrow Path Room Pot {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -2757,6 +2843,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Crates in Right Lava Grate Room": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Shoot Torch On Wall Room Right Crate {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -2767,6 +2857,13 @@ let MQDungeons = {
                         LongDescription: "These crates are on the right side of the room with lava and grates."
                     },
                     "3 Crates in Right Lava Grate Room": {
+                        SpoilerLogName: [
+                            {
+                                name: "Fire Temple MQ Shoot Torch On Wall Room Right Crate {#}",
+                                count: 2
+                            },
+                            "Fire Temple MQ Shoot Torch On Wall Room Small Wooden Crate 4"
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "3 Crates",
@@ -2777,6 +2874,7 @@ let MQDungeons = {
                         LongDescription: "These crates are on the right side of the room with lava and grates."
                     },
                     "Crate in Central Lava Grate Room": {
+                        SpoilerLogName: "Fire Temple MQ Shoot Torch On Wall Room Center Crate",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 248, y: 133, floor: "F3" },
                         Age: Age.ADULT,
@@ -2784,6 +2882,7 @@ let MQDungeons = {
                         LongDescription: "This crate is the big one on the little island in the center of the room with lava and grates."
                     },
                     "Small Crate in Central Lava Grate Room": {
+                        SpoilerLogName: "Fire Temple MQ Shoot Torch On Wall Room Small Wooden Crate 3",
                         ItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
                         MapInfo: { x: 225, y: 168, floor: "F3" },
@@ -2792,6 +2891,10 @@ let MQDungeons = {
                         LongDescription: "This crate is on the little one on the little island in the center of the room with lava and grates."
                     },
                     "2 Pots in Left Lava Grate Room": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Shoot Torch On Wall Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -2801,6 +2904,7 @@ let MQDungeons = {
                         LongDescription: "These pots are on the left side of the room with lava and grates, by the door to the narrow bridge room."
                     },
                     "Crate in Left Lava Grate Room": {
+                        SpoilerLogName: "Fire Temple MQ Shoot Torch On Wall Room Left Crate 2",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 265, y: 176, floor: "F3" },
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
@@ -2809,6 +2913,14 @@ let MQDungeons = {
                         LongDescription: "This crate is on the left side of the room with lava and grates. Go to the door to the narrow bridge room and climb up the small ledge to get access to the crate."
                     },
                     "3 Crates in Left Lava Grate Room": {
+                        SpoilerLogName: [
+                            "Fire Temple MQ Shoot Torch On Wall Room Left Crate 2",
+                            "Fire Temple MQ Shoot Torch On Wall Room Small Wooden Crate 3",
+                            {
+                                name: "Fire Temple MQ Shoot Torch On Wall Room Small Wooden Crate {#}",
+                                count: 2
+                            }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "3 Crates",
@@ -2819,6 +2931,7 @@ let MQDungeons = {
                         LongDescription: "These crates are on the left side of the room with lava and grates. Go to the door to the narrow bridge room and climb up the small ledge to get access to the crates."
                     },
                     "Wonderitem in Lava Grate Room": {
+                        SpoilerLogName: "Fire Temple MQ Shoot Torch on Wall Room Hookshot Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Hookshot Wonderitem",
                         MapInfo: { x: 216, y: 172, floor: "F3" },
@@ -2828,6 +2941,7 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "Crate by Lava Grate Room Exit": {
+                        SpoilerLogName: "Fire Temple MQ Shoot Torch On Wall Room Left Crate 1",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 212, y: 176, floor: "F3" },
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
@@ -2836,6 +2950,10 @@ let MQDungeons = {
                         LongDescription: "This crate is near the exit of the lava grate room (the one leading to the fire wall maze)."
                     },
                     "2 Crates by Lava Grate Room Exit": {
+                        SpoilerLogName: [
+                            "Fire Temple MQ Shoot Torch On Wall Room Left Crate 1",
+                            "Fire Temple MQ Shoot Torch On Wall Room Small Wooden Crate 5"
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -2863,6 +2981,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Left Fire Wall Maze": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Flame Maze Left Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -2872,6 +2994,7 @@ let MQDungeons = {
                         LongDescription: "Navigate around the lava room and grab a small box. Enter the encaged area and place the box on the blue switch to light some torches. Hookshot the box to get back up. Use your bow to shoot though one of the torches to light a high up torch on the wall. Go through the door to continue.<br/><br/>Navigate around the fire wall maze to the left until you find the pots."
                     },
                     "Skulltula in Center of Maze": {
+                        SpoilerLogName: "Fire Temple MQ GS Flame Maze Center",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 124, y: 162, floor: "F3" },
                         Age: Age.ADULT,
@@ -2889,6 +3012,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Fire Wall Maze Right": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Flame Maze Right Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -2898,6 +3025,7 @@ let MQDungeons = {
                         LongDescription: "From the start of the fire wall maze, climb up to the door in front of you. Look to the right - either play Song of Time, or use hover boots to cross the fire wall. The pots are in this maze. You can use the Song of Time block by the door on the wall to get out of this section."
                     },
                     "Skulltula in Fire Wall Maze": {
+                        SpoilerLogName: "Fire Temple MQ GS Flame Maze Side Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 194, y: 79, floor: "F3" },
                         Age: Age.ADULT,
@@ -2913,6 +3041,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots by Fire Maze Exit": {
+                        SpoilerLogName: [{
+                            name: "Fire Temple MQ Flame Maze Right Upper Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -2922,6 +3054,7 @@ let MQDungeons = {
                         LongDescription: "From the start of the maze, navigate to the door ahead by jumping on the SoT block. Enter and hookshot across the room. Hammer the switch to unbar the door. Now, navigate around the maze clockwise to get to the door.<br/><br/>By the exit to the fire maze (after you hit the switch to pass the giant fire wall), there are 2 pots to either side of the door."
                     },
                     "Wonderitem by Flare Dancer Room": {
+                        SpoilerLogName: "Fire Temple MQ Flame Maze Hookshot Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Hookshot Wonderitem",
                         MapInfo: { x: 73, y: 142, floor: "F3" },
@@ -2942,6 +3075,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Freestanding Key in Flare Dancer Room": {
+                        SpoilerLogName: "Fire Temple MQ Freestanding Key",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 37, y: 178, floor: "F3" },
                         Age: Age.ADULT,
@@ -2949,6 +3083,7 @@ let MQDungeons = {
                         LongDescription: "Proceed from the center of the maze. Hit the switch to lower the fire wall. Enter the next room and kill the Flare Dancer. Jump on the center platform to make it rise, but immediately get off. The item should be where the platform used to be."
                     },
                     "Wonderitem After Flare Dancer Room": {
+                        SpoilerLogName: "Fire Temple MQ After Upper Flare Dancer Hookshot Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Hookshot Wonderitem",
                         MapInfo: { x: 337, y: 173, floor: "F4" },
@@ -2969,6 +3104,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest at Top of Temple": {
+                        SpoilerLogName: "Fire Temple MQ Chest On Fire",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 43, y: 157, floor: "F5" },
                         Age: Age.ADULT,
@@ -2982,6 +3118,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Wonderitem After Top of Temple": {
+                        SpoilerLogName: "Fire Temple MQ Hammer Steps Hookshot Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Hookshot Wonderitem",
                         MapInfo: { x: 190, y: 136, floor: "F4" },
@@ -2991,6 +3128,7 @@ let MQDungeons = {
                         Needs: [Items.HOOKSHOT]
                     },
                     "Skulltula After Top of Temple": {
+                        SpoilerLogName: "Fire Temple MQ GS Above Flame Maze",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 208, y: 227, floor: "F4" },
                         Age: Age.ADULT,

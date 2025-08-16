@@ -4954,10 +4954,11 @@ let StandardDungeons = {
                         LongDescription: "In the room with the spinning scythe, this rupee is behind the icicles on the wall with the skulltula.",
                         NeedsAny: [ItemSets.SWORDS, ItemSets.EXPLOSIVES]
                     },
-                    "2 Pots in East Scythe Room": { // TODO Mapping: Check this
-                        SpoilerLogName: [
-                            { name: "Ice Cavern Spinning Scythe Pot {#}", count: 2}
-                        ],
+                    "2 Pots in East Scythe Room": {
+                        SpoilerLogName: [{ 
+                            name: "Ice Cavern Spinning Scythe Pot {#}", 
+                            count: { min: 2, max: 3 }
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4982,8 +4983,8 @@ let StandardDungeons = {
                         Order: 4.2,
                         LongDescription: "This rupee is in the middle of the room, to the left of the center scythe."
                     },
-                    "Pot in North Scythe Room": { // TODO Mapping: Check this
-                        SpoilerLogName: "Ice Cavern Spinning Scythe Pot 3",
+                    "Pot in North Scythe Room": {
+                        SpoilerLogName: "Ice Cavern Spinning Scythe Pot 1",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 194, y: 96 },
                         Age: Age.EITHER,
