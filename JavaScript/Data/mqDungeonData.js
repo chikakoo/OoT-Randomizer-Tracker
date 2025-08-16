@@ -6675,6 +6675,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts in Front Bombable Hole": {
+                        SpoilerLogName: [{
+                            name: "Bottom of the Well MQ Bombable Recovery Heart {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "2 Hearts",
@@ -6685,6 +6689,7 @@ let MQDungeons = {
                         Needs: [ItemSets.EXPLOSIVES]
                     },
                     "Pot Behind Gate": {
+                        SpoilerLogName: "Bottom of the Well MQ Perimeter Behind Gate Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 231, y: 195, floor: "F1" },
                         Age: Age.EITHER,
@@ -6696,6 +6701,10 @@ let MQDungeons = {
                         ]
                     },
                     "4 Wonderitems in Northwest Picture": {
+                        SpoilerLogName: [{
+                            name: "Bottom of the Well MQ Main Area Left Slingshot Wonderitem {#}",
+                            count: 4
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "4 High QPAable Slingshot Wonderitems",
@@ -6706,6 +6715,10 @@ let MQDungeons = {
                         LongDescription: "Shoot the lens of truth picture in the northwest corner of the main room to spawn wonderitems (do it 4 times to get all 4)."
                     },
                     "4 Wonderitems in Northeast Picture": {
+                        SpoilerLogName: [{
+                            name: "Bottom of the Well MQ Main Area Right Slingshot Wonderitem {#}",
+                            count: 4
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "4 Slingshot Wonderitems",
@@ -6722,13 +6735,15 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Coffin Room": {
+                        SpoilerLogName: "Bottom of the Well MQ GS Coffin Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 18, y: 128, floor: "F1" },
                         Age: Age.EITHER,
                         Order: 3,
                         LongDescription: "Navigate to the left room in the main area. Unlock the door, then navigate to the back right section of the room. The skulltula is hiding in the corner behind a pillar."
                     },
-                    "Heart in Front Right Coffin": {
+                    "Heart in Front Right Coffin": { // TODO Mapping: check both hearts here
+                        SpoilerLogName: "Bottom of the Well MQ Coffin Recovery Heart 1",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapInfo: { x: 56, y: 131, floor: "F1" },
                         MapImageName: "Recovery Heart",
@@ -6743,6 +6758,7 @@ let MQDungeons = {
                         ]
                     },
                     "Heart in Middle Left Coffin": {
+                        SpoilerLogName: "Bottom of the Well MQ Coffin Recovery Heart 2",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapInfo: { x: 43, y: 142, floor: "F1" },
                         MapImageName: "Recovery Heart",
@@ -6773,6 +6789,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Center Chest": {
+                        SpoilerLogName: "Bottom of the Well MQ Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 194, y: 127, floor: "F1" },
                         Age: Age.EITHER,
@@ -6780,6 +6797,10 @@ let MQDungeons = {
                         LongDescription: "WALL MASTER WARNING:<br/>Navigate to the back of the main room and play Zelda's Lullaby at the triforce. This will open a bunch of gates. Proceed behind you to the center room with the chest.<br/><br/>Alternatively, you can bomb the rocks near the middle-west of the main room. Sidehop then jumpslash over the hole in the ground to get to the center area."
                     },
                     "3 Pots in Center Room Cell": {
+                        SpoilerLogName: [{
+                            name: "Bottom of the Well MQ Center Room Right Pot {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -6795,6 +6816,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "3 Pots in East Center Room": {
+                        SpoilerLogName: [{
+                            name: "Bottom of the Well MQ East Inner Room Pot {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Pots",
@@ -6804,6 +6829,7 @@ let MQDungeons = {
                         LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door (use a pot if needed). Enter it - the pots are marking the invisible path around the room."
                     },
                     "Freestanding Item in East Center Room": {
+                        SpoilerLogName: "Bottom of the Well MQ East Inner Room Freestanding Key",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 216, y: 80, floor: "F1" },
                         Age: Age.EITHER,
@@ -6811,6 +6837,10 @@ let MQDungeons = {
                         LongDescription: "WALL MASTER WARNING:<br/>From the center room, activate the switch in the southeast section to unbar a door (use a pot if needed). Enter it, and navigate counter-clockwise around the room to get to the item."
                     },
                     "4 Wonderitems in East Center Room": {
+                        SpoilerLogName: [{
+                            name: "Bottom of the Well MQ East Inner Room Slingshot Wonderitem {#}",
+                            count: 4
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "4 Child Cutscene QPAable Slingshot Wonderitems",
@@ -6827,6 +6857,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in West Center Room": {
+                        SpoilerLogName: "Bottom of the Well MQ GS West Inner Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 159, y: 99, floor: "F1" },
                         Age: Age.EITHER,
@@ -6840,6 +6871,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Dead Hand Chest": {
+                        SpoilerLogName: "Bottom of the Well MQ Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 317, y: 238, floor: "F1" },
                         Age: Age.EITHER,
@@ -6848,6 +6880,7 @@ let MQDungeons = {
                         Needs: [ItemSets.SWORDS]
                     },
                     "Freestanding Item in Dead Hand Room": {
+                        SpoilerLogName: "Bottom of the Well MQ Dead Hand Freestanding Key",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 333, y: 229, floor: "F1" },
                         Age: Age.EITHER,
@@ -6862,6 +6895,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "3 Hearts in Basement": {
+                        SpoilerLogName: [{
+                            name: "Bottom of the Well MQ Basement Recovery Heart {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "3 Hearts",
@@ -6871,6 +6908,7 @@ let MQDungeons = {
                         LongDescription: "WALL MASTER WARNING:<br/>To get to the basement, you can fall down a hole in the center room (not the very center). Navigate to the northeastern path (the second from the right) to get to the hearts."
                     },
                     "Skulltula in Basement": {
+                        SpoilerLogName: "Bottom of the Well MQ GS Basement",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 51, y: 43, floor: "B1" },
                         Age: Age.EITHER,
@@ -6884,6 +6922,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Chest in Basement": {
+                        SpoilerLogName: "Bottom of the Well MQ Lens of Truth Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 295, y: 235, floor: "B1" },
                         Age: Age.CHILD,
