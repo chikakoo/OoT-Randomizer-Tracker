@@ -25,6 +25,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Heart in Lower Lobby": {
+                        SpoilerLogName: "Deku Tree MQ Lower Lobby Recovery Heart",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 245, y: 28, floor: "F2" },
@@ -33,6 +34,7 @@ let MQDungeons = {
                         LongDescription: "Climb up the vines on the first floor. Jump to the small platform to your left. The item is on the end of that platform; you have to jump off for it.",
                     },
                     "Map Chest": {
+                        SpoilerLogName: "Deku Tree MQ Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 282, y: 82, floor: "F2" },
                         Age: Age.EITHER,
@@ -40,6 +42,7 @@ let MQDungeons = {
                         LongDescription: "Climb to the second floor of the dungeon. The chest is by the vines leading to the third floor."
                     },
                     "Crate by Map Chest": {
+                        SpoilerLogName: "Deku Tree MQ Lobby Crate",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 277, y: 87, floor: "F2" },
                         Age: Age.EITHER,
@@ -47,6 +50,7 @@ let MQDungeons = {
                         LongDescription: "This crate is next to the map chest on the second floor.",
                     },
                     "Skulltula by Map Chest": {
+                        SpoilerLogName: "Deku Tree MQ GS Lobby",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 277, y: 87, floor: "F2" },
                         Age: Age.EITHER,
@@ -60,6 +64,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Crates on Third Floor": {
+                        SpoilerLogName: [{
+                            name: "Deku Tree MQ Slingshot Room Crate {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -69,6 +77,7 @@ let MQDungeons = {
                         LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>The crates are in the lower area right in front of you."
                     },
                     "Slingshot Chest on Third Floor": {
+                        SpoilerLogName: "Deku Tree MQ Slingshot Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 115, y: 199, floor: "F3" },
                         Age: Age.EITHER,
@@ -77,6 +86,7 @@ let MQDungeons = {
                         NeedsDamagingWeapon: true
                     },
                     "Recovery Heart on Third Floor": {
+                        SpoilerLogName: "Deku Tree MQ Slingshot Room Recovery Heart",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 107, y: 200, floor: "F3" },
@@ -85,6 +95,7 @@ let MQDungeons = {
                         LongDescription: "Head to the third floor. Hit the switch to gain access to the side room.<br/><br/>Press the switch inside to gain access to the item.",
                     },
                     "Small Chest on Third Floor": {
+                        SpoilerLogName: "Deku Tree MQ Slingshot Room Back Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 16, y: 147, floor: "F3" },
                         Age: Age.EITHER,
@@ -104,6 +115,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Heart in Giant Baba Room": {
+                        SpoilerLogName: "Deku Tree MQ Near Compass Room Recovery Heart",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 191, y: 151, floor: "F2" },
@@ -132,6 +144,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Compass Chest in Old Slingshot Room": {
+                        SpoilerLogName: "Deku Tree MQ Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 111, y: 246, floor: "F2" },
                         Age: Age.EITHER,
@@ -147,6 +160,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Heart in Old Slingshot Room": {
+                        SpoilerLogName: "Deku Tree MQ Compass Room Recovery Heart",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 157, y: 273, floor: "F2" },
@@ -162,6 +176,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Old Slingshot Room": {
+                        SpoilerLogName: "Deku Tree MQ GS Compass Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 161, y: 277, floor: "F2" },
                         Age: Age.EITHER,
@@ -187,6 +202,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Basement Web Switch Chest": {
+                        SpoilerLogName: "Deku Tree MQ Basement Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 344, y: 81, floor: "B1" },
                         Age: Age.EITHER,
@@ -203,6 +219,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest by Water Room Door": {
+                        SpoilerLogName: "Deku Tree MQ Before Spinning Log Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 266, y: 225, floor: "B1" },
                         Age: Age.EITHER,
@@ -210,6 +227,7 @@ let MQDungeons = {
                         LongDescription: "From the basement, head to the door to the right of the vines. You'll need to either use Din's Fire or run a lit Deku Stick into this room. Light the torches by the other door to gain access to the water room. The chest will be to your left."
                     },
                     "Chest in Song of Time Block": {
+                        SpoilerLogName: "Deku Tree MQ After Spinning Log Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 181, y: 225, floor: "B1" },
                         Age: Age.EITHER,
@@ -226,7 +244,8 @@ let MQDungeons = {
                     upperBasement: {}
                 },
                 ItemLocations: {
-                    "Wonderitem on West Wall Left Grave": {
+                    "Wonderitem on West Wall Left Grave": { // TODO Mapping: check these wonderitems
+                        SpoilerLogName: "Deku Tree MQ Basement Graves Wonderitem 1",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 70, y: 140, floor: "B1" },
                         MapImageName: "Sword Wonderitem",
@@ -236,6 +255,7 @@ let MQDungeons = {
                         NeedsAny: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
                     },
                     "Wonderitem on East Grave Near Torches": {
+                        SpoilerLogName: "Deku Tree MQ Basement Graves Wonderitem 2",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 113, y: 132, floor: "B1" },
                         MapImageName: "Sword Wonderitem",
@@ -245,6 +265,7 @@ let MQDungeons = {
                         NeedsAny: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
                     },
                     "Wonderitem on Grave Near Side Room": {
+                        SpoilerLogName: "Deku Tree MQ Basement Graves Wonderitem 3",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 67, y: 98, floor: "B1" },
                         MapImageName: "Sword Wonderitem",
@@ -254,6 +275,7 @@ let MQDungeons = {
                         NeedsAny: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
                     },
                     "Wonderitem on Grave Left of Exit": {
+                        SpoilerLogName: "Deku Tree MQ Basement Graves Wonderitem 4",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 117, y: 98, floor: "B1" },
                         MapImageName: "Sword Wonderitem",
@@ -263,6 +285,7 @@ let MQDungeons = {
                         NeedsAny: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
                     },
                     "Skulltula in Grave Room": {
+                        SpoilerLogName: "Deku Tree MQ GS Basement Graves Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 93, y: 113, floor: "B1" },
                         Age: Age.EITHER,
@@ -274,6 +297,7 @@ let MQDungeons = {
                         ]
                     },
                     "Skulltula by Grave Room": {
+                        SpoilerLogName: "Deku Tree MQ GS Basement Back Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 17, y: 48, floor: "B1" },
                         Age: Age.EITHER,
@@ -308,6 +332,7 @@ let MQDungeons = {
 
                 ItemLocations: {
                     "Scrub in Basement": {
+                        SpoilerLogName: "Deku Tree MQ Deku Scrub",
                         ItemGroup: ItemGroups.SCRUB,
                         MapInfo: { x: 274, y: 143, floor: "B1" },
                         Age: Age.EITHER,
@@ -339,6 +364,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "3 Hearts in Lower Basement": {
+                        SpoilerLogName: [{
+                            name: "Deku Tree MQ Basement Recovery Heart {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "3 Hearts",
