@@ -244,7 +244,7 @@ let MQDungeons = {
                     upperBasement: {}
                 },
                 ItemLocations: {
-                    "Wonderitem on West Wall Left Grave": { // TODO Mapping: check these wonderitems
+                    "Wonderitem on West Wall Left Grave": {
                         SpoilerLogName: "Deku Tree MQ Basement Graves Wonderitem 1",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 70, y: 140, floor: "B1" },
@@ -255,7 +255,7 @@ let MQDungeons = {
                         NeedsAny: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
                     },
                     "Wonderitem on East Grave Near Torches": {
-                        SpoilerLogName: "Deku Tree MQ Basement Graves Wonderitem 2",
+                        SpoilerLogName: "Deku Tree MQ Basement Graves Wonderitem 3",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 113, y: 132, floor: "B1" },
                         MapImageName: "Sword Wonderitem",
@@ -265,7 +265,7 @@ let MQDungeons = {
                         NeedsAny: [Equipment.KOKIRI_SWORD, Equipment.MASTER_SWORD, Items.DEKU_STICK]
                     },
                     "Wonderitem on Grave Near Side Room": {
-                        SpoilerLogName: "Deku Tree MQ Basement Graves Wonderitem 3",
+                        SpoilerLogName: "Deku Tree MQ Basement Graves Wonderitem 2",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 67, y: 98, floor: "B1" },
                         MapImageName: "Sword Wonderitem",
@@ -2312,7 +2312,7 @@ let MQDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "2 Crates on Carousel Room Floor": { //TODO Mapping: check this and the next
+                    "2 Crates on Carousel Room Floor": {
                         SpoilerLogName: [{
                             name: "Forest Temple MQ Frozen Eye Switch Room Small Wooden Crate {#}",
                             count: 2
@@ -6708,7 +6708,7 @@ let MQDungeons = {
                         Order: 2,
                         LongDescription: "These pots are in the transition doorway after you hit the switch in the first room."
                     },
-                    "2 Right Pots in Center Room": { //TODO Mapping: check these and the next pots
+                    "2 Right Pots in Center Room": {
                         SpoilerLogName: [{
                             name: "Ice Cavern MQ Center Room Pot {#}",
                             count: 2
@@ -8093,7 +8093,7 @@ let MQDungeons = {
                         Order: 12.2,
                         LongDescription: "In the back right part of the room, you can do an angled jump from one side of the void to another and grab this rupee on the way."
                     },
-                    "Water Silver Rupee Floating by Push Blocks": { //TODO Mapping: check these three rupees
+                    "Water Silver Rupee Floating by Push Blocks": {
                         SpoilerLogName: "Ganons Castle MQ Water Trial Silver Rupee Near Blocks",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 177, y: 94, floor: "WTR" },
@@ -8305,7 +8305,7 @@ let MQDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Fire Silver Rupee Under Silver Pillar": { // TODO Mapping: check these 4 rupees
+                    "Fire Silver Rupee Under Silver Pillar": {
                         SpoilerLogName: "Ganons Castle MQ Fire Trial Silver Rupee Beamos",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 233, y: 143, floor: "FIR" },
