@@ -6586,6 +6586,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "4 Scrubs in Secret Room": {
+                        SpoilerLogName: [
+                            { name: "Ganons Castle Deku Scrub {#}", tokens: [ "Left", "Center-Left", "Center-Right", "Right" ] }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SCRUB,
                         DefaultEntranceGroupName: "4 Scrubs",
@@ -6607,6 +6610,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Forest Trial Chest": {
+                        SpoilerLogName: "Ganons Castle Forest Trial Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 176, y: 233, floor: "FST" },
                         Age: Age.EITHER,
@@ -6625,6 +6629,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Forest Silver Rupee Left of Entrance": {
+                        SpoilerLogName: "Ganons Castle Forest Trial Silver Rupee Front Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 159, y: 170, floor: "FST" },
                         Age: Age.ADULT,
@@ -6632,6 +6637,7 @@ let StandardDungeons = {
                         LongDescription: "Enter the forest trial - you must first light all the torches in the room. If you have no bow, you can use Din's Fire if you light the top torch by first hookshotting to it.</br></br>This rupee is to your left as you enter. If you jump when the fans are going you'll be pushed to the next platform and can continue on."
                     },
                     "Forest Silver Rupee on Right Platform": {
+                        SpoilerLogName: "Ganons Castle Forest Trial Silver Rupee Front Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 198, y: 147, floor: "FST" },
                         Age: Age.ADULT,
@@ -6639,6 +6645,7 @@ let StandardDungeons = {
                         LongDescription: "In the wind room, wait for the fans to blow then jump to your left. You can now make your way across the beamos platform to get to this rupee."
                     },
                     "Forest Silver Rupee in Front of Exit": {
+                        SpoilerLogName: "Ganons Castle Forest Trial Silver Rupee Back Center",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 176, y: 113, floor: "FST" },
                         Age: Age.ADULT,
@@ -6646,6 +6653,7 @@ let StandardDungeons = {
                         LongDescription: "In the wind room, wait for the fans to blow then jump to your left. You can now make your way across the beamos platform to get to this rupee."
                     },
                     "Forest Silver Rupee Right of Exit": {
+                        SpoilerLogName: "Ganons Castle Forest Trial Silver Rupee Back Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 196, y: 101, floor: "FST" },
                         Age: Age.ADULT,
@@ -6653,6 +6661,7 @@ let StandardDungeons = {
                         LongDescription: "In the wind room, wait for the fans to blow then jump to your left. Make your way across the beamos platform to the door. The rupee is to the right, but watch out for the fan."
                     },
                     "Forest Silver Rupee on Hookshot Target": {
+                        SpoilerLogName: "Ganons Castle Forest Trial Silver Rupee Center Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 146, y: 151, floor: "FST" },
                         Age: Age.ADULT,
@@ -6666,6 +6675,9 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Forest Trial End": {
+                        SpoilerLogName: [
+                            { name: "Ganons Castle Forest Trial Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -6694,6 +6706,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Water Trial Left Chest": {
+                        SpoilerLogName: "Ganons Castle Water Trial Left Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 175, y: 215, floor: "WTR" },
                         Age: Age.EITHER,
@@ -6701,6 +6714,7 @@ let StandardDungeons = {
                         LongDescription: "Enter the water trial. Look for the chest in the back left section of the room."
                     },
                     "Water Trial Right Chest": {
+                        SpoilerLogName: "Ganons Castle Water Trial Right Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 213, y: 215, floor: "WTR" },
                         Age: Age.EITHER,
@@ -6719,6 +6733,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Water Trial Pot in Ice Push Room": {
+                        SpoilerLogName: "Ganons Castle Water Trial Fairy Pot Drop",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 223, y: 117, floor: "WTR" },
                         Age: Age.EITHER,
@@ -6732,6 +6747,9 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Water Trial End": {
+                        SpoilerLogName: [
+                            { name: "Ganons Castle Water Trial Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -6769,6 +6787,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Shadow Trial Close Chest": {
+                        SpoilerLogName: "Ganons Castle Shadow Trial Front Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 146, y: 226, floor: "SHW" },
                         Age: Age.EITHER,
@@ -6787,6 +6806,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots on Shadow Trial Like Like Platform": {
+                        SpoilerLogName: [
+                            { name: "Ganons Castle Shadow Trial Like Like Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -6796,6 +6818,7 @@ let StandardDungeons = {
                         LongDescription: "Enter the Shadow trial. Get to the platform where the like-like resides by either shooting a fire arrow at the right torch, or longshotting to the torch and then the like-like. The pots are in the corners of the platform."
                     },
                     "Shadow Trial Far Chest": {
+                        SpoilerLogName: "Ganons Castle Shadow Trial Golden Gauntlets Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 187, y: 103, floor: "SHW" },
                         Age: Age.ADULT,
@@ -6803,6 +6826,9 @@ let StandardDungeons = {
                         LongDescription: "Enter the shadow trial. First, get to the platform passed the like-like platform. One way to do this is to shoot a fire arrow at the torch to the right. If you can't, then use your longshot to hook the torch. Now get on the very edge of the platform closest to the like-like. Longshot the like-like to get over there. Either use the torch, or use Hover Boots to get to the next platform. Down and to the right is a switch. Navigate to it. Once you press it, either hookshot to it or void out and come back for it.",
                     },
                     "3 Hearts on Invisible Shadow Trial Bridge": {
+                        SpoilerLogName: [
+                            { name: "Ganons Castle Shadow Trial Recovery Heart {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "3 Hearts",
@@ -6819,6 +6845,9 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Shadow Trial End": {
+                        SpoilerLogName: [
+                            { name: "Ganons Castle Shadow Trial Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -6853,6 +6882,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Fire Silver Rupee on Block by Entrance": {
+                        SpoilerLogName: "Ganons Castle Fire Trial Silver Rupee Right Front",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 206, y: 218, floor: "FIR" },
                         Age: Age.EITHER,
@@ -6860,6 +6890,7 @@ let StandardDungeons = {
                         LongDescription: "Enter the fire trial. The rupee is to the right on the block in the lava."
                     },
                     "Fire Silver Rupee by Flamethrower": {
+                        SpoilerLogName: "Ganons Castle Fire Trial Silver Rupee Flamethrower",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 128, y: 203, floor: "FIR" },
                         Age: Age.EITHER,
@@ -6867,6 +6898,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is on the left side of the platform with the spinning fire."
                     },
                     "Heart in Fire Trial": {
+                        SpoilerLogName: "Ganons Castle Fire Trial Recovery Heart",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapInfo: { x: 155, y: 156, floor: "FIR" },
                         MapImageName: "Recovery Heart",
@@ -6875,6 +6907,7 @@ let StandardDungeons = {
                         LongDescription: "Enter the fire trial. The heart is on a sinking platform near where the golden gauntlets pillar starts."
                     },
                     "Fire Silver Rupee Under Silver Pillar": {
+                        SpoilerLogName: "Ganons Castle Fire Trial Silver Rupee Inside Pillar",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 118, y: 173, floor: "FIR" },
                         Age: Age.ADULT,
@@ -6883,6 +6916,7 @@ let StandardDungeons = {
                         Needs: [UpgradedItems.GOLDEN_GAUNTLETS]
                     },
                     "Fire Silver Rupee on Torch Slug Island": {
+                        SpoilerLogName: "Ganons Castle Fire Trial Silver Rupee Right Back",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 224, y: 156, floor: "FIR" },
                         Age: Age.EITHER,
@@ -6890,6 +6924,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is on the island with the torch slug in the back right part of the room. If you have no hover boots, you'll have to jump across the lava while navigating the giant sinking platform or it will sink in!"
                     },
                     "Fire Silver Rupee on Block by Thrown Pillar": {
+                        SpoilerLogName: "Ganons Castle Fire Trial Silver Rupee Right Center",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 218, y: 192, floor: "FIR" },
                         Age: Age.ADULT,
@@ -6904,6 +6939,9 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Fire Trial End": {
+                        SpoilerLogName: [
+                            { name: "Ganons Castle Fire Trial Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -6938,6 +6976,11 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Light Trial Chests": {
+                        SpoilerLogName: [
+                            { name: "Ganons Castle Light Trial {#} Left Chest", tokens: ["First", "Second", "Third"] },
+                            { name: "Ganons Castle Light Trial {#} Right Chest", tokens: ["First", "Second", "Third"] },
+                            { name: "Ganons Castle Light Trial Invisible Enemies Chest"}
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.GIFT,
                         DefaultEntranceGroupName: "7 Chests",
@@ -6958,6 +7001,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Light Trial Zelda's Lullaby Chest": {
+                        SpoilerLogName: "Ganons Castle Light Trial Lullaby Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 195, y: 196, floor: "LIT" },
                         Age: Age.EITHER,
@@ -6977,6 +7021,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Pot at Light Trial": {
+                        SpoilerLogName: "Ganons Castle Light Trial Boulder Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 180, y: 138, floor: "LIT" },
                         Age: Age.EITHER,
@@ -6984,6 +7029,7 @@ let StandardDungeons = {
                         LongDescription: "The pot is in front of you after the Zelda's Lullaby room."
                     },
                     "Light Silver Rupee on Ledge": {
+                        SpoilerLogName: "Ganons Castle Light Trial Silver Rupee Center Top",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 180, y: 127, floor: "LIT" },
                         Age: Age.ADULT,
@@ -6992,6 +7038,7 @@ let StandardDungeons = {
                         NeedsAny: [Items.HOOKSHOT, Tricks.groundJump.canDoWithBomb]
                     },
                     "Light Silver Rupee in Left Outer Alcove": {
+                        SpoilerLogName: "Ganons Castle Light Trial Silver Rupee Left Alcove",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 147, y: 131, floor: "LIT" },
                         Age: Age.EITHER,
@@ -6999,6 +7046,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is on the left side of the room, in an alcove along the outer wall."
                     },
                     "Light Silver Rupee in Left Inner Alcove": {
+                        SpoilerLogName: "Ganons Castle Light Trial Silver Rupee Center Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 173, y: 126, floor: "LIT" },
                         Age: Age.EITHER,
@@ -7006,18 +7054,20 @@ let StandardDungeons = {
                         LongDescription: "This rupee is on the left side of the room, in an alcove along the center wall."
                     },
                     "Light Silver Rupee in Right Inner Alcove": {
+                        SpoilerLogName: "Ganons Castle Light Trial Silver Rupee Center Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 187, y: 126, floor: "LIT" },
                         Age: Age.EITHER,
                         Order: 25.4,
-                        LongDescription: "This rupee is on the right side of the room, in an alcover along the center wall."
+                        LongDescription: "This rupee is on the right side of the room, in an alcove along the center wall."
                     },
                     "Light Silver Rupee in Right Outer Alcove": {
+                        SpoilerLogName: "Ganons Castle Light Trial Silver Rupee Right Alcove",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 212, y: 131, floor: "LIT" },
                         Age: Age.EITHER,
                         Order: 25.5,
-                        LongDescription: "This rupee is on the right side of th eroom, in an alcove along the outer wall."
+                        LongDescription: "This rupee is on the right side of the room, in an alcove along the outer wall."
                     }
                 }
             },
@@ -7028,6 +7078,9 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Light Trial End": {
+                        SpoilerLogName: [
+                            { name: "Ganons Castle Light Trial Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -7062,6 +7115,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Heart in Spirit Trial": {
+                        SpoilerLogName: "Ganons Castle Spirit Trial Recovery Heart",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapInfo: { x: 128, y: 242, floor: "SPT" },
                         MapImageName: "Recovery Heart",
@@ -7070,6 +7124,7 @@ let StandardDungeons = {
                         LongDescription: "Enter the spirit trial. The heart is on the left wall."
                     },
                     "Spirit Silver Rupee in Back Left Corner": {
+                        SpoilerLogName: "Ganons Castle Spirit Trial Silver Rupee Back Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 128, y: 190, floor: "SPT" },
                         Age: Age.EITHER,
@@ -7077,6 +7132,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is in the back left corner of the room."
                     },
                     "Spirit Silver Rupee Near Beamos": {
+                        SpoilerLogName: "Ganons Castle Spirit Trial Silver Rupee Center",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 164, y: 215, floor: "SPT" },
                         Age: Age.EITHER,
@@ -7084,6 +7140,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is on the ground next to the beamos."
                     },
                     "Spirit Silver Rupee in Back Right Corner": {
+                        SpoilerLogName: "Ganons Castle Spirit Trial Silver Rupee Back Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 188, y: 206, floor: "SPT" },
                         Age: Age.EITHER,
@@ -7091,6 +7148,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is in the back right corner of the room."
                     },
                     "Spirit Silver Rupee in Front Right Corner": {
+                        SpoilerLogName: "Ganons Castle Spirit Trial Silver Rupee Front Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 189, y: 253, floor: "SPT" },
                         Age: Age.EITHER,
@@ -7098,6 +7156,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is in the front right corner of the room."
                     },
                     "Spirit Silver Rupee Above Beamos": {
+                        SpoilerLogName: "Ganons Castle Spirit Trial Silver Rupee Ceiling",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 159, y: 221, floor: "SPT" },
                         Age: Age.EITHER,
@@ -7118,6 +7177,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Spirit Trial Chest After Hitting Switch": {
+                        SpoilerLogName: "Ganons Castle Spirit Trial Crystal Switch Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 242, y: 184, floor: "SPT" },
                         Age: Age.EITHER,
@@ -7137,6 +7197,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Hidden Spirit Trial Chest": {
+                        SpoilerLogName: "Ganons Castle Spirit Trial Invisible Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 239, y: 120, floor: "SPT" },
                         Age: Age.EITHER,
@@ -7151,6 +7212,9 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Spirit Trial End": {
+                        SpoilerLogName: [
+                            { name: "Ganons Castle Spirit Trial Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
