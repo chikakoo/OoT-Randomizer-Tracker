@@ -500,8 +500,7 @@ let SaveAndLoad = {
         let updateData = {};
         Object.keys(spoilerLogData.locations).forEach(logLocation => {
             if (!SpoilerLogItemMap[logLocation]) {
-                // TODO: Uncomment this when all item locations are done
-                //console.log(`WARNING: No entry found in our maps for spoiler log key ${logLocation}`);
+                console.log(`WARNING: No entry found in our maps for spoiler log key ${logLocation}`);
                 return;
             }
 

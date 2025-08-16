@@ -5592,6 +5592,7 @@ let StandardDungeons = {
                         LongDescription: "From the entrance to the main room, go through the fake wall into the center room. Enter the door on the left side - the pots are in the back and will fly at you."
                     },
                     "Skulltula in Left Locked Room": {
+                        SpoilerLogName: "Bottom of the Well GS West Inner Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 160, y: 87, floor: "F1" },
                         Age: Age.CHILD,
