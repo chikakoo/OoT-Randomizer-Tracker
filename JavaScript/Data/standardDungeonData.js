@@ -4877,6 +4877,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Frozen Rupee in First Room": {
+                        SpoilerLogName: "Ice Cavern Frozen Blue Rupee",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapInfo: { x: 175, y: 184 },
                         MapImageName: "Blue Rupee",
@@ -4924,6 +4925,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots After Freezards": {
+                        SpoilerLogName: [
+                            { name: "Ice Cavern Hall Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4933,6 +4937,7 @@ let StandardDungeons = {
                         LongDescription: "These pots are in the transition hallway after you defeat the enemies in the first room."
                     },
                     "Skulltula in Scythe Room": {
+                        SpoilerLogName: "Ice Cavern GS Spinning Scythe Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 161, y: 127 },
                         Age: Age.EITHER,
@@ -4941,6 +4946,7 @@ let StandardDungeons = {
                         Needs: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
                     },
                     "Scythe Silver Rupee by Icicles": {
+                        SpoilerLogName: "Ice Cavern Spinning Scythe Silver Rupee Icicles",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 167, y: 133 },
                         Age: Age.EITHER,
@@ -4948,7 +4954,10 @@ let StandardDungeons = {
                         LongDescription: "In the room with the spinning scythe, this rupee is behind the icicles on the wall with the skulltula.",
                         NeedsAny: [ItemSets.SWORDS, ItemSets.EXPLOSIVES]
                     },
-                    "2 Pots in East Scythe Room": {
+                    "2 Pots in East Scythe Room": { // TODO Mapping: Check this
+                        SpoilerLogName: [
+                            { name: "Ice Cavern Spinning Scythe Pot {#}", count: 2}
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4958,6 +4967,7 @@ let StandardDungeons = {
                         LongDescription: "In the room with the spinning scythe, these pots are to your right (east)."
                     },
                     "Scythe Silver Rupee in Center Right": {
+                        SpoilerLogName: "Ice Cavern Spinning Scythe Silver Rupee Center Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 192, y: 116 },
                         Age: Age.EITHER,
@@ -4965,13 +4975,15 @@ let StandardDungeons = {
                         LongDescription: "This rupee is in the middle of the room, to the right of the center scythe."
                     },
                     "Scythe Silver Rupee in Center Left": {
+                        SpoilerLogName: "Ice Cavern Spinning Scythe Silver Rupee Center Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 174, y: 116 },
                         Age: Age.EITHER,
                         Order: 4.2,
                         LongDescription: "This rupee is in the middle of the room, to the left of the center scythe."
                     },
-                    "Pot in North Scythe Room": {
+                    "Pot in North Scythe Room": { // TODO Mapping: Check this
+                        SpoilerLogName: "Ice Cavern Spinning Scythe Pot 3",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 194, y: 96 },
                         Age: Age.EITHER,
@@ -4979,6 +4991,7 @@ let StandardDungeons = {
                         LongDescription: "In the room with the spinning scythe, this pot is on the north part of the room (straight ahead when you come in - it's the pot on the right)."
                     },
                     "Scythe Silver Rupee in Back": {
+                        SpoilerLogName: "Ice Cavern Spinning Scythe Silver Rupee Center Back",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 185, y: 100 },
                         Age: Age.EITHER,
@@ -4986,6 +4999,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is in the back of the spinning scythe room, between the pots."
                     },
                     "Flying Pot in North Scythe Room": {
+                        SpoilerLogName: "Ice Cavern Spinning Scythe Flying Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 176, y: 96 },
                         Age: Age.EITHER,
@@ -4993,6 +5007,7 @@ let StandardDungeons = {
                         LongDescription: "In the room with the spinning scythe, this pot will fly at you from the north part of the room (straight ahead when you come in - it's the pot on the left)."
                     },
                     "Scythe Silver Rupee in Midair": {
+                        SpoilerLogName: "Ice Cavern Spinning Scythe Silver Rupee Ledge",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 193, y: 102 },
                         Age: Age.EITHER,
@@ -5050,6 +5065,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Compass Chest in Right Red Ice Room": {
+                        SpoilerLogName: "Ice Cavern Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 246, y: 147 },
                         Age: Age.EITHER,
@@ -5063,6 +5079,7 @@ let StandardDungeons = {
                         ]
                     },
                     "Heart Piece in Right Red Ice Room": {
+                        SpoilerLogName: "Ice Cavern Freestanding PoH",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 244, y: 115 },
                         Age: Age.EITHER,
@@ -5076,6 +5093,7 @@ let StandardDungeons = {
                         ]
                     },
                     "Skulltula in Right Red Ice Room": {
+                        SpoilerLogName: "Ice Cavern GS Heart Piece Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 253, y: 117 },
                         Age: Age.EITHER,
@@ -5100,6 +5118,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "3 Hearts in Platforming Room": {
+                        SpoilerLogName: [
+                            { name: "Ice Cavern Map Room Recovery Heart {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "3 Hearts",
@@ -5109,6 +5130,7 @@ let StandardDungeons = {
                         LongDescription: "This is the room you gain access to after you collect all the silver rupees in the spinning scythe room. Navigate to the upper area by the first freezard - the hearts are on a platform to the right."
                     },
                     "Map Chest in Platforming Room": {
+                        SpoilerLogName: "Ice Cavern Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 192, y: 18 },
                         Age: Age.EITHER,
@@ -5117,6 +5139,7 @@ let StandardDungeons = {
                         NeedsAny: [GameStateSets.HAS_BOTTLE, ItemSets.BLUE_FIRE_ITEMS]
                     },
                     "Frozen Pot in Platforming Room": {
+                        SpoilerLogName: "Ice Cavern Frozen Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 193, y: 47 },
                         Age: Age.EITHER,
@@ -5134,6 +5157,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Skulltula in Block Push Room": {
+                        SpoilerLogName: "Ice Cavern GS Push Block Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 143, y: 111 },
                         Age: Age.EITHER,
@@ -5143,6 +5167,7 @@ let StandardDungeons = {
                         NeedsAny: [ItemSets.GRAB_SHORT_DISTANCE_ITEMS, Tricks.iceBlockSkullWithHoverBoots.canDo]
                     },
                     "Block Silver Rupee in Center": {
+                        SpoilerLogName: "Ice Cavern Push Block Silver Rupee Front Center",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 116, y: 86 },
                         Age: Age.EITHER,
@@ -5150,6 +5175,7 @@ let StandardDungeons = {
                         LongDescription: "In the block room, this rupee is the one in front of you. Push the block forward and climb up to get it."
                     },
                     "Block Silver Rupee on Ledge": {
+                        SpoilerLogName: "Ice Cavern Push Block Silver Rupee Red Ice",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 127, y: 67 },
                         Age: Age.EITHER,
@@ -5157,6 +5183,7 @@ let StandardDungeons = {
                         LongDescription: "Push the block forward, then right to the ledge. The rupee is in red ice - you can jumpslash at a specific angle to get it (or just melt the ice)."
                     },
                     "Block Silver Rupee by Skulltula": {
+                        SpoilerLogName: "Ice Cavern Push Block Silver Rupee Front Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 130, y: 110 },
                         Age: Age.EITHER,
@@ -5164,6 +5191,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is near the skulltula on the wall left of the entrance. Push the block left and up climb to this rupee."
                     },
                     "Block Silver Rupee Left of Blue Fire": {
+                        SpoilerLogName: "Ice Cavern Push Block Silver Rupee Back Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 103, y: 112 },
                         Age: Age.EITHER,
@@ -5171,6 +5199,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is the one to the left of the blue fire. Push the block left, and then forward. Now you can climb up to get this rupee."
                     },
                     "Block Silver Rupee Right of Blue Fire": {
+                        SpoilerLogName: "Ice Cavern Push Block Silver Rupee Back Center",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 98, y: 100 },
                         Age: Age.EITHER,
@@ -5178,6 +5207,9 @@ let StandardDungeons = {
                         LongDescription: "This rupee is the one to the right of the blue fire. No need to push the block for this one; you can simply climb up and get it."
                     },
                     "3 Red Rupees in Block Push Room": {
+                        SpoilerLogName: [
+                            { name: "Ice Cavern Push Block Room Red Rupee {#}", count: 3 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "3 Red Rupees",
@@ -5210,6 +5242,9 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots Before Boss Room": {
+                        SpoilerLogName: [
+                            { name: "Ice Cavern Near End Pot {#}", count: 2 }
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -5233,6 +5268,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Iron Boots Chest": {
+                        SpoilerLogName: "Ice Cavern Iron Boots Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 127, y: 182 },
                         Age: Age.EITHER,
@@ -5240,6 +5276,7 @@ let StandardDungeons = {
                         LongDescription: "This is in the room after the block pushing puzzle - the one with the wolfos. Defeat it to spawn the chest. Note that after you get the chest, you will also get the Serenade of Water item."
                     },
                     "Serenade of Water": {
+                        SpoilerLogName: "Sheik in Ice Cavern",
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 122, y: 177 },
                         Age: Age.EITHER,
