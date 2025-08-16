@@ -1133,6 +1133,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Wonderitem in First Room Right Cow": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Entryway Right Cow Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 184, y: 236, floor: "F1" },
                         MapImageName: "Slingshot Wonderitem",
@@ -1143,6 +1144,7 @@ let MQDungeons = {
                         Needs: [(age) => MapLocations["Jabu Jabu's Belly"]._canHitMainRoomCowSwitch(age)]
                     },
                     "Wonderitem in First Room Left Cow": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Entryway Left Cow Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 164, y: 236, floor: "F1" },
                         MapImageName: "Slingshot Wonderitem",
@@ -1167,6 +1169,10 @@ let MQDungeons = {
                         Needs: [(age) => MapLocations["Jabu Jabu's Belly"]._canHitMainRoomCowSwitch(age)]
                     },
                     "2 Pots in First Room": {
+                        SpoilerLogName: [{
+                            name: "Jabu Jabus Belly MQ First Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -1176,6 +1182,7 @@ let MQDungeons = {
                         LongDescription: "These two pots are on the edge of the water in the first room, on opposite sides of each other."
                     },
                     "Map Chest": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 173, y: 269, floor: "F1" },
                         Age: Age.EITHER,
@@ -1184,6 +1191,7 @@ let MQDungeons = {
                         Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "Chest in Main Room": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ First Room Side Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 181, y: 279, floor: "F1" },
                         UseChildAge: function() { return !Tricks.equipSwap.enabled && !Tricks.qpa.enabled; },
@@ -1216,6 +1224,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts in Elevator Room": {
+                        SpoilerLogName: [{
+                            name: "Jabu Jabus Belly MQ Recovery Heart {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "2 Hearts",
@@ -1225,6 +1237,7 @@ let MQDungeons = {
                         LongDescription: "These items are between the jellos in the room after the first door. Use the elevator to get to them."
                     },
                     "Wonderitem in Elevator Room Cow": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Elevator Room Cow Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 186, y: 179, floor: "F1" },
                         MapImageName: "Slingshot Wonderitem",
@@ -1235,7 +1248,7 @@ let MQDungeons = {
                         Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "Spawn Chest in Upper Elevator Room": {
-                        ItemGroup: ItemGroups.CHEST,
+                        ItemGroup: ItemGroups.NON_ITEM,
                         MapInfo: { x: 186, y: 179, floor: "F1" },
                         MapImageName: "Fairy Slingshot",
                         RequiredToAppear: function() {
@@ -1256,6 +1269,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Chest in Upper Elevator Room": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Second Room Upper Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 192, y: 188, floor: "F1" },
                         Age: Age.EITHER,
@@ -1270,6 +1284,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Chest in Lower Elevator Room": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Second Room Lower Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 209, y: 221, floor: "B1" },
                         Age: Age.EITHER,
@@ -1277,6 +1292,7 @@ let MQDungeons = {
                         LongDescription: "After going through the first door, drop down to the bottom. The chest is by the door."
                     },
                     "Chest in Hidden Water Room": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 116, y: 229, floor: "B1" },
                         Age: Age.EITHER,
@@ -1285,6 +1301,10 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.PROJECTILES, Items.BOMBCHU, Items.HOOKSHOT]
                     },
                     "2 Pots in Hidden Water Room": {
+                        SpoilerLogName: [{
+                            name: "Jabu Jabus Belly MQ Elevator Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -1294,6 +1314,10 @@ let MQDungeons = {
                         LongDescription: "Drop down in the main elevator room. Dive underwater opposite the door to get to the hidden room. The pots are on the platform."
                     },
                     "3 Rupees in Hidden Water Room": {
+                        SpoilerLogName: [{
+                            name: "Jabu Jabus Belly MQ Underwater Green Rupee {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "3 Jabu Rupees",
@@ -1309,6 +1333,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "3 Wonderitems in Left Big Room Cow": {
+                        SpoilerLogName: [{
+                            name: "Jabu Jabus Belly MQ Basement Left Cow Wonderitem {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "3 QPAable Slingshot Wonderitems",
@@ -1319,6 +1347,10 @@ let MQDungeons = {
                         LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole normally blocked by the tentacle (upper leftmost hole). Shoot the left cow three times to spawn three different wonderitems."
                     },
                     "3 Wonderitems in Right Big Room Cow": {
+                        SpoilerLogName: [{
+                            name: "Jabu Jabus Belly MQ Basement Right Cow Wonderitem {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "3 Slingshot Wonderitems",
@@ -1329,6 +1361,7 @@ let MQDungeons = {
                         LongDescription: "After pressing the switch in the hidden underwater room, take the elevator back up and fall down the hole normally blocked by the tentacle (upper leftmost hole). Shoot the right cow three times to spawn three different wonderitems."
                     },
                     "East Chest in Big Room": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Basement Near Switches Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 205, y: 54, floor: "B1" },
                         UseChildAge: function() { return !Tricks.equipSwap.enabled; },
@@ -1338,6 +1371,7 @@ let MQDungeons = {
                         Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "West Chest in Big Room": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Basement Near Vines Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 175, y: 108, floor: "B1" },
                         UseChildAge: function() { return !Tricks.equipSwap.enabled && !Tricks.qpa.enabled; },
@@ -1347,6 +1381,7 @@ let MQDungeons = {
                         NeedsAny: [Items.FAIRY_SLINGSHOT, QPAItemSets.LEDGE_QPA]
                     },
                     "Free Chest in Path to Elevator Room": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Boomerang Room Small Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 318, y: 134, floor: "B1" },
                         Age: Age.EITHER,
@@ -1354,6 +1389,7 @@ let MQDungeons = {
                         LongDescription: "Solve the puzzle in the room below the holes to enter the path leading to the elevator room. There is an easily accessible chest in here."
                     },
                     "Enemy Chest in Path to Elevator Room": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Boomerang Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 258, y: 152, floor: "B1" },
                         Age: Age.EITHER,
@@ -1361,6 +1397,10 @@ let MQDungeons = {
                         LongDescription: "Solve the puzzle in the room below the holes to enter the path leading to the elevator room. Defeat all the enemies in the water to spawn the chest."
                     },
                     "2 Pots in Path to Elevator Room": {
+                        SpoilerLogName: [{
+                            name: "Jabu Jabus Belly MQ Boomerang Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -1370,6 +1410,7 @@ let MQDungeons = {
                         LongDescription: "Solve the puzzle in the room below the holes to enter the path leading to the elevator room. The pots are on the ledge up the vines."
                     },
                     "Skulltula Under Song of Time Block": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ GS Boomerang Chest Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 297, y: 147, floor: "B1" },
                         Age: Age.EITHER,
@@ -1394,6 +1435,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Small Crates in Northern Hallways": {
+                        SpoilerLogName: [{
+                            name: "Jabu Jabus Belly MQ Hallway Small Crate {#}",
+                            count: 2,
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
@@ -1404,6 +1449,10 @@ let MQDungeons = {
                         LongDescription: "In the room beyond the room with holes, go left to find the crates."
                     },
                     "3 Wonderitems in Like Like Room": {
+                        SpoilerLogName: [{
+                            name: "Jabu Jabus Belly MQ Falling Like-Like Room Explosives Wonderitem {#}",
+                            count: 3,
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "3 Explosive Wonderitems",
@@ -1414,6 +1463,10 @@ let MQDungeons = {
                         Needs: [ItemSets.EXPLOSIVES]
                     },
                     "2 Pots in Like Like Room": {
+                        SpoilerLogName: [{
+                            name: "Jabu Jabus Belly MQ Falling Like Like Room Pot {#}",
+                            count: 2,
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -1423,6 +1476,10 @@ let MQDungeons = {
                         LongDescription: "In the room beyond the room with holes, enter the next room and go to the right door not blocked by webs. The pots are in the back of this room."
                     },
                     "3 Wonderitems in Left Like Like Room Cow": {
+                        SpoilerLogName: [{
+                            name: "Jabu Jabus Belly MQ Falling Like-Like Room Left Cow Wonderitem {#}",
+                            count: 3,
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "3 Slingshot Wonderitems",
@@ -1434,6 +1491,10 @@ let MQDungeons = {
                         Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "3 Wonderitems in Right Like Like Room Cow": {
+                        SpoilerLogName: [{
+                            name: "Jabu Jabus Belly MQ Falling Like-Like Room Right Cow Wonderitem {#}",
+                            count: 3,
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "3 Slingshot Wonderitems",
@@ -1445,6 +1506,7 @@ let MQDungeons = {
                         Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "Chest in Like Like Room": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Falling Like Like Room Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 195, y: 12, floor: "F1" },
                         UseChildAge: function() { return !Tricks.equipSwap.enabled; },
@@ -1465,6 +1527,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Skulltula on Ceiling": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ GS Tailpasaran Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 157, y: 14, floor: "F1" },
                         UseChildAge: function() { return !Tricks.equipSwap.enabled && !Tricks.qpa.enabled; },
@@ -1483,6 +1546,7 @@ let MQDungeons = {
                         LongDescription: "This is the task to defeat the two red tentacles (the east/west rooms). This is used to help see what Adult can do if he cannot use the boomerang."
                     },
                     "Skulltula Behind Web": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ GS Invisible Enemies Room",
                         DisplayGroup: { groupName: "Basement", imageName: "Lon Lon Milk" },
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 29, y: 191, floor: "B1" },
@@ -1532,6 +1596,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Wonderitem in Cow After Big Octo": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ After Big Octo Cow Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 70, y: 53, floor: "F2" },
                         MapImageName: "Slingshot Wonderitem",
@@ -1552,6 +1617,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Small Crates in Wiggler Room": {
+                        SpoilerLogName: [{
+                            name: "Jabu Jabus Belly MQ Small Crate Near Cow {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         IsEmpty: true,
@@ -1562,6 +1631,7 @@ let MQDungeons = {
                         LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. Shoot the cow in the wall in this room to spawn the crates by the door."
                     },
                     "Wonderitem in Wiggler Room Cow": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Wiggler Platforms Cow Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 99, y: 276, floor: "F2" },
                         MapImageName: "Slingshot Wonderitem",
@@ -1570,6 +1640,7 @@ let MQDungeons = {
                         LongDescription: "Bring Ruto to Big Octo by riding the water up with her, then jumping to the platform. After killing it, ride the elevator up, shoot the cow on the wall, and proceed through the door. Shoot the cow in the wall in this room to spawn the wonderitem."
                     },
                     "Cow in Wiggler Room": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Cow",
                         ItemGroup: ItemGroups.COW,
                         MapInfo: { x: 108, y: 251, floor: "F2" },
                         Age: Age.EITHER,
@@ -1592,6 +1663,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Wonderitems in Room Before Boss Right Cow": {
+                        SpoilerLogName: [{
+                            name: "Jabu Jabus Belly MQ Before Boss Right Cow Wonderitem {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.WONDERITEM,
                         DefaultEntranceGroupName: "2 Slingshot Wonderitems",
@@ -1602,6 +1677,7 @@ let MQDungeons = {
                         LongDescription: "Shoot the right cow two times (it will rise up) to spawn two wonderitems."
                     },
                     "Wonderitem in Room Before Boss Left Cow": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Before Boss Left Cow Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 263, y: 188, floor: "F1" },
                         MapImageName: "Slingshot Wonderitem",
@@ -1612,6 +1688,7 @@ let MQDungeons = {
                         Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "Chest in Room Before Boss": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Near Boss Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 234, y: 175, floor: "F1" },
                         UseChildAge: function() { return !Tricks.equipSwap.enabled; },
@@ -1621,6 +1698,7 @@ let MQDungeons = {
                         Needs: [Items.FAIRY_SLINGSHOT]
                     },
                     "Pot in Room Before Boss": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ Near Boss Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 240, y: 160, floor: "F1" },
                         Age: Age.EITHER,
@@ -1628,6 +1706,7 @@ let MQDungeons = {
                         LongDescription: "This pot is next to the boss room door."
                     },
                     "Skulltula in Room Before Boss": {
+                        SpoilerLogName: "Jabu Jabus Belly MQ GS Near Boss",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 244, y: 189, floor: "F1" },
                         Age: Age.EITHER,
