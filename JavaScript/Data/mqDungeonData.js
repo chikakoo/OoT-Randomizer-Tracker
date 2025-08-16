@@ -6670,6 +6670,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Pot by Entrance": {
+                        SpoilerLogName: "Ice Cavern MQ First Hall Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 192, y: 257 },
                         Age: Age.EITHER,
@@ -6695,6 +6696,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots After Switch": {
+                        SpoilerLogName: [{
+                            name: "Ice Cavern MQ Tektite Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -6703,7 +6708,11 @@ let MQDungeons = {
                         Order: 2,
                         LongDescription: "These pots are in the transition doorway after you hit the switch in the first room."
                     },
-                    "2 Right Pots in Center Room": {
+                    "2 Right Pots in Center Room": { //TODO Mapping: check these and the next pots
+                        SpoilerLogName: [{
+                            name: "Ice Cavern MQ Center Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -6713,6 +6722,10 @@ let MQDungeons = {
                         LongDescription: "In the room after the room with the switch, the pots will be on your right."
                     },
                     "2 Back Pots in Center Room": {
+                        SpoilerLogName: [{
+                            name: "Ice Cavern MQ Center Room Pot {#}",
+                            count: { min: 3, max: 4 }
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -6728,6 +6741,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Chest in Red Ice": {
+                        SpoilerLogName: "Ice Cavern MQ Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 248, y: 147 },
                         Age: Age.EITHER,
@@ -6748,6 +6762,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots in North Room": {
+                        SpoilerLogName: [{
+                            name: "Ice Cavern MQ Compass Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -6757,6 +6775,7 @@ let MQDungeons = {
                         LongDescription: "To the right of entrance of the first room with blue fire, climb up the ledge and melt the red ice wall. Proceed through the hallway.<br/><br/>In the next room, the pots are along the wall, somewhat separated.",
                     },
                     "Heart Piece in North Room": {
+                        SpoilerLogName: "Ice Cavern MQ Freestanding PoH",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 228, y: 22 },
                         Age: Age.EITHER,
@@ -6765,6 +6784,7 @@ let MQDungeons = {
                         Needs: [ItemSets.EXPLOSIVES]
                     },
                     "Skulltula in North Room": {
+                        SpoilerLogName: "Ice Cavern MQ GS Red Ice",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 192, y: 45 },
                         Age: Age.EITHER,
@@ -6786,6 +6806,7 @@ let MQDungeons = {
                         ]
                     },
                     "Chest in North Room": {
+                        SpoilerLogName: "Ice Cavern MQ Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 188, y: 20 },
                         Age: Age.EITHER,
@@ -6801,6 +6822,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Skulltula Under Stairs in Big Room": {
+                        SpoilerLogName: "Ice Cavern MQ GS Ice Block",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 115, y: 122 },
                         Age: Age.EITHER,
@@ -6809,6 +6831,7 @@ let MQDungeons = {
                         Needs: [ItemSets.DISTANT_SWITCH_ITEMS]
                     },
                     "Skulltula on Ledge in Big Room": {
+                        SpoilerLogName: "Ice Cavern MQ GS Scarecrow",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 127, y: 66 },
                         Age: Age.ADULT,
@@ -6836,6 +6859,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots Before Boss Room": {
+                        SpoilerLogName: [{
+                            name: "Ice Cavern MQ Near End Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -6845,6 +6872,7 @@ let MQDungeons = {
                         LongDescription: "These pots are next to the boss door.",
                     },
                     "Chest at End": {
+                        SpoilerLogName: "Ice Cavern MQ Iron Boots Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 127, y: 182 },
                         Age: Age.ADULT,
@@ -6852,6 +6880,7 @@ let MQDungeons = {
                         LongDescription: "Defeat the stalfos in this room to spawn the chest."
                     },
                     "Serenade of Water": {
+                        SpoilerLogName: "Sheik in Ice Cavern",
                         ItemGroup: ItemGroups.SONG,
                         MapInfo: { x: 122, y: 177 },
                         Age: Age.ADULT,
