@@ -423,6 +423,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Main Room": {
+                        SpoilerLogName: "Dodongos Cavern MQ Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 168, y: 180, floor: "F1" },
                         Age: Age.EITHER,
@@ -439,6 +440,10 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.MUD_WALL_ITEMS_OR_LEDGE_QPA, Equipment.STRENGTH]
                     },
                     "2 Scrubs in Main Room": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ Deku Scrub Lobby {#}",
+                            tokens: ["Front", "Rear"]
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SCRUB,
                         DefaultEntranceGroupName: "2 Scrubs",
@@ -472,6 +477,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest on Ledge in Main Room": {
+                        SpoilerLogName: "Dodongos Cavern MQ Bomb Bag Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 182, y: 200, floor: "F1" },
                         Age: Age.EITHER,
@@ -496,6 +502,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots at East Room Entrance": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ Right Side Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -505,6 +515,7 @@ let MQDungeons = {
                         LongDescription: "Go to the room to the east of the main room. The pots are in front of you on the wall to the right."
                     },
                     "Scrub in East Room": {
+                        SpoilerLogName: "Dodongos Cavern MQ Deku Scrub Side Room Near Lower Lizalfos",
                         ItemGroup: ItemGroups.SCRUB,
                         MapInfo: { x: 242, y: 264, floor: "F1" },
                         Age: Age.EITHER,
@@ -512,6 +523,10 @@ let MQDungeons = {
                         LongDescription: "Blow up the east room door somehow. You may need to run a bomb flower from the very top floor if you have no other way.<br/><br/>Once in the east room, blow up the fake wall on the right. The scrub is inside."
                     },
                     "2 Pots by East Room Exit": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ Right Side Pot {#}",
+                            count: { min: 3, max: 4 }
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -530,6 +545,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Heart in Lavafall Cave": {
+                        SpoilerLogName: "Dodongos Cavern Lower Lizalfos Hidden Recovery Heart",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 335, y: 166, floor: "F1" },
@@ -549,6 +565,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Skulltula Near Poe Room": {
+                        SpoilerLogName: "Dodongos Cavern MQ GS Scrub Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 230, y: 79, floor: "F1" },
                         Age: Age.EITHER,
@@ -558,6 +575,7 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]
                     },
                     "Poe Room Pot by Entrance": {
+                        SpoilerLogName: "Dodongos Cavern MQ Poes Room Pot 1",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 231, y: 143, floor: "F1" },
                         Age: Age.EITHER,
@@ -565,6 +583,7 @@ let MQDungeons = {
                         LongDescription: "This pot is to the left as you enter the main area.",
                     },
                     "Poe Room Pot by First Pillar": {
+                        SpoilerLogName: "Dodongos Cavern MQ Poes Room Pot 2",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 214, y: 147, floor: "F1" },
                         Age: Age.EITHER,
@@ -572,6 +591,10 @@ let MQDungeons = {
                         LongDescription: "This pot is on the right side of the giant pillar by the entrance.",
                     },
                     "2 Crates by First Pillar": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ Poes Room Crate {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -581,6 +604,7 @@ let MQDungeons = {
                         LongDescription: "These crates are against the wall on the left side of the giant pillar by the entrance."
                     },
                     "Poe Room Pot in Middle": {
+                        SpoilerLogName: "Dodongos Cavern MQ Poes Room Pot 3",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 232, y: 176, floor: "F1" },
                         Age: Age.EITHER,
@@ -588,6 +612,10 @@ let MQDungeons = {
                         LongDescription: "This pot is in the middle of the room on the left side of the two smaller pillars.",
                     },
                     "2 Crates in Middle": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ Poes Room Crate {#}",
+                            count: { min: 5, max: 6 }
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -597,6 +625,10 @@ let MQDungeons = {
                         LongDescription: "These crates are in the middle of the room on the left side of the two smaller pillars."
                     },
                     "2 Crates on Left Wall by Exit": {
+                        SpoilerLogName: [
+                            "Dodongos Cavern MQ Poes Room Crate 7",
+                            "Dodongos Cavern MQ Poes Room Crate Near Bomb Flower"
+                        ],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -606,6 +638,7 @@ let MQDungeons = {
                         LongDescription: "These crates in the middle of the room on the left side of the two smaller pillars."
                     },
                     "Poe Room Pot on Right Wall by Exit": {
+                        SpoilerLogName: "Dodongos Cavern MQ Poes Room Pot 4",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 205, y: 177, floor: "F1" },
                         Age: Age.EITHER,
@@ -613,6 +646,10 @@ let MQDungeons = {
                         LongDescription: "This pot is to the right of the exit door in a very minor alcove."
                     },
                     "2 Crates on Right Wall by Exit": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ Poes Room Crate {#}",
+                            count: { min: 3, max: 4 }
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -642,6 +679,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Skullula by Stair Room": {
+                        SpoilerLogName: "Dodongos Cavern MQ GS Song of Time Block Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 46, y: 259, floor: "F1" },
                         Age: Age.EITHER,
@@ -650,6 +688,10 @@ let MQDungeons = {
                         Needs: [Songs.SONG_OF_TIME]
                     },
                     "4 Pots in Stair Room": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ Staircase Pot {#}",
+                            count: 4
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "4 Pots",
@@ -659,6 +701,10 @@ let MQDungeons = {
                         LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>The pots are in the four corners of the bottom part of the room."
                     },
                     "2 Crates in Lower Stair Room": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ Staircase Crate Bottom {#}",
+                            tokens: ["Left", "Right"]
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -668,6 +714,7 @@ let MQDungeons = {
                         LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>The crates are in the two corners of the room by the back of the stairs."
                     },
                     "Silver Rupee Under Beamos in Stair Room": {
+                        SpoilerLogName: "Dodongos Cavern MQ Staircase Silver Rupee Beamos",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 31, y: 184, floor: "F1" },
                         Age: Age.EITHER,
@@ -675,6 +722,7 @@ let MQDungeons = {
                         LongDescription: "In the stair room, walk into the beamos on the left side of the stairs to get this rupee."
                     },
                     "Silver Rupee Under Lower Stair Room Crate": {
+                        SpoilerLogName: "Dodongos Cavern MQ Staircase Silver Rupee Lower Crate",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 33, y: 169, floor: "F1" },
                         Age: Age.EITHER,
@@ -693,6 +741,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Scrub in Stair Room": {
+                        SpoilerLogName: "Dodongos Cavern MQ Deku Scrub Staircase",
                         ItemGroup: ItemGroups.SCRUB,
                         MapInfo: { x: 32, y: 94, floor: "F2" },
                         Age: Age.EITHER,
@@ -700,6 +749,10 @@ let MQDungeons = {
                         LongDescription: "From the main room, blow up the back right rock. Ride up the elevator to the upper floor. Cross the bridge to hit the switch. Enter the door that is unlocked.<br/><br/>Lower the stairs like normal. Climb the gray block to reach the scrub at the top."
                     },
                     "4 Crates in Upper Stair Room": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ Staircase Crate {#}",
+                            tokens: ["Mid Left", "Top Left", "Mid Right", "Top Right"]
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "4 Crates",
@@ -709,6 +762,7 @@ let MQDungeons = {
                         LongDescription: "Lower the stairs in the stair room. The crates are up the stairs in the four corners of the walkways."
                     },
                     "Silver Rupee Under Upper Stair Room NW Crate": {
+                        SpoilerLogName: "Dodongos Cavern MQ Staircase Silver Rupee Mid Left Crate",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 11, y: 97, floor: "F2" },
                         Age: Age.EITHER,
@@ -716,6 +770,7 @@ let MQDungeons = {
                         LongDescription: "Break the northwest crate in the upper stair room to get this rupee."
                     },
                     "Silver Rupee Under Upper Stair Room SE Crate": {
+                        SpoilerLogName: "Dodongos Cavern MQ Staircase Silver Rupee Top Right Crate",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 47, y: 133, floor: "F2" },
                         Age: Age.EITHER,
@@ -723,6 +778,7 @@ let MQDungeons = {
                         LongDescription: "Break the southeast crate in the upper stair room to get this rupee."
                     },
                     "Silver Rupee Up Upper Stair Room Vines": {
+                        SpoilerLogName: "Dodongos Cavern MQ Staircase Silver Rupee Vines",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 31, y: 132, floor: "F2" },
                         Age: Age.EITHER,
@@ -739,6 +795,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Small Dodongo Room": {
+                        SpoilerLogName: "Dodongos Cavern MQ Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 29, y: 200, floor: "F2" },
                         Age: Age.EITHER,
@@ -768,6 +825,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Heart in Torch Puzzle": {
+                        SpoilerLogName: "Dodongos Cavern MQ Torch Puzzle Room Recovery Heart",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapImageName: "Recovery Heart",
                         MapInfo: { x: 208, y: 175, floor: "F2" },
@@ -782,6 +840,7 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Chest in Room by Torch Puzzle": {
+                        SpoilerLogName: "Dodongos Cavern MQ Larvae Room Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 202, y: 109, floor: "F2" },
                         Age: Age.EITHER,
@@ -789,6 +848,10 @@ let MQDungeons = {
                         LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. Kill all the enemies to spawn the chest."
                     },
                     "6 Crates in Room by Torch Puzzle": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ Larvae Room Crate {#}",
+                            count: 6
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "6 Crates",
@@ -798,6 +861,7 @@ let MQDungeons = {
                         LongDescription: "Light all the torches in the torch puzzle room. Either use a fire item, or push the boxes and use a deku stick. Navigate to the now open door at the north of room. The crates are in this room."
                     },
                     "Skulltula in Room by Torch Puzzle": {
+                        SpoilerLogName: "Dodongos Cavern MQ GS Larvae Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 210, y: 108, floor: "F2" },
                         Age: Age.EITHER,
@@ -819,6 +883,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "First Fire Puzzle Pot by Entrance": {
+                        SpoilerLogName: "Dodongos Cavern MQ Before Upper Lizalfos Pot 2",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 251, y: 190, floor: "F2" },
                         Age: Age.EITHER,
@@ -826,6 +891,7 @@ let MQDungeons = {
                         LongDescription: "Make your way to the first eye switch puzzle room, either through the torch puzzle room or the upper lizalfos room. This pot is in the corner by the entrance."
                     },
                     "First Fire Puzzle Pot by Exit": {
+                        SpoilerLogName: "Dodongos Cavern MQ Before Upper Lizalfos Pot 1",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 270, y: 205, floor: "F2" },
                         Age: Age.EITHER,
@@ -833,6 +899,7 @@ let MQDungeons = {
                         LongDescription: "Make your way to the first eye switch puzzle room, either through the torch puzzle room or the upper lizalfos room. This pot is in the corner by the exit."
                     },
                     "Skulltula in Top Lizalfos Room": {
+                        SpoilerLogName: "Dodongos Cavern MQ GS Lizalfos Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 295, y: 122, floor: "F2" },
                         Age: Age.EITHER,
@@ -841,6 +908,10 @@ let MQDungeons = {
                         Needs: [ItemSets.BLAST_OR_SMASH_ITEMS]
                     },
                     "2 Pots by Top Lizalfos Room Wall": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ Upper Lizalfos Pot {#}",
+                            count: { min: 3, max: 4 }
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -850,6 +921,10 @@ let MQDungeons = {
                         LongDescription: "These pots are the ones against the wall without any doors in the top lizalfos room."
                     },
                     "2 Pots by Top Lizalfos Room Exit": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ Upper Lizalfos Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -859,6 +934,10 @@ let MQDungeons = {
                         LongDescription: "These pots are the ones by the exit in the top lizalfos room."
                     },
                     "2 Pots in Second Fire Puzzle": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ After Upper Lizalfos Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Pots",
@@ -868,6 +947,7 @@ let MQDungeons = {
                         LongDescription: "These pots are in the fire puzzle room after the top lizalfos room in one of the corners."
                     },
                     "Crate by Second Fire Puzzle Entrance": {
+                        SpoilerLogName: "Dodongos Cavern MQ After Upper Lizalfos Crate 2",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 276, y: 160, floor: "F2" },
                         Age: Age.EITHER,
@@ -875,6 +955,7 @@ let MQDungeons = {
                         LongDescription: "In the fire puzzle room after the top lizalfos room, this crate can be found on the ground by the ledge you normally enter from."
                     },
                     "Crate by Second Fire Puzzle Exit": {
+                        SpoilerLogName: "Dodongos Cavern MQ After Upper Lizalfos Crate 1",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 252, y: 168, floor: "F2" },
                         Age: Age.EITHER,
@@ -894,6 +975,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest on Top of Torch Puzzle Room": {
+                        SpoilerLogName: "Dodongos Cavern MQ Torch Puzzle Room Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 187, y: 176, floor: "F2" },
                         Age: Age.EITHER,
@@ -901,6 +983,7 @@ let MQDungeons = {
                         LongDescription: "Either bomb the rocks at the top of the main room, or proceed through the upper lizalfos room to get to the top of the torch puzzle room. The chest is on one of the ledges you can get to by jumping there."
                     },
                     "Pot on Torch Puzzle Room Pillar": {
+                        SpoilerLogName: "Dodongos Cavern MQ Torch Puzzle Room Pot Pillar",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 204, y: 174, floor: "F2" },
                         Age: Age.EITHER,
@@ -908,6 +991,7 @@ let MQDungeons = {
                         LongDescription: "This pot is the one on the pillar next to the chest."
                     },
                     "Pot by Old Bomb Bag Chest": {
+                        SpoilerLogName: "Dodongos Cavern MQ Torch Puzzle Room Pot Corner",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 184, y: 146, floor: "F2" },
                         Age: Age.EITHER,
@@ -930,6 +1014,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Pots in Boss Door Room": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ Room Before Boss Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -939,6 +1027,10 @@ let MQDungeons = {
                         LongDescription: "Once in the Dodongo head, look in two of the corners of the next big room for these pots."
                     },
                     "2 Pots in Back Room": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ Armos Army Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -948,6 +1040,7 @@ let MQDungeons = {
                         LongDescription: "Once in the Dodongo head, navigate counter-clockwise through the first hallway. Once in the next room, the pots will be in the corners to your left and right on the back wall."
                     },
                     "Chest in Back Poe Room": {
+                        SpoilerLogName: "Dodongos Cavern MQ Under Grave Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 196, y: 19, floor: "F1" },
                         Age: Age.EITHER,
@@ -955,6 +1048,10 @@ let MQDungeons = {
                         LongDescription: "Once in the Dodongo head, navigate counter-clockwise around the rooms. Enter the door near all the Armos statues. In this room, the chest is under the gravestone."
                     },
                     "2 Pots in Back Poe Room": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ Back Poe Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -964,6 +1061,7 @@ let MQDungeons = {
                         LongDescription: "Once in the Dodongo head, navigate counter-clockwise around the rooms. Enter the door near all the Armos statues. The pots are on the right wall's corners in this room."
                     },
                     "Skulltula in Back Room": {
+                        SpoilerLogName: "Dodongos Cavern MQ GS Back Area",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 196, y: 59, floor: "F1" },
                         Age: Age.EITHER,
@@ -971,6 +1069,10 @@ let MQDungeons = {
                         LongDescription: "After dealing with all the Armos statues in the Dodongo head, climb up the stairs. Jump to the ledge to get to the skulltula on top."
                     },
                     "2 Pots After Armos Army": {
+                        SpoilerLogName: [{
+                            name: "Dodongos Cavern MQ Armos Army Room Upper Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -6742,7 +6844,7 @@ let MQDungeons = {
                         Order: 3,
                         LongDescription: "Navigate to the left room in the main area. Unlock the door, then navigate to the back right section of the room. The skulltula is hiding in the corner behind a pillar."
                     },
-                    "Heart in Front Right Coffin": { // TODO Mapping: check both hearts here
+                    "Heart in Front Right Coffin": {
                         SpoilerLogName: "Bottom of the Well MQ Coffin Recovery Heart 1",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapInfo: { x: 56, y: 131, floor: "F1" },
