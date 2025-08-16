@@ -7780,6 +7780,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "5 Scrubs in Secret Room": {
+                        SpoilerLogName: [{
+                            name: "Ganons Castle MQ Deku Scrub {#}",
+                            tokens: ["Left", "Center-Left", "Center", "Center-Right", "Right"]
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SCRUB,
                         DefaultEntranceGroupName: "5 Scrubs",
@@ -7835,6 +7839,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Forest Freestanding Item": {
+                        SpoilerLogName: "Ganons Castle MQ Forest Trial Freestanding Key",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 165, y: 204, floor: "FST" },
                         Age: Age.EITHER,
@@ -7844,6 +7849,7 @@ let MQDungeons = {
                         AdultNeedsAny: [Items.HOOKSHOT, Items.BOOMERANG]
                     },
                     "Forest Close Chest": {
+                        SpoilerLogName: "Ganons Castle MQ Forest Trial Eye Switch Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 168, y: 170, floor: "FST" },
                         Age: Age.EITHER,
@@ -7853,6 +7859,7 @@ let MQDungeons = {
                         AdultNeeds: [Items.FAIRY_BOW]
                     },
                     "Forest Far Chest": {
+                        SpoilerLogName: "Ganons Castle MQ Forest Trial Frozen Eye Switch Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 153, y: 147, floor: "FST" },
                         Age: Age.EITHER,
@@ -7867,6 +7874,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Forest Trial End": {
+                        SpoilerLogName: [{
+                            name: "Ganons Castle MQ Forest Trial Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -7901,6 +7912,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Left Water Trial": {
+                        SpoilerLogName: "Ganons Castle MQ Water Trial Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 163, y: 233, floor: "WTR" },
                         Age: Age.EITHER,
@@ -7908,6 +7920,7 @@ let MQDungeons = {
                         LongDescription: "The chest is in the red ice on the left side of the room. You can roll into it and spam A to open the chest through the ice.<br/><br/>If you want to melt it, attack the weird hand thing on the right side of the room to lower the water around the blue fire."
                     },
                     "Heart in Right Water Trial": {
+                        SpoilerLogName: "Ganons Castle MQ Water Trial Recovery Heart",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapInfo: { x: 226, y: 233, floor: "WTR" },
                         MapImageName: "Recovery Heart",
@@ -7928,6 +7941,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Water Silver Rupee in Block Hole": {
+                        SpoilerLogName: "Ganons Castle MQ Water Trial Silver Rupee Hole",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 197, y: 119, floor: "WTR" },
                         Age: Age.EITHER,
@@ -7935,13 +7949,15 @@ let MQDungeons = {
                         LongDescription: "Enter the water trial - use a sword weapon behind the random dead hand to hit a switch in the wall to gain access to the blue fire. Melt the red ice wall and proceed through the locked door (make sure you still have blue fire).<br/><br/>The rupee is in front of you in the hole. Note that Child cannot get out of the hole!"
                     },
                     "Water Silver Rupee Above Water Trial Chasm": {
+                        SpoilerLogName: "Ganons Castle MQ Water Trial Silver Rupee Above Void",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 214, y: 56, floor: "WTR" },
                         Age: Age.EITHER,
                         Order: 12.2,
                         LongDescription: "In the back right part of the room, you can do an angled jump from one side of the void to another and grab this rupee on the way."
                     },
-                    "Water Silver Rupee Floating by Push Blocks": {
+                    "Water Silver Rupee Floating by Push Blocks": { //TODO Mapping: check these three rupees
+                        SpoilerLogName: "Ganons Castle MQ Water Trial Silver Rupee Near Blocks",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 177, y: 94, floor: "WTR" },
                         Age: Age.EITHER,
@@ -7949,6 +7965,7 @@ let MQDungeons = {
                         LongDescription: "This is the floating rupee by the two push blocks. As adult, you can get this by jumping from the top of one of the blocks.<br/><br/>As child - first, push the back block so it's against the blue rock. Backflip onto the rock. Now, you can climb onto the block and do a roll-jump toward the rupee to get it."
                     },
                     "Water Silver Rupee in Alcove": {
+                        SpoilerLogName: "Ganons Castle MQ Water Trial Silver Rupee Center Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 150, y: 94, floor: "WTR" },
                         Age: Age.EITHER,
@@ -7956,6 +7973,7 @@ let MQDungeons = {
                         LongDescription: "This is the rupee in the alcove on the left side of the room."
                     },
                     "Water Silver Rupee on Alcove Platform": {
+                        SpoilerLogName: "Ganons Castle MQ Water Trial Silver Rupee Red Ice",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 125, y: 94, floor: "WTR" },
                         Age: Age.ADULT,
@@ -7970,6 +7988,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Water Trial End": {
+                        SpoilerLogName: [{
+                            name: "Ganons Castle MQ Water Trial Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -7998,6 +8020,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Shadow Chest on Small Platform": {
+                        SpoilerLogName: "Ganons Castle MQ Shadow Trial Bomb Flower Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 147, y: 227, floor: "SHW" },
                         Age: Age.ADULT,
@@ -8023,6 +8046,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Shadow Silver Rupee on Invisible Moving Platform": {
+                        SpoilerLogName: "Ganons Castle MQ Shadow Trial Silver Rupee Moving Platform",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 178, y: 190, floor: "SHW" },
                         Age: Age.ADULT,
@@ -8030,6 +8054,7 @@ let MQDungeons = {
                         LongDescription: "Navigate to the moving platform using either hover boots, or by shooting the bombflower and hookshoting to the chest to get this rupee."
                     },
                     "Shadow Silver Rupee on Bomb Flower Island": {
+                        SpoilerLogName: "Ganons Castle MQ Shadow Trial Silver Rupee Bomb Flower",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 220, y: 209, floor: "SHW" },
                         Age: Age.ADULT,
@@ -8037,6 +8062,7 @@ let MQDungeons = {
                         LongDescription: "Navigate to the moving platform using either hover boots, or by shooting the bombflower and hookshoting to the chest. Carefully navigate to the little island with the bombflower and the rupee."
                     },
                     "Shadow Silver Rupee Under Front Beamos": {
+                        SpoilerLogName: "Ganons Castle MQ Shadow Trial Silver Rupee First Beamos",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 182, y: 155, floor: "SHW" },
                         Age: Age.ADULT,
@@ -8054,6 +8080,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Shadow Chest in Back": {
+                        SpoilerLogName: "Ganons Castle MQ Shadow Trial Eye Switch Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 186, y: 103, floor: "SHW" },
                         Age: Age.ADULT,
@@ -8062,6 +8089,7 @@ let MQDungeons = {
                         NeedsAny: [Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]
                     },
                     "Shadow Silver Rupee Under Back Beamos": {
+                        SpoilerLogName: "Ganons Castle MQ Shadow Trial Silver Rupee Last Beamos",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 150, y: 73, floor: "SHW" },
                         Age: Age.ADULT,
@@ -8069,6 +8097,7 @@ let MQDungeons = {
                         LongDescription: "At the shadow trial, use your lens of truth to navigate across the room. There's an invisible moving invisible platform you'll need to use. To cross the other gap, use hover boots or light the sunken torch to create a platform.</br></br>The rupee is under the beamos to the island on the left. The Lens of Truth will reveal a path."
                     },
                     "Shadow Silver Rupee by Back Guillotine": {
+                        SpoilerLogName: "Ganons Castle MQ Shadow Trial Silver Rupee Guillotine",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 175, y: 61, floor: "SHW" },
                         Age: Age.ADULT,
@@ -8082,6 +8111,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Shadow Trial End": {
+                        SpoilerLogName: [{
+                            name: "Ganons Castle MQ Shadow Trial Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -8110,6 +8143,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Fire Silver Rupee Above Rising Platform": {
+                        SpoilerLogName: "Ganons Castle MQ Fire Trial Silver Rupee Rising Platform",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 219, y: 199, floor: "FIR" },
                         Age: Age.EITHER,
@@ -8134,7 +8168,8 @@ let MQDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Fire Silver Rupee Under Silver Pillar": {
+                    "Fire Silver Rupee Under Silver Pillar": { // TODO Mapping: check these 4 rupees
+                        SpoilerLogName: "Ganons Castle MQ Fire Trial Silver Rupee Beamos",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 233, y: 143, floor: "FIR" },
                         Age: Age.ADULT,
@@ -8143,6 +8178,7 @@ let MQDungeons = {
                         Needs: [UpgradedItems.GOLDEN_GAUNTLETS]
                     },
                     "Fire Silver on Back Left Platform": {
+                        SpoilerLogName: "Ganons Castle MQ Fire Trial Silver Rupee Left Center",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 132, y: 166, floor: "FIR" },
                         Age: Age.EITHER,
@@ -8150,6 +8186,7 @@ let MQDungeons = {
                         LongDescription: "Navigate around to the long platform in the back left part of the room. The rupee is in the middle of the circular section."
                     },
                     "Fire Silver Rupee by Left Moving Platform": {
+                        SpoilerLogName: "Ganons Castle MQ Fire Trial Silver Rupee Left Front",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 132, y: 210, floor: "FIR" },
                         Age: Age.EITHER,
@@ -8157,6 +8194,7 @@ let MQDungeons = {
                         LongDescription: "Navigate around to the long platform in the back left part of the room. Jump on the moving platform to the south to get to the rupee."
                     },
                     "Fire Silver Rupee in Back Left Corner": {
+                        SpoilerLogName: "Ganons Castle MQ Fire Trial Silver Rupee Left Back",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 141, y: 129, floor: "FIR" },
                         Age: Age.EITHER,
@@ -8170,6 +8208,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Fire Trial End": {
+                        SpoilerLogName: [{
+                            name: "Ganons Castle MQ Fire Trial Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -8205,6 +8247,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Light Zelda's Lullaby Chest": {
+                        SpoilerLogName: "Ganons Castle MQ Light Trial Lullaby Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 194, y: 197, floor: "LIT" },
                         Age: Age.EITHER,
@@ -8240,6 +8283,10 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts at Light Trial": {
+                        SpoilerLogName: [{
+                            name: "Ganons Castle MQ Light Trial Recovery Heart {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "2 Hearts",
@@ -8257,6 +8304,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Light Trial End": {
+                        SpoilerLogName: [{
+                            name: "Ganons Castle MQ Light Trial Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -8285,6 +8336,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Spirit Chest After Iron Knuckle": {
+                        SpoilerLogName: "Ganons Castle MQ Spirit Trial First Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 241, y: 184, floor: "SPT" },
                         Age: Age.ADULT,
@@ -8303,6 +8355,7 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "Spirit Invisible Chest": {
+                        SpoilerLogName: "Ganons Castle MQ Spirit Trial Invisible Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 239, y: 120, floor: "SPT" },
                         Age: Age.ADULT,
@@ -8318,6 +8371,15 @@ let MQDungeons = {
                 },
                 ItemLocations: {
                     "4 Spirit Sun Chests": {
+                        SpoilerLogName: [{
+                            name: "Ganons Castle MQ Spirit Trial {#}",
+                            tokens: [
+                                "Sun Front Left Chest", 
+                                "Sun Back Left Chest", 
+                                "Sun Back Right Chest", 
+                                "Golden Gauntlets Chest"
+                            ]
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CHEST,
                         DefaultEntranceGroupName: "4 Chests",
@@ -8333,6 +8395,10 @@ let MQDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "2 Pots at Spirit Trial End": {
+                        SpoilerLogName: [{
+                            name: "Ganons Castle MQ Spirit Trial Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
