@@ -5772,6 +5772,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Entrance Room Left Chest": {
+                        SpoilerLogName: "Gerudo Training Ground Lobby Left Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 153, y: 233 },
                         Age: Age.EITHER,
@@ -5780,6 +5781,7 @@ let StandardDungeons = {
                         Needs: [ItemSets.PROJECTILES]
                     },
                     "Entrance Room Right Chest": {
+                        SpoilerLogName: "Gerudo Training Ground Lobby Right Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 176, y: 233 },
                         Age: Age.EITHER,
@@ -5909,6 +5911,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Dinalfos/Beamos Room": {
+                        SpoilerLogName: "Gerudo Training Ground Beamos Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 257, y: 244 },
                         Age: Age.EITHER,
@@ -5917,6 +5920,10 @@ let StandardDungeons = {
                         Needs: [ItemSets.EXPLOSIVES]
                     },
                     "2 Hearts in Dinalfos/Beamos Room": {
+                        SpoilerLogName: [{
+                            name: "Gerudo Training Ground Beamos Recovery Heart {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         DefaultEntranceGroupName: "2 Hearts",
@@ -5926,6 +5933,7 @@ let StandardDungeons = {
                         LongDescription: "This is either the room to the right of the entrance, or the southern path from the big lava room. Climb the platform from one of the skinny sides to gain access to these hearts.",
                     },
                     "Wonderitem in Dinalfos/Beamos Room": {
+                        SpoilerLogName: "Gerudo Training Ground Beamos Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 257, y: 221 },
@@ -5945,6 +5953,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Stalfos Chest in Sandy Room": {
+                        SpoilerLogName: "Gerudo Training Ground Stalfos Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 64, y: 225 },
                         Age: Age.EITHER,
@@ -5965,6 +5974,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Boulder Silver Rupee on Ceiling": {
+                        SpoilerLogName: "Gerudo Training Ground Boulder Room Silver Rupee Ceiling",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 74, y: 196 },
                         Age: Age.EITHER,
@@ -5975,6 +5985,7 @@ let StandardDungeons = {
                         NeedsAny: [Items.HOOKSHOT, Tricks.gtgSlopesRoomWallmasterToRupee.canDo]
                     },
                     "Boulder Silver Rupee in Left Area by Void": {
+                        SpoilerLogName: "Gerudo Training Ground Boulder Room Silver Rupee Bottom Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 53, y: 198 },
                         Age: Age.EITHER,
@@ -5982,6 +5993,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is to the left of the entrance, by the void the boulders move toward.",
                     },
                     "Boulder Silver Rupee in Back Left Area": {
+                        SpoilerLogName: "Gerudo Training Ground Boulder Room Silver Rupee Top Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 56, y: 128 },
                         Age: Age.EITHER,
@@ -5989,6 +6001,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is in the very back of the left hallway, by where the boulders spawn.",
                     },
                     "Boulder Silver Rupee in Midair": {
+                        SpoilerLogName: "Gerudo Training Ground Boulder Room Silver Rupee Ledge",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 72, y: 157 },
                         Age: Age.EITHER,
@@ -5996,6 +6009,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is the one in front of the entrance, in midair. If you have no hookshot, go around via the second right turn from the entrance, then make two lefts. You can now jump off the cliff to claim the rupee.",
                     },
                     "Boulder Silver Rupee in Right Area": {
+                        SpoilerLogName: "Gerudo Training Ground Boulder Room Silver Rupee Bottom Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 87, y: 194 },
                         Age: Age.EITHER,
@@ -6027,6 +6041,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Wolfos Chest in Room by Silver Block": {
+                        SpoilerLogName: "Gerudo Training Ground Before Heavy Block Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 90, y: 83 },
                         Age: Age.EITHER,
@@ -6049,7 +6064,8 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Silver Gauntlets" },
                 Exits: {},
                 ItemLocations: {
-                    "Silver Block Room Left Spawned Chest": {
+                    "Silver Block Room Left Spawned Chest": { //TODO Mapping: check all 4 chests here
+                        SpoilerLogName: "Gerudo Training Ground Heavy Block First Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 68, y: 28 },
                         Age: Age.ADULT,
@@ -6057,6 +6073,7 @@ let StandardDungeons = {
                         LongDescription: "This is the room you get to after pushing the silver block in the room with the wolfos. If you haven't already, from the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. Step on the switch to remove the iron bars on the door beyond the silver block. The chest spawns after you kill the like-likes."
                     },
                     "Silver Block Room Right Spawned Chest": {
+                        SpoilerLogName: "Gerudo Training Ground Heavy Block Second Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 78, y: 37 },
                         Age: Age.ADULT,
@@ -6064,6 +6081,7 @@ let StandardDungeons = {
                         LongDescription: "This is the room you get to after pushing the silver block in the room with the wolfos. If you haven't already, from the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. Step on the switch to remove the iron bars on the door beyond the silver block. The chest spawns after you kill the like-likes."
                     },
                     "Silver Block Room Back Chest": {
+                        SpoilerLogName: "Gerudo Training Ground Heavy Block Third Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 68, y: 17 },
                         Age: Age.ADULT,
@@ -6071,6 +6089,7 @@ let StandardDungeons = {
                         LongDescription: "This is the room you get to after pushing the silver block in the room with the wolfos. If you haven't already, from the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. Step on the switch to remove the iron bars on the door beyond the silver block. The chest is in the back of the room."
                     },
                     "Silver Block Room Hidden Chest": {
+                        SpoilerLogName: "Gerudo Training Ground Heavy Block Fourth Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 81, y: 22 },
                         Age: Age.ADULT,
@@ -6088,6 +6107,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Wonderitem on Eye Statue": {
+                        SpoilerLogName: "Gerudo Training Ground Eye Statue Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapInfo: { x: 163, y: 91 },
                         Age: Age.EITHER,
@@ -6101,6 +6121,7 @@ let StandardDungeons = {
                         ]
                     },
                     "Eye Statue Room Top Room Chest": {
+                        SpoilerLogName: "Gerudo Training Ground Near Scarecrow Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 165, y: 133 },
                         Age: Age.EITHER,
@@ -6118,6 +6139,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Eye Statue Room Bottom Chest": {
+                        SpoilerLogName: "Gerudo Training Ground Eye Statue Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 170, y: 91 },
                         Age: Age.ADULT,
@@ -6138,6 +6160,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Chest in Room with Pillars": {
+                        SpoilerLogName: "Gerudo Training Ground Hammer Room Clear Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 256, y: 75 },
                         Age: Age.EITHER,
@@ -6145,6 +6168,7 @@ let StandardDungeons = {
                         LongDescription: "This is either after the eye statue room, or after the big lava room. This is the chest that spawns after you kill all the enemies."
                     },
                     "Flaming Chest in Room with Pillars": {
+                        SpoilerLogName: "Gerudo Training Ground Hammer Room Switch Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 254, y: 90 },
                         Age: Age.EITHER,
@@ -6152,6 +6176,7 @@ let StandardDungeons = {
                         LongDescription: "This is either after the eye statue room, or after the big lava room. Use your hammer on the pillars until you find a floor switch. Step on it to remove the flames from the chest. Be sure to get it before they come back!<br/><br/>If you have no hammer, line up with the front of the chest and walk into the fire and keep holding up. Open the chest when you reach it before the fire wears off."
                     },
                     "Wonderitem in Room with Pillars": {
+                        SpoilerLogName: "Gerudo Training Ground Hammer Room Wonderitem",
                         ItemGroup: ItemGroups.WONDERITEM,
                         MapImageName: "Bow Wonderitem",
                         MapInfo: { x: 255, y: 109 },
@@ -6182,6 +6207,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Lava Silver Rupee in Front Center": {
+                        SpoilerLogName: "Gerudo Training Ground Lava Room Silver Rupee Front Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 247, y: 180 },
                         Age: Age.EITHER,
@@ -6189,6 +6215,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is the one on the platform in front of you, when entering from the aromos room."
                     },
                     "Lava Silver Rupee in Front Right": {
+                        SpoilerLogName: "Gerudo Training Ground Lava Room Silver Rupee Front Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 261, y: 171 },
                         Age: Age.EITHER,
@@ -6196,6 +6223,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is the one on the platform to your right when entering from the aromos room."
                     },
                     "Lava Silver Rupee in Fire Circle": {
+                        SpoilerLogName: "Gerudo Training Ground Lava Room Silver Rupee Flame Circle",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 236, y: 145 },
                         Age: Age.EITHER,
@@ -6218,6 +6246,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Lava Silver Rupee in Back Right": {
+                        SpoilerLogName: "Gerudo Training Ground Lava Room Silver Rupee Center Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 262, y: 144 },
                         Age: Age.EITHER,
@@ -6237,6 +6266,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Lava Silver Rupee on Upper Ledge": {
+                        SpoilerLogName: "Gerudo Training Ground Lava Room Silver Rupee Hookshot Target",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 255, y: 124 },
                         Age: Age.ADULT,
@@ -6251,6 +6281,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Topmost Water Room Silver Rupee": {
+                        SpoilerLogName: "Gerudo Training Ground Underwater Silver Rupee Top",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 306, y: 165 },
                         Age: Age.EITHER,
@@ -6260,6 +6291,10 @@ let StandardDungeons = {
                         Needs: [Songs.SONG_OF_TIME, GameStateSets.GTG_TUNIC_CHECK] // Seems these blocks ARE there as child
                     },
                     "4 Silver Rupees in Water Room": {
+                        SpoilerLogName: [{
+                            name: "Gerudo Training Ground Underwater Silver Rupee {#}",
+                            tokens: ["Middle", "Bottom Front Right", "Bottom Center", "Bottom Back Left"]
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SILVER_RUPEE,
                         DefaultEntranceGroupName: "4 Silver Rupees",
@@ -6270,6 +6305,7 @@ let StandardDungeons = {
                         Needs: [Equipment.IRON_BOOTS, Songs.SONG_OF_TIME, GameStateSets.GTG_TUNIC_CHECK]
                     },
                     "Chest in Water Room": {
+                        SpoilerLogName: "Gerudo Training Ground Underwater Silver Rupee Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 297, y: 160 },
                         Age: Age.EITHER,
@@ -6291,13 +6327,15 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Lava Room Key on Platform": {
+                        SpoilerLogName: "Gerudo Training Ground Freestanding Key",
                         ItemGroup: ItemGroups.FREESTANDING,
                         MapInfo: { x: 230, y: 164 },
                         Age: Age.EITHER,
                         Order: 13,
                         LongDescription: "There are a few ways to get here. From the entrance, enter the door in front of you. You can use two of your keys on the doors to the right, then take a right to get to the platform with the key. I don't really recommend doing this if you have the hookshot unless you also have all 9 keys.<br/><br/>If you go right from the entrance, clear out the room then proceed forward. Now, you're in the lava room. Navigate over to the left by the switch. Play the Song of Time then jump to the blocks to get to the platform with the freestanding key.<br/><br/>Finally, you can also make your way all the around the dungeon from the left to get to the lava room. You either need hover boots or the hookshot to cross the room all the way, though. Again, get to the switch then play the Song of Time to get up."
                     },
-                    "Maze Chest Close to Lava Room": {
+                    "Maze Chest Close to Lava Room": { //TODO Mapping: check this and the next
+                        SpoilerLogName: "Gerudo Training Ground Maze Right Central Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 179, y: 165 },
                         Age: Age.EITHER,
@@ -6305,6 +6343,7 @@ let StandardDungeons = {
                         LongDescription: "There are a few ways to get here. From the entrance, enter the door in front of you. You can use two of your keys on the doors to the right. This is the first chest you see. I don't really recommend doing this if you have the hookshot unless you also have all 9 keys.<br/><br/>If you go right from the entrance, clear out the room then proceed forward. Now, you're in the lava room. Navigate over to the left by the switch. Play the Song of Time then jump to the blocks to get to the platform. If you go straight from here, you'll reach the chest.<br/><br/>Finally, you can also make your way all the around the dungeon from the left to get to the lava room. You either need hover boots or the longshot to cross the room all the way, though. Again, get to the switch then play the Song of Time to get up. The chest is straight ahead."
                     },
                     "Maze Chest at Dead End by Lava Room": {
+                        SpoilerLogName: "Gerudo Training Ground Maze Right Side Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 187, y: 154 },
                         Age: Age.EITHER,
@@ -6347,7 +6386,8 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Left Maze Path After Door 1": {
+                    "Left Maze Path After Door 1": { //TODO Mapping: check all maze chests
+                        SpoilerLogName: "Gerudo Training Ground Hidden Ceiling Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 152, y: 192 },
                         Age: Age.EITHER,
@@ -6369,6 +6409,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Left Maze Path After Door 2": {
+                        SpoilerLogName: "Gerudo Training Ground Maze Path First Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 130, y: 163 },
                         Age: Age.EITHER,
@@ -6403,6 +6444,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Left Maze Path After Door 4": {
+                        SpoilerLogName: "Gerudo Training Ground Maze Path Second Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 142, y: 136 },
                         Age: Age.EITHER,
@@ -6424,6 +6466,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Left Maze Path After Door 5": {
+                        SpoilerLogName: "Gerudo Training Ground Maze Path Third Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 148, y: 137 },
                         Age: Age.EITHER,
@@ -6450,6 +6493,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Center Maze Chest": {
+                        SpoilerLogName: "Gerudo Training Ground Maze Path Final Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 164, y: 159 },
                         Age: Age.EITHER,
