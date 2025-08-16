@@ -4096,6 +4096,10 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Flying Pots in Lobby": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple Lobby Flying Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4105,6 +4109,10 @@ let StandardDungeons = {
                         LongDescription: "These are the pots that fly at you at the entrance to the temple."
                     },
                     "2 Pots in Lobby": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple Lobby Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4203,6 +4211,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Flying Pot After Stalfos": {
+                        SpoilerLogName: "Spirit Temple Child Bridge Flying Pot 2",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 39, y: 81, floor: "F1" },
                         Age: Age.EITHER,
@@ -4211,6 +4220,10 @@ let StandardDungeons = {
                         LongDescription: "Enter the child-only crawlspace. Kill all the enemies in the first room to unlock the doors - BEWARE OF FIRE KEESE! Enter the left room. The goal in this room is to hit the switch to lower the bridge to get the pot on the other side. There are a few ways to do this. The easiest way is to simply use the boomerang to go around the bridge blocking the switch. If you have the slingshot, you can inch up to the ledge closest to the door and make a precise shot - be sure to go quick if you don't have the means to kill the stalfos.<br/><br/>To use a bombchu, line up with the back wall and face the switch. Take out the chu then drop it after the first flash (like 1/2 a second).<br/><br/>Note that the flying pot you want to hit you is the one on the right; the left one contains nothing."
                     },
                     "2 Flying Pots After Stalfos": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple Child Bridge Flying Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         IsEmpty: true,
@@ -4221,6 +4234,7 @@ let StandardDungeons = {
                         LongDescription: "Enter the child-only crawlspace. Kill all the enemies in the first room to unlock the doors - BEWARE OF FIRE KEESE! Enter the left room. The goal in this room is to hit the switch to lower the bridge to get the pots on the other side. There are a few ways to do this. The easiest way is to simply use the boomerang to go around the bridge blocking the switch. If you have the slingshot, you can inch up to the ledge closest to the door and make a precise shot - be sure to go quick if you don't have the means to kill the stalfos.<br/><br/>To use a bombchu, line up with the back wall and face the switch. Take out the chu then drop it after the first flash (like 1/2 a second)."
                     },
                     "Chest After Stalfos": {
+                        SpoilerLogName: "Spirit Temple Child Bridge Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 31, y: 81, floor: "F1" },
                         Age: Age.EITHER,
@@ -4228,6 +4242,7 @@ let StandardDungeons = {
                         LongDescription: "Enter the child-only crawlspace. Kill all the enemies in the first room to unlock the doors - BEWARE OF FIRE KEESE! Enter the left room.</br></br>The goal in this room is to hit the switch to lower the bridge to get the chest on the other side. There are a few ways to do this. The easiest way is to simply use the boomerang to go around the bridge blocking the switch. If you have the slingshot, you can inch up to the ledge closest to the door and make a precise shot - be sure to go quick if you don't have the means to kill the stalfos.<br/><br/>If using a bombchu, get against the wall opposite the switch, backflip x3 and drop it."
                     },
                     "Pot in Child Anubis Room": {
+                        SpoilerLogName: "Spirit Temple Child Anubis Pot 3",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 74, y: 47, floor: "F1" },
                         Age: Age.EITHER,
@@ -4236,6 +4251,10 @@ let StandardDungeons = {
                         LongDescription: "Enter the room after the Stalfos with the bridge. The pot is the one right in front of you - the others are empty."
                     },
                     "4 Pots in Child Anubis Room": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple Child Anubis Pot {#}",
+                            count: 4
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         IsEmpty: true,
@@ -4258,6 +4277,10 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "4 Grate Room Silver Rupees on Grate": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple Child Early Torches Silver Rupee {#}",
+                            tokens: ["Top Right", "Bottom Right", "Bottom Left", "Top Left"]
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.SILVER_RUPEE,
                         DefaultEntranceGroupName: "4 Silver Rupees",
@@ -4267,6 +4290,7 @@ let StandardDungeons = {
                         LongDescription: "WALL MASTER WARNING:<br/>Make your way counter-clockwise around the child-only areas of the temple. In the room with the Anubis, either Din's fire him, or hit the switch then quickly navigate to the side directly opposite the fire so that it dies on it.<br/><br/>These rupees are on the grate itself, so climb up to get them."
                     },
                     "Grate Room Silver Rupee Near Torch": {
+                        SpoilerLogName: "Spirit Temple Child Early Torches Silver Rupee Near Torch",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 152, y: 67, floor: "F1" },
                         Age: Age.EITHER,
@@ -4274,6 +4298,7 @@ let StandardDungeons = {
                         LongDescription: "WALL MASTER WARNING:<br/>This rupee is in the corner of the child grate room, near the torch. See the previous location for how to get here.",
                     },
                     "Chest After Anubis Room": {
+                        SpoilerLogName: "Spirit Temple Child Early Torches Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 151, y: 75, floor: "F1" },
                         Age: Age.EITHER,
@@ -4289,6 +4314,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Skulltula in Grate Room": {
+                        SpoilerLogName: "Spirit Temple GS Metal Fence",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: {x: 151, y: 90, floor: "F1" },
                         Age: Age.EITHER,
@@ -4311,6 +4337,10 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Crates After Second Crawlspace": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple Before Child Climb Small Wooden Crate {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.CRATE,
                         DefaultEntranceGroupName: "2 Crates",
@@ -4334,6 +4364,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Pot in Sun on Floor Room Bottom": {
+                        SpoilerLogName: "Spirit Temple Child Climb Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 84, y: 78, floor: "F1" },
                         Age: Age.EITHER,
@@ -4341,13 +4372,15 @@ let StandardDungeons = {
                         LongDescription: "This is the room you get to as a child after entering the crawlspace and going through the door. As adult, you can enter from the opposite side of the statue room that you normally enter from (bottom door). The pot is on the bottom section by the climbable wall."
                     },
                     "Skulltula in Sun on Floor Room": {
+                        SpoilerLogName: "Spirit Temple GS Sun on Floor Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 35, y: 133, floor: "F2" },
                         Age: Age.EITHER,
                         Order: 11,
                         LongDescription: "This is the room you get to as a child after entering the crawlspace and going through the door. As adult, you can enter from the opposite side of the statue room that you normally enter from (bottom door). The skulltula is on the wall leading down the climbable wall. You can hit it with a jumpslash, an explosive, Din's Fire, or a ranged weapon."
                     },
-                    "Left Chest in Sun on Floor Room": {
+                    "Left Chest in Sun on Floor Room": { //TODO Mapping: check this and the next chest
+                        SpoilerLogName: "Spirit Temple Child Climb North Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 63, y: 141, floor: "F2" },
                         Age: Age.EITHER,
@@ -4357,6 +4390,7 @@ let StandardDungeons = {
                         AdultNeedsAny: [Items.FAIRY_BOW, Items.HOOKSHOT, Items.BOMBCHU, Items.BOMB]
                     },
                     "Right Chest in Sun on Floor Room": {
+                        SpoilerLogName: "Spirit Temple Child Climb East Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 51, y: 131, floor: "F2" },
                         Age: Age.EITHER,
@@ -4394,6 +4428,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Compass Chest in Sandy Room": {
+                        SpoilerLogName: "Spirit Temple Compass Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 226, y: 99, floor: "F1" },
                         Age: Age.ADULT,
@@ -4403,6 +4438,7 @@ let StandardDungeons = {
                         NeedsAny: [Items.HOOKSHOT, Tricks.bombSuperslide.canDoWithHoverBoots, Tricks.hammerHoverBootsSuperslide.canDo]
                     },
                     "Boulder Silver Rupee in Midair": {
+                        SpoilerLogName: "Spirit Temple Adult Boulder Silver Rupee Ledge",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 318, y: 135, floor: "F1" },
                         Age: Age.ADULT,
@@ -4410,6 +4446,7 @@ let StandardDungeons = {
                         LongDescription: "Head to the room blocked by the silver block. Hit the switch above the beamos to open the doors. Enter the door to the right.<br/><br>This is the floating rupee at the start of the room. Use hover boots, or roll off the edge and do a delayed jumpslash to get it."
                     },
                     "Boulder Silver Rupee Front Left": {
+                        SpoilerLogName: "Spirit Temple Adult Boulder Silver Rupee Front Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 299, y: 138, floor: "F1" },
                         Age: Age.ADULT,
@@ -4417,6 +4454,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is in the front left alcove of the boulder room."
                     },
                     "Boulder Silver Rupee Front Right": {
+                        SpoilerLogName: "Spirit Temple Adult Boulder Silver Rupee Front Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 337, y: 128, floor: "F1" },
                         Age: Age.ADULT,
@@ -4424,6 +4462,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is in the front right alcove of the boulder room."
                     },
                     "Boulder Silver Rupee Back Right": {
+                        SpoilerLogName: "Spirit Temple Adult Boulder Silver Rupee Back Right",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 337, y: 109, floor: "F1" },
                         Age: Age.ADULT,
@@ -4431,6 +4470,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is in the back right alcove of the boulder room."
                     },
                     "Boulder Silver Rupee Back Left": {
+                        SpoilerLogName: "Spirit Temple Adult Boulder Silver Rupee Back Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 299, y: 106, floor: "F1" },
                         Age: Age.ADULT,
@@ -4438,6 +4478,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is in the back left alcove of the boulder room."
                     },
                     "Skulltula in Boulder Room": {
+                        SpoilerLogName: "Spirit Temple GS Boulder Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 296, y: 122, floor: "F1" },
                         Age: Age.ADULT,
@@ -4452,6 +4493,7 @@ let StandardDungeons = {
                 Exits: {},
                 ItemLocations: {
                     "Chest After Boulder Room": {
+                        SpoilerLogName: "Spirit Temple Early Adult Right Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 319, y: 65, floor: "F1" },
                         Age: Age.ADULT,
@@ -4467,6 +4509,10 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Flying Pots in Invisible Floormaster Room": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple Adult Climb Flying Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4476,6 +4522,7 @@ let StandardDungeons = {
                         LongDescription: "Enter the middle door after the silver block room. The pots from the right will fly at you, but watch out for the like like!"
                     },
                     "Left Chest in Invisible Floormaster Room": {
+                        SpoilerLogName: "Spirit Temple First Mirror Left Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 330, y: 168, floor: "F2" },
                         Age: Age.ADULT,
@@ -4483,6 +4530,7 @@ let StandardDungeons = {
                         LongDescription: "Enter the middle door after the silver block room. This is the chest that appears after facing the snake mirror at the first sun."
                     },
                     "Right Chest in Invisible Floormaster Room": {
+                        SpoilerLogName: "Spirit Temple First Mirror Right Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 330, y: 184, floor: "F2" },
                         Age: Age.ADULT,
@@ -4503,7 +4551,11 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "3 Left Pots in Statue Room": {
+                    "3 Left Pots in Statue Room": { //TODO Mapping: check normal AND flying pots
+                        SpoilerLogName: [{
+                            name: "Spirit Temple Central Chamber Pot {#}",
+                            count: 3
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         IsEmpty: true,
@@ -4514,6 +4566,7 @@ let StandardDungeons = {
                         LongDescription: "Head to the statue room. These pots are in a corner to the left of the statue, near the climbable wall."
                     },
                     "Left Flying Pot in Statue Room": {
+                        SpoilerLogName: "Spirit Temple Central Chamber Flying Pot 1",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 131, y: 118, floor: "F2" },
                         Age: Age.EITHER,
@@ -4521,6 +4574,10 @@ let StandardDungeons = {
                         LongDescription: "Head to the statue room. The pot will fly at you if you go to the left of the statue."
                     },
                     "3 Right Pots in Statue Room": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple Central Chamber Pot {#}",
+                            count: { min: 3, max: 5 }
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         IsEmpty: true,
@@ -4531,6 +4588,7 @@ let StandardDungeons = {
                         LongDescription: "Head to the statue room. These pots are in a corner to the right of the statue."
                     },
                     "Right Flying Pot in Statue Room": {
+                        SpoilerLogName: "Spirit Temple Central Chamber Flying Pot 2",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 224, y: 118, floor: "F2" },
                         Age: Age.EITHER,
@@ -4538,6 +4596,7 @@ let StandardDungeons = {
                         LongDescription: "Head to the statue room. The pot will fly at you if you go to the right of the statue."
                     },
                     "Map Chest in Statue Room": {
+                        SpoilerLogName: "Spirit Temple Map Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 176, y: 147, floor: "F2" },
                         Age: Age.EITHER,
@@ -4546,6 +4605,7 @@ let StandardDungeons = {
                         NeedsAny: [Items.DEKU_STICK, Items.FAIRY_BOW, ItemSets.FIRE_ITEMS, QPAItemSets.LEDGE_QPA]
                     },
                     "Chest in Statue Room on Northeast Platform": {
+                        SpoilerLogName: "Spirit Temple Statue Room Northeast Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 254, y: 107, floor: "F2" },
                         Age: Age.ADULT,
@@ -4561,6 +4621,7 @@ let StandardDungeons = {
                         ]
                     },
                     "Chest on Statue's Hand": {
+                        SpoilerLogName: "Spirit Temple Statue Room Hand Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 133, y: 130, floor: "F2" },
                         Age: Age.ADULT,
@@ -4568,7 +4629,8 @@ let StandardDungeons = {
                         LongDescription: "Head to the statue room. Head up to the upper southeast corner of the room. If you face the statue, that's behind and to the right if you. You may have to hookshot up to the platform to get there. Jump to the statue's hand from the platform. You can use hover boots if you want, but they aren't necessary. Play Zelda's Lullaby on the Triforce picture. If you have the longshot, you can hook the chest that spawns from the other hand from here. If not, head to the upper southwest corner of the room - that's the one closer to the other hand. You can jump to it from there.",
                         Needs: [Songs.ZELDAS_LULLABY]
                     },
-                    "Skulltula in Statue Room on Northwest Platform": {
+                    "Skulltula in Statue Room on Northwest Platform": { // TODO Mapping: check this
+                        SpoilerLogName: "Spirit Temple GS Lobby",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 93, y: 101, floor: "F2" },
                         Age: Age.EITHER,
@@ -4596,7 +4658,8 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Sun Block Silver Rupee on Wall by Blocks": {
+                    "Sun Block Silver Rupee on Wall by Blocks": { //TODO check all silver rupees
+                        SpoilerLogName: "Spirit Temple Sun Block Room Silver Rupee Center Front",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 65, y: 79, floor: "F3" },
                         Age: Age.EITHER,
@@ -4604,6 +4667,7 @@ let StandardDungeons = {
                         LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor.<br/><br/>This rupee is on the wall by the pushable blocks."
                     },
                     "Sun Block Silver Rupee Midair by Blocks": {
+                        SpoilerLogName: "Spirit Temple Sun Block Room Silver Rupee Center Back",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 50, y: 74, floor: "F3" },
                         Age: Age.EITHER,
@@ -4611,6 +4675,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is in midair by the pushable blocks."
                     },
                     "Sun Block Silver Rupee Midair by Sunlight": {
+                        SpoilerLogName: "Spirit Temple Sun Block Room Silver Rupee Right Back",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 20, y: 65, floor: "F3" },
                         Age: Age.EITHER,
@@ -4618,6 +4683,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is in the back right corner by the sunlight. Climb up the nearby platform, or use the blocks to get to it."
                     },
                     "Sun Block Silver Rupee by Entrance": {
+                        SpoilerLogName: "Spirit Temple Sun Block Room Silver Rupee Right Front",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 80, y: 65, floor: "F3" },
                         Age: Age.EITHER,
@@ -4625,6 +4691,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is just to the left of the entrance door. Use the pushable blocks or the platform by the sunlight to get up on the wall to grab it."
                     },
                     "Sun Block Silver Rupee by Beamos": {
+                        SpoilerLogName: "Spirit Temple Sun Block Room Silver Rupee Left",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 71, y: 117, floor: "F3" },
                         Age: Age.EITHER,
@@ -4632,6 +4699,7 @@ let StandardDungeons = {
                         LongDescription: "This rupee is in the left corner by one of the beamos. If you can't kill the beamos (and you're Child), you'll have to push a block over to get it. In this case, it's worth noting that deku nuts stun beamos!"
                     },
                     "Chest in Sun Block Room": {
+                        SpoilerLogName: "Spirit Temple Sun Block Room Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 60, y: 117, floor: "F3" },
                         Age: Age.EITHER,
@@ -4645,6 +4713,10 @@ let StandardDungeons = {
                         ]
                     },
                     "2 Pots in Hall Before Silver Knuckle": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple Hall After Sun Block Room Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4654,6 +4726,7 @@ let StandardDungeons = {
                         LongDescription: "Navigate to the statue room. Get to the room containing the sun block. If you face the statue, it's in the corner of the room behind you and to your left, on the topmost floor. In this room, there's a ray of light with some blocks nearby. Pull the block with the sun on it straight back and it will become happy when it hits the light, opening the door. The pots are on the walls in the next room."
                     },
                     "Skulltula in Hall Before Silver Knuckle": {
+                        SpoilerLogName: "Spirit Temple GS Hall After Sun Block Room",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 32, y: 131, floor: "F3" },
                         Age: Age.EITHER,
@@ -4681,6 +4754,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Silver Gauntlets Chest": {
+                        SpoilerLogName: "Spirit Temple Silver Gauntlets Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 103, y: 228, floor: "F3" },
                         Age: Age.EITHER,
@@ -4719,6 +4793,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Pot in Beamos Hall": {
+                        SpoilerLogName: "Spirit Temple Beamos Hall Pot",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 190, y: 54, floor: "F3" },
                         Age: Age.ADULT,
@@ -4735,6 +4810,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Sun Room Chest After 4 Armos": {
+                        SpoilerLogName: "Spirit Temple Near Four Armos Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 320, y: 41, floor: "F3" },
                         Age: Age.ADULT,
@@ -4755,6 +4831,7 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "Left Chest Before Mirror Knuckle": {
+                        SpoilerLogName: "Spirit Temple Hallway Left Invisible Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 329, y: 165, floor: "F3" },
                         Age: Age.ADULT,
@@ -4762,6 +4839,7 @@ let StandardDungeons = {
                         LongDescription: "After the armos room, a little bit up the corridor are two invisible chests on either side of the hallway. Make sure you're facing the wall when attempting to open them."
                     },
                     "Right Chest Before Mirror Knuckle": {
+                        SpoilerLogName: "Spirit Temple Hallway Right Invisible Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 317, y: 165, floor: "F3" },
                         Age: Age.ADULT,
@@ -4769,6 +4847,7 @@ let StandardDungeons = {
                         LongDescription: "After the armos room, a little bit up the corridor are two invisible chests on either side of the hallway. Make sure you're facing the wall when attempting to open them."
                     },
                     "Mirror Shield Chest": {
+                        SpoilerLogName: "Spirit Temple Mirror Shield Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 247, y: 226, floor: "F3" },
                         Age: Age.ADULT,
@@ -4784,6 +4863,10 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Hearts in Moving Wall Room": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple Shifting Wall Recovery Heart {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.FREESTANDING,
                         DefaultEntranceGroupName: "2 Hearts",
@@ -4794,6 +4877,7 @@ let StandardDungeons = {
                         NeedsAny: [Items.HOOKSHOT, Items.BOOMERANG]
                     },
                     "Boss Key Chest After Moving Wall Room": {
+                        SpoilerLogName: "Spirit Temple Boss Key Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 294, y: 40, floor: "F4" },
                         Age: Age.ADULT,
@@ -4817,6 +4901,10 @@ let StandardDungeons = {
                 },
                 ItemLocations: {
                     "2 Flying Pots in Upper Giant Mirror Room": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple Big Mirror Flying Pot {#}",
+                            count: 2
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -4826,6 +4914,10 @@ let StandardDungeons = {
                         LongDescription: "Enter the door to the left of the triforce symbol. One of the two pots will fly into you - the other is just in front of that one."
                     },
                     "4 Flying Pots in Lower Giant Mirror Room": {
+                        SpoilerLogName: [{
+                            name: "Spirit Temple Big Mirror Flying Pot {#}",
+                            count: { min: 3, max: 6 }
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "4 Pots",
@@ -4835,6 +4927,7 @@ let StandardDungeons = {
                         LongDescription: "Enter the door to the left of the triforce symbol. The pots are on the bottom in the corners by the giant mirror - they will fly at you."
                     },
                     "Chest in Snake Mirror Maze": {
+                        SpoilerLogName: "Spirit Temple Topmost Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: {x: 51, y: 150, floor: "F4" },
                         Age: Age.ADULT,
@@ -6377,7 +6470,7 @@ let StandardDungeons = {
                         Order: 13,
                         LongDescription: "There are a few ways to get here. From the entrance, enter the door in front of you. You can use two of your keys on the doors to the right, then take a right to get to the platform with the key. I don't really recommend doing this if you have the hookshot unless you also have all 9 keys.<br/><br/>If you go right from the entrance, clear out the room then proceed forward. Now, you're in the lava room. Navigate over to the left by the switch. Play the Song of Time then jump to the blocks to get to the platform with the freestanding key.<br/><br/>Finally, you can also make your way all the around the dungeon from the left to get to the lava room. You either need hover boots or the hookshot to cross the room all the way, though. Again, get to the switch then play the Song of Time to get up."
                     },
-                    "Maze Chest Close to Lava Room": { //TODO Mapping: check this and the next
+                    "Maze Chest Close to Lava Room": {
                         SpoilerLogName: "Gerudo Training Ground Maze Right Central Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 179, y: 165 },
@@ -6429,7 +6522,7 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "Left Maze Path After Door 1": { //TODO Mapping: check all maze chests
+                    "Left Maze Path After Door 1": {
                         SpoilerLogName: "Gerudo Training Ground Hidden Ceiling Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 152, y: 192 },
