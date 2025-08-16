@@ -4379,12 +4379,12 @@ let StandardDungeons = {
                         Order: 11,
                         LongDescription: "This is the room you get to as a child after entering the crawlspace and going through the door. As adult, you can enter from the opposite side of the statue room that you normally enter from (bottom door). The skulltula is on the wall leading down the climbable wall. You can hit it with a jumpslash, an explosive, Din's Fire, or a ranged weapon."
                     },
-                    "Left Chest in Sun on Floor Room": { //TODO Mapping: check this and the next chest
+                    "Left Chest in Sun on Floor Room": {
                         SpoilerLogName: "Spirit Temple Child Climb North Chest",
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 63, y: 141, floor: "F2" },
+                        MapInfo: { x: 51, y: 131, floor: "F2" },
                         Age: Age.EITHER,
-                        Order: 12,
+                        Order: 13,
                         LongDescription: "This is the room you get to as a child after entering the crawlspace and going through the door.<br/><br/>As adult, you can enter from the opposite side of the statue room that you normally enter from (bottom door).<br/><br/>If you face the door on the top part of the floor, there's a switch up and to your right. Hit it with an explosive or ranged weapon to spawn the chest.",
                         ChildNeedsAny: [Items.FAIRY_SLINGSHOT, Items.BOOMERANG, Items.BOMBCHU, Items.BOMB],
                         AdultNeedsAny: [Items.FAIRY_BOW, Items.HOOKSHOT, Items.BOMBCHU, Items.BOMB]
@@ -4392,9 +4392,9 @@ let StandardDungeons = {
                     "Right Chest in Sun on Floor Room": {
                         SpoilerLogName: "Spirit Temple Child Climb East Chest",
                         ItemGroup: ItemGroups.CHEST,
-                        MapInfo: { x: 51, y: 131, floor: "F2" },
+                        MapInfo: { x: 63, y: 141, floor: "F2" },
                         Age: Age.EITHER,
-                        Order: 13,
+                        Order: 12,
                         LongDescription: "This is the room you get to as a child after entering the crawlspace and going through the door.<br/><br/>As adult, you can enter from the opposite side of the statue room that you normally enter from (bottom door).<br/><br/>If you face the door on the top part of the floor, there's a switch up and to your right. Hit it with an explosive or ranged weapon to spawn the chest.",
                         ChildNeedsAny: [Items.FAIRY_SLINGSHOT, Items.BOOMERANG, Items.BOMBCHU, Items.BOMB],
                         AdultNeedsAny: [Items.FAIRY_BOW, Items.HOOKSHOT, Items.BOMBCHU, Items.BOMB]
@@ -4551,7 +4551,7 @@ let StandardDungeons = {
                     }
                 },
                 ItemLocations: {
-                    "3 Left Pots in Statue Room": { //TODO Mapping: check normal AND flying pots
+                    "3 Left Pots in Statue Room": {
                         SpoilerLogName: [{
                             name: "Spirit Temple Central Chamber Pot {#}",
                             count: 3
@@ -4576,7 +4576,7 @@ let StandardDungeons = {
                     "3 Right Pots in Statue Room": {
                         SpoilerLogName: [{
                             name: "Spirit Temple Central Chamber Pot {#}",
-                            count: { min: 3, max: 5 }
+                            count: { min: 4, max: 6 }
                         }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
@@ -4629,7 +4629,7 @@ let StandardDungeons = {
                         LongDescription: "Head to the statue room. Head up to the upper southeast corner of the room. If you face the statue, that's behind and to the right if you. You may have to hookshot up to the platform to get there. Jump to the statue's hand from the platform. You can use hover boots if you want, but they aren't necessary. Play Zelda's Lullaby on the Triforce picture. If you have the longshot, you can hook the chest that spawns from the other hand from here. If not, head to the upper southwest corner of the room - that's the one closer to the other hand. You can jump to it from there.",
                         Needs: [Songs.ZELDAS_LULLABY]
                     },
-                    "Skulltula in Statue Room on Northwest Platform": { // TODO Mapping: check this
+                    "Skulltula in Statue Room on Northwest Platform": {
                         SpoilerLogName: "Spirit Temple GS Lobby",
                         ItemGroup: ItemGroups.SKULLTULA,
                         MapInfo: { x: 93, y: 101, floor: "F2" },
@@ -5620,8 +5620,8 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Coffin Room", imageName: "2 Hearts" },
                 Exits: {},
                 ItemLocations: {
-                    "Heart in Open Coffin": { // TODO Mapping: Check this and below heart
-                        SpoilerLogName: "Bottom of the Well Coffin Recovery Heart 1",
+                    "Heart in Open Coffin": {
+                        SpoilerLogName: "Bottom of the Well Coffin Recovery Heart 2",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapInfo: { x: 42, y: 130, floor: "F1" },
                         MapImageName: "Recovery Heart",
@@ -5630,7 +5630,7 @@ let StandardDungeons = {
                         LongDescription: "Head to the room to the left of the main room. The heart is in the open coffin by the gibdo.",
                     },
                     "Heart in Closed Coffin": {
-                        SpoilerLogName: "Bottom of the Well Coffin Recovery Heart 2",
+                        SpoilerLogName: "Bottom of the Well Coffin Recovery Heart 1",
                         ItemGroup: ItemGroups.FREESTANDING_RUPEES_AND_HEARTS,
                         MapInfo: { x: 57, y: 144, floor: "F1" },
                         MapImageName: "Recovery Heart",
@@ -5768,10 +5768,11 @@ let StandardDungeons = {
                         Order: 27,
                         LongDescription: "Fall down the central hole (by the wooden X in the center of the dungeon) to get to these rupees."
                     },
-                    "10 Pots in Second North Wing": { // TODO Mapping: Check these and 2 pots below 
-                        SpoilerLogName: [
-                            { name: "Bottom of the Well Basement Pot {#}", count: 10 }
-                        ],
+                    "10 Pots in Second North Wing": {
+                        SpoilerLogName: [{ 
+                            name: "Bottom of the Well Basement Pot {#}", 
+                            count: { min: 3, max: 12 } 
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "10 Pots",
@@ -5781,9 +5782,10 @@ let StandardDungeons = {
                         LongDescription: "These pots are down the second wing from the left in the basement."
                     },
                     "2 Pots by Second North Wing": {
-                        SpoilerLogName: [
-                            { name: "Bottom of the Well Basement Pot {#}", count: { min: 11, max: 12 } }
-                        ],
+                        SpoilerLogName: [{ 
+                            name: "Bottom of the Well Basement Pot {#}", 
+                            count: 2 
+                        }],
                         ItemGroup: ItemGroups.GROUP,
                         OverrideItemGroup: ItemGroups.POT,
                         DefaultEntranceGroupName: "2 Pots",
@@ -5792,7 +5794,7 @@ let StandardDungeons = {
                         Order: 29,
                         LongDescription: "These pots are by the entrance to the second wing from the left in the basement."
                     },
-                    "Silver Rupee on South Basement Wood Beam": { // TODO Mapping: Check this
+                    "Silver Rupee on South Basement Wood Beam": {
                         SpoilerLogName: "Bottom of the Well Basement Silver Rupee Wood Beam Front",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 176, y: 232, floor: "B1" },
@@ -5800,7 +5802,7 @@ let StandardDungeons = {
                         Order: 31,
                         LongDescription: "Fall down one of the many pits to get to the basement. This is the silver rupee on the wood beam more to the south, in the central area."
                     },
-                    "Silver Rupee on North Basement Wood Beam": { // TODO Mapping: Check this
+                    "Silver Rupee on North Basement Wood Beam": {
                         SpoilerLogName: "Bottom of the Well Basement Silver Rupee Wood Beam Back",
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 150, y: 201, floor: "B1" },
@@ -6200,8 +6202,8 @@ let StandardDungeons = {
                 DisplayGroup: { groupName: "Silver Block Rooms", imageName: "Silver Gauntlets" },
                 Exits: {},
                 ItemLocations: {
-                    "Silver Block Room Left Spawned Chest": { //TODO Mapping: check all 4 chests here
-                        SpoilerLogName: "Gerudo Training Ground Heavy Block First Chest",
+                    "Silver Block Room Left Spawned Chest": {
+                        SpoilerLogName: "Gerudo Training Ground Heavy Block Second Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 68, y: 28 },
                         Age: Age.ADULT,
@@ -6209,7 +6211,7 @@ let StandardDungeons = {
                         LongDescription: "This is the room you get to after pushing the silver block in the room with the wolfos. If you haven't already, from the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. Step on the switch to remove the iron bars on the door beyond the silver block. The chest spawns after you kill the like-likes."
                     },
                     "Silver Block Room Right Spawned Chest": {
-                        SpoilerLogName: "Gerudo Training Ground Heavy Block Second Chest",
+                        SpoilerLogName: "Gerudo Training Ground Heavy Block First Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 78, y: 37 },
                         Age: Age.ADULT,
@@ -6217,7 +6219,7 @@ let StandardDungeons = {
                         LongDescription: "This is the room you get to after pushing the silver block in the room with the wolfos. If you haven't already, from the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. Step on the switch to remove the iron bars on the door beyond the silver block. The chest spawns after you kill the like-likes."
                     },
                     "Silver Block Room Back Chest": {
-                        SpoilerLogName: "Gerudo Training Ground Heavy Block Third Chest",
+                        SpoilerLogName: "Gerudo Training Ground Heavy Block Fourth Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 68, y: 17 },
                         Age: Age.ADULT,
@@ -6225,7 +6227,7 @@ let StandardDungeons = {
                         LongDescription: "This is the room you get to after pushing the silver block in the room with the wolfos. If you haven't already, from the wolfos room, use your hookshot to hook a target beyond a fake wall above the fake door. Step on the switch to remove the iron bars on the door beyond the silver block. The chest is in the back of the room."
                     },
                     "Silver Block Room Hidden Chest": {
-                        SpoilerLogName: "Gerudo Training Ground Heavy Block Fourth Chest",
+                        SpoilerLogName: "Gerudo Training Ground Heavy Block Third Chest",
                         ItemGroup: ItemGroups.CHEST,
                         MapInfo: { x: 81, y: 22 },
                         Age: Age.ADULT,
