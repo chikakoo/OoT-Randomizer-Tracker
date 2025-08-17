@@ -122,10 +122,10 @@ RpgPage = {
                 ? RpgTasks[this.currentLocation]
                 : taskPool.concat(RpgTasks[this.currentLocation]);
         }
-        return taskPool.filter(task => {
+        return taskPool?.filter(task => {
             return (!punishmentsOnly || task.isPunishment) &&
                 this._checkTask(task, difficulty, age);
-        }).map(task => task.text);
+        }).map(task => task.text) ?? [];
     },
 
     /**
