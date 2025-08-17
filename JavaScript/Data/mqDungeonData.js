@@ -604,7 +604,7 @@ let MQDungeons = {
                         NeedsAny: [ItemSets.EXPLOSIVES_OR_STRENGTH, Items.DINS_FIRE, Items.FAIRY_BOW, QPAItemSets.LEDGE_QPA]
                     },
                     "Poe Room Pot by Entrance": {
-                        SpoilerLogName: "Dodongos Cavern MQ Poes Room Pot 1",
+                        SpoilerLogName: "Dodongos Cavern MQ Poes Room Pot 2",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 231, y: 143, floor: "F1" },
                         Age: Age.EITHER,
@@ -612,7 +612,7 @@ let MQDungeons = {
                         LongDescription: "This pot is to the left as you enter the main area.",
                     },
                     "Poe Room Pot by First Pillar": {
-                        SpoilerLogName: "Dodongos Cavern MQ Poes Room Pot 2",
+                        SpoilerLogName: "Dodongos Cavern MQ Poes Room Pot 1",
                         ItemGroup: ItemGroups.POT,
                         MapInfo: { x: 214, y: 147, floor: "F1" },
                         Age: Age.EITHER,
