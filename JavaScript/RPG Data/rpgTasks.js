@@ -38,11 +38,107 @@ RpgTaskDifficulty = {
  */
 RpgTasks = {
 	"Anywhere": [
+		// Curses
+		{
+			text: "CURSED: Disable the minimap",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY }]
+		},
 		{
 			text: "CURSED: No backwalking",
 			isPunishment: true,
 			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY }]
 		},
+
+		{
+			text: "CURSED: You cannot use C-Down",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING }]
+		},
+
+		{
+			text: "CURSED: Every time you see an enemy, you must kill it",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
+		},
+		{
+			text: "CURSED: Navi cannot Z-target anything",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
+		},
+		{
+			text: "CURSED: You can only attack by crouch-stabbing",
+			isPunishment: true,
+			difficulties: [
+				{ Difficulty: RpgTaskDifficulty.IRRITATING, Needs: [ItemSets.SWORDS, ItemSets.SHIELDS] },
+				{ Difficulty: RpgTaskDifficulty.ANNOYING }
+			]
+		},
+
+		{
+			text: "CURSED: You cannot move by walking forward",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.ANNOYING }]
+		},
+		{
+			text: "CURSED: You have disadvantage on all rolls",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.ANNOYING }]
+		},
+
+		{
+			text: "CURSED: To check any item, you must be at critical health",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }]
+		},
+						{
+			text: "CURSED: You can only move by rolling",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }]
+		},
+		{
+			text: "CURSED: You can only move by side-hopping",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }]
+		},
+		{
+			text: "CURSED: You can only move by backflipping",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }]
+		},
+		{
+			text: "CURSED: No glitches allowed",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }]
+		},
+		{
+			text: "CURSED: You must unlock all possible doors before leaving the dungeon",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING, DungeonOnly: true }]
+		},
+		{
+			text: "CURSED: You can only roll with a D4",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }]
+		},
+
+		{
+			text: "CURSED: Hold your controller upside down",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH }]
+		},
+		{
+			text: "CURSED: No using any item that does damage",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH }]
+		},
+		{
+			text: "CURSED: To leave the map, you must break and kill everything you can",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH }]
+		},
+
+		// Other
 		{
 			text: "Have less than 40 rupees",
 			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY }]
@@ -101,6 +197,11 @@ RpgTasks = {
 			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY }]
 		},
 		{
+			text: "Sing the current song for X mins (DM's choice)",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY }]
+		},
+		{
 			text: "Perform 3 quickspins in a row",
 			isPunishment: true,
 			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY, Age: Age.CHILD, Needs: [Equipment.KOKIRI_SWORD]}],
@@ -109,11 +210,6 @@ RpgTasks = {
 
 		{
 			text: "Get any other item first before opening this",
-			difficulties: [{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING }]
-		},
-		{
-			text: "CURSED: You cannot use C-Down",
-			isPunishment: true,
 			difficulties: [{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING }]
 		},
 		{
@@ -143,7 +239,11 @@ RpgTasks = {
 		},
 		{
 			text: "Wear any mask",
-			difficulties: [{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, Age: Age.CHILD }]
+			age: Age.CHILD,
+			difficulties: [
+				{ Difficulty: RpgTaskDifficulty.EASY, Needs: [ItemSets.MASKS] },
+				{ Difficulty: RpgTaskDifficulty.ANNOYING }
+			]
 		},
 		{
 			text: "Take fall damage",
@@ -154,10 +254,6 @@ RpgTasks = {
 		{
 			text: "Kill all enemies on the map",
 			isPunishment: true,
-			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
-		},
-		{
-			text: "CURSED: Every time you see an enemy, you must kill it",
 			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
 		},
 		{
@@ -191,7 +287,8 @@ RpgTasks = {
 		},
 		{
 			text: "Talk to the owl",
-			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING, Age: Age.CHILD }]
+			age: Age.CHILD,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
 		},
 		{
 			text: "Talk to Mido",
@@ -206,10 +303,6 @@ RpgTasks = {
 			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
 		},
 		{
-			text: "CURSED: Navi cannot Z-target anything",
-			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
-		},
-		{
 			text: "You must bomb the item check",
 			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
 		},
@@ -217,10 +310,6 @@ RpgTasks = {
 		{
 			text: "Have a Like-Like steal a shield from you",
 			isPunishment: true,
-			difficulties: [{ Difficulty: RpgTaskDifficulty.ANNOYING }]
-		},
-		{
-			text: "CURSED: You can only roll with a D4",
 			difficulties: [{ Difficulty: RpgTaskDifficulty.ANNOYING }]
 		},
 		{
@@ -236,14 +325,11 @@ RpgTasks = {
 			difficulties: [{ Difficulty: RpgTaskDifficulty.ANNOYING, Needs: [GameStateSets.CAN_PLAY_SONGS]}]
 		},
 		{
-			text: "CURSED: To check any item, you must be at critical health",
-			difficulties: [{ Difficulty: RpgTaskDifficulty.ANNOYING }]
-		},
-		{
 			text: "Kill a Peahat",
+			age: Age.CHILD,
 			difficulties: [
-				{ Difficulty: RpgTaskDifficulty.ANNOYING, Age: Age.CHILD, NeedsAny: [ItemSets.PROJECTILES, ItemSets.SWORDS] },
-				{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING, Age: Age.CHILD }
+				{ Difficulty: RpgTaskDifficulty.ANNOYING, NeedsAny: [ItemSets.PROJECTILES, ItemSets.SWORDS] },
+				{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }
 			]
 		},
 		{
@@ -260,11 +346,6 @@ RpgTasks = {
 		},
 		{
 			text: "Use all the consumable items of one type",
-			isPunishment: true,
-			difficulties: [{ Difficulty: RpgTaskDifficulty.ANNOYING }]
-		},
-		{
-			text: "CURSED: You cannot move by walking forward",
 			isPunishment: true,
 			difficulties: [{ Difficulty: RpgTaskDifficulty.ANNOYING }]
 		},
@@ -299,31 +380,11 @@ RpgTasks = {
 			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }]
 		},
 		{
-			text: "CURSED: You can only move by rolling",
-			isPunishment: true,
-			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }]
-		},
-		{
-			text: "CURSED: You can only move by side-hopping",
-			isPunishment: true,
-			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }]
-		},
-		{
-			text: "CURSED: You can only move by backflipping",
-			isPunishment: true,
-			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }]
-		},
-		{
 			text: "Do the dampe race",
 			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }]
 		},
 		{
 			text: "Have defeated any 3 bosses",
-			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }]
-		},
-		{
-			text: "CURSED: No glitches allowed",
-			isPunishment: true,
 			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }]
 		},
 		{
@@ -344,23 +405,9 @@ RpgTasks = {
 			isPunishment: true,
 			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }]
 		},
-		{
-			text: "CURSED: You must unlock all possible doors before leaving the dungeon",
-			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING, DungeonOnly: true }]
-		},
 
 		{
-			text: "CURSED: Hold your controller upside down",
-			isPunishment: true,
-			difficulties: [{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH }]
-		},
-		{
 			text: "Play blindfolded until you get the next item (DM can help)",
-			isPunishment: true,
-			difficulties: [{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH }]
-		},
-		{
-			text: "CURSED: No using any item that does damage",
 			isPunishment: true,
 			difficulties: [{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH }]
 		},
@@ -370,13 +417,162 @@ RpgTasks = {
 			difficulties: [{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH }]
 		},
 		{
-			text: "CURSED: To leave the map, you must break and kill everything you can",
-			isPunishment: true,
-			difficulties: [{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH }]
-		},
-		{
 			text: "You must get this item as the other age",
 			difficulties: [{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH }]
+		}
+	],
+	"Kokiri Forest": [
+		{
+			text: "Navigate from Saria's house to the end of the platform bridges without stopping",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY }]
+		}
+	],
+	"Lost Woods": [
+		{
+			text: "Travel from the initial Kokiri Forest entrance to the Sacred Forest Meadow while facing one direction",
+			isPunishment: true,
+			difficulties: [
+				{ Difficulty: RpgTaskDifficulty.EASY, NeedsAny: [Age.CHILD, Songs.SARIAS_SONG] },
+				{ Difficulty: RpgTaskDifficulty.IRRITATING, Age: Age.ADULT, Needs: [Tricks.midoSkip.canDo] }
+			]
+		}
+	],
+	"Sacred Forest Meadow": [
+		{
+			text: "Navigate through the maze without killing a moblin",
+			age: Age.ADULT,
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
+		}
+	],
+	"Hyrule Field": [
+		{
+			text: "Do a lap around Lon Lon Ranch",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING }]
+		},
+		{
+			text: "Kill a big poe",
+			isPunishment: true,
+			age: Age.ADULT,
+			difficulties: [
+				{ 
+					Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, 
+					Needs: [GameStateSets.CAN_RIDE_EPONA, Items.FAIRY_BOW]
+				},
+				{ Difficulty: RpgTaskDifficulty.ANNOYING, Needs: [Items.FAIRY_BOW] }
+			]
+		}
+	],
+	"Lon Lon Ranch": [
+		{
+			text: "Do a lap around the horse track while acting like a horse",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY }]
+		},
+		{
+			text: "CURSED: Every time you see a chicken, you must pick it up",
+			isPunishment: true,
+			age: Age.ADULT,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY }]
+		},
+	],
+	"Kakariko Village": [
+		{
+			text: "CURSED: Every time you see a chicken, you must pick it up",
+			isPunishment: true,
+			age: Age.CHILD,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH }]
+		},
+	],
+	"Zora's River": [
+		{
+			text: "CURSED: Every time you see a chicken, you must pick it up",
+			isPunishment: true,
+			age: Age.CHILD,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY }]
+		},
+		{
+			text: "Swim from the waterfall to the bottom area",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING }]
+		}
+	],
+	"Zora's Domain": [
+		{
+			text: "Dive off the rupee minigame ledge and take fall damage",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY }]
+		}
+	],
+	"Zora's Fountain": [
+		{
+			text: "Perform the Jabu Jabu's Belly fishless glitch",
+			age: Age.CHILD,
+			difficulties: [{ 
+				Difficulty: RpgTaskDifficulty.EASY,
+				Needs: [Tricks.jabuFishless.canDo]
+			}]
+		},
+		{
+			text: "Navigate to the Ice Cavern entrance without getting wet",
+			isPunishment: true,
+			age: Age.ADULT,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
+		},
+		{
+			text: "Enter Jabu Jabu's Belly",
+			age: Age.ADULT,
+			difficulties: [{ 
+				Difficulty: RpgTaskDifficulty.VERY_ANNOYING,
+				Needs: [Tricks.enterJabuAsAdult.canDo]
+			}]
+		}
+	],
+	"Gerudo Valley": [
+		{
+			text: "CURSED: Every time you see a chicken, you must pick it up",
+			isPunishment: true,
+			age: Age.CHILD,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY }]
+		},
+		{
+			text: "Jump in the river and take the exit before getting this item",
+			difficulties: [{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING }]
+		}
+	],
+	"Gerudo Fortress": [
+		{
+			text: "CURSED: You must stun every guard before you can leave the map",
+			isPunishment: true,
+			age: Age.ADULT,
+			difficulties: [
+				{ Difficulty: RpgTaskDifficulty.IRRITATING, Needs: [Items.FAIRY_BOW] },
+				{ Difficulty: RpgTaskDifficulty.ANNOYING },
+			]
+		},
+		{
+			text: "Perform the anti-grav glitch before getting this item",
+			difficulties: [{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING }]
+		}
+	],
+	"Haunted Wasteland": [
+		{
+			text: "Navigate from the sand chasm to the ending flags without stopping",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING, Needs: [Tricks.wastelandNoLens.canDo] }]
+		}
+	],
+	"Desert Colossus": [
+		{
+			text: "Kill a giant leever",
+			isPunishment: true,
+			difficulties: [
+				{ Difficulty: RpgTaskDifficulty.IRRITATING, Age: Age.ADULT },
+				{ Difficulty: RpgTaskDifficulty.ANNOYING, Needs: [Equipment.KOKIRI_SWORD] },
+				{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING, Needs: [Items.DEKU_STICK, Equipment.DEKU_SHIELD] },
+			]
 		}
 	],
 	"Deku Tree": [

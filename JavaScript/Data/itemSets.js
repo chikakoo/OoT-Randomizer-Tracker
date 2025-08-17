@@ -472,5 +472,12 @@ let ItemSets = {
     ]),
 	MUD_WALL_ITEMS_OR_LEDGE_QPA: (age) => ItemData.canUseAny(age, [
         ItemSets.MUD_WALL_ITEMS, QPAItemSets.MUD_WALLS_LEDGE_QPA
+    ]),
+    MASKS: (age) => ItemData.canUseAny(age, [
+        ChildTradeItems.KEATON_MASK,
+        ChildTradeItems.SKULL_MASK,
+        ChildTradeItems.SPOOKY_MASK,
+        ChildTradeItems.MASK_OF_TRUTH,
+        ChildTradeItems.COSMETIC_MASKS
     ])
 };
