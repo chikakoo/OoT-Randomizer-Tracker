@@ -10,6 +10,7 @@ let ItemLocationDisplay = {
 		LocationSidebar.updateSelectedLocation(locationName);
 		if (!LocationSidebar.isLocationAMap(locationName)) { return; }
 		this.currentLocationName = locationName;
+		SocketClient.rpgLocationChanged();
 		
 		let groupedItemLocationInfo = this.getGroupedLocationInfo(this.currentLocationName);
 		this._setUpItemGroups(groupedItemLocationInfo);

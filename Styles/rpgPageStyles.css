@@ -1,0 +1,28 @@
+#rpgContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #092953;
+    width: 100%;
+    height: 100%;
+    margin-left: 215px;
+}
+
+#rpgContainer.location-smaller {
+	margin-left: 115px;
+}
+
+#rpgHeader {
+    display: block;
+    margin: 0;
+    padding: 5px;
+    color: gold;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0.67em 0 0.67em, 0;
+}
+
+.rpg-label {
+    color: white;
+    font-size: 14pt;
+}
+

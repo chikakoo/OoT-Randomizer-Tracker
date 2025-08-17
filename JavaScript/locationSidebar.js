@@ -46,10 +46,6 @@ LocationSidebar = {
             divToSelect.style.backgroundColor = "";
             addCssClass(divToSelect, "selected-location");
         }
-
-        removeCssClass(document.getElementById("settingsButton"), "selected-location");
-        removeCssClass(document.getElementById("notesButton"), "selected-location");
-        removeCssClass(document.getElementById("spawnsButton"), "selected-location");
     },
 
     /**
@@ -97,16 +93,19 @@ LocationSidebar = {
             let settingsContainer = document.getElementById("settingsContainer");
             let notesContainer = document.getElementById("notesContainer");
             let spawnsContainer = document.getElementById("spawnsContainer");
+            let rpgContainer = document.getElementById("rpgContainer");
 
             removeCssClass(rightContainer, "location-smaller");
             removeCssClass(settingsContainer, "location-smaller")
             removeCssClass(notesContainer, "location-smaller")
             removeCssClass(spawnsContainer, "location-smaller")
+            removeCssClass(rpgContainer, "location-smaller")
             if (_locationSmaller) {
                 addCssClass(rightContainer, "location-smaller");
                 addCssClass(settingsContainer, "location-smaller")
                 addCssClass(notesContainer, "location-smaller")
                 addCssClass(spawnsContainer, "location-smaller")
+                addCssClass(rpgContainer, "location-smaller")
             }
 
             LocationSidebar.refreshLocationList();
@@ -282,14 +281,11 @@ LocationSidebar = {
      * Valid IDs are: rightContainer, notesContainer, spawnsContainer, settingsContainer
      */
     displayContainer: function(containerName) {
-        removeCssClass(document.getElementById("notesButton"), "selected-location");
-        removeCssClass(document.getElementById("spawnsButton"), "selected-location");
-        removeCssClass(document.getElementById("settingsButton"), "selected-location");
-
         addCssClass(document.getElementById("rightContainer"), "nodisp");
         addCssClass(document.getElementById("notesContainer"), "nodisp");
         addCssClass(document.getElementById("spawnsContainer"), "nodisp");
         addCssClass(document.getElementById("settingsContainer"), "nodisp");
+        addCssClass(document.getElementById("rpgContainer"), "nodisp");
 
         let container = document.getElementById(containerName);
         if (container) {
@@ -306,7 +302,11 @@ LocationSidebar = {
             locationName = ItemLocationDisplay.currentLocationName;
         }
 
-        return locationName !== "" && locationName !== "Settings" && locationName !== "Notes" && locationName !== "Spawns";
+        return locationName !== "" && 
+            locationName !== "Settings" && 
+            locationName !== "Notes" && 
+            locationName !== "Spawns" &&
+            locationName !== "RPG";
     },
 
     /**

@@ -73,6 +73,10 @@ a {
 	background-image: url("../Images/UI Icons/Settings Page.png");
 }
 
+#rpgButton {
+	background-image: url("../Images/UI Icons/RPG Page.png");
+}
+
 #saveButton {
 	background-image: url("../Images/UI Icons/Save.png");
 }

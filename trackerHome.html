@@ -33,6 +33,8 @@
 	<script src="JavaScript/notesPage.js"></script>
 	<script src="JavaScript/saveAndLoad.js"></script>
 	<script src="JavaScript/spawnsPage.js"></script>
+	<script src="JavaScript/rpgPage.js"></script>
+	<script src="JavaScript/RPG Data/rpgTasks.js"></script>
 	<script src="JavaScript/locationSidebar.js"></script>
 
 	<script src="JavaScript/main.js"></script>
@@ -43,6 +45,7 @@
 	<link rel="stylesheet" href="Styles/notesPageStyles.css">
 	<link rel="stylesheet" href="Styles/spawnsPageStyles.css">
 	<link rel="stylesheet" href="Styles/settingsPageStyles.css">
+	<link rel="stylesheet" href="Styles/rpgPageStyles.css">
 	<link rel="stylesheet" href="Styles/itemTrackerStyles.css">
 </head>
 <body onload="onPageLoad()" oncontextmenu="return false">
@@ -51,6 +54,7 @@
 			<div id="notesButton" title="Open Notes Page" onclick="NotesPage.display()"></div>
 			<div id="spawnsButton" title="Open Spawns Page" onclick="SpawnsPage.display()"></div>
 			<div id="settingsButton" title="Open Settings Page" onclick="SettingsPage.display()"></div>
+			<div id="rpgButton" title="Open RPG Page" onclick="RpgPage.display()"></div>
 			<div></div>
 			<div id="saveButton" title="Save" onclick="SaveAndLoad.saveJSON()"></div>
 			<div id="loadButton" title="Load" onclick="SaveAndLoad.loadJSON()"></div>
@@ -751,6 +755,37 @@
 				</div>
 			</div>
 			<div id="tricksContainer"></div>
+		</div>
+		<div id="rpgContainer" class="nodisp">
+			<div id="rpgHeader"></div>
+			<div class="rpg-label">
+				<input type="checkbox" id="rpgPunishmentsOnlyCheckbox" name="rpgPunishmentsOnlyCheckbox" />
+				<label for="rpgPunishmentsOnlyCheckbox">Generate Punishments Only</label>
+			</div>
+			<div id="rpgButtonContainer">
+				<button id="rpgButtonEasy" onclick="RpgPage.generateTasks(RpgTaskDifficulty.EASY)">
+					Easy
+				</button>
+				<button id="rpgButtonMildlyIrritating" onclick="RpgPage.generateTasks(RpgTaskDifficulty.MILDLY_IRRITATING)">
+					Mildly Irritating
+				</button>
+				<button id="rpgButtonIrritating" onclick="RpgPage.generateTasks(RpgTaskDifficulty.IRRITATING)">
+					Irritating
+				</button>
+				<button id="rpgButtonAnnoying" onclick="RpgPage.generateTasks(RpgTaskDifficulty.ANNOYING)">
+					Annoying
+				</button>
+				<button id="rpgButtonVeryAnnoying" onclick="RpgPage.generateTasks(RpgTaskDifficulty.VERY_ANNOYING)">
+					Very Annoying
+				</button>
+				<button id="rpgButtonExtremeBitch" onclick="RpgPage.generateTasks(RpgTaskDifficulty.EXTREME_BITCH)">
+					Extreme Bitch
+				</button>
+			</div>
+			<div id="rpgTasksContainer">
+				<div id="rpgChildTasksContainer"></div>
+				<div id="rpgAdultTasksContainer"></div>
+			</div>
 		</div>
 	</div>
 </body>

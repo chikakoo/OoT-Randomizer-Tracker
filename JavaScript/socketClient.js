@@ -162,6 +162,11 @@ SocketClient = {
 			Data.randomizedSpawnLocations = randomizedSpawnLocations;
 			refreshAll();
 		});
+
+		// Sync the selected location (used with the rpg)
+		this._socket.on("current_location_changed", function(locationName) {
+			RpgPage.updateLocation(locationName);
+		});
 	},
 	
 	/**
@@ -328,6 +333,21 @@ SocketClient = {
 	owLocationUpdated: function(fromMapName, from, toMapName, toLocationName, clear) {
 		if (this.shouldSync()) {
 			this._socket.emit("ow_location_updated", fromMapName, from, toMapName, toLocationName, clear);
+		}
+	},
+
+	/**
+	 * Syncs the location (for the RPG page)
+	 */
+	rpgLocationChanged: function() {
+		// TODO RPG: delete this - it's just for testing
+		if (LocationSidebar.isLocationAMap()) {
+			RpgPage.updateLocation(ItemLocationDisplay.currentLocationName); 
+		}
+		
+
+		if (this.shouldSync() && LocationSidebar.isLocationAMap()) {
+			this._socket.emit("current_location_changed", ItemLocationDisplay.currentLocationName);
 		}
 	},
 	

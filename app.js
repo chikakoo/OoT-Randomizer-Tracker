@@ -51,6 +51,11 @@ io.on('connection', function(client) {
       client.broadcast.emit("sync_dungeon_type", dungeonName, dungeonType);
       console.log(`Setting ${dungeonName} to be type ${dungeonType}.`);
     });
+
+    client.on("current_location_changed", function(locationName) {
+      client.broadcast.emit("current_location_changed", locationName);
+      console.log(`Sending location change: ${locationName}`);
+    });
 });
 
 httpServer.listen(port, function (err) {
