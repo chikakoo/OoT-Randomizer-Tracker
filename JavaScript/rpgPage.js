@@ -42,8 +42,8 @@ RpgPage = {
         let taskContainer = document.getElementById("rpgTasksContainer");
         removeCssClass(taskContainer, "nodisp");
 
-        let allChildTasks = this._getAllTasksByDifficulty(difficulty, Age.CHILD);
-        let allAdultTasks = this._getAllTasksByDifficulty(difficulty, Age.ADULT);
+        let allChildTasks = this._getAllTasksByDifficulty(difficulty, Age.CHILD, event.ctrlKey);
+        let allAdultTasks = this._getAllTasksByDifficulty(difficulty, Age.ADULT, event.ctrlKey);
 
         let childTaskList = this._generateTaskListFromPossibilities(allChildTasks, event.shiftKey);
         let adultTaskList = this._generateTaskListFromPossibilities(allAdultTasks, event.shiftKey);
@@ -112,12 +112,15 @@ RpgPage = {
     /**
      * Gets the list of tasks based on the given difficulty
      * @param difficulty - the difficulty to give it
+     * @param onlyLocationSpecific - set to only get tasks taht are location specific
      */
-    _getAllTasksByDifficulty: function(difficulty, age) {
+    _getAllTasksByDifficulty: function(difficulty, age, onlyLocationSpecific) {
         let punishmentsOnly = document.getElementById("rpgPunishmentsOnlyCheckbox").checked;
         let taskPool = RpgTasks["Anywhere"];
-        if (RpgTasks[this.currentLocation]) {
-            taskPool = taskPool.concat(RpgTasks[this.currentLocation]);
+        if (RpgTasks[this.currentLocation] || onlyLocationSpecific) {
+            taskPool = onlyLocationSpecific 
+                ? RpgTasks[this.currentLocation]
+                : taskPool.concat(RpgTasks[this.currentLocation]);
         }
         return taskPool.filter(task => {
             return (!punishmentsOnly || task.isPunishment) &&
@@ -132,24 +135,38 @@ RpgPage = {
      * @returns True if valid; false otherwise
      */
     _checkTask: function(task, difficulty, age) {
+        if (task.age && age !== task.age) {
+            return;
+        }
+
+        let map = MapLocations[this.currentLocation];
+        let isDungeon = map.MapGroup === MapGroups.DUNGEONS;
+        let isMq = map.IsMasterQuest;
+        if (!this._passesDungeonChecks(
+            isDungeon,
+            isMq,
+            task.overworldOnly,
+            task.dungeonOnly,
+            task.standard,
+            task.mq
+        )) {
+            return;
+        }
+
         let difficulties = task.difficulties;
         for (let i = 0; i < difficulties.length; i++)
         {
             let difficultyRequirement = difficulties[i];
 
-            let map = MapLocations[this.currentLocation];
-            let isDungeon = map.MapGroup === MapGroups.DUNGEONS;
-            if ((isDungeon && difficultyRequirement.OverworldOnly) || 
-                (!isDungeon && difficultyRequirement.DungeonOnly)) {
-                continue;
-            }
-
-            if (isDungeon && (
-                (map.IsMasterQuest && difficultyRequirement.Standard) ||
-                (!map.IsMasterQuest && difficultyRequirement.MQ)
-            )) {
-                continue;
-            }
+            if (!this._passesDungeonChecks(
+                isDungeon, 
+                isMq, 
+                difficultyRequirement.OverworldOnly, 
+                difficultyRequirement.DungeonOnly, 
+                difficultyRequirement.Standard, 
+                difficultyRequirement.MQ)) {
+                    continue;
+                }
 
             if (Data.calculateObtainability(difficultyRequirement, age) === ItemObtainability.YES) {
                 return difficultyRequirement.Difficulty === RpgTaskDifficulty.NONE || 
@@ -158,5 +175,21 @@ RpgPage = {
         }
 
         return false;
+    },
+
+    _passesDungeonChecks: function(isDungeon, isMq, overworldOnly, dungeonOnly, standard, mq) {
+        if ((isDungeon && overworldOnly) || 
+            (!isDungeon && dungeonOnly)) {
+            return false;
+        }
+
+        if (isDungeon && (
+            (isMq && standard) ||
+            (!isMq && mq)
+        )) {
+            return false;
+        }
+
+        return true;
     }
 };

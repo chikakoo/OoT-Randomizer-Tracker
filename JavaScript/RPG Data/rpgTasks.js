@@ -14,20 +14,28 @@ RpgTaskDifficulty = {
  * - a curse (a requirement for the player in the area they opened the chest in)
  * - a punishment (because the player messed up a curse or opened a chest illegally)
  * 
- * How to set up an event:
-* - text: the text the user will see
-* - isPunishment: whether this is suitable for a punishment (as in, the player messed up a curse, etc.)
-* - difficulties: an array of difficulty levels. It will go down the list one-by one and choose the first one that
-*		matches. If none match, it will not consider this event at all. Note that with all of these settings,
-*		excluding it would pass that particular check.
-*       - Level: The difficulty level this option would use
-*			> Difficulty.NONE matches with everything
-*		- OverworldOnly: True if the current location is NOT a dungeon
-*		- DungeonOnly: True if the current location is a dungeon
-*		- Standard: (Only for dungeons) True if the current location is a standard dungeon
-*		- MQ: (Only for dungeons) True if the current location is a master quest dungeon
-*		- Uses the same checks any ItemLocation would (Needs, NeedsAny, etc - see Data.calculateObtainability)
-*/
+ * How to set up a task:
+ * == TOP LEVEL (every task in the difficultes array is affected by this)
+ * - text: the text the user will see
+ * - age: the age requirement for this task in general
+ * - overworldOnly: True if the current location is NOT a dungeon
+ * - dungeonOnly: True if the current location is a dungeon
+ * - standard: (Only for dungeons) True if the current location is a standard dungeon
+ * - mq: (Only for dungeons) True if the current location is a master quest dungeon
+ * - isPunishment: whether this is suitable for a punishment (as in, the player messed up a curse, etc.)
+ * 
+ * == INNER LEVEL (only tasks in the difficulties array are affected by this)
+ * - difficulties: an array of difficulty levels. It will go down the list one-by one and choose the FIRST one that
+ *		matches. If none match, it will not consider this task at all. Note that with all of these settings,
+ *		excluding it will pass that particular check.
+ *       - Level: The difficulty level this option would use
+ *			> Difficulty.NONE matches with every difficulty
+ *		- OverworldOnly: True if the current location is NOT a dungeon
+ *		- DungeonOnly: True if the current location is a dungeon
+ *		- Standard: (Only for dungeons) True if the current location is a standard dungeon
+ *		- MQ: (Only for dungeons) True if the current location is a master quest dungeon
+ *		- Uses the same checks any ItemLocation would (Needs, NeedsAny, etc - see Data.calculateObtainability)
+ */
 RpgTasks = {
 	"Anywhere": [
 		{
@@ -278,7 +286,12 @@ RpgTasks = {
 		},
 		{
 			text: "Have the Lens of Truth active",
-			difficulties: [{ Difficulty: RpgTaskDifficulty.ANNOYING }]
+			difficulties: [
+				{ Difficulty: RpgTaskDifficulty.EASY, Needs: [Items.LENS_OF_TRUTH] },
+				{ Difficulty: RpgTaskDifficulty.ANNOYING, Needs: [() => Items.LENS_OF_TRUTH.playerHas] },
+				{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING, Needs: [Equipment.MAGIC] },
+				{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH }
+			]
 		},
 
 		{
@@ -379,25 +392,29 @@ RpgTasks = {
 		},
 		{
 			text: "Do the B1 skip backup",
+			age: Age.CHILD,
 			isPunishment: true,
 			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING, Needs: [Tricks.dekuB1Skip.canDo] }],
 		},
 		{
 			text: "Burn a deku shield",
+			age: Age.CHILD,
+			mq: true,
 			isPunishment: true,
 			difficulties: [ 
-				{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, Age: Age.CHILD, MQ: true, Needs: [Equipment.DEKU_SHIELD]},
-				{ Difficulty: RpgTaskDifficulty.ANNOYING, MQ: true, Age: Age.CHILD },
+				{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, Needs: [Equipment.DEKU_SHIELD]},
+				{ Difficulty: RpgTaskDifficulty.ANNOYING },
 			]
 		},
 	],
 	"Dodongo's Cavern": [
 		{
 			text: "Burn a deku shield",
+			age: Age.CHILD,
 			isPunishment: true,
 			difficulties: [ 
-				{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, Age: Age.CHILD, Needs: [Equipment.DEKU_SHIELD]},
-				{ Difficulty: RpgTaskDifficulty.ANNOYING, Age: Age.CHILD },
+				{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, Needs: [Equipment.DEKU_SHIELD]},
+				{ Difficulty: RpgTaskDifficulty.ANNOYING },
 			],
 		},
 		{
@@ -411,10 +428,54 @@ RpgTasks = {
 	],
 	"Jabu Jabu's Belly": [
 		{
+			text: "Stun a wiggly thing",
+			difficulties: [
+				{
+					Difficulty: RpgTaskDifficulty.EASY, 
+					Standard: true, 
+					Needs: [Items.BOOMERANG]
+				},
+				{
+					Difficulty: RpgTaskDifficulty.EASY, 
+					MQ: true, 
+					Needs: [Items.BOOMERANG, Items.FAIRY_SLINGSHOT]
+				},
+				{
+					Difficulty: RpgTaskDifficulty.VERY_ANNOYING, 
+					Standard: true,
+				},
+				{
+					Difficulty: RpgTaskDifficulty.VERY_ANNOYING, 
+					MQ: true, 
+					NeedsAny: [Items.BOOMERANG, Items.FAIRY_SLINGSHOT]
+				},
+				{
+					Difficulty: RpgTaskDifficulty.EXTREME_BITCH, 
+					MQ: true
+				}
+			]
+		},
+		{
 			text: "Stun a wiggly thing in the top room",
 			difficulties: [ 
-				{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, Needs: [Items.BOOMERANG]},
-				{ Difficulty: RpgTaskDifficulty.ANNOYING } 
+				{ 
+					Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, 
+					Standard: true, 
+					Needs: [Items.BOOMERANG]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, 
+					MQ: true, 
+					Needs: [Items.BOOMERANG, ItemSets.EXPLOSIVES, Items.FAIRY_SLINGSHOT]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.VERY_ANNOYING,
+					Standard: true
+				},
+				{
+					Difficulty: RpgTaskDifficulty.EXTREME_BITCH,
+					MQ: true
+				}
 			]
 		},
 		{
@@ -427,67 +488,211 @@ RpgTasks = {
 	],
 	"Forest Temple": [
 		{
-			text: "Get crushed by the falling ceiling",
-			difficulties: [ 
-				{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, Needs: [Items.FAIRY_BOW]},
-				{ Difficulty: RpgTaskDifficulty.ANNOYING } 
+			text: "Kill both lobby wolfos",
+			standard: true,
+			isPunishment: true,
+			difficulties: [
+				{ Difficulty: RpgTaskDifficulty.EASY, Needs: [ItemSets.DAMAGING_ITEMS] },
+				{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING }
 			]
 		},
 		{
-			text: "Twist a corridor",
+			text: "Kill all lobby skullwalltulas",
+			mq: true,
+			isPunishment: true,
+			difficulties: [
+				{ Difficulty: RpgTaskDifficulty.EASY, Needs: [ItemSets.PROJECTILES] },
+				{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, Needs: [Items.BOMBCHU] },
+				{ Difficulty: RpgTaskDifficulty.ANNOYING }
+			]
+		},
+		{
+			text: "Get crushed by the falling ceiling",
+			age: Age.ADULT,
+			isPunishment: true,
 			difficulties: [ 
-				{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, Needs: [Items.FAIRY_BOW]},
-				{ Difficulty: RpgTaskDifficulty.ANNOYING } 
+				{ 
+					Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, 
+					Standard: true,
+					Needs: [Items.FAIRY_BOW, () => ItemData.getKeyCount("Forest Temple") >= 5]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, 
+					MQ: true,
+					Needs: [Items.FAIRY_BOW, () => ItemData.getKeyCount("Forest Temple") >= 6]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.IRRITATING, 
+					Standard: true,
+					NeedsAny: [Tricks.forestGreenPoeEarly.canDo, 
+						[Tricks.forestSoTBlockLedgeClip.canDo, Tricks.megaFlip.canDo]]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.IRRITATING, 
+					MQ: true,
+					Needs: [Items.FAIRY_BOW],
+					NeedsAny: [
+						[
+							() => ItemData.getKeyCount("Forest Temple") >= 2,
+							Tricks.forestGreenPoeEarly.canDo,
+						],
+						[
+							() => ItemData.getKeyCount("Forest Temple") >= 1,
+							ItemSets.FIRE_ITEMS,
+							Tricks.megaFlip.canDo
+						]
+					]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.ANNOYING, 
+					Standard: true,
+					Needs: [() => ItemData.getKeyCount("Forest Temple") >= 5]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.ANNOYING, 
+					MQ: true,
+					Needs: [() => ItemData.getKeyCount("Forest Temple") >= 6]
+				},
+				{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH } 
+			]
+		},
+		{
+			text: "Twist the corridor",
+			age: Age.ADULT,
+			difficulties: [ 
+				{ 
+					Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, 
+					Standard: true,
+					Needs: [Items.FAIRY_BOW, Equipment.STRENGTH],
+					NeedsAny: [
+						() => ItemData.getKeyCount("Forest Temple") >= 1,
+						Tricks.forestMegaJumpToLedge.canDo
+					]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, 
+					MQ: true,
+					NeedsAny: [
+						[
+							() => ItemData.getKeyCount("Forest Temple") >= 1,
+							Equipment.HOVER_BOOTS, 
+							Tricks.weirdShot.canDo
+						],
+						[
+							() => ItemData.getKeyCount("Forest Temple") >= 2,
+							Equipment.STRENGTH
+						]
+					]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.ANNOYING, 
+					Standard: true,
+					NeedsAny: [
+						[Items.FAIRY_BOW, Equipment.STRENGTH],
+						[
+							() => ItemData.getKeyCount("Forest Temple") >= 1,
+							Tricks.forestMegaJumpToLedge.canDo
+						]
+					]
+				},
+				{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH } 
 			]
 		},
 		{
 			text: "Despawn the song of time block",
 			difficulties: [ 
 				{ Difficulty: RpgTaskDifficulty.EASY, Needs: [Songs.SONG_OF_TIME]},
-				{ Difficulty: RpgTaskDifficulty.ANNOYING } 
+				{ 
+					Difficulty: RpgTaskDifficulty.ANNOYING, 
+					Needs: [GameStateSets.CAN_PLAY_SONGS, () => Songs.SONG_OF_TIME.playerHas]
+				},
+				{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING } 
 			]
 		},
 		{
 			text: "Perform the boss key skip",
+			age: Age.ADULT,
 			difficulties: [ 
-				{ Difficulty: RpgTaskDifficulty.EASY, Needs: [Tricks.forestBKSkip.canDo]},
-				{ Difficulty: RpgTaskDifficulty.ANNOYING } 
+				{ Difficulty: RpgTaskDifficulty.EASY, Needs: [Tricks.forestBKSkip.canDo] },
+				{ Difficulty: RpgTaskDifficulty.ANNOYING, Needs: [Tricks.forestBKSkip.enabled] } 
 			]
 		},
 		{
 			text: "Travel through the well tunnel",
+			age: Age.ADULT,
 			difficulties: [ 
-				{ Difficulty: RpgTaskDifficulty.EASY, Age: Age.ADULT },
+				{ 
+					Difficulty: RpgTaskDifficulty.EASY, 
+					Standard: true,
+					NeedsAny: [
+						Tricks.forestSoTBlockLedgeClip, 
+						Songs.SONG_OF_TIME, 
+						[Items.FAIRY_BOW, Equipment.IRON_BOOTS]
+					]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.EASY, 
+					MQ: true, 
+					Needs: [() => ItemData.getKeyCount("Forest Temple") >= 1, Items.FAIRY_BOW]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.ANNOYING, 
+					Standard: true, 
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.ANNOYING, 
+					MQ: true, 
+					NeedsAny: [() => ItemData.getKeyCount("Forest Temple") >= 1, Items.FAIRY_BOW]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.VERY_ANNOYING, 
+					MQ: true
+				}
 			]
 		},
 	],
 	"Fire Temple": [
 		{
 			text: "Flip a torch slug",
+			age: Age.ADULT,
 			difficulties: [ 
-				{ Difficulty: RpgTaskDifficulty.EASY, Needs: [Items.MEGATON_HAMMER]},
-				{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING } 
+				{ 
+					Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING,
+					Needs: [
+						() => ItemData.getKeyCount("Fire Temple") >= 4,
+						Items.MEGATON_HAMMER
+					]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.VERY_ANNOYING,
+					Needs: [() => ItemData.getKeyCount("Fire Temple") >= 4]
+				},
+				{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH } 
 			]
 		},
 		{
 			text: "Fall from the very top room",
+			age: Age.ADULT,
 			isPunishment: true,
 			difficulties: [ 
-				{ Difficulty: RpgTaskDifficulty.IRRITATING, Needs: [Equipment.GORON_TUNIC]},
-				{ Difficulty: RpgTaskDifficulty.ANNOYING }
+				{ 
+					Difficulty: RpgTaskDifficulty.IRRITATING, 
+					Needs: [() => ItemData.getKeyCount("Fire Temple") >= 5]
+				},
+				{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }
 			]
 		},
 		{
 			text: "CURSED: You cannot equip the goron tunic",
+			age: Age.ADULT,
 			isPunishment: true,
-			difficulties: [ 
-				{ Difficulty: RpgTaskDifficulty.ANNOYING }
-			]
+			difficulties: [{ Difficulty: RpgTaskDifficulty.ANNOYING }]
 		}
 	],
 	"Water Temple": [
 		{
 			text: "Change the water level",
+			age: Age.ADULT,
 			isPunishment: true,
 			difficulties: [ 
 				{ Difficulty: RpgTaskDifficulty.ANNOYING, Needs: [Songs.ZELDAS_LULLABY]},
@@ -496,6 +701,7 @@ RpgTasks = {
 		},
 		{
 			text: "Spawn the scarecrow",
+			age: Age.ADULT,
 			isPunishment: true,
 			difficulties: [ 
 				{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, Needs: [Songs.SCARECROWS_SONG]},
@@ -504,9 +710,10 @@ RpgTasks = {
 		},
 		{
 			text: "Jump in the toilet room and swirl around it",
+			age: Age.ADULT,
 			isPunishment: true,
 			difficulties: [ 
-				{ Difficulty: RpgTaskDifficulty.IRRITATING, Age: Age.ADULT }
+				{ Difficulty: RpgTaskDifficulty.IRRITATING }
 			]
 		}
 	],
@@ -529,6 +736,7 @@ RpgTasks = {
 		},
 		{
 			text: "Hook the scarecrow on the cage",
+			age: Age.ADULT,
 			difficulties: [ 
 				{ 
 					Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, 
@@ -536,7 +744,7 @@ RpgTasks = {
 						Songs.SCARECROWS_SONG, 
 						Equipment.HOVER_BOOTS,
 						UpgradedItems.LONGSHOT, 
-					],
+					]
 				},
 				{ 
 					Difficulty: RpgTaskDifficulty.IRRITATING, 
@@ -562,8 +770,38 @@ RpgTasks = {
 	"Spirit Temple": [
 		{
 			text: "Climb the shifting wall without hookshotting",
-			difficulties: [ 
-				{ Difficulty: RpgTaskDifficulty.IRRITATING, Age: Age.ADULT }
+			age: Age.ADULT,
+			difficulties: [
+				{ 
+					Difficulty: RpgTaskDifficulty.IRRITATING,
+					Standard: true,
+					Needs: [() => ItemData.getKeyCount("Spirit Temple") >= 4, Equipment.STRENGTH]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.IRRITATING,
+					MQ: true,
+					Needs: [
+						() => ItemData.getKeyCount("Spirit Temple") >= 3, 
+						Equipment.STRENGTH,
+						UpgradedItems.LONGSHOT,
+						Items.BOMBCHU
+					]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.ANNOYING,
+					MQ: true,
+					NeedsAny: [UpgradedItems.LONGSHOT, Equipment.STRENGTH],
+					NeedsAny: [
+						() => ItemData.getKeyCount("Spirit Temple") >= 3, 
+						Items.BOMBCHU
+					]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.VERY_ANNOYING,
+					Standard: true,
+					NeedsAny: [() => ItemData.getKeyCount("Spirit Temple") >= 4, Equipment.STRENGTH]
+				},
+				{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH }
 			]
 		},
 		{
@@ -591,20 +829,45 @@ RpgTasks = {
 	"Bottom of the Well": [
 		{
 			text: "Fall to the basement", 
+			age: Age.CHILD,
 			isPunishment: true,
 			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY }]
 		},
 		{
 			text: "Perform the actor glitch", 
+			age: Age.CHILD,
 			isPunishment: true,
-			difficulties: [{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING }]
+			difficulties: [
+				{ 
+					Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING,
+					Standard: true,
+					Needs: [
+						Tricks.botwActorGlitch.canDo,
+						() => ItemData.getKeyCount("Bottom of the Well") >= 2
+					]
+				},
+				{ 
+					Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING,
+					MQ: true,
+					Needs: [Tricks.botwActorGlitch.canDo]
+				},
+				{
+					Difficulty: RpgTaskDifficulty.ANNOYING,
+					Standard: true
+				}
+			]
 		}
 	],
 	"Training Grounds": [
 		{
 			text: "Spawn the scarecrow", 
+			age: Age.ADULT,
+			standard: true,
 			isPunishment: true,
-			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY, Needs: [Songs.SCARECROWS_SONG] }]
+			difficulties: [
+				{ Difficulty: RpgTaskDifficulty.EASY, Needs: [Songs.SCARECROWS_SONG, Items.HOOKSHOT] },
+				{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }
+			]
 		},
 		{
 			text: "Spawn the song of time block", 
