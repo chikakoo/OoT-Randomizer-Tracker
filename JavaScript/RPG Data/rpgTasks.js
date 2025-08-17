@@ -257,12 +257,9 @@ RpgTasks = {
 			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
 		},
 		{
-			text: "Collect the cuccos",
-			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
-		},
-		{
 			text: "Spawn a scarecrow",
-			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING, Age: Age.ADULT }]
+			age: Age.ADULT,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING, Needs: [Songs.SCARECROWS_SONG] }]
 		},
 		{
 			text: "Have more than 150 rupees",
@@ -279,10 +276,6 @@ RpgTasks = {
 		},
 		{
 			text: "Get caught by any guard",
-			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
-		},
-		{
-			text: "Burn yourself with fire damage",
 			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
 		},
 		{
@@ -304,6 +297,10 @@ RpgTasks = {
 		},
 		{
 			text: "You must bomb the item check",
+			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
+		},
+		{
+			text: "Exit and re-enter from any loading zone - have the DM get the item with your instructions",
 			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
 		},
 
@@ -426,6 +423,12 @@ RpgTasks = {
 			text: "Navigate from Saria's house to the end of the platform bridges without stopping",
 			isPunishment: true,
 			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY }]
+		},
+		{
+			text: "Pick up all the rocks from the rock circle and throw them at Mido",
+			isPunishment: true,
+			Age: Age.CHILD,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
 		}
 	],
 	"Lost Woods": [
@@ -463,28 +466,48 @@ RpgTasks = {
 				},
 				{ Difficulty: RpgTaskDifficulty.ANNOYING, Needs: [Items.FAIRY_BOW] }
 			]
+		},
+		{
+			text: "Kill a giant stalchild",
+			isPunishment: true,
+			age: Age.CHILD,
+			difficulties: [
+				{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, Needs: [Equipment.KOKIRI_SWORD] },
+				{ Difficulty: RpgTaskDifficulty.IRRITATING, Needs: [Items.DEKU_STICK, Equipment.DEKU_SHIELD] },
+			]
 		}
 	],
 	"Lon Lon Ranch": [
-		{
-			text: "Do a lap around the horse track while acting like a horse",
-			isPunishment: true,
-			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY }]
-		},
 		{
 			text: "CURSED: Every time you see a chicken, you must pick it up",
 			isPunishment: true,
 			age: Age.ADULT,
 			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY }]
 		},
+		{
+			text: "Do a lap around the horse track while making horse noises",
+			isPunishment: true,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.EASY }]
+		}
 	],
 	"Kakariko Village": [
 		{
 			text: "CURSED: Every time you see a chicken, you must pick it up",
 			isPunishment: true,
 			age: Age.CHILD,
-			difficulties: [{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH }]
+			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }]
 		},
+		{
+			text: "Collect the cuccos",
+			isPunishment: true,
+			age: Age.CHILD,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
+		},
+		{
+			text: "Leave and re-enter from an overworld exit - get this item without seeing a chicken",
+			age: Age.CHILD,
+			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
+		}
 	],
 	"Zora's River": [
 		{
@@ -539,7 +562,7 @@ RpgTasks = {
 		},
 		{
 			text: "Jump in the river and take the exit before getting this item",
-			difficulties: [{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING }]
+			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING }]
 		}
 	],
 	"Gerudo Fortress": [
@@ -555,6 +578,18 @@ RpgTasks = {
 		{
 			text: "Perform the anti-grav glitch before getting this item",
 			difficulties: [{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING }]
+		},
+		{
+			text: "Shoot all the targets in the HBA area",
+			isPunishment: true,
+			difficulties: [
+				{ 
+					Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, 
+					Needs: [ItemSets.PROJECTILES],
+					AdultNeedsAny: [Tricks.gfAdultBackAreaWithoutCard, GameStateSets.ARE_GERUDO_GUARDS_TAME]
+				},
+				{ Difficulty: RpgTaskDifficulty.ANNOYING }
+			]
 		}
 	],
 	"Haunted Wasteland": [
@@ -620,7 +655,7 @@ RpgTasks = {
 				{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, Needs: [ItemSets.EXPLOSIVES]},
 				{ Difficulty: RpgTaskDifficulty.ANNOYING },
 			],
-		},
+		}
 	],
 	"Jabu Jabu's Belly": [
 		{
@@ -676,6 +711,7 @@ RpgTasks = {
 		},
 		{
 			text: "Perform the blue switch skip",
+			standard: true,
 			difficulties: [ 
 				{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, Needs: [Items.BOOMERANG]},
 				{ Difficulty: RpgTaskDifficulty.ANNOYING } 
