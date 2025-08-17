@@ -35,6 +35,10 @@ RpgPage = {
      * @param {KeyboardEvent} event - The event
      */
     generateTasks: function(difficulty, event) {
+        if (!this.currentLocation) {
+            return;
+        }
+
         let taskContainer = document.getElementById("rpgTasksContainer");
         removeCssClass(taskContainer, "nodisp");
 
@@ -112,7 +116,7 @@ RpgPage = {
     _getAllTasksByDifficulty: function(difficulty, age) {
         let punishmentsOnly = document.getElementById("rpgPunishmentsOnlyCheckbox").checked;
         let taskPool = RpgTasks["Anywhere"];
-        if (this.currentLocation) {
+        if (RpgTasks[this.currentLocation]) {
             taskPool = taskPool.concat(RpgTasks[this.currentLocation]);
         }
         return taskPool.filter(task => {
@@ -123,6 +127,7 @@ RpgPage = {
 
     /**
      * Returns whether the task is valid for the current game state
+     * Note that NONE is valid for EVERY difficulty check
      * @param difficulties - the list of difficulties in the task
      * @returns True if valid; false otherwise
      */
@@ -131,8 +136,15 @@ RpgPage = {
         for (let i = 0; i < difficulties.length; i++)
         {
             let difficultyRequirement = difficulties[i];
-            if (difficultyRequirement.Difficulty !== RpgTaskDifficulty.NONE && // None is okay
-                difficultyRequirement.Difficulty !== difficulty // But it has to be the right difficulty
+
+            let isDungeon = MapLocations[this.currentLocation].MapGroup === MapGroups.DUNGEONS;
+            if ((isDungeon && difficultyRequirement.OverworldOnly) || 
+                (!isDungeon && difficultyRequirement.DungeonOnly)) {
+                continue;
+            }
+
+            if (difficultyRequirement.Difficulty !== RpgTaskDifficulty.NONE &&
+                difficultyRequirement.Difficulty !== difficulty
             ) {
                 continue;
             }

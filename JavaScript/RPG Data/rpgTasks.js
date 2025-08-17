@@ -22,8 +22,9 @@ RpgTaskDifficulty = {
 *		excluding it would pass that particular check.
 *       - Level: The difficulty level this option would use
 *			> Difficulty.NONE matches with everything
-*       - Location: The location of this task (a string)
-*		- otherwise, does the same checks any ItemLocation would
+*		- OverworldOnly: True if the current location is NOT a dungeon
+*		- DungeonOnly: True if the current location is a dungeon
+*		- Uses the same checks any ItemLocation would (Needs, NeedsAny, etc - see Data.calculateObtainability)
 */
 RpgTasks = {
 	"Anywhere": [
@@ -316,6 +317,10 @@ RpgTasks = {
 			isPunishment: true,
 			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING }]
 		},
+		{
+			text: "CURSED: You must unlock all possible doors before leaving the dungeon",
+			difficulties: [{ Difficulty: RpgTaskDifficulty.VERY_ANNOYING, DungeonOnly: true }]
+		},
 
 		{
 			text: "CURSED: Hold your controller upside down",
@@ -345,7 +350,7 @@ RpgTasks = {
 		{
 			text: "You must get this item as the other age",
 			difficulties: [{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH }]
-		},
+		}
 	],
 	"Deku Tree": [
 		{
