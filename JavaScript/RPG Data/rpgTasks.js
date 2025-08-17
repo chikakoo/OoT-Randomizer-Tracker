@@ -22,6 +22,7 @@ RpgTaskDifficulty = {
 *		excluding it would pass that particular check.
 *       - Level: The difficulty level this option would use
 *			> if a Difficulty.NONE is picked, it will immediately stop trying to pick a level
+*       - Location: The location of this task (a string)
 *		- otherwise, does the same checks any ItemLocation would
 */
 RpgTasks = [
@@ -34,6 +35,20 @@ RpgTasks = [
 		difficulties: [{ 
             Difficulty: RpgTaskDifficulty.EASY,
             Needs: [Items.BOMB]
+        }]
+	},
+    {
+		text: "CHILD",
+		difficulties: [{ 
+            Difficulty: RpgTaskDifficulty.EASY,
+            Age: Age.CHILD
+        }]
+	},
+    {
+		text: "ADULT",
+		difficulties: [{ 
+            Difficulty: RpgTaskDifficulty.EASY,
+            Age: Age.ADULT
         }]
 	}
 ];

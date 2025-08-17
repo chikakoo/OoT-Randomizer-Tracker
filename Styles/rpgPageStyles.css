@@ -21,8 +21,34 @@
     margin: 0.67em 0 0.67em, 0;
 }
 
-.rpg-label {
+.rpg-label, .task-list {
     color: white;
     font-size: 14pt;
+}
+
+#rpgTasksContainer {
+    display: flex;
+    flex-direction: row;
+    max-width: 520px;
+}
+
+.task-list {
+    margin: 5px;
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: #052D8A;
+}
+
+.task-list > :nth-child(even) {
+    background-color: #052675;
+}
+
+.task {
+    margin: 5px;
+}
+
+.task.task-rolled {
+    color: gold;
+    text-decoration: underline;
 }
 

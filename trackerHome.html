@@ -763,7 +763,7 @@
 				<label for="rpgPunishmentsOnlyCheckbox">Generate Punishments Only</label>
 			</div>
 			<div id="rpgButtonContainer">
-				<button id="rpgButtonEasy" onclick="RpgPage.generateTasks(RpgTaskDifficulty.EASY)">
+				<button id="rpgButtonEasy" onclick="RpgPage.generateTasks(RpgTaskDifficulty.EASY, event)">
 					Easy
 				</button>
 				<button id="rpgButtonMildlyIrritating" onclick="RpgPage.generateTasks(RpgTaskDifficulty.MILDLY_IRRITATING)">
@@ -783,8 +783,8 @@
 				</button>
 			</div>
 			<div id="rpgTasksContainer">
-				<div id="rpgChildTasksContainer"></div>
-				<div id="rpgAdultTasksContainer"></div>
+				<div id="rpgChildTasksContainer" class="task-list"></div>
+				<div id="rpgAdultTasksContainer" class="task-list"></div>
 			</div>
 		</div>
 	</div>
