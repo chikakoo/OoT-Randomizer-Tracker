@@ -701,5 +701,10 @@ let SpoilerLogOwEntranceMap = {
     },
     "Desert Colossus|Twinrova Boss Room": {
         map: "Desert Colossus", exit: "Haunted Wasteland"
+    },
+
+    // Misc
+    "Zoras Domain|ZD Eyeball Frog Timeout": {
+        map: "Zora's Domain", exit: "Zora's River"
     }
 };
