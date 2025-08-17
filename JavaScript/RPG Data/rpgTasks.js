@@ -24,6 +24,8 @@ RpgTaskDifficulty = {
 *			> Difficulty.NONE matches with everything
 *		- OverworldOnly: True if the current location is NOT a dungeon
 *		- DungeonOnly: True if the current location is a dungeon
+*		- Standard: (Only for dungeons) True if the current location is a standard dungeon
+*		- MQ: (Only for dungeons) True if the current location is a master quest dungeon
 *		- Uses the same checks any ItemLocation would (Needs, NeedsAny, etc - see Data.calculateObtainability)
 */
 RpgTasks = {
@@ -260,7 +262,19 @@ RpgTasks = {
 		},
 		{
 			text: "You must burn the item check",
-			difficulties: [{ Difficulty: RpgTaskDifficulty.ANNOYING }]
+			difficulties: [
+				{ Difficulty: RpgTaskDifficulty.EASY, Needs: [ItemSets.FIRE_ITEMS] },
+				{ 
+					Difficulty: RpgTaskDifficulty.ANNOYING, 
+					NeedsAny: [
+						Equipment.MAGIC, 
+						() => Items.DINS_FIRE.playerHas, 
+						(age) => age === Age.ADULT && 
+							Items.FIRE_ARROW.playerHas && Items.FAIRY_BOW.playerHas
+					]
+				},
+				{ Difficulty: RpgTaskDifficulty.EXTREME_BITCH }
+			]
 		},
 		{
 			text: "Have the Lens of Truth active",
@@ -367,7 +381,15 @@ RpgTasks = {
 			text: "Do the B1 skip backup",
 			isPunishment: true,
 			difficulties: [{ Difficulty: RpgTaskDifficulty.IRRITATING, Needs: [Tricks.dekuB1Skip.canDo] }],
-		}
+		},
+		{
+			text: "Burn a deku shield",
+			isPunishment: true,
+			difficulties: [ 
+				{ Difficulty: RpgTaskDifficulty.MILDLY_IRRITATING, Age: Age.CHILD, MQ: true, Needs: [Equipment.DEKU_SHIELD]},
+				{ Difficulty: RpgTaskDifficulty.ANNOYING, MQ: true, Age: Age.CHILD },
+			]
+		},
 	],
 	"Dodongo's Cavern": [
 		{

@@ -137,20 +137,23 @@ RpgPage = {
         {
             let difficultyRequirement = difficulties[i];
 
-            let isDungeon = MapLocations[this.currentLocation].MapGroup === MapGroups.DUNGEONS;
+            let map = MapLocations[this.currentLocation];
+            let isDungeon = map.MapGroup === MapGroups.DUNGEONS;
             if ((isDungeon && difficultyRequirement.OverworldOnly) || 
                 (!isDungeon && difficultyRequirement.DungeonOnly)) {
                 continue;
             }
 
-            if (difficultyRequirement.Difficulty !== RpgTaskDifficulty.NONE &&
-                difficultyRequirement.Difficulty !== difficulty
-            ) {
+            if (isDungeon && (
+                (map.IsMasterQuest && difficultyRequirement.Standard) ||
+                (!map.IsMasterQuest && difficultyRequirement.MQ)
+            )) {
                 continue;
             }
 
             if (Data.calculateObtainability(difficultyRequirement, age) === ItemObtainability.YES) {
-                return true
+                return difficultyRequirement.Difficulty === RpgTaskDifficulty.NONE || 
+                    difficultyRequirement.Difficulty === difficulty;
             }
         }
 
