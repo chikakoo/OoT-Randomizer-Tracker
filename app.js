@@ -37,8 +37,8 @@ io.on('connection', function(client) {
     	console.log("Syncing all item locations...");
     });
 
-    client.on("sync_settings", function(settings) {
-      client.broadcast.emit("sync_settings", settings);
+    client.on("sync_settings", function(settings, tricks) {
+      client.broadcast.emit("sync_settings", settings, tricks);
       console.log("Syncing all given settings...");
     });
 

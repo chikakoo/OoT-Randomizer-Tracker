@@ -87,6 +87,7 @@ let Settings = {
 
 	TrackerSettings: {
 		saveFileName: "",
+		syncTricks: false, // Turn on for RPG
 		enableLocationNotes: false,
 		deprioritizeDampeToWindmill: true,
 		deprioritizeHyruleField: true,

@@ -27,11 +27,15 @@ SocketClient = {
 		});
 
 		// Sync up settings
-		this._socket.on("sync_settings", function(settings) {
+		this._socket.on("sync_settings", function(settings, tricks) {
 			Object.keys(settings).forEach(function(settingKey) {
 				if (Settings[settingKey]) {
 					Settings[settingKey] = settings[settingKey];
 				}
+			});
+
+			Object.keys(tricks).forEach(trickName => {
+				Tricks[trickName].enabled = tricks[trickName];
 			});
 		});
 
@@ -58,6 +62,10 @@ SocketClient = {
 					
 					Items[itemKey].playerHas = item.playerHas;
 					Items[itemKey].currentUpgrade = item.currentUpgrade;
+
+					if (item.count !== undefined) {
+						Items[itemKey].count = item.count;
+					}
 					break;
 				case "ChildTradeItems":
 					consoleOutput += `; Upgrade: ${item.currentUpgrade}`;
@@ -372,7 +380,19 @@ SocketClient = {
 			ItemLocationsToExclude: Settings.ItemLocationsToExclude,
 			RandomizerSettings: Settings.RandomizerSettings
 		};
-		this._socket.emit("sync_settings", settingsToSync);
+
+		let tricksToSync = {};
+
+		if (Settings.TrackerSettings.syncTricks) {
+			tricksToSync = {};
+			Object.keys(Tricks).forEach(trickName => {
+				let trick = Tricks[trickName];
+				if (trick.enabled !== undefined) {
+					tricksToSync[trickName] = trick.enabled;
+				}
+			});
+		}
+		this._socket.emit("sync_settings", settingsToSync, tricksToSync);
 	},
 
 	/**
