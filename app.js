@@ -52,8 +52,8 @@ io.on('connection', function(client) {
       console.log(`Setting ${dungeonName} to be type ${dungeonType}.`);
     });
 
-    client.on("current_location_changed", function(locationName) {
-      client.broadcast.emit("current_location_changed", locationName);
+    client.on("current_location_changed", function(locationName, locationNotes) {
+      client.broadcast.emit("current_location_changed", locationName, locationNotes);
       console.log(`Sending location change: ${locationName}`);
     });
 });

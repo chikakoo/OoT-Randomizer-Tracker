@@ -286,6 +286,8 @@ let ItemLocationDisplay = {
 			removeCssClass(locationNotesDiv, "nodisp");
 
 			LocationNotes[ItemLocationDisplay.currentLocationName] = text;
+			
+			SocketClient.rpgLocationChanged();
 		};
 
 		let locationNotesContainer = dce("div");

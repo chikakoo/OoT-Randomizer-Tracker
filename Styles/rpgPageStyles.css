@@ -21,6 +21,16 @@
     margin: 0.67em 0 0.67em, 0;
 }
 
+#rpgCurseHeader {
+    display: block;
+    margin: 0;
+    margin-bottom: 6px;
+    padding: 0;
+    color: red;
+    font-size: 18pt;
+    margin: 0.67em 0 0.67em, 0;
+}
+
 .rpg-label, .task-list {
     color: white;
     font-size: 14pt;
@@ -29,7 +39,6 @@
 #rpgTasksContainer {
     display: flex;
     flex-direction: row;
-    max-width: 520px;
 }
 
 .task-list {

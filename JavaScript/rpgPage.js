@@ -21,6 +21,12 @@ RpgPage = {
         header.innerText = this.currentLocation
             ? `RPG: ${this.currentLocation}`
             : "RPG: No Location Selected";
+
+        let curseHeader = document.getElementById("rpgCurseHeader");
+        let curse = LocationNotes[this.currentLocation];
+        curseHeader.innerText = curse === this.currentLocation
+            ? ""
+            : curse || "";
     },
 
     /**
@@ -28,6 +34,9 @@ RpgPage = {
      * @param {RpgTaskDifficulty} difficulty 
      */
     generateTasks: function(difficulty) {
+        let taskContainer = document.getElementById("rpgTasksContainer");
+        removeCssClass(taskContainer, "nodisp");
+
         let allChildTasks = this._getTasksByLevel(difficulty, Age.CHILD);
         let allAdultTasks = this._getTasksByLevel(difficulty, Age.ADULT);
 

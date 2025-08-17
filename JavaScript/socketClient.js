@@ -164,7 +164,8 @@ SocketClient = {
 		});
 
 		// Sync the selected location (used with the rpg)
-		this._socket.on("current_location_changed", function(locationName) {
+		this._socket.on("current_location_changed", function(locationName, locationNotes) {
+			LocationNotes[locationName] = locationNotes;
 			RpgPage.updateLocation(locationName);
 		});
 	},
@@ -340,14 +341,14 @@ SocketClient = {
 	 * Syncs the location (for the RPG page)
 	 */
 	rpgLocationChanged: function() {
-		// TODO RPG: delete this - it's just for testing
-		if (LocationSidebar.isLocationAMap()) {
-			RpgPage.updateLocation(ItemLocationDisplay.currentLocationName); 
-		}
+		// Enable if testing without sockets
+		// if (LocationSidebar.isLocationAMap()) {
+		// 	RpgPage.updateLocation(ItemLocationDisplay.currentLocationName); 
+		// }
 		
-
 		if (this.shouldSync() && LocationSidebar.isLocationAMap()) {
-			this._socket.emit("current_location_changed", ItemLocationDisplay.currentLocationName);
+			let locationName = ItemLocationDisplay.currentLocationName;
+			this._socket.emit("current_location_changed", locationName, LocationNotes[locationName]);
 		}
 	},
 	

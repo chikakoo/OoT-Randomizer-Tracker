@@ -183,6 +183,10 @@ let UpgradedItems = {
 	ADULTS_WALLET: {
 		item: Equipment.WALLET,
 		upgrade: 1
+	},
+	GIANTS_WALLET: {
+		item: Equipment.WALLET,
+		upgrade: 2
 	}
 };
 
