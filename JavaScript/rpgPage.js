@@ -31,17 +31,18 @@ RpgPage = {
 
     /**
      * Generates a list of 20 tasks and selects one at random
-     * @param {RpgTaskDifficulty} difficulty 
+     * @param {RpgTaskDifficulty} difficulty - The difficulty to generate
+     * @param {KeyboardEvent} event - The event
      */
-    generateTasks: function(difficulty) {
+    generateTasks: function(difficulty, event) {
         let taskContainer = document.getElementById("rpgTasksContainer");
         removeCssClass(taskContainer, "nodisp");
 
-        let allChildTasks = this._getTasksByLevel(difficulty, Age.CHILD);
-        let allAdultTasks = this._getTasksByLevel(difficulty, Age.ADULT);
+        let allChildTasks = this._getAllTasksByDifficulty(difficulty, Age.CHILD);
+        let allAdultTasks = this._getAllTasksByDifficulty(difficulty, Age.ADULT);
 
-        let childTaskList = this._generateTaskListFromPossibilities(allChildTasks);
-        let adultTaskList = this._generateTaskListFromPossibilities(allAdultTasks);
+        let childTaskList = this._generateTaskListFromPossibilities(allChildTasks, event.shiftKey);
+        let adultTaskList = this._generateTaskListFromPossibilities(allAdultTasks, event.shiftKey);
 
         this._populateTaskUI(childTaskList, document.getElementById("rpgChildTasksContainer"));
         this._populateTaskUI(adultTaskList, document.getElementById("rpgAdultTasksContainer"));
@@ -67,10 +68,13 @@ RpgPage = {
     /**
      * Generates the tasks to display from the list of all tasks
      * Will duplicate as needed
-     * @param {Array<string>} allTasks 
+     * 
+     * Always includes the appropriate number of DM tasks
+     * @param {Array<string>} allTasks - The task pool to start with
+     * @param {boolean} showAllTasks - Whether to instead show all the possible tasks
      * @returns The array of tasks
      */
-    _generateTaskListFromPossibilities(allTasks) {
+    _generateTaskListFromPossibilities(allTasks, showAllTasks) {
         let dmTaskList = [];
 
         for (let i = 0; i < this.numberOfDMTasks; i++) {
@@ -86,6 +90,10 @@ RpgPage = {
             return dmTaskList;
         }
 
+        if (showAllTasks) {
+            return dmTaskList.concat(allTasks);
+        }
+
         let remainingTasks = this.numberOfTasks - dmTaskList.length;
         let taskPool = [...allTasks].shuffle();
         while(taskPool.length < remainingTasks) {
@@ -98,32 +106,33 @@ RpgPage = {
     },
 
     /**
-     * Gets the list of tasks based on the given level
+     * Gets the list of tasks based on the given difficulty
      * @param difficulty - the difficulty to give it
      */
-    _getTasksByLevel: function(difficulty, age) {
+    _getAllTasksByDifficulty: function(difficulty, age) {
         let punishmentsOnly = document.getElementById("rpgPunishmentsOnlyCheckbox").checked;
-        return RpgTasks.filter(task => {
+        let taskPool = RpgTasks["Anywhere"];
+        if (this.currentLocation) {
+            taskPool = taskPool.concat(RpgTasks[this.currentLocation]);
+        }
+        return taskPool.filter(task => {
             return (!punishmentsOnly || task.isPunishment) &&
                 this._checkTask(task, difficulty, age);
         }).map(task => task.text);
     },
 
     /**
-     * Gets a single level given a list of difficulties - using the current game state
-     * @param difficulties - the list of difficulties
-     * @returns The difficulty to use; null if no difficulties work
+     * Returns whether the task is valid for the current game state
+     * @param difficulties - the list of difficulties in the task
+     * @returns True if valid; false otherwise
      */
     _checkTask: function(task, difficulty, age) {
         let difficulties = task.difficulties;
         for (let i = 0; i < difficulties.length; i++)
         {
             let difficultyRequirement = difficulties[i];
-            if (difficultyRequirement.Location && difficultyRequirement.Location !== this.currentLocation || // wrong location
-                (
-                    difficultyRequirement.Difficulty !== RpgTaskDifficulty.NONE && // None is okay
-                    difficultyRequirement.Difficulty !== difficulty // But it has to be the right difficulty
-                )
+            if (difficultyRequirement.Difficulty !== RpgTaskDifficulty.NONE && // None is okay
+                difficultyRequirement.Difficulty !== difficulty // But it has to be the right difficulty
             ) {
                 continue;
             }

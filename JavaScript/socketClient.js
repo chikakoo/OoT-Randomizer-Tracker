@@ -341,10 +341,9 @@ SocketClient = {
 	 * Syncs the location (for the RPG page)
 	 */
 	rpgLocationChanged: function() {
-		// Enable if testing without sockets
-		// if (LocationSidebar.isLocationAMap()) {
-		// 	RpgPage.updateLocation(ItemLocationDisplay.currentLocationName); 
-		// }
+		if (LocationSidebar.isLocationAMap()) {
+			RpgPage.updateLocation(ItemLocationDisplay.currentLocationName); 
+		}
 		
 		if (this.shouldSync() && LocationSidebar.isLocationAMap()) {
 			let locationName = ItemLocationDisplay.currentLocationName;
