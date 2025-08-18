@@ -66,6 +66,16 @@ let GossipStoneSettings = {
 	MASK_OF_TRUTH: 3
 };
 
+RpgTaskDifficulty = {
+    NONE: 0,
+    EASY: 1,
+    MILDLY_IRRITATING: 2,
+    IRRITATING: 3,
+    ANNOYING: 4,
+    VERY_ANNOYING: 5,
+    EXTREME_BITCH: 6
+};
+
 let Settings = {
 	ItemLocationsToExclude: {
 		// Maps: {
@@ -93,6 +103,23 @@ let Settings = {
 		deprioritizeHyruleField: true,
 		deprioritizeHauntedWasteland: true,
 		routeBasedOnTime: false //TODO: Not completed yet, do not use!
+	},
+
+	RpgSettings: {
+		numberOfTasks: 20,
+		numberOfDMTasks: 1,
+		numberOfDMCurses: 1,
+
+		// Values map to RpgTaskDifficulty
+		DifficultyDiceRanges: {
+			0: { min: 0, max: 0 },
+			1: { min: 0, max: 5 },
+			2: { min: 6, max: 10 },
+			3: { min: 11, max: 15 },
+			4: { min: 16, max: 20 },
+			5: { min: 21, max: 25 },
+			6: { min: 26, max: 30 }
+		}
 	},
 	
 	RandomizerSettings: {

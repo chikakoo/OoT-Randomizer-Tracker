@@ -1,13 +1,3 @@
-RpgTaskDifficulty = {
-    NONE: 0,
-    EASY: 1,
-    MILDLY_IRRITATING: 2,
-    IRRITATING: 3,
-    ANNOYING: 4,
-    VERY_ANNOYING: 5,
-    EXTREME_BITCH: 6
-};
-
 /**
  * The array of tasks - this can be any of the following:
  * - something the player must do/have before opening the chest

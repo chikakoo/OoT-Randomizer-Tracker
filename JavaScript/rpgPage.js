@@ -1,19 +1,27 @@
 RpgPage = {
-    numberOfTasks: 20,
-    numberOfDMTasks: 1,
-    numberOfDMCurses: 1,
     currentLocation: "",
 
     display: function() {
         LocationSidebar.updateSidebarLocation();
         LocationSidebar.displayContainer("rpgContainer");
         ItemLocationDisplay.currentLocationName = "RPG";
+        
+        this._updateButtonTooltips();
         this._updateHeader();
     },
 
     updateLocation: function(locationName) {
         this.currentLocation = locationName;
         this._updateHeader();
+    },
+
+    _updateButtonTooltips: function() {
+        let buttons = document.getElementById("rpgButtonContainer").children;
+        for (let i = 0; i < buttons.length; i++) {
+            let button = buttons[i];
+            let buttonSetting = Settings.RpgSettings.DifficultyDiceRanges[i + 1];
+            button.title = `Range: ${buttonSetting.min}-${buttonSetting.max}`;
+        }
     },
 
     _updateHeader: function() {
@@ -81,11 +89,11 @@ RpgPage = {
     _generateTaskListFromPossibilities(allTasks, showAllTasks) {
         let dmTaskList = [];
 
-        for (let i = 0; i < this.numberOfDMTasks; i++) {
+        for (let i = 0; i < Settings.RpgSettings.numberOfDMTasks; i++) {
             dmTaskList.push("DM: Make up a task");
         }
 
-        for (let i = 0; i < this.numberOfDMCurses; i++) {
+        for (let i = 0; i < Settings.RpgSettings.numberOfDMCurses; i++) {
             dmTaskList.push("DM: Make up a curse");
         }
 
@@ -98,7 +106,7 @@ RpgPage = {
             return dmTaskList.concat(allTasks);
         }
 
-        let remainingTasks = this.numberOfTasks - dmTaskList.length;
+        let remainingTasks = Settings.RpgSettings.numberOfTasks - dmTaskList.length;
         let taskPool = [...allTasks].shuffle();
         while(taskPool.length < remainingTasks) {
             taskPool = taskPool.concat([...allTasks].shuffle());
