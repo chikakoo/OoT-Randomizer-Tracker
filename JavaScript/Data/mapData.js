@@ -4853,22 +4853,22 @@ let MapLocations = {
                     }
                 },
                 ItemLocations: {
-                    "Upper Room Crate 1": { // Check this and all other upper room crates
-                        SpoilerLogName: "Hideout Break Room Hallway Crate 1",
+                    "Upper Room Crate 1": {
+                        SpoilerLogName: "Hideout Break Room Hallway Crate 2",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 277, y: 197, floor: "TOP" },
                         Age: Age.EITHER,
                         LongDescription: "The crate is in front of you when you enter the map."
                     },
                     "Upper Room Crate 2": {
-                        SpoilerLogName: "Hideout Break Room Hallway Crate 2",
+                        SpoilerLogName: "Hideout Break Room Hallway Crate 1",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 297, y: 163, floor: "TOP" },
                         Age: Age.EITHER,
                         LongDescription: "This is the second crate you run into in this map."
                     },
                     "Upper Room Close Corner Crate": {
-                        SpoilerLogName: "Hideout Break Room Crate 1",
+                        SpoilerLogName: "Hideout Break Room Crate 2",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 345, y: 127, floor: "TOP" },
                         Age: Age.EITHER,
@@ -4876,7 +4876,7 @@ let MapLocations = {
                         NeedsAny: [GameStateSets.CAN_STUN_GUARDS]
                     },
                     "Upper Room Far Corner Crate": {
-                        SpoilerLogName: "Hideout Break Room Crate 2",
+                        SpoilerLogName: "Hideout Break Room Crate 1",
                         ItemGroup: ItemGroups.CRATE,
                         MapInfo: { x: 345, y: 117, floor: "TOP" },
                         Age: Age.EITHER,
