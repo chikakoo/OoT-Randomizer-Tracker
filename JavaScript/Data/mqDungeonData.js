@@ -7049,6 +7049,7 @@ let MQDungeons = {
                         NeedsAny: [
                             ItemSets.FIRE_ITEMS, 
                             Items.DEKU_STICK, 
+                            Items.FAIRY_BOW,
                             Tricks.boomerangThroughWalls.canDo,
                             QPAItemSets.LEDGE_QPA
                         ]
@@ -7064,6 +7065,7 @@ let MQDungeons = {
                         NeedsAny: [
                             ItemSets.FIRE_ITEMS, 
                             Items.DEKU_STICK, 
+                            Items.FAIRY_BOW,
                             Tricks.boomerangThroughWalls.canDo,
                             QPAItemSets.LEDGE_QPA
                         ]

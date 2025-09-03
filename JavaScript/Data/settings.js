@@ -1086,7 +1086,7 @@ let Tricks = {
 		canDo: (age) => age === Age.ADULT &&
 			Tricks.adultWaterTempleClip.enabled,
 		displayText: "Adult Water Temple Clip",
-		description: "With water drained, climb the ledge to the right of the ZD entrance; sidehop left into the wall; turn to face the wall; ledge clip and swim to the right side of the water in the center of the lake; avigate out of bounds through the wall to the temple",
+		description: "With water drained, climb the ledge to the right of the ZD entrance; sidehop left into the wall; turn to face the wall; ledge clip and swim to the right side of the water in the center of the lake; navigate out of bounds through the wall to the temple",
 		links: [{
 			url: "https://youtu.be/xORo1AjwxyQ?t=11",
 			description: "Video"

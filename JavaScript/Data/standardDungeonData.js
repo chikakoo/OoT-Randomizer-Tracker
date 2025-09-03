@@ -5201,7 +5201,7 @@ let StandardDungeons = {
                 DisplayGroup: { 
                     groupName: "Platforming Room", 
                     imageName: "Dungeon Map",
-                    description: "LUNGE STORAGE ADULT: Fall and climb off the ledge across from the gate; ess left x4; get into corner; jumpslash while holding forward; walk in bounds",
+                    description: "LUNGE STORAGE ADULT: Fall and climb off the ledge across from the gate; ess left x4; get into corner; jumpslash; hold shield or forward to stay out of bounds; walk around the gate back in bounds",
                     tricksToShow: [Tricks.iceChildNorthRoom]
                 },
                 UseAdultAge: function() { return !Tricks.iceChildNorthRoom.enabled; },

@@ -136,7 +136,8 @@ InteriorGroups = {
 	"Kokiri Shop": {
 		tooltip: "The Kokiri Forest shop with the rupee in the back.",
 		excludeFromGroup: function() { 
-			return !Settings.RandomizerSettings.shuffleWonderitems;
+			return Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.OFF ||
+				Settings.RandomizerSettings.rupeeAndHeartSetting === ShuffleLocationSettings.DUNGEON_ONLY;
 		},
 		isShop: true,
 		buttons: {

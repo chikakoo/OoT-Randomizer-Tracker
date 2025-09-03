@@ -238,7 +238,7 @@ let ItemLocationDisplay = {
 			itemGroupTitleDiv.appendChild(itemGroupImageDiv);
 
 			if (itemGroup.description) {
-				itemGroupImageDiv.title = itemGroup.description;
+				itemGroupTitleDiv.title = itemGroup.description;
 			}
 			
 			let itemGroupTextDiv = dce("div", "item-group-text");
