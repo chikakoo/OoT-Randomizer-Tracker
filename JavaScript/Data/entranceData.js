@@ -1324,16 +1324,24 @@ GrottoGroups = {
 		buttons: {
 			"Heart Container": {
 				SpoilerLogName: "Bongo Bongo",
-				LongDescription: "When fighting Bongo Bongo, it helps to NOT have the Hover Boots equipped. When the fight starts, if you hold down, he won't circle you right away. Hit his hands with your bow or hookshot, or slingshot to stun them. Now hit him before he hits you and damage him as much as you can. If you have magic, quickspins can actually stunlock him for a 1-cycle if you do them perfectly.",
+				LongDescription: "When fighting Bongo Bongo, it helps to NOT have the Hover Boots equipped. When the fight starts, if you hold down, he won't circle you right away. Hit his hands with your bow or hookshot, or slingshot to stun them. Now hit him before he hits you and damage him as much as you can.\x0A\x0AIf you have magic, quickspins can actually stunlock him for a 1-cycle if you do them perfectly.\x0A\x0AIf you can get isg, you can stun his hands as long as he doesn't use the fist attack. After that, you just have to let him run into your sword.",
 				Needs: [ItemSets.SWORDS],
-				NeedsAny: [Items.HOOKSHOT, ItemSets.PROJECTILES]
+				NeedsAny: [
+					Items.HOOKSHOT, 
+					ItemSets.PROJECTILES,
+					Tricks.isg.canDo
+				]
 			},
 			"Blue Warp": {
 				SpoilerLogName: "Shadow Temple Bongo Bongo Heart",
 				icon: "Shadow Medallion",
 				LongDescription: "Step in the blue warp after defeating the boss to receive a medallion.",
 				Needs: [ItemSets.SWORDS],
-				NeedsAny: [Items.HOOKSHOT, ItemSets.PROJECTILES]
+				NeedsAny: [
+					Items.HOOKSHOT, 
+					ItemSets.PROJECTILES,
+					Tricks.isg.canDo
+				]
 			}
 		}
 	},
