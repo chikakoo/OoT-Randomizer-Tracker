@@ -3853,8 +3853,11 @@ let MapLocations = {
                         Order: 6,
                         MapInfo: { x: 131, y: 120 },
                         Age: Age.ADULT,
-                        LongDescription: "Across the bridge, there are some rocks to the right. Use your hammer on them to reveal the chest.",
-                        NeedsAny: [Items.MEGATON_HAMMER, Tricks.weirdShot.canDo]
+                        LongDescription: "Across the bridge, there are some rocks to the right. Use your hammer on them to reveal the chest.<br/><br/>If megaflipping, position between the leftmost two rocks, facing the chest. Turn around.<br/>- CHU: Megaflip from there<br/>- BOMB: take a few steps forward and megaflip",
+                        NeedsAny: [
+                            Items.MEGATON_HAMMER, 
+                            Tricks.megaFlip.canDo, 
+                            Tricks.weirdShot.canDo]
                     },
                     "Show Poacher's Saw to Carpenter": {
                         SpoilerLogName: "GV Trade Poachers Saw",
