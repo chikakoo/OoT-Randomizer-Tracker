@@ -8190,7 +8190,7 @@ let MQDungeons = {
                         MapInfo: { x: 178, y: 190, floor: "SHW" },
                         Age: Age.ADULT,
                         Order: 14.1,
-                        LongDescription: "Navigate to the moving platform using either hover boots, or by shooting the bombflower and hookshoting to the chest to get this rupee."
+                        LongDescription: "Navigate to the moving platform using either hover boots, or by shooting the bomb flower and hookshoting to the chest to get this rupee."
                     },
                     "Shadow Silver Rupee on Bomb Flower Island": {
                         SpoilerLogName: "Ganons Castle MQ Shadow Trial Silver Rupee Bomb Flower",
@@ -8198,7 +8198,24 @@ let MQDungeons = {
                         MapInfo: { x: 220, y: 209, floor: "SHW" },
                         Age: Age.ADULT,
                         Order: 14.2,
-                        LongDescription: "Navigate to the moving platform using either hover boots, or by shooting the bombflower and hookshoting to the chest. Carefully navigate to the little island with the bombflower and the rupee."
+                        LongDescription: "Navigate to the moving platform using either hover boots, or by shooting the bombflower and hookshoting to the chest. Carefully navigate to the little island with the bomb flower and the rupee."
+                    },
+                    "Wonderitem on Bomb Flower Island": {
+                        // TODO: enable this when the OOTR PR is merged
+                        RequiredToAppear: () => false,
+                        SpoilerLogName: "Ganons Castle MQ Shadow Trial Explosives Wonderitem",
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Explosive Wonderitem",
+                        MapInfo: { x: 222, y: 211, floor: "SHW" },
+                        Age: Age.ADULT,
+                        Order: 14.2,
+                        LongDescription: "Navigate to the moving platform using either hover boots, or by shooting the bombflower and hookshoting to the chest. Carefully navigate to the little island with the bomb flower and the rupee.<br/><br/>Set off an explosion on the island to spawn this wonderitem (bow, din's fire, or strength can blow up the bomb flower).",
+                        NeedsAny: [
+                            ItemSets.EXPLOSIVES_OR_STRENGTH,
+                            Items.FAIRY_BOW,
+                            Items.DINS_FIRE,
+                            QPAItemSets.LEDGE_QPA
+                        ]
                     },
                     "Shadow Silver Rupee Under Front Beamos": {
                         SpoilerLogName: "Ganons Castle MQ Shadow Trial Silver Rupee First Beamos",
@@ -8206,7 +8223,7 @@ let MQDungeons = {
                         MapInfo: { x: 182, y: 155, floor: "SHW" },
                         Age: Age.ADULT,
                         Order: 14.3,
-                        LongDescription: "Navigate to the moving platform using either hover boots, or by shooting the bombflower and hookshoting to the chest. The rupee is under the beamos on the next platform - no need to blow it up to grab it."
+                        LongDescription: "Navigate to the moving platform using either hover boots, or by shooting the bomb flower and hookshoting to the chest. The rupee is under the beamos on the next platform - no need to blow it up to grab it."
                     }
                 }
             },

@@ -14,7 +14,7 @@ let SetType = {
 
 /**
  * Item sets for doing the quick putaway glitch
- * Uses its own function in ItemData based om the given properties
+ * Uses its own function in ItemData based on the given properties
  * Below is each setting and what is needed to perform it/what it's used for
  * - LEDGE_QPA: Shallow ledge and jumpslash
  * - HOVER_BOOTS_QPA: Any ledge and hover boots
