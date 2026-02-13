@@ -4858,7 +4858,7 @@ let MQDungeons = {
                         Order: 13,
                         LongDescription: "To get to this room, first make it to the platform with the two beamos in the room with all the guillitines. Turn left and follow the outer wall to a door (there are invisible platforms to jump to). The hearts are in the back left corner. Adult can play the Song of Time to spawn a block to get them, child will need the boomerang.",
                         ChildNeeds: [Items.BOOMERANG],
-                        AdultNeedsAny: [Items.BOOMERANG, Songs.SONG_OF_TIME]
+                        AdultNeedsAny: [Items.BOOMERANG, Songs.SONG_OF_TIME, Tricks.staircaseHover.canDo]
                     }
                 }
             },
@@ -8208,7 +8208,7 @@ let MQDungeons = {
                         MapImageName: "Explosive Wonderitem",
                         MapInfo: { x: 222, y: 211, floor: "SHW" },
                         Age: Age.ADULT,
-                        Order: 14.2,
+                        Order: 14.3,
                         LongDescription: "Navigate to the moving platform using either hover boots, or by shooting the bombflower and hookshoting to the chest. Carefully navigate to the little island with the bomb flower and the rupee.<br/><br/>Set off an explosion on the island to spawn this wonderitem (bow, din's fire, or strength can blow up the bomb flower).",
                         NeedsAny: [
                             ItemSets.EXPLOSIVES_OR_STRENGTH,
@@ -8222,7 +8222,7 @@ let MQDungeons = {
                         ItemGroup: ItemGroups.SILVER_RUPEE,
                         MapInfo: { x: 182, y: 155, floor: "SHW" },
                         Age: Age.ADULT,
-                        Order: 14.3,
+                        Order: 14.4,
                         LongDescription: "Navigate to the moving platform using either hover boots, or by shooting the bomb flower and hookshoting to the chest. The rupee is under the beamos on the next platform - no need to blow it up to grab it."
                     }
                 }
