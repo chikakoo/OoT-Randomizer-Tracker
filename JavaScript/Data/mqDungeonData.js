@@ -4046,7 +4046,7 @@ let MQDungeons = {
                     },
                     singleWaterPillarRoom: {
                         Needs: [ItemSets.FIRE_ITEMS],
-                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE]
+                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE, UpgradedItems.LONGSHOT] // Can longshot a crate to get back there
                     }
                 },
                 ItemLocations: {
@@ -4061,10 +4061,12 @@ let MQDungeons = {
                         MapInfo: { x: 53, y: 62, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 26,
-                        LongDescription: "In the whirlpool dragon room, use your iron boots or silver scale to sink to the little hallway behind the dragon where the crates reside. You can use chus to blow up the crates and dive for the items (drop on the 6th red flash for the close ones; the 4th red flash for the far ones).",
-                        NeedsAny: [
-                            Equipment.IRON_BOOTS,
-                            [Equipment.SCALE, Items.BOMBCHU]
+                        LongDescription: "In the whirlpool dragon room, use your iron boots, silver scale, or longshot a crate to sink to the little hallway behind the dragon where the crates reside. You can use chus to blow up the crates and dive for the items (drop on the 6th red flash for the close ones; the 4th red flash for the far ones).",
+                        // To get to the area, then to break the crate and get th item
+                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE, UpgradedItems.LONGSHOT],
+                        Needs: [
+                            Items.BOMBCHU,
+                            [SetType.OR, Equipment.IRON_BOOTS, Equipment.SCALE, Items.BOOMERANG]
                         ]
                     },
                     "2 Crates Behind Dragon Room": {
@@ -4079,8 +4081,8 @@ let MQDungeons = {
                         Age: Age.ADULT,
                         Order: 27,
                         RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
-                        LongDescription: "In the whirlpool dragon room, use your iron boots or silver scale to go past the little hallway behind the dragon. The crates are the big ones on the surface in the next room.",
-                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE]
+                        LongDescription: "In the whirlpool dragon room, use your iron boots, silver scale, or longshot a crate to go past the little hallway behind the dragon. The crates are the big ones on the surface in the next room.",
+                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE, UpgradedItems.LONGSHOT]
                     },
                     "5 Crates Behind Dragon Room": {
                         SpoilerLogName: [
@@ -4100,8 +4102,8 @@ let MQDungeons = {
                         MapInfo: { x: 33, y: 62, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 27,
-                        LongDescription: "In the whirlpool dragon room, use your iron boots or silver scale to go past the little hallway behind the dragon. The crates are on the surface in the next room.",
-                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE]
+                        LongDescription: "In the whirlpool dragon room, use your iron boots, silver scale, or longshot a crate to go past the little hallway behind the dragon. The crates are on the surface in the next room.",
+                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE, UpgradedItems.LONGSHOT]
                     },
                     "Wonderitem Behind Dragon Room": {
                         SpoilerLogName: "Water Temple MQ Dragon Statue Crates Hookshot Wonderitem",
@@ -4110,8 +4112,8 @@ let MQDungeons = {
                         MapInfo: { x: 29, y: 61, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 27.1,
-                        LongDescription: "In the whirlpool dragon room, use your iron boots or silver scale to go past the little hallway behind the dragon. Hookshot the symbol on the wall behind the crates to spawn the wonderitem.",
-                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE],
+                        LongDescription: "In the whirlpool dragon room, use your iron boots, silver scale, or longshot a crate to go past the little hallway behind the dragon. Hookshot the symbol on the wall behind the crates to spawn the wonderitem.",
+                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE, UpgradedItems.LONGSHOT],
                         Needs: [Items.HOOKSHOT]
                     },
                     "2 Wonderitems in Dragon's Eyes": {
