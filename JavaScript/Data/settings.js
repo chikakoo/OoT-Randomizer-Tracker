@@ -351,6 +351,17 @@ let Tricks = {
 			description: "Video"
 		}]
 	},
+	hookshotExtension: {
+		enabled: false,
+		canDo: (age) => age === Age.ADULT &&
+			Tricks.hookshotExtension.enabled &&
+			ItemData.canUse(age, Items.HOOKSHOT),
+		canDoWithLongshot: (age) => age === Age.ADULT &&
+			Tricks.hookshotExtension.enabled &&
+			ItemData.canUse(age, UpgradedItems.LONGSHOT),
+		displayText: "Hookshot Extention",
+		description: "Take out hookshot; press A, then hookshot and up again real quick; your shots should now be slightly farther"
+	},
 	hookshotExtensionSotBlocks: {
 		enabled: false,
 		canDo: (age) => age === Age.ADULT &&

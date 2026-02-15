@@ -4044,78 +4044,12 @@ let MQDungeons = {
                     whirlpoolRoom: {
                         Needs: [UpgradedItems.LONGSHOT]
                     },
-                    singleWaterPillarRoom: {
-                        Needs: [ItemSets.FIRE_ITEMS],
-                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE, UpgradedItems.LONGSHOT] // Can longshot a crate to get back there
+                    dragonRoomBack: {
+                        // Can longshot a crate to get back there
+                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE, UpgradedItems.LONGSHOT]
                     }
                 },
                 ItemLocations: {
-                    "4 Underwater Crates in Dragon Room": {
-                        SpoilerLogName: [{
-                            name: "Water Temple MQ Dragon Statue Submerged Crate {#}",
-                            count: 4
-                        }],
-                        ItemGroup: ItemGroups.GROUP,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        DefaultEntranceGroupName: "4 Crates",
-                        MapInfo: { x: 53, y: 62, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 26,
-                        LongDescription: "In the whirlpool dragon room, use your iron boots, silver scale, or longshot a crate to sink to the little hallway behind the dragon where the crates reside. You can use chus to blow up the crates and dive for the items (drop on the 6th red flash for the close ones; the 4th red flash for the far ones).",
-                        // To get to the area, then to break the crate and get th item
-                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE, UpgradedItems.LONGSHOT],
-                        Needs: [
-                            Items.BOMBCHU,
-                            [SetType.OR, Equipment.IRON_BOOTS, Equipment.SCALE, Items.BOOMERANG]
-                        ]
-                    },
-                    "2 Crates Behind Dragon Room": {
-                        SpoilerLogName: [{
-                            name: "Water Temple MQ Dragon Statue By Torches Crate {#}",
-                            count: 2
-                        }],
-                        ItemGroup: ItemGroups.GROUP,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        DefaultEntranceGroupName: "2 Crates",
-                        MapInfo: { x: 33, y: 62, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 27,
-                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
-                        LongDescription: "In the whirlpool dragon room, use your iron boots, silver scale, or longshot a crate to go past the little hallway behind the dragon. The crates are the big ones on the surface in the next room.",
-                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE, UpgradedItems.LONGSHOT]
-                    },
-                    "5 Crates Behind Dragon Room": {
-                        SpoilerLogName: [
-                            {
-                                name: "Water Temple MQ Dragon Statue By Torches Crate {#}",
-                                count: 2
-                            },
-                            {
-                                name: "Water Temple MQ Dragon Statue By Torches Small Wooden Crate {#}",
-                                count: 3
-                            }
-                        ],
-                        ItemGroup: ItemGroups.GROUP,
-                        OverrideItemGroup: ItemGroups.CRATE,
-                        IsEmpty: true,
-                        DefaultEntranceGroupName: "5 Crates",
-                        MapInfo: { x: 33, y: 62, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 27,
-                        LongDescription: "In the whirlpool dragon room, use your iron boots, silver scale, or longshot a crate to go past the little hallway behind the dragon. The crates are on the surface in the next room.",
-                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE, UpgradedItems.LONGSHOT]
-                    },
-                    "Wonderitem Behind Dragon Room": {
-                        SpoilerLogName: "Water Temple MQ Dragon Statue Crates Hookshot Wonderitem",
-                        ItemGroup: ItemGroups.WONDERITEM,
-                        MapImageName: "Hookshot Wonderitem",
-                        MapInfo: { x: 29, y: 61, floor: "F1" },
-                        Age: Age.ADULT,
-                        Order: 27.1,
-                        LongDescription: "In the whirlpool dragon room, use your iron boots, silver scale, or longshot a crate to go past the little hallway behind the dragon. Hookshot the symbol on the wall behind the crates to spawn the wonderitem.",
-                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE, UpgradedItems.LONGSHOT],
-                        Needs: [Items.HOOKSHOT]
-                    },
                     "2 Wonderitems in Dragon's Eyes": {
                         SpoilerLogName: [{
                             name: "Water Temple MQ Dragon Statue Eyes Hookshot Wonderitem {#}",
@@ -4145,8 +4079,79 @@ let MQDungeons = {
                     }
                 }
             },
+            dragonRoomBack: {
+                DisplayGroup: { groupName: "Boss Key Loop (Top West)", imageName: "Boss Key" },
+                Description: "In the whirlpool dragon room, use your iron boots, silver scale, or longshot a crate to sink to the little hallway behind the dragon with the crates.",
+                Exits: {
+                    singleWaterPillarRoom: {
+                        Needs: [ItemSets.FIRE_ITEMS]
+                    }
+                },
+                ItemLocations: {
+                    "4 Underwater Crates in Dragon Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Dragon Statue Submerged Crate {#}",
+                            count: 4
+                        }],
+                        ItemGroup: ItemGroups.GROUP,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        DefaultEntranceGroupName: "4 Crates",
+                        MapInfo: { x: 53, y: 62, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 26,
+                        LongDescription: "You can use chus to blow up the crates and dive for the items (drop on the 6th red flash for the close ones; the 4th red flash for the far ones).",
+                        Needs: [Items.BOMBCHU], // Break the crate
+                        NeedsAny: [Equipment.IRON_BOOTS, Equipment.SCALE, Items.BOOMERANG], // Get the item
+                    },
+                    "2 Crates Behind Dragon Room": {
+                        SpoilerLogName: [{
+                            name: "Water Temple MQ Dragon Statue By Torches Crate {#}",
+                            count: 2
+                        }],
+                        ItemGroup: ItemGroups.GROUP,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        DefaultEntranceGroupName: "2 Crates",
+                        MapInfo: { x: 33, y: 62, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 27,
+                        RequiredToAppear: function() { return !Settings.RandomizerSettings.shuffleEmptyCrates; },
+                        LongDescription: "The crates are the big ones on the surface in the next room."
+                    },
+                    "5 Crates Behind Dragon Room": {
+                        SpoilerLogName: [
+                            {
+                                name: "Water Temple MQ Dragon Statue By Torches Crate {#}",
+                                count: 2
+                            },
+                            {
+                                name: "Water Temple MQ Dragon Statue By Torches Small Wooden Crate {#}",
+                                count: 3
+                            }
+                        ],
+                        ItemGroup: ItemGroups.GROUP,
+                        OverrideItemGroup: ItemGroups.CRATE,
+                        IsEmpty: true,
+                        DefaultEntranceGroupName: "5 Crates",
+                        MapInfo: { x: 33, y: 62, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 27,
+                        LongDescription: "The crates are on the surface in the next room."
+                    },
+                    "Wonderitem Behind Dragon Room": {
+                        SpoilerLogName: "Water Temple MQ Dragon Statue Crates Hookshot Wonderitem",
+                        ItemGroup: ItemGroups.WONDERITEM,
+                        MapImageName: "Hookshot Wonderitem",
+                        MapInfo: { x: 29, y: 61, floor: "F1" },
+                        Age: Age.ADULT,
+                        Order: 27.1,
+                        LongDescription: "Hookshot the symbol on the wall behind the crates to spawn the wonderitem.",
+                        Needs: [Items.HOOKSHOT]
+                    }
+                }
+            },
             singleWaterPillarRoom: {
                 DisplayGroup: { groupName: "Boss Key Loop (Top West)", imageName: "Boss Key" },
+                Description: "Navigate around the whirlpool room. In the room with the dragon, use your iron boots, silver scale, or longshot a torch to navigate to the back. Light the torches on the walls to unbar the door.",
                 Exits: {
                     dragonRoom: {},
                     afterSingleWaterPillarRoomGate: {
@@ -4160,7 +4165,7 @@ let MQDungeons = {
                         MapInfo: { x: 102, y: 95, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 29,
-                        LongDescription: "Navigate around the whirlpool room. In the room with the dragon, use your iron boots or silver scale to navigate to the back. Light the torches on the walls to unbar the door. The pot is to your left in the next room."
+                        LongDescription: "The pot is to your left in the next room."
                     },
                     "Crate in Upper Single Water Pillar Room": {
                         SpoilerLogName: "Water Temple MQ Boss Key Chest Room Upper Crate",
@@ -4168,7 +4173,7 @@ let MQDungeons = {
                         MapInfo: { x: 89, y: 95, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 30,
-                        LongDescription: "Navigate around the whirlpool room. In the room with the dragon, use your iron boots or silver scale to navigate to the back. Light the torches on the walls to unbar the door. The crate is to your right in the next room."
+                        LongDescription: "The crate is to your right in the next room."
                     },
                     "4 Crates in Lower Single Water Pillar Room": {
                         SpoilerLogName: [{
@@ -4181,7 +4186,7 @@ let MQDungeons = {
                         MapInfo: { x: 95, y: 111, floor: "F1" },
                         Age: Age.ADULT,
                         Order: 31,
-                        LongDescription: "Navigate around the whirlpool room. In the room with the dragon, use your iron boots or silver scale to navigate to the back. Light the torches on the walls to unbar the door. The crates are in the pit."
+                        LongDescription: "The crates are in the pit."
                     }
                 }
             },

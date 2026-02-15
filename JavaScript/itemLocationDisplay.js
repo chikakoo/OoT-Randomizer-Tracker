@@ -536,8 +536,13 @@ let ItemLocationDisplay = {
 	 * @returns The text div
 	 */
 	_createMoreInfoTextDiv: function(itemLocation) {
+		let map = itemLocation.Map || itemLocation.ExitMap;
+		let region = itemLocation.Region || itemLocation.ExitRegion;
+		let regionDescription = MapLocations[map].Regions[region].Description;
+		let descriptionPretext = regionDescription ? `${regionDescription}<br /><br />` : "";
+
 		let moreInfoTextDiv = dce("div", "item-more-info-text");
-		moreInfoTextDiv.innerHTML = itemLocation.LongDescription || "";
+		moreInfoTextDiv.innerHTML = `${descriptionPretext}${itemLocation.LongDescription}` || "";
 
 		if (itemLocation.TricksToShow && (!itemLocation.IgnoreTricksToShow || !itemLocation.IgnoreTricksToShow())) {
 			let tricksContainer = dce("div", "item-more-info-text-tricks-container");

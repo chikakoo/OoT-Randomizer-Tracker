@@ -2636,6 +2636,7 @@ let StandardDungeons = {
             },
             whirlpoolRoom: {
                 DisplayGroup: { groupName: "Waterfall Path (Top West)", imageName: "Longshot" },
+                Description: "Start from the longshot chest room after the Dark Link fight, play the Song of Time to clear the blocks from the floor and drop down.",
                 Exits: {
                     dragonRoom: {
                         Needs: [Items.FAIRY_BOW]
@@ -2675,8 +2676,12 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 9,
                         MapInfo: { x: 51, y: 121, floor: "F1" },
-                        LongDescription: "Start from the longshot chest room. Play the Song of Time to clear the blocks from the floor. Drop down. Now, make your way through the whirlpool room, avoiding them as much as possible. The skulltula is somewhere on the left wall when going down this path - equip the iron boots then hookshot it.",
-                        Needs: [Equipment.IRON_BOOTS, ItemSets.GRAB_SHORT_DISTANCE_ITEMS]
+                        LongDescription: "Make your way through the whirlpool room, avoiding them as much as possible. The skulltula is somewhere on the left wall when going down this path - equip the iron boots then hookshot it.",
+                        TricksToShow: [Tricks.hookshotExtension],
+                        NeedsAny: [
+                            [Equipment.IRON_BOOTS, ItemSets.GRAB_SHORT_DISTANCE_ITEMS],
+                            Tricks.hookshotExtension.canDoWithLongshot
+                        ]
                     },
                     "Heart 4 in Whirlpool Room": {
                         SpoilerLogName: "Water Temple River Recovery Heart 4",
@@ -2697,7 +2702,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 11,
                         MapInfo: { x: 49, y: 160, floor: "F1" },
-                        LongDescription: "Start from the longshot chest room. Play the Song of Time to clear the block from the floor. Drop down. Swim to the end of the room - the pots are on a ledge."
+                        LongDescription: "Swim to the end of the room - the pots are on a ledge."
                     },
                     "Chest at End of Whirlpool Room": {
                         SpoilerLogName: "Water Temple River Chest",
@@ -2705,7 +2710,7 @@ let StandardDungeons = {
                         Age: Age.ADULT,
                         Order: 12,
                         MapInfo: { x: 73, y: 150, floor: "F1" },
-                        LongDescription: "Start from the longshot chest room. Play the Song of Time to clear the block from the floor. Drop down. Now, make your way through the whirlpool room, avoiding them as much as possible. When you get to the end, shoot the eye switch to open the cage. Now quickly hookshot the chest at the other side to get to it.",
+                        LongDescription: "Make your way through the whirlpool room, avoiding them as much as possible. When you get to the end, shoot the eye switch to open the cage. Now quickly hookshot the chest at the other side to get to it.",
                         Needs: [Items.FAIRY_BOW]
                     }
                 }
